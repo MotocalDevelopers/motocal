@@ -12,7 +12,7 @@
         <div id="app" align="left"></div>
         <script type="text/jsx">
             // skill data
-            var skilltypes = [{name:"M背水", type:"magna-haisui"}, {name:"攻刃大", type:"kouzin-L"}];
+            var skilltypes = [{name: "無し", type:"non"}, {name:"M背水", type:"magna-haisui"}, {name:"攻刃大", type:"kouzin-L"}];
             var armtypes = [{name:"銃", type:"gun"}, {name:"剣", type:"sword"}];
 
             // for mapping options
@@ -27,99 +27,138 @@
                         {rank: 1, totalAttack: 10000},
                         {rank: 2, totalAttack: 9000},
                     ],
+                    baseAttack: '',
+                    profile: '',
+                    armlist: '',
                   };
+              },
+              updateAttack: function(newRank) {
+                var newBaseAttack = (newRank > 100) ? 5000 + (parseInt(newRank) - 100) * 20 : 1000 + (parseInt(newRank)) * 40
+                this.setState({baseAttack: newBaseAttack});
               },
               handleArmNumChange: function(newArmNum) {
                   this.setState({armNum: newArmNum});
               },
-              handleSubmit: function(e) {
-                  e.preventDefault();
+              onChangeArmData: function(state) {
+                  console.log("newarmlist:", state);
+                  this.setState({armlist: state});
+              },
+              onChangeProfileData: function(state) {
+                  //this.updateAttack(state.rank);
+                  this.setState({profile: state});
+              },
+              updateResult: function(state) {
               },
               render: function() {
                 return (
                     <div className="root">
-                        <Profile onArmNumChanges={this.handleArmNumChange} />
-                        <ArmList armNum={this.state.armNum}/>
-                        <form className="rootSubmit" onSubmit={this.handleSubmit}>
-                        <input type="submit" value="計算" />
-                        </form>
+                        <Profile onArmNumChanges={this.handleArmNumChange} onChange={this.onChangeProfileData} />
+                        <ArmList armNum={this.state.armNum} onChange={this.onChangeArmData} />
                         <hr />
                         <h2> 結果 </h2>
-                        <ResultList data={this.state.res} />
+                        <ResultList data={this.state} />
                     </div>
                 );
               }
             });
 
-            var Result = React.createClass({
+            var ResultList = React.createClass({
+                getInitialState: function() {
+                    return {
+                      res: [
+                          {rank: '', totalAttack: ''},
+                      ],
+                    };
+                },
+                componentWillReceiveProps: function(nextProps) {
+                    console.log("new props: ", nextProps)
+                },
                 render: function() {
                     return (
-                        <div className="result">
-                            {this.props.data}
+                        <div className="resultList">
+                            <Result />
+                            <table>
+                            <thead>
+                            <tr>
+                                <th>順位</th>
+                                <th>攻撃力</th>
+                                <th>武器名1</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {this.state.res.map(function(res) {
+                                return (
+                                    <Result key={res.rank} data={res} />
+                                );
+                            })}
+                            </tbody>
+                            </table>
                         </div>
                     );
                 }
             });
 
-            var ResultList = React.createClass({
-                    render: function() {
-                        return (
-                            <div className="resultList">
-                                <Result />
-                                <table>
-                                <thead>
-                                <tr>
-                                    <th>順位</th>
-                                    <th>攻撃力</th>
-                                    <th>武器名1</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {this.props.data.map(function(res) {
-                                    return (
-                                        <Result key={res.rank} data={res} />
-                                    );
-                                })}
-                                </tbody>
-                                </table>
-                            </div>
-                        );
+            var Result = React.createClass({
+                render: function() {
+                    if(this.props.data != undefined){
+                        var rank = this.props.data.rank;
+                        var totalAttack = this.props.data.totalAttack;
                     }
-                });
+
+                    return (
+                        <tr className="result">
+                            <td> {rank} </td>
+                            <td> {totalAttack} </td>
+                        </tr>
+                    );
+                }
+            });
 
             // ArmList has a number of Arm objects.
             var ArmList = React.createClass({
-                    render: function(){
-                        var arms = [];
-                        for(var i=0; i < this.props.armNum; i++) {
-                            arms.push({id: i});
-                        }
-                        return (
-                            <div className="armList">
-                                <table>
-                                <thead>
-                                <tr>
-                                    <th>武器名</th>
-                                    <th>攻撃力</th>
-                                    <th>武器種</th>
-                                    <th>得意武器？</th>
-                                    <th>コスモス？</th>
-                                    <th>スキル1</th>
-                                    <th>スキル2</th>
-                                    <th>SLv</th>
-                                    <th>考慮本数</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {arms.map(function(arm) {
-                                    return <Arm key={arm.id} />;
-                                })}
-                                </tbody>
-                                </table>
-                            </div>
-                        );
+                getInitialState: function() {
+                    return {
+                        alist: [],
+                    };
+                },
+                handleOnChange: function(key, state){
+                    var newalist = this.state.alist;
+                    newalist[key] = state;
+                    this.setState({alist: newalist})
+                    this.props.onChange(newalist);
+                },
+                render: function(){
+                    var arms = [];
+                    for(var i=0; i < this.props.armNum; i++) {
+                        arms.push({id: i});
                     }
-                });
+                    var hChange = this.handleOnChange;
+                    return (
+                        <div className="armList">
+                            <table>
+                            <thead>
+                            <tr>
+                                <th>武器名</th>
+                                <th>攻撃力</th>
+                                <th>武器種</th>
+                                <th>得意武器？</th>
+                                <th>コスモス？</th>
+                                <th>スキル1</th>
+                                <th>スキル2</th>
+                                <th>SLv</th>
+                                <th>考慮本数</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {arms.map(function(arm) {
+                                return <Arm key={arm.id} onChange={hChange} id={arm.id} />;
+                            })}
+                            </tbody>
+                            </table>
+                        </div>
+                    );
+                }
+            });
 
             // Arm is a fundamental object corresponding one arm.
             var Arm = React.createClass({
@@ -127,23 +166,23 @@
                     return {
                             name: '',
                             attack: '',
-                            isFavWeapon: false,
+                            isFavWeapon: 0,
                             armType: '',
-                            isCosmos: false,
-                            skill1: '',
-                            skill2: '',
+                            isCosmos: 0,
+                            skill1: 'non',
+                            skill2: 'non',
                             slv: '',
                             considerNumberMin: '',
                             considerNumberMax: '',
                     };
                 },
-                handleAttack: function(e) { this.setState({attack: e.target.value}); },
-                handleIsFavWeapon: function(e) { this.setState({isFavWeapon: e.target.value}); },
-                handleArmType: function(e) { this.setState({armType: e.target.value}); },
-                handleIsCosmos: function(e) { this.setState({isCosmos: e.target.value}); },
-                handleSkill1: function(e) { this.setState({skill1: e.target.value}); },
-                handleSkill2: function(e) { this.setState({skill2: e.target.value}); },
-                handleSlv: function(e) { this.setState({slv: e.target.value}); },
+                handleEvent: function(key, e) {
+                    var newState = this.state
+                    if(key == "isFavWeapon" || key == "isCosmos") {newState[key] = (newState[key] == 0) ? 1 : 0}
+                    else { newState[key] = e.target.value }
+                    this.setState(newState)
+                    this.props.onChange(this.props.id, newState)
+                },
                 render: function(){
                     var stypes = skilltypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
                     var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
@@ -151,17 +190,17 @@
                     return (
                         <tr>
                             <form className="armForm">
-                            <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleName} /></td>
-                            <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleAttack} /></td>
-                            <td><select value={this.state.armType} onChange={this.handleArmType} > {atypes} </select></td>
-                            <td><input type="checkbox" value={this.state.isFavWeapon} onChange={this.handleIsFavWeapon} /></td>
-                            <td><input type="checkbox" value={this.state.isCosmos} onChange={this.handleIsCosmos} /></td>
-                            <td><select value={this.state.skill1} onChange={this.handleSkill1} > {stypes}</select></td>
-                            <td><select value={this.state.skill2} onChange={this.handleSkill2} > {stypes}</select></td>
-                            <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleSlv} /></td>
+                            <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
+                            <td><input type="number" label="attack" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
+                            <td><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
+                            <td><input type="checkbox" checked={this.state.isFavWeapon} onChange={this.handleEvent.bind(this, "isFavWeapon")} /></td>
+                            <td><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
+                            <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {stypes}</select></td>
+                            <td><select value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {stypes}</select></td>
+                            <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
                             <td>
-                                <input type="number" min="0" value={this.state.considerNumberMin}/>から<br/>
-                                <input type="number" min="0" value={this.state.considerNumberMax}/>まで
+                                <input type="number" min="0" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} />から<br/>
+                                <input type="number" min="0" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />まで
                             </td>
                             </form>
                         </tr>
@@ -186,25 +225,18 @@
                         summonAttack: '',
                         zenithBonus: "無し",
                         typeBonus: "無し",
-                        baseAttack: '',
-                        displayedAttack: '',
-                        trueAttack: '',
                         armNum: "3",
                     };
                 },
-                updateAttack: function(newRank) {
-                  var newBaseAttack = (newRank > 100) ? 5000 + (parseInt(newRank) - 100) * 20 : 1000 + (parseInt(newRank)) * 40
-                  this.setState({baseAttack: newBaseAttack});
-                  this.setState({displayedAttack: 10000});
-                  this.setState({trueAttack: 10000});
-                },
-                handleRankChange: function(e) {
-                  this.setState({rank: e.target.value});
-                  this.updateAttack(e.target.value);
+                handleEvent: function(key, e) {
+                  var newState = this.state
+                  newState[key] = e.target.value
+                  this.setState(newState)
+                  this.props.onChange(this.props.id, newState)
                 },
                 handleArmNumChange: function(e) {
-                    this.setState({armNum: e.target.value});
-                    this.props.onArmNumChanges(e.target.value);
+                  this.setState({armNum: e.target.value});
+                  this.props.onArmNumChanges(e.target.value);
                 },
                 render: function() {
                         var zenithBonuses = this.props.zenith.map(selectTemplate);
@@ -213,22 +245,17 @@
                             <div className="profile">
                             <table>
                             <form className="profileForm">
-                            <tr><th>ランク</th><td><input type="number" placeholder="0-170の整数" min="0" max="170" value={this.state.rank} onChange={this.handleRankChange}/></td></tr>
-                            <tr><th>攻撃オフセット</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.attackBonus} onChange={this.handleProfileChange}/></td></tr>
-                            <tr><th>マスターボーナス</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.masterBonus} onChange={this.handleProfileChange}/></td></tr>
-                            <tr><th>騎空挺ボーナス</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.kikuteiBonus} onChange={this.handleProfileChange}/></td></tr>
-                            <tr><th>HP (%)</th><td> <input type="number" placeholder="0以上の数値" min="0" max="100" value={this.state.hp} onChange={this.handleProfileChange}/></td></tr>
-                            <tr><th>召喚石攻撃力合計</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonAttack} onChange={this.handleProfileChange}/></td></tr>
+                            <tr><th>ランク</th><td><input type="number" placeholder="0-170の整数" min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td></tr>
+                            <tr><th>攻撃オフセット</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td></tr>
+                            <tr><th>マスターボーナス</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td></tr>
+                            <tr><th>騎空挺ボーナス</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.kikuteiBonus} onChange={this.handleEvent.bind(this, "kikuteiBonus")}/></td></tr>
+                            <tr><th>HP (%)</th><td> <input type="number" placeholder="0以上の数値" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
+                            <tr><th>召喚石攻撃力合計</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonAttack} onChange={this.handleEvent.bind(this, "summonAttack")}/></td></tr>
                             <tr><th>ゼニス得意武器</th><td>
-                            <select value={this.state.zenithBonus} onChange={this.onChangeSelectValue}>
-                                {zenithBonuses}
-                            </select>
+                                <select value={this.state.zenithBonus} onChange={this.handleEvent.bind(this, "zenithBonus")} > {zenithBonuses} </select>
                             </td></tr>
-                            <tr>
-                            <th>
-                            属性相性</th><td><select value={this.state.typeBonus} onChange={this.onChangeSelectValue}>
-                                {types}
-                            </select></td></tr>
+                            <tr><th>属性相性</th><td>
+                                <select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {types} </select></td></tr>
                             <tr>
                                 <th>考慮種類数</th>
                                 <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>

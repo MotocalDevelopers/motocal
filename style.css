@@ -2,6 +2,20 @@ body {
     width : 80%;
     font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     margin: 0 auto;
+    font-size: 100%;
+}
+
+.profile table {
+    width: 50%;
+    text-align: left;
+}
+
+.profile input, select, textarea {
+    width: 100%;
+}
+
+input, select, textarea {
+    font-size: 100%;
 }
 
 ul {
@@ -23,24 +37,24 @@ ul li:first-child {
 ul li:last-child {
     border-bottom   : 1px solid #cccccc;
 }
+
 table {
     background: #ffffff;
     border-left: #cccccc 1px solid;
     border-collapse: collapse;
     width: 100%;
-    font-size: 14px;
     color:#333333;
-} 
+}
 
 table th {
-    background:#333333;
+    background-color: aquamarine;
+    color: #000000;
     border-bottom: #cccccc 1px solid;
     border-top: #cccccc 1px solid;
     border-right:#cccccc 1px solid;
     text-align: center;
     padding:10px;
-    color:#ffffff;
-} 
+}
 
 table td {
     background: #ffffff ;
