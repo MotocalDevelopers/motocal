@@ -1,0 +1,245 @@
+<?php header('Content-Type: text/html; charset=utf-8');  ?>
+
+<html>
+    <head>
+        <title>元カレ計算機(グラブル攻撃力計算機)</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="http://fb.me/react-0.13.3.js"></script>
+        <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+    </head>
+    <body>
+        <h2>元カレ計算機</h2><hr>
+        <div id="app" align="left"></div>
+        <script type="text/jsx">
+            // skill data
+            var skilltypes = [{name:"M背水", type:"magna-haisui"}, {name:"攻刃大", type:"kouzin-L"}];
+            var armtypes = [{name:"銃", type:"gun"}, {name:"剣", type:"sword"}];
+
+            // for mapping options
+            var selectTemplate = function(opt) { return <option value={opt} key={opt}>{opt}</option>; }
+
+            // Root class contains [Profile, ArmList, Results].
+            var Root = React.createClass({
+              getInitialState: function() {
+                  return {
+                    armNum: "3",
+                    res: [
+                        {rank: 1, totalAttack: 10000},
+                        {rank: 2, totalAttack: 9000},
+                    ],
+                  };
+              },
+              handleArmNumChange: function(newArmNum) {
+                  this.setState({armNum: newArmNum});
+              },
+              handleSubmit: function(e) {
+                  e.preventDefault();
+              },
+              render: function() {
+                return (
+                    <div className="root">
+                        <Profile onArmNumChanges={this.handleArmNumChange} />
+                        <ArmList armNum={this.state.armNum}/>
+                        <form className="rootSubmit" onSubmit={this.handleSubmit}>
+                        <input type="submit" value="計算" />
+                        </form>
+                        <hr />
+                        <h2> 結果 </h2>
+                        <ResultList data={this.state.res} />
+                    </div>
+                );
+              }
+            });
+
+            var Result = React.createClass({
+                render: function() {
+                    return (
+                        <div className="result">
+                            {this.props.data}
+                        </div>
+                    );
+                }
+            });
+
+            var ResultList = React.createClass({
+                    render: function() {
+                        return (
+                            <div className="resultList">
+                                <Result />
+                                <table>
+                                <thead>
+                                <tr>
+                                    <th>順位</th>
+                                    <th>攻撃力</th>
+                                    <th>武器名1</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {this.props.data.map(function(res) {
+                                    return (
+                                        <Result key={res.rank} data={res} />
+                                    );
+                                })}
+                                </tbody>
+                                </table>
+                            </div>
+                        );
+                    }
+                });
+
+            // ArmList has a number of Arm objects.
+            var ArmList = React.createClass({
+                    render: function(){
+                        var arms = [];
+                        for(var i=0; i < this.props.armNum; i++) {
+                            arms.push({id: i});
+                        }
+                        return (
+                            <div className="armList">
+                                <table>
+                                <thead>
+                                <tr>
+                                    <th>武器名</th>
+                                    <th>攻撃力</th>
+                                    <th>武器種</th>
+                                    <th>得意武器？</th>
+                                    <th>コスモス？</th>
+                                    <th>スキル1</th>
+                                    <th>スキル2</th>
+                                    <th>SLv</th>
+                                    <th>考慮本数</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {arms.map(function(arm) {
+                                    return <Arm key={arm.id} />;
+                                })}
+                                </tbody>
+                                </table>
+                            </div>
+                        );
+                    }
+                });
+
+            // Arm is a fundamental object corresponding one arm.
+            var Arm = React.createClass({
+                getInitialState: function() {
+                    return {
+                            name: '',
+                            attack: '',
+                            isFavWeapon: false,
+                            armType: '',
+                            isCosmos: false,
+                            skill1: '',
+                            skill2: '',
+                            slv: '',
+                            considerNumberMin: '',
+                            considerNumberMax: '',
+                    };
+                },
+                handleAttack: function(e) { this.setState({attack: e.target.value}); },
+                handleIsFavWeapon: function(e) { this.setState({isFavWeapon: e.target.value}); },
+                handleArmType: function(e) { this.setState({armType: e.target.value}); },
+                handleIsCosmos: function(e) { this.setState({isCosmos: e.target.value}); },
+                handleSkill1: function(e) { this.setState({skill1: e.target.value}); },
+                handleSkill2: function(e) { this.setState({skill2: e.target.value}); },
+                handleSlv: function(e) { this.setState({slv: e.target.value}); },
+                render: function(){
+                    var stypes = skilltypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
+                    var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
+
+                    return (
+                        <tr>
+                            <form className="armForm">
+                            <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleName} /></td>
+                            <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleAttack} /></td>
+                            <td><select value={this.state.armType} onChange={this.handleArmType} > {atypes} </select></td>
+                            <td><input type="checkbox" value={this.state.isFavWeapon} onChange={this.handleIsFavWeapon} /></td>
+                            <td><input type="checkbox" value={this.state.isCosmos} onChange={this.handleIsCosmos} /></td>
+                            <td><select value={this.state.skill1} onChange={this.handleSkill1} > {stypes}</select></td>
+                            <td><select value={this.state.skill2} onChange={this.handleSkill2} > {stypes}</select></td>
+                            <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleSlv} /></td>
+                            <td>
+                                <input type="number" min="0" value={this.state.considerNumberMin}/>から<br/>
+                                <input type="number" min="0" value={this.state.considerNumberMax}/>まで
+                            </td>
+                            </form>
+                        </tr>
+                    );
+                }
+            });
+
+            var Profile = React.createClass({
+                getDefaultProps() {
+                    return {
+                      types: ["無し", "有利", "不利"],
+                      zenith: ["無し", "★1", "★2", "★3"],
+                    };
+                },
+                getInitialState: function() {
+                    return {
+                        rank: '',
+                        attackBonus: '',
+                        masterBonus: '',
+                        kikuteiBonus: '',
+                        hp: '',
+                        summonAttack: '',
+                        zenithBonus: "無し",
+                        typeBonus: "無し",
+                        baseAttack: '',
+                        displayedAttack: '',
+                        trueAttack: '',
+                        armNum: "3",
+                    };
+                },
+                updateAttack: function(newRank) {
+                  var newBaseAttack = (newRank > 100) ? 5000 + (parseInt(newRank) - 100) * 20 : 1000 + (parseInt(newRank)) * 40
+                  this.setState({baseAttack: newBaseAttack});
+                  this.setState({displayedAttack: 10000});
+                  this.setState({trueAttack: 10000});
+                },
+                handleRankChange: function(e) {
+                  this.setState({rank: e.target.value});
+                  this.updateAttack(e.target.value);
+                },
+                handleArmNumChange: function(e) {
+                    this.setState({armNum: e.target.value});
+                    this.props.onArmNumChanges(e.target.value);
+                },
+                render: function() {
+                        var zenithBonuses = this.props.zenith.map(selectTemplate);
+                        var types = this.props.types.map(selectTemplate);
+                        return (
+                            <div className="profile">
+                            <table>
+                            <form className="profileForm">
+                            <tr><th>ランク</th><td><input type="number" placeholder="0-170の整数" min="0" max="170" value={this.state.rank} onChange={this.handleRankChange}/></td></tr>
+                            <tr><th>攻撃オフセット</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.attackBonus} onChange={this.handleProfileChange}/></td></tr>
+                            <tr><th>マスターボーナス</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.masterBonus} onChange={this.handleProfileChange}/></td></tr>
+                            <tr><th>騎空挺ボーナス</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.kikuteiBonus} onChange={this.handleProfileChange}/></td></tr>
+                            <tr><th>HP (%)</th><td> <input type="number" placeholder="0以上の数値" min="0" max="100" value={this.state.hp} onChange={this.handleProfileChange}/></td></tr>
+                            <tr><th>召喚石攻撃力合計</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonAttack} onChange={this.handleProfileChange}/></td></tr>
+                            <tr><th>ゼニス得意武器</th><td>
+                            <select value={this.state.zenithBonus} onChange={this.onChangeSelectValue}>
+                                {zenithBonuses}
+                            </select>
+                            </td></tr>
+                            <tr>
+                            <th>
+                            属性相性</th><td><select value={this.state.typeBonus} onChange={this.onChangeSelectValue}>
+                                {types}
+                            </select></td></tr>
+                            <tr>
+                                <th>考慮種類数</th>
+                                <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
+                            </tr>
+                            </form>
+                            </table>
+                            </div>
+                        );
+                    }
+            });
+            var m = React.render(<Root />, document.getElementById('app'));
+        </script>
+    </body>
+</html>

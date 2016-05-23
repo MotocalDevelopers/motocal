@@ -1,0 +1,74 @@
+body {
+    width : 80%;
+    font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+    margin: 0 auto;
+}
+
+ul {
+    margin: 0 auto;
+}
+
+ul li {
+    margin: 0px 40px 0px 0px;
+    padding         : 5px 5px;
+    border-bottom   : 1px solid #cccccc;
+    border-left   : 1px solid #cccccc;
+    border-right   : 1px solid #cccccc;
+}
+
+ul li:first-child {
+    border-top   : 1px solid #cccccc;
+}
+
+ul li:last-child {
+    border-bottom   : 1px solid #cccccc;
+}
+table {
+    background: #ffffff;
+    border-left: #cccccc 1px solid;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    color:#333333;
+} 
+
+table th {
+    background:#333333;
+    border-bottom: #cccccc 1px solid;
+    border-top: #cccccc 1px solid;
+    border-right:#cccccc 1px solid;
+    text-align: center;
+    padding:10px;
+    color:#ffffff;
+} 
+
+table td {
+    background: #ffffff ;
+    border-bottom:#cccccc 1px solid;
+    border-right:#cccccc 1px solid;
+    text-align: left;
+    padding: 10px;
+}
+
+.profile {
+    text-align: left;
+}
+
+#users table {
+    padding:0px 40px 0px 40px;
+}
+#chats table {
+    padding:0px 40px 0px 40px;
+}
+
+#chats table td.last {
+    width: 70%; 
+}
+
+#logs td.warning {
+	background-color:#FF9999;
+	filter		:alpha(opacity=85);
+	-moz-opacity	:0.85;
+	-khtml-opacity	:0.85;
+	opacity		:0.85;
+}
