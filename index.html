@@ -6,14 +6,58 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="http://fb.me/react-0.13.3.js"></script>
         <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+
+        <!-- for calculate k_combination -->
+        <script src="3118596/combinations.js"></script>
     </head>
     <body>
         <h2>元カレ計算機</h2><hr>
         <div id="app" align="left"></div>
         <script type="text/jsx">
             // skill data
-            var skilltypes = [{name: "無し", type:"non"}, {name:"M背水", type:"magna-haisui"}, {name:"攻刃大", type:"kouzin-L"}];
-            var armtypes = [{name:"銃", type:"gun"}, {name:"剣", type:"sword"}];
+            var skilltypes = [
+                {name: "無し", type:"non", amount: "non"},
+                {name:"通常攻刃(小)", type:"normal", amount: "S"},
+                {name:"通常攻刃(中)", type:"normal", amount: "M"},
+                {name:"通常攻刃(大)", type:"normal", amount: "L"},
+                {name:"通常攻刃II", type:"normal", amount: "LL"},
+                {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
+                {name:"通常背水(中)", type:"normalHaisui", amount: "M"},
+                {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
+                {name:"神威", type:"normalKamui", amount: "L"},
+                {name: "M攻刃", type:"magna", amount:"M"},
+                {name: "M攻刃II", type:"magna", amount:"L"},
+                {name:"M背水(小)", type:"magnaHaisui", amount: "S"},
+                {name:"M背水(中)", type:"magnaHaisui", amount: "M"},
+                {name:"M背水(大)", type:"magnaHaisui", amount: "L"},
+                {name:"M神威", type:"magnaKamui", amount: "L"},
+                {name:"バハ攻", type:"bahaAT", amount: "L"},
+                {name:"バハ攻HP", type:"bahaATHP", amount: "L"},
+                {name:"アンノウンI", type:"unknown", amount: "M"},
+                {name:"アンノウンII", type:"unknown", amount: "L"},
+                {name:"ストレングス", type:"unknown", amount: "L"},
+            ];
+
+            var armtypes = [
+                {name:"短剣", type:"dagger"},
+                {name:"剣", type:"sword"},
+                {name:"槍", type:"spear"},
+                {name:"斧", type:"axe"},
+                {name:"杖", type:"wand"},
+                {name:"銃", type:"gun"},,
+                {name:"格闘", type:"fist"},
+                {name:"弓", type:"bow"},
+                {name:"楽器", type:"music"},
+                {name:"刀", type:"katana"},
+            ];
+
+            var summonTypes = [
+                {name: "マグナ", type:"magna"},
+                {name:"属性", type:"element"},
+                {name:"ゼウス系", type:"zeus"},
+                {name: "キャラ", type: "chara"},
+                {name: "アンノウン", type: "unknown"}
+            ];
 
             // for mapping options
             var selectTemplate = function(opt) { return <option value={opt} key={opt}>{opt}</option>; }
@@ -22,44 +66,123 @@
             var Root = React.createClass({
               getInitialState: function() {
                   return {
-                    armNum: "3",
-                    res: [
-                        {rank: 1, totalAttack: 10000},
-                        {rank: 2, totalAttack: 9000},
-                    ],
-                    baseAttack: '',
-                    profile: '',
-                    armlist: '',
+                    armNum: 3,
+                    summonNum: 1,
+                    profile: [],
+                    armlist: [],
+                    summon: [],
                   };
-              },
-              updateAttack: function(newRank) {
-                var newBaseAttack = (newRank > 100) ? 5000 + (parseInt(newRank) - 100) * 20 : 1000 + (parseInt(newRank)) * 40
-                this.setState({baseAttack: newBaseAttack});
               },
               handleArmNumChange: function(newArmNum) {
                   this.setState({armNum: newArmNum});
               },
+              handleSummonNumChange: function(newSummonNum) {
+                  this.setState({summonNum: newSummonNum});
+              },
               onChangeArmData: function(state) {
-                  console.log("newarmlist:", state);
                   this.setState({armlist: state});
               },
               onChangeProfileData: function(state) {
-                  //this.updateAttack(state.rank);
                   this.setState({profile: state});
               },
-              updateResult: function(state) {
+              onChangeSummonData: function(state) {
+                  this.setState({summon: state});
               },
               render: function() {
                 return (
                     <div className="root">
-                        <Profile onArmNumChanges={this.handleArmNumChange} onChange={this.onChangeProfileData} />
-                        <ArmList armNum={this.state.armNum} onChange={this.onChangeArmData} />
-                        <hr />
-                        <h2> 結果 </h2>
-                        <ResultList data={this.state} />
+                        <div className="rootLeft">
+                            <div className="top">
+                                <Profile onArmNumChange={this.handleArmNumChange} onChange={this.onChangeProfileData} onSummonNumChange={this.handleSummonNumChange} />
+                                <SummonList summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
+                            </div>
+                            <hr />
+                            <div className="bottom">
+                                <ArmList armNum={this.state.armNum} onChange={this.onChangeArmData} />
+                                <ResultList data={this.state} />
+                            </div>
+                        </div>
+                        <div className="rootRight">
+                            <h2> System </h2>
+                        </div>
                     </div>
                 );
               }
+            });
+
+            var SummonList = React.createClass({
+                getInitialState: function() {
+                    return {
+                        smlist: [],
+                    };
+                },
+                handleOnChange: function(key, state){
+                    var newsmlist = this.state.smlist;
+                    newsmlist[key] = state;
+                    this.setState({smlist: newsmlist})
+                    this.props.onChange(newsmlist);
+                },
+                render: function() {
+                    var summons = [];
+                    for(var i=0; i < this.props.summonNum; i++) {
+                        summons.push({id: i});
+                    }
+                    var hChange = this.handleOnChange;
+                    return (
+                        <div className="summonList">
+                            <h2> 召喚石 </h2>
+                            <table>
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>自分の石</th>
+                                <th>加護量</th>
+                                <th>フレ石</th>
+                                <th>フレ加護量</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {summons.map(function(sm) {
+                                    return <Summon key={sm.id} onChange={hChange} id={sm.id} />;
+                                })}
+                            </tbody>
+                            </table>
+                        </div>
+                    );
+                }
+            });
+
+            var Summon = React.createClass({
+                getInitialState: function() {
+                    return {
+                        selfSummonType: "magna",
+                        selfSummonAmount: 0,
+                        friendSummonType: "magna",
+                        friendSummonAmount: 0,
+                    };
+                },
+                handleEvent: function(key, e) {
+                    var newState = this.state
+                    newState[key] = e.target.value
+                    this.setState(newState)
+                    this.props.onChange(this.props.id, newState)
+                },
+                render: function() {
+                    var smtypes = summonTypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
+
+                    return (
+                        <tr>
+                            <form className="summonForm">
+                                <td>{this.props.id + 1}</td>
+                                <td><select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{smtypes}</select></td>
+                                <td><input type="number" min="0" max="120" value={this.state.selfSummonAmount} onChange={this.handleEvent.bind(this, "selfSummonAmount")} /></td>
+                                <td><select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{smtypes}</select></td>
+                                <td><input type="number" min="0" max="120" value={this.state.friendSummonAmount} onChange={this.handleEvent.bind(this, "friendSummonAmount")} /></td>
+                            </form>
+                        </tr>
+                    );
+
+                }
             });
 
             var ResultList = React.createClass({
@@ -70,28 +193,145 @@
                       ],
                     };
                 },
-                componentWillReceiveProps: function(nextProps) {
-                    console.log("new props: ", nextProps)
+                calculateBasedOneSummon: function(summon, prof, arml) {
+                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, unknwon: 0};
+
+                    // 自分の加護
+                    totalSummon[summon.selfSummonType] += parseInt(summon.selfSummonAmount)
+                    // フレンドの加護
+                    totalSummon[summon.friendSummonType] += parseInt(summon.friendSummonAmount)
+
+                    // 全武器に対して [最小考慮数, ... , 最大考慮数] の配列を計算しておく
+                    var armNumArray = []
+                    var totalItr = 1;
+                    for(var i = 0; i < arml.length; i++){
+                        var temp = []
+                        var itr = arml[i].considerNumberMax - arml[i].considerNumberMin + 1
+                        for(var j = 0; j < itr; j++){
+                            temp[j] = j + arml[i].considerNumberMin;
+                        }
+                        totalItr *= itr;
+                        armNumArray[i] = temp;
+                    }
+
+                    // index を manage する関数
+                    var proceedIndex = function(index, ana, i){
+                        if(i == ana.length){
+                            return index;
+                        } else {
+                            index[i]++;
+                            if(index[i] > ana[i].length - 1){
+                                index[i] = 0;
+                                index = proceedIndex(index, ana, i + 1);
+                            }
+                            return index
+                        }
+                    }
+
+                    var combinations = []
+                    var index = []
+                    for(var i = 0; i < armNumArray.length; i++){
+                        index[i] = 0;
+                    }
+
+                    for(var i = 0; i < totalItr; i++){
+                        var temp = []
+                        for(var j = 0; j < armNumArray.length; j++){
+                            temp.push(armNumArray[j][index[j]]);
+                        }
+                        combinations.push(temp)
+                        index = proceedIndex(index, armNumArray, 0)
+                    }
+
+                    console.log("summon:", totalSummon);
+
+                    var result = []
+                    for(var i = 0; i < combinations.length; i++){
+                        var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml)
+                        result.push({rank: i, totalAttack: oneres, armNumbers: combinations[i]});
+                    }
+
+                    // totalAttack でsort
+                    result.sort(function(a, b){
+                        if(a.totalAttack < b.totalAttack) return  1;
+                        if(a.totalAttack > b.totalAttack) return -1;
+                        return 0;
+                    });
+                    for(var i = 0; i < result.length; i++){
+                        result[i]["rank"] = i + 1
+                    }
+
+                    while(result.length > 10){ result.pop(); }
+
+                    return result;
+                },
+                calculateOneCombination: function(comb, totalSummon, prof, arml){
+                    var tempArmList = []
+                    for(var i = 0; i < arml.length; i++){
+                        for(var j = 0; j < comb[i]; j++){
+                            tempArmList.push(arml[i]);
+                        }
+                    }
+
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknwon: 0};
+                    for(var i = 0; i < tempArmList.length; i++){
+                        var arm = tempArmList[i];
+
+                        var skill1buf = 15;
+                        var skill2buf = 15;
+
+                        totalSkills[arm.skill1] += skill1buf;
+                        totalSkills[arm.skill2] += skill2buf;
+                    }
+                    var rank = prof.rank;
+                    var baseAttack = (rank > 100) ? 5000 + (parseInt(rank) - 100) * 20 : 1000 + (parseInt(rank)) * 40
+                    var weakPoint = (prof.typeBonus == "有利") ? 1.5 : ((prof.typeBonus == "不利") ? 0.75 : 1.0);
+
+                    var totalAttack = baseAttack * totalSummon.magna * totalSkills.magna * totalSkills.magnaHaisui;
+                    return totalAttack;
+                },
+                calculateResult: function() {
+                  var prof = this.props.data.profile; var arml = this.props.data.armlist;
+                  var summon = this.props.data.summon;
+
+                  if (prof != undefined && arml != undefined && summon != undefined) {
+                      var result = [];
+                      for(var i = 0; i < summon.length; i++){
+                          result.push({summonNo: i, result: this.calculateBasedOneSummon(summon[i], prof, arml)});
+                      }
+                      return result
+                  } else {
+                      return [{summonNo: 1, result: []}]
+                  }
+
                 },
                 render: function() {
+                    res = this.calculateResult();
+                    var armnames = []
+                    for(var i = 0; i < this.props.data.armlist.length; i++){
+                        armnames[i] = this.props.data.armlist[i].name;
+
+                        if(armnames[i] == '') {
+                            armnames[i] = "武器" + (i + 1).toString()
+                        }
+                    }
+
                     return (
                         <div className="resultList">
-                            <Result />
+                            <h2> 結果 </h2>
                             <table>
                             <thead>
                             <tr>
                                 <th>順位</th>
                                 <th>攻撃力</th>
-                                <th>武器名1</th>
+                                {armnames.map(function(m){ return <th>{m}</th>; })}
                             </tr>
                             </thead>
-                            <tbody>
-                            {this.state.res.map(function(res) {
+                            {res.map(function(r) {
                                 return (
-                                    <Result key={res.rank} data={res} />
+                                    <Result key={r.summonNo} data={r.result} />
                                 );
                             })}
-                            </tbody>
                             </table>
                         </div>
                     );
@@ -100,16 +340,21 @@
 
             var Result = React.createClass({
                 render: function() {
-                    if(this.props.data != undefined){
-                        var rank = this.props.data.rank;
-                        var totalAttack = this.props.data.totalAttack;
-                    }
-
+                    console.log("res:", this.props.data);
                     return (
-                        <tr className="result">
-                            <td> {rank} </td>
-                            <td> {totalAttack} </td>
-                        </tr>
+                        <tbody class="result">
+                            {this.props.data.map(function(m) {
+                                return (
+                                    <tr>
+                                        <td> {m.rank} </td>
+                                        <td> {m.totalAttack} </td>
+                                        {m.armNumbers.map(function(am){
+                                            return (<td>{am} 本</td>);
+                                        })}
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
                     );
                 }
             });
@@ -117,9 +362,18 @@
             // ArmList has a number of Arm objects.
             var ArmList = React.createClass({
                 getInitialState: function() {
+                    var al = []
+                    for(var i = 0; i < this.props.armNum; i++) al[i] = []
                     return {
-                        alist: [],
+                        alist: al,
                     };
+                },
+                componentWillReceiveProps: function(nextProps) {
+                    if (nextProps.armNum < this.props.armNum) {
+                        var newalist = this.state.alist;
+                        newalist.pop();
+                        this.setState({alist: newalist})
+                    }
                 },
                 handleOnChange: function(key, state){
                     var newalist = this.state.alist;
@@ -129,12 +383,11 @@
                 },
                 render: function(){
                     var arms = [];
-                    for(var i=0; i < this.props.armNum; i++) {
-                        arms.push({id: i});
-                    }
+                    for(var i=0; i < this.props.armNum; i++) { arms.push({id: i}); }
                     var hChange = this.handleOnChange;
                     return (
                         <div className="armList">
+                            <h2> 武器リスト </h2>
                             <table>
                             <thead>
                             <tr>
@@ -146,7 +399,7 @@
                                 <th>スキル1</th>
                                 <th>スキル2</th>
                                 <th>SLv</th>
-                                <th>考慮本数</th>
+                                <th className="consider">考慮本数</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -165,21 +418,27 @@
                 getInitialState: function() {
                     return {
                             name: '',
-                            attack: '',
+                            attack: 0,
                             isFavWeapon: 0,
-                            armType: '',
+                            armType: 'sword',
                             isCosmos: 0,
                             skill1: 'non',
                             skill2: 'non',
-                            slv: '',
-                            considerNumberMin: '',
-                            considerNumberMax: '',
+                            slv: 1,
+                            considerNumberMin: 0,
+                            considerNumberMax: 1,
                     };
                 },
                 handleEvent: function(key, e) {
                     var newState = this.state
-                    if(key == "isFavWeapon" || key == "isCosmos") {newState[key] = (newState[key] == 0) ? 1 : 0}
-                    else { newState[key] = e.target.value }
+                    if(key == "isFavWeapon" || key == "isCosmos") {
+                        newState[key] = (newState[key] == 0) ? 1 : 0
+                    } else if(key == "considerNumberMin"){
+                        if (parseInt(e.target.value) <= parseInt(this.state.considerNumberMax)) newState[key] = parseInt(e.target.value)
+                    } else if(key == "considerNumberMax") {
+                        if (parseInt(e.target.value) >= parseInt(this.state.considerNumberMin)) newState[key] = parseInt(e.target.value)
+                    } else { newState[key] = e.target.value }
+
                     this.setState(newState)
                     this.props.onChange(this.props.id, newState)
                 },
@@ -191,16 +450,16 @@
                         <tr>
                             <form className="armForm">
                             <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
-                            <td><input type="number" label="attack" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
+                            <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
                             <td><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
-                            <td><input type="checkbox" checked={this.state.isFavWeapon} onChange={this.handleEvent.bind(this, "isFavWeapon")} /></td>
-                            <td><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
+                            <td className="checkbox"><input type="checkbox" checked={this.state.isFavWeapon} onChange={this.handleEvent.bind(this, "isFavWeapon")} /></td>
+                            <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
                             <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {stypes}</select></td>
                             <td><select value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {stypes}</select></td>
                             <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
                             <td>
-                                <input type="number" min="0" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} />から<br/>
-                                <input type="number" min="0" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />まで
+                                <input className="consider" type="number" min="0" size="2" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} />から<br/>
+                                <input className="consider" type="number" min="0" size="2" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />まで
                             </td>
                             </form>
                         </tr>
@@ -217,51 +476,58 @@
                 },
                 getInitialState: function() {
                     return {
-                        rank: '',
-                        attackBonus: '',
-                        masterBonus: '',
-                        kikuteiBonus: '',
-                        hp: '',
-                        summonAttack: '',
+                        rank: 1,
+                        attackBonus: 0,
+                        masterBonus: 0,
+                        kikuteiBonus: 0,
+                        hp: 100,
+                        summonAttack: 0,
                         zenithBonus: "無し",
                         typeBonus: "無し",
-                        armNum: "3",
+                        armNum: 3,
+                        summonNum: 1,
                     };
                 },
                 handleEvent: function(key, e) {
                   var newState = this.state
                   newState[key] = e.target.value
                   this.setState(newState)
-                  this.props.onChange(this.props.id, newState)
+                  this.props.onChange(newState)
+                },
+                handleSummonNumChange: function(e) {
+                  this.setState({summonNum: e.target.value});
+                  this.props.onSummonNumChange(e.target.value);
                 },
                 handleArmNumChange: function(e) {
                   this.setState({armNum: e.target.value});
-                  this.props.onArmNumChanges(e.target.value);
+                  this.props.onArmNumChange(e.target.value);
                 },
                 render: function() {
                         var zenithBonuses = this.props.zenith.map(selectTemplate);
                         var types = this.props.types.map(selectTemplate);
                         return (
                             <div className="profile">
-                            <table>
-                            <form className="profileForm">
-                            <tr><th>ランク</th><td><input type="number" placeholder="0-170の整数" min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td></tr>
-                            <tr><th>攻撃オフセット</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td></tr>
-                            <tr><th>マスターボーナス</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td></tr>
-                            <tr><th>騎空挺ボーナス</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.kikuteiBonus} onChange={this.handleEvent.bind(this, "kikuteiBonus")}/></td></tr>
-                            <tr><th>HP (%)</th><td> <input type="number" placeholder="0以上の数値" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
-                            <tr><th>召喚石攻撃力合計</th><td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonAttack} onChange={this.handleEvent.bind(this, "summonAttack")}/></td></tr>
-                            <tr><th>ゼニス得意武器</th><td>
-                                <select value={this.state.zenithBonus} onChange={this.handleEvent.bind(this, "zenithBonus")} > {zenithBonuses} </select>
-                            </td></tr>
-                            <tr><th>属性相性</th><td>
-                                <select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {types} </select></td></tr>
-                            <tr>
-                                <th>考慮種類数</th>
-                                <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
-                            </tr>
-                            </form>
-                            </table>
+                                <h2> プロフィール </h2>
+                                <table>
+                                <form className="profileForm">
+                                <tr><th>Rank</th><th>ゼニス攻撃力アップ(3000以下)</th><th>マスターボーナス</th><th>騎空挺ボーナス</th><th>HP (%)</th></tr>
+                                <tr>
+                                    <td><input type="number" placeholder="0-170の整数" min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
+                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
+                                    <td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.kikuteiBonus} onChange={this.handleEvent.bind(this, "kikuteiBonus")}/></td>
+                                    <td> <input type="number" placeholder="0以上の数値" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                                </tr>
+                                <tr><th>召喚石攻撃力合計</th><th>ゼニス得意武器</th><th>属性相性</th><th>武器種類数</th> <th>召喚石組み合わせ数</th> </tr>
+                                <tr>
+                                    <td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonAttack} onChange={this.handleEvent.bind(this, "summonAttack")}/></td>
+                                    <td><select value={this.state.zenithBonus} onChange={this.handleEvent.bind(this, "zenithBonus")} > {zenithBonuses} </select></td>
+                                    <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {types} </select></td>
+                                    <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
+                                    <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
+                                </tr>
+                                </form>
+                                </table>
                             </div>
                         );
                     }
