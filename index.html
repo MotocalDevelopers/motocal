@@ -31,15 +31,15 @@
                 "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
                 "normalHaisuiM": {name:"通常背水(中)", type:"normalHaisui", amount: "M"},
                 "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
-                "normalKamui": {name:"神威", type:"normalKamui", amount: "L"},
+                "normalKamui": {name:"神威", type:"normalKamui", amount: "S"},
                 "magnaM": {name: "M攻刃", type:"magna", amount:"M"},
                 "magnaL": {name: "M攻刃II", type:"magna", amount:"L"},
                 "magnaHaisuiS": {name:"M背水(小)", type:"magnaHaisui", amount: "S"},
                 "magnaHaisuiM": {name:"M背水(中)", type:"magnaHaisui", amount: "M"},
                 "magnaHaisuiL": {name:"M背水(大)", type:"magnaHaisui", amount: "L"},
-                "magnaKamui": {name:"M神威", type:"magnaKamui", amount: "L"},
+                "magnaKamui": {name:"M神威", type:"magnaKamui", amount: "S"},
                 "bahaAT": {name:"バハ攻", type:"baha", amount: "L"},
-                "bahaATHP": {name:"バハ攻HP", type:"baha", amount: "L"},
+                "bahaATHP": {name:"バハ攻HP", type:"baha", amount: "M"},
                 "unknownM": {name:"アンノウンI", type:"unknown", amount: "M"},
                 "unknownL": {name:"アンノウンII", type:"unknown", amount: "L"},
                 "strengthL": {name:"ストレングス", type:"unknown", amount: "L"},
@@ -67,15 +67,22 @@
             ];
 
             var skillAmounts = {
+                // normal と unknown の M Slv11 以降については仮入力
                 "normal":{
                     "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
-                    "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0],
+                    "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
                     "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
                     "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
                 },
                 "magna":{
                     "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5],
                     "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
+                },
+                "unknown":{
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
+                    "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+                    "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
+                    "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
                 },
                 "normalKamui": {
                     "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
@@ -84,11 +91,11 @@
                     "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
                 },
                 // baha の SLv 11以降については仮入力
-                "bahaAT": {
+                "baha": {
+                    // 剣など
+                    "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
+                    // 短剣など
                     "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0],
-                },
-                "bahaATHP": {
-                    "L": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
                 },
             }
 
@@ -141,7 +148,9 @@
               },
               handleArmNumChange: function(newArmNum) {
                   this.setState({armNum: newArmNum});
-                  this.setState({profile: {armNum: newArmNum}});
+                  var newProf = this.state.profile;
+                  newProf["armNum"] = newArmNum
+                  this.setState({profile: newProf});
               },
               handleSummonNumChange: function(newSummonNum) {
                   this.setState({summonNum: newSummonNum});
@@ -246,7 +255,7 @@
                     if(nextProps.dataName != this.props.dataName) {
                         var newState = newData[nextProps.dataName].summon[this.props.id]
                         this.setState(newState);
-                        this.props.onChange(this.props.id, this.state)
+                        this.props.onChange(this.props.id, newState)
                     }
                 },
                 handleEvent: function(key, e) {
@@ -281,13 +290,13 @@
                       ],
                     };
                 },
-                calculateBasedOneSummon: function(summon, prof, arml) {
+                calculateBasedOneSummon: function(summon, prof, arml, buff) {
                     var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, unknwon: 0};
 
                     // 自分の加護
-                    totalSummon[summon.selfSummonType] += parseInt(summon.selfSummonAmount)
+                    totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
                     // フレンドの加護
-                    totalSummon[summon.friendSummonType] += parseInt(summon.friendSummonAmount)
+                    totalSummon[summon.friendSummonType] += 0.01 * parseInt(summon.friendSummonAmount)
 
                     // 全武器に対して [最小考慮数, ... , 最大考慮数] の配列を計算しておく
                     var armNumArray = []
@@ -324,16 +333,18 @@
 
                     for(var i = 0; i < totalItr; i++){
                         var temp = []
+                        var num = 0;
                         for(var j = 0; j < armNumArray.length; j++){
                             temp.push(armNumArray[j][index[j]]);
+                            num += parseInt(armNumArray[j][index[j]])
                         }
-                        combinations.push(temp)
+                        if(num <= 10) combinations.push(temp)
                         index = proceedIndex(index, armNumArray, 0)
                     }
 
                     var result = []
                     for(var i = 0; i < combinations.length; i++){
-                        var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml)
+                        var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml, buff)
                         result.push({rank: i, totalAttack: oneres, armNumbers: combinations[i]});
                     }
 
@@ -351,7 +362,7 @@
 
                     return result;
                 },
-                calculateOneCombination: function(comb, totalSummon, prof, arml){
+                calculateOneCombination: function(comb, totalSummon, prof, arml, buff){
                     var tempArmList = []
                     for(var i = 0; i < arml.length; i++){
                         for(var j = 0; j < comb[i]; j++){
@@ -359,45 +370,61 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknwon: 0, normalKamui: 0, magnaKamui: 0, baha: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, normalKamui: 0, magnaKamui: 0, baha: 0};
                     var armAttack = 0;
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
-                        armAttack += arm.attack
+                        armAttack += parseInt(arm.attack)
 
-                        if(arm.skill1 != 'non'){
+                        if(arm.skill1 == 'normalHaisui' || arm.skill1 == 'magnaHaisui'){
+                        } else if(arm.skill1 != 'non') {
                             var stype = skilltypes[arm.skill1].type;
                             var amount = skilltypes[arm.skill1].amount;
                             var slv = parseInt(arm.slv)
                             totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                         }
-                        if(arm.skill2 != 'non'){
+                        if(arm.skill2 != 'non' || arm.skill2 != 'normalHaisui' || arm.skill2 != 'magnaHaisui'){
                             var stype = skilltypes[arm.skill2].type;
                             var amount = skilltypes[arm.skill2].amount;
                             var slv = parseInt(arm.slv)
                             totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                         }
                     }
+
                     var rank = prof.rank;
                     var baseAttack = (rank > 100) ? 5000 + (parseInt(rank) - 100) * 20 : 1000 + (parseInt(rank)) * 40
                     var weakPoint = (prof.typeBonus == "有利") ? 1.5 : ((prof.typeBonus == "不利") ? 0.75 : 1.0);
 
-                    var magnaCoeff = 1.0 + totalSkills["magna"] * ( 1.0 + totalSummon["magna"] )
-                    var unknownCoeff = 1.0 + totalSkills["unknown"]
-                    var normalCoeff = 1.0 + totalSkills["normal"] * (1.0 + totalSummon["zeus"]) + totalSkills["baha"] + totalSummon["chara"]
-                    var elementCoeff = weakPoint + (0.01 * totalSummon["element"])
+                    var magnaCoeff = 1.0 + 0.01 * (totalSkills["magna"] + totalSkills["magnaKamui"]) * ( 1.0 + totalSummon["magna"] )
+                    var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"]
+                    var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["baha"] + totalSummon["chara"] + buff["normal"]
+                    var elementCoeff = weakPoint + totalSummon["element"]
+                    var otherCoeff = (1.0 + buff["other"])
+                    //console.log("magnaCoeff = ", magnaCoeff);
+                    //console.log("unknownCoeff = ", unknownCoeff);
+                    //console.log("normalCoeff = ", normalCoeff);
+                    //console.log("elementCoeff = ", elementCoeff);
+                    //console.log("attack = ", armAttack);
+                    //console.log("baseattack = ", baseAttack);
+                    //console.log("summonAttack = ", prof.summonAttack);
 
-                    var totalAttack = (baseAttack + armAttack) * magnaCoeff * normalCoeff * elementCoeff
-                    return totalAttack;
+                    var totalAttack = (baseAttack + armAttack + parseInt(prof.summonAttack) + parseInt(prof.attackBonus)) * magnaCoeff * normalCoeff * elementCoeff * unknownCoeff * otherCoeff
+                    return Math.round(totalAttack);
                 },
                 calculateResult: function() {
                   var prof = this.props.data.profile; var arml = this.props.data.armlist;
                   var summon = this.props.data.summon;
 
                   if (prof != undefined && arml != undefined && summon != undefined) {
+                      var totalBuff = {normal: 0, element: 0, other: 0};
+
+                      totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
+                      totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
+                      totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
+
                       var result = [];
                       for(var i = 0; i < summon.length; i++){
-                          result.push({summonNo: i, result: this.calculateBasedOneSummon(summon[i], prof, arml)});
+                          result.push({summonNo: i, result: this.calculateBasedOneSummon(summon[i], prof, arml, totalBuff)});
                       }
                       return result
                   } else {
@@ -441,7 +468,7 @@
             var Result = React.createClass({
                 render: function() {
                     return (
-                        <tbody class="result">
+                        <tbody className="result">
                             {this.props.data.map(function(m) {
                                 return (
                                     <tr>
@@ -494,7 +521,6 @@
                                 <th>武器名</th>
                                 <th>攻撃力</th>
                                 <th>武器種</th>
-                                <th>得意武器？</th>
                                 <th>コスモス？</th>
                                 <th>スキル1</th>
                                 <th>スキル2</th>
@@ -519,21 +545,22 @@
                     return {
                             name: '',
                             attack: 0,
-                            isFavWeapon: 0,
+                            hp: 0,
                             armType: 'sword',
                             isCosmos: 0,
                             skill1: 'non',
                             skill2: 'non',
                             slv: 1,
                             considerNumberMin: 0,
-                            considerNumberMax: 1,
+                            considerNumberMax: 0,
                     };
                 },
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
-                        this.setState(newData[nextProps.dataName].armlist[this.props.id]);
-                        this.props.onChange(this.props.id, this.state);
+                        var newState = newData[nextProps.dataName].armlist[this.props.id]
+                        this.setState(newState);
+                        this.props.onChange(this.props.id, newState);
                     }
                 },
                 componentDidMount: function(){
@@ -543,7 +570,7 @@
                 },
                 handleEvent: function(key, e) {
                     var newState = this.state
-                    if(key == "isFavWeapon" || key == "isCosmos") {
+                    if(key == "isCosmos") {
                         newState[key] = (newState[key] == 0) ? 1 : 0
                     } else if(key == "considerNumberMin"){
                         if (parseInt(e.target.value) <= parseInt(this.state.considerNumberMax)) newState[key] = parseInt(e.target.value)
@@ -564,14 +591,13 @@
                             <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
                             <td><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
-                            <td className="checkbox"><input type="checkbox" checked={this.state.isFavWeapon} onChange={this.handleEvent.bind(this, "isFavWeapon")} /></td>
                             <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
                             <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {stypes}</select></td>
                             <td><select value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {stypes}</select></td>
                             <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
                             <td>
-                                <input className="consider" type="number" min="0" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /> 本～
-                                <input className="consider" type="number" min="0" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} /> 本
+                                <input className="consider" type="number" min="0" max="10" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /> 本～
+                                <input className="consider" type="number" min="0" max="10" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} /> 本
                             </td>
                             </form>
                         </tr>
@@ -593,20 +619,25 @@
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
-                        this.setState(newData[nextProps.dataName].profile);
-                        this.props.onChange(this.state);
+                        var newState = newData[nextProps.dataName].profile
+                        this.setState(newState);
+                        this.props.onChange(newState);
                     }
                 },
                 getInitialState: function() {
                     return {
                         rank: 1,
                         attackBonus: 0,
-                        masterBonus: 0,
-                        kikuteiBonus: 0,
+                        normalBuff: 0,
+                        elementBuff: 0,
+                        otherBuff: 0,
                         hp: 100,
                         summonAttack: 0,
+                        summonHp: 0,
                         zenithBonus: "無し",
                         typeBonus: "無し",
+                        favArm1: "無し",
+                        favArm2: "無し",
                         armNum: 3,
                         summonNum: 1,
                     };
@@ -628,22 +659,43 @@
                 render: function() {
                         var zenithBonuses = this.props.zenith.map(selectTemplate);
                         var types = this.props.types.map(selectTemplate);
+                        var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
                         return (
                             <div className="profile">
                                 <h2> プロフィール </h2>
                                 <table>
                                 <form className="profileForm">
-                                <tr><th>Rank</th><th>ゼニス攻撃力アップ(3000以下)</th><th>マスターボーナス</th><th>騎空挺ボーナス</th><th>HP (%)</th></tr>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>ゼニス攻撃力アップ</th>
+                                    <th>通常バフ</th>
+                                    <th>属性バフ</th>
+                                    <th>その他バフ</th>
+                                    <th>召喚石攻撃力合計</th>
+                                    <th>召喚石HP合計</th>
+                                </tr>
                                 <tr>
                                     <td><input type="number" placeholder="0-170の整数" min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
-                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
-                                    <td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.kikuteiBonus} onChange={this.handleEvent.bind(this, "kikuteiBonus")}/></td>
-                                    <td> <input type="number" placeholder="0以上の数値" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                                </tr>
-                                <tr><th>召喚石攻撃力合計</th><th>ゼニス得意武器</th><th>属性相性</th><th>武器種類数</th> <th>召喚石組み合わせ数</th> </tr>
-                                <tr>
+                                    <td><input type="number" placeholder="0以上の数値" min="0" max="3000" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
+                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
+                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
                                     <td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonAttack} onChange={this.handleEvent.bind(this, "summonAttack")}/></td>
+                                    <td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonHp} onChange={this.handleEvent.bind(this, "summonHp")}/></td>
+                                </tr>
+                                <tr>
+                                    <th>HP (%)</th>
+                                    <th>得意武器1</th>
+                                    <th>得意武器2</th>
+                                    <th>得意武器ゼニス</th>
+                                    <th>属性相性</th>
+                                    <th>武器種類数</th>
+                                    <th>召喚石の組数</th>
+                                </tr>
+                                <tr>
+                                    <td> <input type="number" placeholder="0以上の数値" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                                    <td><select value={this.state.favArm1} onChange={this.handleEvent.bind(this, "favArm1")} > {atypes} </select></td>
+                                    <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} > {atypes} </select></td>
                                     <td><select value={this.state.zenithBonus} onChange={this.handleEvent.bind(this, "zenithBonus")} > {zenithBonuses} </select></td>
                                     <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {types} </select></td>
                                     <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
@@ -686,9 +738,9 @@
                       // remove data
                       var newState = this.state;
                       delete newState["storedData"][this.state.selectedData];
-                      newState.selectedData = ''
+                      newState.selectedData = Object.keys(newData)[0]
 
-                      localStorage.setItem("data", JSON.stringify(newState.storedData));
+                      localStorage.setItem("data", Base64.encode(JSON.stringify(newState.storedData)));
                       this.setState(newState);
                   } else {
                       alert("削除するデータを選択して下さい。")
