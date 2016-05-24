@@ -190,13 +190,6 @@
                         smlist: [],
                     };
                 },
-                componentWillReceiveProps: function(nextProps){
-                    // only fired on Data Load
-                    if(nextProps.dataName != this.props.dataName) {
-                        console.log("fired loading on sumonList")
-                        //this.setState(newData[nextProps.dataName].summon);
-                    }
-                },
                 handleOnChange: function(key, state){
                     var newsmlist = this.state.smlist;
                     newsmlist[key] = state;
@@ -244,15 +237,16 @@
                     };
                 },
                 componentDidMount: function(){
-                   // state を 上の階層に渡しておく
+                   // 初期化後 state を 上の階層に渡しておく
                    // summonList は onChange が勝手に上に渡してくれるので必要なし
-                   this.props.onChange(this.state);
+                   this.props.onChange(this.props.id, this.state);
                 },
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
                         var newState = newData[nextProps.dataName].summon[this.props.id]
                         this.setState(newState);
+                        this.props.onChange(this.props.id, this.state)
                     }
                 },
                 handleEvent: function(key, e) {
@@ -487,6 +481,7 @@
                     this.props.onChange(newalist);
                 },
                 render: function(){
+                    var dataName = this.props.dataName;
                     var arms = [];
                     for(var i=0; i < this.props.armNum; i++) { arms.push({id: i}); }
                     var hChange = this.handleOnChange;
@@ -509,7 +504,7 @@
                             </thead>
                             <tbody>
                             {arms.map(function(arm) {
-                                return <Arm key={arm.id} onChange={hChange} id={arm.id} />;
+                                return <Arm key={arm.id} onChange={hChange} id={arm.id} dataName={dataName} />;
                             })}
                             </tbody>
                             </table>
@@ -534,10 +529,17 @@
                             considerNumberMax: 1,
                     };
                 },
+                componentWillReceiveProps: function(nextProps){
+                    // only fired on Data Load
+                    if(nextProps.dataName != this.props.dataName) {
+                        this.setState(newData[nextProps.dataName].armlist[this.props.id]);
+                        this.props.onChange(this.props.id, this.state);
+                    }
+                },
                 componentDidMount: function(){
-                   // state を 上の階層に渡しておく
+                   // 初期化後 state を 上の階層に渡しておく
                    // armList では onChange が勝手に上に渡してくれるので必要なし
-                   this.props.onChange(this.state);
+                   this.props.onChange(this.props.id, this.state);
                 },
                 handleEvent: function(key, e) {
                     var newState = this.state
@@ -585,13 +587,14 @@
                     };
                 },
                 componentDidMount: function(){
-                   // state を 上の階層に渡しておく
+                   // 初期化後 state を 上の階層に渡しておく
                    this.props.onChange(this.state);
                 },
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
                         this.setState(newData[nextProps.dataName].profile);
+                        this.props.onChange(this.state);
                     }
                 },
                 getInitialState: function() {
@@ -644,7 +647,7 @@
                                     <td><select value={this.state.zenithBonus} onChange={this.handleEvent.bind(this, "zenithBonus")} > {zenithBonuses} </select></td>
                                     <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {types} </select></td>
                                     <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
-                                    <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
+                                    <td><input type="number" min="1" max="1" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
                                 </tr>
                                 </form>
                                 </table>
