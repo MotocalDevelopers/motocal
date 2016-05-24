@@ -55,13 +55,13 @@
                 {name:"刀", type:"katana"},
             ];
 
-            var summonTypes = [
-                {name: "マグナ", type:"magna"},
-                {name:"属性", type:"element"},
-                {name:"ゼウス系", type:"zeus"},
-                {name: "キャラ", type: "chara"},
-                {name: "アンノウン", type: "unknown"}
-            ];
+            var summonTypes = {
+                "magna": "マグナ",
+                "element": "属性",
+                "zeus": "ゼウス系",
+                "chara": "キャラ",
+                "unknown": "アンノウン",
+            }
 
             var skillAmounts = {
                 // normal と unknown の M Slv11 以降については仮入力
@@ -151,7 +151,9 @@
               },
               handleSummonNumChange: function(newSummonNum) {
                   this.setState({summonNum: newSummonNum});
-                  this.setState({profile: {summonNum: newSummonNum}});
+                  var newProf = this.state.profile;
+                  newProf["summonNum"] = newSummonNum
+                  this.setState({profile: newProf});
               },
               onChangeArmData: function(state) {
                   this.setState({armlist: state});
@@ -274,7 +276,7 @@
                     this.props.onChange(this.props.id, newState)
                 },
                 render: function() {
-                    var smtypes = summonTypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
+                    var smtypes = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{summonTypes[opt]}</option>;});
 
                     return (
                         <tr>
@@ -401,46 +403,39 @@
 
                         armAttack += armSup * parseInt(arm.attack)
 
-                        if(arm.skill1 != 'non'){
-                            var stype = skilltypes[arm.skill1].type;
-                            var amount = skilltypes[arm.skill1].amount;
-                            var slv = parseInt(arm.slv)
+                        for(var j = 1; j <= 2; j++){
+                            var skillname = '';
+                            if(j == 1) { skillname = arm.skill1 } else { skillname = arm.skill2 }
 
-                            // 背水倍率の実装は日比野さんのところのを参照
-                            if(stype == 'normalHaisui' || stype == 'magnaHaisui'){
-                                var remainHP = 0.01 * parseInt(prof.hp)
-                                var baseRate = 0.0
-                                if(amount == "S") {
-                                    // 小
-                                    if(slv < 10) {
-                                        baseRate = -0.3 + slv * 1.8;
+                            if(skillname != 'non'){
+                                var stype = skilltypes[skillname].type;
+                                var amount = skilltypes[skillname].amount;
+                                var slv = parseInt(arm.slv)
+
+                                // 背水倍率の実装は日比野さんのところのを参照
+                                if(stype == 'normalHaisui' || stype == 'magnaHaisui'){
+                                    var remainHP = 0.01 * parseInt(prof.hp)
+                                    var baseRate = 0.0
+                                    if(amount == "S") {
+                                        // 小
+                                        if(slv < 10) {
+                                            baseRate = -0.3 + slv * 1.8;
+                                        } else {
+                                            baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
+                                        }
                                     } else {
-                                        baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
+                                        // 大 
+                                        if(slv < 10) {
+                                            baseRate = -0.5 + slv * 3.0;
+                                        } else {
+                                            baseRate = 30 + 3.0 * ((slv - 10) / 5.0)
+                                        }
                                     }
+                                    var haisuiBuff =  (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
+                                    totalSkills[stype] += haisuiBuff
                                 } else {
-                                    // 大 
-                                    if(slv < 10) {
-                                        baseRate = -0.5 + slv * 3.0;
-                                    } else {
-                                        baseRate = 30 + 3.0 * ((slv - 10) / 5.0)
-                                    }
+                                    totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                                 }
-                                var haisuiBuff =  (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
-                                totalSkills[stype] += haisuiBuff
-                            } else {
-                                totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
-                            }
-                        }
-
-                        if(arm.skill2 != 'non'){
-                            var stype = skilltypes[arm.skill2].type;
-                            var amount = skilltypes[arm.skill2].amount;
-                            var slv = parseInt(arm.slv)
-
-                            if(arm.skill2 == 'normalHaisui' || arm.skill2 == 'magnaHaisui'){
-                                var remainHP = parseInt(prof.hp)
-                            } else {
-                                totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                             }
                         }
                     }
@@ -456,15 +451,13 @@
                     var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
                     var elementCoeff = weakPoint + totalSummon["element"]
                     var otherCoeff = 1.0 + buff["other"]
-                    //console.log("magnaCoeff = ", magnaCoeff);
-                    //console.log("magnaHaisuiCoeff = ", magnaHaisuiCoeff);
-                    //console.log("normalHaisui = ", normalHaisuiCoeff);
-                    //console.log("unknownCoeff = ", unknownCoeff);
-                    //console.log("normalCoeff = ", normalCoeff);
-                    //console.log("elementCoeff = ", elementCoeff);
-                    //console.log("attack = ", armAttack);
-                    //console.log("baseattack = ", baseAttack);
-                    //console.log("summonAttack = ", prof.summonAttack);
+                    //console.log("magna", magnaCoeff)
+                    //console.log("magnaHaisui", magnaHaisuiCoeff)
+                    //console.log("unknown", unknownCoeff)
+                    //console.log("normal", normalCoeff)
+                    //console.log("normalHaisui", normalHaisuiCoeff)
+                    //console.log("element", elementCoeff)
+                    //console.log("other", otherCoeff)
 
                     var summedAttack = baseAttack + armAttack + parseInt(prof.summonAttack) + parseInt(prof.attackBonus)
 
@@ -486,7 +479,7 @@
 
                       var result = [];
                       for(var i = 0; i < summon.length; i++){
-                          result.push({summonNo: i, result: this.calculateBasedOneSummon(summon[i], prof, arml, totalBuff)});
+                          result.push({summonNo: i, summon: summon[i], result: this.calculateBasedOneSummon(summon[i], prof, arml, totalBuff)});
                       }
                       return result
                   } else {
@@ -507,21 +500,23 @@
 
                     return (
                         <div className="resultList">
-                            <h2> 結果 </h2>
-                            <table>
-                            <thead>
-                            <tr>
-                                <th>順位</th>
-                                <th>攻撃力</th>
-                                {armnames.map(function(m){ return <th>{m}</th>; })}
-                            </tr>
-                            </thead>
                             {res.map(function(r) {
-                                return (
-                                    <Result key={r.summonNo} data={r.result} />
+                                return(
+                                    <div className="result">
+                                        <h2> 結果: No. {r.summonNo + 1} ({summonTypes[r.summon.selfSummonType]}{r.summon.selfSummonAmount} + {summonTypes[r.summon.friendSummonType]}{r.summon.friendSummonAmount}) </h2>
+                                        <table>
+                                        <thead>
+                                        <tr>
+                                            <th>順位</th>
+                                            <th>攻撃力</th>
+                                            {armnames.map(function(m){ return <th>{m}</th>; })}
+                                        </tr>
+                                        </thead>
+                                        <Result key={r.summonNo} data={r.result} />
+                                        </table>
+                                    </div>
                                 );
                             })}
-                            </table>
                         </div>
                     );
                 }
@@ -533,7 +528,7 @@
                         <tbody className="result">
                             {this.props.data.map(function(m) {
                                 return (
-                                    <tr>
+                                    <tr key={m.rank}>
                                         <td> {m.rank} </td>
                                         <td> {m.totalAttack} </td>
                                         {m.armNumbers.map(function(am){
@@ -791,7 +786,7 @@
                                     <td><select value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </select></td>
                                     <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {this.props.typeBonus} </select></td>
                                     <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
-                                    <td><input type="number" min="1" max="1" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
+                                    <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
                                 </tr>
                                 </form>
                                 </table>
@@ -936,7 +931,7 @@
                         </div>
                         <div className="noticeRight">
                             製作者: ほしみ <a href="http://twitter.com/hsimyu" target="_blank"> @hsimyu </a><br/>
-                            <img class="banner" src="./ChWJ-LgUgAA2JEy.jpg" />
+                            <img className="banner" src="./ChWJ-LgUgAA2JEy.jpg" />
                         </div>
                     </div>
                    );

@@ -7,15 +7,13 @@ body {
 
 .banner {
     float: right;
-    margin-top: 2em;
-    margin-left: 2em;
-    margin-bottom: 1em;
+    margin-top: 1em;
     height: 100px;
 }
 
 .header {
     width: 100%;
-    height: 100px;
+    height: 50px;
     margin-top: 1em;
 }
 
