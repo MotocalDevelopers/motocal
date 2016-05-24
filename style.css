@@ -99,6 +99,11 @@ body {
     text-align: right;
 }
 
+.tweetButton {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
 input, textarea {
     font-size: 9pt;
     text-align: right;

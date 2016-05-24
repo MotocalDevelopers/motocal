@@ -7,6 +7,8 @@
         <script src="http://fb.me/react-0.13.3.js"></script>
         <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
         <script src="./js-base64/base64.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     </head>
     <body>
         <div class="header">
@@ -138,8 +140,8 @@
               componentDidMount: function(){
                   if(query != ''){
                       var initState = JSON.parse(Base64.decode(query));
-                      initState["dataName"] = "initData"
-                      newData["initData"] = initState
+                      initState["dataName"] = "urlData"
+                      newData["urlData"] = initState
                       this.setState(initState);
                   }
               },
@@ -897,10 +899,30 @@
                         url: url,
                     };
                 },
+                onClickButton: function(e) {
+                    // どうやら bitly を通すとbase64が壊れる？
+                    // var access_token = ""
+                    // var bitlyurl = "https://api-ssl.bitly.com/v3/shorten?access_token=" + access_token + "&longUrl=" + this.state.url
+
+                    // $.ajax({
+                    //       url: bitlyurl,
+                    //       dataType: 'json',
+                    //       type: 'GET',
+                    //       cache: false,
+                    //       success: function(received) {
+                    //           window.open('http://twitter.com/intent/tweet?text=' + received.data.url)
+                    //       }.bind(this),
+                    //       error: function(xhr, status, err) {
+                    //         console.error(bitlyurl, status, err.toString());
+                    //       }.bind(this)
+                    // });
+                    window.open('http://twitter.com/intent/tweet?text=' + this.state.url)
+                },
                 render: function() {
                   return (
                     <div className="tweet">
                         <h3>保存用URL</h3>
+                        <button type="button" onClick={this.onClickButton} className="TweetButton"> Tweet </button>
                         {this.state.url}
                     </div>
                    );
