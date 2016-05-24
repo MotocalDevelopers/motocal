@@ -12,6 +12,15 @@
         <h2>元カレ計算機</h2><hr>
         <div id="app" align="left"></div>
         <script type="text/jsx">
+            // shallow copy
+            function clone(src){
+                var dst = {}
+                for (var k in src) {
+                    dst[k] = src[k];
+                }
+                return dst;
+            }
+
             // skill data
             var skilltypes = {
                 "non": {name: "無し", type:"non", amount: "non"},
@@ -184,6 +193,7 @@
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
+                        console.log("fired loading on sumonList")
                         //this.setState(newData[nextProps.dataName].summon);
                     }
                 },
@@ -199,6 +209,7 @@
                         summons.push({id: i});
                     }
                     var hChange = this.handleOnChange;
+                    var dataName = this.props.dataName;
                     return (
                         <div className="summonList">
                             <h2> 召喚石 </h2>
@@ -214,7 +225,7 @@
                             </thead>
                             <tbody>
                                 {summons.map(function(sm) {
-                                    return <Summon key={sm.id} onChange={hChange} id={sm.id} />;
+                                    return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} />;
                                 })}
                             </tbody>
                             </table>
@@ -231,6 +242,13 @@
                         friendSummonType: "magna",
                         friendSummonAmount: 0,
                     };
+                },
+                componentWillReceiveProps: function(nextProps){
+                    // only fired on Data Load
+                    if(nextProps.dataName != this.props.dataName) {
+                        var newState = newData[nextProps.dataName].summon[this.props.id]
+                        this.setState(newState);
+                    }
                 },
                 handleEvent: function(key, e) {
                     var newState = this.state
@@ -314,8 +332,6 @@
                         index = proceedIndex(index, armNumArray, 0)
                     }
 
-                    console.log("summon:", totalSummon);
-
                     var result = []
                     for(var i = 0; i < combinations.length; i++){
                         var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml)
@@ -370,7 +386,7 @@
                     var magnaCoeff = 1.0 + totalSkills["magna"] * ( 1.0 + totalSummon["magna"] )
                     var unknownCoeff = 1.0 + totalSkills["unknown"]
                     var normalCoeff = 1.0 + totalSkills["normal"] * (1.0 + totalSummon["zeus"]) + totalSkills["baha"] + totalSummon["chara"]
-                    var elementCoeff = weakPoint + totalSummon["element"]
+                    var elementCoeff = weakPoint + (0.01 * totalSummon["element"])
 
                     var totalAttack = (baseAttack + armAttack) * magnaCoeff * normalCoeff * elementCoeff
                     return totalAttack;
@@ -425,7 +441,6 @@
 
             var Result = React.createClass({
                 render: function() {
-                    console.log("res:", this.props.data);
                     return (
                         <tbody class="result">
                             {this.props.data.map(function(m) {
@@ -633,8 +648,9 @@
                 },
                 componentDidMount: function(){
                     // localStorage から data をロードする
-                    if ("data" in localStorage) {
-                        this.setState(JSON.parse(Base64.decode(localStorage["data"])))
+                    if ("data" in localStorage && localStorage.data != "{}" ) {
+                        console.log("mounted this.state: ", this.state);
+                        this.setState({storedData: JSON.parse(Base64.decode(localStorage["data"]))})
                     }
                 },
                 handleOnClick: function(key, e) {
@@ -663,8 +679,7 @@
                 onSubmitLoad: function(e){
                   e.preventDefault();
                   if(this.state.selectedData != ''){
-                      // global 変数 newDataに新しいデータを突っ込む
-                      newData = JSON.parse(Base64.decode(localStorage["data"]));
+                      this.setState({dataName: this.state.selectedData});
                       this.props.onLoadNewData(this.state.selectedData)
                   } else {
                       alert("読み込むデータを選択して下さい。")
@@ -674,13 +689,15 @@
                   e.preventDefault();
                   if(this.state.dataName != ''){
                       var newState = this.state;
-                      newState["storedData"][this.state.dataName] = this.props.data;
+                      // expensive deep copy..
+                      newState["storedData"][this.state.dataName] = JSON.parse(JSON.stringify(this.props.data));
                       newState["selectedData"] = this.state.dataName;
 
                       // save data
                       var saveString = Base64.encode(JSON.stringify(newState.storedData));
                       localStorage.setItem("data", saveString);
 
+                      newData = newState.storedData;
                       this.setState(newState);
                   } else {
                       alert("データ名を入力して下さい。")
