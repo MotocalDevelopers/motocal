@@ -6,9 +6,6 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="http://fb.me/react-0.13.3.js"></script>
         <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
-
-        <!-- for calculate k_combination -->
-        <script src="3118596/combinations.js"></script>
     </head>
     <body>
         <h2>元カレ計算機</h2><hr>
@@ -88,22 +85,25 @@
               onChangeSummonData: function(state) {
                   this.setState({summon: state});
               },
+              loadState: function(state) {
+                  this.setState(state);
+              },
               render: function() {
                 return (
                     <div className="root">
                         <div className="rootLeft">
                             <div className="top">
-                                <Profile onArmNumChange={this.handleArmNumChange} onChange={this.onChangeProfileData} onSummonNumChange={this.handleSummonNumChange} />
-                                <SummonList summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
+                                <Profile newProfile={this.state.profile} onArmNumChange={this.handleArmNumChange} onChange={this.onChangeProfileData} onSummonNumChange={this.handleSummonNumChange} />
+                                <SummonList newSummonList={this.state.summon} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
                             </div>
                             <hr />
                             <div className="bottom">
-                                <ArmList armNum={this.state.armNum} onChange={this.onChangeArmData} />
+                                <ArmList newArmList={this.state.armlist} armNum={this.state.armNum} onChange={this.onChangeArmData} />
                                 <ResultList data={this.state} />
                             </div>
                         </div>
                         <div className="rootRight">
-                            <h2> System </h2>
+                            <Sys data={this.state} loadState={this.loadState} />
                         </div>
                     </div>
                 );
@@ -474,6 +474,10 @@
                       zenith: ["無し", "★1", "★2", "★3"],
                     };
                 },
+                componentWillReceiveProps: function(nextProps){
+                    // only fired on Data Load
+                    this.setState(nextProps.newProfile);
+                },
                 getInitialState: function() {
                     return {
                         rank: 1,
@@ -499,6 +503,7 @@
                   this.props.onSummonNumChange(e.target.value);
                 },
                 handleArmNumChange: function(e) {
+                  console.log("armNum:", e.target.value);
                   this.setState({armNum: e.target.value});
                   this.props.onArmNumChange(e.target.value);
                 },
@@ -531,6 +536,55 @@
                             </div>
                         );
                     }
+            });
+            var Sys = React.createClass({
+                getInitialState: function() {
+                    return {
+                        storedData: [],
+                        dataName: '',
+                        selectedData: '',
+                    };
+                },
+                handleEvent: function(key, e) {
+                  var newState = this.state
+                  newState[key] = e.target.value
+                  this.setState(newState)
+                },
+                onSubmitLoad: function(){
+                  if(this.state.selectedData != ''){
+                      this.props.loadState(this.state.storedData[this.state.selectedData].data)
+                      console.log("newdata:", this.state.storedData[this.state.selectedData].data)
+                  } else {
+                      alert("読み込むデータを選択して下さい。")
+                  }
+                },
+                onSubmitSave: function(e){
+                  e.preventDefault();
+                  if(this.state.dataName != ''){
+                      // save data
+                      var newState = this.state.storedData;
+                      newState[this.state.dataName] = {data: this.props.data, name: this.state.dataName};
+                      //localStorage.data = newState;
+                      this.setState(newState);
+                      console.log(newState);
+                  } else {
+                      alert("データ名を入力して下さい。")
+                  }
+                },
+                render: function() {
+                    var datalist = this.state.storedData.map(function(opt){return <option value={opt.name} key={opt.name}>{opt.name}</option>;});
+                    return (
+                        <div className="system">
+                            <h2> System </h2>
+                            <form className="sysForm">
+                                <select size="12" value={this.state.selectedData} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </select>
+                                データ名: <input size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} /><br />
+                                <button type="button" onClick={this.onSubmitSave} >保存</button>
+                                <button type="button" onClick={this.onSubmitLoad} >読込</button>
+                            </form>
+                        </div>
+                    );
+                }
             });
             var m = React.render(<Root />, document.getElementById('app'));
         </script>

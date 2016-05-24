@@ -5,6 +5,19 @@ body {
     font-size: 100%;
 }
 
+.rootleft {
+    width: 90%;
+    height: 100%;
+    float: left;
+}
+
+.rootright {
+    width: calc(10% - 10px);
+    height: 100%;
+    margin-left: 10px;
+    float: left;
+}
+
 .root .top {
     width: 100%;
     margin-bottom: 10px;
