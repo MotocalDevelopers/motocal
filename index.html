@@ -243,6 +243,11 @@
                         friendSummonAmount: 0,
                     };
                 },
+                componentDidMount: function(){
+                   // state を 上の階層に渡しておく
+                   // summonList は onChange が勝手に上に渡してくれるので必要なし
+                   this.props.onChange(this.state);
+                },
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
@@ -529,6 +534,11 @@
                             considerNumberMax: 1,
                     };
                 },
+                componentDidMount: function(){
+                   // state を 上の階層に渡しておく
+                   // armList では onChange が勝手に上に渡してくれるので必要なし
+                   this.props.onChange(this.state);
+                },
                 handleEvent: function(key, e) {
                     var newState = this.state
                     if(key == "isFavWeapon" || key == "isCosmos") {
@@ -573,6 +583,10 @@
                       types: ["無し", "有利", "不利"],
                       zenith: ["無し", "★1", "★2", "★3"],
                     };
+                },
+                componentDidMount: function(){
+                   // state を 上の階層に渡しておく
+                   this.props.onChange(this.state);
                 },
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
@@ -649,8 +663,9 @@
                 componentDidMount: function(){
                     // localStorage から data をロードする
                     if ("data" in localStorage && localStorage.data != "{}" ) {
-                        console.log("mounted this.state: ", this.state);
-                        this.setState({storedData: JSON.parse(Base64.decode(localStorage["data"]))})
+                        var storedData = JSON.parse(Base64.decode(localStorage["data"]))
+                        newData = storedData;
+                        this.setState({storedData: storedData})
                     }
                 },
                 handleOnClick: function(key, e) {
