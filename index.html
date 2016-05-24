@@ -57,6 +57,27 @@
                 {name: "アンノウン", type: "unknown"}
             ];
 
+            // query 取得用の関数
+            var query = getDataInQuery();
+            function getDataInQuery(){
+                var vars = {}, max = 0, hash = "", array = "";
+                var url = window.location.search;
+
+                hash  = url.slice(1).split('&');
+                max = hash.length;
+                for (var i = 0; i < max; i++) {
+                    array = hash[i].split('=');
+                    vars[array[0]] = array[1];
+                }
+
+                var result = ""
+                if("data" in vars){
+                    result = vars["data"];
+                }
+
+                return result;
+            }
+
             // for mapping options
             var selectTemplate = function(opt) { return <option value={opt} key={opt}>{opt}</option>; }
 
@@ -74,6 +95,15 @@
                     summon: [],
                     dataName: '',
                   };
+              },
+              componentDidMount: function(){
+                  if(query != ''){
+                      var initState = JSON.parse(Base64.decode(query));
+                      initState["dataName"] = "initData"
+                      newData["initData"] = initState
+                      this.setState(initState);
+                      console.log("loaded data:", initState);
+                  }
               },
               handleArmNumChange: function(newArmNum) {
                   this.setState({armNum: newArmNum});
@@ -113,6 +143,7 @@
                         </div>
                         <div className="rootRight">
                             <Sys data={this.state} onLoadNewData={this.handleChangeData} />
+                            <TwitterShareButton data={this.state} />
                         </div>
                     </div>
                 );
@@ -565,7 +596,7 @@
                 componentDidMount: function(){
                     // localStorage から data をロードする
                     if ("data" in localStorage) {
-                        this.setState(JSON.parse(localStorage["data"]))
+                        this.setState(JSON.parse(Base64.decode(localStorage["data"])))
                     }
                 },
                 handleOnClick: function(key, e) {
@@ -641,6 +672,29 @@
                     );
                 }
             });
+
+            // Twitter Button
+            var TwitterShareButton = React.createClass ({
+                componentWillReceiveProps: function(nextProps){
+                    var url = "http://hsimyu.net/motocal?data=" + Base64.encode(JSON.stringify(this.props.data))
+                    this.setState({url: url});
+                },
+                getInitialState: function() {
+                    var url = "http://hsimyu.net/motocal?data=" + Base64.encode(JSON.stringify(this.props.data))
+                    return {
+                        url: url,
+                    };
+                },
+                render: function() {
+                  return (
+                    <div className="tweet">
+                        <h3>ツイート用URL</h3>
+                        {this.state.url}
+                    </div>
+                   );
+                },
+            });
+
             var m = React.render(<Root />, document.getElementById('app'));
         </script>
     </body>
