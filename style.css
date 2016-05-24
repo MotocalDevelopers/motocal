@@ -5,6 +5,20 @@ body {
     font-size: 9pt;
 }
 
+.banner {
+    float: right;
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    height: 100px;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    margin-top: 1em;
+}
+
 .rootleft {
     width: 85%;
     height: 100%;
@@ -49,19 +63,14 @@ body {
     float: clear;
 }
 
-/* .armList input {    */
-/*     width: 50px;    */
-/*     font-size: 70%; */
-/* }                   */
-
 .profile {
     width: 65%;
     margin-right: 10px;
     float: left;
 }
 
-.profile table {
-    text-align: left;
+.profile table th {
+    width: calc(100%/8);
 }
 
 .profile input, select, textarea {
@@ -73,19 +82,31 @@ body {
     float: left;
 }
 
-/* .resultList {     */
-/*     width: 75%;   */
-/* }                 */
-
-/* .checkbox {       */
-/*     width: 1%;    */
-/* }                 */
-
 .consider {
     width: 30px;
 }
 
-input, select, textarea {
+.notice {
+    margin-top: 1em;
+}
+
+.noticeLeft {
+    width: 50%;
+    float: left;
+}
+
+.noticeRight {
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+
+input, textarea {
+    font-size: 9pt;
+    text-align: right;
+}
+
+select {
     font-size: 9pt;
 }
 

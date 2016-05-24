@@ -9,20 +9,16 @@
         <script src="./js-base64/base64.js"></script>
     </head>
     <body>
-        <h1>元カレ計算機 (グラブル攻撃力計算機) </h1>
-        <div align="right"> 製作者: <a href="http://twitter.com/hsimyu"> @hsimyu </a> </div>
+        <div class="header">
+            <h1>元カレ計算機 (グラブル攻撃力計算機) </h1>
+        </div>
         <hr>
         <div id="app" align="left"></div>
         <script type="text/jsx">
 
-            // shallow copy
-            function clone(src){
-                var dst = {}
-                for (var k in src) {
-                    dst[k] = src[k];
-                }
-                return dst;
-            }
+            // global arrays
+            var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05}
+            var types = {"無し": 1.0, "有利": 1.5, "不利": 0.75}
 
             // skill data
             var skilltypes = {
@@ -32,7 +28,6 @@
                 "normalL": {name:"通常攻刃(大)", type:"normal", amount: "L"},
                 "normalLL": {name:"通常攻刃II", type:"normal", amount: "LL"},
                 "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
-                "normalHaisuiM": {name:"通常背水(中)", type:"normalHaisui", amount: "M"},
                 "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
                 "normalKamui": {name:"神威", type:"normalKamui", amount: "S"},
                 "magnaM": {name: "M攻刃", type:"magna", amount:"M"},
@@ -298,13 +293,6 @@
             });
 
             var ResultList = React.createClass({
-                getInitialState: function() {
-                    return {
-                      res: [
-                          {rank: '', totalAttack: ''},
-                      ],
-                    };
-                },
                 calculateBasedOneSummon: function(summon, prof, arml, buff) {
                     var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, unknwon: 0};
 
@@ -404,41 +392,74 @@
                         if (arm.armType == cosmosType){
                             armSup += 0.3
                         }
-                        if(arm.armType == prof.favArm1){
-                            armSup += 0.2
-                        }
-                        if(arm.armType == prof.favArm2){
-                            armSup += 0.2
+                        if(arm.armType == prof.favArm1 && arm.armType == prof.favArm2){
+                            armSup += (0.2 + buff["zenith1"] + buff["zenith2"])
+                        } else if(arm.armType == prof.favArm1){
+                            armSup += (0.2 + buff["zenith1"])
+                        } else if(arm.armType == prof.favArm2){
+                            armSup += (0.2 + buff["zenith2"])
                         }
 
                         armAttack += armSup * parseInt(arm.attack)
 
-                        if(arm.skill1 == 'normalHaisui' || arm.skill1 == 'magnaHaisui'){
-                        } else if(arm.skill1 != 'non') {
+                        if(arm.skill1 != 'non'){
                             var stype = skilltypes[arm.skill1].type;
                             var amount = skilltypes[arm.skill1].amount;
                             var slv = parseInt(arm.slv)
-                            totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
+
+                            // 背水倍率の実装は日比野さんのところのを参照
+                            if(stype == 'normalHaisui' || stype == 'magnaHaisui'){
+                                var remainHP = 0.01 * parseInt(prof.hp)
+                                var baseRate = 0.0
+                                if(amount == "S") {
+                                    // 小
+                                    if(slv < 10) {
+                                        baseRate = -0.3 + slv * 1.8;
+                                    } else {
+                                        baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
+                                    }
+                                } else {
+                                    // 大 
+                                    if(slv < 10) {
+                                        baseRate = -0.5 + slv * 3.0;
+                                    } else {
+                                        baseRate = 30 + 3.0 * ((slv - 10) / 5.0)
+                                    }
+                                }
+                                var haisuiBuff =  (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
+                                totalSkills[stype] += haisuiBuff
+                            } else {
+                                totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
+                            }
                         }
-                        if(arm.skill2 == 'normalHaisui' || arm.skill2 == 'magnaHaisui'){
-                        } else if(arm.skill2 != 'non'){
+
+                        if(arm.skill2 != 'non'){
                             var stype = skilltypes[arm.skill2].type;
                             var amount = skilltypes[arm.skill2].amount;
                             var slv = parseInt(arm.slv)
-                            totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
+
+                            if(arm.skill2 == 'normalHaisui' || arm.skill2 == 'magnaHaisui'){
+                                var remainHP = parseInt(prof.hp)
+                            } else {
+                                totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
+                            }
                         }
                     }
 
                     var rank = prof.rank;
                     var baseAttack = (rank > 100) ? 5000 + (parseInt(rank) - 100) * 20 : 1000 + (parseInt(rank)) * 40
-                    var weakPoint = (prof.typeBonus == "有利") ? 1.5 : ((prof.typeBonus == "不利") ? 0.75 : 1.0);
+                    var weakPoint = types[prof.typeBonus];
 
                     var magnaCoeff = 1.0 + 0.01 * (totalSkills["magna"] + totalSkills["magnaKamui"]) * ( 1.0 + totalSummon["magna"] )
+                    var magnaHaisuiCoeff = 1.0 + 0.01 * (totalSkills["magnaHaisui"]) * ( 1.0 + totalSummon["magna"] )
                     var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"]
                     var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["baha"] + totalSummon["chara"] + buff["normal"]
+                    var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
                     var elementCoeff = weakPoint + totalSummon["element"]
-                    var otherCoeff = (1.0 + buff["other"])
+                    var otherCoeff = 1.0 + buff["other"]
                     //console.log("magnaCoeff = ", magnaCoeff);
+                    //console.log("magnaHaisuiCoeff = ", magnaHaisuiCoeff);
+                    //console.log("normalHaisui = ", normalHaisuiCoeff);
                     //console.log("unknownCoeff = ", unknownCoeff);
                     //console.log("normalCoeff = ", normalCoeff);
                     //console.log("elementCoeff = ", elementCoeff);
@@ -446,7 +467,9 @@
                     //console.log("baseattack = ", baseAttack);
                     //console.log("summonAttack = ", prof.summonAttack);
 
-                    var totalAttack = (baseAttack + armAttack + parseInt(prof.summonAttack) + parseInt(prof.attackBonus)) * magnaCoeff * normalCoeff * elementCoeff * unknownCoeff * otherCoeff
+                    var summedAttack = baseAttack + armAttack + parseInt(prof.summonAttack) + parseInt(prof.attackBonus)
+
+                    var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff
                     return Math.round(totalAttack);
                 },
                 calculateResult: function() {
@@ -454,11 +477,13 @@
                   var summon = this.props.data.summon;
 
                   if (prof != undefined && arml != undefined && summon != undefined) {
-                      var totalBuff = {normal: 0, element: 0, other: 0};
+                      var totalBuff = {normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0};
 
                       totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
                       totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
                       totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
+                      totalBuff["zenith1"] += zenith[prof.zenithBonus1];
+                      totalBuff["zenith2"] += zenith[prof.zenithBonus2];
 
                       var result = [];
                       for(var i = 0; i < summon.length; i++){
@@ -668,9 +693,13 @@
 
             var Profile = React.createClass({
                 getDefaultProps() {
+                    var zenithBonuses = Object.keys(zenith).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
+                    var typeBonus = Object.keys(types).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
+                    var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
                     return {
-                      types: ["無し", "有利", "不利"],
-                      zenith: ["無し", "★1", "★2", "★3"],
+                        zenithBonuses: zenithBonuses,
+                        typeBonus: typeBonus,
+                        atypes: atypes,
                     };
                 },
                 componentDidMount: function(){
@@ -695,7 +724,9 @@
                         hp: 100,
                         summonAttack: 0,
                         summonHp: 0,
-                        zenithBonus: "無し",
+                        summonDA: 0,
+                        zenithBonus1: "無し",
+                        zenithBonus2: "無し",
                         typeBonus: "無し",
                         favArm1: "無し",
                         favArm2: "無し",
@@ -718,9 +749,6 @@
                   this.props.onArmNumChange(e.target.value);
                 },
                 render: function() {
-                        var zenithBonuses = this.props.zenith.map(selectTemplate);
-                        var types = this.props.types.map(selectTemplate);
-                        var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
                         return (
                             <div className="profile">
                                 <h2> プロフィール </h2>
@@ -728,37 +756,41 @@
                                 <form className="profileForm">
                                 <tr>
                                     <th>Rank</th>
-                                    <th>ゼニス攻撃力アップ</th>
+                                    <th>攻撃力ボーナス</th>
                                     <th>通常バフ</th>
                                     <th>属性バフ</th>
                                     <th>その他バフ</th>
-                                    <th>召喚石攻撃力合計</th>
-                                    <th>召喚石HP合計</th>
+                                    <th>召喚石攻撃力</th>
+                                    <th>召喚石HP</th>
+                                    <th>召喚石DA率</th>
                                 </tr>
                                 <tr>
-                                    <td><input type="number" placeholder="0-170の整数" min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                                    <td><input type="number" placeholder="0以上の数値" min="0" max="3000" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
-                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                                    <td><input type="number" placeholder="0以上の数値" min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                                    <td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonAttack} onChange={this.handleEvent.bind(this, "summonAttack")}/></td>
-                                    <td> <input type="number" placeholder="0以上の数値" min="0" value={this.state.summonHp} onChange={this.handleEvent.bind(this, "summonHp")}/></td>
+                                    <td><input type="number"  min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                                    <td><input type="number" placeholder="3000以下の整数" min="0" max="3000" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
+                                    <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
+                                    <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                                    <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                                    <td><input type="number" min="0" value={this.state.summonAttack} onChange={this.handleEvent.bind(this, "summonAttack")}/></td>
+                                    <td><input type="number" min="0" value={this.state.summonHp} onChange={this.handleEvent.bind(this, "summonHp")}/></td>
+                                    <td><input type="number" min="0" value={this.state.summonDA} onChange={this.handleEvent.bind(this, "summonDA")}/></td>
                                 </tr>
                                 <tr>
                                     <th>HP (%)</th>
                                     <th>得意武器1</th>
                                     <th>得意武器2</th>
-                                    <th>得意武器ゼニス</th>
+                                    <th>武器ゼニス1</th>
+                                    <th>武器ゼニス2</th>
                                     <th>属性相性</th>
                                     <th>武器種類数</th>
                                     <th>召喚石の組数</th>
                                 </tr>
                                 <tr>
-                                    <td> <input type="number" placeholder="0以上の数値" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                                    <td><select value={this.state.favArm1} onChange={this.handleEvent.bind(this, "favArm1")} > {atypes} </select></td>
-                                    <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} > {atypes} </select></td>
-                                    <td><select value={this.state.zenithBonus} onChange={this.handleEvent.bind(this, "zenithBonus")} > {zenithBonuses} </select></td>
-                                    <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {types} </select></td>
+                                    <td> <input type="number" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                                    <td><select value={this.state.favArm1} onChange={this.handleEvent.bind(this, "favArm1")} > {this.props.atypes} </select></td>
+                                    <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} > {this.props.atypes} </select></td>
+                                    <td><select value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </select></td>
+                                    <td><select value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </select></td>
+                                    <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {this.props.typeBonus} </select></td>
                                     <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
                                     <td><input type="number" min="1" max="1" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
                                 </tr>
@@ -885,14 +917,28 @@
                 render: function() {
                   return (
                     <div className="notice">
-                        <h3>注記</h3>
-                        ※ 背水の計算が未実装、コスモスの計算は仮実装なので不確かです (得意武器補正1,2 + ゼニスパークと加算で最大 30% (得意1) + 30% (得意2) + 30% (コスモス) になる？)
-                        <h3>LICENCE</h3>
-                        <ul>
-                            <li> <a href="http://facebook.github.io/react">React</a>: Copyright &copy; 2013-2016 Facebook Inc. v0.13.3</li>
-                            <li> <a href="http://github.com/dankogai/js-base64">dankogai/js-base64</a>: Copyright &copy; 2014, Dan Kogai</li>
+                        <hr/>
+                        <div className="noticeLeft">
+                            <h3>注記</h3>
+                                - HPとDA率の項は仮入力項目です。将来的にHPと合計DA率 (とそれらをkeyにしたsort) などを実装予定。
+                            <h3>LICENCE</h3>
+                            <ul>
+                                <li> <a href="http://facebook.github.io/react">React</a>: Copyright &copy; 2013-2016 Facebook Inc. v0.13.3</li>
+                                <li> <a href="http://github.com/dankogai/js-base64">dankogai/js-base64</a>: Copyright &copy; 2014, Dan Kogai</li>
 
-                        </ul>
+                            </ul>
+                            <h3>参考文献</h3>
+                            以下のサイトを参考にさせていただきました。
+                            <ul>
+                                <li> <a href="http://gbf-wiki.com">グランブルーファンタジー(グラブル)攻略wiki</a></li>
+                                <li> <a href="http://hibino0.web.fc2.com/grbr_atk_calc/atk_calc.html">グランブルーファンタジー攻撃力計算機</a></li>
+                                <li> <a href="http://hibino0.web.fc2.com/grbr_weapon_calc/weapon_calc.html">オススメ装備に自信ニキ</a></li>
+                            </ul>
+                        </div>
+                        <div className="noticeRight">
+                            製作者: ほしみ <a href="http://twitter.com/hsimyu" target="_blank"> @hsimyu </a><br/>
+                            <img class="banner" src="./ChWJ-LgUgAA2JEy.jpg" />
+                        </div>
                     </div>
                    );
                 },
