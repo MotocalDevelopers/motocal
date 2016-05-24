@@ -41,7 +41,7 @@
                 "bahaATHP": {name:"バハ攻HP", type:"baha", amount: "M"},
                 "unknownM": {name:"アンノウンI", type:"unknown", amount: "M"},
                 "unknownL": {name:"アンノウンII", type:"unknown", amount: "L"},
-                "strengthL": {name:"ストレングス", type:"unknown", amount: "L"},
+                "strengthL": {name:"ストレングス等(大)", type:"unknownOther", amount: "L"},
             };
 
             var armtypes = [
@@ -62,7 +62,7 @@
                 "element": "属性",
                 "zeus": "ゼウス系",
                 "chara": "キャラ",
-                "unknown": "アンノウン",
+                "ranko": "蘭子",
             }
 
             var skillAmounts = {
@@ -78,6 +78,12 @@
                     "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
                 },
                 "unknown":{
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
+                    "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+                    "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
+                    "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
+                },
+                "unknownOther":{
                     "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
                     "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
                     "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
@@ -297,7 +303,7 @@
 
             var ResultList = React.createClass({
                 calculateBasedOneSummon: function(summon, prof, arml, buff) {
-                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, unknwon: 0};
+                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0};
 
                     // 自分の加護
                     totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
@@ -376,7 +382,7 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, normalKamui: 0, magnaKamui: 0, baha: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, normalKamui: 0, magnaKamui: 0, baha: 0};
                     var armAttack = 0;
 
                     // cosmos武器があるかどうかを確認しておく
@@ -405,7 +411,7 @@
 
                         armAttack += armSup * parseInt(arm.attack)
 
-                        for(var j = 1; j <= 2; j++){
+                        tor(var j = 1; j <= 2; j++){
                             var skillname = '';
                             if(j == 1) { skillname = arm.skill1 } else { skillname = arm.skill2 }
 
@@ -426,7 +432,7 @@
                                             baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
                                         }
                                     } else {
-                                        // 大 
+                                        // 大
                                         if(slv < 10) {
                                             baseRate = -0.5 + slv * 3.0;
                                         } else {
@@ -442,13 +448,17 @@
                         }
                     }
 
+                    // バハ武器重複上限
+                    if(totalSkills["baha"] > 50) totalSkills["baha"] = 50
+
                     var rank = prof.rank;
                     var baseAttack = (rank > 100) ? 5000 + (parseInt(rank) - 100) * 20 : 1000 + (parseInt(rank)) * 40
                     var weakPoint = types[prof.typeBonus];
 
                     var magnaCoeff = 1.0 + 0.01 * (totalSkills["magna"] + totalSkills["magnaKamui"]) * ( 1.0 + totalSummon["magna"] )
                     var magnaHaisuiCoeff = 1.0 + 0.01 * (totalSkills["magnaHaisui"]) * ( 1.0 + totalSummon["magna"] )
-                    var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"]
+                    var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"] * (1.0 + totalSummon["ranko"]) + 0.01 * totalSkills["unknownOther"]
+
                     var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["baha"] + totalSummon["chara"] + buff["normal"]
                     var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
                     var elementCoeff = weakPoint + totalSummon["element"]
