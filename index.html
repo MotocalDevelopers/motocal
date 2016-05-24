@@ -13,28 +13,28 @@
         <div id="app" align="left"></div>
         <script type="text/jsx">
             // skill data
-            var skilltypes = [
-                {name: "無し", type:"non", amount: "non"},
-                {name:"通常攻刃(小)", type:"normal", amount: "S"},
-                {name:"通常攻刃(中)", type:"normal", amount: "M"},
-                {name:"通常攻刃(大)", type:"normal", amount: "L"},
-                {name:"通常攻刃II", type:"normal", amount: "LL"},
-                {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
-                {name:"通常背水(中)", type:"normalHaisui", amount: "M"},
-                {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
-                {name:"神威", type:"normalKamui", amount: "L"},
-                {name: "M攻刃", type:"magna", amount:"M"},
-                {name: "M攻刃II", type:"magna", amount:"L"},
-                {name:"M背水(小)", type:"magnaHaisui", amount: "S"},
-                {name:"M背水(中)", type:"magnaHaisui", amount: "M"},
-                {name:"M背水(大)", type:"magnaHaisui", amount: "L"},
-                {name:"M神威", type:"magnaKamui", amount: "L"},
-                {name:"バハ攻", type:"bahaAT", amount: "L"},
-                {name:"バハ攻HP", type:"bahaATHP", amount: "L"},
-                {name:"アンノウンI", type:"unknown", amount: "M"},
-                {name:"アンノウンII", type:"unknown", amount: "L"},
-                {name:"ストレングス", type:"unknown", amount: "L"},
-            ];
+            var skilltypes = {
+                "non": {name: "無し", type:"non", amount: "non"},
+                "normalS": {name:"通常攻刃(小)", type:"normal", amount: "S"},
+                "normalM": {name:"通常攻刃(中)", type:"normal", amount: "M"},
+                "normalL": {name:"通常攻刃(大)", type:"normal", amount: "L"},
+                "normalLL": {name:"通常攻刃II", type:"normal", amount: "LL"},
+                "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
+                "normalHaisuiM": {name:"通常背水(中)", type:"normalHaisui", amount: "M"},
+                "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
+                "normalKamui": {name:"神威", type:"normalKamui", amount: "L"},
+                "magnaM": {name: "M攻刃", type:"magna", amount:"M"},
+                "magnaL": {name: "M攻刃II", type:"magna", amount:"L"},
+                "magnaHaisuiS": {name:"M背水(小)", type:"magnaHaisui", amount: "S"},
+                "magnaHaisuiM": {name:"M背水(中)", type:"magnaHaisui", amount: "M"},
+                "magnaHaisuiL": {name:"M背水(大)", type:"magnaHaisui", amount: "L"},
+                "magnaKamui": {name:"M神威", type:"magnaKamui", amount: "L"},
+                "bahaAT": {name:"バハ攻", type:"baha", amount: "L"},
+                "bahaATHP": {name:"バハ攻HP", type:"baha", amount: "L"},
+                "unknownM": {name:"アンノウンI", type:"unknown", amount: "M"},
+                "unknownL": {name:"アンノウンII", type:"unknown", amount: "L"},
+                "strengthL": {name:"ストレングス", type:"unknown", amount: "L"},
+            };
 
             var armtypes = [
                 {name:"短剣", type:"dagger"},
@@ -56,6 +56,32 @@
                 {name: "キャラ", type: "chara"},
                 {name: "アンノウン", type: "unknown"}
             ];
+
+            var skillAmounts = {
+                "normal":{
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
+                    "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0],
+                    "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
+                    "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
+                },
+                "magna":{
+                    "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5],
+                    "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
+                },
+                "normalKamui": {
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
+                },
+                "magnaKamui": {
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
+                },
+                // baha の SLv 11以降については仮入力
+                "bahaAT": {
+                    "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0],
+                },
+                "bahaATHP": {
+                    "L": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
+                },
+            }
 
             // query 取得用の関数
             var query = getDataInQuery();
@@ -296,7 +322,7 @@
                         result.push({rank: i, totalAttack: oneres, armNumbers: combinations[i]});
                     }
 
-                    // totalAttack でsort
+                    // totalAttack で sort
                     result.sort(function(a, b){
                         if(a.totalAttack < b.totalAttack) return  1;
                         if(a.totalAttack > b.totalAttack) return -1;
@@ -318,21 +344,35 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknwon: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknwon: 0, normalKamui: 0, magnaKamui: 0, baha: 0};
+                    var armAttack = 0;
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
+                        armAttack += arm.attack
 
-                        var skill1buf = 15;
-                        var skill2buf = 15;
-
-                        totalSkills[arm.skill1] += skill1buf;
-                        totalSkills[arm.skill2] += skill2buf;
+                        if(arm.skill1 != 'non'){
+                            var stype = skilltypes[arm.skill1].type;
+                            var amount = skilltypes[arm.skill1].amount;
+                            var slv = parseInt(arm.slv)
+                            totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
+                        }
+                        if(arm.skill2 != 'non'){
+                            var stype = skilltypes[arm.skill2].type;
+                            var amount = skilltypes[arm.skill2].amount;
+                            var slv = parseInt(arm.slv)
+                            totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
+                        }
                     }
                     var rank = prof.rank;
                     var baseAttack = (rank > 100) ? 5000 + (parseInt(rank) - 100) * 20 : 1000 + (parseInt(rank)) * 40
                     var weakPoint = (prof.typeBonus == "有利") ? 1.5 : ((prof.typeBonus == "不利") ? 0.75 : 1.0);
 
-                    var totalAttack = baseAttack * totalSummon.magna * totalSkills.magna * totalSkills.magnaHaisui;
+                    var magnaCoeff = 1.0 + totalSkills["magna"] * ( 1.0 + totalSummon["magna"] )
+                    var unknownCoeff = 1.0 + totalSkills["unknown"]
+                    var normalCoeff = 1.0 + totalSkills["normal"] * (1.0 + totalSummon["zeus"]) + totalSkills["baha"] + totalSummon["chara"]
+                    var elementCoeff = weakPoint + totalSummon["element"]
+
+                    var totalAttack = (baseAttack + armAttack) * magnaCoeff * normalCoeff * elementCoeff
                     return totalAttack;
                 },
                 calculateResult: function() {
@@ -488,7 +528,7 @@
                     this.props.onChange(this.props.id, newState)
                 },
                 render: function(){
-                    var stypes = skilltypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
+                    var stypes = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
                     var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
 
                     return (
