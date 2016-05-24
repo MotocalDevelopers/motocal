@@ -9,9 +9,12 @@
         <script src="./js-base64/base64.js"></script>
     </head>
     <body>
-        <h2>元カレ計算機</h2><hr>
+        <h1>元カレ計算機 (グラブル攻撃力計算機) </h1>
+        <div align="right"> 製作者: <a href="http://twitter.com/hsimyu"> @hsimyu </a> </div>
+        <hr>
         <div id="app" align="left"></div>
         <script type="text/jsx">
+
             // shallow copy
             function clone(src){
                 var dst = {}
@@ -124,6 +127,7 @@
 
             // global hash for loading new data
             var newData = {}
+            var cosmosChecked = false;
 
             // Root class contains [Profile, ArmList, Results].
             var Root = React.createClass({
@@ -181,6 +185,7 @@
                             <div className="bottom">
                                 <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} />
                                 <ResultList data={this.state} />
+                                <Notice />
                             </div>
                         </div>
                         <div className="rootRight">
@@ -382,17 +387,31 @@
 
                     var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, normalKamui: 0, magnaKamui: 0, baha: 0};
                     var armAttack = 0;
+
+                    // cosmos武器があるかどうかを確認しておく
+                    var cosmosType = '';
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
-                        if (arm.armType == prof.favArm1 && arm.armType == prof.favArm2){
-                           armAttack += 1.4 * parseInt(arm.attack)
-                        } else if(arm.armType == prof.favArm1){
-                           armAttack += 1.2 * parseInt(arm.attack)
-                        } else if(arm.armType == prof.favArm2){
-                           armAttack += 1.2 * parseInt(arm.attack)
-                        } else {
-                           armAttack += parseInt(arm.attack)
+                        if(arm.isCosmos) {
+                            cosmosType = arm.armType
                         }
+                    }
+
+                    for(var i = 0; i < tempArmList.length; i++){
+                        var arm = tempArmList[i];
+                        var armSup= 1.0
+
+                        if (arm.armType == cosmosType){
+                            armSup += 0.3
+                        }
+                        if(arm.armType == prof.favArm1){
+                            armSup += 0.2
+                        }
+                        if(arm.armType == prof.favArm2){
+                            armSup += 0.2
+                        }
+
+                        armAttack += armSup * parseInt(arm.attack)
 
                         if(arm.skill1 == 'normalHaisui' || arm.skill1 == 'magnaHaisui'){
                         } else if(arm.skill1 != 'non') {
@@ -601,7 +620,19 @@
                 handleEvent: function(key, e) {
                     var newState = this.state
                     if(key == "isCosmos") {
-                        newState[key] = (newState[key] == 0) ? 1 : 0
+                        // if already checked
+                        if( newState[key] == 1 ) {
+                            newState[key] = 0
+                            cosmosChecked = false;
+
+                        // or else
+                        } else {
+                            if(!cosmosChecked) {
+                                cosmosChecked = true;
+                                newState[key] = (newState[key] == 0) ? 1 : 0
+                            }
+                        }
+
                     } else if(key == "considerNumberMin"){
                         if (parseInt(e.target.value) <= parseInt(this.state.considerNumberMax)) newState[key] = parseInt(e.target.value)
                     } else if(key == "considerNumberMax") {
@@ -621,7 +652,7 @@
                             <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
                             <td><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
-                            <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos}  /></td>
+                            <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
                             <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {stypes}</select></td>
                             <td><select value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {stypes}</select></td>
                             <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
@@ -848,6 +879,24 @@
                     </div>
                    );
                 },
+            });
+
+            var Notice = React.createClass ({
+                render: function() {
+                  return (
+                    <div className="notice">
+                        <h3>注記</h3>
+                        ※ 背水の計算が未実装、コスモスの計算は仮実装なので不確かです (得意武器補正1,2 + ゼニスパークと加算で最大 30% (得意1) + 30% (得意2) + 30% (コスモス) になる？)
+                        <h3>LICENCE</h3>
+                        <ul>
+                            <li> <a href="http://facebook.github.io/react">React</a>: Copyright &copy; 2013-2016 Facebook Inc. v0.13.3</li>
+                            <li> <a href="http://github.com/dankogai/js-base64">dankogai/js-base64</a>: Copyright &copy; 2014, Dan Kogai</li>
+
+                        </ul>
+                    </div>
+                   );
+                },
+
             });
 
             var m = React.render(<Root />, document.getElementById('app'));

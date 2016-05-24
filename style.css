@@ -55,7 +55,7 @@ body {
 /* }                   */
 
 .profile {
-    width: 45%;
+    width: 65%;
     margin-right: 10px;
     float: left;
 }
@@ -69,7 +69,7 @@ body {
 }
 
 .summonList {
-    width: calc(55% - 10px);
+    width: calc(35% - 10px);
     float: left;
 }
 
