@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="http://fb.me/react-0.13.3.js"></script>
         <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+        <script src="./js-base64/base64.js"></script>
     </head>
     <body>
         <h2>元カレ計算機</h2><hr>
@@ -93,8 +94,8 @@
               },
               handleChangeData: function(newDataName) {
                   this.setState({dataName: newDataName});
-                  this.setState({armNum: newData.storedData[newDataName].armNum});
-                  this.setState({summonNum: newData.storedData[newDataName].summonNum});
+                  this.setState({armNum: newData[newDataName].armNum});
+                  this.setState({summonNum: newData[newDataName].summonNum});
               },
               render: function() {
                 return (
@@ -127,8 +128,7 @@
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
-                        //var newData = JSON.parse(localStorage["data"]);
-                        //this.setState(newData.storedData[nextProps.dataName].summon);
+                        //this.setState(newData[nextProps.dataName].summon);
                     }
                 },
                 handleOnChange: function(key, state){
@@ -492,7 +492,7 @@
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
-                        this.setState(newData.storedData[nextProps.dataName].profile);
+                        this.setState(newData[nextProps.dataName].profile);
                     }
                 },
                 getInitialState: function() {
@@ -568,27 +568,34 @@
                         this.setState(JSON.parse(localStorage["data"]))
                     }
                 },
+                handleOnClick: function(key, e) {
+                  var newState = this.state
+                  newState[key] = e.target.value
+                  this.setState(newState)
+                },
                 handleEvent: function(key, e) {
                   var newState = this.state
                   newState[key] = e.target.value
                   this.setState(newState)
                 },
-                onSubmitRemove: function() {
+                onSubmitRemove: function(e) {
                   if(this.state.selectedData != ''){
                       // remove data
-                      var newState = this.state.storedData;
-                      delete newState[this.state.selectedData];
-                      localStorage.setItem("data", JSON.stringify(newState));
+                      var newState = this.state;
+                      delete newState["storedData"][this.state.selectedData];
+                      newState.selectedData = ''
+
+                      localStorage.setItem("data", JSON.stringify(newState.storedData));
                       this.setState(newState);
-                      console.log("deleted: ", this.state.selectedData)
                   } else {
                       alert("削除するデータを選択して下さい。")
                   }
                 },
-                onSubmitLoad: function(){
+                onSubmitLoad: function(e){
+                  e.preventDefault();
                   if(this.state.selectedData != ''){
                       // global 変数 newDataに新しいデータを突っ込む
-                      newData = JSON.parse(localStorage["data"]);
+                      newData = JSON.parse(Base64.decode(localStorage["data"]));
                       this.props.onLoadNewData(this.state.selectedData)
                   } else {
                       alert("読み込むデータを選択して下さい。")
@@ -597,11 +604,14 @@
                 onSubmitSave: function(e){
                   e.preventDefault();
                   if(this.state.dataName != ''){
-                      // save data
                       var newState = this.state;
                       newState["storedData"][this.state.dataName] = this.props.data;
-                      var saveString = JSON.stringify(newState);
+                      newState["selectedData"] = this.state.dataName;
+
+                      // save data
+                      var saveString = Base64.encode(JSON.stringify(newState.storedData));
                       localStorage.setItem("data", saveString);
+
                       this.setState(newState);
                   } else {
                       alert("データ名を入力して下さい。")
@@ -621,7 +631,7 @@
                         <div className="system">
                             <h2> System </h2>
                             <form className="sysForm">
-                                <select size="12" value={this.state.selectedData} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </select>
+                                <select size="12" value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </select>
                                 データ名: <input size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} /><br />
                                 <button type="button" onClick={this.onSubmitSave} >保存</button>
                                 <button type="button" onClick={this.onSubmitLoad} >読込</button>
