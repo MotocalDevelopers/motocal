@@ -165,9 +165,9 @@
                   this.setState({summon: state});
               },
               handleChangeData: function(newDataName) {
-                  this.setState({dataName: newDataName});
                   this.setState({armNum: newData[newDataName].armNum});
                   this.setState({summonNum: newData[newDataName].summonNum});
+                  this.setState({dataName: newDataName});
               },
               render: function() {
                 return (
@@ -245,9 +245,20 @@
                     };
                 },
                 componentDidMount: function(){
+                   var state = this.state;
+
+                   // もし newData に自分に該当するキーがあるなら読み込む
+                   // (データロード時に新しく増えたコンポーネント用)
+                   if( this.props.dataName in newData ) {
+                       var summon = newData[this.props.dataName].summon
+                       if( this.props.id in summon ){
+                           state = summon[this.props.id]
+                           this.setState(state)
+                       }
+                   }
                    // 初期化後 state を 上の階層に渡しておく
-                   // summonList は onChange が勝手に上に渡してくれるので必要なし
-                   this.props.onChange(this.props.id, this.state);
+                   // summonList では onChange が勝手に上に渡してくれるので必要なし
+                   this.props.onChange(this.props.id, state);
                 },
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
@@ -572,9 +583,20 @@
                     }
                 },
                 componentDidMount: function(){
+                   var state = this.state;
+
+                   // もし newData に自分に該当するキーがあるなら読み込む
+                   // (データロード時に新しく増えたコンポーネント用)
+                   if( this.props.dataName in newData ) {
+                       var armlist = newData[this.props.dataName].armlist
+                       if( this.props.id in armlist ){
+                           state = armlist[this.props.id]
+                           this.setState(state)
+                       }
+                   }
                    // 初期化後 state を 上の階層に渡しておく
                    // armList では onChange が勝手に上に渡してくれるので必要なし
-                   this.props.onChange(this.props.id, this.state);
+                   this.props.onChange(this.props.id, state);
                 },
                 handleEvent: function(key, e) {
                     var newState = this.state
@@ -599,7 +621,7 @@
                             <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
                             <td><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
-                            <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
+                            <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos}  /></td>
                             <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {stypes}</select></td>
                             <td><select value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {stypes}</select></td>
                             <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
