@@ -2,7 +2,7 @@ body {
     width : 95%;
     font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     margin: 0 auto;
-    font-size: 100%;
+    font-size: 9pt;
 }
 
 .rootleft {
@@ -21,7 +21,7 @@ body {
 .root .top {
     width: 100%;
     margin-bottom: 10px;
-    min-height: 250px;
+    min-height: 200px;
     text-align: center;
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 .system button {
-    width: 33%;
+    width: 33.3%;
 }
 
 .armList {
@@ -81,12 +81,12 @@ body {
 /*     width: 1%;    */
 /* }                 */
 
-/* .consider input { */
-/*     width: 30px;  */
-/* }                 */
+.consider {
+    width: 30px;
+}
 
 input, select, textarea {
-    font-size: 100%;
+    font-size: 9pt;
 }
 
 table {
@@ -99,14 +99,14 @@ table {
 }
 
 table th {
-    background-color: aquamarine;
+    background-color: lightsteelblue;
     color: #000000;
     border-bottom: #cccccc 1px solid;
     border-top: #cccccc 1px solid;
     border-right:#cccccc 1px solid;
     text-align: center;
     padding: 4px;
-    font-size: 80%;
+    font-size: 9pt;
 }
 
 table td {

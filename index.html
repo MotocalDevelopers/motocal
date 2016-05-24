@@ -102,7 +102,6 @@
                       initState["dataName"] = "initData"
                       newData["initData"] = initState
                       this.setState(initState);
-                      console.log("loaded data:", initState);
                   }
               },
               handleArmNumChange: function(newArmNum) {
@@ -504,8 +503,8 @@
                             <td><select value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {stypes}</select></td>
                             <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
                             <td>
-                                <input className="consider" type="number" min="0" size="2" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} />から<br/>
-                                <input className="consider" type="number" min="0" size="2" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />まで
+                                <input className="consider" type="number" min="0" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /> 本～
+                                <input className="consider" type="number" min="0" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} /> 本
                             </td>
                             </form>
                         </tr>
@@ -551,7 +550,6 @@
                   this.props.onSummonNumChange(e.target.value);
                 },
                 handleArmNumChange: function(e) {
-                  console.log("armNum:", e.target.value);
                   this.setState({armNum: e.target.value});
                   this.props.onArmNumChange(e.target.value);
                 },
