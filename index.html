@@ -90,7 +90,6 @@
                 "magnaKamui": {
                     "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
                 },
-                // baha の SLv 11以降については仮入力
                 "baha": {
                     // 剣など
                     "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 30.4, 30.8, 31.2, 31.6, 32.0],
@@ -374,7 +373,15 @@
                     var armAttack = 0;
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
-                        armAttack += parseInt(arm.attack)
+                        if (arm.armType == prof.favArm1 && arm.armType == prof.favArm2){
+                           armAttack += 1.4 * parseInt(arm.attack)
+                        } else if(arm.armType == prof.favArm1){
+                           armAttack += 1.2 * parseInt(arm.attack)
+                        } else if(arm.armType == prof.favArm2){
+                           armAttack += 1.2 * parseInt(arm.attack)
+                        } else {
+                           armAttack += parseInt(arm.attack)
+                        }
 
                         if(arm.skill1 == 'normalHaisui' || arm.skill1 == 'magnaHaisui'){
                         } else if(arm.skill1 != 'non') {
@@ -383,7 +390,8 @@
                             var slv = parseInt(arm.slv)
                             totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                         }
-                        if(arm.skill2 != 'non' || arm.skill2 != 'normalHaisui' || arm.skill2 != 'magnaHaisui'){
+                        if(arm.skill2 == 'normalHaisui' || arm.skill2 == 'magnaHaisui'){
+                        } else if(arm.skill2 != 'non'){
                             var stype = skilltypes[arm.skill2].type;
                             var amount = skilltypes[arm.skill2].amount;
                             var slv = parseInt(arm.slv)
@@ -813,7 +821,7 @@
                 render: function() {
                   return (
                     <div className="tweet">
-                        <h3>ツイート用URL</h3>
+                        <h3>保存用URL</h3>
                         {this.state.url}
                     </div>
                    );
