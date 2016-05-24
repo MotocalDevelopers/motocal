@@ -6,13 +6,13 @@ body {
 }
 
 .rootleft {
-    width: 90%;
+    width: 85%;
     height: 100%;
     float: left;
 }
 
 .rootright {
-    width: calc(10% - 10px);
+    width: calc(15% - 10px);
     height: 100%;
     margin-left: 10px;
     float: left;
@@ -28,6 +28,14 @@ body {
 .root .bottom {
     width: 100%;
     margin-bottom: 10px;
+}
+
+.system input {
+    width: 100%;
+}
+
+.system button {
+    width: 33%;
 }
 
 .armList {
