@@ -1,5 +1,6 @@
 body {
     width : 95%;
+    min-width: 1200px;
     font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     margin: 0 auto;
     font-size: 9pt;
@@ -59,6 +60,15 @@ body {
 .armList {
     width: 100%;
     float: clear;
+}
+
+.armList table th {
+    min-width: 20px;
+}
+
+.armList table th.tiny {
+    width: 5%;
+    min-width: 20px;
 }
 
 .profile {

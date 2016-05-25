@@ -569,11 +569,12 @@
                             React.createElement("tr", null, 
                                 React.createElement("th", null, "武器名"), 
                                 React.createElement("th", null, "攻撃力"), 
-                                React.createElement("th", null, "武器種"), 
-                                React.createElement("th", null, "コスモス？"), 
+                                React.createElement("th", null, "HP(仮)"), 
+                                React.createElement("th", {className: "tiny"}, "武器種"), 
+                                React.createElement("th", {className: "tiny"}, "コスモス？"), 
                                 React.createElement("th", null, "スキル1"), 
                                 React.createElement("th", null, "スキル2"), 
-                                React.createElement("th", null, "SLv"), 
+                                React.createElement("th", {className: "tiny"}, "SLv"), 
                                 React.createElement("th", {className: "consider"}, "考慮本数")
                             )
                             ), 
@@ -662,6 +663,7 @@
                             React.createElement("form", {className: "armForm"}, 
                             React.createElement("td", null, React.createElement("input", {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
                             React.createElement("td", null, React.createElement("input", {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
                             React.createElement("td", null, React.createElement("select", {value: this.state.armType, onChange: this.handleEvent.bind(this, "armType")}, " ", atypes, " ")), 
                             React.createElement("td", {className: "checkbox"}, React.createElement("input", {type: "checkbox", checked: this.state.isCosmos, onChange: this.handleEvent.bind(this, "isCosmos")})), 
                             React.createElement("td", null, React.createElement("select", {value: this.state.skill1, onChange: this.handleEvent.bind(this, "skill1")}, " ", stypes)), 

@@ -569,11 +569,12 @@
                             <tr>
                                 <th>武器名</th>
                                 <th>攻撃力</th>
-                                <th>武器種</th>
-                                <th>コスモス？</th>
+                                <th>HP(仮)</th>
+                                <th className="tiny">武器種</th>
+                                <th className="tiny">コスモス？</th>
                                 <th>スキル1</th>
                                 <th>スキル2</th>
-                                <th>SLv</th>
+                                <th className="tiny">SLv</th>
                                 <th className="consider">考慮本数</th>
                             </tr>
                             </thead>
@@ -662,6 +663,7 @@
                             <form className="armForm">
                             <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
+                            <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td>
                             <td><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
                             <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
                             <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {stypes}</select></td>
