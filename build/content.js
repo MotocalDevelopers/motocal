@@ -752,7 +752,7 @@
                                 ), 
                                 React.createElement("tr", null, 
                                     React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "170", value: this.state.rank, onChange: this.handleEvent.bind(this, "rank")})), 
-                                    React.createElement("td", null, React.createElement("input", {type: "number", placeholder: "3000以下の整数", min: "0", max: "3000", value: this.state.attackBonus, onChange: this.handleEvent.bind(this, "attackBonus")})), 
+                                    React.createElement("td", null, React.createElement("input", {type: "number", placeholder: "3000以下の整数", min: "0", value: this.state.attackBonus, onChange: this.handleEvent.bind(this, "attackBonus")})), 
                                     React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.normalBuff, onChange: this.handleEvent.bind(this, "normalBuff")})), 
                                     React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.elementBuff, onChange: this.handleEvent.bind(this, "elementBuff")})), 
                                     React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.otherBuff, onChange: this.handleEvent.bind(this, "otherBuff")})), 
@@ -912,7 +912,6 @@
                   return (
                     React.createElement("div", {className: "tweet"}, 
                         React.createElement("h3", null, "保存用URL"), 
-                        React.createElement("button", {type: "button", onClick: this.onClickButton, className: "TweetButton"}, " Tweet "), 
                         this.state.url
                     )
                    );
@@ -926,11 +925,12 @@
                         React.createElement("hr", null), 
                         React.createElement("div", {className: "noticeLeft"}, 
                             React.createElement("h3", null, "注記"), 
-                                "- HPとDA率の項は仮入力項目です。将来的にHPと合計DA率 (とそれらをkeyにしたsort) などを実装予定。", 
-                            React.createElement("h3", null, "LICENCE"), 
+                                "- HPとDA率の項は仮入力項目です。将来的にHPと合計DA率 (とそれらをkeyにしたsort) などを実装予定。", React.createElement("br", null), 
+                                "- URL圧縮をかけてしまうと読み込みが上手く動かないので、そのうち対処します。", 
+                            React.createElement("h3", null, "LICENSE"), 
                             React.createElement("ul", null, 
-                                React.createElement("li", null, " ", React.createElement("a", {href: "http://facebook.github.io/react"}, "React"), ": Copyright © 2013-2016 Facebook Inc. v0.13.3"), 
-                                React.createElement("li", null, " ", React.createElement("a", {href: "http://github.com/dankogai/js-base64"}, "dankogai/js-base64"), ": Copyright © 2014, Dan Kogai")
+                                React.createElement("li", null, " ", React.createElement("a", {href: "http://facebook.github.io/react"}, "React"), ": Copyright © 2013-2016 Facebook Inc. v0.13.3 "), 
+                                React.createElement("li", null, " ", React.createElement("a", {href: "http://github.com/dankogai/js-base64"}, "dankogai/js-base64"), ": Copyright © 2014, Dan Kogai ", React.createElement("a", {href: "./js-base64/LICENSE.md"}, " LICENSE "))
 
                             ), 
                             React.createElement("h3", null, "参考文献"), 

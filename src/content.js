@@ -752,7 +752,7 @@
                                 </tr>
                                 <tr>
                                     <td><input type="number"  min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                                    <td><input type="number" placeholder="3000以下の整数" min="0" max="3000" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
+                                    <td><input type="number" placeholder="3000以下の整数" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
                                     <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
                                     <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
                                     <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
@@ -912,7 +912,6 @@
                   return (
                     <div className="tweet">
                         <h3>保存用URL</h3>
-                        <button type="button" onClick={this.onClickButton} className="TweetButton"> Tweet </button>
                         {this.state.url}
                     </div>
                    );
@@ -926,11 +925,12 @@
                         <hr/>
                         <div className="noticeLeft">
                             <h3>注記</h3>
-                                - HPとDA率の項は仮入力項目です。将来的にHPと合計DA率 (とそれらをkeyにしたsort) などを実装予定。
-                            <h3>LICENCE</h3>
+                                - HPとDA率の項は仮入力項目です。将来的にHPと合計DA率 (とそれらをkeyにしたsort) などを実装予定。<br/>
+                                - URL圧縮をかけてしまうと読み込みが上手く動かないので、そのうち対処します。
+                            <h3>LICENSE</h3>
                             <ul>
-                                <li> <a href="http://facebook.github.io/react">React</a>: Copyright &copy; 2013-2016 Facebook Inc. v0.13.3</li>
-                                <li> <a href="http://github.com/dankogai/js-base64">dankogai/js-base64</a>: Copyright &copy; 2014, Dan Kogai</li>
+                                <li> <a href="http://facebook.github.io/react">React</a>: Copyright &copy; 2013-2016 Facebook Inc. v0.13.3 </li>
+                                <li> <a href="http://github.com/dankogai/js-base64">dankogai/js-base64</a>: Copyright &copy; 2014, Dan Kogai <a href="./js-base64/LICENSE.md"> LICENSE </a></li>
 
                             </ul>
                             <h3>参考文献</h3>
