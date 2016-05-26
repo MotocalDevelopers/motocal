@@ -350,7 +350,7 @@
                     var result = []
                     for(var i = 0; i < combinations.length; i++){
                         var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml, buff)
-                        result.push({rank: i, totalAttack: oneres, armNumbers: combinations[i]});
+                        result.push({rank: i, totalAttack: oneres.totalAttack, displayAttack: oneres.displayAttack, armNumbers: combinations[i]});
                     }
 
                     // totalAttack で sort
@@ -464,18 +464,19 @@
                     //console.log("element", elementCoeff)
                     //console.log("other", otherCoeff)
 
-                    var summedAttack = baseAttack + armAttack + totalSummon["attack"] + parseInt(prof.attackBonus)
+                    var summedAttack = (baseAttack + armAttack + totalSummon["attack"] + parseInt(prof.attackBonus) ) * (1.0 + buff["master"])
 
                     var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff
-                    return Math.round(totalAttack);
+                    return {totalAttack: Math.round(totalAttack), displayAttack: Math.round(summedAttack)};
                 },
                 calculateResult: function() {
                   var prof = this.props.data.profile; var arml = this.props.data.armlist;
                   var summon = this.props.data.summon;
 
                   if (prof != undefined && arml != undefined && summon != undefined) {
-                      var totalBuff = {normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0};
+                      var totalBuff = {master: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0};
 
+                      if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
                       totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
                       totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
                       totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
@@ -513,7 +514,8 @@
                                         <thead>
                                         <tr>
                                             <th>順位</th>
-                                            <th>攻撃力</th>
+                                            <th>総合攻撃力</th>
+                                            <th>表示攻撃力</th>
                                             {armnames.map(function(m){ return <th>{m}</th>; })}
                                         </tr>
                                         </thead>
@@ -536,6 +538,7 @@
                                     <tr key={m.rank}>
                                         <td> {m.rank} </td>
                                         <td> {m.totalAttack} </td>
+                                        <td> {m.displayAttack} </td>
                                         {m.armNumbers.map(function(am){
                                             return (<td>{am} 本</td>);
                                         })}
@@ -719,6 +722,7 @@
                     return {
                         rank: 1,
                         attackBonus: 0,
+                        masterBonus: 0,
                         normalBuff: 0,
                         elementBuff: 0,
                         otherBuff: 0,
@@ -743,8 +747,10 @@
                   this.props.onSummonNumChange(e.target.value);
                 },
                 handleArmNumChange: function(e) {
-                  this.setState({armNum: e.target.value});
-                  this.props.onArmNumChange(e.target.value);
+                  if(e.target.value < 20) {
+                      this.setState({armNum: e.target.value});
+                      this.props.onArmNumChange(e.target.value);
+                  }
                 },
                 render: function() {
                         return (
@@ -755,39 +761,41 @@
                                 <tr>
                                     <th>Rank</th>
                                     <th>攻撃力ボーナス</th>
-                                    <th>通常バフ</th>
-                                    <th>属性バフ</th>
-                                    <th>その他バフ</th>
+                                    <th>マスターボーナス(%)</th>
+                                    <th>HP (%)</th>
+                                    <th>属性相性</th>
                                 </tr>
                                 <tr>
                                     <td><input type="number"  min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
                                     <td><input type="number" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
-                                    <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                                    <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                                    <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                                    <td><input type="number" min="0" max="100" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
+                                    <td> <input type="number" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                                    <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {this.props.typeBonus} </select></td>
                                 </tr>
                                 <tr>
-                                    <th>HP (%)</th>
                                     <th>得意武器1</th>
                                     <th>得意武器2</th>
                                     <th>武器ゼニス1</th>
                                     <th>武器ゼニス2</th>
+                                    <th>通常バフ</th>
                                 </tr>
                                 <tr>
-                                    <td> <input type="number" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
                                     <td><select value={this.state.favArm1} onChange={this.handleEvent.bind(this, "favArm1")} > {this.props.atypes} </select></td>
                                     <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} > {this.props.atypes} </select></td>
                                     <td><select value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </select></td>
                                     <td><select value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </select></td>
+                                    <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
                                 </tr>
                                 <tr>
-                                    <th>属性相性</th>
+                                    <th>属性バフ</th>
+                                    <th>その他バフ</th>
                                     <th>武器種類数</th>
                                     <th>召喚石の組数</th>
                                 </tr>
                                 <tr>
-                                    <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {this.props.typeBonus} </select></td>
-                                    <td><input type="number" min="1" max="10" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
+                                    <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                                    <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                                    <td><input type="number" min="1" max="20" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
                                     <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
                                 </tr>
                                 </form>
@@ -918,6 +926,9 @@
                         <hr/>
                         <div className="noticeLeft">
                             <h3>更新履歴</h3>
+                                2016/05/26 21:47: マスターボーナスがなかった場合のURLを入力してしまうと表示がNaNになってしまう不具合を修正 <br />
+                                2016/05/26 21:42: 武器種類数を10本に設定すると表示がバグる不具合を修正 <br />
+                                2016/05/26 21:13: マスターボーナスの項が抜けてたので追加 / ついでに表示される攻撃力も算出されるように変更(確認用) <br />
                                 2016/05/25 22:24: 保存用URLのTweetボタンを追加 <br />
                                 2016/05/25 21:39: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）
                             <h3>注記</h3>
