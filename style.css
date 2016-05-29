@@ -34,7 +34,7 @@ body {
 .root .top {
     width: 100%;
     margin-bottom: 10px;
-    min-height: 230px;
+    min-height: 250px;
     text-align: left;
 }
 
@@ -72,13 +72,13 @@ body {
 }
 
 .profile {
-    width: 45%;
+    width: 50%;
     margin-right: 10px;
     float: left;
 }
 
 .profile table th {
-    width: calc(100%/5);
+    width: calc(100%/6);
 }
 
 .profile input, select, textarea {
@@ -86,12 +86,12 @@ body {
 }
 
 .summonList {
-    width: calc(55% - 10px);
+    width: calc(50% - 10px);
     float: left;
 }
 
 .summonList th {
-    width: calc(100%/8);
+    width: calc(100%/9);
 }
 
 .summonList input {

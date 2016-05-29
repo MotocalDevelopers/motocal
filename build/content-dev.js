@@ -1,5 +1,5 @@
             // global arrays
-            var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05}
+            var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10}
             var types = {"無し": 1.0, "有利": 1.5, "不利": 0.75}
             var keyTypes = {"総合攻撃力": "totalAttack", "HP": "totalHP", "戦力": "ATKandHP"}
 
@@ -219,6 +219,13 @@
                         smlist: [],
                     };
                 },
+                componentWillReceiveProps: function(nextProps) {
+                    if (parseInt(nextProps.summonNum) < parseInt(this.props.summonNum)) {
+                        var newsmlist = this.state.smlist;
+                        newsmlist.pop();
+                        this.setState({smlist: newsmlist})
+                    }
+                },
                 handleOnChange: function(key, state){
                     var newsmlist = this.state.smlist;
                     newsmlist[key] = state;
@@ -388,13 +395,13 @@
                     var result = []
                     for(var i = 0; i < combinations.length; i++){
                         var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml, buff)
-                        result.push({rank: i, totalAttack: oneres.totalAttack, displayAttack: oneres.displayAttack, totalHP: oneres.totalHP, armNumbers: combinations[i]});
+                        result.push({rank: i, totalAttack: oneres.totalAttack, displayAttack: oneres.displayAttack, totalHP: oneres.totalHP, displayHP: oneres.displayHP, armNumbers: combinations[i]});
                     }
 
                     if(sortkey == "ATKandHP") {
                         result.sort(function(a, b){
-                            if((a.totalAttack + a.totalHP) < (b.totalAttack + b.totalHP)) return  1;
-                            if((a.totalAttack + a.totalHP) > (b.totalAttack + b.totalHP)) return -1;
+                            if((a.displayAttack + a.displayHP) < (b.displayAttack + b.displayHP)) return  1;
+                            if((a.displayAttack + a.displayHP) > (b.displayAttack + b.displayHP)) return -1;
                             return 0;
                         });
                     } else {
@@ -436,20 +443,25 @@
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
                         var armSup= 1.0
+                        var hpSup = 1.0
 
                         if (arm.armType == cosmosType){
                             armSup += 0.3
+                            hpSup += 0.3
                         }
                         if(arm.armType == prof.favArm1 && arm.armType == prof.favArm2){
                             armSup += (0.2 + buff["zenith1"] + buff["zenith2"])
+                            hpSup += 0.2
                         } else if(arm.armType == prof.favArm1){
                             armSup += (0.2 + buff["zenith1"])
+                            hpSup += 0.2
                         } else if(arm.armType == prof.favArm2){
                             armSup += (0.2 + buff["zenith2"])
+                            hpSup += 0.2
                         }
 
                         armAttack += armSup * parseInt(arm.attack)
-                        armHP += parseInt(arm.hp)
+                        armHP += hpSup * parseInt(arm.hp)
 
                         for(var j = 1; j <= 2; j++){
                             var skillname = '';
@@ -501,7 +513,7 @@
 
                     var rank = prof.rank;
                     var baseAttack = (rank > 100) ? 5000 + (parseInt(rank) - 100) * 20 : 1000 + (parseInt(rank)) * 40
-                    var baseHP = (rank > 100) ? 1500 + (parseInt(rank) - 100) * 2.5 : 1000 + (parseInt(rank)) * 5
+                    var baseHP = (rank > 100) ? 1400 + (parseInt(rank) - 100) * 4.0 : 600 + (parseInt(rank)) * 8
                     var weakPoint = types[prof.typeBonus];
 
                     // for attack
@@ -519,7 +531,8 @@
 
                     // for HP
                     var totalHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + buff["masterHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
-                    return {totalAttack: Math.round(totalAttack), displayAttack: Math.round(summedAttack), totalHP: Math.round(totalHP)};
+                    var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
+                    return {totalAttack: Math.round(totalAttack), displayAttack: Math.round(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP)};
                 },
                 calculateResult: function() {
                   var prof = this.props.data.profile; var arml = this.props.data.armlist;
@@ -572,13 +585,13 @@
                             res.map(function(r) {
                                 return(
                                     React.createElement("div", {className: "result"}, 
-                                        React.createElement("h2", null, " 結果 (", r.sortkeyname, "): No. ", r.summonNo + 1, " (", summonTypes[r.summon.selfSummonType], r.summon.selfSummonAmount, " + ", summonTypes[r.summon.friendSummonType], r.summon.friendSummonAmount, ") "), 
+                                        React.createElement("h2", null, " 結果(", r.sortkeyname, "): No. ", r.summonNo + 1, " (", summonTypes[r.summon.selfSummonType], r.summon.selfSummonAmount, " + ", summonTypes[r.summon.friendSummonType], r.summon.friendSummonAmount, ") "), 
                                         React.createElement("table", null, 
                                         React.createElement("thead", null, 
                                         React.createElement("tr", null, 
                                             React.createElement("th", null, "順位"), 
                                             React.createElement("th", null, "総合攻撃力"), 
-                                            React.createElement("th", null, "表示攻撃力"), 
+                                            React.createElement("th", null, "戦力"), 
                                             React.createElement("th", null, "HP"), 
                                             armnames.map(function(m){ return React.createElement("th", null, m); })
                                         )
@@ -602,7 +615,7 @@
                                     React.createElement("tr", {key: m.rank}, 
                                         React.createElement("td", null, " ", m.rank, " "), 
                                         React.createElement("td", null, " ", m.totalAttack, " "), 
-                                        React.createElement("td", null, " ", m.displayAttack, " "), 
+                                        React.createElement("td", null, " ", parseInt(m.displayAttack) + parseInt(m.displayHP), " (", m.displayAttack, " + ", m.displayHP, ")"), 
                                         React.createElement("td", null, " ", m.totalHP, " "), 
                                         m.armNumbers.map(function(am){
                                             return (React.createElement("td", null, am, " 本"));
@@ -627,7 +640,9 @@
                 componentWillReceiveProps: function(nextProps) {
                     if (parseInt(nextProps.armNum) < parseInt(this.props.armNum)) {
                         var newalist = this.state.alist;
-                        newalist.pop();
+                        while(newalist.length > nextProps.armNum) {
+                            newalist.pop();
+                        }
                         this.setState({alist: newalist})
                     }
                 },
@@ -833,7 +848,7 @@
                                     React.createElement("th", null, "攻撃力ボーナス"), 
                                     React.createElement("th", null, "HPボーナス"), 
                                     React.createElement("th", null, "マスターボーナスATK(%)"), 
-                                    React.createElement("th", null, "マスターボーナスHP(%)"), 
+                                    React.createElement("th", null, "マスターボーナスHP(%)(+バフ等)"), 
                                     React.createElement("th", null, "HP (%)")
                                 ), 
                                 React.createElement("tr", null, 
@@ -1002,15 +1017,17 @@
                         React.createElement("hr", null), 
                         React.createElement("div", {className: "noticeLeft"}, 
                             React.createElement("h3", null, "更新履歴"), 
-                                "2016/05/29 20:31: HPと守護スキルの実装、優先項目を選んでソートできるように修正", React.createElement("br", null), 
-                                "2016/05/29 20:31: 武器種類数を10本に設定すると表示がバグる不具合を修正 ", React.createElement("br", null), 
-                                "2016/05/26 21:47: マスターボーナスがなかった場合のURLを入力してしまうと表示がNaNになってしまう不具合を修正 ", React.createElement("br", null), 
-                                "2016/05/26 21:13: マスターボーナスの項が抜けてたので追加 / ついでに表示される攻撃力も算出されるように変更(確認用) ", React.createElement("br", null), 
-                                "2016/05/25 22:24: 保存用URLのTweetボタンを追加 ", React.createElement("br", null), 
-                                "2016/05/25 21:39: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）", 
+                                "2016/05/29: 基礎HPの基礎式を修正。召喚石を増やした後減らすと結果表示が残る不具合修正。武器本数が少ないデータを読み込むと前のデータの武器が残ってしまう不具合を修正。", React.createElement("br", null), 
+                                "2016/05/29: 得意武器ゼニスIIに対応（★4、★5、★6）。得意武器Iはすべてマスター済みという前提で各6%, 8%, 10%として計算します。", React.createElement("br", null), 
+                                "2016/05/29: HPと守護スキルの実装、優先項目を選んでソートできるように修正", React.createElement("br", null), 
+                                "2016/05/29: 武器種類数を10本に設定すると表示がバグる不具合を修正 ", React.createElement("br", null), 
+                                "2016/05/26: マスターボーナスがなかった場合のURLを入力してしまうと表示がNaNになってしまう不具合を修正 ", React.createElement("br", null), 
+                                "2016/05/26: マスターボーナスの項が抜けてたので追加 / ついでに表示される攻撃力も算出されるように変更(確認用) ", React.createElement("br", null), 
+                                "2016/05/25: 保存用URLのTweetボタンを追加 ", React.createElement("br", null), 
+                                "2016/05/25: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）", 
                             React.createElement("h3", null, "注記"), 
-                                "- HPとDA率の項は仮入力項目です。将来的にHPと合計DA率 (とそれらをkeyにしたsort) などを実装予定。", React.createElement("br", null), 
-                                "- 蘭子のアンノウン加護アップってアンノウンVITにも効果あります？", React.createElement("br", null), 
+                                "- DA率の項は仮入力項目です。", React.createElement("br", null), 
+                                "- 蘭子のアンノウン加護アップってアンノウンVITにも効果ありますよね？", React.createElement("br", null), 
                                 "- 背水の計算式は日比野さんのところの式を利用しています。", React.createElement("br", null), 
                                 "- 保存用URLを使用することで現在の編成を共有できます", 
                             React.createElement("h3", null, "LICENSE"), 
