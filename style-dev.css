@@ -78,7 +78,7 @@ body {
 }
 
 .profile table th {
-    width: calc(100%/5);
+    width: calc(100%/6);
 }
 
 .profile input, select, textarea {
@@ -91,7 +91,7 @@ body {
 }
 
 .summonList th {
-    width: calc(100%/8);
+    width: calc(100%/9);
 }
 
 .summonList input {

@@ -1,6 +1,7 @@
             // global arrays
             var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05}
             var types = {"無し": 1.0, "有利": 1.5, "不利": 0.75}
+            var keyTypes = {"総合攻撃力": "totalAttack", "HP": "totalHP", "戦力": "ATKandHP"}
 
             // skill data
             var skilltypes = {
@@ -17,11 +18,21 @@
                 "magnaHaisuiS": {name:"M背水(小)", type:"magnaHaisui", amount: "S"},
                 "magnaHaisuiL": {name:"M背水(大)", type:"magnaHaisui", amount: "L"},
                 "magnaKamui": {name:"M神威", type:"magnaKamui", amount: "S"},
-                "bahaAT": {name:"バハ攻", type:"baha", amount: "L"},
-                "bahaATHP": {name:"バハ攻HP", type:"baha", amount: "M"},
+                "bahaAT": {name:"バハ攻", type:"bahaAT", amount: "L"},
+                "bahaATHP": {name:"バハ攻HP", type:"bahaATHP", amount: "M"},
+                "bahaHP": {name:"バハHP", type:"bahaHP", amount: "L"},
                 "unknownM": {name:"アンノウンI", type:"unknown", amount: "M"},
                 "unknownL": {name:"アンノウンII", type:"unknown", amount: "L"},
                 "strengthL": {name:"ストレングス等(大)", type:"unknownOther", amount: "L"},
+                "normalHPS": {name:"通常守護(小)", type:"normalHP", amount: "S"},
+                "normalHPM": {name:"通常守護(中)", type:"normalHP", amount: "M"},
+                "normalHPL": {name:"通常守護(大)", type:"normalHP", amount: "L"},
+                "magnaHPS": {name:"マグナ守護(小)", type:"magnaHP", amount: "S"},
+                "magnaHPM": {name:"マグナ守護(中)", type:"magnaHP", amount: "M"},
+                "magnaHPL": {name:"マグナ守護(大)", type:"magnaHP", amount: "L"},
+                "unknownHPS": {name:"アンノウンVIT(小)", type:"unknownHP", amount: "S"},
+                "unknownHPM": {name:"アンノウンVIT(中)", type:"unknownHP", amount: "M"},
+                "unknownHPL": {name:"アンノウンVIT(大)", type:"unknownHP", amount: "L"},
             };
 
             var armtypes = [
@@ -75,11 +86,32 @@
                 "magnaKamui": {
                     "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
                 },
-                "baha": {
+                "bahaHP": {
                     // 剣など
-                    "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 30.4, 30.8, 31.2, 31.6, 32.0],
-                    // 短剣など
+                    "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
                     "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
+                },
+                "bahaAT": {
+                    // 短剣など
+                    "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 30.4, 30.8, 31.2, 31.6, 32.0],
+                    "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
+                },
+                "normalHP":{
+                    "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+                    "M": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.4, 15.8, 16.2, 16.6, 17.0],
+                    "L": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
+                },
+                "magnaHP":{
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
+                    "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+                    "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
+                    "LL": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
+                },
+                "unknownHP":{
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
+                    "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+                    "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
+                    "LL": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
                 },
             }
 
@@ -212,7 +244,8 @@
                                 <th>フレ石</th>
                                 <th>フレ加護量</th>
                                 <th>召喚石攻撃力</th>
-                                <th>召喚石HP（仮）</th>
+                                <th>召喚石HP</th>
+                                <th>加護HPUP(%)</th>
                                 <th>召喚石DA率（仮）</th>
                             </tr>
                             </thead>
@@ -236,6 +269,7 @@
                         friendSummonAmount: 0,
                         Attack: 0,
                         hp: 0,
+                        hpBonus: 0,
                         DA: 0,
                     };
                 },
@@ -282,6 +316,7 @@
                                 <td><input type="number" min="0" max="120" value={this.state.friendSummonAmount} onChange={this.handleEvent.bind(this, "friendSummonAmount")} /></td>
                                 <td><input type="number" min="0" value={this.state.Attack} onChange={this.handleEvent.bind(this, "Attack")}/></td>
                                 <td><input type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                                <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
                                 <td><input type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
                             </form>
                         </tr>
@@ -291,8 +326,8 @@
             });
 
             var ResultList = React.createClass({
-                calculateBasedOneSummon: function(summon, prof, arml, buff) {
-                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0, attack: 0, hp: 0, da: 0};
+                calculateBasedOneSummon: function(summon, prof, arml, buff, sortkey) {
+                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0};
 
                     // 自分の加護
                     totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
@@ -300,8 +335,11 @@
                     totalSummon[summon.friendSummonType] += 0.01 * parseInt(summon.friendSummonAmount)
 
                     totalSummon["attack"] = parseInt(summon.Attack)
-                    totalSummon["hp"] = parseInt(summon.hp)
-                    totalSummon["da"] = parseInt(summon.DA)
+
+                    // 後から追加したので NaN でないか判定しておく
+                    if(!isNaN(summon.hp)) totalSummon["hp"] = parseInt(summon.hp)
+                    if(!isNaN(summon.hpBonus)) totalSummon["hpBonus"] = 0.01 * parseInt(summon.hpBonus)
+                    if(!isNaN(summon.DA)) totalSummon["da"] = parseInt(summon.DA)
 
                     // 全武器に対して [最小考慮数, ... , 最大考慮数] の配列を計算しておく
                     var armNumArray = []
@@ -350,15 +388,22 @@
                     var result = []
                     for(var i = 0; i < combinations.length; i++){
                         var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml, buff)
-                        result.push({rank: i, totalAttack: oneres.totalAttack, displayAttack: oneres.displayAttack, armNumbers: combinations[i]});
+                        result.push({rank: i, totalAttack: oneres.totalAttack, displayAttack: oneres.displayAttack, totalHP: oneres.totalHP, armNumbers: combinations[i]});
                     }
 
-                    // totalAttack で sort
-                    result.sort(function(a, b){
-                        if(a.totalAttack < b.totalAttack) return  1;
-                        if(a.totalAttack > b.totalAttack) return -1;
-                        return 0;
-                    });
+                    if(sortkey == "ATKandHP") {
+                        result.sort(function(a, b){
+                            if((a.totalAttack + a.totalHP) < (b.totalAttack + b.totalHP)) return  1;
+                            if((a.totalAttack + a.totalHP) > (b.totalAttack + b.totalHP)) return -1;
+                            return 0;
+                        });
+                    } else {
+                        result.sort(function(a, b){
+                            if(a[sortkey] < b[sortkey]) return  1;
+                            if(a[sortkey] > b[sortkey]) return -1;
+                            return 0;
+                        });
+                    }
                     for(var i = 0; i < result.length; i++){
                         result[i]["rank"] = i + 1
                     }
@@ -375,8 +420,9 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, normalKamui: 0, magnaKamui: 0, baha: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, normalKamui: 0, magnaKamui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0};
                     var armAttack = 0;
+                    var armHP = 0;
 
                     // cosmos武器があるかどうかを確認しておく
                     var cosmosType = '';
@@ -403,6 +449,7 @@
                         }
 
                         armAttack += armSup * parseInt(arm.attack)
+                        armHP += parseInt(arm.hp)
 
                         for(var j = 1; j <= 2; j++){
                             var skillname = '';
@@ -412,6 +459,9 @@
                                 var stype = skilltypes[skillname].type;
                                 var amount = skilltypes[skillname].amount;
                                 var slv = parseInt(arm.slv)
+
+                                // mask invalid slv
+                                if(slv == 0) slv = 1
 
                                 // 背水倍率の実装は日比野さんのところのを参照
                                 if(stype == 'normalHaisui' || stype == 'magnaHaisui'){
@@ -434,6 +484,10 @@
                                     }
                                     var haisuiBuff =  (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
                                     totalSkills[stype] += haisuiBuff
+                                } else if(stype == 'bahaATHP') {
+                                    // バハ剣など
+                                    totalSkills["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
+                                    totalSkills["bahaHP"] += skillAmounts["bahaHP"][amount][slv - 1];
                                 } else {
                                     totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                                 }
@@ -442,50 +496,59 @@
                     }
 
                     // バハ武器重複上限
-                    if(totalSkills["baha"] > 50) totalSkills["baha"] = 50
+                    if(totalSkills["bahaAT"] > 50) totalSkills["bahaAT"] = 50
+                    if(totalSkills["bahaHP"] > 50) totalSkills["bahaHP"] = 50
 
                     var rank = prof.rank;
                     var baseAttack = (rank > 100) ? 5000 + (parseInt(rank) - 100) * 20 : 1000 + (parseInt(rank)) * 40
+                    var baseHP = (rank > 100) ? 1500 + (parseInt(rank) - 100) * 2.5 : 1000 + (parseInt(rank)) * 5
                     var weakPoint = types[prof.typeBonus];
 
+                    // for attack
                     var magnaCoeff = 1.0 + 0.01 * (totalSkills["magna"] + totalSkills["magnaKamui"]) * ( 1.0 + totalSummon["magna"] )
                     var magnaHaisuiCoeff = 1.0 + 0.01 * (totalSkills["magnaHaisui"]) * ( 1.0 + totalSummon["magna"] )
                     var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"] * (1.0 + totalSummon["ranko"]) + 0.01 * totalSkills["unknownOther"]
 
-                    var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["baha"] + totalSummon["chara"] + buff["normal"]
+                    var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["bahaAT"] + totalSummon["chara"] + buff["normal"]
                     var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
                     var elementCoeff = weakPoint + totalSummon["element"]
                     var otherCoeff = 1.0 + buff["other"]
-                    //console.log("magna", magnaCoeff)
-                    //console.log("magnaHaisui", magnaHaisuiCoeff)
-                    //console.log("unknown", unknownCoeff)
-                    //console.log("normal", normalCoeff)
-                    //console.log("normalHaisui", normalHaisuiCoeff)
-                    //console.log("element", elementCoeff)
-                    //console.log("other", otherCoeff)
 
                     var summedAttack = (baseAttack + armAttack + totalSummon["attack"] + parseInt(prof.attackBonus) ) * (1.0 + buff["master"])
-
                     var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff
-                    return {totalAttack: Math.round(totalAttack), displayAttack: Math.round(summedAttack)};
+
+                    // for HP
+                    var totalHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + buff["masterHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+                    return {totalAttack: Math.round(totalAttack), displayAttack: Math.round(summedAttack), totalHP: Math.round(totalHP)};
                 },
                 calculateResult: function() {
                   var prof = this.props.data.profile; var arml = this.props.data.armlist;
                   var summon = this.props.data.summon;
 
                   if (prof != undefined && arml != undefined && summon != undefined) {
-                      var totalBuff = {master: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0};
+                      var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hpBonus: 0.0};
 
+                      // 後から追加したパラメータはNaNなことがあるので追加処理
                       if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
+                      if(!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
+                      if(!isNaN(prof.hpBonus)) totalBuff["hpBonus"] += parseInt(prof.hpBonus);
                       totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
                       totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
                       totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
                       totalBuff["zenith1"] += zenith[prof.zenithBonus1];
                       totalBuff["zenith2"] += zenith[prof.zenithBonus2];
 
+                      // sortKey がNaNでないならそちらを使う、NaNなら総合攻撃力で
+                      var sortkey = "totalAttack"
+                      var sortkeyname = "総合攻撃力"
+                      if(prof.sortKey == prof.sortKey) {
+                          sortkey = keyTypes[prof.sortKey]
+                          sortkeyname = prof.sortKey
+                      }
+
                       var result = [];
                       for(var i = 0; i < summon.length; i++){
-                          result.push({summonNo: i, summon: summon[i], result: this.calculateBasedOneSummon(summon[i], prof, arml, totalBuff)});
+                          result.push({summonNo: i, summon: summon[i], sortkeyname: sortkeyname, result: this.calculateBasedOneSummon(summon[i], prof, arml, totalBuff, sortkey)});
                       }
                       return result
                   } else {
@@ -509,13 +572,14 @@
                             {res.map(function(r) {
                                 return(
                                     <div className="result">
-                                        <h2> 結果: No. {r.summonNo + 1} ({summonTypes[r.summon.selfSummonType]}{r.summon.selfSummonAmount} + {summonTypes[r.summon.friendSummonType]}{r.summon.friendSummonAmount}) </h2>
+                                        <h2> 結果 ({r.sortkeyname}): No. {r.summonNo + 1} ({summonTypes[r.summon.selfSummonType]}{r.summon.selfSummonAmount} + {summonTypes[r.summon.friendSummonType]}{r.summon.friendSummonAmount}) </h2>
                                         <table>
                                         <thead>
                                         <tr>
                                             <th>順位</th>
                                             <th>総合攻撃力</th>
                                             <th>表示攻撃力</th>
+                                            <th>HP</th>
                                             {armnames.map(function(m){ return <th>{m}</th>; })}
                                         </tr>
                                         </thead>
@@ -539,6 +603,7 @@
                                         <td> {m.rank} </td>
                                         <td> {m.totalAttack} </td>
                                         <td> {m.displayAttack} </td>
+                                        <td> {m.totalHP} </td>
                                         {m.armNumbers.map(function(am){
                                             return (<td>{am} 本</td>);
                                         })}
@@ -560,7 +625,7 @@
                     };
                 },
                 componentWillReceiveProps: function(nextProps) {
-                    if (nextProps.armNum < this.props.armNum) {
+                    if (parseInt(nextProps.armNum) < parseInt(this.props.armNum)) {
                         var newalist = this.state.alist;
                         newalist.pop();
                         this.setState({alist: newalist})
@@ -585,7 +650,7 @@
                             <tr>
                                 <th>武器名</th>
                                 <th>攻撃力</th>
-                                <th>HP(仮)</th>
+                                <th>HP</th>
                                 <th className="tiny">武器種</th>
                                 <th className="tiny">コスモス？</th>
                                 <th>スキル1</th>
@@ -700,10 +765,12 @@
                     var zenithBonuses = Object.keys(zenith).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
                     var typeBonus = Object.keys(types).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
                     var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
+                    var ktypes = Object.keys(keyTypes).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
                     return {
                         zenithBonuses: zenithBonuses,
                         typeBonus: typeBonus,
                         atypes: atypes,
+                        keyTypes: ktypes,
                     };
                 },
                 componentDidMount: function(){
@@ -722,7 +789,9 @@
                     return {
                         rank: 1,
                         attackBonus: 0,
+                        hpBonus: 0,
                         masterBonus: 0,
+                        masterBonusHP: 0,
                         normalBuff: 0,
                         elementBuff: 0,
                         otherBuff: 0,
@@ -734,6 +803,7 @@
                         favArm2: "無し",
                         armNum: 3,
                         summonNum: 1,
+                        sortKey: "総合攻撃力",
                     };
                 },
                 handleEvent: function(key, e) {
@@ -761,18 +831,21 @@
                                 <tr>
                                     <th>Rank</th>
                                     <th>攻撃力ボーナス</th>
-                                    <th>マスターボーナス(%)</th>
+                                    <th>HPボーナス</th>
+                                    <th>マスターボーナスATK(%)</th>
+                                    <th>マスターボーナスHP(%)</th>
                                     <th>HP (%)</th>
-                                    <th>属性相性</th>
                                 </tr>
                                 <tr>
                                     <td><input type="number"  min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
                                     <td><input type="number" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
+                                    <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
                                     <td><input type="number" min="0" max="100" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
+                                    <td><input type="number" min="0" max="100" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}/></td>
                                     <td> <input type="number" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                                    <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {this.props.typeBonus} </select></td>
                                 </tr>
                                 <tr>
+                                    <th>属性相性</th>
                                     <th>得意武器1</th>
                                     <th>得意武器2</th>
                                     <th>武器ゼニス1</th>
@@ -780,6 +853,7 @@
                                     <th>通常バフ</th>
                                 </tr>
                                 <tr>
+                                    <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {this.props.typeBonus} </select></td>
                                     <td><select value={this.state.favArm1} onChange={this.handleEvent.bind(this, "favArm1")} > {this.props.atypes} </select></td>
                                     <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} > {this.props.atypes} </select></td>
                                     <td><select value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </select></td>
@@ -791,12 +865,14 @@
                                     <th>その他バフ</th>
                                     <th>武器種類数</th>
                                     <th>召喚石の組数</th>
+                                    <th>優先する項目</th>
                                 </tr>
                                 <tr>
                                     <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
                                     <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
                                     <td><input type="number" min="1" max="20" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
                                     <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
+                                    <td><select value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </select></td>
                                 </tr>
                                 </form>
                                 </table>
@@ -898,24 +974,24 @@
             // Twitter Button
             var TwitterShareButton = React.createClass ({
                 componentWillReceiveProps: function(nextProps){
-                    var url = "http://hsimyu.net/motocal/?data=" + Base64.encode(JSON.stringify(this.props.data))
+                    var url = "http://hsimyu.net/motocal?data=" + Base64.encode(JSON.stringify(this.props.data))
                     this.setState({url: url});
                 },
                 getInitialState: function() {
-                    var url = "http://hsimyu.net/motocal/?data=" + Base64.encode(JSON.stringify(this.props.data))
+                    var url = "http://hsimyu.net/motocal?data=" + Base64.encode(JSON.stringify(this.props.data))
                     return {
                         url: url,
                     };
                 },
                 render: function() {
-                  var tweeturl = "http://twitter.com/share?url=" + this.state.url + "&text=元カレ計算機 / "
+                  var tweeturl = "http://twitter.com/share?url=" + this.state.url
                   return (
                         <div className="tweet">
                             <h3>保存用URL</h3>
-                            <a href={tweeturl} target="_blank"><button type="button" className="tweetButton">Tweet</button></a>
                             {this.state.url}
                         </div>
                    );
+                   //<a href={tweeturl} target="_blank"><button type="button" className="tweetButton">Tweet</button></a>
                 },
             });
 
@@ -926,13 +1002,16 @@
                         <hr/>
                         <div className="noticeLeft">
                             <h3>更新履歴</h3>
+                                2016/05/29 20:31: HPと守護スキルの実装、優先項目を選んでソートできるように修正<br />
+                                2016/05/29 20:31: 武器種類数を10本に設定すると表示がバグる不具合を修正 <br />
                                 2016/05/26 21:47: マスターボーナスがなかった場合のURLを入力してしまうと表示がNaNになってしまう不具合を修正 <br />
-                                2016/05/26 21:42: 武器種類数を10本に設定すると表示がバグる不具合を修正 <br />
                                 2016/05/26 21:13: マスターボーナスの項が抜けてたので追加 / ついでに表示される攻撃力も算出されるように変更(確認用) <br />
                                 2016/05/25 22:24: 保存用URLのTweetボタンを追加 <br />
                                 2016/05/25 21:39: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）
                             <h3>注記</h3>
                                 - HPとDA率の項は仮入力項目です。将来的にHPと合計DA率 (とそれらをkeyにしたsort) などを実装予定。<br/>
+                                - 蘭子のアンノウン加護アップってアンノウンVITにも効果あります？<br/>
+                                - 背水の計算式は日比野さんのところの式を利用しています。<br/>
                                 - 保存用URLを使用することで現在の編成を共有できます
                             <h3>LICENSE</h3>
                             <ul>
@@ -944,8 +1023,8 @@
                             以下のサイトを参考にさせていただきました。
                             <ul>
                                 <li> <a href="http://gbf-wiki.com">グランブルーファンタジー(グラブル)攻略wiki</a></li>
-                                <li> <a href="http://hibino0.web.fc2.com/grbr_atk_calc/atk_calc.html">グランブルーファンタジー攻撃力計算機</a></li>
-                                <li> <a href="http://hibino0.web.fc2.com/grbr_weapon_calc/weapon_calc.html">オススメ装備に自信ニキ</a></li>
+                                <li> <a href="http://hibin0.web.fc2.com/grbr_atk_calc/atk_calc.html">グランブルーファンタジー攻撃力計算機</a></li>
+                                <li> <a href="http://hibin0.web.fc2.com/grbr_weapon_calc/weapon_calc.html">オススメ装備に自信ニキ</a></li>
                             </ul>
                         </div>
                         <div className="noticeRight">
