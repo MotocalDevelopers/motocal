@@ -10,6 +10,7 @@
                 "normalM": {name:"通常攻刃(中)", type:"normal", amount: "M"},
                 "normalL": {name:"通常攻刃(大)", type:"normal", amount: "L"},
                 "normalLL": {name:"通常攻刃II", type:"normal", amount: "LL"},
+                "normalBoukunL": {name:"通常暴君", type:"normalBoukun", amount: "LL"},
                 "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
                 "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
                 "normalKamui": {name:"神威", type:"normalKamui", amount: "S"},
@@ -33,6 +34,7 @@
                 "unknownHPS": {name:"アンノウンVIT(小)", type:"unknownHP", amount: "S"},
                 "unknownHPM": {name:"アンノウンVIT(中)", type:"unknownHP", amount: "M"},
                 "unknownHPL": {name:"アンノウンVIT(大)", type:"unknownHP", amount: "L"},
+                "mifuneGokui": {name:"ミフネ流・極意", type:"mifuneATK", amount: "L"},
             };
 
             var armtypes = [
@@ -457,6 +459,8 @@
                         }
                     }
 
+                    var boukunHPdebuff = 0.00
+
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
                         var armSup= 1.0
@@ -517,6 +521,12 @@
                                     // バハ剣など
                                     totalSkills["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
                                     totalSkills["bahaHP"] += skillAmounts["bahaHP"][amount][slv - 1];
+                                } else if(stype == 'normalBoukun') {
+                                    boukunHPdebuff += 0.10
+                                    totalSkills["normal"] += skillAmounts["normal"][amount][slv - 1];
+                                } else if(stype == 'mifuneATK'){
+                                    boukunHPdebuff += 0.07
+                                    totalSkills["unknown"] += skillAmounts["unknown"][amount][slv - 1];
                                 } else {
                                     totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                                 }
@@ -548,7 +558,8 @@
 
                     // for HP
                     var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
-                    var totalHP = displayHP * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+                    var totalHP = displayHP * (1.0 - boukunHPdebuff + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+
                     return {totalAttack: Math.round(totalAttack), displayAttack: Math.round(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP)};
                 },
                 calculateResult: function() {
@@ -1066,6 +1077,7 @@
                         React.createElement("hr", null), 
                         React.createElement("div", {className: "noticeLeft"}, 
                             React.createElement("h3", null, "更新履歴"), 
+                                "2016/05/31: 表示項目を選べるように / 属性バフを加算し忘れていたので修正", React.createElement("br", null), 
                                 "2016/05/30: HPマスターボーナスをHPバフ側に加算していたので修正。", React.createElement("br", null), 
                                 "2016/05/29: 基礎HPの基礎式を修正。召喚石を増やした後減らすと結果表示が残る不具合修正。武器本数が少ないデータを読み込むと前のデータの武器が残ってしまう不具合を修正。", React.createElement("br", null), 
                                 "2016/05/29: 得意武器ゼニスIIに対応（★4、★5、★6）。得意武器Iはすべてマスター済みという前提で各6%, 8%, 10%として計算します。", React.createElement("br", null), 
