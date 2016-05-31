@@ -10,14 +10,21 @@
                 "normalM": {name:"通常攻刃(中)", type:"normal", amount: "M"},
                 "normalL": {name:"通常攻刃(大)", type:"normal", amount: "L"},
                 "normalLL": {name:"通常攻刃II", type:"normal", amount: "LL"},
+                "normalBoukunL": {name:"通常暴君", type:"normalBoukun", amount: "LL"},
                 "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
                 "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
+                "normalNiteS": {name:"通常二手(小)", type:"normalNite", amount: "S"},
+                "normalNiteM": {name:"通常二手(中)", type:"normalNite", amount: "M"},
+                "normalNiteL": {name:"通常二手(大)", type:"normalNite", amount: "L"},
+                "normalKatsumiM": {name:"通常克己(中)", type:"normalKatsumi", amount: "M"},
                 "normalKamui": {name:"神威", type:"normalKamui", amount: "S"},
-                "magnaM": {name: "M攻刃", type:"magna", amount:"M"},
-                "magnaL": {name: "M攻刃II", type:"magna", amount:"L"},
-                "magnaHaisuiS": {name:"M背水(小)", type:"magnaHaisui", amount: "S"},
-                "magnaHaisuiL": {name:"M背水(大)", type:"magnaHaisui", amount: "L"},
-                "magnaKamui": {name:"M神威", type:"magnaKamui", amount: "S"},
+                "magnaM": {name: "マグナ攻刃", type:"magna", amount:"M"},
+                "magnaL": {name: "マグナ攻刃II", type:"magna", amount:"L"},
+                "magnaHaisuiS": {name:"マグナ背水(小)", type:"magnaHaisui", amount: "S"},
+                "magnaHaisuiL": {name:"マグナ背水(大)", type:"magnaHaisui", amount: "L"},
+                "magnaKatsumiM": {name:"マグナ克己(中)", type:"magnaKatsumi", amount: "M"},
+                "magnaKamui": {name:"マグナ神威", type:"magnaKamui", amount: "S"},
+                "magnaBoukun": {name:"マグナ暴君", type:"magnaBoukun", amount: "L"},
                 "bahaAT": {name:"バハ攻", type:"bahaAT", amount: "L"},
                 "bahaATHP": {name:"バハ攻HP", type:"bahaATHP", amount: "M"},
                 "bahaHP": {name:"バハHP", type:"bahaHP", amount: "L"},
@@ -33,6 +40,8 @@
                 "unknownHPS": {name:"アンノウンVIT(小)", type:"unknownHP", amount: "S"},
                 "unknownHPM": {name:"アンノウンVIT(中)", type:"unknownHP", amount: "M"},
                 "unknownHPL": {name:"アンノウンVIT(大)", type:"unknownHP", amount: "L"},
+                "unknownOtherBoukunL": {name:"ミフネ流・極意", type:"unknownOtherBoukun", amount: "L"},
+                "unknownOtherNiteS": {name:"ミフネ流・双星", type:"unknownOtherNite", amount: "S"},
             };
 
             var armtypes = [
@@ -112,6 +121,21 @@
                     "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
                     "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
                     "LL": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
+                },
+                "normalNite":{
+                    "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
+                    "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
+                    "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
+                    "LL": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
+                },
+                "normalKatsumi":{
+                    "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
+                },
+                "magnaKatsumi":{
+                    "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
+                },
+                "unknownOtherNite":{
+                    "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
                 },
             }
 
@@ -200,6 +224,7 @@
                             <hr />
                             <div className="bottom">
                                 <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} />
+                                <hr />
                                 <ResultList data={this.state} />
                                 <Notice />
                             </div>
@@ -243,7 +268,7 @@
                     var dataName = this.props.dataName;
                     return (
                         <div className="summonList">
-                            <h2> 召喚石 </h2>
+                            <h3> 召喚石 </h3>
                             <table>
                             <thead>
                             <tr>
@@ -252,10 +277,11 @@
                                 <th>加護量</th>
                                 <th>フレ石</th>
                                 <th>フレ加護量</th>
-                                <th>召喚石攻撃力</th>
-                                <th>召喚石HP</th>
-                                <th>加護HPUP(%)</th>
-                                <th>召喚石DA率（仮）</th>
+                                <th>合計攻撃力</th>
+                                <th>合計HP</th>
+                                <th>HPUP(%)</th>
+                                <th>DA率</th>
+                                <th>TA率</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -276,10 +302,11 @@
                         selfSummonAmount: 0,
                         friendSummonType: "magna",
                         friendSummonAmount: 0,
-                        Attack: 0,
+                        attack: 0,
                         hp: 0,
                         hpBonus: 0,
                         DA: 0,
+                        TA: 0,
                     };
                 },
                 componentDidMount: function(){
@@ -323,10 +350,11 @@
                                 <td><input type="number" min="0" max="120" value={this.state.selfSummonAmount} onChange={this.handleEvent.bind(this, "selfSummonAmount")} /></td>
                                 <td><select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{smtypes}</select></td>
                                 <td><input type="number" min="0" max="120" value={this.state.friendSummonAmount} onChange={this.handleEvent.bind(this, "friendSummonAmount")} /></td>
-                                <td><input type="number" min="0" value={this.state.Attack} onChange={this.handleEvent.bind(this, "Attack")}/></td>
+                                <td><input type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
                                 <td><input type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
                                 <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
                                 <td><input type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                                <td><input type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
                             </form>
                         </tr>
                     );
@@ -335,20 +363,33 @@
             });
 
             var ResultList = React.createClass({
+                getInitialState: function() {
+                    return {
+                        switchTotalAttack: 1,
+                        switchATKandHP: 1,
+                        switchHP: 1,
+                        switchDATA: 1,
+                    };
+                },
+                handleEvent: function(key, e) {
+                    var newState = this.state
+                    newState[key] = (newState[key] == 0) ? 1 : 0
+                    this.setState(newState)
+                },
                 calculateBasedOneSummon: function(summon, prof, arml, buff, sortkey) {
-                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0};
+                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0, ta: 0};
 
                     // 自分の加護
                     totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
                     // フレンドの加護
                     totalSummon[summon.friendSummonType] += 0.01 * parseInt(summon.friendSummonAmount)
 
-                    totalSummon["attack"] = parseInt(summon.Attack)
-
                     // 後から追加したので NaN でないか判定しておく
+                    if(!isNaN(summon.attack)) totalSummon["attack"] = parseInt(summon.attack)
                     if(!isNaN(summon.hp)) totalSummon["hp"] = parseInt(summon.hp)
                     if(!isNaN(summon.hpBonus)) totalSummon["hpBonus"] = 0.01 * parseInt(summon.hpBonus)
-                    if(!isNaN(summon.DA)) totalSummon["da"] = parseInt(summon.DA)
+                    if(!isNaN(summon.DA)) totalSummon["da"] = 0.01 * parseInt(summon.DA)
+                    if(!isNaN(summon.TA)) totalSummon["ta"] = 0.01 * parseInt(summon.TA)
 
                     // 全武器に対して [最小考慮数, ... , 最大考慮数] の配列を計算しておく
                     var armNumArray = []
@@ -397,27 +438,28 @@
                     var result = []
                     for(var i = 0; i < combinations.length; i++){
                         var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml, buff)
-                        result.push({rank: i, totalAttack: oneres.totalAttack, displayAttack: oneres.displayAttack, totalHP: oneres.totalHP, displayHP: oneres.displayHP, armNumbers: combinations[i]});
+                        result.push({rank: i, data: oneres, armNumbers: combinations[i]});
                     }
 
                     if(sortkey == "ATKandHP") {
                         result.sort(function(a, b){
-                            if((a.displayAttack + a.displayHP) < (b.displayAttack + b.displayHP)) return  1;
-                            if((a.displayAttack + a.displayHP) > (b.displayAttack + b.displayHP)) return -1;
+                            if((a.data.displayAttack + a.data.displayHP) < (b.data.displayAttack + b.data.displayHP)) return  1;
+                            if((a.data.displayAttack + a.data.displayHP) > (b.data.displayAttack + b.data.displayHP)) return -1;
                             return 0;
                         });
                     } else {
                         result.sort(function(a, b){
-                            if(a[sortkey] < b[sortkey]) return  1;
-                            if(a[sortkey] > b[sortkey]) return -1;
+                            if(a["data"][sortkey] < b["data"][sortkey]) return  1;
+                            if(a["data"][sortkey] > b["data"][sortkey]) return -1;
                             return 0;
                         });
                     }
+
+                    while(result.length > 10){ result.pop(); }
+
                     for(var i = 0; i < result.length; i++){
                         result[i]["rank"] = i + 1
                     }
-
-                    while(result.length > 10){ result.pop(); }
 
                     return result;
                 },
@@ -429,7 +471,7 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, normalKamui: 0, magnaKamui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, normalKamui: 0, magnaKamui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0};
                     var armAttack = 0;
                     var armHP = 0;
 
@@ -441,6 +483,8 @@
                             cosmosType = arm.armType
                         }
                     }
+
+                    var boukunHPdebuff = 0.00
 
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
@@ -502,6 +546,15 @@
                                     // バハ剣など
                                     totalSkills["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
                                     totalSkills["bahaHP"] += skillAmounts["bahaHP"][amount][slv - 1];
+                                } else if(stype == 'normalBoukun') {
+                                    boukunHPdebuff += 0.10
+                                    totalSkills["normal"] += skillAmounts["normal"][amount][slv - 1];
+                                } else if(stype == 'magnaBoukun') {
+                                    boukunHPdebuff += 0.10
+                                    totalSkills["magna"] += skillAmounts["magna"][amount][slv - 1];
+                                } else if(stype == 'unknownOtherBoukun'){
+                                    boukunHPdebuff += 0.07
+                                    totalSkills["unknown"] += skillAmounts["unknown"][amount][slv - 1];
                                 } else {
                                     totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                                 }
@@ -525,7 +578,7 @@
 
                     var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["bahaAT"] + totalSummon["chara"] + buff["normal"]
                     var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
-                    var elementCoeff = weakPoint + totalSummon["element"]
+                    var elementCoeff = weakPoint + totalSummon["element"] + buff["element"]
                     var otherCoeff = 1.0 + buff["other"]
 
                     var summedAttack = (baseAttack + armAttack + totalSummon["attack"] + parseInt(prof.attackBonus) ) * (1.0 + buff["master"])
@@ -533,21 +586,28 @@
 
                     // for HP
                     var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
-                    var totalHP = displayHP * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
-                    return {totalAttack: Math.round(totalAttack), displayAttack: Math.round(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP)};
+                    var totalHP = displayHP * (1.0 - boukunHPdebuff + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+
+                    // for DA and TA
+                    var totalDA = 100.0 * (buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"])
+                    var totalTA = 100.0 * (buff["ta"] + totalSummon["ta"])
+
+                    return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP), totalDA: totalDA, totalTA: totalTA};
                 },
                 calculateResult: function() {
                   var prof = this.props.data.profile; var arml = this.props.data.armlist;
                   var summon = this.props.data.summon;
 
                   if (prof != undefined && arml != undefined && summon != undefined) {
-                      var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hpBonus: 0.0, hp: 0.0};
+                      var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hpBonus: 0.0, hp: 0.0, da: 0.0, ta: 0.0};
 
                       // 後から追加したパラメータはNaNなことがあるので追加処理
                       if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
                       if(!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
                       if(!isNaN(prof.hpBonus)) totalBuff["hpBonus"] += parseInt(prof.hpBonus);
                       if(!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
+                      if(!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseInt(prof.daBuff);
+                      if(!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseInt(prof.taBuff);
                       totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
                       totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
                       totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
@@ -574,6 +634,7 @@
                 },
                 render: function() {
                     res = this.calculateResult();
+                    switcher = this.state;
                     var armnames = []
                     for(var i = 0; i < this.props.data.armlist.length; i++){
                         armnames[i] = this.props.data.armlist[i].name;
@@ -583,8 +644,28 @@
                         }
                     }
 
+                    var tableheader = []
+                    if(switcher.switchTotalAttack) {
+                        tableheader.push('総合攻撃力')
+                    }
+                    if(switcher.switchATKandHP) {
+                        tableheader.push('戦力')
+                    }
+                    if(switcher.switchHP) {
+                        tableheader.push('HP')
+                    }
+                    if(switcher.switchDATA) {
+                        tableheader.push('連続攻撃率(%)')
+                    }
+
                     return (
                         <div className="resultList">
+                            表示項目: 
+                            <input type="checkbox" checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力
+                            <input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力
+                            <input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP
+                            <input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率
+
                             {res.map(function(r) {
                                 return(
                                     <div className="result">
@@ -593,13 +674,11 @@
                                         <thead>
                                         <tr>
                                             <th>順位</th>
-                                            <th>総合攻撃力</th>
-                                            <th>戦力</th>
-                                            <th>HP</th>
+                                            {tableheader.map(function(m){ return <th>{m}</th>; })}
                                             {armnames.map(function(m){ return <th>{m}</th>; })}
                                         </tr>
                                         </thead>
-                                        <Result key={r.summonNo} data={r.result} />
+                                        <Result key={r.summonNo} data={r.result} switcher={switcher}/>
                                         </table>
                                     </div>
                                 );
@@ -611,15 +690,30 @@
 
             var Result = React.createClass({
                 render: function() {
+                    var sw = this.props.switcher;
                     return (
                         <tbody className="result">
                             {this.props.data.map(function(m) {
+                                var tablebody = []
+                                if(sw.switchTotalAttack) {
+                                    tablebody.push(m.data.totalAttack)
+                                }
+                                if(sw.switchATKandHP) {
+                                    var senryoku = parseInt(m.data.displayAttack) + parseInt(m.data.displayHP)
+                                    tablebody.push(senryoku + ' (' + parseInt(m.data.displayAttack) + ' + ' + parseInt(m.data.displayHP) + ')')
+                                }
+                                if(sw.switchHP) {
+                                    tablebody.push(m.data.totalHP)
+                                }
+                                if(sw.switchDATA) {
+                                    tablebody.push('DA:' + m.data.totalDA.toFixed(1) + '%, TA: ' + m.data.totalTA.toFixed(1) + '%')
+                                }
                                 return (
                                     <tr key={m.rank}>
-                                        <td> {m.rank} </td>
-                                        <td> {m.totalAttack} </td>
-                                        <td> {parseInt(m.displayAttack) + parseInt(m.displayHP)} ({m.displayAttack} + {m.displayHP})</td>
-                                        <td> {m.totalHP} </td>
+                                        <td>{m.rank}</td>
+                                        {tablebody.map(function(am){
+                                            return (<td>{am}</td>);
+                                        })}
                                         {m.armNumbers.map(function(am){
                                             return (<td>{am} 本</td>);
                                         })}
@@ -814,6 +908,8 @@
                         elementBuff: 0,
                         otherBuff: 0,
                         hpBuff: 0,
+                        daBuff: 0,
+                        taBuff: 0,
                         hp: 100,
                         zenithBonus1: "無し",
                         zenithBonus2: "無し",
@@ -844,9 +940,9 @@
                 render: function() {
                         return (
                             <div className="profile">
-                                <h2> プロフィール </h2>
-                                <table>
+                                <h3> 基本プロフィール </h3>
                                 <form className="profileForm">
+                                <table>
                                 <tr>
                                     <th>Rank</th>
                                     <th>攻撃力ボーナス</th>
@@ -869,7 +965,6 @@
                                     <th>得意武器2</th>
                                     <th>武器ゼニス1</th>
                                     <th>武器ゼニス2</th>
-                                    <th>通常バフ</th>
                                 </tr>
                                 <tr>
                                     <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {this.props.typeBonus} </select></td>
@@ -877,26 +972,41 @@
                                     <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} > {this.props.atypes} </select></td>
                                     <td><select value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </select></td>
                                     <td><select value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </select></td>
-                                    <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
                                 </tr>
-                                <tr>
-                                    <th>属性バフ</th>
-                                    <th>その他バフ</th>
-                                    <th>HPバフ</th>
-                                    <th>武器種類数</th>
-                                    <th>召喚石の組数</th>
-                                    <th>優先する項目</th>
-                                </tr>
-                                <tr>
-                                    <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                                    <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                                    <td><input type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
-                                    <td><input type="number" min="1" max="20" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
-                                    <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
-                                    <td><select value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </select></td>
-                                </tr>
-                                </form>
                                 </table>
+                                <h3>バフ(%表記)</h3>
+                                <table>
+                                    <tr>
+                                        <th>通常バフ</th>
+                                        <th>属性バフ</th>
+                                        <th>その他バフ</th>
+                                        <th>HPバフ</th>
+                                        <th>DAバフ</th>
+                                        <th>TAバフ</th>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
+                                        <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                                        <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                                        <td><input type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
+                                        <td><input type="number"  min="0" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
+                                        <td><input type="number"  min="0" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
+                                    </tr>
+                                </table>
+                                <h3>システム関連</h3>
+                                <table>
+                                    <tr>
+                                        <th>武器種類数</th>
+                                        <th>召喚石の組数</th>
+                                        <th>優先する項目</th>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="number" min="1" max="20" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
+                                        <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
+                                        <td><select value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </select></td>
+                                    </tr>
+                                </table>
+                                </form>
                             </div>
                         );
                     }
@@ -1023,6 +1133,7 @@
                         <hr/>
                         <div className="noticeLeft">
                             <h3>更新履歴</h3>
+                                2016/05/31: 表示項目を選べるように / 属性バフを加算し忘れていたので修正 / 暴君とミフネ流のHP計算に対応 / DATA率の計算に対応<br />
                                 2016/05/30: HPマスターボーナスをHPバフ側に加算していたので修正。<br />
                                 2016/05/29: 基礎HPの基礎式を修正。召喚石を増やした後減らすと結果表示が残る不具合修正。武器本数が少ないデータを読み込むと前のデータの武器が残ってしまう不具合を修正。<br />
                                 2016/05/29: 得意武器ゼニスIIに対応（★4、★5、★6）。得意武器Iはすべてマスター済みという前提で各6%, 8%, 10%として計算します。<br />
@@ -1032,24 +1143,31 @@
                                 2016/05/26: マスターボーナスの項が抜けてたので追加 / ついでに表示される攻撃力も算出されるように変更(確認用) <br />
                                 2016/05/25: 保存用URLのTweetボタンを追加 <br />
                                 2016/05/25: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）
+
                             <h3>注記</h3>
-                                - DA率の項は仮入力項目です。<br/>
-                                - 基礎HPの基礎式は 600 + 8 * rank + 4 * (rank - 100)としていますが、ズレる場合はお知らせください。<br/>
+                                - 未対応: 羅刹/三手/コスモス系スキル<br/>
+                                - 二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)<br/>
+                                - 克己のDA率上昇量は二手(中)と全く同じとしています。<br/>
+                                - 暴君の攻撃力上昇量は対応するスキルの(大)と同様としています。<br/>
+                                - 基礎HPの基礎式は 600 + 8 * rank(100まで) + 4 * (rank - 100)としていますが、ズレる場合はお知らせください。<br/>
                                 - 蘭子のアンノウン加護アップってアンノウンVITにも効果ありますよね？<br/>
                                 - 背水の計算式は日比野さんのところの式を利用しています。<br/>
                                 - 保存用URLを使用することで現在の編成を共有できます
+
                             <h3>LICENSE</h3>
                             <ul>
                                 <li> <a href="http://facebook.github.io/react">React</a>: Copyright &copy; 2013-2016 Facebook Inc. v0.13.3 </li>
                                 <li> <a href="http://github.com/dankogai/js-base64">dankogai/js-base64</a>: Copyright &copy; 2014, Dan Kogai <a href="./js-base64/LICENSE.md"> LICENSE </a></li>
 
                             </ul>
+
                             <h3>参考文献</h3>
                             以下のサイトを参考にさせていただきました。
                             <ul>
                                 <li> <a href="http://gbf-wiki.com">グランブルーファンタジー(グラブル)攻略wiki</a></li>
                                 <li> <a href="http://hibin0.web.fc2.com/grbr_atk_calc/atk_calc.html">グランブルーファンタジー攻撃力計算機</a></li>
                                 <li> <a href="http://hibin0.web.fc2.com/grbr_weapon_calc/weapon_calc.html">オススメ装備に自信ニキ</a></li>
+                                <li> <a href="http://greatsundome.hatenablog.com/entry/2015/12/09/230544">すんどめ侍のグラブル生活 - 【グラブル】武器スキル検証結果</a></li>
                             </ul>
                         </div>
                         <div className="noticeRight">

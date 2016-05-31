@@ -34,7 +34,7 @@ body {
 .root .top {
     width: 100%;
     margin-bottom: 10px;
-    min-height: 250px;
+    min-height: 320px;
     text-align: left;
 }
 
@@ -72,9 +72,14 @@ body {
 }
 
 .profile {
-    width: 50%;
+    width: 40%;
     margin-right: 10px;
     float: left;
+}
+
+h3 {
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .profile table th {
@@ -86,12 +91,12 @@ body {
 }
 
 .summonList {
-    width: calc(50% - 10px);
+    width: calc(60% - 10px);
     float: left;
 }
 
 .summonList th {
-    width: calc(100%/9);
+    width: calc(100%/10);
 }
 
 .summonList input {
