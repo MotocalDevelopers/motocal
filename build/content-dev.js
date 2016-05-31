@@ -200,6 +200,7 @@
                             React.createElement("hr", null), 
                             React.createElement("div", {className: "bottom"}, 
                                 React.createElement(ArmList, {dataName: this.state.dataName, armNum: this.state.armNum, onChange: this.onChangeArmData}), 
+                                React.createElement("hr", null), 
                                 React.createElement(ResultList, {data: this.state}), 
                                 React.createElement(Notice, null)
                             )
@@ -335,6 +336,19 @@
             });
 
             var ResultList = React.createClass({displayName: "ResultList",
+                getInitialState: function() {
+                    return {
+                        switchTotalAttack: 1,
+                        switchATKandHP: 1,
+                        switchHP: 1,
+                        switchDATA: 1,
+                    };
+                },
+                handleEvent: function(key, e) {
+                    var newState = this.state
+                    newState[key] = (newState[key] == 0) ? 1 : 0
+                    this.setState(newState)
+                },
                 calculateBasedOneSummon: function(summon, prof, arml, buff, sortkey) {
                     var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0};
 
@@ -413,11 +427,12 @@
                             return 0;
                         });
                     }
+
+                    while(result.length > 10){ result.pop(); }
+
                     for(var i = 0; i < result.length; i++){
                         result[i]["rank"] = i + 1
                     }
-
-                    while(result.length > 10){ result.pop(); }
 
                     return result;
                 },
@@ -532,8 +547,8 @@
                     var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff
 
                     // for HP
-                    var totalHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + buff["masterHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
                     var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
+                    var totalHP = displayHP * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
                     return {totalAttack: Math.round(totalAttack), displayAttack: Math.round(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP)};
                 },
                 calculateResult: function() {
@@ -541,12 +556,13 @@
                   var summon = this.props.data.summon;
 
                   if (prof != undefined && arml != undefined && summon != undefined) {
-                      var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hpBonus: 0.0};
+                      var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hpBonus: 0.0, hp: 0.0};
 
                       // 後から追加したパラメータはNaNなことがあるので追加処理
                       if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
                       if(!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
                       if(!isNaN(prof.hpBonus)) totalBuff["hpBonus"] += parseInt(prof.hpBonus);
+                      if(!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
                       totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
                       totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
                       totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
@@ -573,6 +589,7 @@
                 },
                 render: function() {
                     res = this.calculateResult();
+                    switcher = this.state;
                     var armnames = []
                     for(var i = 0; i < this.props.data.armlist.length; i++){
                         armnames[i] = this.props.data.armlist[i].name;
@@ -582,8 +599,25 @@
                         }
                     }
 
+                    var tableheader = []
+                    if(switcher.switchTotalAttack) {
+                        tableheader.push('総合攻撃力')
+                    }
+                    if(switcher.switchATKandHP) {
+                        tableheader.push('戦力')
+                    }
+                    if(switcher.switchHP) {
+                        tableheader.push('HP')
+                    }
+
                     return (
                         React.createElement("div", {className: "resultList"}, 
+                            "表示項目:",  
+                            React.createElement("input", {type: "checkbox", checked: this.state.switchTotalAttack, onChange: this.handleEvent.bind(this, "switchTotalAttack")}), " 総合攻撃力", 
+                            React.createElement("input", {type: "checkbox", checked: this.state.switchATKandHP, onChange: this.handleEvent.bind(this, "switchATKandHP")}), " 戦力", 
+                            React.createElement("input", {type: "checkbox", checked: this.state.switchHP, onChange: this.handleEvent.bind(this, "switchHP")}), " HP", 
+                            React.createElement("input", {type: "checkbox", checked: this.state.switchDATA, onChange: this.handleEvent.bind(this, "switchDATA")}), " 連続攻撃率", 
+
                             res.map(function(r) {
                                 return(
                                     React.createElement("div", {className: "result"}, 
@@ -592,13 +626,11 @@
                                         React.createElement("thead", null, 
                                         React.createElement("tr", null, 
                                             React.createElement("th", null, "順位"), 
-                                            React.createElement("th", null, "総合攻撃力"), 
-                                            React.createElement("th", null, "戦力"), 
-                                            React.createElement("th", null, "HP"), 
+                                            tableheader.map(function(m){ return React.createElement("th", null, m); }), 
                                             armnames.map(function(m){ return React.createElement("th", null, m); })
                                         )
                                         ), 
-                                        React.createElement(Result, {key: r.summonNo, data: r.result})
+                                        React.createElement(Result, {key: r.summonNo, data: r.result, switcher: switcher})
                                         )
                                     )
                                 );
@@ -610,15 +642,27 @@
 
             var Result = React.createClass({displayName: "Result",
                 render: function() {
+                    var sw = this.props.switcher;
                     return (
                         React.createElement("tbody", {className: "result"}, 
                             this.props.data.map(function(m) {
+                                var tablebody = []
+                                if(sw.switchTotalAttack) {
+                                    tablebody.push(m.totalAttack)
+                                }
+                                if(sw.switchATKandHP) {
+                                    var senryoku = parseInt(m.displayAttack) + parseInt(m.displayHP)
+                                    tablebody.push(senryoku + ' (' + parseInt(m.displayAttack) + ' + ' + parseInt(m.displayHP) + ')')
+                                }
+                                if(sw.switchHP) {
+                                    tablebody.push(m.totalHP)
+                                }
                                 return (
                                     React.createElement("tr", {key: m.rank}, 
-                                        React.createElement("td", null, " ", m.rank, " "), 
-                                        React.createElement("td", null, " ", m.totalAttack, " "), 
-                                        React.createElement("td", null, " ", parseInt(m.displayAttack) + parseInt(m.displayHP), " (", m.displayAttack, " + ", m.displayHP, ")"), 
-                                        React.createElement("td", null, " ", m.totalHP, " "), 
+                                        React.createElement("td", null, m.rank), 
+                                        tablebody.map(function(am){
+                                            return (React.createElement("td", null, am));
+                                        }), 
                                         m.armNumbers.map(function(am){
                                             return (React.createElement("td", null, am, " 本"));
                                         })
@@ -812,6 +856,7 @@
                         normalBuff: 0,
                         elementBuff: 0,
                         otherBuff: 0,
+                        hpBuff: 0,
                         hp: 100,
                         zenithBonus1: "無し",
                         zenithBonus2: "無し",
@@ -850,7 +895,7 @@
                                     React.createElement("th", null, "攻撃力ボーナス"), 
                                     React.createElement("th", null, "HPボーナス"), 
                                     React.createElement("th", null, "マスターボーナスATK(%)"), 
-                                    React.createElement("th", null, "マスターボーナスHP(%)(+バフ等)"), 
+                                    React.createElement("th", null, "マスターボーナスHP(%)"), 
                                     React.createElement("th", null, "HP (%)")
                                 ), 
                                 React.createElement("tr", null, 
@@ -880,6 +925,7 @@
                                 React.createElement("tr", null, 
                                     React.createElement("th", null, "属性バフ"), 
                                     React.createElement("th", null, "その他バフ"), 
+                                    React.createElement("th", null, "HPバフ"), 
                                     React.createElement("th", null, "武器種類数"), 
                                     React.createElement("th", null, "召喚石の組数"), 
                                     React.createElement("th", null, "優先する項目")
@@ -887,6 +933,7 @@
                                 React.createElement("tr", null, 
                                     React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.elementBuff, onChange: this.handleEvent.bind(this, "elementBuff")})), 
                                     React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.otherBuff, onChange: this.handleEvent.bind(this, "otherBuff")})), 
+                                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBuff, onChange: this.handleEvent.bind(this, "hpBuff")})), 
                                     React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "20", step: "1", value: this.state.armNum, onChange: this.handleArmNumChange})), 
                                     React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "4", step: "1", value: this.state.summonNum, onChange: this.handleSummonNumChange})), 
                                     React.createElement("td", null, React.createElement("select", {value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", this.props.keyTypes, " "))
@@ -1019,6 +1066,7 @@
                         React.createElement("hr", null), 
                         React.createElement("div", {className: "noticeLeft"}, 
                             React.createElement("h3", null, "更新履歴"), 
+                                "2016/05/30: HPマスターボーナスをHPバフ側に加算していたので修正。", React.createElement("br", null), 
                                 "2016/05/29: 基礎HPの基礎式を修正。召喚石を増やした後減らすと結果表示が残る不具合修正。武器本数が少ないデータを読み込むと前のデータの武器が残ってしまう不具合を修正。", React.createElement("br", null), 
                                 "2016/05/29: 得意武器ゼニスIIに対応（★4、★5、★6）。得意武器Iはすべてマスター済みという前提で各6%, 8%, 10%として計算します。", React.createElement("br", null), 
                                 "2016/05/29: HPと守護スキルの実装、優先項目を選んでソートできるように修正", React.createElement("br", null), 
