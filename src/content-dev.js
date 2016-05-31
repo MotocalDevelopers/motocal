@@ -540,7 +540,7 @@
 
                     var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["bahaAT"] + totalSummon["chara"] + buff["normal"]
                     var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
-                    var elementCoeff = weakPoint + totalSummon["element"]
+                    var elementCoeff = weakPoint + totalSummon["element"] + buff["element"]
                     var otherCoeff = 1.0 + buff["other"]
 
                     var summedAttack = (baseAttack + armAttack + totalSummon["attack"] + parseInt(prof.attackBonus) ) * (1.0 + buff["master"])
