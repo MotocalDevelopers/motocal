@@ -42,6 +42,9 @@
                 "unknownHPL": {name:"アンノウンVIT(大)", type:"unknownHP", amount: "L"},
                 "unknownOtherBoukunL": {name:"ミフネ流・極意", type:"unknownOtherBoukun", amount: "L"},
                 "unknownOtherNiteS": {name:"ミフネ流・双星", type:"unknownOtherNite", amount: "S"},
+                "cosmosAT": {name:"コスモスAT", type:"cosmos", amount: "L"},
+                "cosmosDF": {name:"コスモスDF", type:"cosmos", amount: "L"},
+                "cosmosBL": {name:"コスモスBL", type:"cosmos", amount: "L"},
             };
 
             var armtypes = [
@@ -471,7 +474,7 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, normalKamui: 0, magnaKamui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, normalKamui: 0, magnaKamui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, cosmosBL: 0};
                     var armAttack = 0;
                     var armHP = 0;
 
@@ -484,7 +487,7 @@
                         }
                     }
 
-                    var boukunHPdebuff = 0.00
+                    var HPdebuff = 0.00
 
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
@@ -547,14 +550,24 @@
                                     totalSkills["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
                                     totalSkills["bahaHP"] += skillAmounts["bahaHP"][amount][slv - 1];
                                 } else if(stype == 'normalBoukun') {
-                                    boukunHPdebuff += 0.10
+                                    HPdebuff += 0.10
                                     totalSkills["normal"] += skillAmounts["normal"][amount][slv - 1];
                                 } else if(stype == 'magnaBoukun') {
-                                    boukunHPdebuff += 0.10
+                                    HPdebuff += 0.10
                                     totalSkills["magna"] += skillAmounts["magna"][amount][slv - 1];
                                 } else if(stype == 'unknownOtherBoukun'){
-                                    boukunHPdebuff += 0.07
+                                    HPdebuff += 0.07
                                     totalSkills["unknown"] += skillAmounts["unknown"][amount][slv - 1];
+                                } else if(stype == 'cosmos') {
+                                    // コスモス武器
+                                    if(skillname == 'cosmosAT') {
+                                        totalSkills["normal"] += 0.20;
+                                        HPdebuff += 0.40
+                                    } else if(skillname == 'cosmosDF') {
+                                        HPdebuff -= 0.10
+                                    } else if(skillname == 'cosmosBL') {
+                                        totalSkills["cosmosBL"] = 0.20
+                                    }
                                 } else {
                                     totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
                                 }
@@ -586,10 +599,10 @@
 
                     // for HP
                     var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
-                    var totalHP = displayHP * (1.0 - boukunHPdebuff + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+                    var totalHP = displayHP * (1.0 - HPdebuff + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
 
                     // for DA and TA
-                    var totalDA = 100.0 * (buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"])
+                    var totalDA = 100.0 * (buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + totalSkills["cosmosBL"])
                     var totalTA = 100.0 * (buff["ta"] + totalSummon["ta"])
 
                     return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP), totalDA: totalDA, totalTA: totalTA};
@@ -830,6 +843,13 @@
                             newState[key] = 0
                             cosmosChecked = false;
 
+                            // コスモススキルが設定されていたら外す
+                            if( newState["skill1"].search(/cosmos/) >= 0){
+                                newState["skill1"] = "non"
+                            }
+                            if( newState["skill2"].search(/cosmos/) >= 0){
+                                newState["skill2"] = "non"
+                            }
                         // or else
                         } else {
                             if(!cosmosChecked) {
@@ -842,6 +862,17 @@
                         if (parseInt(e.target.value) <= parseInt(this.state.considerNumberMax)) newState[key] = parseInt(e.target.value)
                     } else if(key == "considerNumberMax") {
                         if (parseInt(e.target.value) >= parseInt(this.state.considerNumberMin)) newState[key] = parseInt(e.target.value)
+                    } else if( (key == "skill1" || key == "skill2") && (e.target.value.search(/cosmos/) >= 0)){
+                        if( newState["isCosmos"] == 1) {
+                            if( (key == "skill1" && newState["skill2"].search(/cosmos/) < 0) || (key == "skill2" && newState["skill1"].search(/cosmos/) < 0)) {
+                                // 既にcosmosスキルが設定されていない場合のみ設定可能
+                                newState[key] = e.target.value
+                            } else {
+                                alert("コスモススキルは一種のみ設定可能です。")
+                            }
+                        } else {
+                            alert("コスモススキルはコスモス武器の場合のみ指定することができます。(先にコスモス武器にチェックを入れてください。)")
+                        }
                     } else { newState[key] = e.target.value }
 
                     this.setState(newState)
@@ -1133,6 +1164,7 @@
                         React.createElement("hr", null), 
                         React.createElement("div", {className: "noticeLeft"}, 
                             React.createElement("h3", null, "更新履歴"), 
+                                "2016/06/02: コスモスAT/DF/BLの計算を追加。コスモス武器指定がない場合にはコスモススキルを指定できないように修正", React.createElement("br", null), 
                                 "2016/05/31: 表示項目を選べるように / 属性バフを加算し忘れていたので修正 / 暴君とミフネ流のHP計算に対応 / DATA率の計算に対応", React.createElement("br", null), 
                                 "2016/05/30: HPマスターボーナスをHPバフ側に加算していたので修正。", React.createElement("br", null), 
                                 "2016/05/29: 基礎HPの基礎式を修正。召喚石を増やした後減らすと結果表示が残る不具合修正。武器本数が少ないデータを読み込むと前のデータの武器が残ってしまう不具合を修正。", React.createElement("br", null), 
@@ -1145,7 +1177,7 @@
                                 "2016/05/25: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）", 
 
                             React.createElement("h3", null, "注記"), 
-                                "- 未対応: 羅刹/三手/コスモス系スキル", React.createElement("br", null), 
+                                "- 未対応: 羅刹/三手", React.createElement("br", null), 
                                 "- 二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)", React.createElement("br", null), 
                                 "- 克己のDA率上昇量は二手(中)と全く同じとしています。", React.createElement("br", null), 
                                 "- 暴君の攻撃力上昇量は対応するスキルの(大)と同様としています。", React.createElement("br", null), 
