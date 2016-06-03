@@ -369,9 +369,9 @@
                 getInitialState: function() {
                     return {
                         switchTotalAttack: 1,
-                        switchATKandHP: 1,
+                        switchATKandHP: 0,
                         switchHP: 1,
-                        switchDATA: 1,
+                        switchDATA: 0,
                     };
                 },
                 handleEvent: function(key, e) {
@@ -743,9 +743,33 @@
                 getInitialState: function() {
                     var al = []
                     for(var i = 0; i < this.props.armNum; i++) al[i] = []
+
+                    var arms = []
+                    for(var i=0; i < this.props.armNum; i++) { arms.push(i); }
+
                     return {
+                        // 武器リストをRootに渡すための連想配列
                         alist: al,
+                        // 武器リストを管理するための連想配列
+                        // indexによって保存データとの対応を取り、
+                        // その値をkeyとして使うことでコンポーネントの削除などを行う
+                        arms: arms,
                     };
+                },
+                updateArmNum: function(num) {
+                    var arms = this.state.arms
+                    if(arms.length < num) {
+                        var thelastvalue = arms[arms.length - 1]
+                        for(var i = 0; i < (num - arms.length); i++){
+                            arms.push(i + thelastvalue + 1)
+                        }
+                    } else {
+                        // ==の場合は考えなくてよい (問題がないので)
+                        while(arms.length > num){
+                            arms.pop();
+                        }
+                    }
+                    this.setState({arms: arms})
                 },
                 componentWillReceiveProps: function(nextProps) {
                     if (parseInt(nextProps.armNum) < parseInt(this.props.armNum)) {
@@ -755,6 +779,51 @@
                         }
                         this.setState({alist: newalist})
                     }
+                    console.log("received new arm num:", nextProps.armNum)
+                    console.log("old arm num:", this.props.armNum)
+                    this.updateArmNum(nextProps.armNum)
+                },
+                handleOnCopy: function(id, keyid, state) {
+                    var newarms = this.state.arms
+                    var maxvalue = Math.max.apply(null, newarms)
+
+                    newarms.splice(id + 1, 0, maxvalue + 1)
+                    newarms.pop();
+                    this.setState({arms: newarms})
+
+                    // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
+                    newData[this.props.dataName].armlist[id + 1] = state;
+
+                    var newalist = this.state.alist;
+                    newalist.splice(id + 1, 0, state)
+                    newalist.pop();
+                    this.setState({alist: newalist})
+
+                    // Root へ変化を伝搬
+                    this.props.onChange(newalist);
+                },
+                handleOnRemove: function(id, keyid, state) {
+                    var newarms = this.state.arms
+                    var maxvalue = Math.max.apply(null, newarms)
+
+                    // 該当の "key" を持つものを削除する
+                    newarms.splice(this.state.arms.indexOf(keyid), 1)
+                    // 1個補充
+                    newarms.push(maxvalue + 1)
+                    this.setState({arms: newarms})
+
+                    // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+                    newData[this.props.dataName].armlist[newarms.length - 1] = state;
+
+                    var newalist = this.state.alist;
+                    // 削除した分をalistからも削除
+                    newalist.splice(id, 1)
+                    // 1個補充
+                    newalist.push(state)
+                    this.setState({alist: newalist})
+
+                    // Root へ変化を伝搬
+                    this.props.onChange(newalist);
                 },
                 handleOnChange: function(key, state){
                     var newalist = this.state.alist;
@@ -764,9 +833,10 @@
                 },
                 render: function(){
                     var dataName = this.props.dataName;
-                    var arms = [];
-                    for(var i=0; i < this.props.armNum; i++) { arms.push({id: i}); }
+                    var arms = this.state.arms;
                     var hChange = this.handleOnChange;
+                    var hRemove = this.handleOnRemove;
+                    var hCopy = this.handleOnCopy;
                     return (
                         React.createElement("div", {className: "armList"}, 
                             React.createElement("h2", null, " 武器リスト "), 
@@ -781,12 +851,13 @@
                                 React.createElement("th", null, "スキル1"), 
                                 React.createElement("th", null, "スキル2"), 
                                 React.createElement("th", {className: "tiny"}, "SLv"), 
-                                React.createElement("th", {className: "consider"}, "考慮本数")
+                                React.createElement("th", {className: "consider"}, "考慮本数"), 
+                                React.createElement("th", {className: "system"}, "操作")
                             )
                             ), 
                             React.createElement("tbody", null, 
-                            arms.map(function(arm) {
-                                return React.createElement(Arm, {key: arm.id, onChange: hChange, id: arm.id, dataName: dataName});
+                            arms.map(function(arm, ind) {
+                                return React.createElement(Arm, {key: arm, onChange: hChange, onRemove: hRemove, onCopy: hCopy, id: ind, keyid: arm, dataName: dataName});
                             })
                             )
                             )
@@ -878,6 +949,12 @@
                     this.setState(newState)
                     this.props.onChange(this.props.id, newState)
                 },
+                clickRemoveButton: function(e) {
+                    this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
+                },
+                clickCopyButton: function(e, state) {
+                    this.props.onCopy(this.props.id, this.props.keyid, this.state)
+                },
                 render: function(){
                     var stypes = Object.keys(skilltypes).map(function(key){ return React.createElement("option", {value: key, key: key}, skilltypes[key].name);})
                     var atypes = armtypes.map(function(opt){return React.createElement("option", {value: opt.type, key: opt.name}, opt.name);});
@@ -896,6 +973,10 @@
                             React.createElement("td", null, 
                                 React.createElement("input", {className: "consider", type: "number", min: "0", max: "10", value: this.state.considerNumberMin, onChange: this.handleEvent.bind(this, "considerNumberMin")}), " 本～", 
                                 React.createElement("input", {className: "consider", type: "number", min: "0", max: "10", value: this.state.considerNumberMax, onChange: this.handleEvent.bind(this, "considerNumberMax")}), " 本"
+                            ), 
+                            React.createElement("td", {className: "system"}, 
+                                React.createElement("button", {className: "systemButton", type: "button", onClick: this.clickRemoveButton}, "削除"), 
+                                React.createElement("button", {className: "systemButton", type: "button", onClick: this.clickCopyButton}, "コピー")
                             )
                             )
                         )
@@ -1054,7 +1135,7 @@
                     // localStorage から data をロードする
                     if ("data" in localStorage && localStorage.data != "{}" ) {
                         var storedData = JSON.parse(Base64.decode(localStorage["data"]))
-                        newData = storedData;
+                        newData = JSON.parse(JSON.stringify(storedData));
                         this.setState({storedData: storedData})
                     }
                 },
@@ -1084,6 +1165,7 @@
                 onSubmitLoad: function(e){
                   e.preventDefault();
                   if(this.state.selectedData != ''){
+                      newData = JSON.parse(JSON.stringify(this.state.storedData));
                       this.setState({dataName: this.state.selectedData});
                       this.props.onLoadNewData(this.state.selectedData)
                   } else {
@@ -1094,7 +1176,6 @@
                   e.preventDefault();
                   if(this.state.dataName != ''){
                       var newState = this.state;
-                      // expensive deep copy..
                       newState["storedData"][this.state.dataName] = JSON.parse(JSON.stringify(this.props.data));
                       newState["selectedData"] = this.state.dataName;
 
@@ -1102,7 +1183,7 @@
                       var saveString = Base64.encode(JSON.stringify(newState.storedData));
                       localStorage.setItem("data", saveString);
 
-                      newData = newState.storedData;
+                      newData = JSON.parse(JSON.stringify(newState.storedData));
                       this.setState(newState);
                   } else {
                       alert("データ名を入力して下さい。")
