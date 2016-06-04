@@ -186,7 +186,7 @@
                   if(query != ''){
                       var initState = JSON.parse(Base64.decode(query));
                       initState["dataName"] = "urlData"
-                      newData["urlData"] = initState
+                      newData = initState
                       this.setState(initState);
                   }
               },
@@ -212,8 +212,8 @@
                   this.setState({summon: state});
               },
               handleChangeData: function(newDataName) {
-                  this.setState({armNum: newData[newDataName].armNum});
-                  this.setState({summonNum: newData[newDataName].summonNum});
+                  this.setState({armNum: newData.armNum});
+                  this.setState({summonNum: newData.summonNum});
                   this.setState({dataName: newDataName});
               },
               render: function() {
@@ -317,12 +317,10 @@
 
                    // もし newData に自分に該当するキーがあるなら読み込む
                    // (データロード時に新しく増えたコンポーネント用)
-                   if( this.props.dataName in newData ) {
-                       var summon = newData[this.props.dataName].summon
-                       if( this.props.id in summon ){
-                           state = summon[this.props.id]
-                           this.setState(state)
-                       }
+                   var summon = newData.summon
+                   if( summon != undefined && this.props.id in summon ){
+                       state = summon[this.props.id]
+                       this.setState(state)
                    }
                    // 初期化後 state を 上の階層に渡しておく
                    // summonList では onChange が勝手に上に渡してくれるので必要なし
@@ -331,7 +329,7 @@
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
-                        var newState = newData[nextProps.dataName].summon[this.props.id]
+                        var newState = newData.summon[this.props.id]
                         this.setState(newState);
                         this.props.onChange(this.props.id, newState)
                     }
@@ -602,8 +600,8 @@
                     var totalHP = displayHP * (1.0 - HPdebuff + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
 
                     // for DA and TA
-                    var totalDA = 100.0 * (buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + totalSkills["cosmosBL"])
-                    var totalTA = 100.0 * (buff["ta"] + totalSummon["ta"])
+                    var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + totalSkills["cosmosBL"])
+                    var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
 
                     return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP), totalDA: totalDA, totalTA: totalTA};
                 },
@@ -779,8 +777,6 @@
                         }
                         this.setState({alist: newalist})
                     }
-                    console.log("received new arm num:", nextProps.armNum)
-                    console.log("old arm num:", this.props.armNum)
                     this.updateArmNum(nextProps.armNum)
                 },
                 handleOnCopy: function(id, keyid, state) {
@@ -792,7 +788,7 @@
                     this.setState({arms: newarms})
 
                     // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
-                    newData[this.props.dataName].armlist[id + 1] = state;
+                    newData.armlist[id + 1] = state;
 
                     var newalist = this.state.alist;
                     newalist.splice(id + 1, 0, state)
@@ -813,7 +809,7 @@
                     this.setState({arms: newarms})
 
                     // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
-                    newData[this.props.dataName].armlist[newarms.length - 1] = state;
+                    newData.armlist[newarms.length - 1] = state;
 
                     var newalist = this.state.alist;
                     // 削除した分をalistからも削除
@@ -885,7 +881,7 @@
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
-                        var newState = newData[nextProps.dataName].armlist[this.props.id]
+                        var newState = newData.armlist[this.props.id]
                         this.setState(newState);
                         this.props.onChange(this.props.id, newState);
                     }
@@ -895,12 +891,10 @@
 
                    // もし newData に自分に該当するキーがあるなら読み込む
                    // (データロード時に新しく増えたコンポーネント用)
-                   if( this.props.dataName in newData ) {
-                       var armlist = newData[this.props.dataName].armlist
-                       if( this.props.id in armlist ){
-                           state = armlist[this.props.id]
-                           this.setState(state)
-                       }
+                   var armlist = newData.armlist
+                   if( armlist != undefined && this.props.id in armlist ){
+                       state = armlist[this.props.id]
+                       this.setState(state)
                    }
                    // 初期化後 state を 上の階層に渡しておく
                    // armList では onChange が勝手に上に渡してくれるので必要なし
@@ -1004,7 +998,7 @@
                 componentWillReceiveProps: function(nextProps){
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
-                        var newState = newData[nextProps.dataName].profile
+                        var newState = newData.profile
                         this.setState(newState);
                         this.props.onChange(newState);
                     }
@@ -1135,7 +1129,6 @@
                     // localStorage から data をロードする
                     if ("data" in localStorage && localStorage.data != "{}" ) {
                         var storedData = JSON.parse(Base64.decode(localStorage["data"]))
-                        newData = JSON.parse(JSON.stringify(storedData));
                         this.setState({storedData: storedData})
                     }
                 },
@@ -1154,7 +1147,7 @@
                       // remove data
                       var newState = this.state;
                       delete newState["storedData"][this.state.selectedData];
-                      newState.selectedData = Object.keys(newData)[0]
+                      newState.selectedData = Object.keys(this.state.storedData)[0]
 
                       localStorage.setItem("data", Base64.encode(JSON.stringify(newState.storedData)));
                       this.setState(newState);
@@ -1165,7 +1158,7 @@
                 onSubmitLoad: function(e){
                   e.preventDefault();
                   if(this.state.selectedData != ''){
-                      newData = JSON.parse(JSON.stringify(this.state.storedData));
+                      newData = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
                       this.setState({dataName: this.state.selectedData});
                       this.props.onLoadNewData(this.state.selectedData)
                   } else {
@@ -1183,7 +1176,7 @@
                       var saveString = Base64.encode(JSON.stringify(newState.storedData));
                       localStorage.setItem("data", saveString);
 
-                      newData = JSON.parse(JSON.stringify(newState.storedData));
+                      newData = JSON.parse(JSON.stringify(this.props.data));
                       this.setState(newState);
                   } else {
                       alert("データ名を入力して下さい。")
@@ -1245,27 +1238,34 @@
                         React.createElement("hr", null), 
                         React.createElement("div", {className: "noticeLeft"}, 
                             React.createElement("h3", null, "更新履歴"), 
-                                "2016/06/02: コスモスAT/DF/BLの計算を追加。コスモス武器指定がない場合にはコスモススキルを指定できないように修正", React.createElement("br", null), 
-                                "2016/05/31: 表示項目を選べるように / 属性バフを加算し忘れていたので修正 / 暴君とミフネ流のHP計算に対応 / DATA率の計算に対応", React.createElement("br", null), 
-                                "2016/05/30: HPマスターボーナスをHPバフ側に加算していたので修正。", React.createElement("br", null), 
-                                "2016/05/29: 基礎HPの基礎式を修正。召喚石を増やした後減らすと結果表示が残る不具合修正。武器本数が少ないデータを読み込むと前のデータの武器が残ってしまう不具合を修正。", React.createElement("br", null), 
-                                "2016/05/29: 得意武器ゼニスIIに対応（★4、★5、★6）。得意武器Iはすべてマスター済みという前提で各6%, 8%, 10%として計算します。", React.createElement("br", null), 
-                                "2016/05/29: HPと守護スキルの実装、優先項目を選んでソートできるように修正", React.createElement("br", null), 
-                                "2016/05/29: 武器種類数を10本に設定すると表示がバグる不具合を修正 ", React.createElement("br", null), 
-                                "2016/05/26: マスターボーナスがなかった場合のURLを入力してしまうと表示がNaNになってしまう不具合を修正 ", React.createElement("br", null), 
-                                "2016/05/26: マスターボーナスの項が抜けてたので追加 / ついでに表示される攻撃力も算出されるように変更(確認用) ", React.createElement("br", null), 
-                                "2016/05/25: 保存用URLのTweetボタンを追加 ", React.createElement("br", null), 
-                                "2016/05/25: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）", 
+                            React.createElement("ul", null, 
+                                React.createElement("li", null, "2016/06/04: 削除ボタンとコピーボタンを実装 / 基礎DATA率を追加(仮) "), 
+                                React.createElement("li", null, "2016/06/03: コスモスAT/DF/BLの計算を追加。コスモス武器指定がない場合にはコスモススキルを指定できないように修正"), 
+                                React.createElement("li", null, "2016/05/31: 表示項目を選べるように / 属性バフを加算し忘れていたので修正 / 暴君とミフネ流のHP計算に対応 / DATA率の計算に対応"), 
+                                React.createElement("li", null, "2016/05/30: HPマスターボーナスをHPバフ側に加算していたので修正。"), 
+                                React.createElement("li", null, "2016/05/29: 基礎HPの基礎式を修正。召喚石を増やした後減らすと結果表示が残る不具合修正。武器本数が少ないデータを読み込むと前のデータの武器が残ってしまう不具合を修正。"), 
+                                React.createElement("li", null, "2016/05/29: 得意武器ゼニスIIに対応（★4、★5、★6）。"), 
+                                React.createElement("li", null, "2016/05/29: HPと守護スキルの実装、優先項目を選んでソートできるように修正"), 
+                                React.createElement("li", null, "2016/05/29: 武器種類数を10本に設定すると表示がバグる不具合を修正 "), 
+                                React.createElement("li", null, "2016/05/26: マスターボーナスがなかった場合のURLを入力してしまうと表示がNaNになってしまう不具合を修正 "), 
+                                React.createElement("li", null, "2016/05/26: マスターボーナスの項が抜けてたので追加 / ついでに表示される攻撃力も算出されるように変更(確認用) "), 
+                                React.createElement("li", null, "2016/05/25: 保存用URLのTweetボタンを追加 "), 
+                                React.createElement("li", null, "2016/05/25: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）")
+                            ), 
 
                             React.createElement("h3", null, "注記"), 
-                                "- 未対応: 羅刹/三手", React.createElement("br", null), 
-                                "- 二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)", React.createElement("br", null), 
-                                "- 克己のDA率上昇量は二手(中)と全く同じとしています。", React.createElement("br", null), 
-                                "- 暴君の攻撃力上昇量は対応するスキルの(大)と同様としています。", React.createElement("br", null), 
-                                "- 基礎HPの基礎式は 600 + 8 * rank(100まで) + 4 * (rank - 100)としていますが、ズレる場合はお知らせください。", React.createElement("br", null), 
-                                "- 蘭子のアンノウン加護アップってアンノウンVITにも効果ありますよね？", React.createElement("br", null), 
-                                "- 背水の計算式は日比野さんのところの式を利用しています。", React.createElement("br", null), 
-                                "- 保存用URLを使用することで現在の編成を共有できます", 
+                            React.createElement("ul", null, 
+                                 React.createElement("li", null, "今後の実装予定: 短縮URL取得/得意武器欄をジョブ設定に変更/HPやDAが上がるなどのサポアビ対応/キャラクター攻撃力計算の対応"), 
+                                 React.createElement("li", null, "未対応: 羅刹/三手"), 
+                                 React.createElement("li", null, "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。"), 
+                                 React.createElement("li", null, "基礎DA/TA率は 6.5%/3.0% としています。"), 
+                                 React.createElement("li", null, "二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)"), 
+                                 React.createElement("li", null, "克己のDA率上昇量は二手(中)と全く同じとしています。"), 
+                                 React.createElement("li", null, "暴君の攻撃力上昇量は対応するスキルの(大)と同様としています。"), 
+                                 React.createElement("li", null, "基礎HPの基礎式は 600 + 8 * rank(100まで) + 4 * (rank - 100)としていますが、ズレる場合はお知らせください。"), 
+                                 React.createElement("li", null, "背水の計算式は日比野さんのところの式を利用しています。"), 
+                                 React.createElement("li", null, "保存用URLを使用することで現在の編成を共有できます")
+                             ), 
 
                             React.createElement("h3", null, "LICENSE"), 
                             React.createElement("ul", null, 
@@ -1280,7 +1280,8 @@
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://gbf-wiki.com"}, "グランブルーファンタジー(グラブル)攻略wiki")), 
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://hibin0.web.fc2.com/grbr_atk_calc/atk_calc.html"}, "グランブルーファンタジー攻撃力計算機")), 
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://hibin0.web.fc2.com/grbr_weapon_calc/weapon_calc.html"}, "オススメ装備に自信ニキ")), 
-                                React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/12/09/230544"}, "すんどめ侍のグラブル生活 - 【グラブル】武器スキル検証結果"))
+                                React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/12/09/230544"}, "すんどめ侍のグラブル生活 - 【グラブル】武器スキル検証結果")), 
+                                React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/10/11/175521"}, "すんどめ侍のグラブル生活 - 【グラブル】ジョブデータ検証結果"))
                             )
                         ), 
                         React.createElement("div", {className: "noticeRight"}, 
