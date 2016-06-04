@@ -377,21 +377,7 @@
                     newState[key] = (newState[key] == 0) ? 1 : 0
                     this.setState(newState)
                 },
-                calculateBasedOneSummon: function(summon, prof, arml, buff, sortkey) {
-                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0, ta: 0};
-
-                    // 自分の加護
-                    totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
-                    // フレンドの加護
-                    totalSummon[summon.friendSummonType] += 0.01 * parseInt(summon.friendSummonAmount)
-
-                    // 後から追加したので NaN でないか判定しておく
-                    if(!isNaN(summon.attack)) totalSummon["attack"] = parseInt(summon.attack)
-                    if(!isNaN(summon.hp)) totalSummon["hp"] = parseInt(summon.hp)
-                    if(!isNaN(summon.hpBonus)) totalSummon["hpBonus"] = 0.01 * parseInt(summon.hpBonus)
-                    if(!isNaN(summon.DA)) totalSummon["da"] = 0.01 * parseInt(summon.DA)
-                    if(!isNaN(summon.TA)) totalSummon["ta"] = 0.01 * parseInt(summon.TA)
-
+                calculateCombinations: function(arml) {
                     // 全武器に対して [最小考慮数, ... , 最大考慮数] の配列を計算しておく
                     var armNumArray = []
                     var totalItr = 1;
@@ -436,35 +422,47 @@
                         index = proceedIndex(index, armNumArray, 0)
                     }
 
-                    var result = []
-                    for(var i = 0; i < combinations.length; i++){
-                        var oneres = this.calculateOneCombination(combinations[i], totalSummon, prof, arml, buff)
-                        result.push({rank: i, data: oneres, armNumbers: combinations[i]});
-                    }
-
-                    if(sortkey == "ATKandHP") {
-                        result.sort(function(a, b){
-                            if((a.data.displayAttack + a.data.displayHP) < (b.data.displayAttack + b.data.displayHP)) return  1;
-                            if((a.data.displayAttack + a.data.displayHP) > (b.data.displayAttack + b.data.displayHP)) return -1;
-                            return 0;
-                        });
-                    } else {
-                        result.sort(function(a, b){
-                            if(a["data"][sortkey] < b["data"][sortkey]) return  1;
-                            if(a["data"][sortkey] > b["data"][sortkey]) return -1;
-                            return 0;
-                        });
-                    }
-
-                    while(result.length > 10){ result.pop(); }
-
-                    for(var i = 0; i < result.length; i++){
-                        result[i]["rank"] = i + 1
-                    }
-
-                    return result;
+                    return combinations
                 },
-                calculateOneCombination: function(comb, totalSummon, prof, arml, buff){
+                calculateBasedOneSummon: function(summon, prof, buff, totalSkills, baseAttack, baseHP, weakPoint, armAttack, armHP, HPdebuff) {
+                    var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0, ta: 0};
+
+                    // 自分の加護
+                    totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
+                    // フレンドの加護
+                    totalSummon[summon.friendSummonType] += 0.01 * parseInt(summon.friendSummonAmount)
+
+                    // 後から追加したので NaN でないか判定しておく
+                    if(!isNaN(summon.attack)) totalSummon["attack"] = parseInt(summon.attack)
+                    if(!isNaN(summon.hp)) totalSummon["hp"] = parseInt(summon.hp)
+                    if(!isNaN(summon.hpBonus)) totalSummon["hpBonus"] = 0.01 * parseInt(summon.hpBonus)
+                    if(!isNaN(summon.DA)) totalSummon["da"] = 0.01 * parseInt(summon.DA)
+                    if(!isNaN(summon.TA)) totalSummon["ta"] = 0.01 * parseInt(summon.TA)
+
+                    // for attack
+                    var magnaCoeff = 1.0 + 0.01 * (totalSkills["magna"] + totalSkills["magnaKamui"]) * ( 1.0 + totalSummon["magna"] )
+                    var magnaHaisuiCoeff = 1.0 + 0.01 * (totalSkills["magnaHaisui"]) * ( 1.0 + totalSummon["magna"] )
+                    var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"] * (1.0 + totalSummon["ranko"]) + 0.01 * totalSkills["unknownOther"]
+
+                    var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["bahaAT"] + totalSummon["chara"] + buff["normal"]
+                    var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
+                    var elementCoeff = weakPoint + totalSummon["element"] + buff["element"]
+                    var otherCoeff = 1.0 + buff["other"]
+
+                    var summedAttack = (baseAttack + armAttack + totalSummon["attack"] + parseInt(prof.attackBonus) ) * (1.0 + buff["master"])
+                    var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff
+
+                    // for HP
+                    var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
+                    var totalHP = displayHP * (1.0 - HPdebuff + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+
+                    // for DA and TA
+                    var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + totalSkills["cosmosBL"])
+                    var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
+
+                    return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP), totalDA: totalDA, totalTA: totalTA};
+                },
+                calculateOneCombination: function(comb, summon, prof, arml, buff){
                     var tempArmList = []
                     for(var i = 0; i < arml.length; i++){
                         for(var j = 0; j < comb[i]; j++){
@@ -582,28 +580,13 @@
                     var baseHP = (rank > 100) ? 1400 + (parseInt(rank) - 100) * 4.0 : 600 + (parseInt(rank)) * 8
                     var weakPoint = types[prof.typeBonus];
 
-                    // for attack
-                    var magnaCoeff = 1.0 + 0.01 * (totalSkills["magna"] + totalSkills["magnaKamui"]) * ( 1.0 + totalSummon["magna"] )
-                    var magnaHaisuiCoeff = 1.0 + 0.01 * (totalSkills["magnaHaisui"]) * ( 1.0 + totalSummon["magna"] )
-                    var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"] * (1.0 + totalSummon["ranko"]) + 0.01 * totalSkills["unknownOther"]
+                    var result = []
+                    for(var i = 0; i < summon.length; i++){
+                       // 攻撃などの結果を入れた連想配列の配列を作る
+                       result.push(this.calculateBasedOneSummon(summon[i], prof, buff, totalSkills, baseAttack, baseHP, weakPoint, armAttack, armHP, HPdebuff));
+                    }
 
-                    var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["bahaAT"] + totalSummon["chara"] + buff["normal"]
-                    var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
-                    var elementCoeff = weakPoint + totalSummon["element"] + buff["element"]
-                    var otherCoeff = 1.0 + buff["other"]
-
-                    var summedAttack = (baseAttack + armAttack + totalSummon["attack"] + parseInt(prof.attackBonus) ) * (1.0 + buff["master"])
-                    var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff
-
-                    // for HP
-                    var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
-                    var totalHP = displayHP * (1.0 - HPdebuff + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
-
-                    // for DA and TA
-                    var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + totalSkills["cosmosBL"])
-                    var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
-
-                    return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP), totalDA: totalDA, totalTA: totalTA};
+                    return result
                 },
                 calculateResult: function() {
                   var prof = this.props.data.profile; var arml = this.props.data.armlist;
@@ -633,18 +616,47 @@
                           sortkeyname = prof.sortKey
                       }
 
-                      var result = [];
+                      var combinations = this.calculateCombinations(arml)
+                      var res = []
                       for(var i = 0; i < summon.length; i++){
-                          result.push({summonNo: i, summon: summon[i], sortkeyname: sortkeyname, result: this.calculateBasedOneSummon(summon[i], prof, arml, totalBuff, sortkey)});
+                          res[i] = []
                       }
-                      return result
+                      for(var i = 0; i < combinations.length; i++){
+                          var oneres = this.calculateOneCombination(combinations[i], summon, prof, arml, totalBuff)
+                          for(var j = 0; j < summon.length; j++){
+                              res[j].push({data: oneres[j], armNumbers: combinations[i]});
+                          }
+                      }
+                      // この時点で summonres は"各召喚石に対応する結果データの連想配列 を並べた配列"の配列になっているはず
+
+                      for(var i = 0; i < summon.length; i++){
+                          if(sortkey == "ATKandHP") {
+                              res[i].sort(function(a, b){
+                                  if((a.data.displayAttack + a.data.displayHP) < (b.data.displayAttack + b.data.displayHP)) return  1;
+                                  if((a.data.displayAttack + a.data.displayHP) > (b.data.displayAttack + b.data.displayHP)) return -1;
+                                  return 0;
+                              });
+                          } else {
+                              res[i].sort(function(a, b){
+                                  if(a["data"][sortkey] < b["data"][sortkey]) return  1;
+                                  if(a["data"][sortkey] > b["data"][sortkey]) return -1;
+                                  return 0;
+                              });
+                          }
+                          while(res[i].length > 10){ res[i].pop(); }
+                      }
+
+                      return {summon: summon, result: res, sortkeyname: sortkeyname}
                   } else {
-                      return [{summonNo: 1, result: []}]
+                      return {summon: summon, result: []}
                   }
 
                 },
                 render: function() {
                     res = this.calculateResult();
+                    var summondata = res.summon
+                    var result = res.result
+
                     switcher = this.state;
                     var armnames = []
                     for(var i = 0; i < this.props.data.armlist.length; i++){
@@ -677,10 +689,10 @@
                             <input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP
                             <input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率
 
-                            {res.map(function(r) {
+                            {summondata.map(function(s, summonindex) {
                                 return(
                                     <div className="result">
-                                        <h2> 結果({r.sortkeyname}): No. {r.summonNo + 1} ({summonTypes[r.summon.selfSummonType]}{r.summon.selfSummonAmount} + {summonTypes[r.summon.friendSummonType]}{r.summon.friendSummonAmount}) </h2>
+                                        <h2> 結果({res.sortkeyname}): No. {summonindex + 1} ({summonTypes[s.selfSummonType]}{s.selfSummonAmount} + {summonTypes[s.friendSummonType]}{s.friendSummonAmount}) </h2>
                                         <table>
                                         <thead>
                                         <tr>
@@ -689,7 +701,7 @@
                                             {armnames.map(function(m){ return <th>{m}</th>; })}
                                         </tr>
                                         </thead>
-                                        <Result key={r.summonNo} data={r.result} switcher={switcher}/>
+                                        <Result key={summonindex} data={result[summonindex]} switcher={switcher}/>
                                         </table>
                                     </div>
                                 );
@@ -704,7 +716,7 @@
                     var sw = this.props.switcher;
                     return (
                         <tbody className="result">
-                            {this.props.data.map(function(m) {
+                            {this.props.data.map(function(m, rank) {
                                 var tablebody = []
                                 if(sw.switchTotalAttack) {
                                     tablebody.push(m.data.totalAttack)
@@ -720,8 +732,8 @@
                                     tablebody.push('DA:' + m.data.totalDA.toFixed(1) + '%, TA: ' + m.data.totalTA.toFixed(1) + '%')
                                 }
                                 return (
-                                    <tr key={m.rank}>
-                                        <td>{m.rank}</td>
+                                    <tr key={rank + 1}>
+                                        <td>{rank + 1}</td>
                                         {tablebody.map(function(am){
                                             return (<td>{am}</td>);
                                         })}
@@ -1239,7 +1251,7 @@
                         <div className="noticeLeft">
                             <h3>更新履歴</h3>
                             <ul>
-                                <li>2016/06/04: 削除ボタンとコピーボタンを実装 / 基礎DATA率を追加(仮) </li>
+                                <li>2016/06/04: 削除ボタンとコピーボタンを実装 / 基礎DATA率を追加(仮) / 召喚石を複数にした際の動作速度を改善 </li>
                                 <li>2016/06/03: コスモスAT/DF/BLの計算を追加。コスモス武器指定がない場合にはコスモススキルを指定できないように修正</li>
                                 <li>2016/05/31: 表示項目を選べるように / 属性バフを加算し忘れていたので修正 / 暴君とミフネ流のHP計算に対応 / DATA率の計算に対応</li>
                                 <li>2016/05/30: HPマスターボーナスをHPバフ側に加算していたので修正。</li>
