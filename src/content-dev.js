@@ -28,6 +28,7 @@
                 "bahaAT": {name:"バハ攻", type:"bahaAT", amount: "L"},
                 "bahaATHP": {name:"バハ攻HP", type:"bahaATHP", amount: "M"},
                 "bahaHP": {name:"バハHP", type:"bahaHP", amount: "L"},
+                "bahaFUATHP": {name:"バハフツ(攻/HP)", type:"bahaFUATHP", amount: "LL"},
                 "unknownM": {name:"アンノウンI", type:"unknown", amount: "M"},
                 "unknownL": {name:"アンノウンII", type:"unknown", amount: "L"},
                 "strengthL": {name:"ストレングス等(大)", type:"unknownOther", amount: "L"},
@@ -107,6 +108,11 @@
                     // 短剣など
                     "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 30.4, 30.8, 31.2, 31.6, 32.0],
                     "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
+                },
+                "bahaFUATHP": {
+                    // 剣など
+                    "HP": [15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
+                    "AT": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
                 },
                 "normalHP":{
                     "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
@@ -370,6 +376,7 @@
                         switchATKandHP: 0,
                         switchHP: 1,
                         switchDATA: 0,
+                        switchExpectedAttack: 0,
                     };
                 },
                 handleEvent: function(key, e) {
@@ -454,13 +461,13 @@
 
                     // for HP
                     var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
-                    var totalHP = displayHP * (1.0 - HPdebuff + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+                    var totalHP = displayHP * (1.0 - HPdebuff) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
 
                     // for DA and TA
                     var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + totalSkills["cosmosBL"])
                     var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
 
-                    return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.ceil(totalHP), displayHP: Math.ceil(displayHP), totalDA: totalDA, totalTA: totalTA};
+                    return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), totalDA: totalDA, totalTA: totalTA};
                 },
                 calculateOneCombination: function(comb, summon, prof, arml, buff){
                     var tempArmList = []
@@ -545,6 +552,10 @@
                                     // バハ剣など
                                     totalSkills["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
                                     totalSkills["bahaHP"] += skillAmounts["bahaHP"][amount][slv - 1];
+                                } else if(stype == 'bahaFUATHP') {
+                                    // バハ剣など
+                                    totalSkills["bahaAT"] += skillAmounts["bahaFUATHP"]["AT"][slv - 1];
+                                    totalSkills["bahaHP"] += skillAmounts["bahaFUATHP"]["HP"][slv - 1];
                                 } else if(stype == 'normalBoukun') {
                                     HPdebuff += 0.10
                                     totalSkills["normal"] += skillAmounts["normal"][amount][slv - 1];
@@ -680,6 +691,9 @@
                     if(switcher.switchDATA) {
                         tableheader.push('連続攻撃率(%)')
                     }
+                    if(switcher.switchExpectedAttack) {
+                        tableheader.push('期待攻撃回数')
+                    }
 
                     return (
                         <div className="resultList">
@@ -688,6 +702,7 @@
                             <input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力
                             <input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP
                             <input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率
+                            <input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数(仮)
 
                             {summondata.map(function(s, summonindex) {
                                 return(
@@ -730,6 +745,12 @@
                                 }
                                 if(sw.switchDATA) {
                                     tablebody.push('DA:' + m.data.totalDA.toFixed(1) + '%, TA: ' + m.data.totalTA.toFixed(1) + '%')
+                                }
+                                if(sw.switchExpectedAttack) {
+                                    var taRate = (parseInt(m.data.totalTA) >= 100) ? 1.0 : 0.01 * parseInt(m.data.totalTA)
+                                    var daRate = (parseInt(m.data.totalDA) >= 100) ? 1.0 : 0.01 * parseInt(m.data.totalDA)
+                                    var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
+                                    tablebody.push(expectedAttack.toFixed(2))
                                 }
                                 return (
                                     <tr key={rank + 1}>
@@ -1107,8 +1128,8 @@
                                         <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
                                         <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
                                         <td><input type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
-                                        <td><input type="number"  min="0" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                                        <td><input type="number"  min="0" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
+                                        <td><input type="number"  min="0" max="100" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
+                                        <td><input type="number"  min="0" max="100" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
                                     </tr>
                                 </table>
                                 <h3>システム関連</h3>
@@ -1231,11 +1252,33 @@
                         url: url,
                     };
                 },
+                getShortenUrl: function() {
+                    var apiKey = "AIzaSyBRN9yshOoNByfs4pGLX3LnTVUJWalrOAk"
+                    var postURL = "https://www.googleapis.com/urlshortener/v1/url?key=" + apiKey
+
+                    $.ajax({
+                        url: "googleshort.php?url=" + this.state.url,
+                        type: 'POST',
+                        dataType: 'text',
+                        cache: false,
+                        timeout: 10000,
+                        data: {url: this.state.url},
+                        success: function(data, datatype) {
+                            console.log("success:", data)
+                            console.log("type:", datatype)
+                        }.bind(this),
+                        error: function(xhr, status, err) {
+                            console.log(status);
+                            console.log(err.toString());
+                        }.bind(this)
+                    });
+                },
                 render: function() {
                   var tweeturl = "http://twitter.com/share?url=" + this.state.url
                   return (
                         <div className="tweet">
                             <h3>保存用URL</h3>
+                            <button type="button" onClick={this.getShortenUrl}> 短縮URL </button>
                             {this.state.url}
                         </div>
                    );
@@ -1251,7 +1294,8 @@
                         <div className="noticeLeft">
                             <h3>更新履歴</h3>
                             <ul>
-                                <li>2016/06/04: 削除ボタンとコピーボタンを実装 / 基礎DATA率を追加(仮) / 召喚石を複数にした際の動作速度を改善 </li>
+                                <li>2016/06/05: 暴君とコスモスATのHPデバフ分の計算が間違っていたので修正 </li>
+                                <li>2016/06/04: 削除ボタンとコピーボタンを実装 / 基礎DATA率と期待攻撃回数計算を追加(仮) / 召喚石を複数にした際の動作速度を改善 </li>
                                 <li>2016/06/03: コスモスAT/DF/BLの計算を追加。コスモス武器指定がない場合にはコスモススキルを指定できないように修正</li>
                                 <li>2016/05/31: 表示項目を選べるように / 属性バフを加算し忘れていたので修正 / 暴君とミフネ流のHP計算に対応 / DATA率の計算に対応</li>
                                 <li>2016/05/30: HPマスターボーナスをHPバフ側に加算していたので修正。</li>
@@ -1268,6 +1312,8 @@
                             <h3>注記</h3>
                             <ul>
                                  <li>今後の実装予定: 短縮URL取得/得意武器欄をジョブ設定に変更/HPやDAが上がるなどのサポアビ対応/キャラクター攻撃力計算の対応</li>
+                                 <li><strong>バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに"バハフツ(攻/HP)"を選択してください。</strong> <br/>
+                                 (バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)</li>
                                  <li>未対応: 羅刹/三手</li>
                                  <li>得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</li>
                                  <li>基礎DA/TA率は 6.5%/3.0% としています。</li>
