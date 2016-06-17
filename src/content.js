@@ -17,7 +17,7 @@
                 "normalNiteM": {name:"通常二手(中)", type:"normalNite", amount: "M"},
                 "normalNiteL": {name:"通常二手(大)", type:"normalNite", amount: "L"},
                 "normalKatsumiM": {name:"通常克己(中)", type:"normalKatsumi", amount: "M"},
-                "normalKamui": {name:"神威", type:"normalKamui", amount: "S"},
+                "normalKamui": {name:"通常神威", type:"normalKamui", amount: "S"},
                 "magnaM": {name: "マグナ攻刃", type:"magna", amount:"M"},
                 "magnaL": {name: "マグナ攻刃II", type:"magna", amount:"L"},
                 "magnaHaisuiS": {name:"マグナ背水(小)", type:"magnaHaisui", amount: "S"},
@@ -31,6 +31,9 @@
                 "bahaFUATHP": {name:"バハフツ(攻/HP)", type:"bahaFUATHP", amount: "LL"},
                 "unknownM": {name:"アンノウンI", type:"unknown", amount: "M"},
                 "unknownL": {name:"アンノウンII", type:"unknown", amount: "L"},
+                "strengthHaisuiM": {name:"ストレングス背水(中)", type:"unknownOtherHaisui", amount: "M"},
+                "strengthS": {name:"ストレングス等(小)", type:"unknownOther", amount: "S"},
+                "strengthM": {name:"ストレングス等(中)", type:"unknownOther", amount: "M"},
                 "strengthL": {name:"ストレングス等(大)", type:"unknownOther", amount: "L"},
                 "normalHPS": {name:"通常守護(小)", type:"normalHP", amount: "S"},
                 "normalHPM": {name:"通常守護(中)", type:"normalHP", amount: "M"},
@@ -67,6 +70,28 @@
                 "zeus": "ゼウス系",
                 "chara": "キャラ",
                 "ranko": "蘭子",
+                "odin": "属性攻+キャラ攻",
+            }
+
+            var elementTypes = {
+                "fire": "火",
+                "wind": "風",
+                "earth": "土",
+                "water": "水",
+                "light": "光",
+                "dark": "闇",
+            }
+
+            var summonElementTypes = {
+                "fire": {"name": "火", "type": ["fire"]},
+                "wind": {"name": "風", "type": ["wind"]},
+                "earth": {"name": "土", "type": ["earth"]},
+                "water": {"name": "水", "type": ["water"]},
+                "light": {"name": "光", "type": ["light"]},
+                "dark": {"name": "闇", "type": ["dark"]},
+                "fireLight": {"name": "光/火", "type": ["light", "fire"]},
+                "darkEarth": {"name": "闇/土", "type": ["dark", "earth"]},
+                "windEarth": {"name": "風/土", "type": ["wind", "earth"]},
             }
 
             var skillAmounts = {
@@ -149,8 +174,10 @@
             }
 
             // query 取得用の関数
-            var query = getDataInQuery();
-            function getDataInQuery(){
+            var urldata = getVarInQuery("data");
+            var urlid = getVarInQuery("id")
+
+            function getVarInQuery(key){
                 var vars = {}, max = 0, hash = "", array = "";
                 var url = window.location.search;
 
@@ -162,8 +189,8 @@
                 }
 
                 var result = ""
-                if("data" in vars){
-                    result = vars["data"];
+                if(key in vars){
+                    result = vars[key];
                 }
 
                 return result;
@@ -188,12 +215,34 @@
                     dataName: '',
                   };
               },
+              getDatacharById: function(id) {
+                  $.ajax({
+                      url: "getdata.php",
+                      type: 'POST',
+                      dataType: 'text',
+                      cache: false,
+                      timeout: 10000,
+                      data: {id: id},
+                      success: function(data, datatype) {
+                          var initState = JSON.parse(Base64.decode(data));
+                          newData = initState
+                          this.setState(initState);
+                      }.bind(this),
+                      error: function(xhr, status, err) {
+                          alert("Error!: IDが不正です. status: ", status, ", error message: ", err.toString());
+                      }.bind(this)
+                  });
+              },
               componentDidMount: function(){
-                  if(query != ''){
-                      var initState = JSON.parse(Base64.decode(query));
+                  if(urldata != ''){
+                      var initState = JSON.parse(Base64.decode(urldata));
                       initState["dataName"] = "urlData"
                       newData = initState
                       this.setState(initState);
+                  }
+
+                  if(urlid != ''){
+                      this.getDatacharById(urlid);
                   }
               },
               handleArmNumChange: function(newArmNum) {
@@ -281,7 +330,7 @@
                             <table>
                             <thead>
                             <tr>
-                                <th>No.</th>
+                                <th className="tiny">No.</th>
                                 <th>自分の石</th>
                                 <th>加護量</th>
                                 <th>フレ石</th>
@@ -309,8 +358,12 @@
                     return {
                         selfSummonType: "magna",
                         selfSummonAmount: 0,
+                        selfSummonAmount2: 0,
+                        selfElement: "fire",
                         friendSummonType: "magna",
                         friendSummonAmount: 0,
+                        friendSummonAmount2: 0,
+                        friendElement: "fire",
                         attack: 0,
                         hp: 0,
                         hpBonus: 0,
@@ -346,17 +399,51 @@
                     this.setState(newState)
                     this.props.onChange(this.props.id, newState)
                 },
+                handleSummonAmountChange(type, ind, e){
+                    var newState = this.state
+                    if(type == "self") {
+                        if(ind == 0){
+                            newState["selfSummonAmount"] = e.target.value
+                        } else {
+                            newState["selfSummonAmount2"] = e.target.value
+                        }
+                    } else {
+                        if(ind == 0){
+                            newState["friendSummonAmount"] = e.target.value
+                        } else {
+                            newState["friendSummonAmount2"] = e.target.value
+                        }
+                    }
+                    this.setState(newState)
+                    this.props.onChange(this.props.id, newState)
+                },
                 render: function() {
                     var smtypes = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{summonTypes[opt]}</option>;});
 
+                    var selfSummon = [{"label": "", "input": "number"}, {"input": "hidden"}]
+                    if(this.state.selfSummonType == "odin"){
+                        selfSummon[1] = {"label": "キャラ ", "input": "number"}
+                        selfSummon[0].label = "属性 "
+                    }
+                    var friendSummon = [{"label": "", "input": "number"}, {"input": "hidden"}]
+                    if(this.state.friendSummonType == "odin"){
+                        friendSummon[1] = {"label": "キャラ ", "input": "number"}
+                        friendSummon[0].label = "属性 "
+                    }
                     return (
                         <tr>
                             <form className="summonForm">
-                                <td>{this.props.id + 1}</td>
+                                <td className="tiny">{this.props.id + 1}</td>
                                 <td><select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{smtypes}</select></td>
-                                <td><input type="number" min="0" max="120" value={this.state.selfSummonAmount} onChange={this.handleEvent.bind(this, "selfSummonAmount")} /></td>
+                                <td>
+                                <label>{selfSummon[0].label}<input type={selfSummon[0].input} min="0" max="120" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /></label>
+                                <label>{selfSummon[1].label}<input type={selfSummon[1].input} min="0" max="120" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} /></label>
+                                </td>
                                 <td><select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{smtypes}</select></td>
-                                <td><input type="number" min="0" max="120" value={this.state.friendSummonAmount} onChange={this.handleEvent.bind(this, "friendSummonAmount")} /></td>
+                                <td>
+                                <label>{friendSummon[0].label}<input type={friendSummon[0].input} min="0" max="120" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /></label>
+                                <label>{friendSummon[1].label}<input type={friendSummon[1].input} min="0" max="120" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} /></label>
+                                </td>
                                 <td><input type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
                                 <td><input type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
                                 <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
@@ -434,10 +521,22 @@
                 calculateBasedOneSummon: function(summon, prof, buff, totalSkills, baseAttack, baseHP, weakPoint, armAttack, armHP, HPdebuff) {
                     var totalSummon = {magna: 0, element: 0, zeus: 0, chara: 0, ranko: 0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0, ta: 0};
 
-                    // 自分の加護
-                    totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
-                    // フレンドの加護
-                    totalSummon[summon.friendSummonType] += 0.01 * parseInt(summon.friendSummonAmount)
+                    if(summon.selfSummonType == "odin") {
+                        // odin(属性+キャラ攻撃)など、複数の場合の処理
+                        totalSummon["element"] += 0.01 * parseInt(summon.selfSummonAmount)
+                        totalSummon["chara"] += 0.01 * parseInt(summon.selfSummonAmount2)
+                    } else {
+                        // 自分の加護 通常の場合
+                        totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
+                    }
+                    if(summon.friendSummonType == "odin") {
+                        // odin(属性+キャラ攻撃)など、複数の場合の処理
+                        totalSummon["element"] += 0.01 * parseInt(summon.friendSummonAmount)
+                        totalSummon["chara"] += 0.01 * parseInt(summon.friendSummonAmount2)
+                    } else {
+                        // フレンドの加護 通常の場合
+                        totalSummon[summon.friendSummonType] += 0.01 * parseInt(summon.friendSummonAmount)
+                    }
 
                     // 後から追加したので NaN でないか判定しておく
                     if(!isNaN(summon.attack)) totalSummon["attack"] = parseInt(summon.attack)
@@ -450,6 +549,7 @@
                     var magnaCoeff = 1.0 + 0.01 * (totalSkills["magna"] + totalSkills["magnaKamui"]) * ( 1.0 + totalSummon["magna"] )
                     var magnaHaisuiCoeff = 1.0 + 0.01 * (totalSkills["magnaHaisui"]) * ( 1.0 + totalSummon["magna"] )
                     var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"] * (1.0 + totalSummon["ranko"]) + 0.01 * totalSkills["unknownOther"]
+                    var unknownHaisuiCoeff = 1.0 + 0.01 * totalSkills["unknownOtherHaisui"]
 
                     var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["bahaAT"] + totalSummon["chara"] + buff["normal"]
                     var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
@@ -457,14 +557,14 @@
                     var otherCoeff = 1.0 + buff["other"]
 
                     var summedAttack = (baseAttack + armAttack + totalSummon["attack"] + parseInt(prof.attackBonus) ) * (1.0 + buff["master"])
-                    var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff
+                    var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff * unknownHaisuiCoeff
 
                     // for HP
                     var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
-                    var totalHP = displayHP * (1.0 - HPdebuff) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+                    var totalHP = displayHP * (1.0 - HPdebuff) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * (totalSkills["magnaHP"] + totalSkills["magnaKamui"]) * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
 
                     // for DA and TA
-                    var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + totalSkills["cosmosBL"])
+                    var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + 0.01 * totalSkills["cosmosBL"])
                     var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
 
                     return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), totalDA: totalDA, totalTA: totalTA};
@@ -477,7 +577,7 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, normalKamui: 0, magnaKamui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, cosmosBL: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, normalKamui: 0, magnaKamui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, cosmosBL: 0};
                     var armAttack = 0;
                     var armHP = 0;
 
@@ -528,7 +628,7 @@
                                 if(slv == 0) slv = 1
 
                                 // 背水倍率の実装は日比野さんのところのを参照
-                                if(stype == 'normalHaisui' || stype == 'magnaHaisui'){
+                                if(stype == 'normalHaisui' || stype == 'magnaHaisui' || stype == 'unknownOtherHaisui'){
                                     var remainHP = 0.01 * parseInt(prof.hp)
                                     var baseRate = 0.0
                                     if(amount == "S") {
@@ -537,6 +637,13 @@
                                             baseRate = -0.3 + slv * 1.8;
                                         } else {
                                             baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
+                                        }
+                                    } else if ( amount == "M" ){
+                                        // 中
+                                        if(slv < 10) {
+                                            baseRate = -0.4 + slv * 2.4;
+                                        } else {
+                                            baseRate = 24 + 3.0 * ((slv - 10) / 5.0)
                                         }
                                     } else {
                                         // 大
@@ -568,12 +675,12 @@
                                 } else if(stype == 'cosmos') {
                                     // コスモス武器
                                     if(skillname == 'cosmosAT') {
-                                        totalSkills["normal"] += 0.20;
+                                        totalSkills["normal"] += 20.0;
                                         HPdebuff += 0.40
                                     } else if(skillname == 'cosmosDF') {
                                         HPdebuff -= 0.10
                                     } else if(skillname == 'cosmosBL') {
-                                        totalSkills["cosmosBL"] = 0.20
+                                        totalSkills["cosmosBL"] = 20.0
                                     }
                                 } else {
                                     totalSkills[stype] += skillAmounts[stype][amount][slv - 1];
@@ -694,6 +801,7 @@
                     if(switcher.switchExpectedAttack) {
                         tableheader.push('期待攻撃回数')
                     }
+                    var prof = this.props.data.profile
 
                     return (
                         <div className="resultList">
@@ -703,17 +811,38 @@
                             <input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP
                             <input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率
                             <input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数(仮)
+                            <div className="divright"><h3>比較用プロフィール: rank {prof.rank}, HP {prof.hp} %, 相性ボーナス {prof.typeBonus}, 通常バフ {prof.normalBuff}%, 属性バフ {prof.elementBuff}%, その他バフ {prof.otherBuff}%</h3></div>
 
                             {summondata.map(function(s, summonindex) {
+                                var selfSummonHeader = ""
+                                if(s.selfSummonType == "odin"){
+                                    selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                                } else {
+                                    selfSummonHeader = summonTypes[s.selfSummonType] + s.selfSummonAmount
+                                }
+
+                                var friendSummonHeader = ""
+                                if(s.friendSummonType == "odin"){
+                                    friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                                } else {
+                                    friendSummonHeader = summonTypes[s.friendSummonType] + s.friendSummonAmount
+                                }
                                 return(
                                     <div className="result">
-                                        <h2> 結果({res.sortkeyname}): No. {summonindex + 1} ({summonTypes[s.selfSummonType]}{s.selfSummonAmount} + {summonTypes[s.friendSummonType]}{s.friendSummonAmount}) </h2>
+                                        <h2> 結果({res.sortkeyname}): No. {summonindex + 1} ({selfSummonHeader} + {friendSummonHeader}) </h2>
                                         <table>
                                         <thead>
                                         <tr>
                                             <th>順位</th>
                                             {tableheader.map(function(m){ return <th>{m}</th>; })}
-                                            {armnames.map(function(m){ return <th>{m}</th>; })}
+                                            {
+                                                armnames.map(function(m, ind){
+                                                if(ind == 0) {
+                                                    return <th className="resultFirst">{m}</th>;
+                                                } else {
+                                                    return <th className="resultList">{m}</th>;
+                                                }})
+                                            }
                                         </tr>
                                         </thead>
                                         <Result key={summonindex} data={result[summonindex]} switcher={switcher}/>
@@ -758,8 +887,12 @@
                                         {tablebody.map(function(am){
                                             return (<td>{am}</td>);
                                         })}
-                                        {m.armNumbers.map(function(am){
-                                            return (<td>{am} 本</td>);
+                                        {m.armNumbers.map(function(am, ind){
+                                            if(ind == 0){
+                                                return (<td className="resultFirst">{am} 本</td>);
+                                            } else {
+                                                return (<td className="resultList">{am} 本</td>);
+                                            }
                                         })}
                                     </tr>
                                 );
@@ -790,9 +923,9 @@
                 updateArmNum: function(num) {
                     var arms = this.state.arms
                     if(arms.length < num) {
-                        var thelastvalue = arms[arms.length - 1]
+                        var maxvalue = Math.max.apply(null, arms)
                         for(var i = 0; i < (num - arms.length); i++){
-                            arms.push(i + thelastvalue + 1)
+                            arms.push(i + maxvalue + 1)
                         }
                     } else {
                         // ==の場合は考えなくてよい (問題がないので)
@@ -821,6 +954,10 @@
                     this.setState({arms: newarms})
 
                     // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
+                    if(!("armlist" in newData)) {
+                        // もしnewDataが更新される前だったらkeyを作っておく
+                        newData["armlist"] = {}
+                    }
                     newData.armlist[id + 1] = state;
 
                     var newalist = this.state.alist;
@@ -842,6 +979,9 @@
                     this.setState({arms: newarms})
 
                     // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+                    if(!("armlist" in newData)) {
+                        newData["armlist"] = {}
+                    }
                     newData.armlist[newarms.length - 1] = state;
 
                     var newalist = this.state.alist;
@@ -875,11 +1015,11 @@
                                 <th>武器名</th>
                                 <th>攻撃力</th>
                                 <th>HP</th>
-                                <th className="tiny">武器種</th>
-                                <th className="tiny">コスモス？</th>
+                                <th className="select">武器種</th>
+                                <th className="checkbox">コスモス？</th>
                                 <th>スキル1</th>
                                 <th>スキル2</th>
-                                <th className="tiny">SLv</th>
+                                <th className="select">SLv</th>
                                 <th className="consider">考慮本数</th>
                                 <th className="system">操作</th>
                             </tr>
@@ -992,11 +1132,11 @@
                             <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td>
-                            <td><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
-                            <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
+                            <td className="select"><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
+                            <td className="checkbox"><input className="checkbox" type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
                             <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {stypes}</select></td>
                             <td><select value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {stypes}</select></td>
-                            <td><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
+                            <td className="select"><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
                             <td>
                                 <input className="consider" type="number" min="0" max="10" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /> 本～
                                 <input className="consider" type="number" min="0" max="10" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} /> 本
@@ -1174,6 +1314,11 @@
                   var newState = this.state
                   newState[key] = e.target.value
                   this.setState(newState)
+
+                  if(key == "dataName") {
+                      // 短縮URL取得時に使用するために保存しておく
+                      newData["dataName"] = e.target.value;
+                  }
                 },
                 onSubmitRemove: function(e) {
                   if(this.state.selectedData != ''){
@@ -1182,7 +1327,7 @@
                       delete newState["storedData"][this.state.selectedData];
                       newState.selectedData = Object.keys(this.state.storedData)[0]
 
-                      localStorage.setItem("data", Base64.encode(JSON.stringify(newState.storedData)));
+                      localStorage.setItem("data", Base64.encodeURI(JSON.stringify(newState.storedData)));
                       this.setState(newState);
                   } else {
                       alert("削除するデータを選択して下さい。")
@@ -1192,6 +1337,8 @@
                   e.preventDefault();
                   if(this.state.selectedData != ''){
                       newData = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
+
+                      // これは will receive props が発火したあとしか反映されない
                       this.setState({dataName: this.state.selectedData});
                       this.props.onLoadNewData(this.state.selectedData)
                   } else {
@@ -1202,14 +1349,19 @@
                   e.preventDefault();
                   if(this.state.dataName != ''){
                       var newState = this.state;
-                      newState["storedData"][this.state.dataName] = JSON.parse(JSON.stringify(this.props.data));
+                      var propsdata = JSON.parse(JSON.stringify(this.props.data));
+
+                      // dataName だけ Root に持っていっていないので、上書きしておく
+                      propsdata["dataName"] = this.state.dataName;
+
+                      newState["storedData"][this.state.dataName] = propsdata;
                       newState["selectedData"] = this.state.dataName;
 
                       // save data
-                      var saveString = Base64.encode(JSON.stringify(newState.storedData));
+                      var saveString = Base64.encodeURI(JSON.stringify(newState.storedData));
                       localStorage.setItem("data", saveString);
 
-                      newData = JSON.parse(JSON.stringify(this.props.data));
+                      newData = propsdata;
                       this.setState(newState);
                   } else {
                       alert("データ名を入力して下さい。")
@@ -1243,24 +1395,56 @@
             // Twitter Button
             var TwitterShareButton = React.createClass ({
                 componentWillReceiveProps: function(nextProps){
-                    var url = "http://hsimyu.net/motocal?data=" + Base64.encode(JSON.stringify(this.props.data))
-                    this.setState({url: url});
+                    var datatext = Base64.encodeURI(JSON.stringify(this.props.data))
+                    var shareurl = "http://hsimyu.net/motocal?data=" + datatext
+                    this.setState({datatext: datatext, shareurl: shareurl});
                 },
                 getInitialState: function() {
-                    var url = "http://hsimyu.net/motocal?data=" + Base64.encode(JSON.stringify(this.props.data))
+                    var datatext = Base64.encodeURI(JSON.stringify(this.props.data))
+                    var shareurl = "http://hsimyu.net/motocal?data=" + datatext
                     return {
-                        url: url,
+                        shareurl: datatext,
+                        datatext: datatext,
                     };
                 },
+                getShortenUrl: function() {
+                    var data = this.props.data;
+                    if("dataName" in newData && newData["dataName"] != '') {
+                        // 基本的にSys.dataNameに入力されているものをベースにして保存
+                        data["dataName"] = newData["dataName"];
+                    } else {
+                        // Sys.dataNameが空の場合
+                        data["dataName"] = "savedData";
+                    }
+
+                    $.ajax({
+                        url: "getshort.php",
+                        type: 'POST',
+                        dataType: 'text',
+                        cache: false,
+                        timeout: 10000,
+                        data: {datachar: Base64.encodeURI(JSON.stringify(data))},
+                        success: function(data, datatype) {
+                            var shareurl = 'http://hsimyu.net/motocal?id=' + data
+                            var tweeturl = 'https://twitter.com/intent/tweet?';
+                            tweeturl += 'text=元カレ計算機（グラブル攻撃力計算機）'
+                            tweeturl += '&url=' + shareurl
+                            window.open(tweeturl, '_blank')
+                            this.setState({shareurl: shareurl})
+                        }.bind(this),
+                        error: function(xhr, status, err) {
+                            alert("Error!: 何かがおかしいです。@hsimyuまで連絡して下さい。status: ", status, ", error message: ", err.toString());
+                        }.bind(this)
+                    });
+                },
                 render: function() {
-                  var tweeturl = "http://twitter.com/share?url=" + this.state.url
                   return (
                         <div className="tweet">
+                            <button type="button" onClick={this.getShortenUrl}> 短縮URLを取得 </button>
                             <h3>保存用URL</h3>
-                            {this.state.url}
+                            {this.state.shareurl}
                         </div>
                    );
-                   //<a href={tweeturl} target="_blank"><button type="button" className="tweetButton">Tweet</button></a>
                 },
             });
 
@@ -1272,6 +1456,11 @@
                         <div className="noticeLeft">
                             <h3>更新履歴</h3>
                             <ul>
+                                <li>2016/06/17: 神威によるHP上昇が加味されていなかったので修正 </li>
+                                <li>2016/06/15: コスモスATの効果量が間違っていたので修正 / コピー機能の不具合修正 / localStorageに保存時のデータ名が1つ前のものになってしまう不具合を修正 </li>
+                                <li>2016/06/14: 短縮URL取得機能の実装 </li>
+                                <li>2016/06/13: ストレングス背水の実装 / styleの調整 </li>
+                                <li>2016/06/11: オーディン石（属性+キャラ）に対応 </li>
                                 <li>2016/06/05: 暴君とコスモスATのHPデバフ分の計算が間違っていたので修正 </li>
                                 <li>2016/06/04: 削除ボタンとコピーボタンを実装 / 基礎DATA率と期待攻撃回数計算を追加(仮) / 召喚石を複数にした際の動作速度を改善 </li>
                                 <li>2016/06/03: コスモスAT/DF/BLの計算を追加。コスモス武器指定がない場合にはコスモススキルを指定できないように修正</li>
@@ -1289,7 +1478,7 @@
 
                             <h3>注記</h3>
                             <ul>
-                                 <li>今後の実装予定: 短縮URL取得/得意武器欄をジョブ設定に変更/HPやDAが上がるなどのサポアビ対応/キャラクター攻撃力計算の対応</li>
+                                 <li>今後の実装予定: 得意武器欄をジョブ設定に変更/HPやDAが上がるなどのサポアビ対応/キャラクター攻撃力計算の対応</li>
                                  <li><strong>バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに"バハフツ(攻/HP)"を選択してください。</strong> <br/>
                                  (バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)</li>
                                  <li>未対応: 羅刹/三手</li>

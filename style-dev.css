@@ -6,6 +6,10 @@ body {
     font-size: 9pt;
 }
 
+.divright {
+    text-align: right;
+}
+
 .banner {
     float: right;
     margin-top: 1em;
@@ -19,13 +23,13 @@ body {
 }
 
 .rootleft {
-    width: 85%;
+    width: 90%;
     height: 100%;
     float: left;
 }
 
 .rootright {
-    width: calc(15% - 10px);
+    width: calc(10% - 10px);
     height: 100%;
     margin-left: 10px;
     float: left;
@@ -44,6 +48,10 @@ body {
     margin-bottom: 10px;
 }
 
+.sysForm {
+    margin-bottom: 1px;
+}
+
 .system input {
     width: 100%;
 }
@@ -52,6 +60,10 @@ body {
     width: 100%;
     height: 100%;
     word-wrap: break-word;
+}
+
+.tweet button {
+    width: 100%;
 }
 
 .system button {
@@ -69,11 +81,6 @@ button {
     margin-bottom: 1px;
 }
 
-button:hover {
-    background-color: #24d;
-    color: #fff;
-}
-
 .armList {
     width: 100%;
     float: clear;
@@ -86,9 +93,21 @@ button:hover {
     padding-bottom: 0px;
 }
 
-.armList table th.tiny {
+.armList input {
+    width: 80%;
+}
+
+.armList input.checkbox {
+    width: 20px;
+}
+
+.armList table th.select, td.select {
     width: 5%;
-    min-width: 60px;
+    min-width: 30px;
+}
+
+th.checkbox, td.checkbox {
+    width: 20px;
 }
 
 .armList table th.consider {
@@ -106,12 +125,8 @@ button:hover {
     min-width: 30px;
 }
 
-.armList table input {
-    width: 80%;
-}
-
 .profile {
-    width: 40%;
+    width: 35%;
     margin-right: 10px;
     float: left;
 }
@@ -130,16 +145,35 @@ h3 {
 }
 
 .summonList {
-    width: calc(60% - 10px);
+    width: calc(65% - 10px);
     float: left;
 }
 
-.summonList th {
-    width: calc(100%/10);
+.summonList th.tiny, td.tiny {
+    width: 20px;
+}
+
+.summonList th, td {
+    width: calc(100%/9);
 }
 
 .summonList input {
     width: 100%;
+}
+
+.summonList label {
+    font-size: 9pt;
+}
+
+td.resultFirst, th.resultFirst {
+    border-left: #bbbbbb 5px double;
+    min-width: 70px;
+    max-width: 90px;
+}
+
+td.resultList, th.resultList {
+    min-width: 70px;
+    max-width: 90px;
 }
 
 .notice {
@@ -155,11 +189,6 @@ h3 {
     width: 30%;
     float: left;
     text-align: right;
-}
-
-.tweetButton {
-    width: 100%;
-    margin-bottom: 1em;
 }
 
 input, textarea {
