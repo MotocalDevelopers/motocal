@@ -39,7 +39,7 @@ body {
     width: 100%;
     height: 30%;
     margin-bottom: 10px;
-    min-height: 350px;
+    min-height: 370px;
     text-align: left;
 }
 
@@ -126,7 +126,7 @@ th.checkbox, td.checkbox {
 }
 
 .profile {
-    width: 35%;
+    width: 37%;
     margin-right: 10px;
     float: left;
 }
@@ -136,7 +136,11 @@ h3 {
     margin-bottom: 2px;
 }
 
-.profile table th {
+.profile table th.prof {
+    width: calc(100%/5);
+}
+
+.profile table th.buff {
     width: calc(100%/6);
 }
 
@@ -145,7 +149,7 @@ h3 {
 }
 
 .summonList {
-    width: calc(65% - 10px);
+    width: calc(63% - 10px);
     float: left;
 }
 
@@ -154,7 +158,7 @@ h3 {
 }
 
 .summonList th, td {
-    width: calc(100%/9);
+    width: calc(100%/11);
 }
 
 .summonList input {

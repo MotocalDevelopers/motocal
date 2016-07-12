@@ -80,6 +80,32 @@
                 "water": "水",
                 "light": "光",
                 "dark": "闇",
+                "none": "無",
+            }
+
+            var Jobs = {
+                "beruse": {"name": "ベルセルク", "favArm1": "sword", "favArm2": "axe", "DaBonus": 0.0, "TaBonus": 0.0},
+                "sage": {"name": "セージ", "favArm1": "wand", "favArm2": "spear", "DaBonus": 0.0, "TaBonus": 0.0},
+                "suparuta": {"name": "スパルタ", "favArm1": "sword", "favArm2": "spear", "DaBonus": 0.0, "TaBonus": 0.0},
+                "warlock": {"name": "ウォーロック", "favArm1": "wand", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
+                "alche": {"name": "アルケミスト", "favArm1": "dagger", "favArm2": "gun", "DaBonus": 0.0, "TaBonus": 0.0},
+                "ninja": {"name": "忍者", "favArm1": "katana", "favArm2": "fist", "DaBonus": 0.0, "TaBonus": 0.0},
+                "samurai": {"name": "侍", "favArm1": "katana", "favArm2": "bow", "DaBonus": 0.0, "TaBonus": 0.0},
+                "kensei": {"name": "剣聖", "favArm1": "sword", "favArm2": "katana", "DaBonus": 0.0, "TaBonus": 0.0},
+                "gunsri": {"name": "ガンスリ", "favArm1": "gun", "favArm2": "gun", "DaBonus": 0.0, "TaBonus": 0.0},
+                "kenja": {"name": "賢者", "favArm1": "wand", "favArm2": "wand", "DaBonus": 0.0, "TaBonus": 0.0},
+                "assassin": {"name": "アサシン", "favArm1": "dagger", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
+                "weaponmaster": {"name": "ウェポンマスター", "favArm1": "sword", "favArm2": "axe", "DaBonus": 0.0, "TaBonus": 0.0},
+                "holyse": {"name": "ホリセバー", "favArm1": "sword", "favArm2": "spear", "DaBonus": 0.0, "TaBonus": 0.0},
+                "bishop": {"name": "ビショップ", "favArm1": "wand", "favArm2": "spear", "DaBonus": 0.0, "TaBonus": 0.0},
+                "hermit": {"name": "ハーミット", "favArm1": "wand", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
+                "hokuai": {"name": "ホークアイ", "favArm1": "dagger", "favArm2": "gun", "DaBonus": 0.0, "TaBonus": 0.0},
+                "darkfe": {"name": "ダクフェ", "favArm1": "sword", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
+                "oga": {"name": "オーガ", "favArm1": "fist", "favArm2": "fist", "DaBonus": 0.0, "TaBonus": 0.0},
+                "side": {"name": "サイドワインダー", "favArm1": "bow", "favArm2": "gun", "DaBonus": 0.0, "TaBonus": 0.0},
+                "superstar": {"name": "スーパースター", "favArm1": "music", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
+                "valc": {"name": "ヴァルキュリア", "favArm1": "spear", "favArm2": "axe", "DaBonus": 0.0, "TaBonus": 0.0},
+                "fighter": {"name": "ファイター", "favArm1": "sword", "favArm2": "axe", "DaBonus": 0.0, "TaBonus": 0.0},
             }
 
             var summonElementTypes = {
@@ -89,9 +115,18 @@
                 "water": {"name": "水", "type": ["water"]},
                 "light": {"name": "光", "type": ["light"]},
                 "dark": {"name": "闇", "type": ["dark"]},
-                "fireLight": {"name": "光/火", "type": ["light", "fire"]},
+                "lightFire": {"name": "光/火", "type": ["light", "fire"]},
                 "darkEarth": {"name": "闇/土", "type": ["dark", "earth"]},
                 "windEarth": {"name": "風/土", "type": ["wind", "earth"]},
+                "darkWater": {"name": "闇/水", "type": ["dark", "water"]},
+                "earthLight": {"name": "土/光", "type": ["earth", "light"]},
+                "windLight": {"name": "風/光", "type": ["wind", "light"]},
+                "lightDark": {"name": "光/闇", "type": ["light", "dark"]},
+                "darkFire": {"name": "闇/火", "type": ["dark", "fire"]},
+                "waterLight": {"name": "水/光", "type": ["water", "light"]},
+                "windFire": {"name": "風/火", "type": ["wind", "fire"]},
+                "fireWater": {"name": "火/水", "type": ["fire", "water"]},
+                "all": {"name": "全属性", "type": ["all"]},
             }
 
             var skillAmounts = {
@@ -332,8 +367,10 @@
                             <tr>
                                 <th className="tiny">No.</th>
                                 <th>自分の石</th>
+                                {/*<th>属性</th>*/}
                                 <th>加護量</th>
                                 <th>フレ石</th>
+                                {/*<th>属性</th>*/}
                                 <th>フレ加護量</th>
                                 <th>合計攻撃力</th>
                                 <th>合計HP</th>
@@ -419,6 +456,7 @@
                 },
                 render: function() {
                     var smtypes = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{summonTypes[opt]}</option>;});
+                    var elementtypes = Object.keys(summonElementTypes).map(function(opt){return <option value={opt} key={opt}>{summonElementTypes[opt].name}</option>;});
 
                     var selfSummon = [{"label": "", "input": "number"}, {"input": "hidden"}]
                     if(this.state.selfSummonType == "odin"){
@@ -435,11 +473,13 @@
                             <form className="summonForm">
                                 <td className="tiny">{this.props.id + 1}</td>
                                 <td><select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{smtypes}</select></td>
+                                {/*<td><select value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{elementtypes}</select></td>*/}
                                 <td>
                                 <label>{selfSummon[0].label}<input type={selfSummon[0].input} min="0" max="120" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /></label>
                                 <label>{selfSummon[1].label}<input type={selfSummon[1].input} min="0" max="120" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} /></label>
                                 </td>
                                 <td><select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{smtypes}</select></td>
+                                {/*<td><select value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{elementtypes}</select></td>*/}
                                 <td>
                                 <label>{friendSummon[0].label}<input type={friendSummon[0].input} min="0" max="120" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /></label>
                                 <label>{friendSummon[1].label}<input type={friendSummon[1].input} min="0" max="120" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} /></label>
@@ -591,6 +631,11 @@
                     }
 
                     var HPdebuff = 0.00
+                    var fav1 = ""; var fav2 = "";
+                    if(prof.job != undefined) {
+                        fav1 = Jobs[prof.job].favArm1
+                        fav2 = Jobs[prof.job].favArm2
+                    }
 
                     for(var i = 0; i < tempArmList.length; i++){
                         var arm = tempArmList[i];
@@ -601,13 +646,13 @@
                             armSup += 0.3
                             hpSup += 0.3
                         }
-                        if(arm.armType == prof.favArm1 && arm.armType == prof.favArm2){
+                        if(arm.armType == fav1 && arm.armType == fav2){
                             armSup += (0.2 + buff["zenith1"] + buff["zenith2"])
                             hpSup += 0.2
-                        } else if(arm.armType == prof.favArm1){
+                        } else if(arm.armType == fav1){
                             armSup += (0.2 + buff["zenith1"])
                             hpSup += 0.2
-                        } else if(arm.armType == prof.favArm2){
+                        } else if(arm.armType == fav2){
                             armSup += (0.2 + buff["zenith2"])
                             hpSup += 0.2
                         }
@@ -805,7 +850,7 @@
 
                     return (
                         <div className="resultList">
-                            表示項目: 
+                            表示項目:
                             <input type="checkbox" checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力
                             <input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力
                             <input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP
@@ -936,14 +981,18 @@
                     this.setState({arms: arms})
                 },
                 componentWillReceiveProps: function(nextProps) {
-                    if (parseInt(nextProps.armNum) < parseInt(this.props.armNum)) {
-                        var newalist = this.state.alist;
-                        while(newalist.length > nextProps.armNum) {
-                            newalist.pop();
+                    // iPadなどで一度数字が消された場合NaNになる
+                    if(!isNaN(parseInt(nextProps.armNum))) {
+                        // 今回のarmNumが小さくなったらalistも切り落とす (前回がNaNの場合も行う)
+                        if (isNaN(parseInt(this.props.armNum)) || (parseInt(nextProps.armNum) < parseInt(this.props.armNum))) {
+                            var newalist = this.state.alist;
+                            while(newalist.length > nextProps.armNum) {
+                                newalist.pop();
+                            }
+                            this.setState({alist: newalist})
                         }
-                        this.setState({alist: newalist})
+                        this.updateArmNum(nextProps.armNum)
                     }
-                    this.updateArmNum(nextProps.armNum)
                 },
                 handleOnCopy: function(id, keyid, state) {
                     var newarms = this.state.arms
@@ -1015,6 +1064,7 @@
                                 <th>武器名</th>
                                 <th>攻撃力</th>
                                 <th>HP</th>
+                                {/*<th>属性</th>*/}
                                 <th className="select">武器種</th>
                                 <th className="checkbox">コスモス？</th>
                                 <th>スキル1</th>
@@ -1049,6 +1099,7 @@
                             slv: 1,
                             considerNumberMin: 0,
                             considerNumberMax: 0,
+                            element: 'fire',
                     };
                 },
                 componentWillReceiveProps: function(nextProps){
@@ -1124,6 +1175,7 @@
                 },
                 render: function(){
                     var stypes = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
+                    var etypes = Object.keys(elementTypes).map(function(key){ return <option value={key} key={key}>{elementTypes[key]}</option>;})
                     var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
 
                     return (
@@ -1132,6 +1184,7 @@
                             <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td>
+                            {/*<td className="select"><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {etypes} </select></td>*/}
                             <td className="select"><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {atypes} </select></td>
                             <td className="checkbox"><input className="checkbox" type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
                             <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {stypes}</select></td>
@@ -1157,11 +1210,14 @@
                     var typeBonus = Object.keys(types).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
                     var atypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
                     var ktypes = Object.keys(keyTypes).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
+                    var alljobs = Object.keys(Jobs).map(function(opt){ return <option value={opt} key={opt}>{Jobs[opt].name}</option> });
+
                     return {
                         zenithBonuses: zenithBonuses,
                         typeBonus: typeBonus,
                         atypes: atypes,
                         keyTypes: ktypes,
+                        alljobs: alljobs,
                     };
                 },
                 componentDidMount: function(){
@@ -1193,8 +1249,7 @@
                         zenithBonus1: "無し",
                         zenithBonus2: "無し",
                         typeBonus: "無し",
-                        favArm1: "無し",
-                        favArm2: "無し",
+                        job: "fighter",
                         armNum: 3,
                         summonNum: 1,
                         sortKey: "総合攻撃力",
@@ -1223,12 +1278,11 @@
                                 <form className="profileForm">
                                 <table>
                                 <tr>
-                                    <th>Rank</th>
-                                    <th>攻撃力ボーナス</th>
-                                    <th>HPボーナス</th>
-                                    <th>マスターボーナスATK(%)</th>
-                                    <th>マスターボーナスHP(%)</th>
-                                    <th>HP (%)</th>
+                                    <th className="prof">Rank</th>
+                                    <th className="prof">攻撃力ボーナス</th>
+                                    <th className="prof">HPボーナス</th>
+                                    <th className="prof">マスターボーナスATK(%)</th>
+                                    <th className="prof">マスターボーナスHP(%)</th>
                                 </tr>
                                 <tr>
                                     <td><input type="number"  min="0" max="170" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
@@ -1236,32 +1290,35 @@
                                     <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
                                     <td><input type="number" min="0" max="100" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
                                     <td><input type="number" min="0" max="100" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}/></td>
+                                </tr>
+                                <tr>
+                                    <th className="prof">HP (%)</th>
+                                    <th className="prof">属性相性</th>
+                                    <th className="prof">ジョブ</th>
+                                    <th className="prof">武器ゼニス1</th>
+                                    <th className="prof">武器ゼニス2</th>
+                                </tr>
+                                <tr>
                                     <td> <input type="number" min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                                </tr>
-                                <tr>
-                                    <th>属性相性</th>
-                                    <th>得意武器1</th>
-                                    <th>得意武器2</th>
-                                    <th>武器ゼニス1</th>
-                                    <th>武器ゼニス2</th>
-                                </tr>
-                                <tr>
                                     <td><select value={this.state.typeBonus} onChange={this.handleEvent.bind(this, "typeBonus")}> {this.props.typeBonus} </select></td>
-                                    <td><select value={this.state.favArm1} onChange={this.handleEvent.bind(this, "favArm1")} > {this.props.atypes} </select></td>
-                                    <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} > {this.props.atypes} </select></td>
+                                    <td><select value={this.state.job} onChange={this.handleEvent.bind(this, "job")} > {this.props.alljobs} </select></td>
                                     <td><select value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </select></td>
                                     <td><select value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </select></td>
                                 </tr>
                                 </table>
+
+                                得意武器1, 得意武器2を廃止してジョブ欄を追加しました。<br/>
+                                過去のデータの値が変わる可能性があるので、再度ジョブを設定してください。
+
                                 <h3>バフ(%表記)</h3>
                                 <table>
                                     <tr>
-                                        <th>通常バフ</th>
-                                        <th>属性バフ</th>
-                                        <th>その他バフ</th>
-                                        <th>HPバフ</th>
-                                        <th>DAバフ</th>
-                                        <th>TAバフ</th>
+                                        <th className="buff">通常バフ</th>
+                                        <th className="buff">属性バフ</th>
+                                        <th className="buff">その他バフ</th>
+                                        <th className="buff">HPバフ</th>
+                                        <th className="buff">DAバフ</th>
+                                        <th className="buff">TAバフ</th>
                                     </tr>
                                     <tr>
                                         <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
@@ -1454,8 +1511,13 @@
                     <div className="notice">
                         <hr/>
                         <div className="noticeLeft">
+                            <h3>入力例</h3>
+                            <ul>
+                                <li> <a href="http://hsimyu.net/motocal?id=122"> 例:土ベルセ </a> </li>
+                            </ul>
                             <h3>更新履歴</h3>
                             <ul>
+                                <li>2016/07/13: スマホ版Chromeで武器数変更が行えなかった不具合を修正 / 得意武器欄を廃止してジョブ欄を追加 </li>
                                 <li>2016/06/17: 神威によるHP上昇が加味されていなかったので修正 </li>
                                 <li>2016/06/15: コスモスATの効果量が間違っていたので修正 / コピー機能の不具合修正 / localStorageに保存時のデータ名が1つ前のものになってしまう不具合を修正 </li>
                                 <li>2016/06/14: 短縮URL取得機能の実装 </li>
