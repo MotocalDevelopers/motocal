@@ -338,7 +338,10 @@
                     dataName: '',
                     topclass: "top open",
                     topopen: true,
-                    buttontext: "プロフィール欄を縮小 -",
+                    topbuttontext: "プロフィール欄を縮小 -",
+                    middleclass: "middle open",
+                    middleopen: true,
+                    middlebuttontext: "武器リスト欄を縮小 -",
                   };
               },
               getDatacharById: function(id) {
@@ -400,27 +403,37 @@
                   this.setState({summonNum: newData.summonNum});
                   this.setState({dataName: newDataName});
               },
-              handleOnClickTitle: function(e) {
+              handleOnClickTopToggle: function(e) {
                   if(this.state.topopen) {
-                      this.setState({topclass: "top", topopen: false, buttontext: "プロフィール欄を展開 +"})
+                      this.setState({topclass: "top", topopen: false, topbuttontext: "プロフィール欄を展開 +"})
                   } else {
-                      this.setState({topclass: "top open", topopen: true, buttontext: "プロフィール欄を縮小 -"})
+                      this.setState({topclass: "top open", topopen: true, topbuttontext: "プロフィール欄を縮小 -"})
+                  }
+              },
+              handleOnClickMiddleToggle: function(e) {
+                  if(this.state.middleopen) {
+                      this.setState({middleclass: "middle", middleopen: false, middlebuttontext: "武器リスト欄を展開 +"})
+                  } else {
+                      this.setState({middleclass: "middle open", middleopen: true, middlebuttontext: "武器リスト欄を縮小 -"})
                   }
               },
               render: function() {
                 return (
                     <div className="root">
                         <div className="rootLeft">
-                            <button className="toggle" onClick={this.handleOnClickTitle}>{this.state.buttontext}</button>
+                            <button className="toggle" onClick={this.handleOnClickTopToggle}>{this.state.topbuttontext}</button>
                             <div className={this.state.topclass}>
                                 <Profile dataName={this.state.dataName} onArmNumChange={this.handleArmNumChange} onChange={this.onChangeProfileData} onSummonNumChange={this.handleSummonNumChange} />
                                 <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
                                 <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} />
                             </div>
                             <hr />
-                            <div className="bottom">
+                            <button className="toggle" onClick={this.handleOnClickMiddleToggle}>{this.state.middlebuttontext}</button>
+                            <div className={this.state.middleclass}>
                                 <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} />
-                                <hr />
+                            </div>
+                            <hr />
+                            <div className="bottom">
                                 <ResultList data={this.state} />
                                 <Notice />
                             </div>
@@ -950,7 +963,14 @@
 
                             for(var j = 1; j <= 2; j++){
                                 var skillname = '';
-                                if(j == 1) { skillname = arm.skill1 } else { skillname = arm.skill2 }
+                                var element = ''; (arm.element == undefined) ? "fire" : arm.element
+                                if(j == 1) {
+                                    skillname = arm.skill1
+                                    element = (arm.element == undefined) ? "fire" : arm.element
+                                } else {
+                                    skillname = arm.skill2
+                                    element = (arm.element2 == undefined) ? "fire" : arm.element2
+                                }
 
                                 if(skillname != 'non'){
                                     // 古いデータ用の対応
@@ -962,7 +982,6 @@
                                     var stype = skilltypes[skillname].type;
                                     var amount = skilltypes[skillname].amount;
                                     var slv = parseInt(arm.slv)
-                                    var element = (arm.element == undefined) ? "fire" : arm.element
 
                                     // mask invalid slv
                                     if(slv == 0) slv = 1
@@ -1451,10 +1470,11 @@
                                 <th>武器名</th>
                                 <th>攻撃力</th>
                                 <th>HP</th>
-                                <th>属性</th>
                                 <th className="select">武器種</th>
-                                <th className="checkbox">コスモス？</th>
+                                <th className="checkbox">Cosmos?</th>
+                                <th>属性1</th>
                                 <th>スキル1</th>
+                                <th>属性2</th>
                                 <th>スキル2</th>
                                 <th className="select">SLv</th>
                                 <th className="consider">考慮本数</th>
@@ -1487,6 +1507,7 @@
                             considerNumberMin: 0,
                             considerNumberMax: 0,
                             element: 'fire',
+                            element2: 'fire',
                     };
                 },
                 componentWillReceiveProps: function(nextProps){
@@ -1568,10 +1589,11 @@
                             <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
                             <td><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td>
-                            <td className="select"><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </select></td>
                             <td className="select"><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </select></td>
                             <td className="checkbox"><input className="checkbox" type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
+                            <td className="select"><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </select></td>
                             <td><select value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</select></td>
+                            <td className="select"><select value={this.state.element2} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </select></td>
                             <td><select value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</select></td>
                             <td className="select"><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
                             <td>
@@ -1900,6 +1922,7 @@
                             </ul>
                             <h3>更新履歴</h3>
                             <ul>
+                                <li>2016/07/17: フラム=グラス系の石も計算できるようにした。/ 総合攻撃力*期待攻撃回数*技巧倍率を計算した値の導入 </li>
                                 <li>2016/07/16: バハ短剣の適応種族が間違っていたので修正 / 朱雀琴スキルの実装 / 計算量を削減する処理の追加 </li>
                                 <li>2016/07/15: 技巧・刹那の追加と、技巧期待値計算機能の追加 / キャラ攻撃力計算の実装、属性の導入 </li>
                                 <li>2016/07/14: 通常神威のHP上昇量が低かったので修正 / プロフィールと召喚石欄のtoggle機能追加 </li>

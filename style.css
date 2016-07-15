@@ -47,7 +47,6 @@ input, textarea {
     height: 0%;
     overflow: hidden;
     transition: all .1s ease-in;
-
 }
 
 .root .top.open {
@@ -55,6 +54,20 @@ input, textarea {
     margin-bottom: 10px;
     overflow: visible;
     min-height: 330px;
+}
+
+.root .middle {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: left;
+    display: none;
+}
+
+.root .middle.open {
+    width: 100%;
+    display: inline;
+    margin-bottom: 10px;
+    overflow: auto;
 }
 
 .root .bottom {
@@ -109,11 +122,12 @@ button {
 }
 
 .armList input {
-    width: 80%;
+    width: 100%;
+    text-align: right;
 }
 
 .armList input.checkbox {
-    width: 20px;
+    width: 15px;
 }
 
 .armList table th.select, .armList table td.select {
@@ -122,12 +136,12 @@ button {
 }
 
 th.checkbox, td.checkbox {
-    width: 20px;
+    width: 15px;
 }
 
 .armList table th.consider {
-    width: 15%;
-    min-width: 180px;
+    width: 8%;
+    min-width: 130px;
 }
 
 .armList table th.system {
@@ -136,7 +150,7 @@ th.checkbox, td.checkbox {
 }
 
 .armList table input.consider {
-    width: 15%;
+    width: 25%;
     min-width: 30px;
 }
 
