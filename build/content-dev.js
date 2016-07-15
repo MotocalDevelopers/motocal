@@ -11,6 +11,7 @@
                 "normalLL": {name:"通常攻刃II", type:"normal", amount: "LL"},
                 "normalBoukunL": {name:"通常暴君", type:"normalBoukun", amount: "LL"},
                 "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
+                "normalHaisuiM": {name:"通常背水(中)", type:"normalHaisui", amount: "M"},
                 "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
                 "normalNiteS": {name:"通常二手(小)", type:"normalNite", amount: "S"},
                 "normalNiteM": {name:"通常二手(中)", type:"normalNite", amount: "M"},
@@ -20,6 +21,7 @@
                 "magnaM": {name: "マグナ攻刃", type:"magna", amount:"M"},
                 "magnaL": {name: "マグナ攻刃II", type:"magna", amount:"L"},
                 "magnaHaisuiS": {name:"マグナ背水(小)", type:"magnaHaisui", amount: "S"},
+                "magnaHaisuiM": {name:"マグナ背水(中)", type:"magnaHaisui", amount: "M"},
                 "magnaHaisuiL": {name:"マグナ背水(大)", type:"magnaHaisui", amount: "L"},
                 "magnaKatsumiM": {name:"マグナ克己(中)", type:"magnaKatsumi", amount: "M"},
                 "magnaKamui": {name:"マグナ神威", type:"magnaKamui", amount: "S"},
@@ -1209,7 +1211,7 @@
                         tableheader.push('連続攻撃率(%)')
                     }
                     if(switcher.switchExpectedAttack) {
-                        tableheader.push('期待攻撃回数')
+                        tableheader.push('期待攻撃回数 (期待攻撃力)')
                     }
                     if(switcher.switchCriticalRatio) {
                         tableheader.push('技巧期待値 (期待攻撃力, 平均攻撃力)')
@@ -1311,7 +1313,8 @@
                                     tablebody.push('DA:' + m.data.Djeeta.totalDA.toFixed(1) + '%, TA: ' + m.data.Djeeta.totalTA.toFixed(1) + '%')
                                 }
                                 if(sw.switchExpectedAttack) {
-                                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(2))
+                                    var expectedAttack = parseInt(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack)
+                                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(2) + "(" + expectedAttack + ")")
                                 }
                                 if(sw.switchCriticalRatio) {
                                     tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "(" + m.data.Djeeta.criticalAttack + ", " + m.data.Djeeta.averageCriticalAttack + ")")
@@ -1952,7 +1955,7 @@
                                  React.createElement("li", null, "今後の実装予定: HPやDAが上がるなどのサポアビ対応"), 
                                  React.createElement("li", null, React.createElement("strong", null, "バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに\"バハフツ(攻/HP)\"を選択してください。"), " ", React.createElement("br", null), 
                                  "(バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)"), 
-                                 React.createElement("li", null, "未対応: 羅刹/三手/召喚石のクリティカル率/フラム=グラス"), 
+                                 React.createElement("li", null, "未対応: 羅刹/三手/召喚石のクリティカル率"), 
                                  React.createElement("li", null, "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。"), 
                                  React.createElement("li", null, "基礎DA/TA率は 6.5%/3.0% としています。", React.createElement("br", null), 
                                  "二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)", React.createElement("br", null), 
