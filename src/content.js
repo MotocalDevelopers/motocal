@@ -46,6 +46,14 @@
                 "unknownHPL": {name:"アンノウンVIT(大)", type:"unknownHP", amount: "L"},
                 "unknownOtherBoukunL": {name:"ミフネ流・極意", type:"unknownOtherBoukun", amount: "L"},
                 "unknownOtherNiteS": {name:"ミフネ流・双星", type:"unknownOtherNite", amount: "S"},
+                "normalCriticalS": {name:"通常技巧(小)", type:"normalCritical", amount: "S"},
+                "normalCriticalM": {name:"通常技巧(中)", type:"normalCritical", amount: "M"},
+                "normalCriticalL": {name:"通常技巧(大)", type:"normalCritical", amount: "L"},
+                "magnaCriticalS": {name:"マグナ技巧(小)", type:"magnaCritical", amount: "S"},
+                "magnaCriticalM": {name:"マグナ技巧(中)", type:"magnaCritical", amount: "M"},
+                "magnaCriticalL": {name:"マグナ技巧(大)", type:"magnaCritical", amount: "L"},
+                "normalSetsuna": {name:"通常刹那", type:"normalSetsuna", amount: "M"},
+                "magnaSetsuna": {name:"マグナ刹那", type:"magnaSetsuna", amount: "M"},
                 "cosmosAT": {name:"コスモスAT", type:"cosmos", amount: "L"},
                 "cosmosDF": {name:"コスモスDF", type:"cosmos", amount: "L"},
                 "cosmosBL": {name:"コスモスBL", type:"cosmos", amount: "L"},
@@ -84,28 +92,28 @@
             }
 
             var Jobs = {
-                "beruse":       {"name": "ベルセルク",       "favArm1": "sword", "favArm2": "axe", "type": "attack", "DaBonus": 0.0, "TaBonus": 0.0},
-                "sage":         {"name": "セージ",           "favArm1": "wand", "favArm2": "spear", "type": "heal", "DaBonus": 0.0, "TaBonus": 0.0},
-                "suparuta":     {"name": "スパルタ",         "favArm1": "sword", "favArm2": "spear", "type": "defense", "DaBonus": 0.0, "TaBonus": 0.0},
-                "warlock":      {"name": "ウォーロック",     "favArm1": "wand", "favArm2": "dagger", "type": "attack", "DaBonus": 0.0, "TaBonus": 0.0},
-                "alche":        {"name": "アルケミスト",     "favArm1": "dagger", "favArm2": "gun", "type": "heal", "DaBonus": 0.0, "TaBonus": 0.0},
-                "ninja":        {"name": "忍者",             "favArm1": "katana", "favArm2": "fist", "type": "pecu", "DaBonus": 0.0, "TaBonus": 0.0},
-                "samurai":      {"name": "侍",               "favArm1": "katana", "favArm2": "bow", "type": "attack", "DaBonus": 0.0, "TaBonus": 0.0},
-                "kensei":       {"name": "剣聖",             "favArm1": "sword", "favArm2": "katana", "type": "pecu", "DaBonus": 0.0, "TaBonus": 0.0},
-                "gunsri":       {"name": "ガンスリ",         "favArm1": "gun", "favArm2": "gun", "type": "pecu", "DaBonus": 0.0, "TaBonus": 0.0},
-                "kenja":        {"name": "賢者",             "favArm1": "wand", "favArm2": "wand", "type": "pecu", "DaBonus": 0.0, "TaBonus": 0.0},
-                "assassin":     {"name": "アサシン",         "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "DaBonus": 0.0, "TaBonus": 0.0},
-                "weaponmaster": {"name": "ウェポンマスター", "favArm1": "sword", "favArm2": "axe", "type": "attack", "DaBonus": 0.0, "TaBonus": 0.0},
-                "holyse":       {"name": "ホリセバー",       "favArm1": "sword", "favArm2": "spear", "type": "defense", "DaBonus": 0.0, "TaBonus": 0.0},
-                "bishop":       {"name": "ビショップ",       "favArm1": "wand", "favArm2": "spear", "type": "heal", "DaBonus": 0.0, "TaBonus": 0.0},
-                "hermit":       {"name": "ハーミット",       "favArm1": "wand", "favArm2": "dagger", "type": "attack", "DaBonus": 0.0, "TaBonus": 0.0},
-                "hokuai":       {"name": "ホークアイ",       "favArm1": "dagger", "favArm2": "gun", "type": "balance", "DaBonus": 0.0, "TaBonus": 0.0},
-                "darkfe":       {"name": "ダクフェ",         "favArm1": "sword", "favArm2": "dagger", "type": "pecu", "DaBonus": 0.0, "TaBonus": 0.0},
-                "oga":          {"name": "オーガ",           "favArm1": "fist", "favArm2": "fist", "type": "attack", "DaBonus": 0.0, "TaBonus": 0.0},
-                "side":         {"name": "サイドワインダー", "favArm1": "bow", "favArm2": "gun", "type": "balance", "DaBonus": 0.0, "TaBonus": 0.0},
-                "superstar":    {"name": "スーパースター",   "favArm1": "music", "favArm2": "dagger", "type": "pecu", "DaBonus": 0.0, "TaBonus": 0.0},
-                "valc":         {"name": "ヴァルキュリア",   "favArm1": "spear", "favArm2": "axe", "type": "attack", "DaBonus": 0.0, "TaBonus": 0.0},
-                "none":         {"name": "なし",             "favArm1": "none", "favArm2": "none", "type": "none", "DaBonus": 0.0, "TaBonus": 0.0},
+                "beruse":       {"name": "ベルセルク",       "favArm1": "sword",  "favArm2": "axe",    "type": "attack",  "atBonus": 6000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 10.0, "DaBonus": 26.5, "TaBonus": 5.5},
+                "sage":         {"name": "セージ",           "favArm1": "wand",   "favArm2": "spear",  "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "suparuta":     {"name": "スパルタ",         "favArm1": "sword",  "favArm2": "spear",  "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1500.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "warlock":      {"name": "ウォーロック",     "favArm1": "wand",   "favArm2": "dagger", "type": "attack",  "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "alche":        {"name": "アルケミスト",     "favArm1": "dagger", "favArm2": "gun",    "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 100.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "ninja":        {"name": "忍者",             "favArm1": "katana", "favArm2": "fist",   "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 31.5, "TaBonus": 3.0},
+                "samurai":      {"name": "侍",               "favArm1": "katana", "favArm2": "bow",    "type": "attack",  "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "kensei":       {"name": "剣聖",             "favArm1": "sword",  "favArm2": "katana", "type": "pecu",    "atBonus": 1500.0, "kouzinBonus": 0.0, "hpBonus": 300.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "gunsri":       {"name": "ガンスリ",         "favArm1": "gun",    "favArm2": "gun",    "type": "pecu",    "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 3.0},
+                "kenja":        {"name": "賢者",             "favArm1": "wand",   "favArm2": "wand",   "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "assassin":     {"name": "アサシン",         "favArm1": "dagger", "favArm2": "dagger", "type": "pecu",    "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "weaponmaster": {"name": "ウェポンマスター", "favArm1": "sword",  "favArm2": "axe",    "type": "attack",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 23.0, "TaBonus": 5.0},
+                "holyse":       {"name": "ホリセバー",       "favArm1": "sword",  "favArm2": "spear",  "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "bishop":       {"name": "ビショップ",       "favArm1": "wand",   "favArm2": "spear",  "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "hermit":       {"name": "ハーミット",       "favArm1": "wand",   "favArm2": "dagger", "type": "attack",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "hokuai":       {"name": "ホークアイ",       "favArm1": "dagger", "favArm2": "gun",    "type": "balance", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "darkfe":       {"name": "ダクフェ",         "favArm1": "sword",  "favArm2": "dagger", "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "oga":          {"name": "オーガ",           "favArm1": "fist",   "favArm2": "fist",   "type": "attack",  "atBonus": 2000.0, "kouzinBonus": 5.0, "hpBonus": 200.0, "shugoBonus": 0.0, "DaBonus": 60.0, "TaBonus": 5.0},
+                "side":         {"name": "サイドワインダー", "favArm1": "bow",    "favArm2": "gun",    "type": "balance", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "superstar":    {"name": "スーパースター",   "favArm1": "music",  "favArm2": "dagger", "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "valc":         {"name": "ヴァルキュリア",   "favArm1": "spear",  "favArm2": "axe",    "type": "attack",  "atBonus": 500.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 8.0},
+                "none":         {"name": "なし",             "favArm1": "none",   "favArm2": "none",   "type": "none",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
             }
 
             var summonElementTypes = {
@@ -201,6 +209,19 @@
                 "unknownOtherNite":{
                     "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
                 },
+                "normalCritical":{
+                    "S": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9],
+                    "M": [3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6.0, 6.3, 6.7, 7.0, 7.3],
+                    "L": [4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6],
+                    "ratio": 0.5,
+                },
+                // 仮入力
+                "magnaCritical":{
+                    "S": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9],
+                    "M": [3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6.0, 6.3, 6.7, 7.0, 7.3],
+                    "L": [4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6],
+                    "ratio": 0.5,
+                },
             }
 
             // query 取得用の関数
@@ -243,6 +264,9 @@
                     armlist: [],
                     summon: [],
                     dataName: '',
+                    topclass: "top open",
+                    topopen: true,
+                    buttontext: "Close Profile -",
                   };
               },
               getDatacharById: function(id) {
@@ -301,13 +325,22 @@
                   this.setState({summonNum: newData.summonNum});
                   this.setState({dataName: newDataName});
               },
+              handleOnClickTitle: function(e) {
+                  if(this.state.topopen) {
+                      this.setState({topclass: "top", topopen: false, buttontext: "Open Profile +"})
+                  } else {
+                      this.setState({topclass: "top open", topopen: true, buttontext: "Close Profile -"})
+                  }
+              },
               render: function() {
                 return (
                     <div className="root">
                         <div className="rootLeft">
-                            <div className="top">
+                            <button className="toggle" onClick={this.handleOnClickTitle}>{this.state.buttontext}</button>
+                            <div className={this.state.topclass}>
                                 <Profile dataName={this.state.dataName} onArmNumChange={this.handleArmNumChange} onChange={this.onChangeProfileData} onSummonNumChange={this.handleSummonNumChange} />
                                 <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
+                                <CharaList dataName={this.state.dataName} />
                             </div>
                             <hr />
                             <div className="bottom">
@@ -326,12 +359,41 @@
               }
             });
 
+            var CharaList = React.createClass({
+                handleOnChange: function(key, state){
+                },
+                render: function() {
+                    return (
+                        <div className="charaList">
+                            <h3> キャラクター (実装中) </h3>
+                            <div className="charaForm">
+                                <table>
+                                <thead>
+                                <tr>
+                                    <th className="tiny">No.</th>
+                                    <th>キャラ名</th>
+                                    <th>属性</th>
+                                    <th>攻撃力</th>
+                                    <th>HP</th>
+                                    <th>種族</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {/*s.map(function(sm) {
+                                        return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} />;
+                                    })*/}
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    );
+                }
+            });
+
             var SummonList = React.createClass({
                 getInitialState: function() {
                     return {
                         smlist: [],
-                        class: "summonForm open",
-                        open: true,
                     };
                 },
                 componentWillReceiveProps: function(nextProps) {
@@ -349,13 +411,6 @@
                     this.setState({smlist: newsmlist})
                     this.props.onChange(newsmlist);
                 },
-                handleOnClickTitle: function(e) {
-                    if(this.state.open) {
-                        this.setState({class: "summonForm", open: false})
-                    } else {
-                        this.setState({class: "summonForm open", open: true})
-                    }
-                },
                 render: function() {
                     var summons = [];
                     for(var i=0; i < this.props.summonNum; i++) {
@@ -365,8 +420,8 @@
                     var dataName = this.props.dataName;
                     return (
                         <div className="summonList">
-                            <h3> 召喚石 <button onClick={this.handleOnClickTitle}>toggle</button> </h3>
-                            <div className={this.state.class}>
+                            <h3> 召喚石 </h3>
+                            <div className="summonForm">
                                 <table>
                                 <thead>
                                 <tr>
@@ -510,6 +565,7 @@
                         switchHP: 1,
                         switchDATA: 0,
                         switchExpectedAttack: 0,
+                        switchCriticalRatio: 0,
                     };
                 },
                 handleEvent: function(key, e) {
@@ -613,7 +669,7 @@
                     var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + 0.01 * totalSkills["cosmosBL"])
                     var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
 
-                    return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), totalDA: totalDA, totalTA: totalTA};
+                    return {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), totalDA: totalDA, totalTA: totalTA, normalCritical: (1.0 + totalSummon["zeus"]) * 0.01 * totalSkills["normalCritical"], magnaCritical: (1.0 + totalSummon["magna"]) * 0.01 * totalSkills["magnaCritical"]};
                 },
                 calculateOneCombination: function(comb, summon, prof, arml, buff){
                     var tempArmList = []
@@ -623,7 +679,7 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, cosmosBL: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0};
                     var armAttack = 0;
                     var armHP = 0;
 
@@ -714,6 +770,12 @@
                                 } else if(stype == 'magnaKamui') {
                                     totalSkills["magna"] += skillAmounts["magna"][amount][slv - 1];
                                     totalSkills["magnaHP"] += skillAmounts["magnaHP"][amount][slv - 1];
+                                } else if(stype == 'normalSetsuna') {
+                                    totalSkills["normalCritical"] += skillAmounts["normalCritical"][amount][slv - 1];
+                                    totalSkills["normal"] += skillAmounts["normal"][amount][slv - 1];
+                                } else if(stype == 'magnaSetsuna') {
+                                    totalSkills["magnaCritical"] += skillAmounts["magnaCritical"][amount][slv - 1];
+                                    totalSkills["magna"] += skillAmounts["magna"][amount][slv - 1];
                                 } else if(stype == 'bahaATHP') {
                                     // バハ剣など
                                     totalSkills["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
@@ -860,6 +922,9 @@
                     if(switcher.switchExpectedAttack) {
                         tableheader.push('期待攻撃回数')
                     }
+                    if(switcher.switchCriticalRatio) {
+                        tableheader.push('技巧期待値(期待攻撃力)')
+                    }
                     var prof = this.props.data.profile
 
                     return (
@@ -869,7 +934,8 @@
                             <input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力
                             <input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP
                             <input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率
-                            <input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数(仮)
+                            <input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数
+                            <input type="checkbox" checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値(仮)
                             <div className="divright"><h3>比較用プロフィール: rank {prof.rank}, HP {prof.hp} %, 相性ボーナス {prof.typeBonus}, 通常バフ {prof.normalBuff}%, 属性バフ {prof.elementBuff}%, その他バフ {prof.otherBuff}%</h3></div>
 
                             {summondata.map(function(s, summonindex) {
@@ -939,6 +1005,13 @@
                                     var daRate = (parseInt(m.data.totalDA) >= 100) ? 1.0 : 0.01 * parseInt(m.data.totalDA)
                                     var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
                                     tablebody.push(expectedAttack.toFixed(2))
+                                }
+                                if(sw.switchCriticalRatio) {
+                                    console.log("magna:", m.data.magnaCritical)
+                                    console.log("normal:", m.data.normalCritical)
+                                    var criticalRatio = (1.0 + skillAmounts["magnaCritical"]["ratio"]) * m.data.magnaCritical + (1.0 + skillAmounts["normalCritical"]["ratio"]) * m.data.normalCritical + 1.0 * (1.0 - m.data.normalCritical - m.data.magnaCritical)
+                                    var criticalAttack = parseInt(m.data.totalAttack * criticalRatio)
+                                    tablebody.push(criticalRatio.toFixed(4) + "(" + criticalAttack+ ")")
                                 }
                                 return (
                                     <tr key={rank + 1}>
@@ -1267,8 +1340,6 @@
                         armNum: 3,
                         summonNum: 1,
                         sortKey: "総合攻撃力",
-                        class: "profileForm open",
-                        open: true,
                     };
                 },
                 handleEvent: function(key, e) {
@@ -1276,13 +1347,6 @@
                   newState[key] = e.target.value
                   this.setState(newState)
                   this.props.onChange(newState)
-                },
-                handleOnClickTitle: function(e) {
-                    if(this.state.open) {
-                        this.setState({class:"profileForm", open: false})
-                    } else {
-                        this.setState({class:"profileForm open", open: true})
-                    }
                 },
                 handleSummonNumChange: function(e) {
                   this.setState({summonNum: e.target.value});
@@ -1297,8 +1361,8 @@
                 render: function() {
                         return (
                             <div className="profile">
-                                <h3> 基本プロフィール <button onClick={this.handleOnClickTitle} >toggle</button> </h3>
-                                <div className={this.state.class}>
+                                <h3> 基本プロフィール </h3>
+                                <div className="profileForm">
                                     <form>
                                     <table>
                                     <tr>
@@ -1542,12 +1606,13 @@
                             </ul>
                             <h3>更新履歴</h3>
                             <ul>
+                                <li>2016/07/15: 技巧・刹那の追加と、技巧期待値計算機能の追加 </li>
                                 <li>2016/07/14: 通常神威のHP上昇量が低かったので修正 / プロフィールと召喚石欄のtoggle機能追加 </li>
                                 <li>2016/07/13: スマホ版Chromeで武器数変更が行えなかった不具合を修正 / 得意武器欄を廃止してジョブ欄を追加 </li>
                                 <li>2016/06/17: 神威によるHP上昇が加味されていなかったので修正 </li>
                                 <li>2016/06/15: コスモスATの効果量が間違っていたので修正 / コピー機能の不具合修正 / localStorageに保存時のデータ名が1つ前のものになってしまう不具合を修正 </li>
                                 <li>2016/06/14: 短縮URL取得機能の実装 </li>
-                                <li>2016/06/13: ストレングス背水の実装 / styleの調整 </li>
+                                {/*<li>2016/06/13: ストレングス背水の実装 / styleの調整 </li>
                                 <li>2016/06/11: オーディン石（属性+キャラ）に対応 </li>
                                 <li>2016/06/05: 暴君とコスモスATのHPデバフ分の計算が間違っていたので修正 </li>
                                 <li>2016/06/04: 削除ボタンとコピーボタンを実装 / 基礎DATA率と期待攻撃回数計算を追加(仮) / 召喚石を複数にした際の動作速度を改善 </li>
@@ -1561,7 +1626,7 @@
                                 <li>2016/05/26: マスターボーナスがなかった場合のURLを入力してしまうと表示がNaNになってしまう不具合を修正 </li>
                                 <li>2016/05/26: マスターボーナスの項が抜けてたので追加 / ついでに表示される攻撃力も算出されるように変更(確認用) </li>
                                 <li>2016/05/25: 保存用URLのTweetボタンを追加 </li>
-                                <li>2016/05/25: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）</li>
+                                <li>2016/05/25: 召喚石関連の入力値も複数持てるように変更しました。（修正前の保存データは一部壊れる可能性があります）</li>*/}
                             </ul>
 
                             <h3>注記</h3>
@@ -1569,13 +1634,13 @@
                                  <li>今後の実装予定: HPやDAが上がるなどのサポアビ対応/キャラクター攻撃力計算の対応</li>
                                  <li><strong>バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに"バハフツ(攻/HP)"を選択してください。</strong> <br/>
                                  (バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)</li>
-                                 <li>未対応: 羅刹/三手/技巧</li>
+                                 <li>未対応: 羅刹/三手/召喚石のクリティカル率</li>
                                  <li>得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</li>
                                  <li>基礎DA/TA率は 6.5%/3.0% としています。</li>
                                  <li>二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)</li>
                                  <li>克己のDA率上昇量は二手(中)と全く同じとしています。</li>
                                  <li>暴君の攻撃力上昇量は対応するスキルの(大)と同様としています。</li>
-                                 <li>基礎HPの基礎式は 600 + 8 * rank(100まで) + 4 * (rank - 100)としていますが、ズレる場合はお知らせください。</li>
+                                 <li>基礎HPの基礎式は 600 + 8 * rank(100まで) + 4 * (rank - 100)としていますが、120以上くらいでちょっとズレてる気がします。</li>
                                  <li>背水の計算式は日比野さんのところの式を利用しています。</li>
                                  <li>保存用URLを使用することで現在の編成を共有できます</li>
                              </ul>
