@@ -264,11 +264,12 @@
                     "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
                     "LL": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
                 },
-                "normalKatsumi":{
+                // 仮
+                "magnaNite":{
+                    "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
                     "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
-                },
-                "magnaKatsumi":{
-                    "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
+                    "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
+                    "LL": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
                 },
                 "unknownOtherNite":{
                     "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
@@ -837,9 +838,14 @@
                         var totalHP = displayHP * (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["unknownHP"] * (1.0 + totalSummon["ranko"]))
 
                         // for DA and TA
-                        var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totals[key]["normalNite"] + totals[key]["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["unknownOtherNite"] + 0.01 * totals[key]["cosmosBL"])
+                        var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * totals[key]["normalNite"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["magnaNite"] * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["unknownOtherNite"] + 0.01 * totals[key]["cosmosBL"])
                         var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
                         var criticalRatio = (1.0 + skillAmounts["magnaCritical"]["ratio"]) * 0.01 * totals[key]["magnaCritical"] * (1.0 + totalSummon["magna"]) + (1.0 + skillAmounts["normalCritical"]["ratio"]) * 0.01 * totals[key]["normalCritical"] * (1.0 + totalSummon["zeus"]) + 1.0 * (1.0 - 0.01 * totals[key]["normalCritical"] * (1.0 + totalSummon["zeus"]) - 0.01 * totals[key]["magnaCritical"] * (1.0 + totalSummon["magna"]))
+
+                        if(typeBonus != 1.5) {
+                            criticalRatio = 1.0
+                        }
+
                         var criticalAttack = parseInt(totalAttack * criticalRatio)
 
                         res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), totalDA: totalDA, totalTA: totalTA, criticalAttack: criticalAttack, criticalRatio: criticalRatio};
@@ -869,11 +875,11 @@
                     var baseHP = (prof.rank > 100) ? 1400 + (parseInt(prof.rank) - 100) * 4.0 : 600 + (parseInt(prof.rank)) * 8
                     var element = (prof.element == undefined) ? "fire" : prof.element
 
-                    var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, armAttack: 0, armHP:0, fav1: "", fav2: "", race: "unknown", type: "none", element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0}};
+                    var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, armAttack: 0, armHP:0, fav1: "", fav2: "", race: "unknown", type: "none", element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0}};
                     for(var i = 0; i < chara.length; i++){
                         if(chara[i].name != "") {
                             var charaelement = (chara[i].element == undefined) ? "fire" : chara[i].element
-                            totals[chara[i].name] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0}
+                            totals[chara[i].name] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0}
                         }
                     }
 
@@ -1037,6 +1043,12 @@
                                         } else if(stype == 'magnaSetsuna') {
                                             totals[key]["magnaCritical"] += skillAmounts["magnaCritical"][amount][slv - 1];
                                             totals[key]["magna"] += skillAmounts["magna"][amount][slv - 1];
+                                        } else if(stype == 'normalKatsumi') {
+                                            totals[key]["normalCritical"] += skillAmounts["normalCritical"][amount][slv - 1];
+                                            totals[key]["normalNite"] += skillAmounts["normalNite"][amount][slv - 1];
+                                        } else if(stype == 'magnaKatsumi') {
+                                            totals[key]["magnaCritical"] += skillAmounts["magnaCritical"][amount][slv - 1];
+                                            totals[key]["magnaNite"] += skillAmounts["magnaNite"][amount][slv - 1];
                                         } else if(stype == 'normalBoukun') {
                                             totals[key]["HPdebuff"] += 0.10
                                             totals[key]["normal"] += skillAmounts["normal"][amount][slv - 1];
@@ -1061,6 +1073,9 @@
                         // バハ武器重複上限
                         if(totals[key]["bahaAT"] > 50) totals[key]["bahaAT"] = 50
                         if(totals[key]["bahaHP"] > 50) totals[key]["bahaHP"] = 50
+                        // 二手スキル上限
+                        if(totals[key]["normalNite"] > 50) totals[key]["normalNite"] = 50
+                        if(totals[key]["magnaNite"]  > 50) totals[key]["magnaNite"] = 50
                     }
 
                     var result = []
@@ -1859,11 +1874,11 @@
                         <div className="noticeLeft">
                             <h3>入力例</h3>
                             <ul>
-                                <li> <a href="http://hsimyu.net/motocal?id=136"> 例:土ベルセ </a> </li>
+                                <li> <a href="http://hsimyu.net/motocal?id=136"> 例:火ベルセ </a> </li>
                             </ul>
                             <h3>更新履歴</h3>
                             <ul>
-                                <li>2016/07/16: バハ短剣の適応種族が間違っていたので修正 / 朱雀琴スキルの実装 </li>
+                                <li>2016/07/16: バハ短剣の適応種族が間違っていたので修正 / 朱雀琴スキルの実装 / 計算量を削減する処理の追加 </li>
                                 <li>2016/07/15: 技巧・刹那の追加と、技巧期待値計算機能の追加 / キャラ攻撃力計算の実装、属性の導入 </li>
                                 <li>2016/07/14: 通常神威のHP上昇量が低かったので修正 / プロフィールと召喚石欄のtoggle機能追加 </li>
                                 <li>2016/07/13: スマホ版Chromeで武器数変更が行えなかった不具合を修正 / 得意武器欄を廃止してジョブ欄を追加 </li>
