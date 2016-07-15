@@ -84,28 +84,28 @@
             }
 
             var Jobs = {
-                "beruse": {"name": "ベルセルク", "favArm1": "sword", "favArm2": "axe", "DaBonus": 0.0, "TaBonus": 0.0},
-                "sage": {"name": "セージ", "favArm1": "wand", "favArm2": "spear", "DaBonus": 0.0, "TaBonus": 0.0},
-                "suparuta": {"name": "スパルタ", "favArm1": "sword", "favArm2": "spear", "DaBonus": 0.0, "TaBonus": 0.0},
-                "warlock": {"name": "ウォーロック", "favArm1": "wand", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
-                "alche": {"name": "アルケミスト", "favArm1": "dagger", "favArm2": "gun", "DaBonus": 0.0, "TaBonus": 0.0},
-                "ninja": {"name": "忍者", "favArm1": "katana", "favArm2": "fist", "DaBonus": 0.0, "TaBonus": 0.0},
-                "samurai": {"name": "侍", "favArm1": "katana", "favArm2": "bow", "DaBonus": 0.0, "TaBonus": 0.0},
-                "kensei": {"name": "剣聖", "favArm1": "sword", "favArm2": "katana", "DaBonus": 0.0, "TaBonus": 0.0},
-                "gunsri": {"name": "ガンスリ", "favArm1": "gun", "favArm2": "gun", "DaBonus": 0.0, "TaBonus": 0.0},
-                "kenja": {"name": "賢者", "favArm1": "wand", "favArm2": "wand", "DaBonus": 0.0, "TaBonus": 0.0},
-                "assassin": {"name": "アサシン", "favArm1": "dagger", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
-                "weaponmaster": {"name": "ウェポンマスター", "favArm1": "sword", "favArm2": "axe", "DaBonus": 0.0, "TaBonus": 0.0},
-                "holyse": {"name": "ホリセバー", "favArm1": "sword", "favArm2": "spear", "DaBonus": 0.0, "TaBonus": 0.0},
-                "bishop": {"name": "ビショップ", "favArm1": "wand", "favArm2": "spear", "DaBonus": 0.0, "TaBonus": 0.0},
-                "hermit": {"name": "ハーミット", "favArm1": "wand", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
-                "hokuai": {"name": "ホークアイ", "favArm1": "dagger", "favArm2": "gun", "DaBonus": 0.0, "TaBonus": 0.0},
-                "darkfe": {"name": "ダクフェ", "favArm1": "sword", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
-                "oga": {"name": "オーガ", "favArm1": "fist", "favArm2": "fist", "DaBonus": 0.0, "TaBonus": 0.0},
-                "side": {"name": "サイドワインダー", "favArm1": "bow", "favArm2": "gun", "DaBonus": 0.0, "TaBonus": 0.0},
-                "superstar": {"name": "スーパースター", "favArm1": "music", "favArm2": "dagger", "DaBonus": 0.0, "TaBonus": 0.0},
-                "valc": {"name": "ヴァルキュリア", "favArm1": "spear", "favArm2": "axe", "DaBonus": 0.0, "TaBonus": 0.0},
-                "fighter": {"name": "ファイター", "favArm1": "sword", "favArm2": "axe", "DaBonus": 0.0, "TaBonus": 0.0},
+                "beruse":       {"name": "ベルセルク",       "favArm1": "sword",  "favArm2": "axe",    "type": "attack",  "atBonus": 6000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 10.0, "DaBonus": 26.5, "TaBonus": 5.5},
+                "sage":         {"name": "セージ",           "favArm1": "wand",   "favArm2": "spear",  "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "suparuta":     {"name": "スパルタ",         "favArm1": "sword",  "favArm2": "spear",  "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1500.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "warlock":      {"name": "ウォーロック",     "favArm1": "wand",   "favArm2": "dagger", "type": "attack",  "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "alche":        {"name": "アルケミスト",     "favArm1": "dagger", "favArm2": "gun",    "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 100.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "ninja":        {"name": "忍者",             "favArm1": "katana", "favArm2": "fist",   "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 31.5, "TaBonus": 3.0},
+                "samurai":      {"name": "侍",               "favArm1": "katana", "favArm2": "bow",    "type": "attack",  "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "kensei":       {"name": "剣聖",             "favArm1": "sword",  "favArm2": "katana", "type": "pecu",    "atBonus": 1500.0, "kouzinBonus": 0.0, "hpBonus": 300.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "gunsri":       {"name": "ガンスリ",         "favArm1": "gun",    "favArm2": "gun",    "type": "pecu",    "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 3.0},
+                "kenja":        {"name": "賢者",             "favArm1": "wand",   "favArm2": "wand",   "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "assassin":     {"name": "アサシン",         "favArm1": "dagger", "favArm2": "dagger", "type": "pecu",    "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "weaponmaster": {"name": "ウェポンマスター", "favArm1": "sword",  "favArm2": "axe",    "type": "attack",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 23.0, "TaBonus": 5.0},
+                "holyse":       {"name": "ホリセバー",       "favArm1": "sword",  "favArm2": "spear",  "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "bishop":       {"name": "ビショップ",       "favArm1": "wand",   "favArm2": "spear",  "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "hermit":       {"name": "ハーミット",       "favArm1": "wand",   "favArm2": "dagger", "type": "attack",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "hokuai":       {"name": "ホークアイ",       "favArm1": "dagger", "favArm2": "gun",    "type": "balance", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "darkfe":       {"name": "ダクフェ",         "favArm1": "sword",  "favArm2": "dagger", "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "oga":          {"name": "オーガ",           "favArm1": "fist",   "favArm2": "fist",   "type": "attack",  "atBonus": 2000.0, "kouzinBonus": 5.0, "hpBonus": 200.0, "shugoBonus": 0.0, "DaBonus": 60.0, "TaBonus": 5.0},
+                "side":         {"name": "サイドワインダー", "favArm1": "bow",    "favArm2": "gun",    "type": "balance", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "superstar":    {"name": "スーパースター",   "favArm1": "music",  "favArm2": "dagger", "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+                "valc":         {"name": "ヴァルキュリア",   "favArm1": "spear",  "favArm2": "axe",    "type": "attack",  "atBonus": 500.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 8.0},
+                "none":         {"name": "なし",             "favArm1": "none",   "favArm2": "none",   "type": "none",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
             }
 
             var summonElementTypes = {
@@ -138,6 +138,7 @@
                     "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
                 },
                 "magna":{
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
                     "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5],
                     "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
                 },
@@ -152,12 +153,6 @@
                     "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
                     "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
                     "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
-                },
-                "normalKamui": {
-                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
-                },
-                "magnaKamui": {
-                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
                 },
                 "bahaHP": {
                     // 剣など
@@ -180,7 +175,7 @@
                     "L": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
                 },
                 "magnaHP":{
-                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
+                    "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
                     "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
                     "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
                     "LL": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
@@ -335,6 +330,8 @@
                 getInitialState: function() {
                     return {
                         smlist: [],
+                        class: "summonForm open",
+                        open: true,
                     };
                 },
                 componentWillReceiveProps: function(nextProps) {
@@ -352,6 +349,13 @@
                     this.setState({smlist: newsmlist})
                     this.props.onChange(newsmlist);
                 },
+                handleOnClickTitle: function(e) {
+                    if(this.state.open) {
+                        this.setState({class: "summonForm", open: false})
+                    } else {
+                        this.setState({class: "summonForm open", open: true})
+                    }
+                },
                 render: function() {
                     var summons = [];
                     for(var i=0; i < this.props.summonNum; i++) {
@@ -361,29 +365,31 @@
                     var dataName = this.props.dataName;
                     return (
                         React.createElement("div", {className: "summonList"}, 
-                            React.createElement("h3", null, " 召喚石 "), 
-                            React.createElement("table", null, 
-                            React.createElement("thead", null, 
-                            React.createElement("tr", null, 
-                                React.createElement("th", {className: "tiny"}, "No."), 
-                                React.createElement("th", null, "自分の石"), 
-                                /*<th>属性</th>*/
-                                React.createElement("th", null, "加護量"), 
-                                React.createElement("th", null, "フレ石"), 
-                                /*<th>属性</th>*/
-                                React.createElement("th", null, "フレ加護量"), 
-                                React.createElement("th", null, "合計攻撃力"), 
-                                React.createElement("th", null, "合計HP"), 
-                                React.createElement("th", null, "HPUP(%)"), 
-                                React.createElement("th", null, "DA率"), 
-                                React.createElement("th", null, "TA率")
-                            )
-                            ), 
-                            React.createElement("tbody", null, 
-                                summons.map(function(sm) {
-                                    return React.createElement(Summon, {key: sm.id, onChange: hChange, id: sm.id, dataName: dataName});
-                                })
-                            )
+                            React.createElement("h3", null, " 召喚石 ", React.createElement("button", {onClick: this.handleOnClickTitle}, "toggle"), " "), 
+                            React.createElement("div", {className: this.state.class}, 
+                                React.createElement("table", null, 
+                                React.createElement("thead", null, 
+                                React.createElement("tr", null, 
+                                    React.createElement("th", {className: "tiny"}, "No."), 
+                                    React.createElement("th", null, "自分の石"), 
+                                    /*<th>属性</th>*/
+                                    React.createElement("th", null, "加護量"), 
+                                    React.createElement("th", null, "フレ石"), 
+                                    /*<th>属性</th>*/
+                                    React.createElement("th", null, "フレ加護量"), 
+                                    React.createElement("th", null, "合計攻撃力"), 
+                                    React.createElement("th", null, "合計HP"), 
+                                    React.createElement("th", null, "HPUP(%)"), 
+                                    React.createElement("th", null, "DA率"), 
+                                    React.createElement("th", null, "TA率")
+                                )
+                                ), 
+                                React.createElement("tbody", null, 
+                                    summons.map(function(sm) {
+                                        return React.createElement(Summon, {key: sm.id, onChange: hChange, id: sm.id, dataName: dataName});
+                                    })
+                                )
+                                )
                             )
                         )
                     );
@@ -586,12 +592,12 @@
                     if(!isNaN(summon.TA)) totalSummon["ta"] = 0.01 * parseInt(summon.TA)
 
                     // for attack
-                    var magnaCoeff = 1.0 + 0.01 * (totalSkills["magna"] + totalSkills["magnaKamui"]) * ( 1.0 + totalSummon["magna"] )
+                    var magnaCoeff = 1.0 + 0.01 * totalSkills["magna"] * ( 1.0 + totalSummon["magna"] )
                     var magnaHaisuiCoeff = 1.0 + 0.01 * (totalSkills["magnaHaisui"]) * ( 1.0 + totalSummon["magna"] )
                     var unknownCoeff = 1.0 + 0.01 * totalSkills["unknown"] * (1.0 + totalSummon["ranko"]) + 0.01 * totalSkills["unknownOther"]
                     var unknownHaisuiCoeff = 1.0 + 0.01 * totalSkills["unknownOtherHaisui"]
 
-                    var normalCoeff = 1.0 + 0.01 * (totalSkills["normal"] + totalSkills["normalKamui"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["bahaAT"] + totalSummon["chara"] + buff["normal"]
+                    var normalCoeff = 1.0 + 0.01 * totalSkills["normal"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["bahaAT"] + totalSummon["chara"] + buff["normal"]
                     var normalHaisuiCoeff = 1.0 + 0.01 * (totalSkills["normalHaisui"]) * (1.0 + totalSummon["zeus"])
                     var elementCoeff = weakPoint + totalSummon["element"] + buff["element"]
                     var otherCoeff = 1.0 + buff["other"]
@@ -601,7 +607,7 @@
 
                     // for HP
                     var displayHP = (baseHP + totalSummon["hp"] + armHP + buff["hpBonus"]) * (1.0 + buff["masterHP"])
-                    var totalHP = displayHP * (1.0 - HPdebuff) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * (totalSkills["magnaHP"] + totalSkills["magnaKamui"]) * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
+                    var totalHP = displayHP * (1.0 - HPdebuff) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totalSkills["bahaHP"] + 0.01 * totalSkills["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["unknownHP"] * (1.0 + totalSummon["ranko"]))
 
                     // for DA and TA
                     var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totalSkills["normalNite"] + totalSkills["normalKatsumi"]) * (1.0 + totalSummon["zeus"]) + 0.01 * totalSkills["magnaKatsumi"] * (1.0 + totalSummon["magna"]) + 0.01 * totalSkills["unknownOtherNite"] + 0.01 * totalSkills["cosmosBL"])
@@ -617,7 +623,7 @@
                         }
                     }
 
-                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, normalKamui: 0, magnaKamui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, cosmosBL: 0};
+                    var totalSkills = {magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, normalKatsumi: 0, magnaKatsumi: 0, unknownOtherNite: 0, cosmosBL: 0};
                     var armAttack = 0;
                     var armHP = 0;
 
@@ -632,9 +638,11 @@
 
                     var HPdebuff = 0.00
                     var fav1 = ""; var fav2 = "";
+                    var jobtype = "none";
                     if(prof.job != undefined) {
                         fav1 = Jobs[prof.job].favArm1
                         fav2 = Jobs[prof.job].favArm2
+                        jobtype = Jobs[prof.job].type
                     }
 
                     for(var i = 0; i < tempArmList.length; i++){
@@ -700,6 +708,12 @@
                                     }
                                     var haisuiBuff =  (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
                                     totalSkills[stype] += haisuiBuff
+                                } else if(stype == 'normalKamui') {
+                                    totalSkills["normal"] += skillAmounts["normal"][amount][slv - 1];
+                                    totalSkills["normalHP"] += skillAmounts["normalHP"][amount][slv - 1];
+                                } else if(stype == 'magnaKamui') {
+                                    totalSkills["magna"] += skillAmounts["magna"][amount][slv - 1];
+                                    totalSkills["magnaHP"] += skillAmounts["magnaHP"][amount][slv - 1];
                                 } else if(stype == 'bahaATHP') {
                                     // バハ剣など
                                     totalSkills["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
@@ -719,12 +733,12 @@
                                     totalSkills["unknown"] += skillAmounts["unknown"][amount][slv - 1];
                                 } else if(stype == 'cosmos') {
                                     // コスモス武器
-                                    if(skillname == 'cosmosAT') {
+                                    if(skillname == 'cosmosAT' && jobtype == "attack") {
                                         totalSkills["normal"] += 20.0;
                                         HPdebuff += 0.40
-                                    } else if(skillname == 'cosmosDF') {
+                                    } else if(skillname == 'cosmosDF' && jobtype == "defense") {
                                         HPdebuff -= 0.10
-                                    } else if(skillname == 'cosmosBL') {
+                                    } else if(skillname == 'cosmosBL' && jobtype == "balance") {
                                         totalSkills["cosmosBL"] = 20.0
                                     }
                                 } else {
@@ -1249,10 +1263,12 @@
                         zenithBonus1: "無し",
                         zenithBonus2: "無し",
                         typeBonus: "無し",
-                        job: "fighter",
+                        job: "none",
                         armNum: 3,
                         summonNum: 1,
                         sortKey: "総合攻撃力",
+                        class: "profileForm open",
+                        open: true,
                     };
                 },
                 handleEvent: function(key, e) {
@@ -1260,6 +1276,13 @@
                   newState[key] = e.target.value
                   this.setState(newState)
                   this.props.onChange(newState)
+                },
+                handleOnClickTitle: function(e) {
+                    if(this.state.open) {
+                        this.setState({class:"profileForm", open: false})
+                    } else {
+                        this.setState({class:"profileForm open", open: true})
+                    }
                 },
                 handleSummonNumChange: function(e) {
                   this.setState({summonNum: e.target.value});
@@ -1274,74 +1297,76 @@
                 render: function() {
                         return (
                             React.createElement("div", {className: "profile"}, 
-                                React.createElement("h3", null, " 基本プロフィール "), 
-                                React.createElement("form", {className: "profileForm"}, 
-                                React.createElement("table", null, 
-                                React.createElement("tr", null, 
-                                    React.createElement("th", {className: "prof"}, "Rank"), 
-                                    React.createElement("th", {className: "prof"}, "攻撃力ボーナス"), 
-                                    React.createElement("th", {className: "prof"}, "HPボーナス"), 
-                                    React.createElement("th", {className: "prof"}, "マスターボーナスATK(%)"), 
-                                    React.createElement("th", {className: "prof"}, "マスターボーナスHP(%)")
-                                ), 
-                                React.createElement("tr", null, 
-                                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "170", value: this.state.rank, onChange: this.handleEvent.bind(this, "rank")})), 
-                                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.attackBonus, onChange: this.handleEvent.bind(this, "attackBonus")})), 
-                                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")})), 
-                                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")})), 
-                                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")}))
-                                ), 
-                                React.createElement("tr", null, 
-                                    React.createElement("th", {className: "prof"}, "HP (%)"), 
-                                    React.createElement("th", {className: "prof"}, "属性相性"), 
-                                    React.createElement("th", {className: "prof"}, "ジョブ"), 
-                                    React.createElement("th", {className: "prof"}, "武器ゼニス1"), 
-                                    React.createElement("th", {className: "prof"}, "武器ゼニス2")
-                                ), 
-                                React.createElement("tr", null, 
-                                    React.createElement("td", null, " ", React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
-                                    React.createElement("td", null, React.createElement("select", {value: this.state.typeBonus, onChange: this.handleEvent.bind(this, "typeBonus")}, " ", this.props.typeBonus, " ")), 
-                                    React.createElement("td", null, React.createElement("select", {value: this.state.job, onChange: this.handleEvent.bind(this, "job")}, " ", this.props.alljobs, " ")), 
-                                    React.createElement("td", null, React.createElement("select", {value: this.state.zenithBonus1, onChange: this.handleEvent.bind(this, "zenithBonus1")}, " ", this.props.zenithBonuses, " ")), 
-                                    React.createElement("td", null, React.createElement("select", {value: this.state.zenithBonus2, onChange: this.handleEvent.bind(this, "zenithBonus2")}, " ", this.props.zenithBonuses, " "))
-                                )
-                                ), 
-
-                                "得意武器1, 得意武器2を廃止してジョブ欄を追加しました。", React.createElement("br", null), 
-                                "過去のデータの値が変わる可能性があるので、再度ジョブを設定してください。", 
-
-                                React.createElement("h3", null, "バフ(%表記)"), 
-                                React.createElement("table", null, 
+                                React.createElement("h3", null, " 基本プロフィール ", React.createElement("button", {onClick: this.handleOnClickTitle}, "toggle"), " "), 
+                                React.createElement("div", {className: this.state.class}, 
+                                    React.createElement("form", null, 
+                                    React.createElement("table", null, 
                                     React.createElement("tr", null, 
-                                        React.createElement("th", {className: "buff"}, "通常バフ"), 
-                                        React.createElement("th", {className: "buff"}, "属性バフ"), 
-                                        React.createElement("th", {className: "buff"}, "その他バフ"), 
-                                        React.createElement("th", {className: "buff"}, "HPバフ"), 
-                                        React.createElement("th", {className: "buff"}, "DAバフ"), 
-                                        React.createElement("th", {className: "buff"}, "TAバフ")
+                                        React.createElement("th", {className: "prof"}, "Rank"), 
+                                        React.createElement("th", {className: "prof"}, "攻撃力ボーナス"), 
+                                        React.createElement("th", {className: "prof"}, "HPボーナス"), 
+                                        React.createElement("th", {className: "prof"}, "マスターボーナスATK(%)"), 
+                                        React.createElement("th", {className: "prof"}, "マスターボーナスHP(%)")
                                     ), 
                                     React.createElement("tr", null, 
-                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.normalBuff, onChange: this.handleEvent.bind(this, "normalBuff")})), 
-                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.elementBuff, onChange: this.handleEvent.bind(this, "elementBuff")})), 
-                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.otherBuff, onChange: this.handleEvent.bind(this, "otherBuff")})), 
-                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBuff, onChange: this.handleEvent.bind(this, "hpBuff")})), 
-                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.daBuff, onChange: this.handleEvent.bind(this, "daBuff")})), 
-                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.taBuff, onChange: this.handleEvent.bind(this, "taBuff")}))
-                                    )
-                                ), 
-                                React.createElement("h3", null, "システム関連"), 
-                                React.createElement("table", null, 
-                                    React.createElement("tr", null, 
-                                        React.createElement("th", null, "武器種類数"), 
-                                        React.createElement("th", null, "召喚石の組数"), 
-                                        React.createElement("th", null, "優先する項目")
+                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "170", value: this.state.rank, onChange: this.handleEvent.bind(this, "rank")})), 
+                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.attackBonus, onChange: this.handleEvent.bind(this, "attackBonus")})), 
+                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")})), 
+                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")})), 
+                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")}))
                                     ), 
                                     React.createElement("tr", null, 
-                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "20", step: "1", value: this.state.armNum, onChange: this.handleArmNumChange})), 
-                                        React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "4", step: "1", value: this.state.summonNum, onChange: this.handleSummonNumChange})), 
-                                        React.createElement("td", null, React.createElement("select", {value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", this.props.keyTypes, " "))
+                                        React.createElement("th", {className: "prof"}, "HP (%)"), 
+                                        React.createElement("th", {className: "prof"}, "属性相性"), 
+                                        React.createElement("th", {className: "prof"}, "ジョブ"), 
+                                        React.createElement("th", {className: "prof"}, "武器ゼニス1"), 
+                                        React.createElement("th", {className: "prof"}, "武器ゼニス2")
+                                    ), 
+                                    React.createElement("tr", null, 
+                                        React.createElement("td", null, " ", React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
+                                        React.createElement("td", null, React.createElement("select", {value: this.state.typeBonus, onChange: this.handleEvent.bind(this, "typeBonus")}, " ", this.props.typeBonus, " ")), 
+                                        React.createElement("td", null, React.createElement("select", {value: this.state.job, onChange: this.handleEvent.bind(this, "job")}, " ", this.props.alljobs, " ")), 
+                                        React.createElement("td", null, React.createElement("select", {value: this.state.zenithBonus1, onChange: this.handleEvent.bind(this, "zenithBonus1")}, " ", this.props.zenithBonuses, " ")), 
+                                        React.createElement("td", null, React.createElement("select", {value: this.state.zenithBonus2, onChange: this.handleEvent.bind(this, "zenithBonus2")}, " ", this.props.zenithBonuses, " "))
                                     )
-                                )
+                                    ), 
+
+                                    "得意武器1, 得意武器2を廃止してジョブ欄を追加しました。", React.createElement("br", null), 
+                                    "過去のデータの値が変わる可能性があるので、再度ジョブを設定してください。", 
+
+                                    React.createElement("h3", null, "バフ(%表記)"), 
+                                    React.createElement("table", null, 
+                                        React.createElement("tr", null, 
+                                            React.createElement("th", {className: "buff"}, "通常バフ"), 
+                                            React.createElement("th", {className: "buff"}, "属性バフ"), 
+                                            React.createElement("th", {className: "buff"}, "その他バフ"), 
+                                            React.createElement("th", {className: "buff"}, "HPバフ"), 
+                                            React.createElement("th", {className: "buff"}, "DAバフ"), 
+                                            React.createElement("th", {className: "buff"}, "TAバフ")
+                                        ), 
+                                        React.createElement("tr", null, 
+                                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.normalBuff, onChange: this.handleEvent.bind(this, "normalBuff")})), 
+                                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.elementBuff, onChange: this.handleEvent.bind(this, "elementBuff")})), 
+                                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.otherBuff, onChange: this.handleEvent.bind(this, "otherBuff")})), 
+                                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBuff, onChange: this.handleEvent.bind(this, "hpBuff")})), 
+                                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.daBuff, onChange: this.handleEvent.bind(this, "daBuff")})), 
+                                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.taBuff, onChange: this.handleEvent.bind(this, "taBuff")}))
+                                        )
+                                    ), 
+                                    React.createElement("h3", null, "システム関連"), 
+                                    React.createElement("table", null, 
+                                        React.createElement("tr", null, 
+                                            React.createElement("th", null, "武器種類数"), 
+                                            React.createElement("th", null, "召喚石の組数"), 
+                                            React.createElement("th", null, "優先する項目")
+                                        ), 
+                                        React.createElement("tr", null, 
+                                            React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "20", step: "1", value: this.state.armNum, onChange: this.handleArmNumChange})), 
+                                            React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "4", step: "1", value: this.state.summonNum, onChange: this.handleSummonNumChange})), 
+                                            React.createElement("td", null, React.createElement("select", {value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", this.props.keyTypes, " "))
+                                        )
+                                    )
+                                    )
                                 )
                             )
                         );
@@ -1517,6 +1542,7 @@
                             ), 
                             React.createElement("h3", null, "更新履歴"), 
                             React.createElement("ul", null, 
+                                React.createElement("li", null, "2016/07/14: 通常神威のHP上昇量が低かったので修正 / プロフィールと召喚石欄のtoggle機能追加 "), 
                                 React.createElement("li", null, "2016/07/13: スマホ版Chromeで武器数変更が行えなかった不具合を修正 / 得意武器欄を廃止してジョブ欄を追加 "), 
                                 React.createElement("li", null, "2016/06/17: 神威によるHP上昇が加味されていなかったので修正 "), 
                                 React.createElement("li", null, "2016/06/15: コスモスATの効果量が間違っていたので修正 / コピー機能の不具合修正 / localStorageに保存時のデータ名が1つ前のものになってしまう不具合を修正 "), 
@@ -1540,10 +1566,10 @@
 
                             React.createElement("h3", null, "注記"), 
                             React.createElement("ul", null, 
-                                 React.createElement("li", null, "今後の実装予定: 得意武器欄をジョブ設定に変更/HPやDAが上がるなどのサポアビ対応/キャラクター攻撃力計算の対応"), 
+                                 React.createElement("li", null, "今後の実装予定: HPやDAが上がるなどのサポアビ対応/キャラクター攻撃力計算の対応"), 
                                  React.createElement("li", null, React.createElement("strong", null, "バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに\"バハフツ(攻/HP)\"を選択してください。"), " ", React.createElement("br", null), 
                                  "(バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)"), 
-                                 React.createElement("li", null, "未対応: 羅刹/三手"), 
+                                 React.createElement("li", null, "未対応: 羅刹/三手/技巧"), 
                                  React.createElement("li", null, "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。"), 
                                  React.createElement("li", null, "基礎DA/TA率は 6.5%/3.0% としています。"), 
                                  React.createElement("li", null, "二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)"), 
