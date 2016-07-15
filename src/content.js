@@ -1,6 +1,6 @@
             // global arrays
             var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10}
-            var keyTypes = {"総合攻撃力": "totalAttack", "HP": "totalHP", "戦力": "ATKandHP", "パーティ平均攻撃力": "averageAttack", "技巧期待値": "criticalAttack", "技巧期待平均攻撃力": "averageCriticalAttack"}
+            var keyTypes = {"総合攻撃力": "totalAttack", "HP": "totalHP", "戦力": "ATKandHP", "パーティ平均攻撃力": "averageAttack", "技巧期待値": "criticalAttack", "技巧期待平均攻撃力": "averageCriticalAttack", "総合攻撃*期待回数*技巧期待値": "totalExpected", "[同上]のパーティ平均値": "averageTotalExpected"}
 
             // skill data
             var skilltypes = {
@@ -296,6 +296,7 @@
             var select_skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
             var select_types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{jobTypes[opt]}</option>;});
             var select_armtypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
+            var select_summonElements = Object.keys(summonElementTypes).map(function(opt){return <option value={opt} key={opt}>{summonElementTypes[opt].name}</option>;});
 
             // query 取得用の関数
             var urldata = getVarInQuery("data");
@@ -580,10 +581,10 @@
                             <thead>
                             <tr>
                                 <th>自分の石</th>
-                                <th className="tiny">属性</th>
+                                <th>属性</th>
                                 <th>加護量</th>
                                 <th>フレ石</th>
-                                <th className="tiny">属性</th>
+                                <th>属性</th>
                                 <th>フレ加護量</th>
                                 <th>合計攻撃力</th>
                                 <th>合計HP</th>
@@ -682,13 +683,13 @@
                         <tr>
                             <form className="summonForm">
                                 <td><select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</select></td>
-                                <td className="tiny"><select value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_elements}</select></td>
+                                <td><select value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</select></td>
                                 <td>
                                 <label>{selfSummon[0].label}<input type={selfSummon[0].input} min="0" max="120" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /></label>
                                 <label>{selfSummon[1].label}<input type={selfSummon[1].input} min="0" max="120" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} /></label>
                                 </td>
                                 <td><select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</select></td>
-                                <td className="tiny"><select value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_elements}</select></td>
+                                <td><select value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</select></td>
                                 <td>
                                 <label>{friendSummon[0].label}<input type={friendSummon[0].input} min="0" max="120" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /></label>
                                 <label>{friendSummon[1].label}<input type={friendSummon[1].input} min="0" max="120" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} /></label>
@@ -716,6 +717,8 @@
                         switchCriticalRatio: 0,
                         switchCharaAttack: 0,
                         switchAverageAttack: 0,
+                        switchTotalExpected: 0,
+                        switchAverageTotalExpected: 0,
                     };
                 },
                 handleEvent: function(key, e) {
@@ -777,7 +780,7 @@
                         selfElement = (summon.selfElement == undefined) ? "fire" : summon.selfElement
                         friendElement = (summon.friendElement == undefined) ? "fire" : summon.friendElement
 
-                        if(selfElement == totals[key]["element"] || selfElement == "all" ){
+                        if((summonElementTypes[selfElement]["type"].indexOf(totals[key]["element"]) >= 0) || selfElement == "all" ){
                             if(summon.selfSummonType == "odin") {
                                 // odin(属性+キャラ攻撃)など、複数の場合の処理
                                 totalSummon["element"] += 0.01 * parseInt(summon.selfSummonAmount)
@@ -787,7 +790,7 @@
                                 totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
                             }
                         }
-                        if(friendElement == totals[key]["element"] || friendElement == "all" ){
+                        if((summonElementTypes[friendElement]["type"].indexOf(totals[key]["element"]) >= 0) || friendElement == "all" ){
                             if(summon.friendSummonType == "odin") {
                                 // odin(属性+キャラ攻撃)など、複数の場合の処理
                                 totalSummon["element"] += 0.01 * parseInt(summon.friendSummonAmount)
@@ -840,6 +843,10 @@
                         // for DA and TA
                         var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * totals[key]["normalNite"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["magnaNite"] * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["unknownOtherNite"] + 0.01 * totals[key]["cosmosBL"])
                         var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
+                        var taRate = (parseInt(totalTA) >= 100) ? 1.0 : 0.01 * parseInt(totalTA)
+                        var daRate = (parseInt(totalDA) >= 100) ? 1.0 : 0.01 * parseInt(totalDA)
+                        var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
+
                         var criticalRatio = (1.0 + skillAmounts["magnaCritical"]["ratio"]) * 0.01 * totals[key]["magnaCritical"] * (1.0 + totalSummon["magna"]) + (1.0 + skillAmounts["normalCritical"]["ratio"]) * 0.01 * totals[key]["normalCritical"] * (1.0 + totalSummon["zeus"]) + 1.0 * (1.0 - 0.01 * totals[key]["normalCritical"] * (1.0 + totalSummon["zeus"]) - 0.01 * totals[key]["magnaCritical"] * (1.0 + totalSummon["magna"]))
 
                         if(typeBonus != 1.5) {
@@ -847,21 +854,25 @@
                         }
 
                         var criticalAttack = parseInt(totalAttack * criticalRatio)
+                        var nazo_number = parseInt(totalAttack * criticalRatio * expectedAttack)
 
-                        res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), totalDA: totalDA, totalTA: totalTA, criticalAttack: criticalAttack, criticalRatio: criticalRatio};
+                        res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), totalDA: totalDA, totalTA: totalTA, expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, totalExpected: nazo_number };
 
                     }
                     var average = 0.0;
                     var crit_average = 0.0;
+                    var totalExpected_average = 0.0;
 
                     var cnt = 0.0
                     for(key in res) {
                         average += res[key].totalAttack
                         crit_average += res[key].criticalAttack
+                        totalExpected_average += res[key].totalExpected
                         cnt += 1.0
                     }
                     res["Djeeta"]["averageAttack"] = parseInt(average/cnt)
                     res["Djeeta"]["averageCriticalAttack"] = parseInt(crit_average/cnt)
+                    res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average/cnt)
                     return res
                 },
                 calculateOneCombination: function(comb, summon, prof, arml, buff, chara){
@@ -1195,6 +1206,12 @@
                     if(switcher.switchAverageAttack) {
                         tableheader.push('平均攻撃力')
                     }
+                    if(switcher.switchTotalExpected) {
+                        tableheader.push('総合*回数*技巧')
+                    }
+                    if(switcher.switchAverageTotalExpected) {
+                        tableheader.push('総回技値の平均値')
+                    }
                     var prof = this.props.data.profile
 
                     return (
@@ -1208,6 +1225,8 @@
                             <input type="checkbox" checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値(仮)
                             <input type="checkbox" checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力
                             <input type="checkbox" checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力
+                            <input type="checkbox" checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値
+                            <input type="checkbox" checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総合*期待回数*技巧期待値のパーティ平均値
                             <div className="divright"><h3>比較用プロフィール: rank {prof.rank}, HP {prof.hp} %, 通常バフ {prof.normalBuff}%, 属性バフ {prof.elementBuff}%, その他バフ {prof.otherBuff}%</h3></div>
 
                             {summondata.map(function(s, summonindex) {
@@ -1273,10 +1292,7 @@
                                     tablebody.push('DA:' + m.data.Djeeta.totalDA.toFixed(1) + '%, TA: ' + m.data.Djeeta.totalTA.toFixed(1) + '%')
                                 }
                                 if(sw.switchExpectedAttack) {
-                                    var taRate = (parseInt(m.data.Djeeta.totalTA) >= 100) ? 1.0 : 0.01 * parseInt(m.data.Djeeta.totalTA)
-                                    var daRate = (parseInt(m.data.Djeeta.totalDA) >= 100) ? 1.0 : 0.01 * parseInt(m.data.Djeeta.totalDA)
-                                    var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
-                                    tablebody.push(expectedAttack.toFixed(2))
+                                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(2))
                                 }
                                 if(sw.switchCriticalRatio) {
                                     tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "(" + m.data.Djeeta.criticalAttack + ", " + m.data.Djeeta.averageCriticalAttack + ")")
@@ -1290,6 +1306,12 @@
                                 }
                                 if(sw.switchAverageAttack) {
                                     tablebody.push(parseInt(m.data.Djeeta.averageAttack))
+                                }
+                                if(sw.switchTotalExpected) {
+                                    tablebody.push(m.data.Djeeta.totalExpected)
+                                }
+                                if(sw.switchAverageTotalExpected) {
+                                    tablebody.push(m.data.Djeeta.averageTotalExpected)
                                 }
                                 return (
                                     <tr key={rank + 1}>
