@@ -3,7 +3,11 @@ body {
     min-width: 1200px;
     font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     margin: 0 auto;
-    font-size: 9pt;
+    font-size: 8pt;
+}
+
+input, textarea {
+    text-align: right;
 }
 
 .divright {
@@ -38,12 +42,6 @@ body {
 
 .root .top {
     width: 100%;
-    margin-bottom: 10px;
-    overflow: auto;
-}
-
-.root .top {
-    width: 100%;
 
     text-align: left;
     height: 0%;
@@ -55,8 +53,8 @@ body {
 .root .top.open {
     width: 100%;
     margin-bottom: 10px;
-    overflow: auto;
-    height: 370px;
+    overflow: visible;
+    min-height: 330px;
 }
 
 .root .bottom {
@@ -64,12 +62,13 @@ body {
     margin-bottom: 10px;
 }
 
-.sysForm {
-    margin-bottom: 1px;
-}
-
 .system input {
     width: 100%;
+}
+
+.system select {
+    width: 100%;
+    margin-bottom: 1em;
 }
 
 .tweet {
@@ -147,79 +146,69 @@ th.checkbox, td.checkbox {
     float: left;
 }
 
-.profileForm {
-    width: 100%;
-    height: 340px;
-}
-
 h3 {
     margin-top: 2px;
     margin-bottom: 2px;
 }
 
-.profileForm table th.prof {
-    width: calc(100%/5);
-}
-
-.profileForm table th.buff {
+.profile table th.prof {
     width: calc(100%/6);
 }
 
-.profileForm input, .profileForm select, .profileForm textarea {
+.profile table th.buff {
+    width: calc(100%/6);
+}
+
+.profile input, .profile select, .profile textarea {
     width: 100%;
 }
 
 .summonList {
     width: calc(63% - 10px);
     float: left;
+    overflow: auto;
 }
 
-.summonForm {
-    width: 100%;
-    height: 170px;
+.summonList th.tiny, .summonList td.tiny {
+    width: 45px;
 }
 
-.summonForm th.tiny, .summonForm td.tiny {
-    width: 20px;
+.summonList td.tiny select {
+    width: 45px;
 }
 
-.summonForm th, .summonForm td {
+.summonList th, .summonList td {
     width: calc(100%/11);
-    font-size: 8pt;
+    font-size: 6pt;
 }
 
-.summonForm input {
+.summonList input, .summonList select {
     width: 100%;
 }
 
-.summonForm label {
+.summonList label {
     font-size: 9pt;
 }
 
 .charaList {
     width: calc(63% - 10px);
     float: left;
-}
-
-.charaForm {
-    width: 100%;
     height: 125px;
-
 }
 
-.charaForm th.tiny, .charaForm td.tiny {
+.charaList th.tiny, .charaList td.tiny {
     width: 20px;
 }
 
-.charaForm th, .charaForm td {
-    width: calc(100%/6);
+.charaList th, .charaList td {
+    width: calc(100%/9);
 }
 
-.charaForm input {
+.charaList input {
     width: 100%;
 }
 
-.charaForm label {
+.charaList label {
     font-size: 9pt;
 }
 
@@ -249,15 +238,6 @@ td.resultList, th.resultList {
     text-align: right;
 }
 
-input, textarea {
-    font-size: 9pt;
-    text-align: right;
-}
-
-select {
-    font-size: 9pt;
-}
-
 table {
     background: #ffffff;
     border-top: #cccccc 1px solid;
@@ -274,7 +254,7 @@ table th {
     border-top: #cccccc 1px solid;
     border-right:#cccccc 1px solid;
     text-align: center;
-    padding: 4px;
+    padding: 2px;
     font-size: 9pt;
 }
 
@@ -283,5 +263,5 @@ table td {
     border-bottom:#cccccc 1px solid;
     border-right:#cccccc 1px solid;
     text-align: center;
-    padding: 4px;
+    padding: 2px;
 }
