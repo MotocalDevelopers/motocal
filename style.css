@@ -56,6 +56,17 @@ input, textarea {
     min-height: 330px;
 }
 
+@media only screen
+    and (min-device-width: 320px)
+    and (max-device-width: 480px) {
+    .root .top.open {
+        width: 100%;
+        margin-bottom: 10px;
+        overflow: visible;
+        min-height: 500px;
+    }
+}
+
 .root .middle {
     width: 100%;
     margin-bottom: 10px;

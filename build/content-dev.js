@@ -700,14 +700,14 @@
                                 React.createElement("td", null, React.createElement("select", {value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons)), 
                                 React.createElement("td", null, React.createElement("select", {value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements)), 
                                 React.createElement("td", null, 
-                                React.createElement("label", null, selfSummon[0].label, React.createElement("input", {type: selfSummon[0].input, min: "0", max: "120", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)})), 
-                                React.createElement("label", null, selfSummon[1].label, React.createElement("input", {type: selfSummon[1].input, min: "0", max: "120", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)}))
+                                React.createElement("label", null, selfSummon[0].label, React.createElement("input", {type: selfSummon[0].input, min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)})), 
+                                React.createElement("label", null, selfSummon[1].label, React.createElement("input", {type: selfSummon[1].input, min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)}))
                                 ), 
                                 React.createElement("td", null, React.createElement("select", {value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons)), 
                                 React.createElement("td", null, React.createElement("select", {value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements)), 
                                 React.createElement("td", null, 
-                                React.createElement("label", null, friendSummon[0].label, React.createElement("input", {type: friendSummon[0].input, min: "0", max: "120", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)})), 
-                                React.createElement("label", null, friendSummon[1].label, React.createElement("input", {type: friendSummon[1].input, min: "0", max: "120", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)}))
+                                React.createElement("label", null, friendSummon[0].label, React.createElement("input", {type: friendSummon[0].input, min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)})), 
+                                React.createElement("label", null, friendSummon[1].label, React.createElement("input", {type: friendSummon[1].input, min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)}))
                                 ), 
                                 React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
                                 React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
@@ -734,11 +734,24 @@
                         switchAverageAttack: 0,
                         switchTotalExpected: 0,
                         switchAverageTotalExpected: 0,
+                        disableAutoResultUpdate: 0,
+                        result: {summon: this.props.data.summon, result: []},
                     };
+                },
+                componentWillReceiveProps: function(nextProps) {
+                    if(this.state.disableAutoResultUpdate != 1){
+                        allresult = this.calculateResult(nextProps);
+                        this.setState({result: allresult});
+                    }
                 },
                 handleEvent: function(key, e) {
                     var newState = this.state
                     newState[key] = (newState[key] == 0) ? 1 : 0
+
+                    // 自動更新ONにしたらUPDATEする
+                    if(key == "disableAutoResultUpdate" && newState[key] == 0){
+                        newState["result"] = this.calculateResult(this.props)
+                    }
                     this.setState(newState)
                 },
                 calculateCombinations: function(arml) {
@@ -1118,9 +1131,9 @@
 
                     return result
                 },
-                calculateResult: function() {
-                  var prof = this.props.data.profile; var arml = this.props.data.armlist;
-                  var summon = this.props.data.summon; var chara = this.props.data.chara;
+                calculateResult: function(newprops) {
+                  var prof = newprops.data.profile; var arml = newprops.data.armlist;
+                  var summon = newprops.data.summon; var chara = newprops.data.chara;
 
                   if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
                       var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hpBonus: 0.0, hp: 0.0, da: 0.0, ta: 0.0};
@@ -1183,7 +1196,7 @@
 
                 },
                 render: function() {
-                    res = this.calculateResult();
+                    res = this.state.result;
                     var summondata = res.summon
                     var result = res.result
 
@@ -1248,6 +1261,10 @@
                             React.createElement("input", {type: "checkbox", checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力", 
                             React.createElement("input", {type: "checkbox", checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値", 
                             React.createElement("input", {type: "checkbox", checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総合*期待回数*技巧期待値のパーティ平均値", 
+                            React.createElement("br", null), 
+                            "動作制御:", 
+                            React.createElement("input", {type: "checkbox", checked: this.state.disableAutoResultUpdate, onChange: this.handleEvent.bind(this, "disableAutoResultUpdate")}), " 自動更新を切る", 
+
                             React.createElement("div", {className: "divright"}, React.createElement("h3", null, "比較用プロフィール: rank ", prof.rank, ", HP ", prof.hp, " %, 通常バフ ", prof.normalBuff, "%, 属性バフ ", prof.elementBuff, "%, その他バフ ", prof.otherBuff, "%")), 
 
                             summondata.map(function(s, summonindex) {
@@ -1844,10 +1861,12 @@
                     }
                     return (
                         React.createElement("div", {className: "system"}, 
-                            React.createElement("h2", null, " System "), 
+                            React.createElement("h2", null, " ブラウザに保存 "), 
+
                             React.createElement("form", {className: "sysForm"}, 
+                                "データ名: ", React.createElement("input", {size: "10", type: "text", value: this.state.dataName, onChange: this.handleEvent.bind(this, "dataName")}), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), 
+                                "ブラウザに保存されたデータ", 
                                 React.createElement("select", {size: "12", value: this.state.selectedData, onClick: this.handleOnClick.bind(this, "selectedData"), onChange: this.handleEvent.bind(this, "selectedData")}, " ", datalist, " "), 
-                                "データ名: ", React.createElement("input", {size: "10", type: "text", value: this.state.dataName, onChange: this.handleEvent.bind(this, "dataName")}), React.createElement("br", null), 
                                 React.createElement("button", {type: "button", onClick: this.onSubmitSave}, "保存"), 
                                 React.createElement("button", {type: "button", onClick: this.onSubmitLoad}, "読込"), 
                                 React.createElement("button", {type: "button", onClick: this.onSubmitRemove}, "削除")
@@ -1861,14 +1880,13 @@
             var TwitterShareButton = React.createClass ({displayName: "TwitterShareButton",
                 componentWillReceiveProps: function(nextProps){
                     var datatext = Base64.encodeURI(JSON.stringify(this.props.data))
-                    var shareurl = "http://hsimyu.net/motocal?data=" + datatext
-                    this.setState({datatext: datatext, shareurl: shareurl});
+                    this.setState({datatext: datatext});
                 },
                 getInitialState: function() {
                     var datatext = Base64.encodeURI(JSON.stringify(this.props.data))
-                    var shareurl = "http://hsimyu.net/motocal?data=" + datatext
                     return {
-                        shareurl: datatext,
+                        shareurl: "",
+                        shareurl_history: [],
                         datatext: datatext,
                     };
                 },
@@ -1895,7 +1913,9 @@
                             tweeturl += 'text=元カレ計算機（グラブル攻撃力計算機）'
                             tweeturl += '&url=' + shareurl
                             window.open(tweeturl, '_blank')
-                            this.setState({shareurl: shareurl})
+                            var sharehist = this.state.shareurl_history
+                            sharehist.unshift(this.props.data["dataName"] + ": " + shareurl);
+                            this.setState({shareurl: shareurl, shareurl_history: sharehist})
                         }.bind(this),
                         error: function(xhr, status, err) {
                             alert("Error!: 何かがおかしいです。@hsimyuまで連絡して下さい。status: ", status, ", error message: ", err.toString());
@@ -1905,9 +1925,22 @@
                 render: function() {
                   return (
                         React.createElement("div", {className: "tweet"}, 
-                            React.createElement("button", {type: "button", onClick: this.getShortenUrl}, " 短縮URLを取得 "), 
-                            React.createElement("h3", null, "保存用URL"), 
-                            this.state.shareurl
+                            React.createElement("h2", null, " サーバに保存 "), 
+                            React.createElement("button", {type: "button", onClick: this.getShortenUrl}, " 保存", React.createElement("br", null), "(短縮URLを取得) "), 
+                            React.createElement("h3", null, "保存されたURL"), 
+                            this.state.shareurl, 
+
+                            React.createElement("h3", null, "URL履歴"), 
+                            React.createElement("ul", null, 
+                            this.state.shareurl_history.map(function(s){
+                                return (
+                                    React.createElement("li", null, s)
+                                )
+                            })
+                            ), 
+
+                            "※\"保存用文字列\"を表示すると煩わしいので撤廃しました。" + ' ' +
+                            "短縮URL保存をご利用下さい。"
                         )
                    );
                 },
@@ -1925,6 +1958,7 @@
                             ), 
                             React.createElement("h3", null, "更新履歴"), 
                             React.createElement("ul", null, 
+                                React.createElement("li", null, "2016/07/26: レイアウトの微調整 / 保存用文字列の表示を撤廃（邪魔なので）/ 保存用URLをいくつか発行した際に履歴を表示するようにした。/ 結果の自動更新を無効化するオプションの追加 "), 
                                 React.createElement("li", null, "2016/07/17: フラム=グラス系の石も計算できるようにした。/ 総合攻撃力*期待攻撃回数*技巧倍率を計算した値の導入 "), 
                                 React.createElement("li", null, "2016/07/16: バハ短剣の適応種族が間違っていたので修正 / 朱雀琴スキルの実装 / 計算量を削減する処理の追加 "), 
                                 React.createElement("li", null, "2016/07/15: 技巧・刹那の追加と、技巧期待値計算機能の追加 / キャラ攻撃力計算の実装、属性の導入 "), 
@@ -1957,7 +1991,8 @@
                                  "(バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)"), 
                                  React.createElement("li", null, "未対応: 羅刹/三手/召喚石のクリティカル率"), 
                                  React.createElement("li", null, "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。"), 
-                                 React.createElement("li", null, "基礎DA/TA率は 6.5%/3.0% としています。", React.createElement("br", null), 
+                                 React.createElement("li", null, "基礎DA/TA率は、現在ジョブ・キャラすべて6.5%/3.0% としています。", React.createElement("br", null), 
+                                 React.createElement("strong", null, "ジョブDA率を含めて計算したい場合はDAバフ量を弄って下さい。"), React.createElement("br", null), 
                                  "二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)", React.createElement("br", null), 
                                  "克己のDA率上昇量は二手(中)と全く同じとしています。"), 
                                  React.createElement("li", null, "暴君の攻撃力上昇量は対応するスキルの(大)と同様としています。"), 
