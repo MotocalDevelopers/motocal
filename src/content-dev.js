@@ -878,7 +878,7 @@
 
                         // for DA and TA
                         // baseDA: 6.5%, baseTA: 3.0%
-                        var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * totals[key]["normalNite"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["magnaNite"] * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["unknownOtherNite"] + 0.01 * totals[key]["cosmosBL"])
+                        var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * (totals[key]["normalNite"] + totals[key]["normalSante"]) * (1.0 + totalSummon["zeus"]) + 0.01 * (totals[key]["magnaNite"] + totals[key]["magnaSante"]) * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["unknownOtherNite"] + 0.01 * totals[key]["cosmosBL"])
                         var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"] + 0.01 * totals[key]["normalSante"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["magnaSante"] * (1.0 + totalSummon["magna"]))
                         var taRate = (parseInt(totalTA) >= 100) ? 1.0 : 0.01 * parseInt(totalTA)
                         var daRate = (parseInt(totalDA) >= 100) ? 1.0 : 0.01 * parseInt(totalDA)

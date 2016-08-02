@@ -16,6 +16,7 @@
                 "normalNiteS": {name:"通常二手(小)", type:"normalNite", amount: "S"},
                 "normalNiteM": {name:"通常二手(中)", type:"normalNite", amount: "M"},
                 "normalNiteL": {name:"通常二手(大)", type:"normalNite", amount: "L"},
+                "normalSanteL": {name:"通常三手(大)", type:"normalSante", amount: "L"},
                 "normalKatsumiM": {name:"通常克己(中)", type:"normalKatsumi", amount: "M"},
                 "normalKamui": {name:"通常神威", type:"normalKamui", amount: "S"},
                 "magnaM": {name: "マグナ攻刃", type:"magna", amount:"M"},
@@ -23,6 +24,7 @@
                 "magnaHaisuiS": {name:"マグナ背水(小)", type:"magnaHaisui", amount: "S"},
                 "magnaHaisuiM": {name:"マグナ背水(中)", type:"magnaHaisui", amount: "M"},
                 "magnaHaisuiL": {name:"マグナ背水(大)", type:"magnaHaisui", amount: "L"},
+                "magnaSanteL": {name:"マグナ三手(大)", type:"magnaSante", amount: "L"},
                 "magnaKatsumiM": {name:"マグナ克己(中)", type:"magnaKatsumi", amount: "M"},
                 "magnaKamui": {name:"マグナ神威", type:"magnaKamui", amount: "S"},
                 "magnaBoukun": {name:"マグナ暴君", type:"magnaBoukun", amount: "L"},
@@ -264,17 +266,21 @@
                     "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
                     "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
                     "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
-                    "LL": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
                 },
                 // 仮
                 "magnaNite":{
                     "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
                     "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
                     "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
-                    "LL": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
                 },
                 "unknownOtherNite":{
                     "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
+                },
+                "normalSante":{
+                    "L": [1.1, 1.53, 1.96, 2.39, 2.82, 3.25, 3.68, 4.11, 4.54, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0],
+                },
+                "magnaSante":{
+                    "L": [1.1, 1.53, 1.96, 2.39, 2.82, 3.25, 3.68, 4.11, 4.54, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0],
                 },
                 "normalCritical":{
                     "S": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4],
@@ -508,6 +514,8 @@
                         type: "attack",
                         favArm: "dagger",
                         favArm2: "none",
+                        DA: 6.5,
+                        TA: 3.0,
                     };
                 },
                 componentDidMount: function(){
@@ -869,8 +877,9 @@
                         var totalHP = displayHP * (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["normalHP"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["unknownHP"] * (1.0 + totalSummon["ranko"]))
 
                         // for DA and TA
+                        // baseDA: 6.5%, baseTA: 3.0%
                         var totalDA = 100.0 * (0.065 + buff["da"] + totalSummon["da"] + 0.01 * totals[key]["normalNite"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["magnaNite"] * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["unknownOtherNite"] + 0.01 * totals[key]["cosmosBL"])
-                        var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"])
+                        var totalTA = 100.0 * (0.03 + buff["ta"] + totalSummon["ta"] + 0.01 * totals[key]["normalSante"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["magnaSante"] * (1.0 + totalSummon["magna"]))
                         var taRate = (parseInt(totalTA) >= 100) ? 1.0 : 0.01 * parseInt(totalTA)
                         var daRate = (parseInt(totalDA) >= 100) ? 1.0 : 0.01 * parseInt(totalDA)
                         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
@@ -914,11 +923,11 @@
                     var baseHP = (prof.rank > 100) ? 1400 + (parseInt(prof.rank) - 100) * 4.0 : 600 + (parseInt(prof.rank)) * 8
                     var element = (prof.element == undefined) ? "fire" : prof.element
 
-                    var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, armAttack: 0, armHP:0, fav1: "", fav2: "", race: "unknown", type: "none", element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0}};
+                    var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, armAttack: 0, armHP:0, fav1: "", fav2: "", race: "unknown", type: "none", element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0}};
                     for(var i = 0; i < chara.length; i++){
                         if(chara[i].name != "") {
                             var charaelement = (chara[i].element == undefined) ? "fire" : chara[i].element
-                            totals[chara[i].name] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0}
+                            totals[chara[i].name] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0}
                         }
                     }
 
