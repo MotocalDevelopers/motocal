@@ -1,6 +1,6 @@
 body {
     width : 99%;
-    min-width: 1450px;
+    max-width: 1449px;
     font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     margin: 0 auto;
     font-size: 9pt;
@@ -98,17 +98,15 @@ table tr:last-child td:last-child {
 }
 
 .rootleft {
-    width: 700px;
-    height: 100%;
-    float: left;
+    width: 100%;
+    height: 50%;
     overflow: auto;
 }
 
 .rootright {
-    width: calc(100% - 705px);
-    height: 100%;
-    margin-left: 5px;
-    float: left;
+    width: 100%;
+    height: 50%;
+    border-top:3px solid #000;
     overflow: auto;
 }
 
