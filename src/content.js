@@ -2,7 +2,7 @@
             var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10}
             var zenithAttackBonus = [3000, 1500, 500];
             var zenithHPBonus = [300, 600, 1000];
-            var keyTypes = {"総合攻撃力": "totalAttack", "HP": "totalHP", "戦力": "ATKandHP", "パーティ平均攻撃力": "averageAttack", "技巧期待値": "criticalAttack", "技巧期待平均攻撃力": "averageCriticalAttack", "総合攻撃*期待回数*技巧期待値": "totalExpected", "[同上]のパーティ平均値": "averageTotalExpected"}
+            var keyTypes = {"総合攻撃力": "totalAttack", "HP": "totalHP", "戦力": "ATKandHP", "パーティ平均攻撃力": "averageAttack", "技巧期待値": "criticalAttack", "技巧期待平均攻撃力": "averageCriticalAttack", "総合攻撃*期待回数*技巧期待値": "totalExpected", "総回技のパーティ平均値": "averageTotalExpected"}
 
             // skill data
             var skilltypes = {
@@ -1389,20 +1389,20 @@
                                 if(s.selfSummonType == "odin"){
                                     selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
                                 } else {
-                                    selfSummonHeader = summonTypes[s.selfSummonType] + s.selfSummonAmount
+                                    selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
                                 }
 
                                 var friendSummonHeader = ""
                                 if(s.friendSummonType == "odin"){
                                     friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
                                 } else {
-                                    friendSummonHeader = summonTypes[s.friendSummonType] + s.friendSummonAmount
+                                    friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
                                 }
                                 return(
                                     <div className="result">
-                                        <h3> 結果({res.sortkeyname}): No. {summonindex + 1} ({selfSummonHeader} + {friendSummonHeader}) </h3>
+                                        <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} ({res.sortkeyname})</h2>
                                         <table>
-                                        <thead>
+                                        <thead className="result">
                                         <tr>
                                             <th>順位</th>
                                             {tableheader.map(function(m){ return <th>{m}</th>; })}
@@ -1538,6 +1538,7 @@
                         // indexによって保存データとの対応を取り、
                         // その値をkeyとして使うことでコンポーネントの削除などを行う
                         arms: arms,
+                        defaultElement: "fire",
                     };
                 },
                 updateArmNum: function(num) {
@@ -1624,12 +1625,19 @@
                     this.setState({alist: newalist})
                     this.props.onChange(newalist);
                 },
+                handleEvent: function(key, e) {
+                  var newState = this.state
+                  newState[key] = e.target.value
+                  this.setState(newState)
+                },
                 render: function(){
                     var dataName = this.props.dataName;
                     var arms = this.state.arms;
                     var hChange = this.handleOnChange;
                     var hRemove = this.handleOnRemove;
                     var hCopy = this.handleOnCopy;
+                    var defaultElement = this.state.defaultElement;
+
                     return (
                         <div className="armList">
                             <table>
@@ -1640,7 +1648,7 @@
                                 <th className="atkhp">HP</th>
                                 <th className="select">武器種</th>
                                 <th className="checkbox">コスモス</th>
-                                <th>スキル</th>
+                                <th>スキル   [属性一括変更]<select className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </select></th>
                                 <th className="select">SLv</th>
                                 <th className="consider">本数</th>
                                 <th className="system">操作</th>
@@ -1648,7 +1656,7 @@
                             </thead>
                             <tbody>
                             {arms.map(function(arm, ind) {
-                                return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} id={ind} keyid={arm} dataName={dataName} />;
+                                return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
                             })}
                             </tbody>
                             </table>
@@ -1679,6 +1687,14 @@
                     // only fired on Data Load
                     if(nextProps.dataName != this.props.dataName) {
                         var newState = newData.armlist[this.props.id]
+                        this.setState(newState);
+                        this.props.onChange(this.props.id, newState);
+                    }
+
+                    if(nextProps.defaultElement != this.props.defaultElement) {
+                        var newState = this.state
+                        newState["element"] = nextProps.defaultElement
+                        newState["element2"] = nextProps.defaultElement
                         this.setState(newState);
                         this.props.onChange(this.props.id, newState);
                     }
@@ -2099,7 +2115,7 @@
                             </ul>
                             <h2>更新履歴</h2>
                             <ul>
-                                <li>2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。</li>
+                                <li>2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。 / 武器スキル属性の一括変更を実装 </li>
                                 <li>2016/08/06: 考慮本数が最大0本の場合は結果欄に表示されないように変更 / 計算量を削減する処理を追加 / バハ攻とバハ攻HPが複数本指定された時に同種スキルが重複して計算されないよう修正 / キャラ別HP管理を実装 / ジータの基礎DATA率を弄れるように / キャラHPの表示を実装 / 結果のHP欄に残HPも同時表示するようにした / マウスホバー時にスキル情報を表示するようにした。 </li>
                                 <li>2016/08/03: レイアウト調整/キャラ別基礎DATA率計算の実装</li>
                                 <li>2016/08/02: 三手対応</li>
