@@ -76,10 +76,11 @@ table tr:last-child td:first-child {
 table tr:last-child td:last-child {
   border-radius: 0 0 5px 0;
 }
-/* table tr:hover {       */
-/*   background: #bbd4ee; */
-/*   cursor:pointer;      */
-/* }                      */
+
+tr.result:hover {
+  background: #bbd4ee;
+  cursor:pointer;
+}
 
 .divright {
     text-align: right;
@@ -98,16 +99,17 @@ table tr:last-child td:last-child {
 }
 
 .rootleft {
-    width: 700px;
+    width: 750px;
     height: 100%;
     float: left;
     overflow: auto;
+    border-right:3px double #116;
 }
 
 .rootright {
-    width: calc(100% - 705px);
+    width: calc(100% - 758px);
     height: 100%;
-    margin-left: 5px;
+    margin-left:5px;
     float: left;
     overflow: auto;
 }
@@ -140,7 +142,7 @@ table tr:last-child td:last-child {
 
 .root .top2.open {
     width: 100%;
-    height: 20%;
+    height: 30%;
     margin-bottom: 2px;
     overflow: visible;
     min-height: 200px;
@@ -183,7 +185,7 @@ table tr:last-child td:last-child {
     float: left;
     border-top:2px solid #258;
     border-bottom:2px solid #258;
-    height: 280px;
+    height: 300px;
     padding: 3px;
 }
 
@@ -198,7 +200,7 @@ table tr:last-child td:last-child {
 
 .tweet {
     width: 47%;
-    height: 280px;
+    height: 300px;
     overflow: auto;
     word-wrap: break-word;
     margin: 0px;
@@ -298,7 +300,7 @@ h3 {
 }
 
 .profile table th.buff {
-    width: calc(100%/9);
+    width: calc(100%/10);
 }
 
 .profile input, .profile select, .profile textarea {
@@ -335,7 +337,6 @@ h3 {
 .charaList {
     width: 100%;
     float: left;
-    height: 125px;
 }
 
 .charaList th.tiny, .charaList td.tiny {
@@ -343,7 +344,7 @@ h3 {
 }
 
 .charaList th, .charaList td {
-    width: calc(100%/10);
+    width: calc(100%/12);
 }
 
 .charaList input {
@@ -352,6 +353,16 @@ h3 {
 
 .charaList label {
     font-size: 9pt;
+}
+
+.charaList table th.checkbox, .charaList table td.checkbox {
+    padding: 0px;
+    width: 15px;
+    font-size: 7pt;
+}
+
+.charaList table td.checkbox input {
+    width: 15px;
 }
 
 td.resultFirst, th.resultFirst {
