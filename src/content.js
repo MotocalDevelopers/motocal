@@ -1236,8 +1236,14 @@
                       var sortkey = "totalAttack"
                       var sortkeyname = "総合攻撃力"
                       if(prof.sortKey == prof.sortKey) {
-                          sortkey = keyTypes[prof.sortKey]
-                          sortkeyname = prof.sortKey
+                          // バグ対応
+                          if(prof.sortKey == "[同上]のパーティ平均値") {
+                              sortkey = "averageTotalExpected"
+                              sortkeyname = "総回技のパーティ平均値"
+                          } else {
+                              sortkey = keyTypes[prof.sortKey]
+                              sortkeyname = prof.sortKey
+                          }
                       }
 
                       var combinations = this.calculateCombinations(arml)
