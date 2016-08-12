@@ -75,6 +75,10 @@
                 "bahaFUATHP-gun": {name:"バハフツ-銃", type:"bahaFUATHP", amount: "LL"},
                 "bahaFUATHP-sword": {name:"バハフツ-剣", type:"bahaFUATHP", amount: "LL"},
                 "bahaFUATHP-wand": {name:"バハフツ-杖", type:"bahaFUATHP", amount: "LL"},
+                "bahaFUHP-fist": {name:"バハフツHP-格闘", type:"bahaFUHP", amount: "L"},
+                "bahaFUHP-katana": {name:"バハフツHP-刀", type:"bahaFUHP", amount: "L"},
+                "bahaFUHP-bow": {name:"バハフツHP-弓", type:"bahaFUHP", amount: "L"},
+                "bahaFUHP-music": {name:"バハフツHP-楽器", type:"bahaFUHP", amount: "L"},
             };
 
             var armtypes = [
@@ -243,9 +247,19 @@
                     "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
                 },
                 "bahaFUATHP": {
-                    // 剣など
+                    // 短剣、剣など
                     "HP": [15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
                     "AT": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
+                },
+                "bahaFUHP": {
+                    // 拳など
+                    // "HP": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 32.0, 34.0, 36.0, 38.0, 40.0],
+                    // "DA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 4.0, 6.0, 8.0, 10.0],
+                    // "TA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.6, 3.2, 4.8, 6.4,  8.0],
+                    // wiki データ
+                    "HP": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
+                    "DA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.6, 5.0, 5.5, 6.0, 6.5, 7.0],
+                    "TA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.6, 5.0, 5.5, 6.0, 6.5, 7.0],
                 },
                 "normalHP":{
                     "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
@@ -442,6 +456,7 @@
                     React.createElement("div", {className: "root"}, 
                         React.createElement("div", {className: "rootLeft"}, 
                             React.createElement("h1", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
+                            React.createElement("div", {className: "divright"}, React.createElement("tiny", null, React.createElement("a", {href: "http://hsimyu.net/motocal/"}, "入力リセット"))), 
                             React.createElement("hr", null), 
                             React.createElement("button", {className: "toggle", onClick: this.handleOnClickTopToggle}, this.state.topbuttontext), 
                             React.createElement("div", {className: this.state.topclass}, 
@@ -889,9 +904,10 @@
 
                         // 弱点属性判定
                         var typeBonus = 1.0
-                        if(elementRelation[ totals[key]["element"] ]["weak"] == prof.enemyElement) {
+                        var enemyElement = (prof.enemyElement == undefined || prof.enemyElement == "水") ? "fire" : prof.enemyElement
+                        if(elementRelation[ totals[key]["element"] ]["weak"] == enemyElement) {
                             typeBonus = 0.75
-                        } else if(elementRelation[ totals[key]["element"] ]["strong"] == prof.enemyElement) {
+                        } else if(elementRelation[ totals[key]["element"] ]["strong"] == enemyElement) {
                             typeBonus = 1.5
                         }
 
@@ -921,8 +937,14 @@
 
                         // for DA and TA
                         // baseDA: 6.5%, baseTA: 3.0%
-                        var totalDA = 100.0 * (0.01 * totals[key]["baseDA"] + buff["da"] + totalSummon["da"] + 0.01 * (totals[key]["normalNite"] + totals[key]["normalSante"]) * (1.0 + totalSummon["zeus"]) + 0.01 * (totals[key]["magnaNite"] + totals[key]["magnaSante"]) * (1.0 + totalSummon["magna"]) + 0.01 * totals[key]["unknownOtherNite"] + 0.01 * totals[key]["cosmosBL"])
-                        var totalTA = 100.0 * (0.01 * totals[key]["baseTA"] + buff["ta"] + totalSummon["ta"] + 0.01 * totals[key]["normalSante"] * (1.0 + totalSummon["zeus"]) + 0.01 * totals[key]["magnaSante"] * (1.0 + totalSummon["magna"]))
+                        var normalNite = (totals[key]["normalNite"] * (1.0 + totalSummon["zeus"]) > 50.0) ? 50.0 : totals[key]["normalNite"] * (1.0 + totalSummon["zeus"])
+                        var magnaNite = (totals[key]["magnaNite"] * (1.0 + totalSummon["magna"]) > 50.0) ? 50.0 : totals[key]["magnaNite"] * (1.0 + totalSummon["magna"])
+                        var normalSante = (totals[key]["normalSante"] * (1.0 + totalSummon["zeus"]) > 50.0) ? 50.0 : totals[key]["normalSante"] * (1.0 + totalSummon["zeus"])
+                        var magnaSante = (totals[key]["magnaSante"] * (1.0 + totalSummon["magna"]) > 50.0) ? 50.0 : totals[key]["magnaSante"] * (1.0 + totalSummon["magna"])
+                        var unknownOtherNite = (totals[key]["unknownOtherNite"] > 50.0) ? 50.0 : totals[key]["unknownOtherNite"]
+
+                        var totalDA = 100.0 * (0.01 * totals[key]["baseDA"] + buff["da"] + totalSummon["da"] + 0.01 * (normalNite + normalSante) + 0.01 * (magnaNite + magnaSante) + 0.01 * unknownOtherNite + 0.01 * totals[key]["bahaDA"] + 0.01 * totals[key]["cosmosBL"])
+                        var totalTA = 100.0 * (0.01 * totals[key]["baseTA"] + buff["ta"] + totalSummon["ta"] + 0.01 * normalSante + 0.01 * magnaSante + 0.01 * totals[key]["bahaTA"] )
                         var taRate = (parseFloat(totalTA) >= 100.0) ? 1.0 : 0.01 * parseFloat(totalTA)
                         var daRate = (parseFloat(totalDA) >= 100.0) ? 1.0 : 0.01 * parseFloat(totalDA)
                         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
@@ -981,7 +1003,7 @@
                     var djeetaDA = (prof.DA == undefined) ? 6.5 : parseFloat(prof.DA)
                     var djeetaTA = (prof.TA == undefined) ? 3.0 : parseFloat(prof.TA)
 
-                    var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: "", fav2: "", race: "unknown", type: "none", element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true}};
+                    var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: "", fav2: "", race: "unknown", type: "none", element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true}};
                     for(var i = 0; i < chara.length; i++){
                         if(chara[i].name != "") {
                             var charaelement = (chara[i].element == undefined) ? "fire" : chara[i].element
@@ -989,7 +1011,7 @@
                             var charaTA = (chara[i].TA == undefined) ? 3.0 : chara[i].TA
                             var charaRemainHP = (chara[i].remainHP != undefined && parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(chara[i].remainHP) : 0.01 * parseInt(prof.hp)
                             var charaConsidered = (chara[i].isConsideredInAverage == undefined) ? true : chara[i].isConsideredInAverage
-                            totals[chara[i].name] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: charaConsidered}
+                            totals[chara[i].name] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: charaConsidered}
                         }
                     }
 
@@ -1116,6 +1138,19 @@
                                                 totals[key]["bahaHP"] += skillAmounts["bahaFUATHP"]["HP"][slv - 1];
                                             }
                                         }
+                                    } else if(stype == 'bahaFUHP') {
+                                        if(totals[key]["race"] == "unknown") {
+                                            totals[key]["bahaHP"] += skillAmounts["bahaFUHP"]["HP"][slv - 1];
+                                            totals[key]["bahaDA"] += skillAmounts["bahaFUHP"]["DA"][slv - 1];
+                                            totals[key]["bahaTA"] += skillAmounts["bahaFUHP"]["TA"][slv - 1];
+                                        } else {
+                                            var bahatype = skillname.split("-")
+                                            if( bahamutFURelation[bahatype[1]]["type1"] == totals[key]["race"] || bahamutFURelation[ bahatype[1]]["type2"] == totals[key]["race"] ) {
+                                                totals[key]["bahaHP"] += skillAmounts["bahaFUHP"]["HP"][slv - 1];
+                                                totals[key]["bahaDA"] += skillAmounts["bahaFUHP"]["DA"][slv - 1];
+                                                totals[key]["bahaTA"] += skillAmounts["bahaFUHP"]["TA"][slv - 1];
+                                            }
+                                        }
                                     } else if(stype == 'cosmos') {
                                         // コスモス武器
                                         if(skillname == 'cosmosAT' && totals[key]["type"] == "attack") {
@@ -1199,9 +1234,6 @@
                         // バハ武器重複上限
                         if(totals[key]["bahaAT"] > 50) totals[key]["bahaAT"] = 50
                         if(totals[key]["bahaHP"] > 50) totals[key]["bahaHP"] = 50
-                        // 二手スキル上限
-                        if(totals[key]["normalNite"] > 50) totals[key]["normalNite"] = 50
-                        if(totals[key]["magnaNite"]  > 50) totals[key]["magnaNite"] = 50
                     }
 
                     var result = []
@@ -1381,7 +1413,7 @@
                                 React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCharaHP, onChange: this.handleEvent.bind(this, "switchCharaHP")}), " キャラHP"), 
                                 React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力"), 
                                 React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値"), 
-                                React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " [左]のパーティ平均値")
+                                React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総回技のパーティ平均値")
                             )
                             ), 
                             React.createElement("br", null), 
@@ -1404,6 +1436,7 @@
                                 } else {
                                     friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
                                 }
+
                                 return(
                                     React.createElement("div", {className: "result"}, 
                                         React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " (", res.sortkeyname, ")"), 
@@ -1840,7 +1873,7 @@
                         remainHP: 100,
                         zenithBonus1: "無し",
                         zenithBonus2: "無し",
-                        enemyElement: "水",
+                        enemyElement: "fire",
                         job: "none",
                         armNum: 5,
                         summonNum: 2,
@@ -1934,7 +1967,8 @@
                                         React.createElement("td", null, React.createElement("select", {value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", this.props.keyTypes, " "))
                                     )
                                 ), 
-                                "※パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用)"
+                                "※パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) ", React.createElement("br", null), 
+                                "※敵の属性欄を選択せず”火”と表示されたまま計算した場合に、有利不利判定が適用されていなかった不具合を修正しました。（一度選択し直した場合は正しい値が表示されていました。）"
                             )
                         );
                     }
@@ -2117,10 +2151,15 @@
                             React.createElement("ul", null, 
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://hsimyu.net/motocal?id=246"}, " 例:火ベルセ "), " "), 
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://hsimyu.net/motocal?id=312"}, " 例:風ダクフェ "), " "), 
-                                React.createElement("li", null, " ", React.createElement("a", {href: "http://hsimyu.net/motocal?id=313"}, " 例:風ホーク "), " ")
+                                React.createElement("li", null, " ", React.createElement("a", {href: "http://hsimyu.net/motocal?id=313"}, " 例:風ホーク "), " "), 
+                                React.createElement("li", null, " ", React.createElement("a", {href: "http://hsimyu.net/motocal?id=314"}, " 例:闇ベルセ "), " "), 
+                                React.createElement("li", null, " ", React.createElement("a", {href: "http://hsimyu.net/motocal?id=328"}, " 例:土ベルセ "), " ")
                             ), 
                             React.createElement("h2", null, "更新履歴"), 
                             React.createElement("ul", null, 
+                                React.createElement("li", null, "2016/08/12: 二手スキル上限の値に召喚石加護分の値が考慮されていなかった不具合を修正。"), 
+                                React.createElement("li", null, "2016/08/11: 敵の属性の内部的な初期値がおかしかった不具合を修正。"), 
+                                React.createElement("li", null, "2016/08/09: 簡易リセットボタンを配置 / バハムート武器フツルスの拳系に対応 (wikiの情報に準拠) (HP40%, DA10%, TA8%という情報もありますが、未確定の為とりあえず低い値を採用しました。検証してくれる方を募集してます……) "), 
                                 React.createElement("li", null, "2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。 / 武器スキル属性の一括変更を実装 "), 
                                 React.createElement("li", null, "2016/08/06: 考慮本数が最大0本の場合は結果欄に表示されないように変更 / 計算量を削減する処理を追加 / バハ攻とバハ攻HPが複数本指定された時に同種スキルが重複して計算されないよう修正 / キャラ別HP管理を実装 / ジータの基礎DATA率を弄れるように / キャラHPの表示を実装 / 結果のHP欄に残HPも同時表示するようにした / マウスホバー時にスキル情報を表示するようにした。 "), 
                                 React.createElement("li", null, "2016/08/03: レイアウト調整/キャラ別基礎DATA率計算の実装"), 
@@ -2133,7 +2172,7 @@
 
                             React.createElement("h3", null, "注記"), 
                             React.createElement("ul", null, 
-                                 React.createElement("li", null, "今後の実装予定: HPやDAが上がるなどのサポアビ対応"), 
+                                 React.createElement("li", null, "今後の実装予定: 召喚石入力欄の利便性向上 / 内部で使用しているスキル等のデータを一覧できるテーブルの作成 "), 
                                  React.createElement("li", null, React.createElement("strong", null, "バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに\"バハフツ(攻/HP)\"を選択してください。"), " ", React.createElement("br", null), 
                                  "(バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)"), 
                                  React.createElement("li", null, "未対応: 羅刹/召喚石のクリティカル率"), 
@@ -2142,10 +2181,11 @@
                                  React.createElement("strong", null, "ジョブDA率を含めて計算したい場合はDAバフ量を弄って下さい。"), React.createElement("br", null), 
                                  "二手のDA率上昇量はすんどめ侍氏の検証結果を使っています(二手大SLv15は7.0%としました。)", React.createElement("br", null), 
                                  "克己のDA率上昇量は二手(中)と全く同じとしています。"), 
-                                 React.createElement("li", null, React.createElement("strong", null, "三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。")), 
+                                 React.createElement("li", null, React.createElement("strong", null, "三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。また、二手と同様50％が上限としています。二手と三手のDA率アップが重複するかどうかは、検証待ちです。")), 
                                  React.createElement("li", null, "暴君の攻撃力上昇量は対応するスキルの(大)と同様としています。"), 
                                  React.createElement("li", null, "基礎HPの基礎式は 600 + 8 * rank(100まで) + 4 * (rank - 100)としています。"), 
                                  React.createElement("li", null, "背水の計算式は日比野さんのところの式を利用しています。"), 
+                                 React.createElement("li", null, "\"コスモス\"欄はコスモス武器にチェックをつけてください。"), 
                                  React.createElement("li", null, "計算量削減のため、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。")
                              ), 
 
@@ -2157,13 +2197,15 @@
                             ), 
 
                             React.createElement("h3", null, "参考文献"), 
-                            "以下のサイトを参考にさせていただきました。", 
+                            "以下のサイト・ツイートを参考にさせていただきました。", 
                             React.createElement("ul", null, 
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://gbf-wiki.com"}, "グランブルーファンタジー(グラブル)攻略wiki")), 
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://hibin0.web.fc2.com/grbr_atk_calc/atk_calc.html"}, "グランブルーファンタジー攻撃力計算機")), 
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://hibin0.web.fc2.com/grbr_weapon_calc/weapon_calc.html"}, "オススメ装備に自信ニキ")), 
                                 React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/12/09/230544"}, "すんどめ侍のグラブル生活 - 【グラブル】武器スキル検証結果")), 
-                                React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/10/11/175521"}, "すんどめ侍のグラブル生活 - 【グラブル】ジョブデータ検証結果"))
+                                React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/10/11/175521"}, "すんどめ侍のグラブル生活 - 【グラブル】ジョブデータ検証結果")), 
+                                React.createElement("li", null, " ", React.createElement("a", {href: "https://twitter.com/hibino_naoki/status/722338377127735296"}, " @hibino_naoki さんのコルタナ(三手大)検証情報")), 
+                                React.createElement("li", null, " ", React.createElement("a", {href: "https://twitter.com/gekikara_s/status/746274346251882496"}, " @gekikara_s さんのバハフツ拳検証情報"))
                             )
                         ), 
                         React.createElement("div", {className: "noticeRight"}, 
