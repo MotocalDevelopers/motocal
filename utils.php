@@ -34,9 +34,14 @@
         return 0;
     }
 
-    function select_all($table_name, $con){
-        $query = "select * from $table_name";
-        return do_query($query, $con);
+    function select_all_and_echo($table_name, $limit, $offset, $con){
+        $query = "select * from $table_name ORDER BY id DESC LIMIT $limit OFFSET $offset";
+        $res = do_query($query, $con);
+        $arr = array();
+        while($row = mysql_fetch_assoc($res)) {
+            $arr[] = $row;
+        }
+        return $arr;
     }
 
     function select_by_hash($table_name, $hash, $con){
@@ -55,6 +60,13 @@
 
     function get_count($table_name, $con){
         $query = "select max(id) from $table_name";
+        $res = do_query($query, $con);
+
+        return mysql_result($res, 0);
+        }
+
+    function get_record_count($table_name, $con){
+        $query = "select count(id) from $table_name";
         $res = do_query($query, $con);
 
         return mysql_result($res, 0);
