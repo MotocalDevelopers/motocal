@@ -21506,26 +21506,22 @@ var Result = React.createClass({displayName: "Result",
                         var overedDamage = 0
                         // 補正1
                         if(damage > 300000) {
-                            overedDamage = damage - 300000
-                            overedDamage *= 0.70
+                            overedDamage = 0.70 * (damage - 300000)
                             damage = 300000 + overedDamage
                         }
                         // 補正2
                         if(damage > 350000) {
-                            overedDamage = damage - 350000
-                            overedDamage *= 0.40
+                            overedDamage = 0.40 * (damage - 350000)
                             damage = 350000 + overedDamage
                         }
                         // 補正3
                         if(damage > 400000) {
-                            overedDamage = damage - 400000
-                            overedDamage *= 0.10
+                            overedDamage = 0.10 * (damage - 400000)
                             damage = 400000 + overedDamage
                         }
                         // 補正4
                         if(damage > 450000) {
-                            overedDamage = damage - 450000
-                            overedDamage *= 0.01
+                            overedDamage = 0.01 * (damage - 450000)
                             damage = 450000 + overedDamage
                         }
 
