@@ -4,8 +4,17 @@ body {
     padding: 5px;
     width : 99%;
     max-width: 960px;
-    font-size: 12pt;
+    font-size: 10pt;
     font-weight: normal;
+}
+
+h1, h2, h3 {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.margin-top {
+    margin-top: 10px;
 }
 
 input, textarea {
@@ -20,6 +29,7 @@ select, option {
     font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     font-size: 9pt;
     font-weight: bold;
+    color: #000;
 }
 
 table {
@@ -94,56 +104,54 @@ tr.result:hover {
     height: 100px;
 }
 
-.header {
+.inputTab, .resultTab, .systemTab, .summonTab, .charaTab, .armTab {
     width: 100%;
-    height: 50px;
-    margin-top: 1em;
+    height: 100%;
+    overflow: auto;
+}
+
+.inputTab.hidden, .resultTab.hidden, .systemTab.hidden, .summonTab.hidden, .charaTab.hidden, .armTab.hidden {
+    overflow: hidden;
+    height: 0%;
 }
 
 .dataControl {
-    width: 98%;
-    margin-right: 1px;
-    float: left;
-    border-top:2px solid #258;
-    border-bottom:2px solid #258;
+    width: calc(100% - 6px);
     overflow: auto;
     padding: 3px;
 }
 
 .dataControl input {
-    width: 100%;
+    width: calc(100% - 6px);
 }
 
 .dataControl select {
-    width: 100%;
+    width: calc(100% - 6px);
     margin-bottom: 2pt;
 }
 
 .tweet {
-    width: 98%;
+    width: calc(100% - 6px);
     overflow: auto;
     word-wrap: break-word;
     margin: 0px;
-    border-top:2px solid #258;
     border-bottom:2px solid #258;
     padding: 3px;
 }
 
-.tweet button {
-    width: 99%;
+.dataControl .systemButtonGroup {
+    width: 100%;
+}
+.dataControl .systemButton {
+    width: calc(100%/3);
 }
 
-.tweet button, .dataControl button {
-    font-size: 10pt;
-}
-
-.dataControl button {
-    width: calc((100%/3) - 2px);
+.tweet .tweetButton {
+    width: 100%;
 }
 
 .armList {
     width: 100%;
-    float: clear;
 }
 
 .armList table th, .armList table td {
@@ -159,138 +167,61 @@ tr.result:hover {
     width: 60px;
 }
 
-.armList table th.checkbox, .armList table td.checkbox {
-    padding: 0px;
-    width: 15px;
-    font-size: 7pt;
+/* .armList table td.consider select, .armList table td.consider option { */
+/*     width: 8%;                                                         */
+/*     min-width: 80px;                                                   */
+/* }                                                                      */
+
+/* .armList table td.consider input {                                     */
+/*     width: 40px;                                                       */
+/* }                                                                      */
+
+/* .armList table td.system button {                                      */
+/*     width: 95%;                                                        */
+/* }                                                                      */
+
+.armList .element {
+    width: 30%;
+    display: inline;
 }
 
-.armList table td.checkbox input {
-    width: 15px;
-}
-
-.armList table th.select, .armList table td.select {
-    min-width: 30px;
-}
-
-.armList table td select, .armList table td select option {
-    width: 100%;
-    font-size: 9pt;
-    font-weight: bold;
-}
-
-.armList table td select.skill, .armList table td select option.skill {
-    width: 75%;
-    font-size: 9pt;
-    font-weight: bold;
-}
-
-.armList table td select.element, .armList table td select option.element {
-    width: 25%;
-    font-size: 9pt;
-    font-weight: bold;
-}
-
-.armList table th.consider, .armList table td.consider {
-    width: 8%;
-    min-width: 80px;
-}
-
-.armList table td.consider input {
-    width: 40px;
-}
-
-.armList table th.system, .armList table td.system {
-    width: 5%;
-    min-width: 50px;
-}
-
-.armList table td.system button {
-    width: 95%;
+.armList .skill {
+    width: 65%;
+    display: inline;
 }
 
 .profile {
     width: 100%;
-    float: left;
-}
-
-h3 {
-    margin-top: 2px;
-    margin-bottom: 2px;
 }
 
 .profile table th.prof {
-    width: calc(100%/11);
-}
-
-.profile table th.buff{
     width: calc(100%/7);
 }
 
-.profile input, .profile select, .profile textarea {
-    width: 100%;
+.profile table th.buff {
+    width: calc(100%/7);
 }
 
 .summonList {
     width: 100%;
-    float: left;
     overflow: auto;
 }
 
-.summonList th.tiny, .summonList td.tiny {
-    width: 45px;
-}
-
-.summonList td.tiny select {
-    width: 45px;
-}
-
 .summonList th, .summonList td {
-    width: calc(100%/11);
-    font-size: 6pt;
-}
-
-.summonList input, .summonList select {
-    width: 100%;
-}
-
-.summonList table tbody tr td.multi input, .summonList table tbody tr td.multi select {
-    width: 70%;
-}
-
-.summonList label {
-    font-size: 9pt;
+    width: calc(100%/8);
 }
 
 .charaList {
     width: 100%;
-    float: left;
-}
-
-.charaList th.tiny, .charaList td.tiny {
-    width: 20px;
 }
 
 .charaList th, .charaList td {
     width: calc(100%/12);
-}
-
-.charaList input {
-    width: 100%;
-}
-
-.charaList label {
-    font-size: 9pt;
-}
-
-.charaList table th.checkbox, .charaList table td.checkbox {
-    padding: 0px;
-    width: 15px;
     font-size: 7pt;
 }
 
-.charaList table td.checkbox input {
-    width: 15px;
+.charaList th.considerAverage, .charaList td.considerAverage {
+    width: auto;
 }
 
 thead.result th {
@@ -325,27 +256,14 @@ div.result {
     margin-bottom: 20px;
 }
 
-.notice {
-    margin-top: 2pt;
-    font-weight: bold;
-    width: 100%;
+div.resultList {
+    width: calc(100% - 6px);
+    padding: 3px;
 }
 
-button {
-    color: white;
-    background-color: #257;
-    padding: 3px;
-    text-align: center;
-    text-shadow:0 -1px 0 rgba(34,85,136,0.9);
-    box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-    border-radius: 3px;
-    border-style: none;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    background:-moz-linear-gradient(rgba(34,85,136,0.7), rgba(34,85,136,0.9) 50%);
-    background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(34,85,136,0.7)), to(rgba(34,85,136,0.9)));
-    font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
-    font-size: 9pt;
+.notice {
+    margin-top: 2pt;
+    width: 100%;
 }
 
 table.displayElement td {
@@ -406,9 +324,11 @@ select, option, {
     line-height: 24px;
     position: relative;
 }
+
 .tabrow:before {
     z-index: 1;
 }
+
 .tabrow:after {
     position: absolute;
     content: "";
@@ -418,6 +338,7 @@ select, option, {
     border-bottom: 1px solid #AAA;
     z-index: 1;
 }
+
 .tabrow button {
     color: black;
     margin: 0 10px;
@@ -428,20 +349,53 @@ select, option, {
     position: relative;
     z-index: 0;
     border-radius: 1px;
-    font-size: 10pt;
+    font-size: 12pt;
 }
+
 .tabrow button.selected {
     background: #FFF;
     color: #000;
     z-index: 2;
     border-bottom-color: #FFF;
 }
-.inputTab, .resultTab, .systemTab, .summonTab, .charaTab, .armTab {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
+
+.form-control {
+    font-size: 9pt;
+    padding: 1px;
+    display: inline;
 }
-.inputTab.hidden, .resultTab.hidden, .systemTab.hidden, .summonTab.hidden, .charaTab.hidden, .armTab.hidden {
-    overflow: hidden;
-    height: 0%;
+
+.summonList .form-control.multi {
+    width: 70%;
+}
+
+.armList .form-control.consider {
+    width: 50%;
+}
+
+.btn {
+    font-size: 9pt;
+}
+
+.checkbox-inline {
+    display: inline;
+    padding-left: 10px;
+}
+
+.checkbox-inline.autoupdate{
+    display: inline-block;
+}
+
+.checkbox-inline input[type=checkbox] {
+    position: relative;
+    margin-left: 0px;
+}
+
+.charaList .checkbox-inline, .armList .checkbox-inline {
+    padding-left: 0;
+}
+
+label {
+    display: inline;
+    font-size: 9pt;
 }

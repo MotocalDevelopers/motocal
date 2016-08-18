@@ -1,9 +1,15 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
+var {Button, ButtonGroup, FormControl, Checkbox} = require('react-bootstrap');
 
 // global arrays
 var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10}
 var zenithAttackBonus = [3000, 1500, 500];
-var zenithHPBonus = [300, 600, 1000];
+var zenithHPBonus = [1000, 600, 300];
+var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var armNums = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+var summonNums = [1, 2, 3, 4, 5, 6, 7, 8];
 var keyTypes = {"総合攻撃力": "totalAttack", "HP": "totalHP", "戦力": "ATKandHP", "パーティ平均攻撃力": "averageAttack", "技巧期待値": "criticalAttack", "技巧期待平均攻撃力": "averageCriticalAttack", "総合攻撃*期待回数*技巧期待値": "totalExpected", "総回技のパーティ平均値": "averageTotalExpected"}
 
 // skill data
@@ -85,19 +91,19 @@ var skilltypes = {
     "bahaFUHP-music": {name:"バハフツHP-楽器", type:"bahaFUHP", amount: "L"},
 };
 
-var armtypes = [
-    {name:"短剣", type:"dagger"},
-    {name:"剣", type:"sword"},
-    {name:"槍", type:"spear"},
-    {name:"斧", type:"axe"},
-    {name:"杖", type:"wand"},
-    {name:"銃", type:"gun"},,
-    {name:"格闘", type:"fist"},
-    {name:"弓", type:"bow"},
-    {name:"楽器", type:"music"},
-    {name:"刀", type:"katana"},
-    {name:"無し", type:"none"},
-];
+var armTypes = {
+  "dagger": "短剣",
+  "sword": "剣",
+  "spear": "槍",
+  "axe": "斧",
+  "wand": "杖",
+  "gun": "銃",
+  "fist": "格闘",
+  "bow": "弓",
+  "music": "楽器",
+  "katana": "刀",
+  "none": "無し",
+};
 
 var summonTypes = {
     "magna": "マグナ",
@@ -323,8 +329,14 @@ var select_elements = Object.keys(elementTypes).map(function(opt){return <option
 var select_summons = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{summonTypes[opt]}</option>;});
 var select_skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
 var select_types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{jobTypes[opt]}</option>;});
-var select_armtypes = armtypes.map(function(opt){return <option value={opt.type} key={opt.name}>{opt.name}</option>;});
+var select_armtypes = Object.keys(armTypes).map(function(opt){return <option value={opt} key={opt}>{armTypes[opt]}</option>;});
 var select_summonElements = Object.keys(summonElementTypes).map(function(opt){return <option value={opt} key={opt}>{summonElementTypes[opt].name}</option>;});
+var select_zenithAttack = zenithAttackBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+var select_zenithHP = zenithHPBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+var select_slv = skilllevels.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+var select_consider = considerNum.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+var select_armnum = armNums.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+var select_summonnum = summonNums.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 
 // query 取得用の関数
 var urldata = getVarInQuery("data");
@@ -590,6 +602,7 @@ var CharaList = React.createClass({
     getInitialState: function() {
         return {
             charalist: [],
+            defaultElement: "fire",
         };
     },
     handleOnChange: function(key, state){
@@ -598,6 +611,11 @@ var CharaList = React.createClass({
         this.setState({charalist: newcharalist})
         this.props.onChange(newcharalist);
     },
+    handleEvent: function(key, e) {
+      var newState = this.state
+      newState[key] = e.target.value
+      this.setState(newState)
+    },
     render: function() {
         var charas = [];
         for(var i=0; i < 6; i++) {
@@ -605,11 +623,13 @@ var CharaList = React.createClass({
         }
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
+        var defaultElement = this.state.defaultElement;
         if(_ua.Mobile) {
             return (
                 <div className="charaList">
+                    [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl>
                     {charas.map(function(c) {
-                        return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} />;
+                        return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} />;
                     })}
                 </div>
             );
@@ -621,12 +641,12 @@ var CharaList = React.createClass({
                     <thead>
                     <tr>
                         <th>キャラ名*</th>
-                        <th>属性*</th>
+                        <th>属性* <br/> [一括変更] <br/><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl> </th>
                         <th>種族</th>
                         <th>タイプ</th>
                         <th>得意武器*</th>
                         <th>得意武器2</th>
-                        <th className="checkbox">平均に含める</th>
+                        <th className="considerAverage">平均に含める</th>
                         <th>素の攻撃力*<br/>(≠編成画面での表示値)</th>
                         <th>素のHP</th>
                         <th>残HP割合(%)</th>
@@ -636,7 +656,7 @@ var CharaList = React.createClass({
                     </thead>
                     <tbody>
                         {charas.map(function(c) {
-                            return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} />;
+                            return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} />;
                         })}
                     </tbody>
                     </table>
@@ -688,6 +708,12 @@ var Chara = React.createClass({
                 this.props.onChange(this.props.id, state)
             }
         }
+        if(nextProps.defaultElement != this.props.defaultElement) {
+            var newState = this.state
+            newState["element"] = nextProps.defaultElement
+            this.setState(newState);
+            this.props.onChange(this.props.id, newState);
+        }
     },
     handleEvent: function(key, e) {
         var newState = this.state
@@ -703,36 +729,36 @@ var Chara = React.createClass({
         if(_ua.Mobile) {
             return (
                 <table><tbody>
-                    <tr><th>名前</th><td><input type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td></tr>
-                    <tr><th>属性</th><td><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</select></td></tr>
-                    <tr><th>種族</th><td><select value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</select></td></tr>
-                    <tr><th>タイプ</th><td><select value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</select></td></tr>
-                    <tr><th>得意武器1</th><td><select value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</select></td></tr>
-                    <tr><th>得意武器2</th><td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</select></td></tr>
-                    <tr><th>平均に含める</th><td className="checkbox"><input type="checkbox" checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td></tr>
-                    <tr><th>素の攻撃力</th><td><input type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td></tr>
-                    <tr><th>素のHP</th><td><input type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
-                    <tr><th>残HP割合</th><td><input type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td></tr>
-                    <tr><th>基礎DA率</th><td><input type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td></tr>
-                    <tr><th>基礎TA率</th><td><input type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td></tr>
+                    <tr><th>名前</th><td><FormControl type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td></tr>
+                    <tr><th>属性</th><td><FormControl componentClass="select" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</FormControl></td></tr>
+                    <tr><th>種族</th><td><FormControl componentClass="select" value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</FormControl></td></tr>
+                    <tr><th>タイプ</th><td><FormControl componentClass="select" value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</FormControl></td></tr>
+                    <tr><th>得意武器1</th><td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</FormControl></td></tr>
+                    <tr><th>得意武器2</th><td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</FormControl></td></tr>
+                    <tr><th>平均に含める</th><td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td></tr>
+                    <tr><th>素の攻撃力</th><td><FormControl type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td></tr>
+                    <tr><th>素のHP</th><td><FormControl type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
+                    <tr><th>残HP割合</th><td><FormControl type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td></tr>
+                    <tr><th>基礎DA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td></tr>
+                    <tr><th>基礎TA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td></tr>
                 </tbody></table>
             );
 
         } else {
             return (
                 <tr>
-                    <td><input type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td>
-                    <td><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</select></td>
-                    <td><select value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</select></td>
-                    <td><select value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</select></td>
-                    <td><select value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</select></td>
-                    <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</select></td>
-                    <td className="checkbox"><input type="checkbox" checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td>
-                    <td><input type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                    <td><input type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                    <td><input type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
-                    <td><input type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                    <td><input type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                    <td><FormControl type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td>
+                    <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</FormControl></td>
+                    <td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td>
+                    <td><FormControl type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                    <td><FormControl type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                    <td><FormControl type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
+                    <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
                 </tr>
             );
         }
@@ -744,6 +770,7 @@ var SummonList = React.createClass({
     getInitialState: function() {
         return {
             smlist: [],
+            defaultElement: "fire",
         };
     },
     componentWillReceiveProps: function(nextProps) {
@@ -761,6 +788,11 @@ var SummonList = React.createClass({
         this.setState({smlist: newsmlist})
         this.props.onChange(newsmlist);
     },
+    handleEvent: function(key, e) {
+      var newState = this.state
+      newState[key] = e.target.value
+      this.setState(newState)
+    },
     render: function() {
         var summons = [];
         for(var i=0; i < this.props.summonNum; i++) {
@@ -768,23 +800,25 @@ var SummonList = React.createClass({
         }
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
+        var defaultElement = this.state.defaultElement;
         if(_ua.Mobile) {
             return (
                 <div className="summonList">
+                    [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_summonElements} </FormControl>
                     {summons.map(function(sm) {
-                        return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} />;
+                        return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} defaultElement={defaultElement} />;
                     })}
                 </div>
             );
         } else {
             return (
                 <div className="summonList">
-                    <h3> 召喚石 </h3>
+                    <h3 className="margin-top"> 召喚石 </h3>
                     <table>
                     <thead>
                     <tr>
                         <th>石*</th>
-                        <th>属性*</th>
+                        <th>属性* <br/>[一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_summonElements} </FormControl></th>
                         <th>加護量*</th>
                         <th>合計攻撃力*</th>
                         <th>合計HP</th>
@@ -795,7 +829,7 @@ var SummonList = React.createClass({
                     </thead>
                     <tbody>
                         {summons.map(function(sm) {
-                            return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} />;
+                            return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} defaultElement={defaultElement} />;
                         })}
                     </tbody>
                     </table>
@@ -845,6 +879,14 @@ var Summon = React.createClass({
             this.setState(newState);
             this.props.onChange(this.props.id, newState)
         }
+
+        if(nextProps.defaultElement != this.props.defaultElement) {
+            var newState = this.state
+            newState["selfElement"] = nextProps.defaultElement
+            newState["friendElement"] = nextProps.defaultElement
+            this.setState(newState);
+            this.props.onChange(this.props.id, newState);
+        }
     },
     handleEvent: function(key, e) {
         var newState = this.state
@@ -886,44 +928,49 @@ var Summon = React.createClass({
                 <table>
                 <tbody>
                 <tr>
-                    <th>石</th>
-                    <td className="multi"><label>自分:<select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</select></label><br/>
-                    <label>フレ:<select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</select></label></td>
-                </tr>
-                <tr>
-                    <th>属性</th>
-                    <td><select value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</select><br/>
-                    <select value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</select></td>
-                </tr>
-                <tr>
-                    <th>加護量</th>
+                    <th>自分の石</th>
                     <td>
-                    <label>{selfSummon[0].label}<input type={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /></label>
-                    <label>{selfSummon[1].label}<input type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} /></label>
-                <br/>
-                    <label>{friendSummon[0].label}<input type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /></label>
-                    <label>{friendSummon[1].label}<input type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} /></label>
+                    <FormControl componentClass="select" className="element" value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl>
+                    <FormControl componentClass="select" className="summontype" value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl>
+                    </td>
+                </tr>
+                <tr>
+                    <th>自分の加護量</th>
+                    <td>{selfSummon[0].label}<FormControl classNametype={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /><br/>
+                    {selfSummon[1].label}<FormControl type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} />
+                    </td>
+                </tr>
+                <tr>
+                    <th>フレンド石</th>
+                    <td>
+                    <FormControl componentClass="select" className="element" value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl>
+                    <FormControl componentClass="select" className="summontype" value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl></td>
+                </tr>
+                <tr>
+                    <th>フレの加護量</th>
+                    <td>{friendSummon[0].label}<FormControl type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /><br/>
+                    {friendSummon[1].label}<FormControl type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} />
                     </td>
                 </tr>
                 <tr>
                     <th>合計攻撃力</th>
-                    <td><input type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
                 </tr>
                 <tr>
                     <th>合計HP</th>
-                    <td><input type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
                 </tr>
                 <tr>
                     <th>HPUP(%)</th>
-                    <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
                 </tr>
                 <tr>
                     <th>DA加護</th>
-                    <td><input type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
                 </tr>
                 <tr>
                     <th>TA加護</th>
-                    <td><input type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
                 </tr>
                 </tbody>
                 </table>
@@ -931,22 +978,21 @@ var Summon = React.createClass({
         } else {
             return (
                 <tr>
-                    <td className="multi"><label>自分:<select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</select></label><br/>
-                    <label>フレ:<select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</select></label></td>
-                    <td><select value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</select><br/>
-                    <select value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</select></td>
-                    <td>
-                    <label>{selfSummon[0].label}<input type={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /></label>
-                    <label>{selfSummon[1].label}<input type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} /></label>
+                    <td><label>自分:<FormControl componentClass="select" className="multi" value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl></label><br/>
+                    <label>フレ:<FormControl componentClass="select" className="multi" value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl></label></td>
+                    <td><FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl><br/>
+                    <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl></td>
+                    <td>{selfSummon[0].label}<FormControl type={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} />
+                    {selfSummon[1].label}<FormControl type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} />
                     <br/>
-                    <label>{friendSummon[0].label}<input type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /></label>
-                    <label>{friendSummon[1].label}<input type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} /></label>
+                    {friendSummon[0].label}<FormControl type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} />
+                    {friendSummon[1].label}<FormControl type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} />
                     </td>
-                    <td><input type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                    <td><input type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                    <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
-                    <td><input type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                    <td><input type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
                 </tr>
             );
         }
@@ -1140,9 +1186,11 @@ var ResultList = React.createClass({
             var otherCoeff = 1.0 + buff["other"]
 
             if(key == "Djeeta") {
+                var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
+                var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
                 // for Djeeta
-                var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + parseInt(prof.attackBonus) ) * (1.0 + buff["master"])
-                var displayHP = (totals[key]["baseHP"] + totalSummon["hp"] + totals[key]["armHP"] + buff["hpBonus"]) * (1.0 + buff["masterHP"])
+                var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + zenithATK + parseInt(Jobs[prof.job].atBonus)) * (1.0 + buff["master"])
+                var displayHP = (totals[key]["baseHP"] + totalSummon["hp"] + totals[key]["armHP"] + zenithHP) * (1.0 + buff["masterHP"])
             } else {
                 // for chara
                 var summedAttack = totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"]
@@ -1497,12 +1545,11 @@ var ResultList = React.createClass({
       var summon = newprops.data.summon; var chara = newprops.data.chara;
 
       if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
-          var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hpBonus: 0.0, hp: 0.0, da: 0.0, ta: 0.0};
+          var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hp: 0.0, da: 0.0, ta: 0.0};
 
           // 後から追加したパラメータはNaNなことがあるので追加処理
           if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
           if(!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
-          if(!isNaN(prof.hpBonus)) totalBuff["hpBonus"] += parseInt(prof.hpBonus);
           if(!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
           if(!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseInt(prof.daBuff);
           if(!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseInt(prof.taBuff);
@@ -1652,29 +1699,31 @@ var ResultList = React.createClass({
                 <div className="resultList">
                     表示項目制御:
                     <table className="displayElement">
+                    <tbody>
                     <tr>
-                        <td><input type="checkbox" checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
-                        <td><input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
+                        <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
                     </tr><tr>
-                        <td><input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
-                        <td><input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
+                        <td><Checkbox inline checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
+                        <td><Checkbox inline checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
                     </tr><tr>
-                        <td><input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
-                        <td><input type="checkbox" checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
+                        <td><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
+                        <td><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
                     </tr><tr>
-                        <td><input type="checkbox" checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
-                        <td><input type="checkbox" checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
+                        <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
                     </tr><tr>
-                        <td><input type="checkbox" checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
-                        <td><input type="checkbox" checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
+                        <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
                     </tr><tr>
-                        <td><input type="checkbox" checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
-                        <td><input type="checkbox" checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 予想ダメージ</td>
+                        <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
+                        <td><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 予想ダメージ</td>
                     </tr>
+                    </tbody>
                     </table>
                     <br/>
                     動作制御:
-                    <input type="checkbox" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
+                    <Checkbox inline checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
 
                     <div className="divright"><h3>{remainHPstr}</h3></div>
                     <hr />
@@ -1694,19 +1743,19 @@ var ResultList = React.createClass({
                         }
 
                         return(
-                            <div className="result">
+                            <div key={summonindex} className="result">
                                 <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} ({res.sortkeyname})</h2>
                                 <table>
                                 <thead className="result">
                                 <tr>
                                     <th>順位</th>
-                                    {tableheader.map(function(m){ return <th>{m}</th>; })}
+                                    {tableheader.map(function(m, ind){ return <th key={ind} >{m}</th>; })}
                                     {
                                         armnames.map(function(m, ind){
                                         if(ind == 0) {
-                                            return <th className="resultFirst">{m}</th>;
+                                            return <th key={ind} className="resultFirst">{m}</th>;
                                         } else {
-                                            return <th className="resultList">{m}</th>;
+                                            return <th key={ind} className="resultList">{m}</th>;
                                         }})
                                     }
                                 </tr>
@@ -1723,26 +1772,26 @@ var ResultList = React.createClass({
             return (
                 <div className="resultList">
                     表示項目制御:
-                    <table className="displayElement">
+                    <table className="displayElement"><tbody>
                     <tr>
-                        <td><input type="checkbox" checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
-                        <td><input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
-                        <td><input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
-                        <td><input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
-                        <td><input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
-                        <td><input type="checkbox" checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
+                        <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
+                        <td><Checkbox inline checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
+                        <td><Checkbox inline checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
+                        <td><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
+                        <td><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
                     </tr><tr>
-                        <td><input type="checkbox" checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
-                        <td><input type="checkbox" checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
-                        <td><input type="checkbox" checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
-                        <td><input type="checkbox" checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
-                        <td><input type="checkbox" checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
-                        <td><input type="checkbox" checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 予想ダメージ</td>
+                        <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
+                        <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
+                        <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
+                        <td><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 予想ダメージ</td>
                     </tr>
-                    </table>
+                    </tbody></table>
                     <br/>
                     動作制御:
-                    <input type="checkbox" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
+                    <Checkbox inline className="autoupdate" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
 
                     <div className="divright"><h3>{remainHPstr}</h3></div>
                     <hr />
@@ -1762,19 +1811,19 @@ var ResultList = React.createClass({
                         }
 
                         return(
-                            <div className="result">
+                            <div key={summonindex} className="result">
                                 <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} ({res.sortkeyname})</h2>
                                 <table>
                                 <thead className="result">
                                 <tr>
                                     <th>順位</th>
-                                    {tableheader.map(function(m){ return <th>{m}</th>; })}
+                                    {tableheader.map(function(m, ind){ return <th key={ind}>{m}</th>; })}
                                     {
                                         armnames.map(function(m, ind){
                                         if(ind == 0) {
-                                            return <th className="resultFirst">{m}</th>;
+                                            return <th key={ind} className="resultFirst">{m}</th>;
                                         } else {
-                                            return <th className="resultList">{m}</th>;
+                                            return <th key={ind} className="resultList">{m}</th>;
                                         }})
                                     }
                                 </tr>
@@ -1895,15 +1944,15 @@ var Result = React.createClass({
                     return (
                         <tr className="result" title={skillstr} key={rank + 1}>
                             <td>{rank + 1}</td>
-                            {tablebody.map(function(am){
-                                return (<td>{am}</td>);
+                            {tablebody.map(function(am, ind){
+                                return (<td key={ind} >{am}</td>);
                             })}
                             {m.armNumbers.map(function(am, ind){
                                 if(arm[ind].considerNumberMax != 0) {
                                     if(ind == 0){
-                                        return (<td className="resultFirst">{am} 本</td>);
+                                        return (<td key={ind} className="resultFirst">{am} 本</td>);
                                     } else {
-                                        return (<td className="resultList">{am} 本</td>);
+                                        return (<td key={ind} className="resultList">{am} 本</td>);
                                     }
                                 }
                              })}
@@ -2034,7 +2083,7 @@ var ArmList = React.createClass({
         if(_ua.Mobile) {
             return (
                 <div className="armList">
-                    [属性一括変更]<select className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </select>
+                    [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl>
                     {arms.map(function(arm, ind) {
                         return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
                     })}
@@ -2050,8 +2099,8 @@ var ArmList = React.createClass({
                         <th className="atkhp">攻撃力*</th>
                         <th className="atkhp">HP</th>
                         <th className="select">武器種*</th>
-                        <th className="checkbox">コスモス</th>
-                        <th>スキル*   [属性一括変更]<select className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </select></th>
+                        <th>コスモス</th>
+                        <th>スキル*   [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl></th>
                         <th className="select">SLv*</th>
                         <th className="consider">本数*</th>
                         <th className="system">操作</th>
@@ -2173,26 +2222,29 @@ var Arm = React.createClass({
             return (
                 <table>
                 <tbody>
-                    <tr><th>武器名</th><td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td></tr>
-                    <tr><th>攻撃力</th><td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td></tr>
-                    <tr><th>HP</th><td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td></tr>
-                    <tr><th>種類</th><td className="select"><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </select></td></tr>
-                    <tr><th>コスモス武器?</th><td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td></tr>
+                    <tr><th>武器名</th><td><FormControl type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td></tr>
+                    <tr><th>攻撃力</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td></tr>
+                    <tr><th>HP</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td></tr>
+                    <tr><th>種類</th><td className="select"><FormControl componentClass="select" value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </FormControl></td></tr>
+                    <tr><th>コスモス武器?</th><td><Checkbox inline checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td></tr>
                     <tr><th>スキル</th>
                     <td>
-                        <select className="element" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </select>
-                        <select className="skill" value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</select><br/>
-                        <select className="element" value={this.state.element2} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </select>
-                        <select className="skill" value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</select>
+                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</FormControl><br/>
+                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</FormControl>
                     </td></tr>
-                    <tr><th>スキルレベル</th><td className="select"><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td></tr>
+                    <tr><th>スキルレベル</th><td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} > {select_slv} </FormControl></td></tr>
                     <tr><th>考慮本数</th><td className="consider">
-                        min: <input type="number" min="0" max="10" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /><br/>
-                        max:<input type="number" min="0" max="10" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />
+                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} > {select_consider} </FormControl><br/>
+                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} > {select_consider} </FormControl>
                     </td></tr>
-                    <tr><th>操作</th><td className="system">
-                        <button className="systemButton" type="button" onClick={this.clickRemoveButton}>削除</button>
-                        <button className="systemButton" type="button" onClick={this.clickCopyButton}>コピー</button>
+                    <tr><th>操作</th>
+                    <td>
+                        <ButtonGroup>
+                            <Button bsStyle="primary" onClick={this.clickRemoveButton}>削除</Button>
+                            <Button bsStyle="primary" onClick={this.clickCopyButton}>コピー</Button>
+                        </ButtonGroup>
                     </td></tr>
                 </tbody>
                 </table>
@@ -2200,30 +2252,37 @@ var Arm = React.createClass({
         } else {
             return (
                 <tr>
-                    <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
-                    <td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
-                    <td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td>
-                    <td className="select"><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </select></td>
-                    <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
+                    <td><FormControl type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
+                    <td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
+                    <td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td>
+                    <td className="select"><FormControl componentClass="select" value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </FormControl></td>
+                    <td><Checkbox inline checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
                     <td>
-                        <select className="element" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </select>
-                        <select className="skill" value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</select><br/>
-                        <select className="element" value={this.state.element2} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </select>
-                        <select className="skill" value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</select>
+                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</FormControl><br/>
+                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</FormControl>
                     </td>
-                    <td className="select"><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
+                    <td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} > {select_slv} </FormControl></td>
                     <td className="consider">
-                        min: <input type="number" min="0" max="10" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /><br/>
-                        max:<input type="number" min="0" max="10" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />
+                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} > {select_consider} </FormControl><br/>
+                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} > {select_consider} </FormControl>
                     </td>
                     <td className="system">
-                        <button className="systemButton" type="button" onClick={this.clickRemoveButton}>削除</button>
-                        <button className="systemButton" type="button" onClick={this.clickCopyButton}>コピー</button>
+                        <ButtonGroup vertical>
+                            <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
+                            <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
+                        </ButtonGroup>
                     </td>
                 </tr>
             );
         }
     }
+});
+
+var RegisteredArm = React.createClass({
+    render: function() {
+    },
 });
 
 var Profile = React.createClass({
@@ -2253,8 +2312,8 @@ var Profile = React.createClass({
     getInitialState: function() {
         return {
             rank: 1,
-            attackBonus: 0,
-            hpBonus: 0,
+            zenithAttackBonus: 3000,
+            zenithHPBonus: 1000,
             masterBonus: 0,
             masterBonusHP: 0,
             normalBuff: 0,
@@ -2281,6 +2340,10 @@ var Profile = React.createClass({
     handleEvent: function(key, e) {
       var newState = this.state
       newState[key] = e.target.value
+      if(key == "job") {
+          newState.DA = Jobs[e.target.value].DaBonus
+          newState.TA = Jobs[e.target.value].TaBonus
+      }
       this.setState(newState)
       this.props.onChange(newState)
     },
@@ -2300,17 +2363,18 @@ var Profile = React.createClass({
                 <div className="profile">
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table>
+                        <tbody>
                         <tr>
                             <th className="prof">Rank*</th>
-                            <th className="prof">攻撃力ボーナス<br/>(Job+zenith)*</th>
-                            <th className="prof">HPボーナス</th>
+                            <th className="prof">ゼニス攻撃力*</th>
+                            <th className="prof">ゼニスHP</th>
                             <th className="prof">マスボ<br/>ATK(%)*</th>
                         </tr>
                         <tr>
-                            <td><input type="number"  min="0" max="175" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><input type="number" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
-                            <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
-                            <td><input type="number" min="0" max="100" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
+                            <td><FormControl type="number"  min="0" max="175" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
+                            <td><FormControl type="number" min="0" max="100" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
                         </tr>
                         <tr>
                             <th className="prof">マスボ<br/>HP(%)*</th>
@@ -2318,9 +2382,9 @@ var Profile = React.createClass({
                             <th className="prof">残HP(%)<br/>(ジータのみ)</th>
                         </tr>
                         <tr>
-                            <td><input type="number" min="0" max="100" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}/></td>
-                            <td><select value={this.state.job} onChange={this.handleEvent.bind(this, "job")} > {this.props.alljobs} </select></td>
-                            <td><input type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
+                            <td><FormControl type="number" min="0" max="100" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
+                            <td><FormControl type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
                         </tr>
                         <tr>
                             <th className="prof">ジータ属性*</th>
@@ -2329,10 +2393,10 @@ var Profile = React.createClass({
                             <th className="prof">武器ゼニス2</th>
                         </tr>
                         <tr>
-                            <td><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")}> {select_elements} </select></td>
-                            <td><select value={this.state.enemyElement} onChange={this.handleEvent.bind(this, "enemyElement")}> {select_elements} </select></td>
-                            <td><select value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </select></td>
-                            <td><select value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </select></td>
+                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleEvent.bind(this, "element")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">基礎DA率</th>
@@ -2340,42 +2404,57 @@ var Profile = React.createClass({
                             <th className="prof">敵防御固有値(仮)</th>
                         </tr>
                         <tr>
-                            <td><input type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td><input type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><input type="number" min="0" step="0.5" value={this.state.enemyDefense} onChange={this.handleEvent.bind(this, "enemyDefense")}/></td>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td><FormControl type="number" min="0" step="0.5" value={this.state.enemyDefense} onChange={this.handleEvent.bind(this, "enemyDefense")}/></td>
                         </tr>
+                        </tbody>
                     </table>
+                    ※ゼニスパーク分の攻撃ボーナスと、ジョブ攻撃ボーナスを分離し、 ジョブ分は自動で反映されるように変更しました。<br/>
+                    <span>
+                    {Jobs[this.state.job].name}:
+                    得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
+                    {jobTypes[Jobs[this.state.job].type]}タイプ,
+                    攻撃ボーナス {Jobs[this.state.job].atBonus},
+                    HPボーナス {Jobs[this.state.job].hpBonus},
+                    攻刃バフ {Jobs[this.state.job].kouzinBonus},
+                    守護バフ {Jobs[this.state.job].shugoBonus},
+                    基礎DA率 {Jobs[this.state.job].DaBonus}%,
+                    基礎TA率 {Jobs[this.state.job].TaBonus}%
+                    </span>
 
                     <h3> パーティ全体への効果 (%表記)</h3>
                     <table>
+                        <tbody>
                         <tr>
                             <th className="buff">通常バフ</th>
                             <th className="buff">属性バフ</th>
                             <th className="buff">その他バフ</th>
                             <th className="buff">HPバフ</th>
                         </tr><tr>
-                            <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><input type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
                         </tr><tr>
                             <th className="buff">DAバフ</th>
                             <th className="buff">TAバフ</th>
                             <th className="buff">残HP(%)</th>
                         </tr><tr>
-                            <td><input type="number"  min="0" max="100" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><input type="number"  min="0" max="100" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><input type="number"  min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
                         </tr><tr>
                             <th className="buff">武器種類数*</th>
                             <th className="buff">召喚石の組数*</th>
                             <th className="buff">優先する項目</th>
                         </tr>
                         <tr>
-                            <td><input type="number" min="1" max="20" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
-                            <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
-                            <td><select value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </select></td>
+                            <td><FormControl componentClass="select" value={this.state.armNum} onChange={this.handleArmNumChange}> {select_armnum} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.summonNum} onChange={this.handleSummonNumChange}> {select_summonnum} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </FormControl></td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             );
@@ -2384,23 +2463,24 @@ var Profile = React.createClass({
                 <div className="profile">
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table>
+                        <tbody>
                         <tr>
                             <th className="prof">Rank*</th>
-                            <th className="prof">攻撃力ボーナス<br/>(Job+zenith)*</th>
-                            <th className="prof">HPボーナス</th>
+                            <th className="prof">ゼニス攻撃力*</th>
+                            <th className="prof">ゼニスHP</th>
                             <th className="prof">マスターボーナス<br/>ATK(%)*</th>
-                            <th className="prof">マスターボーナス<br/>HP(%)*</th>
+                            <th className="prof">マスターボーナス<br/>HP(%)</th>
                             <th className="prof">ジョブ*</th>
                             <th className="prof">残HP(%)<br/>(ジータのみ)</th>
                         </tr>
                         <tr>
-                            <td><input type="number"  min="0" max="175" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><input type="number" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
-                            <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
-                            <td><input type="number" min="0" max="100" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
-                            <td><input type="number" min="0" max="100" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}/></td>
-                            <td><select value={this.state.job} onChange={this.handleEvent.bind(this, "job")} > {this.props.alljobs} </select></td>
-                            <td><input type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
+                            <td><FormControl type="number"  min="0" max="175" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
+                            <td><FormControl type="number" min="0" max="100" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
+                            <td><FormControl type="number" min="0" max="100" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
+                            <td><FormControl type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
                         </tr>
                         <tr>
                             <th className="prof">ジータ属性*</th>
@@ -2412,18 +2492,32 @@ var Profile = React.createClass({
                             <th className="prof">敵防御固有値(仮)</th>
                         </tr>
                         <tr>
-                            <td><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")}> {select_elements} </select></td>
-                            <td><select value={this.state.enemyElement} onChange={this.handleEvent.bind(this, "enemyElement")}> {select_elements} </select></td>
-                            <td><select value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </select></td>
-                            <td><select value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </select></td>
-                            <td><input type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td><input type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><input type="number" min="0" step="0.5" value={this.state.enemyDefense} onChange={this.handleEvent.bind(this, "enemyDefense")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleEvent.bind(this, "element")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td><FormControl type="number" min="0" step="0.5" value={this.state.enemyDefense} onChange={this.handleEvent.bind(this, "enemyDefense")}/></td>
                         </tr>
+                        </tbody>
                     </table>
+                    ※ゼニスパーク分の攻撃ボーナスと、ジョブ攻撃ボーナスを分離し、 ジョブ分は自動で反映されるように変更しました。<br/>
+                    <span>
+                    {Jobs[this.state.job].name}:
+                    得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
+                    {jobTypes[Jobs[this.state.job].type]}タイプ,
+                    攻撃ボーナス {Jobs[this.state.job].atBonus},
+                    HPボーナス {Jobs[this.state.job].hpBonus},
+                    攻刃バフ {Jobs[this.state.job].kouzinBonus},
+                    守護バフ {Jobs[this.state.job].shugoBonus},
+                    基礎DA率 {Jobs[this.state.job].DaBonus}%,
+                    基礎TA率 {Jobs[this.state.job].TaBonus}%
+                    </span>
 
-                    <h3> パーティ全体への効果 (%表記)</h3>
+                    <h3 className="margin-top"> パーティ全体への効果 (%表記)</h3>
                     <table>
+                        <tbody>
                         <tr>
                             <th className="buff">通常バフ</th>
                             <th className="buff">属性バフ</th>
@@ -2433,23 +2527,24 @@ var Profile = React.createClass({
                             <th className="buff">TAバフ</th>
                             <th className="buff">残HP(%)</th>
                         </tr><tr>
-                            <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><input type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
-                            <td><input type="number"  min="0" max="100" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><input type="number"  min="0" max="100" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><input type="number"  min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
                         </tr><tr>
                             <th className="buff">武器種類数*</th>
                             <th className="buff">召喚石の組数*</th>
                             <th className="buff">優先する項目</th>
                         </tr>
                         <tr>
-                            <td><input type="number" min="1" max="20" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
-                            <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
-                            <td><select value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </select></td>
+                            <td><FormControl componentClass="select" value={this.state.armNum} onChange={this.handleArmNumChange}> {select_armnum} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.summonNum} onChange={this.handleSummonNumChange}> {select_summonnum} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </FormControl></td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             );
@@ -2545,13 +2640,14 @@ var Sys = React.createClass({
         }
         return (
             <div className="dataControl">
-                データ名: <input size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} />
-                <h3> ブラウザに保存 </h3>
-                保存されたデータ
-                <select size="6" value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </select>
-                <button type="button" onClick={this.onSubmitSave} >保存</button>
-                <button type="button" onClick={this.onSubmitLoad} >読込</button>
-                <button type="button" onClick={this.onSubmitRemove} >削除</button>
+                データ名: <FormControl size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} />
+                ブラウザに保存されたデータ
+                <FormControl componentClass="select" value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </FormControl>
+                <ButtonGroup className="systemButtonGroup">
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitSave} >保存</Button>
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitLoad} >読込</Button>
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitRemove} >削除</Button>
+                </ButtonGroup>
             </div>
         );
     }
@@ -2606,12 +2702,7 @@ var TwitterShareButton = React.createClass ({
     render: function() {
       return (
             <div className="tweet">
-                <h3> サーバに保存 </h3>
-                <button type="button" onClick={this.getShortenUrl}> 保存<br/>(短縮URLを取得) </button>
-                <h3>保存されたURL</h3>
-                {this.state.shareurl}
-
-                <h3>URL履歴</h3>
+                <Button bsStyle="primary" className="tweetButton" onClick={this.getShortenUrl}> サーバに保存<br/>(短縮URLを取得) </Button>
                 <ul>
                 {this.state.shareurl_history.map(function(s){
                     return (
@@ -2632,7 +2723,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul>
-                <li>2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 </li>
+                <li>2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 / UI調整 </li>
                 <li>2016/08/17: 検証データを元に渾身の実装を修正 / <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank">データビューア</a>の作成 / 予想ダメージ計算に減衰補正を追加 </li>
                 <li>2016/08/16: 三手スキルSLv11~15の値を入力 / DATA率の合計を、枠別上限から武器スキル全体の上限に修正 / 渾身仮実装 </li>
                 <li>2016/08/12: 二手スキル上限の値に召喚石加護分の値が考慮されていなかった不具合を修正。/ 予想ダメージ機能を仮実装しました。</li>
@@ -2673,7 +2764,7 @@ var Notice = React.createClass ({
 
             <h3>LICENSE</h3>
             <ul>
-                <li> <a href="http://facebook.github.io/react">React</a>: Copyright &copy; 2013-2016 Facebook Inc. v0.13.3 </li>
+                <li> <a href="http://facebook.github.io/react">React</a>: Copyright &copy; 2013-2016 Facebook Inc. v15.3.0 </li>
                 <li> <a href="http://github.com/dankogai/js-base64">dankogai/js-base64</a>: Copyright &copy; 2014, Dan Kogai <a href="./js-base64/LICENSE.md"> LICENSE </a></li>
 
             </ul>
@@ -2695,9 +2786,9 @@ var Notice = React.createClass ({
             </ul>
 
             <h3>スキル性能・各種計算式</h3>
-            <table>
-                <tr> <th>スキル名/SLv</th><th>1</th> <th>2</th> <th>3</th> <th>4</th> <th>5</th> <th>6</th> <th>7</th> <th>8</th> <th>9</th> <th>10</th> <th>11</th> <th>12</th> <th>13</th> <th>14</th> <th>15</th> </tr>
-                <tr><td>通常攻刃(小)</td> <td>1.0</td><td>2.0</td><td>3.0</td><td>4.0</td><td>5.0</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>10.4</td><td>10.8</td><td>11.2</td><td>11.6</td><td>12.0</td></tr>
+            <table><tbody>
+                <tr><th>スキル名/SLv</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th></tr>
+                <tr><td>通常攻刃(小)</td><td>1.0</td><td>2.0</td><td>3.0</td><td>4.0</td><td>5.0</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>10.4</td><td>10.8</td><td>11.2</td><td>11.6</td><td>12.0</td></tr>
                 <tr><td>通常攻刃(中)</td><td>3.0</td><td>4.0</td><td>5.0</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td></tr>
                 <tr><td>通常攻刃(大)</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>13.0</td><td>14.0</td><td>15.0</td><td>15.6</td><td>16.2</td><td>16.8</td><td>17.4</td><td>18.0</td></tr>
                 <tr><td>通常攻刃II</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>13.0</td><td>14.0</td><td>15.0</td><td>16.0</td><td>16.8</td><td>17.6</td><td>18.4</td><td>19.2</td><td>20.0</td></tr>
@@ -2740,7 +2831,7 @@ var Notice = React.createClass ({
                 <tr><td>マグナ技巧(小)</td><td>1.0</td><td>1.1</td><td>1.2</td><td>1.3</td><td>1.4</td><td>1.5</td><td>1.6</td><td>1.7</td><td>1.8</td><td>1.9</td><td>2.0</td><td>2.2</td><td>2.2</td><td>2.3</td><td>2.4</td></tr>
                 <tr><td>マグナ技巧(中)</td><td>3.0</td><td>3.3</td><td>3.6</td><td>3.9</td><td>4.2</td><td>4.5</td><td>4.8</td><td>5.1</td><td>5.4</td><td>5.7</td><td>6.0</td><td>6.3</td><td>6.7</td><td>7.0</td><td>7.3</td></tr>
                 <tr><td>マグナ技巧(大)</td><td>4.0</td><td>4.4</td><td>4.8</td><td>5.2</td><td>5.6</td><td>6.0</td><td>6.4</td><td>6.8</td><td>7.2</td><td>7.6</td><td>8.0</td><td>8.4</td><td>8.8</td><td>9.2</td><td>9.6</td></tr>
-            </table>
+            </tbody></table>
             <ul>
                 <li>通常神威: 通常攻刃(小) + 通常守護(小)</li>
                 <li>マグナ神威: マグナ攻刃(小) + マグナ守護(小)</li>
@@ -2767,4 +2858,4 @@ var Notice = React.createClass ({
 
 });
 
-React.render(<Root />, document.getElementById('app'));
+ReactDOM.render(<Root />, document.getElementById('app'));
