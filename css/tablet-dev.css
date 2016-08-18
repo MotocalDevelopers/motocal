@@ -1,30 +1,11 @@
 body {
     font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     margin: 0 auto;
-    font-size: 9pt;
-    font-weight: bold;
-}
-@media screen and (min-width: 1450px) {
-    body {
-        width : 99%;
-        min-width: 1450px;
-    }
-}
-
-@media screen and (max-width: 1450px) {
-    body {
-        width : 99%;
-        max-width: 1449px;
-    }
-}
-
-@media only screen
-    and (min-device-width: 320px)
-    and (max-device-width: 480px) {
-    body {
-        width : 99%;
-        max-width: 960px;
-    }
+    padding: 5px;
+    width : 99%;
+    max-width: 960px;
+    font-size: 12pt;
+    font-weight: normal;
 }
 
 input, textarea {
@@ -119,111 +100,13 @@ tr.result:hover {
     margin-top: 1em;
 }
 
-@media screen and (min-width: 1450px) {
-    .rootleft {
-        width: 750px;
-        height: 100%;
-        float: left;
-        overflow: auto;
-        border-right:3px double #116;
-    }
-
-    .rootright {
-        width: calc(100% - 758px);
-        height: 100%;
-        margin-left:5px;
-        float: left;
-        overflow: auto;
-    }
-}
-
-@media screen and (max-width: 1450px) {
-    .rootleft {
-        width: 100%;
-        height: 50%;
-        overflow: auto;
-    }
-
-    .rootright {
-        width: 100%;
-        height: 50%;
-        border-top:3px double #116;
-        overflow: auto;
-    }
-}
-
-.root .top {
-    width: 100%;
-
-    text-align: left;
-    height: 0%;
-    overflow: hidden;
-    transition: all .1s ease-in;
-}
-
-.root .top.open {
-    width: calc(100% - 3px);
-    height: 30%;
-    margin-bottom: 2px;
-    overflow: visible;
-    min-height: 200px;
-}
-
-.root .top2 {
-    width: 100%;
-
-    text-align: left;
-    height: 0%;
-    overflow: hidden;
-    transition: all .1s ease-in;
-}
-
-.root .top2.open {
-    width: 100%;
-    height: 30%;
-    margin-bottom: 2px;
-    overflow: visible;
-    min-height: 200px;
-}
-
-@media only screen
-    and (min-device-width: 320px)
-    and (max-device-width: 480px) {
-    .root .top.open {
-        width: 100%;
-        margin-bottom: 10px;
-        overflow: visible;
-        min-height: 500px;
-    }
-}
-
-.root .middle {
-    width: 100%;
-    margin-bottom: 10px;
-    text-align: left;
-    display: none;
-}
-
-.root .middle.open {
-    width: 100%;
-    display: inline;
-    margin-bottom: 10px;
-    overflow: auto;
-}
-
-.root .bottom {
-    width: 100%;
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
-
 .dataControl {
-    width: 49%;
+    width: 98%;
     margin-right: 1px;
     float: left;
     border-top:2px solid #258;
     border-bottom:2px solid #258;
-    height: 300px;
+    overflow: auto;
     padding: 3px;
 }
 
@@ -237,8 +120,7 @@ tr.result:hover {
 }
 
 .tweet {
-    width: 49%;
-    height: 300px;
+    width: 98%;
     overflow: auto;
     word-wrap: break-word;
     margin: 0px;
@@ -249,6 +131,10 @@ tr.result:hover {
 
 .tweet button {
     width: 99%;
+}
+
+.tweet button, .dataControl button {
+    font-size: 10pt;
 }
 
 .dataControl button {
@@ -368,6 +254,10 @@ h3 {
     width: 100%;
 }
 
+.summonList table tbody tr td.multi input, .summonList table tbody tr td.multi select {
+    width: 70%;
+}
+
 .summonList label {
     font-size: 9pt;
 }
@@ -445,7 +335,6 @@ button {
     color: white;
     background-color: #257;
     padding: 3px;
-    font-weight: bold;
     text-align: center;
     text-shadow:0 -1px 0 rgba(34,85,136,0.9);
     box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
@@ -457,7 +346,6 @@ button {
     background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(34,85,136,0.7)), to(rgba(34,85,136,0.9)));
     font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     font-size: 9pt;
-    font-weight: bold;
 }
 
 table.displayElement td {
@@ -485,4 +373,75 @@ table.displayElement td:last-child {
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+/* iPad */
+table, button, li, label {
+    font-size: 10pt;
+}
+th, td {
+    font-size: 10pt;
+}
+th:first-child {
+  border-radius: 0px;
+}
+th:last-child {
+  border-radius:0;
+}
+select, button, option, input, textarea {
+    font-size: 8pt;
+}
+select, option, {
+    text-align: center;
+}
+.summonList th, .summonList td {
+    font-size: 8pt;
+}
+
+.tabrow {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+    position: relative;
+}
+.tabrow:before {
+    z-index: 1;
+}
+.tabrow:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #AAA;
+    z-index: 1;
+}
+.tabrow button {
+    color: black;
+    margin: 0 10px;
+    padding: 0 10px;
+    border: 1px solid #AAA;
+    background: #ECECEC;
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+    border-radius: 1px;
+    font-size: 10pt;
+}
+.tabrow button.selected {
+    background: #FFF;
+    color: #000;
+    z-index: 2;
+    border-bottom-color: #FFF;
+}
+.inputTab, .resultTab, .systemTab, .summonTab, .charaTab, .armTab {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+.inputTab.hidden, .resultTab.hidden, .systemTab.hidden, .summonTab.hidden, .charaTab.hidden, .armTab.hidden {
+    overflow: hidden;
+    height: 0%;
 }

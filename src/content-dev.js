@@ -349,6 +349,24 @@ function getVarInQuery(key){
     return result;
 }
 
+var _ua = (function(u){
+  return {
+    Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1)
+      || u.indexOf("ipad") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("tablet") != -1)
+      || u.indexOf("kindle") != -1
+      || u.indexOf("silk") != -1
+      || u.indexOf("playbook") != -1,
+    Mobile:(u.indexOf("windows") != -1 && u.indexOf("phone") != -1)
+      || u.indexOf("iphone") != -1
+      || u.indexOf("ipod") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1)
+      || u.indexOf("blackberry") != -1
+  }
+})(window.navigator.userAgent.toLowerCase());
+
 // global hash for loading new data
 var newData = {}
 var cosmosChecked = false;
@@ -462,40 +480,109 @@ var Root = React.createClass({
           },
       })
   },
+  changeTab: function(e){
+      document.querySelector("button#inputTab").removeAttribute("class")
+      document.querySelector("button#summonTab").removeAttribute("class")
+      document.querySelector("button#charaTab").removeAttribute("class")
+      document.querySelector("button#armTab").removeAttribute("class")
+      document.querySelector("button#resultTab").removeAttribute("class")
+      document.querySelector("button#systemTab").removeAttribute("class")
+
+      e.target.setAttribute("class", "selected")
+
+      document.querySelector("div#inputTab").setAttribute("class", "inputTab hidden")
+      document.querySelector("div#summonTab").setAttribute("class", "summonTab hidden")
+      document.querySelector("div#charaTab").setAttribute("class", "charaTab hidden")
+      document.querySelector("div#armTab").setAttribute("class", "armTab hidden")
+      document.querySelector("div#resultTab").setAttribute("class", "resultTab hidden")
+      document.querySelector("div#systemTab").setAttribute("class", "systemTab hidden")
+
+      var target = document.querySelector("div." + e.target.getAttribute("id"))
+      target.setAttribute("class", e.target.getAttribute("id"));
+  },
+  changeTabPC: function(e){
+      document.querySelector("button#inputTab").removeAttribute("class")
+      document.querySelector("button#systemTab").removeAttribute("class")
+      document.querySelector("button#charaTab").removeAttribute("class")
+      document.querySelector("button#armTab").removeAttribute("class")
+      e.target.setAttribute("class", "selected")
+
+      document.querySelector("div#inputTab").setAttribute("class", "inputTab hidden")
+      document.querySelector("div#charaTab").setAttribute("class", "charaTab hidden")
+      document.querySelector("div#armTab").setAttribute("class", "armTab hidden")
+      document.querySelector("div#systemTab").setAttribute("class", "systemTab hidden")
+
+      var target = document.querySelector("div." + e.target.getAttribute("id"))
+      target.setAttribute("class", e.target.getAttribute("id"));
+  },
   render: function() {
-    return (
-        <div className="root">
-            <div className="rootLeft">
-                <h1>元カレ計算機 (グラブル攻撃力計算機) </h1>
-                <div className="divright"><tiny><a href="http://hsimyu.net/motocal/">入力リセット</a></tiny></div>
-                <hr />
-                <button className="toggle" onClick={this.handleOnClickTopToggle}>{this.state.topbuttontext}</button>
-                <div className={this.state.topclass}>
+    if(_ua.Mobile || _ua.Tablet) {
+        return (
+            <div className="root">
+                <h2>元カレ計算機 (グラブル攻撃力計算機) </h2>
+                <div className="tabrow">
+                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータ</button>
+                    <button id="summonTab" onClick={this.changeTab} >召喚石</button>
+                    <button id="charaTab" onClick={this.changeTab} >キャラ</button>
+                    <button id="armTab" onClick={this.changeTab} >武器</button>
+                    <button id="resultTab" onClick={this.changeTab} >結果</button>
+                    <button id="systemTab" onClick={this.changeTab} >保存</button>
+                </div>
+                <div className="inputTab" id="inputTab">
                     <Profile dataName={this.state.dataName} onArmNumChange={this.handleArmNumChange} onChange={this.onChangeProfileData} onSummonNumChange={this.handleSummonNumChange} />
+                </div>
+                <div className="summonTab hidden" id="summonTab">
                     <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
                 </div>
-                <hr />
-                <button className="toggle" onClick={this.handleOnClickTop2Toggle}>{this.state.top2buttontext}</button>
-                <div className={this.state.top2class}>
+                <div className="charaTab hidden" id="charaTab">
                     <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} />
                 </div>
-                <hr />
-                <button className="toggle" onClick={this.handleOnClickMiddleToggle}>{this.state.middlebuttontext}</button>
-                <div className={this.state.middleclass}>
+                <div className="armTab hidden" id="armTab">
                     <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} />
                 </div>
-                <hr />
-                <div className="bottom">
+                <div className="resultTab hidden" id="resultTab">
+                    <ResultList data={this.state} />
+                </div>
+                <div className="systemTab hidden" id="systemTab">
                     <Sys data={this.state} onLoadNewData={this.handleChangeData} />
                     <TwitterShareButton data={this.state} />
                     <Notice />
                 </div>
             </div>
-            <div className="rootRight">
-                <ResultList data={this.state} />
+        );
+    } else {
+        return (
+            <div className="root">
+                <div className="rootleft" id="rootleft2">
+                    <h1>元カレ計算機 (グラブル攻撃力計算機) </h1>
+                    <div className="tabrow">
+                        <button id="inputTab" className="selected" onClick={this.changeTabPC}>入力 / Input</button>
+                        <button id="charaTab" onClick={this.changeTabPC} >キャラ / Chara</button>
+                        <button id="armTab" onClick={this.changeTabPC} >武器 / Weapon</button>
+                        <button id="systemTab" onClick={this.changeTabPC} >保存・注記 / System</button>
+                    </div>
+                    <div className="inputTab" id="inputTab">
+                        <Profile dataName={this.state.dataName} onArmNumChange={this.handleArmNumChange} onChange={this.onChangeProfileData} onSummonNumChange={this.handleSummonNumChange} />
+                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
+                    </div>
+                    <div className="charaTab hidden" id="charaTab">
+                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} />
+                    </div>
+                    <div className="armTab hidden" id="armTab">
+                        <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} />
+                    </div>
+                    <div className="systemTab hidden" id="systemTab">
+                        <Sys data={this.state} onLoadNewData={this.handleChangeData} />
+                        <TwitterShareButton data={this.state} />
+                        <Notice />
+                    </div>
+                </div>
+                <div className="rootRight">
+                    <ResultList data={this.state} />
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
   }
 });
 
@@ -518,33 +605,44 @@ var CharaList = React.createClass({
         }
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
-        return (
-            <div className="charaList">
-                <table>
-                <thead>
-                <tr>
-                    <th>キャラ名*</th>
-                    <th>属性*</th>
-                    <th>種族</th>
-                    <th>タイプ</th>
-                    <th>得意武器*</th>
-                    <th>得意武器2</th>
-                    <th className="checkbox">平均に含める</th>
-                    <th>素の攻撃力*<br/>(≠編成画面での表示値)</th>
-                    <th>素のHP</th>
-                    <th>残HP割合(%)</th>
-                    <th>基礎DA率(%)</th>
-                    <th>基礎TA率(%)</th>
-                </tr>
-                </thead>
-                <tbody>
+        if(_ua.Mobile) {
+            return (
+                <div className="charaList">
                     {charas.map(function(c) {
                         return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} />;
                     })}
-                </tbody>
-                </table>
-            </div>
-        );
+                </div>
+            );
+
+        } else {
+            return (
+                <div className="charaList">
+                    <table>
+                    <thead>
+                    <tr>
+                        <th>キャラ名*</th>
+                        <th>属性*</th>
+                        <th>種族</th>
+                        <th>タイプ</th>
+                        <th>得意武器*</th>
+                        <th>得意武器2</th>
+                        <th className="checkbox">平均に含める</th>
+                        <th>素の攻撃力*<br/>(≠編成画面での表示値)</th>
+                        <th>素のHP</th>
+                        <th>残HP割合(%)</th>
+                        <th>基礎DA率(%)</th>
+                        <th>基礎TA率(%)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {charas.map(function(c) {
+                            return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} />;
+                        })}
+                    </tbody>
+                    </table>
+                </div>
+            );
+        }
     }
 });
 
@@ -602,22 +700,42 @@ var Chara = React.createClass({
         this.props.onChange(this.props.id, newState)
     },
     render: function() {
-        return (
-            <tr>
-                <td><input type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td>
-                <td><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</select></td>
-                <td><select value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</select></td>
-                <td><select value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</select></td>
-                <td><select value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</select></td>
-                <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</select></td>
-                <td className="checkbox"><input type="checkbox" checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td>
-                <td><input type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                <td><input type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                <td><input type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
-                <td><input type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                <td><input type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
-            </tr>
-        );
+        if(_ua.Mobile) {
+            return (
+                <table><tbody>
+                    <tr><th>名前</th><td><input type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td></tr>
+                    <tr><th>属性</th><td><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</select></td></tr>
+                    <tr><th>種族</th><td><select value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</select></td></tr>
+                    <tr><th>タイプ</th><td><select value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</select></td></tr>
+                    <tr><th>得意武器1</th><td><select value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</select></td></tr>
+                    <tr><th>得意武器2</th><td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</select></td></tr>
+                    <tr><th>平均に含める</th><td className="checkbox"><input type="checkbox" checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td></tr>
+                    <tr><th>素の攻撃力</th><td><input type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td></tr>
+                    <tr><th>素のHP</th><td><input type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
+                    <tr><th>残HP割合</th><td><input type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td></tr>
+                    <tr><th>基礎DA率</th><td><input type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td></tr>
+                    <tr><th>基礎TA率</th><td><input type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td></tr>
+                </tbody></table>
+            );
+
+        } else {
+            return (
+                <tr>
+                    <td><input type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td>
+                    <td><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</select></td>
+                    <td><select value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</select></td>
+                    <td><select value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</select></td>
+                    <td><select value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</select></td>
+                    <td><select value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</select></td>
+                    <td className="checkbox"><input type="checkbox" checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td>
+                    <td><input type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                    <td><input type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                    <td><input type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
+                    <td><input type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    <td><input type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                </tr>
+            );
+        }
 
     }
 });
@@ -650,33 +768,40 @@ var SummonList = React.createClass({
         }
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
-        return (
-            <div className="summonList">
-                <h3> 召喚石 </h3>
-                <table>
-                <thead>
-                <tr>
-                    <th>自分の石*</th>
-                    <th>属性*</th>
-                    <th>加護量*</th>
-                    <th>フレ石*</th>
-                    <th>属性*</th>
-                    <th>フレ加護量*</th>
-                    <th>合計攻撃力*</th>
-                    <th>合計HP</th>
-                    <th>HPUP(%)</th>
-                    <th>DA加護</th>
-                    <th>TA加護</th>
-                </tr>
-                </thead>
-                <tbody>
+        if(_ua.Mobile) {
+            return (
+                <div className="summonList">
                     {summons.map(function(sm) {
                         return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} />;
                     })}
-                </tbody>
-                </table>
-            </div>
-        );
+                </div>
+            );
+        } else {
+            return (
+                <div className="summonList">
+                    <h3> 召喚石 </h3>
+                    <table>
+                    <thead>
+                    <tr>
+                        <th>石*</th>
+                        <th>属性*</th>
+                        <th>加護量*</th>
+                        <th>合計攻撃力*</th>
+                        <th>合計HP</th>
+                        <th>HPUP(%)</th>
+                        <th>DA加護</th>
+                        <th>TA加護</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {summons.map(function(sm) {
+                            return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} />;
+                        })}
+                    </tbody>
+                    </table>
+                </div>
+            );
+        }
     }
 });
 
@@ -756,28 +881,75 @@ var Summon = React.createClass({
             friendSummon[1] = {"label": "キャラ ", "input": "number"}
             friendSummon[0].label = "属性 "
         }
-        return (
-            <tr>
-                <td><select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</select></td>
-                <td><select value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</select></td>
-                <td>
-                <label>{selfSummon[0].label}<input type={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /></label>
-                <label>{selfSummon[1].label}<input type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} /></label>
-                </td>
-                <td><select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</select></td>
-                <td><select value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</select></td>
-                <td>
-                <label>{friendSummon[0].label}<input type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /></label>
-                <label>{friendSummon[1].label}<input type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} /></label>
-                </td>
-                <td><input type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                <td><input type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
-                <td><input type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                <td><input type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
-            </tr>
-        );
-
+        if(_ua.Mobile) {
+            return (
+                <table>
+                <tbody>
+                <tr>
+                    <th>石</th>
+                    <td className="multi"><label>自分:<select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</select></label><br/>
+                    <label>フレ:<select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</select></label></td>
+                </tr>
+                <tr>
+                    <th>属性</th>
+                    <td><select value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</select><br/>
+                    <select value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</select></td>
+                </tr>
+                <tr>
+                    <th>加護量</th>
+                    <td>
+                    <label>{selfSummon[0].label}<input type={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /></label>
+                    <label>{selfSummon[1].label}<input type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} /></label>
+                <br/>
+                    <label>{friendSummon[0].label}<input type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /></label>
+                    <label>{friendSummon[1].label}<input type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} /></label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>合計攻撃力</th>
+                    <td><input type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                </tr>
+                <tr>
+                    <th>合計HP</th>
+                    <td><input type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                </tr>
+                <tr>
+                    <th>HPUP(%)</th>
+                    <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
+                </tr>
+                <tr>
+                    <th>DA加護</th>
+                    <td><input type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                </tr>
+                <tr>
+                    <th>TA加護</th>
+                    <td><input type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                </tr>
+                </tbody>
+                </table>
+            );
+        } else {
+            return (
+                <tr>
+                    <td className="multi"><label>自分:<select value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</select></label><br/>
+                    <label>フレ:<select value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</select></label></td>
+                    <td><select value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</select><br/>
+                    <select value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</select></td>
+                    <td>
+                    <label>{selfSummon[0].label}<input type={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /></label>
+                    <label>{selfSummon[1].label}<input type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} /></label>
+                    <br/>
+                    <label>{friendSummon[0].label}<input type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /></label>
+                    <label>{friendSummon[1].label}<input type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} /></label>
+                    </td>
+                    <td><input type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                    <td><input type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                    <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
+                    <td><input type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    <td><input type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                </tr>
+            );
+        }
     }
 });
 
@@ -1475,73 +1647,146 @@ var ResultList = React.createClass({
             }
         }
 
+        if(_ua.Mobile) {
+            return (
+                <div className="resultList">
+                    表示項目制御:
+                    <table className="displayElement">
+                    <tr>
+                        <td><input type="checkbox" checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
+                        <td><input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
+                    </tr><tr>
+                        <td><input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
+                        <td><input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
+                    </tr><tr>
+                        <td><input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
+                        <td><input type="checkbox" checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
+                    </tr><tr>
+                        <td><input type="checkbox" checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
+                        <td><input type="checkbox" checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
+                    </tr><tr>
+                        <td><input type="checkbox" checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
+                        <td><input type="checkbox" checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
+                    </tr><tr>
+                        <td><input type="checkbox" checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
+                        <td><input type="checkbox" checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 予想ダメージ</td>
+                    </tr>
+                    </table>
+                    <br/>
+                    動作制御:
+                    <input type="checkbox" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
 
-        return (
-            <div className="resultList">
-                表示項目制御:
-                <table className="displayElement">
-                <tr>
-                    <td><input type="checkbox" checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
-                    <td><input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
-                    <td><input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
-                    <td><input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
-                    <td><input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
-                    <td><input type="checkbox" checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
-                </tr><tr>
-                    <td><input type="checkbox" checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
-                    <td><input type="checkbox" checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
-                    <td><input type="checkbox" checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
-                    <td><input type="checkbox" checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
-                    <td><input type="checkbox" checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
-                    <td><input type="checkbox" checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 予想ダメージ</td>
-                </tr>
-                </table>
-                <br/>
-                動作制御:
-                <input type="checkbox" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
+                    <div className="divright"><h3>{remainHPstr}</h3></div>
+                    <hr />
+                    {summondata.map(function(s, summonindex) {
+                        var selfSummonHeader = ""
+                        if(s.selfSummonType == "odin"){
+                            selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                        } else {
+                            selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
+                        }
 
-                <div className="divright"><h3>{remainHPstr}</h3></div>
-                <hr />
-                {summondata.map(function(s, summonindex) {
-                    var selfSummonHeader = ""
-                    if(s.selfSummonType == "odin"){
-                        selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
-                    } else {
-                        selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
-                    }
+                        var friendSummonHeader = ""
+                        if(s.friendSummonType == "odin"){
+                            friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                        } else {
+                            friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
+                        }
 
-                    var friendSummonHeader = ""
-                    if(s.friendSummonType == "odin"){
-                        friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
-                    } else {
-                        friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
-                    }
+                        return(
+                            <div className="result">
+                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} ({res.sortkeyname})</h2>
+                                <table>
+                                <thead className="result">
+                                <tr>
+                                    <th>順位</th>
+                                    {tableheader.map(function(m){ return <th>{m}</th>; })}
+                                    {
+                                        armnames.map(function(m, ind){
+                                        if(ind == 0) {
+                                            return <th className="resultFirst">{m}</th>;
+                                        } else {
+                                            return <th className="resultList">{m}</th>;
+                                        }})
+                                    }
+                                </tr>
+                                </thead>
+                                <Result key={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof}/>
+                                </table>
+                            </div>
+                        );
+                    })}
+                </div>
+            );
 
-                    return(
-                        <div className="result">
-                            <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} ({res.sortkeyname})</h2>
-                            <table>
-                            <thead className="result">
-                            <tr>
-                                <th>順位</th>
-                                {tableheader.map(function(m){ return <th>{m}</th>; })}
-                                {
-                                    armnames.map(function(m, ind){
-                                    if(ind == 0) {
-                                        return <th className="resultFirst">{m}</th>;
-                                    } else {
-                                        return <th className="resultList">{m}</th>;
-                                    }})
-                                }
-                            </tr>
-                            </thead>
-                            <Result key={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof}/>
-                            </table>
-                        </div>
-                    );
-                })}
-            </div>
-        );
+        } else {
+            return (
+                <div className="resultList">
+                    表示項目制御:
+                    <table className="displayElement">
+                    <tr>
+                        <td><input type="checkbox" checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
+                        <td><input type="checkbox" checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
+                        <td><input type="checkbox" checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
+                        <td><input type="checkbox" checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
+                        <td><input type="checkbox" checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
+                        <td><input type="checkbox" checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
+                    </tr><tr>
+                        <td><input type="checkbox" checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
+                        <td><input type="checkbox" checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
+                        <td><input type="checkbox" checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
+                        <td><input type="checkbox" checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
+                        <td><input type="checkbox" checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
+                        <td><input type="checkbox" checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 予想ダメージ</td>
+                    </tr>
+                    </table>
+                    <br/>
+                    動作制御:
+                    <input type="checkbox" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
+
+                    <div className="divright"><h3>{remainHPstr}</h3></div>
+                    <hr />
+                    {summondata.map(function(s, summonindex) {
+                        var selfSummonHeader = ""
+                        if(s.selfSummonType == "odin"){
+                            selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                        } else {
+                            selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
+                        }
+
+                        var friendSummonHeader = ""
+                        if(s.friendSummonType == "odin"){
+                            friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                        } else {
+                            friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
+                        }
+
+                        return(
+                            <div className="result">
+                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} ({res.sortkeyname})</h2>
+                                <table>
+                                <thead className="result">
+                                <tr>
+                                    <th>順位</th>
+                                    {tableheader.map(function(m){ return <th>{m}</th>; })}
+                                    {
+                                        armnames.map(function(m, ind){
+                                        if(ind == 0) {
+                                            return <th className="resultFirst">{m}</th>;
+                                        } else {
+                                            return <th className="resultList">{m}</th>;
+                                        }})
+                                    }
+                                </tr>
+                                </thead>
+                                <Result key={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof}/>
+                                </table>
+                            </div>
+                        );
+                    })}
+                </div>
+            );
+        }
     }
 });
 
@@ -1786,33 +2031,41 @@ var ArmList = React.createClass({
         var hCopy = this.handleOnCopy;
         var defaultElement = this.state.defaultElement;
 
-        return (
-            <div className="armList">
-                ※三手スキル上限はデータがないため仮に50%としています。実際には50%よりも低い可能性もあるのでご注意下さい。<br/>
-                <strong>※通常渾身のスキル、検証して頂いたデータでとりあえず仮実装しました。（あくまで目安です）<br/>
-                ※渾身(大): baseRate * 残りHP割合 (baseRateは (Slv10以下) 10.0 + Slv * 1.0, (Slv10以上) 20.0 + (Slv - 10) * 0.6</strong>
-                <table>
-                <thead>
-                <tr>
-                    <th>武器名*</th>
-                    <th className="atkhp">攻撃力*</th>
-                    <th className="atkhp">HP</th>
-                    <th className="select">武器種*</th>
-                    <th className="checkbox">コスモス</th>
-                    <th>スキル*   [属性一括変更]<select className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </select></th>
-                    <th className="select">SLv*</th>
-                    <th className="consider">本数*</th>
-                    <th className="system">操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                {arms.map(function(arm, ind) {
-                    return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
-                })}
-                </tbody>
-                </table>
-            </div>
-        );
+        if(_ua.Mobile) {
+            return (
+                <div className="armList">
+                    [属性一括変更]<select className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </select>
+                    {arms.map(function(arm, ind) {
+                        return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
+                    })}
+                </div>
+            );
+        } else {
+            return (
+                <div className="armList">
+                    <table>
+                    <thead>
+                    <tr>
+                        <th>武器名*</th>
+                        <th className="atkhp">攻撃力*</th>
+                        <th className="atkhp">HP</th>
+                        <th className="select">武器種*</th>
+                        <th className="checkbox">コスモス</th>
+                        <th>スキル*   [属性一括変更]<select className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </select></th>
+                        <th className="select">SLv*</th>
+                        <th className="consider">本数*</th>
+                        <th className="system">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {arms.map(function(arm, ind) {
+                        return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
+                    })}
+                    </tbody>
+                    </table>
+                </div>
+            )
+        };
     }
 });
 
@@ -1916,31 +2169,60 @@ var Arm = React.createClass({
         this.props.onCopy(this.props.id, this.props.keyid, this.state)
     },
     render: function(){
-
-        return (
-            <tr>
-                <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
-                <td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
-                <td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td>
-                <td className="select"><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </select></td>
-                <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
-                <td>
-                    <select className="element" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </select>
-                    <select className="skill" value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</select><br/>
-                    <select className="element" value={this.state.element2} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </select>
-                    <select className="skill" value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</select>
-                </td>
-                <td className="select"><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
-                <td className="consider">
-                    min: <input type="number" min="0" max="10" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /><br/>
-                    max:<input type="number" min="0" max="10" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />
-                </td>
-                <td className="system">
-                    <button className="systemButton" type="button" onClick={this.clickRemoveButton}>削除</button>
-                    <button className="systemButton" type="button" onClick={this.clickCopyButton}>コピー</button>
-                </td>
-            </tr>
-        );
+        if(_ua.Mobile) {
+            return (
+                <table>
+                <tbody>
+                    <tr><th>武器名</th><td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td></tr>
+                    <tr><th>攻撃力</th><td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td></tr>
+                    <tr><th>HP</th><td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td></tr>
+                    <tr><th>種類</th><td className="select"><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </select></td></tr>
+                    <tr><th>コスモス武器?</th><td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td></tr>
+                    <tr><th>スキル</th>
+                    <td>
+                        <select className="element" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </select>
+                        <select className="skill" value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</select><br/>
+                        <select className="element" value={this.state.element2} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </select>
+                        <select className="skill" value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</select>
+                    </td></tr>
+                    <tr><th>スキルレベル</th><td className="select"><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td></tr>
+                    <tr><th>考慮本数</th><td className="consider">
+                        min: <input type="number" min="0" max="10" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /><br/>
+                        max:<input type="number" min="0" max="10" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />
+                    </td></tr>
+                    <tr><th>操作</th><td className="system">
+                        <button className="systemButton" type="button" onClick={this.clickRemoveButton}>削除</button>
+                        <button className="systemButton" type="button" onClick={this.clickCopyButton}>コピー</button>
+                    </td></tr>
+                </tbody>
+                </table>
+            );
+        } else {
+            return (
+                <tr>
+                    <td><input type="text" placeholder="武器名" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} /></td>
+                    <td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")} /></td>
+                    <td className="atkhp"><input type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")} /></td>
+                    <td className="select"><select value={this.state.armType} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </select></td>
+                    <td className="checkbox"><input type="checkbox" checked={this.state.isCosmos} onChange={this.handleEvent.bind(this, "isCosmos")} /></td>
+                    <td>
+                        <select className="element" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </select>
+                        <select className="skill" value={this.state.skill1} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</select><br/>
+                        <select className="element" value={this.state.element2} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </select>
+                        <select className="skill" value={this.state.skill2} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</select>
+                    </td>
+                    <td className="select"><input type="number" min="1" max="15" step="1" value={this.state.slv} onChange={this.handleEvent.bind(this, "slv")} /></td>
+                    <td className="consider">
+                        min: <input type="number" min="0" max="10" value={this.state.considerNumberMin} onChange={this.handleEvent.bind(this, "considerNumberMin")} /><br/>
+                        max:<input type="number" min="0" max="10" value={this.state.considerNumberMax} onChange={this.handleEvent.bind(this, "considerNumberMax")} />
+                    </td>
+                    <td className="system">
+                        <button className="systemButton" type="button" onClick={this.clickRemoveButton}>削除</button>
+                        <button className="systemButton" type="button" onClick={this.clickCopyButton}>コピー</button>
+                    </td>
+                </tr>
+            );
+        }
     }
 });
 
@@ -2013,6 +2295,91 @@ var Profile = React.createClass({
       }
     },
     render: function() {
+        if(_ua.Mobile) {
+            return (
+                <div className="profile">
+                    <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
+                    <table>
+                        <tr>
+                            <th className="prof">Rank*</th>
+                            <th className="prof">攻撃力ボーナス<br/>(Job+zenith)*</th>
+                            <th className="prof">HPボーナス</th>
+                            <th className="prof">マスボ<br/>ATK(%)*</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number"  min="0" max="175" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                            <td><input type="number" min="0" value={this.state.attackBonus} onChange={this.handleEvent.bind(this, "attackBonus")}/></td>
+                            <td><input type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
+                            <td><input type="number" min="0" max="100" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}/></td>
+                        </tr>
+                        <tr>
+                            <th className="prof">マスボ<br/>HP(%)*</th>
+                            <th className="prof">ジョブ*</th>
+                            <th className="prof">残HP(%)<br/>(ジータのみ)</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number" min="0" max="100" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}/></td>
+                            <td><select value={this.state.job} onChange={this.handleEvent.bind(this, "job")} > {this.props.alljobs} </select></td>
+                            <td><input type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
+                        </tr>
+                        <tr>
+                            <th className="prof">ジータ属性*</th>
+                            <th className="prof">敵の属性*</th>
+                            <th className="prof">武器ゼニス1</th>
+                            <th className="prof">武器ゼニス2</th>
+                        </tr>
+                        <tr>
+                            <td><select value={this.state.element} onChange={this.handleEvent.bind(this, "element")}> {select_elements} </select></td>
+                            <td><select value={this.state.enemyElement} onChange={this.handleEvent.bind(this, "enemyElement")}> {select_elements} </select></td>
+                            <td><select value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </select></td>
+                            <td><select value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </select></td>
+                        </tr>
+                        <tr>
+                            <th className="prof">基礎DA率</th>
+                            <th className="prof">基礎TA率</th>
+                            <th className="prof">敵防御固有値(仮)</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td><input type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td><input type="number" min="0" step="0.5" value={this.state.enemyDefense} onChange={this.handleEvent.bind(this, "enemyDefense")}/></td>
+                        </tr>
+                    </table>
+
+                    <h3> パーティ全体への効果 (%表記)</h3>
+                    <table>
+                        <tr>
+                            <th className="buff">通常バフ</th>
+                            <th className="buff">属性バフ</th>
+                            <th className="buff">その他バフ</th>
+                            <th className="buff">HPバフ</th>
+                        </tr><tr>
+                            <td><input type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
+                            <td><input type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                            <td><input type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                            <td><input type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
+                        </tr><tr>
+                            <th className="buff">DAバフ</th>
+                            <th className="buff">TAバフ</th>
+                            <th className="buff">残HP(%)</th>
+                        </tr><tr>
+                            <td><input type="number"  min="0" max="100" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
+                            <td><input type="number"  min="0" max="100" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
+                            <td><input type="number"  min="0" max="100" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                        </tr><tr>
+                            <th className="buff">武器種類数*</th>
+                            <th className="buff">召喚石の組数*</th>
+                            <th className="buff">優先する項目</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number" min="1" max="20" step="1" value={this.state.armNum} onChange={this.handleArmNumChange}/></td>
+                            <td><input type="number" min="1" max="4" step="1" value={this.state.summonNum} onChange={this.handleSummonNumChange}/></td>
+                            <td><select value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </select></td>
+                        </tr>
+                    </table>
+                </div>
+            );
+        } else {
             return (
                 <div className="profile">
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
@@ -2084,10 +2451,10 @@ var Profile = React.createClass({
                             <td><select value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {this.props.keyTypes} </select></td>
                         </tr>
                     </table>
-                    ※パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) <br/>
                 </div>
             );
         }
+    }
 });
 var Sys = React.createClass({
     getInitialState: function() {
@@ -2178,10 +2545,9 @@ var Sys = React.createClass({
         }
         return (
             <div className="dataControl">
+                データ名: <input size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} />
                 <h3> ブラウザに保存 </h3>
-
-                データ名: <input size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} /><br /><br /><br />
-                ブラウザに保存されたデータ
+                保存されたデータ
                 <select size="6" value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </select>
                 <button type="button" onClick={this.onSubmitSave} >保存</button>
                 <button type="button" onClick={this.onSubmitLoad} >読込</button>
@@ -2262,9 +2628,11 @@ var Notice = React.createClass ({
     render: function() {
       return (
         <div className="notice">
+            <div className="divright"><a href="http://hsimyu.net/motocal/">入力リセット</a></div>
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul>
+                <li>2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 </li>
                 <li>2016/08/17: 検証データを元に渾身の実装を修正 / <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank">データビューア</a>の作成 / 予想ダメージ計算に減衰補正を追加 </li>
                 <li>2016/08/16: 三手スキルSLv11~15の値を入力 / DATA率の合計を、枠別上限から武器スキル全体の上限に修正 / 渾身仮実装 </li>
                 <li>2016/08/12: 二手スキル上限の値に召喚石加護分の値が考慮されていなかった不具合を修正。/ 予想ダメージ機能を仮実装しました。</li>
@@ -2286,9 +2654,11 @@ var Notice = React.createClass ({
                  <li><strong>バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに"バハフツ(攻/HP)"を選択してください。</strong> <br/>
                  (バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)</li>
                  <li>得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</li>
-                 <li>三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。</li>
+                 <li>三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。<br/>
+                 また、三手スキル上限はデータがないため仮に50%としています。実際には50%よりも低い可能性もあるのでご注意下さい。</li>
                  <li>"コスモス"欄はコスモス武器にチェックをつけてください。</li>
                  <li>計算量削減のため、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。</li>
+                 <li>パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) </li>
                  <li>
                  敵防御固有値は予想ダメージ計算にのみ使用されます。(10から15程度が目安)<br/>
                  防御デバフを考慮する場合、防御固有値を半分にしてください。<br/>

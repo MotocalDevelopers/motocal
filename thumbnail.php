@@ -74,6 +74,7 @@
 <html>
     <head>
         <title>元カレ計算機 データビューア</title>
+        <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
         <link rel="stylesheet" type="text/css" href="thumbnail.css">
         <link rel="shortcut icon" href="favicon.ico">
         <script src="./js-base64/base64.js"></script>
@@ -251,7 +252,7 @@
 
       var objs = JSON.parse('<?php print_r($jsoned); ?>');
       var header = "<tr><th>ランク</th><th>ジョブ</th><th>属性</th><th>自分の召喚石</th><th>フレ召喚石</th></tr>"
-      var armheader = "<tr><th>武器名</th><th>種類</th><th>スキル</th><th>本数最小</th><th>本数最大</th></tr>"
+      var armheader = "<tr><th>武器名</th><th>種類</th><th>スキル</th><th>SLv</th><th>本数最大</th></tr>"
 
       for(var i = 0; i < objs.length; i++){
           var obj = objs[i];
@@ -331,7 +332,7 @@
                           armcontent += skilltypes[armlist[j].skill2].name
                       }
                       armcontent += "</td>"
-                      armcontent += "<td>" + armlist[j].considerNumberMin + "本</td>"
+                      armcontent += "<td>" + armlist[j].slv + "</td>"
                       armcontent += "<td>" + armlist[j].considerNumberMax + "本</td>"
                       armcontent += "</tr>"
                   }

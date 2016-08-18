@@ -20230,6 +20230,24 @@ function getVarInQuery(key){
     return result;
 }
 
+var _ua = (function(u){
+  return {
+    Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1)
+      || u.indexOf("ipad") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("tablet") != -1)
+      || u.indexOf("kindle") != -1
+      || u.indexOf("silk") != -1
+      || u.indexOf("playbook") != -1,
+    Mobile:(u.indexOf("windows") != -1 && u.indexOf("phone") != -1)
+      || u.indexOf("iphone") != -1
+      || u.indexOf("ipod") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1)
+      || u.indexOf("blackberry") != -1
+  }
+})(window.navigator.userAgent.toLowerCase());
+
 // global hash for loading new data
 var newData = {}
 var cosmosChecked = false;
@@ -20343,40 +20361,109 @@ var Root = React.createClass({displayName: "Root",
           },
       })
   },
+  changeTab: function(e){
+      document.querySelector("button#inputTab").removeAttribute("class")
+      document.querySelector("button#summonTab").removeAttribute("class")
+      document.querySelector("button#charaTab").removeAttribute("class")
+      document.querySelector("button#armTab").removeAttribute("class")
+      document.querySelector("button#resultTab").removeAttribute("class")
+      document.querySelector("button#systemTab").removeAttribute("class")
+
+      e.target.setAttribute("class", "selected")
+
+      document.querySelector("div#inputTab").setAttribute("class", "inputTab hidden")
+      document.querySelector("div#summonTab").setAttribute("class", "summonTab hidden")
+      document.querySelector("div#charaTab").setAttribute("class", "charaTab hidden")
+      document.querySelector("div#armTab").setAttribute("class", "armTab hidden")
+      document.querySelector("div#resultTab").setAttribute("class", "resultTab hidden")
+      document.querySelector("div#systemTab").setAttribute("class", "systemTab hidden")
+
+      var target = document.querySelector("div." + e.target.getAttribute("id"))
+      target.setAttribute("class", e.target.getAttribute("id"));
+  },
+  changeTabPC: function(e){
+      document.querySelector("button#inputTab").removeAttribute("class")
+      document.querySelector("button#systemTab").removeAttribute("class")
+      document.querySelector("button#charaTab").removeAttribute("class")
+      document.querySelector("button#armTab").removeAttribute("class")
+      e.target.setAttribute("class", "selected")
+
+      document.querySelector("div#inputTab").setAttribute("class", "inputTab hidden")
+      document.querySelector("div#charaTab").setAttribute("class", "charaTab hidden")
+      document.querySelector("div#armTab").setAttribute("class", "armTab hidden")
+      document.querySelector("div#systemTab").setAttribute("class", "systemTab hidden")
+
+      var target = document.querySelector("div." + e.target.getAttribute("id"))
+      target.setAttribute("class", e.target.getAttribute("id"));
+  },
   render: function() {
-    return (
-        React.createElement("div", {className: "root"}, 
-            React.createElement("div", {className: "rootLeft"}, 
-                React.createElement("h1", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
-                React.createElement("div", {className: "divright"}, React.createElement("tiny", null, React.createElement("a", {href: "http://hsimyu.net/motocal/"}, "入力リセット"))), 
-                React.createElement("hr", null), 
-                React.createElement("button", {className: "toggle", onClick: this.handleOnClickTopToggle}, this.state.topbuttontext), 
-                React.createElement("div", {className: this.state.topclass}, 
-                    React.createElement(Profile, {dataName: this.state.dataName, onArmNumChange: this.handleArmNumChange, onChange: this.onChangeProfileData, onSummonNumChange: this.handleSummonNumChange}), 
+    if(_ua.Mobile || _ua.Tablet) {
+        return (
+            React.createElement("div", {className: "root"}, 
+                React.createElement("h2", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
+                React.createElement("div", {className: "tabrow"}, 
+                    React.createElement("button", {id: "inputTab", className: "selected", onClick: this.changeTab}, "ジータ"), 
+                    React.createElement("button", {id: "summonTab", onClick: this.changeTab}, "召喚石"), 
+                    React.createElement("button", {id: "charaTab", onClick: this.changeTab}, "キャラ"), 
+                    React.createElement("button", {id: "armTab", onClick: this.changeTab}, "武器"), 
+                    React.createElement("button", {id: "resultTab", onClick: this.changeTab}, "結果"), 
+                    React.createElement("button", {id: "systemTab", onClick: this.changeTab}, "保存")
+                ), 
+                React.createElement("div", {className: "inputTab", id: "inputTab"}, 
+                    React.createElement(Profile, {dataName: this.state.dataName, onArmNumChange: this.handleArmNumChange, onChange: this.onChangeProfileData, onSummonNumChange: this.handleSummonNumChange})
+                ), 
+                React.createElement("div", {className: "summonTab hidden", id: "summonTab"}, 
                     React.createElement(SummonList, {dataName: this.state.dataName, summonNum: this.state.summonNum, onChange: this.onChangeSummonData})
                 ), 
-                React.createElement("hr", null), 
-                React.createElement("button", {className: "toggle", onClick: this.handleOnClickTop2Toggle}, this.state.top2buttontext), 
-                React.createElement("div", {className: this.state.top2class}, 
+                React.createElement("div", {className: "charaTab hidden", id: "charaTab"}, 
                     React.createElement(CharaList, {dataName: this.state.dataName, onChange: this.onChangeCharaData})
                 ), 
-                React.createElement("hr", null), 
-                React.createElement("button", {className: "toggle", onClick: this.handleOnClickMiddleToggle}, this.state.middlebuttontext), 
-                React.createElement("div", {className: this.state.middleclass}, 
+                React.createElement("div", {className: "armTab hidden", id: "armTab"}, 
                     React.createElement(ArmList, {dataName: this.state.dataName, armNum: this.state.armNum, onChange: this.onChangeArmData})
                 ), 
-                React.createElement("hr", null), 
-                React.createElement("div", {className: "bottom"}, 
+                React.createElement("div", {className: "resultTab hidden", id: "resultTab"}, 
+                    React.createElement(ResultList, {data: this.state})
+                ), 
+                React.createElement("div", {className: "systemTab hidden", id: "systemTab"}, 
                     React.createElement(Sys, {data: this.state, onLoadNewData: this.handleChangeData}), 
                     React.createElement(TwitterShareButton, {data: this.state}), 
                     React.createElement(Notice, null)
                 )
-            ), 
-            React.createElement("div", {className: "rootRight"}, 
-                React.createElement(ResultList, {data: this.state})
             )
-        )
-    );
+        );
+    } else {
+        return (
+            React.createElement("div", {className: "root"}, 
+                React.createElement("div", {className: "rootleft", id: "rootleft2"}, 
+                    React.createElement("h1", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
+                    React.createElement("div", {className: "tabrow"}, 
+                        React.createElement("button", {id: "inputTab", className: "selected", onClick: this.changeTabPC}, "入力 / Input"), 
+                        React.createElement("button", {id: "charaTab", onClick: this.changeTabPC}, "キャラ / Chara"), 
+                        React.createElement("button", {id: "armTab", onClick: this.changeTabPC}, "武器 / Weapon"), 
+                        React.createElement("button", {id: "systemTab", onClick: this.changeTabPC}, "保存・注記 / System")
+                    ), 
+                    React.createElement("div", {className: "inputTab", id: "inputTab"}, 
+                        React.createElement(Profile, {dataName: this.state.dataName, onArmNumChange: this.handleArmNumChange, onChange: this.onChangeProfileData, onSummonNumChange: this.handleSummonNumChange}), 
+                        React.createElement(SummonList, {dataName: this.state.dataName, summonNum: this.state.summonNum, onChange: this.onChangeSummonData})
+                    ), 
+                    React.createElement("div", {className: "charaTab hidden", id: "charaTab"}, 
+                        React.createElement(CharaList, {dataName: this.state.dataName, onChange: this.onChangeCharaData})
+                    ), 
+                    React.createElement("div", {className: "armTab hidden", id: "armTab"}, 
+                        React.createElement(ArmList, {dataName: this.state.dataName, armNum: this.state.armNum, onChange: this.onChangeArmData})
+                    ), 
+                    React.createElement("div", {className: "systemTab hidden", id: "systemTab"}, 
+                        React.createElement(Sys, {data: this.state, onLoadNewData: this.handleChangeData}), 
+                        React.createElement(TwitterShareButton, {data: this.state}), 
+                        React.createElement(Notice, null)
+                    )
+                ), 
+                React.createElement("div", {className: "rootRight"}, 
+                    React.createElement(ResultList, {data: this.state})
+                )
+            )
+        );
+    }
   }
 });
 
@@ -20399,33 +20486,44 @@ var CharaList = React.createClass({displayName: "CharaList",
         }
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
-        return (
-            React.createElement("div", {className: "charaList"}, 
-                React.createElement("table", null, 
-                React.createElement("thead", null, 
-                React.createElement("tr", null, 
-                    React.createElement("th", null, "キャラ名*"), 
-                    React.createElement("th", null, "属性*"), 
-                    React.createElement("th", null, "種族"), 
-                    React.createElement("th", null, "タイプ"), 
-                    React.createElement("th", null, "得意武器*"), 
-                    React.createElement("th", null, "得意武器2"), 
-                    React.createElement("th", {className: "checkbox"}, "平均に含める"), 
-                    React.createElement("th", null, "素の攻撃力*", React.createElement("br", null), "(≠編成画面での表示値)"), 
-                    React.createElement("th", null, "素のHP"), 
-                    React.createElement("th", null, "残HP割合(%)"), 
-                    React.createElement("th", null, "基礎DA率(%)"), 
-                    React.createElement("th", null, "基礎TA率(%)")
-                )
-                ), 
-                React.createElement("tbody", null, 
+        if(_ua.Mobile) {
+            return (
+                React.createElement("div", {className: "charaList"}, 
                     charas.map(function(c) {
                         return React.createElement(Chara, {key: c.id, onChange: hChange, id: c.id, dataName: dataName});
                     })
                 )
+            );
+
+        } else {
+            return (
+                React.createElement("div", {className: "charaList"}, 
+                    React.createElement("table", null, 
+                    React.createElement("thead", null, 
+                    React.createElement("tr", null, 
+                        React.createElement("th", null, "キャラ名*"), 
+                        React.createElement("th", null, "属性*"), 
+                        React.createElement("th", null, "種族"), 
+                        React.createElement("th", null, "タイプ"), 
+                        React.createElement("th", null, "得意武器*"), 
+                        React.createElement("th", null, "得意武器2"), 
+                        React.createElement("th", {className: "checkbox"}, "平均に含める"), 
+                        React.createElement("th", null, "素の攻撃力*", React.createElement("br", null), "(≠編成画面での表示値)"), 
+                        React.createElement("th", null, "素のHP"), 
+                        React.createElement("th", null, "残HP割合(%)"), 
+                        React.createElement("th", null, "基礎DA率(%)"), 
+                        React.createElement("th", null, "基礎TA率(%)")
+                    )
+                    ), 
+                    React.createElement("tbody", null, 
+                        charas.map(function(c) {
+                            return React.createElement(Chara, {key: c.id, onChange: hChange, id: c.id, dataName: dataName});
+                        })
+                    )
+                    )
                 )
-            )
-        );
+            );
+        }
     }
 });
 
@@ -20483,22 +20581,42 @@ var Chara = React.createClass({displayName: "Chara",
         this.props.onChange(this.props.id, newState)
     },
     render: function() {
-        return (
-            React.createElement("tr", null, 
-                React.createElement("td", null, React.createElement("input", {type: "text", placeholder: "名前", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
-                React.createElement("td", null, React.createElement("select", {value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, select_elements)), 
-                React.createElement("td", null, React.createElement("select", {value: this.state.race, onChange: this.handleEvent.bind(this, "race")}, select_races)), 
-                React.createElement("td", null, React.createElement("select", {value: this.state.type, onChange: this.handleEvent.bind(this, "type")}, select_types)), 
-                React.createElement("td", null, React.createElement("select", {value: this.state.favArm, onChange: this.handleEvent.bind(this, "favArm")}, select_armtypes)), 
-                React.createElement("td", null, React.createElement("select", {value: this.state.favArm2, onChange: this.handleEvent.bind(this, "favArm2")}, select_armtypes)), 
-                React.createElement("td", {className: "checkbox"}, React.createElement("input", {type: "checkbox", checked: this.state.isConsideredInAverage, onChange: this.handleEvent.bind(this, "isConsideredInAverage")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "15000", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "5000", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
-            )
-        );
+        if(_ua.Mobile) {
+            return (
+                React.createElement("table", null, React.createElement("tbody", null, 
+                    React.createElement("tr", null, React.createElement("th", null, "名前"), React.createElement("td", null, React.createElement("input", {type: "text", placeholder: "名前", value: this.state.name, onChange: this.handleEvent.bind(this, "name")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "属性"), React.createElement("td", null, React.createElement("select", {value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, select_elements))), 
+                    React.createElement("tr", null, React.createElement("th", null, "種族"), React.createElement("td", null, React.createElement("select", {value: this.state.race, onChange: this.handleEvent.bind(this, "race")}, select_races))), 
+                    React.createElement("tr", null, React.createElement("th", null, "タイプ"), React.createElement("td", null, React.createElement("select", {value: this.state.type, onChange: this.handleEvent.bind(this, "type")}, select_types))), 
+                    React.createElement("tr", null, React.createElement("th", null, "得意武器1"), React.createElement("td", null, React.createElement("select", {value: this.state.favArm, onChange: this.handleEvent.bind(this, "favArm")}, select_armtypes))), 
+                    React.createElement("tr", null, React.createElement("th", null, "得意武器2"), React.createElement("td", null, React.createElement("select", {value: this.state.favArm2, onChange: this.handleEvent.bind(this, "favArm2")}, select_armtypes))), 
+                    React.createElement("tr", null, React.createElement("th", null, "平均に含める"), React.createElement("td", {className: "checkbox"}, React.createElement("input", {type: "checkbox", checked: this.state.isConsideredInAverage, onChange: this.handleEvent.bind(this, "isConsideredInAverage")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "素の攻撃力"), React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "15000", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "素のHP"), React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "5000", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "残HP割合"), React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "基礎DA率"), React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "基礎TA率"), React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})))
+                ))
+            );
+
+        } else {
+            return (
+                React.createElement("tr", null, 
+                    React.createElement("td", null, React.createElement("input", {type: "text", placeholder: "名前", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
+                    React.createElement("td", null, React.createElement("select", {value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, select_elements)), 
+                    React.createElement("td", null, React.createElement("select", {value: this.state.race, onChange: this.handleEvent.bind(this, "race")}, select_races)), 
+                    React.createElement("td", null, React.createElement("select", {value: this.state.type, onChange: this.handleEvent.bind(this, "type")}, select_types)), 
+                    React.createElement("td", null, React.createElement("select", {value: this.state.favArm, onChange: this.handleEvent.bind(this, "favArm")}, select_armtypes)), 
+                    React.createElement("td", null, React.createElement("select", {value: this.state.favArm2, onChange: this.handleEvent.bind(this, "favArm2")}, select_armtypes)), 
+                    React.createElement("td", {className: "checkbox"}, React.createElement("input", {type: "checkbox", checked: this.state.isConsideredInAverage, onChange: this.handleEvent.bind(this, "isConsideredInAverage")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "15000", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "5000", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
+                )
+            );
+        }
 
     }
 });
@@ -20531,33 +20649,40 @@ var SummonList = React.createClass({displayName: "SummonList",
         }
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
-        return (
-            React.createElement("div", {className: "summonList"}, 
-                React.createElement("h3", null, " 召喚石 "), 
-                React.createElement("table", null, 
-                React.createElement("thead", null, 
-                React.createElement("tr", null, 
-                    React.createElement("th", null, "自分の石*"), 
-                    React.createElement("th", null, "属性*"), 
-                    React.createElement("th", null, "加護量*"), 
-                    React.createElement("th", null, "フレ石*"), 
-                    React.createElement("th", null, "属性*"), 
-                    React.createElement("th", null, "フレ加護量*"), 
-                    React.createElement("th", null, "合計攻撃力*"), 
-                    React.createElement("th", null, "合計HP"), 
-                    React.createElement("th", null, "HPUP(%)"), 
-                    React.createElement("th", null, "DA加護"), 
-                    React.createElement("th", null, "TA加護")
-                )
-                ), 
-                React.createElement("tbody", null, 
+        if(_ua.Mobile) {
+            return (
+                React.createElement("div", {className: "summonList"}, 
                     summons.map(function(sm) {
                         return React.createElement(Summon, {key: sm.id, onChange: hChange, id: sm.id, dataName: dataName});
                     })
                 )
+            );
+        } else {
+            return (
+                React.createElement("div", {className: "summonList"}, 
+                    React.createElement("h3", null, " 召喚石 "), 
+                    React.createElement("table", null, 
+                    React.createElement("thead", null, 
+                    React.createElement("tr", null, 
+                        React.createElement("th", null, "石*"), 
+                        React.createElement("th", null, "属性*"), 
+                        React.createElement("th", null, "加護量*"), 
+                        React.createElement("th", null, "合計攻撃力*"), 
+                        React.createElement("th", null, "合計HP"), 
+                        React.createElement("th", null, "HPUP(%)"), 
+                        React.createElement("th", null, "DA加護"), 
+                        React.createElement("th", null, "TA加護")
+                    )
+                    ), 
+                    React.createElement("tbody", null, 
+                        summons.map(function(sm) {
+                            return React.createElement(Summon, {key: sm.id, onChange: hChange, id: sm.id, dataName: dataName});
+                        })
+                    )
+                    )
                 )
-            )
-        );
+            );
+        }
     }
 });
 
@@ -20637,28 +20762,75 @@ var Summon = React.createClass({displayName: "Summon",
             friendSummon[1] = {"label": "キャラ ", "input": "number"}
             friendSummon[0].label = "属性 "
         }
-        return (
-            React.createElement("tr", null, 
-                React.createElement("td", null, React.createElement("select", {value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons)), 
-                React.createElement("td", null, React.createElement("select", {value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements)), 
-                React.createElement("td", null, 
-                React.createElement("label", null, selfSummon[0].label, React.createElement("input", {type: selfSummon[0].input, min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)})), 
-                React.createElement("label", null, selfSummon[1].label, React.createElement("input", {type: selfSummon[1].input, min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)}))
+        if(_ua.Mobile) {
+            return (
+                React.createElement("table", null, 
+                React.createElement("tbody", null, 
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "石"), 
+                    React.createElement("td", {className: "multi"}, React.createElement("label", null, "自分:", React.createElement("select", {value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons)), React.createElement("br", null), 
+                    React.createElement("label", null, "フレ:", React.createElement("select", {value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons)))
                 ), 
-                React.createElement("td", null, React.createElement("select", {value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons)), 
-                React.createElement("td", null, React.createElement("select", {value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements)), 
-                React.createElement("td", null, 
-                React.createElement("label", null, friendSummon[0].label, React.createElement("input", {type: friendSummon[0].input, min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)})), 
-                React.createElement("label", null, friendSummon[1].label, React.createElement("input", {type: friendSummon[1].input, min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)}))
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "属性"), 
+                    React.createElement("td", null, React.createElement("select", {value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements), React.createElement("br", null), 
+                    React.createElement("select", {value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements))
                 ), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
-                React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
-            )
-        );
-
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "加護量"), 
+                    React.createElement("td", null, 
+                    React.createElement("label", null, selfSummon[0].label, React.createElement("input", {type: selfSummon[0].input, min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)})), 
+                    React.createElement("label", null, selfSummon[1].label, React.createElement("input", {type: selfSummon[1].input, min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)})), 
+                React.createElement("br", null), 
+                    React.createElement("label", null, friendSummon[0].label, React.createElement("input", {type: friendSummon[0].input, min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)})), 
+                    React.createElement("label", null, friendSummon[1].label, React.createElement("input", {type: friendSummon[1].input, min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)}))
+                    )
+                ), 
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "合計攻撃力"), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")}))
+                ), 
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "合計HP"), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))
+                ), 
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "HPUP(%)"), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")}))
+                ), 
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "DA加護"), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")}))
+                ), 
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "TA加護"), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
+                )
+                )
+                )
+            );
+        } else {
+            return (
+                React.createElement("tr", null, 
+                    React.createElement("td", {className: "multi"}, React.createElement("label", null, "自分:", React.createElement("select", {value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons)), React.createElement("br", null), 
+                    React.createElement("label", null, "フレ:", React.createElement("select", {value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons))), 
+                    React.createElement("td", null, React.createElement("select", {value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements), React.createElement("br", null), 
+                    React.createElement("select", {value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements)), 
+                    React.createElement("td", null, 
+                    React.createElement("label", null, selfSummon[0].label, React.createElement("input", {type: selfSummon[0].input, min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)})), 
+                    React.createElement("label", null, selfSummon[1].label, React.createElement("input", {type: selfSummon[1].input, min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)})), 
+                    React.createElement("br", null), 
+                    React.createElement("label", null, friendSummon[0].label, React.createElement("input", {type: friendSummon[0].input, min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)})), 
+                    React.createElement("label", null, friendSummon[1].label, React.createElement("input", {type: friendSummon[1].input, min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)}))
+                    ), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
+                    React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
+                )
+            );
+        }
     }
 });
 
@@ -21356,73 +21528,146 @@ var ResultList = React.createClass({displayName: "ResultList",
             }
         }
 
+        if(_ua.Mobile) {
+            return (
+                React.createElement("div", {className: "resultList"}, 
+                    "表示項目制御:", 
+                    React.createElement("table", {className: "displayElement"}, 
+                    React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchTotalAttack, onChange: this.handleEvent.bind(this, "switchTotalAttack")}), " 総合攻撃力"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchATKandHP, onChange: this.handleEvent.bind(this, "switchATKandHP")}), " 戦力")
+                    ), React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchHP, onChange: this.handleEvent.bind(this, "switchHP")}), " HP"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchDATA, onChange: this.handleEvent.bind(this, "switchDATA")}), " 連続攻撃率")
+                    ), React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchExpectedAttack, onChange: this.handleEvent.bind(this, "switchExpectedAttack")}), " 期待攻撃回数"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCriticalRatio, onChange: this.handleEvent.bind(this, "switchCriticalRatio")}), " 技巧期待値")
+                    ), React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCharaAttack, onChange: this.handleEvent.bind(this, "switchCharaAttack")}), " キャラ攻撃力"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCharaHP, onChange: this.handleEvent.bind(this, "switchCharaHP")}), " キャラHP")
+                    ), React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値")
+                    ), React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総回技のパーティ平均値"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchDamage, onChange: this.handleEvent.bind(this, "switchDamage")}), " 予想ダメージ")
+                    )
+                    ), 
+                    React.createElement("br", null), 
+                    "動作制御:", 
+                    React.createElement("input", {type: "checkbox", checked: this.state.disableAutoResultUpdate, onChange: this.handleEvent.bind(this, "disableAutoResultUpdate")}), " 自動更新を切る", 
 
-        return (
-            React.createElement("div", {className: "resultList"}, 
-                "表示項目制御:", 
-                React.createElement("table", {className: "displayElement"}, 
-                React.createElement("tr", null, 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchTotalAttack, onChange: this.handleEvent.bind(this, "switchTotalAttack")}), " 総合攻撃力"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchATKandHP, onChange: this.handleEvent.bind(this, "switchATKandHP")}), " 戦力"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchHP, onChange: this.handleEvent.bind(this, "switchHP")}), " HP"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchDATA, onChange: this.handleEvent.bind(this, "switchDATA")}), " 連続攻撃率"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchExpectedAttack, onChange: this.handleEvent.bind(this, "switchExpectedAttack")}), " 期待攻撃回数"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCriticalRatio, onChange: this.handleEvent.bind(this, "switchCriticalRatio")}), " 技巧期待値")
-                ), React.createElement("tr", null, 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCharaAttack, onChange: this.handleEvent.bind(this, "switchCharaAttack")}), " キャラ攻撃力"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCharaHP, onChange: this.handleEvent.bind(this, "switchCharaHP")}), " キャラHP"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総回技のパーティ平均値"), 
-                    React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchDamage, onChange: this.handleEvent.bind(this, "switchDamage")}), " 予想ダメージ")
+                    React.createElement("div", {className: "divright"}, React.createElement("h3", null, remainHPstr)), 
+                    React.createElement("hr", null), 
+                    summondata.map(function(s, summonindex) {
+                        var selfSummonHeader = ""
+                        if(s.selfSummonType == "odin"){
+                            selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                        } else {
+                            selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
+                        }
+
+                        var friendSummonHeader = ""
+                        if(s.friendSummonType == "odin"){
+                            friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                        } else {
+                            friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
+                        }
+
+                        return(
+                            React.createElement("div", {className: "result"}, 
+                                React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " (", res.sortkeyname, ")"), 
+                                React.createElement("table", null, 
+                                React.createElement("thead", {className: "result"}, 
+                                React.createElement("tr", null, 
+                                    React.createElement("th", null, "順位"), 
+                                    tableheader.map(function(m){ return React.createElement("th", null, m); }), 
+                                    
+                                        armnames.map(function(m, ind){
+                                        if(ind == 0) {
+                                            return React.createElement("th", {className: "resultFirst"}, m);
+                                        } else {
+                                            return React.createElement("th", {className: "resultList"}, m);
+                                        }})
+                                    
+                                )
+                                ), 
+                                React.createElement(Result, {key: summonindex, data: result[summonindex], switcher: switcher, arm: arm, prof: prof})
+                                )
+                            )
+                        );
+                    })
                 )
-                ), 
-                React.createElement("br", null), 
-                "動作制御:", 
-                React.createElement("input", {type: "checkbox", checked: this.state.disableAutoResultUpdate, onChange: this.handleEvent.bind(this, "disableAutoResultUpdate")}), " 自動更新を切る", 
+            );
 
-                React.createElement("div", {className: "divright"}, React.createElement("h3", null, remainHPstr)), 
-                React.createElement("hr", null), 
-                summondata.map(function(s, summonindex) {
-                    var selfSummonHeader = ""
-                    if(s.selfSummonType == "odin"){
-                        selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
-                    } else {
-                        selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
-                    }
+        } else {
+            return (
+                React.createElement("div", {className: "resultList"}, 
+                    "表示項目制御:", 
+                    React.createElement("table", {className: "displayElement"}, 
+                    React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchTotalAttack, onChange: this.handleEvent.bind(this, "switchTotalAttack")}), " 総合攻撃力"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchATKandHP, onChange: this.handleEvent.bind(this, "switchATKandHP")}), " 戦力"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchHP, onChange: this.handleEvent.bind(this, "switchHP")}), " HP"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchDATA, onChange: this.handleEvent.bind(this, "switchDATA")}), " 連続攻撃率"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchExpectedAttack, onChange: this.handleEvent.bind(this, "switchExpectedAttack")}), " 期待攻撃回数"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCriticalRatio, onChange: this.handleEvent.bind(this, "switchCriticalRatio")}), " 技巧期待値")
+                    ), React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCharaAttack, onChange: this.handleEvent.bind(this, "switchCharaAttack")}), " キャラ攻撃力"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchCharaHP, onChange: this.handleEvent.bind(this, "switchCharaHP")}), " キャラHP"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総回技のパーティ平均値"), 
+                        React.createElement("td", null, React.createElement("input", {type: "checkbox", checked: this.state.switchDamage, onChange: this.handleEvent.bind(this, "switchDamage")}), " 予想ダメージ")
+                    )
+                    ), 
+                    React.createElement("br", null), 
+                    "動作制御:", 
+                    React.createElement("input", {type: "checkbox", checked: this.state.disableAutoResultUpdate, onChange: this.handleEvent.bind(this, "disableAutoResultUpdate")}), " 自動更新を切る", 
 
-                    var friendSummonHeader = ""
-                    if(s.friendSummonType == "odin"){
-                        friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
-                    } else {
-                        friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
-                    }
+                    React.createElement("div", {className: "divright"}, React.createElement("h3", null, remainHPstr)), 
+                    React.createElement("hr", null), 
+                    summondata.map(function(s, summonindex) {
+                        var selfSummonHeader = ""
+                        if(s.selfSummonType == "odin"){
+                            selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                        } else {
+                            selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
+                        }
 
-                    return(
-                        React.createElement("div", {className: "result"}, 
-                            React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " (", res.sortkeyname, ")"), 
-                            React.createElement("table", null, 
-                            React.createElement("thead", {className: "result"}, 
-                            React.createElement("tr", null, 
-                                React.createElement("th", null, "順位"), 
-                                tableheader.map(function(m){ return React.createElement("th", null, m); }), 
-                                
-                                    armnames.map(function(m, ind){
-                                    if(ind == 0) {
-                                        return React.createElement("th", {className: "resultFirst"}, m);
-                                    } else {
-                                        return React.createElement("th", {className: "resultList"}, m);
-                                    }})
-                                
+                        var friendSummonHeader = ""
+                        if(s.friendSummonType == "odin"){
+                            friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                        } else {
+                            friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
+                        }
+
+                        return(
+                            React.createElement("div", {className: "result"}, 
+                                React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " (", res.sortkeyname, ")"), 
+                                React.createElement("table", null, 
+                                React.createElement("thead", {className: "result"}, 
+                                React.createElement("tr", null, 
+                                    React.createElement("th", null, "順位"), 
+                                    tableheader.map(function(m){ return React.createElement("th", null, m); }), 
+                                    
+                                        armnames.map(function(m, ind){
+                                        if(ind == 0) {
+                                            return React.createElement("th", {className: "resultFirst"}, m);
+                                        } else {
+                                            return React.createElement("th", {className: "resultList"}, m);
+                                        }})
+                                    
+                                )
+                                ), 
+                                React.createElement(Result, {key: summonindex, data: result[summonindex], switcher: switcher, arm: arm, prof: prof})
+                                )
                             )
-                            ), 
-                            React.createElement(Result, {key: summonindex, data: result[summonindex], switcher: switcher, arm: arm, prof: prof})
-                            )
-                        )
-                    );
-                })
-            )
-        );
+                        );
+                    })
+                )
+            );
+        }
     }
 });
 
@@ -21667,33 +21912,41 @@ var ArmList = React.createClass({displayName: "ArmList",
         var hCopy = this.handleOnCopy;
         var defaultElement = this.state.defaultElement;
 
-        return (
-            React.createElement("div", {className: "armList"}, 
-                "※三手スキル上限はデータがないため仮に50%としています。実際には50%よりも低い可能性もあるのでご注意下さい。", React.createElement("br", null), 
-                React.createElement("strong", null, "※通常渾身のスキル、検証して頂いたデータでとりあえず仮実装しました。（あくまで目安です）", React.createElement("br", null), 
-                "※渾身(大): baseRate * 残りHP割合 (baseRateは (Slv10以下) 10.0 + Slv * 1.0, (Slv10以上) 20.0 + (Slv - 10) * 0.6"), 
-                React.createElement("table", null, 
-                React.createElement("thead", null, 
-                React.createElement("tr", null, 
-                    React.createElement("th", null, "武器名*"), 
-                    React.createElement("th", {className: "atkhp"}, "攻撃力*"), 
-                    React.createElement("th", {className: "atkhp"}, "HP"), 
-                    React.createElement("th", {className: "select"}, "武器種*"), 
-                    React.createElement("th", {className: "checkbox"}, "コスモス"), 
-                    React.createElement("th", null, "スキル*   [属性一括変更]", React.createElement("select", {className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " ")), 
-                    React.createElement("th", {className: "select"}, "SLv*"), 
-                    React.createElement("th", {className: "consider"}, "本数*"), 
-                    React.createElement("th", {className: "system"}, "操作")
+        if(_ua.Mobile) {
+            return (
+                React.createElement("div", {className: "armList"}, 
+                    "[属性一括変更]", React.createElement("select", {className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " "), 
+                    arms.map(function(arm, ind) {
+                        return React.createElement(Arm, {key: arm, onChange: hChange, onRemove: hRemove, onCopy: hCopy, id: ind, keyid: arm, dataName: dataName, defaultElement: defaultElement});
+                    })
                 )
-                ), 
-                React.createElement("tbody", null, 
-                arms.map(function(arm, ind) {
-                    return React.createElement(Arm, {key: arm, onChange: hChange, onRemove: hRemove, onCopy: hCopy, id: ind, keyid: arm, dataName: dataName, defaultElement: defaultElement});
-                })
-                )
+            );
+        } else {
+            return (
+                React.createElement("div", {className: "armList"}, 
+                    React.createElement("table", null, 
+                    React.createElement("thead", null, 
+                    React.createElement("tr", null, 
+                        React.createElement("th", null, "武器名*"), 
+                        React.createElement("th", {className: "atkhp"}, "攻撃力*"), 
+                        React.createElement("th", {className: "atkhp"}, "HP"), 
+                        React.createElement("th", {className: "select"}, "武器種*"), 
+                        React.createElement("th", {className: "checkbox"}, "コスモス"), 
+                        React.createElement("th", null, "スキル*   [属性一括変更]", React.createElement("select", {className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " ")), 
+                        React.createElement("th", {className: "select"}, "SLv*"), 
+                        React.createElement("th", {className: "consider"}, "本数*"), 
+                        React.createElement("th", {className: "system"}, "操作")
+                    )
+                    ), 
+                    React.createElement("tbody", null, 
+                    arms.map(function(arm, ind) {
+                        return React.createElement(Arm, {key: arm, onChange: hChange, onRemove: hRemove, onCopy: hCopy, id: ind, keyid: arm, dataName: dataName, defaultElement: defaultElement});
+                    })
+                    )
+                    )
                 )
             )
-        );
+        };
     }
 });
 
@@ -21797,31 +22050,60 @@ var Arm = React.createClass({displayName: "Arm",
         this.props.onCopy(this.props.id, this.props.keyid, this.state)
     },
     render: function(){
-
-        return (
-            React.createElement("tr", null, 
-                React.createElement("td", null, React.createElement("input", {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
-                React.createElement("td", {className: "atkhp"}, React.createElement("input", {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
-                React.createElement("td", {className: "atkhp"}, React.createElement("input", {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
-                React.createElement("td", {className: "select"}, React.createElement("select", {value: this.state.armType, onChange: this.handleEvent.bind(this, "armType")}, " ", select_armtypes, " ")), 
-                React.createElement("td", {className: "checkbox"}, React.createElement("input", {type: "checkbox", checked: this.state.isCosmos, onChange: this.handleEvent.bind(this, "isCosmos")})), 
-                React.createElement("td", null, 
-                    React.createElement("select", {className: "element", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " "), 
-                    React.createElement("select", {className: "skill", value: this.state.skill1, onChange: this.handleEvent.bind(this, "skill1")}, " ", select_skills), React.createElement("br", null), 
-                    React.createElement("select", {className: "element", value: this.state.element2, onChange: this.handleEvent.bind(this, "element2")}, " ", select_elements, " "), 
-                    React.createElement("select", {className: "skill", value: this.state.skill2, onChange: this.handleEvent.bind(this, "skill2")}, " ", select_skills)
-                ), 
-                React.createElement("td", {className: "select"}, React.createElement("input", {type: "number", min: "1", max: "15", step: "1", value: this.state.slv, onChange: this.handleEvent.bind(this, "slv")})), 
-                React.createElement("td", {className: "consider"}, 
-                    "min: ", React.createElement("input", {type: "number", min: "0", max: "10", value: this.state.considerNumberMin, onChange: this.handleEvent.bind(this, "considerNumberMin")}), React.createElement("br", null), 
-                    "max:", React.createElement("input", {type: "number", min: "0", max: "10", value: this.state.considerNumberMax, onChange: this.handleEvent.bind(this, "considerNumberMax")})
-                ), 
-                React.createElement("td", {className: "system"}, 
-                    React.createElement("button", {className: "systemButton", type: "button", onClick: this.clickRemoveButton}, "削除"), 
-                    React.createElement("button", {className: "systemButton", type: "button", onClick: this.clickCopyButton}, "コピー")
+        if(_ua.Mobile) {
+            return (
+                React.createElement("table", null, 
+                React.createElement("tbody", null, 
+                    React.createElement("tr", null, React.createElement("th", null, "武器名"), React.createElement("td", null, React.createElement("input", {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "攻撃力"), React.createElement("td", {className: "atkhp"}, React.createElement("input", {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "HP"), React.createElement("td", {className: "atkhp"}, React.createElement("input", {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "種類"), React.createElement("td", {className: "select"}, React.createElement("select", {value: this.state.armType, onChange: this.handleEvent.bind(this, "armType")}, " ", select_armtypes, " "))), 
+                    React.createElement("tr", null, React.createElement("th", null, "コスモス武器?"), React.createElement("td", {className: "checkbox"}, React.createElement("input", {type: "checkbox", checked: this.state.isCosmos, onChange: this.handleEvent.bind(this, "isCosmos")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "スキル"), 
+                    React.createElement("td", null, 
+                        React.createElement("select", {className: "element", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " "), 
+                        React.createElement("select", {className: "skill", value: this.state.skill1, onChange: this.handleEvent.bind(this, "skill1")}, " ", select_skills), React.createElement("br", null), 
+                        React.createElement("select", {className: "element", value: this.state.element2, onChange: this.handleEvent.bind(this, "element2")}, " ", select_elements, " "), 
+                        React.createElement("select", {className: "skill", value: this.state.skill2, onChange: this.handleEvent.bind(this, "skill2")}, " ", select_skills)
+                    )), 
+                    React.createElement("tr", null, React.createElement("th", null, "スキルレベル"), React.createElement("td", {className: "select"}, React.createElement("input", {type: "number", min: "1", max: "15", step: "1", value: this.state.slv, onChange: this.handleEvent.bind(this, "slv")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "考慮本数"), React.createElement("td", {className: "consider"}, 
+                        "min: ", React.createElement("input", {type: "number", min: "0", max: "10", value: this.state.considerNumberMin, onChange: this.handleEvent.bind(this, "considerNumberMin")}), React.createElement("br", null), 
+                        "max:", React.createElement("input", {type: "number", min: "0", max: "10", value: this.state.considerNumberMax, onChange: this.handleEvent.bind(this, "considerNumberMax")})
+                    )), 
+                    React.createElement("tr", null, React.createElement("th", null, "操作"), React.createElement("td", {className: "system"}, 
+                        React.createElement("button", {className: "systemButton", type: "button", onClick: this.clickRemoveButton}, "削除"), 
+                        React.createElement("button", {className: "systemButton", type: "button", onClick: this.clickCopyButton}, "コピー")
+                    ))
                 )
-            )
-        );
+                )
+            );
+        } else {
+            return (
+                React.createElement("tr", null, 
+                    React.createElement("td", null, React.createElement("input", {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
+                    React.createElement("td", {className: "atkhp"}, React.createElement("input", {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
+                    React.createElement("td", {className: "atkhp"}, React.createElement("input", {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
+                    React.createElement("td", {className: "select"}, React.createElement("select", {value: this.state.armType, onChange: this.handleEvent.bind(this, "armType")}, " ", select_armtypes, " ")), 
+                    React.createElement("td", {className: "checkbox"}, React.createElement("input", {type: "checkbox", checked: this.state.isCosmos, onChange: this.handleEvent.bind(this, "isCosmos")})), 
+                    React.createElement("td", null, 
+                        React.createElement("select", {className: "element", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " "), 
+                        React.createElement("select", {className: "skill", value: this.state.skill1, onChange: this.handleEvent.bind(this, "skill1")}, " ", select_skills), React.createElement("br", null), 
+                        React.createElement("select", {className: "element", value: this.state.element2, onChange: this.handleEvent.bind(this, "element2")}, " ", select_elements, " "), 
+                        React.createElement("select", {className: "skill", value: this.state.skill2, onChange: this.handleEvent.bind(this, "skill2")}, " ", select_skills)
+                    ), 
+                    React.createElement("td", {className: "select"}, React.createElement("input", {type: "number", min: "1", max: "15", step: "1", value: this.state.slv, onChange: this.handleEvent.bind(this, "slv")})), 
+                    React.createElement("td", {className: "consider"}, 
+                        "min: ", React.createElement("input", {type: "number", min: "0", max: "10", value: this.state.considerNumberMin, onChange: this.handleEvent.bind(this, "considerNumberMin")}), React.createElement("br", null), 
+                        "max:", React.createElement("input", {type: "number", min: "0", max: "10", value: this.state.considerNumberMax, onChange: this.handleEvent.bind(this, "considerNumberMax")})
+                    ), 
+                    React.createElement("td", {className: "system"}, 
+                        React.createElement("button", {className: "systemButton", type: "button", onClick: this.clickRemoveButton}, "削除"), 
+                        React.createElement("button", {className: "systemButton", type: "button", onClick: this.clickCopyButton}, "コピー")
+                    )
+                )
+            );
+        }
     }
 });
 
@@ -21894,6 +22176,91 @@ var Profile = React.createClass({displayName: "Profile",
       }
     },
     render: function() {
+        if(_ua.Mobile) {
+            return (
+                React.createElement("div", {className: "profile"}, 
+                    React.createElement("h3", null, " ジータちゃん情報 (*: 推奨入力項目)"), 
+                    React.createElement("table", null, 
+                        React.createElement("tr", null, 
+                            React.createElement("th", {className: "prof"}, "Rank*"), 
+                            React.createElement("th", {className: "prof"}, "攻撃力ボーナス", React.createElement("br", null), "(Job+zenith)*"), 
+                            React.createElement("th", {className: "prof"}, "HPボーナス"), 
+                            React.createElement("th", {className: "prof"}, "マスボ", React.createElement("br", null), "ATK(%)*")
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "175", value: this.state.rank, onChange: this.handleEvent.bind(this, "rank")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.attackBonus, onChange: this.handleEvent.bind(this, "attackBonus")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")}))
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("th", {className: "prof"}, "マスボ", React.createElement("br", null), "HP(%)*"), 
+                            React.createElement("th", {className: "prof"}, "ジョブ*"), 
+                            React.createElement("th", {className: "prof"}, "残HP(%)", React.createElement("br", null), "(ジータのみ)")
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")})), 
+                            React.createElement("td", null, React.createElement("select", {value: this.state.job, onChange: this.handleEvent.bind(this, "job")}, " ", this.props.alljobs, " ")), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}))
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("th", {className: "prof"}, "ジータ属性*"), 
+                            React.createElement("th", {className: "prof"}, "敵の属性*"), 
+                            React.createElement("th", {className: "prof"}, "武器ゼニス1"), 
+                            React.createElement("th", {className: "prof"}, "武器ゼニス2")
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("td", null, React.createElement("select", {value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " ")), 
+                            React.createElement("td", null, React.createElement("select", {value: this.state.enemyElement, onChange: this.handleEvent.bind(this, "enemyElement")}, " ", select_elements, " ")), 
+                            React.createElement("td", null, React.createElement("select", {value: this.state.zenithBonus1, onChange: this.handleEvent.bind(this, "zenithBonus1")}, " ", this.props.zenithBonuses, " ")), 
+                            React.createElement("td", null, React.createElement("select", {value: this.state.zenithBonus2, onChange: this.handleEvent.bind(this, "zenithBonus2")}, " ", this.props.zenithBonuses, " "))
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("th", {className: "prof"}, "基礎DA率"), 
+                            React.createElement("th", {className: "prof"}, "基礎TA率"), 
+                            React.createElement("th", {className: "prof"}, "敵防御固有値(仮)")
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", step: "0.5", value: this.state.enemyDefense, onChange: this.handleEvent.bind(this, "enemyDefense")}))
+                        )
+                    ), 
+
+                    React.createElement("h3", null, " パーティ全体への効果 (%表記)"), 
+                    React.createElement("table", null, 
+                        React.createElement("tr", null, 
+                            React.createElement("th", {className: "buff"}, "通常バフ"), 
+                            React.createElement("th", {className: "buff"}, "属性バフ"), 
+                            React.createElement("th", {className: "buff"}, "その他バフ"), 
+                            React.createElement("th", {className: "buff"}, "HPバフ")
+                        ), React.createElement("tr", null, 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.normalBuff, onChange: this.handleEvent.bind(this, "normalBuff")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.elementBuff, onChange: this.handleEvent.bind(this, "elementBuff")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.otherBuff, onChange: this.handleEvent.bind(this, "otherBuff")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", value: this.state.hpBuff, onChange: this.handleEvent.bind(this, "hpBuff")}))
+                        ), React.createElement("tr", null, 
+                            React.createElement("th", {className: "buff"}, "DAバフ"), 
+                            React.createElement("th", {className: "buff"}, "TAバフ"), 
+                            React.createElement("th", {className: "buff"}, "残HP(%)")
+                        ), React.createElement("tr", null, 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.daBuff, onChange: this.handleEvent.bind(this, "daBuff")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.taBuff, onChange: this.handleEvent.bind(this, "taBuff")})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "0", max: "100", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))
+                        ), React.createElement("tr", null, 
+                            React.createElement("th", {className: "buff"}, "武器種類数*"), 
+                            React.createElement("th", {className: "buff"}, "召喚石の組数*"), 
+                            React.createElement("th", {className: "buff"}, "優先する項目")
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "20", step: "1", value: this.state.armNum, onChange: this.handleArmNumChange})), 
+                            React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "4", step: "1", value: this.state.summonNum, onChange: this.handleSummonNumChange})), 
+                            React.createElement("td", null, React.createElement("select", {value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", this.props.keyTypes, " "))
+                        )
+                    )
+                )
+            );
+        } else {
             return (
                 React.createElement("div", {className: "profile"}, 
                     React.createElement("h3", null, " ジータちゃん情報 (*: 推奨入力項目)"), 
@@ -21964,11 +22331,11 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("td", null, React.createElement("input", {type: "number", min: "1", max: "4", step: "1", value: this.state.summonNum, onChange: this.handleSummonNumChange})), 
                             React.createElement("td", null, React.createElement("select", {value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", this.props.keyTypes, " "))
                         )
-                    ), 
-                    "※パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) ", React.createElement("br", null)
+                    )
                 )
             );
         }
+    }
 });
 var Sys = React.createClass({displayName: "Sys",
     getInitialState: function() {
@@ -22059,10 +22426,9 @@ var Sys = React.createClass({displayName: "Sys",
         }
         return (
             React.createElement("div", {className: "dataControl"}, 
+                "データ名: ", React.createElement("input", {size: "10", type: "text", value: this.state.dataName, onChange: this.handleEvent.bind(this, "dataName")}), 
                 React.createElement("h3", null, " ブラウザに保存 "), 
-
-                "データ名: ", React.createElement("input", {size: "10", type: "text", value: this.state.dataName, onChange: this.handleEvent.bind(this, "dataName")}), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), 
-                "ブラウザに保存されたデータ", 
+                "保存されたデータ", 
                 React.createElement("select", {size: "6", value: this.state.selectedData, onClick: this.handleOnClick.bind(this, "selectedData"), onChange: this.handleEvent.bind(this, "selectedData")}, " ", datalist, " "), 
                 React.createElement("button", {type: "button", onClick: this.onSubmitSave}, "保存"), 
                 React.createElement("button", {type: "button", onClick: this.onSubmitLoad}, "読込"), 
@@ -22143,9 +22509,11 @@ var Notice = React.createClass ({displayName: "Notice",
     render: function() {
       return (
         React.createElement("div", {className: "notice"}, 
+            React.createElement("div", {className: "divright"}, React.createElement("a", {href: "http://hsimyu.net/motocal/"}, "入力リセット")), 
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", null, 
+                React.createElement("li", null, "2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 "), 
                 React.createElement("li", null, "2016/08/17: 検証データを元に渾身の実装を修正 / ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, "データビューア"), "の作成 / 予想ダメージ計算に減衰補正を追加 "), 
                 React.createElement("li", null, "2016/08/16: 三手スキルSLv11~15の値を入力 / DATA率の合計を、枠別上限から武器スキル全体の上限に修正 / 渾身仮実装 "), 
                 React.createElement("li", null, "2016/08/12: 二手スキル上限の値に召喚石加護分の値が考慮されていなかった不具合を修正。/ 予想ダメージ機能を仮実装しました。"), 
@@ -22167,9 +22535,11 @@ var Notice = React.createClass ({displayName: "Notice",
                  React.createElement("li", null, React.createElement("strong", null, "バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに\"バハフツ(攻/HP)\"を選択してください。"), " ", React.createElement("br", null), 
                  "(バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)"), 
                  React.createElement("li", null, "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。"), 
-                 React.createElement("li", null, "三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。"), 
+                 React.createElement("li", null, "三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。", React.createElement("br", null), 
+                 "また、三手スキル上限はデータがないため仮に50%としています。実際には50%よりも低い可能性もあるのでご注意下さい。"), 
                  React.createElement("li", null, "\"コスモス\"欄はコスモス武器にチェックをつけてください。"), 
                  React.createElement("li", null, "計算量削減のため、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。"), 
+                 React.createElement("li", null, "パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) "), 
                  React.createElement("li", null, 
                  "敵防御固有値は予想ダメージ計算にのみ使用されます。(10から15程度が目安)", React.createElement("br", null), 
                  "防御デバフを考慮する場合、防御固有値を半分にしてください。", React.createElement("br", null), 
