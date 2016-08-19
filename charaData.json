@@ -1,0 +1,26 @@
+{
+    "おなまえ": {
+        "name": "おなまえ",
+        "attack": 3000,
+        "hp": 170,
+        "type": "heal",
+        "favArm1": "wand",
+        "favArm2": "none",
+        "element": "water",
+        "imageURL": "./imgs/1040101500.png",
+        "baseDA": 6.5,
+        "baseTA": 3.0
+   },
+    "おなまえ2": {
+        "name": "おなまえ2",
+        "attack": 3000,
+        "hp": 170,
+        "type": "heal",
+        "favArm1": "wand",
+        "favArm2": "none",
+        "element": "water",
+        "imageURL": "./imgs/1040101500.png",
+        "baseDA": 6.5,
+        "baseTA": 3.0
+   }
+}
