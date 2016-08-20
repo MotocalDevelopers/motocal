@@ -388,9 +388,54 @@ label {
     padding: 3px;
     font-size: 6pt;
     font-weight: bold;
+    position: relative;
 }
 
-.img-rounded {
+.onearm p {
+    position: absolute;
+}
+
+.onearm .img-rounded {
+    width: 85px;
+    height: 85px;
+    overflow: hidden;
+}
+
+/* charaPresets */
+.charaTemplate {
+    width: 100%;
+    height: 80%;
+}
+
+.charaTemplateContent {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+.charaTemplate .form-control {
+    width: 50%;
+}
+
+.onechara {
+    width: calc(100%/2 - 4px);
+    display: block;
+    float: left;
+    overflow: auto;
+    margin: 4px 1px;
+    border:1px solid #258;
+    border-radius: 2px;
+    padding: 3px;
+    font-size: 6pt;
+    font-weight: bold;
+    position: relative;
+}
+
+.onechara p {
+    position: absolute;
+}
+
+.onechara .img-rounded {
     width: 85px;
     height: 85px;
     overflow: hidden;

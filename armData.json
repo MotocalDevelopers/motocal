@@ -354,7 +354,7 @@
         "skill1": "bahaATHP-sword", 
         "element": "dark", 
         "attack": "2470", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "sword", 
         "hp": "205", 
         "imageURL": "./imgs/1040004300.png"
@@ -570,7 +570,7 @@
         "skill1": "bahaFUATHP-sword", 
         "element": "dark", 
         "attack": "2885", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "sword", 
         "hp": "240", 
         "imageURL": "./imgs/1040007400.png"
@@ -954,7 +954,7 @@
         "skill1": "bahaAT-dagger", 
         "element": "dark", 
         "attack": "2355", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "dagger", 
         "hp": "229", 
         "imageURL": "./imgs/1040103700.png"
@@ -1050,7 +1050,7 @@
         "skill1": "bahaFUATHP-dagger", 
         "element": "dark", 
         "attack": "2750", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "dagger", 
         "hp": "268", 
         "imageURL": "./imgs/1040106700.png"
@@ -1374,7 +1374,7 @@
         "skill1": "bahaAT-spear", 
         "element": "dark", 
         "attack": "2260", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "spear", 
         "hp": "248", 
         "imageURL": "./imgs/1040203700.png"
@@ -1518,7 +1518,7 @@
         "skill1": "bahaFUATHP-spear", 
         "element": "dark", 
         "attack": "2640", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "spear", 
         "hp": "290", 
         "imageURL": "./imgs/1040205400.png"
@@ -1866,7 +1866,7 @@
         "skill1": "bahaAT-axe", 
         "element": "dark", 
         "attack": "2585", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "axe", 
         "hp": "183", 
         "imageURL": "./imgs/1040303000.png"
@@ -1950,7 +1950,7 @@
         "skill1": "bahaFUATHP-axe", 
         "element": "dark", 
         "attack": "3015", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "axe", 
         "hp": "214", 
         "imageURL": "./imgs/1040304300.png"
@@ -2310,7 +2310,7 @@
         "skill1": "bahaATHP-wand", 
         "element": "dark", 
         "attack": "2120", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "wand", 
         "hp": "276", 
         "imageURL": "./imgs/1040403700.png"
@@ -2454,7 +2454,7 @@
         "skill1": "bahaFUATHP-wand", 
         "element": "dark", 
         "attack": "2475", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "wand", 
         "hp": "323", 
         "imageURL": "./imgs/1040407000.png"
@@ -2742,7 +2742,7 @@
         "skill1": "bahaAT-gun", 
         "element": "dark", 
         "attack": "2645", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "gun", 
         "hp": "171", 
         "imageURL": "./imgs/1040502300.png"
@@ -2838,7 +2838,7 @@
         "skill1": "bahaFUATHP-gun", 
         "element": "dark", 
         "attack": "3085", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "gun", 
         "hp": "200", 
         "imageURL": "./imgs/1040504500.png"
@@ -3090,7 +3090,7 @@
         "skill1": "bahaHP-fist", 
         "element": "dark", 
         "attack": "2305", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "fist", 
         "hp": "239", 
         "imageURL": "./imgs/1040602400.png"
@@ -3258,7 +3258,7 @@
         "skill1": "bahaHP-fist", 
         "element": "dark", 
         "attack": "2690", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "fist", 
         "hp": "280", 
         "imageURL": "./imgs/1040604400.png"
@@ -3594,7 +3594,7 @@
         "skill1": "bahaHP-bow", 
         "element": "dark", 
         "attack": "2460", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "bow", 
         "hp": "219", 
         "imageURL": "./imgs/1040702400.png"
@@ -3654,7 +3654,7 @@
         "skill1": "bahaHP-bow", 
         "element": "dark", 
         "attack": "2870", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "bow", 
         "hp": "256", 
         "imageURL": "./imgs/1040703700.png"
@@ -3822,7 +3822,7 @@
         "skill1": "bahaHP-music", 
         "element": "dark", 
         "attack": "2180", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "music", 
         "hp": "231", 
         "imageURL": "./imgs/1040802000.png"
@@ -3942,7 +3942,7 @@
         "skill1": "bahaHP-music", 
         "element": "dark", 
         "attack": "2545", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "music", 
         "hp": "264", 
         "imageURL": "./imgs/1040803800.png"
@@ -4110,7 +4110,7 @@
         "skill1": "bahaHP-katana", 
         "element": "dark", 
         "attack": "2620", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "katana", 
         "hp": "179", 
         "imageURL": "./imgs/1040901300.png"
@@ -4266,7 +4266,7 @@
         "skill1": "bahaHP-katana", 
         "element": "dark", 
         "attack": "3060", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "type": "katana", 
         "hp": "209", 
         "imageURL": "./imgs/1040904400.png"

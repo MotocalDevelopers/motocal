@@ -460,27 +460,30 @@ var Root = React.createClass({
   },
   onChangeArmData: function(state, isSubtle) {
       // armlistの武器名に変更があればresultはupdateしなくてよい
-      var isSubtlePropsChange = false;
-      if(this.state.armlist != undefined) {
-          var len = (this.state.armlist.length > state.length) ? state.length : this.state.armlist.length
-          for(var i = 0; i < len; i++){
-              if(this.state.armlist[i].name != state[i].name) {
-                  isSubtlePropsChange = true;
-                  break;
-              }
-          }
-      }
-      console.log("isSubtle?:", isSubtle);
       this.setState({armlist: state});
+
+      if(isSubtle != undefined) {
+          this.setState({noResultUpdate: isSubtle});
+      } else {
+          this.setState({noResultUpdate: false});
+      }
   },
   onChangeProfileData: function(state) {
       this.setState({profile: state});
+      this.setState({noResultUpdate: false});
   },
   onChangeSummonData: function(state) {
       this.setState({summon: state});
+      this.setState({noResultUpdate: false});
   },
-  onChangeCharaData: function(state) {
+  onChangeCharaData: function(state, isSubtle) {
       this.setState({chara: state});
+
+      if(isSubtle != undefined) {
+          this.setState({noResultUpdate: isSubtle});
+      } else {
+          this.setState({noResultUpdate: false});
+      }
   },
   handleChangeData: function(newDataName) {
       this.setState({armNum: newData.armNum});
@@ -675,7 +678,16 @@ var CharaList = React.createClass({
         return {
             charalist: [],
             defaultElement: "fire",
+            addChara: null,
+            addCharaID: -1,
+            openPresets: false,
         };
+    },
+    closePresets: function() {
+        this.setState({openPresets: false})
+    },
+    openPresets: function() {
+        this.setState({openPresets: true})
     },
     componentWillReceiveProps: function(nextProps) {
         if (parseInt(nextProps.charaNum) < parseInt(this.props.charaNum)) {
@@ -686,16 +698,34 @@ var CharaList = React.createClass({
             this.setState({charalist: newcharalist})
         }
     },
-    handleOnChange: function(key, state){
+    handleOnChange: function(key, state, isSubtle){
         var newcharalist = this.state.charalist;
         newcharalist[key] = state;
         this.setState({charalist: newcharalist})
-        this.props.onChange(newcharalist);
+        this.props.onChange(newcharalist, isSubtle);
     },
     handleEvent: function(key, e) {
-      var newState = this.state
-      newState[key] = e.target.value
-      this.setState(newState)
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    addTemplateChara: function(templateChara) {
+        var minimumID = -1;
+        for(key in this.state.charalist) {
+            if(this.state.charalist[key].name == "" && this.state.charalist[key].attack == 0){
+                minimumID = key;
+                break;
+            }
+        }
+        if(minimumID >= 0) {
+            this.setState({addChara: templateChara})
+            this.setState({addCharaID: minimumID})
+            if(_ua.Mobile || _ua.Table) {
+                alert("追加しました。")
+            }
+        } else {
+            alert("キャラがいっぱいです。")
+        }
     },
     render: function() {
         var charas = [];
@@ -705,12 +735,28 @@ var CharaList = React.createClass({
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
         var defaultElement = this.state.defaultElement;
+        var addChara = this.state.addChara
+        var addCharaID = this.state.addCharaID
+
         if(_ua.Mobile) {
             return (
                 <div className="charaList">
+                    <ButtonGroup vertical block>
+                        <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
+                    </ButtonGroup>
+                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Presets</Modal.Title>
+                            <span>(最大50件しか表示されません)</span>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <RegisteredChara onClick={this.addTemplateChara} />
+                        </Modal.Body>
+                    </Modal>
+
                     [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl>
                     {charas.map(function(c) {
-                        return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} />;
+                        return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
                     })}
                 </div>
             );
@@ -718,6 +764,7 @@ var CharaList = React.createClass({
         } else {
             return (
                 <div className="charaList">
+                    <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
                     <table>
                     <thead>
                     <tr>
@@ -737,14 +784,115 @@ var CharaList = React.createClass({
                     </thead>
                     <tbody>
                         {charas.map(function(c) {
-                            return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} />;
+                            return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
                         })}
                     </tbody>
                     </table>
+
+                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Presets</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <RegisteredChara onClick={this.addTemplateChara} />
+                        </Modal.Body>
+                    </Modal>
                 </div>
             );
         }
     }
+});
+
+var RegisteredChara = React.createClass({
+    getInitialState: function() {
+        return {
+            filterText: "",
+            filterElement: "all",
+            charaData: {},
+            limit: 50,
+        };
+    },
+    componentDidMount: function() {
+        $.ajax({
+            url: "./charaData.json",
+            dataType: 'json',
+            cache: false,
+            timeout: 10000,
+            success: function(data) {
+                this.setState({charaData: data})
+            }.bind(this),
+            error: function(xhr, status, err) {
+                alert("Error!: キャラデータの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
+            }.bind(this)
+        });
+    },
+    clickedTemplate: function(e) {
+        this.props.onClick(this.state.charaData[e.target.getAttribute("id")]);
+    },
+    handleEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    render: function() {
+        var clickedTemplate = this.clickedTemplate;
+        var filterText = this.state.filterText;
+        var filterElement = this.state.filterElement;
+        var charaData = this.state.charaData
+        var limit = this.state.limit;
+        var displayed_count = 0;
+
+        if(_ua.Mobile){
+            return (
+                <div className="charaTemplate">
+                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{select_filterelements}</FormControl>
+                    <div className="charaTemplateContent">
+                        {Object.keys(charaData).map(function(key, ind) {
+                            if(filterElement == "all" || (charaData[key].element == filterElement)){
+                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                    if(displayed_count < limit) {
+                                        displayed_count++;
+                                        return (
+                                            <div className="onechara" key={key}>
+                                                <p>{charaData[key].name}</p><br/>
+                                                <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
+                                            </div>
+                                        );
+                                    } else {
+                                        return "";
+                                    }
+                                }
+                            }
+                            return "";
+                        })}
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div className="charaTemplate">
+                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{select_filterelements}</FormControl>
+                    <div className="charaTemplateContent">
+                        {Object.keys(charaData).map(function(key, ind) {
+                            if(filterElement == "all" || (charaData[key].element == filterElement)){
+                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                    return (
+                                        <div className="onechara" key={key}>
+                                            <p>{charaData[key].name}</p><br/>
+                                            <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
+                                        </div>
+                                    );
+                                }
+                            }
+                            return "";
+                        })}
+                    </div>
+                </div>
+            )
+        }
+    },
 });
 
 var Chara = React.createClass({
@@ -777,7 +925,7 @@ var Chara = React.createClass({
        }
        // 初期化後 state を 上の階層に渡しておく
        // CharaList では onChange が勝手に上に渡してくれるので必要なし
-       this.props.onChange(this.props.id, state);
+       this.props.onChange(this.props.id, state, false);
     },
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
@@ -786,25 +934,50 @@ var Chara = React.createClass({
             if( chara != undefined && this.props.id in chara ){
                 state = chara[this.props.id]
                 this.setState(state)
-                this.props.onChange(this.props.id, state)
+                this.props.onChange(this.props.id, state, false)
             }
         }
         if(nextProps.defaultElement != this.props.defaultElement) {
             var newState = this.state
             newState["element"] = nextProps.defaultElement
             this.setState(newState);
-            this.props.onChange(this.props.id, newState);
+            this.props.onChange(this.props.id, newState, false);
+        }
+
+        if(nextProps.addChara != null && nextProps.addChara != this.props.addChara && this.props.id == nextProps.addCharaID ) {
+            var newState = this.state
+            var newchara = nextProps.addChara
+
+            newState["name"] = newchara.name
+            newState["attack"] = newchara.attack
+            newState["hp"] = newchara.hp
+            newState["type"] = newchara.type
+            newState["race"] = newchara.race
+            newState["element"] = newchara.element
+            newState["favArm"] = newchara.fav1
+            newState["favArm2"] = newchara.fav2
+            newState["DA"] = newchara.baseDA
+            newState["TA"] = newchara.baseTA
+
+            this.setState(newState);
+            this.props.onChange(this.props.id, newState, false);
         }
     },
     handleEvent: function(key, e) {
         var newState = this.state
+        var isSubtle = false
+
         if(key == "isConsideredInAverage") {
             newState[key] = (newState[key] == false) ? true : false
         } else {
+            if(key == "name" && this.state.name != "" && newState.name != "") {
+                isSubtle = true
+            }
+
             newState[key] = e.target.value
         }
         this.setState(newState)
-        this.props.onChange(this.props.id, newState)
+        this.props.onChange(this.props.id, newState, isSubtle)
     },
     render: function() {
         if(_ua.Mobile) {
@@ -2140,7 +2313,7 @@ var ArmList = React.createClass({
         this.setState({alist: newalist})
 
         // Root へ変化を伝搬
-        this.props.onChange(newalist);
+        this.props.onChange(newalist, false);
     },
     handleOnRemove: function(id, keyid, state) {
         var newarms = this.state.arms
@@ -2166,7 +2339,7 @@ var ArmList = React.createClass({
         this.setState({alist: newalist})
 
         // Root へ変化を伝搬
-        this.props.onChange(newalist);
+        this.props.onChange(newalist, false);
     },
     handleOnChange: function(key, state, isSubtle){
         var newalist = this.state.alist;
@@ -2190,6 +2363,9 @@ var ArmList = React.createClass({
         if(minimumID >= 0) {
             this.setState({addArm: templateArm})
             this.setState({addArmID: minimumID})
+            if(_ua.Mobile || _ua.Table) {
+                alert("追加しました。")
+            }
         } else {
             alert("武器がいっぱいです。")
         }
@@ -2217,7 +2393,7 @@ var ArmList = React.createClass({
                             <span>(最大50件しか表示されません)</span>
                         </Modal.Header>
                         <Modal.Body>
-                            <RegisteredArm filter="fire" onClick={this.addTemplateArm} />
+                            <RegisteredArm onClick={this.addTemplateArm} />
                         </Modal.Body>
                     </Modal>
 
@@ -2257,7 +2433,7 @@ var ArmList = React.createClass({
                             <Modal.Title>Presets</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <RegisteredArm filter="fire" onClick={this.addTemplateArm} />
+                            <RegisteredArm onClick={this.addTemplateArm} />
                         </Modal.Body>
                     </Modal>
                 </div>
@@ -2380,7 +2556,7 @@ var Arm = React.createClass({
         if(nextProps.dataName != this.props.dataName) {
             var newState = newData.armlist[this.props.id]
             this.setState(newState);
-            this.props.onChange(this.props.id, newState);
+            this.props.onChange(this.props.id, newState, false);
         }
 
         if(nextProps.defaultElement != this.props.defaultElement) {
@@ -2388,7 +2564,7 @@ var Arm = React.createClass({
             newState["element"] = nextProps.defaultElement
             newState["element2"] = nextProps.defaultElement
             this.setState(newState);
-            this.props.onChange(this.props.id, newState);
+            this.props.onChange(this.props.id, newState, false);
         }
 
         if(nextProps.addArm != null && nextProps.addArm != this.props.addArm && this.props.id == nextProps.addArmID ) {
@@ -2408,7 +2584,7 @@ var Arm = React.createClass({
             if(newState["considerNumberMax"] == 0) newState["considerNumberMax"] = 1
 
             this.setState(newState);
-            this.props.onChange(this.props.id, newState);
+            this.props.onChange(this.props.id, newState, false);
         }
     },
     componentDidMount: function(){
@@ -2423,7 +2599,7 @@ var Arm = React.createClass({
        }
        // 初期化後 state を 上の階層に渡しておく
        // armList では onChange が勝手に上に渡してくれるので必要なし
-       this.props.onChange(this.props.id, state);
+       this.props.onChange(this.props.id, state, false);
     },
     handleEvent: function(key, e) {
         var newState = this.state
@@ -2919,7 +3095,8 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul>
-                <li>2016/08/19: 武器テンプレート機能を追加(gbf-wikiのデータを使わせて頂きました。) / コスモス武器チェックボックス廃止 </li>
+                <li>2016/08/19: キャラテンプレート機能を追加 </li>
+                <li>2016/08/19: 武器テンプレート機能を追加(gbf-wikiのデータを使わせて頂きました。) / コスモス武器チェックボックス廃止 / 計算処理の削減 </li>
                 <li>2016/08/19: 武器数・召喚石数・キャラ数の増やし方を変更 / ゼニスパークとジョブ攻撃ボーナスを分離 / 同じ名前のキャラがいると片方しか計算されない不具合を修正 </li>
                 <li>2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 / UI調整 </li>
                 <li>2016/08/17: 検証データを元に渾身の実装を修正 / <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank">データビューア</a>の作成 / 予想ダメージ計算に減衰補正を追加 </li>
@@ -2928,8 +3105,6 @@ var Notice = React.createClass ({
                 <li>2016/08/11: 敵の属性の内部的な初期値がおかしかった不具合を修正。</li>
                 <li>2016/08/09: 簡易リセットボタンを配置 / バハムート武器フツルスの拳系に対応 (wikiの情報に準拠) (HP40%, DA10%, TA8%という情報もありますが、未確定の為とりあえず低い値を採用しました。検証してくれる方を募集してます……) </li>
                 <li>2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。 / 武器スキル属性の一括変更を実装 </li>
-                <li>2016/08/06: 考慮本数が最大0本の場合は結果欄に表示されないように変更 / 計算量を削減する処理を追加 / バハ攻とバハ攻HPが複数本指定された時に同種スキルが重複して計算されないよう修正 / キャラ別HP管理を実装 / ジータの基礎DATA率を弄れるように / キャラHPの表示を実装 / 結果のHP欄に残HPも同時表示するようにした / マウスホバー時にスキル情報を表示するようにした。 </li>
-                <li>2016/08/03: レイアウト調整/キャラ別基礎DATA率計算の実装</li>
             </ul>
 
             <h3>注記</h3>
