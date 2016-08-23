@@ -96,6 +96,11 @@ tr.result:hover {
     text-align: right;
 }
 
+.charainfo {
+    text-align: left;
+    font-size: 6pt;
+}
+
 .banner {
     float: right;
     margin-top: 1px;
@@ -209,17 +214,23 @@ thead.result th {
   background:-moz-linear-gradient(rgba(59,34,136,0.85), rgba(59,34,136,0.9) 50%);
   background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(59,34,136,0.85)), to(rgba(59,34,136,0.9)));
   border-color: rgb(59, 34, 136);
+  width: 2em;
+  word-wrap: break-word;
 }
 
 td.resultFirst, th.resultFirst {
   border-left:1px double #258;
-  min-width: 20px;
-  max-width: 40px;
+  /* min-width: 20px; */
+  /* max-width: 40px; */
+  width: 2em;
+  word-wrap: break-word;
 }
 
 td.resultList, th.resultList {
-  min-width: 20px;
-  max-width: 40px;
+  /* min-width: 20px; */
+  /* max-width: 40px; */
+  width: 2em;
+  word-wrap: break-word;
 }
 
 div.result {
@@ -242,6 +253,7 @@ div.resultList {
 
 table.displayElement tbody tr td {
     font-size: 6pt;
+    text-align: left;
 }
 
 table.displayElement tr:first-child td {
@@ -303,13 +315,13 @@ table.displayElement tr:last-child td {
     z-index: 2;
     border-bottom-color: #FFF;
 }
-.inputTab, .resultTab, .systemTab, .summonTab, .charaTab, .armTab {
+.Tab {
     width: 100%;
     height: 100%;
     overflow: visible;
     padding: 5px 5px 20px 5px;
 }
-.inputTab.hidden, .resultTab.hidden, .systemTab.hidden, .summonTab.hidden, .charaTab.hidden, .armTab.hidden {
+.Tab.hidden {
     overflow: hidden;
     height: 0%;
 }
@@ -361,6 +373,13 @@ label {
     width: calc(100%/2);
 }
 
+.modal-dialog {
+    width: 80%;
+    height: 90%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 /* armPresets */
 .armTemplate {
     width: 100%;
@@ -368,13 +387,18 @@ label {
 }
 
 .armTemplateContent {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 3px);
+    height: 90%;
     overflow: scroll;
+    text-align: center;
 }
 
 .armTemplate .form-control {
-    width: 50%;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: inline;
+    margin-bottom: 5px;
 }
 
 .onearm {
@@ -382,7 +406,7 @@ label {
     display: block;
     float: left;
     overflow: auto;
-    margin: 4px 1px;
+    margin: 4px 1px 2px 0px;
     border:1px solid #258;
     border-radius: 2px;
     padding: 3px;
@@ -401,6 +425,9 @@ label {
     overflow: hidden;
 }
 
+.onearm:nth-child(2n) {
+    margin: 4px 0px 2px 1px;
+}
 /* charaPresets */
 .charaTemplate {
     width: 100%;
@@ -408,13 +435,17 @@ label {
 }
 
 .charaTemplateContent {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 3px);
+    height: 90%;
     overflow: scroll;
 }
 
 .charaTemplate .form-control {
-    width: 50%;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: inline;
+    margin-bottom: 5px;
 }
 
 .onechara {
@@ -439,4 +470,42 @@ label {
     width: 85px;
     height: 85px;
     overflow: hidden;
+}
+
+.presetsConsiderNumber.fade.in.modal .modal-dialog {
+    margin-top: 150px;
+    width: 78%;
+    margin-left: 10.5%;
+    margin-right: 11.5%;
+}
+
+.howTo {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.hpChart.fade.in.modal .modal-dialog {
+    margin-left: 5%;
+    width: 90%;
+    overflow: visible;
+    margin-right: 5%;
+}
+
+.hpChart.fade.in.modal .modal-content {
+    width: 100%;
+    overflow: scroll;
+}
+
+.hpChartTutorial.fade.in.modal .modal-dialog {
+    margin-left: 20%;
+    width: 60%;
+    overflow: visible;
+    margin-right: 20%;
+}
+
+.google-visualization-tooltip {
+    z-index: 1;
+    width: 60px;
+    overflow: visible;
 }

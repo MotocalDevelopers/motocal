@@ -107,14 +107,14 @@
         "baseDA": 6.5, 
         "name": "サルナーン", 
         "hp": "1340", 
-        "element": "dark", 
+        "element": "light", 
         "attack": "8360", 
         "race": "erune", 
         "baseTA": 3.0, 
         "fav1": "wand", 
         "fav2": "none", 
         "type": "pecu", 
-        "imageURL": "./charaimgs/3040048000_01.png"
+        "imageURL": "./charaimgs/3040008000_01.png"
     }, 
     "カリオストロ": {
         "baseDA": 6.5, 
@@ -522,15 +522,15 @@
     "ジャンヌダルク": {
         "baseDA": 6.5, 
         "name": "ジャンヌダルク", 
-        "hp": "1200", 
-        "element": "dark", 
-        "attack": "9800", 
+        "hp": "1550", 
+        "element": "light", 
+        "attack": "8290", 
         "race": "human", 
         "baseTA": 3.0, 
-        "fav1": "sword", 
+        "fav1": "spear", 
         "fav2": "none", 
-        "type": "attack", 
-        "imageURL": "./charaimgs/3040080000_01.png"
+        "type": "balance", 
+        "imageURL": "./charaimgs/3040040000_01.png"
     }, 
     "サラ": {
         "baseDA": 6.5, 
@@ -622,6 +622,19 @@
         "fav2": "none", 
         "type": "balance", 
         "imageURL": "./charaimgs/3040047000_01.png"
+    }, 
+    "サルナーン(闇)": {
+        "baseDA": 6.5, 
+        "name": "サルナーン(闇)", 
+        "hp": "1340", 
+        "element": "dark", 
+        "attack": "8360", 
+        "race": "erune", 
+        "baseTA": 3.0, 
+        "fav1": "wand", 
+        "fav2": "none", 
+        "type": "pecu", 
+        "imageURL": "./charaimgs/3040048000_01.png"
     }, 
     "シルヴァ": {
         "baseDA": 6.5, 
@@ -1025,6 +1038,19 @@
         "fav2": "none", 
         "type": "attack", 
         "imageURL": "./charaimgs/3040079000_01.png"
+    }, 
+    "ジャンヌダルク(闇)": {
+        "baseDA": 6.5, 
+        "name": "ジャンヌダルク(闇)", 
+        "hp": "1200", 
+        "element": "dark", 
+        "attack": "9800", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "sword", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3040080000_01.png"
     }, 
     "コルワ": {
         "baseDA": 6.5, 

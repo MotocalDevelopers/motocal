@@ -98,19 +98,25 @@ tr.result:hover {
     text-align: right;
 }
 
+.charainfo {
+    text-align: left;
+    font-size: 10pt;
+}
+
 .banner {
     float: right;
     margin-top: 1px;
     height: 100px;
 }
 
-.inputTab, .resultTab, .systemTab, .summonTab, .charaTab, .armTab {
+.Tab {
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: visible;
+    padding: 5px 5px 20px 5px;
 }
 
-.inputTab.hidden, .resultTab.hidden, .systemTab.hidden, .summonTab.hidden, .charaTab.hidden, .armTab.hidden {
+.Tab.hidden {
     overflow: hidden;
     height: 0%;
 }
@@ -167,19 +173,6 @@ tr.result:hover {
     width: 60px;
 }
 
-/* .armList table td.consider select, .armList table td.consider option { */
-/*     width: 8%;                                                         */
-/*     min-width: 80px;                                                   */
-/* }                                                                      */
-
-/* .armList table td.consider input {                                     */
-/*     width: 40px;                                                       */
-/* }                                                                      */
-
-/* .armList table td.system button {                                      */
-/*     width: 95%;                                                        */
-/* }                                                                      */
-
 .armList .element {
     width: 30%;
     display: inline;
@@ -218,10 +211,6 @@ tr.result:hover {
 .charaList th, .charaList td {
     width: calc(100%/12);
     font-size: 7pt;
-}
-
-.charaList th.considerAverage, .charaList td.considerAverage {
-    width: auto;
 }
 
 thead.result th {
@@ -366,7 +355,8 @@ select, option, {
 }
 
 .summonList .form-control.multi {
-    width: 70%;
+    width: 60%;
+    font-size: 7pt;
 }
 
 .armList .form-control.consider {
@@ -415,12 +405,16 @@ label {
 
 .armTemplateContent {
     width: 100%;
-    height: 100%;
+    height: 90%;
     overflow: scroll;
 }
 
 .armTemplate .form-control {
-    width: 50%;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: inline;
+    margin-bottom: 5px;
 }
 
 .onearm {
@@ -454,12 +448,16 @@ label {
 
 .charaTemplateContent {
     width: 100%;
-    height: 100%;
+    height: 90%;
     overflow: scroll;
 }
 
 .charaTemplate .form-control {
-    width: 50%;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: inline;
+    margin-bottom: 5px;
 }
 
 .onechara {
@@ -483,4 +481,45 @@ label {
     width: 170px;
     height: 170px;
     overflow: hidden;
+}
+
+.presetsConsiderNumber.fade.in.modal .modal-dialog {
+    margin-top: 150px;
+    width: 500px;
+}
+
+.howTo {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.hpChart.fade.in.modal .modal-dialog {
+    margin-left: 15%;
+    width: 70%;
+    overflow: visible;
+    margin-right: 15%;
+}
+
+.hpChart.fade.in.modal .modal-content {
+    height: 90%;
+    overflow: scroll;
+}
+
+div#LineChart0, div#LineChart1, div#LineChart2, div#LineChart3, div#LineChart4, div#LineChart5 {
+    display: inline;
+    float: left;
+}
+
+.hpChartTutorial.fade.in.modal .modal-dialog {
+    margin-left: 50%;
+    width: 50%;
+    overflow: visible;
+    margin-right: 50%;
+}
+
+.google-visualization-tooltip {
+    z-index: 1;
+    width: 350px;
+    overflow: visible;
 }

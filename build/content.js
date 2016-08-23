@@ -212,7 +212,7 @@ var Accordion = function (_React$Component) {
 
 exports['default'] = Accordion;
 module.exports = exports['default'];
-},{"./PanelGroup":70,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427}],3:[function(require,module,exports){
+},{"./PanelGroup":70,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436}],3:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -341,7 +341,7 @@ Alert.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsStyles)((0, _values2['default'])(_StyleConfig.State), _StyleConfig.State.INFO, (0, _bootstrapUtils.bsClass)('alert', Alert));
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],4:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],4:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -449,7 +449,7 @@ Badge.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('badge', Badge);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],5:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],5:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -525,7 +525,7 @@ Breadcrumb.Item = _BreadcrumbItem2['default'];
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('breadcrumb', Breadcrumb);
 module.exports = exports['default'];
-},{"./BreadcrumbItem":6,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],6:[function(require,module,exports){
+},{"./BreadcrumbItem":6,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],6:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -623,7 +623,7 @@ BreadcrumbItem.defaultProps = defaultProps;
 
 exports['default'] = BreadcrumbItem;
 module.exports = exports['default'];
-},{"./SafeAnchor":76,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],7:[function(require,module,exports){
+},{"./SafeAnchor":76,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],7:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -755,7 +755,7 @@ Button.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('btn', (0, _bootstrapUtils.bsSizes)([_StyleConfig.Size.LARGE, _StyleConfig.Size.SMALL, _StyleConfig.Size.XSMALL], (0, _bootstrapUtils.bsStyles)([].concat((0, _values2['default'])(_StyleConfig.State), [_StyleConfig.Style.DEFAULT, _StyleConfig.Style.PRIMARY, _StyleConfig.Style.LINK]), _StyleConfig.Style.DEFAULT, Button)));
 module.exports = exports['default'];
-},{"./SafeAnchor":76,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],8:[function(require,module,exports){
+},{"./SafeAnchor":76,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],8:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -860,7 +860,7 @@ ButtonGroup.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('btn-group', ButtonGroup);
 module.exports = exports['default'];
-},{"./Button":7,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/all":246}],9:[function(require,module,exports){
+},{"./Button":7,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/all":246}],9:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -933,7 +933,7 @@ var ButtonToolbar = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('btn-toolbar', (0, _bootstrapUtils.bsSizes)(_Button2['default'].SIZES, ButtonToolbar));
 module.exports = exports['default'];
-},{"./Button":7,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],10:[function(require,module,exports){
+},{"./Button":7,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],10:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1345,7 +1345,7 @@ Carousel.Item = _CarouselItem2['default'];
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('carousel', Carousel);
 module.exports = exports['default'];
-},{"./CarouselCaption":11,"./CarouselItem":12,"./Glyphicon":28,"./SafeAnchor":76,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],11:[function(require,module,exports){
+},{"./CarouselCaption":11,"./CarouselItem":12,"./Glyphicon":28,"./SafeAnchor":76,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],11:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1429,7 +1429,7 @@ CarouselCaption.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('carousel-caption', CarouselCaption);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],12:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],12:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1593,7 +1593,7 @@ CarouselItem.defaultProps = defaultProps;
 
 exports['default'] = CarouselItem;
 module.exports = exports['default'];
-},{"./utils/TransitionEvents":91,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-dom":255}],13:[function(require,module,exports){
+},{"./utils/TransitionEvents":91,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-dom":255}],13:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -1733,7 +1733,7 @@ Checkbox.defaultProps = defaultProps;
 exports['default'] = (0, _bootstrapUtils.bsClass)('checkbox', Checkbox);
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"warning":254}],14:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"warning":254}],14:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1865,7 +1865,7 @@ Clearfix.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('clearfix', Clearfix);
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"./utils/capitalize":94,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],15:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"./utils/capitalize":94,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],15:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2136,7 +2136,7 @@ Col.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('col', Col);
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],16:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],16:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2395,7 +2395,7 @@ Collapse.defaultProps = defaultProps;
 
 exports['default'] = Collapse;
 module.exports = exports['default'];
-},{"./utils/capitalize":94,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"dom-helpers/style":219,"react":427,"react-overlays/lib/Transition":237}],17:[function(require,module,exports){
+},{"./utils/capitalize":94,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"dom-helpers/style":219,"react":436,"react-overlays/lib/Transition":237}],17:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -2500,7 +2500,7 @@ ControlLabel.contextTypes = contextTypes;
 exports['default'] = (0, _bootstrapUtils.bsClass)('control-label', ControlLabel);
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"warning":254}],18:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"warning":254}],18:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -2907,7 +2907,7 @@ UncontrolledDropdown.Menu = _DropdownMenu2['default'];
 exports['default'] = UncontrolledDropdown;
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./ButtonGroup":8,"./DropdownMenu":20,"./DropdownToggle":21,"./utils/PropTypes":89,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"dom-helpers/activeElement":200,"dom-helpers/query/contains":210,"keycode":230,"react":427,"react-dom":255,"react-prop-types/lib/all":246,"react-prop-types/lib/elementType":248,"react-prop-types/lib/isRequiredForA11y":249,"uncontrollable":252,"warning":254}],19:[function(require,module,exports){
+},{"./ButtonGroup":8,"./DropdownMenu":20,"./DropdownToggle":21,"./utils/PropTypes":89,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"dom-helpers/activeElement":200,"dom-helpers/query/contains":210,"keycode":230,"react":436,"react-dom":255,"react-prop-types/lib/all":246,"react-prop-types/lib/elementType":248,"react-prop-types/lib/isRequiredForA11y":249,"uncontrollable":252,"warning":254}],19:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3012,7 +3012,7 @@ DropdownButton.propTypes = propTypes;
 
 exports['default'] = DropdownButton;
 module.exports = exports['default'];
-},{"./Dropdown":18,"./utils/splitComponentProps":98,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427}],20:[function(require,module,exports){
+},{"./Dropdown":18,"./utils/splitComponentProps":98,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436}],20:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3216,7 +3216,7 @@ DropdownMenu.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('dropdown-menu', DropdownMenu);
 module.exports = exports['default'];
-},{"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/core-js/array/from":99,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"keycode":230,"react":427,"react-dom":255,"react-overlays/lib/RootCloseWrapper":236}],21:[function(require,module,exports){
+},{"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/core-js/array/from":99,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"keycode":230,"react":436,"react-dom":255,"react-overlays/lib/RootCloseWrapper":236}],21:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3325,7 +3325,7 @@ DropdownToggle.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('dropdown-toggle', DropdownToggle);
 module.exports = exports['default'];
-},{"./Button":7,"./SafeAnchor":76,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],22:[function(require,module,exports){
+},{"./Button":7,"./SafeAnchor":76,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],22:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3441,7 +3441,7 @@ Fade.defaultProps = defaultProps;
 
 exports['default'] = Fade;
 module.exports = exports['default'];
-},{"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-overlays/lib/Transition":237}],23:[function(require,module,exports){
+},{"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-overlays/lib/Transition":237}],23:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3537,7 +3537,7 @@ Form.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('form', Form);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],24:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],24:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -3665,7 +3665,7 @@ FormControl.Static = _FormControlStatic2['default'];
 exports['default'] = (0, _bootstrapUtils.bsClass)('form-control', FormControl);
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./FormControlFeedback":25,"./FormControlStatic":26,"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248,"warning":254}],25:[function(require,module,exports){
+},{"./FormControlFeedback":25,"./FormControlStatic":26,"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248,"warning":254}],25:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3779,7 +3779,7 @@ FormControlFeedback.contextTypes = contextTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('form-control-feedback', FormControlFeedback);
 module.exports = exports['default'];
-},{"./Glyphicon":28,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],26:[function(require,module,exports){
+},{"./Glyphicon":28,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],26:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3863,7 +3863,7 @@ FormControlStatic.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('form-control-static', FormControlStatic);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],27:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],27:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3985,7 +3985,7 @@ FormGroup.childContextTypes = childContextTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('form-group', (0, _bootstrapUtils.bsSizes)([_StyleConfig.Size.LARGE, _StyleConfig.Size.SMALL], FormGroup));
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],28:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],28:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4065,7 +4065,7 @@ Glyphicon.propTypes = propTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('glyphicon', Glyphicon);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],29:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],29:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4160,7 +4160,7 @@ Grid.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('container', Grid);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],30:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],30:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4228,7 +4228,7 @@ var HelpBlock = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('help-block', HelpBlock);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],31:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],31:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4334,7 +4334,7 @@ Image.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('img', Image);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],32:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],32:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4415,7 +4415,7 @@ InputGroup.Button = _InputGroupButton2['default'];
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('input-group', (0, _bootstrapUtils.bsSizes)([_StyleConfig.Size.LARGE, _StyleConfig.Size.SMALL], InputGroup));
 module.exports = exports['default'];
-},{"./InputGroupAddon":33,"./InputGroupButton":34,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],33:[function(require,module,exports){
+},{"./InputGroupAddon":33,"./InputGroupButton":34,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],33:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4483,7 +4483,7 @@ var InputGroupAddon = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('input-group-addon', InputGroupAddon);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],34:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],34:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4551,7 +4551,7 @@ var InputGroupButton = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('input-group-btn', InputGroupButton);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],35:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],35:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4635,7 +4635,7 @@ Jumbotron.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('jumbotron', Jumbotron);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],36:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],36:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4734,7 +4734,7 @@ var Label = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('label', (0, _bootstrapUtils.bsStyles)([].concat((0, _values2['default'])(_StyleConfig.State), [_StyleConfig.Style.DEFAULT, _StyleConfig.Style.PRIMARY]), _StyleConfig.Style.DEFAULT, Label));
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],37:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],37:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4854,7 +4854,7 @@ ListGroup.propTypes = propTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('list-group', ListGroup);
 module.exports = exports['default'];
-},{"./ListGroupItem":38,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],38:[function(require,module,exports){
+},{"./ListGroupItem":38,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],38:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4998,7 +4998,7 @@ ListGroupItem.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('list-group-item', (0, _bootstrapUtils.bsStyles)((0, _values2['default'])(_StyleConfig.State), ListGroupItem));
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],39:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],39:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5113,7 +5113,7 @@ Media.ListItem = _MediaListItem2['default'];
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('media', Media);
 module.exports = exports['default'];
-},{"./MediaBody":40,"./MediaHeading":41,"./MediaLeft":42,"./MediaList":43,"./MediaListItem":44,"./MediaRight":45,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],40:[function(require,module,exports){
+},{"./MediaBody":40,"./MediaHeading":41,"./MediaLeft":42,"./MediaList":43,"./MediaListItem":44,"./MediaRight":45,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],40:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5197,7 +5197,7 @@ MediaBody.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('media-body', MediaBody);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],41:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],41:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5281,7 +5281,7 @@ MediaHeading.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('media-heading', MediaHeading);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],42:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],42:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5368,7 +5368,7 @@ MediaLeft.propTypes = propTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('media-left', MediaLeft);
 module.exports = exports['default'];
-},{"./Media":39,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],43:[function(require,module,exports){
+},{"./Media":39,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],43:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5436,7 +5436,7 @@ var MediaList = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('media-list', MediaList);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],44:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],44:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5504,7 +5504,7 @@ var MediaListItem = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('media', MediaListItem);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],45:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],45:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5591,7 +5591,7 @@ MediaRight.propTypes = propTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('media-right', MediaRight);
 module.exports = exports['default'];
-},{"./Media":39,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],46:[function(require,module,exports){
+},{"./Media":39,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],46:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5789,7 +5789,7 @@ MenuItem.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('dropdown', MenuItem);
 module.exports = exports['default'];
-},{"./SafeAnchor":76,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/all":246}],47:[function(require,module,exports){
+},{"./SafeAnchor":76,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/all":246}],47:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -6135,7 +6135,7 @@ Modal.BACKDROP_TRANSITION_DURATION = 150;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('modal', (0, _bootstrapUtils.bsSizes)([_StyleConfig.Size.LARGE, _StyleConfig.Size.SMALL], Modal));
 module.exports = exports['default'];
-},{"./Fade":22,"./ModalBody":48,"./ModalDialog":49,"./ModalFooter":50,"./ModalHeader":51,"./ModalTitle":52,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"./utils/splitComponentProps":98,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"dom-helpers/events":206,"dom-helpers/ownerDocument":209,"dom-helpers/util/inDOM":227,"dom-helpers/util/scrollbarSize":228,"react":427,"react-dom":255,"react-overlays/lib/Modal":231,"react-overlays/lib/utils/isOverflowing":243,"react-prop-types/lib/elementType":248}],48:[function(require,module,exports){
+},{"./Fade":22,"./ModalBody":48,"./ModalDialog":49,"./ModalFooter":50,"./ModalHeader":51,"./ModalTitle":52,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"./utils/splitComponentProps":98,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"dom-helpers/events":206,"dom-helpers/ownerDocument":209,"dom-helpers/util/inDOM":227,"dom-helpers/util/scrollbarSize":228,"react":436,"react-dom":255,"react-overlays/lib/Modal":231,"react-overlays/lib/utils/isOverflowing":243,"react-prop-types/lib/elementType":248}],48:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -6203,7 +6203,7 @@ var ModalBody = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('modal-body', ModalBody);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],49:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],49:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -6306,7 +6306,7 @@ ModalDialog.propTypes = propTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('modal', (0, _bootstrapUtils.bsSizes)([_StyleConfig.Size.LARGE, _StyleConfig.Size.SMALL], ModalDialog));
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],50:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],50:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -6374,7 +6374,7 @@ var ModalFooter = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('modal-footer', ModalFooter);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],51:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],51:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -6509,7 +6509,7 @@ ModalHeader.contextTypes = contextTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('modal-header', ModalHeader);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],52:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],52:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -6577,7 +6577,7 @@ var ModalTitle = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('modal-title', ModalTitle);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],53:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],53:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -6979,7 +6979,7 @@ Nav.contextTypes = contextTypes;
 exports['default'] = (0, _bootstrapUtils.bsClass)('nav', (0, _bootstrapUtils.bsStyles)(['tabs', 'pills'], Nav));
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"keycode":230,"react":427,"react-dom":255,"react-prop-types/lib/all":246,"warning":254}],54:[function(require,module,exports){
+},{"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"keycode":230,"react":436,"react-dom":255,"react-prop-types/lib/all":246,"warning":254}],54:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7095,7 +7095,7 @@ NavDropdown.propTypes = propTypes;
 
 exports['default'] = NavDropdown;
 module.exports = exports['default'];
-},{"./Dropdown":18,"./utils/splitComponentProps":98,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],55:[function(require,module,exports){
+},{"./Dropdown":18,"./utils/splitComponentProps":98,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],55:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7222,7 +7222,7 @@ NavItem.defaultProps = defaultProps;
 
 exports['default'] = NavItem;
 module.exports = exports['default'];
-},{"./SafeAnchor":76,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],56:[function(require,module,exports){
+},{"./SafeAnchor":76,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],56:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7497,7 +7497,7 @@ UncontrollableNavbar.Link = createSimpleWrapper('a', 'link', 'NavbarLink');
 // Set bsStyles here so they can be overridden.
 exports['default'] = (0, _bootstrapUtils.bsStyles)([_StyleConfig.Style.DEFAULT, _StyleConfig.Style.INVERSE], _StyleConfig.Style.DEFAULT, UncontrollableNavbar);
 module.exports = exports['default'];
-},{"./Grid":29,"./NavbarBrand":57,"./NavbarCollapse":58,"./NavbarHeader":59,"./NavbarToggle":60,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248,"uncontrollable":252}],57:[function(require,module,exports){
+},{"./Grid":29,"./NavbarBrand":57,"./NavbarCollapse":58,"./NavbarHeader":59,"./NavbarToggle":60,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248,"uncontrollable":252}],57:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7578,7 +7578,7 @@ NavbarBrand.contextTypes = contextTypes;
 
 exports['default'] = NavbarBrand;
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],58:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],58:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7657,7 +7657,7 @@ NavbarCollapse.contextTypes = contextTypes;
 
 exports['default'] = NavbarCollapse;
 module.exports = exports['default'];
-},{"./Collapse":16,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427}],59:[function(require,module,exports){
+},{"./Collapse":16,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436}],59:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7727,7 +7727,7 @@ NavbarHeader.contextTypes = contextTypes;
 
 exports['default'] = NavbarHeader;
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],60:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],60:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7838,7 +7838,7 @@ NavbarToggle.contextTypes = contextTypes;
 
 exports['default'] = NavbarToggle;
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],61:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],61:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7987,7 +7987,7 @@ Overlay.defaultProps = defaultProps;
 
 exports['default'] = Overlay;
 module.exports = exports['default'];
-},{"./Fade":22,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-overlays/lib/Overlay":233,"react-prop-types/lib/elementType":248}],62:[function(require,module,exports){
+},{"./Fade":22,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-overlays/lib/Overlay":233,"react-prop-types/lib/elementType":248}],62:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -8336,7 +8336,7 @@ OverlayTrigger.defaultProps = defaultProps;
 exports['default'] = OverlayTrigger;
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./Overlay":61,"./utils/createChainedFunction":95,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"dom-helpers/query/contains":210,"react":427,"react-dom":255,"warning":254}],63:[function(require,module,exports){
+},{"./Overlay":61,"./utils/createChainedFunction":95,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"dom-helpers/query/contains":210,"react":436,"react-dom":255,"warning":254}],63:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -8413,7 +8413,7 @@ var PageHeader = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('page-header', PageHeader);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],64:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],64:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -8528,7 +8528,7 @@ Pager.Item = _PagerItem2['default'];
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('pager', Pager);
 module.exports = exports['default'];
-},{"./PagerItem":66,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],66:[function(require,module,exports){
+},{"./PagerItem":66,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],66:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -8653,7 +8653,7 @@ PagerItem.defaultProps = defaultProps;
 
 exports['default'] = PagerItem;
 module.exports = exports['default'];
-},{"./SafeAnchor":76,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],67:[function(require,module,exports){
+},{"./SafeAnchor":76,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],67:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -8955,7 +8955,7 @@ Pagination.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('pagination', Pagination);
 module.exports = exports['default'];
-},{"./PaginationButton":68,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],68:[function(require,module,exports){
+},{"./PaginationButton":68,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],68:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -9089,7 +9089,7 @@ PaginationButton.defaultProps = defaultProps;
 
 exports['default'] = PaginationButton;
 module.exports = exports['default'];
-},{"./SafeAnchor":76,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],69:[function(require,module,exports){
+},{"./SafeAnchor":76,"./utils/createChainedFunction":95,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],69:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -9355,7 +9355,7 @@ Panel.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('panel', (0, _bootstrapUtils.bsStyles)([].concat((0, _values2['default'])(_StyleConfig.State), [_StyleConfig.Style.DEFAULT, _StyleConfig.Style.PRIMARY]), _StyleConfig.Style.DEFAULT, Panel));
 module.exports = exports['default'];
-},{"./Collapse":16,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],70:[function(require,module,exports){
+},{"./Collapse":16,"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],70:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -9505,7 +9505,7 @@ PanelGroup.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('panel-group', PanelGroup);
 module.exports = exports['default'];
-},{"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/core-js/object/assign":100,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],71:[function(require,module,exports){
+},{"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"babel-runtime/core-js/object/assign":100,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],71:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -9658,7 +9658,7 @@ Popover.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('popover', Popover);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/isRequiredForA11y":249}],72:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/isRequiredForA11y":249}],72:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -9860,7 +9860,7 @@ ProgressBar.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('progress-bar', (0, _bootstrapUtils.bsStyles)((0, _values2['default'])(_StyleConfig.State), ProgressBar));
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],73:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/core-js/object/values":104,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],73:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -10000,7 +10000,7 @@ Radio.defaultProps = defaultProps;
 exports['default'] = (0, _bootstrapUtils.bsClass)('radio', Radio);
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"warning":254}],74:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"warning":254}],74:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -10111,7 +10111,7 @@ ResponsiveEmbed.defaultProps = defaultProps;
 exports['default'] = (0, _bootstrapUtils.bsClass)('embed-responsive', ResponsiveEmbed);
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"warning":254}],75:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"warning":254}],75:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -10195,7 +10195,7 @@ Row.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('row', Row);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],76:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],76:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -10323,7 +10323,7 @@ SafeAnchor.defaultProps = defaultProps;
 
 exports['default'] = SafeAnchor;
 module.exports = exports['default'];
-},{"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427,"react-prop-types/lib/elementType":248}],77:[function(require,module,exports){
+},{"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436,"react-prop-types/lib/elementType":248}],77:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -10453,7 +10453,7 @@ SplitButton.Toggle = _SplitToggle2['default'];
 
 exports['default'] = SplitButton;
 module.exports = exports['default'];
-},{"./Button":7,"./Dropdown":18,"./SplitToggle":78,"./utils/splitComponentProps":98,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427}],78:[function(require,module,exports){
+},{"./Button":7,"./Dropdown":18,"./SplitToggle":78,"./utils/splitComponentProps":98,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436}],78:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -10506,7 +10506,7 @@ SplitToggle.defaultProps = _DropdownToggle2['default'].defaultProps;
 
 exports['default'] = SplitToggle;
 module.exports = exports['default'];
-},{"./DropdownToggle":21,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427}],79:[function(require,module,exports){
+},{"./DropdownToggle":21,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436}],79:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -10587,7 +10587,7 @@ Tab.Pane = _TabPane2['default'];
 
 exports['default'] = Tab;
 module.exports = exports['default'];
-},{"./TabContainer":80,"./TabContent":81,"./TabPane":82,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427}],80:[function(require,module,exports){
+},{"./TabContainer":80,"./TabContent":81,"./TabPane":82,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436}],80:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -10739,7 +10739,7 @@ TabContainer.childContextTypes = childContextTypes;
 
 exports['default'] = (0, _uncontrollable2['default'])(TabContainer, { activeKey: 'onSelect' });
 module.exports = exports['default'];
-},{"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427,"uncontrollable":252}],81:[function(require,module,exports){
+},{"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436,"uncontrollable":252}],81:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -10947,7 +10947,7 @@ TabContent.childContextTypes = childContextTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('tab', TabContent);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248}],82:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248}],82:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -11259,7 +11259,7 @@ TabPane.childContextTypes = childContextTypes;
 exports['default'] = (0, _bootstrapUtils.bsClass)('tab-pane', TabPane);
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./Fade":22,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/elementType":248,"warning":254}],83:[function(require,module,exports){
+},{"./Fade":22,"./utils/bootstrapUtils":93,"./utils/createChainedFunction":95,"_process":1,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/elementType":248,"warning":254}],83:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -11363,7 +11363,7 @@ Table.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('table', Table);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],84:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],84:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -11567,7 +11567,7 @@ Tabs.defaultProps = defaultProps;
 
 exports['default'] = (0, _uncontrollable2['default'])(Tabs, { activeKey: 'onSelect' });
 module.exports = exports['default'];
-},{"./Nav":53,"./NavItem":55,"./TabContainer":80,"./TabContent":81,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":427,"react-prop-types/lib/isRequiredForA11y":249,"uncontrollable":252}],85:[function(require,module,exports){
+},{"./Nav":53,"./NavItem":55,"./TabContainer":80,"./TabContent":81,"./utils/ValidComponentChildren":92,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"react":436,"react-prop-types/lib/isRequiredForA11y":249,"uncontrollable":252}],85:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -11660,7 +11660,7 @@ Thumbnail.propTypes = propTypes;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('thumbnail', Thumbnail);
 module.exports = exports['default'];
-},{"./SafeAnchor":76,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],86:[function(require,module,exports){
+},{"./SafeAnchor":76,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],86:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -11801,7 +11801,7 @@ Tooltip.defaultProps = defaultProps;
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('tooltip', Tooltip);
 module.exports = exports['default'];
-},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427,"react-prop-types/lib/isRequiredForA11y":249}],87:[function(require,module,exports){
+},{"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436,"react-prop-types/lib/isRequiredForA11y":249}],87:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -11871,7 +11871,7 @@ var Well = function (_React$Component) {
 
 exports['default'] = (0, _bootstrapUtils.bsClass)('well', (0, _bootstrapUtils.bsSizes)([_StyleConfig.Size.LARGE, _StyleConfig.Size.SMALL], Well));
 module.exports = exports['default'];
-},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":427}],88:[function(require,module,exports){
+},{"./utils/StyleConfig":90,"./utils/bootstrapUtils":93,"babel-runtime/helpers/classCallCheck":107,"babel-runtime/helpers/extends":108,"babel-runtime/helpers/inherits":109,"babel-runtime/helpers/objectWithoutProperties":110,"babel-runtime/helpers/possibleConstructorReturn":111,"classnames":199,"react":436}],88:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -12631,7 +12631,7 @@ exports['default'] = {
   toArray: toArray
 };
 module.exports = exports['default'];
-},{"react":427}],93:[function(require,module,exports){
+},{"react":436}],93:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -12847,7 +12847,7 @@ function addStyle(Component) {
 
 var _curry = exports._curry = curry;
 }).call(this,require('_process'))
-},{"./StyleConfig":90,"_process":1,"babel-runtime/core-js/object/entries":102,"babel-runtime/helpers/extends":108,"invariant":229,"react":427}],94:[function(require,module,exports){
+},{"./StyleConfig":90,"_process":1,"babel-runtime/core-js/object/entries":102,"babel-runtime/helpers/extends":108,"invariant":229,"react":436}],94:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -15740,7 +15740,7 @@ Modal.manager = modalManager;
 
 exports.default = Modal;
 module.exports = exports['default'];
-},{"./ModalManager":232,"./Portal":234,"./utils/addEventListener":238,"./utils/addFocusListener":239,"./utils/getContainer":242,"./utils/ownerDocument":245,"dom-helpers/activeElement":200,"dom-helpers/query/contains":210,"dom-helpers/util/inDOM":227,"react":427,"react-prop-types/lib/componentOrElement":247,"react-prop-types/lib/elementType":248,"warning":254}],232:[function(require,module,exports){
+},{"./ModalManager":232,"./Portal":234,"./utils/addEventListener":238,"./utils/addFocusListener":239,"./utils/getContainer":242,"./utils/ownerDocument":245,"dom-helpers/activeElement":200,"dom-helpers/query/contains":210,"dom-helpers/util/inDOM":227,"react":436,"react-prop-types/lib/componentOrElement":247,"react-prop-types/lib/elementType":248,"warning":254}],232:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16135,7 +16135,7 @@ Overlay.propTypes = _extends({}, _Portal2.default.propTypes, _Position2.default.
 
 exports.default = Overlay;
 module.exports = exports['default'];
-},{"./Portal":234,"./Position":235,"./RootCloseWrapper":236,"react":427,"react-prop-types/lib/elementType":248}],234:[function(require,module,exports){
+},{"./Portal":234,"./Position":235,"./RootCloseWrapper":236,"react":436,"react-prop-types/lib/elementType":248}],234:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16257,7 +16257,7 @@ var Portal = _react2.default.createClass({
 
 exports.default = Portal;
 module.exports = exports['default'];
-},{"./utils/getContainer":242,"./utils/ownerDocument":245,"react":427,"react-dom":255,"react-prop-types/lib/componentOrElement":247}],235:[function(require,module,exports){
+},{"./utils/getContainer":242,"./utils/ownerDocument":245,"react":436,"react-dom":255,"react-prop-types/lib/componentOrElement":247}],235:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16469,7 +16469,7 @@ Position.defaultProps = {
 
 exports.default = Position;
 module.exports = exports['default'];
-},{"./utils/calculatePosition":240,"./utils/getContainer":242,"./utils/ownerDocument":245,"classnames":199,"react":427,"react-dom":255,"react-prop-types/lib/componentOrElement":247}],236:[function(require,module,exports){
+},{"./utils/calculatePosition":240,"./utils/getContainer":242,"./utils/ownerDocument":245,"classnames":199,"react":436,"react-dom":255,"react-prop-types/lib/componentOrElement":247}],236:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16676,7 +16676,7 @@ RootCloseWrapper.defaultProps = {
   event: 'click'
 };
 module.exports = exports['default'];
-},{"./utils/addEventListener":238,"./utils/createChainedFunction":241,"./utils/ownerDocument":245,"react":427,"react-dom":255}],237:[function(require,module,exports){
+},{"./utils/addEventListener":238,"./utils/createChainedFunction":241,"./utils/ownerDocument":245,"react":436,"react-dom":255}],237:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17040,7 +17040,7 @@ Transition.defaultProps = {
 };
 
 exports.default = Transition;
-},{"classnames":199,"dom-helpers/events/on":208,"dom-helpers/transition/properties":221,"react":427,"react-dom":255}],238:[function(require,module,exports){
+},{"classnames":199,"dom-helpers/events/on":208,"dom-helpers/transition/properties":221,"react":436,"react-dom":255}],238:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17479,7 +17479,7 @@ function validate(props, propName, componentName, location, propFullName) {
 }
 
 exports.default = (0, _createChainableTypeChecker2.default)(validate);
-},{"./utils/createChainableTypeChecker":250,"react":427}],248:[function(require,module,exports){
+},{"./utils/createChainableTypeChecker":250,"react":436}],248:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17512,7 +17512,7 @@ function elementType(props, propName, componentName, location, propFullName) {
 }
 
 exports.default = (0, _createChainableTypeChecker2.default)(elementType);
-},{"./utils/createChainableTypeChecker":250,"react":427}],249:[function(require,module,exports){
+},{"./utils/createChainableTypeChecker":250,"react":436}],249:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17735,7 +17735,7 @@ function createUncontrollable(mixins, set) {
   }
 }
 module.exports = exports['default'];
-},{"./utils":253,"invariant":229,"react":427}],252:[function(require,module,exports){
+},{"./utils":253,"invariant":229,"react":436}],252:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17899,7 +17899,7 @@ function has(o, k) {
   return o ? Object.prototype.hasOwnProperty.call(o, k) : false;
 }
 }).call(this,require('_process'))
-},{"_process":1,"invariant":229,"react":427}],254:[function(require,module,exports){
+},{"_process":1,"invariant":229,"react":436}],254:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -17968,7 +17968,6574 @@ module.exports = warning;
 
 module.exports = require('react/lib/ReactDOM');
 
-},{"react/lib/ReactDOM":293}],256:[function(require,module,exports){
+},{"react/lib/ReactDOM":302}],256:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _bluebird = require('bluebird');
+
+var _bluebird2 = _interopRequireDefault(_bluebird);
+
+var _constantsDEFAULT_CHART_COLORS = require('../constants/DEFAULT_CHART_COLORS');
+
+var _constantsDEFAULT_CHART_COLORS2 = _interopRequireDefault(_constantsDEFAULT_CHART_COLORS);
+
+var _GoogleChartLoader = require('./GoogleChartLoader');
+
+var _GoogleChartLoader2 = _interopRequireDefault(_GoogleChartLoader);
+
+var debug = require('debug')('react-google-charts:Chart');
+
+var uniqueID = 0;
+
+var generateUniqueID = function generateUniqueID() {
+  uniqueID++;
+  return "reactgooglegraph-" + uniqueID;
+};
+
+var googleErrorHandler = function googleErrorHandler(id, message) {
+  console.error("Google Charts encountered an error : ");
+  console.error('Error ID : ' + id);
+  console.error('Error MESSAGE : ' + message);
+};
+
+var Chart = (function (_React$Component) {
+  _inherits(Chart, _React$Component);
+
+  function Chart(props) {
+    _classCallCheck(this, Chart);
+
+    debug('constructor', props);
+    _get(Object.getPrototypeOf(Chart.prototype), 'constructor', this).call(this, props);
+    this.state = { graphID: props.graph_id || generateUniqueID() };
+    this.chart = null;
+    this.wrapper = null;
+    this.hidden_columns = {};
+    this.dataTable = [];
+  }
+
+  _createClass(Chart, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this = this;
+
+      debug('componentDidMount');
+      if (this.props.loadCharts) {
+        _GoogleChartLoader2['default'].init(this.props.chartPackages, this.props.chartVersion).then(function (asd) {
+          _this.drawChart();
+        });
+      } else {
+        this.drawChart();
+      }
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      try {
+        google.visualization.events.removeAllListeners(this.wrapper);
+      } catch (err) {
+        console.error("Error removing events, error : ", err);
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      var _this2 = this;
+
+      debug('componentDidUpdate');
+      if (!this.props.loadCharts) {
+        this.drawChart();
+      } else if (_GoogleChartLoader2['default'].isLoading) {
+        _GoogleChartLoader2['default'].initPromise.then(function () {
+          _this2.drawChart.bind(_this2)();
+        });
+      } else if (_GoogleChartLoader2['default'].isLoaded) {
+        this.drawChart.bind(this)();
+      }
+    }
+  }, {
+    key: 'buildDataTableFromProps',
+    value: function buildDataTableFromProps() {
+      debug('buildDataTableFromProps', this.props);
+      if (this.props.data === null && this.props.rows.length === 0) {
+        throw new Error("Can't build DataTable from rows and columns: rows array in props is empty");
+      } else if (this.props.data === null && this.props.columns.length === 0) {
+        throw new Error("Can't build DataTable from rows and columns: columns array in props is empty");
+      }
+      if (this.props.data !== null) {
+        try {
+          this.wrapper.setDataTable(this.props.data);
+          var _dataTable = this.wrapper.getDataTable();
+          return _dataTable;
+        } catch (err) {
+          console.log('Failed to set DataTable from data props ! ', err);
+          throw new Error('Failed to set DataTable from data props ! ', err);
+        }
+      }
+
+      var dataTable = new google.visualization.DataTable();
+      this.props.columns.forEach(function (column) {
+        dataTable.addColumn(column);
+      });
+      dataTable.addRows(this.props.rows);
+      return dataTable;
+    }
+  }, {
+    key: 'updateDataTable',
+    value: function updateDataTable() {
+      debug("updateDataTable");
+      google.visualization.errors.removeAll(document.getElementById(this.wrapper.getContainerId()));
+      this.dataTable.removeRows(0, this.dataTable.getNumberOfRows());
+      this.dataTable.removeColumns(0, this.dataTable.getNumberOfColumns());
+      this.dataTable = this.buildDataTableFromProps.bind(this)();
+      return this.dataTable;
+    }
+
+    //DEPRECATED AND NOT USED
+  }, {
+    key: 'getDataTableFromProps',
+    value: function getDataTableFromProps() {
+      debug("getDataTableFromProps");
+      return this.props.data !== null ? this.props.data : this.buildDataTableFromProps.bind(this)();
+    }
+  }, {
+    key: 'drawChart',
+    value: function drawChart() {
+      var _this3 = this;
+
+      debug("drawChart", this);
+      if (!this.wrapper) {
+        var chartConfig = {
+          chartType: this.props.chartType,
+          options: this.props.options,
+          containerId: this.state.graphID
+        };
+        this.wrapper = new google.visualization.ChartWrapper(chartConfig);
+        this.dataTable = this.buildDataTableFromProps.bind(this)();
+        this.wrapper.setDataTable(this.dataTable);
+
+        google.visualization.events.addOneTimeListener(this.wrapper, 'ready', function () {
+          _this3.chart = _this3.wrapper.getChart();
+          _this3.listenToChartEvents.bind(_this3)();
+          _this3.addChartActions.bind(_this3)();
+        });
+      } else {
+        this.updateDataTable.bind(this)();
+        this.wrapper.setDataTable(this.dataTable);
+        this.wrapper.setChartType(this.props.chartType);
+        this.wrapper.setOptions(this.props.options);
+      }
+      this.wrapper.draw();
+    }
+  }, {
+    key: 'addChartActions',
+    value: function addChartActions() {
+      debug('addChartActions', this.props.chartActions);
+      if (this.props.chartActions === null) {
+        return;
+      }
+      this.chart.setAction({
+        id: this.props.chartActions.id,
+        text: this.props.chartActions.text,
+        action: this.props.chartActions.action.bind(this, this.chart)
+      });
+    }
+  }, {
+    key: 'listenToChartEvents',
+    value: function listenToChartEvents() {
+      var _this4 = this;
+
+      debug('listenToChartEvents', this.props.legend_toggle, this.props.chartEvents);
+      if (this.props.legend_toggle) {
+        google.visualization.events.addListener(this.wrapper, 'select', this.onSelectToggle.bind(this));
+      }
+      this.props.chartEvents.forEach(function (chartEvent) {
+        if (chartEvent.eventName === 'ready') {
+          chartEvent.callback(_this4);
+        } else {
+          (function (chartEvent) {
+            google.visualization.events.addListener(_this4.chart, chartEvent.eventName, function (e) {
+              chartEvent.callback(_this4, e);
+            });
+          })(chartEvent);
+        }
+      });
+    }
+  }, {
+    key: 'onSelectToggle',
+    value: function onSelectToggle() {
+      debug('onSelectToggle');
+      var selection = this.chart.getSelection();
+      if (selection.length > 0) {
+        if (selection[0].row == null) {
+          var column = selection[0].column;
+          this.togglePoints.bind(this)(column);
+        }
+      }
+    }
+  }, {
+    key: 'getColumnColor',
+    value: function getColumnColor(columnIndex) {
+      if (this.props.options.colors) {
+        if (this.props.options.colors[columnIndex]) {
+          return this.props.options.colors[columnIndex];
+        }
+      } else {
+        if (typeof _constantsDEFAULT_CHART_COLORS2['default'][columnIndex] !== undefined) {
+          return _constantsDEFAULT_CHART_COLORS2['default'][columnIndex];
+        } else {
+          return _constantsDEFAULT_CHART_COLORS2['default'][0];
+        }
+      }
+    }
+  }, {
+    key: 'buildColumnFromSourceData',
+    value: function buildColumnFromSourceData(columnIndex) {
+      debug('buildColumnFromSourceData', columnIndex);
+      return {
+        label: this.dataTable.getColumnLabel(columnIndex),
+        type: this.dataTable.getColumnType(columnIndex),
+        sourceColumn: columnIndex
+      };
+    }
+  }, {
+    key: 'buildEmptyColumnFromSourceData',
+    value: function buildEmptyColumnFromSourceData(columnIndex) {
+      debug('buildEmptyColumnFromSourceData', columnIndex);
+      return {
+        label: this.dataTable.getColumnLabel(columnIndex),
+        type: this.dataTable.getColumnType(columnIndex),
+        calc: function calc() {
+          return null;
+        }
+      };
+    }
+  }, {
+    key: 'addEmptyColumnTo',
+    value: function addEmptyColumnTo(columns, columnIndex) {
+      debug('addEmptyColumnTo', columns, columnIndex);
+      var emptyColumn = this.buildEmptyColumnFromSourceData(columnIndex);
+      columns.push(emptyColumn);
+    }
+  }, {
+    key: 'hideColumn',
+    value: function hideColumn(colors, columnIndex) {
+      debug('hideColumn', colors, columnIndex);
+      if (!this.isHidden(columnIndex)) {
+        this.hidden_columns[columnIndex] = { color: this.getColumnColor(columnIndex - 1) };
+      }
+      colors.push('#CCCCCC');
+    }
+  }, {
+    key: 'addSourceColumnTo',
+    value: function addSourceColumnTo(columns, columnIndex) {
+      debug('addSourceColumnTo', columns, columnIndex);
+      var sourceColumn = this.buildColumnFromSourceData(columnIndex);
+      columns.push(sourceColumn);
+    }
+  }, {
+    key: 'isHidden',
+    value: function isHidden(columnIndex) {
+      return this.hidden_columns[columnIndex] !== undefined;
+    }
+  }, {
+    key: 'restoreColorTo',
+    value: function restoreColorTo(colors, columnIndex) {
+      debug('restoreColorTo', colors, columnIndex);
+      debug('hidden_columns', this.hidden_columns);
+      var previousColor = undefined;
+      if (this.isHidden(columnIndex)) {
+        previousColor = this.hidden_columns[columnIndex].color;
+        delete this.hidden_columns[columnIndex];
+      } else {
+        previousColor = this.getColumnColor(columnIndex - 1);
+      }
+      if (columnIndex !== 0) {
+        colors.push(previousColor);
+      }
+    }
+  }, {
+    key: 'togglePoints',
+    value: function togglePoints(column) {
+      debug('togglePoints', column);
+      var view = new google.visualization.DataView(this.wrapper.getDataTable());
+      var columnCount = view.getNumberOfColumns();
+      var colors = [];
+      var columns = [];
+      for (var i = 0; i < columnCount; i++) {
+        // If user clicked on legend
+        if (i === 0) {
+          this.addSourceColumnTo.bind(this)(columns, i);
+        } else if (i === column) {
+          if (this.isHidden(i)) {
+            this.addSourceColumnTo.bind(this)(columns, i);
+            this.restoreColorTo.bind(this)(colors, i);
+          } else {
+            this.addEmptyColumnTo.bind(this)(columns, i);
+            this.hideColumn.bind(this)(colors, i);
+          }
+        } else {
+          if (this.isHidden(i)) {
+            this.addEmptyColumnTo.bind(this)(columns, i);
+            this.hideColumn.bind(this)(colors, i);
+          } else {
+            this.addSourceColumnTo.bind(this)(columns, i);
+            this.restoreColorTo.bind(this)(colors, i);
+          }
+        }
+      }
+      view.setColumns(columns);
+      this.props.options.colors = colors;
+      this.chart.draw(view, this.props.options);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      debug('render', this.props, this.state);
+      var divStyle = { height: this.props.height || this.props.options.height, width: this.props.width || this.props.options.width };
+      return _react2['default'].createElement(
+        'div',
+        { id: this.state.graphID, style: divStyle },
+        ' Rendering Chart... '
+      );
+    }
+  }]);
+
+  return Chart;
+})(_react2['default'].Component);
+
+exports['default'] = Chart;
+;
+
+Chart.defaultProps = {
+  chartType: 'LineChart',
+  rows: [],
+  columns: [],
+  options: {
+    chart: {
+      title: 'Chart Title',
+      subtitle: 'Subtitle'
+    },
+    hAxis: { title: 'X Label' },
+    vAxis: { title: 'Y Label' },
+    width: '400px',
+    height: '300px'
+  },
+  width: '400px',
+  height: '300px',
+  chartEvents: [],
+  chartActions: null,
+  data: null,
+  onSelect: null,
+  legend_toggle: false,
+  loadCharts: true
+};
+module.exports = exports['default'];
+},{"../constants/DEFAULT_CHART_COLORS":258,"./GoogleChartLoader":257,"bluebird":260,"debug":261,"react":436}],257:[function(require,module,exports){
+//GoogleChartLoader Singleton
+
+// Based on http://blog.arkency.com/2014/09/react-dot-js-and-google-charts/
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _bluebird = require('bluebird');
+
+var _bluebird2 = _interopRequireDefault(_bluebird);
+
+var _scriptjs = require('scriptjs');
+
+var _scriptjs2 = _interopRequireDefault(_scriptjs);
+
+var debug = require('debug')('react-google-charts:GoogleChartLoader');
+
+var googleChartLoader = {
+
+  isLoaded: false,
+  isLoading: false,
+  initPromise: {},
+  init: function init(packages, version) {
+    var _this = this;
+
+    debug('init', packages, version);
+
+    if (this.isLoading || this.isLoaded) {
+      return this.initPromise;
+    }
+    this.isLoading = true;
+    this.initPromise = new _bluebird2['default'](function (resolve, reject) {
+      if (typeof window !== 'undefined') {
+        (0, _scriptjs2['default'])("https://www.gstatic.com/charts/loader.js", function () {
+
+          google.charts.load(version || 'current', { packages: packages || ['corechart'] });
+          google.charts.setOnLoadCallback(function () {
+            debug('Chart Loaded');
+            _this.isLoaded = true;
+            _this.isLoading = false;
+            resolve();
+          });
+        });
+      } else {
+        resolve();
+      }
+    });
+    return this.initPromise;
+  }
+};
+
+exports['default'] = googleChartLoader;
+module.exports = exports['default'];
+},{"bluebird":260,"debug":261,"scriptjs":264}],258:[function(require,module,exports){
+//Taken from http://there4development.com/blog/2012/05/02/google-chart-color-list/
+
+'use strict';
+
+module.exports = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099', '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E', '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC', '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC'];
+},{}],259:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+//import googleChartLoader from './components/GoogleChartLoader';
+
+var _componentsChart = require('./components/Chart');
+
+var _componentsChart2 = _interopRequireDefault(_componentsChart);
+
+//import SAMPLE_DATA from './constants/SAMPLE_DATA';
+
+exports['default'] = { Chart: _componentsChart2['default'] };
+module.exports = exports['default'];
+},{"./components/Chart":256,"react":436}],260:[function(require,module,exports){
+(function (process,global){
+/* @preserve
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2013-2015 Petka Antonov
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * 
+ */
+/**
+ * bluebird build version 3.4.1
+ * Features enabled: core, race, call_get, generators, map, nodeify, promisify, props, reduce, settle, some, using, timers, filter, any, each
+*/
+!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.Promise=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof _dereq_=="function"&&_dereq_;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof _dereq_=="function"&&_dereq_;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise) {
+var SomePromiseArray = Promise._SomePromiseArray;
+function any(promises) {
+    var ret = new SomePromiseArray(promises);
+    var promise = ret.promise();
+    ret.setHowMany(1);
+    ret.setUnwrap();
+    ret.init();
+    return promise;
+}
+
+Promise.any = function (promises) {
+    return any(promises);
+};
+
+Promise.prototype.any = function () {
+    return any(this);
+};
+
+};
+
+},{}],2:[function(_dereq_,module,exports){
+"use strict";
+var firstLineError;
+try {throw new Error(); } catch (e) {firstLineError = e;}
+var schedule = _dereq_("./schedule");
+var Queue = _dereq_("./queue");
+var util = _dereq_("./util");
+
+function Async() {
+    this._customScheduler = false;
+    this._isTickUsed = false;
+    this._lateQueue = new Queue(16);
+    this._normalQueue = new Queue(16);
+    this._haveDrainedQueues = false;
+    this._trampolineEnabled = true;
+    var self = this;
+    this.drainQueues = function () {
+        self._drainQueues();
+    };
+    this._schedule = schedule;
+}
+
+Async.prototype.setScheduler = function(fn) {
+    var prev = this._schedule;
+    this._schedule = fn;
+    this._customScheduler = true;
+    return prev;
+};
+
+Async.prototype.hasCustomScheduler = function() {
+    return this._customScheduler;
+};
+
+Async.prototype.enableTrampoline = function() {
+    this._trampolineEnabled = true;
+};
+
+Async.prototype.disableTrampolineIfNecessary = function() {
+    if (util.hasDevTools) {
+        this._trampolineEnabled = false;
+    }
+};
+
+Async.prototype.haveItemsQueued = function () {
+    return this._isTickUsed || this._haveDrainedQueues;
+};
+
+
+Async.prototype.fatalError = function(e, isNode) {
+    if (isNode) {
+        process.stderr.write("Fatal " + (e instanceof Error ? e.stack : e) +
+            "\n");
+        process.exit(2);
+    } else {
+        this.throwLater(e);
+    }
+};
+
+Async.prototype.throwLater = function(fn, arg) {
+    if (arguments.length === 1) {
+        arg = fn;
+        fn = function () { throw arg; };
+    }
+    if (typeof setTimeout !== "undefined") {
+        setTimeout(function() {
+            fn(arg);
+        }, 0);
+    } else try {
+        this._schedule(function() {
+            fn(arg);
+        });
+    } catch (e) {
+        throw new Error("No async scheduler available\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+};
+
+function AsyncInvokeLater(fn, receiver, arg) {
+    this._lateQueue.push(fn, receiver, arg);
+    this._queueTick();
+}
+
+function AsyncInvoke(fn, receiver, arg) {
+    this._normalQueue.push(fn, receiver, arg);
+    this._queueTick();
+}
+
+function AsyncSettlePromises(promise) {
+    this._normalQueue._pushOne(promise);
+    this._queueTick();
+}
+
+if (!util.hasDevTools) {
+    Async.prototype.invokeLater = AsyncInvokeLater;
+    Async.prototype.invoke = AsyncInvoke;
+    Async.prototype.settlePromises = AsyncSettlePromises;
+} else {
+    Async.prototype.invokeLater = function (fn, receiver, arg) {
+        if (this._trampolineEnabled) {
+            AsyncInvokeLater.call(this, fn, receiver, arg);
+        } else {
+            this._schedule(function() {
+                setTimeout(function() {
+                    fn.call(receiver, arg);
+                }, 100);
+            });
+        }
+    };
+
+    Async.prototype.invoke = function (fn, receiver, arg) {
+        if (this._trampolineEnabled) {
+            AsyncInvoke.call(this, fn, receiver, arg);
+        } else {
+            this._schedule(function() {
+                fn.call(receiver, arg);
+            });
+        }
+    };
+
+    Async.prototype.settlePromises = function(promise) {
+        if (this._trampolineEnabled) {
+            AsyncSettlePromises.call(this, promise);
+        } else {
+            this._schedule(function() {
+                promise._settlePromises();
+            });
+        }
+    };
+}
+
+Async.prototype.invokeFirst = function (fn, receiver, arg) {
+    this._normalQueue.unshift(fn, receiver, arg);
+    this._queueTick();
+};
+
+Async.prototype._drainQueue = function(queue) {
+    while (queue.length() > 0) {
+        var fn = queue.shift();
+        if (typeof fn !== "function") {
+            fn._settlePromises();
+            continue;
+        }
+        var receiver = queue.shift();
+        var arg = queue.shift();
+        fn.call(receiver, arg);
+    }
+};
+
+Async.prototype._drainQueues = function () {
+    this._drainQueue(this._normalQueue);
+    this._reset();
+    this._haveDrainedQueues = true;
+    this._drainQueue(this._lateQueue);
+};
+
+Async.prototype._queueTick = function () {
+    if (!this._isTickUsed) {
+        this._isTickUsed = true;
+        this._schedule(this.drainQueues);
+    }
+};
+
+Async.prototype._reset = function () {
+    this._isTickUsed = false;
+};
+
+module.exports = Async;
+module.exports.firstLineError = firstLineError;
+
+},{"./queue":26,"./schedule":29,"./util":36}],3:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, INTERNAL, tryConvertToPromise, debug) {
+var calledBind = false;
+var rejectThis = function(_, e) {
+    this._reject(e);
+};
+
+var targetRejected = function(e, context) {
+    context.promiseRejectionQueued = true;
+    context.bindingPromise._then(rejectThis, rejectThis, null, this, e);
+};
+
+var bindingResolved = function(thisArg, context) {
+    if (((this._bitField & 50397184) === 0)) {
+        this._resolveCallback(context.target);
+    }
+};
+
+var bindingRejected = function(e, context) {
+    if (!context.promiseRejectionQueued) this._reject(e);
+};
+
+Promise.prototype.bind = function (thisArg) {
+    if (!calledBind) {
+        calledBind = true;
+        Promise.prototype._propagateFrom = debug.propagateFromFunction();
+        Promise.prototype._boundValue = debug.boundValueFunction();
+    }
+    var maybePromise = tryConvertToPromise(thisArg);
+    var ret = new Promise(INTERNAL);
+    ret._propagateFrom(this, 1);
+    var target = this._target();
+    ret._setBoundTo(maybePromise);
+    if (maybePromise instanceof Promise) {
+        var context = {
+            promiseRejectionQueued: false,
+            promise: ret,
+            target: target,
+            bindingPromise: maybePromise
+        };
+        target._then(INTERNAL, targetRejected, undefined, ret, context);
+        maybePromise._then(
+            bindingResolved, bindingRejected, undefined, ret, context);
+        ret._setOnCancel(maybePromise);
+    } else {
+        ret._resolveCallback(target);
+    }
+    return ret;
+};
+
+Promise.prototype._setBoundTo = function (obj) {
+    if (obj !== undefined) {
+        this._bitField = this._bitField | 2097152;
+        this._boundTo = obj;
+    } else {
+        this._bitField = this._bitField & (~2097152);
+    }
+};
+
+Promise.prototype._isBound = function () {
+    return (this._bitField & 2097152) === 2097152;
+};
+
+Promise.bind = function (thisArg, value) {
+    return Promise.resolve(value).bind(thisArg);
+};
+};
+
+},{}],4:[function(_dereq_,module,exports){
+"use strict";
+var old;
+if (typeof Promise !== "undefined") old = Promise;
+function noConflict() {
+    try { if (Promise === bluebird) Promise = old; }
+    catch (e) {}
+    return bluebird;
+}
+var bluebird = _dereq_("./promise")();
+bluebird.noConflict = noConflict;
+module.exports = bluebird;
+
+},{"./promise":22}],5:[function(_dereq_,module,exports){
+"use strict";
+var cr = Object.create;
+if (cr) {
+    var callerCache = cr(null);
+    var getterCache = cr(null);
+    callerCache[" size"] = getterCache[" size"] = 0;
+}
+
+module.exports = function(Promise) {
+var util = _dereq_("./util");
+var canEvaluate = util.canEvaluate;
+var isIdentifier = util.isIdentifier;
+
+var getMethodCaller;
+var getGetter;
+if (!true) {
+var makeMethodCaller = function (methodName) {
+    return new Function("ensureMethod", "                                    \n\
+        return function(obj) {                                               \n\
+            'use strict'                                                     \n\
+            var len = this.length;                                           \n\
+            ensureMethod(obj, 'methodName');                                 \n\
+            switch(len) {                                                    \n\
+                case 1: return obj.methodName(this[0]);                      \n\
+                case 2: return obj.methodName(this[0], this[1]);             \n\
+                case 3: return obj.methodName(this[0], this[1], this[2]);    \n\
+                case 0: return obj.methodName();                             \n\
+                default:                                                     \n\
+                    return obj.methodName.apply(obj, this);                  \n\
+            }                                                                \n\
+        };                                                                   \n\
+        ".replace(/methodName/g, methodName))(ensureMethod);
+};
+
+var makeGetter = function (propertyName) {
+    return new Function("obj", "                                             \n\
+        'use strict';                                                        \n\
+        return obj.propertyName;                                             \n\
+        ".replace("propertyName", propertyName));
+};
+
+var getCompiled = function(name, compiler, cache) {
+    var ret = cache[name];
+    if (typeof ret !== "function") {
+        if (!isIdentifier(name)) {
+            return null;
+        }
+        ret = compiler(name);
+        cache[name] = ret;
+        cache[" size"]++;
+        if (cache[" size"] > 512) {
+            var keys = Object.keys(cache);
+            for (var i = 0; i < 256; ++i) delete cache[keys[i]];
+            cache[" size"] = keys.length - 256;
+        }
+    }
+    return ret;
+};
+
+getMethodCaller = function(name) {
+    return getCompiled(name, makeMethodCaller, callerCache);
+};
+
+getGetter = function(name) {
+    return getCompiled(name, makeGetter, getterCache);
+};
+}
+
+function ensureMethod(obj, methodName) {
+    var fn;
+    if (obj != null) fn = obj[methodName];
+    if (typeof fn !== "function") {
+        var message = "Object " + util.classString(obj) + " has no method '" +
+            util.toString(methodName) + "'";
+        throw new Promise.TypeError(message);
+    }
+    return fn;
+}
+
+function caller(obj) {
+    var methodName = this.pop();
+    var fn = ensureMethod(obj, methodName);
+    return fn.apply(obj, this);
+}
+Promise.prototype.call = function (methodName) {
+    var args = [].slice.call(arguments, 1);;
+    if (!true) {
+        if (canEvaluate) {
+            var maybeCaller = getMethodCaller(methodName);
+            if (maybeCaller !== null) {
+                return this._then(
+                    maybeCaller, undefined, undefined, args, undefined);
+            }
+        }
+    }
+    args.push(methodName);
+    return this._then(caller, undefined, undefined, args, undefined);
+};
+
+function namedGetter(obj) {
+    return obj[this];
+}
+function indexedGetter(obj) {
+    var index = +this;
+    if (index < 0) index = Math.max(0, index + obj.length);
+    return obj[index];
+}
+Promise.prototype.get = function (propertyName) {
+    var isIndex = (typeof propertyName === "number");
+    var getter;
+    if (!isIndex) {
+        if (canEvaluate) {
+            var maybeGetter = getGetter(propertyName);
+            getter = maybeGetter !== null ? maybeGetter : namedGetter;
+        } else {
+            getter = namedGetter;
+        }
+    } else {
+        getter = indexedGetter;
+    }
+    return this._then(getter, undefined, undefined, propertyName, undefined);
+};
+};
+
+},{"./util":36}],6:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, PromiseArray, apiRejection, debug) {
+var util = _dereq_("./util");
+var tryCatch = util.tryCatch;
+var errorObj = util.errorObj;
+var async = Promise._async;
+
+Promise.prototype["break"] = Promise.prototype.cancel = function() {
+    if (!debug.cancellation()) return this._warn("cancellation is disabled");
+
+    var promise = this;
+    var child = promise;
+    while (promise.isCancellable()) {
+        if (!promise._cancelBy(child)) {
+            if (child._isFollowing()) {
+                child._followee().cancel();
+            } else {
+                child._cancelBranched();
+            }
+            break;
+        }
+
+        var parent = promise._cancellationParent;
+        if (parent == null || !parent.isCancellable()) {
+            if (promise._isFollowing()) {
+                promise._followee().cancel();
+            } else {
+                promise._cancelBranched();
+            }
+            break;
+        } else {
+            if (promise._isFollowing()) promise._followee().cancel();
+            child = promise;
+            promise = parent;
+        }
+    }
+};
+
+Promise.prototype._branchHasCancelled = function() {
+    this._branchesRemainingToCancel--;
+};
+
+Promise.prototype._enoughBranchesHaveCancelled = function() {
+    return this._branchesRemainingToCancel === undefined ||
+           this._branchesRemainingToCancel <= 0;
+};
+
+Promise.prototype._cancelBy = function(canceller) {
+    if (canceller === this) {
+        this._branchesRemainingToCancel = 0;
+        this._invokeOnCancel();
+        return true;
+    } else {
+        this._branchHasCancelled();
+        if (this._enoughBranchesHaveCancelled()) {
+            this._invokeOnCancel();
+            return true;
+        }
+    }
+    return false;
+};
+
+Promise.prototype._cancelBranched = function() {
+    if (this._enoughBranchesHaveCancelled()) {
+        this._cancel();
+    }
+};
+
+Promise.prototype._cancel = function() {
+    if (!this.isCancellable()) return;
+
+    this._setCancelled();
+    async.invoke(this._cancelPromises, this, undefined);
+};
+
+Promise.prototype._cancelPromises = function() {
+    if (this._length() > 0) this._settlePromises();
+};
+
+Promise.prototype._unsetOnCancel = function() {
+    this._onCancelField = undefined;
+};
+
+Promise.prototype.isCancellable = function() {
+    return this.isPending() && !this.isCancelled();
+};
+
+Promise.prototype._doInvokeOnCancel = function(onCancelCallback, internalOnly) {
+    if (util.isArray(onCancelCallback)) {
+        for (var i = 0; i < onCancelCallback.length; ++i) {
+            this._doInvokeOnCancel(onCancelCallback[i], internalOnly);
+        }
+    } else if (onCancelCallback !== undefined) {
+        if (typeof onCancelCallback === "function") {
+            if (!internalOnly) {
+                var e = tryCatch(onCancelCallback).call(this._boundValue());
+                if (e === errorObj) {
+                    this._attachExtraTrace(e.e);
+                    async.throwLater(e.e);
+                }
+            }
+        } else {
+            onCancelCallback._resultCancelled(this);
+        }
+    }
+};
+
+Promise.prototype._invokeOnCancel = function() {
+    var onCancelCallback = this._onCancel();
+    this._unsetOnCancel();
+    async.invoke(this._doInvokeOnCancel, this, onCancelCallback);
+};
+
+Promise.prototype._invokeInternalOnCancel = function() {
+    if (this.isCancellable()) {
+        this._doInvokeOnCancel(this._onCancel(), true);
+        this._unsetOnCancel();
+    }
+};
+
+Promise.prototype._resultCancelled = function() {
+    this.cancel();
+};
+
+};
+
+},{"./util":36}],7:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(NEXT_FILTER) {
+var util = _dereq_("./util");
+var getKeys = _dereq_("./es5").keys;
+var tryCatch = util.tryCatch;
+var errorObj = util.errorObj;
+
+function catchFilter(instances, cb, promise) {
+    return function(e) {
+        var boundTo = promise._boundValue();
+        predicateLoop: for (var i = 0; i < instances.length; ++i) {
+            var item = instances[i];
+
+            if (item === Error ||
+                (item != null && item.prototype instanceof Error)) {
+                if (e instanceof item) {
+                    return tryCatch(cb).call(boundTo, e);
+                }
+            } else if (typeof item === "function") {
+                var matchesPredicate = tryCatch(item).call(boundTo, e);
+                if (matchesPredicate === errorObj) {
+                    return matchesPredicate;
+                } else if (matchesPredicate) {
+                    return tryCatch(cb).call(boundTo, e);
+                }
+            } else if (util.isObject(e)) {
+                var keys = getKeys(item);
+                for (var j = 0; j < keys.length; ++j) {
+                    var key = keys[j];
+                    if (item[key] != e[key]) {
+                        continue predicateLoop;
+                    }
+                }
+                return tryCatch(cb).call(boundTo, e);
+            }
+        }
+        return NEXT_FILTER;
+    };
+}
+
+return catchFilter;
+};
+
+},{"./es5":13,"./util":36}],8:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise) {
+var longStackTraces = false;
+var contextStack = [];
+
+Promise.prototype._promiseCreated = function() {};
+Promise.prototype._pushContext = function() {};
+Promise.prototype._popContext = function() {return null;};
+Promise._peekContext = Promise.prototype._peekContext = function() {};
+
+function Context() {
+    this._trace = new Context.CapturedTrace(peekContext());
+}
+Context.prototype._pushContext = function () {
+    if (this._trace !== undefined) {
+        this._trace._promiseCreated = null;
+        contextStack.push(this._trace);
+    }
+};
+
+Context.prototype._popContext = function () {
+    if (this._trace !== undefined) {
+        var trace = contextStack.pop();
+        var ret = trace._promiseCreated;
+        trace._promiseCreated = null;
+        return ret;
+    }
+    return null;
+};
+
+function createContext() {
+    if (longStackTraces) return new Context();
+}
+
+function peekContext() {
+    var lastIndex = contextStack.length - 1;
+    if (lastIndex >= 0) {
+        return contextStack[lastIndex];
+    }
+    return undefined;
+}
+Context.CapturedTrace = null;
+Context.create = createContext;
+Context.deactivateLongStackTraces = function() {};
+Context.activateLongStackTraces = function() {
+    var Promise_pushContext = Promise.prototype._pushContext;
+    var Promise_popContext = Promise.prototype._popContext;
+    var Promise_PeekContext = Promise._peekContext;
+    var Promise_peekContext = Promise.prototype._peekContext;
+    var Promise_promiseCreated = Promise.prototype._promiseCreated;
+    Context.deactivateLongStackTraces = function() {
+        Promise.prototype._pushContext = Promise_pushContext;
+        Promise.prototype._popContext = Promise_popContext;
+        Promise._peekContext = Promise_PeekContext;
+        Promise.prototype._peekContext = Promise_peekContext;
+        Promise.prototype._promiseCreated = Promise_promiseCreated;
+        longStackTraces = false;
+    };
+    longStackTraces = true;
+    Promise.prototype._pushContext = Context.prototype._pushContext;
+    Promise.prototype._popContext = Context.prototype._popContext;
+    Promise._peekContext = Promise.prototype._peekContext = peekContext;
+    Promise.prototype._promiseCreated = function() {
+        var ctx = this._peekContext();
+        if (ctx && ctx._promiseCreated == null) ctx._promiseCreated = this;
+    };
+};
+return Context;
+};
+
+},{}],9:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, Context) {
+var getDomain = Promise._getDomain;
+var async = Promise._async;
+var Warning = _dereq_("./errors").Warning;
+var util = _dereq_("./util");
+var canAttachTrace = util.canAttachTrace;
+var unhandledRejectionHandled;
+var possiblyUnhandledRejection;
+var bluebirdFramePattern =
+    /[\\\/]bluebird[\\\/]js[\\\/](release|debug|instrumented)/;
+var stackFramePattern = null;
+var formatStack = null;
+var indentStackFrames = false;
+var printWarning;
+var debugging = !!(util.env("BLUEBIRD_DEBUG") != 0 &&
+                        (true ||
+                         util.env("BLUEBIRD_DEBUG") ||
+                         util.env("NODE_ENV") === "development"));
+
+var warnings = !!(util.env("BLUEBIRD_WARNINGS") != 0 &&
+    (debugging || util.env("BLUEBIRD_WARNINGS")));
+
+var longStackTraces = !!(util.env("BLUEBIRD_LONG_STACK_TRACES") != 0 &&
+    (debugging || util.env("BLUEBIRD_LONG_STACK_TRACES")));
+
+var wForgottenReturn = util.env("BLUEBIRD_W_FORGOTTEN_RETURN") != 0 &&
+    (warnings || !!util.env("BLUEBIRD_W_FORGOTTEN_RETURN"));
+
+Promise.prototype.suppressUnhandledRejections = function() {
+    var target = this._target();
+    target._bitField = ((target._bitField & (~1048576)) |
+                      524288);
+};
+
+Promise.prototype._ensurePossibleRejectionHandled = function () {
+    if ((this._bitField & 524288) !== 0) return;
+    this._setRejectionIsUnhandled();
+    async.invokeLater(this._notifyUnhandledRejection, this, undefined);
+};
+
+Promise.prototype._notifyUnhandledRejectionIsHandled = function () {
+    fireRejectionEvent("rejectionHandled",
+                                  unhandledRejectionHandled, undefined, this);
+};
+
+Promise.prototype._setReturnedNonUndefined = function() {
+    this._bitField = this._bitField | 268435456;
+};
+
+Promise.prototype._returnedNonUndefined = function() {
+    return (this._bitField & 268435456) !== 0;
+};
+
+Promise.prototype._notifyUnhandledRejection = function () {
+    if (this._isRejectionUnhandled()) {
+        var reason = this._settledValue();
+        this._setUnhandledRejectionIsNotified();
+        fireRejectionEvent("unhandledRejection",
+                                      possiblyUnhandledRejection, reason, this);
+    }
+};
+
+Promise.prototype._setUnhandledRejectionIsNotified = function () {
+    this._bitField = this._bitField | 262144;
+};
+
+Promise.prototype._unsetUnhandledRejectionIsNotified = function () {
+    this._bitField = this._bitField & (~262144);
+};
+
+Promise.prototype._isUnhandledRejectionNotified = function () {
+    return (this._bitField & 262144) > 0;
+};
+
+Promise.prototype._setRejectionIsUnhandled = function () {
+    this._bitField = this._bitField | 1048576;
+};
+
+Promise.prototype._unsetRejectionIsUnhandled = function () {
+    this._bitField = this._bitField & (~1048576);
+    if (this._isUnhandledRejectionNotified()) {
+        this._unsetUnhandledRejectionIsNotified();
+        this._notifyUnhandledRejectionIsHandled();
+    }
+};
+
+Promise.prototype._isRejectionUnhandled = function () {
+    return (this._bitField & 1048576) > 0;
+};
+
+Promise.prototype._warn = function(message, shouldUseOwnTrace, promise) {
+    return warn(message, shouldUseOwnTrace, promise || this);
+};
+
+Promise.onPossiblyUnhandledRejection = function (fn) {
+    var domain = getDomain();
+    possiblyUnhandledRejection =
+        typeof fn === "function" ? (domain === null ? fn : domain.bind(fn))
+                                 : undefined;
+};
+
+Promise.onUnhandledRejectionHandled = function (fn) {
+    var domain = getDomain();
+    unhandledRejectionHandled =
+        typeof fn === "function" ? (domain === null ? fn : domain.bind(fn))
+                                 : undefined;
+};
+
+var disableLongStackTraces = function() {};
+Promise.longStackTraces = function () {
+    if (async.haveItemsQueued() && !config.longStackTraces) {
+        throw new Error("cannot enable long stack traces after promises have been created\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+    if (!config.longStackTraces && longStackTracesIsSupported()) {
+        var Promise_captureStackTrace = Promise.prototype._captureStackTrace;
+        var Promise_attachExtraTrace = Promise.prototype._attachExtraTrace;
+        config.longStackTraces = true;
+        disableLongStackTraces = function() {
+            if (async.haveItemsQueued() && !config.longStackTraces) {
+                throw new Error("cannot enable long stack traces after promises have been created\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+            }
+            Promise.prototype._captureStackTrace = Promise_captureStackTrace;
+            Promise.prototype._attachExtraTrace = Promise_attachExtraTrace;
+            Context.deactivateLongStackTraces();
+            async.enableTrampoline();
+            config.longStackTraces = false;
+        };
+        Promise.prototype._captureStackTrace = longStackTracesCaptureStackTrace;
+        Promise.prototype._attachExtraTrace = longStackTracesAttachExtraTrace;
+        Context.activateLongStackTraces();
+        async.disableTrampolineIfNecessary();
+    }
+};
+
+Promise.hasLongStackTraces = function () {
+    return config.longStackTraces && longStackTracesIsSupported();
+};
+
+var fireDomEvent = (function() {
+    try {
+        var event = document.createEvent("CustomEvent");
+        event.initCustomEvent("testingtheevent", false, true, {});
+        util.global.dispatchEvent(event);
+        return function(name, event) {
+            var domEvent = document.createEvent("CustomEvent");
+            domEvent.initCustomEvent(name.toLowerCase(), false, true, event);
+            return !util.global.dispatchEvent(domEvent);
+        };
+    } catch (e) {}
+    return function() {
+        return false;
+    };
+})();
+
+var fireGlobalEvent = (function() {
+    if (util.isNode) {
+        return function() {
+            return process.emit.apply(process, arguments);
+        };
+    } else {
+        if (!util.global) {
+            return function() {
+                return false;
+            };
+        }
+        return function(name) {
+            var methodName = "on" + name.toLowerCase();
+            var method = util.global[methodName];
+            if (!method) return false;
+            method.apply(util.global, [].slice.call(arguments, 1));
+            return true;
+        };
+    }
+})();
+
+function generatePromiseLifecycleEventObject(name, promise) {
+    return {promise: promise};
+}
+
+var eventToObjectGenerator = {
+    promiseCreated: generatePromiseLifecycleEventObject,
+    promiseFulfilled: generatePromiseLifecycleEventObject,
+    promiseRejected: generatePromiseLifecycleEventObject,
+    promiseResolved: generatePromiseLifecycleEventObject,
+    promiseCancelled: generatePromiseLifecycleEventObject,
+    promiseChained: function(name, promise, child) {
+        return {promise: promise, child: child};
+    },
+    warning: function(name, warning) {
+        return {warning: warning};
+    },
+    unhandledRejection: function (name, reason, promise) {
+        return {reason: reason, promise: promise};
+    },
+    rejectionHandled: generatePromiseLifecycleEventObject
+};
+
+var activeFireEvent = function (name) {
+    var globalEventFired = false;
+    try {
+        globalEventFired = fireGlobalEvent.apply(null, arguments);
+    } catch (e) {
+        async.throwLater(e);
+        globalEventFired = true;
+    }
+
+    var domEventFired = false;
+    try {
+        domEventFired = fireDomEvent(name,
+                    eventToObjectGenerator[name].apply(null, arguments));
+    } catch (e) {
+        async.throwLater(e);
+        domEventFired = true;
+    }
+
+    return domEventFired || globalEventFired;
+};
+
+Promise.config = function(opts) {
+    opts = Object(opts);
+    if ("longStackTraces" in opts) {
+        if (opts.longStackTraces) {
+            Promise.longStackTraces();
+        } else if (!opts.longStackTraces && Promise.hasLongStackTraces()) {
+            disableLongStackTraces();
+        }
+    }
+    if ("warnings" in opts) {
+        var warningsOption = opts.warnings;
+        config.warnings = !!warningsOption;
+        wForgottenReturn = config.warnings;
+
+        if (util.isObject(warningsOption)) {
+            if ("wForgottenReturn" in warningsOption) {
+                wForgottenReturn = !!warningsOption.wForgottenReturn;
+            }
+        }
+    }
+    if ("cancellation" in opts && opts.cancellation && !config.cancellation) {
+        if (async.haveItemsQueued()) {
+            throw new Error(
+                "cannot enable cancellation after promises are in use");
+        }
+        Promise.prototype._clearCancellationData =
+            cancellationClearCancellationData;
+        Promise.prototype._propagateFrom = cancellationPropagateFrom;
+        Promise.prototype._onCancel = cancellationOnCancel;
+        Promise.prototype._setOnCancel = cancellationSetOnCancel;
+        Promise.prototype._attachCancellationCallback =
+            cancellationAttachCancellationCallback;
+        Promise.prototype._execute = cancellationExecute;
+        propagateFromFunction = cancellationPropagateFrom;
+        config.cancellation = true;
+    }
+    if ("monitoring" in opts) {
+        if (opts.monitoring && !config.monitoring) {
+            config.monitoring = true;
+            Promise.prototype._fireEvent = activeFireEvent;
+        } else if (!opts.monitoring && config.monitoring) {
+            config.monitoring = false;
+            Promise.prototype._fireEvent = defaultFireEvent;
+        }
+    }
+};
+
+function defaultFireEvent() { return false; }
+
+Promise.prototype._fireEvent = defaultFireEvent;
+Promise.prototype._execute = function(executor, resolve, reject) {
+    try {
+        executor(resolve, reject);
+    } catch (e) {
+        return e;
+    }
+};
+Promise.prototype._onCancel = function () {};
+Promise.prototype._setOnCancel = function (handler) { ; };
+Promise.prototype._attachCancellationCallback = function(onCancel) {
+    ;
+};
+Promise.prototype._captureStackTrace = function () {};
+Promise.prototype._attachExtraTrace = function () {};
+Promise.prototype._clearCancellationData = function() {};
+Promise.prototype._propagateFrom = function (parent, flags) {
+    ;
+    ;
+};
+
+function cancellationExecute(executor, resolve, reject) {
+    var promise = this;
+    try {
+        executor(resolve, reject, function(onCancel) {
+            if (typeof onCancel !== "function") {
+                throw new TypeError("onCancel must be a function, got: " +
+                                    util.toString(onCancel));
+            }
+            promise._attachCancellationCallback(onCancel);
+        });
+    } catch (e) {
+        return e;
+    }
+}
+
+function cancellationAttachCancellationCallback(onCancel) {
+    if (!this.isCancellable()) return this;
+
+    var previousOnCancel = this._onCancel();
+    if (previousOnCancel !== undefined) {
+        if (util.isArray(previousOnCancel)) {
+            previousOnCancel.push(onCancel);
+        } else {
+            this._setOnCancel([previousOnCancel, onCancel]);
+        }
+    } else {
+        this._setOnCancel(onCancel);
+    }
+}
+
+function cancellationOnCancel() {
+    return this._onCancelField;
+}
+
+function cancellationSetOnCancel(onCancel) {
+    this._onCancelField = onCancel;
+}
+
+function cancellationClearCancellationData() {
+    this._cancellationParent = undefined;
+    this._onCancelField = undefined;
+}
+
+function cancellationPropagateFrom(parent, flags) {
+    if ((flags & 1) !== 0) {
+        this._cancellationParent = parent;
+        var branchesRemainingToCancel = parent._branchesRemainingToCancel;
+        if (branchesRemainingToCancel === undefined) {
+            branchesRemainingToCancel = 0;
+        }
+        parent._branchesRemainingToCancel = branchesRemainingToCancel + 1;
+    }
+    if ((flags & 2) !== 0 && parent._isBound()) {
+        this._setBoundTo(parent._boundTo);
+    }
+}
+
+function bindingPropagateFrom(parent, flags) {
+    if ((flags & 2) !== 0 && parent._isBound()) {
+        this._setBoundTo(parent._boundTo);
+    }
+}
+var propagateFromFunction = bindingPropagateFrom;
+
+function boundValueFunction() {
+    var ret = this._boundTo;
+    if (ret !== undefined) {
+        if (ret instanceof Promise) {
+            if (ret.isFulfilled()) {
+                return ret.value();
+            } else {
+                return undefined;
+            }
+        }
+    }
+    return ret;
+}
+
+function longStackTracesCaptureStackTrace() {
+    this._trace = new CapturedTrace(this._peekContext());
+}
+
+function longStackTracesAttachExtraTrace(error, ignoreSelf) {
+    if (canAttachTrace(error)) {
+        var trace = this._trace;
+        if (trace !== undefined) {
+            if (ignoreSelf) trace = trace._parent;
+        }
+        if (trace !== undefined) {
+            trace.attachExtraTrace(error);
+        } else if (!error.__stackCleaned__) {
+            var parsed = parseStackAndMessage(error);
+            util.notEnumerableProp(error, "stack",
+                parsed.message + "\n" + parsed.stack.join("\n"));
+            util.notEnumerableProp(error, "__stackCleaned__", true);
+        }
+    }
+}
+
+function checkForgottenReturns(returnValue, promiseCreated, name, promise,
+                               parent) {
+    if (returnValue === undefined && promiseCreated !== null &&
+        wForgottenReturn) {
+        if (parent !== undefined && parent._returnedNonUndefined()) return;
+        if ((promise._bitField & 65535) === 0) return;
+
+        if (name) name = name + " ";
+        var msg = "a promise was created in a " + name +
+            "handler but was not returned from it";
+        promise._warn(msg, true, promiseCreated);
+    }
+}
+
+function deprecated(name, replacement) {
+    var message = name +
+        " is deprecated and will be removed in a future version.";
+    if (replacement) message += " Use " + replacement + " instead.";
+    return warn(message);
+}
+
+function warn(message, shouldUseOwnTrace, promise) {
+    if (!config.warnings) return;
+    var warning = new Warning(message);
+    var ctx;
+    if (shouldUseOwnTrace) {
+        promise._attachExtraTrace(warning);
+    } else if (config.longStackTraces && (ctx = Promise._peekContext())) {
+        ctx.attachExtraTrace(warning);
+    } else {
+        var parsed = parseStackAndMessage(warning);
+        warning.stack = parsed.message + "\n" + parsed.stack.join("\n");
+    }
+
+    if (!activeFireEvent("warning", warning)) {
+        formatAndLogError(warning, "", true);
+    }
+}
+
+function reconstructStack(message, stacks) {
+    for (var i = 0; i < stacks.length - 1; ++i) {
+        stacks[i].push("From previous event:");
+        stacks[i] = stacks[i].join("\n");
+    }
+    if (i < stacks.length) {
+        stacks[i] = stacks[i].join("\n");
+    }
+    return message + "\n" + stacks.join("\n");
+}
+
+function removeDuplicateOrEmptyJumps(stacks) {
+    for (var i = 0; i < stacks.length; ++i) {
+        if (stacks[i].length === 0 ||
+            ((i + 1 < stacks.length) && stacks[i][0] === stacks[i+1][0])) {
+            stacks.splice(i, 1);
+            i--;
+        }
+    }
+}
+
+function removeCommonRoots(stacks) {
+    var current = stacks[0];
+    for (var i = 1; i < stacks.length; ++i) {
+        var prev = stacks[i];
+        var currentLastIndex = current.length - 1;
+        var currentLastLine = current[currentLastIndex];
+        var commonRootMeetPoint = -1;
+
+        for (var j = prev.length - 1; j >= 0; --j) {
+            if (prev[j] === currentLastLine) {
+                commonRootMeetPoint = j;
+                break;
+            }
+        }
+
+        for (var j = commonRootMeetPoint; j >= 0; --j) {
+            var line = prev[j];
+            if (current[currentLastIndex] === line) {
+                current.pop();
+                currentLastIndex--;
+            } else {
+                break;
+            }
+        }
+        current = prev;
+    }
+}
+
+function cleanStack(stack) {
+    var ret = [];
+    for (var i = 0; i < stack.length; ++i) {
+        var line = stack[i];
+        var isTraceLine = "    (No stack trace)" === line ||
+            stackFramePattern.test(line);
+        var isInternalFrame = isTraceLine && shouldIgnore(line);
+        if (isTraceLine && !isInternalFrame) {
+            if (indentStackFrames && line.charAt(0) !== " ") {
+                line = "    " + line;
+            }
+            ret.push(line);
+        }
+    }
+    return ret;
+}
+
+function stackFramesAsArray(error) {
+    var stack = error.stack.replace(/\s+$/g, "").split("\n");
+    for (var i = 0; i < stack.length; ++i) {
+        var line = stack[i];
+        if ("    (No stack trace)" === line || stackFramePattern.test(line)) {
+            break;
+        }
+    }
+    if (i > 0) {
+        stack = stack.slice(i);
+    }
+    return stack;
+}
+
+function parseStackAndMessage(error) {
+    var stack = error.stack;
+    var message = error.toString();
+    stack = typeof stack === "string" && stack.length > 0
+                ? stackFramesAsArray(error) : ["    (No stack trace)"];
+    return {
+        message: message,
+        stack: cleanStack(stack)
+    };
+}
+
+function formatAndLogError(error, title, isSoft) {
+    if (typeof console !== "undefined") {
+        var message;
+        if (util.isObject(error)) {
+            var stack = error.stack;
+            message = title + formatStack(stack, error);
+        } else {
+            message = title + String(error);
+        }
+        if (typeof printWarning === "function") {
+            printWarning(message, isSoft);
+        } else if (typeof console.log === "function" ||
+            typeof console.log === "object") {
+            console.log(message);
+        }
+    }
+}
+
+function fireRejectionEvent(name, localHandler, reason, promise) {
+    var localEventFired = false;
+    try {
+        if (typeof localHandler === "function") {
+            localEventFired = true;
+            if (name === "rejectionHandled") {
+                localHandler(promise);
+            } else {
+                localHandler(reason, promise);
+            }
+        }
+    } catch (e) {
+        async.throwLater(e);
+    }
+
+    if (name === "unhandledRejection") {
+        if (!activeFireEvent(name, reason, promise) && !localEventFired) {
+            formatAndLogError(reason, "Unhandled rejection ");
+        }
+    } else {
+        activeFireEvent(name, promise);
+    }
+}
+
+function formatNonError(obj) {
+    var str;
+    if (typeof obj === "function") {
+        str = "[function " +
+            (obj.name || "anonymous") +
+            "]";
+    } else {
+        str = obj && typeof obj.toString === "function"
+            ? obj.toString() : util.toString(obj);
+        var ruselessToString = /\[object [a-zA-Z0-9$_]+\]/;
+        if (ruselessToString.test(str)) {
+            try {
+                var newStr = JSON.stringify(obj);
+                str = newStr;
+            }
+            catch(e) {
+
+            }
+        }
+        if (str.length === 0) {
+            str = "(empty array)";
+        }
+    }
+    return ("(<" + snip(str) + ">, no stack trace)");
+}
+
+function snip(str) {
+    var maxChars = 41;
+    if (str.length < maxChars) {
+        return str;
+    }
+    return str.substr(0, maxChars - 3) + "...";
+}
+
+function longStackTracesIsSupported() {
+    return typeof captureStackTrace === "function";
+}
+
+var shouldIgnore = function() { return false; };
+var parseLineInfoRegex = /[\/<\(]([^:\/]+):(\d+):(?:\d+)\)?\s*$/;
+function parseLineInfo(line) {
+    var matches = line.match(parseLineInfoRegex);
+    if (matches) {
+        return {
+            fileName: matches[1],
+            line: parseInt(matches[2], 10)
+        };
+    }
+}
+
+function setBounds(firstLineError, lastLineError) {
+    if (!longStackTracesIsSupported()) return;
+    var firstStackLines = firstLineError.stack.split("\n");
+    var lastStackLines = lastLineError.stack.split("\n");
+    var firstIndex = -1;
+    var lastIndex = -1;
+    var firstFileName;
+    var lastFileName;
+    for (var i = 0; i < firstStackLines.length; ++i) {
+        var result = parseLineInfo(firstStackLines[i]);
+        if (result) {
+            firstFileName = result.fileName;
+            firstIndex = result.line;
+            break;
+        }
+    }
+    for (var i = 0; i < lastStackLines.length; ++i) {
+        var result = parseLineInfo(lastStackLines[i]);
+        if (result) {
+            lastFileName = result.fileName;
+            lastIndex = result.line;
+            break;
+        }
+    }
+    if (firstIndex < 0 || lastIndex < 0 || !firstFileName || !lastFileName ||
+        firstFileName !== lastFileName || firstIndex >= lastIndex) {
+        return;
+    }
+
+    shouldIgnore = function(line) {
+        if (bluebirdFramePattern.test(line)) return true;
+        var info = parseLineInfo(line);
+        if (info) {
+            if (info.fileName === firstFileName &&
+                (firstIndex <= info.line && info.line <= lastIndex)) {
+                return true;
+            }
+        }
+        return false;
+    };
+}
+
+function CapturedTrace(parent) {
+    this._parent = parent;
+    this._promisesCreated = 0;
+    var length = this._length = 1 + (parent === undefined ? 0 : parent._length);
+    captureStackTrace(this, CapturedTrace);
+    if (length > 32) this.uncycle();
+}
+util.inherits(CapturedTrace, Error);
+Context.CapturedTrace = CapturedTrace;
+
+CapturedTrace.prototype.uncycle = function() {
+    var length = this._length;
+    if (length < 2) return;
+    var nodes = [];
+    var stackToIndex = {};
+
+    for (var i = 0, node = this; node !== undefined; ++i) {
+        nodes.push(node);
+        node = node._parent;
+    }
+    length = this._length = i;
+    for (var i = length - 1; i >= 0; --i) {
+        var stack = nodes[i].stack;
+        if (stackToIndex[stack] === undefined) {
+            stackToIndex[stack] = i;
+        }
+    }
+    for (var i = 0; i < length; ++i) {
+        var currentStack = nodes[i].stack;
+        var index = stackToIndex[currentStack];
+        if (index !== undefined && index !== i) {
+            if (index > 0) {
+                nodes[index - 1]._parent = undefined;
+                nodes[index - 1]._length = 1;
+            }
+            nodes[i]._parent = undefined;
+            nodes[i]._length = 1;
+            var cycleEdgeNode = i > 0 ? nodes[i - 1] : this;
+
+            if (index < length - 1) {
+                cycleEdgeNode._parent = nodes[index + 1];
+                cycleEdgeNode._parent.uncycle();
+                cycleEdgeNode._length =
+                    cycleEdgeNode._parent._length + 1;
+            } else {
+                cycleEdgeNode._parent = undefined;
+                cycleEdgeNode._length = 1;
+            }
+            var currentChildLength = cycleEdgeNode._length + 1;
+            for (var j = i - 2; j >= 0; --j) {
+                nodes[j]._length = currentChildLength;
+                currentChildLength++;
+            }
+            return;
+        }
+    }
+};
+
+CapturedTrace.prototype.attachExtraTrace = function(error) {
+    if (error.__stackCleaned__) return;
+    this.uncycle();
+    var parsed = parseStackAndMessage(error);
+    var message = parsed.message;
+    var stacks = [parsed.stack];
+
+    var trace = this;
+    while (trace !== undefined) {
+        stacks.push(cleanStack(trace.stack.split("\n")));
+        trace = trace._parent;
+    }
+    removeCommonRoots(stacks);
+    removeDuplicateOrEmptyJumps(stacks);
+    util.notEnumerableProp(error, "stack", reconstructStack(message, stacks));
+    util.notEnumerableProp(error, "__stackCleaned__", true);
+};
+
+var captureStackTrace = (function stackDetection() {
+    var v8stackFramePattern = /^\s*at\s*/;
+    var v8stackFormatter = function(stack, error) {
+        if (typeof stack === "string") return stack;
+
+        if (error.name !== undefined &&
+            error.message !== undefined) {
+            return error.toString();
+        }
+        return formatNonError(error);
+    };
+
+    if (typeof Error.stackTraceLimit === "number" &&
+        typeof Error.captureStackTrace === "function") {
+        Error.stackTraceLimit += 6;
+        stackFramePattern = v8stackFramePattern;
+        formatStack = v8stackFormatter;
+        var captureStackTrace = Error.captureStackTrace;
+
+        shouldIgnore = function(line) {
+            return bluebirdFramePattern.test(line);
+        };
+        return function(receiver, ignoreUntil) {
+            Error.stackTraceLimit += 6;
+            captureStackTrace(receiver, ignoreUntil);
+            Error.stackTraceLimit -= 6;
+        };
+    }
+    var err = new Error();
+
+    if (typeof err.stack === "string" &&
+        err.stack.split("\n")[0].indexOf("stackDetection@") >= 0) {
+        stackFramePattern = /@/;
+        formatStack = v8stackFormatter;
+        indentStackFrames = true;
+        return function captureStackTrace(o) {
+            o.stack = new Error().stack;
+        };
+    }
+
+    var hasStackAfterThrow;
+    try { throw new Error(); }
+    catch(e) {
+        hasStackAfterThrow = ("stack" in e);
+    }
+    if (!("stack" in err) && hasStackAfterThrow &&
+        typeof Error.stackTraceLimit === "number") {
+        stackFramePattern = v8stackFramePattern;
+        formatStack = v8stackFormatter;
+        return function captureStackTrace(o) {
+            Error.stackTraceLimit += 6;
+            try { throw new Error(); }
+            catch(e) { o.stack = e.stack; }
+            Error.stackTraceLimit -= 6;
+        };
+    }
+
+    formatStack = function(stack, error) {
+        if (typeof stack === "string") return stack;
+
+        if ((typeof error === "object" ||
+            typeof error === "function") &&
+            error.name !== undefined &&
+            error.message !== undefined) {
+            return error.toString();
+        }
+        return formatNonError(error);
+    };
+
+    return null;
+
+})([]);
+
+if (typeof console !== "undefined" && typeof console.warn !== "undefined") {
+    printWarning = function (message) {
+        console.warn(message);
+    };
+    if (util.isNode && process.stderr.isTTY) {
+        printWarning = function(message, isSoft) {
+            var color = isSoft ? "\u001b[33m" : "\u001b[31m";
+            console.warn(color + message + "\u001b[0m\n");
+        };
+    } else if (!util.isNode && typeof (new Error().stack) === "string") {
+        printWarning = function(message, isSoft) {
+            console.warn("%c" + message,
+                        isSoft ? "color: darkorange" : "color: red");
+        };
+    }
+}
+
+var config = {
+    warnings: warnings,
+    longStackTraces: false,
+    cancellation: false,
+    monitoring: false
+};
+
+if (longStackTraces) Promise.longStackTraces();
+
+return {
+    longStackTraces: function() {
+        return config.longStackTraces;
+    },
+    warnings: function() {
+        return config.warnings;
+    },
+    cancellation: function() {
+        return config.cancellation;
+    },
+    monitoring: function() {
+        return config.monitoring;
+    },
+    propagateFromFunction: function() {
+        return propagateFromFunction;
+    },
+    boundValueFunction: function() {
+        return boundValueFunction;
+    },
+    checkForgottenReturns: checkForgottenReturns,
+    setBounds: setBounds,
+    warn: warn,
+    deprecated: deprecated,
+    CapturedTrace: CapturedTrace,
+    fireDomEvent: fireDomEvent,
+    fireGlobalEvent: fireGlobalEvent
+};
+};
+
+},{"./errors":12,"./util":36}],10:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise) {
+function returner() {
+    return this.value;
+}
+function thrower() {
+    throw this.reason;
+}
+
+Promise.prototype["return"] =
+Promise.prototype.thenReturn = function (value) {
+    if (value instanceof Promise) value.suppressUnhandledRejections();
+    return this._then(
+        returner, undefined, undefined, {value: value}, undefined);
+};
+
+Promise.prototype["throw"] =
+Promise.prototype.thenThrow = function (reason) {
+    return this._then(
+        thrower, undefined, undefined, {reason: reason}, undefined);
+};
+
+Promise.prototype.catchThrow = function (reason) {
+    if (arguments.length <= 1) {
+        return this._then(
+            undefined, thrower, undefined, {reason: reason}, undefined);
+    } else {
+        var _reason = arguments[1];
+        var handler = function() {throw _reason;};
+        return this.caught(reason, handler);
+    }
+};
+
+Promise.prototype.catchReturn = function (value) {
+    if (arguments.length <= 1) {
+        if (value instanceof Promise) value.suppressUnhandledRejections();
+        return this._then(
+            undefined, returner, undefined, {value: value}, undefined);
+    } else {
+        var _value = arguments[1];
+        if (_value instanceof Promise) _value.suppressUnhandledRejections();
+        var handler = function() {return _value;};
+        return this.caught(value, handler);
+    }
+};
+};
+
+},{}],11:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, INTERNAL) {
+var PromiseReduce = Promise.reduce;
+var PromiseAll = Promise.all;
+
+function promiseAllThis() {
+    return PromiseAll(this);
+}
+
+function PromiseMapSeries(promises, fn) {
+    return PromiseReduce(promises, fn, INTERNAL, INTERNAL);
+}
+
+Promise.prototype.each = function (fn) {
+    return this.mapSeries(fn)
+            ._then(promiseAllThis, undefined, undefined, this, undefined);
+};
+
+Promise.prototype.mapSeries = function (fn) {
+    return PromiseReduce(this, fn, INTERNAL, INTERNAL);
+};
+
+Promise.each = function (promises, fn) {
+    return PromiseMapSeries(promises, fn)
+            ._then(promiseAllThis, undefined, undefined, promises, undefined);
+};
+
+Promise.mapSeries = PromiseMapSeries;
+};
+
+},{}],12:[function(_dereq_,module,exports){
+"use strict";
+var es5 = _dereq_("./es5");
+var Objectfreeze = es5.freeze;
+var util = _dereq_("./util");
+var inherits = util.inherits;
+var notEnumerableProp = util.notEnumerableProp;
+
+function subError(nameProperty, defaultMessage) {
+    function SubError(message) {
+        if (!(this instanceof SubError)) return new SubError(message);
+        notEnumerableProp(this, "message",
+            typeof message === "string" ? message : defaultMessage);
+        notEnumerableProp(this, "name", nameProperty);
+        if (Error.captureStackTrace) {
+            Error.captureStackTrace(this, this.constructor);
+        } else {
+            Error.call(this);
+        }
+    }
+    inherits(SubError, Error);
+    return SubError;
+}
+
+var _TypeError, _RangeError;
+var Warning = subError("Warning", "warning");
+var CancellationError = subError("CancellationError", "cancellation error");
+var TimeoutError = subError("TimeoutError", "timeout error");
+var AggregateError = subError("AggregateError", "aggregate error");
+try {
+    _TypeError = TypeError;
+    _RangeError = RangeError;
+} catch(e) {
+    _TypeError = subError("TypeError", "type error");
+    _RangeError = subError("RangeError", "range error");
+}
+
+var methods = ("join pop push shift unshift slice filter forEach some " +
+    "every map indexOf lastIndexOf reduce reduceRight sort reverse").split(" ");
+
+for (var i = 0; i < methods.length; ++i) {
+    if (typeof Array.prototype[methods[i]] === "function") {
+        AggregateError.prototype[methods[i]] = Array.prototype[methods[i]];
+    }
+}
+
+es5.defineProperty(AggregateError.prototype, "length", {
+    value: 0,
+    configurable: false,
+    writable: true,
+    enumerable: true
+});
+AggregateError.prototype["isOperational"] = true;
+var level = 0;
+AggregateError.prototype.toString = function() {
+    var indent = Array(level * 4 + 1).join(" ");
+    var ret = "\n" + indent + "AggregateError of:" + "\n";
+    level++;
+    indent = Array(level * 4 + 1).join(" ");
+    for (var i = 0; i < this.length; ++i) {
+        var str = this[i] === this ? "[Circular AggregateError]" : this[i] + "";
+        var lines = str.split("\n");
+        for (var j = 0; j < lines.length; ++j) {
+            lines[j] = indent + lines[j];
+        }
+        str = lines.join("\n");
+        ret += str + "\n";
+    }
+    level--;
+    return ret;
+};
+
+function OperationalError(message) {
+    if (!(this instanceof OperationalError))
+        return new OperationalError(message);
+    notEnumerableProp(this, "name", "OperationalError");
+    notEnumerableProp(this, "message", message);
+    this.cause = message;
+    this["isOperational"] = true;
+
+    if (message instanceof Error) {
+        notEnumerableProp(this, "message", message.message);
+        notEnumerableProp(this, "stack", message.stack);
+    } else if (Error.captureStackTrace) {
+        Error.captureStackTrace(this, this.constructor);
+    }
+
+}
+inherits(OperationalError, Error);
+
+var errorTypes = Error["__BluebirdErrorTypes__"];
+if (!errorTypes) {
+    errorTypes = Objectfreeze({
+        CancellationError: CancellationError,
+        TimeoutError: TimeoutError,
+        OperationalError: OperationalError,
+        RejectionError: OperationalError,
+        AggregateError: AggregateError
+    });
+    es5.defineProperty(Error, "__BluebirdErrorTypes__", {
+        value: errorTypes,
+        writable: false,
+        enumerable: false,
+        configurable: false
+    });
+}
+
+module.exports = {
+    Error: Error,
+    TypeError: _TypeError,
+    RangeError: _RangeError,
+    CancellationError: errorTypes.CancellationError,
+    OperationalError: errorTypes.OperationalError,
+    TimeoutError: errorTypes.TimeoutError,
+    AggregateError: errorTypes.AggregateError,
+    Warning: Warning
+};
+
+},{"./es5":13,"./util":36}],13:[function(_dereq_,module,exports){
+var isES5 = (function(){
+    "use strict";
+    return this === undefined;
+})();
+
+if (isES5) {
+    module.exports = {
+        freeze: Object.freeze,
+        defineProperty: Object.defineProperty,
+        getDescriptor: Object.getOwnPropertyDescriptor,
+        keys: Object.keys,
+        names: Object.getOwnPropertyNames,
+        getPrototypeOf: Object.getPrototypeOf,
+        isArray: Array.isArray,
+        isES5: isES5,
+        propertyIsWritable: function(obj, prop) {
+            var descriptor = Object.getOwnPropertyDescriptor(obj, prop);
+            return !!(!descriptor || descriptor.writable || descriptor.set);
+        }
+    };
+} else {
+    var has = {}.hasOwnProperty;
+    var str = {}.toString;
+    var proto = {}.constructor.prototype;
+
+    var ObjectKeys = function (o) {
+        var ret = [];
+        for (var key in o) {
+            if (has.call(o, key)) {
+                ret.push(key);
+            }
+        }
+        return ret;
+    };
+
+    var ObjectGetDescriptor = function(o, key) {
+        return {value: o[key]};
+    };
+
+    var ObjectDefineProperty = function (o, key, desc) {
+        o[key] = desc.value;
+        return o;
+    };
+
+    var ObjectFreeze = function (obj) {
+        return obj;
+    };
+
+    var ObjectGetPrototypeOf = function (obj) {
+        try {
+            return Object(obj).constructor.prototype;
+        }
+        catch (e) {
+            return proto;
+        }
+    };
+
+    var ArrayIsArray = function (obj) {
+        try {
+            return str.call(obj) === "[object Array]";
+        }
+        catch(e) {
+            return false;
+        }
+    };
+
+    module.exports = {
+        isArray: ArrayIsArray,
+        keys: ObjectKeys,
+        names: ObjectKeys,
+        defineProperty: ObjectDefineProperty,
+        getDescriptor: ObjectGetDescriptor,
+        freeze: ObjectFreeze,
+        getPrototypeOf: ObjectGetPrototypeOf,
+        isES5: isES5,
+        propertyIsWritable: function() {
+            return true;
+        }
+    };
+}
+
+},{}],14:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, INTERNAL) {
+var PromiseMap = Promise.map;
+
+Promise.prototype.filter = function (fn, options) {
+    return PromiseMap(this, fn, options, INTERNAL);
+};
+
+Promise.filter = function (promises, fn, options) {
+    return PromiseMap(promises, fn, options, INTERNAL);
+};
+};
+
+},{}],15:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, tryConvertToPromise) {
+var util = _dereq_("./util");
+var CancellationError = Promise.CancellationError;
+var errorObj = util.errorObj;
+
+function PassThroughHandlerContext(promise, type, handler) {
+    this.promise = promise;
+    this.type = type;
+    this.handler = handler;
+    this.called = false;
+    this.cancelPromise = null;
+}
+
+PassThroughHandlerContext.prototype.isFinallyHandler = function() {
+    return this.type === 0;
+};
+
+function FinallyHandlerCancelReaction(finallyHandler) {
+    this.finallyHandler = finallyHandler;
+}
+
+FinallyHandlerCancelReaction.prototype._resultCancelled = function() {
+    checkCancel(this.finallyHandler);
+};
+
+function checkCancel(ctx, reason) {
+    if (ctx.cancelPromise != null) {
+        if (arguments.length > 1) {
+            ctx.cancelPromise._reject(reason);
+        } else {
+            ctx.cancelPromise._cancel();
+        }
+        ctx.cancelPromise = null;
+        return true;
+    }
+    return false;
+}
+
+function succeed() {
+    return finallyHandler.call(this, this.promise._target()._settledValue());
+}
+function fail(reason) {
+    if (checkCancel(this, reason)) return;
+    errorObj.e = reason;
+    return errorObj;
+}
+function finallyHandler(reasonOrValue) {
+    var promise = this.promise;
+    var handler = this.handler;
+
+    if (!this.called) {
+        this.called = true;
+        var ret = this.isFinallyHandler()
+            ? handler.call(promise._boundValue())
+            : handler.call(promise._boundValue(), reasonOrValue);
+        if (ret !== undefined) {
+            promise._setReturnedNonUndefined();
+            var maybePromise = tryConvertToPromise(ret, promise);
+            if (maybePromise instanceof Promise) {
+                if (this.cancelPromise != null) {
+                    if (maybePromise.isCancelled()) {
+                        var reason =
+                            new CancellationError("late cancellation observer");
+                        promise._attachExtraTrace(reason);
+                        errorObj.e = reason;
+                        return errorObj;
+                    } else if (maybePromise.isPending()) {
+                        maybePromise._attachCancellationCallback(
+                            new FinallyHandlerCancelReaction(this));
+                    }
+                }
+                return maybePromise._then(
+                    succeed, fail, undefined, this, undefined);
+            }
+        }
+    }
+
+    if (promise.isRejected()) {
+        checkCancel(this);
+        errorObj.e = reasonOrValue;
+        return errorObj;
+    } else {
+        checkCancel(this);
+        return reasonOrValue;
+    }
+}
+
+Promise.prototype._passThrough = function(handler, type, success, fail) {
+    if (typeof handler !== "function") return this.then();
+    return this._then(success,
+                      fail,
+                      undefined,
+                      new PassThroughHandlerContext(this, type, handler),
+                      undefined);
+};
+
+Promise.prototype.lastly =
+Promise.prototype["finally"] = function (handler) {
+    return this._passThrough(handler,
+                             0,
+                             finallyHandler,
+                             finallyHandler);
+};
+
+Promise.prototype.tap = function (handler) {
+    return this._passThrough(handler, 1, finallyHandler);
+};
+
+return PassThroughHandlerContext;
+};
+
+},{"./util":36}],16:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise,
+                          apiRejection,
+                          INTERNAL,
+                          tryConvertToPromise,
+                          Proxyable,
+                          debug) {
+var errors = _dereq_("./errors");
+var TypeError = errors.TypeError;
+var util = _dereq_("./util");
+var errorObj = util.errorObj;
+var tryCatch = util.tryCatch;
+var yieldHandlers = [];
+
+function promiseFromYieldHandler(value, yieldHandlers, traceParent) {
+    for (var i = 0; i < yieldHandlers.length; ++i) {
+        traceParent._pushContext();
+        var result = tryCatch(yieldHandlers[i])(value);
+        traceParent._popContext();
+        if (result === errorObj) {
+            traceParent._pushContext();
+            var ret = Promise.reject(errorObj.e);
+            traceParent._popContext();
+            return ret;
+        }
+        var maybePromise = tryConvertToPromise(result, traceParent);
+        if (maybePromise instanceof Promise) return maybePromise;
+    }
+    return null;
+}
+
+function PromiseSpawn(generatorFunction, receiver, yieldHandler, stack) {
+    if (debug.cancellation()) {
+        var internal = new Promise(INTERNAL);
+        var _finallyPromise = this._finallyPromise = new Promise(INTERNAL);
+        this._promise = internal.lastly(function() {
+            return _finallyPromise;
+        });
+        internal._captureStackTrace();
+        internal._setOnCancel(this);
+    } else {
+        var promise = this._promise = new Promise(INTERNAL);
+        promise._captureStackTrace();
+    }
+    this._stack = stack;
+    this._generatorFunction = generatorFunction;
+    this._receiver = receiver;
+    this._generator = undefined;
+    this._yieldHandlers = typeof yieldHandler === "function"
+        ? [yieldHandler].concat(yieldHandlers)
+        : yieldHandlers;
+    this._yieldedPromise = null;
+    this._cancellationPhase = false;
+}
+util.inherits(PromiseSpawn, Proxyable);
+
+PromiseSpawn.prototype._isResolved = function() {
+    return this._promise === null;
+};
+
+PromiseSpawn.prototype._cleanup = function() {
+    this._promise = this._generator = null;
+    if (debug.cancellation() && this._finallyPromise !== null) {
+        this._finallyPromise._fulfill();
+        this._finallyPromise = null;
+    }
+};
+
+PromiseSpawn.prototype._promiseCancelled = function() {
+    if (this._isResolved()) return;
+    var implementsReturn = typeof this._generator["return"] !== "undefined";
+
+    var result;
+    if (!implementsReturn) {
+        var reason = new Promise.CancellationError(
+            "generator .return() sentinel");
+        Promise.coroutine.returnSentinel = reason;
+        this._promise._attachExtraTrace(reason);
+        this._promise._pushContext();
+        result = tryCatch(this._generator["throw"]).call(this._generator,
+                                                         reason);
+        this._promise._popContext();
+    } else {
+        this._promise._pushContext();
+        result = tryCatch(this._generator["return"]).call(this._generator,
+                                                          undefined);
+        this._promise._popContext();
+    }
+    this._cancellationPhase = true;
+    this._yieldedPromise = null;
+    this._continue(result);
+};
+
+PromiseSpawn.prototype._promiseFulfilled = function(value) {
+    this._yieldedPromise = null;
+    this._promise._pushContext();
+    var result = tryCatch(this._generator.next).call(this._generator, value);
+    this._promise._popContext();
+    this._continue(result);
+};
+
+PromiseSpawn.prototype._promiseRejected = function(reason) {
+    this._yieldedPromise = null;
+    this._promise._attachExtraTrace(reason);
+    this._promise._pushContext();
+    var result = tryCatch(this._generator["throw"])
+        .call(this._generator, reason);
+    this._promise._popContext();
+    this._continue(result);
+};
+
+PromiseSpawn.prototype._resultCancelled = function() {
+    if (this._yieldedPromise instanceof Promise) {
+        var promise = this._yieldedPromise;
+        this._yieldedPromise = null;
+        promise.cancel();
+    }
+};
+
+PromiseSpawn.prototype.promise = function () {
+    return this._promise;
+};
+
+PromiseSpawn.prototype._run = function () {
+    this._generator = this._generatorFunction.call(this._receiver);
+    this._receiver =
+        this._generatorFunction = undefined;
+    this._promiseFulfilled(undefined);
+};
+
+PromiseSpawn.prototype._continue = function (result) {
+    var promise = this._promise;
+    if (result === errorObj) {
+        this._cleanup();
+        if (this._cancellationPhase) {
+            return promise.cancel();
+        } else {
+            return promise._rejectCallback(result.e, false);
+        }
+    }
+
+    var value = result.value;
+    if (result.done === true) {
+        this._cleanup();
+        if (this._cancellationPhase) {
+            return promise.cancel();
+        } else {
+            return promise._resolveCallback(value);
+        }
+    } else {
+        var maybePromise = tryConvertToPromise(value, this._promise);
+        if (!(maybePromise instanceof Promise)) {
+            maybePromise =
+                promiseFromYieldHandler(maybePromise,
+                                        this._yieldHandlers,
+                                        this._promise);
+            if (maybePromise === null) {
+                this._promiseRejected(
+                    new TypeError(
+                        "A value %s was yielded that could not be treated as a promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a\u000a".replace("%s", value) +
+                        "From coroutine:\u000a" +
+                        this._stack.split("\n").slice(1, -7).join("\n")
+                    )
+                );
+                return;
+            }
+        }
+        maybePromise = maybePromise._target();
+        var bitField = maybePromise._bitField;
+        ;
+        if (((bitField & 50397184) === 0)) {
+            this._yieldedPromise = maybePromise;
+            maybePromise._proxy(this, null);
+        } else if (((bitField & 33554432) !== 0)) {
+            this._promiseFulfilled(maybePromise._value());
+        } else if (((bitField & 16777216) !== 0)) {
+            this._promiseRejected(maybePromise._reason());
+        } else {
+            this._promiseCancelled();
+        }
+    }
+};
+
+Promise.coroutine = function (generatorFunction, options) {
+    if (typeof generatorFunction !== "function") {
+        throw new TypeError("generatorFunction must be a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+    var yieldHandler = Object(options).yieldHandler;
+    var PromiseSpawn$ = PromiseSpawn;
+    var stack = new Error().stack;
+    return function () {
+        var generator = generatorFunction.apply(this, arguments);
+        var spawn = new PromiseSpawn$(undefined, undefined, yieldHandler,
+                                      stack);
+        var ret = spawn.promise();
+        spawn._generator = generator;
+        spawn._promiseFulfilled(undefined);
+        return ret;
+    };
+};
+
+Promise.coroutine.addYieldHandler = function(fn) {
+    if (typeof fn !== "function") {
+        throw new TypeError("expecting a function but got " + util.classString(fn));
+    }
+    yieldHandlers.push(fn);
+};
+
+Promise.spawn = function (generatorFunction) {
+    debug.deprecated("Promise.spawn()", "Promise.coroutine()");
+    if (typeof generatorFunction !== "function") {
+        return apiRejection("generatorFunction must be a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+    var spawn = new PromiseSpawn(generatorFunction, this);
+    var ret = spawn.promise();
+    spawn._run(Promise.spawn);
+    return ret;
+};
+};
+
+},{"./errors":12,"./util":36}],17:[function(_dereq_,module,exports){
+"use strict";
+module.exports =
+function(Promise, PromiseArray, tryConvertToPromise, INTERNAL) {
+var util = _dereq_("./util");
+var canEvaluate = util.canEvaluate;
+var tryCatch = util.tryCatch;
+var errorObj = util.errorObj;
+var reject;
+
+if (!true) {
+if (canEvaluate) {
+    var thenCallback = function(i) {
+        return new Function("value", "holder", "                             \n\
+            'use strict';                                                    \n\
+            holder.pIndex = value;                                           \n\
+            holder.checkFulfillment(this);                                   \n\
+            ".replace(/Index/g, i));
+    };
+
+    var promiseSetter = function(i) {
+        return new Function("promise", "holder", "                           \n\
+            'use strict';                                                    \n\
+            holder.pIndex = promise;                                         \n\
+            ".replace(/Index/g, i));
+    };
+
+    var generateHolderClass = function(total) {
+        var props = new Array(total);
+        for (var i = 0; i < props.length; ++i) {
+            props[i] = "this.p" + (i+1);
+        }
+        var assignment = props.join(" = ") + " = null;";
+        var cancellationCode= "var promise;\n" + props.map(function(prop) {
+            return "                                                         \n\
+                promise = " + prop + ";                                      \n\
+                if (promise instanceof Promise) {                            \n\
+                    promise.cancel();                                        \n\
+                }                                                            \n\
+            ";
+        }).join("\n");
+        var passedArguments = props.join(", ");
+        var name = "Holder$" + total;
+
+
+        var code = "return function(tryCatch, errorObj, Promise) {           \n\
+            'use strict';                                                    \n\
+            function [TheName](fn) {                                         \n\
+                [TheProperties]                                              \n\
+                this.fn = fn;                                                \n\
+                this.now = 0;                                                \n\
+            }                                                                \n\
+            [TheName].prototype.checkFulfillment = function(promise) {       \n\
+                var now = ++this.now;                                        \n\
+                if (now === [TheTotal]) {                                    \n\
+                    promise._pushContext();                                  \n\
+                    var callback = this.fn;                                  \n\
+                    var ret = tryCatch(callback)([ThePassedArguments]);      \n\
+                    promise._popContext();                                   \n\
+                    if (ret === errorObj) {                                  \n\
+                        promise._rejectCallback(ret.e, false);               \n\
+                    } else {                                                 \n\
+                        promise._resolveCallback(ret);                       \n\
+                    }                                                        \n\
+                }                                                            \n\
+            };                                                               \n\
+                                                                             \n\
+            [TheName].prototype._resultCancelled = function() {              \n\
+                [CancellationCode]                                           \n\
+            };                                                               \n\
+                                                                             \n\
+            return [TheName];                                                \n\
+        }(tryCatch, errorObj, Promise);                                      \n\
+        ";
+
+        code = code.replace(/\[TheName\]/g, name)
+            .replace(/\[TheTotal\]/g, total)
+            .replace(/\[ThePassedArguments\]/g, passedArguments)
+            .replace(/\[TheProperties\]/g, assignment)
+            .replace(/\[CancellationCode\]/g, cancellationCode);
+
+        return new Function("tryCatch", "errorObj", "Promise", code)
+                           (tryCatch, errorObj, Promise);
+    };
+
+    var holderClasses = [];
+    var thenCallbacks = [];
+    var promiseSetters = [];
+
+    for (var i = 0; i < 8; ++i) {
+        holderClasses.push(generateHolderClass(i + 1));
+        thenCallbacks.push(thenCallback(i + 1));
+        promiseSetters.push(promiseSetter(i + 1));
+    }
+
+    reject = function (reason) {
+        this._reject(reason);
+    };
+}}
+
+Promise.join = function () {
+    var last = arguments.length - 1;
+    var fn;
+    if (last > 0 && typeof arguments[last] === "function") {
+        fn = arguments[last];
+        if (!true) {
+            if (last <= 8 && canEvaluate) {
+                var ret = new Promise(INTERNAL);
+                ret._captureStackTrace();
+                var HolderClass = holderClasses[last - 1];
+                var holder = new HolderClass(fn);
+                var callbacks = thenCallbacks;
+
+                for (var i = 0; i < last; ++i) {
+                    var maybePromise = tryConvertToPromise(arguments[i], ret);
+                    if (maybePromise instanceof Promise) {
+                        maybePromise = maybePromise._target();
+                        var bitField = maybePromise._bitField;
+                        ;
+                        if (((bitField & 50397184) === 0)) {
+                            maybePromise._then(callbacks[i], reject,
+                                               undefined, ret, holder);
+                            promiseSetters[i](maybePromise, holder);
+                        } else if (((bitField & 33554432) !== 0)) {
+                            callbacks[i].call(ret,
+                                              maybePromise._value(), holder);
+                        } else if (((bitField & 16777216) !== 0)) {
+                            ret._reject(maybePromise._reason());
+                        } else {
+                            ret._cancel();
+                        }
+                    } else {
+                        callbacks[i].call(ret, maybePromise, holder);
+                    }
+                }
+                if (!ret._isFateSealed()) {
+                    ret._setAsyncGuaranteed();
+                    ret._setOnCancel(holder);
+                }
+                return ret;
+            }
+        }
+    }
+    var args = [].slice.call(arguments);;
+    if (fn) args.pop();
+    var ret = new PromiseArray(args).promise();
+    return fn !== undefined ? ret.spread(fn) : ret;
+};
+
+};
+
+},{"./util":36}],18:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise,
+                          PromiseArray,
+                          apiRejection,
+                          tryConvertToPromise,
+                          INTERNAL,
+                          debug) {
+var getDomain = Promise._getDomain;
+var util = _dereq_("./util");
+var tryCatch = util.tryCatch;
+var errorObj = util.errorObj;
+var EMPTY_ARRAY = [];
+
+function MappingPromiseArray(promises, fn, limit, _filter) {
+    this.constructor$(promises);
+    this._promise._captureStackTrace();
+    var domain = getDomain();
+    this._callback = domain === null ? fn : domain.bind(fn);
+    this._preservedValues = _filter === INTERNAL
+        ? new Array(this.length())
+        : null;
+    this._limit = limit;
+    this._inFlight = 0;
+    this._queue = limit >= 1 ? [] : EMPTY_ARRAY;
+    this._init$(undefined, -2);
+}
+util.inherits(MappingPromiseArray, PromiseArray);
+
+MappingPromiseArray.prototype._init = function () {};
+
+MappingPromiseArray.prototype._promiseFulfilled = function (value, index) {
+    var values = this._values;
+    var length = this.length();
+    var preservedValues = this._preservedValues;
+    var limit = this._limit;
+
+    if (index < 0) {
+        index = (index * -1) - 1;
+        values[index] = value;
+        if (limit >= 1) {
+            this._inFlight--;
+            this._drainQueue();
+            if (this._isResolved()) return true;
+        }
+    } else {
+        if (limit >= 1 && this._inFlight >= limit) {
+            values[index] = value;
+            this._queue.push(index);
+            return false;
+        }
+        if (preservedValues !== null) preservedValues[index] = value;
+
+        var promise = this._promise;
+        var callback = this._callback;
+        var receiver = promise._boundValue();
+        promise._pushContext();
+        var ret = tryCatch(callback).call(receiver, value, index, length);
+        var promiseCreated = promise._popContext();
+        debug.checkForgottenReturns(
+            ret,
+            promiseCreated,
+            preservedValues !== null ? "Promise.filter" : "Promise.map",
+            promise
+        );
+        if (ret === errorObj) {
+            this._reject(ret.e);
+            return true;
+        }
+
+        var maybePromise = tryConvertToPromise(ret, this._promise);
+        if (maybePromise instanceof Promise) {
+            maybePromise = maybePromise._target();
+            var bitField = maybePromise._bitField;
+            ;
+            if (((bitField & 50397184) === 0)) {
+                if (limit >= 1) this._inFlight++;
+                values[index] = maybePromise;
+                maybePromise._proxy(this, (index + 1) * -1);
+                return false;
+            } else if (((bitField & 33554432) !== 0)) {
+                ret = maybePromise._value();
+            } else if (((bitField & 16777216) !== 0)) {
+                this._reject(maybePromise._reason());
+                return true;
+            } else {
+                this._cancel();
+                return true;
+            }
+        }
+        values[index] = ret;
+    }
+    var totalResolved = ++this._totalResolved;
+    if (totalResolved >= length) {
+        if (preservedValues !== null) {
+            this._filter(values, preservedValues);
+        } else {
+            this._resolve(values);
+        }
+        return true;
+    }
+    return false;
+};
+
+MappingPromiseArray.prototype._drainQueue = function () {
+    var queue = this._queue;
+    var limit = this._limit;
+    var values = this._values;
+    while (queue.length > 0 && this._inFlight < limit) {
+        if (this._isResolved()) return;
+        var index = queue.pop();
+        this._promiseFulfilled(values[index], index);
+    }
+};
+
+MappingPromiseArray.prototype._filter = function (booleans, values) {
+    var len = values.length;
+    var ret = new Array(len);
+    var j = 0;
+    for (var i = 0; i < len; ++i) {
+        if (booleans[i]) ret[j++] = values[i];
+    }
+    ret.length = j;
+    this._resolve(ret);
+};
+
+MappingPromiseArray.prototype.preservedValues = function () {
+    return this._preservedValues;
+};
+
+function map(promises, fn, options, _filter) {
+    if (typeof fn !== "function") {
+        return apiRejection("expecting a function but got " + util.classString(fn));
+    }
+
+    var limit = 0;
+    if (options !== undefined) {
+        if (typeof options === "object" && options !== null) {
+            if (typeof options.concurrency !== "number") {
+                return Promise.reject(
+                    new TypeError("'concurrency' must be a number but it is " +
+                                    util.classString(options.concurrency)));
+            }
+            limit = options.concurrency;
+        } else {
+            return Promise.reject(new TypeError(
+                            "options argument must be an object but it is " +
+                             util.classString(options)));
+        }
+    }
+    limit = typeof limit === "number" &&
+        isFinite(limit) && limit >= 1 ? limit : 0;
+    return new MappingPromiseArray(promises, fn, limit, _filter).promise();
+}
+
+Promise.prototype.map = function (fn, options) {
+    return map(this, fn, options, null);
+};
+
+Promise.map = function (promises, fn, options, _filter) {
+    return map(promises, fn, options, _filter);
+};
+
+
+};
+
+},{"./util":36}],19:[function(_dereq_,module,exports){
+"use strict";
+module.exports =
+function(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug) {
+var util = _dereq_("./util");
+var tryCatch = util.tryCatch;
+
+Promise.method = function (fn) {
+    if (typeof fn !== "function") {
+        throw new Promise.TypeError("expecting a function but got " + util.classString(fn));
+    }
+    return function () {
+        var ret = new Promise(INTERNAL);
+        ret._captureStackTrace();
+        ret._pushContext();
+        var value = tryCatch(fn).apply(this, arguments);
+        var promiseCreated = ret._popContext();
+        debug.checkForgottenReturns(
+            value, promiseCreated, "Promise.method", ret);
+        ret._resolveFromSyncValue(value);
+        return ret;
+    };
+};
+
+Promise.attempt = Promise["try"] = function (fn) {
+    if (typeof fn !== "function") {
+        return apiRejection("expecting a function but got " + util.classString(fn));
+    }
+    var ret = new Promise(INTERNAL);
+    ret._captureStackTrace();
+    ret._pushContext();
+    var value;
+    if (arguments.length > 1) {
+        debug.deprecated("calling Promise.try with more than 1 argument");
+        var arg = arguments[1];
+        var ctx = arguments[2];
+        value = util.isArray(arg) ? tryCatch(fn).apply(ctx, arg)
+                                  : tryCatch(fn).call(ctx, arg);
+    } else {
+        value = tryCatch(fn)();
+    }
+    var promiseCreated = ret._popContext();
+    debug.checkForgottenReturns(
+        value, promiseCreated, "Promise.try", ret);
+    ret._resolveFromSyncValue(value);
+    return ret;
+};
+
+Promise.prototype._resolveFromSyncValue = function (value) {
+    if (value === util.errorObj) {
+        this._rejectCallback(value.e, false);
+    } else {
+        this._resolveCallback(value, true);
+    }
+};
+};
+
+},{"./util":36}],20:[function(_dereq_,module,exports){
+"use strict";
+var util = _dereq_("./util");
+var maybeWrapAsError = util.maybeWrapAsError;
+var errors = _dereq_("./errors");
+var OperationalError = errors.OperationalError;
+var es5 = _dereq_("./es5");
+
+function isUntypedError(obj) {
+    return obj instanceof Error &&
+        es5.getPrototypeOf(obj) === Error.prototype;
+}
+
+var rErrorKey = /^(?:name|message|stack|cause)$/;
+function wrapAsOperationalError(obj) {
+    var ret;
+    if (isUntypedError(obj)) {
+        ret = new OperationalError(obj);
+        ret.name = obj.name;
+        ret.message = obj.message;
+        ret.stack = obj.stack;
+        var keys = es5.keys(obj);
+        for (var i = 0; i < keys.length; ++i) {
+            var key = keys[i];
+            if (!rErrorKey.test(key)) {
+                ret[key] = obj[key];
+            }
+        }
+        return ret;
+    }
+    util.markAsOriginatingFromRejection(obj);
+    return obj;
+}
+
+function nodebackForPromise(promise, multiArgs) {
+    return function(err, value) {
+        if (promise === null) return;
+        if (err) {
+            var wrapped = wrapAsOperationalError(maybeWrapAsError(err));
+            promise._attachExtraTrace(wrapped);
+            promise._reject(wrapped);
+        } else if (!multiArgs) {
+            promise._fulfill(value);
+        } else {
+            var args = [].slice.call(arguments, 1);;
+            promise._fulfill(args);
+        }
+        promise = null;
+    };
+}
+
+module.exports = nodebackForPromise;
+
+},{"./errors":12,"./es5":13,"./util":36}],21:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise) {
+var util = _dereq_("./util");
+var async = Promise._async;
+var tryCatch = util.tryCatch;
+var errorObj = util.errorObj;
+
+function spreadAdapter(val, nodeback) {
+    var promise = this;
+    if (!util.isArray(val)) return successAdapter.call(promise, val, nodeback);
+    var ret =
+        tryCatch(nodeback).apply(promise._boundValue(), [null].concat(val));
+    if (ret === errorObj) {
+        async.throwLater(ret.e);
+    }
+}
+
+function successAdapter(val, nodeback) {
+    var promise = this;
+    var receiver = promise._boundValue();
+    var ret = val === undefined
+        ? tryCatch(nodeback).call(receiver, null)
+        : tryCatch(nodeback).call(receiver, null, val);
+    if (ret === errorObj) {
+        async.throwLater(ret.e);
+    }
+}
+function errorAdapter(reason, nodeback) {
+    var promise = this;
+    if (!reason) {
+        var newReason = new Error(reason + "");
+        newReason.cause = reason;
+        reason = newReason;
+    }
+    var ret = tryCatch(nodeback).call(promise._boundValue(), reason);
+    if (ret === errorObj) {
+        async.throwLater(ret.e);
+    }
+}
+
+Promise.prototype.asCallback = Promise.prototype.nodeify = function (nodeback,
+                                                                     options) {
+    if (typeof nodeback == "function") {
+        var adapter = successAdapter;
+        if (options !== undefined && Object(options).spread) {
+            adapter = spreadAdapter;
+        }
+        this._then(
+            adapter,
+            errorAdapter,
+            undefined,
+            this,
+            nodeback
+        );
+    }
+    return this;
+};
+};
+
+},{"./util":36}],22:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function() {
+var makeSelfResolutionError = function () {
+    return new TypeError("circular promise resolution chain\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+};
+var reflectHandler = function() {
+    return new Promise.PromiseInspection(this._target());
+};
+var apiRejection = function(msg) {
+    return Promise.reject(new TypeError(msg));
+};
+function Proxyable() {}
+var UNDEFINED_BINDING = {};
+var util = _dereq_("./util");
+
+var getDomain;
+if (util.isNode) {
+    getDomain = function() {
+        var ret = process.domain;
+        if (ret === undefined) ret = null;
+        return ret;
+    };
+} else {
+    getDomain = function() {
+        return null;
+    };
+}
+util.notEnumerableProp(Promise, "_getDomain", getDomain);
+
+var es5 = _dereq_("./es5");
+var Async = _dereq_("./async");
+var async = new Async();
+es5.defineProperty(Promise, "_async", {value: async});
+var errors = _dereq_("./errors");
+var TypeError = Promise.TypeError = errors.TypeError;
+Promise.RangeError = errors.RangeError;
+var CancellationError = Promise.CancellationError = errors.CancellationError;
+Promise.TimeoutError = errors.TimeoutError;
+Promise.OperationalError = errors.OperationalError;
+Promise.RejectionError = errors.OperationalError;
+Promise.AggregateError = errors.AggregateError;
+var INTERNAL = function(){};
+var APPLY = {};
+var NEXT_FILTER = {};
+var tryConvertToPromise = _dereq_("./thenables")(Promise, INTERNAL);
+var PromiseArray =
+    _dereq_("./promise_array")(Promise, INTERNAL,
+                               tryConvertToPromise, apiRejection, Proxyable);
+var Context = _dereq_("./context")(Promise);
+ /*jshint unused:false*/
+var createContext = Context.create;
+var debug = _dereq_("./debuggability")(Promise, Context);
+var CapturedTrace = debug.CapturedTrace;
+var PassThroughHandlerContext =
+    _dereq_("./finally")(Promise, tryConvertToPromise);
+var catchFilter = _dereq_("./catch_filter")(NEXT_FILTER);
+var nodebackForPromise = _dereq_("./nodeback");
+var errorObj = util.errorObj;
+var tryCatch = util.tryCatch;
+function check(self, executor) {
+    if (typeof executor !== "function") {
+        throw new TypeError("expecting a function but got " + util.classString(executor));
+    }
+    if (self.constructor !== Promise) {
+        throw new TypeError("the promise constructor cannot be invoked directly\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+}
+
+function Promise(executor) {
+    this._bitField = 0;
+    this._fulfillmentHandler0 = undefined;
+    this._rejectionHandler0 = undefined;
+    this._promise0 = undefined;
+    this._receiver0 = undefined;
+    if (executor !== INTERNAL) {
+        check(this, executor);
+        this._resolveFromExecutor(executor);
+    }
+    this._promiseCreated();
+    this._fireEvent("promiseCreated", this);
+}
+
+Promise.prototype.toString = function () {
+    return "[object Promise]";
+};
+
+Promise.prototype.caught = Promise.prototype["catch"] = function (fn) {
+    var len = arguments.length;
+    if (len > 1) {
+        var catchInstances = new Array(len - 1),
+            j = 0, i;
+        for (i = 0; i < len - 1; ++i) {
+            var item = arguments[i];
+            if (util.isObject(item)) {
+                catchInstances[j++] = item;
+            } else {
+                return apiRejection("expecting an object but got " + util.classString(item));
+            }
+        }
+        catchInstances.length = j;
+        fn = arguments[i];
+        return this.then(undefined, catchFilter(catchInstances, fn, this));
+    }
+    return this.then(undefined, fn);
+};
+
+Promise.prototype.reflect = function () {
+    return this._then(reflectHandler,
+        reflectHandler, undefined, this, undefined);
+};
+
+Promise.prototype.then = function (didFulfill, didReject) {
+    if (debug.warnings() && arguments.length > 0 &&
+        typeof didFulfill !== "function" &&
+        typeof didReject !== "function") {
+        var msg = ".then() only accepts functions but was passed: " +
+                util.classString(didFulfill);
+        if (arguments.length > 1) {
+            msg += ", " + util.classString(didReject);
+        }
+        this._warn(msg);
+    }
+    return this._then(didFulfill, didReject, undefined, undefined, undefined);
+};
+
+Promise.prototype.done = function (didFulfill, didReject) {
+    var promise =
+        this._then(didFulfill, didReject, undefined, undefined, undefined);
+    promise._setIsFinal();
+};
+
+Promise.prototype.spread = function (fn) {
+    if (typeof fn !== "function") {
+        return apiRejection("expecting a function but got " + util.classString(fn));
+    }
+    return this.all()._then(fn, undefined, undefined, APPLY, undefined);
+};
+
+Promise.prototype.toJSON = function () {
+    var ret = {
+        isFulfilled: false,
+        isRejected: false,
+        fulfillmentValue: undefined,
+        rejectionReason: undefined
+    };
+    if (this.isFulfilled()) {
+        ret.fulfillmentValue = this.value();
+        ret.isFulfilled = true;
+    } else if (this.isRejected()) {
+        ret.rejectionReason = this.reason();
+        ret.isRejected = true;
+    }
+    return ret;
+};
+
+Promise.prototype.all = function () {
+    if (arguments.length > 0) {
+        this._warn(".all() was passed arguments but it does not take any");
+    }
+    return new PromiseArray(this).promise();
+};
+
+Promise.prototype.error = function (fn) {
+    return this.caught(util.originatesFromRejection, fn);
+};
+
+Promise.getNewLibraryCopy = module.exports;
+
+Promise.is = function (val) {
+    return val instanceof Promise;
+};
+
+Promise.fromNode = Promise.fromCallback = function(fn) {
+    var ret = new Promise(INTERNAL);
+    ret._captureStackTrace();
+    var multiArgs = arguments.length > 1 ? !!Object(arguments[1]).multiArgs
+                                         : false;
+    var result = tryCatch(fn)(nodebackForPromise(ret, multiArgs));
+    if (result === errorObj) {
+        ret._rejectCallback(result.e, true);
+    }
+    if (!ret._isFateSealed()) ret._setAsyncGuaranteed();
+    return ret;
+};
+
+Promise.all = function (promises) {
+    return new PromiseArray(promises).promise();
+};
+
+Promise.cast = function (obj) {
+    var ret = tryConvertToPromise(obj);
+    if (!(ret instanceof Promise)) {
+        ret = new Promise(INTERNAL);
+        ret._captureStackTrace();
+        ret._setFulfilled();
+        ret._rejectionHandler0 = obj;
+    }
+    return ret;
+};
+
+Promise.resolve = Promise.fulfilled = Promise.cast;
+
+Promise.reject = Promise.rejected = function (reason) {
+    var ret = new Promise(INTERNAL);
+    ret._captureStackTrace();
+    ret._rejectCallback(reason, true);
+    return ret;
+};
+
+Promise.setScheduler = function(fn) {
+    if (typeof fn !== "function") {
+        throw new TypeError("expecting a function but got " + util.classString(fn));
+    }
+    return async.setScheduler(fn);
+};
+
+Promise.prototype._then = function (
+    didFulfill,
+    didReject,
+    _,    receiver,
+    internalData
+) {
+    var haveInternalData = internalData !== undefined;
+    var promise = haveInternalData ? internalData : new Promise(INTERNAL);
+    var target = this._target();
+    var bitField = target._bitField;
+
+    if (!haveInternalData) {
+        promise._propagateFrom(this, 3);
+        promise._captureStackTrace();
+        if (receiver === undefined &&
+            ((this._bitField & 2097152) !== 0)) {
+            if (!((bitField & 50397184) === 0)) {
+                receiver = this._boundValue();
+            } else {
+                receiver = target === this ? undefined : this._boundTo;
+            }
+        }
+        this._fireEvent("promiseChained", this, promise);
+    }
+
+    var domain = getDomain();
+    if (!((bitField & 50397184) === 0)) {
+        var handler, value, settler = target._settlePromiseCtx;
+        if (((bitField & 33554432) !== 0)) {
+            value = target._rejectionHandler0;
+            handler = didFulfill;
+        } else if (((bitField & 16777216) !== 0)) {
+            value = target._fulfillmentHandler0;
+            handler = didReject;
+            target._unsetRejectionIsUnhandled();
+        } else {
+            settler = target._settlePromiseLateCancellationObserver;
+            value = new CancellationError("late cancellation observer");
+            target._attachExtraTrace(value);
+            handler = didReject;
+        }
+
+        async.invoke(settler, target, {
+            handler: domain === null ? handler
+                : (typeof handler === "function" && domain.bind(handler)),
+            promise: promise,
+            receiver: receiver,
+            value: value
+        });
+    } else {
+        target._addCallbacks(didFulfill, didReject, promise, receiver, domain);
+    }
+
+    return promise;
+};
+
+Promise.prototype._length = function () {
+    return this._bitField & 65535;
+};
+
+Promise.prototype._isFateSealed = function () {
+    return (this._bitField & 117506048) !== 0;
+};
+
+Promise.prototype._isFollowing = function () {
+    return (this._bitField & 67108864) === 67108864;
+};
+
+Promise.prototype._setLength = function (len) {
+    this._bitField = (this._bitField & -65536) |
+        (len & 65535);
+};
+
+Promise.prototype._setFulfilled = function () {
+    this._bitField = this._bitField | 33554432;
+    this._fireEvent("promiseFulfilled", this);
+};
+
+Promise.prototype._setRejected = function () {
+    this._bitField = this._bitField | 16777216;
+    this._fireEvent("promiseRejected", this);
+};
+
+Promise.prototype._setFollowing = function () {
+    this._bitField = this._bitField | 67108864;
+    this._fireEvent("promiseResolved", this);
+};
+
+Promise.prototype._setIsFinal = function () {
+    this._bitField = this._bitField | 4194304;
+};
+
+Promise.prototype._isFinal = function () {
+    return (this._bitField & 4194304) > 0;
+};
+
+Promise.prototype._unsetCancelled = function() {
+    this._bitField = this._bitField & (~65536);
+};
+
+Promise.prototype._setCancelled = function() {
+    this._bitField = this._bitField | 65536;
+    this._fireEvent("promiseCancelled", this);
+};
+
+Promise.prototype._setAsyncGuaranteed = function() {
+    if (async.hasCustomScheduler()) return;
+    this._bitField = this._bitField | 134217728;
+};
+
+Promise.prototype._receiverAt = function (index) {
+    var ret = index === 0 ? this._receiver0 : this[
+            index * 4 - 4 + 3];
+    if (ret === UNDEFINED_BINDING) {
+        return undefined;
+    } else if (ret === undefined && this._isBound()) {
+        return this._boundValue();
+    }
+    return ret;
+};
+
+Promise.prototype._promiseAt = function (index) {
+    return this[
+            index * 4 - 4 + 2];
+};
+
+Promise.prototype._fulfillmentHandlerAt = function (index) {
+    return this[
+            index * 4 - 4 + 0];
+};
+
+Promise.prototype._rejectionHandlerAt = function (index) {
+    return this[
+            index * 4 - 4 + 1];
+};
+
+Promise.prototype._boundValue = function() {};
+
+Promise.prototype._migrateCallback0 = function (follower) {
+    var bitField = follower._bitField;
+    var fulfill = follower._fulfillmentHandler0;
+    var reject = follower._rejectionHandler0;
+    var promise = follower._promise0;
+    var receiver = follower._receiverAt(0);
+    if (receiver === undefined) receiver = UNDEFINED_BINDING;
+    this._addCallbacks(fulfill, reject, promise, receiver, null);
+};
+
+Promise.prototype._migrateCallbackAt = function (follower, index) {
+    var fulfill = follower._fulfillmentHandlerAt(index);
+    var reject = follower._rejectionHandlerAt(index);
+    var promise = follower._promiseAt(index);
+    var receiver = follower._receiverAt(index);
+    if (receiver === undefined) receiver = UNDEFINED_BINDING;
+    this._addCallbacks(fulfill, reject, promise, receiver, null);
+};
+
+Promise.prototype._addCallbacks = function (
+    fulfill,
+    reject,
+    promise,
+    receiver,
+    domain
+) {
+    var index = this._length();
+
+    if (index >= 65535 - 4) {
+        index = 0;
+        this._setLength(0);
+    }
+
+    if (index === 0) {
+        this._promise0 = promise;
+        this._receiver0 = receiver;
+        if (typeof fulfill === "function") {
+            this._fulfillmentHandler0 =
+                domain === null ? fulfill : domain.bind(fulfill);
+        }
+        if (typeof reject === "function") {
+            this._rejectionHandler0 =
+                domain === null ? reject : domain.bind(reject);
+        }
+    } else {
+        var base = index * 4 - 4;
+        this[base + 2] = promise;
+        this[base + 3] = receiver;
+        if (typeof fulfill === "function") {
+            this[base + 0] =
+                domain === null ? fulfill : domain.bind(fulfill);
+        }
+        if (typeof reject === "function") {
+            this[base + 1] =
+                domain === null ? reject : domain.bind(reject);
+        }
+    }
+    this._setLength(index + 1);
+    return index;
+};
+
+Promise.prototype._proxy = function (proxyable, arg) {
+    this._addCallbacks(undefined, undefined, arg, proxyable, null);
+};
+
+Promise.prototype._resolveCallback = function(value, shouldBind) {
+    if (((this._bitField & 117506048) !== 0)) return;
+    if (value === this)
+        return this._rejectCallback(makeSelfResolutionError(), false);
+    var maybePromise = tryConvertToPromise(value, this);
+    if (!(maybePromise instanceof Promise)) return this._fulfill(value);
+
+    if (shouldBind) this._propagateFrom(maybePromise, 2);
+
+    var promise = maybePromise._target();
+
+    if (promise === this) {
+        this._reject(makeSelfResolutionError());
+        return;
+    }
+
+    var bitField = promise._bitField;
+    if (((bitField & 50397184) === 0)) {
+        var len = this._length();
+        if (len > 0) promise._migrateCallback0(this);
+        for (var i = 1; i < len; ++i) {
+            promise._migrateCallbackAt(this, i);
+        }
+        this._setFollowing();
+        this._setLength(0);
+        this._setFollowee(promise);
+    } else if (((bitField & 33554432) !== 0)) {
+        this._fulfill(promise._value());
+    } else if (((bitField & 16777216) !== 0)) {
+        this._reject(promise._reason());
+    } else {
+        var reason = new CancellationError("late cancellation observer");
+        promise._attachExtraTrace(reason);
+        this._reject(reason);
+    }
+};
+
+Promise.prototype._rejectCallback =
+function(reason, synchronous, ignoreNonErrorWarnings) {
+    var trace = util.ensureErrorObject(reason);
+    var hasStack = trace === reason;
+    if (!hasStack && !ignoreNonErrorWarnings && debug.warnings()) {
+        var message = "a promise was rejected with a non-error: " +
+            util.classString(reason);
+        this._warn(message, true);
+    }
+    this._attachExtraTrace(trace, synchronous ? hasStack : false);
+    this._reject(reason);
+};
+
+Promise.prototype._resolveFromExecutor = function (executor) {
+    var promise = this;
+    this._captureStackTrace();
+    this._pushContext();
+    var synchronous = true;
+    var r = this._execute(executor, function(value) {
+        promise._resolveCallback(value);
+    }, function (reason) {
+        promise._rejectCallback(reason, synchronous);
+    });
+    synchronous = false;
+    this._popContext();
+
+    if (r !== undefined) {
+        promise._rejectCallback(r, true);
+    }
+};
+
+Promise.prototype._settlePromiseFromHandler = function (
+    handler, receiver, value, promise
+) {
+    var bitField = promise._bitField;
+    if (((bitField & 65536) !== 0)) return;
+    promise._pushContext();
+    var x;
+    if (receiver === APPLY) {
+        if (!value || typeof value.length !== "number") {
+            x = errorObj;
+            x.e = new TypeError("cannot .spread() a non-array: " +
+                                    util.classString(value));
+        } else {
+            x = tryCatch(handler).apply(this._boundValue(), value);
+        }
+    } else {
+        x = tryCatch(handler).call(receiver, value);
+    }
+    var promiseCreated = promise._popContext();
+    bitField = promise._bitField;
+    if (((bitField & 65536) !== 0)) return;
+
+    if (x === NEXT_FILTER) {
+        promise._reject(value);
+    } else if (x === errorObj) {
+        promise._rejectCallback(x.e, false);
+    } else {
+        debug.checkForgottenReturns(x, promiseCreated, "",  promise, this);
+        promise._resolveCallback(x);
+    }
+};
+
+Promise.prototype._target = function() {
+    var ret = this;
+    while (ret._isFollowing()) ret = ret._followee();
+    return ret;
+};
+
+Promise.prototype._followee = function() {
+    return this._rejectionHandler0;
+};
+
+Promise.prototype._setFollowee = function(promise) {
+    this._rejectionHandler0 = promise;
+};
+
+Promise.prototype._settlePromise = function(promise, handler, receiver, value) {
+    var isPromise = promise instanceof Promise;
+    var bitField = this._bitField;
+    var asyncGuaranteed = ((bitField & 134217728) !== 0);
+    if (((bitField & 65536) !== 0)) {
+        if (isPromise) promise._invokeInternalOnCancel();
+
+        if (receiver instanceof PassThroughHandlerContext &&
+            receiver.isFinallyHandler()) {
+            receiver.cancelPromise = promise;
+            if (tryCatch(handler).call(receiver, value) === errorObj) {
+                promise._reject(errorObj.e);
+            }
+        } else if (handler === reflectHandler) {
+            promise._fulfill(reflectHandler.call(receiver));
+        } else if (receiver instanceof Proxyable) {
+            receiver._promiseCancelled(promise);
+        } else if (isPromise || promise instanceof PromiseArray) {
+            promise._cancel();
+        } else {
+            receiver.cancel();
+        }
+    } else if (typeof handler === "function") {
+        if (!isPromise) {
+            handler.call(receiver, value, promise);
+        } else {
+            if (asyncGuaranteed) promise._setAsyncGuaranteed();
+            this._settlePromiseFromHandler(handler, receiver, value, promise);
+        }
+    } else if (receiver instanceof Proxyable) {
+        if (!receiver._isResolved()) {
+            if (((bitField & 33554432) !== 0)) {
+                receiver._promiseFulfilled(value, promise);
+            } else {
+                receiver._promiseRejected(value, promise);
+            }
+        }
+    } else if (isPromise) {
+        if (asyncGuaranteed) promise._setAsyncGuaranteed();
+        if (((bitField & 33554432) !== 0)) {
+            promise._fulfill(value);
+        } else {
+            promise._reject(value);
+        }
+    }
+};
+
+Promise.prototype._settlePromiseLateCancellationObserver = function(ctx) {
+    var handler = ctx.handler;
+    var promise = ctx.promise;
+    var receiver = ctx.receiver;
+    var value = ctx.value;
+    if (typeof handler === "function") {
+        if (!(promise instanceof Promise)) {
+            handler.call(receiver, value, promise);
+        } else {
+            this._settlePromiseFromHandler(handler, receiver, value, promise);
+        }
+    } else if (promise instanceof Promise) {
+        promise._reject(value);
+    }
+};
+
+Promise.prototype._settlePromiseCtx = function(ctx) {
+    this._settlePromise(ctx.promise, ctx.handler, ctx.receiver, ctx.value);
+};
+
+Promise.prototype._settlePromise0 = function(handler, value, bitField) {
+    var promise = this._promise0;
+    var receiver = this._receiverAt(0);
+    this._promise0 = undefined;
+    this._receiver0 = undefined;
+    this._settlePromise(promise, handler, receiver, value);
+};
+
+Promise.prototype._clearCallbackDataAtIndex = function(index) {
+    var base = index * 4 - 4;
+    this[base + 2] =
+    this[base + 3] =
+    this[base + 0] =
+    this[base + 1] = undefined;
+};
+
+Promise.prototype._fulfill = function (value) {
+    var bitField = this._bitField;
+    if (((bitField & 117506048) >>> 16)) return;
+    if (value === this) {
+        var err = makeSelfResolutionError();
+        this._attachExtraTrace(err);
+        return this._reject(err);
+    }
+    this._setFulfilled();
+    this._rejectionHandler0 = value;
+
+    if ((bitField & 65535) > 0) {
+        if (((bitField & 134217728) !== 0)) {
+            this._settlePromises();
+        } else {
+            async.settlePromises(this);
+        }
+    }
+};
+
+Promise.prototype._reject = function (reason) {
+    var bitField = this._bitField;
+    if (((bitField & 117506048) >>> 16)) return;
+    this._setRejected();
+    this._fulfillmentHandler0 = reason;
+
+    if (this._isFinal()) {
+        return async.fatalError(reason, util.isNode);
+    }
+
+    if ((bitField & 65535) > 0) {
+        async.settlePromises(this);
+    } else {
+        this._ensurePossibleRejectionHandled();
+    }
+};
+
+Promise.prototype._fulfillPromises = function (len, value) {
+    for (var i = 1; i < len; i++) {
+        var handler = this._fulfillmentHandlerAt(i);
+        var promise = this._promiseAt(i);
+        var receiver = this._receiverAt(i);
+        this._clearCallbackDataAtIndex(i);
+        this._settlePromise(promise, handler, receiver, value);
+    }
+};
+
+Promise.prototype._rejectPromises = function (len, reason) {
+    for (var i = 1; i < len; i++) {
+        var handler = this._rejectionHandlerAt(i);
+        var promise = this._promiseAt(i);
+        var receiver = this._receiverAt(i);
+        this._clearCallbackDataAtIndex(i);
+        this._settlePromise(promise, handler, receiver, reason);
+    }
+};
+
+Promise.prototype._settlePromises = function () {
+    var bitField = this._bitField;
+    var len = (bitField & 65535);
+
+    if (len > 0) {
+        if (((bitField & 16842752) !== 0)) {
+            var reason = this._fulfillmentHandler0;
+            this._settlePromise0(this._rejectionHandler0, reason, bitField);
+            this._rejectPromises(len, reason);
+        } else {
+            var value = this._rejectionHandler0;
+            this._settlePromise0(this._fulfillmentHandler0, value, bitField);
+            this._fulfillPromises(len, value);
+        }
+        this._setLength(0);
+    }
+    this._clearCancellationData();
+};
+
+Promise.prototype._settledValue = function() {
+    var bitField = this._bitField;
+    if (((bitField & 33554432) !== 0)) {
+        return this._rejectionHandler0;
+    } else if (((bitField & 16777216) !== 0)) {
+        return this._fulfillmentHandler0;
+    }
+};
+
+function deferResolve(v) {this.promise._resolveCallback(v);}
+function deferReject(v) {this.promise._rejectCallback(v, false);}
+
+Promise.defer = Promise.pending = function() {
+    debug.deprecated("Promise.defer", "new Promise");
+    var promise = new Promise(INTERNAL);
+    return {
+        promise: promise,
+        resolve: deferResolve,
+        reject: deferReject
+    };
+};
+
+util.notEnumerableProp(Promise,
+                       "_makeSelfResolutionError",
+                       makeSelfResolutionError);
+
+_dereq_("./method")(Promise, INTERNAL, tryConvertToPromise, apiRejection,
+    debug);
+_dereq_("./bind")(Promise, INTERNAL, tryConvertToPromise, debug);
+_dereq_("./cancel")(Promise, PromiseArray, apiRejection, debug);
+_dereq_("./direct_resolve")(Promise);
+_dereq_("./synchronous_inspection")(Promise);
+_dereq_("./join")(
+    Promise, PromiseArray, tryConvertToPromise, INTERNAL, debug);
+Promise.Promise = Promise;
+Promise.version = "3.4.0";
+_dereq_('./map.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+_dereq_('./call_get.js')(Promise);
+_dereq_('./using.js')(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
+_dereq_('./timers.js')(Promise, INTERNAL, debug);
+_dereq_('./generators.js')(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
+_dereq_('./nodeify.js')(Promise);
+_dereq_('./promisify.js')(Promise, INTERNAL);
+_dereq_('./props.js')(Promise, PromiseArray, tryConvertToPromise, apiRejection);
+_dereq_('./race.js')(Promise, INTERNAL, tryConvertToPromise, apiRejection);
+_dereq_('./reduce.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+_dereq_('./settle.js')(Promise, PromiseArray, debug);
+_dereq_('./some.js')(Promise, PromiseArray, apiRejection);
+_dereq_('./filter.js')(Promise, INTERNAL);
+_dereq_('./each.js')(Promise, INTERNAL);
+_dereq_('./any.js')(Promise);
+                                                         
+    util.toFastProperties(Promise);                                          
+    util.toFastProperties(Promise.prototype);                                
+    function fillTypes(value) {                                              
+        var p = new Promise(INTERNAL);                                       
+        p._fulfillmentHandler0 = value;                                      
+        p._rejectionHandler0 = value;                                        
+        p._promise0 = value;                                                 
+        p._receiver0 = value;                                                
+    }                                                                        
+    // Complete slack tracking, opt out of field-type tracking and           
+    // stabilize map                                                         
+    fillTypes({a: 1});                                                       
+    fillTypes({b: 2});                                                       
+    fillTypes({c: 3});                                                       
+    fillTypes(1);                                                            
+    fillTypes(function(){});                                                 
+    fillTypes(undefined);                                                    
+    fillTypes(false);                                                        
+    fillTypes(new Promise(INTERNAL));                                        
+    debug.setBounds(Async.firstLineError, util.lastLineError);               
+    return Promise;                                                          
+
+};
+
+},{"./any.js":1,"./async":2,"./bind":3,"./call_get.js":5,"./cancel":6,"./catch_filter":7,"./context":8,"./debuggability":9,"./direct_resolve":10,"./each.js":11,"./errors":12,"./es5":13,"./filter.js":14,"./finally":15,"./generators.js":16,"./join":17,"./map.js":18,"./method":19,"./nodeback":20,"./nodeify.js":21,"./promise_array":23,"./promisify.js":24,"./props.js":25,"./race.js":27,"./reduce.js":28,"./settle.js":30,"./some.js":31,"./synchronous_inspection":32,"./thenables":33,"./timers.js":34,"./using.js":35,"./util":36}],23:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, INTERNAL, tryConvertToPromise,
+    apiRejection, Proxyable) {
+var util = _dereq_("./util");
+var isArray = util.isArray;
+
+function toResolutionValue(val) {
+    switch(val) {
+    case -2: return [];
+    case -3: return {};
+    }
+}
+
+function PromiseArray(values) {
+    var promise = this._promise = new Promise(INTERNAL);
+    if (values instanceof Promise) {
+        promise._propagateFrom(values, 3);
+    }
+    promise._setOnCancel(this);
+    this._values = values;
+    this._length = 0;
+    this._totalResolved = 0;
+    this._init(undefined, -2);
+}
+util.inherits(PromiseArray, Proxyable);
+
+PromiseArray.prototype.length = function () {
+    return this._length;
+};
+
+PromiseArray.prototype.promise = function () {
+    return this._promise;
+};
+
+PromiseArray.prototype._init = function init(_, resolveValueIfEmpty) {
+    var values = tryConvertToPromise(this._values, this._promise);
+    if (values instanceof Promise) {
+        values = values._target();
+        var bitField = values._bitField;
+        ;
+        this._values = values;
+
+        if (((bitField & 50397184) === 0)) {
+            this._promise._setAsyncGuaranteed();
+            return values._then(
+                init,
+                this._reject,
+                undefined,
+                this,
+                resolveValueIfEmpty
+           );
+        } else if (((bitField & 33554432) !== 0)) {
+            values = values._value();
+        } else if (((bitField & 16777216) !== 0)) {
+            return this._reject(values._reason());
+        } else {
+            return this._cancel();
+        }
+    }
+    values = util.asArray(values);
+    if (values === null) {
+        var err = apiRejection(
+            "expecting an array or an iterable object but got " + util.classString(values)).reason();
+        this._promise._rejectCallback(err, false);
+        return;
+    }
+
+    if (values.length === 0) {
+        if (resolveValueIfEmpty === -5) {
+            this._resolveEmptyArray();
+        }
+        else {
+            this._resolve(toResolutionValue(resolveValueIfEmpty));
+        }
+        return;
+    }
+    this._iterate(values);
+};
+
+PromiseArray.prototype._iterate = function(values) {
+    var len = this.getActualLength(values.length);
+    this._length = len;
+    this._values = this.shouldCopyValues() ? new Array(len) : this._values;
+    var result = this._promise;
+    var isResolved = false;
+    var bitField = null;
+    for (var i = 0; i < len; ++i) {
+        var maybePromise = tryConvertToPromise(values[i], result);
+
+        if (maybePromise instanceof Promise) {
+            maybePromise = maybePromise._target();
+            bitField = maybePromise._bitField;
+        } else {
+            bitField = null;
+        }
+
+        if (isResolved) {
+            if (bitField !== null) {
+                maybePromise.suppressUnhandledRejections();
+            }
+        } else if (bitField !== null) {
+            if (((bitField & 50397184) === 0)) {
+                maybePromise._proxy(this, i);
+                this._values[i] = maybePromise;
+            } else if (((bitField & 33554432) !== 0)) {
+                isResolved = this._promiseFulfilled(maybePromise._value(), i);
+            } else if (((bitField & 16777216) !== 0)) {
+                isResolved = this._promiseRejected(maybePromise._reason(), i);
+            } else {
+                isResolved = this._promiseCancelled(i);
+            }
+        } else {
+            isResolved = this._promiseFulfilled(maybePromise, i);
+        }
+    }
+    if (!isResolved) result._setAsyncGuaranteed();
+};
+
+PromiseArray.prototype._isResolved = function () {
+    return this._values === null;
+};
+
+PromiseArray.prototype._resolve = function (value) {
+    this._values = null;
+    this._promise._fulfill(value);
+};
+
+PromiseArray.prototype._cancel = function() {
+    if (this._isResolved() || !this._promise.isCancellable()) return;
+    this._values = null;
+    this._promise._cancel();
+};
+
+PromiseArray.prototype._reject = function (reason) {
+    this._values = null;
+    this._promise._rejectCallback(reason, false);
+};
+
+PromiseArray.prototype._promiseFulfilled = function (value, index) {
+    this._values[index] = value;
+    var totalResolved = ++this._totalResolved;
+    if (totalResolved >= this._length) {
+        this._resolve(this._values);
+        return true;
+    }
+    return false;
+};
+
+PromiseArray.prototype._promiseCancelled = function() {
+    this._cancel();
+    return true;
+};
+
+PromiseArray.prototype._promiseRejected = function (reason) {
+    this._totalResolved++;
+    this._reject(reason);
+    return true;
+};
+
+PromiseArray.prototype._resultCancelled = function() {
+    if (this._isResolved()) return;
+    var values = this._values;
+    this._cancel();
+    if (values instanceof Promise) {
+        values.cancel();
+    } else {
+        for (var i = 0; i < values.length; ++i) {
+            if (values[i] instanceof Promise) {
+                values[i].cancel();
+            }
+        }
+    }
+};
+
+PromiseArray.prototype.shouldCopyValues = function () {
+    return true;
+};
+
+PromiseArray.prototype.getActualLength = function (len) {
+    return len;
+};
+
+return PromiseArray;
+};
+
+},{"./util":36}],24:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, INTERNAL) {
+var THIS = {};
+var util = _dereq_("./util");
+var nodebackForPromise = _dereq_("./nodeback");
+var withAppended = util.withAppended;
+var maybeWrapAsError = util.maybeWrapAsError;
+var canEvaluate = util.canEvaluate;
+var TypeError = _dereq_("./errors").TypeError;
+var defaultSuffix = "Async";
+var defaultPromisified = {__isPromisified__: true};
+var noCopyProps = [
+    "arity",    "length",
+    "name",
+    "arguments",
+    "caller",
+    "callee",
+    "prototype",
+    "__isPromisified__"
+];
+var noCopyPropsPattern = new RegExp("^(?:" + noCopyProps.join("|") + ")$");
+
+var defaultFilter = function(name) {
+    return util.isIdentifier(name) &&
+        name.charAt(0) !== "_" &&
+        name !== "constructor";
+};
+
+function propsFilter(key) {
+    return !noCopyPropsPattern.test(key);
+}
+
+function isPromisified(fn) {
+    try {
+        return fn.__isPromisified__ === true;
+    }
+    catch (e) {
+        return false;
+    }
+}
+
+function hasPromisified(obj, key, suffix) {
+    var val = util.getDataPropertyOrDefault(obj, key + suffix,
+                                            defaultPromisified);
+    return val ? isPromisified(val) : false;
+}
+function checkValid(ret, suffix, suffixRegexp) {
+    for (var i = 0; i < ret.length; i += 2) {
+        var key = ret[i];
+        if (suffixRegexp.test(key)) {
+            var keyWithoutAsyncSuffix = key.replace(suffixRegexp, "");
+            for (var j = 0; j < ret.length; j += 2) {
+                if (ret[j] === keyWithoutAsyncSuffix) {
+                    throw new TypeError("Cannot promisify an API that has normal methods with '%s'-suffix\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                        .replace("%s", suffix));
+                }
+            }
+        }
+    }
+}
+
+function promisifiableMethods(obj, suffix, suffixRegexp, filter) {
+    var keys = util.inheritedDataKeys(obj);
+    var ret = [];
+    for (var i = 0; i < keys.length; ++i) {
+        var key = keys[i];
+        var value = obj[key];
+        var passesDefaultFilter = filter === defaultFilter
+            ? true : defaultFilter(key, value, obj);
+        if (typeof value === "function" &&
+            !isPromisified(value) &&
+            !hasPromisified(obj, key, suffix) &&
+            filter(key, value, obj, passesDefaultFilter)) {
+            ret.push(key, value);
+        }
+    }
+    checkValid(ret, suffix, suffixRegexp);
+    return ret;
+}
+
+var escapeIdentRegex = function(str) {
+    return str.replace(/([$])/, "\\$");
+};
+
+var makeNodePromisifiedEval;
+if (!true) {
+var switchCaseArgumentOrder = function(likelyArgumentCount) {
+    var ret = [likelyArgumentCount];
+    var min = Math.max(0, likelyArgumentCount - 1 - 3);
+    for(var i = likelyArgumentCount - 1; i >= min; --i) {
+        ret.push(i);
+    }
+    for(var i = likelyArgumentCount + 1; i <= 3; ++i) {
+        ret.push(i);
+    }
+    return ret;
+};
+
+var argumentSequence = function(argumentCount) {
+    return util.filledRange(argumentCount, "_arg", "");
+};
+
+var parameterDeclaration = function(parameterCount) {
+    return util.filledRange(
+        Math.max(parameterCount, 3), "_arg", "");
+};
+
+var parameterCount = function(fn) {
+    if (typeof fn.length === "number") {
+        return Math.max(Math.min(fn.length, 1023 + 1), 0);
+    }
+    return 0;
+};
+
+makeNodePromisifiedEval =
+function(callback, receiver, originalName, fn, _, multiArgs) {
+    var newParameterCount = Math.max(0, parameterCount(fn) - 1);
+    var argumentOrder = switchCaseArgumentOrder(newParameterCount);
+    var shouldProxyThis = typeof callback === "string" || receiver === THIS;
+
+    function generateCallForArgumentCount(count) {
+        var args = argumentSequence(count).join(", ");
+        var comma = count > 0 ? ", " : "";
+        var ret;
+        if (shouldProxyThis) {
+            ret = "ret = callback.call(this, {{args}}, nodeback); break;\n";
+        } else {
+            ret = receiver === undefined
+                ? "ret = callback({{args}}, nodeback); break;\n"
+                : "ret = callback.call(receiver, {{args}}, nodeback); break;\n";
+        }
+        return ret.replace("{{args}}", args).replace(", ", comma);
+    }
+
+    function generateArgumentSwitchCase() {
+        var ret = "";
+        for (var i = 0; i < argumentOrder.length; ++i) {
+            ret += "case " + argumentOrder[i] +":" +
+                generateCallForArgumentCount(argumentOrder[i]);
+        }
+
+        ret += "                                                             \n\
+        default:                                                             \n\
+            var args = new Array(len + 1);                                   \n\
+            var i = 0;                                                       \n\
+            for (var i = 0; i < len; ++i) {                                  \n\
+               args[i] = arguments[i];                                       \n\
+            }                                                                \n\
+            args[i] = nodeback;                                              \n\
+            [CodeForCall]                                                    \n\
+            break;                                                           \n\
+        ".replace("[CodeForCall]", (shouldProxyThis
+                                ? "ret = callback.apply(this, args);\n"
+                                : "ret = callback.apply(receiver, args);\n"));
+        return ret;
+    }
+
+    var getFunctionCode = typeof callback === "string"
+                                ? ("this != null ? this['"+callback+"'] : fn")
+                                : "fn";
+    var body = "'use strict';                                                \n\
+        var ret = function (Parameters) {                                    \n\
+            'use strict';                                                    \n\
+            var len = arguments.length;                                      \n\
+            var promise = new Promise(INTERNAL);                             \n\
+            promise._captureStackTrace();                                    \n\
+            var nodeback = nodebackForPromise(promise, " + multiArgs + ");   \n\
+            var ret;                                                         \n\
+            var callback = tryCatch([GetFunctionCode]);                      \n\
+            switch(len) {                                                    \n\
+                [CodeForSwitchCase]                                          \n\
+            }                                                                \n\
+            if (ret === errorObj) {                                          \n\
+                promise._rejectCallback(maybeWrapAsError(ret.e), true, true);\n\
+            }                                                                \n\
+            if (!promise._isFateSealed()) promise._setAsyncGuaranteed();     \n\
+            return promise;                                                  \n\
+        };                                                                   \n\
+        notEnumerableProp(ret, '__isPromisified__', true);                   \n\
+        return ret;                                                          \n\
+    ".replace("[CodeForSwitchCase]", generateArgumentSwitchCase())
+        .replace("[GetFunctionCode]", getFunctionCode);
+    body = body.replace("Parameters", parameterDeclaration(newParameterCount));
+    return new Function("Promise",
+                        "fn",
+                        "receiver",
+                        "withAppended",
+                        "maybeWrapAsError",
+                        "nodebackForPromise",
+                        "tryCatch",
+                        "errorObj",
+                        "notEnumerableProp",
+                        "INTERNAL",
+                        body)(
+                    Promise,
+                    fn,
+                    receiver,
+                    withAppended,
+                    maybeWrapAsError,
+                    nodebackForPromise,
+                    util.tryCatch,
+                    util.errorObj,
+                    util.notEnumerableProp,
+                    INTERNAL);
+};
+}
+
+function makeNodePromisifiedClosure(callback, receiver, _, fn, __, multiArgs) {
+    var defaultThis = (function() {return this;})();
+    var method = callback;
+    if (typeof method === "string") {
+        callback = fn;
+    }
+    function promisified() {
+        var _receiver = receiver;
+        if (receiver === THIS) _receiver = this;
+        var promise = new Promise(INTERNAL);
+        promise._captureStackTrace();
+        var cb = typeof method === "string" && this !== defaultThis
+            ? this[method] : callback;
+        var fn = nodebackForPromise(promise, multiArgs);
+        try {
+            cb.apply(_receiver, withAppended(arguments, fn));
+        } catch(e) {
+            promise._rejectCallback(maybeWrapAsError(e), true, true);
+        }
+        if (!promise._isFateSealed()) promise._setAsyncGuaranteed();
+        return promise;
+    }
+    util.notEnumerableProp(promisified, "__isPromisified__", true);
+    return promisified;
+}
+
+var makeNodePromisified = canEvaluate
+    ? makeNodePromisifiedEval
+    : makeNodePromisifiedClosure;
+
+function promisifyAll(obj, suffix, filter, promisifier, multiArgs) {
+    var suffixRegexp = new RegExp(escapeIdentRegex(suffix) + "$");
+    var methods =
+        promisifiableMethods(obj, suffix, suffixRegexp, filter);
+
+    for (var i = 0, len = methods.length; i < len; i+= 2) {
+        var key = methods[i];
+        var fn = methods[i+1];
+        var promisifiedKey = key + suffix;
+        if (promisifier === makeNodePromisified) {
+            obj[promisifiedKey] =
+                makeNodePromisified(key, THIS, key, fn, suffix, multiArgs);
+        } else {
+            var promisified = promisifier(fn, function() {
+                return makeNodePromisified(key, THIS, key,
+                                           fn, suffix, multiArgs);
+            });
+            util.notEnumerableProp(promisified, "__isPromisified__", true);
+            obj[promisifiedKey] = promisified;
+        }
+    }
+    util.toFastProperties(obj);
+    return obj;
+}
+
+function promisify(callback, receiver, multiArgs) {
+    return makeNodePromisified(callback, receiver, undefined,
+                                callback, null, multiArgs);
+}
+
+Promise.promisify = function (fn, options) {
+    if (typeof fn !== "function") {
+        throw new TypeError("expecting a function but got " + util.classString(fn));
+    }
+    if (isPromisified(fn)) {
+        return fn;
+    }
+    options = Object(options);
+    var receiver = options.context === undefined ? THIS : options.context;
+    var multiArgs = !!options.multiArgs;
+    var ret = promisify(fn, receiver, multiArgs);
+    util.copyDescriptors(fn, ret, propsFilter);
+    return ret;
+};
+
+Promise.promisifyAll = function (target, options) {
+    if (typeof target !== "function" && typeof target !== "object") {
+        throw new TypeError("the target of promisifyAll must be an object or a function\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+    options = Object(options);
+    var multiArgs = !!options.multiArgs;
+    var suffix = options.suffix;
+    if (typeof suffix !== "string") suffix = defaultSuffix;
+    var filter = options.filter;
+    if (typeof filter !== "function") filter = defaultFilter;
+    var promisifier = options.promisifier;
+    if (typeof promisifier !== "function") promisifier = makeNodePromisified;
+
+    if (!util.isIdentifier(suffix)) {
+        throw new RangeError("suffix must be a valid identifier\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+
+    var keys = util.inheritedDataKeys(target);
+    for (var i = 0; i < keys.length; ++i) {
+        var value = target[keys[i]];
+        if (keys[i] !== "constructor" &&
+            util.isClass(value)) {
+            promisifyAll(value.prototype, suffix, filter, promisifier,
+                multiArgs);
+            promisifyAll(value, suffix, filter, promisifier, multiArgs);
+        }
+    }
+
+    return promisifyAll(target, suffix, filter, promisifier, multiArgs);
+};
+};
+
+
+},{"./errors":12,"./nodeback":20,"./util":36}],25:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(
+    Promise, PromiseArray, tryConvertToPromise, apiRejection) {
+var util = _dereq_("./util");
+var isObject = util.isObject;
+var es5 = _dereq_("./es5");
+var Es6Map;
+if (typeof Map === "function") Es6Map = Map;
+
+var mapToEntries = (function() {
+    var index = 0;
+    var size = 0;
+
+    function extractEntry(value, key) {
+        this[index] = value;
+        this[index + size] = key;
+        index++;
+    }
+
+    return function mapToEntries(map) {
+        size = map.size;
+        index = 0;
+        var ret = new Array(map.size * 2);
+        map.forEach(extractEntry, ret);
+        return ret;
+    };
+})();
+
+var entriesToMap = function(entries) {
+    var ret = new Es6Map();
+    var length = entries.length / 2 | 0;
+    for (var i = 0; i < length; ++i) {
+        var key = entries[length + i];
+        var value = entries[i];
+        ret.set(key, value);
+    }
+    return ret;
+};
+
+function PropertiesPromiseArray(obj) {
+    var isMap = false;
+    var entries;
+    if (Es6Map !== undefined && obj instanceof Es6Map) {
+        entries = mapToEntries(obj);
+        isMap = true;
+    } else {
+        var keys = es5.keys(obj);
+        var len = keys.length;
+        entries = new Array(len * 2);
+        for (var i = 0; i < len; ++i) {
+            var key = keys[i];
+            entries[i] = obj[key];
+            entries[i + len] = key;
+        }
+    }
+    this.constructor$(entries);
+    this._isMap = isMap;
+    this._init$(undefined, -3);
+}
+util.inherits(PropertiesPromiseArray, PromiseArray);
+
+PropertiesPromiseArray.prototype._init = function () {};
+
+PropertiesPromiseArray.prototype._promiseFulfilled = function (value, index) {
+    this._values[index] = value;
+    var totalResolved = ++this._totalResolved;
+    if (totalResolved >= this._length) {
+        var val;
+        if (this._isMap) {
+            val = entriesToMap(this._values);
+        } else {
+            val = {};
+            var keyOffset = this.length();
+            for (var i = 0, len = this.length(); i < len; ++i) {
+                val[this._values[i + keyOffset]] = this._values[i];
+            }
+        }
+        this._resolve(val);
+        return true;
+    }
+    return false;
+};
+
+PropertiesPromiseArray.prototype.shouldCopyValues = function () {
+    return false;
+};
+
+PropertiesPromiseArray.prototype.getActualLength = function (len) {
+    return len >> 1;
+};
+
+function props(promises) {
+    var ret;
+    var castValue = tryConvertToPromise(promises);
+
+    if (!isObject(castValue)) {
+        return apiRejection("cannot await properties of a non-object\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    } else if (castValue instanceof Promise) {
+        ret = castValue._then(
+            Promise.props, undefined, undefined, undefined, undefined);
+    } else {
+        ret = new PropertiesPromiseArray(castValue).promise();
+    }
+
+    if (castValue instanceof Promise) {
+        ret._propagateFrom(castValue, 2);
+    }
+    return ret;
+}
+
+Promise.prototype.props = function () {
+    return props(this);
+};
+
+Promise.props = function (promises) {
+    return props(promises);
+};
+};
+
+},{"./es5":13,"./util":36}],26:[function(_dereq_,module,exports){
+"use strict";
+function arrayMove(src, srcIndex, dst, dstIndex, len) {
+    for (var j = 0; j < len; ++j) {
+        dst[j + dstIndex] = src[j + srcIndex];
+        src[j + srcIndex] = void 0;
+    }
+}
+
+function Queue(capacity) {
+    this._capacity = capacity;
+    this._length = 0;
+    this._front = 0;
+}
+
+Queue.prototype._willBeOverCapacity = function (size) {
+    return this._capacity < size;
+};
+
+Queue.prototype._pushOne = function (arg) {
+    var length = this.length();
+    this._checkCapacity(length + 1);
+    var i = (this._front + length) & (this._capacity - 1);
+    this[i] = arg;
+    this._length = length + 1;
+};
+
+Queue.prototype._unshiftOne = function(value) {
+    var capacity = this._capacity;
+    this._checkCapacity(this.length() + 1);
+    var front = this._front;
+    var i = (((( front - 1 ) &
+                    ( capacity - 1) ) ^ capacity ) - capacity );
+    this[i] = value;
+    this._front = i;
+    this._length = this.length() + 1;
+};
+
+Queue.prototype.unshift = function(fn, receiver, arg) {
+    this._unshiftOne(arg);
+    this._unshiftOne(receiver);
+    this._unshiftOne(fn);
+};
+
+Queue.prototype.push = function (fn, receiver, arg) {
+    var length = this.length() + 3;
+    if (this._willBeOverCapacity(length)) {
+        this._pushOne(fn);
+        this._pushOne(receiver);
+        this._pushOne(arg);
+        return;
+    }
+    var j = this._front + length - 3;
+    this._checkCapacity(length);
+    var wrapMask = this._capacity - 1;
+    this[(j + 0) & wrapMask] = fn;
+    this[(j + 1) & wrapMask] = receiver;
+    this[(j + 2) & wrapMask] = arg;
+    this._length = length;
+};
+
+Queue.prototype.shift = function () {
+    var front = this._front,
+        ret = this[front];
+
+    this[front] = undefined;
+    this._front = (front + 1) & (this._capacity - 1);
+    this._length--;
+    return ret;
+};
+
+Queue.prototype.length = function () {
+    return this._length;
+};
+
+Queue.prototype._checkCapacity = function (size) {
+    if (this._capacity < size) {
+        this._resizeTo(this._capacity << 1);
+    }
+};
+
+Queue.prototype._resizeTo = function (capacity) {
+    var oldCapacity = this._capacity;
+    this._capacity = capacity;
+    var front = this._front;
+    var length = this._length;
+    var moveItemsCount = (front + length) & (oldCapacity - 1);
+    arrayMove(this, 0, this, oldCapacity, moveItemsCount);
+};
+
+module.exports = Queue;
+
+},{}],27:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(
+    Promise, INTERNAL, tryConvertToPromise, apiRejection) {
+var util = _dereq_("./util");
+
+var raceLater = function (promise) {
+    return promise.then(function(array) {
+        return race(array, promise);
+    });
+};
+
+function race(promises, parent) {
+    var maybePromise = tryConvertToPromise(promises);
+
+    if (maybePromise instanceof Promise) {
+        return raceLater(maybePromise);
+    } else {
+        promises = util.asArray(promises);
+        if (promises === null)
+            return apiRejection("expecting an array or an iterable object but got " + util.classString(promises));
+    }
+
+    var ret = new Promise(INTERNAL);
+    if (parent !== undefined) {
+        ret._propagateFrom(parent, 3);
+    }
+    var fulfill = ret._fulfill;
+    var reject = ret._reject;
+    for (var i = 0, len = promises.length; i < len; ++i) {
+        var val = promises[i];
+
+        if (val === undefined && !(i in promises)) {
+            continue;
+        }
+
+        Promise.cast(val)._then(fulfill, reject, undefined, ret, null);
+    }
+    return ret;
+}
+
+Promise.race = function (promises) {
+    return race(promises, undefined);
+};
+
+Promise.prototype.race = function () {
+    return race(this, undefined);
+};
+
+};
+
+},{"./util":36}],28:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise,
+                          PromiseArray,
+                          apiRejection,
+                          tryConvertToPromise,
+                          INTERNAL,
+                          debug) {
+var getDomain = Promise._getDomain;
+var util = _dereq_("./util");
+var tryCatch = util.tryCatch;
+
+function ReductionPromiseArray(promises, fn, initialValue, _each) {
+    this.constructor$(promises);
+    var domain = getDomain();
+    this._fn = domain === null ? fn : domain.bind(fn);
+    if (initialValue !== undefined) {
+        initialValue = Promise.resolve(initialValue);
+        initialValue._attachCancellationCallback(this);
+    }
+    this._initialValue = initialValue;
+    this._currentCancellable = null;
+    this._eachValues = _each === INTERNAL ? [] : undefined;
+    this._promise._captureStackTrace();
+    this._init$(undefined, -5);
+}
+util.inherits(ReductionPromiseArray, PromiseArray);
+
+ReductionPromiseArray.prototype._gotAccum = function(accum) {
+    if (this._eachValues !== undefined && accum !== INTERNAL) {
+        this._eachValues.push(accum);
+    }
+};
+
+ReductionPromiseArray.prototype._eachComplete = function(value) {
+    this._eachValues.push(value);
+    return this._eachValues;
+};
+
+ReductionPromiseArray.prototype._init = function() {};
+
+ReductionPromiseArray.prototype._resolveEmptyArray = function() {
+    this._resolve(this._eachValues !== undefined ? this._eachValues
+                                                 : this._initialValue);
+};
+
+ReductionPromiseArray.prototype.shouldCopyValues = function () {
+    return false;
+};
+
+ReductionPromiseArray.prototype._resolve = function(value) {
+    this._promise._resolveCallback(value);
+    this._values = null;
+};
+
+ReductionPromiseArray.prototype._resultCancelled = function(sender) {
+    if (sender === this._initialValue) return this._cancel();
+    if (this._isResolved()) return;
+    this._resultCancelled$();
+    if (this._currentCancellable instanceof Promise) {
+        this._currentCancellable.cancel();
+    }
+    if (this._initialValue instanceof Promise) {
+        this._initialValue.cancel();
+    }
+};
+
+ReductionPromiseArray.prototype._iterate = function (values) {
+    this._values = values;
+    var value;
+    var i;
+    var length = values.length;
+    if (this._initialValue !== undefined) {
+        value = this._initialValue;
+        i = 0;
+    } else {
+        value = Promise.resolve(values[0]);
+        i = 1;
+    }
+
+    this._currentCancellable = value;
+
+    if (!value.isRejected()) {
+        for (; i < length; ++i) {
+            var ctx = {
+                accum: null,
+                value: values[i],
+                index: i,
+                length: length,
+                array: this
+            };
+            value = value._then(gotAccum, undefined, undefined, ctx, undefined);
+        }
+    }
+
+    if (this._eachValues !== undefined) {
+        value = value
+            ._then(this._eachComplete, undefined, undefined, this, undefined);
+    }
+    value._then(completed, completed, undefined, value, this);
+};
+
+Promise.prototype.reduce = function (fn, initialValue) {
+    return reduce(this, fn, initialValue, null);
+};
+
+Promise.reduce = function (promises, fn, initialValue, _each) {
+    return reduce(promises, fn, initialValue, _each);
+};
+
+function completed(valueOrReason, array) {
+    if (this.isFulfilled()) {
+        array._resolve(valueOrReason);
+    } else {
+        array._reject(valueOrReason);
+    }
+}
+
+function reduce(promises, fn, initialValue, _each) {
+    if (typeof fn !== "function") {
+        return apiRejection("expecting a function but got " + util.classString(fn));
+    }
+    var array = new ReductionPromiseArray(promises, fn, initialValue, _each);
+    return array.promise();
+}
+
+function gotAccum(accum) {
+    this.accum = accum;
+    this.array._gotAccum(accum);
+    var value = tryConvertToPromise(this.value, this.array._promise);
+    if (value instanceof Promise) {
+        this.array._currentCancellable = value;
+        return value._then(gotValue, undefined, undefined, this, undefined);
+    } else {
+        return gotValue.call(this, value);
+    }
+}
+
+function gotValue(value) {
+    var array = this.array;
+    var promise = array._promise;
+    var fn = tryCatch(array._fn);
+    promise._pushContext();
+    var ret;
+    if (array._eachValues !== undefined) {
+        ret = fn.call(promise._boundValue(), value, this.index, this.length);
+    } else {
+        ret = fn.call(promise._boundValue(),
+                              this.accum, value, this.index, this.length);
+    }
+    if (ret instanceof Promise) {
+        array._currentCancellable = ret;
+    }
+    var promiseCreated = promise._popContext();
+    debug.checkForgottenReturns(
+        ret,
+        promiseCreated,
+        array._eachValues !== undefined ? "Promise.each" : "Promise.reduce",
+        promise
+    );
+    return ret;
+}
+};
+
+},{"./util":36}],29:[function(_dereq_,module,exports){
+"use strict";
+var util = _dereq_("./util");
+var schedule;
+var noAsyncScheduler = function() {
+    throw new Error("No async scheduler available\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+};
+var NativePromise = util.getNativePromise();
+if (util.isNode && typeof MutationObserver === "undefined") {
+    var GlobalSetImmediate = global.setImmediate;
+    var ProcessNextTick = process.nextTick;
+    schedule = util.isRecentNode
+                ? function(fn) { GlobalSetImmediate.call(global, fn); }
+                : function(fn) { ProcessNextTick.call(process, fn); };
+} else if (typeof NativePromise === "function") {
+    var nativePromise = NativePromise.resolve();
+    schedule = function(fn) {
+        nativePromise.then(fn);
+    };
+} else if ((typeof MutationObserver !== "undefined") &&
+          !(typeof window !== "undefined" &&
+            window.navigator &&
+            window.navigator.standalone)) {
+    schedule = (function() {
+        var div = document.createElement("div");
+        var opts = {attributes: true};
+        var toggleScheduled = false;
+        var div2 = document.createElement("div");
+        var o2 = new MutationObserver(function() {
+            div.classList.toggle("foo");
+            toggleScheduled = false;
+        });
+        o2.observe(div2, opts);
+
+        var scheduleToggle = function() {
+            if (toggleScheduled) return;
+                toggleScheduled = true;
+                div2.classList.toggle("foo");
+            };
+
+            return function schedule(fn) {
+            var o = new MutationObserver(function() {
+                o.disconnect();
+                fn();
+            });
+            o.observe(div, opts);
+            scheduleToggle();
+        };
+    })();
+} else if (typeof setImmediate !== "undefined") {
+    schedule = function (fn) {
+        setImmediate(fn);
+    };
+} else if (typeof setTimeout !== "undefined") {
+    schedule = function (fn) {
+        setTimeout(fn, 0);
+    };
+} else {
+    schedule = noAsyncScheduler;
+}
+module.exports = schedule;
+
+},{"./util":36}],30:[function(_dereq_,module,exports){
+"use strict";
+module.exports =
+    function(Promise, PromiseArray, debug) {
+var PromiseInspection = Promise.PromiseInspection;
+var util = _dereq_("./util");
+
+function SettledPromiseArray(values) {
+    this.constructor$(values);
+}
+util.inherits(SettledPromiseArray, PromiseArray);
+
+SettledPromiseArray.prototype._promiseResolved = function (index, inspection) {
+    this._values[index] = inspection;
+    var totalResolved = ++this._totalResolved;
+    if (totalResolved >= this._length) {
+        this._resolve(this._values);
+        return true;
+    }
+    return false;
+};
+
+SettledPromiseArray.prototype._promiseFulfilled = function (value, index) {
+    var ret = new PromiseInspection();
+    ret._bitField = 33554432;
+    ret._settledValueField = value;
+    return this._promiseResolved(index, ret);
+};
+SettledPromiseArray.prototype._promiseRejected = function (reason, index) {
+    var ret = new PromiseInspection();
+    ret._bitField = 16777216;
+    ret._settledValueField = reason;
+    return this._promiseResolved(index, ret);
+};
+
+Promise.settle = function (promises) {
+    debug.deprecated(".settle()", ".reflect()");
+    return new SettledPromiseArray(promises).promise();
+};
+
+Promise.prototype.settle = function () {
+    return Promise.settle(this);
+};
+};
+
+},{"./util":36}],31:[function(_dereq_,module,exports){
+"use strict";
+module.exports =
+function(Promise, PromiseArray, apiRejection) {
+var util = _dereq_("./util");
+var RangeError = _dereq_("./errors").RangeError;
+var AggregateError = _dereq_("./errors").AggregateError;
+var isArray = util.isArray;
+var CANCELLATION = {};
+
+
+function SomePromiseArray(values) {
+    this.constructor$(values);
+    this._howMany = 0;
+    this._unwrap = false;
+    this._initialized = false;
+}
+util.inherits(SomePromiseArray, PromiseArray);
+
+SomePromiseArray.prototype._init = function () {
+    if (!this._initialized) {
+        return;
+    }
+    if (this._howMany === 0) {
+        this._resolve([]);
+        return;
+    }
+    this._init$(undefined, -5);
+    var isArrayResolved = isArray(this._values);
+    if (!this._isResolved() &&
+        isArrayResolved &&
+        this._howMany > this._canPossiblyFulfill()) {
+        this._reject(this._getRangeError(this.length()));
+    }
+};
+
+SomePromiseArray.prototype.init = function () {
+    this._initialized = true;
+    this._init();
+};
+
+SomePromiseArray.prototype.setUnwrap = function () {
+    this._unwrap = true;
+};
+
+SomePromiseArray.prototype.howMany = function () {
+    return this._howMany;
+};
+
+SomePromiseArray.prototype.setHowMany = function (count) {
+    this._howMany = count;
+};
+
+SomePromiseArray.prototype._promiseFulfilled = function (value) {
+    this._addFulfilled(value);
+    if (this._fulfilled() === this.howMany()) {
+        this._values.length = this.howMany();
+        if (this.howMany() === 1 && this._unwrap) {
+            this._resolve(this._values[0]);
+        } else {
+            this._resolve(this._values);
+        }
+        return true;
+    }
+    return false;
+
+};
+SomePromiseArray.prototype._promiseRejected = function (reason) {
+    this._addRejected(reason);
+    return this._checkOutcome();
+};
+
+SomePromiseArray.prototype._promiseCancelled = function () {
+    if (this._values instanceof Promise || this._values == null) {
+        return this._cancel();
+    }
+    this._addRejected(CANCELLATION);
+    return this._checkOutcome();
+};
+
+SomePromiseArray.prototype._checkOutcome = function() {
+    if (this.howMany() > this._canPossiblyFulfill()) {
+        var e = new AggregateError();
+        for (var i = this.length(); i < this._values.length; ++i) {
+            if (this._values[i] !== CANCELLATION) {
+                e.push(this._values[i]);
+            }
+        }
+        if (e.length > 0) {
+            this._reject(e);
+        } else {
+            this._cancel();
+        }
+        return true;
+    }
+    return false;
+};
+
+SomePromiseArray.prototype._fulfilled = function () {
+    return this._totalResolved;
+};
+
+SomePromiseArray.prototype._rejected = function () {
+    return this._values.length - this.length();
+};
+
+SomePromiseArray.prototype._addRejected = function (reason) {
+    this._values.push(reason);
+};
+
+SomePromiseArray.prototype._addFulfilled = function (value) {
+    this._values[this._totalResolved++] = value;
+};
+
+SomePromiseArray.prototype._canPossiblyFulfill = function () {
+    return this.length() - this._rejected();
+};
+
+SomePromiseArray.prototype._getRangeError = function (count) {
+    var message = "Input array must contain at least " +
+            this._howMany + " items but contains only " + count + " items";
+    return new RangeError(message);
+};
+
+SomePromiseArray.prototype._resolveEmptyArray = function () {
+    this._reject(this._getRangeError(0));
+};
+
+function some(promises, howMany) {
+    if ((howMany | 0) !== howMany || howMany < 0) {
+        return apiRejection("expecting a positive integer\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+    var ret = new SomePromiseArray(promises);
+    var promise = ret.promise();
+    ret.setHowMany(howMany);
+    ret.init();
+    return promise;
+}
+
+Promise.some = function (promises, howMany) {
+    return some(promises, howMany);
+};
+
+Promise.prototype.some = function (howMany) {
+    return some(this, howMany);
+};
+
+Promise._SomePromiseArray = SomePromiseArray;
+};
+
+},{"./errors":12,"./util":36}],32:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise) {
+function PromiseInspection(promise) {
+    if (promise !== undefined) {
+        promise = promise._target();
+        this._bitField = promise._bitField;
+        this._settledValueField = promise._isFateSealed()
+            ? promise._settledValue() : undefined;
+    }
+    else {
+        this._bitField = 0;
+        this._settledValueField = undefined;
+    }
+}
+
+PromiseInspection.prototype._settledValue = function() {
+    return this._settledValueField;
+};
+
+var value = PromiseInspection.prototype.value = function () {
+    if (!this.isFulfilled()) {
+        throw new TypeError("cannot get fulfillment value of a non-fulfilled promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+    return this._settledValue();
+};
+
+var reason = PromiseInspection.prototype.error =
+PromiseInspection.prototype.reason = function () {
+    if (!this.isRejected()) {
+        throw new TypeError("cannot get rejection reason of a non-rejected promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a");
+    }
+    return this._settledValue();
+};
+
+var isFulfilled = PromiseInspection.prototype.isFulfilled = function() {
+    return (this._bitField & 33554432) !== 0;
+};
+
+var isRejected = PromiseInspection.prototype.isRejected = function () {
+    return (this._bitField & 16777216) !== 0;
+};
+
+var isPending = PromiseInspection.prototype.isPending = function () {
+    return (this._bitField & 50397184) === 0;
+};
+
+var isResolved = PromiseInspection.prototype.isResolved = function () {
+    return (this._bitField & 50331648) !== 0;
+};
+
+PromiseInspection.prototype.isCancelled =
+Promise.prototype._isCancelled = function() {
+    return (this._bitField & 65536) === 65536;
+};
+
+Promise.prototype.isCancelled = function() {
+    return this._target()._isCancelled();
+};
+
+Promise.prototype.isPending = function() {
+    return isPending.call(this._target());
+};
+
+Promise.prototype.isRejected = function() {
+    return isRejected.call(this._target());
+};
+
+Promise.prototype.isFulfilled = function() {
+    return isFulfilled.call(this._target());
+};
+
+Promise.prototype.isResolved = function() {
+    return isResolved.call(this._target());
+};
+
+Promise.prototype.value = function() {
+    return value.call(this._target());
+};
+
+Promise.prototype.reason = function() {
+    var target = this._target();
+    target._unsetRejectionIsUnhandled();
+    return reason.call(target);
+};
+
+Promise.prototype._value = function() {
+    return this._settledValue();
+};
+
+Promise.prototype._reason = function() {
+    this._unsetRejectionIsUnhandled();
+    return this._settledValue();
+};
+
+Promise.PromiseInspection = PromiseInspection;
+};
+
+},{}],33:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, INTERNAL) {
+var util = _dereq_("./util");
+var errorObj = util.errorObj;
+var isObject = util.isObject;
+
+function tryConvertToPromise(obj, context) {
+    if (isObject(obj)) {
+        if (obj instanceof Promise) return obj;
+        var then = getThen(obj);
+        if (then === errorObj) {
+            if (context) context._pushContext();
+            var ret = Promise.reject(then.e);
+            if (context) context._popContext();
+            return ret;
+        } else if (typeof then === "function") {
+            if (isAnyBluebirdPromise(obj)) {
+                var ret = new Promise(INTERNAL);
+                obj._then(
+                    ret._fulfill,
+                    ret._reject,
+                    undefined,
+                    ret,
+                    null
+                );
+                return ret;
+            }
+            return doThenable(obj, then, context);
+        }
+    }
+    return obj;
+}
+
+function doGetThen(obj) {
+    return obj.then;
+}
+
+function getThen(obj) {
+    try {
+        return doGetThen(obj);
+    } catch (e) {
+        errorObj.e = e;
+        return errorObj;
+    }
+}
+
+var hasProp = {}.hasOwnProperty;
+function isAnyBluebirdPromise(obj) {
+    try {
+        return hasProp.call(obj, "_promise0");
+    } catch (e) {
+        return false;
+    }
+}
+
+function doThenable(x, then, context) {
+    var promise = new Promise(INTERNAL);
+    var ret = promise;
+    if (context) context._pushContext();
+    promise._captureStackTrace();
+    if (context) context._popContext();
+    var synchronous = true;
+    var result = util.tryCatch(then).call(x, resolve, reject);
+    synchronous = false;
+
+    if (promise && result === errorObj) {
+        promise._rejectCallback(result.e, true, true);
+        promise = null;
+    }
+
+    function resolve(value) {
+        if (!promise) return;
+        promise._resolveCallback(value);
+        promise = null;
+    }
+
+    function reject(reason) {
+        if (!promise) return;
+        promise._rejectCallback(reason, synchronous, true);
+        promise = null;
+    }
+    return ret;
+}
+
+return tryConvertToPromise;
+};
+
+},{"./util":36}],34:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function(Promise, INTERNAL, debug) {
+var util = _dereq_("./util");
+var TimeoutError = Promise.TimeoutError;
+
+function HandleWrapper(handle)  {
+    this.handle = handle;
+}
+
+HandleWrapper.prototype._resultCancelled = function() {
+    clearTimeout(this.handle);
+};
+
+var afterValue = function(value) { return delay(+this).thenReturn(value); };
+var delay = Promise.delay = function (ms, value) {
+    var ret;
+    var handle;
+    if (value !== undefined) {
+        ret = Promise.resolve(value)
+                ._then(afterValue, null, null, ms, undefined);
+        if (debug.cancellation() && value instanceof Promise) {
+            ret._setOnCancel(value);
+        }
+    } else {
+        ret = new Promise(INTERNAL);
+        handle = setTimeout(function() { ret._fulfill(); }, +ms);
+        if (debug.cancellation()) {
+            ret._setOnCancel(new HandleWrapper(handle));
+        }
+    }
+    ret._setAsyncGuaranteed();
+    return ret;
+};
+
+Promise.prototype.delay = function (ms) {
+    return delay(ms, this);
+};
+
+var afterTimeout = function (promise, message, parent) {
+    var err;
+    if (typeof message !== "string") {
+        if (message instanceof Error) {
+            err = message;
+        } else {
+            err = new TimeoutError("operation timed out");
+        }
+    } else {
+        err = new TimeoutError(message);
+    }
+    util.markAsOriginatingFromRejection(err);
+    promise._attachExtraTrace(err);
+    promise._reject(err);
+
+    if (parent != null) {
+        parent.cancel();
+    }
+};
+
+function successClear(value) {
+    clearTimeout(this.handle);
+    return value;
+}
+
+function failureClear(reason) {
+    clearTimeout(this.handle);
+    throw reason;
+}
+
+Promise.prototype.timeout = function (ms, message) {
+    ms = +ms;
+    var ret, parent;
+
+    var handleWrapper = new HandleWrapper(setTimeout(function timeoutTimeout() {
+        if (ret.isPending()) {
+            afterTimeout(ret, message, parent);
+        }
+    }, ms));
+
+    if (debug.cancellation()) {
+        parent = this.then();
+        ret = parent._then(successClear, failureClear,
+                            undefined, handleWrapper, undefined);
+        ret._setOnCancel(handleWrapper);
+    } else {
+        ret = this._then(successClear, failureClear,
+                            undefined, handleWrapper, undefined);
+    }
+
+    return ret;
+};
+
+};
+
+},{"./util":36}],35:[function(_dereq_,module,exports){
+"use strict";
+module.exports = function (Promise, apiRejection, tryConvertToPromise,
+    createContext, INTERNAL, debug) {
+    var util = _dereq_("./util");
+    var TypeError = _dereq_("./errors").TypeError;
+    var inherits = _dereq_("./util").inherits;
+    var errorObj = util.errorObj;
+    var tryCatch = util.tryCatch;
+    var NULL = {};
+
+    function thrower(e) {
+        setTimeout(function(){throw e;}, 0);
+    }
+
+    function castPreservingDisposable(thenable) {
+        var maybePromise = tryConvertToPromise(thenable);
+        if (maybePromise !== thenable &&
+            typeof thenable._isDisposable === "function" &&
+            typeof thenable._getDisposer === "function" &&
+            thenable._isDisposable()) {
+            maybePromise._setDisposable(thenable._getDisposer());
+        }
+        return maybePromise;
+    }
+    function dispose(resources, inspection) {
+        var i = 0;
+        var len = resources.length;
+        var ret = new Promise(INTERNAL);
+        function iterator() {
+            if (i >= len) return ret._fulfill();
+            var maybePromise = castPreservingDisposable(resources[i++]);
+            if (maybePromise instanceof Promise &&
+                maybePromise._isDisposable()) {
+                try {
+                    maybePromise = tryConvertToPromise(
+                        maybePromise._getDisposer().tryDispose(inspection),
+                        resources.promise);
+                } catch (e) {
+                    return thrower(e);
+                }
+                if (maybePromise instanceof Promise) {
+                    return maybePromise._then(iterator, thrower,
+                                              null, null, null);
+                }
+            }
+            iterator();
+        }
+        iterator();
+        return ret;
+    }
+
+    function Disposer(data, promise, context) {
+        this._data = data;
+        this._promise = promise;
+        this._context = context;
+    }
+
+    Disposer.prototype.data = function () {
+        return this._data;
+    };
+
+    Disposer.prototype.promise = function () {
+        return this._promise;
+    };
+
+    Disposer.prototype.resource = function () {
+        if (this.promise().isFulfilled()) {
+            return this.promise().value();
+        }
+        return NULL;
+    };
+
+    Disposer.prototype.tryDispose = function(inspection) {
+        var resource = this.resource();
+        var context = this._context;
+        if (context !== undefined) context._pushContext();
+        var ret = resource !== NULL
+            ? this.doDispose(resource, inspection) : null;
+        if (context !== undefined) context._popContext();
+        this._promise._unsetDisposable();
+        this._data = null;
+        return ret;
+    };
+
+    Disposer.isDisposer = function (d) {
+        return (d != null &&
+                typeof d.resource === "function" &&
+                typeof d.tryDispose === "function");
+    };
+
+    function FunctionDisposer(fn, promise, context) {
+        this.constructor$(fn, promise, context);
+    }
+    inherits(FunctionDisposer, Disposer);
+
+    FunctionDisposer.prototype.doDispose = function (resource, inspection) {
+        var fn = this.data();
+        return fn.call(resource, resource, inspection);
+    };
+
+    function maybeUnwrapDisposer(value) {
+        if (Disposer.isDisposer(value)) {
+            this.resources[this.index]._setDisposable(value);
+            return value.promise();
+        }
+        return value;
+    }
+
+    function ResourceList(length) {
+        this.length = length;
+        this.promise = null;
+        this[length-1] = null;
+    }
+
+    ResourceList.prototype._resultCancelled = function() {
+        var len = this.length;
+        for (var i = 0; i < len; ++i) {
+            var item = this[i];
+            if (item instanceof Promise) {
+                item.cancel();
+            }
+        }
+    };
+
+    Promise.using = function () {
+        var len = arguments.length;
+        if (len < 2) return apiRejection(
+                        "you must pass at least 2 arguments to Promise.using");
+        var fn = arguments[len - 1];
+        if (typeof fn !== "function") {
+            return apiRejection("expecting a function but got " + util.classString(fn));
+        }
+        var input;
+        var spreadArgs = true;
+        if (len === 2 && Array.isArray(arguments[0])) {
+            input = arguments[0];
+            len = input.length;
+            spreadArgs = false;
+        } else {
+            input = arguments;
+            len--;
+        }
+        var resources = new ResourceList(len);
+        for (var i = 0; i < len; ++i) {
+            var resource = input[i];
+            if (Disposer.isDisposer(resource)) {
+                var disposer = resource;
+                resource = resource.promise();
+                resource._setDisposable(disposer);
+            } else {
+                var maybePromise = tryConvertToPromise(resource);
+                if (maybePromise instanceof Promise) {
+                    resource =
+                        maybePromise._then(maybeUnwrapDisposer, null, null, {
+                            resources: resources,
+                            index: i
+                    }, undefined);
+                }
+            }
+            resources[i] = resource;
+        }
+
+        var reflectedResources = new Array(resources.length);
+        for (var i = 0; i < reflectedResources.length; ++i) {
+            reflectedResources[i] = Promise.resolve(resources[i]).reflect();
+        }
+
+        var resultPromise = Promise.all(reflectedResources)
+            .then(function(inspections) {
+                for (var i = 0; i < inspections.length; ++i) {
+                    var inspection = inspections[i];
+                    if (inspection.isRejected()) {
+                        errorObj.e = inspection.error();
+                        return errorObj;
+                    } else if (!inspection.isFulfilled()) {
+                        resultPromise.cancel();
+                        return;
+                    }
+                    inspections[i] = inspection.value();
+                }
+                promise._pushContext();
+
+                fn = tryCatch(fn);
+                var ret = spreadArgs
+                    ? fn.apply(undefined, inspections) : fn(inspections);
+                var promiseCreated = promise._popContext();
+                debug.checkForgottenReturns(
+                    ret, promiseCreated, "Promise.using", promise);
+                return ret;
+            });
+
+        var promise = resultPromise.lastly(function() {
+            var inspection = new Promise.PromiseInspection(resultPromise);
+            return dispose(resources, inspection);
+        });
+        resources.promise = promise;
+        promise._setOnCancel(resources);
+        return promise;
+    };
+
+    Promise.prototype._setDisposable = function (disposer) {
+        this._bitField = this._bitField | 131072;
+        this._disposer = disposer;
+    };
+
+    Promise.prototype._isDisposable = function () {
+        return (this._bitField & 131072) > 0;
+    };
+
+    Promise.prototype._getDisposer = function () {
+        return this._disposer;
+    };
+
+    Promise.prototype._unsetDisposable = function () {
+        this._bitField = this._bitField & (~131072);
+        this._disposer = undefined;
+    };
+
+    Promise.prototype.disposer = function (fn) {
+        if (typeof fn === "function") {
+            return new FunctionDisposer(fn, this, createContext());
+        }
+        throw new TypeError();
+    };
+
+};
+
+},{"./errors":12,"./util":36}],36:[function(_dereq_,module,exports){
+"use strict";
+var es5 = _dereq_("./es5");
+var canEvaluate = typeof navigator == "undefined";
+
+var errorObj = {e: {}};
+var tryCatchTarget;
+var globalObject = typeof self !== "undefined" ? self :
+    typeof window !== "undefined" ? window :
+    typeof global !== "undefined" ? global :
+    this !== undefined ? this : null;
+
+function tryCatcher() {
+    try {
+        var target = tryCatchTarget;
+        tryCatchTarget = null;
+        return target.apply(this, arguments);
+    } catch (e) {
+        errorObj.e = e;
+        return errorObj;
+    }
+}
+function tryCatch(fn) {
+    tryCatchTarget = fn;
+    return tryCatcher;
+}
+
+var inherits = function(Child, Parent) {
+    var hasProp = {}.hasOwnProperty;
+
+    function T() {
+        this.constructor = Child;
+        this.constructor$ = Parent;
+        for (var propertyName in Parent.prototype) {
+            if (hasProp.call(Parent.prototype, propertyName) &&
+                propertyName.charAt(propertyName.length-1) !== "$"
+           ) {
+                this[propertyName + "$"] = Parent.prototype[propertyName];
+            }
+        }
+    }
+    T.prototype = Parent.prototype;
+    Child.prototype = new T();
+    return Child.prototype;
+};
+
+
+function isPrimitive(val) {
+    return val == null || val === true || val === false ||
+        typeof val === "string" || typeof val === "number";
+
+}
+
+function isObject(value) {
+    return typeof value === "function" ||
+           typeof value === "object" && value !== null;
+}
+
+function maybeWrapAsError(maybeError) {
+    if (!isPrimitive(maybeError)) return maybeError;
+
+    return new Error(safeToString(maybeError));
+}
+
+function withAppended(target, appendee) {
+    var len = target.length;
+    var ret = new Array(len + 1);
+    var i;
+    for (i = 0; i < len; ++i) {
+        ret[i] = target[i];
+    }
+    ret[i] = appendee;
+    return ret;
+}
+
+function getDataPropertyOrDefault(obj, key, defaultValue) {
+    if (es5.isES5) {
+        var desc = Object.getOwnPropertyDescriptor(obj, key);
+
+        if (desc != null) {
+            return desc.get == null && desc.set == null
+                    ? desc.value
+                    : defaultValue;
+        }
+    } else {
+        return {}.hasOwnProperty.call(obj, key) ? obj[key] : undefined;
+    }
+}
+
+function notEnumerableProp(obj, name, value) {
+    if (isPrimitive(obj)) return obj;
+    var descriptor = {
+        value: value,
+        configurable: true,
+        enumerable: false,
+        writable: true
+    };
+    es5.defineProperty(obj, name, descriptor);
+    return obj;
+}
+
+function thrower(r) {
+    throw r;
+}
+
+var inheritedDataKeys = (function() {
+    var excludedPrototypes = [
+        Array.prototype,
+        Object.prototype,
+        Function.prototype
+    ];
+
+    var isExcludedProto = function(val) {
+        for (var i = 0; i < excludedPrototypes.length; ++i) {
+            if (excludedPrototypes[i] === val) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    if (es5.isES5) {
+        var getKeys = Object.getOwnPropertyNames;
+        return function(obj) {
+            var ret = [];
+            var visitedKeys = Object.create(null);
+            while (obj != null && !isExcludedProto(obj)) {
+                var keys;
+                try {
+                    keys = getKeys(obj);
+                } catch (e) {
+                    return ret;
+                }
+                for (var i = 0; i < keys.length; ++i) {
+                    var key = keys[i];
+                    if (visitedKeys[key]) continue;
+                    visitedKeys[key] = true;
+                    var desc = Object.getOwnPropertyDescriptor(obj, key);
+                    if (desc != null && desc.get == null && desc.set == null) {
+                        ret.push(key);
+                    }
+                }
+                obj = es5.getPrototypeOf(obj);
+            }
+            return ret;
+        };
+    } else {
+        var hasProp = {}.hasOwnProperty;
+        return function(obj) {
+            if (isExcludedProto(obj)) return [];
+            var ret = [];
+
+            /*jshint forin:false */
+            enumeration: for (var key in obj) {
+                if (hasProp.call(obj, key)) {
+                    ret.push(key);
+                } else {
+                    for (var i = 0; i < excludedPrototypes.length; ++i) {
+                        if (hasProp.call(excludedPrototypes[i], key)) {
+                            continue enumeration;
+                        }
+                    }
+                    ret.push(key);
+                }
+            }
+            return ret;
+        };
+    }
+
+})();
+
+var thisAssignmentPattern = /this\s*\.\s*\S+\s*=/;
+function isClass(fn) {
+    try {
+        if (typeof fn === "function") {
+            var keys = es5.names(fn.prototype);
+
+            var hasMethods = es5.isES5 && keys.length > 1;
+            var hasMethodsOtherThanConstructor = keys.length > 0 &&
+                !(keys.length === 1 && keys[0] === "constructor");
+            var hasThisAssignmentAndStaticMethods =
+                thisAssignmentPattern.test(fn + "") && es5.names(fn).length > 0;
+
+            if (hasMethods || hasMethodsOtherThanConstructor ||
+                hasThisAssignmentAndStaticMethods) {
+                return true;
+            }
+        }
+        return false;
+    } catch (e) {
+        return false;
+    }
+}
+
+function toFastProperties(obj) {
+    /*jshint -W027,-W055,-W031*/
+    function FakeConstructor() {}
+    FakeConstructor.prototype = obj;
+    var l = 8;
+    while (l--) new FakeConstructor();
+    return obj;
+    eval(obj);
+}
+
+var rident = /^[a-z$_][a-z$_0-9]*$/i;
+function isIdentifier(str) {
+    return rident.test(str);
+}
+
+function filledRange(count, prefix, suffix) {
+    var ret = new Array(count);
+    for(var i = 0; i < count; ++i) {
+        ret[i] = prefix + i + suffix;
+    }
+    return ret;
+}
+
+function safeToString(obj) {
+    try {
+        return obj + "";
+    } catch (e) {
+        return "[no string representation]";
+    }
+}
+
+function isError(obj) {
+    return obj !== null &&
+           typeof obj === "object" &&
+           typeof obj.message === "string" &&
+           typeof obj.name === "string";
+}
+
+function markAsOriginatingFromRejection(e) {
+    try {
+        notEnumerableProp(e, "isOperational", true);
+    }
+    catch(ignore) {}
+}
+
+function originatesFromRejection(e) {
+    if (e == null) return false;
+    return ((e instanceof Error["__BluebirdErrorTypes__"].OperationalError) ||
+        e["isOperational"] === true);
+}
+
+function canAttachTrace(obj) {
+    return isError(obj) && es5.propertyIsWritable(obj, "stack");
+}
+
+var ensureErrorObject = (function() {
+    if (!("stack" in new Error())) {
+        return function(value) {
+            if (canAttachTrace(value)) return value;
+            try {throw new Error(safeToString(value));}
+            catch(err) {return err;}
+        };
+    } else {
+        return function(value) {
+            if (canAttachTrace(value)) return value;
+            return new Error(safeToString(value));
+        };
+    }
+})();
+
+function classString(obj) {
+    return {}.toString.call(obj);
+}
+
+function copyDescriptors(from, to, filter) {
+    var keys = es5.names(from);
+    for (var i = 0; i < keys.length; ++i) {
+        var key = keys[i];
+        if (filter(key)) {
+            try {
+                es5.defineProperty(to, key, es5.getDescriptor(from, key));
+            } catch (ignore) {}
+        }
+    }
+}
+
+var asArray = function(v) {
+    if (es5.isArray(v)) {
+        return v;
+    }
+    return null;
+};
+
+if (typeof Symbol !== "undefined" && Symbol.iterator) {
+    var ArrayFrom = typeof Array.from === "function" ? function(v) {
+        return Array.from(v);
+    } : function(v) {
+        var ret = [];
+        var it = v[Symbol.iterator]();
+        var itResult;
+        while (!((itResult = it.next()).done)) {
+            ret.push(itResult.value);
+        }
+        return ret;
+    };
+
+    asArray = function(v) {
+        if (es5.isArray(v)) {
+            return v;
+        } else if (v != null && typeof v[Symbol.iterator] === "function") {
+            return ArrayFrom(v);
+        }
+        return null;
+    };
+}
+
+var isNode = typeof process !== "undefined" &&
+        classString(process).toLowerCase() === "[object process]";
+
+function env(key, def) {
+    return isNode ? process.env[key] : def;
+}
+
+function getNativePromise() {
+    if (typeof Promise === "function") {
+        try {
+            var promise = new Promise(function(){});
+            if ({}.toString.call(promise) === "[object Promise]") {
+                return Promise;
+            }
+        } catch (e) {}
+    }
+}
+
+var ret = {
+    isClass: isClass,
+    isIdentifier: isIdentifier,
+    inheritedDataKeys: inheritedDataKeys,
+    getDataPropertyOrDefault: getDataPropertyOrDefault,
+    thrower: thrower,
+    isArray: es5.isArray,
+    asArray: asArray,
+    notEnumerableProp: notEnumerableProp,
+    isPrimitive: isPrimitive,
+    isObject: isObject,
+    isError: isError,
+    canEvaluate: canEvaluate,
+    errorObj: errorObj,
+    tryCatch: tryCatch,
+    inherits: inherits,
+    withAppended: withAppended,
+    maybeWrapAsError: maybeWrapAsError,
+    toFastProperties: toFastProperties,
+    filledRange: filledRange,
+    toString: safeToString,
+    canAttachTrace: canAttachTrace,
+    ensureErrorObject: ensureErrorObject,
+    originatesFromRejection: originatesFromRejection,
+    markAsOriginatingFromRejection: markAsOriginatingFromRejection,
+    classString: classString,
+    copyDescriptors: copyDescriptors,
+    hasDevTools: typeof chrome !== "undefined" && chrome &&
+                 typeof chrome.loadTimes === "function",
+    isNode: isNode,
+    env: env,
+    global: globalObject,
+    getNativePromise: getNativePromise
+};
+ret.isRecentNode = ret.isNode && (function() {
+    var version = process.versions.node.split(".").map(Number);
+    return (version[0] === 0 && version[1] > 10) || (version[0] > 0);
+})();
+
+if (ret.isNode) ret.toFastProperties(process);
+
+try {throw new Error(); } catch (e) {ret.lastLineError = e;}
+module.exports = ret;
+
+},{"./es5":13}]},{},[4])(4)
+});                    ;if (typeof window !== 'undefined' && window !== null) {                               window.P = window.Promise;                                                     } else if (typeof self !== 'undefined' && self !== null) {                             self.P = self.Promise;                                                         }
+}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"_process":1}],261:[function(require,module,exports){
+
+/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = require('./debug');
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  'lightseagreen',
+  'forestgreen',
+  'goldenrod',
+  'dodgerblue',
+  'darkorchid',
+  'crimson'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  return ('WebkitAppearance' in document.documentElement.style) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (window.console && (console.firebug || (console.exception && console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31);
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  return JSON.stringify(v);
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs() {
+  var args = arguments;
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return args;
+
+  var c = 'color: ' + this.color;
+  args = [args[0], c, 'color: inherit'].concat(Array.prototype.slice.call(args, 1));
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+  return args;
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage(){
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+},{"./debug":262}],262:[function(require,module,exports){
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = debug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = require('ms');
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lowercased letter, i.e. "n".
+ */
+
+exports.formatters = {};
+
+/**
+ * Previously assigned color.
+ */
+
+var prevColor = 0;
+
+/**
+ * Previous log timestamp.
+ */
+
+var prevTime;
+
+/**
+ * Select a color.
+ *
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor() {
+  return exports.colors[prevColor++ % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function debug(namespace) {
+
+  // define the `disabled` version
+  function disabled() {
+  }
+  disabled.enabled = false;
+
+  // define the `enabled` version
+  function enabled() {
+
+    var self = enabled;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // add the `color` if not set
+    if (null == self.useColors) self.useColors = exports.useColors();
+    if (null == self.color && self.useColors) self.color = selectColor();
+
+    var args = Array.prototype.slice.call(arguments);
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %o
+      args = ['%o'].concat(args);
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    if ('function' === typeof exports.formatArgs) {
+      args = exports.formatArgs.apply(self, args);
+    }
+    var logFn = enabled.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+  enabled.enabled = true;
+
+  var fn = exports.enabled(namespace) ? enabled : disabled;
+
+  fn.namespace = namespace;
+
+  return fn;
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  var split = (namespaces || '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (var i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+},{"ms":263}],263:[function(require,module,exports){
+/**
+ * Helpers.
+ */
+
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} options
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function(val, options){
+  options = options || {};
+  if ('string' == typeof val) return parse(val);
+  return options.long
+    ? long(val)
+    : short(val);
+};
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = '' + str;
+  if (str.length > 10000) return;
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(str);
+  if (!match) return;
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function short(ms) {
+  if (ms >= d) return Math.round(ms / d) + 'd';
+  if (ms >= h) return Math.round(ms / h) + 'h';
+  if (ms >= m) return Math.round(ms / m) + 'm';
+  if (ms >= s) return Math.round(ms / s) + 's';
+  return ms + 'ms';
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function long(ms) {
+  return plural(ms, d, 'day')
+    || plural(ms, h, 'hour')
+    || plural(ms, m, 'minute')
+    || plural(ms, s, 'second')
+    || ms + ' ms';
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) return;
+  if (ms < n * 1.5) return Math.floor(ms / n) + ' ' + name;
+  return Math.ceil(ms / n) + ' ' + name + 's';
+}
+
+},{}],264:[function(require,module,exports){
+/*!
+  * $script.js JS loader & dependency manager
+  * https://github.com/ded/script.js
+  * (c) Dustin Diaz 2014 | License MIT
+  */
+
+(function (name, definition) {
+  if (typeof module != 'undefined' && module.exports) module.exports = definition()
+  else if (typeof define == 'function' && define.amd) define(definition)
+  else this[name] = definition()
+})('$script', function () {
+  var doc = document
+    , head = doc.getElementsByTagName('head')[0]
+    , s = 'string'
+    , f = false
+    , push = 'push'
+    , readyState = 'readyState'
+    , onreadystatechange = 'onreadystatechange'
+    , list = {}
+    , ids = {}
+    , delay = {}
+    , scripts = {}
+    , scriptpath
+    , urlArgs
+
+  function every(ar, fn) {
+    for (var i = 0, j = ar.length; i < j; ++i) if (!fn(ar[i])) return f
+    return 1
+  }
+  function each(ar, fn) {
+    every(ar, function (el) {
+      return !fn(el)
+    })
+  }
+
+  function $script(paths, idOrDone, optDone) {
+    paths = paths[push] ? paths : [paths]
+    var idOrDoneIsDone = idOrDone && idOrDone.call
+      , done = idOrDoneIsDone ? idOrDone : optDone
+      , id = idOrDoneIsDone ? paths.join('') : idOrDone
+      , queue = paths.length
+    function loopFn(item) {
+      return item.call ? item() : list[item]
+    }
+    function callback() {
+      if (!--queue) {
+        list[id] = 1
+        done && done()
+        for (var dset in delay) {
+          every(dset.split('|'), loopFn) && !each(delay[dset], loopFn) && (delay[dset] = [])
+        }
+      }
+    }
+    setTimeout(function () {
+      each(paths, function loading(path, force) {
+        if (path === null) return callback()
+        
+        if (!force && !/^https?:\/\//.test(path) && scriptpath) {
+          path = (path.indexOf('.js') === -1) ? scriptpath + path + '.js' : scriptpath + path;
+        }
+        
+        if (scripts[path]) {
+          if (id) ids[id] = 1
+          return (scripts[path] == 2) ? callback() : setTimeout(function () { loading(path, true) }, 0)
+        }
+
+        scripts[path] = 1
+        if (id) ids[id] = 1
+        create(path, callback)
+      })
+    }, 0)
+    return $script
+  }
+
+  function create(path, fn) {
+    var el = doc.createElement('script'), loaded
+    el.onload = el.onerror = el[onreadystatechange] = function () {
+      if ((el[readyState] && !(/^c|loade/.test(el[readyState]))) || loaded) return;
+      el.onload = el[onreadystatechange] = null
+      loaded = 1
+      scripts[path] = 2
+      fn()
+    }
+    el.async = 1
+    el.src = urlArgs ? path + (path.indexOf('?') === -1 ? '?' : '&') + urlArgs : path;
+    head.insertBefore(el, head.lastChild)
+  }
+
+  $script.get = create
+
+  $script.order = function (scripts, id, done) {
+    (function callback(s) {
+      s = scripts.shift()
+      !scripts.length ? $script(s, id, done) : $script(s, callback)
+    }())
+  }
+
+  $script.path = function (p) {
+    scriptpath = p
+  }
+  $script.urlArgs = function (str) {
+    urlArgs = str;
+  }
+  $script.ready = function (deps, ready, req) {
+    deps = deps[push] ? deps : [deps]
+    var missing = [];
+    !each(deps, function (dep) {
+      list[dep] || missing[push](dep);
+    }) && every(deps, function (dep) {return list[dep]}) ?
+      ready() : !function (key) {
+      delay[key] = delay[key] || []
+      delay[key][push](ready)
+      req && req(missing)
+    }(deps.join('|'))
+    return $script
+  }
+
+  $script.done = function (idOrDone) {
+    $script([null], idOrDone)
+  }
+
+  return $script
+});
+
+},{}],265:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -17993,7 +24560,7 @@ var AutoFocusUtils = {
 };
 
 module.exports = AutoFocusUtils;
-},{"./ReactDOMComponentTree":297,"fbjs/lib/focusNode":409}],257:[function(require,module,exports){
+},{"./ReactDOMComponentTree":306,"fbjs/lib/focusNode":418}],266:[function(require,module,exports){
 /**
  * Copyright 2013-present Facebook, Inc.
  * All rights reserved.
@@ -18382,7 +24949,7 @@ var BeforeInputEventPlugin = {
 };
 
 module.exports = BeforeInputEventPlugin;
-},{"./EventConstants":271,"./EventPropagators":275,"./FallbackCompositionState":276,"./SyntheticCompositionEvent":356,"./SyntheticInputEvent":360,"fbjs/lib/ExecutionEnvironment":401,"fbjs/lib/keyOf":419}],258:[function(require,module,exports){
+},{"./EventConstants":280,"./EventPropagators":284,"./FallbackCompositionState":285,"./SyntheticCompositionEvent":365,"./SyntheticInputEvent":369,"fbjs/lib/ExecutionEnvironment":410,"fbjs/lib/keyOf":428}],267:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -18531,7 +25098,7 @@ var CSSProperty = {
 };
 
 module.exports = CSSProperty;
-},{}],259:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -18739,7 +25306,7 @@ var CSSPropertyOperations = {
 
 module.exports = CSSPropertyOperations;
 }).call(this,require('_process'))
-},{"./CSSProperty":258,"./ReactInstrumentation":329,"./dangerousStyleValue":374,"_process":1,"fbjs/lib/ExecutionEnvironment":401,"fbjs/lib/camelizeStyleName":403,"fbjs/lib/hyphenateStyleName":414,"fbjs/lib/memoizeStringOnly":421,"fbjs/lib/warning":425}],260:[function(require,module,exports){
+},{"./CSSProperty":267,"./ReactInstrumentation":338,"./dangerousStyleValue":383,"_process":1,"fbjs/lib/ExecutionEnvironment":410,"fbjs/lib/camelizeStyleName":412,"fbjs/lib/hyphenateStyleName":423,"fbjs/lib/memoizeStringOnly":430,"fbjs/lib/warning":434}],269:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -18848,7 +25415,7 @@ PooledClass.addPoolingTo(CallbackQueue);
 
 module.exports = CallbackQueue;
 }).call(this,require('_process'))
-},{"./PooledClass":280,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"object-assign":426}],261:[function(require,module,exports){
+},{"./PooledClass":289,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"object-assign":435}],270:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19174,7 +25741,7 @@ var ChangeEventPlugin = {
 };
 
 module.exports = ChangeEventPlugin;
-},{"./EventConstants":271,"./EventPluginHub":272,"./EventPropagators":275,"./ReactDOMComponentTree":297,"./ReactUpdates":349,"./SyntheticEvent":358,"./getEventTarget":382,"./isEventSupported":389,"./isTextInputElement":390,"fbjs/lib/ExecutionEnvironment":401,"fbjs/lib/keyOf":419}],262:[function(require,module,exports){
+},{"./EventConstants":280,"./EventPluginHub":281,"./EventPropagators":284,"./ReactDOMComponentTree":306,"./ReactUpdates":358,"./SyntheticEvent":367,"./getEventTarget":391,"./isEventSupported":398,"./isTextInputElement":399,"fbjs/lib/ExecutionEnvironment":410,"fbjs/lib/keyOf":428}],271:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -19371,7 +25938,7 @@ var DOMChildrenOperations = {
 
 module.exports = DOMChildrenOperations;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":263,"./Danger":267,"./ReactDOMComponentTree":297,"./ReactInstrumentation":329,"./ReactMultiChildUpdateTypes":334,"./createMicrosoftUnsafeLocalFunction":373,"./setInnerHTML":395,"./setTextContent":396,"_process":1}],263:[function(require,module,exports){
+},{"./DOMLazyTree":272,"./Danger":276,"./ReactDOMComponentTree":306,"./ReactInstrumentation":338,"./ReactMultiChildUpdateTypes":343,"./createMicrosoftUnsafeLocalFunction":382,"./setInnerHTML":404,"./setTextContent":405,"_process":1}],272:[function(require,module,exports){
 /**
  * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -19490,7 +26057,7 @@ DOMLazyTree.queueHTML = queueHTML;
 DOMLazyTree.queueText = queueText;
 
 module.exports = DOMLazyTree;
-},{"./DOMNamespaces":264,"./createMicrosoftUnsafeLocalFunction":373,"./setInnerHTML":395,"./setTextContent":396}],264:[function(require,module,exports){
+},{"./DOMNamespaces":273,"./createMicrosoftUnsafeLocalFunction":382,"./setInnerHTML":404,"./setTextContent":405}],273:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19511,7 +26078,7 @@ var DOMNamespaces = {
 };
 
 module.exports = DOMNamespaces;
-},{}],265:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -19720,7 +26287,7 @@ var DOMProperty = {
 
 module.exports = DOMProperty;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],266:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],275:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -19951,7 +26518,7 @@ var DOMPropertyOperations = {
 
 module.exports = DOMPropertyOperations;
 }).call(this,require('_process'))
-},{"./DOMProperty":265,"./ReactDOMComponentTree":297,"./ReactDOMInstrumentation":305,"./ReactInstrumentation":329,"./quoteAttributeValueForBrowser":392,"_process":1,"fbjs/lib/warning":425}],267:[function(require,module,exports){
+},{"./DOMProperty":274,"./ReactDOMComponentTree":306,"./ReactDOMInstrumentation":314,"./ReactInstrumentation":338,"./quoteAttributeValueForBrowser":401,"_process":1,"fbjs/lib/warning":434}],276:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -20002,7 +26569,7 @@ var Danger = {
 
 module.exports = Danger;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":263,"./reactProdInvariant":393,"_process":1,"fbjs/lib/ExecutionEnvironment":401,"fbjs/lib/createNodesFromMarkup":406,"fbjs/lib/emptyFunction":407,"fbjs/lib/invariant":415}],268:[function(require,module,exports){
+},{"./DOMLazyTree":272,"./reactProdInvariant":402,"_process":1,"fbjs/lib/ExecutionEnvironment":410,"fbjs/lib/createNodesFromMarkup":415,"fbjs/lib/emptyFunction":416,"fbjs/lib/invariant":424}],277:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -20030,7 +26597,7 @@ var keyOf = require('fbjs/lib/keyOf');
 var DefaultEventPluginOrder = [keyOf({ ResponderEventPlugin: null }), keyOf({ SimpleEventPlugin: null }), keyOf({ TapEventPlugin: null }), keyOf({ EnterLeaveEventPlugin: null }), keyOf({ ChangeEventPlugin: null }), keyOf({ SelectEventPlugin: null }), keyOf({ BeforeInputEventPlugin: null })];
 
 module.exports = DefaultEventPluginOrder;
-},{"fbjs/lib/keyOf":419}],269:[function(require,module,exports){
+},{"fbjs/lib/keyOf":428}],278:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -20081,7 +26648,7 @@ var DisabledInputUtils = {
 };
 
 module.exports = DisabledInputUtils;
-},{}],270:[function(require,module,exports){
+},{}],279:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -20187,7 +26754,7 @@ var EnterLeaveEventPlugin = {
 };
 
 module.exports = EnterLeaveEventPlugin;
-},{"./EventConstants":271,"./EventPropagators":275,"./ReactDOMComponentTree":297,"./SyntheticMouseEvent":362,"fbjs/lib/keyOf":419}],271:[function(require,module,exports){
+},{"./EventConstants":280,"./EventPropagators":284,"./ReactDOMComponentTree":306,"./SyntheticMouseEvent":371,"fbjs/lib/keyOf":428}],280:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -20285,7 +26852,7 @@ var EventConstants = {
 };
 
 module.exports = EventConstants;
-},{"fbjs/lib/keyMirror":418}],272:[function(require,module,exports){
+},{"fbjs/lib/keyMirror":427}],281:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -20537,7 +27104,7 @@ var EventPluginHub = {
 
 module.exports = EventPluginHub;
 }).call(this,require('_process'))
-},{"./EventPluginRegistry":273,"./EventPluginUtils":274,"./ReactErrorUtils":320,"./accumulateInto":369,"./forEachAccumulated":378,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],273:[function(require,module,exports){
+},{"./EventPluginRegistry":282,"./EventPluginUtils":283,"./ReactErrorUtils":329,"./accumulateInto":378,"./forEachAccumulated":387,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],282:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -20787,7 +27354,7 @@ var EventPluginRegistry = {
 
 module.exports = EventPluginRegistry;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],274:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],283:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -21019,7 +27586,7 @@ var EventPluginUtils = {
 
 module.exports = EventPluginUtils;
 }).call(this,require('_process'))
-},{"./EventConstants":271,"./ReactErrorUtils":320,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],275:[function(require,module,exports){
+},{"./EventConstants":280,"./ReactErrorUtils":329,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],284:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -21159,7 +27726,7 @@ var EventPropagators = {
 
 module.exports = EventPropagators;
 }).call(this,require('_process'))
-},{"./EventConstants":271,"./EventPluginHub":272,"./EventPluginUtils":274,"./accumulateInto":369,"./forEachAccumulated":378,"_process":1,"fbjs/lib/warning":425}],276:[function(require,module,exports){
+},{"./EventConstants":280,"./EventPluginHub":281,"./EventPluginUtils":283,"./accumulateInto":378,"./forEachAccumulated":387,"_process":1,"fbjs/lib/warning":434}],285:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -21255,7 +27822,7 @@ _assign(FallbackCompositionState.prototype, {
 PooledClass.addPoolingTo(FallbackCompositionState);
 
 module.exports = FallbackCompositionState;
-},{"./PooledClass":280,"./getTextContentAccessor":386,"object-assign":426}],277:[function(require,module,exports){
+},{"./PooledClass":289,"./getTextContentAccessor":395,"object-assign":435}],286:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -21465,7 +28032,7 @@ var HTMLDOMPropertyConfig = {
 };
 
 module.exports = HTMLDOMPropertyConfig;
-},{"./DOMProperty":265}],278:[function(require,module,exports){
+},{"./DOMProperty":274}],287:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -21525,7 +28092,7 @@ var KeyEscapeUtils = {
 };
 
 module.exports = KeyEscapeUtils;
-},{}],279:[function(require,module,exports){
+},{}],288:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -21664,7 +28231,7 @@ var LinkedValueUtils = {
 
 module.exports = LinkedValueUtils;
 }).call(this,require('_process'))
-},{"./ReactPropTypeLocations":339,"./ReactPropTypes":340,"./ReactPropTypesSecret":341,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],280:[function(require,module,exports){
+},{"./ReactPropTypeLocations":348,"./ReactPropTypes":349,"./ReactPropTypesSecret":350,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],289:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -21788,7 +28355,7 @@ var PooledClass = {
 
 module.exports = PooledClass;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],281:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],290:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -21880,7 +28447,7 @@ var React = {
 
 module.exports = React;
 }).call(this,require('_process'))
-},{"./ReactChildren":284,"./ReactClass":286,"./ReactComponent":287,"./ReactDOMFactories":301,"./ReactElement":317,"./ReactElementValidator":318,"./ReactPropTypes":340,"./ReactPureComponent":342,"./ReactVersion":350,"./onlyChild":391,"_process":1,"fbjs/lib/warning":425,"object-assign":426}],282:[function(require,module,exports){
+},{"./ReactChildren":293,"./ReactClass":295,"./ReactComponent":296,"./ReactDOMFactories":310,"./ReactElement":326,"./ReactElementValidator":327,"./ReactPropTypes":349,"./ReactPureComponent":351,"./ReactVersion":359,"./onlyChild":400,"_process":1,"fbjs/lib/warning":434,"object-assign":435}],291:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -22198,7 +28765,7 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
 });
 
 module.exports = ReactBrowserEventEmitter;
-},{"./EventConstants":271,"./EventPluginRegistry":273,"./ReactEventEmitterMixin":321,"./ViewportMetrics":368,"./getVendorPrefixedEventName":387,"./isEventSupported":389,"object-assign":426}],283:[function(require,module,exports){
+},{"./EventConstants":280,"./EventPluginRegistry":282,"./ReactEventEmitterMixin":330,"./ViewportMetrics":377,"./getVendorPrefixedEventName":396,"./isEventSupported":398,"object-assign":435}],292:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -22352,7 +28919,7 @@ var ReactChildReconciler = {
 
 module.exports = ReactChildReconciler;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":278,"./ReactComponentTreeDevtool":290,"./ReactReconciler":344,"./instantiateReactComponent":388,"./shouldUpdateReactComponent":397,"./traverseAllChildren":398,"_process":1,"fbjs/lib/warning":425}],284:[function(require,module,exports){
+},{"./KeyEscapeUtils":287,"./ReactComponentTreeDevtool":299,"./ReactReconciler":353,"./instantiateReactComponent":397,"./shouldUpdateReactComponent":406,"./traverseAllChildren":407,"_process":1,"fbjs/lib/warning":434}],293:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -22544,7 +29111,7 @@ var ReactChildren = {
 };
 
 module.exports = ReactChildren;
-},{"./PooledClass":280,"./ReactElement":317,"./traverseAllChildren":398,"fbjs/lib/emptyFunction":407}],285:[function(require,module,exports){
+},{"./PooledClass":289,"./ReactElement":326,"./traverseAllChildren":407,"fbjs/lib/emptyFunction":416}],294:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -22609,7 +29176,7 @@ var ReactDOMUnknownPropertyDevtool = {
 
 module.exports = ReactDOMUnknownPropertyDevtool;
 }).call(this,require('_process'))
-},{"./ReactComponentTreeDevtool":290,"_process":1,"fbjs/lib/warning":425}],286:[function(require,module,exports){
+},{"./ReactComponentTreeDevtool":299,"_process":1,"fbjs/lib/warning":434}],295:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -23344,7 +29911,7 @@ var ReactClass = {
 
 module.exports = ReactClass;
 }).call(this,require('_process'))
-},{"./ReactComponent":287,"./ReactElement":317,"./ReactNoopUpdateQueue":336,"./ReactPropTypeLocationNames":338,"./ReactPropTypeLocations":339,"./reactProdInvariant":393,"_process":1,"fbjs/lib/emptyObject":408,"fbjs/lib/invariant":415,"fbjs/lib/keyMirror":418,"fbjs/lib/keyOf":419,"fbjs/lib/warning":425,"object-assign":426}],287:[function(require,module,exports){
+},{"./ReactComponent":296,"./ReactElement":326,"./ReactNoopUpdateQueue":345,"./ReactPropTypeLocationNames":347,"./ReactPropTypeLocations":348,"./reactProdInvariant":402,"_process":1,"fbjs/lib/emptyObject":417,"fbjs/lib/invariant":424,"fbjs/lib/keyMirror":427,"fbjs/lib/keyOf":428,"fbjs/lib/warning":434,"object-assign":435}],296:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -23465,7 +30032,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactComponent;
 }).call(this,require('_process'))
-},{"./ReactNoopUpdateQueue":336,"./canDefineProperty":371,"./reactProdInvariant":393,"_process":1,"fbjs/lib/emptyObject":408,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],288:[function(require,module,exports){
+},{"./ReactNoopUpdateQueue":345,"./canDefineProperty":380,"./reactProdInvariant":402,"_process":1,"fbjs/lib/emptyObject":417,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],297:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -23505,7 +30072,7 @@ var ReactComponentBrowserEnvironment = {
 };
 
 module.exports = ReactComponentBrowserEnvironment;
-},{"./DOMChildrenOperations":262,"./ReactDOMIDOperations":303}],289:[function(require,module,exports){
+},{"./DOMChildrenOperations":271,"./ReactDOMIDOperations":312}],298:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -23561,7 +30128,7 @@ var ReactComponentEnvironment = {
 
 module.exports = ReactComponentEnvironment;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],290:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],299:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -23782,7 +30349,7 @@ var ReactComponentTreeDevtool = {
 
 module.exports = ReactComponentTreeDevtool;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":292,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],291:[function(require,module,exports){
+},{"./ReactCurrentOwner":301,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],300:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -24729,7 +31296,7 @@ var ReactCompositeComponent = {
 
 module.exports = ReactCompositeComponent;
 }).call(this,require('_process'))
-},{"./ReactComponentEnvironment":289,"./ReactCurrentOwner":292,"./ReactElement":317,"./ReactErrorUtils":320,"./ReactInstanceMap":328,"./ReactInstrumentation":329,"./ReactNodeTypes":335,"./ReactPropTypeLocations":339,"./ReactReconciler":344,"./checkReactTypeSpec":372,"./reactProdInvariant":393,"./shouldUpdateReactComponent":397,"_process":1,"fbjs/lib/emptyObject":408,"fbjs/lib/invariant":415,"fbjs/lib/shallowEqual":424,"fbjs/lib/warning":425,"object-assign":426}],292:[function(require,module,exports){
+},{"./ReactComponentEnvironment":298,"./ReactCurrentOwner":301,"./ReactElement":326,"./ReactErrorUtils":329,"./ReactInstanceMap":337,"./ReactInstrumentation":338,"./ReactNodeTypes":344,"./ReactPropTypeLocations":348,"./ReactReconciler":353,"./checkReactTypeSpec":381,"./reactProdInvariant":402,"./shouldUpdateReactComponent":406,"_process":1,"fbjs/lib/emptyObject":417,"fbjs/lib/invariant":424,"fbjs/lib/shallowEqual":433,"fbjs/lib/warning":434,"object-assign":435}],301:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -24761,7 +31328,7 @@ var ReactCurrentOwner = {
 };
 
 module.exports = ReactCurrentOwner;
-},{}],293:[function(require,module,exports){
+},{}],302:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -24865,7 +31432,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactDOM;
 }).call(this,require('_process'))
-},{"./ReactDOMComponentTree":297,"./ReactDefaultInjection":316,"./ReactMount":332,"./ReactReconciler":344,"./ReactUpdates":349,"./ReactVersion":350,"./findDOMNode":376,"./getHostComponentFromComposite":383,"./renderSubtreeIntoContainer":394,"_process":1,"fbjs/lib/ExecutionEnvironment":401,"fbjs/lib/warning":425}],294:[function(require,module,exports){
+},{"./ReactDOMComponentTree":306,"./ReactDefaultInjection":325,"./ReactMount":341,"./ReactReconciler":353,"./ReactUpdates":358,"./ReactVersion":359,"./findDOMNode":385,"./getHostComponentFromComposite":392,"./renderSubtreeIntoContainer":403,"_process":1,"fbjs/lib/ExecutionEnvironment":410,"fbjs/lib/warning":434}],303:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -24890,7 +31457,7 @@ var ReactDOMButton = {
 };
 
 module.exports = ReactDOMButton;
-},{"./DisabledInputUtils":269}],295:[function(require,module,exports){
+},{"./DisabledInputUtils":278}],304:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -25918,7 +32485,7 @@ _assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mi
 
 module.exports = ReactDOMComponent;
 }).call(this,require('_process'))
-},{"./AutoFocusUtils":256,"./CSSPropertyOperations":259,"./DOMLazyTree":263,"./DOMNamespaces":264,"./DOMProperty":265,"./DOMPropertyOperations":266,"./EventConstants":271,"./EventPluginHub":272,"./EventPluginRegistry":273,"./ReactBrowserEventEmitter":282,"./ReactComponentBrowserEnvironment":288,"./ReactDOMButton":294,"./ReactDOMComponentFlags":296,"./ReactDOMComponentTree":297,"./ReactDOMInput":304,"./ReactDOMOption":307,"./ReactDOMSelect":308,"./ReactDOMTextarea":311,"./ReactInstrumentation":329,"./ReactMultiChild":333,"./ReactServerRenderingTransaction":346,"./escapeTextContentForBrowser":375,"./isEventSupported":389,"./reactProdInvariant":393,"./validateDOMNesting":399,"_process":1,"fbjs/lib/emptyFunction":407,"fbjs/lib/invariant":415,"fbjs/lib/keyOf":419,"fbjs/lib/shallowEqual":424,"fbjs/lib/warning":425,"object-assign":426}],296:[function(require,module,exports){
+},{"./AutoFocusUtils":265,"./CSSPropertyOperations":268,"./DOMLazyTree":272,"./DOMNamespaces":273,"./DOMProperty":274,"./DOMPropertyOperations":275,"./EventConstants":280,"./EventPluginHub":281,"./EventPluginRegistry":282,"./ReactBrowserEventEmitter":291,"./ReactComponentBrowserEnvironment":297,"./ReactDOMButton":303,"./ReactDOMComponentFlags":305,"./ReactDOMComponentTree":306,"./ReactDOMInput":313,"./ReactDOMOption":316,"./ReactDOMSelect":317,"./ReactDOMTextarea":320,"./ReactInstrumentation":338,"./ReactMultiChild":342,"./ReactServerRenderingTransaction":355,"./escapeTextContentForBrowser":384,"./isEventSupported":398,"./reactProdInvariant":402,"./validateDOMNesting":408,"_process":1,"fbjs/lib/emptyFunction":416,"fbjs/lib/invariant":424,"fbjs/lib/keyOf":428,"fbjs/lib/shallowEqual":433,"fbjs/lib/warning":434,"object-assign":435}],305:[function(require,module,exports){
 /**
  * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -25937,7 +32504,7 @@ var ReactDOMComponentFlags = {
 };
 
 module.exports = ReactDOMComponentFlags;
-},{}],297:[function(require,module,exports){
+},{}],306:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -26128,7 +32695,7 @@ var ReactDOMComponentTree = {
 
 module.exports = ReactDOMComponentTree;
 }).call(this,require('_process'))
-},{"./DOMProperty":265,"./ReactDOMComponentFlags":296,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],298:[function(require,module,exports){
+},{"./DOMProperty":274,"./ReactDOMComponentFlags":305,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],307:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -26164,7 +32731,7 @@ function ReactDOMContainerInfo(topLevelWrapper, node) {
 
 module.exports = ReactDOMContainerInfo;
 }).call(this,require('_process'))
-},{"./validateDOMNesting":399,"_process":1}],299:[function(require,module,exports){
+},{"./validateDOMNesting":408,"_process":1}],308:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -26234,7 +32801,7 @@ ReactDOMDebugTool.addDevtool(ReactDOMNullInputValuePropDevtool);
 
 module.exports = ReactDOMDebugTool;
 }).call(this,require('_process'))
-},{"./ReactDOMNullInputValuePropDevtool":306,"./ReactDOMUnknownPropertyDevtool":313,"./ReactDebugTool":314,"_process":1,"fbjs/lib/warning":425}],300:[function(require,module,exports){
+},{"./ReactDOMNullInputValuePropDevtool":315,"./ReactDOMUnknownPropertyDevtool":322,"./ReactDebugTool":323,"_process":1,"fbjs/lib/warning":434}],309:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -26295,7 +32862,7 @@ _assign(ReactDOMEmptyComponent.prototype, {
 });
 
 module.exports = ReactDOMEmptyComponent;
-},{"./DOMLazyTree":263,"./ReactDOMComponentTree":297,"object-assign":426}],301:[function(require,module,exports){
+},{"./DOMLazyTree":272,"./ReactDOMComponentTree":306,"object-assign":435}],310:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -26474,7 +33041,7 @@ var ReactDOMFactories = mapObject({
 
 module.exports = ReactDOMFactories;
 }).call(this,require('_process'))
-},{"./ReactElement":317,"./ReactElementValidator":318,"_process":1,"fbjs/lib/mapObject":420}],302:[function(require,module,exports){
+},{"./ReactElement":326,"./ReactElementValidator":327,"_process":1,"fbjs/lib/mapObject":429}],311:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26493,7 +33060,7 @@ var ReactDOMFeatureFlags = {
 };
 
 module.exports = ReactDOMFeatureFlags;
-},{}],303:[function(require,module,exports){
+},{}],312:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26528,7 +33095,7 @@ var ReactDOMIDOperations = {
 };
 
 module.exports = ReactDOMIDOperations;
-},{"./DOMChildrenOperations":262,"./ReactDOMComponentTree":297}],304:[function(require,module,exports){
+},{"./DOMChildrenOperations":271,"./ReactDOMComponentTree":306}],313:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -26778,7 +33345,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMInput;
 }).call(this,require('_process'))
-},{"./DOMPropertyOperations":266,"./DisabledInputUtils":269,"./LinkedValueUtils":279,"./ReactDOMComponentTree":297,"./ReactUpdates":349,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425,"object-assign":426}],305:[function(require,module,exports){
+},{"./DOMPropertyOperations":275,"./DisabledInputUtils":278,"./LinkedValueUtils":288,"./ReactDOMComponentTree":306,"./ReactUpdates":358,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434,"object-assign":435}],314:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -26802,7 +33369,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = { debugTool: debugTool };
 }).call(this,require('_process'))
-},{"./ReactDOMDebugTool":299,"_process":1}],306:[function(require,module,exports){
+},{"./ReactDOMDebugTool":308,"_process":1}],315:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -26848,7 +33415,7 @@ var ReactDOMUnknownPropertyDevtool = {
 
 module.exports = ReactDOMUnknownPropertyDevtool;
 }).call(this,require('_process'))
-},{"./ReactComponentTreeDevtool":290,"_process":1,"fbjs/lib/warning":425}],307:[function(require,module,exports){
+},{"./ReactComponentTreeDevtool":299,"_process":1,"fbjs/lib/warning":434}],316:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -26974,7 +33541,7 @@ var ReactDOMOption = {
 
 module.exports = ReactDOMOption;
 }).call(this,require('_process'))
-},{"./ReactChildren":284,"./ReactDOMComponentTree":297,"./ReactDOMSelect":308,"_process":1,"fbjs/lib/warning":425,"object-assign":426}],308:[function(require,module,exports){
+},{"./ReactChildren":293,"./ReactDOMComponentTree":306,"./ReactDOMSelect":317,"_process":1,"fbjs/lib/warning":434,"object-assign":435}],317:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -27177,7 +33744,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMSelect;
 }).call(this,require('_process'))
-},{"./DisabledInputUtils":269,"./LinkedValueUtils":279,"./ReactDOMComponentTree":297,"./ReactUpdates":349,"_process":1,"fbjs/lib/warning":425,"object-assign":426}],309:[function(require,module,exports){
+},{"./DisabledInputUtils":278,"./LinkedValueUtils":288,"./ReactDOMComponentTree":306,"./ReactUpdates":358,"_process":1,"fbjs/lib/warning":434,"object-assign":435}],318:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -27390,7 +33957,7 @@ var ReactDOMSelection = {
 };
 
 module.exports = ReactDOMSelection;
-},{"./getNodeForCharacterOffset":385,"./getTextContentAccessor":386,"fbjs/lib/ExecutionEnvironment":401}],310:[function(require,module,exports){
+},{"./getNodeForCharacterOffset":394,"./getTextContentAccessor":395,"fbjs/lib/ExecutionEnvironment":410}],319:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -27564,7 +34131,7 @@ _assign(ReactDOMTextComponent.prototype, {
 
 module.exports = ReactDOMTextComponent;
 }).call(this,require('_process'))
-},{"./DOMChildrenOperations":262,"./DOMLazyTree":263,"./ReactDOMComponentTree":297,"./ReactInstrumentation":329,"./escapeTextContentForBrowser":375,"./reactProdInvariant":393,"./validateDOMNesting":399,"_process":1,"fbjs/lib/invariant":415,"object-assign":426}],311:[function(require,module,exports){
+},{"./DOMChildrenOperations":271,"./DOMLazyTree":272,"./ReactDOMComponentTree":306,"./ReactInstrumentation":338,"./escapeTextContentForBrowser":384,"./reactProdInvariant":402,"./validateDOMNesting":408,"_process":1,"fbjs/lib/invariant":424,"object-assign":435}],320:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -27722,7 +34289,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMTextarea;
 }).call(this,require('_process'))
-},{"./DisabledInputUtils":269,"./LinkedValueUtils":279,"./ReactDOMComponentTree":297,"./ReactUpdates":349,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425,"object-assign":426}],312:[function(require,module,exports){
+},{"./DisabledInputUtils":278,"./LinkedValueUtils":288,"./ReactDOMComponentTree":306,"./ReactUpdates":358,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434,"object-assign":435}],321:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -27861,7 +34428,7 @@ module.exports = {
   traverseEnterLeave: traverseEnterLeave
 };
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],313:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],322:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -27976,7 +34543,7 @@ var ReactDOMUnknownPropertyDevtool = {
 
 module.exports = ReactDOMUnknownPropertyDevtool;
 }).call(this,require('_process'))
-},{"./DOMProperty":265,"./EventPluginRegistry":273,"./ReactComponentTreeDevtool":290,"_process":1,"fbjs/lib/warning":425}],314:[function(require,module,exports){
+},{"./DOMProperty":274,"./EventPluginRegistry":282,"./ReactComponentTreeDevtool":299,"_process":1,"fbjs/lib/warning":434}],323:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -28300,7 +34867,7 @@ if (/[?&]react_perf\b/.test(url)) {
 
 module.exports = ReactDebugTool;
 }).call(this,require('_process'))
-},{"./ReactChildrenMutationWarningDevtool":285,"./ReactComponentTreeDevtool":290,"./ReactHostOperationHistoryDevtool":325,"./ReactInvalidSetStateWarningDevTool":330,"_process":1,"fbjs/lib/ExecutionEnvironment":401,"fbjs/lib/performanceNow":423,"fbjs/lib/warning":425}],315:[function(require,module,exports){
+},{"./ReactChildrenMutationWarningDevtool":294,"./ReactComponentTreeDevtool":299,"./ReactHostOperationHistoryDevtool":334,"./ReactInvalidSetStateWarningDevTool":339,"_process":1,"fbjs/lib/ExecutionEnvironment":410,"fbjs/lib/performanceNow":432,"fbjs/lib/warning":434}],324:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -28369,7 +34936,7 @@ var ReactDefaultBatchingStrategy = {
 };
 
 module.exports = ReactDefaultBatchingStrategy;
-},{"./ReactUpdates":349,"./Transaction":367,"fbjs/lib/emptyFunction":407,"object-assign":426}],316:[function(require,module,exports){
+},{"./ReactUpdates":358,"./Transaction":376,"fbjs/lib/emptyFunction":416,"object-assign":435}],325:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -28454,7 +35021,7 @@ function inject() {
 module.exports = {
   inject: inject
 };
-},{"./BeforeInputEventPlugin":257,"./ChangeEventPlugin":261,"./DefaultEventPluginOrder":268,"./EnterLeaveEventPlugin":270,"./HTMLDOMPropertyConfig":277,"./ReactComponentBrowserEnvironment":288,"./ReactDOMComponent":295,"./ReactDOMComponentTree":297,"./ReactDOMEmptyComponent":300,"./ReactDOMTextComponent":310,"./ReactDOMTreeTraversal":312,"./ReactDefaultBatchingStrategy":315,"./ReactEventListener":322,"./ReactInjection":326,"./ReactReconcileTransaction":343,"./SVGDOMPropertyConfig":351,"./SelectEventPlugin":352,"./SimpleEventPlugin":353}],317:[function(require,module,exports){
+},{"./BeforeInputEventPlugin":266,"./ChangeEventPlugin":270,"./DefaultEventPluginOrder":277,"./EnterLeaveEventPlugin":279,"./HTMLDOMPropertyConfig":286,"./ReactComponentBrowserEnvironment":297,"./ReactDOMComponent":304,"./ReactDOMComponentTree":306,"./ReactDOMEmptyComponent":309,"./ReactDOMTextComponent":319,"./ReactDOMTreeTraversal":321,"./ReactDefaultBatchingStrategy":324,"./ReactEventListener":331,"./ReactInjection":335,"./ReactReconcileTransaction":352,"./SVGDOMPropertyConfig":360,"./SelectEventPlugin":361,"./SimpleEventPlugin":362}],326:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -28817,7 +35384,7 @@ ReactElement.REACT_ELEMENT_TYPE = REACT_ELEMENT_TYPE;
 
 module.exports = ReactElement;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":292,"./canDefineProperty":371,"_process":1,"fbjs/lib/warning":425,"object-assign":426}],318:[function(require,module,exports){
+},{"./ReactCurrentOwner":301,"./canDefineProperty":380,"_process":1,"fbjs/lib/warning":434,"object-assign":435}],327:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -29046,7 +35613,7 @@ var ReactElementValidator = {
 
 module.exports = ReactElementValidator;
 }).call(this,require('_process'))
-},{"./ReactComponentTreeDevtool":290,"./ReactCurrentOwner":292,"./ReactElement":317,"./ReactPropTypeLocations":339,"./canDefineProperty":371,"./checkReactTypeSpec":372,"./getIteratorFn":384,"_process":1,"fbjs/lib/warning":425}],319:[function(require,module,exports){
+},{"./ReactComponentTreeDevtool":299,"./ReactCurrentOwner":301,"./ReactElement":326,"./ReactPropTypeLocations":348,"./canDefineProperty":380,"./checkReactTypeSpec":381,"./getIteratorFn":393,"_process":1,"fbjs/lib/warning":434}],328:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -29077,7 +35644,7 @@ var ReactEmptyComponent = {
 ReactEmptyComponent.injection = ReactEmptyComponentInjection;
 
 module.exports = ReactEmptyComponent;
-},{}],320:[function(require,module,exports){
+},{}],329:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -29156,7 +35723,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactErrorUtils;
 }).call(this,require('_process'))
-},{"_process":1}],321:[function(require,module,exports){
+},{"_process":1}],330:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -29190,7 +35757,7 @@ var ReactEventEmitterMixin = {
 };
 
 module.exports = ReactEventEmitterMixin;
-},{"./EventPluginHub":272}],322:[function(require,module,exports){
+},{"./EventPluginHub":281}],331:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -29348,7 +35915,7 @@ var ReactEventListener = {
 };
 
 module.exports = ReactEventListener;
-},{"./PooledClass":280,"./ReactDOMComponentTree":297,"./ReactUpdates":349,"./getEventTarget":382,"fbjs/lib/EventListener":400,"fbjs/lib/ExecutionEnvironment":401,"fbjs/lib/getUnboundedScrollPosition":412,"object-assign":426}],323:[function(require,module,exports){
+},{"./PooledClass":289,"./ReactDOMComponentTree":306,"./ReactUpdates":358,"./getEventTarget":391,"fbjs/lib/EventListener":409,"fbjs/lib/ExecutionEnvironment":410,"fbjs/lib/getUnboundedScrollPosition":421,"object-assign":435}],332:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -29371,7 +35938,7 @@ var ReactFeatureFlags = {
 };
 
 module.exports = ReactFeatureFlags;
-},{}],324:[function(require,module,exports){
+},{}],333:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -29450,7 +36017,7 @@ var ReactHostComponent = {
 
 module.exports = ReactHostComponent;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"object-assign":426}],325:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"object-assign":435}],334:[function(require,module,exports){
 /**
  * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
@@ -29488,7 +36055,7 @@ var ReactHostOperationHistoryDevtool = {
 };
 
 module.exports = ReactHostOperationHistoryDevtool;
-},{}],326:[function(require,module,exports){
+},{}],335:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -29525,7 +36092,7 @@ var ReactInjection = {
 };
 
 module.exports = ReactInjection;
-},{"./DOMProperty":265,"./EventPluginHub":272,"./EventPluginUtils":274,"./ReactBrowserEventEmitter":282,"./ReactClass":286,"./ReactComponentEnvironment":289,"./ReactEmptyComponent":319,"./ReactHostComponent":324,"./ReactUpdates":349}],327:[function(require,module,exports){
+},{"./DOMProperty":274,"./EventPluginHub":281,"./EventPluginUtils":283,"./ReactBrowserEventEmitter":291,"./ReactClass":295,"./ReactComponentEnvironment":298,"./ReactEmptyComponent":328,"./ReactHostComponent":333,"./ReactUpdates":358}],336:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -29650,7 +36217,7 @@ var ReactInputSelection = {
 };
 
 module.exports = ReactInputSelection;
-},{"./ReactDOMSelection":309,"fbjs/lib/containsNode":404,"fbjs/lib/focusNode":409,"fbjs/lib/getActiveElement":410}],328:[function(require,module,exports){
+},{"./ReactDOMSelection":318,"fbjs/lib/containsNode":413,"fbjs/lib/focusNode":418,"fbjs/lib/getActiveElement":419}],337:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -29699,7 +36266,7 @@ var ReactInstanceMap = {
 };
 
 module.exports = ReactInstanceMap;
-},{}],329:[function(require,module,exports){
+},{}],338:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -29723,7 +36290,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = { debugTool: debugTool };
 }).call(this,require('_process'))
-},{"./ReactDebugTool":314,"_process":1}],330:[function(require,module,exports){
+},{"./ReactDebugTool":323,"_process":1}],339:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -29762,7 +36329,7 @@ var ReactInvalidSetStateWarningDevTool = {
 
 module.exports = ReactInvalidSetStateWarningDevTool;
 }).call(this,require('_process'))
-},{"_process":1,"fbjs/lib/warning":425}],331:[function(require,module,exports){
+},{"_process":1,"fbjs/lib/warning":434}],340:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -29813,7 +36380,7 @@ var ReactMarkupChecksum = {
 };
 
 module.exports = ReactMarkupChecksum;
-},{"./adler32":370}],332:[function(require,module,exports){
+},{"./adler32":379}],341:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -30315,7 +36882,7 @@ var ReactMount = {
 
 module.exports = ReactMount;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":263,"./DOMProperty":265,"./ReactBrowserEventEmitter":282,"./ReactCurrentOwner":292,"./ReactDOMComponentTree":297,"./ReactDOMContainerInfo":298,"./ReactDOMFeatureFlags":302,"./ReactElement":317,"./ReactFeatureFlags":323,"./ReactInstanceMap":328,"./ReactInstrumentation":329,"./ReactMarkupChecksum":331,"./ReactReconciler":344,"./ReactUpdateQueue":348,"./ReactUpdates":349,"./instantiateReactComponent":388,"./reactProdInvariant":393,"./setInnerHTML":395,"./shouldUpdateReactComponent":397,"_process":1,"fbjs/lib/emptyObject":408,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],333:[function(require,module,exports){
+},{"./DOMLazyTree":272,"./DOMProperty":274,"./ReactBrowserEventEmitter":291,"./ReactCurrentOwner":301,"./ReactDOMComponentTree":306,"./ReactDOMContainerInfo":307,"./ReactDOMFeatureFlags":311,"./ReactElement":326,"./ReactFeatureFlags":332,"./ReactInstanceMap":337,"./ReactInstrumentation":338,"./ReactMarkupChecksum":340,"./ReactReconciler":353,"./ReactUpdateQueue":357,"./ReactUpdates":358,"./instantiateReactComponent":397,"./reactProdInvariant":402,"./setInnerHTML":404,"./shouldUpdateReactComponent":406,"_process":1,"fbjs/lib/emptyObject":417,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],342:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -30771,7 +37338,7 @@ var ReactMultiChild = {
 
 module.exports = ReactMultiChild;
 }).call(this,require('_process'))
-},{"./ReactChildReconciler":283,"./ReactComponentEnvironment":289,"./ReactCurrentOwner":292,"./ReactInstanceMap":328,"./ReactInstrumentation":329,"./ReactMultiChildUpdateTypes":334,"./ReactReconciler":344,"./flattenChildren":377,"./reactProdInvariant":393,"_process":1,"fbjs/lib/emptyFunction":407,"fbjs/lib/invariant":415}],334:[function(require,module,exports){
+},{"./ReactChildReconciler":292,"./ReactComponentEnvironment":298,"./ReactCurrentOwner":301,"./ReactInstanceMap":337,"./ReactInstrumentation":338,"./ReactMultiChildUpdateTypes":343,"./ReactReconciler":353,"./flattenChildren":386,"./reactProdInvariant":402,"_process":1,"fbjs/lib/emptyFunction":416,"fbjs/lib/invariant":424}],343:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -30804,7 +37371,7 @@ var ReactMultiChildUpdateTypes = keyMirror({
 });
 
 module.exports = ReactMultiChildUpdateTypes;
-},{"fbjs/lib/keyMirror":418}],335:[function(require,module,exports){
+},{"fbjs/lib/keyMirror":427}],344:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -30847,7 +37414,7 @@ var ReactNodeTypes = {
 
 module.exports = ReactNodeTypes;
 }).call(this,require('_process'))
-},{"./ReactElement":317,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],336:[function(require,module,exports){
+},{"./ReactElement":326,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],345:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -30946,7 +37513,7 @@ var ReactNoopUpdateQueue = {
 
 module.exports = ReactNoopUpdateQueue;
 }).call(this,require('_process'))
-},{"_process":1,"fbjs/lib/warning":425}],337:[function(require,module,exports){
+},{"_process":1,"fbjs/lib/warning":434}],346:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -31043,7 +37610,7 @@ var ReactOwner = {
 
 module.exports = ReactOwner;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],338:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],347:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -31070,7 +37637,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactPropTypeLocationNames;
 }).call(this,require('_process'))
-},{"_process":1}],339:[function(require,module,exports){
+},{"_process":1}],348:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -31093,7 +37660,7 @@ var ReactPropTypeLocations = keyMirror({
 });
 
 module.exports = ReactPropTypeLocations;
-},{"fbjs/lib/keyMirror":418}],340:[function(require,module,exports){
+},{"fbjs/lib/keyMirror":427}],349:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -31513,7 +38080,7 @@ function getClassName(propValue) {
 
 module.exports = ReactPropTypes;
 }).call(this,require('_process'))
-},{"./ReactElement":317,"./ReactPropTypeLocationNames":338,"./ReactPropTypesSecret":341,"./getIteratorFn":384,"_process":1,"fbjs/lib/emptyFunction":407,"fbjs/lib/warning":425}],341:[function(require,module,exports){
+},{"./ReactElement":326,"./ReactPropTypeLocationNames":347,"./ReactPropTypesSecret":350,"./getIteratorFn":393,"_process":1,"fbjs/lib/emptyFunction":416,"fbjs/lib/warning":434}],350:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -31530,7 +38097,7 @@ module.exports = ReactPropTypes;
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
-},{}],342:[function(require,module,exports){
+},{}],351:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -31573,7 +38140,7 @@ _assign(ReactPureComponent.prototype, ReactComponent.prototype);
 ReactPureComponent.prototype.isPureReactComponent = true;
 
 module.exports = ReactPureComponent;
-},{"./ReactComponent":287,"./ReactNoopUpdateQueue":336,"fbjs/lib/emptyObject":408,"object-assign":426}],343:[function(require,module,exports){
+},{"./ReactComponent":296,"./ReactNoopUpdateQueue":345,"fbjs/lib/emptyObject":417,"object-assign":435}],352:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -31754,7 +38321,7 @@ PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
 }).call(this,require('_process'))
-},{"./CallbackQueue":260,"./PooledClass":280,"./ReactBrowserEventEmitter":282,"./ReactInputSelection":327,"./ReactInstrumentation":329,"./ReactUpdateQueue":348,"./Transaction":367,"_process":1,"object-assign":426}],344:[function(require,module,exports){
+},{"./CallbackQueue":269,"./PooledClass":289,"./ReactBrowserEventEmitter":291,"./ReactInputSelection":336,"./ReactInstrumentation":338,"./ReactUpdateQueue":357,"./Transaction":376,"_process":1,"object-assign":435}],353:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -31931,7 +38498,7 @@ var ReactReconciler = {
 
 module.exports = ReactReconciler;
 }).call(this,require('_process'))
-},{"./ReactInstrumentation":329,"./ReactRef":345,"_process":1,"fbjs/lib/warning":425}],345:[function(require,module,exports){
+},{"./ReactInstrumentation":338,"./ReactRef":354,"_process":1,"fbjs/lib/warning":434}],354:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -32012,7 +38579,7 @@ ReactRef.detachRefs = function (instance, element) {
 };
 
 module.exports = ReactRef;
-},{"./ReactOwner":337}],346:[function(require,module,exports){
+},{"./ReactOwner":346}],355:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -32105,7 +38672,7 @@ PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
 }).call(this,require('_process'))
-},{"./PooledClass":280,"./ReactInstrumentation":329,"./ReactServerUpdateQueue":347,"./Transaction":367,"_process":1,"object-assign":426}],347:[function(require,module,exports){
+},{"./PooledClass":289,"./ReactInstrumentation":338,"./ReactServerUpdateQueue":356,"./Transaction":376,"_process":1,"object-assign":435}],356:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -32249,7 +38816,7 @@ var ReactServerUpdateQueue = function () {
 
 module.exports = ReactServerUpdateQueue;
 }).call(this,require('_process'))
-},{"./ReactUpdateQueue":348,"./Transaction":367,"_process":1,"fbjs/lib/warning":425}],348:[function(require,module,exports){
+},{"./ReactUpdateQueue":357,"./Transaction":376,"_process":1,"fbjs/lib/warning":434}],357:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -32478,7 +39045,7 @@ var ReactUpdateQueue = {
 
 module.exports = ReactUpdateQueue;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":292,"./ReactInstanceMap":328,"./ReactInstrumentation":329,"./ReactUpdates":349,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],349:[function(require,module,exports){
+},{"./ReactCurrentOwner":301,"./ReactInstanceMap":337,"./ReactInstrumentation":338,"./ReactUpdates":358,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],358:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -32732,7 +39299,7 @@ var ReactUpdates = {
 
 module.exports = ReactUpdates;
 }).call(this,require('_process'))
-},{"./CallbackQueue":260,"./PooledClass":280,"./ReactFeatureFlags":323,"./ReactReconciler":344,"./Transaction":367,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"object-assign":426}],350:[function(require,module,exports){
+},{"./CallbackQueue":269,"./PooledClass":289,"./ReactFeatureFlags":332,"./ReactReconciler":353,"./Transaction":376,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"object-assign":435}],359:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -32747,7 +39314,7 @@ module.exports = ReactUpdates;
 'use strict';
 
 module.exports = '15.3.0';
-},{}],351:[function(require,module,exports){
+},{}],360:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -33050,7 +39617,7 @@ Object.keys(ATTRS).forEach(function (key) {
 });
 
 module.exports = SVGDOMPropertyConfig;
-},{}],352:[function(require,module,exports){
+},{}],361:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -33247,7 +39814,7 @@ var SelectEventPlugin = {
 };
 
 module.exports = SelectEventPlugin;
-},{"./EventConstants":271,"./EventPropagators":275,"./ReactDOMComponentTree":297,"./ReactInputSelection":327,"./SyntheticEvent":358,"./isTextInputElement":390,"fbjs/lib/ExecutionEnvironment":401,"fbjs/lib/getActiveElement":410,"fbjs/lib/keyOf":419,"fbjs/lib/shallowEqual":424}],353:[function(require,module,exports){
+},{"./EventConstants":280,"./EventPropagators":284,"./ReactDOMComponentTree":306,"./ReactInputSelection":336,"./SyntheticEvent":367,"./isTextInputElement":399,"fbjs/lib/ExecutionEnvironment":410,"fbjs/lib/getActiveElement":419,"fbjs/lib/keyOf":428,"fbjs/lib/shallowEqual":433}],362:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -33883,7 +40450,7 @@ var SimpleEventPlugin = {
 
 module.exports = SimpleEventPlugin;
 }).call(this,require('_process'))
-},{"./EventConstants":271,"./EventPropagators":275,"./ReactDOMComponentTree":297,"./SyntheticAnimationEvent":354,"./SyntheticClipboardEvent":355,"./SyntheticDragEvent":357,"./SyntheticEvent":358,"./SyntheticFocusEvent":359,"./SyntheticKeyboardEvent":361,"./SyntheticMouseEvent":362,"./SyntheticTouchEvent":363,"./SyntheticTransitionEvent":364,"./SyntheticUIEvent":365,"./SyntheticWheelEvent":366,"./getEventCharCode":379,"./reactProdInvariant":393,"_process":1,"fbjs/lib/EventListener":400,"fbjs/lib/emptyFunction":407,"fbjs/lib/invariant":415,"fbjs/lib/keyOf":419}],354:[function(require,module,exports){
+},{"./EventConstants":280,"./EventPropagators":284,"./ReactDOMComponentTree":306,"./SyntheticAnimationEvent":363,"./SyntheticClipboardEvent":364,"./SyntheticDragEvent":366,"./SyntheticEvent":367,"./SyntheticFocusEvent":368,"./SyntheticKeyboardEvent":370,"./SyntheticMouseEvent":371,"./SyntheticTouchEvent":372,"./SyntheticTransitionEvent":373,"./SyntheticUIEvent":374,"./SyntheticWheelEvent":375,"./getEventCharCode":388,"./reactProdInvariant":402,"_process":1,"fbjs/lib/EventListener":409,"fbjs/lib/emptyFunction":416,"fbjs/lib/invariant":424,"fbjs/lib/keyOf":428}],363:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -33923,7 +40490,7 @@ function SyntheticAnimationEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticAnimationEvent, AnimationEventInterface);
 
 module.exports = SyntheticAnimationEvent;
-},{"./SyntheticEvent":358}],355:[function(require,module,exports){
+},{"./SyntheticEvent":367}],364:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -33962,7 +40529,7 @@ function SyntheticClipboardEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 module.exports = SyntheticClipboardEvent;
-},{"./SyntheticEvent":358}],356:[function(require,module,exports){
+},{"./SyntheticEvent":367}],365:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -33999,7 +40566,7 @@ function SyntheticCompositionEvent(dispatchConfig, dispatchMarker, nativeEvent, 
 SyntheticEvent.augmentClass(SyntheticCompositionEvent, CompositionEventInterface);
 
 module.exports = SyntheticCompositionEvent;
-},{"./SyntheticEvent":358}],357:[function(require,module,exports){
+},{"./SyntheticEvent":367}],366:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34036,7 +40603,7 @@ function SyntheticDragEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeE
 SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
-},{"./SyntheticMouseEvent":362}],358:[function(require,module,exports){
+},{"./SyntheticMouseEvent":371}],367:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -34299,7 +40866,7 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
   }
 }
 }).call(this,require('_process'))
-},{"./PooledClass":280,"_process":1,"fbjs/lib/emptyFunction":407,"fbjs/lib/warning":425,"object-assign":426}],359:[function(require,module,exports){
+},{"./PooledClass":289,"_process":1,"fbjs/lib/emptyFunction":416,"fbjs/lib/warning":434,"object-assign":435}],368:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34336,7 +40903,7 @@ function SyntheticFocusEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
-},{"./SyntheticUIEvent":365}],360:[function(require,module,exports){
+},{"./SyntheticUIEvent":374}],369:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34374,7 +40941,7 @@ function SyntheticInputEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticEvent.augmentClass(SyntheticInputEvent, InputEventInterface);
 
 module.exports = SyntheticInputEvent;
-},{"./SyntheticEvent":358}],361:[function(require,module,exports){
+},{"./SyntheticEvent":367}],370:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34459,7 +41026,7 @@ function SyntheticKeyboardEvent(dispatchConfig, dispatchMarker, nativeEvent, nat
 SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
-},{"./SyntheticUIEvent":365,"./getEventCharCode":379,"./getEventKey":380,"./getEventModifierState":381}],362:[function(require,module,exports){
+},{"./SyntheticUIEvent":374,"./getEventCharCode":388,"./getEventKey":389,"./getEventModifierState":390}],371:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34532,7 +41099,7 @@ function SyntheticMouseEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
-},{"./SyntheticUIEvent":365,"./ViewportMetrics":368,"./getEventModifierState":381}],363:[function(require,module,exports){
+},{"./SyntheticUIEvent":374,"./ViewportMetrics":377,"./getEventModifierState":390}],372:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34578,7 +41145,7 @@ function SyntheticTouchEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
-},{"./SyntheticUIEvent":365,"./getEventModifierState":381}],364:[function(require,module,exports){
+},{"./SyntheticUIEvent":374,"./getEventModifierState":390}],373:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34618,7 +41185,7 @@ function SyntheticTransitionEvent(dispatchConfig, dispatchMarker, nativeEvent, n
 SyntheticEvent.augmentClass(SyntheticTransitionEvent, TransitionEventInterface);
 
 module.exports = SyntheticTransitionEvent;
-},{"./SyntheticEvent":358}],365:[function(require,module,exports){
+},{"./SyntheticEvent":367}],374:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34678,7 +41245,7 @@ function SyntheticUIEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEve
 SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
-},{"./SyntheticEvent":358,"./getEventTarget":382}],366:[function(require,module,exports){
+},{"./SyntheticEvent":367,"./getEventTarget":391}],375:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34733,7 +41300,7 @@ function SyntheticWheelEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
-},{"./SyntheticMouseEvent":362}],367:[function(require,module,exports){
+},{"./SyntheticMouseEvent":371}],376:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -34969,7 +41536,7 @@ var Transaction = {
 
 module.exports = Transaction;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],368:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],377:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -34997,7 +41564,7 @@ var ViewportMetrics = {
 };
 
 module.exports = ViewportMetrics;
-},{}],369:[function(require,module,exports){
+},{}],378:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -35058,7 +41625,7 @@ function accumulateInto(current, next) {
 
 module.exports = accumulateInto;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],370:[function(require,module,exports){
+},{"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],379:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35103,7 +41670,7 @@ function adler32(data) {
 }
 
 module.exports = adler32;
-},{}],371:[function(require,module,exports){
+},{}],380:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -35130,7 +41697,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = canDefineProperty;
 }).call(this,require('_process'))
-},{"_process":1}],372:[function(require,module,exports){
+},{"_process":1}],381:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -35220,7 +41787,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
 module.exports = checkReactTypeSpec;
 }).call(this,require('_process'))
-},{"./ReactComponentTreeDevtool":290,"./ReactPropTypeLocationNames":338,"./ReactPropTypesSecret":341,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],373:[function(require,module,exports){
+},{"./ReactComponentTreeDevtool":299,"./ReactPropTypeLocationNames":347,"./ReactPropTypesSecret":350,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],382:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35253,7 +41820,7 @@ var createMicrosoftUnsafeLocalFunction = function (func) {
 };
 
 module.exports = createMicrosoftUnsafeLocalFunction;
-},{}],374:[function(require,module,exports){
+},{}],383:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -35335,7 +41902,7 @@ function dangerousStyleValue(name, value, component) {
 
 module.exports = dangerousStyleValue;
 }).call(this,require('_process'))
-},{"./CSSProperty":258,"_process":1,"fbjs/lib/warning":425}],375:[function(require,module,exports){
+},{"./CSSProperty":267,"_process":1,"fbjs/lib/warning":434}],384:[function(require,module,exports){
 /**
  * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
@@ -35458,7 +42025,7 @@ function escapeTextContentForBrowser(text) {
 }
 
 module.exports = escapeTextContentForBrowser;
-},{}],376:[function(require,module,exports){
+},{}],385:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -35521,7 +42088,7 @@ function findDOMNode(componentOrElement) {
 
 module.exports = findDOMNode;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":292,"./ReactDOMComponentTree":297,"./ReactInstanceMap":328,"./getHostComponentFromComposite":383,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],377:[function(require,module,exports){
+},{"./ReactCurrentOwner":301,"./ReactDOMComponentTree":306,"./ReactInstanceMap":337,"./getHostComponentFromComposite":392,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],386:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -35598,7 +42165,7 @@ function flattenChildren(children, selfDebugID) {
 
 module.exports = flattenChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":278,"./ReactComponentTreeDevtool":290,"./traverseAllChildren":398,"_process":1,"fbjs/lib/warning":425}],378:[function(require,module,exports){
+},{"./KeyEscapeUtils":287,"./ReactComponentTreeDevtool":299,"./traverseAllChildren":407,"_process":1,"fbjs/lib/warning":434}],387:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35630,7 +42197,7 @@ function forEachAccumulated(arr, cb, scope) {
 }
 
 module.exports = forEachAccumulated;
-},{}],379:[function(require,module,exports){
+},{}],388:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35681,7 +42248,7 @@ function getEventCharCode(nativeEvent) {
 }
 
 module.exports = getEventCharCode;
-},{}],380:[function(require,module,exports){
+},{}],389:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35784,7 +42351,7 @@ function getEventKey(nativeEvent) {
 }
 
 module.exports = getEventKey;
-},{"./getEventCharCode":379}],381:[function(require,module,exports){
+},{"./getEventCharCode":388}],390:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35828,7 +42395,7 @@ function getEventModifierState(nativeEvent) {
 }
 
 module.exports = getEventModifierState;
-},{}],382:[function(require,module,exports){
+},{}],391:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35864,7 +42431,7 @@ function getEventTarget(nativeEvent) {
 }
 
 module.exports = getEventTarget;
-},{}],383:[function(require,module,exports){
+},{}],392:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35895,7 +42462,7 @@ function getHostComponentFromComposite(inst) {
 }
 
 module.exports = getHostComponentFromComposite;
-},{"./ReactNodeTypes":335}],384:[function(require,module,exports){
+},{"./ReactNodeTypes":344}],393:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -35937,7 +42504,7 @@ function getIteratorFn(maybeIterable) {
 }
 
 module.exports = getIteratorFn;
-},{}],385:[function(require,module,exports){
+},{}],394:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36012,7 +42579,7 @@ function getNodeForCharacterOffset(root, offset) {
 }
 
 module.exports = getNodeForCharacterOffset;
-},{}],386:[function(require,module,exports){
+},{}],395:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36046,7 +42613,7 @@ function getTextContentAccessor() {
 }
 
 module.exports = getTextContentAccessor;
-},{"fbjs/lib/ExecutionEnvironment":401}],387:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":410}],396:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36148,7 +42715,7 @@ function getVendorPrefixedEventName(eventName) {
 }
 
 module.exports = getVendorPrefixedEventName;
-},{"fbjs/lib/ExecutionEnvironment":401}],388:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":410}],397:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -36297,7 +42864,7 @@ function instantiateReactComponent(node, shouldHaveDebugID) {
 
 module.exports = instantiateReactComponent;
 }).call(this,require('_process'))
-},{"./ReactCompositeComponent":291,"./ReactEmptyComponent":319,"./ReactHostComponent":324,"./ReactInstrumentation":329,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425,"object-assign":426}],389:[function(require,module,exports){
+},{"./ReactCompositeComponent":300,"./ReactEmptyComponent":328,"./ReactHostComponent":333,"./ReactInstrumentation":338,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434,"object-assign":435}],398:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36358,7 +42925,7 @@ function isEventSupported(eventNameSuffix, capture) {
 }
 
 module.exports = isEventSupported;
-},{"fbjs/lib/ExecutionEnvironment":401}],390:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":410}],399:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36410,7 +42977,7 @@ function isTextInputElement(elem) {
 }
 
 module.exports = isTextInputElement;
-},{}],391:[function(require,module,exports){
+},{}],400:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -36451,7 +43018,7 @@ function onlyChild(children) {
 
 module.exports = onlyChild;
 }).call(this,require('_process'))
-},{"./ReactElement":317,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415}],392:[function(require,module,exports){
+},{"./ReactElement":326,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424}],401:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36478,7 +43045,7 @@ function quoteAttributeValueForBrowser(value) {
 }
 
 module.exports = quoteAttributeValueForBrowser;
-},{"./escapeTextContentForBrowser":375}],393:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":384}],402:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36518,7 +43085,7 @@ function reactProdInvariant(code) {
 }
 
 module.exports = reactProdInvariant;
-},{}],394:[function(require,module,exports){
+},{}],403:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36535,7 +43102,7 @@ module.exports = reactProdInvariant;
 var ReactMount = require('./ReactMount');
 
 module.exports = ReactMount.renderSubtreeIntoContainer;
-},{"./ReactMount":332}],395:[function(require,module,exports){
+},{"./ReactMount":341}],404:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36634,7 +43201,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setInnerHTML;
-},{"./DOMNamespaces":264,"./createMicrosoftUnsafeLocalFunction":373,"fbjs/lib/ExecutionEnvironment":401}],396:[function(require,module,exports){
+},{"./DOMNamespaces":273,"./createMicrosoftUnsafeLocalFunction":382,"fbjs/lib/ExecutionEnvironment":410}],405:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36683,7 +43250,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setTextContent;
-},{"./escapeTextContentForBrowser":375,"./setInnerHTML":395,"fbjs/lib/ExecutionEnvironment":401}],397:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":384,"./setInnerHTML":404,"fbjs/lib/ExecutionEnvironment":410}],406:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -36726,7 +43293,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 }
 
 module.exports = shouldUpdateReactComponent;
-},{}],398:[function(require,module,exports){
+},{}],407:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -36896,7 +43463,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":278,"./ReactCurrentOwner":292,"./ReactElement":317,"./getIteratorFn":384,"./reactProdInvariant":393,"_process":1,"fbjs/lib/invariant":415,"fbjs/lib/warning":425}],399:[function(require,module,exports){
+},{"./KeyEscapeUtils":287,"./ReactCurrentOwner":301,"./ReactElement":326,"./getIteratorFn":393,"./reactProdInvariant":402,"_process":1,"fbjs/lib/invariant":424,"fbjs/lib/warning":434}],408:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -37268,7 +43835,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = validateDOMNesting;
 }).call(this,require('_process'))
-},{"_process":1,"fbjs/lib/emptyFunction":407,"fbjs/lib/warning":425,"object-assign":426}],400:[function(require,module,exports){
+},{"_process":1,"fbjs/lib/emptyFunction":416,"fbjs/lib/warning":434,"object-assign":435}],409:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -37354,7 +43921,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":407,"_process":1}],401:[function(require,module,exports){
+},{"./emptyFunction":416,"_process":1}],410:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -37390,7 +43957,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],402:[function(require,module,exports){
+},{}],411:[function(require,module,exports){
 "use strict";
 
 /**
@@ -37422,7 +43989,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],403:[function(require,module,exports){
+},{}],412:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -37462,7 +44029,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":402}],404:[function(require,module,exports){
+},{"./camelize":411}],413:[function(require,module,exports){
 'use strict';
 
 /**
@@ -37502,7 +44069,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":417}],405:[function(require,module,exports){
+},{"./isTextNode":426}],414:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -37631,7 +44198,7 @@ function createArrayFromMixed(obj) {
 
 module.exports = createArrayFromMixed;
 }).call(this,require('_process'))
-},{"./invariant":415,"_process":1}],406:[function(require,module,exports){
+},{"./invariant":424,"_process":1}],415:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -37717,7 +44284,7 @@ function createNodesFromMarkup(markup, handleScript) {
 
 module.exports = createNodesFromMarkup;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":401,"./createArrayFromMixed":405,"./getMarkupWrap":411,"./invariant":415,"_process":1}],407:[function(require,module,exports){
+},{"./ExecutionEnvironment":410,"./createArrayFromMixed":414,"./getMarkupWrap":420,"./invariant":424,"_process":1}],416:[function(require,module,exports){
 "use strict";
 
 /**
@@ -37756,7 +44323,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],408:[function(require,module,exports){
+},{}],417:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -37778,7 +44345,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":1}],409:[function(require,module,exports){
+},{"_process":1}],418:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -37805,7 +44372,7 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-},{}],410:[function(require,module,exports){
+},{}],419:[function(require,module,exports){
 'use strict';
 
 /**
@@ -37840,7 +44407,7 @@ function getActiveElement() /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],411:[function(require,module,exports){
+},{}],420:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -37937,7 +44504,7 @@ function getMarkupWrap(nodeName) {
 
 module.exports = getMarkupWrap;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":401,"./invariant":415,"_process":1}],412:[function(require,module,exports){
+},{"./ExecutionEnvironment":410,"./invariant":424,"_process":1}],421:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -37976,7 +44543,7 @@ function getUnboundedScrollPosition(scrollable) {
 }
 
 module.exports = getUnboundedScrollPosition;
-},{}],413:[function(require,module,exports){
+},{}],422:[function(require,module,exports){
 'use strict';
 
 /**
@@ -38009,7 +44576,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],414:[function(require,module,exports){
+},{}],423:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -38048,7 +44615,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":413}],415:[function(require,module,exports){
+},{"./hyphenate":422}],424:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -38100,7 +44667,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":1}],416:[function(require,module,exports){
+},{"_process":1}],425:[function(require,module,exports){
 'use strict';
 
 /**
@@ -38123,7 +44690,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],417:[function(require,module,exports){
+},{}],426:[function(require,module,exports){
 'use strict';
 
 /**
@@ -38148,7 +44715,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":416}],418:[function(require,module,exports){
+},{"./isNode":425}],427:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -38198,7 +44765,7 @@ var keyMirror = function keyMirror(obj) {
 
 module.exports = keyMirror;
 }).call(this,require('_process'))
-},{"./invariant":415,"_process":1}],419:[function(require,module,exports){
+},{"./invariant":424,"_process":1}],428:[function(require,module,exports){
 "use strict";
 
 /**
@@ -38233,7 +44800,7 @@ var keyOf = function keyOf(oneKeyObj) {
 };
 
 module.exports = keyOf;
-},{}],420:[function(require,module,exports){
+},{}],429:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -38284,7 +44851,7 @@ function mapObject(object, callback, context) {
 }
 
 module.exports = mapObject;
-},{}],421:[function(require,module,exports){
+},{}],430:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -38314,7 +44881,7 @@ function memoizeStringOnly(callback) {
 }
 
 module.exports = memoizeStringOnly;
-},{}],422:[function(require,module,exports){
+},{}],431:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -38337,7 +44904,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = performance || {};
-},{"./ExecutionEnvironment":401}],423:[function(require,module,exports){
+},{"./ExecutionEnvironment":410}],432:[function(require,module,exports){
 'use strict';
 
 /**
@@ -38371,7 +44938,7 @@ if (performance.now) {
 }
 
 module.exports = performanceNow;
-},{"./performance":422}],424:[function(require,module,exports){
+},{"./performance":431}],433:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -38438,7 +45005,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],425:[function(require,module,exports){
+},{}],434:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -38497,7 +45064,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":407,"_process":1}],426:[function(require,module,exports){
+},{"./emptyFunction":416,"_process":1}],435:[function(require,module,exports){
 'use strict';
 /* eslint-disable no-unused-vars */
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -38582,15 +45149,16 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],427:[function(require,module,exports){
+},{}],436:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":281}],428:[function(require,module,exports){
+},{"./lib/React":290}],437:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var {Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {Chart} = require('react-google-charts')
+var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 
 // global arrays
 var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10}
@@ -38598,15 +45166,40 @@ var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
 var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var ougiGageBuffList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+var ougiRatioList = [4.0, 4.5, 5.0];
+var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+var HPList = [ 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ];
+var enemyDefenseType = {
+    10.0: {"name": "10.0(一般的な敵)"},
+    8.0: {"name": "8.0(防御-20%)"},
+    7.0: {"name": "7.0(防御-30%)"},
+    5.0: {"name": "5.0(防御-50%)"},
+    13.0: {"name": "13.0(ティアマグ・シュヴァマグ)"},
+    6.5: {"name": "6.5(ティアシュヴァ防御-50%)"},
+    11.0: {"name": "11.0(プロバハ?)"},
+    5.5: {"name": "5.5(プロバハ(防御-50%))"},
+    20.0: {"name": "20.0(プロバハHL?)"},
+}
 var keyTypes = {
     "totalAttack":"総合攻撃力",
-    "totalHP": "HP",
+    "totalHP": "ジータHP",
     "ATKandHP": "戦力",
     "averageAttack": "パーティ平均攻撃力",
     "criticalAttack": "技巧期待値",
     "averageCriticalAttack": "技巧期待平均攻撃力",
     "totalExpected": "総合攻撃*期待回数*技巧期待値",
     "averageTotalExpected": "総回技のパーティ平均値",
+    "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
+    "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+}
+var supportedChartSortkeys = {
+    "totalAttack": "総合攻撃力",
+    "averageAttack": "パーティ平均攻撃力",
+    "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
+    "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+    "totalHP": "ジータ残りHP",
 }
 
 // skill data
@@ -38950,7 +45543,14 @@ var select_zenithAttack = zenithAttackBonus.map(function(opt){return React.creat
 var select_zenithHP = zenithHPBonus.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
 var select_slv = skilllevels.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
 var select_consider = considerNum.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
+var select_ougiGageBuff = ougiGageBuffList.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
+var select_ougiRatio = ougiRatioList.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
+var select_hplist = HPList.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
+var select_masteratk = masterATKList.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
+var select_masterhp = masterHPList.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
 var select_ktypes = Object.keys(keyTypes).map(function(opt){ return React.createElement("option", {value: opt, key: opt}, keyTypes[opt]) });
+var select_supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return React.createElement("option", {value: opt, key: opt}, keyTypes[opt]) });
+var select_enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return React.createElement("option", {value: opt, key: opt}, enemyDefenseType[opt].name);});
 
 // query 取得用の関数
 var urldata = getVarInQuery("data");
@@ -38995,7 +45595,8 @@ var _ua = (function(u){
 
 // global hash for loading new data
 var newData = {}
-var cosmosChecked = false;
+var touchPosition = null;
+var touchDirection = null;
 
 // Root class contains [Profile, ArmList, Results].
 var Root = React.createClass({displayName: "Root",
@@ -39011,7 +45612,99 @@ var Root = React.createClass({displayName: "Root",
           dataName: '',
           sortKey: "totalAttack",
           noResultUpdate: false,
+          resultHasChangeButNotUpdated: false,
       };
+  },
+  onTouchStart: function(e) {
+      //スワイプ開始時の横方向の座標を格納
+      touchPosition = this.getPosition(e)
+      touchDirection = ''
+  },
+  onTouchMove: function(e) {
+      //スワイプの方向（left / right）を取得
+      var td = "none";
+      if (touchPosition - this.getPosition(e) > 140) {
+          td = 'right'; //左と検知
+      } else if (touchPosition - this.getPosition(e) < -140){
+          td = 'left'; //右と検知
+      }
+      touchDirection = td
+  },
+  onTouchEnd: function(e) {
+      if(touchDirection == "left" || touchDirection == "right") {
+          this.swipeTab(touchDirection);
+      }
+  },
+  //横方向の座標を取得
+  getPosition: function(e) {
+      return e.touches[0].pageX;
+  },
+  swipeTab: function(direction){
+      var selected = document.querySelector("button.selected").getAttribute("id")
+      document.querySelector("button.selected").removeAttribute("class")
+      document.querySelector("div#" + selected).setAttribute("class", selected + " hidden")
+
+      if(direction == "left") {
+          switch(selected) {
+              case "inputTab":
+                  document.querySelector("button#systemTab").setAttribute("class", "selected")
+                  document.querySelector("div#systemTab").setAttribute("class", "systemTab")
+                  break;
+              case "summonTab":
+                  document.querySelector("button#inputTab").setAttribute("class", "selected")
+                  document.querySelector("div#inputTab").setAttribute("class", "inputTab")
+                  break;
+              case "charaTab":
+                  document.querySelector("button#summonTab").setAttribute("class", "selected")
+                  document.querySelector("div#summonTab").setAttribute("class", "summonTab")
+                  break;
+              case "armTab":
+                  document.querySelector("button#charaTab").setAttribute("class", "selected")
+                  document.querySelector("div#charaTab").setAttribute("class", "charaTab")
+                  break;
+              case "resultTab":
+                  document.querySelector("button#armTab").setAttribute("class", "selected")
+                  document.querySelector("div#armTab").setAttribute("class", "armTab")
+                  break;
+              case "systemTab":
+                  document.querySelector("button#resultTab").setAttribute("class", "selected")
+                  document.querySelector("div#resultTab").setAttribute("class", "resultTab")
+                  break;
+          }
+      } else {
+          switch(selected) {
+              case "inputTab":
+                  document.querySelector("button#summonTab").setAttribute("class", "selected")
+                  document.querySelector("div#summonTab").setAttribute("class", "summonTab")
+                  break;
+              case "summonTab":
+                  document.querySelector("button#charaTab").setAttribute("class", "selected")
+                  document.querySelector("div#charaTab").setAttribute("class", "charaTab")
+                  break;
+              case "charaTab":
+                  document.querySelector("button#armTab").setAttribute("class", "selected")
+                  document.querySelector("div#armTab").setAttribute("class", "armTab")
+                  break;
+              case "armTab":
+                  document.querySelector("button#resultTab").setAttribute("class", "selected")
+                  document.querySelector("div#resultTab").setAttribute("class", "resultTab")
+
+                  // // resultTabになった時だけ結果を更新する
+                  // if(this.state.resultHasChangeButNotUpdated == undefined || this.state.resultHasChangeButNotUpdated) {
+                  //     this.setState({noResultUpdate: false});
+                  //     this.setState({resultHasChangeButNotUpdated: false});
+                  // }
+                  break;
+              case "resultTab":
+                  document.querySelector("button#systemTab").setAttribute("class", "selected")
+                  document.querySelector("div#systemTab").setAttribute("class", "systemTab")
+                  break;
+              case "systemTab":
+                  document.querySelector("button#inputTab").setAttribute("class", "selected")
+                  document.querySelector("div#inputTab").setAttribute("class", "inputTab")
+                  break;
+          }
+      }
   },
   getDatacharById: function(id) {
       $.ajax({
@@ -39052,6 +45745,7 @@ var Root = React.createClass({displayName: "Root",
       // armlistの武器名に変更があればresultはupdateしなくてよい
       this.setState({armlist: state});
 
+      // tablet と smartphoneの時はタブ切り替え時以外updateしない
       if(isSubtle != undefined) {
           this.setState({noResultUpdate: isSubtle});
       } else {
@@ -39094,38 +45788,49 @@ var Root = React.createClass({displayName: "Root",
       document.querySelector("button#armTab").removeAttribute("class")
       document.querySelector("button#resultTab").removeAttribute("class")
       document.querySelector("button#systemTab").removeAttribute("class")
+      document.querySelector("button#howToTab").removeAttribute("class")
 
       e.target.setAttribute("class", "selected")
 
-      document.querySelector("div#inputTab").setAttribute("class", "inputTab hidden")
-      document.querySelector("div#summonTab").setAttribute("class", "summonTab hidden")
-      document.querySelector("div#charaTab").setAttribute("class", "charaTab hidden")
-      document.querySelector("div#armTab").setAttribute("class", "armTab hidden")
-      document.querySelector("div#resultTab").setAttribute("class", "resultTab hidden")
-      document.querySelector("div#systemTab").setAttribute("class", "systemTab hidden")
+      document.querySelector("div#inputTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#summonTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#charaTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#armTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#resultTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#systemTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#howToTab").setAttribute("class", "Tab hidden")
 
-      var target = document.querySelector("div." + e.target.getAttribute("id"))
-      target.setAttribute("class", e.target.getAttribute("id"));
+      var target = document.querySelector("div#" + e.target.getAttribute("id"))
+      target.setAttribute("class", "Tab");
   },
   changeTabPC: function(e){
       document.querySelector("button#inputTab").removeAttribute("class")
+      document.querySelector("button#summonTab").removeAttribute("class")
       document.querySelector("button#systemTab").removeAttribute("class")
       document.querySelector("button#charaTab").removeAttribute("class")
       document.querySelector("button#armTab").removeAttribute("class")
+      document.querySelector("button#howToTab").removeAttribute("class")
       e.target.setAttribute("class", "selected")
 
-      document.querySelector("div#inputTab").setAttribute("class", "inputTab hidden")
-      document.querySelector("div#charaTab").setAttribute("class", "charaTab hidden")
-      document.querySelector("div#armTab").setAttribute("class", "armTab hidden")
-      document.querySelector("div#systemTab").setAttribute("class", "systemTab hidden")
+      document.querySelector("div#inputTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#summonTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#charaTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#armTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#systemTab").setAttribute("class", "Tab hidden")
+      document.querySelector("div#howToTab").setAttribute("class", "Tab hidden")
 
-      var target = document.querySelector("div." + e.target.getAttribute("id"))
-      target.setAttribute("class", e.target.getAttribute("id"));
+      var target = document.querySelector("div#" + e.target.getAttribute("id"))
+      target.setAttribute("class", "Tab");
   },
   addArmNum: function(e) {
       var newArmNum = parseInt(this.state.armNum);
-      if(newArmNum < 20) newArmNum += 1
-      this.setState({armNum: newArmNum});
+      if(newArmNum < 20) {
+          newArmNum += 1
+          this.setState({armNum: newArmNum});
+          return newArmNum;
+      } else {
+          return -1;
+      }
   },
   subArmNum: function(e) {
       var newArmNum = parseInt(this.state.armNum);
@@ -39144,8 +45849,13 @@ var Root = React.createClass({displayName: "Root",
   },
   addCharaNum: function(e) {
       var newCharaNum = parseInt(this.state.charaNum);
-      if(newCharaNum < 10) newCharaNum += 1
-      this.setState({charaNum: newCharaNum});
+      if(newCharaNum < 10) {
+          newCharaNum += 1
+          this.setState({charaNum: newCharaNum});
+          return newCharaNum;
+      } else {
+          return -1;
+      }
   },
   subCharaNum: function(e) {
       var newCharaNum = parseInt(this.state.charaNum);
@@ -39153,7 +45863,60 @@ var Root = React.createClass({displayName: "Root",
       this.setState({charaNum: newCharaNum});
   },
   render: function() {
-    if(_ua.Mobile || _ua.Tablet) {
+    if(_ua.Mobile) {
+        return (
+            React.createElement("div", {className: "root", onTouchStart: this.onTouchStart, onTouchMove: this.onTouchMove, onTouchEnd: this.onTouchEnd}, 
+                React.createElement("h2", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
+                React.createElement("div", {className: "tabrow"}, 
+                    React.createElement("button", {id: "inputTab", className: "selected", onClick: this.changeTab}, "ジータ"), 
+                    React.createElement("button", {id: "summonTab", onClick: this.changeTab}, "召喚石"), 
+                    React.createElement("button", {id: "charaTab", onClick: this.changeTab}, "キャラ"), 
+                    React.createElement("button", {id: "armTab", onClick: this.changeTab}, "武器"), 
+                    React.createElement("button", {id: "resultTab", onClick: this.changeTab}, "結果"), 
+                    React.createElement("button", {id: "systemTab", onClick: this.changeTab}, "保存"), 
+                    React.createElement("button", {id: "howToTab", onClick: this.changeTab}, "二手について")
+                ), 
+                React.createElement("div", {className: "Tab", id: "inputTab"}, 
+                    React.createElement(Profile, {dataName: this.state.dataName, onChange: this.onChangeProfileData})
+                ), 
+                React.createElement("div", {className: "Tab hidden", id: "summonTab"}, 
+                    React.createElement(SummonList, {dataName: this.state.dataName, summonNum: this.state.summonNum, onChange: this.onChangeSummonData}), 
+                    React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
+                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addSummonNum}, "召喚石追加(現在", this.state.summonNum, "組)"), 
+                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subSummonNum}, "削除")
+                    )
+                ), 
+                React.createElement("div", {className: "Tab hidden", id: "charaTab"}, 
+                    React.createElement(CharaList, {dataName: this.state.dataName, onChange: this.onChangeCharaData, charaNum: this.state.charaNum, pleaseAddCharaNum: this.addCharaNum}), 
+                    React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
+                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addCharaNum}, "キャラ追加(現在", this.state.charaNum, "人)"), 
+                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subCharaNum}, "削除")
+                    )
+                ), 
+                React.createElement("div", {className: "Tab hidden", id: "armTab"}, 
+                    React.createElement(ArmList, {dataName: this.state.dataName, armNum: this.state.armNum, onChange: this.onChangeArmData, pleaseAddArmNum: this.addArmNum}), 
+                    React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
+                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addArmNum}, "武器追加(現在", this.state.armNum, "本)"), 
+                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subArmNum}, "削除")
+                    )
+                ), 
+                React.createElement("div", {className: "Tab hidden", id: "resultTab"}, 
+                    "優先する項目: ", React.createElement(FormControl, {componentClass: "select", value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", select_ktypes, " "), 
+                    React.createElement(ResultList, {data: this.state})
+                ), 
+                React.createElement("div", {className: "Tab hidden", id: "systemTab"}, 
+                    React.createElement("div", {className: "systemList"}, 
+                        React.createElement(Sys, {data: this.state, onLoadNewData: this.handleChangeData}), 
+                        React.createElement(TwitterShareButton, {data: this.state}), 
+                        React.createElement(Notice, null)
+                    )
+                ), 
+                React.createElement("div", {className: "Tab hidden", id: "howToTab"}, 
+                    React.createElement(HowTo, null)
+                )
+            )
+        );
+    } else if(_ua.Tablet) {
         return (
             React.createElement("div", {className: "root"}, 
                 React.createElement("h2", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
@@ -39163,54 +45926,46 @@ var Root = React.createClass({displayName: "Root",
                     React.createElement("button", {id: "charaTab", onClick: this.changeTab}, "キャラ"), 
                     React.createElement("button", {id: "armTab", onClick: this.changeTab}, "武器"), 
                     React.createElement("button", {id: "resultTab", onClick: this.changeTab}, "結果"), 
-                    React.createElement("button", {id: "systemTab", onClick: this.changeTab}, "保存")
+                    React.createElement("button", {id: "systemTab", onClick: this.changeTab}, "保存"), 
+                    React.createElement("button", {id: "howToTab", onClick: this.changeTab}, "二手編成について")
                 ), 
-                React.createElement("div", {className: "inputTab", id: "inputTab"}, 
+                React.createElement("div", {className: "Tab", id: "inputTab"}, 
                     React.createElement(Profile, {dataName: this.state.dataName, onChange: this.onChangeProfileData})
                 ), 
-                React.createElement("div", {className: "summonTab hidden", id: "summonTab"}, 
-                    React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
-                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addSummonNum}, "召喚石追加(現在", this.state.summonNum, "組)"), 
-                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subSummonNum}, "削除")
-                    ), 
+                React.createElement("div", {className: "Tab hidden", id: "summonTab"}, 
                     React.createElement(SummonList, {dataName: this.state.dataName, summonNum: this.state.summonNum, onChange: this.onChangeSummonData}), 
                     React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
                         React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addSummonNum}, "召喚石追加(現在", this.state.summonNum, "組)"), 
                         React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subSummonNum}, "削除")
                     )
                 ), 
-                React.createElement("div", {className: "charaTab hidden", id: "charaTab"}, 
-                    React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
-                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addCharaNum}, "キャラ追加(現在", this.state.charaNum, "人)"), 
-                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subCharaNum}, "削除")
-                    ), 
-                    React.createElement(CharaList, {dataName: this.state.dataName, onChange: this.onChangeCharaData, charaNum: this.state.charaNum}), 
+                React.createElement("div", {className: "Tab hidden", id: "charaTab"}, 
+                    React.createElement(CharaList, {dataName: this.state.dataName, onChange: this.onChangeCharaData, charaNum: this.state.charaNum, pleaseAddCharaNum: this.addCharaNum}), 
                     React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
                         React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addCharaNum}, "キャラ追加(現在", this.state.charaNum, "人)"), 
                         React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subCharaNum}, "削除")
                     )
                 ), 
-                React.createElement("div", {className: "armTab hidden", id: "armTab"}, 
-                    React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
-                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addArmNum}, "武器追加(現在", this.state.armNum, "本)"), 
-                        React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subArmNum}, "削除")
-                    ), 
-                    React.createElement(ArmList, {dataName: this.state.dataName, armNum: this.state.armNum, onChange: this.onChangeArmData}), 
+                React.createElement("div", {className: "Tab hidden", id: "armTab"}, 
+                    React.createElement(ArmList, {dataName: this.state.dataName, armNum: this.state.armNum, onChange: this.onChangeArmData, pleaseAddArmNum: this.addArmNum}), 
                     React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
                         React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addArmNum}, "武器追加(現在", this.state.armNum, "本)"), 
                         React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subArmNum}, "削除")
                     )
                 ), 
-                React.createElement("div", {className: "resultTab hidden", id: "resultTab"}, 
+                React.createElement("div", {className: "Tab hidden", id: "resultTab"}, 
                     "優先する項目: ", React.createElement(FormControl, {componentClass: "select", value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", select_ktypes, " "), 
                     React.createElement(ResultList, {data: this.state})
                 ), 
-                React.createElement("div", {className: "systemTab hidden", id: "systemTab"}, 
+                React.createElement("div", {className: "Tab hidden", id: "systemTab"}, 
                     React.createElement("div", {className: "systemList"}, 
                         React.createElement(Sys, {data: this.state, onLoadNewData: this.handleChangeData}), 
                         React.createElement(TwitterShareButton, {data: this.state}), 
                         React.createElement(Notice, null)
                     )
+                ), 
+                React.createElement("div", {className: "Tab hidden", id: "howToTab"}, 
+                    React.createElement(HowTo, null)
                 )
             )
         );
@@ -39221,36 +45976,43 @@ var Root = React.createClass({displayName: "Root",
                     React.createElement("h1", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
                     React.createElement("div", {className: "tabrow"}, 
                         React.createElement("button", {id: "inputTab", className: "selected", onClick: this.changeTabPC}, "入力 / Input"), 
+                        React.createElement("button", {id: "summonTab", onClick: this.changeTabPC}, "召喚石 / Summon "), 
                         React.createElement("button", {id: "charaTab", onClick: this.changeTabPC}, "キャラ / Chara"), 
                         React.createElement("button", {id: "armTab", onClick: this.changeTabPC}, "武器 / Weapon"), 
-                        React.createElement("button", {id: "systemTab", onClick: this.changeTabPC}, "保存・注記 / System")
+                        React.createElement("button", {id: "systemTab", onClick: this.changeTabPC}, "保存・注記 / System"), 
+                        React.createElement("button", {id: "howToTab", onClick: this.changeTabPC}, "二手スキル込みの編成について")
                     ), 
-                    React.createElement("div", {className: "inputTab", id: "inputTab"}, 
-                        React.createElement(Profile, {dataName: this.state.dataName, onChange: this.onChangeProfileData}), 
+                    React.createElement("div", {className: "Tab", id: "inputTab"}, 
+                        React.createElement(Profile, {dataName: this.state.dataName, onChange: this.onChangeProfileData})
+                    ), 
+                    React.createElement("div", {className: "Tab hidden", id: "summonTab"}, 
                         React.createElement(SummonList, {dataName: this.state.dataName, summonNum: this.state.summonNum, onChange: this.onChangeSummonData}), 
                         React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
                             React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addSummonNum}, "召喚石追加 / Add"), 
                             React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subSummonNum}, "削除 / Remove")
                         )
                     ), 
-                    React.createElement("div", {className: "charaTab hidden", id: "charaTab"}, 
-                        React.createElement(CharaList, {dataName: this.state.dataName, onChange: this.onChangeCharaData, charaNum: this.state.charaNum}), 
+                    React.createElement("div", {className: "Tab hidden", id: "charaTab"}, 
+                        React.createElement(CharaList, {dataName: this.state.dataName, onChange: this.onChangeCharaData, charaNum: this.state.charaNum, pleaseAddCharaNum: this.addCharaNum}), 
                         React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
                             React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addCharaNum}, "キャラ追加 / Add"), 
                             React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subCharaNum}, "削除 / Remove")
                         )
                     ), 
-                    React.createElement("div", {className: "armTab hidden", id: "armTab"}, 
-                        React.createElement(ArmList, {dataName: this.state.dataName, armNum: this.state.armNum, onChange: this.onChangeArmData}), 
+                    React.createElement("div", {className: "Tab hidden", id: "armTab"}, 
+                        React.createElement(ArmList, {dataName: this.state.dataName, armNum: this.state.armNum, onChange: this.onChangeArmData, pleaseAddCharaNum: this.addCharaNum, pleaseAddArmNum: this.addArmNum}), 
                         React.createElement(ButtonGroup, {className: "addRemoveButtonGroup"}, 
                             React.createElement(Button, {className: "addRemoveButton", bsStyle: "primary", onClick: this.addArmNum}, "武器追加 / Add"), 
                             React.createElement(Button, {className: "addRemoveButton", bsStyle: "danger", onClick: this.subArmNum}, "削除 / Remove")
                         )
                     ), 
-                    React.createElement("div", {className: "systemTab hidden", id: "systemTab"}, 
+                    React.createElement("div", {className: "Tab hidden", id: "systemTab"}, 
                         React.createElement(Sys, {data: this.state, onLoadNewData: this.handleChangeData}), 
                         React.createElement(TwitterShareButton, {data: this.state}), 
                         React.createElement(Notice, null)
+                    ), 
+                    React.createElement("div", {className: "Tab hidden", id: "howToTab"}, 
+                        React.createElement(HowTo, null)
                     )
                 ), 
                 React.createElement("div", {className: "rootRight"}, 
@@ -39292,11 +46054,13 @@ var CharaList = React.createClass({displayName: "CharaList",
         var newcharalist = this.state.charalist;
         newcharalist[key] = state;
         this.setState({charalist: newcharalist})
+        this.setState({addChara: null})
         this.props.onChange(newcharalist, isSubtle);
     },
     handleEvent: function(key, e) {
         var newState = this.state
         newState[key] = e.target.value
+        newState["addChara"] = null
         this.setState(newState)
     },
     addTemplateChara: function(templateChara) {
@@ -39310,11 +46074,21 @@ var CharaList = React.createClass({displayName: "CharaList",
         if(minimumID >= 0) {
             this.setState({addChara: templateChara})
             this.setState({addCharaID: minimumID})
-            if(_ua.Mobile || _ua.Table) {
+            if(_ua.Mobile || _ua.Tablet) {
                 alert("追加しました。")
             }
         } else {
-            alert("キャラがいっぱいです。")
+            var newKey = this.props.pleaseAddCharaNum() - 1;
+
+            if(newKey >= 0) {
+                this.setState({addChara: templateChara})
+                this.setState({addCharaID: newKey})
+                if(_ua.Mobile || _ua.Tablet) {
+                    alert("追加しました。")
+                }
+            } else {
+                alert("キャラがいっぱいです。")
+            }
         }
     },
     render: function() {
@@ -39344,7 +46118,8 @@ var CharaList = React.createClass({displayName: "CharaList",
                         )
                     ), 
 
-                    "[属性一括変更]", React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " "), 
+                    React.createElement(ControlLabel, null, "属性一括変更"), 
+                    React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " "), 
                     charas.map(function(c) {
                         return React.createElement(Chara, {key: c.id, onChange: hChange, id: c.id, dataName: dataName, defaultElement: defaultElement, addChara: addChara, addCharaID: addCharaID});
                     })
@@ -39355,11 +46130,11 @@ var CharaList = React.createClass({displayName: "CharaList",
             return (
                 React.createElement("div", {className: "charaList"}, 
                     React.createElement(Button, {bsStyle: "success", bsSize: "large", onClick: this.openPresets}, "キャラテンプレートを開く"), 
-                    React.createElement("table", null, 
+                    React.createElement("table", {className: "table table-bordered"}, 
                     React.createElement("thead", null, 
                     React.createElement("tr", null, 
                         React.createElement("th", null, "キャラ名*"), 
-                        React.createElement("th", null, "属性* ", React.createElement("br", null), " [一括変更] ", React.createElement("br", null), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " "), " "), 
+                        React.createElement("th", null, "属性* ", React.createElement("br", null), " ", React.createElement(ControlLabel, null, "一括変更"), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " "), " "), 
                         React.createElement("th", null, "種族"), 
                         React.createElement("th", null, "タイプ"), 
                         React.createElement("th", null, "得意武器*"), 
@@ -39513,6 +46288,24 @@ var Chara = React.createClass({displayName: "Chara",
            state = chara[this.props.id]
            this.setState(state)
        }
+
+       // もし addCharaIDが設定されていて、自分と一致しているなら読み込む
+       if(this.props.addChara != null && this.props.id == this.props.addCharaID ) {
+           var newchara = this.props.addChara
+
+           state["name"] = newchara.name
+           state["attack"] = newchara.attack
+           state["hp"] = newchara.hp
+           state["type"] = newchara.type
+           state["race"] = newchara.race
+           state["element"] = newchara.element
+           state["favArm"] = newchara.fav1
+           state["favArm2"] = newchara.fav2
+           state["DA"] = newchara.baseDA
+           state["TA"] = newchara.baseTA
+
+           this.setState(state);
+       }
        // 初期化後 state を 上の階層に渡しておく
        // CharaList では onChange が勝手に上に渡してくれるので必要なし
        this.props.onChange(this.props.id, state, false);
@@ -39572,7 +46365,7 @@ var Chara = React.createClass({displayName: "Chara",
     render: function() {
         if(_ua.Mobile) {
             return (
-                React.createElement("table", null, React.createElement("tbody", null, 
+                React.createElement("table", {className: "table table-bordered"}, React.createElement("tbody", null, 
                     React.createElement("tr", null, React.createElement("th", null, "名前"), React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "名前", value: this.state.name, onChange: this.handleEvent.bind(this, "name")}))), 
                     React.createElement("tr", null, React.createElement("th", null, "属性"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, select_elements))), 
                     React.createElement("tr", null, React.createElement("th", null, "種族"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.race, onChange: this.handleEvent.bind(this, "race")}, select_races))), 
@@ -39648,7 +46441,7 @@ var SummonList = React.createClass({displayName: "SummonList",
         if(_ua.Mobile) {
             return (
                 React.createElement("div", {className: "summonList"}, 
-                    "[属性一括変更]", React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_summonElements, " "), 
+                    React.createElement(ControlLabel, null, "属性一括変更"), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_summonElements, " "), 
                     summons.map(function(sm) {
                         return React.createElement(Summon, {key: sm.id, onChange: hChange, id: sm.id, dataName: dataName, defaultElement: defaultElement});
                     })
@@ -39658,7 +46451,7 @@ var SummonList = React.createClass({displayName: "SummonList",
             return (
                 React.createElement("div", {className: "summonList"}, 
                     React.createElement("h3", {className: "margin-top"}, " 召喚石 "), 
-                    React.createElement("table", null, 
+                    React.createElement("table", {className: "table table-bordered"}, 
                     React.createElement("thead", null, 
                     React.createElement("tr", null, 
                         React.createElement("th", null, "石*"), 
@@ -39769,7 +46562,7 @@ var Summon = React.createClass({displayName: "Summon",
         }
         if(_ua.Mobile) {
             return (
-                React.createElement("table", null, 
+                React.createElement("table", {className: "table table-bordered"}, 
                 React.createElement("tbody", null, 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "自分の石"), 
@@ -39844,59 +46637,6 @@ var Summon = React.createClass({displayName: "Summon",
 });
 
 var ResultList = React.createClass({displayName: "ResultList",
-    getInitialState: function() {
-        return {
-            switchTotalAttack: 1,
-            switchATKandHP: 0,
-            switchHP: 0,
-            switchCharaHP: 0,
-            switchDATA: 0,
-            switchExpectedAttack: 0,
-            switchCharaExpectedAttack: 0,
-            switchCriticalRatio: 0,
-            switchCharaAttack: 0,
-            switchAverageAttack: 0,
-            switchTotalExpected: 0,
-            switchAverageTotalExpected: 0,
-            switchDamage: 0,
-            disableAutoResultUpdate: 0,
-            result: {summon: this.props.data.summon, result: []},
-        };
-    },
-    componentWillReceiveProps: function(nextProps) {
-        //
-        // // if(this.props.data.chara != undefined && !isSubtlePropsChange) {
-        // //     for(var i = 0; i < this.props.data.chara.length; i++){
-        // //         if(this.props.data.chara[i].name != nextProps.data.chara[i].name) {
-        // //             isSubtlePropsChange = true;
-        // //             break;
-        // //         }
-        // //     }
-        // // }
-        // //
-        // var diffpathcer = jsondiffpatch.create({
-        //     objectHash: function(obj) {
-        //         return obj.name;
-        //     },
-        // });
-        //
-        // console.log("jsondiff:", diffpathcer.diff(this.props.data.armlist, nextProps.data.armlist))
-
-        if(this.state.disableAutoResultUpdate != 1 && (nextProps.data.noResultUpdate == undefined || !nextProps.data.noResultUpdate)){
-            var allresult = this.calculateResult(nextProps);
-            this.setState({result: allresult});
-        }
-    },
-    handleEvent: function(key, e) {
-        var newState = this.state
-        newState[key] = (newState[key] == 0) ? 1 : 0
-
-        // 自動更新ONにしたらUPDATEする
-        if(key == "disableAutoResultUpdate" && newState[key] == 0){
-            newState["result"] = this.calculateResult(this.props)
-        }
-        this.setState(newState)
-    },
     calculateCombinations: function(arml) {
         // 全武器に対して [最小考慮数, ... , 最大考慮数] の配列を計算しておく
         var armNumArray = []
@@ -39966,8 +46706,8 @@ var ResultList = React.createClass({displayName: "ResultList",
     },
     isCosmos: function(arm){
         var isCos = false;
-        if(skilltypes[arm.skill1].type == "cosmosArm") isCos = true;
-        if(skilltypes[arm.skill2].type == "cosmosArm") isCos = true;
+        if(skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") isCos = true;
+        if(skilltypes[arm.skill2] != undefined && skilltypes[arm.skill2].type == "cosmosArm") isCos = true;
 
         return isCos
     },
@@ -40031,8 +46771,9 @@ var ResultList = React.createClass({displayName: "ResultList",
             if(key == "Djeeta") {
                 var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
                 var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
+                var job = (prof.job == undefined) ? Jobs["none"] : Jobs[prof.job]
                 // for Djeeta
-                var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + zenithATK + parseInt(Jobs[prof.job].atBonus)) * (1.0 + buff["master"])
+                var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + zenithATK + parseInt(job.atBonus)) * (1.0 + buff["master"])
                 var displayHP = (totals[key]["baseHP"] + totalSummon["hp"] + totals[key]["armHP"] + zenithHP) * (1.0 + buff["masterHP"])
             } else {
                 // for chara
@@ -40066,8 +46807,15 @@ var ResultList = React.createClass({displayName: "ResultList",
             if(typeBonus != 1.5) {
                 criticalRatio = 1.0
             }
-
             var criticalAttack = parseInt(totalAttack * criticalRatio)
+            var expectedOugiGage = buff["ougiGage"] * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
+            var expectedTurn = Math.ceil(100.0 / expectedOugiGage)
+
+            var damage = this.calculateDamage(criticalRatio * totalAttack, prof.enemyDefense)
+            var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio)
+            var expectedCycleDamage = ougiDamage + expectedTurn * expectedAttack * damage
+            var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1)
+
             var nazo_number = parseInt(totalAttack * criticalRatio * expectedAttack)
 
             // 表示用配列
@@ -40081,12 +46829,12 @@ var ResultList = React.createClass({displayName: "ResultList",
             coeffs["unknownHaisui"] = 100.0 * (unknownHaisuiCoeff - 1.0);
             coeffs["other"] = 100.0 * (otherCoeff - 1.0);
 
-            res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), remainHP: totals[key]["remainHP"], totalDA: totalDA, totalTA: totalTA, expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, totalExpected: nazo_number, skilldata: coeffs };
-
+            res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), remainHP: totals[key]["remainHP"], totalDA: totalDA, totalTA: totalTA, totalSummon: totalSummon, element: totals[key]["element"], expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, totalExpected: nazo_number, skilldata: coeffs, expectedOugiGage: expectedOugiGage, damage: damage, ougiDamage: ougiDamage, expectedTurn: expectedTurn, expectedCycleDamagePerTurn: expectedCycleDamagePerTurn};
         }
         var average = 0.0;
         var crit_average = 0.0;
         var totalExpected_average = 0.0;
+        var averageCyclePerTurn = 0.0;
 
         var cnt = 0.0
         for(key in res) {
@@ -40094,33 +46842,90 @@ var ResultList = React.createClass({displayName: "ResultList",
                 average += res[key].totalAttack
                 crit_average += res[key].criticalAttack
                 totalExpected_average += res[key].totalExpected
+                averageCyclePerTurn += res[key].expectedCycleDamagePerTurn
                 cnt += 1.0
             }
         }
         res["Djeeta"]["averageAttack"] = parseInt(average/cnt)
         res["Djeeta"]["averageCriticalAttack"] = parseInt(crit_average/cnt)
         res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average/cnt)
+        res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn/cnt)
         return res
     },
-    calculateOneCombination: function(comb, summon, prof, arml, totals, buff, chara){
+    calculateDamage: function(totalAttack, enemyDefense) {
+        // ダメージ計算
+        var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
+        var damage = totalAttack / def
+        var overedDamage = 0
+        // 補正1
+        if(damage > 612500) {
+            overedDamage += 0.01 * (damage - 612500)
+            damage = 612500
+        }
+        // 補正2
+        if(damage > 550000) {
+            overedDamage += 0.10 * (damage - 550000)
+            damage = 550000
+        }
+        // 補正3
+        if(damage > 425000) {
+            overedDamage += 0.40 * (damage - 425000)
+            damage = 425000
+        }
+        // 補正4
+        if(damage > 300000) {
+            overedDamage += 0.70 * (damage - 300000)
+            damage = 300000
+        }
+
+        return damage + overedDamage
+    },
+    calculateOugiDamage: function(totalAttack, enemyDefense, ougiRatio) {
+        // ダメージ計算
+        var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
+        var ratio = (ougiRatio == undefined) ? 4.5 : ougiRatio
+        var damage = totalAttack * ratio / def
+        var overedDamage = 0
+        // 補正1
+        if(damage > 1400000) {
+            overedDamage += 0.01 * (damage - 1400000)
+            damage = 1400000
+        }
+        // 補正2
+        if(damage > 1300000) {
+            overedDamage += 0.05 * (damage - 1300000)
+            damage = 1300000
+        }
+        // 補正3
+        if(damage > 1150000) {
+            overedDamage += 0.40 * (damage - 1150000)
+            damage = 1150000
+        }
+        // 補正4
+        if(damage > 1000000) {
+            overedDamage += 0.60 * (damage - 1000000)
+            damage = 1000000
+        }
+
+        return damage + overedDamage
+    },
+    calculateOneCombination: function(comb, summon, prof, arml, totals, buff){
         var tempArmList = []
         for(var i = 0; i < arml.length; i++){
             for(var j = 0; j < comb[i]; j++){
                 tempArmList.push(arml[i]);
             }
         }
-
-        // 初期化
-        for(key in totals){
-            totals[key]["armAttack"] = 0; totals[key]["armHP"] = 0; totals[key]["HPdebuff"] = 0; totals[key]["magna"] = 0;
-            totals[key]["magnaHaisui"] = 0; totals[key]["normal"] = 0; totals[key]["normalHaisui"] = 0; totals[key]["normalKonshin"] = 0;
-            totals[key]["unknown"] = 0; totals[key]["unknownOther"] = 0; totals[key]["unknownOtherHaisui"] = 0; totals[key]["bahaAT"] = 0;
-            totals[key]["bahaHP"] = 0; totals[key]["bahaDA"] = 0; totals[key]["bahaTA"] = 0; totals[key]["magnaHP"] = 0;
-            totals[key]["normalHP"] = 0; totals[key]["unknownHP"] = 0; totals[key]["normalNite"] = 0; totals[key]["magnaNite"] = 0;
-            totals[key]["normalSante"] = 0; totals[key]["magnaSante"] = 0; totals[key]["unknownOtherNite"] = 0; totals[key]["normalCritical"] = 0;
-            totals[key]["magnaCritical"] = 0; totals[key]["cosmosBL"] = 0;
+        this.addSkilldataToTotals(totals, tempArmList, buff)
+        var result = []
+        for(var i = 0; i < summon.length; i++){
+           // 攻撃などの結果を入れた連想配列の配列を作る
+           result.push(this.calculateBasedOneSummon(summon[i], prof, buff, totals));
         }
 
+        return result
+    },
+    addSkilldataToTotals: function(totals, tempArmList, buff) {
         // cosmos武器があるかどうかを確認しておく
         var cosmosType = '';
         for(var i = 0; i < tempArmList.length; i++){
@@ -40265,6 +47070,8 @@ var ResultList = React.createClass({displayName: "ResultList",
                             } else if(skillname == 'cosmosBL' && totals[key]["type"] == "balance") {
                                 totals[key]["cosmosBL"] = 20.0
                             }
+                        } else if(stype == 'cosmosArm') {
+                            // コスモス武器スキルはスキップ
                         } else if(totals[key]["element"] == element){
                             // 属性一致してれば計算
 
@@ -40365,34 +47172,77 @@ var ResultList = React.createClass({displayName: "ResultList",
             if(totals[key]["bahaAT"] > 50) totals[key]["bahaAT"] = 50
             if(totals[key]["bahaHP"] > 50) totals[key]["bahaHP"] = 50
         }
+    },
+    initializeTotals: function(totals) {
+        // 初期化
+        for(key in totals){
+            totals[key]["armAttack"] = 0; totals[key]["armHP"] = 0; totals[key]["HPdebuff"] = 0; totals[key]["magna"] = 0;
+            totals[key]["magnaHaisui"] = 0; totals[key]["normal"] = 0; totals[key]["normalHaisui"] = 0; totals[key]["normalKonshin"] = 0;
+            totals[key]["unknown"] = 0; totals[key]["unknownOther"] = 0; totals[key]["unknownOtherHaisui"] = 0; totals[key]["bahaAT"] = 0;
+            totals[key]["bahaHP"] = 0; totals[key]["bahaDA"] = 0; totals[key]["bahaTA"] = 0; totals[key]["magnaHP"] = 0;
+            totals[key]["normalHP"] = 0; totals[key]["unknownHP"] = 0; totals[key]["normalNite"] = 0; totals[key]["magnaNite"] = 0;
+            totals[key]["normalSante"] = 0; totals[key]["magnaSante"] = 0; totals[key]["unknownOtherNite"] = 0; totals[key]["normalCritical"] = 0;
+            totals[key]["magnaCritical"] = 0; totals[key]["cosmosBL"] = 0;
+        }
+    },
+    getTotalBuff: function(prof) {
+        var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hp: 0.0, da: 0.0, ta: 0.0, ougiGage: 1.0};
 
-        var result = []
-        for(var i = 0; i < summon.length; i++){
-           // 攻撃などの結果を入れた連想配列の配列を作る
-           result.push(this.calculateBasedOneSummon(summon[i], prof, buff, totals));
+        if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
+        if(!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
+        if(!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
+        if(!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseInt(prof.daBuff);
+        if(!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseInt(prof.taBuff);
+        if(!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
+        totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
+        totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
+        totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
+        totalBuff["zenith1"] += zenith[prof.zenithBonus1];
+        totalBuff["zenith2"] += zenith[prof.zenithBonus2];
+
+        return totalBuff
+    },
+    getInitialTotals: function(prof, chara) {
+        var baseAttack = (prof.rank > 100) ? 5000 + (parseInt(prof.rank) - 100) * 20 : 1000 + (parseInt(prof.rank)) * 40
+        var baseHP = (prof.rank > 100) ? 1400 + (parseInt(prof.rank) - 100) * 4.0 : 600 + (parseInt(prof.rank)) * 8
+        var element = (prof.element == undefined) ? "fire" : prof.element
+        var djeetaRemainHP = (prof.remainHP != undefined && parseInt(prof.remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(prof.remainHP) : 0.01 * parseInt(prof.hp)
+        var djeetaDA = (prof.DA == undefined) ? 6.5 : parseFloat(prof.DA)
+        var djeetaTA = (prof.TA == undefined) ? 3.0 : parseFloat(prof.TA)
+        var job = (prof.job == undefined) ? Jobs["none"] : Jobs[prof.job]
+
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true}};
+
+        for(var i = 0; i < chara.length; i++){
+            if(chara[i].name != "") {
+                var charaelement = (chara[i].element == undefined) ? "fire" : chara[i].element
+                var charaDA = (chara[i].DA == undefined) ? 6.5 : chara[i].DA
+                var charaTA = (chara[i].TA == undefined) ? 3.0 : chara[i].TA
+                var charaRemainHP = (chara[i].remainHP != undefined && parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(chara[i].remainHP) : 0.01 * parseInt(prof.hp)
+                var charaConsidered = (chara[i].isConsideredInAverage == undefined) ? true : chara[i].isConsideredInAverage
+
+                // key 重複対応
+                var charakey = chara[i].name;
+                var k = 1;
+                while(charakey in totals) {
+                    charakey = chara[i].name + k
+                        k++;
+                }
+
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: charaConsidered}
+            }
         }
 
-        return result
+        return totals
     },
     calculateResult: function(newprops) {
       var prof = newprops.data.profile; var arml = newprops.data.armlist;
       var summon = newprops.data.summon; var chara = newprops.data.chara;
 
       if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
-          var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hp: 0.0, da: 0.0, ta: 0.0};
+          var totalBuff = this.getTotalBuff(prof)
 
           // 後から追加したパラメータはNaNなことがあるので追加処理
-          if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
-          if(!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
-          if(!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
-          if(!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseInt(prof.daBuff);
-          if(!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseInt(prof.taBuff);
-          totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
-          totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
-          totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
-          totalBuff["zenith1"] += zenith[prof.zenithBonus1];
-          totalBuff["zenith2"] += zenith[prof.zenithBonus2];
-
           // sortKey がNaNでないならそちらを使う、NaNなら総合攻撃力で
           var sortkey = "totalAttack"
           var sortkeyname = "総合攻撃力"
@@ -40402,47 +47252,20 @@ var ResultList = React.createClass({displayName: "ResultList",
           }
 
           var combinations = this.calculateCombinations(arml)
-          var totalItr = combinations.length
           var res = []
           for(var i = 0; i < summon.length; i++){
               res[i] = []
           }
-          var baseAttack = (prof.rank > 100) ? 5000 + (parseInt(prof.rank) - 100) * 20 : 1000 + (parseInt(prof.rank)) * 40
-          var baseHP = (prof.rank > 100) ? 1400 + (parseInt(prof.rank) - 100) * 4.0 : 600 + (parseInt(prof.rank)) * 8
-          var element = (prof.element == undefined) ? "fire" : prof.element
-          var djeetaRemainHP = (prof.remainHP != undefined && parseInt(prof.remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(prof.remainHP) : 0.01 * parseInt(prof.hp)
-          var djeetaDA = (prof.DA == undefined) ? 6.5 : parseFloat(prof.DA)
-          var djeetaTA = (prof.TA == undefined) ? 3.0 : parseFloat(prof.TA)
-          var job = (prof.job == undefined) ? Jobs["none"] : Jobs[prof.job]
 
-          var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true}};
-
-
-          for(var i = 0; i < chara.length; i++){
-              if(chara[i].name != "") {
-                  var charaelement = (chara[i].element == undefined) ? "fire" : chara[i].element
-                  var charaDA = (chara[i].DA == undefined) ? 6.5 : chara[i].DA
-                  var charaTA = (chara[i].TA == undefined) ? 3.0 : chara[i].TA
-                  var charaRemainHP = (chara[i].remainHP != undefined && parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(chara[i].remainHP) : 0.01 * parseInt(prof.hp)
-                  var charaConsidered = (chara[i].isConsideredInAverage == undefined) ? true : chara[i].isConsideredInAverage
-
-                  // key 重複対応
-                  var charakey = chara[i].name;
-                  var k = 1;
-                  while(charakey in totals) {
-                      charakey = chara[i].name + k
-                      k++;
-                  }
-
-                  totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: charaConsidered}
-              }
-          }
+          var totals = this.getInitialTotals(prof, chara)
+          var totalItr = combinations.length * summon.length * Object.keys(totals).length
 
           for(var i = 0; i < combinations.length; i++){
-              var oneres = this.calculateOneCombination(combinations[i], summon, prof, arml, totals, totalBuff, chara)
+              var oneres = this.calculateOneCombination(combinations[i], summon, prof, arml, totals, totalBuff)
               for(var j = 0; j < summon.length; j++){
                   res[j].push({data: oneres[j], armNumbers: combinations[i]});
               }
+              this.initializeTotals(totals)
           }
           // この時点で summonres は"各召喚石に対応する結果データの連想配列 を並べた配列"の配列になっているはず
 
@@ -40467,7 +47290,322 @@ var ResultList = React.createClass({displayName: "ResultList",
       } else {
           return {summon: summon, result: []}
       }
+    },
+    getInitialState: function() {
+        return {
+            switchTotalAttack: 1,
+            switchATKandHP: 0,
+            switchHP: 0,
+            switchCharaHP: 0,
+            switchDATA: 0,
+            switchExpectedAttack: 0,
+            switchCharaExpectedAttack: 0,
+            switchCriticalRatio: 0,
+            switchCharaAttack: 0,
+            switchAverageAttack: 0,
+            switchTotalExpected: 0,
+            switchAverageTotalExpected: 0,
+            switchDamage: 0,
+            switchOugiGage: 0,
+            switchOugiDamage: 0,
+            switchCycleDamage: 0,
+            switchAverageCycleDamage: 0,
+            disableAutoResultUpdate: 0,
+            result: {summon: this.props.data.summon, result: []},
+            haisuiSortKey: "totalAttack",
+            haisuiData: {},
+            storedList: {"combinations": [], "armlist": []},
+            openHPChart: false,
+            hpChartButtonActive: false,
+            openHPChartTutorial: false,
+        };
+    },
+    closeHPChart: function() {
+        this.setState({openHPChart: false})
+    },
+    closeHPChartTutorial: function() {
+        this.setState({openHPChartTutorial: false})
+    },
+    openHPChartTutorial: function() {
+        this.setState({openHPChartTutorial: true})
+    },
+    componentWillReceiveProps: function(nextProps) {
+        if(this.state.disableAutoResultUpdate != 1 && (nextProps.data.noResultUpdate == undefined || !nextProps.data.noResultUpdate)){
+            var allresult = this.calculateResult(nextProps);
+            this.setState({result: allresult});
+        }
 
+        // armlistが変更されていないかcheck => 変更されてたら今までの分消す
+        var isArmValid = true
+        for(var i = 0; i < this.state.storedList.combinations.length; i++) {
+            if(nextProps.data.armlist.length != this.state.storedList.armlist[i].length) {
+                isArmValid = false
+                continue;
+            }
+            for(var k = 0; k < nextProps.data.armlist.length; k++){
+                // 名前と攻撃力が同時に変更されていた場合、削除や追加などが起こっていると予想される
+                if(nextProps.data.armlist[k].name != this.state.storedList.armlist[i][k].name && nextProps.data.armlist[k].attack != this.state.storedList.armlist[i][k].attack ) {
+                    isArmValid = false
+                    break;
+                }
+            }
+        }
+        if(!isArmValid){
+            this.setState({storedList: {"combinations": [], "armlist": []}})
+            this.setState({hpChartButtonActive: false})
+        }
+    },
+    handleEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = (newState[key] == 0) ? 1 : 0
+
+        // 自動更新ONにしたらUPDATEする
+        if(key == "disableAutoResultUpdate" && newState[key] == 0){
+            newState["result"] = this.calculateResult(this.props)
+        }
+        this.setState(newState)
+    },
+    openHPChart: function() {
+        var storedCombinations = this.state.storedList.combinations
+        var storedArmlist = this.state.storedList.armlist
+
+        var prof = this.props.data.profile; var arml = this.props.data.armlist;
+        var summon = this.props.data.summon; var chara = this.props.data.chara;
+        var totalBuff = this.getTotalBuff(prof)
+        var totals = this.getInitialTotals(prof, chara)
+
+        var sortkey = "totalAttack"
+        var sortkeyname = "総合攻撃力"
+        if(this.props.data.sortKey == this.props.data.sortKey) {
+            sortkey = this.props.data.sortKey
+            sortkeyname = keyTypes[sortkey]
+        }
+
+        var res = []
+        for(var i = 0; i < summon.length; i++){
+            res[i] = []
+        }
+
+        for(var i = 0; i < storedCombinations.length; i++){
+            var oneres = this.calculateOneCombination(storedCombinations[i], summon, prof, arml, totals, totalBuff)
+            for(var j = 0; j < summon.length; j++){
+                res[j].push({data: oneres[j], armNumbers: storedCombinations[i]});
+            }
+            this.initializeTotals(totals)
+        }
+        // resに再計算されたデータが入っている状態
+        // res[summonind][rank]
+        this.setState({haisuiData: this.generateHaisuiData(res, arml, summon, prof, storedCombinations)})
+        this.setState({haisuiSortKey: sortkey})
+        this.setState({openHPChart: true})
+    },
+    generateHaisuiData: function(res, arml, summon, prof, storedCombinations) {
+        var data = {}
+        var minMaxArr = {
+            "totalAttack": {"max": 0, "min": 0},
+            "totalHP": {"max": 0, "min": 0},
+            "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
+            "averageAttack": {"max": 0, "min": 0},
+            "averageCyclePerTurn": {"max": 0, "min": 0},
+        }
+
+        for(var s = 0; s < res.length; s++) {
+            var oneresult = res[s]
+            var summonHeader = ""
+            if(summon[s].selfSummonType == "odin"){
+                summonHeader += "属性攻" + summon[s].selfSummonAmount + "キャラ攻" + summon[s].selfSummonAmount2
+            } else {
+                summonHeader += summonElementTypes[summon[s].selfElement].name + summonTypes[summon[s].selfSummonType] + summon[s].selfSummonAmount
+            }
+
+            summonHeader += " + "
+            if(summon[s].friendSummonType == "odin"){
+                summonHeader += "属性攻" + summon[s].friendSummonAmount + "キャラ攻" + summon[s].friendSummonAmount2
+            } else {
+                summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
+            }
+            var TotalAttack = [["残りHP(%)"]]; var CycleDamagePerTurn = [["残りHP(%)"]]; var AverageTotalAttack = [["残りHP(%)"]]; var AverageCycleDamagePerTurn = [["残りHP(%)"]];
+            var TotalHP = [["残りHP(%)"]]
+            for(var m = 1; m < 101; m++){
+                TotalAttack.push([m.toString() + "%"])
+                CycleDamagePerTurn.push([m.toString() + "%"])
+                TotalHP.push([m.toString() + "%"])
+                AverageTotalAttack.push([m.toString() + "%"])
+                AverageCycleDamagePerTurn.push([m.toString() + "%"])
+
+                // 合計値を足すために先に要素を追加しておく
+                // (key の 処理順が不明のため)
+                for(var j = 0; j < oneresult.length; j++){
+                    AverageTotalAttack[m].push(0)
+                    AverageCycleDamagePerTurn[m].push(0)
+                }
+            }
+
+            for(var j = 0; j < oneresult.length; j++){
+                var onedata = oneresult[j].data
+                var cnt = Object.keys(onedata).length
+
+                var title = "No. " + (j+1).toString() + ":"
+                for(var i=0; i < arml.length; i++){
+                    if(storedCombinations[j][i] > 0) {
+                        var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
+                        title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                    }
+                }
+                for(key in onedata){
+                    var totalSummon = onedata[key].totalSummon
+                    var normalHaisuiOrig = 0.01 * onedata[key].skilldata.normalHaisui
+                    var magnaHaisuiOrig = 0.01 * onedata[key].skilldata.magnaHaisui
+                    var normalKonshinOrig = 0.01 * onedata[key].skilldata.normalKonshin
+                    var totalAttackWithoutHaisui = onedata[key].totalAttack / ((1.0 + normalHaisuiOrig) * (1.0 + magnaHaisuiOrig) * (1.0 + normalKonshinOrig))
+                    var haisuiBuff = []
+                    for(var k = 0; k < 100; k++){
+                        haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0})
+                    }
+                    for(var i=0; i < arml.length; i++){
+                        var arm = arml[i]
+                        for(var jj = 1; jj <= 2; jj++){
+                            var skillname = '';
+                            var element = ''; (arm.element == undefined) ? "fire" : arm.element
+                            if(jj == 1) {
+                                skillname = arm.skill1
+                                element = (arm.element == undefined) ? "fire" : arm.element
+                            } else {
+                                skillname = arm.skill2
+                                element = (arm.element2 == undefined) ? "fire" : arm.element2
+                            }
+
+                            if(skillname != 'non' && onedata[key].element == element){
+                                var stype = skilltypes[skillname].type;
+                                var amount = skilltypes[skillname].amount;
+                                var slv = parseInt(arm.slv)
+
+                                // mask invalid slv
+                                if(slv == 0) slv = 1
+
+                                if(stype == "normalHaisui" || stype == "magnaHaisui"){
+                                    for(var l=0; l < haisuiBuff.length; l++) {
+                                        var remainHP = 0.01 * (l + 1)
+                                        var baseRate = 0.0
+                                        if(amount == "S") {
+                                            // 小
+                                            if(slv < 10) {
+                                                baseRate = -0.3 + slv * 1.8;
+                                            } else {
+                                                baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
+                                            }
+                                        } else if ( amount == "M" ){
+                                            // 中
+                                            if(slv < 10) {
+                                                baseRate = -0.4 + slv * 2.4;
+                                            } else {
+                                                baseRate = 24 + 3.0 * ((slv - 10) / 5.0)
+                                            }
+                                        } else {
+                                            // 大
+                                            if(slv < 10) {
+                                                baseRate = -0.5 + slv * 3.0;
+                                            } else {
+                                                baseRate = 30 + 3.0 * ((slv - 10) / 5.0)
+                                            }
+                                        }
+                                        if(stype == "normalHaisui") {
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 ) * totalSummon.zeus
+                                        } else {
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 ) * totalSummon.magna
+                                        }
+                                    }
+                                } else if(stype == "normalKonshin" || stype == "magnaKonshin"){
+                                    for(var l=0; l < haisuiBuff.length; l++) {
+                                        var remainHP = 0.01 * (l + 1)
+                                        var baseRate = 0.0
+                                        if(amount == "S") {
+                                            // 小
+                                            if(slv < 10) {
+                                                baseRate = -0.3 + slv * 1.8;
+                                            } else {
+                                                baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
+                                            }
+                                        } else if ( amount == "M" ){
+                                            // 中
+                                            if(slv < 10) {
+                                                baseRate = -0.4 + slv * 2.4;
+                                            } else {
+                                                baseRate = 24 + 3.0 * ((slv - 10) / 5.0)
+                                            }
+                                        } else {
+                                            if(slv <= 10) {
+                                                baseRate = 10.0 + slv * 1.0;
+                                            } else {
+                                                baseRate = 20.0 + ((slv - 10) * 0.6);
+                                            }
+                                        }
+                                        if(stype == "normalKonshin") {
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * baseRate * remainHP * totalSummon.zeus
+                                        } else {
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * baseRate * remainHP * totalSummon.magna
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    for(var k = 0; k < 100; k++){
+                        var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin
+                        if(key == "Djeeta") TotalAttack[k + 1].push( parseInt(newTotalAttack) )
+                        if(key == "Djeeta") TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
+
+                        var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
+                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio)
+                        var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
+                        if(key == "Djeeta") CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
+
+                        AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
+                        AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                    }
+                }
+                TotalAttack[0].push(title)
+                TotalHP[0].push(title)
+                CycleDamagePerTurn[0].push(title)
+                AverageTotalAttack[0].push(title)
+                AverageCycleDamagePerTurn[0].push(title)
+            }
+
+            data[summonHeader] = {}
+            data[summonHeader]["totalAttack"] = TotalAttack
+            data[summonHeader]["expectedCycleDamagePerTurn"] = CycleDamagePerTurn
+            data[summonHeader]["averageAttack"] = AverageTotalAttack
+            data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
+            data[summonHeader]["totalHP"] = TotalHP
+        }
+
+        // グラフ最大値最小値を抽出
+        for(key in minMaxArr) {
+            for(summonkey in data) {
+                for(var k = 1; k <= 100; k++){
+                    for(var j = 1; j <= res[0].length; j++){
+                        // グラフ最大値最小値を保存
+                        if(data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j]
+                        if(data[summonkey][key][k][j] < minMaxArr[key]["min"] || minMaxArr[key]["min"] == 0) minMaxArr[key]["min"] = data[summonkey][key][k][j]
+                    }
+                }
+            }
+        }
+        data["minMaxArr"] = minMaxArr
+        return data
+    },
+    addHaisuiData: function(id, summonid) {
+        var newStored = this.state.storedList
+        newStored["combinations"].push(JSON.parse(JSON.stringify(this.state.result.result[summonid][id].armNumbers)))
+        newStored["armlist"].push(JSON.parse(JSON.stringify(this.props.data.armlist)))
+        this.setState({storedList: newStored})
+        this.setState({hpChartButtonActive: true})
+    },
+    resetStoredList: function(e) {
+        this.setState({storedList: {"combinations": [], "armlist": []}})
+        this.setState({openHPChart: false})
+        this.setState({hpChartButtonActive: false})
     },
     render: function() {
         res = this.state.result;
@@ -40476,6 +47614,7 @@ var ResultList = React.createClass({displayName: "ResultList",
         var chara = this.props.data.chara
         var summondata = res.summon
         var result = res.result
+        var onAddToHaisuiData = this.addHaisuiData
 
         switcher = this.state;
         var armnames = []
@@ -40507,13 +47646,13 @@ var ResultList = React.createClass({displayName: "ResultList",
             tableheader.push('連続攻撃率(%)')
         }
         if(switcher.switchExpectedAttack) {
-            tableheader.push('期待攻撃回数 (期待攻撃力)')
+            tableheader.push("期待攻撃回数\n(期待攻撃力)")
         }
         if(switcher.switchCriticalRatio) {
-            tableheader.push('技巧期待値 (期待攻撃力, 平均攻撃力)')
+            tableheader.push("技巧期待値\n(期待攻撃力, 平均攻撃力)")
         }
         if(switcher.switchHP) {
-            tableheader.push('HP (残HP)')
+            tableheader.push("HP\n(残HP)")
         }
         if(switcher.switchCharaHP) {
             for(var i = 0; i < chara.length; i++){
@@ -40523,7 +47662,7 @@ var ResultList = React.createClass({displayName: "ResultList",
             }
         }
         if(switcher.switchAverageAttack) {
-            tableheader.push('平均攻撃力')
+            tableheader.push('パーティ平均攻撃力')
         }
         if(switcher.switchTotalExpected) {
             tableheader.push('総合*回数*技巧')
@@ -40534,8 +47673,21 @@ var ResultList = React.createClass({displayName: "ResultList",
         if(switcher.switchDamage) {
             tableheader.push("単攻撃ダメージ\n(期待回数*単ダメージ)")
         }
+        if(switcher.switchOugiGage) {
+            tableheader.push("ターン毎の\n奥義ゲージ上昇量")
+        }
+        if(switcher.switchOugiDamage) {
+            tableheader.push("奥義ダメージ")
+        }
+        if(switcher.switchCycleDamage) {
+            tableheader.push("予想ターン毎ダメージ")
+        }
+        if(switcher.switchAverageCycleDamage) {
+            tableheader.push("予想ターン毎ダメージ\nのパーティ平均値")
+        }
 
-        var remainHPstr = "ジータHP";
+        var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name
+        var remainHPstr = "ジータ(" + job + ")HP";
         if(prof.remainHP != undefined) {
             remainHPstr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? prof.remainHP : prof.hp
         } else {
@@ -40553,6 +47705,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                 remainHPstr += "%"
             }
         }
+        remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%"
 
         if(_ua.Mobile) {
             return (
@@ -40577,7 +47730,13 @@ var ResultList = React.createClass({displayName: "ResultList",
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値")
                     ), React.createElement("tr", null, 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総回技のパーティ平均値"), 
-                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchDamage, onChange: this.handleEvent.bind(this, "switchDamage")}), " 予想ダメージ")
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchDamage, onChange: this.handleEvent.bind(this, "switchDamage")}), " 単攻撃ダメージ")
+                    ), React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchOugiGage, onChange: this.handleEvent.bind(this, "switchOugiGage")}), "奥義ゲージ上昇期待値"), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchOugiDamage, onChange: this.handleEvent.bind(this, "switchOugiDamage")}), "奥義ダメージ")
+                    ), React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchCycleDamage, onChange: this.handleEvent.bind(this, "switchCycleDamage")}), "予想ターン毎ダメージ"), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageCycleDamage, onChange: this.handleEvent.bind(this, "switchAverageCycleDamage")}), "予想ターン毎ダメージの平均値")
                     )
                     )
                     ), 
@@ -40585,8 +47744,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                     "動作制御:", 
                     React.createElement(Checkbox, {inline: true, checked: this.state.disableAutoResultUpdate, onChange: this.handleEvent.bind(this, "disableAutoResultUpdate")}), " 自動更新を切る", 
                     React.createElement("span", null, " / 計算総数:", res.totalItr, "組(1万超の場合、計算に時間がかかります)"), 
-                    React.createElement("div", {className: "divright"}, React.createElement("h3", null, remainHPstr)), 
-                    React.createElement("hr", null), 
+                    React.createElement(Button, {bsStyle: "primary", bsSize: "large", block: true, onClick: this.openHPChart, disabled: !this.state.hpChartButtonActive}, "背水渾身グラフを開く(beta)"), 
                     summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
@@ -40605,7 +47763,8 @@ var ResultList = React.createClass({displayName: "ResultList",
                         return(
                             React.createElement("div", {key: summonindex, className: "result"}, 
                                 React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " (", res.sortkeyname, ")"), 
-                                React.createElement("table", null, 
+                                React.createElement("div", {className: "charainfo"}, React.createElement("span", null, remainHPstr)), 
+                                React.createElement("table", {className: "table table-bordered"}, 
                                 React.createElement("thead", {className: "result"}, 
                                 React.createElement("tr", null, 
                                     React.createElement("th", null, "順位"), 
@@ -40616,15 +47775,64 @@ var ResultList = React.createClass({displayName: "ResultList",
                                             return React.createElement("th", {key: ind, className: "resultFirst"}, m);
                                         } else {
                                             return React.createElement("th", {key: ind, className: "resultList"}, m);
-                                        }})
+                                        }}), 
                                     
+                                    React.createElement("th", null, "操作")
                                 )
                                 ), 
-                                React.createElement(Result, {key: summonindex, data: result[summonindex], switcher: switcher, arm: arm, prof: prof})
+                                React.createElement(Result, {key: summonindex, summonid: summonindex, data: result[summonindex], switcher: switcher, arm: arm, prof: prof, onAddToHaisuiData: onAddToHaisuiData})
                                 )
                             )
                         );
-                    })
+                    }), 
+                    React.createElement(Modal, {className: "hpChart", show: this.state.openHPChart, onHide: this.closeHPChart}, 
+                        React.createElement(Modal.Header, {closeButton: true}, 
+                            React.createElement(Modal.Title, null, "HP Charts (", remainHPstr, ")"), 
+                            React.createElement(Button, {bsStyle: "primary", onClick: this.openHPChartTutorial}, "使い方"), 
+                            React.createElement(Button, {bsStyle: "danger", onClick: this.resetStoredList}, "保存された編成を全て削除")
+                        ), 
+                        React.createElement(Modal.Body, null, 
+                            React.createElement(HPChart, {data: this.state.haisuiData, sortKey: this.state.haisuiSortKey}), 
+                            React.createElement(Modal, {className: "hpChartTutotial", show: this.state.openHPChartTutorial, onHide: this.closeHPChartTutorial}, 
+                                React.createElement(Modal.Header, {closeButton: true}, 
+                                    React.createElement(Modal.Title, null, "HP Chartsの使い方")
+                                ), 
+                                React.createElement(Modal.Body, null, 
+                                    React.createElement("p", null, "HPチャート機能は「保存された武器編成の攻撃力等を、残りHP割合ごとに再計算する」機能です。"), 
+                                    React.createElement("h2", null, "1."), 
+                                    React.createElement("p", null, "適当に編成を計算した後、グラフを見たい編成をグラフに加えます。"), 
+                                    React.createElement(Thumbnail, {alt: "HPチャート操作1", src: "./otherImages/hpChartTutorial1.png"}
+                                    ), 
+                                    React.createElement("h2", null, "2."), 
+                                    React.createElement("p", null, "グラフに加えると、「背水渾身チャートを開く」ボタンが有効化されるので、クリックします。"), 
+                                    React.createElement("h2", null, "3."), 
+                                    React.createElement("p", null, "「優先する項目」に設定されている値を描画したグラフが表示されます。"), 
+                                    React.createElement(Thumbnail, {alt: "HPチャート操作1", src: "./otherImages/hpChartTutorial2.png"}
+                                    ), 
+                                    React.createElement("p", {className: "text-danger"}, "まだサポートされていない要素が「優先する項目」に設定されている場合、\"総合攻撃力\"のグラフに変更されます。"), 
+                                    React.createElement("h2", null, "4."), 
+                                    React.createElement("p", null, "上部の選択ボタンで、他の要素を表示することも可能です。"), 
+                                    React.createElement(Thumbnail, {alt: "HPチャート操作1", src: "./otherImages/hpChartTutorial3.png"}
+                                    ), 
+                                    React.createElement("h2", null, "5."), 
+                                    React.createElement("p", null, "複数の召喚石組み合わせが設定されている場合、複数のグラフが作成されます。"), 
+                                    React.createElement(Thumbnail, {alt: "HPチャート操作1", src: "./otherImages/hpChartTutorial4.png"}
+                                    ), 
+                                    React.createElement("p", {className: "text-danger"}, "現在は、ある組み合わせをグラフに保存すると、全てのグラフに追加されるようになっています。" + ' ' +
+                                    "これを召喚石別にするかどうかは、今後検討します。"), 
+                                    React.createElement("h2", null, "注記"), 
+                                    React.createElement("p", null, "編成として保存されるのは「武器の組み合わせの本数」のみです。" + ' ' +
+                                    "そのため、武器攻撃力やバフ量などを変更した場合、結果のグラフも自動的に変更されます。"), 
+                                    React.createElement("p", {className: "text-danger"}, "武器枠の数が追加/削除された場合、武器枠のデータがリセットされた場合は、" + ' ' +
+                                    "保存されている編成はリセットされてしまいますのでご注意下さい。" + ' ' +
+                                    "これは、武器組み合わせのみを保存しているため、誤って組み合わせで再計算されることを防ぐためです。"), 
+                                    React.createElement("p", null, "また、現在「追加した特定のグラフを削除する」機能は実装されておりませんので、" + ' ' +
+                                    "グラフが多くなりすぎてしまった場合、全削除を行い、保存されている編成をリセットしてください。"), 
+                                    React.createElement("p", null, "ご要望・不具合等あればお知らせ下さい。")
+                                )
+                            )
+                        )
+                    )
                 )
             );
 
@@ -40646,7 +47854,15 @@ var ResultList = React.createClass({displayName: "ResultList",
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総回技のパーティ平均値"), 
-                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchDamage, onChange: this.handleEvent.bind(this, "switchDamage")}), " 予想ダメージ")
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchDamage, onChange: this.handleEvent.bind(this, "switchDamage")}), " 単攻撃ダメージ")
+                    ), 
+                    React.createElement("tr", null, 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchOugiGage, onChange: this.handleEvent.bind(this, "switchOugiGage")}), " 奥義ゲージ上昇期待値 "), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchOugiDamage, onChange: this.handleEvent.bind(this, "switchOugiDamage")}), " 奥義ダメージ "), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchCycleDamage, onChange: this.handleEvent.bind(this, "switchCycleDamage")}), " 予想ターン毎ダメージ "), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageCycleDamage, onChange: this.handleEvent.bind(this, "switchAverageCycleDamage")}), " 予想ターン毎ダメージの平均値 "), 
+                        React.createElement("td", null), 
+                        React.createElement("td", null)
                     )
                     )), 
                     React.createElement("br", null), 
@@ -40654,8 +47870,8 @@ var ResultList = React.createClass({displayName: "ResultList",
                     React.createElement(Checkbox, {inline: true, className: "autoupdate", checked: this.state.disableAutoResultUpdate, onChange: this.handleEvent.bind(this, "disableAutoResultUpdate")}), " 自動更新を切る", 
 
                     React.createElement("span", null, " / 計算総数:", res.totalItr, "組(1万超の場合、計算に時間がかかります)"), 
-                    React.createElement("div", {className: "divright"}, React.createElement("h3", null, remainHPstr)), 
                     React.createElement("hr", null), 
+                    React.createElement(Button, {bsStyle: "primary", bsSize: "large", block: true, onClick: this.openHPChart, disabled: !this.state.hpChartButtonActive}, "背水渾身グラフを開く(beta)"), 
                     summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
@@ -40674,7 +47890,8 @@ var ResultList = React.createClass({displayName: "ResultList",
                         return(
                             React.createElement("div", {key: summonindex, className: "result"}, 
                                 React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " (", res.sortkeyname, ")"), 
-                                React.createElement("table", null, 
+                                React.createElement("div", {className: "charainfo"}, React.createElement("span", null, remainHPstr)), 
+                                React.createElement("table", {className: "table table-bordered"}, 
                                 React.createElement("thead", {className: "result"}, 
                                 React.createElement("tr", null, 
                                     React.createElement("th", null, "順位"), 
@@ -40685,26 +47902,168 @@ var ResultList = React.createClass({displayName: "ResultList",
                                             return React.createElement("th", {key: ind, className: "resultFirst"}, m);
                                         } else {
                                             return React.createElement("th", {key: ind, className: "resultList"}, m);
-                                        }})
+                                        }}), 
                                     
+                                    React.createElement("th", null, "操作")
                                 )
                                 ), 
-                                React.createElement(Result, {key: summonindex, data: result[summonindex], switcher: switcher, arm: arm, prof: prof})
+                                React.createElement(Result, {key: summonindex, summonid: summonindex, data: result[summonindex], switcher: switcher, arm: arm, prof: prof, onAddToHaisuiData: onAddToHaisuiData})
                                 )
                             )
                         );
-                    })
+                    }), 
+                    React.createElement(Modal, {className: "hpChart", show: this.state.openHPChart, onHide: this.closeHPChart}, 
+                        React.createElement(Modal.Header, {closeButton: true}, 
+                            React.createElement(Modal.Title, null, "HP Charts (", remainHPstr, ")"), 
+                            React.createElement(Button, {bsStyle: "primary", onClick: this.openHPChartTutorial}, "使い方"), 
+                            React.createElement(Button, {bsStyle: "danger", onClick: this.resetStoredList}, "保存された編成を全て削除")
+                        ), 
+                        React.createElement(Modal.Body, null, 
+                            React.createElement(HPChart, {data: this.state.haisuiData, sortKey: this.state.haisuiSortKey}), 
+                            React.createElement(Modal, {className: "hpChartTutotial", show: this.state.openHPChartTutorial, onHide: this.closeHPChartTutorial}, 
+                                React.createElement(Modal.Header, {closeButton: true}, 
+                                    React.createElement(Modal.Title, null, "HP Chartsの使い方")
+                                ), 
+                                React.createElement(Modal.Body, null, 
+                                    React.createElement("p", null, "HPチャート機能は「保存された武器編成の攻撃力等を、残りHP割合ごとに再計算する」機能です。"), 
+                                    React.createElement("h2", null, "1."), 
+                                    React.createElement("p", null, "適当に編成を計算した後、グラフを見たい編成をグラフに加えます。"), 
+                                    React.createElement(Thumbnail, {alt: "HPチャート操作1", src: "./otherImages/hpChartTutorial1.png"}
+                                    ), 
+                                    React.createElement("h2", null, "2."), 
+                                    React.createElement("p", null, "グラフに加えると、「背水渾身チャートを開く」ボタンが有効化されるので、クリックします。"), 
+                                    React.createElement("h2", null, "3."), 
+                                    React.createElement("p", null, "「優先する項目」に設定されている値を描画したグラフが表示されます。"), 
+                                    React.createElement(Thumbnail, {alt: "HPチャート操作1", src: "./otherImages/hpChartTutorial2.png"}
+                                    ), 
+                                    React.createElement("p", {className: "text-danger"}, "まだサポートされていない要素が「優先する項目」に設定されている場合、\"総合攻撃力\"のグラフに変更されます。"), 
+                                    React.createElement("h2", null, "4."), 
+                                    React.createElement("p", null, "上部の選択ボタンで、他の要素を表示することも可能です。"), 
+                                    React.createElement(Thumbnail, {alt: "HPチャート操作1", src: "./otherImages/hpChartTutorial3.png"}
+                                    ), 
+                                    React.createElement("h2", null, "5."), 
+                                    React.createElement("p", null, "複数の召喚石組み合わせが設定されている場合、複数のグラフが作成されます。"), 
+                                    React.createElement(Thumbnail, {alt: "HPチャート操作1", src: "./otherImages/hpChartTutorial4.png"}
+                                    ), 
+                                    React.createElement("p", {className: "text-danger"}, "現在は、ある組み合わせをグラフに保存すると、全てのグラフに追加されるようになっています。" + ' ' +
+                                    "これを召喚石別にするかどうかは、今後検討します。"), 
+                                    React.createElement("h2", null, "注記"), 
+                                    React.createElement("p", null, "編成として保存されるのは「武器の組み合わせの本数」のみです。" + ' ' +
+                                    "そのため、武器攻撃力やバフ量などを変更した場合、結果のグラフも自動的に変更されます。"), 
+                                    React.createElement("p", {className: "text-danger"}, "武器枠の数が追加/削除された場合、武器枠のデータがリセットされた場合は、" + ' ' +
+                                    "保存されている編成はリセットされてしまいますのでご注意下さい。" + ' ' +
+                                    "これは、武器組み合わせのみを保存しているため、誤って組み合わせで再計算されることを防ぐためです。"), 
+                                    React.createElement("p", null, "また、現在「追加した特定のグラフを削除する」機能は実装されておりませんので、" + ' ' +
+                                    "グラフが多くなりすぎてしまった場合、全削除を行い、保存されている編成をリセットしてください。"), 
+                                    React.createElement("p", null, "ご要望・不具合等あればお知らせ下さい。")
+                                )
+                            )
+                        )
+                    )
                 )
             );
         }
     }
 });
 
+var HPChart = React.createClass({displayName: "HPChart",
+    getInitialState: function() {
+        var sortKey = this.props.sortKey
+        if(!(sortKey in supportedChartSortkeys)) sortKey = "totalAttack"
+
+        options = {}
+        for(key in this.props.data) {
+            if(key != "minMaxArr") {
+                options[key] = {
+                    title: key,
+                    curveType: 'function',
+                    forcelFrame: true,
+                    hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                    vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                    tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true},
+                    legend: {position: "bottom"},
+                }
+            }
+        }
+
+        return {
+            options: options,
+            sortKey: sortKey,
+        }
+    },
+    handleEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+
+        // optionsをupdate
+        options = {}
+        for(key in this.props.data) {
+            if(key != "minMaxArr") {
+                options[key] = {
+                    title: key,
+                    forcelFrame: true,
+                    curveType: 'function',
+                    hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                    vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
+                    tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true},
+                    legend: {position: "bottom"},
+                }
+            }
+        }
+        newState.options = options
+
+        this.setState(newState)
+    },
+    render: function() {
+        var options = this.state.options
+        var data = this.props.data
+        var sortKey = this.state.sortKey
+
+        if(_ua.Mobile) {
+            return (
+                    React.createElement("div", {className: "HPChart"}, 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, select_supported_chartsortkeys), 
+                        Object.keys(data).map(function(key, ind) {
+                            if(key != "minMaxArr") {
+                                return React.createElement(Chart, {chartType: "LineChart", className: "LineChart", data: data[key][sortKey], key: key, options: options[key], graph_id: "LineChart" + ind, width: "100%", height: "50%", legend_toggle: true})
+                            }
+                        })
+                    )
+            );
+        } else {
+            if(window.innerWidth >= 1450) {
+                var width = (100.0 / (Object.keys(data).length - 1))
+                if(Object.keys(data).length - 1 > 2) {
+                    width = 50
+                }
+            } else {
+                var width = 100.0
+            }
+
+            return (
+                    React.createElement("div", {className: "HPChart"}, 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, select_supported_chartsortkeys), 
+                        Object.keys(data).map(function(key, ind) {
+                            if(key != "minMaxArr") {
+                                return React.createElement(Chart, {chartType: "LineChart", className: "LineChart", data: data[key][sortKey], key: key, options: options[key], graph_id: "LineChart" + ind, width: width + "%", height: "600px", legend_toggle: true})
+                            }
+                        })
+                    )
+            );
+
+        }
+    },
+});
+
 var Result = React.createClass({displayName: "Result",
+    onClick: function(e) {
+        this.props.onAddToHaisuiData(e.target.id, this.props.summonid)
+    },
     render: function() {
         var sw = this.props.switcher;
         var arm = this.props.arm;
         var prof = this.props.prof;
+        var onClick = this.onClick;
         return (
             React.createElement("tbody", {className: "result"}, 
                 this.props.data.map(function(m, rank) {
@@ -40736,7 +48095,7 @@ var Result = React.createClass({displayName: "Result",
                     }
                     if(sw.switchATKandHP) {
                         var senryoku = parseInt(m.data.Djeeta.displayAttack) + parseInt(m.data.Djeeta.displayHP)
-                        tablebody.push(senryoku + ' (' + parseInt(m.data.Djeeta.displayAttack) + ' + ' + parseInt(m.data.Djeeta.displayHP) + ')')
+                        tablebody.push(senryoku + "\n(" + parseInt(m.data.Djeeta.displayAttack) + ' + ' + parseInt(m.data.Djeeta.displayHP) + ')')
                     }
                     if(sw.switchCharaAttack) {
                         for(key in m.data){
@@ -40746,22 +48105,22 @@ var Result = React.createClass({displayName: "Result",
                         }
                     }
                     if(sw.switchDATA) {
-                        tablebody.push('DA:' + m.data.Djeeta.totalDA.toFixed(1) + '%, TA: ' + m.data.Djeeta.totalTA.toFixed(1) + '%')
+                        tablebody.push('DA:' + m.data.Djeeta.totalDA.toFixed(1) + '%,\n TA: ' + m.data.Djeeta.totalTA.toFixed(1) + '%')
                     }
                     if(sw.switchExpectedAttack) {
                         var expectedAttack = parseInt(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack)
-                        tablebody.push(m.data.Djeeta.expectedAttack.toFixed(2) + "(" + expectedAttack + ")")
+                        tablebody.push(m.data.Djeeta.expectedAttack.toFixed(2) + "\n(" + expectedAttack + ")")
                     }
                     if(sw.switchCriticalRatio) {
-                        tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "(" + m.data.Djeeta.criticalAttack + ", " + m.data.Djeeta.averageCriticalAttack + ")")
+                        tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "\n(" + m.data.Djeeta.criticalAttack + ", " + m.data.Djeeta.averageCriticalAttack + ")")
                     }
                     if(sw.switchHP) {
-                        tablebody.push(m.data.Djeeta.totalHP + "(" + parseInt(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")")
+                        tablebody.push(m.data.Djeeta.totalHP + "\n(" + parseInt(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")")
                     }
                     if(sw.switchCharaHP) {
                         for(key in m.data){
                             if(key != "Djeeta") {
-                                tablebody.push(m.data[key].totalHP + "(" + parseInt(m.data[key].totalHP * m.data[key].remainHP) + ")")
+                                tablebody.push(m.data[key].totalHP + "\n(" + parseInt(m.data[key].totalHP * m.data[key].remainHP) + ")")
                             }
                         }
                     }
@@ -40775,50 +48134,77 @@ var Result = React.createClass({displayName: "Result",
                         tablebody.push(m.data.Djeeta.averageTotalExpected)
                     }
                     if(sw.switchDamage) {
-                        var def = (prof.enemyDefense == undefined) ? 10 : prof.enemyDefense
-                        var damage = m.data.Djeeta.totalAttack / def
-                        var overedDamage = 0
-                        // 補正1
-                        if(damage > 300000) {
-                            overedDamage = 0.70 * (damage - 300000)
-                            damage = 300000 + overedDamage
-                        }
-                        // 補正2
-                        if(damage > 350000) {
-                            overedDamage = 0.40 * (damage - 350000)
-                            damage = 350000 + overedDamage
-                        }
-                        // 補正3
-                        if(damage > 400000) {
-                            overedDamage = 0.10 * (damage - 400000)
-                            damage = 400000 + overedDamage
-                        }
-                        // 補正4
-                        if(damage > 450000) {
-                            overedDamage = 0.01 * (damage - 450000)
-                            damage = 450000 + overedDamage
-                        }
-
+                        var damage = m.data.Djeeta.damage
                         var expectedDamage = m.data.Djeeta.expectedAttack * damage
-                        tablebody.push(parseInt(damage) + "(" + parseInt(expectedDamage) + ")")
+                        tablebody.push(parseInt(damage) + "\n(" + parseInt(expectedDamage) + ")")
                     }
-                    return (
-                        React.createElement("tr", {className: "result", title: skillstr, key: rank + 1}, 
-                            React.createElement("td", null, rank + 1), 
-                            tablebody.map(function(am, ind){
-                                return (React.createElement("td", {key: ind}, am));
-                            }), 
-                            m.armNumbers.map(function(am, ind){
-                                if(arm[ind].considerNumberMax != 0) {
-                                    if(ind == 0){
-                                        return (React.createElement("td", {key: ind, className: "resultFirst"}, am, " 本"));
-                                    } else {
-                                        return (React.createElement("td", {key: ind, className: "resultList"}, am, " 本"));
+                    if(sw.switchOugiGage) {
+                        tablebody.push(m.data.Djeeta.expectedOugiGage.toFixed(2) + "%\n(" + m.data.Djeeta.expectedTurn + "ターン)")
+                    }
+                    if(sw.switchOugiDamage) {
+                        tablebody.push(parseInt(m.data.Djeeta.ougiDamage))
+                    }
+                    if(sw.switchCycleDamage) {
+                        tablebody.push(parseInt(m.data.Djeeta.expectedCycleDamagePerTurn))
+                    }
+                    if(sw.switchAverageCycleDamage) {
+                        tablebody.push(parseInt(m.data.Djeeta.averageCyclePerTurn))
+                    }
+                    if(_ua.Mobile) {
+                        return (
+                            React.createElement("tr", {className: "result", title: skillstr, key: rank + 1}, 
+                                React.createElement("td", null, rank + 1), 
+                                tablebody.map(function(am, ind){
+                                    return (React.createElement("td", {key: ind}, am));
+                                }), 
+                                m.armNumbers.map(function(am, ind){
+                                    if(arm[ind].considerNumberMax != 0) {
+                                        if(ind == 0){
+                                            if(parseInt(am) > 0) {
+                                                return (React.createElement("td", {key: ind, className: "resultFirst"}, React.createElement("p", {className: "text-info"}, am)));
+                                            } else {
+                                                return (React.createElement("td", {key: ind, className: "resultFirst"}, React.createElement("p", {className: "text-muted"}, am)));
+                                            }
+                                        } else {
+                                            if(parseInt(am) > 0) {
+                                                return (React.createElement("td", {key: ind, className: "resultList"}, React.createElement("p", {className: "text-info"}, am)));
+                                            } else {
+                                                return (React.createElement("td", {key: ind, className: "resultList"}, React.createElement("p", {className: "text-muted"}, am)));
+                                            }
+                                        }
                                     }
-                                }
-                             })
-                        )
-                    );
+                                 }), 
+                                React.createElement("td", null, React.createElement(Button, {id: rank, bsStyle: "primary", bsSize: "xsmall", onClick: onClick}, "グラフに", React.createElement("br", null), "加える"))
+                            )
+                        );
+                    } else {
+                        return (
+                            React.createElement("tr", {className: "result", title: skillstr, key: rank + 1}, 
+                                React.createElement("td", null, rank + 1), 
+                                tablebody.map(function(am, ind){
+                                    return (React.createElement("td", {key: ind}, am));
+                                }), 
+                                m.armNumbers.map(function(am, ind){
+                                    if(arm[ind].considerNumberMax != 0) {
+                                        if(ind == 0){
+                                            if(parseInt(am) > 0) {
+                                                return (React.createElement("td", {key: ind, className: "resultFirst"}, React.createElement("p", {className: "text-info"}, am, " 本")));
+                                            } else {
+                                                return (React.createElement("td", {key: ind, className: "resultFirst"}, React.createElement("p", {className: "text-muted"}, am, " 本")));
+                                            }
+                                        } else {
+                                            if(parseInt(am) > 0) {
+                                                return (React.createElement("td", {key: ind, className: "resultList"}, React.createElement("p", {className: "text-info"}, am, " 本")));
+                                            } else {
+                                                return (React.createElement("td", {key: ind, className: "resultList"}, React.createElement("p", {className: "text-muted"}, am, " 本")));
+                                            }
+                                        }
+                                    }
+                                 }), 
+                                React.createElement("td", null, React.createElement(Button, {id: rank, bsStyle: "primary", block: true, onClick: onClick}, "グラフに", React.createElement("br", null), "加える"))
+                            )
+                        );
+                    }
                 })
             )
         );
@@ -40844,6 +48230,7 @@ var ArmList = React.createClass({displayName: "ArmList",
             defaultElement: "fire",
             addArm: null,
             addArmID: -1,
+            considerNum: 1,
             openPresets: false,
         };
     },
@@ -40935,14 +48322,16 @@ var ArmList = React.createClass({displayName: "ArmList",
         var newalist = this.state.alist;
         newalist[key] = state;
         this.setState({alist: newalist})
+        this.setState({addArm: null})
         this.props.onChange(newalist, isSubtle);
     },
     handleEvent: function(key, e) {
         var newState = this.state
         newState[key] = e.target.value
+        newState["addArm"] = null
         this.setState(newState)
     },
-    addTemplateArm: function(templateArm) {
+    addTemplateArm: function(templateArm, considerNum) {
         var minimumID = -1;
         for(key in this.state.alist) {
             if(this.state.alist[key].name == "" && this.state.alist[key].attack == 0){
@@ -40953,11 +48342,22 @@ var ArmList = React.createClass({displayName: "ArmList",
         if(minimumID >= 0) {
             this.setState({addArm: templateArm})
             this.setState({addArmID: minimumID})
-            if(_ua.Mobile || _ua.Table) {
+            this.setState({considerNum: considerNum})
+            if(_ua.Mobile || _ua.Tablet) {
                 alert("追加しました。")
             }
         } else {
-            alert("武器がいっぱいです。")
+            var newKey = this.props.pleaseAddArmNum() - 1;
+            if(newKey >= 0) {
+                this.setState({addArm: templateArm})
+                this.setState({addArmID: newKey})
+                this.setState({considerNum: considerNum})
+                if(_ua.Mobile || _ua.Tablet) {
+                    alert("追加しました。")
+                }
+            } else {
+                alert("キャラがいっぱいです。")
+            }
         }
     },
     render: function(){
@@ -40969,6 +48369,7 @@ var ArmList = React.createClass({displayName: "ArmList",
         var defaultElement = this.state.defaultElement;
         var addArm = this.state.addArm;
         var addArmID = this.state.addArmID;
+        var considerNum = this.state.considerNum;
 
         if(_ua.Mobile) {
             return (
@@ -40976,7 +48377,6 @@ var ArmList = React.createClass({displayName: "ArmList",
                     React.createElement(ButtonGroup, {vertical: true, block: true}, 
                         React.createElement(Button, {bsStyle: "success", bsSize: "large", onClick: this.openPresets}, "武器テンプレートを開く")
                     ), 
-                    React.createElement("p", null, "※コスモス武器チェックボックスは廃止しました。今後は対応するコスモススキルを選択して下さい。"), 
                     React.createElement(Modal, {show: this.state.openPresets, onHide: this.closePresets}, 
                         React.createElement(Modal.Header, {closeButton: true}, 
                             React.createElement(Modal.Title, null, "Presets"), 
@@ -40987,9 +48387,9 @@ var ArmList = React.createClass({displayName: "ArmList",
                         )
                     ), 
 
-                    "[属性一括変更]", React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " "), 
+                    React.createElement(ControlLabel, null, "属性一括変更"), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " "), 
                     arms.map(function(arm, ind) {
-                        return React.createElement(Arm, {key: arm, onChange: hChange, onRemove: hRemove, onCopy: hCopy, addArm: addArm, addArmID: addArmID, id: ind, keyid: arm, dataName: dataName, defaultElement: defaultElement});
+                        return React.createElement(Arm, {key: arm, onChange: hChange, onRemove: hRemove, onCopy: hCopy, addArm: addArm, addArmID: addArmID, considerNum: considerNum, id: ind, keyid: arm, dataName: dataName, defaultElement: defaultElement});
                     })
                 )
             );
@@ -40997,15 +48397,14 @@ var ArmList = React.createClass({displayName: "ArmList",
             return (
                 React.createElement("div", {className: "armList"}, 
                     React.createElement(Button, {bsStyle: "success", bsSize: "large", onClick: this.openPresets}, "武器テンプレートを開く"), 
-                    React.createElement("p", null, "※コスモス武器チェックボックスは廃止しました。今後は対応するコスモススキルを選択して下さい。"), 
-                    React.createElement("table", null, 
+                    React.createElement("table", {className: "table table-bordered"}, 
                     React.createElement("thead", null, 
                     React.createElement("tr", null, 
                         React.createElement("th", null, "武器名*"), 
                         React.createElement("th", {className: "atkhp"}, "攻撃力*"), 
                         React.createElement("th", {className: "atkhp"}, "HP"), 
                         React.createElement("th", {className: "select"}, "武器種*"), 
-                        React.createElement("th", null, "スキル*   [属性一括変更]", React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " ")), 
+                        React.createElement("th", null, "スキル*   ", React.createElement(ControlLabel, null, "属性一括変更"), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " ")), 
                         React.createElement("th", {className: "select"}, "SLv*"), 
                         React.createElement("th", {className: "consider"}, "本数*"), 
                         React.createElement("th", {className: "system"}, "操作")
@@ -41013,7 +48412,7 @@ var ArmList = React.createClass({displayName: "ArmList",
                     ), 
                     React.createElement("tbody", null, 
                     arms.map(function(arm, ind) {
-                        return React.createElement(Arm, {key: arm, onChange: hChange, onRemove: hRemove, onCopy: hCopy, addArm: addArm, addArmID: addArmID, id: ind, keyid: arm, dataName: dataName, defaultElement: defaultElement});
+                        return React.createElement(Arm, {key: arm, onChange: hChange, onRemove: hRemove, onCopy: hCopy, addArm: addArm, addArmID: addArmID, considerNum: considerNum, id: ind, keyid: arm, dataName: dataName, defaultElement: defaultElement});
                     })
                     )
                     ), 
@@ -41039,7 +48438,15 @@ var RegisteredArm = React.createClass({displayName: "RegisteredArm",
             filterElement: "all",
             armData: {},
             limit: 50,
+            tempArm: {},
+            openConsiderNumberModal: false,
         };
+    },
+    closeConsiderNumberModal: function() {
+        this.setState({openConsiderNumberModal: false})
+    },
+    openConsiderNumberModal: function() {
+        this.setState({openConsiderNumberModal: true})
     },
     componentDidMount: function() {
         $.ajax({
@@ -41056,7 +48463,12 @@ var RegisteredArm = React.createClass({displayName: "RegisteredArm",
         });
     },
     clickedTemplate: function(e) {
-        this.props.onClick(this.state.armData[e.target.getAttribute("id")]);
+        this.setState({tempArm: this.state.armData[e.target.getAttribute("id")]});
+        this.setState({openConsiderNumberModal: true})
+    },
+    clickedConsiderNumber: function(e) {
+        this.props.onClick(this.state.tempArm, e.target.value);
+        this.setState({openConsiderNumberModal: false})
     },
     handleEvent: function(key, e) {
         var newState = this.state
@@ -41095,6 +48507,47 @@ var RegisteredArm = React.createClass({displayName: "RegisteredArm",
                             }
                             return "";
                         })
+                    ), 
+                    React.createElement(Modal, {className: "presetsConsiderNumber", show: this.state.openConsiderNumberModal, onHide: this.closeConsiderNumberModal}, 
+                        React.createElement(Modal.Header, {closeButton: true}, 
+                            React.createElement(Modal.Title, null, "何本追加しますか？")
+                        ), 
+                        React.createElement(Modal.Body, null, 
+                            React.createElement("div", {className: "btn-group btn-group-justified", role: "group", "aria-label": "..."}, 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "1", onClick: this.clickedConsiderNumber}, "1本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "2", onClick: this.clickedConsiderNumber}, "2本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "3", onClick: this.clickedConsiderNumber}, "3本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "4", onClick: this.clickedConsiderNumber}, "4本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "5", onClick: this.clickedConsiderNumber}, "5本")
+                                )
+                            ), 
+                            React.createElement("div", {className: "btn-group btn-group-justified", role: "group", "aria-label": "..."}, 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "6", onClick: this.clickedConsiderNumber}, "6本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "7", onClick: this.clickedConsiderNumber}, "7本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "8", onClick: this.clickedConsiderNumber}, "8本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "9", onClick: this.clickedConsiderNumber}, "9本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "10", onClick: this.clickedConsiderNumber}, "10本")
+                                )
+                            )
+                        )
                     )
                 )
             )
@@ -41117,6 +48570,47 @@ var RegisteredArm = React.createClass({displayName: "RegisteredArm",
                             }
                             return "";
                         })
+                    ), 
+                    React.createElement(Modal, {className: "presetsConsiderNumber", show: this.state.openConsiderNumberModal, onHide: this.closeConsiderNumberModal}, 
+                        React.createElement(Modal.Header, {closeButton: true}, 
+                            React.createElement(Modal.Title, null, "何本追加しますか？")
+                        ), 
+                        React.createElement(Modal.Body, null, 
+                            React.createElement("div", {className: "btn-group btn-group-justified", role: "group", "aria-label": "..."}, 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "1", onClick: this.clickedConsiderNumber}, "1本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "2", onClick: this.clickedConsiderNumber}, "2本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "3", onClick: this.clickedConsiderNumber}, "3本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "4", onClick: this.clickedConsiderNumber}, "4本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "5", onClick: this.clickedConsiderNumber}, "5本")
+                                )
+                            ), 
+                            React.createElement("div", {className: "btn-group btn-group-justified", role: "group", "aria-label": "..."}, 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "6", onClick: this.clickedConsiderNumber}, "6本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "7", onClick: this.clickedConsiderNumber}, "7本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "8", onClick: this.clickedConsiderNumber}, "8本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "9", onClick: this.clickedConsiderNumber}, "9本")
+                                ), 
+                                React.createElement("div", {className: "btn-group", role: "group"}, 
+                                    React.createElement("button", {type: "button", className: "btn btn-default", value: "10", onClick: this.clickedConsiderNumber}, "10本")
+                                )
+                            )
+                        )
                     )
                 )
             )
@@ -41170,8 +48664,7 @@ var Arm = React.createClass({displayName: "Arm",
             newState["element2"] = newarm.element2
             newState["skill2"] = newarm.skill2
             newState["slv"] = newarm.slvmax
-
-            if(newState["considerNumberMax"] == 0) newState["considerNumberMax"] = 1
+            newState["considerNumberMax"] = nextProps.considerNum
 
             this.setState(newState);
             this.props.onChange(this.props.id, newState, false);
@@ -41186,6 +48679,23 @@ var Arm = React.createClass({displayName: "Arm",
        if( armlist != undefined && this.props.id in armlist ){
            state = armlist[this.props.id]
            this.setState(state)
+       }
+
+       // もし addArmID が自分のIDと同じなら、templateデータを読み込む
+       if(this.props.addArm != null && this.props.id == this.props.addArmID ) {
+           var newarm = this.props.addArm
+
+           state["name"] = newarm.name
+           state["attack"] = newarm.attack
+           state["hp"] = newarm.hp
+           state["armType"] = newarm.type
+           state["element"] = newarm.element
+           state["skill1"] = newarm.skill1
+           state["element2"] = newarm.element2
+           state["skill2"] = newarm.skill2
+           state["slv"] = newarm.slvmax
+
+           this.setState(state);
        }
        // 初期化後 state を 上の階層に渡しておく
        // armList では onChange が勝手に上に渡してくれるので必要なし
@@ -41222,7 +48732,7 @@ var Arm = React.createClass({displayName: "Arm",
     render: function(){
         if(_ua.Mobile) {
             return (
-                React.createElement("table", null, 
+                React.createElement("table", {className: "table table-bordered"}, 
                 React.createElement("tbody", null, 
                     React.createElement("tr", null, React.createElement("th", null, "武器名"), React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")}))), 
                     React.createElement("tr", null, React.createElement("th", null, "攻撃力"), React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")}))), 
@@ -41320,11 +48830,13 @@ var Profile = React.createClass({displayName: "Profile",
             zenithBonus1: "無し",
             zenithBonus2: "無し",
             enemyElement: "fire",
-            enemyDefense: 10,
+            enemyDefense: 10.0,
             job: "none",
             element: "fire",
             DA: 6.5,
             TA: 3.0,
+            ougiGageBuff: 0,
+            ougiRatio: 4.5,
         };
     },
     handleEvent: function(key, e) {
@@ -41342,7 +48854,7 @@ var Profile = React.createClass({displayName: "Profile",
             return (
                 React.createElement("div", {className: "profile"}, 
                     React.createElement("h3", null, " ジータちゃん情報 (*: 推奨入力項目)"), 
-                    React.createElement("table", null, 
+                    React.createElement("table", {className: "table table-bordered"}, 
                         React.createElement("tbody", null, 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "Rank*"), 
@@ -41354,7 +48866,7 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "175", value: this.state.rank, onChange: this.handleEvent.bind(this, "rank")})), 
                             React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithAttackBonus, onChange: this.handleEvent.bind(this, "zenithAttackBonus")}, " ", select_zenithAttack, " ")), 
                             React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithHPBonus, onChange: this.handleEvent.bind(this, "zenithHPBonus")}, " ", select_zenithHP, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")}))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")}, select_masteratk))
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "マスボ", React.createElement("br", null), "HP(%)*"), 
@@ -41362,9 +48874,9 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"}, "残HP(%)", React.createElement("br", null), "(ジータのみ)")
                         ), 
                         React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.job, onChange: this.handleEvent.bind(this, "job")}, " ", this.props.alljobs, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")}, select_masterhp)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.job, onChange: this.handleEvent.bind(this, "job")}, " ", this.props.alljobs)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}, select_hplist))
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "ジータ属性*"), 
@@ -41381,16 +48893,17 @@ var Profile = React.createClass({displayName: "Profile",
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "基礎DA率"), 
                             React.createElement("th", {className: "prof"}, "基礎TA率"), 
-                            React.createElement("th", {className: "prof"}, "敵防御固有値(仮)")
+                            React.createElement("th", {className: "prof"}, "敵防御固有値"), 
+                            React.createElement("th", {className: "prof"}, "奥義倍率")
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.5", value: this.state.enemyDefense, onChange: this.handleEvent.bind(this, "enemyDefense")}))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyDefense, onChange: this.handleEvent.bind(this, "enemyDefense")}, " ", select_enemydeftypes, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiRatio, onChange: this.handleEvent.bind(this, "ougiRatio")}, " ", select_ougiRatio, " "))
                         )
                         )
                     ), 
-                    "※ゼニスパーク分の攻撃ボーナスと、ジョブ攻撃ボーナスを分離し、 ジョブ分は自動で反映されるように変更しました。", React.createElement("br", null), 
                     React.createElement("span", null, 
                     Jobs[this.state.job].name, ":" + ' ' +
                     "得意 [", armTypes[Jobs[this.state.job].favArm1], ", ", armTypes[Jobs[this.state.job].favArm2], "],", 
@@ -41404,7 +48917,7 @@ var Profile = React.createClass({displayName: "Profile",
                     ), 
 
                     React.createElement("h3", null, " パーティ全体への効果 (%表記)"), 
-                    React.createElement("table", null, 
+                    React.createElement("table", {className: "table table-bordered"}, 
                         React.createElement("tbody", null, 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "buff"}, "通常バフ"), 
@@ -41419,11 +48932,13 @@ var Profile = React.createClass({displayName: "Profile",
                         ), React.createElement("tr", null, 
                             React.createElement("th", {className: "buff"}, "DAバフ"), 
                             React.createElement("th", {className: "buff"}, "TAバフ"), 
-                            React.createElement("th", {className: "buff"}, "残HP(%)")
+                            React.createElement("th", {className: "buff"}, "残HP(%)"), 
+                            React.createElement("th", {className: "prof"}, "奥義ゲージ上昇率アップ")
                         ), React.createElement("tr", null, 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.daBuff, onChange: this.handleEvent.bind(this, "daBuff")})), 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.taBuff, onChange: this.handleEvent.bind(this, "taBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}, select_hplist)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiGageBuff, onChange: this.handleEvent.bind(this, "ougiGageBuff")}, " ", select_ougiGageBuff, " "))
                         )
                         )
                     )
@@ -41433,7 +48948,7 @@ var Profile = React.createClass({displayName: "Profile",
             return (
                 React.createElement("div", {className: "profile"}, 
                     React.createElement("h3", null, " ジータちゃん情報 (*: 推奨入力項目)"), 
-                    React.createElement("table", null, 
+                    React.createElement("table", {className: "table table-bordered"}, 
                         React.createElement("tbody", null, 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "Rank*"), 
@@ -41448,10 +48963,10 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "175", value: this.state.rank, onChange: this.handleEvent.bind(this, "rank")})), 
                             React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithAttackBonus, onChange: this.handleEvent.bind(this, "zenithAttackBonus")}, " ", select_zenithAttack, " ")), 
                             React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithHPBonus, onChange: this.handleEvent.bind(this, "zenithHPBonus")}, " ", select_zenithHP, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")}, select_masteratk)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")}, select_masterhp)), 
                             React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.job, onChange: this.handleEvent.bind(this, "job")}, " ", this.props.alljobs, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}, select_hplist))
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "ジータ属性*"), 
@@ -41460,7 +48975,7 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"}, "武器ゼニス2"), 
                             React.createElement("th", {className: "prof"}, "基礎DA率"), 
                             React.createElement("th", {className: "prof"}, "基礎TA率"), 
-                            React.createElement("th", {className: "prof"}, "敵防御固有値(仮)")
+                            React.createElement("th", {className: "prof"}, "敵防御固有値")
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " ")), 
@@ -41469,11 +48984,28 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus2, onChange: this.handleEvent.bind(this, "zenithBonus2")}, " ", this.props.zenithBonuses, " ")), 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.5", value: this.state.enemyDefense, onChange: this.handleEvent.bind(this, "enemyDefense")}))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyDefense, onChange: this.handleEvent.bind(this, "enemyDefense")}, " ", select_enemydeftypes, " "))
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("th", {className: "prof"}, "奥義倍率"), 
+                            React.createElement("th", {className: "prof"}), 
+                            React.createElement("th", {className: "prof"}), 
+                            React.createElement("th", {className: "prof"}), 
+                            React.createElement("th", {className: "prof"}), 
+                            React.createElement("th", {className: "prof"}), 
+                            React.createElement("th", {className: "prof"})
+                        ), 
+                        React.createElement("tr", null, 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiRatio, onChange: this.handleEvent.bind(this, "ougiRatio")}, " ", select_ougiRatio, " ")), 
+                            React.createElement("td", null), 
+                            React.createElement("td", null), 
+                            React.createElement("td", null), 
+                            React.createElement("td", null), 
+                            React.createElement("td", null), 
+                            React.createElement("td", null)
                         )
                         )
                     ), 
-                    "※ゼニスパーク分の攻撃ボーナスと、ジョブ攻撃ボーナスを分離し、 ジョブ分は自動で反映されるように変更しました。", React.createElement("br", null), 
                     React.createElement("span", null, 
                     Jobs[this.state.job].name, ":" + ' ' +
                     "得意 [", armTypes[Jobs[this.state.job].favArm1], ", ", armTypes[Jobs[this.state.job].favArm2], "],", 
@@ -41487,7 +49019,7 @@ var Profile = React.createClass({displayName: "Profile",
                     ), 
 
                     React.createElement("h3", {className: "margin-top"}, " パーティ全体への効果 (%表記)"), 
-                    React.createElement("table", null, 
+                    React.createElement("table", {className: "table table-bordered"}, 
                         React.createElement("tbody", null, 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "buff"}, "通常バフ"), 
@@ -41496,7 +49028,8 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "buff"}, "HPバフ"), 
                             React.createElement("th", {className: "buff"}, "DAバフ"), 
                             React.createElement("th", {className: "buff"}, "TAバフ"), 
-                            React.createElement("th", {className: "buff"}, "残HP(%)")
+                            React.createElement("th", {className: "buff"}, "残HP(%)"), 
+                            React.createElement("th", {className: "buff"}, "奥義ゲージ上昇率アップ")
                         ), React.createElement("tr", null, 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.normalBuff, onChange: this.handleEvent.bind(this, "normalBuff")})), 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.elementBuff, onChange: this.handleEvent.bind(this, "elementBuff")})), 
@@ -41504,7 +49037,8 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBuff, onChange: this.handleEvent.bind(this, "hpBuff")})), 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.daBuff, onChange: this.handleEvent.bind(this, "daBuff")})), 
                             React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.taBuff, onChange: this.handleEvent.bind(this, "taBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}, select_hplist)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiGageBuff, onChange: this.handleEvent.bind(this, "ougiGageBuff")}, " ", select_ougiGageBuff, " "))
                         )
                         )
                     )
@@ -41526,6 +49060,7 @@ var Sys = React.createClass({displayName: "Sys",
         if ("data" in localStorage && localStorage.data != "{}" ) {
             var storedData = JSON.parse(Base64.decode(localStorage["data"]))
             this.setState({storedData: storedData})
+            this.setState({selectedData: Object.keys(storedData)[0]})
         }
     },
     handleOnClick: function(key, e) {
@@ -41621,16 +49156,23 @@ var TwitterShareButton = React.createClass ({displayName: "TwitterShareButton",
         var datatext = Base64.encodeURI(JSON.stringify(this.props.data))
         this.setState({datatext: datatext});
     },
+    componentDidMount: function(){
+        // localStorage から sharehistory をロードする
+        if ("sharehist" in localStorage && localStorage.sharehist != "{}" ) {
+            var sharehist = JSON.parse(localStorage["sharehist"])
+            this.setState({shareurl_history: sharehist})
+        }
+    },
     getInitialState: function() {
         var datatext = Base64.encodeURI(JSON.stringify(this.props.data))
         return {
             shareurl: "",
-            shareurl_history: [],
+            shareurl_history: {},
             datatext: datatext,
         };
     },
     getShortenUrl: function() {
-        var data = this.props.data;
+        var data = JSON.parse(JSON.stringify(this.props.data));
         if("dataName" in newData && newData["dataName"] != '') {
             // 基本的にSys.dataNameに入力されているものをベースにして保存
             data["dataName"] = newData["dataName"];
@@ -41653,8 +49195,9 @@ var TwitterShareButton = React.createClass ({displayName: "TwitterShareButton",
                 tweeturl += '&url=' + shareurl
                 window.open(tweeturl, '_blank')
                 var sharehist = this.state.shareurl_history
-                sharehist.unshift(this.props.data["dataName"] + ": " + shareurl);
+                sharehist[this.props.data["dataName"]] = shareurl;
                 this.setState({shareurl: shareurl, shareurl_history: sharehist})
+                localStorage.setItem("sharehist", JSON.stringify(sharehist));
             }.bind(this),
             error: function(xhr, status, err) {
                 alert("Error!: 何かがおかしいです。@hsimyuまで連絡して下さい。status: ", status, ", error message: ", err.toString());
@@ -41662,18 +49205,102 @@ var TwitterShareButton = React.createClass ({displayName: "TwitterShareButton",
         });
     },
     render: function() {
+      var sharehist = this.state.shareurl_history;
       return (
             React.createElement("div", {className: "tweet"}, 
                 React.createElement(Button, {bsStyle: "primary", className: "tweetButton", onClick: this.getShortenUrl}, " サーバに保存", React.createElement("br", null), "(短縮URLを取得) "), 
-                React.createElement("ul", null, 
-                this.state.shareurl_history.map(function(s, ind){
+                React.createElement("div", {className: "list-group"}, 
+                Object.keys(sharehist).map(function(s, ind){
                     return (
-                        React.createElement("li", {key: ind}, s)
+                        React.createElement("a", {className: "list-group-item", href: sharehist[s], key: s}, s, ": ", sharehist[s], " ")
                     )
                 })
                 )
             )
        );
+    },
+});
+
+var HowTo = React.createClass({displayName: "HowTo",
+    render: function() {
+        return (
+            React.createElement("div", {className: "howTo"}, 
+                React.createElement("h2", null, " 二手・三手スキル混みの編成について "), 
+                React.createElement("p", null, " 本計算機ではこれまで、二手三手スキル混みの最適編成計算について、" + ' ' +
+                "総攻撃力に技巧期待値と期待攻撃回数を単に乗算した\"総合*回数*技巧期待値\"を用いていました。 ", React.createElement("br", null), 
+                "この値を用いた場合、", 
+                React.createElement("strong", null, "総合攻撃力が低くても攻撃回数を伸ばした方が期待される攻撃力(〜ダメージ)が大きい"), "としてソートされる傾向があります。"), 
+                React.createElement("p", null, "しかしながら、", React.createElement("a", {href: "http://ch.nicovideo.jp/suitonjp/blomaga/ar1017708"}, "suitonさんがご提案なされた"), "ように、" + ' ' +
+                "奥義を使用した場合のダメージまで考慮した1サイクルあたりのダメージをベースにソートを行った方が、" + ' ' +
+                "総合的な火力として適切ではないか、と私は考えています。" + ' ' +
+                "また、減衰補正を考慮しない場合、無制限に総合攻撃力が高い編成が優先される事になりますが、" + ' ' +
+                "実際には減衰到達後は連続攻撃で稼いでいくことになるため、総合攻撃力ベースのソートで火力を測るのは限界があると考えられます。", React.createElement("br", null), 
+                "そこで、本計算機においても、suitonさんご提案の1サイクルあたりダメージについて、" + ' ' +
+                "更に技巧期待値・奥義ゲージ上昇量・奥義倍率・ダメージ減衰補正を適用した上で、" + ' ' +
+                "ソートするキーとして選択できるよう追加を行いました。"), 
+                React.createElement("p", {className: "text-danger"}, "リリース時、奥義ゲージの期待値計算にミスがありましたので、修正しました。"), 
+
+                React.createElement("h3", null, "詳しい計算手順"), 
+                React.createElement("p", null, "まず、1サイクルあたりダメージを以下のように定義します。"), 
+                React.createElement("pre", null, "1サイクルのダメージ = 奥義ダメージ + (奥義ゲージが貯まるまでのターン数) * (通常攻撃ダメージ)"), 
+                React.createElement("p", null, "(本計算機ではアビリティダメージ分については考慮していません。)"), 
+                React.createElement("p", null, "ここで、DA率・TA率から、1ターンあたりに期待される攻撃回数は"), 
+                React.createElement("pre", null, "期待攻撃回数 = 3 * TA率 + (1 - TA率)(2 * DA率 + 1 * (1 - DA率))"), 
+                React.createElement("p", null, "と計算できます。ここから同様に、1ターンあたりの奥義ゲージ上昇量は"), 
+                React.createElement("pre", null, "期待奥義ゲージ上昇量 = TA率 * 37 + (1 - TA率)(DA率 * 22 + (1 - DA率) * 10)"), 
+                React.createElement("p", null, "と計算できます。したがって、奥義ゲージが100%になるまでに必要なターン数は"), 
+                React.createElement("pre", null, "必要ターン数 = Math.ceil(100.0 / 期待奥義ゲージ上昇量) "), 
+                React.createElement("p", null, "となります。(Math.ceilは切り上げを意味しています。)"), 
+                React.createElement("p", null, "ターン数については上記で求めることができましたので、次にダメージの算出を行います。" + ' ' +
+                "まず、ランク・ジョブ・武器編成などから計算された攻撃力の値(結果欄の\"総合攻撃力\")を用いて、"), 
+                React.createElement("pre", null, " 単攻撃ダメージ(減衰補正前) = 総合攻撃力 / 敵防御固有値 "), 
+                React.createElement("p", null, "として、減衰補正前のダメージを求めることができます。" + ' ' +
+                "敵防御固有値は一般に10、硬い敵で13-15程度のようです。(防御デバフありの場合その分固有値が小さくなると考えてください。)"), 
+                React.createElement("p", null, "ここで、技巧分を考慮すると、"), 
+                React.createElement("pre", null, "技巧期待値 = 技巧倍率 * 技巧スキル率 + (1.0 - 技巧スキル率) "), 
+                React.createElement("p", null, "という式で技巧期待値が求まります。(複数ある場合にも対応)"), 
+                React.createElement("p", null, "連続攻撃でクリティカルが発生した場合全てクリティカルになりますので、期待値を考える場合には単純に総合攻撃力への乗算で良いかと思われます。"), 
+                React.createElement("pre", null, " 単攻撃ダメージ(減衰補正前, 技巧補正混み) = 総合攻撃力 * 技巧期待値 / 敵防御固有値 "), 
+                React.createElement("p", null, "次に、奥義ダメージについては"), 
+                React.createElement("pre", null, " 奥義ダメージ(減衰補正前) = 総合攻撃力 * 奥義倍率 / 敵防御固有値 "), 
+                React.createElement("p", null, "として計算できます。"), 
+                React.createElement("p", null, "補正前の単攻撃ダメージが30万を超えた場合、もしくは奥義ダメージが100万を超えた場合、減衰補正を適用することになります。(参考: ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/10/07/114737"}, "すんどめ侍のグラブル生活 - 【グラブル】減衰補正検証まとめ"), ")"), 
+                React.createElement("p", null, "(減衰補正については注記にも記してあるとおり、8/21現在は正確に補正されているか確認できていませんので、その点のみご注意下さい。)"), 
+                React.createElement("p", null, "減衰補正されたダメージ値を得られたとして、通常攻撃時の1ターンあたりに期待されるダメージは"), 
+                React.createElement("pre", null, " 通常攻撃ダメージ = 期待攻撃回数 * 単攻撃ダメージ(減衰補正後)"), 
+                React.createElement("p", null, "となります。"), 
+                React.createElement("p", null, "以上で、最初に示した式中の右辺の全ての項が求まりましたので、1サイクルあたりのダメージが算出できます。"), 
+                React.createElement("p", null, "これを、"), 
+                React.createElement("pre", null, "1サイクル = 奥義ゲージが貯まるまでの必要ターン数 + 1"), 
+                React.createElement("p", null, "で割ったものが、最終的な計算結果となります。"), 
+                React.createElement("pre", null, "予想ターン毎ダメージ = 1サイクルのダメージ / 1サイクル"), 
+                React.createElement("p", null, "優先する項目を\"予想ターン毎ダメージ\"に変更することで、上記手順で得られた計算値を元にソートすることが可能です。" + ' ' +
+                "また、表示項目の予想ターン毎ダメージにチェックを入れることで、計算値を表示することができます。" + ' ' +
+                "(ついでに、奥義ゲージ上昇量と必要ターンについても表示できるようにしておきました。)"
+                ), 
+
+                React.createElement("h3", null, "所見"), 
+                React.createElement("p", null, 
+                "これまでの\"総合*回数*技巧期待値\"でソートした場合の結果と、上記のソートキーを用いた場合の結果を見比べると" + ' ' +
+                "やみくもにDA・TA率が最大となるように編成されるのではなく、DA・TA率を確保した上で総合攻撃力を高める、という編成が上位にきやすくなったと感じています。"), 
+                React.createElement("p", null, "例えばの", React.createElement("a", {href: "http://hsimyu.net/motocal/?id=748"}, "編成例"), "ですが、下記画像のように"), 
+                React.createElement(Thumbnail, {alt: "総合*回数*技巧期待値の場合", src: "./soukaigi.png"}, 
+                    React.createElement("h2", {className: "text-warning"}, "総合*回数*技巧期待値の場合"), 
+                    React.createElement("p", {className: "text-warning"}, "DA:74.1%, 奥義ゲージ上昇期待値が19.89%、必要ターンは6")
+                ), 
+                React.createElement(Thumbnail, {alt: "予想ターン毎ダメージの場合", src: "./cycleDamage.png"}, 
+                    React.createElement("h2", {className: "text-info"}, "予想ターン毎ダメージの場合"), 
+                    React.createElement("p", {className: "text-info"}, "DA: 67.3%, 奥義ゲージ上昇期待値が19.12%、必要ターンは6のまま")
+                ), 
+                React.createElement("p", null, "DA率最大の編成が1位ではなくなっています。(もちろん、単なる1編成例ですので、ジョブ・DAバフ・TAバフ・奥義ゲージ上昇バフ・奥義倍率等によって、大きく結果が変わる可能性もあります。)"), 
+                React.createElement("p", null, "一概に後者の編成のが強いとは断言できませんが、1つの目安として使って頂ければと思います。"), 
+                React.createElement("p", null, "キャラ混みの平均値についても総合*回数*技巧期待値同様に計算できるようになっていますが、現在はキャラ別の奥義倍率についてはサポートしていませんので、あくまで目安としてお使い下さい。"), 
+                React.createElement("p", null, "また、通常攻撃ダメージの減衰補正・奥義ダメージの減衰補正についてのより詳しい情報があればご提供頂けると助かります。"), 
+
+                React.createElement("h3", null, "最後に"), 
+                React.createElement("p", null, "本計算機を信頼して、討滅戦武器集めたのに編成に入らないって結果に変わった！という方がおりましたらすみません。")
+            )
+        );
     },
 });
 
@@ -41684,68 +49311,79 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("div", {className: "divright"}, React.createElement("a", {href: "http://hsimyu.net/motocal/"}, "入力リセット")), 
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
-            React.createElement("ul", null, 
-                React.createElement("li", null, "2016/08/19: キャラテンプレート機能を追加 "), 
-                React.createElement("li", null, "2016/08/19: 武器テンプレート機能を追加(gbf-wikiのデータを使わせて頂きました。) / コスモス武器チェックボックス廃止 / 計算処理の削減 "), 
-                React.createElement("li", null, "2016/08/19: 武器数・召喚石数・キャラ数の増やし方を変更 / ゼニスパークとジョブ攻撃ボーナスを分離 / 同じ名前のキャラがいると片方しか計算されない不具合を修正 "), 
-                React.createElement("li", null, "2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 / UI調整 "), 
-                React.createElement("li", null, "2016/08/17: 検証データを元に渾身の実装を修正 / ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, "データビューア"), "の作成 / 予想ダメージ計算に減衰補正を追加 "), 
-                React.createElement("li", null, "2016/08/16: 三手スキルSLv11~15の値を入力 / DATA率の合計を、枠別上限から武器スキル全体の上限に修正 / 渾身仮実装 "), 
-                React.createElement("li", null, "2016/08/12: 二手スキル上限の値に召喚石加護分の値が考慮されていなかった不具合を修正。/ 予想ダメージ機能を仮実装しました。"), 
-                React.createElement("li", null, "2016/08/11: 敵の属性の内部的な初期値がおかしかった不具合を修正。"), 
-                React.createElement("li", null, "2016/08/09: 簡易リセットボタンを配置 / バハムート武器フツルスの拳系に対応 (wikiの情報に準拠) (HP40%, DA10%, TA8%という情報もありますが、未確定の為とりあえず低い値を採用しました。検証してくれる方を募集してます……) "), 
-                React.createElement("li", null, "2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。 / 武器スキル属性の一括変更を実装 ")
+            React.createElement("ul", {className: "list-group"}, 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/23: iPhone版でもHPチャート機能をリリース "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/23: グラフ用に保存した編成を全リセットするボタン追加 / 凡例のスタイル調整 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/22: 背水渾身用のHPチャート表示機能を実装 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/21: 予想ターン毎ダメージの導入と、それについての解説を追加 / 減衰補正を修正 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/21: コスモス武器を選んだ場合に止まってしまう不具合を修正 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/20: スマホ版でスワイプでのタブ切り替えに対応 / 武器追加時に考慮本数を選べるようにした "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/20: UIを調整 / サーバに保存後にデータを変更すると、初期データに戻ってしまう不具合を修正 / 保存したURLをブラウザ履歴として残すようにした / ブラウザ保存データを一度も選択しないで読み込みを行うと、データを指定しろと言われる不具合を修正 / 武器とキャラプリセットで、枠がないときにいっぱいですって言われないようにした "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/19: キャラテンプレート機能を追加 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/19: 武器テンプレート機能を追加(gbf-wikiのデータを使わせて頂きました。) / コスモス武器チェックボックス廃止 / 計算処理の削減 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/19: 武器数・召喚石数・キャラ数の増やし方を変更 / ゼニスパークとジョブ攻撃ボーナスを分離 / 同じ名前のキャラがいると片方しか計算されない不具合を修正 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 / UI調整 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/17: 検証データを元に渾身の実装を修正 / ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, "データビューア"), "の作成 / 予想ダメージ計算に減衰補正を追加 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/16: 三手スキルSLv11~15の値を入力 / DATA率の合計を、枠別上限から武器スキル全体の上限に修正 / 渾身仮実装 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/12: 二手スキル上限の値に召喚石加護分の値が考慮されていなかった不具合を修正。/ 予想ダメージ機能を仮実装しました。"), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/11: 敵の属性の内部的な初期値がおかしかった不具合を修正。"), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/09: 簡易リセットボタンを配置 / バハムート武器フツルスの拳系に対応 (wikiの情報に準拠) (HP40%, DA10%, TA8%という情報もありますが、未確定の為とりあえず低い値を採用しました。検証してくれる方を募集してます……) "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。 / 武器スキル属性の一括変更を実装 ")
             ), 
 
             React.createElement("h3", null, "注記"), 
-            React.createElement("ul", null, 
-                 React.createElement("li", null, "未対応: 羅刹/召喚石のクリティカル率"), 
-                 React.createElement("li", null, "今後の実装予定: 召喚石入力欄の利便性向上 / キャラ欄の利便性向上"), 
-                 React.createElement("li", null, React.createElement("strong", null, "バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに\"バハフツ(攻/HP)\"を選択してください。"), " ", React.createElement("br", null), 
+            React.createElement("ul", {className: "list-group"}, 
+                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "未対応: 羅刹/召喚石のクリティカル率"), 
+                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "今後の実装予定: 召喚石入力欄の利便性向上 / キャラ欄の利便性向上"), 
+                 React.createElement("li", {className: "list-group-item list-group-item-info"}, React.createElement("strong", null, "バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに\"バハフツ(攻/HP)\"を選択してください。"), " ", React.createElement("br", null), 
                  "(バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)"), 
-                 React.createElement("li", null, "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。"), 
-                 React.createElement("li", null, "三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。", React.createElement("br", null), 
+                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。"), 
+                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。", React.createElement("br", null), 
                  "また、三手スキル上限はデータがないため仮に50%としています。実際には50%よりも低い可能性もあるのでご注意下さい。"), 
-                 React.createElement("li", null, "\"コスモス\"欄はコスモス武器にチェックをつけてください。"), 
-                 React.createElement("li", null, "計算量削減のため、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。"), 
-                 React.createElement("li", null, "パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) "), 
-                 React.createElement("li", null, 
-                 "敵防御固有値は予想ダメージ計算にのみ使用されます。(10から15程度が目安)", React.createElement("br", null), 
+                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "計算量削減のため、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。"), 
+                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) "), 
+                 React.createElement("li", {className: "list-group-item list-group-item-info"}, 
+                 "敵防御固有値は単攻撃ダメージ計算にのみ使用されます。(10から15程度が目安)", React.createElement("br", null), 
                  "防御デバフを考慮する場合、防御固有値を半分にしてください。", React.createElement("br", null), 
-                 "また、予想ダメージ機能はあくまで目安ということでお願いします。", React.createElement("br", null), 
-                 "補正幅は, 30万以上: 30%減衰, 35万以上: 60%減衰、40万以上: 90%減衰、45万以上: 99%減衰としていますが、", React.createElement("br", null), 
-                 "若干きつすぎる気がしています。(情報をお持ちでしたらご提供頂けると助かります) ")
+                 "また、単攻撃ダメージ計算はあくまで目安ということでお願いします。", React.createElement("br", null), 
+                 "補正幅は, ", React.createElement("br", null), 
+                 "通常攻撃:30万以上: 30%減衰, 42.5万以上: 60%減衰、55万以上: 90%減衰、62.5万以上: 99%減衰", React.createElement("br", null), 
+                 "奥義:    100万以上: 40%減衰, 115万以上: 60%減衰、130万以上: 95%減衰、140万以上: 99%減衰", React.createElement("br", null), 
+                 "としていますが、" + ' ' +
+                 "正確な情報をお持ちでしたらご提供頂けると助かります。 ")
             ), 
 
-            React.createElement("img", {className: "banner", src: "./ChWJ-LgUgAA2JEy.jpg"}), 
+            React.createElement(Image, {className: "banner", src: "./ChWJ-LgUgAA2JEy.jpg"}), 
             "製作者: ほしみ ", React.createElement("a", {href: "http://twitter.com/hsimyu", target: "_blank"}, " @hsimyu "), React.createElement("br", null), 
             "不具合報告・ご要望がありましたらTwitterにてご連絡をお願い致します。", 
 
             React.createElement("h3", null, "LICENSE"), 
-            React.createElement("ul", null, 
-                React.createElement("li", null, " ", React.createElement("a", {href: "http://facebook.github.io/react"}, "React"), ": Copyright © 2013-2016 Facebook Inc. v15.3.0 "), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "http://github.com/dankogai/js-base64"}, "dankogai/js-base64"), ": Copyright © 2014, Dan Kogai ", React.createElement("a", {href: "./js-base64/LICENSE.md"}, " LICENSE "))
+            React.createElement("ul", {className: "list-group"}, 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://facebook.github.io/react"}, "React"), ": Copyright © 2013-2016 Facebook Inc. v15.3.0 "), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://github.com/dankogai/js-base64"}, "dankogai/js-base64"), ": Copyright © 2014, Dan Kogai ", React.createElement("a", {href: "./js-base64/LICENSE.md"}, " LICENSE "))
 
             ), 
 
             React.createElement("h3", null, "参考文献"), 
             "以下のサイト・ツイートを参考にさせていただきました。", 
-            React.createElement("ul", null, 
-                React.createElement("li", null, " ", React.createElement("a", {href: "http://gbf-wiki.com"}, "グランブルーファンタジー(グラブル)攻略wiki")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "http://hibin0.web.fc2.com/grbr_atk_calc/atk_calc.html"}, "グランブルーファンタジー攻撃力計算機")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "http://hibin0.web.fc2.com/grbr_weapon_calc/weapon_calc.html"}, "オススメ装備に自信ニキ")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/12/09/230544"}, "すんどめ侍のグラブル生活 - 【グラブル】武器スキル検証結果")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/10/11/175521"}, "すんどめ侍のグラブル生活 - 【グラブル】ジョブデータ検証結果")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/10/07/114737"}, "すんどめ侍のグラブル生活 - 【グラブル】減衰補正検証まとめ")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "https://twitter.com/hibino_naoki/status/722338377127735296"}, " @hibino_naoki さんのコルタナ(三手大)検証情報")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "https://twitter.com/gekikara_s/status/746274346251882496"}, " @gekikara_s さんのバハフツ拳検証情報")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "https://twitter.com/Hecate_mk2/status/765508148689985537"}, " @Hecate_mk2 さんの渾身(大)検証情報")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "https://twitter.com/firemagma/status/765632239526830080"}, " @firemagma さんの渾身(大)検証情報")), 
-                React.createElement("li", null, " ", React.createElement("a", {href: "https://twitter.com/hibino_naoki/status/765749475457413120"}, " @hibino_naoki さんの渾身(大)検証情報"))
+            React.createElement("ul", {className: "list-group"}, 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://gbf-wiki.com"}, "グランブルーファンタジー(グラブル)攻略wiki")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://hibin0.web.fc2.com/grbr_atk_calc/atk_calc.html"}, "グランブルーファンタジー攻撃力計算機")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://hibin0.web.fc2.com/grbr_weapon_calc/weapon_calc.html"}, "オススメ装備に自信ニキ")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/12/09/230544"}, "すんどめ侍のグラブル生活 - 【グラブル】武器スキル検証結果")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/10/11/175521"}, "すんどめ侍のグラブル生活 - 【グラブル】ジョブデータ検証結果")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://greatsundome.hatenablog.com/entry/2015/10/07/114737"}, "すんどめ侍のグラブル生活 - 【グラブル】減衰補正検証まとめ")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "https://twitter.com/hibino_naoki/status/722338377127735296"}, " @hibino_naoki さんのコルタナ(三手大)検証情報")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "https://twitter.com/gekikara_s/status/746274346251882496"}, " @gekikara_s さんのバハフツ拳検証情報")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "https://twitter.com/Hecate_mk2/status/765508148689985537"}, " @Hecate_mk2 さんの渾身(大)検証情報")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "https://twitter.com/firemagma/status/765632239526830080"}, " @firemagma さんの渾身(大)検証情報")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "https://twitter.com/hibino_naoki/status/765749475457413120"}, " @hibino_naoki さんの渾身(大)検証情報")), 
+                React.createElement("li", {className: "list-group-item"}, " ", React.createElement("a", {href: "http://gbf.xzz.jp/dev/%E9%98%B2%E5%BE%A1%E5%9B%BA%E6%9C%89%E5%80%A4%E3%83%A1%E3%83%A2/"}, " 防御固有値メモ - グラメモ"))
             ), 
 
             React.createElement("h3", null, "スキル性能・各種計算式"), 
-            React.createElement("table", null, React.createElement("tbody", null, 
+            React.createElement("div", {className: "table-responsive"}, 
+            React.createElement("table", {className: "table"}, React.createElement("tbody", null, 
                 React.createElement("tr", null, React.createElement("th", null, "スキル名/SLv"), React.createElement("th", null, "1"), React.createElement("th", null, "2"), React.createElement("th", null, "3"), React.createElement("th", null, "4"), React.createElement("th", null, "5"), React.createElement("th", null, "6"), React.createElement("th", null, "7"), React.createElement("th", null, "8"), React.createElement("th", null, "9"), React.createElement("th", null, "10"), React.createElement("th", null, "11"), React.createElement("th", null, "12"), React.createElement("th", null, "13"), React.createElement("th", null, "14"), React.createElement("th", null, "15")), 
                 React.createElement("tr", null, React.createElement("td", null, "通常攻刃(小)"), React.createElement("td", null, "1.0"), React.createElement("td", null, "2.0"), React.createElement("td", null, "3.0"), React.createElement("td", null, "4.0"), React.createElement("td", null, "5.0"), React.createElement("td", null, "6.0"), React.createElement("td", null, "7.0"), React.createElement("td", null, "8.0"), React.createElement("td", null, "9.0"), React.createElement("td", null, "10.0"), React.createElement("td", null, "10.4"), React.createElement("td", null, "10.8"), React.createElement("td", null, "11.2"), React.createElement("td", null, "11.6"), React.createElement("td", null, "12.0")), 
                 React.createElement("tr", null, React.createElement("td", null, "通常攻刃(中)"), React.createElement("td", null, "3.0"), React.createElement("td", null, "4.0"), React.createElement("td", null, "5.0"), React.createElement("td", null, "6.0"), React.createElement("td", null, "7.0"), React.createElement("td", null, "8.0"), React.createElement("td", null, "9.0"), React.createElement("td", null, "10.0"), React.createElement("td", null, "11.0"), React.createElement("td", null, "12.0"), React.createElement("td", null, "12.0"), React.createElement("td", null, "12.0"), React.createElement("td", null, "12.0"), React.createElement("td", null, "12.0"), React.createElement("td", null, "12.0")), 
@@ -41790,26 +49428,27 @@ var Notice = React.createClass ({displayName: "Notice",
                 React.createElement("tr", null, React.createElement("td", null, "マグナ技巧(小)"), React.createElement("td", null, "1.0"), React.createElement("td", null, "1.1"), React.createElement("td", null, "1.2"), React.createElement("td", null, "1.3"), React.createElement("td", null, "1.4"), React.createElement("td", null, "1.5"), React.createElement("td", null, "1.6"), React.createElement("td", null, "1.7"), React.createElement("td", null, "1.8"), React.createElement("td", null, "1.9"), React.createElement("td", null, "2.0"), React.createElement("td", null, "2.2"), React.createElement("td", null, "2.2"), React.createElement("td", null, "2.3"), React.createElement("td", null, "2.4")), 
                 React.createElement("tr", null, React.createElement("td", null, "マグナ技巧(中)"), React.createElement("td", null, "3.0"), React.createElement("td", null, "3.3"), React.createElement("td", null, "3.6"), React.createElement("td", null, "3.9"), React.createElement("td", null, "4.2"), React.createElement("td", null, "4.5"), React.createElement("td", null, "4.8"), React.createElement("td", null, "5.1"), React.createElement("td", null, "5.4"), React.createElement("td", null, "5.7"), React.createElement("td", null, "6.0"), React.createElement("td", null, "6.3"), React.createElement("td", null, "6.7"), React.createElement("td", null, "7.0"), React.createElement("td", null, "7.3")), 
                 React.createElement("tr", null, React.createElement("td", null, "マグナ技巧(大)"), React.createElement("td", null, "4.0"), React.createElement("td", null, "4.4"), React.createElement("td", null, "4.8"), React.createElement("td", null, "5.2"), React.createElement("td", null, "5.6"), React.createElement("td", null, "6.0"), React.createElement("td", null, "6.4"), React.createElement("td", null, "6.8"), React.createElement("td", null, "7.2"), React.createElement("td", null, "7.6"), React.createElement("td", null, "8.0"), React.createElement("td", null, "8.4"), React.createElement("td", null, "8.8"), React.createElement("td", null, "9.2"), React.createElement("td", null, "9.6"))
-            )), 
-            React.createElement("ul", null, 
-                React.createElement("li", null, "通常神威: 通常攻刃(小) + 通常守護(小)"), 
-                React.createElement("li", null, "マグナ神威: マグナ攻刃(小) + マグナ守護(小)"), 
-                React.createElement("li", null, "通常刹那: 通常技巧(中) + 通常攻刃(中) "), 
-                React.createElement("li", null, "マグナ刹那: マグナ技巧(中) + マグナ攻刃(中) "), 
-                React.createElement("li", null, "通常克己: 通常技巧(中) + 通常二手(中) "), 
-                React.createElement("li", null, "マグナ克己: マグナ技巧(中) + マグナ二手(中) "), 
-                React.createElement("li", null, "通常暴君: 通常攻刃(大) + HP減少(10%) "), 
-                React.createElement("li", null, "マグナ暴君: マグナ攻刃(大) + HP減少(10%) "), 
-                React.createElement("li", null, "アンノウン暴君(ミフネ): アンノウン攻刃(大) + HP減少(7%) "), 
-                React.createElement("li", null, "技巧(小, 中, 大): クリティカル時倍率 50%"), 
-                React.createElement("li", null, "マグナ技巧(小, 中, 大): クリティカル時倍率 50% "), 
-                React.createElement("li", null, "背水(小): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) ", React.createElement("br", null), "(baseRateは (Slv10以下) -0.3 + Slv * 1.8, (Slv10以上) 18.0 + 3.0 * (Slv - 10) / 5.0 "), 
-                React.createElement("li", null, "背水(中): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) ", React.createElement("br", null), "(baseRateは (Slv10以下) -0.4 + Slv * 2.4, (Slv10以上) 24.0 + 3.0 * (Slv - 10) / 5.0 "), 
-                React.createElement("li", null, "背水(大): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) ", React.createElement("br", null), "(baseRateは (Slv10以下) -0.5 + Slv * 3.0, (Slv10以上) 30.0 + 3.0 * (Slv - 10) / 5.0 "), 
-                React.createElement("li", null, "渾身(大): baseRate * 残りHP割合 (baseRateは (Slv10以下) 10.0 + Slv * 1.0, (Slv10以上) 20.0 + (Slv - 10) * 0.6 "), 
-                React.createElement("li", null, "攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率)) (TA→DAの順で判定、TA率が100％なら3回、TA率0％でDA率100％なら2回) "), 
-                React.createElement("li", null, "技巧期待値: 通常技巧倍率 * 通常技巧確率 + マグナ技巧倍率 * マグナ技巧確率 + (1.0 - 通常技巧確率 - マグナ技巧確率) * 1.0 (マグナと通常は重複)"), 
-                React.createElement("li", null, "基礎HP: 600 + 8 * rank(100まで) + 4 * (rank - 100)")
+            ))
+            ), 
+            React.createElement("ul", {className: "list-group"}, 
+                React.createElement("li", {className: "list-group-item"}, "通常神威: 通常攻刃(小) + 通常守護(小)"), 
+                React.createElement("li", {className: "list-group-item"}, "マグナ神威: マグナ攻刃(小) + マグナ守護(小)"), 
+                React.createElement("li", {className: "list-group-item"}, "通常刹那: 通常技巧(中) + 通常攻刃(中) "), 
+                React.createElement("li", {className: "list-group-item"}, "マグナ刹那: マグナ技巧(中) + マグナ攻刃(中) "), 
+                React.createElement("li", {className: "list-group-item"}, "通常克己: 通常技巧(中) + 通常二手(中) "), 
+                React.createElement("li", {className: "list-group-item"}, "マグナ克己: マグナ技巧(中) + マグナ二手(中) "), 
+                React.createElement("li", {className: "list-group-item"}, "通常暴君: 通常攻刃(大) + HP減少(10%) "), 
+                React.createElement("li", {className: "list-group-item"}, "マグナ暴君: マグナ攻刃(大) + HP減少(10%) "), 
+                React.createElement("li", {className: "list-group-item"}, "アンノウン暴君(ミフネ): アンノウン攻刃(大) + HP減少(7%) "), 
+                React.createElement("li", {className: "list-group-item"}, "技巧(小, 中, 大): クリティカル時倍率 50%"), 
+                React.createElement("li", {className: "list-group-item"}, "マグナ技巧(小, 中, 大): クリティカル時倍率 50% "), 
+                React.createElement("li", {className: "list-group-item"}, "背水(小): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) ", React.createElement("br", null), "(baseRateは (Slv10以下) -0.3 + Slv * 1.8, (Slv10以上) 18.0 + 3.0 * (Slv - 10) / 5.0 "), 
+                React.createElement("li", {className: "list-group-item"}, "背水(中): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) ", React.createElement("br", null), "(baseRateは (Slv10以下) -0.4 + Slv * 2.4, (Slv10以上) 24.0 + 3.0 * (Slv - 10) / 5.0 "), 
+                React.createElement("li", {className: "list-group-item"}, "背水(大): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) ", React.createElement("br", null), "(baseRateは (Slv10以下) -0.5 + Slv * 3.0, (Slv10以上) 30.0 + 3.0 * (Slv - 10) / 5.0 "), 
+                React.createElement("li", {className: "list-group-item"}, "渾身(大): baseRate * 残りHP割合 (baseRateは (Slv10以下) 10.0 + Slv * 1.0, (Slv10以上) 20.0 + (Slv - 10) * 0.6 "), 
+                React.createElement("li", {className: "list-group-item"}, "攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率)) (TA→DAの順で判定、TA率が100％なら3回、TA率0％でDA率100％なら2回) "), 
+                React.createElement("li", {className: "list-group-item"}, "技巧期待値: 通常技巧倍率 * 通常技巧確率 + マグナ技巧倍率 * マグナ技巧確率 + (1.0 - 通常技巧確率 - マグナ技巧確率) * 1.0 (マグナと通常は重複)"), 
+                React.createElement("li", {className: "list-group-item"}, "基礎HP: 600 + 8 * rank(100まで) + 4 * (rank - 100)")
             )
         )
        );
@@ -41819,4 +49458,4 @@ var Notice = React.createClass ({displayName: "Notice",
 
 ReactDOM.render(React.createElement(Root, null), document.getElementById('app'));
 
-},{"react":427,"react-bootstrap":88,"react-dom":255}]},{},[428]);
+},{"react":436,"react-bootstrap":88,"react-dom":255,"react-google-charts":259}]},{},[437]);
