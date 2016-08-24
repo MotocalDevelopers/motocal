@@ -45601,6 +45601,13 @@ var touchDirection = null;
 // Root class contains [Profile, ArmList, Results].
 var Root = React.createClass({displayName: "Root",
   getInitialState: function() {
+      var initial_width = 50;
+      var initial_height = 100;
+
+      if(window.innerWidth <= 1450) {
+          initial_width = 100;
+          initial_height = 50;
+      }
       return {
           armNum: 5,
           summonNum: 2,
@@ -45613,7 +45620,11 @@ var Root = React.createClass({displayName: "Root",
           sortKey: "totalAttack",
           noResultUpdate: false,
           resultHasChangeButNotUpdated: false,
-          tabletLayout: false,
+          oldWidth: window.innerWidth,
+          rootleftHeight: initial_height,
+          rootleftWidth: initial_width,
+          rootrightHeight: initial_height,
+          rootrightWidth: initial_width,
       };
   },
   onTouchStart: function(e) {
@@ -45717,6 +45728,14 @@ var Root = React.createClass({displayName: "Root",
           data: {id: id},
           success: function(data, datatype) {
               var initState = JSON.parse(Base64.decode(data));
+              var oldState = this.state
+              initState["noResultUpdate"] = false
+              initState["oldWidth"] = oldState.oldWidth
+              initState["rootleftHeight"] = oldState.rootleftHeight
+              initState["rootleftWidth"] = oldState.rootleftWidth
+              initState["rootrightHeight"] = oldState.rootrightHeight
+              initState["rootrightWidth"] = oldState.rootrightWidth
+
               newData = initState
               this.setState(initState);
           }.bind(this),
@@ -45736,6 +45755,10 @@ var Root = React.createClass({displayName: "Root",
       if(urlid != ''){
           this.getDatacharById(urlid);
       }
+      window.addEventListener('resize', this.handleResize);
+  },
+  componentWillUnmount() {
+      window.removeEventListener('resize', this.handleResize);
   },
   handleEvent: function(key, e) {
       var newState = this.state
@@ -45858,16 +45881,42 @@ var Root = React.createClass({displayName: "Root",
           return -1;
       }
   },
-  changePCToTabletLayout: function(e){
-      this.setState({tabletLayout: true})
-  },
-  changeTabletToPCLayout: function(e){
-      this.setState({tabletLayout: false})
-  },
   subCharaNum: function(e) {
       var newCharaNum = parseInt(this.state.charaNum);
       if(newCharaNum > 1) newCharaNum -= 1
       this.setState({charaNum: newCharaNum});
+  },
+  onDragEnd: function(e) {
+      if(window.innerWidth > 1450) {
+          if(e.pageX > 0) {
+              this.setState({rootleftWidth: parseInt(100.0 * e.pageX / window.innerWidth)})
+              this.setState({rootrightWidth: 100 - parseInt(100.0 * e.pageX / window.innerWidth)})
+              this.setState({noResultUpdate: true})
+          }
+      } else {
+          if(e.pageY > 0) {
+              this.setState({rootleftHeight: parseInt(100.0 * e.pageY / window.innerHeight)})
+              this.setState({rootrightHeight: 100 - parseInt(100.0 * e.pageY / window.innerHeight)})
+              this.setState({noResultUpdate: true})
+          }
+      }
+  },
+  handleResize: function(e) {
+      if(this.state.oldWidth <= 1450 && e.target.innerWidth > 1450) {
+          this.setState({rootleftHeight: 100})
+          this.setState({rootrightHeight: 100})
+          this.setState({rootleftWidth: 50})
+          this.setState({rootrightWidth: 50})
+          this.setState({oldWidth: e.target.innerWidth})
+          this.setState({noResultUpdate: true})
+      } else if(this.state.oldWidth > 1450 && e.target.innerWidth <= 1450) {
+          this.setState({rootleftHeight: 50})
+          this.setState({rootrightHeight: 50})
+          this.setState({rootleftWidth: 100})
+          this.setState({rootrightWidth: 100})
+          this.setState({oldWidth: e.target.innerWidth})
+          this.setState({noResultUpdate: true})
+      }
   },
   render: function() {
     if(_ua.Mobile) {
@@ -45979,19 +46028,17 @@ var Root = React.createClass({displayName: "Root",
     } else {
         return (
             React.createElement("div", {className: "root"}, 
-                React.createElement("div", {className: "rootleft", id: "rootleft2"}, 
+                React.createElement("div", {className: "rootleft", id: "rootleft2", style: {height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}, 
                     React.createElement("h1", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
                     React.createElement("div", {className: "tabrow"}, 
                         React.createElement("button", {id: "inputTab", className: "selected", onClick: this.changeTabPC}, "入力 / Input"), 
                         React.createElement("button", {id: "summonTab", onClick: this.changeTabPC}, "召喚石 / Summon "), 
                         React.createElement("button", {id: "charaTab", onClick: this.changeTabPC}, "キャラ / Chara"), 
                         React.createElement("button", {id: "armTab", onClick: this.changeTabPC}, "武器 / Weapon"), 
-                        React.createElement("button", {id: "resultTab", className: "tab-hidden", onClick: this.changeTabPC}, "結果 / Results"), 
                         React.createElement("button", {id: "systemTab", onClick: this.changeTabPC}, "保存・注記 / System"), 
                         React.createElement("button", {id: "howToTab", onClick: this.changeTabPC}, "二手スキル込みの編成について")
                     ), 
                     React.createElement("div", {className: "Tab", id: "inputTab"}, 
-                        React.createElement(Button, {onClick: this.changePCToTabletLayout}, "タブレット版表示に切り替え"), 
                         React.createElement(Profile, {dataName: this.state.dataName, onChange: this.onChangeProfileData})
                     ), 
                     React.createElement("div", {className: "Tab hidden", id: "summonTab"}, 
@@ -46024,7 +46071,8 @@ var Root = React.createClass({displayName: "Root",
                         React.createElement(HowTo, null)
                     )
                 ), 
-                React.createElement("div", {className: "rootRight"}, 
+                React.createElement("div", {draggable: "true", className: "drag-hr bg-info", onDragEnd: this.onDragEnd}, React.createElement("span", {className: "label label-primary"}, "drag")), 
+                React.createElement("div", {className: "rootRight", style: {height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}}, 
                     "優先する項目: ", React.createElement(FormControl, {componentClass: "select", value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, " ", select_ktypes, " "), 
                     React.createElement(ResultList, {data: this.state})
                 )
@@ -46303,15 +46351,15 @@ var Chara = React.createClass({displayName: "Chara",
            var newchara = this.props.addChara
 
            state["name"] = newchara.name
-           state["attack"] = newchara.attack
-           state["hp"] = newchara.hp
+           state["attack"] = parseInt(newchara.attack)
+           state["hp"] = parseInt(newchara.hp)
            state["type"] = newchara.type
            state["race"] = newchara.race
            state["element"] = newchara.element
            state["favArm"] = newchara.fav1
            state["favArm2"] = newchara.fav2
-           state["DA"] = newchara.baseDA
-           state["TA"] = newchara.baseTA
+           state["DA"] = parseFloat(newchara.baseDA)
+           state["TA"] = parseFloat(newchara.baseTA)
 
            this.setState(state);
        }
@@ -46341,15 +46389,15 @@ var Chara = React.createClass({displayName: "Chara",
             var newchara = nextProps.addChara
 
             newState["name"] = newchara.name
-            newState["attack"] = newchara.attack
-            newState["hp"] = newchara.hp
+            newState["attack"] = parseInt(newchara.attack)
+            newState["hp"] = parseInt(newchara.hp)
             newState["type"] = newchara.type
             newState["race"] = newchara.race
             newState["element"] = newchara.element
             newState["favArm"] = newchara.fav1
             newState["favArm2"] = newchara.fav2
-            newState["DA"] = newchara.baseDA
-            newState["TA"] = newchara.baseTA
+            newState["DA"] = parseFloat(newchara.baseDA)
+            newState["TA"] = parseFloat(newchara.baseTA)
 
             this.setState(newState);
             this.props.onChange(this.props.id, newState, false);
@@ -46414,10 +46462,30 @@ var Chara = React.createClass({displayName: "Chara",
 
 var SummonList = React.createClass({displayName: "SummonList",
     getInitialState: function() {
+        var sm = []
+        for(var i=0; i < this.props.summonNum; i++) { sm.push(i); }
+
         return {
             smlist: [],
             defaultElement: "fire",
+            summons: sm,
         };
+    },
+    updateSummonNum: function(num) {
+        var summons = this.state.summons
+
+        if(summons.length < num) {
+            var maxvalue = Math.max.apply(null, summons)
+            for(var i = 0; i < (num - summons.length); i++){
+                summons.push(i + maxvalue + 1)
+            }
+        } else {
+            // ==の場合は考えなくてよい (問題がないので)
+            while(summons.length > num){
+                summons.pop();
+            }
+        }
+        this.setState({summons: summons})
     },
     componentWillReceiveProps: function(nextProps) {
         if (parseInt(nextProps.summonNum) < parseInt(this.props.summonNum)) {
@@ -46427,6 +46495,56 @@ var SummonList = React.createClass({displayName: "SummonList",
             }
             this.setState({smlist: newsmlist})
         }
+        this.updateSummonNum(nextProps.summonNum)
+    },
+    handleOnCopy: function(id, keyid, state) {
+        var newsummons = this.state.summons
+        var maxvalue = Math.max.apply(null, newsummons)
+
+        newsummons.splice(id + 1, 0, maxvalue + 1)
+        newsummons.pop();
+        this.setState({summons: newsummons})
+
+        // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("summon" in newData)) {
+            // もしnewDataが更新される前だったらkeyを作っておく
+            newData["summon"] = {}
+        }
+        newData.summon[id + 1] = state;
+
+        var newsmlist = this.state.smlist;
+        newsmlist.splice(id + 1, 0, state)
+        newsmlist.pop();
+        this.setState({smlist: newsmlist})
+
+        // Root へ変化を伝搬
+        this.props.onChange(newsmlist);
+    },
+    handleOnRemove: function(id, keyid, state) {
+        var newsummons = this.state.summons
+        var maxvalue = Math.max.apply(null, newsummons)
+
+        // 該当の "key" を持つものを削除する
+        newsummons.splice(this.state.summons.indexOf(keyid), 1)
+        // 1個補充
+        newsummons.push(maxvalue + 1)
+        this.setState({summons: newsummons})
+
+        // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("summon" in newData)) {
+            newData["summon"] = {}
+        }
+        newData.summon[newsummons.length - 1] = state;
+
+        var newsmlist = this.state.smlist;
+        // 削除した分をalistからも削除
+        newsmlist.splice(id, 1)
+        // 1個補充
+        newsmlist.push(state)
+        this.setState({smlist: newsmlist})
+
+        // Root へ変化を伝搬
+        this.props.onChange(newsmlist);
     },
     handleOnChange: function(key, state){
         var newsmlist = this.state.smlist;
@@ -46440,42 +46558,42 @@ var SummonList = React.createClass({displayName: "SummonList",
       this.setState(newState)
     },
     render: function() {
-        var summons = [];
-        for(var i=0; i < this.props.summonNum; i++) {
-            summons.push({id: i});
-        }
+        var summons = this.state.summons;
         var hChange = this.handleOnChange;
+        var hRemove = this.handleOnRemove;
+        var hCopy = this.handleOnCopy;
         var dataName = this.props.dataName;
         var defaultElement = this.state.defaultElement;
         if(_ua.Mobile) {
             return (
                 React.createElement("div", {className: "summonList"}, 
                     React.createElement(ControlLabel, null, "属性一括変更"), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_summonElements, " "), 
-                    summons.map(function(sm) {
-                        return React.createElement(Summon, {key: sm.id, onChange: hChange, id: sm.id, dataName: dataName, defaultElement: defaultElement});
+                    summons.map(function(sm, ind) {
+                        return React.createElement(Summon, {key: sm, keyid: sm, onRemove: hRemove, onCopy: hCopy, onChange: hChange, id: ind, dataName: dataName, defaultElement: defaultElement});
                     })
                 )
             );
         } else {
             return (
                 React.createElement("div", {className: "summonList"}, 
+                    "[属性一括変更]", React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_summonElements, " "), 
                     React.createElement("h3", {className: "margin-top"}, " 召喚石 "), 
                     React.createElement("table", {className: "table table-bordered"}, 
                     React.createElement("thead", null, 
                     React.createElement("tr", null, 
-                        React.createElement("th", null, "石*"), 
-                        React.createElement("th", null, "属性* ", React.createElement("br", null), "[一括変更]", React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_summonElements, " ")), 
-                        React.createElement("th", null, "加護量*"), 
+                        React.createElement("th", null, "自分の石*"), 
+                        React.createElement("th", null, "フレの石*"), 
                         React.createElement("th", null, "合計攻撃力*"), 
                         React.createElement("th", null, "合計HP"), 
                         React.createElement("th", null, "HPUP(%)"), 
                         React.createElement("th", null, "DA加護"), 
-                        React.createElement("th", null, "TA加護")
+                        React.createElement("th", null, "TA加護"), 
+                        React.createElement("th", null, "操作")
                     )
                     ), 
                     React.createElement("tbody", null, 
-                        summons.map(function(sm) {
-                            return React.createElement(Summon, {key: sm.id, onChange: hChange, id: sm.id, dataName: dataName, defaultElement: defaultElement});
+                        summons.map(function(sm, ind) {
+                            return React.createElement(Summon, {key: sm, keyid: sm, onRemove: hRemove, onCopy: hCopy, onChange: hChange, id: ind, dataName: dataName, defaultElement: defaultElement});
                         })
                     )
                     )
@@ -46539,6 +46657,12 @@ var Summon = React.createClass({displayName: "Summon",
         newState[key] = e.target.value
         this.setState(newState)
         this.props.onChange(this.props.id, newState)
+    },
+    clickRemoveButton: function(e) {
+        this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
+    },
+    clickCopyButton: function(e, state) {
+        this.props.onCopy(this.props.id, this.props.keyid, this.state)
     },
     handleSummonAmountChange(type, ind, e){
         var newState = this.state
@@ -46618,27 +46742,40 @@ var Summon = React.createClass({displayName: "Summon",
                     React.createElement("th", null, "TA加護"), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
                 )
+                /*
+                <tr>
+                    <th>操作</th>
+                    <td></td>
+                </tr>*/
                 )
                 )
             );
         } else {
             return (
                 React.createElement("tr", null, 
-                    React.createElement("td", null, React.createElement("label", null, "自分:", React.createElement(FormControl, {componentClass: "select", className: "multi", value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons)), React.createElement("br", null), 
-                    React.createElement("label", null, "フレ:", React.createElement(FormControl, {componentClass: "select", className: "multi", value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons))), 
-                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements), React.createElement("br", null), 
-                    React.createElement(FormControl, {componentClass: "select", value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements)), 
-                    React.createElement("td", null, selfSummon[0].label, React.createElement(FormControl, {type: selfSummon[0].input, min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)}), 
-                    selfSummon[1].label, React.createElement(FormControl, {type: selfSummon[1].input, min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)}), 
-                    React.createElement("br", null), 
-                    friendSummon[0].label, React.createElement(FormControl, {type: friendSummon[0].input, min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)}), 
-                    friendSummon[1].label, React.createElement(FormControl, {type: friendSummon[1].input, min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)})
+                    React.createElement("td", null, 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements), 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons), 
+                        selfSummon[0].label, React.createElement(FormControl, {type: selfSummon[0].input, placeholder: "加護量", min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)}), 
+                        selfSummon[1].label, React.createElement(FormControl, {type: selfSummon[1].input, placeholder: "加護量", min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)})
+                    ), 
+                    React.createElement("td", null, 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements), 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons), 
+                        friendSummon[0].label, React.createElement(FormControl, {type: friendSummon[0].input, placeholder: "加護量", min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)}), 
+                        friendSummon[1].label, React.createElement(FormControl, {type: friendSummon[1].input, placeholder: "加護量", min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)})
                     ), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")})), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})), 
+                    React.createElement("td", null, 
+                        React.createElement(ButtonGroup, {vertical: true}, 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickRemoveButton}, "削除"), 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickCopyButton}, "コピー")
+                        )
+                    )
                 )
             );
         }
@@ -46652,9 +46789,11 @@ var ResultList = React.createClass({displayName: "ResultList",
         var totalItr = 1;
         for(var i = 0; i < arml.length; i++){
             var temp = []
-            var itr = arml[i].considerNumberMax - arml[i].considerNumberMin + 1
+            var numMin = (arml[i].considerNumberMin != undefined) ? parseInt(arml[i].considerNumberMin) : 0
+            var numMax = (arml[i].considerNumberMax != undefined) ? parseInt(arml[i].considerNumberMax) : 1
+            var itr = numMax - numMin + 1
             for(var j = 0; j < itr; j++){
-                temp[j] = j + arml[i].considerNumberMin;
+                temp[j] = j + numMin;
             }
             totalItr *= itr;
             armNumArray[i] = temp;
@@ -47418,6 +47557,21 @@ var ResultList = React.createClass({displayName: "ResultList",
             "averageCyclePerTurn": {"max": 0, "min": 0},
         }
 
+        if(res.length > 1) {
+            var AllTotalAttack = [["残りHP(%)"]];
+            var AllCycleDamagePerTurn = [["残りHP(%)"]];
+            var AllAverageTotalAttack = [["残りHP(%)"]];
+            var AllAverageCycleDamagePerTurn = [["残りHP(%)"]];
+            var AllTotalHP = [["残りHP(%)"]]
+            for(var m = 1; m < 101; m++){
+                AllTotalAttack.push([m.toString() + "%"])
+                AllCycleDamagePerTurn.push([m.toString() + "%"])
+                AllTotalHP.push([m.toString() + "%"])
+                AllAverageTotalAttack.push([m.toString() + "%"])
+                AllAverageCycleDamagePerTurn.push([m.toString() + "%"])
+            }
+        }
+
         for(var s = 0; s < res.length; s++) {
             var oneresult = res[s]
             var summonHeader = ""
@@ -47562,13 +47716,15 @@ var ResultList = React.createClass({displayName: "ResultList",
 
                     for(var k = 0; k < 100; k++){
                         var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin
-                        if(key == "Djeeta") TotalAttack[k + 1].push( parseInt(newTotalAttack) )
-                        if(key == "Djeeta") TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
-
                         var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
                         var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio)
                         var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
-                        if(key == "Djeeta") CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
+
+                        if(key == "Djeeta") {
+                            TotalAttack[k + 1].push( parseInt(newTotalAttack) )
+                            TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
+                            CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
+                        }
 
                         AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
                         AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
@@ -47579,6 +47735,23 @@ var ResultList = React.createClass({displayName: "ResultList",
                 CycleDamagePerTurn[0].push(title)
                 AverageTotalAttack[0].push(title)
                 AverageCycleDamagePerTurn[0].push(title)
+
+                // 召喚石2組以上の場合
+                if(res.length > 1) {
+                    AllTotalAttack[0].push("(" + summonHeader + ")" + title)
+                    AllTotalHP[0].push("(" + summonHeader + ")" + title)
+                    AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                    AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
+                    AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+
+                    for(var k = 1; k < 101; k++) {
+                        AllTotalAttack[k].push(TotalAttack[k][j + 1])
+                        AllTotalHP[k].push(TotalHP[k][j + 1])
+                        AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
+                        AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
+                        AllAverageCycleDamagePerTurn[k].push(AverageCycleDamagePerTurn[k][j + 1])
+                    }
+                }
             }
 
             data[summonHeader] = {}
@@ -47587,6 +47760,15 @@ var ResultList = React.createClass({displayName: "ResultList",
             data[summonHeader]["averageAttack"] = AverageTotalAttack
             data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
             data[summonHeader]["totalHP"] = TotalHP
+        }
+
+        if(res.length > 1){
+            data["まとめて比較"] = {}
+            data["まとめて比較"]["totalAttack"] = AllTotalAttack
+            data["まとめて比較"]["totalHP"] = AllTotalHP
+            data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
+            data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
+            data["まとめて比較"]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
         }
 
         // グラフ最大値最小値を抽出
@@ -47601,6 +47783,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                 }
             }
         }
+
         data["minMaxArr"] = minMaxArr
         return data
     },
@@ -47981,16 +48164,34 @@ var HPChart = React.createClass({displayName: "HPChart",
         if(!(sortKey in supportedChartSortkeys)) sortKey = "totalAttack"
 
         options = {}
-        for(key in this.props.data) {
-            if(key != "minMaxArr") {
-                options[key] = {
-                    title: key,
-                    curveType: 'function',
-                    forcelFrame: true,
-                    hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                    vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                    tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true},
-                    legend: {position: "bottom"},
+        if(_ua.Mobile) {
+            for(key in this.props.data) {
+                if(key != "minMaxArr") {
+                    options[key] = {
+                        title: key,
+                        curveType: 'function',
+                        forcelFrame: true,
+                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    }
+                }
+            }
+        } else {
+            for(key in this.props.data) {
+                if(key != "minMaxArr") {
+                    options[key] = {
+                        title: key,
+                        curveType: 'function',
+                        forcelFrame: true,
+                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    }
                 }
             }
         }
@@ -48006,18 +48207,37 @@ var HPChart = React.createClass({displayName: "HPChart",
 
         // optionsをupdate
         options = {}
-        for(key in this.props.data) {
-            if(key != "minMaxArr") {
-                options[key] = {
-                    title: key,
-                    forcelFrame: true,
-                    curveType: 'function',
-                    hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                    vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                    tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true},
-                    legend: {position: "bottom"},
+        if(_ua.Mobile) {
+            for(key in this.props.data) {
+                if(key != "minMaxArr") {
+                    options[key] = {
+                        title: key,
+                        forcelFrame: true,
+                        curveType: 'function',
+                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
+                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    }
                 }
             }
+        } else {
+            for(key in this.props.data) {
+                if(key != "minMaxArr") {
+                    options[key] = {
+                        title: key,
+                        forcelFrame: true,
+                        curveType: 'function',
+                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
+                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    }
+                }
+            }
+
         }
         newState.options = options
 
@@ -48031,22 +48251,22 @@ var HPChart = React.createClass({displayName: "HPChart",
         if(_ua.Mobile) {
             return (
                     React.createElement("div", {className: "HPChart"}, 
-                        React.createElement(FormControl, {componentClass: "select", value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, select_supported_chartsortkeys), 
+                        /*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>*/
                         Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
-                                return React.createElement(Chart, {chartType: "LineChart", className: "LineChart", data: data[key][sortKey], key: key, options: options[key], graph_id: "LineChart" + ind, width: "100%", height: "50%", legend_toggle: true})
+                                return React.createElement(Chart, {chartType: "LineChart", className: "LineChart", data: data[key][sortKey], key: key, options: options[key], graph_id: "LineChart" + ind, width: "90%", height: "50%", legend_toggle: true})
                             }
                         })
                     )
             );
         } else {
             if(window.innerWidth >= 1450) {
-                var width = (100.0 / (Object.keys(data).length - 1))
+                var width = (90.0 / (Object.keys(data).length - 1))
                 if(Object.keys(data).length - 1 > 2) {
-                    width = 50
+                    width = 45.0
                 }
             } else {
-                var width = 100.0
+                var width = 90.0
             }
 
             return (
@@ -48412,9 +48632,9 @@ var ArmList = React.createClass({displayName: "ArmList",
                         React.createElement("th", null, "武器名*"), 
                         React.createElement("th", {className: "atkhp"}, "攻撃力*"), 
                         React.createElement("th", {className: "atkhp"}, "HP"), 
-                        React.createElement("th", {className: "select"}, "武器種*"), 
-                        React.createElement("th", null, "スキル*   ", React.createElement(ControlLabel, null, "属性一括変更"), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " ")), 
-                        React.createElement("th", {className: "select"}, "SLv*"), 
+                        React.createElement("th", null, "武器種*"), 
+                        React.createElement("th", {className: "skillselect"}, "スキル*   ", React.createElement(ControlLabel, null, "属性一括変更"), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_elements, " ")), 
+                        React.createElement("th", null, "SLv*"), 
                         React.createElement("th", {className: "consider"}, "本数*"), 
                         React.createElement("th", {className: "system"}, "操作")
                     )
@@ -48665,15 +48885,15 @@ var Arm = React.createClass({displayName: "Arm",
             var newarm = nextProps.addArm
 
             newState["name"] = newarm.name
-            newState["attack"] = newarm.attack
-            newState["hp"] = newarm.hp
+            newState["attack"] = parseInt(newarm.attack)
+            newState["hp"] = parseInt(newarm.hp)
             newState["armType"] = newarm.type
             newState["element"] = newarm.element
             newState["skill1"] = newarm.skill1
             newState["element2"] = newarm.element2
             newState["skill2"] = newarm.skill2
-            newState["slv"] = newarm.slvmax
-            newState["considerNumberMax"] = nextProps.considerNum
+            newState["slv"] = parseInt(newarm.slvmax)
+            newState["considerNumberMax"] = parseInt(nextProps.considerNum)
 
             this.setState(newState);
             this.props.onChange(this.props.id, newState, false);
@@ -48695,14 +48915,15 @@ var Arm = React.createClass({displayName: "Arm",
            var newarm = this.props.addArm
 
            state["name"] = newarm.name
-           state["attack"] = newarm.attack
-           state["hp"] = newarm.hp
+           state["attack"] = parseInt(newarm.attack)
+           state["hp"] = parseInt(newarm.hp)
            state["armType"] = newarm.type
            state["element"] = newarm.element
            state["skill1"] = newarm.skill1
            state["element2"] = newarm.element2
            state["skill2"] = newarm.skill2
-           state["slv"] = newarm.slvmax
+           state["slv"] = parseInt(newarm.slvmax)
+           state["considerNumberMax"] = parseInt(this.props.considerNum)
 
            this.setState(state);
        }
@@ -48762,7 +48983,7 @@ var Arm = React.createClass({displayName: "Arm",
                     React.createElement("tr", null, React.createElement("th", null, "操作"), 
                     React.createElement("td", null, 
                         React.createElement(ButtonGroup, null, 
-                            React.createElement(Button, {bsStyle: "primary", onClick: this.clickRemoveButton}, "リセット"), 
+                            React.createElement(Button, {bsStyle: "primary", onClick: this.clickRemoveButton}, "削除"), 
                             React.createElement(Button, {bsStyle: "primary", onClick: this.clickCopyButton}, "コピー")
                         )
                     ))
@@ -48772,11 +48993,11 @@ var Arm = React.createClass({displayName: "Arm",
         } else {
             return (
                 React.createElement("tr", null, 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
+                    React.createElement("td", {className: "armname"}, React.createElement(FormControl, {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
                     React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
                     React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
-                    React.createElement("td", {className: "select"}, React.createElement(FormControl, {componentClass: "select", value: this.state.armType, onChange: this.handleEvent.bind(this, "armType")}, " ", select_armtypes, " ")), 
-                    React.createElement("td", null, 
+                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.armType, onChange: this.handleEvent.bind(this, "armType")}, " ", select_armtypes, " ")), 
+                    React.createElement("td", {className: "skillselect"}, 
                         React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " "), 
                         React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill1, onChange: this.handleEvent.bind(this, "skill1")}, " ", select_skills), React.createElement("br", null), 
                         React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element2, onChange: this.handleEvent.bind(this, "element2")}, " ", select_elements, " "), 
@@ -48789,7 +49010,7 @@ var Arm = React.createClass({displayName: "Arm",
                     ), 
                     React.createElement("td", {className: "system"}, 
                         React.createElement(ButtonGroup, {vertical: true}, 
-                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickRemoveButton}, "リセット"), 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickRemoveButton}, "削除"), 
                             React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickCopyButton}, "コピー")
                         )
                     )
@@ -48862,6 +49083,10 @@ var Profile = React.createClass({displayName: "Profile",
         if(_ua.Mobile) {
             return (
                 React.createElement("div", {className: "profile"}, 
+                    React.createElement("p", {className: "text-danger"}, " ※8/24の夕方に行ったアップデートの際のミスにより、夕方〜深夜にかけて\"特定の状況で全く計算が行われなくなる\"というエラーが発生していました。" + ' ' +
+                    "詳しく説明すると「武器プリセットから武器を追加した際に、武器枠が増えた場合に、追加された武器の最大考慮本数の内部値がおかしくなる」というものです。" + ' ' +
+                    "その時間帯の間に保存されてしまったデータにも問題があるため、武器の最大考慮本数が正しく計算されない場合があります。" + ' ' +
+                    "上記不具合を経験した方は、お手数ですが一度武器情報を削除し、再入力していただければと思います。"), 
                     React.createElement("h3", null, " ジータちゃん情報 (*: 推奨入力項目)"), 
                     React.createElement("table", {className: "table table-bordered"}, 
                         React.createElement("tbody", null, 
@@ -48956,6 +49181,10 @@ var Profile = React.createClass({displayName: "Profile",
         } else {
             return (
                 React.createElement("div", {className: "profile"}, 
+                    React.createElement("p", {className: "text-danger"}, " ※8/24の夕方に行ったアップデートの際のミスにより、夕方〜深夜にかけて\"特定の状況で全く計算が行われなくなる\"というエラーが発生していました。" + ' ' +
+                    "詳しく説明すると「武器プリセットから武器を追加した際に、武器枠が増えた場合に、追加された武器の最大考慮本数の内部値がおかしくなる」というものです。" + ' ' +
+                    "その時間帯の間に保存されてしまったデータにも問題があるため、武器の最大考慮本数が正しく計算されない場合があります。" + ' ' +
+                    "上記不具合を経験した方は、お手数ですが一度武器情報を削除し、再入力していただければと思います。"), 
                     React.createElement("h3", null, " ジータちゃん情報 (*: 推奨入力項目)"), 
                     React.createElement("table", {className: "table table-bordered"}, 
                         React.createElement("tbody", null, 
@@ -49321,23 +49550,28 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", {className: "list-group"}, 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/23: iPhone版でもHPチャート機能をリリース "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした "), 
+                React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/24: 前述の不具合調整の際のミスのため、全く計算されなくなってしまう場合があったのを修正 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/24: PC版UIの微調整 / プリセット入力から武器を追加した際、本数が正しく設定されない場合があるのを修正 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/24: データ読み出しの際、PC版のレイアウトが崩れることがある不具合を修正 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/24: サーバからのデータ読み出し機能に障害が出ていたのを修正 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/23: iPhone版でもHPチャート機能をリリース / PC版のレイアウトをドラッグして調整できるようにした "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/23: グラフ用に保存した編成を全リセットするボタン追加 / 凡例のスタイル調整 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/22: 背水渾身用のHPチャート表示機能を実装 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/21: 予想ターン毎ダメージの導入と、それについての解説を追加 / 減衰補正を修正 "), 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/21: コスモス武器を選んだ場合に止まってしまう不具合を修正 "), 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/20: スマホ版でスワイプでのタブ切り替えに対応 / 武器追加時に考慮本数を選べるようにした "), 
+                React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/21: コスモス武器を選んだ場合に止まってしまう不具合を修正 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/20: スマホ版でスワイプでのタブ切り替えに対応 / 武器追加時に考慮本数を選べるようにした "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/20: UIを調整 / サーバに保存後にデータを変更すると、初期データに戻ってしまう不具合を修正 / 保存したURLをブラウザ履歴として残すようにした / ブラウザ保存データを一度も選択しないで読み込みを行うと、データを指定しろと言われる不具合を修正 / 武器とキャラプリセットで、枠がないときにいっぱいですって言われないようにした "), 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/19: キャラテンプレート機能を追加 "), 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/19: 武器テンプレート機能を追加(gbf-wikiのデータを使わせて頂きました。) / コスモス武器チェックボックス廃止 / 計算処理の削減 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/19: キャラテンプレート機能を追加 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/19: 武器テンプレート機能を追加(gbf-wikiのデータを使わせて頂きました。) / コスモス武器チェックボックス廃止 / 計算処理の削減 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/19: 武器数・召喚石数・キャラ数の増やし方を変更 / ゼニスパークとジョブ攻撃ボーナスを分離 / 同じ名前のキャラがいると片方しか計算されない不具合を修正 "), 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 / UI調整 "), 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/17: 検証データを元に渾身の実装を修正 / ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, "データビューア"), "の作成 / 予想ダメージ計算に減衰補正を追加 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 / UI調整 "), 
+                React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/17: 検証データを元に渾身の実装を修正 / ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, "データビューア"), "の作成 / 予想ダメージ計算に減衰補正を追加 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/16: 三手スキルSLv11~15の値を入力 / DATA率の合計を、枠別上限から武器スキル全体の上限に修正 / 渾身仮実装 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/12: 二手スキル上限の値に召喚石加護分の値が考慮されていなかった不具合を修正。/ 予想ダメージ機能を仮実装しました。"), 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/11: 敵の属性の内部的な初期値がおかしかった不具合を修正。"), 
+                React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/11: 敵の属性の内部的な初期値がおかしかった不具合を修正。"), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/09: 簡易リセットボタンを配置 / バハムート武器フツルスの拳系に対応 (wikiの情報に準拠) (HP40%, DA10%, TA8%という情報もありますが、未確定の為とりあえず低い値を採用しました。検証してくれる方を募集してます……) "), 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。 / 武器スキル属性の一括変更を実装 ")
+                React.createElement("li", {className: "list-group-item list-group-item-success"}, "2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。 / 武器スキル属性の一括変更を実装 ")
             ), 
 
             React.createElement("h3", null, "注記"), 

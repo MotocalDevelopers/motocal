@@ -5,7 +5,16 @@ body {
     font-weight: bold;
     padding-bottom: 10px;
 }
-@media screen and (min-width: 1450px) {
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+@media screen and (min-width: 1451px) {
     body {
         width : 99%;
         min-width: 1450px;
@@ -133,10 +142,9 @@ div.Tab.hidden {
     margin: 0;
 }
 
-@media screen and (min-width: 1450px) {
+@media screen and (min-width: 1451px) {
     .rootleft {
         width: 45%;
-        max-width: 800px;
         height: 100%;
         float: left;
         overflow: auto;
@@ -145,26 +153,56 @@ div.Tab.hidden {
     }
 
     .rootright {
-        width: calc(100% - 45% - 11px);
+        width: calc(100% - 45% - 12px);
         height: 100%;
         margin-left:5px;
         float: left;
         overflow: auto;
     }
+
+    div.drag-hr {
+        cursor: col-resize;
+        width: 5px;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        float: left;
+        text-align: center;
+        padding: 20px 0 0 0;
+    }
+
+    div.drag-hr span {
+        vertical-align: middle;
+        left: -20px;
+        position: relative;
+    }
 }
 
 @media screen and (max-width: 1450px) {
     .rootleft {
-        width: 100%;
+        margin-left: 1%;
+        margin-right: 1%;
+        width: 98%;
         height: 50%;
         overflow: auto;
     }
 
     .rootright {
-        width: 100%;
-        height: 50%;
-        border-top:3px double #116;
+        margin-left: 1%;
+        margin-right: 1%;
+        width: 98%;
+        height: calc(50%-5px);
         overflow: auto;
+    }
+
+    div.drag-hr {
+        cursor: row-resize;
+        height: 5px;
+        padding: 0;
+        margin: 2px 0 2px 0;
+        text-align: center;
+        position: relative;
+        top: -10px;
     }
 }
 
@@ -213,20 +251,35 @@ div.Tab.hidden {
 
 .armList input {
     width: 100%;
+    margin: 1px;
 }
 
 .armList table td.atkhp, .armList table th.atkhp {
-    min-width: 20px;
-    width: 60px;
+    min-width: 40px;
+    width: 80px;
+}
+
+.armList .skillselect {
+    min-width: 80px;
+    max-width: 140px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.armList .armname {
+    min-width: 60px;
+    max-width: 100px;
 }
 
 .armList .element {
-    width: 30%;
+    width: 20%;
+    min-width: 40px;
     display: inline;
 }
 
 .armList .skill {
-    width: 65%;
+    width: 75%;
+    max-width: calc(100% - 40px);
     display: inline;
 }
 
@@ -392,7 +445,6 @@ table.displayElement td:last-child {
 
 .armList .form-control.consider {
     width: 45%;
-    font-size: 5pt;
 }
 
 .btn {
@@ -538,7 +590,7 @@ label {
     overflow: scroll;
 }
 
-@media screen and (min-width: 1450px) {
+@media screen and (min-width: 1451px) {
     div#LineChart0, div#LineChart1, div#LineChart2, div#LineChart3, div#LineChart4, div#LineChart5 {
         display: inline;
         float: left;
@@ -560,7 +612,8 @@ label {
 
 .google-visualization-tooltip {
     z-index: 1;
-    width: 350px;
+    width: 300px;
+    left: -20px;
     overflow: visible;
 }
 
