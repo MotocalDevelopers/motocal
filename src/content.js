@@ -1305,10 +1305,30 @@ var Chara = React.createClass({
 
 var SummonList = React.createClass({
     getInitialState: function() {
+        var sm = []
+        for(var i=0; i < this.props.summonNum; i++) { sm.push(i); }
+
         return {
             smlist: [],
             defaultElement: "fire",
+            summons: sm,
         };
+    },
+    updateSummonNum: function(num) {
+        var summons = this.state.summons
+
+        if(summons.length < num) {
+            var maxvalue = Math.max.apply(null, summons)
+            for(var i = 0; i < (num - summons.length); i++){
+                summons.push(i + maxvalue + 1)
+            }
+        } else {
+            // ==の場合は考えなくてよい (問題がないので)
+            while(summons.length > num){
+                summons.pop();
+            }
+        }
+        this.setState({summons: summons})
     },
     componentWillReceiveProps: function(nextProps) {
         if (parseInt(nextProps.summonNum) < parseInt(this.props.summonNum)) {
@@ -1318,57 +1338,56 @@ var SummonList = React.createClass({
             }
             this.setState({smlist: newsmlist})
         }
+        this.updateSummonNum(nextProps.summonNum)
     },
     handleOnCopy: function(id, keyid, state) {
-        console.log("summon copy: ", id)
-        var newsummons = this.state.arms
-        // var maxvalue = Math.max.apply(null, newarms)
-        //
-        // newarms.splice(id + 1, 0, maxvalue + 1)
-        // newarms.pop();
-        // this.setState({arms: newarms})
-        //
-        // // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
-        // if(!("armlist" in newData)) {
-        //     // もしnewDataが更新される前だったらkeyを作っておく
-        //     newData["armlist"] = {}
-        // }
-        // newData.armlist[id + 1] = state;
-        //
-        // var newalist = this.state.alist;
-        // newalist.splice(id + 1, 0, state)
-        // newalist.pop();
-        // this.setState({alist: newalist})
-        //
-        // // Root へ変化を伝搬
-        // this.props.onChange(newalist, false);
+        var newsummons = this.state.summons
+        var maxvalue = Math.max.apply(null, newsummons)
+
+        newsummons.splice(id + 1, 0, maxvalue + 1)
+        newsummons.pop();
+        this.setState({summons: newsummons})
+
+        // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("summon" in newData)) {
+            // もしnewDataが更新される前だったらkeyを作っておく
+            newData["summon"] = {}
+        }
+        newData.summon[id + 1] = state;
+
+        var newsmlist = this.state.smlist;
+        newsmlist.splice(id + 1, 0, state)
+        newsmlist.pop();
+        this.setState({smlist: newsmlist})
+
+        // Root へ変化を伝搬
+        this.props.onChange(newsmlist);
     },
     handleOnRemove: function(id, keyid, state) {
-        console.log("summon remove: ", id)
-        // var newarms = this.state.arms
-        // var maxvalue = Math.max.apply(null, newarms)
-        //
-        // // 該当の "key" を持つものを削除する
-        // newarms.splice(this.state.arms.indexOf(keyid), 1)
-        // // 1個補充
-        // newarms.push(maxvalue + 1)
-        // this.setState({arms: newarms})
-        //
-        // // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
-        // if(!("armlist" in newData)) {
-        //     newData["armlist"] = {}
-        // }
-        // newData.armlist[newarms.length - 1] = state;
-        //
-        // var newalist = this.state.alist;
-        // // 削除した分をalistからも削除
-        // newalist.splice(id, 1)
-        // // 1個補充
-        // newalist.push(state)
-        // this.setState({alist: newalist})
-        //
-        // // Root へ変化を伝搬
-        // this.props.onChange(newalist, false);
+        var newsummons = this.state.summons
+        var maxvalue = Math.max.apply(null, newsummons)
+
+        // 該当の "key" を持つものを削除する
+        newsummons.splice(this.state.summons.indexOf(keyid), 1)
+        // 1個補充
+        newsummons.push(maxvalue + 1)
+        this.setState({summons: newsummons})
+
+        // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("summon" in newData)) {
+            newData["summon"] = {}
+        }
+        newData.summon[newsummons.length - 1] = state;
+
+        var newsmlist = this.state.smlist;
+        // 削除した分をalistからも削除
+        newsmlist.splice(id, 1)
+        // 1個補充
+        newsmlist.push(state)
+        this.setState({smlist: newsmlist})
+
+        // Root へ変化を伝搬
+        this.props.onChange(newsmlist);
     },
     handleOnChange: function(key, state){
         var newsmlist = this.state.smlist;
@@ -1382,10 +1401,7 @@ var SummonList = React.createClass({
       this.setState(newState)
     },
     render: function() {
-        var summons = [];
-        for(var i=0; i < this.props.summonNum; i++) {
-            summons.push({id: i});
-        }
+        var summons = this.state.summons;
         var hChange = this.handleOnChange;
         var hRemove = this.handleOnRemove;
         var hCopy = this.handleOnCopy;
@@ -1395,32 +1411,32 @@ var SummonList = React.createClass({
             return (
                 <div className="summonList">
                     <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_summonElements} </FormControl>
-                    {summons.map(function(sm) {
-                        return <Summon key={sm.id} onChange={hChange} id={sm.id} dataName={dataName} defaultElement={defaultElement} />;
+                    {summons.map(function(sm, ind) {
+                        return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} />;
                     })}
                 </div>
             );
         } else {
             return (
                 <div className="summonList">
+                    [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_summonElements} </FormControl>
                     <h3 className="margin-top"> 召喚石 </h3>
                     <table className="table table-bordered">
                     <thead>
                     <tr>
-                        <th>石*</th>
-                        <th>属性* <br/>[一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_summonElements} </FormControl></th>
-                        <th>加護量*</th>
+                        <th>自分の石*</th>
+                        <th>フレの石*</th>
                         <th>合計攻撃力*</th>
                         <th>合計HP</th>
                         <th>HPUP(%)</th>
                         <th>DA加護</th>
                         <th>TA加護</th>
-                        {/*<th>操作</th>*/}
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                        {summons.map(function(sm) {
-                            return <Summon key={sm.id} keyid={sm.id} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={sm.id} dataName={dataName} defaultElement={defaultElement} />;
+                        {summons.map(function(sm, ind) {
+                            return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} />;
                         })}
                     </tbody>
                     </table>
@@ -1569,40 +1585,44 @@ var Summon = React.createClass({
                     <th>TA加護</th>
                     <td><FormControl type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
                 </tr>
-                {/*
                 <tr>
                     <th>操作</th>
-                    <td></td>
-                </tr>*/}
+                    <td>
+                        <ButtonGroup vertical block>
+                            <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
+                            <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
+                        </ButtonGroup>
+                    </td>
+                </tr>
                 </tbody>
                 </table>
             );
         } else {
             return (
                 <tr>
-                    <td><label>自分:<FormControl componentClass="select" className="multi" value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl></label><br/>
-                    <label>フレ:<FormControl componentClass="select" className="multi" value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl></label></td>
-                    <td><FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl><br/>
-                    <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl></td>
-                    <td>{selfSummon[0].label}<FormControl type={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} />
-                    {selfSummon[1].label}<FormControl type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} />
-                    <br/>
-                    {friendSummon[0].label}<FormControl type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} />
-                    {friendSummon[1].label}<FormControl type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} />
+                    <td>
+                        <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl>
+                        <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl>
+                        {selfSummon[0].label}<FormControl type={selfSummon[0].input} placeholder="加護量" min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} />
+                        {selfSummon[1].label}<FormControl type={selfSummon[1].input} placeholder="加護量" min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} />
+                    </td>
+                    <td>
+                        <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl>
+                        <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl>
+                        {friendSummon[0].label}<FormControl type={friendSummon[0].input} placeholder="加護量" min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} />
+                        {friendSummon[1].label}<FormControl type={friendSummon[1].input} placeholder="加護量" min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} />
                     </td>
                     <td><FormControl type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
                     <td><FormControl type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
                     <td><FormControl type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
                     <td><FormControl type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
                     <td><FormControl type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                    {/*
                     <td>
                         <ButtonGroup vertical>
                             <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
                             <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
                         </ButtonGroup>
                     </td>
-                    */}
                 </tr>
             );
         }
@@ -4377,7 +4397,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-info">2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした </li>
+                <li className="list-group-item list-group-item-info">2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした / 召喚石の削除・コピー機能実装 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/24: 前述の不具合調整の際のミスのため、全く計算されなくなってしまう場合があったのを修正 </li>
                 <li className="list-group-item list-group-item-info">2016/08/24: PC版UIの微調整 / プリセット入力から武器を追加した際、本数が正しく設定されない場合があるのを修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/24: データ読み出しの際、PC版のレイアウトが崩れることがある不具合を修正 </li>

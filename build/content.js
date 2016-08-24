@@ -46462,10 +46462,30 @@ var Chara = React.createClass({displayName: "Chara",
 
 var SummonList = React.createClass({displayName: "SummonList",
     getInitialState: function() {
+        var sm = []
+        for(var i=0; i < this.props.summonNum; i++) { sm.push(i); }
+
         return {
             smlist: [],
             defaultElement: "fire",
+            summons: sm,
         };
+    },
+    updateSummonNum: function(num) {
+        var summons = this.state.summons
+
+        if(summons.length < num) {
+            var maxvalue = Math.max.apply(null, summons)
+            for(var i = 0; i < (num - summons.length); i++){
+                summons.push(i + maxvalue + 1)
+            }
+        } else {
+            // ==の場合は考えなくてよい (問題がないので)
+            while(summons.length > num){
+                summons.pop();
+            }
+        }
+        this.setState({summons: summons})
     },
     componentWillReceiveProps: function(nextProps) {
         if (parseInt(nextProps.summonNum) < parseInt(this.props.summonNum)) {
@@ -46475,57 +46495,56 @@ var SummonList = React.createClass({displayName: "SummonList",
             }
             this.setState({smlist: newsmlist})
         }
+        this.updateSummonNum(nextProps.summonNum)
     },
     handleOnCopy: function(id, keyid, state) {
-        console.log("summon copy: ", id)
-        var newsummons = this.state.arms
-        // var maxvalue = Math.max.apply(null, newarms)
-        //
-        // newarms.splice(id + 1, 0, maxvalue + 1)
-        // newarms.pop();
-        // this.setState({arms: newarms})
-        //
-        // // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
-        // if(!("armlist" in newData)) {
-        //     // もしnewDataが更新される前だったらkeyを作っておく
-        //     newData["armlist"] = {}
-        // }
-        // newData.armlist[id + 1] = state;
-        //
-        // var newalist = this.state.alist;
-        // newalist.splice(id + 1, 0, state)
-        // newalist.pop();
-        // this.setState({alist: newalist})
-        //
-        // // Root へ変化を伝搬
-        // this.props.onChange(newalist, false);
+        var newsummons = this.state.summons
+        var maxvalue = Math.max.apply(null, newsummons)
+
+        newsummons.splice(id + 1, 0, maxvalue + 1)
+        newsummons.pop();
+        this.setState({summons: newsummons})
+
+        // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("summon" in newData)) {
+            // もしnewDataが更新される前だったらkeyを作っておく
+            newData["summon"] = {}
+        }
+        newData.summon[id + 1] = state;
+
+        var newsmlist = this.state.smlist;
+        newsmlist.splice(id + 1, 0, state)
+        newsmlist.pop();
+        this.setState({smlist: newsmlist})
+
+        // Root へ変化を伝搬
+        this.props.onChange(newsmlist);
     },
     handleOnRemove: function(id, keyid, state) {
-        console.log("summon remove: ", id)
-        // var newarms = this.state.arms
-        // var maxvalue = Math.max.apply(null, newarms)
-        //
-        // // 該当の "key" を持つものを削除する
-        // newarms.splice(this.state.arms.indexOf(keyid), 1)
-        // // 1個補充
-        // newarms.push(maxvalue + 1)
-        // this.setState({arms: newarms})
-        //
-        // // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
-        // if(!("armlist" in newData)) {
-        //     newData["armlist"] = {}
-        // }
-        // newData.armlist[newarms.length - 1] = state;
-        //
-        // var newalist = this.state.alist;
-        // // 削除した分をalistからも削除
-        // newalist.splice(id, 1)
-        // // 1個補充
-        // newalist.push(state)
-        // this.setState({alist: newalist})
-        //
-        // // Root へ変化を伝搬
-        // this.props.onChange(newalist, false);
+        var newsummons = this.state.summons
+        var maxvalue = Math.max.apply(null, newsummons)
+
+        // 該当の "key" を持つものを削除する
+        newsummons.splice(this.state.summons.indexOf(keyid), 1)
+        // 1個補充
+        newsummons.push(maxvalue + 1)
+        this.setState({summons: newsummons})
+
+        // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("summon" in newData)) {
+            newData["summon"] = {}
+        }
+        newData.summon[newsummons.length - 1] = state;
+
+        var newsmlist = this.state.smlist;
+        // 削除した分をalistからも削除
+        newsmlist.splice(id, 1)
+        // 1個補充
+        newsmlist.push(state)
+        this.setState({smlist: newsmlist})
+
+        // Root へ変化を伝搬
+        this.props.onChange(newsmlist);
     },
     handleOnChange: function(key, state){
         var newsmlist = this.state.smlist;
@@ -46539,10 +46558,7 @@ var SummonList = React.createClass({displayName: "SummonList",
       this.setState(newState)
     },
     render: function() {
-        var summons = [];
-        for(var i=0; i < this.props.summonNum; i++) {
-            summons.push({id: i});
-        }
+        var summons = this.state.summons;
         var hChange = this.handleOnChange;
         var hRemove = this.handleOnRemove;
         var hCopy = this.handleOnCopy;
@@ -46552,32 +46568,32 @@ var SummonList = React.createClass({displayName: "SummonList",
             return (
                 React.createElement("div", {className: "summonList"}, 
                     React.createElement(ControlLabel, null, "属性一括変更"), React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_summonElements, " "), 
-                    summons.map(function(sm) {
-                        return React.createElement(Summon, {key: sm.id, onChange: hChange, id: sm.id, dataName: dataName, defaultElement: defaultElement});
+                    summons.map(function(sm, ind) {
+                        return React.createElement(Summon, {key: sm, keyid: sm, onRemove: hRemove, onCopy: hCopy, onChange: hChange, id: ind, dataName: dataName, defaultElement: defaultElement});
                     })
                 )
             );
         } else {
             return (
                 React.createElement("div", {className: "summonList"}, 
+                    "[属性一括変更]", React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_summonElements, " "), 
                     React.createElement("h3", {className: "margin-top"}, " 召喚石 "), 
                     React.createElement("table", {className: "table table-bordered"}, 
                     React.createElement("thead", null, 
                     React.createElement("tr", null, 
-                        React.createElement("th", null, "石*"), 
-                        React.createElement("th", null, "属性* ", React.createElement("br", null), "[一括変更]", React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.defaultElement, onChange: this.handleEvent.bind(this, "defaultElement")}, " ", select_summonElements, " ")), 
-                        React.createElement("th", null, "加護量*"), 
+                        React.createElement("th", null, "自分の石*"), 
+                        React.createElement("th", null, "フレの石*"), 
                         React.createElement("th", null, "合計攻撃力*"), 
                         React.createElement("th", null, "合計HP"), 
                         React.createElement("th", null, "HPUP(%)"), 
                         React.createElement("th", null, "DA加護"), 
-                        React.createElement("th", null, "TA加護")
-                        /*<th>操作</th>*/
+                        React.createElement("th", null, "TA加護"), 
+                        React.createElement("th", null, "操作")
                     )
                     ), 
                     React.createElement("tbody", null, 
-                        summons.map(function(sm) {
-                            return React.createElement(Summon, {key: sm.id, keyid: sm.id, onRemove: hRemove, onCopy: hCopy, onChange: hChange, id: sm.id, dataName: dataName, defaultElement: defaultElement});
+                        summons.map(function(sm, ind) {
+                            return React.createElement(Summon, {key: sm, keyid: sm, onRemove: hRemove, onCopy: hCopy, onChange: hChange, id: ind, dataName: dataName, defaultElement: defaultElement});
                         })
                     )
                     )
@@ -46725,41 +46741,45 @@ var Summon = React.createClass({displayName: "Summon",
                 React.createElement("tr", null, 
                     React.createElement("th", null, "TA加護"), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
+                ), 
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "操作"), 
+                    React.createElement("td", null, 
+                        React.createElement(ButtonGroup, {vertical: true, block: true}, 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickRemoveButton}, "削除"), 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickCopyButton}, "コピー")
+                        )
+                    )
                 )
-                /*
-                <tr>
-                    <th>操作</th>
-                    <td></td>
-                </tr>*/
                 )
                 )
             );
         } else {
             return (
                 React.createElement("tr", null, 
-                    React.createElement("td", null, React.createElement("label", null, "自分:", React.createElement(FormControl, {componentClass: "select", className: "multi", value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons)), React.createElement("br", null), 
-                    React.createElement("label", null, "フレ:", React.createElement(FormControl, {componentClass: "select", className: "multi", value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons))), 
-                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements), React.createElement("br", null), 
-                    React.createElement(FormControl, {componentClass: "select", value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements)), 
-                    React.createElement("td", null, selfSummon[0].label, React.createElement(FormControl, {type: selfSummon[0].input, min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)}), 
-                    selfSummon[1].label, React.createElement(FormControl, {type: selfSummon[1].input, min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)}), 
-                    React.createElement("br", null), 
-                    friendSummon[0].label, React.createElement(FormControl, {type: friendSummon[0].input, min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)}), 
-                    friendSummon[1].label, React.createElement(FormControl, {type: friendSummon[1].input, min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)})
+                    React.createElement("td", null, 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements), 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons), 
+                        selfSummon[0].label, React.createElement(FormControl, {type: selfSummon[0].input, placeholder: "加護量", min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)}), 
+                        selfSummon[1].label, React.createElement(FormControl, {type: selfSummon[1].input, placeholder: "加護量", min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)})
+                    ), 
+                    React.createElement("td", null, 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements), 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons), 
+                        friendSummon[0].label, React.createElement(FormControl, {type: friendSummon[0].input, placeholder: "加護量", min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)}), 
+                        friendSummon[1].label, React.createElement(FormControl, {type: friendSummon[1].input, placeholder: "加護量", min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)})
                     ), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")})), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
-                    /*
-                    <td>
-                        <ButtonGroup vertical>
-                            <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
-                            <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
-                        </ButtonGroup>
-                    </td>
-                    */
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})), 
+                    React.createElement("td", null, 
+                        React.createElement(ButtonGroup, {vertical: true}, 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickRemoveButton}, "削除"), 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickCopyButton}, "コピー")
+                        )
+                    )
                 )
             );
         }
@@ -49534,7 +49554,7 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", {className: "list-group"}, 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした / 召喚石の削除・コピー機能実装 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/24: 前述の不具合調整の際のミスのため、全く計算されなくなってしまう場合があったのを修正 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/24: PC版UIの微調整 / プリセット入力から武器を追加した際、本数が正しく設定されない場合があるのを修正 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/24: データ読み出しの際、PC版のレイアウトが崩れることがある不具合を修正 "), 

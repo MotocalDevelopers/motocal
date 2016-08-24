@@ -46741,12 +46741,16 @@ var Summon = React.createClass({displayName: "Summon",
                 React.createElement("tr", null, 
                     React.createElement("th", null, "TA加護"), 
                     React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
+                ), 
+                React.createElement("tr", null, 
+                    React.createElement("th", null, "操作"), 
+                    React.createElement("td", null, 
+                        React.createElement(ButtonGroup, {vertical: true, block: true}, 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickRemoveButton}, "削除"), 
+                            React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickCopyButton}, "コピー")
+                        )
+                    )
                 )
-                /*
-                <tr>
-                    <th>操作</th>
-                    <td></td>
-                </tr>*/
                 )
                 )
             );
@@ -49550,7 +49554,7 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", {className: "list-group"}, 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした "), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした / 召喚石の削除・コピー機能実装 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/24: 前述の不具合調整の際のミスのため、全く計算されなくなってしまう場合があったのを修正 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/24: PC版UIの微調整 / プリセット入力から武器を追加した際、本数が正しく設定されない場合があるのを修正 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/24: データ読み出しの際、PC版のレイアウトが崩れることがある不具合を修正 "), 

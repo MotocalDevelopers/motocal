@@ -1585,11 +1585,15 @@ var Summon = React.createClass({
                     <th>TA加護</th>
                     <td><FormControl type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
                 </tr>
-                {/*
                 <tr>
                     <th>操作</th>
-                    <td></td>
-                </tr>*/}
+                    <td>
+                        <ButtonGroup vertical block>
+                            <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
+                            <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
+                        </ButtonGroup>
+                    </td>
+                </tr>
                 </tbody>
                 </table>
             );
@@ -4393,7 +4397,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-info">2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした </li>
+                <li className="list-group-item list-group-item-info">2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした / 召喚石の削除・コピー機能実装 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/24: 前述の不具合調整の際のミスのため、全く計算されなくなってしまう場合があったのを修正 </li>
                 <li className="list-group-item list-group-item-info">2016/08/24: PC版UIの微調整 / プリセット入力から武器を追加した際、本数が正しく設定されない場合があるのを修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/24: データ読み出しの際、PC版のレイアウトが崩れることがある不具合を修正 </li>
