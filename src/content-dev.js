@@ -1654,21 +1654,6 @@ var ResultList = React.createClass({
             totalItr *= itr;
             armNumArray[i] = temp;
         }
-
-        // index を manage する関数
-        var proceedIndex = function(index, ana, i){
-            if(i == ana.length){
-                return index;
-            } else {
-                index[i] = (index[i] + 1)|0;
-                if(index[i] > ana[i].length - 1){
-                    index[i] = 0;
-                    index = proceedIndex(index, ana, i + 1);
-                }
-                return index
-            }
-        }
-
         var combinations = []
         var index = []
         for(var i = 0; i < armNumArray.length; i++){
@@ -1704,14 +1689,29 @@ var ResultList = React.createClass({
                 }
             }
             if( isValidCombination && ((totalItr <= 1024 && num <= 10) || num == 10) ) combinations.push(temp)
-            index = proceedIndex(index, armNumArray, 0)
+            index = this.proceedIndex(index, armNumArray, 0)
         }
         return combinations
     },
+    proceedIndex: function(index, ana, i){
+        if(i == ana.length){
+            return index;
+        } else {
+            index[i] = (index[i] + 1)|0;
+            if(index[i] > ana[i].length - 1){
+                index[i] = 0;
+                index = this.proceedIndex(index, ana, i + 1);
+            }
+            return index
+        }
+    },
     isCosmos: function(arm){
         var isCos = false;
-        if(skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") isCos = true;
-        if(skilltypes[arm.skill2] != undefined && skilltypes[arm.skill2].type == "cosmosArm") isCos = true;
+        if(skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") {
+            isCos = true;
+        } else if(skilltypes[arm.skill2] != undefined && skilltypes[arm.skill2].type == "cosmosArm") {
+            isCos = true;
+        }
 
         return isCos
     },
@@ -1782,14 +1782,14 @@ var ResultList = React.createClass({
 
             // 表示用配列
             var coeffs = {};
-            coeffs["normal"] = 100.0 * (normalCoeff - 1.0);
-            coeffs["normalHaisui"] = 100.0 * (normalHaisuiCoeff - 1.0);
-            coeffs["normalKonshin"] = 100.0 * (normalKonshinCoeff - 1.0);
-            coeffs["magna"] = 100.0 * (magnaCoeff - 1.0);
-            coeffs["magnaHaisui"] = 100.0 * (magnaHaisuiCoeff - 1.0);
-            coeffs["unknown"] = 100.0 * (unknownCoeff - 1.0);
-            coeffs["unknownHaisui"] = 100.0 * (unknownHaisuiCoeff - 1.0);
-            coeffs["other"] = 100.0 * (otherCoeff - 1.0);
+            coeffs["normal"] = normalCoeff;
+            coeffs["normalHaisui"] = normalHaisuiCoeff;
+            coeffs["normalKonshin"] = normalKonshinCoeff;
+            coeffs["magna"] = magnaCoeff;
+            coeffs["magnaHaisui"] = magnaHaisuiCoeff;
+            coeffs["unknown"] = unknownCoeff;
+            coeffs["unknownHaisui"] = unknownHaisuiCoeff;
+            coeffs["other"] = otherCoeff;
 
             res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), remainHP: totals[key]["remainHP"], totalDA: totalDA, totalTA: totalTA, totalSummon: totalSummon, element: totals[key]["element"], expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, totalExpected: nazo_number, skilldata: coeffs, expectedOugiGage: expectedOugiGage, damage: damage, ougiDamage: ougiDamage, expectedTurn: expectedTurn, expectedCycleDamagePerTurn: expectedCycleDamagePerTurn};
         }
@@ -1872,13 +1872,13 @@ var ResultList = React.createClass({
         return damage + overedDamage
     },
     calculateOneCombination: function(comb, summon, prof, arml, totals, buff){
-        var tempArmList = []
-        for(var i = 0; i < arml.length; i++){
-            for(var j = 0; j < comb[i]; j++){
-                tempArmList.push(arml[i]);
-            }
-        }
-        this.addSkilldataToTotals(totals, tempArmList, buff)
+        // var tempArmList = []
+        // for(var i = 0; i < arml.length; i++){
+        //     for(var j = 0; j < comb[i]; j++){
+        //         tempArmList.push(arml[i]);
+        //     }
+        // }
+        this.addSkilldataToTotals(totals, comb, arml, buff)
         var result = []
         for(var i = 0; i < summon.length; i++){
            // 攻撃などの結果を入れた連想配列の配列を作る
@@ -1887,27 +1887,31 @@ var ResultList = React.createClass({
 
         return result
     },
-    addSkilldataToTotals: function(totals, tempArmList, buff) {
+    addSkilldataToTotals: function(totals, comb, arml, buff) {
         // cosmos武器があるかどうかを確認しておく
         var cosmosType = '';
-        for(var i = 0; i < tempArmList.length; i++){
-            var arm = tempArmList[i];
-            if(this.isCosmos(arm)) {
-                if(skilltypes[arm.skill1].type == "cosmosArm") {
-                    cosmosType = skilltypes[arm.skill1].cosmosArm
-                } else {
-                    cosmosType = skilltypes[arm.skill2].cosmosArm
+        for(var i = 0; i < arml.length; i++){
+            if(comb[i] > 0) {
+                var arm = arml[i];
+                if(this.isCosmos(arm)) {
+                    if(skilltypes[arm.skill1].type == "cosmosArm") {
+                        cosmosType = skilltypes[arm.skill1].cosmosArm
+                    } else {
+                        cosmosType = skilltypes[arm.skill2].cosmosArm
+                    }
                 }
             }
         }
 
         var index = 0;
         for( key in totals ) {
-            index++;
+            index = (index + 1)|0;
             var isBahaAtIncluded = false; var isBahaAthpIncluded = false;
 
-            for(var i = 0; i < tempArmList.length; i++){
-                var arm = tempArmList[i];
+            for(var i = 0; i < arml.length; i++){
+                if(comb[i] == 0) continue
+
+                var arm = arml[i];
                 var armSup= 1.0
                 var hpSup = 1.0
 
@@ -1939,8 +1943,8 @@ var ResultList = React.createClass({
                     }
                 }
 
-                totals[key]["armAttack"] += armSup * parseInt(arm.attack)
-                totals[key]["armHP"] += hpSup * parseInt(arm.hp)
+                totals[key]["armAttack"] += armSup * parseInt(arm.attack) * comb[i]
+                totals[key]["armHP"] += hpSup * parseInt(arm.hp) * comb[i]
 
                 for(var j = 1; j <= 2; j++){
                     var skillname = '';
@@ -1972,12 +1976,12 @@ var ResultList = React.createClass({
                             if(!isBahaAtIncluded) {
                                 // バハ短剣など
                                 if(totals[key]["race"] == "unknown") {
-                                    totals[key]["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
+                                    totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
                                     isBahaAtIncluded = true;
                                 } else {
                                     var bahatype = skillname.split("-")
                                     if( bahamutRelation[bahatype[1]]["type1"] == totals[key]["race"] ) {
-                                        totals[key]["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
+                                        totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
                                         isBahaAtIncluded = true;
                                     }
                                 }
@@ -1986,51 +1990,51 @@ var ResultList = React.createClass({
                             if(!isBahaAthpIncluded) {
                                 // バハ剣など
                                 if(totals[key]["race"] == "unknown") {
-                                    totals[key]["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
-                                    totals[key]["bahaHP"] += skillAmounts["bahaHP"][amount][slv - 1];
+                                    totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
+                                    totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
                                     isBahaAthpIncluded = true;
                                 } else {
                                     var bahatype = skillname.split("-")
                                     if( bahamutRelation[bahatype[1]]["type1"] == totals[key]["race"] || bahamutRelation[ bahatype[1]]["type2"] == totals[key]["race"] ) {
-                                        totals[key]["bahaAT"] += skillAmounts["bahaAT"][amount][slv - 1];
-                                        totals[key]["bahaHP"] += skillAmounts["bahaHP"][amount][slv - 1];
+                                        totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
+                                        totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
                                         isBahaAthpIncluded = true;
                                     }
                                 }
                             }
                         } else if(stype == 'bahaFUATHP') {
                             if(totals[key]["race"] == "unknown") {
-                                totals[key]["bahaAT"] += skillAmounts["bahaFUATHP"]["AT"][slv - 1];
-                                totals[key]["bahaHP"] += skillAmounts["bahaFUATHP"]["HP"][slv - 1];
+                                totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaFUATHP"]["AT"][slv - 1];
+                                totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUATHP"]["HP"][slv - 1];
                             } else {
                                 var bahatype = skillname.split("-")
                                 if( bahamutFURelation[bahatype[1]]["type1"] == totals[key]["race"] || bahamutFURelation[ bahatype[1]]["type2"] == totals[key]["race"] ) {
-                                    totals[key]["bahaAT"] += skillAmounts["bahaFUATHP"]["AT"][slv - 1];
-                                    totals[key]["bahaHP"] += skillAmounts["bahaFUATHP"]["HP"][slv - 1];
+                                    totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaFUATHP"]["AT"][slv - 1];
+                                    totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUATHP"]["HP"][slv - 1];
                                 }
                             }
                         } else if(stype == 'bahaFUHP') {
                             if(totals[key]["race"] == "unknown") {
-                                totals[key]["bahaHP"] += skillAmounts["bahaFUHP"]["HP"][slv - 1];
-                                totals[key]["bahaDA"] += skillAmounts["bahaFUHP"]["DA"][slv - 1];
-                                totals[key]["bahaTA"] += skillAmounts["bahaFUHP"]["TA"][slv - 1];
+                                totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUHP"]["HP"][slv - 1];
+                                totals[key]["bahaDA"] += comb[i] * skillAmounts["bahaFUHP"]["DA"][slv - 1];
+                                totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
                             } else {
                                 var bahatype = skillname.split("-")
                                 if( bahamutFURelation[bahatype[1]]["type1"] == totals[key]["race"] || bahamutFURelation[ bahatype[1]]["type2"] == totals[key]["race"] ) {
-                                    totals[key]["bahaHP"] += skillAmounts["bahaFUHP"]["HP"][slv - 1];
-                                    totals[key]["bahaDA"] += skillAmounts["bahaFUHP"]["DA"][slv - 1];
-                                    totals[key]["bahaTA"] += skillAmounts["bahaFUHP"]["TA"][slv - 1];
+                                    totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUHP"]["HP"][slv - 1];
+                                    totals[key]["bahaDA"] += comb[i] * skillAmounts["bahaFUHP"]["DA"][slv - 1];
+                                    totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
                                 }
                             }
                         } else if(stype == 'cosmos') {
                             // コスモス武器
                             if(skillname == 'cosmosAT' && totals[key]["type"] == "attack") {
-                                totals[key]["normal"] += 20.0;
-                                totals[key]["HPdebuff"] += 0.40
+                                totals[key]["normal"] += comb[i] * 20.0;
+                                totals[key]["HPdebuff"] += comb[i] * 0.40
                             } else if(skillname == 'cosmosDF' && totals[key]["type"] == "defense") {
-                                totals[key]["HPdebuff"] -= 0.10
+                                totals[key]["HPdebuff"] -= comb[i] * 0.10
                             } else if(skillname == 'cosmosBL' && totals[key]["type"] == "balance") {
-                                totals[key]["cosmosBL"] = 20.0
+                                totals[key]["cosmosBL"] = comb[i] * 20.0
                             }
                         } else if(stype == 'cosmosArm') {
                             // コスモス武器スキルはスキップ
@@ -2063,8 +2067,8 @@ var ResultList = React.createClass({
                                         baseRate = 30 + 3.0 * ((slv - 10) / 5.0)
                                     }
                                 }
-                                var haisuiBuff =  (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
-                                totals[key][stype] += haisuiBuff
+                                var haisuiBuff = (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
+                                totals[key][stype] += comb[i] * haisuiBuff
                             } else if(stype == 'normalKonshin'){
                                 var remainHP = totals[key]["remainHP"]
                                 var baseRate = 0.0
@@ -2090,40 +2094,40 @@ var ResultList = React.createClass({
                                     }
                                 }
                                 var konshinBuff = baseRate * remainHP
-                                totals[key][stype] += konshinBuff
+                                totals[key][stype] += comb[i] * konshinBuff
                             } else if(stype == 'normalKamui') {
-                                totals[key]["normal"] += skillAmounts["normal"][amount][slv - 1];
-                                totals[key]["normalHP"] += skillAmounts["normalHP"][amount][slv - 1];
+                                totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                                totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
                             } else if(stype == 'magnaKamui') {
-                                totals[key]["magna"] += skillAmounts["magna"][amount][slv - 1];
-                                totals[key]["magnaHP"] += skillAmounts["magnaHP"][amount][slv - 1];
+                                totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                                totals[key]["magnaHP"] += comb[i] * skillAmounts["magnaHP"][amount][slv - 1];
                             } else if(stype == 'normalSetsuna') {
-                                totals[key]["normalCritical"] += skillAmounts["normalCritical"][amount][slv - 1];
-                                totals[key]["normal"] += skillAmounts["normal"][amount][slv - 1];
+                                totals[key]["normalCritical"] += comb[i] * skillAmounts["normalCritical"][amount][slv - 1];
+                                totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             } else if(stype == 'magnaSetsuna') {
-                                totals[key]["magnaCritical"] += skillAmounts["magnaCritical"][amount][slv - 1];
-                                totals[key]["magna"] += skillAmounts["magna"][amount][slv - 1];
+                                totals[key]["magnaCritical"] += comb[i] * skillAmounts["magnaCritical"][amount][slv - 1];
+                                totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             } else if(stype == 'normalKatsumi') {
-                                totals[key]["normalCritical"] += skillAmounts["normalCritical"][amount][slv - 1];
-                                totals[key]["normalNite"] += skillAmounts["normalNite"][amount][slv - 1];
+                                totals[key]["normalCritical"] += comb[i] * skillAmounts["normalCritical"][amount][slv - 1];
+                                totals[key]["normalNite"] += comb[i] * skillAmounts["normalNite"][amount][slv - 1];
                             } else if(stype == 'magnaKatsumi') {
-                                totals[key]["magnaCritical"] += skillAmounts["magnaCritical"][amount][slv - 1];
-                                totals[key]["magnaNite"] += skillAmounts["magnaNite"][amount][slv - 1];
+                                totals[key]["magnaCritical"] += comb[i] * skillAmounts["magnaCritical"][amount][slv - 1];
+                                totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaNite"][amount][slv - 1];
                             } else if(stype == 'normalBoukun') {
-                                totals[key]["HPdebuff"] += 0.10
-                                totals[key]["normal"] += skillAmounts["normal"][amount][slv - 1];
+                                totals[key]["HPdebuff"] += comb[i] * 0.10
+                                totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             } else if(stype == 'magnaBoukun') {
-                                totals[key]["HPdebuff"] += 0.10
-                                totals[key]["magna"] += skillAmounts["magna"][amount][slv - 1];
+                                totals[key]["HPdebuff"] += comb[i] * 0.10
+                                totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             } else if(stype == 'unknownOtherBoukun'){
-                                totals[key]["HPdebuff"] += 0.07
-                                totals[key]["unknown"] += skillAmounts["unknown"][amount][slv - 1];
+                                totals[key]["HPdebuff"] += comb[i] * 0.07
+                                totals[key]["unknown"] += comb[i] * skillAmounts["unknown"][amount][slv - 1];
                             } else if(stype == 'gurenJuin'){
                                 if(index == 2){
-                                    totals[key]["normal"] += skillAmounts["normal"][amount][slv - 1];
+                                    totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                                 }
                             } else {
-                                totals[key][stype] += skillAmounts[stype][amount][slv - 1];
+                                totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                             }
                         }
                     }
@@ -2292,8 +2296,10 @@ var ResultList = React.createClass({
           }
 
           var res = []
+          var minSortKey = []
           for(var i = 0; i < summon.length; i++){
               res[i] = []
+              minSortKey[i] = -1
           }
 
           var totals = this.getInitialTotals(prof, chara, summon)
@@ -2303,7 +2309,36 @@ var ResultList = React.createClass({
           for(var i = 0; i < itr; i = (i + 1)|0){
               var oneres = this.calculateOneCombination(combinations[i], summon, prof, arml, totals, totalBuff)
               for(var j = 0; j < summon.length; j++){
-                  res[j].push({data: oneres[j], armNumbers: combinations[i]});
+                  if(i < 10) {
+                      //  まずminSortkeyを更新する
+                      if (minSortKey[j] < 0 || minSortKey[j] > oneres[j].Djeeta[sortkey]) {
+                          minSortKey[j] = oneres[j].Djeeta[sortkey]
+                      }
+                      res[j].push({data: oneres[j], armNumbers: combinations[i]});
+                  } else {
+                      // minSortkey より大きいものだけpush
+                      if (oneres[j].Djeeta[sortkey] >= minSortKey[j]) {
+                          // 11番目に追加する
+                          res[j].push({data: oneres[j], armNumbers: combinations[i]});
+
+                          // 10番目まででminSortkey[j]と一致するものを消す
+                          var spliceid = -1;
+                          for(var k = 0; k < 10; k = (k + 1)|0) {
+                              if(res[j][k].data.Djeeta[sortkey] == minSortKey[j]) {
+                                  spliceid = k
+                              }
+                          }
+                          res[j].splice(spliceid, 1)
+                          minSortKey[j] = -1
+
+                          // 10個の配列になったので、もう一度最小値を計算する
+                          for(var k = 0; k < 10; k = (k + 1)|0) {
+                              if (minSortKey[j] < 0 || minSortKey[j] > res[j][k].data.Djeeta[sortkey]) {
+                                  minSortKey[j] = res[j][k].data.Djeeta[sortkey]
+                              }
+                          }
+                      }
+                  }
               }
               this.initializeTotals(totals)
           }
@@ -3200,14 +3235,14 @@ var Result = React.createClass({
                             skillstr += key + ": "
                         }
 
-                        if(skilldata.normal != 0.0) {skillstr += "攻刃" + skilldata.normal.toFixed(1); skillstr += "% ";}
-                        if(skilldata.normalHaisui != 0.0) {skillstr += "攻刃背水" + skilldata.normalHaisui.toFixed(1); skillstr += "% ";}
-                        if(skilldata.normalKonshin != 0.0) {skillstr += "攻刃渾身" + skilldata.normalKonshin.toFixed(1); skillstr += "% ";}
-                        if(skilldata.magna != 0.0) {skillstr += "マグナ" + skilldata.magna.toFixed(1); skillstr += "% ";}
-                        if(skilldata.magnaHaisui != 0.0) {skillstr += "マグナ背水" + skilldata.magnaHaisui.toFixed(1); skillstr += "% ";}
-                        if(skilldata.unknown != 0.0) {skillstr += "アンノウン" + skilldata.unknown.toFixed(1); skillstr += "% ";}
-                        if(skilldata.unknownHaisui != 0.0) {skillstr += "アンノウン背水" + skilldata.unknownHaisui.toFixed(1); skillstr += "% ";}
-                        if(skilldata.other != 0.0) {skillstr += "その他枠" + skilldata.other.toFixed(1); skillstr += "% ";}
+                        if(skilldata.normal != 1.0) {skillstr += "攻刃" + (100.0 * (skilldata.normal - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.normalHaisui != 1.0) {skillstr += "攻刃背水" + (100.0 * (skilldata.normalHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.normalKonshin != 1.0) {skillstr += "攻刃渾身" + (100.0 * (skilldata.normalKonshin - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.magna != 1.0) {skillstr += "マグナ" + (100.0 * (skilldata.magna - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.magnaHaisui != 1.0) {skillstr += "マグナ背水" + (100.0 * (skilldata.magnaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.unknown != 1.0) {skillstr += "アンノウン" + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.unknownHaisui != 1.0) {skillstr += "アンノウン背水" + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.other != 1.0) {skillstr += "その他枠" + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
 
                         skillstr += "\n"
                     }
@@ -4463,7 +4498,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-success">2016/08/25: 計算量削減処理を追加</li>
+                <li className="list-group-item list-group-item-success">2016/08/25: 計算量削減処理を追加 (35%くらい早くなりました) </li>
                 <li className="list-group-item list-group-item-success">2016/08/25: 新武器の情報を武器テンプレートに追加(画像なし) </li>
                 <li className="list-group-item list-group-item-info">2016/08/25: カオスルーダーと義賊を追加 / フェリ(SSR)がキャラテンプレートに表示されていない不具合を修正 </li>
                 <li className="list-group-item list-group-item-info">2016/08/25: 武器追加時に+を計算できるようにした </li>
