@@ -479,6 +479,13 @@ label {
     margin-right: 11.5%;
 }
 
+.presetsConsiderNumber.fade.in.modal .modal-dialog .form-control{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5px;
+}
+
 .howTo {
     width: 80%;
     margin-left: 10%;

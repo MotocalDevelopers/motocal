@@ -948,18 +948,18 @@
         "type": "attack", 
         "imageURL": "./charaimgs/3040072000_01.png"
     }, 
-    "フェリ": {
+    "フェリ(SSR)": {
         "baseDA": 6.5, 
-        "name": "フェリ", 
-        "hp": "1035", 
+        "name": "フェリ(SSR)", 
+        "hp": "1420", 
         "element": "light", 
-        "attack": "5740", 
+        "attack": "7450", 
         "race": "erune", 
         "baseTA": 3.0, 
         "fav1": "dagger", 
         "fav2": "none", 
-        "type": "pecu", 
-        "imageURL": "./charaimgs/3030032000_01.png"
+        "type": "balance", 
+        "imageURL": "./charaimgs/3040073000_01.png"
     }, 
     "キャサリン": {
         "baseDA": 6.5, 
@@ -1584,6 +1584,19 @@
         "fav2": "none", 
         "type": "pecu", 
         "imageURL": "./charaimgs/3030031000_01.png"
+    }, 
+    "フェリ(SR)": {
+        "baseDA": 6.5, 
+        "name": "フェリ(SR)", 
+        "hp": "1035", 
+        "element": "light", 
+        "attack": "5740", 
+        "race": "erune", 
+        "baseTA": 3.0, 
+        "fav1": "dagger", 
+        "fav2": "none", 
+        "type": "pecu", 
+        "imageURL": "./charaimgs/3030032000_01.png"
     }, 
     "ルシウス": {
         "baseDA": 6.5, 

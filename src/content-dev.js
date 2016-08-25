@@ -11,9 +11,13 @@ var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var ougiGageBuffList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 var ougiRatioList = [4.0, 4.5, 5.0];
-var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 var HPList = [ 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ];
+var plusNumList = { "+0": 0, "+1": 1, "+2": 2, "+3": 3, "+4": 4, "+5": 5, "+6": 6, "+7": 7, "+8": 8, "+9": 9, "+10": 10, "+11": 11, "+12": 12, "+13": 13, "+14": 14, "+15": 15, "+16": 16, "+17": 17, "+18": 18, "+19": 19, "+20": 20, "+21": 21, "+22": 22, "+23": 23, "+24": 24, "+25": 25, "+26": 26, "+27": 27, "+28": 28, "+29": 29, "+30": 30, "+31": 31, "+32": 32, "+33": 33, "+34": 34, "+35": 35, "+36": 36, "+37": 37, "+38": 38, "+39": 39, "+40": 40, "+41": 41, "+42": 42, "+43": 43, "+44": 44, "+45": 45, "+46": 46, "+47": 47, "+48": 48, "+49": 49, "+50": 50, "+51": 51, "+52": 52, "+53": 53, "+54": 54, "+55": 55, "+56": 56, "+57": 57, "+58": 58, "+59": 59, "+60": 60, "+61": 61, "+62": 62, "+63": 63, "+64": 64, "+65": 65, "+66": 66, "+67": 67, "+68": 68, "+69": 69, "+70": 70, "+71": 71, "+72": 72, "+73": 73, "+74": 74, "+75": 75, "+76": 76, "+77": 77, "+78": 78, "+79": 79, "+80": 80, "+81": 81, "+82": 82, "+83": 83, "+84": 84, "+85": 85, "+86": 86, "+87": 87, "+88": 88, "+89": 89, "+90": 90, "+91": 91, "+92": 92, "+93": 93, "+94": 94, "+95": 95, "+96": 96, "+97": 97, "+98": 98, "+99": 99}
+var levelListLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 5, "Lv. 6": 6, "Lv. 7": 7, "Lv. 8": 8, "Lv. 9": 9, "Lv. 10": 10, "Lv. 11": 11, "Lv. 12": 12, "Lv. 13": 13, "Lv. 14": 14, "Lv. 15": 15, "Lv. 16": 16, "Lv. 17": 17, "Lv. 18": 18, "Lv. 19": 19, "Lv. 20": 20, "Lv. 21": 21, "Lv. 22": 22, "Lv. 23": 23, "Lv. 24": 24, "Lv. 25": 25, "Lv. 26": 26, "Lv. 27": 27, "Lv. 28": 28, "Lv. 29": 29, "Lv. 30": 30, "Lv. 31": 31, "Lv. 32": 32, "Lv. 33": 33, "Lv. 34": 34, "Lv. 35": 35, "Lv. 36": 36, "Lv. 37": 37, "Lv. 38": 38, "Lv. 39": 39, "Lv. 40": 40, "Lv. 41": 41, "Lv. 42": 42, "Lv. 43": 43, "Lv. 44": 44, "Lv. 45": 45, "Lv. 46": 46, "Lv. 47": 47, "Lv. 48": 48, "Lv. 49": 49, "Lv. 50": 50, "Lv. 51": 51, "Lv. 52": 52, "Lv. 53": 53, "Lv. 54": 54, "Lv. 55": 55, "Lv. 56": 56, "Lv. 57": 57, "Lv. 58": 58, "Lv. 59": 59, "Lv. 60": 60, "Lv. 61": 61, "Lv. 62": 62, "Lv. 63": 63, "Lv. 64": 64, "Lv. 65": 65, "Lv. 66": 66, "Lv. 67": 67, "Lv. 68": 68, "Lv. 69": 69, "Lv. 70": 70, "Lv. 71": 71, "Lv. 72": 72, "Lv. 73": 73, "Lv. 74": 74, "Lv. 75": 75, "Lv. 76": 76, "Lv. 77": 77, "Lv. 78": 78, "Lv. 79": 79, "Lv. 80": 80, "Lv. 81": 81, "Lv. 82": 82, "Lv. 83": 83, "Lv. 84": 84, "Lv. 85": 85, "Lv. 86": 86, "Lv. 87": 87, "Lv. 88": 88, "Lv. 89": 89, "Lv. 90": 90, "Lv. 91": 91, "Lv. 92": 92, "Lv. 93": 93, "Lv. 94": 94, "Lv. 95": 95, "Lv. 96": 96, "Lv. 97": 97, "Lv. 98": 98, "Lv. 99": 99, "Lv. 100": 100}
+var levelListNoLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 5, "Lv. 6": 6, "Lv. 7": 7, "Lv. 8": 8, "Lv. 9": 9, "Lv. 10": 10, "Lv. 11": 11, "Lv. 12": 12, "Lv. 13": 13, "Lv. 14": 14, "Lv. 15": 15, "Lv. 16": 16, "Lv. 17": 17, "Lv. 18": 18, "Lv. 19": 19, "Lv. 20": 20, "Lv. 21": 21, "Lv. 22": 22, "Lv. 23": 23, "Lv. 24": 24, "Lv. 25": 25, "Lv. 26": 26, "Lv. 27": 27, "Lv. 28": 28, "Lv. 29": 29, "Lv. 30": 30, "Lv. 31": 31, "Lv. 32": 32, "Lv. 33": 33, "Lv. 34": 34, "Lv. 35": 35, "Lv. 36": 36, "Lv. 37": 37, "Lv. 38": 38, "Lv. 39": 39, "Lv. 40": 40, "Lv. 41": 41, "Lv. 42": 42, "Lv. 43": 43, "Lv. 44": 44, "Lv. 45": 45, "Lv. 46": 46, "Lv. 47": 47, "Lv. 48": 48, "Lv. 49": 49, "Lv. 50": 50, "Lv. 51": 51, "Lv. 52": 52, "Lv. 53": 53, "Lv. 54": 54, "Lv. 55": 55, "Lv. 56": 56, "Lv. 57": 57, "Lv. 58": 58, "Lv. 59": 59, "Lv. 60": 60, "Lv. 61": 61, "Lv. 62": 62, "Lv. 63": 63, "Lv. 64": 64, "Lv. 65": 65, "Lv. 66": 66, "Lv. 67": 67, "Lv. 68": 68, "Lv. 69": 69, "Lv. 70": 70, "Lv. 71": 71, "Lv. 72": 72, "Lv. 73": 73, "Lv. 74": 74, "Lv. 75": 75, "Lv. 76": 76, "Lv. 77": 77, "Lv. 78": 78, "Lv. 79": 79, "Lv. 80": 80, "Lv. 81": 81, "Lv. 82": 82, "Lv. 83": 83, "Lv. 84": 84, "Lv. 85": 85, "Lv. 86": 86, "Lv. 87": 87, "Lv. 88": 88, "Lv. 89": 89, "Lv. 90": 90, "Lv. 91": 91, "Lv. 92": 92, "Lv. 93": 93, "Lv. 94": 94, "Lv. 95": 95, "Lv. 96": 96, "Lv. 97": 97, "Lv. 98": 98, "Lv. 99": 99, "Lv. 100": 100, "Lv. 101": 101, "Lv. 102": 102, "Lv. 103": 103, "Lv. 104": 104, "Lv. 105": 105, "Lv. 106": 106, "Lv. 107": 107, "Lv. 108": 108, "Lv. 109": 109, "Lv. 110": 110, "Lv. 111": 111, "Lv. 112": 112, "Lv. 113": 113, "Lv. 114": 114, "Lv. 115": 115, "Lv. 116": 116, "Lv. 117": 117, "Lv. 118": 118, "Lv. 119": 119, "Lv. 120": 120, "Lv. 121": 121, "Lv. 122": 122, "Lv. 123": 123, "Lv. 124": 124, "Lv. 125": 125, "Lv. 126": 126, "Lv. 127": 127, "Lv. 128": 128, "Lv. 129": 129, "Lv. 130": 130, "Lv. 131": 131, "Lv. 132": 132, "Lv. 133": 133, "Lv. 134": 134, "Lv. 135": 135, "Lv. 136": 136, "Lv. 137": 137, "Lv. 138": 138, "Lv. 139": 139, "Lv. 140": 140, "Lv. 141": 141, "Lv. 142": 142, "Lv. 143": 143, "Lv. 144": 144, "Lv. 145": 145, "Lv. 146": 146, "Lv. 147": 147, "Lv. 148": 148, "Lv. 149": 149, "Lv. 150": 150 }
+
 var enemyDefenseType = {
     10.0: {"name": "10.0(一般的な敵)"},
     8.0: {"name": "8.0(防御-20%)"},
@@ -231,6 +235,8 @@ var Jobs = {
     "sage":         {"name": "セージ",           "favArm1": "wand",   "favArm2": "spear",  "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
     "suparuta":     {"name": "スパルタ",         "favArm1": "sword",  "favArm2": "spear",  "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1500.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
     "warlock":      {"name": "ウォーロック",     "favArm1": "wand",   "favArm2": "dagger", "type": "attack",  "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+    "chaos":      {"name": "カオスルーダー",     "favArm1": "sword",   "favArm2": "dagger", "type": "pecu",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
+    "gizoku":      {"name": "義賊",     "favArm1": "dagger",   "favArm2": "gun", "type": "balance",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
     "alche":        {"name": "アルケミスト",     "favArm1": "dagger", "favArm2": "gun",    "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 100.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
     "ninja":        {"name": "忍者",             "favArm1": "katana", "favArm2": "fist",   "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 31.5, "TaBonus": 3.0},
     "samurai":      {"name": "侍",               "favArm1": "katana", "favArm2": "bow",    "type": "attack",  "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
@@ -392,6 +398,9 @@ var select_hplist = HPList.map(function(opt){return <option value={opt} key={opt
 var select_masteratk = masterATKList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 var select_masterhp = masterHPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 var select_ktypes = Object.keys(keyTypes).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
+var select_plusnum = Object.keys(plusNumList).map(function(opt){ return <option value={plusNumList[opt]} key={opt}>{opt}</option> });
+var select_levelNoLimit = Object.keys(levelListNoLimit).map(function(opt){ return <option value={levelListNoLimit[opt]} key={opt}>{opt}</option> });
+var select_levelLimit = Object.keys(levelListLimit).map(function(opt){ return <option value={levelListLimit[opt]} key={opt}>{opt}</option> });
 var select_supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
 var select_enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
 
@@ -1651,7 +1660,7 @@ var ResultList = React.createClass({
             if(i == ana.length){
                 return index;
             } else {
-                index[i]++;
+                index[i] = (index[i] + 1)|0;
                 if(index[i] > ana[i].length - 1){
                     index[i] = 0;
                     index = proceedIndex(index, ana, i + 1);
@@ -1672,12 +1681,12 @@ var ResultList = React.createClass({
             isCosmosArray[i] = this.isCosmos(arml[i])
         }
 
-        for(var i = 0; i < totalItr; i++){
+        for(var i = 0; i < totalItr; i=(i+1)|0){
             var temp = []
             var num = 0;
             var isCosmosIncluded = false;
             var isValidCombination = true;
-            for(var j = 0; j < armNumArray.length; j++){
+            for(var j = 0; j < armNumArray.length; j=(j+1)|0){
                 if(!isCosmosArray[j]) {
                     temp.push(armNumArray[j][index[j]]);
                     num += parseInt(armNumArray[j][index[j]])
@@ -1706,50 +1715,11 @@ var ResultList = React.createClass({
 
         return isCos
     },
-    calculateBasedOneSummon: function(summon, prof, buff, totals) {
+    calculateBasedOneSummon: function(summonind, prof, buff, totals) {
         var res = {}
-        var selfElement = (summon.selfElement == undefined) ? "fire" : summon.selfElement
-        var friendElement = (summon.friendElement == undefined) ? "fire" : summon.friendElement
 
         for(key in totals) {
-            var totalSummon = {magna: 1.0, element: 1.0, zeus: 1.0, chara: 0.0, ranko: 1.0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0, ta: 0};
-
-            if((summonElementTypes[selfElement]["type"].indexOf(totals[key]["element"]) >= 0) || selfElement == "all" ){
-                if(summon.selfSummonType == "odin") {
-                    // odin(属性+キャラ攻撃)など、複数の場合の処理
-                    totalSummon["element"] += 0.01 * parseInt(summon.selfSummonAmount)
-                    totalSummon["chara"] += 0.01 * parseInt(summon.selfSummonAmount2)
-                } else {
-                    // 自分の加護 通常の場合
-                    totalSummon[summon.selfSummonType] += 0.01 * parseInt(summon.selfSummonAmount)
-                }
-            }
-            if((summonElementTypes[friendElement]["type"].indexOf(totals[key]["element"]) >= 0) || friendElement == "all" ){
-                if(summon.friendSummonType == "odin") {
-                    // odin(属性+キャラ攻撃)など、複数の場合の処理
-                    totalSummon["element"] += 0.01 * parseInt(summon.friendSummonAmount)
-                    totalSummon["chara"] += 0.01 * parseInt(summon.friendSummonAmount2)
-                } else {
-                    // フレンドの加護 通常の場合
-                    totalSummon[summon.friendSummonType] += 0.01 * parseInt(summon.friendSummonAmount)
-                }
-            }
-
-            // 後から追加したので NaN でないか判定しておく
-            if(!isNaN(summon.attack)) totalSummon["attack"] = parseInt(summon.attack)
-            if(!isNaN(summon.hp)) totalSummon["hp"] = parseInt(summon.hp)
-            if(!isNaN(summon.hpBonus)) totalSummon["hpBonus"] = 0.01 * parseInt(summon.hpBonus)
-            if(!isNaN(summon.DA)) totalSummon["da"] = 0.01 * parseInt(summon.DA)
-            if(!isNaN(summon.TA)) totalSummon["ta"] = 0.01 * parseInt(summon.TA)
-
-            // 弱点属性判定
-            var typeBonus = 1.0
-            var enemyElement = (prof.enemyElement == undefined || prof.enemyElement == "水") ? "fire" : prof.enemyElement
-            if(elementRelation[ totals[key]["element"] ]["weak"] == enemyElement) {
-                typeBonus = 0.75
-            } else if(elementRelation[ totals[key]["element"] ]["strong"] == enemyElement) {
-                typeBonus = 1.5
-            }
+            var totalSummon = totals[key]["totalSummon"][summonind]
 
             // for attack
             var magnaCoeff = 1.0 + 0.01 * totals[key]["magna"] * totalSummon["magna"]
@@ -1760,16 +1730,13 @@ var ResultList = React.createClass({
             var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + totalSummon["chara"] + buff["normal"]
             var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"]
             var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
-            var elementCoeff = typeBonus + (totalSummon["element"] - 1.0) + buff["element"]
+            var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0) + buff["element"]
             var otherCoeff = 1.0 + buff["other"]
 
             if(key == "Djeeta") {
-                var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
-                var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
-                var job = (prof.job == undefined) ? Jobs["none"] : Jobs[prof.job]
                 // for Djeeta
-                var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + zenithATK + parseInt(job.atBonus)) * (1.0 + buff["master"])
-                var displayHP = (totals[key]["baseHP"] + totalSummon["hp"] + totals[key]["armHP"] + zenithHP) * (1.0 + buff["masterHP"])
+                var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + totals["Djeeta"]["zenithATK"] + totals["Djeeta"]["job"].atBonus) * (1.0 + buff["master"])
+                var displayHP = (totals[key]["baseHP"] + totalSummon["hp"] + totals[key]["armHP"] + totals["Djeeta"]["zenithHP"]) * (1.0 + buff["masterHP"])
             } else {
                 // for chara
                 var summedAttack = totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"]
@@ -1797,10 +1764,10 @@ var ResultList = React.createClass({
             var daRate = (parseFloat(totalDA) >= 100.0) ? 1.0 : 0.01 * parseFloat(totalDA)
             var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
 
-            var criticalRatio = (1.0 + skillAmounts["magnaCritical"]["ratio"]) * 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"] + (1.0 + skillAmounts["normalCritical"]["ratio"]) * 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"] + 1.0 * (1.0 - 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"] - 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"])
-
-            if(typeBonus != 1.5) {
-                criticalRatio = 1.0
+            if(totals[key]["typeBonus"] != 1.5) {
+                var criticalRatio = 1.0
+            } else {
+                var criticalRatio = (1.0 + skillAmounts["magnaCritical"]["ratio"]) * 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"] + (1.0 + skillAmounts["normalCritical"]["ratio"]) * 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"] + 1.0 * (1.0 - 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"] - 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"])
             }
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = buff["ougiGage"] * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
@@ -1915,7 +1882,7 @@ var ResultList = React.createClass({
         var result = []
         for(var i = 0; i < summon.length; i++){
            // 攻撃などの結果を入れた連想配列の配列を作る
-           result.push(this.calculateBasedOneSummon(summon[i], prof, buff, totals));
+           result.push(this.calculateBasedOneSummon(i, prof, buff, totals));
         }
 
         return result
@@ -2197,7 +2164,7 @@ var ResultList = React.createClass({
 
         return totalBuff
     },
-    getInitialTotals: function(prof, chara) {
+    getInitialTotals: function(prof, chara, summon) {
         var baseAttack = (prof.rank > 100) ? 5000 + (parseInt(prof.rank) - 100) * 20 : 1000 + (parseInt(prof.rank)) * 40
         var baseHP = (prof.rank > 100) ? 1400 + (parseInt(prof.rank) - 100) * 4.0 : 600 + (parseInt(prof.rank)) * 8
         var element = (prof.element == undefined) ? "fire" : prof.element
@@ -2205,8 +2172,10 @@ var ResultList = React.createClass({
         var djeetaDA = (prof.DA == undefined) ? 6.5 : parseFloat(prof.DA)
         var djeetaTA = (prof.TA == undefined) ? 3.0 : parseFloat(prof.TA)
         var job = (prof.job == undefined) ? Jobs["none"] : Jobs[prof.job]
+        var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
+        var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true}};
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -2225,6 +2194,56 @@ var ResultList = React.createClass({
                 }
 
                 totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: charaConsidered}
+            }
+        }
+        for(key in totals) {
+            totals[key]["totalSummon"] = []
+            for(var s = 0; s < summon.length; s++) {
+                var selfElement = (summon[s].selfElement == undefined) ? "fire" : summon[s].selfElement
+                var friendElement = (summon[s].friendElement == undefined) ? "fire" : summon[s].friendElement
+
+                var totalSummon = {magna: 1.0, element: 1.0, zeus: 1.0, chara: 0.0, ranko: 1.0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0, ta: 0};
+
+                if((summonElementTypes[selfElement]["type"].indexOf(totals[key]["element"]) >= 0) || selfElement == "all" ){
+                    if(summon[s].selfSummonType == "odin") {
+                        // odin(属性+キャラ攻撃)など、複数の場合の処理
+                        totalSummon["element"] += 0.01 * parseInt(summon[s].selfSummonAmount)
+                        totalSummon["chara"] += 0.01 * parseInt(summon[s].selfSummonAmount2)
+                    } else {
+                        // 自分の加護 通常の場合
+                        totalSummon[summon[s].selfSummonType] += 0.01 * parseInt(summon[s].selfSummonAmount)
+                    }
+                }
+                if((summonElementTypes[friendElement]["type"].indexOf(totals[key]["element"]) >= 0) || friendElement == "all" ){
+                    if(summon[s].friendSummonType == "odin") {
+                        // odin(属性+キャラ攻撃)など、複数の場合の処理
+                        totalSummon["element"] += 0.01 * parseInt(summon[s].friendSummonAmount)
+                        totalSummon["chara"] += 0.01 * parseInt(summon[s].friendSummonAmount2)
+                    } else {
+                        // フレンドの加護 通常の場合
+                        totalSummon[summon[s].friendSummonType] += 0.01 * parseInt(summon[s].friendSummonAmount)
+                    }
+                }
+
+                // 後から追加したので NaN でないか判定しておく
+                if(!isNaN(summon[s].attack)) totalSummon["attack"] = parseInt(summon[s].attack)
+                if(!isNaN(summon[s].hp)) totalSummon["hp"] = parseInt(summon[s].hp)
+                if(!isNaN(summon[s].hpBonus)) totalSummon["hpBonus"] = 0.01 * parseInt(summon[s].hpBonus)
+                if(!isNaN(summon[s].DA)) totalSummon["da"] = 0.01 * parseInt(summon[s].DA)
+                if(!isNaN(summon[s].TA)) totalSummon["ta"] = 0.01 * parseInt(summon[s].TA)
+
+                totals[key]["totalSummon"][s] = totalSummon
+            }
+        }
+
+        var enemyElement = (prof.enemyElement == undefined || prof.enemyElement == "水") ? "fire" : prof.enemyElement
+        for(key in totals){
+            if(elementRelation[ totals[key]["element"] ]["weak"] == enemyElement) {
+                totals[key]["typeBonus"] = 0.75
+            } else if(elementRelation[ totals[key]["element"] ]["strong"] == enemyElement) {
+                totals[key]["typeBonus"] = 1.5
+            } else {
+                totals[key]["typeBonus"] = 1.0
             }
         }
 
@@ -2246,16 +2265,42 @@ var ResultList = React.createClass({
               sortkeyname = keyTypes[sortkey]
           }
 
-          var combinations = this.calculateCombinations(arml)
+          // combinationsが変更されていないなら古いやつを使う
+          if(this.state.previousArmlist != null) {
+              var isCombinationChanged = false;
+              if(this.state.previousArmlist.length != arml.length) {
+                  isCombinationChanged = true;
+              }
+              if(!isCombinationChanged) {
+                  for(var i = 0; i < arml.length; i = (i + 1)|0){
+                      if(arml[i].considerNumberMax != this.state.previousArmlist[i].considerNumberMax || arml[i].considerNumberMin != this.state.previousArmlist[i].considerNumberMin) {
+                          isCombinationChanged = true;
+                      }
+                  }
+              }
+              if(isCombinationChanged) {
+                  var combinations = this.calculateCombinations(arml)
+                  this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))})
+                  this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
+              } else {
+                  var combinations = this.state.previousCombinations
+              }
+          } else {
+              var combinations = this.calculateCombinations(arml)
+              this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))})
+              this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
+          }
+
           var res = []
           for(var i = 0; i < summon.length; i++){
               res[i] = []
           }
 
-          var totals = this.getInitialTotals(prof, chara)
-          var totalItr = combinations.length * summon.length * Object.keys(totals).length
+          var totals = this.getInitialTotals(prof, chara, summon)
+          var itr = combinations.length
+          var totalItr = itr * summon.length * Object.keys(totals).length
 
-          for(var i = 0; i < combinations.length; i++){
+          for(var i = 0; i < itr; i = (i + 1)|0){
               var oneres = this.calculateOneCombination(combinations[i], summon, prof, arml, totals, totalBuff)
               for(var j = 0; j < summon.length; j++){
                   res[j].push({data: oneres[j], armNumbers: combinations[i]});
@@ -2313,6 +2358,8 @@ var ResultList = React.createClass({
             openHPChart: false,
             hpChartButtonActive: false,
             openHPChartTutorial: false,
+            previousArmlist: null,
+            previousCombinations: null,
         };
     },
     closeHPChart: function() {
@@ -2367,7 +2414,7 @@ var ResultList = React.createClass({
         var prof = this.props.data.profile; var arml = this.props.data.armlist;
         var summon = this.props.data.summon; var chara = this.props.data.chara;
         var totalBuff = this.getTotalBuff(prof)
-        var totals = this.getInitialTotals(prof, chara)
+        var totals = this.getInitialTotals(prof, chara, summon)
 
         var sortkey = "totalAttack"
         var sortkeyname = "総合攻撃力"
@@ -3516,6 +3563,9 @@ var RegisteredArm = React.createClass({
             limit: 50,
             tempArm: {},
             openConsiderNumberModal: false,
+            plusNum: "+0",
+            armLv: "Lv. 1",
+            armSLv: "SLv. 1",
         };
     },
     closeConsiderNumberModal: function() {
@@ -3540,10 +3590,18 @@ var RegisteredArm = React.createClass({
     },
     clickedTemplate: function(e) {
         this.setState({tempArm: this.state.armData[e.target.getAttribute("id")]});
+        if(this.state.armData[e.target.getAttribute("id")].maxlv == "150") {
+            this.setState({select_level: select_levelNoLimit})
+        } else {
+            this.setState({select_level: select_levelLimit})
+        }
         this.setState({openConsiderNumberModal: true})
     },
     clickedConsiderNumber: function(e) {
-        this.props.onClick(this.state.tempArm, e.target.value);
+        var arm = this.state.tempArm
+        arm["plus"] = this.state.plusNum
+        arm["lv"] = this.state.armLv
+        this.props.onClick(arm, e.target.value);
         this.setState({openConsiderNumberModal: false})
     },
     handleEvent: function(key, e) {
@@ -3624,6 +3682,7 @@ var RegisteredArm = React.createClass({
                                 </div>
                             </div>
                         </Modal.Body>
+                        <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{select_plusnum}</FormControl>
                     </Modal>
                 </div>
             )
@@ -3687,6 +3746,8 @@ var RegisteredArm = React.createClass({
                                 </div>
                             </div>
                         </Modal.Body>
+                        {/*<FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.select_level}</FormControl>*/}
+                        <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{select_plusnum}</FormControl>
                     </Modal>
                 </div>
             )
@@ -3732,8 +3793,13 @@ var Arm = React.createClass({
             var newarm = nextProps.addArm
 
             newState["name"] = newarm.name
-            newState["attack"] = parseInt(newarm.attack)
-            newState["hp"] = parseInt(newarm.hp)
+            // if(newarm.lv <= 100) {
+            //     newState["attack"] = newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack)/100) + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus)
+            // } else {
+            //     newState["attack"] = (newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.minattack)/100) + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus)
+            // }
+            newState["attack"] = parseInt(newarm.attack) + 5 * parseInt(newarm.plus)
+            newState["hp"] = parseInt(newarm.hp) + parseInt(newarm.plus)
             newState["armType"] = newarm.type
             newState["element"] = newarm.element
             newState["skill1"] = newarm.skill1
@@ -3762,8 +3828,8 @@ var Arm = React.createClass({
            var newarm = this.props.addArm
 
            state["name"] = newarm.name
-           state["attack"] = parseInt(newarm.attack)
-           state["hp"] = parseInt(newarm.hp)
+           state["attack"] = parseInt(newarm.attack) + 5 * parseInt(newarm.plus)
+           state["hp"] = parseInt(newarm.hp) + parseInt(newarm.plus)
            state["armType"] = newarm.type
            state["element"] = newarm.element
            state["skill1"] = newarm.skill1
@@ -4397,6 +4463,10 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-success">2016/08/25: 計算量削減処理を追加</li>
+                <li className="list-group-item list-group-item-success">2016/08/25: 新武器の情報を武器テンプレートに追加(画像なし) </li>
+                <li className="list-group-item list-group-item-info">2016/08/25: カオスルーダーと義賊を追加 / フェリ(SSR)がキャラテンプレートに表示されていない不具合を修正 </li>
+                <li className="list-group-item list-group-item-info">2016/08/25: 武器追加時に+を計算できるようにした </li>
                 <li className="list-group-item list-group-item-info">2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした / 召喚石の削除・コピー機能実装 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/24: 前述の不具合調整の際のミスのため、全く計算されなくなってしまう場合があったのを修正 </li>
                 <li className="list-group-item list-group-item-info">2016/08/24: PC版UIの微調整 / プリセット入力から武器を追加した際、本数が正しく設定されない場合があるのを修正 </li>

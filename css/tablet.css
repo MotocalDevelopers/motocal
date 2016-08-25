@@ -488,6 +488,14 @@ label {
     width: 500px;
 }
 
+.presetsConsiderNumber.fade.in.modal .modal-dialog .form-control{
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: inline;
+    margin-bottom: 5px;
+}
+
 .howTo {
     width: 80%;
     margin-left: 10%;
