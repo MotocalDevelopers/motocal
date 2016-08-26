@@ -3,3 +3,9 @@ node_modules
 imgs
 charaimgs
 otherImages
+utils.php
+sqldump
+jquery-ui-1.12.0.custom
+js-base64
+*.php
+html2canvas

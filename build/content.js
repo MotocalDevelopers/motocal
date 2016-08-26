@@ -48839,6 +48839,7 @@ var RegisteredArm = React.createClass({displayName: "RegisteredArm",
                             React.createElement(Modal.Title, null, "何本追加しますか？")
                         ), 
                         React.createElement(Modal.Body, null, 
+                            React.createElement(FormControl, {componentClass: "select", value: this.state.plusNum, onChange: this.handleEvent.bind(this, "plusNum")}, select_plusnum), 
                             React.createElement("div", {className: "btn-group btn-group-justified", role: "group", "aria-label": "..."}, 
                                 React.createElement("div", {className: "btn-group", role: "group"}, 
                                     React.createElement("button", {type: "button", className: "btn btn-default", value: "1", onClick: this.clickedConsiderNumber}, "1本")
@@ -48873,8 +48874,7 @@ var RegisteredArm = React.createClass({displayName: "RegisteredArm",
                                     React.createElement("button", {type: "button", className: "btn btn-default", value: "10", onClick: this.clickedConsiderNumber}, "10本")
                                 )
                             )
-                        ), 
-                        React.createElement(FormControl, {componentClass: "select", value: this.state.plusNum, onChange: this.handleEvent.bind(this, "plusNum")}, select_plusnum)
+                        )
                     )
                 )
             )
@@ -48903,6 +48903,7 @@ var RegisteredArm = React.createClass({displayName: "RegisteredArm",
                             React.createElement(Modal.Title, null, "何本追加しますか？")
                         ), 
                         React.createElement(Modal.Body, null, 
+                            React.createElement(FormControl, {componentClass: "select", value: this.state.plusNum, onChange: this.handleEvent.bind(this, "plusNum")}, select_plusnum), 
                             React.createElement("div", {className: "btn-group btn-group-justified", role: "group", "aria-label": "..."}, 
                                 React.createElement("div", {className: "btn-group", role: "group"}, 
                                     React.createElement("button", {type: "button", className: "btn btn-default", value: "1", onClick: this.clickedConsiderNumber}, "1本")
@@ -48937,9 +48938,8 @@ var RegisteredArm = React.createClass({displayName: "RegisteredArm",
                                     React.createElement("button", {type: "button", className: "btn btn-default", value: "10", onClick: this.clickedConsiderNumber}, "10本")
                                 )
                             )
-                        ), 
+                        )
                         /*<FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.select_level}</FormControl>*/
-                        React.createElement(FormControl, {componentClass: "select", value: this.state.plusNum, onChange: this.handleEvent.bind(this, "plusNum")}, select_plusnum)
                     )
                 )
             )
