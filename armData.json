@@ -2,7 +2,7 @@
     "エリクトニオス": {
         "element2": "fire", 
         "name": "エリクトニオス", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040206800.png", 
         "skill2": "normalSanteL", 
         "skill1": "normalBoukunL", 
         "element": "fire", 
@@ -17,7 +17,7 @@
     "パラスの剣": {
         "element2": "fire", 
         "name": "パラスの剣", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040009200.png", 
         "skill2": "normalHPM", 
         "skill1": "normalL", 
         "element": "fire", 
@@ -32,7 +32,7 @@
     "シグルズの弓": {
         "element2": "water", 
         "name": "シグルズの弓", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040705100.png", 
         "skill2": "normalM", 
         "skill1": "non", 
         "element": "water", 
@@ -47,7 +47,7 @@
     "ヴィルヘルム": {
         "element2": "water", 
         "name": "ヴィルヘルム", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040606000.png", 
         "skill2": "normalCriticalM", 
         "skill1": "normalBoukunL", 
         "element": "water", 
@@ -62,7 +62,7 @@
     "ソロモンドライブ": {
         "element2": "earth", 
         "name": "ソロモンドライブ", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040305800.png", 
         "skill2": "normalHaisuiS", 
         "skill1": "normalL", 
         "element": "earth", 
@@ -77,7 +77,7 @@
     "マイムールヴィジョン": {
         "element2": "earth", 
         "name": "マイムールヴィジョン", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040506100.png", 
         "skill2": "normalKatsumiM", 
         "skill1": "normalBoukunL", 
         "element": "earth", 
@@ -92,7 +92,7 @@
     "インドラリム": {
         "element2": "wind", 
         "name": "インドラリム", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040705200.png", 
         "skill2": "non", 
         "skill1": "normalSetsuna", 
         "element": "wind", 
@@ -107,7 +107,7 @@
     "スパルナフェザー": {
         "element2": "wind", 
         "name": "スパルナフェザー", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040107900.png", 
         "skill2": "normalL", 
         "skill1": "non", 
         "element": "wind", 
@@ -122,7 +122,7 @@
     "グングニル": {
         "element2": "light", 
         "name": "グングニル", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040206700.png", 
         "skill2": "normalKatsumiM", 
         "skill1": "normalM", 
         "element": "light", 
@@ -137,7 +137,7 @@
     "スレイプニルシュー": {
         "element2": "light", 
         "name": "スレイプニルシュー", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040805200.png", 
         "skill2": "non", 
         "skill1": "normalHaisuiS", 
         "element": "light", 
@@ -152,7 +152,7 @@
     "ブラック・アンド・ダークネス": {
         "element2": "dark", 
         "name": "ブラック・アンド・ダークネス", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040408700.png", 
         "skill2": "non", 
         "skill1": "normalL", 
         "element": "dark", 
@@ -167,7 +167,7 @@
     "サンダー・オブ・ファントム": {
         "element2": "dark", 
         "name": "サンダー・オブ・ファントム", 
-        "imageURL": "./imgs/1040904.png", 
+        "imageURL": "./imgs/1040506200.png", 
         "skill2": "normalHPM", 
         "skill1": "non", 
         "element": "dark", 
