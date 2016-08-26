@@ -2390,7 +2390,7 @@ var ResultList = React.createClass({
             switchDamage: 0,
             switchOugiGage: 0,
             switchOugiDamage: 0,
-            switchCycleDamage: 0,
+            switchCycleDamage: 1,
             switchAverageCycleDamage: 0,
             disableAutoResultUpdate: 0,
             result: {summon: this.props.data.summon, result: []},
@@ -4573,7 +4573,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-infor">2016/08/27: グラフ表示キーに技巧期待値と技巧期待値のパーティ平均を追加 </li>
+                <li className="list-group-item list-group-item-info">2016/08/27: グラフ表示キーに技巧期待値と技巧期待値のパーティ平均を追加 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/26: 背水グラフの値がおかしくなっていたのを修正 (8/25の計算量削減処理でのミス) </li>
                 <li className="list-group-item list-group-item-info">2016/08/26: 武器追加時にLvとSLvも選べるようにした </li>
                 <li className="list-group-item list-group-item-success">2016/08/26: 新武器の画像を追加 </li>
