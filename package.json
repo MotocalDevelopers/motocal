@@ -1,0 +1,24 @@
+{
+  "name": "motocal",
+  "version": "0.0.1",
+  "description": "moto-calculator",
+  "dependencies": {
+    "react": "~15.3.0",
+    "react-bootstrap": "~0.30.2",
+    "react-dom": "~15.3.0",
+    "react-google-charts": "~1.0.2",
+    "reactify": "~1.1.1",
+    "react-language": "~0.1.3",
+    "jquery": "~3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://github/hoshimi/motocal.git"
+  },
+  "author": "hoshimi",
+  "license": "MIT"
+}
