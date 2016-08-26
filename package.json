@@ -13,12 +13,16 @@
     "js-base64": "~2.1.9"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "$(npm bin)/browserify -t reactify src/content.js -o build/content.js"
   },
   "repository": {
     "type": "git",
     "url": "ssh://github/hoshimi/motocal.git"
   },
   "author": "hoshimi",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "13.1.0"
+  }
 }
