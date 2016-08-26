@@ -2551,10 +2551,10 @@ var ResultList = React.createClass({
                 }
                 for(key in onedata){
                     var totalSummon = onedata[key].totalSummon
-                    var normalHaisuiOrig = 0.01 * onedata[key].skilldata.normalHaisui
-                    var magnaHaisuiOrig = 0.01 * onedata[key].skilldata.magnaHaisui
-                    var normalKonshinOrig = 0.01 * onedata[key].skilldata.normalKonshin
-                    var totalAttackWithoutHaisui = onedata[key].totalAttack / ((1.0 + normalHaisuiOrig) * (1.0 + magnaHaisuiOrig) * (1.0 + normalKonshinOrig))
+                    var normalHaisuiOrig = onedata[key].skilldata.normalHaisui
+                    var magnaHaisuiOrig = onedata[key].skilldata.magnaHaisui
+                    var normalKonshinOrig = onedata[key].skilldata.normalKonshin
+                    var totalAttackWithoutHaisui = onedata[key].totalAttack / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig)
                     var haisuiBuff = []
                     for(var k = 0; k < 100; k++){
                         haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0})
@@ -3186,6 +3186,7 @@ var HPChart = React.createClass({
             return (
                     <div className="HPChart">
                         {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>*/}
+                        <p className="text-danger">8/25 深夜〜8/27早朝にかけて、算出されるHPチャートの値がおかしくなっていました。現在は修正済みです。</p>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
@@ -3205,6 +3206,7 @@ var HPChart = React.createClass({
 
             return (
                     <div className="HPChart">
+                        <p className="text-danger">8/25 深夜〜8/27早朝にかけて、算出されるHPチャートの値がおかしくなっていました。現在は修正済みです。</p>
                         <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
@@ -4541,6 +4543,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-danger">2016/08/26: 背水グラフの値がおかしくなっていたのを修正 (8/25の計算量削減処理でのミス) </li>
                 <li className="list-group-item list-group-item-info">2016/08/26: 武器追加時にLvとSLvも選べるようにした </li>
                 <li className="list-group-item list-group-item-success">2016/08/26: 新武器の画像を追加 </li>
                 <li className="list-group-item list-group-item-success">2016/08/25: 計算量削減処理を追加 (倍くらい早くなりました) </li>
