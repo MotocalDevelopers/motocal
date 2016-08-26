@@ -13,3 +13,12 @@
 ``browserify -t reactify src/content-dev.js -o build/content-dev.js``
 
 DB通信用の*phpファイルは管理していません。
+
+# 開発準備
+```sh
+$ npm install
+$ npm run build
+$ open dev.html
+```
+
+`npm run watch-dev` を実行していると、自動で *build/content-dev.js* が生成されます。
