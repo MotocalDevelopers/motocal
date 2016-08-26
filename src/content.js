@@ -4498,7 +4498,8 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-success">2016/08/25: 計算量削減処理を追加 (35%くらい早くなりました) </li>
+                <li className="list-group-item list-group-item-success">2016/08/26: 新武器の画像を追加 </li>
+                <li className="list-group-item list-group-item-success">2016/08/25: 計算量削減処理を追加 (倍くらい早くなりました) </li>
                 <li className="list-group-item list-group-item-success">2016/08/25: 新武器の情報を武器テンプレートに追加(画像なし) </li>
                 <li className="list-group-item list-group-item-info">2016/08/25: カオスルーダーと義賊を追加 / フェリ(SSR)がキャラテンプレートに表示されていない不具合を修正 </li>
                 <li className="list-group-item list-group-item-info">2016/08/25: 武器追加時に+を計算できるようにした </li>

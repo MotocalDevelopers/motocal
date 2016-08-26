@@ -298,18 +298,18 @@
         "type": "attack", 
         "imageURL": "./charaimgs/3040022000_01.png"
     }, 
-    "ランスロット": {
+    "ランスロット(SSR)": {
         "baseDA": 6.5, 
-        "name": "ランスロット", 
-        "hp": "830", 
+        "name": "ランスロット(SSR)", 
+        "hp": "1570", 
         "element": "water", 
-        "attack": "5700", 
+        "attack": "10830", 
         "race": "human", 
         "baseTA": 3.0, 
         "fav1": "sword", 
         "fav2": "none", 
         "type": "attack", 
-        "imageURL": "./charaimgs/3030108000_01.png"
+        "imageURL": "./charaimgs/3040023000_01.png"
     }, 
     "ソフィア": {
         "baseDA": 6.5, 
@@ -2559,6 +2559,19 @@
         "fav2": "none", 
         "type": "defense", 
         "imageURL": "./charaimgs/3030107000_01.png"
+    }, 
+    "ランスロット(SR)": {
+        "baseDA": 6.5, 
+        "name": "ランスロット(SR)", 
+        "hp": "830", 
+        "element": "water", 
+        "attack": "5700", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "sword", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3030108000_01.png"
     }, 
     "ファスティバ(クリスマスver)": {
         "baseDA": 6.5, 
