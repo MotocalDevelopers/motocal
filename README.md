@@ -9,6 +9,7 @@
 リリース時に本番用のcontent.jsにcpしています。
 
 現在のトランスパイルコマンド
+
 ``browserify -t reactify src/content-dev.js -o build/content-dev.js``
 
 DB通信用の*phpファイルは管理していません。

@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "$(npm bin)/browserify -t reactify src/content.js -o build/content.js"
+    "build": "$(npm bin)/browserify -t reactify src/content-dev.js -o build/content-dev.js"
   },
   "repository": {
     "type": "git",
