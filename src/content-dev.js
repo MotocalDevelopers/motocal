@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 
