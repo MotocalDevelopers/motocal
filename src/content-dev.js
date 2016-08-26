@@ -47,6 +47,8 @@ var keyTypes = {
 var supportedChartSortkeys = {
     "totalAttack": "総合攻撃力",
     "averageAttack": "パーティ平均攻撃力",
+    "criticalAttack": "技巧期待値",
+    "averageCriticalAttack": "技巧期待平均攻撃力",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
     "totalHP": "ジータ残りHP",
@@ -2486,23 +2488,30 @@ var ResultList = React.createClass({
         var minMaxArr = {
             "totalAttack": {"max": 0, "min": 0},
             "totalHP": {"max": 0, "min": 0},
+            "criticalAttack": {"max": 0, "min": 0},
             "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
             "averageAttack": {"max": 0, "min": 0},
             "averageCyclePerTurn": {"max": 0, "min": 0},
+            "averageCriticalAttack": {"max": 0, "min": 0},
         }
 
         if(res.length > 1) {
             var AllTotalAttack = [["残りHP(%)"]];
             var AllCycleDamagePerTurn = [["残りHP(%)"]];
+            var AllCriticalAttack = [["残りHP(%)"]];
             var AllAverageTotalAttack = [["残りHP(%)"]];
             var AllAverageCycleDamagePerTurn = [["残りHP(%)"]];
+            var AllAverageCriticalAttack = [["残りHP(%)"]];
             var AllTotalHP = [["残りHP(%)"]]
+
             for(var m = 1; m < 101; m++){
                 AllTotalAttack.push([m.toString() + "%"])
                 AllCycleDamagePerTurn.push([m.toString() + "%"])
+                AllCriticalAttack.push([m.toString() + "%"])
                 AllTotalHP.push([m.toString() + "%"])
                 AllAverageTotalAttack.push([m.toString() + "%"])
                 AllAverageCycleDamagePerTurn.push([m.toString() + "%"])
+                AllAverageCriticalAttack.push([m.toString() + "%"])
             }
         }
 
@@ -2521,20 +2530,29 @@ var ResultList = React.createClass({
             } else {
                 summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
             }
-            var TotalAttack = [["残りHP(%)"]]; var CycleDamagePerTurn = [["残りHP(%)"]]; var AverageTotalAttack = [["残りHP(%)"]]; var AverageCycleDamagePerTurn = [["残りHP(%)"]];
+            var TotalAttack = [["残りHP(%)"]];
             var TotalHP = [["残りHP(%)"]]
+            var CriticalAttack = [["残りHP(%)"]];
+            var CycleDamagePerTurn = [["残りHP(%)"]];
+            var AverageTotalAttack = [["残りHP(%)"]];
+            var AverageCriticalAttack = [["残りHP(%)"]];
+            var AverageCycleDamagePerTurn = [["残りHP(%)"]];
+
             for(var m = 1; m < 101; m++){
                 TotalAttack.push([m.toString() + "%"])
                 CycleDamagePerTurn.push([m.toString() + "%"])
+                CriticalAttack.push([m.toString() + "%"])
                 TotalHP.push([m.toString() + "%"])
                 AverageTotalAttack.push([m.toString() + "%"])
                 AverageCycleDamagePerTurn.push([m.toString() + "%"])
+                AverageCriticalAttack.push([m.toString() + "%"])
 
                 // 合計値を足すために先に要素を追加しておく
                 // (key の 処理順が不明のため)
                 for(var j = 0; j < oneresult.length; j++){
                     AverageTotalAttack[m].push(0)
                     AverageCycleDamagePerTurn[m].push(0)
+                    AverageCriticalAttack[m].push(0)
                 }
             }
 
@@ -2657,32 +2675,40 @@ var ResultList = React.createClass({
                         if(key == "Djeeta") {
                             TotalAttack[k + 1].push( parseInt(newTotalAttack) )
                             TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
+                            CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
                             CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
                         }
 
                         AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
                         AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                        AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                     }
                 }
                 TotalAttack[0].push(title)
                 TotalHP[0].push(title)
+                CriticalAttack[0].push(title)
                 CycleDamagePerTurn[0].push(title)
                 AverageTotalAttack[0].push(title)
                 AverageCycleDamagePerTurn[0].push(title)
+                AverageCriticalAttack[0].push(title)
 
                 // 召喚石2組以上の場合
                 if(res.length > 1) {
                     AllTotalAttack[0].push("(" + summonHeader + ")" + title)
                     AllTotalHP[0].push("(" + summonHeader + ")" + title)
+                    AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
                     AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
                     AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
+                    AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
                     AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
 
                     for(var k = 1; k < 101; k++) {
                         AllTotalAttack[k].push(TotalAttack[k][j + 1])
                         AllTotalHP[k].push(TotalHP[k][j + 1])
+                        AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
                         AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
                         AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
+                        AllAverageCriticalAttack[k].push(AverageCriticalAttack[k][j + 1])
                         AllAverageCycleDamagePerTurn[k].push(AverageCycleDamagePerTurn[k][j + 1])
                     }
                 }
@@ -2691,6 +2717,8 @@ var ResultList = React.createClass({
             data[summonHeader] = {}
             data[summonHeader]["totalAttack"] = TotalAttack
             data[summonHeader]["expectedCycleDamagePerTurn"] = CycleDamagePerTurn
+            data[summonHeader]["criticalAttack"] = CriticalAttack
+            data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
             data[summonHeader]["averageAttack"] = AverageTotalAttack
             data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
             data[summonHeader]["totalHP"] = TotalHP
@@ -2700,8 +2728,10 @@ var ResultList = React.createClass({
             data["まとめて比較"] = {}
             data["まとめて比較"]["totalAttack"] = AllTotalAttack
             data["まとめて比較"]["totalHP"] = AllTotalHP
+            data["まとめて比較"]["criticalAttack"] = AllCriticalAttack
             data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
             data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
+            data["まとめて比較"]["averageCriticalAttack"] = AllAverageCriticalAttack
             data["まとめて比較"]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
         }
 
@@ -4543,6 +4573,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-infor">2016/08/27: グラフ表示キーに技巧期待値と技巧期待値のパーティ平均を追加 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/26: 背水グラフの値がおかしくなっていたのを修正 (8/25の計算量削減処理でのミス) </li>
                 <li className="list-group-item list-group-item-info">2016/08/26: 武器追加時にLvとSLvも選べるようにした </li>
                 <li className="list-group-item list-group-item-success">2016/08/26: 新武器の画像を追加 </li>
