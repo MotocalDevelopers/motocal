@@ -23,6 +23,7 @@
   "author": "hoshimi",
   "license": "MIT",
   "devDependencies": {
-    "browserify": "13.1.0"
+    "browserify": "13.1.0",
+    "watchify": "3.7.0"
   }
 }
