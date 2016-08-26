@@ -18,6 +18,8 @@ var HPList = [ 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 
 var plusNumList = { "+0": 0, "+1": 1, "+2": 2, "+3": 3, "+4": 4, "+5": 5, "+6": 6, "+7": 7, "+8": 8, "+9": 9, "+10": 10, "+11": 11, "+12": 12, "+13": 13, "+14": 14, "+15": 15, "+16": 16, "+17": 17, "+18": 18, "+19": 19, "+20": 20, "+21": 21, "+22": 22, "+23": 23, "+24": 24, "+25": 25, "+26": 26, "+27": 27, "+28": 28, "+29": 29, "+30": 30, "+31": 31, "+32": 32, "+33": 33, "+34": 34, "+35": 35, "+36": 36, "+37": 37, "+38": 38, "+39": 39, "+40": 40, "+41": 41, "+42": 42, "+43": 43, "+44": 44, "+45": 45, "+46": 46, "+47": 47, "+48": 48, "+49": 49, "+50": 50, "+51": 51, "+52": 52, "+53": 53, "+54": 54, "+55": 55, "+56": 56, "+57": 57, "+58": 58, "+59": 59, "+60": 60, "+61": 61, "+62": 62, "+63": 63, "+64": 64, "+65": 65, "+66": 66, "+67": 67, "+68": 68, "+69": 69, "+70": 70, "+71": 71, "+72": 72, "+73": 73, "+74": 74, "+75": 75, "+76": 76, "+77": 77, "+78": 78, "+79": 79, "+80": 80, "+81": 81, "+82": 82, "+83": 83, "+84": 84, "+85": 85, "+86": 86, "+87": 87, "+88": 88, "+89": 89, "+90": 90, "+91": 91, "+92": 92, "+93": 93, "+94": 94, "+95": 95, "+96": 96, "+97": 97, "+98": 98, "+99": 99}
 var levelListLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 5, "Lv. 6": 6, "Lv. 7": 7, "Lv. 8": 8, "Lv. 9": 9, "Lv. 10": 10, "Lv. 11": 11, "Lv. 12": 12, "Lv. 13": 13, "Lv. 14": 14, "Lv. 15": 15, "Lv. 16": 16, "Lv. 17": 17, "Lv. 18": 18, "Lv. 19": 19, "Lv. 20": 20, "Lv. 21": 21, "Lv. 22": 22, "Lv. 23": 23, "Lv. 24": 24, "Lv. 25": 25, "Lv. 26": 26, "Lv. 27": 27, "Lv. 28": 28, "Lv. 29": 29, "Lv. 30": 30, "Lv. 31": 31, "Lv. 32": 32, "Lv. 33": 33, "Lv. 34": 34, "Lv. 35": 35, "Lv. 36": 36, "Lv. 37": 37, "Lv. 38": 38, "Lv. 39": 39, "Lv. 40": 40, "Lv. 41": 41, "Lv. 42": 42, "Lv. 43": 43, "Lv. 44": 44, "Lv. 45": 45, "Lv. 46": 46, "Lv. 47": 47, "Lv. 48": 48, "Lv. 49": 49, "Lv. 50": 50, "Lv. 51": 51, "Lv. 52": 52, "Lv. 53": 53, "Lv. 54": 54, "Lv. 55": 55, "Lv. 56": 56, "Lv. 57": 57, "Lv. 58": 58, "Lv. 59": 59, "Lv. 60": 60, "Lv. 61": 61, "Lv. 62": 62, "Lv. 63": 63, "Lv. 64": 64, "Lv. 65": 65, "Lv. 66": 66, "Lv. 67": 67, "Lv. 68": 68, "Lv. 69": 69, "Lv. 70": 70, "Lv. 71": 71, "Lv. 72": 72, "Lv. 73": 73, "Lv. 74": 74, "Lv. 75": 75, "Lv. 76": 76, "Lv. 77": 77, "Lv. 78": 78, "Lv. 79": 79, "Lv. 80": 80, "Lv. 81": 81, "Lv. 82": 82, "Lv. 83": 83, "Lv. 84": 84, "Lv. 85": 85, "Lv. 86": 86, "Lv. 87": 87, "Lv. 88": 88, "Lv. 89": 89, "Lv. 90": 90, "Lv. 91": 91, "Lv. 92": 92, "Lv. 93": 93, "Lv. 94": 94, "Lv. 95": 95, "Lv. 96": 96, "Lv. 97": 97, "Lv. 98": 98, "Lv. 99": 99, "Lv. 100": 100}
 var levelListNoLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 5, "Lv. 6": 6, "Lv. 7": 7, "Lv. 8": 8, "Lv. 9": 9, "Lv. 10": 10, "Lv. 11": 11, "Lv. 12": 12, "Lv. 13": 13, "Lv. 14": 14, "Lv. 15": 15, "Lv. 16": 16, "Lv. 17": 17, "Lv. 18": 18, "Lv. 19": 19, "Lv. 20": 20, "Lv. 21": 21, "Lv. 22": 22, "Lv. 23": 23, "Lv. 24": 24, "Lv. 25": 25, "Lv. 26": 26, "Lv. 27": 27, "Lv. 28": 28, "Lv. 29": 29, "Lv. 30": 30, "Lv. 31": 31, "Lv. 32": 32, "Lv. 33": 33, "Lv. 34": 34, "Lv. 35": 35, "Lv. 36": 36, "Lv. 37": 37, "Lv. 38": 38, "Lv. 39": 39, "Lv. 40": 40, "Lv. 41": 41, "Lv. 42": 42, "Lv. 43": 43, "Lv. 44": 44, "Lv. 45": 45, "Lv. 46": 46, "Lv. 47": 47, "Lv. 48": 48, "Lv. 49": 49, "Lv. 50": 50, "Lv. 51": 51, "Lv. 52": 52, "Lv. 53": 53, "Lv. 54": 54, "Lv. 55": 55, "Lv. 56": 56, "Lv. 57": 57, "Lv. 58": 58, "Lv. 59": 59, "Lv. 60": 60, "Lv. 61": 61, "Lv. 62": 62, "Lv. 63": 63, "Lv. 64": 64, "Lv. 65": 65, "Lv. 66": 66, "Lv. 67": 67, "Lv. 68": 68, "Lv. 69": 69, "Lv. 70": 70, "Lv. 71": 71, "Lv. 72": 72, "Lv. 73": 73, "Lv. 74": 74, "Lv. 75": 75, "Lv. 76": 76, "Lv. 77": 77, "Lv. 78": 78, "Lv. 79": 79, "Lv. 80": 80, "Lv. 81": 81, "Lv. 82": 82, "Lv. 83": 83, "Lv. 84": 84, "Lv. 85": 85, "Lv. 86": 86, "Lv. 87": 87, "Lv. 88": 88, "Lv. 89": 89, "Lv. 90": 90, "Lv. 91": 91, "Lv. 92": 92, "Lv. 93": 93, "Lv. 94": 94, "Lv. 95": 95, "Lv. 96": 96, "Lv. 97": 97, "Lv. 98": 98, "Lv. 99": 99, "Lv. 100": 100, "Lv. 101": 101, "Lv. 102": 102, "Lv. 103": 103, "Lv. 104": 104, "Lv. 105": 105, "Lv. 106": 106, "Lv. 107": 107, "Lv. 108": 108, "Lv. 109": 109, "Lv. 110": 110, "Lv. 111": 111, "Lv. 112": 112, "Lv. 113": 113, "Lv. 114": 114, "Lv. 115": 115, "Lv. 116": 116, "Lv. 117": 117, "Lv. 118": 118, "Lv. 119": 119, "Lv. 120": 120, "Lv. 121": 121, "Lv. 122": 122, "Lv. 123": 123, "Lv. 124": 124, "Lv. 125": 125, "Lv. 126": 126, "Lv. 127": 127, "Lv. 128": 128, "Lv. 129": 129, "Lv. 130": 130, "Lv. 131": 131, "Lv. 132": 132, "Lv. 133": 133, "Lv. 134": 134, "Lv. 135": 135, "Lv. 136": 136, "Lv. 137": 137, "Lv. 138": 138, "Lv. 139": 139, "Lv. 140": 140, "Lv. 141": 141, "Lv. 142": 142, "Lv. 143": 143, "Lv. 144": 144, "Lv. 145": 145, "Lv. 146": 146, "Lv. 147": 147, "Lv. 148": 148, "Lv. 149": 149, "Lv. 150": 150 }
+var skillLevelListNoLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10, "SLv. 11": 11, "SLv. 12": 12, "SLv. 13": 13, "SLv. 14": 14, "SLv. 15": 15 }
+var skillLevelListLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10 }
 
 var enemyDefenseType = {
     10.0: {"name": "10.0(一般的な敵)"},
@@ -402,6 +404,8 @@ var select_ktypes = Object.keys(keyTypes).map(function(opt){ return <option valu
 var select_plusnum = Object.keys(plusNumList).map(function(opt){ return <option value={plusNumList[opt]} key={opt}>{opt}</option> });
 var select_levelNoLimit = Object.keys(levelListNoLimit).map(function(opt){ return <option value={levelListNoLimit[opt]} key={opt}>{opt}</option> });
 var select_levelLimit = Object.keys(levelListLimit).map(function(opt){ return <option value={levelListLimit[opt]} key={opt}>{opt}</option> });
+var select_skilllevelNoLimit = Object.keys(skillLevelListNoLimit).map(function(opt){ return <option value={skillLevelListNoLimit[opt]} key={opt}>{opt}</option> });
+var select_skilllevelLimit = Object.keys(skillLevelListLimit).map(function(opt){ return <option value={skillLevelListLimit[opt]} key={opt}>{opt}</option> });
 var select_supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
 var select_enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
 
@@ -3599,9 +3603,9 @@ var RegisteredArm = React.createClass({
             limit: 50,
             tempArm: {},
             openConsiderNumberModal: false,
-            plusNum: "+0",
-            armLv: "Lv. 1",
-            armSLv: "SLv. 1",
+            plusNum: 0,
+            armLv: 1,
+            armSLv: 1,
         };
     },
     closeConsiderNumberModal: function() {
@@ -3626,10 +3630,15 @@ var RegisteredArm = React.createClass({
     },
     clickedTemplate: function(e) {
         this.setState({tempArm: this.state.armData[e.target.getAttribute("id")]});
-        if(this.state.armData[e.target.getAttribute("id")].maxlv == "150") {
+        var arm = this.state.armData[e.target.getAttribute("id")]
+        this.setState({armLv: parseInt(arm.maxlv)})
+        this.setState({armSLv: parseInt(arm.slvmax)})
+        if(arm.maxlv == "150") {
             this.setState({select_level: select_levelNoLimit})
+            this.setState({select_skilllevel: select_skilllevelNoLimit})
         } else {
             this.setState({select_level: select_levelLimit})
+            this.setState({select_skilllevel: select_skilllevelLimit})
         }
         this.setState({openConsiderNumberModal: true})
     },
@@ -3637,8 +3646,10 @@ var RegisteredArm = React.createClass({
         var arm = this.state.tempArm
         arm["plus"] = this.state.plusNum
         arm["lv"] = this.state.armLv
+        arm["slv"] = this.state.armSLv
         this.props.onClick(arm, e.target.value);
         this.setState({openConsiderNumberModal: false})
+        this.setState({plusNum: 0})
     },
     handleEvent: function(key, e) {
         var newState = this.state
@@ -3683,6 +3694,8 @@ var RegisteredArm = React.createClass({
                             <Modal.Title>何本追加しますか？</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
+                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.select_level}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.select_skilllevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{select_plusnum}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
@@ -3747,6 +3760,8 @@ var RegisteredArm = React.createClass({
                             <Modal.Title>何本追加しますか？</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
+                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.select_level}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.select_skilllevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{select_plusnum}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
@@ -3783,7 +3798,6 @@ var RegisteredArm = React.createClass({
                                 </div>
                             </div>
                         </Modal.Body>
-                        {/*<FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.select_level}</FormControl>*/}
                     </Modal>
                 </div>
             )
@@ -3829,19 +3843,35 @@ var Arm = React.createClass({
             var newarm = nextProps.addArm
 
             newState["name"] = newarm.name
-            // if(newarm.lv <= 100) {
-            //     newState["attack"] = newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack)/100) + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus)
-            // } else {
-            //     newState["attack"] = (newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.minattack)/100) + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus)
-            // }
-            newState["attack"] = parseInt(newarm.attack) + 5 * parseInt(newarm.plus)
-            newState["hp"] = parseInt(newarm.hp) + parseInt(newarm.plus)
+
+            // Lv別処理
+            if(newarm.lv == 1) {
+                newState["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus
+                newState["hp"] = parseInt(newarm.minhp) + newarm.plus
+            } else if(newarm.lv <= 100) {
+                if(newarm.maxlv == "100") {
+                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * newarm.plus)
+                    newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + newarm.plus)
+                } else {
+                    // 4凸武器の場合は、Lv100以下の計算にattacklv100を使う
+                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attacklv100) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * newarm.plus)
+                    newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hplv100) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + newarm.plus)
+                }
+            } else {
+                // 4凸がない場合は100までしか入ってこないので例外処理する必要なし
+                newState["attack"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.attacklv100))/50 + parseInt(newarm.attacklv100) + 5 * newarm.plus)
+                newState["hp"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.hp) - parseInt(newarm.hplv100))/50 + parseInt(newarm.hplv100) + newarm.plus)
+            }
+
+            if(newarm.lv != parseInt(newarm.maxlv)) newState["name"] += "Lv." + newarm.lv
+            if(newarm.plus != 0) newState["name"] += "+" + newarm.plus
+
             newState["armType"] = newarm.type
             newState["element"] = newarm.element
             newState["skill1"] = newarm.skill1
             newState["element2"] = newarm.element2
             newState["skill2"] = newarm.skill2
-            newState["slv"] = parseInt(newarm.slvmax)
+            newState["slv"] = newarm.slv
             newState["considerNumberMax"] = parseInt(nextProps.considerNum)
 
             this.setState(newState);
@@ -3864,14 +3894,34 @@ var Arm = React.createClass({
            var newarm = this.props.addArm
 
            state["name"] = newarm.name
-           state["attack"] = parseInt(newarm.attack) + 5 * parseInt(newarm.plus)
-           state["hp"] = parseInt(newarm.hp) + parseInt(newarm.plus)
+
+           // Lv別処理
+           if(newarm.lv == 1) {
+               state["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus
+               state["hp"] = parseInt(newarm.minhp) + newarm.plus
+           } else if(newarm.lv <= 100) {
+               if(newarm.maxlv == "100") {
+                   state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * newarm.plus)
+                   state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + newarm.plus)
+               } else {
+                   // 4凸武器の場合は、Lv100以下の計算にattacklv100を使う
+                   state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attacklv100) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * newarm.plus)
+                   state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hplv100) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + newarm.plus)
+               }
+           } else {
+               // 4凸がない場合は100までしか入ってこないので例外処理する必要なし
+               state["attack"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.attacklv100))/50 + parseInt(newarm.attacklv100) + 5 * newarm.plus)
+               state["hp"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.hp) - parseInt(newarm.hplv100))/50 + parseInt(newarm.hplv100) + newarm.plus)
+           }
+           if(newarm.lv != parseInt(newarm.maxlv)) state["name"] += "Lv." + newarm.lv
+           if(newarm.plus != 0) state["name"] += "+" + newarm.plus
+
            state["armType"] = newarm.type
            state["element"] = newarm.element
            state["skill1"] = newarm.skill1
            state["element2"] = newarm.element2
            state["skill2"] = newarm.skill2
-           state["slv"] = parseInt(newarm.slvmax)
+           state["slv"] = newarm.slv
            state["considerNumberMax"] = parseInt(this.props.considerNum)
 
            this.setState(state);
@@ -4032,10 +4082,6 @@ var Profile = React.createClass({
         if(_ua.Mobile) {
             return (
                 <div className="profile">
-                    <p className="text-danger"> ※8/24の夕方に行ったアップデートの際のミスにより、夕方〜深夜にかけて"特定の状況で全く計算が行われなくなる"というエラーが発生していました。
-                    詳しく説明すると「武器プリセットから武器を追加した際に、武器枠が増えた場合に、追加された武器の最大考慮本数の内部値がおかしくなる」というものです。
-                    その時間帯の間に保存されてしまったデータにも問題があるため、武器の最大考慮本数が正しく計算されない場合があります。
-                    上記不具合を経験した方は、お手数ですが一度武器情報を削除し、再入力していただければと思います。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
@@ -4130,10 +4176,6 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-danger"> ※8/24の夕方に行ったアップデートの際のミスにより、夕方〜深夜にかけて"特定の状況で全く計算が行われなくなる"というエラーが発生していました。
-                    詳しく説明すると「武器プリセットから武器を追加した際に、武器枠が増えた場合に、追加された武器の最大考慮本数の内部値がおかしくなる」というものです。
-                    その時間帯の間に保存されてしまったデータにも問題があるため、武器の最大考慮本数が正しく計算されない場合があります。
-                    上記不具合を経験した方は、お手数ですが一度武器情報を削除し、再入力していただければと思います。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
@@ -4499,6 +4541,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/08/26: 武器追加時にLvとSLvも選べるようにした </li>
                 <li className="list-group-item list-group-item-success">2016/08/26: 新武器の画像を追加 </li>
                 <li className="list-group-item list-group-item-success">2016/08/25: 計算量削減処理を追加 (倍くらい早くなりました) </li>
                 <li className="list-group-item list-group-item-success">2016/08/25: 新武器の情報を武器テンプレートに追加(画像なし) </li>

@@ -195,12 +195,14 @@
         "maxlv": 100
     }, 
     "[吸血剣]ダーインスレイブ": {
+        "hplv100": "216", 
         "element2": "fire", 
         "name": "[吸血剣]ダーインスレイブ", 
         "imageURL": "./imgs/1040000000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
         "element": "fire", 
+        "attacklv100": "2580", 
         "minattack": "445", 
         "attack": "3010", 
         "slvmax": 15, 
@@ -225,12 +227,14 @@
         "maxlv": 100
     }, 
     "[不滅刃]デュランダル": {
+        "hplv100": "218", 
         "element2": "water", 
         "name": "[不滅刃]デュランダル", 
         "imageURL": "./imgs/1040000100.png", 
         "skill2": "normalCriticalM", 
         "skill1": "normalLL", 
         "element": "water", 
+        "attacklv100": "2510", 
         "minattack": "410", 
         "attack": "3035", 
         "slvmax": 15, 
@@ -315,12 +319,14 @@
         "maxlv": 100
     }, 
     "[宝輝剣]ジュワユース": {
+        "hplv100": "218", 
         "element2": "wind", 
         "name": "[宝輝剣]ジュワユース", 
         "imageURL": "./imgs/1040001300.png", 
         "skill2": "normalNiteM", 
         "skill1": "normalLL", 
         "element": "wind", 
+        "attacklv100": "2560", 
         "minattack": "430", 
         "attack": "3090", 
         "slvmax": 15, 
@@ -345,12 +351,14 @@
         "maxlv": 100
     }, 
     "[大賢聖]宝剣アンダリス": {
+        "hplv100": "210", 
         "element2": "earth", 
         "name": "[大賢聖]宝剣アンダリス", 
         "imageURL": "./imgs/1040001400.png", 
         "skill2": "non", 
         "skill1": "normalL", 
         "element": "earth", 
+        "attacklv100": "2430", 
         "minattack": "400", 
         "attack": "2940", 
         "slvmax": 15, 
@@ -419,21 +427,6 @@
         "hp": "220", 
         "maxlv": 100
     }, 
-    "[]エクスカリバー": {
-        "element2": "light", 
-        "name": "[]エクスカリバー", 
-        "imageURL": "./imgs/1040002000.png", 
-        "skill2": "non", 
-        "skill1": "normalL", 
-        "element": "light", 
-        "minattack": "425", 
-        "attack": "2560", 
-        "slvmax": 10, 
-        "minhp": "37", 
-        "type": "sword", 
-        "hp": "220", 
-        "maxlv": 100
-    }, 
     "[魚斬]アルバコアブレード": {
         "element2": "dark", 
         "name": "[魚斬]アルバコアブレード", 
@@ -465,12 +458,14 @@
         "maxlv": 100
     }, 
     "[万創剣]世界樹の晶剣・マグナ": {
+        "hplv100": "196", 
         "element2": "earth", 
         "name": "[万創剣]世界樹の晶剣・マグナ", 
         "imageURL": "./imgs/1040002200.png", 
         "skill2": "non", 
         "skill1": "magnaL", 
         "element": "earth", 
+        "attacklv100": "2270", 
         "minattack": "365", 
         "attack": "2650", 
         "slvmax": 15, 
@@ -495,12 +490,14 @@
         "maxlv": 100
     }, 
     "[青焔]バルムンク": {
+        "hplv100": "171", 
         "element2": "fire", 
         "name": "[青焔]バルムンク", 
         "imageURL": "./imgs/1040002300.png", 
         "skill2": "normalHaisuiS", 
         "skill1": "normalHPL", 
         "element": "fire", 
+        "attacklv100": "2035", 
         "minattack": "335", 
         "attack": "2380", 
         "slvmax": 15, 
@@ -623,11 +620,11 @@
         "element": "dark", 
         "minattack": "415", 
         "attack": "2470", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "30", 
         "type": "sword", 
         "hp": "205", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[炎奏華]ローエングリン": {
         "element2": "fire", 
@@ -855,12 +852,14 @@
         "maxlv": 100
     }, 
     "[崇騎剣]シュヴァリエソード・マグナ": {
+        "hplv100": "195", 
         "element2": "light", 
         "name": "[崇騎剣]シュヴァリエソード・マグナ", 
         "imageURL": "./imgs/1040007200.png", 
         "skill2": "normalS", 
         "skill1": "magnaKamui", 
         "element": "light", 
+        "attacklv100": "2275", 
         "minattack": "370", 
         "attack": "2660", 
         "slvmax": 15, 
@@ -885,12 +884,14 @@
         "maxlv": 100
     }, 
     "[祖龍剣]バハムートソード・フツルス": {
+        "hplv100": "205", 
         "element2": "dark", 
         "name": "[祖龍剣]バハムートソード・フツルス", 
         "imageURL": "./imgs/1040007400.png", 
         "skill2": "non", 
         "skill1": "bahaFUATHP-sword", 
         "element": "dark", 
+        "attacklv100": "2470", 
         "minattack": "415", 
         "attack": "2885", 
         "slvmax": 15, 
@@ -990,12 +991,14 @@
         "maxlv": 100
     }, 
     "[逆鱗鞭]青竜髭刃": {
+        "hplv100": "167", 
         "element2": "wind", 
         "name": "[逆鱗鞭]青竜髭刃", 
         "imageURL": "./imgs/1040008900.png", 
         "skill2": "normalL", 
         "skill1": "non", 
         "element": "wind", 
+        "attacklv100": "1965", 
         "minattack": "320", 
         "attack": "2290", 
         "slvmax": 15, 
@@ -1050,12 +1053,14 @@
         "maxlv": 100
     }, 
     "[激情]ベガルタ": {
+        "hplv100": "212", 
         "element2": "dark", 
         "name": "[激情]ベガルタ", 
         "imageURL": "./imgs/1040100300.png", 
         "skill2": "normalNiteM", 
         "skill1": "normalLL", 
         "element": "dark", 
+        "attacklv100": "2540", 
         "minattack": "425", 
         "attack": "3070", 
         "slvmax": 15, 
@@ -1095,12 +1100,14 @@
         "maxlv": 100
     }, 
     "[魔裂]カルンウェナン": {
+        "hplv100": "240", 
         "element2": "earth", 
         "name": "[魔裂]カルンウェナン", 
         "imageURL": "./imgs/1040101000.png", 
         "skill2": "normalM", 
         "skill1": "normalHPL", 
         "element": "earth", 
+        "attacklv100": "2400", 
         "minattack": "395", 
         "attack": "2900", 
         "slvmax": 15, 
@@ -1170,12 +1177,14 @@
         "maxlv": 100
     }, 
     "[万創刃]世界樹の雫刃・マグナ": {
+        "hplv100": "218", 
         "element2": "earth", 
         "name": "[万創刃]世界樹の雫刃・マグナ", 
         "imageURL": "./imgs/1040101400.png", 
         "skill2": "non", 
         "skill1": "magnaHPL", 
         "element": "earth", 
+        "attacklv100": "2160", 
         "minattack": "345", 
         "attack": "2520", 
         "slvmax": 15, 
@@ -1200,12 +1209,14 @@
         "maxlv": 100
     }, 
     "[海叫刃]レヴィアンゲイズ・マグナ": {
+        "hplv100": "219", 
         "element2": "water", 
         "name": "[海叫刃]レヴィアンゲイズ・マグナ", 
         "imageURL": "./imgs/1040101500.png", 
         "skill2": "non", 
         "skill1": "magnaL", 
         "element": "water", 
+        "attacklv100": "2155", 
         "minattack": "340", 
         "attack": "2520", 
         "slvmax": 15, 
@@ -1230,12 +1241,14 @@
         "maxlv": 100
     }, 
     "[遊獣刃]ヘルウォードダガー": {
+        "hplv100": "189", 
         "element2": "dark", 
         "name": "[遊獣刃]ヘルウォードダガー", 
         "imageURL": "./imgs/1040101600.png", 
         "skill2": "normalNiteS", 
         "skill1": "normalL", 
         "element": "dark", 
+        "attacklv100": "1950", 
         "minattack": "330", 
         "attack": "2275", 
         "slvmax": 15, 
@@ -1373,11 +1386,11 @@
         "element": "dark", 
         "minattack": "395", 
         "attack": "2355", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "34", 
         "type": "dagger", 
         "hp": "229", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[天雲宝]ヘヴンズクラウド": {
         "element2": "light", 
@@ -1485,12 +1498,14 @@
         "maxlv": 100
     }, 
     "[祖龍刃]バハムートダガー・フツルス": {
+        "hplv100": "229", 
         "element2": "dark", 
         "name": "[祖龍刃]バハムートダガー・フツルス", 
         "imageURL": "./imgs/1040106700.png", 
         "skill2": "non", 
         "skill1": "bahaFUATHP-dagger", 
         "element": "dark", 
+        "attacklv100": "2355", 
         "minattack": "395", 
         "attack": "2750", 
         "slvmax": 15, 
@@ -1560,12 +1575,14 @@
         "maxlv": 100
     }, 
     "[烈伐]ピラム": {
+        "hplv100": "249", 
         "element2": "fire", 
         "name": "[烈伐]ピラム", 
         "imageURL": "./imgs/1040200200.png", 
         "skill2": "non", 
         "skill1": "normalL", 
         "element": "fire", 
+        "attacklv100": "2240", 
         "minattack": "380", 
         "attack": "2610", 
         "slvmax": 15, 
@@ -1605,12 +1622,14 @@
         "maxlv": 100
     }, 
     "[仇閃]グラーシーザー": {
+        "hplv100": "255", 
         "element2": "dark", 
         "name": "[仇閃]グラーシーザー", 
         "imageURL": "./imgs/1040200700.png", 
         "skill2": "normalHaisuiM", 
         "skill1": "normalLL", 
         "element": "dark", 
+        "attacklv100": "2325", 
         "minattack": "404", 
         "attack": "2810", 
         "slvmax": 15, 
@@ -1650,12 +1669,14 @@
         "maxlv": 100
     }, 
     "[氷冥槍]ウェルギリウス": {
+        "hplv100": "205", 
         "element2": "water", 
         "name": "[氷冥槍]ウェルギリウス", 
         "imageURL": "./imgs/1040201200.png", 
         "skill2": "normalS", 
         "skill1": "normalHPL", 
         "element": "water", 
+        "attacklv100": "1855", 
         "minattack": "290", 
         "attack": "2170", 
         "slvmax": 15, 
@@ -1695,12 +1716,14 @@
         "maxlv": 100
     }, 
     "[灼業槍]イフリートハルベルト": {
+        "hplv100": "241", 
         "element2": "fire", 
         "name": "[灼業槍]イフリートハルベルト", 
         "imageURL": "./imgs/1040201400.png", 
         "skill2": "normalCriticalS", 
         "skill1": "normalL", 
         "element": "fire", 
+        "attacklv100": "2170", 
         "minattack": "310", 
         "attack": "2170", 
         "slvmax": 15, 
@@ -1725,12 +1748,14 @@
         "maxlv": 100
     }, 
     "[吼嵐槍]ティアマトグレイブ・マグナ": {
+        "hplv100": "233", 
         "element2": "wind", 
         "name": "[吼嵐槍]ティアマトグレイブ・マグナ", 
         "imageURL": "./imgs/1040201500.png", 
         "skill2": "non", 
         "skill1": "magnaHPL", 
         "element": "wind", 
+        "attacklv100": "2085", 
         "minattack": "340", 
         "attack": "2500", 
         "slvmax": 15, 
@@ -1800,12 +1825,14 @@
         "maxlv": 100
     }, 
     "[幽絶槍]セレストホーン・マグナ": {
+        "hplv100": "230", 
         "element2": "wind", 
         "name": "[幽絶槍]セレストホーン・マグナ", 
         "imageURL": "./imgs/1040201900.png", 
         "skill2": "normalHaisuiL", 
         "skill1": "magnaL", 
         "element": "dark", 
+        "attacklv100": "2100", 
         "minattack": "355", 
         "attack": "2450", 
         "slvmax": 15, 
@@ -1898,11 +1925,11 @@
         "element": "dark", 
         "minattack": "380", 
         "attack": "2260", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "37", 
         "type": "spear", 
         "hp": "248", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[蒐索槍]アワリティアスピア": {
         "element2": "earth", 
@@ -1950,12 +1977,14 @@
         "maxlv": 100
     }, 
     "[覇颶]青竜牙矛": {
+        "hplv100": "201", 
         "element2": "wind", 
         "name": "[覇颶]青竜牙矛", 
         "imageURL": "./imgs/1040204000.png", 
         "skill2": "non", 
         "skill1": "normalLL", 
         "element": "wind", 
+        "attacklv100": "1800", 
         "minattack": "295", 
         "attack": "2180", 
         "slvmax": 15, 
@@ -2025,12 +2054,14 @@
         "maxlv": 100
     }, 
     "[海叫槍]レヴィアンスピア・マグナ": {
+        "hplv100": "236", 
         "element2": "none", 
         "name": "[海叫槍]レヴィアンスピア・マグナ", 
         "imageURL": "./imgs/1040205100.png", 
         "skill2": "non", 
         "skill1": "non", 
         "element": "water", 
+        "attacklv100": "2070", 
         "minattack": "325", 
         "attack": "2420", 
         "slvmax": 15, 
@@ -2070,12 +2101,14 @@
         "maxlv": 100
     }, 
     "[祖龍槍]バハムートスピア・フツルス": {
+        "hplv100": "248", 
         "element2": "dark", 
         "name": "[祖龍槍]バハムートスピア・フツルス", 
         "imageURL": "./imgs/1040205400.png", 
         "skill2": "non", 
         "skill1": "bahaFUATHP-spear", 
         "element": "dark", 
+        "attacklv100": "2460", 
         "minattack": "380", 
         "attack": "2640", 
         "slvmax": 15, 
@@ -2145,12 +2178,14 @@
         "maxlv": 100
     }, 
     "[万雷斧]ウコンバサラ": {
+        "hplv100": "186", 
         "element2": "light", 
         "name": "[万雷斧]ウコンバサラ", 
         "imageURL": "./imgs/1040300000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
         "element": "light", 
+        "attacklv100": "2550", 
         "minattack": "425", 
         "attack": "2980", 
         "slvmax": 15, 
@@ -2175,12 +2210,14 @@
         "maxlv": 100
     }, 
     "[狂奔]スラーンド": {
+        "hplv100": "194", 
         "element2": "water", 
         "name": "[狂奔]スラーンド", 
         "imageURL": "./imgs/1040300200.png", 
         "skill2": "normalNiteM", 
         "skill1": "normalLL", 
         "element": "water", 
+        "attacklv100": "2630", 
         "minattack": "430", 
         "attack": "3180", 
         "slvmax": 15, 
@@ -2205,12 +2242,14 @@
         "maxlv": 100
     }, 
     "[断魔]パラシュ": {
+        "hplv100": "196", 
         "element2": "earth", 
         "name": "[断魔]パラシュ", 
         "imageURL": "./imgs/1040300400.png", 
         "skill2": "normalM", 
         "skill1": "normalHPL", 
         "element": "earth", 
+        "attacklv100": "2680", 
         "minattack": "440", 
         "attack": "3240", 
         "slvmax": 15, 
@@ -2250,12 +2289,14 @@
         "maxlv": 100
     }, 
     "[矜持の証]閃刃の剣斧": {
+        "hplv100": "190", 
         "element2": "wind", 
         "name": "[矜持の証]閃刃の剣斧", 
         "imageURL": "./imgs/1040300600.png", 
         "skill2": "non", 
         "skill1": "normalHPL", 
         "element": "wind", 
+        "attacklv100": "2640", 
         "minattack": "440", 
         "attack": "2640", 
         "slvmax": 15, 
@@ -2280,12 +2321,14 @@
         "maxlv": 100
     }, 
     "[緋絢]緋紋の絢斧": {
+        "hplv100": "190", 
         "element2": "fire", 
         "name": "[緋絢]緋紋の絢斧", 
         "imageURL": "./imgs/1040300700.png", 
         "skill2": "non", 
         "skill1": "normalL", 
         "element": "fire", 
+        "attacklv100": "2650", 
         "minattack": "450", 
         "attack": "2650", 
         "slvmax": 15, 
@@ -2325,12 +2368,14 @@
         "maxlv": 100
     }, 
     "[吼嵐斧]ティアマトアムード・マグナ": {
+        "hplv100": "172", 
         "element2": "wind", 
         "name": "[吼嵐斧]ティアマトアムード・マグナ", 
         "imageURL": "./imgs/1040300900.png", 
         "skill2": "non", 
         "skill1": "magnaHPL", 
         "element": "wind", 
+        "attacklv100": "2390", 
         "minattack": "390", 
         "attack": "2870", 
         "slvmax": 15, 
@@ -2370,12 +2415,14 @@
         "maxlv": 100
     }, 
     "[崇騎斧]シュヴァリエブージ・マグナ": {
+        "hplv100": "173", 
         "element2": "water", 
         "name": "[崇騎斧]シュヴァリエブージ・マグナ", 
         "imageURL": "./imgs/1040301100.png", 
         "skill2": "normalL", 
         "skill1": "magnaHPL", 
         "element": "light", 
+        "attacklv100": "2385", 
         "minattack": "385", 
         "attack": "2790", 
         "slvmax": 15, 
@@ -2430,12 +2477,14 @@
         "maxlv": 100
     }, 
     "[幽絶斧]セレストザグナル・マグナ": {
+        "hplv100": "169", 
         "element2": "dark", 
         "name": "[幽絶斧]セレストザグナル・マグナ", 
         "imageURL": "./imgs/1040301400.png", 
         "skill2": "non", 
         "skill1": "magnaL", 
         "element": "dark", 
+        "attacklv100": "2405", 
         "minattack": "405", 
         "attack": "2810", 
         "slvmax": 15, 
@@ -2460,12 +2509,14 @@
         "maxlv": 100
     }, 
     "[暴狼斧]グレイプニル": {
+        "hplv100": "156", 
         "element2": "water", 
         "name": "[暴狼斧]グレイプニル", 
         "imageURL": "./imgs/1040301500.png", 
         "skill2": "normalS", 
         "skill1": "normalNiteL", 
         "element": "water", 
+        "attacklv100": "2110", 
         "minattack": "330", 
         "attack": "2465", 
         "slvmax": 15, 
@@ -2513,11 +2564,11 @@
         "element": "dark", 
         "minattack": "435", 
         "attack": "2585", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "26", 
         "type": "axe", 
         "hp": "183", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[怪桃斧]アンノウンスタンプ": {
         "element2": "none", 
@@ -2565,12 +2616,14 @@
         "maxlv": 100
     }, 
     "[堅流]玄武甲槌": {
+        "hplv100": "151", 
         "element2": "water", 
         "name": "[堅流]玄武甲槌", 
         "imageURL": "./imgs/1040303300.png", 
         "skill2": "non", 
         "skill1": "normalLL", 
         "element": "water", 
+        "attacklv100": "2045", 
         "minattack": "320", 
         "attack": "2480", 
         "slvmax": 15, 
@@ -2610,12 +2663,14 @@
         "maxlv": 100
     }, 
     "[祖龍斧]バハムートアクス・フツルス": {
+        "hplv100": "183", 
         "element2": "dark", 
         "name": "[祖龍斧]バハムートアクス・フツルス", 
         "imageURL": "./imgs/1040304300.png", 
         "skill2": "non", 
         "skill1": "bahaFUATHP-axe", 
         "element": "dark", 
+        "attacklv100": "2585", 
         "minattack": "435", 
         "attack": "3015", 
         "slvmax": 15, 
@@ -2715,12 +2770,14 @@
         "maxlv": 100
     }, 
     "[遊翼]ケーリュケイオン": {
+        "hplv100": "277", 
         "element2": "wind", 
         "name": "[遊翼]ケーリュケイオン", 
         "imageURL": "./imgs/1040400200.png", 
         "skill2": "non", 
         "skill1": "normalL", 
         "element": "wind", 
+        "attacklv100": "2095", 
         "minattack": "350", 
         "attack": "2530", 
         "slvmax": 15, 
@@ -2745,12 +2802,14 @@
         "maxlv": 100
     }, 
     "[極癒]アスクレピオスの杖": {
+        "hplv100": "288", 
         "element2": "none", 
         "name": "[極癒]アスクレピオスの杖", 
         "imageURL": "./imgs/1040400300.png", 
         "skill2": "non", 
         "skill1": "non", 
         "element": "light", 
+        "attacklv100": "2160", 
         "minattack": "365", 
         "attack": "2610", 
         "slvmax": 15, 
@@ -2790,12 +2849,14 @@
         "maxlv": 100
     }, 
     "[春呼杖]氷晶杖": {
+        "hplv100": "280", 
         "element2": "none", 
         "name": "[春呼杖]氷晶杖", 
         "imageURL": "./imgs/1040400900.png", 
         "skill2": "non", 
         "skill1": "non", 
         "element": "water", 
+        "attacklv100": "2080", 
         "minattack": "340", 
         "attack": "2080", 
         "slvmax": 15, 
@@ -2880,12 +2941,14 @@
         "maxlv": 100
     }, 
     "[海叫杖]レヴィアンセプター・マグナ": {
+        "hplv100": "262", 
         "element2": "none", 
         "name": "[海叫杖]レヴィアンセプター・マグナ", 
         "imageURL": "./imgs/1040401400.png", 
         "skill2": "non", 
         "skill1": "non", 
         "element": "water", 
+        "attacklv100": "1940", 
         "minattack": "305", 
         "attack": "2270", 
         "slvmax": 15, 
@@ -2910,12 +2973,14 @@
         "maxlv": 100
     }, 
     "[烈殻杖]コロッサスケーン・マグナ": {
+        "hplv100": "258", 
         "element2": "fire", 
         "name": "[烈殻杖]コロッサスケーン・マグナ", 
         "imageURL": "./imgs/1040401500.png", 
         "skill2": "non", 
         "skill1": "magnaL", 
         "element": "fire", 
+        "attacklv100": "1960", 
         "minattack": "325", 
         "attack": "2290", 
         "slvmax": 15, 
@@ -3068,11 +3133,11 @@
         "element": "dark", 
         "minattack": "360", 
         "attack": "2120", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "41", 
         "type": "wand", 
         "hp": "276", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[不叶夢]カーラウロプス": {
         "element2": "earth", 
@@ -3195,12 +3260,14 @@
         "maxlv": 100
     }, 
     "[万創杖]世界樹の雫枝・マグナ": {
+        "hplv100": "261", 
         "element2": "earth", 
         "name": "[万創杖]世界樹の雫枝・マグナ", 
         "imageURL": "./imgs/1040405900.png", 
         "skill2": "magnaHPM", 
         "skill1": "magnaM", 
         "element": "earth", 
+        "attacklv100": "1945", 
         "minattack": "310", 
         "attack": "2270", 
         "slvmax": 15, 
@@ -3240,12 +3307,14 @@
         "maxlv": 100
     }, 
     "[祖龍杖]バハムートスタッフ・フツルス": {
+        "hplv100": "276", 
         "element2": "dark", 
         "name": "[祖龍杖]バハムートスタッフ・フツルス", 
         "imageURL": "./imgs/1040407000.png", 
         "skill2": "non", 
         "skill1": "bahaFUATHP-wand", 
         "element": "dark", 
+        "attacklv100": "2120", 
         "minattack": "360", 
         "attack": "2475", 
         "slvmax": 15, 
@@ -3360,12 +3429,14 @@
         "maxlv": 100
     }, 
     "[猛咬喰]白虎牙杖": {
+        "hplv100": "225", 
         "element2": "earth", 
         "name": "[猛咬喰]白虎牙杖", 
         "imageURL": "./imgs/1040408600.png", 
         "skill2": "normalL", 
         "skill1": "non", 
         "element": "earth", 
+        "attacklv100": "1675", 
         "minattack": "265", 
         "attack": "1960", 
         "slvmax": 15, 
@@ -3390,12 +3461,14 @@
         "maxlv": 100
     }, 
     "[鋼吼]ガストラフェテス": {
+        "hplv100": "187", 
         "element2": "earth", 
         "name": "[鋼吼]ガストラフェテス", 
         "imageURL": "./imgs/1040500000.png", 
         "skill2": "non", 
         "skill1": "normalLL", 
         "element": "earth", 
+        "attacklv100": "2785", 
         "minattack": "460", 
         "attack": "3370", 
         "slvmax": 15, 
@@ -3420,12 +3493,14 @@
         "maxlv": 100
     }, 
     "[狂麗砲]グラッドアイ": {
+        "hplv100": "180", 
         "element2": "fire", 
         "name": "[狂麗砲]グラッドアイ", 
         "imageURL": "./imgs/1040500200.png", 
         "skill2": "normalNiteM", 
         "skill1": "normalLL", 
         "element": "fire", 
+        "attacklv100": "2700", 
         "minattack": "460", 
         "attack": "3260", 
         "slvmax": 15, 
@@ -3450,12 +3525,14 @@
         "maxlv": 100
     }, 
     "[裁考筒]裁きの鳴雷": {
+        "hplv100": "145", 
         "element2": "earth", 
         "name": "[裁考筒]裁きの鳴雷", 
         "imageURL": "./imgs/1040500300.png", 
         "skill2": "normalHPS", 
         "skill1": "normalL", 
         "element": "earth", 
+        "attacklv100": "2165", 
         "minattack": "345", 
         "attack": "2530", 
         "slvmax": 15, 
@@ -3495,12 +3572,14 @@
         "maxlv": 100
     }, 
     "[烈殻銃]コロッサスカービン・マグナ": {
+        "hplv100": "160", 
         "element2": "fire", 
         "name": "[烈殻銃]コロッサスカービン・マグナ", 
         "imageURL": "./imgs/1040500500.png", 
         "skill2": "non", 
         "skill1": "magnaHPL", 
         "element": "fire", 
+        "attacklv100": "2450", 
         "minattack": "405", 
         "attack": "2860", 
         "slvmax": 15, 
@@ -3525,12 +3604,14 @@
         "maxlv": 100
     }, 
     "[崇騎銃]シュヴァリエボルト・マグナ": {
+        "hplv100": "162", 
         "element2": "earth", 
         "name": "[崇騎銃]シュヴァリエボルト・マグナ", 
         "imageURL": "./imgs/1040500600.png", 
         "skill2": "normalHPL", 
         "skill1": "magnaL", 
         "element": "light", 
+        "attacklv100": "2440", 
         "minattack": "395", 
         "attack": "2850", 
         "slvmax": 15, 
@@ -3608,11 +3689,11 @@
         "element": "dark", 
         "minattack": "445", 
         "attack": "2645", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "24", 
         "type": "gun", 
         "hp": "171", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[撒旋流]ヴリスラグナ": {
         "element2": "light", 
@@ -3660,12 +3741,14 @@
         "maxlv": 100
     }, 
     "[吼嵐銃]ティアマトボルト・マグナ": {
+        "hplv100": "161", 
         "element2": "wind", 
         "name": "[吼嵐銃]ティアマトボルト・マグナ", 
         "imageURL": "./imgs/1040502600.png", 
         "skill2": "magnaHaisuiM", 
         "skill1": "magnaM", 
         "element": "wind", 
+        "attacklv100": "2445", 
         "minattack": "400", 
         "attack": "2930", 
         "slvmax": 15, 
@@ -3720,12 +3803,14 @@
         "maxlv": 100
     }, 
     "[祖龍銃]バハムートマズル・フツルス": {
+        "hplv100": "171", 
         "element2": "dark", 
         "name": "[祖龍銃]バハムートマズル・フツルス", 
         "imageURL": "./imgs/1040504500.png", 
         "skill2": "non", 
         "skill1": "bahaFUATHP-gun", 
         "element": "dark", 
+        "attacklv100": "2645", 
         "minattack": "445", 
         "attack": "3085", 
         "slvmax": 15, 
@@ -3794,20 +3879,37 @@
         "hp": "191", 
         "maxlv": 100
     }, 
-    "[]ケルベロス・オーダー": {
+    "ケルベロス・オーダー": {
         "element2": "dark", 
-        "name": "[]ケルベロス・オーダー", 
+        "name": "ケルベロス・オーダー", 
         "imageURL": "./imgs/1040506000.png", 
         "skill2": "normalHaisuiS", 
         "skill1": "normalSanteL", 
         "element": "dark", 
         "minattack": "375", 
-        "attack": "2585", 
+        "attack": "2215", 
         "slvmax": 10, 
         "minhp": "20", 
         "type": "gun", 
-        "hp": "167", 
+        "hp": "142", 
         "maxlv": 100
+    }, 
+    "[遊獣笛]ケルベロス・オーダー": {
+        "hplv100": "142", 
+        "element2": "dark", 
+        "name": "[遊獣笛]ケルベロス・オーダー", 
+        "imageURL": "./imgs/1040506000.png", 
+        "skill2": "normalHaisuiS", 
+        "skill1": "normalSanteL", 
+        "element": "dark", 
+        "attacklv100": "2215", 
+        "minattack": "375", 
+        "attack": "2585", 
+        "slvmax": 15, 
+        "minhp": "20", 
+        "type": "gun", 
+        "hp": "167", 
+        "maxlv": 150
     }, 
     "獅子王戦拳": {
         "element2": "light", 
@@ -3825,12 +3927,14 @@
         "maxlv": 100
     }, 
     "[闘頂]獅子王戦拳": {
+        "hplv100": "250", 
         "element2": "light", 
         "name": "[闘頂]獅子王戦拳", 
         "imageURL": "./imgs/1040600000.png", 
         "skill2": "non", 
         "skill1": "normalLL", 
         "element": "light", 
+        "attacklv100": "2350", 
         "minattack": "390", 
         "attack": "2840", 
         "slvmax": 15, 
@@ -3855,12 +3959,14 @@
         "maxlv": 100
     }, 
     "[溶魔爪]クリムゾンフィンガー": {
+        "hplv100": "248", 
         "element2": "fire", 
         "name": "[溶魔爪]クリムゾンフィンガー", 
         "imageURL": "./imgs/1040600200.png", 
         "skill2": "normalHaisuiM", 
         "skill1": "normalLL", 
         "element": "fire", 
+        "attacklv100": "2360", 
         "minattack": "400", 
         "attack": "2850", 
         "slvmax": 15, 
@@ -3900,12 +4006,14 @@
         "maxlv": 100
     }, 
     "[吼嵐拳]ティアマトガントレ・マグナ": {
+        "hplv100": "224", 
         "element2": "wind", 
         "name": "[吼嵐拳]ティアマトガントレ・マグナ", 
         "imageURL": "./imgs/1040600500.png", 
         "skill2": "non", 
         "skill1": "magnaL", 
         "element": "wind", 
+        "attacklv100": "2130", 
         "minattack": "350", 
         "attack": "2560", 
         "slvmax": 15, 
@@ -3945,12 +4053,14 @@
         "maxlv": 100
     }, 
     "[烈殻拳]コロッサスフィスト・マグナ": {
+        "hplv100": "223", 
         "element2": "none", 
         "name": "[烈殻拳]コロッサスフィスト・マグナ", 
         "imageURL": "./imgs/1040600700.png", 
         "skill2": "non", 
         "skill1": "non", 
         "element": "fire", 
+        "attacklv100": "2135", 
         "minattack": "355", 
         "attack": "2490", 
         "slvmax": 15, 
@@ -3990,12 +4100,14 @@
         "maxlv": 100
     }, 
     "[天煽]紅陽扇": {
+        "hplv100": "200", 
         "element2": "light", 
         "name": "[天煽]紅陽扇", 
         "imageURL": "./imgs/1040600900.png", 
         "skill2": "normalS", 
         "skill1": "normalHPL", 
         "element": "light", 
+        "attacklv100": "1890", 
         "minattack": "305", 
         "attack": "2210", 
         "slvmax": 15, 
@@ -4043,11 +4155,11 @@
         "element": "dark", 
         "minattack": "390", 
         "attack": "2305", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "35", 
         "type": "fist", 
         "hp": "239", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[雅氷嵐]緋舞扇": {
         "element2": "fire", 
@@ -4140,12 +4252,14 @@
         "maxlv": 100
     }, 
     "[猛崩]白虎咆拳": {
+        "hplv100": "195", 
         "element2": "earth", 
         "name": "[猛崩]白虎咆拳", 
         "imageURL": "./imgs/1040603000.png", 
         "skill2": "non", 
         "skill1": "normalLL", 
         "element": "earth", 
+        "attacklv100": "1825", 
         "minattack": "290", 
         "attack": "2210", 
         "slvmax": 15, 
@@ -4230,12 +4344,14 @@
         "maxlv": 100
     }, 
     "[幽絶拳]セレストクロー・マグナ": {
+        "hplv100": "221", 
         "element2": "dark", 
         "name": "[幽絶拳]セレストクロー・マグナ", 
         "imageURL": "./imgs/1040604300.png", 
         "skill2": "magnaHaisuiM", 
         "skill1": "magnaM", 
         "element": "dark", 
+        "attacklv100": "2145", 
         "minattack": "365", 
         "attack": "2500", 
         "slvmax": 15, 
@@ -4253,11 +4369,11 @@
         "element": "dark", 
         "minattack": "390", 
         "attack": "2690", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "35", 
         "type": "fist", 
         "hp": "280", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[]ガントレット・オブ・コスモス": {
         "element2": "light", 
@@ -4335,12 +4451,14 @@
         "maxlv": 100
     }, 
     "[剛羅甲]玄武殻拳": {
+        "hplv100": "196", 
         "element2": "water", 
         "name": "[剛羅甲]玄武殻拳", 
         "imageURL": "./imgs/1040605800.png", 
         "skill2": "normalL", 
         "skill1": "non", 
         "element": "water", 
+        "attacklv100": "1820", 
         "minattack": "285", 
         "attack": "2130", 
         "slvmax": 15, 
@@ -4380,12 +4498,14 @@
         "maxlv": 100
     }, 
     "[黄金宝弓]エウリュトスボウ": {
+        "hplv100": "227", 
         "element2": "fire", 
         "name": "[黄金宝弓]エウリュトスボウ", 
         "imageURL": "./imgs/1040700000.png", 
         "skill2": "normalNiteM", 
         "skill1": "normalLL", 
         "element": "fire", 
+        "attacklv100": "2520", 
         "minattack": "430", 
         "attack": "3040", 
         "slvmax": 15, 
@@ -4410,12 +4530,14 @@
         "maxlv": 100
     }, 
     "[智天閃]シェキナーの弓": {
+        "hplv100": "228", 
         "element2": "wind", 
         "name": "[智天閃]シェキナーの弓", 
         "imageURL": "./imgs/1040700100.png", 
         "skill2": "non", 
         "skill1": "normalLL", 
         "element": "wind", 
+        "attacklv100": "2515", 
         "minattack": "425", 
         "attack": "3040", 
         "slvmax": 15, 
@@ -4440,12 +4562,14 @@
         "maxlv": 100
     }, 
     "[恵空]虹の弓": {
+        "hplv100": "231", 
         "element2": "water", 
         "name": "[恵空]虹の弓", 
         "imageURL": "./imgs/1040700200.png", 
         "skill2": "normalM", 
         "skill1": "normalHPL", 
         "element": "water", 
+        "attacklv100": "2500", 
         "minattack": "410", 
         "attack": "3020", 
         "slvmax": 15, 
@@ -4470,12 +4594,14 @@
         "maxlv": 100
     }, 
     "[必閃]アッキヌフォート": {
+        "hplv100": "230", 
         "element2": "earth", 
         "name": "[必閃]アッキヌフォート", 
         "imageURL": "./imgs/1040700300.png", 
         "skill2": "normalCriticalM", 
         "skill1": "normalLL", 
         "element": "earth", 
+        "attacklv100": "2505", 
         "minattack": "415", 
         "attack": "3030", 
         "slvmax": 15, 
@@ -4530,12 +4656,14 @@
         "maxlv": 100
     }, 
     "[万創弓]世界樹の蔦弓・マグナ": {
+        "hplv100": "208", 
         "element2": "earth", 
         "name": "[万創弓]世界樹の蔦弓・マグナ", 
         "imageURL": "./imgs/1040700600.png", 
         "skill2": "non", 
         "skill1": "magnaHaisuiL", 
         "element": "earth", 
+        "attacklv100": "2260", 
         "minattack": "360", 
         "attack": "2640", 
         "slvmax": 15, 
@@ -4560,12 +4688,14 @@
         "maxlv": 100
     }, 
     "[海叫弓]レヴィアンボウ・マグナ": {
+        "hplv100": "209", 
         "element2": "water", 
         "name": "[海叫弓]レヴィアンボウ・マグナ", 
         "imageURL": "./imgs/1040700700.png", 
         "skill2": "non", 
         "skill1": "magnaHPL", 
         "element": "water", 
+        "attacklv100": "2255", 
         "minattack": "355", 
         "attack": "2640", 
         "slvmax": 15, 
@@ -4590,12 +4720,14 @@
         "maxlv": 100
     }, 
     "[邪絶弓]ディアボロスボウ": {
+        "hplv100": "186", 
         "element2": "dark", 
         "name": "[邪絶弓]ディアボロスボウ", 
         "imageURL": "./imgs/1040700800.png", 
         "skill2": "normalS", 
         "skill1": "normalHPL", 
         "element": "dark", 
+        "attacklv100": "2100", 
         "minattack": "355", 
         "attack": "2450", 
         "slvmax": 15, 
@@ -4620,12 +4752,14 @@
         "maxlv": 100
     }, 
     "[星鎧弓]サジタリウスボウ": {
+        "hplv100": "183", 
         "element2": "wind", 
         "name": "[星鎧弓]サジタリウスボウ", 
         "imageURL": "./imgs/1040700900.png", 
         "skill2": "normalS", 
         "skill1": "normalHPL", 
         "element": "wind", 
+        "attacklv100": "2020", 
         "minattack": "330", 
         "attack": "2358", 
         "slvmax": 15, 
@@ -4673,11 +4807,11 @@
         "element": "dark", 
         "minattack": "415", 
         "attack": "2460", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "32", 
         "type": "bow", 
         "hp": "219", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[英雄弓]ヒロイックボウ": {
         "element2": "wind", 
@@ -4748,11 +4882,11 @@
         "element": "dark", 
         "minattack": "415", 
         "attack": "2870", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "32", 
         "type": "bow", 
         "hp": "256", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[律導弓]アロー・オブ・コスモス": {
         "element2": "light", 
@@ -4784,13 +4918,30 @@
         "hp": "188", 
         "maxlv": 100
     }, 
-    "[]フィンブル": {
+    "フィンブル": {
         "element2": "water", 
-        "name": "[]フィンブル", 
+        "name": "フィンブル", 
         "imageURL": "./imgs/1040705000.png", 
         "skill2": "normalHPS", 
         "skill1": "normalKonshinL", 
         "element": "water", 
+        "minattack": "320", 
+        "attack": "2370", 
+        "slvmax": 10, 
+        "minhp": "32", 
+        "type": "bow", 
+        "hp": "220", 
+        "maxlv": 100
+    }, 
+    "[凍久弓]フィンブル": {
+        "hplv100": "220", 
+        "element2": "water", 
+        "name": "[凍久弓]フィンブル", 
+        "imageURL": "./imgs/1040705000.png", 
+        "skill2": "normalHPS", 
+        "skill1": "normalKonshinL", 
+        "element": "water", 
+        "attacklv100": "2370", 
         "minattack": "320", 
         "attack": "2370", 
         "slvmax": 15, 
@@ -4815,12 +4966,14 @@
         "maxlv": 100
     }, 
     "[崇騎琴]シュヴァリエハープ・マグナ": {
+        "hplv100": "218", 
         "element2": "fire", 
         "name": "[崇騎琴]シュヴァリエハープ・マグナ", 
         "imageURL": "./imgs/1040800000.png", 
         "skill2": "normalHPL", 
         "skill1": "magnaL", 
         "element": "light", 
+        "attacklv100": "2005", 
         "minattack": "325", 
         "attack": "2340", 
         "slvmax": 15, 
@@ -4845,12 +4998,14 @@
         "maxlv": 100
     }, 
     "[幽絶琴]セレストハープ・マグナ": {
+        "hplv100": "214", 
         "element2": "fire", 
         "name": "[幽絶琴]セレストハープ・マグナ", 
         "imageURL": "./imgs/1040800100.png", 
         "skill2": "normalCriticalL", 
         "skill1": "magnaHPL", 
         "element": "dark", 
+        "attacklv100": "2025", 
         "minattack": "345", 
         "attack": "2360", 
         "slvmax": 15, 
@@ -4958,11 +5113,11 @@
         "element": "dark", 
         "minattack": "370", 
         "attack": "2180", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "63", 
         "type": "music", 
         "hp": "231", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[真理焔]メビウス": {
         "element2": "earth", 
@@ -5108,11 +5263,11 @@
         "element": "dark", 
         "minattack": "370", 
         "attack": "2545", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "63", 
         "type": "music", 
         "hp": "264", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[律導琴]ハープ・オブ・コスモス": {
         "element2": "light", 
@@ -5160,12 +5315,14 @@
         "maxlv": 100
     }, 
     "[凰哭琴]朱雀翼弦": {
+        "hplv100": "186", 
         "element2": "fire", 
         "name": "[凰哭琴]朱雀翼弦", 
         "imageURL": "./imgs/1040805100.png", 
         "skill2": "normalL", 
         "skill1": "gurenJuin", 
         "element": "fire", 
+        "attacklv100": "1740", 
         "minattack": "290", 
         "attack": "2020", 
         "slvmax": 15, 
@@ -5190,12 +5347,14 @@
         "maxlv": 100
     }, 
     "[羅鬼]阿修羅": {
+        "hplv100": "186", 
         "element2": "water", 
         "name": "[羅鬼]阿修羅", 
         "imageURL": "./imgs/1040900000.png", 
         "skill2": "normalLL", 
         "skill1": "normalLL", 
         "element": "fire", 
+        "attacklv100": "2675", 
         "minattack": "455", 
         "attack": "3230", 
         "slvmax": 15, 
@@ -5235,12 +5394,14 @@
         "maxlv": 100
     }, 
     "[邪滅]鬼丸国綱": {
+        "hplv100": "190", 
         "element2": "water", 
         "name": "[邪滅]鬼丸国綱", 
         "imageURL": "./imgs/1040900200.png", 
         "skill2": "normalHPM", 
         "skill1": "normalLL", 
         "element": "water", 
+        "attacklv100": "2655", 
         "minattack": "435", 
         "attack": "3210", 
         "slvmax": 15, 
@@ -5318,11 +5479,11 @@
         "element": "dark", 
         "minattack": "440", 
         "attack": "2620", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "26", 
         "type": "katana", 
         "hp": "179", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "薄緑": {
         "element2": "wind", 
@@ -5340,12 +5501,14 @@
         "maxlv": 100
     }, 
     "[桜閃]薄緑": {
+        "hplv100": "187", 
         "element2": "wind", 
         "name": "[桜閃]薄緑", 
         "imageURL": "./imgs/1040902000.png", 
         "skill2": "normalHPM", 
         "skill1": "normalLL", 
         "element": "wind", 
+        "attacklv100": "2680", 
         "minattack": "450", 
         "attack": "3240", 
         "slvmax": 15, 
@@ -5430,12 +5593,14 @@
         "maxlv": 100
     }, 
     "[永炎]朱雀光剣": {
+        "hplv100": "145", 
         "element2": "fire", 
         "name": "[永炎]朱雀光剣", 
         "imageURL": "./imgs/1040902500.png", 
         "skill2": "non", 
         "skill1": "normalLL", 
         "element": "fire", 
+        "attacklv100": "2090", 
         "minattack": "345", 
         "attack": "2530", 
         "slvmax": 15, 
@@ -5475,12 +5640,14 @@
         "maxlv": 100
     }, 
     "[烈殻刀]コロッサスブレード・マグナ": {
+        "hplv100": "168", 
         "element2": "fire", 
         "name": "[烈殻刀]コロッサスブレード・マグナ", 
         "imageURL": "./imgs/1040902700.png", 
         "skill2": "non", 
         "skill1": "magnaHaisuiL", 
         "element": "fire", 
+        "attacklv100": "2425", 
         "minattack": "400", 
         "attack": "2830", 
         "slvmax": 15, 
@@ -5513,11 +5680,11 @@
         "element": "dark", 
         "minattack": "440", 
         "attack": "3060", 
-        "slvmax": 15, 
+        "slvmax": 10, 
         "minhp": "26", 
         "type": "katana", 
         "hp": "209", 
-        "maxlv": 150
+        "maxlv": 100
     }, 
     "[律導刀]ブレイド・オブ・コスモス": {
         "element2": "light", 
