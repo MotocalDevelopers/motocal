@@ -50266,7 +50266,7 @@ var ResultList = React.createClass({displayName: "ResultList",
 
                         return(
                             React.createElement("div", {key: summonindex, className: "result"}, 
-                                React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " (", res.sortkeyname, ")"), 
+                                React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " [優先項目: ", res.sortkeyname, "]"), 
                                 React.createElement("div", {className: "charainfo"}, React.createElement("span", null, remainHPstr)), 
                                 React.createElement("table", {className: "table table-bordered"}, 
                                 React.createElement("thead", {className: "result"}, 
@@ -50393,7 +50393,7 @@ var ResultList = React.createClass({displayName: "ResultList",
 
                         return(
                             React.createElement("div", {key: summonindex, className: "result"}, 
-                                React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " (", res.sortkeyname, ")"), 
+                                React.createElement("h2", null, " 結果", summonindex + 1, ": ", selfSummonHeader, " + ", friendSummonHeader, " [優先項目: ", res.sortkeyname, "]"), 
                                 React.createElement("div", {className: "charainfo"}, React.createElement("span", null, remainHPstr)), 
                                 React.createElement("table", {className: "table table-bordered"}, 
                                 React.createElement("thead", {className: "result"}, 

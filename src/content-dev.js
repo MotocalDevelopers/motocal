@@ -2918,7 +2918,7 @@ var ResultList = React.createClass({
 
                         return(
                             <div key={summonindex} className="result">
-                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} ({res.sortkeyname})</h2>
+                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {res.sortkeyname}]</h2>
                                 <div className="charainfo"><span>{remainHPstr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
@@ -3045,7 +3045,7 @@ var ResultList = React.createClass({
 
                         return(
                             <div key={summonindex} className="result">
-                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} ({res.sortkeyname})</h2>
+                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {res.sortkeyname}]</h2>
                                 <div className="charainfo"><span>{remainHPstr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
