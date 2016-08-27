@@ -484,7 +484,14 @@ var Root = React.createClass({
           rootleftWidth: initial_width,
           rootrightHeight: initial_height,
           rootrightWidth: initial_width,
+          openHowTo: false,
       };
+  },
+  openHowTo: function(e) {
+      this.setState({openHowTo: true})
+  },
+  closeHowTo: function(e) {
+      this.setState({openHowTo: false})
   },
   onTouchStart: function(e) {
       //スワイプ開始時の横方向の座標を格納
@@ -781,7 +788,15 @@ var Root = React.createClass({
     if(_ua.Mobile) {
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
-                <h2>元カレ計算機 (グラブル攻撃力計算機) </h2>
+                <h2>元カレ計算機 (グラブル攻撃力計算機) <Button bsStyle="info" onClick={this.openHowTo} > 使い方 </Button> </h2>
+                <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>元カレ計算機について</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <HowTo />
+                    </Modal.Body>
+                </Modal>
                 <div className="tabrow">
                     <button id="inputTab" className="selected" onClick={this.changeTab}>ジータ</button>
                     <button id="summonTab" onClick={this.changeTab} >召喚石</button>
@@ -827,14 +842,22 @@ var Root = React.createClass({
                     </div>
                 </div>
                 <div className="Tab hidden" id="howToTab">
-                    <HowTo />
+                    <NiteHowTo />
                 </div>
             </div>
         );
     } else if(_ua.Tablet) {
         return (
             <div className="root">
-                <h2>元カレ計算機 (グラブル攻撃力計算機) </h2>
+                <h2>元カレ計算機 (グラブル攻撃力計算機) <Button bsStyle="info" onClick={this.openHowTo} > 使い方 </Button></h2>
+                <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>元カレ計算機について</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <HowTo />
+                    </Modal.Body>
+                </Modal>
                 <div className="tabrow">
                     <button id="inputTab" className="selected" onClick={this.changeTab}>ジータ</button>
                     <button id="summonTab" onClick={this.changeTab} >召喚石</button>
@@ -880,7 +903,7 @@ var Root = React.createClass({
                     </div>
                 </div>
                 <div className="Tab hidden" id="howToTab">
-                    <HowTo />
+                    <NiteHowTo />
                 </div>
             </div>
         );
@@ -888,7 +911,15 @@ var Root = React.createClass({
         return (
             <div className="root">
                 <div className="rootleft" id="rootleft2" style={{height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}>
-                    <h1>元カレ計算機 (グラブル攻撃力計算機) </h1>
+                    <h1>元カレ計算機 (グラブル攻撃力計算機) <Button bsStyle="info" onClick={this.openHowTo} > 使い方 </Button> </h1>
+                    <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>元カレ計算機について</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <HowTo />
+                        </Modal.Body>
+                    </Modal>
                     <div className="tabrow">
                         <button id="inputTab" className="selected" onClick={this.changeTabPC}>入力 / Input</button>
                         <button id="summonTab" onClick={this.changeTabPC} >召喚石 / Summon </button>
@@ -927,10 +958,10 @@ var Root = React.createClass({
                         <Notice />
                     </div>
                     <div className="Tab hidden" id="howToTab">
-                        <HowTo />
+                        <NiteHowTo />
                     </div>
                 </div>
-                <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
+                <div draggable="true" className="drag-hr bg-danger" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
                     優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {select_ktypes} </FormControl>
                     <ResultList data={this.state} />
@@ -939,6 +970,79 @@ var Root = React.createClass({
         );
     }
   }
+});
+
+var HowTo = React.createClass({
+    render: function(){
+        return (
+            <div className="howTo">
+                <h2>この計算機について</h2>
+                <p>元カレ計算機（グラブル攻撃力計算機）は、入力された情報を元に、「どのような武器編成が最大の火力を出せるか」を比較算出するためのツールです。</p>
+
+                <h2>使い方</h2>
+                <p>基本的に各項目を埋めていけば、それに従って結果が自動的に更新されます。入力フォームに値を入力したら、フォーム外をクリックする、もしくは他のフォームを選択する等の操作を行った際に、新しい結果が算出されます。</p>
+                <p className="text-danger">これまで「各フォームの値が変更された時に結果を更新」していましたが、、入力途中でも結果が更新されてしまい結果として重く感じる状態となっていました。8/28のアップデートにて「各入力フォームからフォーカスが外れた時に結果を更新」へと挙動を変更しました。フォームへ値を入力した後、フォーム外をクリックする、別のフォームをクリックする等の操作を行った際に結果が更新されます。（これまでと大きく挙動が異なりますのでご注意下さい。）</p>
+                <p>以下、各項目について説明します。</p>
+
+                <hr/>
+                <h3>入力 / Input タブ</h3>
+                <Thumbnail src="./otherImages/prof_howto.png" href="./otherImages/prof_howto.png"><h3>プロフィール入力例</h3></Thumbnail>
+                <p>ジータに関する情報や、パーティ全体へのバフ、敵の属性などを入力します。</p>
+                <p>ジータの属性はスキルの計算に、敵の属性は有利不利判定の計算に使用されますので、 どちらもお忘れなく入力して下さい。
+                また、得意武器補正やジョブごとの攻撃ボーナス等（例: ベルセルクマスター時 攻撃力+6000)は、ジョブを選択すれば自動的に適用されます。（マスターしていない場合(Lv20以下)は考慮していません。）
+                得意武器補正やボーナスなしで計算したい場合、ジョブ欄で「なし」を選択して下さい。</p>
+                <p>背水計算用の残HP割合は、</p>
+                <dl className="dl-horizontal">
+                    <dt>パーティ全体への効果: </dt><dd>パーティ全員のHPが下がっているとして攻撃力を算出</dd>
+                    <dt>ジータ残HP: </dt><dd>ジータだけHPが下がった攻撃力を算出</dd>
+                    <dt>どちらも変更されている: </dt><dd>残割合が低い方を適用</dd>
+                </dl>
+                <p>として計算します。（キャラごとの残HP割合もキャラタブにて設定可能です。)</p>
+
+                <hr/>
+                <h3>召喚石 / Summon タブ</h3>
+                <Thumbnail src="./otherImages/summon_input_howto.png" href="./otherImages/summon_input_howto.png"><h3>召喚石入力例</h3></Thumbnail>
+                <p>召喚石の情報を入力します。攻撃力とHPは、下記画像の通り、すべての召喚石の値が合計されたものを入力してください。</p>
+                <Thumbnail src="./otherImages/summon_howto.png">
+                </Thumbnail>
+
+                <hr/>
+                <h3>キャラ / Chara タブ</h3>
+                <Thumbnail src="./otherImages/chara_howto.png" href="./otherImages/chara_howto.png"><h3>キャラ入力例</h3></Thumbnail>
+                <p>キャラの情報を入力します。「キャラテンプレートを開く」ボタンから任意のキャラを選択することで、既存のキャラ情報を入力することが可能です。</p>
+                <p>現在、キャラごとの基礎DA/TA率についてはテンプレートからの入力をサポートしていません。個別に設定したい場合、直接入力を行って下さい。</p>
+                <p>キャラクターの情報は「パーティ平均値」を計算するときにのみ考慮されます。ジータのみの情報を計算する場合にはキャラの情報を入力する必要はありません。</p>
+
+                <hr/>
+                <h3>武器 / Weapon タブ</h3>
+                <Thumbnail src="./otherImages/weapon_howto.png" href="./otherImages/weapon_howto.png"><h3>武器入力例</h3></Thumbnail>
+                <p>武器の情報を入力します。ここに入力された一覧から、最適な武器編成が算出されます。キャラと同様「武器テンプレートを開く」ボタンから、既存の武器情報を入力することが可能です。</p>
+                <p>"考慮本数"とは、最小で何本、最大で何本所持しているかを入力する欄です。例えば、ある武器を3本持っていて、それが何本編成に入るのかを算出したい場合、最小考慮本数(min)を0本、最大考慮本数(max)を3本に設定して下さい。</p>
+                <p>メイン武器等、必ず1本以上入れたい場合は最小考慮本数を1本以上に設定して下さい。</p>
+                <p>コスモス武器も複数設定することが可能ですが、2本以上は同時に編成されないようになっています。</p>
+
+                <hr/>
+                <h3>保存・注記 / System タブ</h3>
+                <p>データの保存などを行うことができます。</p>
+                <p>"保存"ボタンはお使いのブラウザにデータを保存します。この場合、ブラウザを変えると保存されたデータは読み出せません。</p>
+                <p>データを他人に公開したい場合、もしくはブラウザを変えても結果が読み出せるようにしたい場合、"サーバに保存"ボタンを使用して下さい。
+                hsimyu.net/motocal/?id=数字 の形のURLにアクセスすることで、いつでもデータを読み出せるようになります。</p>
+                <p>上記の各タブの入力例をそのまま保存したものが<a href="http://hsimyu.net/motocal/?id=1101">こちら</a>です。ご参考になれば幸いです。</p>
+
+                <hr/>
+                <h3>結果 / Result タブ</h3>
+                <p>他のすべてのタブの入力を基に算出された計算結果が表示されます。（PC版ではタブ分けされていません。）
+                上部の「優先する項目」を変更することで、どの項目を優先するのかを選択することができます。</p>
+                <p>また、表示したい項目にチェックを入れることで、攻撃力やダメージ以外にも様々な情報を表示することができます。</p>
+
+                <hr/>
+                <h2>開発情報</h2>
+                <p>元カレ計算機は <a href="https://twitter.com/hsimyu/">@hsimyu</a> with ゼタの元カレ団 が開発しています。
+                ソースコードは<a href="https://github.com/hoshimi/motocal">github</a>にて公開しています。
+                ご要望のある方はPull requestを送って下さい。</p>
+            </div>
+        );
+    },
 });
 
 var CharaList = React.createClass({
@@ -4480,7 +4584,7 @@ var TwitterShareButton = React.createClass ({
     },
 });
 
-var HowTo = React.createClass({
+var NiteHowTo = React.createClass({
     render: function() {
         return (
             <div className="howTo">
@@ -4571,6 +4675,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/08/28: 結果の計算タイミングを変更 / 計算機の使い方を追加</li>
                 <li className="list-group-item list-group-item-info">2016/08/27: 優先キー"総合攻撃力"を、"攻撃力(二手技巧無し)"に変更。（勘違いされる方が多かったため) </li>
                 <li className="list-group-item list-group-item-info">2016/08/27: グラフ表示キーに技巧期待値と技巧期待値のパーティ平均を追加 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/26: 背水グラフの値がおかしくなっていたのを修正 (8/25の計算量削減処理でのミス) </li>
