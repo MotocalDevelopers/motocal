@@ -1629,7 +1629,7 @@ var Summon = React.createClass({
         this.props.onChange(this.props.id, newState)
     },
     handleOnBlur: function(e) {
-        this.props.onChange(this.props.id, newState)
+        this.props.onChange(this.props.id, this.state)
     },
     clickRemoveButton: function(e) {
         this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
