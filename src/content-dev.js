@@ -20,6 +20,7 @@ var levelListLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 
 var levelListNoLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 5, "Lv. 6": 6, "Lv. 7": 7, "Lv. 8": 8, "Lv. 9": 9, "Lv. 10": 10, "Lv. 11": 11, "Lv. 12": 12, "Lv. 13": 13, "Lv. 14": 14, "Lv. 15": 15, "Lv. 16": 16, "Lv. 17": 17, "Lv. 18": 18, "Lv. 19": 19, "Lv. 20": 20, "Lv. 21": 21, "Lv. 22": 22, "Lv. 23": 23, "Lv. 24": 24, "Lv. 25": 25, "Lv. 26": 26, "Lv. 27": 27, "Lv. 28": 28, "Lv. 29": 29, "Lv. 30": 30, "Lv. 31": 31, "Lv. 32": 32, "Lv. 33": 33, "Lv. 34": 34, "Lv. 35": 35, "Lv. 36": 36, "Lv. 37": 37, "Lv. 38": 38, "Lv. 39": 39, "Lv. 40": 40, "Lv. 41": 41, "Lv. 42": 42, "Lv. 43": 43, "Lv. 44": 44, "Lv. 45": 45, "Lv. 46": 46, "Lv. 47": 47, "Lv. 48": 48, "Lv. 49": 49, "Lv. 50": 50, "Lv. 51": 51, "Lv. 52": 52, "Lv. 53": 53, "Lv. 54": 54, "Lv. 55": 55, "Lv. 56": 56, "Lv. 57": 57, "Lv. 58": 58, "Lv. 59": 59, "Lv. 60": 60, "Lv. 61": 61, "Lv. 62": 62, "Lv. 63": 63, "Lv. 64": 64, "Lv. 65": 65, "Lv. 66": 66, "Lv. 67": 67, "Lv. 68": 68, "Lv. 69": 69, "Lv. 70": 70, "Lv. 71": 71, "Lv. 72": 72, "Lv. 73": 73, "Lv. 74": 74, "Lv. 75": 75, "Lv. 76": 76, "Lv. 77": 77, "Lv. 78": 78, "Lv. 79": 79, "Lv. 80": 80, "Lv. 81": 81, "Lv. 82": 82, "Lv. 83": 83, "Lv. 84": 84, "Lv. 85": 85, "Lv. 86": 86, "Lv. 87": 87, "Lv. 88": 88, "Lv. 89": 89, "Lv. 90": 90, "Lv. 91": 91, "Lv. 92": 92, "Lv. 93": 93, "Lv. 94": 94, "Lv. 95": 95, "Lv. 96": 96, "Lv. 97": 97, "Lv. 98": 98, "Lv. 99": 99, "Lv. 100": 100, "Lv. 101": 101, "Lv. 102": 102, "Lv. 103": 103, "Lv. 104": 104, "Lv. 105": 105, "Lv. 106": 106, "Lv. 107": 107, "Lv. 108": 108, "Lv. 109": 109, "Lv. 110": 110, "Lv. 111": 111, "Lv. 112": 112, "Lv. 113": 113, "Lv. 114": 114, "Lv. 115": 115, "Lv. 116": 116, "Lv. 117": 117, "Lv. 118": 118, "Lv. 119": 119, "Lv. 120": 120, "Lv. 121": 121, "Lv. 122": 122, "Lv. 123": 123, "Lv. 124": 124, "Lv. 125": 125, "Lv. 126": 126, "Lv. 127": 127, "Lv. 128": 128, "Lv. 129": 129, "Lv. 130": 130, "Lv. 131": 131, "Lv. 132": 132, "Lv. 133": 133, "Lv. 134": 134, "Lv. 135": 135, "Lv. 136": 136, "Lv. 137": 137, "Lv. 138": 138, "Lv. 139": 139, "Lv. 140": 140, "Lv. 141": 141, "Lv. 142": 142, "Lv. 143": 143, "Lv. 144": 144, "Lv. 145": 145, "Lv. 146": 146, "Lv. 147": 147, "Lv. 148": 148, "Lv. 149": 149, "Lv. 150": 150 }
 var skillLevelListNoLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10, "SLv. 11": 11, "SLv. 12": 12, "SLv. 13": 13, "SLv. 14": 14, "SLv. 15": 15 }
 var skillLevelListLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10 }
+var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 100, 120, 200];
 
 var enemyDefenseType = {
     10.0: {"name": "10.0(一般的な敵)"},
@@ -393,6 +394,7 @@ var select_skills = Object.keys(skilltypes).map(function(key){ return <option va
 var select_types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{jobTypes[opt]}</option>;});
 var select_armtypes = Object.keys(armTypes).map(function(opt){return <option value={opt} key={opt}>{armTypes[opt]}</option>;});
 var select_summonElements = Object.keys(summonElementTypes).map(function(opt){return <option value={opt} key={opt}>{summonElementTypes[opt].name}</option>;});
+var select_summonAmounts = summonAmountList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 var select_zenithAttack = zenithAttackBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 var select_zenithHP = zenithHPBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 var select_slv = skilllevels.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
@@ -1570,11 +1572,11 @@ var Summon = React.createClass({
     getInitialState: function() {
         return {
             selfSummonType: "magna",
-            selfSummonAmount: 0,
+            selfSummonAmount: 100,
             selfSummonAmount2: 0,
             selfElement: "fire",
-            friendSummonType: "magna",
-            friendSummonAmount: 0,
+            friendSummonType: "element",
+            friendSummonAmount: 80,
             friendSummonAmount2: 0,
             friendElement: "fire",
             attack: 0,
@@ -1619,6 +1621,14 @@ var Summon = React.createClass({
         var newState = this.state
         newState[key] = e.target.value
         this.setState(newState)
+    },
+    handleSelectEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+        this.props.onChange(this.props.id, newState)
+    },
+    handleOnBlur: function(e) {
         this.props.onChange(this.props.id, newState)
     },
     clickRemoveButton: function(e) {
@@ -1646,14 +1656,14 @@ var Summon = React.createClass({
         this.props.onChange(this.props.id, newState)
     },
     render: function() {
-        var selfSummon = [{"label": "", "input": "number"}, {"input": "hidden"}]
+        var selfSummon = [{"label": "", "input": "select"}, {"input": "hidden"}]
         if(this.state.selfSummonType == "odin"){
-            selfSummon[1] = {"label": "キャラ ", "input": "number"}
+            selfSummon[1] = {"label": "キャラ ", "input": "select"}
             selfSummon[0].label = "属性 "
         }
-        var friendSummon = [{"label": "", "input": "number"}, {"input": "hidden"}]
+        var friendSummon = [{"label": "", "input": "select"}, {"input": "hidden"}]
         if(this.state.friendSummonType == "odin"){
-            friendSummon[1] = {"label": "キャラ ", "input": "number"}
+            friendSummon[1] = {"label": "キャラ ", "input": "select"}
             friendSummon[0].label = "属性 "
         }
         if(_ua.Mobile) {
@@ -1663,47 +1673,47 @@ var Summon = React.createClass({
                 <tr>
                     <th>自分の石</th>
                     <td>
-                    <FormControl componentClass="select" className="element" value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl>
-                    <FormControl componentClass="select" className="summontype" value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl>
+                    <FormControl componentClass="select" className="element" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl>
+                    <FormControl componentClass="select" className="summontype" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl>
                     </td>
                 </tr>
                 <tr>
                     <th>自分の加護量</th>
-                    <td>{selfSummon[0].label}<FormControl type={selfSummon[0].input} min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} /><br/>
-                    {selfSummon[1].label}<FormControl type={selfSummon[1].input} min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} />
+                    <td>{selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{select_summonAmounts}</FormControl><br/>
+                    {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{select_summonAmounts}</FormControl>
                     </td>
                 </tr>
                 <tr>
                     <th>フレンド石</th>
                     <td>
-                    <FormControl componentClass="select" className="element" value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl>
-                    <FormControl componentClass="select" className="summontype" value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl></td>
+                    <FormControl componentClass="select" className="element" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl>
+                    <FormControl componentClass="select" className="summontype" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl></td>
                 </tr>
                 <tr>
                     <th>フレの加護量</th>
-                    <td>{friendSummon[0].label}<FormControl type={friendSummon[0].input} min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} /><br/>
-                    {friendSummon[1].label}<FormControl type={friendSummon[1].input} min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} />
+                    <td>{friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{select_summonAmounts}</FormControl><br/>
+                    {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{select_summonAmounts}</FormControl>
                     </td>
                 </tr>
                 <tr>
                     <th>合計攻撃力</th>
-                    <td><FormControl type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/></td>
                 </tr>
                 <tr>
                     <th>合計HP</th>
-                    <td><FormControl type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/></td>
                 </tr>
                 <tr>
                     <th>HPUP(%)</th>
-                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
                 </tr>
                 <tr>
                     <th>DA加護</th>
-                    <td><FormControl type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
                 </tr>
                 <tr>
                     <th>TA加護</th>
-                    <td><FormControl type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
                 </tr>
                 <tr>
                     <th>操作</th>
@@ -1721,22 +1731,22 @@ var Summon = React.createClass({
             return (
                 <tr>
                     <td>
-                        <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl>
-                        <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl>
-                        {selfSummon[0].label}<FormControl type={selfSummon[0].input} placeholder="加護量" min="0" max="200" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)} />
-                        {selfSummon[1].label}<FormControl type={selfSummon[1].input} placeholder="加護量" min="0" max="200" value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)} />
+                        <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl>
+                        <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl>
+                        {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{select_summonAmounts}</FormControl>
+                        {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{select_summonAmounts}</FormControl>
                     </td>
                     <td>
-                        <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl>
-                        <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl>
-                        {friendSummon[0].label}<FormControl type={friendSummon[0].input} placeholder="加護量" min="0" max="200" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)} />
-                        {friendSummon[1].label}<FormControl type={friendSummon[1].input} placeholder="加護量" min="0" max="200" value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)} />
+                        <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl>
+                        <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl>
+                        {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{select_summonAmounts}</FormControl>
+                        {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{select_summonAmounts}</FormControl>
                     </td>
-                    <td><FormControl type="number" min="0" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                    <td><FormControl type="number" min="0" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
-                    <td><FormControl type="number" min="0" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                    <td><FormControl type="number" min="0" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    <td><FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
                     <td>
                         <ButtonGroup vertical>
                             <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
@@ -3649,7 +3659,7 @@ var ArmList = React.createClass({
                     alert("追加しました。")
                 }
             } else {
-                alert("キャラがいっぱいです。")
+                alert("武器がいっぱいです。")
             }
         }
     },
@@ -4061,6 +4071,13 @@ var Arm = React.createClass({
        this.props.onChange(this.props.id, state, false);
     },
     handleEvent: function(key, e) {
+        // input の時は親に送らない
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    handleSelectEvent: function(key, e) {
+        // Selectの時は親に送ってしまっていい
         var newState = this.state
         if(key == "considerNumberMin"){
             if (parseInt(e.target.value) > parseInt(this.state.considerNumberMax)) {
@@ -4077,6 +4094,7 @@ var Arm = React.createClass({
         }
 
         this.setState(newState)
+        this.props.onChange(this.props.id, newState, false)
     },
     handleOnBlur: function(key, e) {
         // フォーカスが外れた時だけ変更を親に送る
@@ -4100,18 +4118,18 @@ var Arm = React.createClass({
                     <tr><th>武器名</th><td><FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} /></td></tr>
                     <tr><th>攻撃力</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} /></td></tr>
                     <tr><th>HP</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} /></td></tr>
-                    <tr><th>種類</th><td className="select"><FormControl componentClass="select" value={this.state.armType} onBlur={this.handleOnBlur.bind(this, "armType")} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </FormControl></td></tr>
+                    <tr><th>種類</th><td className="select"><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {select_armtypes} </FormControl></td></tr>
                     <tr><th>スキル</th>
                     <td>
-                        <FormControl componentClass="select" className="element" value={this.state.element} onBlur={this.handleOnBlur.bind(this, "element")} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onBlur={this.handleOnBlur.bind(this, "skill1")} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</FormControl><br/>
-                        <FormControl componentClass="select" className="element" value={this.state.element2} onBlur={this.handleOnBlur.bind(this, "element2")} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onBlur={this.handleOnBlur.bind(this, "skill2")} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</FormControl>
+                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {select_elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {select_skills}</FormControl><br/>
+                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {select_elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {select_skills}</FormControl>
                     </td></tr>
-                    <tr><th>スキルレベル</th><td className="select"><FormControl componentClass="select" value={this.state.slv} onBlur={this.handleOnBlur.bind(this, "slv")} onChange={this.handleEvent.bind(this, "slv")} > {select_slv} </FormControl></td></tr>
+                    <tr><th>スキルレベル</th><td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {select_slv} </FormControl></td></tr>
                     <tr><th>考慮本数</th><td className="consider">
-                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onBlur={this.handleOnBlur.bind(this, "considerNumberMin")} onChange={this.handleEvent.bind(this, "considerNumberMin")} > {select_consider} </FormControl><br/>
-                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onBlur={this.handleOnBlur.bind(this, "considerNumberMax")} onChange={this.handleEvent.bind(this, "considerNumberMax")} > {select_consider} </FormControl>
+                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {select_consider} </FormControl><br/>
+                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {select_consider} </FormControl>
                     </td></tr>
                     <tr><th>操作</th>
                     <td>
@@ -4129,17 +4147,17 @@ var Arm = React.createClass({
                     <td className="armname"><FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} /></td>
                     <td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} /></td>
                     <td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} /></td>
-                    <td><FormControl componentClass="select" value={this.state.armType} onBlur={this.handleOnBlur.bind(this, "armType")} onChange={this.handleEvent.bind(this, "armType")} > {select_armtypes} </FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {select_armtypes} </FormControl></td>
                     <td className="skillselect">
-                        <FormControl componentClass="select" className="element" value={this.state.element} onBlur={this.handleOnBlur.bind(this, "element")} onChange={this.handleEvent.bind(this, "element")} > {select_elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onBlur={this.handleOnBlur.bind(this, "skill1")} onChange={this.handleEvent.bind(this, "skill1")} > {select_skills}</FormControl><br/>
-                        <FormControl componentClass="select" className="element" value={this.state.element2} onBlur={this.handleOnBlur.bind(this, "element2")} onChange={this.handleEvent.bind(this, "element2")} > {select_elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onBlur={this.handleOnBlur.bind(this, "skill2")} onChange={this.handleEvent.bind(this, "skill2")} > {select_skills}</FormControl>
+                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {select_elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {select_skills}</FormControl><br/>
+                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {select_elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {select_skills}</FormControl>
                     </td>
-                    <td className="select"><FormControl componentClass="select" value={this.state.slv} onBlur={this.handleOnBlur.bind(this, "slv")} onChange={this.handleEvent.bind(this, "slv")} > {select_slv} </FormControl></td>
+                    <td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {select_slv} </FormControl></td>
                     <td className="consider">
-                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onBlur={this.handleOnBlur.bind(this, "considerNumberMin")} onChange={this.handleEvent.bind(this, "considerNumberMin")} > {select_consider} </FormControl><br/>
-                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onBlur={this.handleOnBlur.bind(this, "considerNumberMax")} onChange={this.handleEvent.bind(this, "considerNumberMax")} > {select_consider} </FormControl>
+                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {select_consider} </FormControl><br/>
+                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {select_consider} </FormControl>
                     </td>
                     <td className="system">
                         <ButtonGroup vertical>
@@ -4203,14 +4221,25 @@ var Profile = React.createClass({
         };
     },
     handleEvent: function(key, e) {
-      var newState = this.state
-      newState[key] = e.target.value
-      if(key == "job") {
-          newState.DA = Jobs[e.target.value].DaBonus
-          newState.TA = Jobs[e.target.value].TaBonus
-      }
-      this.setState(newState)
-      this.props.onChange(newState)
+        // input タイプの入力フォームはonBlurを利用する
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    handleOnBlur: function(e) {
+        // フォーカスが外れた時だけ変更を親に送る
+        this.props.onChange(this.state)
+    },
+    handleSelectEvent: function(key, e) {
+        // select タイプの入力フォームはonChangeの際で良い
+        var newState = this.state
+        newState[key] = e.target.value
+        if(key == "job") {
+            newState.DA = Jobs[e.target.value].DaBonus
+            newState.TA = Jobs[e.target.value].TaBonus
+        }
+        this.setState(newState)
+        this.props.onChange(newState)
     },
     render: function() {
         if(_ua.Mobile) {
@@ -4226,10 +4255,10 @@ var Profile = React.createClass({
                             <th className="prof">マスボ<br/>ATK(%)*</th>
                         </tr>
                         <tr>
-                            <td><FormControl type="number"  min="0" max="175" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}>{select_masteratk}</FormControl></td>
+                            <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{select_masteratk}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">マスボ<br/>HP(%)*</th>
@@ -4237,9 +4266,9 @@ var Profile = React.createClass({
                             <th className="prof">残HP(%)<br/>(ジータのみ)</th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}>{select_masterhp}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleEvent.bind(this, "job")} > {this.props.alljobs}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{select_masterhp}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">ジータ属性*</th>
@@ -4248,10 +4277,10 @@ var Profile = React.createClass({
                             <th className="prof">武器ゼニス2</th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleEvent.bind(this, "element")}> {select_elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">基礎DA率</th>
@@ -4260,10 +4289,10 @@ var Profile = React.createClass({
                             <th className="prof">奥義倍率</th>
                         </tr>
                         <tr>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleEvent.bind(this, "enemyDefense")}> {select_enemydeftypes} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleEvent.bind(this, "ougiRatio")}> {select_ougiRatio} </FormControl></td>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {select_enemydeftypes} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {select_ougiRatio} </FormControl></td>
                         </tr>
                         </tbody>
                     </table>
@@ -4288,20 +4317,20 @@ var Profile = React.createClass({
                             <th className="buff">その他バフ</th>
                             <th className="buff">HPバフ</th>
                         </tr><tr>
-                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
                         </tr><tr>
                             <th className="buff">DAバフ</th>
                             <th className="buff">TAバフ</th>
                             <th className="buff">残HP(%)</th>
                             <th className="prof">奥義ゲージ上昇率アップ</th>
                         </tr><tr>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}>{select_hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleEvent.bind(this, "ougiGageBuff")}> {select_ougiGageBuff} </FormControl></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{select_hplist}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {select_ougiGageBuff} </FormControl></td>
                         </tr>
                         </tbody>
                     </table>
@@ -4323,13 +4352,13 @@ var Profile = React.createClass({
                             <th className="prof">残HP(%)<br/>(ジータのみ)</th>
                         </tr>
                         <tr>
-                            <td><FormControl type="number"  min="0" max="175" value={this.state.rank} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleEvent.bind(this, "masterBonus")}>{select_masteratk}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleEvent.bind(this, "masterBonusHP")}>{select_masterhp}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
+                            <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{select_masteratk}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{select_masterhp}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">ジータ属性*</th>
@@ -4341,13 +4370,13 @@ var Profile = React.createClass({
                             <th className="prof">敵防御固有値</th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleEvent.bind(this, "element")}> {select_elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleEvent.bind(this, "enemyDefense")}> {select_enemydeftypes} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {select_enemydeftypes} </FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">奥義倍率</th>
@@ -4359,7 +4388,7 @@ var Profile = React.createClass({
                             <th className="prof"></th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleEvent.bind(this, "ougiRatio")}> {select_ougiRatio} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {select_ougiRatio} </FormControl></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -4394,14 +4423,14 @@ var Profile = React.createClass({
                             <th className="buff">残HP(%)</th>
                             <th className="buff">奥義ゲージ上昇率アップ</th>
                         </tr><tr>
-                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}>{select_hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleEvent.bind(this, "ougiGageBuff")}> {select_ougiGageBuff} </FormControl></td>
+                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
+                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
+                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
+                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{select_hplist}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {select_ougiGageBuff} </FormControl></td>
                         </tr>
                         </tbody>
                     </table>

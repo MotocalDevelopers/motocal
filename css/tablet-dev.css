@@ -200,6 +200,11 @@ tr.result:hover {
     overflow: auto;
 }
 
+.summonList .hidden {
+    overflow: hidden;
+    height: 0;
+}
+
 .summonList th, .summonList td {
     width: calc(100%/8);
 }
