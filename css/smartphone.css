@@ -176,6 +176,11 @@ tr.result:hover {
     width: 100%;
 }
 
+.summonList .hidden {
+    overflow: hidden;
+    height: 0;
+}
+
 .summonList table, .armList table, .charaList table {
     margin-top: 8px;
     margin-bottom: 8px;

@@ -167,6 +167,8 @@ if (Buffer.TYPED_ARRAY_SUPPORT) {
 function assertSize (size) {
   if (typeof size !== 'number') {
     throw new TypeError('"size" argument must be a number')
+  } else if (size < 0) {
+    throw new RangeError('"size" argument must not be negative')
   }
 }
 
@@ -243,7 +245,7 @@ function fromString (that, string, encoding) {
 }
 
 function fromArrayLike (that, array) {
-  var length = checked(array.length) | 0
+  var length = array.length < 0 ? 0 : checked(array.length) | 0
   that = createBuffer(that, length)
   for (var i = 0; i < length; i += 1) {
     that[i] = array[i] & 255
@@ -312,7 +314,7 @@ function fromObject (that, obj) {
 }
 
 function checked (length) {
-  // Note: cannot use `length < kMaxLength` here because that fails when
+  // Note: cannot use `length < kMaxLength()` here because that fails when
   // length is NaN (which is otherwise coerced to zero.)
   if (length >= kMaxLength()) {
     throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
@@ -47368,6 +47370,7 @@ var levelListLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 
 var levelListNoLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 5, "Lv. 6": 6, "Lv. 7": 7, "Lv. 8": 8, "Lv. 9": 9, "Lv. 10": 10, "Lv. 11": 11, "Lv. 12": 12, "Lv. 13": 13, "Lv. 14": 14, "Lv. 15": 15, "Lv. 16": 16, "Lv. 17": 17, "Lv. 18": 18, "Lv. 19": 19, "Lv. 20": 20, "Lv. 21": 21, "Lv. 22": 22, "Lv. 23": 23, "Lv. 24": 24, "Lv. 25": 25, "Lv. 26": 26, "Lv. 27": 27, "Lv. 28": 28, "Lv. 29": 29, "Lv. 30": 30, "Lv. 31": 31, "Lv. 32": 32, "Lv. 33": 33, "Lv. 34": 34, "Lv. 35": 35, "Lv. 36": 36, "Lv. 37": 37, "Lv. 38": 38, "Lv. 39": 39, "Lv. 40": 40, "Lv. 41": 41, "Lv. 42": 42, "Lv. 43": 43, "Lv. 44": 44, "Lv. 45": 45, "Lv. 46": 46, "Lv. 47": 47, "Lv. 48": 48, "Lv. 49": 49, "Lv. 50": 50, "Lv. 51": 51, "Lv. 52": 52, "Lv. 53": 53, "Lv. 54": 54, "Lv. 55": 55, "Lv. 56": 56, "Lv. 57": 57, "Lv. 58": 58, "Lv. 59": 59, "Lv. 60": 60, "Lv. 61": 61, "Lv. 62": 62, "Lv. 63": 63, "Lv. 64": 64, "Lv. 65": 65, "Lv. 66": 66, "Lv. 67": 67, "Lv. 68": 68, "Lv. 69": 69, "Lv. 70": 70, "Lv. 71": 71, "Lv. 72": 72, "Lv. 73": 73, "Lv. 74": 74, "Lv. 75": 75, "Lv. 76": 76, "Lv. 77": 77, "Lv. 78": 78, "Lv. 79": 79, "Lv. 80": 80, "Lv. 81": 81, "Lv. 82": 82, "Lv. 83": 83, "Lv. 84": 84, "Lv. 85": 85, "Lv. 86": 86, "Lv. 87": 87, "Lv. 88": 88, "Lv. 89": 89, "Lv. 90": 90, "Lv. 91": 91, "Lv. 92": 92, "Lv. 93": 93, "Lv. 94": 94, "Lv. 95": 95, "Lv. 96": 96, "Lv. 97": 97, "Lv. 98": 98, "Lv. 99": 99, "Lv. 100": 100, "Lv. 101": 101, "Lv. 102": 102, "Lv. 103": 103, "Lv. 104": 104, "Lv. 105": 105, "Lv. 106": 106, "Lv. 107": 107, "Lv. 108": 108, "Lv. 109": 109, "Lv. 110": 110, "Lv. 111": 111, "Lv. 112": 112, "Lv. 113": 113, "Lv. 114": 114, "Lv. 115": 115, "Lv. 116": 116, "Lv. 117": 117, "Lv. 118": 118, "Lv. 119": 119, "Lv. 120": 120, "Lv. 121": 121, "Lv. 122": 122, "Lv. 123": 123, "Lv. 124": 124, "Lv. 125": 125, "Lv. 126": 126, "Lv. 127": 127, "Lv. 128": 128, "Lv. 129": 129, "Lv. 130": 130, "Lv. 131": 131, "Lv. 132": 132, "Lv. 133": 133, "Lv. 134": 134, "Lv. 135": 135, "Lv. 136": 136, "Lv. 137": 137, "Lv. 138": 138, "Lv. 139": 139, "Lv. 140": 140, "Lv. 141": 141, "Lv. 142": 142, "Lv. 143": 143, "Lv. 144": 144, "Lv. 145": 145, "Lv. 146": 146, "Lv. 147": 147, "Lv. 148": 148, "Lv. 149": 149, "Lv. 150": 150 }
 var skillLevelListNoLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10, "SLv. 11": 11, "SLv. 12": 12, "SLv. 13": 13, "SLv. 14": 14, "SLv. 15": 15 }
 var skillLevelListLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10 }
+var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 100, 120, 200];
 
 var enemyDefenseType = {
     10.0: {"name": "10.0(一般的な敵)"},
@@ -47741,6 +47744,7 @@ var select_skills = Object.keys(skilltypes).map(function(key){ return React.crea
 var select_types = Object.keys(jobTypes).map(function(opt){return React.createElement("option", {value: opt, key: opt}, jobTypes[opt]);});
 var select_armtypes = Object.keys(armTypes).map(function(opt){return React.createElement("option", {value: opt, key: opt}, armTypes[opt]);});
 var select_summonElements = Object.keys(summonElementTypes).map(function(opt){return React.createElement("option", {value: opt, key: opt}, summonElementTypes[opt].name);});
+var select_summonAmounts = summonAmountList.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
 var select_zenithAttack = zenithAttackBonus.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
 var select_zenithHP = zenithHPBonus.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
 var select_slv = skilllevels.map(function(opt){return React.createElement("option", {value: opt, key: opt}, opt);});
@@ -47832,7 +47836,14 @@ var Root = React.createClass({displayName: "Root",
           rootleftWidth: initial_width,
           rootrightHeight: initial_height,
           rootrightWidth: initial_width,
+          openHowTo: false,
       };
+  },
+  openHowTo: function(e) {
+      this.setState({openHowTo: true})
+  },
+  closeHowTo: function(e) {
+      this.setState({openHowTo: false})
   },
   onTouchStart: function(e) {
       //スワイプ開始時の横方向の座標を格納
@@ -48129,7 +48140,15 @@ var Root = React.createClass({displayName: "Root",
     if(_ua.Mobile) {
         return (
             React.createElement("div", {className: "root", onTouchStart: this.onTouchStart, onTouchMove: this.onTouchMove, onTouchEnd: this.onTouchEnd}, 
-                React.createElement("h2", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
+                React.createElement("h2", null, "元カレ計算機 (グラブル攻撃力計算機) ", React.createElement(Button, {bsStyle: "info", onClick: this.openHowTo}, " 使い方 "), " "), 
+                React.createElement(Modal, {show: this.state.openHowTo, onHide: this.closeHowTo}, 
+                    React.createElement(Modal.Header, {closeButton: true}, 
+                        React.createElement(Modal.Title, null, "元カレ計算機について")
+                    ), 
+                    React.createElement(Modal.Body, null, 
+                        React.createElement(HowTo, null)
+                    )
+                ), 
                 React.createElement("div", {className: "tabrow"}, 
                     React.createElement("button", {id: "inputTab", className: "selected", onClick: this.changeTab}, "ジータ"), 
                     React.createElement("button", {id: "summonTab", onClick: this.changeTab}, "召喚石"), 
@@ -48175,14 +48194,22 @@ var Root = React.createClass({displayName: "Root",
                     )
                 ), 
                 React.createElement("div", {className: "Tab hidden", id: "howToTab"}, 
-                    React.createElement(HowTo, null)
+                    React.createElement(NiteHowTo, null)
                 )
             )
         );
     } else if(_ua.Tablet) {
         return (
             React.createElement("div", {className: "root"}, 
-                React.createElement("h2", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
+                React.createElement("h2", null, "元カレ計算機 (グラブル攻撃力計算機) ", React.createElement(Button, {bsStyle: "info", onClick: this.openHowTo}, " 使い方 ")), 
+                React.createElement(Modal, {show: this.state.openHowTo, onHide: this.closeHowTo}, 
+                    React.createElement(Modal.Header, {closeButton: true}, 
+                        React.createElement(Modal.Title, null, "元カレ計算機について")
+                    ), 
+                    React.createElement(Modal.Body, null, 
+                        React.createElement(HowTo, null)
+                    )
+                ), 
                 React.createElement("div", {className: "tabrow"}, 
                     React.createElement("button", {id: "inputTab", className: "selected", onClick: this.changeTab}, "ジータ"), 
                     React.createElement("button", {id: "summonTab", onClick: this.changeTab}, "召喚石"), 
@@ -48228,7 +48255,7 @@ var Root = React.createClass({displayName: "Root",
                     )
                 ), 
                 React.createElement("div", {className: "Tab hidden", id: "howToTab"}, 
-                    React.createElement(HowTo, null)
+                    React.createElement(NiteHowTo, null)
                 )
             )
         );
@@ -48236,7 +48263,15 @@ var Root = React.createClass({displayName: "Root",
         return (
             React.createElement("div", {className: "root"}, 
                 React.createElement("div", {className: "rootleft", id: "rootleft2", style: {height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}, 
-                    React.createElement("h1", null, "元カレ計算機 (グラブル攻撃力計算機) "), 
+                    React.createElement("h1", null, "元カレ計算機 (グラブル攻撃力計算機) ", React.createElement(Button, {bsStyle: "info", onClick: this.openHowTo}, " 使い方 "), " "), 
+                    React.createElement(Modal, {show: this.state.openHowTo, onHide: this.closeHowTo}, 
+                        React.createElement(Modal.Header, {closeButton: true}, 
+                            React.createElement(Modal.Title, null, "元カレ計算機について")
+                        ), 
+                        React.createElement(Modal.Body, null, 
+                            React.createElement(HowTo, null)
+                        )
+                    ), 
                     React.createElement("div", {className: "tabrow"}, 
                         React.createElement("button", {id: "inputTab", className: "selected", onClick: this.changeTabPC}, "入力 / Input"), 
                         React.createElement("button", {id: "summonTab", onClick: this.changeTabPC}, "召喚石 / Summon "), 
@@ -48275,7 +48310,7 @@ var Root = React.createClass({displayName: "Root",
                         React.createElement(Notice, null)
                     ), 
                     React.createElement("div", {className: "Tab hidden", id: "howToTab"}, 
-                        React.createElement(HowTo, null)
+                        React.createElement(NiteHowTo, null)
                     )
                 ), 
                 React.createElement("div", {draggable: "true", className: "drag-hr bg-info", onDragEnd: this.onDragEnd}, React.createElement("span", {className: "label label-primary"}, "drag")), 
@@ -48287,6 +48322,78 @@ var Root = React.createClass({displayName: "Root",
         );
     }
   }
+});
+
+var HowTo = React.createClass({displayName: "HowTo",
+    render: function(){
+        return (
+            React.createElement("div", {className: "howTo"}, 
+                React.createElement("h2", null, "この計算機について"), 
+                React.createElement("p", null, "元カレ計算機（グラブル攻撃力計算機）は、入力された情報を元に、「どのような武器編成が最大の火力を出せるか」を比較算出するためのツールです。"), 
+
+                React.createElement("h2", null, "使い方"), 
+                React.createElement("p", null, "基本的に各項目を埋めていけば、それに従って結果が自動的に更新されます。(選択メニューは値を選択した時点、入力フォームは値を入力した後にフォーム外をクリックする等の操作を行った際に、新しい結果が算出されます。)"), 
+                React.createElement("p", null, "以下、各項目について説明します。"), 
+
+                React.createElement("hr", null), 
+                React.createElement("h3", null, "入力 / Input タブ"), 
+                React.createElement(Thumbnail, {src: "./otherImages/prof_howto.png", href: "./otherImages/prof_howto.png"}, React.createElement("h3", null, "プロフィール入力例")), 
+                React.createElement("p", null, "ジータに関する情報や、パーティ全体へのバフ、敵の属性などを入力します。"), 
+                React.createElement("p", null, "ジータの属性はスキルの計算に、敵の属性は有利不利判定の計算に使用されますので、 どちらもお忘れなく入力して下さい。" + ' ' +
+                "また、得意武器補正やジョブごとの攻撃ボーナス等（例: ベルセルクマスター時 攻撃力+6000)は、ジョブを選択すれば自動的に適用されます。（マスターしていない場合(Lv20以下)は考慮していません。）" + ' ' +
+                "得意武器補正やボーナスなしで計算したい場合、ジョブ欄で「なし」を選択して下さい。"), 
+                React.createElement("p", null, "背水計算用の残HP割合は、"), 
+                React.createElement("dl", {className: "dl-horizontal"}, 
+                    React.createElement("dt", null, "パーティ全体への効果: "), React.createElement("dd", null, "パーティ全員のHPが下がっているとして攻撃力を算出"), 
+                    React.createElement("dt", null, "ジータ残HP: "), React.createElement("dd", null, "ジータだけHPが下がった攻撃力を算出"), 
+                    React.createElement("dt", null, "どちらも変更されている: "), React.createElement("dd", null, "残割合が低い方を適用")
+                ), 
+                React.createElement("p", null, "として計算します。（キャラごとの残HP割合もキャラタブにて設定可能です。)"), 
+
+                React.createElement("hr", null), 
+                React.createElement("h3", null, "召喚石 / Summon タブ"), 
+                React.createElement(Thumbnail, {src: "./otherImages/summon_input_howto.png", href: "./otherImages/summon_input_howto.png"}, React.createElement("h3", null, "召喚石入力例")), 
+                React.createElement("p", null, "召喚石の情報を入力します。攻撃力とHPは、下記画像の通り、すべての召喚石の値が合計されたものを入力してください。"), 
+                React.createElement(Thumbnail, {src: "./otherImages/summon_howto.png"}
+                ), 
+
+                React.createElement("hr", null), 
+                React.createElement("h3", null, "キャラ / Chara タブ"), 
+                React.createElement(Thumbnail, {src: "./otherImages/chara_howto.png", href: "./otherImages/chara_howto.png"}, React.createElement("h3", null, "キャラ入力例")), 
+                React.createElement("p", null, "キャラの情報を入力します。「キャラテンプレートを開く」ボタンから任意のキャラを選択することで、既存のキャラ情報を入力することが可能です。"), 
+                React.createElement("p", null, "現在、キャラごとの基礎DA/TA率についてはテンプレートからの入力をサポートしていません。個別に設定したい場合、直接入力を行って下さい。"), 
+                React.createElement("p", null, "キャラクターの情報は「パーティ平均値」を計算するときにのみ考慮されます。ジータのみの情報を計算する場合にはキャラの情報を入力する必要はありません。"), 
+
+                React.createElement("hr", null), 
+                React.createElement("h3", null, "武器 / Weapon タブ"), 
+                React.createElement(Thumbnail, {src: "./otherImages/weapon_howto.png", href: "./otherImages/weapon_howto.png"}, React.createElement("h3", null, "武器入力例")), 
+                React.createElement("p", null, "武器の情報を入力します。ここに入力された一覧から、最適な武器編成が算出されます。キャラと同様「武器テンプレートを開く」ボタンから、既存の武器情報を入力することが可能です。"), 
+                React.createElement("p", null, "\"考慮本数\"とは、最小で何本、最大で何本所持しているかを入力する欄です。例えば、ある武器を3本持っていて、それが何本編成に入るのかを算出したい場合、最小考慮本数(min)を0本、最大考慮本数(max)を3本に設定して下さい。"), 
+                React.createElement("p", null, "メイン武器等、必ず1本以上入れたい場合は最小考慮本数を1本以上に設定して下さい。"), 
+                React.createElement("p", null, "コスモス武器も複数設定することが可能ですが、2本以上は同時に編成されないようになっています。"), 
+
+                React.createElement("hr", null), 
+                React.createElement("h3", null, "保存・注記 / System タブ"), 
+                React.createElement("p", null, "データの保存などを行うことができます。"), 
+                React.createElement("p", null, "\"保存\"ボタンはお使いのブラウザにデータを保存します。この場合、ブラウザを変えると保存されたデータは読み出せません。"), 
+                React.createElement("p", null, "データを他人に公開したい場合、もしくはブラウザを変えても結果が読み出せるようにしたい場合、\"サーバに保存\"ボタンを使用して下さい。" + ' ' +
+                "hsimyu.net/motocal/?id=数字 の形のURLにアクセスすることで、いつでもデータを読み出せるようになります。"), 
+                React.createElement("p", null, "上記の各タブの入力例をそのまま保存したものが", React.createElement("a", {href: "http://hsimyu.net/motocal/?id=1101"}, "こちら"), "です。ご参考になれば幸いです。"), 
+
+                React.createElement("hr", null), 
+                React.createElement("h3", null, "結果 / Result タブ"), 
+                React.createElement("p", null, "他のすべてのタブの入力を基に算出された計算結果が表示されます。（PC版ではタブ分けされていません。）" + ' ' +
+                "上部の「優先する項目」を変更することで、どの項目を優先するのかを選択することができます。"), 
+                React.createElement("p", null, "また、表示したい項目にチェックを入れることで、攻撃力やダメージ以外にも様々な情報を表示することができます。"), 
+
+                React.createElement("hr", null), 
+                React.createElement("h2", null, "開発情報"), 
+                React.createElement("p", null, "元カレ計算機は ", React.createElement("a", {href: "https://twitter.com/hsimyu/"}, "@hsimyu"), " with ゼタの元カレ団 が開発しています。" + ' ' +
+                "ソースコードは", React.createElement("a", {href: "https://github.com/hoshimi/motocal"}, "github"), "にて公開しています。" + ' ' +
+                "ご要望のある方はPull requestを送って下さい。")
+            )
+        );
+    },
 });
 
 var CharaList = React.createClass({displayName: "CharaList",
@@ -48612,54 +48719,61 @@ var Chara = React.createClass({displayName: "Chara",
     },
     handleEvent: function(key, e) {
         var newState = this.state
-        var isSubtle = false
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    handleSelectEvent: function(key, e) {
+        var newState = this.state
 
         if(key == "isConsideredInAverage") {
             newState[key] = (newState[key] == false) ? true : false
         } else {
-            if(key == "name" && this.state.name != "" && newState.name != "") {
-                isSubtle = true
-            }
-
             newState[key] = e.target.value
         }
         this.setState(newState)
-        this.props.onChange(this.props.id, newState, isSubtle)
+        this.props.onChange(this.props.id, newState, false)
+    },
+    handleOnBlur: function(key, e) {
+        if(key == "name" && this.state.name != "" && e.target.value != "") {
+            this.props.onChange(this.props.id, this.state, true)
+        } else {
+            this.props.onChange(this.props.id, this.state, false)
+        }
     },
     render: function() {
         if(_ua.Mobile) {
             return (
                 React.createElement("table", {className: "table table-bordered"}, React.createElement("tbody", null, 
-                    React.createElement("tr", null, React.createElement("th", null, "名前"), React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "名前", value: this.state.name, onChange: this.handleEvent.bind(this, "name")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "属性"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, select_elements))), 
-                    React.createElement("tr", null, React.createElement("th", null, "種族"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.race, onChange: this.handleEvent.bind(this, "race")}, select_races))), 
-                    React.createElement("tr", null, React.createElement("th", null, "タイプ"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.type, onChange: this.handleEvent.bind(this, "type")}, select_types))), 
-                    React.createElement("tr", null, React.createElement("th", null, "得意武器1"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.favArm, onChange: this.handleEvent.bind(this, "favArm")}, select_armtypes))), 
-                    React.createElement("tr", null, React.createElement("th", null, "得意武器2"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.favArm2, onChange: this.handleEvent.bind(this, "favArm2")}, select_armtypes))), 
-                    React.createElement("tr", null, React.createElement("th", null, "平均に含める"), React.createElement("td", {className: "considerAverage"}, React.createElement(Checkbox, {inline: true, checked: this.state.isConsideredInAverage, onChange: this.handleEvent.bind(this, "isConsideredInAverage")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "素の攻撃力"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "15000", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "素のHP"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "5000", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "残HP割合"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "基礎DA率"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "基礎TA率"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})))
+                    React.createElement("tr", null, React.createElement("th", null, "名前"), React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "名前", value: this.state.name, onBlur: this.handleOnBlur.bind(this, "name"), onChange: this.handleEvent.bind(this, "name")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "属性"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleSelectEvent.bind(this, "element")}, select_elements))), 
+                    React.createElement("tr", null, React.createElement("th", null, "種族"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.race, onChange: this.handleSelectEvent.bind(this, "race")}, select_races))), 
+                    React.createElement("tr", null, React.createElement("th", null, "タイプ"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.type, onChange: this.handleSelectEvent.bind(this, "type")}, select_types))), 
+                    React.createElement("tr", null, React.createElement("th", null, "得意武器1"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.favArm, onChange: this.handleSelectEvent.bind(this, "favArm")}, select_armtypes))), 
+                    React.createElement("tr", null, React.createElement("th", null, "得意武器2"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.favArm2, onChange: this.handleSelectEvent.bind(this, "favArm2")}, select_armtypes))), 
+                    React.createElement("tr", null, React.createElement("th", null, "平均に含める"), React.createElement("td", {className: "considerAverage"}, React.createElement(Checkbox, {inline: true, checked: this.state.isConsideredInAverage, onChange: this.handleSelectEvent.bind(this, "isConsideredInAverage")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "素の攻撃力"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "15000", value: this.state.attack, onBlur: this.handleOnBlur.bind(this, "attack"), onChange: this.handleEvent.bind(this, "attack")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "素のHP"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "5000", value: this.state.hp, onBlur: this.handleOnBlur.bind(this, "hp"), onChange: this.handleEvent.bind(this, "hp")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "残HP割合"), React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.remainHP, onChange: this.handleSelectEvent.bind(this, "remainHP")}, select_hplist))), 
+                    React.createElement("tr", null, React.createElement("th", null, "基礎DA率"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onBlur: this.handleOnBlur.bind(this, "DA"), onChange: this.handleEvent.bind(this, "DA")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "基礎TA率"), React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onBlur: this.handleOnBlur.bind(this, "TA"), onChange: this.handleEvent.bind(this, "TA")})))
                 ))
             );
 
         } else {
             return (
                 React.createElement("tr", null, 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "名前", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, select_elements)), 
-                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.race, onChange: this.handleEvent.bind(this, "race")}, select_races)), 
-                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.type, onChange: this.handleEvent.bind(this, "type")}, select_types)), 
-                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.favArm, onChange: this.handleEvent.bind(this, "favArm")}, select_armtypes)), 
-                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.favArm2, onChange: this.handleEvent.bind(this, "favArm2")}, select_armtypes)), 
-                    React.createElement("td", {className: "considerAverage"}, React.createElement(Checkbox, {inline: true, checked: this.state.isConsideredInAverage, onChange: this.handleEvent.bind(this, "isConsideredInAverage")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "15000", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "5000", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
+                    React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "名前", value: this.state.name, onBlur: this.handleOnBlur.bind(this, "name"), onChange: this.handleEvent.bind(this, "name")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleSelectEvent.bind(this, "element")}, select_elements)), 
+                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.race, onChange: this.handleSelectEvent.bind(this, "race")}, select_races)), 
+                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.type, onChange: this.handleSelectEvent.bind(this, "type")}, select_types)), 
+                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.favArm, onChange: this.handleSelectEvent.bind(this, "favArm")}, select_armtypes)), 
+                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.favArm2, onChange: this.handleSelectEvent.bind(this, "favArm2")}, select_armtypes)), 
+                    React.createElement("td", {className: "considerAverage"}, React.createElement(Checkbox, {inline: true, checked: this.state.isConsideredInAverage, onChange: this.handleSelectEvent.bind(this, "isConsideredInAverage")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "15000", value: this.state.attack, onBlur: this.handleOnBlur.bind(this, "attack"), onChange: this.handleEvent.bind(this, "attack")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "5000", value: this.state.hp, onBlur: this.handleOnBlur.bind(this, "hp"), onChange: this.handleEvent.bind(this, "hp")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.remainHP, onChange: this.handleSelectEvent.bind(this, "remainHP")}, select_hplist)), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onBlur: this.handleOnBlur.bind(this, "DA"), onChange: this.handleEvent.bind(this, "DA")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onBlur: this.handleOnBlur.bind(this, "TA"), onChange: this.handleEvent.bind(this, "TA")}))
                 )
             );
         }
@@ -48814,11 +48928,11 @@ var Summon = React.createClass({displayName: "Summon",
     getInitialState: function() {
         return {
             selfSummonType: "magna",
-            selfSummonAmount: 0,
+            selfSummonAmount: 100,
             selfSummonAmount2: 0,
             selfElement: "fire",
-            friendSummonType: "magna",
-            friendSummonAmount: 0,
+            friendSummonType: "element",
+            friendSummonAmount: 80,
             friendSummonAmount2: 0,
             friendElement: "fire",
             attack: 0,
@@ -48863,7 +48977,15 @@ var Summon = React.createClass({displayName: "Summon",
         var newState = this.state
         newState[key] = e.target.value
         this.setState(newState)
+    },
+    handleSelectEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
         this.props.onChange(this.props.id, newState)
+    },
+    handleOnBlur: function(e) {
+        this.props.onChange(this.props.id, this.state)
     },
     clickRemoveButton: function(e) {
         this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
@@ -48890,14 +49012,14 @@ var Summon = React.createClass({displayName: "Summon",
         this.props.onChange(this.props.id, newState)
     },
     render: function() {
-        var selfSummon = [{"label": "", "input": "number"}, {"input": "hidden"}]
+        var selfSummon = [{"label": "", "input": "select"}, {"input": "hidden"}]
         if(this.state.selfSummonType == "odin"){
-            selfSummon[1] = {"label": "キャラ ", "input": "number"}
+            selfSummon[1] = {"label": "キャラ ", "input": "select"}
             selfSummon[0].label = "属性 "
         }
-        var friendSummon = [{"label": "", "input": "number"}, {"input": "hidden"}]
+        var friendSummon = [{"label": "", "input": "select"}, {"input": "hidden"}]
         if(this.state.friendSummonType == "odin"){
-            friendSummon[1] = {"label": "キャラ ", "input": "number"}
+            friendSummon[1] = {"label": "キャラ ", "input": "select"}
             friendSummon[0].label = "属性 "
         }
         if(_ua.Mobile) {
@@ -48907,47 +49029,47 @@ var Summon = React.createClass({displayName: "Summon",
                 React.createElement("tr", null, 
                     React.createElement("th", null, "自分の石"), 
                     React.createElement("td", null, 
-                    React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements), 
-                    React.createElement(FormControl, {componentClass: "select", className: "summontype", value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons)
+                    React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.selfElement, onChange: this.handleSelectEvent.bind(this, "selfElement")}, select_summonElements), 
+                    React.createElement(FormControl, {componentClass: "select", className: "summontype", value: this.state.selfSummonType, onChange: this.handleSelectEvent.bind(this, "selfSummonType")}, select_summons)
                     )
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "自分の加護量"), 
-                    React.createElement("td", null, selfSummon[0].label, React.createElement(FormControl, {type: selfSummon[0].input, min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)}), React.createElement("br", null), 
-                    selfSummon[1].label, React.createElement(FormControl, {type: selfSummon[1].input, min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)})
+                    React.createElement("td", null, selfSummon[0].label, React.createElement(FormControl, {componentClass: "select", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)}, select_summonAmounts), React.createElement("br", null), 
+                    selfSummon[1].label, React.createElement(FormControl, {componentClass: "select", className: selfSummon[1].input, value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)}, select_summonAmounts)
                     )
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "フレンド石"), 
                     React.createElement("td", null, 
-                    React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements), 
-                    React.createElement(FormControl, {componentClass: "select", className: "summontype", value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons))
+                    React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.friendElement, onChange: this.handleSelectEvent.bind(this, "friendElement")}, select_summonElements), 
+                    React.createElement(FormControl, {componentClass: "select", className: "summontype", value: this.state.friendSummonType, onChange: this.handleSelectEvent.bind(this, "friendSummonType")}, select_summons))
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "フレの加護量"), 
-                    React.createElement("td", null, friendSummon[0].label, React.createElement(FormControl, {type: friendSummon[0].input, min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)}), React.createElement("br", null), 
-                    friendSummon[1].label, React.createElement(FormControl, {type: friendSummon[1].input, min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)})
+                    React.createElement("td", null, friendSummon[0].label, React.createElement(FormControl, {componentClass: "select", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)}, select_summonAmounts), React.createElement("br", null), 
+                    friendSummon[1].label, React.createElement(FormControl, {componentClass: "select", className: friendSummon[1].input, value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)}, select_summonAmounts)
                     )
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "合計攻撃力"), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")}))
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.attack, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "attack")}))
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "合計HP"), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hp, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "hp")}))
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "HPUP(%)"), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")}))
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBonus, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "hpBonus")}))
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "DA加護"), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")}))
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.DA, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "DA")}))
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "TA加護"), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")}))
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "TA")}))
                 ), 
                 React.createElement("tr", null, 
                     React.createElement("th", null, "操作"), 
@@ -48965,22 +49087,22 @@ var Summon = React.createClass({displayName: "Summon",
             return (
                 React.createElement("tr", null, 
                     React.createElement("td", null, 
-                        React.createElement(FormControl, {componentClass: "select", value: this.state.selfElement, onChange: this.handleEvent.bind(this, "selfElement")}, select_summonElements), 
-                        React.createElement(FormControl, {componentClass: "select", value: this.state.selfSummonType, onChange: this.handleEvent.bind(this, "selfSummonType")}, select_summons), 
-                        selfSummon[0].label, React.createElement(FormControl, {type: selfSummon[0].input, placeholder: "加護量", min: "0", max: "200", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)}), 
-                        selfSummon[1].label, React.createElement(FormControl, {type: selfSummon[1].input, placeholder: "加護量", min: "0", max: "200", value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)})
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.selfElement, onChange: this.handleSelectEvent.bind(this, "selfElement")}, select_summonElements), 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.selfSummonType, onChange: this.handleSelectEvent.bind(this, "selfSummonType")}, select_summons), 
+                        selfSummon[0].label, React.createElement(FormControl, {componentClass: "select", value: this.state.selfSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "self", 0)}, select_summonAmounts), 
+                        selfSummon[1].label, React.createElement(FormControl, {componentClass: "select", className: selfSummon[1].input, value: this.state.selfSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "self", 1)}, select_summonAmounts)
                     ), 
                     React.createElement("td", null, 
-                        React.createElement(FormControl, {componentClass: "select", value: this.state.friendElement, onChange: this.handleEvent.bind(this, "friendElement")}, select_summonElements), 
-                        React.createElement(FormControl, {componentClass: "select", value: this.state.friendSummonType, onChange: this.handleEvent.bind(this, "friendSummonType")}, select_summons), 
-                        friendSummon[0].label, React.createElement(FormControl, {type: friendSummon[0].input, placeholder: "加護量", min: "0", max: "200", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)}), 
-                        friendSummon[1].label, React.createElement(FormControl, {type: friendSummon[1].input, placeholder: "加護量", min: "0", max: "200", value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)})
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.friendElement, onChange: this.handleSelectEvent.bind(this, "friendElement")}, select_summonElements), 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.friendSummonType, onChange: this.handleSelectEvent.bind(this, "friendSummonType")}, select_summons), 
+                        friendSummon[0].label, React.createElement(FormControl, {componentClass: "select", value: this.state.friendSummonAmount, onChange: this.handleSummonAmountChange.bind(this, "friend", 0)}, select_summonAmounts), 
+                        friendSummon[1].label, React.createElement(FormControl, {componentClass: "select", className: friendSummon[1].input, value: this.state.friendSummonAmount2, onChange: this.handleSummonAmountChange.bind(this, "friend", 1)}, select_summonAmounts)
                     ), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBonus, onChange: this.handleEvent.bind(this, "hpBonus")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.attack, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "attack")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hp, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "hp")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBonus, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "hpBonus")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.DA, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "DA")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.TA, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "TA")})), 
                     React.createElement("td", null, 
                         React.createElement(ButtonGroup, {vertical: true}, 
                             React.createElement(Button, {bsStyle: "primary", block: true, onClick: this.clickRemoveButton}, "削除"), 
@@ -49227,12 +49349,6 @@ var ResultList = React.createClass({displayName: "ResultList",
         return damage + overedDamage
     },
     calculateOneCombination: function(comb, summon, prof, arml, totals, buff){
-        // var tempArmList = []
-        // for(var i = 0; i < arml.length; i++){
-        //     for(var j = 0; j < comb[i]; j++){
-        //         tempArmList.push(arml[i]);
-        //     }
-        // }
         this.addSkilldataToTotals(totals, comb, arml, buff)
         var result = []
         for(var i = 0; i < summon.length; i++){
@@ -50899,7 +51015,7 @@ var ArmList = React.createClass({displayName: "ArmList",
                     alert("追加しました。")
                 }
             } else {
-                alert("キャラがいっぱいです。")
+                alert("武器がいっぱいです。")
             }
         }
     },
@@ -51311,8 +51427,14 @@ var Arm = React.createClass({displayName: "Arm",
        this.props.onChange(this.props.id, state, false);
     },
     handleEvent: function(key, e) {
+        // input の時は親に送らない
         var newState = this.state
-        var isSubtle = false
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    handleSelectEvent: function(key, e) {
+        // Selectの時は親に送ってしまっていい
+        var newState = this.state
         if(key == "considerNumberMin"){
             if (parseInt(e.target.value) > parseInt(this.state.considerNumberMax)) {
                 newState["considerNumberMax"] = parseInt(e.target.value)
@@ -51324,13 +51446,19 @@ var Arm = React.createClass({displayName: "Arm",
             }
             newState[key] = parseInt(e.target.value)
         } else {
-            if(key == "name") isSubtle = true
-
             newState[key] = e.target.value
         }
 
         this.setState(newState)
-        this.props.onChange(this.props.id, newState, isSubtle)
+        this.props.onChange(this.props.id, newState, false)
+    },
+    handleOnBlur: function(key, e) {
+        // フォーカスが外れた時だけ変更を親に送る
+        if(key == "name") {
+            this.props.onChange(this.props.id, this.state, true)
+        } else {
+            this.props.onChange(this.props.id, this.state, false)
+        }
     },
     clickRemoveButton: function(e) {
         this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
@@ -51343,21 +51471,21 @@ var Arm = React.createClass({displayName: "Arm",
             return (
                 React.createElement("table", {className: "table table-bordered"}, 
                 React.createElement("tbody", null, 
-                    React.createElement("tr", null, React.createElement("th", null, "武器名"), React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "攻撃力"), React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "HP"), React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}))), 
-                    React.createElement("tr", null, React.createElement("th", null, "種類"), React.createElement("td", {className: "select"}, React.createElement(FormControl, {componentClass: "select", value: this.state.armType, onChange: this.handleEvent.bind(this, "armType")}, " ", select_armtypes, " "))), 
+                    React.createElement("tr", null, React.createElement("th", null, "武器名"), React.createElement("td", null, React.createElement(FormControl, {type: "text", placeholder: "武器名", value: this.state.name, onBlur: this.handleOnBlur.bind(this, "name"), onChange: this.handleEvent.bind(this, "name")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "攻撃力"), React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onBlur: this.handleOnBlur.bind(this, "attack"), onChange: this.handleEvent.bind(this, "attack")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "HP"), React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onBlur: this.handleOnBlur.bind(this, "hp"), onChange: this.handleEvent.bind(this, "hp")}))), 
+                    React.createElement("tr", null, React.createElement("th", null, "種類"), React.createElement("td", {className: "select"}, React.createElement(FormControl, {componentClass: "select", value: this.state.armType, onChange: this.handleSelectEvent.bind(this, "armType")}, " ", select_armtypes, " "))), 
                     React.createElement("tr", null, React.createElement("th", null, "スキル"), 
                     React.createElement("td", null, 
-                        React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " "), 
-                        React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill1, onChange: this.handleEvent.bind(this, "skill1")}, " ", select_skills), React.createElement("br", null), 
-                        React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element2, onChange: this.handleEvent.bind(this, "element2")}, " ", select_elements, " "), 
-                        React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill2, onChange: this.handleEvent.bind(this, "skill2")}, " ", select_skills)
+                        React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element, onChange: this.handleSelectEvent.bind(this, "element")}, " ", select_elements, " "), 
+                        React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill1, onChange: this.handleSelectEvent.bind(this, "skill1")}, " ", select_skills), React.createElement("br", null), 
+                        React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element2, onChange: this.handleSelectEvent.bind(this, "element2")}, " ", select_elements, " "), 
+                        React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill2, onChange: this.handleSelectEvent.bind(this, "skill2")}, " ", select_skills)
                     )), 
-                    React.createElement("tr", null, React.createElement("th", null, "スキルレベル"), React.createElement("td", {className: "select"}, React.createElement(FormControl, {componentClass: "select", value: this.state.slv, onChange: this.handleEvent.bind(this, "slv")}, " ", select_slv, " "))), 
+                    React.createElement("tr", null, React.createElement("th", null, "スキルレベル"), React.createElement("td", {className: "select"}, React.createElement(FormControl, {componentClass: "select", value: this.state.slv, onChange: this.handleSelectEvent.bind(this, "slv")}, " ", select_slv, " "))), 
                     React.createElement("tr", null, React.createElement("th", null, "考慮本数"), React.createElement("td", {className: "consider"}, 
-                        "min: ", React.createElement(FormControl, {componentClass: "select", className: "consider", value: this.state.considerNumberMin, onChange: this.handleEvent.bind(this, "considerNumberMin")}, " ", select_consider, " "), React.createElement("br", null), 
-                        "max: ", React.createElement(FormControl, {componentClass: "select", className: "consider", value: this.state.considerNumberMax, onChange: this.handleEvent.bind(this, "considerNumberMax")}, " ", select_consider, " ")
+                        "min: ", React.createElement(FormControl, {componentClass: "select", className: "consider", value: this.state.considerNumberMin, onChange: this.handleSelectEvent.bind(this, "considerNumberMin")}, " ", select_consider, " "), React.createElement("br", null), 
+                        "max: ", React.createElement(FormControl, {componentClass: "select", className: "consider", value: this.state.considerNumberMax, onChange: this.handleSelectEvent.bind(this, "considerNumberMax")}, " ", select_consider, " ")
                     )), 
                     React.createElement("tr", null, React.createElement("th", null, "操作"), 
                     React.createElement("td", null, 
@@ -51372,20 +51500,20 @@ var Arm = React.createClass({displayName: "Arm",
         } else {
             return (
                 React.createElement("tr", null, 
-                    React.createElement("td", {className: "armname"}, React.createElement(FormControl, {type: "text", placeholder: "武器名", value: this.state.name, onChange: this.handleEvent.bind(this, "name")})), 
-                    React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onChange: this.handleEvent.bind(this, "attack")})), 
-                    React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")})), 
-                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.armType, onChange: this.handleEvent.bind(this, "armType")}, " ", select_armtypes, " ")), 
+                    React.createElement("td", {className: "armname"}, React.createElement(FormControl, {type: "text", placeholder: "武器名", value: this.state.name, onBlur: this.handleOnBlur.bind(this, "name"), onChange: this.handleEvent.bind(this, "name")})), 
+                    React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.attack, onBlur: this.handleOnBlur.bind(this, "attack"), onChange: this.handleEvent.bind(this, "attack")})), 
+                    React.createElement("td", {className: "atkhp"}, React.createElement(FormControl, {type: "number", placeholder: "0以上の整数", min: "0", value: this.state.hp, onBlur: this.handleOnBlur.bind(this, "hp"), onChange: this.handleEvent.bind(this, "hp")})), 
+                    React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.armType, onChange: this.handleSelectEvent.bind(this, "armType")}, " ", select_armtypes, " ")), 
                     React.createElement("td", {className: "skillselect"}, 
-                        React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " "), 
-                        React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill1, onChange: this.handleEvent.bind(this, "skill1")}, " ", select_skills), React.createElement("br", null), 
-                        React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element2, onChange: this.handleEvent.bind(this, "element2")}, " ", select_elements, " "), 
-                        React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill2, onChange: this.handleEvent.bind(this, "skill2")}, " ", select_skills)
+                        React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element, onChange: this.handleSelectEvent.bind(this, "element")}, " ", select_elements, " "), 
+                        React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill1, onChange: this.handleSelectEvent.bind(this, "skill1")}, " ", select_skills), React.createElement("br", null), 
+                        React.createElement(FormControl, {componentClass: "select", className: "element", value: this.state.element2, onChange: this.handleSelectEvent.bind(this, "element2")}, " ", select_elements, " "), 
+                        React.createElement(FormControl, {componentClass: "select", className: "skill", value: this.state.skill2, onChange: this.handleSelectEvent.bind(this, "skill2")}, " ", select_skills)
                     ), 
-                    React.createElement("td", {className: "select"}, React.createElement(FormControl, {componentClass: "select", value: this.state.slv, onChange: this.handleEvent.bind(this, "slv")}, " ", select_slv, " ")), 
+                    React.createElement("td", {className: "select"}, React.createElement(FormControl, {componentClass: "select", value: this.state.slv, onChange: this.handleSelectEvent.bind(this, "slv")}, " ", select_slv, " ")), 
                     React.createElement("td", {className: "consider"}, 
-                        "min: ", React.createElement(FormControl, {componentClass: "select", className: "consider", value: this.state.considerNumberMin, onChange: this.handleEvent.bind(this, "considerNumberMin")}, " ", select_consider, " "), React.createElement("br", null), 
-                        "max: ", React.createElement(FormControl, {componentClass: "select", className: "consider", value: this.state.considerNumberMax, onChange: this.handleEvent.bind(this, "considerNumberMax")}, " ", select_consider, " ")
+                        "min: ", React.createElement(FormControl, {componentClass: "select", className: "consider", value: this.state.considerNumberMin, onChange: this.handleSelectEvent.bind(this, "considerNumberMin")}, " ", select_consider, " "), React.createElement("br", null), 
+                        "max: ", React.createElement(FormControl, {componentClass: "select", className: "consider", value: this.state.considerNumberMax, onChange: this.handleSelectEvent.bind(this, "considerNumberMax")}, " ", select_consider, " ")
                     ), 
                     React.createElement("td", {className: "system"}, 
                         React.createElement(ButtonGroup, {vertical: true}, 
@@ -51449,14 +51577,25 @@ var Profile = React.createClass({displayName: "Profile",
         };
     },
     handleEvent: function(key, e) {
-      var newState = this.state
-      newState[key] = e.target.value
-      if(key == "job") {
-          newState.DA = Jobs[e.target.value].DaBonus
-          newState.TA = Jobs[e.target.value].TaBonus
-      }
-      this.setState(newState)
-      this.props.onChange(newState)
+        // input タイプの入力フォームはonBlurを利用する
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    handleOnBlur: function(e) {
+        // フォーカスが外れた時だけ変更を親に送る
+        this.props.onChange(this.state)
+    },
+    handleSelectEvent: function(key, e) {
+        // select タイプの入力フォームはonChangeの際で良い
+        var newState = this.state
+        newState[key] = e.target.value
+        if(key == "job") {
+            newState.DA = Jobs[e.target.value].DaBonus
+            newState.TA = Jobs[e.target.value].TaBonus
+        }
+        this.setState(newState)
+        this.props.onChange(newState)
     },
     render: function() {
         if(_ua.Mobile) {
@@ -51472,10 +51611,10 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"}, "マスボ", React.createElement("br", null), "ATK(%)*")
                         ), 
                         React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "175", value: this.state.rank, onChange: this.handleEvent.bind(this, "rank")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithAttackBonus, onChange: this.handleEvent.bind(this, "zenithAttackBonus")}, " ", select_zenithAttack, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithHPBonus, onChange: this.handleEvent.bind(this, "zenithHPBonus")}, " ", select_zenithHP, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")}, select_masteratk))
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "1", max: "175", value: this.state.rank, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "rank")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithAttackBonus, onChange: this.handleSelectEvent.bind(this, "zenithAttackBonus")}, " ", select_zenithAttack, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithHPBonus, onChange: this.handleSelectEvent.bind(this, "zenithHPBonus")}, " ", select_zenithHP, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonus, onChange: this.handleSelectEvent.bind(this, "masterBonus")}, select_masteratk))
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "マスボ", React.createElement("br", null), "HP(%)*"), 
@@ -51483,9 +51622,9 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"}, "残HP(%)", React.createElement("br", null), "(ジータのみ)")
                         ), 
                         React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")}, select_masterhp)), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.job, onChange: this.handleEvent.bind(this, "job")}, " ", this.props.alljobs)), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}, select_hplist))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonusHP, onChange: this.handleSelectEvent.bind(this, "masterBonusHP")}, select_masterhp)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.job, onChange: this.handleSelectEvent.bind(this, "job")}, " ", this.props.alljobs)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.remainHP, onChange: this.handleSelectEvent.bind(this, "remainHP")}, select_hplist))
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "ジータ属性*"), 
@@ -51494,10 +51633,10 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"}, "武器ゼニス2")
                         ), 
                         React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyElement, onChange: this.handleEvent.bind(this, "enemyElement")}, " ", select_elements, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus1, onChange: this.handleEvent.bind(this, "zenithBonus1")}, " ", this.props.zenithBonuses, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus2, onChange: this.handleEvent.bind(this, "zenithBonus2")}, " ", this.props.zenithBonuses, " "))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleSelectEvent.bind(this, "element")}, " ", select_elements, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyElement, onChange: this.handleSelectEvent.bind(this, "enemyElement")}, " ", select_elements, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus1, onChange: this.handleSelectEvent.bind(this, "zenithBonus1")}, " ", this.props.zenithBonuses, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus2, onChange: this.handleSelectEvent.bind(this, "zenithBonus2")}, " ", this.props.zenithBonuses, " "))
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "基礎DA率"), 
@@ -51506,10 +51645,10 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"}, "奥義倍率")
                         ), 
                         React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyDefense, onChange: this.handleEvent.bind(this, "enemyDefense")}, " ", select_enemydeftypes, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiRatio, onChange: this.handleEvent.bind(this, "ougiRatio")}, " ", select_ougiRatio, " "))
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "DA")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "TA")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyDefense, onChange: this.handleSelectEvent.bind(this, "enemyDefense")}, " ", select_enemydeftypes, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiRatio, onChange: this.handleSelectEvent.bind(this, "ougiRatio")}, " ", select_ougiRatio, " "))
                         )
                         )
                     ), 
@@ -51534,20 +51673,20 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "buff"}, "その他バフ"), 
                             React.createElement("th", {className: "buff"}, "HPバフ")
                         ), React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.normalBuff, onChange: this.handleEvent.bind(this, "normalBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.elementBuff, onChange: this.handleEvent.bind(this, "elementBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.otherBuff, onChange: this.handleEvent.bind(this, "otherBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBuff, onChange: this.handleEvent.bind(this, "hpBuff")}))
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.normalBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "normalBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.elementBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "elementBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.otherBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "otherBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "hpBuff")}))
                         ), React.createElement("tr", null, 
                             React.createElement("th", {className: "buff"}, "DAバフ"), 
                             React.createElement("th", {className: "buff"}, "TAバフ"), 
                             React.createElement("th", {className: "buff"}, "残HP(%)"), 
                             React.createElement("th", {className: "prof"}, "奥義ゲージ上昇率アップ")
                         ), React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.daBuff, onChange: this.handleEvent.bind(this, "daBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.taBuff, onChange: this.handleEvent.bind(this, "taBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}, select_hplist)), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiGageBuff, onChange: this.handleEvent.bind(this, "ougiGageBuff")}, " ", select_ougiGageBuff, " "))
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.daBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "daBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.taBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "taBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.hp, onChange: this.handleSelectEvent.bind(this, "hp")}, select_hplist)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiGageBuff, onChange: this.handleSelectEvent.bind(this, "ougiGageBuff")}, " ", select_ougiGageBuff, " "))
                         )
                         )
                     )
@@ -51556,6 +51695,8 @@ var Profile = React.createClass({displayName: "Profile",
         } else {
             return (
                 React.createElement("div", {className: "profile"}, 
+                    React.createElement("p", {className: "text-danger"}, "これまで「各フォームの値が変更された時に結果を更新」していましたが、入力途中でも結果が更新されてしまい結果として重く感じる状態となっていました。8/28のアップデートにて「特定の入力フォームにおいては、フォームからフォーカスが外れた時に結果を更新」へと挙動を変更しました。(rank,召喚石攻撃力、武器名、武器攻撃力などが該当します。）フォームへ値を入力した後、フォーム外をクリックする、別のフォームをクリックする等の操作を行った際に結果が更新されます。" + ' ' +
+                    "選択メニューの場合はこれまで通り選択した時点で値が更新されるようになっているため、全体的な使い勝手としては大きく変わっていないかと思いますが、もし「元の挙動のが良かった！」というご意見がありましたらご連絡下さい。"), 
                     React.createElement("h3", null, " ジータちゃん情報 (*: 推奨入力項目)"), 
                     React.createElement("table", {className: "table table-bordered"}, 
                         React.createElement("tbody", null, 
@@ -51569,13 +51710,13 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"}, "残HP(%)", React.createElement("br", null), "(ジータのみ)")
                         ), 
                         React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "175", value: this.state.rank, onChange: this.handleEvent.bind(this, "rank")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithAttackBonus, onChange: this.handleEvent.bind(this, "zenithAttackBonus")}, " ", select_zenithAttack, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithHPBonus, onChange: this.handleEvent.bind(this, "zenithHPBonus")}, " ", select_zenithHP, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonus, onChange: this.handleEvent.bind(this, "masterBonus")}, select_masteratk)), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonusHP, onChange: this.handleEvent.bind(this, "masterBonusHP")}, select_masterhp)), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.job, onChange: this.handleEvent.bind(this, "job")}, " ", this.props.alljobs, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.remainHP, onChange: this.handleEvent.bind(this, "remainHP")}, select_hplist))
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "1", max: "175", value: this.state.rank, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "rank")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithAttackBonus, onChange: this.handleSelectEvent.bind(this, "zenithAttackBonus")}, " ", select_zenithAttack, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithHPBonus, onChange: this.handleSelectEvent.bind(this, "zenithHPBonus")}, " ", select_zenithHP, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonus, onChange: this.handleSelectEvent.bind(this, "masterBonus")}, select_masteratk)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.masterBonusHP, onChange: this.handleSelectEvent.bind(this, "masterBonusHP")}, select_masterhp)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.job, onChange: this.handleSelectEvent.bind(this, "job")}, " ", this.props.alljobs, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.remainHP, onChange: this.handleSelectEvent.bind(this, "remainHP")}, select_hplist))
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "ジータ属性*"), 
@@ -51587,13 +51728,13 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"}, "敵防御固有値")
                         ), 
                         React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleEvent.bind(this, "element")}, " ", select_elements, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyElement, onChange: this.handleEvent.bind(this, "enemyElement")}, " ", select_elements, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus1, onChange: this.handleEvent.bind(this, "zenithBonus1")}, " ", this.props.zenithBonuses, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus2, onChange: this.handleEvent.bind(this, "zenithBonus2")}, " ", this.props.zenithBonuses, " ")), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onChange: this.handleEvent.bind(this, "DA")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onChange: this.handleEvent.bind(this, "TA")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyDefense, onChange: this.handleEvent.bind(this, "enemyDefense")}, " ", select_enemydeftypes, " "))
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.element, onChange: this.handleSelectEvent.bind(this, "element")}, " ", select_elements, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyElement, onChange: this.handleSelectEvent.bind(this, "enemyElement")}, " ", select_elements, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus1, onChange: this.handleSelectEvent.bind(this, "zenithBonus1")}, " ", this.props.zenithBonuses, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.zenithBonus2, onChange: this.handleSelectEvent.bind(this, "zenithBonus2")}, " ", this.props.zenithBonuses, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.DA, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "DA")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", step: "0.1", value: this.state.TA, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "TA")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.enemyDefense, onChange: this.handleSelectEvent.bind(this, "enemyDefense")}, " ", select_enemydeftypes, " "))
                         ), 
                         React.createElement("tr", null, 
                             React.createElement("th", {className: "prof"}, "奥義倍率"), 
@@ -51605,7 +51746,7 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "prof"})
                         ), 
                         React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiRatio, onChange: this.handleEvent.bind(this, "ougiRatio")}, " ", select_ougiRatio, " ")), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiRatio, onChange: this.handleSelectEvent.bind(this, "ougiRatio")}, " ", select_ougiRatio, " ")), 
                             React.createElement("td", null), 
                             React.createElement("td", null), 
                             React.createElement("td", null), 
@@ -51640,14 +51781,14 @@ var Profile = React.createClass({displayName: "Profile",
                             React.createElement("th", {className: "buff"}, "残HP(%)"), 
                             React.createElement("th", {className: "buff"}, "奥義ゲージ上昇率アップ")
                         ), React.createElement("tr", null, 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.normalBuff, onChange: this.handleEvent.bind(this, "normalBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.elementBuff, onChange: this.handleEvent.bind(this, "elementBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.otherBuff, onChange: this.handleEvent.bind(this, "otherBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBuff, onChange: this.handleEvent.bind(this, "hpBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.daBuff, onChange: this.handleEvent.bind(this, "daBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.taBuff, onChange: this.handleEvent.bind(this, "taBuff")})), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.hp, onChange: this.handleEvent.bind(this, "hp")}, select_hplist)), 
-                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiGageBuff, onChange: this.handleEvent.bind(this, "ougiGageBuff")}, " ", select_ougiGageBuff, " "))
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.normalBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "normalBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.elementBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "elementBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.otherBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "otherBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", value: this.state.hpBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "hpBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.daBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "daBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {type: "number", min: "0", max: "100", value: this.state.taBuff, onBlur: this.handleOnBlur, onChange: this.handleEvent.bind(this, "taBuff")})), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.hp, onChange: this.handleSelectEvent.bind(this, "hp")}, select_hplist)), 
+                            React.createElement("td", null, React.createElement(FormControl, {componentClass: "select", value: this.state.ougiGageBuff, onChange: this.handleSelectEvent.bind(this, "ougiGageBuff")}, " ", select_ougiGageBuff, " "))
                         )
                         )
                     )
@@ -51830,7 +51971,7 @@ var TwitterShareButton = React.createClass ({displayName: "TwitterShareButton",
     },
 });
 
-var HowTo = React.createClass({displayName: "HowTo",
+var NiteHowTo = React.createClass({displayName: "NiteHowTo",
     render: function() {
         return (
             React.createElement("div", {className: "howTo"}, 
@@ -51921,6 +52062,7 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", {className: "list-group"}, 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/28: 結果の計算タイミングを変更 / 計算機の使い方を追加"), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/27: 優先キー\"総合攻撃力\"を、\"攻撃力(二手技巧無し)\"に変更。（勘違いされる方が多かったため) "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/27: グラフ表示キーに技巧期待値と技巧期待値のパーティ平均を追加 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/26: 背水グラフの値がおかしくなっていたのを修正 (8/25の計算量削減処理でのミス) "), 
