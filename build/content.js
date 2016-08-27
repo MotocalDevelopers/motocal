@@ -167,8 +167,6 @@ if (Buffer.TYPED_ARRAY_SUPPORT) {
 function assertSize (size) {
   if (typeof size !== 'number') {
     throw new TypeError('"size" argument must be a number')
-  } else if (size < 0) {
-    throw new RangeError('"size" argument must not be negative')
   }
 }
 
@@ -245,7 +243,7 @@ function fromString (that, string, encoding) {
 }
 
 function fromArrayLike (that, array) {
-  var length = array.length < 0 ? 0 : checked(array.length) | 0
+  var length = checked(array.length) | 0
   that = createBuffer(that, length)
   for (var i = 0; i < length; i += 1) {
     that[i] = array[i] & 255
@@ -314,7 +312,7 @@ function fromObject (that, obj) {
 }
 
 function checked (length) {
-  // Note: cannot use `length < kMaxLength()` here because that fails when
+  // Note: cannot use `length < kMaxLength` here because that fails when
   // length is NaN (which is otherwise coerced to zero.)
   if (length >= kMaxLength()) {
     throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
@@ -47383,10 +47381,10 @@ var enemyDefenseType = {
     20.0: {"name": "20.0(プロバハHL?)"},
 }
 var keyTypes = {
-    "totalAttack":"総合攻撃力",
+    "totalAttack":"攻撃力(二手技巧無し)",
     "totalHP": "ジータHP",
     "ATKandHP": "戦力",
-    "averageAttack": "パーティ平均攻撃力",
+    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
     "criticalAttack": "技巧期待値",
     "averageCriticalAttack": "技巧期待平均攻撃力",
     "totalExpected": "総合攻撃*期待回数*技巧期待値",
@@ -47395,8 +47393,8 @@ var keyTypes = {
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
 }
 var supportedChartSortkeys = {
-    "totalAttack": "総合攻撃力",
-    "averageAttack": "パーティ平均攻撃力",
+    "totalAttack": "攻撃力(二手技巧無し)",
+    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
     "criticalAttack": "技巧期待値",
     "averageCriticalAttack": "技巧期待平均攻撃力",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
@@ -49620,7 +49618,7 @@ var ResultList = React.createClass({displayName: "ResultList",
           // 後から追加したパラメータはNaNなことがあるので追加処理
           // sortKey がNaNでないならそちらを使う、NaNなら総合攻撃力で
           var sortkey = "totalAttack"
-          var sortkeyname = "総合攻撃力"
+          var sortkeyname = "攻撃力(二手技巧無し)"
           if(newprops.data.sortKey == newprops.data.sortKey) {
               sortkey = newprops.data.sortKey
               sortkeyname = keyTypes[sortkey]
@@ -49740,7 +49738,7 @@ var ResultList = React.createClass({displayName: "ResultList",
             switchDamage: 0,
             switchOugiGage: 0,
             switchOugiDamage: 0,
-            switchCycleDamage: 0,
+            switchCycleDamage: 1,
             switchAverageCycleDamage: 0,
             disableAutoResultUpdate: 0,
             result: {summon: this.props.data.summon, result: []},
@@ -49809,7 +49807,7 @@ var ResultList = React.createClass({displayName: "ResultList",
         var totals = this.getInitialTotals(prof, chara, summon)
 
         var sortkey = "totalAttack"
-        var sortkeyname = "総合攻撃力"
+        var sortkeyname = "攻撃力(二手技巧無し)"
         if(this.props.data.sortKey == this.props.data.sortKey) {
             sortkey = this.props.data.sortKey
             sortkeyname = keyTypes[sortkey]
@@ -50136,7 +50134,7 @@ var ResultList = React.createClass({displayName: "ResultList",
 
         var tableheader = []
         if(switcher.switchTotalAttack) {
-            tableheader.push('総合攻撃力')
+            tableheader.push('攻撃力(二手技巧無し)')
         }
         if(switcher.switchATKandHP) {
             tableheader.push('戦力')
@@ -50168,7 +50166,7 @@ var ResultList = React.createClass({displayName: "ResultList",
             }
         }
         if(switcher.switchAverageAttack) {
-            tableheader.push('パーティ平均攻撃力')
+            tableheader.push('パーティ平均攻撃力(二手技巧無し)')
         }
         if(switcher.switchTotalExpected) {
             tableheader.push('総合*回数*技巧')
@@ -50220,7 +50218,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                     React.createElement("table", {className: "displayElement"}, 
                     React.createElement("tbody", null, 
                     React.createElement("tr", null, 
-                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchTotalAttack, onChange: this.handleEvent.bind(this, "switchTotalAttack")}), " 総合攻撃力"), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchTotalAttack, onChange: this.handleEvent.bind(this, "switchTotalAttack")}), " 攻撃力(二手技巧無し)"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchATKandHP, onChange: this.handleEvent.bind(this, "switchATKandHP")}), " 戦力")
                     ), React.createElement("tr", null, 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchHP, onChange: this.handleEvent.bind(this, "switchHP")}), " HP"), 
@@ -50232,7 +50230,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchCharaAttack, onChange: this.handleEvent.bind(this, "switchCharaAttack")}), " キャラ攻撃力"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchCharaHP, onChange: this.handleEvent.bind(this, "switchCharaHP")}), " キャラHP")
                     ), React.createElement("tr", null, 
-                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力"), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力(二手技巧無し)"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値")
                     ), React.createElement("tr", null, 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総回技のパーティ平均値"), 
@@ -50348,7 +50346,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                     "表示項目制御:", 
                     React.createElement("table", {className: "displayElement"}, React.createElement("tbody", null, 
                     React.createElement("tr", null, 
-                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchTotalAttack, onChange: this.handleEvent.bind(this, "switchTotalAttack")}), " 総合攻撃力"), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchTotalAttack, onChange: this.handleEvent.bind(this, "switchTotalAttack")}), " 攻撃力(二手技巧無し) "), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchATKandHP, onChange: this.handleEvent.bind(this, "switchATKandHP")}), " 戦力"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchHP, onChange: this.handleEvent.bind(this, "switchHP")}), " HP"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchDATA, onChange: this.handleEvent.bind(this, "switchDATA")}), " 連続攻撃率"), 
@@ -50357,7 +50355,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                     ), React.createElement("tr", null, 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchCharaAttack, onChange: this.handleEvent.bind(this, "switchCharaAttack")}), " キャラ攻撃力"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchCharaHP, onChange: this.handleEvent.bind(this, "switchCharaHP")}), " キャラHP"), 
-                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力"), 
+                        React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageAttack, onChange: this.handleEvent.bind(this, "switchAverageAttack")}), " パーティ平均攻撃力(二手技巧無し)"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchTotalExpected, onChange: this.handleEvent.bind(this, "switchTotalExpected")}), " 総合*期待回数*技巧期待値"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchAverageTotalExpected, onChange: this.handleEvent.bind(this, "switchAverageTotalExpected")}), " 総回技のパーティ平均値"), 
                         React.createElement("td", null, React.createElement(Checkbox, {inline: true, checked: this.state.switchDamage, onChange: this.handleEvent.bind(this, "switchDamage")}), " 単攻撃ダメージ")
@@ -51923,6 +51921,7 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", {className: "list-group"}, 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/27: 優先キー\"総合攻撃力\"を、\"攻撃力(二手技巧無し)\"に変更。（勘違いされる方が多かったため) "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/27: グラフ表示キーに技巧期待値と技巧期待値のパーティ平均を追加 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/26: 背水グラフの値がおかしくなっていたのを修正 (8/25の計算量削減処理でのミス) "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/26: 武器追加時にLvとSLvも選べるようにした "), 

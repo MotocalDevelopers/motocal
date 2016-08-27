@@ -33,10 +33,10 @@ var enemyDefenseType = {
     20.0: {"name": "20.0(プロバハHL?)"},
 }
 var keyTypes = {
-    "totalAttack":"総合攻撃力",
+    "totalAttack":"攻撃力(二手技巧無し)",
     "totalHP": "ジータHP",
     "ATKandHP": "戦力",
-    "averageAttack": "パーティ平均攻撃力",
+    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
     "criticalAttack": "技巧期待値",
     "averageCriticalAttack": "技巧期待平均攻撃力",
     "totalExpected": "総合攻撃*期待回数*技巧期待値",
@@ -45,8 +45,8 @@ var keyTypes = {
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
 }
 var supportedChartSortkeys = {
-    "totalAttack": "総合攻撃力",
-    "averageAttack": "パーティ平均攻撃力",
+    "totalAttack": "攻撃力(二手技巧無し)",
+    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
     "criticalAttack": "技巧期待値",
     "averageCriticalAttack": "技巧期待平均攻撃力",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
@@ -2270,7 +2270,7 @@ var ResultList = React.createClass({
           // 後から追加したパラメータはNaNなことがあるので追加処理
           // sortKey がNaNでないならそちらを使う、NaNなら総合攻撃力で
           var sortkey = "totalAttack"
-          var sortkeyname = "総合攻撃力"
+          var sortkeyname = "攻撃力(二手技巧無し)"
           if(newprops.data.sortKey == newprops.data.sortKey) {
               sortkey = newprops.data.sortKey
               sortkeyname = keyTypes[sortkey]
@@ -2459,7 +2459,7 @@ var ResultList = React.createClass({
         var totals = this.getInitialTotals(prof, chara, summon)
 
         var sortkey = "totalAttack"
-        var sortkeyname = "総合攻撃力"
+        var sortkeyname = "攻撃力(二手技巧無し)"
         if(this.props.data.sortKey == this.props.data.sortKey) {
             sortkey = this.props.data.sortKey
             sortkeyname = keyTypes[sortkey]
@@ -2786,7 +2786,7 @@ var ResultList = React.createClass({
 
         var tableheader = []
         if(switcher.switchTotalAttack) {
-            tableheader.push('総合攻撃力')
+            tableheader.push('攻撃力(二手技巧無し)')
         }
         if(switcher.switchATKandHP) {
             tableheader.push('戦力')
@@ -2818,7 +2818,7 @@ var ResultList = React.createClass({
             }
         }
         if(switcher.switchAverageAttack) {
-            tableheader.push('パーティ平均攻撃力')
+            tableheader.push('パーティ平均攻撃力(二手技巧無し)')
         }
         if(switcher.switchTotalExpected) {
             tableheader.push('総合*回数*技巧')
@@ -2870,7 +2870,7 @@ var ResultList = React.createClass({
                     <table className="displayElement">
                     <tbody>
                     <tr>
-                        <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し)</td>
                         <td><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
@@ -2882,7 +2882,7 @@ var ResultList = React.createClass({
                         <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
                         <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</td>
                         <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
@@ -2998,7 +2998,7 @@ var ResultList = React.createClass({
                     表示項目制御:
                     <table className="displayElement"><tbody>
                     <tr>
-                        <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 総合攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </td>
                         <td><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
                         <td><Checkbox inline checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
                         <td><Checkbox inline checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
@@ -3007,7 +3007,7 @@ var ResultList = React.createClass({
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
                         <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
-                        <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</td>
                         <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
                         <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
                         <td><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 単攻撃ダメージ</td>
@@ -4573,6 +4573,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/08/27: 優先キー"総合攻撃力"を、"攻撃力(二手技巧無し)"に変更。（勘違いされる方が多かったため) </li>
                 <li className="list-group-item list-group-item-info">2016/08/27: グラフ表示キーに技巧期待値と技巧期待値のパーティ平均を追加 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/26: 背水グラフの値がおかしくなっていたのを修正 (8/25の計算量削減処理でのミス) </li>
                 <li className="list-group-item list-group-item-info">2016/08/26: 武器追加時にLvとSLvも選べるようにした </li>
