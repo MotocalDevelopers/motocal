@@ -1370,54 +1370,61 @@ var Chara = React.createClass({
     },
     handleEvent: function(key, e) {
         var newState = this.state
-        var isSubtle = false
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    handleSelectEvent: function(key, e) {
+        var newState = this.state
 
         if(key == "isConsideredInAverage") {
             newState[key] = (newState[key] == false) ? true : false
         } else {
-            if(key == "name" && this.state.name != "" && newState.name != "") {
-                isSubtle = true
-            }
-
             newState[key] = e.target.value
         }
         this.setState(newState)
-        this.props.onChange(this.props.id, newState, isSubtle)
+        this.props.onChange(this.props.id, newState, false)
+    },
+    handleOnBlur: function(key, e) {
+        if(key == "name" && this.state.name != "" && e.target.value != "") {
+            this.props.onChange(this.props.id, this.state, true)
+        } else {
+            this.props.onChange(this.props.id, this.state, false)
+        }
     },
     render: function() {
         if(_ua.Mobile) {
             return (
                 <table className="table table-bordered"><tbody>
-                    <tr><th>名前</th><td><FormControl type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td></tr>
-                    <tr><th>属性</th><td><FormControl componentClass="select" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</FormControl></td></tr>
-                    <tr><th>種族</th><td><FormControl componentClass="select" value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</FormControl></td></tr>
-                    <tr><th>タイプ</th><td><FormControl componentClass="select" value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</FormControl></td></tr>
-                    <tr><th>得意武器1</th><td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</FormControl></td></tr>
-                    <tr><th>得意武器2</th><td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</FormControl></td></tr>
-                    <tr><th>平均に含める</th><td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td></tr>
-                    <tr><th>素の攻撃力</th><td><FormControl type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td></tr>
-                    <tr><th>素のHP</th><td><FormControl type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
-                    <tr><th>残HP割合</th><td><FormControl type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td></tr>
-                    <tr><th>基礎DA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td></tr>
-                    <tr><th>基礎TA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td></tr>
+                    <tr><th>名前</th><td><FormControl type="text" placeholder="名前" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/></td></tr>
+                    <tr><th>属性</th><td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{select_elements}</FormControl></td></tr>
+                    <tr><th>種族</th><td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{select_races}</FormControl></td></tr>
+                    <tr><th>タイプ</th><td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{select_types}</FormControl></td></tr>
+                    <tr><th>得意武器1</th><td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{select_armtypes}</FormControl></td></tr>
+                    <tr><th>得意武器2</th><td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{select_armtypes}</FormControl></td></tr>
+                    <tr><th>平均に含める</th><td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")} /></td></tr>
+                    <tr><th>素の攻撃力</th><td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td></tr>
+                    <tr><th>素のHP</th><td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
+                    <tr><th>残HP割合</th><td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td></tr>
+                    <tr><th>基礎DA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td></tr>
+                    <tr><th>基礎TA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td></tr>
                 </tbody></table>
             );
 
         } else {
             return (
                 <tr>
-                    <td><FormControl type="text" placeholder="名前" value={this.state.name} onChange={this.handleEvent.bind(this, "name")}/></td>
-                    <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleEvent.bind(this, "element")} >{select_elements}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.race} onChange={this.handleEvent.bind(this, "race")} >{select_races}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.type} onChange={this.handleEvent.bind(this, "type")} >{select_types}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleEvent.bind(this, "favArm")} >{select_armtypes}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleEvent.bind(this, "favArm2")} >{select_armtypes}</FormControl></td>
-                    <td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleEvent.bind(this, "isConsideredInAverage")} /></td>
-                    <td><FormControl type="number" min="0" max="15000" value={this.state.attack} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                    <td><FormControl type="number" min="0" max="5000" value={this.state.hp} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                    <td><FormControl type="number" min="0" max="100" value={this.state.remainHP} onChange={this.handleEvent.bind(this, "remainHP")}/></td>
-                    <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                    <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                    <td><FormControl type="text" placeholder="名前" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/></td>
+                    <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{select_elements}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{select_races}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{select_types}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{select_armtypes}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{select_armtypes}</FormControl></td>
+                    <td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")} /></td>
+                    <td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                    <td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                    <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
+                    <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td>
                 </tr>
             );
         }
