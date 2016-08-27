@@ -963,7 +963,7 @@ var Root = React.createClass({
                         <NiteHowTo />
                     </div>
                 </div>
-                <div draggable="true" className="drag-hr bg-danger" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
+                <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
                     優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {select_ktypes} </FormControl>
                     <ResultList data={this.state} />
@@ -982,8 +982,7 @@ var HowTo = React.createClass({
                 <p>元カレ計算機（グラブル攻撃力計算機）は、入力された情報を元に、「どのような武器編成が最大の火力を出せるか」を比較算出するためのツールです。</p>
 
                 <h2>使い方</h2>
-                <p>基本的に各項目を埋めていけば、それに従って結果が自動的に更新されます。入力フォームに値を入力したら、フォーム外をクリックする、もしくは他のフォームを選択する等の操作を行った際に、新しい結果が算出されます。</p>
-                <p className="text-danger">これまで「各フォームの値が変更された時に結果を更新」していましたが、、入力途中でも結果が更新されてしまい結果として重く感じる状態となっていました。8/28のアップデートにて「各入力フォームからフォーカスが外れた時に結果を更新」へと挙動を変更しました。フォームへ値を入力した後、フォーム外をクリックする、別のフォームをクリックする等の操作を行った際に結果が更新されます。（これまでと大きく挙動が異なりますのでご注意下さい。）</p>
+                <p>基本的に各項目を埋めていけば、それに従って結果が自動的に更新されます。(選択メニューは値を選択した時点、入力フォームは値を入力した後にフォーム外をクリックする等の操作を行った際に、新しい結果が算出されます。)</p>
                 <p>以下、各項目について説明します。</p>
 
                 <hr/>
@@ -4346,6 +4345,8 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
+                    <p className="text-danger">これまで「各フォームの値が変更された時に結果を更新」していましたが、入力途中でも結果が更新されてしまい結果として重く感じる状態となっていました。8/28のアップデートにて「特定の入力フォームにおいては、フォームからフォーカスが外れた時に結果を更新」へと挙動を変更しました。(rank,召喚石攻撃力、武器名、武器攻撃力などが該当します。）フォームへ値を入力した後、フォーム外をクリックする、別のフォームをクリックする等の操作を行った際に結果が更新されます。
+                    選択メニューの場合はこれまで通り選択した時点で値が更新されるようになっているため、全体的な使い勝手としては大きく変わっていないかと思いますが、もし「元の挙動のが良かった！」というご意見がありましたらご連絡下さい。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>

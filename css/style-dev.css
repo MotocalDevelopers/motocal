@@ -180,8 +180,8 @@ div.Tab.hidden {
 
 @media screen and (max-width: 1450px) {
     .rootleft {
-        margin-left: 1%;
-        margin-right: 1%;
+        margin-left: 0;
+        margin-right: 0;
         width: 98%;
         height: 50%;
         overflow: auto;
@@ -199,10 +199,11 @@ div.Tab.hidden {
         cursor: row-resize;
         height: 5px;
         padding: 0;
-        margin: 2px 0 2px 0;
+        margin: 0 0 0 0;
         text-align: center;
         position: relative;
-        top: -10px;
+        top: 0px;
+        background-color: black;
     }
 }
 
