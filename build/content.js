@@ -167,6 +167,8 @@ if (Buffer.TYPED_ARRAY_SUPPORT) {
 function assertSize (size) {
   if (typeof size !== 'number') {
     throw new TypeError('"size" argument must be a number')
+  } else if (size < 0) {
+    throw new RangeError('"size" argument must not be negative')
   }
 }
 
@@ -243,7 +245,7 @@ function fromString (that, string, encoding) {
 }
 
 function fromArrayLike (that, array) {
-  var length = checked(array.length) | 0
+  var length = array.length < 0 ? 0 : checked(array.length) | 0
   that = createBuffer(that, length)
   for (var i = 0; i < length; i += 1) {
     that[i] = array[i] & 255
@@ -312,7 +314,7 @@ function fromObject (that, obj) {
 }
 
 function checked (length) {
-  // Note: cannot use `length < kMaxLength` here because that fails when
+  // Note: cannot use `length < kMaxLength()` here because that fails when
   // length is NaN (which is otherwise coerced to zero.)
   if (length >= kMaxLength()) {
     throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
@@ -52064,6 +52066,7 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", {className: "list-group"}, 
+                React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/31: SRが存在するSSRキャラの一部がテンプレートに表示されていなかったのを修正。"), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/30: 特定の操作を行うと、コスモス武器が複数同時に編成されてしまう不具合を修正。 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/29: 通常二手SLv15を7.0%から6.6%に、三手の効果量を二手大と同様のものに変更しました。"), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/28: 結果の計算タイミングを変更 / 計算機の使い方を追加"), 

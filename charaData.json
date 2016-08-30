@@ -532,18 +532,18 @@
         "type": "balance", 
         "imageURL": "./charaimgs/3040040000_01.png"
     }, 
-    "サラ": {
+    "サラ(SSR)": {
         "baseDA": 6.5, 
-        "name": "サラ", 
-        "hp": "1300", 
+        "name": "サラ(SSR)", 
+        "hp": "2080", 
         "element": "earth", 
-        "attack": "4500", 
+        "attack": "7200", 
         "race": "human", 
         "baseTA": 3.0, 
         "fav1": "fist", 
         "fav2": "none", 
         "type": "defense", 
-        "imageURL": "./charaimgs/3030021000_01.png"
+        "imageURL": "./charaimgs/3040041000_01.png"
     }, 
     "カルメリーナ": {
         "baseDA": 6.5, 
@@ -558,18 +558,18 @@
         "type": "pecu", 
         "imageURL": "./charaimgs/3040042000_01.png"
     }, 
-    "ヴィーラ": {
+    "ヴィーラ(SSR)": {
         "baseDA": 6.5, 
-        "name": "ヴィーラ", 
-        "hp": "1000", 
+        "name": "ヴィーラ(SSR)", 
+        "hp": "1520", 
         "element": "dark", 
-        "attack": "7000", 
+        "attack": "10640", 
         "race": "human", 
         "baseTA": 3.0, 
         "fav1": "sword", 
         "fav2": "none", 
         "type": "attack", 
-        "imageURL": "./charaimgs/3030019000_01.png"
+        "imageURL": "./charaimgs/3040043000_01.png"
     }, 
     "ソシエ": {
         "baseDA": 6.5, 
@@ -610,9 +610,9 @@
         "type": "pecu", 
         "imageURL": "./charaimgs/3040046000_01.png"
     }, 
-    "ペトラ": {
+    "ペトラ(SSR)": {
         "baseDA": 6.5, 
-        "name": "ペトラ", 
+        "name": "ペトラ(SSR)", 
         "hp": "1650", 
         "element": "wind", 
         "attack": "7680", 
@@ -662,18 +662,18 @@
         "type": "attack", 
         "imageURL": "./charaimgs/3040050000_01.png"
     }, 
-    "アーミラ": {
+    "アーミラ(SSR)": {
         "baseDA": 6.5, 
-        "name": "アーミラ", 
-        "hp": "1200", 
+        "name": "アーミラ(SSR)", 
+        "hp": "1740", 
         "element": "light", 
-        "attack": "7000", 
+        "attack": "10270", 
         "race": "unknown", 
         "baseTA": 3.0, 
         "fav1": "fist", 
         "fav2": "none", 
-        "type": "attack", 
-        "imageURL": "./charaimgs/3030065000_01.png"
+        "type": "pecu", 
+        "imageURL": "./charaimgs/3040051000_01.png"
     }, 
     "ガンダゴウザ": {
         "baseDA": 6.5, 
@@ -792,18 +792,18 @@
         "type": "attack", 
         "imageURL": "./charaimgs/3040060000_01.png"
     }, 
-    "フィーナ": {
+    "フィーナ(SSR)": {
         "baseDA": 6.5, 
-        "name": "フィーナ", 
-        "hp": "960", 
+        "name": "フィーナ(SSR)", 
+        "hp": "1320", 
         "element": "wind", 
-        "attack": "5200", 
+        "attack": "9400", 
         "race": "human", 
         "baseTA": 3.0, 
         "fav1": "bow", 
         "fav2": "none", 
-        "type": "balance", 
-        "imageURL": "./charaimgs/3030035000_01.png"
+        "type": "attack", 
+        "imageURL": "./charaimgs/3040061000_01.png"
     }, 
     "カリオストロ(ハロウィンver)": {
         "baseDA": 6.5, 
@@ -1078,18 +1078,18 @@
         "type": "attack", 
         "imageURL": "./charaimgs/3040082000_01.png"
     }, 
-    "アリーザ": {
+    "アリーザ(SSR)": {
         "baseDA": 6.5, 
-        "name": "アリーザ", 
-        "hp": "840", 
+        "name": "アリーザ(SSR)", 
+        "hp": "1400", 
         "element": "fire", 
-        "attack": "6300", 
+        "attack": "9830", 
         "race": "doraf", 
         "baseTA": 3.0, 
         "fav1": "fist", 
         "fav2": "none", 
         "type": "attack", 
-        "imageURL": "./charaimgs/3030015000_01.png"
+        "imageURL": "./charaimgs/3040083000_01.png"
     }, 
     "アイル": {
         "baseDA": 6.5, 
@@ -1403,6 +1403,19 @@
         "type": "pecu", 
         "imageURL": "./charaimgs/3030014000_01.png"
     }, 
+    "アリーザ": {
+        "baseDA": 6.5, 
+        "name": "アリーザ", 
+        "hp": "840", 
+        "element": "fire", 
+        "attack": "6300", 
+        "race": "doraf", 
+        "baseTA": 3.0, 
+        "fav1": "fist", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3030015000_01.png"
+    }, 
     "ジェシカ": {
         "baseDA": 6.5, 
         "name": "ジェシカ", 
@@ -1442,6 +1455,19 @@
         "type": "balance", 
         "imageURL": "./charaimgs/3030018000_01.png"
     }, 
+    "ヴィーラ": {
+        "baseDA": 6.5, 
+        "name": "ヴィーラ", 
+        "hp": "1000", 
+        "element": "dark", 
+        "attack": "7000", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "sword", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3030019000_01.png"
+    }, 
     "ソリッズ": {
         "baseDA": 6.5, 
         "name": "ソリッズ", 
@@ -1454,6 +1480,19 @@
         "fav2": "none", 
         "type": "attack", 
         "imageURL": "./charaimgs/3030020000_01.png"
+    }, 
+    "サラ": {
+        "baseDA": 6.5, 
+        "name": "サラ", 
+        "hp": "1300", 
+        "element": "earth", 
+        "attack": "4500", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "fist", 
+        "fav2": "none", 
+        "type": "defense", 
+        "imageURL": "./charaimgs/3030021000_01.png"
     }, 
     "ジン": {
         "baseDA": 6.5, 
@@ -1623,6 +1662,19 @@
         "fav2": "none", 
         "type": "heal", 
         "imageURL": "./charaimgs/3030034000_01.png"
+    }, 
+    "フィーナ": {
+        "baseDA": 6.5, 
+        "name": "フィーナ", 
+        "hp": "960", 
+        "element": "wind", 
+        "attack": "5200", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "bow", 
+        "fav2": "none", 
+        "type": "balance", 
+        "imageURL": "./charaimgs/3030035000_01.png"
     }, 
     "アルシャ": {
         "baseDA": 6.5, 
@@ -1987,6 +2039,19 @@
         "fav2": "none", 
         "type": "balance", 
         "imageURL": "./charaimgs/3030064000_01.png"
+    }, 
+    "アーミラ(SR)": {
+        "baseDA": 6.5, 
+        "name": "アーミラ(SR)", 
+        "hp": "1200", 
+        "element": "light", 
+        "attack": "7000", 
+        "race": "unknown", 
+        "baseTA": 3.0, 
+        "fav1": "fist", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3030065000_01.png"
     }, 
     "ヘイゼン": {
         "baseDA": 6.5, 
