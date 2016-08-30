@@ -2401,6 +2401,10 @@ var ResultList = React.createClass({
                       if(arml[i].considerNumberMax != this.state.previousArmlist[i].considerNumberMax || arml[i].considerNumberMin != this.state.previousArmlist[i].considerNumberMin) {
                           isCombinationChanged = true;
                       }
+                      // コスモス武器になったか、コスモス武器じゃなくなったかでコンビネーションが変わる
+                      if(this.isCosmos(arml[i]) != this.isCosmos(this.state.previousArmlist[i])) {
+                          isCombinationChanged = true;
+                      }
                   }
               }
               if(isCombinationChanged) {
@@ -4712,6 +4716,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-danger">2016/08/30: 特定の操作を行うと、コスモス武器が複数同時に編成されてしまう不具合を修正。 </li>
                 <li className="list-group-item list-group-item-info">2016/08/29: 通常二手SLv15を7.0%から6.6%に、三手の効果量を二手大と同様のものに変更しました。</li>
                 <li className="list-group-item list-group-item-info">2016/08/28: 結果の計算タイミングを変更 / 計算機の使い方を追加</li>
                 <li className="list-group-item list-group-item-info">2016/08/27: 優先キー"総合攻撃力"を、"攻撃力(二手技巧無し)"に変更。（勘違いされる方が多かったため) </li>
