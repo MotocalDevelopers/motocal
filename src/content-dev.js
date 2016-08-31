@@ -2990,9 +2990,9 @@ var ResultList = React.createClass({
                 // 合計値を足すために先に要素を追加しておく
                 // (key の 処理順が不明のため)
                 for(var j = 0; j < oneresult.length; j++){
-                    AverageTotalAttack[m].push(0)
-                    AverageCycleDamagePerTurn[m].push(0)
-                    AverageCriticalAttack[m].push(0)
+                    AverageTotalAttack[m + 1].push(0)
+                    AverageCycleDamagePerTurn[m + 1].push(0)
+                    AverageCriticalAttack[m + 1].push(0)
                 }
             }
 
