@@ -47513,6 +47513,7 @@ var summonTypes = {
     "chara": "キャラ",
     "ranko": "蘭子",
     "odin": "属性攻+キャラ攻",
+    "elementTurn": "属性(経過ターン)",
 }
 
 var raceTypes = {
@@ -49207,7 +49208,8 @@ var ResultList = React.createClass({displayName: "ResultList",
             var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + totalSummon["chara"] + buff["normal"]
             var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"]
             var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
-            var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0) + buff["element"]
+            // 属性(経過ターン)も最大値で計算する
+            var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"]
             var otherCoeff = 1.0 + buff["other"]
 
             if(key == "Djeeta") {
@@ -49264,6 +49266,7 @@ var ResultList = React.createClass({displayName: "ResultList",
             coeffs["normalKonshin"] = normalKonshinCoeff;
             coeffs["magna"] = magnaCoeff;
             coeffs["magnaHaisui"] = magnaHaisuiCoeff;
+            coeffs["element"] = elementCoeff;
             coeffs["unknown"] = unknownCoeff;
             coeffs["unknownHaisui"] = unknownHaisuiCoeff;
             coeffs["other"] = otherCoeff;
@@ -49677,7 +49680,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                 var selfElement = (summon[s].selfElement == undefined) ? "fire" : summon[s].selfElement
                 var friendElement = (summon[s].friendElement == undefined) ? "fire" : summon[s].friendElement
 
-                var totalSummon = {magna: 1.0, element: 1.0, zeus: 1.0, chara: 0.0, ranko: 1.0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0, ta: 0};
+                var totalSummon = {magna: 1.0, element: 1.0, elementTurn: 1.0, zeus: 1.0, chara: 0.0, ranko: 1.0, attack: 0, hp: 0.0, hpBonus: 0.0, da: 0, ta: 0};
 
                 if((summonElementTypes[selfElement]["type"].indexOf(totals[key]["element"]) >= 0) || selfElement == "all" ){
                     if(summon[s].selfSummonType == "odin") {
@@ -49866,14 +49869,19 @@ var ResultList = React.createClass({displayName: "ResultList",
             haisuiData: {},
             storedList: {"combinations": [], "armlist": []},
             openHPChart: false,
+            openTurnChart: false,
             hpChartButtonActive: false,
             openHPChartTutorial: false,
+            turnChartButtonActive: false,
             previousArmlist: null,
             previousCombinations: null,
         };
     },
     closeHPChart: function() {
         this.setState({openHPChart: false})
+    },
+    closeTurnChart: function() {
+        this.setState({openTurnChart: false})
     },
     closeHPChartTutorial: function() {
         this.setState({openHPChartTutorial: false})
@@ -50225,11 +50233,226 @@ var ResultList = React.createClass({displayName: "ResultList",
         newStored["armlist"].push(JSON.parse(JSON.stringify(this.props.data.armlist)))
         this.setState({storedList: newStored})
         this.setState({hpChartButtonActive: true})
+        this.setState({turnChartButtonActive: true})
+    },
+    openTurnChart: function() {
+        var storedCombinations = this.state.storedList.combinations
+        var storedArmlist = this.state.storedList.armlist
+
+        var prof = this.props.data.profile; var arml = this.props.data.armlist;
+        var summon = this.props.data.summon; var chara = this.props.data.chara;
+        var totalBuff = this.getTotalBuff(prof)
+        var totals = this.getInitialTotals(prof, chara, summon)
+
+        var sortkey = "totalAttack"
+        var sortkeyname = "攻撃力(二手技巧無し)"
+        if(this.props.data.sortKey == this.props.data.sortKey) {
+            sortkey = this.props.data.sortKey
+            sortkeyname = keyTypes[sortkey]
+        }
+
+        var res = []
+        for(var i = 0; i < summon.length; i++){
+            res[i] = []
+        }
+
+        for(var i = 0; i < storedCombinations.length; i++){
+            var oneres = this.calculateOneCombination(storedCombinations[i], summon, prof, arml, totals, totalBuff)
+            for(var j = 0; j < summon.length; j++){
+                res[j].push({data: oneres[j], armNumbers: storedCombinations[i]});
+            }
+            this.initializeTotals(totals)
+        }
+        // resに再計算されたデータが入っている状態
+        // res[summonind][rank]
+        this.setState({haisuiData: this.generateTurnData(res, arml, summon, prof, totalBuff, storedCombinations)})
+        this.setState({haisuiSortKey: sortkey})
+        this.setState({openTurnChart: true})
+    },
+    generateTurnData: function(res, arml, summon, prof, buff, storedCombinations) {
+        var data = {}
+        var minMaxArr = {
+            "totalAttack": {"max": 0, "min": 0},
+            "totalHP": {"max": 0, "min": 0},
+            "criticalAttack": {"max": 0, "min": 0},
+            "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
+            "averageAttack": {"max": 0, "min": 0},
+            "averageCyclePerTurn": {"max": 0, "min": 0},
+            "averageCriticalAttack": {"max": 0, "min": 0},
+        }
+
+        if(res.length > 1) {
+            var AllTotalAttack = [["経過ターン"]];
+            var AllCycleDamagePerTurn = [["経過ターン"]];
+            var AllCriticalAttack = [["経過ターン"]];
+            var AllAverageTotalAttack = [["経過ターン"]];
+            var AllAverageCycleDamagePerTurn = [["経過ターン"]];
+            var AllAverageCriticalAttack = [["経過ターン"]];
+            var AllTotalHP = [["経過ターン"]]
+
+            for(var m = 1; m < 21; m++){
+                AllTotalAttack.push([m])
+                AllCycleDamagePerTurn.push([m])
+                AllCriticalAttack.push([m])
+                AllTotalHP.push([m])
+                AllAverageTotalAttack.push([m])
+                AllAverageCycleDamagePerTurn.push([m])
+                AllAverageCriticalAttack.push([m])
+            }
+        }
+
+        for(var s = 0; s < res.length; s++) {
+            var oneresult = res[s]
+            var summonHeader = ""
+            if(summon[s].selfSummonType == "odin"){
+                summonHeader += "属性攻" + summon[s].selfSummonAmount + "キャラ攻" + summon[s].selfSummonAmount2
+            } else {
+                summonHeader += summonElementTypes[summon[s].selfElement].name + summonTypes[summon[s].selfSummonType] + summon[s].selfSummonAmount
+            }
+
+            summonHeader += " + "
+            if(summon[s].friendSummonType == "odin"){
+                summonHeader += "属性攻" + summon[s].friendSummonAmount + "キャラ攻" + summon[s].friendSummonAmount2
+            } else {
+                summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
+            }
+            var TotalAttack = [["経過ターン"]];
+            var TotalHP = [["経過ターン"]]
+            var CriticalAttack = [["経過ターン"]];
+            var CycleDamagePerTurn = [["経過ターン"]];
+            var AverageTotalAttack = [["経過ターン"]];
+            var AverageCriticalAttack = [["経過ターン"]];
+            var AverageCycleDamagePerTurn = [["経過ターン"]];
+
+            for(var m = 1; m < 21; m++){
+                TotalAttack.push([m])
+                CycleDamagePerTurn.push([m])
+                CriticalAttack.push([m])
+                TotalHP.push([m])
+                AverageTotalAttack.push([m])
+                AverageCycleDamagePerTurn.push([m])
+                AverageCriticalAttack.push([m])
+
+                // 合計値を足すために先に要素を追加しておく
+                // (key の 処理順が不明のため)
+                for(var j = 0; j < oneresult.length; j++){
+                    AverageTotalAttack[m].push(0)
+                    AverageCycleDamagePerTurn[m].push(0)
+                    AverageCriticalAttack[m].push(0)
+                }
+            }
+
+            for(var j = 0; j < oneresult.length; j++){
+                var onedata = oneresult[j].data
+                var cnt = Object.keys(onedata).length
+
+                var title = "No. " + (j+1).toString() + ":"
+                for(var i=0; i < arml.length; i++){
+                    if(storedCombinations[j][i] > 0) {
+                        var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
+                        title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                    }
+                }
+                for(key in onedata){
+                    var totalSummon = onedata[key].totalSummon
+                    var elementCoeff = onedata[key].skilldata.element
+                    var totalAttackWithoutHaisui = onedata[key].totalAttack / elementCoeff
+
+                    // 召喚石ターン分を減じておく
+                    elementCoeff -= (totalSummon.elementTurn - 1.0)
+
+                    for(var k = 0; k < 20; k++){
+                        // とりあえず 20ターンかかると仮定
+                        var elementTurn = (totalSummon.elementTurn - 1.0) * k / 20
+                        var newTotalAttack = totalAttackWithoutHaisui * (elementCoeff + elementTurn)
+                        var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
+                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio)
+                        var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
+
+                        if(key == "Djeeta") {
+                            TotalAttack[k + 1].push( parseInt(newTotalAttack) )
+                            TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
+                            CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
+                            CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
+                        }
+
+                        AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
+                        AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                        AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
+                    }
+                }
+                TotalAttack[0].push(title)
+                TotalHP[0].push(title)
+                CriticalAttack[0].push(title)
+                CycleDamagePerTurn[0].push(title)
+                AverageTotalAttack[0].push(title)
+                AverageCycleDamagePerTurn[0].push(title)
+                AverageCriticalAttack[0].push(title)
+
+                // 召喚石2組以上の場合
+                if(res.length > 1) {
+                    AllTotalAttack[0].push("(" + summonHeader + ")" + title)
+                    AllTotalHP[0].push("(" + summonHeader + ")" + title)
+                    AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
+                    AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                    AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
+                    AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
+                    AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+
+                    for(var k = 1; k < 21; k++) {
+                        AllTotalAttack[k].push(TotalAttack[k][j + 1])
+                        AllTotalHP[k].push(TotalHP[k][j + 1])
+                        AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
+                        AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
+                        AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
+                        AllAverageCriticalAttack[k].push(AverageCriticalAttack[k][j + 1])
+                        AllAverageCycleDamagePerTurn[k].push(AverageCycleDamagePerTurn[k][j + 1])
+                    }
+                }
+            }
+
+            data[summonHeader] = {}
+            data[summonHeader]["totalAttack"] = TotalAttack
+            data[summonHeader]["expectedCycleDamagePerTurn"] = CycleDamagePerTurn
+            data[summonHeader]["criticalAttack"] = CriticalAttack
+            data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
+            data[summonHeader]["averageAttack"] = AverageTotalAttack
+            data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
+            data[summonHeader]["totalHP"] = TotalHP
+        }
+
+        if(res.length > 1){
+            data["まとめて比較"] = {}
+            data["まとめて比較"]["totalAttack"] = AllTotalAttack
+            data["まとめて比較"]["totalHP"] = AllTotalHP
+            data["まとめて比較"]["criticalAttack"] = AllCriticalAttack
+            data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
+            data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
+            data["まとめて比較"]["averageCriticalAttack"] = AllAverageCriticalAttack
+            data["まとめて比較"]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
+        }
+
+        // グラフ最大値最小値を抽出
+        for(key in minMaxArr) {
+            for(summonkey in data) {
+                for(var k = 1; k <= 20; k++){
+                    for(var j = 1; j <= res[0].length; j++){
+                        // グラフ最大値最小値を保存
+                        if(data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j]
+                        if(data[summonkey][key][k][j] < minMaxArr[key]["min"] || minMaxArr[key]["min"] == 0) minMaxArr[key]["min"] = data[summonkey][key][k][j]
+                    }
+                }
+            }
+        }
+
+        data["minMaxArr"] = minMaxArr
+        return data
     },
     resetStoredList: function(e) {
         this.setState({storedList: {"combinations": [], "armlist": []}})
         this.setState({openHPChart: false})
         this.setState({hpChartButtonActive: false})
+        this.setState({turnChartButtonActive: false})
     },
     render: function() {
         res = this.state.result;
@@ -50495,7 +50718,10 @@ var ResultList = React.createClass({displayName: "ResultList",
 
                     React.createElement("span", null, " / 計算総数:", res.totalItr, "組(1万超の場合、計算に時間がかかります)"), 
                     React.createElement("hr", null), 
-                    React.createElement(Button, {bsStyle: "primary", bsSize: "large", block: true, onClick: this.openHPChart, disabled: !this.state.hpChartButtonActive}, "背水渾身グラフを開く(beta)"), 
+                    React.createElement(ButtonGroup, null, 
+                        React.createElement(Button, {bsStyle: "primary", bsSize: "large", onClick: this.openHPChart, disabled: !this.state.hpChartButtonActive}, "背水渾身グラフを開く(beta)"), 
+                        React.createElement(Button, {bsStyle: "primary", bsSize: "large", onClick: this.openTurnChart, disabled: !this.state.turnChartButtonActive}, "初期攻撃力推移グラフを開く(beta)")
+                    ), 
                     summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
@@ -50583,11 +50809,146 @@ var ResultList = React.createClass({displayName: "ResultList",
                                 )
                             )
                         )
+                    ), 
+                    React.createElement(Modal, {className: "hpChart", show: this.state.openTurnChart, onHide: this.closeTurnChart}, 
+                        React.createElement(Modal.Header, {closeButton: true}, 
+                            React.createElement(Modal.Title, null, "初期攻撃力推移 (", remainHPstr, ")")
+                        ), 
+                        React.createElement(Modal.Body, null, 
+                            React.createElement(TurnChart, {data: this.state.haisuiData, sortKey: this.state.haisuiSortKey})
+                        )
                     )
                 )
             );
         }
     }
+});
+
+var TurnChart = React.createClass({displayName: "TurnChart",
+    getInitialState: function() {
+        var sortKey = this.props.sortKey
+        if(!(sortKey in supportedChartSortkeys)) sortKey = "totalAttack"
+
+        options = {}
+        if(_ua.Mobile) {
+            for(key in this.props.data) {
+                if(key != "minMaxArr") {
+                    options[key] = {
+                        title: key,
+                        curveType: 'function',
+                        forcelFrame: true,
+                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    }
+                }
+            }
+        } else {
+            for(key in this.props.data) {
+                if(key != "minMaxArr") {
+                    options[key] = {
+                        title: key,
+                        curveType: 'function',
+                        forcelFrame: true,
+                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    }
+                }
+            }
+        }
+
+        return {
+            options: options,
+            sortKey: sortKey,
+        }
+    },
+    handleEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+
+        // optionsをupdate
+        options = {}
+        if(_ua.Mobile) {
+            for(key in this.props.data) {
+                if(key != "minMaxArr") {
+                    options[key] = {
+                        title: key,
+                        forcelFrame: true,
+                        curveType: 'function',
+                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
+                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    }
+                }
+            }
+        } else {
+            for(key in this.props.data) {
+                if(key != "minMaxArr") {
+                    options[key] = {
+                        title: key,
+                        forcelFrame: true,
+                        curveType: 'function',
+                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
+                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    }
+                }
+            }
+
+        }
+        newState.options = options
+
+        this.setState(newState)
+    },
+    render: function() {
+        var options = this.state.options
+        var data = this.props.data
+        var sortKey = this.state.sortKey
+
+        if(_ua.Mobile) {
+            return (
+                    React.createElement("div", {className: "HPChart"}, 
+                        /*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>*/
+                        React.createElement("p", {className: "text-danger"}, "8/25 深夜〜8/27早朝にかけて、算出されるHPチャートの値がおかしくなっていました。現在は修正済みです。"), 
+                        Object.keys(data).map(function(key, ind) {
+                            if(key != "minMaxArr") {
+                                return React.createElement(Chart, {chartType: "LineChart", className: "LineChart", data: data[key][sortKey], key: key, options: options[key], graph_id: "LineChart" + ind, width: "90%", height: "50%", legend_toggle: true})
+                            }
+                        })
+                    )
+            );
+        } else {
+            if(window.innerWidth >= 1450) {
+                var width = (90.0 / (Object.keys(data).length - 1))
+                if(Object.keys(data).length - 1 > 2) {
+                    width = 45.0
+                }
+            } else {
+                var width = 90.0
+            }
+
+            return (
+                    React.createElement("div", {className: "HPChart"}, 
+                        React.createElement(FormControl, {componentClass: "select", value: this.state.sortKey, onChange: this.handleEvent.bind(this, "sortKey")}, select_supported_chartsortkeys), 
+                        Object.keys(data).map(function(key, ind) {
+                            if(key != "minMaxArr") {
+                                return React.createElement(Chart, {chartType: "LineChart", className: "LineChart", data: data[key][sortKey], key: key, options: options[key], graph_id: "LineChart" + ind, width: width + "%", height: "600px", legend_toggle: true})
+                            }
+                        })
+                    )
+            );
+
+        }
+    },
 });
 
 var HPChart = React.createClass({displayName: "HPChart",
@@ -50743,6 +51104,7 @@ var Result = React.createClass({displayName: "Result",
                         if(skilldata.normal != 1.0) {skillstr += "攻刃" + (100.0 * (skilldata.normal - 1.0)).toFixed(1); skillstr += "% ";}
                         if(skilldata.normalHaisui != 1.0) {skillstr += "攻刃背水" + (100.0 * (skilldata.normalHaisui - 1.0)).toFixed(1); skillstr += "% ";}
                         if(skilldata.normalKonshin != 1.0) {skillstr += "攻刃渾身" + (100.0 * (skilldata.normalKonshin - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.element != 1.0) {skillstr += "属性" + (100.0 * (skilldata.element - 1.0)).toFixed(1); skillstr += "% ";}
                         if(skilldata.magna != 1.0) {skillstr += "マグナ" + (100.0 * (skilldata.magna - 1.0)).toFixed(1); skillstr += "% ";}
                         if(skilldata.magnaHaisui != 1.0) {skillstr += "マグナ背水" + (100.0 * (skilldata.magnaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
                         if(skilldata.unknown != 1.0) {skillstr += "アンノウン" + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
@@ -52066,6 +52428,7 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", {className: "list-group"}, 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/31: 仮の機能として初期攻撃力推移のグラフ機能を追加、召喚石に\"属性(経過ターン)\"を追加。(とりあえず単純に20ターンで上限まで行くと仮定しています)"), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/31: SRが存在するSSRキャラの一部がテンプレートに表示されていなかったのを修正。"), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/30: 特定の操作を行うと、コスモス武器が複数同時に編成されてしまう不具合を修正。 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/29: 通常二手SLv15を7.0%から6.6%に、三手の効果量を二手大と同様のものに変更しました。"), 
