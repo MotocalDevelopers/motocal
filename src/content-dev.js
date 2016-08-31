@@ -54,6 +54,14 @@ var supportedChartSortkeys = {
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
     "totalHP": "ジータ残りHP",
 }
+var supportedTurnChartSortkeys = {
+    "totalAttack": "攻撃力(二手技巧無し)",
+    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
+    "criticalAttack": "技巧期待値",
+    "averageCriticalAttack": "技巧期待平均攻撃力",
+    "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
+    "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+}
 
 // skill data
 var skilltypes = {
@@ -412,6 +420,7 @@ var select_levelLimit = Object.keys(levelListLimit).map(function(opt){ return <o
 var select_skilllevelNoLimit = Object.keys(skillLevelListNoLimit).map(function(opt){ return <option value={skillLevelListNoLimit[opt]} key={opt}>{opt}</option> });
 var select_skilllevelLimit = Object.keys(skillLevelListLimit).map(function(opt){ return <option value={skillLevelListLimit[opt]} key={opt}>{opt}</option> });
 var select_supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
+var select_supported_turnchartsortkeys = Object.keys(supportedTurnChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
 var select_enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
 
 // query 取得用の関数
@@ -2923,7 +2932,6 @@ var ResultList = React.createClass({
         var data = {}
         var minMaxArr = {
             "totalAttack": {"max": 0, "min": 0},
-            "totalHP": {"max": 0, "min": 0},
             "criticalAttack": {"max": 0, "min": 0},
             "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
             "averageAttack": {"max": 0, "min": 0},
@@ -2938,13 +2946,11 @@ var ResultList = React.createClass({
             var AllAverageTotalAttack = [["経過ターン"]];
             var AllAverageCycleDamagePerTurn = [["経過ターン"]];
             var AllAverageCriticalAttack = [["経過ターン"]];
-            var AllTotalHP = [["経過ターン"]]
 
             for(var m = 0; m < 21; m++){
                 AllTotalAttack.push([m])
                 AllCycleDamagePerTurn.push([m])
                 AllCriticalAttack.push([m])
-                AllTotalHP.push([m])
                 AllAverageTotalAttack.push([m])
                 AllAverageCycleDamagePerTurn.push([m])
                 AllAverageCriticalAttack.push([m])
@@ -2967,7 +2973,6 @@ var ResultList = React.createClass({
                 summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
             }
             var TotalAttack = [["経過ターン"]];
-            var TotalHP = [["経過ターン"]]
             var CriticalAttack = [["経過ターン"]];
             var CycleDamagePerTurn = [["経過ターン"]];
             var AverageTotalAttack = [["経過ターン"]];
@@ -2978,7 +2983,6 @@ var ResultList = React.createClass({
                 TotalAttack.push([m])
                 CycleDamagePerTurn.push([m])
                 CriticalAttack.push([m])
-                TotalHP.push([m])
                 AverageTotalAttack.push([m])
                 AverageCycleDamagePerTurn.push([m])
                 AverageCriticalAttack.push([m])
@@ -3024,7 +3028,6 @@ var ResultList = React.createClass({
 
                         if(key == "Djeeta") {
                             TotalAttack[k + 1].push( parseInt(newTotalAttack) )
-                            TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
                             CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
                             CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
                         }
@@ -3035,7 +3038,6 @@ var ResultList = React.createClass({
                     }
                 }
                 TotalAttack[0].push(title)
-                TotalHP[0].push(title)
                 CriticalAttack[0].push(title)
                 CycleDamagePerTurn[0].push(title)
                 AverageTotalAttack[0].push(title)
@@ -3045,7 +3047,6 @@ var ResultList = React.createClass({
                 // 召喚石2組以上の場合
                 if(res.length > 1) {
                     AllTotalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllTotalHP[0].push("(" + summonHeader + ")" + title)
                     AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
                     AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
                     AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
@@ -3054,7 +3055,6 @@ var ResultList = React.createClass({
 
                     for(var k = 1; k < 22; k++) {
                         AllTotalAttack[k].push(TotalAttack[k][j + 1])
-                        AllTotalHP[k].push(TotalHP[k][j + 1])
                         AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
                         AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
                         AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
@@ -3071,13 +3071,11 @@ var ResultList = React.createClass({
             data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
             data[summonHeader]["averageAttack"] = AverageTotalAttack
             data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
-            data[summonHeader]["totalHP"] = TotalHP
         }
 
         if(res.length > 1){
             data["まとめて比較"] = {}
             data["まとめて比較"]["totalAttack"] = AllTotalAttack
-            data["まとめて比較"]["totalHP"] = AllTotalHP
             data["まとめて比較"]["criticalAttack"] = AllCriticalAttack
             data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
             data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
@@ -3480,7 +3478,7 @@ var ResultList = React.createClass({
 var TurnChart = React.createClass({
     getInitialState: function() {
         var sortKey = this.props.sortKey
-        if(!(sortKey in supportedChartSortkeys)) sortKey = "totalAttack"
+        if(!(sortKey in supportedTurnChartSortkeys)) sortKey = "totalAttack"
 
         options = {}
         if(_ua.Mobile) {
@@ -3571,7 +3569,6 @@ var TurnChart = React.createClass({
             return (
                     <div className="HPChart">
                         {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>*/}
-                        <p className="text-danger">8/25 深夜〜8/27早朝にかけて、算出されるHPチャートの値がおかしくなっていました。現在は修正済みです。</p>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
@@ -3591,7 +3588,7 @@ var TurnChart = React.createClass({
 
             return (
                     <div className="HPChart">
-                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>
+                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_turnchartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
@@ -4717,7 +4714,7 @@ var Profile = React.createClass({
                     <p className="text-info">セスランス用に召喚石の種類"属性(経過ターン)"を追加しました。
                     結果の表での攻撃力は加護量が上限まで上がった時の攻撃力を表示していますが、
                     それまでの攻撃力推移を表示するため、初期攻撃力推移グラフ機能を試験的に追加しました。
-                    現在は<a href="https://twitter.com/hakanid/status/770966731271512065/photo/1">ちゃふぃさんの検証結果</a>に基づき、20% + ターン数 * (加護量 - 20%) / 20 で加護量が増加していくとしています。</p>
+                    現在は<a href="https://twitter.com/hakanid/status/770966731271512065/photo/1">ちゃふぃさんの検証結果</a>に基づき、20% + ターン数 * (加護量 - 20%) / 20 で加護量が増加していくとしています。(武器スキル 先制・楚歌も検証情報が見つかり次第実装します) </p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
