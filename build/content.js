@@ -50290,7 +50290,7 @@ var ResultList = React.createClass({displayName: "ResultList",
             var AllAverageCriticalAttack = [["経過ターン"]];
             var AllTotalHP = [["経過ターン"]]
 
-            for(var m = 1; m < 21; m++){
+            for(var m = 0; m < 21; m++){
                 AllTotalAttack.push([m])
                 AllCycleDamagePerTurn.push([m])
                 AllCriticalAttack.push([m])
@@ -50324,7 +50324,7 @@ var ResultList = React.createClass({displayName: "ResultList",
             var AverageCriticalAttack = [["経過ターン"]];
             var AverageCycleDamagePerTurn = [["経過ターン"]];
 
-            for(var m = 1; m < 21; m++){
+            for(var m = 0; m < 21; m++){
                 TotalAttack.push([m])
                 CycleDamagePerTurn.push([m])
                 CriticalAttack.push([m])
@@ -50359,11 +50359,14 @@ var ResultList = React.createClass({displayName: "ResultList",
                     var totalAttackWithoutHaisui = onedata[key].totalAttack / elementCoeff
 
                     // 召喚石ターン分を減じておく
-                    elementCoeff -= (totalSummon.elementTurn - 1.0)
+                    var elementTurn = totalSummon.elementTurn - 1.0
+                    elementCoeff -= elementTurn
 
-                    for(var k = 0; k < 20; k++){
+                    for(var k = 0; k < 21; k++){
                         // とりあえず 20ターンかかると仮定
-                        var elementTurn = (totalSummon.elementTurn - 1.0) * k / 20
+                        if(totalSummon.elementTurn > 1.0){
+                            elementTurn = 0.20 + (totalSummon.elementTurn - 1.20) * k / 20
+                        }
                         var newTotalAttack = totalAttackWithoutHaisui * (elementCoeff + elementTurn)
                         var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
                         var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio)
@@ -50399,7 +50402,7 @@ var ResultList = React.createClass({displayName: "ResultList",
                     AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
                     AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
 
-                    for(var k = 1; k < 21; k++) {
+                    for(var k = 1; k < 22; k++) {
                         AllTotalAttack[k].push(TotalAttack[k][j + 1])
                         AllTotalHP[k].push(TotalHP[k][j + 1])
                         AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
@@ -50435,7 +50438,7 @@ var ResultList = React.createClass({displayName: "ResultList",
         // グラフ最大値最小値を抽出
         for(key in minMaxArr) {
             for(summonkey in data) {
-                for(var k = 1; k <= 20; k++){
+                for(var k = 1; k < 22; k++){
                     for(var j = 1; j <= res[0].length; j++){
                         // グラフ最大値最小値を保存
                         if(data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j]
@@ -51712,17 +51715,17 @@ var Arm = React.createClass({displayName: "Arm",
                 newState["hp"] = parseInt(newarm.minhp) + newarm.plus
             } else if(newarm.lv <= 100) {
                 if(newarm.maxlv == "100") {
-                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * newarm.plus)
-                    newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + newarm.plus)
+                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
+                    newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
                 } else {
                     // 4凸武器の場合は、Lv100以下の計算にattacklv100を使う
-                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attacklv100) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * newarm.plus)
-                    newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hplv100) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + newarm.plus)
+                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attacklv100) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
+                    newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hplv100) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
                 }
             } else {
                 // 4凸がない場合は100までしか入ってこないので例外処理する必要なし
-                newState["attack"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.attacklv100))/50 + parseInt(newarm.attacklv100) + 5 * newarm.plus)
-                newState["hp"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.hp) - parseInt(newarm.hplv100))/50 + parseInt(newarm.hplv100) + newarm.plus)
+                newState["attack"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.attacklv100))/50 + parseInt(newarm.attacklv100) + 5 * parseInt(newarm.plus))
+                newState["hp"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.hp) - parseInt(newarm.hplv100))/50 + parseInt(newarm.hplv100) + parseInt(newarm.plus))
             }
 
             if(newarm.lv != parseInt(newarm.maxlv)) newState["name"] += "Lv." + newarm.lv
@@ -51763,17 +51766,17 @@ var Arm = React.createClass({displayName: "Arm",
                state["hp"] = parseInt(newarm.minhp) + newarm.plus
            } else if(newarm.lv <= 100) {
                if(newarm.maxlv == "100") {
-                   state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * newarm.plus)
-                   state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + newarm.plus)
+                   state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
+                   state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
                } else {
                    // 4凸武器の場合は、Lv100以下の計算にattacklv100を使う
-                   state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attacklv100) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * newarm.plus)
-                   state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hplv100) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + newarm.plus)
+                   state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attacklv100) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
+                   state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hplv100) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
                }
            } else {
                // 4凸がない場合は100までしか入ってこないので例外処理する必要なし
-               state["attack"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.attacklv100))/50 + parseInt(newarm.attacklv100) + 5 * newarm.plus)
-               state["hp"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.hp) - parseInt(newarm.hplv100))/50 + parseInt(newarm.hplv100) + newarm.plus)
+               state["attack"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.attacklv100))/50 + parseInt(newarm.attacklv100) + 5 * parseInt(newarm.plus))
+               state["hp"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.hp) - parseInt(newarm.hplv100))/50 + parseInt(newarm.hplv100) + parseInt(newarm.plus))
            }
            if(newarm.lv != parseInt(newarm.maxlv)) state["name"] += "Lv." + newarm.lv
            if(newarm.plus != 0) state["name"] += "+" + newarm.plus
@@ -52061,8 +52064,10 @@ var Profile = React.createClass({displayName: "Profile",
         } else {
             return (
                 React.createElement("div", {className: "profile"}, 
-                    React.createElement("p", {className: "text-danger"}, "これまで「各フォームの値が変更された時に結果を更新」していましたが、入力途中でも結果が更新されてしまい結果として重く感じる状態となっていました。8/28のアップデートにて「特定の入力フォームにおいては、フォームからフォーカスが外れた時に結果を更新」へと挙動を変更しました。(rank,召喚石攻撃力、武器名、武器攻撃力などが該当します。）フォームへ値を入力した後、フォーム外をクリックする、別のフォームをクリックする等の操作を行った際に結果が更新されます。" + ' ' +
-                    "選択メニューの場合はこれまで通り選択した時点で値が更新されるようになっているため、全体的な使い勝手としては大きく変わっていないかと思いますが、もし「元の挙動のが良かった！」というご意見がありましたらご連絡下さい。"), 
+                    React.createElement("p", {className: "text-info"}, "セスランス用に召喚石の種類\"属性(経過ターン)\"を追加しました。" + ' ' +
+                    "結果の表での攻撃力は加護量が上限まで上がった時の攻撃力を表示していますが、" + ' ' +
+                    "それまでの攻撃力推移を表示するため、初期攻撃力推移グラフ機能を試験的に追加しました。" + ' ' +
+                    "現在は", React.createElement("a", {href: "https://twitter.com/hakanid/status/770966731271512065/photo/1"}, "ちゃふぃさんの検証結果"), "に基づき、20% + ターン数 * (加護量 - 20%) / 20 で加護量が増加していくとしています。"), 
                     React.createElement("h3", null, " ジータちゃん情報 (*: 推奨入力項目)"), 
                     React.createElement("table", {className: "table table-bordered"}, 
                         React.createElement("tbody", null, 
@@ -52428,7 +52433,7 @@ var Notice = React.createClass ({displayName: "Notice",
             React.createElement("h2", null, "入力例: ", React.createElement("a", {href: "http://hsimyu.net/motocal/thumbnail.php", target: "_blank"}, " 元カレ計算機データビューア "), " "), 
             React.createElement("h2", null, "更新履歴"), 
             React.createElement("ul", {className: "list-group"}, 
-                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/31: 仮の機能として初期攻撃力推移のグラフ機能を追加、召喚石に\"属性(経過ターン)\"を追加。(とりあえず単純に20ターンで上限まで行くと仮定しています)"), 
+                React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/31: 仮の機能として初期攻撃力推移のグラフ機能を追加、召喚石に\"属性(経過ターン)\"を追加。(とりあえず単純に20ターンで上限まで行くと仮定しています) / 武器テンプレートで+をつけた時にHPの値がおかしくなる不具合を修正 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/31: SRが存在するSSRキャラの一部がテンプレートに表示されていなかったのを修正。"), 
                 React.createElement("li", {className: "list-group-item list-group-item-danger"}, "2016/08/30: 特定の操作を行うと、コスモス武器が複数同時に編成されてしまう不具合を修正。 "), 
                 React.createElement("li", {className: "list-group-item list-group-item-info"}, "2016/08/29: 通常二手SLv15を7.0%から6.6%に、三手の効果量を二手大と同様のものに変更しました。"), 
