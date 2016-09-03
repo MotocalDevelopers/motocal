@@ -586,10 +586,17 @@ label {
     margin-bottom: 5px;
 }
 
+.howTo.fade.in.modal .modal-dialog {
+    margin-left: 15%;
+    width: 70%;
+    overflow: visible;
+    margin-right: 15%;
+}
+
 .howTo {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .hpChart.fade.in.modal .modal-dialog {

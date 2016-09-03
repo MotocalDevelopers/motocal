@@ -497,6 +497,7 @@ var Root = React.createClass({
           rootrightHeight: initial_height,
           rootrightWidth: initial_width,
           openHowTo: false,
+          openNiteHowTo: false,
       };
   },
   openHowTo: function(e) {
@@ -504,6 +505,12 @@ var Root = React.createClass({
   },
   closeHowTo: function(e) {
       this.setState({openHowTo: false})
+  },
+  openNiteHowTo: function(e) {
+      this.setState({openNiteHowTo: true})
+  },
+  closeNiteHowTo: function(e) {
+      this.setState({openNiteHowTo: false})
   },
   onTouchStart: function(e) {
       //スワイプ開始時の横方向の座標を格納
@@ -768,13 +775,23 @@ var Root = React.createClass({
     if(_ua.Mobile) {
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
-                <h2>元カレ計算機 (グラブル攻撃力計算機) <Button bsStyle="info" onClick={this.openHowTo} > 使い方 </Button> </h2>
+                <h2>元カレ計算機 (グラブル攻撃力計算機)</h2>
+                <Button bsStyle="success" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
+                <Button bsStyle="success" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
                 <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
                     <Modal.Header closeButton>
                         <Modal.Title>元カレ計算機について</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <HowTo />
+                    </Modal.Body>
+                </Modal>
+                <Modal show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <NiteHowTo />
                     </Modal.Body>
                 </Modal>
                 <div className="tabrow">
@@ -784,7 +801,6 @@ var Root = React.createClass({
                     <button id="armTab" onClick={this.changeTab} >武器</button>
                     <button id="resultTab" onClick={this.changeTab} >結果</button>
                     <button id="systemTab" onClick={this.changeTab} >保存</button>
-                    <button id="howToTab" onClick={this.changeTab} >二手について</button>
                 </div>
                 <div className="Tab" id="inputTab">
                     <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
@@ -821,21 +837,29 @@ var Root = React.createClass({
                         <Notice />
                     </div>
                 </div>
-                <div className="Tab hidden" id="howToTab">
-                    <NiteHowTo />
-                </div>
             </div>
         );
     } else if(_ua.Tablet) {
         return (
             <div className="root">
-                <h2>元カレ計算機 (グラブル攻撃力計算機) <Button bsStyle="info" onClick={this.openHowTo} > 使い方 </Button></h2>
-                <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
+                <h2>元カレ計算機 (グラブル攻撃力計算機)
+                <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
+                <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
+                </h2>
+                <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
                     <Modal.Header closeButton>
                         <Modal.Title>元カレ計算機について</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <HowTo />
+                    </Modal.Body>
+                </Modal>
+                <Modal className="howTo" show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <NiteHowTo />
                     </Modal.Body>
                 </Modal>
                 <div className="tabrow">
@@ -845,7 +869,6 @@ var Root = React.createClass({
                     <button id="armTab" onClick={this.changeTab} >武器</button>
                     <button id="resultTab" onClick={this.changeTab} >結果</button>
                     <button id="systemTab" onClick={this.changeTab} >保存</button>
-                    <button id="howToTab" onClick={this.changeTab} >二手編成について</button>
                 </div>
                 <div className="Tab" id="inputTab">
                     <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
@@ -882,22 +905,30 @@ var Root = React.createClass({
                         <Notice />
                     </div>
                 </div>
-                <div className="Tab hidden" id="howToTab">
-                    <NiteHowTo />
-                </div>
             </div>
         );
     } else {
         return (
             <div className="root">
                 <div className="rootleft" id="rootleft2" style={{height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}>
-                    <h1>元カレ計算機 (グラブル攻撃力計算機) <Button bsStyle="info" onClick={this.openHowTo} > 使い方 </Button> </h1>
-                    <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
+                    <h1>元カレ計算機 (グラブル攻撃力計算機)
+                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
+                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
+                    </h1>
+                    <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
                         <Modal.Header closeButton>
                             <Modal.Title>元カレ計算機について</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <HowTo />
+                        </Modal.Body>
+                    </Modal>
+                    <Modal className="howTo" show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <NiteHowTo />
                         </Modal.Body>
                     </Modal>
                     <div className="tabrow">
@@ -906,7 +937,6 @@ var Root = React.createClass({
                         <button id="charaTab" onClick={this.changeTab} >キャラ / Chara</button>
                         <button id="armTab" onClick={this.changeTab} >武器 / Weapon</button>
                         <button id="systemTab" onClick={this.changeTab} >保存・注記 / System</button>
-                        <button id="howToTab" onClick={this.changeTab} >二手スキル込みの編成について</button>
                     </div>
                     <div className="Tab" id="inputTab">
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
@@ -936,9 +966,6 @@ var Root = React.createClass({
                         <Sys data={this.state} onLoadNewData={this.handleChangeData} />
                         <TwitterShareButton data={this.state} />
                         <Notice />
-                    </div>
-                    <div className="Tab hidden" id="howToTab">
-                        <NiteHowTo />
                     </div>
                 </div>
                 <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
@@ -4961,7 +4988,6 @@ var NiteHowTo = React.createClass({
     render: function() {
         return (
             <div className="howTo">
-                <h2> 二手・三手スキル混みの編成について </h2>
                 <p> 本計算機ではこれまで、二手三手スキル混みの最適編成計算について、
                 総攻撃力に技巧期待値と期待攻撃回数を単に乗算した"総合*回数*技巧期待値"を用いていました。 <br/>
                 この値を用いた場合、
@@ -5048,6 +5074,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/09/03: スマホ版スタイル調整 </li>
                 <li className="list-group-item list-group-item-info">2016/08/31: 仮の機能として初期攻撃力推移のグラフ機能を追加、召喚石に"属性(経過ターン)"を追加。(とりあえず単純に20ターンで上限まで行くと仮定しています) / 武器テンプレートで+をつけた時にHPの値がおかしくなる不具合を修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/31: SRが存在するSSRキャラの一部がテンプレートに表示されていなかったのを修正。</li>
                 <li className="list-group-item list-group-item-danger">2016/08/30: 特定の操作を行うと、コスモス武器が複数同時に編成されてしまう不具合を修正。 </li>
@@ -5062,28 +5089,6 @@ var Notice = React.createClass ({
                 <li className="list-group-item list-group-item-success">2016/08/25: 新武器の情報を武器テンプレートに追加(画像なし) </li>
                 <li className="list-group-item list-group-item-info">2016/08/25: カオスルーダーと義賊を追加 / フェリ(SSR)がキャラテンプレートに表示されていない不具合を修正 </li>
                 <li className="list-group-item list-group-item-info">2016/08/25: 武器追加時に+を計算できるようにした </li>
-                <li className="list-group-item list-group-item-info">2016/08/25: 召喚石が複数あった際に、全てのグラフをまとめたものも表示されるようにした / 召喚石の削除・コピー機能実装 </li>
-                <li className="list-group-item list-group-item-danger">2016/08/24: 前述の不具合調整の際のミスのため、全く計算されなくなってしまう場合があったのを修正 </li>
-                <li className="list-group-item list-group-item-info">2016/08/24: PC版UIの微調整 / プリセット入力から武器を追加した際、本数が正しく設定されない場合があるのを修正 </li>
-                <li className="list-group-item list-group-item-danger">2016/08/24: データ読み出しの際、PC版のレイアウトが崩れることがある不具合を修正 </li>
-                <li className="list-group-item list-group-item-danger">2016/08/24: サーバからのデータ読み出し機能に障害が出ていたのを修正 </li>
-                <li className="list-group-item list-group-item-info">2016/08/23: iPhone版でもHPチャート機能をリリース / PC版のレイアウトをドラッグして調整できるようにした </li>
-                <li className="list-group-item list-group-item-info">2016/08/23: グラフ用に保存した編成を全リセットするボタン追加 / 凡例のスタイル調整 </li>
-                <li className="list-group-item list-group-item-success">2016/08/22: 背水渾身用のHPチャート表示機能を実装 </li>
-                <li className="list-group-item list-group-item-success">2016/08/21: 予想ターン毎ダメージの導入と、それについての解説を追加 / 減衰補正を修正 </li>
-                <li className="list-group-item list-group-item-danger">2016/08/21: コスモス武器を選んだ場合に止まってしまう不具合を修正 </li>
-                <li className="list-group-item list-group-item-success">2016/08/20: スマホ版でスワイプでのタブ切り替えに対応 / 武器追加時に考慮本数を選べるようにした </li>
-                <li className="list-group-item list-group-item-info">2016/08/20: UIを調整 / サーバに保存後にデータを変更すると、初期データに戻ってしまう不具合を修正 / 保存したURLをブラウザ履歴として残すようにした / ブラウザ保存データを一度も選択しないで読み込みを行うと、データを指定しろと言われる不具合を修正 / 武器とキャラプリセットで、枠がないときにいっぱいですって言われないようにした </li>
-                <li className="list-group-item list-group-item-success">2016/08/19: キャラテンプレート機能を追加 </li>
-                <li className="list-group-item list-group-item-success">2016/08/19: 武器テンプレート機能を追加(gbf-wikiのデータを使わせて頂きました。) / コスモス武器チェックボックス廃止 / 計算処理の削減 </li>
-                <li className="list-group-item list-group-item-info">2016/08/19: 武器数・召喚石数・キャラ数の増やし方を変更 / ゼニスパークとジョブ攻撃ボーナスを分離 / 同じ名前のキャラがいると片方しか計算されない不具合を修正 </li>
-                <li className="list-group-item list-group-item-success">2016/08/18: スマホ・タブレットレイアウト対応 / PC版レイアウトも調整 / UI調整 </li>
-                <li className="list-group-item list-group-item-success">2016/08/17: 検証データを元に渾身の実装を修正 / <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank">データビューア</a>の作成 / 予想ダメージ計算に減衰補正を追加 </li>
-                <li className="list-group-item list-group-item-info">2016/08/16: 三手スキルSLv11~15の値を入力 / DATA率の合計を、枠別上限から武器スキル全体の上限に修正 / 渾身仮実装 </li>
-                <li className="list-group-item list-group-item-info">2016/08/12: 二手スキル上限の値に召喚石加護分の値が考慮されていなかった不具合を修正。/ 予想ダメージ機能を仮実装しました。</li>
-                <li className="list-group-item list-group-item-danger">2016/08/11: 敵の属性の内部的な初期値がおかしかった不具合を修正。</li>
-                <li className="list-group-item list-group-item-info">2016/08/09: 簡易リセットボタンを配置 / バハムート武器フツルスの拳系に対応 (wikiの情報に準拠) (HP40%, DA10%, TA8%という情報もありますが、未確定の為とりあえず低い値を採用しました。検証してくれる方を募集してます……) </li>
-                <li className="list-group-item list-group-item-success">2016/08/07: コスモス武器を複数含めて比較できるようにした (2本同時に編成されることはありません) / キャラを平均値に含めるかどうかを指定できるようにした。 / 武器スキル属性の一括変更を実装 </li>
             </ul>
 
             <h3>注記</h3>

@@ -46,7 +46,6 @@ table {
 
 table th {
   color: lightsteelblue;
-  padding: 3px;
   background: #258;
   background:-moz-linear-gradient(rgba(34,85,136,0.7), rgba(34,85,136,0.9) 50%);
   background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(34,85,136,0.7)), to(rgba(34,85,136,0.9)));
@@ -90,6 +89,10 @@ tr.result:hover {
   background: #bbd4ee;
   cursor:pointer;
   transition-duration: 0;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 2px;
 }
 
 .divright {
@@ -285,7 +288,7 @@ table.displayElement tr:last-child td {
 .tabrow {
     text-align: center;
     list-style: none;
-    margin: 0;
+    margin: 5px 0 0 0;
     padding: 0;
     line-height: 24px;
     position: relative;
@@ -342,10 +345,6 @@ table.displayElement tr:last-child td {
 
 .armList .form-control.consider {
     width: 50%;
-}
-
-.btn {
-    font-size: 9pt;
 }
 
 .checkbox-inline {
@@ -491,10 +490,17 @@ label {
     margin-bottom: 5px;
 }
 
+.howTo.fade.in.modal .modal-dialog {
+    margin-left: 5%;
+    width: 90%;
+    overflow: visible;
+    margin-right: 5%;
+}
+
 .howTo {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .hpChart.fade.in.modal .modal-dialog {
