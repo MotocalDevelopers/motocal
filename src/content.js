@@ -3237,7 +3237,10 @@ var ResultList = React.createClass({
                     動作制御:
                     <Checkbox inline checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
                     <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
-                    <Button bsStyle="primary" bsSize="large" block onClick={this.openHPChart} disabled={!this.state.hpChartButtonActive} >背水渾身グラフを開く(beta)</Button>
+                    <ButtonGroup style={{width: "100%"}}>
+                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", "font-size": "10pt", "padding-left": "2px", "padding-right": "2px", "text-align": "center"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.hpChartButtonActive} >背水渾身グラフ</Button>
+                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", "font-size": "10pt", "padding-left": "2px", "padding-right": "2px", "text-align": "center"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.turnChartButtonActive} >初期攻撃力推移グラフ</Button>
+                    </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
@@ -3326,6 +3329,14 @@ var ResultList = React.createClass({
                             </Modal>
                         </Modal.Body>
                     </Modal>
+                    <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <TurnChart data={this.state.haisuiData} sortKey={this.state.haisuiSortKey} />
+                        </Modal.Body>
+                    </Modal>
                 </div>
             );
 
@@ -3364,10 +3375,10 @@ var ResultList = React.createClass({
 
                     <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
                     <hr />
-                    <ButtonGroup>
-                        <Button bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.hpChartButtonActive} >背水渾身グラフを開く(beta)</Button>
-                        <Button bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.turnChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
-                    </ButtonGroup>
+                        <ButtonGroup style={{width: "100%"}}>
+                            <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.hpChartButtonActive} >背水渾身グラフを開く(beta)</Button>
+                            <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.turnChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
+                        </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
