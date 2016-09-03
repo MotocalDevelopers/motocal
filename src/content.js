@@ -684,43 +684,11 @@ var Root = React.createClass({
       })
   },
   changeTab: function(e){
-      document.querySelector("button#inputTab").removeAttribute("class")
-      document.querySelector("button#summonTab").removeAttribute("class")
-      document.querySelector("button#charaTab").removeAttribute("class")
-      document.querySelector("button#armTab").removeAttribute("class")
-      document.querySelector("button#resultTab").removeAttribute("class")
-      document.querySelector("button#systemTab").removeAttribute("class")
-      document.querySelector("button#howToTab").removeAttribute("class")
-
+      var selected = document.querySelector("button.selected")
+      selected.removeAttribute("class")
       e.target.setAttribute("class", "selected")
 
-      document.querySelector("div#inputTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#summonTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#charaTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#armTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#resultTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#systemTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#howToTab").setAttribute("class", "Tab hidden")
-
-      var target = document.querySelector("div#" + e.target.getAttribute("id"))
-      target.setAttribute("class", "Tab");
-  },
-  changeTabPC: function(e){
-      document.querySelector("button#inputTab").removeAttribute("class")
-      document.querySelector("button#summonTab").removeAttribute("class")
-      document.querySelector("button#systemTab").removeAttribute("class")
-      document.querySelector("button#charaTab").removeAttribute("class")
-      document.querySelector("button#armTab").removeAttribute("class")
-      document.querySelector("button#howToTab").removeAttribute("class")
-      e.target.setAttribute("class", "selected")
-
-      document.querySelector("div#inputTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#summonTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#charaTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#armTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#systemTab").setAttribute("class", "Tab hidden")
-      document.querySelector("div#howToTab").setAttribute("class", "Tab hidden")
-
+      document.querySelector("div#" + selected.getAttribute("id")).setAttribute("class", "Tab hidden")
       var target = document.querySelector("div#" + e.target.getAttribute("id"))
       target.setAttribute("class", "Tab");
   },
@@ -933,12 +901,12 @@ var Root = React.createClass({
                         </Modal.Body>
                     </Modal>
                     <div className="tabrow">
-                        <button id="inputTab" className="selected" onClick={this.changeTabPC}>入力 / Input</button>
-                        <button id="summonTab" onClick={this.changeTabPC} >召喚石 / Summon </button>
-                        <button id="charaTab" onClick={this.changeTabPC} >キャラ / Chara</button>
-                        <button id="armTab" onClick={this.changeTabPC} >武器 / Weapon</button>
-                        <button id="systemTab" onClick={this.changeTabPC} >保存・注記 / System</button>
-                        <button id="howToTab" onClick={this.changeTabPC} >二手スキル込みの編成について</button>
+                        <button id="inputTab" className="selected" onClick={this.changeTab}>入力 / Input</button>
+                        <button id="summonTab" onClick={this.changeTab} >召喚石 / Summon </button>
+                        <button id="charaTab" onClick={this.changeTab} >キャラ / Chara</button>
+                        <button id="armTab" onClick={this.changeTab} >武器 / Weapon</button>
+                        <button id="systemTab" onClick={this.changeTab} >保存・注記 / System</button>
+                        <button id="howToTab" onClick={this.changeTab} >二手スキル込みの編成について</button>
                     </div>
                     <div className="Tab" id="inputTab">
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
