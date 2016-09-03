@@ -5052,11 +5052,11 @@ var NiteHowTo = React.createClass({
                 これまでの"総合*回数*技巧期待値"でソートした場合の結果と、上記のソートキーを用いた場合の結果を見比べると
                 やみくもにDA・TA率が最大となるように編成されるのではなく、DA・TA率を確保した上で総合攻撃力を高める、という編成が上位にきやすくなったと感じています。</p>
                 <p>例えばの<a href="http://hsimyu.net/motocal/?id=748">編成例</a>ですが、下記画像のように</p>
-                <Thumbnail alt="総合*回数*技巧期待値の場合" src="./soukaigi.png">
+                <Thumbnail alt="総合*回数*技巧期待値の場合" src="./otherImages/soukaigi.png">
                     <h2 className="text-warning">総合*回数*技巧期待値の場合</h2>
                     <p className="text-warning">DA:74.1%, 奥義ゲージ上昇期待値が19.89%、必要ターンは6</p>
                 </Thumbnail>
-                <Thumbnail alt="予想ターン毎ダメージの場合" src="./cycleDamage.png">
+                <Thumbnail alt="予想ターン毎ダメージの場合" src="./otherImages/cycleDamage.png">
                     <h2 className="text-info">予想ターン毎ダメージの場合</h2>
                     <p className="text-info">DA: 67.3%, 奥義ゲージ上昇期待値が19.12%、必要ターンは6のまま</p>
                 </Thumbnail>
@@ -5140,7 +5140,7 @@ var Notice = React.createClass ({
                  正確な情報をお持ちでしたらご提供頂けると助かります。 </li>
             </ul>
 
-            <Image className="banner" src="./ChWJ-LgUgAA2JEy.jpg" />
+            <Image className="banner" src="./otherImages/banner.jpg" />
             製作者: ほしみ <a href="http://twitter.com/hsimyu" target="_blank"> @hsimyu </a><br/>
             不具合報告・ご要望がありましたらTwitterにてご連絡をお願い致します。
 

@@ -52402,11 +52402,11 @@ var NiteHowTo = React.createClass({displayName: "NiteHowTo",
                 "これまでの\"総合*回数*技巧期待値\"でソートした場合の結果と、上記のソートキーを用いた場合の結果を見比べると" + ' ' +
                 "やみくもにDA・TA率が最大となるように編成されるのではなく、DA・TA率を確保した上で総合攻撃力を高める、という編成が上位にきやすくなったと感じています。"), 
                 React.createElement("p", null, "例えばの", React.createElement("a", {href: "http://hsimyu.net/motocal/?id=748"}, "編成例"), "ですが、下記画像のように"), 
-                React.createElement(Thumbnail, {alt: "総合*回数*技巧期待値の場合", src: "./soukaigi.png"}, 
+                React.createElement(Thumbnail, {alt: "総合*回数*技巧期待値の場合", src: "./otherImages/soukaigi.png"}, 
                     React.createElement("h2", {className: "text-warning"}, "総合*回数*技巧期待値の場合"), 
                     React.createElement("p", {className: "text-warning"}, "DA:74.1%, 奥義ゲージ上昇期待値が19.89%、必要ターンは6")
                 ), 
-                React.createElement(Thumbnail, {alt: "予想ターン毎ダメージの場合", src: "./cycleDamage.png"}, 
+                React.createElement(Thumbnail, {alt: "予想ターン毎ダメージの場合", src: "./otherImages/cycleDamage.png"}, 
                     React.createElement("h2", {className: "text-info"}, "予想ターン毎ダメージの場合"), 
                     React.createElement("p", {className: "text-info"}, "DA: 67.3%, 奥義ゲージ上昇期待値が19.12%、必要ターンは6のまま")
                 ), 
@@ -52490,7 +52490,7 @@ var Notice = React.createClass ({displayName: "Notice",
                  "正確な情報をお持ちでしたらご提供頂けると助かります。 ")
             ), 
 
-            React.createElement(Image, {className: "banner", src: "./ChWJ-LgUgAA2JEy.jpg"}), 
+            React.createElement(Image, {className: "banner", src: "./otherImages/banner.jpg"}), 
             "製作者: ほしみ ", React.createElement("a", {href: "http://twitter.com/hsimyu", target: "_blank"}, " @hsimyu "), React.createElement("br", null), 
             "不具合報告・ご要望がありましたらTwitterにてご連絡をお願い致します。", 
 
