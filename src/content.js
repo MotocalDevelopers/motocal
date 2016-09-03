@@ -3,425 +3,28 @@ var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var GlobalConst = require('./global_const.js')
 
-// global arrays
-var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10}
-var zenithAttackBonus = [3000, 1500, 500, 0];
-var zenithHPBonus = [1000, 600, 300, 0];
-var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var ougiGageBuffList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-var ougiRatioList = [4.0, 4.5, 5.0];
-var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-var HPList = [ 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ];
-var plusNumList = { "+0": 0, "+1": 1, "+2": 2, "+3": 3, "+4": 4, "+5": 5, "+6": 6, "+7": 7, "+8": 8, "+9": 9, "+10": 10, "+11": 11, "+12": 12, "+13": 13, "+14": 14, "+15": 15, "+16": 16, "+17": 17, "+18": 18, "+19": 19, "+20": 20, "+21": 21, "+22": 22, "+23": 23, "+24": 24, "+25": 25, "+26": 26, "+27": 27, "+28": 28, "+29": 29, "+30": 30, "+31": 31, "+32": 32, "+33": 33, "+34": 34, "+35": 35, "+36": 36, "+37": 37, "+38": 38, "+39": 39, "+40": 40, "+41": 41, "+42": 42, "+43": 43, "+44": 44, "+45": 45, "+46": 46, "+47": 47, "+48": 48, "+49": 49, "+50": 50, "+51": 51, "+52": 52, "+53": 53, "+54": 54, "+55": 55, "+56": 56, "+57": 57, "+58": 58, "+59": 59, "+60": 60, "+61": 61, "+62": 62, "+63": 63, "+64": 64, "+65": 65, "+66": 66, "+67": 67, "+68": 68, "+69": 69, "+70": 70, "+71": 71, "+72": 72, "+73": 73, "+74": 74, "+75": 75, "+76": 76, "+77": 77, "+78": 78, "+79": 79, "+80": 80, "+81": 81, "+82": 82, "+83": 83, "+84": 84, "+85": 85, "+86": 86, "+87": 87, "+88": 88, "+89": 89, "+90": 90, "+91": 91, "+92": 92, "+93": 93, "+94": 94, "+95": 95, "+96": 96, "+97": 97, "+98": 98, "+99": 99}
-var levelListLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 5, "Lv. 6": 6, "Lv. 7": 7, "Lv. 8": 8, "Lv. 9": 9, "Lv. 10": 10, "Lv. 11": 11, "Lv. 12": 12, "Lv. 13": 13, "Lv. 14": 14, "Lv. 15": 15, "Lv. 16": 16, "Lv. 17": 17, "Lv. 18": 18, "Lv. 19": 19, "Lv. 20": 20, "Lv. 21": 21, "Lv. 22": 22, "Lv. 23": 23, "Lv. 24": 24, "Lv. 25": 25, "Lv. 26": 26, "Lv. 27": 27, "Lv. 28": 28, "Lv. 29": 29, "Lv. 30": 30, "Lv. 31": 31, "Lv. 32": 32, "Lv. 33": 33, "Lv. 34": 34, "Lv. 35": 35, "Lv. 36": 36, "Lv. 37": 37, "Lv. 38": 38, "Lv. 39": 39, "Lv. 40": 40, "Lv. 41": 41, "Lv. 42": 42, "Lv. 43": 43, "Lv. 44": 44, "Lv. 45": 45, "Lv. 46": 46, "Lv. 47": 47, "Lv. 48": 48, "Lv. 49": 49, "Lv. 50": 50, "Lv. 51": 51, "Lv. 52": 52, "Lv. 53": 53, "Lv. 54": 54, "Lv. 55": 55, "Lv. 56": 56, "Lv. 57": 57, "Lv. 58": 58, "Lv. 59": 59, "Lv. 60": 60, "Lv. 61": 61, "Lv. 62": 62, "Lv. 63": 63, "Lv. 64": 64, "Lv. 65": 65, "Lv. 66": 66, "Lv. 67": 67, "Lv. 68": 68, "Lv. 69": 69, "Lv. 70": 70, "Lv. 71": 71, "Lv. 72": 72, "Lv. 73": 73, "Lv. 74": 74, "Lv. 75": 75, "Lv. 76": 76, "Lv. 77": 77, "Lv. 78": 78, "Lv. 79": 79, "Lv. 80": 80, "Lv. 81": 81, "Lv. 82": 82, "Lv. 83": 83, "Lv. 84": 84, "Lv. 85": 85, "Lv. 86": 86, "Lv. 87": 87, "Lv. 88": 88, "Lv. 89": 89, "Lv. 90": 90, "Lv. 91": 91, "Lv. 92": 92, "Lv. 93": 93, "Lv. 94": 94, "Lv. 95": 95, "Lv. 96": 96, "Lv. 97": 97, "Lv. 98": 98, "Lv. 99": 99, "Lv. 100": 100}
-var levelListNoLimit = { "Lv. 1": 1, "Lv. 2": 2, "Lv. 3": 3, "Lv. 4": 4, "Lv. 5": 5, "Lv. 6": 6, "Lv. 7": 7, "Lv. 8": 8, "Lv. 9": 9, "Lv. 10": 10, "Lv. 11": 11, "Lv. 12": 12, "Lv. 13": 13, "Lv. 14": 14, "Lv. 15": 15, "Lv. 16": 16, "Lv. 17": 17, "Lv. 18": 18, "Lv. 19": 19, "Lv. 20": 20, "Lv. 21": 21, "Lv. 22": 22, "Lv. 23": 23, "Lv. 24": 24, "Lv. 25": 25, "Lv. 26": 26, "Lv. 27": 27, "Lv. 28": 28, "Lv. 29": 29, "Lv. 30": 30, "Lv. 31": 31, "Lv. 32": 32, "Lv. 33": 33, "Lv. 34": 34, "Lv. 35": 35, "Lv. 36": 36, "Lv. 37": 37, "Lv. 38": 38, "Lv. 39": 39, "Lv. 40": 40, "Lv. 41": 41, "Lv. 42": 42, "Lv. 43": 43, "Lv. 44": 44, "Lv. 45": 45, "Lv. 46": 46, "Lv. 47": 47, "Lv. 48": 48, "Lv. 49": 49, "Lv. 50": 50, "Lv. 51": 51, "Lv. 52": 52, "Lv. 53": 53, "Lv. 54": 54, "Lv. 55": 55, "Lv. 56": 56, "Lv. 57": 57, "Lv. 58": 58, "Lv. 59": 59, "Lv. 60": 60, "Lv. 61": 61, "Lv. 62": 62, "Lv. 63": 63, "Lv. 64": 64, "Lv. 65": 65, "Lv. 66": 66, "Lv. 67": 67, "Lv. 68": 68, "Lv. 69": 69, "Lv. 70": 70, "Lv. 71": 71, "Lv. 72": 72, "Lv. 73": 73, "Lv. 74": 74, "Lv. 75": 75, "Lv. 76": 76, "Lv. 77": 77, "Lv. 78": 78, "Lv. 79": 79, "Lv. 80": 80, "Lv. 81": 81, "Lv. 82": 82, "Lv. 83": 83, "Lv. 84": 84, "Lv. 85": 85, "Lv. 86": 86, "Lv. 87": 87, "Lv. 88": 88, "Lv. 89": 89, "Lv. 90": 90, "Lv. 91": 91, "Lv. 92": 92, "Lv. 93": 93, "Lv. 94": 94, "Lv. 95": 95, "Lv. 96": 96, "Lv. 97": 97, "Lv. 98": 98, "Lv. 99": 99, "Lv. 100": 100, "Lv. 101": 101, "Lv. 102": 102, "Lv. 103": 103, "Lv. 104": 104, "Lv. 105": 105, "Lv. 106": 106, "Lv. 107": 107, "Lv. 108": 108, "Lv. 109": 109, "Lv. 110": 110, "Lv. 111": 111, "Lv. 112": 112, "Lv. 113": 113, "Lv. 114": 114, "Lv. 115": 115, "Lv. 116": 116, "Lv. 117": 117, "Lv. 118": 118, "Lv. 119": 119, "Lv. 120": 120, "Lv. 121": 121, "Lv. 122": 122, "Lv. 123": 123, "Lv. 124": 124, "Lv. 125": 125, "Lv. 126": 126, "Lv. 127": 127, "Lv. 128": 128, "Lv. 129": 129, "Lv. 130": 130, "Lv. 131": 131, "Lv. 132": 132, "Lv. 133": 133, "Lv. 134": 134, "Lv. 135": 135, "Lv. 136": 136, "Lv. 137": 137, "Lv. 138": 138, "Lv. 139": 139, "Lv. 140": 140, "Lv. 141": 141, "Lv. 142": 142, "Lv. 143": 143, "Lv. 144": 144, "Lv. 145": 145, "Lv. 146": 146, "Lv. 147": 147, "Lv. 148": 148, "Lv. 149": 149, "Lv. 150": 150 }
-var skillLevelListNoLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10, "SLv. 11": 11, "SLv. 12": 12, "SLv. 13": 13, "SLv. 14": 14, "SLv. 15": 15 }
-var skillLevelListLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10 }
-var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 100, 120, 200];
-
-var enemyDefenseType = {
-    10.0: {"name": "10.0(一般的な敵)"},
-    8.0: {"name": "8.0(防御-20%)"},
-    7.0: {"name": "7.0(防御-30%)"},
-    5.0: {"name": "5.0(防御-50%)"},
-    13.0: {"name": "13.0(ティアマグ・シュヴァマグ)"},
-    6.5: {"name": "6.5(ティアシュヴァ防御-50%)"},
-    11.0: {"name": "11.0(プロバハ?)"},
-    5.5: {"name": "5.5(プロバハ(防御-50%))"},
-    20.0: {"name": "20.0(プロバハHL?)"},
-}
-var keyTypes = {
-    "totalAttack":"攻撃力(二手技巧無し)",
-    "totalHP": "ジータHP",
-    "ATKandHP": "戦力",
-    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
-    "criticalAttack": "技巧期待値",
-    "averageCriticalAttack": "技巧期待平均攻撃力",
-    "totalExpected": "総合攻撃*期待回数*技巧期待値",
-    "averageTotalExpected": "総回技のパーティ平均値",
-    "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
-    "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
-}
-var supportedChartSortkeys = {
-    "totalAttack": "攻撃力(二手技巧無し)",
-    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
-    "criticalAttack": "技巧期待値",
-    "averageCriticalAttack": "技巧期待平均攻撃力",
-    "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
-    "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
-    "totalHP": "ジータ残りHP",
-}
-var supportedTurnChartSortkeys = {
-    "totalAttack": "攻撃力(二手技巧無し)",
-    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
-    "criticalAttack": "技巧期待値",
-    "averageCriticalAttack": "技巧期待平均攻撃力",
-    "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
-    "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
-}
-
-// skill data
-var skilltypes = {
-    "non": {name: "無し", type:"non", amount: "non"},
-    "normalS": {name:"通常攻刃(小)", type:"normal", amount: "S"},
-    "normalM": {name:"通常攻刃(中)", type:"normal", amount: "M"},
-    "normalL": {name:"通常攻刃(大)", type:"normal", amount: "L"},
-    "normalLL": {name:"通常攻刃II", type:"normal", amount: "LL"},
-    "normalBoukunL": {name:"通常暴君", type:"normalBoukun", amount: "LL"},
-    "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
-    "normalHaisuiM": {name:"通常背水(中)", type:"normalHaisui", amount: "M"},
-    "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
-    "normalKonshinL": {name:"通常渾身(大)", type:"normalKonshin", amount: "L"},
-    "normalNiteS": {name:"通常二手(小)", type:"normalNite", amount: "S"},
-    "normalNiteM": {name:"通常二手(中)", type:"normalNite", amount: "M"},
-    "normalNiteL": {name:"通常二手(大)", type:"normalNite", amount: "L"},
-    "normalSanteL": {name:"通常三手(大)", type:"normalSante", amount: "L"},
-    "normalKatsumiM": {name:"通常克己(中)", type:"normalKatsumi", amount: "M"},
-    "normalKamui": {name:"通常神威", type:"normalKamui", amount: "S"},
-    "magnaM": {name: "マグナ攻刃", type:"magna", amount:"M"},
-    "magnaL": {name: "マグナ攻刃II", type:"magna", amount:"L"},
-    "magnaHaisuiS": {name:"マグナ背水(小)", type:"magnaHaisui", amount: "S"},
-    "magnaHaisuiM": {name:"マグナ背水(中)", type:"magnaHaisui", amount: "M"},
-    "magnaHaisuiL": {name:"マグナ背水(大)", type:"magnaHaisui", amount: "L"},
-    "magnaSanteL": {name:"マグナ三手(大)", type:"magnaSante", amount: "L"},
-    "magnaKatsumiM": {name:"マグナ克己(中)", type:"magnaKatsumi", amount: "M"},
-    "magnaKamui": {name:"マグナ神威", type:"magnaKamui", amount: "S"},
-    "magnaBoukun": {name:"マグナ暴君", type:"magnaBoukun", amount: "L"},
-    "unknownM": {name:"アンノウンATK・I", type:"unknown", amount: "M"},
-    "unknownL": {name:"アンノウンATK・II", type:"unknown", amount: "L"},
-    "strengthHaisuiM": {name:"ストレングス背水(中)", type:"unknownOtherHaisui", amount: "M"},
-    "strengthS": {name:"ストレングス等(小)", type:"unknownOther", amount: "S"},
-    "strengthM": {name:"ストレングス等(中)", type:"unknownOther", amount: "M"},
-    "strengthL": {name:"ストレングス等(大)", type:"unknownOther", amount: "L"},
-    "normalHPS": {name:"通常守護(小)", type:"normalHP", amount: "S"},
-    "normalHPM": {name:"通常守護(中)", type:"normalHP", amount: "M"},
-    "normalHPL": {name:"通常守護(大)", type:"normalHP", amount: "L"},
-    "magnaHPM": {name:"マグナ守護", type:"magnaHP", amount: "M"},
-    "magnaHPL": {name:"マグナ守護II", type:"magnaHP", amount: "L"},
-    "unknownHPS": {name:"アンノウン・VIT I(小)", type:"unknownHP", amount: "S"},
-    "unknownHPM": {name:"アンノウン・VIT I(中)", type:"unknownHP", amount: "M"},
-    "unknownHPL": {name:"アンノウン・VIT II(大)", type:"unknownHP", amount: "L"},
-    "unknownOtherBoukunL": {name:"ミフネ流・極意", type:"unknownOtherBoukun", amount: "L"},
-    "unknownOtherNiteS": {name:"ミフネ流・双星", type:"unknownOtherNite", amount: "S"},
-    "gurenJuin": {name:"紅蓮の呪印・弐", type:"gurenJuin", amount: "L"},
-    "normalCriticalS": {name:"通常技巧(小)", type:"normalCritical", amount: "S"},
-    "normalCriticalM": {name:"通常技巧(中)", type:"normalCritical", amount: "M"},
-    "normalCriticalL": {name:"通常技巧(大)", type:"normalCritical", amount: "L"},
-    "magnaCriticalS": {name:"マグナ技巧(小)", type:"magnaCritical", amount: "S"},
-    "magnaCriticalM": {name:"マグナ技巧(中)", type:"magnaCritical", amount: "M"},
-    "magnaCriticalL": {name:"マグナ技巧(大)", type:"magnaCritical", amount: "L"},
-    "normalSetsuna": {name:"通常刹那", type:"normalSetsuna", amount: "M"},
-    "magnaSetsuna": {name:"マグナ刹那", type:"magnaSetsuna", amount: "M"},
-    "cosmos-sword": {name:"コスモス剣", type:"cosmosArm", amount: "L", cosmosArm:"sword"},
-    "cosmos-dagger": {name:"コスモス短剣", type:"cosmosArm", amount: "L", cosmosArm:"dagger"},
-    "cosmos-spear": {name:"コスモス槍", type:"cosmosArm", amount: "L", cosmosArm:"spear"},
-    "cosmos-axe": {name:"コスモス斧", type:"cosmosArm", amount: "L", cosmosArm:"axe"},
-    "cosmos-wand": {name:"コスモス杖", type:"cosmosArm", amount: "L", cosmosArm:"wand"},
-    "cosmos-gun": {name:"コスモス銃", type:"cosmosArm", amount: "L", cosmosArm:"gun"},
-    "cosmos-fist": {name:"コスモス拳", type:"cosmosArm", amount: "L", cosmosArm:"fist"},
-    "cosmos-bow": {name:"コスモス弓", type:"cosmosArm", amount: "L", cosmosArm:"bow"},
-    "cosmos-katana": {name:"コスモス刀", type:"cosmosArm", amount: "L", cosmosArm:"katana"},
-    "cosmos-music": {name:"コスモス楽器", type:"cosmosArm", amount: "L", cosmosArm:"music"},
-    "cosmosAT": {name:"コスモスAT", type:"cosmos", amount: "L"},
-    "cosmosDF": {name:"コスモスDF", type:"cosmos", amount: "L"},
-    "cosmosBL": {name:"コスモスBL", type:"cosmos", amount: "L"},
-    "bahaAT-dagger": {name:"バハ攻-短剣", type:"bahaAT", amount: "L"},
-    "bahaAT-axe": {name:"バハ攻-斧", type:"bahaAT", amount: "L"},
-    "bahaAT-spear": {name:"バハ攻-槍", type:"bahaAT", amount: "L"},
-    "bahaAT-gun": {name:"バハ攻-銃", type:"bahaAT", amount: "L"},
-    "bahaATHP-sword": {name:"バハ攻HP-剣", type:"bahaATHP", amount: "M"},
-    "bahaATHP-wand": {name:"バハ攻HP-杖", type:"bahaATHP", amount: "M"},
-    "bahaHP-fist": {name:"バハHP-格闘", type:"bahaHP", amount: "L"},
-    "bahaHP-katana": {name:"バハHP-刀", type:"bahaHP", amount: "L"},
-    "bahaHP-bow": {name:"バハHP-弓", type:"bahaHP", amount: "L"},
-    "bahaHP-music": {name:"バハHP-楽器", type:"bahaHP", amount: "L"},
-    "bahaFUATHP-dagger": {name:"バハフツ-短剣", type:"bahaFUATHP", amount: "LL"},
-    "bahaFUATHP-axe": {name:"バハフツ-斧", type:"bahaFUATHP", amount: "LL"},
-    "bahaFUATHP-spear": {name:"バハフツ-槍", type:"bahaFUATHP", amount: "LL"},
-    "bahaFUATHP-gun": {name:"バハフツ-銃", type:"bahaFUATHP", amount: "LL"},
-    "bahaFUATHP-sword": {name:"バハフツ-剣", type:"bahaFUATHP", amount: "LL"},
-    "bahaFUATHP-wand": {name:"バハフツ-杖", type:"bahaFUATHP", amount: "LL"},
-    "bahaFUHP-fist": {name:"バハフツHP-格闘", type:"bahaFUHP", amount: "L"},
-    "bahaFUHP-katana": {name:"バハフツHP-刀", type:"bahaFUHP", amount: "L"},
-    "bahaFUHP-bow": {name:"バハフツHP-弓", type:"bahaFUHP", amount: "L"},
-    "bahaFUHP-music": {name:"バハフツHP-楽器", type:"bahaFUHP", amount: "L"},
-};
-
-var armTypes = {
-  "dagger": "短剣",
-  "sword": "剣",
-  "spear": "槍",
-  "axe": "斧",
-  "wand": "杖",
-  "gun": "銃",
-  "fist": "格闘",
-  "bow": "弓",
-  "music": "楽器",
-  "katana": "刀",
-  "none": "無し",
-};
-
-var summonTypes = {
-    "magna": "マグナ",
-    "element": "属性",
-    "zeus": "ゼウス系",
-    "chara": "キャラ",
-    "ranko": "蘭子",
-    "odin": "属性攻+キャラ攻",
-    "elementTurn": "属性(経過ターン)",
-}
-
-var raceTypes = {
-    "human": "人間",
-    "erune": "エルーン",
-    "doraf": "ドラフ",
-    "havin": "ハーヴィン",
-    "unknown": "種族不明",
-}
-
-var jobTypes = {
-    "attack": "攻撃",
-    "heal": "回復",
-    "defense": "防御",
-    "pecu": "特殊",
-    "balance": "バランス",
-}
-
-var elementTypes = {
-    "fire": "火",
-    "wind": "風",
-    "earth": "土",
-    "water": "水",
-    "light": "光",
-    "dark": "闇",
-}
-
-var filterElementTypes = {
-    "fire": "火",
-    "wind": "風",
-    "earth": "土",
-    "water": "水",
-    "light": "光",
-    "dark": "闇",
-    "all": "全属性",
-}
-
-// "key"属性が強い属性と弱い属性
-var elementRelation = {
-    "fire": {"weak": "water", "strong": "wind"},
-    "wind": {"weak": "fire", "strong": "earth"},
-    "earth": {"weak": "wind", "strong": "water"},
-    "water": {"weak": "earth", "strong": "fire"},
-    "light": {"weak": "none", "strong": "dark"},
-    "dark": {"weak": "none", "strong": "light"},
-}
-
-var bahamutRelation = {
-    "dagger": {"type1": "human"},
-    "axe": {"type1": "doraf"},
-    "spear": {"type1": "erune"},
-    "gun": {"type1": "havin"},
-    "sword": {"type1": "human", "type2": "doraf"},
-    "wand": {"type1": "erune", "type2": "havin"},
-    "fist": {"type1": "human"},
-    "katana": {"type1": "doraf"},
-    "bow": {"type1": "erune"},
-    "music": {"type1": "havin"},
-}
-
-var bahamutFURelation = {
-    "dagger": {"type1": "human", "type2": "erune"},
-    "axe": {"type1": "doraf", "type2": "havin"},
-    "spear": {"type1": "erune", "type2": "doraf"},
-    "gun": {"type1": "havin", "type2": "human"},
-    "sword": {"type1": "human", "type2": "doraf"},
-    "wand": {"type1": "erune", "type2": "havin"},
-    "fist": {"type1": "human"},
-    "katana": {"type1": "doraf"},
-    "bow": {"type1": "erune"},
-    "music": {"type1": "havin"},
-}
-
-var Jobs = {
-    "beruse":       {"name": "ベルセルク",       "favArm1": "sword",  "favArm2": "axe",    "type": "attack",  "atBonus": 6000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 10.0, "DaBonus": 26.5, "TaBonus": 5.5},
-    "sage":         {"name": "セージ",           "favArm1": "wand",   "favArm2": "spear",  "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "suparuta":     {"name": "スパルタ",         "favArm1": "sword",  "favArm2": "spear",  "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1500.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "warlock":      {"name": "ウォーロック",     "favArm1": "wand",   "favArm2": "dagger", "type": "attack",  "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "chaos":      {"name": "カオスルーダー",     "favArm1": "sword",   "favArm2": "dagger", "type": "pecu",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "gizoku":      {"name": "義賊",     "favArm1": "dagger",   "favArm2": "gun", "type": "balance",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "alche":        {"name": "アルケミスト",     "favArm1": "dagger", "favArm2": "gun",    "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 100.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "ninja":        {"name": "忍者",             "favArm1": "katana", "favArm2": "fist",   "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 31.5, "TaBonus": 3.0},
-    "samurai":      {"name": "侍",               "favArm1": "katana", "favArm2": "bow",    "type": "attack",  "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "kensei":       {"name": "剣聖",             "favArm1": "sword",  "favArm2": "katana", "type": "pecu",    "atBonus": 1500.0, "kouzinBonus": 0.0, "hpBonus": 300.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "gunsri":       {"name": "ガンスリ",         "favArm1": "gun",    "favArm2": "gun",    "type": "pecu",    "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 3.0},
-    "kenja":        {"name": "賢者",             "favArm1": "wand",   "favArm2": "wand",   "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "assassin":     {"name": "アサシン",         "favArm1": "dagger", "favArm2": "dagger", "type": "pecu",    "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "weaponmaster": {"name": "ウェポンマスター", "favArm1": "sword",  "favArm2": "axe",    "type": "attack",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 23.0, "TaBonus": 5.0},
-    "holyse":       {"name": "ホリセバー",       "favArm1": "sword",  "favArm2": "spear",  "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "bishop":       {"name": "ビショップ",       "favArm1": "wand",   "favArm2": "spear",  "type": "heal",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "hermit":       {"name": "ハーミット",       "favArm1": "wand",   "favArm2": "dagger", "type": "attack",  "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "hokuai":       {"name": "ホークアイ",       "favArm1": "dagger", "favArm2": "gun",    "type": "balance", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "darkfe":       {"name": "ダクフェ",         "favArm1": "sword",  "favArm2": "dagger", "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "oga":          {"name": "オーガ",           "favArm1": "fist",   "favArm2": "fist",   "type": "attack",  "atBonus": 2000.0, "kouzinBonus": 5.0, "hpBonus": 200.0, "shugoBonus": 0.0, "DaBonus": 60.0, "TaBonus": 5.0},
-    "side":         {"name": "サイドワインダー", "favArm1": "bow",    "favArm2": "gun",    "type": "balance", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "superstar":    {"name": "スーパースター",   "favArm1": "music",  "favArm2": "dagger", "type": "pecu",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-    "valc":         {"name": "ヴァルキュリア",   "favArm1": "spear",  "favArm2": "axe",    "type": "attack",  "atBonus": 500.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 8.0},
-    "none":         {"name": "なし",             "favArm1": "none",   "favArm2": "none",   "type": "none",    "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0},
-}
-
-var summonElementTypes = {
-    "fire": {"name": "火", "type": ["fire"]},
-    "wind": {"name": "風", "type": ["wind"]},
-    "earth": {"name": "土", "type": ["earth"]},
-    "water": {"name": "水", "type": ["water"]},
-    "light": {"name": "光", "type": ["light"]},
-    "dark": {"name": "闇", "type": ["dark"]},
-    "lightFire": {"name": "光/火", "type": ["light", "fire"]},
-    "darkEarth": {"name": "闇/土", "type": ["dark", "earth"]},
-    "windEarth": {"name": "風/土", "type": ["wind", "earth"]},
-    "darkWater": {"name": "闇/水", "type": ["dark", "water"]},
-    "earthLight": {"name": "土/光", "type": ["earth", "light"]},
-    "windLight": {"name": "風/光", "type": ["wind", "light"]},
-    "lightDark": {"name": "光/闇", "type": ["light", "dark"]},
-    "darkFire": {"name": "闇/火", "type": ["dark", "fire"]},
-    "waterLight": {"name": "水/光", "type": ["water", "light"]},
-    "windFire": {"name": "風/火", "type": ["wind", "fire"]},
-    "fireWater": {"name": "火/水", "type": ["fire", "water"]},
-    "all": {"name": "全属性", "type": ["all"]},
-}
-
-var skillAmounts = {
-    // normal と unknown の M Slv11 以降については仮入力
-    "normal":{
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-        "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
-    },
-    "magna":{
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-    },
-    "unknown":{
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-        "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
-    },
-    "unknownOther":{
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-        "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
-    },
-    "bahaHP": {
-        // 剣など
-        "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-        "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
-    },
-    "bahaAT": {
-        // 短剣など
-        "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 30.4, 30.8, 31.2, 31.6, 32.0],
-        "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
-    },
-    "bahaFUATHP": {
-        // 短剣、剣など
-        "HP": [15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-        "AT": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
-    },
-    "bahaFUHP": {
-        // 拳など
-        // "HP": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 32.0, 34.0, 36.0, 38.0, 40.0],
-        // "DA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 4.0, 6.0, 8.0, 10.0],
-        // "TA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.6, 3.2, 4.8, 6.4,  8.0],
-        // wiki データ
-        "HP": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
-        "DA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.6, 5.0, 5.5, 6.0, 6.5, 7.0],
-        "TA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.6, 5.0, 5.5, 6.0, 6.5, 7.0],
-    },
-    "normalHP":{
-        "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "M": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.4, 15.8, 16.2, 16.6, 17.0],
-        "L": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
-    },
-    "magnaHP":{
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-    },
-    "unknownHP":{
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
-        "LL": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-    },
-    "normalNite":{
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
-        "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
-        "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
-    },
-    // 仮
-    "magnaNite":{
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
-        "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
-        "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 6.6],
-    },
-    "unknownOtherNite":{
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
-    },
-    "normalSante":{
-        "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 6.6],
-    },
-    "magnaSante":{
-        "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 6.6],
-    },
-    "normalCritical":{
-        "S": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4],
-        "M": [3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6.0, 6.3, 6.7, 7.0, 7.3],
-        "L": [4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6],
-        "ratio": 0.5,
-    },
-    // 仮入力
-    "magnaCritical":{
-        "S": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.2, 2.3, 2.4],
-        "M": [3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6.0, 6.3, 6.7, 7.0, 7.3],
-        "L": [4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6],
-        "ratio": 0.5,
-    },
-}
-
-// オプション用
-var select_races = Object.keys(raceTypes).map(function(opt){return <option value={opt} key={opt}>{raceTypes[opt]}</option>;});
-var select_elements = Object.keys(elementTypes).map(function(opt){return <option value={opt} key={opt}>{elementTypes[opt]}</option>;});
-var select_filterelements = Object.keys(filterElementTypes).map(function(opt){return <option value={opt} key={opt}>{filterElementTypes[opt]}</option>;});
-var select_summons = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{summonTypes[opt]}</option>;});
-var select_skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
-var select_types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{jobTypes[opt]}</option>;});
-var select_armtypes = Object.keys(armTypes).map(function(opt){return <option value={opt} key={opt}>{armTypes[opt]}</option>;});
-var select_summonElements = Object.keys(summonElementTypes).map(function(opt){return <option value={opt} key={opt}>{summonElementTypes[opt].name}</option>;});
-var select_summonAmounts = summonAmountList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_zenithAttack = zenithAttackBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_zenithHP = zenithHPBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_slv = skilllevels.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_consider = considerNum.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_ougiGageBuff = ougiGageBuffList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_ougiRatio = ougiRatioList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_hplist = HPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_masteratk = masterATKList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_masterhp = masterHPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-var select_ktypes = Object.keys(keyTypes).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
-var select_plusnum = Object.keys(plusNumList).map(function(opt){ return <option value={plusNumList[opt]} key={opt}>{opt}</option> });
-var select_levelNoLimit = Object.keys(levelListNoLimit).map(function(opt){ return <option value={levelListNoLimit[opt]} key={opt}>{opt}</option> });
-var select_levelLimit = Object.keys(levelListLimit).map(function(opt){ return <option value={levelListLimit[opt]} key={opt}>{opt}</option> });
-var select_skilllevelNoLimit = Object.keys(skillLevelListNoLimit).map(function(opt){ return <option value={skillLevelListNoLimit[opt]} key={opt}>{opt}</option> });
-var select_skilllevelLimit = Object.keys(skillLevelListLimit).map(function(opt){ return <option value={skillLevelListLimit[opt]} key={opt}>{opt}</option> });
-var select_supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
-var select_supported_turnchartsortkeys = Object.keys(supportedTurnChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
-var select_enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
+// inject GlobalConst...
+var elementRelation = GlobalConst.elementRelation
+var bahamutRelation = GlobalConst.bahamutRelation
+var bahamutFURelation = GlobalConst.bahamutFURelation
+var selector = GlobalConst.selector
+var zenith = GlobalConst.zenith
+var Jobs = GlobalConst.Jobs
+var armTypes = GlobalConst.armTypes
+var jobTypes = GlobalConst.jobTypes
+var keyTypes = GlobalConst.keyTypes
+var skilltypes = GlobalConst.skilltypes
+var skillAmounts = GlobalConst.skillAmounts
+var elementTypes = GlobalConst.elementTypes
+var summonTypes = GlobalConst.summonTypes
+var summonElementTypes = GlobalConst.summonElementTypes
+var raceTypes = GlobalConst.raceTypes
+var filterElementTypes = GlobalConst.filterElementTypes
+var supportedTurnChartSortkeys = GlobalConst.supportedTurnChartSortkeys
+var supportedChartSortkeys = GlobalConst.supportedChartSortkeys
+var enemyDefenseType = GlobalConst.enemyDefenseType
 
 // query 取得用の関数
 var urldata = getVarInQuery("data");
@@ -827,7 +430,7 @@ var Root = React.createClass({
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="resultTab">
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {select_ktypes} </FormControl>
+                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
                     <ResultList data={this.state} />
                 </div>
                 <div className="Tab hidden" id="systemTab">
@@ -895,7 +498,7 @@ var Root = React.createClass({
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="resultTab">
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {select_ktypes} </FormControl>
+                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
                     <ResultList data={this.state} />
                 </div>
                 <div className="Tab hidden" id="systemTab">
@@ -970,7 +573,7 @@ var Root = React.createClass({
                 </div>
                 <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {select_ktypes} </FormControl>
+                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
                     <ResultList data={this.state} />
                 </div>
             </div>
@@ -1145,7 +748,7 @@ var CharaList = React.createClass({
                     </Modal>
 
                     <ControlLabel>属性一括変更</ControlLabel>
-                    <FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl>
+                    <FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
                     {charas.map(function(c) {
                         return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
                     })}
@@ -1160,7 +763,7 @@ var CharaList = React.createClass({
                     <thead>
                     <tr>
                         <th>キャラ名*</th>
-                        <th>属性* <br/> <ControlLabel>一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl> </th>
+                        <th>属性* <br/> <ControlLabel>一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl> </th>
                         <th>種族</th>
                         <th>タイプ</th>
                         <th>得意武器*</th>
@@ -1237,7 +840,7 @@ var RegisteredChara = React.createClass({
             return (
                 <div className="charaTemplate">
                     <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{select_filterelements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
                     <div className="charaTemplateContent">
                         {Object.keys(charaData).map(function(key, ind) {
                             if(filterElement == "all" || (charaData[key].element == filterElement)){
@@ -1264,7 +867,7 @@ var RegisteredChara = React.createClass({
             return (
                 <div className="charaTemplate">
                     <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{select_filterelements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
                     <div className="charaTemplateContent">
                         {Object.keys(charaData).map(function(key, ind) {
                             if(filterElement == "all" || (charaData[key].element == filterElement)){
@@ -1400,15 +1003,15 @@ var Chara = React.createClass({
             return (
                 <table className="table table-bordered"><tbody>
                     <tr><th>名前</th><td><FormControl type="text" placeholder="名前" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/></td></tr>
-                    <tr><th>属性</th><td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{select_elements}</FormControl></td></tr>
-                    <tr><th>種族</th><td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{select_races}</FormControl></td></tr>
-                    <tr><th>タイプ</th><td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{select_types}</FormControl></td></tr>
-                    <tr><th>得意武器1</th><td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{select_armtypes}</FormControl></td></tr>
-                    <tr><th>得意武器2</th><td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{select_armtypes}</FormControl></td></tr>
+                    <tr><th>属性</th><td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl></td></tr>
+                    <tr><th>種族</th><td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl></td></tr>
+                    <tr><th>タイプ</th><td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl></td></tr>
+                    <tr><th>得意武器1</th><td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl></td></tr>
+                    <tr><th>得意武器2</th><td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl></td></tr>
                     <tr><th>平均に含める</th><td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")} /></td></tr>
                     <tr><th>素の攻撃力</th><td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td></tr>
                     <tr><th>素のHP</th><td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
-                    <tr><th>残HP割合</th><td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td></tr>
+                    <tr><th>残HP割合</th><td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td></tr>
                     <tr><th>基礎DA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td></tr>
                     <tr><th>基礎TA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td></tr>
                 </tbody></table>
@@ -1418,15 +1021,15 @@ var Chara = React.createClass({
             return (
                 <tr>
                     <td><FormControl type="text" placeholder="名前" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/></td>
-                    <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{select_elements}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{select_races}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{select_types}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{select_armtypes}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{select_armtypes}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl></td>
                     <td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")} /></td>
                     <td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td>
                     <td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                    <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
                     <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td>
                     <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td>
                 </tr>
@@ -1543,7 +1146,7 @@ var SummonList = React.createClass({
         if(_ua.Mobile) {
             return (
                 <div className="summonList">
-                    <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_summonElements} </FormControl>
+                    <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.summonElements} </FormControl>
                     {summons.map(function(sm, ind) {
                         return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} />;
                     })}
@@ -1552,7 +1155,7 @@ var SummonList = React.createClass({
         } else {
             return (
                 <div className="summonList">
-                    [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_summonElements} </FormControl>
+                    [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.summonElements} </FormControl>
                     <h3 className="margin-top"> 召喚石 </h3>
                     <table className="table table-bordered">
                     <thead>
@@ -1684,26 +1287,26 @@ var Summon = React.createClass({
                 <tr>
                     <th>自分の石</th>
                     <td>
-                    <FormControl componentClass="select" className="element" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl>
-                    <FormControl componentClass="select" className="summontype" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl>
+                    <FormControl componentClass="select" className="element" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
+                    <FormControl componentClass="select" className="summontype" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
                     </td>
                 </tr>
                 <tr>
                     <th>自分の加護量</th>
-                    <td>{selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{select_summonAmounts}</FormControl><br/>
-                    {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{select_summonAmounts}</FormControl>
+                    <td>{selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl><br/>
+                    {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
                     </td>
                 </tr>
                 <tr>
                     <th>フレンド石</th>
                     <td>
-                    <FormControl componentClass="select" className="element" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl>
-                    <FormControl componentClass="select" className="summontype" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl></td>
+                    <FormControl componentClass="select" className="element" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
+                    <FormControl componentClass="select" className="summontype" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl></td>
                 </tr>
                 <tr>
                     <th>フレの加護量</th>
-                    <td>{friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{select_summonAmounts}</FormControl><br/>
-                    {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{select_summonAmounts}</FormControl>
+                    <td>{friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl><br/>
+                    {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
                     </td>
                 </tr>
                 <tr>
@@ -1742,16 +1345,16 @@ var Summon = React.createClass({
             return (
                 <tr>
                     <td>
-                        <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{select_summonElements}</FormControl>
-                        <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{select_summons}</FormControl>
-                        {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{select_summonAmounts}</FormControl>
-                        {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{select_summonAmounts}</FormControl>
+                        <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
+                        <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
+                        {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
+                        {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
                     </td>
                     <td>
-                        <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{select_summonElements}</FormControl>
-                        <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{select_summons}</FormControl>
-                        {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{select_summonAmounts}</FormControl>
-                        {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{select_summonAmounts}</FormControl>
+                        <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
+                        <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl>
+                        {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
+                        {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
                     </td>
                     <td><FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/></td>
                     <td><FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/></td>
@@ -3574,7 +3177,7 @@ var TurnChart = React.createClass({
         if(_ua.Mobile) {
             return (
                     <div className="HPChart">
-                        {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>*/}
+                        {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>*/}
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
@@ -3594,7 +3197,7 @@ var TurnChart = React.createClass({
 
             return (
                     <div className="HPChart">
-                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_turnchartsortkeys}</FormControl>
+                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_turnchartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
@@ -3700,7 +3303,7 @@ var HPChart = React.createClass({
         if(_ua.Mobile) {
             return (
                     <div className="HPChart">
-                        {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>*/}
+                        {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>*/}
                         <p className="text-danger">8/25 深夜〜8/27早朝にかけて、算出されるHPチャートの値がおかしくなっていました。現在は修正済みです。</p>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
@@ -3722,7 +3325,7 @@ var HPChart = React.createClass({
             return (
                     <div className="HPChart">
                         <p className="text-danger">8/25 深夜〜8/27早朝にかけて、算出されるHPチャートの値がおかしくなっていました。現在は修正済みです。</p>
-                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{select_supported_chartsortkeys}</FormControl>
+                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
@@ -4068,7 +3671,7 @@ var ArmList = React.createClass({
                         </Modal.Body>
                     </Modal>
 
-                    <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl>
+                    <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
                     {arms.map(function(arm, ind) {
                         return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
                     })}
@@ -4085,7 +3688,7 @@ var ArmList = React.createClass({
                         <th className="atkhp">攻撃力*</th>
                         <th className="atkhp">HP</th>
                         <th>武器種*</th>
-                        <th className="skillselect">スキル*   <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {select_elements} </FormControl></th>
+                        <th className="skillselect">スキル*   <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl></th>
                         <th>SLv*</th>
                         <th className="consider">本数*</th>
                         <th className="system">操作</th>
@@ -4152,11 +3755,11 @@ var RegisteredArm = React.createClass({
         this.setState({armLv: parseInt(arm.maxlv)})
         this.setState({armSLv: parseInt(arm.slvmax)})
         if(arm.maxlv == "150") {
-            this.setState({select_level: select_levelNoLimit})
-            this.setState({select_skilllevel: select_skilllevelNoLimit})
+            this.setState({selectLevel: selector.levelNoLimit})
+            this.setState({selectSkilllevel: selector.skilllevelNoLimit})
         } else {
-            this.setState({select_level: select_levelLimit})
-            this.setState({select_skilllevel: select_skilllevelLimit})
+            this.setState({selectLevel: selector.levelLimit})
+            this.setState({selectSkilllevel: selector.skilllevelLimit})
         }
         this.setState({openConsiderNumberModal: true})
     },
@@ -4186,7 +3789,7 @@ var RegisteredArm = React.createClass({
             return (
                 <div className="armTemplate">
                     <FormControl type="text" placeholder="武器名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{select_filterelements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement)){
@@ -4212,9 +3815,9 @@ var RegisteredArm = React.createClass({
                             <Modal.Title>何本追加しますか？</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.select_level}</FormControl>
-                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.select_skilllevel}</FormControl>
-                            <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{select_plusnum}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectSkilllevel}</FormControl>
+                            <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1本</button>
@@ -4257,7 +3860,7 @@ var RegisteredArm = React.createClass({
             return (
                 <div className="armTemplate">
                     <FormControl type="text" placeholder="武器名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{select_filterelements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement)){
@@ -4278,9 +3881,9 @@ var RegisteredArm = React.createClass({
                             <Modal.Title>何本追加しますか？</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.select_level}</FormControl>
-                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.select_skilllevel}</FormControl>
-                            <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{select_plusnum}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selector.level}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selector.skilllevel}</FormControl>
+                            <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1本</button>
@@ -4496,18 +4099,18 @@ var Arm = React.createClass({
                     <tr><th>武器名</th><td><FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} /></td></tr>
                     <tr><th>攻撃力</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} /></td></tr>
                     <tr><th>HP</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} /></td></tr>
-                    <tr><th>種類</th><td className="select"><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {select_armtypes} </FormControl></td></tr>
+                    <tr><th>種類</th><td className="select"><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl></td></tr>
                     <tr><th>スキル</th>
                     <td>
-                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {select_elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {select_skills}</FormControl><br/>
-                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {select_elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {select_skills}</FormControl>
+                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
+                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
                     </td></tr>
-                    <tr><th>スキルレベル</th><td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {select_slv} </FormControl></td></tr>
+                    <tr><th>スキルレベル</th><td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl></td></tr>
                     <tr><th>考慮本数</th><td className="consider">
-                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {select_consider} </FormControl><br/>
-                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {select_consider} </FormControl>
+                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl><br/>
+                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
                     </td></tr>
                     <tr><th>操作</th>
                     <td>
@@ -4525,17 +4128,17 @@ var Arm = React.createClass({
                     <td className="armname"><FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} /></td>
                     <td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} /></td>
                     <td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} /></td>
-                    <td><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {select_armtypes} </FormControl></td>
+                    <td><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl></td>
                     <td className="skillselect">
-                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {select_elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {select_skills}</FormControl><br/>
-                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {select_elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {select_skills}</FormControl>
+                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
+                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
+                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
                     </td>
-                    <td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {select_slv} </FormControl></td>
+                    <td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl></td>
                     <td className="consider">
-                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {select_consider} </FormControl><br/>
-                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {select_consider} </FormControl>
+                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl><br/>
+                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
                     </td>
                     <td className="system">
                         <ButtonGroup vertical>
@@ -4634,9 +4237,9 @@ var Profile = React.createClass({
                         </tr>
                         <tr>
                             <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{select_masteratk}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">マスボ<br/>HP(%)*</th>
@@ -4644,9 +4247,9 @@ var Profile = React.createClass({
                             <th className="prof">残HP(%)<br/>(ジータのみ)</th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{select_masterhp}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">ジータ属性*</th>
@@ -4655,8 +4258,8 @@ var Profile = React.createClass({
                             <th className="prof">武器ゼニス2</th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {select_elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
                         </tr>
@@ -4669,8 +4272,8 @@ var Profile = React.createClass({
                         <tr>
                             <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
                             <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {select_enemydeftypes} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {select_ougiRatio} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
                         </tr>
                         </tbody>
                     </table>
@@ -4707,8 +4310,8 @@ var Profile = React.createClass({
                         </tr><tr>
                             <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
                             <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{select_hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {select_ougiGageBuff} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.ougiGageBuff} </FormControl></td>
                         </tr>
                         </tbody>
                     </table>
@@ -4735,12 +4338,12 @@ var Profile = React.createClass({
                         </tr>
                         <tr>
                             <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{select_masteratk}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{select_masterhp}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">ジータ属性*</th>
@@ -4752,13 +4355,13 @@ var Profile = React.createClass({
                             <th className="prof">敵防御固有値</th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {select_elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
                             <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
                             <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {select_enemydeftypes} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">奥義倍率</th>
@@ -4770,7 +4373,7 @@ var Profile = React.createClass({
                             <th className="prof"></th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {select_ougiRatio} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -4811,8 +4414,8 @@ var Profile = React.createClass({
                             <td><FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
                             <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
                             <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{select_hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {select_ougiGageBuff} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.ougiGageBuff} </FormControl></td>
                         </tr>
                         </tbody>
                     </table>
