@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var SimulatorInput = require('./simulator.js')
 var GlobalConst = require('./global_const.js')
 
 // inject GlobalConst...
@@ -539,6 +540,7 @@ var Root = React.createClass({
                         <button id="summonTab" onClick={this.changeTab} >召喚石 / Summon </button>
                         <button id="charaTab" onClick={this.changeTab} >キャラ / Chara</button>
                         <button id="armTab" onClick={this.changeTab} >武器 / Weapon</button>
+                        <button id="simulatorTab" onClick={this.changeTab} >シミュレータ入力</button>
                         <button id="systemTab" onClick={this.changeTab} >保存・注記 / System</button>
                     </div>
                     <div className="Tab" id="inputTab">
@@ -569,6 +571,9 @@ var Root = React.createClass({
                         <Sys data={this.state} onLoadNewData={this.handleChangeData} />
                         <TwitterShareButton data={this.state} />
                         <Notice />
+                    </div>
+                    <div className="Tab hidden" id="simulatorTab">
+                        <SimulatorInput />
                     </div>
                 </div>
                 <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
