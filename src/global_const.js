@@ -1,7 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-module.exports. _ua = (function(u){
+module.exports.dataForLoad = {}
+module.exports._ua = (function(u){
   return {
     Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1)
       || u.indexOf("ipad") != -1

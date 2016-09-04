@@ -6,6 +6,7 @@ var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal,
 var SimulatorInput = require('./simulator.js')
 var SimulationChart = require('./chart.js')
 var GlobalConst = require('./global_const.js')
+var dataForLoad = GlobalConst.dataForLoad
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation
@@ -54,7 +55,6 @@ function getVarInQuery(key){
 
 
 // global hash for loading new data
-var newData = {}
 var touchPosition = null;
 var touchDirection = null;
 
@@ -211,7 +211,7 @@ var Root = React.createClass({
               initState["rootrightHeight"] = oldState.rootrightHeight
               initState["rootrightWidth"] = oldState.rootrightWidth
 
-              newData = initState
+              dataForLoad = initState
               this.setState(initState);
           }.bind(this),
           error: function(xhr, status, err) {
@@ -223,7 +223,7 @@ var Root = React.createClass({
       if(urldata != ''){
           var initState = JSON.parse(Base64.decode(urldata));
           initState["dataName"] = "urlData"
-          newData = initState
+          dataForLoad = initState
           this.setState(initState);
       }
 
@@ -274,8 +274,8 @@ var Root = React.createClass({
       this.setState({noResultUpdate: true});
   },
   handleChangeData: function(newDataName) {
-      this.setState({armNum: newData.armNum});
-      this.setState({summonNum: newData.summonNum});
+      this.setState({armNum: dataForLoad.armNum});
+      this.setState({summonNum: dataForLoad.summonNum});
       this.setState({dataName: newDataName});
   },
   captureResultList: function(e){
@@ -906,9 +906,9 @@ var Chara = React.createClass({
     componentDidMount: function(){
        var state = this.state;
 
-       // もし newData に自分に該当するキーがあるなら読み込む
+       // もし dataForLoad に自分に該当するキーがあるなら読み込む
        // (データロード時に新しく増えたコンポーネント用)
-       var chara = newData.chara
+       var chara = dataForLoad.chara
        if( chara != undefined && this.props.id in chara ){
            state = chara[this.props.id]
            this.setState(state)
@@ -938,7 +938,7 @@ var Chara = React.createClass({
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
         if(nextProps.dataName != this.props.dataName) {
-            var chara = newData.chara
+            var chara = dataForLoad.chara
             if( chara != undefined && this.props.id in chara ){
                 state = chara[this.props.id]
                 this.setState(state)
@@ -1080,12 +1080,12 @@ var SummonList = React.createClass({
         newsummons.pop();
         this.setState({summons: newsummons})
 
-        // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
-        if(!("summon" in newData)) {
-            // もしnewDataが更新される前だったらkeyを作っておく
-            newData["summon"] = {}
+        // dataForLoad にコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("summon" in dataForLoad)) {
+            // もしdataForLoadが更新される前だったらkeyを作っておく
+            dataForLoad["summon"] = {}
         }
-        newData.summon[id + 1] = state;
+        dataForLoad.summon[id + 1] = state;
 
         var newsmlist = this.state.smlist;
         newsmlist.splice(id + 1, 0, state)
@@ -1105,11 +1105,11 @@ var SummonList = React.createClass({
         newsummons.push(maxvalue + 1)
         this.setState({summons: newsummons})
 
-        // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
-        if(!("summon" in newData)) {
-            newData["summon"] = {}
+        // dataForLoadにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("summon" in dataForLoad)) {
+            dataForLoad["summon"] = {}
         }
-        newData.summon[newsummons.length - 1] = state;
+        dataForLoad.summon[newsummons.length - 1] = state;
 
         var newsmlist = this.state.smlist;
         // 削除した分をalistからも削除
@@ -1200,9 +1200,9 @@ var Summon = React.createClass({
     componentDidMount: function(){
        var state = this.state;
 
-       // もし newData に自分に該当するキーがあるなら読み込む
+       // もし dataForLoad に自分に該当するキーがあるなら読み込む
        // (データロード時に新しく増えたコンポーネント用)
-       var summon = newData.summon
+       var summon = dataForLoad.summon
        if( summon != undefined && this.props.id in summon ){
            state = summon[this.props.id]
            this.setState(state)
@@ -1214,7 +1214,7 @@ var Summon = React.createClass({
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
         if(nextProps.dataName != this.props.dataName) {
-            var newState = newData.summon[this.props.id]
+            var newState = dataForLoad.summon[this.props.id]
             this.setState(newState);
             this.props.onChange(this.props.id, newState)
         }
@@ -3825,12 +3825,12 @@ var ArmList = React.createClass({
         newarms.pop();
         this.setState({arms: newarms})
 
-        // newDataにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
-        if(!("armlist" in newData)) {
-            // もしnewDataが更新される前だったらkeyを作っておく
-            newData["armlist"] = {}
+        // dataForLoadにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("armlist" in dataForLoad)) {
+            // もしdataForLoadが更新される前だったらkeyを作っておく
+            dataForLoad["armlist"] = {}
         }
-        newData.armlist[id + 1] = state;
+        dataForLoad.armlist[id + 1] = state;
 
         var newalist = this.state.alist;
         newalist.splice(id + 1, 0, state)
@@ -3850,11 +3850,11 @@ var ArmList = React.createClass({
         newarms.push(maxvalue + 1)
         this.setState({arms: newarms})
 
-        // newDataにinitial stateを入れておいて、componentDidMountで読み出されるようにする
-        if(!("armlist" in newData)) {
-            newData["armlist"] = {}
+        //dataForLoadにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("armlist" in dataForLoad)) {
+            dataForLoad["armlist"] = {}
         }
-        newData.armlist[newarms.length - 1] = state;
+        dataForLoad.armlist[newarms.length - 1] = state;
 
         var newalist = this.state.alist;
         // 削除した分をalistからも削除
@@ -4210,7 +4210,7 @@ var Arm = React.createClass({
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
         if(nextProps.dataName != this.props.dataName) {
-            var newState = newData.armlist[this.props.id]
+            var newState = dataForLoad.armlist[this.props.id]
             this.setState(newState);
             this.props.onChange(this.props.id, newState, false);
         }
@@ -4266,9 +4266,9 @@ var Arm = React.createClass({
     componentDidMount: function(){
        var state = this.state;
 
-       // もし newData に自分に該当するキーがあるなら読み込む
+       // もし dataForLoad に自分に該当するキーがあるなら読み込む
        // (データロード時に新しく増えたコンポーネント用)
-       var armlist = newData.armlist
+       var armlist = dataForLoad.armlist
        if( armlist != undefined && this.props.id in armlist ){
            state = armlist[this.props.id]
            this.setState(state)
@@ -4433,7 +4433,7 @@ var Profile = React.createClass({
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
         if(nextProps.dataName != this.props.dataName) {
-            var newState = newData.profile
+            var newState = dataForLoad.profile
             this.setState(newState);
             this.props.onChange(newState);
         }
@@ -4712,7 +4712,7 @@ var Sys = React.createClass({
 
       if(key == "dataName") {
           // 短縮URL取得時に使用するために保存しておく
-          newData["dataName"] = e.target.value;
+          dataForLoad["dataName"] = e.target.value;
       }
     },
     onSubmitRemove: function(e) {
@@ -4731,7 +4731,7 @@ var Sys = React.createClass({
     onSubmitLoad: function(e){
       e.preventDefault();
       if(this.state.selectedData != ''){
-          newData = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
+          dataForLoad = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
 
           // これは will receive props が発火したあとしか反映されない
           this.setState({dataName: this.state.selectedData});
@@ -4756,7 +4756,7 @@ var Sys = React.createClass({
           var saveString = Base64.encodeURI(JSON.stringify(newState.storedData));
           localStorage.setItem("data", saveString);
 
-          newData = propsdata;
+          dataForLoad = propsdata;
           this.setState(newState);
       } else {
           alert("データ名を入力して下さい。")
@@ -4810,9 +4810,9 @@ var TwitterShareButton = React.createClass ({
     },
     getShortenUrl: function() {
         var data = JSON.parse(JSON.stringify(this.props.data));
-        if("dataName" in newData && newData["dataName"] != '') {
+        if("dataName" in dataForLoad && dataForLoad["dataName"] != '') {
             // 基本的にSys.dataNameに入力されているものをベースにして保存
-            data["dataName"] = newData["dataName"];
+            data["dataName"] = dataForLoad["dataName"];
         } else {
             // Sys.dataNameが空の場合
             data["dataName"] = "savedData";
@@ -4932,9 +4932,6 @@ var NiteHowTo = React.createClass({
                 <p>一概に後者の編成のが強いとは断言できませんが、1つの目安として使って頂ければと思います。</p>
                 <p>キャラ混みの平均値についても総合*回数*技巧期待値同様に計算できるようになっていますが、現在はキャラ別の奥義倍率についてはサポートしていませんので、あくまで目安としてお使い下さい。</p>
                 <p>また、通常攻撃ダメージの減衰補正・奥義ダメージの減衰補正についてのより詳しい情報があればご提供頂けると助かります。</p>
-
-                <h3>最後に</h3>
-                <p>本計算機を信頼して、討滅戦武器集めたのに編成に入らないって結果に変わった！という方がおりましたらすみません。</p>
             </div>
         );
     },
