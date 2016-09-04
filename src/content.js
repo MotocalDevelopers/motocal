@@ -2749,11 +2749,11 @@ var ResultList = React.createClass({
                 this.initializeTotals(totals)
             }
         }
-        this.setState({chartData: this.generateSimulationData(res, turnBuff, arml, summon, prof, totalBuff, storedCombinations)})
+        this.setState({chartData: this.generateSimulationData(res, turnBuff, arml, summon, prof, totalBuff, chara, storedCombinations)})
         this.setState({chartSortKey: sortkey})
         this.setState({openSimulator: true})
     },
-    generateSimulationData: function(res, turnBuff, arml, summon, prof, buff, storedCombinations) {
+    generateSimulationData: function(res, turnBuff, arml, summon, prof, buff, chara, storedCombinations) {
         var data = {}
         var minMaxArr = {
             "averageAttack": {"max": 0, "min": 0},
@@ -2761,6 +2761,17 @@ var ResultList = React.createClass({
             "expectedDamage": {"max": 0, "min": 0},
             "averageExpectedDamage": {"max": 0, "min": 0},
             "summedAverageExpectedDamage": {"max": 0, "min": 0},
+        }
+        var cnt = 1
+        var considerAverageArray = {}
+        for(var ch = 0; ch < chara.length; ch++) {
+            var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
+            if(charaConsidered) {
+                cnt++;
+                considerAverageArray[chara[ch].name] = true
+            } else {
+                considerAverageArray[chara[ch].name] = false
+            }
         }
 
         if(res.length > 1) {
@@ -2817,7 +2828,6 @@ var ResultList = React.createClass({
                 var turndata = oneresult[t - 1]
                 for(var j = 0; j < turndata.length; j++){
                     var onedata = turndata[j].data
-                    var cnt = Object.keys(onedata).length
 
                     AverageTotalAttack[t].push( onedata["Djeeta"].averageAttack )
                     AverageTotalExpected[t].push( onedata["Djeeta"].averageTotalExpected )
@@ -2826,18 +2836,27 @@ var ResultList = React.createClass({
                         if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougi" || turnBuff.buffs[key][t-1].turnType == "ougi") {
                             // 基本的に奥義の設定が優先
                             var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio)
-                            if(key == "Djeeta") ExpectedDamage[t].push( parseInt(newOugiDamage) )
-                            AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage/cnt)
+                            if(key == "Djeeta") {
+                                ExpectedDamage[t].push( parseInt(newOugiDamage) )
+                                AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage/cnt)
+                            } else if(considerAverageArray[key]) {
+                                AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage/cnt)
+                            }
 
                         } else if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougiNoDamage" || turnBuff.buffs[key][t-1].turnType == "ougiNoDamage") {
                             // しコルワ
-                            if(key == "Djeeta") ExpectedDamage[t].push( parseInt(newDamage * onedata[key].expectedAttack) )
-                            // AverageExpectedDamage[t][j + 1] += 0
+                            if(key == "Djeeta") {
+                                ExpectedDamage[t].push(0)
+                            }
                         } else {
                             // 通常攻撃
                             var newDamage = this.calculateDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense)
-                            if(key == "Djeeta") ExpectedDamage[t].push( parseInt(newDamage * onedata[key].expectedAttack) )
-                            AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage/cnt)
+                            if(key == "Djeeta") {
+                                ExpectedDamage[t].push( parseInt(newDamage * onedata[key].expectedAttack) )
+                                AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage/cnt)
+                            } else if(considerAverageArray[key]) {
+                                AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage/cnt)
+                            }
                         }
                     }
 
@@ -4100,8 +4119,8 @@ var RegisteredArm = React.createClass({
                             <Modal.Title>何本追加しますか？</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selector.level}</FormControl>
-                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selector.skilllevel}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectlevel}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectskilllevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
