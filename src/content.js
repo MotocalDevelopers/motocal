@@ -2211,11 +2211,11 @@ var ResultList = React.createClass({
         }
         // resに再計算されたデータが入っている状態
         // res[summonind][rank]
-        this.setState({chartData: this.generateHaisuiData(res, arml, summon, prof, storedCombinations)})
+        this.setState({chartData: this.generateHaisuiData(res, arml, summon, prof, chara, storedCombinations)})
         this.setState({chartSortKey: sortkey})
         this.setState({openHPChart: true})
     },
-    generateHaisuiData: function(res, arml, summon, prof, storedCombinations) {
+    generateHaisuiData: function(res, arml, summon, prof, chara, storedCombinations) {
         var data = {}
         var minMaxArr = {
             "totalAttack": {"max": 0, "min": 0},
@@ -2225,6 +2225,17 @@ var ResultList = React.createClass({
             "averageAttack": {"max": 0, "min": 0},
             "averageCyclePerTurn": {"max": 0, "min": 0},
             "averageCriticalAttack": {"max": 0, "min": 0},
+        }
+        var cnt = 1
+        var considerAverageArray = {}
+        for(var ch = 0; ch < chara.length; ch++) {
+            var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
+            if(charaConsidered) {
+                cnt++;
+                considerAverageArray[chara[ch].name] = true
+            } else {
+                considerAverageArray[chara[ch].name] = false
+            }
         }
 
         if(res.length > 1) {
@@ -2290,7 +2301,6 @@ var ResultList = React.createClass({
 
             for(var j = 0; j < oneresult.length; j++){
                 var onedata = oneresult[j].data
-                var cnt = Object.keys(onedata).length
 
                 var title = "No. " + (j+1).toString() + ":"
                 for(var i=0; i < arml.length; i++){
@@ -2409,11 +2419,14 @@ var ResultList = React.createClass({
                             TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
                             CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
                             CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
+                            AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
+                            AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                            AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
+                        } else if (considerAverageArray[key]) {
+                            AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
+                            AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                            AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                         }
-
-                        AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
-                        AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
-                        AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                     }
                 }
                 TotalAttack[0].push(title)
@@ -2520,11 +2533,11 @@ var ResultList = React.createClass({
         }
         // resに再計算されたデータが入っている状態
         // res[summonind][rank]
-        this.setState({chartData: this.generateTurnData(res, arml, summon, prof, totalBuff, storedCombinations)})
+        this.setState({chartData: this.generateTurnData(res, arml, summon, prof, totalBuff, chara, storedCombinations)})
         this.setState({chartSortKey: sortkey})
         this.setState({openTurnChart: true})
     },
-    generateTurnData: function(res, arml, summon, prof, buff, storedCombinations) {
+    generateTurnData: function(res, arml, summon, prof, buff, chara, storedCombinations) {
         var data = {}
         var minMaxArr = {
             "totalAttack": {"max": 0, "min": 0},
@@ -2533,6 +2546,17 @@ var ResultList = React.createClass({
             "averageAttack": {"max": 0, "min": 0},
             "averageCyclePerTurn": {"max": 0, "min": 0},
             "averageCriticalAttack": {"max": 0, "min": 0},
+        }
+        var cnt = 1
+        var considerAverageArray = {}
+        for(var ch = 0; ch < chara.length; ch++) {
+            var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
+            if(charaConsidered) {
+                cnt++;
+                considerAverageArray[chara[ch].name] = true
+            } else {
+                considerAverageArray[chara[ch].name] = false
+            }
         }
 
         if(res.length > 1) {
@@ -2594,7 +2618,6 @@ var ResultList = React.createClass({
 
             for(var j = 0; j < oneresult.length; j++){
                 var onedata = oneresult[j].data
-                var cnt = Object.keys(onedata).length
 
                 var title = "No. " + (j+1).toString() + ":"
                 for(var i=0; i < arml.length; i++){
@@ -2626,11 +2649,14 @@ var ResultList = React.createClass({
                             TotalAttack[k + 1].push( parseInt(newTotalAttack) )
                             CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
                             CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
+                            AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
+                            AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                            AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
+                        } else if (considerAverageArray[key]) {
+                            AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
+                            AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                            AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                         }
-
-                        AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
-                        AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
-                        AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                     }
                 }
                 TotalAttack[0].push(title)
@@ -3542,7 +3568,7 @@ var HPChart = React.createClass({
             return (
                     <div className="HPChart">
                         {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>*/}
-                        <p className="text-danger">8/25 深夜〜8/27早朝にかけて、算出されるHPチャートの値がおかしくなっていました。現在は修正済みです。</p>
+                        <p className="text-danger">HPチャートの計算において、キャラを「平均値に含めるかどうか」の設定が上手く動いていない状態だった不具合を修正しました。</p>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
@@ -3562,7 +3588,7 @@ var HPChart = React.createClass({
 
             return (
                     <div className="HPChart">
-                        <p className="text-danger">8/25 深夜〜8/27早朝にかけて、算出されるHPチャートの値がおかしくなっていました。現在は修正済みです。</p>
+                        <p className="text-danger">HPチャートの計算において、キャラを「平均値に含めるかどうか」の設定が上手く動いていない状態だった不具合を修正しました。</p>
                         <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
