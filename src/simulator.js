@@ -4,11 +4,26 @@ var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 var GlobalConst = require('./global_const.js')
 var selector = GlobalConst.selector
+var turnList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var turnTypeList = {"normal": "通常攻撃", "ougi": "奥義", "ougiNoDamage": "奥義(ダメージ無し)"};
+var HPList = [ 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ];
+var buffAmountList = [0, 5, 10, 15, 20, 25, 30, 35, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150];
+var daBuffAmountList = [0, 5, 10, 15, 20, 25, 30, 35, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+var turnList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+var select_turnlist = turnList.map(function(opt){return <option value={opt} key={opt}>最大ターン数:{opt}</option>;});
+var select_turntype = Object.keys(turnTypeList).map(function(opt){return <option value={opt} key={opt}>{turnTypeList[opt]}</option>;});
+var select_normalbuffAmount = buffAmountList.map(function(opt){ return <option value={"normal-" + opt} key={opt}>通常バフ+{opt}%</option> });
+var select_elementbuffAmount = buffAmountList.map(function(opt){ return <option value={"element-" + opt} key={opt}>属性バフ+{opt}%</option> });
+var select_otherbuffAmount = buffAmountList.map(function(opt){ return <option value={"other-" + opt} key={opt}>その他バフ+{opt}%</option> });
+var select_dabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"DA-" + opt} key={opt}>DA率+{opt}%</option> });
+var select_tabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"TA-" + opt} key={opt}>TA率+{opt}%</option> });
+var select_hplist = HPList.map(function(opt){return <option value={opt} key={opt}>残りHP:{opt}%</option>;});
 
 var SimulatorInput = React.createClass({
     componentDidMount: function(){
-       // 初期化後 state を 上の階層に渡しておく
-       this.props.onChange(this.state);
+        // 初期化後 state を 上の階層に渡しておく
+        this.props.onChange(this.state);
     },
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
@@ -20,25 +35,9 @@ var SimulatorInput = React.createClass({
     },
     getInitialState: function() {
         return {
-            normalBuff: 0,
-            elementBuff: 0,
-            otherBuff: 0,
-            daBuff: 0,
-            taBuff: 0,
-            remainHP: 100,
-            enemyDefense: 10.0,
-            ougiGageBuff: 0,
+            buffs: {},
+            maxTurn: 5,
         };
-    },
-    handleEvent: function(key, e) {
-        // input タイプの入力フォームはonBlurを利用する
-        var newState = this.state
-        newState[key] = e.target.value
-        this.setState(newState)
-    },
-    handleOnBlur: function(e) {
-        // フォーカスが外れた時だけ変更を親に送る
-        this.props.onChange(this.state)
     },
     handleSelectEvent: function(key, e) {
         // select タイプの入力フォームはonChangeの際で良い
@@ -47,130 +46,166 @@ var SimulatorInput = React.createClass({
         this.setState(newState)
         this.props.onChange(newState)
     },
+    handleBuffDataChange: function(name, buffstate) {
+        // select タイプの入力フォームはonChangeの際で良い
+        var newState = this.state.buffs
+        newState[name] = buffstate
+        this.setState({buffs: newState})
+        console.log("root buff data:", newState)
+        this.props.onChange(newState)
+    },
     render: function() {
-        /* if(_ua.Mobile) {
-            return (
-                <div className="profile">
-                    <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
-                    <table className="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th className="prof">Rank*</th>
-                            <th className="prof">ゼニス攻撃力*</th>
-                            <th className="prof">ゼニスHP</th>
-                            <th className="prof">マスボ<br/>ATK(%)*</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {select_zenithAttack} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {select_zenithHP} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{select_masteratk}</FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">マスボ<br/>HP(%)*</th>
-                            <th className="prof">ジョブ*</th>
-                            <th className="prof">残HP(%)<br/>(ジータのみ)</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{select_masterhp}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">ジータ属性*</th>
-                            <th className="prof">敵の属性*</th>
-                            <th className="prof">武器ゼニス1</th>
-                            <th className="prof">武器ゼニス2</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {select_elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {select_elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">基礎DA率</th>
-                            <th className="prof">基礎TA率</th>
-                            <th className="prof">敵防御固有値</th>
-                            <th className="prof">奥義倍率</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {select_enemydeftypes} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {select_ougiRatio} </FormControl></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <span>
-                    {Jobs[this.state.job].name}:
-                    得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
-                    {jobTypes[Jobs[this.state.job].type]}タイプ,
-                    攻撃ボーナス {Jobs[this.state.job].atBonus},
-                    HPボーナス {Jobs[this.state.job].hpBonus},
-                    攻刃バフ {Jobs[this.state.job].kouzinBonus},
-                    守護バフ {Jobs[this.state.job].shugoBonus},
-                    基礎DA率 {Jobs[this.state.job].DaBonus}%,
-                    基礎TA率 {Jobs[this.state.job].TaBonus}%
-                    </span>
+        var Turns = [];
+        for(var i = 0; i < this.state.maxTurn; i++){
+            Turns.push(i + 1)
+        }
+        var names = [];
+        names.push("ジータ")
+        for(key in this.props.chara){
+            if(this.props.chara[key].name != "") {
+                names.push(this.props.chara[key].name)
+            }
+        }
+        var state = this.state
+        var handleSelectEvent = this.handleSelectEvent
+        var handleEvent = this.handleEvent
+        var handleBuffDataChange = this.handleBuffDataChange
 
-                    <h3> パーティ全体への効果 (%表記)</h3>
-                    <table className="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th className="buff">通常バフ</th>
-                            <th className="buff">属性バフ</th>
-                            <th className="buff">その他バフ</th>
-                            <th className="buff">HPバフ</th>
-                        </tr><tr>
-                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
-                        </tr><tr>
-                            <th className="buff">DAバフ</th>
-                            <th className="buff">TAバフ</th>
-                            <th className="buff">残HP(%)</th>
-                            <th className="prof">奥義ゲージ上昇率アップ</th>
-                        </tr><tr>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{select_hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {select_ougiGageBuff} </FormControl></td>
-                        </tr>
-                        </tbody>
-                    </table>
+        return (
+            <div className="simulatorInput">
+                <h3> シミュレータ用入力 </h3>
+                <FormControl componentClass="select" value={this.state.maxTurn} onChange={this.handleSelectEvent.bind(this, "maxTurn")}>{select_turnlist}</FormControl>
+                <div className="table-responsive">
+                <table className="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th></th>
+                        {Turns.map(function(x){return <th key={x}>{x}ターン目</th>})}
+                        <th>操作</th>
+                    </tr>
+                    <SimulatorPersonal id="0" name={"全体バフ"} turns={Turns}onChange={handleBuffDataChange} />
+                    {names.map(function(name, ind) {
+                        return (<SimulatorPersonal key={ind + 1} id={ind + 1} name={name} turns={Turns} onChange={handleBuffDataChange} />);
+                    })}
+                    </tbody>
+                </table>
                 </div>
-            );
-        } else {*/
-            return (
-                <div className="simulatorInput">
-                    <h3> パーティ全体への効果 (%表記)</h3>
-                    <table className="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th className="buff">通常バフ</th>
-                            <th className="buff">属性バフ</th>
-                            <th className="buff">その他バフ</th>
-                            <th className="buff">DAバフ</th>
-                            <th className="buff">TAバフ</th>
-                            <th className="buff">残HP(%)</th>
-                            <th className="buff">奥義ゲージ上昇率アップ</th>
-                        </tr><tr>
-                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.ougiGageBuff} </FormControl></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            );
-        //}
+            </div>
+        );
     }
+});
+
+var SimulatorPersonal = React.createClass({
+    getInitialState: function() {
+        state = {}
+        for(var i = 0; i < this.props.turns.length; i++){
+            state[i] = {}
+        }
+        return state;
+    },
+    onChangeOneTurnBuff: function(id, newbuff) {
+        var newState = this.state
+        newState[id] = newbuff
+        this.setState(newState)
+        this.props.onChange(this.props.name, newState)
+    },
+    render: function() {
+        var buffchange = this.onChangeOneTurnBuff
+        return (
+            <tr>
+                <td>{this.props.name}</td>
+                {this.props.turns.map(function(x, ind){
+                    return (
+                      <OneTurnBuff key={ind} id={ind} onChange={buffchange} />
+                    );
+                })}
+                <td>
+                    <ButtonGroup vertical>
+                        <Button bsStyle="primary">コピー</Button>
+                        <Button bsStyle="primary">リセット</Button>
+                    </ButtonGroup>
+                </td>
+            </tr>
+        );
+    },
+});
+
+var OneTurnBuff = React.createClass({
+    getInitialState: function() {
+        return {
+            remainHP: 100,
+            enemyDefense: 10.0,
+            buff: ["normal-0"],
+            turnType: "normal",
+        };
+    },
+    handleSelectEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+        this.updateBuffAmount(newState)
+    },
+    componentDidMount: function() {
+        this.updateBuffAmount(this.state)
+    },
+    updateBuffAmount: function(newstate){
+        var buff = {normal: 0, element: 0, other: 0, DA: 0, TA: 0}
+
+        for(var i = 0; i < newstate.buff.length; i++) {
+            var onebuff = newstate.buff[i].split("-")
+            buff[onebuff[0]] += parseInt(onebuff[1])
+        }
+
+        buff["remainHP"] = newstate.remainHP
+        buff["turnType"] = newstate.turnType
+
+        this.props.onChange(this.props.id, buff)
+    },
+    changeBuff: function(e) {
+        var newState = this.state
+        newState["buff"][e.target.id] = e.target.value
+        this.setState(newState)
+        this.updateBuffAmount(newState)
+    },
+    addBuffNum: function(e) {
+        var newbuff = this.state.buff
+        if(newbuff.length < 7) {
+            newbuff.push("normal-0")
+            this.setState({buff: newbuff})
+        }
+    },
+    subBuffNum: function(e) {
+        var newbuff = this.state.buff
+        if(newbuff.length > 1) {
+            newbuff.pop()
+            this.setState({buff: newbuff})
+        }
+    },
+    render: function() {
+        var changeBuff = this.changeBuff
+        var bufflist = this.state.buff
+        return (
+            <td>
+            <FormControl componentClass="select" value={this.state.turnType} onChange={this.handleSelectEvent.bind(this, "turnType")}>{select_turntype}</FormControl>
+            <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl>
+            {this.state.buff.map(function(x, ind){
+                return (
+                    <FormControl componentClass="select" key={ind} id={ind.toString()} value={bufflist[ind]} onChange={changeBuff}>
+                    {select_normalbuffAmount}
+                    {select_elementbuffAmount}
+                    {select_otherbuffAmount}
+                    {select_dabuffAmount}
+                    {select_tabuffAmount}
+                    </FormControl>
+                );
+            })}
+            <ButtonGroup>
+                <Button bsStyle="primary" onClick={this.addBuffNum} >追加</Button>
+                <Button bsStyle="primary" onClick={this.subBuffNum} >削除</Button>
+            </ButtonGroup>
+            </td>
+        );
+    },
 });
 
 module.exports = SimulatorInput;

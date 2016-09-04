@@ -91,6 +91,7 @@ var Root = React.createClass({
           armlist: [],
           chara: [],
           summon: [],
+          simulator: [],
           dataName: '',
           sortKey: "totalAttack",
           noResultUpdate: false,
@@ -244,6 +245,7 @@ var Root = React.createClass({
       if(urlid != ''){
           this.getDatacharById(urlid);
       }
+      this.setState({noResultUpdate: false});
       window.addEventListener('resize', this.handleResize);
   },
   componentWillUnmount() {
@@ -281,6 +283,10 @@ var Root = React.createClass({
       } else {
           this.setState({noResultUpdate: false});
       }
+  },
+  onChangeSimulationData: function(state) {
+      this.setState({simulator: state});
+      this.setState({noResultUpdate: true});
   },
   handleChangeData: function(newDataName) {
       this.setState({armNum: newData.armNum});
@@ -573,7 +579,7 @@ var Root = React.createClass({
                         <Notice />
                     </div>
                     <div className="Tab hidden" id="simulatorTab">
-                        <SimulatorInput />
+                        <SimulatorInput chara={this.state.chara} onChange={this.onChangeSimulationData} />
                     </div>
                 </div>
                 <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
@@ -2132,9 +2138,11 @@ var ResultList = React.createClass({
             storedList: {"combinations": [], "armlist": []},
             openHPChart: false,
             openTurnChart: false,
+            openSimulator: false,
             hpChartButtonActive: false,
             openHPChartTutorial: false,
             turnChartButtonActive: false,
+            simulatorButtonActive: false,
             previousArmlist: null,
             previousCombinations: null,
         };
@@ -2144,6 +2152,9 @@ var ResultList = React.createClass({
     },
     closeTurnChart: function() {
         this.setState({openTurnChart: false})
+    },
+    closeSimulator: function() {
+        this.setState({openSimulator: false})
     },
     closeHPChartTutorial: function() {
         this.setState({openHPChartTutorial: false})
@@ -2496,6 +2507,7 @@ var ResultList = React.createClass({
         this.setState({storedList: newStored})
         this.setState({hpChartButtonActive: true})
         this.setState({turnChartButtonActive: true})
+        this.setState({simulatorButtonActive: true})
     },
     openTurnChart: function() {
         var storedCombinations = this.state.storedList.combinations
@@ -2701,6 +2713,40 @@ var ResultList = React.createClass({
 
         data["minMaxArr"] = minMaxArr
         return data
+    },
+    openSimulator: function() {
+        var storedCombinations = this.state.storedList.combinations
+        var storedArmlist = this.state.storedList.armlist
+
+        var prof = this.props.data.profile; var arml = this.props.data.armlist;
+        var summon = this.props.data.summon; var chara = this.props.data.chara;
+        var totalBuff = this.getTotalBuff(prof)
+        var totals = this.getInitialTotals(prof, chara, summon)
+
+        var sortkey = "totalAttack"
+        var sortkeyname = "攻撃力(二手技巧無し)"
+        if(this.props.data.sortKey == this.props.data.sortKey) {
+            sortkey = this.props.data.sortKey
+            sortkeyname = keyTypes[sortkey]
+        }
+
+        var res = []
+        for(var i = 0; i < summon.length; i++){
+            res[i] = []
+        }
+
+        for(var i = 0; i < storedCombinations.length; i++){
+            var oneres = this.calculateOneCombination(storedCombinations[i], summon, prof, arml, totals, totalBuff)
+            for(var j = 0; j < summon.length; j++){
+                res[j].push({data: oneres[j], armNumbers: storedCombinations[i]});
+            }
+            this.initializeTotals(totals)
+        }
+        // resに再計算されたデータが入っている状態
+        // res[summonind][rank]
+        this.setState({haisuiData: this.generateTurnData(res, arml, summon, prof, totalBuff, storedCombinations)})
+        this.setState({haisuiSortKey: sortkey})
+        this.setState({openSimulator: true})
     },
     resetStoredList: function(e) {
         this.setState({storedList: {"combinations": [], "armlist": []}})
@@ -2984,8 +3030,9 @@ var ResultList = React.createClass({
                     <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
                     <hr />
                         <ButtonGroup style={{width: "100%"}}>
-                            <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.hpChartButtonActive} >背水渾身グラフを開く(beta)</Button>
-                            <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.turnChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.hpChartButtonActive} >背水渾身グラフを開く(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.turnChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.simulatorButtonActive} >ダメージシミュレータ(beta)</Button>
                         </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
@@ -3078,6 +3125,14 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <TurnChart data={this.state.haisuiData} sortKey={this.state.haisuiSortKey} />
+                        </Modal.Body>
+                    </Modal>
+                    <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>ダメージシミュレータ ({remainHPstr})</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <TurnChart data={this.state.haisuiData} sortKey={this.state.haisuiSortKey} />
