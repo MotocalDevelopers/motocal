@@ -765,7 +765,7 @@ var CharaList = React.createClass({
                         <th>得意武器*</th>
                         <th>得意武器2</th>
                         <th className="considerAverage">平均に含める</th>
-                        <th>素の攻撃力*<br/>(≠編成画面での表示値)</th>
+                        <th>素の攻撃力*</th>
                         <th>素のHP</th>
                         <th>残HP割合(%)</th>
                         <th>基礎DA率(%)</th>
