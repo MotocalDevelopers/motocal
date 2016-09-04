@@ -2139,10 +2139,8 @@ var ResultList = React.createClass({
             openHPChart: false,
             openTurnChart: false,
             openSimulator: false,
-            hpChartButtonActive: false,
             openHPChartTutorial: false,
-            turnChartButtonActive: false,
-            simulatorButtonActive: false,
+            ChartButtonActive: false,
             previousArmlist: null,
             previousCombinations: null,
         };
@@ -2185,7 +2183,7 @@ var ResultList = React.createClass({
         }
         if(!isArmValid){
             this.setState({storedList: {"combinations": [], "armlist": []}})
-            this.setState({hpChartButtonActive: false})
+            this.setState({ChartButtonActive: false})
         }
     },
     handleEvent: function(key, e) {
@@ -2505,9 +2503,7 @@ var ResultList = React.createClass({
         newStored["combinations"].push(JSON.parse(JSON.stringify(this.state.result.result[summonid][id].armNumbers)))
         newStored["armlist"].push(JSON.parse(JSON.stringify(this.props.data.armlist)))
         this.setState({storedList: newStored})
-        this.setState({hpChartButtonActive: true})
-        this.setState({turnChartButtonActive: true})
-        this.setState({simulatorButtonActive: true})
+        this.setState({ChartButtonActive: true})
     },
     openTurnChart: function() {
         var storedCombinations = this.state.storedList.combinations
@@ -2751,8 +2747,7 @@ var ResultList = React.createClass({
     resetStoredList: function(e) {
         this.setState({storedList: {"combinations": [], "armlist": []}})
         this.setState({openHPChart: false})
-        this.setState({hpChartButtonActive: false})
-        this.setState({turnChartButtonActive: false})
+        this.setState({ChartButtonActive: false})
     },
     render: function() {
         res = this.state.result;
@@ -2892,8 +2887,8 @@ var ResultList = React.createClass({
                     <Checkbox inline checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
                     <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
                     <ButtonGroup style={{width: "100%"}}>
-                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", "font-size": "10pt", "padding-left": "2px", "padding-right": "2px", "text-align": "center"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.hpChartButtonActive} >背水渾身グラフ</Button>
-                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", "font-size": "10pt", "padding-left": "2px", "padding-right": "2px", "text-align": "center"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.turnChartButtonActive} >初期攻撃力推移グラフ</Button>
+                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", "font-size": "10pt", "padding-left": "2px", "padding-right": "2px", "text-align": "center"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフ</Button>
+                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", "font-size": "10pt", "padding-left": "2px", "padding-right": "2px", "text-align": "center"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフ</Button>
                     </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
@@ -3030,9 +3025,9 @@ var ResultList = React.createClass({
                     <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
                     <hr />
                         <ButtonGroup style={{width: "100%"}}>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.hpChartButtonActive} >背水渾身グラフを開く(beta)</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.turnChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.simulatorButtonActive} >ダメージシミュレータ(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフを開く(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ButtonActive} >ダメージシミュレータ(beta)</Button>
                         </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
