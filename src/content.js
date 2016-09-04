@@ -3046,7 +3046,7 @@ var ResultList = React.createClass({
         }
         remainHPstr += "%"
         for(var i = 0; i < chara.length; i++){
-            if(chara[i].name != "") {
+            if(chara[i].name != "" && chara[i].isConsideredInAverage) {
                 remainHPstr += ", " + chara[i].name + "HP"
                 if(chara[i].remainHP != undefined) {
                     remainHPstr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
