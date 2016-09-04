@@ -637,3 +637,17 @@ label {
     left: -20px;
     overflow: visible;
 }
+
+div.simulatorInput {
+    height: 80%;
+    overflow: scroll;
+}
+
+.simulatorInput .simulator-th, .simulatorInput .simulator-td {
+    padding: 2px;
+    min-width: 120px;
+}
+
+.simulatorInput .form-control {
+    width: 120px;
+}

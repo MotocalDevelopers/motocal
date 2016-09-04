@@ -34,105 +34,178 @@ var SimulatorInput = React.createClass({
         }
     },
     getInitialState: function() {
+        var maxTurn = 5
+        // 合計後のデータを入れる連想配列
+        var buffs = {}
+        // 各選択メニューに対応する連想配列
+        var bufflists = {}
+        buffs["全体バフ"] = {}
+        buffs["ジータ"] = {}
+        bufflists["全体バフ"] = {}
+        bufflists["ジータ"] = {}
+
+        for(key in this.props.chara){
+            if(this.props.chara[key].name != "") {
+                buffs[key] = {}
+                bufflists[key] = {}
+            }
+        }
+
+        for(var i = 0; i < maxTurn; i++) {
+            for(key in buffs) {
+                buffs[key][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                bufflists[key][i] = ["normal-0"]
+            }
+        }
         return {
-            buffs: {},
-            maxTurn: 5,
+            buffs: buffs,
+            bufflists: bufflists,
+            maxTurn: maxTurn,
         };
+    },
+    updateBuffAmount: function(newState, name, ind){
+        // 更新されたターンのところだけアップデートすればよい
+        newState.buffs[name][ind].normal = 0
+        newState.buffs[name][ind].element = 0
+        newState.buffs[name][ind].other = 0
+        newState.buffs[name][ind].DA = 0
+        newState.buffs[name][ind].TA = 0
+
+        for(var i = 0; i < newState.bufflists[name][ind].length; i++) {
+            var onebuff = newState.bufflists[name][ind][i].split("-")
+            newState.buffs[name][ind][onebuff[0]] += parseInt(onebuff[1])
+        }
+
+        this.setState(newState)
+        this.props.onChange(newState)
     },
     handleSelectEvent: function(key, e) {
         // select タイプの入力フォームはonChangeの際で良い
         var newState = this.state
-        newState[key] = e.target.value
+        if(key == "maxTurn") {
+            if(parseInt(this.state.maxTurn) < parseInt(e.target.value)) {
+                // ターン数が増えた場合
+                for(var i = parseInt(this.state.maxTurn); i < parseInt(e.target.value); i++) {
+                    for(buffkey in newState.buffs) {
+                        newState.buffs[buffkey][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                        newState.bufflists[buffkey][i] = ["normal-0"]
+                    }
+                }
+            } else {
+                // ターン数が減った場合
+                for(var i = parseInt(this.state.maxTurn) - 1; i >= parseInt(e.target.value); i--) {
+                    for(buffkey in newState.buffs) {
+                        delete newState.buffs[buffkey][i];
+                        delete newState.bufflists[buffkey][i];
+                    }
+                }
+            }
+        }
+        newState[key] = parseInt(e.target.value)
         this.setState(newState)
         this.props.onChange(newState)
     },
-    handleBuffDataChange: function(name, buffstate) {
-        // select タイプの入力フォームはonChangeの際で良い
+    handleChangeBuff: function(e) {
         var newState = this.state
-        if(name == "ジータ") {
-            newState["buffs"]["Djeeta"] = buffstate
-        } else {
-            newState["buffs"][name] = buffstate
+        var id = e.target.id.split("-")
+        newState.bufflists[e.target.name][id[0]][id[1]] = e.target.value
+        this.updateBuffAmount(newState, e.target.name, id[0])
+    },
+    handleRemainHPChange: function(e) {
+        var newState = this.state
+        newState.buffs[e.target.name][e.target.id]["remainHP"] = parseInt(e.target.value)
+        this.updateBuffAmount(newState, e.target.name, e.target.id)
+    },
+    handleTurnTypeChange: function(e) {
+        var newState = this.state
+        newState.buffs[e.target.name][e.target.id]["turnType"] = e.target.value
+        this.updateBuffAmount(newState, e.target.name, e.target.id)
+    },
+    addBuffNum: function(e) {
+        var newbuff = this.state.bufflists
+        if(newbuff[e.target.name][e.target.id].length < 7) {
+            newbuff[e.target.name][e.target.id].push("normal-0")
+            this.setState({bufflists: newbuff})
         }
-        this.setState(newState)
-        this.props.onChange(newState)
+    },
+    subBuffNum: function(e) {
+        var newbuff = this.state.bufflists
+        if(newbuff[e.target.name][e.target.id].length > 1) {
+            newbuff[e.target.name][e.target.id].pop()
+            this.setState({bufflists: newbuff})
+        }
     },
     render: function() {
         var Turns = [];
         for(var i = 0; i < this.state.maxTurn; i++){
             Turns.push(i + 1)
         }
-        var names = [];
-        names.push("ジータ")
-        for(key in this.props.chara){
-            if(this.props.chara[key].name != "") {
-                names.push(this.props.chara[key].name)
-            }
-        }
         var state = this.state
         var handleSelectEvent = this.handleSelectEvent
         var handleEvent = this.handleEvent
         var handleBuffDataChange = this.handleBuffDataChange
+        var handleTurnTypeChange = this.handleTurnTypeChange
+        var handleRemainHPChange = this.handleRemainHPChange
+        var handleChangeBuff = this.handleChangeBuff
+        var addBuffNum = this.addBuffNum
+        var subBuffNum = this.subBuffNum
 
         return (
             <div className="simulatorInput">
                 <h3> シミュレータ用入力 </h3>
-                <FormControl componentClass="select" value={this.state.maxTurn} onChange={this.handleSelectEvent.bind(this, "maxTurn")}>{select_turnlist}</FormControl>
-                <div className="table-responsive">
+                <span>各ターンのバフやHP等を設定して下さい。</span> <FormControl componentClass="select" value={this.state.maxTurn} onChange={this.handleSelectEvent.bind(this, "maxTurn")}>{select_turnlist}</FormControl>
                 <table className="table table-bordered">
                     <tbody>
                     <tr>
-                        <th></th>
-                        {Turns.map(function(x){return <th key={x}>{x}ターン目</th>})}
-                        <th>操作</th>
+                        <th className="simulator-td"></th>
+                        {Turns.map(function(x){return <th className="simulator-th" key={x}>{x}ターン目</th>})}
+                        <th className="simulator-th" >操作</th>
                     </tr>
-                    <SimulatorPersonal id="0" name={"全体バフ"} turns={Turns}onChange={handleBuffDataChange} />
-                    {names.map(function(name, ind) {
-                        return (<SimulatorPersonal key={ind + 1} id={ind + 1} name={name} turns={Turns} onChange={handleBuffDataChange} />);
+                    {Object.keys(this.state.buffs).map(function(key, ind){
+                        return (
+                        <tr key={key}>
+                            <td className="simulator-td">{key}</td>
+                            {Turns.map(function(x, ind2){
+                                return (
+                                    <td key={ind2} className="simulator-td">
+                                    <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype}</FormControl>
+                                    <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist}</FormControl>
+
+                                    {state.bufflists[key][ind2].map(function(v, ind3){
+                                        return (
+                                            <FormControl componentClass="select" key={ind3} name={key} id={ind2.toString() + "-" + ind3.toString()} value={v} onChange={handleChangeBuff}>
+                                            <optgroup label="通常バフ">{select_normalbuffAmount}</optgroup>
+                                            <optgroup label="属性バフ">{select_elementbuffAmount}</optgroup>
+                                            <optgroup label="その他バフ">{select_otherbuffAmount}</optgroup>
+                                            <optgroup label="DA率">{select_dabuffAmount}</optgroup>
+                                            <optgroup label="TA率">{select_tabuffAmount}</optgroup>
+                                            </FormControl>
+                                        );
+                                    })}
+                                    <ButtonGroup>
+                                        <Button bsStyle="primary" onClick={addBuffNum} name={key} id={ind2.toString()}>追加</Button>
+                                        <Button bsStyle="primary" onClick={subBuffNum} name={key} id={ind2.toString()}>削除</Button>
+                                    </ButtonGroup>
+                                    </td>
+                                );
+                            })}
+                            <td className="simulator-td">
+                                <ButtonGroup vertical>
+                                    <Button bsStyle="primary">コピー</Button>
+                                    <Button bsStyle="primary">リセット</Button>
+                                </ButtonGroup>
+                            </td>
+                        </tr>
+                        )
                     })}
                     </tbody>
                 </table>
-                </div>
             </div>
         );
     }
 });
 
-var SimulatorPersonal = React.createClass({
-    getInitialState: function() {
-        state = {}
-        for(var i = 0; i < this.props.turns.length; i++){
-            state[i] = {}
-        }
-        return state;
-    },
-    onChangeOneTurnBuff: function(id, newbuff) {
-        var newState = this.state
-        newState[id] = newbuff
-        this.setState(newState)
-        this.props.onChange(this.props.name, newState)
-    },
-    render: function() {
-        var buffchange = this.onChangeOneTurnBuff
-        return (
-            <tr>
-                <td>{this.props.name}</td>
-                {this.props.turns.map(function(x, ind){
-                    return (
-                      <OneTurnBuff key={ind} id={ind} onChange={buffchange} />
-                    );
-                })}
-                <td>
-                    <ButtonGroup vertical>
-                        <Button bsStyle="primary">コピー</Button>
-                        <Button bsStyle="primary">リセット</Button>
-                    </ButtonGroup>
-                </td>
-            </tr>
-        );
-    },
-});
-
+/*
 var OneTurnBuff = React.createClass({
     getInitialState: function() {
         return {
@@ -150,64 +223,17 @@ var OneTurnBuff = React.createClass({
     componentDidMount: function() {
         this.updateBuffAmount(this.state)
     },
-    updateBuffAmount: function(newstate){
-        var buff = {normal: 0, element: 0, other: 0, DA: 0, TA: 0}
-
-        for(var i = 0; i < newstate.buff.length; i++) {
-            var onebuff = newstate.buff[i].split("-")
-            buff[onebuff[0]] += parseInt(onebuff[1])
-        }
-
-        buff["remainHP"] = newstate.remainHP
-        buff["turnType"] = newstate.turnType
-
-        this.props.onChange(this.props.id, buff)
-    },
     changeBuff: function(e) {
         var newState = this.state
         newState["buff"][e.target.id] = e.target.value
         this.setState(newState)
         this.updateBuffAmount(newState)
     },
-    addBuffNum: function(e) {
-        var newbuff = this.state.buff
-        if(newbuff.length < 7) {
-            newbuff.push("normal-0")
-            this.setState({buff: newbuff})
-        }
-    },
-    subBuffNum: function(e) {
-        var newbuff = this.state.buff
-        if(newbuff.length > 1) {
-            newbuff.pop()
-            this.setState({buff: newbuff})
-        }
-    },
     render: function() {
         var changeBuff = this.changeBuff
         var bufflist = this.state.buff
-        return (
-            <td>
-            <FormControl componentClass="select" value={this.state.turnType} onChange={this.handleSelectEvent.bind(this, "turnType")}>{select_turntype}</FormControl>
-            <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{select_hplist}</FormControl>
-            {this.state.buff.map(function(x, ind){
-                return (
-                    <FormControl componentClass="select" key={ind} id={ind.toString()} value={bufflist[ind]} onChange={changeBuff}>
-                    {select_normalbuffAmount}
-                    {select_elementbuffAmount}
-                    {select_otherbuffAmount}
-                    {select_dabuffAmount}
-                    {select_tabuffAmount}
-                    </FormControl>
-                );
-            })}
-            <ButtonGroup>
-                <Button bsStyle="primary" onClick={this.addBuffNum} >追加</Button>
-                <Button bsStyle="primary" onClick={this.subBuffNum} >削除</Button>
-            </ButtonGroup>
-            </td>
-        );
+        return ("test);
     },
-});
+});*/
 
 module.exports = SimulatorInput;
