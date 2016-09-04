@@ -2704,12 +2704,7 @@ var ResultList = React.createClass({
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
 
-        var sortkey = "totalAttack"
-        var sortkeyname = "攻撃力(二手技巧無し)"
-        if(this.props.data.sortKey == this.props.data.sortKey) {
-            sortkey = this.props.data.sortKey
-            sortkeyname = keyTypes[sortkey]
-        }
+        var sortkey = "averageExpectedDamage"
 
         var turnBuff = this.props.data.simulator;
         var maxTurn = 5
@@ -2738,21 +2733,12 @@ var ResultList = React.createClass({
 
             // 個別バフとHP
             for(key in totals) {
-                if(key == "Djeeta") {
-                    totals[key].remainHP = 0.01 * turnBuff.buffs["ジータ"][k].remainHP
-                    totals[key].normalBuff = 0.01 * turnBuff.buffs["ジータ"][k].normal
-                    totals[key].elementBuff = 0.01 * turnBuff.buffs["ジータ"][k].element
-                    totals[key].otherBuff = 0.01 * turnBuff.buffs["ジータ"][k].other
-                    totals[key].DABuff = 0.01 * turnBuff.buffs["ジータ"][k].DA
-                    totals[key].TABuff = 0.01 * turnBuff.buffs["ジータ"][k].TA
-                } else {
-                    totals[key].remainHP = 0.01 * turnBuff.buffs[key][k].remainHP
-                    totals[key].normalBuff = 0.01 * turnBuff.buffs[key][k].normal
-                    totals[key].elementBuff = 0.01 * turnBuff.buffs[key][k].element
-                    totals[key].otherBuff = 0.01 * turnBuff.buffs[key][k].other
-                    totals[key].DABuff = 0.01 * turnBuff.buffs[key][k].DA
-                    totals[key].TABuff = 0.01 * turnBuff.buffs[key][k].TA
-                }
+                totals[key].remainHP = 0.01 * turnBuff.buffs[key][k].remainHP
+                totals[key].normalBuff = 0.01 * turnBuff.buffs[key][k].normal
+                totals[key].elementBuff = 0.01 * turnBuff.buffs[key][k].element
+                totals[key].otherBuff = 0.01 * turnBuff.buffs[key][k].other
+                totals[key].DABuff = 0.01 * turnBuff.buffs[key][k].DA
+                totals[key].TABuff = 0.01 * turnBuff.buffs[key][k].TA
             }
 
             for(var i = 0; i < storedCombinations.length; i++){
@@ -2770,29 +2756,26 @@ var ResultList = React.createClass({
     generateSimulationData: function(res, turnBuff, arml, summon, prof, buff, storedCombinations) {
         var data = {}
         var minMaxArr = {
-            "totalAttack": {"max": 0, "min": 0},
-            "criticalAttack": {"max": 0, "min": 0},
-            "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
             "averageAttack": {"max": 0, "min": 0},
-            "averageCyclePerTurn": {"max": 0, "min": 0},
-            "averageCriticalAttack": {"max": 0, "min": 0},
+            "averageTotalExpected": {"max": 0, "min": 0},
+            "expectedDamage": {"max": 0, "min": 0},
+            "averageExpectedDamage": {"max": 0, "min": 0},
+            "summedAverageExpectedDamage": {"max": 0, "min": 0},
         }
 
         if(res.length > 1) {
-            var AllTotalAttack = [["ターン"]];
-            var AllCycleDamagePerTurn = [["ターン"]];
-            var AllCriticalAttack = [["ターン"]];
             var AllAverageTotalAttack = [["ターン"]];
-            var AllAverageCycleDamagePerTurn = [["ターン"]];
-            var AllAverageCriticalAttack = [["ターン"]];
+            var AllAverageTotalExpected = [["ターン"]];
+            var AllExpectedDamage = [["ターン"]];
+            var AllAverageExpectedDamage = [["ターン"]];
+            var AllSummedAverageExpectedDamage = [["ターン"]];
 
             for(var m = 1; m <= turnBuff.maxTurn; m++){
-                AllTotalAttack.push([m])
-                AllCycleDamagePerTurn.push([m])
-                AllCriticalAttack.push([m])
                 AllAverageTotalAttack.push([m])
-                AllAverageCycleDamagePerTurn.push([m])
-                AllAverageCriticalAttack.push([m])
+                AllAverageTotalExpected.push([m])
+                AllExpectedDamage.push([m])
+                AllAverageExpectedDamage.push([m])
+                AllSummedAverageExpectedDamage.push([m])
             }
         }
 
@@ -2811,33 +2794,52 @@ var ResultList = React.createClass({
             } else {
                 summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
             }
-            var TotalAttack = [["ターン"]];
-            var CriticalAttack = [["ターン"]];
-            var CycleDamagePerTurn = [["ターン"]];
             var AverageTotalAttack = [["ターン"]];
-            var AverageCriticalAttack = [["ターン"]];
-            var AverageCycleDamagePerTurn = [["ターン"]];
+            var AverageTotalExpected = [["ターン"]];
+            var ExpectedDamage = [["ターン"]];
+            var AverageExpectedDamage = [["ターン"]];
+            var SummedAverageExpectedDamage = [["ターン"]];
 
             for(var m = 1; m <= turnBuff.maxTurn; m++){
-                TotalAttack.push([m])
-                CycleDamagePerTurn.push([m])
-                CriticalAttack.push([m])
                 AverageTotalAttack.push([m])
-                AverageCycleDamagePerTurn.push([m])
-                AverageCriticalAttack.push([m])
+                AverageTotalExpected.push([m])
+                ExpectedDamage.push([m])
+                AverageExpectedDamage.push([m])
+                SummedAverageExpectedDamage.push([m])
+
+                for(var j = 0; j < oneresult[0].length; j++) {
+                    AverageExpectedDamage[m].push(0)
+                    SummedAverageExpectedDamage[m].push(0)
+                }
             }
 
             for(var t = 1; t <= turnBuff.maxTurn; t++){
                 var turndata = oneresult[t - 1]
                 for(var j = 0; j < turndata.length; j++){
                     var onedata = turndata[j].data
+                    var cnt = Object.keys(onedata).length
 
-                    TotalAttack[t].push( onedata["Djeeta"].totalAttack )
-                    CriticalAttack[t].push( onedata["Djeeta"].criticalAttack )
-                    CycleDamagePerTurn[t].push( onedata["Djeeta"].expectedCycleDamagePerTurn )
                     AverageTotalAttack[t].push( onedata["Djeeta"].averageAttack )
-                    AverageCycleDamagePerTurn[t].push( onedata["Djeeta"].averageCyclePerTurn )
-                    AverageCriticalAttack[t].push( onedata["Djeeta"].averageCriticalAttack )
+                    AverageTotalExpected[t].push( onedata["Djeeta"].averageTotalExpected )
+
+                    for(key in onedata) {
+                        if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougi" || turnBuff.buffs[key][t-1].turnType == "ougi") {
+                            // 基本的に奥義の設定が優先
+                            var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio)
+                            if(key == "Djeeta") ExpectedDamage[t].push( parseInt(newOugiDamage) )
+                            AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage/cnt)
+
+                        } else if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougiNoDamage" || turnBuff.buffs[key][t-1].turnType == "ougiNoDamage") {
+                            // しコルワ
+                            if(key == "Djeeta") ExpectedDamage[t].push( parseInt(newDamage * onedata[key].expectedAttack) )
+                            // AverageExpectedDamage[t][j + 1] += 0
+                        } else {
+                            // 通常攻撃
+                            var newDamage = this.calculateDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense)
+                            if(key == "Djeeta") ExpectedDamage[t].push( parseInt(newDamage * onedata[key].expectedAttack) )
+                            AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage/cnt)
+                        }
+                    }
 
                     if(t == 1) {
                         var title = "No. " + (j+1).toString() + ":"
@@ -2847,49 +2849,47 @@ var ResultList = React.createClass({
                                 title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
                             }
                         }
-                        TotalAttack[0].push(title)
-                        CriticalAttack[0].push(title)
-                        CycleDamagePerTurn[0].push(title)
                         AverageTotalAttack[0].push(title)
-                        AverageCycleDamagePerTurn[0].push(title)
-                        AverageCriticalAttack[0].push(title)
+                        AverageTotalExpected[0].push(title)
+                        ExpectedDamage[0].push(title)
+                        AverageExpectedDamage[0].push(title)
+                        SummedAverageExpectedDamage[0].push(title)
 
                         // 召喚石2組以上の場合
                         if(res.length > 1) {
-                            AllTotalAttack[0].push("(" + summonHeader + ")" + title)
-                            AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
-                            AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
                             AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
-                            AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
-                            AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                            AllAverageTotalExpected[0].push("(" + summonHeader + ")" + title)
+                            AllExpectedDamage[0].push("(" + summonHeader + ")" + title)
+                            AllAverageExpectedDamage[0].push("(" + summonHeader + ")" + title)
+                            AllSummedAverageExpectedDamage[0].push("(" + summonHeader + ")" + title)
                         }
+                        SummedAverageExpectedDamage[t][j + 1] = AverageExpectedDamage[t][j + 1]
+                    } else {
+                        SummedAverageExpectedDamage[t][j + 1] = SummedAverageExpectedDamage[t - 1][j + 1] + AverageExpectedDamage[t][j + 1]
                     }
-                    AllTotalAttack[t].push(TotalAttack[t][j + 1])
-                    AllCriticalAttack[t].push(CriticalAttack[t][j + 1])
-                    AllCycleDamagePerTurn[t].push(CycleDamagePerTurn[t][j + 1])
                     AllAverageTotalAttack[t].push(AverageTotalAttack[t][j + 1])
-                    AllAverageCriticalAttack[t].push(AverageCriticalAttack[t][j + 1])
-                    AllAverageCycleDamagePerTurn[t].push(AverageCycleDamagePerTurn[t][j + 1])
+                    AllAverageTotalExpected[t].push(AverageTotalExpected[t][j + 1])
+                    AllExpectedDamage[t].push(ExpectedDamage[t][j + 1])
+                    AllAverageExpectedDamage[t].push(AverageExpectedDamage[t][j + 1])
+                    AllSummedAverageExpectedDamage[t].push(SummedAverageExpectedDamage[t][j + 1])
                 }
             }
 
             data[summonHeader] = {}
-            data[summonHeader]["totalAttack"] = TotalAttack
-            data[summonHeader]["expectedCycleDamagePerTurn"] = CycleDamagePerTurn
-            data[summonHeader]["criticalAttack"] = CriticalAttack
-            data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
             data[summonHeader]["averageAttack"] = AverageTotalAttack
-            data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
+            data[summonHeader]["averageTotalExpected"] = AverageTotalExpected
+            data[summonHeader]["expectedDamage"] = ExpectedDamage
+            data[summonHeader]["averageExpectedDamage"] = AverageExpectedDamage
+            data[summonHeader]["summedAverageExpectedDamage"] = SummedAverageExpectedDamage
         }
 
         if(res.length > 1){
             data["まとめて比較"] = {}
-            data["まとめて比較"]["totalAttack"] = AllTotalAttack
-            data["まとめて比較"]["criticalAttack"] = AllCriticalAttack
-            data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
             data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
-            data["まとめて比較"]["averageCriticalAttack"] = AllAverageCriticalAttack
-            data["まとめて比較"]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
+            data["まとめて比較"]["averageTotalExpected"] = AllAverageTotalExpected
+            data["まとめて比較"]["expectedDamage"] = AllExpectedDamage
+            data["まとめて比較"]["averageExpectedDamage"] = AllAverageExpectedDamage
+            data["まとめて比較"]["summedAverageExpectedDamage"] = AllSummedAverageExpectedDamage
         }
 
         // グラフ最大値最小値を抽出

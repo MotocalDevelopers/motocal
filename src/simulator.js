@@ -49,7 +49,11 @@ var SimulatorInput = React.createClass({
     handleBuffDataChange: function(name, buffstate) {
         // select タイプの入力フォームはonChangeの際で良い
         var newState = this.state
-        newState["buffs"][name] = buffstate
+        if(name == "ジータ") {
+            newState["buffs"]["Djeeta"] = buffstate
+        } else {
+            newState["buffs"][name] = buffstate
+        }
         this.setState(newState)
         this.props.onChange(newState)
     },

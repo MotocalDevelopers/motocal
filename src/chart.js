@@ -10,7 +10,7 @@ var _ua = GlobalConst._ua;
 var SimulationChart = React.createClass({
     getInitialState: function() {
         var sortKey = this.props.sortKey
-        if(!(sortKey in supportedSimulationChartSortkeys)) sortKey = "totalAttack"
+        if(!(sortKey in supportedSimulationChartSortkeys)) sortKey = "averageExpectedDamage"
 
         options = {}
         if(_ua.Mobile) {

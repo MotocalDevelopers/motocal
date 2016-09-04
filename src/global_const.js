@@ -77,12 +77,11 @@ var supportedTurnChartSortkeys = {
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
 }
 var supportedSimulationChartSortkeys = {
-    "totalAttack": "攻撃力(二手技巧無し)",
     "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
-    "criticalAttack": "技巧期待値",
-    "averageCriticalAttack": "技巧期待平均攻撃力",
-    "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
-    "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+    "averageTotalExpected": "総回技のパーティ平均値",
+    "expectedDamage": "予想ダメージ",
+    "averageExpectedDamage": "予想ダメージのパーティ平均値",
+    "summedAverageExpectedDamage": "予想ダメージ平均の積分値",
 }
 
 // skill data
