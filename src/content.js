@@ -581,7 +581,7 @@ var Root = React.createClass({
                         <Notice />
                     </div>
                     <div className="Tab hidden" id="simulatorTab">
-                        <SimulatorInput chara={this.state.chara} onChange={this.onChangeSimulationData} />
+                        <SimulatorInput dataName={this.state.dataName} dataForLoad={dataForLoad.simulator} chara={this.state.chara} onChange={this.onChangeSimulationData} />
                     </div>
                 </div>
                 <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>

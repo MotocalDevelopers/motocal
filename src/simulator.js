@@ -29,8 +29,10 @@ var SimulatorInput = React.createClass({
 
         // only fired on Data Load
         if(nextProps.dataName != this.props.dataName) {
-            newState = dataForLoad.simulator
+            newState = nextProps.dataForLoad
+            this.setState(newState)
             this.props.onChange(newState);
+            return 0;
         }
 
         // 削除されてるかチェック
@@ -329,7 +331,7 @@ var HowTo = React.createClass({
                 <p>基本的には他のグラフ機能と同様に「グラフに加えた」編成を元に計算を行います。まずは他の欄を入力し、比較したい編成を選んでおいて下さい。</p>
                 <p>編成をいくつかグラフに加えたら、各種グラフのボタンが有効化されます。
                 ダメージシミュレータを使う場合は「シミュレータ入力」タブを開いて下さい。</p>
-                <Thumbnail src="./otherImages/damage-simulator-howto-1.png" href="./otherImages/damage-simulator-howto-1.png"><h3>シミュレータ入力欄</h3></Thumbnail>
+                <Thumbnail src="./otherImages/damage-simulator-howto-2.png" href="./otherImages/damage-simulator-howto-2.png"><h3>シミュレータ入力欄</h3></Thumbnail>
 
                 <p>入力欄には大きく分けて「全体バフ」と「各キャラクター」のバフが存在します。
                 簡単に使いたい方は、全体バフの欄のみ弄れば各キャラクターの情報を入力しなくても問題ありません。
@@ -366,6 +368,9 @@ var HowTo = React.createClass({
 
                 <h3>予想ダメージ平均の積分値について</h3>
                 <p>予想ダメージを和していった値です。何ターン目でこっちの編成が……という比較のための機能です。将来的に、いくつかのバフ編成同士でも比較できたらいいな……と考えていますが、やらないかもしれません。</p>
+
+                <h3>今後の予定</h3>
+                <p>未サポートのバフに対応するのは勿論、なんかバフボタンを適当にドラッグ&ドロップしたら勝手に3ターン分設定されるとか、そういう感じのが欲しいですね。</p>
 
                 <h3>注記</h3>
                 <p>きっちりテストできていない機能ですので、不具合報告や改善点の提案などありましたらご連絡下さい。</p>
