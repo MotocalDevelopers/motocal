@@ -34,21 +34,33 @@ var SimulatorInput = React.createClass({
         // }
 
         var newState = this.state
-        for(key in this.props.chara){
-            if(!(key in this.state.buffs) && this.props.chara[key].name != "") {
-                var namekey = this.props.chara[key].name
+
+        // 削除されてるかチェック
+        for(key in newState.buffs) {
+            if(key != "全体バフ" && key != "Djeeta"){
+                var isCharaExist = false
+                for(var i = 0; i < nextProps.chara.length; i++) {
+                    if(key == nextProps.chara[i].name) isCharaExist = true
+                }
+
+                if(!isCharaExist) {
+                    delete newState.buffs[key]
+                    delete newState.bufflists[key]
+                }
+            }
+        }
+
+        // 追加
+        for(var i = 0; i < this.props.chara.length; i++){
+            var namekey = nextProps.chara[i].name
+            if(namekey != "" && !(namekey in this.state.buffs)) {
                 newState.buffs[namekey] = {}
                 newState.bufflists[namekey] = {}
 
-                for(var i = 0; i < this.state.maxTurn; i++) {
-                    newState.buffs[namekey][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
-                    newState.bufflists[namekey][i] = ["normal-0"]
+                for(var j = 0; j < this.state.maxTurn; j++) {
+                    newState.buffs[namekey][j] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                    newState.bufflists[namekey][j] = ["normal-0"]
                 }
-            }
-            if((key in this.state.buffs) && this.props.chara[key].name == "") {
-                var namekey = this.props.chara[key].name
-                delete newState.buffs[namekey]
-                delete newState.bufflists[namekey]
             }
         }
         this.setState(newState)
@@ -64,10 +76,10 @@ var SimulatorInput = React.createClass({
         bufflists["全体バフ"] = {}
         bufflists["Djeeta"] = {}
 
-        for(key in this.props.chara){
-            if(this.props.chara[key].name != "") {
-                buffs[key] = {}
-                bufflists[key] = {}
+        for(var i = 0; i < this.props.chara.length; i++){
+            if(this.props.chara[i].name != "") {
+                buffs[i] = {}
+                bufflists[i] = {}
             }
         }
 
@@ -94,6 +106,24 @@ var SimulatorInput = React.createClass({
         for(var i = 0; i < newState.bufflists[name][ind].length; i++) {
             var onebuff = newState.bufflists[name][ind][i].split("-")
             newState.buffs[name][ind][onebuff[0]] += parseInt(onebuff[1])
+        }
+
+        this.setState(newState)
+        this.props.onChange(newState)
+    },
+    updateBuffAmountAllTurn: function(newState, name){
+        // 更新されたターンのところだけアップデートすればよい
+        for(var j = 0; j < this.state.maxTurn; j++) {
+            newState.buffs[name][j].normal = 0
+            newState.buffs[name][j].element = 0
+            newState.buffs[name][j].other = 0
+            newState.buffs[name][j].DA = 0
+            newState.buffs[name][j].TA = 0
+
+            for(var i = 0; i < newState.bufflists[name][j].length; i++) {
+                var onebuff = newState.bufflists[name][j][i].split("-")
+                newState.buffs[name][j][onebuff[0]] += parseInt(onebuff[1])
+            }
         }
 
         this.setState(newState)
@@ -155,6 +185,15 @@ var SimulatorInput = React.createClass({
             this.setState({bufflists: newbuff})
         }
     },
+    copyBuff: function(e) {
+        var newState = this.state
+        var keys = Object.keys(newState.bufflists)
+        if(parseInt(e.target.id) < keys.length - 1) {
+            newState.buffs[keys[parseInt(e.target.id) + 1]] = JSON.parse(JSON.stringify(newState.buffs[e.target.name]))
+            newState.bufflists[keys[parseInt(e.target.id) + 1]] = JSON.parse(JSON.stringify(newState.bufflists[e.target.name]))
+            this.updateBuffAmountAllTurn(newState, keys[parseInt(e.target.id) + 1])
+        }
+    },
     render: function() {
         var Turns = [];
         for(var i = 0; i < this.state.maxTurn; i++){
@@ -169,6 +208,7 @@ var SimulatorInput = React.createClass({
         var handleChangeBuff = this.handleChangeBuff
         var addBuffNum = this.addBuffNum
         var subBuffNum = this.subBuffNum
+        var copyBuff = this.copyBuff
 
         return (
             <div className="simulatorInput">
@@ -179,7 +219,7 @@ var SimulatorInput = React.createClass({
                     <tr>
                         <th className="simulator-td"></th>
                         {Turns.map(function(x){return <th className="simulator-th" key={x}>{x}ターン目</th>})}
-                        <th className="simulator-th" >操作</th>
+                        <th className="simulator-th">操作</th>
                     </tr>
                     {Object.keys(this.state.buffs).map(function(key, ind){
                         return (
@@ -211,7 +251,7 @@ var SimulatorInput = React.createClass({
                             })}
                             <td className="simulator-td">
                                 <ButtonGroup vertical>
-                                    <Button bsStyle="primary">コピー</Button>
+                                    <Button bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuff} >コピー</Button>
                                     <Button bsStyle="primary">リセット</Button>
                                 </ButtonGroup>
                             </td>
@@ -224,36 +264,5 @@ var SimulatorInput = React.createClass({
         );
     }
 });
-
-/*
-var OneTurnBuff = React.createClass({
-    getInitialState: function() {
-        return {
-            remainHP: 100,
-            buff: ["normal-0"],
-            turnType: "normal",
-        };
-    },
-    handleSelectEvent: function(key, e) {
-        var newState = this.state
-        newState[key] = e.target.value
-        this.setState(newState)
-        this.updateBuffAmount(newState)
-    },
-    componentDidMount: function() {
-        this.updateBuffAmount(this.state)
-    },
-    changeBuff: function(e) {
-        var newState = this.state
-        newState["buff"][e.target.id] = e.target.value
-        this.setState(newState)
-        this.updateBuffAmount(newState)
-    },
-    render: function() {
-        var changeBuff = this.changeBuff
-        var bufflist = this.state.buff
-        return ("test);
-    },
-});*/
 
 module.exports = SimulatorInput;
