@@ -192,17 +192,32 @@ var SimulatorInput = React.createClass({
             this.setState({bufflists: newbuff})
         }
     },
-    copyBuff: function(e) {
+    copyBuffTo: function(e, direction) {
         var newState = this.state
         var keys = Object.keys(newState.bufflists)
         var name = e.target.getAttribute("name")
         var id = parseInt(e.target.getAttribute("id"))
-        if(id < keys.length - 1) {
-            newState.buffs[keys[id + 1]] = JSON.parse(JSON.stringify(newState.buffs[name]))
-            newState.bufflists[keys[id + 1]] = JSON.parse(JSON.stringify(newState.bufflists[name]))
-            // updateBuffAmount は必要ない（Buffsもコピーしているので）
-            this.props.onChange(newState)
+        if(direction == "up") {
+            if(id > 0) {
+                newState.buffs[keys[id - 1]] = JSON.parse(JSON.stringify(newState.buffs[name]))
+                newState.bufflists[keys[id - 1]] = JSON.parse(JSON.stringify(newState.bufflists[name]))
+                // updateBuffAmount は必要ない（Buffsもコピーしているので）
+                this.props.onChange(newState)
+            }
+        } else {
+            if(id < keys.length - 1) {
+                newState.buffs[keys[id + 1]] = JSON.parse(JSON.stringify(newState.buffs[name]))
+                newState.bufflists[keys[id + 1]] = JSON.parse(JSON.stringify(newState.bufflists[name]))
+                // updateBuffAmount は必要ない（Buffsもコピーしているので）
+                this.props.onChange(newState)
+            }
         }
+    },
+    copyBuffToUP: function(e) {
+        this.copyBuffTo(e, "up")
+    },
+    copyBuffToDown: function(e) {
+        this.copyBuffTo(e, "down")
     },
     copyTo: function(e, direction) {
         var newState = this.state
@@ -244,7 +259,8 @@ var SimulatorInput = React.createClass({
         var handleChangeBuff = this.handleChangeBuff
         var addBuffNum = this.addBuffNum
         var subBuffNum = this.subBuffNum
-        var copyBuff = this.copyBuff
+        var copyBuffToUP = this.copyBuffToUP
+        var copyBuffToDown = this.copyBuffToDown
         var copyToLeft = this.copyToLeft
         var copyToRight = this.copyToRight
 
@@ -290,8 +306,8 @@ var SimulatorInput = React.createClass({
                                 );
                             })}
                             <td className="simulator-td">
-                                <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuff} >コピー</Button>
-                                <Button block bsStyle="primary">リセット</Button>
+                                <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i> 上にコピー</Button>
+                                <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i> 下にコピー</Button>
                             </td>
                         </tr>
                         )
@@ -303,4 +319,60 @@ var SimulatorInput = React.createClass({
     }
 });
 
+var HowTo = React.createClass({
+    render: function(){
+        return (
+            <div className="howTo">
+                <p>ダメージシミュレータは<strong>各ターン毎のバフ・残りHP等から予想されるダメージを計算する</strong>ツールです。</p>
+
+                <h2>使い方</h2>
+                <p>基本的には他のグラフ機能と同様に「グラフに加えた」編成を元に計算を行います。まずは他の欄を入力し、比較したい編成を選んでおいて下さい。</p>
+                <p>編成をいくつかグラフに加えたら、各種グラフのボタンが有効化されます。
+                ダメージシミュレータを使う場合は「シミュレータ入力」タブを開いて下さい。</p>
+                <Thumbnail src="./otherImages/damage-simulator-howto-1.png" href="./otherImages/damage-simulator-howto-1.png"><h3>シミュレータ入力欄</h3></Thumbnail>
+
+                <p>入力欄には大きく分けて「全体バフ」と「各キャラクター」のバフが存在します。
+                簡単に使いたい方は、全体バフの欄のみ弄れば各キャラクターの情報を入力しなくても問題ありません。
+                また、各キャラクターのバフは<strong>全体バフの量に加算</strong>されますのでご注意下さい。</p>
+                <p>（例: あるターンの全体バフが通常攻刃+10%、ジータバフ欄が通常攻刃+30%となっている場合、ジータのバフは通常攻刃+40%として計算される。）</p>
+                <p>バフを追加したい場合、<Button><i className="fa fa-plus-square"></i></Button> をクリックすることで欄が増えます。（現在は最大10個）
+                増やしすぎた場合は、バフ量を0%にするか、<Button><i className="fa fa-minus-square"></i></Button> で削除して下さい。（現在は一番下にあるもののみしか削除できません。）
+                また、<Button><i className="fa fa-arrow-left"></i></Button> や <Button><i className="fa fa-arrow-right"></i></Button> をクリックすることで、前（または次）のターンへコピーすることが可能です。</p>
+                <p>全てのターンのバフ情報を他のキャラ欄にコピーしたい場合は、<Button><i className="fa fa-angle-double-up"></i></Button> または <Button><i className="fa fa-angle-double-up"></i></Button> を使用して下さい。</p>
+
+                <h3>算出される値について</h3>
+                <p>基本的には他のグラフと同様、技巧や二手三手の期待値から予想される攻撃力（総回技値）ですが、予想ダメージについては少し異なります。
+                最適編成算出や、他のグラフで用いている「予想ターン毎ダメージ」は、
+                "二手スキル込みの編成について"でも書いた通り、
+                <strong>通常攻撃を数回行ったあと、奥義を1回打つまでの1サイクルを考えたダメージ</strong>です。
+                これに対して、ダメージシミュレータで算出される「予想ダメージ」は、
+                1サイクルを考えずに、単純にそのターンに与えることが期待されるダメージです。（勿論クリティカルやDA・TA率は考慮されています）
+                これは、通常攻撃ターンと奥義ターンを設定するための変更です。
+                内部的に使っている通常攻撃ダメージ算出・奥義ダメージ算出用の関数は同一であるため、
+                単純に"1サイクルを考えるかどうか"が異なっていると考えて頂ければ結構です。</p>
+
+                <h3>奥義ターンについて</h3>
+                <p>欄の一番上を「通常攻撃」から「奥義」または「奥義（ダメージ無し）」に変えると、そのターンは奥義ダメージのみが与ダメージとなります。ダメージ無しの場合は0になります。</p>
+                <p>「奥義」と「通常攻撃」では、「奥義」の設定のが優先されます。
+                従って、<br/>
+                全体バフが「奥義」の場合: キャラ個別の設定に関わらず、全員が奥義を打つ <br/>
+                全体バフが「通常」の場合: 「奥義」に設定されているキャラのみが奥義を打つ <br/>
+                となります。
+                </p>
+                <p className="text-danger">チェインバーストのダメージについてはまだサポートしておりません。そのうちやります。</p>
+
+                <h3>現在未サポート</h3>
+                <p>クリティカル系のバフ、追加ダメージ系のバフ、チェインバーストダメージ等</p>
+
+                <h3>予想ダメージ平均の積分値について</h3>
+                <p>予想ダメージを和していった値です。何ターン目でこっちの編成が……という比較のための機能です。将来的に、いくつかのバフ編成同士でも比較できたらいいな……と考えていますが、やらないかもしれません。</p>
+
+                <h3>注記</h3>
+                <p>きっちりテストできていない機能ですので、不具合報告や改善点の提案などありましたらご連絡下さい。</p>
+            </div>
+        );
+    },
+});
+
 module.exports = SimulatorInput;
+module.exports.HowTo = HowTo;

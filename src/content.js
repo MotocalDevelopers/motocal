@@ -88,6 +88,7 @@ var Root = React.createClass({
           rootrightWidth: initial_width,
           openHowTo: false,
           openNiteHowTo: false,
+          openSimulatorHowTo: false,
       };
   },
   openHowTo: function(e) {
@@ -101,6 +102,12 @@ var Root = React.createClass({
   },
   closeNiteHowTo: function(e) {
       this.setState({openNiteHowTo: false})
+  },
+  openSimulatorHowTo: function(e) {
+      this.setState({openSimulatorHowTo: true})
+  },
+  closeSimulatorHowTo: function(e) {
+      this.setState({openSimulatorHowTo: false})
   },
   onTouchStart: function(e) {
       //スワイプ開始時の横方向の座標を格納
@@ -239,6 +246,7 @@ var Root = React.createClass({
   handleEvent: function(key, e) {
       var newState = this.state
       newState[key] = e.target.value
+      if(key == "sortKey") newState.noResultUpdate = false
       this.setState(newState)
   },
   onChangeArmData: function(state, isSubtle) {
@@ -509,6 +517,7 @@ var Root = React.createClass({
                     <h1>元カレ計算機 (グラブル攻撃力計算機)
                     <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
                     <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
+                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openSimulatorHowTo} > ダメージシミュレータについて </Button>
                     </h1>
                     <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
                         <Modal.Header closeButton>
@@ -524,6 +533,14 @@ var Root = React.createClass({
                         </Modal.Header>
                         <Modal.Body>
                             <NiteHowTo />
+                        </Modal.Body>
+                    </Modal>
+                    <Modal className="howTo" show={this.state.openSimulatorHowTo} onHide={this.closeSimulatorHowTo}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>ダメージシミュレータについて</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <SimulatorInput.HowTo />
                         </Modal.Body>
                     </Modal>
                     <div className="tabrow">
@@ -2912,11 +2929,14 @@ var ResultList = React.createClass({
                     } else {
                         SummedAverageExpectedDamage[t][j + 1] = SummedAverageExpectedDamage[t - 1][j + 1] + AverageExpectedDamage[t][j + 1]
                     }
-                    AllAverageTotalAttack[t].push(AverageTotalAttack[t][j + 1])
-                    AllAverageTotalExpected[t].push(AverageTotalExpected[t][j + 1])
-                    AllExpectedDamage[t].push(ExpectedDamage[t][j + 1])
-                    AllAverageExpectedDamage[t].push(AverageExpectedDamage[t][j + 1])
-                    AllSummedAverageExpectedDamage[t].push(SummedAverageExpectedDamage[t][j + 1])
+
+                    if(res.length > 1) {
+                        AllAverageTotalAttack[t].push(AverageTotalAttack[t][j + 1])
+                        AllAverageTotalExpected[t].push(AverageTotalExpected[t][j + 1])
+                        AllExpectedDamage[t].push(ExpectedDamage[t][j + 1])
+                        AllAverageExpectedDamage[t].push(AverageExpectedDamage[t][j + 1])
+                        AllSummedAverageExpectedDamage[t].push(SummedAverageExpectedDamage[t][j + 1])
+                    }
                 }
             }
 
