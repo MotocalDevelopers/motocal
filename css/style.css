@@ -648,9 +648,18 @@ div.simulatorInput {
 
 .simulatorInput .simulator-th, .simulatorInput .simulator-td {
     padding: 2px;
-    min-width: 120px;
+    min-width: 130px;
+}
+
+.simulatorInput .simulator-left {
+    padding: 2px;
+    min-width: 70px;
+}
+
+.btn-nopadding {
+    padding: 6px;
 }
 
 .simulatorInput .form-control {
-    width: 120px;
+    width: 130px;
 }

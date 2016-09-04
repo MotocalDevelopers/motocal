@@ -157,42 +157,80 @@ var SimulatorInput = React.createClass({
     },
     handleChangeBuff: function(e) {
         var newState = this.state
-        var id = e.target.id.split("-")
-        newState.bufflists[e.target.name][id[0]][id[1]] = e.target.value
-        this.updateBuffAmount(newState, e.target.name, id[0])
+        var id = e.target.getAttribute("id").split("-")
+        var name = e.target.getAttribute("name")
+        newState.bufflists[name][id[0]][id[1]] = e.target.value
+        this.updateBuffAmount(newState, name, id[0])
     },
     handleRemainHPChange: function(e) {
         var newState = this.state
-        newState.buffs[e.target.name][e.target.id]["remainHP"] = parseInt(e.target.value)
-        this.updateBuffAmount(newState, e.target.name, e.target.id)
+        var name = e.target.getAttribute("name")
+        var id = e.target.getAttribute("id")
+        newState.buffs[name][id]["remainHP"] = parseInt(e.target.value)
+        this.updateBuffAmount(newState, name, id)
     },
     handleTurnTypeChange: function(e) {
         var newState = this.state
-        newState.buffs[e.target.name][e.target.id]["turnType"] = e.target.value
-        this.updateBuffAmount(newState, e.target.name, e.target.id)
+        var name = e.target.getAttribute("name")
+        var id = e.target.getAttribute("id")
+        newState.buffs[name][id]["turnType"] = e.target.value
+        this.updateBuffAmount(newState, name, id)
     },
     addBuffNum: function(e) {
         var newbuff = this.state.bufflists
-        if(newbuff[e.target.name][e.target.id].length < 7) {
-            newbuff[e.target.name][e.target.id].push("normal-0")
+        var name = e.target.getAttribute("name")
+        var id = e.target.getAttribute("id")
+        if(newbuff[name][id].length < 7) {
+            newbuff[name][id].push("normal-0")
             this.setState({bufflists: newbuff})
         }
     },
     subBuffNum: function(e) {
         var newbuff = this.state.bufflists
-        if(newbuff[e.target.name][e.target.id].length > 1) {
-            newbuff[e.target.name][e.target.id].pop()
+        var name = e.target.getAttribute("name")
+        var id = e.target.getAttribute("id")
+        if(newbuff[name][id].length > 1) {
+            newbuff[name][id].pop()
             this.setState({bufflists: newbuff})
         }
     },
     copyBuff: function(e) {
         var newState = this.state
         var keys = Object.keys(newState.bufflists)
-        if(parseInt(e.target.id) < keys.length - 1) {
-            newState.buffs[keys[parseInt(e.target.id) + 1]] = JSON.parse(JSON.stringify(newState.buffs[e.target.name]))
-            newState.bufflists[keys[parseInt(e.target.id) + 1]] = JSON.parse(JSON.stringify(newState.bufflists[e.target.name]))
-            this.updateBuffAmountAllTurn(newState, keys[parseInt(e.target.id) + 1])
+        var name = e.target.getAttribute("name")
+        var id = parseInt(e.target.getAttribute("id"))
+        if(id < keys.length - 1) {
+            newState.buffs[keys[id + 1]] = JSON.parse(JSON.stringify(newState.buffs[name]))
+            newState.bufflists[keys[id + 1]] = JSON.parse(JSON.stringify(newState.bufflists[name]))
+            // updateBuffAmount は必要ない（Buffsもコピーしているので）
+            this.props.onChange(newState)
         }
+    },
+    copyTo: function(e, direction) {
+        var newState = this.state
+        var name = e.target.getAttribute("name")
+        var id = parseInt(e.target.getAttribute("id"))
+
+        if(direction == "left") {
+            if(id > 0) {
+                newState.buffs[name][id - 1] = JSON.parse(JSON.stringify(newState.buffs[name][id]))
+                newState.bufflists[name][id - 1] = JSON.parse(JSON.stringify(newState.bufflists[name][id]))
+                // updateBuffAmount は必要ない（Buffsもコピーしているので）
+                this.props.onChange(newState)
+            }
+        } else {
+            if(id < this.state.maxTurn - 1) {
+                newState.buffs[name][id + 1] = JSON.parse(JSON.stringify(newState.buffs[name][id]))
+                newState.bufflists[name][id + 1] = JSON.parse(JSON.stringify(newState.bufflists[name][id]))
+                this.props.onChange(newState)
+            }
+        }
+    },
+    copyToLeft: function(e) {
+        this.copyTo(e, "left")
+    },
+    copyToRight: function(e) {
+        this.copyTo(e, "right")
     },
     render: function() {
         var Turns = [];
@@ -209,6 +247,8 @@ var SimulatorInput = React.createClass({
         var addBuffNum = this.addBuffNum
         var subBuffNum = this.subBuffNum
         var copyBuff = this.copyBuff
+        var copyToLeft = this.copyToLeft
+        var copyToRight = this.copyToRight
 
         return (
             <div className="simulatorInput">
@@ -217,14 +257,14 @@ var SimulatorInput = React.createClass({
                 <table className="table table-bordered">
                     <tbody>
                     <tr>
-                        <th className="simulator-td"></th>
+                        <th className="simulator-left"></th>
                         {Turns.map(function(x){return <th className="simulator-th" key={x}>{x}ターン目</th>})}
                         <th className="simulator-th">操作</th>
                     </tr>
                     {Object.keys(this.state.buffs).map(function(key, ind){
                         return (
                         <tr key={key}>
-                            <td className="simulator-td">{key}</td>
+                            <td className="simulator-left">{key}</td>
                             {Turns.map(function(x, ind2){
                                 return (
                                     <td key={ind2} className="simulator-td">
@@ -243,17 +283,17 @@ var SimulatorInput = React.createClass({
                                         );
                                     })}
                                     <ButtonGroup>
-                                        <Button bsStyle="primary" onClick={addBuffNum} name={key} id={ind2.toString()}>追加</Button>
-                                        <Button bsStyle="primary" onClick={subBuffNum} name={key} id={ind2.toString()}>削除</Button>
+                                        <Button bsStyle="default" className="btn-nopadding" onClick={copyToLeft} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-left" aria-hidden="true"></i></Button>
+                                        <Button bsStyle="default" className="btn-nopadding" onClick={addBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-plus-square" aria-hidden="true"></i></Button>
+                                        <Button bsStyle="default" className="btn-nopadding" onClick={subBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-minus-square" aria-hidden="true"></i></Button>
+                                        <Button bsStyle="default" className="btn-nopadding" onClick={copyToRight} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-right" aria-hidden="true"></i></Button>
                                     </ButtonGroup>
                                     </td>
                                 );
                             })}
                             <td className="simulator-td">
-                                <ButtonGroup vertical>
-                                    <Button bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuff} >コピー</Button>
-                                    <Button bsStyle="primary">リセット</Button>
-                                </ButtonGroup>
+                                <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuff} >コピー</Button>
+                                <Button block bsStyle="primary">リセット</Button>
                             </td>
                         </tr>
                         )

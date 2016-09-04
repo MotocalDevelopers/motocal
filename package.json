@@ -16,7 +16,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "$(npm bin)/browserify -t reactify src/content.js -o build/content.js",
     "production-build": "NODE_ENV=production $(npm bin)/browserify -t reactify src/content.js -o build/content.js",
-    "watch-dev": "$(npm bin)/watchify -v -t reactify src/content.js -o build/content.js"
+    "watch-dev": "$(npm bin)/watchify -v -t reactify src/content.js -o build/content.js",
+    "production-watch-dev": "NODE_ENV=production $(npm bin)/watchify -v -t reactify src/content.js -o build/content.js"
   },
   "repository": {
     "type": "git",

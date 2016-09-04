@@ -4948,7 +4948,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-success">2016/09/04: ダメージシミュレータの実装 </li>
+                <li className="list-group-item list-group-item-success">2016/09/04: ダメージシミュレータの実装 / ビルド環境改善による大幅な高速化 </li>
                 <li className="list-group-item list-group-item-info">2016/09/03: スマホ版スタイル調整 </li>
                 <li className="list-group-item list-group-item-info">2016/08/31: 仮の機能として初期攻撃力推移のグラフ機能を追加、召喚石に"属性(経過ターン)"を追加。(とりあえず単純に20ターンで上限まで行くと仮定しています) / 武器テンプレートで+をつけた時にHPの値がおかしくなる不具合を修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/08/31: SRが存在するSSRキャラの一部がテンプレートに表示されていなかったのを修正。</li>
