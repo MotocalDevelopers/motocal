@@ -4020,10 +4020,10 @@ var RegisteredArm = React.createClass({
         this.setState({armSLv: parseInt(arm.slvmax)})
         if(arm.maxlv == "150") {
             this.setState({selectLevel: selector.levelNoLimit})
-            this.setState({selectSkilllevel: selector.skilllevelNoLimit})
+            this.setState({selectSkillLevel: selector.skilllevelNoLimit})
         } else {
             this.setState({selectLevel: selector.levelLimit})
-            this.setState({selectSkilllevel: selector.skilllevelLimit})
+            this.setState({selectSkillLevel: selector.skilllevelLimit})
         }
         this.setState({openConsiderNumberModal: true})
     },
@@ -4080,7 +4080,7 @@ var RegisteredArm = React.createClass({
                         </Modal.Header>
                         <Modal.Body>
                             <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
-                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectSkilllevel}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectSkillLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
@@ -4145,8 +4145,8 @@ var RegisteredArm = React.createClass({
                             <Modal.Title>何本追加しますか？</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectlevel}</FormControl>
-                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectskilllevel}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
+                            <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectSkillLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
@@ -4584,10 +4584,6 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-info">セスランス用に召喚石の種類"属性(経過ターン)"を追加しました。
-                    結果の表での攻撃力は加護量が上限まで上がった時の攻撃力を表示していますが、
-                    それまでの攻撃力推移を表示するため、初期攻撃力推移グラフ機能を試験的に追加しました。
-                    現在は<a href="https://twitter.com/hakanid/status/770966731271512065/photo/1">ちゃふぃさんの検証結果</a>に基づき、20% + ターン数 * (加護量 - 20%) / 20 で加護量が増加していくとしています。(武器スキル 先制・楚歌も検証情報が見つかり次第実装します) </p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
