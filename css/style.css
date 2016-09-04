@@ -639,7 +639,10 @@ label {
 }
 
 div.simulatorInput {
-    height: 80%;
+    height: 90%;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
     overflow: scroll;
 }
 

@@ -2733,7 +2733,7 @@ var ResultList = React.createClass({
 
             // 個別バフとHP
             for(key in totals) {
-                totals[key].remainHP = 0.01 * turnBuff.buffs[key][k].remainHP
+                totals[key].remainHP = (turnBuff.buffs["全体バフ"][k].remainHP > turnBuff.buffs[key][k].remainHP) ? 0.01 * turnBuff.buffs[key][k].remainHP : 0.01 * turnBuff.buffs["全体バフ"][k].remainHP
                 totals[key].normalBuff = 0.01 * turnBuff.buffs[key][k].normal
                 totals[key].elementBuff = 0.01 * turnBuff.buffs[key][k].element
                 totals[key].otherBuff = 0.01 * turnBuff.buffs[key][k].other

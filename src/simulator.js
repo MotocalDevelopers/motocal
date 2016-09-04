@@ -27,22 +27,42 @@ var SimulatorInput = React.createClass({
     },
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
-        if(nextProps.dataName != this.props.dataName) {
-            var newState = newData.simulator
-            this.setState(newState);
-            this.props.onChange(newState);
+        // if(nextProps.dataName != this.props.dataName) {
+        //     var newState = newData.simulator
+        //     this.setState(newState);
+        //     this.props.onChange(newState);
+        // }
+
+        var newState = this.state
+        for(key in this.props.chara){
+            if(!(key in this.state.buffs) && this.props.chara[key].name != "") {
+                var namekey = this.props.chara[key].name
+                newState.buffs[namekey] = {}
+                newState.bufflists[namekey] = {}
+
+                for(var i = 0; i < this.state.maxTurn; i++) {
+                    newState.buffs[namekey][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                    newState.bufflists[namekey][i] = ["normal-0"]
+                }
+            }
+            if((key in this.state.buffs) && this.props.chara[key].name == "") {
+                var namekey = this.props.chara[key].name
+                delete newState.buffs[namekey]
+                delete newState.bufflists[namekey]
+            }
         }
+        this.setState(newState)
     },
     getInitialState: function() {
-        var maxTurn = 5
+        var maxTurn = 4
         // 合計後のデータを入れる連想配列
         var buffs = {}
         // 各選択メニューに対応する連想配列
         var bufflists = {}
         buffs["全体バフ"] = {}
-        buffs["ジータ"] = {}
+        buffs["Djeeta"] = {}
         bufflists["全体バフ"] = {}
-        bufflists["ジータ"] = {}
+        bufflists["Djeeta"] = {}
 
         for(key in this.props.chara){
             if(this.props.chara[key].name != "") {
