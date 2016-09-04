@@ -4,6 +4,7 @@ var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 var SimulatorInput = require('./simulator.js')
+var SimulationChart = require('./chart.js')
 var GlobalConst = require('./global_const.js')
 
 // inject GlobalConst...
@@ -26,6 +27,7 @@ var filterElementTypes = GlobalConst.filterElementTypes
 var supportedTurnChartSortkeys = GlobalConst.supportedTurnChartSortkeys
 var supportedChartSortkeys = GlobalConst.supportedChartSortkeys
 var enemyDefenseType = GlobalConst.enemyDefenseType
+var _ua = GlobalConst._ua;
 
 // query 取得用の関数
 var urldata = getVarInQuery("data");
@@ -50,23 +52,6 @@ function getVarInQuery(key){
     return result;
 }
 
-var _ua = (function(u){
-  return {
-    Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1)
-      || u.indexOf("ipad") != -1
-      || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
-      || (u.indexOf("firefox") != -1 && u.indexOf("tablet") != -1)
-      || u.indexOf("kindle") != -1
-      || u.indexOf("silk") != -1
-      || u.indexOf("playbook") != -1,
-    Mobile:(u.indexOf("windows") != -1 && u.indexOf("phone") != -1)
-      || u.indexOf("iphone") != -1
-      || u.indexOf("ipod") != -1
-      || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
-      || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1)
-      || u.indexOf("blackberry") != -1
-  }
-})(window.navigator.userAgent.toLowerCase());
 
 // global hash for loading new data
 var newData = {}
@@ -1473,12 +1458,12 @@ var ResultList = React.createClass({
             var unknownCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["unknownOther"]
             var unknownHaisuiCoeff = 1.0 + 0.01 * totals[key]["unknownOtherHaisui"]
 
-            var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + totalSummon["chara"] + buff["normal"]
+            var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
             var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"]
             var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
             // 属性(経過ターン)も最大値で計算する
-            var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"]
-            var otherCoeff = 1.0 + buff["other"]
+            var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"] + totals[key]["elementBuff"]
+            var otherCoeff = 1.0 + buff["other"] + totals[key]["otherBuff"]
 
             if(key == "Djeeta") {
                 // for Djeeta
@@ -1505,8 +1490,8 @@ var ResultList = React.createClass({
             var armDAup = (unknownOtherNite + normalNite + normalSante + magnaNite + magnaSante + totals[key]["bahaDA"] + totals[key]["cosmosBL"]> 50.0) ? 50.0 : normalNite + normalSante + magnaNite + magnaSante + unknownOtherNite + totals[key]["bahaDA"] + totals[key]["cosmosBL"]
             var armTAup = (normalSante + magnaSante + totals[key]["bahaTA"] > 50.0) ? 50.0 : normalSante + magnaSante + totals[key]["bahaTA"]
 
-            var totalDA = 100.0 * (0.01 * totals[key]["baseDA"] + buff["da"] + totalSummon["da"] + 0.01 * armDAup)
-            var totalTA = 100.0 * (0.01 * totals[key]["baseTA"] + buff["ta"] + totalSummon["ta"] + 0.01 * armTAup)
+            var totalDA = 100.0 * (0.01 * totals[key]["baseDA"] + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * armDAup)
+            var totalTA = 100.0 * (0.01 * totals[key]["baseTA"] + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * armTAup)
             var taRate = (parseFloat(totalTA) >= 100.0) ? 1.0 : 0.01 * parseFloat(totalTA)
             var daRate = (parseFloat(totalDA) >= 100.0) ? 1.0 : 0.01 * parseFloat(totalDA)
             var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
@@ -1921,7 +1906,7 @@ var ResultList = React.createClass({
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP}};
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DAbuff: 0, TAbuff: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -1939,7 +1924,7 @@ var ResultList = React.createClass({
                         k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: charaConsidered}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
             }
         }
         for(key in totals) {
@@ -2133,8 +2118,8 @@ var ResultList = React.createClass({
             switchAverageCycleDamage: 0,
             disableAutoResultUpdate: 0,
             result: {summon: this.props.data.summon, result: []},
-            haisuiSortKey: "totalAttack",
-            haisuiData: {},
+            chartSortKey: "totalAttack",
+            chartData: {},
             storedList: {"combinations": [], "armlist": []},
             openHPChart: false,
             openTurnChart: false,
@@ -2226,8 +2211,8 @@ var ResultList = React.createClass({
         }
         // resに再計算されたデータが入っている状態
         // res[summonind][rank]
-        this.setState({haisuiData: this.generateHaisuiData(res, arml, summon, prof, storedCombinations)})
-        this.setState({haisuiSortKey: sortkey})
+        this.setState({chartData: this.generateHaisuiData(res, arml, summon, prof, storedCombinations)})
+        this.setState({chartSortKey: sortkey})
         this.setState({openHPChart: true})
     },
     generateHaisuiData: function(res, arml, summon, prof, storedCombinations) {
@@ -2535,8 +2520,8 @@ var ResultList = React.createClass({
         }
         // resに再計算されたデータが入っている状態
         // res[summonind][rank]
-        this.setState({haisuiData: this.generateTurnData(res, arml, summon, prof, totalBuff, storedCombinations)})
-        this.setState({haisuiSortKey: sortkey})
+        this.setState({chartData: this.generateTurnData(res, arml, summon, prof, totalBuff, storedCombinations)})
+        this.setState({chartSortKey: sortkey})
         this.setState({openTurnChart: true})
     },
     generateTurnData: function(res, arml, summon, prof, buff, storedCombinations) {
@@ -2726,23 +2711,202 @@ var ResultList = React.createClass({
             sortkeyname = keyTypes[sortkey]
         }
 
+        var turnBuff = this.props.data.simulator;
+        var maxTurn = 5
+        if(turnBuff != undefined) {
+            maxTurn = turnBuff.maxTurn
+        } else {
+            alert("シミュレータ用の入力を設定して下さい。")
+            return 1;
+        }
         var res = []
+        // res[summonid][turn][rank]にする
         for(var i = 0; i < summon.length; i++){
             res[i] = []
+            for(var j = 0; j < maxTurn; j++){
+                res[i][j] = []
+            }
         }
 
-        for(var i = 0; i < storedCombinations.length; i++){
-            var oneres = this.calculateOneCombination(storedCombinations[i], summon, prof, arml, totals, totalBuff)
-            for(var j = 0; j < summon.length; j++){
-                res[j].push({data: oneres[j], armNumbers: storedCombinations[i]});
+        for(var k = 0; k < maxTurn; k++){
+            // 各ターン毎のバフ、HPなどをアレする
+            totalBuff["normal"] = 0.01 * turnBuff.buffs["全体バフ"][k].normal
+            totalBuff["element"] = 0.01 * turnBuff.buffs["全体バフ"][k].element
+            totalBuff["other"] = 0.01 * turnBuff.buffs["全体バフ"][k].other
+            totalBuff["da"] = 0.01 * turnBuff.buffs["全体バフ"][k].DA
+            totalBuff["ta"] = 0.01 * turnBuff.buffs["全体バフ"][k].TA
+
+            // 個別バフとHP
+            for(key in totals) {
+                if(key == "Djeeta") {
+                    totals[key].remainHP = 0.01 * turnBuff.buffs["ジータ"][k].remainHP
+                    totals[key].normalBuff = 0.01 * turnBuff.buffs["ジータ"][k].normal
+                    totals[key].elementBuff = 0.01 * turnBuff.buffs["ジータ"][k].element
+                    totals[key].otherBuff = 0.01 * turnBuff.buffs["ジータ"][k].other
+                    totals[key].DABuff = 0.01 * turnBuff.buffs["ジータ"][k].DA
+                    totals[key].TABuff = 0.01 * turnBuff.buffs["ジータ"][k].TA
+                } else {
+                    totals[key].remainHP = 0.01 * turnBuff.buffs[key][k].remainHP
+                    totals[key].normalBuff = 0.01 * turnBuff.buffs[key][k].normal
+                    totals[key].elementBuff = 0.01 * turnBuff.buffs[key][k].element
+                    totals[key].otherBuff = 0.01 * turnBuff.buffs[key][k].other
+                    totals[key].DABuff = 0.01 * turnBuff.buffs[key][k].DA
+                    totals[key].TABuff = 0.01 * turnBuff.buffs[key][k].TA
+                }
             }
-            this.initializeTotals(totals)
+
+            for(var i = 0; i < storedCombinations.length; i++){
+                var oneres = this.calculateOneCombination(storedCombinations[i], summon, prof, arml, totals, totalBuff)
+                for(var j = 0; j < summon.length; j++){
+                    res[j][k].push({data: oneres[j], armNumbers: storedCombinations[i]});
+                }
+                this.initializeTotals(totals)
+            }
         }
-        // resに再計算されたデータが入っている状態
-        // res[summonind][rank]
-        this.setState({haisuiData: this.generateTurnData(res, arml, summon, prof, totalBuff, storedCombinations)})
-        this.setState({haisuiSortKey: sortkey})
+        this.setState({chartData: this.generateSimulationData(res, turnBuff, arml, summon, prof, totalBuff, storedCombinations)})
+        this.setState({chartSortKey: sortkey})
         this.setState({openSimulator: true})
+    },
+    generateSimulationData: function(res, turnBuff, arml, summon, prof, buff, storedCombinations) {
+        var data = {}
+        var minMaxArr = {
+            "totalAttack": {"max": 0, "min": 0},
+            "criticalAttack": {"max": 0, "min": 0},
+            "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
+            "averageAttack": {"max": 0, "min": 0},
+            "averageCyclePerTurn": {"max": 0, "min": 0},
+            "averageCriticalAttack": {"max": 0, "min": 0},
+        }
+
+        if(res.length > 1) {
+            var AllTotalAttack = [["ターン"]];
+            var AllCycleDamagePerTurn = [["ターン"]];
+            var AllCriticalAttack = [["ターン"]];
+            var AllAverageTotalAttack = [["ターン"]];
+            var AllAverageCycleDamagePerTurn = [["ターン"]];
+            var AllAverageCriticalAttack = [["ターン"]];
+
+            for(var m = 1; m <= turnBuff.maxTurn; m++){
+                AllTotalAttack.push([m])
+                AllCycleDamagePerTurn.push([m])
+                AllCriticalAttack.push([m])
+                AllAverageTotalAttack.push([m])
+                AllAverageCycleDamagePerTurn.push([m])
+                AllAverageCriticalAttack.push([m])
+            }
+        }
+
+        for(var s = 0; s < res.length; s++) {
+            var oneresult = res[s]
+            var summonHeader = ""
+            if(summon[s].selfSummonType == "odin"){
+                summonHeader += "属性攻" + summon[s].selfSummonAmount + "キャラ攻" + summon[s].selfSummonAmount2
+            } else {
+                summonHeader += summonElementTypes[summon[s].selfElement].name + summonTypes[summon[s].selfSummonType] + summon[s].selfSummonAmount
+            }
+
+            summonHeader += " + "
+            if(summon[s].friendSummonType == "odin"){
+                summonHeader += "属性攻" + summon[s].friendSummonAmount + "キャラ攻" + summon[s].friendSummonAmount2
+            } else {
+                summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
+            }
+            var TotalAttack = [["ターン"]];
+            var CriticalAttack = [["ターン"]];
+            var CycleDamagePerTurn = [["ターン"]];
+            var AverageTotalAttack = [["ターン"]];
+            var AverageCriticalAttack = [["ターン"]];
+            var AverageCycleDamagePerTurn = [["ターン"]];
+
+            for(var m = 1; m <= turnBuff.maxTurn; m++){
+                TotalAttack.push([m])
+                CycleDamagePerTurn.push([m])
+                CriticalAttack.push([m])
+                AverageTotalAttack.push([m])
+                AverageCycleDamagePerTurn.push([m])
+                AverageCriticalAttack.push([m])
+            }
+
+            for(var t = 1; t <= turnBuff.maxTurn; t++){
+                var turndata = oneresult[t - 1]
+                for(var j = 0; j < turndata.length; j++){
+                    var onedata = turndata[j].data
+
+                    TotalAttack[t].push( onedata["Djeeta"].totalAttack )
+                    CriticalAttack[t].push( onedata["Djeeta"].criticalAttack )
+                    CycleDamagePerTurn[t].push( onedata["Djeeta"].expectedCycleDamagePerTurn )
+                    AverageTotalAttack[t].push( onedata["Djeeta"].averageAttack )
+                    AverageCycleDamagePerTurn[t].push( onedata["Djeeta"].averageCyclePerTurn )
+                    AverageCriticalAttack[t].push( onedata["Djeeta"].averageCriticalAttack )
+
+                    if(t == 1) {
+                        var title = "No. " + (j+1).toString() + ":"
+                        for(var i=0; i < arml.length; i++){
+                            if(storedCombinations[j][i] > 0) {
+                                var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
+                                title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                            }
+                        }
+                        TotalAttack[0].push(title)
+                        CriticalAttack[0].push(title)
+                        CycleDamagePerTurn[0].push(title)
+                        AverageTotalAttack[0].push(title)
+                        AverageCycleDamagePerTurn[0].push(title)
+                        AverageCriticalAttack[0].push(title)
+
+                        // 召喚石2組以上の場合
+                        if(res.length > 1) {
+                            AllTotalAttack[0].push("(" + summonHeader + ")" + title)
+                            AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
+                            AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                            AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
+                            AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
+                            AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                        }
+                    }
+                    AllTotalAttack[t].push(TotalAttack[t][j + 1])
+                    AllCriticalAttack[t].push(CriticalAttack[t][j + 1])
+                    AllCycleDamagePerTurn[t].push(CycleDamagePerTurn[t][j + 1])
+                    AllAverageTotalAttack[t].push(AverageTotalAttack[t][j + 1])
+                    AllAverageCriticalAttack[t].push(AverageCriticalAttack[t][j + 1])
+                    AllAverageCycleDamagePerTurn[t].push(AverageCycleDamagePerTurn[t][j + 1])
+                }
+            }
+
+            data[summonHeader] = {}
+            data[summonHeader]["totalAttack"] = TotalAttack
+            data[summonHeader]["expectedCycleDamagePerTurn"] = CycleDamagePerTurn
+            data[summonHeader]["criticalAttack"] = CriticalAttack
+            data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
+            data[summonHeader]["averageAttack"] = AverageTotalAttack
+            data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
+        }
+
+        if(res.length > 1){
+            data["まとめて比較"] = {}
+            data["まとめて比較"]["totalAttack"] = AllTotalAttack
+            data["まとめて比較"]["criticalAttack"] = AllCriticalAttack
+            data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
+            data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
+            data["まとめて比較"]["averageCriticalAttack"] = AllAverageCriticalAttack
+            data["まとめて比較"]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
+        }
+
+        // グラフ最大値最小値を抽出
+        for(key in minMaxArr) {
+            for(summonkey in data) {
+                for(var k = 1; k <= turnBuff.maxTurn; k++){
+                    for(var j = 1; j <= res[0][0].length; j++){
+                        // グラフ最大値最小値を保存
+                        if(data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j]
+                        if(data[summonkey][key][k][j] < minMaxArr[key]["min"] || minMaxArr[key]["min"] == 0) minMaxArr[key]["min"] = data[summonkey][key][k][j]
+                    }
+                }
+            }
+        }
+
+        data["minMaxArr"] = minMaxArr
+        return data
     },
     resetStoredList: function(e) {
         this.setState({storedList: {"combinations": [], "armlist": []}})
@@ -2937,7 +3101,7 @@ var ResultList = React.createClass({
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            <HPChart data={this.state.haisuiData} sortKey={this.state.haisuiSortKey} />
+                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                             <Modal className="hpChartTutotial" show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}>
                                 <Modal.Header closeButton>
                                     <Modal.Title>HP Chartsの使い方</Modal.Title>
@@ -2983,7 +3147,7 @@ var ResultList = React.createClass({
                             <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <TurnChart data={this.state.haisuiData} sortKey={this.state.haisuiSortKey} />
+                            <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                         </Modal.Body>
                     </Modal>
                 </div>
@@ -3027,7 +3191,7 @@ var ResultList = React.createClass({
                         <ButtonGroup style={{width: "100%"}}>
                             <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフを開く(beta)</Button>
                             <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ButtonActive} >ダメージシミュレータ(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >ダメージシミュレータ(beta)</Button>
                         </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
@@ -3076,7 +3240,7 @@ var ResultList = React.createClass({
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            <HPChart data={this.state.haisuiData} sortKey={this.state.haisuiSortKey} />
+                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                             <Modal className="hpChartTutotial" show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}>
                                 <Modal.Header closeButton>
                                     <Modal.Title>HP Chartsの使い方</Modal.Title>
@@ -3122,7 +3286,7 @@ var ResultList = React.createClass({
                             <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <TurnChart data={this.state.haisuiData} sortKey={this.state.haisuiSortKey} />
+                            <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
@@ -3130,7 +3294,7 @@ var ResultList = React.createClass({
                             <Modal.Title>ダメージシミュレータ ({remainHPstr})</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <TurnChart data={this.state.haisuiData} sortKey={this.state.haisuiSortKey} />
+                            <SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                         </Modal.Body>
                     </Modal>
                 </div>

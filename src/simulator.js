@@ -48,10 +48,9 @@ var SimulatorInput = React.createClass({
     },
     handleBuffDataChange: function(name, buffstate) {
         // select タイプの入力フォームはonChangeの際で良い
-        var newState = this.state.buffs
-        newState[name] = buffstate
-        this.setState({buffs: newState})
-        console.log("root buff data:", newState)
+        var newState = this.state
+        newState["buffs"][name] = buffstate
+        this.setState(newState)
         this.props.onChange(newState)
     },
     render: function() {
@@ -134,7 +133,6 @@ var OneTurnBuff = React.createClass({
     getInitialState: function() {
         return {
             remainHP: 100,
-            enemyDefense: 10.0,
             buff: ["normal-0"],
             turnType: "normal",
         };

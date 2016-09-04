@@ -1,6 +1,24 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+module.exports. _ua = (function(u){
+  return {
+    Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1)
+      || u.indexOf("ipad") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("tablet") != -1)
+      || u.indexOf("kindle") != -1
+      || u.indexOf("silk") != -1
+      || u.indexOf("playbook") != -1,
+    Mobile:(u.indexOf("windows") != -1 && u.indexOf("phone") != -1)
+      || u.indexOf("iphone") != -1
+      || u.indexOf("ipod") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1)
+      || u.indexOf("blackberry") != -1
+  }
+})(window.navigator.userAgent.toLowerCase());
+
 var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10}
 var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
@@ -51,6 +69,14 @@ var supportedChartSortkeys = {
     "totalHP": "ジータ残りHP",
 }
 var supportedTurnChartSortkeys = {
+    "totalAttack": "攻撃力(二手技巧無し)",
+    "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
+    "criticalAttack": "技巧期待値",
+    "averageCriticalAttack": "技巧期待平均攻撃力",
+    "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
+    "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+}
+var supportedSimulationChartSortkeys = {
     "totalAttack": "攻撃力(二手技巧無し)",
     "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
     "criticalAttack": "技巧期待値",
@@ -400,23 +426,10 @@ module.exports.skilltypes = skilltypes
 module.exports.jobTypes = jobTypes
 module.exports.armTypes = armTypes
 module.exports.summonElementTypes = summonElementTypes
-// module.exports.summonAmountList = summonAmountList
-// module.exports.zenithAttackBonus = zenithAttackBonus
-// module.exports.zenithHPBonus = zenithHPBonus
-// module.exports.skilllevels = skilllevels
-// module.exports.considerNum = considerNum
-// module.exports.ougiGageBuffList = ougiGageBuffList
-// module.exports.ougiRatioList = ougiRatioList
-// module.exports.masterATKList = masterATKList
-// module.exports.masterHPList = masterHPList
 module.exports.keyTypes = keyTypes
-// module.exports.plusNumList = plusNumList
-// module.exports.levelListNoLimit = levelListNoLimit
-// module.exports.levelListLimit = levelListLimit
-// module.exports.skilllevelListNoLimit = skilllevelListNoLimit
-// module.exports.skilllevelListLimit = skilllevelListLimit
 module.exports.supportedTurnChartSortkeys = supportedTurnChartSortkeys
 module.exports.supportedChartSortkeys = supportedChartSortkeys
+module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
 module.exports.enemyDefenseType = enemyDefenseType
 
 // オプション用
@@ -445,7 +458,8 @@ module.exports.selector.levelNoLimit = Object.keys(levelListNoLimit).map(functio
 module.exports.selector.levelLimit = Object.keys(levelListLimit).map(function(opt){ return <option value={levelListLimit[opt]} key={opt}>{opt}</option> });
 module.exports.selector.skilllevelNoLimit = Object.keys(skillLevelListNoLimit).map(function(opt){ return <option value={skillLevelListNoLimit[opt]} key={opt}>{opt}</option> });
 module.exports.selector.skilllevelLimit = Object.keys(skillLevelListLimit).map(function(opt){ return <option value={skillLevelListLimit[opt]} key={opt}>{opt}</option> });
-module.exports.selector.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
-module.exports.selector.supported_turnchartsortkeys = Object.keys(supportedTurnChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
+module.exports.selector.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedChartSortkeys[opt]}</option> });
+module.exports.selector.supported_turnchartsortkeys = Object.keys(supportedTurnChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedTurnChartSortkeys[opt]}</option> });
+module.exports.selector.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedSimulationChartSortkeys[opt]}</option> });
 module.exports.selector.enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
 
