@@ -92,7 +92,7 @@ var skilltypes = {
     "normalM": {name:"通常攻刃(中)", type:"normal", amount: "M"},
     "normalL": {name:"通常攻刃(大)", type:"normal", amount: "L"},
     "normalLL": {name:"通常攻刃II", type:"normal", amount: "LL"},
-    "normalBoukunL": {name:"通常暴君", type:"normalBoukun", amount: "LL"},
+    "normalBoukunL": {name:"通常暴君", type:"normalBoukun", amount: "L"},
     "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
     "normalHaisuiM": {name:"通常背水(中)", type:"normalHaisui", amount: "M"},
     "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
