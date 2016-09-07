@@ -4521,7 +4521,7 @@ var Profile = React.createClass({
         if(_ua.Mobile) {
             return (
                 <div className="profile">
-                    <p className="text-info"><a href="http://twitter.com/Hecate_mk2/status/773365651465396225">へかてさんの検証結果</a>を参考に、二手・三手の上限判定についても通常・方陣・EX・バハ・コスモスBLで分けました。</p>
+                    <p className="text-info"><a href="http://twitter.com/Hecate_mk2/status/773365651465396225">へかてさんの検証結果</a>を参考に、二手・三手の上限判定についても通常・方陣・EX・バハ・コスモスBLで分けました。また、三手(大)SLv15の効果量を再度6.6%から7.0%に戻しました。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
@@ -4616,7 +4616,7 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-info"><a href="http://twitter.com/Hecate_mk2/status/773365651465396225">へかてさんの検証結果</a>を参考に、二手・三手の上限判定についても通常・方陣・EX・バハ・コスモスBLで分けました。</p>
+                    <p className="text-info"><a href="http://twitter.com/Hecate_mk2/status/773365651465396225">へかてさんの検証結果</a>を参考に、二手・三手の上限判定についても通常・方陣・EX・バハ・コスモスBLで分けました。また、三手(大)SLv15の効果量を再度6.6%から7.0%に戻しました。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
@@ -4978,6 +4978,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/09/07: 検証情報を元に三手スキルの上限判定を別枠化 / 三手(大)SLv15 の効果量を再度7.0%に修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/09/07: コスモスAT+暴君6本以上の場合に、HP表示が負になってしまう不具合を修正(下限を1に) </li>
                 <li className="list-group-item list-group-item-danger">2016/09/06: 通常暴君のみ、攻刃(大)ではなく攻刃IIを参照していた不具合を修正 </li>
                 <li className="list-group-item list-group-item-success">2016/09/04: ダメージシミュレータの実装 / ビルド環境改善による大幅な高速化 </li>
@@ -5005,9 +5006,8 @@ var Notice = React.createClass ({
                  <li className="list-group-item list-group-item-info"><strong>バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに"バハフツ(攻/HP)"を選択してください。</strong> <br/>
                  (バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)</li>
                  <li className="list-group-item list-group-item-info">得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</li>
-                 <li className="list-group-item list-group-item-info">三手はSLv1で1.1%、SLv10で5%というデータから内挿しているため、あくまで予想値であるということをご理解下さい。<br/>
-                 また、三手スキル上限はデータがないため仮に50%としています。実際には50%よりも低い可能性もあるのでご注意下さい。</li>
-                 <li className="list-group-item list-group-item-info">計算量削減のため、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。</li>
+                 <li className="list-group-item list-group-item-info">バハフツルス系の連続攻撃率については、SLv15以外は情報がありませんので、ご検証お待ちしています。</li>
+                 <li className="list-group-item list-group-item-info">基本的に考えうる全ての編成のデータを計算しますが、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。(計算量削減のため)</li>
                  <li className="list-group-item list-group-item-info">パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) </li>
                  <li className="list-group-item list-group-item-info">
                  敵防御固有値は単攻撃ダメージ計算にのみ使用されます。(10から15程度が目安)<br/>
@@ -5072,7 +5072,8 @@ var Notice = React.createClass ({
                 <tr><td>バハフツHP(短剣等)</td><td>15.0</td><td>15.0</td><td>15.0</td><td>15.0</td><td>15.0</td><td>15.0</td><td>15.0</td><td>15.0</td><td>15.0</td><td>15.0</td><td>15.6</td><td>16.2</td><td>16.8</td><td>17.4</td><td>18.0</td></tr>
                 <tr><td>バハフツ攻(短剣等)</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.4</td><td>30.8</td><td>31.2</td><td>31.6</td><td>32.0</td></tr>
                 <tr><td>バハフツHP(拳等)</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.4</td><td>30.8</td><td>31.2</td><td>31.6</td><td>32.0</td></tr>
-                <tr><td>バハフツ連続攻撃率</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>4.6</td><td>5.0</td><td>5.5</td><td>6.0</td><td>6.5</td><td>7.0</td></tr>
+                <tr><td>バハフツDA率</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>7.5</td><td>8.0</td><td>8.5</td><td>9.0</td><td>9.5</td><td>10.0</td></tr>
+                <tr><td>バハフツTA率</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>6.0</td><td>6.4</td><td>6.8</td><td>7.2</td><td>7.6</td><td>8.0</td></tr>
                 <tr><td>通常守護(小)</td><td>3.0</td><td>4.0</td><td>5.0</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td></tr>
                 <tr><td>通常守護(中)</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>13.0</td><td>14.0</td><td>15.0</td><td>15.4</td><td>15.8</td><td>16.2</td><td>16.6</td><td>17.0</td></tr>
                 <tr><td>通常守護(大)</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>13.0</td><td>14.0</td><td>15.0</td><td>16.0</td><td>17.0</td><td>18.0</td><td>18.6</td><td>19.2</td><td>19.8</td><td>20.4</td><td>21.0</td></tr>
@@ -5086,12 +5087,12 @@ var Notice = React.createClass ({
                 <tr><td>通常二手(小)</td><td>0.4</td><td>0.6</td><td>0.8</td><td>1.0</td><td>1.2</td><td>1.4</td><td>1.6</td><td>1.8</td><td>2.0</td><td>2.2</td><td>2.4</td><td>2.6</td><td>2.8</td><td>3.0</td><td>3.2</td></tr>
                 <tr><td>通常二手(中)</td><td>0.7</td><td>1.0</td><td>1.3</td><td>1.6</td><td>1.9</td><td>2.2</td><td>2.5</td><td>2.8</td><td>3.1</td><td>3.4</td><td>3.7</td><td>4.0</td><td>4.3</td><td>4.6</td><td>4.9</td></tr>
                 <tr><td>通常二手(大)</td><td>1.0</td><td>1.4</td><td>1.8</td><td>2.2</td><td>2.6</td><td>3.0</td><td>3.4</td><td>3.8</td><td>4.2</td><td>4.6</td><td>5.0</td><td>5.4</td><td>5.8</td><td>6.2</td><td>7.0</td></tr>
-                <tr><td>マグナ二手(小)</td><td>0.4</td><td>0.6</td><td>0.8</td><td>1.0</td><td>1.2</td><td>1.4</td><td>1.6</td><td>1.8</td><td>2.0</td><td>2.2</td><td>2.4</td><td>2.6</td><td>2.8</td><td>3.0</td><td>3.2</td></tr>
+                {/*<tr><td>マグナ二手(小)</td><td>0.4</td><td>0.6</td><td>0.8</td><td>1.0</td><td>1.2</td><td>1.4</td><td>1.6</td><td>1.8</td><td>2.0</td><td>2.2</td><td>2.4</td><td>2.6</td><td>2.8</td><td>3.0</td><td>3.2</td></tr>
                 <tr><td>マグナ二手(中)</td><td>0.7</td><td>1.0</td><td>1.3</td><td>1.6</td><td>1.9</td><td>2.2</td><td>2.5</td><td>2.8</td><td>3.1</td><td>3.4</td><td>3.7</td><td>4.0</td><td>4.3</td><td>4.6</td><td>4.9</td></tr>
-                <tr><td>マグナ二手(大)</td><td>1.0</td><td>1.4</td><td>1.8</td><td>2.2</td><td>2.6</td><td>3.0</td><td>3.4</td><td>3.8</td><td>4.2</td><td>4.6</td><td>5.0</td><td>5.4</td><td>5.8</td><td>6.2</td><td>6.6</td></tr>
+                <tr><td>マグナ二手(大)</td><td>1.0</td><td>1.4</td><td>1.8</td><td>2.2</td><td>2.6</td><td>3.0</td><td>3.4</td><td>3.8</td><td>4.2</td><td>4.6</td><td>5.0</td><td>5.4</td><td>5.8</td><td>6.2</td><td>6.6</td></tr>*/}
                 <tr><td>アンノウン二手(小)</td><td>0.4</td><td>0.6</td><td>0.8</td><td>1.0</td><td>1.2</td><td>1.4</td><td>1.6</td><td>1.8</td><td>2.0</td><td>2.2</td><td>2.4</td><td>2.6</td><td>2.8</td><td>3.0</td><td>3.2</td></tr>
-                <tr><td>通常三手(大)</td><td>1.0</td><td>1.4</td><td>1.8</td><td>2.2</td><td>2.6</td><td>3.0</td><td>3.4</td><td>3.8</td><td>4.2</td><td>4.6</td><td>5.0</td><td>5.4</td><td>5.8</td><td>6.2</td><td>6.6</td></tr>
-                <tr><td>マグナ三手(大)</td><td>1.0</td><td>1.4</td><td>1.8</td><td>2.2</td><td>2.6</td><td>3.0</td><td>3.4</td><td>3.8</td><td>4.2</td><td>4.6</td><td>5.0</td><td>5.4</td><td>5.8</td><td>6.2</td><td>6.6</td></tr>
+                <tr><td>通常三手(大)</td><td>1.0</td><td>1.4</td><td>1.8</td><td>2.2</td><td>2.6</td><td>3.0</td><td>3.4</td><td>3.8</td><td>4.2</td><td>4.6</td><td>5.0</td><td>5.4</td><td>5.8</td><td>6.2</td><td>7.0</td></tr>
+                <tr><td>マグナ三手(大)</td><td>1.0</td><td>1.4</td><td>1.8</td><td>2.2</td><td>2.6</td><td>3.0</td><td>3.4</td><td>3.8</td><td>4.2</td><td>4.6</td><td>5.0</td><td>5.4</td><td>5.8</td><td>6.2</td><td>7.0</td></tr>
                 <tr><td>通常技巧(小)</td><td>1.0</td><td>1.1</td><td>1.2</td><td>1.3</td><td>1.4</td><td>1.5</td><td>1.6</td><td>1.7</td><td>1.8</td><td>1.9</td><td>2.0</td><td>2.1</td><td>2.2</td><td>2.3</td><td>2.4</td></tr>
                 <tr><td>通常技巧(中)</td><td>3.0</td><td>3.3</td><td>3.6</td><td>3.9</td><td>4.2</td><td>4.5</td><td>4.8</td><td>5.1</td><td>5.4</td><td>5.7</td><td>6.0</td><td>6.3</td><td>6.7</td><td>7.0</td><td>7.3</td></tr>
                 <tr><td>通常技巧(大)</td><td>4.0</td><td>4.4</td><td>4.8</td><td>5.2</td><td>5.6</td><td>6.0</td><td>6.4</td><td>6.8</td><td>7.2</td><td>7.6</td><td>8.0</td><td>8.4</td><td>8.8</td><td>9.2</td><td>9.6</td></tr>
