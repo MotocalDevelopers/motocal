@@ -1500,20 +1500,28 @@ var ResultList = React.createClass({
 
             // for DA and TA
             // baseDA: 6.5%, baseTA: 3.0%
-            var normalNite = (totals[key]["normalNite"] * totalSummon["zeus"] > 50.0) ? 50.0 : totals[key]["normalNite"] * totalSummon["zeus"]
-            var magnaNite = (totals[key]["magnaNite"] * totalSummon["magna"] > 50.0) ? 50.0 : totals[key]["magnaNite"] * totalSummon["magna"]
-            var normalSante = (totals[key]["normalSante"] * totalSummon["zeus"] > 50.0) ? 50.0 : totals[key]["normalSante"] * totalSummon["zeus"]
-            var magnaSante = (totals[key]["magnaSante"] * totalSummon["magna"] > 50.0) ? 50.0 : totals[key]["magnaSante"] * totalSummon["magna"]
-            var unknownOtherNite = (totals[key]["unknownOtherNite"] > 50.0) ? 50.0 : totals[key]["unknownOtherNite"]
+            var normalNite = totals[key]["normalNite"] * totalSummon["zeus"]
+            var magnaNite = totals[key]["magnaNite"] * totalSummon["magna"]
+            var normalSante = totals[key]["normalSante"] * totalSummon["zeus"]
+            var magnaSante = totals[key]["magnaSante"] * totalSummon["magna"]
+            var unknownOtherNite = totals[key]["unknownOtherNite"]
 
             // DATA sup
-            var armDAup = (unknownOtherNite + normalNite + normalSante + magnaNite + magnaSante + totals[key]["bahaDA"] + totals[key]["cosmosBL"]> 50.0) ? 50.0 : normalNite + normalSante + magnaNite + magnaSante + unknownOtherNite + totals[key]["bahaDA"] + totals[key]["cosmosBL"]
-            var armTAup = (normalSante + magnaSante + totals[key]["bahaTA"] > 50.0) ? 50.0 : normalSante + magnaSante + totals[key]["bahaTA"]
+            // 通常・方陣・EX・バハ・コスモスBLで別枠とする
+            var armDAupNormal = (normalNite + normalSante > 50.0) ? 50.0 : normalNite + normalSante
+            var armDAupMagna = (magnaNite + magnaSante > 50.0) ? 50.0 : magnaNite + magnaSante
+            var armDAupBaha = (totals[key]["bahaDA"] > 50.0) ? 50.0 : totals[key]["bahaDA"]
+            var armDAupCosmos = (totals[key]["cosmosBL"] > 50.0) ? 50.0 : totals[key]["cosmosBL"]
+            // unknownは現状50%に届くことはない
+            var totalDA = 0.01 * totals[key]["baseDA"] + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * (armDAupNormal + armDAupMagna + unknownOtherNite + armDAupBaha + armDAupCosmos)
 
-            var totalDA = 100.0 * (0.01 * totals[key]["baseDA"] + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * armDAup)
-            var totalTA = 100.0 * (0.01 * totals[key]["baseTA"] + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * armTAup)
-            var taRate = (parseFloat(totalTA) >= 100.0) ? 1.0 : 0.01 * parseFloat(totalTA)
-            var daRate = (parseFloat(totalDA) >= 100.0) ? 1.0 : 0.01 * parseFloat(totalDA)
+            var armTAupNormal = (normalSante > 50.0) ? 50.0 : normalSante
+            var armTAupMagna  = (magnaSante > 50.0)  ? 50.0 : magnaSante
+            var armTAupBaha = (totals[key]["bahaTA"] > 50.0) ? 50.0 : totals[key]["bahaTA"]
+            var totalTA = 0.01 * totals[key]["baseTA"] + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha)
+
+            var taRate = (parseFloat(totalTA) >= 1.0) ? 1.0 : parseFloat(totalTA)
+            var daRate = (parseFloat(totalDA) >= 1.0) ? 1.0 : parseFloat(totalDA)
             var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
 
             if(totals[key]["typeBonus"] != 1.5) {
@@ -3676,7 +3684,7 @@ var Result = React.createClass({
                         }
                     }
                     if(sw.switchDATA) {
-                        tablebody.push('DA:' + m.data.Djeeta.totalDA.toFixed(1) + '%,\n TA: ' + m.data.Djeeta.totalTA.toFixed(1) + '%')
+                        tablebody.push('DA:' + (100.0 * m.data.Djeeta.totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data.Djeeta.totalTA).toFixed(1) + '%')
                     }
                     if(sw.switchExpectedAttack) {
                         var expectedAttack = parseInt(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack)
@@ -4513,6 +4521,7 @@ var Profile = React.createClass({
         if(_ua.Mobile) {
             return (
                 <div className="profile">
+                    <p className="text-info"><a href="http://twitter.com/Hecate_mk2/status/773365651465396225">へかてさんの検証結果</a>を参考に、二手・三手の上限判定についても通常・方陣・EX・バハ・コスモスBLで分けました。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
@@ -4607,6 +4616,7 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
+                    <p className="text-info"><a href="http://twitter.com/Hecate_mk2/status/773365651465396225">へかてさんの検証結果</a>を参考に、二手・三手の上限判定についても通常・方陣・EX・バハ・コスモスBLで分けました。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
@@ -5035,6 +5045,9 @@ var Notice = React.createClass ({
                 <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/765508148689985537"> @Hecate_mk2 さんの渾身(大)検証情報</a></li>
                 <li className="list-group-item"> <a href="https://twitter.com/firemagma/status/765632239526830080"> @firemagma さんの渾身(大)検証情報</a></li>
                 <li className="list-group-item"> <a href="https://twitter.com/hibino_naoki/status/765749475457413120"> @hibino_naoki さんの渾身(大)検証情報</a></li>
+                <li className="list-group-item"> <a href="http://twitter.com/Hecate_mk2/status/773365651465396225"> @Hecate_mk2 さんの三手検証結果検証結果</a></li>
+                <li className="list-group-item"> <a href="http://twitter.com/umiumipkm/status/773383133739622400"> @umiumipkm さんのコスモスBLの枠についての情報</a></li>
+                <li className="list-group-item"> <a href="https://twitter.com/hakanid/status/770966731271512065/photo/1"> @hakanid さんのセスランス加護量変動検証結果</a></li>
                 <li className="list-group-item"> <a href="http://gbf.xzz.jp/dev/%E9%98%B2%E5%BE%A1%E5%9B%BA%E6%9C%89%E5%80%A4%E3%83%A1%E3%83%A2/"> 防御固有値メモ - グラメモ</a></li>
             </ul>
 
