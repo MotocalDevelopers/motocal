@@ -4265,7 +4265,7 @@ var Arm = React.createClass({
                 newState["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus
                 newState["hp"] = parseInt(newarm.minhp) + newarm.plus
             } else if(newarm.lv <= 100) {
-                if(newarm.maxlv == "100") {
+                if(newarm.maxlv == "100" || newarm.maxlv == "75") {
                     newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
                     newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
                 } else {
@@ -4316,7 +4316,7 @@ var Arm = React.createClass({
                state["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus
                state["hp"] = parseInt(newarm.minhp) + newarm.plus
            } else if(newarm.lv <= 100) {
-               if(newarm.maxlv == "100") {
+               if(newarm.maxlv == "100" || newarm.maxlv == "75") {
                    state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
                    state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
                } else {
@@ -4978,6 +4978,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-success">2016/09/08: 武器テンプレートにSR武器を追加 </li>
                 <li className="list-group-item list-group-item-info">2016/09/07: 検証情報を元に三手スキルの上限判定を別枠化 / 三手(大)SLv15 の効果量を再度7.0%に修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/09/07: コスモスAT+暴君6本以上の場合に、HP表示が負になってしまう不具合を修正(下限を1に) </li>
                 <li className="list-group-item list-group-item-danger">2016/09/06: 通常暴君のみ、攻刃(大)ではなく攻刃IIを参照していた不具合を修正 </li>
