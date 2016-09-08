@@ -4436,11 +4436,11 @@
         "maxlv": 100
     }, 
     "玄武殻拳": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "玄武殻拳", 
         "imageURL": "./imgs/1040605800.png", 
         "skill2": "non", 
-        "skill1": "non", 
+        "skill1": "muhyoTuiga", 
         "element": "water", 
         "minattack": "285", 
         "attack": "1820", 
@@ -4456,7 +4456,7 @@
         "name": "[剛羅甲]玄武殻拳", 
         "imageURL": "./imgs/1040605800.png", 
         "skill2": "normalL", 
-        "skill1": "non", 
+        "skill1": "muhyoTuiga", 
         "element": "water", 
         "attacklv100": "1820", 
         "minattack": "285", 
