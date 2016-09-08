@@ -1533,7 +1533,13 @@ var ResultList = React.createClass({
             var expectedOugiGage = (buff["ougiGage"] - totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
             var expectedTurn = Math.ceil(100.0 / expectedOugiGage)
 
+            // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
             var damage = this.calculateDamage(criticalRatio * totalAttack, prof.enemyDefense)
+
+            // 追加ダメージ(%)分だけ追加
+            if(totals[key]["additionalDamage"] > 0) {
+                damage += 0.01 * totals[key]["additionalDamage"] * damage
+            }
             var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio)
             var expectedCycleDamage = ougiDamage + expectedTurn * expectedAttack * damage
             var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1)
