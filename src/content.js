@@ -1530,7 +1530,7 @@ var ResultList = React.createClass({
                 var criticalRatio = (1.0 + skillAmounts["magnaCritical"]["ratio"]) * 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"] + (1.0 + skillAmounts["normalCritical"]["ratio"]) * 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"] + 1.0 * (1.0 - 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"] - 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"])
             }
             var criticalAttack = parseInt(totalAttack * criticalRatio)
-            var expectedOugiGage = buff["ougiGage"] * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
+            var expectedOugiGage = (buff["ougiGage"] - totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
             var expectedTurn = Math.ceil(100.0 / expectedOugiGage)
 
             var damage = this.calculateDamage(criticalRatio * totalAttack, prof.enemyDefense)
