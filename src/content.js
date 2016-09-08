@@ -1881,6 +1881,11 @@ var ResultList = React.createClass({
                                 if(index == 2){
                                     totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                                 }
+                            } else if(stype == 'muhyoTuiga'){
+                                if(index == 4){
+                                    totals[key]["additionalDamage"] += comb[i] * slv;
+                                    totals[key]["ougiDebuff"] += comb[i] * 0.30;
+                                }
                             } else {
                                 totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                             }
@@ -1897,13 +1902,20 @@ var ResultList = React.createClass({
     initializeTotals: function(totals) {
         // 初期化
         for(key in totals){
-            totals[key]["armAttack"] = 0; totals[key]["armHP"] = 0; totals[key]["HPdebuff"] = 0; totals[key]["magna"] = 0;
-            totals[key]["magnaHaisui"] = 0; totals[key]["normal"] = 0; totals[key]["normalHaisui"] = 0; totals[key]["normalKonshin"] = 0;
-            totals[key]["unknown"] = 0; totals[key]["unknownOther"] = 0; totals[key]["unknownOtherHaisui"] = 0; totals[key]["bahaAT"] = 0;
-            totals[key]["bahaHP"] = 0; totals[key]["bahaDA"] = 0; totals[key]["bahaTA"] = 0; totals[key]["magnaHP"] = 0;
-            totals[key]["normalHP"] = 0; totals[key]["unknownHP"] = 0; totals[key]["normalNite"] = 0; totals[key]["magnaNite"] = 0;
-            totals[key]["normalSante"] = 0; totals[key]["magnaSante"] = 0; totals[key]["unknownOtherNite"] = 0; totals[key]["normalCritical"] = 0;
+            totals[key]["armAttack"] = 0; totals[key]["armHP"] = 0;
+            totals[key]["HPdebuff"] = 0; totals[key]["magna"] = 0;
+            totals[key]["magnaHaisui"] = 0; totals[key]["normal"] = 0;
+            totals[key]["normalHaisui"] = 0; totals[key]["normalKonshin"] = 0;
+            totals[key]["unknown"] = 0; totals[key]["unknownOther"] = 0;
+            totals[key]["unknownOtherHaisui"] = 0; totals[key]["bahaAT"] = 0;
+            totals[key]["bahaHP"] = 0; totals[key]["bahaDA"] = 0;
+            totals[key]["bahaTA"] = 0; totals[key]["magnaHP"] = 0;
+            totals[key]["normalHP"] = 0; totals[key]["unknownHP"] = 0;
+            totals[key]["normalNite"] = 0; totals[key]["magnaNite"] = 0;
+            totals[key]["normalSante"] = 0; totals[key]["magnaSante"] = 0;
+            totals[key]["unknownOtherNite"] = 0; totals[key]["normalCritical"] = 0;
             totals[key]["magnaCritical"] = 0; totals[key]["cosmosBL"] = 0;
+            totals[key]["additionalDamage"] = 0; totals[key]["ougiDebuff"] = 0;
         }
     },
     getTotalBuff: function(prof) {
@@ -1934,7 +1946,7 @@ var ResultList = React.createClass({
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}};
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -1952,7 +1964,7 @@ var ResultList = React.createClass({
                         k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
             }
         }
         for(key in totals) {
@@ -4978,6 +4990,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/09/08: 玄武殻拳のスキル1(霧氷の追牙・肆)をサポート。 </li>
                 <li className="list-group-item list-group-item-success">2016/09/08: 武器テンプレートにSR武器を追加 </li>
                 <li className="list-group-item list-group-item-info">2016/09/07: 検証情報を元に三手スキルの上限判定を別枠化 / 三手(大)SLv15 の効果量を再度7.0%に修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/09/07: コスモスAT+暴君6本以上の場合に、HP表示が負になってしまう不具合を修正(下限を1に) </li>

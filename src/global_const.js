@@ -129,6 +129,7 @@ var skilltypes = {
     "unknownOtherBoukunL": {name:"ミフネ流・極意", type:"unknownOtherBoukun", amount: "L"},
     "unknownOtherNiteS": {name:"ミフネ流・双星", type:"unknownOtherNite", amount: "S"},
     "gurenJuin": {name:"紅蓮の呪印・弐", type:"gurenJuin", amount: "L"},
+    "muhyoTuiga": {name:"霧氷の追牙・肆", type:"muhyoTuiga", amount: "L"},
     "normalCriticalS": {name:"通常技巧(小)", type:"normalCritical", amount: "S"},
     "normalCriticalM": {name:"通常技巧(中)", type:"normalCritical", amount: "M"},
     "normalCriticalL": {name:"通常技巧(大)", type:"normalCritical", amount: "L"},
