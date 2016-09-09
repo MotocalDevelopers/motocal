@@ -210,19 +210,30 @@ var SimulatorInput = React.createClass({
         var keys = Object.keys(newState.bufflists)
         var name = e.target.getAttribute("name")
         var id = parseInt(e.target.getAttribute("id"))
+        var index = 1
         if(direction == "up") {
-            if(id > 0) {
-                newState.buffs[keys[id - 1]] = JSON.parse(JSON.stringify(newState.buffs[name]))
-                newState.bufflists[keys[id - 1]] = JSON.parse(JSON.stringify(newState.bufflists[name]))
-                // updateBuffAmount は必要ない（Buffsもコピーしているので）
-                this.props.onChange(newState)
+            while(id - index >= 0) {
+                if(this.isDisplay(keys[id - index])) {
+                    newState.buffs[keys[id - index]] = JSON.parse(JSON.stringify(newState.buffs[name]))
+                    newState.bufflists[keys[id - index]] = JSON.parse(JSON.stringify(newState.bufflists[name]))
+                    // updateBuffAmount は必要ない（Buffsもコピーしているので）
+                    this.props.onChange(newState)
+                    break;
+                } else {
+                    index++;
+                }
             }
         } else {
-            if(id < keys.length - 1) {
-                newState.buffs[keys[id + 1]] = JSON.parse(JSON.stringify(newState.buffs[name]))
-                newState.bufflists[keys[id + 1]] = JSON.parse(JSON.stringify(newState.bufflists[name]))
-                // updateBuffAmount は必要ない（Buffsもコピーしているので）
-                this.props.onChange(newState)
+            while(id + index < keys.length) {
+                if(this.isDisplay(keys[id + index])) {
+                    newState.buffs[keys[id + index]] = JSON.parse(JSON.stringify(newState.buffs[name]))
+                    newState.bufflists[keys[id + index]] = JSON.parse(JSON.stringify(newState.bufflists[name]))
+                    // updateBuffAmount は必要ない（Buffsもコピーしているので）
+                    this.props.onChange(newState)
+                    break;
+                } else {
+                    index++;
+                }
             }
         }
     },
