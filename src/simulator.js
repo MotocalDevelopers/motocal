@@ -265,6 +265,7 @@ var SimulatorInput = React.createClass({
         var copyBuffToDown = this.copyBuffToDown
         var copyToLeft = this.copyToLeft
         var copyToRight = this.copyToRight
+        var chara = this.props.chara
 
         return (
             <div className="simulatorInput">
@@ -278,41 +279,54 @@ var SimulatorInput = React.createClass({
                         <th className="simulator-th">操作</th>
                     </tr>
                     {Object.keys(this.state.buffs).map(function(key, ind){
-                        return (
-                        <tr key={key}>
-                            <td className="simulator-left">{key}</td>
-                            {Turns.map(function(x, ind2){
-                                return (
-                                    <td key={ind2} className="simulator-td">
-                                    <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype}</FormControl>
-                                    <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist}</FormControl>
+                        var isDisplay = false
+                        if(key == "Djeeta" || key == "全体バフ") {
+                            isDisplay = true
+                        } else {
+                            for(var i = 0; i < chara.length; i++){
+                                if(chara[i].name == key) {
+                                    isDisplay = chara[i].isConsideredInAverage
+                                }
+                            }
+                        }
 
-                                    {state.bufflists[key][ind2].map(function(v, ind3){
-                                        return (
-                                            <FormControl componentClass="select" key={ind3} name={key} id={ind2.toString() + "-" + ind3.toString()} value={v} onChange={handleChangeBuff}>
-                                            <optgroup label="通常バフ">{select_normalbuffAmount}</optgroup>
-                                            <optgroup label="属性バフ">{select_elementbuffAmount}</optgroup>
-                                            <optgroup label="その他バフ">{select_otherbuffAmount}</optgroup>
-                                            <optgroup label="DA率">{select_dabuffAmount}</optgroup>
-                                            <optgroup label="TA率">{select_tabuffAmount}</optgroup>
-                                            </FormControl>
-                                        );
-                                    })}
-                                    <ButtonGroup>
-                                        <Button bsStyle="default" className="btn-nopadding" onClick={copyToLeft} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-left" aria-hidden="true"></i></Button>
-                                        <Button bsStyle="default" className="btn-nopadding" onClick={addBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-plus-square" aria-hidden="true"></i></Button>
-                                        <Button bsStyle="default" className="btn-nopadding" onClick={subBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-minus-square" aria-hidden="true"></i></Button>
-                                        <Button bsStyle="default" className="btn-nopadding" onClick={copyToRight} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-right" aria-hidden="true"></i></Button>
-                                    </ButtonGroup>
-                                    </td>
-                                );
-                            })}
-                            <td className="simulator-td">
-                                <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i> 上にコピー</Button>
-                                <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i> 下にコピー</Button>
-                            </td>
-                        </tr>
-                        )
+                        if(isDisplay) {
+                            return (
+                            <tr key={key}>
+                                <td className="simulator-left">{key}</td>
+                                {Turns.map(function(x, ind2){
+                                    return (
+                                        <td key={ind2} className="simulator-td">
+                                        <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype}</FormControl>
+                                        <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist}</FormControl>
+
+                                        {state.bufflists[key][ind2].map(function(v, ind3){
+                                            return (
+                                                <FormControl componentClass="select" key={ind3} name={key} id={ind2.toString() + "-" + ind3.toString()} value={v} onChange={handleChangeBuff}>
+                                                <optgroup label="通常バフ">{select_normalbuffAmount}</optgroup>
+                                                <optgroup label="属性バフ">{select_elementbuffAmount}</optgroup>
+                                                <optgroup label="その他バフ">{select_otherbuffAmount}</optgroup>
+                                                <optgroup label="DA率">{select_dabuffAmount}</optgroup>
+                                                <optgroup label="TA率">{select_tabuffAmount}</optgroup>
+                                                </FormControl>
+                                            );
+                                        })}
+                                        <ButtonGroup>
+                                            <Button bsStyle="default" className="btn-nopadding" onClick={copyToLeft} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-left" aria-hidden="true"></i></Button>
+                                            <Button bsStyle="default" className="btn-nopadding" onClick={addBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-plus-square" aria-hidden="true"></i></Button>
+                                            <Button bsStyle="default" className="btn-nopadding" onClick={subBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-minus-square" aria-hidden="true"></i></Button>
+                                            <Button bsStyle="default" className="btn-nopadding" onClick={copyToRight} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-right" aria-hidden="true"></i></Button>
+                                        </ButtonGroup>
+                                        </td>
+                                    );
+                                })}
+                                <td className="simulator-td">
+                                    <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i> 上にコピー</Button>
+                                    <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i> 下にコピー</Button>
+                                </td>
+                            </tr>
+                            )
+                        }
                     })}
                     </tbody>
                 </table>
