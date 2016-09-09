@@ -155,6 +155,17 @@ var SimulatorInput = React.createClass({
         this.setState(newState)
         this.props.onChange(newState)
     },
+    isDisplay: function(key) {
+        if(key == "Djeeta" || key == "全体バフ") {
+            return true
+        } else {
+            for(var i = 0; i < this.props.chara.length; i++){
+                if(this.props.chara[i].name == key) {
+                    return this.props.chara[i].isConsideredInAverage
+                }
+            }
+        }
+    },
     handleChangeBuff: function(e) {
         var newState = this.state
         var id = e.target.getAttribute("id").split("-")
@@ -265,7 +276,7 @@ var SimulatorInput = React.createClass({
         var copyBuffToDown = this.copyBuffToDown
         var copyToLeft = this.copyToLeft
         var copyToRight = this.copyToRight
-        var chara = this.props.chara
+        var isDisplay = this.isDisplay
 
         return (
             <div className="simulatorInput">
@@ -279,18 +290,7 @@ var SimulatorInput = React.createClass({
                         <th className="simulator-th">操作</th>
                     </tr>
                     {Object.keys(this.state.buffs).map(function(key, ind){
-                        var isDisplay = false
-                        if(key == "Djeeta" || key == "全体バフ") {
-                            isDisplay = true
-                        } else {
-                            for(var i = 0; i < chara.length; i++){
-                                if(chara[i].name == key) {
-                                    isDisplay = chara[i].isConsideredInAverage
-                                }
-                            }
-                        }
-
-                        if(isDisplay) {
+                        if(isDisplay(key)) {
                             return (
                             <tr key={key}>
                                 <td className="simulator-left">{key}</td>
