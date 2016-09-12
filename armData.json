@@ -2330,11 +2330,11 @@
         "element": "fire", 
         "attacklv100": "2650", 
         "minattack": "450", 
-        "attack": "2650", 
+        "attack": "3090", 
         "slvmax": 15, 
         "minhp": "30", 
         "type": "axe", 
-        "hp": "190", 
+        "hp": "222", 
         "maxlv": 150
     }, 
     "[蛇神斧]ミドガルドの裂斧": {

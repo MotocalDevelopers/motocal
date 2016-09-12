@@ -4539,7 +4539,6 @@ var Profile = React.createClass({
         if(_ua.Mobile) {
             return (
                 <div className="profile">
-                    <p className="text-info"><a href="http://twitter.com/Hecate_mk2/status/773365651465396225">へかてさんの検証結果</a>を参考に、二手・三手の上限判定についても通常・方陣・EX・バハ・コスモスBLで分けました。また、三手(大)SLv15の効果量を再度6.6%から7.0%に戻しました。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
@@ -4634,7 +4633,6 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-info"><a href="http://twitter.com/Hecate_mk2/status/773365651465396225">へかてさんの検証結果</a>を参考に、二手・三手の上限判定についても通常・方陣・EX・バハ・コスモスBLで分けました。また、三手(大)SLv15の効果量を再度6.6%から7.0%に戻しました。</p>
                     <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
@@ -4996,6 +4994,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-danger">2016/09/12: ユエル武器の最終解放後のステータスが間違っていたので修正 / シミュレータ欄に「平均に含めない」キャラが表示されないように修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/09/09: 武器テンプレートのマグナ背水系が(小)ではなく(中)になっていたので修正. </li>
                 <li className="list-group-item list-group-item-info">2016/09/08: 玄武殻拳のスキル1(霧氷の追牙・肆)をサポート。 </li>
                 <li className="list-group-item list-group-item-success">2016/09/08: 武器テンプレートにSR武器を追加 </li>
