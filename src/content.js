@@ -1667,7 +1667,7 @@ var ResultList = React.createClass({
         var index = 0;
         for( key in totals ) {
             index = (index + 1)|0;
-            var isBahaAtIncluded = false; var isBahaAthpIncluded = false;
+            var isBahaAtIncluded = false; var isBahaAthpIncluded = false; var isBahaHpIncluded = false;
 
             for(var i = 0; i < arml.length; i++){
                 if(comb[i] == 0) continue
@@ -1760,6 +1760,20 @@ var ResultList = React.createClass({
                                         totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
                                         totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
                                         isBahaAthpIncluded = true;
+                                    }
+                                }
+                            }
+                        } else if(stype == 'bahaHP') {
+                            if(!isBahaHpIncluded) {
+                                // バハ拳など
+                                if(totals[key]["race"] == "unknown") {
+                                    totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
+                                    isBahaHpIncluded = true;
+                                } else {
+                                    var bahatype = skillname.split("-")
+                                    if( bahamutRelation[bahatype[1]]["type1"] == totals[key]["race"] || bahamutRelation[ bahatype[1]]["type2"] == totals[key]["race"] ) {
+                                        totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
+                                        isBahaHpIncluded = true;
                                     }
                                 }
                             }
