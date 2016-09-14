@@ -2212,6 +2212,7 @@ var ResultList = React.createClass({
             "totalAttack": {"max": 0, "min": 0},
             "totalHP": {"max": 0, "min": 0},
             "criticalAttack": {"max": 0, "min": 0},
+            "totalExpected": {"max": 0, "min": 0},
             "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
             "averageAttack": {"max": 0, "min": 0},
             "averageCyclePerTurn": {"max": 0, "min": 0},
@@ -2233,6 +2234,7 @@ var ResultList = React.createClass({
             var AllTotalAttack = [["残りHP(%)"]];
             var AllCycleDamagePerTurn = [["残りHP(%)"]];
             var AllCriticalAttack = [["残りHP(%)"]];
+            var AllTotalExpected = [["残りHP(%)"]];
             var AllAverageTotalAttack = [["残りHP(%)"]];
             var AllAverageCycleDamagePerTurn = [["残りHP(%)"]];
             var AllAverageCriticalAttack = [["残りHP(%)"]];
@@ -2242,6 +2244,7 @@ var ResultList = React.createClass({
                 AllTotalAttack.push([m.toString() + "%"])
                 AllCycleDamagePerTurn.push([m.toString() + "%"])
                 AllCriticalAttack.push([m.toString() + "%"])
+                AllTotalExpected.push([m.toString() + "%"])
                 AllTotalHP.push([m.toString() + "%"])
                 AllAverageTotalAttack.push([m.toString() + "%"])
                 AllAverageCycleDamagePerTurn.push([m.toString() + "%"])
@@ -2267,6 +2270,7 @@ var ResultList = React.createClass({
             var TotalAttack = [["残りHP(%)"]];
             var TotalHP = [["残りHP(%)"]]
             var CriticalAttack = [["残りHP(%)"]];
+            var TotalExpected = [["残りHP(%)"]];
             var CycleDamagePerTurn = [["残りHP(%)"]];
             var AverageTotalAttack = [["残りHP(%)"]];
             var AverageCriticalAttack = [["残りHP(%)"]];
@@ -2276,6 +2280,7 @@ var ResultList = React.createClass({
                 TotalAttack.push([m.toString() + "%"])
                 CycleDamagePerTurn.push([m.toString() + "%"])
                 CriticalAttack.push([m.toString() + "%"])
+                TotalExpected.push([m.toString() + "%"])
                 TotalHP.push([m.toString() + "%"])
                 AverageTotalAttack.push([m.toString() + "%"])
                 AverageCycleDamagePerTurn.push([m.toString() + "%"])
@@ -2401,12 +2406,14 @@ var ResultList = React.createClass({
 
                     for(var k = 0; k < 100; k++){
                         var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin
+                        var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
                         var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
                         var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio)
                         var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
 
                         if(key == "Djeeta") {
                             TotalAttack[k + 1].push( parseInt(newTotalAttack) )
+                            TotalExpected[k + 1].push( parseInt(newTotalExpected) )
                             TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
                             CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
                             CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
@@ -2423,6 +2430,7 @@ var ResultList = React.createClass({
                 TotalAttack[0].push(title)
                 TotalHP[0].push(title)
                 CriticalAttack[0].push(title)
+                TotalExpected[0].push(title)
                 CycleDamagePerTurn[0].push(title)
                 AverageTotalAttack[0].push(title)
                 AverageCycleDamagePerTurn[0].push(title)
@@ -2433,6 +2441,7 @@ var ResultList = React.createClass({
                     AllTotalAttack[0].push("(" + summonHeader + ")" + title)
                     AllTotalHP[0].push("(" + summonHeader + ")" + title)
                     AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
+                    AllTotalExpected[0].push("(" + summonHeader + ")" + title)
                     AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
                     AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
                     AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
@@ -2442,6 +2451,7 @@ var ResultList = React.createClass({
                         AllTotalAttack[k].push(TotalAttack[k][j + 1])
                         AllTotalHP[k].push(TotalHP[k][j + 1])
                         AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
+                        AllTotalExpected[k].push(TotalExpected[k][j + 1])
                         AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
                         AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
                         AllAverageCriticalAttack[k].push(AverageCriticalAttack[k][j + 1])
@@ -2454,6 +2464,7 @@ var ResultList = React.createClass({
             data[summonHeader]["totalAttack"] = TotalAttack
             data[summonHeader]["expectedCycleDamagePerTurn"] = CycleDamagePerTurn
             data[summonHeader]["criticalAttack"] = CriticalAttack
+            data[summonHeader]["totalExpected"] = TotalExpected
             data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
             data[summonHeader]["averageAttack"] = AverageTotalAttack
             data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
@@ -2465,6 +2476,7 @@ var ResultList = React.createClass({
             data["まとめて比較"]["totalAttack"] = AllTotalAttack
             data["まとめて比較"]["totalHP"] = AllTotalHP
             data["まとめて比較"]["criticalAttack"] = AllCriticalAttack
+            data["まとめて比較"]["totalExpected"] = AllTotalExpected
             data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
             data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
             data["まとめて比較"]["averageCriticalAttack"] = AllAverageCriticalAttack
