@@ -4156,6 +4156,7 @@ var RegisteredArm = React.createClass({
                             <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectSkillLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
+                            <FormControl componentClass="select" value={this.state[this.state.additionalSelectKey]} className={this.state.additionalSelectClass} onChange={this.handleEvent.bind(this, this.state.additionalSelectKey)}>{this.state.additionalSelect}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1本</button>

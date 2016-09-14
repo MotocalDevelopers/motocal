@@ -422,6 +422,11 @@ label {
     margin-bottom: 5px;
 }
 
+.armTemplate .hidden {
+    overflow: hidden;
+    height: 0;
+}
+
 .onearm {
     width: calc(100%/3 - 2px);
     float: left;
