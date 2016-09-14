@@ -1960,13 +1960,7 @@ var ResultList = React.createClass({
 
         var enemyElement = (prof.enemyElement == undefined || prof.enemyElement == "水") ? "fire" : prof.enemyElement
         for(key in totals){
-            if(elementRelation[ totals[key]["element"] ]["weak"] == enemyElement) {
-                totals[key]["typeBonus"] = 0.75
-            } else if(elementRelation[ totals[key]["element"] ]["strong"] == enemyElement) {
-                totals[key]["typeBonus"] = 1.5
-            } else {
-                totals[key]["typeBonus"] = 1.0
-            }
+            totals[key]["typeBonus"] = this.getTypeBonus(totals[key]["element"], enemyElement)
         }
 
         return totals
@@ -2971,6 +2965,15 @@ var ResultList = React.createClass({
 
         data["minMaxArr"] = minMaxArr
         return data
+    },
+    getTypeBonus: function(self_elem, enemy_elem) {
+        if(elementRelation[ self_elem ]["weak"] == enemy_elem) {
+            return 0.75
+        } else if(elementRelation[ self_elem ]["strong"] == enemy_elem) {
+            return 1.5
+        } else {
+            return 1.0
+        }
     },
     resetStoredList: function(e) {
         this.setState({storedList: {"combinations": [], "armlist": []}})
