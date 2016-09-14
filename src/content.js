@@ -4074,6 +4074,9 @@ var RegisteredArm = React.createClass({
         if(this.isOldWeapon(arm.name)){
             this.setState({additionalSelectKey: "old_element"})
             this.setState({additionalSelect: selector.elements})
+        } else if (arm.name.indexOf("コスモス") > 0) {
+            this.setState({additionalSelectKey: "cosmos_skill"})
+            this.setState({additionalSelect: selector.cosmosSkills})
         } else {
             this.setState({additionalSelectKey: ""})
             this.setState({additionalSelect: null})
@@ -4096,6 +4099,8 @@ var RegisteredArm = React.createClass({
         if(this.state.additionalSelectKey == "old_element") {
             arm["element"] = this.state.old_element
             arm["element2"] = this.state.old_element
+        } else if(this.state.additionalSelectKey == "cosmos_skill") {
+            arm["skill2"] = this.state.cosmos_skill
         }
         this.props.onClick(arm, e.target.value);
         this.setState({openConsiderNumberModal: false})

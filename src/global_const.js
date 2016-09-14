@@ -175,6 +175,13 @@ var skilltypes = {
     "bahaFUHP-music": {name:"バハフツHP-楽器", type:"bahaFUHP", amount: "L"},
 };
 
+var cosmosSkills = {
+    "cosmosAT": {name:"コスモスAT", type:"cosmos", amount: "L"},
+    "cosmosDF": {name:"コスモスDF", type:"cosmos", amount: "L"},
+    "cosmosBL": {name:"コスモスBL", type:"cosmos", amount: "L"},
+    "non": {name: "無し", type:"non", amount: "non"},
+};
+
 var armTypes = {
     "dagger": "短剣",
     "sword": "剣",
@@ -441,6 +448,7 @@ module.exports.selector.elements = Object.keys(elementTypes).map(function(opt){r
 module.exports.selector.filterelements = Object.keys(filterElementTypes).map(function(opt){return <option value={opt} key={opt}>{filterElementTypes[opt]}</option>;});
 module.exports.selector.summons = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{summonTypes[opt]}</option>;});
 module.exports.selector.skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
+module.exports.selector.cosmosSkills = Object.keys(cosmosSkills).map(function(key){ return <option value={key} key={key}>{cosmosSkills[key].name}</option>;})
 module.exports.selector.types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{jobTypes[opt]}</option>;});
 module.exports.selector.armtypes = Object.keys(armTypes).map(function(opt){return <option value={opt} key={opt}>{armTypes[opt]}</option>;});
 module.exports.selector.summonElements = Object.keys(summonElementTypes).map(function(opt){return <option value={opt} key={opt}>{summonElementTypes[opt].name}</option>;});
