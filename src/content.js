@@ -1958,9 +1958,8 @@ var ResultList = React.createClass({
             }
         }
 
-        var enemyElement = (prof.enemyElement == undefined || prof.enemyElement == "水") ? "fire" : prof.enemyElement
         for(key in totals){
-            totals[key]["typeBonus"] = this.getTypeBonus(totals[key]["element"], enemyElement)
+            totals[key]["typeBonus"] = this.getTypeBonus(totals[key]["element"], prof)
         }
 
         return totals
@@ -2966,13 +2965,33 @@ var ResultList = React.createClass({
         data["minMaxArr"] = minMaxArr
         return data
     },
-    getTypeBonus: function(self_elem, enemy_elem) {
-        if(elementRelation[ self_elem ]["weak"] == enemy_elem) {
+    getTypeBonus: function(self_elem, prof) {
+        // "水"は過去に間違ったデータを入れていた際に対する対応
+        var enemy_elem = (prof.enemyElement == undefined || prof.enemyElement == "水") ? "fire" : prof.enemyElement
+        var elem = (self_elem == undefined) ? "fire" : self_elem
+
+        if(elementRelation[ elem ]["weak"] == enemy_elem) {
             return 0.75
-        } else if(elementRelation[ self_elem ]["strong"] == enemy_elem) {
+        } else if(elementRelation[ elem ]["strong"] == enemy_elem) {
             return 1.5
         } else {
             return 1.0
+        }
+    },
+    getTypeBonusStr: function(self_elem, prof) {
+        switch(this.getTypeBonus(self_elem, prof)) {
+            case 1.0:
+                return "非有利"
+                break;
+            case 1.5:
+                return "有利"
+                break;
+            case 0.75:
+                return "不利"
+                break;
+            default:
+                return "非有利"
+                break;
         }
     },
     resetStoredList: function(e) {
@@ -3060,13 +3079,13 @@ var ResultList = React.createClass({
         }
 
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name
-        var remainHPstr = "ジータ(" + job + ")HP";
+        var remainHPstr = "ジータ(" + job + ") HP";
         if(prof.remainHP != undefined) {
             remainHPstr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? prof.remainHP : prof.hp
         } else {
             remainHPstr += prof.hp
         }
-        remainHPstr += "%"
+        remainHPstr += "% (" + this.getTypeBonusStr(prof.element, prof) + ")"
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "" && chara[i].isConsideredInAverage) {
                 remainHPstr += ", " + chara[i].name + "HP"
@@ -3075,7 +3094,7 @@ var ResultList = React.createClass({
                 } else {
                     remainHPstr += prof.hp
                 }
-                remainHPstr += "%"
+                remainHPstr += "% (" + this.getTypeBonusStr(chara[i].element, prof) + ")"
             }
         }
         remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%"
