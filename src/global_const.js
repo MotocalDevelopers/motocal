@@ -241,7 +241,6 @@ var filterElementTypes = {
     "all": "全属性",
 }
 
-module.exports.oldWeapons = ["一伐槍", "二王弓", "三寅斧", "四天刃", "五神杖", "六崩拳", "七星剣", "八命切", "九界琴", "十狼雷"]
 // "key"属性が強い属性と弱い属性
 module.exports.elementRelation = {
     "fire": {"weak": "water", "strong": "wind"},

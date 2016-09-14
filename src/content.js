@@ -15,7 +15,6 @@ var dataForLoad = GlobalConst.dataForLoad
 var elementRelation = GlobalConst.elementRelation
 var bahamutRelation = GlobalConst.bahamutRelation
 var bahamutFURelation = GlobalConst.bahamutFURelation
-var oldWeapons = GlobalConst.oldWeapons
 var selector = GlobalConst.selector
 var zenith = GlobalConst.zenith
 var Jobs = GlobalConst.Jobs
@@ -4072,7 +4071,7 @@ var RegisteredArm = React.createClass({
             this.setState({selectLevel: selector.levelLimit})
             this.setState({selectSkillLevel: selector.skilllevelLimit})
         }
-        if(this.isOldWeapon(arm.name)){
+        if(arm.name.indexOf("・属性変更") > 0 || arm.name.indexOf("・覚醒") > 0){
             this.setState({additionalSelectKey: "old_element"})
             this.setState({additionalSelect: selector.elements})
             this.setState({additionalSelectClass: "visible"})
@@ -4087,20 +4086,13 @@ var RegisteredArm = React.createClass({
         }
         this.setState({openConsiderNumberModal: true})
     },
-    isOldWeapon: function(name) {
-        for(var i = 0; i < oldWeapons.length; i++) {
-            if(name.indexOf(oldWeapons[i]) > 0) {
-                return true
-            }
-        }
-        return false
-    },
     clickedConsiderNumber: function(e) {
         var arm = this.state.tempArm
         arm["plus"] = this.state.plusNum
         arm["lv"] = this.state.armLv
         arm["slv"] = this.state.armSLv
         if(this.state.additionalSelectKey == "old_element") {
+            arm["name"] += "[" + elementTypes[this.state.old_element] + "]"
             arm["element"] = this.state.old_element
             arm["element2"] = this.state.old_element
         } else if(this.state.additionalSelectKey == "cosmos_skill") {
