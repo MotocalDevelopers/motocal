@@ -15,6 +15,7 @@ var dataForLoad = GlobalConst.dataForLoad
 var elementRelation = GlobalConst.elementRelation
 var bahamutRelation = GlobalConst.bahamutRelation
 var bahamutFURelation = GlobalConst.bahamutFURelation
+var oldWeapons = GlobalConst.oldWeapons
 var selector = GlobalConst.selector
 var zenith = GlobalConst.zenith
 var Jobs = GlobalConst.Jobs
@@ -4032,6 +4033,10 @@ var RegisteredArm = React.createClass({
             plusNum: 0,
             armLv: 1,
             armSLv: 1,
+            additionalSelect: null,
+            additionalSelectKey: "",
+            old_element: "light",
+            cosmos_skill: "light",
         };
     },
     closeConsiderNumberModal: function() {
@@ -4066,13 +4071,32 @@ var RegisteredArm = React.createClass({
             this.setState({selectLevel: selector.levelLimit})
             this.setState({selectSkillLevel: selector.skilllevelLimit})
         }
+        if(this.isOldWeapon(arm.name)){
+            this.setState({additionalSelectKey: "old_element"})
+            this.setState({additionalSelect: selector.elements})
+        } else {
+            this.setState({additionalSelectKey: ""})
+            this.setState({additionalSelect: null})
+        }
         this.setState({openConsiderNumberModal: true})
+    },
+    isOldWeapon: function(name) {
+        for(var i = 0; i < oldWeapons.length; i++) {
+            if(name.indexOf(oldWeapons[i]) > 0) {
+                return true
+            }
+        }
+        return false
     },
     clickedConsiderNumber: function(e) {
         var arm = this.state.tempArm
         arm["plus"] = this.state.plusNum
         arm["lv"] = this.state.armLv
         arm["slv"] = this.state.armSLv
+        if(this.state.additionalSelectKey == "old_element") {
+            arm["element"] = this.state.old_element
+            arm["element2"] = this.state.old_element
+        }
         this.props.onClick(arm, e.target.value);
         this.setState({openConsiderNumberModal: false})
         this.setState({plusNum: 0})
@@ -4189,6 +4213,7 @@ var RegisteredArm = React.createClass({
                             <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectSkillLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
+                            <FormControl componentClass="select" value={this.state[this.state.additionalSelectKey]} onChange={this.handleEvent.bind(this, this.state.additionalSelectKey)}>{this.state.additionalSelect}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1本</button>
