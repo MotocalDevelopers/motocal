@@ -582,7 +582,7 @@
         "maxlv": 100
     }, 
     "[真救天]スコフニュング": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[真救天]スコフニュング", 
         "imageURL": "./imgs/1040003500.png", 
         "skill2": "non", 
@@ -687,7 +687,7 @@
         "maxlv": 100
     }, 
     "[万断剣]大地の剣": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[万断剣]大地の剣", 
         "imageURL": "./imgs/1040004800.png", 
         "skill2": "non", 
@@ -702,7 +702,7 @@
         "maxlv": 100
     }, 
     "[黒彩宝]オブシダンソード": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[黒彩宝]オブシダンソード", 
         "imageURL": "./imgs/1040004900.png", 
         "skill2": "non", 
@@ -792,7 +792,7 @@
         "maxlv": 100
     }, 
     "[真極閃]アシュケロン": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[真極閃]アシュケロン", 
         "imageURL": "./imgs/1040006200.png", 
         "skill2": "non", 
@@ -961,7 +961,7 @@
         "maxlv": 100
     }, 
     "[焔ノ剣]S・D": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[焔ノ剣]S・D", 
         "imageURL": "./imgs/1040008800.png", 
         "skill2": "non", 
@@ -976,7 +976,7 @@
         "maxlv": 100
     }, 
     "青竜髭刃": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "青竜髭刃", 
         "imageURL": "./imgs/1040008900.png", 
         "skill2": "non", 
@@ -1070,7 +1070,7 @@
         "maxlv": 150
     }, 
     "[桜火]フローレンベルク": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[桜火]フローレンベルク", 
         "imageURL": "./imgs/1040100800.png", 
         "skill2": "non", 
@@ -1348,7 +1348,7 @@
         "maxlv": 100
     }, 
     "[真兇影]イペタム": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[真兇影]イペタム", 
         "imageURL": "./imgs/1040102900.png", 
         "skill2": "non", 
@@ -1363,7 +1363,7 @@
         "maxlv": 100
     }, 
     "[真理創]ファウスト": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[真理創]ファウスト", 
         "imageURL": "./imgs/1040103000.png", 
         "skill2": "non", 
@@ -1408,7 +1408,7 @@
         "maxlv": 100
     }, 
     "[尊緑御身]秘丹弥虚羅多包丁": {
-        "element2": "fire", 
+        "element2": "water", 
         "name": "[尊緑御身]秘丹弥虚羅多包丁", 
         "imageURL": "./imgs/1040103900.png", 
         "skill2": "non", 
@@ -1438,7 +1438,7 @@
         "maxlv": 100
     }, 
     "[真闇葬]ミセリコルデ": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[真闇葬]ミセリコルデ", 
         "imageURL": "./imgs/1040105500.png", 
         "skill2": "non", 
@@ -1902,7 +1902,7 @@
         "maxlv": 100
     }, 
     "[真尖軍]ロムルスの槍": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[真尖軍]ロムルスの槍", 
         "imageURL": "./imgs/1040203000.png", 
         "skill2": "non", 
@@ -2039,7 +2039,7 @@
         "maxlv": 100
     }, 
     "レヴィアンスピア・マグナ": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "レヴィアンスピア・マグナ", 
         "imageURL": "./imgs/1040205100.png", 
         "skill2": "non", 
@@ -2055,7 +2055,7 @@
     }, 
     "[海叫槍]レヴィアンスピア・マグナ": {
         "hplv100": "236", 
-        "element2": "none", 
+        "element2": "water", 
         "name": "[海叫槍]レヴィアンスピア・マグナ", 
         "imageURL": "./imgs/1040205100.png", 
         "skill2": "non", 
@@ -2541,7 +2541,7 @@
         "maxlv": 100
     }, 
     "[真覇王]アヴェンジャー": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[真覇王]アヴェンジャー", 
         "imageURL": "./imgs/1040302300.png", 
         "skill2": "non", 
@@ -2571,7 +2571,7 @@
         "maxlv": 100
     }, 
     "[怪桃斧]アンノウンスタンプ": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[怪桃斧]アンノウンスタンプ", 
         "imageURL": "./imgs/1040303100.png", 
         "skill2": "non", 
@@ -2725,7 +2725,7 @@
         "maxlv": 100
     }, 
     "[]黒旋風": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[]黒旋風", 
         "imageURL": "./imgs/1040305600.png", 
         "skill2": "non", 
@@ -2787,7 +2787,7 @@
         "maxlv": 150
     }, 
     "アスクレピオスの杖": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "アスクレピオスの杖", 
         "imageURL": "./imgs/1040400300.png", 
         "skill2": "non", 
@@ -2803,7 +2803,7 @@
     }, 
     "[極癒]アスクレピオスの杖": {
         "hplv100": "288", 
-        "element2": "none", 
+        "element2": "light", 
         "name": "[極癒]アスクレピオスの杖", 
         "imageURL": "./imgs/1040400300.png", 
         "skill2": "non", 
@@ -2850,7 +2850,7 @@
     }, 
     "[春呼杖]氷晶杖": {
         "hplv100": "280", 
-        "element2": "none", 
+        "element2": "water", 
         "name": "[春呼杖]氷晶杖", 
         "imageURL": "./imgs/1040400900.png", 
         "skill2": "non", 
@@ -2926,7 +2926,7 @@
         "maxlv": 100
     }, 
     "レヴィアンセプター・マグナ": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "レヴィアンセプター・マグナ", 
         "imageURL": "./imgs/1040401400.png", 
         "skill2": "non", 
@@ -2942,7 +2942,7 @@
     }, 
     "[海叫杖]レヴィアンセプター・マグナ": {
         "hplv100": "262", 
-        "element2": "none", 
+        "element2": "water", 
         "name": "[海叫杖]レヴィアンセプター・マグナ", 
         "imageURL": "./imgs/1040401400.png", 
         "skill2": "non", 
@@ -2990,7 +2990,7 @@
         "maxlv": 150
     }, 
     "[怪緑杖]アンノウンワンド": {
-        "element2": "fire", 
+        "element2": "wind", 
         "name": "[怪緑杖]アンノウンワンド", 
         "imageURL": "./imgs/1040401600.png", 
         "skill2": "non", 
@@ -3080,7 +3080,7 @@
         "maxlv": 100
     }, 
     "[真聖紋]ニルヴァーナ": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[真聖紋]ニルヴァーナ", 
         "imageURL": "./imgs/1040402800.png", 
         "skill2": "non", 
@@ -3095,7 +3095,7 @@
         "maxlv": 100
     }, 
     "[真頴悟]ケラウノス": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[真頴悟]ケラウノス", 
         "imageURL": "./imgs/1040402900.png", 
         "skill2": "non", 
@@ -3155,7 +3155,7 @@
         "maxlv": 100
     }, 
     "[福鸚鵡]ゴトルベルケーン": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[福鸚鵡]ゴトルベルケーン", 
         "imageURL": "./imgs/1040403900.png", 
         "skill2": "non", 
@@ -3170,7 +3170,7 @@
         "maxlv": 100
     }, 
     "[灼劫]セプティアンバーナー": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[灼劫]セプティアンバーナー", 
         "imageURL": "./imgs/1040404000.png", 
         "skill2": "non", 
@@ -3230,7 +3230,7 @@
         "maxlv": 100
     }, 
     "[聖祝杖]クリスマスワンド": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[聖祝杖]クリスマスワンド", 
         "imageURL": "./imgs/1040404400.png", 
         "skill2": "non", 
@@ -3277,7 +3277,7 @@
         "maxlv": 150
     }, 
     "カピラヴァストゥ": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "カピラヴァストゥ", 
         "imageURL": "./imgs/1040406000.png", 
         "skill2": "non", 
@@ -3414,7 +3414,7 @@
         "maxlv": 100
     }, 
     "白虎牙杖": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "白虎牙杖", 
         "imageURL": "./imgs/1040408600.png", 
         "skill2": "non", 
@@ -3666,7 +3666,7 @@
         "maxlv": 100
     }, 
     "[真奪撃]オリバー": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[真奪撃]オリバー", 
         "imageURL": "./imgs/1040501600.png", 
         "skill2": "non", 
@@ -3773,7 +3773,7 @@
         "maxlv": 100
     }, 
     "[真鋭撃]ネブカドネザル": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[真鋭撃]ネブカドネザル", 
         "imageURL": "./imgs/1040503500.png", 
         "skill2": "non", 
@@ -4038,7 +4038,7 @@
         "maxlv": 100
     }, 
     "コロッサスフィスト・マグナ": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "コロッサスフィスト・マグナ", 
         "imageURL": "./imgs/1040600700.png", 
         "skill2": "non", 
@@ -4054,7 +4054,7 @@
     }, 
     "[烈殻拳]コロッサスフィスト・マグナ": {
         "hplv100": "223", 
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[烈殻拳]コロッサスフィスト・マグナ", 
         "imageURL": "./imgs/1040600700.png", 
         "skill2": "non", 
@@ -4132,7 +4132,7 @@
         "maxlv": 100
     }, 
     "[真闘神]鬼神の籠手": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[真闘神]鬼神の籠手", 
         "imageURL": "./imgs/1040601700.png", 
         "skill2": "non", 
@@ -4207,7 +4207,7 @@
         "maxlv": 100
     }, 
     "[赫獅子]リスレット": {
-        "element2": "fire", 
+        "element2": "light", 
         "name": "[赫獅子]リスレット", 
         "imageURL": "./imgs/1040602800.png", 
         "skill2": "non", 
@@ -4784,7 +4784,7 @@
         "maxlv": 100
     }, 
     "[真獄殲]ローゼンボーゲン": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[真獄殲]ローゼンボーゲン", 
         "imageURL": "./imgs/1040701700.png", 
         "skill2": "non", 
@@ -4904,7 +4904,7 @@
         "maxlv": 100
     }, 
     "[]扇抜": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[]扇抜", 
         "imageURL": "./imgs/1040704800.png", 
         "skill2": "non", 
@@ -5090,7 +5090,7 @@
         "maxlv": 100
     }, 
     "[真奏宴]ランゲレイク": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[真奏宴]ランゲレイク", 
         "imageURL": "./imgs/1040801300.png", 
         "skill2": "non", 
@@ -5150,7 +5150,7 @@
         "maxlv": 100
     }, 
     "[風妖唄]アネモイの銀琴": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[風妖唄]アネモイの銀琴", 
         "imageURL": "./imgs/1040802300.png", 
         "skill2": "non", 
@@ -5180,7 +5180,7 @@
         "maxlv": 100
     }, 
     "[瑞翠鈴]カエールベル": {
-        "element2": "fire", 
+        "element2": "wind", 
         "name": "[瑞翠鈴]カエールベル", 
         "imageURL": "./imgs/1040802500.png", 
         "skill2": "non", 
@@ -5411,7 +5411,7 @@
         "maxlv": 150
     }, 
     "[真鍛心]天叢雲剣": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[真鍛心]天叢雲剣", 
         "imageURL": "./imgs/1040900300.png", 
         "skill2": "non", 
@@ -5426,7 +5426,7 @@
         "maxlv": 100
     }, 
     "[真悪呪]千子村正": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[真悪呪]千子村正", 
         "imageURL": "./imgs/1040900400.png", 
         "skill2": "non", 
@@ -5533,7 +5533,7 @@
         "maxlv": 100
     }, 
     "[黒閃導]ニバンボシ": {
-        "element2": "fire", 
+        "element2": "dark", 
         "name": "[黒閃導]ニバンボシ", 
         "imageURL": "./imgs/1040902200.png", 
         "skill2": "non", 
@@ -5762,7 +5762,7 @@
         "maxlv": 100
     }, 
     "[聖王剣]エクスカリバー": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[聖王剣]エクスカリバー", 
         "imageURL": "./imgs/1040007500.png", 
         "skill2": "non", 
@@ -5777,7 +5777,7 @@
         "maxlv": 100
     }, 
     "[秘劫刃]ダマスカスナイフ": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[秘劫刃]ダマスカスナイフ", 
         "imageURL": "./imgs/1040106600.png", 
         "skill2": "non", 
@@ -5792,7 +5792,7 @@
         "maxlv": 100
     }, 
     "[覇滅槍]ゲイボルグ": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[覇滅槍]ゲイボルグ", 
         "imageURL": "./imgs/1040205500.png", 
         "skill2": "non", 
@@ -5852,7 +5852,7 @@
         "maxlv": 100
     }, 
     "[]方天画戟": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[]方天画戟", 
         "imageURL": "./imgs/1040604500.png", 
         "skill2": "non", 
@@ -5882,7 +5882,7 @@
         "maxlv": 100
     }, 
     "[華薫琴]ウルリクムミ": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[華薫琴]ウルリクムミ", 
         "imageURL": "./imgs/1040803700.png", 
         "skill2": "non", 
@@ -6227,7 +6227,7 @@
         "maxlv": 75
     }, 
     "[失聖]朽ち果てた剣": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[失聖]朽ち果てた剣", 
         "imageURL": "./imgs/1030002900.png", 
         "skill2": "non", 
@@ -6242,7 +6242,7 @@
         "maxlv": 75
     }, 
     "[灯輝]ランタンブレード": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[灯輝]ランタンブレード", 
         "imageURL": "./imgs/1030003100.png", 
         "skill2": "non", 
@@ -6287,7 +6287,7 @@
         "maxlv": 75
     }, 
     "[蒼空]旅立ちの剣": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[蒼空]旅立ちの剣", 
         "imageURL": "./imgs/1030003500.png", 
         "skill2": "non", 
@@ -6422,7 +6422,7 @@
         "maxlv": 75
     }, 
     "[オイラは]ビィスタードソード": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[オイラは]ビィスタードソード", 
         "imageURL": "./imgs/1030005000.png", 
         "skill2": "non", 
@@ -6497,7 +6497,7 @@
         "maxlv": 75
     }, 
     "[蒼誓]アルビオン制式帯剣": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[蒼誓]アルビオン制式帯剣", 
         "imageURL": "./imgs/1030005600.png", 
         "skill2": "non", 
@@ -6512,7 +6512,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルソード": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルソード", 
         "imageURL": "./imgs/1030099000.png", 
         "skill2": "non", 
@@ -6647,7 +6647,7 @@
         "maxlv": 75
     }, 
     "[]バタディア": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[]バタディア", 
         "imageURL": "./imgs/1030101200.png", 
         "skill2": "non", 
@@ -6797,7 +6797,7 @@
         "maxlv": 75
     }, 
     "[塵界]朽ち果てた刃": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[塵界]朽ち果てた刃", 
         "imageURL": "./imgs/1030102500.png", 
         "skill2": "non", 
@@ -6917,7 +6917,7 @@
         "maxlv": 75
     }, 
     "[輝影刃]ヴェセラゴセイバー": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[輝影刃]ヴェセラゴセイバー", 
         "imageURL": "./imgs/1030104100.png", 
         "skill2": "non", 
@@ -6932,7 +6932,7 @@
         "maxlv": 75
     }, 
     "[瑞玉剣]タッドポウルテイル": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[瑞玉剣]タッドポウルテイル", 
         "imageURL": "./imgs/1030104200.png", 
         "skill2": "non", 
@@ -6962,7 +6962,7 @@
         "maxlv": 75
     }, 
     "[蒼艶]エゴイズム": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[蒼艶]エゴイズム", 
         "imageURL": "./imgs/1030104500.png", 
         "skill2": "non", 
@@ -6977,7 +6977,7 @@
         "maxlv": 75
     }, 
     "[怪黒刃]ブラックナイフ": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[怪黒刃]ブラックナイフ", 
         "imageURL": "./imgs/1030104600.png", 
         "skill2": "non", 
@@ -6992,7 +6992,7 @@
         "maxlv": 75
     }, 
     "[]スカルペル": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[]スカルペル", 
         "imageURL": "./imgs/1030104700.png", 
         "skill2": "non", 
@@ -7037,7 +7037,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルナイフ": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルナイフ", 
         "imageURL": "./imgs/1030199000.png", 
         "skill2": "non", 
@@ -7277,7 +7277,7 @@
         "maxlv": 75
     }, 
     "[偽明]朽ち果てた槍": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[偽明]朽ち果てた槍", 
         "imageURL": "./imgs/1030202400.png", 
         "skill2": "non", 
@@ -7292,7 +7292,7 @@
         "maxlv": 75
     }, 
     "[怪緑針]アンノウンニードル": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[怪緑針]アンノウンニードル", 
         "imageURL": "./imgs/1030202500.png", 
         "skill2": "non", 
@@ -7382,7 +7382,7 @@
         "maxlv": 75
     }, 
     "[蒼龍]ドラグーンランス": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[蒼龍]ドラグーンランス", 
         "imageURL": "./imgs/1030203800.png", 
         "skill2": "non", 
@@ -7427,7 +7427,7 @@
         "maxlv": 75
     }, 
     "[]槍烏賊": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[]槍烏賊", 
         "imageURL": "./imgs/1030204100.png", 
         "skill2": "non", 
@@ -7457,7 +7457,7 @@
         "maxlv": 75
     }, 
     "[幽幻]ゴーストツリー": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[幽幻]ゴーストツリー", 
         "imageURL": "./imgs/1030204300.png", 
         "skill2": "non", 
@@ -7517,7 +7517,7 @@
         "maxlv": 75
     }, 
     "[青閃光]ブラウジャベリン": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[青閃光]ブラウジャベリン", 
         "imageURL": "./imgs/1030204700.png", 
         "skill2": "non", 
@@ -7562,7 +7562,7 @@
         "maxlv": 75
     }, 
     "[]バリアントスパイク": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[]バリアントスパイク", 
         "imageURL": "./imgs/1030205000.png", 
         "skill2": "non", 
@@ -7592,7 +7592,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルスピア": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルスピア", 
         "imageURL": "./imgs/1030299000.png", 
         "skill2": "non", 
@@ -7817,7 +7817,7 @@
         "maxlv": 75
     }, 
     "[怪緑斧]アンノウンハンマー": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[怪緑斧]アンノウンハンマー", 
         "imageURL": "./imgs/1030301800.png", 
         "skill2": "non", 
@@ -7832,7 +7832,7 @@
         "maxlv": 75
     }, 
     "[崩礎]朽ち果てた斧": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[崩礎]朽ち果てた斧", 
         "imageURL": "./imgs/1030302000.png", 
         "skill2": "non", 
@@ -7892,7 +7892,7 @@
         "maxlv": 75
     }, 
     "[]グレートハンマー": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[]グレートハンマー", 
         "imageURL": "./imgs/1030303000.png", 
         "skill2": "non", 
@@ -7937,7 +7937,7 @@
         "maxlv": 75
     }, 
     "[]マッシヴアクス": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[]マッシヴアクス", 
         "imageURL": "./imgs/1030303300.png", 
         "skill2": "non", 
@@ -7967,7 +7967,7 @@
         "maxlv": 75
     }, 
     "[]メタルハマー": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[]メタルハマー", 
         "imageURL": "./imgs/1030303500.png", 
         "skill2": "non", 
@@ -8027,7 +8027,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルアクス": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルアクス", 
         "imageURL": "./imgs/1030399000.png", 
         "skill2": "non", 
@@ -8297,7 +8297,7 @@
         "maxlv": 75
     }, 
     "[嘆骸]スカルワンド": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[嘆骸]スカルワンド", 
         "imageURL": "./imgs/1030401800.png", 
         "skill2": "non", 
@@ -8327,7 +8327,7 @@
         "maxlv": 75
     }, 
     "[虚叡]朽ち果てた杖": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[虚叡]朽ち果てた杖", 
         "imageURL": "./imgs/1030402200.png", 
         "skill2": "non", 
@@ -8402,7 +8402,7 @@
         "maxlv": 75
     }, 
     "[蒼心]リトルウィッチセプター": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[蒼心]リトルウィッチセプター", 
         "imageURL": "./imgs/1030403300.png", 
         "skill2": "non", 
@@ -8432,7 +8432,7 @@
         "maxlv": 75
     }, 
     "[]サンシェードパラソル": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[]サンシェードパラソル", 
         "imageURL": "./imgs/1030403500.png", 
         "skill2": "non", 
@@ -8492,7 +8492,7 @@
         "maxlv": 75
     }, 
     "[]フラワークラウン": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[]フラワークラウン", 
         "imageURL": "./imgs/1030403900.png", 
         "skill2": "non", 
@@ -8507,7 +8507,7 @@
         "maxlv": 75
     }, 
     "[オイラは]アスクレビィオスの杖": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[オイラは]アスクレビィオスの杖", 
         "imageURL": "./imgs/1030404000.png", 
         "skill2": "non", 
@@ -8567,7 +8567,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルワンド": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルワンド", 
         "imageURL": "./imgs/1030499000.png", 
         "skill2": "non", 
@@ -8822,7 +8822,7 @@
         "maxlv": 75
     }, 
     "[棄昏]朽ち果てた銃": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[棄昏]朽ち果てた銃", 
         "imageURL": "./imgs/1030502500.png", 
         "skill2": "non", 
@@ -8867,7 +8867,7 @@
         "maxlv": 75
     }, 
     "[怪桃銃]アンノウンショット": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[怪桃銃]アンノウンショット", 
         "imageURL": "./imgs/1030502800.png", 
         "skill2": "non", 
@@ -8927,7 +8927,7 @@
         "maxlv": 75
     }, 
     "[怪緑銃]秘丹弥虚羅多鉄砲": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[怪緑銃]秘丹弥虚羅多鉄砲", 
         "imageURL": "./imgs/1030503200.png", 
         "skill2": "non", 
@@ -8942,7 +8942,7 @@
         "maxlv": 75
     }, 
     "[蒼烈]ドライゼン": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[蒼烈]ドライゼン", 
         "imageURL": "./imgs/1030503300.png", 
         "skill2": "non", 
@@ -9032,7 +9032,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルガン": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルガン", 
         "imageURL": "./imgs/1030599000.png", 
         "skill2": "non", 
@@ -9092,7 +9092,7 @@
         "maxlv": 75
     }, 
     "[八角鬼]ジュル": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[八角鬼]ジュル", 
         "imageURL": "./imgs/1030600400.png", 
         "skill2": "non", 
@@ -9212,7 +9212,7 @@
         "maxlv": 75
     }, 
     "[墨撃]スキッドハンド": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[墨撃]スキッドハンド", 
         "imageURL": "./imgs/1030601300.png", 
         "skill2": "non", 
@@ -9227,7 +9227,7 @@
         "maxlv": 75
     }, 
     "[不砕]朽ち果てた手甲": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[不砕]朽ち果てた手甲", 
         "imageURL": "./imgs/1030601400.png", 
         "skill2": "non", 
@@ -9287,7 +9287,7 @@
         "maxlv": 75
     }, 
     "[怪緑拳]アンノウングラブ": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[怪緑拳]アンノウングラブ", 
         "imageURL": "./imgs/1030603300.png", 
         "skill2": "non", 
@@ -9407,7 +9407,7 @@
         "maxlv": 75
     }, 
     "[青緑爪]エメラルドクロー": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[青緑爪]エメラルドクロー", 
         "imageURL": "./imgs/1030604100.png", 
         "skill2": "non", 
@@ -9422,7 +9422,7 @@
         "maxlv": 75
     }, 
     "[瑞鳴拳]ゲコヘッド": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[瑞鳴拳]ゲコヘッド", 
         "imageURL": "./imgs/1030604200.png", 
         "skill2": "non", 
@@ -9467,7 +9467,7 @@
         "maxlv": 75
     }, 
     "[怪黒拳]ブラックガントレット": {
-        "element2": "none", 
+        "element2": "earth", 
         "name": "[怪黒拳]ブラックガントレット", 
         "imageURL": "./imgs/1030604500.png", 
         "skill2": "non", 
@@ -9497,7 +9497,7 @@
         "maxlv": 75
     }, 
     "[]グレートタロン": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[]グレートタロン", 
         "imageURL": "./imgs/1030604700.png", 
         "skill2": "non", 
@@ -9542,7 +9542,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルナックル": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルナックル", 
         "imageURL": "./imgs/1030699000.png", 
         "skill2": "non", 
@@ -9767,7 +9767,7 @@
         "maxlv": 75
     }, 
     "[狂審]朽ち果てた弓": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[狂審]朽ち果てた弓", 
         "imageURL": "./imgs/1030702300.png", 
         "skill2": "non", 
@@ -9842,7 +9842,7 @@
         "maxlv": 75
     }, 
     "[怪緑弓]秘丹弥虚羅多弓": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[怪緑弓]秘丹弥虚羅多弓", 
         "imageURL": "./imgs/1030702900.png", 
         "skill2": "non", 
@@ -9887,7 +9887,7 @@
         "maxlv": 75
     }, 
     "[]グラスボウ": {
-        "element2": "none", 
+        "element2": "fire", 
         "name": "[]グラスボウ", 
         "imageURL": "./imgs/1030703200.png", 
         "skill2": "non", 
@@ -9947,7 +9947,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルボウ": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルボウ", 
         "imageURL": "./imgs/1030799000.png", 
         "skill2": "non", 
@@ -10112,7 +10112,7 @@
         "maxlv": 75
     }, 
     "[怪緑琴]アンノウンハープ": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[怪緑琴]アンノウンハープ", 
         "imageURL": "./imgs/1030801100.png", 
         "skill2": "non", 
@@ -10127,7 +10127,7 @@
         "maxlv": 75
     }, 
     "[墜楽]朽ち果てた竪琴": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[墜楽]朽ち果てた竪琴", 
         "imageURL": "./imgs/1030801200.png", 
         "skill2": "non", 
@@ -10202,7 +10202,7 @@
         "maxlv": 75
     }, 
     "[輝影琴]ヴェセラゴハープ": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[輝影琴]ヴェセラゴハープ", 
         "imageURL": "./imgs/1030802300.png", 
         "skill2": "non", 
@@ -10232,7 +10232,7 @@
         "maxlv": 75
     }, 
     "[]オルフェウス": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[]オルフェウス", 
         "imageURL": "./imgs/1030802500.png", 
         "skill2": "non", 
@@ -10277,7 +10277,7 @@
         "maxlv": 75
     }, 
     "[魔響杖]リサウンドワンド": {
-        "element2": "none", 
+        "element2": "water", 
         "name": "[魔響杖]リサウンドワンド", 
         "imageURL": "./imgs/1030802800.png", 
         "skill2": "non", 
@@ -10292,7 +10292,7 @@
         "maxlv": 75
     }, 
     "[]メロビィ": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[]メロビィ", 
         "imageURL": "./imgs/1030802900.png", 
         "skill2": "non", 
@@ -10322,7 +10322,7 @@
         "maxlv": 75
     }, 
     "[大天使]アークエンジェルハープ": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]アークエンジェルハープ", 
         "imageURL": "./imgs/1030899000.png", 
         "skill2": "non", 
@@ -10382,7 +10382,7 @@
         "maxlv": 75
     }, 
     "[]模造刀": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[]模造刀", 
         "imageURL": "./imgs/1030900300.png", 
         "skill2": "non", 
@@ -10397,7 +10397,7 @@
         "maxlv": 75
     }, 
     "[]贋作刀": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[]贋作刀", 
         "imageURL": "./imgs/1030900400.png", 
         "skill2": "non", 
@@ -10427,7 +10427,7 @@
         "maxlv": 75
     }, 
     "[壊転]朽ち果てた太刀": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[壊転]朽ち果てた太刀", 
         "imageURL": "./imgs/1030900600.png", 
         "skill2": "non", 
@@ -10457,7 +10457,7 @@
         "maxlv": 75
     }, 
     "[怪桃刀]アンノウンリッパー": {
-        "element2": "none", 
+        "element2": "wind", 
         "name": "[怪桃刀]アンノウンリッパー", 
         "imageURL": "./imgs/1030901400.png", 
         "skill2": "non", 
@@ -10547,7 +10547,7 @@
         "maxlv": 75
     }, 
     "[大天使]大天使刀": {
-        "element2": "none", 
+        "element2": "light", 
         "name": "[大天使]大天使刀", 
         "imageURL": "./imgs/1030999000.png", 
         "skill2": "non", 
@@ -10562,7 +10562,7 @@
         "maxlv": 75
     }, 
     "[悪魔]デビルエレメント": {
-        "element2": "none", 
+        "element2": "dark", 
         "name": "[悪魔]デビルエレメント", 
         "imageURL": "./imgs/1039900000.png", 
         "skill2": "non", 
