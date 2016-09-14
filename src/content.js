@@ -2215,6 +2215,7 @@ var ResultList = React.createClass({
             "totalExpected": {"max": 0, "min": 0},
             "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
             "averageAttack": {"max": 0, "min": 0},
+            "averageTotalExpected": {"max": 0, "min": 0},
             "averageCyclePerTurn": {"max": 0, "min": 0},
             "averageCriticalAttack": {"max": 0, "min": 0},
         }
@@ -2222,7 +2223,7 @@ var ResultList = React.createClass({
         var considerAverageArray = {}
         for(var ch = 0; ch < chara.length; ch++) {
             var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
-            if(charaConsidered) {
+            if(charaConsidered && chara[ch].name != "") {
                 cnt++;
                 considerAverageArray[chara[ch].name] = true
             } else {
@@ -2236,6 +2237,7 @@ var ResultList = React.createClass({
             var AllCriticalAttack = [["残りHP(%)"]];
             var AllTotalExpected = [["残りHP(%)"]];
             var AllAverageTotalAttack = [["残りHP(%)"]];
+            var AllAverageTotalExpected = [["残りHP(%)"]];
             var AllAverageCycleDamagePerTurn = [["残りHP(%)"]];
             var AllAverageCriticalAttack = [["残りHP(%)"]];
             var AllTotalHP = [["残りHP(%)"]]
@@ -2246,6 +2248,7 @@ var ResultList = React.createClass({
                 AllCriticalAttack.push([m.toString() + "%"])
                 AllTotalExpected.push([m.toString() + "%"])
                 AllTotalHP.push([m.toString() + "%"])
+                AllAverageTotalExpected.push([m.toString() + "%"])
                 AllAverageTotalAttack.push([m.toString() + "%"])
                 AllAverageCycleDamagePerTurn.push([m.toString() + "%"])
                 AllAverageCriticalAttack.push([m.toString() + "%"])
@@ -2272,6 +2275,7 @@ var ResultList = React.createClass({
             var CriticalAttack = [["残りHP(%)"]];
             var TotalExpected = [["残りHP(%)"]];
             var CycleDamagePerTurn = [["残りHP(%)"]];
+            var AverageTotalExpected = [["残りHP(%)"]];
             var AverageTotalAttack = [["残りHP(%)"]];
             var AverageCriticalAttack = [["残りHP(%)"]];
             var AverageCycleDamagePerTurn = [["残りHP(%)"]];
@@ -2282,6 +2286,7 @@ var ResultList = React.createClass({
                 CriticalAttack.push([m.toString() + "%"])
                 TotalExpected.push([m.toString() + "%"])
                 TotalHP.push([m.toString() + "%"])
+                AverageTotalExpected.push([m.toString() + "%"])
                 AverageTotalAttack.push([m.toString() + "%"])
                 AverageCycleDamagePerTurn.push([m.toString() + "%"])
                 AverageCriticalAttack.push([m.toString() + "%"])
@@ -2290,6 +2295,7 @@ var ResultList = React.createClass({
                 // (key の 処理順が不明のため)
                 for(var j = 0; j < oneresult.length; j++){
                     AverageTotalAttack[m].push(0)
+                    AverageTotalExpected[m].push(0)
                     AverageCycleDamagePerTurn[m].push(0)
                     AverageCriticalAttack[m].push(0)
                 }
@@ -2418,10 +2424,12 @@ var ResultList = React.createClass({
                             CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
                             CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
                             AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
+                            AverageTotalExpected[k + 1][j + 1] += parseInt(newTotalExpected / cnt)
                             AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
                             AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                         } else if (considerAverageArray[key]) {
                             AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
+                            AverageTotalExpected[k + 1][j + 1] += parseInt(newTotalExpected / cnt)
                             AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
                             AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                         }
@@ -2432,6 +2440,7 @@ var ResultList = React.createClass({
                 CriticalAttack[0].push(title)
                 TotalExpected[0].push(title)
                 CycleDamagePerTurn[0].push(title)
+                AverageTotalExpected[0].push(title)
                 AverageTotalAttack[0].push(title)
                 AverageCycleDamagePerTurn[0].push(title)
                 AverageCriticalAttack[0].push(title)
@@ -2443,6 +2452,7 @@ var ResultList = React.createClass({
                     AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
                     AllTotalExpected[0].push("(" + summonHeader + ")" + title)
                     AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                    AllAverageTotalExpected[0].push("(" + summonHeader + ")" + title)
                     AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
                     AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
                     AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
@@ -2453,6 +2463,7 @@ var ResultList = React.createClass({
                         AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
                         AllTotalExpected[k].push(TotalExpected[k][j + 1])
                         AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
+                        AllAverageTotalExpected[k].push(AverageTotalExpected[k][j + 1])
                         AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
                         AllAverageCriticalAttack[k].push(AverageCriticalAttack[k][j + 1])
                         AllAverageCycleDamagePerTurn[k].push(AverageCycleDamagePerTurn[k][j + 1])
@@ -2468,6 +2479,7 @@ var ResultList = React.createClass({
             data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
             data[summonHeader]["averageAttack"] = AverageTotalAttack
             data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
+            data[summonHeader]["averageTotalExpected"] = AverageTotalExpected
             data[summonHeader]["totalHP"] = TotalHP
         }
 
@@ -2481,6 +2493,7 @@ var ResultList = React.createClass({
             data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
             data["まとめて比較"]["averageCriticalAttack"] = AllAverageCriticalAttack
             data["まとめて比較"]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
+            data["まとめて比較"]["averageTotalExpected"] = AllAverageTotalExpected
         }
 
         // グラフ最大値最小値を抽出
@@ -2554,7 +2567,7 @@ var ResultList = React.createClass({
         var considerAverageArray = {}
         for(var ch = 0; ch < chara.length; ch++) {
             var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
-            if(charaConsidered) {
+            if(charaConsidered && chara[ch].name != "") {
                 cnt++;
                 considerAverageArray[chara[ch].name] = true
             } else {
@@ -2795,7 +2808,7 @@ var ResultList = React.createClass({
         var considerAverageArray = {}
         for(var ch = 0; ch < chara.length; ch++) {
             var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
-            if(charaConsidered) {
+            if(charaConsidered && chara[ch].name != "") {
                 cnt++;
                 considerAverageArray[chara[ch].name] = true
             } else {
@@ -3594,7 +3607,7 @@ var HPChart = React.createClass({
 
             return (
                     <div className="HPChart">
-                        <p className="text-danger">HPチャートの計算において、キャラを「平均値に含めるかどうか」の設定が上手く動いていない状態だった不具合を修正しました。</p>
+                        <p className="text-danger">9/14 HPチャートの計算において、キャラを「平均値に含めるかどうか」の設定が上手く動いていない状態だった不具合を再度修正しました。</p>
                         <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {

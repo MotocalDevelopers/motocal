@@ -66,6 +66,7 @@ var supportedChartSortkeys = {
     "criticalAttack": "技巧期待値",
     "averageCriticalAttack": "技巧期待平均攻撃力",
     "totalExpected": "総合攻撃*期待回数*技巧期待値",
+    "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
     "totalHP": "ジータ残りHP",
