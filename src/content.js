@@ -4036,7 +4036,7 @@ var RegisteredArm = React.createClass({
             additionalSelectKey: "",
             additionalSelectClass: "hidden",
             old_element: "light",
-            cosmos_skill: "light",
+            cosmos_skill: "cosmosAT",
         };
     },
     closeConsiderNumberModal: function() {

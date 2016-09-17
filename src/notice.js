@@ -10,6 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-danger">2016/09/17: コスモス武器をコスモスATのまま選択するとテンプレートが消えなくなる不具合を修正 </li>
                 <li className="list-group-item list-group-item-success">2016/09/14: 古戦場武器の属性変更と覚醒版を追加 / 古戦場武器やコスモス武器は、追加時に属性やスキルを選べるようにした </li>
                 <li className="list-group-item list-group-item-success">2016/09/14: 背水グラフに総合回数技巧の項目を追加 / パーティ平均値処理がおかしくなっていたので再度修正 </li>
                 <li className="list-group-item list-group-item-danger">2016/09/14: 武器テンプレートで火属性フィルタ時にアンノウン武器の一部が表示されてしまう不具合を修正 / アンノウン武器のI系のスキルが適切に設定されない場合がある不具合を修正 </li>
