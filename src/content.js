@@ -401,7 +401,7 @@ var Root = React.createClass({
                     </Modal.Body>
                 </Modal>
                 <div className="tabrow">
-                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータ</button>
+                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータさん</button>
                     <button id="summonTab" onClick={this.changeTab} >召喚石</button>
                     <button id="charaTab" onClick={this.changeTab} >キャラ</button>
                     <button id="armTab" onClick={this.changeTab} >武器</button>
@@ -469,7 +469,7 @@ var Root = React.createClass({
                     </Modal.Body>
                 </Modal>
                 <div className="tabrow">
-                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータ</button>
+                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータさん</button>
                     <button id="summonTab" onClick={this.changeTab} >召喚石</button>
                     <button id="charaTab" onClick={this.changeTab} >キャラ</button>
                     <button id="armTab" onClick={this.changeTab} >武器</button>
@@ -1974,7 +1974,7 @@ var ResultList = React.createClass({
           // 後から追加したパラメータはNaNなことがあるので追加処理
           // sortKey がNaNでないならそちらを使う、NaNなら総合攻撃力で
           var sortkey = "totalAttack"
-          var sortkeyname = "攻撃力(二手技巧無し)"
+          var sortkeyname = "攻撃力(二手技巧無し,ジータさんのみ)"
           if(newprops.data.sortKey == newprops.data.sortKey) {
               sortkey = newprops.data.sortKey
               sortkeyname = keyTypes[sortkey]
@@ -3079,7 +3079,7 @@ var ResultList = React.createClass({
         }
 
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name
-        var remainHPstr = "ジータ(" + job + ") HP";
+        var remainHPstr = "ジータさん(" + job + ") HP";
         if(prof.remainHP != undefined) {
             remainHPstr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? prof.remainHP : prof.hp
         } else {
@@ -3660,7 +3660,7 @@ var Result = React.createClass({
                         var skilldata = m.data[key].skilldata
 
                         if(key == "Djeeta") {
-                            skillstr += "ジータ: "
+                            skillstr += "ジータさん: "
                         } else {
                             skillstr += key + ": "
                         }
@@ -4558,7 +4558,7 @@ var Profile = React.createClass({
         if(_ua.Mobile) {
             return (
                 <div className="profile">
-                    <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
+                    <h3> ジータさん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
                         <tr>
@@ -4576,7 +4576,7 @@ var Profile = React.createClass({
                         <tr>
                             <th className="prof">マスボ<br/>HP(%)*</th>
                             <th className="prof">ジョブ*</th>
-                            <th className="prof">残HP(%)<br/>(ジータのみ)</th>
+                            <th className="prof">残HP(%)<br/>(ジータさんのみ)</th>
                         </tr>
                         <tr>
                             <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl></td>
@@ -4652,7 +4652,7 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <h3> ジータちゃん情報 (*: 推奨入力項目)</h3>
+                    <h3> ジータさん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
                         <tr>
@@ -4662,7 +4662,7 @@ var Profile = React.createClass({
                             <th className="prof">マスターボーナス<br/>ATK(%)*</th>
                             <th className="prof">マスターボーナス<br/>HP(%)</th>
                             <th className="prof">ジョブ*</th>
-                            <th className="prof">残HP(%)<br/>(ジータのみ)</th>
+                            <th className="prof">残HP(%)<br/>(ジータさんのみ)</th>
                         </tr>
                         <tr>
                             <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
