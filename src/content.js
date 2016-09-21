@@ -1394,6 +1394,15 @@ var ResultList = React.createClass({
 
         return isCos
     },
+    isValidResult: function(res, minHP){
+        // 結果の前処理用の関数
+
+        // 最低保証HP
+        if(minHP != undefined) {
+            if (minHP > res.Djeeta.totalHP) return false
+        }
+        return true
+    },
     calculateBasedOneSummon: function(summonind, prof, buff, totals) {
         var res = {}
 
@@ -2021,35 +2030,41 @@ var ResultList = React.createClass({
           var itr = combinations.length
           var totalItr = itr * summon.length * Object.keys(totals).length
 
+          // 前処理に必要な値があればここで用意
+          var minHP = (prof.minimumHP == undefined) ? undefined : parseInt(prof.minimumHP)
+
           for(var i = 0; i < itr; i = (i + 1)|0){
               var oneres = this.calculateOneCombination(combinations[i], summon, prof, arml, totals, totalBuff)
               for(var j = 0; j < summon.length; j++){
-                  if(res[j].length < 10) {
-                      //  まずminSortkeyを更新する
-                      if (minSortKey[j] < 0 || minSortKey[j] > oneres[j].Djeeta[sortkey]) {
-                          minSortKey[j] = oneres[j].Djeeta[sortkey]
-                      }
-                      res[j].push({data: oneres[j], armNumbers: combinations[i]});
-                  } else {
-                      // minSortkey より大きいものだけpush
-                      if (oneres[j].Djeeta[sortkey] >= minSortKey[j]) {
-                          // 11番目に追加する
-                          res[j].push({data: oneres[j], armNumbers: combinations[i]});
-
-                          // 10番目まででminSortkey[j]と一致するものを消す
-                          var spliceid = -1;
-                          for(var k = 0; k < 10; k = (k + 1)|0) {
-                              if(res[j][k].data.Djeeta[sortkey] == minSortKey[j]) {
-                                  spliceid = k
-                              }
+                  // 各結果に対して前処理
+                  if(this.isValidResult(oneres[j], minHP)) {
+                      if(res[j].length < 10) {
+                          //  まずminSortkeyを更新する
+                          if (minSortKey[j] < 0 || minSortKey[j] > oneres[j].Djeeta[sortkey]) {
+                              minSortKey[j] = oneres[j].Djeeta[sortkey]
                           }
-                          res[j].splice(spliceid, 1)
-                          minSortKey[j] = -1
+                          res[j].push({data: oneres[j], armNumbers: combinations[i]});
+                      } else {
+                          // minSortkey より大きいものだけpush
+                          if (oneres[j].Djeeta[sortkey] >= minSortKey[j]) {
+                              // 11番目に追加する
+                              res[j].push({data: oneres[j], armNumbers: combinations[i]});
 
-                          // 10個の配列になったので、もう一度最小値を計算する
-                          for(var k = 0; k < 10; k = (k + 1)|0) {
-                              if (minSortKey[j] < 0 || minSortKey[j] > res[j][k].data.Djeeta[sortkey]) {
-                                  minSortKey[j] = res[j][k].data.Djeeta[sortkey]
+                              // 10番目まででminSortkey[j]と一致するものを消す
+                              var spliceid = -1;
+                              for(var k = 0; k < 10; k = (k + 1)|0) {
+                                  if(res[j][k].data.Djeeta[sortkey] == minSortKey[j]) {
+                                      spliceid = k
+                                  }
+                              }
+                              res[j].splice(spliceid, 1)
+                              minSortKey[j] = -1
+
+                              // 10個の配列になったので、もう一度最小値を計算する
+                              for(var k = 0; k < 10; k = (k + 1)|0) {
+                                  if (minSortKey[j] < 0 || minSortKey[j] > res[j][k].data.Djeeta[sortkey]) {
+                                      minSortKey[j] = res[j][k].data.Djeeta[sortkey]
+                                  }
                               }
                           }
                       }
