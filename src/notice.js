@@ -10,6 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-success">2016/09/21: キャラの連撃率、総回技値も表示可能にした </li>
                 <li className="list-group-item list-group-item-success">2016/09/17: ジータさんのみの値を表示していることを分かりやすくした / ジータさんに表記を統一した </li>
                 <li className="list-group-item list-group-item-success">2016/09/14: 古戦場武器の属性変更と覚醒版を追加 / 古戦場武器やコスモス武器は、追加時に属性やスキルを選べるようにした </li>
                 <li className="list-group-item list-group-item-success">2016/09/14: 背水グラフに総合回数技巧の項目を追加 / パーティ平均値処理がおかしくなっていたので再度修正 </li>

@@ -2092,6 +2092,8 @@ var ResultList = React.createClass({
             switchCharaExpectedAttack: 0,
             switchCriticalRatio: 0,
             switchCharaAttack: 0,
+            switchCharaDA: 0,
+            switchCharaTotalExpected: 0,
             switchAverageAttack: 0,
             switchTotalExpected: 0,
             switchAverageTotalExpected: 0,
@@ -3030,12 +3032,19 @@ var ResultList = React.createClass({
         if(switcher.switchCharaAttack) {
             for(var i = 0; i < chara.length; i++){
                 if(chara[i].name != "") {
-                    tableheader.push(chara[i].name)
+                    tableheader.push(chara[i].name + "\n(攻撃力)")
                 }
             }
         }
         if(switcher.switchDATA) {
             tableheader.push('連続攻撃率(%)')
+        }
+        if(switcher.switchCharaDA) {
+            for(var i = 0; i < chara.length; i++){
+                if(chara[i].name != "") {
+                    tableheader.push(chara[i].name + "\n(連撃率)")
+                }
+            }
         }
         if(switcher.switchExpectedAttack) {
             tableheader.push("期待攻撃回数\n(期待攻撃力)")
@@ -3049,7 +3058,7 @@ var ResultList = React.createClass({
         if(switcher.switchCharaHP) {
             for(var i = 0; i < chara.length; i++){
                 if(chara[i].name != "") {
-                    tableheader.push(chara[i].name + "HP")
+                    tableheader.push(chara[i].name + "\n(HP)")
                 }
             }
         }
@@ -3058,6 +3067,13 @@ var ResultList = React.createClass({
         }
         if(switcher.switchTotalExpected) {
             tableheader.push('総合*回数*技巧')
+        }
+        if(switcher.switchCharaTotalExpected) {
+            for(var i = 0; i < chara.length; i++){
+                if(chara[i].name != "") {
+                    tableheader.push(chara[i].name + "\n(総回技)")
+                }
+            }
         }
         if(switcher.switchAverageTotalExpected) {
             tableheader.push('総回技値の平均値')
@@ -3115,14 +3131,17 @@ var ResultList = React.createClass({
                         <td><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
                         <td><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
-                        <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
-                    </tr><tr>
                         <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</td>
                         <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
                         <td><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 単攻撃ダメージ</td>
+                    </tr><tr>
+                        <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
+                    </tr><tr>
+                        <td><Checkbox inline checked={this.state.switchCharaDA} onChange={this.handleEvent.bind(this, "switchCharaDA")} /> キャラ連続攻撃率</td>
+                        <td><Checkbox inline checked={this.state.switchCharaTotalExpected} onChange={this.handleEvent.bind(this, "switchCharaTotalExpected")} /> キャラ総回技値</td>
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchOugiGage} onChange={this.handleEvent.bind(this, "switchOugiGage")} />奥義ゲージ上昇期待値</td>
                         <td><Checkbox inline checked={this.state.switchOugiDamage} onChange={this.handleEvent.bind(this, "switchOugiDamage")} />奥義ダメージ</td>
@@ -3252,20 +3271,20 @@ var ResultList = React.createClass({
                         <td><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
                         <td><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
-                        <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
                         <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</td>
                         <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
                         <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
+                        <td><Checkbox inline checked={this.state.switchCycleDamage} onChange={this.handleEvent.bind(this, "switchCycleDamage")} /> 予想ターン毎ダメージ </td>
+                        <td><Checkbox inline checked={this.state.switchAverageCycleDamage} onChange={this.handleEvent.bind(this, "switchAverageCycleDamage")} /> 予想ターン毎ダメージの平均値 </td>
                         <td><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 単攻撃ダメージ</td>
                     </tr>
                     <tr>
                         <td><Checkbox inline checked={this.state.switchOugiGage} onChange={this.handleEvent.bind(this, "switchOugiGage")} /> 奥義ゲージ上昇期待値 </td>
                         <td><Checkbox inline checked={this.state.switchOugiDamage} onChange={this.handleEvent.bind(this, "switchOugiDamage")} /> 奥義ダメージ </td>
-                        <td><Checkbox inline checked={this.state.switchCycleDamage} onChange={this.handleEvent.bind(this, "switchCycleDamage")} /> 予想ターン毎ダメージ </td>
-                        <td><Checkbox inline checked={this.state.switchAverageCycleDamage} onChange={this.handleEvent.bind(this, "switchAverageCycleDamage")} /> 予想ターン毎ダメージの平均値 </td>
-                        <td></td>
-                        <td></td>
+                        <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
+                        <td><Checkbox inline checked={this.state.switchCharaDA} onChange={this.handleEvent.bind(this, "switchCharaDA")} /> キャラ連続攻撃率</td>
+                        <td><Checkbox inline checked={this.state.switchCharaTotalExpected} onChange={this.handleEvent.bind(this, "switchCharaTotalExpected")} /> キャラ総回技値</td>
                     </tr>
                     </tbody></table>
                     <br/>
@@ -3696,6 +3715,13 @@ var Result = React.createClass({
                     if(sw.switchDATA) {
                         tablebody.push('DA:' + (100.0 * m.data.Djeeta.totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data.Djeeta.totalTA).toFixed(1) + '%')
                     }
+                    if(sw.switchCharaDA) {
+                        for(key in m.data){
+                            if(key != "Djeeta") {
+                                tablebody.push('DA:' + (100.0 * m.data[key].totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data[key].totalTA).toFixed(1) + '%')
+                            }
+                        }
+                    }
                     if(sw.switchExpectedAttack) {
                         var expectedAttack = parseInt(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack)
                         tablebody.push(m.data.Djeeta.expectedAttack.toFixed(2) + "\n(" + expectedAttack + ")")
@@ -3718,6 +3744,13 @@ var Result = React.createClass({
                     }
                     if(sw.switchTotalExpected) {
                         tablebody.push(m.data.Djeeta.totalExpected)
+                    }
+                    if(sw.switchCharaTotalExpected) {
+                        for(key in m.data){
+                            if(key != "Djeeta") {
+                                tablebody.push(m.data[key].totalExpected)
+                            }
+                        }
                     }
                     if(sw.switchAverageTotalExpected) {
                         tablebody.push(m.data.Djeeta.averageTotalExpected)
