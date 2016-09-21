@@ -2024,7 +2024,7 @@ var ResultList = React.createClass({
           for(var i = 0; i < itr; i = (i + 1)|0){
               var oneres = this.calculateOneCombination(combinations[i], summon, prof, arml, totals, totalBuff)
               for(var j = 0; j < summon.length; j++){
-                  if(i < 10) {
+                  if(res[j].length < 10) {
                       //  まずminSortkeyを更新する
                       if (minSortKey[j] < 0 || minSortKey[j] > oneres[j].Djeeta[sortkey]) {
                           minSortKey[j] = oneres[j].Djeeta[sortkey]
