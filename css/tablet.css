@@ -40,7 +40,7 @@ table {
 }
 
 table th {
-  color: lightsteelblue;
+  color: white;
   padding: 3px;
   background: #258;
   background:-moz-linear-gradient(rgba(34,85,136,0.7), rgba(34,85,136,0.9) 50%);
@@ -193,6 +193,14 @@ tr.result:hover {
 
 .profile table th.buff {
     width: calc(100%/8);
+}
+
+.profile table th.advanced-setting {
+    width: 20%;
+}
+
+.profile table td.advanced-setting {
+    width: 40%;
 }
 
 .summonList {

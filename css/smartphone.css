@@ -45,7 +45,7 @@ table {
 }
 
 table th {
-  color: lightsteelblue;
+  color: white;
   background: #258;
   background:-moz-linear-gradient(rgba(34,85,136,0.7), rgba(34,85,136,0.9) 50%);
   background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(34,85,136,0.7)), to(rgba(34,85,136,0.9)));
@@ -170,6 +170,15 @@ tr.result:hover {
 .profile table th.buff, .profile table td.buff{
     width: calc(100%/4);
 }
+
+.profile table th.advanced-setting {
+    width: 20%;
+}
+
+.profile table td.advanced-setting {
+    width: 40%;
+}
+
 
 .profile table tr td:last-child {
     border-bottom: 1px solid #84b2e0;

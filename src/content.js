@@ -4564,6 +4564,7 @@ var Profile = React.createClass({
             TA: 3.0,
             ougiGageBuff: 0,
             ougiRatio: 4.5,
+            minimumHP: 0,
         };
     },
     handleEvent: function(key, e) {
@@ -4680,6 +4681,51 @@ var Profile = React.createClass({
                         </tr>
                         </tbody>
                     </table>
+
+                    <h3 className="margin-top"> Advanced settings</h3>
+                    <p>もっともっと詳しく計算したい方向けの項目です。</p>
+                    <table className="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th className="advanced-setting">項目名</th>
+                            <th></th>
+                            <th>説明</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th className="advanced-setting">敵防御固有値</th>
+                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
+                            <td className="advanced-setting">
+                            想定される敵の防御固有値を設定します。<br/>
+                            単攻撃ダメージ、奥義ダメージ、<br/>
+                            予想ターン毎ダメージの計算に影響します。<br/>
+                            (単攻撃ダメージに減衰補正がかかる(44万超え)<br/>
+                             ような攻撃力でない限り、編成の順位自体は変化しないと思われます。)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="advanced-setting">ジータさん<br/>基礎DA率</th>
+                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td className="advanced-setting">ジータさんの基礎DA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                        </tr>
+                        <tr>
+                            <th className="advanced-setting">ジータさん<br/>基礎TA率</th>
+                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td className="advanced-setting">ジータさんの基礎TA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                        </tr>
+                        <tr>
+                            <th className="advanced-setting">ジータさん<br/>奥義倍率</th>
+                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
+                            <td className="advanced-setting">ジータさんの奥義倍率を設定します。<br/>奥義ダメージ、予想ターン毎ダメージの計算に影響します。</td>
+                        </tr>
+                        <tr>
+                            <th className="advanced-setting">確保したい<br/>ジータさんHP</th>
+                            <td className="advanced-setting"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
+                            <td className="advanced-setting">暴君・守護など混みの最終HPの最低ラインを設定できます。<br/>これを下回った編成は表示されません。<br/>(初期値は0です) ジータさんのHPベースです。</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             );
         } else {
@@ -4711,33 +4757,15 @@ var Profile = React.createClass({
                             <th className="prof">敵の属性*</th>
                             <th className="prof">武器ゼニス1</th>
                             <th className="prof">武器ゼニス2</th>
-                            <th className="prof">基礎DA率</th>
-                            <th className="prof">基礎TA率</th>
-                            <th className="prof">敵防御固有値</th>
+                            <th className="prof"></th>
+                            <th className="prof"></th>
+                            <th className="prof"></th>
                         </tr>
                         <tr>
                             <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">奥義倍率</th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                        </tr>
-                        <tr>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -4745,7 +4773,7 @@ var Profile = React.createClass({
                         </tbody>
                     </table>
                     <span>
-                    {Jobs[this.state.job].name}:
+                    ジョブ情報: {Jobs[this.state.job].name}:
                     得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
                     {jobTypes[Jobs[this.state.job].type]}タイプ,
                     攻撃ボーナス {Jobs[this.state.job].atBonus},
@@ -4780,6 +4808,53 @@ var Profile = React.createClass({
                         </tr>
                         </tbody>
                     </table>
+
+                    <h3 className="margin-top"> Advanced settings</h3>
+                    <p>もっともっと詳しく計算したい方向けの項目です。</p>
+                    <div className="table-responsive">
+                    <table className="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th className="advanced-setting">項目名</th>
+                            <th></th>
+                            <th>説明</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th className="advanced-setting">敵防御固有値</th>
+                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
+                            <td className="advanced-setting">
+                            想定される敵の防御固有値を設定します。<br/>
+                            単攻撃ダメージ、奥義ダメージ、<br/>
+                            予想ターン毎ダメージの計算に影響します。<br/>
+                            (単攻撃ダメージに減衰補正がかかる(44万超え)<br/>
+                             ような攻撃力でない限り、編成の順位自体は変化しないと思われます。)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="advanced-setting">ジータさん<br/>基礎DA率</th>
+                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td className="advanced-setting">ジータさんの基礎DA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                        </tr>
+                        <tr>
+                            <th className="advanced-setting">ジータさん<br/>基礎TA率</th>
+                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td className="advanced-setting">ジータさんの基礎TA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                        </tr>
+                        <tr>
+                            <th className="advanced-setting">ジータさん<br/>奥義倍率</th>
+                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
+                            <td className="advanced-setting">ジータさんの奥義倍率を設定します。<br/>奥義ダメージ、予想ターン毎ダメージの計算に影響します。</td>
+                        </tr>
+                        <tr>
+                            <th className="advanced-setting">確保したい<br/>ジータさんHP</th>
+                            <td className="advanced-setting"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
+                            <td className="advanced-setting">暴君・守護など混みの最終HPの最低ラインを設定できます。<br/>これを下回った編成は表示されません。<br/>(初期値は0です) ジータさんのHPベースです。</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             );
         }
