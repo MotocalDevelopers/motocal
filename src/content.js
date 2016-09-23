@@ -1467,7 +1467,13 @@ var ResultList = React.createClass({
             if(totals[key]["typeBonus"] != 1.5) {
                 var criticalRatio = 1.0
             } else {
-                var criticalRatio = (1.0 + skillAmounts["magnaCritical"]["ratio"]) * 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"] + (1.0 + skillAmounts["normalCritical"]["ratio"]) * 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"] + 1.0 * (1.0 - 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"] - 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"])
+                var magnaCritical = 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"]
+                var normalCritical = 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"]
+                var criticalRatio =
+                    (1.0 + skillAmounts["magnaCritical"]["ratio"] + skillAmounts["normalCritical"]["ratio"]) * magnaCritical * normalCritical
+                    + (1.0 + skillAmounts["magnaCritical"]["ratio"]) * magnaCritical
+                    + (1.0 + skillAmounts["normalCritical"]["ratio"]) * normalCritical
+                    + 1.0 * (1.0 - magnaCritical - normalCritical - magnaCritical*normalCritical)
             }
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] - totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
@@ -4746,6 +4752,7 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
+                    <p className="text-info">9/24 技巧期待値の計算式を微修正しました(通常技巧とマグナ技巧が同時発動した場合に+100%となる点が加味されるように変更)</p>
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
