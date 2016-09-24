@@ -10,7 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-info">2016/09/24: 技巧期待値の計算式に別種技巧発生時の倍率分も追加</li>
+                <li className="list-group-item list-group-item-info">2016/09/24: 技巧期待値の計算式を修正 (通常刹那・克己の別枠化を行いました) </li>
                 <li className="list-group-item list-group-item-success">2016/09/21: 最低限確保したいHPを設定できるように / レイアウト調整</li>
                 <li className="list-group-item list-group-item-success">2016/09/21: キャラの連撃率、総回技値も表示可能にした </li>
                 <li className="list-group-item list-group-item-success">2016/09/17: ジータさんのみの値を表示していることを分かりやすくした / ジータさんに表記を統一した </li>

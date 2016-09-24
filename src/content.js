@@ -4867,7 +4867,7 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-info">9/24 技巧期待値の計算式を微修正しました(通常技巧とマグナ技巧が同時発動した場合に+100%となる点が加味されるように変更)</p>
+                    <p className="text-info">9/24 技巧期待値の計算式を修正しました (通常克己・通常刹那の別枠化)</p>
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
