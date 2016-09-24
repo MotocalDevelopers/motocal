@@ -56,6 +56,17 @@ function getVarInQuery(key){
     return result;
 }
 
+function factorial(n) {
+    var f = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800];
+    if (n <= 0) {
+        return 1;
+    } else if (n > 10) {
+        return factorial(n-1) * n;
+    } else {
+        return f[n];
+    }
+}
+
 
 // global hash for loading new data
 var touchPosition = null;
