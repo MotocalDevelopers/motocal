@@ -1482,9 +1482,9 @@ var ResultList = React.createClass({
                 var normalCritical = 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"]
                 var criticalRatio =
                     (1.0 + skillAmounts["magnaCritical"]["ratio"] + skillAmounts["normalCritical"]["ratio"]) * magnaCritical * normalCritical
-                    + (1.0 + skillAmounts["magnaCritical"]["ratio"]) * magnaCritical
-                    + (1.0 + skillAmounts["normalCritical"]["ratio"]) * normalCritical
-                    + 1.0 * (1.0 - magnaCritical - normalCritical - magnaCritical*normalCritical)
+                    + (1.0 + skillAmounts["magnaCritical"]["ratio"]) * magnaCritical * (1 - normalCritical)
+                    + (1.0 + skillAmounts["normalCritical"]["ratio"]) * normalCritical * (1 - magnaCritical)
+                    + 1.0 * (1.0 - magnaCritical * (1 - normalCritical) - normalCritical * (1 - magnaCritical) - magnaCritical*normalCritical)
             }
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] - totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
