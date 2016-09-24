@@ -67,6 +67,9 @@ function factorial(n) {
     }
 }
 
+function combination(n, r) {
+    return factorial(n) / (factorial(r) * factorial(n - r));
+}
 
 // global hash for loading new data
 var touchPosition = null;
@@ -1480,11 +1483,7 @@ var ResultList = React.createClass({
             } else {
                 var magnaCritical = 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"]
                 var normalCritical = 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"]
-                var criticalRatio =
-                    (1.0 + skillAmounts["magnaCritical"]["ratio"] + skillAmounts["normalCritical"]["ratio"]) * magnaCritical * normalCritical
-                    + (1.0 + skillAmounts["magnaCritical"]["ratio"]) * magnaCritical
-                    + (1.0 + skillAmounts["normalCritical"]["ratio"]) * normalCritical
-                    + 1.0 * (1.0 - magnaCritical - normalCritical - magnaCritical*normalCritical)
+                var criticalRatio = this.calculateCriticalRatio(normalCritical, magnaCritical, totals[key]["normalSetsuna"], totals[key]["magnaSetsuna"])
             }
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] - totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
@@ -1537,6 +1536,15 @@ var ResultList = React.createClass({
         res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average/cnt)
         res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn/cnt)
         return res
+    },
+    calculateCriticalRatio: function(normalCritical, magnaCritical, normalSetsunas, magnaSetsunas) {
+        var criticalRatio =
+            2.0 * magnaCritical * normalCritical
+            + 1.5 * magnaCritical
+            + 1.5 * normalCritical
+            + 1.0 * (1.0 - magnaCritical - normalCritical - magnaCritical*normalCritical)
+
+        return criticalRatio
     },
     calculateDamage: function(totalAttack, enemyDefense) {
         // ダメージ計算
@@ -1835,6 +1843,10 @@ var ResultList = React.createClass({
                                 totals[key]["magnaHP"] += comb[i] * skillAmounts["magnaHP"][amount][slv - 1];
                             } else if(stype == 'normalSetsuna') {
                                 totals[key]["normalCritical"] += comb[i] * skillAmounts["normalCritical"][amount][slv - 1];
+                                // 通常刹那は複数発動する？
+                                for(var setu = 0; setu < comb[i]; setu++){
+                                    totals[key]["normalSetsuna"].push(skillAmounts["normalCritical"][amount][slv - 1]);
+                                }
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             } else if(stype == 'magnaSetsuna') {
                                 totals[key]["magnaCritical"] += comb[i] * skillAmounts["magnaCritical"][amount][slv - 1];
@@ -1893,6 +1905,7 @@ var ResultList = React.createClass({
             totals[key]["unknownOtherNite"] = 0; totals[key]["normalCritical"] = 0;
             totals[key]["magnaCritical"] = 0; totals[key]["cosmosBL"] = 0;
             totals[key]["additionalDamage"] = 0; totals[key]["ougiDebuff"] = 0;
+            totals[key]["normalSetsuna"] = []; totals[key]["magnaSetsuna"] = [];
         }
     },
     getTotalBuff: function(prof) {
@@ -1923,7 +1936,7 @@ var ResultList = React.createClass({
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}};
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -1941,7 +1954,7 @@ var ResultList = React.createClass({
                         k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
             }
         }
         for(key in totals) {
