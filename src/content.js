@@ -1540,11 +1540,21 @@ var ResultList = React.createClass({
         var normalCritical = 0.01 * _normalCritical * summon["zeus"]
         var gikouArray = []
 
-        if(normalCritical > 0.0) gikouArray.push(normalCritical);
-        if(magnaCritical > 0.0) gikouArray.push(magnaCritical);
+        if(normalCritical > 1.0) {
+            gikouArray.push(1.0);
+        } else if (normalCritical > 0.0) {
+            gikouArray.push(normalCritical);
+        }
+
+        if(magnaCritical > 1.0) {
+            gikouArray.push(1.0);
+        } else if (magnaCritical > 0.0) {
+            gikouArray.push(magnaCritical);
+        }
 
         // 刹那と克己は[確率1, 確率2, 確率3, ... ]という形式で渡される
         for(var j = 0; j < _normalSetsuna.length; j++){
+            // 技巧と刹那は単体スキルなので1.0以上の値が来ないか確認しなくて良い
             gikouArray.push(0.01 * _normalSetsuna[j] * summon["zeus"]);
         }
 
@@ -1579,12 +1589,16 @@ var ResultList = React.createClass({
                 }
 
                 // ここまでである1ケースの発動率が算出できた
-                if(!(ratio in criticalRatioArray)) {
-                    // ratioが存在しない場合
-                    criticalRatioArray[ratio] = {"cnt": cnt, "case": 1}
-                } else {
-                    // ratioが存在する場合
-                    criticalRatioArray[ratio]["case"] += 1
+                if(ratio > 0.0) {
+                    if(ratio > 1.0) ratio = 1.0
+
+                    if(!(ratio in criticalRatioArray)) {
+                        // ratioが存在しない場合
+                        criticalRatioArray[ratio] = {"cnt": cnt, "case": 1}
+                    } else {
+                        // ratioが存在する場合
+                        criticalRatioArray[ratio]["case"] += 1
+                    }
                 }
             }
 
