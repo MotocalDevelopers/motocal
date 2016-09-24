@@ -1481,9 +1481,7 @@ var ResultList = React.createClass({
             if(totals[key]["typeBonus"] != 1.5) {
                 var criticalRatio = 1.0
             } else {
-                var magnaCritical = 0.01 * totals[key]["magnaCritical"] * totalSummon["magna"]
-                var normalCritical = 0.01 * totals[key]["normalCritical"] * totalSummon["zeus"]
-                var criticalRatio = this.calculateCriticalRatio(normalCritical, magnaCritical, totals[key]["normalSetsuna"], totals[key]["magnaSetsuna"])
+                var criticalRatio = this.calculateCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalSetsuna"], totals[key]["magnaSetsuna"], totals[key]["normalKatsumi"], totalSummon)
             }
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] - totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
@@ -1537,12 +1535,66 @@ var ResultList = React.createClass({
         res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn/cnt)
         return res
     },
-    calculateCriticalRatio: function(normalCritical, magnaCritical, normalSetsunas, magnaSetsunas) {
-        var criticalRatio =
-            2.0 * magnaCritical * normalCritical
-            + 1.5 * magnaCritical
-            + 1.5 * normalCritical
-            + 1.0 * (1.0 - magnaCritical - normalCritical - magnaCritical*normalCritical)
+    calculateCriticalRatio: function(_normalCritical, _magnaCritical, _normalSetsuna, _magnaSetsuna, _normalKatsumi, summon) {
+        var magnaCritical = 0.01 * _magnaCritical * summon["magna"]
+        var normalCritical = 0.01 * _normalCritical * summon["zeus"]
+        var gikouArray = []
+
+        if(normalCritical > 0.0) gikouArray.push(normalCritical);
+        if(magnaCritical > 0.0) gikouArray.push(magnaCritical);
+
+        // 刹那と克己は[確率1, 確率2, 確率3, ... ]という形式で渡される
+        for(var j = 0; j < _normalSetsuna.length; j++){
+            gikouArray.push(0.01 * _normalSetsuna[j] * summon["zeus"]);
+        }
+
+        for(var j = 0; j < _normalKatsumi.length; j++){
+            gikouArray.push(0.01 * _normalKatsumi[j] * summon["zeus"]);
+        }
+
+        var criticalRatio = 0.0
+        // 最大10要素の技巧配列が来る、それぞれ発動率は違うこともある [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        // n要素とした時、最大2^n個の発動確率がある
+        // {発動率: {発動本数: x, ケース: 1}}という配列にすればそのあとkeysを使うことで期待値が出せる
+        if(gikouArray.length > 0){
+            var bitmask = []
+            var criticalRatioArray = {}
+            for(var i = 0; i < gikouArray.length; i++) {
+                bitmask.push(1 << i);
+            }
+
+            for(var i = 0; i < Math.pow(2, gikouArray.length); i++) {
+                var ratio = 1.0
+                var cnt = 0
+
+                for(var j = 0; j < gikouArray.length; j++) {
+                    if((bitmask[j] & i) > 0) {
+                        // j番目の技巧が発動
+                        ratio *= gikouArray[j]
+                        cnt += 1
+                    } else {
+                        // j番目の技巧は非発動
+                        ratio *= 1.0 - gikouArray[j]
+                    }
+                }
+
+                // ここまでである1ケースの発動率が算出できた
+                if(!(ratio in criticalRatioArray)) {
+                    // ratioが存在しない場合
+                    criticalRatioArray[ratio] = {"cnt": cnt, "case": 1}
+                } else {
+                    // ratioが存在する場合
+                    criticalRatioArray[ratio]["case"] += 1
+                }
+            }
+
+            // ここまでで全てのケースについて算出できた
+            for(var ratio in criticalRatioArray) {
+                criticalRatio += (1.0 + 0.5 * criticalRatioArray[ratio]["cnt"]) * criticalRatioArray[ratio]["case"] * ratio
+            }
+        } else {
+            criticalRatio = 1.0
+        }
 
         return criticalRatio
     },
@@ -1842,17 +1894,24 @@ var ResultList = React.createClass({
                                 totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 totals[key]["magnaHP"] += comb[i] * skillAmounts["magnaHP"][amount][slv - 1];
                             } else if(stype == 'normalSetsuna') {
-                                totals[key]["normalCritical"] += comb[i] * skillAmounts["normalCritical"][amount][slv - 1];
-                                // 通常刹那は複数発動する？
+                                // totals[key]["normalCritical"] += comb[i] * skillAmounts["normalCritical"][amount][slv - 1];
+                                // 通常刹那は複数発動するので確率を加算しないで残しておく
                                 for(var setu = 0; setu < comb[i]; setu++){
                                     totals[key]["normalSetsuna"].push(skillAmounts["normalCritical"][amount][slv - 1]);
                                 }
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             } else if(stype == 'magnaSetsuna') {
                                 totals[key]["magnaCritical"] += comb[i] * skillAmounts["magnaCritical"][amount][slv - 1];
+                                // お前は仲間外れなんだぞ
+                                // for(var setu = 0; setu < comb[i]; setu++){
+                                //     totals[key]["magnaSetsuna"].push(skillAmounts["magnaCritical"][amount][slv - 1]);
+                                // }
                                 totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             } else if(stype == 'normalKatsumi') {
-                                totals[key]["normalCritical"] += comb[i] * skillAmounts["normalCritical"][amount][slv - 1];
+                                // totals[key]["normalCritical"] += comb[i] * skillAmounts["normalCritical"][amount][slv - 1];
+                                for(var setu = 0; setu < comb[i]; setu++){
+                                    totals[key]["normalKatsumi"].push(skillAmounts["normalCritical"][amount][slv - 1]);
+                                }
                                 totals[key]["normalNite"] += comb[i] * skillAmounts["normalNite"][amount][slv - 1];
                             } else if(stype == 'magnaKatsumi') {
                                 totals[key]["magnaCritical"] += comb[i] * skillAmounts["magnaCritical"][amount][slv - 1];
@@ -1906,6 +1965,7 @@ var ResultList = React.createClass({
             totals[key]["magnaCritical"] = 0; totals[key]["cosmosBL"] = 0;
             totals[key]["additionalDamage"] = 0; totals[key]["ougiDebuff"] = 0;
             totals[key]["normalSetsuna"] = []; totals[key]["magnaSetsuna"] = [];
+            totals[key]["normalKatsumi"] = [];
         }
     },
     getTotalBuff: function(prof) {
@@ -1936,7 +1996,7 @@ var ResultList = React.createClass({
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}};
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -1954,7 +2014,7 @@ var ResultList = React.createClass({
                         k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
             }
         }
         for(key in totals) {
