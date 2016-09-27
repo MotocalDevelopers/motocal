@@ -1208,6 +1208,45 @@
         "type": "pecu", 
         "imageURL": "./charaimgs/3040092000_01.png"
     }, 
+    "シャノワール": {
+        "baseDA": 6.5, 
+        "name": "シャノワール", 
+        "hp": "1300", 
+        "element": "water", 
+        "attack": "8700", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "none", 
+        "fav2": "none", 
+        "type": "pecu", 
+        "imageURL": "./charaimgs/3040093000_01.png"
+    }, 
+    "ヴァイト": {
+        "baseDA": 6.5, 
+        "name": "ヴァイト", 
+        "hp": "1300", 
+        "element": "dark", 
+        "attack": "9500", 
+        "race": "unknown", 
+        "baseTA": 3.0, 
+        "fav1": "none", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3040094000_01.png"
+    }, 
+    "ソシエ(火属性ver)": {
+        "baseDA": 6.5, 
+        "name": "ソシエ(火属性ver)", 
+        "hp": "1730", 
+        "element": "fire", 
+        "attack": "6470", 
+        "race": "erune", 
+        "baseTA": 3.0, 
+        "fav1": "none", 
+        "fav2": "none", 
+        "type": "defense", 
+        "imageURL": "./charaimgs/3040095000_01.png"
+    }, 
     "ノイシュ": {
         "baseDA": 6.5, 
         "name": "ノイシュ", 
@@ -1367,9 +1406,9 @@
     "アンジェ": {
         "baseDA": 6.5, 
         "name": "アンジェ", 
-        "hp": "1250", 
+        "hp": "1260", 
         "element": "water", 
-        "attack": "6250", 
+        "attack": "7500", 
         "race": "human", 
         "baseTA": 3.0, 
         "fav1": "sword", 
@@ -3131,5 +3170,44 @@
         "fav2": "none", 
         "type": "pecu", 
         "imageURL": "./charaimgs/3030152000_01.png"
+    }, 
+    "ペンギー(ガチャSRver)": {
+        "baseDA": 6.5, 
+        "name": "ペンギー(ガチャSRver)", 
+        "hp": "2000", 
+        "element": "water", 
+        "attack": "3750", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "gun", 
+        "fav2": "none", 
+        "type": "defense", 
+        "imageURL": "./charaimgs/3030153000_01.png"
+    }, 
+    "バロワ": {
+        "baseDA": 6.5, 
+        "name": "バロワ", 
+        "hp": "840", 
+        "element": "fire", 
+        "attack": "6300", 
+        "race": "doraf", 
+        "baseTA": 3.0, 
+        "fav1": "gun", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3030154000_01.png"
+    }, 
+    "ククル": {
+        "baseDA": 6.5, 
+        "name": "ククル", 
+        "hp": "940", 
+        "element": "fire", 
+        "attack": "7800", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "none", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3030155000_01.png"
     }
 }

@@ -59,6 +59,21 @@
         "hp": "234", 
         "maxlv": 100
     }, 
+    "[]天華簪": {
+        "element2": "fire", 
+        "name": "[]天華簪", 
+        "imageURL": "./imgs/1040606100.png", 
+        "skill2": "normalNiteS", 
+        "skill1": "normalL", 
+        "element": "fire", 
+        "minattack": "390", 
+        "attack": "2325", 
+        "slvmax": 10, 
+        "minhp": "41", 
+        "type": "fist", 
+        "hp": "253", 
+        "maxlv": 100
+    }, 
     "ソロモンドライブ": {
         "element2": "earth", 
         "name": "ソロモンドライブ", 
@@ -117,6 +132,36 @@
         "minhp": "35", 
         "type": "dagger", 
         "hp": "221", 
+        "maxlv": 100
+    }, 
+    "[財宝盗]ファントムシーフナイフ": {
+        "element2": "water", 
+        "name": "[財宝盗]ファントムシーフナイフ", 
+        "imageURL": "./imgs/1040108000.png", 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "element": "water", 
+        "minattack": "390", 
+        "attack": "2380", 
+        "slvmax": 10, 
+        "minhp": "42", 
+        "type": "dagger", 
+        "hp": "241", 
+        "maxlv": 100
+    }, 
+    "[]ブラッディスカー": {
+        "element2": "dark", 
+        "name": "[]ブラッディスカー", 
+        "imageURL": "./imgs/1040108100.png", 
+        "skill2": "normalS", 
+        "skill1": "normalCriticalL", 
+        "element": "dark", 
+        "minattack": "410", 
+        "attack": "2380", 
+        "slvmax": 10, 
+        "minhp": "38", 
+        "type": "dagger", 
+        "hp": "241", 
         "maxlv": 100
     }, 
     "グングニル": {
