@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
-var {Nav, NavItem, Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var {Nav, NavItem, Navbar, NavDropdown, MenuItem, Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var SimulatorInput = require('./simulator.js')
 var SimulationChart = require('./chart.js')
 var GlobalConst = require('./global_const.js')
@@ -420,82 +420,24 @@ var Root = React.createClass({
                 </div>
             </div>
         );
-    } else if(_ua.Tablet) {
-        return (
-            <div className="root">
-                <h2>元カレ計算機 (グラブル攻撃力計算機)
-                <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
-                <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
-                </h2>
-                <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>元カレ計算機について</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <HowTo />
-                    </Modal.Body>
-                </Modal>
-                <Modal className="howTo" show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <NiteHowTo />
-                    </Modal.Body>
-                </Modal>
-                <div className="tabrow">
-                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータさん</button>
-                    <button id="summonTab" onClick={this.changeTab} >召喚石</button>
-                    <button id="charaTab" onClick={this.changeTab} >キャラ</button>
-                    <button id="armTab" onClick={this.changeTab} >武器</button>
-                    <button id="resultTab" onClick={this.changeTab} >結果</button>
-                    <button id="systemTab" onClick={this.changeTab} >保存</button>
-                </div>
-                <div className="Tab" id="inputTab">
-                    <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
-                </div>
-                <div className="Tab hidden" id="summonTab">
-                    <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>召喚石追加(現在{this.state.summonNum}組)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>削除</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="charaTab">
-                    <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} />
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>キャラ追加(現在{this.state.charaNum}人)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>削除</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="armTab">
-                    <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum}/>
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>武器追加(現在{this.state.armNum}本)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>削除</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="resultTab">
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
-                    <ResultList data={this.state} />
-                </div>
-                <div className="Tab hidden" id="systemTab">
-                    <div className="systemList">
-                        <Sys data={this.state} onLoadNewData={this.handleChangeData} />
-                        <TwitterShareButton data={this.state} />
-                        <Notice />
-                    </div>
-                </div>
-            </div>
-        );
     } else {
         return (
             <div className="root">
                 <div className="rootleft" id="rootleft2" style={{height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}>
-                    <h1>元カレ計算機 (グラブル攻撃力計算機)</h1>
-                    <Button bsStyle="info" style={{margin: "0 0 2px 2px"}} onClick={this.openHowTo} > 使い方 </Button>
-                    <Button bsStyle="info" style={{margin: "0 0 2px 2px"}} onClick={this.openNiteHowTo} > 二手等込みの編成について </Button>
-                    <Button bsStyle="info" style={{margin: "0 0 2px 2px"}} onClick={this.openSimulatorHowTo} > ダメージシミュレータについて </Button>
+                    <h1> 元カレ計算機 (グラブル攻撃力計算機) </h1>
+                    <Navbar fluid>
+                        <Navbar.Header>
+                        <Navbar.Brand> motocal </Navbar.Brand>
+                        <Navbar.Toggle/>
+                        </Navbar.Header>
+                        <Nav>
+                            <NavDropdown title="使い方など">
+                            <MenuItem> <p onClick={this.openHowTo}>使い方</p> </MenuItem>
+                            <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
+                            <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
+                            </NavDropdown>
+                        </Nav>
+                    </Navbar>
                     <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
                         <Modal.Header closeButton>
                             <Modal.Title>元カレ計算機について</Modal.Title>

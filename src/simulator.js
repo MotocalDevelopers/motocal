@@ -292,6 +292,7 @@ var SimulatorInput = React.createClass({
         return (
             <div className="simulatorInput">
                 <h3> シミュレータ用入力 </h3>
+                <p className="text-info">レイアウトあとで調整します</p>
                 <span>各ターンのバフやHP等を設定して下さい。</span> <FormControl componentClass="select" value={this.state.maxTurn} onChange={this.handleSelectEvent.bind(this, "maxTurn")}>{select_turnlist}</FormControl>
                 <table className="table table-bordered">
                     <tbody>

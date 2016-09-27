@@ -7,6 +7,7 @@ body {
     max-width: 960px;
     font-size: 10pt;
     font-weight: normal;
+    -webkit-overflow-scrolling: touch;
 }
 
 h1, h2, h3 {

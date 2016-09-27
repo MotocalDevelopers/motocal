@@ -143,6 +143,15 @@ div.Tab.hidden {
     padding-right:3px;
 }
 
+@media screen and (min-device-width: 481px) and (max-device-width: 768px) {
+    .rootleft {
+        -webkit-overflow-scrolling: touch;
+    }
+    .rootright {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 .rootright {
     width: calc(100% - 45% - 12px);
     height: 100%;
@@ -226,7 +235,6 @@ div.drag-hr span {
 
 .summonList {
     width: 100%;
-    overflow: auto;
 }
 
 .charaList {
@@ -244,6 +252,10 @@ div.drag-hr span {
 
 .nav>li>a {
   padding: 5px 0;
+}
+
+.navbar-nav>li>a {
+  line-height: 40px;
 }
 
 thead.result th {
