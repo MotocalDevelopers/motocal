@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
-var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var {Nav, NavItem, Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var SimulatorInput = require('./simulator.js')
 var SimulationChart = require('./chart.js')
 var GlobalConst = require('./global_const.js')
@@ -87,6 +87,7 @@ var Root = React.createClass({
           openHowTo: false,
           openNiteHowTo: false,
           openSimulatorHowTo: false,
+          activeKey: "inputTab",
       };
   },
   openHowTo: function(e) {
@@ -286,6 +287,14 @@ var Root = React.createClass({
               window.open(canvas.toDataURL("image/png"));
           },
       })
+  },
+  handleChangeTab: function(eventKey){
+      var activeKey = (this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey
+      document.querySelector("div#" + activeKey).setAttribute("class", "Tab hidden")
+
+      var target = document.querySelector("div#" + eventKey)
+      target.setAttribute("class", "Tab");
+      this.setState({activeKey: eventKey})
   },
   changeTab: function(e){
       var selected = document.querySelector("button.selected")
@@ -511,14 +520,14 @@ var Root = React.createClass({
                             <SimulatorInput.HowTo />
                         </Modal.Body>
                     </Modal>
-                    <div className="tabrow">
-                        <button id="inputTab" className="selected" onClick={this.changeTab}>入力 / Input</button>
-                        <button id="summonTab" onClick={this.changeTab} >召喚石 / Summon </button>
-                        <button id="charaTab" onClick={this.changeTab} >キャラ / Chara</button>
-                        <button id="armTab" onClick={this.changeTab} >武器 / Weapon</button>
-                        <button id="simulatorTab" onClick={this.changeTab} >シミュレータ入力</button>
-                        <button id="systemTab" onClick={this.changeTab} >保存・注記 / System</button>
-                    </div>
+                    <Nav bsStyle="tabs" justified activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
+                        <NavItem eventKey="inputTab">ジータ</NavItem>
+                        <NavItem eventKey="summonTab">召喚石</NavItem>
+                        <NavItem eventKey="charaTab">キャラ</NavItem>
+                        <NavItem eventKey="armTab">武器</NavItem>
+                        <NavItem eventKey="simulatorTab">Simulator</NavItem>
+                        <NavItem eventKey="systemTab">保存</NavItem>
+                    </Nav>
                     <div className="Tab" id="inputTab">
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
                     </div>
@@ -4147,7 +4156,8 @@ var ArmList = React.createClass({
             return (
                 <div className="armList">
                     <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>武器テンプレートを開く</Button>
-                    属性一括変更
+                    <br/>
+                    <span>属性一括変更</span>
                     <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
                     <Grid fluid>
                         <Row>
@@ -4872,7 +4882,6 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-info">9/24 技巧期待値の計算式を修正しました (通常克己・通常刹那の別枠化)</p>
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
                     <div className="table-responsive">
                     <table className="table table-bordered">

@@ -242,6 +242,10 @@ div.drag-hr span {
   margin-bottom: 3px;
 }
 
+.nav>li>a {
+  padding: 5px 0;
+}
+
 thead.result th {
   color: rgb(255, 255, 255);
   background: rgb(59, 34, 136);
@@ -314,66 +318,11 @@ table.displayElement td:last-child {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
-.tabrow {
-    text-align: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    line-height: 24px;
-    position: relative;
-}
-.tabrow:before {
-    z-index: 1;
-}
-.tabrow:after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    border-bottom: 1px solid #AAA;
-    z-index: 1;
-}
-.tabrow button {
-    color: black;
-    margin: 0 4px;
-    padding: 0 5px;
-    border: 1px solid #AAA;
-    background: #ECECEC;
-    display: inline-block;
-    position: relative;
-    z-index: 0;
-    border-radius: 1px;
-}
-.tabrow button.selected {
-    background: #FFF;
-    color: #000;
-    z-index: 2;
-    border-bottom-color: #FFF;
-}
-.tabrow button.tab-hidden {
-    overflow: hidden;
-    width: 0%;
-    height: 0%;
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
 
 .form-control {
     font-size: 9pt;
     padding: 1px;
     display: inline;
-}
-
-.summonList .form-control.multi {
-    width: 60%;
-    font-size: 7pt;
-}
-
-.armList .form-control.consider {
-    width: 45%;
 }
 
 .btn {
