@@ -2409,7 +2409,7 @@ var ResultList = React.createClass({
                 for(var i=0; i < arml.length; i++){
                     if(storedCombinations[j][i] > 0) {
                         var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                        title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                        title += name + storedCombinations[j][i] + "本\n"
                     }
                 }
                 for(key in onedata){
@@ -2740,7 +2740,7 @@ var ResultList = React.createClass({
                 for(var i=0; i < arml.length; i++){
                     if(storedCombinations[j][i] > 0) {
                         var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                        title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                        title += name + storedCombinations[j][i] + "本\n"
                     }
                 }
                 for(key in onedata){
@@ -3008,7 +3008,7 @@ var ResultList = React.createClass({
                         for(var i=0; i < arml.length; i++){
                             if(storedCombinations[j][i] > 0) {
                                 var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                                title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                                title += name + storedCombinations[j][i] + "本\n"
                             }
                         }
                         AverageTotalAttack[0].push(title)
