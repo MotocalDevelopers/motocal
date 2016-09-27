@@ -3749,7 +3749,6 @@ var HPChart = React.createClass({
             return (
                     <div className="HPChart">
                         {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>*/}
-                        <p className="text-danger">HPチャートの計算において、キャラを「平均値に含めるかどうか」の設定が上手く動いていない状態だった不具合を修正しました。</p>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
@@ -3769,7 +3768,6 @@ var HPChart = React.createClass({
 
             return (
                     <div className="HPChart">
-                        <p className="text-danger">9/14 HPチャートの計算において、キャラを「平均値に含めるかどうか」の設定が上手く動いていない状態だった不具合を再度修正しました。</p>
                         <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
