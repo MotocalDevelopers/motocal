@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
-var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var SimulatorInput = require('./simulator.js')
 var SimulationChart = require('./chart.js')
 var GlobalConst = require('./global_const.js')
@@ -63,13 +63,10 @@ var touchDirection = null;
 // Root class contains [Profile, ArmList, Results].
 var Root = React.createClass({
   getInitialState: function() {
-      var initial_width = 50;
+      var initial_width = 30;
       var initial_height = 100;
+      console.log(initial_width)
 
-      if(window.innerWidth <= 1450) {
-          initial_width = 100;
-          initial_height = 50;
-      }
       return {
           armNum: 5,
           summonNum: 2,
@@ -87,7 +84,7 @@ var Root = React.createClass({
           rootleftHeight: initial_height,
           rootleftWidth: initial_width,
           rootrightHeight: initial_height,
-          rootrightWidth: initial_width,
+          rootrightWidth: 100 - initial_width,
           openHowTo: false,
           openNiteHowTo: false,
           openSimulatorHowTo: false,
@@ -240,10 +237,6 @@ var Root = React.createClass({
           this.getDatacharById(urlid);
       }
       this.setState({noResultUpdate: false});
-      window.addEventListener('resize', this.handleResize);
-  },
-  componentWillUnmount() {
-      window.removeEventListener('resize', this.handleResize);
   },
   handleEvent: function(key, e) {
       var newState = this.state
@@ -345,34 +338,9 @@ var Root = React.createClass({
       this.setState({charaNum: newCharaNum});
   },
   onDragEnd: function(e) {
-      if(window.innerWidth > 1450) {
-          if(e.pageX > 0) {
-              this.setState({rootleftWidth: parseInt(100.0 * e.pageX / window.innerWidth)})
-              this.setState({rootrightWidth: 100 - parseInt(100.0 * e.pageX / window.innerWidth)})
-              this.setState({noResultUpdate: true})
-          }
-      } else {
-          if(e.pageY > 0) {
-              this.setState({rootleftHeight: parseInt(100.0 * e.pageY / window.innerHeight)})
-              this.setState({rootrightHeight: 100 - parseInt(100.0 * e.pageY / window.innerHeight)})
-              this.setState({noResultUpdate: true})
-          }
-      }
-  },
-  handleResize: function(e) {
-      if(this.state.oldWidth <= 1450 && e.target.innerWidth > 1450) {
-          this.setState({rootleftHeight: 100})
-          this.setState({rootrightHeight: 100})
-          this.setState({rootleftWidth: 50})
-          this.setState({rootrightWidth: 50})
-          this.setState({oldWidth: e.target.innerWidth})
-          this.setState({noResultUpdate: true})
-      } else if(this.state.oldWidth > 1450 && e.target.innerWidth <= 1450) {
-          this.setState({rootleftHeight: 50})
-          this.setState({rootrightHeight: 50})
-          this.setState({rootleftWidth: 100})
-          this.setState({rootrightWidth: 100})
-          this.setState({oldWidth: e.target.innerWidth})
+      if(e.pageX > 0) {
+          this.setState({rootleftWidth: parseInt(100.0 * e.pageX / window.innerWidth)})
+          this.setState({rootrightWidth: 100 - parseInt(100.0 * e.pageX / window.innerWidth)})
           this.setState({noResultUpdate: true})
       }
   },
@@ -701,30 +669,16 @@ var CharaList = React.createClass({
         } else {
             return (
                 <div className="charaList">
-                    <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
-                    <table className="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>キャラ名*</th>
-                        <th>属性* <br/> <ControlLabel>一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl> </th>
-                        <th>種族</th>
-                        <th>タイプ</th>
-                        <th>得意武器*</th>
-                        <th>得意武器2</th>
-                        <th className="considerAverage">平均に含める</th>
-                        <th>素の攻撃力*</th>
-                        <th>素のHP</th>
-                        <th>残HP割合(%)</th>
-                        <th>基礎DA率(%)</th>
-                        <th>基礎TA率(%)</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                    <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
+                    <br/>
+                    <span>属性一括変更</span><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+                    <Grid fluid>
+                        <Row>
                         {charas.map(function(c) {
                             return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
                         })}
-                    </tbody>
-                    </table>
+                        </Row>
+                    </Grid>
 
                     <Modal show={this.state.openPresets} onHide={this.closePresets}>
                         <Modal.Header closeButton>
@@ -962,20 +916,57 @@ var Chara = React.createClass({
 
         } else {
             return (
-                <tr>
-                    <td><FormControl type="text" placeholder="名前" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/></td>
-                    <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl></td>
-                    <td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")} /></td>
-                    <td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                    <td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                    <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
-                    <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                    <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                </tr>
+                <Col xs={12} md={12} lg={12} className="col-bordered">
+                    <FormGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
+                        <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/>
+                        <InputGroup.Addon>
+                        <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>平均に含める</Checkbox>
+                        </InputGroup.Addon>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>属性　　&nbsp;</InputGroup.Addon>
+                        <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>種族　　&nbsp;</InputGroup.Addon>
+                        <FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>タイプ　&nbsp;</InputGroup.Addon>
+                        <FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>得意武器&nbsp;</InputGroup.Addon>
+                        <FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>得意武器2</InputGroup.Addon>
+                        <FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>素の攻撃力</InputGroup.Addon>
+                        <FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>素のHP　</InputGroup.Addon>
+                        <FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>残HP割合</InputGroup.Addon>
+                        <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>基礎DA率</InputGroup.Addon>
+                        <FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>基礎TA率</InputGroup.Addon>
+                        <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
+                    </InputGroup>
+                </FormGroup>
+                </Col>
             );
         }
 
