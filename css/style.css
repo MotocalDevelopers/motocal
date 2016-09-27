@@ -38,6 +38,7 @@ select, option {
     text-align: right;
     font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     font-weight: bold;
+    font-size: 9pt;
     color: #000;
 }
 
@@ -206,54 +207,13 @@ div.drag-hr span {
     width: 100%;
 }
 
-.armList table th, .armList table td {
-    min-width: 20px;
-}
-
 .armList input {
     width: 100%;
     margin: 1px;
 }
 
-.armList table td.atkhp, .armList table th.atkhp {
-    min-width: 40px;
-    width: 80px;
-}
-
-.armList .skillselect {
-    min-width: 80px;
-    max-width: 140px;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.armList .armname {
-    min-width: 60px;
-    max-width: 100px;
-}
-
-.armList .element {
-    width: 20%;
-    min-width: 40px;
-    display: inline;
-}
-
-.armList .skill {
-    width: 75%;
-    max-width: calc(100% - 40px);
-    display: inline;
-}
-
 .profile {
     width: 100%;
-}
-
-.profile table th.prof {
-    width: calc(100%/7);
-}
-
-.profile table th.buff{
-    width: calc(100%/9);
 }
 
 .profile table th.table-profile-th {
@@ -269,22 +229,8 @@ div.drag-hr span {
     overflow: auto;
 }
 
-.summonList .hidden {
-    overflow: hidden;
-    height: 0;
-}
-
-.summonList th, .summonList td {
-    width: calc(100%/8);
-}
-
 .charaList {
     width: 100%;
-}
-
-.charaList th, .charaList td {
-    width: calc(100%/12);
-    font-size: 7pt;
 }
 
 .col-bordered {
@@ -431,7 +377,7 @@ table.displayElement td:last-child {
 }
 
 .btn {
-    font-size: 9pt;
+    font-size: 12pt;
 }
 
 .checkbox-inline {
