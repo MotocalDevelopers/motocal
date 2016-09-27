@@ -65,7 +65,6 @@ var Root = React.createClass({
   getInitialState: function() {
       var initial_width = 30;
       var initial_height = 100;
-      console.log(initial_width)
 
       return {
           armNum: 5,
@@ -484,11 +483,10 @@ var Root = React.createClass({
         return (
             <div className="root">
                 <div className="rootleft" id="rootleft2" style={{height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}>
-                    <h1>元カレ計算機 (グラブル攻撃力計算機)
-                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
-                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
-                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openSimulatorHowTo} > ダメージシミュレータについて </Button>
-                    </h1>
+                    <h1>元カレ計算機 (グラブル攻撃力計算機)</h1>
+                    <Button bsStyle="info" style={{margin: "0 0 2px 2px"}} onClick={this.openHowTo} > 使い方 </Button>
+                    <Button bsStyle="info" style={{margin: "0 0 2px 2px"}} onClick={this.openNiteHowTo} > 二手等込みの編成について </Button>
+                    <Button bsStyle="info" style={{margin: "0 0 2px 2px"}} onClick={this.openSimulatorHowTo} > ダメージシミュレータについて </Button>
                     <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
                         <Modal.Header closeButton>
                             <Modal.Title>元カレ計算機について</Modal.Title>
@@ -4860,79 +4858,188 @@ var Profile = React.createClass({
                 <div className="profile">
                     <p className="text-info">9/24 技巧期待値の計算式を修正しました (通常克己・通常刹那の別枠化)</p>
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
+                    <div className="table-responsive">
                     <table className="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th className="table-profile-th">項目名</th>
+                            <th></th>
+                            <th>説明</th>
+                        </tr>
+                        </thead>
                         <tbody>
                         <tr>
-                            <th className="prof">Rank*</th>
-                            <th className="prof">ゼニス攻撃力*</th>
-                            <th className="prof">ゼニスHP</th>
-                            <th className="prof">マスターボーナス<br/>ATK(%)*</th>
-                            <th className="prof">マスターボーナス<br/>HP(%)</th>
-                            <th className="prof">ジョブ*</th>
-                            <th className="prof">残HP(%)<br/>(ジータさんのみ)</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">ジータ属性*</th>
-                            <th className="prof">敵の属性*</th>
-                            <th className="prof">武器ゼニス1</th>
-                            <th className="prof">武器ゼニス2</th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                        </tr>
-                        <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th className="table-profile-th">Rank*</th>
+                            <td className="table-profile-td"><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                            <td className="table-profile-td">基礎攻撃力、基礎HPなどはランクに従って自動で計算されます</td>
+                        </tr><tr>
+                            <th className="table-profile-th">ジョブ*</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
+                            <td className="table-profile-td">
+                                <p>ジョブごとのボーナス等は自動で反映されます。
+                                得意武器補正などを反映したくない場合"なし"を選択して下さい。</p>
+                                <ul className="list-group list-unstyled">
+                                <li className="list-group-item">ジョブ名:{Jobs[this.state.job].name}</li>
+                                <li className="list-group-item">得意1:{armTypes[Jobs[this.state.job].favArm1]}</li>
+                                <li className="list-group-item">得意2:{armTypes[Jobs[this.state.job].favArm2]}</li>
+                                <li className="list-group-item">タイプ:{jobTypes[Jobs[this.state.job].type]}タイプ</li>
+                                <li className="list-group-item">攻撃ボーナス:{Jobs[this.state.job].atBonus}</li>
+                                <li className="list-group-item">HPボーナス:{Jobs[this.state.job].hpBonus}</li>
+                                <li className="list-group-item">攻刃バフ:{Jobs[this.state.job].kouzinBonus}</li>
+                                <li className="list-group-item">守護バフ:{Jobs[this.state.job].shugoBonus}</li>
+                                <li className="list-group-item">基礎DA率:{Jobs[this.state.job].DaBonus}%</li>
+                                <li className="list-group-item">基礎TA率:{Jobs[this.state.job].TaBonus}%</li>
+                                </ul>
+                            </td>
+                        </tr><tr>
+                            <th className="table-profile-th">ゼニス攻撃力*</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
+                            <td className="table-profile-td"></td>
+                        </tr><tr>
+                            <th className="table-profile-th">ゼニスHP</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
+                            <td className="table-profile-td"></td>
+                        </tr><tr>
+                            <th className="table-profile-th">マスターボーナス<br/>ATK*</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">ジョブマスターボーナスの"攻撃力+○○％"の値です<br/>(各ジョブごとのボーナスとは別です)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">マスターボーナス<br/>HP</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">ジョブマスターボーナスの"HP+○○％"の値です<br/>(各ジョブごとのボーナスとは別です)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">残HP割合<br/>(ジータさんのみ)</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">ジータさんの残りHP割合です。パーティ全体の残りHP割合を一括で指定したい場合は、"パーティ全体への効果"の”残HP割合"を指定して下さい。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">ジータさん属性*</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
+                            <td className="table-profile-td">ジータさんの属性です</td>
+                        </tr><tr>
+                            <th className="table-profile-th">敵の属性*</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
+                            <td className="table-profile-td">有利/非有利/不利は、敵の属性に従って自動で判定されます。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">武器ゼニス1({armTypes[Jobs[this.state.job].favArm1]})</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td className="table-profile-td">得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">武器ゼニス2({armTypes[Jobs[this.state.job].favArm2]})</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td className="table-profile-td">得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</td>
                         </tr>
                         </tbody>
                     </table>
-                    <span>
-                    ジョブ情報: {Jobs[this.state.job].name}:
-                    得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
-                    {jobTypes[Jobs[this.state.job].type]}タイプ,
-                    攻撃ボーナス {Jobs[this.state.job].atBonus},
-                    HPボーナス {Jobs[this.state.job].hpBonus},
-                    攻刃バフ {Jobs[this.state.job].kouzinBonus},
-                    守護バフ {Jobs[this.state.job].shugoBonus},
-                    基礎DA率 {Jobs[this.state.job].DaBonus}%,
-                    基礎TA率 {Jobs[this.state.job].TaBonus}%
-                    </span>
+                    </div>
 
                     <h3 className="margin-top"> パーティ全体への効果 (%表記)</h3>
+                    <p>パーティメンバ全体にかかるバフ等の情報を入力してください</p>
                     <table className="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th className="table-profile-th">項目名</th>
+                            <th></th>
+                            <th>説明</th>
+                        </tr>
+                        </thead>
                         <tbody>
                         <tr>
-                            <th className="buff">通常バフ</th>
-                            <th className="buff">属性バフ</th>
-                            <th className="buff">その他バフ</th>
-                            <th className="buff">HPバフ</th>
-                            <th className="buff">DAバフ</th>
-                            <th className="buff">TAバフ</th>
-                            <th className="buff">残HP(%)</th>
-                            <th className="buff">奥義ゲージ上昇率アップ</th>
                         </tr><tr>
-                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.ougiGageBuff} </FormControl></td>
+                            <th className="table-profile-th">通常バフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">通常枠のバフ</td>
+                        </tr><tr>
+                            <th className="table-profile-th">属性バフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">属性枠のバフ</td>
+                        </tr><tr>
+                            <th className="table-profile-th">その他バフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">別枠乗算のバフ(乗算を複数加味したい場合は乗算後の値を入力してください)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">HPバフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">HP上昇のバフ(古戦場スタックとかの計算用)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">DAバフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">DA率が上がります。各キャラの基礎DA率に加算されます。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">TAバフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">TA率が上がります。各キャラの基礎TA率に加算されます。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">残HP割合</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">パーティ全体の残りHP割合です。(キャラ個別の値が入力されている場合、より低い方を採用します)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">追加ダメージバフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.ougiGageBuff} </FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">奥義ゲージ上昇率アップ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.ougiGageBuff} </FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。</td>
                         </tr>
                         </tbody>
                     </table>
@@ -4943,16 +5050,16 @@ var Profile = React.createClass({
                     <table className="table table-bordered">
                         <thead>
                         <tr>
-                            <th className="advanced-setting">項目名</th>
+                            <th className="table-profile-th">項目名</th>
                             <th></th>
                             <th>説明</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <th className="advanced-setting">敵防御固有値</th>
-                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
-                            <td className="advanced-setting">
+                            <th className="table-profile-th">敵防御固有値</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
+                            <td className="table-profile-td">
                             想定される敵の防御固有値を設定します。<br/>
                             単攻撃ダメージ、奥義ダメージ、<br/>
                             予想ターン毎ダメージの計算に影響します。<br/>
@@ -4961,24 +5068,24 @@ var Profile = React.createClass({
                             </td>
                         </tr>
                         <tr>
-                            <th className="advanced-setting">ジータさん<br/>基礎DA率</th>
-                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td className="advanced-setting">ジータさんの基礎DA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                            <th className="table-profile-th">ジータさん<br/>基礎DA率</th>
+                            <td className="table-profile-td"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td className="table-profile-td">ジータさんの基礎DA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
                         </tr>
                         <tr>
-                            <th className="advanced-setting">ジータさん<br/>基礎TA率</th>
-                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td className="advanced-setting">ジータさんの基礎TA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                            <th className="table-profile-th">ジータさん<br/>基礎TA率</th>
+                            <td className="table-profile-td"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td className="table-profile-td">ジータさんの基礎TA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
                         </tr>
                         <tr>
-                            <th className="advanced-setting">ジータさん<br/>奥義倍率</th>
-                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
-                            <td className="advanced-setting">ジータさんの奥義倍率を設定します。<br/>奥義ダメージ、予想ターン毎ダメージの計算に影響します。</td>
+                            <th className="table-profile-th">ジータさん<br/>奥義倍率</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
+                            <td className="table-profile-td">ジータさんの奥義倍率を設定します。<br/>奥義ダメージ、予想ターン毎ダメージの計算に影響します。</td>
                         </tr>
                         <tr>
-                            <th className="advanced-setting">確保したい<br/>ジータさんHP</th>
-                            <td className="advanced-setting"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
-                            <td className="advanced-setting">暴君・守護など混みの最終HPの最低ラインを設定できます。<br/>これを下回った編成は表示されません。<br/>(初期値は0です) ジータさんのHPベースです。</td>
+                            <th className="table-profile-th">確保したい<br/>ジータさんHP</th>
+                            <td className="table-profile-td"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
+                            <td className="table-profile-td">暴君・守護など混みの最終HPの最低ラインを設定できます。<br/>これを下回った編成は表示されません。<br/>(初期値は0です) ジータさんのHPベースです。</td>
                         </tr>
                         </tbody>
                     </table>

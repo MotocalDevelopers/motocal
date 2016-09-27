@@ -256,11 +256,11 @@ div.drag-hr span {
     width: calc(100%/9);
 }
 
-.profile table th.advanced-setting {
+.profile table th.table-profile-th {
     width: 20%;
 }
 
-.profile table td.advanced-setting {
+.profile table td.table-profile-td {
     width: 40%;
 }
 
