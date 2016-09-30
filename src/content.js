@@ -1414,7 +1414,7 @@ var ResultList = React.createClass({
             var unknownCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["unknownOther"]
             var unknownHaisuiCoeff = 1.0 + 0.01 * totals[key]["unknownOtherHaisui"]
 
-            var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
+            var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["cosmosAT"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
             var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"]
             var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
             // 属性(経過ターン)も最大値で計算する
@@ -1825,7 +1825,7 @@ var ResultList = React.createClass({
                         } else if(stype == 'cosmos') {
                             // コスモス武器
                             if(skillname == 'cosmosAT' && totals[key]["type"] == "attack") {
-                                totals[key]["normal"] += comb[i] * 20.0;
+                                totals[key]["cosmosAT"] += comb[i] * 20.0;
                                 totals[key]["HPdebuff"] += comb[i] * 0.40
                             } else if(skillname == 'cosmosDF' && totals[key]["type"] == "defense") {
                                 totals[key]["HPdebuff"] -= comb[i] * 0.10
@@ -1966,7 +1966,8 @@ var ResultList = React.createClass({
             totals[key]["normalNite"] = 0; totals[key]["magnaNite"] = 0;
             totals[key]["normalSante"] = 0; totals[key]["magnaSante"] = 0;
             totals[key]["unknownOtherNite"] = 0; totals[key]["normalCritical"] = 0;
-            totals[key]["magnaCritical"] = 0; totals[key]["cosmosBL"] = 0;
+            totals[key]["magnaCritical"] = 0;
+            totals[key]["cosmosBL"] = 0; totals[key]["cosmosAT"] = 0;
             totals[key]["additionalDamage"] = 0; totals[key]["ougiDebuff"] = 0;
             totals[key]["normalSetsuna"] = []; totals[key]["magnaSetsuna"] = [];
             totals[key]["normalKatsumi"] = [];
@@ -2000,7 +2001,7 @@ var ResultList = React.createClass({
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}};
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -2018,7 +2019,7 @@ var ResultList = React.createClass({
                         k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0}
             }
         }
         for(key in totals) {
@@ -4867,7 +4868,7 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-info">9/24 技巧期待値の計算式を修正しました (通常克己・通常刹那の別枠化)</p>
+                    <p className="text-info">9/30 コスモスATのスキル値にゼウス石加護が乗ってしまっていた不具合を修正しました。</p>
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
                     <table className="table table-bordered">
                         <tbody>
