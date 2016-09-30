@@ -3057,10 +3057,11 @@ var ResultList = React.createClass({
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
                         <td><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
+                    </tr><tr>
                         <td><Checkbox inline checked={this.state.switchCriticalAttack} onChange={this.handleEvent.bind(this, "switchCriticalAttack")} /> 技巧期待*攻撃力</td>
+                        <td><Checkbox inline checked={this.state.switchAverageCriticalAttack} onChange={this.handleEvent.bind(this, "switchAverageCriticalAttack")} /> 技巧平均攻撃力</td>
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</td>
-                        <td><Checkbox inline checked={this.state.switchAverageCriticalAttack} onChange={this.handleEvent.bind(this, "switchAverageCriticalAttack")} /> 技巧平均攻撃力</td>
                         <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
@@ -3077,7 +3078,9 @@ var ResultList = React.createClass({
                     </tr><tr>
                         <td><Checkbox inline checked={this.state.switchCycleDamage} onChange={this.handleEvent.bind(this, "switchCycleDamage")} />予想ターン毎ダメージ</td>
                         <td><Checkbox inline checked={this.state.switchAverageCycleDamage} onChange={this.handleEvent.bind(this, "switchAverageCycleDamage")} />予想ターン毎ダメージの平均値</td>
+                    </tr><tr>
                         <td><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</td>
+                        <td></td>
                     </tr>
                     </tbody>
                     </table>
