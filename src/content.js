@@ -567,55 +567,29 @@ var CharaList = React.createClass({
         var addChara = this.state.addChara
         var addCharaID = this.state.addCharaID
 
-        if(_ua.Mobile) {
-            return (
-                <div className="charaList">
-                    <ButtonGroup vertical block>
-                        <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
-                    </ButtonGroup>
-                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Presets</Modal.Title>
-                            <span>(最大50件しか表示されません)</span>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <RegisteredChara onClick={this.addTemplateChara} />
-                        </Modal.Body>
-                    </Modal>
-
-                    <ControlLabel>属性一括変更</ControlLabel>
-                    <FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+        return (
+            <div className="charaList">
+                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
+                <br/>
+                <span>属性一括変更</span><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+                <Grid fluid style={{"width": "100%"}} >
+                    <Row>
                     {charas.map(function(c) {
                         return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
                     })}
-                </div>
-            );
+                    </Row>
+                </Grid>
 
-        } else {
-            return (
-                <div className="charaList">
-                    <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
-                    <br/>
-                    <span>属性一括変更</span><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
-                    <Grid fluid style={{"width": "100%"}} >
-                        <Row>
-                        {charas.map(function(c) {
-                            return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
-                        })}
-                        </Row>
-                    </Grid>
-
-                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Presets</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <RegisteredChara onClick={this.addTemplateChara} />
-                        </Modal.Body>
-                    </Modal>
-                </div>
-            );
-        }
+                <Modal show={this.state.openPresets} onHide={this.closePresets}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Presets</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <RegisteredChara onClick={this.addTemplateChara} />
+                    </Modal.Body>
+                </Modal>
+            </div>
+        );
     }
 });
 
@@ -821,80 +795,59 @@ var Chara = React.createClass({
         }
     },
     render: function() {
-        if(_ua.Mobile) {
-            return (
-                <table className="table table-bordered"><tbody>
-                    <tr><th>名前</th><td><FormControl type="text" placeholder="名前" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/></td></tr>
-                    <tr><th>属性</th><td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl></td></tr>
-                    <tr><th>種族</th><td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl></td></tr>
-                    <tr><th>タイプ</th><td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl></td></tr>
-                    <tr><th>得意武器1</th><td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl></td></tr>
-                    <tr><th>得意武器2</th><td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl></td></tr>
-                    <tr><th>平均に含める</th><td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")} /></td></tr>
-                    <tr><th>素の攻撃力</th><td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td></tr>
-                    <tr><th>素のHP</th><td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
-                    <tr><th>残HP割合</th><td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td></tr>
-                    <tr><th>基礎DA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td></tr>
-                    <tr><th>基礎TA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td></tr>
-                </tbody></table>
-            );
-
-        } else {
-            return (
-                <Col xs={12} md={12} lg={6} className="col-bordered">
-                    <FormGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
-                        <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/>
-                        <InputGroup.Addon>
-                        <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>平均に含める</Checkbox>
-                        </InputGroup.Addon>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>属性　　&nbsp;</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>種族　　&nbsp;</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>タイプ　&nbsp;</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>得意武器&nbsp;</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>得意武器2</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>素の攻撃力</InputGroup.Addon>
-                        <FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>素のHP　</InputGroup.Addon>
-                        <FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>残HP割合</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>基礎DA率</InputGroup.Addon>
-                        <FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>基礎TA率</InputGroup.Addon>
-                        <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
-                    </InputGroup>
-                </FormGroup>
-                </Col>
-            );
-        }
-
+        return (
+            <Col xs={12} md={12} lg={6} className="col-bordered">
+                <FormGroup>
+                <InputGroup>
+                    <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
+                    <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/>
+                    <InputGroup.Addon>
+                    <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>平均に含める</Checkbox>
+                    </InputGroup.Addon>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>属性　　&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>種族　　&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>タイプ　&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>得意武器&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>得意武器2</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>素の攻撃力</InputGroup.Addon>
+                    <FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>素のHP　</InputGroup.Addon>
+                    <FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>残HP割合</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>基礎DA率</InputGroup.Addon>
+                    <FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>基礎TA率</InputGroup.Addon>
+                    <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
+                </InputGroup>
+            </FormGroup>
+            </Col>
+        );
     }
 });
 
