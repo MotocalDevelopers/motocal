@@ -235,6 +235,13 @@ tr.result:hover {
   margin-bottom: 3px;
 }
 
+.col-fixed-height {
+  height: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 0px;
+}
+
 .nav>li>a {
   padding: 5px 8px;
 }
