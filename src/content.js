@@ -116,9 +116,9 @@ var Root = React.createClass({
   onTouchMove: function(e) {
       //スワイプの方向（left / right）を取得
       var td = "none";
-      if (touchPosition - this.getPosition(e) > 140) {
+      if (touchPosition - this.getPosition(e) > 100) {
           td = 'right'; //左と検知
-      } else if (touchPosition - this.getPosition(e) < -140){
+      } else if (touchPosition - this.getPosition(e) < -100){
           td = 'left'; //右と検知
       }
       touchDirection = td
@@ -133,71 +133,54 @@ var Root = React.createClass({
       return e.touches[0].pageX;
   },
   swipeTab: function(direction){
-      var selected = document.querySelector("button.selected").getAttribute("id")
-      document.querySelector("button.selected").removeAttribute("class")
-      document.querySelector("div#" + selected).setAttribute("class", selected + " hidden")
+      document.querySelector("div#" + this.state.activeKey).setAttribute("class", "Tab hidden")
+      var newActiveKey = "";
 
       if(direction == "left") {
-          switch(selected) {
+          switch(this.state.activeKey) {
               case "inputTab":
-                  document.querySelector("button#systemTab").setAttribute("class", "selected")
-                  document.querySelector("div#systemTab").setAttribute("class", "systemTab")
+                  newActiveKey = "systemTab"
                   break;
               case "summonTab":
-                  document.querySelector("button#inputTab").setAttribute("class", "selected")
-                  document.querySelector("div#inputTab").setAttribute("class", "inputTab")
+                  newActiveKey = "inputTab"
                   break;
               case "charaTab":
-                  document.querySelector("button#summonTab").setAttribute("class", "selected")
-                  document.querySelector("div#summonTab").setAttribute("class", "summonTab")
+                  newActiveKey = "summonTab"
                   break;
               case "armTab":
-                  document.querySelector("button#charaTab").setAttribute("class", "selected")
-                  document.querySelector("div#charaTab").setAttribute("class", "charaTab")
+                  newActiveKey = "charaTab"
                   break;
               case "resultTab":
-                  document.querySelector("button#armTab").setAttribute("class", "selected")
-                  document.querySelector("div#armTab").setAttribute("class", "armTab")
+                  newActiveKey = "armTab"
                   break;
               case "systemTab":
-                  document.querySelector("button#resultTab").setAttribute("class", "selected")
-                  document.querySelector("div#resultTab").setAttribute("class", "resultTab")
+                  newActiveKey = "resultTab"
                   break;
           }
       } else {
-          switch(selected) {
+          switch(this.state.activeKey) {
               case "inputTab":
-                  document.querySelector("button#summonTab").setAttribute("class", "selected")
-                  document.querySelector("div#summonTab").setAttribute("class", "summonTab")
+                  newActiveKey = "summonTab"
                   break;
               case "summonTab":
-                  document.querySelector("button#charaTab").setAttribute("class", "selected")
-                  document.querySelector("div#charaTab").setAttribute("class", "charaTab")
+                  newActiveKey = "charaTab"
                   break;
               case "charaTab":
-                  document.querySelector("button#armTab").setAttribute("class", "selected")
-                  document.querySelector("div#armTab").setAttribute("class", "armTab")
+                  newActiveKey = "armTab"
                   break;
               case "armTab":
-                  document.querySelector("button#resultTab").setAttribute("class", "selected")
-                  document.querySelector("div#resultTab").setAttribute("class", "resultTab")
-
-                  // // resultTabになった時だけ結果を更新する
-                  // if(this.state.resultHasChangeButNotUpdated == undefined || this.state.resultHasChangeButNotUpdated) {
-                  //     this.setState({noResultUpdate: false});
-                  //     this.setState({resultHasChangeButNotUpdated: false});
-                  // }
+                  newActiveKey = "resultTab"
                   break;
               case "resultTab":
-                  document.querySelector("button#systemTab").setAttribute("class", "selected")
-                  document.querySelector("div#systemTab").setAttribute("class", "systemTab")
+                  newActiveKey = "systemTab"
                   break;
               case "systemTab":
-                  document.querySelector("button#inputTab").setAttribute("class", "selected")
-                  document.querySelector("div#inputTab").setAttribute("class", "inputTab")
+                  newActiveKey = "inputTab"
                   break;
           }
       }
+      document.querySelector("div#" + newActiveKey).setAttribute("class", "Tab")
+      this.setState({activeKey: newActiveKey})
   },
   getDatacharById: function(id) {
       $.ajax({
@@ -296,15 +279,6 @@ var Root = React.createClass({
       target.setAttribute("class", "Tab");
       this.setState({activeKey: eventKey})
   },
-  changeTab: function(e){
-      var selected = document.querySelector("button.selected")
-      selected.removeAttribute("class")
-      e.target.setAttribute("class", "selected")
-
-      document.querySelector("div#" + selected.getAttribute("id")).setAttribute("class", "Tab hidden")
-      var target = document.querySelector("div#" + e.target.getAttribute("id"))
-      target.setAttribute("class", "Tab");
-  },
   addArmNum: function(e) {
       var newArmNum = parseInt(this.state.armNum);
       if(newArmNum < 20) {
@@ -357,8 +331,12 @@ var Root = React.createClass({
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
                 <h2>元カレ計算機 (グラブル攻撃力計算機)</h2>
-                <Button bsStyle="success" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
-                <Button bsStyle="success" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
+                <Nav>
+                    <NavDropdown title="使い方など">
+                    <MenuItem> <p onClick={this.openHowTo}>使い方</p> </MenuItem>
+                    <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
+                    </NavDropdown>
+                </Nav>
                 <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
                     <Modal.Header closeButton>
                         <Modal.Title>元カレ計算機について</Modal.Title>
@@ -375,14 +353,13 @@ var Root = React.createClass({
                         <NiteHowTo />
                     </Modal.Body>
                 </Modal>
-                <div className="tabrow">
-                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータさん</button>
-                    <button id="summonTab" onClick={this.changeTab} >召喚石</button>
-                    <button id="charaTab" onClick={this.changeTab} >キャラ</button>
-                    <button id="armTab" onClick={this.changeTab} >武器</button>
-                    <button id="resultTab" onClick={this.changeTab} >結果</button>
-                    <button id="systemTab" onClick={this.changeTab} >保存</button>
-                </div>
+                <Nav bsStyle="tabs" activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
+                    <NavItem eventKey="inputTab">ジータ</NavItem>
+                    <NavItem eventKey="summonTab">召喚石</NavItem>
+                    <NavItem eventKey="charaTab">キャラ</NavItem>
+                    <NavItem eventKey="armTab">武器</NavItem>
+                    <NavItem eventKey="systemTab">保存</NavItem>
+                </Nav>
                 <div className="Tab" id="inputTab">
                     <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
                 </div>
