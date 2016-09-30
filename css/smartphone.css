@@ -235,6 +235,10 @@ tr.result:hover {
   margin-bottom: 3px;
 }
 
+.nav>li>a {
+  padding: 5px 8px;
+}
+
 thead.result th {
   color: rgb(255, 255, 255);
   background: rgb(59, 34, 136);
