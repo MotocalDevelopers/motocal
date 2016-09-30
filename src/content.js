@@ -195,6 +195,7 @@ var Root = React.createClass({
               var oldState = this.state
               initState["noResultUpdate"] = false
               initState["oldWidth"] = oldState.oldWidth
+              initState["activeKey"] = "inputTab"
               initState["rootleftHeight"] = oldState.rootleftHeight
               initState["rootleftWidth"] = oldState.rootleftWidth
               initState["rootrightHeight"] = oldState.rootrightHeight
@@ -358,6 +359,7 @@ var Root = React.createClass({
                     <NavItem eventKey="summonTab">召喚石</NavItem>
                     <NavItem eventKey="charaTab">キャラ</NavItem>
                     <NavItem eventKey="armTab">武器</NavItem>
+                    <NavItem eventKey="resultTab">結果</NavItem>
                     <NavItem eventKey="systemTab">保存</NavItem>
                 </Nav>
                 <div className="Tab" id="inputTab">
@@ -571,7 +573,8 @@ var CharaList = React.createClass({
             <div className="charaList">
                 <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
                 <br/>
-                <span>属性一括変更</span><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+                <span>属性一括変更</span>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
                 <Grid fluid style={{"width": "100%"}} >
                     <Row>
                     {charas.map(function(c) {
@@ -957,8 +960,8 @@ var SummonList = React.createClass({
         var defaultElement = this.state.defaultElement;
         return (
             <div className="summonList">
-                <span>属性一括変更:</span>
-                <FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.summonElements} </FormControl>
+                <span>属性一括変更</span>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")}> {selector.summonElements} </FormControl>
                 <h3 className="margin-top"> 召喚石 </h3>
                 <Grid fluid>
                     <Row>
@@ -3930,54 +3933,30 @@ var ArmList = React.createClass({
         var addArmID = this.state.addArmID;
         var considerNum = this.state.considerNum;
 
-        if(_ua.Mobile) {
-            return (
-                <div className="armList">
-                    <ButtonGroup vertical block>
-                        <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>武器テンプレートを開く</Button>
-                    </ButtonGroup>
-                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Presets</Modal.Title>
-                            <span>(最大50件しか表示されません)</span>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <RegisteredArm onClick={this.addTemplateArm} />
-                        </Modal.Body>
-                    </Modal>
+        return (
+            <div className="armList">
+                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>武器テンプレートを開く</Button>
+                <br/>
+                <span>属性一括変更</span>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+                <Grid fluid>
+                    <Row>
+                        {arms.map(function(arm, ind) {
+                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
+                        })}
+                    </Row>
+                </Grid>
 
-                    <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
-                    {arms.map(function(arm, ind) {
-                        return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
-                    })}
-                </div>
-            );
-        } else {
-            return (
-                <div className="armList">
-                    <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>武器テンプレートを開く</Button>
-                    <br/>
-                    <span>属性一括変更</span>
-                    <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
-                    <Grid fluid>
-                        <Row>
-                            {arms.map(function(arm, ind) {
-                                return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
-                            })}
-                        </Row>
-                    </Grid>
-
-                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Presets</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <RegisteredArm onClick={this.addTemplateArm} />
-                        </Modal.Body>
-                    </Modal>
-                </div>
-            )
-        };
+                <Modal show={this.state.openPresets} onHide={this.closePresets}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Presets</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <RegisteredArm onClick={this.addTemplateArm} />
+                    </Modal.Body>
+                </Modal>
+            </div>
+        )
     }
 });
 
@@ -4385,86 +4364,54 @@ var Arm = React.createClass({
         this.props.onCopy(this.props.id, this.props.keyid, this.state)
     },
     render: function(){
-        if(_ua.Mobile) {
-            return (
-                <table className="table table-bordered">
-                <tbody>
-                    <tr><th>武器名</th><td><FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} /></td></tr>
-                    <tr><th>攻撃力</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} /></td></tr>
-                    <tr><th>HP</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} /></td></tr>
-                    <tr><th>種類</th><td className="select"><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl></td></tr>
-                    <tr><th>スキル</th>
-                    <td>
-                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
-                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
-                    </td></tr>
-                    <tr><th>スキルレベル</th><td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl></td></tr>
-                    <tr><th>考慮本数</th><td className="consider">
-                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl><br/>
-                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
-                    </td></tr>
-                    <tr><th>操作</th>
-                    <td>
-                        <ButtonGroup>
-                            <Button bsStyle="primary" onClick={this.clickRemoveButton}>削除</Button>
-                            <Button bsStyle="primary" onClick={this.clickCopyButton}>コピー</Button>
-                        </ButtonGroup>
-                    </td></tr>
-                </tbody>
-                </table>
-            );
-        } else {
-            return (
-                <Col xs={12} md={12} lg={6} className="col-bordered">
-                    <FormGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>武器名　</InputGroup.Addon>
-                        <FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} />
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>攻撃力　</InputGroup.Addon>
-                    <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} />
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>HP&nbsp;&nbsp;　　</InputGroup.Addon>
-                        <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} />
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>種類　　</InputGroup.Addon>
-                    <td><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl></td>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>スキル1&nbsp;</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
-                        <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>スキル2&nbsp;</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
-                        <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>SLv&nbsp;　　</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>最小本数</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>最大本数</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
-                    </InputGroup>
-                    <ButtonGroup block>
-                        <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
-                        <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickCopyButton}>コピー</Button>
-                    </ButtonGroup>
-                    </FormGroup>
-                </Col>
-            );
-        }
+        return (
+            <Col xs={12} md={12} lg={6} className="col-bordered">
+                <FormGroup>
+                <InputGroup>
+                    <InputGroup.Addon>武器名　</InputGroup.Addon>
+                    <FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} />
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>攻撃力　</InputGroup.Addon>
+                <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} />
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>HP&nbsp;&nbsp;　　</InputGroup.Addon>
+                    <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} />
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>種類　　</InputGroup.Addon>
+                <td><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl></td>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>スキル1&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
+                    <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>スキル2&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
+                    <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>SLv&nbsp;　　</InputGroup.Addon>
+                <FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>最小本数</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>最大本数</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
+                </InputGroup>
+                <ButtonGroup block>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickCopyButton}>コピー</Button>
+                </ButtonGroup>
+                </FormGroup>
+            </Col>
+        );
     }
 });
 
