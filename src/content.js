@@ -1002,30 +1002,20 @@ var SummonList = React.createClass({
         var hCopy = this.handleOnCopy;
         var dataName = this.props.dataName;
         var defaultElement = this.state.defaultElement;
-        if(_ua.Mobile) {
-            return (
-                <div className="summonList">
-                    <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.summonElements} </FormControl>
+        return (
+            <div className="summonList">
+                <span>属性一括変更:</span>
+                <FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.summonElements} </FormControl>
+                <h3 className="margin-top"> 召喚石 </h3>
+                <Grid fluid>
+                    <Row>
                     {summons.map(function(sm, ind) {
                         return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} />;
                     })}
-                </div>
-            );
-        } else {
-            return (
-                <div className="summonList">
-                    [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.summonElements} </FormControl>
-                    <h3 className="margin-top"> 召喚石 </h3>
-                    <Grid fluid>
-                        <Row>
-                        {summons.map(function(sm, ind) {
-                            return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} />;
-                        })}
-                        </Row>
-                    </Grid>
-                </div>
-            );
-        }
+                    </Row>
+                </Grid>
+            </div>
+        );
     }
 });
 
@@ -1127,113 +1117,50 @@ var Summon = React.createClass({
             friendSummon[1] = {"label": "キャラ ", "input": "select"}
             friendSummon[0].label = "属性 "
         }
-        if(_ua.Mobile) {
-            return (
-                <table className="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>自分の石</th>
-                    <td>
-                    <FormControl componentClass="select" className="element" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
-                    <FormControl componentClass="select" className="summontype" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
-                    </td>
-                </tr>
-                <tr>
-                    <th>自分の加護量</th>
-                    <td>{selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl><br/>
+        return (
+            <Col xs={12} md={12} lg={6} className="col-bordered">
+                <FormGroup>
+                <InputGroup>
+                    <InputGroup.Addon>自分の石　</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
+                    {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
                     {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
-                    </td>
-                </tr>
-                <tr>
-                    <th>フレンド石</th>
-                    <td>
-                    <FormControl componentClass="select" className="element" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
-                    <FormControl componentClass="select" className="summontype" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl></td>
-                </tr>
-                <tr>
-                    <th>フレの加護量</th>
-                    <td>{friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl><br/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>フレの石　</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl>
+                    {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
                     {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
-                    </td>
-                </tr>
-                <tr>
-                    <th>合計攻撃力</th>
-                    <td><FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                </tr>
-                <tr>
-                    <th>合計HP</th>
-                    <td><FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                </tr>
-                <tr>
-                    <th>HPUP(%)</th>
-                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
-                </tr>
-                <tr>
-                    <th>DA加護</th>
-                    <td><FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                </tr>
-                <tr>
-                    <th>TA加護</th>
-                    <td><FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                </tr>
-                <tr>
-                    <th>操作</th>
-                    <td>
-                        <ButtonGroup vertical block>
-                            <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
-                            <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
-                        </ButtonGroup>
-                    </td>
-                </tr>
-                </tbody>
-                </table>
-            );
-        } else {
-            return (
-                <Col xs={12} md={12} lg={6} className="col-bordered">
-                    <FormGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>自分の石　</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
-                        <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
-                        {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
-                        {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>フレの石　</InputGroup.Addon>
-                        <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
-                        <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl>
-                        {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
-                        {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>合計攻撃力</InputGroup.Addon>
-                        <FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>合計HP　&nbsp;&nbsp;</InputGroup.Addon>
-                        <FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>HP加護　&nbsp;&nbsp;</InputGroup.Addon>
-                        <FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>DA加護　&nbsp;&nbsp;</InputGroup.Addon>
-                        <FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroup.Addon>TA加護　&nbsp;&nbsp;</InputGroup.Addon>
-                        <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
-                    </InputGroup>
-                    <ButtonGroup block>
-                        <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>内容を消去</Button>
-                        <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>コピー</Button>
-                    </ButtonGroup>
-                    </FormGroup>
-                </Col>
-            );
-        }
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>合計攻撃力</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>合計HP　&nbsp;&nbsp;</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>HP加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>DA加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>TA加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
+                </InputGroup>
+                <ButtonGroup block>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>内容を消去</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>コピー</Button>
+                </ButtonGroup>
+                </FormGroup>
+            </Col>
+        );
     }
 });
 

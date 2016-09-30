@@ -226,6 +226,15 @@ tr.result:hover {
     overflow: auto;
 }
 
+.col-bordered {
+  border:1px solid #258;
+  border-color: rgb(59, 34, 136);
+  border-radius: 5px;
+  padding: 2px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
 thead.result th {
   color: rgb(255, 255, 255);
   background: rgb(59, 34, 136);
