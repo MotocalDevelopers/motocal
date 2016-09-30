@@ -1,4 +1,3 @@
-/* iPhone */
 body {
     font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     margin: 0 auto;
@@ -242,8 +241,17 @@ tr.result:hover {
   border-radius: 0px;
 }
 
-.nav>li>a {
-  padding: 5px 8px;
+@media screen and (max-device-width: 480px) {
+    .nav>li>a {
+      padding: 5px 8px;
+    }
+}
+
+@media screen and (min-device-width: 481px) {
+    .nav>li>a {
+      padding: 5px 25px;
+      font-size: 15pt;
+    }
 }
 
 thead.result th {

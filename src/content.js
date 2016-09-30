@@ -328,7 +328,7 @@ var Root = React.createClass({
       }
   },
   render: function() {
-    if(_ua.Mobile) {
+    if(_ua.Mobile || _ua.Tablet) {
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
                 <h2>元カレ計算機 (グラブル攻撃力計算機)</h2>
@@ -635,7 +635,7 @@ var RegisteredChara = React.createClass({
         var limit = this.state.limit;
         var displayed_count = 0;
 
-        if(_ua.Mobile){
+        if(_ua.Mobile || _ua.Tablet){
             return (
                 <div className="charaTemplate">
                     <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
@@ -799,7 +799,7 @@ var Chara = React.createClass({
     },
     render: function() {
         return (
-            <Col xs={12} md={12} lg={6} className="col-bordered">
+            <Col xs={12} sm={6} md={6} lg={6} className="col-bordered">
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
@@ -1074,7 +1074,7 @@ var Summon = React.createClass({
             friendSummon[0].label = "属性 "
         }
         return (
-            <Col xs={12} md={12} lg={6} className="col-bordered">
+            <Col xs={12} sm={6} md={6} lg={6} className="col-bordered">
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>自分の石　</InputGroup.Addon>
@@ -3043,7 +3043,7 @@ var ResultList = React.createClass({
         }
         remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%, 追加ダメージ" + prof.additionalDamageBuff + "%, 敵防御固有値" + prof.enemyDefense
 
-        if(_ua.Mobile) {
+        if(_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="resultList">
                     <Button onClick={ () => this.setState({openDisplayElementTable: !this.state.openDisplayElementTable}) }>
@@ -3052,27 +3052,27 @@ var ResultList = React.createClass({
                     <Collapse in={this.state.openDisplayElementTable}>
                     <Grid fluid>
                     <Row>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchCriticalAttack} onChange={this.handleEvent.bind(this, "switchCriticalAttack")} /> 技巧期待*攻撃力</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchAverageCriticalAttack} onChange={this.handleEvent.bind(this, "switchAverageCriticalAttack")} /> 技巧平均攻撃力</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 単攻撃ダメージ</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchCharaDA} onChange={this.handleEvent.bind(this, "switchCharaDA")} /> キャラ連続攻撃率</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchCharaTotalExpected} onChange={this.handleEvent.bind(this, "switchCharaTotalExpected")} /> キャラ総回技値</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchOugiGage} onChange={this.handleEvent.bind(this, "switchOugiGage")} />奥義ゲージ上昇期待値</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchOugiDamage} onChange={this.handleEvent.bind(this, "switchOugiDamage")} />奥義ダメージ</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchCycleDamage} onChange={this.handleEvent.bind(this, "switchCycleDamage")} />予想ターン毎ダメージ</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchAverageCycleDamage} onChange={this.handleEvent.bind(this, "switchAverageCycleDamage")} />予想ターン毎ダメージの平均値</Col>
-                        <Col className="col-bordered col-fixed-height" xs={6} md={4} lg={2}><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchCriticalAttack} onChange={this.handleEvent.bind(this, "switchCriticalAttack")} /> 技巧期待*攻撃力</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchAverageCriticalAttack} onChange={this.handleEvent.bind(this, "switchAverageCriticalAttack")} /> 技巧平均攻撃力</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 単攻撃ダメージ</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchCharaDA} onChange={this.handleEvent.bind(this, "switchCharaDA")} /> キャラ連続攻撃率</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchCharaTotalExpected} onChange={this.handleEvent.bind(this, "switchCharaTotalExpected")} /> キャラ総回技値</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchOugiGage} onChange={this.handleEvent.bind(this, "switchOugiGage")} />奥義ゲージ上昇期待値</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchOugiDamage} onChange={this.handleEvent.bind(this, "switchOugiDamage")} />奥義ダメージ</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchCycleDamage} onChange={this.handleEvent.bind(this, "switchCycleDamage")} />予想ターン毎ダメージ</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchAverageCycleDamage} onChange={this.handleEvent.bind(this, "switchAverageCycleDamage")} />予想ターン毎ダメージの平均値</Col>
+                        <Col className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</Col>
                     </Row>
                     </Grid>
                     </Collapse>
@@ -3707,7 +3707,7 @@ var Result = React.createClass({
                     if(sw.switchSkillTotal) {
                         tablebody.push(skillstr)
                     }
-                    if(_ua.Mobile) {
+                    if(_ua.Mobile || _ua.Tablet) {
                         return (
                             <tr className="result" title={skillstr} key={rank + 1}>
                                 <td>{rank + 1}</td>
@@ -4050,7 +4050,7 @@ var RegisteredArm = React.createClass({
         var limit = this.state.limit;
         var displayed_count = 0;
 
-        if(_ua.Mobile){
+        if(_ua.Mobile || _ua.Tablet){
             return (
                 <div className="armTemplate">
                     <FormControl type="text" placeholder="武器名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
@@ -4360,7 +4360,7 @@ var Arm = React.createClass({
     },
     render: function(){
         return (
-            <Col xs={12} md={12} lg={6} className="col-bordered">
+            <Col xs={12} sm={6} md={6} lg={6} className="col-bordered">
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>武器名　</InputGroup.Addon>
@@ -4483,7 +4483,7 @@ var Profile = React.createClass({
         this.props.onChange(newState)
     },
     render: function() {
-        if(_ua.Mobile) {
+        if(_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="profile">
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
