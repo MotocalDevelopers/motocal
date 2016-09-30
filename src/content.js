@@ -67,7 +67,7 @@ var Root = React.createClass({
       var initial_height = 100;
 
       return {
-          armNum: 5,
+          armNum: 6,
           summonNum: 2,
           charaNum: 4,
           profile: [],
@@ -428,7 +428,6 @@ var Root = React.createClass({
                     <Navbar fluid>
                         <Navbar.Header>
                         <Navbar.Brand> motocal </Navbar.Brand>
-                        <Navbar.Toggle/>
                         </Navbar.Header>
                         <Nav>
                             <NavDropdown title="使い方など">
@@ -621,7 +620,7 @@ var CharaList = React.createClass({
                     <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
                     <br/>
                     <span>属性一括変更</span><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
-                    <Grid fluid>
+                    <Grid fluid style={{"width": "100%"}} >
                         <Row>
                         {charas.map(function(c) {
                             return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
@@ -865,7 +864,7 @@ var Chara = React.createClass({
 
         } else {
             return (
-                <Col xs={12} md={12} lg={12} className="col-bordered">
+                <Col xs={12} md={12} lg={6} className="col-bordered">
                     <FormGroup>
                     <InputGroup>
                         <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
@@ -1214,7 +1213,7 @@ var Summon = React.createClass({
             );
         } else {
             return (
-                <Col xs={12} md={12} lg={12} className="col-bordered">
+                <Col xs={12} md={12} lg={6} className="col-bordered">
                     <FormGroup>
                     <InputGroup>
                         <InputGroup.Addon>自分の石　</InputGroup.Addon>
@@ -4560,7 +4559,7 @@ var Arm = React.createClass({
             );
         } else {
             return (
-                <Col xs={12} md={12} lg={12} className="col-bordered">
+                <Col xs={12} md={12} lg={6} className="col-bordered">
                     <FormGroup>
                     <InputGroup>
                         <InputGroup.Addon>武器名　</InputGroup.Addon>
@@ -4827,6 +4826,17 @@ var Profile = React.createClass({
                 <div className="profile">
                     <p className="text-info">9/30 コスモスATのスキル値にゼウス石加護が乗ってしまっていた不具合を修正しました。</p>
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
+                    <span>
+                    ジョブ名: {Jobs[this.state.job].name},
+                    得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
+                    {jobTypes[Jobs[this.state.job].type]}タイプ,
+                    攻撃ボーナス {Jobs[this.state.job].atBonus},
+                    HPボーナス {Jobs[this.state.job].hpBonus},
+                    攻刃バフ {Jobs[this.state.job].kouzinBonus},
+                    守護バフ {Jobs[this.state.job].shugoBonus},
+                    基礎DA率 {Jobs[this.state.job].DaBonus}%,
+                    基礎TA率 {Jobs[this.state.job].TaBonus}%
+                    </span>
                     <div className="table-responsive">
                     <table className="table table-bordered">
                         <thead>
@@ -4847,18 +4857,6 @@ var Profile = React.createClass({
                             <td className="table-profile-td">
                                 <p>ジョブごとのボーナス等は自動で反映されます。
                                 得意武器補正などを反映したくない場合"なし"を選択して下さい。</p>
-                                <ul className="list-group list-unstyled">
-                                <li className="list-group-item">ジョブ名:{Jobs[this.state.job].name}</li>
-                                <li className="list-group-item">得意1:{armTypes[Jobs[this.state.job].favArm1]}</li>
-                                <li className="list-group-item">得意2:{armTypes[Jobs[this.state.job].favArm2]}</li>
-                                <li className="list-group-item">タイプ:{jobTypes[Jobs[this.state.job].type]}タイプ</li>
-                                <li className="list-group-item">攻撃ボーナス:{Jobs[this.state.job].atBonus}</li>
-                                <li className="list-group-item">HPボーナス:{Jobs[this.state.job].hpBonus}</li>
-                                <li className="list-group-item">攻刃バフ:{Jobs[this.state.job].kouzinBonus}</li>
-                                <li className="list-group-item">守護バフ:{Jobs[this.state.job].shugoBonus}</li>
-                                <li className="list-group-item">基礎DA率:{Jobs[this.state.job].DaBonus}%</li>
-                                <li className="list-group-item">基礎TA率:{Jobs[this.state.job].TaBonus}%</li>
-                                </ul>
                             </td>
                         </tr><tr>
                             <th className="table-profile-th">ゼニス攻撃力*</th>
