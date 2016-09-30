@@ -25,7 +25,7 @@ var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
 var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var ougiGageBuffList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+var buffLevelList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
 var ougiRatioList = [4.0, 4.5, 5.0];
 var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
@@ -456,7 +456,7 @@ module.exports.selector.zenithAttack = zenithAttackBonus.map(function(opt){retur
 module.exports.selector.zenithHP = zenithHPBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.slv = skilllevels.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.consider = considerNum.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-module.exports.selector.ougiGageBuff = ougiGageBuffList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+module.exports.selector.buffLevel = buffLevelList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.ougiRatio = ougiRatioList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.hplist = HPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.masteratk = masterATKList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
