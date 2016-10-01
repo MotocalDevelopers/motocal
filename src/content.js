@@ -7,8 +7,7 @@ var SimulatorInput = require('./simulator.js')
 var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
 var Notice = require('./notice.js')
-var {HowTo, HPChartHowTo} = require('./howto.js')
-var NiteHowTo = require('./nitehowto.js')
+var {HowTo, NiteHowTo, HPChartHowTo} = require('./howto.js')
 var {ColP} = require('./gridp.js')
 var dataForLoad = GlobalConst.dataForLoad
 
