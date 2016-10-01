@@ -3077,7 +3077,7 @@ var ResultList = React.createClass({
                 remainHPstr += "% (" + this.getTypeBonusStr(chara[i].element, prof) + ")"
             }
         }
-        remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%, 追加ダメージ" + prof.additionalDamageBuff + "%, 敵防御固有値" + prof.enemyDefense
+        remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%, 追加ダメージバフ" + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, 敵防御固有値" + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
             return (
@@ -3170,17 +3170,19 @@ var ResultList = React.createClass({
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
-                            <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                         </Modal.Body>
                     </Modal>
+                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
                 </div>
             );
 
@@ -3281,12 +3283,13 @@ var ResultList = React.createClass({
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
-                            <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
@@ -3295,11 +3298,14 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
                         <Modal.Header closeButton>
                             <Modal.Title>ダメージシミュレータ ({remainHPstr})</Modal.Title>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                         </Modal.Body>
                     </Modal>
+                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
                 </div>
             );
         }
