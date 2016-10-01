@@ -7,6 +7,7 @@ var SimulatorInput = require('./simulator.js')
 var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
 var Notice = require('./notice.js')
+var {StoredListEditor} = require('./result.js')
 var {HowTo, NiteHowTo, HPChartHowTo} = require('./howto.js')
 var {ColP} = require('./gridp.js')
 var dataForLoad = GlobalConst.dataForLoad
@@ -3139,6 +3140,7 @@ var ResultList = React.createClass({
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
+                            <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
@@ -3243,11 +3245,13 @@ var ResultList = React.createClass({
                         <Modal.Header closeButton>
                             <Modal.Title>HP Charts ({remainHPstr})</Modal.Title>
                             <Button bsStyle="primary" onClick={this.openHPChartTutorial}>使い方</Button>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
+                            <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
