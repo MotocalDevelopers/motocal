@@ -6,6 +6,7 @@ var StoredListEditor = React.createClass({
     render: function() {
         var combinations = this.props.storedList.combinations
         var armlist = this.props.storedList.armlist
+        var removeOneStoredList = this.props.removeOneStoredList
         return (
             <Modal className="hpChartTutotial" show={this.props.show} onHide={this.props.onHide}>
                 <Modal.Header closeButton>
@@ -17,13 +18,13 @@ var StoredListEditor = React.createClass({
                             <thead>
                             <tr>
                                 <th>No.</th>
-                                {armlist[0].map(function(arm, ind){
+                                {(armlist.length != 0) ? (armlist[0].map(function(arm, ind){
                                     if(arm.name != "") {
                                         return (<th>{arm.name}</th>);
                                     } else {
                                         return (<th>武器{ind}</th>);
                                     }
-                                })}
+                                })) : ""}
                                 <th>操作</th>
                             </tr>
                             </thead>
@@ -35,7 +36,7 @@ var StoredListEditor = React.createClass({
                                         {v.map(function(num){
                                             return (<td>{num}本</td>)
                                         })}
-                                        <td>Button</td>
+                                        <td><Button id={ind} onClick={removeOneStoredList} bsStyle="primary">削除</Button></td>
                                     </tr>
                                 );
                             })}

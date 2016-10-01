@@ -2916,15 +2916,39 @@ var ResultList = React.createClass({
         }
     },
     resetStoredList: function(e) {
-        this.setState({storedList: {"combinations": [], "armlist": []}})
-        this.setState({openHPChart: false})
-        this.setState({ChartButtonActive: false})
+        this.setState({
+            storedList: {"combinations": [], "armlist": []},
+            openShowStoredList: false,
+            openHPChart: false,
+            openTurnChart: false,
+            openSimulator: false,
+            ChartButtonActive: false,
+        });
     },
     openStoredList: function(e) {
         this.setState({openShowStoredList: true})
     },
     closeStoredList: function(e) {
         this.setState({openShowStoredList: false})
+    },
+    removeOneStoredList: function(e) {
+        var targetIndex = parseInt(e.target.id)
+        var newCombinations = this.state.storedList.combinations
+        newCombinations.splice(targetIndex, 1)
+        var newArmList = this.state.storedList.armlist
+        newArmList.splice(targetIndex, 1)
+
+        if(newArmList.length == 0){
+            this.resetStoredList()
+        } else {
+            this.setState({
+                storedList: {
+                    "combinations": newCombinations,
+                    "armlist": newArmList,
+                },
+            });
+            this.openHPChart();
+        }
     },
     render: function() {
         res = this.state.result;
@@ -3133,14 +3157,14 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>HP Charts ({remainHPstr})</Modal.Title>
-                            <Button bsStyle="primary" onClick={this.openHPChartTutorial}>使い方</Button>
+                            <Button bsStyle="info" onClick={this.openHPChartTutorial}>使い方</Button>
                             <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
-                            <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} />
+                            <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
@@ -3197,8 +3221,8 @@ var ResultList = React.createClass({
                     <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
                     <hr />
                         <ButtonGroup style={{width: "100%"}}>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフを開く(beta)</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフを開く</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフを開く</Button>
                             <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >ダメージシミュレータ(beta)</Button>
                         </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
@@ -3244,14 +3268,14 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>HP Charts ({remainHPstr})</Modal.Title>
-                            <Button bsStyle="primary" onClick={this.openHPChartTutorial}>使い方</Button>
+                            <Button bsStyle="info" onClick={this.openHPChartTutorial}>使い方</Button>
                             <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
-                            <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} />
+                            <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
