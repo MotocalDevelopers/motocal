@@ -9,6 +9,7 @@ var GlobalConst = require('./global_const.js')
 var Notice = require('./notice.js')
 var HowTo = require('./howto.js')
 var NiteHowTo = require('./nitehowto.js')
+var {ColP} = require('./gridp.js')
 var dataForLoad = GlobalConst.dataForLoad
 
 // inject GlobalConst...
@@ -799,7 +800,7 @@ var Chara = React.createClass({
     },
     render: function() {
         return (
-            <Col xs={12} sm={6} md={6} lg={6} className="col-bordered">
+            <ColP xs={12} sm={6} md={4} className="col-bordered">
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
@@ -849,7 +850,7 @@ var Chara = React.createClass({
                     <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
                 </InputGroup>
             </FormGroup>
-            </Col>
+            </ColP>
         );
     }
 });
@@ -1074,7 +1075,7 @@ var Summon = React.createClass({
             friendSummon[0].label = "属性 "
         }
         return (
-            <Col xs={12} sm={6} md={6} lg={6} className="col-bordered">
+            <ColP xs={12} sm={6} md={4} className="col-bordered">
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>自分の石　</InputGroup.Addon>
@@ -1115,7 +1116,7 @@ var Summon = React.createClass({
                     <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>コピー</Button>
                 </ButtonGroup>
                 </FormGroup>
-            </Col>
+            </ColP>
         );
     }
 });
@@ -4360,7 +4361,7 @@ var Arm = React.createClass({
     },
     render: function(){
         return (
-            <Col xs={12} sm={6} md={6} lg={6} className="col-bordered">
+            <ColP xs={12} sm={6} md={4} className="col-bordered">
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>武器名　</InputGroup.Addon>
@@ -4405,7 +4406,7 @@ var Arm = React.createClass({
                     <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickCopyButton}>コピー</Button>
                 </ButtonGroup>
                 </FormGroup>
-            </Col>
+            </ColP>
         );
     }
 });

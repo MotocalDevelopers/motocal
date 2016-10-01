@@ -8,6 +8,15 @@ var ColP = React.createClass({
         sm: React.PropTypes.string,
         xs: React.PropTypes.string,
     },
+    componentDidMount: function() {
+        window.addEventListener("resize", this.handleResize)
+    },
+    componentWillUnmount: function() {
+        window.removeEventListener("resize", this.handleResize)
+    },
+    handleResize: function(e) {
+        this.forceUpdate();
+    },
     getDefaultProps: function() {
         return {
             xs: 12,
