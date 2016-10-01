@@ -2947,7 +2947,13 @@ var ResultList = React.createClass({
                     "armlist": newArmList,
                 },
             });
-            this.openHPChart();
+            if(this.state.openHPChart) {
+                this.openHPChart();
+            } else if(this.state.openTurnChart) {
+                this.openTurnChart();
+            } else if(this.state.openSimulator) {
+                this.openSimulator();
+            }
         }
     },
     render: function() {
