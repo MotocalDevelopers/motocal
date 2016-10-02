@@ -3085,7 +3085,6 @@ var ResultList = React.createClass({
                     <Button onClick={ () => this.setState({openDisplayElementTable: !this.state.openDisplayElementTable}) }>
                     表示項目切り替え
                     </Button>
-                    <Collapse in={this.state.openDisplayElementTable}>
                     <Grid fluid>
                     <Row>
                         <ColP className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </ColP>
@@ -3111,7 +3110,6 @@ var ResultList = React.createClass({
                         <ColP className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</ColP>
                     </Row>
                     </Grid>
-                    </Collapse>
                     <br/>
                     動作制御:
                     <Checkbox inline checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
@@ -3192,7 +3190,6 @@ var ResultList = React.createClass({
                     <Button onClick={ () => this.setState({openDisplayElementTable: !this.state.openDisplayElementTable}) }>
                     表示項目切り替え
                     </Button>
-                    <Collapse in={this.state.openDisplayElementTable}>
                     <table className="displayElement"><tbody>
                     <tr>
                         <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </td>
@@ -3221,7 +3218,6 @@ var ResultList = React.createClass({
                         <td><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</td>
                     </tr>
                     </tbody></table>
-                    </Collapse>
                     <br/>
                     動作制御:
                     <Checkbox inline className="autoupdate" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
