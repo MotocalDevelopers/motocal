@@ -4096,7 +4096,7 @@ var Arm = React.createClass({
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>種類　　</InputGroup.Addon>
-                <td><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl></td>
+                <FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>スキル1&nbsp;</InputGroup.Addon>
