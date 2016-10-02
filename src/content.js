@@ -332,7 +332,7 @@ var Root = React.createClass({
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
                 <h2>元カレ計算機 (グラブル攻撃力計算機)</h2>
                 <Nav>
-                    <NavDropdown title="使い方など">
+                    <NavDropdown id="dropdown_howto" title="使い方など">
                     <MenuItem> <p onClick={this.openHowTo}>使い方</p> </MenuItem>
                     <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
                     </NavDropdown>
@@ -408,7 +408,7 @@ var Root = React.createClass({
                         <Navbar.Brand> motocal </Navbar.Brand>
                         </Navbar.Header>
                         <Nav>
-                            <NavDropdown title="使い方など">
+                            <NavDropdown id="dropdown_howto" title="使い方など">
                             <MenuItem> <p onClick={this.openHowTo}>使い方</p> </MenuItem>
                             <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
                             <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
