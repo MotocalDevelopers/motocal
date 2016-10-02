@@ -7,7 +7,7 @@ var SimulatorInput = require('./simulator.js')
 var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
 var Notice = require('./notice.js')
-var {StoredListEditor} = require('./result.js')
+var {StoredListEditor, ControlAutoUpdate} = require('./result.js')
 var {HowTo, NiteHowTo, HPChartHowTo} = require('./howto.js')
 var {ColP} = require('./gridp.js')
 var dataForLoad = GlobalConst.dataForLoad
@@ -2956,6 +2956,9 @@ var ResultList = React.createClass({
             }
         }
     },
+    forceResultUpdate: function() {
+        this.setState({result: this.calculateResult(this.props)})
+    },
     render: function() {
         res = this.state.result;
         var prof = this.props.data.profile
@@ -3187,8 +3190,10 @@ var ResultList = React.createClass({
         } else {
             return (
                 <div className="resultList">
+                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
+
                     <Button onClick={ () => this.setState({openDisplayElementTable: !this.state.openDisplayElementTable}) }>
-                    表示項目切り替え
+                    表示項目
                     </Button>
                     <table className="displayElement"><tbody>
                     <tr>
@@ -3218,10 +3223,6 @@ var ResultList = React.createClass({
                         <td><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</td>
                     </tr>
                     </tbody></table>
-                    <br/>
-                    動作制御:
-                    <Checkbox inline className="autoupdate" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
-
                     <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
                     <hr />
                         <ButtonGroup style={{width: "100%"}}>

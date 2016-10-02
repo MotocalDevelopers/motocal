@@ -49,4 +49,24 @@ var StoredListEditor = React.createClass({
     },
 });
 
+var ControlAutoUpdate = React.createClass({
+    render: function() {
+        if(this.props.autoupdate) {
+            return (
+                <div>
+                <Button bsStyle="danger" onClick={this.props.switchAutoUpdate} >自動更新: OFF</Button>
+                <Button bsStyle="primary" onClick={this.props.forceResultUpdate}>結果を更新</Button>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                <Button bsStyle="primary" onClick={this.props.switchAutoUpdate} >自動更新: ON</Button>
+                <Button bsStyle="primary" disabled onClick={this.props.forceResultUpdate}>結果を更新</Button>
+                </div>)
+        }
+    },
+});
+
 module.exports.StoredListEditor = StoredListEditor;
+module.exports.ControlAutoUpdate = ControlAutoUpdate
