@@ -386,8 +386,7 @@ var Root = React.createClass({
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="resultTab">
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
-                    <ResultList data={this.state} />
+                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} />
                 </div>
                 <div className="Tab hidden" id="systemTab">
                     <div className="systemList">
@@ -482,8 +481,7 @@ var Root = React.createClass({
                 </div>
                 <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
-                    <ResultList data={this.state} />
+                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")}/>
                 </div>
             </div>
         );
@@ -3082,6 +3080,7 @@ var ResultList = React.createClass({
         }
         remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%, 追加ダメージバフ" + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, 敵防御固有値" + prof.enemyDefense
 
+        var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector.ktypes} </FormControl>
         if(_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="resultList">
@@ -3138,7 +3137,7 @@ var ResultList = React.createClass({
 
                         return(
                             <div key={summonindex} className="result">
-                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {res.sortkeyname}]</h2>
+                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {changeSortKey}]</h2>
                                 <div className="charainfo"><span>{remainHPstr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
@@ -3247,7 +3246,7 @@ var ResultList = React.createClass({
 
                         return(
                             <div key={summonindex} className="result">
-                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {res.sortkeyname}]</h2>
+                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {changeSortKey}]</h2>
                                 <div className="charainfo"><span>{remainHPstr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
@@ -3479,7 +3478,7 @@ var Result = React.createClass({
                                         }
                                     }
                                  })}
-                                <td><Button id={rank} bsStyle="primary" block onClick={onClick}>グラフに<br/>加える</Button></td>
+                                <td style={{"padding": "2px"}}><Button id={rank} bsStyle="primary" block className="add-graph-button" onClick={onClick}>グラフに<br/>加える</Button></td>
                             </tr>
                         );
                     }

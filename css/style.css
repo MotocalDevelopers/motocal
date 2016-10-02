@@ -281,6 +281,14 @@ div.result {
     margin-bottom: 20px;
 }
 
+div.result>table,
+div.result>table>thead>tr>th,
+div.result>table>tbody>tr>td
+{
+    font-size: 11pt;
+    text-align: center;
+}
+
 div.resultList {
     width: calc(100% - 6px);
     padding: 3px;
@@ -319,13 +327,23 @@ table.displayElement td:last-child {
 }
 
 .form-control {
-    font-size: 9pt;
+    font-size: 11pt;
     padding: 1px;
     display: inline;
 }
 
 .btn {
     font-size: 12pt;
+}
+
+.btn-nopadding {
+    padding: 6px;
+}
+
+.add-graph-button {
+    font-size: 8pt;
+    margin: 5px 0;
+    word-wrap: break-word;
 }
 
 .checkbox-inline {
@@ -532,10 +550,7 @@ div.simulatorInput {
     min-width: 70px;
 }
 
-.btn-nopadding {
-    padding: 6px;
-}
-
 .simulatorInput .form-control {
     width: 130px;
 }
+
