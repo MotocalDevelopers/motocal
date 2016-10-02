@@ -1109,7 +1109,7 @@ var Summon = React.createClass({
                     <InputGroup.Addon>TA加護　&nbsp;&nbsp;</InputGroup.Addon>
                     <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
                 </InputGroup>
-                <ButtonGroup block>
+                <ButtonGroup style={{"width": "100%"}}>
                     <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>内容を消去</Button>
                     <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>コピー</Button>
                 </ButtonGroup>
@@ -4124,7 +4124,7 @@ var Arm = React.createClass({
                     <InputGroup.Addon>最大本数</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
                 </InputGroup>
-                <ButtonGroup block>
+                <ButtonGroup style={{"width": "100%"}}>
                     <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
                     <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickCopyButton}>コピー</Button>
                 </ButtonGroup>
