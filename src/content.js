@@ -4310,13 +4310,6 @@ var Profile = React.createClass({
                     <h3 className="margin-top"> Advanced settings</h3>
                     <p>もっともっと詳しく計算したい方向けの項目です。</p>
                     <table className="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th className="advanced-setting">項目名</th>
-                            <th></th>
-                            <th>説明</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <tr>
                             <th className="advanced-setting">敵防御固有値</th>
@@ -4371,13 +4364,6 @@ var Profile = React.createClass({
                     </span>
                     <div className="table-responsive">
                     <table className="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th className="table-profile-th">項目名</th>
-                            <th></th>
-                            <th>説明</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <tr>
                             <th className="table-profile-th">Rank*</th>
@@ -4449,13 +4435,6 @@ var Profile = React.createClass({
                     <h3 className="margin-top"> パーティ全体への効果 (%表記)</h3>
                     <p>パーティメンバ全体にかかるバフ等の情報を入力してください</p>
                     <table className="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th className="table-profile-th">項目名</th>
-                            <th></th>
-                            <th>説明</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <tr>
                         </tr><tr>
@@ -4547,13 +4526,6 @@ var Profile = React.createClass({
                     <p>もっともっと詳しく計算したい方向けの項目です。</p>
                     <div className="table-responsive">
                     <table className="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th className="table-profile-th">項目名</th>
-                            <th></th>
-                            <th>説明</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <tr>
                             <th className="table-profile-th">敵防御固有値</th>

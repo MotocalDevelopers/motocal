@@ -43,45 +43,32 @@ select, option {
 }
 
 table {
-  width: 100%;
-  border-spacing: 0;
   font-size: 9pt;
   font-weight: bold;
 }
 
+
 table th {
   color: white;
-  padding: 3px;
   background: #258;
   background:-moz-linear-gradient(rgba(34,85,136,0.7), rgba(34,85,136,0.9) 50%);
   background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(34,85,136,0.7)), to(rgba(34,85,136,0.9)));
-  font-weight: bold;
-  border-left:1px solid #258;
-  border-top:1px solid #258;
-  border-bottom:1px solid #258;
   line-height: 120%;
-  text-align: center;
   text-shadow:0 -1px 0 rgba(34,85,136,0.9);
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
 }
+
 table th:first-child {
   border-radius: 5px 0 0 0;
 }
 table th:last-child {
   border-radius:0 5px 0 0;
-  border-right:1px solid #258;
   box-shadow: 2px 2px 1px rgba(0,0,0,0.1),0px 1px 1px rgba(255,255,255,0.3) inset;
 }
-table tr td {
-  padding: 3px;
-  border-bottom: 1px solid #84b2e0;
-  border-left: 1px solid #84b2e0;
-  text-align: center;
-}
 table tr td:last-child {
-  border-right: 1px solid #84b2e0;
   box-shadow: 2px 2px 1px rgba(0,0,0,0.1);
 }
+
 table tr {
   background: #fff;
 }
@@ -91,10 +78,10 @@ table tr:nth-child(2n+1) {
 table tr:last-child td {
   box-shadow: 2px 2px 1px rgba(0,0,0,0.1);
 }
-table tr:last-child td:first-child {
+table tr:last-child td:first-child, table tr:last-child th:last-child{
   border-radius: 0 0 0 5px;
 }
-table tr:last-child td:last-child {
+table tr:last-child td:last-child, table tr:last-child th:last-child{
   border-radius: 0 0 5px 0;
 }
 
