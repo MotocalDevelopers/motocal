@@ -4616,19 +4616,21 @@
         "maxlv": 150
     }, 
     "[]バハムートナックル・フツルス": {
+        "hplv100": "239", 
         "element2": "dark", 
         "name": "[]バハムートナックル・フツルス", 
         "imageURL": "./imgs/1040604400.png", 
         "skill2": "non", 
-        "skill1": "bahaHP-fist", 
+        "skill1": "bahaFUHP-fist", 
         "element": "dark", 
+        "attacklv100": "2305", 
         "minattack": "390", 
         "attack": "2690", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "minhp": "35", 
         "type": "fist", 
         "hp": "280", 
-        "maxlv": 100
+        "maxlv": 150
     }, 
     "[]ガントレット・オブ・コスモス": {
         "element2": "light", 
@@ -5159,19 +5161,21 @@
         "maxlv": 100
     }, 
     "[]バハムートボウ・フツルス": {
+        "hplv100": "219", 
         "element2": "dark", 
         "name": "[]バハムートボウ・フツルス", 
         "imageURL": "./imgs/1040703700.png", 
         "skill2": "non", 
-        "skill1": "bahaHP-bow", 
+        "skill1": "bahaFUHP-bow", 
         "element": "dark", 
+        "attacklv100": "2460", 
         "minattack": "415", 
         "attack": "2870", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "minhp": "32", 
         "type": "bow", 
         "hp": "256", 
-        "maxlv": 100
+        "maxlv": 150
     }, 
     "[律導弓]アロー・オブ・コスモス": {
         "element2": "light", 
@@ -5570,19 +5574,21 @@
         "maxlv": 100
     }, 
     "[]バハムートハープ・フツルス": {
+        "hplv100": "231", 
         "element2": "dark", 
         "name": "[]バハムートハープ・フツルス", 
         "imageURL": "./imgs/1040803800.png", 
         "skill2": "non", 
-        "skill1": "bahaHP-music", 
+        "skill1": "bahaFUHP-music", 
         "element": "dark", 
+        "attacklv100": "2180", 
         "minattack": "370", 
         "attack": "2545", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "minhp": "63", 
         "type": "music", 
         "hp": "264", 
-        "maxlv": 100
+        "maxlv": 150
     }, 
     "[律導琴]ハープ・オブ・コスモス": {
         "element2": "light", 
@@ -6017,19 +6023,21 @@
         "maxlv": 100
     }, 
     "[]バハムートブレイド・フツルス": {
+        "hplv100": "179", 
         "element2": "dark", 
         "name": "[]バハムートブレイド・フツルス", 
         "imageURL": "./imgs/1040904400.png", 
         "skill2": "non", 
-        "skill1": "bahaHP-katana", 
+        "skill1": "bahaFUHP-katana", 
         "element": "dark", 
+        "attacklv100": "2620", 
         "minattack": "440", 
         "attack": "3060", 
-        "slvmax": 10, 
+        "slvmax": 15, 
         "minhp": "26", 
         "type": "katana", 
         "hp": "209", 
-        "maxlv": 100
+        "maxlv": 150
     }, 
     "[律導刀]ブレイド・オブ・コスモス": {
         "element2": "light", 
