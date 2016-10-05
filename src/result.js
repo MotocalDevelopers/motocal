@@ -53,16 +53,16 @@ var ControlAutoUpdate = React.createClass({
     render: function() {
         if(this.props.autoupdate) {
             return (
-                <div>
-                <Button bsStyle="danger" bsSize="large" onClick={this.props.switchAutoUpdate} >自動更新: OFF</Button>
-                <Button bsStyle="primary" bsSize="large" onClick={this.props.forceResultUpdate}>結果を更新</Button>
+                <div style={{"float": "left"}}>
+                <Button bsStyle="primary" onClick={this.props.forceResultUpdate}>結果を更新</Button>
+                <Button bsStyle="danger" onClick={this.props.switchAutoUpdate} >自動更新: OFF</Button>
                 </div>
             )
         } else {
             return (
-                <div>
-                <Button bsStyle="primary" bsSize="large" onClick={this.props.switchAutoUpdate} >自動更新: ON</Button>
-                <Button bsStyle="primary" bsSize="large" disabled onClick={this.props.forceResultUpdate}>結果を更新</Button>
+                <div style={{"float": "left"}}>
+                <Button bsStyle="primary" disabled onClick={this.props.forceResultUpdate}>結果を更新</Button>
+                <Button bsStyle="primary" onClick={this.props.switchAutoUpdate} >自動更新: ON</Button>
                 </div>)
         }
     },

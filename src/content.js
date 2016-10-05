@@ -3189,12 +3189,11 @@ var ResultList = React.createClass({
         } else {
             return (
                 <div className="resultList">
-                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
-
-                    <Button onClick={ () => this.setState({openDisplayElementTable: !this.state.openDisplayElementTable}) }>
-                    表示項目
+                    <Button onClick={ () => this.setState({openDisplayElementTable: !this.state.openDisplayElementTable}) } style={{"float": "right"}}>
+                    表示項目切り替え
                     </Button>
-                    <table className="displayElement"><tbody>
+                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
+                    <table style={{"width": "100%", "float": "left"}} className="displayElement"><tbody>
                     <tr>
                         <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </td>
                         <td><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
