@@ -65,6 +65,11 @@ skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", 
 skillnamelist["unknownOtherNiteS"] = {u"ミフネ流剣法・双星": "fire", u"デクステリティ": "dark"}
 
 # バハ
+# フツルス拳系はスキル名が同じなので先に処理
+skillnamelist["bahaFUHP-fist"] = {u"ヒュムアニムス・メンスII": "dark"}
+skillnamelist["bahaFUHP-katana"] = {u"ドーラアニムス・メンスII": "dark"}
+skillnamelist["bahaFUHP-bow"] = {u"エルンアニムス・メンスII": "dark"}
+skillnamelist["bahaFUHP-music"] = {u"ハヴンアニムス・メンスII": "dark"}
 skillnamelist["bahaAT-dagger"] = {u"ヒュムアニムス・ウィス": "dark"}
 skillnamelist["bahaAT-axe"] = {u"ドーラアニムス・ウィス": "dark"}
 skillnamelist["bahaAT-spear"] = {u"エルンアニムス・ウィス": "dark"}
@@ -81,10 +86,6 @@ skillnamelist["bahaFUATHP-spear"] = {u"コンキリオ・コルヌ": "dark"}
 skillnamelist["bahaFUATHP-axe"] = {u"コンキリオ・テラ": "dark"}
 skillnamelist["bahaFUATHP-wand"] = {u"コンキリオ・インベル": "dark"}
 skillnamelist["bahaFUATHP-gun"] = {u"コンキリオ・アルボス": "dark"}
-skillnamelist["bahaFUATHP-fist"] = {u"ヒュムアニムス・メンス": "dark"}
-skillnamelist["bahaFUATHP-katana"] = {u"ドーラアニムス・メンス": "dark"}
-skillnamelist["bahaFUATHP-bow"] = {u"エルンアニムス・メンス": "dark"}
-skillnamelist["bahaFUATHP-music"] = {u"ハヴンアニムス・メンス": "dark"}
 
 # コスモス
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
