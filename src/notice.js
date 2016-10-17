@@ -10,6 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/10/14:  武器テンプレートにマルメターノを追加/ブラックアックス解放に対応/召喚石加護量に66%を追加(蘭子用)</li>
                 <li className="list-group-item list-group-item-danger">2016/09/30:  コスモスATにゼウス石加護が乗ってしまっていた不具合を修正</li>
                 <li className="list-group-item list-group-item-info">2016/09/27:  シャノワール、ソシエ、ヴァイト等のキャラと、対応する武器を追加</li>
                 <li className="list-group-item list-group-item-info">2016/09/24: 技巧期待値の計算式を修正 (通常刹那・克己の別枠化を行いました) </li>
