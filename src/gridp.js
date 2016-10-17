@@ -3,14 +3,14 @@ var ReactDOM = require('react-dom');
 
 var ColP = React.createClass({
     propTypes: {
-        lg: React.PropTypes.string,
-        slg: React.PropTypes.string,
-        md: React.PropTypes.string,
-        smd: React.PropTypes.string,
-        sm: React.PropTypes.string,
-        ssm: React.PropTypes.string,
-        xs: React.PropTypes.string,
-        sxs: React.PropTypes.string,
+        lg: React.PropTypes.number,
+        slg: React.PropTypes.number,
+        md: React.PropTypes.number,
+        smd: React.PropTypes.number,
+        sm: React.PropTypes.number,
+        ssm: React.PropTypes.number,
+        xs: React.PropTypes.number,
+        sxs: React.PropTypes.number,
     },
     componentDidMount: function() {
         window.addEventListener("resize", this.handleResize)
