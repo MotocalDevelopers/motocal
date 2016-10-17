@@ -3193,6 +3193,7 @@ var ResultList = React.createClass({
                     表示項目切り替え
                     </Button>
                     <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
+                    <Collapse in={this.state.openDisplayElementTable}>
                     <table style={{"width": "100%", "float": "left"}} className="displayElement"><tbody>
                     <tr>
                         <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </td>
@@ -3221,7 +3222,8 @@ var ResultList = React.createClass({
                         <td><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</td>
                     </tr>
                     </tbody></table>
-                    <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
+                    </Collapse>
+                    {/*<span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>*/}
                     <hr />
                         <ButtonGroup style={{width: "100%"}}>
                             <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフを開く</Button>
