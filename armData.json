@@ -1,4 +1,21 @@
 {
+    "マルメテル・ハンマー": {
+        "element2": "earth", 
+        "name": "マルメテル・ハンマー", 
+        "imageURL": "./imgs/104020.png", 
+        "skill2": "non", 
+        "skill1": "unknownL", 
+        "element": "earth", 
+        "minattack": "360", 
+        "attacklv100": "2100",
+        "hplv100": "150",
+        "attack": "2495", 
+        "slvmax": "15", 
+        "minhp": "22", 
+        "type": "axe", 
+        "hp": "174", 
+        "maxlv": "150"
+    }, 
     "エリクトニオス": {
         "element2": "fire", 
         "name": "エリクトニオス", 
@@ -2867,12 +2884,14 @@
         "skill1": "unknownL", 
         "element": "fire", 
         "minattack": "350", 
-        "attack": "2130", 
-        "slvmax": 10, 
+        "attacklv100": "2130", 
+        "attack": "2490", 
+        "hp": "175", 
+        "slvmax": 15, 
         "minhp": "23", 
         "type": "axe", 
-        "hp": "150", 
-        "maxlv": 100
+        "hplv100": "150", 
+        "maxlv": 150
     }, 
     "[]ソウルイーター": {
         "element2": "dark", 
