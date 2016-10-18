@@ -18,9 +18,11 @@ var ColP = React.createClass({
         }
     },
     updateWidth: function() {
+        var width = 0
         var myDiv = ReactDOM.findDOMNode(this.refs.colp)
-        if(myDiv != null) {
-            this.setState({width: myDiv.parentNode.getBoundingClientRect().width})
+        if(myDiv != null) width = myDiv.parentNode.getBoundingClientRect().width
+        if(width != 0) {
+            this.setState({width: width})
         }
     },
     componentDidMount: function() {
@@ -32,7 +34,6 @@ var ColP = React.createClass({
     },
     handleResize: function(e) {
         this.updateWidth();
-        this.forceUpdate();
     },
     getDefaultProps: function() {
         return {
@@ -41,7 +42,7 @@ var ColP = React.createClass({
     },
     render: function() {
         var size = 12; // default
-        var width = 0;
+        var width = this.state.width;
         var values = {
             "sxs": this.props.sxs,
             "xs": this.props.xs,
@@ -75,7 +76,7 @@ var ColP = React.createClass({
             values["lg"] = values["slg"]
         }
 
-        if(this.state.width <= 320) {
+        if(width <= 320) {
             size = values["sxs"]
         } else if(width <= 480) {
             size = values["xs"]

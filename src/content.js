@@ -55,7 +55,6 @@ function getVarInQuery(key){
     return result;
 }
 
-// global hash for loading new data
 var touchPosition = null;
 var touchDirection = null;
 
@@ -220,6 +219,9 @@ var Root = React.createClass({
           this.getDatacharById(urlid);
       }
       this.setState({noResultUpdate: false});
+  },
+  componentDidUpdate: function() {
+      window.dispatchEvent(new Event('resize'))
   },
   handleEvent: function(key, e) {
       var newState = this.state
@@ -4401,7 +4403,6 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-info">9/30 コスモスATのスキル値にゼウス石加護が乗ってしまっていた不具合を修正しました。</p>
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
                     <span>
                     ジョブ名: {Jobs[this.state.job].name},
