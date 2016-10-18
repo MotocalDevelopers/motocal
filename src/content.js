@@ -3223,33 +3223,33 @@ var ResultList = React.createClass({
                     <Collapse in={this.state.openDisplayElementTable}>
                     <table style={{"width": "100%", textAlign: "center", marginBottom: "2px"}} className="table table-bordered"><tbody>
                     <tr>
-                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} ><Checkbox inline checked={this.state.switchTotalAttack} /> 攻撃力(二手技巧無し) </td>
-                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} ><Checkbox inline checked={this.state.switchATKandHP} /> 戦力</td>
-                        <td onClick={this.handleEvent.bind(this, "switchHP")} ><Checkbox inline checked={this.state.switchHP} /> HP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> 攻撃力(二手技巧無し) </td>
+                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} className={(this.state.switchATKandHP == 1) ? "display-checked" : "display-unchecked"}>戦力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchHP")} className={(this.state.switchHP == 1) ? "display-checked" : "display-unchecked"}> HP</td>
                     </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchDATA")} ><Checkbox inline checked={this.state.switchDATA} /> 連続攻撃率</td>
-                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} ><Checkbox inline checked={this.state.switchExpectedAttack} /> 期待攻撃回数</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} ><Checkbox inline checked={this.state.switchCriticalRatio} /> 技巧期待値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchDATA")} className={(this.state.switchDATA == 1) ? "display-checked" : "display-unchecked"}> 連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} className={(this.state.switchExpectedAttack == 1) ? "display-checked" : "display-unchecked"}> 期待攻撃回数</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} className={(this.state.switchCriticalRatio == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値</td>
                     </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} ><Checkbox inline checked={this.state.switchCriticalAttack} /> 技巧期待値*攻撃力</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} ><Checkbox inline checked={this.state.switchAverageAttack} /> パーティ平均攻撃力(二手技巧無し)</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} ><Checkbox inline checked={this.state.switchAverageCriticalAttack} /> 技巧平均攻撃力 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} className={(this.state.switchCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値*攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} className={(this.state.switchAverageAttack == 1) ? "display-checked" : "display-unchecked"}> パーティ平均攻撃力(二手技巧無し)</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} className={(this.state.switchAverageCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧平均攻撃力 </td>
                     </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} ><Checkbox inline checked={this.state.switchTotalExpected} /> 総合*期待回数*技巧期待値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} ><Checkbox inline checked={this.state.switchAverageTotalExpected} /> 総回技のパーティ平均値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} ><Checkbox inline checked={this.state.switchCycleDamage} /> 予想ターン毎ダメージ </td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} className={(this.state.switchTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総合*期待回数*技巧期待値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} className={(this.state.switchAverageTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総回技のパーティ平均値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージ </td>
                     </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} ><Checkbox inline checked={this.state.switchAverageCycleDamage} /> 予想ターン毎ダメージの平均値 </td>
-                        <td onClick={this.handleEvent.bind(this, "switchDamage")} ><Checkbox inline checked={this.state.switchDamage} /> 単攻撃ダメージ</td>
-                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} ><Checkbox inline checked={this.state.switchOugiGage} /> 奥義ゲージ上昇期待値 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージの平均値 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchDamage")} className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> 単攻撃ダメージ</td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> 奥義ゲージ上昇期待値 </td>
                     </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} ><Checkbox inline checked={this.state.switchOugiDamage} /> 奥義ダメージ </td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} ><Checkbox inline checked={this.state.switchCharaAttack} /> キャラ攻撃力</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} ><Checkbox inline checked={this.state.switchCharaHP} /> キャラHP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> 奥義ダメージ </td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP</td>
                     </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} ><Checkbox inline checked={this.state.switchCharaDA} /> キャラ連続攻撃率</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} ><Checkbox inline checked={this.state.switchCharaTotalExpected} /> キャラ総回技値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} ><Checkbox inline checked={this.state.switchSkillTotal} />スキル合計値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}> キャラ連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}> キャラ総回技値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                     </tr>
                     </tbody></table>
                     </Collapse>
@@ -3336,30 +3336,30 @@ var ResultList = React.createClass({
                     <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
                     <table style={{"width": "100%", "float": "left", textAlign: "center"}} className="table table-bordered"><tbody>
                     <tr>
-                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} ><Checkbox inline checked={this.state.switchTotalAttack} /> 攻撃力(二手技巧無し) </td>
-                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} ><Checkbox inline checked={this.state.switchATKandHP}/> 戦力</td>
-                        <td onClick={this.handleEvent.bind(this, "switchHP")} ><Checkbox inline checked={this.state.switchHP} /> HP</td>
-                        <td onClick={this.handleEvent.bind(this, "switchDATA")} ><Checkbox inline checked={this.state.switchDATA} /> 連続攻撃率</td>
-                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} ><Checkbox inline checked={this.state.switchExpectedAttack} /> 期待攻撃回数</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} ><Checkbox inline checked={this.state.switchCriticalRatio} /> 技巧期待値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} ><Checkbox inline checked={this.state.switchCriticalAttack} /> 技巧期待値*攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> 攻撃力(二手技巧無し) </td>
+                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} className={(this.state.switchATKandHP == 1) ? "display-checked" : "display-unchecked"}>戦力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchHP")} className={(this.state.switchHP == 1) ? "display-checked" : "display-unchecked"}> HP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchDATA")} className={(this.state.switchDATA == 1) ? "display-checked" : "display-unchecked"}> 連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} className={(this.state.switchExpectedAttack == 1) ? "display-checked" : "display-unchecked"}> 期待攻撃回数</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} className={(this.state.switchCriticalRatio == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} className={(this.state.switchCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値*攻撃力</td>
                     </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} ><Checkbox inline checked={this.state.switchAverageAttack} /> パーティ平均攻撃力(二手技巧無し)</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} ><Checkbox inline checked={this.state.switchAverageCriticalAttack} /> 技巧平均攻撃力 </td>
-                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} ><Checkbox inline checked={this.state.switchTotalExpected} /> 総合*期待回数*技巧期待値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} ><Checkbox inline checked={this.state.switchAverageTotalExpected} /> 総回技のパーティ平均値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} ><Checkbox inline checked={this.state.switchCycleDamage} /> 予想ターン毎ダメージ </td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} ><Checkbox inline checked={this.state.switchAverageCycleDamage} /> 予想ターン毎ダメージの平均値 </td>
-                        <td onClick={this.handleEvent.bind(this, "switchDamage")} ><Checkbox inline checked={this.state.switchDamage} /> 単攻撃ダメージ</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} className={(this.state.switchAverageAttack == 1) ? "display-checked" : "display-unchecked"}> パーティ平均攻撃力(二手技巧無し)</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} className={(this.state.switchAverageCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧平均攻撃力 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} className={(this.state.switchTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総合*期待回数*技巧期待値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} className={(this.state.switchAverageTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総回技のパーティ平均値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージ </td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージの平均値 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchDamage")} className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> 単攻撃ダメージ</td>
                     </tr>
                     <tr>
-                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} ><Checkbox inline checked={this.state.switchOugiGage} /> 奥義ゲージ上昇期待値 </td>
-                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} ><Checkbox inline checked={this.state.switchOugiDamage} /> 奥義ダメージ </td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} ><Checkbox inline checked={this.state.switchCharaAttack} /> キャラ攻撃力</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} ><Checkbox inline checked={this.state.switchCharaHP} /> キャラHP</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} ><Checkbox inline checked={this.state.switchCharaDA} /> キャラ連続攻撃率</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} ><Checkbox inline checked={this.state.switchCharaTotalExpected} /> キャラ総回技値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} ><Checkbox inline checked={this.state.switchSkillTotal} />スキル合計値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> 奥義ゲージ上昇期待値 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> 奥義ダメージ </td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}> キャラ連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}> キャラ総回技値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                     </tr>
                     </tbody></table>
                     {/*<span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>*/}

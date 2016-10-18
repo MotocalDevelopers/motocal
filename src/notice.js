@@ -10,8 +10,9 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-info">キャラの削除と入れ替え機能を実装</li>
-                <li className="list-group-item list-group-item-info">通常守護(小)のSLv111-15の効果量を反映 / レイアウト調整</li>
+                <li className="list-group-item list-group-item-info">2016/10/18: 表示項目の切り替えをクリックしやすくした</li>
+                <li className="list-group-item list-group-item-info">2016/10/18: キャラの削除と入れ替え機能を実装</li>
+                <li className="list-group-item list-group-item-info">2016/10/18: 通常守護(小)のSLv111-15の効果量を反映 / レイアウト調整</li>
                 <li className="list-group-item list-group-item-danger">2016/10/17: 朱雀翼弦のスキル「紅蓮の呪印・弐」にゼウス系石の効果が乗ってしまっていた不具合を修正 / シミュレータのバフリストに「40％」が抜けていたので追記</li>
                 <li className="list-group-item list-group-item-info">2016/10/14: 武器テンプレートにマルメターノを追加/ブラックアックス解放に対応/召喚石加護量に66%を追加(蘭子用)</li>
                 <li className="list-group-item list-group-item-info">2016/10/01:  PC版レイアウトの調整 (縦分割レイアウトの撤廃)</li>

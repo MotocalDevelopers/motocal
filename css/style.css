@@ -551,3 +551,12 @@ div.simulatorInput {
     width: 130px;
 }
 
+.display-checked {
+  background: #bbd4ff;
+  transition-duration: 0;
+}
+.display-unchecked {
+  background: #FFFFFF;
+  cursor:pointer;
+  transition-duration: 0;
+}

@@ -568,3 +568,14 @@ label {
     width: 60px;
     overflow: visible;
 }
+.display-checked {
+  background: #bbd4ff;
+  transition-duration: 0;
+  height: 20px;
+}
+.display-unchecked {
+  background: #FFFFFF;
+  cursor:pointer;
+  transition-duration: 0;
+  height: 20px;
+}
