@@ -2958,6 +2958,9 @@ var ResultList = React.createClass({
     forceResultUpdate: function() {
         this.setState({result: this.calculateResult(this.props)})
     },
+    openDisplayTable: function() {
+        this.setState({openDisplayElementTable: !this.state.openDisplayElementTable})
+    },
     render: function() {
         res = this.state.result;
         var prof = this.props.data.profile
@@ -3085,9 +3088,10 @@ var ResultList = React.createClass({
         if(_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="resultList">
-                    <Button onClick={ () => this.setState({openDisplayElementTable: !this.state.openDisplayElementTable}) }>
+                    <Button onClick={this.openDisplayTable} style={{"float": "right"}}>
                     表示項目切り替え
                     </Button>
+                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
                     <Grid fluid>
                     <Row>
                         <ColP className="col-bordered col-fixed-height" xs={6} sm={4} md={4} lg={2}><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </ColP>
@@ -3189,11 +3193,7 @@ var ResultList = React.createClass({
         } else {
             return (
                 <div className="resultList">
-                    <Button onClick={ () => this.setState({openDisplayElementTable: !this.state.openDisplayElementTable}) } style={{"float": "right"}}>
-                    表示項目切り替え
-                    </Button>
                     <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
-                    <Collapse in={this.state.openDisplayElementTable}>
                     <table style={{"width": "100%", "float": "left", textAlign: "center"}} className="table table-bordered"><tbody>
                     <tr>
                         <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </td>
@@ -3222,7 +3222,6 @@ var ResultList = React.createClass({
                         <td><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</td>
                     </tr>
                     </tbody></table>
-                    </Collapse>
                     {/*<span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>*/}
                     <hr />
                         <ButtonGroup style={{width: "100%"}}>
