@@ -557,7 +557,7 @@ var CharaList = React.createClass({
         var maxvalue = Math.max.apply(null, newcharas)
 
         // 該当の "key" を持つものを削除する
-        newcharas.splice(this.state.charas.indexOf(keyid), 1)
+        newcharas.splice(id, 1)
         // 1個補充
         newcharas.push(maxvalue + 1)
         this.setState({charalist: newcharas})
@@ -577,6 +577,38 @@ var CharaList = React.createClass({
 
         // Root へ変化を伝搬
         this.props.onChange(newcharalist, false);
+    },
+    handleMoveUp: function(id){
+        if(id > 0) {
+            var newcharas = this.state.charas
+
+            // charas swap
+            newcharas.splice(id - 1, 2, newcharas[id], newcharas[id - 1])
+            this.setState({charas: newcharas})
+
+            // charalist swap
+            var newcharalist = this.state.charalist;
+            newcharalist.splice(id - 1, 2, newcharalist[id], newcharalist[id - 1])
+            this.setState({charalist: newcharalist})
+            // Root へ変化を伝搬
+            this.props.onChange(newcharalist, false);
+        }
+    },
+    handleMoveDown: function(id){
+        if(id < this.props.charaNum - 1) {
+            var newcharas = this.state.charas
+
+            // charas swap
+            newcharas.splice(id, 2, newcharas[id + 1], newcharas[id])
+            this.setState({charas: newcharas})
+
+            // charalist swap
+            var newcharalist = this.state.charalist;
+            newcharalist.splice(id, 2, newcharalist[id + 1], newcharalist[id])
+            this.setState({charalist: newcharalist})
+            // Root へ変化を伝搬
+            this.props.onChange(newcharalist, false);
+        }
     },
     addTemplateChara: function(templateChara) {
         var minimumID = -1;
@@ -614,6 +646,8 @@ var CharaList = React.createClass({
         var addChara = this.state.addChara
         var addCharaID = this.state.addCharaID
         var handleOnRemove = this.handleOnRemove
+        var handleMoveUp = this.handleMoveUp
+        var handleMoveDown = this.handleMoveDown
 
         return (
             <div className="charaList">
@@ -624,7 +658,7 @@ var CharaList = React.createClass({
                 <Grid fluid style={{"width": "100%"}} >
                     <Row>
                     {charas.map(function(c, ind) {
-                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
+                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
                     })}
                     </Row>
                 </Grid>
@@ -640,98 +674,6 @@ var CharaList = React.createClass({
             </div>
         );
     }
-});
-
-var RegisteredChara = React.createClass({
-    getInitialState: function() {
-        return {
-            filterText: "",
-            filterElement: "all",
-            charaData: {},
-            limit: 50,
-        };
-    },
-    componentDidMount: function() {
-        $.ajax({
-            url: "./charaData.json",
-            dataType: 'json',
-            cache: false,
-            timeout: 10000,
-            success: function(data) {
-                this.setState({charaData: data})
-            }.bind(this),
-            error: function(xhr, status, err) {
-                alert("Error!: キャラデータの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
-            }.bind(this)
-        });
-    },
-    clickedTemplate: function(e) {
-        this.props.onClick(this.state.charaData[e.target.getAttribute("id")]);
-    },
-    handleEvent: function(key, e) {
-        var newState = this.state
-        newState[key] = e.target.value
-        this.setState(newState)
-    },
-    render: function() {
-        var clickedTemplate = this.clickedTemplate;
-        var filterText = this.state.filterText;
-        var filterElement = this.state.filterElement;
-        var charaData = this.state.charaData
-        var limit = this.state.limit;
-        var displayed_count = 0;
-
-        if(_ua.Mobile || _ua.Tablet){
-            return (
-                <div className="charaTemplate">
-                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
-                    <div className="charaTemplateContent">
-                        {Object.keys(charaData).map(function(key, ind) {
-                            if(filterElement == "all" || (charaData[key].element == filterElement)){
-                                if(filterText == "" || key.indexOf(filterText) != -1){
-                                    if(displayed_count < limit) {
-                                        displayed_count++;
-                                        return (
-                                            <div className="onechara" key={key}>
-                                                <p>{charaData[key].name}</p><br/>
-                                                <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
-                                            </div>
-                                        );
-                                    } else {
-                                        return "";
-                                    }
-                                }
-                            }
-                            return "";
-                        })}
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div className="charaTemplate">
-                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
-                    <div className="charaTemplateContent">
-                        {Object.keys(charaData).map(function(key, ind) {
-                            if(filterElement == "all" || (charaData[key].element == filterElement)){
-                                if(filterText == "" || key.indexOf(filterText) != -1){
-                                    return (
-                                        <div className="onechara" key={key}>
-                                            <p>{charaData[key].name}</p><br/>
-                                            <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
-                                        </div>
-                                    );
-                                }
-                            }
-                            return "";
-                        })}
-                    </div>
-                </div>
-            )
-        }
-    },
 });
 
 var Chara = React.createClass({
@@ -846,13 +788,19 @@ var Chara = React.createClass({
     clickRemoveButton: function(e) {
         this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
     },
+    clickMoveUp: function(e) {
+        this.props.onMoveUp(this.props.id)
+    },
+    clickMoveDown: function(e) {
+        this.props.onMoveDown(this.props.id)
+    },
     render: function() {
         return (
-            <ColP sxs={12} ssm={6} sm={4} className="col-bordered">
-                {(this.props.keyid < 3) ?
-                    <Label bsStyle="primary">Front No.{this.props.keyid+1}</Label>
+            <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
+                {(this.props.id < 3) ?
+                    <h3><Label bsStyle="primary">Front No.{this.props.id+1}</Label></h3>
                         :
-                    <Label bsStyle="default">Sub No.{this.props.keyid+1}</Label>
+                    <h3><Label bsStyle="default">Sub No.{this.props.id+1}</Label></h3>
                 }
                 <FormGroup>
                 <InputGroup>
@@ -903,12 +851,106 @@ var Chara = React.createClass({
                     <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
                 </InputGroup>
                 <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="primary" style={{"width": "99%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
+                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>前へ</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
+                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>後へ</Button>
                 </ButtonGroup>
             </FormGroup>
             </ColP>
         );
     }
+});
+
+var RegisteredChara = React.createClass({
+    getInitialState: function() {
+        return {
+            filterText: "",
+            filterElement: "all",
+            charaData: {},
+            limit: 50,
+        };
+    },
+    componentDidMount: function() {
+        $.ajax({
+            url: "./charaData.json",
+            dataType: 'json',
+            cache: false,
+            timeout: 10000,
+            success: function(data) {
+                this.setState({charaData: data})
+            }.bind(this),
+            error: function(xhr, status, err) {
+                alert("Error!: キャラデータの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
+            }.bind(this)
+        });
+    },
+    clickedTemplate: function(e) {
+        this.props.onClick(this.state.charaData[e.target.getAttribute("id")]);
+    },
+    handleEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    render: function() {
+        var clickedTemplate = this.clickedTemplate;
+        var filterText = this.state.filterText;
+        var filterElement = this.state.filterElement;
+        var charaData = this.state.charaData
+        var limit = this.state.limit;
+        var displayed_count = 0;
+
+        if(_ua.Mobile || _ua.Tablet){
+            return (
+                <div className="charaTemplate">
+                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
+                    <div className="charaTemplateContent">
+                        {Object.keys(charaData).map(function(key, ind) {
+                            if(filterElement == "all" || (charaData[key].element == filterElement)){
+                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                    if(displayed_count < limit) {
+                                        displayed_count++;
+                                        return (
+                                            <div className="onechara" key={key}>
+                                                <p>{charaData[key].name}</p><br/>
+                                                <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
+                                            </div>
+                                        );
+                                    } else {
+                                        return "";
+                                    }
+                                }
+                            }
+                            return "";
+                        })}
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div className="charaTemplate">
+                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
+                    <div className="charaTemplateContent">
+                        {Object.keys(charaData).map(function(key, ind) {
+                            if(filterElement == "all" || (charaData[key].element == filterElement)){
+                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                    return (
+                                        <div className="onechara" key={key}>
+                                            <p>{charaData[key].name}</p><br/>
+                                            <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
+                                        </div>
+                                    );
+                                }
+                            }
+                            return "";
+                        })}
+                    </div>
+                </div>
+            )
+        }
+    },
 });
 
 var SummonList = React.createClass({
