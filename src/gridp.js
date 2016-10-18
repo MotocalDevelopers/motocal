@@ -12,7 +12,7 @@ var ColP = React.createClass({
         xs: React.PropTypes.number,
         sxs: React.PropTypes.number,
     },
-    getInitialState: () => {
+    getInitialState: function(){
         return {
             width: 0,
         }
