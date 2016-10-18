@@ -2,13 +2,14 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
-var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var SimulatorInput = require('./simulator.js')
-var SimulationChart = require('./chart.js')
+var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
 var Notice = require('./notice.js')
-var HowTo = require('./howto.js')
-var NiteHowTo = require('./nitehowto.js')
+var {StoredListEditor, ControlAutoUpdate} = require('./result.js')
+var {HowTo, NiteHowTo, HPChartHowTo} = require('./howto.js')
+var {ColP} = require('./gridp.js')
 var dataForLoad = GlobalConst.dataForLoad
 
 // inject GlobalConst...
@@ -28,8 +29,6 @@ var summonTypes = GlobalConst.summonTypes
 var summonElementTypes = GlobalConst.summonElementTypes
 var raceTypes = GlobalConst.raceTypes
 var filterElementTypes = GlobalConst.filterElementTypes
-var supportedTurnChartSortkeys = GlobalConst.supportedTurnChartSortkeys
-var supportedChartSortkeys = GlobalConst.supportedChartSortkeys
 var enemyDefenseType = GlobalConst.enemyDefenseType
 var _ua = GlobalConst._ua;
 
@@ -56,24 +55,19 @@ function getVarInQuery(key){
     return result;
 }
 
-// global hash for loading new data
 var touchPosition = null;
 var touchDirection = null;
 
 // Root class contains [Profile, ArmList, Results].
 var Root = React.createClass({
   getInitialState: function() {
-      var initial_width = 50;
+      var initial_width = 30;
       var initial_height = 100;
 
-      if(window.innerWidth <= 1450) {
-          initial_width = 100;
-          initial_height = 50;
-      }
       return {
-          armNum: 5,
+          armNum: 6,
           summonNum: 2,
-          charaNum: 6,
+          charaNum: 4,
           profile: [],
           armlist: [],
           chara: [],
@@ -87,10 +81,11 @@ var Root = React.createClass({
           rootleftHeight: initial_height,
           rootleftWidth: initial_width,
           rootrightHeight: initial_height,
-          rootrightWidth: initial_width,
+          rootrightWidth: 100 - initial_width,
           openHowTo: false,
           openNiteHowTo: false,
           openSimulatorHowTo: false,
+          activeKey: "inputTab",
       };
   },
   openHowTo: function(e) {
@@ -119,9 +114,9 @@ var Root = React.createClass({
   onTouchMove: function(e) {
       //スワイプの方向（left / right）を取得
       var td = "none";
-      if (touchPosition - this.getPosition(e) > 140) {
+      if (touchPosition - this.getPosition(e) > 100) {
           td = 'right'; //左と検知
-      } else if (touchPosition - this.getPosition(e) < -140){
+      } else if (touchPosition - this.getPosition(e) < -100){
           td = 'left'; //右と検知
       }
       touchDirection = td
@@ -136,71 +131,54 @@ var Root = React.createClass({
       return e.touches[0].pageX;
   },
   swipeTab: function(direction){
-      var selected = document.querySelector("button.selected").getAttribute("id")
-      document.querySelector("button.selected").removeAttribute("class")
-      document.querySelector("div#" + selected).setAttribute("class", selected + " hidden")
+      document.querySelector("div#" + this.state.activeKey).setAttribute("class", "Tab hidden")
+      var newActiveKey = "";
 
       if(direction == "left") {
-          switch(selected) {
+          switch(this.state.activeKey) {
               case "inputTab":
-                  document.querySelector("button#systemTab").setAttribute("class", "selected")
-                  document.querySelector("div#systemTab").setAttribute("class", "systemTab")
+                  newActiveKey = "systemTab"
                   break;
               case "summonTab":
-                  document.querySelector("button#inputTab").setAttribute("class", "selected")
-                  document.querySelector("div#inputTab").setAttribute("class", "inputTab")
+                  newActiveKey = "inputTab"
                   break;
               case "charaTab":
-                  document.querySelector("button#summonTab").setAttribute("class", "selected")
-                  document.querySelector("div#summonTab").setAttribute("class", "summonTab")
+                  newActiveKey = "summonTab"
                   break;
               case "armTab":
-                  document.querySelector("button#charaTab").setAttribute("class", "selected")
-                  document.querySelector("div#charaTab").setAttribute("class", "charaTab")
+                  newActiveKey = "charaTab"
                   break;
               case "resultTab":
-                  document.querySelector("button#armTab").setAttribute("class", "selected")
-                  document.querySelector("div#armTab").setAttribute("class", "armTab")
+                  newActiveKey = "armTab"
                   break;
               case "systemTab":
-                  document.querySelector("button#resultTab").setAttribute("class", "selected")
-                  document.querySelector("div#resultTab").setAttribute("class", "resultTab")
+                  newActiveKey = "resultTab"
                   break;
           }
       } else {
-          switch(selected) {
+          switch(this.state.activeKey) {
               case "inputTab":
-                  document.querySelector("button#summonTab").setAttribute("class", "selected")
-                  document.querySelector("div#summonTab").setAttribute("class", "summonTab")
+                  newActiveKey = "summonTab"
                   break;
               case "summonTab":
-                  document.querySelector("button#charaTab").setAttribute("class", "selected")
-                  document.querySelector("div#charaTab").setAttribute("class", "charaTab")
+                  newActiveKey = "charaTab"
                   break;
               case "charaTab":
-                  document.querySelector("button#armTab").setAttribute("class", "selected")
-                  document.querySelector("div#armTab").setAttribute("class", "armTab")
+                  newActiveKey = "armTab"
                   break;
               case "armTab":
-                  document.querySelector("button#resultTab").setAttribute("class", "selected")
-                  document.querySelector("div#resultTab").setAttribute("class", "resultTab")
-
-                  // // resultTabになった時だけ結果を更新する
-                  // if(this.state.resultHasChangeButNotUpdated == undefined || this.state.resultHasChangeButNotUpdated) {
-                  //     this.setState({noResultUpdate: false});
-                  //     this.setState({resultHasChangeButNotUpdated: false});
-                  // }
+                  newActiveKey = "resultTab"
                   break;
               case "resultTab":
-                  document.querySelector("button#systemTab").setAttribute("class", "selected")
-                  document.querySelector("div#systemTab").setAttribute("class", "systemTab")
+                  newActiveKey = "systemTab"
                   break;
               case "systemTab":
-                  document.querySelector("button#inputTab").setAttribute("class", "selected")
-                  document.querySelector("div#inputTab").setAttribute("class", "inputTab")
+                  newActiveKey = "inputTab"
                   break;
           }
       }
+      document.querySelector("div#" + newActiveKey).setAttribute("class", "Tab")
+      this.setState({activeKey: newActiveKey})
   },
   getDatacharById: function(id) {
       $.ajax({
@@ -215,6 +193,7 @@ var Root = React.createClass({
               var oldState = this.state
               initState["noResultUpdate"] = false
               initState["oldWidth"] = oldState.oldWidth
+              initState["activeKey"] = "inputTab"
               initState["rootleftHeight"] = oldState.rootleftHeight
               initState["rootleftWidth"] = oldState.rootleftWidth
               initState["rootrightHeight"] = oldState.rootrightHeight
@@ -240,10 +219,9 @@ var Root = React.createClass({
           this.getDatacharById(urlid);
       }
       this.setState({noResultUpdate: false});
-      window.addEventListener('resize', this.handleResize);
   },
-  componentWillUnmount() {
-      window.removeEventListener('resize', this.handleResize);
+  componentDidUpdate: function() {
+      window.dispatchEvent(new Event('resize'))
   },
   handleEvent: function(key, e) {
       var newState = this.state
@@ -295,14 +273,13 @@ var Root = React.createClass({
           },
       })
   },
-  changeTab: function(e){
-      var selected = document.querySelector("button.selected")
-      selected.removeAttribute("class")
-      e.target.setAttribute("class", "selected")
+  handleChangeTab: function(eventKey){
+      var activeKey = (this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey
+      document.querySelector("div#" + activeKey).setAttribute("class", "Tab hidden")
 
-      document.querySelector("div#" + selected.getAttribute("id")).setAttribute("class", "Tab hidden")
-      var target = document.querySelector("div#" + e.target.getAttribute("id"))
+      var target = document.querySelector("div#" + eventKey)
       target.setAttribute("class", "Tab");
+      this.setState({activeKey: eventKey})
   },
   addArmNum: function(e) {
       var newArmNum = parseInt(this.state.armNum);
@@ -345,44 +322,23 @@ var Root = React.createClass({
       this.setState({charaNum: newCharaNum});
   },
   onDragEnd: function(e) {
-      if(window.innerWidth > 1450) {
-          if(e.pageX > 0) {
-              this.setState({rootleftWidth: parseInt(100.0 * e.pageX / window.innerWidth)})
-              this.setState({rootrightWidth: 100 - parseInt(100.0 * e.pageX / window.innerWidth)})
-              this.setState({noResultUpdate: true})
-          }
-      } else {
-          if(e.pageY > 0) {
-              this.setState({rootleftHeight: parseInt(100.0 * e.pageY / window.innerHeight)})
-              this.setState({rootrightHeight: 100 - parseInt(100.0 * e.pageY / window.innerHeight)})
-              this.setState({noResultUpdate: true})
-          }
-      }
-  },
-  handleResize: function(e) {
-      if(this.state.oldWidth <= 1450 && e.target.innerWidth > 1450) {
-          this.setState({rootleftHeight: 100})
-          this.setState({rootrightHeight: 100})
-          this.setState({rootleftWidth: 50})
-          this.setState({rootrightWidth: 50})
-          this.setState({oldWidth: e.target.innerWidth})
-          this.setState({noResultUpdate: true})
-      } else if(this.state.oldWidth > 1450 && e.target.innerWidth <= 1450) {
-          this.setState({rootleftHeight: 50})
-          this.setState({rootrightHeight: 50})
-          this.setState({rootleftWidth: 100})
-          this.setState({rootrightWidth: 100})
-          this.setState({oldWidth: e.target.innerWidth})
+      if(e.pageX > 0) {
+          this.setState({rootleftWidth: parseInt(100.0 * e.pageX / window.innerWidth)})
+          this.setState({rootrightWidth: 100 - parseInt(100.0 * e.pageX / window.innerWidth)})
           this.setState({noResultUpdate: true})
       }
   },
   render: function() {
-    if(_ua.Mobile) {
+    if(_ua.Mobile || _ua.Tablet) {
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
                 <h2>元カレ計算機 (グラブル攻撃力計算機)</h2>
-                <Button bsStyle="success" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
-                <Button bsStyle="success" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
+                <Nav>
+                    <NavDropdown id="dropdown_howto" title="使い方など">
+                    <MenuItem> <p onClick={this.openHowTo}>使い方</p> </MenuItem>
+                    <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
+                    </NavDropdown>
+                </Nav>
                 <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
                     <Modal.Header closeButton>
                         <Modal.Title>元カレ計算機について</Modal.Title>
@@ -399,14 +355,14 @@ var Root = React.createClass({
                         <NiteHowTo />
                     </Modal.Body>
                 </Modal>
-                <div className="tabrow">
-                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータさん</button>
-                    <button id="summonTab" onClick={this.changeTab} >召喚石</button>
-                    <button id="charaTab" onClick={this.changeTab} >キャラ</button>
-                    <button id="armTab" onClick={this.changeTab} >武器</button>
-                    <button id="resultTab" onClick={this.changeTab} >結果</button>
-                    <button id="systemTab" onClick={this.changeTab} >保存</button>
-                </div>
+                <Nav bsStyle="tabs" activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
+                    <NavItem eventKey="inputTab">ジータ</NavItem>
+                    <NavItem eventKey="summonTab">召喚石</NavItem>
+                    <NavItem eventKey="charaTab">キャラ</NavItem>
+                    <NavItem eventKey="armTab">武器</NavItem>
+                    <NavItem eventKey="resultTab">結果</NavItem>
+                    <NavItem eventKey="systemTab">保存</NavItem>
+                </Nav>
                 <div className="Tab" id="inputTab">
                     <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
                 </div>
@@ -432,76 +388,7 @@ var Root = React.createClass({
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="resultTab">
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
-                    <ResultList data={this.state} />
-                </div>
-                <div className="Tab hidden" id="systemTab">
-                    <div className="systemList">
-                        <Sys data={this.state} onLoadNewData={this.handleChangeData} />
-                        <TwitterShareButton data={this.state} />
-                        <Notice />
-                    </div>
-                </div>
-            </div>
-        );
-    } else if(_ua.Tablet) {
-        return (
-            <div className="root">
-                <h2>元カレ計算機 (グラブル攻撃力計算機)
-                <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
-                <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
-                </h2>
-                <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>元カレ計算機について</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <HowTo />
-                    </Modal.Body>
-                </Modal>
-                <Modal className="howTo" show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <NiteHowTo />
-                    </Modal.Body>
-                </Modal>
-                <div className="tabrow">
-                    <button id="inputTab" className="selected" onClick={this.changeTab}>ジータさん</button>
-                    <button id="summonTab" onClick={this.changeTab} >召喚石</button>
-                    <button id="charaTab" onClick={this.changeTab} >キャラ</button>
-                    <button id="armTab" onClick={this.changeTab} >武器</button>
-                    <button id="resultTab" onClick={this.changeTab} >結果</button>
-                    <button id="systemTab" onClick={this.changeTab} >保存</button>
-                </div>
-                <div className="Tab" id="inputTab">
-                    <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
-                </div>
-                <div className="Tab hidden" id="summonTab">
-                    <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>召喚石追加(現在{this.state.summonNum}組)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>削除</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="charaTab">
-                    <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} />
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>キャラ追加(現在{this.state.charaNum}人)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>削除</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="armTab">
-                    <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum}/>
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>武器追加(現在{this.state.armNum}本)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>削除</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="resultTab">
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
-                    <ResultList data={this.state} />
+                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} />
                 </div>
                 <div className="Tab hidden" id="systemTab">
                     <div className="systemList">
@@ -516,11 +403,19 @@ var Root = React.createClass({
         return (
             <div className="root">
                 <div className="rootleft" id="rootleft2" style={{height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}>
-                    <h1>元カレ計算機 (グラブル攻撃力計算機)
-                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openHowTo} > 使い方 </Button>
-                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openNiteHowTo} > 二手スキル等込みの編成について </Button>
-                    <Button bsStyle="info" style={{margin: "0 0 0 5px"}} onClick={this.openSimulatorHowTo} > ダメージシミュレータについて </Button>
-                    </h1>
+                    <h1> 元カレ計算機 (グラブル攻撃力計算機) </h1>
+                    <Navbar fluid>
+                        <Navbar.Header>
+                        <Navbar.Brand> motocal </Navbar.Brand>
+                        </Navbar.Header>
+                        <Nav>
+                            <NavDropdown id="dropdown_howto" title="使い方など">
+                            <MenuItem> <p onClick={this.openHowTo}>使い方</p> </MenuItem>
+                            <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
+                            <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
+                            </NavDropdown>
+                        </Nav>
+                    </Navbar>
                     <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
                         <Modal.Header closeButton>
                             <Modal.Title>元カレ計算機について</Modal.Title>
@@ -545,14 +440,14 @@ var Root = React.createClass({
                             <SimulatorInput.HowTo />
                         </Modal.Body>
                     </Modal>
-                    <div className="tabrow">
-                        <button id="inputTab" className="selected" onClick={this.changeTab}>入力 / Input</button>
-                        <button id="summonTab" onClick={this.changeTab} >召喚石 / Summon </button>
-                        <button id="charaTab" onClick={this.changeTab} >キャラ / Chara</button>
-                        <button id="armTab" onClick={this.changeTab} >武器 / Weapon</button>
-                        <button id="simulatorTab" onClick={this.changeTab} >シミュレータ入力</button>
-                        <button id="systemTab" onClick={this.changeTab} >保存・注記 / System</button>
-                    </div>
+                    <Nav bsStyle="tabs" justified activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
+                        <NavItem eventKey="inputTab">ジータ</NavItem>
+                        <NavItem eventKey="summonTab">召喚石</NavItem>
+                        <NavItem eventKey="charaTab">キャラ</NavItem>
+                        <NavItem eventKey="armTab">武器</NavItem>
+                        <NavItem eventKey="simulatorTab">Simulator</NavItem>
+                        <NavItem eventKey="systemTab">保存</NavItem>
+                    </Nav>
                     <div className="Tab" id="inputTab">
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
                     </div>
@@ -586,10 +481,9 @@ var Root = React.createClass({
                         <SimulatorInput dataName={this.state.dataName} dataForLoad={dataForLoad.simulator} chara={this.state.chara} onChange={this.onChangeSimulationData} />
                     </div>
                 </div>
-                <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
+                <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
-                    優先する項目: <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")} > {selector.ktypes} </FormControl>
-                    <ResultList data={this.state} />
+                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")}/>
                 </div>
             </div>
         );
@@ -599,13 +493,35 @@ var Root = React.createClass({
 
 var CharaList = React.createClass({
     getInitialState: function() {
+        var charas = [];
+        for(var i=0; i < this.props.charaNum; i++) {
+            charas.push(i);
+        }
+
         return {
             charalist: [],
+            charas: charas,
             defaultElement: "fire",
             addChara: null,
             addCharaID: -1,
             openPresets: false,
         };
+    },
+    updateCharaNum: function(num) {
+        var charas = this.state.charas
+
+        if(charas.length < num) {
+            var maxvalue = Math.max.apply(null, charas)
+            for(var i = 0; i < (num - charas.length); i++){
+                charas.push(i + maxvalue + 1)
+            }
+        } else {
+            // ==の場合は考えなくてよい (問題がないので)
+            while(charas.length > num){
+                charas.pop();
+            }
+        }
+        this.setState({charas: charas})
     },
     closePresets: function() {
         this.setState({openPresets: false})
@@ -621,6 +537,7 @@ var CharaList = React.createClass({
             }
             this.setState({charalist: newcharalist})
         }
+        this.updateCharaNum(nextProps.charaNum)
     },
     handleOnChange: function(key, state, isSubtle){
         var newcharalist = this.state.charalist;
@@ -634,6 +551,64 @@ var CharaList = React.createClass({
         newState[key] = e.target.value
         newState["addChara"] = null
         this.setState(newState)
+    },
+    handleOnRemove: function(id, keyid, state) {
+        var newcharas = this.state.charas
+        var maxvalue = Math.max.apply(null, newcharas)
+
+        // 該当の "key" を持つものを削除する
+        newcharas.splice(id, 1)
+        // 1個補充
+        newcharas.push(maxvalue + 1)
+        this.setState({charalist: newcharas})
+
+        // dataForLoadにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("chara" in dataForLoad)) {
+            dataForLoad["chara"] = {}
+        }
+        dataForLoad.chara[newcharas.length - 1] = state;
+
+        var newcharalist = this.state.charalist;
+        // 削除した分をlistからも削除
+        newcharalist.splice(id, 1)
+        // 1個補充
+        newcharalist.push(state)
+        this.setState({charalist: newcharalist})
+
+        // Root へ変化を伝搬
+        this.props.onChange(newcharalist, false);
+    },
+    handleMoveUp: function(id){
+        if(id > 0) {
+            var newcharas = this.state.charas
+
+            // charas swap
+            newcharas.splice(id - 1, 2, newcharas[id], newcharas[id - 1])
+            this.setState({charas: newcharas})
+
+            // charalist swap
+            var newcharalist = this.state.charalist;
+            newcharalist.splice(id - 1, 2, newcharalist[id], newcharalist[id - 1])
+            this.setState({charalist: newcharalist})
+            // Root へ変化を伝搬
+            this.props.onChange(newcharalist, false);
+        }
+    },
+    handleMoveDown: function(id){
+        if(id < this.props.charaNum - 1) {
+            var newcharas = this.state.charas
+
+            // charas swap
+            newcharas.splice(id, 2, newcharas[id + 1], newcharas[id])
+            this.setState({charas: newcharas})
+
+            // charalist swap
+            var newcharalist = this.state.charalist;
+            newcharalist.splice(id, 2, newcharalist[id + 1], newcharalist[id])
+            this.setState({charalist: newcharalist})
+            // Root へ変化を伝搬
+            this.props.onChange(newcharalist, false);
+        }
     },
     addTemplateChara: function(templateChara) {
         var minimumID = -1;
@@ -664,172 +639,41 @@ var CharaList = React.createClass({
         }
     },
     render: function() {
-        var charas = [];
-        for(var i=0; i < this.props.charaNum; i++) {
-            charas.push({id: i});
-        }
+        var charas = this.state.charas;
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
         var defaultElement = this.state.defaultElement;
         var addChara = this.state.addChara
         var addCharaID = this.state.addCharaID
+        var handleOnRemove = this.handleOnRemove
+        var handleMoveUp = this.handleMoveUp
+        var handleMoveDown = this.handleMoveDown
 
-        if(_ua.Mobile) {
-            return (
-                <div className="charaList">
-                    <ButtonGroup vertical block>
-                        <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
-                    </ButtonGroup>
-                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Presets</Modal.Title>
-                            <span>(最大50件しか表示されません)</span>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <RegisteredChara onClick={this.addTemplateChara} />
-                        </Modal.Body>
-                    </Modal>
-
-                    <ControlLabel>属性一括変更</ControlLabel>
-                    <FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
-                    {charas.map(function(c) {
-                        return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
+        return (
+            <div className="charaList">
+                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
+                <br/>
+                <span>属性一括変更</span>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+                <Grid fluid style={{"width": "100%"}} >
+                    <Row>
+                    {charas.map(function(c, ind) {
+                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
                     })}
-                </div>
-            );
+                    </Row>
+                </Grid>
 
-        } else {
-            return (
-                <div className="charaList">
-                    <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
-                    <table className="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>キャラ名*</th>
-                        <th>属性* <br/> <ControlLabel>一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl> </th>
-                        <th>種族</th>
-                        <th>タイプ</th>
-                        <th>得意武器*</th>
-                        <th>得意武器2</th>
-                        <th className="considerAverage">平均に含める</th>
-                        <th>素の攻撃力*</th>
-                        <th>素のHP</th>
-                        <th>残HP割合(%)</th>
-                        <th>基礎DA率(%)</th>
-                        <th>基礎TA率(%)</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {charas.map(function(c) {
-                            return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
-                        })}
-                    </tbody>
-                    </table>
-
-                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Presets</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <RegisteredChara onClick={this.addTemplateChara} />
-                        </Modal.Body>
-                    </Modal>
-                </div>
-            );
-        }
+                <Modal show={this.state.openPresets} onHide={this.closePresets}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Presets</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <RegisteredChara onClick={this.addTemplateChara} />
+                    </Modal.Body>
+                </Modal>
+            </div>
+        );
     }
-});
-
-var RegisteredChara = React.createClass({
-    getInitialState: function() {
-        return {
-            filterText: "",
-            filterElement: "all",
-            charaData: {},
-            limit: 50,
-        };
-    },
-    componentDidMount: function() {
-        $.ajax({
-            url: "./charaData.json",
-            dataType: 'json',
-            cache: false,
-            timeout: 10000,
-            success: function(data) {
-                this.setState({charaData: data})
-            }.bind(this),
-            error: function(xhr, status, err) {
-                alert("Error!: キャラデータの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
-            }.bind(this)
-        });
-    },
-    clickedTemplate: function(e) {
-        this.props.onClick(this.state.charaData[e.target.getAttribute("id")]);
-    },
-    handleEvent: function(key, e) {
-        var newState = this.state
-        newState[key] = e.target.value
-        this.setState(newState)
-    },
-    render: function() {
-        var clickedTemplate = this.clickedTemplate;
-        var filterText = this.state.filterText;
-        var filterElement = this.state.filterElement;
-        var charaData = this.state.charaData
-        var limit = this.state.limit;
-        var displayed_count = 0;
-
-        if(_ua.Mobile){
-            return (
-                <div className="charaTemplate">
-                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
-                    <div className="charaTemplateContent">
-                        {Object.keys(charaData).map(function(key, ind) {
-                            if(filterElement == "all" || (charaData[key].element == filterElement)){
-                                if(filterText == "" || key.indexOf(filterText) != -1){
-                                    if(displayed_count < limit) {
-                                        displayed_count++;
-                                        return (
-                                            <div className="onechara" key={key}>
-                                                <p>{charaData[key].name}</p><br/>
-                                                <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
-                                            </div>
-                                        );
-                                    } else {
-                                        return "";
-                                    }
-                                }
-                            }
-                            return "";
-                        })}
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div className="charaTemplate">
-                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
-                    <div className="charaTemplateContent">
-                        {Object.keys(charaData).map(function(key, ind) {
-                            if(filterElement == "all" || (charaData[key].element == filterElement)){
-                                if(filterText == "" || key.indexOf(filterText) != -1){
-                                    return (
-                                        <div className="onechara" key={key}>
-                                            <p>{charaData[key].name}</p><br/>
-                                            <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
-                                        </div>
-                                    );
-                                }
-                            }
-                            return "";
-                        })}
-                    </div>
-                </div>
-            )
-        }
-    },
 });
 
 var Chara = React.createClass({
@@ -941,45 +785,172 @@ var Chara = React.createClass({
             this.props.onChange(this.props.id, this.state, false)
         }
     },
+    clickRemoveButton: function(e) {
+        this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
+    },
+    clickMoveUp: function(e) {
+        this.props.onMoveUp(this.props.id)
+    },
+    clickMoveDown: function(e) {
+        this.props.onMoveDown(this.props.id)
+    },
     render: function() {
-        if(_ua.Mobile) {
-            return (
-                <table className="table table-bordered"><tbody>
-                    <tr><th>名前</th><td><FormControl type="text" placeholder="名前" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/></td></tr>
-                    <tr><th>属性</th><td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl></td></tr>
-                    <tr><th>種族</th><td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl></td></tr>
-                    <tr><th>タイプ</th><td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl></td></tr>
-                    <tr><th>得意武器1</th><td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl></td></tr>
-                    <tr><th>得意武器2</th><td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl></td></tr>
-                    <tr><th>平均に含める</th><td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")} /></td></tr>
-                    <tr><th>素の攻撃力</th><td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td></tr>
-                    <tr><th>素のHP</th><td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td></tr>
-                    <tr><th>残HP割合</th><td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td></tr>
-                    <tr><th>基礎DA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td></tr>
-                    <tr><th>基礎TA率</th><td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td></tr>
-                </tbody></table>
-            );
+        return (
+            <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
+                {(this.props.id < 3) ?
+                    <h3><Label bsStyle="primary">Front No.{this.props.id+1}</Label></h3>
+                        :
+                    <h3><Label bsStyle="default">Sub No.{this.props.id+1}</Label></h3>
+                }
+                <FormGroup>
+                <InputGroup>
+                    <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
+                    <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/>
+                    <InputGroup.Addon>
+                    <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>平均に含める</Checkbox>
+                    </InputGroup.Addon>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>属性　　&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>種族　　&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>タイプ　&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>得意武器&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>得意武器2</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>素の攻撃力</InputGroup.Addon>
+                    <FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>素のHP　</InputGroup.Addon>
+                    <FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>残HP割合</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>基礎DA率</InputGroup.Addon>
+                    <FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>基礎TA率</InputGroup.Addon>
+                    <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
+                </InputGroup>
+                <ButtonGroup style={{"width": "100%"}}>
+                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>前へ</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
+                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>後へ</Button>
+                </ButtonGroup>
+            </FormGroup>
+            </ColP>
+        );
+    }
+});
 
+var RegisteredChara = React.createClass({
+    getInitialState: function() {
+        return {
+            filterText: "",
+            filterElement: "all",
+            charaData: {},
+            limit: 50,
+        };
+    },
+    componentDidMount: function() {
+        $.ajax({
+            url: "./charaData.json",
+            dataType: 'json',
+            cache: false,
+            timeout: 10000,
+            success: function(data) {
+                this.setState({charaData: data})
+            }.bind(this),
+            error: function(xhr, status, err) {
+                alert("Error!: キャラデータの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
+            }.bind(this)
+        });
+    },
+    clickedTemplate: function(e) {
+        this.props.onClick(this.state.charaData[e.target.getAttribute("id")]);
+    },
+    handleEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    render: function() {
+        var clickedTemplate = this.clickedTemplate;
+        var filterText = this.state.filterText;
+        var filterElement = this.state.filterElement;
+        var charaData = this.state.charaData
+        var limit = this.state.limit;
+        var displayed_count = 0;
+
+        if(_ua.Mobile || _ua.Tablet){
+            return (
+                <div className="charaTemplate">
+                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
+                    <div className="charaTemplateContent">
+                        {Object.keys(charaData).map(function(key, ind) {
+                            if(filterElement == "all" || (charaData[key].element == filterElement)){
+                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                    if(displayed_count < limit) {
+                                        displayed_count++;
+                                        return (
+                                            <div className="onechara" key={key}>
+                                                <p>{charaData[key].name}</p><br/>
+                                                <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
+                                            </div>
+                                        );
+                                    } else {
+                                        return "";
+                                    }
+                                }
+                            }
+                            return "";
+                        })}
+                    </div>
+                </div>
+            )
         } else {
             return (
-                <tr>
-                    <td><FormControl type="text" placeholder="名前" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/></td>
-                    <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl></td>
-                    <td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl></td>
-                    <td className="considerAverage"><Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")} /></td>
-                    <td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                    <td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                    <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
-                    <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                    <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                </tr>
-            );
+                <div className="charaTemplate">
+                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
+                    <div className="charaTemplateContent">
+                        {Object.keys(charaData).map(function(key, ind) {
+                            if(filterElement == "all" || (charaData[key].element == filterElement)){
+                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                    return (
+                                        <div className="onechara" key={key}>
+                                            <p>{charaData[key].name}</p><br/>
+                                            <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
+                                        </div>
+                                    );
+                                }
+                            }
+                            return "";
+                        })}
+                    </div>
+                </div>
+            )
         }
-
-    }
+    },
 });
 
 var SummonList = React.createClass({
@@ -1086,42 +1057,20 @@ var SummonList = React.createClass({
         var hCopy = this.handleOnCopy;
         var dataName = this.props.dataName;
         var defaultElement = this.state.defaultElement;
-        if(_ua.Mobile) {
-            return (
-                <div className="summonList">
-                    <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.summonElements} </FormControl>
+        return (
+            <div className="summonList">
+                <span>属性一括変更</span>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")}> {selector.summonElements} </FormControl>
+                <h3 className="margin-top"> 召喚石 </h3>
+                <Grid fluid>
+                    <Row>
                     {summons.map(function(sm, ind) {
                         return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} />;
                     })}
-                </div>
-            );
-        } else {
-            return (
-                <div className="summonList">
-                    [属性一括変更]<FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.summonElements} </FormControl>
-                    <h3 className="margin-top"> 召喚石 </h3>
-                    <table className="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>自分の石*</th>
-                        <th>フレの石*</th>
-                        <th>合計攻撃力*</th>
-                        <th>合計HP</th>
-                        <th>HPUP(%)</th>
-                        <th>DA加護</th>
-                        <th>TA加護</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {summons.map(function(sm, ind) {
-                            return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} />;
-                        })}
-                    </tbody>
-                    </table>
-                </div>
-            );
-        }
+                    </Row>
+                </Grid>
+            </div>
+        );
     }
 });
 
@@ -1223,96 +1172,50 @@ var Summon = React.createClass({
             friendSummon[1] = {"label": "キャラ ", "input": "select"}
             friendSummon[0].label = "属性 "
         }
-        if(_ua.Mobile) {
-            return (
-                <table className="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>自分の石</th>
-                    <td>
-                    <FormControl componentClass="select" className="element" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
-                    <FormControl componentClass="select" className="summontype" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
-                    </td>
-                </tr>
-                <tr>
-                    <th>自分の加護量</th>
-                    <td>{selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl><br/>
+        return (
+            <ColP sxs={12} xs={6} sm={4} className="col-bordered">
+                <FormGroup>
+                <InputGroup>
+                    <InputGroup.Addon>自分の石　</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
+                    {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
                     {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
-                    </td>
-                </tr>
-                <tr>
-                    <th>フレンド石</th>
-                    <td>
-                    <FormControl componentClass="select" className="element" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
-                    <FormControl componentClass="select" className="summontype" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl></td>
-                </tr>
-                <tr>
-                    <th>フレの加護量</th>
-                    <td>{friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl><br/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>フレの石　</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl>
+                    {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
                     {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
-                    </td>
-                </tr>
-                <tr>
-                    <th>合計攻撃力</th>
-                    <td><FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                </tr>
-                <tr>
-                    <th>合計HP</th>
-                    <td><FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                </tr>
-                <tr>
-                    <th>HPUP(%)</th>
-                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
-                </tr>
-                <tr>
-                    <th>DA加護</th>
-                    <td><FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                </tr>
-                <tr>
-                    <th>TA加護</th>
-                    <td><FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                </tr>
-                <tr>
-                    <th>操作</th>
-                    <td>
-                        <ButtonGroup vertical block>
-                            <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
-                            <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
-                        </ButtonGroup>
-                    </td>
-                </tr>
-                </tbody>
-                </table>
-            );
-        } else {
-            return (
-                <tr>
-                    <td>
-                        <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
-                        <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
-                        {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
-                        {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
-                    </td>
-                    <td>
-                        <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
-                        <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl>
-                        {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
-                        {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
-                    </td>
-                    <td><FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/></td>
-                    <td><FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/></td>
-                    <td><FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/></td>
-                    <td><FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                    <td><FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                    <td>
-                        <ButtonGroup vertical>
-                            <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
-                            <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
-                        </ButtonGroup>
-                    </td>
-                </tr>
-            );
-        }
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>合計攻撃力</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>合計HP　&nbsp;&nbsp;</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>HP加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>DA加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>TA加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
+                </InputGroup>
+                <ButtonGroup style={{"width": "100%"}}>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>内容を消去</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>コピー</Button>
+                </ButtonGroup>
+                </FormGroup>
+            </ColP>
+        );
     }
 });
 
@@ -1481,8 +1384,8 @@ var ResultList = React.createClass({
             var effectiveCriticalRatio = damage/damageWithoutCritical
 
             // 追加ダメージ(%)分だけ追加
-            if(totals[key]["additionalDamage"] > 0) {
-                damage += 0.01 * totals[key]["additionalDamage"] * damage
+            if(totals[key]["additionalDamage"] > 0 || buff["additionalDamage"] > 0) {
+                damage += (0.01 * totals[key]["additionalDamage"] + buff["additionalDamage"]) * damage
             }
             var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio)
             var expectedCycleDamage = ougiDamage + expectedTurn * expectedAttack * damage
@@ -1975,13 +1878,14 @@ var ResultList = React.createClass({
         }
     },
     getTotalBuff: function(prof) {
-        var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hp: 0.0, da: 0.0, ta: 0.0, ougiGage: 1.0};
+        var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hp: 0.0, da: 0.0, ta: 0.0, ougiGage: 1.0, additionalDamage: 0.0};
 
         if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
         if(!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
         if(!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
         if(!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseInt(prof.daBuff);
         if(!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseInt(prof.taBuff);
+        if(!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
         if(!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
         totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
         totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
@@ -2017,13 +1921,14 @@ var ResultList = React.createClass({
                 var k = 1;
                 while(charakey in totals) {
                     charakey = chara[i].name + k
-                        k++;
+                    k++;
                 }
 
                 totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0}
             }
         }
-        for(key in totals) {
+        var races = this.checkNumberofRaces(totals)
+        for(var key in totals) {
             totals[key]["totalSummon"] = []
             for(var s = 0; s < summon.length; s++) {
                 var selfElement = (summon[s].selfElement == undefined) ? "fire" : summon[s].selfElement
@@ -2036,6 +1941,8 @@ var ResultList = React.createClass({
                         // odin(属性+キャラ攻撃)など、複数の場合の処理
                         totalSummon["element"] += 0.01 * parseInt(summon[s].selfSummonAmount)
                         totalSummon["chara"] += 0.01 * parseInt(summon[s].selfSummonAmount2)
+                    } else if(summon[s].selfSummonType == "elementByRace") {
+                        totalSummon["element"] += 0.01 * parseInt(summon[s].selfSummonAmount * (races/4))
                     } else {
                         // 自分の加護 通常の場合
                         totalSummon[summon[s].selfSummonType] += 0.01 * parseInt(summon[s].selfSummonAmount)
@@ -2046,6 +1953,8 @@ var ResultList = React.createClass({
                         // odin(属性+キャラ攻撃)など、複数の場合の処理
                         totalSummon["element"] += 0.01 * parseInt(summon[s].friendSummonAmount)
                         totalSummon["chara"] += 0.01 * parseInt(summon[s].friendSummonAmount2)
+                    } else if(summon[s].friendSummonType == "elementByRace") {
+                        totalSummon["element"] += 0.01 * parseInt(summon[s].friendSummonAmount * (races/4))
                     } else {
                         // フレンドの加護 通常の場合
                         totalSummon[summon[s].friendSummonType] += 0.01 * parseInt(summon[s].friendSummonAmount)
@@ -2063,11 +1972,33 @@ var ResultList = React.createClass({
             }
         }
 
-        for(key in totals){
+        for(var key in totals){
             totals[key]["typeBonus"] = this.getTypeBonus(totals[key]["element"], prof)
         }
 
         return totals
+    },
+    checkNumberofRaces: function(totals){
+        // check num of races
+        var includedRaces = {
+            "human": false,
+            "erune": false,
+            "doraf": false,
+            "havin": false,
+            "unknown": false,
+        }
+        var ind = 0;
+        for(var key in totals) {
+            if(ind < 4) {
+                includedRaces[totals[key]["race"]] = true
+            }
+            ind++;
+        }
+        var races = 0
+        for(var key in includedRaces) {
+            if(includedRaces[key]) races++;
+        }
+        return races
     },
     calculateResult: function(newprops) {
       var prof = newprops.data.profile; var arml = newprops.data.armlist;
@@ -2224,7 +2155,9 @@ var ResultList = React.createClass({
             openHPChart: false,
             openTurnChart: false,
             openSimulator: false,
+            openDisplayElementTable: false,
             openHPChartTutorial: false,
+            openShowStoredList: false,
             ChartButtonActive: false,
             previousArmlist: null,
             previousCombinations: null,
@@ -2417,7 +2350,7 @@ var ResultList = React.createClass({
                 for(var i=0; i < arml.length; i++){
                     if(storedCombinations[j][i] > 0) {
                         var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                        title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                        title += name + storedCombinations[j][i] + "本\n"
                     }
                 }
                 for(key in onedata){
@@ -2748,7 +2681,7 @@ var ResultList = React.createClass({
                 for(var i=0; i < arml.length; i++){
                     if(storedCombinations[j][i] > 0) {
                         var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                        title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                        title += name + storedCombinations[j][i] + "本\n"
                     }
                 }
                 for(key in onedata){
@@ -3016,7 +2949,7 @@ var ResultList = React.createClass({
                         for(var i=0; i < arml.length; i++){
                             if(storedCombinations[j][i] > 0) {
                                 var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                                title += name.substr(0,6) + storedCombinations[j][i] + "本\n"
+                                title += name + storedCombinations[j][i] + "本\n"
                             }
                         }
                         AverageTotalAttack[0].push(title)
@@ -3111,9 +3044,51 @@ var ResultList = React.createClass({
         }
     },
     resetStoredList: function(e) {
-        this.setState({storedList: {"combinations": [], "armlist": []}})
-        this.setState({openHPChart: false})
-        this.setState({ChartButtonActive: false})
+        this.setState({
+            storedList: {"combinations": [], "armlist": []},
+            openShowStoredList: false,
+            openHPChart: false,
+            openTurnChart: false,
+            openSimulator: false,
+            ChartButtonActive: false,
+        });
+    },
+    openStoredList: function(e) {
+        this.setState({openShowStoredList: true})
+    },
+    closeStoredList: function(e) {
+        this.setState({openShowStoredList: false})
+    },
+    removeOneStoredList: function(e) {
+        var targetIndex = parseInt(e.target.id)
+        var newCombinations = this.state.storedList.combinations
+        newCombinations.splice(targetIndex, 1)
+        var newArmList = this.state.storedList.armlist
+        newArmList.splice(targetIndex, 1)
+
+        if(newArmList.length == 0){
+            this.resetStoredList()
+        } else {
+            this.setState({
+                storedList: {
+                    "combinations": newCombinations,
+                    "armlist": newArmList,
+                },
+            });
+            if(this.state.openHPChart) {
+                this.openHPChart();
+            } else if(this.state.openTurnChart) {
+                this.openTurnChart();
+            } else if(this.state.openSimulator) {
+                this.openSimulator();
+            }
+        }
+    },
+    forceResultUpdate: function() {
+        this.setState({result: this.calculateResult(this.props)})
+    },
+    openDisplayTable: function() {
+        this.setState({openDisplayElementTable: !this.state.openDisplayElementTable})
     },
     render: function() {
         res = this.state.result;
@@ -3236,55 +3211,58 @@ var ResultList = React.createClass({
                 remainHPstr += "% (" + this.getTypeBonusStr(chara[i].element, prof) + ")"
             }
         }
-        remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%"
+        remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%, 追加ダメージバフ" + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, 敵防御固有値" + prof.enemyDefense
 
-        if(_ua.Mobile) {
+        if(_ua.Mobile || _ua.Tablet) {
+            var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector.ktypes} </FormControl>
             return (
                 <div className="resultList">
-                    表示項目制御:
-                    <table className="displayElement">
-                    <tbody>
+                    <Button block onClick={this.openDisplayTable}>
+                    表示項目切替
+                    </Button>
+                    <Collapse in={this.state.openDisplayElementTable}>
+                    <table style={{"width": "100%", textAlign: "center", marginBottom: "2px"}} className="table table-bordered"><tbody>
                     <tr>
-                        <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し)</td>
-                        <td><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> 攻撃力(二手技巧無し) </td>
+                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} className={(this.state.switchATKandHP == 1) ? "display-checked" : "display-unchecked"}>戦力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchHP")} className={(this.state.switchHP == 1) ? "display-checked" : "display-unchecked"}> HP</td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
-                        <td><Checkbox inline checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchDATA")} className={(this.state.switchDATA == 1) ? "display-checked" : "display-unchecked"}> 連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} className={(this.state.switchExpectedAttack == 1) ? "display-checked" : "display-unchecked"}> 期待攻撃回数</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} className={(this.state.switchCriticalRatio == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値</td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
-                        <td><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
-                        <td><Checkbox inline checked={this.state.switchCriticalAttack} onChange={this.handleEvent.bind(this, "switchCriticalAttack")} /> 技巧期待*攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} className={(this.state.switchCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値*攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} className={(this.state.switchAverageAttack == 1) ? "display-checked" : "display-unchecked"}> パーティ平均攻撃力(二手技巧無し)</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} className={(this.state.switchAverageCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧平均攻撃力 </td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</td>
-                        <td><Checkbox inline checked={this.state.switchAverageCriticalAttack} onChange={this.handleEvent.bind(this, "switchAverageCriticalAttack")} /> 技巧平均攻撃力</td>
-                        <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} className={(this.state.switchTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総合*期待回数*技巧期待値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} className={(this.state.switchAverageTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総回技のパーティ平均値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージ </td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
-                        <td><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 単攻撃ダメージ</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージの平均値 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchDamage")} className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> 単攻撃ダメージ</td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> 奥義ゲージ上昇期待値 </td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
-                        <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> 奥義ダメージ </td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP</td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchCharaDA} onChange={this.handleEvent.bind(this, "switchCharaDA")} /> キャラ連続攻撃率</td>
-                        <td><Checkbox inline checked={this.state.switchCharaTotalExpected} onChange={this.handleEvent.bind(this, "switchCharaTotalExpected")} /> キャラ総回技値</td>
-                    </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchOugiGage} onChange={this.handleEvent.bind(this, "switchOugiGage")} />奥義ゲージ上昇期待値</td>
-                        <td><Checkbox inline checked={this.state.switchOugiDamage} onChange={this.handleEvent.bind(this, "switchOugiDamage")} />奥義ダメージ</td>
-                    </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchCycleDamage} onChange={this.handleEvent.bind(this, "switchCycleDamage")} />予想ターン毎ダメージ</td>
-                        <td><Checkbox inline checked={this.state.switchAverageCycleDamage} onChange={this.handleEvent.bind(this, "switchAverageCycleDamage")} />予想ターン毎ダメージの平均値</td>
-                        <td><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}> キャラ連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}> キャラ総回技値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                     </tr>
-                    </tbody>
-                    </table>
+                    </tbody></table>
+                    </Collapse>
                     <br/>
+                    {/*
                     動作制御:
-                    <Checkbox inline checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
-                    <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
+                    <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>*/}
                     <ButtonGroup style={{width: "100%"}}>
-                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", "font-size": "10pt", "padding-left": "2px", "padding-right": "2px", "text-align": "center"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフ</Button>
-                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", "font-size": "10pt", "padding-left": "2px", "padding-right": "2px", "text-align": "center"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフ</Button>
+                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", fontSize: "10pt", paddingLeft: "2px", paddingRight: "2px", textAlign: "center"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフ</Button>
+                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", fontSize: "10pt", paddingLeft: "2px", paddingRight: "2px", textAlign: "center"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフ</Button>
                     </ButtonGroup>
+                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
+                    <hr/>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
@@ -3302,7 +3280,7 @@ var ResultList = React.createClass({
 
                         return(
                             <div key={summonindex} className="result">
-                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {res.sortkeyname}]</h2>
+                                <p> 結果{summonindex + 1}:{selfSummonHeader}+{friendSummonHeader} <br/>[優先:{changeSortKey}]</p>
                                 <div className="charainfo"><span>{remainHPstr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
@@ -3328,103 +3306,67 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>HP Charts ({remainHPstr})</Modal.Title>
-                            <Button bsStyle="primary" onClick={this.openHPChartTutorial}>使い方</Button>
+                            <Button bsStyle="info" onClick={this.openHPChartTutorial}>使い方</Button>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
-                            <Modal className="hpChartTutotial" show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>HP Chartsの使い方</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <p>HPチャート機能は「保存された武器編成の攻撃力等を、残りHP割合ごとに再計算する」機能です。</p>
-                                    <h2>1.</h2>
-                                    <p>適当に編成を計算した後、グラフを見たい編成をグラフに加えます。</p>
-                                    <Thumbnail alt="HPチャート操作1" src="./otherImages/hpChartTutorial1.png">
-                                    </Thumbnail>
-                                    <h2>2.</h2>
-                                    <p>グラフに加えると、「背水渾身チャートを開く」ボタンが有効化されるので、クリックします。</p>
-                                    <h2>3.</h2>
-                                    <p>「優先する項目」に設定されている値を描画したグラフが表示されます。</p>
-                                    <Thumbnail alt="HPチャート操作1" src="./otherImages/hpChartTutorial2.png">
-                                    </Thumbnail>
-                                    <p className="text-danger">まだサポートされていない要素が「優先する項目」に設定されている場合、"総合攻撃力"のグラフに変更されます。</p>
-                                    <h2>4.</h2>
-                                    <p>上部の選択ボタンで、他の要素を表示することも可能です。</p>
-                                    <Thumbnail alt="HPチャート操作1" src="./otherImages/hpChartTutorial3.png">
-                                    </Thumbnail>
-                                    <h2>5.</h2>
-                                    <p>複数の召喚石組み合わせが設定されている場合、複数のグラフが作成されます。</p>
-                                    <Thumbnail alt="HPチャート操作1" src="./otherImages/hpChartTutorial4.png">
-                                    </Thumbnail>
-                                    <p className="text-danger">現在は、ある組み合わせをグラフに保存すると、全てのグラフに追加されるようになっています。
-                                    これを召喚石別にするかどうかは、今後検討します。</p>
-                                    <h2>注記</h2>
-                                    <p>編成として保存されるのは「武器の組み合わせの本数」のみです。
-                                    そのため、武器攻撃力やバフ量などを変更した場合、結果のグラフも自動的に変更されます。</p>
-                                    <p className="text-danger">武器枠の数が追加/削除された場合、武器枠のデータがリセットされた場合は、
-                                    保存されている編成はリセットされてしまいますのでご注意下さい。
-                                    これは、武器組み合わせのみを保存しているため、誤って組み合わせで再計算されることを防ぐためです。</p>
-                                    <p>また、現在「追加した特定のグラフを削除する」機能は実装されておりませんので、
-                                    グラフが多くなりすぎてしまった場合、全削除を行い、保存されている編成をリセットしてください。</p>
-                                    <p>ご要望・不具合等あればお知らせ下さい。</p>
-                                </Modal.Body>
-                            </Modal>
+                            <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                         </Modal.Body>
                     </Modal>
+                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
                 </div>
             );
 
         } else {
+            var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector.ktypes} </FormControl>
             return (
                 <div className="resultList">
-                    表示項目制御:
-                    <table className="displayElement"><tbody>
+                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
+                    <table style={{"width": "100%", "float": "left", textAlign: "center"}} className="table table-bordered"><tbody>
                     <tr>
-                        <td><Checkbox inline checked={this.state.switchTotalAttack} onChange={this.handleEvent.bind(this, "switchTotalAttack")} /> 攻撃力(二手技巧無し) </td>
-                        <td><Checkbox inline checked={this.state.switchATKandHP} onChange={this.handleEvent.bind(this, "switchATKandHP")} /> 戦力</td>
-                        <td><Checkbox inline checked={this.state.switchHP} onChange={this.handleEvent.bind(this, "switchHP")} /> HP</td>
-                        <td><Checkbox inline checked={this.state.switchDATA} onChange={this.handleEvent.bind(this, "switchDATA")} /> 連続攻撃率</td>
-                        <td><Checkbox inline checked={this.state.switchExpectedAttack} onChange={this.handleEvent.bind(this, "switchExpectedAttack")} /> 期待攻撃回数</td>
-                        <td><Checkbox inline checked={this.state.switchCriticalRatio} onChange={this.handleEvent.bind(this, "switchCriticalRatio")} /> 技巧期待値</td>
-                        <td><Checkbox inline checked={this.state.switchCriticalAttack} onChange={this.handleEvent.bind(this, "switchCriticalAttack")} /> 技巧期待値*攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> 攻撃力(二手技巧無し) </td>
+                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} className={(this.state.switchATKandHP == 1) ? "display-checked" : "display-unchecked"}>戦力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchHP")} className={(this.state.switchHP == 1) ? "display-checked" : "display-unchecked"}> HP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchDATA")} className={(this.state.switchDATA == 1) ? "display-checked" : "display-unchecked"}> 連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} className={(this.state.switchExpectedAttack == 1) ? "display-checked" : "display-unchecked"}> 期待攻撃回数</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} className={(this.state.switchCriticalRatio == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} className={(this.state.switchCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値*攻撃力</td>
                     </tr><tr>
-                        <td><Checkbox inline checked={this.state.switchAverageAttack} onChange={this.handleEvent.bind(this, "switchAverageAttack")} /> パーティ平均攻撃力(二手技巧無し)</td>
-                        <td><Checkbox inline checked={this.state.switchAverageCriticalAttack} onChange={this.handleEvent.bind(this, "switchAverageCriticalAttack")} /> 技巧平均攻撃力 </td>
-                        <td><Checkbox inline checked={this.state.switchTotalExpected} onChange={this.handleEvent.bind(this, "switchTotalExpected")} /> 総合*期待回数*技巧期待値</td>
-                        <td><Checkbox inline checked={this.state.switchAverageTotalExpected} onChange={this.handleEvent.bind(this, "switchAverageTotalExpected")} /> 総回技のパーティ平均値</td>
-                        <td><Checkbox inline checked={this.state.switchCycleDamage} onChange={this.handleEvent.bind(this, "switchCycleDamage")} /> 予想ターン毎ダメージ </td>
-                        <td><Checkbox inline checked={this.state.switchAverageCycleDamage} onChange={this.handleEvent.bind(this, "switchAverageCycleDamage")} /> 予想ターン毎ダメージの平均値 </td>
-                        <td><Checkbox inline checked={this.state.switchDamage} onChange={this.handleEvent.bind(this, "switchDamage")} /> 単攻撃ダメージ</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} className={(this.state.switchAverageAttack == 1) ? "display-checked" : "display-unchecked"}> パーティ平均攻撃力(二手技巧無し)</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} className={(this.state.switchAverageCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧平均攻撃力 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} className={(this.state.switchTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総合*期待回数*技巧期待値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} className={(this.state.switchAverageTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総回技のパーティ平均値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージ </td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージの平均値 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchDamage")} className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> 単攻撃ダメージ</td>
                     </tr>
                     <tr>
-                        <td><Checkbox inline checked={this.state.switchOugiGage} onChange={this.handleEvent.bind(this, "switchOugiGage")} /> 奥義ゲージ上昇期待値 </td>
-                        <td><Checkbox inline checked={this.state.switchOugiDamage} onChange={this.handleEvent.bind(this, "switchOugiDamage")} /> 奥義ダメージ </td>
-                        <td><Checkbox inline checked={this.state.switchCharaAttack} onChange={this.handleEvent.bind(this, "switchCharaAttack")} /> キャラ攻撃力</td>
-                        <td><Checkbox inline checked={this.state.switchCharaHP} onChange={this.handleEvent.bind(this, "switchCharaHP")} /> キャラHP</td>
-                        <td><Checkbox inline checked={this.state.switchCharaDA} onChange={this.handleEvent.bind(this, "switchCharaDA")} /> キャラ連続攻撃率</td>
-                        <td><Checkbox inline checked={this.state.switchCharaTotalExpected} onChange={this.handleEvent.bind(this, "switchCharaTotalExpected")} /> キャラ総回技値</td>
-                        <td><Checkbox inline checked={this.state.switchSkillTotal} onChange={this.handleEvent.bind(this, "switchSkillTotal")} />スキル合計値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> 奥義ゲージ上昇期待値 </td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> 奥義ダメージ </td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}> キャラ連続攻撃率</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}> キャラ総回技値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                     </tr>
                     </tbody></table>
-                    <br/>
-                    動作制御:
-                    <Checkbox inline className="autoupdate" checked={this.state.disableAutoResultUpdate} onChange={this.handleEvent.bind(this, "disableAutoResultUpdate")} /> 自動更新を切る
-
-                    <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>
+                    {/*<span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>*/}
                     <hr />
                         <ButtonGroup style={{width: "100%"}}>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフを開く(beta)</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフを開く(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフを開く</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフを開く</Button>
                             <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >ダメージシミュレータ(beta)</Button>
                         </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
@@ -3444,7 +3386,7 @@ var ResultList = React.createClass({
 
                         return(
                             <div key={summonindex} className="result">
-                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {res.sortkeyname}]</h2>
+                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {changeSortKey}]</h2>
                                 <div className="charainfo"><span>{remainHPstr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
@@ -3470,54 +3412,20 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>HP Charts ({remainHPstr})</Modal.Title>
-                            <Button bsStyle="primary" onClick={this.openHPChartTutorial}>使い方</Button>
+                            <Button bsStyle="info" onClick={this.openHPChartTutorial}>使い方</Button>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
-                            <Modal className="hpChartTutotial" show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>HP Chartsの使い方</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <p>HPチャート機能は「保存された武器編成の攻撃力等を、残りHP割合ごとに再計算する」機能です。</p>
-                                    <h2>1.</h2>
-                                    <p>適当に編成を計算した後、グラフを見たい編成をグラフに加えます。</p>
-                                    <Thumbnail alt="HPチャート操作1" src="./otherImages/hpChartTutorial1.png">
-                                    </Thumbnail>
-                                    <h2>2.</h2>
-                                    <p>グラフに加えると、「背水渾身チャートを開く」ボタンが有効化されるので、クリックします。</p>
-                                    <h2>3.</h2>
-                                    <p>「優先する項目」に設定されている値を描画したグラフが表示されます。</p>
-                                    <Thumbnail alt="HPチャート操作1" src="./otherImages/hpChartTutorial2.png">
-                                    </Thumbnail>
-                                    <p className="text-danger">まだサポートされていない要素が「優先する項目」に設定されている場合、"総合攻撃力"のグラフに変更されます。</p>
-                                    <h2>4.</h2>
-                                    <p>上部の選択ボタンで、他の要素を表示することも可能です。</p>
-                                    <Thumbnail alt="HPチャート操作1" src="./otherImages/hpChartTutorial3.png">
-                                    </Thumbnail>
-                                    <h2>5.</h2>
-                                    <p>複数の召喚石組み合わせが設定されている場合、複数のグラフが作成されます。</p>
-                                    <Thumbnail alt="HPチャート操作1" src="./otherImages/hpChartTutorial4.png">
-                                    </Thumbnail>
-                                    <p className="text-danger">現在は、ある組み合わせをグラフに保存すると、全てのグラフに追加されるようになっています。
-                                    これを召喚石別にするかどうかは、今後検討します。</p>
-                                    <h2>注記</h2>
-                                    <p>編成として保存されるのは「武器の組み合わせの本数」のみです。
-                                    そのため、武器攻撃力やバフ量などを変更した場合、結果のグラフも自動的に変更されます。</p>
-                                    <p className="text-danger">武器枠の数が追加/削除された場合、武器枠のデータがリセットされた場合は、
-                                    保存されている編成はリセットされてしまいますのでご注意下さい。
-                                    これは、武器組み合わせのみを保存しているため、誤って組み合わせで再計算されることを防ぐためです。</p>
-                                    <p>また、現在「追加した特定のグラフを削除する」機能は実装されておりませんので、
-                                    グラフが多くなりすぎてしまった場合、全削除を行い、保存されている編成をリセットしてください。</p>
-                                    <p>ご要望・不具合等あればお知らせ下さい。</p>
-                                </Modal.Body>
-                            </Modal>
+                            <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
@@ -3526,269 +3434,18 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
                         <Modal.Header closeButton>
                             <Modal.Title>ダメージシミュレータ ({remainHPstr})</Modal.Title>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
                         </Modal.Body>
                     </Modal>
+                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
                 </div>
             );
         }
     }
-});
-
-var TurnChart = React.createClass({
-    getInitialState: function() {
-        var sortKey = this.props.sortKey
-        if(!(sortKey in supportedTurnChartSortkeys)) sortKey = "totalAttack"
-
-        options = {}
-        if(_ua.Mobile) {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        curveType: 'function',
-                        forcelFrame: true,
-                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        } else {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        curveType: 'function',
-                        forcelFrame: true,
-                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        }
-
-        return {
-            options: options,
-            sortKey: sortKey,
-        }
-    },
-    handleEvent: function(key, e) {
-        var newState = this.state
-        newState[key] = e.target.value
-
-        // optionsをupdate
-        options = {}
-        if(_ua.Mobile) {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        curveType: 'function',
-                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        } else {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        curveType: 'function',
-                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-
-        }
-        newState.options = options
-
-        this.setState(newState)
-    },
-    render: function() {
-        var options = this.state.options
-        var data = this.props.data
-        var sortKey = this.state.sortKey
-
-        if(_ua.Mobile) {
-            return (
-                    <div className="HPChart">
-                        {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>*/}
-                        {Object.keys(data).map(function(key, ind) {
-                            if(key != "minMaxArr") {
-                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
-                            }
-                        })}
-                    </div>
-            );
-        } else {
-            if(window.innerWidth >= 1450) {
-                var width = (90.0 / (Object.keys(data).length - 1))
-                if(Object.keys(data).length - 1 > 2) {
-                    width = 45.0
-                }
-            } else {
-                var width = 90.0
-            }
-
-            return (
-                    <div className="HPChart">
-                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_turnchartsortkeys}</FormControl>
-                        {Object.keys(data).map(function(key, ind) {
-                            if(key != "minMaxArr") {
-                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
-                            }
-                        })}
-                    </div>
-            );
-
-        }
-    },
-});
-
-var HPChart = React.createClass({
-    getInitialState: function() {
-        var sortKey = this.props.sortKey
-        if(!(sortKey in supportedChartSortkeys)) sortKey = "totalAttack"
-
-        options = {}
-        if(_ua.Mobile) {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        curveType: 'function',
-                        forcelFrame: true,
-                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        } else {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        curveType: 'function',
-                        forcelFrame: true,
-                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        }
-
-        return {
-            options: options,
-            sortKey: sortKey,
-        }
-    },
-    handleEvent: function(key, e) {
-        var newState = this.state
-        newState[key] = e.target.value
-
-        // optionsをupdate
-        options = {}
-        if(_ua.Mobile) {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        curveType: 'function',
-                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        } else {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        curveType: 'function',
-                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-
-        }
-        newState.options = options
-
-        this.setState(newState)
-    },
-    render: function() {
-        var options = this.state.options
-        var data = this.props.data
-        var sortKey = this.state.sortKey
-
-        if(_ua.Mobile) {
-            return (
-                    <div className="HPChart">
-                        {/*<FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>*/}
-                        <p className="text-danger">HPチャートの計算において、キャラを「平均値に含めるかどうか」の設定が上手く動いていない状態だった不具合を修正しました。</p>
-                        {Object.keys(data).map(function(key, ind) {
-                            if(key != "minMaxArr") {
-                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
-                            }
-                        })}
-                    </div>
-            );
-        } else {
-            if(window.innerWidth >= 1450) {
-                var width = (90.0 / (Object.keys(data).length - 1))
-                if(Object.keys(data).length - 1 > 2) {
-                    width = 45.0
-                }
-            } else {
-                var width = 90.0
-            }
-
-            return (
-                    <div className="HPChart">
-                        <p className="text-danger">9/14 HPチャートの計算において、キャラを「平均値に含めるかどうか」の設定が上手く動いていない状態だった不具合を再度修正しました。</p>
-                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>
-                        {Object.keys(data).map(function(key, ind) {
-                            if(key != "minMaxArr") {
-                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
-                            }
-                        })}
-                    </div>
-            );
-
-        }
-    },
 });
 
 var Result = React.createClass({
@@ -3910,7 +3567,7 @@ var Result = React.createClass({
                     if(sw.switchSkillTotal) {
                         tablebody.push(skillstr)
                     }
-                    if(_ua.Mobile) {
+                    if(_ua.Mobile || _ua.Tablet) {
                         return (
                             <tr className="result" title={skillstr} key={rank + 1}>
                                 <td>{rank + 1}</td>
@@ -3961,7 +3618,7 @@ var Result = React.createClass({
                                         }
                                     }
                                  })}
-                                <td><Button id={rank} bsStyle="primary" block onClick={onClick}>グラフに<br/>加える</Button></td>
+                                <td style={{"padding": "2px"}}><Button id={rank} bsStyle="primary" block className="add-graph-button" onClick={onClick}>グラフに<br/>加える</Button></td>
                             </tr>
                         );
                     }
@@ -4131,63 +3788,30 @@ var ArmList = React.createClass({
         var addArmID = this.state.addArmID;
         var considerNum = this.state.considerNum;
 
-        if(_ua.Mobile) {
-            return (
-                <div className="armList">
-                    <ButtonGroup vertical block>
-                        <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>武器テンプレートを開く</Button>
-                    </ButtonGroup>
-                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Presets</Modal.Title>
-                            <span>(最大50件しか表示されません)</span>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <RegisteredArm onClick={this.addTemplateArm} />
-                        </Modal.Body>
-                    </Modal>
+        return (
+            <div className="armList">
+                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>武器テンプレートを開く</Button>
+                <br/>
+                <span>属性一括変更</span>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+                <Grid fluid>
+                    <Row>
+                        {arms.map(function(arm, ind) {
+                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
+                        })}
+                    </Row>
+                </Grid>
 
-                    <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
-                    {arms.map(function(arm, ind) {
-                        return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
-                    })}
-                </div>
-            );
-        } else {
-            return (
-                <div className="armList">
-                    <Button bsStyle="success" bsSize="large" onClick={this.openPresets}>武器テンプレートを開く</Button>
-                    <table className="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>武器名*</th>
-                        <th className="atkhp">攻撃力*</th>
-                        <th className="atkhp">HP</th>
-                        <th>武器種*</th>
-                        <th className="skillselect">スキル*   <ControlLabel>属性一括変更</ControlLabel><FormControl componentClass="select" className="element" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl></th>
-                        <th>SLv*</th>
-                        <th className="consider">本数*</th>
-                        <th className="system">操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {arms.map(function(arm, ind) {
-                        return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
-                    })}
-                    </tbody>
-                    </table>
-
-                    <Modal show={this.state.openPresets} onHide={this.closePresets}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Presets</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <RegisteredArm onClick={this.addTemplateArm} />
-                        </Modal.Body>
-                    </Modal>
-                </div>
-            )
-        };
+                <Modal show={this.state.openPresets} onHide={this.closePresets}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Presets</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <RegisteredArm onClick={this.addTemplateArm} />
+                    </Modal.Body>
+                </Modal>
+            </div>
+        )
     }
 });
 
@@ -4286,7 +3910,7 @@ var RegisteredArm = React.createClass({
         var limit = this.state.limit;
         var displayed_count = 0;
 
-        if(_ua.Mobile){
+        if(_ua.Mobile || _ua.Tablet){
             return (
                 <div className="armTemplate">
                     <FormControl type="text" placeholder="武器名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
@@ -4595,63 +4219,54 @@ var Arm = React.createClass({
         this.props.onCopy(this.props.id, this.props.keyid, this.state)
     },
     render: function(){
-        if(_ua.Mobile) {
-            return (
-                <table className="table table-bordered">
-                <tbody>
-                    <tr><th>武器名</th><td><FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} /></td></tr>
-                    <tr><th>攻撃力</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} /></td></tr>
-                    <tr><th>HP</th><td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} /></td></tr>
-                    <tr><th>種類</th><td className="select"><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl></td></tr>
-                    <tr><th>スキル</th>
-                    <td>
-                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
-                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
-                    </td></tr>
-                    <tr><th>スキルレベル</th><td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl></td></tr>
-                    <tr><th>考慮本数</th><td className="consider">
-                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl><br/>
-                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
-                    </td></tr>
-                    <tr><th>操作</th>
-                    <td>
-                        <ButtonGroup>
-                            <Button bsStyle="primary" onClick={this.clickRemoveButton}>削除</Button>
-                            <Button bsStyle="primary" onClick={this.clickCopyButton}>コピー</Button>
-                        </ButtonGroup>
-                    </td></tr>
-                </tbody>
-                </table>
-            );
-        } else {
-            return (
-                <tr>
-                    <td className="armname"><FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} /></td>
-                    <td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} /></td>
-                    <td className="atkhp"><FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} /></td>
-                    <td><FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl></td>
-                    <td className="skillselect">
-                        <FormControl componentClass="select" className="element" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
-                        <FormControl componentClass="select" className="element" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
-                        <FormControl componentClass="select" className="skill" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
-                    </td>
-                    <td className="select"><FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl></td>
-                    <td className="consider">
-                        min: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl><br/>
-                        max: <FormControl componentClass="select" className="consider" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
-                    </td>
-                    <td className="system">
-                        <ButtonGroup vertical>
-                            <Button bsStyle="primary" block onClick={this.clickRemoveButton}>削除</Button>
-                            <Button bsStyle="primary" block onClick={this.clickCopyButton}>コピー</Button>
-                        </ButtonGroup>
-                    </td>
-                </tr>
-            );
-        }
+        return (
+            <ColP sxs={12} xs={6} ssm={4} className="col-bordered">
+                <FormGroup>
+                <InputGroup>
+                    <InputGroup.Addon>武器名　</InputGroup.Addon>
+                    <FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} />
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>攻撃力　</InputGroup.Addon>
+                <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} />
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>HP&nbsp;&nbsp;　　</InputGroup.Addon>
+                    <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} />
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>種類　　</InputGroup.Addon>
+                <FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>スキル1&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
+                    <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>スキル2&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
+                    <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>SLv&nbsp;　　</InputGroup.Addon>
+                <FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>最小本数</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>最大本数</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
+                </InputGroup>
+                <ButtonGroup style={{"width": "100%"}}>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickCopyButton}>コピー</Button>
+                </ButtonGroup>
+                </FormGroup>
+            </ColP>
+        );
     }
 });
 
@@ -4687,6 +4302,7 @@ var Profile = React.createClass({
             normalBuff: 0,
             elementBuff: 0,
             otherBuff: 0,
+            additionalDamageBuff: 0,
             hpBuff: 0,
             daBuff: 0,
             taBuff: 0,
@@ -4727,7 +4343,7 @@ var Profile = React.createClass({
         this.props.onChange(newState)
     },
     render: function() {
-        if(_ua.Mobile) {
+        if(_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="profile">
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
@@ -4815,7 +4431,17 @@ var Profile = React.createClass({
                             <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
                             <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
                             <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.ougiGageBuff} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl></td>
+                        </tr><tr>
+                            <th className="buff">追加ダメージ(%)</th>
+                            <th className="buff"></th>
+                            <th className="buff"></th>
+                            <th className="prof"></th>
+                        </tr><tr>
+                            <td><FormControl componentClass="select" value={this.state.additionalDamageBuff} onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>
@@ -4823,13 +4449,6 @@ var Profile = React.createClass({
                     <h3 className="margin-top"> Advanced settings</h3>
                     <p>もっともっと詳しく計算したい方向けの項目です。</p>
                     <table className="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th className="advanced-setting">項目名</th>
-                            <th></th>
-                            <th>説明</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <tr>
                             <th className="advanced-setting">敵防御固有値</th>
@@ -4869,50 +4488,9 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <p className="text-info">9/30 コスモスATのスキル値にゼウス石加護が乗ってしまっていた不具合を修正しました。</p>
                     <h3> ジータさん情報 (*: 推奨入力項目)</h3>
-                    <table className="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th className="prof">Rank*</th>
-                            <th className="prof">ゼニス攻撃力*</th>
-                            <th className="prof">ゼニスHP</th>
-                            <th className="prof">マスターボーナス<br/>ATK(%)*</th>
-                            <th className="prof">マスターボーナス<br/>HP(%)</th>
-                            <th className="prof">ジョブ*</th>
-                            <th className="prof">残HP(%)<br/>(ジータさんのみ)</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">ジータ属性*</th>
-                            <th className="prof">敵の属性*</th>
-                            <th className="prof">武器ゼニス1</th>
-                            <th className="prof">武器ゼニス2</th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                            <th className="prof"></th>
-                        </tr>
-                        <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </table>
                     <span>
-                    ジョブ情報: {Jobs[this.state.job].name}:
+                    ジョブ名: {Jobs[this.state.job].name},
                     得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
                     {jobTypes[Jobs[this.state.job].type]}タイプ,
                     攻撃ボーナス {Jobs[this.state.job].atBonus},
@@ -4922,28 +4500,162 @@ var Profile = React.createClass({
                     基礎DA率 {Jobs[this.state.job].DaBonus}%,
                     基礎TA率 {Jobs[this.state.job].TaBonus}%
                     </span>
-
-                    <h3 className="margin-top"> パーティ全体への効果 (%表記)</h3>
+                    <div className="table-responsive">
                     <table className="table table-bordered">
                         <tbody>
                         <tr>
-                            <th className="buff">通常バフ</th>
-                            <th className="buff">属性バフ</th>
-                            <th className="buff">その他バフ</th>
-                            <th className="buff">HPバフ</th>
-                            <th className="buff">DAバフ</th>
-                            <th className="buff">TAバフ</th>
-                            <th className="buff">残HP(%)</th>
-                            <th className="buff">奥義ゲージ上昇率アップ</th>
+                            <th className="table-profile-th">Rank*</th>
+                            <td className="table-profile-td"><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                            <td className="table-profile-td">基礎攻撃力、基礎HPなどはランクに従って自動で計算されます</td>
                         </tr><tr>
-                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.ougiGageBuff} </FormControl></td>
+                            <th className="table-profile-th">ジョブ*</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
+                            <td className="table-profile-td">
+                                <p>ジョブごとのボーナス等は自動で反映されます。
+                                得意武器補正などを反映したくない場合"なし"を選択して下さい。</p>
+                            </td>
+                        </tr><tr>
+                            <th className="table-profile-th">ゼニス攻撃力*</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
+                            <td className="table-profile-td"></td>
+                        </tr><tr>
+                            <th className="table-profile-th">ゼニスHP</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
+                            <td className="table-profile-td"></td>
+                        </tr><tr>
+                            <th className="table-profile-th">マスターボーナス<br/>ATK*</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">ジョブマスターボーナスの"攻撃力+○○％"の値です<br/>(各ジョブごとのボーナスとは別です)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">マスターボーナス<br/>HP</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">ジョブマスターボーナスの"HP+○○％"の値です<br/>(各ジョブごとのボーナスとは別です)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">残HP割合<br/>(ジータさんのみ)</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">ジータさんの残りHP割合です。パーティ全体の残りHP割合を一括で指定したい場合は、"パーティ全体への効果"の”残HP割合"を指定して下さい。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">ジータさん属性*</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
+                            <td className="table-profile-td">ジータさんの属性です</td>
+                        </tr><tr>
+                            <th className="table-profile-th">敵の属性*</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
+                            <td className="table-profile-td">有利/非有利/不利は、敵の属性に従って自動で判定されます。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">武器ゼニス1({armTypes[Jobs[this.state.job].favArm1]})</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td className="table-profile-td">得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">武器ゼニス2({armTypes[Jobs[this.state.job].favArm2]})</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td className="table-profile-td">得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
+                    <h3 className="margin-top"> パーティ全体への効果 (%表記)</h3>
+                    <p>パーティメンバ全体にかかるバフ等の情報を入力してください</p>
+                    <table className="table table-bordered">
+                        <tbody>
+                        <tr>
+                        </tr><tr>
+                            <th className="table-profile-th">通常バフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">通常枠のバフ</td>
+                        </tr><tr>
+                            <th className="table-profile-th">属性バフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">属性枠のバフ</td>
+                        </tr><tr>
+                            <th className="table-profile-th">その他バフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">別枠乗算のバフ(乗算を複数加味したい場合は乗算後の値を入力してください)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">HPバフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">HP上昇のバフ(古戦場スタックとかの計算用)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">DAバフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">DA率が上がります。各キャラの基礎DA率に加算されます。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">TAバフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">TA率が上がります。各キャラの基礎TA率に加算されます。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">残HP割合</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">パーティ全体の残りHP割合です。(キャラ個別の値が入力されている場合、より低い方を採用します)</td>
+                        </tr><tr>
+                            <th className="table-profile-th">追加ダメージバフ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.additionalDamageBuff} onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。</td>
+                        </tr><tr>
+                            <th className="table-profile-th">奥義ゲージ上昇率アップ</th>
+                            <td className="table-profile-td">
+                            <InputGroup>
+                            <FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                            <td className="table-profile-td">奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。</td>
                         </tr>
                         </tbody>
                     </table>
@@ -4952,18 +4664,11 @@ var Profile = React.createClass({
                     <p>もっともっと詳しく計算したい方向けの項目です。</p>
                     <div className="table-responsive">
                     <table className="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th className="advanced-setting">項目名</th>
-                            <th></th>
-                            <th>説明</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <tr>
-                            <th className="advanced-setting">敵防御固有値</th>
-                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
-                            <td className="advanced-setting">
+                            <th className="table-profile-th">敵防御固有値</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
+                            <td className="table-profile-td">
                             想定される敵の防御固有値を設定します。<br/>
                             単攻撃ダメージ、奥義ダメージ、<br/>
                             予想ターン毎ダメージの計算に影響します。<br/>
@@ -4972,24 +4677,24 @@ var Profile = React.createClass({
                             </td>
                         </tr>
                         <tr>
-                            <th className="advanced-setting">ジータさん<br/>基礎DA率</th>
-                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td className="advanced-setting">ジータさんの基礎DA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                            <th className="table-profile-th">ジータさん<br/>基礎DA率</th>
+                            <td className="table-profile-td"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                            <td className="table-profile-td">ジータさんの基礎DA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
                         </tr>
                         <tr>
-                            <th className="advanced-setting">ジータさん<br/>基礎TA率</th>
-                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td className="advanced-setting">ジータさんの基礎TA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                            <th className="table-profile-th">ジータさん<br/>基礎TA率</th>
+                            <td className="table-profile-td"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                            <td className="table-profile-td">ジータさんの基礎TA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
                         </tr>
                         <tr>
-                            <th className="advanced-setting">ジータさん<br/>奥義倍率</th>
-                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
-                            <td className="advanced-setting">ジータさんの奥義倍率を設定します。<br/>奥義ダメージ、予想ターン毎ダメージの計算に影響します。</td>
+                            <th className="table-profile-th">ジータさん<br/>奥義倍率</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
+                            <td className="table-profile-td">ジータさんの奥義倍率を設定します。<br/>奥義ダメージ、予想ターン毎ダメージの計算に影響します。</td>
                         </tr>
                         <tr>
-                            <th className="advanced-setting">確保したい<br/>ジータさんHP</th>
-                            <td className="advanced-setting"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
-                            <td className="advanced-setting">暴君・守護など混みの最終HPの最低ラインを設定できます。<br/>これを下回った編成は表示されません。<br/>(初期値は0です) ジータさんのHPベースです。</td>
+                            <th className="table-profile-th">確保したい<br/>ジータさんHP</th>
+                            <td className="table-profile-td"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
+                            <td className="table-profile-td">暴君・守護など混みの最終HPの最低ラインを設定できます。<br/>これを下回った編成は表示されません。<br/>(初期値は0です) ジータさんのHPベースです。</td>
                         </tr>
                         </tbody>
                     </table>

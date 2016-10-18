@@ -25,7 +25,7 @@ var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
 var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var ougiGageBuffList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+var buffLevelList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
 var ougiRatioList = [4.0, 4.5, 5.0];
 var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
@@ -204,6 +204,7 @@ var summonTypes = {
     "ranko": "蘭子",
     "odin": "属性攻+キャラ攻",
     "elementTurn": "属性(経過ターン)",
+    "elementByRace": "属性(種族数)",
 }
 
 var raceTypes = {
@@ -374,7 +375,7 @@ var skillAmounts = {
         "TA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0],
     },
     "normalHP":{
-        "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+        "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.4, 12.8, 13.2, 13.6, 14.0],
         "M": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.4, 15.8, 16.2, 16.6, 17.0],
         "L": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
     },
@@ -456,7 +457,7 @@ module.exports.selector.zenithAttack = zenithAttackBonus.map(function(opt){retur
 module.exports.selector.zenithHP = zenithHPBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.slv = skilllevels.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.consider = considerNum.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
-module.exports.selector.ougiGageBuff = ougiGageBuffList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+module.exports.selector.buffLevel = buffLevelList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.ougiRatio = ougiRatioList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.hplist = HPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.masteratk = masterATKList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});

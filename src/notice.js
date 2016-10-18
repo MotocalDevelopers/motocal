@@ -10,6 +10,9 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/10/18: 表示項目の切り替えをクリックしやすくした</li>
+                <li className="list-group-item list-group-item-info">2016/10/18: キャラの削除と入れ替え機能を実装</li>
+                <li className="list-group-item list-group-item-info">2016/10/18: 通常守護(小)のSLv111-15の効果量を反映 / レイアウト調整</li>
                 <li className="list-group-item list-group-item-danger">2016/10/17: 朱雀翼弦のスキル「紅蓮の呪印・弐」にゼウス系石の効果が乗ってしまっていた不具合を修正 / シミュレータのバフリストに「40％」が抜けていたので追記</li>
                 <li className="list-group-item list-group-item-info">2016/10/14: 武器テンプレートにマルメターノを追加/ブラックアックス解放に対応/召喚石加護量に66%を追加(蘭子用)</li>
                 <li className="list-group-item list-group-item-info">2016/10/01:  PC版レイアウトの調整 (縦分割レイアウトの撤廃)</li>
@@ -53,7 +56,6 @@ var Notice = React.createClass ({
                  <li className="list-group-item list-group-item-info">今後の実装予定: 召喚石入力欄の利便性向上 / キャラ欄の利便性向上</li>
                  <li className="list-group-item list-group-item-info"><strong>バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに"バハフツ(攻/HP)"を選択してください。</strong> <br/>
                  (バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)</li>
-                 <li className="list-group-item list-group-item-info">得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</li>
                  <li className="list-group-item list-group-item-info">バハフツルス系の連続攻撃率については、SLv15以外は情報がありませんので、ご検証お待ちしています。</li>
                  <li className="list-group-item list-group-item-info">基本的に考えうる全ての編成のデータを計算しますが、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。(計算量削減のため)</li>
                  <li className="list-group-item list-group-item-info">パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用) </li>
@@ -122,7 +124,7 @@ var Notice = React.createClass ({
                 <tr><td>バハフツHP(拳等)</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.0</td><td>30.4</td><td>30.8</td><td>31.2</td><td>31.6</td><td>32.0</td></tr>
                 <tr><td>バハフツDA率</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>7.5</td><td>8.0</td><td>8.5</td><td>9.0</td><td>9.5</td><td>10.0</td></tr>
                 <tr><td>バハフツTA率</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>6.0</td><td>6.4</td><td>6.8</td><td>7.2</td><td>7.6</td><td>8.0</td></tr>
-                <tr><td>通常守護(小)</td><td>3.0</td><td>4.0</td><td>5.0</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td><td>12.0</td></tr>
+                <tr><td>通常守護(小)</td><td>3.0</td><td>4.0</td><td>5.0</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>12.4</td><td>12.8</td><td>13.2</td><td>13.6</td><td>14.0</td></tr>
                 <tr><td>通常守護(中)</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>13.0</td><td>14.0</td><td>15.0</td><td>15.4</td><td>15.8</td><td>16.2</td><td>16.6</td><td>17.0</td></tr>
                 <tr><td>通常守護(大)</td><td>9.0</td><td>10.0</td><td>11.0</td><td>12.0</td><td>13.0</td><td>14.0</td><td>15.0</td><td>16.0</td><td>17.0</td><td>18.0</td><td>18.6</td><td>19.2</td><td>19.8</td><td>20.4</td><td>21.0</td></tr>
                 <tr><td>マグナ守護(小)</td><td>1.0</td><td>2.0</td><td>3.0</td><td>4.0</td><td>5.0</td><td>6.0</td><td>7.0</td><td>8.0</td><td>9.0</td><td>10.0</td><td>10.4</td><td>10.8</td><td>11.2</td><td>11.6</td><td>12.0</td></tr>
@@ -150,7 +152,7 @@ var Notice = React.createClass ({
             </tbody></table>
             </div>
             <ul className="list-group">
-                <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)</li>
+                <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は乗らない)</li>
                 <li className="list-group-item">霧氷の追牙・肆: パーティ4番目のキャラに追加ダメージ(1% * slv) / 奥義ゲージ上昇量 - 30%</li>
                 <li className="list-group-item">通常神威: 通常攻刃(小) + 通常守護(小)</li>
                 <li className="list-group-item">マグナ神威: マグナ攻刃(小) + マグナ守護(小)</li>
