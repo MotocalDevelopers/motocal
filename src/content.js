@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
-var {Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var SimulatorInput = require('./simulator.js')
 var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
@@ -849,6 +849,11 @@ var Chara = React.createClass({
     render: function() {
         return (
             <ColP sxs={12} ssm={6} sm={4} className="col-bordered">
+                {(this.props.keyid < 3) ?
+                    <Label bsStyle="primary">Front No.{this.props.keyid+1}</Label>
+                        :
+                    <Label bsStyle="default">Sub No.{this.props.keyid+1}</Label>
+                }
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
