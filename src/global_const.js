@@ -204,6 +204,7 @@ var summonTypes = {
     "ranko": "蘭子",
     "odin": "属性攻+キャラ攻",
     "elementTurn": "属性(経過ターン)",
+    "elementByRace": "属性(種族数)",
 }
 
 var raceTypes = {

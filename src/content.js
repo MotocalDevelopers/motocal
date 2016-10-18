@@ -1874,13 +1874,14 @@ var ResultList = React.createClass({
                 var k = 1;
                 while(charakey in totals) {
                     charakey = chara[i].name + k
-                        k++;
+                    k++;
                 }
 
                 totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0}
             }
         }
-        for(key in totals) {
+        var races = this.checkNumberofRaces(totals)
+        for(var key in totals) {
             totals[key]["totalSummon"] = []
             for(var s = 0; s < summon.length; s++) {
                 var selfElement = (summon[s].selfElement == undefined) ? "fire" : summon[s].selfElement
@@ -1893,6 +1894,8 @@ var ResultList = React.createClass({
                         // odin(属性+キャラ攻撃)など、複数の場合の処理
                         totalSummon["element"] += 0.01 * parseInt(summon[s].selfSummonAmount)
                         totalSummon["chara"] += 0.01 * parseInt(summon[s].selfSummonAmount2)
+                    } else if(summon[s].selfSummonType == "elementByRace") {
+                        totalSummon["element"] += 0.01 * parseInt(summon[s].selfSummonAmount * (races/4))
                     } else {
                         // 自分の加護 通常の場合
                         totalSummon[summon[s].selfSummonType] += 0.01 * parseInt(summon[s].selfSummonAmount)
@@ -1903,6 +1906,8 @@ var ResultList = React.createClass({
                         // odin(属性+キャラ攻撃)など、複数の場合の処理
                         totalSummon["element"] += 0.01 * parseInt(summon[s].friendSummonAmount)
                         totalSummon["chara"] += 0.01 * parseInt(summon[s].friendSummonAmount2)
+                    } else if(summon[s].friendSummonType == "elementByRace") {
+                        totalSummon["element"] += 0.01 * parseInt(summon[s].friendSummonAmount * (races/4))
                     } else {
                         // フレンドの加護 通常の場合
                         totalSummon[summon[s].friendSummonType] += 0.01 * parseInt(summon[s].friendSummonAmount)
@@ -1920,11 +1925,33 @@ var ResultList = React.createClass({
             }
         }
 
-        for(key in totals){
+        for(var key in totals){
             totals[key]["typeBonus"] = this.getTypeBonus(totals[key]["element"], prof)
         }
 
         return totals
+    },
+    checkNumberofRaces: function(totals){
+        // check num of races
+        var includedRaces = {
+            "human": false,
+            "erune": false,
+            "doraf": false,
+            "havin": false,
+            "unknown": false,
+        }
+        var ind = 0;
+        for(var key in totals) {
+            if(ind < 4) {
+                includedRaces[totals[key]["race"]] = true
+            }
+            ind++;
+        }
+        var races = 0
+        for(var key in includedRaces) {
+            if(includedRaces[key]) races++;
+        }
+        return races
     },
     calculateResult: function(newprops) {
       var prof = newprops.data.profile; var arml = newprops.data.armlist;
