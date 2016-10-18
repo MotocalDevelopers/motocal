@@ -479,7 +479,7 @@ var Root = React.createClass({
                         <SimulatorInput dataName={this.state.dataName} dataForLoad={dataForLoad.simulator} chara={this.state.chara} onChange={this.onChangeSimulationData} />
                     </div>
                 </div>
-                <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}><span className="label label-primary">drag</span></div>
+                <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
                     <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")}/>
                 </div>
@@ -491,13 +491,35 @@ var Root = React.createClass({
 
 var CharaList = React.createClass({
     getInitialState: function() {
+        var charas = [];
+        for(var i=0; i < this.props.charaNum; i++) {
+            charas.push(i);
+        }
+
         return {
             charalist: [],
+            charas: charas,
             defaultElement: "fire",
             addChara: null,
             addCharaID: -1,
             openPresets: false,
         };
+    },
+    updateCharaNum: function(num) {
+        var charas = this.state.charas
+
+        if(charas.length < num) {
+            var maxvalue = Math.max.apply(null, charas)
+            for(var i = 0; i < (num - charas.length); i++){
+                charas.push(i + maxvalue + 1)
+            }
+        } else {
+            // ==の場合は考えなくてよい (問題がないので)
+            while(charas.length > num){
+                charas.pop();
+            }
+        }
+        this.setState({charas: charas})
     },
     closePresets: function() {
         this.setState({openPresets: false})
@@ -513,6 +535,7 @@ var CharaList = React.createClass({
             }
             this.setState({charalist: newcharalist})
         }
+        this.updateCharaNum(nextProps.charaNum)
     },
     handleOnChange: function(key, state, isSubtle){
         var newcharalist = this.state.charalist;
@@ -526,6 +549,32 @@ var CharaList = React.createClass({
         newState[key] = e.target.value
         newState["addChara"] = null
         this.setState(newState)
+    },
+    handleOnRemove: function(id, keyid, state) {
+        var newcharas = this.state.charas
+        var maxvalue = Math.max.apply(null, newcharas)
+
+        // 該当の "key" を持つものを削除する
+        newcharas.splice(this.state.charas.indexOf(keyid), 1)
+        // 1個補充
+        newcharas.push(maxvalue + 1)
+        this.setState({charalist: newcharas})
+
+        // dataForLoadにinitial stateを入れておいて、componentDidMountで読み出されるようにする
+        if(!("chara" in dataForLoad)) {
+            dataForLoad["chara"] = {}
+        }
+        dataForLoad.chara[newcharas.length - 1] = state;
+
+        var newcharalist = this.state.charalist;
+        // 削除した分をlistからも削除
+        newcharalist.splice(id, 1)
+        // 1個補充
+        newcharalist.push(state)
+        this.setState({charalist: newcharalist})
+
+        // Root へ変化を伝搬
+        this.props.onChange(newcharalist, false);
     },
     addTemplateChara: function(templateChara) {
         var minimumID = -1;
@@ -556,15 +605,13 @@ var CharaList = React.createClass({
         }
     },
     render: function() {
-        var charas = [];
-        for(var i=0; i < this.props.charaNum; i++) {
-            charas.push({id: i});
-        }
+        var charas = this.state.charas;
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
         var defaultElement = this.state.defaultElement;
         var addChara = this.state.addChara
         var addCharaID = this.state.addCharaID
+        var handleOnRemove = this.handleOnRemove
 
         return (
             <div className="charaList">
@@ -574,8 +621,8 @@ var CharaList = React.createClass({
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
                 <Grid fluid style={{"width": "100%"}} >
                     <Row>
-                    {charas.map(function(c) {
-                        return <Chara key={c.id} onChange={hChange} id={c.id} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
+                    {charas.map(function(c, ind) {
+                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
                     })}
                     </Row>
                 </Grid>
@@ -794,6 +841,9 @@ var Chara = React.createClass({
             this.props.onChange(this.props.id, this.state, false)
         }
     },
+    clickRemoveButton: function(e) {
+        this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
+    },
     render: function() {
         return (
             <ColP sxs={12} ssm={6} sm={4} className="col-bordered">
@@ -845,6 +895,9 @@ var Chara = React.createClass({
                     <InputGroup.Addon>基礎TA率</InputGroup.Addon>
                     <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
                 </InputGroup>
+                <ButtonGroup style={{"width": "100%"}}>
+                    <Button bsStyle="primary" style={{"width": "99%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
+                </ButtonGroup>
             </FormGroup>
             </ColP>
         );
