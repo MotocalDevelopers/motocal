@@ -14,7 +14,7 @@ var StoredListEditor = React.createClass({
                 </Modal.Header>
                 <Modal.Body>
                     <div className="table-responsive">
-                        <table>
+                        <table className="table table-bordered">
                             <thead>
                             <tr>
                                 <th>No.</th>
