@@ -1247,6 +1247,71 @@
         "type": "defense", 
         "imageURL": "./charaimgs/3040095000_01.png"
     }, 
+    "ジュリエット": {
+        "baseDA": 6.5, 
+        "name": "ジュリエット", 
+        "hp": "1920", 
+        "element": "light", 
+        "attack": "7200", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "wand", 
+        "fav2": "none", 
+        "type": "defense", 
+        "imageURL": "./charaimgs/3040096000_01.png"
+    }, 
+    "ロミオ": {
+        "baseDA": 6.5, 
+        "name": "ロミオ", 
+        "hp": "1500", 
+        "element": "water", 
+        "attack": "8500", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "none", 
+        "fav2": "none", 
+        "type": "balance", 
+        "imageURL": "./charaimgs/3040098000_01.png"
+    }, 
+    "ユーステス(ハロウィンver)": {
+        "baseDA": 6.5, 
+        "name": "ユーステス(ハロウィンver)", 
+        "hp": "1100", 
+        "element": "earth", 
+        "attack": "8900", 
+        "race": "erune", 
+        "baseTA": 3.0, 
+        "fav1": "none", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3040099000_01.png"
+    }, 
+    "イシュミール": {
+        "baseDA": 6.5, 
+        "name": "イシュミール", 
+        "hp": "1370", 
+        "element": "water", 
+        "attack": "9980", 
+        "race": "doraf", 
+        "baseTA": 3.0, 
+        "fav1": "none", 
+        "fav2": "none", 
+        "type": "attack", 
+        "imageURL": "./charaimgs/3040100000_01.png"
+    }, 
+    "リーシャ(リミテッドver)": {
+        "baseDA": 6.5, 
+        "name": "リーシャ(リミテッドver)", 
+        "hp": "1900", 
+        "element": "wind", 
+        "attack": "8500", 
+        "race": "human", 
+        "baseTA": 3.0, 
+        "fav1": "none", 
+        "fav2": "none", 
+        "type": "balance", 
+        "imageURL": "./charaimgs/3040101000_01.png"
+    }, 
     "ノイシュ": {
         "baseDA": 6.5, 
         "name": "ノイシュ", 
@@ -2235,9 +2300,9 @@
         "type": "balance", 
         "imageURL": "./charaimgs/3030076000_01.png"
     }, 
-    "ロミオ": {
+    "ロミオ(SR)": {
         "baseDA": 6.5, 
-        "name": "ロミオ", 
+        "name": "ロミオ(SR)", 
         "hp": "1020", 
         "element": "water", 
         "attack": "4900", 
