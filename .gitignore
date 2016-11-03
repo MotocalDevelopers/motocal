@@ -1,7 +1,7 @@
 build/.module-cache
 node_modules
 imgs/*.png
-charaimgs
+charaimgs/*.png
 otherImages
 utils.php
 sqldump
