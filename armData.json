@@ -1,8 +1,38 @@
 {
-    "マルメテル・ハンマー": {
+    "[]スヴァル・ガントレット": {
+        "element2": "fire", 
+        "name": "スヴァル・ガントレット", 
+        "imageURL": "./imgs/1040606200.png", 
+        "skill2": "non", 
+        "skill1": "unknownOtherL", 
+        "element": "fire", 
+        "minattack": "310", 
+        "minhp": "31", 
+        "hp": "197", 
+        "attack": "1900", 
+        "slvmax": "10", 
+        "type": "fist", 
+        "maxlv": "100"
+    }, 
+    "[]ナーゲルリング": {
+        "name": "ナーゲルリング", 
+        "imageURL": "./imgs/1040009300.png", 
+        "type": "sword", 
+        "skill1": "normalL", 
+        "skill2": "normalCriticalS", 
+        "element": "water", 
+        "element2": "water", 
+        "minhp": "38", 
+        "minattack": "410", 
+        "hp": "217", 
+        "attack": "2500", 
+        "slvmax": "10", 
+        "maxlv": "100"
+    }, 
+    "[渦々斧]マルメテル・ハンマー": {
         "element2": "earth", 
-        "name": "マルメテル・ハンマー", 
-        "imageURL": "./imgs/104020.png", 
+        "name": "[渦々斧]マルメテル・ハンマー", 
+        "imageURL": "./imgs/1040306000.png", 
         "skill2": "non", 
         "skill1": "unknownL", 
         "element": "earth", 
@@ -15,6 +45,21 @@
         "type": "axe", 
         "hp": "174", 
         "maxlv": "150"
+    }, 
+    "マルメテル・ハンマー": {
+        "element2": "earth", 
+        "name": "マルメテル・ハンマー", 
+        "imageURL": "./imgs/1040306000.png", 
+        "skill2": "non", 
+        "skill1": "unknownL", 
+        "element": "earth", 
+        "minattack": "360", 
+        "attack": "2100",
+        "hp": "150",
+        "slvmax": "10", 
+        "minhp": "22", 
+        "type": "axe", 
+        "maxlv": "100"
     }, 
     "エリクトニオス": {
         "element2": "fire", 
@@ -2892,6 +2937,21 @@
         "type": "axe", 
         "hplv100": "150", 
         "maxlv": 150
+    }, 
+    "ブラックアックス": {
+        "element2": "fire", 
+        "name": "ブラックアックス", 
+        "imageURL": "./imgs/1040305400.png", 
+        "skill2": "non", 
+        "skill1": "unknownL", 
+        "element": "fire", 
+        "minattack": "350", 
+        "attack": "2130", 
+        "slvmax": 10, 
+        "minhp": "23", 
+        "type": "axe", 
+        "hp": "150", 
+        "maxlv": 100
     }, 
     "[]ソウルイーター": {
         "element2": "dark", 
