@@ -1,10 +1,10 @@
 {
     "[]スヴァル・ガントレット": {
         "element2": "fire", 
-        "name": "スヴァル・ガントレット", 
+        "name": "[]スヴァル・ガントレット", 
         "imageURL": "./imgs/1040606200.png", 
         "skill2": "non", 
-        "skill1": "unknownOtherL", 
+        "skill1": "strengthL", 
         "element": "fire", 
         "minattack": "310", 
         "minhp": "31", 
@@ -15,7 +15,7 @@
         "maxlv": "100"
     }, 
     "[]ナーゲルリング": {
-        "name": "ナーゲルリング", 
+        "name": "[]ナーゲルリング", 
         "imageURL": "./imgs/1040009300.png", 
         "type": "sword", 
         "skill1": "normalL", 
