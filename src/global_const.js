@@ -425,6 +425,20 @@ var skillAmounts = {
     },
 }
 
+// chara support
+// ATK: xx% ATK UP
+// HP : xx% HP UP
+// DA : xx% DA UP
+// TA : xx% TA UP
+var supportAbilities = {
+    "none": {"name": "なし", "type": "none", "range": "own", "value": 0},
+    "da_up_one": {"name": "DA率アップ", "type": "DABuff", "range": "own", "value": 0.20},
+    "ta_up_one": {"name": "TA率アップ", "type": "TABuff", "range": "own", "value": 0.20},
+    "ta_up_all": {"name": "全体TA率アップ", "type": "TABuff", "range": "all", "value": 0.20},
+    "atk_up_own": {"name": "攻撃UP", "type": "normalBuff", "range": "own", "value": 0.20},
+}
+
+// exports
 module.exports.zenith = zenith
 module.exports.raceTypes = raceTypes
 module.exports.skillAmounts = skillAmounts
@@ -440,6 +454,7 @@ module.exports.supportedTurnChartSortkeys = supportedTurnChartSortkeys
 module.exports.supportedChartSortkeys = supportedChartSortkeys
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
 module.exports.enemyDefenseType = enemyDefenseType
+module.exports.supportAbilities = supportAbilities
 
 // オプション用
 module.exports.selector = {}
@@ -472,4 +487,5 @@ module.exports.selector.supported_chartsortkeys = Object.keys(supportedChartSort
 module.exports.selector.supported_turnchartsortkeys = Object.keys(supportedTurnChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedTurnChartSortkeys[opt]}</option> });
 module.exports.selector.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedSimulationChartSortkeys[opt]}</option> });
 module.exports.selector.enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
+module.exports.selector.supportAbilities = Object.keys(supportAbilities).map(function(opt){return <option value={opt} key={opt}>{supportAbilities[opt].name}</option>;});
 

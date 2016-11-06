@@ -16,6 +16,7 @@ var dataForLoad = GlobalConst.dataForLoad
 var elementRelation = GlobalConst.elementRelation
 var bahamutRelation = GlobalConst.bahamutRelation
 var bahamutFURelation = GlobalConst.bahamutFURelation
+var supportAbilities = GlobalConst.supportAbilities
 var selector = GlobalConst.selector
 var zenith = GlobalConst.zenith
 var Jobs = GlobalConst.Jobs
@@ -685,6 +686,7 @@ var Chara = React.createClass({
             attack: 0,
             hp: 0,
             support: "none",
+            support2: "none",
             type: "attack",
             favArm: "dagger",
             favArm2: "none",
@@ -708,18 +710,7 @@ var Chara = React.createClass({
        // もし addCharaIDが設定されていて、自分と一致しているなら読み込む
        if(this.props.addChara != null && this.props.id == this.props.addCharaID ) {
            var newchara = this.props.addChara
-
-           state["name"] = newchara.name
-           state["attack"] = parseInt(newchara.attack)
-           state["hp"] = parseInt(newchara.hp)
-           state["type"] = newchara.type
-           state["race"] = newchara.race
-           state["element"] = newchara.element
-           state["favArm"] = newchara.fav1
-           state["favArm2"] = newchara.fav2
-           state["DA"] = parseFloat(newchara.baseDA)
-           state["TA"] = parseFloat(newchara.baseTA)
-
+           state = this.setNewCharaState(state, newchara)
            this.setState(state);
        }
        // 初期化後 state を 上の階層に渡しておく
@@ -744,23 +735,27 @@ var Chara = React.createClass({
         }
 
         if(nextProps.addChara != null && nextProps.addChara != this.props.addChara && this.props.id == nextProps.addCharaID ) {
-            var newState = this.state
             var newchara = nextProps.addChara
-
-            newState["name"] = newchara.name
-            newState["attack"] = parseInt(newchara.attack)
-            newState["hp"] = parseInt(newchara.hp)
-            newState["type"] = newchara.type
-            newState["race"] = newchara.race
-            newState["element"] = newchara.element
-            newState["favArm"] = newchara.fav1
-            newState["favArm2"] = newchara.fav2
-            newState["DA"] = parseFloat(newchara.baseDA)
-            newState["TA"] = parseFloat(newchara.baseTA)
-
+            var newState = this.setNewCharaState(this.state, newchara)
             this.setState(newState);
             this.props.onChange(this.props.id, newState, false);
         }
+    },
+    setNewCharaState: function(newState, newchara){
+        newState["name"] = newchara.name
+        newState["attack"] = parseInt(newchara.attack)
+        newState["hp"] = parseInt(newchara.hp)
+        newState["type"] = newchara.type
+        newState["race"] = newchara.race
+        newState["element"] = newchara.element
+        newState["favArm"] = newchara.fav1
+        newState["favArm2"] = newchara.fav2
+        newState["DA"] = parseFloat(newchara.baseDA)
+        newState["TA"] = parseFloat(newchara.baseTA)
+        newState["support"] = newchara.support
+        newState["support2"] = newchara.support2
+
+        return newState;
     },
     handleEvent: function(key, e) {
         var newState = this.state
@@ -849,6 +844,11 @@ var Chara = React.createClass({
                 <InputGroup>
                     <InputGroup.Addon>基礎TA率</InputGroup.Addon>
                     <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroup.Addon>サポアビ&nbsp;</InputGroup.Addon>
+                    <FormControl componentClass="select" value={this.state.support} onChange={this.handleSelectEvent.bind(this, "support")}>{selector.supportAbilities}</FormControl>
+                    <FormControl componentClass="select" value={this.state.support2} onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl>
                 </InputGroup>
                 <ButtonGroup style={{"width": "100%"}}>
                     <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>前へ</Button>
@@ -1906,7 +1906,7 @@ var ResultList = React.createClass({
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0}};
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0, support: "none", support2: "none"}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -1924,7 +1924,7 @@ var ResultList = React.createClass({
                     k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0, support: chara[i].support, support2: chara[i].support2}
             }
         }
         var races = this.checkNumberofRaces(totals)
@@ -2054,6 +2054,7 @@ var ResultList = React.createClass({
           }
 
           var totals = this.getInitialTotals(prof, chara, summon)
+          this.treatSupportAbility(totals, totalBuff)
           var itr = combinations.length
           var totalItr = itr * summon.length * Object.keys(totals).length
 
@@ -2122,6 +2123,37 @@ var ResultList = React.createClass({
       } else {
           return {summon: summon, result: []}
       }
+    },
+    treatSupportAbility: function(totals) {
+        for(var key in totals){
+            for(var i = 0; i < 2; i++) {
+                if(i == 0) {
+                    if(totals[key]["support"] == undefined) continue;
+                    var support = supportAbilities[totals[key]["support"]];
+                } else {
+                    if(totals[key]["support2"] == undefined) continue;
+                    var support = supportAbilities[totals[key]["support2"]];
+                }
+
+                if(support.type == "none") continue;
+
+                // 特殊なサポアビの処理
+                switch(support.type){
+                    default:
+                        break;
+                }
+
+                // 単純なバフ系の場合の処理
+                if(support.range == "own") {
+                    totals[key][support.type] += support.value
+                } else {
+                    // range == "all"
+                    for(var key2 in totals){
+                        totals[key2][support.type] += support.value
+                    }
+                }
+            }
+        }
     },
     getInitialState: function() {
         return {
@@ -2222,6 +2254,7 @@ var ResultList = React.createClass({
         var summon = this.props.data.summon; var chara = this.props.data.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
+        this.treatSupportAbility(totals, totalBuff)
 
         var sortkey = "totalAttack"
         var sortkeyname = "攻撃力(二手技巧無し)"
@@ -2569,6 +2602,7 @@ var ResultList = React.createClass({
         var summon = this.props.data.summon; var chara = this.props.data.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
+        this.treatSupportAbility(totals, totalBuff)
 
         var sortkey = "totalAttack"
         var sortkeyname = "攻撃力(二手技巧無し)"
@@ -2787,6 +2821,7 @@ var ResultList = React.createClass({
         var summon = this.props.data.summon; var chara = this.props.data.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
+        this.treatSupportAbility(totals, totalBuff)
 
         var sortkey = "averageExpectedDamage"
 
