@@ -1942,7 +1942,7 @@ var ResultList = React.createClass({
                         totalSummon["element"] += 0.01 * parseInt(summon[s].selfSummonAmount)
                         totalSummon["chara"] += 0.01 * parseInt(summon[s].selfSummonAmount2)
                     } else if(summon[s].selfSummonType == "elementByRace") {
-                        totalSummon["element"] += 0.01 * parseInt(summon[s].selfSummonAmount * (races/4))
+                        totalSummon["element"] += 0.01 * this.getTesukatoripokaAmount(parseInt(summon[s].selfSummonAmount), races)
                     } else {
                         // 自分の加護 通常の場合
                         totalSummon[summon[s].selfSummonType] += 0.01 * parseInt(summon[s].selfSummonAmount)
@@ -1954,7 +1954,7 @@ var ResultList = React.createClass({
                         totalSummon["element"] += 0.01 * parseInt(summon[s].friendSummonAmount)
                         totalSummon["chara"] += 0.01 * parseInt(summon[s].friendSummonAmount2)
                     } else if(summon[s].friendSummonType == "elementByRace") {
-                        totalSummon["element"] += 0.01 * parseInt(summon[s].friendSummonAmount * (races/4))
+                        totalSummon["element"] += 0.01 * this.getTesukatoripokaAmount(parseInt(summon[s].friendSummonAmount), races)
                     } else {
                         // フレンドの加護 通常の場合
                         totalSummon[summon[s].friendSummonType] += 0.01 * parseInt(summon[s].friendSummonAmount)
@@ -1988,7 +1988,8 @@ var ResultList = React.createClass({
             "unknown": true,
         }
         // ジータがいるのでunknown枠は常にtrue
-        var ind = 0;
+        // indの初期値も1からで良い
+        var ind = 1;
         for(var key in chara) {
             if(chara[key].name != "" && chara[key].isConsideredInAverage) {
                 if(ind < 4) {
@@ -2003,6 +2004,30 @@ var ResultList = React.createClass({
             if(includedRaces[key]) races++;
         }
         return races
+    },
+    getTesukatoripokaAmount: function(amount, numOfRaces){
+        if(amount != 100 && amount != 120) return 0;
+
+        var resultAmount = 10;
+        switch(numOfRaces){
+            case 1:
+                break;
+            case 2:
+                resultAmount = 30;
+                break;
+            case 3:
+                resultAmount = 60;
+                break;
+            case 4:
+                resultAmount = 100;
+                break;
+        }
+
+        if(amount == 120){
+            resultAmount += 20;
+        }
+
+        return resultAmount;
     },
     calculateResult: function(newprops) {
       var prof = newprops.data.profile; var arml = newprops.data.armlist;
@@ -3099,7 +3124,11 @@ var ResultList = React.createClass({
         var prof = this.props.data.profile
         var arm = this.props.data.armlist
         var chara = this.props.data.chara
+
+        // テスカトリポカ計算用
         var races = this.checkNumberofRaces(chara)
+        var tesukatoripoka = this.getTesukatoripokaAmount
+
         var summondata = res.summon
         var result = res.result
         var onAddToHaisuiData = this.addHaisuiData
@@ -3271,18 +3300,18 @@ var ResultList = React.createClass({
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
-                            selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                            selfSummonHeader = summonElementTypes[s.selfElement].name + "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
                         } else if (s.selfSummonType == "elementByRace") {
-                            selfSummonHeader = "属性(種族数)" + (s.selfSummonAmount * races/4)
+                            selfSummonHeader = summonElementTypes[s.selfElement].name + "属性(種族数)" + tesukatoripoka(parseInt(s.selfSummonAmount), races)
                         } else {
                             selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
                         }
 
                         var friendSummonHeader = ""
                         if(s.friendSummonType == "odin"){
-                            friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                            friendSummonHeader = summonElementTypes[s.friendElement].name + "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
                         } else if (s.friendSummonType == "elementByRace") {
-                            friendSummonHeader = "属性(種族数)" + (s.friendSummonAmount * races/4)
+                            friendSummonHeader = summonElementTypes[s.friendElement].name + "属性(種族数)" + tesukatoripoka(parseInt(s.friendSummonAmount), races)
                         } else {
                             friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
                         }
@@ -3381,18 +3410,18 @@ var ResultList = React.createClass({
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
-                            selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                            selfSummonHeader = summonElementTypes[s.selfElement].name + "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
                         } else if (s.selfSummonType == "elementByRace") {
-                            selfSummonHeader = "属性(種族数)" + (s.selfSummonAmount * races/4)
+                            selfSummonHeader = summonElementTypes[s.selfElement].name + "属性(種族数)" + tesukatoripoka(parseInt(s.selfSummonAmount), races)
                         } else {
                             selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
                         }
 
                         var friendSummonHeader = ""
                         if(s.friendSummonType == "odin"){
-                            friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                            friendSummonHeader = summonElementTypes[s.friendElement].name + "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
                         } else if (s.friendSummonType == "elementByRace") {
-                            friendSummonHeader = "属性(種族数)" + (s.friendSummonAmount * races/4)
+                            friendSummonHeader = summonElementTypes[s.friendElement].name + "属性(種族数)" + tesukatoripoka(parseInt(s.friendSummonAmount), races)
                         } else {
                             friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
                         }
