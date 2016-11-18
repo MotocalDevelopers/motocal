@@ -1927,7 +1927,7 @@ var ResultList = React.createClass({
                 totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0}
             }
         }
-        var races = this.checkNumberofRaces(totals)
+        var races = this.checkNumberofRaces(chara)
         for(var key in totals) {
             totals[key]["totalSummon"] = []
             for(var s = 0; s < summon.length; s++) {
@@ -1978,22 +1978,26 @@ var ResultList = React.createClass({
 
         return totals
     },
-    checkNumberofRaces: function(totals){
+    checkNumberofRaces: function(chara){
         // check num of races
         var includedRaces = {
             "human": false,
             "erune": false,
             "doraf": false,
             "havin": false,
-            "unknown": false,
+            "unknown": true,
         }
+        // ジータがいるのでunknown枠は常にtrue
         var ind = 0;
-        for(var key in totals) {
-            if(ind < 4) {
-                includedRaces[totals[key]["race"]] = true
+        for(var key in chara) {
+            if(chara[key].name != "" && chara[key].isConsideredInAverage) {
+                if(ind < 4) {
+                    includedRaces[chara[key]["race"]] = true
+                }
+                ind++;
             }
-            ind++;
         }
+
         var races = 0
         for(var key in includedRaces) {
             if(includedRaces[key]) races++;
@@ -3095,6 +3099,7 @@ var ResultList = React.createClass({
         var prof = this.props.data.profile
         var arm = this.props.data.armlist
         var chara = this.props.data.chara
+        var races = this.checkNumberofRaces(chara)
         var summondata = res.summon
         var result = res.result
         var onAddToHaisuiData = this.addHaisuiData
@@ -3267,6 +3272,8 @@ var ResultList = React.createClass({
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
                             selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                        } else if (s.selfSummonType == "elementByRace") {
+                            selfSummonHeader = "属性(種族数)" + (s.selfSummonAmount * races/4)
                         } else {
                             selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
                         }
@@ -3274,6 +3281,8 @@ var ResultList = React.createClass({
                         var friendSummonHeader = ""
                         if(s.friendSummonType == "odin"){
                             friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                        } else if (s.friendSummonType == "elementByRace") {
+                            friendSummonHeader = "属性(種族数)" + (s.friendSummonAmount * races/4)
                         } else {
                             friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
                         }
@@ -3373,6 +3382,8 @@ var ResultList = React.createClass({
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
                             selfSummonHeader = "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                        } else if (s.selfSummonType == "elementByRace") {
+                            selfSummonHeader = "属性(種族数)" + (s.selfSummonAmount * races/4)
                         } else {
                             selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
                         }
@@ -3380,6 +3391,8 @@ var ResultList = React.createClass({
                         var friendSummonHeader = ""
                         if(s.friendSummonType == "odin"){
                             friendSummonHeader = "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                        } else if (s.friendSummonType == "elementByRace") {
+                            friendSummonHeader = "属性(種族数)" + (s.friendSummonAmount * races/4)
                         } else {
                             friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
                         }
