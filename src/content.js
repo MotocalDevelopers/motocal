@@ -1787,9 +1787,11 @@ var ResultList = React.createClass({
                                     }
                                 } else {
                                     if(slv <= 10) {
-                                        baseRate = 10.0 + slv * 1.0;
+                                        baseRate = 5.0 + slv * 0.8;
                                     } else {
-                                        baseRate = 20.0 + ((slv - 10) * 0.6);
+                                        // baseRate = 20.0 + ((slv - 10) * 0.6);
+                                        // 11/24のアップデート、暫定対応
+                                        baseRate = 13.0 + ((slv - 10) * 0.4);
                                     }
                                 }
                                 var konshinBuff = baseRate * remainHP
@@ -2465,9 +2467,11 @@ var ResultList = React.createClass({
                                             }
                                         } else {
                                             if(slv <= 10) {
-                                                baseRate = 10.0 + slv * 1.0;
+                                                baseRate = 5.0 + slv * 0.8;
                                             } else {
-                                                baseRate = 20.0 + ((slv - 10) * 0.6);
+                                                // baseRate = 20.0 + ((slv - 10) * 0.6);
+                                                // 11/24のアップデート、暫定対応
+                                                baseRate = 13.0 + ((slv - 10) * 0.4);
                                             }
                                         }
                                         if(stype == "normalKonshin") {
