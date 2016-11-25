@@ -1794,8 +1794,11 @@ var ResultList = React.createClass({
                                         baseRate = 13.0 + ((slv - 10) * 0.4);
                                     }
                                 }
-                                var konshinBuff = baseRate * remainHP
-                                totals[key][stype] += comb[i] * konshinBuff
+                                if(remainHP >= 0.25) {
+                                    // HP25%以下で打ち切りになる
+                                    var konshinBuff = 22.53*Math.pow(remainHP-0.25, 2) + 2.33;
+                                    totals[key][stype] += comb[i] * konshinBuff
+                                }
                             } else if(stype == 'normalKamui') {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                                 totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
@@ -2474,10 +2477,14 @@ var ResultList = React.createClass({
                                                 baseRate = 13.0 + ((slv - 10) * 0.4);
                                             }
                                         }
-                                        if(stype == "normalKonshin") {
-                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * baseRate * remainHP * totalSummon.zeus
-                                        } else {
-                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * baseRate * remainHP * totalSummon.magna
+                                        if(remainHP >= 0.25) {
+                                            // HP25%未満で打ち切りになる
+                                            var konshinBuff = 0.01 * (22.53*Math.pow(remainHP-0.25, 2) + 2.33);
+                                            if(stype == "normalKonshin") {
+                                                haisuiBuff[l][stype] += storedCombinations[j][i] * konshinBuff * totalSummon.zeus
+                                            } else {
+                                                haisuiBuff[l][stype] += storedCombinations[j][i] * konshinBuff * totalSummon.magna
+                                            }
                                         }
                                     }
                                 }
