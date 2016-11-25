@@ -10,6 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/11/25: 渾身の計算式を修正. / rank1の時の攻撃力が1000ではなくて1040になっていたのを修正 </li>
                 <li className="list-group-item list-group-item-info">2016/11/18: テスカトリポカ(属性(種族数))の場合に、表示される加護量も自動で変化するようにした / テスカトリポカの加護量計算を適当なままにしていたので修正</li>
                 <li className="list-group-item list-group-item-info">2016/11/3: 武器とキャラテンプレートデータを更新</li>
                 <li className="list-group-item list-group-item-info">2016/10/18: 表示項目の切り替えをクリックしやすくした</li>
@@ -101,6 +102,7 @@ var Notice = React.createClass ({
                 <li className="list-group-item"> <a href="http://twitter.com/umiumipkm/status/773383133739622400"> @umiumipkm さんのコスモスBLの枠についての情報</a></li>
                 <li className="list-group-item"> <a href="https://twitter.com/hakanid/status/770966731271512065/photo/1"> @hakanid さんのセスランス加護量変動検証結果</a></li>
                 <li className="list-group-item"> <a href="http://gbf.xzz.jp/dev/%E9%98%B2%E5%BE%A1%E5%9B%BA%E6%9C%89%E5%80%A4%E3%83%A1%E3%83%A2/"> 防御固有値メモ - グラメモ</a></li>
+                <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/801961194965766144"> @Hecate_mk2 さんの渾身修正検証結果 </a></li>
             </ul>
 
             <h3>スキル性能・各種計算式</h3>

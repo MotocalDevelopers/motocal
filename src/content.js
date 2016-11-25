@@ -1787,13 +1787,18 @@ var ResultList = React.createClass({
                                     }
                                 } else {
                                     if(slv <= 10) {
-                                        baseRate = 10.0 + slv * 1.0;
+                                        baseRate = 5.0 + slv * 0.8;
                                     } else {
-                                        baseRate = 20.0 + ((slv - 10) * 0.6);
+                                        // baseRate = 20.0 + ((slv - 10) * 0.6);
+                                        // 11/24のアップデート、暫定対応
+                                        baseRate = 13.0 + ((slv - 10) * 0.4);
                                     }
                                 }
-                                var konshinBuff = baseRate * remainHP
-                                totals[key][stype] += comb[i] * konshinBuff
+                                if(remainHP >= 0.25) {
+                                    // HP25%以下で打ち切りになる
+                                    var konshinBuff = 22.53*Math.pow(remainHP-0.25, 2) + 2.33;
+                                    totals[key][stype] += comb[i] * konshinBuff
+                                }
                             } else if(stype == 'normalKamui') {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                                 totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
@@ -1896,7 +1901,7 @@ var ResultList = React.createClass({
         return totalBuff
     },
     getInitialTotals: function(prof, chara, summon) {
-        var baseAttack = (prof.rank > 100) ? 5000 + (parseInt(prof.rank) - 100) * 20 : 1000 + (parseInt(prof.rank)) * 40
+        var baseAttack = (prof.rank > 100) ? 5000 + (parseInt(prof.rank) - 100) * 20 : ((prof.rank > 1) ? 1000 + (parseInt(prof.rank)) * 40 : 1000)
         var baseHP = (prof.rank > 100) ? 1400 + (parseInt(prof.rank) - 100) * 4.0 : 600 + (parseInt(prof.rank)) * 8
         var element = (prof.element == undefined) ? "fire" : prof.element
         var djeetaRemainHP = (prof.remainHP != undefined && parseInt(prof.remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(prof.remainHP) : 0.01 * parseInt(prof.hp)
@@ -2498,15 +2503,21 @@ var ResultList = React.createClass({
                                             }
                                         } else {
                                             if(slv <= 10) {
-                                                baseRate = 10.0 + slv * 1.0;
+                                                baseRate = 5.0 + slv * 0.8;
                                             } else {
-                                                baseRate = 20.0 + ((slv - 10) * 0.6);
+                                                // baseRate = 20.0 + ((slv - 10) * 0.6);
+                                                // 11/24のアップデート、暫定対応
+                                                baseRate = 13.0 + ((slv - 10) * 0.4);
                                             }
                                         }
-                                        if(stype == "normalKonshin") {
-                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * baseRate * remainHP * totalSummon.zeus
-                                        } else {
-                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * baseRate * remainHP * totalSummon.magna
+                                        if(remainHP >= 0.25) {
+                                            // HP25%未満で打ち切りになる
+                                            var konshinBuff = 0.01 * (22.53*Math.pow(remainHP-0.25, 2) + 2.33);
+                                            if(stype == "normalKonshin") {
+                                                haisuiBuff[l][stype] += storedCombinations[j][i] * konshinBuff * totalSummon.zeus
+                                            } else {
+                                                haisuiBuff[l][stype] += storedCombinations[j][i] * konshinBuff * totalSummon.magna
+                                            }
                                         }
                                     }
                                 }
@@ -3587,7 +3598,7 @@ var Result = React.createClass({
                     }
                     if(sw.switchExpectedAttack) {
                         var expectedAttack = parseInt(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack)
-                        tablebody.push(m.data.Djeeta.expectedAttack.toFixed(2) + "\n(" + expectedAttack + ")")
+                        tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack + ")")
                     }
                     if(sw.switchCriticalRatio) {
                         tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "\n(" + m.data.Djeeta.effectiveCriticalRatio.toFixed(4) + ")")
