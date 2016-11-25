@@ -1901,7 +1901,7 @@ var ResultList = React.createClass({
         return totalBuff
     },
     getInitialTotals: function(prof, chara, summon) {
-        var baseAttack = (prof.rank > 100) ? 5000 + (parseInt(prof.rank) - 100) * 20 : 1000 + (parseInt(prof.rank)) * 40
+        var baseAttack = (prof.rank > 100) ? 5000 + (parseInt(prof.rank) - 100) * 20 : ((prof.rank > 1) ? 1000 + (parseInt(prof.rank)) * 40 : 1000)
         var baseHP = (prof.rank > 100) ? 1400 + (parseInt(prof.rank) - 100) * 4.0 : 600 + (parseInt(prof.rank)) * 8
         var element = (prof.element == undefined) ? "fire" : prof.element
         var djeetaRemainHP = (prof.remainHP != undefined && parseInt(prof.remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(prof.remainHP) : 0.01 * parseInt(prof.hp)
