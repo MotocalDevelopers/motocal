@@ -10,6 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/11/25: 渾身の計算式を三次関数に修正.</li>
                 <li className="list-group-item list-group-item-info">2016/11/25: 渾身の計算式を修正. / rank1の時の攻撃力が1000ではなくて1040になっていたのを修正 </li>
                 <li className="list-group-item list-group-item-info">2016/11/18: テスカトリポカ(属性(種族数))の場合に、表示される加護量も自動で変化するようにした / テスカトリポカの加護量計算を適当なままにしていたので修正</li>
                 <li className="list-group-item list-group-item-info">2016/11/3: 武器とキャラテンプレートデータを更新</li>

@@ -1787,16 +1787,17 @@ var ResultList = React.createClass({
                                     }
                                 } else {
                                     if(slv <= 10) {
-                                        baseRate = 5.0 + slv * 0.8;
+                                        // baseRate = 5.0 + slv * 0.8;
+                                        baseRate = 0.0518 + 3.29e-3 * slv
                                     } else {
                                         // baseRate = 20.0 + ((slv - 10) * 0.6);
                                         // 11/24のアップデート、暫定対応
-                                        baseRate = 13.0 + ((slv - 10) * 0.4);
+                                        baseRate = 0.0847 + (slv - 10) * 6.58e-3
                                     }
                                 }
                                 if(remainHP >= 0.25) {
                                     // HP25%以下で打ち切りになる
-                                    var konshinBuff = 22.53*Math.pow(remainHP-0.25, 2) + 2.33;
+                                    var konshinBuff = 100.0 * (baseRate * Math.pow(remainHP + 0.0317, 3) + 0.0207)
                                     totals[key][stype] += comb[i] * konshinBuff
                                 }
                             } else if(stype == 'normalKamui') {
@@ -2470,16 +2471,15 @@ var ResultList = React.createClass({
                                             }
                                         } else {
                                             if(slv <= 10) {
-                                                baseRate = 5.0 + slv * 0.8;
+                                                baseRate = 0.0518 + 3.29e-3 * slv
                                             } else {
-                                                // baseRate = 20.0 + ((slv - 10) * 0.6);
-                                                // 11/24のアップデート、暫定対応
-                                                baseRate = 13.0 + ((slv - 10) * 0.4);
+                                                baseRate = 0.0847 + (slv - 10) * 6.58e-3
                                             }
                                         }
                                         if(remainHP >= 0.25) {
                                             // HP25%未満で打ち切りになる
-                                            var konshinBuff = 0.01 * (22.53*Math.pow(remainHP-0.25, 2) + 2.33);
+                                            // var konshinBuff = 0.01 * (22.53*Math.pow(remainHP-0.25, 2) + 2.33);
+                                            var konshinBuff = baseRate * Math.pow(remainHP + 0.0317, 3) + 0.0207
                                             if(stype == "normalKonshin") {
                                                 haisuiBuff[l][stype] += storedCombinations[j][i] * konshinBuff * totalSummon.zeus
                                             } else {
