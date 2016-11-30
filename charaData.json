@@ -15,9 +15,9 @@
     "アルタイル": {
         "baseDA": 6.5, 
         "name": "アルタイル", 
-        "hp": "1600", 
+        "hp": "1900", 
         "element": "water", 
-        "attack": "8000", 
+        "attack": "9500", 
         "race": "human", 
         "baseTA": 3.0, 
         "fav1": "wand", 
