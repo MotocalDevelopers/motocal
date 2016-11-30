@@ -1,50 +1,50 @@
 {
-    "[]スヴァル・ガントレット": {
+    "[猛炎拳]スヴァルガントレット": {
         "element2": "fire", 
-        "name": "[]スヴァル・ガントレット", 
+        "name": "[猛炎拳]スヴァルガントレット", 
         "imageURL": "./imgs/1040606200.png", 
         "skill2": "non", 
         "skill1": "strengthL", 
         "element": "fire", 
         "minattack": "310", 
-        "minhp": "31", 
-        "hp": "197", 
         "attack": "1900", 
-        "slvmax": "10", 
+        "slvmax": 10, 
+        "minhp": "31", 
         "type": "fist", 
-        "maxlv": "100"
+        "hp": "197", 
+        "maxlv": 100
     }, 
-    "[]ナーゲルリング": {
-        "name": "[]ナーゲルリング", 
-        "imageURL": "./imgs/1040009300.png", 
-        "type": "sword", 
-        "skill1": "normalL", 
-        "skill2": "normalCriticalS", 
-        "element": "water", 
+    "[白氷剣]ナーゲルリング": {
         "element2": "water", 
-        "minhp": "38", 
+        "name": "[白氷剣]ナーゲルリング", 
+        "imageURL": "./imgs/1040009300.png", 
+        "skill2": "normalCriticalS", 
+        "skill1": "normalL", 
+        "element": "water", 
         "minattack": "410", 
-        "hp": "217", 
         "attack": "2500", 
-        "slvmax": "10", 
-        "maxlv": "100"
+        "slvmax": 10, 
+        "minhp": "38", 
+        "type": "sword", 
+        "hp": "217", 
+        "maxlv": 100
     }, 
     "[渦々斧]マルメテル・ハンマー": {
+        "hplv100": "150", 
         "element2": "earth", 
         "name": "[渦々斧]マルメテル・ハンマー", 
         "imageURL": "./imgs/1040306000.png", 
         "skill2": "non", 
         "skill1": "unknownL", 
         "element": "earth", 
+        "attacklv100": "2140", 
         "minattack": "360", 
-        "attacklv100": "2100",
-        "hplv100": "150",
         "attack": "2495", 
-        "slvmax": "15", 
+        "slvmax": 15, 
         "minhp": "22", 
         "type": "axe", 
         "hp": "174", 
-        "maxlv": "150"
+        "maxlv": 150
     }, 
     "マルメテル・ハンマー": {
         "element2": "earth", 
@@ -54,12 +54,27 @@
         "skill1": "unknownL", 
         "element": "earth", 
         "minattack": "360", 
-        "attack": "2100",
-        "hp": "150",
-        "slvmax": "10", 
+        "attack": "2140", 
+        "slvmax": 10, 
         "minhp": "22", 
         "type": "axe", 
-        "maxlv": "100"
+        "hp": "150", 
+        "maxlv": 100
+    }, 
+    "[]ナイトメアバンカー": {
+        "element2": "earth", 
+        "name": "[]ナイトメアバンカー", 
+        "imageURL": "./imgs/1040506300.png", 
+        "skill2": "normalNiteS", 
+        "skill1": "normalL", 
+        "element": "earth", 
+        "minattack": "450", 
+        "attack": "2700", 
+        "slvmax": 10, 
+        "minhp": "30", 
+        "type": "gun", 
+        "hp": "180", 
+        "maxlv": 100
     }, 
     "エリクトニオス": {
         "element2": "fire", 
@@ -2922,20 +2937,20 @@
         "maxlv": 100
     }, 
     "[怪黒斧]ブラックアックス": {
+        "hplv100": "150", 
         "element2": "fire", 
         "name": "[怪黒斧]ブラックアックス", 
         "imageURL": "./imgs/1040305400.png", 
         "skill2": "non", 
         "skill1": "unknownL", 
         "element": "fire", 
-        "minattack": "350", 
         "attacklv100": "2130", 
+        "minattack": "350", 
         "attack": "2490", 
-        "hp": "175", 
         "slvmax": 15, 
         "minhp": "23", 
         "type": "axe", 
-        "hplv100": "150", 
+        "hp": "175", 
         "maxlv": 150
     }, 
     "ブラックアックス": {
