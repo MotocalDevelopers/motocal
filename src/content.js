@@ -3972,7 +3972,7 @@ var RegisteredArm = React.createClass({
                         {Object.keys(armData).map(function(key, ind) {
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement)){
                                 if(filterText == "" || key.indexOf(filterText) != -1){
-                                    if(displayed_count < limit) {
+                                    if(filterElement != "all" || displayed_count < limit) {
                                         displayed_count++;
                                         return (
                                             <div className="onearm" key={key}>
