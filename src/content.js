@@ -1829,6 +1829,10 @@ var ResultList = React.createClass({
                             } else if(stype == 'magnaKatsumi') {
                                 totals[key]["magnaCritical"] += comb[i] * skillAmounts["magnaCritical"][amount][slv - 1];
                                 totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaNite"][amount][slv - 1];
+                            } else if(stype == 'normalKatsumoku') {
+                                totals[key]["normalNite"] += comb[i] * skillAmounts["normalNite"][amount][slv - 1];
+                            } else if(stype == 'magnaKatsumoku') {
+                                totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaNite"][amount][slv - 1];
                             } else if(stype == 'normalBoukun') {
                                 totals[key]["HPdebuff"] += comb[i] * 0.10
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
