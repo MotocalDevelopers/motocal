@@ -651,7 +651,7 @@ var CharaList = React.createClass({
 
         return (
             <div className="charaList">
-                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>キャラテンプレートを開く</Button>
+                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>キャラテンプレートを開く</Button>
                 <br/>
                 <span>属性一括変更</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
