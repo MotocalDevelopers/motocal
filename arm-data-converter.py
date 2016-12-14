@@ -28,6 +28,7 @@ skillnamelist["normalCriticalM"] = {u"業火の技巧": "fire", u"渦潮の技�
 skillnamelist["normalHaisuiM"] = {u"業火の背水": "fire", u"渦潮の背水": "water", u"大地の背水": "earth", u"竜巻の背水": "wind", u"雷電の背水": "light", u"憎悪の背水": "dark"}
 skillnamelist["normalSetsuna"] = {u"業火の刹那": "fire", u"渦潮の刹那": "water", u"大地の刹那": "earth", u"竜巻の刹那": "wind", u"雷電の刹那": "light", u"憎悪の刹那": "dark"}
 skillnamelist["normalKatsumiM"] = {u"業火の克己": "fire", u"渦潮の克己": "water", u"大地の克己": "earth", u"竜巻の克己": "wind", u"雷電の克己": "light", u"憎悪の克己": "dark"}
+skillnamelist["normalRasetsuM"] = {u"業火の羅刹": "fire", u"渦潮の羅刹": "water", u"大地の羅刹": "earth", u"竜巻の羅刹": "wind", u"雷電の羅刹": "light", u"憎悪の羅刹": "dark"}
 
 # normalS
 skillnamelist["normalS"] = {u"火の攻刃": "fire", u"水の攻刃": "water", u"土の攻刃": "earth", u"風の攻刃": "wind", u"光の攻刃": "light", u"闇の攻刃": "dark"}
@@ -53,6 +54,7 @@ skillnamelist["magnaSetsuna"] = {u"機炎方陣・刹那": "fire", u"海神方�
 skillnamelist["magnaBoukun"] = {u"機炎方陣・暴君": "fire", u"海神方陣・暴君": "water", u"創樹方陣・暴君": "earth", u"嵐竜方陣・暴君": "wind", u"騎解方陣・暴君": "light", u"黒霧方陣・暴君": "dark"}
 skillnamelist["magnaSanteL"] = {u"機炎方陣・三手": "fire", u"海神方陣・三手": "water", u"創樹方陣・三手": "earth", u"嵐竜方陣・三手": "wind", u"騎解方陣・三手": "light", u"黒霧方陣・三手": "dark"}
 skillnamelist["magnaKatsumokuS"] = {u"機炎方陣・括目": "fire", u"海神方陣・括目": "water", u"創樹方陣・括目": "earth", u"嵐竜方陣・括目": "wind", u"騎解方陣・括目": "light", u"黒霧方陣・括目": "dark"}
+skillnamelist["magnaRasetsuM"] = {u"機炎方陣・羅刹": "fire", u"海神方陣・羅刹": "water", u"創樹方陣・羅刹": "earth", u"嵐竜方陣・羅刹": "wind", u"騎解方陣・羅刹": "light", u"黒霧方陣・羅刹": "dark"}
 
 # アンノウン
 skillnamelist["unknownL"] = {u"アンノウン・ATK II": "unknown"}
