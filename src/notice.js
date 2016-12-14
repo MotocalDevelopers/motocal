@@ -10,6 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/11/30: 括目を追加(二手のエイリアスです) / 羅刹を追加</li>
                 <li className="list-group-item list-group-item-info">2016/11/30: レスラー追加 / 攻撃力のマスターボーナスに18%を追加.</li>
                 <li className="list-group-item list-group-item-info">2016/11/25: 渾身の計算式を三次関数に修正.</li>
                 <li className="list-group-item list-group-item-info">2016/11/25: 渾身の計算式を修正. / rank1の時の攻撃力が1000ではなくて1040になっていたのを修正 </li>
@@ -57,8 +58,7 @@ var Notice = React.createClass ({
 
             <h3>注記</h3>
             <ul className="list-group">
-                 <li className="list-group-item list-group-item-info">未対応: 羅刹/召喚石のクリティカル率</li>
-                 <li className="list-group-item list-group-item-info">今後の実装予定: 召喚石入力欄の利便性向上 / キャラ欄の利便性向上</li>
+                 <li className="list-group-item list-group-item-info">未対応: 召喚石のクリティカル率</li>
                  <li className="list-group-item list-group-item-info"><strong>バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに"バハフツ(攻/HP)"を選択してください。</strong> <br/>
                  (バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)</li>
                  <li className="list-group-item list-group-item-info">バハフツルス系の連続攻撃率については、SLv15以外は情報がありませんので、ご検証お待ちしています。</li>
@@ -103,6 +103,7 @@ var Notice = React.createClass ({
                 <li className="list-group-item"> <a href="http://twitter.com/Hecate_mk2/status/773365651465396225"> @Hecate_mk2 さんの三手検証結果検証結果</a></li>
                 <li className="list-group-item"> <a href="http://twitter.com/umiumipkm/status/773383133739622400"> @umiumipkm さんのコスモスBLの枠についての情報</a></li>
                 <li className="list-group-item"> <a href="https://twitter.com/hakanid/status/770966731271512065/photo/1"> @hakanid さんのセスランス加護量変動検証結果</a></li>
+                <li className="list-group-item"> <a href="https://twitter.com/yah68291/status/730397040891453445"> @yah68291 さんのオールドペルセウス検証結果 </a></li>
                 <li className="list-group-item"> <a href="http://gbf.xzz.jp/dev/%E9%98%B2%E5%BE%A1%E5%9B%BA%E6%9C%89%E5%80%A4%E3%83%A1%E3%83%A2/"> 防御固有値メモ - グラメモ</a></li>
                 <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/801961194965766144"> @Hecate_mk2 さんの渾身修正検証結果 </a></li>
             </ul>
@@ -168,6 +169,10 @@ var Notice = React.createClass ({
                 <li className="list-group-item">マグナ克己: マグナ技巧(中) + マグナ二手(中) </li>
                 <li className="list-group-item">通常暴君: 通常攻刃(大) + HP減少(10%) </li>
                 <li className="list-group-item">マグナ暴君: マグナ攻刃(大) + HP減少(10%) </li>
+                <li className="list-group-item">通常括目: 通常二手(小)と同様</li>
+                <li className="list-group-item">マグナ括目: マグナ二手(小)と同様</li>
+                <li className="list-group-item">通常羅刹: 通常攻刃(中) + (連撃率-38%) </li>
+                <li className="list-group-item">マグナ羅刹: マグナ攻刃(中) + (連撃率-38%)</li>
                 <li className="list-group-item">アンノウン暴君(ミフネ): アンノウン攻刃(大) + HP減少(7%) </li>
                 <li className="list-group-item">技巧(小, 中, 大): クリティカル時倍率 50%</li>
                 <li className="list-group-item">マグナ技巧(小, 中, 大): クリティカル時倍率 50% </li>

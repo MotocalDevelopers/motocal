@@ -18,7 +18,7 @@ skillnamelist["normalNiteL"] = {u"紅蓮の二手": "fire", u"霧氷の二手": 
 skillnamelist["normalSanteL"] = {u"紅蓮の三手": "fire", u"霧氷の三手": "water", u"地裂の三手": "earth", u"乱気の三手": "wind", u"天光の三手": "light", u"奈落の三手": "dark"}
 skillnamelist["normalKonshinL"] = {u"紅蓮の渾身": "fire", u"霧氷の渾身": "water", u"地裂の渾身": "earth", u"乱気の渾身": "wind", u"天光の渾身": "light", u"奈落の渾身": "dark"}
 # skillnamelist["normalKamui"] = {u"紅蓮の神威": "fire", u"霧氷の神威": "water", u"地裂の神威": "earth", u"乱気の神威": "wind", u"天光の神威": "light", u"奈落の神威": "dark"}
-# skillnamelist["normalKatsumokuL"] = {u"紅蓮の括目": "fire", u"霧氷の括目": "water", u"地裂の括目": "earth", u"乱気の括目": "wind", u"天光の括目": "light", u"奈落の括目": "dark"}
+skillnamelist["normalKatsumokuS"] = {u"紅蓮の括目": "fire", u"霧氷の括目": "water", u"地裂の括目": "earth", u"乱気の括目": "wind", u"天光の括目": "light", u"奈落の括目": "dark"}
 
 # normalM
 skillnamelist["normalM"] = {u"業火の攻刃": "fire", u"渦潮の攻刃": "water", u"大地の攻刃": "earth", u"竜巻の攻刃": "wind", u"雷電の攻刃": "light", u"憎悪の攻刃": "dark"}
@@ -28,6 +28,7 @@ skillnamelist["normalCriticalM"] = {u"業火の技巧": "fire", u"渦潮の技�
 skillnamelist["normalHaisuiM"] = {u"業火の背水": "fire", u"渦潮の背水": "water", u"大地の背水": "earth", u"竜巻の背水": "wind", u"雷電の背水": "light", u"憎悪の背水": "dark"}
 skillnamelist["normalSetsuna"] = {u"業火の刹那": "fire", u"渦潮の刹那": "water", u"大地の刹那": "earth", u"竜巻の刹那": "wind", u"雷電の刹那": "light", u"憎悪の刹那": "dark"}
 skillnamelist["normalKatsumiM"] = {u"業火の克己": "fire", u"渦潮の克己": "water", u"大地の克己": "earth", u"竜巻の克己": "wind", u"雷電の克己": "light", u"憎悪の克己": "dark"}
+skillnamelist["normalRasetsuM"] = {u"業火の羅刹": "fire", u"渦潮の羅刹": "water", u"大地の羅刹": "earth", u"竜巻の羅刹": "wind", u"雷電の羅刹": "light", u"憎悪の羅刹": "dark"}
 
 # normalS
 skillnamelist["normalS"] = {u"火の攻刃": "fire", u"水の攻刃": "water", u"土の攻刃": "earth", u"風の攻刃": "wind", u"光の攻刃": "light", u"闇の攻刃": "dark"}
@@ -52,6 +53,8 @@ skillnamelist["magnaSetsuna"] = {u"機炎方陣・刹那": "fire", u"海神方�
 # skillnamelist["magnaNiteM"] = {u"機炎方陣・二手": "fire", u"海神方陣・二手": "water", u"創樹方陣・二手": "earth", u"嵐竜方陣・二手": "wind", u"騎解方陣・二手": "light", u"黒霧方陣・二手": "dark"}
 skillnamelist["magnaBoukun"] = {u"機炎方陣・暴君": "fire", u"海神方陣・暴君": "water", u"創樹方陣・暴君": "earth", u"嵐竜方陣・暴君": "wind", u"騎解方陣・暴君": "light", u"黒霧方陣・暴君": "dark"}
 skillnamelist["magnaSanteL"] = {u"機炎方陣・三手": "fire", u"海神方陣・三手": "water", u"創樹方陣・三手": "earth", u"嵐竜方陣・三手": "wind", u"騎解方陣・三手": "light", u"黒霧方陣・三手": "dark"}
+skillnamelist["magnaKatsumokuS"] = {u"機炎方陣・括目": "fire", u"海神方陣・括目": "water", u"創樹方陣・括目": "earth", u"嵐竜方陣・括目": "wind", u"騎解方陣・括目": "light", u"黒霧方陣・括目": "dark"}
+skillnamelist["magnaRasetsuM"] = {u"機炎方陣・羅刹": "fire", u"海神方陣・羅刹": "water", u"創樹方陣・羅刹": "earth", u"嵐竜方陣・羅刹": "wind", u"騎解方陣・羅刹": "light", u"黒霧方陣・羅刹": "dark"}
 
 # アンノウン
 skillnamelist["unknownL"] = {u"アンノウン・ATK II": "unknown"}
@@ -289,7 +292,7 @@ if __name__ == '__main__':
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    f = open("./imageURLlist.txt", "w")
-    for x in imageURL:
-        f.write(x)
-    f.close()
+    #f = open("./imageURLlist.txt", "w")
+    #for x in imageURL:
+    #    f.write(x)
+    #f.close()
