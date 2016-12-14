@@ -3878,7 +3878,7 @@ var ArmList = React.createClass({
 
         return (
             <div className="armList">
-                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}>武器テンプレートを開く</Button>
+                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>武器テンプレートを開く</Button>
                 <br/>
                 <span>属性一括変更</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
@@ -4007,7 +4007,7 @@ var RegisteredArm = React.createClass({
                         {Object.keys(armData).map(function(key, ind) {
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement)){
                                 if(filterText == "" || key.indexOf(filterText) != -1){
-                                    if(displayed_count < limit) {
+                                    if(filterElement != "all" || displayed_count < limit) {
                                         displayed_count++;
                                         return (
                                             <div className="onearm" key={key}>
