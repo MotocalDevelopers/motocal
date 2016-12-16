@@ -1374,7 +1374,7 @@ var ResultList = React.createClass({
                 var criticalRatio = this.calculateCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalSetsuna"], totals[key]["magnaSetsuna"], totals[key]["normalKatsumi"], totalSummon)
             }
             var criticalAttack = parseInt(totalAttack * criticalRatio)
-            var expectedOugiGage = (buff["ougiGage"] - totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
+            var expectedOugiGage = (buff["ougiGage"] + totals[key]["ougiGageBuff"]- totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
             var expectedTurn = Math.ceil(100.0 / expectedOugiGage)
 
             // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
@@ -1389,7 +1389,7 @@ var ResultList = React.createClass({
             if(totals[key]["additionalDamage"] > 0 || buff["additionalDamage"] > 0) {
                 damage += (0.01 * totals[key]["additionalDamage"] + buff["additionalDamage"]) * damage
             }
-            var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio)
+            var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"])
             var expectedCycleDamage = ougiDamage + expectedTurn * expectedAttack * damage
             var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1)
 
@@ -1406,6 +1406,7 @@ var ResultList = React.createClass({
             coeffs["unknown"] = unknownCoeff;
             coeffs["unknownHaisui"] = unknownHaisuiCoeff;
             coeffs["other"] = otherCoeff;
+            coeffs["ougiDamageBuff"] = totals[key]["ougiDamageBuff"];
 
             res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), remainHP: totals[key]["remainHP"], totalDA: totalDA, totalTA: totalTA, totalSummon: totalSummon, element: totals[key]["element"], expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, effectiveCriticalRatio: effectiveCriticalRatio, totalExpected: nazo_number, skilldata: coeffs, expectedOugiGage: expectedOugiGage, damage: damage, ougiDamage: ougiDamage, expectedTurn: expectedTurn, expectedCycleDamagePerTurn: expectedCycleDamagePerTurn};
         }
@@ -1535,11 +1536,11 @@ var ResultList = React.createClass({
 
         return damage + overedDamage
     },
-    calculateOugiDamage: function(totalAttack, enemyDefense, ougiRatio) {
+    calculateOugiDamage: function(totalAttack, enemyDefense, ougiRatio, ougiDamageBuff) {
         // ダメージ計算
         var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
         var ratio = (ougiRatio == undefined) ? 4.5 : ougiRatio
-        var damage = totalAttack * ratio / def
+        var damage = (1.0 + ougiDamageBuff) * totalAttack * ratio / def
         var overedDamage = 0
         // 補正1
         if(damage > 1400000) {
@@ -1925,7 +1926,7 @@ var ResultList = React.createClass({
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: "none", support2: "none"}};
+        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, ougiGageBuff: 0, ougiDamageBuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: "none", support2: "none"}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -1943,7 +1944,7 @@ var ResultList = React.createClass({
                     k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: chara[i].support, support2: chara[i].support2}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, ougiGageBuff: 0, ougiDamageBuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: chara[i].support, support2: chara[i].support2}
             }
         }
         var races = this.checkNumberofRaces(chara)
@@ -2102,7 +2103,7 @@ var ResultList = React.createClass({
           }
 
           var totals = this.getInitialTotals(prof, chara, summon)
-          this.treatSupportAbility(totals, totalBuff)
+          this.treatSupportAbility(totals, chara)
           var itr = combinations.length
           var totalItr = itr * summon.length * Object.keys(totals).length
 
@@ -2172,7 +2173,7 @@ var ResultList = React.createClass({
           return {summon: summon, result: []}
       }
     },
-    treatSupportAbility: function(totals) {
+    treatSupportAbility: function(totals, chara) {
         for(var key in totals){
             for(var i = 0; i < 2; i++) {
                 if(i == 0) {
@@ -2187,6 +2188,28 @@ var ResultList = React.createClass({
 
                 // 特殊なサポアビの処理
                 switch(support.type){
+                    case "normalBuff_doraf":
+                        if(totals[key].isConsideredInAverage) {
+                            // ドラフと種族不明のみキャラ攻刃
+                            for(var key2 in totals){
+                                if(totals[key2]["race"] == "doraf" || totals[key2]["race"] == "unknown") {
+                                    totals[key2]["normalBuff"] += support.value
+                                }
+                            }
+                        } else {
+                            // 平均に入れない場合は自分だけ計算
+                            totals[key]["normalBuff"] += support.value
+                        }
+                        break;
+                    case "normalBuff_depends_races":
+                        var races = this.checkNumberofRaces(chara);
+                        // 4種族なら50%, それ以外なら種族数*10%
+                        totals[key]["normalBuff"] += (races == 4 ? 0.50 : races * 0.10);
+                        break;
+                    case "normalBuff_depends_member":
+                        break;
+                    case "critical_up_10_30":
+                        break;
                     default:
                         break;
                 }
@@ -2196,8 +2219,12 @@ var ResultList = React.createClass({
                     totals[key][support.type] += support.value
                 } else {
                     // range == "all"
-                    for(var key2 in totals){
-                        totals[key2][support.type] += support.value
+                    if(totals[key].isConsideredInAverage) {
+                        for(var key2 in totals){
+                            totals[key2][support.type] += support.value
+                        }
+                    } else {
+                        totals[key][support.type] += support.value
                     }
                 }
             }
@@ -2302,7 +2329,7 @@ var ResultList = React.createClass({
         var summon = this.props.data.summon; var chara = this.props.data.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
-        this.treatSupportAbility(totals, totalBuff)
+        this.treatSupportAbility(totals, chara)
 
         var sortkey = "totalAttack"
         var sortkeyname = "攻撃力(二手技巧無し)"
@@ -2542,7 +2569,7 @@ var ResultList = React.createClass({
                         var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin
                         var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
                         var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
-                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio)
+                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff)
                         var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
 
                         if(key == "Djeeta") {
@@ -2655,7 +2682,7 @@ var ResultList = React.createClass({
         var summon = this.props.data.summon; var chara = this.props.data.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
-        this.treatSupportAbility(totals, totalBuff)
+        this.treatSupportAbility(totals, chara)
 
         var sortkey = "totalAttack"
         var sortkeyname = "攻撃力(二手技巧無し)"
@@ -2787,7 +2814,7 @@ var ResultList = React.createClass({
                         }
                         var newTotalAttack = totalAttackWithoutHaisui * (elementCoeff + elementTurn)
                         var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
-                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio)
+                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff)
                         var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
 
                         if(key == "Djeeta") {
@@ -2874,7 +2901,7 @@ var ResultList = React.createClass({
         var summon = this.props.data.summon; var chara = this.props.data.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
-        this.treatSupportAbility(totals, totalBuff)
+        this.treatSupportAbility(totals, chara)
 
         var sortkey = "averageExpectedDamage"
 
@@ -3007,7 +3034,7 @@ var ResultList = React.createClass({
                     for(key in onedata) {
                         if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougi" || turnBuff.buffs[key][t-1].turnType == "ougi") {
                             // 基本的に奥義の設定が優先
-                            var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio)
+                            var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff)
                             if(key == "Djeeta") {
                                 ExpectedDamage[t].push( parseInt(newOugiDamage) )
                                 AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage/cnt)
@@ -3580,6 +3607,7 @@ var Result = React.createClass({
                         if(skilldata.unknown != 1.0) {skillstr += "アンノウン" + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
                         if(skilldata.unknownHaisui != 1.0) {skillstr += "アンノウン背水" + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
                         if(skilldata.other != 1.0) {skillstr += "その他枠" + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.ougiDamageBuff != 0.0) {skillstr += "奥義ダメージ" + (1.0 + skilldata.ougiDamageBuff).toFixed(1); skillstr += "倍 ";}
 
                         skillstr += "\n"
                     }
