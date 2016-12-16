@@ -30,7 +30,8 @@ racelist[u"不明"] = "unknown"
 
 supportAbilist = OrderedDict()
 supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
-supportAbilist["da_up_all_5"] = {u"大いなる翼", u"双剣乱舞"}
+supportAbilist["da_up_all_5"] = {u"双剣乱舞"}
+supportAbilist["ta_up_all_5"] = {u"大いなる翼"}
 supportAbilist["atk_up_all_5"] = {u"羊神宮の主", u"クイーン・オブ・カジノ"}
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
 supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
