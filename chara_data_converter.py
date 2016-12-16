@@ -35,7 +35,7 @@ supportAbilist["atk_up_all_5"] = {u"羊神宮の主", u"クイーン・オブ・
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
 supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
 supportAbilist["ougi_gage_up_own_10"] = {u"戦賢の書"}
-supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧"}
+supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼の悪魔"}
 supportAbilist["ougi_gage_up_own_100"] = {u"明鏡止水"}
 supportAbilist["ougi_damage_up_1_5"] = {u"天星剣王"}
 
