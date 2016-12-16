@@ -28,6 +28,17 @@ racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"不明"] = "unknown"
 
+supportAbilist = OrderedDict()
+supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
+supportAbilist["da_up_all_5"] = {u"大いなる翼", u"双剣乱舞"}
+supportAbilist["atk_up_all_5"] = {u"羊神宮の主", u"クイーン・オブ・カジノ"}
+supportAbilist["atk_up_doraf"] = {u"質実剛健"}
+supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
+supportAbilist["ougi_gage_up_own_10"] = {u"戦賢の書"}
+supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧"}
+supportAbilist["ougi_gage_up_own_100"] = {u"明鏡止水"}
+supportAbilist["ougi_damage_up_1_5"] = {u"天星剣王"}
+
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
     for inner_skillname, onelist in skillnamelist.items():
@@ -67,16 +78,31 @@ def race_replace(racetype):
             return res
     return "error"
 
+def support_replace(support_str):
+    support_pattern = re.compile("\[\[([\W\w]+?)>")
+
+    m = support_pattern.search(support_str)
+    if m:
+        decoded_support = m.group(1).decode("utf-8")
+        for support_typename, support_name in supportAbilist.items():
+            for name in support_name:
+                m = re.match(name, decoded_support)
+                if m:
+                    res = support_typename
+                    return res
+    return "none"
+
 if __name__ == '__main__':
     key_pattern = re.compile("\d+")
     br_pattern = re.compile("(\W+)&br;(\W+)")
+    support_pattern = re.compile("([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \(")
     mycsv = csv.reader(open("txt_source/charaData.txt", 'r'), delimiter="|")
     json_data = OrderedDict()
     imageURL = []
 
     for row in mycsv:
-        newdict = {}
+        newdict = OrderedDict()
 
         if len(row) <= 1:
             continue
@@ -120,7 +146,18 @@ if __name__ == '__main__':
                 newdict["fav1"] = arm_replace(row[6])
                 newdict["fav2"] = "none"
 
+            m = support_pattern.search(row[9])
+            if m:
+                newdict["support"] = support_replace(m.group(1))
+                newdict["support2"] = support_replace(m.group(2))
+            else:
+                newdict["support"] = support_replace(row[9])
+                newdict["support2"] = "none"
+
+            newdict["minhp"] = row[10].translate(None, "COLOR(red):'")
             newdict["hp"] = row[12].translate(None, "COLOR(red):'")
+
+            newdict["minattack"] = row[11].translate(None, "COLOR(red):'")
             newdict["attack"] = row[13].translate(None, "COLOR(red):'")
 
             newdict["baseDA"] = 6.5
