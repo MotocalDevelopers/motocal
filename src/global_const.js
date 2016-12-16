@@ -439,9 +439,9 @@ var supportAbilities = {
     "atk_up_doraf": {"name": "ドラフと種族不明の攻撃UP(ナルメア)", "type": "normalBuff_doraf", "range": "all", "value": 0.10},
     "atk_up_depends_races": {"name": "バトルメンバーの種族数に応じて攻撃力アップ(リリィ)", "type": "normalBuff_depends_races", "range": "own", "value": 0.10},
     // "atk_up_depends_member": {"name": "バトルメンバーの数に応じて攻撃力アップ(パシ)", "type": "normalBuff_depends_member", "range": "own", "value": 0.05},
-    "o_gage_up_own_10": {"name": "奥義ゲージ上昇量UP(10%)", "type": "ougiGageBuff", "range": "own", "value": 0.10},
-    "o_gage_up_own_20": {"name": "奥義ゲージ上昇量UP(20%)", "type": "ougiGageBuff", "range": "own", "value": 0.20},
-    "o_gage_up_own_100": {"name": "奥義ゲージ上昇量UP(100%)(オクトー)", "type": "ougiGageBuff", "range": "own", "value": 1.00},
+    "ougi_gage_up_own_10": {"name": "奥義ゲージ上昇量UP(10%)", "type": "ougiGageBuff", "range": "own", "value": 0.10},
+    "ougi_gage_up_own_20": {"name": "奥義ゲージ上昇量UP(20%)", "type": "ougiGageBuff", "range": "own", "value": 0.20},
+    "ougi_gage_up_own_100": {"name": "奥義ゲージ上昇量UP(100%)(オクトー)", "type": "ougiGageBuff", "range": "own", "value": 1.00},
     "ougi_damage_up_1_5": {"name": "全体の奥義ダメージ1.5倍(シエテ)", "type": "ougiDamageBuff", "range": "all", "value": 0.50},
     // "critical_up_10_30": {"name": "クリティカル確率UP(発動率10%, 倍率30%)", "type": "criticalBuff", "range": "own", "value": 0.10, "ratio": 1.30},
 }
