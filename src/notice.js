@@ -10,6 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/12/17: ネツァのサポアビ2をTA5%から3%に修正 </li>
                 <li className="list-group-item list-group-item-info">2016/12/16: サポアビ対応開始 </li>
                 <li className="list-group-item list-group-item-info">2016/12/10: 括目を追加(二手のエイリアスです) / 羅刹を追加</li>
                 <li className="list-group-item list-group-item-info">2016/11/30: レスラー追加 / 攻撃力のマスターボーナスに18%を追加.</li>
@@ -107,6 +108,7 @@ var Notice = React.createClass ({
                 <li className="list-group-item"> <a href="https://twitter.com/yah68291/status/730397040891453445"> @yah68291 さんのオールドペルセウス検証結果 </a></li>
                 <li className="list-group-item"> <a href="http://gbf.xzz.jp/dev/%E9%98%B2%E5%BE%A1%E5%9B%BA%E6%9C%89%E5%80%A4%E3%83%A1%E3%83%A2/"> 防御固有値メモ - グラメモ</a></li>
                 <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/801961194965766144"> @Hecate_mk2 さんの渾身修正検証結果 </a></li>
+                <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/809987671326072833"> @Hecate_mk2 さんのネツァ検証結果 </a></li>
             </ul>
 
             <h3>スキル性能・各種計算式</h3>
