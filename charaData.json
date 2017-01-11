@@ -126,7 +126,7 @@
         "fav1": "wand", 
         "fav2": "none", 
         "support": "none", 
-        "support2": "none", 
+        "support2": "atk_up_depends_races", 
         "minhp": "296", 
         "hp": "1580", 
         "minattack": "1220", 
