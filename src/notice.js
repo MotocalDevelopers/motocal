@@ -10,6 +10,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">2016/1/12: リリィのサポアビが自動セットされない不具合を修正/ イリュージョンセプターのテンプレートが3凸のものになっている不具合を修正 </li>
                 <li className="list-group-item list-group-item-success">2016/1/6: 奥義ターンの値を整数値から小数点に変更 (詳しくは <a href="http://dev-hsimyu.hatenablog.com/entry/2017/01/06/214517">こちら</a> )</li>
                 <li className="list-group-item list-group-item-info">2016/1/6: ハウンドドッグ追加 </li>
                 <li className="list-group-item list-group-item-info">2016/12/17: ネツァのサポアビ2をTA5%から3%に修正 </li>

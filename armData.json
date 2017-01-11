@@ -3154,9 +3154,9 @@
         "hp": "289", 
         "maxlv": 100
     }, 
-    "[万魔杖]イリュージョンセプター": {
+    "イリュージョンセプター": {
         "element2": "fire", 
-        "name": "[万魔杖]イリュージョンセプター", 
+        "name": "イリュージョンセプター", 
         "imageURL": "./imgs/1040401200.png", 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -3168,6 +3168,23 @@
         "type": "wand", 
         "hp": "286", 
         "maxlv": 100
+    }, 
+    "[万魔杖]イリュージョンセプター": {
+        "hplv100": "286", 
+        "element2": "fire", 
+        "name": "[万魔杖]イリュージョンセプター", 
+        "imageURL": "./imgs/1040401200.png", 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "element": "fire", 
+        "attacklv100": "2170", 
+        "minattack": "370", 
+        "attack": "2530", 
+        "slvmax": 15, 
+        "minhp": "46", 
+        "type": "wand", 
+        "hp": "334", 
+        "maxlv": 150
     }, 
     "[陽花]サンフラワーワンド": {
         "element2": "fire", 
