@@ -201,6 +201,7 @@ var Root = React.createClass({
               initState["rootleftWidth"] = oldState.rootleftWidth
               initState["rootrightHeight"] = oldState.rootrightHeight
               initState["rootrightWidth"] = oldState.rootrightWidth
+              initState["locale"] = intl.getLocale()
 
               dataForLoad = initState
               this.setState(initState);
