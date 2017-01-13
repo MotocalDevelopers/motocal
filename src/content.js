@@ -374,7 +374,7 @@ var Root = React.createClass({
                     <NavItem eventKey="systemTab">保存</NavItem>
                 </Nav>
                 <div className="Tab" id="inputTab">
-                    <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
+                    <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} />
                 </div>
                 <div className="Tab hidden" id="summonTab">
                     <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
@@ -398,7 +398,7 @@ var Root = React.createClass({
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="resultTab">
-                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} />
+                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} locale={locale} />
                 </div>
                 <div className="Tab hidden" id="systemTab">
                     <div className="systemList">
@@ -499,7 +499,7 @@ var Root = React.createClass({
                 </div>
                 <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
-                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")}/>
+                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} locale={locale} />
                 </div>
             </div>
         );
@@ -3221,6 +3221,8 @@ var ResultList = React.createClass({
         this.setState({openDisplayElementTable: !this.state.openDisplayElementTable})
     },
     render: function() {
+        var locale = this.props.locale
+
         res = this.state.result;
         var prof = this.props.data.profile
         var arm = this.props.data.armlist
@@ -3240,7 +3242,7 @@ var ResultList = React.createClass({
             if(arm[i].considerNumberMax != 0) {
                 var armname = arm[i].name;
                 if(armname == '') {
-                    armname = "武器" + (i + 1).toString()
+                    armname = intl.translate("武器", locale) + (i + 1).toString()
                 }
                 armnames.push(armname)
             }
@@ -3248,39 +3250,39 @@ var ResultList = React.createClass({
 
         var tableheader = []
         if(switcher.switchTotalAttack) {
-            tableheader.push('攻撃力(二手技巧無し)')
+            tableheader.push(intl.translate("攻撃力(二手技巧無し)", locale))
         }
         if(switcher.switchATKandHP) {
-            tableheader.push('戦力')
+            tableheader.push(intl.translate("戦力", locale))
         }
         if(switcher.switchCharaAttack) {
             for(var i = 0; i < chara.length; i++){
                 if(chara[i].name != "") {
-                    tableheader.push(chara[i].name + "\n(攻撃力)")
+                    tableheader.push(chara[i].name + "\n(" + intl.translate("攻撃力", locale) + ")")
                 }
             }
         }
         if(switcher.switchDATA) {
-            tableheader.push('連続攻撃率(%)')
+            tableheader.push(intl.translate("連撃率", locale))
         }
         if(switcher.switchCharaDA) {
             for(var i = 0; i < chara.length; i++){
                 if(chara[i].name != "") {
-                    tableheader.push(chara[i].name + "\n(連撃率)")
+                    tableheader.push(chara[i].name + "\n("+ intl.translate("連撃率", locale) + ")")
                 }
             }
         }
         if(switcher.switchExpectedAttack) {
-            tableheader.push("期待攻撃回数\n(期待攻撃力)")
+            tableheader.push(intl.translate("期待攻撃回数", locale))
         }
         if(switcher.switchCriticalAttack) {
-            tableheader.push("技巧期待攻撃力")
+            tableheader.push(intl.translate("技巧期待攻撃力", locale))
         }
         if(switcher.switchCriticalRatio) {
-            tableheader.push("技巧期待値\n(減衰補正後)")
+            tableheader.push(intl.translate("技巧期待値", locale))
         }
         if(switcher.switchHP) {
-            tableheader.push("HP\n(残HP)")
+            tableheader.push("HP\n(" + intl.translate("残HP", locale) + ")")
         }
         if(switcher.switchCharaHP) {
             for(var i = 0; i < chara.length; i++){
@@ -3290,51 +3292,51 @@ var ResultList = React.createClass({
             }
         }
         if(switcher.switchAverageAttack) {
-            tableheader.push('パーティ平均攻撃力(二手技巧無し)')
+            tableheader.push(intl.translate("パーティ平均攻撃力", locale))
         }
         if(switcher.switchAverageCriticalAttack) {
-            tableheader.push('技巧平均攻撃力')
+            tableheader.push(intl.translate("技巧平均攻撃力", locale))
         }
         if(switcher.switchTotalExpected) {
-            tableheader.push('総合*回数*技巧')
+            tableheader.push(intl.translate("総合*回数*技巧", locale))
         }
         if(switcher.switchCharaTotalExpected) {
             for(var i = 0; i < chara.length; i++){
                 if(chara[i].name != "") {
-                    tableheader.push(chara[i].name + "\n(総回技)")
+                    tableheader.push(chara[i].name + "\n(" + intl.translate("総回技", locale) + ")")
                 }
             }
         }
         if(switcher.switchAverageTotalExpected) {
-            tableheader.push('総回技値の平均値')
+            tableheader.push(intl.translate("総回技の平均", locale))
         }
         if(switcher.switchDamage) {
-            tableheader.push("単攻撃ダメージ\n(期待回数*単ダメージ)")
+            tableheader.push(intl.translate("単攻撃ダメージ", locale))
         }
         if(switcher.switchOugiGage) {
-            tableheader.push("ターン毎の\n奥義ゲージ上昇量")
+            tableheader.push(intl.translate("ターン毎の奥義ゲージ上昇量", locale))
         }
         if(switcher.switchOugiDamage) {
-            tableheader.push("奥義ダメージ")
+            tableheader.push(intl.translate("奥義ダメージ", locale))
         }
         if(switcher.switchCycleDamage) {
-            tableheader.push("予想ターン毎ダメージ")
+            tableheader.push(intl.translate("予想ターン毎ダメージ", locale))
         }
         if(switcher.switchAverageCycleDamage) {
-            tableheader.push("予想ターン毎ダメージ\nのパーティ平均値")
+            tableheader.push(intl.translate("パーティ平均予想ターン毎ダメージ", locale))
         }
         if(switcher.switchSkillTotal) {
-            tableheader.push("スキル合計")
+            tableheader.push(intl.translate("スキル合計", locale))
         }
 
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name
-        var remainHPstr = "ジータさん(" + job + ") HP";
+        var remainHPstr = intl.translate("ジータさん", locale) + "(" + intl.translate(job, locale) + ") HP";
         if(prof.remainHP != undefined) {
             remainHPstr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? prof.remainHP : prof.hp
         } else {
             remainHPstr += prof.hp
         }
-        remainHPstr += "% (" + this.getTypeBonusStr(prof.element, prof) + ")"
+        remainHPstr += "% (" + intl.translate(this.getTypeBonusStr(prof.element, prof), locale) + ")"
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "" && chara[i].isConsideredInAverage) {
                 remainHPstr += ", " + chara[i].name + "HP"
@@ -3343,10 +3345,10 @@ var ResultList = React.createClass({
                 } else {
                     remainHPstr += prof.hp
                 }
-                remainHPstr += "% (" + this.getTypeBonusStr(chara[i].element, prof) + ")"
+                remainHPstr += "% (" + intl.translate(this.getTypeBonusStr(chara[i].element, prof), locale) + ")"
             }
         }
-        remainHPstr += ", 通常バフ" + prof.normalBuff + "%, 属性バフ" + prof.elementBuff + "%, その他バフ" + prof.otherBuff + "%, 追加ダメージバフ" + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, 敵防御固有値" + prof.enemyDefense
+        remainHPstr += ", " + intl.translate("通常バフ", locale) + prof.normalBuff + "%, " + intl.translate("属性バフ", locale) + prof.elementBuff + "%, " + intl.translate("その他バフ", locale) + prof.otherBuff + "%, " + intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector.ktypes} </FormControl>
@@ -3475,66 +3477,65 @@ var ResultList = React.createClass({
                     <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
                     <table style={{"width": "100%", "float": "left", textAlign: "center"}} className="table table-bordered"><tbody>
                     <tr>
-                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> 攻撃力(二手技巧無し) </td>
-                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} className={(this.state.switchATKandHP == 1) ? "display-checked" : "display-unchecked"}>戦力</td>
-                        <td onClick={this.handleEvent.bind(this, "switchHP")} className={(this.state.switchHP == 1) ? "display-checked" : "display-unchecked"}> HP</td>
-                        <td onClick={this.handleEvent.bind(this, "switchDATA")} className={(this.state.switchDATA == 1) ? "display-checked" : "display-unchecked"}> 連続攻撃率</td>
-                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} className={(this.state.switchExpectedAttack == 1) ? "display-checked" : "display-unchecked"}> 期待攻撃回数</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} className={(this.state.switchCriticalRatio == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} className={(this.state.switchCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値*攻撃力</td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("攻撃力(二手技巧無し)", locale)} </td>
+                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} className={(this.state.switchATKandHP == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("戦力", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchHP")} className={(this.state.switchHP == 1) ? "display-checked" : "display-unchecked"}>HP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchDATA")} className={(this.state.switchDATA == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("連撃率", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} className={(this.state.switchExpectedAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("期待攻撃回数", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} className={(this.state.switchCriticalRatio == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("技巧期待値", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} className={(this.state.switchCriticalAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("技巧期待攻撃力", locale)}</td>
                     </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} className={(this.state.switchAverageAttack == 1) ? "display-checked" : "display-unchecked"}> パーティ平均攻撃力(二手技巧無し)</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} className={(this.state.switchAverageCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧平均攻撃力 </td>
-                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} className={(this.state.switchTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総合*期待回数*技巧期待値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} className={(this.state.switchAverageTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総回技のパーティ平均値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージ </td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージの平均値 </td>
-                        <td onClick={this.handleEvent.bind(this, "switchDamage")} className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> 単攻撃ダメージ</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} className={(this.state.switchAverageAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("パーティ平均攻撃力", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} className={(this.state.switchAverageCriticalAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("技巧平均攻撃力", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} className={(this.state.switchTotalExpected == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("総合*回数*技巧", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} className={(this.state.switchAverageTotalExpected == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("総回技の平均", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("予想ターン毎ダメージ", locale)} </td>
+                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("パーティ平均予想ターン毎ダメージ", locale)} </td>
+                        <td onClick={this.handleEvent.bind(this, "switchDamage")} className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("単攻撃ダメージ", locale)}</td>
                     </tr>
                     <tr>
-                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> 奥義ゲージ上昇期待値 </td>
-                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> 奥義ダメージ </td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}> キャラ連続攻撃率</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}> キャラ総回技値</td>
-                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </td>
+                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("奥義ダメージ", locale)} </td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("キャラ", locale)}{intl.translate("攻撃力", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("キャラ", locale)}HP</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("キャラ", locale)}{intl.translate("連撃率", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("キャラ", locale)}{intl.translate("総回技", locale)}</td>
+                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("スキル合計", locale)}</td>
                     </tr>
                     </tbody></table>
-                    {/*<span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>*/}
                     <hr />
                         <ButtonGroup style={{width: "100%"}}>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフを開く</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフを開く</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >ダメージシミュレータ(beta)</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >{intl.translate("初期攻撃力推移グラフ", locale)}</Button>
+                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータ", locale)}</Button>
                         </ButtonGroup>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
-                            selfSummonHeader = summonElementTypes[s.selfElement].name + "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
                         } else if (s.selfSummonType == "elementByRace") {
-                            selfSummonHeader = summonElementTypes[s.selfElement].name + "属性(種族数)" + tesukatoripoka(parseInt(s.selfSummonAmount), races)
+                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + "属性(種族数)" + tesukatoripoka(parseInt(s.selfSummonAmount), races)
                         } else {
-                            selfSummonHeader = summonElementTypes[s.selfElement].name + summonTypes[s.selfSummonType] + s.selfSummonAmount
+                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + summonTypes[s.selfSummonType] + s.selfSummonAmount
                         }
 
                         var friendSummonHeader = ""
                         if(s.friendSummonType == "odin"){
-                            friendSummonHeader = summonElementTypes[s.friendElement].name + "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
                         } else if (s.friendSummonType == "elementByRace") {
-                            friendSummonHeader = summonElementTypes[s.friendElement].name + "属性(種族数)" + tesukatoripoka(parseInt(s.friendSummonAmount), races)
+                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + "属性(種族数)" + tesukatoripoka(parseInt(s.friendSummonAmount), races)
                         } else {
-                            friendSummonHeader = summonElementTypes[s.friendElement].name + summonTypes[s.friendSummonType] + s.friendSummonAmount
+                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + summonTypes[s.friendSummonType] + s.friendSummonAmount
                         }
 
                         return(
                             <div key={summonindex} className="result">
-                                <h2> 結果{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [優先項目: {changeSortKey}]</h2>
+                                <h2> {intl.translate("結果", locale)}{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [{intl.translate("優先項目", locale)}: {changeSortKey}]</h2>
                                 <div className="charainfo"><span>{remainHPstr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
                                 <tr>
-                                    <th>順位</th>
+                                    <th>{intl.translate("順位", locale)}</th>
                                     {tableheader.map(function(m, ind){ return <th key={ind}>{m}</th>; })}
                                     {
                                         armnames.map(function(m, ind){
@@ -3544,10 +3545,10 @@ var ResultList = React.createClass({
                                             return <th key={ind} className="resultList">{m}</th>;
                                         }})
                                     }
-                                    <th>操作</th>
+                                    <th>{intl.translate("操作", locale)}</th>
                                 </tr>
                                 </thead>
-                                <Result key={summonindex} summonid={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof} onAddToHaisuiData={onAddToHaisuiData} />
+                                <Result key={summonindex} summonid={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof} onAddToHaisuiData={onAddToHaisuiData} locale={locale}/>
                                 </table>
                             </div>
                         );

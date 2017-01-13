@@ -449,6 +449,174 @@ var multiLangData = {
         "en": "Type",
         "ja": "タイプ",
     },
+    "攻撃力": {
+        "en": "ATK",
+        "ja": "攻撃力",
+    },
+    "攻撃力(二手技巧無し)": {
+        "en": "Pure ATK",
+        "ja": "攻撃力(二手技巧無し)",
+    },
+    "戦力": {
+        "en": "ATK+HP",
+        "ja": "戦力",
+    },
+    "連撃率": {
+        "en": "DA/TA Ratio",
+        "ja": "連撃率",
+    },
+    "期待攻撃回数": {
+        "en": "Exp. Attack Freq.",
+        "ja": "期待攻撃回数\n(期待攻撃力)",
+    },
+    "技巧期待攻撃力": {
+        "en": "ATK with Critical",
+        "ja": "技巧期待攻撃力",
+    },
+    "技巧期待値": {
+        "en": "Exp. Critical Ratio",
+        "ja": "技巧期待値\n(減衰補正後)",
+    },
+    "残HP": {
+        "en": "Remain HP",
+        "ja": "残HP",
+    },
+    "パーティ平均攻撃力": {
+        "en": "Party-Averaged Pure ATK",
+        "ja": "パーティ平均攻撃力(二手技巧無し)",
+    },
+    "技巧平均攻撃力": {
+        "en": "Party-Averaged ATK with Critical",
+        "ja": "技巧平均攻撃力",
+    },
+    "総合*回数*技巧": {
+        "en": "PureATK*Crit.*Freq.",
+        "ja": "総合*回数*技巧",
+    },
+    "総回技": {
+        "en": "PCF value",
+        "ja": "総回技",
+    },
+    "総回技の平均": {
+        "en": "Averaged PCF value",
+        "ja": "総回技の平均",
+    },
+    "単攻撃ダメージ": {
+        "en": "Single Attack Damage\n(Freq.*Single Damage)",
+        "ja": "単攻撃ダメージ\n(期待回数*単ダメージ)",
+    },
+    "ターン毎の奥義ゲージ上昇量": {
+        "en": "Ougi Gage Rise per Turn",
+        "ja": "ターン毎の\n奥義ゲージ上昇量",
+    },
+    "奥義ダメージ": {
+        "en": "Ougi Damage",
+        "ja": "奥義ダメージ",
+    },
+    "予想ターン毎ダメージ": {
+        "en": "Exp. Damage per Turn",
+        "ja": "予想ターンダメージ",
+    },
+    "パーティ平均予想ターン毎ダメージ": {
+        "en": "Party-Averaged Exp. Turn Damage",
+        "ja": "ターン毎ダメージの\nパーティ平均",
+    },
+    "スキル合計": {
+        "en": "Skill Amount",
+        "ja": "スキル合計",
+    },
+    "有利": {
+        "en": "Advantage",
+        "ja": "有利",
+    },
+    "非有利": {
+        "en": "Non-advantage",
+        "ja": "非有利",
+    },
+    "不利": {
+        "en": "Weak",
+        "ja": "不利",
+    },
+    "背水グラフ": {
+        "en": "Open Haisui Konshin Graph",
+        "ja": "背水渾身グラフを開く",
+    },
+    "初期攻撃力推移グラフ": {
+        "en": "Open Initial Attack Variation Graph",
+        "ja": "初期攻撃力推移グラフを開く",
+    },
+    "ダメージシミュレータ": {
+        "en": "Open Damage Simulator (Beta)",
+        "ja": "ダメージシミュレータ (Beta)",
+    },
+    "結果": {
+        "en": "Result No. ",
+        "ja": "結果",
+    },
+    "マグナ": {
+        "en": "Magna",
+        "ja": "マグナ",
+    },
+    "属性": {
+        "en": "Element",
+        "ja": "属性",
+    },
+    "属性攻": {
+        "en": "Element",
+        "ja": "属性攻",
+    },
+    "キャラ攻": {
+        "en": "Chara",
+        "ja": "キャラ攻",
+    },
+    "優先項目": {
+        "en": "Sort Key",
+        "ja": "優先項目",
+    },
+    "順位": {
+        "en": "Rank",
+        "ja": "順位",
+    },
+    "操作": {
+        "en": "Option",
+        "ja": "操作",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
     "": {
         "en": "",
         "ja": "",
