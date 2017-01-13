@@ -337,6 +337,7 @@ var Root = React.createClass({
       }
   },
   render: function() {
+    var locale = this.state.locale
     if(_ua.Mobile || _ua.Tablet) {
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
@@ -411,14 +412,14 @@ var Root = React.createClass({
         return (
             <div className="root">
                 <div className="rootleft" id="rootleft2" style={{height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}>
-                    <h1> {intl.translate("motocal", this.state.locale)} </h1>
+                    <h1> {intl.translate("motocal", locale)} </h1>
                     <Navbar fluid>
                         <Navbar.Header>
                         <Navbar.Brand> motocal </Navbar.Brand>
                         </Navbar.Header>
                         <Nav>
-                            <NavDropdown id="dropdown_howto" title="使い方など">
-                            <MenuItem> <p onClick={this.openHowTo}>使い方</p> </MenuItem>
+                            <NavDropdown id="dropdown_howto" title={intl.translate("使い方", locale)}>
+                            <MenuItem> <p onClick={this.openHowTo}>{intl.translate("使い方", locale)}</p> </MenuItem>
                             <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
                             <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
                             </NavDropdown>
@@ -455,12 +456,12 @@ var Root = React.createClass({
                         </Modal.Body>
                     </Modal>
                     <Nav bsStyle="tabs" justified activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
-                        <NavItem eventKey="inputTab">ジータ</NavItem>
-                        <NavItem eventKey="summonTab">召喚石</NavItem>
-                        <NavItem eventKey="charaTab">キャラ</NavItem>
-                        <NavItem eventKey="armTab">武器</NavItem>
+                        <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
+                        <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
+                        <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
+                        <NavItem eventKey="armTab">{intl.translate("武器", locale)}</NavItem>
                         <NavItem eventKey="simulatorTab">Simulator</NavItem>
-                        <NavItem eventKey="systemTab">保存</NavItem>
+                        <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
                     </Nav>
                     <div className="Tab" id="inputTab">
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} />
@@ -4636,13 +4637,14 @@ var Profile = React.createClass({
                     <span>
                     {intl.translate("ジョブ", locale)}: {intl.translate(Jobs[this.state.job].name, locale)},
                     {intl.translate("得意", locale)} [{intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}],
-                    {jobTypes[Jobs[this.state.job].type]}タイプ,
-                    攻撃ボーナス {Jobs[this.state.job].atBonus},
-                    HPボーナス {Jobs[this.state.job].hpBonus},
-                    攻刃バフ {Jobs[this.state.job].kouzinBonus},
-                    守護バフ {Jobs[this.state.job].shugoBonus},
-                    基礎DA率 {Jobs[this.state.job].DaBonus}%,
-                    基礎TA率 {Jobs[this.state.job].TaBonus}%
+                    {intl.translate(jobTypes[Jobs[this.state.job].type], locale)}
+                    {intl.translate("タイプ", locale)},
+                    {intl.translate("攻撃ボーナス", locale)} {Jobs[this.state.job].atBonus},
+                    {intl.translate("HPボーナス", locale)} {Jobs[this.state.job].hpBonus},
+                    {intl.translate("攻刃ボーナス", locale)} {Jobs[this.state.job].kouzinBonus},
+                    {intl.translate("守護ボーナス", locale)} {Jobs[this.state.job].shugoBonus},
+                    {intl.translate("基礎DA率", locale)} {Jobs[this.state.job].DaBonus}%,
+                    {intl.translate("基礎TA率", locale)} {Jobs[this.state.job].TaBonus}%
                     </span>
                     <div className="table-responsive">
                     <table className="table table-bordered">
@@ -4727,7 +4729,7 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">通常枠のバフ</td>
+                            <td className="table-profile-td">{intl.translate("通常バフ説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("属性バフ", locale)}</th>
                             <td className="table-profile-td">
@@ -4736,16 +4738,16 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">属性枠のバフ</td>
+                            <td className="table-profile-td">{intl.translate("属性バフ説明", locale)}</td>
                         </tr><tr>
-                            <th className="table-profile-th">{intl.translate("その他バフ")}</th>
+                            <th className="table-profile-th">{intl.translate("その他バフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">別枠乗算のバフ(乗算を複数加味したい場合は乗算後の値を入力してください)</td>
+                            <td className="table-profile-td">{intl.translate("その他バフ説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("HPバフ", locale)}</th>
                             <td className="table-profile-td">
@@ -4754,7 +4756,7 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">HP上昇のバフ(古戦場スタックとかの計算用)</td>
+                            <td className="table-profile-td">{intl.translate("HPバフ説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("DAバフ", locale)}</th>
                             <td className="table-profile-td">
@@ -4763,7 +4765,7 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">DA率が上がります。各キャラの基礎DA率に加算されます。</td>
+                            <td className="table-profile-td">{intl.translate("DAバフ説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("TAバフ", locale)}</th>
                             <td className="table-profile-td">
@@ -4772,7 +4774,7 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">TA率が上がります。各キャラの基礎TA率に加算されます。</td>
+                            <td className="table-profile-td">{intl.translate("TAバフ説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("残HP割合", locale)}</th>
                             <td className="table-profile-td">
@@ -4781,7 +4783,7 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">パーティ全体の残りHP割合です。(キャラ個別の値が入力されている場合、より低い方を採用します)</td>
+                            <td className="table-profile-td">{intl.translate("残HP割合説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("追加ダメージバフ", locale)}</th>
                             <td className="table-profile-td">
@@ -4790,7 +4792,7 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。</td>
+                            <td className="table-profile-td">{intl.translate("追加ダメージバフ説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                             <td className="table-profile-td">
@@ -4799,46 +4801,44 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("奥義ゲージ上昇率アップ詳細", locale)}</td>
+                            <td className="table-profile-td">{intl.translate("奥義ゲージ上昇率アップ説明", locale)}</td>
                         </tr>
                         </tbody>
                     </table>
 
-                    <h3 className="margin-top"> Advanced settings</h3>
-                    <p>もっともっと詳しく計算したい方向けの項目です。</p>
+                    <h3 className="margin-top"> {intl.translate("Advanced", locale)}</h3>
+                    <p>{intl.translate("Advanced 説明", locale)}</p>
                     <div className="table-responsive">
                     <table className="table table-bordered">
                         <tbody>
+
                         <tr>
-                            <th className="table-profile-th">敵防御固有値</th>
+                            <th className="table-profile-th">{intl.translate("敵防御固有値", locale)}</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
                             <td className="table-profile-td">
-                            想定される敵の防御固有値を設定します。<br/>
-                            単攻撃ダメージ、奥義ダメージ、<br/>
-                            予想ターン毎ダメージの計算に影響します。<br/>
-                            (単攻撃ダメージに減衰補正がかかる(44万超え)<br/>
-                             ような攻撃力でない限り、編成の順位自体は変化しないと思われます。)
+                                {intl.translate("敵防御固有値説明", locale)}
                             </td>
                         </tr>
+
                         <tr>
-                            <th className="table-profile-th">ジータさん<br/>基礎DA率</th>
+                            <th className="table-profile-th">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎DA率", locale)}</th>
                             <td className="table-profile-td"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td className="table-profile-td">ジータさんの基礎DA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                            <td className="table-profile-td">{intl.translate("ジータさん基礎DA率説明", locale)}</td>
                         </tr>
                         <tr>
-                            <th className="table-profile-th">ジータさん<br/>基礎TA率</th>
+                            <th className="table-profile-th">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎TA率", locale)}</th>
                             <td className="table-profile-td"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td className="table-profile-td">ジータさんの基礎TA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
+                            <td className="table-profile-td">{intl.translate("ジータさん基礎TA率説明", locale)}</td>
                         </tr>
                         <tr>
-                            <th className="table-profile-th">ジータさん<br/>奥義倍率</th>
+                            <th className="table-profile-th">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
-                            <td className="table-profile-td">ジータさんの奥義倍率を設定します。<br/>奥義ダメージ、予想ターン毎ダメージの計算に影響します。</td>
+                            <td className="table-profile-td">{intl.translate("ジータさん奥義倍率説明", locale)}</td>
                         </tr>
                         <tr>
-                            <th className="table-profile-th">確保したい<br/>ジータさんHP</th>
+                            <th className="table-profile-th">{intl.translate("確保HP", locale)}</th>
                             <td className="table-profile-td"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
-                            <td className="table-profile-td">暴君・守護など混みの最終HPの最低ラインを設定できます。<br/>これを下回った編成は表示されません。<br/>(初期値は0です) ジータさんのHPベースです。</td>
+                            <td className="table-profile-td">{intl.translate("確保HP説明", locale)}</td>
                         </tr>
                         </tbody>
                     </table>
