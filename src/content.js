@@ -10,6 +10,7 @@ var Notice = require('./notice.js')
 var {StoredListEditor, ControlAutoUpdate} = require('./result.js')
 var {HowTo, NiteHowTo, HPChartHowTo} = require('./howto.js')
 var {ColP} = require('./gridp.js')
+var intl = require('./translate.js')
 var dataForLoad = GlobalConst.dataForLoad
 
 // inject GlobalConst...
@@ -87,6 +88,7 @@ var Root = React.createClass({
           openNiteHowTo: false,
           openSimulatorHowTo: false,
           activeKey: "inputTab",
+          locale: intl.getLocale(),
       };
   },
   openHowTo: function(e) {
@@ -274,6 +276,11 @@ var Root = React.createClass({
           },
       })
   },
+  changeLang: function(key, e) {
+      if(key != "ja" && key != "en") key = "ja";
+
+      this.setState({locale: key});
+  },
   handleChangeTab: function(eventKey){
       var activeKey = (this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey
       document.querySelector("div#" + activeKey).setAttribute("class", "Tab hidden")
@@ -404,7 +411,7 @@ var Root = React.createClass({
         return (
             <div className="root">
                 <div className="rootleft" id="rootleft2" style={{height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}>
-                    <h1> 元カレ計算機 (グラブル攻撃力計算機) </h1>
+                    <h1> {intl.translate("motocal", this.state.locale)} </h1>
                     <Navbar fluid>
                         <Navbar.Header>
                         <Navbar.Brand> motocal </Navbar.Brand>
@@ -416,6 +423,12 @@ var Root = React.createClass({
                             <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
                             </NavDropdown>
                         </Nav>
+                        <Navbar.Form pullRight>
+                            <ButtonGroup>
+                                <Button bsSize="small" onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
+                                <Button bsSize="small" onClick={this.changeLang.bind(this, "en")}>English</Button>
+                            </ButtonGroup>
+                        </Navbar.Form>
                     </Navbar>
                     <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
                         <Modal.Header closeButton>
@@ -450,7 +463,7 @@ var Root = React.createClass({
                         <NavItem eventKey="systemTab">保存</NavItem>
                     </Nav>
                     <div className="Tab" id="inputTab">
-                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} />
+                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
                         <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
@@ -4472,6 +4485,8 @@ var Profile = React.createClass({
         this.props.onChange(newState)
     },
     render: function() {
+        var locale = this.props.locale
+
         if(_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="profile">
@@ -4542,7 +4557,7 @@ var Profile = React.createClass({
                     <table className="table table-bordered">
                         <tbody>
                         <tr>
-                            <th className="buff">通常バフ</th>
+                            <th className="buff">{intl.translate("normalBuff", locale)}</th>
                             <th className="buff">属性バフ</th>
                             <th className="buff">その他バフ</th>
                             <th className="buff">HPバフ</th>
@@ -4617,10 +4632,10 @@ var Profile = React.createClass({
         } else {
             return (
                 <div className="profile">
-                    <h3> ジータさん情報 (*: 推奨入力項目)</h3>
+                    <h3> {intl.translate("プロフィールタイトル", locale)}</h3>
                     <span>
-                    ジョブ名: {Jobs[this.state.job].name},
-                    得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
+                    {intl.translate("ジョブ", locale)}: {intl.translate(Jobs[this.state.job].name, locale)},
+                    {intl.translate("得意", locale)} [{intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}],
                     {jobTypes[Jobs[this.state.job].type]}タイプ,
                     攻撃ボーナス {Jobs[this.state.job].atBonus},
                     HPボーナス {Jobs[this.state.job].hpBonus},
@@ -4635,77 +4650,77 @@ var Profile = React.createClass({
                         <tr>
                             <th className="table-profile-th">Rank*</th>
                             <td className="table-profile-td"><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td className="table-profile-td">基礎攻撃力、基礎HPなどはランクに従って自動で計算されます</td>
+                            <td className="table-profile-td">{intl.translate("ランク説明", locale)}</td>
                         </tr><tr>
-                            <th className="table-profile-th">ジョブ*</th>
+                            <th className="table-profile-th">{intl.translate("ジョブ", locale)}*</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
                             <td className="table-profile-td">
-                                <p>ジョブごとのボーナス等は自動で反映されます。
-                                得意武器補正などを反映したくない場合"なし"を選択して下さい。</p>
+                                <p>
+                                {intl.translate("ジョブ説明", locale)}</p>
                             </td>
                         </tr><tr>
-                            <th className="table-profile-th">ゼニス攻撃力*</th>
+                            <th className="table-profile-th">{intl.translate("ゼニス攻撃力", locale)}*</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
                             <td className="table-profile-td"></td>
                         </tr><tr>
-                            <th className="table-profile-th">ゼニスHP</th>
+                            <th className="table-profile-th">{intl.translate("ゼニスHP", locale)}</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
                             <td className="table-profile-td"></td>
                         </tr><tr>
-                            <th className="table-profile-th">マスターボーナス<br/>ATK*</th>
+                            <th className="table-profile-th">{intl.translate("マスボATK", locale)}*</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">ジョブマスターボーナスの"攻撃力+○○％"の値です<br/>(各ジョブごとのボーナスとは別です)</td>
+                            <td className="table-profile-td">{intl.translate("マスボATK説明", locale)}</td>
                         </tr><tr>
-                            <th className="table-profile-th">マスターボーナス<br/>HP</th>
+                            <th className="table-profile-th">{intl.translate("マスボHP", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">ジョブマスターボーナスの"HP+○○％"の値です<br/>(各ジョブごとのボーナスとは別です)</td>
+                            <td className="table-profile-td">{intl.translate("マスボHP説明", locale)}</td>
                         </tr><tr>
-                            <th className="table-profile-th">残HP割合<br/>(ジータさんのみ)</th>
+                            <th className="table-profile-th">{intl.translate("残HP割合", locale)}<br/>{intl.translate("ジータさんのみ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">ジータさんの残りHP割合です。パーティ全体の残りHP割合を一括で指定したい場合は、"パーティ全体への効果"の”残HP割合"を指定して下さい。</td>
+                            <td className="table-profile-td">{intl.translate("残HP割合説明(ジータのみ)", locale)}</td>
                         </tr><tr>
-                            <th className="table-profile-th">ジータさん属性*</th>
+                            <th className="table-profile-th">{intl.translate("ジータさん属性", locale)}*</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
-                            <td className="table-profile-td">ジータさんの属性です</td>
+                            <td className="table-profile-td"></td>
                         </tr><tr>
-                            <th className="table-profile-th">敵の属性*</th>
+                            <th className="table-profile-th">{intl.translate("敵の属性", locale)}*</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
-                            <td className="table-profile-td">有利/非有利/不利は、敵の属性に従って自動で判定されます。</td>
+                            <td className="table-profile-td">{intl.translate("敵の属性説明", locale)}</td>
                         </tr><tr>
-                            <th className="table-profile-th">武器ゼニス1({armTypes[Jobs[this.state.job].favArm1]})</th>
+                            <th className="table-profile-th">{intl.translate("武器ゼニス1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td className="table-profile-td">得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</td>
+                            <td className="table-profile-td">{intl.translate("武器ゼニス説明", locale)}</td>
                         </tr><tr>
-                            <th className="table-profile-th">武器ゼニス2({armTypes[Jobs[this.state.job].favArm2]})</th>
+                            <th className="table-profile-th">{intl.translate("武器ゼニス2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td className="table-profile-td">得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。</td>
+                            <td className="table-profile-td">{intl.translate("武器ゼニス説明", locale)}</td>
                         </tr>
                         </tbody>
                     </table>
                     </div>
 
-                    <h3 className="margin-top"> パーティ全体への効果 (%表記)</h3>
-                    <p>パーティメンバ全体にかかるバフ等の情報を入力してください</p>
+                    <h3 className="margin-top"> {intl.translate("パーティバフタイトル", locale)}</h3>
+                    <p>{intl.translate("パーティバフ説明", locale)}</p>
                     <table className="table table-bordered">
                         <tbody>
                         <tr>
                         </tr><tr>
-                            <th className="table-profile-th">通常バフ</th>
+                            <th className="table-profile-th">{intl.translate("通常バフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/>
@@ -4714,7 +4729,7 @@ var Profile = React.createClass({
                             </td>
                             <td className="table-profile-td">通常枠のバフ</td>
                         </tr><tr>
-                            <th className="table-profile-th">属性バフ</th>
+                            <th className="table-profile-th">{intl.translate("属性バフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/>
@@ -4723,7 +4738,7 @@ var Profile = React.createClass({
                             </td>
                             <td className="table-profile-td">属性枠のバフ</td>
                         </tr><tr>
-                            <th className="table-profile-th">その他バフ</th>
+                            <th className="table-profile-th">{intl.translate("その他バフ")}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/>
@@ -4732,7 +4747,7 @@ var Profile = React.createClass({
                             </td>
                             <td className="table-profile-td">別枠乗算のバフ(乗算を複数加味したい場合は乗算後の値を入力してください)</td>
                         </tr><tr>
-                            <th className="table-profile-th">HPバフ</th>
+                            <th className="table-profile-th">{intl.translate("HPバフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/>
@@ -4741,7 +4756,7 @@ var Profile = React.createClass({
                             </td>
                             <td className="table-profile-td">HP上昇のバフ(古戦場スタックとかの計算用)</td>
                         </tr><tr>
-                            <th className="table-profile-th">DAバフ</th>
+                            <th className="table-profile-th">{intl.translate("DAバフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/>
@@ -4750,7 +4765,7 @@ var Profile = React.createClass({
                             </td>
                             <td className="table-profile-td">DA率が上がります。各キャラの基礎DA率に加算されます。</td>
                         </tr><tr>
-                            <th className="table-profile-th">TAバフ</th>
+                            <th className="table-profile-th">{intl.translate("TAバフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/>
@@ -4759,7 +4774,7 @@ var Profile = React.createClass({
                             </td>
                             <td className="table-profile-td">TA率が上がります。各キャラの基礎TA率に加算されます。</td>
                         </tr><tr>
-                            <th className="table-profile-th">残HP割合</th>
+                            <th className="table-profile-th">{intl.translate("残HP割合", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl>
@@ -4768,7 +4783,7 @@ var Profile = React.createClass({
                             </td>
                             <td className="table-profile-td">パーティ全体の残りHP割合です。(キャラ個別の値が入力されている場合、より低い方を採用します)</td>
                         </tr><tr>
-                            <th className="table-profile-th">追加ダメージバフ</th>
+                            <th className="table-profile-th">{intl.translate("追加ダメージバフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.additionalDamageBuff} onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl>
@@ -4777,14 +4792,14 @@ var Profile = React.createClass({
                             </td>
                             <td className="table-profile-td">追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。</td>
                         </tr><tr>
-                            <th className="table-profile-th">奥義ゲージ上昇率アップ</th>
+                            <th className="table-profile-th">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。</td>
+                            <td className="table-profile-td">{intl.translate("奥義ゲージ上昇率アップ詳細", locale)}</td>
                         </tr>
                         </tbody>
                     </table>
