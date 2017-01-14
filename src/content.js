@@ -342,12 +342,12 @@ var Root = React.createClass({
     if(_ua.Mobile || _ua.Tablet) {
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
-                <h2>元カレ計算機 (グラブル攻撃力計算機)</h2>
+                <h2>{intl.translate("motocal", locale)}</h2>
                 <ButtonGroup>
                     <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
                     <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
                     <DropdownButton title={intl.translate("使い方", locale)}>
-                        <MenuItem onClick={this.openHowTo}>使い方</MenuItem>
+                        <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
                         <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
                     </DropdownButton>
                 </ButtonGroup>
@@ -673,7 +673,7 @@ var CharaList = React.createClass({
                 <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>{intl.translate("キャラテンプレート", locale)}</Button>
                 <br/>
                 <span>{intl.translate("属性一括変更", locale)}</span>
-                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector[locale].elements} </FormControl>
                 <Grid fluid style={{"width": "100%"}} >
                     <Row>
                     {charas.map(function(c, ind) {
@@ -827,23 +827,23 @@ var Chara = React.createClass({
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("属性", locale)}　　&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector[locale].elements}</FormControl>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("種族", locale)}　　&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl>
+                    <FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector[locale].races}</FormControl>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("タイプ", locale)}　&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl>
+                    <FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector[locale].types}</FormControl>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("得意武器", locale)}&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl>
+                    <FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector[locale].armtypes}</FormControl>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("得意武器", locale)}2</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl>
+                    <FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector[locale].armtypes}</FormControl>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("素の攻撃力", locale)}</InputGroup.Addon>
@@ -925,7 +925,7 @@ var RegisteredChara = React.createClass({
             return (
                 <div className="charaTemplate">
                     <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="charaTemplateContent">
                         {Object.keys(charaData).map(function(key, ind) {
                             if(filterElement == "all" || (charaData[key].element == filterElement)){
@@ -952,7 +952,7 @@ var RegisteredChara = React.createClass({
             return (
                 <div className="charaTemplate">
                     <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="charaTemplateContent">
                         {Object.keys(charaData).map(function(key, ind) {
                             if(filterElement == "all" || (charaData[key].element == filterElement)){
@@ -1082,7 +1082,7 @@ var SummonList = React.createClass({
         return (
             <div className="summonList">
                 <span>{intl.translate("属性一括変更", locale)}</span>
-                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")}> {selector.summonElements} </FormControl>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")}> {selector[locale].summonElements} </FormControl>
                 <h3 className="margin-top"> {intl.translate("召喚石", locale)} </h3>
                 <Grid fluid>
                     <Row>
@@ -1201,16 +1201,16 @@ var Summon = React.createClass({
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("自分の石", locale)}　</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
-                    <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
+                    <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector[locale].summonElements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector[locale].summons}</FormControl>
                     {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
                     {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
                 </InputGroup>
 
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("フレの石", locale)}　</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
-                    <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl>
+                    <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector[locale].summonElements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector[locale].summons}</FormControl>
                     {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
                     {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
                 </InputGroup>
@@ -3362,7 +3362,7 @@ var ResultList = React.createClass({
         remainHPstr += ", " + intl.translate("通常バフ", locale) + prof.normalBuff + "%, " + intl.translate("属性バフ", locale) + prof.elementBuff + "%, " + intl.translate("その他バフ", locale) + prof.otherBuff + "%, " + intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
-            var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector.ktypes} </FormControl>
+            var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
                     <Button block onClick={this.openDisplayTable}>
@@ -3479,7 +3479,7 @@ var ResultList = React.createClass({
             );
 
         } else {
-            var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector.ktypes} </FormControl>
+            var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
                     <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} locale={locale} />
@@ -3949,7 +3949,7 @@ var ArmList = React.createClass({
                 <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>{intl.translate("武器テンプレート", locale)}</Button>
                 <br/>
                 <span>{intl.translate("属性一括変更", locale)}</span>
-                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
+                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector[locale].elements} </FormControl>
                 <Grid fluid>
                     <Row>
                         {arms.map(function(arm, ind) {
@@ -4024,7 +4024,7 @@ var RegisteredArm = React.createClass({
         }
         if(arm.name.indexOf("・属性変更") > 0 || arm.name.indexOf("・覚醒") > 0){
             this.setState({additionalSelectKey: "old_element"})
-            this.setState({additionalSelect: selector.elements})
+            this.setState({additionalSelect: selector[this.props.locale].elements})
             this.setState({additionalSelectClass: "visible"})
         } else if (arm.name.indexOf("コスモス") > 0) {
             this.setState({additionalSelectKey: "cosmos_skill"})
@@ -4071,7 +4071,7 @@ var RegisteredArm = React.createClass({
             return (
                 <div className="armTemplate">
                     <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement)){
@@ -4143,7 +4143,7 @@ var RegisteredArm = React.createClass({
             return (
                 <div className="armTemplate">
                     <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
-                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
+                    <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement)){
@@ -4395,16 +4395,16 @@ var Arm = React.createClass({
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("種類", locale)}　　</InputGroup.Addon>
-                <FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl>
+                <FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector[locale].armtypes} </FormControl>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("スキル", locale)}1&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
+                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector[locale].elements} </FormControl>
                     <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("スキル", locale)}2&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
+                    <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector[locale].elements} </FormControl>
                     <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
                 </InputGroup>
                 <InputGroup>
@@ -4431,8 +4431,13 @@ var Arm = React.createClass({
 
 var Profile = React.createClass({
     getDefaultProps() {
-        var zenithBonuses = Object.keys(zenith).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
-        var alljobs = Object.keys(Jobs).map(function(opt){ return <option value={opt} key={opt}>{Jobs[opt].name}</option> });
+        var zenithBonuses = {"ja": {}, "en": {}}
+        zenithBonuses.ja = Object.keys(zenith).map(function(opt){ return <option value={opt} key={opt}>{opt}</option> });
+        zenithBonuses.en = Object.keys(zenith).map(function(opt){ return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option> });
+
+        var alljobs = {"ja": {}, "en": {}}
+        alljobs.ja = Object.keys(Jobs).map(function(opt){ return <option value={opt} key={opt}>{Jobs[opt].name}</option> });
+        alljobs.en = Object.keys(Jobs).map(function(opt){ return <option value={opt} key={opt}>{intl.translate(Jobs[opt].name, "en")}</option> });
 
         return {
             zenithBonuses: zenithBonuses,
@@ -4529,7 +4534,7 @@ var Profile = React.createClass({
                         </tr>
                         <tr>
                             <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs[locale]}</FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
                         </tr>
                         <tr>
@@ -4539,10 +4544,10 @@ var Profile = React.createClass({
                             <th className="prof">武器ゼニス2</th>
                         </tr>
                         <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses[locale]} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses[locale]} </FormControl></td>
                         </tr>
                         <tr>
                             <th className="prof">基礎DA率</th>
@@ -4671,7 +4676,7 @@ var Profile = React.createClass({
                             <td className="table-profile-td">{intl.translate("ランク説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("ジョブ", locale)}*</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs} </FormControl></td>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs[locale]} </FormControl></td>
                             <td className="table-profile-td">
                                 <p>
                                 {intl.translate("ジョブ説明", locale)}</p>
@@ -4713,19 +4718,19 @@ var Profile = React.createClass({
                             <td className="table-profile-td">{intl.translate("残HP割合説明(ジータのみ)", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("ジータさん属性", locale)}*</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector.elements} </FormControl></td>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl></td>
                             <td className="table-profile-td"></td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("敵の属性", locale)}*</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector.elements} </FormControl></td>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
                             <td className="table-profile-td">{intl.translate("敵の属性説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("武器ゼニス1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses[locale]} </FormControl></td>
                             <td className="table-profile-td">{intl.translate("武器ゼニス説明", locale)}</td>
                         </tr><tr>
                             <th className="table-profile-th">{intl.translate("武器ゼニス2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses} </FormControl></td>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses[locale]} </FormControl></td>
                             <td className="table-profile-td">{intl.translate("武器ゼニス説明", locale)}</td>
                         </tr>
                         </tbody>

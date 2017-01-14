@@ -77,6 +77,50 @@ var multiLangData = {
         "en": "Dark",
         "ja": "闇",
     },
+    "光/火": {
+        "en": "Light/Fire",
+        "ja": "光/火",
+    },
+    "光/闇": {
+        "en": "Light/Dark",
+        "ja": "光/闇",
+    },
+    "闇/土": {
+        "en": "Dark/Earth",
+        "ja": "闇/土",
+    },
+    "闇/水": {
+        "en": "Dark/Water",
+        "ja": "闇/水",
+    },
+    "闇/火": {
+        "en": "Dark/Fire",
+        "ja": "闇/火",
+    },
+    "火/水": {
+        "en": "Fire/Water",
+        "ja": "火/水",
+    },
+    "水/光": {
+        "en": "Water/Light",
+        "ja": "水/光",
+    },
+    "風/土": {
+        "en": "Wind/Earth",
+        "ja": "風/土",
+    },
+    "風/光": {
+        "en": "Wind/Light",
+        "ja": "風/光",
+    },
+    "風/火": {
+        "en": "Wind/Fire",
+        "ja": "風/火",
+    },
+    "土/光": {
+        "en": "Earth/Light",
+        "ja": "土/光",
+    },
     "全属性": {
         "en": "All",
         "ja": "全属性",
@@ -457,6 +501,10 @@ var multiLangData = {
         "en": "Balance",
         "ja": "バランス",
     },
+    "防御": {
+        "en": "Defense",
+        "ja": "防御",
+    },
     "特殊": {
         "en": "Peculiar",
         "ja": "特殊",
@@ -604,6 +652,10 @@ var multiLangData = {
     "キャラ攻": {
         "en": "Chara",
         "ja": "キャラ攻",
+    },
+    "属性攻+キャラ攻": {
+        "en": "Odin(Element+Chara)",
+        "ja": "属性攻+キャラ攻",
     },
     "優先項目": {
         "en": "Sort Key",
@@ -789,6 +841,92 @@ var multiLangData = {
         "en": "Save to Server",
         "ja": "サーバに保存\n(短縮URLを取得)",
     },
+    //定数変換用
+    "人間": {
+        "en": "Human",
+        "ja": "人間",
+    },
+    "エルーン": {
+        "en": "Erune",
+        "ja": "エルーン",
+    },
+    "ドラフ": {
+        "en": "Doraf",
+        "ja": "ドラフ",
+    },
+    "ハーヴィン": {
+        "en": "Havin",
+        "ja": "ハーヴィン",
+    },
+    "種族不明": {
+        "en": "Unknown",
+        "ja": "種族不明",
+    },
+    // sort keys
+    "攻撃力(二手技巧無し,ジータさんのみ)": {
+        "en": "Pure ATK, Player only",
+        "ja": "攻撃力(二手技巧無し,ジータさんのみ)",
+    },
+    "パーティ平均攻撃力(二手技巧無し)": {
+        "en": "Party-Averaged Pure ATK",
+        "ja": "パーティ平均攻撃力(二手技巧無し)",
+    },
+    "ジータさんHP": {
+        "en": "Player HP",
+        "ja": "ジータさんHP",
+    },
+    "技巧期待値(ジータさんのみ)": {
+        "en": "Exp. Critical Ratio (Player only)",
+        "ja": "技巧期待値(ジータさんのみ)",
+    },
+    "技巧期待値(ジータさんのみ)": {
+        "en": "Exp. Critical Ratio (Player only)",
+        "ja": "技巧期待値(ジータさんのみ)",
+    },
+    "技巧期待平均攻撃力": {
+        "en": "Party-Averaged ATK with Critical",
+        "ja": "技巧期待平均攻撃力",
+    },
+    "総合攻撃*期待回数*技巧期待値(ジータさんのみ)": {
+        "en": "PureATK*Crit.*Freq. (Player only)",
+        "ja": "総合攻撃*期待回数*技巧期待値(ジータさんのみ)",
+    },
+    "総回技のパーティ平均値": {
+        "en": "Averaged PCF value",
+        "ja": "総回技のパーティ平均値",
+    },
+    "予想ターン毎ダメージ(ジータさんのみ)": {
+        "en": "Exp. Damage per Turn (Player only)",
+        "ja": "予想ターンダメージ(ジータさんのみ)",
+    },
+    "予想ターン毎ダメージのパーティ平均値": {
+        "en": "Party-Averaged Exp. Turn Damage",
+        "ja": "予想ターン毎ダメージのパーティ平均値",
+    },
+    "★1": {
+        "en": "★1",
+        "ja": "★1",
+    },
+    "★2": {
+        "en": "★2",
+        "ja": "★2",
+    },
+    "★3": {
+        "en": "★3",
+        "ja": "★3",
+    },
+    "★4": {
+        "en": "★4",
+        "ja": "★4",
+    },
+    "★5": {
+        "en": "★5",
+        "ja": "★5",
+    },
+    "★6": {
+        "en": "★6",
+        "ja": "★6",
+    }
 }
 
 // 言語設定
