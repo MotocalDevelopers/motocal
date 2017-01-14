@@ -52,14 +52,16 @@ var SimulatorInput = React.createClass({
 
         // 追加
         for(var i = 0; i < this.props.chara.length; i++){
-            var namekey = nextProps.chara[i].name
-            if(namekey != "" && !(namekey in this.state.buffs)) {
-                newState.buffs[namekey] = {}
-                newState.bufflists[namekey] = {}
+            if(nextProps.chara[i] != undefined) {
+                var namekey = nextProps.chara[i].name
+                if(namekey != "" && !(namekey in this.state.buffs)) {
+                    newState.buffs[namekey] = {}
+                    newState.bufflists[namekey] = {}
 
-                for(var j = 0; j < this.state.maxTurn; j++) {
-                    newState.buffs[namekey][j] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
-                    newState.bufflists[namekey][j] = ["normal-0"]
+                    for(var j = 0; j < this.state.maxTurn; j++) {
+                        newState.buffs[namekey][j] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                        newState.bufflists[namekey][j] = ["normal-0"]
+                    }
                 }
             }
         }

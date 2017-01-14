@@ -869,7 +869,7 @@ var multiLangData = {
     },
     "パーティ平均攻撃力(二手技巧無し)": {
         "en": "Party-Averaged Pure ATK",
-        "ja": "パーティ平均攻撃力(二手技巧無し)",
+        "ja": "平均攻撃力(二手技巧無し)",
     },
     "ジータさんHP": {
         "en": "Player HP",
@@ -926,6 +926,26 @@ var multiLangData = {
     "★6": {
         "en": "★6",
         "ja": "★6",
+    },
+    "表示項目切替": {
+        "en": "Select Display Element",
+        "ja": "表示項目切替",
+    },
+    "攻撃力・HP・連撃率": {
+        "en": "ATK/HP/etcs",
+        "ja": "攻撃力・HP・連撃率",
+    },
+    "パーティ平均攻撃力": {
+        "en": "Party-Averaged ATK",
+        "ja": "パーティ平均攻撃力",
+    },
+    "予測ダメージ": {
+        "en": "Expected Damages",
+        "ja": "予測ダメージ",
+    },
+    "キャラ情報・スキル合計値": {
+        "en": "Chara Data, Skill Amount",
+        "ja": "キャラ情報・スキル合計値",
     }
 }
 

@@ -54,17 +54,17 @@ var ControlAutoUpdate = React.createClass({
         var locale = this.props.locale;
         if(this.props.autoupdate) {
             return (
-                <div style={{"float": "left"}}>
+                <ButtonGroup>
                 <Button bsStyle="primary" onClick={this.props.forceResultUpdate}>{intl.translate("結果を更新", locale)}</Button>
                 <Button bsStyle="danger" onClick={this.props.switchAutoUpdate} >{intl.translate("自動更新: OFF", locale)}</Button>
-                </div>
+                </ButtonGroup>
             )
         } else {
             return (
-                <div style={{"float": "left"}}>
+                <ButtonGroup>
                 <Button bsStyle="primary" disabled onClick={this.props.forceResultUpdate}>{intl.translate("結果を更新", locale)}</Button>
                 <Button bsStyle="primary" onClick={this.props.switchAutoUpdate} >{intl.translate("自動更新: ON", locale)}</Button>
-                </div>)
+                </ButtonGroup>)
         }
     },
 });

@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
-var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, DropdownButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var SimulatorInput = require('./simulator.js')
 var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
@@ -3266,23 +3266,6 @@ var ResultList = React.createClass({
         if(switcher.switchATKandHP) {
             tableheader.push(intl.translate("戦力", locale))
         }
-        if(switcher.switchCharaAttack) {
-            for(var i = 0; i < chara.length; i++){
-                if(chara[i].name != "") {
-                    tableheader.push(chara[i].name + "\n(" + intl.translate("攻撃力", locale) + ")")
-                }
-            }
-        }
-        if(switcher.switchDATA) {
-            tableheader.push(intl.translate("連撃率", locale))
-        }
-        if(switcher.switchCharaDA) {
-            for(var i = 0; i < chara.length; i++){
-                if(chara[i].name != "") {
-                    tableheader.push(chara[i].name + "\n("+ intl.translate("連撃率", locale) + ")")
-                }
-            }
-        }
         if(switcher.switchExpectedAttack) {
             tableheader.push(intl.translate("期待攻撃回数", locale))
         }
@@ -3295,13 +3278,6 @@ var ResultList = React.createClass({
         if(switcher.switchHP) {
             tableheader.push("HP\n(" + intl.translate("残HP", locale) + ")")
         }
-        if(switcher.switchCharaHP) {
-            for(var i = 0; i < chara.length; i++){
-                if(chara[i].name != "") {
-                    tableheader.push(chara[i].name + "\n(HP)")
-                }
-            }
-        }
         if(switcher.switchAverageAttack) {
             tableheader.push(intl.translate("パーティ平均攻撃力", locale))
         }
@@ -3310,13 +3286,6 @@ var ResultList = React.createClass({
         }
         if(switcher.switchTotalExpected) {
             tableheader.push(intl.translate("総合*回数*技巧", locale))
-        }
-        if(switcher.switchCharaTotalExpected) {
-            for(var i = 0; i < chara.length; i++){
-                if(chara[i].name != "") {
-                    tableheader.push(chara[i].name + "\n(" + intl.translate("総回技", locale) + ")")
-                }
-            }
         }
         if(switcher.switchAverageTotalExpected) {
             tableheader.push(intl.translate("総回技の平均", locale))
@@ -3335,9 +3304,6 @@ var ResultList = React.createClass({
         }
         if(switcher.switchAverageCycleDamage) {
             tableheader.push(intl.translate("パーティ平均予想ターン毎ダメージ", locale))
-        }
-        if(switcher.switchSkillTotal) {
-            tableheader.push(intl.translate("スキル合計", locale))
         }
 
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name
@@ -3482,41 +3448,51 @@ var ResultList = React.createClass({
             var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
+                    <ControlLabel>{intl.translate("表示項目切替", locale)}</ControlLabel>
+                    <ButtonToolbar>
+                    <DropdownButton title={intl.translate("攻撃力・HP・連撃率", locale)} id="atk-hp-etcs">
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchTotalAttack")} active={(this.state.switchTotalAttack == 1) ? true : false}>{intl.translate("攻撃力(二手技巧無し)", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchATKandHP")} active={(this.state.switchATKandHP == 1) ? true : false}>{intl.translate("戦力", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchHP")} active={(this.state.switchHP == 1) ? true : false}>HP</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchDATA")} active={(this.state.switchDATA == 1) ? true : false}>{intl.translate("連撃率", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchExpectedAttack")} active={(this.state.switchExpectedAttack == 1) ? true : false}>{intl.translate("期待攻撃回数", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchCriticalRatio")} active={(this.state.switchCriticalRatio == 1) ? true : false}>{intl.translate("技巧期待値", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchCriticalAttack")} active={(this.state.switchCriticalAttack == 1) ? true : false}>{intl.translate("技巧期待攻撃力", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchTotalExpected")} active={(this.state.switchTotalExpected == 1) ? true : false}>{intl.translate("総合*回数*技巧", locale)}</MenuItem>
+                    </DropdownButton>
+
+                    <DropdownButton title={intl.translate("パーティ平均攻撃力", locale)} id="party-averafed-atk">
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchAverageAttack")} active={(this.state.switchAverageAttack == 1) ? true : false}>{intl.translate("パーティ平均攻撃力", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} active={(this.state.switchAverageCriticalAttack == 1) ? true : false}>{intl.translate("技巧平均攻撃力", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} active={(this.state.switchAverageTotalExpected == 1) ? true : false}>{intl.translate("総回技の平均", locale)}</MenuItem>
+                    </DropdownButton>
+
+                    <DropdownButton title={intl.translate("予測ダメージ", locale)} id="expected-damage">
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchCycleDamage")} active={(this.state.switchCycleDamage == 1) ? true : false}> {intl.translate("予想ターン毎ダメージ", locale)} </MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} active={(this.state.switchAverageCycleDamage == 1) ? true : false}> {intl.translate("パーティ平均予想ターン毎ダメージ", locale)} </MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchDamage")} active={(this.state.switchDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchOugiDamage")} active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchOugiGage")} active={(this.state.switchOugiGage == 1) ? true : false}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </MenuItem>
+                    </DropdownButton>
+
+                    <DropdownButton title={intl.translate("キャラ情報・スキル合計値", locale)} id="chara-and-skill-info">
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchCharaAttack")} active={(this.state.switchCharaAttack == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("攻撃力", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchCharaHP")} active={(this.state.switchCharaHP == 1) ? true : false}>{intl.translate("キャラ", locale)}HP</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchCharaDA")} active={(this.state.switchCharaDA == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("連撃率", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} active={(this.state.switchCharaTotalExpected == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("総回技", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")} active={(this.state.switchSkillTotal == 1) ? true : false}>{intl.translate("スキル合計", locale)}</MenuItem>
+                    </DropdownButton>
                     <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} locale={locale} />
-                    <table style={{"width": "100%", "float": "left", textAlign: "center"}} className="table table-bordered"><tbody>
-                    <tr>
-                        <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("攻撃力(二手技巧無し)", locale)} </td>
-                        <td onClick={this.handleEvent.bind(this, "switchATKandHP")} className={(this.state.switchATKandHP == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("戦力", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchHP")} className={(this.state.switchHP == 1) ? "display-checked" : "display-unchecked"}>HP</td>
-                        <td onClick={this.handleEvent.bind(this, "switchDATA")} className={(this.state.switchDATA == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("連撃率", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")} className={(this.state.switchExpectedAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("期待攻撃回数", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")} className={(this.state.switchCriticalRatio == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("技巧期待値", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")} className={(this.state.switchCriticalAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("技巧期待攻撃力", locale)}</td>
-                    </tr><tr>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageAttack")} className={(this.state.switchAverageAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("パーティ平均攻撃力", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")} className={(this.state.switchAverageCriticalAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("技巧平均攻撃力", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchTotalExpected")} className={(this.state.switchTotalExpected == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("総合*回数*技巧", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")} className={(this.state.switchAverageTotalExpected == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("総回技の平均", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCycleDamage")} className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("予想ターン毎ダメージ", locale)} </td>
-                        <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("パーティ平均予想ターン毎ダメージ", locale)} </td>
-                        <td onClick={this.handleEvent.bind(this, "switchDamage")} className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("単攻撃ダメージ", locale)}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={this.handleEvent.bind(this, "switchOugiGage")} className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </td>
-                        <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("奥義ダメージ", locale)} </td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("キャラ", locale)}{intl.translate("攻撃力", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("キャラ", locale)}HP</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("キャラ", locale)}{intl.translate("連撃率", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("キャラ", locale)}{intl.translate("総回技", locale)}</td>
-                        <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}>{intl.translate("スキル合計", locale)}</td>
-                    </tr>
-                    </tbody></table>
+                    </ButtonToolbar>
+
                     <hr />
-                        <ButtonGroup style={{width: "100%"}}>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >{intl.translate("初期攻撃力推移グラフ", locale)}</Button>
-                            <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータ", locale)}</Button>
-                        </ButtonGroup>
+
+                    <ButtonGroup style={{width: "100%"}}>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >{intl.translate("初期攻撃力推移グラフ", locale)}</Button>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータ", locale)}</Button>
+                    </ButtonGroup>
+
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
@@ -3614,114 +3590,129 @@ var Result = React.createClass({
         return (
             <tbody className="result">
                 {this.props.data.map(function(m, rank) {
-                    var skillstr = "";
-                    for(var key in m.data){
-                        var skilldata = m.data[key].skilldata
-
-                        if(key == "Djeeta") {
-                            skillstr += intl.translate("ジータさん", locale) + ": "
-                        } else {
-                            skillstr += key + ": "
-                        }
-
-                        if(skilldata.normal != 1.0) {skillstr += intl.translate("通常攻刃", locale) + (100.0 * (skilldata.normal - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.normalHaisui != 1.0) {skillstr += intl.translate("通常背水", locale) + (100.0 * (skilldata.normalHaisui - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.normalKonshin != 1.0) {skillstr += intl.translate("通常渾身", locale) + (100.0 * (skilldata.normalKonshin - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.element != 1.0) {skillstr += intl.translate("属性", locale) + (100.0 * (skilldata.element - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.magna != 1.0) {skillstr += intl.translate("マグナ", locale) + (100.0 * (skilldata.magna - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.magnaHaisui != 1.0) {skillstr += intl.translate("マグナ背水", locale) + (100.0 * (skilldata.magnaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.unknown != 1.0) {skillstr += intl.translate("アンノウン", locale) + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.unknownHaisui != 1.0) {skillstr += intl.translate("アンノウン背水", locale) + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.other != 1.0) {skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.ougiDamageBuff != 0.0) {skillstr += intl.translate("奥義ダメージ", locale) + (1.0 + skilldata.ougiDamageBuff).toFixed(1); skillstr += "倍 ";}
-
-                        skillstr += "\n"
+                    var colSize = 2;
+                    var tablebody = []
+                    var tablebody2 = {};
+                    // initialize tablebody2
+                    for(key in m.data){
+                        tablebody2[key] = "";
                     }
 
-                    var tablebody = []
                     if(sw.switchTotalAttack) {
                         tablebody.push(m.data.Djeeta.totalAttack)
+                        ++colSize;
                     }
                     if(sw.switchATKandHP) {
                         var senryoku = parseInt(m.data.Djeeta.displayAttack) + parseInt(m.data.Djeeta.displayHP)
                         tablebody.push(senryoku + "\n(" + parseInt(m.data.Djeeta.displayAttack) + ' + ' + parseInt(m.data.Djeeta.displayHP) + ')')
+                        ++colSize;
                     }
                     if(sw.switchCharaAttack) {
                         for(key in m.data){
-                            if(key != "Djeeta") {
-                                tablebody.push(m.data[key].totalAttack)
-                            }
+                            tablebody2[key] += intl.translate("攻撃力", locale) + " " + m.data[key].totalAttack + " "
                         }
                     }
+
                     if(sw.switchDATA) {
-                        tablebody.push('DA:' + (100.0 * m.data.Djeeta.totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data.Djeeta.totalTA).toFixed(1) + '%')
+                        tablebody2["Djeeta"] += 'DA:' + (100.0 * m.data.Djeeta.totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data.Djeeta.totalTA).toFixed(1) + '% '
                     }
+
                     if(sw.switchCharaDA) {
                         for(key in m.data){
-                            if(key != "Djeeta") {
-                                tablebody.push('DA:' + (100.0 * m.data[key].totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data[key].totalTA).toFixed(1) + '%')
+                            // switchDATAが指定されていなかったら全員分
+                            // 指定されていたらDjeetaじゃない場合だけ
+                            if(!sw.switchDATA || (key != "Djeeta")) {
+                                tablebody2[key] += 'DA:' + (100.0 * m.data[key].totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data[key].totalTA).toFixed(1) + '% '
                             }
                         }
                     }
+
                     if(sw.switchExpectedAttack) {
                         var expectedAttack = parseInt(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack)
                         tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack + ")")
+                        ++colSize;
                     }
                     if(sw.switchCriticalRatio) {
                         tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "\n(" + m.data.Djeeta.effectiveCriticalRatio.toFixed(4) + ")")
+                        ++colSize;
                     }
                     if(sw.switchCriticalAttack) {
                         tablebody.push(m.data.Djeeta.criticalAttack)
+                        ++colSize;
                     }
                     if(sw.switchHP) {
                         tablebody.push(m.data.Djeeta.totalHP + "\n(" + parseInt(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")")
+                        ++colSize;
                     }
                     if(sw.switchCharaHP) {
                         for(key in m.data){
-                            if(key != "Djeeta") {
-                                tablebody.push(m.data[key].totalHP + "\n(" + parseInt(m.data[key].totalHP * m.data[key].remainHP) + ")")
-                            }
+                            tablebody2[key] += "HP " + m.data[key].totalHP + "\n (" + intl.translate("残HP", locale) + " " + parseInt(m.data[key].totalHP * m.data[key].remainHP) + ") "
                         }
                     }
                     if(sw.switchAverageAttack) {
                         tablebody.push(parseInt(m.data.Djeeta.averageAttack))
+                        ++colSize;
                     }
                     if(sw.switchAverageCriticalAttack) {
                         tablebody.push(m.data.Djeeta.averageCriticalAttack)
+                        ++colSize;
                     }
                     if(sw.switchTotalExpected) {
                         tablebody.push(m.data.Djeeta.totalExpected)
+                        ++colSize;
                     }
                     if(sw.switchCharaTotalExpected) {
                         for(key in m.data){
-                            if(key != "Djeeta") {
-                                tablebody.push(m.data[key].totalExpected)
-                            }
+                            tablebody2[key] += intl.translate("総回技", locale) + " " + m.data[key].totalExpected + " "
                         }
                     }
                     if(sw.switchAverageTotalExpected) {
                         tablebody.push(m.data.Djeeta.averageTotalExpected)
+                        ++colSize;
                     }
                     if(sw.switchDamage) {
                         var damage = m.data.Djeeta.damage
                         var expectedDamage = m.data.Djeeta.expectedAttack * damage
                         tablebody.push(parseInt(damage) + "\n(" + parseInt(expectedDamage) + ")")
+                        ++colSize;
                     }
                     if(sw.switchOugiGage) {
                         tablebody.push(m.data.Djeeta.expectedOugiGage.toFixed(2) + "%\n(" + m.data.Djeeta.expectedTurn.toFixed(2) + "T)")
+                        ++colSize;
                     }
                     if(sw.switchOugiDamage) {
                         tablebody.push(parseInt(m.data.Djeeta.ougiDamage))
+                        ++colSize;
                     }
                     if(sw.switchCycleDamage) {
                         tablebody.push(parseInt(m.data.Djeeta.expectedCycleDamagePerTurn))
+                        ++colSize;
                     }
                     if(sw.switchAverageCycleDamage) {
                         tablebody.push(parseInt(m.data.Djeeta.averageCyclePerTurn))
+                        ++colSize;
                     }
+
                     if(sw.switchSkillTotal) {
-                        tablebody.push(skillstr)
+                        for(var key in m.data){
+                            var skillstr = "";
+                            var skilldata = m.data[key].skilldata
+
+                            if(skilldata.normal != 1.0) {skillstr += intl.translate("通常攻刃", locale) + (100.0 * (skilldata.normal - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.normalHaisui != 1.0) {skillstr += intl.translate("通常背水", locale) + (100.0 * (skilldata.normalHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.normalKonshin != 1.0) {skillstr += intl.translate("通常渾身", locale) + (100.0 * (skilldata.normalKonshin - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.element != 1.0) {skillstr += intl.translate("属性", locale) + (100.0 * (skilldata.element - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.magna != 1.0) {skillstr += intl.translate("マグナ", locale) + (100.0 * (skilldata.magna - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.magnaHaisui != 1.0) {skillstr += intl.translate("マグナ背水", locale) + (100.0 * (skilldata.magnaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.unknown != 1.0) {skillstr += intl.translate("アンノウン", locale) + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.unknownHaisui != 1.0) {skillstr += intl.translate("アンノウン背水", locale) + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.other != 1.0) {skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.ougiDamageBuff != 0.0) {skillstr += intl.translate("奥義ダメージ", locale) + (100.0 * (1.0 + skilldata.ougiDamageBuff)).toFixed(0); skillstr += "% ";}
+
+                            tablebody2[key] += skillstr;
+                        }
                     }
+
                     if(_ua.Mobile || _ua.Tablet) {
                         return (
                             <tr className="result" title={skillstr} key={rank + 1}>
@@ -3750,7 +3741,7 @@ var Result = React.createClass({
                             </tr>
                         );
                     } else {
-                        return (
+                        var res = [
                             <tr className="result" title={skillstr} key={rank + 1}>
                                 <td>{rank + 1}</td>
                                 {tablebody.map(function(am, ind){
@@ -3758,6 +3749,7 @@ var Result = React.createClass({
                                 })}
                                 {m.armNumbers.map(function(am, ind){
                                     if(arm[ind].considerNumberMax != 0) {
+                                        ++colSize;
                                         if(ind == 0){
                                             if(parseInt(am) > 0) {
                                                 return (<td key={ind} className="resultFirst"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
@@ -3774,8 +3766,23 @@ var Result = React.createClass({
                                     }
                                  })}
                                 <td style={{"padding": "2px"}}><Button id={rank} bsStyle="primary" block className="add-graph-button" onClick={onClick}>{intl.translate("グラフに加える", locale)}</Button></td>
-                            </tr>
-                        );
+                            </tr>,
+                        ];
+
+                        for(var key in tablebody2) {
+                            if(tablebody2[key] != "") {
+                                res.push(<tr>
+                                    <td colSpan="4">
+                                        <p className="text-info">{key}</p>
+                                    </td>
+                                    <td colSpan={colSize - 4}>
+                                        <p className="text-left">{tablebody2[key]}</p>
+                                    </td>
+                                </tr>);
+                            }
+                        }
+
+                        return res;
                     }
                 })}
             </tbody>
