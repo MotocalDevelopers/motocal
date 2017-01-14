@@ -402,8 +402,8 @@ var Root = React.createClass({
                 </div>
                 <div className="Tab hidden" id="systemTab">
                     <div className="systemList">
-                        <Sys data={this.state} onLoadNewData={this.handleChangeData} />
-                        <TwitterShareButton data={this.state} />
+                        <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
+                        <TwitterShareButton data={this.state} locale={locale} />
                         <Notice />
                     </div>
                 </div>
@@ -489,8 +489,8 @@ var Root = React.createClass({
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="systemTab">
-                        <Sys data={this.state} onLoadNewData={this.handleChangeData} />
-                        <TwitterShareButton data={this.state} />
+                        <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
+                        <TwitterShareButton data={this.state} locale={locale}/>
                         <Notice />
                     </div>
                     <div className="Tab hidden" id="simulatorTab">
@@ -4941,6 +4941,7 @@ var Sys = React.createClass({
       }
     },
     render: function() {
+        var locale = this.props.locale;
         var datalist = []
         if(Object.keys(this.state.storedData).length != 0){
             var keys = Object.keys(this.state.storedData);
@@ -4952,13 +4953,13 @@ var Sys = React.createClass({
         }
         return (
             <div className="dataControl">
-                データ名: <FormControl size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} />
-                ブラウザに保存されたデータ
+                {intl.translate("データ名", locale)}: <FormControl size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} />
+                {intl.translate("ブラウザデータリスト", locale)}
                 <FormControl componentClass="select" value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </FormControl>
                 <ButtonGroup className="systemButtonGroup">
-                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitSave} >保存</Button>
-                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitLoad} >読込</Button>
-                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitRemove} >削除</Button>
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitSave} >{intl.translate("ブラウザに保存", locale)}</Button>
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitLoad} >{intl.translate("ブラウザデータ読込", locale)}</Button>
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitRemove} >{intl.translate("削除", locale)}</Button>
                 </ButtonGroup>
             </div>
         );
@@ -5006,7 +5007,7 @@ var TwitterShareButton = React.createClass ({
             success: function(data, datatype) {
                 var shareurl = 'http://hsimyu.net/motocal?id=' + data
                 var tweeturl = 'https://twitter.com/intent/tweet?';
-                tweeturl += 'text=元カレ計算機（グラブル攻撃力計算機）'
+                tweeturl += 'text=' + intl.translate("motocal", this.props.locale)
                 tweeturl += '&url=' + shareurl
                 window.open(tweeturl, '_blank')
                 var sharehist = this.state.shareurl_history
@@ -5023,7 +5024,7 @@ var TwitterShareButton = React.createClass ({
       var sharehist = this.state.shareurl_history;
       return (
             <div className="tweet">
-                <Button bsStyle="primary" className="tweetButton" onClick={this.getShortenUrl}> サーバに保存<br/>(短縮URLを取得) </Button>
+                <Button bsStyle="primary" className="tweetButton" onClick={this.getShortenUrl}>{intl.translate("サーバに保存", this.props.locale)}</Button>
                 <div className="list-group">
                 {Object.keys(sharehist).map(function(s, ind){
                     return (

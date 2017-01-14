@@ -29,6 +29,22 @@ var multiLangData = {
         "en": "Save",
         "ja": "保存",
     },
+    "データ名": {
+        "en": "Data Name",
+        "ja": "データ名",
+    },
+    "ブラウザデータリスト": {
+        "en": "Browser Data List",
+        "ja": "ブラウザに保存されたデータ",
+    },
+    "ブラウザデータ読込": {
+        "en": "Load",
+        "ja": "読込",
+    },
+    "ブラウザに保存": {
+        "en": "Save to Browser",
+        "ja": "保存",
+    },
     "なし": {
         "en": "No job",
         "ja": "なし",
@@ -768,6 +784,10 @@ var multiLangData = {
     "何本追加": {
         "en": "How many?",
         "ja": "何本追加しますか？",
+    },
+    "サーバに保存": {
+        "en": "Save to Server",
+        "ja": "サーバに保存\n(短縮URLを取得)",
     },
 }
 
