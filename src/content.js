@@ -384,14 +384,14 @@ var Root = React.createClass({
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="charaTab">
-                    <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} />
+                    <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} />
                     <ButtonGroup className="addRemoveButtonGroup">
                         <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>キャラ追加(現在{this.state.charaNum}人)</Button>
                         <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>削除</Button>
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="armTab">
-                    <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum} />
+                    <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum} locale={locale}/>
                     <ButtonGroup className="addRemoveButtonGroup">
                         <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>武器追加(現在{this.state.armNum}本)</Button>
                         <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>削除</Button>
@@ -475,7 +475,7 @@ var Root = React.createClass({
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="charaTab">
-                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} />
+                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} />
                         <ButtonGroup className="addRemoveButtonGroup">
                             <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}</Button>
                             <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
@@ -638,7 +638,7 @@ var CharaList = React.createClass({
             this.setState({addChara: templateChara})
             this.setState({addCharaID: minimumID})
             if(_ua.Mobile || _ua.Tablet) {
-                alert("追加しました。")
+                alert(intl.translate("追加しました", this.props.locale))
             }
         } else {
             var newKey = this.props.pleaseAddCharaNum() - 1;
@@ -647,14 +647,15 @@ var CharaList = React.createClass({
                 this.setState({addChara: templateChara})
                 this.setState({addCharaID: newKey})
                 if(_ua.Mobile || _ua.Tablet) {
-                    alert("追加しました。")
+                    alert(intl.translate("追加しました", this.props.locale))
                 }
             } else {
-                alert("キャラがいっぱいです。")
+                alert(intl.translate("キャラがいっぱい", this.props.locale))
             }
         }
     },
     render: function() {
+        var locale = this.props.locale;
         var charas = this.state.charas;
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
@@ -667,14 +668,14 @@ var CharaList = React.createClass({
 
         return (
             <div className="charaList">
-                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>キャラテンプレートを開く</Button>
+                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>{intl.translate("キャラテンプレート", locale)}</Button>
                 <br/>
-                <span>属性一括変更</span>
+                <span>{intl.translate("属性一括変更", locale)}</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
                 <Grid fluid style={{"width": "100%"}} >
                     <Row>
                     {charas.map(function(c, ind) {
-                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} />;
+                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} locale={locale} />;
                     })}
                     </Row>
                 </Grid>
@@ -684,7 +685,7 @@ var CharaList = React.createClass({
                         <Modal.Title>Presets</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <RegisteredChara onClick={this.addTemplateChara} />
+                        <RegisteredChara onClick={this.addTemplateChara} locale={locale} />
                     </Modal.Body>
                 </Modal>
             </div>
@@ -805,6 +806,8 @@ var Chara = React.createClass({
         this.props.onMoveDown(this.props.id)
     },
     render: function() {
+        var locale = this.props.locale
+
         return (
             <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
                 {(this.props.id < 3) ?
@@ -814,61 +817,61 @@ var Chara = React.createClass({
                 }
                 <FormGroup>
                 <InputGroup>
-                    <InputGroup.Addon>キャラ名&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("キャラ名", locale)}&nbsp;</InputGroup.Addon>
                     <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/>
                     <InputGroup.Addon>
-                    <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>平均に含める</Checkbox>
+                    <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>{intl.translate("平均に含める", locale)}</Checkbox>
                     </InputGroup.Addon>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>属性　　&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("属性", locale)}　　&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector.elements}</FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>種族　　&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("種族", locale)}　　&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector.races}</FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>タイプ　&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("タイプ", locale)}　&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector.types}</FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>得意武器&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("得意武器", locale)}&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector.armtypes}</FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>得意武器2</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("得意武器", locale)}2</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector.armtypes}</FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>素の攻撃力</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("素の攻撃力", locale)}</InputGroup.Addon>
                     <FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>素のHP　</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("素のHP", locale)}　</InputGroup.Addon>
                     <FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>残HP割合</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("残HP割合", locale)}</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>基礎DA率</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("基礎DA率", locale)}</InputGroup.Addon>
                     <FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>基礎TA率</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("基礎TA率", locale)}</InputGroup.Addon>
                     <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>サポアビ&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("サポアビ", locale)}&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.support} onChange={this.handleSelectEvent.bind(this, "support")}>{selector.supportAbilities}</FormControl>
                     <FormControl componentClass="select" value={this.state.support2} onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl>
                 </InputGroup>
                 <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>前へ</Button>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
-                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>後へ</Button>
+                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>{intl.translate("前へ", locale)}</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
+                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
                 </ButtonGroup>
             </FormGroup>
             </ColP>
@@ -914,11 +917,12 @@ var RegisteredChara = React.createClass({
         var charaData = this.state.charaData
         var limit = this.state.limit;
         var displayed_count = 0;
+        var locale = this.props.locale
 
         if(_ua.Mobile || _ua.Tablet){
             return (
                 <div className="charaTemplate">
-                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
                     <div className="charaTemplateContent">
                         {Object.keys(charaData).map(function(key, ind) {
@@ -945,7 +949,7 @@ var RegisteredChara = React.createClass({
         } else {
             return (
                 <div className="charaTemplate">
-                    <FormControl type="text" placeholder="キャラ名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
                     <div className="charaTemplateContent">
                         {Object.keys(charaData).map(function(key, ind) {
