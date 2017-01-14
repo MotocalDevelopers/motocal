@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Chart} = require('react-google-charts')
-var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, DropdownButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var SimulatorInput = require('./simulator.js')
 var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
@@ -343,12 +343,14 @@ var Root = React.createClass({
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
                 <h2>元カレ計算機 (グラブル攻撃力計算機)</h2>
-                <Nav>
-                    <NavDropdown id="dropdown_howto" title="使い方など">
-                    <MenuItem> <p onClick={this.openHowTo}>使い方</p> </MenuItem>
-                    <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
-                    </NavDropdown>
-                </Nav>
+                <ButtonGroup>
+                    <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
+                    <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
+                    <DropdownButton title={intl.translate("使い方", locale)}>
+                        <MenuItem onClick={this.openHowTo}>使い方</MenuItem>
+                        <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
+                    </DropdownButton>
+                </ButtonGroup>
                 <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
                     <Modal.Header closeButton>
                         <Modal.Title>元カレ計算機について</Modal.Title>
@@ -379,22 +381,22 @@ var Root = React.createClass({
                 <div className="Tab hidden" id="summonTab">
                     <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
                     <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>召喚石追加(現在{this.state.summonNum}組)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>削除</Button>
+                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}(現在{this.state.summonNum}組)</Button>
+                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="charaTab">
                     <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} />
                     <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>キャラ追加(現在{this.state.charaNum}人)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>削除</Button>
+                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}(現在{this.state.charaNum}人)</Button>
+                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="armTab">
                     <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum} locale={locale}/>
                     <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>武器追加(現在{this.state.armNum}本)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>削除</Button>
+                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}(現在{this.state.armNum}本)</Button>
+                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
                     </ButtonGroup>
                 </div>
                 <div className="Tab hidden" id="resultTab">
@@ -4572,7 +4574,7 @@ var Profile = React.createClass({
                     <table className="table table-bordered">
                         <tbody>
                         <tr>
-                            <th className="buff">{intl.translate("normalBuff", locale)}</th>
+                            <th className="buff">{intl.translate("通常バフ", locale)}</th>
                             <th className="buff">属性バフ</th>
                             <th className="buff">その他バフ</th>
                             <th className="buff">HPバフ</th>
