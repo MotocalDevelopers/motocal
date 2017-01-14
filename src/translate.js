@@ -61,6 +61,10 @@ var multiLangData = {
         "en": "Dark",
         "ja": "闇",
     },
+    "全属性": {
+        "en": "All",
+        "ja": "全属性",
+    },
     "通常バフ": {
         "en": "Normal Buff",
         "ja": "通常バフ",
@@ -258,7 +262,7 @@ var multiLangData = {
         "ja": "攻刃ボーナス",
     },
     "守護ボーナス": {
-        "en": "HP+ Bonus",
+        "en": "Health Bonus",
         "ja": "守護ボーナス",
     },
     "基礎DA率": {
@@ -538,7 +542,7 @@ var multiLangData = {
         "ja": "不利",
     },
     "背水グラフ": {
-        "en": "Open Haisui Konshin Graph",
+        "en": "Open Enmity Graph",
         "ja": "背水渾身グラフを開く",
     },
     "初期攻撃力推移グラフ": {
@@ -558,12 +562,28 @@ var multiLangData = {
         "ja": "マグナ",
     },
     "属性": {
-        "en": "Element",
+        "en": "Element ",
         "ja": "属性",
     },
     "属性攻": {
-        "en": "Element",
+        "en": "Element ",
         "ja": "属性攻",
+    },
+    "属性(種族数)": {
+        "en": "Element(Tesuka) ",
+        "ja": "属性(種族数)",
+    },
+    "属性(経過ターン)": {
+        "en": "Element(Sesuransu) ",
+        "ja": "属性(経過ターン)",
+    },
+    "ゼウス系": {
+        "en": "Zeus ",
+        "ja": "ゼウス系",
+    },
+    "蘭子": {
+        "en": "Ranko ",
+        "ja": "蘭子",
     },
     "キャラ攻": {
         "en": "Chara",
@@ -581,41 +601,49 @@ var multiLangData = {
         "en": "Option",
         "ja": "操作",
     },
-    "": {
-        "en": "",
-        "ja": "",
+    "通常攻刃": {
+        "en": "Attack ",
+        "ja": "通常攻刃",
     },
-    "": {
-        "en": "",
-        "ja": "",
+    "通常背水": {
+        "en": "Enmity ",
+        "ja": "通常背水",
     },
-    "": {
-        "en": "",
-        "ja": "",
+    "通常渾身": {
+        "en": "Konshin ",
+        "ja": "通常渾身",
     },
-    "": {
-        "en": "",
-        "ja": "",
+    "マグナ背水": {
+        "en": "Magna Enmity ",
+        "ja": "マグナ背水",
     },
-    "": {
-        "en": "",
-        "ja": "",
+    "アンノウン": {
+        "en": "Unknown ",
+        "ja": "アンノウン",
     },
-    "": {
-        "en": "",
-        "ja": "",
+    "アンノウン背水": {
+        "en": "Unknown Enmity ",
+        "ja": "アンノウン背水",
     },
-    "": {
-        "en": "",
-        "ja": "",
+    "グラフに加える": {
+        "en": "Add to \ngraphs",
+        "ja": "グラフに\n加える",
     },
-    "": {
+    "本": {
         "en": "",
-        "ja": "",
+        "ja": "本",
     },
-    "": {
-        "en": "",
-        "ja": "",
+    "結果を更新": {
+        "en": "Update Results",
+        "ja": "結果を更新",
+    },
+    "自動更新: ON": {
+        "en": "Auto Update: ON",
+        "ja": "自動更新: ON",
+    },
+    "自動更新: OFF": {
+        "en": "Auto Update: OFF",
+        "ja": "自動更新: OFF",
     },
     "": {
         "en": "",
@@ -639,5 +667,7 @@ module.exports.getLocale = function() {
 module.exports.translate = function(key, locale) {
     console.log("key = ", key)
     if(key == undefined || key == "") return "";
+    if(locale != "ja" && locale != "en") return multiLangData[key]["ja"];
+
     return multiLangData[key][locale];
 }

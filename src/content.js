@@ -3391,14 +3391,11 @@ var ResultList = React.createClass({
                     </tbody></table>
                     </Collapse>
                     <br/>
-                    {/*
-                    動作制御:
-                    <span> / 計算総数:{res.totalItr}組(1万超の場合、計算に時間がかかります)</span>*/}
                     <ButtonGroup style={{width: "100%"}}>
                         <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", fontSize: "10pt", paddingLeft: "2px", paddingRight: "2px", textAlign: "center"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフ</Button>
                         <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", fontSize: "10pt", paddingLeft: "2px", paddingRight: "2px", textAlign: "center"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフ</Button>
                     </ButtonGroup>
-                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
+                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} locale={locale} />
                     <hr/>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
@@ -3439,7 +3436,7 @@ var ResultList = React.createClass({
                                     <th>操作</th>
                                 </tr>
                                 </thead>
-                                <Result key={summonindex} summonid={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof} onAddToHaisuiData={onAddToHaisuiData} />
+                                <Result key={summonindex} summonid={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof} onAddToHaisuiData={onAddToHaisuiData} locale={locale} />
                                 </table>
                             </div>
                         );
@@ -3474,7 +3471,7 @@ var ResultList = React.createClass({
             var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector.ktypes} </FormControl>
             return (
                 <div className="resultList">
-                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} />
+                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} locale={locale} />
                     <table style={{"width": "100%", "float": "left", textAlign: "center"}} className="table table-bordered"><tbody>
                     <tr>
                         <td onClick={this.handleEvent.bind(this, "switchTotalAttack")} className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> {intl.translate("攻撃力(二手技巧無し)", locale)} </td>
@@ -3512,20 +3509,20 @@ var ResultList = React.createClass({
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
-                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
+                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + intl.translate("属性攻", locale) + s.selfSummonAmount + intl.translate("キャラ攻", locale) + s.selfSummonAmount2
                         } else if (s.selfSummonType == "elementByRace") {
-                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + "属性(種族数)" + tesukatoripoka(parseInt(s.selfSummonAmount), races)
+                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + intl.translate("属性(種族数)", locale) + tesukatoripoka(parseInt(s.selfSummonAmount), races)
                         } else {
-                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + summonTypes[s.selfSummonType] + s.selfSummonAmount
+                            selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + intl.translate(summonTypes[s.selfSummonType], locale) + s.selfSummonAmount
                         }
 
                         var friendSummonHeader = ""
                         if(s.friendSummonType == "odin"){
-                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + "属性攻" + s.friendSummonAmount + "キャラ攻" + s.friendSummonAmount2
+                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + intl.translate("属性攻", locale) + s.friendSummonAmount + intl.translate("キャラ攻", locale) + s.friendSummonAmount2
                         } else if (s.friendSummonType == "elementByRace") {
-                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + "属性(種族数)" + tesukatoripoka(parseInt(s.friendSummonAmount), races)
+                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + intl.translate("属性(種族数)", locale) + tesukatoripoka(parseInt(s.friendSummonAmount), races)
                         } else {
-                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + summonTypes[s.friendSummonType] + s.friendSummonAmount
+                            friendSummonHeader = intl.translate(summonElementTypes[s.friendElement].name, locale) + intl.translate(summonTypes[s.friendSummonType], locale) + s.friendSummonAmount
                         }
 
                         return(
@@ -3601,6 +3598,8 @@ var Result = React.createClass({
         var arm = this.props.arm;
         var prof = this.props.prof;
         var onClick = this.onClick;
+        var locale = this.props.locale;
+
         return (
             <tbody className="result">
                 {this.props.data.map(function(m, rank) {
@@ -3609,21 +3608,21 @@ var Result = React.createClass({
                         var skilldata = m.data[key].skilldata
 
                         if(key == "Djeeta") {
-                            skillstr += "ジータさん: "
+                            skillstr += intl.translate("ジータさん", locale) + ": "
                         } else {
                             skillstr += key + ": "
                         }
 
-                        if(skilldata.normal != 1.0) {skillstr += "攻刃" + (100.0 * (skilldata.normal - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.normalHaisui != 1.0) {skillstr += "攻刃背水" + (100.0 * (skilldata.normalHaisui - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.normalKonshin != 1.0) {skillstr += "攻刃渾身" + (100.0 * (skilldata.normalKonshin - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.element != 1.0) {skillstr += "属性" + (100.0 * (skilldata.element - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.magna != 1.0) {skillstr += "マグナ" + (100.0 * (skilldata.magna - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.magnaHaisui != 1.0) {skillstr += "マグナ背水" + (100.0 * (skilldata.magnaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.unknown != 1.0) {skillstr += "アンノウン" + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.unknownHaisui != 1.0) {skillstr += "アンノウン背水" + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.other != 1.0) {skillstr += "その他枠" + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
-                        if(skilldata.ougiDamageBuff != 0.0) {skillstr += "奥義ダメージ" + (1.0 + skilldata.ougiDamageBuff).toFixed(1); skillstr += "倍 ";}
+                        if(skilldata.normal != 1.0) {skillstr += intl.translate("通常攻刃", locale) + (100.0 * (skilldata.normal - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.normalHaisui != 1.0) {skillstr += intl.translate("通常背水", locale) + (100.0 * (skilldata.normalHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.normalKonshin != 1.0) {skillstr += intl.translate("通常渾身", locale) + (100.0 * (skilldata.normalKonshin - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.element != 1.0) {skillstr += intl.translate("属性", locale) + (100.0 * (skilldata.element - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.magna != 1.0) {skillstr += intl.translate("マグナ", locale) + (100.0 * (skilldata.magna - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.magnaHaisui != 1.0) {skillstr += intl.translate("マグナ背水", locale) + (100.0 * (skilldata.magnaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.unknown != 1.0) {skillstr += intl.translate("アンノウン", locale) + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.unknownHaisui != 1.0) {skillstr += intl.translate("アンノウン背水", locale) + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.other != 1.0) {skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
+                        if(skilldata.ougiDamageBuff != 0.0) {skillstr += intl.translate("奥義ダメージ", locale) + (1.0 + skilldata.ougiDamageBuff).toFixed(1); skillstr += "倍 ";}
 
                         skillstr += "\n"
                     }
@@ -3736,7 +3735,7 @@ var Result = React.createClass({
                                         }
                                     }
                                  })}
-                                <td><Button id={rank} bsStyle="primary" bsSize="xsmall" onClick={onClick}>グラフに<br/>加える</Button></td>
+                                <td><Button id={rank} bsStyle="primary" bsSize="xsmall" onClick={onClick}>{intl.translate("グラフに加える", locale)}</Button></td>
                             </tr>
                         );
                     } else {
@@ -3750,20 +3749,20 @@ var Result = React.createClass({
                                     if(arm[ind].considerNumberMax != 0) {
                                         if(ind == 0){
                                             if(parseInt(am) > 0) {
-                                                return (<td key={ind} className="resultFirst"><p className="text-info">{am} 本</p></td>);
+                                                return (<td key={ind} className="resultFirst"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
                                             } else {
-                                                return (<td key={ind} className="resultFirst"><p className="text-muted">{am} 本</p></td>);
+                                                return (<td key={ind} className="resultFirst"><p className="text-muted">{am} {intl.translate("本", locale)}</p></td>);
                                             }
                                         } else {
                                             if(parseInt(am) > 0) {
-                                                return (<td key={ind} className="resultList"><p className="text-info">{am} 本</p></td>);
+                                                return (<td key={ind} className="resultList"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
                                             } else {
-                                                return (<td key={ind} className="resultList"><p className="text-muted">{am} 本</p></td>);
+                                                return (<td key={ind} className="resultList"><p className="text-muted">{am} {intl.translate("本", locale)}</p></td>);
                                             }
                                         }
                                     }
                                  })}
-                                <td style={{"padding": "2px"}}><Button id={rank} bsStyle="primary" block className="add-graph-button" onClick={onClick}>グラフに<br/>加える</Button></td>
+                                <td style={{"padding": "2px"}}><Button id={rank} bsStyle="primary" block className="add-graph-button" onClick={onClick}>{intl.translate("グラフに加える", locale)}</Button></td>
                             </tr>
                         );
                     }

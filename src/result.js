@@ -1,6 +1,6 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var intl = require('./translate.js');
 
 var StoredListEditor = React.createClass({
     render: function() {
@@ -51,18 +51,19 @@ var StoredListEditor = React.createClass({
 
 var ControlAutoUpdate = React.createClass({
     render: function() {
+        var locale = this.props.locale;
         if(this.props.autoupdate) {
             return (
                 <div style={{"float": "left"}}>
-                <Button bsStyle="primary" onClick={this.props.forceResultUpdate}>結果を更新</Button>
-                <Button bsStyle="danger" onClick={this.props.switchAutoUpdate} >自動更新: OFF</Button>
+                <Button bsStyle="primary" onClick={this.props.forceResultUpdate}>{intl.translate("結果を更新", locale)}</Button>
+                <Button bsStyle="danger" onClick={this.props.switchAutoUpdate} >{intl.translate("自動更新: OFF", locale)}</Button>
                 </div>
             )
         } else {
             return (
                 <div style={{"float": "left"}}>
-                <Button bsStyle="primary" disabled onClick={this.props.forceResultUpdate}>結果を更新</Button>
-                <Button bsStyle="primary" onClick={this.props.switchAutoUpdate} >自動更新: ON</Button>
+                <Button bsStyle="primary" disabled onClick={this.props.forceResultUpdate}>{intl.translate("結果を更新", locale)}</Button>
+                <Button bsStyle="primary" onClick={this.props.switchAutoUpdate} >{intl.translate("自動更新: ON", locale)}</Button>
                 </div>)
         }
     },
