@@ -805,7 +805,6 @@ module.exports.getLocale = function() {
 }
 
 module.exports.translate = function(key, locale) {
-    console.log("key = ", key)
     if(key == undefined || key == "") return "";
     if(locale != "ja" && locale != "en") return multiLangData[key]["ja"];
 
