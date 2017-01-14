@@ -482,7 +482,7 @@ var Root = React.createClass({
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="armTab">
-                        <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddCharaNum={this.addCharaNum} pleaseAddArmNum={this.addArmNum} />
+                        <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddCharaNum={this.addCharaNum} pleaseAddArmNum={this.addArmNum} locale={locale} />
                         <ButtonGroup className="addRemoveButtonGroup">
                             <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}</Button>
                             <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
@@ -3931,6 +3931,7 @@ var ArmList = React.createClass({
         }
     },
     render: function(){
+        var locale = this.props.locale
         var dataName = this.props.dataName;
         var arms = this.state.arms;
         var hChange = this.handleOnChange;
@@ -3943,14 +3944,14 @@ var ArmList = React.createClass({
 
         return (
             <div className="armList">
-                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>武器テンプレートを開く</Button>
+                <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>{intl.translate("武器テンプレート", locale)}</Button>
                 <br/>
-                <span>属性一括変更</span>
+                <span>{intl.translate("属性一括変更", locale)}</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector.elements} </FormControl>
                 <Grid fluid>
                     <Row>
                         {arms.map(function(arm, ind) {
-                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} />;
+                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} locale={locale} />;
                         })}
                     </Row>
                 </Grid>
@@ -3960,7 +3961,7 @@ var ArmList = React.createClass({
                         <Modal.Title>Presets</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <RegisteredArm onClick={this.addTemplateArm} />
+                        <RegisteredArm onClick={this.addTemplateArm} locale={locale} />
                     </Modal.Body>
                 </Modal>
             </div>
@@ -4056,6 +4057,7 @@ var RegisteredArm = React.createClass({
         this.setState(newState)
     },
     render: function() {
+        var locale = this.props.locale;
         var clickedTemplate = this.clickedTemplate;
         var filterText = this.state.filterText;
         var filterElement = this.state.filterElement;
@@ -4066,7 +4068,7 @@ var RegisteredArm = React.createClass({
         if(_ua.Mobile || _ua.Tablet){
             return (
                 <div className="armTemplate">
-                    <FormControl type="text" placeholder="武器名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
@@ -4090,7 +4092,7 @@ var RegisteredArm = React.createClass({
                     </div>
                     <Modal className="presetsConsiderNumber" show={this.state.openConsiderNumberModal} onHide={this.closeConsiderNumberModal}>
                         <Modal.Header closeButton>
-                            <Modal.Title>何本追加しますか？</Modal.Title>
+                            <Modal.Title>{intl.translate("何本追加", locale)}</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
@@ -4099,36 +4101,36 @@ var RegisteredArm = React.createClass({
                             <FormControl componentClass="select" value={this.state[this.state.additionalSelectKey]} className={this.state.additionalSelectClass} onChange={this.handleEvent.bind(this, this.state.additionalSelectKey)}>{this.state.additionalSelect}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1本</button>
+                                    <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="2" onClick={this.clickedConsiderNumber}>2本</button>
+                                    <button type="button" className="btn btn-default" value="2" onClick={this.clickedConsiderNumber}>2{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="3" onClick={this.clickedConsiderNumber}>3本</button>
+                                    <button type="button" className="btn btn-default" value="3" onClick={this.clickedConsiderNumber}>3{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="4" onClick={this.clickedConsiderNumber}>4本</button>
+                                    <button type="button" className="btn btn-default" value="4" onClick={this.clickedConsiderNumber}>4{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="5" onClick={this.clickedConsiderNumber}>5本</button>
+                                    <button type="button" className="btn btn-default" value="5" onClick={this.clickedConsiderNumber}>5{intl.translate("本", locale)}</button>
                                 </div>
                             </div>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="6" onClick={this.clickedConsiderNumber}>6本</button>
+                                    <button type="button" className="btn btn-default" value="6" onClick={this.clickedConsiderNumber}>6{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="7" onClick={this.clickedConsiderNumber}>7本</button>
+                                    <button type="button" className="btn btn-default" value="7" onClick={this.clickedConsiderNumber}>7{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="8" onClick={this.clickedConsiderNumber}>8本</button>
+                                    <button type="button" className="btn btn-default" value="8" onClick={this.clickedConsiderNumber}>8{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="9" onClick={this.clickedConsiderNumber}>9本</button>
+                                    <button type="button" className="btn btn-default" value="9" onClick={this.clickedConsiderNumber}>9{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="10" onClick={this.clickedConsiderNumber}>10本</button>
+                                    <button type="button" className="btn btn-default" value="10" onClick={this.clickedConsiderNumber}>10{intl.translate("本", locale)}</button>
                                 </div>
                             </div>
                         </Modal.Body>
@@ -4138,7 +4140,7 @@ var RegisteredArm = React.createClass({
         } else {
             return (
                 <div className="armTemplate">
-                    <FormControl type="text" placeholder="武器名" value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
+                    <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector.filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
@@ -4157,7 +4159,7 @@ var RegisteredArm = React.createClass({
                     </div>
                     <Modal className="presetsConsiderNumber" show={this.state.openConsiderNumberModal} onHide={this.closeConsiderNumberModal}>
                         <Modal.Header closeButton>
-                            <Modal.Title>何本追加しますか？</Modal.Title>
+                            <Modal.Title>{intl.translate("何本追加", locale)}</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
@@ -4166,36 +4168,36 @@ var RegisteredArm = React.createClass({
                             <FormControl componentClass="select" value={this.state[this.state.additionalSelectKey]} className={this.state.additionalSelectClass} onChange={this.handleEvent.bind(this, this.state.additionalSelectKey)}>{this.state.additionalSelect}</FormControl>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1本</button>
+                                    <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="2" onClick={this.clickedConsiderNumber}>2本</button>
+                                    <button type="button" className="btn btn-default" value="2" onClick={this.clickedConsiderNumber}>2{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="3" onClick={this.clickedConsiderNumber}>3本</button>
+                                    <button type="button" className="btn btn-default" value="3" onClick={this.clickedConsiderNumber}>3{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="4" onClick={this.clickedConsiderNumber}>4本</button>
+                                    <button type="button" className="btn btn-default" value="4" onClick={this.clickedConsiderNumber}>4{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="5" onClick={this.clickedConsiderNumber}>5本</button>
+                                    <button type="button" className="btn btn-default" value="5" onClick={this.clickedConsiderNumber}>5{intl.translate("本", locale)}</button>
                                 </div>
                             </div>
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="6" onClick={this.clickedConsiderNumber}>6本</button>
+                                    <button type="button" className="btn btn-default" value="6" onClick={this.clickedConsiderNumber}>6{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="7" onClick={this.clickedConsiderNumber}>7本</button>
+                                    <button type="button" className="btn btn-default" value="7" onClick={this.clickedConsiderNumber}>7{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="8" onClick={this.clickedConsiderNumber}>8本</button>
+                                    <button type="button" className="btn btn-default" value="8" onClick={this.clickedConsiderNumber}>8{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="9" onClick={this.clickedConsiderNumber}>9本</button>
+                                    <button type="button" className="btn btn-default" value="9" onClick={this.clickedConsiderNumber}>9{intl.translate("本", locale)}</button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default" value="10" onClick={this.clickedConsiderNumber}>10本</button>
+                                    <button type="button" className="btn btn-default" value="10" onClick={this.clickedConsiderNumber}>10{intl.translate("本", locale)}</button>
                                 </div>
                             </div>
                         </Modal.Body>
@@ -4372,15 +4374,17 @@ var Arm = React.createClass({
         this.props.onCopy(this.props.id, this.props.keyid, this.state)
     },
     render: function(){
+        var locale = this.props.locale;
+
         return (
             <ColP sxs={12} xs={6} ssm={4} className="col-bordered">
                 <FormGroup>
                 <InputGroup>
-                    <InputGroup.Addon>武器名　</InputGroup.Addon>
-                    <FormControl type="text" placeholder="武器名" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} />
+                    <InputGroup.Addon>{intl.translate("武器名", locale)}　</InputGroup.Addon>
+                    <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} />
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>攻撃力　</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("攻撃力", locale)}　</InputGroup.Addon>
                 <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} />
                 </InputGroup>
                 <InputGroup>
@@ -4388,16 +4392,16 @@ var Arm = React.createClass({
                     <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} />
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>種類　　</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("種類", locale)}　　</InputGroup.Addon>
                 <FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector.armtypes} </FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>スキル1&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("スキル", locale)}1&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector.elements} </FormControl>
                     <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>スキル2&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("スキル", locale)}2&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector.elements} </FormControl>
                     <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
                 </InputGroup>
@@ -4406,16 +4410,16 @@ var Arm = React.createClass({
                 <FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>最小本数</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("最小本数", locale)}</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>最大本数</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("最大本数", locale)}</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
                 </InputGroup>
                 <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>削除</Button>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickCopyButton}>コピー</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickCopyButton}>{intl.translate("コピー", locale)}</Button>
                 </ButtonGroup>
                 </FormGroup>
             </ColP>
