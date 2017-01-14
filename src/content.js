@@ -4036,7 +4036,7 @@ var RegisteredArm = React.createClass({
             this.setState({additionalSelectClass: "visible"})
         } else if (arm.name.indexOf("コスモス") > 0) {
             this.setState({additionalSelectKey: "cosmos_skill"})
-            this.setState({additionalSelect: selector.cosmosSkills})
+            this.setState({additionalSelect: selector[this.props.locale].cosmosSkills})
             this.setState({additionalSelectClass: "visible"})
         } else {
             this.setState({additionalSelectKey: ""})
@@ -4408,12 +4408,12 @@ var Arm = React.createClass({
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("スキル", locale)}1&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector[locale].elements} </FormControl>
-                    <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector.skills}</FormControl><br/>
+                    <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector[locale].skills}</FormControl><br/>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("スキル", locale)}2&nbsp;</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector[locale].elements} </FormControl>
-                    <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector.skills}</FormControl>
+                    <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector[locale].skills}</FormControl>
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>SLv&nbsp;　　</InputGroup.Addon>

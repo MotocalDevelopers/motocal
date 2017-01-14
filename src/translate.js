@@ -946,7 +946,360 @@ var multiLangData = {
     "キャラ情報・スキル合計値": {
         "en": "Chara Data, Skill Amount",
         "ja": "キャラ情報・スキル合計値",
-    }
+    },
+    // スキル名
+    "通常攻刃(小)": {
+        "en": "Normal (S)",
+        "ja": "通常攻刃(小)",
+    },
+    "通常攻刃(中)": {
+        "en": "Normal (M)",
+        "ja": "通常攻刃(中)",
+    },
+    "通常攻刃(大)": {
+        "en": "Normal (L)",
+        "ja": "通常攻刃(大)",
+    },
+    "通常攻刃II": {
+        "en": "Normal (LL)",
+        "ja": "通常攻刃II",
+    },
+    "通常暴君": {
+        "en": "Normal Boukun",
+        "ja": "通常暴君",
+    },
+    "通常背水(小)": {
+        "en": "Normal Enmity (S)",
+        "ja": "通常背水(小)",
+    },
+    "通常背水(中)": {
+        "en": "Normal Enmity (M)",
+        "ja": "通常背水(中)",
+    },
+    "通常背水(大)": {
+        "en": "Normal Enmity (L)",
+        "ja": "通常背水(大)",
+    },
+    "通常渾身(大)": {
+        "en": "Normal Konshin (L)",
+        "ja": "通常渾身(大)",
+    },
+    "通常二手(小)": {
+        "en": "Normal DA (S)",
+        "ja": "通常二手(小)",
+    },
+    "通常二手(中)": {
+        "en": "Normal DA (M)",
+        "ja": "通常二手(中)",
+    },
+    "通常二手(大)": {
+        "en": "Normal DA (L)",
+        "ja": "通常二手(大)",
+    },
+    "通常三手(大)": {
+        "en": "Normal DA & TA (L)",
+        "ja": "通常三手(大)",
+    },
+    "通常克己(中)": {
+        "en": "Normal Katsumi (M)",
+        "ja": "通常克己(中)",
+    },
+    "通常神威": {
+        "en": "Normal Kamui",
+        "ja": "通常神威",
+    },
+    "通常括目": {
+        "en": "Normal Katsumoku",
+        "ja": "通常括目",
+    },
+    "通常羅刹": {
+        "en": "Normal Rasetsu",
+        "ja": "通常羅刹",
+    },
+    "マグナ攻刃": {
+        "en": "Magna I",
+        "ja": "マグナ攻刃",
+    },
+    "マグナ攻刃II": {
+        "en": "Magna II",
+        "ja": "マグナ攻刃II",
+    },
+    "マグナ背水(小)": {
+        "en": "Magna Enmity (S)",
+        "ja": "マグナ背水(小)",
+    },
+    "マグナ背水(中)": {
+        "en": "Magna Enmity (M)",
+        "ja": "マグナ背水(中)",
+    },
+    "マグナ背水(大)": {
+        "en": "Magna Enmity (L)",
+        "ja": "マグナ背水(大)",
+    },
+    "マグナ三手(大)": {
+        "en": "Magna DA&TA (L)",
+        "ja": "マグナ三手(大)",
+    },
+    "マグナ克己(中)": {
+        "en": "Magna Katsumi (M)",
+        "ja": "マグナ克己(中)",
+    },
+    "マグナ神威": {
+        "en": "Magna Kamui",
+        "ja": "マグナ神威",
+    },
+    "マグナ暴君": {
+        "en": "Magna Boukun",
+        "ja": "マグナ暴君",
+    },
+    "マグナ括目": {
+        "en": "Magna Katsumoku",
+        "ja": "マグナ括目",
+    },
+    "マグナ羅刹": {
+        "en": "Magna Rasetsu",
+        "ja": "マグナ羅刹",
+    },
+    "アンノウンATK・I": {
+        "en": "Unknown ATK I",
+        "ja": "アンノウンATK・I",
+    },
+    "アンノウンATK・II": {
+        "en": "Unknown ATK II",
+        "ja": "アンノウンATK・II",
+    },
+    "ストレングス背水(中)": {
+        "en": "Strength Enmity (M)",
+        "ja": "ストレングス背水(中)",
+    },
+    "ストレングス等(小)": {
+        "en": "Strength (S)",
+        "ja": "ストレングス等(小)",
+    },
+    "ストレングス等(中)": {
+        "en": "Strength (M)",
+        "ja": "ストレングス等(中)",
+    },
+    "ストレングス等(大)": {
+        "en": "Strength (L)",
+        "ja": "ストレングス等(大)",
+    },
+    "通常守護(小)": {
+        "en": "Normal Health (S)",
+        "ja": "通常守護(小)",
+    },
+    "通常守護(中)": {
+        "en": "Normal Health (M)",
+        "ja": "通常守護(中)",
+    },
+    "通常守護(大)": {
+        "en": "Normal Health (L)",
+        "ja": "通常守護(大)",
+    },
+    "マグナ守護": {
+        "en": "Magna Health I",
+        "ja": "マグナ守護",
+    },
+    "マグナ守護II": {
+        "en": "Magna Health II",
+        "ja": "マグナ守護II",
+    },
+    "アンノウン・VIT I(小)": {
+        "en": "Unknown VIT I (S)",
+        "ja": "アンノウン・VIT I(小)",
+    },
+    "アンノウン・VIT I(中)": {
+        "en": "Unknown VIT I (M)",
+        "ja": "アンノウン・VIT I(中)",
+    },
+    "アンノウン・VIT II(大)": {
+        "en": "Unknown VIT II (L)",
+        "ja": "アンノウン・VIT II(大)",
+    },
+    "ミフネ流・極意": {
+        "en": "Mifune Boukun",
+        "ja": "ミフネ流・極意",
+    },
+    "ミフネ流・双星": {
+        "en": "Mifune Futaboshi",
+        "ja": "ミフネ流・双星",
+    },
+    "紅蓮の呪印・弐": {
+        "en": "Guren Juin II",
+        "ja": "紅蓮の呪印・弐",
+    },
+    "霧氷の追牙・肆": {
+        "en": "Muhyo Tuiga",
+        "ja": "霧氷の追牙・肆",
+    },
+    "通常技巧(小)": {
+        "en": "Normal Critical (S)",
+        "ja": "通常技巧(小)",
+    },
+    "通常技巧(中)": {
+        "en": "Normal Critical (M)",
+        "ja": "通常技巧(中)",
+    },
+    "通常技巧(大)": {
+        "en": "Normal Critical (L)",
+        "ja": "通常技巧(大)",
+    },
+    "マグナ技巧(小)": {
+        "en": "Magna Critical (S)",
+        "ja": "マグナ技巧(小)",
+    },
+    "マグナ技巧(中)": {
+        "en": "Magna Critical (M)",
+        "ja": "マグナ技巧(中)",
+    },
+    "マグナ技巧(大)": {
+        "en": "Magna Critical (L)",
+        "ja": "マグナ技巧(大)",
+    },
+    "通常刹那": {
+        "en": "Normal Setsuna",
+        "ja": "通常刹那",
+    },
+    "マグナ刹那": {
+        "en": "Magna Setsuna",
+        "ja": "マグナ刹那",
+    },
+    "コスモス剣": {
+        "en": "Cosmos Sword",
+        "ja": "コスモス剣",
+    },
+    "コスモス短剣": {
+        "en": "Cosmos Dagger",
+        "ja": "コスモス短剣",
+    },
+    "コスモス槍": {
+        "en": "Cosmos Spear",
+        "ja": "コスモス槍",
+    },
+    "コスモス斧": {
+        "en": "Cosmos Axe",
+        "ja": "コスモス斧",
+    },
+    "コスモス杖": {
+        "en": "Cosmos Staff",
+        "ja": "コスモス杖",
+    },
+    "コスモス銃": {
+        "en": "Cosmos Gun",
+        "ja": "コスモス銃",
+    },
+    "コスモス拳": {
+        "en": "Cosmos Fist",
+        "ja": "コスモス拳",
+    },
+    "コスモス弓": {
+        "en": "Cosmos Bow",
+        "ja": "コスモス弓",
+    },
+    "コスモス刀": {
+        "en": "Cosmos Katana",
+        "ja": "コスモス刀",
+    },
+    "コスモス楽器": {
+        "en": "Cosmos Harp",
+        "ja": "コスモス楽器",
+    },
+    "コスモスAT": {
+        "en": "Cosmos ATK",
+        "ja": "コスモスAT",
+    },
+    "コスモスDF": {
+        "en": "Cosmos DF",
+        "ja": "コスモスDF",
+    },
+    "コスモスBL": {
+        "en": "Cosmos BL",
+        "ja": "コスモスBL",
+    },
+    "バハ攻-短剣": {
+        "en": "Bahamut Dagger",
+        "ja": "バハ攻-短剣",
+    },
+    "バハ攻-斧": {
+        "en": "Bahamut Axe",
+        "ja": "バハ攻-斧",
+    },
+    "バハ攻-槍": {
+        "en": "Bahamut Spear",
+        "ja": "バハ攻-槍",
+    },
+    "バハ攻-銃": {
+        "en": "Bahamut Gun",
+        "ja": "バハ攻-銃",
+    },
+    "バハ攻HP-剣": {
+        "en": "Bahamut Sword",
+        "ja": "バハ攻-剣",
+    },
+    "バハ攻HP-杖": {
+        "en": "Bahamut Staff",
+        "ja": "バハ攻HP-杖",
+    },
+    "バハHP-格闘": {
+        "en": "Bahamut Fist",
+        "ja": "バハHP-格闘",
+    },
+    "バハHP-刀": {
+        "en": "Bahamut Sword",
+        "ja": "バハHP-刀",
+    },
+    "バハHP-弓": {
+        "en": "Bahamut Bow",
+        "ja": "バハHP-弓",
+    },
+    "バハHP-楽器": {
+        "en": "Bahamut Harp",
+        "ja": "バハHP-楽器",
+    },
+    "バハフツ-短剣": {
+        "en": "Bahamut Dagger FU",
+        "ja": "バハフツ-短剣",
+    },
+    "バハフツ-斧": {
+        "en": "Bahamut Axe FU",
+        "ja": "バハフツ-斧",
+    },
+    "バハフツ-槍": {
+        "en": "Bahamut Spear FU",
+        "ja": "バハフツ-槍",
+    },
+    "バハフツ-銃": {
+        "en": "Bahamut Gun FU",
+        "ja": "バハフツ-銃",
+    },
+    "バハフツ-剣": {
+        "en": "Bahamut Sword FU",
+        "ja": "バハフツ-剣",
+    },
+    "バハフツ-杖": {
+        "en": "Bahamut Staff FU",
+        "ja": "バハフツ-杖",
+    },
+    "バハフツHP-格闘": {
+        "en": "Bahamut Fist FU",
+        "ja": "バハフツHP-格闘",
+    },
+    "バハフツHP-刀": {
+        "en": "Bahamut Katana FU",
+        "ja": "バハフツHP-刀",
+    },
+    "バハフツHP-弓": {
+        "en": "Bahamut Bow FU",
+        "ja": "バハフツHP-弓",
+    },
+    "バハフツHP-楽器": {
+        "en": "Bahamut Harp FU",
+        "ja": "バハフツHP-楽器",
+    },
+    "": {
+        "en": "",
+        "ja": "",
+    },
 }
 
 // 言語設定

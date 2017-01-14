@@ -498,8 +498,11 @@ module.exports.selector.en.filterelements = Object.keys(filterElementTypes).map(
 module.exports.selector.ja.summons = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{summonTypes[opt]}</option>;});
 module.exports.selector.en.summons = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{intl.translate(summonTypes[opt], "en")}</option>;});
 
-module.exports.selector.skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
-module.exports.selector.cosmosSkills = Object.keys(cosmosSkills).map(function(key){ return <option value={key} key={key}>{cosmosSkills[key].name}</option>;})
+module.exports.selector.ja.skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
+module.exports.selector.en.skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "en")}</option>;})
+
+module.exports.selector.ja.cosmosSkills = Object.keys(cosmosSkills).map(function(key){ return <option value={key} key={key}>{cosmosSkills[key].name}</option>;})
+module.exports.selector.en.cosmosSkills = Object.keys(cosmosSkills).map(function(key){ return <option value={key} key={key}>{intl.translate(cosmosSkills[key].name, "en")}</option>;})
 
 module.exports.selector.ja.types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{jobTypes[opt]}</option>;});
 module.exports.selector.en.types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{intl.translate(jobTypes[opt], "en")}</option>;});
