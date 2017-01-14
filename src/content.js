@@ -12,6 +12,7 @@ var {HowTo, NiteHowTo, HPChartHowTo} = require('./howto.js')
 var {ColP} = require('./gridp.js')
 var intl = require('./translate.js')
 var dataForLoad = GlobalConst.dataForLoad
+var TextWithTooltip = GlobalConst.TextWithTooltip
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation
@@ -63,7 +64,7 @@ var touchDirection = null;
 // Root class contains [Profile, ArmList, Results].
 var Root = React.createClass({
   getInitialState: function() {
-      var initial_width = 30;
+      var initial_width = 25;
       var initial_height = 100;
 
       return {
@@ -4674,91 +4675,122 @@ var Profile = React.createClass({
                     {intl.translate("基礎DA率", locale)} {Jobs[this.state.job].DaBonus}%,
                     {intl.translate("基礎TA率", locale)} {Jobs[this.state.job].TaBonus}%
                     </span>
-                    <div className="table-responsive">
-                    <table className="table table-bordered">
+                    <table className="table table-bordered table-responsive">
                         <tbody>
+                        <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
+                            <tr>
+                                <th>Rank*</th>
+                                <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
+                            </tr>
+                        </TextWithTooltip>
+
+                        <TextWithTooltip tooltip={intl.translate("ジョブ説明", locale)} id={"tooltip-job-detail"}>
                         <tr>
-                            <th className="table-profile-th">Rank*</th>
-                            <td className="table-profile-td"><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td className="table-profile-td">{intl.translate("ランク説明", locale)}</td>
-                        </tr><tr>
                             <th className="table-profile-th">{intl.translate("ジョブ", locale)}*</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs[locale]} </FormControl></td>
-                            <td className="table-profile-td">
-                                <p>
-                                {intl.translate("ジョブ説明", locale)}</p>
-                            </td>
-                        </tr><tr>
+                        </tr>
+                        </TextWithTooltip>
+
+                        <tr>
                             <th className="table-profile-th">{intl.translate("ゼニス攻撃力", locale)}*</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
-                            <td className="table-profile-td"></td>
-                        </tr><tr>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl></td>
+                        </tr>
+
+                        <tr>
                             <th className="table-profile-th">{intl.translate("ゼニスHP", locale)}</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
-                            <td className="table-profile-td"></td>
-                        </tr><tr>
-                            <th className="table-profile-th">{intl.translate("マスボATK", locale)}*</th>
+                        </tr>
+
+                        <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
+                        <tr>
+                            <th className="table-profile-th">
+                            {intl.translate("マスボATK", locale)}*
+                            </th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("マスボATK説明", locale)}</td>
-                        </tr><tr>
-                            <th className="table-profile-th">{intl.translate("マスボHP", locale)}</th>
+                        </tr></TextWithTooltip>
+
+                        <TextWithTooltip tooltip={intl.translate("マスボHP説明", locale)} id={"tooltip-masterbonus-hp-detail"}>
+                        <tr>
+                            <th className="table-profile-th">
+                            {intl.translate("マスボHP", locale)}
+                            </th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("マスボHP説明", locale)}</td>
-                        </tr><tr>
-                            <th className="table-profile-th">{intl.translate("残HP割合", locale)}<br/>{intl.translate("ジータさんのみ", locale)}</th>
+                        </tr></TextWithTooltip>
+
+                        <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)} id={"tooltip-remain-hp-djeeta-detail"}>
+                        <tr>
+                            <th className="table-profile-th">
+                            {intl.translate("残HP割合", locale)}<br/>{intl.translate("ジータさんのみ", locale)}
+                            </th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("残HP割合説明(ジータのみ)", locale)}</td>
-                        </tr><tr>
+                        </tr></TextWithTooltip>
+
+                        <tr>
                             <th className="table-profile-th">{intl.translate("ジータさん属性", locale)}*</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl></td>
-                            <td className="table-profile-td"></td>
-                        </tr><tr>
-                            <th className="table-profile-th">{intl.translate("敵の属性", locale)}*</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
-                            <td className="table-profile-td">{intl.translate("敵の属性説明", locale)}</td>
-                        </tr><tr>
-                            <th className="table-profile-th">{intl.translate("武器ゼニス1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses[locale]} </FormControl></td>
-                            <td className="table-profile-td">{intl.translate("武器ゼニス説明", locale)}</td>
-                        </tr><tr>
-                            <th className="table-profile-th">{intl.translate("武器ゼニス2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})</th>
-                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses[locale]} </FormControl></td>
-                            <td className="table-profile-td">{intl.translate("武器ゼニス説明", locale)}</td>
                         </tr>
+
+                        <TextWithTooltip tooltip={intl.translate("敵の属性説明", locale)} id={"tooltip-enemy-element-detail"}>
+                        <tr>
+                            <th className="table-profile-th">
+                            {intl.translate("敵の属性", locale)}*
+                            </th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
+                        </tr></TextWithTooltip>
+
+                        <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
+                        <tr>
+                            <th className="table-profile-th">
+                            {intl.translate("武器ゼニス1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses[locale]} </FormControl></td>
+                        </tr></TextWithTooltip>
+
+                        <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
+                        <tr>
+                            <th className="table-profile-th">
+                            {intl.translate("武器ゼニス2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})</th>
+                            <td className="table-profile-td"><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses[locale]} </FormControl></td>
+                        </tr></TextWithTooltip>
                         </tbody>
                     </table>
-                    </div>
 
                     <h3 className="margin-top"> {intl.translate("パーティバフタイトル", locale)}</h3>
                     <p>{intl.translate("パーティバフ説明", locale)}</p>
-                    <table className="table table-bordered">
+                    <table className="table table-bordered table-responsive">
                         <tbody>
                         <tr>
-                        </tr><tr>
-                            <th className="table-profile-th">{intl.translate("通常バフ", locale)}</th>
+                        </tr>
+                        <TextWithTooltip tooltip={intl.translate("通常バフ説明", locale)} id={"tooltip-normalbuff-detail"}>
+                        <tr>
+                            <th className="table-profile-th">
+                            {intl.translate("通常バフ", locale)}
+                            </th>
                             <td className="table-profile-td">
                             <InputGroup>
                             <FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/>
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("通常バフ説明", locale)}</td>
-                        </tr><tr>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("属性バフ説明", locale)} id={"tooltip-elementbuff-detail"}>
+                    <tr>
                             <th className="table-profile-th">{intl.translate("属性バフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
@@ -4766,8 +4798,9 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("属性バフ説明", locale)}</td>
-                        </tr><tr>
+                        </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("その他バフ説明", locale)} id={"tooltip-otherbuff-detail"}><tr>
                             <th className="table-profile-th">{intl.translate("その他バフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
@@ -4775,8 +4808,10 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("その他バフ説明", locale)}</td>
-                        </tr><tr>
+                        </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("HPバフ説明", locale)} id={"tooltip-hpbuff-detail"}>
+                        <tr>
                             <th className="table-profile-th">{intl.translate("HPバフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
@@ -4784,8 +4819,10 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("HPバフ説明", locale)}</td>
-                        </tr><tr>
+                        </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("DAバフ説明", locale)} id={"tooltip-dabuff-detail"}>
+                        <tr>
                             <th className="table-profile-th">{intl.translate("DAバフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
@@ -4793,8 +4830,10 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("DAバフ説明", locale)}</td>
-                        </tr><tr>
+                        </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("TAバフ説明", locale)} id={"tooltip-tabuff-detail"}>
+                        <tr>
                             <th className="table-profile-th">{intl.translate("TAバフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
@@ -4802,8 +4841,10 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("TAバフ説明", locale)}</td>
-                        </tr><tr>
+                        </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("残HP割合", locale)} id={"tooltip-detail"}>
+                        <tr>
                             <th className="table-profile-th">{intl.translate("残HP割合", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
@@ -4811,8 +4852,10 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("残HP割合説明", locale)}</td>
-                        </tr><tr>
+                        </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("追加ダメージバフ説明", locale)} id={"tooltip-additionalbuff-detail"}>
+                        <tr>
                             <th className="table-profile-th">{intl.translate("追加ダメージバフ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
@@ -4820,8 +4863,10 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("追加ダメージバフ説明", locale)}</td>
-                        </tr><tr>
+                        </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇率アップ説明", locale)} id={"tooltip-ougigagebuff-detail"}>
+                        <tr>
                             <th className="table-profile-th">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                             <td className="table-profile-td">
                             <InputGroup>
@@ -4829,48 +4874,49 @@ var Profile = React.createClass({
                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
                             </td>
-                            <td className="table-profile-td">{intl.translate("奥義ゲージ上昇率アップ説明", locale)}</td>
                         </tr>
+                        </TextWithTooltip>
                         </tbody>
                     </table>
 
                     <h3 className="margin-top"> {intl.translate("Advanced", locale)}</h3>
                     <p>{intl.translate("Advanced 説明", locale)}</p>
-                    <div className="table-responsive">
-                    <table className="table table-bordered">
+                    <table className="table table-bordered table-responsive">
                         <tbody>
 
+                        <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
                         <tr>
                             <th className="table-profile-th">{intl.translate("敵防御固有値", locale)}</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
-                            <td className="table-profile-td">
-                                {intl.translate("敵防御固有値説明", locale)}
-                            </td>
                         </tr>
+                        </TextWithTooltip>
 
+                        <TextWithTooltip tooltip={intl.translate("ジータさん基礎DA率説明", locale)} id={"tooltip-player-baseda-detail"}>
                         <tr>
                             <th className="table-profile-th">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎DA率", locale)}</th>
                             <td className="table-profile-td"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td className="table-profile-td">{intl.translate("ジータさん基礎DA率説明", locale)}</td>
                         </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("ジータさん基礎TA率説明", locale)} id={"tooltip-player-baseta-detail"}>
                         <tr>
                             <th className="table-profile-th">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎TA率", locale)}</th>
                             <td className="table-profile-td"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td className="table-profile-td">{intl.translate("ジータさん基礎TA率説明", locale)}</td>
                         </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("ジータさん奥義倍率説明", locale)} id={"tooltip-ougi-ratio-detail"}>
                         <tr>
                             <th className="table-profile-th">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}</th>
                             <td className="table-profile-td"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
-                            <td className="table-profile-td">{intl.translate("ジータさん奥義倍率説明", locale)}</td>
                         </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("確保HP説明", locale)} id={"tooltip-minimu-hp-detail"}>
                         <tr>
                             <th className="table-profile-th">{intl.translate("確保HP", locale)}</th>
                             <td className="table-profile-td"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
-                            <td className="table-profile-td">{intl.translate("確保HP説明", locale)}</td>
                         </tr>
+                        </TextWithTooltip>
                         </tbody>
                     </table>
-                    </div>
                 </div>
             );
         }
