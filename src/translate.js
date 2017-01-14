@@ -218,7 +218,7 @@ var multiLangData = {
         "ja": "想定される敵の防御固有値を設定します。\n単攻撃ダメージ、奥義ダメージ、\n 予想ターン毎ダメージの計算に影響します。\n (単攻撃ダメージに減衰補正がかかる(44万超え) \n ような攻撃力でない限り、編成の順位自体は変化しないと思われます。)",
     },
     "ジータさん基礎DA率説明": {
-        "en": "Input base double attack ratio of player.\nAutimatically changed when \"Job\" is changed.",
+        "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
         "ja": "ジータさんの基礎DA率を設定します。\nジョブを変更すると自動的に切り替わります。",
     },
     "奥義倍率": {
@@ -226,7 +226,7 @@ var multiLangData = {
         "ja": "奥義倍率",
     },
     "ジータさん基礎TA率説明": {
-        "en": "Input base double attack ratio of player.\nAutimatically changed when \"Job\" is changed.",
+        "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
         "ja": "ジータさんの基礎TA率を設定します。\nジョブを変更すると自動的に切り替わります。",
     },
     "ジータさん奥義倍率説明": {
