@@ -377,7 +377,7 @@ var Root = React.createClass({
                     <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} />
                 </div>
                 <div className="Tab hidden" id="summonTab">
-                    <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
+                    <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
                     <ButtonGroup className="addRemoveButtonGroup">
                         <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>召喚石追加(現在{this.state.summonNum}組)</Button>
                         <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>削除</Button>
@@ -468,24 +468,24 @@ var Root = React.createClass({
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
-                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} />
+                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
                         <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>召喚石追加 / Add</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>削除 / Remove</Button>
+                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}</Button>
+                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="charaTab">
                         <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} />
                         <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>キャラ追加 / Add</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>削除 / Remove</Button>
+                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}</Button>
+                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="armTab">
                         <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddCharaNum={this.addCharaNum} pleaseAddArmNum={this.addArmNum} />
                         <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>武器追加 / Add</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>削除 / Remove</Button>
+                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}</Button>
+                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="systemTab">
@@ -1066,6 +1066,7 @@ var SummonList = React.createClass({
       this.setState(newState)
     },
     render: function() {
+        var locale = this.props.locale;
         var summons = this.state.summons;
         var hChange = this.handleOnChange;
         var hRemove = this.handleOnRemove;
@@ -1074,13 +1075,13 @@ var SummonList = React.createClass({
         var defaultElement = this.state.defaultElement;
         return (
             <div className="summonList">
-                <span>属性一括変更</span>
+                <span>{intl.translate("属性一括変更", locale)}</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")}> {selector.summonElements} </FormControl>
-                <h3 className="margin-top"> 召喚石 </h3>
+                <h3 className="margin-top"> {intl.translate("召喚石", locale)} </h3>
                 <Grid fluid>
                     <Row>
                     {summons.map(function(sm, ind) {
-                        return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} />;
+                        return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} locale={locale} />;
                     })}
                     </Row>
                 </Grid>
@@ -1177,56 +1178,60 @@ var Summon = React.createClass({
         this.props.onChange(this.props.id, newState)
     },
     render: function() {
+        var locale = this.props.locale
+
         var selfSummon = [{"label": "", "input": "select"}, {"input": "hidden"}]
         if(this.state.selfSummonType == "odin"){
-            selfSummon[1] = {"label": "キャラ ", "input": "select"}
-            selfSummon[0].label = "属性 "
+            selfSummon[1] = {"label": intl.translate("キャラ", locale)+ " ", "input": "select"}
+            selfSummon[0].label = intl.translate("属性", locale) + " "
         }
         var friendSummon = [{"label": "", "input": "select"}, {"input": "hidden"}]
         if(this.state.friendSummonType == "odin"){
-            friendSummon[1] = {"label": "キャラ ", "input": "select"}
-            friendSummon[0].label = "属性 "
+            friendSummon[1] = {"label": intl.translate("キャラ", locale) + " ", "input": "select"}
+            friendSummon[0].label = intl.translate("属性", locale) + " "
         }
         return (
             <ColP sxs={12} xs={6} sm={4} className="col-bordered">
                 <FormGroup>
                 <InputGroup>
-                    <InputGroup.Addon>自分の石　</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("自分の石", locale)}　</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector.summonElements}</FormControl>
                     <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector.summons}</FormControl>
                     {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
                     {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
                 </InputGroup>
+
                 <InputGroup>
-                    <InputGroup.Addon>フレの石　</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("フレの石", locale)}　</InputGroup.Addon>
                     <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector.summonElements}</FormControl>
                     <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector.summons}</FormControl>
                     {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
                     {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
                 </InputGroup>
+
                 <InputGroup>
-                    <InputGroup.Addon>合計攻撃力</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("合計攻撃力", locale)}</InputGroup.Addon>
                     <FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>合計HP　&nbsp;&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("合計HP", locale)}　&nbsp;&nbsp;</InputGroup.Addon>
                     <FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>HP加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("HP加護", locale)}　&nbsp;&nbsp;</InputGroup.Addon>
                     <FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>DA加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("DA加護", locale)}　&nbsp;&nbsp;</InputGroup.Addon>
                     <FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/>
                 </InputGroup>
                 <InputGroup>
-                    <InputGroup.Addon>TA加護　&nbsp;&nbsp;</InputGroup.Addon>
+                    <InputGroup.Addon>{intl.translate("TA加護", locale)}　&nbsp;&nbsp;</InputGroup.Addon>
                     <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
                 </InputGroup>
                 <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>内容を消去</Button>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>コピー</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>{intl.translate("内容を消去", locale)}</Button>
+                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>{intl.translate("コピー", locale)}</Button>
                 </ButtonGroup>
                 </FormGroup>
             </ColP>
