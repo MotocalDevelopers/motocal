@@ -4566,7 +4566,7 @@ var Profile = React.createClass({
                         <tr>
                             <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
                             <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl></td>
                             <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
                         </tr>
                         </tbody>
@@ -4626,7 +4626,7 @@ var Profile = React.createClass({
                         <tbody>
                         <tr>
                             <th className="advanced-setting">敵防御固有値</th>
-                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
+                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl></td>
                             <td className="advanced-setting">
                             想定される敵の防御固有値を設定します。<br/>
                             単攻撃ダメージ、奥義ダメージ、<br/>
@@ -4884,7 +4884,7 @@ var Profile = React.createClass({
                         <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector.enemydeftypes} </FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl></td>
                         </tr>
                         </TextWithTooltip>
 

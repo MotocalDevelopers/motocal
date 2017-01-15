@@ -55,15 +55,15 @@ var skillLevelListLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, 
 var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200];
 
 var enemyDefenseType = {
-    10.0: {"name": "10.0(一般的な敵)"},
-    8.0: {"name": "8.0(防御-20%)"},
-    7.0: {"name": "7.0(防御-30%)"},
-    5.0: {"name": "5.0(防御-50%)"},
-    13.0: {"name": "13.0(ティアマグ・シュヴァマグ)"},
-    6.5: {"name": "6.5(ティアシュヴァ防御-50%)"},
-    11.0: {"name": "11.0(プロバハ?)"},
-    5.5: {"name": "5.5(プロバハ(防御-50%))"},
-    20.0: {"name": "20.0(プロバハHL?)"},
+    10.0: {"name": "敵防御10"},
+    8.0: {"name": "敵防御8"},
+    7.0: {"name": "敵防御7"},
+    5.0: {"name": "敵防御5"},
+    13.0: {"name": "敵防御13"},
+    6.5: {"name": "敵防御6.5"},
+    11.0: {"name": "敵防御11"},
+    5.5: {"name": "敵防御5.5"},
+    20.0: {"name": "敵防御20"},
 }
 var keyTypes = {
     "totalAttack":"攻撃力(二手技巧無し,ジータさんのみ)",
@@ -535,6 +535,9 @@ module.exports.selector.skilllevelLimit = Object.keys(skillLevelListLimit).map(f
 module.exports.selector.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedChartSortkeys[opt]}</option> });
 module.exports.selector.supported_turnchartsortkeys = Object.keys(supportedTurnChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedTurnChartSortkeys[opt]}</option> });
 module.exports.selector.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedSimulationChartSortkeys[opt]}</option> });
-module.exports.selector.enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
+
+module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
+module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "en")}</option>;});
+
 module.exports.selector.supportAbilities = Object.keys(supportAbilities).map(function(opt){return <option value={opt} key={opt}>{supportAbilities[opt].name}</option>;});
 
