@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 var GlobalConst = require('./global_const.js')
+var intl = require('./translate.js')
 var selector = GlobalConst.selector
 var supportedChartSortkeys = GlobalConst.supportedChartSortkeys
 var supportedTurnChartSortkeys = GlobalConst.supportedTurnChartSortkeys
@@ -136,6 +137,7 @@ var TurnChart = React.createClass({
 
 var HPChart = React.createClass({
     getInitialState: function() {
+        var locale = this.props.locale
         var sortKey = this.props.sortKey
         if(!(sortKey in supportedChartSortkeys)) sortKey = "totalAttack"
 
@@ -147,8 +149,8 @@ var HPChart = React.createClass({
                         title: key,
                         curveType: 'function',
                         forcelFrame: true,
-                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                        hAxis: {title: intl.translate("残HP", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
                         tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
                         legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
                         chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
@@ -162,8 +164,8 @@ var HPChart = React.createClass({
                         title: key,
                         curveType: 'function',
                         forcelFrame: true,
-                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                        hAxis: {title: intl.translate("残HP", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
                         tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
                         legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
                         chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
@@ -178,6 +180,7 @@ var HPChart = React.createClass({
         }
     },
     handleEvent: function(key, e) {
+        var locale = this.props.locale
         var newState = this.state
         newState[key] = e.target.value
 
@@ -190,7 +193,7 @@ var HPChart = React.createClass({
                         title: key,
                         forcelFrame: true,
                         curveType: 'function',
-                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        hAxis: {title: intl.translate("残HP", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}},
                         vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
                         tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
                         legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
@@ -205,7 +208,7 @@ var HPChart = React.createClass({
                         title: key,
                         forcelFrame: true,
                         curveType: 'function',
-                        hAxis: {title: "残りHP", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                        hAxis: {title: intl.translate("残HP", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}},
                         vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
                         tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
                         legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
@@ -220,6 +223,7 @@ var HPChart = React.createClass({
         this.setState(newState)
     },
     render: function() {
+        var locale = this.props.locale
         var options = this.state.options
         var data = this.props.data
         var sortKey = this.state.sortKey
@@ -246,7 +250,7 @@ var HPChart = React.createClass({
 
             return (
                     <div className="HPChart">
-                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_chartsortkeys}</FormControl>
+                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector[locale].supported_chartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />

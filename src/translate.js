@@ -1332,6 +1332,15 @@ var multiLangData = {
         "en": "20.0(Proto Baha HL)",
         "ja": "20.0(プロバハHL?)",
     },
+    // chart sort key
+    "ジータさん残りHP": {
+        "en": "Player Remain HP",
+        "ja": "ジータさん残りHP",
+    },
+    "まとめて比較": {
+        "en": "Compare All",
+        "ja": "まとめて比較",
+    },
 }
 
 // 言語設定
@@ -1348,6 +1357,7 @@ module.exports.getLocale = function() {
 }
 
 module.exports.translate = function(key, locale) {
+    // console.log("key = ", key)
     if(key == undefined || key == "") return "";
     if(locale != "ja" && locale != "en") return multiLangData[key]["ja"];
 

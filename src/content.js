@@ -2385,6 +2385,8 @@ var ResultList = React.createClass({
     },
     generateHaisuiData: function(res, arml, summon, prof, chara, storedCombinations) {
         var data = {}
+        var locale = this.props.locale
+
         var minMaxArr = {
             "totalAttack": {"max": 0, "min": 0},
             "totalHP": {"max": 0, "min": 0},
@@ -2436,16 +2438,16 @@ var ResultList = React.createClass({
             var oneresult = res[s]
             var summonHeader = ""
             if(summon[s].selfSummonType == "odin"){
-                summonHeader += "属性攻" + summon[s].selfSummonAmount + "キャラ攻" + summon[s].selfSummonAmount2
+                summonHeader += intl.translate("属性攻", locale) + summon[s].selfSummonAmount + intl.translate("キャラ攻", locale) + summon[s].selfSummonAmount2
             } else {
-                summonHeader += summonElementTypes[summon[s].selfElement].name + summonTypes[summon[s].selfSummonType] + summon[s].selfSummonAmount
+                summonHeader += intl.translate(summonElementTypes[summon[s].selfElement].name, locale) + intl.translate(summonTypes[summon[s].selfSummonType], locale) + summon[s].selfSummonAmount
             }
 
             summonHeader += " + "
             if(summon[s].friendSummonType == "odin"){
-                summonHeader += "属性攻" + summon[s].friendSummonAmount + "キャラ攻" + summon[s].friendSummonAmount2
+                summonHeader += intl.translate("属性攻", locale) + summon[s].friendSummonAmount + intl.translate("キャラ攻", locale) + summon[s].friendSummonAmount2
             } else {
-                summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
+                summonHeader += intl.translate(summonElementTypes[summon[s].friendElement].name, locale) + intl.translate(summonTypes[summon[s].friendSummonType], locale) + summon[s].friendSummonAmount
             }
             var TotalAttack = [["残りHP(%)"]];
             var TotalHP = [["残りHP(%)"]]
@@ -3427,7 +3429,7 @@ var ResultList = React.createClass({
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
+                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
                         </Modal.Body>
                     </Modal>
@@ -3438,7 +3440,7 @@ var ResultList = React.createClass({
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
+                            <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                         </Modal.Body>
                     </Modal>
                     <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
@@ -3546,7 +3548,7 @@ var ResultList = React.createClass({
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
+                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
                         </Modal.Body>
                     </Modal>
@@ -3557,7 +3559,7 @@ var ResultList = React.createClass({
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
+                            <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
@@ -3567,7 +3569,7 @@ var ResultList = React.createClass({
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            <SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} />
+                            <SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                         </Modal.Body>
                     </Modal>
                     <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
