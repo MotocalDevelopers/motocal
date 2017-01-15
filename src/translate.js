@@ -949,19 +949,19 @@ var multiLangData = {
     },
     // スキル名
     "通常攻刃(小)": {
-        "en": "Normal (S)",
+        "en": "Normal Might (S)",
         "ja": "通常攻刃(小)",
     },
     "通常攻刃(中)": {
-        "en": "Normal (M)",
+        "en": "Normal Might (M)",
         "ja": "通常攻刃(中)",
     },
     "通常攻刃(大)": {
-        "en": "Normal (L)",
+        "en": "Normal Might (L)",
         "ja": "通常攻刃(大)",
     },
     "通常攻刃II": {
-        "en": "Normal (LL)",
+        "en": "Normal Might (LL)",
         "ja": "通常攻刃II",
     },
     "通常暴君": {
@@ -981,47 +981,47 @@ var multiLangData = {
         "ja": "通常背水(大)",
     },
     "通常渾身(大)": {
-        "en": "Normal Konshin (L)",
+        "en": "Normal Stamina (L)",
         "ja": "通常渾身(大)",
     },
     "通常二手(小)": {
-        "en": "Normal DA (S)",
+        "en": "Normal Dual Edge (S)",
         "ja": "通常二手(小)",
     },
     "通常二手(中)": {
-        "en": "Normal DA (M)",
+        "en": "Normal Dual Edge (M)",
         "ja": "通常二手(中)",
     },
     "通常二手(大)": {
-        "en": "Normal DA (L)",
+        "en": "Normal Dual Edge (L)",
         "ja": "通常二手(大)",
     },
     "通常三手(大)": {
-        "en": "Normal DA & TA (L)",
+        "en": "Normal Trium (L)",
         "ja": "通常三手(大)",
     },
     "通常克己(中)": {
-        "en": "Normal Katsumi (M)",
+        "en": "Normal Restraint (M)",
         "ja": "通常克己(中)",
     },
     "通常神威": {
-        "en": "Normal Kamui",
+        "en": "Normal Majesty",
         "ja": "通常神威",
     },
     "通常括目": {
-        "en": "Normal Katsumoku",
+        "en": "Normal Heed",
         "ja": "通常括目",
     },
     "通常羅刹": {
-        "en": "Normal Rasetsu",
+        "en": "Normal Haunt",
         "ja": "通常羅刹",
     },
     "マグナ攻刃": {
-        "en": "Magna I",
+        "en": "Magna Might I",
         "ja": "マグナ攻刃",
     },
     "マグナ攻刃II": {
-        "en": "Magna II",
+        "en": "Magna Might II",
         "ja": "マグナ攻刃II",
     },
     "マグナ背水(小)": {
@@ -1037,27 +1037,27 @@ var multiLangData = {
         "ja": "マグナ背水(大)",
     },
     "マグナ三手(大)": {
-        "en": "Magna DA&TA (L)",
+        "en": "Magna Trium (L)",
         "ja": "マグナ三手(大)",
     },
     "マグナ克己(中)": {
-        "en": "Magna Katsumi (M)",
+        "en": "Magna Restraint (M)",
         "ja": "マグナ克己(中)",
     },
     "マグナ神威": {
-        "en": "Magna Kamui",
+        "en": "Magna Majesty",
         "ja": "マグナ神威",
     },
     "マグナ暴君": {
-        "en": "Magna Boukun",
+        "en": "Magna Tyranny",
         "ja": "マグナ暴君",
     },
     "マグナ括目": {
-        "en": "Magna Katsumoku",
+        "en": "Magna Heed",
         "ja": "マグナ括目",
     },
     "マグナ羅刹": {
-        "en": "Magna Rasetsu",
+        "en": "Magna Haunt",
         "ja": "マグナ羅刹",
     },
     "アンノウンATK・I": {
@@ -1085,23 +1085,23 @@ var multiLangData = {
         "ja": "ストレングス等(大)",
     },
     "通常守護(小)": {
-        "en": "Normal Health (S)",
+        "en": "Normal Aegis (S)",
         "ja": "通常守護(小)",
     },
     "通常守護(中)": {
-        "en": "Normal Health (M)",
+        "en": "Normal Aegis (M)",
         "ja": "通常守護(中)",
     },
     "通常守護(大)": {
-        "en": "Normal Health (L)",
+        "en": "Normal Aegis (L)",
         "ja": "通常守護(大)",
     },
     "マグナ守護": {
-        "en": "Magna Health I",
+        "en": "Magna Aegis I",
         "ja": "マグナ守護",
     },
     "マグナ守護II": {
-        "en": "Magna Health II",
+        "en": "Magna Aegis II",
         "ja": "マグナ守護II",
     },
     "アンノウン・VIT I(小)": {
@@ -1117,51 +1117,51 @@ var multiLangData = {
         "ja": "アンノウン・VIT II(大)",
     },
     "ミフネ流・極意": {
-        "en": "Mifune Boukun",
+        "en": "Mifune Style, Zen Impact",
         "ja": "ミフネ流・極意",
     },
     "ミフネ流・双星": {
-        "en": "Mifune Futaboshi",
+        "en": "Mifune Style, Binary Star",
         "ja": "ミフネ流・双星",
     },
     "紅蓮の呪印・弐": {
-        "en": "Guren Juin II",
+        "en": "Inferno's Second Insignia",
         "ja": "紅蓮の呪印・弐",
     },
     "霧氷の追牙・肆": {
-        "en": "Muhyo Tuiga",
+        "en": "Hoarfrost's Fourth Pursuit",
         "ja": "霧氷の追牙・肆",
     },
     "通常技巧(小)": {
-        "en": "Normal Critical (S)",
+        "en": "Normal Verity (S)",
         "ja": "通常技巧(小)",
     },
     "通常技巧(中)": {
-        "en": "Normal Critical (M)",
+        "en": "Normal Verity (M)",
         "ja": "通常技巧(中)",
     },
     "通常技巧(大)": {
-        "en": "Normal Critical (L)",
+        "en": "Normal Verity (L)",
         "ja": "通常技巧(大)",
     },
     "マグナ技巧(小)": {
-        "en": "Magna Critical (S)",
+        "en": "Magna Verity (S)",
         "ja": "マグナ技巧(小)",
     },
     "マグナ技巧(中)": {
-        "en": "Magna Critical (M)",
+        "en": "Magna Verity (M)",
         "ja": "マグナ技巧(中)",
     },
     "マグナ技巧(大)": {
-        "en": "Magna Critical (L)",
+        "en": "Magna Verity (L)",
         "ja": "マグナ技巧(大)",
     },
     "通常刹那": {
-        "en": "Normal Setsuna",
+        "en": "Normal Celere",
         "ja": "通常刹那",
     },
     "マグナ刹那": {
-        "en": "Magna Setsuna",
+        "en": "Magna Celere",
         "ja": "マグナ刹那",
     },
     "コスモス剣": {
@@ -1257,43 +1257,43 @@ var multiLangData = {
         "ja": "バハHP-楽器",
     },
     "バハフツ-短剣": {
-        "en": "Bahamut Dagger FU",
+        "en": "Bahamut Coda Dagger",
         "ja": "バハフツ-短剣",
     },
     "バハフツ-斧": {
-        "en": "Bahamut Axe FU",
+        "en": "Bahamut Coda Axe",
         "ja": "バハフツ-斧",
     },
     "バハフツ-槍": {
-        "en": "Bahamut Spear FU",
+        "en": "Bahamut Coda Spear",
         "ja": "バハフツ-槍",
     },
     "バハフツ-銃": {
-        "en": "Bahamut Gun FU",
+        "en": "Bahamut Coda Gun",
         "ja": "バハフツ-銃",
     },
     "バハフツ-剣": {
-        "en": "Bahamut Sword FU",
+        "en": "Bahamut Coda Sword",
         "ja": "バハフツ-剣",
     },
     "バハフツ-杖": {
-        "en": "Bahamut Staff FU",
+        "en": "Bahamut Coda Staff",
         "ja": "バハフツ-杖",
     },
     "バハフツHP-格闘": {
-        "en": "Bahamut Fist FU",
+        "en": "Bahamut Coda Fist",
         "ja": "バハフツHP-格闘",
     },
     "バハフツHP-刀": {
-        "en": "Bahamut Katana FU",
+        "en": "Bahamut Coda Katana",
         "ja": "バハフツHP-刀",
     },
     "バハフツHP-弓": {
-        "en": "Bahamut Bow FU",
+        "en": "Bahamut Coda Bow",
         "ja": "バハフツHP-弓",
     },
     "バハフツHP-楽器": {
-        "en": "Bahamut Harp FU",
+        "en": "Bahamut Coda Harp",
         "ja": "バハフツHP-楽器",
     },
     "": {
