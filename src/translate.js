@@ -466,7 +466,7 @@ var multiLangData = {
         "ja": "ダークフェンサー",
     },
     "ビショップ": {
-        "en": "Bisshop",
+        "en": "Bishop",
         "ja": "ビショップ",
     },
     "ハーミット": {
