@@ -4,13 +4,14 @@ var intl = require('./translate.js');
 
 var StoredListEditor = React.createClass({
     render: function() {
+        var locale = this.props.locale
         var combinations = this.props.storedList.combinations
         var armlist = this.props.storedList.armlist
         var removeOneStoredList = this.props.removeOneStoredList
         return (
             <Modal className="hpChartTutotial" show={this.props.show} onHide={this.props.onHide}>
                 <Modal.Header closeButton>
-                    <Modal.Title>保存済みの編成</Modal.Title>
+                    <Modal.Title>{intl.translate("保存済みの編成", locale)}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="table-responsive">
@@ -22,10 +23,10 @@ var StoredListEditor = React.createClass({
                                     if(arm.name != "") {
                                         return (<th>{arm.name}</th>);
                                     } else {
-                                        return (<th>武器{ind}</th>);
+                                        return (<th>{intl.translate("武器", locale)}{ind}</th>);
                                     }
                                 })) : ""}
-                                <th>操作</th>
+                                <th>{intl.translate("操作", locale)}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -34,9 +35,9 @@ var StoredListEditor = React.createClass({
                                     <tr>
                                         <td>{ind}</td>
                                         {v.map(function(num){
-                                            return (<td>{num}本</td>)
+                                            return (<td>{num}{intl.translate("本", locale)}</td>)
                                         })}
-                                        <td><Button id={ind} onClick={removeOneStoredList} bsStyle="primary">削除</Button></td>
+                                        <td><Button id={ind} onClick={removeOneStoredList} bsStyle="primary">{intl.translate("削除", locale)}</Button></td>
                                     </tr>
                                 );
                             })}

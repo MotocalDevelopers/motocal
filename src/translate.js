@@ -1341,6 +1341,18 @@ var multiLangData = {
         "en": "Compare All",
         "ja": "まとめて比較",
     },
+    "保存された編成を編集": {
+        "en": "Edit Saved Weapon Setups",
+        "ja": "保存された編成を編集",
+    },
+    "保存された編成を削除": {
+        "en": "Delete All Saved Setups",
+        "ja": "保存された編成を全て削除",
+    },
+    "保存済みの編成": {
+        "en": "Saved Weapon Setups",
+        "ja": "保存済みの編成",
+    },
 }
 
 // 言語設定

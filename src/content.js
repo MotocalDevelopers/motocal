@@ -2668,16 +2668,17 @@ var ResultList = React.createClass({
         }
 
         if(res.length > 1){
-            data["まとめて比較"] = {}
-            data["まとめて比較"]["totalAttack"] = AllTotalAttack
-            data["まとめて比較"]["totalHP"] = AllTotalHP
-            data["まとめて比較"]["criticalAttack"] = AllCriticalAttack
-            data["まとめて比較"]["totalExpected"] = AllTotalExpected
-            data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
-            data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
-            data["まとめて比較"]["averageCriticalAttack"] = AllAverageCriticalAttack
-            data["まとめて比較"]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
-            data["まとめて比較"]["averageTotalExpected"] = AllAverageTotalExpected
+            var matomete = intl.translate("まとめて比較", locale)
+            data[matomete] = {}
+            data[matomete]["totalAttack"] = AllTotalAttack
+            data[matomete]["totalHP"] = AllTotalHP
+            data[matomete]["criticalAttack"] = AllCriticalAttack
+            data[matomete]["totalExpected"] = AllTotalExpected
+            data[matomete]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
+            data[matomete]["averageAttack"] = AllAverageTotalAttack
+            data[matomete]["averageCriticalAttack"] = AllAverageCriticalAttack
+            data[matomete]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
+            data[matomete]["averageTotalExpected"] = AllAverageTotalExpected
         }
 
         // グラフ最大値最小値を抽出
@@ -3443,7 +3444,7 @@ var ResultList = React.createClass({
                             <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                         </Modal.Body>
                     </Modal>
-                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
+                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} locale={locale} />
                 </div>
             );
 
@@ -3543,9 +3544,9 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>HP Charts ({remainHPstr})</Modal.Title>
-                            <Button bsStyle="info" onClick={this.openHPChartTutorial}>使い方</Button>
-                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
-                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
+                            <Button bsStyle="info" onClick={this.openHPChartTutorial}>{intl.translate("使い方", locale)}</Button>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
@@ -3555,8 +3556,8 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
-                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
-                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
@@ -3565,14 +3566,14 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
                         <Modal.Header closeButton>
                             <Modal.Title>ダメージシミュレータ ({remainHPstr})</Modal.Title>
-                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
-                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
+                            <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
+                            <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
                         </Modal.Header>
                         <Modal.Body>
                             <SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                         </Modal.Body>
                     </Modal>
-                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} />
+                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} locale={locale} />
                 </div>
             );
         }
