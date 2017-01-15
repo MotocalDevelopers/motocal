@@ -394,7 +394,7 @@ var multiLangData = {
         "ja": "得意",
     },
     "ベルセルク": {
-        "en": "Berserk",
+        "en": "Berserker",
         "ja": "ベルセルク",
     },
     "セージ": {
@@ -402,7 +402,7 @@ var multiLangData = {
         "ja": "セージ",
     },
     "スパルタ": {
-        "en": "Sparta",
+        "en": "Spartan",
         "ja": "スパルタ",
     },
     "ウォーロック": {
@@ -414,15 +414,15 @@ var multiLangData = {
         "ja": "カオスルーダー",
     },
     "義賊": {
-        "en": "Gizoku",
+        "en": "Bandit Tycoon",
         "ja": "義賊",
     },
     "レスラー": {
-        "en": "Wrestler",
+        "en": "Luchador",
         "ja": "レスラー",
     },
     "ハウンドドッグ": {
-        "en": "Hound dog",
+        "en": "Nighthound",
         "ja": "ハウンドドッグ",
     },
     "アルケミスト": {
@@ -438,15 +438,15 @@ var multiLangData = {
         "ja": "侍",
     },
     "剣聖": {
-        "en": "Sword Holy",
+        "en": "Sword Master",
         "ja": "剣聖",
     },
     "ガンスリンガー": {
-        "en": "Gunsringer",
+        "en": "Gunslinger",
         "ja": "ガンスリンガー",
     },
     "賢者": {
-        "en": "Wiseman",
+        "en": "Mystic",
         "ja": "賢者",
     },
     "アサシン": {
@@ -474,19 +474,19 @@ var multiLangData = {
         "ja": "ハーミット",
     },
     "ホークアイ": {
-        "en": "Hork eye",
+        "en": "Hawkeye",
         "ja": "ホークアイ",
     },
     "オーガ": {
-        "en": "Oga",
+        "en": "Ogre",
         "ja": "オーガ",
     },
     "サイドワインダー": {
-        "en": "Side winder",
+        "en": "Sidewinder",
         "ja": "サイドワインダー",
     },
     "スーパースター": {
-        "en": "Super star",
+        "en": "Superstar",
         "ja": "スーパースター",
     },
     "ヴァルキュリア": {
@@ -506,7 +506,7 @@ var multiLangData = {
         "ja": "防御",
     },
     "特殊": {
-        "en": "Peculiar",
+        "en": "Special",
         "ja": "特殊",
     },
     "回復": {
