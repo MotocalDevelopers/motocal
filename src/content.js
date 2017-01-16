@@ -1354,15 +1354,17 @@ var ResultList = React.createClass({
             if(key == "Djeeta") {
                 // for Djeeta
                 var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + totals["Djeeta"]["zenithATK"] + totals["Djeeta"]["job"].atBonus) * (1.0 + buff["master"])
-                var displayHP = (totals[key]["baseHP"] + totalSummon["hp"] + totals[key]["armHP"] + totals["Djeeta"]["zenithHP"]) * (1.0 + buff["masterHP"])
+                var displayHP = (totals[key]["baseHP"] + totalSummon["hp"] + totals["Djeeta"]["job"].hpBonus + totals[key]["armHP"] + totals["Djeeta"]["zenithHP"]) * (1.0 + buff["masterHP"])
+                var totalHP = displayHP * (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"] + 0.01 * totals["Djeeta"]["job"].shugoBonus)
             } else {
                 // for chara
                 var summedAttack = totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"]
                 var displayHP = totals[key]["baseHP"] + totals[key]["armHP"] + totalSummon["hp"]
+                var totalHP = displayHP * (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
             }
 
             var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff * unknownHaisuiCoeff * normalKonshinCoeff
-            var totalHP = displayHP * (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
+
 
             // HPの下限は 1
             if( totalHP <= 0 ) totalHP = 1
