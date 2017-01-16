@@ -1653,10 +1653,8 @@ var ResultList = React.createClass({
                     // for chara
                     if(arm.armType == totals[key]["fav1"]){
                         armSup += 0.2
-                        hpSup += 0.2
                     } else if(arm.armType == totals[key]["fav2"]){
                         armSup += 0.2
-                        hpSup += 0.2
                     }
                 }
 
