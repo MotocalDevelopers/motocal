@@ -1353,6 +1353,15 @@ var multiLangData = {
         "en": "Saved Weapon Setups",
         "ja": "保存済みの編成",
     },
+    // Notice
+    "広告": {
+        "en": "Ad.",
+        "ja": "広告",
+    },
+    "notice-20170118-1": {
+        "en": "2017/01/18: Added some advertisements to make myself motivate.",
+        "ja": "2017/01/18: 開発意欲を出すため広告を追加.",
+    },
 }
 
 // 言語設定

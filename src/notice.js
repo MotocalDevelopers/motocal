@@ -1,15 +1,22 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var intl = require('./translate.js');
+var Advertisement = require('./advertisement.js');
 
 var Notice = React.createClass ({
     render: function() {
+      var locale = this.props.locale
+
       return (
         <div className="notice">
             <div className="divright"><a href="http://hsimyu.net/motocal/">入力リセット</a></div>
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
+            <h2>{intl.translate("広告", locale)}</h2>
+            <Advertisement locale={locale} />
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">{intl.translate("notice-20170118-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">2016/1/16: キャラの得意武器補正がHPにも乗っていたのを修正 / Fixed a bug that "Character Favorite Weapon" also affect their HP.</li>
                 <li className="list-group-item list-group-item-info">2016/1/16: ジョブのHPボーナスと守護ボーナスを計算に入れ忘れていたのを修正 / Fixed HP calculation process missed including Job HP bonus and Health Bonus.</li>
                 <li className="list-group-item list-group-item-info">2016/1/14: English Support (partly) </li>

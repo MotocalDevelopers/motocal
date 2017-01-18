@@ -407,7 +407,7 @@ var Root = React.createClass({
                     <div className="systemList">
                         <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
                         <TwitterShareButton data={this.state} locale={locale} />
-                        <Notice />
+                        <Notice locale={locale} />
                     </div>
                 </div>
             </div>
@@ -494,7 +494,7 @@ var Root = React.createClass({
                     <div className="Tab hidden" id="systemTab">
                         <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
                         <TwitterShareButton data={this.state} locale={locale}/>
-                        <Notice />
+                        <Notice locale={locale} />
                     </div>
                     <div className="Tab hidden" id="simulatorTab">
                         <SimulatorInput dataName={this.state.dataName} dataForLoad={dataForLoad.simulator} chara={this.state.chara} onChange={this.onChangeSimulationData} />
