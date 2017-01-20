@@ -1880,7 +1880,7 @@ var ResultList = React.createClass({
                                 totals[key]["unknown"] += comb[i] * skillAmounts["unknown"][amount][slv - 1];
                             } else if(stype == 'gurenJuin'){
                                 if(index == 2){
-                                    totals[key]["normalOther"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                                    totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                                 }
                             } else if(stype == 'muhyoTuiga'){
                                 if(index == 4){

@@ -16,6 +16,7 @@ var Notice = React.createClass ({
             <Advertisement locale={locale} />
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">{intl.translate("notice-20170121-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170118-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">2016/1/16: キャラの得意武器補正がHPにも乗っていたのを修正 / Fixed a bug that "Character Favorite Weapon" also affect their HP.</li>
                 <li className="list-group-item list-group-item-info">2016/1/16: ジョブのHPボーナスと守護ボーナスを計算に入れ忘れていたのを修正 / Fixed HP calculation process missed including Job HP bonus and Health Bonus.</li>

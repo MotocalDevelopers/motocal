@@ -1362,6 +1362,11 @@ var multiLangData = {
         "en": "2017/01/18: Added some advertisements to make myself motivate.",
         "ja": "2017/01/18: 開発意欲を出すため広告を追加.",
     },
+    "notice-20170121-1": {
+        "en": "Inferno's Second Insignia",
+        "en": "2017/01/21: Fixed \"Inferno's Seconda Insignia\" should be affected by Agnis.",
+        "ja": "2017/01/21: 紅蓮の呪印・弐にアグニス石が影響するように戻した.",
+    },
 }
 
 // 言語設定
