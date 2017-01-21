@@ -1352,7 +1352,7 @@ var ResultList = React.createClass({
             var otherCoeff = 1.0 + buff["other"] + totals[key]["otherBuff"]
 
             // キャラ背水枠
-            var charaHaisuiCoeff = 1.0 + totals[key]["charaHaisui"]
+            var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"]
 
             if(key == "Djeeta") {
                 // for Djeeta
@@ -1903,8 +1903,73 @@ var ResultList = React.createClass({
             if(totals[key]["bahaHP"] > 50) totals[key]["bahaHP"] = 50
         }
     },
+    calcHaisuiValue: function(haisuiType, haisuiAmount, haisuiSLv, haisuiRemainHP){
+        var remainHP = haisuiRemainHP
+        var baseRate = 0.0
+
+        if(haisuiType == 'normalHaisui' || haisuiType == 'magnaHaisui' || haisuiType == 'unknownOtherHaisui' || haisuiType == "charaHaisui")
+        {
+            // 背水倍率の実装は日比野さんのところのを参照
+            if(haisuiAmount == "S") {
+                // 小
+                if(haisuiSLv < 10) {
+                    baseRate = -0.3 + haisuiSLv * 1.8;
+                } else {
+                    baseRate = 18 + 3.0 * ((haisuiSLv - 10) / 5.0)
+                }
+            } else if ( haisuiAmount == "M" ){
+                // 中
+                if(haisuiSLv < 10) {
+                    baseRate = -0.4 + haisuiSLv * 2.4;
+                } else {
+                    baseRate = 24 + 3.0 * ((haisuiSLv - 10) / 5.0)
+                }
+            } else {
+                // 大
+                if(haisuiSLv < 10) {
+                    baseRate = -0.5 + haisuiSLv * 3.0;
+                } else {
+                    baseRate = 30 + 3.0 * ((haisuiSLv - 10) / 5.0)
+                }
+            }
+            return (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
+        } else if(haisuiType == 'normalKonshin'){
+            if(haisuiAmount == "S") {
+                // 小
+                if(haisuiSLv < 10) {
+                    baseRate = -0.3 + haisuiSLv * 1.8;
+                } else {
+                    baseRate = 18 + 3.0 * ((haisuiSLv - 10) / 5.0)
+                }
+            } else if ( haisuiAmount == "M" ){
+                // 中
+                if(haisuiSLv < 10) {
+                    baseRate = -0.4 + haisuiSLv * 2.4;
+                } else {
+                    baseRate = 24 + 3.0 * ((haisuiSLv - 10) / 5.0)
+                }
+            } else {
+                if(haisuiSLv <= 10) {
+                    // baseRate = 5.0 + haisuiSLv * 0.8;
+                    baseRate = 0.0518 + 3.29e-3 * haisuiSLv
+                } else {
+                    // baseRate = 20.0 + ((haisuiSLv - 10) * 0.6);
+                    // 11/24のアップデート、暫定対応
+                    baseRate = 0.0847 + (haisuiSLv - 10) * 6.58e-3
+                }
+            }
+            if(remainHP >= 0.25) {
+                // HP25%以下で打ち切りになる
+                return 100.0 * (baseRate * Math.pow(remainHP + 0.0317, 3) + 0.0207)
+            }
+        } else {
+            console.error("Unknown Haisui Type Passed.")
+            return 0.0;
+        }
+    },
     initializeTotals: function(totals) {
         // 初期化
+        // 武器編成によって変わらないものは除く
         for(key in totals){
             totals[key]["armAttack"] = 0; totals[key]["armHP"] = 0;
             totals[key]["HPdebuff"] = 0; totals[key]["magna"] = 0;
@@ -1925,7 +1990,6 @@ var ResultList = React.createClass({
             totals[key]["normalSetsuna"] = []; totals[key]["magnaSetsuna"] = [];
             totals[key]["normalKatsumi"] = [];
             totals[key]["DATAdebuff"] = 0;
-            totals[key]["charaHaisui"] = 0;
         }
     },
     getTotalBuff: function(prof) {
@@ -2246,8 +2310,8 @@ var ResultList = React.createClass({
                         continue;
                         break;
                     case "taiyou_sinkou":
-                        // var charaHaisuiValue = this.calcHaisuiRatio()
-                        var charaHaisuiValue = 0.10
+                        // ザルハメリナのHPを参照する
+                        var charaHaisuiValue = this.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"])
                         for(var key2 in totals){
                             totals[key2]["charaHaisui"] += charaHaisuiValue
                         }
