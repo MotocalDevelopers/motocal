@@ -2337,6 +2337,38 @@ var ResultList = React.createClass({
             }
         }
     },
+    recalcCharaHaisui: function(chara, remainHP) {
+        var charaHaisuiValue = 1.0;
+
+        for(var i = 0; i < chara.length; i++){
+            if(chara[i].name != "" && chara[i].isConsideredInAverage) {
+                for(var i = 0; i < 2; i++) {
+                    if(i == 0) {
+                        if(chara[i]["support"] == undefined) continue;
+                        var support = supportAbilities[chara[i]["support"]];
+                    } else {
+                        if(chara[i]["support2"] == undefined) continue;
+                        var support = supportAbilities[chara[i]["support2"]];
+                    }
+
+                    if(support.type == "none") continue;
+
+                    // 背水サポアビのみ処理
+                    switch(support.type){
+                        case "taiyou_sinkou":
+                            // ザルハメリナのHPを参照する
+                            charaHaisuiValue += 0.01 * this.calcHaisuiValue("charaHaisui", "L", 10, remainHP)
+                            continue;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
+        return charaHaisuiValue;
+    },
     getInitialState: function() {
         return {
             switchTotalAttack: 1,
@@ -2570,15 +2602,25 @@ var ResultList = React.createClass({
                         title += name + storedCombinations[j][i] + "本\n"
                     }
                 }
+
+                // キャラ編成は武器編成毎には変わらないので先に計算することができる
+                var charaHaisuiBuff = []
+                for(var k = 0; k < 100; ++k){
+                    var charaHaisuiValue = this.recalcCharaHaisui(chara, 0.01 * (k + 1));
+                    charaHaisuiBuff.push(charaHaisuiValue);
+                }
+
                 for(key in onedata){
                     var totalSummon = onedata[key].totalSummon
                     var normalHaisuiOrig = onedata[key].skilldata.normalHaisui
                     var magnaHaisuiOrig = onedata[key].skilldata.magnaHaisui
+                    var charaHaisuiOrig = onedata[key].skilldata.charaHaisui
                     var normalKonshinOrig = onedata[key].skilldata.normalKonshin
-                    var totalAttackWithoutHaisui = onedata[key].totalAttack / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig)
+                    var totalAttackWithoutHaisui = onedata[key].totalAttack / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig * charaHaisuiOrig)
+
                     var haisuiBuff = []
                     for(var k = 0; k < 100; k++){
-                        haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0})
+                        haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0, charaHaisui: charaHaisuiBuff[k]})
                     }
                     for(var i=0; i < arml.length; i++){
                         var arm = arml[i]
@@ -2675,7 +2717,7 @@ var ResultList = React.createClass({
                     }
 
                     for(var k = 0; k < 100; k++){
-                        var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin
+                        var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].charaHaisui
                         var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
                         var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
                         var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff)
