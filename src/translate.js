@@ -669,6 +669,10 @@ var multiLangData = {
         "en": "Option",
         "ja": "操作",
     },
+    "HP増加": {
+        "en": "Health ",
+        "ja": "HP増加",
+    },
     "通常攻刃": {
         "en": "Normal Might ",
         "ja": "通常攻刃",
@@ -1362,13 +1366,33 @@ var multiLangData = {
         "en": "Ad.",
         "ja": "広告",
     },
+    "notice-20170114-1": {
+        "en": "2017/01/14: English Support (partly).",
+        "ja": "2017/01/14: 英語対応",
+    },
+    "notice-20170116-1": {
+        "en": "2017/01/16: Fixed HP calculation process missed including Job HP bonus and Health Bonus.",
+        "ja": "2017/01/16: ジョブのHPボーナスと守護ボーナスを計算に入れ忘れていたのを修正",
+    },
+    "notice-20170116-2": {
+        "en": "2017/01/16: Fixed a bug that \"Character Favorite Weapon\" also affect their HP.",
+        "ja": "2017/01/16: キャラの得意武器補正がHPにも乗っていたのを修正",
+    },
     "notice-20170118-1": {
         "en": "2017/01/18: Added some advertisements to make myself motivate.",
         "ja": "2017/01/18: 開発意欲を出すため広告を追加.",
     },
     "notice-20170121-1": {
-        "en": "2017/01/21: Fixed \"Inferno's Seconda Insignia\" should be affected by Agnis. / Implemennted Zaruhamerina Enmity.",
-        "ja": "2017/01/21: 紅蓮の呪印・弐にアグニス石が影響するように戻した. / ザルハメリナ背水の実装.",
+        "en": "2017/01/21: Fixed a bug that \"Inferno's Seconda Insignia\" is not affected by Agnis.",
+        "ja": "2017/01/21: 紅蓮の呪印・弐にアグニス石が影響するように戻した.",
+    },
+    "notice-20170121-2": {
+        "en": "2017/01/21: Implemennted Zaruhamerina Enmity.",
+        "ja": "2017/01/21: ザルハメリナ背水の実装.",
+    },
+    "notice-20170121-3": {
+        "en": "2017/01/21: Display Health Bonus amount in skill amount info.",
+        "ja": "2017/01/21: 守護ボーナス分がスキル情報として表示されるようにした。",
     },
 }
 

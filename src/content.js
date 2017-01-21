@@ -1354,16 +1354,27 @@ var ResultList = React.createClass({
             // キャラ背水枠
             var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"]
 
+            // hp倍率
+            var hpCoeff = (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
+
+            // ベースHP
+            var displayHP = totals[key]["baseHP"] + totals[key]["armHP"] + totalSummon["hp"]
+
             if(key == "Djeeta") {
                 // for Djeeta
                 var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + totals["Djeeta"]["zenithATK"] + totals["Djeeta"]["job"].atBonus) * (1.0 + buff["master"])
-                var displayHP = (totals[key]["baseHP"] + totalSummon["hp"] + totals["Djeeta"]["job"].hpBonus + totals[key]["armHP"] + totals["Djeeta"]["zenithHP"]) * (1.0 + buff["masterHP"])
-                var totalHP = displayHP * (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"] + 0.01 * totals["Djeeta"]["job"].shugoBonus)
+                // 主人公HP計算
+                displayHP += totals["Djeeta"]["job"].hpBonus + totals["Djeeta"]["zenithHP"]
+                displayHP *= (1.0 + buff["masterHP"])
+                hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
+                var totalHP = displayHP * hpCoeff
             } else {
                 // for chara
                 var summedAttack = totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"]
-                var displayHP = totals[key]["baseHP"] + totals[key]["armHP"] + totalSummon["hp"]
-                var totalHP = displayHP * (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
+
+                // 155ゼニス
+                // displayHP *= (1.0 + buff["masterHP"])
+                var totalHP = displayHP * hpCoeff
             }
 
             var totalAttack = summedAttack * magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff * unknownHaisuiCoeff * normalKonshinCoeff * charaHaisuiCoeff
@@ -1439,6 +1450,7 @@ var ResultList = React.createClass({
             coeffs["charaHaisui"] = charaHaisuiCoeff;
             coeffs["other"] = otherCoeff;
             coeffs["ougiDamageBuff"] = totals[key]["ougiDamageBuff"];
+            coeffs["hpRatio"] = hpCoeff
 
             res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), remainHP: totals[key]["remainHP"], totalDA: totalDA, totalTA: totalTA, totalSummon: totalSummon, element: totals[key]["element"], expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, effectiveCriticalRatio: effectiveCriticalRatio, totalExpected: nazo_number, skilldata: coeffs, expectedOugiGage: expectedOugiGage, damage: damage, ougiDamage: ougiDamage, expectedTurn: expectedTurn, expectedCycleDamagePerTurn: expectedCycleDamagePerTurn};
         }
@@ -3722,6 +3734,7 @@ var Result = React.createClass({
                             if(skilldata.unknown != 1.0) {skillstr += intl.translate("アンノウン", locale) + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.unknownHaisui != 1.0) {skillstr += intl.translate("アンノウン背水", locale) + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.charaHaisui != 1.0) {skillstr += intl.translate("キャラ背水", locale) + (100.0 * (skilldata.charaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.hpRatio != 1.0) {skillstr += intl.translate("HP増加", locale) + (100.0 * (skilldata.hpRatio - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.other != 1.0) {skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.ougiDamageBuff != 0.0) {skillstr += intl.translate("奥義ダメージ", locale) + (100.0 * (1.0 + skilldata.ougiDamageBuff)).toFixed(0); skillstr += "% ";}
 
