@@ -3742,77 +3742,48 @@ var Result = React.createClass({
                         }
                     }
 
-                    if(_ua.Mobile || _ua.Tablet) {
-                        return (
-                            <tr className="result" title={skillstr} key={rank + 1}>
-                                <td>{rank + 1}</td>
-                                {tablebody.map(function(am, ind){
-                                    return (<td key={ind} >{am}</td>);
-                                })}
-                                {m.armNumbers.map(function(am, ind){
-                                    if(arm[ind].considerNumberMax != 0) {
-                                        if(ind == 0){
-                                            if(parseInt(am) > 0) {
-                                                return (<td key={ind} className="resultFirst"><p className="text-info">{am}</p></td>);
-                                            } else {
-                                                return (<td key={ind} className="resultFirst"><p className="text-muted">{am}</p></td>);
-                                            }
+                    var res = [
+                        <tr className="result" title={skillstr} key={rank + 1}>
+                            <td>{rank + 1}</td>
+                            {tablebody.map(function(am, ind){
+                                return (<td key={ind} >{am}</td>);
+                            })}
+                            {m.armNumbers.map(function(am, ind){
+                                if(arm[ind].considerNumberMax != 0) {
+                                    ++colSize;
+                                    if(ind == 0){
+                                        if(parseInt(am) > 0) {
+                                            return (<td key={ind} className="resultFirst"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
                                         } else {
-                                            if(parseInt(am) > 0) {
-                                                return (<td key={ind} className="resultList"><p className="text-info">{am}</p></td>);
-                                            } else {
-                                                return (<td key={ind} className="resultList"><p className="text-muted">{am}</p></td>);
-                                            }
+                                            return (<td key={ind} className="resultFirst"><p className="text-muted">{am} {intl.translate("本", locale)}</p></td>);
+                                        }
+                                    } else {
+                                        if(parseInt(am) > 0) {
+                                            return (<td key={ind} className="resultList"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
+                                        } else {
+                                            return (<td key={ind} className="resultList"><p className="text-muted">{am} {intl.translate("本", locale)}</p></td>);
                                         }
                                     }
-                                 })}
-                                <td><Button id={rank} bsStyle="primary" bsSize="xsmall" onClick={onClick}>{intl.translate("グラフに加える", locale)}</Button></td>
-                            </tr>
-                        );
-                    } else {
-                        var res = [
-                            <tr className="result" title={skillstr} key={rank + 1}>
-                                <td>{rank + 1}</td>
-                                {tablebody.map(function(am, ind){
-                                    return (<td key={ind} >{am}</td>);
-                                })}
-                                {m.armNumbers.map(function(am, ind){
-                                    if(arm[ind].considerNumberMax != 0) {
-                                        ++colSize;
-                                        if(ind == 0){
-                                            if(parseInt(am) > 0) {
-                                                return (<td key={ind} className="resultFirst"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
-                                            } else {
-                                                return (<td key={ind} className="resultFirst"><p className="text-muted">{am} {intl.translate("本", locale)}</p></td>);
-                                            }
-                                        } else {
-                                            if(parseInt(am) > 0) {
-                                                return (<td key={ind} className="resultList"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
-                                            } else {
-                                                return (<td key={ind} className="resultList"><p className="text-muted">{am} {intl.translate("本", locale)}</p></td>);
-                                            }
-                                        }
-                                    }
-                                 })}
-                                <td style={{"padding": "2px"}}><Button id={rank} bsStyle="primary" block className="add-graph-button" onClick={onClick}>{intl.translate("グラフに加える", locale)}</Button></td>
-                            </tr>,
-                        ];
+                                }
+                             })}
+                            <td style={{"padding": "2px"}}><Button id={rank} bsStyle="primary" block className="add-graph-button" onClick={onClick}>{intl.translate("グラフに加える", locale)}</Button></td>
+                        </tr>,
+                    ];
 
-                        for(var key in tablebody2) {
-                            if(tablebody2[key] != "") {
-                                res.push(<tr>
-                                    <td colSpan="4">
-                                        <p className="text-info">{key}</p>
-                                    </td>
-                                    <td colSpan={colSize - 4}>
-                                        <p className="text-left">{tablebody2[key]}</p>
-                                    </td>
-                                </tr>);
-                            }
+                    for(var key in tablebody2) {
+                        if(tablebody2[key] != "") {
+                            res.push(<tr>
+                                <td colSpan="4">
+                                    <p className="text-info">{key}</p>
+                                </td>
+                                <td colSpan={colSize - 4}>
+                                    <p className="text-left">{tablebody2[key]}</p>
+                                </td>
+                            </tr>);
                         }
-
-                        return res;
                     }
+
+                    return res;
                 })}
             </tbody>
         );
