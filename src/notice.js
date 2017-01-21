@@ -16,6 +16,7 @@ var Notice = React.createClass ({
             <Advertisement locale={locale} />
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">{intl.translate("notice-20170122-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170121-5", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170121-4", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170121-3", locale)}</li>

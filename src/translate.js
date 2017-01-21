@@ -1451,6 +1451,10 @@ var multiLangData = {
         "en": "2017/01/21: Added Send new tempalte request button.",
         "ja": "2017/01/21: テンプレート追加要望ボタンを追加.",
     },
+    "notice-20170122-1": {
+        "en": "2017/01/22: Fixed a bug that some weapon which have element changes cannot add. / Added new weapons",
+        "ja": "2017/01/22: 属性変更武器が追加できなくなっていた不具合を修正 / 武器追加",
+    },
 }
 
 // 言語設定
