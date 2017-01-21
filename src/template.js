@@ -3,6 +3,7 @@ var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, Co
 var GlobalConst = require('./global_const.js')
 var _ua = GlobalConst._ua;
 var selector = GlobalConst.selector
+var elementTypes = GlobalConst.elementTypes
 var intl = require('./translate.js')
 var {githubAPItoken} = require('./secret_consts.js')
 
