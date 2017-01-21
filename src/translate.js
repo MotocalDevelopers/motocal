@@ -201,6 +201,14 @@ var multiLangData = {
         "en": "Used on the expected turn damage calculation.",
         "ja": "奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
     },
+    "ゼニスパーク": {
+        "en": "Zenith Perks",
+        "ja": "ゼニスパーク",
+    },
+    "味方全体のHP": {
+        "en": "HP Bonus for All member",
+        "ja": "味方全体のHP",
+    },
     "Advanced": {
         "en": "Advanced Settings",
         "ja": "より細かい設定",
@@ -262,15 +270,15 @@ var multiLangData = {
         "ja": "ジョブごとのボーナス等は自動で反映されます。得意武器補正などを反映したくない場合\"なし\"を選択して下さい。",
     },
     "ゼニス攻撃力": {
-        "en": "Zenith Park ATK",
+        "en": "Zenith Park ATK ",
         "ja": "ゼニス攻撃力",
     },
     "ゼニスHP": {
-        "en": "Zenith Park HP",
+        "en": "Zenith Park HP ",
         "ja": "ゼニスHP",
     },
     "マスボATK": {
-        "en": "Master Bonus ATK",
+        "en": "Master Bonus ATK ",
         "ja": "マスターボーナスATK",
     },
     "マスボATK説明": {
@@ -298,11 +306,11 @@ var multiLangData = {
         "ja": "有利/非有利/不利は、敵の属性に従って自動で判定されます。",
     },
     "武器ゼニス1": {
-        "en": "Arm Zenith Park I",
+        "en": "Weapon I ",
         "ja": "武器ゼニスI",
     },
     "武器ゼニス2": {
-        "en": "Arm Zenith Park II",
+        "en": "Weapon II ",
         "ja": "武器ゼニスII",
     },
     "武器ゼニス説明": {
@@ -1393,6 +1401,10 @@ var multiLangData = {
     "notice-20170121-3": {
         "en": "2017/01/21: Display Health Bonus amount in skill amount info.",
         "ja": "2017/01/21: 守護ボーナス分がスキル情報として表示されるようにした。",
+    },
+    "notice-20170121-4": {
+        "en": "2017/01/21: Added Zenith Perk for Party HP Bonus",
+        "ja": "2017/01/21: パーティHPボーナスのゼニス入力欄を追加",
     },
 }
 

@@ -1362,18 +1362,15 @@ var ResultList = React.createClass({
 
             if(key == "Djeeta") {
                 // for Djeeta
-                var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + totals["Djeeta"]["zenithATK"] + totals["Djeeta"]["job"].atBonus) * (1.0 + buff["master"])
+                var summedAttack = (totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + totals["Djeeta"]["job"].atBonus) * (1.0 + buff["master"])
                 // 主人公HP計算
-                displayHP += totals["Djeeta"]["job"].hpBonus + totals["Djeeta"]["zenithHP"]
+                displayHP += totals["Djeeta"]["job"].hpBonus
                 displayHP *= (1.0 + buff["masterHP"])
                 hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
                 var totalHP = displayHP * hpCoeff
             } else {
                 // for chara
                 var summedAttack = totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"]
-
-                // 155ゼニス
-                // displayHP *= (1.0 + buff["masterHP"])
                 var totalHP = displayHP * hpCoeff
             }
 
@@ -1976,8 +1973,9 @@ var ResultList = React.createClass({
         var job = (prof.job == undefined) ? Jobs["none"] : Jobs[prof.job]
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
+        var zenithPartyHP = (prof.zenithPartyHPBonus == undefined) ? 0 : parseInt(prof.zenithPartyHPBonus)
 
-        var totals = {"Djeeta": {baseAttack: baseAttack, baseHP: baseHP, baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, zenithATK: zenithATK, zenithHP: zenithHP, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, ougiGageBuff: 0, ougiDamageBuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: "none", support2: "none", charaHaisui: 0}};
+        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, ougiGageBuff: 0, ougiDamageBuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: "none", support2: "none", charaHaisui: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -1995,7 +1993,7 @@ var ResultList = React.createClass({
                     k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp), baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, ougiGageBuff: 0, ougiDamageBuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, ougiGageBuff: 0, ougiDamageBuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0}
             }
         }
         var races = this.checkNumberofRaces(chara)
@@ -4468,6 +4466,7 @@ var Profile = React.createClass({
             rank: 1,
             zenithAttackBonus: 3000,
             zenithHPBonus: 1000,
+            zenithPartyHPBonus: 0,
             masterBonus: 0,
             masterBonusHP: 0,
             normalBuff: 0,
@@ -4544,16 +4543,6 @@ var Profile = React.createClass({
                     </tr>
                     </TextWithTooltip>
 
-                    <tr>
-                        <th className="bg-primary">{intl.translate("ゼニス攻撃力", locale)}*</th>
-                        <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl></td>
-                    </tr>
-
-                    <tr>
-                        <th className="bg-primary">{intl.translate("ゼニスHP", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
-                    </tr>
-
                     <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
                     <tr>
                         <th className="bg-primary">
@@ -4605,6 +4594,21 @@ var Profile = React.createClass({
                         </th>
                         <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
                     </tr></TextWithTooltip>
+                    </tbody>
+                </table>
+
+                <h3 className="margin-top"> {intl.translate("ゼニスパーク", locale)}</h3>
+                <table className="table table-sm table-bordered table-responsive">
+                    <tbody>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ゼニス攻撃力", locale)}*</th>
+                        <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl></td>
+                    </tr>
+
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ゼニスHP", locale)}</th>
+                        <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
+                    </tr>
 
                     <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
                     <tr>
@@ -4619,6 +4623,11 @@ var Profile = React.createClass({
                         {intl.translate("武器ゼニス2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})</th>
                         <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses[locale]} </FormControl></td>
                     </tr></TextWithTooltip>
+
+                    <tr>
+                        <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
+                        <td><FormControl componentClass="select" value={this.state.zenithPartyHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")} > {selector.zenithHP} </FormControl></td>
+                    </tr>
                     </tbody>
                 </table>
 
