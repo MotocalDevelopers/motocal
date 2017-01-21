@@ -1772,67 +1772,9 @@ var ResultList = React.createClass({
                             // コスモス武器スキルはスキップ
                         } else if(totals[key]["element"] == element){
                             // 属性一致してれば計算
-
-                            if(stype == 'normalHaisui' || stype == 'magnaHaisui' || stype == 'unknownOtherHaisui'){
-                                // 背水倍率の実装は日比野さんのところのを参照
-                                var remainHP = totals[key]["remainHP"]
-                                var baseRate = 0.0
-                                if(amount == "S") {
-                                    // 小
-                                    if(slv < 10) {
-                                        baseRate = -0.3 + slv * 1.8;
-                                    } else {
-                                        baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
-                                    }
-                                } else if ( amount == "M" ){
-                                    // 中
-                                    if(slv < 10) {
-                                        baseRate = -0.4 + slv * 2.4;
-                                    } else {
-                                        baseRate = 24 + 3.0 * ((slv - 10) / 5.0)
-                                    }
-                                } else {
-                                    // 大
-                                    if(slv < 10) {
-                                        baseRate = -0.5 + slv * 3.0;
-                                    } else {
-                                        baseRate = 30 + 3.0 * ((slv - 10) / 5.0)
-                                    }
-                                }
-                                var haisuiBuff = (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
-                                totals[key][stype] += comb[i] * haisuiBuff
-                            } else if(stype == 'normalKonshin'){
-                                var remainHP = totals[key]["remainHP"]
-                                var baseRate = 0.0
-                                if(amount == "S") {
-                                    // 小
-                                    if(slv < 10) {
-                                        baseRate = -0.3 + slv * 1.8;
-                                    } else {
-                                        baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
-                                    }
-                                } else if ( amount == "M" ){
-                                    // 中
-                                    if(slv < 10) {
-                                        baseRate = -0.4 + slv * 2.4;
-                                    } else {
-                                        baseRate = 24 + 3.0 * ((slv - 10) / 5.0)
-                                    }
-                                } else {
-                                    if(slv <= 10) {
-                                        // baseRate = 5.0 + slv * 0.8;
-                                        baseRate = 0.0518 + 3.29e-3 * slv
-                                    } else {
-                                        // baseRate = 20.0 + ((slv - 10) * 0.6);
-                                        // 11/24のアップデート、暫定対応
-                                        baseRate = 0.0847 + (slv - 10) * 6.58e-3
-                                    }
-                                }
-                                if(remainHP >= 0.25) {
-                                    // HP25%以下で打ち切りになる
-                                    var konshinBuff = 100.0 * (baseRate * Math.pow(remainHP + 0.0317, 3) + 0.0207)
-                                    totals[key][stype] += comb[i] * konshinBuff
-                                }
+                            if(stype == 'normalHaisui' || stype == 'magnaHaisui' || stype == 'unknownOtherHaisui' || stype == 'normalKonshin'){
+                                // 背水計算部分は別メソッドで
+                                totals[key][stype] += comb[i] * this.calcHaisuiValue(stype, amount, slv, totals[key]["remainHP"])
                             } else if(stype == 'normalKamui') {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                                 totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
@@ -1933,7 +1875,7 @@ var ResultList = React.createClass({
                 }
             }
             return (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
-        } else if(haisuiType == 'normalKonshin'){
+        } else if(haisuiType == 'normalKonshin' || haisuiType == "magnaKonshin"){
             if(haisuiAmount == "S") {
                 // 小
                 if(haisuiSLv < 10) {
@@ -1963,7 +1905,7 @@ var ResultList = React.createClass({
                 return 100.0 * (baseRate * Math.pow(remainHP + 0.0317, 3) + 0.0207)
             }
         } else {
-            console.error("Unknown Haisui Type Passed.")
+            console.error("Unknown Haisui Type Passed: " + haisuiType)
             return 0.0;
         }
     },
@@ -2619,9 +2561,12 @@ var ResultList = React.createClass({
                     var totalAttackWithoutHaisui = onedata[key].totalAttack / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig * charaHaisuiOrig)
 
                     var haisuiBuff = []
+                    // キャラ背水はキャラ個別で計算するべき
                     for(var k = 0; k < 100; k++){
                         haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0, charaHaisui: charaHaisuiBuff[k]})
                     }
+
+                    // 武器データ計算
                     for(var i=0; i < arml.length; i++){
                         var arm = arml[i]
                         for(var jj = 1; jj <= 2; jj++){

@@ -1367,9 +1367,8 @@ var multiLangData = {
         "ja": "2017/01/18: 開発意欲を出すため広告を追加.",
     },
     "notice-20170121-1": {
-        "en": "Inferno's Second Insignia",
-        "en": "2017/01/21: Fixed \"Inferno's Seconda Insignia\" should be affected by Agnis.",
-        "ja": "2017/01/21: 紅蓮の呪印・弐にアグニス石が影響するように戻した.",
+        "en": "2017/01/21: Fixed \"Inferno's Seconda Insignia\" should be affected by Agnis. / Implemennted Zaruhamerina Enmity.",
+        "ja": "2017/01/21: 紅蓮の呪印・弐にアグニス石が影響するように戻した. / ザルハメリナ背水の実装.",
     },
 }
 
