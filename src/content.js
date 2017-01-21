@@ -1903,6 +1903,8 @@ var ResultList = React.createClass({
             if(remainHP >= 0.25) {
                 // HP25%以下で打ち切りになる
                 return 100.0 * (baseRate * Math.pow(remainHP + 0.0317, 3) + 0.0207)
+            } else {
+                return 0.0;
             }
         } else {
             console.error("Unknown Haisui Type Passed: " + haisuiType)
@@ -2588,72 +2590,14 @@ var ResultList = React.createClass({
                                 // mask invalid slv
                                 if(slv == 0) slv = 1
 
-                                if(stype == "normalHaisui" || stype == "magnaHaisui"){
+                                if(stype == "normalHaisui" || stype == "magnaHaisui" || stype == "normalKonshin" || stype == "magnaKonshin"){
                                     for(var l=0; l < haisuiBuff.length; l++) {
                                         var remainHP = 0.01 * (l + 1)
-                                        var baseRate = 0.0
-                                        if(amount == "S") {
-                                            // 小
-                                            if(slv < 10) {
-                                                baseRate = -0.3 + slv * 1.8;
-                                            } else {
-                                                baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
-                                            }
-                                        } else if ( amount == "M" ){
-                                            // 中
-                                            if(slv < 10) {
-                                                baseRate = -0.4 + slv * 2.4;
-                                            } else {
-                                                baseRate = 24 + 3.0 * ((slv - 10) / 5.0)
-                                            }
+
+                                        if(stype == "normalHaisui" || stype == "normalKonshin") {
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * this.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.zeus
                                         } else {
-                                            // 大
-                                            if(slv < 10) {
-                                                baseRate = -0.5 + slv * 3.0;
-                                            } else {
-                                                baseRate = 30 + 3.0 * ((slv - 10) / 5.0)
-                                            }
-                                        }
-                                        if(stype == "normalHaisui") {
-                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 ) * totalSummon.zeus
-                                        } else {
-                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 ) * totalSummon.magna
-                                        }
-                                    }
-                                } else if(stype == "normalKonshin" || stype == "magnaKonshin"){
-                                    for(var l=0; l < haisuiBuff.length; l++) {
-                                        var remainHP = 0.01 * (l + 1)
-                                        var baseRate = 0.0
-                                        if(amount == "S") {
-                                            // 小
-                                            if(slv < 10) {
-                                                baseRate = -0.3 + slv * 1.8;
-                                            } else {
-                                                baseRate = 18 + 3.0 * ((slv - 10) / 5.0)
-                                            }
-                                        } else if ( amount == "M" ){
-                                            // 中
-                                            if(slv < 10) {
-                                                baseRate = -0.4 + slv * 2.4;
-                                            } else {
-                                                baseRate = 24 + 3.0 * ((slv - 10) / 5.0)
-                                            }
-                                        } else {
-                                            if(slv <= 10) {
-                                                baseRate = 0.0518 + 3.29e-3 * slv
-                                            } else {
-                                                baseRate = 0.0847 + (slv - 10) * 6.58e-3
-                                            }
-                                        }
-                                        if(remainHP >= 0.25) {
-                                            // HP25%未満で打ち切りになる
-                                            // var konshinBuff = 0.01 * (22.53*Math.pow(remainHP-0.25, 2) + 2.33);
-                                            var konshinBuff = baseRate * Math.pow(remainHP + 0.0317, 3) + 0.0207
-                                            if(stype == "normalKonshin") {
-                                                haisuiBuff[l][stype] += storedCombinations[j][i] * konshinBuff * totalSummon.zeus
-                                            } else {
-                                                haisuiBuff[l][stype] += storedCombinations[j][i] * konshinBuff * totalSummon.magna
-                                            }
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * this.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.magna
                                         }
                                     }
                                 }
