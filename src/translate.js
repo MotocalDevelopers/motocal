@@ -1369,6 +1369,47 @@ var multiLangData = {
         "en": "Saved Weapon Setups",
         "ja": "保存済みの編成",
     },
+    // send request
+    "追加要望を送る": {
+        "en": "Send new template request",
+        "ja": "追加要望を送る",
+    },
+    "追加要望を送る": {
+        "en": "Send new template request",
+        "ja": "追加要望を送る",
+    },
+    "キャラ追加要望": {
+        "en": "New character template request",
+        "ja": "キャラ追加要望",
+    },
+    "武器追加要望": {
+        "en": "New weapon template request",
+        "ja": "武器追加要望",
+    },
+    "要望種別": {
+        "en": "Request type",
+        "ja": "要望種別",
+    },
+    "名": {
+        "en": "name ",
+        "ja": "名",
+    },
+    "メッセージ": {
+        "en": "Message ",
+        "ja": "詳細",
+    },
+    "あなたのお名前": {
+        "en": "Your name (optional) ",
+        "ja": "あなたのお名前（任意）",
+    },
+    "送信": {
+        "en": "SUBMIT",
+        "ja": "送信",
+    },
+    "要望送信メッセージ": {
+        "en": "Send a comment to github motocal Issue.",
+        "ja": "github/motocalのIssueに要望コメントを送信します.",
+    },
     // Notice
     "広告": {
         "en": "Ad.",
@@ -1405,6 +1446,10 @@ var multiLangData = {
     "notice-20170121-4": {
         "en": "2017/01/21: Added Zenith Perk for Party HP Bonus",
         "ja": "2017/01/21: パーティHPボーナスのゼニス入力欄を追加",
+    },
+    "notice-20170121-5": {
+        "en": "2017/01/21: Added Send new tempalte request button.",
+        "ja": "2017/01/21: テンプレート追加要望ボタンを追加.",
     },
 }
 

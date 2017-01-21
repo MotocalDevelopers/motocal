@@ -4,6 +4,100 @@ var GlobalConst = require('./global_const.js')
 var _ua = GlobalConst._ua;
 var selector = GlobalConst.selector
 var intl = require('./translate.js')
+var {githubAPItoken} = require('./secret_consts.js')
+
+var SendRequest = React.createClass({
+    getInitialState: function() {
+        return {
+            name: "",
+            message: "",
+            yourname: "",
+        }
+    },
+    sendRequestToGithub: function() {
+        if(this.state.name != "") {
+            var sendData = {"body": ""}
+            if(this.yourname != "") {
+                sendData["body"] += "投稿者: " + this.state.yourname + "\n"
+            }
+
+            sendData["body"] += "種別: " + this.props.type + "\n" + this.props.type + "名: " + this.state.name + "\n"
+
+            if(this.message != "") {
+                sendData["body"] += "メッセージ:" + this.state.message + "\n"
+            }
+
+            $.ajax({
+                url: "https://api.github.com/repos/hoshimi/motocal/issues/" + this.props.issueNumber + "/comments",
+                type: 'post',
+                data: JSON.stringify(sendData),
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "token " + githubAPItoken);
+                    xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
+                },
+                success: function(data) {
+                    // console.log("[RESPONSE]")
+                    // console.log(data)
+                    alert(intl.translate("送信成功", this.props.locale));
+                    this.props.closeSendRequest();
+                }.bind(this),
+                error: function(xhr, status, err) {
+                    // console.error("[ERROR]: xhr: ", xhr)
+                    // console.error("[ERROR]: ", status, err.toString())
+                    this.props.closeSendRequest();
+                }.bind(this)
+            });
+        } else {
+            if(this.props.locale == "ja") {
+                alert("要望した" + this.props.type + "名が空です");
+            } else {
+                alert(this.props.type + " name must not be empty.");
+            }
+        }
+    },
+    handleEvent: function(key, e) {
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+    },
+    render: function() {
+        var locale = this.props.locale
+
+        return (
+            <div className="sendRequestForm">
+                <p> <a href="https://github.com/hoshimi/motocal"> github.com / motocal </a> </p>
+                <p>{intl.translate("要望送信メッセージ", locale)}</p>
+                <table className="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("要望種別", locale)}</th>
+                            <td>{this.props.type}</td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{this.props.type}{intl.translate("名", locale)}</th>
+                            <td>
+                                <FormControl type="text" value={this.state.name} onChange={this.handleEvent.bind(this, "name")} style={{textAlign: "left"}} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("メッセージ", locale)}</th>
+                            <td>
+                                <FormControl componentClass="textarea" value={this.state.message} onChange={this.handleEvent.bind(this, "message")} style={{textAlign: "left", height: "200px"}} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("あなたのお名前", locale)}</th>
+                            <td>
+                                <FormControl type="text" value={this.state.yourname} onChange={this.handleEvent.bind(this, "yourname")} style={{textAlign: "left"}} />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <Button bsStyle="primary" onClick={this.sendRequestToGithub}>{intl.translate("送信", locale)}</Button>
+            </div>
+        )
+    },
+});
 
 var RegisteredChara = React.createClass({
     getInitialState: function() {
@@ -12,6 +106,7 @@ var RegisteredChara = React.createClass({
             filterElement: "all",
             charaData: {},
             limit: 50,
+            openSendRequest: false,
         };
     },
     componentDidMount: function() {
@@ -35,6 +130,12 @@ var RegisteredChara = React.createClass({
         var newState = this.state
         newState[key] = e.target.value
         this.setState(newState)
+    },
+    openSendRequest: function(e) {
+        this.setState({openSendRequest: true})
+    },
+    closeSendRequest: function(e) {
+        this.setState({openSendRequest: false})
     },
     render: function() {
         var clickedTemplate = this.clickedTemplate;
@@ -91,7 +192,18 @@ var RegisteredChara = React.createClass({
                             }
                             return "";
                         })}
+
                     </div>
+                    <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>
+
+                    <Modal show={this.state.openSendRequest} onHide={this.closeSendRequest}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>{intl.translate("キャラ追加要望", locale)}</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <SendRequest locale={locale} type={intl.translate("キャラ", locale)} issueNumber={29} closeSendRequest={this.closeSendRequest} />
+                        </Modal.Body>
+                    </Modal>
                 </div>
             )
         }
@@ -115,7 +227,14 @@ var RegisteredArm = React.createClass({
             additionalSelectClass: "hidden",
             old_element: "light",
             cosmos_skill: "cosmosAT",
+            openSendRequest: false,
         };
+    },
+    openSendRequest: function(e) {
+        this.setState({openSendRequest: true})
+    },
+    closeSendRequest: function(e) {
+        this.setState({openSendRequest: false})
     },
     closeConsiderNumberModal: function() {
         this.setState({openConsiderNumberModal: false})
@@ -286,6 +405,18 @@ var RegisteredArm = React.createClass({
                             return "";
                         })}
                     </div>
+
+                    <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>
+
+                    <Modal show={this.state.openSendRequest} onHide={this.closeSendRequest}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>{intl.translate("武器追加要望", locale)}</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <SendRequest locale={locale} type={intl.translate("武器", locale)} issueNumber={30} closeSendRequest={this.closeSendRequest} />
+                        </Modal.Body>
+                    </Modal>
+
                     <Modal className="presetsConsiderNumber" show={this.state.openConsiderNumberModal} onHide={this.closeConsiderNumberModal}>
                         <Modal.Header closeButton>
                             <Modal.Title>{intl.translate("何本追加", locale)}</Modal.Title>
