@@ -670,15 +670,15 @@ var multiLangData = {
         "ja": "操作",
     },
     "通常攻刃": {
-        "en": "Attack ",
+        "en": "Normal Might ",
         "ja": "通常攻刃",
     },
     "通常背水": {
-        "en": "Enmity ",
+        "en": "Normal Enmity ",
         "ja": "通常背水",
     },
     "通常渾身": {
-        "en": "Konshin ",
+        "en": "Normal Stamina ",
         "ja": "通常渾身",
     },
     "マグナ背水": {
@@ -692,6 +692,10 @@ var multiLangData = {
     "アンノウン背水": {
         "en": "Unknown Enmity ",
         "ja": "アンノウン背水",
+    },
+    "キャラ背水": {
+        "en": "Chara Enmity ",
+        "ja": "キャラ背水",
     },
     "グラフに加える": {
         "en": "Add to \ngraphs",

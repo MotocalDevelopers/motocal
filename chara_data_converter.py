@@ -39,6 +39,7 @@ supportAbilist["ougi_gage_up_own_10"] = {u"戦賢の書"}
 supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼の悪魔"}
 supportAbilist["ougi_gage_up_own_100"] = {u"明鏡止水"}
 supportAbilist["ougi_damage_up_1_5"] = {u"天星剣王"}
+supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
 
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
