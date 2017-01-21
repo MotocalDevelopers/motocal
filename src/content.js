@@ -4516,406 +4516,262 @@ var Profile = React.createClass({
     render: function() {
         var locale = this.props.locale
 
-        if(_ua.Mobile || _ua.Tablet) {
-            return (
-                <div className="profile">
-                    <h3> ジータさん情報 (*: 推奨入力項目)</h3>
-                    <table className="table table-bordered">
-                        <tbody>
+        return (
+            <div className="profile">
+                <h3> {intl.translate("プロフィールタイトル", locale)}</h3>
+                <table className="table table-sm table-bordered table-responsive">
+                    <tbody>
+                    <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
                         <tr>
-                            <th className="prof">Rank*</th>
-                            <th className="prof">ゼニス攻撃力*</th>
-                            <th className="prof">ゼニスHP</th>
-                            <th className="prof">マスボ<br/>ATK(%)*</th>
-                        </tr>
-                        <tr>
+                            <th className="bg-primary">Rank*</th>
                             <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")} > {selector.zenithAttack} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">マスボ<br/>HP(%)*</th>
-                            <th className="prof">ジョブ*</th>
-                            <th className="prof">残HP(%)<br/>(ジータさんのみ)</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs[locale]}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">ジータ属性*</th>
-                            <th className="prof">敵の属性*</th>
-                            <th className="prof">武器ゼニス1</th>
-                            <th className="prof">武器ゼニス2</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses[locale]} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses[locale]} </FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="prof">基礎DA率</th>
-                            <th className="prof">基礎TA率</th>
-                            <th className="prof">敵防御固有値</th>
-                            <th className="prof">奥義倍率</th>
-                        </tr>
-                        <tr>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <span>
-                    {Jobs[this.state.job].name}:
-                    得意 [{armTypes[Jobs[this.state.job].favArm1]}, {armTypes[Jobs[this.state.job].favArm2]}],
-                    {jobTypes[Jobs[this.state.job].type]}タイプ,
-                    攻撃ボーナス {Jobs[this.state.job].atBonus},
-                    HPボーナス {Jobs[this.state.job].hpBonus},
-                    攻刃バフ {Jobs[this.state.job].kouzinBonus},
-                    守護バフ {Jobs[this.state.job].shugoBonus},
-                    基礎DA率 {Jobs[this.state.job].DaBonus}%,
-                    基礎TA率 {Jobs[this.state.job].TaBonus}%
-                    </span>
-
-                    <h3> パーティ全体への効果 (%表記)</h3>
-                    <table className="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th className="buff">{intl.translate("通常バフ", locale)}</th>
-                            <th className="buff">属性バフ</th>
-                            <th className="buff">その他バフ</th>
-                            <th className="buff">HPバフ</th>
-                        </tr><tr>
-                            <td><FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/></td>
-                            <td><FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/></td>
-                        </tr><tr>
-                            <th className="buff">DAバフ</th>
-                            <th className="buff">TAバフ</th>
-                            <th className="buff">残HP(%)</th>
-                            <th className="prof">奥義ゲージ上昇率アップ</th>
-                        </tr><tr>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/></td>
-                            <td><FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/></td>
-                            <td><FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl></td>
-                            <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl></td>
-                        </tr><tr>
-                            <th className="buff">追加ダメージ(%)</th>
-                            <th className="buff"></th>
-                            <th className="buff"></th>
-                            <th className="prof"></th>
-                        </tr><tr>
-                            <td><FormControl componentClass="select" value={this.state.additionalDamageBuff} onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                    <h3 className="margin-top"> Advanced settings</h3>
-                    <p>もっともっと詳しく計算したい方向けの項目です。</p>
-                    <table className="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th className="advanced-setting">敵防御固有値</th>
-                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl></td>
-                            <td className="advanced-setting">
-                            想定される敵の防御固有値を設定します。<br/>
-                            単攻撃ダメージ、奥義ダメージ、<br/>
-                            予想ターン毎ダメージの計算に影響します。<br/>
-                            (単攻撃ダメージに減衰補正がかかる(44万超え)<br/>
-                             ような攻撃力でない限り、編成の順位自体は変化しないと思われます。)
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="advanced-setting">ジータさん<br/>基礎DA率</th>
-                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                            <td className="advanced-setting">ジータさんの基礎DA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
-                        </tr>
-                        <tr>
-                            <th className="advanced-setting">ジータさん<br/>基礎TA率</th>
-                            <td className="advanced-setting"><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                            <td className="advanced-setting">ジータさんの基礎TA率を設定します。<br/>ジョブを変更すると自動的に切り替わります。</td>
-                        </tr>
-                        <tr>
-                            <th className="advanced-setting">ジータさん<br/>奥義倍率</th>
-                            <td className="advanced-setting"><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
-                            <td className="advanced-setting">ジータさんの奥義倍率を設定します。<br/>奥義ダメージ、予想ターン毎ダメージの計算に影響します。</td>
-                        </tr>
-                        <tr>
-                            <th className="advanced-setting">確保したい<br/>ジータさんHP</th>
-                            <td className="advanced-setting"><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
-                            <td className="advanced-setting">暴君・守護など混みの最終HPの最低ラインを設定できます。<br/>これを下回った編成は表示されません。<br/>(初期値は0です) ジータさんのHPベースです。</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            );
-        } else {
-            return (
-                <div className="profile">
-                    <h3> {intl.translate("プロフィールタイトル", locale)}</h3>
-                    <table className="table table-sm table-bordered table-responsive">
-                        <tbody>
-                        <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
-                            <tr>
-                                <th className="bg-primary">Rank*</th>
-                                <td><FormControl type="number" min="1" max="175" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/></td>
-                            </tr>
-                        </TextWithTooltip>
-
-                        <TextWithTooltip tooltip={intl.translate("ジョブ説明", locale)} id={"tooltip-job-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("ジョブ", locale)}*
-                            <span style={{display: "block"}} className="label label-default">{intl.translate("得意", locale)} [{intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}]</span>
-                            <span style={{display: "block"}} className="label label-primary">{intl.translate(jobTypes[Jobs[this.state.job].type], locale)}{intl.translate("タイプ", locale)}</span>
-                            <span style={{display: "block"}} className="label label-success">{intl.translate("攻撃ボーナス", locale)} {Jobs[this.state.job].atBonus}</span>
-                            <span style={{display: "block"}} className="label label-danger">{intl.translate("HPボーナス", locale)} {Jobs[this.state.job].hpBonus}</span>
-                            <span style={{display: "block"}} className="label label-success">{intl.translate("攻刃ボーナス", locale)} {Jobs[this.state.job].kouzinBonus}</span>
-                            <span style={{display: "block"}} className="label label-primary">{intl.translate("守護ボーナス", locale)} {Jobs[this.state.job].shugoBonus}</span>
-                            <span style={{display: "block"}} className="label label-danger">{intl.translate("基礎DA率", locale)} {Jobs[this.state.job].DaBonus}%</span>
-                            <span style={{display: "block"}} className="label label-default">{intl.translate("基礎TA率", locale)} {Jobs[this.state.job].TaBonus}%</span>
-                            </th>
-                            <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs[locale]} </FormControl></td>
-                        </tr>
-                        </TextWithTooltip>
-
-                        <tr>
-                            <th className="bg-primary">{intl.translate("ゼニス攻撃力", locale)}*</th>
-                            <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl></td>
-                        </tr>
-
-                        <tr>
-                            <th className="bg-primary">{intl.translate("ゼニスHP", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
-                        </tr>
-
-                        <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                            {intl.translate("マスボATK", locale)}*
-                            </th>
-                            <td>
-                            <InputGroup>
-                            <FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr></TextWithTooltip>
-
-                        <TextWithTooltip tooltip={intl.translate("マスボHP説明", locale)} id={"tooltip-masterbonus-hp-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                            {intl.translate("マスボHP", locale)}
-                            </th>
-                            <td>
-                            <InputGroup>
-                            <FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr></TextWithTooltip>
-
-                        <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)} id={"tooltip-remain-hp-djeeta-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                            {intl.translate("残HP割合", locale)}<br/>{intl.translate("ジータさんのみ", locale)}
-                            </th>
-                            <td>
-                            <InputGroup>
-                            <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr></TextWithTooltip>
-
-                        <tr>
-                            <th className="bg-primary">{intl.translate("ジータさん属性", locale)}*</th>
-                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl></td>
-                        </tr>
-
-                        <TextWithTooltip tooltip={intl.translate("敵の属性説明", locale)} id={"tooltip-enemy-element-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                            {intl.translate("敵の属性", locale)}*
-                            </th>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
-                        </tr></TextWithTooltip>
-
-                        <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                            {intl.translate("武器ゼニス1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})</th>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses[locale]} </FormControl></td>
-                        </tr></TextWithTooltip>
-
-                        <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                            {intl.translate("武器ゼニス2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})</th>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses[locale]} </FormControl></td>
-                        </tr></TextWithTooltip>
-                        </tbody>
-                    </table>
-
-                    <h3 className="margin-top"> {intl.translate("パーティバフタイトル", locale)}</h3>
-                    <p>{intl.translate("パーティバフ説明", locale)}</p>
-                    <table className="table table-bordered table-responsive">
-                        <tbody>
-                        <tr>
-                        </tr>
-                        <TextWithTooltip tooltip={intl.translate("通常バフ説明", locale)} id={"tooltip-normalbuff-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                            {intl.translate("通常バフ", locale)}
-                            </th>
-                            <td className="table-profile-td">
-                            <InputGroup>
-                            <FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("属性バフ説明", locale)} id={"tooltip-elementbuff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("ジョブ説明", locale)} id={"tooltip-job-detail"}>
                     <tr>
-                            <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
-                            <td>
-                            <InputGroup>
-                            <FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("その他バフ説明", locale)} id={"tooltip-otherbuff-detail"}><tr>
-                            <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
-                            <td>
-                            <InputGroup>
-                            <FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("HPバフ説明", locale)} id={"tooltip-hpbuff-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
-                            <td>
-                            <InputGroup>
-                            <FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("DAバフ説明", locale)} id={"tooltip-dabuff-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
-                            <td>
-                            <InputGroup>
-                            <FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("TAバフ説明", locale)} id={"tooltip-tabuff-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
-                            <td>
-                            <InputGroup>
-                            <FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("残HP割合", locale)} id={"tooltip-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("残HP割合", locale)}</th>
-                            <td>
-                            <InputGroup>
-                            <FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("追加ダメージバフ説明", locale)} id={"tooltip-additionalbuff-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
-                            <td>
-                            <InputGroup>
-                            <FormControl componentClass="select" value={this.state.additionalDamageBuff} onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇率アップ説明", locale)} id={"tooltip-ougigagebuff-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
-                            <td>
-                            <InputGroup>
-                            <FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
-                            <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
-                            </td>
-                        </tr>
-                        </TextWithTooltip>
-                        </tbody>
-                    </table>
+                        <th className="bg-primary">{intl.translate("ジョブ", locale)}*
+                        <span style={{display: "block"}} className="label label-default">{intl.translate("得意", locale)} [{intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}]</span>
+                        <span style={{display: "block"}} className="label label-primary">{intl.translate(jobTypes[Jobs[this.state.job].type], locale)}{intl.translate("タイプ", locale)}</span>
+                        <span style={{display: "block"}} className="label label-success">{intl.translate("攻撃ボーナス", locale)} {Jobs[this.state.job].atBonus}</span>
+                        <span style={{display: "block"}} className="label label-danger">{intl.translate("HPボーナス", locale)} {Jobs[this.state.job].hpBonus}</span>
+                        <span style={{display: "block"}} className="label label-success">{intl.translate("攻刃ボーナス", locale)} {Jobs[this.state.job].kouzinBonus}</span>
+                        <span style={{display: "block"}} className="label label-primary">{intl.translate("守護ボーナス", locale)} {Jobs[this.state.job].shugoBonus}</span>
+                        <span style={{display: "block"}} className="label label-danger">{intl.translate("基礎DA率", locale)} {Jobs[this.state.job].DaBonus}%</span>
+                        <span style={{display: "block"}} className="label label-default">{intl.translate("基礎TA率", locale)} {Jobs[this.state.job].TaBonus}%</span>
+                        </th>
+                        <td><FormControl componentClass="select" value={this.state.job} onChange={this.handleSelectEvent.bind(this, "job")} > {this.props.alljobs[locale]} </FormControl></td>
+                    </tr>
+                    </TextWithTooltip>
 
-                    <h3 className="margin-top"> {intl.translate("Advanced", locale)}</h3>
-                    <p>{intl.translate("Advanced 説明", locale)}</p>
-                    <table className="table table-bordered table-responsive">
-                        <tbody>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ゼニス攻撃力", locale)}*</th>
+                        <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl></td>
+                    </tr>
 
-                        <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl></td>
-                        </tr>
-                        </TextWithTooltip>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ゼニスHP", locale)}</th>
+                        <td><FormControl componentClass="select" value={this.state.zenithHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")} > {selector.zenithHP} </FormControl></td>
+                    </tr>
 
-                        <TextWithTooltip tooltip={intl.translate("ジータさん基礎DA率説明", locale)} id={"tooltip-player-baseda-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎DA率", locale)}</th>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("ジータさん基礎TA率説明", locale)} id={"tooltip-player-baseta-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎TA率", locale)}</th>
-                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("ジータさん奥義倍率説明", locale)} id={"tooltip-ougi-ratio-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
-                        </tr>
-                        </TextWithTooltip>
-                        <TextWithTooltip tooltip={intl.translate("確保HP説明", locale)} id={"tooltip-minimu-hp-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("確保HP", locale)}</th>
-                            <td><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
-                        </tr>
-                        </TextWithTooltip>
-                        </tbody>
-                    </table>
-                </div>
-            );
-        }
+                    <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
+                    <tr>
+                        <th className="bg-primary">
+                        {intl.translate("マスボATK", locale)}*
+                        </th>
+                        <td>
+                        <InputGroup>
+                        <FormControl componentClass="select" value={this.state.masterBonus} onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr></TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("マスボHP説明", locale)} id={"tooltip-masterbonus-hp-detail"}>
+                    <tr>
+                        <th className="bg-primary">
+                        {intl.translate("マスボHP", locale)}
+                        </th>
+                        <td>
+                        <InputGroup>
+                        <FormControl componentClass="select" value={this.state.masterBonusHP} onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr></TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)} id={"tooltip-remain-hp-djeeta-detail"}>
+                    <tr>
+                        <th className="bg-primary">
+                        {intl.translate("残HP割合", locale)}<br/>{intl.translate("ジータさんのみ", locale)}
+                        </th>
+                        <td>
+                        <InputGroup>
+                        <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr></TextWithTooltip>
+
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ジータさん属性", locale)}*</th>
+                        <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl></td>
+                    </tr>
+
+                    <TextWithTooltip tooltip={intl.translate("敵の属性説明", locale)} id={"tooltip-enemy-element-detail"}>
+                    <tr>
+                        <th className="bg-primary">
+                        {intl.translate("敵の属性", locale)}*
+                        </th>
+                        <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
+                    </tr></TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
+                    <tr>
+                        <th className="bg-primary">
+                        {intl.translate("武器ゼニス1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})</th>
+                        <td><FormControl componentClass="select" value={this.state.zenithBonus1} onChange={this.handleSelectEvent.bind(this, "zenithBonus1")} > {this.props.zenithBonuses[locale]} </FormControl></td>
+                    </tr></TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
+                    <tr>
+                        <th className="bg-primary">
+                        {intl.translate("武器ゼニス2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})</th>
+                        <td><FormControl componentClass="select" value={this.state.zenithBonus2} onChange={this.handleSelectEvent.bind(this, "zenithBonus2")} > {this.props.zenithBonuses[locale]} </FormControl></td>
+                    </tr></TextWithTooltip>
+                    </tbody>
+                </table>
+
+                <h3 className="margin-top"> {intl.translate("パーティバフタイトル", locale)}</h3>
+                <p>{intl.translate("パーティバフ説明", locale)}</p>
+                <table className="table table-bordered table-responsive">
+                    <tbody>
+                    <tr>
+                    </tr>
+                    <TextWithTooltip tooltip={intl.translate("通常バフ説明", locale)} id={"tooltip-normalbuff-detail"}>
+                    <tr>
+                        <th className="bg-primary">
+                        {intl.translate("通常バフ", locale)}
+                        </th>
+                        <td className="table-profile-td">
+                        <InputGroup>
+                        <FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                </TextWithTooltip>
+
+                <TextWithTooltip tooltip={intl.translate("属性バフ説明", locale)} id={"tooltip-elementbuff-detail"}>
+                <tr>
+                        <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
+                        <td>
+                        <InputGroup>
+                        <FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("その他バフ説明", locale)} id={"tooltip-otherbuff-detail"}><tr>
+                        <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
+                        <td>
+                        <InputGroup>
+                        <FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("HPバフ説明", locale)} id={"tooltip-hpbuff-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
+                        <td>
+                        <InputGroup>
+                        <FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("DAバフ説明", locale)} id={"tooltip-dabuff-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
+                        <td>
+                        <InputGroup>
+                        <FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("TAバフ説明", locale)} id={"tooltip-tabuff-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
+                        <td>
+                        <InputGroup>
+                        <FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("残HP割合", locale)} id={"tooltip-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("残HP割合", locale)}</th>
+                        <td>
+                        <InputGroup>
+                        <FormControl componentClass="select" value={this.state.hp} onChange={this.handleSelectEvent.bind(this, "hp")}>{selector.hplist}</FormControl>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("追加ダメージバフ説明", locale)} id={"tooltip-additionalbuff-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
+                        <td>
+                        <InputGroup>
+                        <FormControl componentClass="select" value={this.state.additionalDamageBuff} onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇率アップ説明", locale)} id={"tooltip-ougigagebuff-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                        <td>
+                        <InputGroup>
+                        <FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+                    </tbody>
+                </table>
+
+                <h3 className="margin-top"> {intl.translate("Advanced", locale)}</h3>
+                <p>{intl.translate("Advanced 説明", locale)}</p>
+                <table className="table table-bordered table-responsive">
+                    <tbody>
+
+                    <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
+                        <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl></td>
+                    </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("ジータさん基礎DA率説明", locale)} id={"tooltip-player-baseda-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎DA率", locale)}</th>
+                        <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("ジータさん基礎TA率説明", locale)} id={"tooltip-player-baseta-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎TA率", locale)}</th>
+                        <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("ジータさん奥義倍率説明", locale)} id={"tooltip-ougi-ratio-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}</th>
+                        <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl></td>
+                    </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("確保HP説明", locale)} id={"tooltip-minimu-hp-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("確保HP", locale)}</th>
+                        <td><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
+                    </tr>
+                    </TextWithTooltip>
+                    </tbody>
+                </table>
+            </div>
+        );
     }
 });
 var Sys = React.createClass({
