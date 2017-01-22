@@ -1455,6 +1455,10 @@ var multiLangData = {
         "en": "2017/01/22: Fixed a bug that some weapon which have element changes cannot add. / Added new weapons",
         "ja": "2017/01/22: 属性変更武器が追加できなくなっていた不具合を修正 / 武器追加",
     },
+    "notice-20170122-2": {
+        "en": "2017/01/22: Fixed invalid Open Enmity-Graph call if character length > 3.",
+        "ja": "2017/01/22: キャラ数が4人以上の場合に背水グラフが開けなくなっていた不具合を修正",
+    },
 }
 
 // 言語設定

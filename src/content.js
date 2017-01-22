@@ -2202,15 +2202,15 @@ var ResultList = React.createClass({
     recalcCharaHaisui: function(chara, remainHP) {
         var charaHaisuiValue = 1.0;
 
-        for(var i = 0; i < chara.length; i++){
-            if(chara[i].name != "" && chara[i].isConsideredInAverage) {
+        for(var ch = 0; ch < chara.length; ch++){
+            if(chara[ch].name != "" && chara[ch].isConsideredInAverage) {
                 for(var i = 0; i < 2; i++) {
                     if(i == 0) {
-                        if(chara[i]["support"] == undefined) continue;
-                        var support = supportAbilities[chara[i]["support"]];
+                        if(chara[ch]["support"] == undefined) continue;
+                        var support = supportAbilities[chara[ch]["support"]];
                     } else {
-                        if(chara[i]["support2"] == undefined) continue;
-                        var support = supportAbilities[chara[i]["support2"]];
+                        if(chara[ch]["support2"] == undefined) continue;
+                        var support = supportAbilities[chara[ch]["support2"]];
                     }
 
                     if(support.type == "none") continue;
@@ -2408,6 +2408,13 @@ var ResultList = React.createClass({
             }
         }
 
+        // キャラ編成は武器編成毎には変わらないので先に計算することができる
+        var charaHaisuiBuff = []
+        for(var k = 0; k < 100; ++k){
+            var charaHaisuiValue = this.recalcCharaHaisui(chara, 0.01 * (k + 1));
+            charaHaisuiBuff.push(charaHaisuiValue);
+        }
+
         for(var s = 0; s < res.length; s++) {
             var oneresult = res[s]
             var summonHeader = ""
@@ -2463,13 +2470,6 @@ var ResultList = React.createClass({
                         var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
                         title += name + storedCombinations[j][i] + "本\n"
                     }
-                }
-
-                // キャラ編成は武器編成毎には変わらないので先に計算することができる
-                var charaHaisuiBuff = []
-                for(var k = 0; k < 100; ++k){
-                    var charaHaisuiValue = this.recalcCharaHaisui(chara, 0.01 * (k + 1));
-                    charaHaisuiBuff.push(charaHaisuiValue);
                 }
 
                 for(key in onedata){
