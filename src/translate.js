@@ -1459,6 +1459,10 @@ var multiLangData = {
         "en": "2017/01/22: Fixed invalid Open Enmity-Graph call if character length > 3.",
         "ja": "2017/01/22: キャラ数が4人以上の場合に背水グラフが開けなくなっていた不具合を修正",
     },
+    "notice-20170123-1": {
+        "en": "2017/01/23: Added new templates. / Changed the standard sortkey.",
+        "ja": "2017/01/23: 新規キャラと武器追加 / 標準のソートキーを変更",
+    },
 }
 
 // 言語設定

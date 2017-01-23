@@ -78,7 +78,7 @@ var Root = React.createClass({
           summon: [],
           simulator: [],
           dataName: '',
-          sortKey: "totalAttack",
+          sortKey: "averageCyclePerTurn",
           noResultUpdate: false,
           resultHasChangeButNotUpdated: false,
           oldWidth: window.innerWidth,
@@ -2015,8 +2015,8 @@ var ResultList = React.createClass({
 
           // 後から追加したパラメータはNaNなことがあるので追加処理
           // sortKey がNaNでないならそちらを使う、NaNなら総合攻撃力で
-          var sortkey = "totalAttack"
-          var sortkeyname = "攻撃力(二手技巧無し,ジータさんのみ)"
+          var sortkey = "averageCyclePerTurn"
+          var sortkeyname = "予想ターン毎ダメージのパーティ平均値"
           if(newprops.data.sortKey == newprops.data.sortKey) {
               sortkey = newprops.data.sortKey
               sortkeyname = keyTypes[sortkey]
@@ -2332,8 +2332,8 @@ var ResultList = React.createClass({
         var totals = this.getInitialTotals(prof, chara, summon)
         this.treatSupportAbility(totals, chara)
 
-        var sortkey = "totalAttack"
-        var sortkeyname = "攻撃力(二手技巧無し)"
+        var sortkey = "averageCyclePerTurn"
+        var sortkeyname = "予想ターン毎ダメージのパーティ平均値"
         if(this.props.data.sortKey == this.props.data.sortKey) {
             sortkey = this.props.data.sortKey
             sortkeyname = keyTypes[sortkey]
@@ -2643,8 +2643,8 @@ var ResultList = React.createClass({
         var totals = this.getInitialTotals(prof, chara, summon)
         this.treatSupportAbility(totals, chara)
 
-        var sortkey = "totalAttack"
-        var sortkeyname = "攻撃力(二手技巧無し)"
+        var sortkey = "averageCyclePerTurn"
+        var sortkeyname = "予想ターン毎ダメージのパーティ平均値"
         if(this.props.data.sortKey == this.props.data.sortKey) {
             sortkey = this.props.data.sortKey
             sortkeyname = keyTypes[sortkey]
