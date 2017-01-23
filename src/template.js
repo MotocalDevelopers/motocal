@@ -13,10 +13,12 @@ var SendRequest = React.createClass({
             name: "",
             message: "",
             yourname: "",
+            sendingMessage: false,
         }
     },
     sendRequestToGithub: function() {
         if(this.state.name != "") {
+            this.setState({sendingMessage: true})
             var sendData = {"body": ""}
             if(this.yourname != "") {
                 sendData["body"] += "投稿者: " + this.state.yourname + "\n"
@@ -37,14 +39,12 @@ var SendRequest = React.createClass({
                     xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
                 },
                 success: function(data) {
-                    // console.log("[RESPONSE]")
-                    // console.log(data)
                     alert(intl.translate("送信成功", this.props.locale));
+                    this.setState({sendingMessage: false})
                     this.props.closeSendRequest();
                 }.bind(this),
                 error: function(xhr, status, err) {
-                    // console.error("[ERROR]: xhr: ", xhr)
-                    // console.error("[ERROR]: ", status, err.toString())
+                    this.setState({sendingMessage: false})
                     this.props.closeSendRequest();
                 }.bind(this)
             });
@@ -94,7 +94,7 @@ var SendRequest = React.createClass({
                         </tr>
                     </tbody>
                 </table>
-                <Button bsStyle="primary" onClick={this.sendRequestToGithub}>{intl.translate("送信", locale)}</Button>
+                <Button bsStyle="primary" onClick={this.sendRequestToGithub} disabled={this.sendingMessage}>{intl.translate("送信", locale)}</Button>
             </div>
         )
     },

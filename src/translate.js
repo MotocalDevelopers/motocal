@@ -1406,6 +1406,10 @@ var multiLangData = {
         "en": "SUBMIT",
         "ja": "送信",
     },
+    "送信成功": {
+        "en": "Your request was sent!",
+        "ja": "要望を送信しました!",
+    },
     "要望送信メッセージ": {
         "en": "Send a comment to github motocal Issue.",
         "ja": "github/motocalのIssueに要望コメントを送信します.",
