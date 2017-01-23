@@ -1,4 +1,19 @@
 {
+    "[]リユニオン": {
+        "element2": "wind", 
+        "name": "[]リユニオン", 
+        "imageURL": "./imgs/1040108200.png", 
+        "skill2": "non", 
+        "skill1": "normalLL", 
+        "element": "wind", 
+        "minattack": "450", 
+        "attack": "2650", 
+        "slvmax": 10, 
+        "minhp": "42", 
+        "type": "dagger", 
+        "hp": "260", 
+        "maxlv": 100
+    }, 
     "[蒼聖刀]スノー・フレーク": {
         "element2": "water", 
         "name": "[蒼聖刀]スノー・フレーク", 
