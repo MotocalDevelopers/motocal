@@ -2235,7 +2235,7 @@ var ResultList = React.createClass({
         return {
             switchTotalAttack: 1,
             switchATKandHP: 0,
-            switchHP: 0,
+            switchHP: 1,
             switchCharaHP: 0,
             switchDATA: 0,
             switchExpectedAttack: 0,
