@@ -4186,9 +4186,13 @@ var Profile = React.createClass({
 
         return (
             <div className="profile">
-                <h3> {intl.translate("プロフィールタイトル", locale)}</h3>
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
+                    <tr>
+                        <td colSpan="2">
+                            <strong>{intl.translate("プロフィールタイトル", locale)}</strong>
+                        </td>
+                    </tr>
                     <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
                         <tr>
                             <th className="bg-primary">Rank*</th>
@@ -4263,12 +4267,13 @@ var Profile = React.createClass({
                         </th>
                         <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
                     </tr></TextWithTooltip>
-                    </tbody>
-                </table>
 
-                <h3 className="margin-top"> {intl.translate("ゼニスパーク", locale)}</h3>
-                <table className="table table-sm table-bordered table-responsive">
-                    <tbody>
+                    <tr>
+                        <td colSpan="2">
+                        <strong>{intl.translate("ゼニスパーク", locale)}</strong>
+                        </td>
+                    </tr>
+
                     <tr>
                         <th className="bg-primary">{intl.translate("ゼニス攻撃力", locale)}*</th>
                         <td><FormControl componentClass="select" value={this.state.zenithAttackBonus} onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl></td>
@@ -4297,15 +4302,14 @@ var Profile = React.createClass({
                         <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.zenithPartyHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")} > {selector.zenithHP} </FormControl></td>
                     </tr>
-                    </tbody>
-                </table>
 
-                <h3 className="margin-top"> {intl.translate("パーティバフタイトル", locale)}</h3>
-                <p>{intl.translate("パーティバフ説明", locale)}</p>
-                <table className="table table-bordered table-responsive">
-                    <tbody>
                     <tr>
+                        <td colSpan="2">
+                        <strong>{intl.translate("パーティバフタイトル", locale)}</strong>
+                        <p>{intl.translate("パーティバフ説明", locale)}</p>
+                        </td>
                     </tr>
+
                     <TextWithTooltip tooltip={intl.translate("通常バフ説明", locale)} id={"tooltip-normalbuff-detail"}>
                     <tr>
                         <th className="bg-primary">
@@ -4407,13 +4411,13 @@ var Profile = React.createClass({
                         </td>
                     </tr>
                     </TextWithTooltip>
-                    </tbody>
-                </table>
 
-                <h3 className="margin-top"> {intl.translate("Advanced", locale)}</h3>
-                <p>{intl.translate("Advanced 説明", locale)}</p>
-                <table className="table table-bordered table-responsive">
-                    <tbody>
+                    <tr>
+                        <td colSpan="2">
+                            <strong>{intl.translate("Advanced", locale)}</strong>
+                            <p>{intl.translate("Advanced 説明", locale)}</p>
+                        </td>
+                    </tr>
 
                     <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
                     <tr>
