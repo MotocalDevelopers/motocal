@@ -1475,6 +1475,10 @@ var multiLangData = {
         "en": "2017/01/23: Added new templates. / Changed the standard sortkey.",
         "ja": "2017/01/23: 新規キャラと武器追加 / 標準のソートキーを変更",
     },
+    "notice-20170129-1": {
+        "en": "2017/01/29: Implemented personal buff inputs. (and tweaked character tab style.) / Additional Damage buff gets displayed in skill information.",
+        "ja": "2017/01/29: キャラ個別バフ欄の追加 (キャラ欄の見た目調整) / 追加ダメージバフがスキル情報に表示されるように修正.",
+    },
 }
 
 // 言語設定
