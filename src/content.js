@@ -719,7 +719,6 @@ var Chara = React.createClass({
             elementBuff: 0,
             otherBuff: 0,
             additionalDamageBuff: 0,
-            hpBuff: 0,
             daBuff: 0,
             taBuff: 0,
             ougiGageBuff: 0,
@@ -918,10 +917,6 @@ var Chara = React.createClass({
                             <tr key="taBuff">
                                 <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                                 <td><FormControl componentClass="select" value={this.state.taBuff} onChange={this.handleSelectEvent.bind(this, "taBuff")}>{selector.buffLevel}</FormControl></td>
-                            </tr>,
-                            <tr key="hpBuff">
-                                <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
-                                <td><FormControl componentClass="select" value={this.state.hpBuff} onChange={this.handleSelectEvent.bind(this, "hpBuff")}>{selector.buffLevel}</FormControl></td>
                             </tr>,
                             <tr key="additionalDamageBuff">
                                 <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
@@ -1963,9 +1958,18 @@ var ResultList = React.createClass({
                     k++;
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, ougiGageBuff: 0, ougiDamageBuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0}
+                var charaBuffList = {normalBuff: 0.0, elementBuff: 0.0, otherBuff: 0.0, daBuff: 0.0, taBuff: 0.0, ougiGageBuff: 0.0, additionalDamageBuff: 0.0}
+
+                for(var charabuffkey in charaBuffList) {
+                    if (chara[i][charabuffkey] != undefined) {
+                        charaBuffList[charabuffkey] = 0.01 * parseFloat(chara[i][charabuffkey])
+                    }
+                }
+
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DATAdebuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0}
             }
         }
+
         var races = this.checkNumberofRaces(chara)
         for(var key in totals) {
             totals[key]["totalSummon"] = []
