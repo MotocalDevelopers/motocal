@@ -8,7 +8,6 @@ module.exports.TextWithTooltip = React.createClass({
 
         return (
             <OverlayTrigger overlay={tooltip} placement="top" delayShow={300} delayHide={150}>
-                {/*<span style={{textDecoration: "underline"}}>{this.props.children}</span>*/}
                 {this.props.children}
             </OverlayTrigger>
         );
