@@ -181,6 +181,10 @@ var multiLangData = {
         "en": "Additional damage will be added to \"Expected Turn Damage\".",
         "ja": "追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。",
     },
+    "個別バフ": {
+        "en": "Personal Buff",
+        "ja": "個別バフ",
+    },
     "残HP割合": {
         "en": "Remain HP Ratio",
         "ja": "残HP割合",
@@ -981,7 +985,7 @@ var multiLangData = {
         "ja": "通常攻刃II",
     },
     "通常暴君": {
-        "en": "Normal Boukun",
+        "en": "Normal Tyranny",
         "ja": "通常暴君",
     },
     "通常背水(小)": {

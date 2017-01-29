@@ -714,6 +714,15 @@ var Chara = React.createClass({
             DA: 6.5,
             TA: 3.0,
             isConsideredInAverage: true,
+            openBufflist: false,
+            normalBuff: 0,
+            elementBuff: 0,
+            otherBuff: 0,
+            additionalDamageBuff: 0,
+            hpBuff: 0,
+            daBuff: 0,
+            taBuff: 0,
+            ougiGageBuff: 0,
         };
     },
     componentDidMount: function(){
@@ -809,6 +818,9 @@ var Chara = React.createClass({
     clickMoveDown: function(e) {
         this.props.onMoveDown(this.props.id)
     },
+    switchBufflist: function(e) {
+        this.setState({openBufflist: !(this.state.openBufflist)})
+    },
     render: function() {
         var locale = this.props.locale
 
@@ -819,65 +831,115 @@ var Chara = React.createClass({
                         :
                     <h3><Label bsStyle="default">Sub No.{this.props.id+1}</Label></h3>
                 }
-                <FormGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("キャラ名", locale)}&nbsp;</InputGroup.Addon>
-                    <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/>
-                    <InputGroup.Addon>
-                    <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>{intl.translate("平均に含める", locale)}</Checkbox>
-                    </InputGroup.Addon>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("属性", locale)}　　&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector[locale].elements}</FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("種族", locale)}　　&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector[locale].races}</FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("タイプ", locale)}　&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector[locale].types}</FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("得意武器", locale)}&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector[locale].armtypes}</FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("得意武器", locale)}2</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector[locale].armtypes}</FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("素の攻撃力", locale)}</InputGroup.Addon>
-                    <FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("素のHP", locale)}　</InputGroup.Addon>
-                    <FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("残HP割合", locale)}</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("基礎DA率", locale)}</InputGroup.Addon>
-                    <FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("基礎TA率", locale)}</InputGroup.Addon>
-                    <FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("サポアビ", locale)}&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.support} onChange={this.handleSelectEvent.bind(this, "support")}>{selector.supportAbilities}</FormControl>
-                    <FormControl componentClass="select" value={this.state.support2} onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl>
-                </InputGroup>
+
+                <table className="table table-sm table-bordered table-responsive">
+                    <tbody>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("キャラ名", locale)}</th>
+                            <td>
+                            <InputGroup>
+                                <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/>
+                                <InputGroup.Addon>
+                                <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>{intl.translate("平均に含める", locale)}</Checkbox>
+                                </InputGroup.Addon>
+                            </InputGroup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("属性", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} >{selector[locale].elements}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("種族", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.race} onChange={this.handleSelectEvent.bind(this, "race")} >{selector[locale].races}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("タイプ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.type} onChange={this.handleSelectEvent.bind(this, "type")} >{selector[locale].types}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("得意武器", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.favArm} onChange={this.handleSelectEvent.bind(this, "favArm")} >{selector[locale].armtypes}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("得意武器", locale)}2</th>
+                            <td><FormControl componentClass="select" value={this.state.favArm2} onChange={this.handleSelectEvent.bind(this, "favArm2")} >{selector[locale].armtypes}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("素の攻撃力", locale)}</th>
+                            <td><FormControl type="number" min="0" max="15000" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")}/></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("素のHP", locale)}</th>
+                            <td><FormControl type="number" min="0" max="5000" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")}/></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("残HP割合", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.remainHP} onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("基礎DA率", locale)}</th>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.DA} onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("基礎TA率", locale)}</th>
+                            <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("サポアビ", locale)}1</th>
+                            <td><FormControl componentClass="select" value={this.state.support} onChange={this.handleSelectEvent.bind(this, "support")}>{selector.supportAbilities}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("サポアビ", locale)}2</th>
+                            <td><FormControl componentClass="select" value={this.state.support2} onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary"><Button onClick={this.switchBufflist}>{intl.translate("個別バフ", locale)}</Button></th>
+                            <td></td>
+                        </tr>
+                        {this.state.openBufflist ?
+                            [
+                            <tr key="normalBuff">
+                                <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.normalBuff} onChange={this.handleSelectEvent.bind(this, "normalBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>,
+                            <tr key="elementBuff">
+                                <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.elementBuff} onChange={this.handleSelectEvent.bind(this, "elementBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>,
+                            <tr key="otherBuff">
+                                <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.otherBuff} onChange={this.handleSelectEvent.bind(this, "otherBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>,
+                            <tr key="daBuff">
+                                <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.daBuff} onChange={this.handleSelectEvent.bind(this, "daBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>,
+                            <tr key="taBuff">
+                                <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.taBuff} onChange={this.handleSelectEvent.bind(this, "taBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>,
+                            <tr key="hpBuff">
+                                <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.hpBuff} onChange={this.handleSelectEvent.bind(this, "hpBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>,
+                            <tr key="additionalDamageBuff">
+                                <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.additionalDamageBuff} onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>,
+                            <tr key="ougiGageBuff">
+                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>
+                            ]
+                        : null}
+                    </tbody>
+                </table>
                 <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>{intl.translate("前へ", locale)}</Button>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
-                    <Button bsStyle="primary" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
+                    <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>{intl.translate("前へ", locale)}</Button>
+                    <Button bsStyle="danger" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
+                    <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
                 </ButtonGroup>
-            </FormGroup>
             </ColP>
         );
     }

@@ -316,13 +316,7 @@ var SimulatorInput = React.createClass({
 
                                         {state.bufflists[key][ind2].map(function(v, ind3){
                                             return (
-                                                <FormControl componentClass="select" key={ind3} name={key} id={ind2.toString() + "-" + ind3.toString()} value={v} onChange={handleChangeBuff}>
-                                                <optgroup label="通常バフ">{select_normalbuffAmount}</optgroup>
-                                                <optgroup label="属性バフ">{select_elementbuffAmount}</optgroup>
-                                                <optgroup label="その他バフ">{select_otherbuffAmount}</optgroup>
-                                                <optgroup label="DA率">{select_dabuffAmount}</optgroup>
-                                                <optgroup label="TA率">{select_tabuffAmount}</optgroup>
-                                                </FormControl>
+                                                <BuffListForm key={ind3} name={key} id={ind2.toString() + "-" + ind3.toString()} value={v} onChange={handleChangeBuff}/>
                                             );
                                         })}
                                         <ButtonGroup>
@@ -347,6 +341,20 @@ var SimulatorInput = React.createClass({
             </div>
         );
     }
+});
+
+var BuffListForm = React.createClass({
+    render: function() {
+        return (
+            <FormControl componentClass="select" name={this.props.name} id={this.props.id} value={this.props.value} onChange={this.props.onChange}>
+                <optgroup label="通常バフ">{select_normalbuffAmount}</optgroup>
+                <optgroup label="属性バフ">{select_elementbuffAmount}</optgroup>
+                <optgroup label="その他バフ">{select_otherbuffAmount}</optgroup>
+                <optgroup label="DA率">{select_dabuffAmount}</optgroup>
+                <optgroup label="TA率">{select_tabuffAmount}</optgroup>
+            </FormControl>
+        );
+    },
 });
 
 var HowTo = React.createClass({
@@ -408,4 +416,5 @@ var HowTo = React.createClass({
 });
 
 module.exports = SimulatorInput;
+module.exports.BuffListForm = BuffListForm;
 module.exports.HowTo = HowTo;
