@@ -173,6 +173,10 @@ var multiLangData = {
         "en": "Triple Attack Buff for Party. The value will be added to Character's base triple attack ratio.",
         "ja": "TA率が上がります。各キャラの基礎TA率に加算されます。",
     },
+    "追加ダメージ": {
+        "en": "Additional Damage ",
+        "ja": "追加ダメージ",
+    },
     "追加ダメージバフ": {
         "en": "Additional Damage Buff",
         "ja": "追加ダメージバフ",

@@ -1390,8 +1390,8 @@ var ResultList = React.createClass({
             var effectiveCriticalRatio = damage/damageWithoutCritical
 
             // 追加ダメージ(%)分だけ追加
-            if(totals[key]["additionalDamage"] > 0 || buff["additionalDamage"] > 0) {
-                damage += (0.01 * totals[key]["additionalDamage"] + buff["additionalDamage"]) * damage
+            if(totals[key]["additionalDamageBuff"] > 0 || totals[key]["additionalDamage"] > 0 || buff["additionalDamage"] > 0) {
+                damage += (0.01 * totals[key]["additionalDamage"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"]) * damage
             }
             var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"])
             var expectedCycleDamage = ougiDamage + expectedTurn * expectedAttack * damage
@@ -1413,6 +1413,7 @@ var ResultList = React.createClass({
             coeffs["other"] = otherCoeff;
             coeffs["ougiDamageBuff"] = totals[key]["ougiDamageBuff"];
             coeffs["hpRatio"] = hpCoeff
+            coeffs["additionalDamage"] = (0.01 * totals[key]["additionalDamage"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
 
             res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), remainHP: totals[key]["remainHP"], totalDA: totalDA, totalTA: totalTA, totalSummon: totalSummon, element: totals[key]["element"], expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, effectiveCriticalRatio: effectiveCriticalRatio, totalExpected: nazo_number, skilldata: coeffs, expectedOugiGage: expectedOugiGage, damage: damage, ougiDamage: ougiDamage, expectedTurn: expectedTurn, expectedCycleDamagePerTurn: expectedCycleDamagePerTurn};
         }
@@ -3713,6 +3714,7 @@ var Result = React.createClass({
                             if(skilldata.unknown != 1.0) {skillstr += intl.translate("アンノウン", locale) + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.unknownHaisui != 1.0) {skillstr += intl.translate("アンノウン背水", locale) + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.charaHaisui != 1.0) {skillstr += intl.translate("キャラ背水", locale) + (100.0 * (skilldata.charaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+                            if(skilldata.additionalDamage != 0.0) {skillstr += intl.translate("追加ダメージ", locale) + (100.0 * skilldata.additionalDamage).toFixed(1); skillstr += "% ";}
                             if(skilldata.hpRatio != 1.0) {skillstr += intl.translate("HP増加", locale) + (100.0 * (skilldata.hpRatio - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.other != 1.0) {skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.ougiDamageBuff != 0.0) {skillstr += intl.translate("奥義ダメージ", locale) + (100.0 * (1.0 + skilldata.ougiDamageBuff)).toFixed(0); skillstr += "% ";}
