@@ -1939,8 +1939,15 @@ var ResultList = React.createClass({
         var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
         var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
         var zenithPartyHP = (prof.zenithPartyHPBonus == undefined) ? 0 : parseInt(prof.zenithPartyHPBonus)
+        var djeetaBuffList = {personalNormalBuff: 0.0, personalElementBuff: 0.0, personalOtherBuff: 0.0, personalDABuff: 0.0, personalTABuff: 0.0, personalOugiGageBuff: 0.0, personalAdditionalDamageBuff: 0.0}
 
-        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: 0, elementBuff: 0, otherBuff: 0, DABuff: 0, TABuff: 0, ougiGageBuff: 0, ougiDamageBuff: 0, additionalDamageBuff: 0, DATAdebuff: 0, support: "none", support2: "none", charaHaisui: 0}};
+        for(var djeetabuffkey in djeetaBuffList) {
+            if (prof[djeetabuffkey] != undefined) {
+                djeetaBuffList[djeetabuffkey] = 0.01 * parseFloat(prof[djeetabuffkey])
+            }
+        }
+
+        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DATAdebuff: 0, support: "none", support2: "none", charaHaisui: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -4223,8 +4230,18 @@ var Profile = React.createClass({
             TA: 3.0,
             ougiGageBuff: 0,
             ougiRatio: 4.5,
-            minimumHP: 0,
+            minimumHP: 0.0,
+            personalNormalBuff: 0.0,
+            personalElementBuff: 0.0,
+            personalOtherBuff: 0.0,
+            personalAdditionalDamageBuff: 0.0,
+            personalDABuff: 0.0,
+            personalTABuff: 0.0,
+            personalOugiGageBuff: 0.0,
         };
+    },
+    switchBufflist: function(e) {
+        this.setState({openBufflist: !(this.state.openBufflist)})
     },
     handleEvent: function(key, e) {
         // input タイプの入力フォームはonBlurを利用する
@@ -4333,6 +4350,44 @@ var Profile = React.createClass({
                         </th>
                         <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
                     </tr></TextWithTooltip>
+
+                    <tr>
+                        <th className="bg-primary"><Button onClick={this.switchBufflist}>{intl.translate("個別バフ", locale)}</Button></th>
+                        <td></td>
+                    </tr>
+
+                    {this.state.openBufflist ?
+                        [
+                        <tr key="personalNormalBuff">
+                            <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.personalNormalBuff} onChange={this.handleSelectEvent.bind(this, "personalNormalBuff")}>{selector.buffLevel}</FormControl></td>
+                        </tr>,
+                        <tr key="personalElementBuff">
+                            <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.personalElementBuff} onChange={this.handleSelectEvent.bind(this, "personalElementBuff")}>{selector.buffLevel}</FormControl></td>
+                        </tr>,
+                        <tr key="personalOtherBuff">
+                            <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.personalOtherBuff} onChange={this.handleSelectEvent.bind(this, "personalOtherBuff")}>{selector.buffLevel}</FormControl></td>
+                        </tr>,
+                        <tr key="personalDaBuff">
+                            <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.personalDABuff} onChange={this.handleSelectEvent.bind(this, "personalDABuff")}>{selector.buffLevel}</FormControl></td>
+                        </tr>,
+                        <tr key="personalTaBuff">
+                            <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.personalTABuff} onChange={this.handleSelectEvent.bind(this, "personalTABuff")}>{selector.buffLevel}</FormControl></td>
+                        </tr>,
+                        <tr key="personalAdditionalDamageBuff">
+                            <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.personalAdditionalDamageBuff} onChange={this.handleSelectEvent.bind(this, "personalAdditionalDamageBuff")}>{selector.buffLevel}</FormControl></td>
+                        </tr>,
+                        <tr key="personalOugiGageBuff">
+                            <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.personalOugiGageBuff} onChange={this.handleSelectEvent.bind(this, "personalOugiGageBuff")}>{selector.buffLevel}</FormControl></td>
+                        </tr>
+                        ]
+                    : null}
 
                     <tr>
                         <td colSpan="2">
