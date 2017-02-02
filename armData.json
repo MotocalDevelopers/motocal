@@ -1,4 +1,19 @@
 {
+    "[擬爵剣]カースドブレイド": {
+        "element2": "dark", 
+        "name": "[擬爵剣]カースドブレイド", 
+        "imageURL": "./imgs/1040009500.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "dark", 
+        "minattack": "355", 
+        "attack": "2050", 
+        "slvmax": 10, 
+        "minhp": "22", 
+        "type": "sword", 
+        "hp": "166", 
+        "maxlv": 100
+    }, 
     "[]リユニオン": {
         "element2": "wind", 
         "name": "[]リユニオン", 
