@@ -1479,6 +1479,10 @@ var multiLangData = {
         "en": "2017/01/29: Implemented personal buff inputs. (and tweaked character tab style.) / Additional Damage buff gets displayed in skill information.",
         "ja": "2017/01/29: キャラ個別バフ欄の追加 (キャラ欄の見た目調整) / 追加ダメージバフがスキル情報に表示されるように修正.",
     },
+    "notice-20170202-1": {
+        "en": "2017/02/02: Added new two weapons.",
+        "ja": "2017/02/02: カースドブレイドとマシンボウ追加.",
+    },
 }
 
 // 言語設定

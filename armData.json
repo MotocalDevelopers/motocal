@@ -3,7 +3,7 @@
         "element2": "dark", 
         "name": "[擬爵剣]カースドブレイド", 
         "imageURL": "./imgs/1040009500.png", 
-        "skill2": "non", 
+        "skill2": "strengthL", 
         "skill1": "non", 
         "element": "dark", 
         "minattack": "355", 
@@ -12,6 +12,21 @@
         "minhp": "22", 
         "type": "sword", 
         "hp": "166", 
+        "maxlv": 100
+    }, 
+    "[絡繰弓]マシン・ボウ": {
+        "element2": "earth", 
+        "name": "[絡繰弓]マシン・ボウ", 
+        "imageURL": "./imgs/1040705500.png", 
+        "skill2": "strengthL", 
+        "skill1": "non", 
+        "element": "earth", 
+        "minattack": "320", 
+        "attack": "2000", 
+        "slvmax": 10, 
+        "minhp": "30", 
+        "type": "bow", 
+        "hp": "186", 
         "maxlv": 100
     }, 
     "[]リユニオン": {
