@@ -137,9 +137,16 @@ var TurnChart = React.createClass({
 
 var HPChart = React.createClass({
     getInitialState: function() {
-        var locale = this.props.locale
         var sortKey = this.props.sortKey
-        if(!(sortKey in supportedChartSortkeys)) sortKey = "totalAttack"
+        if(!(sortKey in supportedChartSortkeys)) sortKey = "averageCyclePerTurn"
+
+        return {
+            options: this.makeChartOption(sortKey),
+            sortKey: sortKey,
+        }
+    },
+    makeChartOption: function(sortKey) {
+        var locale = this.props.locale
 
         options = {}
         if(_ua.Mobile) {
@@ -174,52 +181,13 @@ var HPChart = React.createClass({
             }
         }
 
-        return {
-            options: options,
-            sortKey: sortKey,
-        }
+        return options
     },
     handleEvent: function(key, e) {
         var locale = this.props.locale
         var newState = this.state
         newState[key] = e.target.value
-
-        // optionsをupdate
-        options = {}
-        if(_ua.Mobile) {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        curveType: 'function',
-                        hAxis: {title: intl.translate("残HP", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        } else {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        curveType: 'function',
-                        hAxis: {title: intl.translate("残HP", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-
-        }
-        newState.options = options
-
+        newState.options = this.makeChartOption(e.target.value);
         this.setState(newState)
     },
     render: function() {

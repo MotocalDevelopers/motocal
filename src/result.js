@@ -21,9 +21,9 @@ var StoredListEditor = React.createClass({
                                 <th>No.</th>
                                 {(armlist.length != 0) ? (armlist[0].map(function(arm, ind){
                                     if(arm.name != "") {
-                                        return (<th>{arm.name}</th>);
+                                        return (<th key={ind}>{arm.name}</th>);
                                     } else {
-                                        return (<th>{intl.translate("武器", locale)}{ind}</th>);
+                                        return (<th key={ind}>{intl.translate("武器", locale)}{ind}</th>);
                                     }
                                 })) : ""}
                                 <th>{intl.translate("操作", locale)}</th>
@@ -32,10 +32,10 @@ var StoredListEditor = React.createClass({
                             <tbody>
                             {combinations.map(function(v, ind){
                                 return (
-                                    <tr>
+                                    <tr key={ind}>
                                         <td>{ind}</td>
-                                        {v.map(function(num){
-                                            return (<td>{num}{intl.translate("本", locale)}</td>)
+                                        {v.map(function(num, ind2){
+                                            return (<td key={ind2}>{num}{intl.translate("本", locale)}</td>)
                                         })}
                                         <td><Button id={ind} onClick={removeOneStoredList} bsStyle="primary">{intl.translate("削除", locale)}</Button></td>
                                     </tr>
