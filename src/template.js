@@ -393,7 +393,7 @@ var RegisteredArm = React.createClass({
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
-                            if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement)){
+                            if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element == "all")){
                                 if(filterText == "" || key.indexOf(filterText) != -1){
                                     return (
                                         <div className="onearm" key={key}>

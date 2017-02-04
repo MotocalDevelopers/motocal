@@ -749,12 +749,12 @@
         "maxlv": 100
     }, 
     "七星剣・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "七星剣・属性変更", 
         "imageURL": "./imgs/1040002400.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "425", 
         "attack": "2550", 
         "slvmax": 10, 
@@ -764,12 +764,12 @@
         "maxlv": 100
     }, 
     "七星剣・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "七星剣・覚醒", 
         "imageURL": "./imgs/1040002400.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "425", 
         "attack": "2810", 
         "slvmax": 10, 
@@ -1605,12 +1605,12 @@
         "maxlv": 100
     }, 
     "四天刃・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "四天刃・属性変更", 
         "imageURL": "./imgs/1040102200.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "405", 
         "attack": "2430", 
         "slvmax": 10, 
@@ -1620,12 +1620,12 @@
         "maxlv": 100
     }, 
     "四天刃・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "四天刃・覚醒", 
         "imageURL": "./imgs/1040102200.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "405", 
         "attack": "2680", 
         "slvmax": 10, 
@@ -2159,12 +2159,12 @@
         "maxlv": 100
     }, 
     "一伐槍・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "一伐槍・属性変更", 
         "imageURL": "./imgs/1040202100.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "390", 
         "attack": "2330", 
         "slvmax": 10, 
@@ -2174,12 +2174,12 @@
         "maxlv": 100
     }, 
     "一伐槍・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "一伐槍・覚醒", 
         "imageURL": "./imgs/1040202100.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "390", 
         "attack": "2570", 
         "slvmax": 10, 
@@ -2858,12 +2858,12 @@
         "maxlv": 100
     }, 
     "三寅斧・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "三寅斧・属性変更", 
         "imageURL": "./imgs/1040301600.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "445", 
         "attack": "2680", 
         "slvmax": 10, 
@@ -2873,12 +2873,12 @@
         "maxlv": 100
     }, 
     "三寅斧・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "三寅斧・覚醒", 
         "imageURL": "./imgs/1040301600.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "445", 
         "attack": "2950", 
         "slvmax": 10, 
@@ -3446,12 +3446,12 @@
         "maxlv": 100
     }, 
     "五神杖・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "五神杖・属性変更", 
         "imageURL": "./imgs/1040402000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "365", 
         "attack": "2200", 
         "slvmax": 10, 
@@ -3461,12 +3461,12 @@
         "maxlv": 100
     }, 
     "五神杖・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "五神杖・覚醒", 
         "imageURL": "./imgs/1040402000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "365", 
         "attack": "2420", 
         "slvmax": 10, 
@@ -4077,12 +4077,12 @@
         "maxlv": 100
     }, 
     "十狼雷・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "十狼雷・属性変更", 
         "imageURL": "./imgs/1040500900.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "460", 
         "attack": "2740", 
         "slvmax": 10, 
@@ -4092,12 +4092,12 @@
         "maxlv": 100
     }, 
     "十狼雷・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "十狼雷・覚醒", 
         "imageURL": "./imgs/1040500900.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "460", 
         "attack": "3020", 
         "slvmax": 10, 
@@ -4573,12 +4573,12 @@
         "maxlv": 100
     }, 
     "六崩拳・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "六崩拳・属性変更", 
         "imageURL": "./imgs/1040601000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "400", 
         "attack": "2400", 
         "slvmax": 10, 
@@ -4588,12 +4588,12 @@
         "maxlv": 100
     }, 
     "六崩拳・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "六崩拳・覚醒", 
         "imageURL": "./imgs/1040601000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "400", 
         "attack": "2630", 
         "slvmax": 10, 
@@ -5257,12 +5257,12 @@
         "maxlv": 100
     }, 
     "二王弓・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "二王弓・属性変更", 
         "imageURL": "./imgs/1040701000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "425", 
         "attack": "2550", 
         "slvmax": 10, 
@@ -5272,12 +5272,12 @@
         "maxlv": 100
     }, 
     "二王弓・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "二王弓・覚醒", 
         "imageURL": "./imgs/1040701000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "425", 
         "attack": "2800", 
         "slvmax": 10, 
@@ -5565,12 +5565,12 @@
         "maxlv": 100
     }, 
     "九界琴・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "九界琴・属性変更", 
         "imageURL": "./imgs/1040800400.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "380", 
         "attack": "2250", 
         "slvmax": 10, 
@@ -5580,12 +5580,12 @@
         "maxlv": 100
     }, 
     "九界琴・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "九界琴・覚醒", 
         "imageURL": "./imgs/1040800400.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "380", 
         "attack": "2470", 
         "slvmax": 10, 
@@ -6008,12 +6008,12 @@
         "maxlv": 100
     }, 
     "八命切・属性変更": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "八命切・属性変更", 
         "imageURL": "./imgs/1040900600.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "455", 
         "attack": "2720", 
         "slvmax": 10, 
@@ -6023,12 +6023,12 @@
         "maxlv": 100
     }, 
     "八命切・覚醒": {
-        "element2": "light", 
+        "element2": "all", 
         "name": "八命切・覚醒", 
         "imageURL": "./imgs/1040900600.png", 
         "skill2": "non", 
         "skill1": "normalL", 
-        "element": "light", 
+        "element": "all", 
         "minattack": "455", 
         "attack": "2990", 
         "slvmax": 10, 

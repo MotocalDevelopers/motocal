@@ -6,7 +6,7 @@ var multiLangData = {
         "ja": "元カレ計算機(グラブル攻撃力計算機)",
     },
     "使い方": {
-        "en": "How To Use",
+        "en": "Manual",
         "ja": "使い方",
     },
     "ジータ": {
@@ -1486,6 +1486,10 @@ var multiLangData = {
     "notice-20170204-1": {
         "en": "2017/02/04: Added Rosamia.",
         "ja": "2017/02/04: ロザミア(SSR)が抜けていたので追加.",
+    },
+    "notice-20170204-2": {
+        "en": "2017/02/04: Weapons which have element variation become displayed regardless of the filter element.",
+        "ja": "2017/02/04: 属性変更武器が、属性フィルターに関わらず表示されるようにした.",
     },
 }
 

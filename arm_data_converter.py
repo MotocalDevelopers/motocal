@@ -174,6 +174,8 @@ if __name__ == '__main__':
                 newdict["element"] = "wind"
             elif row[3].find("光") > 0:
                 newdict["element"] = "light"
+            elif row[3].find("全属性") > 0:
+                newdict["element"] = "all"
             else:
                 newdict["element"] = "dark"
 
