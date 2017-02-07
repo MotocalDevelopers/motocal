@@ -634,8 +634,12 @@ var multiLangData = {
         "ja": "背水渾身グラフ",
     },
     "実際のHPで表示": {
-        "en": "Display based on real HP",
+        "en": "Based on real HP",
         "ja": "実際のHPで表示",
+    },
+    "HP割合で表示": {
+        "en": "Based on remain HP ratio",
+        "ja": "HP割合で表示",
     },
     "初期攻撃力推移グラフを開く": {
         "en": "Open Initial Attack Variation Graph",
