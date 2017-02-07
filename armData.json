@@ -1,4 +1,49 @@
 {
+    "[]ネプテゥヌスの三叉鉾": {
+        "element2": "water", 
+        "name": "[]ネプテゥヌスの三叉鉾", 
+        "imageURL": "./imgs/1040206900.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "water", 
+        "minattack": "315", 
+        "attack": "2005", 
+        "slvmax": 10, 
+        "minhp": "40", 
+        "type": "spear", 
+        "hp": "230", 
+        "maxlv": 100
+    }, 
+    "[聖天槍]エデン": {
+        "element2": "light", 
+        "name": "[聖天槍]エデン", 
+        "imageURL": "./imgs/1040207000.png", 
+        "skill2": "non", 
+        "skill1": "normalLL", 
+        "element": "light", 
+        "minattack": "430", 
+        "attack": "2600", 
+        "slvmax": 10, 
+        "minhp": "48", 
+        "type": "spear", 
+        "hp": "280", 
+        "maxlv": 100
+    }, 
+    "[]ゲイダーグ": {
+        "element2": "earth", 
+        "name": "[]ゲイダーグ", 
+        "imageURL": "./imgs/1040207100.png", 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "element": "earth", 
+        "minattack": "395", 
+        "attack": "2335", 
+        "slvmax": 10, 
+        "minhp": "40", 
+        "type": "spear", 
+        "hp": "250", 
+        "maxlv": 100
+    }, 
     "[擬爵剣]カースドブレイド": {
         "element2": "dark", 
         "name": "[擬爵剣]カースドブレイド", 
@@ -13,6 +58,23 @@
         "type": "sword", 
         "hp": "166", 
         "maxlv": 100
+    }, 
+    "[彩命]ガルガンチュア": {
+        "hplv100": "260", 
+        "element2": "earth", 
+        "name": "[彩命]ガルガンチュア", 
+        "imageURL": "./imgs/1040201700.png", 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "element": "earth", 
+        "attacklv100": "2300", 
+        "minattack": "380", 
+        "attack": "2680", 
+        "slvmax": 15, 
+        "minhp": "44", 
+        "type": "spear", 
+        "hp": "303", 
+        "maxlv": 150
     }, 
     "[絡繰弓]マシン・ボウ": {
         "element2": "earth", 
@@ -2066,9 +2128,9 @@
         "hp": "251", 
         "maxlv": 100
     }, 
-    "[彩命]ガルガンチュア": {
+    "ガルガンチュア": {
         "element2": "earth", 
-        "name": "[彩命]ガルガンチュア", 
+        "name": "ガルガンチュア", 
         "imageURL": "./imgs/1040201700.png", 
         "skill2": "non", 
         "skill1": "normalL", 
