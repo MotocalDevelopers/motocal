@@ -625,12 +625,28 @@ var multiLangData = {
         "en": "Open Enmity Graph",
         "ja": "背水渾身グラフを開く",
     },
-    "初期攻撃力推移グラフ": {
+    "背水渾身グラフ": {
+        "en": "Enmity Graph",
+        "ja": "背水渾身グラフ",
+    },
+    "実際のHPで表示": {
+        "en": "Display based on real HP",
+        "ja": "実際のHPで表示",
+    },
+    "初期攻撃力推移グラフを開く": {
         "en": "Open Initial Attack Variation Graph",
         "ja": "初期攻撃力推移グラフを開く",
     },
-    "ダメージシミュレータ": {
+    "初期攻撃力推移グラフ": {
+        "en": "Initial Attack Variation Graph",
+        "ja": "初期攻撃力推移グラフ",
+    },
+    "ダメージシミュレータを開く": {
         "en": "Open Damage Simulator (Beta)",
+        "ja": "ダメージシミュレータ (Beta)",
+    },
+    "ダメージシミュレータ": {
+        "en": "Damage Simulator (Beta)",
         "ja": "ダメージシミュレータ (Beta)",
     },
     "結果": {

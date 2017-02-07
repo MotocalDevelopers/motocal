@@ -176,6 +176,8 @@ var HPChart = React.createClass({
                         tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
                         legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
                         chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                        lineWidth: 1,
+                        pointSize: 0,
                     }
                 }
             }
@@ -221,7 +223,7 @@ var HPChart = React.createClass({
                         <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector[locale].supported_chartsortkeys}</FormControl>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
-                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
+                                return <Chart chartType="ScatterChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
                             }
                         })}
                     </div>

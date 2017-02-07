@@ -2335,6 +2335,7 @@ var ResultList = React.createClass({
             chartData: {},
             storedList: {"combinations": [], "armlist": []},
             openHPChart: false,
+            displayRealHP: false,
             openTurnChart: false,
             openSimulator: false,
             openDisplayElementTable: false,
@@ -2396,7 +2397,7 @@ var ResultList = React.createClass({
         }
         this.setState(newState)
     },
-    openHPChart: function() {
+    openHPChart: function(displayRealHP, e) {
         var storedCombinations = this.state.storedList.combinations
         var storedArmlist = this.state.storedList.armlist
 
@@ -2427,11 +2428,11 @@ var ResultList = React.createClass({
         }
         // resに再計算されたデータが入っている状態
         // res[summonind][rank]
-        this.setState({chartData: this.generateHaisuiData(res, arml, summon, prof, chara, storedCombinations)})
+        this.setState({chartData: this.generateHaisuiData(res, arml, summon, prof, chara, storedCombinations, displayRealHP)})
         this.setState({chartSortKey: sortkey})
         this.setState({openHPChart: true})
     },
-    generateHaisuiData: function(res, arml, summon, prof, chara, storedCombinations) {
+    generateHaisuiData: function(res, arml, summon, prof, chara, storedCombinations, displayRealHP) {
         var data = {}
         var locale = this.props.locale
 
@@ -2468,18 +2469,6 @@ var ResultList = React.createClass({
             var AllAverageCycleDamagePerTurn = [["残りHP(%)"]];
             var AllAverageCriticalAttack = [["残りHP(%)"]];
             var AllTotalHP = [["残りHP(%)"]]
-
-            for(var m = 1; m < 101; m++){
-                AllTotalAttack.push([m.toString() + "%"])
-                AllCycleDamagePerTurn.push([m.toString() + "%"])
-                AllCriticalAttack.push([m.toString() + "%"])
-                AllTotalExpected.push([m.toString() + "%"])
-                AllTotalHP.push([m.toString() + "%"])
-                AllAverageTotalExpected.push([m.toString() + "%"])
-                AllAverageTotalAttack.push([m.toString() + "%"])
-                AllAverageCycleDamagePerTurn.push([m.toString() + "%"])
-                AllAverageCriticalAttack.push([m.toString() + "%"])
-            }
         }
 
         // キャラ編成は武器編成毎には変わらないので先に計算することができる
@@ -2514,26 +2503,7 @@ var ResultList = React.createClass({
             var AverageCriticalAttack = [["残りHP(%)"]];
             var AverageCycleDamagePerTurn = [["残りHP(%)"]];
 
-            for(var m = 1; m < 101; m++){
-                TotalAttack.push([m.toString() + "%"])
-                CycleDamagePerTurn.push([m.toString() + "%"])
-                CriticalAttack.push([m.toString() + "%"])
-                TotalExpected.push([m.toString() + "%"])
-                TotalHP.push([m.toString() + "%"])
-                AverageTotalExpected.push([m.toString() + "%"])
-                AverageTotalAttack.push([m.toString() + "%"])
-                AverageCycleDamagePerTurn.push([m.toString() + "%"])
-                AverageCriticalAttack.push([m.toString() + "%"])
-
-                // 合計値を足すために先に要素を追加しておく
-                // (key の 処理順が不明のため)
-                for(var j = 0; j < oneresult.length; j++){
-                    AverageTotalAttack[m].push(0)
-                    AverageTotalExpected[m].push(0)
-                    AverageCycleDamagePerTurn[m].push(0)
-                    AverageCriticalAttack[m].push(0)
-                }
-            }
+            var alreadyUsedHP = {};
 
             for(var j = 0; j < oneresult.length; j++){
                 var onedata = oneresult[j].data
@@ -2604,21 +2574,60 @@ var ResultList = React.createClass({
                         var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff)
                         var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
 
+                        var hp;
+                        if (displayRealHP) {
+                            // 実HP
+                            hp = parseInt(0.01 * (k + 1) * onedata[key].totalHP);
+                        } else {
+                            // 残HP割合
+                            hp = k + 1
+                        }
+
                         if(key == "Djeeta") {
-                            TotalAttack[k + 1].push( parseInt(newTotalAttack) )
-                            TotalExpected[k + 1].push( parseInt(newTotalExpected) )
-                            TotalHP[k + 1].push( parseInt(0.01 * (k + 1) * onedata[key].totalHP) )
-                            CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
-                            CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
-                            AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
-                            AverageTotalExpected[k + 1][j + 1] += parseInt(newTotalExpected / cnt)
-                            AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
-                            AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
+                            var index;
+                            if(hp in alreadyUsedHP) {
+                                index = alreadyUsedHP[hp] - 1
+                            } else {
+                                alreadyUsedHP[hp] = TotalAttack.push([hp]);
+                                TotalHP.push([hp])
+                                TotalExpected.push([hp])
+                                CriticalAttack.push([hp])
+                                CycleDamagePerTurn.push([hp])
+                                AverageTotalAttack.push([hp])
+                                AverageTotalExpected.push([hp])
+                                AverageCycleDamagePerTurn.push([hp])
+                                AverageCriticalAttack.push([hp])
+                                index = alreadyUsedHP[hp] - 1;
+
+                                for(var subj = 0; subj < oneresult.length; subj++){
+                                    // 散布図とするため、先にresult分の欄を作っておく
+                                    TotalAttack[index].push(null)
+                                    CycleDamagePerTurn[index].push(null)
+                                    CriticalAttack[index].push(null)
+                                    TotalExpected[index].push(null)
+                                    TotalHP[index].push(null)
+                                    AverageTotalAttack[index].push(null)
+                                    AverageTotalExpected[index].push(null)
+                                    AverageCycleDamagePerTurn[index].push(null)
+                                    AverageCriticalAttack[index].push(null)
+                                }
+                            }
+
+                            TotalHP[index][j+1] = (displayRealHP? hp : parseInt(hp * onedata[key].totalHP));
+                            TotalAttack[index][j+1] = parseInt(newTotalAttack)
+                            TotalExpected[index][j+1] = parseInt(newTotalExpected)
+                            CriticalAttack[index][j+1] = parseInt(onedata[key].criticalRatio * newTotalAttack)
+                            CycleDamagePerTurn[index][j+1] = parseInt(newExpectedCycleDamagePerTurn)
+                            AverageTotalAttack[index][j+1] += parseInt(newTotalAttack / cnt)
+                            AverageTotalExpected[index][j+1] += parseInt(newTotalExpected / cnt)
+                            AverageCycleDamagePerTurn[index][j+1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                            AverageCriticalAttack[index][j+1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                         } else if (considerAverageArray[key]) {
-                            AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
-                            AverageTotalExpected[k + 1][j + 1] += parseInt(newTotalExpected / cnt)
-                            AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
-                            AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
+                            var index = alreadyUsedHP[hp]
+                            AverageTotalAttack[index][j+1] += parseInt(newTotalAttack / cnt)
+                            AverageTotalExpected[index][j+1] += parseInt(newTotalExpected / cnt)
+                            AverageCycleDamagePerTurn[index][j+1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                            AverageCriticalAttack[index][j+1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                         }
                     }
                 }
@@ -2633,29 +2642,29 @@ var ResultList = React.createClass({
                 AverageCriticalAttack[0].push(title)
 
                 // 召喚石2組以上の場合
-                if(res.length > 1) {
-                    AllTotalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllTotalHP[0].push("(" + summonHeader + ")" + title)
-                    AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllTotalExpected[0].push("(" + summonHeader + ")" + title)
-                    AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
-                    AllAverageTotalExpected[0].push("(" + summonHeader + ")" + title)
-                    AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
-
-                    for(var k = 1; k < 101; k++) {
-                        AllTotalAttack[k].push(TotalAttack[k][j + 1])
-                        AllTotalHP[k].push(TotalHP[k][j + 1])
-                        AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
-                        AllTotalExpected[k].push(TotalExpected[k][j + 1])
-                        AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
-                        AllAverageTotalExpected[k].push(AverageTotalExpected[k][j + 1])
-                        AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
-                        AllAverageCriticalAttack[k].push(AverageCriticalAttack[k][j + 1])
-                        AllAverageCycleDamagePerTurn[k].push(AverageCycleDamagePerTurn[k][j + 1])
-                    }
-                }
+                // if(res.length > 1) {
+                //     AllTotalAttack[0].push("(" + summonHeader + ")" + title)
+                //     AllTotalHP[0].push("(" + summonHeader + ")" + title)
+                //     AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
+                //     AllTotalExpected[0].push("(" + summonHeader + ")" + title)
+                //     AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                //     AllAverageTotalExpected[0].push("(" + summonHeader + ")" + title)
+                //     AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
+                //     AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
+                //     AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                //
+                //     for(var k = 1; k < 101; k++) {
+                //         AllTotalAttack[k].push(TotalAttack[k][j + 1])
+                //         AllTotalHP[k].push(TotalHP[k][j + 1])
+                //         AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
+                //         AllTotalExpected[k].push(TotalExpected[k][j + 1])
+                //         AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
+                //         AllAverageTotalExpected[k].push(AverageTotalExpected[k][j + 1])
+                //         AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
+                //         AllAverageCriticalAttack[k].push(AverageCriticalAttack[k][j + 1])
+                //         AllAverageCycleDamagePerTurn[k].push(AverageCycleDamagePerTurn[k][j + 1])
+                //     }
+                // }
             }
 
             data[summonHeader] = {}
@@ -2670,19 +2679,19 @@ var ResultList = React.createClass({
             data[summonHeader]["totalHP"] = TotalHP
         }
 
-        if(res.length > 1){
-            var matomete = intl.translate("まとめて比較", locale)
-            data[matomete] = {}
-            data[matomete]["totalAttack"] = AllTotalAttack
-            data[matomete]["totalHP"] = AllTotalHP
-            data[matomete]["criticalAttack"] = AllCriticalAttack
-            data[matomete]["totalExpected"] = AllTotalExpected
-            data[matomete]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
-            data[matomete]["averageAttack"] = AllAverageTotalAttack
-            data[matomete]["averageCriticalAttack"] = AllAverageCriticalAttack
-            data[matomete]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
-            data[matomete]["averageTotalExpected"] = AllAverageTotalExpected
-        }
+        // if(res.length > 1){
+        //     var matomete = intl.translate("まとめて比較", locale)
+        //     data[matomete] = {}
+        //     data[matomete]["totalAttack"] = AllTotalAttack
+        //     data[matomete]["totalHP"] = AllTotalHP
+        //     data[matomete]["criticalAttack"] = AllCriticalAttack
+        //     data[matomete]["totalExpected"] = AllTotalExpected
+        //     data[matomete]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
+        //     data[matomete]["averageAttack"] = AllAverageTotalAttack
+        //     data[matomete]["averageCriticalAttack"] = AllAverageCriticalAttack
+        //     data[matomete]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
+        //     data[matomete]["averageTotalExpected"] = AllAverageTotalExpected
+        // }
 
         // グラフ最大値最小値を抽出
         for(key in minMaxArr) {
@@ -3191,6 +3200,10 @@ var ResultList = React.createClass({
                 break;
         }
     },
+    switchDisplayRealHP: function(e) {
+        this.setState({displayRealHP: !(this.state.displayRealHP)});
+        this.openHPChart(!(this.state.displayRealHP));
+    },
     resetStoredList: function(e) {
         this.setState({
             storedList: {"combinations": [], "armlist": []},
@@ -3332,7 +3345,10 @@ var ResultList = React.createClass({
                 remainHPstr += "% (" + intl.translate(this.getTypeBonusStr(chara[i].element, prof), locale) + ")"
             }
         }
-        remainHPstr += ", " + intl.translate("通常バフ", locale) + prof.normalBuff + "%, " + intl.translate("属性バフ", locale) + prof.elementBuff + "%, " + intl.translate("その他バフ", locale) + prof.otherBuff + "%, " + intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
+        remainHPstr += ", " + intl.translate("通常バフ", locale) + prof.normalBuff + "%, "
+        remainHPstr += intl.translate("属性バフ", locale) + prof.elementBuff + "%, "
+        remainHPstr += intl.translate("その他バフ", locale) + prof.otherBuff + "%, "
+        remainHPstr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
@@ -3495,9 +3511,9 @@ var ResultList = React.createClass({
                     <hr />
 
                     <ButtonGroup style={{width: "100%"}}>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >{intl.translate("初期攻撃力推移グラフ", locale)}</Button>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータ", locale)}</Button>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart.bind(this, this.state.displayRealHP)} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >{intl.translate("初期攻撃力推移グラフを開く", locale)}</Button>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータを開く", locale)}</Button>
                     </ButtonGroup>
 
                     {summondata.map(function(s, summonindex) {
@@ -3546,19 +3562,22 @@ var ResultList = React.createClass({
                     })}
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
-                            <Modal.Title>HP Charts ({remainHPstr})</Modal.Title>
+                            <Modal.Title>{intl.translate("背水渾身グラフ", locale)}</Modal.Title>
+                            <p className="text-info">({remainHPstr})</p>
                             <Button bsStyle="info" onClick={this.openHPChartTutorial}>{intl.translate("使い方", locale)}</Button>
                             <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
+                            <Button bsStyle="default" onClick={this.switchDisplayRealHP}>{intl.translate("実際のHPで表示", locale)}</Button>
                         </Modal.Header>
                         <Modal.Body>
-                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
+                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} displayRealHP={this.state.displayRealHP} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
-                            <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
+                            <Modal.Title>{intl.translate("初期攻撃力推移グラフ", locale)}</Modal.Title>
+                            <p className="text-info">({remainHPstr})</p>
                             <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
                         </Modal.Header>
@@ -3568,7 +3587,8 @@ var ResultList = React.createClass({
                     </Modal>
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
                         <Modal.Header closeButton>
-                            <Modal.Title>ダメージシミュレータ ({remainHPstr})</Modal.Title>
+                            <Modal.Title>{intl.translate("ダメージシミュレータ", locale)}</Modal.Title>
+                            <p className="text-info">({remainHPstr})</p>
                             <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
                         </Modal.Header>
