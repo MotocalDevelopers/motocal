@@ -2688,7 +2688,7 @@ var ResultList = React.createClass({
                             AverageCycleDamagePerTurn[index][j+1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
                             AverageCriticalAttack[index][j+1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
                         } else if (considerAverageArray[key]) {
-                            var index = alreadyUsedHP[hp]
+                            var index = alreadyUsedHP[hp] - 1
                             AverageTotalAttack[index][j+1] += parseInt(newTotalAttack / cnt)
                             AverageTotalExpected[index][j+1] += parseInt(newTotalExpected / cnt)
                             AverageCycleDamagePerTurn[index][j+1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
