@@ -2,7 +2,6 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 var intl = require('./translate.js');
-var Advertisement = require('./advertisement.js');
 
 var Notice = React.createClass ({
     render: function() {
@@ -12,10 +11,9 @@ var Notice = React.createClass ({
         <div className="notice">
             <div className="divright"><a href="http://hsimyu.net/motocal/">入力リセット</a></div>
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
-            <h2>{intl.translate("広告", locale)}</h2>
-            <Advertisement locale={locale} />
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">{intl.translate("notice-20170208-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170204-2", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170202-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170129-1", locale)}</li>

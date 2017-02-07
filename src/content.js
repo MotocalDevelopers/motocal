@@ -12,6 +12,7 @@ var {HowTo, NiteHowTo, HPChartHowTo} = require('./howto.js')
 var {ColP} = require('./gridp.js')
 var intl = require('./translate.js')
 var {RegisteredArm, RegisteredChara} = require('./template.js')
+var Advertisement = require('./advertisement.js');
 var dataForLoad = GlobalConst.dataForLoad
 var TextWithTooltip = GlobalConst.TextWithTooltip
 
@@ -3525,6 +3526,9 @@ var ResultList = React.createClass({
             var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
+                    <Advertisement locale={locale} />
+                    <hr />
+
                     <ControlLabel>{intl.translate("表示項目切替", locale)}</ControlLabel>
                     <ButtonToolbar>
                     <DropdownButton title={intl.translate("攻撃力・HP・連撃率", locale)} id="atk-hp-etcs">

@@ -1507,6 +1507,10 @@ var multiLangData = {
         "en": "2017/02/04: Weapons which have element variation become displayed regardless of the filter element.",
         "ja": "2017/02/04: 属性変更武器が、属性フィルターに関わらず表示されるようにした.",
     },
+    "notice-20170208-1": {
+        "en": "2017/02/08: Implemented \"Enmity Graph based on real HP\" / Changed input behavior, open templates when a user begins name input.",
+        "ja": "2017/02/08: 実HPベースの背水グラフ表示を実装 / 武器とキャラの名前が空欄の時に入力を開始するとテンプレートが自動的に開かれるようにした.",
+    },
 }
 
 // 言語設定
