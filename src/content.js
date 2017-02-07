@@ -633,7 +633,7 @@ var CharaList = React.createClass({
     addTemplateChara: function(templateChara) {
         var minimumID = -1;
         for(key in this.state.charalist) {
-            if(this.state.charalist[key].name == "" && this.state.charalist[key].attack == 0){
+            if(this.state.charalist[key].name == ""){
                 minimumID = key;
                 break;
             }
@@ -669,6 +669,7 @@ var CharaList = React.createClass({
         var handleOnRemove = this.handleOnRemove
         var handleMoveUp = this.handleMoveUp
         var handleMoveDown = this.handleMoveDown
+        var openPresets = this.openPresets
 
         return (
             <div className="charaList">
@@ -679,7 +680,7 @@ var CharaList = React.createClass({
                 <Grid fluid style={{"width": "100%"}} >
                     <Row>
                     {charas.map(function(c, ind) {
-                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} locale={locale} />;
+                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} locale={locale} openPresets={openPresets} />;
                     })}
                     </Row>
                 </Grid>
@@ -808,6 +809,13 @@ var Chara = React.createClass({
             this.props.onChange(this.props.id, this.state, false)
         }
     },
+    openPresets: function(e) {
+        if(e.target.value == "" && this.state.attack == 0) {
+            e.target.blur()
+            this.setState({attack: 1})
+            this.props.openPresets()
+        }
+    },
     clickRemoveButton: function(e) {
         this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
     },
@@ -837,7 +845,7 @@ var Chara = React.createClass({
                             <th className="bg-primary">{intl.translate("キャラ名", locale)}</th>
                             <td>
                             <InputGroup>
-                                <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")}/>
+                                <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onFocus={this.openPresets} onChange={this.handleEvent.bind(this, "name")}/>
                                 <InputGroup.Addon>
                                 <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>{intl.translate("平均に含める", locale)}</Checkbox>
                                 </InputGroup.Addon>
