@@ -3960,7 +3960,7 @@ var ArmList = React.createClass({
     addTemplateArm: function(templateArm, considerNum) {
         var minimumID = -1;
         for(key in this.state.alist) {
-            if(this.state.alist[key].name == "" && this.state.alist[key].attack == 0){
+            if(this.state.alist[key].name == ""){
                 minimumID = key;
                 break;
             }
@@ -3997,6 +3997,7 @@ var ArmList = React.createClass({
         var addArm = this.state.addArm;
         var addArmID = this.state.addArmID;
         var considerNum = this.state.considerNum;
+        var openPresets = this.openPresets;
 
         return (
             <div className="armList">
@@ -4007,7 +4008,7 @@ var ArmList = React.createClass({
                 <Grid fluid>
                     <Row>
                         {arms.map(function(arm, ind) {
-                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} locale={locale} />;
+                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} locale={locale} openPresets={openPresets} />;
                         })}
                     </Row>
                 </Grid>
@@ -4190,6 +4191,13 @@ var Arm = React.createClass({
     clickCopyButton: function(e, state) {
         this.props.onCopy(this.props.id, this.props.keyid, this.state)
     },
+    openPresets: function(e) {
+        if(e.target.value == "" && this.state.attack == 0) {
+            e.target.blur();
+            this.setState({attack: 1})
+            this.props.openPresets();
+        }
+    },
     render: function(){
         var locale = this.props.locale;
 
@@ -4198,7 +4206,7 @@ var Arm = React.createClass({
                 <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("武器名", locale)}　</InputGroup.Addon>
-                    <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onChange={this.handleEvent.bind(this, "name")} />
+                    <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onFocus={this.openPresets} onChange={this.handleEvent.bind(this, "name")} />
                 </InputGroup>
                 <InputGroup>
                     <InputGroup.Addon>{intl.translate("攻撃力", locale)}　</InputGroup.Addon>

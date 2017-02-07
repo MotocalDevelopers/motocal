@@ -339,6 +339,7 @@ var RegisteredArm = React.createClass({
                             return "";
                         })}
                     </div>
+
                     <Modal className="presetsConsiderNumber" show={this.state.openConsiderNumberModal} onHide={this.closeConsiderNumberModal}>
                         <Modal.Header closeButton>
                             <Modal.Title>{intl.translate("何本追加", locale)}</Modal.Title>
