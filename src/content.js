@@ -2611,7 +2611,7 @@ var ResultList = React.createClass({
                         var hp;
                         if (displayRealHP) {
                             // 実HP
-                            hp = parseInt(0.01 * (k + 1) * onedata[key].totalHP);
+                            hp = parseInt(0.01 * (k + 1) * onedata["Djeeta"].totalHP);
                         } else {
                             // 残HP割合
                             hp = k + 1
