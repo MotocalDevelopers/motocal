@@ -141,44 +141,27 @@ var HPChart = React.createClass({
         if(!(sortKey in supportedChartSortkeys)) sortKey = "averageCyclePerTurn"
 
         return {
-            options: this.makeChartOption(sortKey),
             sortKey: sortKey,
         }
     },
     makeChartOption: function(sortKey) {
         var locale = this.props.locale
+        var hlabel = (this.props.displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale));
 
         options = {}
-        if(_ua.Mobile) {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        curveType: 'function',
-                        forcelFrame: true,
-                        hAxis: {title: intl.translate("残HP", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        } else {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        curveType: 'function',
-                        forcelFrame: true,
-                        hAxis: {title: intl.translate("残HP", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                        lineWidth: 1,
-                        pointSize: 0,
-                    }
+        for(key in this.props.data) {
+            if(key != "minMaxArr") {
+                options[key] = {
+                    title: key,
+                    curveType: 'function',
+                    forcelFrame: true,
+                    hAxis: {title: hlabel, titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                    vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                    tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
+                    legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
+                    chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    lineWidth: 2,
+                    pointSize: 0,
                 }
             }
         }
@@ -189,21 +172,20 @@ var HPChart = React.createClass({
         var locale = this.props.locale
         var newState = this.state
         newState[key] = e.target.value
-        newState.options = this.makeChartOption(e.target.value);
         this.setState(newState)
     },
     render: function() {
         var locale = this.props.locale
-        var options = this.state.options
         var data = this.props.data
         var sortKey = this.state.sortKey
+        var options = this.makeChartOption(sortKey)
 
         if(_ua.Mobile) {
             return (
                     <div className="HPChart">
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
-                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
+                                return <Chart chartType="ScatterChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
                             }
                         })}
                     </div>

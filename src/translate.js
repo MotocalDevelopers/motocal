@@ -191,7 +191,11 @@ var multiLangData = {
     },
     "残HP割合": {
         "en": "Remain HP Ratio",
-        "ja": "残HP割合",
+        "ja": "残りHP割合",
+    },
+    "残りHP": {
+        "en": "Remain HP",
+        "ja": "残りHP",
     },
     "残HP割合説明(ジータのみ)": {
         "en": "Remain HP Ratio of the Player. Use \"Remain HP Ratio\" form in Buff for Party if you want to set the remain HP ratio of all member.",

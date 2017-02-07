@@ -2647,8 +2647,9 @@ var ResultList = React.createClass({
                                 }
 
                                 if(res.length > 1) {
+                                    var allindex;
                                     if(hp in allAlreadyUsedHP) {
-                                    index = allAlreadyUsedHP[hp] - 1
+                                    allindex = allAlreadyUsedHP[hp] - 1
                                     } else {
                                     allAlreadyUsedHP[hp] = AllTotalAttack.push([hp]);
                                     AllTotalHP.push([hp])
@@ -2659,7 +2660,7 @@ var ResultList = React.createClass({
                                     AllAverageTotalExpected.push([hp])
                                     AllAverageCycleDamagePerTurn.push([hp])
                                     AllAverageCriticalAttack.push([hp])
-                                    var allindex = allAlreadyUsedHP[hp] - 1;
+                                    allindex = allAlreadyUsedHP[hp] - 1;
 
                                     // まとめる場合はres.length*oneres.lengthの分だけ先に用意
                                     for(var subj = 0; subj < res.length * oneresult.length; subj++){
@@ -2677,7 +2678,7 @@ var ResultList = React.createClass({
                                 }
                             }
 
-                            TotalHP[index][j+1] = (displayRealHP? hp : parseInt(hp * onedata[key].totalHP));
+                            TotalHP[index][j+1] = (displayRealHP ? hp : parseInt(hp * onedata[key].totalHP));
                             TotalAttack[index][j+1] = parseInt(newTotalAttack)
                             TotalExpected[index][j+1] = parseInt(newTotalExpected)
                             CriticalAttack[index][j+1] = parseInt(onedata[key].criticalRatio * newTotalAttack)
