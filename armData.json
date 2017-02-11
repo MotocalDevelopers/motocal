@@ -24,11 +24,11 @@
         "element": "dark", 
         "attacklv100": "2380", 
         "minattack": "410", 
-        "attack": "", 
+        "attack": "2770", 
         "slvmax": 15, 
         "minhp": "38", 
         "type": "fist", 
-        "hp": "", 
+        "hp": "285", 
         "maxlv": 150
     }, 
     "霧氷剣ペルソス": {
