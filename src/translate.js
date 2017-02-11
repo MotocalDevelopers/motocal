@@ -1519,6 +1519,10 @@ var multiLangData = {
         "en": "2017/02/08: Implemented \"Enmity Graph based on real HP\" / Changed input behavior, open templates when a user begins name input.",
         "ja": "2017/02/08: 実HPベースの背水グラフ表示を実装 / 武器とキャラの名前が空欄の時に入力を開始するとテンプレートが自動的に開かれるようにした.",
     },
+    "notice-20170212-1": {
+        "en": "2017/02/12: Fixed a bug that cannot open enmity graph if there is only one summon setup.",
+        "ja": "2017/02/12: 召喚石組み合わせが1組のみの場合に背水グラフが開けないバグを修正.",
+    },
 }
 
 // 言語設定

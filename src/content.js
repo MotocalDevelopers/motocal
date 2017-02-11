@@ -2697,29 +2697,31 @@ var ResultList = React.createClass({
                     }
                 }
 
-                for(var k = 0; k < 100; k++) {
-                    var hp;
-                    if (displayRealHP) {
-                        // 実HP
-                        hp = parseInt(0.01 * (k + 1) * onedata["Djeeta"].totalHP);
-                    } else {
-                        // 残HP割合
-                        hp = k + 1
+                if(res.length > 1) {
+                    for(var k = 0; k < 100; k++) {
+                        var hp;
+                        if (displayRealHP) {
+                            // 実HP
+                            hp = parseInt(0.01 * (k + 1) * onedata["Djeeta"].totalHP);
+                        } else {
+                            // 残HP割合
+                            hp = k + 1
+                        }
+
+                        index = alreadyUsedHP[hp] - 1
+                        allindex = allAlreadyUsedHP[hp] - 1
+                        allj = s * oneresult.length + j + 1;
+
+                        AllTotalAttack[allindex][allj] = TotalAttack[index][j + 1]
+                        AllTotalHP[allindex][allj] = TotalHP[index][j + 1]
+                        AllCriticalAttack[allindex][allj] = CriticalAttack[index][j + 1]
+                        AllTotalExpected[allindex][allj] = TotalExpected[index][j + 1]
+                        AllCycleDamagePerTurn[allindex][allj] = CycleDamagePerTurn[index][j + 1]
+                        AllAverageTotalExpected[allindex][allj] = AverageTotalExpected[index][j + 1]
+                        AllAverageTotalAttack[allindex][allj] = AverageTotalAttack[index][j + 1]
+                        AllAverageCriticalAttack[allindex][allj] = AverageCriticalAttack[index][j + 1]
+                        AllAverageCycleDamagePerTurn[allindex][allj] = AverageCycleDamagePerTurn[index][j + 1]
                     }
-
-                    index = alreadyUsedHP[hp] - 1
-                    allindex = allAlreadyUsedHP[hp] - 1
-                    allj = s * oneresult.length + j + 1;
-
-                    AllTotalAttack[allindex][allj] = TotalAttack[index][j + 1]
-                    AllTotalHP[allindex][allj] = TotalHP[index][j + 1]
-                    AllCriticalAttack[allindex][allj] = CriticalAttack[index][j + 1]
-                    AllTotalExpected[allindex][allj] = TotalExpected[index][j + 1]
-                    AllCycleDamagePerTurn[allindex][allj] = CycleDamagePerTurn[index][j + 1]
-                    AllAverageTotalExpected[allindex][allj] = AverageTotalExpected[index][j + 1]
-                    AllAverageTotalAttack[allindex][allj] = AverageTotalAttack[index][j + 1]
-                    AllAverageCriticalAttack[allindex][allj] = AverageCriticalAttack[index][j + 1]
-                    AllAverageCycleDamagePerTurn[allindex][allj] = AverageCycleDamagePerTurn[index][j + 1]
                 }
             }
 
