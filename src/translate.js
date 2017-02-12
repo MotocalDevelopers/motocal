@@ -1523,6 +1523,10 @@ var multiLangData = {
         "en": "2017/02/12: Fixed a bug that cannot open enmity graph if there is only one summon setup.",
         "ja": "2017/02/12: 召喚石組み合わせが1組のみの場合に背水グラフが開けないバグを修正.",
     },
+    "notice-20170212-2": {
+        "en": "2017/02/12: Added coco&mimi Lv150.",
+        "ja": "2017/02/12: ココミミとペルソスの最終上限解放ステータスを追加. (スキル対応はまだ).",
+    },
 }
 
 // 言語設定
