@@ -979,6 +979,23 @@
         "hp": "207", 
         "maxlv": 100
     }, 
+    "[真救天]スコフニュング・属性変更": {
+        "hplv100": "207", 
+        "element2": "all", 
+        "name": "[真救天]スコフニュング・属性変更", 
+        "imageURL": "./imgs/1040003500.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2385", 
+        "minattack": "377", 
+        "attack": "2810", 
+        "slvmax": 15, 
+        "minhp": "35", 
+        "type": "sword", 
+        "hp": "244", 
+        "maxlv": 150
+    }, 
     "[狂恋剣]ラスト・シン": {
         "element2": "water", 
         "name": "[狂恋剣]ラスト・シン", 
@@ -1188,6 +1205,23 @@
         "type": "sword", 
         "hp": "203", 
         "maxlv": 100
+    }, 
+    "[真極閃]アシュケロン・属性変更": {
+        "hplv100": "203", 
+        "element2": "all", 
+        "name": "[真極閃]アシュケロン・属性変更", 
+        "imageURL": "./imgs/1040006200.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2405", 
+        "minattack": "397", 
+        "attack": "2830", 
+        "slvmax": 15, 
+        "minhp": "31", 
+        "type": "sword", 
+        "hp": "240", 
+        "maxlv": 150
     }, 
     "[巨豪剣]オールド・エッケザックス": {
         "element2": "fire", 
@@ -1760,6 +1794,23 @@
         "hp": "224", 
         "maxlv": 100
     }, 
+    "[真兇影]イペタム・属性変更": {
+        "hplv100": "224", 
+        "element2": "all", 
+        "name": "[真兇影]イペタム・属性変更", 
+        "imageURL": "./imgs/1040102900.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2301", 
+        "minattack": "389", 
+        "attack": "2710", 
+        "slvmax": 15, 
+        "minhp": "33", 
+        "type": "dagger", 
+        "hp": "265", 
+        "maxlv": 150
+    }, 
     "[真理創]ファウスト": {
         "element2": "earth", 
         "name": "[真理創]ファウスト", 
@@ -1774,6 +1825,23 @@
         "type": "dagger", 
         "hp": "229", 
         "maxlv": 100
+    }, 
+    "[真理創]ファウスト・属性変更": {
+        "hplv100": "229", 
+        "element2": "all", 
+        "name": "[真理創]ファウスト・属性変更", 
+        "imageURL": "./imgs/1040103000.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2276", 
+        "minattack": "364", 
+        "attack": "2680", 
+        "slvmax": 15, 
+        "minhp": "38", 
+        "type": "dagger", 
+        "hp": "270", 
+        "maxlv": 150
     }, 
     "[祖龍刃]バハムートダガー・ノヴム": {
         "element2": "dark", 
@@ -1849,6 +1917,23 @@
         "type": "dagger", 
         "hp": "227", 
         "maxlv": 100
+    }, 
+    "[真闇葬]ミセリコルデ・属性変更": {
+        "hplv100": "227", 
+        "element2": "all", 
+        "name": "[真闇葬]ミセリコルデ・属性変更", 
+        "imageURL": "./imgs/1040105500.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2285", 
+        "minattack": "375", 
+        "attack": "2690", 
+        "slvmax": 15, 
+        "minhp": "36", 
+        "type": "dagger", 
+        "hp": "270", 
+        "maxlv": 150
     }, 
     "[栄羅刃]アルセーヌ": {
         "element2": "earth", 
@@ -2343,6 +2428,23 @@
         "type": "spear", 
         "hp": "246", 
         "maxlv": 100
+    }, 
+    "[真尖軍]ロムルスの槍・属性変更": {
+        "hplv100": "246", 
+        "element2": "all", 
+        "name": "[真尖軍]ロムルスの槍・属性変更", 
+        "imageURL": "./imgs/1040203000.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2189", 
+        "minattack": "354", 
+        "attack": "2580", 
+        "slvmax": 15, 
+        "minhp": "40", 
+        "type": "spear", 
+        "hp": "290", 
+        "maxlv": 150
     }, 
     "[祖龍槍]バハムートスピア・ノヴム": {
         "element2": "dark", 
@@ -3013,6 +3115,23 @@
         "hp": "180", 
         "maxlv": 100
     }, 
+    "[真覇王]アヴェンジャー・属性変更": {
+        "hplv100": "180", 
+        "element2": "all", 
+        "name": "[真覇王]アヴェンジャー・属性変更", 
+        "imageURL": "./imgs/1040302300.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2519", 
+        "minattack": "416", 
+        "attack": "2960", 
+        "slvmax": 15, 
+        "minhp": "28", 
+        "type": "axe", 
+        "hp": "213", 
+        "maxlv": 150
+    }, 
     "[祖龍斧]バハムートアクス・ノヴム": {
         "element2": "dark", 
         "name": "[祖龍斧]バハムートアクス・ノヴム", 
@@ -3616,6 +3735,23 @@
         "hp": "274", 
         "maxlv": 100
     }, 
+    "[真聖紋]ニルヴァーナ・属性変更": {
+        "hplv100": "274", 
+        "element2": "all", 
+        "name": "[真聖紋]ニルヴァーナ・属性変更", 
+        "imageURL": "./imgs/1040402800.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2053", 
+        "minattack": "332", 
+        "attack": "2420", 
+        "slvmax": 15, 
+        "minhp": "44", 
+        "type": "wand", 
+        "hp": "322", 
+        "maxlv": 150
+    }, 
     "[真頴悟]ケラウノス": {
         "element2": "earth", 
         "name": "[真頴悟]ケラウノス", 
@@ -3630,6 +3766,23 @@
         "type": "wand", 
         "hp": "231", 
         "maxlv": 100
+    }, 
+    "[真頴悟]ケラウノス・属性変更": {
+        "hplv100": "231", 
+        "element2": "all", 
+        "name": "[真頴悟]ケラウノス・属性変更", 
+        "imageURL": "./imgs/1040402900.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2105", 
+        "minattack": "336", 
+        "attack": "2570", 
+        "slvmax": 15, 
+        "minhp": "66", 
+        "type": "wand", 
+        "hp": "265", 
+        "maxlv": 150
     }, 
     "[狂輝杖]マギ・リアリジスセプター": {
         "element2": "light", 
@@ -3798,9 +3951,9 @@
         "hp": "305", 
         "maxlv": 150
     }, 
-    "カピラヴァストゥ": {
+    "[真叡偉]カピラヴァストゥ": {
         "element2": "water", 
-        "name": "カピラヴァストゥ", 
+        "name": "[真叡偉]カピラヴァストゥ", 
         "imageURL": "./imgs/1040406000.png", 
         "skill2": "non", 
         "skill1": "non", 
@@ -3812,6 +3965,23 @@
         "type": "wand", 
         "hp": "276", 
         "maxlv": 100
+    }, 
+    "[真叡偉]カピラヴァストゥ・属性変更": {
+        "hplv100": "276", 
+        "element2": "all", 
+        "name": "[真叡偉]カピラヴァストゥ・属性変更", 
+        "imageURL": "./imgs/1040406000.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2040", 
+        "minattack": "320", 
+        "attack": "2410", 
+        "slvmax": 15, 
+        "minhp": "46", 
+        "type": "wand", 
+        "hp": "320", 
+        "maxlv": 150
     }, 
     "[]リング・オブ・サン": {
         "element2": "fire", 
@@ -4232,6 +4402,23 @@
         "hp": "170", 
         "maxlv": 100
     }, 
+    "[真奪撃]オリバー・属性変更": {
+        "hplv100": "170", 
+        "element2": "all", 
+        "name": "[真奪撃]オリバー・属性変更", 
+        "imageURL": "./imgs/1040501600.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2571", 
+        "minattack": "420", 
+        "attack": "3030", 
+        "slvmax": 15, 
+        "minhp": "27", 
+        "type": "gun", 
+        "hp": "200", 
+        "maxlv": 150
+    }, 
     "[祖龍銃]バハムートマズル・ノヴム": {
         "element2": "dark", 
         "name": "[祖龍銃]バハムートマズル・ノヴム", 
@@ -4338,6 +4525,23 @@
         "type": "gun", 
         "hp": "167", 
         "maxlv": 100
+    }, 
+    "[真鋭撃]ネブカドネザル・属性変更": {
+        "hplv100": "167", 
+        "element2": "all", 
+        "name": "[真鋭撃]ネブカドネザル・属性変更", 
+        "imageURL": "./imgs/1040503500.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2585", 
+        "minattack": "435", 
+        "attack": "3260", 
+        "slvmax": 15, 
+        "minhp": "24", 
+        "type": "gun", 
+        "hp": "244", 
+        "maxlv": 150
     }, 
     "[連装弾]エーケイ・フォーエイ": {
         "element2": "earth", 
@@ -4712,6 +4916,23 @@
         "type": "fist", 
         "hp": "235", 
         "maxlv": 100
+    }, 
+    "[真闘神]鬼神の籠手・属性変更": {
+        "hplv100": "235", 
+        "element2": "all", 
+        "name": "[真闘神]鬼神の籠手・属性変更", 
+        "imageURL": "./imgs/1040601700.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2245", 
+        "minattack": "372", 
+        "attack": "2640", 
+        "slvmax": 15, 
+        "minhp": "36", 
+        "type": "fist", 
+        "hp": "277", 
+        "maxlv": 150
     }, 
     "[祖龍拳]バハムートナックル・ノヴム": {
         "element2": "dark", 
@@ -5397,6 +5618,23 @@
         "hp": "217", 
         "maxlv": 100
     }, 
+    "[真獄殲]ローゼンボーゲン・属性変更": {
+        "hplv100": "217", 
+        "element2": "all", 
+        "name": "[真獄殲]ローゼンボーゲン・属性変更", 
+        "imageURL": "./imgs/1040701700.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2388", 
+        "minattack": "391", 
+        "attack": "2810", 
+        "slvmax": 15, 
+        "minhp": "34", 
+        "type": "bow", 
+        "hp": "256", 
+        "maxlv": 150
+    }, 
     "[]バハムートボウ・ノヴム": {
         "element2": "dark", 
         "name": "[]バハムートボウ・ノヴム", 
@@ -5735,6 +5973,23 @@
         "hp": "232", 
         "maxlv": 100
     }, 
+    "[真奏宴]ランゲレイク・属性変更": {
+        "hplv100": "232", 
+        "element2": "all", 
+        "name": "[真奏宴]ランゲレイク・属性変更", 
+        "imageURL": "./imgs/1040801300.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2100", 
+        "minattack": "331", 
+        "attack": "2480", 
+        "slvmax": 15, 
+        "minhp": "67", 
+        "type": "music", 
+        "hp": "266", 
+        "maxlv": 150
+    }, 
     "[祖龍琴]バハムートハープ・ノヴム": {
         "element2": "dark", 
         "name": "[祖龍琴]バハムートハープ・ノヴム", 
@@ -6058,6 +6313,23 @@
         "hp": "179", 
         "maxlv": 100
     }, 
+    "[真鍛心]天叢雲剣・属性変更": {
+        "hplv100": "179", 
+        "element2": "all", 
+        "name": "[真鍛心]天叢雲剣・属性変更", 
+        "imageURL": "./imgs/1040900300.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2543", 
+        "minattack": "411", 
+        "attack": "3000", 
+        "slvmax": 15, 
+        "minhp": "30", 
+        "type": "katana", 
+        "hp": "211", 
+        "maxlv": 150
+    }, 
     "[真悪呪]千子村正": {
         "element2": "dark", 
         "name": "[真悪呪]千子村正", 
@@ -6072,6 +6344,23 @@
         "type": "katana", 
         "hp": "175", 
         "maxlv": 100
+    }, 
+    "[真悪呪]千子村正・属性変更": {
+        "hplv100": "175", 
+        "element2": "all", 
+        "name": "[真悪呪]千子村正・属性変更", 
+        "imageURL": "./imgs/1040900400.png", 
+        "skill2": "non", 
+        "skill1": "non", 
+        "element": "all", 
+        "attacklv100": "2563", 
+        "minattack": "431", 
+        "attack": "3020", 
+        "slvmax": 15, 
+        "minhp": "26", 
+        "type": "katana", 
+        "hp": "207", 
+        "maxlv": 150
     }, 
     "[巡転]八命切": {
         "element2": "light", 

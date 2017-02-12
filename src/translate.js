@@ -826,7 +826,7 @@ var multiLangData = {
         "ja": "キャラ名",
     },
     "平均に含める": {
-        "en": "Include in Average",
+        "en": "In Average",
         "ja": "平均に含める",
     },
     "種族": {
@@ -1526,6 +1526,10 @@ var multiLangData = {
     "notice-20170212-2": {
         "en": "2017/02/12: Added coco&mimi Lv150.",
         "ja": "2017/02/12: ココミミとペルソスの最終上限解放ステータスを追加. (スキル対応はまだ).",
+    },
+    "notice-20170212-3": {
+        "en": "2017/02/12: Added Job Masterpieces tempalte.",
+        "ja": "2017/02/12: 属性変更後のジョブマスターピースのテンプレートを追加.",
     },
 }
 
