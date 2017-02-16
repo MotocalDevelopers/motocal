@@ -1116,21 +1116,25 @@ var multiLangData = {
         "en": "Unknown ATK II",
         "ja": "アンノウンATK・II",
     },
-    "ストレングス背水(中)": {
-        "en": "Strength Enmity (M)",
-        "ja": "ストレングス背水(中)",
+    "EX背水(中)": {
+        "en": "EX Enmity (M)",
+        "ja": "EX背水(中)",
     },
-    "ストレングス等(小)": {
-        "en": "Strength (S)",
-        "ja": "ストレングス等(小)",
+    "EX攻刃(小)": {
+        "en": "EX Might (S)",
+        "ja": "EX攻刃(小)",
     },
-    "ストレングス等(中)": {
-        "en": "Strength (M)",
-        "ja": "ストレングス等(中)",
+    "EX攻刃(中)": {
+        "en": "EX Might (M)",
+        "ja": "EX攻刃(中)",
     },
-    "ストレングス等(大)": {
-        "en": "Strength (L)",
-        "ja": "ストレングス等(大)",
+    "EX攻刃(大)": {
+        "en": "EX Might (L)",
+        "ja": "EX攻刃(大)",
+    },
+    "EX攻刃(特大)": {
+        "en": "EX Might (LL)",
+        "ja": "EX攻刃(特大)",
     },
     "通常守護(小)": {
         "en": "Normal Aegis (S)",
