@@ -1329,7 +1329,10 @@ var ResultList = React.createClass({
             var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"]
 
             // hp倍率
-            var hpCoeff = (1.0 - totals[key]["HPdebuff"]) * (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
+            var hpCoeff = (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
+
+            if(key == "Djeeta") hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
+            hpCoeff *= 1.0 - totals[key]["HPdebuff"]
 
             // ベースHP
             var displayHP = totals[key]["baseHP"] + totals[key]["armHP"] + totalSummon["hp"]
@@ -1340,7 +1343,6 @@ var ResultList = React.createClass({
                 // 主人公HP計算
                 displayHP += totals["Djeeta"]["job"].hpBonus
                 displayHP *= (1.0 + buff["masterHP"])
-                hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
                 var totalHP = displayHP * hpCoeff
             } else {
                 // for chara
