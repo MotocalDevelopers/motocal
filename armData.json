@@ -1,4 +1,38 @@
 {
+    "[]六道・灼滅天の刃鎌": {
+        "hplv100": "170", 
+        "element2": "fire", 
+        "name": "[]六道・灼滅天の刃鎌", 
+        "imageURL": "./imgs/1040306200.png", 
+        "skill2": "non", 
+        "skill1": "strengthLL", 
+        "element": "fire", 
+        "attacklv100": "2392", 
+        "minattack": "400", 
+        "attack": "2795", 
+        "slvmax": 15, 
+        "minhp": "25", 
+        "type": "axe", 
+        "hp": "199", 
+        "maxlv": 150
+    }, 
+    "[]真・灼滅天の刃鎌": {
+        "hplv100": "170", 
+        "element2": "fire", 
+        "name": "[]真・灼滅天の刃鎌", 
+        "imageURL": "./imgs/1040306300.png", 
+        "skill2": "non", 
+        "skill1": "strengthLL", 
+        "element": "fire", 
+        "attacklv100": "2392", 
+        "minattack": "400", 
+        "attack": "2795", 
+        "slvmax": 15, 
+        "minhp": "25", 
+        "type": "axe", 
+        "hp": "199", 
+        "maxlv": 150
+    }, 
     "ココ＆ミミ": {
         "element2": "dark", 
         "name": "ココ＆ミミ", 
