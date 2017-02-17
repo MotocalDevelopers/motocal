@@ -3599,7 +3599,7 @@ var ResultList = React.createClass({
                         }
 
                         return(
-                            <div key={summonindex} className="result">
+                            <div style={{textAlign:"left"}} key={summonindex} className="result">
                                 <h2> {intl.translate("結果", locale)}{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [{intl.translate("優先項目", locale)}: {changeSortKey}]</h2>
                                 <div className="charainfo"><span>{remainHPstr}</span></div>
                                 <table className="table table-bordered">

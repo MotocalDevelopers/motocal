@@ -976,8 +976,8 @@ var multiLangData = {
         "ja": "★6",
     },
     "表示項目切替": {
-        "en": "Select Display Element",
-        "ja": "表示項目切替",
+        "en": "Select Display Elements",
+        "ja": "表示する項目を選択してください",
     },
     "攻撃力・HP・連撃率": {
         "en": "ATK/HP/etcs",
