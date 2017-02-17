@@ -1539,6 +1539,10 @@ var multiLangData = {
         "en": "2017/02/16: Addded Xeno Ifrit Axes.",
         "ja": "2017/02/16: ゼノイフリート斧とEX特大の計算を追加 / ジョブの守護ボーナスの計算タイミングがおかしいのを修正.",
     },
+    "notice-20170217-1": {
+        "en": "17/02/2017: Currently, there is a invalid data loading bug when you load the setup from a browser. When it happened, change an value in Profile Tab. It will fix the result.",
+        "ja": "2017/02/17: 現在、ブラウザ保存したデータ読み込み時にプロフィール欄が正しく読み込まれない場合があるようです. その場合、プロフィール欄の入力値をどこでもいいので適当に変更すると正しい計算結果になるはずです.",
+    },
 }
 
 // 言語設定

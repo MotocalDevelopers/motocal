@@ -4365,6 +4365,7 @@ var Profile = React.createClass({
 
         return (
             <div className="profile">
+                <p className="text-danger">{intl.translate("notice-20170217-1", locale)}</p>
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
                     <tr>
