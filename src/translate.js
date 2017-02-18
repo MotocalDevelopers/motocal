@@ -1551,6 +1551,10 @@ var multiLangData = {
         "en": "18/02/2017: Added charas and weapons, apsaras.",
         "ja": "2017/02/18: 武器とキャラ追加 / アプサラス追加.",
     },
+    "notice-20170218-2": {
+        "en": "18/02/2017: Added English Name of Romeo, Yngwei, Yuisis, Rastina and Implemented English name searching for these charas.",
+        "ja": "2017/02/18: ロミオ、イングヴェイ、ユイシス、ラスティナの連撃率更新 / 英語名表示と英語名検索を実装.",
+    },
 }
 
 // 言語設定
