@@ -772,7 +772,7 @@ var Chara = React.createClass({
         }
     },
     setNewCharaState: function(newState, newchara){
-        newState["name"] = newchara.name
+        newState["name"] = newchara[this.props.locale]
         newState["attack"] = parseInt(newchara.attack)
         newState["hp"] = parseInt(newchara.hp)
         newState["type"] = newchara.type

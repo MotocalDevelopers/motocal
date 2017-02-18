@@ -154,13 +154,14 @@ var RegisteredChara = React.createClass({
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="charaTemplateContent">
                         {Object.keys(charaData).map(function(key, ind) {
+                            var charaName = charaData[key][locale]
                             if(filterElement == "all" || (charaData[key].element == filterElement)){
-                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                if(filterText == "" || charaName.indexOf(filterText) != -1){
                                     if(displayed_count < limit) {
                                         displayed_count++;
                                         return (
                                             <div className="onechara" key={key}>
-                                                <p>{charaData[key].name}</p><br/>
+                                                <p>{charaName}</p><br/>
                                                 <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
                                             </div>
                                         );
@@ -181,11 +182,12 @@ var RegisteredChara = React.createClass({
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="charaTemplateContent">
                         {Object.keys(charaData).map(function(key, ind) {
+                            var charaName = charaData[key][locale]
                             if(filterElement == "all" || (charaData[key].element == filterElement)){
-                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                if(filterText == "" || charaName.indexOf(filterText) != -1){
                                     return (
                                         <div className="onechara" key={key}>
-                                            <p>{charaData[key].name}</p><br/>
+                                            <p>{charaName}</p><br/>
                                             <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
                                         </div>
                                     );

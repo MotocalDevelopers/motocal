@@ -45,11 +45,11 @@ supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
 patching = OrderedDict()
 
 # すんどめ侍さん
-patching["ロミオ"] = {"DA": 7.5, "TA": 2.5, "en_name": "Romeo"}
-patching["イングヴェイ"] = {"DA": 9.0, "TA": 4.0, "en_name": "Yngwie"}
-patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0, "en_name": "Rastina"}
-patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0, "en_name": "Marquiares"}
-patching["ユイシス"] = {"DA": 8.0, "TA": 4.0, "en_name": "Yuisis"}
+patching["ロミオ"] = {"DA": 7.5, "TA": 2.5, "en": "Romeo"}
+patching["イングヴェイ"] = {"DA": 9.0, "TA": 4.0, "en": "Yngwie"}
+patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0, "en": "Rastina"}
+patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0, "en": "Marquiares"}
+patching["ユイシス"] = {"DA": 8.0, "TA": 4.0, "en": "Yuisis"}
 
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
@@ -131,6 +131,7 @@ if __name__ == '__main__':
                 name = "error"
 
             newdict["name"] = name
+            newdict["ja"] = name
 
             # element
             if row[3].find("火") > 0:
@@ -175,11 +176,11 @@ if __name__ == '__main__':
             if newdict["name"] in patching:
                 newdict["baseDA"] = patching[newdict["name"]]["DA"]
                 newdict["baseTA"] = patching[newdict["name"]]["TA"]
-                newdict["en_name"] = patching[newdict["name"]]["en_name"]
+                newdict["en"] = patching[newdict["name"]]["en"]
             else:
                 newdict["baseDA"] = 6.5
                 newdict["baseTA"] = 3.0
-                newdict["en_name"] = newdict["name"]
+                newdict["en"] = newdict["name"]
 
             newdict["imageURL"] = "./charaimgs/" + key + "_01.png"
             json_data[name] = newdict

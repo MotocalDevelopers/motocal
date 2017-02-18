@@ -1,6 +1,7 @@
 {
     "ガウェイン": {
         "name": "ガウェイン", 
+        "ja": "ガウェイン", 
         "element": "wind", 
         "type": "defense", 
         "race": "human", 
@@ -14,11 +15,12 @@
         "attack": "8550", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ガウェイン", 
+        "en": "ガウェイン", 
         "imageURL": "./charaimgs/3040000000_01.png"
     }, 
     "アルタイル": {
         "name": "アルタイル", 
+        "ja": "アルタイル", 
         "element": "water", 
         "type": "balance", 
         "race": "human", 
@@ -32,11 +34,12 @@
         "attack": "9500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アルタイル", 
+        "en": "アルタイル", 
         "imageURL": "./charaimgs/3040001000_01.png"
     }, 
     "アレーティア": {
         "name": "アレーティア", 
+        "ja": "アレーティア", 
         "element": "earth", 
         "type": "attack", 
         "race": "human", 
@@ -50,11 +53,12 @@
         "attack": "9200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アレーティア", 
+        "en": "アレーティア", 
         "imageURL": "./charaimgs/3040002000_01.png"
     }, 
     "ネツァワルピリ": {
         "name": "ネツァワルピリ", 
+        "ja": "ネツァワルピリ", 
         "element": "wind", 
         "type": "attack", 
         "race": "human", 
@@ -68,11 +72,12 @@
         "attack": "11400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ネツァワルピリ", 
+        "en": "ネツァワルピリ", 
         "imageURL": "./charaimgs/3040003000_01.png"
     }, 
     "レ・フィーエ": {
         "name": "レ・フィーエ", 
+        "ja": "レ・フィーエ", 
         "element": "light", 
         "type": "heal", 
         "race": "human", 
@@ -86,11 +91,12 @@
         "attack": "6400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "レ・フィーエ", 
+        "en": "レ・フィーエ", 
         "imageURL": "./charaimgs/3040004000_01.png"
     }, 
     "レディ・グレイ": {
         "name": "レディ・グレイ", 
+        "ja": "レディ・グレイ", 
         "element": "dark", 
         "type": "pecu", 
         "race": "human", 
@@ -104,11 +110,12 @@
         "attack": "10680", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "レディ・グレイ", 
+        "en": "レディ・グレイ", 
         "imageURL": "./charaimgs/3040005000_01.png"
     }, 
     "ユエル": {
         "name": "ユエル", 
+        "ja": "ユエル", 
         "element": "fire", 
         "type": "balance", 
         "race": "erune", 
@@ -122,11 +129,12 @@
         "attack": "8550", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ユエル", 
+        "en": "ユエル", 
         "imageURL": "./charaimgs/3040006000_01.png"
     }, 
     "リリィ": {
         "name": "リリィ", 
+        "ja": "リリィ", 
         "element": "water", 
         "type": "heal", 
         "race": "unknown", 
@@ -140,11 +148,12 @@
         "attack": "6500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リリィ", 
+        "en": "リリィ", 
         "imageURL": "./charaimgs/3040007000_01.png"
     }, 
     "サルナーン": {
         "name": "サルナーン", 
+        "ja": "サルナーン", 
         "element": "light", 
         "type": "pecu", 
         "race": "erune", 
@@ -158,11 +167,12 @@
         "attack": "8360", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "サルナーン", 
+        "en": "サルナーン", 
         "imageURL": "./charaimgs/3040008000_01.png"
     }, 
     "カリオストロ": {
         "name": "カリオストロ", 
+        "ja": "カリオストロ", 
         "element": "earth", 
         "type": "heal", 
         "race": "human", 
@@ -176,11 +186,12 @@
         "attack": "8310", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "カリオストロ", 
+        "en": "カリオストロ", 
         "imageURL": "./charaimgs/3040009000_01.png"
     }, 
     "シャルロッテ": {
         "name": "シャルロッテ", 
+        "ja": "シャルロッテ", 
         "element": "water", 
         "type": "balance", 
         "race": "havin", 
@@ -194,11 +205,12 @@
         "attack": "9980", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シャルロッテ", 
+        "en": "シャルロッテ", 
         "imageURL": "./charaimgs/3040010000_01.png"
     }, 
     "マギサ": {
         "name": "マギサ", 
+        "ja": "マギサ", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -212,11 +224,12 @@
         "attack": "10450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "マギサ", 
+        "en": "マギサ", 
         "imageURL": "./charaimgs/3040011000_01.png"
     }, 
     "メーテラ": {
         "name": "メーテラ", 
+        "ja": "メーテラ", 
         "element": "wind", 
         "type": "balance", 
         "race": "erune", 
@@ -230,11 +243,12 @@
         "attack": "7300", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "メーテラ", 
+        "en": "メーテラ", 
         "imageURL": "./charaimgs/3040012000_01.png"
     }, 
     "セルエル": {
         "name": "セルエル", 
+        "ja": "セルエル", 
         "element": "light", 
         "type": "attack", 
         "race": "erune", 
@@ -248,11 +262,12 @@
         "attack": "8640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "セルエル", 
+        "en": "セルエル", 
         "imageURL": "./charaimgs/3040013000_01.png"
     }, 
     "レ・フィーエ(2014年サマーver)": {
         "name": "レ・フィーエ(2014年サマーver)", 
+        "ja": "レ・フィーエ(2014年サマーver)", 
         "element": "light", 
         "type": "heal", 
         "race": "human", 
@@ -266,11 +281,12 @@
         "attack": "6400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "レ・フィーエ(2014年サマーver)", 
+        "en": "レ・フィーエ(2014年サマーver)", 
         "imageURL": "./charaimgs/3040014000_01.png"
     }, 
     "イオ(2014年サマーver)": {
         "name": "イオ(2014年サマーver)", 
+        "ja": "イオ(2014年サマーver)", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -284,11 +300,12 @@
         "attack": "9680", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "イオ(2014年サマーver)", 
+        "en": "イオ(2014年サマーver)", 
         "imageURL": "./charaimgs/3040015000_01.png"
     }, 
     "ケルベロス": {
         "name": "ケルベロス", 
+        "ja": "ケルベロス", 
         "element": "dark", 
         "type": "pecu", 
         "race": "unknown", 
@@ -302,11 +319,12 @@
         "attack": "7333", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ケルベロス", 
+        "en": "ケルベロス", 
         "imageURL": "./charaimgs/3040016000_01.png"
     }, 
     "アギエルバ": {
         "name": "アギエルバ", 
+        "ja": "アギエルバ", 
         "element": "fire", 
         "type": "defense", 
         "race": "doraf", 
@@ -320,11 +338,12 @@
         "attack": "7920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アギエルバ", 
+        "en": "アギエルバ", 
         "imageURL": "./charaimgs/3040017000_01.png"
     }, 
     "クリスティーナ": {
         "name": "クリスティーナ", 
+        "ja": "クリスティーナ", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -338,11 +357,12 @@
         "attack": "7777", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "クリスティーナ", 
+        "en": "クリスティーナ", 
         "imageURL": "./charaimgs/3040018000_01.png"
     }, 
     "アルルメイヤ": {
         "name": "アルルメイヤ", 
+        "ja": "アルルメイヤ", 
         "element": "earth", 
         "type": "pecu", 
         "race": "havin", 
@@ -356,11 +376,12 @@
         "attack": "8400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アルルメイヤ", 
+        "en": "アルルメイヤ", 
         "imageURL": "./charaimgs/3040019000_01.png"
     }, 
     "シャルロッテ(ハロウィンver)": {
         "name": "シャルロッテ(ハロウィンver)", 
+        "ja": "シャルロッテ(ハロウィンver)", 
         "element": "light", 
         "type": "heal", 
         "race": "havin", 
@@ -374,11 +395,12 @@
         "attack": "6720", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シャルロッテ(ハロウィンver)", 
+        "en": "シャルロッテ(ハロウィンver)", 
         "imageURL": "./charaimgs/3040020000_01.png"
     }, 
     "レナ": {
         "name": "レナ", 
+        "ja": "レナ", 
         "element": "wind", 
         "type": "heal", 
         "race": "human", 
@@ -392,11 +414,12 @@
         "attack": "6560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "レナ", 
+        "en": "レナ", 
         "imageURL": "./charaimgs/3040021000_01.png"
     }, 
     "メルゥ": {
         "name": "メルゥ", 
+        "ja": "メルゥ", 
         "element": "earth", 
         "type": "attack", 
         "race": "erune", 
@@ -410,11 +433,12 @@
         "attack": "8640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "メルゥ", 
+        "en": "メルゥ", 
         "imageURL": "./charaimgs/3040022000_01.png"
     }, 
     "ランスロット(SSR)": {
         "name": "ランスロット(SSR)", 
+        "ja": "ランスロット(SSR)", 
         "element": "water", 
         "type": "attack", 
         "race": "human", 
@@ -428,11 +452,12 @@
         "attack": "10830", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ランスロット(SSR)", 
+        "en": "ランスロット(SSR)", 
         "imageURL": "./charaimgs/3040023000_01.png"
     }, 
     "ソフィア": {
         "name": "ソフィア", 
+        "ja": "ソフィア", 
         "element": "light", 
         "type": "heal", 
         "race": "human", 
@@ -446,11 +471,12 @@
         "attack": "6160", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ソフィア", 
+        "en": "ソフィア", 
         "imageURL": "./charaimgs/3040024000_01.png"
     }, 
     "ジークフリート": {
         "name": "ジークフリート", 
+        "ja": "ジークフリート", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -464,11 +490,12 @@
         "attack": "9880", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジークフリート", 
+        "en": "ジークフリート", 
         "imageURL": "./charaimgs/3040025000_01.png"
     }, 
     "ロゼッタ(クリスマスver)": {
         "name": "ロゼッタ(クリスマスver)", 
+        "ja": "ロゼッタ(クリスマスver)", 
         "element": "dark", 
         "type": "heal", 
         "race": "unknown", 
@@ -482,11 +509,12 @@
         "attack": "7280", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ロゼッタ(クリスマスver)", 
+        "en": "ロゼッタ(クリスマスver)", 
         "imageURL": "./charaimgs/3040026000_01.png"
     }, 
     "アニラ": {
         "name": "アニラ", 
+        "ja": "アニラ", 
         "element": "fire", 
         "type": "pecu", 
         "race": "doraf", 
@@ -500,11 +528,12 @@
         "attack": "5760", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アニラ", 
+        "en": "アニラ", 
         "imageURL": "./charaimgs/3030110000_01.png"
     }, 
     "ゼタ": {
         "name": "ゼタ", 
+        "ja": "ゼタ", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -518,11 +547,12 @@
         "attack": "9600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ゼタ", 
+        "en": "ゼタ", 
         "imageURL": "./charaimgs/3040028000_01.png"
     }, 
     "バザラガ": {
         "name": "バザラガ", 
+        "ja": "バザラガ", 
         "element": "dark", 
         "type": "attack", 
         "race": "doraf", 
@@ -536,11 +566,12 @@
         "attack": "10560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "バザラガ", 
+        "en": "バザラガ", 
         "imageURL": "./charaimgs/3040029000_01.png"
     }, 
     "ウーノ": {
         "name": "ウーノ", 
+        "ja": "ウーノ", 
         "element": "water", 
         "type": "defense", 
         "race": "havin", 
@@ -554,11 +585,12 @@
         "attack": "8911", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ウーノ", 
+        "en": "ウーノ", 
         "imageURL": "./charaimgs/3040030000_01.png"
     }, 
     "ソーン": {
         "name": "ソーン", 
+        "ja": "ソーン", 
         "element": "light", 
         "type": "balance", 
         "race": "human", 
@@ -572,11 +604,12 @@
         "attack": "9522", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ソーン", 
+        "en": "ソーン", 
         "imageURL": "./charaimgs/3040031000_01.png"
     }, 
     "サラーサ": {
         "name": "サラーサ", 
+        "ja": "サラーサ", 
         "element": "earth", 
         "type": "attack", 
         "race": "doraf", 
@@ -590,11 +623,12 @@
         "attack": "11333", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "サラーサ", 
+        "en": "サラーサ", 
         "imageURL": "./charaimgs/3040032000_01.png"
     }, 
     "カトル": {
         "name": "カトル", 
+        "ja": "カトル", 
         "element": "water", 
         "type": "pecu", 
         "race": "erune", 
@@ -608,11 +642,12 @@
         "attack": "8844", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "カトル", 
+        "en": "カトル", 
         "imageURL": "./charaimgs/3040033000_01.png"
     }, 
     "フュンフ": {
         "name": "フュンフ", 
+        "ja": "フュンフ", 
         "element": "light", 
         "type": "heal", 
         "race": "havin", 
@@ -626,11 +661,12 @@
         "attack": "8055", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "フュンフ", 
+        "en": "フュンフ", 
         "imageURL": "./charaimgs/3040034000_01.png"
     }, 
     "シス": {
         "name": "シス", 
+        "ja": "シス", 
         "element": "dark", 
         "type": "attack", 
         "race": "erune", 
@@ -644,11 +680,12 @@
         "attack": "6666", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シス", 
+        "en": "シス", 
         "imageURL": "./charaimgs/3040035000_01.png"
     }, 
     "シエテ": {
         "name": "シエテ", 
+        "ja": "シエテ", 
         "element": "wind", 
         "type": "attack", 
         "race": "human", 
@@ -662,11 +699,12 @@
         "attack": "10777", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シエテ", 
+        "en": "シエテ", 
         "imageURL": "./charaimgs/3040036000_01.png"
     }, 
     "オクトー": {
         "name": "オクトー", 
+        "ja": "オクトー", 
         "element": "earth", 
         "type": "attack", 
         "race": "doraf", 
@@ -680,11 +718,12 @@
         "attack": "10788", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "オクトー", 
+        "en": "オクトー", 
         "imageURL": "./charaimgs/3040037000_01.png"
     }, 
     "ニオ": {
         "name": "ニオ", 
+        "ja": "ニオ", 
         "element": "wind", 
         "type": "pecu", 
         "race": "havin", 
@@ -698,11 +737,12 @@
         "attack": "10399", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ニオ", 
+        "en": "ニオ", 
         "imageURL": "./charaimgs/3040038000_01.png"
     }, 
     "エッセル": {
         "name": "エッセル", 
+        "ja": "エッセル", 
         "element": "fire", 
         "type": "balance", 
         "race": "erune", 
@@ -716,11 +756,12 @@
         "attack": "8200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エッセル", 
+        "en": "エッセル", 
         "imageURL": "./charaimgs/3040039000_01.png"
     }, 
     "ジャンヌダルク": {
         "name": "ジャンヌダルク", 
+        "ja": "ジャンヌダルク", 
         "element": "light", 
         "type": "balance", 
         "race": "human", 
@@ -734,11 +775,12 @@
         "attack": "9850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジャンヌダルク", 
+        "en": "ジャンヌダルク", 
         "imageURL": "./charaimgs/3040040000_01.png"
     }, 
     "サラ(SSR)": {
         "name": "サラ(SSR)", 
+        "ja": "サラ(SSR)", 
         "element": "earth", 
         "type": "defense", 
         "race": "human", 
@@ -752,11 +794,12 @@
         "attack": "7200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "サラ(SSR)", 
+        "en": "サラ(SSR)", 
         "imageURL": "./charaimgs/3040041000_01.png"
     }, 
     "カルメリーナ": {
         "name": "カルメリーナ", 
+        "ja": "カルメリーナ", 
         "element": "wind", 
         "type": "pecu", 
         "race": "doraf", 
@@ -770,11 +813,12 @@
         "attack": "9240", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "カルメリーナ", 
+        "en": "カルメリーナ", 
         "imageURL": "./charaimgs/3040042000_01.png"
     }, 
     "ヴィーラ(SSR)": {
         "name": "ヴィーラ(SSR)", 
+        "ja": "ヴィーラ(SSR)", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -788,11 +832,12 @@
         "attack": "10640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヴィーラ(SSR)", 
+        "en": "ヴィーラ(SSR)", 
         "imageURL": "./charaimgs/3040043000_01.png"
     }, 
     "ソシエ": {
         "name": "ソシエ", 
+        "ja": "ソシエ", 
         "element": "water", 
         "type": "pecu", 
         "race": "erune", 
@@ -806,11 +851,12 @@
         "attack": "7920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ソシエ", 
+        "en": "ソシエ", 
         "imageURL": "./charaimgs/3040044000_01.png"
     }, 
     "アルベール": {
         "name": "アルベール", 
+        "ja": "アルベール", 
         "element": "light", 
         "type": "attack", 
         "race": "human", 
@@ -824,11 +870,12 @@
         "attack": "4800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アルベール", 
+        "en": "アルベール", 
         "imageURL": "./charaimgs/3040045000_01.png"
     }, 
     "クラリス": {
         "name": "クラリス", 
+        "ja": "クラリス", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -842,11 +889,12 @@
         "attack": "8480", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "クラリス", 
+        "en": "クラリス", 
         "imageURL": "./charaimgs/3040046000_01.png"
     }, 
     "ペトラ(SSR)": {
         "name": "ペトラ(SSR)", 
+        "ja": "ペトラ(SSR)", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -860,11 +908,12 @@
         "attack": "7680", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ペトラ(SSR)", 
+        "en": "ペトラ(SSR)", 
         "imageURL": "./charaimgs/3040047000_01.png"
     }, 
     "サルナーン(闇)": {
         "name": "サルナーン(闇)", 
+        "ja": "サルナーン(闇)", 
         "element": "dark", 
         "type": "pecu", 
         "race": "erune", 
@@ -878,11 +927,12 @@
         "attack": "8360", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "サルナーン(闇)", 
+        "en": "サルナーン(闇)", 
         "imageURL": "./charaimgs/3040048000_01.png"
     }, 
     "シルヴァ": {
         "name": "シルヴァ", 
+        "ja": "シルヴァ", 
         "element": "water", 
         "type": "attack", 
         "race": "human", 
@@ -896,11 +946,12 @@
         "attack": "9250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シルヴァ", 
+        "en": "シルヴァ", 
         "imageURL": "./charaimgs/3040049000_01.png"
     }, 
     "パーシヴァル": {
         "name": "パーシヴァル", 
+        "ja": "パーシヴァル", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -914,11 +965,12 @@
         "attack": "9120", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "パーシヴァル", 
+        "en": "パーシヴァル", 
         "imageURL": "./charaimgs/3040050000_01.png"
     }, 
     "アーミラ(SSR)": {
         "name": "アーミラ(SSR)", 
+        "ja": "アーミラ(SSR)", 
         "element": "light", 
         "type": "pecu", 
         "race": "unknown", 
@@ -932,11 +984,12 @@
         "attack": "10270", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アーミラ(SSR)", 
+        "en": "アーミラ(SSR)", 
         "imageURL": "./charaimgs/3040051000_01.png"
     }, 
     "ガンダゴウザ": {
         "name": "ガンダゴウザ", 
+        "ja": "ガンダゴウザ", 
         "element": "fire", 
         "type": "attack", 
         "race": "doraf", 
@@ -950,11 +1003,12 @@
         "attack": "10080", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ガンダゴウザ", 
+        "en": "ガンダゴウザ", 
         "imageURL": "./charaimgs/3040052000_01.png"
     }, 
     "ヴィーラ(サマーver)": {
         "name": "ヴィーラ(サマーver)", 
+        "ja": "ヴィーラ(サマーver)", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -968,11 +1022,12 @@
         "attack": "8160", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヴィーラ(サマーver)", 
+        "en": "ヴィーラ(サマーver)", 
         "imageURL": "./charaimgs/3040053000_01.png"
     }, 
     "カタリナ(リミテッドver)": {
         "name": "カタリナ(リミテッドver)", 
+        "ja": "カタリナ(リミテッドver)", 
         "element": "water", 
         "type": "balance", 
         "race": "human", 
@@ -986,11 +1041,12 @@
         "attack": "8100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "カタリナ(リミテッドver)", 
+        "en": "カタリナ(リミテッドver)", 
         "imageURL": "./charaimgs/3040054000_01.png"
     }, 
     "ダヌア(サマーver)": {
         "name": "ダヌア(サマーver)", 
+        "ja": "ダヌア(サマーver)", 
         "element": "dark", 
         "type": "pecu", 
         "race": "doraf", 
@@ -1004,11 +1060,12 @@
         "attack": "8350", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ダヌア(サマーver)", 
+        "en": "ダヌア(サマーver)", 
         "imageURL": "./charaimgs/3040055000_01.png"
     }, 
     "ゼタ(サマーver)": {
         "name": "ゼタ(サマーver)", 
+        "ja": "ゼタ(サマーver)", 
         "element": "light", 
         "type": "attack", 
         "race": "human", 
@@ -1022,11 +1079,12 @@
         "attack": "9600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ゼタ(サマーver)", 
+        "en": "ゼタ(サマーver)", 
         "imageURL": "./charaimgs/3040056000_01.png"
     }, 
     "ヴァンピィ": {
         "name": "ヴァンピィ", 
+        "ja": "ヴァンピィ", 
         "element": "dark", 
         "type": "pecu", 
         "race": "unknown", 
@@ -1040,11 +1098,12 @@
         "attack": "9160", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヴァンピィ", 
+        "en": "ヴァンピィ", 
         "imageURL": "./charaimgs/3040057000_01.png"
     }, 
     "アンリエット": {
         "name": "アンリエット", 
+        "ja": "アンリエット", 
         "element": "wind", 
         "type": "pecu", 
         "race": "human", 
@@ -1058,11 +1117,12 @@
         "attack": "8750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アンリエット", 
+        "en": "アンリエット", 
         "imageURL": "./charaimgs/3040058000_01.png"
     }, 
     "ラカム(リミテッドver)": {
         "name": "ラカム(リミテッドver)", 
+        "ja": "ラカム(リミテッドver)", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -1076,11 +1136,12 @@
         "attack": "8000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ラカム(リミテッドver)", 
+        "en": "ラカム(リミテッドver)", 
         "imageURL": "./charaimgs/3040059000_01.png"
     }, 
     "ヘルエス": {
         "name": "ヘルエス", 
+        "ja": "ヘルエス", 
         "element": "fire", 
         "type": "attack", 
         "race": "erune", 
@@ -1094,11 +1155,12 @@
         "attack": "8640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヘルエス", 
+        "en": "ヘルエス", 
         "imageURL": "./charaimgs/3040060000_01.png"
     }, 
     "フィーナ(SSR)": {
         "name": "フィーナ(SSR)", 
+        "ja": "フィーナ(SSR)", 
         "element": "wind", 
         "type": "attack", 
         "race": "human", 
@@ -1112,11 +1174,12 @@
         "attack": "9400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "フィーナ(SSR)", 
+        "en": "フィーナ(SSR)", 
         "imageURL": "./charaimgs/3040061000_01.png"
     }, 
     "カリオストロ(ハロウィンver)": {
         "name": "カリオストロ(ハロウィンver)", 
+        "ja": "カリオストロ(ハロウィンver)", 
         "element": "dark", 
         "type": "balance", 
         "race": "human", 
@@ -1130,11 +1193,12 @@
         "attack": "8100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "カリオストロ(ハロウィンver)", 
+        "en": "カリオストロ(ハロウィンver)", 
         "imageURL": "./charaimgs/3040062000_01.png"
     }, 
     "ナルメア": {
         "name": "ナルメア", 
+        "ja": "ナルメア", 
         "element": "dark", 
         "type": "attack", 
         "race": "doraf", 
@@ -1148,11 +1212,12 @@
         "attack": "10240", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ナルメア", 
+        "en": "ナルメア", 
         "imageURL": "./charaimgs/3040063000_01.png"
     }, 
     "ヨダルラーハ": {
         "name": "ヨダルラーハ", 
+        "ja": "ヨダルラーハ", 
         "element": "water", 
         "type": "attack", 
         "race": "havin", 
@@ -1166,11 +1231,12 @@
         "attack": "9580", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヨダルラーハ", 
+        "en": "ヨダルラーハ", 
         "imageURL": "./charaimgs/3040064000_01.png"
     }, 
     "イオ(リミテッドver)": {
         "name": "イオ(リミテッドver)", 
+        "ja": "イオ(リミテッドver)", 
         "element": "light", 
         "type": "balance", 
         "race": "human", 
@@ -1184,11 +1250,12 @@
         "attack": "7700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "イオ(リミテッドver)", 
+        "en": "イオ(リミテッドver)", 
         "imageURL": "./charaimgs/3040065000_01.png"
     }, 
     "リルル": {
         "name": "リルル", 
+        "ja": "リルル", 
         "element": "water", 
         "type": "pecu", 
         "race": "havin", 
@@ -1202,11 +1269,12 @@
         "attack": "8200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リルル", 
+        "en": "リルル", 
         "imageURL": "./charaimgs/3040066000_01.png"
     }, 
     "クラリス(クリスマスver)": {
         "name": "クラリス(クリスマスver)", 
+        "ja": "クラリス(クリスマスver)", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -1220,11 +1288,12 @@
         "attack": "8800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "クラリス(クリスマスver)", 
+        "en": "クラリス(クリスマスver)", 
         "imageURL": "./charaimgs/3040067000_01.png"
     }, 
     "ロゼッタ(リミテッドver)": {
         "name": "ロゼッタ(リミテッドver)", 
+        "ja": "ロゼッタ(リミテッドver)", 
         "element": "wind", 
         "type": "pecu", 
         "race": "unknown", 
@@ -1238,11 +1307,12 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ロゼッタ(リミテッドver)", 
+        "en": "ロゼッタ(リミテッドver)", 
         "imageURL": "./charaimgs/3040068000_01.png"
     }, 
     "ユーステス": {
         "name": "ユーステス", 
+        "ja": "ユーステス", 
         "element": "earth", 
         "type": "attack", 
         "race": "erune", 
@@ -1256,11 +1326,12 @@
         "attack": "8900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ユーステス", 
+        "en": "ユーステス", 
         "imageURL": "./charaimgs/3040069000_01.png"
     }, 
     "ベアトリクス": {
         "name": "ベアトリクス", 
+        "ja": "ベアトリクス", 
         "element": "dark", 
         "type": "pecu", 
         "race": "human", 
@@ -1274,11 +1345,12 @@
         "attack": "9250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ベアトリクス", 
+        "en": "ベアトリクス", 
         "imageURL": "./charaimgs/3040070000_01.png"
     }, 
     "アンチラ": {
         "name": "アンチラ", 
+        "ja": "アンチラ", 
         "element": "wind", 
         "type": "balance", 
         "race": "erune", 
@@ -1292,11 +1364,12 @@
         "attack": "7560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アンチラ", 
+        "en": "アンチラ", 
         "imageURL": "./charaimgs/3040071000_01.png"
     }, 
     "メーテラ(火属性ver)": {
         "name": "メーテラ(火属性ver)", 
+        "ja": "メーテラ(火属性ver)", 
         "element": "fire", 
         "type": "attack", 
         "race": "erune", 
@@ -1310,11 +1383,12 @@
         "attack": "8400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "メーテラ(火属性ver)", 
+        "en": "メーテラ(火属性ver)", 
         "imageURL": "./charaimgs/3040072000_01.png"
     }, 
     "フェリ(SSR)": {
         "name": "フェリ(SSR)", 
+        "ja": "フェリ(SSR)", 
         "element": "light", 
         "type": "balance", 
         "race": "erune", 
@@ -1328,11 +1402,12 @@
         "attack": "7450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "フェリ(SSR)", 
+        "en": "フェリ(SSR)", 
         "imageURL": "./charaimgs/3040073000_01.png"
     }, 
     "キャサリン": {
         "name": "キャサリン", 
+        "ja": "キャサリン", 
         "element": "earth", 
         "type": "pecu", 
         "race": "erune", 
@@ -1346,11 +1421,12 @@
         "attack": "8170", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "キャサリン", 
+        "en": "キャサリン", 
         "imageURL": "./charaimgs/3040074000_01.png"
     }, 
     "ザルハメリナ": {
         "name": "ザルハメリナ", 
+        "ja": "ザルハメリナ", 
         "element": "fire", 
         "type": "pecu", 
         "race": "havin", 
@@ -1364,11 +1440,12 @@
         "attack": "7560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ザルハメリナ", 
+        "en": "ザルハメリナ", 
         "imageURL": "./charaimgs/3040075000_01.png"
     }, 
     "アオイドス": {
         "name": "アオイドス", 
+        "ja": "アオイドス", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -1382,11 +1459,12 @@
         "attack": "8400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アオイドス", 
+        "en": "アオイドス", 
         "imageURL": "./charaimgs/3040076000_01.png"
     }, 
     "オイゲン(リミテッドver)": {
         "name": "オイゲン(リミテッドver)", 
+        "ja": "オイゲン(リミテッドver)", 
         "element": "earth", 
         "type": "attack", 
         "race": "human", 
@@ -1400,11 +1478,12 @@
         "attack": "9900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "オイゲン(リミテッドver)", 
+        "en": "オイゲン(リミテッドver)", 
         "imageURL": "./charaimgs/3040077000_01.png"
     }, 
     "ゾーイ": {
         "name": "ゾーイ", 
+        "ja": "ゾーイ", 
         "element": "light", 
         "type": "balance", 
         "race": "unknown", 
@@ -1418,11 +1497,12 @@
         "attack": "7200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ゾーイ", 
+        "en": "ゾーイ", 
         "imageURL": "./charaimgs/3040078000_01.png"
     }, 
     "ハレゼナ": {
         "name": "ハレゼナ", 
+        "ja": "ハレゼナ", 
         "element": "earth", 
         "type": "attack", 
         "race": "doraf", 
@@ -1436,11 +1516,12 @@
         "attack": "10080", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ハレゼナ", 
+        "en": "ハレゼナ", 
         "imageURL": "./charaimgs/3040079000_01.png"
     }, 
     "ジャンヌダルク(闇)": {
         "name": "ジャンヌダルク(闇)", 
+        "ja": "ジャンヌダルク(闇)", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -1454,11 +1535,12 @@
         "attack": "9800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジャンヌダルク(闇)", 
+        "en": "ジャンヌダルク(闇)", 
         "imageURL": "./charaimgs/3040080000_01.png"
     }, 
     "コルワ": {
         "name": "コルワ", 
+        "ja": "コルワ", 
         "element": "wind", 
         "type": "pecu", 
         "race": "erune", 
@@ -1472,11 +1554,12 @@
         "attack": "7000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "コルワ", 
+        "en": "コルワ", 
         "imageURL": "./charaimgs/3040081000_01.png"
     }, 
     "黒騎士(リミテッドver)": {
         "name": "黒騎士(リミテッドver)", 
+        "ja": "黒騎士(リミテッドver)", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -1490,11 +1573,12 @@
         "attack": "10000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "黒騎士(リミテッドver)", 
+        "en": "黒騎士(リミテッドver)", 
         "imageURL": "./charaimgs/3040082000_01.png"
     }, 
     "アリーザ(SSR)": {
         "name": "アリーザ(SSR)", 
+        "ja": "アリーザ(SSR)", 
         "element": "fire", 
         "type": "attack", 
         "race": "doraf", 
@@ -1508,11 +1592,12 @@
         "attack": "9830", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アリーザ(SSR)", 
+        "en": "アリーザ(SSR)", 
         "imageURL": "./charaimgs/3040083000_01.png"
     }, 
     "アイル": {
         "name": "アイル", 
+        "ja": "アイル", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -1526,11 +1611,12 @@
         "attack": "8800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アイル", 
+        "en": "アイル", 
         "imageURL": "./charaimgs/3040084000_01.png"
     }, 
     "ネモネ": {
         "name": "ネモネ", 
+        "ja": "ネモネ", 
         "element": "earth", 
         "type": "attack", 
         "race": "erune", 
@@ -1544,11 +1630,12 @@
         "attack": "8800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ネモネ", 
+        "en": "ネモネ", 
         "imageURL": "./charaimgs/3040085000_01.png"
     }, 
     "フォルテ": {
         "name": "フォルテ", 
+        "ja": "フォルテ", 
         "element": "dark", 
         "type": "attack", 
         "race": "doraf", 
@@ -1562,11 +1649,12 @@
         "attack": "10130", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "フォルテ", 
+        "en": "フォルテ", 
         "imageURL": "./charaimgs/3040086000_01.png"
     }, 
     "ロザミア(SSR)": {
         "name": "ロザミア(SSR)", 
+        "ja": "ロザミア(SSR)", 
         "element": "light", 
         "type": "balance", 
         "race": "human", 
@@ -1580,11 +1668,12 @@
         "attack": "8000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ロザミア(SSR)", 
+        "en": "ロザミア(SSR)", 
         "imageURL": "./charaimgs/3040087000_01.png"
     }, 
     "イングヴェイ": {
         "name": "イングヴェイ", 
+        "ja": "イングヴェイ", 
         "element": "water", 
         "type": "defense", 
         "race": "human", 
@@ -1598,11 +1687,12 @@
         "attack": "7500", 
         "baseDA": 9.0, 
         "baseTA": 4.0, 
-        "en_name": "Yngwie", 
+        "en": "Yngwie", 
         "imageURL": "./charaimgs/3040088000_01.png"
     }, 
     "ナルメア(サマーver)": {
         "name": "ナルメア(サマーver)", 
+        "ja": "ナルメア(サマーver)", 
         "element": "water", 
         "type": "attack", 
         "race": "doraf", 
@@ -1616,11 +1706,12 @@
         "attack": "10240", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ナルメア(サマーver)", 
+        "en": "ナルメア(サマーver)", 
         "imageURL": "./charaimgs/3040089000_01.png"
     }, 
     "パーシヴァル(サマーver)": {
         "name": "パーシヴァル(サマーver)", 
+        "ja": "パーシヴァル(サマーver)", 
         "element": "fire", 
         "type": "balance", 
         "race": "human", 
@@ -1634,11 +1725,12 @@
         "attack": "9120", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "パーシヴァル(サマーver)", 
+        "en": "パーシヴァル(サマーver)", 
         "imageURL": "./charaimgs/3040090000_01.png"
     }, 
     "ヘルエス(サマーver)": {
         "name": "ヘルエス(サマーver)", 
+        "ja": "ヘルエス(サマーver)", 
         "element": "light", 
         "type": "balance", 
         "race": "erune", 
@@ -1652,11 +1744,12 @@
         "attack": "8640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヘルエス(サマーver)", 
+        "en": "ヘルエス(サマーver)", 
         "imageURL": "./charaimgs/3040091000_01.png"
     }, 
     "ゾーイ(サマーver)": {
         "name": "ゾーイ(サマーver)", 
+        "ja": "ゾーイ(サマーver)", 
         "element": "dark", 
         "type": "pecu", 
         "race": "unknown", 
@@ -1670,11 +1763,12 @@
         "attack": "9200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ゾーイ(サマーver)", 
+        "en": "ゾーイ(サマーver)", 
         "imageURL": "./charaimgs/3040092000_01.png"
     }, 
     "シャノワール": {
         "name": "シャノワール", 
+        "ja": "シャノワール", 
         "element": "water", 
         "type": "pecu", 
         "race": "human", 
@@ -1688,11 +1782,12 @@
         "attack": "8700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シャノワール", 
+        "en": "シャノワール", 
         "imageURL": "./charaimgs/3040093000_01.png"
     }, 
     "ヴァイト": {
         "name": "ヴァイト", 
+        "ja": "ヴァイト", 
         "element": "dark", 
         "type": "attack", 
         "race": "unknown", 
@@ -1706,11 +1801,12 @@
         "attack": "9500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヴァイト", 
+        "en": "ヴァイト", 
         "imageURL": "./charaimgs/3040094000_01.png"
     }, 
     "ソシエ(火属性ver)": {
         "name": "ソシエ(火属性ver)", 
+        "ja": "ソシエ(火属性ver)", 
         "element": "fire", 
         "type": "defense", 
         "race": "erune", 
@@ -1724,11 +1820,12 @@
         "attack": "6470", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ソシエ(火属性ver)", 
+        "en": "ソシエ(火属性ver)", 
         "imageURL": "./charaimgs/3040095000_01.png"
     }, 
     "ジュリエット": {
         "name": "ジュリエット", 
+        "ja": "ジュリエット", 
         "element": "light", 
         "type": "defense", 
         "race": "human", 
@@ -1742,11 +1839,12 @@
         "attack": "7200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジュリエット", 
+        "en": "ジュリエット", 
         "imageURL": "./charaimgs/3040096000_01.png"
     }, 
     "ロミオ": {
         "name": "ロミオ", 
+        "ja": "ロミオ", 
         "element": "water", 
         "type": "balance", 
         "race": "human", 
@@ -1760,11 +1858,12 @@
         "attack": "8500", 
         "baseDA": 7.5, 
         "baseTA": 2.5, 
-        "en_name": "Romeo", 
+        "en": "Romeo", 
         "imageURL": "./charaimgs/3040098000_01.png"
     }, 
     "ユーステス(ハロウィンver)": {
         "name": "ユーステス(ハロウィンver)", 
+        "ja": "ユーステス(ハロウィンver)", 
         "element": "earth", 
         "type": "attack", 
         "race": "erune", 
@@ -1778,11 +1877,12 @@
         "attack": "8900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ユーステス(ハロウィンver)", 
+        "en": "ユーステス(ハロウィンver)", 
         "imageURL": "./charaimgs/3040099000_01.png"
     }, 
     "イシュミール": {
         "name": "イシュミール", 
+        "ja": "イシュミール", 
         "element": "water", 
         "type": "attack", 
         "race": "doraf", 
@@ -1796,11 +1896,12 @@
         "attack": "9980", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "イシュミール", 
+        "en": "イシュミール", 
         "imageURL": "./charaimgs/3040100000_01.png"
     }, 
     "リーシャ(リミテッドver)": {
         "name": "リーシャ(リミテッドver)", 
+        "ja": "リーシャ(リミテッドver)", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -1814,11 +1915,12 @@
         "attack": "8500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リーシャ(リミテッドver)", 
+        "en": "リーシャ(リミテッドver)", 
         "imageURL": "./charaimgs/3040101000_01.png"
     }, 
     "メリッサベル": {
         "name": "メリッサベル", 
+        "ja": "メリッサベル", 
         "element": "wind", 
         "type": "attack", 
         "race": "havin", 
@@ -1832,11 +1934,12 @@
         "attack": "10100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "メリッサベル", 
+        "en": "メリッサベル", 
         "imageURL": "./charaimgs/3040102000_01.png"
     }, 
     "アンスリア": {
         "name": "アンスリア", 
+        "ja": "アンスリア", 
         "element": "fire", 
         "type": "pecu", 
         "race": "erune", 
@@ -1850,11 +1953,12 @@
         "attack": "7970", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アンスリア", 
+        "en": "アンスリア", 
         "imageURL": "./charaimgs/3040103000_01.png"
     }, 
     "アルルメイヤ(クリスマスver)": {
         "name": "アルルメイヤ(クリスマスver)", 
+        "ja": "アルルメイヤ(クリスマスver)", 
         "element": "water", 
         "type": "pecu", 
         "race": "havin", 
@@ -1868,11 +1972,12 @@
         "attack": "8800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アルルメイヤ(クリスマスver)", 
+        "en": "アルルメイヤ(クリスマスver)", 
         "imageURL": "./charaimgs/3040104000_01.png"
     }, 
     "ユイシス": {
         "name": "ユイシス", 
+        "ja": "ユイシス", 
         "element": "wind", 
         "type": "balance", 
         "race": "erune", 
@@ -1886,11 +1991,12 @@
         "attack": "8000", 
         "baseDA": 8.0, 
         "baseTA": 4.0, 
-        "en_name": "Yuisis", 
+        "en": "Yuisis", 
         "imageURL": "./charaimgs/3040105000_01.png"
     }, 
     "ルシオ(リミテッドver)": {
         "name": "ルシオ(リミテッドver)", 
+        "ja": "ルシオ(リミテッドver)", 
         "element": "light", 
         "type": "balance", 
         "race": "unknown", 
@@ -1904,11 +2010,12 @@
         "attack": "7700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ルシオ(リミテッドver)", 
+        "en": "ルシオ(リミテッドver)", 
         "imageURL": "./charaimgs/3040106000_01.png"
     }, 
     "マキラ": {
         "name": "マキラ", 
+        "ja": "マキラ", 
         "element": "earth", 
         "type": "pecu", 
         "race": "havin", 
@@ -1922,11 +2029,12 @@
         "attack": "8900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "マキラ", 
+        "en": "マキラ", 
         "imageURL": "./charaimgs/3040107000_01.png"
     }, 
     "マルキアレス": {
         "name": "マルキアレス", 
+        "ja": "マルキアレス", 
         "element": "dark", 
         "type": "pecu", 
         "race": "havin", 
@@ -1940,11 +2048,12 @@
         "attack": "9290", 
         "baseDA": 7.0, 
         "baseTA": 3.0, 
-        "en_name": "Marquiares", 
+        "en": "Marquiares", 
         "imageURL": "./charaimgs/3040108000_01.png"
     }, 
     "ラスティナ": {
         "name": "ラスティナ", 
+        "ja": "ラスティナ", 
         "element": "earth", 
         "type": "defense", 
         "race": "doraf", 
@@ -1958,11 +2067,12 @@
         "attack": "7100", 
         "baseDA": 7.0, 
         "baseTA": 3.0, 
-        "en_name": "Rastina", 
+        "en": "Rastina", 
         "imageURL": "./charaimgs/3040109000_01.png"
     }, 
     "ベアトリクス(水着ver)": {
         "name": "ベアトリクス(水着ver)", 
+        "ja": "ベアトリクス(水着ver)", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -1976,11 +2086,12 @@
         "attack": "11000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ベアトリクス(水着ver)", 
+        "en": "ベアトリクス(水着ver)", 
         "imageURL": "./charaimgs/3040110000_01.png"
     }, 
     "ノイシュ": {
         "name": "ノイシュ", 
+        "ja": "ノイシュ", 
         "element": "light", 
         "type": "defense", 
         "race": "human", 
@@ -1994,11 +2105,12 @@
         "attack": "5400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ノイシュ", 
+        "en": "ノイシュ", 
         "imageURL": "./charaimgs/3030000000_01.png"
     }, 
     "テレーズ": {
         "name": "テレーズ", 
+        "ja": "テレーズ", 
         "element": "water", 
         "type": "pecu", 
         "race": "human", 
@@ -2012,11 +2124,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "テレーズ", 
+        "en": "テレーズ", 
         "imageURL": "./charaimgs/3030001000_01.png"
     }, 
     "マイシェラ": {
         "name": "マイシェラ", 
+        "ja": "マイシェラ", 
         "element": "water", 
         "type": "pecu", 
         "race": "erune", 
@@ -2030,11 +2143,12 @@
         "attack": "5400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "マイシェラ", 
+        "en": "マイシェラ", 
         "imageURL": "./charaimgs/3030002000_01.png"
     }, 
     "アレク": {
         "name": "アレク", 
+        "ja": "アレク", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -2048,11 +2162,12 @@
         "attack": "8400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アレク", 
+        "en": "アレク", 
         "imageURL": "./charaimgs/3030003000_01.png"
     }, 
     "ヘルナル": {
         "name": "ヘルナル", 
+        "ja": "ヘルナル", 
         "element": "wind", 
         "type": "balance", 
         "race": "erune", 
@@ -2066,11 +2181,12 @@
         "attack": "5625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヘルナル", 
+        "en": "ヘルナル", 
         "imageURL": "./charaimgs/3030004000_01.png"
     }, 
     "カタリナ": {
         "name": "カタリナ", 
+        "ja": "カタリナ", 
         "element": "water", 
         "type": "balance", 
         "race": "human", 
@@ -2084,11 +2200,12 @@
         "attack": "5400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "カタリナ", 
+        "en": "カタリナ", 
         "imageURL": "./charaimgs/3030005000_01.png"
     }, 
     "イオ": {
         "name": "イオ", 
+        "ja": "イオ", 
         "element": "water", 
         "type": "heal", 
         "race": "human", 
@@ -2102,11 +2219,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "イオ", 
+        "en": "イオ", 
         "imageURL": "./charaimgs/3030006000_01.png"
     }, 
     "オイゲン": {
         "name": "オイゲン", 
+        "ja": "オイゲン", 
         "element": "earth", 
         "type": "balance", 
         "race": "human", 
@@ -2120,11 +2238,12 @@
         "attack": "6880", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "オイゲン", 
+        "en": "オイゲン", 
         "imageURL": "./charaimgs/3030007000_01.png"
     }, 
     "ラカム": {
         "name": "ラカム", 
+        "ja": "ラカム", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -2138,11 +2257,12 @@
         "attack": "6250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ラカム", 
+        "en": "ラカム", 
         "imageURL": "./charaimgs/3030008000_01.png"
     }, 
     "ガイーヌ": {
         "name": "ガイーヌ", 
+        "ja": "ガイーヌ", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -2156,11 +2276,12 @@
         "attack": "7080", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ガイーヌ", 
+        "en": "ガイーヌ", 
         "imageURL": "./charaimgs/3030009000_01.png"
     }, 
     "ロゼッタ": {
         "name": "ロゼッタ", 
+        "ja": "ロゼッタ", 
         "element": "wind", 
         "type": "balance", 
         "race": "unknown", 
@@ -2174,11 +2295,12 @@
         "attack": "5800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ロゼッタ", 
+        "en": "ロゼッタ", 
         "imageURL": "./charaimgs/3030010000_01.png"
     }, 
     "アビー": {
         "name": "アビー", 
+        "ja": "アビー", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -2192,11 +2314,12 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アビー", 
+        "en": "アビー", 
         "imageURL": "./charaimgs/3030011000_01.png"
     }, 
     "アンジェ": {
         "name": "アンジェ", 
+        "ja": "アンジェ", 
         "element": "water", 
         "type": "balance", 
         "race": "human", 
@@ -2210,11 +2333,12 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アンジェ", 
+        "en": "アンジェ", 
         "imageURL": "./charaimgs/3030012000_01.png"
     }, 
     "ラムレッダ": {
         "name": "ラムレッダ", 
+        "ja": "ラムレッダ", 
         "element": "earth", 
         "type": "balance", 
         "race": "doraf", 
@@ -2228,11 +2352,12 @@
         "attack": "5600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ラムレッダ", 
+        "en": "ラムレッダ", 
         "imageURL": "./charaimgs/3030013000_01.png"
     }, 
     "ウラムヌラン": {
         "name": "ウラムヌラン", 
+        "ja": "ウラムヌラン", 
         "element": "water", 
         "type": "pecu", 
         "race": "havin", 
@@ -2246,11 +2371,12 @@
         "attack": "7820", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ウラムヌラン", 
+        "en": "ウラムヌラン", 
         "imageURL": "./charaimgs/3030014000_01.png"
     }, 
     "アリーザ": {
         "name": "アリーザ", 
+        "ja": "アリーザ", 
         "element": "fire", 
         "type": "attack", 
         "race": "doraf", 
@@ -2264,11 +2390,12 @@
         "attack": "6300", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アリーザ", 
+        "en": "アリーザ", 
         "imageURL": "./charaimgs/3030015000_01.png"
     }, 
     "ジェシカ": {
         "name": "ジェシカ", 
+        "ja": "ジェシカ", 
         "element": "fire", 
         "type": "balance", 
         "race": "human", 
@@ -2282,11 +2409,12 @@
         "attack": "5625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジェシカ", 
+        "en": "ジェシカ", 
         "imageURL": "./charaimgs/3030016000_01.png"
     }, 
     "ダヌア": {
         "name": "ダヌア", 
+        "ja": "ダヌア", 
         "element": "dark", 
         "type": "pecu", 
         "race": "doraf", 
@@ -2300,11 +2428,12 @@
         "attack": "7840", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ダヌア", 
+        "en": "ダヌア", 
         "imageURL": "./charaimgs/3030017000_01.png"
     }, 
     "スーテラ": {
         "name": "スーテラ", 
+        "ja": "スーテラ", 
         "element": "wind", 
         "type": "balance", 
         "race": "erune", 
@@ -2318,11 +2447,12 @@
         "attack": "7060", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "スーテラ", 
+        "en": "スーテラ", 
         "imageURL": "./charaimgs/3030018000_01.png"
     }, 
     "ヴィーラ": {
         "name": "ヴィーラ", 
+        "ja": "ヴィーラ", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -2336,11 +2466,12 @@
         "attack": "7000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヴィーラ", 
+        "en": "ヴィーラ", 
         "imageURL": "./charaimgs/3030019000_01.png"
     }, 
     "ソリッズ": {
         "name": "ソリッズ", 
+        "ja": "ソリッズ", 
         "element": "earth", 
         "type": "attack", 
         "race": "human", 
@@ -2354,11 +2485,12 @@
         "attack": "9000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ソリッズ", 
+        "en": "ソリッズ", 
         "imageURL": "./charaimgs/3030020000_01.png"
     }, 
     "サラ": {
         "name": "サラ", 
+        "ja": "サラ", 
         "element": "earth", 
         "type": "defense", 
         "race": "human", 
@@ -2372,11 +2504,12 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "サラ", 
+        "en": "サラ", 
         "imageURL": "./charaimgs/3030021000_01.png"
     }, 
     "ジン": {
         "name": "ジン", 
+        "ja": "ジン", 
         "element": "earth", 
         "type": "attack", 
         "race": "human", 
@@ -2390,11 +2523,12 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジン", 
+        "en": "ジン", 
         "imageURL": "./charaimgs/3030022000_01.png"
     }, 
     "エルモート": {
         "name": "エルモート", 
+        "ja": "エルモート", 
         "element": "fire", 
         "type": "attack", 
         "race": "erune", 
@@ -2408,11 +2542,12 @@
         "attack": "6750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エルモート", 
+        "en": "エルモート", 
         "imageURL": "./charaimgs/3030023000_01.png"
     }, 
     "キハール": {
         "name": "キハール", 
+        "ja": "キハール", 
         "element": "wind", 
         "type": "balance", 
         "race": "erune", 
@@ -2426,11 +2561,12 @@
         "attack": "5850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "キハール", 
+        "en": "キハール", 
         "imageURL": "./charaimgs/3030024000_01.png"
     }, 
     "エルタ": {
         "name": "エルタ", 
+        "ja": "エルタ", 
         "element": "wind", 
         "type": "pecu", 
         "race": "human", 
@@ -2444,11 +2580,12 @@
         "attack": "6875", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エルタ", 
+        "en": "エルタ", 
         "imageURL": "./charaimgs/3030025000_01.png"
     }, 
     "セレフィラ": {
         "name": "セレフィラ", 
+        "ja": "セレフィラ", 
         "element": "wind", 
         "type": "heal", 
         "race": "erune", 
@@ -2462,11 +2599,12 @@
         "attack": "5880", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "セレフィラ", 
+        "en": "セレフィラ", 
         "imageURL": "./charaimgs/3030026000_01.png"
     }, 
     "エゼクレイン": {
         "name": "エゼクレイン", 
+        "ja": "エゼクレイン", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -2480,11 +2618,12 @@
         "attack": "6250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エゼクレイン", 
+        "en": "エゼクレイン", 
         "imageURL": "./charaimgs/3030027000_01.png"
     }, 
     "シグ": {
         "name": "シグ", 
+        "ja": "シグ", 
         "element": "water", 
         "type": "attack", 
         "race": "human", 
@@ -2498,11 +2637,12 @@
         "attack": "5900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シグ", 
+        "en": "シグ", 
         "imageURL": "./charaimgs/3030028000_01.png"
     }, 
     "カタリナ(2014年サマーver)": {
         "name": "カタリナ(2014年サマーver)", 
+        "ja": "カタリナ(2014年サマーver)", 
         "element": "water", 
         "type": "defense", 
         "race": "human", 
@@ -2516,11 +2656,12 @@
         "attack": "5625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "カタリナ(2014年サマーver)", 
+        "en": "カタリナ(2014年サマーver)", 
         "imageURL": "./charaimgs/3030029000_01.png"
     }, 
     "ジェシカ(2014年サマーver)": {
         "name": "ジェシカ(2014年サマーver)", 
+        "ja": "ジェシカ(2014年サマーver)", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -2534,11 +2675,12 @@
         "attack": "6625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジェシカ(2014年サマーver)", 
+        "en": "ジェシカ(2014年サマーver)", 
         "imageURL": "./charaimgs/3030030000_01.png"
     }, 
     "ヘルナル(2014年サマーver)": {
         "name": "ヘルナル(2014年サマーver)", 
+        "ja": "ヘルナル(2014年サマーver)", 
         "element": "wind", 
         "type": "pecu", 
         "race": "erune", 
@@ -2552,11 +2694,12 @@
         "attack": "5920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヘルナル(2014年サマーver)", 
+        "en": "ヘルナル(2014年サマーver)", 
         "imageURL": "./charaimgs/3030031000_01.png"
     }, 
     "フェリ(SR)": {
         "name": "フェリ(SR)", 
+        "ja": "フェリ(SR)", 
         "element": "light", 
         "type": "pecu", 
         "race": "erune", 
@@ -2570,11 +2713,12 @@
         "attack": "5740", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "フェリ(SR)", 
+        "en": "フェリ(SR)", 
         "imageURL": "./charaimgs/3030032000_01.png"
     }, 
     "ルシウス": {
         "name": "ルシウス", 
+        "ja": "ルシウス", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -2588,11 +2732,12 @@
         "attack": "8760", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ルシウス", 
+        "en": "ルシウス", 
         "imageURL": "./charaimgs/3030033000_01.png"
     }, 
     "ティナ": {
         "name": "ティナ", 
+        "ja": "ティナ", 
         "element": "fire", 
         "type": "heal", 
         "race": "human", 
@@ -2606,11 +2751,12 @@
         "attack": "6460", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ティナ", 
+        "en": "ティナ", 
         "imageURL": "./charaimgs/3030034000_01.png"
     }, 
     "フィーナ": {
         "name": "フィーナ", 
+        "ja": "フィーナ", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -2624,11 +2770,12 @@
         "attack": "5200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "フィーナ", 
+        "en": "フィーナ", 
         "imageURL": "./charaimgs/3030035000_01.png"
     }, 
     "アルシャ": {
         "name": "アルシャ", 
+        "ja": "アルシャ", 
         "element": "light", 
         "type": "balance", 
         "race": "erune", 
@@ -2642,11 +2789,12 @@
         "attack": "5625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アルシャ", 
+        "en": "アルシャ", 
         "imageURL": "./charaimgs/3030036000_01.png"
     }, 
     "ファラ": {
         "name": "ファラ", 
+        "ja": "ファラ", 
         "element": "earth", 
         "type": "balance", 
         "race": "human", 
@@ -2660,11 +2808,12 @@
         "attack": "6380", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ファラ", 
+        "en": "ファラ", 
         "imageURL": "./charaimgs/3030037000_01.png"
     }, 
     "ユーリ": {
         "name": "ユーリ", 
+        "ja": "ユーリ", 
         "element": "earth", 
         "type": "balance", 
         "race": "human", 
@@ -2678,11 +2827,12 @@
         "attack": "5100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ユーリ", 
+        "en": "ユーリ", 
         "imageURL": "./charaimgs/3030038000_01.png"
     }, 
     "ノア": {
         "name": "ノア", 
+        "ja": "ノア", 
         "element": "light", 
         "type": "pecu", 
         "race": "unknown", 
@@ -2696,11 +2846,12 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ノア", 
+        "en": "ノア", 
         "imageURL": "./charaimgs/3030039000_01.png"
     }, 
     "島村卯月": {
         "name": "島村卯月", 
+        "ja": "島村卯月", 
         "element": "light", 
         "type": "balance", 
         "race": "human", 
@@ -2714,11 +2865,12 @@
         "attack": "5770", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "島村卯月", 
+        "en": "島村卯月", 
         "imageURL": "./charaimgs/3030040000_01.png"
     }, 
     "渋谷凛": {
         "name": "渋谷凛", 
+        "ja": "渋谷凛", 
         "element": "water", 
         "type": "attack", 
         "race": "human", 
@@ -2732,11 +2884,12 @@
         "attack": "7080", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "渋谷凛", 
+        "en": "渋谷凛", 
         "imageURL": "./charaimgs/3030041000_01.png"
     }, 
     "アンジェ(ハロウィンver)": {
         "name": "アンジェ(ハロウィンver)", 
+        "ja": "アンジェ(ハロウィンver)", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -2750,11 +2903,12 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アンジェ(ハロウィンver)", 
+        "en": "アンジェ(ハロウィンver)", 
         "imageURL": "./charaimgs/3030042000_01.png"
     }, 
     "ミムルメモル": {
         "name": "ミムルメモル", 
+        "ja": "ミムルメモル", 
         "element": "wind", 
         "type": "pecu", 
         "race": "havin", 
@@ -2768,11 +2922,12 @@
         "attack": "6570", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ミムルメモル", 
+        "en": "ミムルメモル", 
         "imageURL": "./charaimgs/3030043000_01.png"
     }, 
     "アステール": {
         "name": "アステール", 
+        "ja": "アステール", 
         "element": "wind", 
         "type": "balance", 
         "race": "erune", 
@@ -2786,11 +2941,12 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アステール", 
+        "en": "アステール", 
         "imageURL": "./charaimgs/3030044000_01.png"
     }, 
     "マライア": {
         "name": "マライア", 
+        "ja": "マライア", 
         "element": "earth", 
         "type": "attack", 
         "race": "human", 
@@ -2804,11 +2960,12 @@
         "attack": "7190", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "マライア", 
+        "en": "マライア", 
         "imageURL": "./charaimgs/3030045000_01.png"
     }, 
     "カレン": {
         "name": "カレン", 
+        "ja": "カレン", 
         "element": "fire", 
         "type": "balance", 
         "race": "human", 
@@ -2822,11 +2979,12 @@
         "attack": "6500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "カレン", 
+        "en": "カレン", 
         "imageURL": "./charaimgs/3030046000_01.png"
     }, 
     "ヴェイン": {
         "name": "ヴェイン", 
+        "ja": "ヴェイン", 
         "element": "water", 
         "type": "defense", 
         "race": "human", 
@@ -2840,11 +2998,12 @@
         "attack": "4350", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヴェイン", 
+        "en": "ヴェイン", 
         "imageURL": "./charaimgs/3030047000_01.png"
     }, 
     "ラカム(クリスマスver)": {
         "name": "ラカム(クリスマスver)", 
+        "ja": "ラカム(クリスマスver)", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -2858,11 +3017,12 @@
         "attack": "6500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ラカム(クリスマスver)", 
+        "en": "ラカム(クリスマスver)", 
         "imageURL": "./charaimgs/3030048000_01.png"
     }, 
     "ロザミア(SR)": {
         "name": "ロザミア(SR)", 
+        "ja": "ロザミア(SR)", 
         "element": "light", 
         "type": "balance", 
         "race": "human", 
@@ -2876,11 +3036,12 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ロザミア(SR)", 
+        "en": "ロザミア(SR)", 
         "imageURL": "./charaimgs/3030049000_01.png"
     }, 
     "ヨハン": {
         "name": "ヨハン", 
+        "ja": "ヨハン", 
         "element": "light", 
         "type": "heal", 
         "race": "human", 
@@ -2894,11 +3055,12 @@
         "attack": "4150", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヨハン", 
+        "en": "ヨハン", 
         "imageURL": "./charaimgs/3030050000_01.png"
     }, 
     "城ヶ崎美嘉": {
         "name": "城ヶ崎美嘉", 
+        "ja": "城ヶ崎美嘉", 
         "element": "dark", 
         "type": "pecu", 
         "race": "human", 
@@ -2912,11 +3074,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "城ヶ崎美嘉", 
+        "en": "城ヶ崎美嘉", 
         "imageURL": "./charaimgs/3030051000_01.png"
     }, 
     "本田未央": {
         "name": "本田未央", 
+        "ja": "本田未央", 
         "element": "fire", 
         "type": "balance", 
         "race": "human", 
@@ -2930,11 +3093,12 @@
         "attack": "6230", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "本田未央", 
+        "en": "本田未央", 
         "imageURL": "./charaimgs/3030052000_01.png"
     }, 
     "バウタオーダ": {
         "name": "バウタオーダ", 
+        "ja": "バウタオーダ", 
         "element": "light", 
         "type": "defense", 
         "race": "doraf", 
@@ -2948,11 +3112,12 @@
         "attack": "6200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "バウタオーダ", 
+        "en": "バウタオーダ", 
         "imageURL": "./charaimgs/3030053000_01.png"
     }, 
     "リタ": {
         "name": "リタ", 
+        "ja": "リタ", 
         "element": "dark", 
         "type": "pecu", 
         "race": "human", 
@@ -2966,11 +3131,12 @@
         "attack": "6380", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リタ", 
+        "en": "リタ", 
         "imageURL": "./charaimgs/3030054000_01.png"
     }, 
     "ファスティバ": {
         "name": "ファスティバ", 
+        "ja": "ファスティバ", 
         "element": "earth", 
         "type": "attack", 
         "race": "doraf", 
@@ -2984,11 +3150,12 @@
         "attack": "7850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ファスティバ", 
+        "en": "ファスティバ", 
         "imageURL": "./charaimgs/3030055000_01.png"
     }, 
     "ボレミア": {
         "name": "ボレミア", 
+        "ja": "ボレミア", 
         "element": "earth", 
         "type": "defense", 
         "race": "human", 
@@ -3002,11 +3169,12 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ボレミア", 
+        "en": "ボレミア", 
         "imageURL": "./charaimgs/3030056000_01.png"
     }, 
     "クラウディア": {
         "name": "クラウディア", 
+        "ja": "クラウディア", 
         "element": "earth", 
         "type": "attack", 
         "race": "human", 
@@ -3020,11 +3188,12 @@
         "attack": "7250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "クラウディア", 
+        "en": "クラウディア", 
         "imageURL": "./charaimgs/3030057000_01.png"
     }, 
     "ドロシー": {
         "name": "ドロシー", 
+        "ja": "ドロシー", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -3038,11 +3207,12 @@
         "attack": "6630", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ドロシー", 
+        "en": "ドロシー", 
         "imageURL": "./charaimgs/3030058000_01.png"
     }, 
     "ザザ": {
         "name": "ザザ", 
+        "ja": "ザザ", 
         "element": "dark", 
         "type": "defense", 
         "race": "doraf", 
@@ -3056,11 +3226,12 @@
         "attack": "5920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ザザ", 
+        "en": "ザザ", 
         "imageURL": "./charaimgs/3030059000_01.png"
     }, 
     "ゼヘク": {
         "name": "ゼヘク", 
+        "ja": "ゼヘク", 
         "element": "dark", 
         "type": "balance", 
         "race": "human", 
@@ -3074,11 +3245,12 @@
         "attack": "4400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ゼヘク", 
+        "en": "ゼヘク", 
         "imageURL": "./charaimgs/3030060000_01.png"
     }, 
     "エジェリー": {
         "name": "エジェリー", 
+        "ja": "エジェリー", 
         "element": "water", 
         "type": "balance", 
         "race": "human", 
@@ -3092,11 +3264,12 @@
         "attack": "6250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エジェリー", 
+        "en": "エジェリー", 
         "imageURL": "./charaimgs/3030061000_01.png"
     }, 
     "テレーズ(バニーver)": {
         "name": "テレーズ(バニーver)", 
+        "ja": "テレーズ(バニーver)", 
         "element": "fire", 
         "type": "balance", 
         "race": "human", 
@@ -3110,11 +3283,12 @@
         "attack": "6250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "テレーズ(バニーver)", 
+        "en": "テレーズ(バニーver)", 
         "imageURL": "./charaimgs/3030062000_01.png"
     }, 
     "サーヤ": {
         "name": "サーヤ", 
+        "ja": "サーヤ", 
         "element": "fire", 
         "type": "pecu", 
         "race": "doraf", 
@@ -3128,11 +3302,12 @@
         "attack": "5780", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "サーヤ", 
+        "en": "サーヤ", 
         "imageURL": "./charaimgs/3030063000_01.png"
     }, 
     "ミラオル": {
         "name": "ミラオル", 
+        "ja": "ミラオル", 
         "element": "water", 
         "type": "balance", 
         "race": "havin", 
@@ -3146,11 +3321,12 @@
         "attack": "6570", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ミラオル", 
+        "en": "ミラオル", 
         "imageURL": "./charaimgs/3030064000_01.png"
     }, 
     "アーミラ(SR)": {
         "name": "アーミラ(SR)", 
+        "ja": "アーミラ(SR)", 
         "element": "light", 
         "type": "attack", 
         "race": "unknown", 
@@ -3164,11 +3340,12 @@
         "attack": "7000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アーミラ(SR)", 
+        "en": "アーミラ(SR)", 
         "imageURL": "./charaimgs/3030065000_01.png"
     }, 
     "ヘイゼン": {
         "name": "ヘイゼン", 
+        "ja": "ヘイゼン", 
         "element": "wind", 
         "type": "heal", 
         "race": "human", 
@@ -3182,11 +3359,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヘイゼン", 
+        "en": "ヘイゼン", 
         "imageURL": "./charaimgs/3030066000_01.png"
     }, 
     "スィール": {
         "name": "スィール", 
+        "ja": "スィール", 
         "element": "wind", 
         "type": "pecu", 
         "race": "human", 
@@ -3200,11 +3378,12 @@
         "attack": "5250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "スィール", 
+        "en": "スィール", 
         "imageURL": "./charaimgs/3030067000_01.png"
     }, 
     "マリー": {
         "name": "マリー", 
+        "ja": "マリー", 
         "element": "fire", 
         "type": "balance", 
         "race": "human", 
@@ -3218,11 +3397,12 @@
         "attack": "6200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "マリー", 
+        "en": "マリー", 
         "imageURL": "./charaimgs/3030068000_01.png"
     }, 
     "川島瑞樹": {
         "name": "川島瑞樹", 
+        "ja": "川島瑞樹", 
         "element": "water", 
         "type": "heal", 
         "race": "human", 
@@ -3236,11 +3416,12 @@
         "attack": "4860", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "川島瑞樹", 
+        "en": "川島瑞樹", 
         "imageURL": "./charaimgs/3030069000_01.png"
     }, 
     "前川みく": {
         "name": "前川みく", 
+        "ja": "前川みく", 
         "element": "wind", 
         "type": "attack", 
         "race": "human", 
@@ -3254,11 +3435,12 @@
         "attack": "5839", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "前川みく", 
+        "en": "前川みく", 
         "imageURL": "./charaimgs/3030070000_01.png"
     }, 
     "双葉杏": {
         "name": "双葉杏", 
+        "ja": "双葉杏", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -3272,11 +3454,12 @@
         "attack": "5150", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "双葉杏", 
+        "en": "双葉杏", 
         "imageURL": "./charaimgs/3030071000_01.png"
     }, 
     "リーシャ": {
         "name": "リーシャ", 
+        "ja": "リーシャ", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -3290,11 +3473,12 @@
         "attack": "5250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リーシャ", 
+        "en": "リーシャ", 
         "imageURL": "./charaimgs/3030072000_01.png"
     }, 
     "ペンギー": {
         "name": "ペンギー", 
+        "ja": "ペンギー", 
         "element": "water", 
         "type": "defense", 
         "race": "human", 
@@ -3308,11 +3492,12 @@
         "attack": "3500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ペンギー", 
+        "en": "ペンギー", 
         "imageURL": "./charaimgs/3030073000_01.png"
     }, 
     "セイラン": {
         "name": "セイラン", 
+        "ja": "セイラン", 
         "element": "light", 
         "type": "heal", 
         "race": "erune", 
@@ -3326,11 +3511,12 @@
         "attack": "4050", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "セイラン", 
+        "en": "セイラン", 
         "imageURL": "./charaimgs/3030074000_01.png"
     }, 
     "Ｊ・Ｊ": {
         "name": "Ｊ・Ｊ", 
+        "ja": "Ｊ・Ｊ", 
         "element": "light", 
         "type": "pecu", 
         "race": "human", 
@@ -3344,11 +3530,12 @@
         "attack": "5750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "Ｊ・Ｊ", 
+        "en": "Ｊ・Ｊ", 
         "imageURL": "./charaimgs/3030075000_01.png"
     }, 
     "ザーリリャオー": {
         "name": "ザーリリャオー", 
+        "ja": "ザーリリャオー", 
         "element": "water", 
         "type": "balance", 
         "race": "havin", 
@@ -3362,11 +3549,12 @@
         "attack": "6320", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ザーリリャオー", 
+        "en": "ザーリリャオー", 
         "imageURL": "./charaimgs/3030076000_01.png"
     }, 
     "ロミオ(SR)": {
         "name": "ロミオ(SR)", 
+        "ja": "ロミオ(SR)", 
         "element": "water", 
         "type": "balance", 
         "race": "human", 
@@ -3380,11 +3568,12 @@
         "attack": "4900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ロミオ(SR)", 
+        "en": "ロミオ(SR)", 
         "imageURL": "./charaimgs/3030077000_01.png"
     }, 
     "フェザー": {
         "name": "フェザー", 
+        "ja": "フェザー", 
         "element": "light", 
         "type": "attack", 
         "race": "human", 
@@ -3398,11 +3587,12 @@
         "attack": "7250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "フェザー", 
+        "en": "フェザー", 
         "imageURL": "./charaimgs/3030078000_01.png"
     }, 
     "ロボミ": {
         "name": "ロボミ", 
+        "ja": "ロボミ", 
         "element": "light", 
         "type": "pecu", 
         "race": "unknown", 
@@ -3416,11 +3606,12 @@
         "attack": "4250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ロボミ", 
+        "en": "ロボミ", 
         "imageURL": "./charaimgs/3030079000_01.png"
     }, 
     "ミラ＝マクスウェル": {
         "name": "ミラ＝マクスウェル", 
+        "ja": "ミラ＝マクスウェル", 
         "element": "fire", 
         "type": "attack", 
         "race": "unknown", 
@@ -3434,11 +3625,12 @@
         "attack": "5250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ミラ＝マクスウェル", 
+        "en": "ミラ＝マクスウェル", 
         "imageURL": "./charaimgs/3030080000_01.png"
     }, 
     "ユーリ・ローウェル": {
         "name": "ユーリ・ローウェル", 
+        "ja": "ユーリ・ローウェル", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -3452,11 +3644,12 @@
         "attack": "6180", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ユーリ・ローウェル", 
+        "en": "ユーリ・ローウェル", 
         "imageURL": "./charaimgs/3030081000_01.png"
     }, 
     "ソフィ": {
         "name": "ソフィ", 
+        "ja": "ソフィ", 
         "element": "light", 
         "type": "attack", 
         "race": "unknown", 
@@ -3470,11 +3663,12 @@
         "attack": "5570", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ソフィ", 
+        "en": "ソフィ", 
         "imageURL": "./charaimgs/3030082000_01.png"
     }, 
     "エルモート(サマーver)": {
         "name": "エルモート(サマーver)", 
+        "ja": "エルモート(サマーver)", 
         "element": "fire", 
         "type": "attack", 
         "race": "erune", 
@@ -3488,11 +3682,12 @@
         "attack": "6750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エルモート(サマーver)", 
+        "en": "エルモート(サマーver)", 
         "imageURL": "./charaimgs/3030083000_01.png"
     }, 
     "ターニャ(サマーver)": {
         "name": "ターニャ(サマーver)", 
+        "ja": "ターニャ(サマーver)", 
         "element": "dark", 
         "type": "balance", 
         "race": "human", 
@@ -3506,11 +3701,12 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ターニャ(サマーver)", 
+        "en": "ターニャ(サマーver)", 
         "imageURL": "./charaimgs/3030084000_01.png"
     }, 
     "オイゲン(サマーver)": {
         "name": "オイゲン(サマーver)", 
+        "ja": "オイゲン(サマーver)", 
         "element": "earth", 
         "type": "attack", 
         "race": "human", 
@@ -3524,11 +3720,12 @@
         "attack": "6820", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "オイゲン(サマーver)", 
+        "en": "オイゲン(サマーver)", 
         "imageURL": "./charaimgs/3030085000_01.png"
     }, 
     "ジン(克己浪人)": {
         "name": "ジン(克己浪人)", 
+        "ja": "ジン(克己浪人)", 
         "element": "earth", 
         "type": "attack", 
         "race": "human", 
@@ -3542,11 +3739,12 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジン(克己浪人)", 
+        "en": "ジン(克己浪人)", 
         "imageURL": "./charaimgs/3030086000_01.png"
     }, 
     "リーシャ(サマーver)": {
         "name": "リーシャ(サマーver)", 
+        "ja": "リーシャ(サマーver)", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -3560,11 +3758,12 @@
         "attack": "6570", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リーシャ(サマーver)", 
+        "en": "リーシャ(サマーver)", 
         "imageURL": "./charaimgs/3030087000_01.png"
     }, 
     "城ヶ崎莉嘉": {
         "name": "城ヶ崎莉嘉", 
+        "ja": "城ヶ崎莉嘉", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -3578,11 +3777,12 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "城ヶ崎莉嘉", 
+        "en": "城ヶ崎莉嘉", 
         "imageURL": "./charaimgs/3030088000_01.png"
     }, 
     "三村かな子": {
         "name": "三村かな子", 
+        "ja": "三村かな子", 
         "element": "earth", 
         "type": "heal", 
         "race": "human", 
@@ -3596,11 +3796,12 @@
         "attack": "4000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "三村かな子", 
+        "en": "三村かな子", 
         "imageURL": "./charaimgs/3030089000_01.png"
     }, 
     "白坂小梅": {
         "name": "白坂小梅", 
+        "ja": "白坂小梅", 
         "element": "dark", 
         "type": "pecu", 
         "race": "human", 
@@ -3614,11 +3815,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "白坂小梅", 
+        "en": "白坂小梅", 
         "imageURL": "./charaimgs/3030090000_01.png"
     }, 
     "スフラマール(サマーver)": {
         "name": "スフラマール(サマーver)", 
+        "ja": "スフラマール(サマーver)", 
         "element": "water", 
         "type": "pecu", 
         "race": "havin", 
@@ -3632,11 +3834,12 @@
         "attack": "7230", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "スフラマール(サマーver)", 
+        "en": "スフラマール(サマーver)", 
         "imageURL": "./charaimgs/3030091000_01.png"
     }, 
     "ウィル": {
         "name": "ウィル", 
+        "ja": "ウィル", 
         "element": "dark", 
         "type": "balance", 
         "race": "human", 
@@ -3650,11 +3853,12 @@
         "attack": "6580", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ウィル", 
+        "en": "ウィル", 
         "imageURL": "./charaimgs/3030092000_01.png"
     }, 
     "ベス(攻撃)": {
         "name": "ベス(攻撃)", 
+        "ja": "ベス(攻撃)", 
         "element": "water", 
         "type": "attack", 
         "race": "unknown", 
@@ -3668,11 +3872,12 @@
         "attack": "4980", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ベス(攻撃)", 
+        "en": "ベス(攻撃)", 
         "imageURL": "./charaimgs/3030093000_01.png"
     }, 
     "ベス(防御)": {
         "name": "ベス(防御)", 
+        "ja": "ベス(防御)", 
         "element": "water", 
         "type": "defense", 
         "race": "unknown", 
@@ -3686,11 +3891,12 @@
         "attack": "4000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ベス(防御)", 
+        "en": "ベス(防御)", 
         "imageURL": "./charaimgs/3030093000_01.png"
     }, 
     "ベス(バランス)": {
         "name": "ベス(バランス)", 
+        "ja": "ベス(バランス)", 
         "element": "water", 
         "type": "balance", 
         "race": "unknown", 
@@ -3704,11 +3910,12 @@
         "attack": "3900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ベス(バランス)", 
+        "en": "ベス(バランス)", 
         "imageURL": "./charaimgs/3030093000_01.png"
     }, 
     "ガラドア": {
         "name": "ガラドア", 
+        "ja": "ガラドア", 
         "element": "earth", 
         "type": "defense", 
         "race": "doraf", 
@@ -3722,11 +3929,12 @@
         "attack": "5920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ガラドア", 
+        "en": "ガラドア", 
         "imageURL": "./charaimgs/3030094000_01.png"
     }, 
     "アンナ": {
         "name": "アンナ", 
+        "ja": "アンナ", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -3740,11 +3948,12 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アンナ", 
+        "en": "アンナ", 
         "imageURL": "./charaimgs/3030095000_01.png"
     }, 
     "ノイシュ(火属性ver)": {
         "name": "ノイシュ(火属性ver)", 
+        "ja": "ノイシュ(火属性ver)", 
         "element": "fire", 
         "type": "defense", 
         "race": "human", 
@@ -3758,11 +3967,12 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ノイシュ(火属性ver)", 
+        "en": "ノイシュ(火属性ver)", 
         "imageURL": "./charaimgs/3030096000_01.png"
     }, 
     "天道輝": {
         "name": "天道輝", 
+        "ja": "天道輝", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -3776,11 +3986,12 @@
         "attack": "5900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "天道輝", 
+        "en": "天道輝", 
         "imageURL": "./charaimgs/3030097000_01.png"
     }, 
     "桜庭薫": {
         "name": "桜庭薫", 
+        "ja": "桜庭薫", 
         "element": "water", 
         "type": "pecu", 
         "race": "human", 
@@ -3794,11 +4005,12 @@
         "attack": "5100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "桜庭薫", 
+        "en": "桜庭薫", 
         "imageURL": "./charaimgs/3030098000_01.png"
     }, 
     "柏木翼": {
         "name": "柏木翼", 
+        "ja": "柏木翼", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -3812,11 +4024,12 @@
         "attack": "5350", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "柏木翼", 
+        "en": "柏木翼", 
         "imageURL": "./charaimgs/3030099000_01.png"
     }, 
     "ミニゴブ": {
         "name": "ミニゴブ", 
+        "ja": "ミニゴブ", 
         "element": "wind", 
         "type": "pecu", 
         "race": "unknown", 
@@ -3830,11 +4043,12 @@
         "attack": "5640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ミニゴブ", 
+        "en": "ミニゴブ", 
         "imageURL": "./charaimgs/3030100000_01.png"
     }, 
     "フェリ(ハロウィンver)": {
         "name": "フェリ(ハロウィンver)", 
+        "ja": "フェリ(ハロウィンver)", 
         "element": "light", 
         "type": "pecu", 
         "race": "erune", 
@@ -3848,11 +4062,12 @@
         "attack": "5740", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "フェリ(ハロウィンver)", 
+        "en": "フェリ(ハロウィンver)", 
         "imageURL": "./charaimgs/3030101000_01.png"
     }, 
     "ジャスミン": {
         "name": "ジャスミン", 
+        "ja": "ジャスミン", 
         "element": "earth", 
         "type": "heal", 
         "race": "human", 
@@ -3866,11 +4081,12 @@
         "attack": "5020", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジャスミン", 
+        "en": "ジャスミン", 
         "imageURL": "./charaimgs/3030102000_01.png"
     }, 
     "ファラ(風属性ver)": {
         "name": "ファラ(風属性ver)", 
+        "ja": "ファラ(風属性ver)", 
         "element": "wind", 
         "type": "defense", 
         "race": "human", 
@@ -3884,11 +4100,12 @@
         "attack": "4150", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ファラ(風属性ver)", 
+        "en": "ファラ(風属性ver)", 
         "imageURL": "./charaimgs/3030103000_01.png"
     }, 
     "リュウ": {
         "name": "リュウ", 
+        "ja": "リュウ", 
         "element": "wind", 
         "type": "attack", 
         "race": "human", 
@@ -3902,11 +4119,12 @@
         "attack": "5400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リュウ", 
+        "en": "リュウ", 
         "imageURL": "./charaimgs/3030104000_01.png"
     }, 
     "春麗": {
         "name": "春麗", 
+        "ja": "春麗", 
         "element": "water", 
         "type": "attack", 
         "race": "human", 
@@ -3920,11 +4138,12 @@
         "attack": "5450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "春麗", 
+        "en": "春麗", 
         "imageURL": "./charaimgs/3030105000_01.png"
     }, 
     "シグ(ガチャver)": {
         "name": "シグ(ガチャver)", 
+        "ja": "シグ(ガチャver)", 
         "element": "water", 
         "type": "attack", 
         "race": "human", 
@@ -3938,11 +4157,12 @@
         "attack": "7200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シグ(ガチャver)", 
+        "en": "シグ(ガチャver)", 
         "imageURL": "./charaimgs/3030106000_01.png"
     }, 
     "ヴェイン(ガチャver)": {
         "name": "ヴェイン(ガチャver)", 
+        "ja": "ヴェイン(ガチャver)", 
         "element": "water", 
         "type": "defense", 
         "race": "human", 
@@ -3956,11 +4176,12 @@
         "attack": "5800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヴェイン(ガチャver)", 
+        "en": "ヴェイン(ガチャver)", 
         "imageURL": "./charaimgs/3030107000_01.png"
     }, 
     "ランスロット(SR)": {
         "name": "ランスロット(SR)", 
+        "ja": "ランスロット(SR)", 
         "element": "water", 
         "type": "attack", 
         "race": "human", 
@@ -3974,11 +4195,12 @@
         "attack": "5700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ランスロット(SR)", 
+        "en": "ランスロット(SR)", 
         "imageURL": "./charaimgs/3030108000_01.png"
     }, 
     "ファスティバ(クリスマスver)": {
         "name": "ファスティバ(クリスマスver)", 
+        "ja": "ファスティバ(クリスマスver)", 
         "element": "light", 
         "type": "attack", 
         "race": "doraf", 
@@ -3992,11 +4214,12 @@
         "attack": "7850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ファスティバ(クリスマスver)", 
+        "en": "ファスティバ(クリスマスver)", 
         "imageURL": "./charaimgs/3030109000_01.png"
     }, 
     "ヤイア": {
         "name": "ヤイア", 
+        "ja": "ヤイア", 
         "element": "earth", 
         "type": "pecu", 
         "race": "doraf", 
@@ -4010,11 +4233,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヤイア", 
+        "en": "ヤイア", 
         "imageURL": "./charaimgs/3030111000_01.png"
     }, 
     "スカル": {
         "name": "スカル", 
+        "ja": "スカル", 
         "element": "earth", 
         "type": "attack", 
         "race": "havin", 
@@ -4028,11 +4252,12 @@
         "attack": "6150", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "スカル", 
+        "en": "スカル", 
         "imageURL": "./charaimgs/3030112000_01.png"
     }, 
     "スーテラ(火属性ver)": {
         "name": "スーテラ(火属性ver)", 
+        "ja": "スーテラ(火属性ver)", 
         "element": "fire", 
         "type": "defense", 
         "race": "erune", 
@@ -4046,11 +4271,12 @@
         "attack": "5750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "スーテラ(火属性ver)", 
+        "en": "スーテラ(火属性ver)", 
         "imageURL": "./charaimgs/3030113000_01.png"
     }, 
     "リナ＝インバース": {
         "name": "リナ＝インバース", 
+        "ja": "リナ＝インバース", 
         "element": "fire", 
         "type": "balance", 
         "race": "human", 
@@ -4064,11 +4290,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リナ＝インバース", 
+        "en": "リナ＝インバース", 
         "imageURL": "./charaimgs/3030114000_01.png"
     }, 
     "白蛇のナーガ": {
         "name": "白蛇のナーガ", 
+        "ja": "白蛇のナーガ", 
         "element": "water", 
         "type": "balance", 
         "race": "human", 
@@ -4082,11 +4309,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "白蛇のナーガ", 
+        "en": "白蛇のナーガ", 
         "imageURL": "./charaimgs/3030115000_01.png"
     }, 
     "ダエッタ": {
         "name": "ダエッタ", 
+        "ja": "ダエッタ", 
         "element": "light", 
         "type": "attack", 
         "race": "doraf", 
@@ -4100,11 +4328,12 @@
         "attack": "7800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ダエッタ", 
+        "en": "ダエッタ", 
         "imageURL": "./charaimgs/3030116000_01.png"
     }, 
     "ソリッズ(光属性ver)": {
         "name": "ソリッズ(光属性ver)", 
+        "ja": "ソリッズ(光属性ver)", 
         "element": "light", 
         "type": "defense", 
         "race": "human", 
@@ -4118,11 +4347,12 @@
         "attack": "4750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ソリッズ(光属性ver)", 
+        "en": "ソリッズ(光属性ver)", 
         "imageURL": "./charaimgs/3030117000_01.png"
     }, 
     "サビルバラ": {
         "name": "サビルバラ", 
+        "ja": "サビルバラ", 
         "element": "wind", 
         "type": "attack", 
         "race": "havin", 
@@ -4136,11 +4366,12 @@
         "attack": "7400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "サビルバラ", 
+        "en": "サビルバラ", 
         "imageURL": "./charaimgs/3030118000_01.png"
     }, 
     "ライアン": {
         "name": "ライアン", 
+        "ja": "ライアン", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -4154,11 +4385,12 @@
         "attack": "7400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ライアン", 
+        "en": "ライアン", 
         "imageURL": "./charaimgs/3030119000_01.png"
     }, 
     "輿水幸子": {
         "name": "輿水幸子", 
+        "ja": "輿水幸子", 
         "element": "light", 
         "type": "pecu", 
         "race": "human", 
@@ -4172,11 +4404,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "輿水幸子", 
+        "en": "輿水幸子", 
         "imageURL": "./charaimgs/3030120000_01.png"
     }, 
     "十時愛梨": {
         "name": "十時愛梨", 
+        "ja": "十時愛梨", 
         "element": "earth", 
         "type": "defense", 
         "race": "human", 
@@ -4190,11 +4423,12 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "十時愛梨", 
+        "en": "十時愛梨", 
         "imageURL": "./charaimgs/3030121000_01.png"
     }, 
     "レッドラック": {
         "name": "レッドラック", 
+        "ja": "レッドラック", 
         "element": "earth", 
         "type": "pecu", 
         "race": "doraf", 
@@ -4208,11 +4442,12 @@
         "attack": "7230", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "レッドラック", 
+        "en": "レッドラック", 
         "imageURL": "./charaimgs/3030122000_01.png"
     }, 
     "ローアイン": {
         "name": "ローアイン", 
+        "ja": "ローアイン", 
         "element": "water", 
         "type": "pecu", 
         "race": "erune", 
@@ -4226,11 +4461,12 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ローアイン", 
+        "en": "ローアイン", 
         "imageURL": "./charaimgs/3030123000_01.png"
     }, 
     "シャオ": {
         "name": "シャオ", 
+        "ja": "シャオ", 
         "element": "dark", 
         "type": "pecu", 
         "race": "erune", 
@@ -4244,11 +4480,12 @@
         "attack": "5350", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シャオ", 
+        "en": "シャオ", 
         "imageURL": "./charaimgs/3030124000_01.png"
     }, 
     "神月かりん": {
         "name": "神月かりん", 
+        "ja": "神月かりん", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -4262,11 +4499,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "神月かりん", 
+        "en": "神月かりん", 
         "imageURL": "./charaimgs/3030125000_01.png"
     }, 
     "ラシード": {
         "name": "ラシード", 
+        "ja": "ラシード", 
         "element": "wind", 
         "type": "attack", 
         "race": "human", 
@@ -4280,11 +4518,12 @@
         "attack": "5450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ラシード", 
+        "en": "ラシード", 
         "imageURL": "./charaimgs/3030126000_01.png"
     }, 
     "セン": {
         "name": "セン", 
+        "ja": "セン", 
         "element": "fire", 
         "type": "attack", 
         "race": "erune", 
@@ -4298,11 +4537,12 @@
         "attack": "6750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "セン", 
+        "en": "セン", 
         "imageURL": "./charaimgs/3030127000_01.png"
     }, 
     "エシオ": {
         "name": "エシオ", 
+        "ja": "エシオ", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -4316,11 +4556,12 @@
         "attack": "6400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エシオ", 
+        "en": "エシオ", 
         "imageURL": "./charaimgs/3030128000_01.png"
     }, 
     "スタン": {
         "name": "スタン", 
+        "ja": "スタン", 
         "element": "dark", 
         "type": "balance", 
         "race": "erune", 
@@ -4334,11 +4575,12 @@
         "attack": "4750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "スタン", 
+        "en": "スタン", 
         "imageURL": "./charaimgs/3030129000_01.png"
     }, 
     "真宮寺さくら": {
         "name": "真宮寺さくら", 
+        "ja": "真宮寺さくら", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -4352,11 +4594,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "真宮寺さくら", 
+        "en": "真宮寺さくら", 
         "imageURL": "./charaimgs/3030130000_01.png"
     }, 
     "エリカ・フォンティーヌ": {
         "name": "エリカ・フォンティーヌ", 
+        "ja": "エリカ・フォンティーヌ", 
         "element": "light", 
         "type": "heal", 
         "race": "human", 
@@ -4370,11 +4613,12 @@
         "attack": "4000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エリカ・フォンティーヌ", 
+        "en": "エリカ・フォンティーヌ", 
         "imageURL": "./charaimgs/3030131000_01.png"
     }, 
     "ジェミニ・サンライズ": {
         "name": "ジェミニ・サンライズ", 
+        "ja": "ジェミニ・サンライズ", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -4388,11 +4632,12 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジェミニ・サンライズ", 
+        "en": "ジェミニ・サンライズ", 
         "imageURL": "./charaimgs/3030132000_01.png"
     }, 
     "ラグナ": {
         "name": "ラグナ", 
+        "ja": "ラグナ", 
         "element": "earth", 
         "type": "pecu", 
         "race": "doraf", 
@@ -4406,11 +4651,12 @@
         "attack": "7560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ラグナ", 
+        "en": "ラグナ", 
         "imageURL": "./charaimgs/3030133000_01.png"
     }, 
     "ジャミル": {
         "name": "ジャミル", 
+        "ja": "ジャミル", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -4424,11 +4670,12 @@
         "attack": "6650", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジャミル", 
+        "en": "ジャミル", 
         "imageURL": "./charaimgs/3030134000_01.png"
     }, 
     "モルフェとヴェトル": {
         "name": "モルフェとヴェトル", 
+        "ja": "モルフェとヴェトル", 
         "element": "water", 
         "type": "pecu", 
         "race": "unknown", 
@@ -4442,11 +4689,12 @@
         "attack": "4000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "モルフェとヴェトル", 
+        "en": "モルフェとヴェトル", 
         "imageURL": "./charaimgs/3030135000_01.png"
     }, 
     "スタン・エルロン": {
         "name": "スタン・エルロン", 
+        "ja": "スタン・エルロン", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -4460,11 +4708,12 @@
         "attack": "6180", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "スタン・エルロン", 
+        "en": "スタン・エルロン", 
         "imageURL": "./charaimgs/3030136000_01.png"
     }, 
     "ティア・グランツ": {
         "name": "ティア・グランツ", 
+        "ja": "ティア・グランツ", 
         "element": "light", 
         "type": "balance", 
         "race": "human", 
@@ -4478,11 +4727,12 @@
         "attack": "4750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ティア・グランツ", 
+        "en": "ティア・グランツ", 
         "imageURL": "./charaimgs/3030137000_01.png"
     }, 
     "エリーゼ・ルタス": {
         "name": "エリーゼ・ルタス", 
+        "ja": "エリーゼ・ルタス", 
         "element": "dark", 
         "type": "pecu", 
         "race": "human", 
@@ -4496,11 +4746,12 @@
         "attack": "5450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エリーゼ・ルタス", 
+        "en": "エリーゼ・ルタス", 
         "imageURL": "./charaimgs/3030138000_01.png"
     }, 
     "アルメイダ": {
         "name": "アルメイダ", 
+        "ja": "アルメイダ", 
         "element": "earth", 
         "type": "attack", 
         "race": "doraf", 
@@ -4514,11 +4765,12 @@
         "attack": "7800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アルメイダ", 
+        "en": "アルメイダ", 
         "imageURL": "./charaimgs/3030139000_01.png"
     }, 
     "ヨハン(ガチャver)": {
         "name": "ヨハン(ガチャver)", 
+        "ja": "ヨハン(ガチャver)", 
         "element": "light", 
         "type": "heal", 
         "race": "human", 
@@ -4532,11 +4784,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヨハン(ガチャver)", 
+        "en": "ヨハン(ガチャver)", 
         "imageURL": "./charaimgs/3030140000_01.png"
     }, 
     "シロウ": {
         "name": "シロウ", 
+        "ja": "シロウ", 
         "element": "light", 
         "type": "balance", 
         "race": "human", 
@@ -4550,11 +4803,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "シロウ", 
+        "en": "シロウ", 
         "imageURL": "./charaimgs/3030141000_01.png"
     }, 
     "ナーヴェ": {
         "name": "ナーヴェ", 
+        "ja": "ナーヴェ", 
         "element": "light", 
         "type": "pecu", 
         "race": "human", 
@@ -4568,11 +4822,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ナーヴェ", 
+        "en": "ナーヴェ", 
         "imageURL": "./charaimgs/3030142000_01.png"
     }, 
     "サラ(サマーver)": {
         "name": "サラ(サマーver)", 
+        "ja": "サラ(サマーver)", 
         "element": "earth", 
         "type": "defense", 
         "race": "human", 
@@ -4586,11 +4841,12 @@
         "attack": "5600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "サラ(サマーver)", 
+        "en": "サラ(サマーver)", 
         "imageURL": "./charaimgs/3030147000_01.png"
     }, 
     "Ｊ・Ｊ(サマーver)": {
         "name": "Ｊ・Ｊ(サマーver)", 
+        "ja": "Ｊ・Ｊ(サマーver)", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -4604,11 +4860,12 @@
         "attack": "5750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "Ｊ・Ｊ(サマーver)", 
+        "en": "Ｊ・Ｊ(サマーver)", 
         "imageURL": "./charaimgs/3030149000_01.png"
     }, 
     "ディアンサ": {
         "name": "ディアンサ", 
+        "ja": "ディアンサ", 
         "element": "water", 
         "type": "pecu", 
         "race": "human", 
@@ -4622,11 +4879,12 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ディアンサ", 
+        "en": "ディアンサ", 
         "imageURL": "./charaimgs/3030150000_01.png"
     }, 
     "ジン(風属性ver)": {
         "name": "ジン(風属性ver)", 
+        "ja": "ジン(風属性ver)", 
         "element": "wind", 
         "type": "balance", 
         "race": "human", 
@@ -4640,11 +4898,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジン(風属性ver)", 
+        "en": "ジン(風属性ver)", 
         "imageURL": "./charaimgs/3030151000_01.png"
     }, 
     "クムユ(サマーver)": {
         "name": "クムユ(サマーver)", 
+        "ja": "クムユ(サマーver)", 
         "element": "water", 
         "type": "pecu", 
         "race": "doraf", 
@@ -4658,11 +4917,12 @@
         "attack": "7480", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "クムユ(サマーver)", 
+        "en": "クムユ(サマーver)", 
         "imageURL": "./charaimgs/3030152000_01.png"
     }, 
     "ペンギー(ガチャSRver)": {
         "name": "ペンギー(ガチャSRver)", 
+        "ja": "ペンギー(ガチャSRver)", 
         "element": "water", 
         "type": "defense", 
         "race": "human", 
@@ -4676,11 +4936,12 @@
         "attack": "3750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ペンギー(ガチャSRver)", 
+        "en": "ペンギー(ガチャSRver)", 
         "imageURL": "./charaimgs/3030153000_01.png"
     }, 
     "バロワ": {
         "name": "バロワ", 
+        "ja": "バロワ", 
         "element": "fire", 
         "type": "attack", 
         "race": "doraf", 
@@ -4694,11 +4955,12 @@
         "attack": "6300", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "バロワ", 
+        "en": "バロワ", 
         "imageURL": "./charaimgs/3030154000_01.png"
     }, 
     "ククル": {
         "name": "ククル", 
+        "ja": "ククル", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -4712,11 +4974,12 @@
         "attack": "7800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ククル", 
+        "en": "ククル", 
         "imageURL": "./charaimgs/3030155000_01.png"
     }, 
     "ダーント": {
         "name": "ダーント", 
+        "ja": "ダーント", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -4730,11 +4993,12 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ダーント", 
+        "en": "ダーント", 
         "imageURL": "./charaimgs/3030156000_01.png"
     }, 
     "パリス": {
         "name": "パリス", 
+        "ja": "パリス", 
         "element": "earth", 
         "type": "defense", 
         "race": "human", 
@@ -4748,11 +5012,12 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "パリス", 
+        "en": "パリス", 
         "imageURL": "./charaimgs/3030157000_01.png"
     }, 
     "ジェシカ(土属性ver)": {
         "name": "ジェシカ(土属性ver)", 
+        "ja": "ジェシカ(土属性ver)", 
         "element": "earth", 
         "type": "pecu", 
         "race": "human", 
@@ -4766,11 +5031,12 @@
         "attack": "6380", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ジェシカ(土属性ver)", 
+        "en": "ジェシカ(土属性ver)", 
         "imageURL": "./charaimgs/3030159000_01.png"
     }, 
     "アナスタシア": {
         "name": "アナスタシア", 
+        "ja": "アナスタシア", 
         "element": "water", 
         "type": "attack", 
         "race": "human", 
@@ -4784,11 +5050,12 @@
         "attack": "4800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アナスタシア", 
+        "en": "アナスタシア", 
         "imageURL": "./charaimgs/3030160000_01.png"
     }, 
     "赤城みりあ": {
         "name": "赤城みりあ", 
+        "ja": "赤城みりあ", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -4802,11 +5069,12 @@
         "attack": "4250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "赤城みりあ", 
+        "en": "赤城みりあ", 
         "imageURL": "./charaimgs/3030161000_01.png"
     }, 
     "神崎蘭子": {
         "name": "神崎蘭子", 
+        "ja": "神崎蘭子", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -4820,11 +5088,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "神崎蘭子", 
+        "en": "神崎蘭子", 
         "imageURL": "./charaimgs/3030162000_01.png"
     }, 
     "ベアトリクス(ハロウィンver)": {
         "name": "ベアトリクス(ハロウィンver)", 
+        "ja": "ベアトリクス(ハロウィンver)", 
         "element": "fire", 
         "type": "pecu", 
         "race": "human", 
@@ -4838,11 +5107,12 @@
         "attack": "6580", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ベアトリクス(ハロウィンver)", 
+        "en": "ベアトリクス(ハロウィンver)", 
         "imageURL": "./charaimgs/3030163000_01.png"
     }, 
     "エリン": {
         "name": "エリン", 
+        "ja": "エリン", 
         "element": "water", 
         "type": "heal", 
         "race": "unknown", 
@@ -4856,11 +5126,12 @@
         "attack": "4800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "エリン", 
+        "en": "エリン", 
         "imageURL": "./charaimgs/3030164000_01.png"
     }, 
     "リリィ(SR)": {
         "name": "リリィ(SR)", 
+        "ja": "リリィ(SR)", 
         "element": "water", 
         "type": "heal", 
         "race": "unknown", 
@@ -4874,11 +5145,12 @@
         "attack": "3800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "リリィ(SR)", 
+        "en": "リリィ(SR)", 
         "imageURL": "./charaimgs/3030165000_01.png"
     }, 
     "ミムルメモル＆切り株": {
         "name": "ミムルメモル＆切り株", 
+        "ja": "ミムルメモル＆切り株", 
         "element": "wind", 
         "type": "attack", 
         "race": "havin", 
@@ -4892,11 +5164,12 @@
         "attack": "8130", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ミムルメモル＆切り株", 
+        "en": "ミムルメモル＆切り株", 
         "imageURL": "./charaimgs/3030166000_01.png"
     }, 
     "ターニャ": {
         "name": "ターニャ", 
+        "ja": "ターニャ", 
         "element": "dark", 
         "type": "attack", 
         "race": "human", 
@@ -4910,11 +5183,12 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ターニャ", 
+        "en": "ターニャ", 
         "imageURL": "./charaimgs/3030167000_01.png"
     }, 
     "パーシヴァル(SR)": {
         "name": "パーシヴァル(SR)", 
+        "ja": "パーシヴァル(SR)", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -4928,11 +5202,12 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "パーシヴァル(SR)", 
+        "en": "パーシヴァル(SR)", 
         "imageURL": "./charaimgs/3030168000_01.png"
     }, 
     "セン(クリスマスver)": {
         "name": "セン(クリスマスver)", 
+        "ja": "セン(クリスマスver)", 
         "element": "wind", 
         "type": "attack", 
         "race": "erune", 
@@ -4946,11 +5221,12 @@
         "attack": "6850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "セン(クリスマスver)", 
+        "en": "セン(クリスマスver)", 
         "imageURL": "./charaimgs/3030169000_01.png"
     }, 
     "アンチラ(SR)": {
         "name": "アンチラ(SR)", 
+        "ja": "アンチラ(SR)", 
         "element": "wind", 
         "type": "balance", 
         "race": "erune", 
@@ -4964,11 +5240,12 @@
         "attack": "4600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "アンチラ(SR)", 
+        "en": "アンチラ(SR)", 
         "imageURL": "./charaimgs/3030170000_01.png"
     }, 
     "ルシウス(火属性)": {
         "name": "ルシウス(火属性)", 
+        "ja": "ルシウス(火属性)", 
         "element": "fire", 
         "type": "attack", 
         "race": "human", 
@@ -4982,11 +5259,12 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ルシウス(火属性)", 
+        "en": "ルシウス(火属性)", 
         "imageURL": "./charaimgs/3030171000_01.png"
     }, 
     "ミュオン": {
         "name": "ミュオン", 
+        "ja": "ミュオン", 
         "element": "wind", 
         "type": "pecu", 
         "race": "human", 
@@ -5000,11 +5278,12 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ミュオン", 
+        "en": "ミュオン", 
         "imageURL": "./charaimgs/3030172000_01.png"
     }, 
     "覇王丸": {
         "name": "覇王丸", 
+        "ja": "覇王丸", 
         "element": "wind", 
         "type": "attack", 
         "race": "human", 
@@ -5018,11 +5297,12 @@
         "attack": "5600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "覇王丸", 
+        "en": "覇王丸", 
         "imageURL": "./charaimgs/3030173000_01.png"
     }, 
     "ナコルル": {
         "name": "ナコルル", 
+        "ja": "ナコルル", 
         "element": "light", 
         "type": "attack", 
         "race": "human", 
@@ -5036,11 +5316,12 @@
         "attack": "6200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ナコルル", 
+        "en": "ナコルル", 
         "imageURL": "./charaimgs/3030174000_01.png"
     }, 
     "ヘリヤ": {
         "name": "ヘリヤ", 
+        "ja": "ヘリヤ", 
         "element": "earth", 
         "type": "balance", 
         "race": "human", 
@@ -5054,7 +5335,7 @@
         "attack": "6450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en_name": "ヘリヤ", 
+        "en": "ヘリヤ", 
         "imageURL": "./charaimgs/3030175000_01.png"
     }
 }
