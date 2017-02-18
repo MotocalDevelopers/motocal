@@ -162,6 +162,7 @@ if __name__ == '__main__':
                 key = row[1][m.start():m.end()]
 
             name = row[2].translate(None, "&br;")
+            name = name.replace("[]", "")
             newdict["name"] = name
 
             # element

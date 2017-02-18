@@ -1,8 +1,8 @@
 {
-    "[]六道・灼滅天の刃鎌": {
+    "六道・灼滅天の刃鎌": {
         "hplv100": "170", 
         "element2": "fire", 
-        "name": "[]六道・灼滅天の刃鎌", 
+        "name": "六道・灼滅天の刃鎌", 
         "imageURL": "./imgs/1040306200.png", 
         "skill2": "non", 
         "skill1": "strengthLL", 
@@ -16,10 +16,10 @@
         "hp": "199", 
         "maxlv": 150
     }, 
-    "[]真・灼滅天の刃鎌": {
+    "真・灼滅天の刃鎌": {
         "hplv100": "170", 
         "element2": "fire", 
-        "name": "[]真・灼滅天の刃鎌", 
+        "name": "真・灼滅天の刃鎌", 
         "imageURL": "./imgs/1040306300.png", 
         "skill2": "non", 
         "skill1": "strengthLL", 
@@ -33,9 +33,9 @@
         "hp": "199", 
         "maxlv": 150
     }, 
-    "[]インフェルノリークス": {
+    "インフェルノリークス": {
         "element2": "fire", 
-        "name": "[]インフェルノリークス", 
+        "name": "インフェルノリークス", 
         "imageURL": "./imgs/1040409000.png", 
         "skill2": "normalS", 
         "skill1": "normalNiteL", 
@@ -48,9 +48,9 @@
         "hp": "280", 
         "maxlv": 100
     }, 
-    "[]天干地支弓・酉之飾": {
+    "天干地支弓・酉之飾": {
         "element2": "earth", 
-        "name": "[]天干地支弓・酉之飾", 
+        "name": "天干地支弓・酉之飾", 
         "imageURL": "./imgs/1040705400.png", 
         "skill2": "normalCriticalM", 
         "skill1": "normalL", 
@@ -63,9 +63,9 @@
         "hp": "238", 
         "maxlv": 100
     }, 
-    "[]デルタ・クォーツ": {
+    "デルタ・クォーツ": {
         "element2": "fire", 
-        "name": "[]デルタ・クォーツ", 
+        "name": "デルタ・クォーツ", 
         "imageURL": "./imgs/1040108300.png", 
         "skill2": "non", 
         "skill1": "normalSanteL", 
@@ -142,9 +142,9 @@
         "hp": "282", 
         "maxlv": 150
     }, 
-    "[]ネプテゥヌスの三叉鉾": {
+    "ネプテゥヌスの三叉鉾": {
         "element2": "water", 
-        "name": "[]ネプテゥヌスの三叉鉾", 
+        "name": "ネプテゥヌスの三叉鉾", 
         "imageURL": "./imgs/1040206900.png", 
         "skill2": "non", 
         "skill1": "non", 
@@ -172,9 +172,9 @@
         "hp": "280", 
         "maxlv": 100
     }, 
-    "[]ゲイダーグ": {
+    "ゲイダーグ": {
         "element2": "earth", 
-        "name": "[]ゲイダーグ", 
+        "name": "ゲイダーグ", 
         "imageURL": "./imgs/1040207100.png", 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -234,9 +234,9 @@
         "hp": "186", 
         "maxlv": 100
     }, 
-    "[]リユニオン": {
+    "リユニオン": {
         "element2": "wind", 
-        "name": "[]リユニオン", 
+        "name": "リユニオン", 
         "imageURL": "./imgs/1040108200.png", 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -371,9 +371,9 @@
         "hp": "150", 
         "maxlv": 100
     }, 
-    "[]ナイトメアバンカー": {
+    "ナイトメアバンカー": {
         "element2": "earth", 
-        "name": "[]ナイトメアバンカー", 
+        "name": "ナイトメアバンカー", 
         "imageURL": "./imgs/1040506300.png", 
         "skill2": "normalNiteS", 
         "skill1": "normalL", 
@@ -446,9 +446,9 @@
         "hp": "234", 
         "maxlv": 100
     }, 
-    "[]天華簪": {
+    "天華簪": {
         "element2": "fire", 
-        "name": "[]天華簪", 
+        "name": "天華簪", 
         "imageURL": "./imgs/1040606100.png", 
         "skill2": "normalNiteS", 
         "skill1": "normalL", 
@@ -536,9 +536,9 @@
         "hp": "241", 
         "maxlv": 100
     }, 
-    "[]ブラッディスカー": {
+    "ブラッディスカー": {
         "element2": "dark", 
-        "name": "[]ブラッディスカー", 
+        "name": "ブラッディスカー", 
         "imageURL": "./imgs/1040108100.png", 
         "skill2": "normalS", 
         "skill1": "normalCriticalL", 
@@ -1426,9 +1426,9 @@
         "hp": "174", 
         "maxlv": 100
     }, 
-    "[]ディスペアー": {
+    "ディスペアー": {
         "element2": "light", 
-        "name": "[]ディスペアー", 
+        "name": "ディスペアー", 
         "imageURL": "./imgs/1040008600.png", 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -1503,9 +1503,9 @@
         "hp": "200", 
         "maxlv": 150
     }, 
-    "[]アントウェルペン": {
+    "アントウェルペン": {
         "element2": "fire", 
-        "name": "[]アントウェルペン", 
+        "name": "アントウェルペン", 
         "imageURL": "./imgs/1040009000.png", 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -2091,9 +2091,9 @@
         "hp": "234", 
         "maxlv": 100
     }, 
-    "[]デュアルヘリックス": {
+    "デュアルヘリックス": {
         "element2": "dark", 
-        "name": "[]デュアルヘリックス", 
+        "name": "デュアルヘリックス", 
         "imageURL": "./imgs/1040107800.png", 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -2679,9 +2679,9 @@
         "hp": "275", 
         "maxlv": 150
     }, 
-    "[]オールド・ナラクーバラ": {
+    "オールド・ナラクーバラ": {
         "element2": "wind", 
-        "name": "[]オールド・ナラクーバラ", 
+        "name": "オールド・ナラクーバラ", 
         "imageURL": "./imgs/1040205200.png", 
         "skill2": "magnaBoukun", 
         "skill1": "non", 
@@ -2694,9 +2694,9 @@
         "hp": "239", 
         "maxlv": 100
     }, 
-    "[]ナラクーバラ": {
+    "ナラクーバラ": {
         "element2": "wind", 
-        "name": "[]ナラクーバラ", 
+        "name": "ナラクーバラ", 
         "imageURL": "./imgs/1040205300.png", 
         "skill2": "normalBoukunL", 
         "skill1": "non", 
@@ -2756,9 +2756,9 @@
         "hp": "263", 
         "maxlv": 100
     }, 
-    "[]クリスタルルーン": {
+    "クリスタルルーン": {
         "element2": "light", 
-        "name": "[]クリスタルルーン", 
+        "name": "クリスタルルーン", 
         "imageURL": "./imgs/1040206600.png", 
         "skill2": "normalHaisuiS", 
         "skill1": "normalSanteL", 
@@ -3382,9 +3382,9 @@
         "hp": "150", 
         "maxlv": 100
     }, 
-    "[]ソウルイーター": {
+    "ソウルイーター": {
         "element2": "dark", 
-        "name": "[]ソウルイーター", 
+        "name": "ソウルイーター", 
         "imageURL": "./imgs/1040305500.png", 
         "skill2": "normalCriticalS", 
         "skill1": "normalL", 
@@ -3397,9 +3397,9 @@
         "hp": "191", 
         "maxlv": 100
     }, 
-    "[]黒旋風": {
+    "黒旋風": {
         "element2": "wind", 
-        "name": "[]黒旋風", 
+        "name": "黒旋風", 
         "imageURL": "./imgs/1040305600.png", 
         "skill2": "non", 
         "skill1": "non", 
@@ -3953,9 +3953,9 @@
         "hp": "234", 
         "maxlv": 100
     }, 
-    "[]トリート・ウロボロス": {
+    "トリート・ウロボロス": {
         "element2": "dark", 
-        "name": "[]トリート・ウロボロス", 
+        "name": "トリート・ウロボロス", 
         "imageURL": "./imgs/1040404200.png", 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -4062,9 +4062,9 @@
         "hp": "320", 
         "maxlv": 150
     }, 
-    "[]リング・オブ・サン": {
+    "リング・オブ・サン": {
         "element2": "fire", 
-        "name": "[]リング・オブ・サン", 
+        "name": "リング・オブ・サン", 
         "imageURL": "./imgs/1040406800.png", 
         "skill2": "non", 
         "skill1": "normalHaisuiL", 
@@ -4109,9 +4109,9 @@
         "hp": "281", 
         "maxlv": 100
     }, 
-    "[]マグマストリーム": {
+    "マグマストリーム": {
         "element2": "fire", 
-        "name": "[]マグマストリーム", 
+        "name": "マグマストリーム", 
         "imageURL": "./imgs/1040408100.png", 
         "skill2": "non", 
         "skill1": "normalHPL", 
@@ -5165,9 +5165,9 @@
         "hp": "150", 
         "maxlv": 100
     }, 
-    "[]オールド・オベロン": {
+    "オールド・オベロン": {
         "element2": "water", 
-        "name": "[]オールド・オベロン", 
+        "name": "オールド・オベロン", 
         "imageURL": "./imgs/1040604000.png", 
         "skill2": "magnaKatsumiM", 
         "skill1": "magnaKamui", 
@@ -5180,9 +5180,9 @@
         "hp": "233", 
         "maxlv": 100
     }, 
-    "[]オベロン": {
+    "オベロン": {
         "element2": "water", 
-        "name": "[]オベロン", 
+        "name": "オベロン", 
         "imageURL": "./imgs/1040604100.png", 
         "skill2": "normalKatsumiM", 
         "skill1": "normalKamui", 
@@ -5227,10 +5227,10 @@
         "hp": "259", 
         "maxlv": 150
     }, 
-    "[]バハムートナックル・フツルス": {
+    "バハムートナックル・フツルス": {
         "hplv100": "239", 
         "element2": "dark", 
-        "name": "[]バハムートナックル・フツルス", 
+        "name": "バハムートナックル・フツルス", 
         "imageURL": "./imgs/1040604400.png", 
         "skill2": "non", 
         "skill1": "bahaFUHP-fist", 
@@ -5244,9 +5244,9 @@
         "hp": "280", 
         "maxlv": 150
     }, 
-    "[]ガントレット・オブ・コスモス": {
+    "ガントレット・オブ・コスモス": {
         "element2": "light", 
-        "name": "[]ガントレット・オブ・コスモス", 
+        "name": "ガントレット・オブ・コスモス", 
         "imageURL": "./imgs/1040605000.png", 
         "skill2": "cosmosAT", 
         "skill1": "cosmos-fist", 
@@ -5274,9 +5274,9 @@
         "hp": "204", 
         "maxlv": 100
     }, 
-    "[]マグマガントレット": {
+    "マグマガントレット": {
         "element2": "fire", 
-        "name": "[]マグマガントレット", 
+        "name": "マグマガントレット", 
         "imageURL": "./imgs/1040605600.png", 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -5289,9 +5289,9 @@
         "hp": "252", 
         "maxlv": 100
     }, 
-    "[]エンシェントバンテージ": {
+    "エンシェントバンテージ": {
         "element2": "earth", 
-        "name": "[]エンシェントバンテージ", 
+        "name": "エンシェントバンテージ", 
         "imageURL": "./imgs/1040605700.png", 
         "skill2": "normalNiteS", 
         "skill1": "normalHaisuiL", 
@@ -5336,9 +5336,9 @@
         "hp": "230", 
         "maxlv": 150
     }, 
-    "[]リボン": {
+    "リボン": {
         "element2": "dark", 
-        "name": "[]リボン", 
+        "name": "リボン", 
         "imageURL": "./imgs/1040605900.png", 
         "skill2": "normalS", 
         "skill1": "normalHaisuiL", 
@@ -5714,9 +5714,9 @@
         "hp": "256", 
         "maxlv": 150
     }, 
-    "[]バハムートボウ・ノヴム": {
+    "バハムートボウ・ノヴム": {
         "element2": "dark", 
-        "name": "[]バハムートボウ・ノヴム", 
+        "name": "バハムートボウ・ノヴム", 
         "imageURL": "./imgs/1040702400.png", 
         "skill2": "non", 
         "skill1": "bahaHP-bow", 
@@ -5759,9 +5759,9 @@
         "hp": "231", 
         "maxlv": 100
     }, 
-    "[]オールド・アルテミス": {
+    "オールド・アルテミス": {
         "element2": "light", 
-        "name": "[]オールド・アルテミス", 
+        "name": "オールド・アルテミス", 
         "imageURL": "./imgs/1040703400.png", 
         "skill2": "magnaHPL", 
         "skill1": "magnaKatsumokuS", 
@@ -5774,9 +5774,9 @@
         "hp": "212", 
         "maxlv": 100
     }, 
-    "[]アルテミス": {
+    "アルテミス": {
         "element2": "light", 
-        "name": "[]アルテミス", 
+        "name": "アルテミス", 
         "imageURL": "./imgs/1040703500.png", 
         "skill2": "normalHPM", 
         "skill1": "normalKatsumokuS", 
@@ -5789,10 +5789,10 @@
         "hp": "212", 
         "maxlv": 100
     }, 
-    "[]バハムートボウ・フツルス": {
+    "バハムートボウ・フツルス": {
         "hplv100": "219", 
         "element2": "dark", 
-        "name": "[]バハムートボウ・フツルス", 
+        "name": "バハムートボウ・フツルス", 
         "imageURL": "./imgs/1040703700.png", 
         "skill2": "non", 
         "skill1": "bahaFUHP-bow", 
@@ -5821,9 +5821,9 @@
         "hp": "224", 
         "maxlv": 100
     }, 
-    "[]扇抜": {
+    "扇抜": {
         "element2": "water", 
-        "name": "[]扇抜", 
+        "name": "扇抜", 
         "imageURL": "./imgs/1040704800.png", 
         "skill2": "non", 
         "skill1": "non", 
@@ -6189,9 +6189,9 @@
         "hp": "242", 
         "maxlv": 100
     }, 
-    "[]オールド・ペルセウス": {
+    "オールド・ペルセウス": {
         "element2": "earth", 
-        "name": "[]オールド・ペルセウス", 
+        "name": "オールド・ペルセウス", 
         "imageURL": "./imgs/1040803500.png", 
         "skill2": "magnaRasetsuM", 
         "skill1": "magnaKamui", 
@@ -6204,9 +6204,9 @@
         "hp": "226", 
         "maxlv": 100
     }, 
-    "[]ペルセウス": {
+    "ペルセウス": {
         "element2": "earth", 
-        "name": "[]ペルセウス", 
+        "name": "ペルセウス", 
         "imageURL": "./imgs/1040803600.png", 
         "skill2": "normalRasetsuM", 
         "skill1": "normalKamui", 
@@ -6219,10 +6219,10 @@
         "hp": "226", 
         "maxlv": 100
     }, 
-    "[]バハムートハープ・フツルス": {
+    "バハムートハープ・フツルス": {
         "hplv100": "231", 
         "element2": "dark", 
-        "name": "[]バハムートハープ・フツルス", 
+        "name": "バハムートハープ・フツルス", 
         "imageURL": "./imgs/1040803800.png", 
         "skill2": "non", 
         "skill1": "bahaFUHP-music", 
@@ -6702,10 +6702,10 @@
         "hp": "194", 
         "maxlv": 100
     }, 
-    "[]バハムートブレイド・フツルス": {
+    "バハムートブレイド・フツルス": {
         "hplv100": "179", 
         "element2": "dark", 
-        "name": "[]バハムートブレイド・フツルス", 
+        "name": "バハムートブレイド・フツルス", 
         "imageURL": "./imgs/1040904400.png", 
         "skill2": "non", 
         "skill1": "bahaFUHP-katana", 
@@ -6734,9 +6734,9 @@
         "hp": "184", 
         "maxlv": 100
     }, 
-    "[]剣聖の袋竹刀": {
+    "剣聖の袋竹刀": {
         "element2": "earth", 
-        "name": "[]剣聖の袋竹刀", 
+        "name": "剣聖の袋竹刀", 
         "imageURL": "./imgs/1040905500.png", 
         "skill2": "non", 
         "skill1": "normalHPL", 
@@ -6839,9 +6839,9 @@
         "hp": "289", 
         "maxlv": 100
     }, 
-    "[]ミョルニル": {
+    "ミョルニル": {
         "element2": "fire", 
-        "name": "[]ミョルニル", 
+        "name": "ミョルニル", 
         "imageURL": "./imgs/1040304400.png", 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -6869,9 +6869,9 @@
         "hp": "325", 
         "maxlv": 100
     }, 
-    "[]フライクーゲル": {
+    "フライクーゲル": {
         "element2": "fire", 
-        "name": "[]フライクーゲル", 
+        "name": "フライクーゲル", 
         "imageURL": "./imgs/1040504400.png", 
         "skill2": "non", 
         "skill1": "normalBoukunL", 
@@ -6884,9 +6884,9 @@
         "hp": "203", 
         "maxlv": 100
     }, 
-    "[]方天画戟": {
+    "方天画戟": {
         "element2": "fire", 
-        "name": "[]方天画戟", 
+        "name": "方天画戟", 
         "imageURL": "./imgs/1040604500.png", 
         "skill2": "non", 
         "skill1": "non", 
@@ -6899,9 +6899,9 @@
         "hp": "278", 
         "maxlv": 100
     }, 
-    "[]ヘラクレス": {
+    "ヘラクレス": {
         "element2": "fire", 
-        "name": "[]ヘラクレス", 
+        "name": "ヘラクレス", 
         "imageURL": "./imgs/1040703600.png", 
         "skill2": "non", 
         "skill1": "normalKatsumiM", 
