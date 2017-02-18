@@ -445,6 +445,10 @@ var multiLangData = {
         "en": "Nighthound",
         "ja": "ハウンドドッグ",
     },
+    "アプサラス": {
+        "en": "Apsaras",
+        "ja": "アプサラス",
+    },
     "アルケミスト": {
         "en": "Alchemist",
         "ja": "アルケミスト",
@@ -1542,6 +1546,10 @@ var multiLangData = {
     "notice-20170217-1": {
         "en": "17/02/2017: Currently, there is a invalid data loading bug when you load the setup from a browser. When it happened, change an value in Profile Tab. It will fix the result.",
         "ja": "2017/02/17: 現在、ブラウザ保存したデータ読み込み時にプロフィール欄が正しく読み込まれない場合があるようです. その場合、プロフィール欄の入力値をどこでもいいので適当に変更すると正しい計算結果になるはずです.",
+    },
+    "notice-20170218-1": {
+        "en": "18/02/2017: Added charas and weapons, apsaras.",
+        "ja": "2017/02/18: 武器とキャラ追加 / アプサラス追加.",
     },
 }
 
