@@ -41,6 +41,16 @@ supportAbilist["ougi_gage_up_own_100"] = {u"明鏡止水"}
 supportAbilist["ougi_damage_up_1_5"] = {u"天星剣王"}
 supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
 
+# Patching
+patching = OrderedDict()
+
+# すんどめ侍さん
+patching["ロミオ"] = {"DA": 7.5, "TA": 2.5, "en_name": "Romeo"}
+patching["イングヴェイ"] = {"DA": 9.0, "TA": 4.0, "en_name": "Yngwie"}
+patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0, "en_name": "Rastina"}
+patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0, "en_name": "Marquiares"}
+patching["ユイシス"] = {"DA": 8.0, "TA": 4.0, "en_name": "Yuisis"}
+
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
     for inner_skillname, onelist in skillnamelist.items():
@@ -162,8 +172,15 @@ if __name__ == '__main__':
             newdict["minattack"] = row[11].translate(None, "COLOR(red):'")
             newdict["attack"] = row[13].translate(None, "COLOR(red):'")
 
-            newdict["baseDA"] = 6.5
-            newdict["baseTA"] = 3.0
+            if newdict["name"] in patching:
+                newdict["baseDA"] = patching[newdict["name"]]["DA"]
+                newdict["baseTA"] = patching[newdict["name"]]["TA"]
+                newdict["en_name"] = patching[newdict["name"]]["en_name"]
+            else:
+                newdict["baseDA"] = 6.5
+                newdict["baseTA"] = 3.0
+                newdict["en_name"] = newdict["name"]
+
             newdict["imageURL"] = "./charaimgs/" + key + "_01.png"
             json_data[name] = newdict
             # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "_01.png\n")
