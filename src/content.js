@@ -3673,12 +3673,25 @@ var Result = React.createClass({
     onClick: function(e) {
         this.props.onAddToHaisuiData(e.target.id, this.props.summonid)
     },
+    getTypeBonus: function(self_elem, enemy_elem) {
+        var t_enemy_elem = (enemy_elem == undefined) ? "fire" : enemy_elem
+        var t_elem = (self_elem == undefined) ? "fire" : self_elem
+
+        if(elementRelation[ t_elem ]["weak"] == t_enemy_elem) {
+            return 0.75
+        } else if(elementRelation[ t_elem ]["strong"] == t_enemy_elem) {
+            return 1.5
+        } else {
+            return 1.0
+        }
+    },
     render: function() {
         var sw = this.props.switcher;
         var arm = this.props.arm;
         var prof = this.props.prof;
         var onClick = this.onClick;
         var locale = this.props.locale;
+        var getTypeBonus = this.getTypeBonus;
 
         return (
             <tbody className="result">
@@ -3726,8 +3739,13 @@ var Result = React.createClass({
                         ++colSize;
                     }
                     if(sw.switchCriticalRatio) {
-                        tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "\n(" + m.data.Djeeta.effectiveCriticalRatio.toFixed(4) + ")")
-                        ++colSize;
+                        if( getTypeBonus(prof.element, prof.enemyElement) == 1.5) {
+                            tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "\n(" + m.data.Djeeta.effectiveCriticalRatio.toFixed(4) + ")")
+                            ++colSize;
+                        } else {
+                            tablebody.push(intl.translate("非有利", locale))
+                            ++colSize;
+                        }
                     }
                     if(sw.switchCriticalAttack) {
                         tablebody.push(m.data.Djeeta.criticalAttack)
