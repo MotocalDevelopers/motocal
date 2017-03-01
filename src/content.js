@@ -3668,9 +3668,9 @@ var ResultList = React.createClass({
                                 <ElementColorLabel element={s.friendElement}>{friendSummonHeader}</ElementColorLabel>
                                 <hr style={{"margin": "10px 0px 5px 0px"}}/>
                                 <div className="charainfo" style={{"float": "left"}}>
-                                {charaInfo}
-                                <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
-                                <span>{buffInfoStr}</span>
+                                    {charaInfo}
+                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
+                                    <span>{buffInfoStr}</span>
                                 </div>
                                 <div style={{"textAlign":"right", "float": "right"}}>
                                 <span>[{intl.translate("優先項目", locale)}: {changeSortKey}]</span>
@@ -3699,14 +3699,20 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>{intl.translate("背水渾身グラフ", locale)}</Modal.Title>
-                            <p className="text-info">({charaInfoStr})</p>
-                            <Button bsStyle="info" onClick={this.openHPChartTutorial}>{intl.translate("使い方", locale)}</Button>
-                            <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
-                            <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
-                            {(this.state.displayRealHP) ?
-                                <Button bsStyle="default" onClick={this.switchDisplayRealHP}>{intl.translate("HP割合で表示", locale)}</Button>:
-                                <Button bsStyle="default" onClick={this.switchDisplayRealHP}>{intl.translate("実際のHPで表示", locale)}</Button>
-                            }
+                                <div className="charainfo" style={{"float": "left"}}>
+                                    {charaInfo}
+                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
+                                    <span>{buffInfoStr}</span>
+                                </div>
+                                <div style={{"float": "right"}}>
+                                    <Button bsStyle="info" onClick={this.openHPChartTutorial}>{intl.translate("使い方", locale)}</Button>
+                                    <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
+                                    <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
+                                    {(this.state.displayRealHP) ?
+                                        <Button bsStyle="default" onClick={this.switchDisplayRealHP}>{intl.translate("HP割合で表示", locale)}</Button>:
+                                        <Button bsStyle="default" onClick={this.switchDisplayRealHP}>{intl.translate("実際のHPで表示", locale)}</Button>
+                                    }
+                                </div>
                         </Modal.Header>
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} displayRealHP={this.state.displayRealHP} />
@@ -3716,9 +3722,15 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>{intl.translate("初期攻撃力推移グラフ", locale)}</Modal.Title>
-                            <p className="text-info">({charaInfoStr})</p>
-                            <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
-                            <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
+                                <div className="charainfo" style={{"float": "left"}}>
+                                    {charaInfo}
+                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
+                                    <span>{buffInfoStr}</span>
+                                </div>
+                                <div style={{"float": "right"}}>
+                                    <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
+                                    <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
+                                </div>
                         </Modal.Header>
                         <Modal.Body>
                             <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
@@ -3727,9 +3739,15 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
                         <Modal.Header closeButton>
                             <Modal.Title>{intl.translate("ダメージシミュレータ", locale)}</Modal.Title>
-                            <p className="text-info">({charaInfoStr})</p>
-                            <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
-                            <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
+                                <div className="charainfo" style={{"float": "left"}}>
+                                    {charaInfo}
+                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
+                                    <span>{buffInfoStr}</span>
+                                </div>
+                                <div style={{"float": "right"}}>
+                                    <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
+                                    <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
+                                </div>
                         </Modal.Header>
                         <Modal.Body>
                             <SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
