@@ -3818,6 +3818,10 @@ var Result = React.createClass({
                         tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack + ")")
                         ++colSize;
                     }
+                    if(sw.switchCriticalAttack) {
+                        tablebody.push(m.data.Djeeta.criticalAttack)
+                        ++colSize;
+                    }
                     if(sw.switchCriticalRatio) {
                         if( getTypeBonus(prof.element, prof.enemyElement) == 1.5) {
                             tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "\n(" + m.data.Djeeta.effectiveCriticalRatio.toFixed(4) + ")")
@@ -3826,10 +3830,6 @@ var Result = React.createClass({
                             tablebody.push(intl.translate("非有利", locale))
                             ++colSize;
                         }
-                    }
-                    if(sw.switchCriticalAttack) {
-                        tablebody.push(m.data.Djeeta.criticalAttack)
-                        ++colSize;
                     }
                     if(sw.switchHP) {
                         tablebody.push(m.data.Djeeta.totalHP + "\n(" + parseInt(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")")
