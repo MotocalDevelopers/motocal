@@ -219,7 +219,7 @@ var multiLangData = {
     },
     "味方全体のHP": {
         "en": "HP Bonus for All member",
-        "ja": "味方全体のHP",
+        "ja": "味方HPゼニス",
     },
     "Advanced": {
         "en": "Advanced Settings",
@@ -751,7 +751,7 @@ var multiLangData = {
     },
     "本": {
         "en": "",
-        "ja": "本",
+        "ja": "",
     },
     "結果を更新": {
         "en": "Update Results",
@@ -1554,6 +1554,10 @@ var multiLangData = {
     "notice-20170218-2": {
         "en": "18/02/2017: Added English Name of Romeo, Yngwei, Yuisis, Rastina and Implemented English name searching for these charas.",
         "ja": "2017/02/18: ロミオ、イングヴェイ、ユイシス、ラスティナの連撃率更新 / 英語名表示と英語名検索を実装.",
+    },
+    "notice-20170302-1": {
+        "en": "02/03/2017: Display chara elements and enemy's element in result tab. Do not display Exp. Critical Ratio in number when djeeta's element is Non-advantage.",
+        "ja": "2017/03/02: キャラ属性と敵属性を結果欄に表示するように変更 / 非有利の時は技巧期待値を数値で表示しないように変更",
     },
 }
 
