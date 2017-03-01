@@ -17,6 +17,23 @@ module.exports.TextWithTooltip = React.createClass({
     }
 });
 
+module.exports.ElementColorLabel = React.createClass({
+    render: function() {
+        var element = this.props.element;
+
+        if(element == "fire") return <span className="label label-danger" style={{"fontSize": "12pt"}}>{this.props.children}</span>
+        if(element == "water") return <span className="label label-primary" style={{"fontSize": "12pt"}}>{this.props.children}</span>
+        if(element == "earth") return <span className="label label-warning" style={{"fontSize": "12pt"}}>{this.props.children}</span>
+        if(element == "wind") return <span className="label label-success" style={{"fontSize": "12pt"}}>{this.props.children}</span>
+        if(element == "light") return <span className="label label-default" style={{"fontSize": "12pt"}}>{this.props.children}</span>
+        if(element == "dark") return <span className="label label-default" style={{"fontSize": "12pt"}}>{this.props.children}</span>
+        return <span className="label label-default" style={{"fontSize": "12pt"}}>{this.props.children}</span>
+    },
+    propTypes: {
+        element: React.PropTypes.string.isRequired,
+    }
+});
+
 module.exports.dataForLoad = {}
 module.exports._ua = (function(u){
   return {

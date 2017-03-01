@@ -15,6 +15,7 @@ var {RegisteredArm, RegisteredChara} = require('./template.js')
 var Advertisement = require('./advertisement.js');
 var dataForLoad = GlobalConst.dataForLoad
 var TextWithTooltip = GlobalConst.TextWithTooltip
+var ElementColorLabel = GlobalConst.ElementColorLabel
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation
@@ -3501,7 +3502,11 @@ var ResultList = React.createClass({
 
                         return(
                             <div key={summonindex} className="result">
-                                <p> {intl.translate("結果", locale)} No.{summonindex + 1}:{selfSummonHeader}+{friendSummonHeader}</p>
+                                <p> No.{summonindex + 1} </p>
+                                <ElementColorLabel element={s.selfElement}>{selfSummonHeader}</ElementColorLabel>
+                                <ElementColorLabel element="all">+</ElementColorLabel>
+                                <ElementColorLabel element={s.friendElement}>{friendSummonHeader}</ElementColorLabel>
+                                <hr style={{"margin": "10px 0px"}}/>
                                 <div className="charainfo">
                                     <div>{charaInfo}</div>
                                     <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
@@ -3590,9 +3595,9 @@ var ResultList = React.createClass({
                     <hr />
 
                     <ButtonGroup style={{width: "100%"}}>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart.bind(this, this.state.displayRealHP)} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >{intl.translate("初期攻撃力推移グラフを開く", locale)}</Button>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="primary" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータを開く", locale)}</Button>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="success" bsSize="large" onClick={this.openHPChart.bind(this, this.state.displayRealHP)} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="success" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >{intl.translate("初期攻撃力推移グラフを開く", locale)}</Button>
+                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="success" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータを開く", locale)}</Button>
                     </ButtonGroup>
 
                     {summondata.map(function(s, summonindex) {
@@ -3616,10 +3621,19 @@ var ResultList = React.createClass({
 
                         return(
                             <div style={{textAlign:"left"}} key={summonindex} className="result">
-                                <h2> {intl.translate("結果", locale)} No.{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [{intl.translate("優先項目", locale)}: {changeSortKey}]</h2>
+                                <h2> No.{summonindex + 1} </h2>
+                                <ElementColorLabel element={s.selfElement}>{selfSummonHeader}</ElementColorLabel>
+                                <ElementColorLabel element="all">+</ElementColorLabel>
+                                <ElementColorLabel element={s.friendElement}>{friendSummonHeader}</ElementColorLabel>
+                                <hr style={{"margin": "10px 0px"}}/>
+                                <div className="charainfo" style={{"marginTop": "2px", "float": "left"}}>
                                 {charaInfo}
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
-                                <div className="charainfo"><span>{buffInfoStr}</span></div>
+                                <span>{buffInfoStr}</span>
+                                </div>
+                                <div style={{"textAlign":"right", "float": "right"}}>
+                                <span>[{intl.translate("優先項目", locale)}: {changeSortKey}]</span>
+                                </div>
                                 <table className="table table-bordered">
                                 <thead className="result">
                                 <tr>
