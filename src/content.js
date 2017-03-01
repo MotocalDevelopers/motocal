@@ -390,48 +390,50 @@ var Root = React.createClass({
                         <NiteHowTo />
                     </Modal.Body>
                 </Modal>
-                <Nav bsStyle="tabs" activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
-                    <NavItem eventKey="inputTab">ジータ</NavItem>
-                    <NavItem eventKey="summonTab">召喚石</NavItem>
-                    <NavItem eventKey="charaTab">キャラ</NavItem>
-                    <NavItem eventKey="armTab">武器</NavItem>
-                    <NavItem eventKey="resultTab">結果</NavItem>
-                    <NavItem eventKey="systemTab">保存</NavItem>
-                </Nav>
-                <div className="Tab" id="inputTab">
-                    <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} />
-                </div>
-                <div className="Tab hidden" id="summonTab">
-                    <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}(現在{this.state.summonNum}組)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="charaTab">
-                    <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} />
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}(現在{this.state.charaNum}人)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="armTab">
-                    <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum} locale={locale}/>
-                    <ButtonGroup className="addRemoveButtonGroup">
-                        <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}(現在{this.state.armNum}本)</Button>
-                        <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="Tab hidden" id="resultTab">
-                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} locale={locale} />
-                </div>
-                <div className="Tab hidden" id="systemTab">
-                    <div className="systemList">
-                        <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
-                        <TwitterShareButton data={this.state} locale={locale} />
-                        <Notice locale={locale} />
+                <div className="smartphone-content">
+                    <div className="Tab" id="inputTab">
+                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} />
+                    </div>
+                    <div className="Tab hidden" id="summonTab">
+                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
+                        <ButtonGroup className="addRemoveButtonGroup">
+                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}(現在{this.state.summonNum}組)</Button>
+                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
+                        </ButtonGroup>
+                    </div>
+                    <div className="Tab hidden" id="charaTab">
+                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} />
+                        <ButtonGroup className="addRemoveButtonGroup">
+                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}(現在{this.state.charaNum}人)</Button>
+                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
+                        </ButtonGroup>
+                    </div>
+                    <div className="Tab hidden" id="armTab">
+                        <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum} locale={locale}/>
+                        <ButtonGroup className="addRemoveButtonGroup">
+                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}(現在{this.state.armNum}本)</Button>
+                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
+                        </ButtonGroup>
+                    </div>
+                    <div className="Tab hidden" id="resultTab">
+                        <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} locale={locale} />
+                    </div>
+                    <div className="Tab hidden" id="systemTab">
+                        <div className="systemList">
+                            <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
+                            <TwitterShareButton data={this.state} locale={locale} />
+                            <Notice locale={locale} />
+                        </div>
                     </div>
                 </div>
+                <Nav bsStyle="pills" style={{"marginTop": "5px"}} activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
+                    <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
+                    <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
+                    <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
+                    <NavItem eventKey="armTab">{intl.translate("武器", locale)}</NavItem>
+                    <NavItem eventKey="resultTab">{intl.translate("結果", locale)}</NavItem>
+                    <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
+                </Nav>
             </div>
         );
     } else {

@@ -95,10 +95,6 @@ tr.result:hover {
     padding: 2px;
 }
 
-.divright {
-    text-align: right;
-}
-
 .charainfo {
     text-align: left;
     font-size: 6pt;
@@ -160,32 +156,11 @@ tr.result:hover {
 }
 
 .profile {
-    width: 100%;
-}
-
-.profile table th.prof, .profile table td.prof{
-    width: calc(100%/4);
-}
-
-.profile table th.buff, .profile table td.buff{
-    width: calc(100%/4);
-}
-
-.profile table th.advanced-setting {
-    width: 20%;
-}
-
-.profile table td.advanced-setting {
-    width: 40%;
-}
-
-
-.profile table tr td:last-child {
-    border-bottom: 1px solid #84b2e0;
+    width: 95%;
 }
 
 .summonList {
-    width: 100%;
+    width: 95%;
 }
 
 .summonList .hidden {
@@ -209,7 +184,7 @@ tr.result:hover {
 }
 
 .charaList {
-    width: 100%;
+    width: 95%;
 }
 
 .charaList th, .summonList th, .armList th {
@@ -221,7 +196,7 @@ tr.result:hover {
 }
 
 .systemList {
-    width: 100%;
+    width: 95%;
     overflow: auto;
 }
 
@@ -241,19 +216,6 @@ tr.result:hover {
   border-radius: 0px;
 }
 
-@media screen and (max-device-width: 480px) {
-    .nav>li>a {
-      padding: 5px 8px;
-    }
-}
-
-@media screen and (min-device-width: 481px) {
-    .nav>li>a {
-      padding: 5px 25px;
-      font-size: 15pt;
-    }
-}
-
 thead.result th {
   color: rgb(255, 255, 255);
   background: rgb(59, 34, 136);
@@ -266,15 +228,11 @@ thead.result th {
 
 td.resultFirst, th.resultFirst {
   border-left:1px double #258;
-  /* min-width: 20px; */
-  /* max-width: 40px; */
   width: 2em;
   word-wrap: break-word;
 }
 
 td.resultList, th.resultList {
-  /* min-width: 20px; */
-  /* max-width: 40px; */
   width: 2em;
   word-wrap: break-word;
 }
@@ -311,54 +269,12 @@ div.resultList {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 
-.tabrow {
-    text-align: center;
-    list-style: none;
-    margin: 5px 0 0 0;
-    padding: 0;
-    line-height: 24px;
-    position: relative;
-}
-
-.tabrow:before {
-    z-index: 1;
-}
-
-.tabrow:after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    border-bottom: 1px solid #AAA;
-    z-index: 1;
-}
-
-.tabrow button {
-    color: black;
-    margin: 0 4px;
-    padding: 0 5px;
-    border: 1px solid #AAA;
-    background: #ECECEC;
-    display: inline-block;
-    position: relative;
-    z-index: 0;
-    border-radius: 1px;
-    font-size: 6pt;
-}
-
-.tabrow button.selected {
-    background: #FFF;
-    color: #000;
-    z-index: 2;
-    border-bottom-color: #FFF;
-}
-
 .Tab {
     width: 100%;
-    height: 100%;
-    overflow: visible;
-    padding: 5px 5px 20px 5px;
+    height: 85%;
+    overflow-y: scroll;
+    overflow-x: visible;
+    padding: 5px 0px;
 }
 
 .Tab.hidden {
