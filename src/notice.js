@@ -191,7 +191,7 @@ var Notice = React.createClass ({
             </tbody></table>
             </div>
             <ul className="list-group">
-                <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は乗らない)</li>
+                <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は<s>乗らない</s>乗る)</li>
                 <li className="list-group-item">霧氷の追牙・肆: パーティ4番目のキャラに追加ダメージ(1% * slv) / 奥義ゲージ上昇量 - 30%</li>
                 <li className="list-group-item">通常神威: 通常攻刃(小) + 通常守護(小)</li>
                 <li className="list-group-item">マグナ神威: マグナ攻刃(小) + マグナ守護(小)</li>
