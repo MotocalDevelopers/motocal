@@ -3869,7 +3869,7 @@ var Result = React.createClass({
                                     }
                                 }
                              })}
-                            <td style={{"padding": "2px"}}><Button id={rank} bsStyle="primary" block className="add-graph-button" onClick={onClick}>{intl.translate("グラフに加える", locale)}</Button></td>
+                            <td><Button id={rank} bsStyle="default" block className="add-graph-button" onClick={onClick}><i className="fa fa-plus-square" aria-hidden="true"></i></Button></td>
                         </tr>,
                     ];
 
