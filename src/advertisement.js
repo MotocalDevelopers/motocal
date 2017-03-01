@@ -7,9 +7,10 @@ var Advertisement = React.createClass({
         var style300 = {width:"300px", height:"60px", marginLeft: "5px", marginRight: "5px", display: "inline", border: "0px"};
 
         return (
-            <div style={{width: "100%", height: "60px", overflow: "hidden"}}>
-              <a href="http://www.dmm.com/lp/game/ragst/index001_html/=/navi=none/hsimyu-001" target="_blank"><img src="http://pics.dmm.com/af/c_olg043/468_60.jpg" style={style468} alt="ラグナストライクエンジェルズ"/></a>
-              <a href="http://www.dmm.com/lp/game/icchibanketu/index001_html/=/navi=none/hsimyu-001" target="_blank"><img src="http://pics.dmm.com/af/c_olg040/468_60.jpg" style={style468} alt="一血卍傑-ONLINE-"/></a>
+            <div style={{width: "100%", overflow: "hidden"}}>
+              <a href="http://www.amazon.co.jp">製作者を応援する</a>
+                {/*<a href="http://www.dmm.com/lp/game/ragst/index001_html/=/navi=none/hsimyu-001" target="_blank"><img src="http://pics.dmm.com/af/c_olg043/468_60.jpg" style={style468} alt="ラグナストライクエンジェルズ"/></a>
+              <a href="http://www.dmm.com/lp/game/icchibanketu/index001_html/=/navi=none/hsimyu-001" target="_blank"><img src="http://pics.dmm.com/af/c_olg040/468_60.jpg" style={style468} alt="一血卍傑-ONLINE-"/></a>*/}
             </div>
         );
     },
