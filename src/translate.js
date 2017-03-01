@@ -621,6 +621,10 @@ var multiLangData = {
         "en": "Skill Amount",
         "ja": "スキル合計",
     },
+    "弱体耐性率": {
+        "en": "Debuff Resistance",
+        "ja": "弱体耐性率",
+    },
     "有利": {
         "en": "Advantage",
         "ja": "有利",
@@ -1275,6 +1279,10 @@ var multiLangData = {
     "コスモスBL": {
         "en": "Cosmos BL",
         "ja": "コスモスBL",
+    },
+    "コスモスPC": {
+        "en": "Cosmos PC",
+        "ja": "コスモスPC",
     },
     "バハ攻-短剣": {
         "en": "Bahamut Dagger",

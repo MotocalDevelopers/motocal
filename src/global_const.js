@@ -191,6 +191,7 @@ var skilltypes = {
     "cosmosAT": {name:"コスモスAT", type:"cosmos", amount: "L"},
     "cosmosDF": {name:"コスモスDF", type:"cosmos", amount: "L"},
     "cosmosBL": {name:"コスモスBL", type:"cosmos", amount: "L"},
+    "cosmosPC": {name:"コスモスPC", type:"cosmos", amount: "L"},
     "bahaAT-dagger": {name:"バハ攻-短剣", type:"bahaAT", amount: "L"},
     "bahaAT-axe": {name:"バハ攻-斧", type:"bahaAT", amount: "L"},
     "bahaAT-spear": {name:"バハ攻-槍", type:"bahaAT", amount: "L"},
