@@ -3475,7 +3475,7 @@ var ResultList = React.createClass({
                     </tr>
                     </tbody></table>
                     </Collapse>
-                    <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} locale={locale} />
+                    <ControlAutoUpdate mobile autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} locale={locale} />
                     <hr/>
                     <p>優先する値:{changeSortKey}</p>
                     <hr/>

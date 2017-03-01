@@ -53,18 +53,20 @@ var StoredListEditor = React.createClass({
 var ControlAutoUpdate = React.createClass({
     render: function() {
         var locale = this.props.locale;
+        var gstyle = (this.props.mobile) ? {"width": "100%"} : {}
+        var style = (this.props.mobile) ? {"width": "50%"} : {}
         if(this.props.autoupdate) {
             return (
-                <ButtonGroup>
-                <Button bsStyle="primary" onClick={this.props.forceResultUpdate}>{intl.translate("結果を更新", locale)}</Button>
-                <Button bsStyle="danger" onClick={this.props.switchAutoUpdate} >{intl.translate("自動更新: OFF", locale)}</Button>
+                <ButtonGroup style={gstyle} >
+                <Button bsStyle="primary" style={style} onClick={this.props.forceResultUpdate}>{intl.translate("結果を更新", locale)}</Button>
+                <Button bsStyle="danger" style={style} onClick={this.props.switchAutoUpdate} >{intl.translate("自動更新: OFF", locale)}</Button>
                 </ButtonGroup>
             )
         } else {
             return (
-                <ButtonGroup>
-                <Button bsStyle="primary" disabled onClick={this.props.forceResultUpdate}>{intl.translate("結果を更新", locale)}</Button>
-                <Button bsStyle="primary" onClick={this.props.switchAutoUpdate} >{intl.translate("自動更新: ON", locale)}</Button>
+                <ButtonGroup style={gstyle}>
+                <Button bsStyle="primary" style={style} disabled onClick={this.props.forceResultUpdate}>{intl.translate("結果を更新", locale)}</Button>
+                <Button bsStyle="primary" style={style} onClick={this.props.switchAutoUpdate} >{intl.translate("自動更新: ON", locale)}</Button>
                 </ButtonGroup>)
         }
     },
