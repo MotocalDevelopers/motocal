@@ -3405,21 +3405,23 @@ var ResultList = React.createClass({
             charaInfoStr += prof.hp
         }
         charaInfoStr += "% (" + intl.translate(this.getTypeBonusStr(prof.element, prof), locale) + ")"
+        var charaInfo = [<span>{getElementColorLabel(prof.element, locale)}&nbsp;{charaInfoStr}</span>]
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "" && chara[i].isConsideredInAverage) {
-                charaInfoStr += ", " + chara[i].name + "HP"
+                charaInfoStr = chara[i].name + " HP"
                 if(chara[i].remainHP != undefined) {
                     charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
                 } else {
                     charaInfoStr += prof.hp
                 }
                 charaInfoStr += "% (" + intl.translate(this.getTypeBonusStr(chara[i].element, prof), locale) + ")"
+                charaInfo.push(<span>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
         }
-        charaInfoStr += ", " + intl.translate("通常バフ", locale) + prof.normalBuff + "%, "
-        charaInfoStr += intl.translate("属性バフ", locale) + prof.elementBuff + "%, "
-        charaInfoStr += intl.translate("その他バフ", locale) + prof.otherBuff + "%, "
-        charaInfoStr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
+        buffInfoStr =  intl.translate("通常バフ", locale) + prof.normalBuff + "%, "
+        buffInfoStr += intl.translate("属性バフ", locale) + prof.elementBuff + "%, "
+        buffInfoStr += intl.translate("その他バフ", locale) + prof.otherBuff + "%, "
+        buffInfoStr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
@@ -3612,7 +3614,9 @@ var ResultList = React.createClass({
                         return(
                             <div style={{textAlign:"left"}} key={summonindex} className="result">
                                 <h2> {intl.translate("結果", locale)}{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [{intl.translate("優先項目", locale)}: {changeSortKey}]</h2>
-                                <div className="charainfo"><span>{charaInfoStr}</span></div>
+                                {charaInfo}
+                                <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
+                                <div className="charainfo"><span>{buffInfoStr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
                                 <tr>
