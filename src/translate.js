@@ -662,7 +662,7 @@ var multiLangData = {
         "ja": "ダメージシミュレータ (Beta)",
     },
     "結果": {
-        "en": "Result No. ",
+        "en": "Result",
         "ja": "結果",
     },
     "マグナ": {

@@ -3474,12 +3474,11 @@ var ResultList = React.createClass({
                     </tr>
                     </tbody></table>
                     </Collapse>
-                    <br/>
-                    <ButtonGroup style={{width: "100%"}}>
-                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", fontSize: "10pt", paddingLeft: "2px", paddingRight: "2px", textAlign: "center"}} bsStyle="primary" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >背水渾身グラフ</Button>
-                        <Button block style={{float: "left", width: "50%", margin: "0 0 5px 0", fontSize: "10pt", paddingLeft: "2px", paddingRight: "2px", textAlign: "center"}} bsStyle="primary" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >初期攻撃力推移グラフ</Button>
-                    </ButtonGroup>
                     <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} locale={locale} />
+                    <hr/>
+                    <p>優先する値:{changeSortKey}</p>
+                    <hr/>
+                    <Button block bsStyle="success" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
                     <hr/>
                     {summondata.map(function(s, summonindex) {
                         var selfSummonHeader = ""
@@ -3502,12 +3501,15 @@ var ResultList = React.createClass({
 
                         return(
                             <div key={summonindex} className="result">
-                                <p> 結果{summonindex + 1}:{selfSummonHeader}+{friendSummonHeader} <br/>[優先:{changeSortKey}]</p>
-                                <div className="charainfo"><span>{charaInfoStr}</span></div>
+                                <p> {intl.translate("結果", locale)} No.{summonindex + 1}:{selfSummonHeader}+{friendSummonHeader}</p>
+                                <div className="charainfo">
+                                    <div>{charaInfo}</div>
+                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
+                                </div>
                                 <table className="table table-bordered">
                                 <thead className="result">
                                 <tr>
-                                    <th>順位</th>
+                                    <th>{intl.translate("順位", locale)}</th>
                                     {tableheader.map(function(m, ind){ return <th key={ind} >{m}</th>; })}
                                     {
                                         armnames.map(function(m, ind){
@@ -3517,7 +3519,7 @@ var ResultList = React.createClass({
                                             return <th key={ind} className="resultList">{m}</th>;
                                         }})
                                     }
-                                    <th>操作</th>
+                                    <th>{intl.translate("操作", locale)}</th>
                                 </tr>
                                 </thead>
                                 <Result key={summonindex} summonid={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof} onAddToHaisuiData={onAddToHaisuiData} locale={locale} />
@@ -3535,16 +3537,6 @@ var ResultList = React.createClass({
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
-                        </Modal.Body>
-                    </Modal>
-                    <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>初期攻撃力推移 ({charaInfoStr})</Modal.Title>
-                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
-                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                         </Modal.Body>
                     </Modal>
                     <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} locale={locale} />
@@ -3624,7 +3616,7 @@ var ResultList = React.createClass({
 
                         return(
                             <div style={{textAlign:"left"}} key={summonindex} className="result">
-                                <h2> {intl.translate("結果", locale)}{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [{intl.translate("優先項目", locale)}: {changeSortKey}]</h2>
+                                <h2> {intl.translate("結果", locale)} No.{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [{intl.translate("優先項目", locale)}: {changeSortKey}]</h2>
                                 {charaInfo}
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
                                 <div className="charainfo"><span>{buffInfoStr}</span></div>
