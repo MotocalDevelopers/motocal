@@ -23,7 +23,7 @@ table, button, li, label, th, td {
 }
 
 input, textarea {
-    text-align: right;
+    text-align: center;
     font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     font-size: 8pt;
     font-weight: bold;

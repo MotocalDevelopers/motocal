@@ -26,13 +26,11 @@ h1, h2, h3 {
 }
 
 input, textarea {
-    text-align: right;
     font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     font-weight: bold;
 }
 
 select, option {
-    text-align: right;
     font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
     font-weight: bold;
     font-size: 9pt;
