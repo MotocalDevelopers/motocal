@@ -3387,28 +3387,28 @@ var ResultList = React.createClass({
         }
 
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name
-        var remainHPstr = intl.translate("ジータさん", locale) + "(" + intl.translate(job, locale) + ") HP";
+        var charaInfoStr = intl.translate("ジータさん", locale) + "(" + intl.translate(job, locale) + ") HP";
         if(prof.remainHP != undefined) {
-            remainHPstr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? prof.remainHP : prof.hp
+            charaInfoStr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? prof.remainHP : prof.hp
         } else {
-            remainHPstr += prof.hp
+            charaInfoStr += prof.hp
         }
-        remainHPstr += "% (" + intl.translate(this.getTypeBonusStr(prof.element, prof), locale) + ")"
+        charaInfoStr += "% (" + intl.translate(this.getTypeBonusStr(prof.element, prof), locale) + ")"
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "" && chara[i].isConsideredInAverage) {
-                remainHPstr += ", " + chara[i].name + "HP"
+                charaInfoStr += ", " + chara[i].name + "HP"
                 if(chara[i].remainHP != undefined) {
-                    remainHPstr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
+                    charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
                 } else {
-                    remainHPstr += prof.hp
+                    charaInfoStr += prof.hp
                 }
-                remainHPstr += "% (" + intl.translate(this.getTypeBonusStr(chara[i].element, prof), locale) + ")"
+                charaInfoStr += "% (" + intl.translate(this.getTypeBonusStr(chara[i].element, prof), locale) + ")"
             }
         }
-        remainHPstr += ", " + intl.translate("通常バフ", locale) + prof.normalBuff + "%, "
-        remainHPstr += intl.translate("属性バフ", locale) + prof.elementBuff + "%, "
-        remainHPstr += intl.translate("その他バフ", locale) + prof.otherBuff + "%, "
-        remainHPstr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
+        charaInfoStr += ", " + intl.translate("通常バフ", locale) + prof.normalBuff + "%, "
+        charaInfoStr += intl.translate("属性バフ", locale) + prof.elementBuff + "%, "
+        charaInfoStr += intl.translate("その他バフ", locale) + prof.otherBuff + "%, "
+        charaInfoStr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
@@ -3479,7 +3479,7 @@ var ResultList = React.createClass({
                         return(
                             <div key={summonindex} className="result">
                                 <p> 結果{summonindex + 1}:{selfSummonHeader}+{friendSummonHeader} <br/>[優先:{changeSortKey}]</p>
-                                <div className="charainfo"><span>{remainHPstr}</span></div>
+                                <div className="charainfo"><span>{charaInfoStr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
                                 <tr>
@@ -3503,7 +3503,7 @@ var ResultList = React.createClass({
                     })}
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
-                            <Modal.Title>HP Charts ({remainHPstr})</Modal.Title>
+                            <Modal.Title>HP Charts ({charaInfoStr})</Modal.Title>
                             <Button bsStyle="info" onClick={this.openHPChartTutorial}>使い方</Button>
                             <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
@@ -3515,7 +3515,7 @@ var ResultList = React.createClass({
                     </Modal>
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
-                            <Modal.Title>初期攻撃力推移 ({remainHPstr})</Modal.Title>
+                            <Modal.Title>初期攻撃力推移 ({charaInfoStr})</Modal.Title>
                             <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
                         </Modal.Header>
@@ -3601,7 +3601,7 @@ var ResultList = React.createClass({
                         return(
                             <div style={{textAlign:"left"}} key={summonindex} className="result">
                                 <h2> {intl.translate("結果", locale)}{summonindex + 1}: {selfSummonHeader} + {friendSummonHeader} [{intl.translate("優先項目", locale)}: {changeSortKey}]</h2>
-                                <div className="charainfo"><span>{remainHPstr}</span></div>
+                                <div className="charainfo"><span>{charaInfoStr}</span></div>
                                 <table className="table table-bordered">
                                 <thead className="result">
                                 <tr>
@@ -3626,7 +3626,7 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>{intl.translate("背水渾身グラフ", locale)}</Modal.Title>
-                            <p className="text-info">({remainHPstr})</p>
+                            <p className="text-info">({charaInfoStr})</p>
                             <Button bsStyle="info" onClick={this.openHPChartTutorial}>{intl.translate("使い方", locale)}</Button>
                             <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
@@ -3643,7 +3643,7 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
                         <Modal.Header closeButton>
                             <Modal.Title>{intl.translate("初期攻撃力推移グラフ", locale)}</Modal.Title>
-                            <p className="text-info">({remainHPstr})</p>
+                            <p className="text-info">({charaInfoStr})</p>
                             <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
                         </Modal.Header>
@@ -3654,7 +3654,7 @@ var ResultList = React.createClass({
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>
                         <Modal.Header closeButton>
                             <Modal.Title>{intl.translate("ダメージシミュレータ", locale)}</Modal.Title>
-                            <p className="text-info">({remainHPstr})</p>
+                            <p className="text-info">({charaInfoStr})</p>
                             <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
                             <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
                         </Modal.Header>
