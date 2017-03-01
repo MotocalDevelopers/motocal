@@ -869,7 +869,7 @@ var Chara = React.createClass({
                             <th className="bg-primary">{intl.translate("キャラ名", locale)}</th>
                             <td>
                             <InputGroup>
-                                <FormControl type="text" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onFocus={this.openPresets} onChange={this.handleEvent.bind(this, "name")}/>
+                                <FormControl componentClass="textarea" value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onFocus={this.openPresets} onChange={this.handleEvent.bind(this, "name")}/>
                                 <InputGroup.Addon>
                                 <Checkbox inline checked={this.state.isConsideredInAverage} onChange={this.handleSelectEvent.bind(this, "isConsideredInAverage")}>{intl.translate("平均に含める", locale)}</Checkbox>
                                 </InputGroup.Addon>
