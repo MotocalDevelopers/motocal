@@ -3666,8 +3666,8 @@ var ResultList = React.createClass({
                                 <ElementColorLabel element={s.selfElement}>{selfSummonHeader}</ElementColorLabel>
                                 <ElementColorLabel element="all">+</ElementColorLabel>
                                 <ElementColorLabel element={s.friendElement}>{friendSummonHeader}</ElementColorLabel>
-                                <hr style={{"margin": "10px 0px"}}/>
-                                <div className="charainfo" style={{"marginTop": "2px", "float": "left"}}>
+                                <hr style={{"margin": "10px 0px 5px 0px"}}/>
+                                <div className="charainfo" style={{"float": "left"}}>
                                 {charaInfo}
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
                                 <span>{buffInfoStr}</span>

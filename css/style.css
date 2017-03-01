@@ -16,6 +16,11 @@ body {
   -webkit-user-drag: element;
 }
 
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 h1, h2, h3 {
     font-size: 120%;
     font-weight: bold;
