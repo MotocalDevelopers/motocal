@@ -71,7 +71,8 @@ function getElementColorLabel(element, locale) {
     return <span className="label label-danger">{intl.translate("火", locale)}</span>
 }
 
-var touchPosition = null;
+var touchPositionX = null;
+var touchPositionY = null;
 var touchDirection = null;
 
 // Root class contains [Profile, ArmList, Results].
@@ -125,16 +126,20 @@ var Root = React.createClass({
   },
   onTouchStart: function(e) {
       //スワイプ開始時の横方向の座標を格納
-      touchPosition = this.getPosition(e)
+      touchPositionX = this.getPositionX(e)
+      touchPositionY = this.getPositionY(e)
       touchDirection = ''
   },
   onTouchMove: function(e) {
       //スワイプの方向（left / right）を取得
       var td = "none";
-      if (touchPosition - this.getPosition(e) > 100) {
-          td = 'right'; //左と検知
-      } else if (touchPosition - this.getPosition(e) < -100){
-          td = 'left'; //右と検知
+      // 縦方向に大きなスワイプの場合は無視
+      if(Math.abs(touchPositionY - this.getPositionY(e)) < 5) {
+          if (touchPositionX - this.getPositionX(e) > 100) {
+              td = 'right'; //左と検知
+          } else if (touchPositionX - this.getPositionX(e) < -100){
+              td = 'left'; //右と検知
+          }
       }
       touchDirection = td
   },
@@ -144,8 +149,12 @@ var Root = React.createClass({
       }
   },
   //横方向の座標を取得
-  getPosition: function(e) {
+  getPositionX: function(e) {
       return e.touches[0].pageX;
+  },
+  //縦方向の座標を取得
+  getPositionY: function(e) {
+      return e.touches[0].pageY;
   },
   swipeTab: function(direction){
       document.querySelector("div#" + this.state.activeKey).setAttribute("class", "Tab hidden")
