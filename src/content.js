@@ -489,7 +489,7 @@ var Root = React.createClass({
                         <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
                         <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
                         <NavItem eventKey="armTab">{intl.translate("武器", locale)}</NavItem>
-                        <NavItem eventKey="simulatorTab">Simulator</NavItem>
+                        <NavItem eventKey="simulatorTab"><s>Simu</s></NavItem>
                         <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
                     </Nav>
                     <div className="Tab" id="inputTab">
