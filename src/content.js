@@ -60,6 +60,17 @@ function getVarInQuery(key){
     return result;
 }
 
+// 属性に対応した色のラベルを返す
+function getElementColorLabel(element, locale) {
+    if(element == "fire") return <span className="label label-danger">{intl.translate("火", locale)}</span>
+    if(element == "water") return <span className="label label-primary">{intl.translate("水", locale)}</span>
+    if(element == "earth") return <span className="label label-warning">{intl.translate("土", locale)}</span>
+    if(element == "wind") return <span className="label label-success">{intl.translate("風", locale)}</span>
+    if(element == "light") return <span className="label label-default">{intl.translate("光", locale)}</span>
+    if(element == "dark") return <span className="label label-default">{intl.translate("闇", locale)}</span>
+    return <span className="label label-danger">{intl.translate("火", locale)}</span>
+}
+
 var touchPosition = null;
 var touchDirection = null;
 
