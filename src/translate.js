@@ -5,6 +5,10 @@ var multiLangData = {
         "en": "motocal / Granblue Fantasy ATK Calculator",
         "ja": "元カレ計算機(グラブル攻撃力計算機)",
     },
+    "応援テキスト": {
+        "en": "Kanpa to Me",
+        "ja": "製作者を応援する",
+    },
     "使い方": {
         "en": "Manual",
         "ja": "使い方",
