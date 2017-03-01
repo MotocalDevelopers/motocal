@@ -1195,49 +1195,80 @@ var Summon = React.createClass({
             friendSummon[0].label = intl.translate("属性", locale) + " "
         }
         return (
-            <ColP sxs={12} xs={6} sm={4} className="col-bordered">
-                <FormGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("自分の石", locale)}　</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector[locale].summonElements}</FormControl>
-                    <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector[locale].summons}</FormControl>
-                    {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
-                    {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
-                </InputGroup>
-
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("フレの石", locale)}　</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector[locale].summonElements}</FormControl>
-                    <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector[locale].summons}</FormControl>
-                    {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
-                    {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
-                </InputGroup>
-
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("合計攻撃力", locale)}</InputGroup.Addon>
-                    <FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("合計HP", locale)}　&nbsp;&nbsp;</InputGroup.Addon>
-                    <FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("HP加護", locale)}　&nbsp;&nbsp;</InputGroup.Addon>
+            <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
+                <table className="table table-sm table-bordered table-responsive">
+                    <tbody>
+                        <tr>
+                            <th rowSpan={3} className="bg-primary">{intl.translate("自分の石", locale)}</th>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector[locale].summonElements}</FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector[locale].summons}</FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
+                                {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowSpan={3} className="bg-primary">{intl.translate("フレの石", locale)}</th>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector[locale].summonElements}</FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector[locale].summons}</FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
+                                {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("合計攻撃力", locale)}</th>
+                            <td>
+                                <FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("合計HP", locale)}</th>
+                            <td>
+                                <FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("HP加護", locale)}</th>
+                            <td>
                     <FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("DA加護", locale)}　&nbsp;&nbsp;</InputGroup.Addon>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("DA加護", locale)}</th>
+                            <td>
                     <FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("TA加護", locale)}　&nbsp;&nbsp;</InputGroup.Addon>
-                    <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
-                </InputGroup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("TA加護", locale)}</th>
+                            <td>
+                                <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <ButtonGroup style={{"width": "100%"}}>
                     <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>{intl.translate("内容を消去", locale)}</Button>
                     <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>{intl.translate("コピー", locale)}</Button>
                 </ButtonGroup>
-                </FormGroup>
             </ColP>
         );
     }
