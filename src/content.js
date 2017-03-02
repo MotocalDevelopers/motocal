@@ -135,7 +135,7 @@ var Root = React.createClass({
       //スワイプの方向（left / right）を取得
       var td = "none";
       // 縦方向に大きなスワイプの場合は無視
-      if(Math.abs(touchPositionY - this.getPositionY(e)) < 5) {
+      if(Math.abs(touchPositionY - this.getPositionY(e)) < 20) {
           if (touchPositionX - this.getPositionX(e) > 100) {
               td = 'right'; //左と検知
           } else if (touchPositionX - this.getPositionX(e) < -100){
@@ -366,15 +366,7 @@ var Root = React.createClass({
     if(_ua.Mobile || _ua.Tablet) {
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
-                <h2>{intl.translate("motocal", locale)}</h2>
-                <ButtonGroup>
-                    <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
-                    <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
-                    <DropdownButton title={intl.translate("使い方", locale)}>
-                        <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
-                        <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
-                    </DropdownButton>
-                </ButtonGroup>
+                <h2 style={{"marginTop": "10px", "marginBottom": "5px"}} >{intl.translate("motocal", locale)}</h2>
                 <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
                     <Modal.Header closeButton>
                         <Modal.Title>元カレ計算機について</Modal.Title>
@@ -420,6 +412,14 @@ var Root = React.createClass({
                         <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} locale={locale} />
                     </div>
                     <div className="Tab hidden" id="systemTab">
+			<ButtonGroup>
+			    <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
+			    <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
+			    <DropdownButton title={intl.translate("使い方", locale)}>
+				<MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
+				<MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
+			    </DropdownButton>
+			</ButtonGroup>
                         <div className="systemList">
                             <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
                             <TwitterShareButton data={this.state} locale={locale} />
@@ -427,7 +427,7 @@ var Root = React.createClass({
                         </div>
                     </div>
                 </div>
-                <Nav bsStyle="pills" style={{"marginTop": "5px"}} activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
+		<Nav className="footerNav" bsStyle="pills" activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
                     <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
                     <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
                     <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
@@ -3559,12 +3559,12 @@ var ResultList = React.createClass({
                                     {
                                         armnames.map(function(m, ind){
                                         if(ind == 0) {
-                                            return <th key={ind} className="resultFirst">{m}</th>;
+                                            return <th key={ind}>{m}</th>;
                                         } else {
-                                            return <th key={ind} className="resultList">{m}</th>;
+                                            return <th key={ind}>{m}</th>;
                                         }})
                                     }
-                                    <th>{intl.translate("操作", locale)}</th>
+                                    <th>{intl.translate("グラフ", locale)}</th>
                                 </tr>
                                 </thead>
                                 <Result key={summonindex} summonid={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof} onAddToHaisuiData={onAddToHaisuiData} locale={locale} />
@@ -3683,12 +3683,12 @@ var ResultList = React.createClass({
                                     {
                                         armnames.map(function(m, ind){
                                         if(ind == 0) {
-                                            return <th key={ind} className="resultFirst">{m}</th>;
+                                            return <th key={ind}>{m}</th>;
                                         } else {
-                                            return <th key={ind} className="resultList">{m}</th>;
+                                            return <th key={ind}>{m}</th>;
                                         }})
                                     }
-                                    <th>{intl.translate("操作", locale)}</th>
+                                    <th>{intl.translate("グラフ", locale)}</th>
                                 </tr>
                                 </thead>
                                 <Result key={summonindex} summonid={summonindex} data={result[summonindex]} switcher={switcher} arm={arm} prof={prof} onAddToHaisuiData={onAddToHaisuiData} locale={locale}/>
@@ -3936,20 +3936,20 @@ var Result = React.createClass({
                                     ++colSize;
                                     if(ind == 0){
                                         if(parseInt(am) > 0) {
-                                            return (<td key={ind} className="resultFirst"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
+                                            return (<td key={ind}><span className="text-info">{am} {intl.translate("本", locale)}</span></td>);
                                         } else {
-                                            return (<td key={ind} className="resultFirst"><p className="text-muted">{am} {intl.translate("本", locale)}</p></td>);
+                                            return (<td key={ind}><span className="text-muted">{am} {intl.translate("本", locale)}</span></td>);
                                         }
                                     } else {
                                         if(parseInt(am) > 0) {
-                                            return (<td key={ind} className="resultList"><p className="text-info">{am} {intl.translate("本", locale)}</p></td>);
+                                            return (<td key={ind}><span className="text-info">{am} {intl.translate("本", locale)}</span></td>);
                                         } else {
-                                            return (<td key={ind} className="resultList"><p className="text-muted">{am} {intl.translate("本", locale)}</p></td>);
+                                            return (<td key={ind}><span className="text-muted">{am} {intl.translate("本", locale)}</span></td>);
                                         }
                                     }
                                 }
                              })}
-                            <td><Button id={rank} bsStyle="default" block className="add-graph-button" onClick={onClick}><i className="fa fa-plus-square" aria-hidden="true"></i></Button></td>
+                            <td><Button id={rank} bsStyle="default" bsSize="small" className="add-graph-button" onClick={onClick}><i className="fa fa-plus-square" aria-hidden="true"></i></Button></td>
                         </tr>,
                     ];
 
@@ -3957,10 +3957,10 @@ var Result = React.createClass({
                         if(tablebody2[key] != "") {
                             res.push(<tr>
                                 <td colSpan="4">
-                                    <p className="text-info">{key}</p>
+                                    <span className="text-info">{key}</span>
                                 </td>
                                 <td colSpan={colSize - 4}>
-                                    <p className="text-left">{tablebody2[key]}</p>
+                                    <span className="text-left">{tablebody2[key]}</span>
                                 </td>
                             </tr>);
                         }

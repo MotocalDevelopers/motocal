@@ -9,6 +9,10 @@ var multiLangData = {
         "en": "Kanpa to Me",
         "ja": "製作者を応援する",
     },
+    "グラフ": {
+        "en": "Graph",
+        "ja": "グラフ",
+    },
     "使い方": {
         "en": "Manual",
         "ja": "使い方",

@@ -194,7 +194,7 @@ div.drag-hr span {
   line-height: 40px;
 }
 
-thead.result th {
+thead.result>tr>th {
   color: rgb(255, 255, 255);
   background: rgb(59, 34, 136);
   background:-moz-linear-gradient(rgba(59,34,136,0.85), rgba(59,34,136,0.9) 50%);
@@ -202,45 +202,35 @@ thead.result th {
   border-color: rgb(59, 34, 136);
   min-width: 50px;
   max-width: 70px;
+  font-size: 11pt;
+  text-align: center;
 }
 
-tbody.result td {
-  border-bottom: 1px solid rgb(59, 34, 136);
-  border-left: 1px solid rgb(59, 34, 136);
+tbody.result>tr {
+  border-top: 1px solid rgb(59, 34, 136);
+}
+
+tbody.result>tr>td {
   min-width: 50px;
   max-width: 70px;
+  vertical-align: middle;
+  font-size: 11pt;
+  text-align: center;
 }
 
-tbody.result td:last-child {
+tbody.result>tr>td:first-child {
+  border-left: 1px solid rgb(59, 34, 136);
+}
+tbody.result>tr>td:last-child {
   border-right: 1px solid rgb(59, 34, 136);
 }
 
-td.resultFirst, th.resultFirst {
-    border-left:2px double #258;
-    min-width: 50px;
-    max-width: 70px;
-}
-
-td.resultList, th.resultList {
-    min-width: 50px;
-    max-width: 70px;
+tbody.result>tr:last-child>td {
+  border-bottom: 1px solid rgb(59, 34, 136);
 }
 
 div.result {
-    margin-bottom: 20px;
-}
-
-div.result>table,
-div.result>table>thead>tr>th,
-div.result>table>tbody>tr>td
-{
-    font-size: 11pt;
-    text-align: center;
-}
-
-div.resultList {
-    width: calc(100% - 6px);
-    padding: 3px;
+    margin-bottom: 10px;
 }
 
 .notice {
@@ -276,12 +266,6 @@ div.resultList {
 
 .btn-nopadding {
     padding: 6px;
-}
-
-.add-graph-button {
-    font-size: 8pt;
-    margin: 5px 0;
-    word-wrap: break-word;
 }
 
 .checkbox-inline {
