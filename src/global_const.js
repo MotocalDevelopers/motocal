@@ -220,6 +220,7 @@ var cosmosSkills = {
     "cosmosAT": {name:"コスモスAT", type:"cosmos", amount: "L"},
     "cosmosDF": {name:"コスモスDF", type:"cosmos", amount: "L"},
     "cosmosBL": {name:"コスモスBL", type:"cosmos", amount: "L"},
+    "cosmosPC": {name:"コスモスPC", type:"cosmos", amount: "L"},
     "non": {name: "無し", type:"non", amount: "non"},
 };
 
