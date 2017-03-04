@@ -170,6 +170,8 @@ var skilltypes = {
     "unknownOtherNiteS": {name:"ミフネ流・双星", type:"unknownOtherNite", amount: "S"},
     "gurenJuin": {name:"紅蓮の呪印・弐", type:"gurenJuin", amount: "L"},
     "muhyoTuiga": {name:"霧氷の追牙・肆", type:"muhyoTuiga", amount: "L"},
+    "tsuranukiKiba": {name:"貫きの牙", type:"tsuranukiKiba", amount: "M"},
+    "tsuranukiKibaMain": {name:"貫きの牙(メイン装備時)", type:"tsuranukiKiba", amount: "M"},
     "normalCriticalS": {name:"通常技巧(小)", type:"normalCritical", amount: "S"},
     "normalCriticalM": {name:"通常技巧(中)", type:"normalCritical", amount: "M"},
     "normalCriticalL": {name:"通常技巧(大)", type:"normalCritical", amount: "L"},

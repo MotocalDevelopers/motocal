@@ -1874,6 +1874,14 @@ var ResultList = React.createClass({
                                     totals[key]["additionalDamage"] += comb[i] * slv;
                                     totals[key]["ougiDebuff"] += comb[i] * 0.30;
                                 }
+                            } else if(stype == 'tsuranukiKiba'){
+                                if(skillname == 'tsuranukiKibaMain'){
+                                    totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
+                                    if(key == 'Djeeta') totals[key]["normalCritical"] += comb[i] * skillAmounts["normalCritical"][amount][slv - 1];
+                                } else {
+                                    totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
+
+                                }
                             } else {
                                 totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                             }

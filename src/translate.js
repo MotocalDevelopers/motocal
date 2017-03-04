@@ -1200,6 +1200,14 @@ var multiLangData = {
         "en": "Hoarfrost's Fourth Pursuit",
         "ja": "霧氷の追牙・肆",
     },
+    "貫きの牙": {
+        "en": "Tsuranuki no Kiba",
+        "ja": "貫きの牙",
+    },
+    "貫きの牙(メイン装備時)": {
+        "en": "Tsuranuki no Kiba (main)",
+        "ja": "貫きの牙(メイン装備時)",
+    },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
         "ja": "通常技巧(小)",
