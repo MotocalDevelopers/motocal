@@ -1,4 +1,53 @@
 {
+    "[絶覇]ブリューナク": {
+        "hplv100": "257", 
+        "element2": "fire", 
+        "name": "[絶覇]ブリューナク", 
+        "imageURL": "./imgs/1040200300.png", 
+        "skill2": "tsuranukiKiba", 
+        "skill1": "normalM", 
+        "element": "fire", 
+        "attacklv100": "2315", 
+        "minattack": "395", 
+        "attack": "2710", 
+        "slvmax": 15, 
+        "minhp": "41", 
+        "type": "spear", 
+        "hp": "298", 
+        "maxlv": 150
+    }, 
+    "[蛇創杖]ウロボロス": {
+        "hplv100": "289", 
+        "element2": "earth", 
+        "name": "[蛇創杖]ウロボロス", 
+        "imageURL": "./imgs/1040401100.png", 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "element": "earth", 
+        "attacklv100": "2155", 
+        "minattack": "355", 
+        "attack": "2520", 
+        "slvmax": 15, 
+        "minhp": "49", 
+        "type": "wand", 
+        "hp": "337", 
+        "maxlv": 150
+    }, 
+    "[天虹琴]ドミニオンハープ": {
+        "element2": "light", 
+        "name": "[天虹琴]ドミニオンハープ", 
+        "imageURL": "./imgs/1040805600.png", 
+        "skill2": "strengthL", 
+        "skill1": "non", 
+        "element": "light", 
+        "minattack": "278", 
+        "attack": "1727", 
+        "slvmax": 10, 
+        "minhp": "53", 
+        "type": "music", 
+        "hp": "188", 
+        "maxlv": 100
+    }, 
     "六道・灼滅天の刃鎌": {
         "hplv100": "170", 
         "element2": "fire", 
@@ -2153,9 +2202,9 @@
         "hp": "291", 
         "maxlv": 150
     }, 
-    "[絶覇]ブリューナク": {
+    "ブリューナク": {
         "element2": "fire", 
-        "name": "[絶覇]ブリューナク", 
+        "name": "ブリューナク", 
         "imageURL": "./imgs/1040200300.png", 
         "skill2": "normalHPM", 
         "skill1": "normalM", 
@@ -3553,9 +3602,9 @@
         "hp": "293", 
         "maxlv": 100
     }, 
-    "[蛇創杖]ウロボロス": {
+    "ウロボロス": {
         "element2": "earth", 
-        "name": "[蛇創杖]ウロボロス", 
+        "name": "ウロボロス", 
         "imageURL": "./imgs/1040401100.png", 
         "skill2": "non", 
         "skill1": "normalL", 

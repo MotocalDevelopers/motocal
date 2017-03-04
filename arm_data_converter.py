@@ -63,7 +63,7 @@ skillnamelist["unknownHPL"] = {u"アンノウン・VIT II": "unknown"}
 skillnamelist["unknownHPM"] = {u"アンノウン・VIT": "unknown"}
 skillnamelist["strengthS"] = {u"スピードスペル": "light"}
 skillnamelist["strengthM"] = {u"大自然の摂理": "light"}
-skillnamelist["strengthL"] = {u"ストレングス": "unknown", u"セービングアタック": "water", u"Vスキル": "earth", u"その魂よ、安らかに": "light", u"烈光の至恩": "dark", u"自動辻斬装置": "water", u"半獣の咆哮": "fire", u"西風のラプソディ": "wind", u"我流の太刀筋": "wind", u"カースドテンタクル": "dark", u"ポイント・オブ・エイム": "earth"}
+skillnamelist["strengthL"] = {u"ストレングス": "unknown", u"セービングアタック": "water", u"Vスキル": "earth", u"その魂よ、安らかに": "light", u"烈光の至恩": "dark", u"自動辻斬装置": "water", u"半獣の咆哮": "fire", u"西風のラプソディ": "wind", u"我流の太刀筋": "wind", u"カースドテンタクル": "dark", u"ポイント・オブ・エイム": "earth", u"天の福音": "light"}
 skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire"}
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
 skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", u"インテリジェンス": "dark"}
@@ -96,6 +96,7 @@ skillnamelist["bahaFUATHP-gun"] = {u"コンキリオ・アルボス": "dark"}
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
 skillnamelist["cosmosBL"] = {u"バランス・スタンス": "light"}
 skillnamelist["cosmosDF"] = {u"ディフェンド・スタンス": "light"}
+skillnamelist["cosmosPC"] = {u"ペキューリア・スタンス": "light"}
 skillnamelist["cosmos-sword"] = {u"ソード・オブ・コスモス": "light"}
 skillnamelist["cosmos-dagger"] = {u"ダガー・オブ・コスモス": "light"}
 skillnamelist["cosmos-spear"] = {u"ランス・オブ・コスモス": "light"}
@@ -106,6 +107,9 @@ skillnamelist["cosmos-fist"] = {u"ガントレット・オブ・コスモス": "
 skillnamelist["cosmos-bow"] = {u"アロー・オブ・コスモス": "light"}
 skillnamelist["cosmos-katana"] = {u"ブレイド": "light"}
 skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
+
+# キャラ固有武器
+skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
