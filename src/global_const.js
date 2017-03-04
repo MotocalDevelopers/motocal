@@ -527,6 +527,9 @@ module.exports.selector.en.skills = Object.keys(skilltypes).map(function(key){ r
 module.exports.selector.ja.cosmosSkills = Object.keys(cosmosSkills).map(function(key){ return <option value={key} key={key}>{cosmosSkills[key].name}</option>;})
 module.exports.selector.en.cosmosSkills = Object.keys(cosmosSkills).map(function(key){ return <option value={key} key={key}>{intl.translate(cosmosSkills[key].name, "en")}</option>;})
 
+module.exports.selector.ja.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "ja")}</option>,<option value={1} key={"yes"}>{intl.translate("メイン装備yes", "ja")}</option>]
+module.exports.selector.en.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "en")}</option>,<option value={1} key={"yes"}>{intl.translate("メイン装備yes", "en")}</option>]
+
 module.exports.selector.ja.types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{jobTypes[opt]}</option>;});
 module.exports.selector.en.types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{intl.translate(jobTypes[opt], "en")}</option>;});
 

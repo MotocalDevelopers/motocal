@@ -230,6 +230,7 @@ var RegisteredArm = React.createClass({
             additionalSelectClass: "hidden",
             old_element: "light",
             cosmos_skill: "cosmosAT",
+            main_weapon: 0,
             openSendRequest: false,
         };
     },
@@ -279,6 +280,10 @@ var RegisteredArm = React.createClass({
             this.setState({additionalSelectKey: "cosmos_skill"})
             this.setState({additionalSelect: selector[this.props.locale].cosmosSkills})
             this.setState({additionalSelectClass: "visible"})
+        } else if (arm.name.indexOf("絶覇") > 0) {
+            this.setState({additionalSelectKey: "main_weapon"})
+            this.setState({additionalSelect: selector[this.props.locale].mainWeapon})
+            this.setState({additionalSelectClass: "visible"})
         } else {
             this.setState({additionalSelectKey: ""})
             this.setState({additionalSelect: null})
@@ -297,6 +302,11 @@ var RegisteredArm = React.createClass({
             arm["element2"] = this.state.old_element
         } else if(this.state.additionalSelectKey == "cosmos_skill") {
             arm["skill2"] = this.state.cosmos_skill
+        } else if(this.state.additionalSelectKey == "main_weapon") {
+            if(this.state.main_weapon) {
+                // メイン装備時に効果が切り替わるスキルは2番目に配置する
+                arm["skill2"] += "Main"
+            }
         }
         this.props.onClick(arm, e.target.value);
         this.setState({openConsiderNumberModal: false})

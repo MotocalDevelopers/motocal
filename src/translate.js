@@ -9,6 +9,14 @@ var multiLangData = {
         "en": "Kanpa to Me",
         "ja": "製作者を応援する",
     },
+    "メイン装備yes": {
+        "en": "main",
+        "ja": "メイン武器である",
+    },
+    "メイン装備no": {
+        "en": "not main",
+        "ja": "メイン武器ではない",
+    },
     "グラフ": {
         "en": "Graph",
         "ja": "グラフ",
@@ -1586,6 +1594,10 @@ var multiLangData = {
     "notice-20170305-1": {
         "en": "05/03/2017: Disabled swipe tab switching. Modified the graph add bution.",
         "ja": "2017/03/05: スワイプによるタブ移動を無効化. グラフ追加ボタンを元に戻した.",
+    },
+    "notice-20170305-2": {
+        "en": "05/03/2017: Added new weapons.",
+        "ja": "2017/03/05: 4凸ブリューナク追加. スキル「貫きの牙」追加. ブリューナク追加時にメイン装備かどうかの切り替えができるようにした.",
     },
 }
 
