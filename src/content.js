@@ -145,9 +145,9 @@ var Root = React.createClass({
       touchDirection = td
   },
   onTouchEnd: function(e) {
-      if(touchDirection == "left" || touchDirection == "right") {
-          this.swipeTab(touchDirection);
-      }
+      // if(touchDirection == "left" || touchDirection == "right") {
+      //     this.swipeTab(touchDirection);
+      // }
   },
   //横方向の座標を取得
   getPositionX: function(e) {
@@ -3934,22 +3934,14 @@ var Result = React.createClass({
                             {m.armNumbers.map(function(am, ind){
                                 if(arm[ind].considerNumberMax != 0) {
                                     ++colSize;
-                                    if(ind == 0){
-                                        if(parseInt(am) > 0) {
-                                            return (<td key={ind}><span className="text-info">{am} {intl.translate("本", locale)}</span></td>);
-                                        } else {
-                                            return (<td key={ind}><span className="text-muted">{am} {intl.translate("本", locale)}</span></td>);
-                                        }
+                                    if(parseInt(am) > 0) {
+                                        return (<td key={ind}><span className="text-info"><strong>{am} {intl.translate("本", locale)}</strong></span></td>);
                                     } else {
-                                        if(parseInt(am) > 0) {
-                                            return (<td key={ind}><span className="text-info">{am} {intl.translate("本", locale)}</span></td>);
-                                        } else {
-                                            return (<td key={ind}><span className="text-muted">{am} {intl.translate("本", locale)}</span></td>);
-                                        }
+                                        return (<td key={ind}><span className="text-muted">{am} {intl.translate("本", locale)}</span></td>);
                                     }
                                 }
                              })}
-                            <td><Button id={rank} bsStyle="default" bsSize="small" className="add-graph-button" onClick={onClick}><i className="fa fa-plus-square" aria-hidden="true"></i></Button></td>
+                            <td><Button id={rank} block bsStyle="primary" className="add-graph-button" onClick={onClick}>追加</Button></td>
                         </tr>,
                     ];
 

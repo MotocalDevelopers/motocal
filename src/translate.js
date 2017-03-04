@@ -1575,6 +1575,10 @@ var multiLangData = {
         "en": "02/03/2017: Display chara elements and enemy's element in result tab. Do not display Exp. Critical Ratio in number when djeeta's element is Non-advantage.",
         "ja": "2017/03/02: キャラ属性と敵属性を結果欄に表示するように変更 / 非有利の時は技巧期待値を数値で表示しないように変更",
     },
+    "notice-20170305-1": {
+        "en": "05/03/2017: Disabled swipe tab switching. Modified the graph add bution.",
+        "ja": "2017/03/05: スワイプによるタブ移動を無効化. グラフ追加ボタンを元に戻した.",
+    },
 }
 
 // 言語設定
