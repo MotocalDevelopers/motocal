@@ -1423,14 +1423,16 @@ var ResultList = React.createClass({
             var armDAupMagna = (magnaNite + magnaSante > 50.0) ? 50.0 : magnaNite + magnaSante
             var armDAupBaha = (totals[key]["bahaDA"] > 50.0) ? 50.0 : totals[key]["bahaDA"]
             var armDAupCosmos = (totals[key]["cosmosBL"] > 50.0) ? 50.0 : totals[key]["cosmosBL"]
+            var armDAupOther = (totals[key]["DAbuff"] > 50.0) ? 50.0 : totals[key]["DAbuff"] // 特殊スキルなどの分
             // unknownは現状50%に届くことはない
-            var totalDA = 0.01 * totals[key]["baseDA"] + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * (armDAupNormal + armDAupMagna + unknownOtherNite + armDAupBaha + armDAupCosmos + totals[key]["DAbuff"])
+            var totalDA = 0.01 * totals[key]["baseDA"] + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * (armDAupNormal + armDAupMagna + unknownOtherNite + armDAupBaha + armDAupCosmos + armDAupOther)
             if(totalDA < 0.0) totalDA = 0.0
 
             var armTAupNormal = (normalSante > 50.0) ? 50.0 : normalSante
             var armTAupMagna  = (magnaSante > 50.0)  ? 50.0 : magnaSante
             var armTAupBaha = (totals[key]["bahaTA"] > 50.0) ? 50.0 : totals[key]["bahaTA"]
-            var totalTA = 0.01 * totals[key]["baseTA"] + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + totals[key]["TAbuff"])
+            var armTAupOther = (totals[key]["TAbuff"] > 50.0) ? 50.0 : totals[key]["TAbuff"]
+            var totalTA = 0.01 * totals[key]["baseTA"] + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther)
             if(totalTA < 0.0) totalTA = 0.0
 
             var taRate = (parseFloat(totalTA) >= 1.0) ? 1.0 : parseFloat(totalTA)
@@ -1479,6 +1481,18 @@ var ResultList = React.createClass({
             coeffs["ougiDamageBuff"] = totals[key]["ougiDamageBuff"];
             coeffs["hpRatio"] = hpCoeff
             coeffs["additionalDamage"] = (0.01 * totals[key]["additionalDamage"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
+
+            // 連撃情報
+            coeffs["normalDA"] = armDAupNormal
+            coeffs["magnaDA"] = armDAupMagna
+            coeffs["cosmosDA"] = armDAupCosmos
+            coeffs["bahaDA"] = armDAupBaha
+            coeffs["otherDA"] = armDAupOther
+
+            coeffs["normalTA"] = armTAupNormal
+            coeffs["magnaTA"] = armTAupMagna
+            coeffs["bahaTA"] = armTAupBaha
+            coeffs["otherTA"] = armTAupOther
 
             res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), remainHP: totals[key]["remainHP"], totalDA: totalDA, totalTA: totalTA, debuffResistance: totals[key]["debuffResistance"], totalSummon: totalSummon, element: totals[key]["element"], expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, effectiveCriticalRatio: effectiveCriticalRatio, totalExpected: nazo_number, skilldata: coeffs, expectedOugiGage: expectedOugiGage, damage: damage, ougiDamage: ougiDamage, expectedTurn: expectedTurn, expectedCycleDamagePerTurn: expectedCycleDamagePerTurn};
         }
