@@ -366,7 +366,6 @@ var Root = React.createClass({
     if(_ua.Mobile || _ua.Tablet) {
         return (
             <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
-                <h2 style={{"marginTop": "10px", "marginBottom": "5px"}} >{intl.translate("motocal", locale)}</h2>
                 <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
                     <Modal.Header closeButton>
                         <Modal.Title>元カレ計算機について</Modal.Title>
@@ -385,6 +384,7 @@ var Root = React.createClass({
                 </Modal>
                 <div className="smartphone-content">
                     <div className="Tab" id="inputTab">
+                        <h2 style={{"marginTop": "10px", "marginBottom": "5px"}} >{intl.translate("motocal", locale)}</h2>
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
