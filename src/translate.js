@@ -1216,6 +1216,10 @@ var multiLangData = {
         "en": "Tsuranuki no Kiba (main)",
         "ja": "貫きの牙(メイン装備時)",
     },
+    "鷲王の結界": {
+        "en": "Washiou no Kekkai",
+        "ja": "鷲王の結界",
+    },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
         "ja": "通常技巧(小)",
@@ -1598,6 +1602,10 @@ var multiLangData = {
     "notice-20170305-2": {
         "en": "05/03/2017: Added new weapons.",
         "ja": "2017/03/05: 4凸ブリューナク追加. スキル「貫きの牙」追加. ブリューナク追加時にメイン装備かどうかの切り替えができるようにした.",
+    },
+    "notice-20170306-1": {
+        "en": "05/03/2017: Implemented piram's 2nd skill.",
+        "ja": "2017/03/07: 4凸ピラムのスキル「鷲王の結界」実装. 効果量はジータのみDA+13%（SLv15の時）で、SLv14以下は適当に0.5%ごと減少にしています.",
     },
 }
 

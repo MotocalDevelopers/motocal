@@ -1424,13 +1424,13 @@ var ResultList = React.createClass({
             var armDAupBaha = (totals[key]["bahaDA"] > 50.0) ? 50.0 : totals[key]["bahaDA"]
             var armDAupCosmos = (totals[key]["cosmosBL"] > 50.0) ? 50.0 : totals[key]["cosmosBL"]
             // unknownは現状50%に届くことはない
-            var totalDA = 0.01 * totals[key]["baseDA"] + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * (armDAupNormal + armDAupMagna + unknownOtherNite + armDAupBaha + armDAupCosmos - totals[key]["DATAdebuff"])
+            var totalDA = 0.01 * totals[key]["baseDA"] + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * (armDAupNormal + armDAupMagna + unknownOtherNite + armDAupBaha + armDAupCosmos + totals[key]["DAbuff"])
             if(totalDA < 0.0) totalDA = 0.0
 
             var armTAupNormal = (normalSante > 50.0) ? 50.0 : normalSante
             var armTAupMagna  = (magnaSante > 50.0)  ? 50.0 : magnaSante
             var armTAupBaha = (totals[key]["bahaTA"] > 50.0) ? 50.0 : totals[key]["bahaTA"]
-            var totalTA = 0.01 * totals[key]["baseTA"] + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha - totals[key]["DATAdebuff"])
+            var totalTA = 0.01 * totals[key]["baseTA"] + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + totals[key]["TAbuff"])
             if(totalTA < 0.0) totalTA = 0.0
 
             var taRate = (parseFloat(totalTA) >= 1.0) ? 1.0 : parseFloat(totalTA)
@@ -1852,10 +1852,12 @@ var ResultList = React.createClass({
                                 totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaNite"][amount][slv - 1];
                             } else if(stype == 'normalRasetsu') {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                                totals[key]["DATAdebuff"] += comb[i] * 38.0;
+                                totals[key]["DAbuff"] -= comb[i] * 38.0;
+                                totals[key]["TAbuff"] -= comb[i] * 38.0;
                             } else if(stype == 'magnaRasetsu') {
                                 totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
-                                totals[key]["DATAdebuff"] += comb[i] * 38.0;
+                                totals[key]["DAbuff"] -= comb[i] * 38.0;
+                                totals[key]["TAbuff"] -= comb[i] * 38.0;
                             } else if(stype == 'normalBoukun') {
                                 totals[key]["HPdebuff"] += comb[i] * 0.10
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
@@ -1874,6 +1876,7 @@ var ResultList = React.createClass({
                                     totals[key]["additionalDamage"] += comb[i] * slv;
                                     totals[key]["ougiDebuff"] += comb[i] * 0.30;
                                 }
+                            //! 4凸武器スキル
                             } else if(stype == 'tsuranukiKiba'){
                                 if(skillname == 'tsuranukiKibaMain'){
                                     totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
@@ -1882,6 +1885,8 @@ var ResultList = React.createClass({
                                     totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
 
                                 }
+                            } else if(stype == 'washiouKekkai'){
+                                if(key == 'Djeeta') totals[key]["DAbuff"] += comb[i] * skillAmounts["washiouKekkai"][amount][slv - 1];
                             } else {
                                 totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                             }
@@ -1983,7 +1988,7 @@ var ResultList = React.createClass({
             totals[key]["additionalDamage"] = 0; totals[key]["ougiDebuff"] = 0;
             totals[key]["normalSetsuna"] = []; totals[key]["magnaSetsuna"] = [];
             totals[key]["normalKatsumi"] = [];
-            totals[key]["DATAdebuff"] = 0;
+            totals[key]["DAbuff"] = 0; totals[key]["TAbuff"] = 0;
             totals[key]["debuffResistance"] = 0;
         }
     },
@@ -2024,7 +2029,7 @@ var ResultList = React.createClass({
             }
         }
 
-        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DATAdebuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0}};
+        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -2050,7 +2055,7 @@ var ResultList = React.createClass({
                     }
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DATAdebuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0}
             }
         }
 
@@ -3814,12 +3819,12 @@ var Result = React.createClass({
                     }
                     if(sw.switchCharaAttack) {
                         for(key in m.data){
-                            tablebody2[key] += intl.translate("攻撃力", locale) + " " + m.data[key].totalAttack + " "
+                            tablebody2[key] += intl.translate("攻撃力", locale) + m.data[key].totalAttack + ", "
                         }
                     }
 
                     if(sw.switchDATA) {
-                        tablebody2["Djeeta"] += 'DA:' + (100.0 * m.data.Djeeta.totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data.Djeeta.totalTA).toFixed(1) + '% '
+                        tablebody2["Djeeta"] += 'DA:' + (100.0 * m.data.Djeeta.totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data.Djeeta.totalTA).toFixed(1) + '%, '
                     }
 
                     if(sw.switchCharaDA) {
@@ -3827,7 +3832,7 @@ var Result = React.createClass({
                             // switchDATAが指定されていなかったら全員分
                             // 指定されていたらDjeetaじゃない場合だけ
                             if(!sw.switchDATA || (key != "Djeeta")) {
-                                tablebody2[key] += 'DA:' + (100.0 * m.data[key].totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data[key].totalTA).toFixed(1) + '% '
+                                tablebody2[key] += 'DA:' + (100.0 * m.data[key].totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data[key].totalTA).toFixed(1) + '%, '
                             }
                         }
                     }
@@ -3835,7 +3840,7 @@ var Result = React.createClass({
                     if(sw.switchDebuffResistance) {
                         for(key in m.data){
                             // 弱体耐性率は%表記のまま扱う
-                            tablebody2[key] += "弱体耐性率 " + parseInt(m.data[key].debuffResistance) + "%"
+                            tablebody2[key] += "弱体耐性率 " + parseInt(m.data[key].debuffResistance) + "%, "
                         }
                     }
 
@@ -3863,7 +3868,7 @@ var Result = React.createClass({
                     }
                     if(sw.switchCharaHP) {
                         for(key in m.data){
-                            tablebody2[key] += "HP " + m.data[key].totalHP + "\n (" + intl.translate("残HP", locale) + " " + parseInt(m.data[key].totalHP * m.data[key].remainHP) + ") "
+                            tablebody2[key] += "HP" + m.data[key].totalHP + "\n (" + intl.translate("残HP", locale) + " " + parseInt(m.data[key].totalHP * m.data[key].remainHP) + "), "
                         }
                     }
                     if(sw.switchAverageAttack) {
@@ -3880,7 +3885,7 @@ var Result = React.createClass({
                     }
                     if(sw.switchCharaTotalExpected) {
                         for(key in m.data){
-                            tablebody2[key] += intl.translate("総回技", locale) + " " + m.data[key].totalExpected + " "
+                            tablebody2[key] += intl.translate("総回技", locale) + m.data[key].totalExpected + ", "
                         }
                     }
                     if(sw.switchAverageTotalExpected) {
@@ -3959,8 +3964,8 @@ var Result = React.createClass({
                                 <td colSpan="4">
                                     <span className="text-info">{key}</span>
                                 </td>
-                                <td colSpan={colSize - 4}>
-                                    <span className="text-left">{tablebody2[key]}</span>
+                                <td style={{"textAlign": "left"}} colSpan={colSize - 4}>
+                                    <span>{tablebody2[key]}</span>
                                 </td>
                             </tr>);
                         }

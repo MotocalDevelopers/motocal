@@ -172,6 +172,7 @@ var skilltypes = {
     "muhyoTuiga": {name:"霧氷の追牙・肆", type:"muhyoTuiga", amount: "L"},
     "tsuranukiKiba": {name:"貫きの牙", type:"tsuranukiKiba", amount: "M"},
     "tsuranukiKibaMain": {name:"貫きの牙(メイン装備時)", type:"tsuranukiKiba", amount: "M"},
+    "washiouKekkai": {name:"鷲王の結界", type:"washiouKekkai", amount: "M"},
     "normalCriticalS": {name:"通常技巧(小)", type:"normalCritical", amount: "S"},
     "normalCriticalM": {name:"通常技巧(中)", type:"normalCritical", amount: "M"},
     "normalCriticalL": {name:"通常技巧(大)", type:"normalCritical", amount: "L"},
@@ -467,6 +468,10 @@ var skillAmounts = {
         "M": [3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6.0, 6.3, 6.7, 7.0, 7.3],
         "L": [4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6],
         "ratio": 0.5,
+    },
+    // 鷲王の結界
+    "washiouKekkai":{
+        "M": [6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0],
     },
 }
 

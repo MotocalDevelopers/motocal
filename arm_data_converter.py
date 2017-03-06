@@ -110,6 +110,7 @@ skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
 
 # キャラ固有武器
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
+skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"

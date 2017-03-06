@@ -2190,7 +2190,7 @@
         "element2": "fire", 
         "name": "[烈伐]ピラム", 
         "imageURL": "./imgs/1040200200.png", 
-        "skill2": "non", 
+        "skill2": "washiouKekkai", 
         "skill1": "normalL", 
         "element": "fire", 
         "attacklv100": "2240", 
