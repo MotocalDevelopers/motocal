@@ -765,6 +765,46 @@ var multiLangData = {
         "en": "Chara Enmity ",
         "ja": "キャラ背水",
     },
+    "DA上昇(通常)": {
+        "en": "DA up (normal) ",
+        "ja": "DA上昇(通常)",
+    },
+    "DA上昇(マグナ)": {
+        "en": "DA up (magna) ",
+        "ja": "DA上昇(マグナ)",
+    },
+    "DA上昇(EX)": {
+        "en": "DA up (EX) ",
+        "ja": "DA上昇(EX)",
+    },
+    "DA上昇(バハ)": {
+        "en": "DA up (bahamut) ",
+        "ja": "DA上昇(バハ)",
+    },
+    "DA上昇(コスモス)": {
+        "en": "DA up (cosmos) ",
+        "ja": "DA上昇(コスモス)",
+    },
+    "DA上昇(その他)": {
+        "en": "DA up (other) ",
+        "ja": "DA上昇(その他)",
+    },
+    "TA上昇(通常)": {
+        "en": "TA up (normal) ",
+        "ja": "TA上昇(通常)",
+    },
+    "TA上昇(マグナ)": {
+        "en": "TA up (magna) ",
+        "ja": "TA上昇(マグナ)",
+    },
+    "TA上昇(バハ)": {
+        "en": "TA up (bahamut) ",
+        "ja": "TA上昇(バハ)",
+    },
+    "TA上昇(その他)": {
+        "en": "TA up (other) ",
+        "ja": "TA上昇(その他)",
+    },
     "グラフに加える": {
         "en": "Add to \ngraphs",
         "ja": "グラフに\n加える",

@@ -1485,6 +1485,7 @@ var ResultList = React.createClass({
             // 連撃情報
             coeffs["normalDA"] = armDAupNormal
             coeffs["magnaDA"] = armDAupMagna
+            coeffs["exDA"] = unknownOtherNite
             coeffs["cosmosDA"] = armDAupCosmos
             coeffs["bahaDA"] = armDAupBaha
             coeffs["otherDA"] = armDAupOther
@@ -3943,6 +3944,19 @@ var Result = React.createClass({
                             if(skilldata.unknown != 1.0) {skillstr += intl.translate("アンノウン", locale) + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.unknownHaisui != 1.0) {skillstr += intl.translate("アンノウン背水", locale) + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.charaHaisui != 1.0) {skillstr += intl.translate("キャラ背水", locale) + (100.0 * (skilldata.charaHaisui - 1.0)).toFixed(1); skillstr += "% ";}
+
+                            if(skilldata.normalDA != 0.0) {skillstr += intl.translate("DA上昇(通常)", locale) + skilldata.normalDA.toFixed(1); skillstr += "% ";}
+                            if(skilldata.magnaDA != 0.0) {skillstr += intl.translate("DA上昇(マグナ)", locale) + skilldata.magnaDA.toFixed(1); skillstr += "% ";}
+                            if(skilldata.exDA != 0.0) {skillstr += intl.translate("DA上昇(EX)", locale) + skilldata.exDA.toFixed(1); skillstr += "% ";}
+                            if(skilldata.bahaDA != 0.0) {skillstr += intl.translate("DA上昇(バハ)", locale) + skilldata.bahaDA.toFixed(1); skillstr += "% ";}
+                            if(skilldata.cosmosDA != 0.0) {skillstr += intl.translate("DA上昇(コスモス)", locale) + skilldata.cosmosDA.toFixed(1); skillstr += "% ";}
+                            if(skilldata.otherDA != 0.0) {skillstr += intl.translate("DA上昇(その他)", locale) + skilldata.otherDA.toFixed(1); skillstr += "% ";}
+
+                            if(skilldata.normalTA != 0.0) {skillstr += intl.translate("TA上昇(通常)", locale) + skilldata.normalTA.toFixed(1); skillstr += "% ";}
+                            if(skilldata.magnaTA != 0.0) {skillstr += intl.translate("TA上昇(マグナ)", locale) + skilldata.magnaTA.toFixed(1); skillstr += "% ";}
+                            if(skilldata.bahaTA != 0.0) {skillstr += intl.translate("TA上昇(バハ)", locale) + skilldata.bahaTA.toFixed(1); skillstr += "% ";}
+                            if(skilldata.otherTA != 0.0) {skillstr += intl.translate("TA上昇(その他)", locale) + skilldata.otherTA.toFixed(1); skillstr += "% ";}
+
                             if(skilldata.additionalDamage != 0.0) {skillstr += intl.translate("追加ダメージ", locale) + (100.0 * skilldata.additionalDamage).toFixed(1); skillstr += "% ";}
                             if(skilldata.hpRatio != 1.0) {skillstr += intl.translate("HP増加", locale) + (100.0 * (skilldata.hpRatio - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.other != 1.0) {skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
