@@ -3982,7 +3982,7 @@ var Result = React.createClass({
                                     }
                                 }
                              })}
-                            <td><Button id={rank} block bsStyle="primary" className="add-graph-button" onClick={onClick}>追加</Button></td>
+                            <td><Button id={rank} block bsStyle="primary" className="add-graph-button" onClick={onClick}>{intl.translate("追加", locale)}</Button></td>
                         </tr>,
                     ];
 
