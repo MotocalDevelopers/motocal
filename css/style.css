@@ -59,6 +59,11 @@ select, option {
     display: inline;
 }
 
+div.hidden {
+    visibility: hidden;
+    height: 0%;
+}
+
 div.Tab {
     width: 100%;
     overflow: auto;
