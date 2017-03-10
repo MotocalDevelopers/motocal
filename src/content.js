@@ -1447,20 +1447,19 @@ var ResultList = React.createClass({
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] + totals[key]["ougiGageBuff"]- totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
             var expectedTurn = 100.0 / expectedOugiGage
+            var additionalDamage = (0.01 * totals[key]["additionalDamage"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
 
             // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
-            var damage = this.calculateDamage(criticalRatio * totalAttack, prof.enemyDefense)
+            var damage = this.calculateDamage(criticalRatio * totalAttack, prof.enemyDefense, additionalDamage, totals[key]["damageUP"])
 
             // クリティカル無しの場合のダメージを技巧期待値の補正に使う
-            var damageWithoutCritical = this.calculateDamage(totalAttack, prof.enemyDefense)
+            var damageWithoutCritical = this.calculateDamage(totalAttack, prof.enemyDefense, additionalDamage, totals[key]["damageUP"])
+
             // 実質の技巧期待値
             var effectiveCriticalRatio = damage/damageWithoutCritical
 
-            // 追加ダメージ(%)分だけ追加
-            if(totals[key]["additionalDamageBuff"] > 0 || totals[key]["additionalDamage"] > 0 || buff["additionalDamage"] > 0) {
-                damage += (0.01 * totals[key]["additionalDamage"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"]) * damage
-            }
-            var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"])
+            var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"], totals[key]["damageUP"])
+
             var expectedCycleDamage = ougiDamage + expectedTurn * expectedAttack * damage
             var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0)
 
@@ -1480,7 +1479,8 @@ var ResultList = React.createClass({
             coeffs["other"] = otherCoeff;
             coeffs["ougiDamageBuff"] = totals[key]["ougiDamageBuff"];
             coeffs["hpRatio"] = hpCoeff
-            coeffs["additionalDamage"] = (0.01 * totals[key]["additionalDamage"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
+            coeffs["additionalDamage"] = additionalDamage
+            coeffs["damageUP"] = totals[key]["damageUP"]
 
             // 連撃情報
             coeffs["normalDA"] = armDAupNormal
@@ -1595,7 +1595,7 @@ var ResultList = React.createClass({
 
         return criticalRatio
     },
-    calculateDamage: function(totalAttack, enemyDefense) {
+    calculateDamage: function(totalAttack, enemyDefense, additionalDamage, damageUP) {
         // ダメージ計算
         var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
         var damage = totalAttack / def
@@ -1621,9 +1621,19 @@ var ResultList = React.createClass({
             damage = 300000
         }
 
-        return damage + overedDamage
+        var res = damage + overedDamage;
+
+        if(additionalDamage > 0) {
+            res *= 1.0 + additionalDamage
+        }
+
+        if(damageUP > 0) {
+            res *= 1.0 + 0.01 * damageUP
+        }
+
+        return res
     },
-    calculateOugiDamage: function(totalAttack, enemyDefense, ougiRatio, ougiDamageBuff) {
+    calculateOugiDamage: function(totalAttack, enemyDefense, ougiRatio, ougiDamageBuff, damageUP) {
         // ダメージ計算
         var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
         var ratio = (ougiRatio == undefined) ? 4.5 : ougiRatio
@@ -1650,7 +1660,12 @@ var ResultList = React.createClass({
             damage = 1000000
         }
 
-        return damage + overedDamage
+        // 与ダメージアップ
+        if(damageUP > 0) {
+            return (1.0 + 0.01 * damageUP) * (damage + overedDamage)
+        } else {
+            return damage + overedDamage
+        }
     },
     calculateOneCombination: function(comb, summon, prof, arml, totals, buff){
         this.addSkilldataToTotals(totals, comb, arml, buff)
@@ -2004,7 +2019,7 @@ var ResultList = React.createClass({
             totals[key]["normalSetsuna"] = []; totals[key]["magnaSetsuna"] = [];
             totals[key]["normalKatsumi"] = [];
             totals[key]["DAbuff"] = 0; totals[key]["TAbuff"] = 0;
-            totals[key]["debuffResistance"] = 0;
+            totals[key]["debuffResistance"] = 0; totals[key]["damageUP"] = 0;
         }
     },
     getTotalBuff: function(prof) {
@@ -2044,7 +2059,7 @@ var ResultList = React.createClass({
             }
         }
 
-        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0}};
+        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0, damageUP: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -2070,7 +2085,7 @@ var ResultList = React.createClass({
                     }
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: 0, magnaCritical: 0, normalSetsuna: [], magnaSetsuna: [], normalKatsumi: [], cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0, damageUP: 0}
             }
         }
 
@@ -2692,8 +2707,8 @@ var ResultList = React.createClass({
                     for(var k = 0; k < 100; k++){
                         var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].charaHaisui
                         var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
-                        var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
-                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff)
+                        var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
+                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
                         var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
 
                         var hp;
@@ -3001,8 +3016,8 @@ var ResultList = React.createClass({
                             elementTurn = 0.20 + (totalSummon.elementTurn - 1.20) * k / 20
                         }
                         var newTotalAttack = totalAttackWithoutHaisui * (elementCoeff + elementTurn)
-                        var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense)
-                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff)
+                        var newDamage = this.calculateDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
+                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
                         var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
 
                         if(key == "Djeeta") {
@@ -3222,7 +3237,8 @@ var ResultList = React.createClass({
                     for(key in onedata) {
                         if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougi" || turnBuff.buffs[key][t-1].turnType == "ougi") {
                             // 基本的に奥義の設定が優先
-                            var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff)
+                            var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
+
                             if(key == "Djeeta") {
                                 ExpectedDamage[t].push( parseInt(newOugiDamage) )
                                 AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage/cnt)
@@ -3237,7 +3253,7 @@ var ResultList = React.createClass({
                             }
                         } else {
                             // 通常攻撃
-                            var newDamage = this.calculateDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense)
+                            var newDamage = this.calculateDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
                             if(key == "Djeeta") {
                                 ExpectedDamage[t].push( parseInt(newDamage * onedata[key].expectedAttack) )
                                 AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage/cnt)
