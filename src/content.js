@@ -1908,7 +1908,7 @@ var ResultList = React.createClass({
                                 }
                             //! 四大天司の祝福
                             } else if(stype == 'tenshiShukufuku'){
-                                totals[key]["damageUP"] += comb[i] * 0.10;
+                                if(amount == 'M') totals[key]["damageUP"] += comb[i] * 0.10;
                             //! 4凸武器スキル
                             } else if(stype == 'tsuranukiKiba'){
                                 if(skillname == 'tsuranukiKibaMain'){
@@ -3977,6 +3977,7 @@ var Result = React.createClass({
                             if(skilldata.otherTA != 0.0) {skillstr += intl.translate("TA上昇(その他)", locale) + skilldata.otherTA.toFixed(1); skillstr += "% ";}
 
                             if(skilldata.additionalDamage != 0.0) {skillstr += intl.translate("追加ダメージ", locale) + (100.0 * skilldata.additionalDamage).toFixed(1); skillstr += "% ";}
+                            if(skilldata.damageUP != 0.0) {skillstr += intl.translate("与ダメージ上昇", locale) + (100.0 * skilldata.damageUP).toFixed(1); skillstr += "% ";}
                             if(skilldata.hpRatio != 1.0) {skillstr += intl.translate("HP増加", locale) + (100.0 * (skilldata.hpRatio - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.other != 1.0) {skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% ";}
                             if(skilldata.ougiDamageBuff != 0.0) {skillstr += intl.translate("奥義ダメージ", locale) + (100.0 * (1.0 + skilldata.ougiDamageBuff)).toFixed(0); skillstr += "% ";}

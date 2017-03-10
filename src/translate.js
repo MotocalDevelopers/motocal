@@ -201,6 +201,10 @@ var multiLangData = {
         "en": "Additional damage will be added to \"Expected Turn Damage\".",
         "ja": "追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。",
     },
+    "与ダメージ上昇": {
+        "en": "Damage UP ",
+        "ja": "与ダメージ上昇",
+    },
     "個別バフ": {
         "en": "Personal Buff",
         "ja": "個別バフ",
@@ -1428,9 +1432,9 @@ var multiLangData = {
         "en": "Bahamut Coda Harp",
         "ja": "バハフツHP-楽器",
     },
-    "天司の祝福II": {
-        "en": "Angel's Blessing II",
-        "ja": "天司の祝福II",
+    "天司の祝福": {
+        "en": "Angel's Blessing",
+        "ja": "天司の祝福",
     },
     "敵防御10": {
         "en": "10.0(General)",
@@ -1654,6 +1658,10 @@ var multiLangData = {
     "notice-20170308-1": {
         "en": "08/03/2017: Changed the maximum rank to 200.",
         "ja": "2017/03/08: ランクの上限値を200に変更.",
+    },
+    "notice-20170310-1": {
+        "en": "10/03/2017: Implemented new \"Damage UP\" skill (Angel's blessing).",
+        "ja": "2017/03/10: 天司の祝福スキルを実装. 与ダメージ上昇を計算できるようにした. (スキル情報にも表示されます)",
     },
 }
 
