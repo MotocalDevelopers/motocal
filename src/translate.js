@@ -1428,6 +1428,10 @@ var multiLangData = {
         "en": "Bahamut Coda Harp",
         "ja": "バハフツHP-楽器",
     },
+    "天司の祝福II": {
+        "en": "Angel's Blessing II",
+        "ja": "天司の祝福II",
+    },
     "敵防御10": {
         "en": "10.0(General)",
         "ja": "10.0(一般的な敵)",

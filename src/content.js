@@ -1628,7 +1628,7 @@ var ResultList = React.createClass({
         }
 
         if(damageUP > 0) {
-            res *= 1.0 + 0.01 * damageUP
+            res *= 1.0 + damageUP
         }
 
         return res
@@ -1662,7 +1662,7 @@ var ResultList = React.createClass({
 
         // 与ダメージアップ
         if(damageUP > 0) {
-            return (1.0 + 0.01 * damageUP) * (damage + overedDamage)
+            return (1.0 + damageUP) * (damage + overedDamage)
         } else {
             return damage + overedDamage
         }
@@ -1906,6 +1906,9 @@ var ResultList = React.createClass({
                                     totals[key]["additionalDamage"] += comb[i] * slv;
                                     totals[key]["ougiDebuff"] += comb[i] * 0.30;
                                 }
+                            //! 四大天司の祝福
+                            } else if(stype == 'tenshiShukufuku'){
+                                totals[key]["damageUP"] += comb[i] * 0.10;
                             //! 4凸武器スキル
                             } else if(stype == 'tsuranukiKiba'){
                                 if(skillname == 'tsuranukiKibaMain'){
