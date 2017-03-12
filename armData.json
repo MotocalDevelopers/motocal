@@ -33,9 +33,9 @@
         "hp": "250", 
         "maxlv": 150
     }, 
-    "ソード・オブ・ミカエル": {
+    "ソード・オブ・ミカエル(SR)": {
         "element2": "fire", 
-        "name": "ソード・オブ・ミカエル", 
+        "name": "ソード・オブ・ミカエル(SR)", 
         "imageURL": "./imgs/1030006200.png", 
         "skill2": "non", 
         "skill1": "tenshiShukufuku", 
@@ -48,9 +48,9 @@
         "hp": "140", 
         "maxlv": 100
     }, 
-    "ワンド・オブ・ガブリエル": {
+    "ワンド・オブ・ガブリエル(SR)": {
         "element2": "water", 
-        "name": "ワンド・オブ・ガブリエル", 
+        "name": "ワンド・オブ・ガブリエル(SR)", 
         "imageURL": "./imgs/1030404700.png", 
         "skill2": "non", 
         "skill1": "tenshiShukufuku", 
@@ -63,9 +63,9 @@
         "hp": "175", 
         "maxlv": 100
     }, 
-    "グローブ・オブ・ウリエル": {
+    "グローブ・オブ・ウリエル(SR)": {
         "element2": "earth", 
-        "name": "グローブ・オブ・ウリエル", 
+        "name": "グローブ・オブ・ウリエル(SR)", 
         "imageURL": "./imgs/1030605200.png", 
         "skill2": "non", 
         "skill1": "tenshiShukufuku", 
@@ -78,9 +78,9 @@
         "hp": "160", 
         "maxlv": 100
     }, 
-    "リング・オブ・ラファエル": {
+    "リング・オブ・ラファエル(SR)": {
         "element2": "wind", 
-        "name": "リング・オブ・ラファエル", 
+        "name": "リング・オブ・ラファエル(SR)", 
         "imageURL": "./imgs/1030703700.png", 
         "skill2": "non", 
         "skill1": "tenshiShukufuku", 

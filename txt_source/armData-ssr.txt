@@ -1,9 +1,9 @@
 |&attachref(img/1040805700.png,15%);|六道・裁考天の鳴弦|&color(#993300){土};|楽器|50|[[ダフマ>武器奥義#dafuma]]|[[裁考の覇道>スキル一覧#saikounohadou]]||63|318|250|2329|ゼノ・ウォフマナフ撃滅戦|イベント|○|219|1994|
 |&attachref(img/1040805800.png,15%);|真・裁考天の鳴弦|&color(#993300){土};|楽器|50|[[セフル・ダフマ>武器奥義#sefurudafuma]]|[[裁考の覇道>スキル一覧#saikounohadou]]|[[裁考天の教理 >スキル一覧#saikoutennokyouri]]|63|318|250|2329|ゼノ・ウォフマナフ撃滅戦|イベント|○|219|1994|
-|&attachref(img/1030006200.png,15%);|ソード・オブ・ミカエル|&color(#ff0000){火};|剣|10|[[セラフブレード>武器奥義#seraphblade]]|[[ミカエルの祝福>スキル一覧#michaelnosyukuhuku]]||20|280|140|1680|ショップ|セラフィックウェポン||
-|&attachref(img/1030404700.png,15%);|ワンド・オブ・ガブリエル|&color(#3366ff){水};|杖|10|[[セラフグラス>武器奥義#seraphglass]]|[[ガブリエルの祝福>スキル一覧#gabrielnosyukuhuku]]||26|220|175|1325|ショップ|セラフィックウェポン||
-|&attachref(img/1030605200.png,15%);|グローブ・オブ・ウリエル|&color(#993300){土};|格闘|10|[[セラフブレイズ>武器奥義#seraphblaze]]|[[ウリエルの祝福>スキル一覧#urielnosyukuhuku]]||20|280|160|1580|ショップ|セラフィックウェポン||
-|&attachref(img/1030703700.png,15%);|リング・オブ・ラファエル|&color(#339966){風};|弓|10|[[セラフホウィール>武器奥義#seraphwheel]]|[[ラファエルの祝福>スキル一覧#raphaelnosyukuhuku]]||19|290|147|1685|ショップ|セラフィックウェポン||
+|&attachref(img/1030006200.png,15%);|ソード・オブ・ミカエル(SR)|&color(#ff0000){火};|剣|10|[[セラフブレード>武器奥義#seraphblade]]|[[ミカエルの祝福>スキル一覧#michaelnosyukuhuku]]||20|280|140|1680|ショップ|セラフィックウェポン||
+|&attachref(img/1030404700.png,15%);|ワンド・オブ・ガブリエル(SR)|&color(#3366ff){水};|杖|10|[[セラフグラス>武器奥義#seraphglass]]|[[ガブリエルの祝福>スキル一覧#gabrielnosyukuhuku]]||26|220|175|1325|ショップ|セラフィックウェポン||
+|&attachref(img/1030605200.png,15%);|グローブ・オブ・ウリエル(SR)|&color(#993300){土};|格闘|10|[[セラフブレイズ>武器奥義#seraphblaze]]|[[ウリエルの祝福>スキル一覧#urielnosyukuhuku]]||20|280|160|1580|ショップ|セラフィックウェポン||
+|&attachref(img/1030703700.png,15%);|リング・オブ・ラファエル(SR)|&color(#339966){風};|弓|10|[[セラフホウィール>武器奥義#seraphwheel]]|[[ラファエルの祝福>スキル一覧#raphaelnosyukuhuku]]||19|290|147|1685|ショップ|セラフィックウェポン||
 |&attachref(img/1040705600.png,15%);|[精霊弓]&br;白銀の弓|&color(#339966){風};|弓|10|[[白銀の矢>武器奥義#hakuginnoya]]|[[森林の祝福>スキル一覧#morinosyukuhuku]]|[[森の民の知恵>スキル一覧#morinotaminotie]]|27|338|180|2027|Shadowverse Duelist of Eternity|イベント&br;(コラボ武器)||
 |&attachref(img/1040409300.png,15%);|[縫動友]&br;ルナのおともだち|&color(#800080){闇};|杖|10|[[ファントムハウル>武器奥義#phantomhowl]]|[[お友達になってくれる？>スキル一覧#otomodatininatte]]|[[魂の共鳴>スキル一覧#tamasiinokyoumei]]|31|308|220|1779|Shadowverse Duelist of Eternity|イベント(コラボ武器)||
 |&attachref(img/1040306100.png,15%);|スプリットエンド|&color(#339966){風};|斧|10|[[プラチナスラッシュ>武器奥義#platinaslash]]|[[乱気の攻刃>スキル一覧#rannkinokoujin]]|[[竜巻の見切>スキル一覧#tatumakinomikiri]]|29|445|181|2685|[[メリッサベル (SSR)]]加入|レジェンドガチャ||
