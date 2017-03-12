@@ -42,6 +42,7 @@ skillnamelist["normalNiteS"] = {u"火の二手": "fire", u"水の二手": "water
 skillnamelist["magnaL"] = {u"機炎方陣・攻刃II": "fire", u"海神方陣・攻刃II": "water", u"創樹方陣・攻刃II": "earth", u"嵐竜方陣・攻刃II": "wind", u"騎解方陣・攻刃II": "light", u"黒霧方陣・攻刃II": "dark"}
 skillnamelist["magnaHPL"] = {u"機炎方陣・守護II": "fire", u"海神方陣・守護II": "water", u"創樹方陣・守護II": "earth", u"嵐竜方陣・守護II": "wind", u"騎解方陣・守護II": "light", u"黒霧方陣・守護II": "dark"}
 skillnamelist["magnaHaisuiL"] = {u"機炎方陣・背水II": "fire", u"海神方陣・背水II": "water", u"創樹方陣・背水II": "earth", u"嵐竜方陣・背水II": "wind", u"騎解方陣・背水II": "light", u"黒霧方陣・背水II": "dark"}
+skillnamelist["magnaCriticalL"] = {u"海神方陣・技巧II": "water"}
 
 # magna I
 skillnamelist["magnaM"] = {u"機炎方陣・攻刃": "fire", u"海神方陣・攻刃": "water", u"創樹方陣・攻刃": "earth", u"嵐竜方陣・攻刃": "wind", u"騎解方陣・攻刃": "light", u"黒霧方陣・攻刃": "dark"}
@@ -63,8 +64,8 @@ skillnamelist["unknownHPL"] = {u"アンノウン・VIT II": "unknown"}
 skillnamelist["unknownHPM"] = {u"アンノウン・VIT": "unknown"}
 skillnamelist["strengthS"] = {u"スピードスペル": "light"}
 skillnamelist["strengthM"] = {u"大自然の摂理": "light"}
-skillnamelist["strengthL"] = {u"ストレングス": "unknown", u"セービングアタック": "water", u"Vスキル": "earth", u"その魂よ、安らかに": "light", u"烈光の至恩": "dark", u"自動辻斬装置": "water", u"半獣の咆哮": "fire", u"西風のラプソディ": "wind", u"我流の太刀筋": "wind", u"カースドテンタクル": "dark", u"ポイント・オブ・エイム": "earth", u"天の福音": "light"}
-skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire"}
+skillnamelist["strengthL"] = {u"ストレングス": "unknown", u"セービングアタック": "water", u"Vスキル": "earth", u"その魂よ、安らかに": "light", u"烈光の至恩": "dark", u"自動辻斬装置": "water", u"半獣の咆哮": "fire", u"西風のラプソディ": "wind", u"我流の太刀筋": "wind", u"カースドテンタクル": "dark", u"ポイント・オブ・エイム": "earth", u"天の福音": "light", u"森林の祝福": "wind", u"お友達になってくれる？": "dark"}
+skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire", u"裁考の覇道": "earth"}
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
 skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", u"インテリジェンス": "dark"}
 skillnamelist["unknownOtherNiteS"] = {u"ミフネ流剣法・双星": "fire", u"デクステリティ": "dark"}
@@ -107,6 +108,9 @@ skillnamelist["cosmos-fist"] = {u"ガントレット・オブ・コスモス": "
 skillnamelist["cosmos-bow"] = {u"アロー・オブ・コスモス": "light"}
 skillnamelist["cosmos-katana"] = {u"ブレイド": "light"}
 skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
+
+# 天司の祝福系
+skillnamelist["tenshiShukufuku"] = {u"ミカエルの祝福": "fire", u"ガブリエルの祝福": "water", u"ウリエルの祝福": "earth", u"ラファエルの祝福": "wind"}
 
 # キャラ固有武器
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}

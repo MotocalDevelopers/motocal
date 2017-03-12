@@ -1663,6 +1663,10 @@ var multiLangData = {
         "en": "10/03/2017: Implemented new \"Damage UP\" skill (Angel's blessing).",
         "ja": "2017/03/10: 天司の祝福スキルを実装. 与ダメージ上昇を計算できるようにした. (スキル情報にも表示されます)",
     },
+    "notice-20170311-1": {
+        "en": "11/03/2017: Added new weapons.",
+        "ja": "2017/03/11: 新武器などを追加",
+    },
 }
 
 // 言語設定

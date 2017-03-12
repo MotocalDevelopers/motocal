@@ -1,3 +1,13 @@
+|&attachref(img/1040805700.png,15%);|六道・裁考天の鳴弦|&color(#993300){土};|楽器|50|[[ダフマ>武器奥義#dafuma]]|[[裁考の覇道>スキル一覧#saikounohadou]]||63|318|250|2329|ゼノ・ウォフマナフ撃滅戦|イベント|○|219|1994|
+|&attachref(img/1040805800.png,15%);|真・裁考天の鳴弦|&color(#993300){土};|楽器|50|[[セフル・ダフマ>武器奥義#sefurudafuma]]|[[裁考の覇道>スキル一覧#saikounohadou]]|[[裁考天の教理 >スキル一覧#saikoutennokyouri]]|63|318|250|2329|ゼノ・ウォフマナフ撃滅戦|イベント|○|219|1994|
+|&attachref(img/1030006200.png,15%);|ソード・オブ・ミカエル|&color(#ff0000){火};|剣|10|[[セラフブレード>武器奥義#seraphblade]]|[[ミカエルの祝福>スキル一覧#michaelnosyukuhuku]]||20|280|140|1680|ショップ|セラフィックウェポン||
+|&attachref(img/1030404700.png,15%);|ワンド・オブ・ガブリエル|&color(#3366ff){水};|杖|10|[[セラフグラス>武器奥義#seraphglass]]|[[ガブリエルの祝福>スキル一覧#gabrielnosyukuhuku]]||26|220|175|1325|ショップ|セラフィックウェポン||
+|&attachref(img/1030605200.png,15%);|グローブ・オブ・ウリエル|&color(#993300){土};|格闘|10|[[セラフブレイズ>武器奥義#seraphblaze]]|[[ウリエルの祝福>スキル一覧#urielnosyukuhuku]]||20|280|160|1580|ショップ|セラフィックウェポン||
+|&attachref(img/1030703700.png,15%);|リング・オブ・ラファエル|&color(#339966){風};|弓|10|[[セラフホウィール>武器奥義#seraphwheel]]|[[ラファエルの祝福>スキル一覧#raphaelnosyukuhuku]]||19|290|147|1685|ショップ|セラフィックウェポン||
+|&attachref(img/1040705600.png,15%);|[精霊弓]&br;白銀の弓|&color(#339966){風};|弓|10|[[白銀の矢>武器奥義#hakuginnoya]]|[[森林の祝福>スキル一覧#morinosyukuhuku]]|[[森の民の知恵>スキル一覧#morinotaminotie]]|27|338|180|2027|Shadowverse Duelist of Eternity|イベント&br;(コラボ武器)||
+|&attachref(img/1040409300.png,15%);|[縫動友]&br;ルナのおともだち|&color(#800080){闇};|杖|10|[[ファントムハウル>武器奥義#phantomhowl]]|[[お友達になってくれる？>スキル一覧#otomodatininatte]]|[[魂の共鳴>スキル一覧#tamasiinokyoumei]]|31|308|220|1779|Shadowverse Duelist of Eternity|イベント(コラボ武器)||
+|&attachref(img/1040306100.png,15%);|スプリットエンド|&color(#339966){風};|斧|10|[[プラチナスラッシュ>武器奥義#platinaslash]]|[[乱気の攻刃>スキル一覧#rannkinokoujin]]|[[竜巻の見切>スキル一覧#tatumakinomikiri]]|29|445|181|2685|[[メリッサベル (SSR)]]加入|レジェンドガチャ||
+|&attachref(img/1040409100.png,15%);|星屑の聖杖|&color(#3366ff){水};|杖|10|[[スターダスト・フォール>武器奥義#stardustfall]]|[[霧氷の攻刃>スキル一覧#muhyounokoujin]]|[[先制の青の結界>スキル一覧#senseinoaonokekkai]]|49|350|288|2140|[[アルルメイヤ(クリスマスver) (SSR)>アルルメイヤ (SSR)クリスマスバージョン#xmas]]加入|レジェンドガチャ||
 |&attachref(img/1040200300.png,15%);|[絶覇]&br;ブリューナク|&color(#ff0000){火};|槍|10|[[タスラム++>武器奥義#tasrum]]|[[業火の攻刃>スキル一覧#goukanokoujin]]|[[貫きの牙>スキル一覧#tsuranukinokiba]]|41|395|298|2710|[[ゼタ (SSR)]]加入|レジェンドガチャ|○|257|2315|
 |&attachref(img/1040401100.png,15%);|[蛇創杖]&br;ウロボロス|&color(#993300){土};|杖|10|[[アルス・マグナ>武器奥義#arusumagna]]|[[地裂の攻刃>スキル一覧#tiretunokoujin]]|[[創られし従僕>スキル一覧#tukurareshijyuuboku]]|49|355|337|2520|[[カリオストロ (SSR)]]加入|レジェンドガチャ|○|289|2155|
 |&attachref(img/1040805600.png,15%);|[天虹琴]&br;ドミニオンハープ|&color(#ff9900){光};|楽器|10|[[ドミニオンサウンド>武器奥義#dominionsound]]|[[聖なる守護>スキル一覧#seinarusyugo]]|[[天の福音>スキル一覧#tennofukuin]]|53|278|188|1727|どうして空は蒼いのか|イベント||
