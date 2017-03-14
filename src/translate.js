@@ -1683,6 +1683,10 @@ var multiLangData = {
         "en": "12/03/2017: Modified Enmity (M) and Enmity (L) values.",
         "ja": "2017/03/12: 背水(中)と背水(大)の効果量を微修正.",
     },
+    "notice-20170312-2": {
+        "en": "12/03/2017: Separated \"Single Attack Damage\" columns and added new sort keys.",
+        "ja": "2017/03/12: \"単攻撃ダメージ\"を4つに分類し、ソートキーを追加.",
+    },
 }
 
 // 言語設定
