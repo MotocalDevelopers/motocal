@@ -613,9 +613,21 @@ var multiLangData = {
         "en": "Averaged PCF value",
         "ja": "総回技の平均",
     },
-    "単攻撃ダメージ": {
-        "en": "Single Attack Damage\n(Freq.*Single Damage)",
-        "ja": "単攻撃ダメージ\n(期待回数*単ダメージ)",
+    "単攻撃ダメージ(技巧連撃無)": {
+        "en": "Single Attack Damage",
+        "ja": "単攻撃ダメージ(技巧連撃無)",
+    },
+    "単攻撃ダメージ(技巧有)": {
+        "en": "Single Attack Damage\n(w/ Critical)",
+        "ja": "単攻撃ダメージ(技巧有)",
+    },
+    "単攻撃ダメージ(連撃有)": {
+        "en": "Single Attack Damage\n(w/ Multiple)",
+        "ja": "単攻撃ダメージ(連撃有)",
+    },
+    "単攻撃ダメージ(技巧連撃有)": {
+        "en": "Single Attack Damage\n(w/ Crit. and Multi.)",
+        "ja": "単攻撃ダメージ(技巧連撃有)",
     },
     "ターン毎の奥義ゲージ上昇量": {
         "en": "Ougi Gage Rise per Turn",

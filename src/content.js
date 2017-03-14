@@ -1495,7 +1495,32 @@ var ResultList = React.createClass({
             coeffs["bahaTA"] = armTAupBaha
             coeffs["otherTA"] = armTAupOther
 
-            res[key] = {totalAttack: Math.ceil(totalAttack), displayAttack: Math.ceil(summedAttack), totalHP: Math.round(totalHP), displayHP: Math.round(displayHP), remainHP: totals[key]["remainHP"], totalDA: totalDA, totalTA: totalTA, debuffResistance: totals[key]["debuffResistance"], totalSummon: totalSummon, element: totals[key]["element"], expectedAttack: expectedAttack, criticalAttack: criticalAttack, criticalRatio: criticalRatio, effectiveCriticalRatio: effectiveCriticalRatio, totalExpected: nazo_number, skilldata: coeffs, expectedOugiGage: expectedOugiGage, damage: damage, ougiDamage: ougiDamage, expectedTurn: expectedTurn, expectedCycleDamagePerTurn: expectedCycleDamagePerTurn};
+            res[key] = {
+                totalAttack: Math.ceil(totalAttack),
+                displayAttack: Math.ceil(summedAttack),
+                totalHP: Math.round(totalHP),
+                displayHP: Math.round(displayHP),
+                remainHP: totals[key]["remainHP"],
+                totalDA: totalDA,
+                totalTA: totalTA,
+                debuffResistance: totals[key]["debuffResistance"],
+                totalSummon: totalSummon,
+                element: totals[key]["element"],
+                expectedAttack: expectedAttack,
+                criticalAttack: criticalAttack,
+                criticalRatio: criticalRatio,
+                effectiveCriticalRatio: effectiveCriticalRatio,
+                totalExpected: nazo_number,
+                skilldata: coeffs,
+                expectedOugiGage: expectedOugiGage,
+                damage: damage * expectedAttack, // 技巧連撃
+                pureDamage: damageWithoutCritical, // 純ダメージ
+                damageWithCritical: damage, // 技巧のみ
+                damageWithMultiple: damageWithoutCritical * expectedAttack, // 連撃のみ
+                ougiDamage: ougiDamage,
+                expectedTurn: expectedTurn,
+                expectedCycleDamagePerTurn: expectedCycleDamagePerTurn
+            };
         }
         var average = 0.0;
         var crit_average = 0.0;
@@ -2427,6 +2452,9 @@ var ResultList = React.createClass({
             switchTotalExpected: 0,
             switchAverageTotalExpected: 0,
             switchDamage: 0,
+            switchPureDamage: 0,
+            switchDamageWithCritical: 0,
+            switchDamageWithMultiple: 0,
             switchOugiGage: 0,
             switchOugiDamage: 0,
             switchCycleDamage: 0,
@@ -3463,8 +3491,17 @@ var ResultList = React.createClass({
         if(switcher.switchAverageTotalExpected) {
             tableheader.push(intl.translate("総回技の平均", locale))
         }
+        if(switcher.switchPureDamage) {
+            tableheader.push(intl.translate("単攻撃ダメージ(技巧連撃無)", locale))
+        }
+        if(switcher.switchDamageWithCritical) {
+            tableheader.push(intl.translate("単攻撃ダメージ(技巧有)", locale))
+        }
+        if(switcher.switchDamageWithMultiple) {
+            tableheader.push(intl.translate("単攻撃ダメージ(連撃有)", locale))
+        }
         if(switcher.switchDamage) {
-            tableheader.push(intl.translate("単攻撃ダメージ", locale))
+            tableheader.push(intl.translate("単攻撃ダメージ(技巧連撃有)", locale))
         }
         if(switcher.switchOugiGage) {
             tableheader.push(intl.translate("ターン毎の奥義ゲージ上昇量", locale))
@@ -3652,7 +3689,10 @@ var ResultList = React.createClass({
                     <DropdownButton title={intl.translate("予測ダメージ", locale)} id="expected-damage">
                         <MenuItem onClick={this.handleEvent.bind(this, "switchCycleDamage")} active={(this.state.switchCycleDamage == 1) ? true : false}> {intl.translate("予想ターン毎ダメージ", locale)} </MenuItem>
                         <MenuItem onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")} active={(this.state.switchAverageCycleDamage == 1) ? true : false}> {intl.translate("パーティ平均予想ターン毎ダメージ", locale)} </MenuItem>
-                        <MenuItem onClick={this.handleEvent.bind(this, "switchDamage")} active={(this.state.switchDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchPureDamage")} active={(this.state.switchPureDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchDamageWithCritical")} active={(this.state.switchDamageWithCritical == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧有)", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchDamageWithMultiple")} active={(this.state.switchDamageWithMultiple == 1) ? true : false}> {intl.translate("単攻撃ダメージ(連撃有)", locale)}</MenuItem>
+                        <MenuItem onClick={this.handleEvent.bind(this, "switchDamage")} active={(this.state.switchDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃有)", locale)}</MenuItem>
                         <MenuItem onClick={this.handleEvent.bind(this, "switchOugiDamage")} active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
                         <MenuItem onClick={this.handleEvent.bind(this, "switchOugiGage")} active={(this.state.switchOugiGage == 1) ? true : false}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </MenuItem>
                     </DropdownButton>
@@ -3914,10 +3954,20 @@ var Result = React.createClass({
                         tablebody.push(m.data.Djeeta.averageTotalExpected)
                         ++colSize;
                     }
+                    if(sw.switchPureDamage) {
+                        tablebody.push(parseInt(m.data.Djeeta.pureDamage))
+                        ++colSize;
+                    }
+                    if(sw.switchDamageWithCritical) {
+                        tablebody.push(parseInt(m.data.Djeeta.damageWithCritical))
+                        ++colSize;
+                    }
+                    if(sw.switchDamageWithMultiple) {
+                        tablebody.push(parseInt(m.data.Djeeta.damageWithMultiple))
+                        ++colSize;
+                    }
                     if(sw.switchDamage) {
-                        var damage = m.data.Djeeta.damage
-                        var expectedDamage = m.data.Djeeta.expectedAttack * damage
-                        tablebody.push(parseInt(damage) + "\n(" + parseInt(expectedDamage) + ")")
+                        tablebody.push(parseInt(m.data.Djeeta.damage))
                         ++colSize;
                     }
                     if(sw.switchOugiGage) {
