@@ -13,6 +13,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">{intl.translate("notice-20170312-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170311-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170310-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170308-1", locale)}</li>
@@ -215,8 +216,8 @@ var Notice = React.createClass ({
                 <li className="list-group-item">技巧(小, 中, 大): クリティカル時倍率 50%</li>
                 <li className="list-group-item">マグナ技巧(小, 中, 大): クリティカル時倍率 50% </li>
                 <li className="list-group-item">背水(小): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br/>(baseRateは (Slv10以下) -0.3 + Slv * 1.8, (Slv10以上) 18.0 + 3.0 * (Slv - 10) / 5.0 </li>
-                <li className="list-group-item">背水(中): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br/>(baseRateは (Slv10以下) -0.4 + Slv * 2.4, (Slv10以上) 24.0 + 3.0 * (Slv - 10) / 5.0 </li>
-                <li className="list-group-item">背水(大): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br/>(baseRateは (Slv10以下) -0.5 + Slv * 3.0, (Slv10以上) 30.0 + 3.0 * (Slv - 10) / 5.0 </li>
+                <li className="list-group-item">背水(中): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br/>(baseRateは (Slv10以下) -0.4 + Slv * 2.4, (Slv10以上) 24.0 + 6.0 * (Slv - 10) / 5.0 </li>
+                <li className="list-group-item">背水(大): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br/>(baseRateは (Slv10以下) -0.5 + Slv * 3.0, (Slv10以上) 30.0 + 7.5 * (Slv - 10) / 5.0 </li>
                 <li className="list-group-item">渾身(大): baseRate * 残りHP割合 (baseRateは (Slv10以下) 10.0 + Slv * 1.0, (Slv10以上) 20.0 + (Slv - 10) * 0.6 </li>
                 <li className="list-group-item">攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率)) (TA→DAの順で判定、TA率が100％なら3回、TA率0％でDA率100％なら2回) </li>
                 <li className="list-group-item">技巧期待値: 2.0 * 通常技巧確率 * マグナ技巧確率 + 1.5 * 通常技巧確率 + 1.5 * マグナ技巧確率 + 1.0 * (1.0 - 通常技巧確率 - マグナ技巧確率 - 通常技巧確率*マグナ技巧確率) (マグナと通常は重複)</li>

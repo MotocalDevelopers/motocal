@@ -1952,32 +1952,20 @@ var ResultList = React.createClass({
                 if(haisuiSLv < 10) {
                     baseRate = -0.4 + haisuiSLv * 2.4;
                 } else {
-                    baseRate = 24 + 3.0 * ((haisuiSLv - 10) / 5.0)
+                    baseRate = 24 + 6.0 * ((haisuiSLv - 10) / 5.0)
                 }
             } else {
                 // 大
                 if(haisuiSLv < 10) {
                     baseRate = -0.5 + haisuiSLv * 3.0;
                 } else {
-                    baseRate = 30 + 3.0 * ((haisuiSLv - 10) / 5.0)
+                    baseRate = 30 + 7.5 * ((haisuiSLv - 10) / 5.0)
                 }
             }
             return (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
         } else if(haisuiType == 'normalKonshin' || haisuiType == "magnaKonshin"){
             if(haisuiAmount == "S") {
-                // 小
-                if(haisuiSLv < 10) {
-                    baseRate = -0.3 + haisuiSLv * 1.8;
-                } else {
-                    baseRate = 18 + 3.0 * ((haisuiSLv - 10) / 5.0)
-                }
             } else if ( haisuiAmount == "M" ){
-                // 中
-                if(haisuiSLv < 10) {
-                    baseRate = -0.4 + haisuiSLv * 2.4;
-                } else {
-                    baseRate = 24 + 3.0 * ((haisuiSLv - 10) / 5.0)
-                }
             } else {
                 if(haisuiSLv <= 10) {
                     // baseRate = 5.0 + haisuiSLv * 0.8;

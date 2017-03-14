@@ -1667,6 +1667,10 @@ var multiLangData = {
         "en": "11/03/2017: Added new weapons.",
         "ja": "2017/03/11: 新武器などを追加",
     },
+    "notice-20170312-1": {
+        "en": "12/03/2017: Modified Enmity (M) and Enmity (L) values.",
+        "ja": "2017/03/12: 背水(中)と背水(大)の効果量を微修正.",
+    },
 }
 
 // 言語設定
