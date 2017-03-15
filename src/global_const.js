@@ -496,7 +496,8 @@ var supportAbilities = {
     "ougi_gage_up_own_100": {"name": "奥義ゲージ上昇量UP100%(オクトー)", "type": "ougiGageBuff", "range": "own", "value": 1.00},
     "ougi_damage_up_1_5": {"name": "全体の奥義ダメージ1.5倍(シエテ)", "type": "ougiDamageBuff", "range": "all", "value": 0.50},
     "taiyou_sinkou": {"name": "味方全体に背水効果(ザルハメリナ)", "type": "taiyou_sinkou", "range": "all", "value": 0.00},
-    // "critical_up_10_30": {"name": "クリティカル確率UP(発動率10%, 倍率30%)", "type": "criticalBuff", "range": "own", "value": 0.10, "ratio": 1.30},
+    "critical_up_own_10_30": {"name": "クリティカル確率UP(ヴァンピィ, ハロカリ) 発動率10%, 倍率30%", "type": "criticalBuff", "range": "own", "value": 0.10, "attackRatio": 0.30},
+    "critical_up_all_5_30": {"name": "味方全体のクリティカル確率UP(フェリ) 発動率5%, 倍率30%", "type": "criticalBuff", "range": "all", "value": 0.05, "attackRatio": 0.30},
 }
 
 // exports

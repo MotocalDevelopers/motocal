@@ -1442,7 +1442,7 @@ var ResultList = React.createClass({
             if(totals[key]["typeBonus"] != 1.5) {
                 var criticalRatio = 1.0
             } else {
-                var criticalRatio = this.calculateCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totalSummon)
+                var criticalRatio = this.calculateCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
             }
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] + totals[key]["ougiGageBuff"]- totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
@@ -1543,7 +1543,7 @@ var ResultList = React.createClass({
         res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn/cnt)
         return res
     },
-    calculateCriticalRatio: function(normalCritical, _magnaCritical, summon) {
+    calculateCriticalRatio: function(normalCritical, _magnaCritical, normalOtherCritical, summon) {
         var gikouArray = []
         var gikouRatioArray = []
 
@@ -1561,6 +1561,12 @@ var ResultList = React.createClass({
             // 単体スキル分なので1.0以上の値が来ないか確認しなくて良い
             gikouArray.push(0.01 * normalCritical[j]["value"] * summon["zeus"]);
             gikouRatioArray.push(normalCritical[j]["attackRatio"]);
+        }
+
+        // LBやサポアビ分の技巧
+        for(var j = 0; j < normalOtherCritical.length; j++){
+            gikouArray.push(normalOtherCritical[j]["value"]);
+            gikouRatioArray.push(normalOtherCritical[j]["attackRatio"]);
         }
 
         var criticalRatio = 0.0
@@ -2075,7 +2081,7 @@ var ResultList = React.createClass({
             }
         }
 
-        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0, damageUP: 0}};
+        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0, damageUP: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -2101,7 +2107,7 @@ var ResultList = React.createClass({
                     }
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0, damageUP: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0, damageUP: 0}
             }
         }
 
@@ -2369,14 +2375,15 @@ var ResultList = React.createClass({
                     case "normalBuff_depends_member":
                         continue;
                         break;
-                    case "critical_up_10_30":
-                        continue;
-                        break;
                     case "taiyou_sinkou":
                         // ザルハメリナのHPを参照する
                         var charaHaisuiValue = this.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"])
-                        for(var key2 in totals){
-                            totals[key2]["charaHaisui"] += charaHaisuiValue
+                        if(totals[key].isConsideredInAverage) {
+                            for(var key2 in totals){
+                                totals[key2]["charaHaisui"] += charaHaisuiValue
+                            }
+                        } else {
+                            totals[key]["charaHaisui"] += charaHaisuiValue
                         }
                         continue;
                         break;
@@ -2384,11 +2391,28 @@ var ResultList = React.createClass({
                         break;
                 }
 
+                // 技巧系処理
+                if(support.type == "criticalBuff") {
+                    if(support.range == "own") {
+                        totals[key]["normalOtherCritical"].push({"value": support.value, "attackRatio": support.attackRatio})
+                    } else {
+                        if(totals[key].isConsideredInAverage) {
+                            for(var key2 in totals){
+                                totals[key2]["normalOtherCritical"].push({"value": support.value, "attackRatio": support.attackRatio})
+                            }
+                        } else {
+                            totals[key]["normalOtherCritical"].push({"value": support.value, "attackRatio": support.attackRatio})
+                        }
+                    }
+                    continue;
+                }
+
                 // 単純なバフ系の場合の処理
                 if(support.range == "own") {
                     totals[key][support.type] += support.value
                 } else {
                     // range == "all"
+                    // 平均に含める場合は全体に影響する
                     if(totals[key].isConsideredInAverage) {
                         for(var key2 in totals){
                             totals[key2][support.type] += support.value
