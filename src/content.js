@@ -1543,7 +1543,7 @@ var ResultList = React.createClass({
         res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn/cnt)
         return res
     },
-    calculateCriticalRatio: function(_normalCritical, _magnaCritical, summon) {
+    calculateCriticalRatio: function(normalCritical, _magnaCritical, summon) {
         var gikouArray = []
         var gikouRatioArray = []
 
@@ -1557,10 +1557,10 @@ var ResultList = React.createClass({
         }
 
         // 通常技巧配列は[確率1, 確率2, 確率3, ... ]という形式で渡される
-        for(var j = 0; j < _normalCritical.length; j++){
+        for(var j = 0; j < normalCritical.length; j++){
             // 単体スキル分なので1.0以上の値が来ないか確認しなくて良い
-            gikouArray.push(0.01 * _normalCritical[j] * summon["zeus"]);
-            gikouRatioArray.push(0.5);
+            gikouArray.push(0.01 * normalCritical[j]["value"] * summon["zeus"]);
+            gikouRatioArray.push(normalCritical[j]["attackRatio"]);
         }
 
         var criticalRatio = 0.0
@@ -1880,11 +1880,11 @@ var ResultList = React.createClass({
                             } else if(stype == 'normalCritical') {
                                 // 通常技巧は複数発動するので確率を加算しないで残しておく
                                 for(var setu = 0; setu < comb[i]; setu++){
-                                    totals[key]["normalCritical"].push(skillAmounts["normalCritical"][amount][slv - 1]);
+                                    totals[key]["normalCritical"].push({"value": skillAmounts["normalCritical"][amount][slv - 1], "attackRatio": 0.5});
                                 }
                             } else if(stype == 'normalSetsuna') {
                                 for(var setu = 0; setu < comb[i]; setu++){
-                                    totals[key]["normalCritical"].push(skillAmounts["normalCritical"][amount][slv - 1]);
+                                    totals[key]["normalCritical"].push({"value": skillAmounts["normalCritical"][amount][slv - 1], "attackRatio": 0.5});
                                 }
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             } else if(stype == 'magnaSetsuna') {
@@ -1892,7 +1892,7 @@ var ResultList = React.createClass({
                                 totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             } else if(stype == 'normalKatsumi') {
                                 for(var setu = 0; setu < comb[i]; setu++){
-                                    totals[key]["normalCritical"].push(skillAmounts["normalCritical"][amount][slv - 1]);
+                                    totals[key]["normalCritical"].push({"value": skillAmounts["normalCritical"][amount][slv - 1], "attackRatio": 0.5});
                                 }
                                 totals[key]["normalNite"] += comb[i] * skillAmounts["normalNite"][amount][slv - 1];
                             } else if(stype == 'magnaKatsumi') {
@@ -1937,7 +1937,7 @@ var ResultList = React.createClass({
                                     totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
                                     if(key == 'Djeeta') {
                                         for(var setu = 0; setu < comb[i]; setu++){
-                                            totals[key]["normalCritical"].push(skillAmounts["normalCritical"][amount][slv - 1]);
+                                            totals[key]["normalCritical"].push({"value": skillAmounts["normalCritical"][amount][slv - 1], "attackRatio": 0.5});
                                         }
                                     }
                                 } else {
