@@ -1687,6 +1687,10 @@ var multiLangData = {
         "en": "12/03/2017: Separated \"Single Attack Damage\" columns and added new sort keys.",
         "ja": "2017/03/12: \"単攻撃ダメージ\"を4つに分類し、ソートキーを追加.",
     },
+    "notice-20170315-1": {
+        "en": "15/03/2017: Implemented Critical UP support abilities.",
+        "ja": "2017/03/15: キャラサポアビのクリティカル計算を実装",
+    },
 }
 
 // 言語設定
