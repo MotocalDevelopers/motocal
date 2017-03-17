@@ -1448,6 +1448,10 @@ var multiLangData = {
         "en": "Angel's Blessing",
         "ja": "天司の祝福",
     },
+    "天司の祝福II": {
+        "en": "Angel's Blessing II",
+        "ja": "天司の祝福II",
+    },
     "敵防御10": {
         "en": "10.0(General)",
         "ja": "10.0(一般的な敵)",
@@ -1690,6 +1694,10 @@ var multiLangData = {
     "notice-20170315-1": {
         "en": "15/03/2017: Implemented Critical UP support abilities.",
         "ja": "2017/03/15: キャラサポアビのクリティカル計算を実装",
+    },
+    "notice-20170317-1": {
+        "en": "17/03/2017: Implemented Angel's blessing II. / Added Seraphim weapon (SSR) templates",
+        "ja": "2017/03/17: 天司の祝福II(与ダメージアップ20%)を実装. / 天司武器SSRを追加.",
     },
 }
 

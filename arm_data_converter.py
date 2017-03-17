@@ -64,7 +64,7 @@ skillnamelist["unknownHPL"] = {u"アンノウン・VIT II": "unknown"}
 skillnamelist["unknownHPM"] = {u"アンノウン・VIT": "unknown"}
 skillnamelist["strengthS"] = {u"スピードスペル": "light"}
 skillnamelist["strengthM"] = {u"大自然の摂理": "light"}
-skillnamelist["strengthL"] = {u"ストレングス": "unknown", u"セービングアタック": "water", u"Vスキル": "earth", u"その魂よ、安らかに": "light", u"烈光の至恩": "dark", u"自動辻斬装置": "water", u"半獣の咆哮": "fire", u"西風のラプソディ": "wind", u"我流の太刀筋": "wind", u"カースドテンタクル": "dark", u"ポイント・オブ・エイム": "earth", u"天の福音": "light", u"森林の祝福": "wind", u"お友達になってくれる？": "dark"}
+skillnamelist["strengthL"] = {u"ストレングス": "unknown", u"セービングアタック": "water", u"Vスキル": "earth", u"その魂よ、安らかに": "light", u"烈光の至恩": "dark", u"自動辻斬装置": "water", u"半獣の咆哮": "fire", u"西風のラプソディ": "wind", u"我流の太刀筋": "wind", u"カースドテンタクル": "dark", u"ポイント・オブ・エイム": "earth", u"天の福音": "light", u"森林の祝福": "wind", u"お友達になってくれる？": "dark", u"蒼薔薇の棘": "water", u"翠薔薇の棘": "wind", u"橙薔薇の棘": "earth", u"紅薔薇の棘": "fire"}
 skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire", u"裁考の覇道": "earth"}
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
 skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", u"インテリジェンス": "dark"}
@@ -110,6 +110,7 @@ skillnamelist["cosmos-katana"] = {u"ブレイド": "light"}
 skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
 
 # 天司の祝福系
+skillnamelist["tenshiShukufukuII"] = {u"ミカエルの祝福II": "fire", u"ガブリエルの祝福II": "water", u"ウリエルの祝福II": "earth", u"ラファエルの祝福II": "wind"}
 skillnamelist["tenshiShukufuku"] = {u"ミカエルの祝福": "fire", u"ガブリエルの祝福": "water", u"ウリエルの祝福": "earth", u"ラファエルの祝福": "wind"}
 
 # キャラ固有武器

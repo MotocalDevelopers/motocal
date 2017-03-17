@@ -1936,7 +1936,11 @@ var ResultList = React.createClass({
                                 }
                             //! 四大天司の祝福
                             } else if(stype == 'tenshiShukufuku'){
-                                if(amount == 'M') totals[key]["damageUP"] += comb[i] * 0.10;
+                                if(amount == 'M') {
+                                    totals[key]["damageUP"] += comb[i] * 0.10;
+                                } else if (amount == 'L') {
+                                    totals[key]["damageUP"] += comb[i] * 0.20;
+                                }
                             //! 4凸武器スキル
                             } else if(stype == 'tsuranukiKiba'){
                                 if(skillname == 'tsuranukiKibaMain'){

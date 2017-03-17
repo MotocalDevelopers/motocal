@@ -219,7 +219,8 @@ var skilltypes = {
     "bahaFUHP-katana": {name:"バハフツHP-刀", type:"bahaFUHP", amount: "L"},
     "bahaFUHP-bow": {name:"バハフツHP-弓", type:"bahaFUHP", amount: "L"},
     "bahaFUHP-music": {name:"バハフツHP-楽器", type:"bahaFUHP", amount: "L"},
-    "tenshiShukufuku": {name:"天司の祝福", type: "tenshiShukufuku", amount: "M"},
+    "tenshiShukufuku":   {name:"天司の祝福", type: "tenshiShukufuku", amount: "M"},
+    "tenshiShukufukuII": {name:"天司の祝福II", type: "tenshiShukufuku", amount: "L"},
 };
 
 var cosmosSkills = {

@@ -1,3 +1,11 @@
+|&attachref(img/1040009600.png,15%);|ソード・オブ・ミカエル(SSR)|&color(#ff0000){火};|剣|30|[[セラフブレード>奥義一覧#seraphblade]]|[[ミカエルの祝福II>スキル一覧#michaelnosyukuhuku2]]|[[火の神威>スキル一覧#hinosini]]|31|410|206|2465|ショップ|セラフィックウェポン||
+|&attachref(img/1040409400.png,15%);|ワンド・オブ・ガブリエル(SSR)|&color(#3366ff){水};|杖|30|[[セラフグラス>奥義一覧#seraphglass]]|[[ガブリエルの祝福II>スキル一覧#gabrielnosyukuhuku2]]|[[水の神威>スキル一覧#mizunosini]]|43|350|280|2100|ショップ|セラフィックウェポン||
+|&attachref(img/1040606400.png,15%);|グローブ・オブ・ウリエル(SSR)|&color(#993300){土};|格闘|30|[[セラフブレイズ>奥義一覧#seraphblaze]]|[[ウリエルの祝福II>スキル一覧#urielnosyukuhuku2]]|[[土の神威>スキル一覧#tutinosini]]|35|390|240|2300|ショップ|セラフィックウェポン||
+|&attachref(img/1040705700.png,15%);|リング・オブ・ラファエル(SSR)|&color(#339966){風};|弓|30|[[セラフホウィール>武器奥義#seraphwheel]]|[[ラファエルの祝福II>スキル一覧#raphaelnosyukuhuku2]]|[[風の神威>スキル一覧#kazenosini]]|31|420|220|2460|ショップ|セラフィックウェポン||
+|&attachref(img/1040009700.png,15%);|ローズクリスタルソード|&color(#3366ff){水};|剣|60|[[ドミネイションブレード>奥義一覧#dominationblade]]|[[蒼薔薇の棘>スキル一覧#aobaranotoge]]|[[蒼薔薇の花弁>スキル一覧#aobaranokaben]]|34|365|204|2320|ショップ|ローズクリスタル交換||
+|&attachref(img/1040207200.png,15%);|ローズクリスタルランス|&color(#993300){土};|槍|60|[[ドミネイションスラスト>奥義一覧#dominationthrust]]|[[橙薔薇の棘>スキル一覧#daidaibaranotoge]]|[[橙薔薇の花弁>スキル一覧#daidaibaranokaben]]|45|350|250|2080|ショップ|ローズクリスタル交換||
+|&attachref(img/1040409500.png,15%);|ローズクリスタルワンド|&color(#ff0000){火};|杖|60|[[ドミネイションフレア>奥義一覧#dominationflare]]|[[紅薔薇の棘>スキル一覧#benibaranotoge]]|[[紅薔薇の花弁>スキル一覧#benibaranokaben]]|39|345|260|2030|ショップ|ローズクリスタル交換||
+|&attachref(img/1040108400.png,15%);|ローズクリスタルナイフ|&color(#339966){風};|短剣|60|[[ドミネイションスラッシュ>奥義一覧#dominationslash]]|[[翠薔薇の棘>スキル一覧#midoribaranotoge]]|[[翠薔薇の花弁>スキル一覧#midoribaranokaben]]|35|365|220|2225|ショップ|ローズクリスタル交換||
 |&attachref(img/1040805700.png,15%);|六道・裁考天の鳴弦|&color(#993300){土};|楽器|50|[[ダフマ>武器奥義#dafuma]]|[[裁考の覇道>スキル一覧#saikounohadou]]||63|318|250|2329|ゼノ・ウォフマナフ撃滅戦|イベント|○|219|1994|
 |&attachref(img/1040805800.png,15%);|真・裁考天の鳴弦|&color(#993300){土};|楽器|50|[[セフル・ダフマ>武器奥義#sefurudafuma]]|[[裁考の覇道>スキル一覧#saikounohadou]]|[[裁考天の教理 >スキル一覧#saikoutennokyouri]]|63|318|250|2329|ゼノ・ウォフマナフ撃滅戦|イベント|○|219|1994|
 |&attachref(img/1030006200.png,15%);|ソード・オブ・ミカエル(SR)|&color(#ff0000){火};|剣|10|[[セラフブレード>武器奥義#seraphblade]]|[[ミカエルの祝福>スキル一覧#michaelnosyukuhuku]]||20|280|140|1680|ショップ|セラフィックウェポン||
