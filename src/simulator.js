@@ -31,7 +31,6 @@ var SimulatorInput = React.createClass({
         if(nextProps.dataName != this.props.dataName) {
             newState = nextProps.dataForLoad
             this.setState(newState)
-            this.props.onChange(newState);
             return 0;
         }
 

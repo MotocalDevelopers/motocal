@@ -292,14 +292,13 @@ var Root = React.createClass({
   handleChangeData: function(newDataName) {
       this.setState({armNum: dataForLoad.armNum});
       this.setState({summonNum: dataForLoad.summonNum});
+      this.setState({profile: dataForLoad.profile});
+      this.setState({summon: dataForLoad.summon});
+      this.setState({armlist: dataForLoad.armlist});
+      this.setState({chara: dataForLoad.chara});
+      this.setState({simulator: dataForLoad.simulator});
       this.setState({dataName: newDataName});
-  },
-  captureResultList: function(e){
-      html2canvas(document.getElementById("allResult"), {
-          onrendered: function(canvas) {
-              window.open(canvas.toDataURL("image/png"));
-          },
-      })
+      this.setState({noResultUpdate: false});
   },
   changeLang: function(key, e) {
       if(key != "ja" && key != "en") key = "ja";
@@ -313,6 +312,7 @@ var Root = React.createClass({
       var target = document.querySelector("div#" + eventKey)
       target.setAttribute("class", "Tab");
       this.setState({activeKey: eventKey})
+      this.setState({noResultUpdate: true});
   },
   addArmNum: function(e) {
       var newArmNum = parseInt(this.state.armNum);
@@ -385,7 +385,7 @@ var Root = React.createClass({
                 <div className="smartphone-content">
                     <div className="Tab" id="inputTab">
                         <h2 style={{"marginTop": "10px", "marginBottom": "5px"}} >{intl.translate("motocal", locale)}</h2>
-                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} />
+                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} dataForLoad={dataForLoad} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
                         <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
@@ -493,7 +493,7 @@ var Root = React.createClass({
                         <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
                     </Nav>
                     <div className="Tab" id="inputTab">
-                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} />
+                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} dataForLoad={dataForLoad} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
                         <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
@@ -777,9 +777,10 @@ var Chara = React.createClass({
             if( chara != undefined && this.props.id in chara ){
                 state = chara[this.props.id]
                 this.setState(state)
-                this.props.onChange(this.props.id, state, false)
+                return 0;
             }
         }
+
         if(nextProps.defaultElement != this.props.defaultElement) {
             var newState = this.state
             newState["element"] = nextProps.defaultElement
@@ -1132,7 +1133,7 @@ var Summon = React.createClass({
         if(nextProps.dataName != this.props.dataName) {
             var newState = dataForLoad.summon[this.props.id]
             this.setState(newState);
-            this.props.onChange(this.props.id, newState)
+            return 0;
         }
 
         if(nextProps.defaultElement != this.props.defaultElement) {
@@ -4137,6 +4138,11 @@ var ArmList = React.createClass({
         this.setState({arms: arms})
     },
     componentWillReceiveProps: function(nextProps) {
+        if(nextProps.dataName != this.props.dataName) {
+            this.setState({alist: dataForLoad.armlist});
+            return 0;
+        }
+
         // iPadなどで一度数字が消された場合NaNになる
         if(!isNaN(parseInt(nextProps.armNum))) {
             // 今回のarmNumが小さくなったらalistも切り落とす (前回がNaNの場合も行う)
@@ -4303,7 +4309,7 @@ var Arm = React.createClass({
         if(nextProps.dataName != this.props.dataName) {
             var newState = dataForLoad.armlist[this.props.id]
             this.setState(newState);
-            this.props.onChange(this.props.id, newState, false);
+            return 0;
         }
 
         if(nextProps.defaultElement != this.props.defaultElement) {
@@ -4529,9 +4535,9 @@ var Profile = React.createClass({
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
         if(nextProps.dataName != this.props.dataName) {
-            var newState = dataForLoad.profile
+            var newState = nextProps.dataForLoad.profile
             this.setState(newState);
-            this.props.onChange(newState);
+            return 0;
         }
     },
     getInitialState: function() {
@@ -4600,7 +4606,6 @@ var Profile = React.createClass({
 
         return (
             <div className="profile">
-                <p className="text-danger">{intl.translate("notice-20170217-1", locale)}</p>
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
                     <tr>
