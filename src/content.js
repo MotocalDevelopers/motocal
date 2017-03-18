@@ -4326,7 +4326,7 @@ var Arm = React.createClass({
                 newState["hp"] = parseInt(newarm.minhp) + newarm.plus
             } else if(newarm.lv <= 100) {
                 if(newarm.maxlv == "100" || newarm.maxlv == "75") {
-                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/maxlv + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
+                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack))/newarm.maxlv + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
                     newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp))/100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
                 } else {
                     // 4凸武器の場合は、Lv100以下の計算にattacklv100を使う
