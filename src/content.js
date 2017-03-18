@@ -409,7 +409,17 @@ var Root = React.createClass({
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="resultTab">
-                        <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} locale={locale} />
+                        <ResultList
+                            profile={this.state.profile}
+                            armlist={this.state.armlist}
+                            chara={this.state.chara}
+                            summon={this.state.summon}
+                            sortKey={this.state.sortKey}
+                            simulator={this.state.simulator}
+                            noResultUpdate={this.state.noResultUpdate}
+                            onChangeSortkey={this.handleEvent.bind(this, "sortKey")}
+                            locale={locale}
+                         />
                     </div>
                     <div className="Tab hidden" id="systemTab">
 			<ButtonGroup>
@@ -527,7 +537,17 @@ var Root = React.createClass({
                 </div>
                 <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
-                    <ResultList data={this.state} onChangeSortkey={this.handleEvent.bind(this, "sortKey")} locale={locale} />
+                    <ResultList
+                        profile={this.state.profile}
+                        armlist={this.state.armlist}
+                        chara={this.state.chara}
+                        summon={this.state.summon}
+                        sortKey={this.state.sortKey}
+                        simulator={this.state.simulator}
+                        noResultUpdate={this.state.noResultUpdate}
+                        onChangeSortkey={this.handleEvent.bind(this, "sortKey")}
+                        locale={locale}
+                     />
                 </div>
             </div>
         );
@@ -2219,8 +2239,8 @@ var ResultList = React.createClass({
         return resultAmount;
     },
     calculateResult: function(newprops) {
-      var prof = newprops.data.profile; var arml = newprops.data.armlist;
-      var summon = newprops.data.summon; var chara = newprops.data.chara;
+      var prof = newprops.profile; var arml = newprops.armlist;
+      var summon = newprops.summon; var chara = newprops.chara;
 
       if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
           var totalBuff = this.getTotalBuff(prof)
@@ -2229,8 +2249,8 @@ var ResultList = React.createClass({
           // sortKey がNaNでないならそちらを使う、NaNなら総合攻撃力で
           var sortkey = "averageCyclePerTurn"
           var sortkeyname = "予想ターン毎ダメージのパーティ平均値"
-          if(newprops.data.sortKey == newprops.data.sortKey) {
-              sortkey = newprops.data.sortKey
+          if(newprops.sortKey == newprops.sortKey) {
+              sortkey = newprops.sortKey
               sortkeyname = keyTypes[sortkey]
           }
 
@@ -2490,7 +2510,7 @@ var ResultList = React.createClass({
             switchAverageCycleDamage: 1,
             switchDebuffResistance: 0,
             disableAutoResultUpdate: 0,
-            result: {summon: this.props.data.summon, result: []},
+            result: {summon: this.props.summon, result: []},
             chartSortKey: "totalAttack",
             chartData: {},
             storedList: {"combinations": [], "armlist": []},
@@ -2522,7 +2542,7 @@ var ResultList = React.createClass({
         this.setState({openHPChartTutorial: true})
     },
     componentWillReceiveProps: function(nextProps) {
-        if(this.state.disableAutoResultUpdate != 1 && (nextProps.data.noResultUpdate == undefined || !nextProps.data.noResultUpdate)){
+        if(this.state.disableAutoResultUpdate != 1 && (nextProps.noResultUpdate == undefined || !nextProps.noResultUpdate)){
             var allresult = this.calculateResult(nextProps);
             this.setState({result: allresult});
         }
@@ -2561,16 +2581,16 @@ var ResultList = React.createClass({
         var storedCombinations = this.state.storedList.combinations
         var storedArmlist = this.state.storedList.armlist
 
-        var prof = this.props.data.profile; var arml = this.props.data.armlist;
-        var summon = this.props.data.summon; var chara = this.props.data.chara;
+        var prof = this.props.profile; var arml = this.props.armlist;
+        var summon = this.props.summon; var chara = this.props.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
         this.treatSupportAbility(totals, chara)
 
         var sortkey = "averageCyclePerTurn"
         var sortkeyname = "予想ターン毎ダメージのパーティ平均値"
-        if(this.props.data.sortKey == this.props.data.sortKey) {
-            sortkey = this.props.data.sortKey
+        if(this.props.sortKey == this.props.sortKey) {
+            sortkey = this.props.sortKey
             sortkeyname = keyTypes[sortkey]
         }
 
@@ -2921,7 +2941,7 @@ var ResultList = React.createClass({
     addHaisuiData: function(id, summonid) {
         var newStored = this.state.storedList
         newStored["combinations"].push(JSON.parse(JSON.stringify(this.state.result.result[summonid][id].armNumbers)))
-        newStored["armlist"].push(JSON.parse(JSON.stringify(this.props.data.armlist)))
+        newStored["armlist"].push(JSON.parse(JSON.stringify(this.props.armlist)))
         this.setState({storedList: newStored})
         this.setState({ChartButtonActive: true})
     },
@@ -2929,16 +2949,16 @@ var ResultList = React.createClass({
         var storedCombinations = this.state.storedList.combinations
         var storedArmlist = this.state.storedList.armlist
 
-        var prof = this.props.data.profile; var arml = this.props.data.armlist;
-        var summon = this.props.data.summon; var chara = this.props.data.chara;
+        var prof = this.props.profile; var arml = this.props.armlist;
+        var summon = this.props.summon; var chara = this.props.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
         this.treatSupportAbility(totals, chara)
 
         var sortkey = "averageCyclePerTurn"
         var sortkeyname = "予想ターン毎ダメージのパーティ平均値"
-        if(this.props.data.sortKey == this.props.data.sortKey) {
-            sortkey = this.props.data.sortKey
+        if(this.props.sortKey == this.props.sortKey) {
+            sortkey = this.props.sortKey
             sortkeyname = keyTypes[sortkey]
         }
 
@@ -3148,15 +3168,15 @@ var ResultList = React.createClass({
         var storedCombinations = this.state.storedList.combinations
         var storedArmlist = this.state.storedList.armlist
 
-        var prof = this.props.data.profile; var arml = this.props.data.armlist;
-        var summon = this.props.data.summon; var chara = this.props.data.chara;
+        var prof = this.props.profile; var arml = this.props.armlist;
+        var summon = this.props.summon; var chara = this.props.chara;
         var totalBuff = this.getTotalBuff(prof)
         var totals = this.getInitialTotals(prof, chara, summon)
         this.treatSupportAbility(totals, chara)
 
         var sortkey = "averageExpectedDamage"
 
-        var turnBuff = this.props.data.simulator;
+        var turnBuff = this.props.simulator;
         var maxTurn = 5
         if(turnBuff != undefined) {
             maxTurn = turnBuff.maxTurn
@@ -3465,9 +3485,9 @@ var ResultList = React.createClass({
         var locale = this.props.locale
 
         res = this.state.result;
-        var prof = this.props.data.profile
-        var arm = this.props.data.armlist
-        var chara = this.props.data.chara
+        var prof = this.props.profile
+        var arm = this.props.armlist
+        var chara = this.props.chara
 
         // テスカトリポカ計算用
         var races = this.checkNumberofRaces(chara)
@@ -3572,7 +3592,7 @@ var ResultList = React.createClass({
         buffInfoStr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
-            var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
+            var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
                     <Button block onClick={this.openDisplayTable}>
@@ -3690,7 +3710,7 @@ var ResultList = React.createClass({
             );
 
         } else {
-            var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.data.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
+            var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}} value={this.props.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
                     <Advertisement locale={locale} />
