@@ -4916,6 +4916,7 @@ var Sys = React.createClass({
             storedData: {},
             dataName: '',
             selectedData: '',
+            uploadedData: '',
         };
     },
     componentDidMount: function(){
@@ -5018,8 +5019,24 @@ var Sys = React.createClass({
       }
     },
     onSubmitUpload: function(e){
-      e.preventDefault();
       console.log("データアップロードテスト")
+      console.log(this.state.uploadedData);
+      console.log(e.target);
+      $.ajax({
+          url: this.state.uploadedData,
+          dataType: 'json',
+          cache: false,
+          success: function(data) {
+              console.log(data)
+          }.bind(this),
+          error: function(xhr, status, err) {
+              console.error(status, err.toString());
+          }.bind(this)
+      });
+      var testdata = require('json!' + this.state.uploadedData);
+      console.log(testdata);
+      // console.log(JSON.parse(this.state.uploadedData));
+      // console.log(JSON.parse(chrome.runtime.getURL(this.state.uploadedData)));
     },
     render: function() {
         var locale = this.props.locale;
@@ -5042,10 +5059,13 @@ var Sys = React.createClass({
                     <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitLoad} >{intl.translate("ブラウザデータ読込", locale)}</Button>
                     <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitRemove} >{intl.translate("削除", locale)}</Button>
                 </ButtonGroup>
-                <ButtonGroup className="systemButtonGroup">
+                {/*
+                <FormGroup className="systemButtonGroup">
                     <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitDownload} >{intl.translate("ダウンロード", locale)}</Button>
-                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitUpload} >{intl.translate("アップロード", locale)}</Button>
-                </ButtonGroup>
+                    <FormControl type="file" label="アップロード" value={this.state.uploadedData} onChange={this.handleEvent.bind(this, "uploadedData")} />
+                    <Button type="submit" bsStyle="primary" className="systemButton" onClick={this.onSubmitUpload}>{intl.translate("アップロード", locale)}</Button>
+                </FormGroup>
+                */}
             </div>
         );
     }
