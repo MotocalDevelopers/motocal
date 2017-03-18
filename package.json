@@ -25,6 +25,7 @@
   "author": "hoshimi",
   "license": "MIT",
   "devDependencies": {
+    "babel-plugin-transform-inline-environment-variables": "0.0.2",
     "babel-preset-react": "6.23.0",
     "babelify": "7.3.0",
     "browserify": "13.1.0",
