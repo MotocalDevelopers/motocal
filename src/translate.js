@@ -61,6 +61,14 @@ var multiLangData = {
         "en": "Save to Browser",
         "ja": "保存",
     },
+    "ダウンロード": {
+        "en": "Download",
+        "ja": "ダウンロード",
+    },
+    "アップロード": {
+        "en": "Upload",
+        "ja": "アップロード",
+    },
     "なし": {
         "en": "No job",
         "ja": "なし",

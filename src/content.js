@@ -4909,6 +4909,7 @@ var Profile = React.createClass({
         );
     }
 });
+
 var Sys = React.createClass({
     getInitialState: function() {
         return {
@@ -4971,7 +4972,7 @@ var Sys = React.createClass({
           var newState = this.state;
           var propsdata = JSON.parse(JSON.stringify(this.props.data));
 
-          // dataName だけ Root に持っていっていないので、上書きしておく
+          // dataName だけ反映されていないので上書きしておく
           propsdata["dataName"] = this.state.dataName;
 
           newState["storedData"][this.state.dataName] = propsdata;
@@ -4986,6 +4987,39 @@ var Sys = React.createClass({
       } else {
           alert("データ名を入力して下さい。")
       }
+    },
+    onSubmitDownload: function(e){
+      e.preventDefault();
+      if(this.state.dataName != ''){
+          var newState = this.state;
+
+          // deep copy
+          var propsdata = JSON.parse(JSON.stringify(this.props.data));
+
+          // dataName だけ反映されていないので上書きしておく
+          propsdata["dataName"] = this.state.dataName;
+
+          var saveString = JSON.stringify(propsdata, null, "    ");
+
+          var blob = new Blob([saveString], {"type": "application/json"});
+
+          if (window.navigator.msSaveBlob) {
+              // IE10/11
+              window.navigator.msSaveBlob(blob, this.state.dataName + ".json");
+          } else {
+              // other browsers
+	      var newlink = document.createElement('a');
+	      newlink.href = window.URL.createObjectURL(blob);
+	      newlink.setAttribute('download', this.state.dataName + '.json');
+	      newlink.click();
+          }
+      } else {
+          alert("データ名を入力して下さい。")
+      }
+    },
+    onSubmitUpload: function(e){
+      e.preventDefault();
+      console.log("データアップロードテスト")
     },
     render: function() {
         var locale = this.props.locale;
@@ -5002,11 +5036,15 @@ var Sys = React.createClass({
             <div className="dataControl">
                 {intl.translate("データ名", locale)}: <FormControl size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} />
                 {intl.translate("ブラウザデータリスト", locale)}
-                <FormControl componentClass="select" value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </FormControl>
+                <FormControl componentClass="select" size={3} value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </FormControl>
                 <ButtonGroup className="systemButtonGroup">
                     <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitSave} >{intl.translate("ブラウザに保存", locale)}</Button>
                     <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitLoad} >{intl.translate("ブラウザデータ読込", locale)}</Button>
                     <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitRemove} >{intl.translate("削除", locale)}</Button>
+                </ButtonGroup>
+                <ButtonGroup className="systemButtonGroup">
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitDownload} >{intl.translate("ダウンロード", locale)}</Button>
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitUpload} >{intl.translate("アップロード", locale)}</Button>
                 </ButtonGroup>
             </div>
         );
