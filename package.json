@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "moto-calculator",
   "dependencies": {
-    "jquery": "~3.1.0",
     "js-base64": "~2.1.9",
     "react": "~15.3.0",
     "react-bootstrap": "~0.30.2",
