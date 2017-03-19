@@ -38,7 +38,6 @@ const plugins = [
       GITHUB_API_TOKEN: JSON.stringify(process.env.GITHUB_API_TOKEN || ''),
     },
   }),
-  new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       screw_ie8: true, // React doesn't support IE8
