@@ -297,7 +297,7 @@ var Root = React.createClass({
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="charaTab">
-                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} />
+                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} dataForLoad={dataForLoad.chara} />
                         <ButtonGroup className="addRemoveButtonGroup">
                             <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}(現在{this.state.charaNum}人)</Button>
                             <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
@@ -415,7 +415,7 @@ var Root = React.createClass({
                         </ButtonGroup>
                     </div>
                     <div className="Tab hidden" id="charaTab">
-                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} />
+                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} dataForLoad={dataForLoad.chara}/>
                         <ButtonGroup className="addRemoveButtonGroup">
                             <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}</Button>
                             <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
@@ -496,6 +496,11 @@ var CharaList = React.createClass({
         this.setState({openPresets: true})
     },
     componentWillReceiveProps: function(nextProps) {
+        if(nextProps.dataName != this.props.dataName) {
+            this.setState({charalist: nextProps.dataForLoad});
+            return 0;
+        }
+
         if (parseInt(nextProps.charaNum) < parseInt(this.props.charaNum)) {
             var newcharalist = this.state.charalist;
             while(newcharalist.length > nextProps.charaNum) {
@@ -616,6 +621,7 @@ var CharaList = React.createClass({
         var handleMoveUp = this.handleMoveUp
         var handleMoveDown = this.handleMoveDown
         var openPresets = this.openPresets
+        var dataForLoad = this.props.dataForLoad
 
         return (
             <div className="charaList">
@@ -626,7 +632,7 @@ var CharaList = React.createClass({
                 <Grid fluid style={{"width": "100%"}} >
                     <Row>
                     {charas.map(function(c, ind) {
-                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} locale={locale} openPresets={openPresets} />;
+                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} />;
                     })}
                     </Row>
                 </Grid>
@@ -676,10 +682,18 @@ var Chara = React.createClass({
 
        // もし dataForLoad に自分に該当するキーがあるなら読み込む
        // (データロード時に新しく増えたコンポーネント用)
-       var chara = dataForLoad.chara
+       var chara = this.props.dataForLoad
        if( chara != undefined && this.props.id in chara ){
            state = chara[this.props.id]
            this.setState(state)
+       }
+
+       // もし arrayForCopy に自分に該当するキーがあるなら読み込む
+       // (コピーの場合)
+       if(this.props.arrayForCopy != undefined) {
+           state = this.props.arrayForCopy;
+           this.setState(state)
+           return 0;
        }
 
        // もし addCharaIDが設定されていて、自分と一致しているなら読み込む
@@ -695,7 +709,7 @@ var Chara = React.createClass({
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
         if(nextProps.dataName != this.props.dataName) {
-            var chara = dataForLoad.chara
+            var chara = this.props.dataForLoad
             if( chara != undefined && this.props.id in chara ){
                 state = chara[this.props.id]
                 this.setState(state)
@@ -1425,23 +1439,6 @@ var Sys = React.createClass({
     },
     onSubmitUpload: function(e){
       console.log("データアップロードテスト")
-      console.log(this.state.uploadedData);
-      console.log(e.target);
-      $.ajax({
-          url: this.state.uploadedData,
-          dataType: 'json',
-          cache: false,
-          success: function(data) {
-              console.log(data)
-          }.bind(this),
-          error: function(xhr, status, err) {
-              console.error(status, err.toString());
-          }.bind(this)
-      });
-      var testdata = require('json!' + this.state.uploadedData);
-      console.log(testdata);
-      // console.log(JSON.parse(this.state.uploadedData));
-      // console.log(JSON.parse(chrome.runtime.getURL(this.state.uploadedData)));
     },
     render: function() {
         var locale = this.props.locale;

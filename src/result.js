@@ -1,5 +1,5 @@
 var React = require('react');
-var {Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 var {Chart} = require('react-google-charts')
 var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
 var Advertisement = require('./advertisement.js');
