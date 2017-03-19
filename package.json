@@ -12,11 +12,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "$(npm bin)/browserify -t babelify src/content.js -o build/content.js",
-    "webpack": "webpack",
-    "production-build": "NODE_ENV=production $(npm bin)/browserify -t babelify src/content.js -o build/content.js",
-    "watch-dev": "$(npm bin)/watchify -v -t babelify src/content.js -o build/content.js",
-    "production-watch-dev": "NODE_ENV=production $(npm bin)/watchify -v -t babelify src/content.js -o build/content.js"
+    "build": "webpack",
+    "production-build": "NODE_ENV=production webpack",
+    "watch-dev": "webpack --progress --watch",
+    "production-watch-dev": "NODE_ENV=production webpack --progress --watch"
   },
   "repository": {
     "type": "git",
