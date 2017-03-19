@@ -54,5 +54,8 @@
             If the update does not fix the problem, contact @hsimyu on twitter.
             </p>
         </div>
+	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+	<script src="dist/<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+	<% } %>
     </body>
 </html>
