@@ -1,4 +1,3 @@
-require('../css/main.css')
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
