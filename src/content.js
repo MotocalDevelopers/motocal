@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var Profile = require('./profile.js')
+var {SummonList, Summon} = require('./summon.js');
 var SimulatorInput = require('./simulator.js')
 var GlobalConst = require('./global_const.js')
 var Notice = require('./notice.js')
@@ -59,10 +60,6 @@ function getVarInQuery(key){
     return result;
 }
 
-var touchPositionX = null;
-var touchPositionY = null;
-var touchDirection = null;
-
 // Root class contains [Profile, ArmList, Results].
 var Root = React.createClass({
   getInitialState: function() {
@@ -111,88 +108,6 @@ var Root = React.createClass({
   },
   closeSimulatorHowTo: function(e) {
       this.setState({openSimulatorHowTo: false})
-  },
-  onTouchStart: function(e) {
-      //スワイプ開始時の横方向の座標を格納
-      touchPositionX = this.getPositionX(e)
-      touchPositionY = this.getPositionY(e)
-      touchDirection = ''
-  },
-  onTouchMove: function(e) {
-      //スワイプの方向（left / right）を取得
-      var td = "none";
-      // 縦方向に大きなスワイプの場合は無視
-      if(Math.abs(touchPositionY - this.getPositionY(e)) < 20) {
-          if (touchPositionX - this.getPositionX(e) > 100) {
-              td = 'right'; //左と検知
-          } else if (touchPositionX - this.getPositionX(e) < -100){
-              td = 'left'; //右と検知
-          }
-      }
-      touchDirection = td
-  },
-  onTouchEnd: function(e) {
-      // if(touchDirection == "left" || touchDirection == "right") {
-      //     this.swipeTab(touchDirection);
-      // }
-  },
-  //横方向の座標を取得
-  getPositionX: function(e) {
-      return e.touches[0].pageX;
-  },
-  //縦方向の座標を取得
-  getPositionY: function(e) {
-      return e.touches[0].pageY;
-  },
-  swipeTab: function(direction){
-      document.querySelector("div#" + this.state.activeKey).setAttribute("class", "Tab hidden")
-      var newActiveKey = "";
-
-      if(direction == "left") {
-          switch(this.state.activeKey) {
-              case "inputTab":
-                  newActiveKey = "systemTab"
-                  break;
-              case "summonTab":
-                  newActiveKey = "inputTab"
-                  break;
-              case "charaTab":
-                  newActiveKey = "summonTab"
-                  break;
-              case "armTab":
-                  newActiveKey = "charaTab"
-                  break;
-              case "resultTab":
-                  newActiveKey = "armTab"
-                  break;
-              case "systemTab":
-                  newActiveKey = "resultTab"
-                  break;
-          }
-      } else {
-          switch(this.state.activeKey) {
-              case "inputTab":
-                  newActiveKey = "summonTab"
-                  break;
-              case "summonTab":
-                  newActiveKey = "charaTab"
-                  break;
-              case "charaTab":
-                  newActiveKey = "armTab"
-                  break;
-              case "armTab":
-                  newActiveKey = "resultTab"
-                  break;
-              case "resultTab":
-                  newActiveKey = "systemTab"
-                  break;
-              case "systemTab":
-                  newActiveKey = "inputTab"
-                  break;
-          }
-      }
-      document.querySelector("div#" + newActiveKey).setAttribute("class", "Tab")
-      this.setState({activeKey: newActiveKey})
   },
   getDatacharById: function(id) {
       $.ajax({
@@ -352,7 +267,7 @@ var Root = React.createClass({
     var locale = this.state.locale
     if(_ua.Mobile || _ua.Tablet) {
         return (
-            <div className="root" onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} >
+            <div className="root">
                 <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
                     <Modal.Header closeButton>
                         <Modal.Title>元カレ計算機について</Modal.Title>
@@ -375,7 +290,7 @@ var Root = React.createClass({
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} dataForLoad={dataForLoad} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
-                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
+                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} dataForLoad={dataForLoad.summon} />
                         <ButtonGroup className="addRemoveButtonGroup">
                             <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}(現在{this.state.summonNum}組)</Button>
                             <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
@@ -493,7 +408,7 @@ var Root = React.createClass({
                         <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} dataForLoad={dataForLoad} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
-                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} />
+                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} dataForLoad={dataForLoad.summon} />
                         <ButtonGroup className="addRemoveButtonGroup">
                             <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}</Button>
                             <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
@@ -974,308 +889,6 @@ var Chara = React.createClass({
                     <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>{intl.translate("前へ", locale)}</Button>
                     <Button bsStyle="danger" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
                     <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
-                </ButtonGroup>
-            </ColP>
-        );
-    }
-});
-
-var SummonList = React.createClass({
-    getInitialState: function() {
-        var sm = []
-        for(var i=0; i < this.props.summonNum; i++) { sm.push(i); }
-
-        return {
-            smlist: [],
-            defaultElement: "fire",
-            summons: sm,
-        };
-    },
-    updateSummonNum: function(num) {
-        var summons = this.state.summons
-
-        if(summons.length < num) {
-            var maxvalue = Math.max.apply(null, summons)
-            for(var i = 0; i < (num - summons.length); i++){
-                summons.push(i + maxvalue + 1)
-            }
-        } else {
-            // ==の場合は考えなくてよい (問題がないので)
-            while(summons.length > num){
-                summons.pop();
-            }
-        }
-        this.setState({summons: summons})
-    },
-    componentWillReceiveProps: function(nextProps) {
-        if (parseInt(nextProps.summonNum) < parseInt(this.props.summonNum)) {
-            var newsmlist = this.state.smlist;
-            while(newsmlist.length > nextProps.summonNum) {
-                newsmlist.pop();
-            }
-            this.setState({smlist: newsmlist})
-        }
-        this.updateSummonNum(nextProps.summonNum)
-    },
-    handleOnCopy: function(id, keyid, state) {
-        var newsummons = this.state.summons
-        var maxvalue = Math.max.apply(null, newsummons)
-
-        newsummons.splice(id + 1, 0, maxvalue + 1)
-        newsummons.pop();
-        this.setState({summons: newsummons})
-
-        // dataForLoad にコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
-        if(!("summon" in dataForLoad)) {
-            // もしdataForLoadが更新される前だったらkeyを作っておく
-            dataForLoad["summon"] = {}
-        }
-        dataForLoad.summon[id + 1] = state;
-
-        var newsmlist = this.state.smlist;
-        newsmlist.splice(id + 1, 0, state)
-        newsmlist.pop();
-        this.setState({smlist: newsmlist})
-
-        // Root へ変化を伝搬
-        this.props.onChange(newsmlist);
-    },
-    handleOnRemove: function(id, keyid, state) {
-        var newsummons = this.state.summons
-        var maxvalue = Math.max.apply(null, newsummons)
-
-        // 該当の "key" を持つものを削除する
-        newsummons.splice(this.state.summons.indexOf(keyid), 1)
-        // 1個補充
-        newsummons.push(maxvalue + 1)
-        this.setState({summons: newsummons})
-
-        // dataForLoadにinitial stateを入れておいて、componentDidMountで読み出されるようにする
-        if(!("summon" in dataForLoad)) {
-            dataForLoad["summon"] = {}
-        }
-        dataForLoad.summon[newsummons.length - 1] = state;
-
-        var newsmlist = this.state.smlist;
-        // 削除した分をalistからも削除
-        newsmlist.splice(id, 1)
-        // 1個補充
-        newsmlist.push(state)
-        this.setState({smlist: newsmlist})
-
-        // Root へ変化を伝搬
-        this.props.onChange(newsmlist);
-    },
-    handleOnChange: function(key, state){
-        var newsmlist = this.state.smlist;
-        newsmlist[key] = state;
-        this.setState({smlist: newsmlist})
-        this.props.onChange(newsmlist);
-    },
-    handleEvent: function(key, e) {
-      var newState = this.state
-      newState[key] = e.target.value
-      this.setState(newState)
-    },
-    render: function() {
-        var locale = this.props.locale;
-        var summons = this.state.summons;
-        var hChange = this.handleOnChange;
-        var hRemove = this.handleOnRemove;
-        var hCopy = this.handleOnCopy;
-        var dataName = this.props.dataName;
-        var defaultElement = this.state.defaultElement;
-        return (
-            <div className="summonList">
-                <span>{intl.translate("属性一括変更", locale)}</span>
-                <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")}> {selector[locale].summonElements} </FormControl>
-                <h3 className="margin-top"> {intl.translate("召喚石", locale)} </h3>
-                <Grid fluid>
-                    <Row>
-                    {summons.map(function(sm, ind) {
-                        return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} locale={locale} />;
-                    })}
-                    </Row>
-                </Grid>
-            </div>
-        );
-    }
-});
-
-var Summon = React.createClass({
-    getInitialState: function() {
-        return {
-            selfSummonType: "magna",
-            selfSummonAmount: 100,
-            selfSummonAmount2: 0,
-            selfElement: "fire",
-            friendSummonType: "element",
-            friendSummonAmount: 80,
-            friendSummonAmount2: 0,
-            friendElement: "fire",
-            attack: 0,
-            hp: 0,
-            hpBonus: 0,
-            DA: 0,
-            TA: 0,
-            criticalRatio: 0.0,
-        };
-    },
-    componentDidMount: function(){
-       var state = this.state;
-
-       // もし dataForLoad に自分に該当するキーがあるなら読み込む
-       // (データロード時に新しく増えたコンポーネント用)
-       var summon = dataForLoad.summon
-       if( summon != undefined && this.props.id in summon ){
-           state = summon[this.props.id]
-           this.setState(state)
-       }
-       // 初期化後 state を 上の階層に渡しておく
-       // summonList では onChange が勝手に上に渡してくれるので必要なし
-       this.props.onChange(this.props.id, state);
-    },
-    componentWillReceiveProps: function(nextProps){
-        // only fired on Data Load
-        if(nextProps.dataName != this.props.dataName) {
-            var newState = dataForLoad.summon[this.props.id]
-            this.setState(newState);
-            return 0;
-        }
-
-        if(nextProps.defaultElement != this.props.defaultElement) {
-            var newState = this.state
-            newState["selfElement"] = nextProps.defaultElement
-            newState["friendElement"] = nextProps.defaultElement
-            this.setState(newState);
-            this.props.onChange(this.props.id, newState);
-        }
-    },
-    handleEvent: function(key, e) {
-        var newState = this.state
-        newState[key] = e.target.value
-        this.setState(newState)
-    },
-    handleSelectEvent: function(key, e) {
-        var newState = this.state
-        newState[key] = e.target.value
-        this.setState(newState)
-        this.props.onChange(this.props.id, newState)
-    },
-    handleOnBlur: function(e) {
-        this.props.onChange(this.props.id, this.state)
-    },
-    clickRemoveButton: function(e) {
-        this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
-    },
-    clickCopyButton: function(e, state) {
-        this.props.onCopy(this.props.id, this.props.keyid, this.state)
-    },
-    handleSummonAmountChange(type, ind, e){
-        var newState = this.state
-        if(type == "self") {
-            if(ind == 0){
-                newState["selfSummonAmount"] = e.target.value
-            } else {
-                newState["selfSummonAmount2"] = e.target.value
-            }
-        } else {
-            if(ind == 0){
-                newState["friendSummonAmount"] = e.target.value
-            } else {
-                newState["friendSummonAmount2"] = e.target.value
-            }
-        }
-        this.setState(newState)
-        this.props.onChange(this.props.id, newState)
-    },
-    render: function() {
-        var locale = this.props.locale
-
-        var selfSummon = [{"label": "", "input": "select"}, {"input": "hidden"}]
-        if(this.state.selfSummonType == "odin"){
-            selfSummon[1] = {"label": intl.translate("キャラ", locale)+ " ", "input": "select"}
-            selfSummon[0].label = intl.translate("属性", locale) + " "
-        }
-        var friendSummon = [{"label": "", "input": "select"}, {"input": "hidden"}]
-        if(this.state.friendSummonType == "odin"){
-            friendSummon[1] = {"label": intl.translate("キャラ", locale) + " ", "input": "select"}
-            friendSummon[0].label = intl.translate("属性", locale) + " "
-        }
-        return (
-            <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
-                <table className="table table-sm table-bordered table-responsive">
-                    <tbody>
-                        <tr>
-                            <th rowSpan={3} className="bg-primary">{intl.translate("自分の石", locale)}</th>
-                            <td>
-                                <FormControl componentClass="select" value={this.state.selfElement} onChange={this.handleSelectEvent.bind(this, "selfElement")} >{selector[locale].summonElements}</FormControl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <FormControl componentClass="select" value={this.state.selfSummonType} onChange={this.handleSelectEvent.bind(this, "selfSummonType")} >{selector[locale].summons}</FormControl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                {selfSummon[0].label}<FormControl componentClass="select" value={this.state.selfSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
-                                {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input} value={this.state.selfSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th rowSpan={3} className="bg-primary">{intl.translate("フレの石", locale)}</th>
-                            <td>
-                                <FormControl componentClass="select" value={this.state.friendElement} onChange={this.handleSelectEvent.bind(this, "friendElement")} >{selector[locale].summonElements}</FormControl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <FormControl componentClass="select" value={this.state.friendSummonType} onChange={this.handleSelectEvent.bind(this, "friendSummonType")} >{selector[locale].summons}</FormControl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                {friendSummon[0].label}<FormControl componentClass="select" value={this.state.friendSummonAmount} onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
-                                {friendSummon[1].label}<FormControl componentClass="select" className={friendSummon[1].input} value={this.state.friendSummonAmount2} onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("合計攻撃力", locale)}</th>
-                            <td>
-                                <FormControl type="number" min="0" value={this.state.attack} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "attack")}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("合計HP", locale)}</th>
-                            <td>
-                                <FormControl type="number" min="0" value={this.state.hp} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hp")}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("HP加護", locale)}</th>
-                            <td>
-                    <FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBonus")}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("DA加護", locale)}</th>
-                            <td>
-                    <FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("TA加護", locale)}</th>
-                            <td>
-                                <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>{intl.translate("内容を消去", locale)}</Button>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>{intl.translate("コピー", locale)}</Button>
                 </ButtonGroup>
             </ColP>
         );
