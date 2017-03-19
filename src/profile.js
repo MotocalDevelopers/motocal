@@ -32,8 +32,8 @@ var Profile = React.createClass({
     },
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
-        if(nextProps.dataName != this.props.dataName) {
-            var newState = nextProps.dataForLoad.profile
+        if(nextProps.dataName != this.props.dataName && (nextProps.dataForLoad != undefined) ) {
+            var newState = nextProps.dataForLoad
             this.setState(newState);
             return 0;
         }

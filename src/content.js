@@ -278,7 +278,7 @@ var Root = React.createClass({
                 <div className="smartphone-content">
                     <div className="Tab" id="inputTab">
                         <h2 style={{"marginTop": "10px", "marginBottom": "5px"}} >{intl.translate("motocal", locale)}</h2>
-                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} dataForLoad={this.state.dataForLoad} />
+                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} dataForLoad={this.state.dataForLoad.profile} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
                         <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} dataForLoad={this.state.dataForLoad.summon} />
@@ -396,7 +396,7 @@ var Root = React.createClass({
                         <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
                     </Nav>
                     <div className="Tab" id="inputTab">
-                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} dataForLoad={this.state.dataForLoad} />
+                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} dataForLoad={this.state.dataForLoad.profile} />
                     </div>
                     <div className="Tab hidden" id="summonTab">
                         <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} dataForLoad={this.state.dataForLoad.summon} />
