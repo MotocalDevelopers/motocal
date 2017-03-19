@@ -45,7 +45,6 @@ module.exports.getElementColorLabel = (function(element, locale) {
 });
 
 
-module.exports.dataForLoad = {}
 module.exports._ua = (function(u){
   return {
     Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1)

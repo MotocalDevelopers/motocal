@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const path = require('path');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const DEBUG = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;
 
 const devtool = DEBUG ? '#inline-source-map' : '#eval';
@@ -34,7 +34,7 @@ const plugins = [
   }),
   new webpack.DefinePlugin({
     'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
       GITHUB_API_TOKEN: JSON.stringify(process.env.GITHUB_API_TOKEN || ''),
     },
   }),
