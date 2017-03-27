@@ -207,8 +207,8 @@ var Summon = React.createClass({
         // データロード時のみ読み込み
         if(nextProps.dataName != this.props.dataName) {
             // 対応するIDが無い場合は undefined が飛んでくる
-            if(this.props.dataForLoad != undefined) {
-               var summon = this.props.dataForLoad;
+            if(nextProps.dataForLoad != undefined) {
+               var summon = nextProps.dataForLoad;
 
                if(this.props.id in summon) {
                    this.setState(summon[this.props.id])
