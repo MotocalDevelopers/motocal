@@ -889,6 +889,10 @@ var multiLangData = {
         "en": "Copy",
         "ja": "コピー",
     },
+    "下にコピー": {
+        "en": "Copy",
+        "ja": "下にコピー",
+    },
     "追加": {
         "en": "Add",
         "ja": "追加",

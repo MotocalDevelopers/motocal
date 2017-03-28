@@ -106,6 +106,39 @@ var SummonList = React.createClass({
         delete state["arrayForCopy"][id];
         this.setState(state);
     },
+    handleMoveUp: function(id){
+        if(id > 0) {
+            var newsummons = this.state.summons
+
+            // charas swap
+            newsummons.splice(id - 1, 2, newsummons[id], newsummons[id - 1])
+            this.setState({summons: newsummons})
+
+            // charalist swap
+            var newsmlist = this.state.smlist;
+            newsmlist.splice(id - 1, 2, newsmlist[id], newsmlist[id - 1])
+            this.setState({smlist: newsmlist})
+
+            // Root へ変化を伝搬
+            this.props.onChange(newsmlist);
+        }
+    },
+    handleMoveDown: function(id){
+        if(id < this.props.summonNum - 1) {
+            var newsummons = this.state.summons
+
+            // charas swap
+            newsummons.splice(id, 2, newsummons[id + 1], newsummons[id])
+            this.setState({summons: newsummons})
+
+            // charalist swap
+            var newsmlist = this.state.smlist;
+            newsmlist.splice(id, 2, newsmlist[id + 1], newsmlist[id])
+            this.setState({smlist: newsmlist})
+            // Root へ変化を伝搬
+            this.props.onChange(newsmlist);
+        }
+    },
     handleOnChange: function(key, state){
         var newsmlist = this.state.smlist;
         newsmlist[key] = state;
@@ -123,6 +156,8 @@ var SummonList = React.createClass({
         var hChange = this.handleOnChange;
         var hRemove = this.handleOnRemove;
         var hCopy = this.handleOnCopy;
+        var hMoveUp = this.handleMoveUp;
+        var hMoveDown = this.handleMoveDown;
         var dataName = this.props.dataName;
         var defaultElement = this.state.defaultElement;
         var dataForLoad = this.props.dataForLoad;
@@ -137,7 +172,7 @@ var SummonList = React.createClass({
                 <Grid fluid>
                     <Row>
                     {summons.map(function(sm, ind) {
-                        return <Summon key={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} copyCompleted={copyCompleted} locale={locale} dataForLoad={dataForLoad} arrayForCopy={arrayForCopy[ind]}/>;
+                        return <Summon key={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} onMoveUp={hMoveUp} onMoveDown={hMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} copyCompleted={copyCompleted} locale={locale} dataForLoad={dataForLoad} arrayForCopy={arrayForCopy[ind]}/>;
                     })}
                     </Row>
                 </Grid>
@@ -234,6 +269,12 @@ var Summon = React.createClass({
     },
     clickCopyButton: function(e, state) {
         this.props.onCopy(this.props.id, this.state)
+    },
+    clickMoveUp: function(e) {
+        this.props.onMoveUp(this.props.id)
+    },
+    clickMoveDown: function(e) {
+        this.props.onMoveDown(this.props.id)
     },
     handleSummonAmountChange(type, ind, e){
         var newState = this.state
@@ -340,8 +381,10 @@ var Summon = React.createClass({
                 </table>
 
                 <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>{intl.translate("内容を消去", locale)}</Button>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>{intl.translate("コピー", locale)}</Button>
+                    <Button bsStyle="default" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>{intl.translate("前へ", locale)}</Button>
+                    <Button bsStyle="danger" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>{intl.translate("内容を消去", locale)}</Button>
+                    <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>{intl.translate("下にコピー", locale)}</Button>
+                    <Button bsStyle="default" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
                 </ButtonGroup>
             </ColP>
         );
