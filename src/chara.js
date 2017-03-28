@@ -72,6 +72,7 @@ var CharaList = React.createClass({
     componentWillReceiveProps: function(nextProps) {
         if(nextProps.dataName != this.props.dataName) {
             this.setState({charalist: nextProps.dataForLoad});
+            this.updateCharaNum(nextProps.charaNum)
             return 0;
         }
 

@@ -172,14 +172,29 @@ var Root = React.createClass({
       this.setState({simulator: state});
       this.setState({noResultUpdate: true});
   },
-  handleChangeData: function(newDataName) {
-      this.setState({armNum: dataForLoad.armNum});
-      this.setState({summonNum: dataForLoad.summonNum});
-      this.setState({profile: dataForLoad.profile});
-      this.setState({summon: dataForLoad.summon});
-      this.setState({armlist: dataForLoad.armlist});
-      this.setState({chara: dataForLoad.chara});
-      this.setState({simulator: dataForLoad.simulator});
+  handleChangeData: function(newDataName, newData) {
+      // Rootが持つデータを更新
+      this.setState({armNum: newData.armNum});
+      this.setState({summonNum: newData.summonNum});
+      this.setState({charaNum: newData.charaNum});
+
+      this.setState({profile: newData.profile});
+      this.setState({summon: newData.summon});
+      this.setState({armlist: newData.armlist});
+      this.setState({chara: newData.chara});
+      this.setState({simulator: newData.simulator});
+
+      // 子要素に伝搬させるためのデータも同様に更新
+      this.setState({
+          dataForLoad: {
+              "profile": newData.profile,
+              "summon": newData.summon,
+              "armlist": newData.armlist,
+              "chara": newData.chara,
+              "simulator": newData.simulator,
+          }
+      });
+
       this.setState({dataName: newDataName});
       this.setState({noResultUpdate: false});
   },
@@ -456,41 +471,41 @@ var Sys = React.createClass({
         }
     },
     handleOnClick: function(key, e) {
-      var newState = this.state
-      newState[key] = e.target.value
-      this.setState(newState)
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
     },
     handleEvent: function(key, e) {
-      var newState = this.state
-      newState[key] = e.target.value
-      this.setState(newState)
-
-      if(key == "dataName") {
-          // 短縮URL取得時に使用するために保存しておく
-          dataForLoad["dataName"] = e.target.value;
-      }
+        var newState = this.state
+        newState[key] = e.target.value
+        this.setState(newState)
+        //
+        // if(key == "dataName") {
+        //     // 短縮URL取得時に使用するために保存しておく
+        //     dataForLoad["dataName"] = e.target.value;
+        // }
     },
     onSubmitRemove: function(e) {
-      if(this.state.selectedData != ''){
-          // remove data
-          var newState = this.state;
-          delete newState["storedData"][this.state.selectedData];
-          newState.selectedData = Object.keys(this.state.storedData)[0]
+        if(this.state.selectedData != ''){
+            // remove data
+            var newState = this.state;
+            delete newState["storedData"][this.state.selectedData];
+            newState.selectedData = Object.keys(this.state.storedData)[0]
 
-          localStorage.setItem("data", Base64.encodeURI(JSON.stringify(newState.storedData)));
-          this.setState(newState);
-      } else {
-          alert("削除するデータを選択して下さい。")
-      }
+            localStorage.setItem("data", Base64.encodeURI(JSON.stringify(newState.storedData)));
+            this.setState(newState);
+        } else {
+            alert("削除するデータを選択して下さい。")
+        }
     },
     onSubmitLoad: function(e){
       e.preventDefault();
       if(this.state.selectedData != ''){
-          dataForLoad = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
+          var dataForLoad = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
 
           // これは will receive props が発火したあとしか反映されない
           this.setState({dataName: this.state.selectedData});
-          this.props.onLoadNewData(this.state.selectedData)
+          this.props.onLoadNewData(this.state.selectedData, dataForLoad)
       } else {
           alert("読み込むデータを選択して下さい。")
       }
@@ -511,7 +526,6 @@ var Sys = React.createClass({
           var saveString = Base64.encodeURI(JSON.stringify(newState.storedData));
           localStorage.setItem("data", saveString);
 
-          dataForLoad = propsdata;
           this.setState(newState);
       } else {
           alert("データ名を入力して下さい。")
