@@ -1,6 +1,6 @@
 var React = require('react');
 var intl = require('./translate.js')
-var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Button, ButtonGroup} = require('react-bootstrap');
+var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Label, Button, ButtonGroup} = require('react-bootstrap');
 var {ColP} = require('./gridp.js')
 var GlobalConst = require('./global_const.js')
 
@@ -75,7 +75,7 @@ var SummonList = React.createClass({
             // componentWillReceivePropsで読み出されるようにする
             var newArrayForCopy = this.state.arrayForCopy;
             newArrayForCopy[id + 1] = JSON.parse(JSON.stringify(state));
-            this.setState(newArrayForCopy);
+            this.setState({arrayForCopy: newArrayForCopy});
 
             // smlist側の更新
             var newsmlist = this.state.smlist;
@@ -91,7 +91,7 @@ var SummonList = React.createClass({
         // componentWillReceivePropsで読み出されるようにする
         var newArrayForCopy = this.state.arrayForCopy;
         newArrayForCopy[id] = initialState;
-        this.setState(newArrayForCopy);
+        this.setState({arrayForCopy: newArrayForCopy});
 
         // smlist側の更新
         var newsmlist = this.state.smlist;
@@ -268,6 +268,8 @@ var Summon = React.createClass({
         }
         return (
             <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
+                <h3><Label bsStyle="primary">Summon No.{this.props.id+1}</Label></h3>
+
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
                         <tr>
