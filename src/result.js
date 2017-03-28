@@ -197,25 +197,28 @@ var ResultList = React.createClass({
             var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
 
             if(totals[key]["typeBonus"] != 1.5) {
+                var damageUP = 0.0
                 var criticalRatio = 1.0
             } else {
+                var damageUP = totals[key]["tenshiDamageUP"]
                 var criticalRatio = this.calculateCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
             }
+
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] + totals[key]["ougiGageBuff"]- totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
             var expectedTurn = 100.0 / expectedOugiGage
             var additionalDamage = (0.01 * totals[key]["additionalDamage"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
 
             // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
-            var damage = this.calculateDamage(criticalRatio * totalAttack, prof.enemyDefense, additionalDamage, totals[key]["damageUP"])
+            var damage = this.calculateDamage(criticalRatio * totalAttack, prof.enemyDefense, additionalDamage, damageUP)
 
             // クリティカル無しの場合のダメージを技巧期待値の補正に使う
-            var damageWithoutCritical = this.calculateDamage(totalAttack, prof.enemyDefense, additionalDamage, totals[key]["damageUP"])
+            var damageWithoutCritical = this.calculateDamage(totalAttack, prof.enemyDefense, additionalDamage, damageUP)
 
             // 実質の技巧期待値
             var effectiveCriticalRatio = damage/damageWithoutCritical
 
-            var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"], totals[key]["damageUP"])
+            var ougiDamage = this.calculateOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"], damageUP)
 
             var expectedCycleDamage = ougiDamage + expectedTurn * expectedAttack * damage
             var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0)
@@ -237,7 +240,7 @@ var ResultList = React.createClass({
             coeffs["ougiDamageBuff"] = totals[key]["ougiDamageBuff"];
             coeffs["hpRatio"] = hpCoeff
             coeffs["additionalDamage"] = additionalDamage
-            coeffs["damageUP"] = totals[key]["damageUP"]
+            coeffs["damageUP"] = damageUP
 
             // 連撃情報
             coeffs["normalDA"] = armDAupNormal
@@ -694,9 +697,9 @@ var ResultList = React.createClass({
                             //! 四大天司の祝福
                             } else if(stype == 'tenshiShukufuku'){
                                 if(amount == 'M') {
-                                    totals[key]["damageUP"] += comb[i] * 0.10;
+                                    totals[key]["tenshiDamageUP"] += comb[i] * 0.10;
                                 } else if (amount == 'L') {
-                                    totals[key]["damageUP"] += comb[i] * 0.20;
+                                    totals[key]["tenshiDamageUP"] += comb[i] * 0.20;
                                 }
                             //! 4凸武器スキル
                             } else if(stype == 'tsuranukiKiba'){
@@ -802,7 +805,7 @@ var ResultList = React.createClass({
             totals[key]["cosmosBL"] = 0; totals[key]["cosmosAT"] = 0;
             totals[key]["additionalDamage"] = 0; totals[key]["ougiDebuff"] = 0;
             totals[key]["DAbuff"] = 0; totals[key]["TAbuff"] = 0;
-            totals[key]["debuffResistance"] = 0; totals[key]["damageUP"] = 0;
+            totals[key]["debuffResistance"] = 0; totals[key]["tenshiDamageUP"] = 0;
         }
     },
     getTotalBuff: function(prof) {
@@ -842,7 +845,7 @@ var ResultList = React.createClass({
             }
         }
 
-        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0, damageUP: 0}};
+        var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0, tenshiDamageUP: 0}};
 
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "") {
@@ -868,7 +871,7 @@ var ResultList = React.createClass({
                     }
                 }
 
-                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0, damageUP: 0}
+                totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0, tenshiDamageUP: 0}
             }
         }
 
