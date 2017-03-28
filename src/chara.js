@@ -40,6 +40,7 @@ var CharaList = React.createClass({
             addChara: null,
             addCharaID: -1,
             openPresets: false,
+            arrayForCopy: {},
         };
     },
     updateCharaNum: function(num) {
@@ -65,9 +66,9 @@ var CharaList = React.createClass({
         this.setState({openPresets: true})
     },
     componentDidMount: function(){
-       if(this.props.dataForLoad != undefined) {
-           this.setState({charalist: this.props.dataForLoad})
-       }
+        if(this.props.dataForLoad != undefined) {
+            this.setState({charalist: this.props.dataForLoad})
+        }
     },
     componentWillReceiveProps: function(nextProps) {
         if(nextProps.dataName != this.props.dataName) {
@@ -98,31 +99,24 @@ var CharaList = React.createClass({
         newState["addChara"] = null
         this.setState(newState)
     },
-    handleOnRemove: function(id, keyid, state) {
-        var newcharas = this.state.charas
-        var maxvalue = Math.max.apply(null, newcharas)
-
-        // 該当の "key" を持つものを削除する
-        newcharas.splice(id, 1)
-        // 1個補充
-        newcharas.push(maxvalue + 1)
-        this.setState({charalist: newcharas})
-
-        // dataForLoadにinitial stateを入れておいて、componentDidMountで読み出されるようにする
-        if(!("chara" in dataForLoad)) {
-            dataForLoad["chara"] = {}
-        }
-        dataForLoad.chara[newcharas.length - 1] = state;
+    handleOnRemove: function(id, initialState) {
+        // arrayForCopy に initial state を入れておいて、
+        // componentWillReceivePropsで読み出されるようにする
+        var newArrayForCopy = this.state.arrayForCopy;
+        newArrayForCopy[id] = JSON.parse(JSON.stringify(initialState));
+        this.setState({arrayForCopy: newArrayForCopy});
 
         var newcharalist = this.state.charalist;
-        // 削除した分をlistからも削除
-        newcharalist.splice(id, 1)
-        // 1個補充
-        newcharalist.push(state)
+        newcharalist[id] = initialState
         this.setState({charalist: newcharalist})
 
         // Root へ変化を伝搬
         this.props.onChange(newcharalist, false);
+    },
+    copyCompleted: function(id) {
+        var state = this.state;
+        delete state["arrayForCopy"][id];
+        this.setState(state);
     },
     handleMoveUp: function(id){
         if(id > 0) {
@@ -197,6 +191,8 @@ var CharaList = React.createClass({
         var handleMoveDown = this.handleMoveDown
         var openPresets = this.openPresets
         var dataForLoad = this.props.dataForLoad
+        var arrayForCopy = this.state.arrayForCopy;
+        var copyCompleted = this.copyCompleted;
 
         return (
             <div className="charaList">
@@ -207,7 +203,7 @@ var CharaList = React.createClass({
                 <Grid fluid style={{"width": "100%"}} >
                     <Row>
                     {charas.map(function(c, ind) {
-                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} />;
+                        return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} copyCompleted={copyCompleted} arrayForCopy={arrayForCopy[ind]} />;
                     })}
                     </Row>
                 </Grid>
@@ -264,14 +260,6 @@ var Chara = React.createClass({
            return 0
        }
 
-       // もし arrayForCopy に自分に該当するキーがあるなら読み込む
-       // (コピーの場合)
-       if(this.props.arrayForCopy != undefined) {
-           state = this.props.arrayForCopy;
-           this.setState(state)
-           return 0;
-       }
-
        // もし addCharaIDが設定されていて、自分と一致しているなら読み込む
        if(this.props.addChara != null && this.props.id == this.props.addCharaID ) {
            var newchara = this.props.addChara
@@ -291,6 +279,15 @@ var Chara = React.createClass({
                 this.setState(state)
                 return 0;
             }
+        }
+
+        // もし arrayForCopy に自分に該当するキーがあるなら読み込む
+        // (Charaの場合はコピーはなく、削除のみ)
+        if(nextProps.arrayForCopy != undefined) {
+            state = nextProps.arrayForCopy;
+            this.setState(state)
+            this.props.copyCompleted(this.props.id);
+            return 0;
         }
 
         if(nextProps.defaultElement != this.props.defaultElement) {
@@ -354,7 +351,7 @@ var Chara = React.createClass({
         }
     },
     clickRemoveButton: function(e) {
-        this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
+        this.props.onRemove(this.props.id, this.getInitialState())
     },
     clickMoveUp: function(e) {
         this.props.onMoveUp(this.props.id)
