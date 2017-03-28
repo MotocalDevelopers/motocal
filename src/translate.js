@@ -1715,6 +1715,14 @@ var multiLangData = {
         "en": "28/03/2017: Fixed problems on data loading from browser.",
         "ja": "2017/03/28: ブラウザデータロード時に正しく読み込まれないことがあるバグを修正.",
     },
+    "notice-20170329-1": {
+        "en": "29/03/2017: Fixed bugs.",
+        "ja": "2017/03/29: 霧氷の追牙に神石効果が乗らない不具合を修正 / 天司スキルが非有利の場合でも計算されてしまう不具合を修正.",
+    },
+    "notice-20170329-2": {
+        "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
+        "ja": "天司スキルについて計算する場合、優先項目をダメージベースのものに設定してください..",
+    },
 }
 
 // 言語設定
