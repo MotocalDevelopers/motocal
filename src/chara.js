@@ -65,7 +65,6 @@ var CharaList = React.createClass({
         this.setState({openPresets: true})
     },
     componentDidMount: function(){
-       console.log("charalist data load:", this.props.dataForLoad)
        if(this.props.dataForLoad != undefined) {
            this.setState({charalist: this.props.dataForLoad})
        }
@@ -258,7 +257,6 @@ var Chara = React.createClass({
        // もし dataForLoad に自分に該当するキーがあるなら読み込む
        // (データロード時に新しく増えたコンポーネント用)
        var chara = this.props.dataForLoad
-       console.log("[" + this.props.id + "] chara data load:", this.props.dataForLoad)
        if( chara != undefined && this.props.id in chara ){
            state = chara[this.props.id]
            this.setState(state)
@@ -285,11 +283,8 @@ var Chara = React.createClass({
     },
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
-       console.log("[" + this.props.id + "] next props data:", nextProps.dataName)
-       console.log("[" + this.props.id + "] this props data:", this.props.dataName)
-       console.log("[" + this.props.id + "] chara data load:", this.props.dataForLoad)
         if(nextProps.dataName != this.props.dataName) {
-            var chara = this.props.dataForLoad
+            var chara = nextProps.dataForLoad
             if( chara != undefined && this.props.id in chara ){
                 state = chara[this.props.id]
                 this.setState(state)
