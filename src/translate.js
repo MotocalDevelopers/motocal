@@ -1707,6 +1707,10 @@ var multiLangData = {
         "en": "17/03/2017: Implemented Angel's blessing II. / Added Seraphim weapon (SSR) templates",
         "ja": "2017/03/17: 天司の祝福II(与ダメージアップ20%)を実装. / 天司武器SSRを追加.",
     },
+    "notice-20170328-1": {
+        "en": "28/03/2017: Fixed problems on data loading from browser.",
+        "ja": "2017/03/28: ブラウザデータロード時に正しく読み込まれないことがあるバグを修正.",
+    },
 }
 
 // 言語設定

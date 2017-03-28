@@ -13,6 +13,7 @@ var Notice = React.createClass ({
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
             <h2>更新履歴</h2>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">{intl.translate("notice-20170328-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170317-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170315-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170312-2", locale)}</li>
