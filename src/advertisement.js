@@ -8,12 +8,18 @@ var Advertisement = React.createClass({
         admax.className = '';
         ReactDOM.findDOMNode(this.refs["admax-space"]).appendChild(admax);
     },
+    showUpAdstir: function() {
+        var adstir = document.getElementById("adstir-original-div");
+        adstir.className = '';
+        ReactDOM.findDOMNode(this.refs["adstir-space"]).appendChild(adstir);
+    },
     componentDidMount: function() {
-        this.showUpAdmax();
+        this.showUpAdstir();
     },
     render: function() {
         return (
             <div style={{width: "100%"}}>
+              <div ref="adstir-space"></div>
               <div ref="admax-space"></div>
             </div>
         );
