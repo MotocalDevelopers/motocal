@@ -26,6 +26,8 @@ var enemyDefenseType = GlobalConst.enemyDefenseType
 
 var SummonList = React.createClass({
     getInitialState: function() {
+        // summonsはkey管理のためだけの配列
+        // summonsのindexが表示順 = Summonのprops.idになる
         var sm = []
         for(var i=0; i < this.props.summonNum; i++) { sm.push(i); }
 
@@ -67,56 +69,40 @@ var SummonList = React.createClass({
         }
         this.updateSummonNum(nextProps.summonNum)
     },
-    handleOnCopy: function(id, keyid, state) {
-        var newsummons = this.state.summons
-        var maxvalue = Math.max.apply(null, newsummons)
-
-        newsummons.splice(id + 1, 0, maxvalue + 1)
-        newsummons.pop();
-        this.setState({summons: newsummons})
-
+    handleOnCopy: function(id, state) {
         // arrayForCopyにコピー対象のstateを入れておいて、
-        // componentDidMountで読み出されるようにする
+        // componentWillReceivePropsで読み出されるようにする
         var newArrayForCopy = this.state.arrayForCopy;
-        newArrayForCopy[id + 1] = state;
+        newArrayForCopy[id + 1] = JSON.parse(JSON.stringify(state));
         this.setState(newArrayForCopy);
 
         // smlist側の更新
         var newsmlist = this.state.smlist;
-        newsmlist.splice(id + 1, 0, state)
-        newsmlist.pop();
+        newsmlist[id + 1] = JSON.parse(JSON.stringify(state))
         this.setState({smlist: newsmlist})
 
         // Root へ変化を伝搬
         this.props.onChange(newsmlist);
     },
-    handleOnRemove: function(id, keyid, state) {
-        // 第3引数の state は初期stateが入っている
-        var newsummons = this.state.summons
-        var maxvalue = Math.max.apply(null, newsummons)
-
-        // 該当の "key" を持つものを削除する
-        newsummons.splice(this.state.summons.indexOf(keyid), 1)
-        // 1個補充
-        newsummons.push(maxvalue + 1)
-        this.setState({summons: newsummons})
-
+    handleOnRemove: function(id, initialState) {
         // arrayForCopyに初期stateを入れておいて、
-        // componentDidMountで読み出されるようにする
-        // (二重にonChangeが呼び出されることを防ぐ)
+        // componentWillReceivePropsで読み出されるようにする
         var newArrayForCopy = this.state.arrayForCopy;
-        newArrayForCopy[newsummons.length - 1] = state;
+        newArrayForCopy[id] = initialState;
         this.setState(newArrayForCopy);
 
+        // smlist側の更新
         var newsmlist = this.state.smlist;
-        // 削除した分をalistからも削除
-        newsmlist.splice(id, 1)
-        // 1個補充
-        newsmlist.push(state)
+        newsmlist[id] = initialState;
         this.setState({smlist: newsmlist})
 
         // Root へ変化を伝搬
         this.props.onChange(newsmlist);
+    },
+    copyCompleted: function(id) {
+        var state = this.state;
+        delete state["arrayForCopy"][id];
+        this.setState(state);
     },
     handleOnChange: function(key, state){
         var newsmlist = this.state.smlist;
@@ -139,6 +125,7 @@ var SummonList = React.createClass({
         var defaultElement = this.state.defaultElement;
         var dataForLoad = this.props.dataForLoad;
         var arrayForCopy = this.state.arrayForCopy;
+        var copyCompleted = this.copyCompleted;
 
         return (
             <div className="summonList">
@@ -148,7 +135,7 @@ var SummonList = React.createClass({
                 <Grid fluid>
                     <Row>
                     {summons.map(function(sm, ind) {
-                        return <Summon key={sm} keyid={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} locale={locale} dataForLoad={dataForLoad} arrayForCopy={arrayForCopy[ind]}/>;
+                        return <Summon key={sm} onRemove={hRemove} onCopy={hCopy} onChange={hChange} id={ind} dataName={dataName} defaultElement={defaultElement} copyCompleted={copyCompleted} locale={locale} dataForLoad={dataForLoad} arrayForCopy={arrayForCopy[ind]}/>;
                     })}
                     </Row>
                 </Grid>
@@ -191,14 +178,6 @@ var Summon = React.createClass({
            }
        }
 
-       // もし arrayForCopy に自分に該当するキーがあるなら読み込む
-       // (コピーの場合)
-       if(this.props.arrayForCopy != undefined) {
-           var state = this.props.arrayForCopy;
-           this.setState(state)
-           return 0;
-       }
-
        // 初期化後 state を 上の階層に渡しておく
        // summonList では onChange が勝手に上に渡してくれるので必要なし
        this.props.onChange(this.props.id, state);
@@ -214,6 +193,15 @@ var Summon = React.createClass({
                    this.setState(summon[this.props.id])
                }
             }
+            return 0;
+        }
+
+        // もし arrayForCopy に自分に該当するキーがあるなら読み込む
+        // コピー(またはリセット)後はSummonListに伝えて該当データを消す
+        if(nextProps.arrayForCopy != undefined) {
+            var state = nextProps.arrayForCopy;
+            this.setState(state)
+            this.props.copyCompleted(this.props.id);
             return 0;
         }
 
@@ -240,10 +228,10 @@ var Summon = React.createClass({
         this.props.onChange(this.props.id, this.state)
     },
     clickRemoveButton: function(e) {
-        this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
+        this.props.onRemove(this.props.id, this.getInitialState())
     },
     clickCopyButton: function(e, state) {
-        this.props.onCopy(this.props.id, this.props.keyid, this.state)
+        this.props.onCopy(this.props.id, this.state)
     },
     handleSummonAmountChange(type, ind, e){
         var newState = this.state
