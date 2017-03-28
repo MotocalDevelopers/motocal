@@ -74,8 +74,8 @@ var ArmList = React.createClass({
         this.setState({arms: arms})
     },
     componentWillReceiveProps: function(nextProps) {
-        if(nextProps.dataName != this.props.dataName && (this.props.dataForLoad =! undefined) ) {
-            this.setState({alist: this.props.dataForLoad});
+        if(nextProps.dataName != this.props.dataName && (nextProps.dataForLoad =! undefined) ) {
+            this.setState({alist: nextProps.dataForLoad});
             return 0;
         }
 
@@ -237,8 +237,8 @@ var Arm = React.createClass({
     componentWillReceiveProps: function(nextProps){
         // only fired on Data Load
         if(nextProps.dataName != this.props.dataName) {
-            if( (this.props.dataForLoad != undefined) && this.props.id in this.props.dataForLoad) {
-                var newState = this.props.dataForLoad[this.props.id]
+            if( (nextProps.dataForLoad != undefined) && this.props.id in nextProps.dataForLoad) {
+                var newState = nextProps.dataForLoad[this.props.id]
                 this.setState(newState);
                 return 0;
             }
