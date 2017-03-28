@@ -16,7 +16,6 @@ var intl = require('./translate.js')
 var _ua = GlobalConst._ua;
 
 // query 取得用の関数
-var urldata = getVarInQuery("data");
 var urlid = getVarInQuery("id")
 
 function getVarInQuery(key){
@@ -119,8 +118,6 @@ var Root = React.createClass({
               initState["dataForLoad"]["armlist"] = initState.armlist
               initState["dataForLoad"]["simulator"] = initState.simulator
 
-              console.log("Root state:", initState)
-              console.log("DataForLoad:", initState.dataForLoad)
               this.setState(initState);
           }.bind(this),
           error: function(xhr, status, err) {
@@ -129,13 +126,6 @@ var Root = React.createClass({
       });
   },
   componentDidMount: function(){
-      if(urldata != ''){
-          var initState = JSON.parse(Base64.decode(urldata));
-          initState["dataName"] = "urlData"
-          dataForLoad = initState
-          this.setState(initState);
-      }
-
       if(urlid != ''){
           this.getDatacharById(urlid);
       }
@@ -557,7 +547,7 @@ var Sys = React.createClass({
       }
     },
     onSubmitUpload: function(e){
-      console.log("データアップロードテスト")
+        console.log("データアップロードテスト")
     },
     render: function() {
         var locale = this.props.locale;
