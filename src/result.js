@@ -207,7 +207,9 @@ var ResultList = React.createClass({
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] + totals[key]["ougiGageBuff"]- totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
             var expectedTurn = 100.0 / expectedOugiGage
-            var additionalDamage = (0.01 * totals[key]["additionalDamage"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
+
+            // "additionalDamage"はノーマル枠として神石効果を考慮
+            var additionalDamage = (0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
 
             // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
             var damage = this.calculateDamage(criticalRatio * totalAttack, prof.enemyDefense, additionalDamage, damageUP)
