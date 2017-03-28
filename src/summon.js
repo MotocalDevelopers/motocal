@@ -70,19 +70,21 @@ var SummonList = React.createClass({
         this.updateSummonNum(nextProps.summonNum)
     },
     handleOnCopy: function(id, state) {
-        // arrayForCopyにコピー対象のstateを入れておいて、
-        // componentWillReceivePropsで読み出されるようにする
-        var newArrayForCopy = this.state.arrayForCopy;
-        newArrayForCopy[id + 1] = JSON.parse(JSON.stringify(state));
-        this.setState(newArrayForCopy);
+        if(id < this.props.summonNum - 1) {
+            // arrayForCopyにコピー対象のstateを入れておいて、
+            // componentWillReceivePropsで読み出されるようにする
+            var newArrayForCopy = this.state.arrayForCopy;
+            newArrayForCopy[id + 1] = JSON.parse(JSON.stringify(state));
+            this.setState(newArrayForCopy);
 
-        // smlist側の更新
-        var newsmlist = this.state.smlist;
-        newsmlist[id + 1] = JSON.parse(JSON.stringify(state))
-        this.setState({smlist: newsmlist})
+            // smlist側の更新
+            var newsmlist = this.state.smlist;
+            newsmlist[id + 1] = JSON.parse(JSON.stringify(state))
+            this.setState({smlist: newsmlist})
 
-        // Root へ変化を伝搬
-        this.props.onChange(newsmlist);
+            // Root へ変化を伝搬
+            this.props.onChange(newsmlist);
+        }
     },
     handleOnRemove: function(id, initialState) {
         // arrayForCopyに初期stateを入れておいて、
