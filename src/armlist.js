@@ -50,6 +50,7 @@ var ArmList = React.createClass({
             addArmID: -1,
             considerNum: 1,
             openPresets: false,
+            arrayForCopy: {},
         };
     },
     closePresets: function() {
@@ -92,47 +93,40 @@ var ArmList = React.createClass({
             this.updateArmNum(nextProps.armNum)
         }
     },
-    handleOnCopy: function(id, keyid, state) {
-        var newarms = this.state.arms
-        var maxvalue = Math.max.apply(null, newarms)
+    handleOnCopy: function(id, state) {
+        if(id < this.props.armNum - 1) {
+            // arrayForCopyにコピー対象のstateを入れておいて、
+            // componentWillReceivePropsで読み出されるようにする
+            var newArrayForCopy = this.state.arrayForCopy;
+            newArrayForCopy[id + 1] = JSON.parse(JSON.stringify(state));
+            this.setState({arrayForCopy: newArrayForCopy});
 
-        newarms.splice(id + 1, 0, maxvalue + 1)
-        newarms.pop();
-        this.setState({arms: newarms})
+            var newalist = this.state.alist;
+            newalist[id + 1] = JSON.parse(JSON.stringify(state))
+            this.setState({alist: newalist})
 
-        // dataForLoadにコピー対象のstateを入れておいて、componentDidMountで読み出されるようにする
-        // dataForLoad.armlist[id + 1] = state;
+            // Root へ変化を伝搬
+            this.props.onChange(newalist, false);
+        }
+    },
+    handleOnRemove: function(id, initialState) {
+        // arrayForCopyに初期stateを入れておいて、
+        // componentWillReceivePropsで読み出されるようにする
+        var newArrayForCopy = this.state.arrayForCopy;
+        newArrayForCopy[id] = initialState;
+        this.setState({arrayForCopy: newArrayForCopy});
 
         var newalist = this.state.alist;
-        newalist.splice(id + 1, 0, state)
-        newalist.pop();
+        newalist[id] = initialState;
         this.setState({alist: newalist})
 
         // Root へ変化を伝搬
         this.props.onChange(newalist, false);
     },
-    handleOnRemove: function(id, keyid, state) {
-        var newarms = this.state.arms
-        var maxvalue = Math.max.apply(null, newarms)
-
-        // 該当の "key" を持つものを削除する
-        newarms.splice(this.state.arms.indexOf(keyid), 1)
-        // 1個補充
-        newarms.push(maxvalue + 1)
-        this.setState({arms: newarms})
-
-        //dataForLoadにinitial stateを入れておいて、componentDidMountで読み出されるようにする
-        // dataForLoad.armlist[newarms.length - 1] = state;
-
-        var newalist = this.state.alist;
-        // 削除した分をalistからも削除
-        newalist.splice(id, 1)
-        // 1個補充
-        newalist.push(state)
-        this.setState({alist: newalist})
-
-        // Root へ変化を伝搬
-        this.props.onChange(newalist, false);
+    copyCompleted: function(id) {
+        var state = this.state;
+        delete state["arrayForCopy"][id];
+        this.setState(state);
     },
     handleOnChange: function(key, state, isSubtle){
         var newalist = this.state.alist;
@@ -189,6 +183,8 @@ var ArmList = React.createClass({
         var considerNum = this.state.considerNum;
         var openPresets = this.openPresets;
         var dataForLoad = this.props.dataForLoad
+        var arrayForCopy = this.state.arrayForCopy;
+        var copyCompleted = this.copyCompleted;
 
         return (
             <div className="armList">
@@ -199,7 +195,7 @@ var ArmList = React.createClass({
                 <Grid fluid>
                     <Row>
                         {arms.map(function(arm, ind) {
-                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} />;
+                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} arrayForCopy={arrayForCopy[ind]} copyCompleted={copyCompleted} />;
                         })}
                     </Row>
                 </Grid>
@@ -242,6 +238,15 @@ var Arm = React.createClass({
                 this.setState(newState);
                 return 0;
             }
+        }
+
+        // もし arrayForCopy に自分に該当するキーがあるなら読み込む
+        // コピー(またはリセット)後は ArmList に伝えて該当データを消す
+        if(nextProps.arrayForCopy != undefined) {
+            var state = nextProps.arrayForCopy;
+            this.setState(state)
+            this.props.copyCompleted(this.props.id);
+            return 0;
         }
 
         if(nextProps.defaultElement != this.props.defaultElement) {
@@ -380,10 +385,10 @@ var Arm = React.createClass({
         }
     },
     clickRemoveButton: function(e) {
-        this.props.onRemove(this.props.id, this.props.keyid, this.getInitialState())
+        this.props.onRemove(this.props.id, this.getInitialState())
     },
     clickCopyButton: function(e, state) {
-        this.props.onCopy(this.props.id, this.props.keyid, this.state)
+        this.props.onCopy(this.props.id, this.state)
     },
     openPresets: function(e) {
         if(e.target.value == "" && this.state.attack == 0) {
