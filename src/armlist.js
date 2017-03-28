@@ -1,6 +1,6 @@
 var React = require('react');
 
-var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Label, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var GlobalConst = require('./global_const.js')
 var {ColP} = require('./gridp.js')
 var {RegisteredArm} = require('./template.js')
@@ -123,6 +123,38 @@ var ArmList = React.createClass({
         // Root へ変化を伝搬
         this.props.onChange(newalist, false);
     },
+    handleMoveUp: function(id){
+        if(id > 0) {
+            var newarms = this.state.arms
+
+            // swap
+            newarms.splice(id - 1, 2, newarms[id], newarms[id - 1])
+            this.setState({arms: newarms})
+
+            var newalist = this.state.alist;
+            newalist.splice(id - 1, 2, newalist[id], newalist[id - 1])
+            this.setState({alist: newalist})
+
+            // Root へ変化を伝搬
+            this.props.onChange(newalist, false);
+        }
+    },
+    handleMoveDown: function(id){
+        if(id < this.props.armNum - 1) {
+            var newarms = this.state.arms
+
+            // charas swap
+            newarms.splice(id, 2, newarms[id + 1], newarms[id])
+            this.setState({arms: newarms})
+
+            // charalist swap
+            var newalist = this.state.alist;
+            newalist.splice(id, 2, newalist[id + 1], newalist[id])
+            this.setState({alist: newalist})
+            // Root へ変化を伝搬
+            this.props.onChange(newalist, false);
+        }
+    },
     copyCompleted: function(id) {
         var state = this.state;
         delete state["arrayForCopy"][id];
@@ -177,6 +209,8 @@ var ArmList = React.createClass({
         var hChange = this.handleOnChange;
         var hRemove = this.handleOnRemove;
         var hCopy = this.handleOnCopy;
+        var hMoveUp = this.handleMoveUp;
+        var hMoveDown = this.handleMoveDown;
         var defaultElement = this.state.defaultElement;
         var addArm = this.state.addArm;
         var addArmID = this.state.addArmID;
@@ -195,7 +229,7 @@ var ArmList = React.createClass({
                 <Grid fluid>
                     <Row>
                         {arms.map(function(arm, ind) {
-                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} arrayForCopy={arrayForCopy[ind]} copyCompleted={copyCompleted} />;
+                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} onMoveUp={hMoveUp} onMoveDown={hMoveDown} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} arrayForCopy={arrayForCopy[ind]} copyCompleted={copyCompleted} />;
                         })}
                     </Row>
                 </Grid>
@@ -390,6 +424,12 @@ var Arm = React.createClass({
     clickCopyButton: function(e, state) {
         this.props.onCopy(this.props.id, this.state)
     },
+    clickMoveUp: function(e) {
+        this.props.onMoveUp(this.props.id)
+    },
+    clickMoveDown: function(e) {
+        this.props.onMoveDown(this.props.id)
+    },
     openPresets: function(e) {
         if(e.target.value == "" && this.state.attack == 0) {
             e.target.blur();
@@ -401,51 +441,74 @@ var Arm = React.createClass({
         var locale = this.props.locale;
 
         return (
-            <ColP sxs={12} xs={6} ssm={4} className="col-bordered">
-                <FormGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("武器名", locale)}　</InputGroup.Addon>
-                    <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onFocus={this.openPresets} onChange={this.handleEvent.bind(this, "name")} />
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("攻撃力", locale)}　</InputGroup.Addon>
-                <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} />
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>HP&nbsp;&nbsp;　　</InputGroup.Addon>
-                    <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} />
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("種類", locale)}　　</InputGroup.Addon>
-                <FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector[locale].armtypes} </FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("スキル", locale)}1&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector[locale].elements} </FormControl>
-                    <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector[locale].skills}</FormControl><br/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("スキル", locale)}2&nbsp;</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector[locale].elements} </FormControl>
-                    <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector[locale].skills}</FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>SLv&nbsp;　　</InputGroup.Addon>
-                <FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("最小本数", locale)}</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroup.Addon>{intl.translate("最大本数", locale)}</InputGroup.Addon>
-                    <FormControl componentClass="select" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
-                </InputGroup>
+            <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
+                <h3><Label bsStyle="primary">No.{this.props.id+1}</Label></h3>
+                <table className="table table-sm table-bordered table-responsive">
+                    <tbody>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("武器名", locale)}</th>
+                            <td>
+                                <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.name} onBlur={this.handleOnBlur.bind(this, "name")} onFocus={this.openPresets} onChange={this.handleEvent.bind(this, "name")} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("攻撃力", locale)}</th>
+                            <td>
+                                <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.attack} onBlur={this.handleOnBlur.bind(this, "attack")} onChange={this.handleEvent.bind(this, "attack")} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">HP</th>
+                            <td>
+                                <FormControl type="number" placeholder="0以上の整数" min="0" value={this.state.hp} onBlur={this.handleOnBlur.bind(this, "hp")} onChange={this.handleEvent.bind(this, "hp")} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("種類", locale)}</th>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.armType} onChange={this.handleSelectEvent.bind(this, "armType")} > {selector[locale].armtypes} </FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("スキル", locale)}1</th>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.element} onChange={this.handleSelectEvent.bind(this, "element")} > {selector[locale].elements} </FormControl>
+                            <FormControl componentClass="select" value={this.state.skill1} onChange={this.handleSelectEvent.bind(this, "skill1")} > {selector[locale].skills}</FormControl><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("スキル", locale)}2</th>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.element2} onChange={this.handleSelectEvent.bind(this, "element2")} > {selector[locale].elements} </FormControl>
+                            <FormControl componentClass="select" value={this.state.skill2} onChange={this.handleSelectEvent.bind(this, "skill2")} > {selector[locale].skills}</FormControl><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">SLv</th>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.slv} onChange={this.handleSelectEvent.bind(this, "slv")} > {selector.slv} </FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("最小本数", locale)}</th>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.considerNumberMin} onChange={this.handleSelectEvent.bind(this, "considerNumberMin")} > {selector.consider} </FormControl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("最大本数", locale)}</th>
+                            <td>
+                                <FormControl componentClass="select" value={this.state.considerNumberMax} onChange={this.handleSelectEvent.bind(this, "considerNumberMax")} > {selector.consider} </FormControl>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
-                    <Button bsStyle="primary" style={{"width": "50%", "margin": "2px 0 2px 0"}} onClick={this.clickCopyButton}>{intl.translate("コピー", locale)}</Button>
+                    <Button bsStyle="default" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>{intl.translate("前へ", locale)}</Button>
+                    <Button bsStyle="danger" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
+                    <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>{intl.translate("下にコピー", locale)}</Button>
+                    <Button bsStyle="default" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
                 </ButtonGroup>
-                </FormGroup>
             </ColP>
         );
     }
