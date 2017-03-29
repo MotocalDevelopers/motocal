@@ -1723,6 +1723,10 @@ var multiLangData = {
         "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
         "ja": "天司スキルについて計算する場合、優先項目をダメージベースのものに設定してください..",
     },
+    "notice-20170329-3": {
+        "en": "29/03/2017: Fixed invalid loading if the weapon or summon number is not matched their default number. / Fixed that the server save function was corrupted.",
+        "ja": "2017/03/29: 武器数と召喚石組数が変更されたデータが読み込まれた際に表示がおかしくなるバグを修正 / サーバーに保存機能が動いていなかったバグを修正.",
+    },
 }
 
 // 言語設定

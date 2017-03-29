@@ -57,6 +57,7 @@ var SummonList = React.createClass({
     componentWillReceiveProps: function(nextProps) {
         if(nextProps.dataName != this.props.dataName) {
             this.setState({smlist: nextProps.dataForLoad});
+            this.updateSummonNum(nextProps.summonNum)
             return 0;
         }
 

@@ -77,6 +77,7 @@ var ArmList = React.createClass({
     componentWillReceiveProps: function(nextProps) {
         if(nextProps.dataName != this.props.dataName && (nextProps.dataForLoad =! undefined) ) {
             this.setState({alist: nextProps.dataForLoad});
+            this.updateArmNum(nextProps.armNum)
             return 0;
         }
 
