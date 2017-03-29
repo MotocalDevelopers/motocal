@@ -1291,13 +1291,13 @@ var ResultList = React.createClass({
         // armlistが変更されていないかcheck => 変更されてたら今までの分消す
         var isArmValid = true
         for(var i = 0; i < this.state.storedList.combinations.length; i++) {
-            if(nextProps.data.armlist.length != this.state.storedList.armlist[i].length) {
+            if(nextProps.armlist.length != this.state.storedList.armlist[i].length) {
                 isArmValid = false
                 continue;
             }
-            for(var k = 0; k < nextProps.data.armlist.length; k++){
+            for(var k = 0; k < nextProps.armlist.length; k++){
                 // 名前と攻撃力が同時に変更されていた場合、削除や追加などが起こっていると予想される
-                if(nextProps.data.armlist[k].name != this.state.storedList.armlist[i][k].name && nextProps.data.armlist[k].attack != this.state.storedList.armlist[i][k].attack ) {
+                if(nextProps.armlist[k].name != this.state.storedList.armlist[i][k].name && nextProps.armlist[k].attack != this.state.storedList.armlist[i][k].attack ) {
                     isArmValid = false
                     break;
                 }
