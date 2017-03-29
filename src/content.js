@@ -330,7 +330,6 @@ var Root = React.createClass({
 			</ButtonGroup>
                         <div className="systemList">
                             <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
-                            <TwitterShareButton data={this.state} locale={locale} />
                             <Notice locale={locale} />
                         </div>
                     </div>
@@ -426,7 +425,6 @@ var Root = React.createClass({
                     </div>
                     <div className="Tab hidden" id="systemTab">
                         <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
-                        <TwitterShareButton data={this.state} locale={locale}/>
                         <Notice locale={locale} />
                     </div>
                     <div className="Tab hidden" id="simulatorTab">
@@ -479,11 +477,6 @@ var Sys = React.createClass({
         var newState = this.state
         newState[key] = e.target.value
         this.setState(newState)
-        //
-        // if(key == "dataName") {
-        //     // 短縮URL取得時に使用するために保存しておく
-        //     dataForLoad["dataName"] = e.target.value;
-        // }
     },
     onSubmitRemove: function(e) {
         if(this.state.selectedData != ''){
@@ -591,6 +584,7 @@ var Sys = React.createClass({
                     <Button type="submit" bsStyle="primary" className="systemButton" onClick={this.onSubmitUpload}>{intl.translate("アップロード", locale)}</Button>
                 </FormGroup>
                 */}
+                <TwitterShareButton data={this.props.data} dataName={this.state.dataName} locale={locale} />
             </div>
         );
     }
@@ -598,10 +592,6 @@ var Sys = React.createClass({
 
 // Twitter Button
 var TwitterShareButton = React.createClass ({
-    componentWillReceiveProps: function(nextProps){
-        var datatext = Base64.encodeURI(JSON.stringify(this.props.data))
-        this.setState({datatext: datatext});
-    },
     componentDidMount: function(){
         // localStorage から sharehistory をロードする
         if ("sharehist" in localStorage && localStorage.sharehist != "{}" ) {
@@ -610,18 +600,16 @@ var TwitterShareButton = React.createClass ({
         }
     },
     getInitialState: function() {
-        var datatext = Base64.encodeURI(JSON.stringify(this.props.data))
         return {
             shareurl: "",
             shareurl_history: {},
-            datatext: datatext,
         };
     },
     getShortenUrl: function() {
         var data = JSON.parse(JSON.stringify(this.props.data));
-        if("dataName" in dataForLoad && dataForLoad["dataName"] != '') {
+        if(this.props.dataName != '') {
             // 基本的にSys.dataNameに入力されているものをベースにして保存
-            data["dataName"] = dataForLoad["dataName"];
+            data["dataName"] = this.props.dataName;
         } else {
             // Sys.dataNameが空の場合
             data["dataName"] = "savedData";
