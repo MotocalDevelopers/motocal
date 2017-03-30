@@ -377,39 +377,41 @@ var Root = React.createClass({
                         <NavItem eventKey="simulatorTab"><s>Simu</s></NavItem>
                         <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
                     </Nav>
-                    <div className="Tab" id="inputTab">
-                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} dataForLoad={this.state.dataForLoad.profile} />
-                    </div>
-                    <div className="Tab hidden" id="summonTab">
-                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} dataForLoad={this.state.dataForLoad.summon} />
-                        <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
-                        </ButtonGroup>
-                    </div>
-                    <div className="Tab hidden" id="charaTab">
-                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} dataForLoad={this.state.dataForLoad.chara}/>
-                        <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
-                        </ButtonGroup>
-                    </div>
-                    <div className="Tab hidden" id="armTab">
-                        <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddCharaNum={this.addCharaNum} pleaseAddArmNum={this.addArmNum} locale={locale} dataForLoad={this.state.dataForLoad.armlist}/>
-                        <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
-                        </ButtonGroup>
-                    </div>
-                    <div className="Tab hidden" id="systemTab">
-                        <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
-                        <Notice locale={locale} />
-                    </div>
-                    <div className="Tab hidden" id="simulatorTab">
-                        <SimulatorInput dataName={this.state.dataName} dataForLoad={this.state.dataForLoad.simulator} chara={this.state.chara} onChange={this.onChangeSimulationData} />
+                    <div className="main-content">
+                        <div className="Tab" id="inputTab">
+                            <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} dataForLoad={this.state.dataForLoad.profile} />
+                        </div>
+                        <div className="Tab hidden" id="summonTab">
+                            <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} dataForLoad={this.state.dataForLoad.summon} />
+                            <ButtonGroup className="addRemoveButtonGroup">
+                                <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}</Button>
+                                <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
+                            </ButtonGroup>
+                        </div>
+                        <div className="Tab hidden" id="charaTab">
+                            <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} dataForLoad={this.state.dataForLoad.chara}/>
+                            <ButtonGroup className="addRemoveButtonGroup">
+                                <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}</Button>
+                                <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
+                            </ButtonGroup>
+                        </div>
+                        <div className="Tab hidden" id="armTab">
+                            <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddCharaNum={this.addCharaNum} pleaseAddArmNum={this.addArmNum} locale={locale} dataForLoad={this.state.dataForLoad.armlist}/>
+                            <ButtonGroup className="addRemoveButtonGroup">
+                                <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}</Button>
+                                <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
+                            </ButtonGroup>
+                        </div>
+                        <div className="Tab hidden" id="systemTab">
+                            <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
+                            <Notice locale={locale} />
+                        </div>
+                        <div className="Tab hidden" id="simulatorTab">
+                            <SimulatorInput dataName={this.state.dataName} dataForLoad={this.state.dataForLoad.simulator} chara={this.state.chara} onChange={this.onChangeSimulationData} />
+                        </div>
                     </div>
                 </div>
-                <div draggable="true" className="drag-hr bg-info" onDragEnd={this.onDragEnd}></div>
+                <div draggable="true" className="drag-hr" onDragEnd={this.onDragEnd}></div>
                 <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
                     <ResultList
                         profile={this.state.profile}

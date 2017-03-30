@@ -5,7 +5,9 @@ body {
     font-weight: bold;
     padding-bottom: 10px;
     width : 99%;
+    height: 100%;
 }
+
 [draggable] {
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -42,11 +44,6 @@ select, option {
     color: #000;
 }
 
-.divright {
-    text-align: right;
-    display: inline;
-}
-
 .charainfo {
     text-align: left;
     font-size: 9pt;
@@ -79,28 +76,30 @@ div.Tab.hidden {
 
 .rootleft {
     width: 45%;
-    height: 100%;
+    height: 95%;
     float: left;
     overflow: auto;
-    border-right:2px solid #116;
+    border-right:1px solid #116;
     padding-right:3px;
-}
-
-@media screen and (min-device-width: 481px) and (max-device-width: 768px) {
-    .rootleft {
-        -webkit-overflow-scrolling: touch;
-    }
-    .rootright {
-        -webkit-overflow-scrolling: touch;
-    }
+    overflow-x: visible;
+    overflow-y: visible;
 }
 
 .rootright {
     width: calc(100% - 45% - 12px);
-    height: 100%;
+    height: 95%;
     margin-left:5px;
     float: left;
-    overflow: auto;
+    overflow-x: visible;
+    overflow-y: scroll;
+}
+
+.main-content {
+    width: 100%;
+    height: 82%;
+    overflow-x: visible;
+    overflow-y: scroll;
+    padding: 0px 5px;
 }
 
 div.drag-hr {
@@ -243,17 +242,19 @@ div.result {
 }
 
 ::-webkit-scrollbar {
-    width: 3px;
+    width: 2px;
 }
 
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 3px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 3px;
+    border-radius: 2px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 
 .form-control {
