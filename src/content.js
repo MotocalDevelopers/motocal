@@ -320,21 +320,23 @@ var Root = React.createClass({
                          />
                     </div>
                     <div className="Tab hidden" id="systemTab">
-			<ButtonGroup>
-			    <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
-			    <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
-			    <DropdownButton title={intl.translate("使い方", locale)}>
-				<MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
-				<MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
-			    </DropdownButton>
-			</ButtonGroup>
+                        <ButtonGroup>
+                            <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
+                            <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
+                            <DropdownButton title={intl.translate("使い方", locale)}>
+                                <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
+                                <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
+                            </DropdownButton>
+                        </ButtonGroup>
                         <div className="systemList">
                             <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
                             <Notice locale={locale} />
                         </div>
                     </div>
                 </div>
-		<Nav className="footerNav" bsStyle="pills" activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
+                <Nav className="footerNav" bsStyle="pills" 
+                    activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey}
+                    onSelect={this.handleChangeTab}>
                     <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
                     <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
                     <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
@@ -367,30 +369,6 @@ var Root = React.createClass({
                             </ButtonGroup>
                         </Navbar.Form>
                     </Navbar>
-                    <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>元カレ計算機について</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <HowTo />
-                        </Modal.Body>
-                    </Modal>
-                    <Modal className="howTo" show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <NiteHowTo />
-                        </Modal.Body>
-                    </Modal>
-                    <Modal className="howTo" show={this.state.openSimulatorHowTo} onHide={this.closeSimulatorHowTo}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>ダメージシミュレータについて</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <SimulatorInput.HowTo />
-                        </Modal.Body>
-                    </Modal>
                     <Nav bsStyle="tabs" justified activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
                         <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
                         <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
@@ -445,6 +423,30 @@ var Root = React.createClass({
                         locale={locale}
                      />
                 </div>
+                <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>元カレ計算機について</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <HowTo />
+                    </Modal.Body>
+                </Modal>
+                <Modal className="howTo" show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <NiteHowTo />
+                    </Modal.Body>
+                </Modal>
+                <Modal className="howTo" show={this.state.openSimulatorHowTo} onHide={this.closeSimulatorHowTo}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>ダメージシミュレータについて</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <SimulatorInput.HowTo />
+                    </Modal.Body>
+                </Modal>
             </div>
         );
     }
