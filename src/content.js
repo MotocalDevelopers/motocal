@@ -326,6 +326,7 @@ var Root = React.createClass({
                             <DropdownButton title={intl.translate("使い方", locale)}>
                                 <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
                                 <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
+                                <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
                             </DropdownButton>
                         </ButtonGroup>
                         <div className="systemList">
@@ -360,6 +361,7 @@ var Root = React.createClass({
                             <MenuItem> <p onClick={this.openHowTo}>{intl.translate("使い方", locale)}</p> </MenuItem>
                             <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
                             <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
+                            <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
                             </NavDropdown>
                         </Nav>
                         <Navbar.Form pullRight>
