@@ -383,7 +383,7 @@ var Summon = React.createClass({
 
                 <ButtonGroup style={{"width": "100%"}}>
                     <Button bsStyle="default" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickMoveUp}><i className="fa fa-angle-double-up" aria-hidden="true"></i>{intl.translate("前へ", locale)}</Button>
-                    <Button bsStyle="danger" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>{intl.translate("内容を消去", locale)}</Button>
+                    <Button bsStyle="danger" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
                     <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickCopyButton}>{intl.translate("下にコピー", locale)}</Button>
                     <Button bsStyle="default" style={{"width": "25%", "margin": "2px 0px 2px 0px"}} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
                 </ButtonGroup>
