@@ -273,7 +273,7 @@ var Profile = React.createClass({
                         </th>
                         <td className="table-profile-td">
                         <InputGroup>
-                        <FormControl type="number"  min="0" value={this.state.normalBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "normalBuff")}/>
+                        <FormControl componentClass="select" value={this.state.normalBuff} onChange={this.handleSelectEvent.bind(this, "normalBuff")}> {selector.buffLevel} </FormControl>
                         <InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup>
                         </td>
@@ -285,7 +285,7 @@ var Profile = React.createClass({
                         <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                         <td>
                         <InputGroup>
-                        <FormControl type="number"  min="0" value={this.state.elementBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "elementBuff")}/>
+                        <FormControl componentClass="select" value={this.state.elementBuff} onChange={this.handleSelectEvent.bind(this, "elementBuff")}> {selector.buffLevel} </FormControl>
                         <InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup>
                         </td>
@@ -295,7 +295,7 @@ var Profile = React.createClass({
                         <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                         <td>
                         <InputGroup>
-                        <FormControl type="number"  min="0" value={this.state.otherBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "otherBuff")}/>
+                        <FormControl componentClass="select" value={this.state.otherBuff} onChange={this.handleSelectEvent.bind(this, "otherBuff")}> {selector.buffLevel} </FormControl>
                         <InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup>
                         </td>
@@ -306,7 +306,7 @@ var Profile = React.createClass({
                         <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
                         <td>
                         <InputGroup>
-                        <FormControl type="number"  min="0" value={this.state.hpBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "hpBuff")}/>
+                        <FormControl componentClass="select" value={this.state.hpBuff} onChange={this.handleSelectEvent.bind(this, "hpBuff")}> {selector.buffLevel} </FormControl>
                         <InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup>
                         </td>
@@ -317,7 +317,7 @@ var Profile = React.createClass({
                         <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                         <td>
                         <InputGroup>
-                        <FormControl type="number"  min="0" max="100" value={this.state.daBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "daBuff")}/>
+                        <FormControl componentClass="select" value={this.state.daBuff} onChange={this.handleSelectEvent.bind(this, "daBuff")}> {selector.buffLevel} </FormControl>
                         <InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup>
                         </td>
@@ -328,7 +328,7 @@ var Profile = React.createClass({
                         <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                         <td>
                         <InputGroup>
-                        <FormControl type="number"  min="0" max="100" value={this.state.taBuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "taBuff")}/>
+                        <FormControl componentClass="select" value={this.state.taBuff} onChange={this.handleSelectEvent.bind(this, "taBuff")}> {selector.buffLevel} </FormControl>
                         <InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup>
                         </td>
