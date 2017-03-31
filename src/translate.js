@@ -477,6 +477,10 @@ var multiLangData = {
         "en": "Apsaras",
         "ja": "アプサラス",
     },
+    "エリュシオン": {
+        "en": "Elysian",
+        "ja": "エリュシオン",
+    },
     "アルケミスト": {
         "en": "Alchemist",
         "ja": "アルケミスト",
