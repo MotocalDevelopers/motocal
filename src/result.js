@@ -2332,7 +2332,10 @@ var ResultList = React.createClass({
         buffInfoStr =  intl.translate("通常バフ", locale) + prof.normalBuff + "%, "
         buffInfoStr += intl.translate("属性バフ", locale) + prof.elementBuff + "%, "
         buffInfoStr += intl.translate("その他バフ", locale) + prof.otherBuff + "%, "
-        buffInfoStr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, " + intl.translate("敵防御固有値", locale) + prof.enemyDefense
+        buffInfoStr += intl.translate("DAバフ", locale) + prof.daBuff + "%, "
+        buffInfoStr += intl.translate("TAバフ", locale) + prof.taBuff + "%, "
+        buffInfoStr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, "
+        buffInfoStr += intl.translate("敵防御固有値", locale) + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>

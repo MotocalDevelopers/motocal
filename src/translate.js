@@ -149,6 +149,10 @@ var multiLangData = {
         "en": "All",
         "ja": "全属性",
     },
+    "バフ": {
+        "en": "Buff",
+        "ja": "バフ",
+    },
     "通常バフ": {
         "en": "Normal Buff",
         "ja": "通常バフ",
@@ -1730,6 +1734,10 @@ var multiLangData = {
     "notice-20170329-3": {
         "en": "29/03/2017: Fixed invalid loading if the weapon or summon number is not matched their default number. / Fixed that the server save function was corrupted.",
         "ja": "2017/03/29: 武器数と召喚石組数が変更されたデータが読み込まれた際に表示がおかしくなるバグを修正 / サーバーに保存機能が動いていなかったバグを修正.",
+    },
+    "notice-20170331-1": {
+        "en": "31/03/2017: Fixed values of normal and magna criticals (M). / Added Elysian. / Improved buff input interfaces.",
+        "ja": "2017/03/31: 技巧(中)の効果量修正 / エリュシオン追加 / バフ入力欄の利便性向上.",
     },
 }
 
