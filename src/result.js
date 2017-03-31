@@ -206,7 +206,9 @@ var ResultList = React.createClass({
 
             var criticalAttack = parseInt(totalAttack * criticalRatio)
             var expectedOugiGage = (buff["ougiGage"] + totals[key]["ougiGageBuff"]- totals[key]["ougiDebuff"]) * (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0))
-            var expectedTurn = 100.0 / expectedOugiGage
+
+            var minimumTurn = Math.ceil( 100.0 / (37.0 * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"])) )
+            var expectedTurn = ((100.0 / expectedOugiGage) > minimumTurn) ? (100.0 / expectedOugiGage) : minimumTurn;
 
             // "additionalDamage"はノーマル枠として神石効果を考慮
             var additionalDamage = (0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
