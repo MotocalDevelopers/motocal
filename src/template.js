@@ -150,6 +150,7 @@ var RegisteredChara = React.createClass({
         if(_ua.Mobile || _ua.Tablet){
             return (
                 <div className="charaTemplate">
+                    <span>検索:</span>
                     <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="charaTemplateContent">
@@ -178,6 +179,7 @@ var RegisteredChara = React.createClass({
         } else {
             return (
                 <div className="charaTemplate">
+                    <span>検索:</span>
                     <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="charaTemplateContent">
@@ -329,6 +331,7 @@ var RegisteredArm = React.createClass({
         if(_ua.Mobile || _ua.Tablet){
             return (
                 <div className="armTemplate">
+                    <span>検索:</span>
                     <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="armTemplateContent">
@@ -402,6 +405,7 @@ var RegisteredArm = React.createClass({
         } else {
             return (
                 <div className="armTemplate">
+                    <span>検索:</span>
                     <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText} onChange={this.handleEvent.bind(this, "filterText")} />
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="armTemplateContent">
