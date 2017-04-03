@@ -46,12 +46,19 @@ supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
 # Patching
 patching = OrderedDict()
 
-# すんどめ侍さん
+# 連撃率 from すんどめ侍さん
 patching["ロミオ"] = {"DA": 7.5, "TA": 2.5, "en": "Romeo"}
 patching["イングヴェイ"] = {"DA": 9.0, "TA": 4.0, "en": "Yngwie"}
 patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0, "en": "Rastina"}
 patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0, "en": "Marquiares"}
 patching["ユイシス"] = {"DA": 8.0, "TA": 4.0, "en": "Yuisis"}
+
+# 新しいキャラ
+patching["オーキス(リミテッドver)"] = {"DA": 6.5, "TA": 3.0, "en": "Orchis"}
+patching["ゼタ(闇属性ver)"] = {"DA": 6.5, "TA": 3.0, "en": "Zeta (Dark)"}
+patching["スツルム"] = {"DA": 6.5, "TA": 3.0, "en": "Strum"}
+patching["レ・フィーエ(土属性ver)"] = {"DA": 6.5, "TA": 3.0, "en": "De La Fille (Earth)"}
+patching["キャタピラとヴィーラ"] = {"DA": 6.5, "TA": 3.0, "en": "Katapira & Vira"}
 
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
