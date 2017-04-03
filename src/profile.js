@@ -41,8 +41,8 @@ var Profile = React.createClass({
     getInitialState: function() {
         return {
             rank: 1,
-            zenithAttackBonus: 3000,
-            zenithHPBonus: 1000,
+            zenithAttackBonus: 0,
+            zenithHPBonus: 0,
             zenithPartyHPBonus: 0,
             masterBonus: 0,
             masterBonusHP: 0,
@@ -256,7 +256,7 @@ var Profile = React.createClass({
 
                     <tr>
                         <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.zenithPartyHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")} > {selector.zenithHP} </FormControl></td>
+                        <td><FormControl componentClass="select" value={this.state.zenithPartyHPBonus} onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")} > {selector.zenithPartyHP} </FormControl></td>
                     </tr>
 
                     <tr>

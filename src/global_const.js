@@ -66,6 +66,7 @@ module.exports._ua = (function(u){
 var zenith = {"無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10}
 var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
+var zenithPartyHPBonus = [2000, 1600, 1300, 1000, 600, 300, 0];
 var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var buffLevelList = [
@@ -571,6 +572,7 @@ module.exports.selector.en.summonElements = Object.keys(summonElementTypes).map(
 module.exports.selector.summonAmounts = summonAmountList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.zenithAttack = zenithAttackBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.zenithHP = zenithHPBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+module.exports.selector.zenithPartyHP = zenithPartyHPBonus.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.slv = skilllevels.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.consider = considerNum.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.buffLevel = buffLevelList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
