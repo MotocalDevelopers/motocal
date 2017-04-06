@@ -382,8 +382,8 @@ label {
 }
 
 .armTemplate .form-control {
-    width: 40%;
-    margin-left: 10px;
+    width: 38%;
+    margin-left: 5px;
     display: inline;
     margin-bottom: 5px;
 }
@@ -433,8 +433,8 @@ label {
 }
 
 .charaTemplate .form-control {
-    width: 40%;
-    margin-left: 10px;
+    width: 38%;
+    margin-left: 5px;
     display: inline;
     margin-bottom: 5px;
 }
