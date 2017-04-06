@@ -1,7 +1,8 @@
 var React = require('react');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 var {Chart} = require('react-google-charts')
-var {HPChart, TurnChart, SimulationChart} = require('./chart.js')
+var Simulator = require('./simulator.js')
+var {HPChart, TurnChart} = require('./chart.js')
 var Advertisement = require('./advertisement.js');
 var intl = require('./translate.js');
 var {HPChartHowTo} = require('./howto.js')
@@ -1908,6 +1909,8 @@ var ResultList = React.createClass({
         return data
     },
     openSimulator: function() {
+        this.setState({openSimulator: true})
+        return 0;
         var storedCombinations = this.state.storedList.combinations
         var storedArmlist = this.state.storedList.armlist
 
@@ -1964,7 +1967,6 @@ var ResultList = React.createClass({
         }
         this.setState({chartData: this.generateSimulationData(res, turnBuff, arml, summon, prof, totalBuff, chara, storedCombinations)})
         this.setState({chartSortKey: sortkey})
-        this.setState({openSimulator: true})
     },
     generateSimulationData: function(res, turnBuff, arml, summon, prof, buff, chara, storedCombinations) {
         var data = {}
@@ -2620,7 +2622,7 @@ var ResultList = React.createClass({
                                 </div>
                         </Modal.Header>
                         <Modal.Body>
-                            <SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
+                            <Simulator chara={this.props.chara} dataName={this.props.dataName} dataForLoad={this.props.dataForLoadSimulator} locale={locale} onChange={this.props.onChangeSimulationData} />
                         </Modal.Body>
                     </Modal>
                     <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} locale={locale} />
@@ -2858,7 +2860,6 @@ var Result = React.createClass({
         );
     }
 });
-
 
 var StoredListEditor = React.createClass({
     render: function() {

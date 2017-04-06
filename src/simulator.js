@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
 var selector = GlobalConst.selector
 var turnList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -19,7 +20,7 @@ var select_dabuffAmount = daBuffAmountList.map(function(opt){ return <option val
 var select_tabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"TA-" + opt} key={opt}>TA率+{opt}%</option> });
 var select_hplist = HPList.map(function(opt){return <option value={opt} key={opt}>残りHP:{opt}%</option>;});
 
-var SimulatorInput = React.createClass({
+var Simulator = React.createClass({
     componentDidMount: function(){
         // 初期化後 state を 上の階層に渡しておく
         this.props.onChange(this.state);
@@ -293,8 +294,14 @@ var SimulatorInput = React.createClass({
         return (
             <div className="simulatorInput">
                 <h3> シミュレータ用入力 </h3>
-                <p className="text-info">レイアウトあとで調整します</p>
-                <span>各ターンのバフやHP等を設定して下さい。</span> <FormControl componentClass="select" value={this.state.maxTurn} onChange={this.handleSelectEvent.bind(this, "maxTurn")}>{select_turnlist}</FormControl>
+                <span>各ターンのバフやHP等を設定して下さい。</span>
+                <FormControl
+                    componentClass="select"
+                    value={this.state.maxTurn}
+                    style={{"width": "150px"}}
+                    onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
+                    {select_turnlist}
+                </FormControl>
                 <table className="table table-bordered">
                     <tbody>
                     <tr>
@@ -337,6 +344,7 @@ var SimulatorInput = React.createClass({
                     })}
                     </tbody>
                 </table>
+                {/*<SimulationChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={this.props.locale} />*/}
             </div>
         );
     }
@@ -356,64 +364,5 @@ var BuffListForm = React.createClass({
     },
 });
 
-var HowTo = React.createClass({
-    render: function(){
-        return (
-            <div className="howTo">
-                <p>ダメージシミュレータは<strong>各ターン毎のバフ・残りHP等から予想されるダメージを計算する</strong>ツールです。</p>
-
-                <h2>使い方</h2>
-                <p>基本的には他のグラフ機能と同様に「グラフに加えた」編成を元に計算を行います。まずは他の欄を入力し、比較したい編成を選んでおいて下さい。</p>
-                <p>編成をいくつかグラフに加えたら、各種グラフのボタンが有効化されます。
-                ダメージシミュレータを使う場合は「シミュレータ入力」タブを開いて下さい。</p>
-                <Thumbnail src="./otherImages/damage-simulator-howto-2.png" href="./otherImages/damage-simulator-howto-2.png"><h3>シミュレータ入力欄</h3></Thumbnail>
-
-                <p>入力欄には大きく分けて「全体バフ」と「各キャラクター」のバフが存在します。
-                簡単に使いたい方は、全体バフの欄のみ弄れば各キャラクターの情報を入力しなくても問題ありません。
-                また、各キャラクターのバフは<strong>全体バフの量に加算</strong>されますのでご注意下さい。</p>
-                <p>（例: あるターンの全体バフが通常攻刃+10%、ジータバフ欄が通常攻刃+30%となっている場合、ジータのバフは通常攻刃+40%として計算される。）</p>
-                <p>バフを追加したい場合、<Button><i className="fa fa-plus-square"></i></Button> をクリックすることで欄が増えます。（現在は最大10個）
-                増やしすぎた場合は、バフ量を0%にするか、<Button><i className="fa fa-minus-square"></i></Button> で削除して下さい。（現在は一番下にあるもののみしか削除できません。）
-                また、<Button><i className="fa fa-arrow-left"></i></Button> や <Button><i className="fa fa-arrow-right"></i></Button> をクリックすることで、前（または次）のターンへコピーすることが可能です。</p>
-                <p>全てのターンのバフ情報を他のキャラ欄にコピーしたい場合は、<Button><i className="fa fa-angle-double-up"></i></Button> または <Button><i className="fa fa-angle-double-up"></i></Button> を使用して下さい。</p>
-
-                <h3>算出される値について</h3>
-                <p>基本的には他のグラフと同様、技巧や二手三手の期待値から予想される攻撃力（総回技値）ですが、予想ダメージについては少し異なります。
-                最適編成算出や、他のグラフで用いている「予想ターン毎ダメージ」は、
-                "二手スキル込みの編成について"でも書いた通り、
-                <strong>通常攻撃を数回行ったあと、奥義を1回打つまでの1サイクルを考えたダメージ</strong>です。
-                これに対して、ダメージシミュレータで算出される「予想ダメージ」は、
-                1サイクルを考えずに、単純にそのターンに与えることが期待されるダメージです。（勿論クリティカルやDA・TA率は考慮されています）
-                これは、通常攻撃ターンと奥義ターンを設定するための変更です。
-                内部的に使っている通常攻撃ダメージ算出・奥義ダメージ算出用の関数は同一であるため、
-                単純に"1サイクルを考えるかどうか"が異なっていると考えて頂ければ結構です。</p>
-
-                <h3>奥義ターンについて</h3>
-                <p>欄の一番上を「通常攻撃」から「奥義」または「奥義（ダメージ無し）」に変えると、そのターンは奥義ダメージのみが与ダメージとなります。ダメージ無しの場合は0になります。</p>
-                <p>「奥義」と「通常攻撃」では、「奥義」の設定のが優先されます。
-                従って、<br/>
-                全体バフが「奥義」の場合: キャラ個別の設定に関わらず、全員が奥義を打つ <br/>
-                全体バフが「通常」の場合: 「奥義」に設定されているキャラのみが奥義を打つ <br/>
-                となります。
-                </p>
-                <p className="text-danger">チェインバーストのダメージについてはまだサポートしておりません。そのうちやります。</p>
-
-                <h3>現在未サポート</h3>
-                <p>クリティカル系のバフ、追加ダメージ系のバフ、チェインバーストダメージ等</p>
-
-                <h3>予想ダメージ平均の積分値について</h3>
-                <p>予想ダメージを和していった値です。何ターン目でこっちの編成が……という比較のための機能です。将来的に、いくつかのバフ編成同士でも比較できたらいいな……と考えていますが、やらないかもしれません。</p>
-
-                <h3>今後の予定</h3>
-                <p>未サポートのバフに対応するのは勿論、なんかバフボタンを適当にドラッグ&ドロップしたら勝手に3ターン分設定されるとか、そういう感じのが欲しいですね。</p>
-
-                <h3>注記</h3>
-                <p>きっちりテストできていない機能ですので、不具合報告や改善点の提案などありましたらご連絡下さい。</p>
-            </div>
-        );
-    },
-});
-
-module.exports = SimulatorInput;
+module.exports = Simulator;
 module.exports.BuffListForm = BuffListForm;
-module.exports.HowTo = HowTo;

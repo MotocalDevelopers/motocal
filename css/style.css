@@ -453,14 +453,7 @@ label {
     overflow: visible;
 }
 
-div.simulatorInput {
-    height: 90%;
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    overflow: scroll;
-}
-
+/*
 .simulatorInput .simulator-th, .simulatorInput .simulator-td {
     padding: 2px;
     min-width: 130px;
@@ -473,7 +466,7 @@ div.simulatorInput {
 
 .simulatorInput .form-control {
     width: 130px;
-}
+}*/
 
 .display-checked {
   background: #bbd4ff;

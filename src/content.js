@@ -6,11 +6,10 @@ var Profile = require('./profile.js')
 var {SummonList, Summon} = require('./summon.js');
 var {CharaList, Chara} = require('./chara.js');
 var {ArmList, Arm} = require('./armlist.js')
-var SimulatorInput = require('./simulator.js')
 var GlobalConst = require('./global_const.js')
 var Notice = require('./notice.js')
 var {ResultList, Result} = require('./result.js')
-var {HowTo, NiteHowTo, HPChartHowTo} = require('./howto.js')
+var {HowTo, NiteHowTo, HPChartHowTo, SimulatorHowTo} = require('./howto.js')
 var {ColP} = require('./gridp.js')
 var intl = require('./translate.js')
 var _ua = GlobalConst._ua;
@@ -376,7 +375,6 @@ var Root = React.createClass({
                         <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
                         <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
                         <NavItem eventKey="armTab">{intl.translate("武器", locale)}</NavItem>
-                        <NavItem eventKey="simulatorTab"><s>Simu</s></NavItem>
                         <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
                     </Nav>
                     <div className="main-content">
@@ -408,9 +406,6 @@ var Root = React.createClass({
                             <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
                             <Notice locale={locale} />
                         </div>
-                        <div className="Tab hidden" id="simulatorTab">
-                            <SimulatorInput dataName={this.state.dataName} dataForLoad={this.state.dataForLoad.simulator} chara={this.state.chara} onChange={this.onChangeSimulationData} />
-                        </div>
                     </div>
                 </div>
                 <div draggable="true" className="drag-hr" onDragEnd={this.onDragEnd}></div>
@@ -421,9 +416,11 @@ var Root = React.createClass({
                         chara={this.state.chara}
                         summon={this.state.summon}
                         sortKey={this.state.sortKey}
-                        simulator={this.state.simulator}
+                        dataName={this.state.dataName}
+                        dataForLoadSimulator={this.state.dataForLoad.simulator}
                         noResultUpdate={this.state.noResultUpdate}
                         onChangeSortkey={this.handleEvent.bind(this, "sortKey")}
+                        onChangeSimulationData={this.onChangeSimulationData}
                         locale={locale}
                      />
                 </div>
@@ -448,7 +445,7 @@ var Root = React.createClass({
                         <Modal.Title>ダメージシミュレータについて</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <SimulatorInput.HowTo />
+                        <SimulatorHowTo />
                     </Modal.Body>
                 </Modal>
             </div>
