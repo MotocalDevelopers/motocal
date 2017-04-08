@@ -847,12 +847,8 @@ var ResultList = React.createClass({
         return data
     },
     openSimulator: function() {
-        var sortKey = this.props.sortKey
-        if (!(sortKey in GlobalConst.supportedSimulationChartSortkeys)) {
-            sortKey = "averageCyclePerTurn"
-        }
         this.setState({openSimulator: true})
-        this.setState({chartSortKey: sortKey})
+        this.setState({chartSortKey: "summedAverageExpectedDamage"})
     },
     switchDisplayRealHP: function(e) {
         this.setState({displayRealHP: !(this.state.displayRealHP)});

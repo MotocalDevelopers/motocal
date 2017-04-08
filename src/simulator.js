@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var intl = require('./translate.js')
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 var {SimulationChart} = require('./chart.js')
@@ -8,39 +9,52 @@ var selector = GlobalConst.selector
 var turnList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var turnTypeList = {"normal": "通常攻撃", "ougi": "奥義", "ougiNoDamage": "奥義(ダメージ無し)"};
 var HPList = [ 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ];
-var buffAmountList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150];
-var daBuffAmountList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+var buffAmountList = [
+    0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150,
+    -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
+];
+var daBuffAmountList = [
+    0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+    -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
+];
 
 var buffTypeList = {
     "normal-30-3T": {
         "name": "レイジIII(通常攻刃30%, 3T)",
-        "bufflists": ["normal-30"],
+        "bufflists": ["normal_30"],
         "turn": 3,
     },
     "normal-40-3T": {
         "name": "レイジIV(通常攻刃40%, 3T)",
-        "bufflists": ["normal-40"],
+        "bufflists": ["norma__40"],
         "turn": 3,
     },
     "DATA-15-3T": {
         "name": "ランページ(DA20% TA10%, 3T)",
-        "bufflists": ["DA-20", "TA-10"],
+        "bufflists": ["DA_20", "TA_10"],
         "turn": 3,
     },
     "DATA-30-3T": {
         "name": "四天刃奥義(DA30% TA30%, 3T)",
-        "bufflists": ["DA-30", "TA-30"],
+        "bufflists": ["DA_30", "TA_30"],
         "turn": 3,
+    },
+    "tasinjin-ougi": {
+        "name": "他心陣と奥義(HP50%, 奥義に設定)",
+        "bufflists": ["remainHP_50", "ougi"],
+        "turn": 1,
     },
 }
 
 var select_turnlist = turnList.map(function(opt){return <option value={opt} key={opt}>最大ターン数:{opt}</option>;});
 var select_turntype = Object.keys(turnTypeList).map(function(opt){return <option value={opt} key={opt}>{turnTypeList[opt]}</option>;});
-var select_normalbuffAmount = buffAmountList.map(function(opt){ return <option value={"normal-" + opt} key={opt}>通常バフ+{opt}%</option> });
-var select_elementbuffAmount = buffAmountList.map(function(opt){ return <option value={"element-" + opt} key={opt}>属性バフ+{opt}%</option> });
-var select_otherbuffAmount = buffAmountList.map(function(opt){ return <option value={"other-" + opt} key={opt}>その他バフ+{opt}%</option> });
-var select_dabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"DA-" + opt} key={opt}>DA率+{opt}%</option> });
-var select_tabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"TA-" + opt} key={opt}>TA率+{opt}%</option> });
+var select_normalbuffAmount = buffAmountList.map(function(opt){ return <option value={"normal_" + opt} key={opt}>通常バフ{opt}%</option> });
+var select_elementbuffAmount = buffAmountList.map(function(opt){ return <option value={"element_" + opt} key={opt}>属性バフ{opt}%</option> });
+var select_otherbuffAmount = buffAmountList.map(function(opt){ return <option value={"other_" + opt} key={opt}>その他バフ{opt}%</option> });
+var select_dabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"DA_" + opt} key={opt}>DA率{opt}%</option> });
+var select_tabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"TA_" + opt} key={opt}>TA率{opt}%</option> });
+var select_ougigagebuffAmount = buffAmountList.map(function(opt){ return <option value={"ougiGage_" + opt} key={opt}>奥義ゲージ上昇量{opt}%</option> });
+var select_additionalbuffAmount = buffAmountList.map(function(opt){ return <option value={"additionalDamage_" + opt} key={opt}>追加ダメージ{opt}%</option> });
 var select_hplist = HPList.map(function(opt){return <option value={opt} key={opt}>残りHP:{opt}%</option>;});
 
 var {generateSimulationData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js')
@@ -80,6 +94,10 @@ var Simulator = React.createClass({
             totalBuff["other"] = 0.01 * buffs["全体バフ"][k].other
             totalBuff["da"] = 0.01 * buffs["全体バフ"][k].DA
             totalBuff["ta"] = 0.01 * buffs["全体バフ"][k].TA
+            totalBuff["ougiGage"] = 0.01 * buffs["全体バフ"][k].ougiGage
+            totalBuff["additionalDamage"] = 0.01 * buffs["全体バフ"][k].additionalDamage
+
+            console.log("turn total buff = ", totalBuff)
 
             // 個別バフと残りHPを設定
             for(var key in totals) {
@@ -89,6 +107,8 @@ var Simulator = React.createClass({
                 totals[key].otherBuff = 0.01 * buffs[key][k].other
                 totals[key].DABuff = 0.01 * buffs[key][k].DA
                 totals[key].TABuff = 0.01 * buffs[key][k].TA
+                totals[key].ougiGageBuff = 0.01 * buffs[key][k].ougiGage
+                totals[key].additionalDamageBuff = 0.01 * buffs[key][k].additionalDamage
             }
 
             for(var i = 0; i < storedCombinations.length; i++){
@@ -111,6 +131,7 @@ var Simulator = React.createClass({
             buffs: {},
             bufflists: {},
             maxTurn: oldState.maxTurn,
+            openPersonalBuff: oldState.openPersonalBuff,
         }
 
         // 削除されてるかチェック
@@ -140,7 +161,17 @@ var Simulator = React.createClass({
                     newState.bufflists[namekey] = {}
 
                     for(var j = 0; j < newState.maxTurn; j++) {
-                        newState.buffs[namekey][j] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                        newState.buffs[namekey][j] = {
+                            normal: 0,
+                            element: 0,
+                            other: 0,
+                            DA: 0,
+                            TA: 0,
+                            ougiGage: 0,
+                            additionalDamage: 0,
+                            turnType: "normal",
+                            remainHP: 100
+                        }
                         newState.bufflists[namekey][j] = []
                     }
                 }
@@ -178,7 +209,17 @@ var Simulator = React.createClass({
 
             for(var i = 0; i < maxTurn; i++) {
                 for(var key in buffs) {
-                    buffs[key][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                    buffs[key][i] = {
+                            normal: 0,
+                            element: 0,
+                            other: 0,
+                            DA: 0,
+                            TA: 0,
+                            ougiGage: 0,
+                            additionalDamage: 0,
+                            turnType: "normal",
+                            remainHP: 100
+                        }
                     bufflists[key][i] = []
                 }
             }
@@ -186,6 +227,7 @@ var Simulator = React.createClass({
             initState["buffs"] = buffs;
             initState["bufflists"] = bufflists;
             initState["maxTurn"] = maxTurn;
+            initState["openPersonalBuff"] = false;
         }
 
         return initState;
@@ -197,9 +239,11 @@ var Simulator = React.createClass({
         newState.buffs[name][ind].other = 0
         newState.buffs[name][ind].DA = 0
         newState.buffs[name][ind].TA = 0
+        newState.buffs[name][ind].ougiGage = 0
+        newState.buffs[name][ind].additionalDamage = 0
 
         for(var i = 0; i < newState.bufflists[name][ind].length; i++) {
-            var onebuff = newState.bufflists[name][ind][i].split("-")
+            var onebuff = newState.bufflists[name][ind][i].split("_")
             newState.buffs[name][ind][onebuff[0]] += parseInt(onebuff[1])
         }
 
@@ -213,9 +257,11 @@ var Simulator = React.createClass({
             newState.buffs[name][j].other = 0
             newState.buffs[name][j].DA = 0
             newState.buffs[name][j].TA = 0
+            newState.buffs[name][j].ougiGage = 0
+            newState.buffs[name][j].additionalDamage = 0
 
             for(var i = 0; i < newState.bufflists[name][j].length; i++) {
-                var onebuff = newState.bufflists[name][j][i].split("-")
+                var onebuff = newState.bufflists[name][j][i].split("_")
                 newState.buffs[name][j][onebuff[0]] += parseInt(onebuff[1])
             }
         }
@@ -231,7 +277,17 @@ var Simulator = React.createClass({
                 // ターン数が増えた場合
                 for(var i = parseInt(this.state.maxTurn); i < parseInt(e.target.value); i++) {
                     for(buffkey in newState.buffs) {
-                        newState.buffs[buffkey][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                        newState.buffs[buffkey][i] = {
+                            normal: 0,
+                            element: 0,
+                            other: 0,
+                            DA: 0,
+                            TA: 0,
+                            ougiGage: 0,
+                            additionalDamage: 0,
+                            turnType: "normal",
+                            remainHP: 100
+                        }
                         newState.bufflists[buffkey][i] = []
                     }
                 }
@@ -250,8 +306,12 @@ var Simulator = React.createClass({
         this.props.onChange(newState)
     },
     isDisplay: function(key) {
-        if(key == "Djeeta" || key == "全体バフ") {
-            return true
+        if(key == "全体バフ") {
+            return true;
+        } else if(!this.state.openPersonalBuff) {
+            return false;
+        } else if(key == "Djeeta") {
+            return true;
         } else {
             for(var i = 0; i < this.props.chara.length; i++){
                 if(this.props.chara[i].name == key) {
@@ -262,7 +322,7 @@ var Simulator = React.createClass({
     },
     handleChangeBuff: function(e) {
         var newState = this.state
-        var id = e.target.getAttribute("id").split("-")
+        var id = e.target.getAttribute("id").split("_")
         var name = e.target.getAttribute("name")
         newState.bufflists[name][id[0]][id[1]] = e.target.value
         this.updateBuffAmount(newState, name, id[0])
@@ -285,7 +345,7 @@ var Simulator = React.createClass({
         var newbuff = this.state.bufflists
         var key = e.target.getAttribute("name")
         var turn = e.target.getAttribute("id")
-        newbuff[key][turn].push("normal-0")
+        newbuff[key][turn].push("normal_0")
         this.setState({bufflists: newbuff})
     },
     subBuffNum: function(e) {
@@ -392,12 +452,16 @@ var Simulator = React.createClass({
     callPreventDefault: function(e) {
         e.preventDefault();
     },
+    switchPersolalBuff: function(e) {
+        this.setState({openPersonalBuff: (!this.state.openPersonalBuff)})
+    },
     render: function() {
         var Turns = [];
         for(var i = 0; i < this.state.maxTurn; i++){
             Turns.push(i + 1)
         }
         var state = this.state
+        var locale = this.props.locale
         var handleSelectEvent = this.handleSelectEvent
         var handleEvent = this.handleEvent
         var handleBuffDataChange = this.handleBuffDataChange
@@ -418,18 +482,18 @@ var Simulator = React.createClass({
 
         return (
             <div className="simulatorInput">
-                    <div>
-                        {Object.keys(buffTypeList).map(function(key, ind){
-                            return <Button bsStyle="success" style={{"margin": "0px 2px"}} bsSize="xsmall" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
-                        })}
-                        <FormControl
-                            componentClass="select"
-                            value={this.state.maxTurn}
-                            style={{"width": "150px", "float": "right"}}
-                            onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
-                            {select_turnlist}
-                        </FormControl>
-                    </div>
+                <div>
+                    {Object.keys(buffTypeList).map(function(key, ind){
+                        return <Button bsStyle="success" style={{"margin": "0px 2px"}} bsSize="xsmall" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
+                    })}
+                    <FormControl
+                        componentClass="select"
+                        value={state.maxTurn}
+                        style={{"width": "150px", "float": "right"}}
+                        onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
+                        {select_turnlist}
+                    </FormControl>
+                </div>
                 <hr/>
                 <table className="table table-bordered">
                     <tbody>
@@ -438,7 +502,7 @@ var Simulator = React.createClass({
                         {Turns.map(function(x){return <th className="simulator-th" key={x}>{x}ターン目</th>})}
                         <th className="simulator-th">操作</th>
                     </tr>
-                    {Object.keys(this.state.buffs).map(function(key, ind){
+                    {Object.keys(state.buffs).map(function(key, ind){
                         if(isDisplay(key)) {
                             return (
                             <tr key={key}>
@@ -451,7 +515,7 @@ var Simulator = React.createClass({
 
                                         {state.bufflists[key][ind2].map(function(v, ind3){
                                             return (
-                                                <BuffListForm key={ind3} name={key} id={ind2.toString() + "-" + ind3.toString()} value={v} onChange={handleChangeBuff}/>
+                                                <BuffListForm key={ind3} name={key} id={ind2.toString() + "_" + ind3.toString()} value={v} onChange={handleChangeBuff}/>
                                             );
                                         })}
                                         <hr style={{"margin": "2px 5px"}}/>
@@ -465,16 +529,20 @@ var Simulator = React.createClass({
                                     );
                                 })}
                                 <td className="simulator-td">
-                                    <Button bsStyle="primary" style={{"width": "calc(50% - 4px)", "margin": "0px 2px"}} name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i> 上にコピー</Button>
-                                    <Button bsStyle="primary" style={{"width": "calc(50% - 4px)", "margin": "0px 2px"}} name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i> 下にコピー</Button>
+                                    <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i> 上にコピー</Button>
+                                    <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i> 下にコピー</Button>
                                 </td>
                             </tr>
                             )
                         }
                     })}
+                    <tr>
+                        <th className="bg-default" style={{"textAlign": "center"}}><Button onClick={this.switchPersolalBuff}>{intl.translate("個別バフ", locale)}</Button></th>
+                        <td colSpan={state.maxTurn + 2}></td>
+                    </tr>
                     </tbody>
                 </table>
-                <SimulationChart data={chartData} sortKey={this.props.sortKey} locale={this.props.locale} />
+                <SimulationChart data={chartData} sortKey={this.props.sortKey} locale={locale} />
             </div>
         );
     }
@@ -489,6 +557,8 @@ var BuffListForm = React.createClass({
                 <optgroup label="その他バフ">{select_otherbuffAmount}</optgroup>
                 <optgroup label="DA率">{select_dabuffAmount}</optgroup>
                 <optgroup label="TA率">{select_tabuffAmount}</optgroup>
+                <optgroup label="奥義ゲージ上昇量">{select_ougigagebuffAmount}</optgroup>
+                <optgroup label="追加ダメージ">{select_additionalbuffAmount}</optgroup>
             </FormControl>
         );
     },
