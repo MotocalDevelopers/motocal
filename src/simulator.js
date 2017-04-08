@@ -130,7 +130,8 @@ var Simulator = React.createClass({
 
         // 毎回 Mount されるので
         // データロードはinitial state設定で行う
-        if(this.props.dataForLoad != undefined) {
+        // 初回は {} が降ってくるのでその場合は普通に初期化
+        if(this.props.dataForLoad.maxTurn != undefined) {
             // 上から降ってきたデータはは
             // 現在の形に合わせる処理が必要になる
             initState = this.updateBuffList(this.props.dataForLoad)
@@ -153,17 +154,15 @@ var Simulator = React.createClass({
             }
 
             for(var i = 0; i < maxTurn; i++) {
-                for(key in buffs) {
+                for(var key in buffs) {
                     buffs[key][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
                     bufflists[key][i] = ["normal-0"]
                 }
             }
 
-            newState = {
-                buffs: buffs,
-                bufflists: bufflists,
-                maxTurn: maxTurn,
-            };
+            initState["buffs"] = buffs;
+            initState["bufflists"] = bufflists;
+            initState["maxTurn"] = maxTurn;
         }
 
         return initState;
@@ -416,7 +415,7 @@ var Simulator = React.createClass({
                     })}
                     </tbody>
                 </table>
-                <SimulationChart data={chartData} sortKey={this.props.sortKey} locale={this.props.locale} />*/}
+                <SimulationChart data={chartData} sortKey={this.props.sortKey} locale={this.props.locale} />
             </div>
         );
     }
