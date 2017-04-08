@@ -11,6 +11,21 @@ var HPList = [ 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 
 var buffAmountList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150];
 var daBuffAmountList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
 
+var buffTypeList = {
+    "normal-30-3T": {
+        "name": "レイジ3T",
+        "type": "normal",
+        "amount": 30,
+        "turn": 3,
+    },
+    "normal-30-4T": {
+        "name": "レイジ4T",
+        "type": "normal",
+        "amount": 30,
+        "turn": 4,
+    },
+}
+
 var select_turnlist = turnList.map(function(opt){return <option value={opt} key={opt}>最大ターン数:{opt}</option>;});
 var select_turntype = Object.keys(turnTypeList).map(function(opt){return <option value={opt} key={opt}>{turnTypeList[opt]}</option>;});
 var select_normalbuffAmount = buffAmountList.map(function(opt){ return <option value={"normal-" + opt} key={opt}>通常バフ+{opt}%</option> });
@@ -118,7 +133,7 @@ var Simulator = React.createClass({
 
                     for(var j = 0; j < newState.maxTurn; j++) {
                         newState.buffs[namekey][j] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
-                        newState.bufflists[namekey][j] = ["normal-0"]
+                        newState.bufflists[namekey][j] = []
                     }
                 }
             }
@@ -156,7 +171,7 @@ var Simulator = React.createClass({
             for(var i = 0; i < maxTurn; i++) {
                 for(var key in buffs) {
                     buffs[key][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
-                    bufflists[key][i] = ["normal-0"]
+                    bufflists[key][i] = []
                 }
             }
 
@@ -184,7 +199,6 @@ var Simulator = React.createClass({
         this.props.onChange(newState)
     },
     updateBuffAmountAllTurn: function(newState, name){
-        // 更新されたターンのところだけアップデートすればよい
         for(var j = 0; j < this.state.maxTurn; j++) {
             newState.buffs[name][j].normal = 0
             newState.buffs[name][j].element = 0
@@ -210,7 +224,7 @@ var Simulator = React.createClass({
                 for(var i = parseInt(this.state.maxTurn); i < parseInt(e.target.value); i++) {
                     for(buffkey in newState.buffs) {
                         newState.buffs[buffkey][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
-                        newState.bufflists[buffkey][i] = ["normal-0"]
+                        newState.bufflists[buffkey][i] = []
                     }
                 }
             } else {
@@ -261,19 +275,19 @@ var Simulator = React.createClass({
     },
     addBuffNum: function(e) {
         var newbuff = this.state.bufflists
-        var name = e.target.getAttribute("name")
-        var id = e.target.getAttribute("id")
-        if(newbuff[name][id].length < 7) {
-            newbuff[name][id].push("normal-0")
+        var key = e.target.getAttribute("name")
+        var turn = e.target.getAttribute("id")
+        if(newbuff[key][turn].length < 7) {
+            newbuff[key][turn].push("normal-0")
             this.setState({bufflists: newbuff})
         }
     },
     subBuffNum: function(e) {
         var newbuff = this.state.bufflists
-        var name = e.target.getAttribute("name")
-        var id = e.target.getAttribute("id")
-        if(newbuff[name][id].length > 1) {
-            newbuff[name][id].pop()
+        var key = e.target.getAttribute("name")
+        var turn = e.target.getAttribute("id")
+        if(newbuff[key][turn].length > 0) {
+            newbuff[key][turn].pop()
             this.setState({bufflists: newbuff})
         }
     },
@@ -341,6 +355,37 @@ var Simulator = React.createClass({
     copyToRight: function(e) {
         this.copyTo(e, "right")
     },
+    onDragStart: function(e) {
+        e.dataTransfer.setData('buffDrag', e.target.id); 
+    },
+    onDropBuff: function(e) {
+        e.preventDefault();
+        try {
+            var buffID = e.dataTransfer.getData('buffDrag');
+        } catch (except) {
+            return;
+        }
+
+        var buff = buffTypeList[buffID];
+        var droppedTurn = parseInt(e.target.getAttribute("id"));
+        var key = e.target.getAttribute("name");
+
+        var state = this.state;
+
+        for(var i = 0; i < droppedTurn + buff.turn; i++) {
+            if(i < state.maxTurn) {
+                if(state.bufflists[key][i].length < 7) {
+                    state.bufflists[key][i].push("normal-30")
+                }
+            }
+        }
+
+        this.setState(state);
+        this.updateBuffAmountAllTurn(state, key);
+    },
+    callPreventDefault: function(e) {
+        e.preventDefault();
+    },
     render: function() {
         var Turns = [];
         for(var i = 0; i < this.state.maxTurn; i++){
@@ -361,6 +406,9 @@ var Simulator = React.createClass({
         var copyToRight = this.copyToRight
         var isDisplay = this.isDisplay
         var chartData = this.makeTurnBuff();
+        var onDragStart = this.onDragStart;
+        var onDropBuff = this.onDropBuff;
+        var callPreventDefault = this.callPreventDefault;
 
         return (
             <div className="simulatorInput">
@@ -372,6 +420,9 @@ var Simulator = React.createClass({
                     onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
                     {select_turnlist}
                 </FormControl>
+                {Object.keys(buffTypeList).map(function(key, ind){
+                    return <span className="label label-info" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</span>
+                })}
                 <table className="table table-bordered">
                     <tbody>
                     <tr>
@@ -386,7 +437,7 @@ var Simulator = React.createClass({
                                 <td className="simulator-left">{key}</td>
                                 {Turns.map(function(x, ind2){
                                     return (
-                                        <td key={ind2} className="simulator-td">
+                                        <td key={ind2} name={key} id={ind2} className="simulator-td" onDragOver={callPreventDefault} onDrop={onDropBuff} >
                                         <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype}</FormControl>
                                         <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist}</FormControl>
 

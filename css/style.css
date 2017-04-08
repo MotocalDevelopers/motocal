@@ -456,16 +456,20 @@ label {
 
 .simulatorInput .simulator-th, .simulatorInput .simulator-td {
     padding: 2px;
-    min-width: 130px;
+    width: 150px;
+    align-items: center;
+    text-align: center;
 }
 
 .simulatorInput .simulator-left {
     padding: 2px;
-    min-width: 70px;
+    width: 150px;
+    align-items: center;
+    text-align: center;
 }
 
 .simulatorInput .form-control {
-    width: 130px;
+    width: 146px;
 }
 
 .display-checked {
