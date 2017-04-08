@@ -1,3 +1,4 @@
+var intl = require('./translate.js')
 var GlobalConst = require('./global_const.js')
 var elementRelation = GlobalConst.elementRelation
 var bahamutRelation = GlobalConst.bahamutRelation
@@ -1132,6 +1133,325 @@ module.exports.treatSupportAbility = function(totals, chara) {
             }
         }
     }
+};
+
+module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, storedCombinations, storedNames, displayRealHP, locale) {
+    var data = {}
+
+    var minMaxArr = {
+        "totalAttack": {"max": 0, "min": 0},
+        "totalHP": {"max": 0, "min": 0},
+        "criticalAttack": {"max": 0, "min": 0},
+        "totalExpected": {"max": 0, "min": 0},
+        "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
+        "averageAttack": {"max": 0, "min": 0},
+        "averageTotalExpected": {"max": 0, "min": 0},
+        "averageCyclePerTurn": {"max": 0, "min": 0},
+        "averageCriticalAttack": {"max": 0, "min": 0},
+    }
+    var cnt = 1
+    var considerAverageArray = {}
+    for(var ch = 0; ch < chara.length; ch++) {
+        var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
+        if(charaConsidered && chara[ch].name != "") {
+            cnt++;
+            considerAverageArray[chara[ch].name] = true
+        } else {
+            considerAverageArray[chara[ch].name] = false
+        }
+    }
+
+    if(res.length > 1) {
+        var AllTotalAttack = [["残りHP(%)"]];
+        var AllCycleDamagePerTurn = [["残りHP(%)"]];
+        var AllCriticalAttack = [["残りHP(%)"]];
+        var AllTotalExpected = [["残りHP(%)"]];
+        var AllAverageTotalAttack = [["残りHP(%)"]];
+        var AllAverageTotalExpected = [["残りHP(%)"]];
+        var AllAverageCycleDamagePerTurn = [["残りHP(%)"]];
+        var AllAverageCriticalAttack = [["残りHP(%)"]];
+        var AllTotalHP = [["残りHP(%)"]]
+    }
+
+    // キャラ編成は武器編成毎には変わらないので先に計算することができる
+    var charaHaisuiBuff = []
+    for(var k = 0; k < 100; ++k){
+        var charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * (k + 1));
+        charaHaisuiBuff.push(charaHaisuiValue);
+    }
+
+    var allAlreadyUsedHP = {};
+
+    for(var s = 0; s < res.length; s++) {
+        var oneresult = res[s]
+        var summonHeader = ""
+        if(summon[s].selfSummonType == "odin"){
+            summonHeader += intl.translate("属性攻", locale) + summon[s].selfSummonAmount + intl.translate("キャラ攻", locale) + summon[s].selfSummonAmount2
+        } else {
+            summonHeader += intl.translate(summonElementTypes[summon[s].selfElement].name, locale) + intl.translate(summonTypes[summon[s].selfSummonType], locale) + summon[s].selfSummonAmount
+        }
+
+        summonHeader += " + "
+        if(summon[s].friendSummonType == "odin"){
+            summonHeader += intl.translate("属性攻", locale) + summon[s].friendSummonAmount + intl.translate("キャラ攻", locale) + summon[s].friendSummonAmount2
+        } else {
+            summonHeader += intl.translate(summonElementTypes[summon[s].friendElement].name, locale) + intl.translate(summonTypes[summon[s].friendSummonType], locale) + summon[s].friendSummonAmount
+        }
+        var TotalAttack = [["残りHP(%)"]];
+        var TotalHP = [["残りHP(%)"]]
+        var CriticalAttack = [["残りHP(%)"]];
+        var TotalExpected = [["残りHP(%)"]];
+        var CycleDamagePerTurn = [["残りHP(%)"]];
+        var AverageTotalExpected = [["残りHP(%)"]];
+        var AverageTotalAttack = [["残りHP(%)"]];
+        var AverageCriticalAttack = [["残りHP(%)"]];
+        var AverageCycleDamagePerTurn = [["残りHP(%)"]];
+
+        var alreadyUsedHP = {};
+
+        for(var j = 0; j < oneresult.length; j++){
+            var onedata = oneresult[j].data
+            var title = storedNames[j]
+
+            TotalAttack[0].push(title)
+            TotalHP[0].push(title)
+            CriticalAttack[0].push(title)
+            TotalExpected[0].push(title)
+            CycleDamagePerTurn[0].push(title)
+            AverageTotalExpected[0].push(title)
+            AverageTotalAttack[0].push(title)
+            AverageCycleDamagePerTurn[0].push(title)
+            AverageCriticalAttack[0].push(title)
+
+            // 召喚石2組以上の場合
+            if(res.length > 1) {
+                AllTotalAttack[0].push("[" + summonHeader + "] " + title)
+                AllTotalHP[0].push("[" + summonHeader + "] " + title)
+                AllCriticalAttack[0].push("[" + summonHeader + "] " + title)
+                AllTotalExpected[0].push("[" + summonHeader + "] " + title)
+                AllCycleDamagePerTurn[0].push("[" + summonHeader + "] " + title)
+                AllAverageTotalExpected[0].push("[" + summonHeader + "] " + title)
+                AllAverageTotalAttack[0].push("[" + summonHeader + "] " + title)
+                AllAverageCriticalAttack[0].push("[" + summonHeader + "] " + title)
+                AllAverageCycleDamagePerTurn[0].push("[" + summonHeader + "] " + title)
+            }
+
+            for(key in onedata){
+                var totalSummon = onedata[key].totalSummon
+                var normalHaisuiOrig = onedata[key].skilldata.normalHaisui
+                var magnaHaisuiOrig = onedata[key].skilldata.magnaHaisui
+                var charaHaisuiOrig = onedata[key].skilldata.charaHaisui
+                var normalKonshinOrig = onedata[key].skilldata.normalKonshin
+                var totalAttackWithoutHaisui = onedata[key].totalAttack / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig * charaHaisuiOrig)
+
+                var haisuiBuff = []
+                // キャラ背水はキャラ個別で計算するべき
+                for(var k = 0; k < 100; k++){
+                    haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0, charaHaisui: charaHaisuiBuff[k]})
+                }
+
+                // 武器データ計算
+                for(var i=0; i < arml.length; i++){
+                    var arm = arml[i]
+                    for(var jj = 1; jj <= 2; jj++){
+                        var skillname = '';
+                        var element = ''; (arm.element == undefined) ? "fire" : arm.element
+                        if(jj == 1) {
+                            skillname = arm.skill1
+                            element = (arm.element == undefined) ? "fire" : arm.element
+                        } else {
+                            skillname = arm.skill2
+                            element = (arm.element2 == undefined) ? "fire" : arm.element2
+                        }
+
+                        if(skillname != 'non' && onedata[key].element == element){
+                            var stype = skilltypes[skillname].type;
+                            var amount = skilltypes[skillname].amount;
+                            var slv = parseInt(arm.slv)
+
+                            // mask invalid slv
+                            if(slv == 0) slv = 1
+
+                            if(stype == "normalHaisui" || stype == "magnaHaisui" || stype == "normalKonshin" || stype == "magnaKonshin"){
+                                for(var l=0; l < haisuiBuff.length; l++) {
+                                    var remainHP = 0.01 * (l + 1)
+
+                                    if(stype == "normalHaisui" || stype == "normalKonshin") {
+                                        haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.zeus
+                                    } else {
+                                        haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.magna
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                for(var k = 0; k < 100; k++){
+                    var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].charaHaisui
+                    var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
+                    var newDamage = module.exports.calcDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
+                    var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
+                    var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
+
+                    var hp;
+                    if (displayRealHP) {
+                        // 実HP
+                        hp = parseInt(0.01 * (k + 1) * onedata["Djeeta"].totalHP);
+                    } else {
+                        // 残HP割合
+                        hp = k + 1
+                    }
+
+                    if(key == "Djeeta") {
+                        var index;
+                        if(hp in alreadyUsedHP) {
+                            index = alreadyUsedHP[hp] - 1
+                        } else {
+                            alreadyUsedHP[hp] = TotalAttack.push([hp]);
+                            TotalHP.push([hp])
+                            TotalExpected.push([hp])
+                            CriticalAttack.push([hp])
+                            CycleDamagePerTurn.push([hp])
+                            AverageTotalAttack.push([hp])
+                            AverageTotalExpected.push([hp])
+                            AverageCycleDamagePerTurn.push([hp])
+                            AverageCriticalAttack.push([hp])
+                            index = alreadyUsedHP[hp] - 1;
+
+                            for(var subj = 0; subj < oneresult.length; subj++){
+                                // 散布図とするため、先にresult分の欄を作っておく
+                                TotalAttack[index].push(null)
+                                CycleDamagePerTurn[index].push(null)
+                                CriticalAttack[index].push(null)
+                                TotalExpected[index].push(null)
+                                TotalHP[index].push(null)
+                                AverageTotalAttack[index].push(null)
+                                AverageTotalExpected[index].push(null)
+                                AverageCycleDamagePerTurn[index].push(null)
+                                AverageCriticalAttack[index].push(null)
+                            }
+
+                            if(res.length > 1) {
+                                var allindex;
+                                if(hp in allAlreadyUsedHP) {
+                                allindex = allAlreadyUsedHP[hp] - 1
+                                } else {
+                                allAlreadyUsedHP[hp] = AllTotalAttack.push([hp]);
+                                AllTotalHP.push([hp])
+                                AllTotalExpected.push([hp])
+                                AllCriticalAttack.push([hp])
+                                AllCycleDamagePerTurn.push([hp])
+                                AllAverageTotalAttack.push([hp])
+                                AllAverageTotalExpected.push([hp])
+                                AllAverageCycleDamagePerTurn.push([hp])
+                                AllAverageCriticalAttack.push([hp])
+                                allindex = allAlreadyUsedHP[hp] - 1;
+
+                                // まとめる場合はres.length*oneres.lengthの分だけ先に用意
+                                for(var subj = 0; subj < res.length * oneresult.length; subj++){
+                                    AllTotalAttack[allindex].push(null)
+                                    AllCycleDamagePerTurn[allindex].push(null)
+                                    AllCriticalAttack[allindex].push(null)
+                                    AllTotalExpected[allindex].push(null)
+                                    AllTotalHP[allindex].push(null)
+                                    AllAverageTotalAttack[allindex].push(null)
+                                    AllAverageTotalExpected[allindex].push(null)
+                                    AllAverageCycleDamagePerTurn[allindex].push(null)
+                                    AllAverageCriticalAttack[allindex].push(null)
+                                }
+                                }
+                            }
+                        }
+
+                        TotalHP[index][j+1] = (displayRealHP ? hp : parseInt(hp * onedata[key].totalHP));
+                        TotalAttack[index][j+1] = parseInt(newTotalAttack)
+                        TotalExpected[index][j+1] = parseInt(newTotalExpected)
+                        CriticalAttack[index][j+1] = parseInt(onedata[key].criticalRatio * newTotalAttack)
+                        CycleDamagePerTurn[index][j+1] = parseInt(newExpectedCycleDamagePerTurn)
+                        AverageTotalAttack[index][j+1] += parseInt(newTotalAttack / cnt)
+                        AverageTotalExpected[index][j+1] += parseInt(newTotalExpected / cnt)
+                        AverageCycleDamagePerTurn[index][j+1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                        AverageCriticalAttack[index][j+1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
+                    } else if (considerAverageArray[key]) {
+                        var index = alreadyUsedHP[hp] - 1
+                        AverageTotalAttack[index][j+1] += parseInt(newTotalAttack / cnt)
+                        AverageTotalExpected[index][j+1] += parseInt(newTotalExpected / cnt)
+                        AverageCycleDamagePerTurn[index][j+1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
+                        AverageCriticalAttack[index][j+1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
+                    }
+                }
+            }
+
+            if(res.length > 1) {
+                for(var k = 0; k < 100; k++) {
+                    var hp;
+                    if (displayRealHP) {
+                        // 実HP
+                        hp = parseInt(0.01 * (k + 1) * onedata["Djeeta"].totalHP);
+                    } else {
+                        // 残HP割合
+                        hp = k + 1
+                    }
+
+                    index = alreadyUsedHP[hp] - 1
+                    allindex = allAlreadyUsedHP[hp] - 1
+                    allj = s * oneresult.length + j + 1;
+
+                    AllTotalAttack[allindex][allj] = TotalAttack[index][j + 1]
+                    AllTotalHP[allindex][allj] = TotalHP[index][j + 1]
+                    AllCriticalAttack[allindex][allj] = CriticalAttack[index][j + 1]
+                    AllTotalExpected[allindex][allj] = TotalExpected[index][j + 1]
+                    AllCycleDamagePerTurn[allindex][allj] = CycleDamagePerTurn[index][j + 1]
+                    AllAverageTotalExpected[allindex][allj] = AverageTotalExpected[index][j + 1]
+                    AllAverageTotalAttack[allindex][allj] = AverageTotalAttack[index][j + 1]
+                    AllAverageCriticalAttack[allindex][allj] = AverageCriticalAttack[index][j + 1]
+                    AllAverageCycleDamagePerTurn[allindex][allj] = AverageCycleDamagePerTurn[index][j + 1]
+                }
+            }
+        }
+
+        data[summonHeader] = {}
+        data[summonHeader]["totalAttack"] = TotalAttack
+        data[summonHeader]["expectedCycleDamagePerTurn"] = CycleDamagePerTurn
+        data[summonHeader]["criticalAttack"] = CriticalAttack
+        data[summonHeader]["totalExpected"] = TotalExpected
+        data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
+        data[summonHeader]["averageAttack"] = AverageTotalAttack
+        data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
+        data[summonHeader]["averageTotalExpected"] = AverageTotalExpected
+        data[summonHeader]["totalHP"] = TotalHP
+    }
+
+    if(res.length > 1){
+        var matomete = intl.translate("まとめて比較", locale)
+        data[matomete] = {}
+        data[matomete]["totalAttack"] = AllTotalAttack
+        data[matomete]["totalHP"] = AllTotalHP
+        data[matomete]["criticalAttack"] = AllCriticalAttack
+        data[matomete]["totalExpected"] = AllTotalExpected
+        data[matomete]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
+        data[matomete]["averageAttack"] = AllAverageTotalAttack
+        data[matomete]["averageCriticalAttack"] = AllAverageCriticalAttack
+        data[matomete]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
+        data[matomete]["averageTotalExpected"] = AllAverageTotalExpected
+    }
+
+    // グラフ最大値最小値を抽出
+    for(key in minMaxArr) {
+        for(summonkey in data) {
+            for(var k = 1; k <= 100; k++){
+                for(var j = 1; j <= res[0].length; j++){
+                    // グラフ最大値最小値を保存
+                    if(data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j]
+                    if(data[summonkey][key][k][j] < minMaxArr[key]["min"] || minMaxArr[key]["min"] == 0) minMaxArr[key]["min"] = data[summonkey][key][k][j]
+                }
+            }
+        }
+    }
+
+    data["minMaxArr"] = minMaxArr
+    return data
 };
 
 module.exports.generateSimulationData = function(res, turnBuff, arml, summon, prof, buff, chara, storedCombinations, storedNames) {

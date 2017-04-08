@@ -423,7 +423,8 @@ label {
 .hpChart.fade.in.modal .modal-content {
     margin: 5px 1.0%;
     width: 98%;
-    overflow: scroll;
+    overflow-x: visible;
+    overflow-y: scroll;
 }
 
 @media screen and (min-width: 1000px) {

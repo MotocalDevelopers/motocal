@@ -9,14 +9,47 @@ var supportedChartSortkeys = GlobalConst.supportedChartSortkeys
 var supportedTurnChartSortkeys = GlobalConst.supportedTurnChartSortkeys
 var supportedSimulationChartSortkeys = GlobalConst.supportedSimulationChartSortkeys
 var _ua = GlobalConst._ua;
+var {generateHaisuiData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js')
 
 var HPChart = React.createClass({
+    makeChartData: function(props) {
+        var storedCombinations = props.storedList.combinations
+        var storedArmlist = props.storedList.armlist
+        var storedNames = props.storedList.names
+
+        var prof = props.prof; var armlist = props.armlist;
+        var summon = props.summon; var chara = props.chara;
+        var totalBuff = getTotalBuff(prof)
+        var totals = getInitialTotals(prof, chara, summon)
+        treatSupportAbility(totals, chara)
+
+        var res = []
+        for(var i = 0; i < summon.length; i++){
+            res[i] = []
+        }
+
+        for(var i = 0; i < storedCombinations.length; i++){
+            var oneres = calcOneCombination(storedCombinations[i], summon, prof, armlist, totals, totalBuff)
+            for(var j = 0; j < summon.length; j++){
+                res[j].push({data: oneres[j], armNumbers: storedCombinations[i]});
+            }
+            initializeTotals(totals)
+        }
+        // resに再計算されたデータが入っている状態
+        // res[summonind][rank]
+        return generateHaisuiData(res, armlist, summon, prof, chara, storedCombinations, storedNames, props.displayRealHP, props.locale);
+    },
+    componentWillReceiveProps: function(nextProps) {
+        // チャートを開きながらStoredListの名前を変更した時などに呼ばれる
+        this.setState({chartData: this.makeChartData(nextProps)})
+    },
     getInitialState: function() {
         var sortKey = this.props.sortKey
         if(!(sortKey in supportedChartSortkeys)) sortKey = "averageCyclePerTurn"
 
         return {
             sortKey: sortKey,
+            chartData: this.makeChartData(this.props),
         }
     },
     makeChartOption: function(sortKey) {
@@ -24,14 +57,14 @@ var HPChart = React.createClass({
         var hlabel = (this.props.displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale));
 
         options = {}
-        for(var key in this.props.data) {
+        for(var key in this.state.chartData) {
             if(key != "minMaxArr") {
                 options[key] = {
                     title: key,
                     curveType: 'function',
                     forcelFrame: true,
                     hAxis: {title: hlabel, titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                    vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                    vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.state.chartData["minMaxArr"][sortKey]["min"], maxValue: this.state.chartData["minMaxArr"][sortKey]["max"]},
                     tooltip: {showColorCode: true, textStyle: {fontSize: 15}, trigger: "selection"},
                     legend: {position: "top", maxLines: 5, textStyle: {fontSize: 15}},
                     crosshair: {orientation: "both", opacity: 0.8, trigger: "both"},
@@ -54,8 +87,8 @@ var HPChart = React.createClass({
     },
     render: function() {
         var locale = this.props.locale
-        var data = this.props.data
         var sortKey = this.state.sortKey
+        var data = this.state.chartData
         var options = this.makeChartOption(sortKey)
 
         if(_ua.Mobile) {
@@ -83,11 +116,11 @@ var HPChart = React.createClass({
                         <div style={{"alignItems": "center", "textAlign": "center"}}>
                             <span>{intl.translate("表示項目", locale)}</span>
                             <FormControl
-                            componentClass="select"
-                            value={this.state.sortKey}
-                            style={{"width": "400px", "margin": "2px 5px"}}
-                            onChange={this.handleEvent.bind(this, "sortKey")}>
-                                {selector[locale].supported_chartsortkeys}
+                                componentClass="select"
+                                value={this.state.sortKey}
+                                style={{"width": "400px", "margin": "2px 5px"}}
+                                onChange={this.handleEvent.bind(this, "sortKey")}>
+                                    {selector[locale].supported_chartsortkeys}
                             </FormControl>
                         </div>
                         {Object.keys(data).map(function(key, ind) {
