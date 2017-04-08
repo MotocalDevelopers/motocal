@@ -86,9 +86,8 @@ div.Tab.hidden {
 }
 
 .rootright {
-    width: calc(100% - 45% - 12px);
-    height: 95%;
-    margin-left:5px;
+    margin-left: 5px;
+    padding-right: 5px;
     float: left;
     overflow-x: visible;
     overflow-y: scroll;

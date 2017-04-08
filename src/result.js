@@ -2,7 +2,7 @@ var React = require('react');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
 var {Chart} = require('react-google-charts')
 var Simulator = require('./simulator.js')
-var {HPChart, TurnChart} = require('./chart.js')
+var {HPChart} = require('./chart.js')
 var Advertisement = require('./advertisement.js');
 var intl = require('./translate.js');
 var {HPChartHowTo} = require('./howto.js')
@@ -198,7 +198,6 @@ var ResultList = React.createClass({
             storedList: {"combinations": [], "armlist": [], "names": []},
             openHPChart: false,
             displayRealHP: false,
-            openTurnChart: false,
             openSimulator: false,
             openDisplayElementTable: false,
             openHPChartTutorial: false,
@@ -210,9 +209,6 @@ var ResultList = React.createClass({
     },
     closeHPChart: function() {
         this.setState({openHPChart: false})
-    },
-    closeTurnChart: function() {
-        this.setState({openTurnChart: false})
     },
     closeSimulator: function() {
         this.setState({openSimulator: false})
@@ -638,225 +634,6 @@ var ResultList = React.createClass({
         this.setState({storedList: newStored})
         this.setState({ChartButtonActive: true})
     },
-    openTurnChart: function() {
-        var storedCombinations = this.state.storedList.combinations
-        var storedArmlist = this.state.storedList.armlist
-
-        var prof = this.props.profile; var arml = this.props.armlist;
-        var summon = this.props.summon; var chara = this.props.chara;
-        var totalBuff = getTotalBuff(prof)
-        var totals = getInitialTotals(prof, chara, summon)
-        treatSupportAbility(totals, chara)
-
-        var sortkey = "averageCyclePerTurn"
-        var sortkeyname = "予想ターン毎ダメージのパーティ平均値"
-        if(this.props.sortKey == this.props.sortKey) {
-            sortkey = this.props.sortKey
-            sortkeyname = keyTypes[sortkey]
-        }
-
-        var res = []
-        for(var i = 0; i < summon.length; i++){
-            res[i] = []
-        }
-
-        for(var i = 0; i < storedCombinations.length; i++){
-            var oneres = calcOneCombination(storedCombinations[i], summon, prof, arml, totals, totalBuff)
-            for(var j = 0; j < summon.length; j++){
-                res[j].push({data: oneres[j], armNumbers: storedCombinations[i]});
-            }
-            initializeTotals(totals)
-        }
-        // resに再計算されたデータが入っている状態
-        // res[summonind][rank]
-        this.setState({chartData: this.generateTurnData(res, arml, summon, prof, totalBuff, chara, storedCombinations)})
-        this.setState({chartSortKey: sortkey})
-        this.setState({openTurnChart: true})
-    },
-    generateTurnData: function(res, arml, summon, prof, buff, chara, storedCombinations) {
-        var data = {}
-        var minMaxArr = {
-            "totalAttack": {"max": 0, "min": 0},
-            "criticalAttack": {"max": 0, "min": 0},
-            "expectedCycleDamagePerTurn": {"max": 0, "min": 0},
-            "averageAttack": {"max": 0, "min": 0},
-            "averageCyclePerTurn": {"max": 0, "min": 0},
-            "averageCriticalAttack": {"max": 0, "min": 0},
-        }
-        var cnt = 1
-        var considerAverageArray = {}
-        for(var ch = 0; ch < chara.length; ch++) {
-            var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
-            if(charaConsidered && chara[ch].name != "") {
-                cnt++;
-                considerAverageArray[chara[ch].name] = true
-            } else {
-                considerAverageArray[chara[ch].name] = false
-            }
-        }
-
-        if(res.length > 1) {
-            var AllTotalAttack = [["経過ターン"]];
-            var AllCycleDamagePerTurn = [["経過ターン"]];
-            var AllCriticalAttack = [["経過ターン"]];
-            var AllAverageTotalAttack = [["経過ターン"]];
-            var AllAverageCycleDamagePerTurn = [["経過ターン"]];
-            var AllAverageCriticalAttack = [["経過ターン"]];
-
-            for(var m = 0; m < 21; m++){
-                AllTotalAttack.push([m])
-                AllCycleDamagePerTurn.push([m])
-                AllCriticalAttack.push([m])
-                AllAverageTotalAttack.push([m])
-                AllAverageCycleDamagePerTurn.push([m])
-                AllAverageCriticalAttack.push([m])
-            }
-        }
-
-        for(var s = 0; s < res.length; s++) {
-            var oneresult = res[s]
-            var summonHeader = ""
-            if(summon[s].selfSummonType == "odin"){
-                summonHeader += "属性攻" + summon[s].selfSummonAmount + "キャラ攻" + summon[s].selfSummonAmount2
-            } else {
-                summonHeader += summonElementTypes[summon[s].selfElement].name + summonTypes[summon[s].selfSummonType] + summon[s].selfSummonAmount
-            }
-
-            summonHeader += " + "
-            if(summon[s].friendSummonType == "odin"){
-                summonHeader += "属性攻" + summon[s].friendSummonAmount + "キャラ攻" + summon[s].friendSummonAmount2
-            } else {
-                summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
-            }
-            var TotalAttack = [["経過ターン"]];
-            var CriticalAttack = [["経過ターン"]];
-            var CycleDamagePerTurn = [["経過ターン"]];
-            var AverageTotalAttack = [["経過ターン"]];
-            var AverageCriticalAttack = [["経過ターン"]];
-            var AverageCycleDamagePerTurn = [["経過ターン"]];
-
-            for(var m = 0; m < 21; m++){
-                TotalAttack.push([m])
-                CycleDamagePerTurn.push([m])
-                CriticalAttack.push([m])
-                AverageTotalAttack.push([m])
-                AverageCycleDamagePerTurn.push([m])
-                AverageCriticalAttack.push([m])
-
-                // 合計値を足すために先に要素を追加しておく
-                // (key の 処理順が不明のため)
-                for(var j = 0; j < oneresult.length; j++){
-                    AverageTotalAttack[m + 1].push(0)
-                    AverageCycleDamagePerTurn[m + 1].push(0)
-                    AverageCriticalAttack[m + 1].push(0)
-                }
-            }
-
-            for(var j = 0; j < oneresult.length; j++){
-                var onedata = oneresult[j].data
-
-                var title = "No. " + (j+1).toString() + ":"
-                for(var i=0; i < arml.length; i++){
-                    if(storedCombinations[j][i] > 0) {
-                        var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                        title += name + storedCombinations[j][i] + "本\n"
-                    }
-                }
-                for(key in onedata){
-                    var totalSummon = onedata[key].totalSummon
-                    var elementCoeff = onedata[key].skilldata.element
-                    var totalAttackWithoutHaisui = onedata[key].totalAttack / elementCoeff
-
-                    // 召喚石ターン分を減じておく
-                    var elementTurn = totalSummon.elementTurn - 1.0
-                    elementCoeff -= elementTurn
-
-                    for(var k = 0; k < 21; k++){
-                        // とりあえず 20ターンかかると仮定
-                        if(totalSummon.elementTurn > 1.0){
-                            elementTurn = 0.20 + (totalSummon.elementTurn - 1.20) * k / 20
-                        }
-                        var newTotalAttack = totalAttackWithoutHaisui * (elementCoeff + elementTurn)
-                        var newDamage = calcDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
-                        var newOugiDamage = calcOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
-                        var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
-
-                        if(key == "Djeeta") {
-                            TotalAttack[k + 1].push( parseInt(newTotalAttack) )
-                            CriticalAttack[k + 1].push(parseInt(onedata[key].criticalRatio * newTotalAttack))
-                            CycleDamagePerTurn[k + 1].push( parseInt(newExpectedCycleDamagePerTurn) )
-                            AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
-                            AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
-                            AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
-                        } else if (considerAverageArray[key]) {
-                            AverageTotalAttack[k + 1][j + 1] += parseInt(newTotalAttack / cnt)
-                            AverageCycleDamagePerTurn[k + 1][j + 1] += parseInt(newExpectedCycleDamagePerTurn / cnt)
-                            AverageCriticalAttack[k + 1][j + 1] += parseInt(onedata[key].criticalRatio * newTotalAttack / cnt)
-                        }
-                    }
-                }
-                TotalAttack[0].push(title)
-                CriticalAttack[0].push(title)
-                CycleDamagePerTurn[0].push(title)
-                AverageTotalAttack[0].push(title)
-                AverageCycleDamagePerTurn[0].push(title)
-                AverageCriticalAttack[0].push(title)
-
-                // 召喚石2組以上の場合
-                if(res.length > 1) {
-                    AllTotalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
-                    AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
-
-                    for(var k = 1; k < 22; k++) {
-                        AllTotalAttack[k].push(TotalAttack[k][j + 1])
-                        AllCriticalAttack[k].push(CriticalAttack[k][j + 1])
-                        AllCycleDamagePerTurn[k].push(CycleDamagePerTurn[k][j + 1])
-                        AllAverageTotalAttack[k].push(AverageTotalAttack[k][j + 1])
-                        AllAverageCriticalAttack[k].push(AverageCriticalAttack[k][j + 1])
-                        AllAverageCycleDamagePerTurn[k].push(AverageCycleDamagePerTurn[k][j + 1])
-                    }
-                }
-            }
-
-            data[summonHeader] = {}
-            data[summonHeader]["totalAttack"] = TotalAttack
-            data[summonHeader]["expectedCycleDamagePerTurn"] = CycleDamagePerTurn
-            data[summonHeader]["criticalAttack"] = CriticalAttack
-            data[summonHeader]["averageCriticalAttack"] = AverageCriticalAttack
-            data[summonHeader]["averageAttack"] = AverageTotalAttack
-            data[summonHeader]["averageCyclePerTurn"] = AverageCycleDamagePerTurn
-        }
-
-        if(res.length > 1){
-            data["まとめて比較"] = {}
-            data["まとめて比較"]["totalAttack"] = AllTotalAttack
-            data["まとめて比較"]["criticalAttack"] = AllCriticalAttack
-            data["まとめて比較"]["expectedCycleDamagePerTurn"] = AllCycleDamagePerTurn
-            data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
-            data["まとめて比較"]["averageCriticalAttack"] = AllAverageCriticalAttack
-            data["まとめて比較"]["averageCyclePerTurn"] = AllAverageCycleDamagePerTurn
-        }
-
-        // グラフ最大値最小値を抽出
-        for(key in minMaxArr) {
-            for(summonkey in data) {
-                for(var k = 1; k < 22; k++){
-                    for(var j = 1; j <= res[0].length; j++){
-                        // グラフ最大値最小値を保存
-                        if(data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j]
-                        if(data[summonkey][key][k][j] < minMaxArr[key]["min"] || minMaxArr[key]["min"] == 0) minMaxArr[key]["min"] = data[summonkey][key][k][j]
-                    }
-                }
-            }
-        }
-
-        data["minMaxArr"] = minMaxArr
-        return data
-    },
     openSimulator: function() {
         this.setState({openSimulator: true})
         this.setState({chartSortKey: "summedAverageExpectedDamage"})
@@ -1202,9 +979,8 @@ var ResultList = React.createClass({
                     <hr />
 
                     <ButtonGroup style={{width: "100%"}}>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="success" bsSize="large" onClick={this.openHPChart.bind(this, this.state.displayRealHP)} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="success" bsSize="large" onClick={this.openTurnChart} disabled={!this.state.ChartButtonActive} >{intl.translate("初期攻撃力推移グラフを開く", locale)}</Button>
-                        <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="success" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータを開く", locale)}</Button>
+                        <Button block style={{float: "left", width: "50%", margin: "0px"}} bsStyle="success" bsSize="large" onClick={this.openHPChart.bind(this, this.state.displayRealHP)} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
+                        <Button block style={{float: "left", width: "50%", margin: "0px"}} bsStyle="success" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータを開く", locale)}</Button>
                     </ButtonGroup>
 
                     {summon.map(function(s, summonindex) {
@@ -1283,23 +1059,6 @@ var ResultList = React.createClass({
                         <Modal.Body>
                             <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} displayRealHP={this.state.displayRealHP} />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
-                        </Modal.Body>
-                    </Modal>
-                    <Modal className="hpChart" show={this.state.openTurnChart} onHide={this.closeTurnChart}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>{intl.translate("初期攻撃力推移グラフ", locale)}</Modal.Title>
-                                <div className="charainfo" style={{"float": "left"}}>
-                                    {charaInfo}
-                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
-                                    <span>{buffInfoStr}</span>
-                                </div>
-                                <div style={{"float": "right"}}>
-                                    <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
-                                    <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
-                                </div>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <TurnChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
                         </Modal.Body>
                     </Modal>
                     <Modal className="hpChart" show={this.state.openSimulator} onHide={this.closeSimulator}>

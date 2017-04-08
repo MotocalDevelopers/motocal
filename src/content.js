@@ -407,7 +407,7 @@ var Root = React.createClass({
                     </div>
                 </div>
                 <div draggable="true" className="drag-hr" onDragEnd={this.onDragEnd}></div>
-                <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 12px)"}} >
+                <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 10px)"}} >
                     <ResultList
                         profile={this.state.profile}
                         armlist={this.state.armlist}
