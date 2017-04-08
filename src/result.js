@@ -909,6 +909,11 @@ var ResultList = React.createClass({
             }
         }
     },
+    handleStoredListNameChange: function(ind, newName) {
+        var newStoredList = this.state.storedList;
+        newStoredList.names[ind] = newName
+        this.setState({storedList: newStoredList})
+    },
     forceResultUpdate: function() {
         this.setState({result: this.calculateResult(this.props)})
     },
@@ -1325,7 +1330,15 @@ var ResultList = React.createClass({
                             />
                         </Modal.Body>
                     </Modal>
-                    <StoredListEditor className="hpChartTutotial" show={this.state.openShowStoredList} onHide={this.closeStoredList} storedList={this.state.storedList} removeOneStoredList={this.removeOneStoredList} locale={locale} />
+                    <StoredListEditor
+                        className="hpChartTutotial"
+                        show={this.state.openShowStoredList}
+                        onHide={this.closeStoredList}
+                        storedList={this.state.storedList}
+                        removeOneStoredList={this.removeOneStoredList}
+                        locale={locale}
+                        handleStoredListNameChange={this.handleStoredListNameChange}
+                    />
                 </div>
             );
         }
@@ -1549,12 +1562,18 @@ var Result = React.createClass({
 });
 
 var StoredListEditor = React.createClass({
+    handleNameChange: function(e) {
+        var newName = e.target.value;
+        var ind = e.target.getAttribute("name");
+        this.props.handleStoredListNameChange(ind, newName);
+    },
     render: function() {
         var locale = this.props.locale
         var combinations = this.props.storedList.combinations
         var armlist = this.props.storedList.armlist
         var names = this.props.storedList.names
         var removeOneStoredList = this.props.removeOneStoredList
+        var handleNameChange = this.handleNameChange;
 
         return (
             <Modal className="hpChartTutotial" show={this.props.show} onHide={this.props.onHide}>
@@ -1583,7 +1602,9 @@ var StoredListEditor = React.createClass({
                                 return (
                                     <tr key={ind}>
                                         <td>{ind}</td>
-                                        <td>{names[ind]}</td>
+                                        <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id="tooltip-storedlist-name">
+                                            <td><FormControl type="text" name={ind} value={names[ind]} onChange={handleNameChange}/></td>
+                                        </TextWithTooltip>
                                         {v.map(function(num, ind2){
                                             return (<td key={ind2}>{num}{intl.translate("本", locale)}</td>)
                                         })}
