@@ -415,14 +415,15 @@ label {
 }
 
 .hpChart.fade.in.modal .modal-dialog {
-    margin-left: 15%;
-    width: 70%;
+    margin: 10px 2.5%;
+    width: 95%;
+    height: calc(100% - 20px);
     overflow: visible;
-    margin-right: 15%;
 }
 
 .hpChart.fade.in.modal .modal-content {
-    height: 90%;
+    margin: 5px 1.0%;
+    width: 98%;
     overflow: scroll;
 }
 
@@ -453,7 +454,6 @@ label {
     overflow: visible;
 }
 
-/*
 .simulatorInput .simulator-th, .simulatorInput .simulator-td {
     padding: 2px;
     min-width: 130px;
@@ -466,7 +466,7 @@ label {
 
 .simulatorInput .form-control {
     width: 130px;
-}*/
+}
 
 .display-checked {
   background: #bbd4ff;

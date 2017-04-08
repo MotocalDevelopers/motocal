@@ -364,7 +364,6 @@ var Simulator = React.createClass({
 
         return (
             <div className="simulatorInput">
-                <h3> シミュレータ用入力 </h3>
                 <span>各ターンのバフやHP等を設定して下さい。</span>
                 <FormControl
                     componentClass="select"
