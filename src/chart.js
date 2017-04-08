@@ -17,7 +17,7 @@ var TurnChart = React.createClass({
 
         options = {}
         if(_ua.Mobile) {
-            for(key in this.props.data) {
+            for(var key in this.props.data) {
                 if(key != "minMaxArr") {
                     options[key] = {
                         title: key,
@@ -32,7 +32,7 @@ var TurnChart = React.createClass({
                 }
             }
         } else {
-            for(key in this.props.data) {
+            for(var key in this.props.data) {
                 if(key != "minMaxArr") {
                     options[key] = {
                         title: key,
@@ -60,7 +60,7 @@ var TurnChart = React.createClass({
         // optionsをupdate
         options = {}
         if(_ua.Mobile) {
-            for(key in this.props.data) {
+            for(var key in this.props.data) {
                 if(key != "minMaxArr") {
                     options[key] = {
                         title: key,
@@ -75,7 +75,7 @@ var TurnChart = React.createClass({
                 }
             }
         } else {
-            for(key in this.props.data) {
+            for(var key in this.props.data) {
                 if(key != "minMaxArr") {
                     options[key] = {
                         title: key,
@@ -149,7 +149,7 @@ var HPChart = React.createClass({
         var hlabel = (this.props.displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale));
 
         options = {}
-        for(key in this.props.data) {
+        for(var key in this.props.data) {
             if(key != "minMaxArr") {
                 options[key] = {
                     title: key,
@@ -218,88 +218,44 @@ var HPChart = React.createClass({
 var SimulationChart = React.createClass({
     getInitialState: function() {
         var sortKey = this.props.sortKey
-        if(!(sortKey in supportedSimulationChartSortkeys)) sortKey = "averageExpectedDamage"
-
-        options = {}
-        if(_ua.Mobile) {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedSimulationChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        } else {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedSimulationChartSortkeys[sortKey], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        }
+        if(!(sortKey in supportedSimulationChartSortkeys)) sortKey = "summedAverageExpectedDamage"
 
         return {
-            options: options,
             sortKey: sortKey,
         }
+    },
+    makeChartOption: function(sortKey) {
+        var locale = this.props.locale
+
+        options = {}
+        for(var key in this.props.data) {
+            if(key != "minMaxArr") {
+                options[key] = {
+                    title: key,
+                    forcelFrame: true,
+                    hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                    vAxis: {title: intl.translate(supportedSimulationChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
+                    tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 20}},
+                    legend: {position: "top", maxLines: 3, textStyle: {fontSize: 15}},
+                    chartArea: {left: "15%", top: "10%", width: "85%", height: "70%",},
+                    lineWidth: 2,
+                    pointSize: 0,
+                }
+            }
+        }
+
+        return options
     },
     handleEvent: function(key, e) {
         var newState = this.state
         newState[key] = e.target.value
-
-        // optionsをupdate
-        options = {}
-        if(_ua.Mobile) {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedSimulationChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-        } else {
-            for(key in this.props.data) {
-                if(key != "minMaxArr") {
-                    options[key] = {
-                        title: key,
-                        forcelFrame: true,
-                        hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
-                        vAxis: {title: supportedSimulationChartSortkeys[e.target.value], textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][e.target.value]["min"], maxValue: this.props.data["minMaxArr"][e.target.value]["max"]},
-                        tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                        legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                        chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
-                    }
-                }
-            }
-
-        }
-        newState.options = options
-
         this.setState(newState)
     },
     render: function() {
         var options = this.state.options
         var data = this.props.data
         var sortKey = this.state.sortKey
+        var options = this.makeChartOption(sortKey)
 
         if(_ua.Mobile) {
             return (
@@ -313,17 +269,27 @@ var SimulationChart = React.createClass({
             );
         } else {
             if(window.innerWidth >= 1450) {
-                var width = (90.0 / (Object.keys(data).length - 1))
+                var width = (100.0 / (Object.keys(data).length - 1))
                 if(Object.keys(data).length - 1 > 2) {
-                    width = 45.0
+                    width = 50.0
                 }
             } else {
-                var width = 90.0
+                var width = 100.0
             }
 
             return (
                     <div className="HPChart">
-                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>{selector.supported_simulationchartsortkeys}</FormControl>
+                        <div style={{"alignItems": "center", "textAlign": "center"}}>
+                            <span>Display Key:</span>
+                            <FormControl
+                                componentClass="select"
+                                value={this.state.sortKey}
+                                style={{"width": "50%", "margin": "2px 5px"}}
+                                onChange={this.handleEvent.bind(this, "sortKey")}>
+                                {selector.supported_simulationchartsortkeys}
+                            </FormControl>
+                        </div>
+
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
