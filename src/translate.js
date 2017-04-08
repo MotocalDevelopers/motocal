@@ -1051,6 +1051,18 @@ var multiLangData = {
         "en": "Party-Averaged Exp. Turn Damage",
         "ja": "予想ターン毎ダメージのパーティ平均値",
     },
+    "予想ダメージ(ジータさんのみ)": {
+        "en": "Exp. Damage (Player only)",
+        "ja": "予想ダメージ(ジータさんのみ)",
+    },
+    "予想ダメージのパーティ平均値": {
+        "en": "Party-Averaged Exp. Damage",
+        "ja": "予想ダメージのパーティ平均値",
+    },
+    "予想ダメージ平均の積分値": {
+        "en": "Integration of Party-Averaged Exp. Turn Damage",
+        "ja": "予想ダメージ平均の積分値",
+    },
     "★1": {
         "en": "★1",
         "ja": "★1",

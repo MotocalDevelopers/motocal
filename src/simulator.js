@@ -97,8 +97,6 @@ var Simulator = React.createClass({
             totalBuff["ougiGage"] = 0.01 * buffs["全体バフ"][k].ougiGage
             totalBuff["additionalDamage"] = 0.01 * buffs["全体バフ"][k].additionalDamage
 
-            console.log("turn total buff = ", totalBuff)
-
             // 個別バフと残りHPを設定
             for(var key in totals) {
                 totals[key].remainHP = (buffs["全体バフ"][k].remainHP > buffs[key][k].remainHP) ? 0.01 * buffs[key][k].remainHP : 0.01 * buffs["全体バフ"][k].remainHP
@@ -349,12 +347,12 @@ var Simulator = React.createClass({
         this.setState({bufflists: newbuff})
     },
     subBuffNum: function(e) {
-        var newbuff = this.state.bufflists
+        var newState = this.state
         var key = e.target.getAttribute("name")
         var turn = e.target.getAttribute("id")
-        if(newbuff[key][turn].length > 0) {
-            newbuff[key][turn].pop()
-            this.setState({bufflists: newbuff})
+        if(newState.bufflists[key][turn].length > 0) {
+            newState.bufflists[key][turn].pop()
+            this.updateBuffAmount(newState, key, turn)
         }
     },
     copyBuffTo: function(e, direction) {
@@ -438,7 +436,7 @@ var Simulator = React.createClass({
 
         var state = this.state;
 
-        for(var i = 0; i < droppedTurn + buff.turn; i++) {
+        for(var i = droppedTurn; i < droppedTurn + buff.turn; i++) {
             if(i < state.maxTurn) {
                 for(var j = 0; j < buff.bufflists.length; j++) {
                     state.bufflists[key][i].push(buff.bufflists[j])
