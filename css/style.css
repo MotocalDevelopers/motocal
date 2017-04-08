@@ -447,12 +447,6 @@ label {
     margin-right: 25%;
 }
 
-.google-visualization-tooltip {
-    z-index: 1;
-    left: -20px;
-    overflow: visible;
-}
-
 .simulatorInput .simulator-th, .simulatorInput .simulator-td {
     padding: 2px;
     width: 150px;

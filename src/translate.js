@@ -757,6 +757,10 @@ var multiLangData = {
         "en": "Sort Key",
         "ja": "優先項目",
     },
+    "表示項目": {
+        "en": "Display Key",
+        "ja": "表示項目",
+    },
     "順位": {
         "en": "Rank",
         "ja": "順位",

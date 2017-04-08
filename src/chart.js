@@ -236,7 +236,8 @@ var SimulationChart = React.createClass({
                     hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}, gridlines: {count: this.props.maxTurn}},
                     vAxis: {title: intl.translate(supportedSimulationChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
                     tooltip: {showColorCode: true, textStyle: {fontSize: 15}, trigger: "selection"},
-                    legend: {position: "in", maxLines: 3, textStyle: {fontSize: 15}},
+                    legend: {position: "top", maxLines: 5, textStyle: {fontSize: 15}},
+                    crosshair: {orientation: "both", opacity: 0.8, trigger: "both"},
                     chartArea: {left: "10%", top: "10%", width: "85%", height: "70%",},
                     lineWidth: 2,
                     point: 2,
@@ -282,7 +283,7 @@ var SimulationChart = React.createClass({
             return (
                     <div className="HPChart">
                         <div style={{"alignItems": "center", "textAlign": "center"}}>
-                            <span>Display Key:</span>
+                            <span>{intl.translate("表示項目", this.props.locale)}</span>
                             <FormControl
                                 componentClass="select"
                                 value={this.state.sortKey}

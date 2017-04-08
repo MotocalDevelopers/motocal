@@ -1253,11 +1253,11 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
 
                     // 召喚石2組以上の場合
                     if(res.length > 1) {
-                        AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
-                        AllAverageTotalExpected[0].push("(" + summonHeader + ")" + title)
-                        AllExpectedDamage[0].push("(" + summonHeader + ")" + title)
-                        AllAverageExpectedDamage[0].push("(" + summonHeader + ")" + title)
-                        AllSummedAverageExpectedDamage[0].push("(" + summonHeader + ")" + title)
+                        AllAverageTotalAttack[0].push("[" + summonHeader + "] " + title)
+                        AllAverageTotalExpected[0].push("[" + summonHeader + "] " + title)
+                        AllExpectedDamage[0].push("[" + summonHeader + "] " + title)
+                        AllAverageExpectedDamage[0].push("[" + summonHeader + "] " + title)
+                        AllSummedAverageExpectedDamage[0].push("[" + summonHeader + "] " + title)
                     }
                     SummedAverageExpectedDamage[t][j + 1] = AverageExpectedDamage[t][j + 1]
                 } else {
