@@ -847,65 +847,12 @@ var ResultList = React.createClass({
         return data
     },
     openSimulator: function() {
+        var sortKey = this.props.sortKey
+        if (!(sortKey in GlobalConst.supportedSimulationChartSortkeys)) {
+            sortKey = "averageCyclePerTurn"
+        }
         this.setState({openSimulator: true})
-
-        return 0;
-        var storedCombinations = this.state.storedList.combinations
-        var storedArmlist = this.state.storedList.armlist
-
-        var prof = this.props.profile; var arml = this.props.armlist;
-        var summon = this.props.summon; var chara = this.props.chara;
-        var totalBuff = getTotalBuff(prof)
-        var totals = getInitialTotals(prof, chara, summon)
-        treatSupportAbility(totals, chara)
-
-        var sortkey = "averageExpectedDamage"
-
-        var turnBuff = this.props.simulator;
-        var maxTurn = 5
-        if(turnBuff != undefined) {
-            maxTurn = turnBuff.maxTurn
-        } else {
-            alert("シミュレータ用の入力を設定して下さい。")
-            return 1;
-        }
-        var res = []
-        // res[summonid][turn][rank]にする
-        for(var i = 0; i < summon.length; i++){
-            res[i] = []
-            for(var j = 0; j < maxTurn; j++){
-                res[i][j] = []
-            }
-        }
-
-        for(var k = 0; k < maxTurn; k++){
-            // 各ターン毎のバフ、HPなどをアレする
-            totalBuff["normal"] = 0.01 * turnBuff.buffs["全体バフ"][k].normal
-            totalBuff["element"] = 0.01 * turnBuff.buffs["全体バフ"][k].element
-            totalBuff["other"] = 0.01 * turnBuff.buffs["全体バフ"][k].other
-            totalBuff["da"] = 0.01 * turnBuff.buffs["全体バフ"][k].DA
-            totalBuff["ta"] = 0.01 * turnBuff.buffs["全体バフ"][k].TA
-
-            // 個別バフとHP
-            for(key in totals) {
-                totals[key].remainHP = (turnBuff.buffs["全体バフ"][k].remainHP > turnBuff.buffs[key][k].remainHP) ? 0.01 * turnBuff.buffs[key][k].remainHP : 0.01 * turnBuff.buffs["全体バフ"][k].remainHP
-                totals[key].normalBuff = 0.01 * turnBuff.buffs[key][k].normal
-                totals[key].elementBuff = 0.01 * turnBuff.buffs[key][k].element
-                totals[key].otherBuff = 0.01 * turnBuff.buffs[key][k].other
-                totals[key].DABuff = 0.01 * turnBuff.buffs[key][k].DA
-                totals[key].TABuff = 0.01 * turnBuff.buffs[key][k].TA
-            }
-
-            for(var i = 0; i < storedCombinations.length; i++){
-                var oneres = calcOneCombination(storedCombinations[i], summon, prof, arml, totals, totalBuff)
-                for(var j = 0; j < summon.length; j++){
-                    res[j][k].push({data: oneres[j], armNumbers: storedCombinations[i]});
-                }
-                initializeTotals(totals)
-            }
-        }
-        this.setState({chartData: generateSimulationData(res, turnBuff, arml, summon, prof, totalBuff, chara, storedCombinations)})
-        this.setState({chartSortKey: sortkey})
+        this.setState({chartSortKey: sortKey})
     },
     switchDisplayRealHP: function(e) {
         this.setState({displayRealHP: !(this.state.displayRealHP)});
@@ -965,12 +912,12 @@ var ResultList = React.createClass({
         var prof = this.props.profile
         var arm = this.props.armlist
         var chara = this.props.chara
+        var summon = this.props.summon
 
         // テスカトリポカ計算用
         var races = checkNumberofRaces(chara)
         var tesukatoripoka = getTesukatoripokaAmount
 
-        var summondata = res.summon
         var result = res.result
         var onAddToHaisuiData = this.addHaisuiData
 
@@ -1122,7 +1069,7 @@ var ResultList = React.createClass({
                     <hr/>
                     <Button block bsStyle="success" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
                     <hr/>
-                    {summondata.map(function(s, summonindex) {
+                    {summon.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
                             selfSummonHeader = summonElementTypes[s.selfElement].name + "属性攻" + s.selfSummonAmount + "キャラ攻" + s.selfSummonAmount2
@@ -1245,7 +1192,7 @@ var ResultList = React.createClass({
                         <Button block style={{float: "left", width: "33.3%", margin: "0 0 5px 0"}} bsStyle="success" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータを開く", locale)}</Button>
                     </ButtonGroup>
 
-                    {summondata.map(function(s, summonindex) {
+                    {summon.map(function(s, summonindex) {
                         var selfSummonHeader = ""
                         if(s.selfSummonType == "odin"){
                             selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + intl.translate("属性攻", locale) + s.selfSummonAmount + intl.translate("キャラ攻", locale) + s.selfSummonAmount2
@@ -1355,12 +1302,16 @@ var ResultList = React.createClass({
                         </Modal.Header>
                         <Modal.Body>
                             <Simulator
-                                chara={this.props.chara}
+                                chara={chara}
+                                prof={prof}
+                                armlist={arm}
+                                summon={summon}
                                 dataName={this.props.dataName}
                                 dataForLoad={this.props.dataForLoadSimulator}
                                 locale={locale}
                                 onChange={this.props.onChangeSimulationData}
                                 storedList={this.state.storedList}
+                                sortKey={this.state.chartSortKey}
                             />
                         </Modal.Body>
                     </Modal>

@@ -20,187 +20,64 @@ var select_dabuffAmount = daBuffAmountList.map(function(opt){ return <option val
 var select_tabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"TA-" + opt} key={opt}>TA率+{opt}%</option> });
 var select_hplist = HPList.map(function(opt){return <option value={opt} key={opt}>残りHP:{opt}%</option>;});
 
-// logic
-function generateSimulationData(res, turnBuff, arml, summon, prof, buff, chara, storedCombinations) {
-    var data = {}
-    var minMaxArr = {
-        "averageAttack": {"max": 0, "min": 0},
-        "averageTotalExpected": {"max": 0, "min": 0},
-        "expectedDamage": {"max": 0, "min": 0},
-        "averageExpectedDamage": {"max": 0, "min": 0},
-        "summedAverageExpectedDamage": {"max": 0, "min": 0},
-    }
-    var cnt = 1
-    var considerAverageArray = {}
-    for(var ch = 0; ch < chara.length; ch++) {
-        var charaConsidered = (chara[ch].isConsideredInAverage == undefined) ? true : chara[ch].isConsideredInAverage
-        if(charaConsidered && chara[ch].name != "") {
-            cnt++;
-            considerAverageArray[chara[ch].name] = true
-        } else {
-            considerAverageArray[chara[ch].name] = false
-        }
-    }
-
-    if(res.length > 1) {
-        var AllAverageTotalAttack = [["ターン"]];
-        var AllAverageTotalExpected = [["ターン"]];
-        var AllExpectedDamage = [["ターン"]];
-        var AllAverageExpectedDamage = [["ターン"]];
-        var AllSummedAverageExpectedDamage = [["ターン"]];
-
-        for(var m = 1; m <= turnBuff.maxTurn; m++){
-            AllAverageTotalAttack.push([m])
-            AllAverageTotalExpected.push([m])
-            AllExpectedDamage.push([m])
-            AllAverageExpectedDamage.push([m])
-            AllSummedAverageExpectedDamage.push([m])
-        }
-    }
-
-    for(var s = 0; s < res.length; s++) {
-        var oneresult = res[s]
-        var summonHeader = ""
-        if(summon[s].selfSummonType == "odin"){
-            summonHeader += "属性攻" + summon[s].selfSummonAmount + "キャラ攻" + summon[s].selfSummonAmount2
-        } else {
-            summonHeader += summonElementTypes[summon[s].selfElement].name + summonTypes[summon[s].selfSummonType] + summon[s].selfSummonAmount
-        }
-
-        summonHeader += " + "
-        if(summon[s].friendSummonType == "odin"){
-            summonHeader += "属性攻" + summon[s].friendSummonAmount + "キャラ攻" + summon[s].friendSummonAmount2
-        } else {
-            summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
-        }
-        var AverageTotalAttack = [["ターン"]];
-        var AverageTotalExpected = [["ターン"]];
-        var ExpectedDamage = [["ターン"]];
-        var AverageExpectedDamage = [["ターン"]];
-        var SummedAverageExpectedDamage = [["ターン"]];
-
-        for(var m = 1; m <= turnBuff.maxTurn; m++){
-            AverageTotalAttack.push([m])
-            AverageTotalExpected.push([m])
-            ExpectedDamage.push([m])
-            AverageExpectedDamage.push([m])
-            SummedAverageExpectedDamage.push([m])
-
-            for(var j = 0; j < oneresult[0].length; j++) {
-                AverageExpectedDamage[m].push(0)
-                SummedAverageExpectedDamage[m].push(0)
-            }
-        }
-
-        for(var t = 1; t <= turnBuff.maxTurn; t++){
-            var turndata = oneresult[t - 1]
-            for(var j = 0; j < turndata.length; j++){
-                var onedata = turndata[j].data
-
-                AverageTotalAttack[t].push( onedata["Djeeta"].averageAttack )
-                AverageTotalExpected[t].push( onedata["Djeeta"].averageTotalExpected )
-
-                for(key in onedata) {
-                    if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougi" || turnBuff.buffs[key][t-1].turnType == "ougi") {
-                        // 基本的に奥義の設定が優先
-                        var newOugiDamage = this.calculateOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
-
-                        if(key == "Djeeta") {
-                            ExpectedDamage[t].push( parseInt(newOugiDamage) )
-                            AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage/cnt)
-                        } else if(considerAverageArray[key]) {
-                            AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage/cnt)
-                        }
-
-                    } else if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougiNoDamage" || turnBuff.buffs[key][t-1].turnType == "ougiNoDamage") {
-                        // しコルワ
-                        if(key == "Djeeta") {
-                            ExpectedDamage[t].push(0)
-                        }
-                    } else {
-                        // 通常攻撃
-                        var newDamage = this.calculateDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
-                        if(key == "Djeeta") {
-                            ExpectedDamage[t].push( parseInt(newDamage * onedata[key].expectedAttack) )
-                            AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage/cnt)
-                        } else if(considerAverageArray[key]) {
-                            AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage/cnt)
-                        }
-                    }
-                }
-
-                if(t == 1) {
-                    var title = "No. " + (j+1).toString() + ":"
-                    for(var i=0; i < arml.length; i++){
-                        if(storedCombinations[j][i] > 0) {
-                            var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                            title += name + storedCombinations[j][i] + "本\n"
-                        }
-                    }
-                    AverageTotalAttack[0].push(title)
-                    AverageTotalExpected[0].push(title)
-                    ExpectedDamage[0].push(title)
-                    AverageExpectedDamage[0].push(title)
-                    SummedAverageExpectedDamage[0].push(title)
-
-                    // 召喚石2組以上の場合
-                    if(res.length > 1) {
-                        AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
-                        AllAverageTotalExpected[0].push("(" + summonHeader + ")" + title)
-                        AllExpectedDamage[0].push("(" + summonHeader + ")" + title)
-                        AllAverageExpectedDamage[0].push("(" + summonHeader + ")" + title)
-                        AllSummedAverageExpectedDamage[0].push("(" + summonHeader + ")" + title)
-                    }
-                    SummedAverageExpectedDamage[t][j + 1] = AverageExpectedDamage[t][j + 1]
-                } else {
-                    SummedAverageExpectedDamage[t][j + 1] = SummedAverageExpectedDamage[t - 1][j + 1] + AverageExpectedDamage[t][j + 1]
-                }
-
-                if(res.length > 1) {
-                    AllAverageTotalAttack[t].push(AverageTotalAttack[t][j + 1])
-                    AllAverageTotalExpected[t].push(AverageTotalExpected[t][j + 1])
-                    AllExpectedDamage[t].push(ExpectedDamage[t][j + 1])
-                    AllAverageExpectedDamage[t].push(AverageExpectedDamage[t][j + 1])
-                    AllSummedAverageExpectedDamage[t].push(SummedAverageExpectedDamage[t][j + 1])
-                }
-            }
-        }
-
-        data[summonHeader] = {}
-        data[summonHeader]["averageAttack"] = AverageTotalAttack
-        data[summonHeader]["averageTotalExpected"] = AverageTotalExpected
-        data[summonHeader]["expectedDamage"] = ExpectedDamage
-        data[summonHeader]["averageExpectedDamage"] = AverageExpectedDamage
-        data[summonHeader]["summedAverageExpectedDamage"] = SummedAverageExpectedDamage
-    }
-
-    if(res.length > 1){
-        data["まとめて比較"] = {}
-        data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
-        data["まとめて比較"]["averageTotalExpected"] = AllAverageTotalExpected
-        data["まとめて比較"]["expectedDamage"] = AllExpectedDamage
-        data["まとめて比較"]["averageExpectedDamage"] = AllAverageExpectedDamage
-        data["まとめて比較"]["summedAverageExpectedDamage"] = AllSummedAverageExpectedDamage
-    }
-
-    // グラフ最大値最小値を抽出
-    for(key in minMaxArr) {
-        for(summonkey in data) {
-            for(var k = 1; k <= turnBuff.maxTurn; k++){
-                for(var j = 1; j <= res[0][0].length; j++){
-                    // グラフ最大値最小値を保存
-                    if(data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j]
-                    if(data[summonkey][key][k][j] < minMaxArr[key]["min"] || minMaxArr[key]["min"] == 0) minMaxArr[key]["min"] = data[summonkey][key][k][j]
-                }
-            }
-        }
-    }
-
-    data["minMaxArr"] = minMaxArr
-    return data
-}
+var {generateSimulationData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js')
 
 var Simulator = React.createClass({
+    makeTurnBuff: function() {
+        var storedCombinations = this.props.storedList.combinations
+        var storedArmlist = this.props.storedList.armlist
+
+        var prof = this.props.prof; var armlist = this.props.armlist;
+        var summon = this.props.summon; var chara = this.props.chara;
+
+        var totalBuff = getTotalBuff(prof)
+        var totals = getInitialTotals(prof, chara, summon)
+        treatSupportAbility(totals, chara)
+
+        var sortkey = "averageExpectedDamage"
+
+        // var turnBuff = this.state.simulator;
+        var maxTurn = this.state.maxTurn
+
+        var res = []
+        // res[summonid][turn][rank]にする
+        for(var i = 0; i < summon.length; i++){
+            res[i] = []
+            for(var j = 0; j < maxTurn; j++){
+                res[i][j] = []
+            }
+        }
+
+        var buffs = this.state.buffs;
+
+        for(var k = 0; k < maxTurn; k++){
+            // 各ターン毎のバフ、HPなどをアレする
+            totalBuff["normal"] = 0.01 * buffs["全体バフ"][k].normal
+            totalBuff["element"] = 0.01 * buffs["全体バフ"][k].element
+            totalBuff["other"] = 0.01 * buffs["全体バフ"][k].other
+            totalBuff["da"] = 0.01 * buffs["全体バフ"][k].DA
+            totalBuff["ta"] = 0.01 * buffs["全体バフ"][k].TA
+
+            // 個別バフと残りHPを設定
+            for(key in totals) {
+                totals[key].remainHP = (buffs["全体バフ"][k].remainHP > buffs[key][k].remainHP) ? 0.01 * buffs[key][k].remainHP : 0.01 * buffs["全体バフ"][k].remainHP
+                totals[key].normalBuff = 0.01 * buffs[key][k].normal
+                totals[key].elementBuff = 0.01 * buffs[key][k].element
+                totals[key].otherBuff = 0.01 * buffs[key][k].other
+                totals[key].DABuff = 0.01 * buffs[key][k].DA
+                totals[key].TABuff = 0.01 * buffs[key][k].TA
+            }
+
+            for(var i = 0; i < storedCombinations.length; i++){
+                var oneres = calcOneCombination(storedCombinations[i], summon, prof, armlist, totals, totalBuff)
+                for(var j = 0; j < summon.length; j++){
+                    res[j][k].push({data: oneres[j], armNumbers: storedCombinations[i]});
+                }
+                initializeTotals(totals)
+            }
+        }
+        return generateSimulationData(res, this.state, armlist, summon, prof, totalBuff, chara, storedCombinations);
+    },
     componentDidMount: function(){
         // 初期化後 state を 上の階層に渡しておく
         this.props.onChange(this.state);
@@ -470,7 +347,7 @@ var Simulator = React.createClass({
         var copyToLeft = this.copyToLeft
         var copyToRight = this.copyToRight
         var isDisplay = this.isDisplay
-        var chartData = generateSimulationData(res, turnBuff, armlist, summon, prof, buff, chara, this.props.storedList.combinations)
+        var chartData = this.makeTurnBuff();
 
         return (
             <div className="simulatorInput">
@@ -525,7 +402,7 @@ var Simulator = React.createClass({
                     })}
                     </tbody>
                 </table>
-                {/*<SimulationChart data={chartData} sortKey={this.state.chartSortKey} locale={this.props.locale} />*/}
+                <SimulationChart data={chartData} sortKey={this.props.sortKey} locale={this.props.locale} />*/}
             </div>
         );
     }

@@ -596,6 +596,10 @@ module.exports.selector.en.supported_chartsortkeys = Object.keys(supportedChartS
 module.exports.selector.supported_turnchartsortkeys = Object.keys(supportedTurnChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedTurnChartSortkeys[opt]}</option> });
 module.exports.selector.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedSimulationChartSortkeys[opt]}</option> });
 
+module.exports.supportedChartSortkeys = supportedChartSortkeys
+module.exports.supportedTurnChartSortkeys = supportedTurnChartSortkeys
+module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
+
 module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});
 module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "en")}</option>;});
 
