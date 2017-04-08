@@ -258,6 +258,7 @@ var ResultList = React.createClass({
     openHPChart: function(displayRealHP, e) {
         var storedCombinations = this.state.storedList.combinations
         var storedArmlist = this.state.storedList.armlist
+        var storedNames = this.state.storedList.names
 
         var prof = this.props.profile; var arml = this.props.armlist;
         var summon = this.props.summon; var chara = this.props.chara;
@@ -286,11 +287,11 @@ var ResultList = React.createClass({
         }
         // resに再計算されたデータが入っている状態
         // res[summonind][rank]
-        this.setState({chartData: this.generateHaisuiData(res, arml, summon, prof, chara, storedCombinations, displayRealHP)})
+        this.setState({chartData: this.generateHaisuiData(res, arml, summon, prof, chara, storedCombinations, storedNames, displayRealHP)})
         this.setState({chartSortKey: sortkey})
         this.setState({openHPChart: true})
     },
-    generateHaisuiData: function(res, arml, summon, prof, chara, storedCombinations, displayRealHP) {
+    generateHaisuiData: function(res, arml, summon, prof, chara, storedCombinations, storedNames, displayRealHP) {
         var data = {}
         var locale = this.props.locale
 
@@ -367,14 +368,7 @@ var ResultList = React.createClass({
 
             for(var j = 0; j < oneresult.length; j++){
                 var onedata = oneresult[j].data
-
-                var title = "No. " + (j+1).toString() + ":"
-                for(var i=0; i < arml.length; i++){
-                    if(storedCombinations[j][i] > 0) {
-                        var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                        title += name + storedCombinations[j][i] + "本\n"
-                    }
-                }
+                var title = storedNames[j]
 
                 TotalAttack[0].push(title)
                 TotalHP[0].push(title)
@@ -388,15 +382,15 @@ var ResultList = React.createClass({
 
                 // 召喚石2組以上の場合
                 if(res.length > 1) {
-                    AllTotalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllTotalHP[0].push("(" + summonHeader + ")" + title)
-                    AllCriticalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllTotalExpected[0].push("(" + summonHeader + ")" + title)
-                    AllCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
-                    AllAverageTotalExpected[0].push("(" + summonHeader + ")" + title)
-                    AllAverageTotalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllAverageCriticalAttack[0].push("(" + summonHeader + ")" + title)
-                    AllAverageCycleDamagePerTurn[0].push("(" + summonHeader + ")" + title)
+                    AllTotalAttack[0].push("[" + summonHeader + "] " + title)
+                    AllTotalHP[0].push("[" + summonHeader + "] " + title)
+                    AllCriticalAttack[0].push("[" + summonHeader + "] " + title)
+                    AllTotalExpected[0].push("[" + summonHeader + "] " + title)
+                    AllCycleDamagePerTurn[0].push("[" + summonHeader + "] " + title)
+                    AllAverageTotalExpected[0].push("[" + summonHeader + "] " + title)
+                    AllAverageTotalAttack[0].push("[" + summonHeader + "] " + title)
+                    AllAverageCriticalAttack[0].push("[" + summonHeader + "] " + title)
+                    AllAverageCycleDamagePerTurn[0].push("[" + summonHeader + "] " + title)
                 }
 
                 for(key in onedata){

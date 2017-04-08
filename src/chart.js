@@ -32,11 +32,14 @@ var HPChart = React.createClass({
                     forcelFrame: true,
                     hAxis: {title: hlabel, titleTextStyle: {italic: false}, textStyle: {italic: false}},
                     vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                    tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 10}},
-                    legend: {position: "top", maxLines: 3, textStyle: {fontSize: 8}},
-                    chartArea: {left: "20%", top: "10%", width: "80%", height: "70%",},
+                    tooltip: {showColorCode: true, textStyle: {fontSize: 15}, trigger: "selection"},
+                    legend: {position: "top", maxLines: 5, textStyle: {fontSize: 15}},
+                    crosshair: {orientation: "both", opacity: 0.8, trigger: "both"},
+                    chartArea: {left: "10%", top: "10%", width: "85%", height: "70%",},
                     lineWidth: 2,
                     pointSize: 0,
+                    selectionMode: 'multiple',
+                    aggregationTarget: "category",
                 }
             }
         }
@@ -77,10 +80,16 @@ var HPChart = React.createClass({
 
             return (
                     <div className="HPChart">
-                        <span>{intl.translate("表示項目", locale)}</span>
-                        <FormControl componentClass="select" value={this.state.sortKey} onChange={this.handleEvent.bind(this, "sortKey")}>
-                            {selector[locale].supported_chartsortkeys}
-                        </FormControl>
+                        <div style={{"alignItems": "center", "textAlign": "center"}}>
+                            <span>{intl.translate("表示項目", locale)}</span>
+                            <FormControl
+                            componentClass="select"
+                            value={this.state.sortKey}
+                            style={{"width": "400px", "margin": "2px 5px"}}
+                            onChange={this.handleEvent.bind(this, "sortKey")}>
+                                {selector[locale].supported_chartsortkeys}
+                            </FormControl>
+                        </div>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
                                 return <Chart chartType="ScatterChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
@@ -118,7 +127,7 @@ var SimulationChart = React.createClass({
                     crosshair: {orientation: "both", opacity: 0.8, trigger: "both"},
                     chartArea: {left: "10%", top: "10%", width: "85%", height: "70%",},
                     lineWidth: 2,
-                    point: 2,
+                    pointSize: 8,
                     selectionMode: 'multiple',
                     aggregationTarget: "category",
                 }
@@ -165,7 +174,7 @@ var SimulationChart = React.createClass({
                             <FormControl
                                 componentClass="select"
                                 value={this.state.sortKey}
-                                style={{"width": "50%", "margin": "2px 5px"}}
+                                style={{"width": "400px", "margin": "2px 5px"}}
                                 onChange={this.handleEvent.bind(this, "sortKey")}>
                                 {selector.supported_simulationchartsortkeys}
                             </FormControl>
