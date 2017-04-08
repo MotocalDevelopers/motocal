@@ -460,11 +460,11 @@ var ResultList = React.createClass({
         buffInfoStr += intl.translate("敵防御固有値", locale) + prof.enemyDefense
 
         if(_ua.Mobile || _ua.Tablet) {
-            var changeSortKey = <FormControl componentClass="select" style={{"width": "250px", padding: "0"}} value={this.props.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
+            var changeSortKey = <FormControl componentClass="select" style={{"width": "100%", padding: "0"}} value={this.props.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
                     <Button block onClick={this.openDisplayTable}>
-                    表示項目切替
+                        {intl.translate("表示項目切替", locale)}
                     </Button>
                     <Collapse in={this.state.openDisplayElementTable}>
                     <table style={{"width": "100%", textAlign: "center", marginBottom: "2px"}} className="table table-bordered"><tbody>
@@ -506,7 +506,7 @@ var ResultList = React.createClass({
                     </Collapse>
                     <ControlAutoUpdate mobile autoupdate={this.state.disableAutoResultUpdate} switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")} forceResultUpdate={this.forceResultUpdate} locale={locale} />
                     <hr/>
-                    <p>優先する値:{changeSortKey}</p>
+                    <p>{intl.translate("優先項目", locale)}:{changeSortKey}</p>
                     <hr/>
                     <Button block bsStyle="success" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
                     <hr/>
@@ -563,13 +563,33 @@ var ResultList = React.createClass({
                     })}
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>
-                            <Modal.Title>HP Charts ({charaInfoStr})</Modal.Title>
-                            <Button bsStyle="info" onClick={this.openHPChartTutorial}>使い方</Button>
-                            <Button bsStyle="primary" onClick={this.openStoredList}>保存された編成を編集</Button>
-                            <Button bsStyle="danger" onClick={this.resetStoredList}>保存された編成を全て削除</Button>
+                            <Modal.Title>{intl.translate("背水渾身グラフ", locale)}</Modal.Title>
+                            <div className="charainfo" style={{ "float": "left" }}>
+                                {charaInfo}
+                                <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵の属性", locale)}</div>
+                                <span>{buffInfoStr}</span>
+                            </div>
+                            <ButtonGroup block vertical>
+                                <Button bsStyle="info" onClick={this.openHPChartTutorial}>{intl.translate("使い方", locale)}</Button>
+                                <Button bsStyle="primary" onClick={this.openStoredList}>{intl.translate("保存された編成を編集", locale)}</Button>
+                                <Button bsStyle="danger" onClick={this.resetStoredList}>{intl.translate("保存された編成を削除", locale)}</Button>
+                                {(this.state.displayRealHP) ?
+                                    <Button bsStyle="default" onClick={this.switchDisplayRealHP}>{intl.translate("HP割合で表示", locale)}</Button> :
+                                    <Button bsStyle="default" onClick={this.switchDisplayRealHP}>{intl.translate("実際のHPで表示", locale)}</Button>
+                                }
+                            </ButtonGroup>
                         </Modal.Header>
                         <Modal.Body>
-                            <HPChart data={this.state.chartData} sortKey={this.state.chartSortKey} locale={locale} />
+                            <HPChart
+                                chara={chara}
+                                prof={prof}
+                                armlist={arm}
+                                summon={summon}
+                                sortKey={this.state.chartSortKey}
+                                locale={locale}
+                                storedList={this.state.storedList}
+                                displayRealHP={this.state.displayRealHP}
+                            />
                             <HPChartHowTo show={this.state.openHPChartTutorial} onHide={this.closeHPChartTutorial}/>
                         </Modal.Body>
                     </Modal>
@@ -664,7 +684,7 @@ var ResultList = React.createClass({
                                     <span>{buffInfoStr}</span>
                                 </div>
                                 <div style={{"textAlign":"right", "float": "right"}}>
-                                <span>[{intl.translate("優先項目", locale)}: {changeSortKey}]</span>
+                                <span>{intl.translate("優先項目", locale)}: {changeSortKey}</span>
                                 </div>
                                 <table className="table table-bordered">
                                 <thead className="result">

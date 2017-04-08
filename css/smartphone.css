@@ -498,8 +498,10 @@ label {
 }
 
 .hpChart.fade.in.modal .modal-content {
-    width: 100%;
-    overflow: scroll;
+    margin: 5px 1.0%;
+    width: 98%;
+    overflow-x: visible;
+    overflow-y: scroll;
 }
 
 .hpChartTutorial.fade.in.modal .modal-dialog {
@@ -509,11 +511,6 @@ label {
     margin-right: 20%;
 }
 
-.google-visualization-tooltip {
-    z-index: 1;
-    width: 60px;
-    overflow: visible;
-}
 .display-checked {
   background: #bbd4ff;
   transition-duration: 0;

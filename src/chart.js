@@ -182,13 +182,13 @@ var SimulationChart = React.createClass({
 
         if(_ua.Mobile) {
             return (
-                    <div className="HPChart">
-                        {Object.keys(data).map(function(key, ind) {
-                            if(key != "minMaxArr") {
-                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"90%"} height={"50%"} legend_toggle={true} />
-                            }
-                        })}
-                    </div>
+                <div className="HPChart">
+                    {Object.keys(data).map(function(key, ind) {
+                        if(key != "minMaxArr") {
+                            return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={"98%"} height={"50%"} legend_toggle={true} />
+                        }
+                    })}
+                </div>
             );
         } else {
             if(window.innerWidth > 1000) {
