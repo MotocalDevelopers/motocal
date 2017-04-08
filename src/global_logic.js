@@ -377,7 +377,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             var criticalRatio = 1.0
         } else {
             var damageUP = totals[key]["tenshiDamageUP"]
-            var criticalRatio = calcCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+            var criticalRatio = module.exports.calcCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
         }
 
         var criticalAttack = parseInt(totalAttack * criticalRatio)
@@ -1002,7 +1002,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
     }
 
     for(var key in totals){
-        totals[key]["typeBonus"] = module.exports.getTypeBonus(totals[key]["element"], prof)
+        totals[key]["typeBonus"] = module.exports.getTypeBonus(totals[key]["element"], prof.enemyElement)
     }
 
     return totals
