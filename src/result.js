@@ -1049,7 +1049,7 @@ var ResultList = React.createClass({
         } else {
             charaInfoStr += prof.hp
         }
-        charaInfoStr += "% (" + intl.translate(getTypeBonusStr(prof.element, prof), locale) + ")"
+        charaInfoStr += "% (" + intl.translate(getTypeBonusStr(prof.element, prof.enemyElement), locale) + ")"
         var charaInfo = [<span key={0}>{getElementColorLabel(prof.element, locale)}&nbsp;{charaInfoStr}</span>]
         for(var i = 0; i < chara.length; i++){
             if(chara[i].name != "" && chara[i].isConsideredInAverage) {
@@ -1059,7 +1059,7 @@ var ResultList = React.createClass({
                 } else {
                     charaInfoStr += prof.hp
                 }
-                charaInfoStr += "% (" + intl.translate(getTypeBonusStr(chara[i].element, prof), locale) + ")"
+                charaInfoStr += "% (" + intl.translate(getTypeBonusStr(chara[i].element, prof.enemyElement), locale) + ")"
                 charaInfo.push(<span key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
         }

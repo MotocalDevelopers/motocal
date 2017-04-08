@@ -119,8 +119,8 @@ module.exports.getTypeBonus = function(self_elem, enemy_elem) {
     }
 },
 
-module.exports.getTypeBonusStr = function(self_elem, prof) {
-    switch(module.exports.getTypeBonus(self_elem, prof.enemyElement)) {
+module.exports.getTypeBonusStr = function(self_elem, enemy_elem) {
+    switch(module.exports.getTypeBonus(self_elem, enemy_elem)) {
         case 1.0:
             return "非有利"
             break;
