@@ -472,6 +472,10 @@ label {
     width: 146px;
 }
 
+.simulatorOperationButton {
+    width: calc(150px/4);
+}
+
 .display-checked {
   background: #bbd4ff;
   transition-duration: 0;

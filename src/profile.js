@@ -57,7 +57,7 @@ var Profile = React.createClass({
             remainHP: 100,
             zenithBonus1: "無し",
             zenithBonus2: "無し",
-            enemyElement: "fire",
+            enemyElement: "wind",
             enemyDefense: 10.0,
             job: "none",
             element: "fire",

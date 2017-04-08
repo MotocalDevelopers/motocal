@@ -13,16 +13,24 @@ var daBuffAmountList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70
 
 var buffTypeList = {
     "normal-30-3T": {
-        "name": "レイジ3T",
-        "type": "normal",
-        "amount": 30,
+        "name": "レイジIII(通常攻刃30%, 3T)",
+        "bufflists": ["normal-30"],
         "turn": 3,
     },
-    "normal-30-4T": {
-        "name": "レイジ4T",
-        "type": "normal",
-        "amount": 30,
-        "turn": 4,
+    "normal-40-3T": {
+        "name": "レイジIV(通常攻刃40%, 3T)",
+        "bufflists": ["normal-40"],
+        "turn": 3,
+    },
+    "DATA-15-3T": {
+        "name": "ランページ(DA20% TA10%, 3T)",
+        "bufflists": ["DA-20", "TA-10"],
+        "turn": 3,
+    },
+    "DATA-30-3T": {
+        "name": "四天刃奥義(DA30% TA30%, 3T)",
+        "bufflists": ["DA-30", "TA-30"],
+        "turn": 3,
     },
 }
 
@@ -277,10 +285,8 @@ var Simulator = React.createClass({
         var newbuff = this.state.bufflists
         var key = e.target.getAttribute("name")
         var turn = e.target.getAttribute("id")
-        if(newbuff[key][turn].length < 7) {
-            newbuff[key][turn].push("normal-0")
-            this.setState({bufflists: newbuff})
-        }
+        newbuff[key][turn].push("normal-0")
+        this.setState({bufflists: newbuff})
     },
     subBuffNum: function(e) {
         var newbuff = this.state.bufflists
@@ -374,8 +380,8 @@ var Simulator = React.createClass({
 
         for(var i = 0; i < droppedTurn + buff.turn; i++) {
             if(i < state.maxTurn) {
-                if(state.bufflists[key][i].length < 7) {
-                    state.bufflists[key][i].push("normal-30")
+                for(var j = 0; j < buff.bufflists.length; j++) {
+                    state.bufflists[key][i].push(buff.bufflists[j])
                 }
             }
         }
@@ -412,17 +418,19 @@ var Simulator = React.createClass({
 
         return (
             <div className="simulatorInput">
-                <span>各ターンのバフやHP等を設定して下さい。</span>
-                <FormControl
-                    componentClass="select"
-                    value={this.state.maxTurn}
-                    style={{"width": "150px"}}
-                    onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
-                    {select_turnlist}
-                </FormControl>
-                {Object.keys(buffTypeList).map(function(key, ind){
-                    return <span className="label label-info" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</span>
-                })}
+                    <div>
+                        {Object.keys(buffTypeList).map(function(key, ind){
+                            return <Button bsStyle="success" style={{"margin": "0px 2px"}} bsSize="xsmall" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
+                        })}
+                        <FormControl
+                            componentClass="select"
+                            value={this.state.maxTurn}
+                            style={{"width": "150px", "float": "right"}}
+                            onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
+                            {select_turnlist}
+                        </FormControl>
+                    </div>
+                <hr/>
                 <table className="table table-bordered">
                     <tbody>
                     <tr>
@@ -446,18 +454,19 @@ var Simulator = React.createClass({
                                                 <BuffListForm key={ind3} name={key} id={ind2.toString() + "-" + ind3.toString()} value={v} onChange={handleChangeBuff}/>
                                             );
                                         })}
+                                        <hr style={{"margin": "2px 5px"}}/>
                                         <ButtonGroup>
-                                            <Button bsStyle="default" className="btn-nopadding" onClick={copyToLeft} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-left" aria-hidden="true"></i></Button>
-                                            <Button bsStyle="default" className="btn-nopadding" onClick={addBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-plus-square" aria-hidden="true"></i></Button>
-                                            <Button bsStyle="default" className="btn-nopadding" onClick={subBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-minus-square" aria-hidden="true"></i></Button>
-                                            <Button bsStyle="default" className="btn-nopadding" onClick={copyToRight} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-right" aria-hidden="true"></i></Button>
+                                            <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={copyToLeft} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-left" aria-hidden="true"></i></Button>
+                                            <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={addBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-plus-square" aria-hidden="true"></i></Button>
+                                            <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={subBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-minus-square" aria-hidden="true"></i></Button>
+                                            <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={copyToRight} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-right" aria-hidden="true"></i></Button>
                                         </ButtonGroup>
                                         </td>
                                     );
                                 })}
                                 <td className="simulator-td">
-                                    <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i> 上にコピー</Button>
-                                    <Button block bsStyle="primary" name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i> 下にコピー</Button>
+                                    <Button bsStyle="primary" style={{"width": "calc(50% - 4px)", "margin": "0px 2px"}} name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i> 上にコピー</Button>
+                                    <Button bsStyle="primary" style={{"width": "calc(50% - 4px)", "margin": "0px 2px"}} name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i> 下にコピー</Button>
                                 </td>
                             </tr>
                             )
