@@ -59,7 +59,7 @@ var Simulator = React.createClass({
             totalBuff["ta"] = 0.01 * buffs["全体バフ"][k].TA
 
             // 個別バフと残りHPを設定
-            for(key in totals) {
+            for(var key in totals) {
                 totals[key].remainHP = (buffs["全体バフ"][k].remainHP > buffs[key][k].remainHP) ? 0.01 * buffs[key][k].remainHP : 0.01 * buffs["全体バフ"][k].remainHP
                 totals[key].normalBuff = 0.01 * buffs[key][k].normal
                 totals[key].elementBuff = 0.01 * buffs[key][k].element
@@ -79,80 +79,94 @@ var Simulator = React.createClass({
         return generateSimulationData(res, this.state, armlist, summon, prof, totalBuff, chara, storedCombinations);
     },
     componentDidMount: function(){
-        // 初期化後 state を 上の階層に渡しておく
+        // Mount し終わった際のデータを
+        // Root.state.simulatorに保存する
         this.props.onChange(this.state);
     },
-    componentWillReceiveProps: function(nextProps){
-        var newState = this.state
-
-        // only fired on Data Load
-        if(nextProps.dataName != this.props.dataName) {
-            newState = nextProps.dataForLoad
-            this.setState(newState)
-            return 0;
+    updateBuffList: function(oldState){
+        var newState = {
+            buffs: {},
+            bufflists: {},
+            maxTurn: oldState.maxTurn,
         }
 
         // 削除されてるかチェック
-        for(key in newState.buffs) {
-            if(key != "全体バフ" && key != "Djeeta"){
+        for(var key in oldState.buffs) {
+            if( (key == "全体バフ") || (key == "Djeeta") ){
+                newState.buffs[key] = oldState.buffs[key]
+                newState.bufflists[key] = oldState.bufflists[key]
+            } else {
                 var isCharaExist = false
-                for(var i = 0; i < nextProps.chara.length; i++) {
-                    if(key == nextProps.chara[i].name) isCharaExist = true
+                for(var i = 0; i < this.props.chara.length; i++) {
+                    if(key == this.props.chara[i].name) isCharaExist = true
                 }
 
-                if(!isCharaExist) {
-                    delete newState.buffs[key]
-                    delete newState.bufflists[key]
+                if(isCharaExist) {
+                    newState.buffs[key] = oldState.buffs[key]
+                    newState.bufflists[key] = oldState.bufflists[key]
                 }
             }
         }
 
-        // 追加
+        // いなかったキャラの分を追加
         for(var i = 0; i < this.props.chara.length; i++){
-            if(nextProps.chara[i] != undefined) {
-                var namekey = nextProps.chara[i].name
-                if(namekey != "" && !(namekey in this.state.buffs)) {
+            if(this.props.chara[i] != undefined) {
+                var namekey = this.props.chara[i].name
+                if(namekey != "" && !(namekey in newState.buffs)) {
                     newState.buffs[namekey] = {}
                     newState.bufflists[namekey] = {}
 
-                    for(var j = 0; j < this.state.maxTurn; j++) {
+                    for(var j = 0; j < newState.maxTurn; j++) {
                         newState.buffs[namekey][j] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
                         newState.bufflists[namekey][j] = ["normal-0"]
                     }
                 }
             }
         }
-        this.setState(newState)
+        return newState
     },
     getInitialState: function() {
-        var maxTurn = 4
-        // 合計後のデータを入れる連想配列
-        var buffs = {}
-        // 各選択メニューに対応する連想配列
-        var bufflists = {}
-        buffs["全体バフ"] = {}
-        buffs["Djeeta"] = {}
-        bufflists["全体バフ"] = {}
-        bufflists["Djeeta"] = {}
+        var initState = {};
 
-        for(var i = 0; i < this.props.chara.length; i++){
-            if(this.props.chara[i].name != "") {
-                buffs[i] = {}
-                bufflists[i] = {}
+        // 毎回 Mount されるので
+        // データロードはinitial state設定で行う
+        if(this.props.dataForLoad != undefined) {
+            // 上から降ってきたデータはは
+            // 現在の形に合わせる処理が必要になる
+            initState = this.updateBuffList(this.props.dataForLoad)
+        } else {
+            var maxTurn = 4
+            // 合計後のデータを入れる連想配列
+            var buffs = {}
+            // 各選択メニューに対応する連想配列
+            var bufflists = {}
+            buffs["全体バフ"] = {}
+            buffs["Djeeta"] = {}
+            bufflists["全体バフ"] = {}
+            bufflists["Djeeta"] = {}
+
+            for(var i = 0; i < this.props.chara.length; i++){
+                if(this.props.chara[i].name != "") {
+                    buffs[i] = {}
+                    bufflists[i] = {}
+                }
             }
+
+            for(var i = 0; i < maxTurn; i++) {
+                for(key in buffs) {
+                    buffs[key][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
+                    bufflists[key][i] = ["normal-0"]
+                }
+            }
+
+            newState = {
+                buffs: buffs,
+                bufflists: bufflists,
+                maxTurn: maxTurn,
+            };
         }
 
-        for(var i = 0; i < maxTurn; i++) {
-            for(key in buffs) {
-                buffs[key][i] = {normal: 0, element: 0, other: 0, DA: 0, TA: 0, turnType: "normal", remainHP: 100}
-                bufflists[key][i] = ["normal-0"]
-            }
-        }
-        return {
-            buffs: buffs,
-            bufflists: bufflists,
-            maxTurn: maxTurn,
-        };
+        return initState;
     },
     updateBuffAmount: function(newState, name, ind){
         // 更新されたターンのところだけアップデートすればよい

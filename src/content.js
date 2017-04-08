@@ -115,7 +115,6 @@ var Root = React.createClass({
               initState["dataForLoad"]["summon"] = initState.summon
               initState["dataForLoad"]["chara"] = initState.chara
               initState["dataForLoad"]["armlist"] = initState.armlist
-              initState["dataForLoad"]["simulator"] = initState.simulator
 
               this.setState(initState);
           }.bind(this),
@@ -190,7 +189,6 @@ var Root = React.createClass({
               "summon": newData.summon,
               "armlist": newData.armlist,
               "chara": newData.chara,
-              "simulator": newData.simulator,
           }
       });
 
@@ -417,7 +415,7 @@ var Root = React.createClass({
                         summon={this.state.summon}
                         sortKey={this.state.sortKey}
                         dataName={this.state.dataName}
-                        dataForLoadSimulator={this.state.dataForLoad.simulator}
+                        simulator={this.state.simulator}
                         noResultUpdate={this.state.noResultUpdate}
                         onChangeSortkey={this.handleEvent.bind(this, "sortKey")}
                         onChangeSimulationData={this.onChangeSimulationData}
