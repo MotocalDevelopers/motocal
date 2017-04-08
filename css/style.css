@@ -447,6 +447,13 @@ label {
     margin-right: 25%;
 }
 
+.storedListEditor.fade.in.modal .modal-dialog {
+    margin-left: 15%;
+    width: 70%;
+    overflow: visible;
+    margin-right: 15%;
+}
+
 .simulatorInput .simulator-th, .simulatorInput .simulator-td {
     padding: 2px;
     width: 150px;

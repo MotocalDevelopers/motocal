@@ -393,6 +393,10 @@ var multiLangData = {
         "en": "Input buffs for a party.",
         "ja": "パーティメンバ全体にかかるバフ等の情報を入力してください",
     },
+    "保存済みリスト名説明": {
+        "en": "Input the name of the saved grid.",
+        "ja": "保存した編成の名前を設定できます",
+    },
     "ジータさんのみ": {
         "en": "(Player only)",
         "ja": "(ジータさんのみ)",
@@ -707,7 +711,7 @@ var multiLangData = {
     },
     "ダメージシミュレータを開く": {
         "en": "Open Damage Simulator",
-        "ja": "ダメージシミュレータ",
+        "ja": "ダメージシミュレータを開く",
     },
     "ダメージシミュレータ": {
         "en": "Damage Simulator",

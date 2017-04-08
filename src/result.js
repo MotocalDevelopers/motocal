@@ -1013,7 +1013,7 @@ var StoredListEditor = React.createClass({
         var handleNameChange = this.handleNameChange;
 
         return (
-            <Modal className="hpChartTutotial" show={this.props.show} onHide={this.props.onHide}>
+            <Modal className="storedListEditor" show={this.props.show} onHide={this.props.onHide}>
                 <Modal.Header closeButton>
                     <Modal.Title>{intl.translate("保存済みの編成", locale)}</Modal.Title>
                 </Modal.Header>
@@ -1039,8 +1039,8 @@ var StoredListEditor = React.createClass({
                                 return (
                                     <tr key={ind}>
                                         <td>{ind}</td>
-                                        <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id="tooltip-storedlist-name">
-                                            <td><FormControl type="text" name={ind} value={names[ind]} onChange={handleNameChange}/></td>
+                                        <TextWithTooltip tooltip={intl.translate("保存済みリスト名説明", locale)} id="tooltip-storedlist-name">
+                                            <td><FormControl componentClass="textarea" style={{"width": "100%", "height": "70px"}} name={ind} value={names[ind]} onChange={handleNameChange}/></td>
                                         </TextWithTooltip>
                                         {v.map(function(num, ind2){
                                             return (<td key={ind2}>{num}{intl.translate("本", locale)}</td>)
