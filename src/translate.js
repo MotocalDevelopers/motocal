@@ -706,12 +706,12 @@ var multiLangData = {
         "ja": "初期攻撃力推移グラフ",
     },
     "ダメージシミュレータを開く": {
-        "en": "Open Damage Simulator (Beta)",
-        "ja": "ダメージシミュレータ (Beta)",
+        "en": "Open Damage Simulator",
+        "ja": "ダメージシミュレータ",
     },
     "ダメージシミュレータ": {
-        "en": "Damage Simulator (Beta)",
-        "ja": "ダメージシミュレータ (Beta)",
+        "en": "Damage Simulator",
+        "ja": "ダメージシミュレータ",
     },
     "結果": {
         "en": "Result",
