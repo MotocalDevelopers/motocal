@@ -427,14 +427,14 @@ label {
     overflow: scroll;
 }
 
-@media screen and (min-width: 1451px) {
+@media screen and (min-width: 1000px) {
     div#LineChart0, div#LineChart1, div#LineChart2, div#LineChart3, div#LineChart4, div#LineChart5 {
         display: inline;
         float: left;
     }
 }
 
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1000px) {
     div#LineChart0, div#LineChart1, div#LineChart2, div#LineChart3, div#LineChart4, div#LineChart5 {
         display: block;
     }
@@ -449,7 +449,6 @@ label {
 
 .google-visualization-tooltip {
     z-index: 1;
-    width: 300px;
     left: -20px;
     overflow: visible;
 }

@@ -1134,7 +1134,7 @@ module.exports.treatSupportAbility = function(totals, chara) {
     }
 };
 
-module.exports.generateSimulationData = function(res, turnBuff, arml, summon, prof, buff, chara, storedCombinations) {
+module.exports.generateSimulationData = function(res, turnBuff, arml, summon, prof, buff, chara, storedCombinations, storedNames) {
     var data = {}
     var minMaxArr = {
         "averageAttack": {"max": 0, "min": 0},
@@ -1243,13 +1243,8 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
                 }
 
                 if(t == 1) {
-                    var title = "No. " + (j+1).toString() + ":"
-                    for(var i=0; i < arml.length; i++){
-                        if(storedCombinations[j][i] > 0) {
-                            var name = (arml[i].name == "") ? "武器(" + i.toString() + ")" : arml[i].name
-                            title += name + storedCombinations[j][i] + "本\n"
-                        }
-                    }
+                    title = storedNames[j]
+
                     AverageTotalAttack[0].push(title)
                     AverageTotalExpected[0].push(title)
                     ExpectedDamage[0].push(title)

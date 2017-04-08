@@ -26,7 +26,7 @@ var buffTypeList = {
     },
     "normal-40-3T": {
         "name": "レイジIV(通常攻刃40%, 3T)",
-        "bufflists": ["norma__40"],
+        "bufflists": ["normal_40"],
         "turn": 3,
     },
     "DATA-15-3T": {
@@ -63,6 +63,7 @@ var Simulator = React.createClass({
     makeTurnBuff: function() {
         var storedCombinations = this.props.storedList.combinations
         var storedArmlist = this.props.storedList.armlist
+        var storedNames = this.props.storedList.names
 
         var prof = this.props.prof; var armlist = this.props.armlist;
         var summon = this.props.summon; var chara = this.props.chara;
@@ -117,7 +118,7 @@ var Simulator = React.createClass({
                 initializeTotals(totals)
             }
         }
-        return generateSimulationData(res, this.state, armlist, summon, prof, totalBuff, chara, storedCombinations);
+        return generateSimulationData(res, this.state, armlist, summon, prof, totalBuff, chara, storedCombinations, storedNames);
     },
     componentDidMount: function(){
         // Mount し終わった際のデータを
@@ -540,7 +541,7 @@ var Simulator = React.createClass({
                     </tr>
                     </tbody>
                 </table>
-                <SimulationChart data={chartData} sortKey={this.props.sortKey} locale={locale} />
+                <SimulationChart maxTurn={state.maxTurn} data={chartData} sortKey={this.props.sortKey} locale={locale} />
             </div>
         );
     }

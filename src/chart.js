@@ -233,13 +233,15 @@ var SimulationChart = React.createClass({
                 options[key] = {
                     title: key,
                     forcelFrame: true,
-                    hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}},
+                    hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}, gridlines: {count: this.props.maxTurn}},
                     vAxis: {title: intl.translate(supportedSimulationChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                    tooltip: {ignoreBounds: true, isHtml: true, showColorCode: true, textStyle: {fontSize: 20}},
-                    legend: {position: "top", maxLines: 3, textStyle: {fontSize: 15}},
-                    chartArea: {left: "15%", top: "10%", width: "85%", height: "70%",},
+                    tooltip: {showColorCode: true, textStyle: {fontSize: 15}, trigger: "selection"},
+                    legend: {position: "in", maxLines: 3, textStyle: {fontSize: 15}},
+                    chartArea: {left: "10%", top: "10%", width: "85%", height: "70%",},
                     lineWidth: 2,
-                    pointSize: 0,
+                    point: 2,
+                    selectionMode: 'multiple',
+                    aggregationTarget: "category",
                 }
             }
         }
@@ -268,13 +270,13 @@ var SimulationChart = React.createClass({
                     </div>
             );
         } else {
-            if(window.innerWidth >= 1450) {
-                var width = (100.0 / (Object.keys(data).length - 1))
+            if(window.innerWidth > 1000) {
+                var width = (98.0 / (Object.keys(data).length - 1))
                 if(Object.keys(data).length - 1 > 2) {
-                    width = 50.0
+                    width = 49.0
                 }
             } else {
-                var width = 100.0
+                var width = 98.0
             }
 
             return (

@@ -195,7 +195,7 @@ var ResultList = React.createClass({
             result: {summon: this.props.summon, result: []},
             chartSortKey: "totalAttack",
             chartData: {},
-            storedList: {"combinations": [], "armlist": []},
+            storedList: {"combinations": [], "armlist": [], "names": []},
             openHPChart: false,
             displayRealHP: false,
             openTurnChart: false,
@@ -245,7 +245,7 @@ var ResultList = React.createClass({
             }
         }
         if(!isArmValid){
-            this.setState({storedList: {"combinations": [], "armlist": []}})
+            this.setState({storedList: {"combinations": [], "armlist": [], "names": []}})
             this.setState({ChartButtonActive: false})
         }
     },
@@ -622,8 +622,19 @@ var ResultList = React.createClass({
     },
     addHaisuiData: function(id, summonid) {
         var newStored = this.state.storedList
-        newStored["combinations"].push(JSON.parse(JSON.stringify(this.state.result.result[summonid][id].armNumbers)))
+        var newCombinations = this.state.result.result[summonid][id].armNumbers
+        newStored["combinations"].push(JSON.parse(JSON.stringify(newCombinations)))
         newStored["armlist"].push(JSON.parse(JSON.stringify(this.props.armlist)))
+
+        var title = "";
+        for (var i = 0; i < this.props.armlist.length; i++) {
+            if (newCombinations[i] > 0) {
+                var name = (this.props.armlist[i].name == "") ? "武器" + i.toString() + "" : this.props.armlist[i].name
+                title += name + newCombinations[i] + "本\n"
+            }
+        }
+        newStored["names"].push(title)
+
         this.setState({storedList: newStored})
         this.setState({ChartButtonActive: true})
     },
@@ -856,7 +867,7 @@ var ResultList = React.createClass({
     },
     resetStoredList: function(e) {
         this.setState({
-            storedList: {"combinations": [], "armlist": []},
+            storedList: {"combinations": [], "armlist": [], "names": []},
             openShowStoredList: false,
             openHPChart: false,
             openTurnChart: false,
@@ -876,6 +887,8 @@ var ResultList = React.createClass({
         newCombinations.splice(targetIndex, 1)
         var newArmList = this.state.storedList.armlist
         newArmList.splice(targetIndex, 1)
+        var newNames = this.state.storedList.names
+        newNames.splice(targetIndex, 1)
 
         if(newArmList.length == 0){
             this.resetStoredList()
@@ -884,6 +897,7 @@ var ResultList = React.createClass({
                 storedList: {
                     "combinations": newCombinations,
                     "armlist": newArmList,
+                    "names": newNames,
                 },
             });
             if(this.state.openHPChart) {
@@ -1509,7 +1523,7 @@ var Result = React.createClass({
                                         return (<td key={ind}><span className="text-muted">{am} {intl.translate("本", locale)}</span></td>);
                                     }
                                 }
-                             })}
+                            })}
                             <td><Button id={rank} block bsStyle="primary" className="add-graph-button" onClick={onClick}>{intl.translate("追加", locale)}</Button></td>
                         </tr>,
                     ];
@@ -1539,7 +1553,9 @@ var StoredListEditor = React.createClass({
         var locale = this.props.locale
         var combinations = this.props.storedList.combinations
         var armlist = this.props.storedList.armlist
+        var names = this.props.storedList.names
         var removeOneStoredList = this.props.removeOneStoredList
+
         return (
             <Modal className="hpChartTutotial" show={this.props.show} onHide={this.props.onHide}>
                 <Modal.Header closeButton>
@@ -1551,6 +1567,7 @@ var StoredListEditor = React.createClass({
                             <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>編成名(Optional)</th>
                                 {(armlist.length != 0) ? (armlist[0].map(function(arm, ind){
                                     if(arm.name != "") {
                                         return (<th key={ind}>{arm.name}</th>);
@@ -1566,6 +1583,7 @@ var StoredListEditor = React.createClass({
                                 return (
                                     <tr key={ind}>
                                         <td>{ind}</td>
+                                        <td>{names[ind]}</td>
                                         {v.map(function(num, ind2){
                                             return (<td key={ind2}>{num}{intl.translate("本", locale)}</td>)
                                         })}
