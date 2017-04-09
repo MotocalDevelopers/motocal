@@ -614,67 +614,69 @@ var Simulator = React.createClass({
                     </Panel>
                 </div>
                 <hr/>
-                <table className="table table-bordered">
-                    <tbody>
-                    <tr>
-                        <th className="simulator-left">
-                            <FormControl
-                                componentClass="select"
-                                value={state.maxTurn}
-                                style={{"width": "150px"}}
-                                onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
-                                {select_turnlist[locale]}
-                            </FormControl>
-                        </th>
-                        {Turns.map(function(x){return <th className="simulator-th" key={x}>{intl.translate("ターン", locale)} {x}</th>})}
-                        <th className="simulator-th">{intl.translate("操作", locale)}</th>
-                    </tr>
-                    {Object.keys(state.buffs).map(function(key, ind){
-                        if(isDisplay(key)) {
-                            return (
-                            <tr key={key}>
-                                <td className="simulator-left">
-                                    {key == "全体バフ" ? intl.translate("パーティ全体", locale) : key}
-                                </td>
-                                {Turns.map(function(x, ind2){
-                                    return (
-                                        <td key={ind2} name={key} id={ind2} className={"simulator-td" + (nowDragging ? " simulator-droppable" : "")} onDragOver={callPreventDefault} onDrop={onDropBuff} >
-                                        <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype[locale]}</FormControl>
-                                        <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist[locale]}</FormControl>
+                <div className="input-table">
+                    <table className="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th className="simulator-left">
+                                <FormControl
+                                    componentClass="select"
+                                    value={state.maxTurn}
+                                    style={{"width": "150px"}}
+                                    onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
+                                    {select_turnlist[locale]}
+                                </FormControl>
+                            </th>
+                            {Turns.map(function(x){return <th className="simulator-th" key={x}>{intl.translate("ターン", locale)} {x}</th>})}
+                            <th className="simulator-th">{intl.translate("操作", locale)}</th>
+                        </tr>
+                        {Object.keys(state.buffs).map(function(key, ind){
+                            if(isDisplay(key)) {
+                                return (
+                                <tr key={key}>
+                                    <td className="simulator-left">
+                                        {key == "全体バフ" ? intl.translate("パーティ全体", locale) : key}
+                                    </td>
+                                    {Turns.map(function(x, ind2){
+                                        return (
+                                            <td key={ind2} name={key} id={ind2} className={"simulator-td" + (nowDragging ? " simulator-droppable" : "")} onDragOver={callPreventDefault} onDrop={onDropBuff} >
+                                            <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype[locale]}</FormControl>
+                                            <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist[locale]}</FormControl>
 
-                                        {state.bufflists[key][ind2].map(function(v, ind3){
-                                            return (
-                                                <BuffListForm key={ind3} name={key} id={ind2.toString() + "_" + ind3.toString()} value={v} onChange={handleChangeBuff} locale={locale} />
-                                            );
-                                        })}
-                                        <hr style={{"margin": "2px 5px"}}/>
-                                        <ButtonGroup>
-                                            <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={copyToLeft} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-left" aria-hidden="true"></i></Button>
-                                            <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={addBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-plus-square" aria-hidden="true"></i></Button>
-                                            <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={subBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-minus-square" aria-hidden="true"></i></Button>
-                                            <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={copyToRight} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-right" aria-hidden="true"></i></Button>
-                                        </ButtonGroup>
-                                        </td>
-                                    );
-                                })}
-                                <td className="simulator-td">
-                                    <TextWithTooltip tooltip={intl.translate("シミュレータ-上にコピー", locale)} id="tooltip-simulator-copyTo-up">
-                                        <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i>&nbsp;{intl.translate("コピー", locale)}</Button>
-                                    </TextWithTooltip>
-                                    <TextWithTooltip tooltip={intl.translate("シミュレータ-下にコピー", locale)} id="tooltip-simulator-copyTo-down">
-                                        <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{intl.translate("コピー", locale)}</Button>
-                                    </TextWithTooltip>
-                                </td>
-                            </tr>
-                            )
-                        }
-                    })}
-                    <tr>
-                        <th className="bg-default" style={{"textAlign": "center"}}><Button onClick={this.switchPersolalBuff}>{intl.translate("個別バフ", locale)}</Button></th>
-                        <td colSpan={state.maxTurn + 2}></td>
-                    </tr>
-                    </tbody>
-                </table>
+                                            {state.bufflists[key][ind2].map(function(v, ind3){
+                                                return (
+                                                    <BuffListForm key={ind3} name={key} id={ind2.toString() + "_" + ind3.toString()} value={v} onChange={handleChangeBuff} locale={locale} />
+                                                );
+                                            })}
+                                            <hr style={{"margin": "2px 5px"}}/>
+                                            <ButtonGroup>
+                                                <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={copyToLeft} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-left" aria-hidden="true"></i></Button>
+                                                <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={addBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-plus-square" aria-hidden="true"></i></Button>
+                                                <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={subBuffNum} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-minus-square" aria-hidden="true"></i></Button>
+                                                <Button bsStyle="default" className="btn-nopadding simulatorOperationButton" onClick={copyToRight} name={key} id={ind2.toString()}><i name={key} id={ind2.toString()} className="fa fa-arrow-right" aria-hidden="true"></i></Button>
+                                            </ButtonGroup>
+                                            </td>
+                                        );
+                                    })}
+                                    <td className="simulator-td">
+                                        <TextWithTooltip tooltip={intl.translate("シミュレータ-上にコピー", locale)} id="tooltip-simulator-copyTo-up">
+                                            <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i>&nbsp;{intl.translate("コピー", locale)}</Button>
+                                        </TextWithTooltip>
+                                        <TextWithTooltip tooltip={intl.translate("シミュレータ-下にコピー", locale)} id="tooltip-simulator-copyTo-down">
+                                            <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{intl.translate("コピー", locale)}</Button>
+                                        </TextWithTooltip>
+                                    </td>
+                                </tr>
+                                )
+                            }
+                        })}
+                        <tr>
+                            <th className="bg-default" style={{"textAlign": "center"}}><Button onClick={this.switchPersolalBuff}>{intl.translate("個別バフ", locale)}</Button></th>
+                            <td colSpan={state.maxTurn + 2}></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <SimulationChart maxTurn={state.maxTurn} data={chartData} sortKey={this.props.sortKey} locale={locale} />
             </div>
         );

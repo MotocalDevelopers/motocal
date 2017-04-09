@@ -1037,7 +1037,7 @@ var StoredListEditor = React.createClass({
                                     <tr key={ind}>
                                         <td>{ind}</td>
                                         <TextWithTooltip tooltip={intl.translate("保存済みリスト名説明", locale)} id="tooltip-storedlist-name">
-                                            <td><FormControl componentClass="textarea" style={{"width": "100%", "height": "70px"}} name={ind} value={names[ind]} onChange={handleNameChange}/></td>
+                                            <td><FormControl componentClass="textarea" style={{"width": "100%", "minWidth": "300px", "height": "120px"}} name={ind} value={names[ind]} onChange={handleNameChange}/></td>
                                         </TextWithTooltip>
                                         {v.map(function(num, ind2){
                                             return (<td key={ind2}>{num}{intl.translate("本", locale)}</td>)

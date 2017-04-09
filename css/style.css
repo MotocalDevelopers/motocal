@@ -242,6 +242,7 @@ div.result {
 
 ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -423,6 +424,7 @@ label {
 .hpChart.fade.in.modal .modal-content {
     margin: 5px 1.0%;
     width: 98%;
+    height: calc(100% - 10px);
     overflow-x: visible;
     overflow-y: scroll;
 }
@@ -454,6 +456,12 @@ label {
     margin-right: 15%;
 }
 
+.simulatorInput .input-table {
+    overflow: scroll;
+    width: 100%;
+    max-height: 300px;
+}
+
 .simulatorInput .simulator-th, .simulatorInput .simulator-td {
     padding: 2px;
     width: 150px;
@@ -480,7 +488,7 @@ label {
 
 .simulator-droppable {
     background-color: lightblue;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 .display-checked {

@@ -64,10 +64,10 @@ var HPChart = React.createClass({
                     forcelFrame: true,
                     hAxis: {title: hlabel, titleTextStyle: {italic: false}, textStyle: {italic: false}},
                     vAxis: {title: intl.translate(supportedChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.state.chartData["minMaxArr"][sortKey]["min"], maxValue: this.state.chartData["minMaxArr"][sortKey]["max"]},
-                    tooltip: {showColorCode: true, textStyle: {fontSize: 15}, trigger: "selection"},
-                    legend: {position: "top", maxLines: 5, textStyle: {fontSize: 15}},
+                    tooltip: {showColorCode: true, textStyle: {fontSize: 13}, trigger: "selection"},
+                    legend: {position: "top", maxLines: 5, textStyle: {fontSize: 13}},
                     crosshair: {orientation: "both", opacity: 0.8, trigger: "both"},
-                    chartArea: {left: "10%", top: "10%", width: "85%", height: "70%",},
+                    chartArea: {left: "10%", top: "10%", width: "85%", height: "80%",},
                     lineWidth: 2,
                     pointSize: 0,
                     selectionMode: 'multiple',
@@ -124,7 +124,7 @@ var HPChart = React.createClass({
                         </div>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
-                                return <Chart chartType="ScatterChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
+                                return <Chart chartType="ScatterChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"400px"} legend_toggle={true} />
                             }
                         })}
                     </div>
@@ -154,10 +154,10 @@ var SimulationChart = React.createClass({
                     forcelFrame: true,
                     hAxis: {title: intl.translate("ターン", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}, gridlines: {count: this.props.maxTurn}},
                     vAxis: {title: intl.translate(supportedSimulationChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
-                    tooltip: {showColorCode: true, textStyle: {fontSize: 15}, trigger: "selection"},
-                    legend: {position: "top", maxLines: 5, textStyle: {fontSize: 15}},
+                    tooltip: {showColorCode: true, textStyle: {fontSize: 13}, trigger: "selection"},
+                    legend: {position: "top", maxLines: 5, textStyle: {fontSize: 13}},
                     crosshair: {orientation: "both", opacity: 0.8, trigger: "both"},
-                    chartArea: {left: "10%", top: "10%", width: "85%", height: "70%",},
+                    chartArea: {left: "10%", top: "10%", width: "85%", height: "80%",},
                     lineWidth: 2,
                     pointSize: 8,
                     selectionMode: 'multiple',
@@ -214,7 +214,7 @@ var SimulationChart = React.createClass({
 
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
-                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"600px"} legend_toggle={true} />
+                                return <Chart chartType="LineChart" className="LineChart" data={data[key][sortKey]} key={key} options={options[key]} graph_id={"LineChart" + ind} width={width + "%"} height={"400px"} legend_toggle={true} />
                             }
                         })}
                     </div>
