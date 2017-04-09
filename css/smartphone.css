@@ -522,3 +522,14 @@ label {
   transition-duration: 0;
   height: 20px;
 }
+
+/* bootstrap custom themes */
+.btn-dark, .label-dark {
+    background-color: black;
+    color: white;
+}
+
+.btn-light, .label-light {
+    background-color: palegoldenrod;
+    color: black;
+}
