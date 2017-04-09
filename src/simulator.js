@@ -83,6 +83,33 @@ var buffTypeList = {
             "en": "DA80% TA30% OugiGageBuff -30%, 3T",
         },
     },
+    "korwa-1-lv10": {
+        "name": "コルワ1アビフィル10",
+        "bufflists": ["normal_145"],
+        "turn": 3,
+        "detail": {
+            "ja": "通常バフ145%, 3T",
+            "en": "Normal Buff 145%, 3T",
+        }
+    },
+    "korwa-2-lv10": {
+        "name": "コルワ2アビフィル10",
+        "bufflists": ["DA_40", "TA_25"],
+        "turn": 3,
+        "detail": {
+            "ja": "DA40% TA25%, 3T",
+            "en": "DA40% TA25%, 3T",
+        }
+    },
+    "element-3T": {
+        "name": "属性バフ(30%)",
+        "bufflists": ["element_30"],
+        "turn": 3,
+        "detail": {
+            "ja": "属性バフ30%, 3T",
+            "en": "Element Buff 30%, 3T",
+        }
+    },
     "tenganjin-3T": {
         "name": "天眼陣(3T)",
         "bufflists": ["normal_30", "DA_30"],

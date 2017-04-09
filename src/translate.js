@@ -1656,6 +1656,18 @@ var multiLangData = {
         "en": "Four-Sky Blade Buff",
         "ja": "四天刃バフ",
     },
+    "属性バフ(30%)": {
+        "en": "Element Buff (30%)",
+        "ja": "属性バフ(30%)",
+    },
+    "コルワ1アビフィル10": {
+        "en": "Korwa Abi1 Fill 10",
+        "ja": "コルワ1アビフィル10",
+    },
+    "コルワ2アビフィル10": {
+        "en": "Korwa Abi2 Fill 10",
+        "ja": "コルワ2アビフィル10",
+    },
     "SOG 楽器なし": {
         "en": "Sky Realm Song w/o Harp",
         "ja": "ソング・オブ・グランデ 楽器なし",
@@ -1840,6 +1852,10 @@ var multiLangData = {
     "notice-20170331-1": {
         "en": "31/03/2017: Fixed values of normal and magna criticals (M). / Added Elysian. / Improved buff input interfaces.",
         "ja": "2017/03/31: 技巧(中)の効果量修正 / エリュシオン追加 / バフ入力欄の利便性向上.",
+    },
+    "notice-20170409-1": {
+        "en": "09/04/2017: Improved An Interface of Damage Simulator. / Implemented name editing of saved grids.",
+        "ja": "2017/04/09: ダメージシミュレータのインターフェースの改善 / 保存した編成の名前を編集できるようにした..",
     },
 }
 
