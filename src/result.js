@@ -285,7 +285,7 @@ var ResultList = React.createClass({
     },
     openSimulator: function() {
         this.setState({openSimulator: true})
-        this.setState({chartSortKey: "summedAverageExpectedDamage"})
+        this.setState({chartSortKey: "averageExpectedDamage"})
     },
     switchDisplayRealHP: function(e) {
         this.setState({displayRealHP: !(this.state.displayRealHP)});
