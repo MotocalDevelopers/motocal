@@ -6,7 +6,6 @@ var GlobalConst = require('./global_const.js')
 var intl = require('./translate.js')
 var selector = GlobalConst.selector
 var supportedChartSortkeys = GlobalConst.supportedChartSortkeys
-var supportedTurnChartSortkeys = GlobalConst.supportedTurnChartSortkeys
 var supportedSimulationChartSortkeys = GlobalConst.supportedSimulationChartSortkeys
 var _ua = GlobalConst._ua;
 var {generateHaisuiData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js')
@@ -153,7 +152,7 @@ var SimulationChart = React.createClass({
                 options[key] = {
                     title: key,
                     forcelFrame: true,
-                    hAxis: {title: "ターン数", titleTextStyle: {italic: false}, textStyle: {italic: false}, gridlines: {count: this.props.maxTurn}},
+                    hAxis: {title: intl.translate("ターン", locale), titleTextStyle: {italic: false}, textStyle: {italic: false}, gridlines: {count: this.props.maxTurn}},
                     vAxis: {title: intl.translate(supportedSimulationChartSortkeys[sortKey], locale), textStyle: {italic: false}, minValue: this.props.data["minMaxArr"][sortKey]["min"], maxValue: this.props.data["minMaxArr"][sortKey]["max"]},
                     tooltip: {showColorCode: true, textStyle: {fontSize: 15}, trigger: "selection"},
                     legend: {position: "top", maxLines: 5, textStyle: {fontSize: 15}},
@@ -209,7 +208,7 @@ var SimulationChart = React.createClass({
                                 value={this.state.sortKey}
                                 style={{"width": "400px", "margin": "2px 5px"}}
                                 onChange={this.handleEvent.bind(this, "sortKey")}>
-                                {selector.supported_simulationchartsortkeys}
+                                {selector[this.props.locale].supported_simulationchartsortkeys}
                             </FormControl>
                         </div>
 

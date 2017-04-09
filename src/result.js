@@ -296,7 +296,6 @@ var ResultList = React.createClass({
             storedList: {"combinations": [], "armlist": [], "names": []},
             openShowStoredList: false,
             openHPChart: false,
-            openTurnChart: false,
             openSimulator: false,
             ChartButtonActive: false,
         });
@@ -328,8 +327,6 @@ var ResultList = React.createClass({
             });
             if(this.state.openHPChart) {
                 this.openHPChart();
-            } else if(this.state.openTurnChart) {
-                this.openTurnChart();
             } else if(this.state.openSimulator) {
                 this.openSimulator();
             }

@@ -137,6 +137,23 @@ module.exports.getTypeBonusStr = function(self_elem, enemy_elem) {
     }
 };
 
+module.exports.makeSummonHeaderString = function(summon, locale) {
+    var summonHeader = ""
+    if (summon.selfSummonType == "odin") {
+        summonHeader += intl.translate("属性攻", locale) + summon.selfSummonAmount + intl.translate("キャラ攻", locale) + summon.selfSummonAmount2
+    } else {
+        summonHeader += intl.translate(summonElementTypes[summon.selfElement].name, locale) + intl.translate(summonTypes[summon.selfSummonType], locale) + summon.selfSummonAmount
+    }
+
+    summonHeader += " + "
+    if (summon.friendSummonType == "odin") {
+        summonHeader += intl.translate("属性攻", locale) + summon.friendSummonAmount + intl.translate("キャラ攻", locale) + summon.friendSummonAmount2
+    } else {
+        summonHeader += intl.translate(summonElementTypes[summon.friendElement].name, locale) + intl.translate(summonTypes[summon.friendSummonType], locale) + summon.friendSummonAmount
+    }
+    return summonHeader;
+}
+
 module.exports.calcDamage = function(totalAttack, enemyDefense, additionalDamage, damageUP) {
     // ダメージ計算
     var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
@@ -1184,19 +1201,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
 
     for(var s = 0; s < res.length; s++) {
         var oneresult = res[s]
-        var summonHeader = ""
-        if(summon[s].selfSummonType == "odin"){
-            summonHeader += intl.translate("属性攻", locale) + summon[s].selfSummonAmount + intl.translate("キャラ攻", locale) + summon[s].selfSummonAmount2
-        } else {
-            summonHeader += intl.translate(summonElementTypes[summon[s].selfElement].name, locale) + intl.translate(summonTypes[summon[s].selfSummonType], locale) + summon[s].selfSummonAmount
-        }
-
-        summonHeader += " + "
-        if(summon[s].friendSummonType == "odin"){
-            summonHeader += intl.translate("属性攻", locale) + summon[s].friendSummonAmount + intl.translate("キャラ攻", locale) + summon[s].friendSummonAmount2
-        } else {
-            summonHeader += intl.translate(summonElementTypes[summon[s].friendElement].name, locale) + intl.translate(summonTypes[summon[s].friendSummonType], locale) + summon[s].friendSummonAmount
-        }
+        var summonHeader = module.exports.makeSummonHeaderString(summon[s], locale);
         var TotalAttack = [["残りHP(%)"]];
         var TotalHP = [["残りHP(%)"]]
         var CriticalAttack = [["残りHP(%)"]];
@@ -1454,7 +1459,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
     return data
 };
 
-module.exports.generateSimulationData = function(res, turnBuff, arml, summon, prof, buff, chara, storedCombinations, storedNames) {
+module.exports.generateSimulationData = function(res, turnBuff, arml, summon, prof, buff, chara, storedCombinations, storedNames, locale) {
     var data = {}
     var minMaxArr = {
         "averageAttack": {"max": 0, "min": 0},
@@ -1493,19 +1498,7 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
 
     for(var s = 0; s < res.length; s++) {
         var oneresult = res[s]
-        var summonHeader = ""
-        if(summon[s].selfSummonType == "odin"){
-            summonHeader += "属性攻" + summon[s].selfSummonAmount + "キャラ攻" + summon[s].selfSummonAmount2
-        } else {
-            summonHeader += summonElementTypes[summon[s].selfElement].name + summonTypes[summon[s].selfSummonType] + summon[s].selfSummonAmount
-        }
-
-        summonHeader += " + "
-        if(summon[s].friendSummonType == "odin"){
-            summonHeader += "属性攻" + summon[s].friendSummonAmount + "キャラ攻" + summon[s].friendSummonAmount2
-        } else {
-            summonHeader += summonElementTypes[summon[s].friendElement].name + summonTypes[summon[s].friendSummonType] + summon[s].friendSummonAmount
-        }
+        var summonHeader = module.exports.makeSummonHeaderString(summon[s], locale);
         var AverageTotalAttack = [["ターン"]];
         var AverageTotalExpected = [["ターン"]];
         var ExpectedDamage = [["ターン"]];
@@ -1603,12 +1596,13 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
     }
 
     if(res.length > 1){
-        data["まとめて比較"] = {}
-        data["まとめて比較"]["averageAttack"] = AllAverageTotalAttack
-        data["まとめて比較"]["averageTotalExpected"] = AllAverageTotalExpected
-        data["まとめて比較"]["expectedDamage"] = AllExpectedDamage
-        data["まとめて比較"]["averageExpectedDamage"] = AllAverageExpectedDamage
-        data["まとめて比較"]["summedAverageExpectedDamage"] = AllSummedAverageExpectedDamage
+        var matomete = intl.translate("まとめて比較", locale);
+        data[matomete] = {}
+        data[matomete]["averageAttack"] = AllAverageTotalAttack
+        data[matomete]["averageTotalExpected"] = AllAverageTotalExpected
+        data[matomete]["expectedDamage"] = AllExpectedDamage
+        data[matomete]["averageExpectedDamage"] = AllAverageExpectedDamage
+        data[matomete]["summedAverageExpectedDamage"] = AllSummedAverageExpectedDamage
     }
 
     // グラフ最大値最小値を抽出

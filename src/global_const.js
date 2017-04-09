@@ -594,11 +594,10 @@ module.exports.selector.skilllevelLimit = Object.keys(skillLevelListLimit).map(f
 module.exports.selector.ja.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedChartSortkeys[opt]}</option> });
 module.exports.selector.en.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{intl.translate(supportedChartSortkeys[opt], "en")}</option> });
 
-module.exports.selector.supported_turnchartsortkeys = Object.keys(supportedTurnChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedTurnChartSortkeys[opt]}</option> });
-module.exports.selector.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedSimulationChartSortkeys[opt]}</option> });
+module.exports.selector.ja.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedSimulationChartSortkeys[opt]}</option> });
+module.exports.selector.en.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{intl.translate(supportedSimulationChartSortkeys[opt], "en")}</option> });
 
 module.exports.supportedChartSortkeys = supportedChartSortkeys
-module.exports.supportedTurnChartSortkeys = supportedTurnChartSortkeys
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
 
 module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function(opt){return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>;});

@@ -237,6 +237,10 @@ var multiLangData = {
         "en": "Remain HP Ratio of all members. (If chara's HP ratio is inputted, lower value is adopted for calculation.)",
         "ja": "パーティ全体の残りHP割合です。(キャラ個別の値が入力されている場合、より低い方を採用します)",
     },
+    "奥義ゲージ上昇量": {
+        "en": "Ougi Gage Buff",
+        "ja": "奥義ゲージ上昇量",
+    },
     "奥義ゲージ上昇率アップ": {
         "en": "Ougi Gage Buff",
         "ja": "奥義ゲージ上昇量アップ",
@@ -1593,6 +1597,47 @@ var multiLangData = {
     "要望送信メッセージ": {
         "en": "Send a comment to github motocal Issue.",
         "ja": "github/motocalのIssueに要望コメントを送信します.",
+    },
+    // Simulator Infomation
+    "パーティ全体": {
+        "en": "Settings for all alies.",
+        "ja": "パーティ全体に適用される設定.",
+    },
+    "通常攻撃": {
+        "en": "Attack",
+        "ja": "通常攻撃",
+    },
+    "奥義": {
+        "en": "Ougi",
+        "ja": "奥義",
+    },
+    "奥義(ダメージ無し)": {
+        "en": "Ougi w/o damage",
+        "ja": "奥義(ダメージ無し)",
+    },
+    "ターン数": {
+        "en": "Turn length",
+        "ja": "ターン数",
+    },
+    "ターン": {
+        "en": "Turn",
+        "ja": "ターン",
+    },
+    "バフテンプレート": {
+        "en": "Open Buff Templates",
+        "ja": "バフテンプレートを開く",
+    },
+    "バフテンプレート説明": {
+        "en": "Drag and drop these buttons into a turn.",
+        "ja": "追加したいターンにバフボタンをドラッグアンドドロップしてください.",
+    },
+    "シミュレータ-上にコピー": {
+        "en": "Copy all settings to the upper row.",
+        "ja": "上の行にバフ設定をコピーします.",
+    },
+    "シミュレータ-下にコピー": {
+        "en": "Copy all settings to the lower row.",
+        "ja": "下の行にバフ設定をコピーします.",
     },
     // Notice
     "広告": {

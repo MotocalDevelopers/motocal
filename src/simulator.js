@@ -5,6 +5,7 @@ var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover, Panel, ListGroup, ListGroupItem, Glyphicon} = require('react-bootstrap');
 var {SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
+var TextWithTooltip = GlobalConst.TextWithTooltip
 var selector = GlobalConst.selector
 var turnList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var turnTypeList = {"normal": "通常攻撃", "ougi": "奥義", "ougiNoDamage": "奥義(ダメージ無し)"};
@@ -71,16 +72,55 @@ var buffTypeList = {
     },
 }
 
-var select_turnlist = turnList.map(function(opt){return <option value={opt} key={opt}>最大ターン数:{opt}</option>;});
-var select_turntype = Object.keys(turnTypeList).map(function(opt){return <option value={opt} key={opt}>{turnTypeList[opt]}</option>;});
-var select_normalbuffAmount = buffAmountList.map(function(opt){ return <option value={"normal_" + opt} key={opt}>通常バフ{opt}%</option> });
-var select_elementbuffAmount = buffAmountList.map(function(opt){ return <option value={"element_" + opt} key={opt}>属性バフ{opt}%</option> });
-var select_otherbuffAmount = buffAmountList.map(function(opt){ return <option value={"other_" + opt} key={opt}>その他バフ{opt}%</option> });
-var select_dabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"DA_" + opt} key={opt}>DA率{opt}%</option> });
-var select_tabuffAmount = daBuffAmountList.map(function(opt){ return <option value={"TA_" + opt} key={opt}>TA率{opt}%</option> });
-var select_ougigagebuffAmount = buffAmountList.map(function(opt){ return <option value={"ougiGage_" + opt} key={opt}>奥義ゲージ上昇量{opt}%</option> });
-var select_additionalbuffAmount = buffAmountList.map(function(opt){ return <option value={"additionalDamage_" + opt} key={opt}>追加ダメージ{opt}%</option> });
-var select_hplist = HPList.map(function(opt){return <option value={opt} key={opt}>残りHP:{opt}%</option>;});
+var select_turnlist = {
+    "ja": turnList.map(function(opt){return <option value={opt} key={opt}>{intl.translate("ターン数", "ja")}: {opt}</option>;}),
+    "en": turnList.map(function(opt){return <option value={opt} key={opt}>{intl.translate("ターン数", "en")}: {opt}</option>;})
+};
+
+var select_turntype = {
+    "ja": Object.keys(turnTypeList).map(function(opt){return <option value={opt} key={opt}>{intl.translate(turnTypeList[opt], "ja")}</option>;}),
+    "en": Object.keys(turnTypeList).map(function(opt){return <option value={opt} key={opt}>{intl.translate(turnTypeList[opt], "en")}</option>;}),
+};
+
+var select_normalbuffAmount = {
+    "ja": buffAmountList.map(function(opt){ return <option value={"normal_" + opt} key={opt}>{intl.translate("通常バフ", "ja")}{opt}%</option> }),
+    "en": buffAmountList.map(function(opt){ return <option value={"normal_" + opt} key={opt}>{intl.translate("通常バフ", "en")}{opt}%</option> }),
+};
+
+var select_elementbuffAmount = {
+    "ja": buffAmountList.map(function(opt){ return <option value={"element_" + opt} key={opt}>{intl.translate("属性バフ", "ja")}{opt}%</option> }),
+    "en": buffAmountList.map(function(opt){ return <option value={"element_" + opt} key={opt}>{intl.translate("属性バフ", "en")}{opt}%</option> }),
+};
+
+var select_otherbuffAmount = {
+    "ja": buffAmountList.map(function(opt){ return <option value={"other_" + opt} key={opt}>{intl.translate("その他バフ", "ja")}{opt}%</option> }),
+    "en": buffAmountList.map(function(opt){ return <option value={"other_" + opt} key={opt}>{intl.translate("その他バフ", "en")}{opt}%</option> }),
+};
+
+var select_dabuffAmount = {
+    "ja": daBuffAmountList.map(function(opt){ return <option value={"DA_" + opt} key={opt}>{intl.translate("DAバフ", "ja")}{opt}%</option> }),
+    "en": daBuffAmountList.map(function(opt){ return <option value={"DA_" + opt} key={opt}>{intl.translate("DAバフ", "en")}{opt}%</option> }),
+};
+
+var select_tabuffAmount = {
+    "ja": daBuffAmountList.map(function(opt){ return <option value={"TA_" + opt} key={opt}>{intl.translate("TAバフ", "ja")}{opt}%</option> }),
+    "en": daBuffAmountList.map(function(opt){ return <option value={"TA_" + opt} key={opt}>{intl.translate("TAバフ", "en")}{opt}%</option> }),
+};
+
+var select_ougigagebuffAmount = {
+    "ja": buffAmountList.map(function(opt){ return <option value={"ougiGage_" + opt} key={opt}>{intl.translate("奥義ゲージ上昇量", "ja")}{opt}%</option> }),
+    "en": buffAmountList.map(function(opt){ return <option value={"ougiGage_" + opt} key={opt}>{intl.translate("奥義ゲージ上昇量", "en")}{opt}%</option> }),
+};
+
+var select_additionalbuffAmount = {
+    "ja": buffAmountList.map(function(opt){ return <option value={"additionalDamage_" + opt} key={opt}>{intl.translate("追加ダメージ", "ja")}{opt}%</option> }),
+    "en": buffAmountList.map(function(opt){ return <option value={"additionalDamage_" + opt} key={opt}>{intl.translate("追加ダメージ", "en")}{opt}%</option> }),
+};
+
+var select_hplist = {
+    "ja": HPList.map(function(opt){return <option value={opt} key={opt}>{intl.translate("残りHP", "ja")}:{opt}%</option>;}),
+    "en": HPList.map(function(opt){return <option value={opt} key={opt}>{intl.translate("残りHP", "en")}:{opt}%</option>;}),
+};
 
 var {generateSimulationData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js')
 
@@ -143,7 +183,7 @@ var Simulator = React.createClass({
                 initializeTotals(totals)
             }
         }
-        return generateSimulationData(res, this.state, armlist, summon, prof, totalBuff, chara, storedCombinations, storedNames);
+        return generateSimulationData(res, this.state, armlist, summon, prof, totalBuff, chara, storedCombinations, storedNames, this.props.locale);
     },
     componentDidMount: function(){
         // Mount し終わった際のデータを
@@ -515,9 +555,9 @@ var Simulator = React.createClass({
         return (
             <div className="simulatorInput">
                 <div>
-                    <Panel bsStyle="success" collapsible header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Template Buff List</span>}>
+                    <Panel bsStyle="success" collapsible header={<span><Glyphicon glyph="chevron-right"/>&nbsp;{intl.translate("バフテンプレート", locale)}</span>}>
                         <ListGroup fill>
-                            <ListGroupItem>Drag and Drop</ListGroupItem>
+                            <ListGroupItem>{intl.translate("バフテンプレート説明", locale)}</ListGroupItem>
                             <ListGroupItem>
                             {Object.keys(buffTypeList).map(function(key, ind){
                                 return <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
@@ -536,26 +576,28 @@ var Simulator = React.createClass({
                                 value={state.maxTurn}
                                 style={{"width": "150px"}}
                                 onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
-                                {select_turnlist}
+                                {select_turnlist[locale]}
                             </FormControl>
                         </th>
-                        {Turns.map(function(x){return <th className="simulator-th" key={x}>{x}ターン目</th>})}
-                        <th className="simulator-th">操作</th>
+                        {Turns.map(function(x){return <th className="simulator-th" key={x}>{intl.translate("ターン", locale)} {x}</th>})}
+                        <th className="simulator-th">{intl.translate("操作", locale)}</th>
                     </tr>
                     {Object.keys(state.buffs).map(function(key, ind){
                         if(isDisplay(key)) {
                             return (
                             <tr key={key}>
-                                <td className="simulator-left">{key}</td>
+                                <td className="simulator-left">
+                                    {key == "全体バフ" ? intl.translate("パーティ全体", locale) : key}
+                                </td>
                                 {Turns.map(function(x, ind2){
                                     return (
                                         <td key={ind2} name={key} id={ind2} className="simulator-td" onDragOver={callPreventDefault} onDrop={onDropBuff} >
-                                        <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype}</FormControl>
-                                        <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist}</FormControl>
+                                        <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype[locale]}</FormControl>
+                                        <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist[locale]}</FormControl>
 
                                         {state.bufflists[key][ind2].map(function(v, ind3){
                                             return (
-                                                <BuffListForm key={ind3} name={key} id={ind2.toString() + "_" + ind3.toString()} value={v} onChange={handleChangeBuff}/>
+                                                <BuffListForm key={ind3} name={key} id={ind2.toString() + "_" + ind3.toString()} value={v} onChange={handleChangeBuff} locale={locale} />
                                             );
                                         })}
                                         <hr style={{"margin": "2px 5px"}}/>
@@ -569,8 +611,12 @@ var Simulator = React.createClass({
                                     );
                                 })}
                                 <td className="simulator-td">
-                                    <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i> 上にコピー</Button>
-                                    <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i> 下にコピー</Button>
+                                    <TextWithTooltip tooltip={intl.translate("シミュレータ-上にコピー", locale)} id="tooltip-simulator-copyTo-up">
+                                        <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToUP} ><i name={key} id={ind.toString()} className="fa fa-angle-double-up" aria-hidden="true"></i>&nbsp;{intl.translate("コピー", locale)}</Button>
+                                    </TextWithTooltip>
+                                    <TextWithTooltip tooltip={intl.translate("シミュレータ-下にコピー", locale)} id="tooltip-simulator-copyTo-down">
+                                        <Button bsStyle="primary" block style={{"width": "75%", "margin": "10px 12.5%"}} name={key} id={ind.toString()} onClick={copyBuffToDown} ><i name={key} id={ind.toString()} className="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{intl.translate("コピー", locale)}</Button>
+                                    </TextWithTooltip>
                                 </td>
                             </tr>
                             )
@@ -590,15 +636,17 @@ var Simulator = React.createClass({
 
 var BuffListForm = React.createClass({
     render: function() {
+        var locale = this.props.locale;
+
         return (
             <FormControl componentClass="select" name={this.props.name} id={this.props.id} value={this.props.value} onChange={this.props.onChange}>
-                <optgroup label="通常バフ">{select_normalbuffAmount}</optgroup>
-                <optgroup label="属性バフ">{select_elementbuffAmount}</optgroup>
-                <optgroup label="その他バフ">{select_otherbuffAmount}</optgroup>
-                <optgroup label="DA率">{select_dabuffAmount}</optgroup>
-                <optgroup label="TA率">{select_tabuffAmount}</optgroup>
-                <optgroup label="奥義ゲージ上昇量">{select_ougigagebuffAmount}</optgroup>
-                <optgroup label="追加ダメージ">{select_additionalbuffAmount}</optgroup>
+                <optgroup label="通常バフ">{select_normalbuffAmount[locale]}</optgroup>
+                <optgroup label="属性バフ">{select_elementbuffAmount[locale]}</optgroup>
+                <optgroup label="その他バフ">{select_otherbuffAmount[locale]}</optgroup>
+                <optgroup label="DA率">{select_dabuffAmount[locale]}</optgroup>
+                <optgroup label="TA率">{select_tabuffAmount[locale]}</optgroup>
+                <optgroup label="奥義ゲージ上昇量">{select_ougigagebuffAmount[locale]}</optgroup>
+                <optgroup label="追加ダメージ">{select_additionalbuffAmount[locale]}</optgroup>
             </FormControl>
         );
     },
