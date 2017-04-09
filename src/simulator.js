@@ -39,6 +39,26 @@ var buffTypeList = {
         "bufflists": ["DA_30", "TA_30"],
         "turn": 3,
     },
+    "SOG-wo-music-3T": {
+        "name": "SOG 楽器なし(DA30%, 3T)",
+        "bufflists": ["DA_30"],
+        "turn": 3,
+    },
+    "SOG-music-3T": {
+        "name": "SOG 楽器あり(DA70%, 3T)",
+        "bufflists": ["DA_70"],
+        "turn": 3,
+    },
+    "CoA-wo-music-3T": {
+        "name": "コールオブアビス 楽器なし(DA30%奥義ゲージ上昇量-30%, 3T)",
+        "bufflists": ["DA_30", "ougiGage_-30"],
+        "turn": 3,
+    },
+    "CoA-music-3T": {
+        "name": "コールオブアビス 楽器あり(DA70%奥義ゲージ上昇量-30%, 3T)",
+        "bufflists": ["DA_70", "ougiGage_-30"],
+        "turn": 3,
+    },
     "tenganjin-3T": {
         "name": "天眼陣(3T)",
         "bufflists": ["normal_30", "DA_30"],
@@ -194,7 +214,7 @@ var Simulator = React.createClass({
             // 現在の形に合わせる処理が必要になる
             initState = this.updateBuffList(this.props.dataForLoad)
         } else {
-            var maxTurn = 4
+            var maxTurn = 6
             // 合計後のデータを入れる連想配列
             var buffs = {}
             // 各選択メニューに対応する連想配列
@@ -495,22 +515,24 @@ var Simulator = React.createClass({
         return (
             <div className="simulatorInput">
                 <div>
+                    <p className="text-default">Drag and Drop</p>
                     {Object.keys(buffTypeList).map(function(key, ind){
-                        return <Button bsStyle="success" style={{"margin": "0px 2px"}} bsSize="xsmall" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
+                        return <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
                     })}
-                    <FormControl
-                        componentClass="select"
-                        value={state.maxTurn}
-                        style={{"width": "150px", "float": "right"}}
-                        onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
-                        {select_turnlist}
-                    </FormControl>
                 </div>
                 <hr/>
                 <table className="table table-bordered">
                     <tbody>
                     <tr>
-                        <th className="simulator-left"></th>
+                        <th className="simulator-left">
+                            <FormControl
+                                componentClass="select"
+                                value={state.maxTurn}
+                                style={{"width": "150px"}}
+                                onChange={this.handleSelectEvent.bind(this, "maxTurn")}>
+                                {select_turnlist}
+                            </FormControl>
+                        </th>
                         {Turns.map(function(x){return <th className="simulator-th" key={x}>{x}ターン目</th>})}
                         <th className="simulator-th">操作</th>
                     </tr>
