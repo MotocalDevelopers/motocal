@@ -39,6 +39,11 @@ var buffTypeList = {
         "bufflists": ["DA_30", "TA_30"],
         "turn": 3,
     },
+    "tenganjin-3T": {
+        "name": "天眼陣(3T)",
+        "bufflists": ["normal_30", "DA_30"],
+        "turn": 3,
+    },
     "tasinjin-ougi": {
         "name": "他心陣と奥義(HP50%, 奥義に設定)",
         "bufflists": ["remainHP_50", "ougi"],
@@ -440,7 +445,15 @@ var Simulator = React.createClass({
         for(var i = droppedTurn; i < droppedTurn + buff.turn; i++) {
             if(i < state.maxTurn) {
                 for(var j = 0; j < buff.bufflists.length; j++) {
-                    state.bufflists[key][i].push(buff.bufflists[j])
+                    var splitted = buff.bufflists[j].split("_");
+
+                    if(splitted[0] == "ougi") {
+                        state.buffs[key][i].turnType = "ougi"
+                    } else if (splitted[0] == "remainHP") {
+                        state.buffs[key][i].remainHP = parseInt(splitted[1])
+                    } else {
+                        state.bufflists[key][i].push(buff.bufflists[j])
+                    }
                 }
             }
         }
