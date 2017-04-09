@@ -478,6 +478,11 @@ label {
     width: calc(142px/4);
 }
 
+.simulator-droppable {
+    background-color: lightblue;
+    opacity: 0.8;
+}
+
 .display-checked {
   background: #bbd4ff;
   transition-duration: 0;

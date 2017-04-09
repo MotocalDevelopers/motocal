@@ -50,14 +50,9 @@ var buffTypeList = {
         "bufflists": ["DA_70"],
         "turn": 3,
     },
-    "CoA-wo-music-3T": {
-        "name": "コールオブアビス 楽器なし(DA30%奥義ゲージ上昇量-30%, 3T)",
-        "bufflists": ["DA_30", "ougiGage_-30"],
-        "turn": 3,
-    },
     "CoA-music-3T": {
-        "name": "コールオブアビス 楽器あり(DA70%奥義ゲージ上昇量-30%, 3T)",
-        "bufflists": ["DA_70", "ougiGage_-30"],
+        "name": "コールオブアビス 楽器あり(DA80%TA30%奥義ゲージ上昇量-30%, 3T)",
+        "bufflists": ["DA_80", "TA_30", "ougiGage_-30"],
         "turn": 3,
     },
     "tenganjin-3T": {
@@ -196,6 +191,7 @@ var Simulator = React.createClass({
             bufflists: {},
             maxTurn: oldState.maxTurn,
             openPersonalBuff: oldState.openPersonalBuff,
+            nowDragging: false,
         }
 
         // 削除されてるかチェック
@@ -292,6 +288,7 @@ var Simulator = React.createClass({
             initState["bufflists"] = bufflists;
             initState["maxTurn"] = maxTurn;
             initState["openPersonalBuff"] = false;
+            initState["nowDragging"] = false;
         }
 
         return initState;
@@ -486,10 +483,16 @@ var Simulator = React.createClass({
         this.copyTo(e, "right")
     },
     onDragStart: function(e) {
-        e.dataTransfer.setData('buffDrag', e.target.id); 
+        this.setState({ nowDragging: true });
+        e.dataTransfer.setData('buffDrag', e.target.id);
+    },
+    onDragEnd: function(e) {
+        e.preventDefault();
+        this.setState({ nowDragging: false });
     },
     onDropBuff: function(e) {
         e.preventDefault();
+
         try {
             var buffID = e.dataTransfer.getData('buffDrag');
         } catch (except) {
@@ -549,8 +552,10 @@ var Simulator = React.createClass({
         var isDisplay = this.isDisplay
         var chartData = this.makeTurnBuff();
         var onDragStart = this.onDragStart;
+        var onDragEnd = this.onDragEnd;
         var onDropBuff = this.onDropBuff;
         var callPreventDefault = this.callPreventDefault;
+        var nowDragging = this.state.nowDragging;
 
         return (
             <div className="simulatorInput">
@@ -560,7 +565,7 @@ var Simulator = React.createClass({
                             <ListGroupItem>{intl.translate("バフテンプレート説明", locale)}</ListGroupItem>
                             <ListGroupItem>
                             {Object.keys(buffTypeList).map(function(key, ind){
-                                return <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
+                                return <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} onDragEnd={onDragEnd} key={key} id={key}>{buffTypeList[key].name}</Button>
                             })}
                             </ListGroupItem>
                         </ListGroup>
@@ -591,7 +596,7 @@ var Simulator = React.createClass({
                                 </td>
                                 {Turns.map(function(x, ind2){
                                     return (
-                                        <td key={ind2} name={key} id={ind2} className="simulator-td" onDragOver={callPreventDefault} onDrop={onDropBuff} >
+                                        <td key={ind2} name={key} id={ind2} className={"simulator-td" + (nowDragging ? " simulator-droppable" : "")} onDragOver={callPreventDefault} onDrop={onDropBuff} >
                                         <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].turnType} onChange={handleTurnTypeChange}>{select_turntype[locale]}</FormControl>
                                         <FormControl componentClass="select" name={key} id={ind2.toString()} value={state.buffs[key][ind2].remainHP} onChange={handleRemainHPChange}>{select_hplist[locale]}</FormControl>
 
