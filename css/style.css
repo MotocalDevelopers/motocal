@@ -458,6 +458,7 @@ label {
     padding: 2px;
     width: 150px;
     align-items: center;
+    vertical-align: middle;
     text-align: center;
 }
 
@@ -465,6 +466,7 @@ label {
     padding: 2px;
     width: 150px;
     align-items: center;
+    vertical-align: middle;
     text-align: center;
 }
 

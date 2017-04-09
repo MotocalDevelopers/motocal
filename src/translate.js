@@ -1600,8 +1600,8 @@ var multiLangData = {
     },
     // Simulator Infomation
     "パーティ全体": {
-        "en": "Settings for all alies.",
-        "ja": "パーティ全体に適用される設定.",
+        "en": "Settings for all alies",
+        "ja": "パーティ全体設定",
     },
     "通常攻撃": {
         "en": "Attack",
