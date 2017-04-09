@@ -1639,6 +1639,43 @@ var multiLangData = {
         "en": "Copy all settings to the lower row.",
         "ja": "下の行にバフ設定をコピーします.",
     },
+    // バフテンプレート
+    "レイジIII": {
+        "en": "Rage III",
+        "ja": "レイジIII",
+    },
+    "レイジIV": {
+        "en": "Rage IV",
+        "ja": "レイジIV",
+    },
+    "ランページ": {
+        "en": "Rampage",
+        "ja": "ランページ",
+    },
+    "四天刃バフ": {
+        "en": "Four-Sky Blade Buff",
+        "ja": "四天刃バフ",
+    },
+    "SOG 楽器なし": {
+        "en": "Sky Realm Song w/o Harp",
+        "ja": "ソング・オブ・グランデ 楽器なし",
+    },
+    "SOG 楽器あり": {
+        "en": "Sky Realm Song with Harp",
+        "ja": "ソング・オブ・グランデ 楽器あり",
+    },
+    "コール・オブ・アビス 楽器あり": {
+        "en": "Call of the Abyss with Harp",
+        "ja": "コール・オブ・アビス 楽器あり",
+    },
+    "天眼陣(3T)": {
+        "en": "Omnipotent Eye (3T)",
+        "ja": "天眼陣(3T)",
+    },
+    "他心陣と奥義": {
+        "en": "Splitting Spirit and Ougi",
+        "ja": "他心陣と奥義",
+    },
     // Notice
     "広告": {
         "en": "Ad.",

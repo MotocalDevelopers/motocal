@@ -75,7 +75,7 @@ var buffTypeList = {
         }
     },
     "CoA-music-3T": {
-        "name": "コールオブアビス 楽器あり",
+        "name": "コール・オブ・アビス 楽器あり",
         "bufflists": ["DA_80", "TA_30", "ougiGage_-30"],
         "turn": 3,
         "detail": {
@@ -604,7 +604,7 @@ var Simulator = React.createClass({
                                 return (
                                     <TextWithTooltip tooltip={buffTypeList[key].detail[locale]} id={"simulator-bufftemplates-" + ind}>
                                         <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} onDragEnd={onDragEnd} key={key} id={key}>
-                                            {buffTypeList[key].name}
+                                            {intl.translate(buffTypeList[key].name, locale)}
                                         </Button>
                                     </TextWithTooltip>
                                 );
