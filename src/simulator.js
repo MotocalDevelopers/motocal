@@ -21,49 +21,85 @@ var daBuffAmountList = [
 
 var buffTypeList = {
     "normal-30-3T": {
-        "name": "レイジIII(通常攻刃30%, 3T)",
+        "name": "レイジIII",
         "bufflists": ["normal_30"],
         "turn": 3,
+        "detail": {
+            "ja": "通常攻刃30%, 3T",
+            "en": "Normal Buff 30%, 3T",
+        }
     },
     "normal-40-3T": {
-        "name": "レイジIV(通常攻刃40%, 3T)",
+        "name": "レイジIV",
         "bufflists": ["normal_40"],
         "turn": 3,
+        "detail": {
+            "ja": "通常攻刃30%, 3T",
+            "en": "Normal Buff 40%, 3T",
+        }
     },
     "DATA-15-3T": {
-        "name": "ランページ(DA20% TA10%, 3T)",
+        "name": "ランページ",
         "bufflists": ["DA_20", "TA_10"],
         "turn": 3,
+        "detail": {
+            "ja": "DA20% TA10%, 3T",
+            "en": "DA20% TA10%, 3T",
+        }
     },
     "DATA-30-3T": {
-        "name": "四天刃奥義(DA30% TA30%, 3T)",
+        "name": "四天刃バフ",
         "bufflists": ["DA_30", "TA_30"],
         "turn": 3,
+        "detail": {
+            "ja": "DA30% TA30%, 3T",
+            "en": "DA30% TA30%, 3T",
+        }
     },
     "SOG-wo-music-3T": {
-        "name": "SOG 楽器なし(DA30%, 3T)",
+        "name": "SOG 楽器なし",
         "bufflists": ["DA_30"],
         "turn": 3,
+        "detail": {
+            "ja": "DA30%, 3T",
+            "en": "DA30%, 3T",
+        }
     },
     "SOG-music-3T": {
-        "name": "SOG 楽器あり(DA70%, 3T)",
+        "name": "SOG 楽器あり",
         "bufflists": ["DA_70"],
         "turn": 3,
+        "detail": {
+            "ja": "DA70%, 3T",
+            "en": "DA70%, 3T",
+        }
     },
     "CoA-music-3T": {
-        "name": "コールオブアビス 楽器あり(DA80%TA30%奥義ゲージ上昇量-30%, 3T)",
+        "name": "コールオブアビス 楽器あり",
         "bufflists": ["DA_80", "TA_30", "ougiGage_-30"],
         "turn": 3,
+        "detail": {
+            "ja": "DA80% TA30% 奥義ゲージ上昇量-30%, 3T",
+            "en": "DA80% TA30% OugiGageBuff -30%, 3T",
+        },
     },
     "tenganjin-3T": {
         "name": "天眼陣(3T)",
         "bufflists": ["normal_30", "DA_30"],
         "turn": 3,
+        "detail": {
+            "ja": "通常攻刃30% DA10%, 3T",
+            "en": "Normal Buff 30% DA10%, 3T",
+        }
     },
     "tasinjin-ougi": {
-        "name": "他心陣と奥義(HP50%, 奥義に設定)",
+        "name": "他心陣と奥義",
         "bufflists": ["remainHP_50", "ougi"],
         "turn": 1,
+        "detail": {
+            "ja": "HP50%, 奥義に設定",
+            "en": "HP50%, Set Turn type to Ougi",
+        }
     },
 }
 
@@ -565,7 +601,13 @@ var Simulator = React.createClass({
                             <ListGroupItem>{intl.translate("バフテンプレート説明", locale)}</ListGroupItem>
                             <ListGroupItem>
                             {Object.keys(buffTypeList).map(function(key, ind){
-                                return <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} onDragEnd={onDragEnd} key={key} id={key}>{buffTypeList[key].name}</Button>
+                                return (
+                                    <TextWithTooltip tooltip={buffTypeList[key].detail[locale]} id={"simulator-bufftemplates-" + ind}>
+                                        <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} onDragEnd={onDragEnd} key={key} id={key}>
+                                            {buffTypeList[key].name}
+                                        </Button>
+                                    </TextWithTooltip>
+                                );
                             })}
                             </ListGroupItem>
                         </ListGroup>
