@@ -485,3 +485,14 @@ label {
   cursor:pointer;
   transition-duration: 0;
 }
+
+/* bootstrap custom themes */
+.btn-dark, .label-dark {
+    background-color: black;
+    color: white;
+}
+
+.btn-light, .label-light {
+    background-color: palegoldenrod;
+    color: black;
+}
