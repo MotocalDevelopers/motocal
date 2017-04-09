@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var intl = require('./translate.js')
 var {Chart} = require('react-google-charts')
-var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover, Panel, ListGroup, ListGroupItem, Glyphicon} = require('react-bootstrap');
 var {SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
 var selector = GlobalConst.selector
@@ -515,10 +515,16 @@ var Simulator = React.createClass({
         return (
             <div className="simulatorInput">
                 <div>
-                    <p className="text-default">Drag and Drop</p>
-                    {Object.keys(buffTypeList).map(function(key, ind){
-                        return <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
-                    })}
+                    <Panel bsStyle="success" collapsible header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Template Buff List</span>}>
+                        <ListGroup fill>
+                            <ListGroupItem>Drag and Drop</ListGroupItem>
+                            <ListGroupItem>
+                            {Object.keys(buffTypeList).map(function(key, ind){
+                                return <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} key={key} id={key}>{buffTypeList[key].name}</Button>
+                            })}
+                            </ListGroupItem>
+                        </ListGroup>
+                    </Panel>
                 </div>
                 <hr/>
                 <table className="table table-bordered">
