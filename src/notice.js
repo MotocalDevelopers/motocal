@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover, Panel, Glyphicon} = require('react-bootstrap');
 var intl = require('./translate.js');
 
 var Notice = React.createClass ({
@@ -11,8 +11,9 @@ var Notice = React.createClass ({
         <div className="notice">
             <div className="divright"><a href="http://hsimyu.net/motocal/">入力リセット</a></div>
             <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
-            <h2>更新履歴</h2>
+            <Panel bsStyle="default" collapsible header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
             <ul className="list-group">
+                <li className="list-group-item list-group-item-info">{intl.translate("notice-20170410-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170409-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170331-1", locale)}</li>
                 <li className="list-group-item list-group-item-info">{intl.translate("notice-20170329-3", locale)}</li>
@@ -101,6 +102,7 @@ var Notice = React.createClass ({
                 <li className="list-group-item list-group-item-info">2016/08/25: カオスルーダーと義賊を追加 / フェリ(SSR)がキャラテンプレートに表示されていない不具合を修正 </li>
                 <li className="list-group-item list-group-item-info">2016/08/25: 武器追加時に+を計算できるようにした </li>
             </ul>
+            </Panel>
 
             <h3>注記</h3>
             <ul className="list-group">

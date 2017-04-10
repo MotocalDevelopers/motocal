@@ -263,10 +263,12 @@ var RegisteredArm = React.createClass({
         });
     },
     clickedTemplate: function(e) {
+
         this.setState({tempArm: this.state.armData[e.target.getAttribute("id")]});
         var arm = this.state.armData[e.target.getAttribute("id")]
         this.setState({armLv: parseInt(arm.maxlv)})
         this.setState({armSLv: parseInt(arm.slvmax)})
+
         if(arm.maxlv == "150") {
             this.setState({selectLevel: selector.levelNoLimit})
             this.setState({selectSkillLevel: selector.skilllevelNoLimit})
@@ -274,23 +276,23 @@ var RegisteredArm = React.createClass({
             this.setState({selectLevel: selector.levelLimit})
             this.setState({selectSkillLevel: selector.skilllevelLimit})
         }
-        if(arm.name.indexOf("・属性変更") > 0 || arm.name.indexOf("・覚醒") > 0){
-            this.setState({additionalSelectKey: "old_element"})
-            this.setState({additionalSelect: selector[this.props.locale].elements})
-            this.setState({additionalSelectClass: "visible"})
-        } else if (arm.name.indexOf("コスモス") > 0) {
-            this.setState({additionalSelectKey: "cosmos_skill"})
-            this.setState({additionalSelect: selector[this.props.locale].cosmosSkills})
-            this.setState({additionalSelectClass: "visible"})
-        } else if (arm.name.indexOf("絶覇") > 0) {
-            this.setState({additionalSelectKey: "main_weapon"})
-            this.setState({additionalSelect: selector[this.props.locale].mainWeapon})
-            this.setState({additionalSelectClass: "visible"})
-        } else {
+
+        var isAdditionalSelectFound = false;
+        for(var key in GlobalConst.additionalSelectList) {
+            if( (!isAdditionalSelectFound) && (arm.name.indexOf(key) >= 0)) {
+                this.setState({ additionalSelectKey: GlobalConst.additionalSelectList[key].selectKey })
+                this.setState({ additionalSelect: selector[this.props.locale][ GlobalConst.additionalSelectList[key].selector] })
+                this.setState({additionalSelectClass: "visible"})
+                isAdditionalSelectFound = true;
+            }
+        }
+
+        if(!isAdditionalSelectFound) {
             this.setState({additionalSelectKey: ""})
             this.setState({additionalSelect: null})
             this.setState({additionalSelectClass: "hidden"})
         }
+
         this.setState({openConsiderNumberModal: true})
     },
     clickedConsiderNumber: function(e) {
@@ -309,6 +311,9 @@ var RegisteredArm = React.createClass({
                 // メイン装備時に効果が切り替わるスキルは2番目に配置する
                 arm["skill2"] += "Main"
             }
+        } else if(this.state.additionalSelectKey == "sisho") {
+            arm["skill2"] = this.state.sisho
+            arm["element2"] = arm["element"]
         }
         this.props.onClick(arm, e.target.value);
         this.setState({openConsiderNumberModal: false})

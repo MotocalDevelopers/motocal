@@ -1500,6 +1500,23 @@ var multiLangData = {
         "en": "Angel's Blessing II",
         "ja": "天司の祝福II",
     },
+    // テンプレート用
+    "王道: 竜巻の技巧": {
+        "en": "Normal Verity (M)",
+        "ja": "王道: 竜巻の技巧",
+    },
+    "王道: 火の守護": {
+        "en": "Normal Aegis (M)",
+        "ja": "王道: 火の守護",
+    },
+    "王道: 大地の技巧": {
+        "en": "Normal Verity (M)",
+        "ja": "王道: 大地の技巧",
+    },
+    "王道: 水の二手": {
+        "en": "Normal Duel Edge (M)",
+        "ja": "王道: 水の二手",
+    },
     "敵防御10": {
         "en": "10.0(General)",
         "ja": "10.0(一般的な敵)",
@@ -1859,7 +1876,11 @@ var multiLangData = {
     },
     "notice-20170409-1": {
         "en": "09/04/2017: Improved An Interface of Damage Simulator. / Implemented name editing of saved grids.",
-        "ja": "2017/04/09: ダメージシミュレータのインターフェースの改善 / 保存した編成の名前を編集できるようにした..",
+        "ja": "2017/04/09: ダメージシミュレータのインターフェースの改善 / 保存した編成の名前を編集できるようにした.",
+    },
+    "notice-20170410-1": {
+        "en": "10/04/2017: Added a new skill Normal Tyranny II and Implemented the additional skill selection for Four beast weapons.",
+        "ja": "2017/04/09: 通常暴君IIを追加 / 新四象武器選択時に追加スキルを追加するか選択可能に.",
     },
 }
 
