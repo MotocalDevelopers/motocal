@@ -1140,6 +1140,10 @@ var multiLangData = {
         "en": "Normal Tyranny",
         "ja": "通常暴君",
     },
+    "通常暴君II": {
+        "en": "Normal Tyranny II",
+        "ja": "通常暴君II",
+    },
     "通常背水(小)": {
         "en": "Normal Enmity (S)",
         "ja": "通常背水(小)",

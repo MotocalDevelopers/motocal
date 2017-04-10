@@ -872,8 +872,13 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             totals[key]["DAbuff"] -= comb[i] * 38.0;
                             totals[key]["TAbuff"] -= comb[i] * 38.0;
                         } else if(stype == 'normalBoukun') {
-                            totals[key]["HPdebuff"] += comb[i] * 0.10
-                            totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            if(amount == "L") {
+                                totals[key]["HPdebuff"] += comb[i] * 0.10
+                                totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            } else if(amount == "LLL") {
+                                totals[key]["HPdebuff"] += comb[i] * 0.20
+                                totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            }
                         } else if(stype == 'magnaBoukun') {
                             totals[key]["HPdebuff"] += comb[i] * 0.10
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];

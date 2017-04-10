@@ -11,6 +11,7 @@ skillnamelist["normalL"] = {u"紅蓮の攻刃": "fire", u"霧氷の攻刃": "wat
 skillnamelist["normalHPL"] = {u"紅蓮の守護": "fire", u"霧氷の守護": "water", u"地裂の守護": "earth", u"乱気の守護": "wind", u"天光の守護": "light", u"奈落の守護": "dark"}
 skillnamelist["normalCriticalL"] = {u"紅蓮の技巧": "fire", u"霧氷の技巧": "water", u"地裂の技巧": "earth", u"乱気の技巧": "wind", u"天光の技巧": "light", u"奈落の技巧": "dark"}
 skillnamelist["normalHaisuiL"] = {u"紅蓮の背水": "fire", u"霧氷の背水": "water", u"地裂の背水": "earth", u"乱気の背水": "wind", u"天光の背水": "light", u"奈落の背水": "dark"}
+skillnamelist["normalBoukunLLL"] = {u"紅蓮の暴君II": "fire", u"霧氷の暴君II": "water", u"地裂の暴君II": "earth", u"乱気の暴君II": "wind", u"天光の暴君II": "light", u"奈落の暴君II": "dark"}
 skillnamelist["normalBoukunL"] = {u"紅蓮の暴君": "fire", u"霧氷の暴君": "water", u"地裂の暴君": "earth", u"乱気の暴君": "wind", u"天光の暴君": "light", u"奈落の暴君": "dark"}
 skillnamelist["gurenJuin"] = {u"紅蓮の呪印・弐": "fire"}
 skillnamelist["muhyoTuiga"] = {u"霧氷の追牙・肆": "water"}
