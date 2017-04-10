@@ -233,6 +233,7 @@ var RegisteredArm = React.createClass({
             old_element: "light",
             cosmos_skill: "cosmosAT",
             main_weapon: 0,
+            sisho: "non",
             openSendRequest: false,
         };
     },
