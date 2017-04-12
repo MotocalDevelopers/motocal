@@ -65,7 +65,30 @@ skillnamelist["unknownHPL"] = {u"アンノウン・VIT II": "unknown"}
 skillnamelist["unknownHPM"] = {u"アンノウン・VIT": "unknown"}
 skillnamelist["strengthS"] = {u"スピードスペル": "light"}
 skillnamelist["strengthM"] = {u"大自然の摂理": "light"}
-skillnamelist["strengthL"] = {u"ストレングス": "unknown", u"セービングアタック": "water", u"Vスキル": "earth", u"その魂よ、安らかに": "light", u"烈光の至恩": "dark", u"自動辻斬装置": "water", u"半獣の咆哮": "fire", u"西風のラプソディ": "wind", u"我流の太刀筋": "wind", u"カースドテンタクル": "dark", u"ポイント・オブ・エイム": "earth", u"天の福音": "light", u"森林の祝福": "wind", u"お友達になってくれる？": "dark", u"蒼薔薇の棘": "water", u"翠薔薇の棘": "wind", u"橙薔薇の棘": "earth", u"紅薔薇の棘": "fire"}
+skillnamelist["strengthL"] = {
+        u"ストレングス": "unknown",
+        u"セービングアタック": "water",
+        u"Vスキル": "earth",
+        u"その魂よ、安らかに": "light",
+        u"烈光の至恩": "dark",
+        u"自動辻斬装置": "water",
+        u"半獣の咆哮": "fire",
+        u"西風のラプソディ": "wind",
+        u"我流の太刀筋": "wind",
+        u"カースドテンタクル": "dark",
+        u"ポイント・オブ・エイム": "earth",
+        u"天の福音": "light",
+        u"森林の祝福": "wind",
+        u"お友達になってくれる？": "dark",
+        u"貴方へ贈る言葉": "wind",
+        u"蒼薔薇の棘": "water",
+        u"翠薔薇の棘": "wind",
+        u"橙薔薇の棘": "earth",
+        u"紅薔薇の棘": "fire",
+        u"震天の雷鳴": "light",
+        u"震天の暗雲": "dark",
+}
+
 skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire", u"裁考の覇道": "earth"}
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
 skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", u"インテリジェンス": "dark"}
@@ -117,6 +140,8 @@ skillnamelist["tenshiShukufuku"] = {u"ミカエルの祝福": "fire", u"ガブ�
 # キャラ固有武器
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
+skillnamelist["normalL"][u"聖女の行進"] = "light"
+skillnamelist["normalL"][u"血啜りの一閃"] = "dark"
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
