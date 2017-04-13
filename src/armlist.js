@@ -176,7 +176,7 @@ var ArmList = React.createClass({
     },
     addTemplateArm: function(templateArm, considerNum) {
         var minimumID = -1;
-        for(key in this.state.alist) {
+        for(var key in this.state.alist) {
             if(this.state.alist[key].name == ""){
                 minimumID = key;
                 break;
