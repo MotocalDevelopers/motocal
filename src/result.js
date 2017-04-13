@@ -424,7 +424,7 @@ var ResultList = React.createClass({
             tableheader.push(intl.translate("予想ターン毎ダメージ", locale))
         }
         if(switcher.switchAverageCycleDamage) {
-            tableheader.push(intl.translate("パーティ平均予想ターン毎ダメージ", locale))
+            tableheader.push(intl.translate("パーティ平均予想ターン毎ダメージ", locale) + " (" + intl.translate("四人合計値", locale) + ")")
         }
 
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name
@@ -914,7 +914,8 @@ var Result = React.createClass({
                         ++colSize;
                     }
                     if(sw.switchAverageCycleDamage) {
-                        tablebody.push(parseInt(m.data.Djeeta.averageCyclePerTurn))
+                        var val = parseInt(m.data.Djeeta.averageCyclePerTurn)
+                        tablebody.push(val.toString() + " (" + (4 * val).toString() + ")")
                         ++colSize;
                     }
 

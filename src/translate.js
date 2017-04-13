@@ -669,6 +669,10 @@ var multiLangData = {
         "en": "Party-Averaged Exp. Turn Damage",
         "ja": "ターン毎ダメージの\nパーティ平均",
     },
+    "四人合計値": {
+        "en": "x4",
+        "ja": "x四人",
+    },
     "スキル合計": {
         "en": "Skill Amount",
         "ja": "スキル合計",
