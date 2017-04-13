@@ -124,16 +124,12 @@ module.exports.getTypeBonusStr = function(self_elem, enemy_elem) {
     switch(module.exports.getTypeBonus(self_elem, enemy_elem)) {
         case 1.0:
             return "非有利"
-            break;
         case 1.5:
             return "有利"
-            break;
         case 0.75:
             return "不利"
-            break;
         default:
             return "非有利"
-            break;
     }
 };
 
@@ -271,14 +267,12 @@ module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, norm
 
         for(var i = 0; i < Math.pow(2, gikouArray.length); i++) {
             var ratio = 1.0
-            var cnt = 0
             var attackRatio = 1.0
 
             for(var j = 0; j < gikouArray.length; j++) {
                 if((bitmask[j] & i) > 0) {
                     // j番目の技巧が発動
                     ratio *= gikouArray[j]
-                    cnt += 1
                     attackRatio += gikouRatioArray[j]
                 } else {
                     // j番目の技巧は非発動
@@ -314,7 +308,7 @@ module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, norm
 module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
     var res = {}
 
-    for(key in totals) {
+    for(var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind]
 
         // for attack
@@ -632,7 +626,6 @@ module.exports.recalcCharaHaisui = function(chara, remainHP) {
                         // ザルハメリナのHPを参照する
                         charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 10, remainHP)
                         continue;
-                        break;
                     default:
                         break;
                 }
@@ -679,7 +672,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
     }
 
     var index = 0;
-    for( key in totals ) {
+    for(var key in totals ) {
         index = (index + 1)|0;
         var isBahaAtIncluded = false; var isBahaAthpIncluded = false; var isBahaHpIncluded = false;
 
@@ -695,7 +688,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                 hpSup += 0.3
             }
 
-            if( key == "Djeeta" ) {
+            if(key == "Djeeta" ) {
                 // for Djeeta
                 if(arm.armType == totals[key]["fav1"] && arm.armType == totals[key]["fav2"]){
                     armSup += (0.2 + buff["zenith1"] + buff["zenith2"])
@@ -1034,7 +1027,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
 module.exports.initializeTotals = function(totals) {
     // 初期化
     // 武器編成によって変わらないものは除く
-    for(key in totals){
+    for(var key in totals){
         totals[key]["armAttack"] = 0; totals[key]["armHP"] = 0;
         totals[key]["HPdebuff"] = 0; totals[key]["magna"] = 0;
         totals[key]["magnaHaisui"] = 0; totals[key]["normal"] = 0;
@@ -1097,16 +1090,13 @@ module.exports.treatSupportAbility = function(totals, chara) {
                         totals[key]["normalBuff"] += support.value
                     }
                     continue;
-                    break;
                 case "normalBuff_depends_races":
                     var races = module.exports.checkNumberofRaces(chara);
                     // 4種族なら50%, それ以外なら種族数*10%
                     totals[key]["normalBuff"] += (races == 4 ? 0.50 : races * 0.10);
                     continue;
-                    break;
                 case "normalBuff_depends_member":
                     continue;
-                    break;
                 case "taiyou_sinkou":
                     // ザルハメリナのHPを参照する
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"])
@@ -1118,7 +1108,6 @@ module.exports.treatSupportAbility = function(totals, chara) {
                         totals[key]["charaHaisui"] += charaHaisuiValue
                     }
                     continue;
-                    break;
                 default:
                     break;
             }
@@ -1246,7 +1235,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                 AllAverageCycleDamagePerTurn[0].push("[" + summonHeader + "] " + title)
             }
 
-            for(key in onedata){
+            for(var key in onedata){
                 var totalSummon = onedata[key].totalSummon
                 var normalHaisuiOrig = onedata[key].skilldata.normalHaisui
                 var magnaHaisuiOrig = onedata[key].skilldata.magnaHaisui
@@ -1406,7 +1395,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
 
                     index = alreadyUsedHP[hp] - 1
                     allindex = allAlreadyUsedHP[hp] - 1
-                    allj = s * oneresult.length + j + 1;
+                    var allj = s * oneresult.length + j + 1;
 
                     AllTotalAttack[allindex][allj] = TotalAttack[index][j + 1]
                     AllTotalHP[allindex][allj] = TotalHP[index][j + 1]
@@ -1448,8 +1437,8 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
     }
 
     // グラフ最大値最小値を抽出
-    for(key in minMaxArr) {
-        for(summonkey in data) {
+    for(var key in minMaxArr) {
+        for(var summonkey in data) {
             for(var k = 1; k <= 100; k++){
                 for(var j = 1; j <= res[0].length; j++){
                     // グラフ最大値最小値を保存
@@ -1531,7 +1520,7 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
                 AverageTotalAttack[t].push( onedata["Djeeta"].averageAttack )
                 AverageTotalExpected[t].push( onedata["Djeeta"].averageTotalExpected )
 
-                for(key in onedata) {
+                for(var key in onedata) {
                     if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougi" || turnBuff.buffs[key][t-1].turnType == "ougi") {
                         // 基本的に奥義の設定が優先
                         var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
@@ -1561,7 +1550,7 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
                 }
 
                 if(t == 1) {
-                    title = storedNames[j]
+                    var title = storedNames[j]
 
                     AverageTotalAttack[0].push(title)
                     AverageTotalExpected[0].push(title)
@@ -1611,8 +1600,8 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
     }
 
     // グラフ最大値最小値を抽出
-    for(key in minMaxArr) {
-        for(summonkey in data) {
+    for(var key in minMaxArr) {
+        for(var summonkey in data) {
             for(var k = 1; k <= turnBuff.maxTurn; k++){
                 for(var j = 1; j <= res[0][0].length; j++){
                     // グラフ最大値最小値を保存
