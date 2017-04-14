@@ -5,8 +5,7 @@ skillnamelist = OrderedDict()
 
 # normal L and LL
 skillnamelist["normalLL"] = {u"紅蓮の攻刃II": "fire", u"霧氷の攻刃II": "water", u"地裂の攻刃II": "earth", u"乱気の攻刃II": "wind", u"天光の攻刃II": "light", u"奈落の攻刃II": "dark"}
-# 守護IIがない？
-# skillnamelist["normalHPLL"] = {u"紅蓮の守護II": "fire", u"霧氷の守護II": "water", u"地裂の守護II": "earth", u"乱気の守護II": "wind", u"天光の守護II": "light", u"奈落の守護II": "dark"}
+skillnamelist["normalHPLL"] = {u"紅蓮の守護II": "fire", u"霧氷の守護II": "water", u"地裂の守護II": "earth", u"乱気の守護II": "wind", u"天光の守護II": "light", u"奈落の守護II": "dark"}
 skillnamelist["normalL"] = {u"紅蓮の攻刃": "fire", u"霧氷の攻刃": "water", u"地裂の攻刃": "earth", u"乱気の攻刃": "wind", u"天光の攻刃": "light", u"奈落の攻刃": "dark"}
 skillnamelist["normalHPL"] = {u"紅蓮の守護": "fire", u"霧氷の守護": "water", u"地裂の守護": "earth", u"乱気の守護": "wind", u"天光の守護": "light", u"奈落の守護": "dark"}
 skillnamelist["normalCriticalL"] = {u"紅蓮の技巧": "fire", u"霧氷の技巧": "water", u"地裂の技巧": "earth", u"乱気の技巧": "wind", u"天光の技巧": "light", u"奈落の技巧": "dark"}
