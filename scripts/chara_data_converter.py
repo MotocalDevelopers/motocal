@@ -47,18 +47,14 @@ supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
 patching = OrderedDict()
 
 # 連撃率 from すんどめ侍さん
-patching["ロミオ"] = {"DA": 7.5, "TA": 2.5, "en": "Romeo"}
-patching["イングヴェイ"] = {"DA": 9.0, "TA": 4.0, "en": "Yngwie"}
-patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0, "en": "Rastina"}
-patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0, "en": "Marquiares"}
-patching["ユイシス"] = {"DA": 8.0, "TA": 4.0, "en": "Yuisis"}
+patching["ロミオ"] = {"DA": 7.5, "TA": 2.5}
+patching["イングヴェイ"] = {"DA": 9.0, "TA": 4.0}
+patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0}
+patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0}
+patching["ユイシス"] = {"DA": 8.0, "TA": 4.0}
 
-# 新しいキャラ
-patching["オーキス(リミテッドver)"] = {"DA": 6.5, "TA": 3.0, "en": "Orchis"}
-patching["ゼタ(闇属性ver)"] = {"DA": 6.5, "TA": 3.0, "en": "Zeta (Dark)"}
-patching["スツルム"] = {"DA": 6.5, "TA": 3.0, "en": "Strum"}
-patching["レ・フィーエ(土属性ver)"] = {"DA": 6.5, "TA": 3.0, "en": "De La Fille (Earth)"}
-patching["キャタピラとヴィーラ"] = {"DA": 6.5, "TA": 3.0, "en": "Katapira & Vira"}
+# json translation
+translation = json.load(open("./txt_source/chara-translation.json", "r"))
 
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
@@ -185,13 +181,19 @@ if __name__ == '__main__':
             if newdict["name"] in patching:
                 newdict["baseDA"] = patching[newdict["name"]]["DA"]
                 newdict["baseTA"] = patching[newdict["name"]]["TA"]
-                newdict["en"] = patching[newdict["name"]]["en"]
             else:
                 newdict["baseDA"] = 6.5
                 newdict["baseTA"] = 3.0
-                newdict["en"] = newdict["name"]
 
             newdict["imageURL"] = "./charaimgs/" + key + "_01.png"
+
+            decoded_name = name.decode("utf-8")
+            if translation.has_key(decoded_name):
+                newdict["en"] = translation[decoded_name].encode("utf-8")
+            else:
+                print "[Warning] " + name + " is not translated."
+                newdict["en"] = name
+
             json_data[name] = newdict
             # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "_01.png\n")
 
