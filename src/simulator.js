@@ -308,11 +308,7 @@ var Simulator = React.createClass({
         // 毎回 Mount されるので
         // データロードはinitial state設定で行う
         // 初回は {} が降ってくるのでその場合は普通に初期化
-        if(this.props.dataForLoad.maxTurn != undefined) {
-            // 上から降ってきたデータはは
-            // 現在の形に合わせる処理が必要になる
-            initState = this.updateBuffList(this.props.dataForLoad)
-        } else {
+        if ((typeof this.props.dataForLoad === "undefined") || (!("maxTurn" in this.props.dataForLoad))) {
             var maxTurn = 6
             // 合計後のデータを入れる連想配列
             var buffs = {}
@@ -324,9 +320,9 @@ var Simulator = React.createClass({
             bufflists["Djeeta"] = {}
 
             for(var i = 0; i < this.props.chara.length; i++){
-                if(this.props.chara[i].name != "") {
-                    buffs[i] = {}
-                    bufflists[i] = {}
+                if(this.props.chara[i].name !== "") {
+                    buffs[this.props.chara[i].name] = {}
+                    bufflists[this.props.chara[i].name] = {}
                 }
             }
 
@@ -352,6 +348,10 @@ var Simulator = React.createClass({
             initState["maxTurn"] = maxTurn;
             initState["openPersonalBuff"] = false;
             initState["nowDragging"] = false;
+        } else {
+            // 上から降ってきたデータはは
+            // 現在の形に合わせる処理が必要になる
+            initState = this.updateBuffList(this.props.dataForLoad)
         }
 
         return initState;
@@ -629,7 +629,7 @@ var Simulator = React.createClass({
                             <ListGroupItem>
                             {Object.keys(buffTypeList).map(function(key, ind){
                                 return (
-                                    <TextWithTooltip tooltip={buffTypeList[key].detail[locale]} id={"simulator-bufftemplates-" + ind}>
+                                    <TextWithTooltip key={ind} tooltip={buffTypeList[key].detail[locale]} id={"simulator-bufftemplates-" + ind}>
                                         <Button bsStyle="success" style={{"margin": "2px 2px"}} bsSize="small" draggable onDragStart={onDragStart} onDragEnd={onDragEnd} key={key} id={key}>
                                             {intl.translate(buffTypeList[key].name, locale)}
                                         </Button>

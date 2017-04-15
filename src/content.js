@@ -257,7 +257,7 @@ var Root = React.createClass({
       }
   },
   render: function() {
-    var locale = this.state.locale
+      var locale = this.state.locale
     if(_ua.Mobile || _ua.Tablet) {
         return (
             <div className="root">
