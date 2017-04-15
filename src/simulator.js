@@ -400,7 +400,7 @@ var Simulator = React.createClass({
             if(parseInt(this.state.maxTurn) < parseInt(e.target.value)) {
                 // ターン数が増えた場合
                 for(var i = parseInt(this.state.maxTurn); i < parseInt(e.target.value); i++) {
-                    for(buffkey in newState.buffs) {
+                    for(var buffkey in newState.buffs) {
                         newState.buffs[buffkey][i] = {
                             normal: 0,
                             element: 0,
@@ -418,7 +418,7 @@ var Simulator = React.createClass({
             } else {
                 // ターン数が減った場合
                 for(var i = parseInt(this.state.maxTurn) - 1; i >= parseInt(e.target.value); i--) {
-                    for(buffkey in newState.buffs) {
+                    for(var buffkey in newState.buffs) {
                         delete newState.buffs[buffkey][i];
                         delete newState.bufflists[buffkey][i];
                     }

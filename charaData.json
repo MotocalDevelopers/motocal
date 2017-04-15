@@ -15,8 +15,8 @@
         "attack": "8550", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ガウェイン", 
-        "imageURL": "./charaimgs/3040000000_01.png"
+        "imageURL": "./charaimgs/3040000000_01.png", 
+        "en": "Gawain"
     }, 
     "アルタイル": {
         "name": "アルタイル", 
@@ -34,8 +34,8 @@
         "attack": "9500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アルタイル", 
-        "imageURL": "./charaimgs/3040001000_01.png"
+        "imageURL": "./charaimgs/3040001000_01.png", 
+        "en": "Altair"
     }, 
     "アレーティア": {
         "name": "アレーティア", 
@@ -53,8 +53,8 @@
         "attack": "9200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アレーティア", 
-        "imageURL": "./charaimgs/3040002000_01.png"
+        "imageURL": "./charaimgs/3040002000_01.png", 
+        "en": "Aletheia"
     }, 
     "ネツァワルピリ": {
         "name": "ネツァワルピリ", 
@@ -72,8 +72,8 @@
         "attack": "11400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ネツァワルピリ", 
-        "imageURL": "./charaimgs/3040003000_01.png"
+        "imageURL": "./charaimgs/3040003000_01.png", 
+        "en": "Nezahualpilli"
     }, 
     "レ・フィーエ": {
         "name": "レ・フィーエ", 
@@ -91,8 +91,8 @@
         "attack": "6400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "レ・フィーエ", 
-        "imageURL": "./charaimgs/3040004000_01.png"
+        "imageURL": "./charaimgs/3040004000_01.png", 
+        "en": "De La Fille"
     }, 
     "レディ・グレイ": {
         "name": "レディ・グレイ", 
@@ -110,8 +110,8 @@
         "attack": "10680", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "レディ・グレイ", 
-        "imageURL": "./charaimgs/3040005000_01.png"
+        "imageURL": "./charaimgs/3040005000_01.png", 
+        "en": "Lady Grey"
     }, 
     "ユエル": {
         "name": "ユエル", 
@@ -129,8 +129,8 @@
         "attack": "8550", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ユエル", 
-        "imageURL": "./charaimgs/3040006000_01.png"
+        "imageURL": "./charaimgs/3040006000_01.png", 
+        "en": "Yuel"
     }, 
     "リリィ": {
         "name": "リリィ", 
@@ -148,8 +148,8 @@
         "attack": "6500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リリィ", 
-        "imageURL": "./charaimgs/3040007000_01.png"
+        "imageURL": "./charaimgs/3040007000_01.png", 
+        "en": "Lily"
     }, 
     "サルナーン": {
         "name": "サルナーン", 
@@ -167,8 +167,8 @@
         "attack": "8360", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "サルナーン", 
-        "imageURL": "./charaimgs/3040008000_01.png"
+        "imageURL": "./charaimgs/3040008000_01.png", 
+        "en": "Sarunan"
     }, 
     "カリオストロ": {
         "name": "カリオストロ", 
@@ -186,8 +186,8 @@
         "attack": "8310", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "カリオストロ", 
-        "imageURL": "./charaimgs/3040009000_01.png"
+        "imageURL": "./charaimgs/3040009000_01.png", 
+        "en": "Cagliostro"
     }, 
     "シャルロッテ": {
         "name": "シャルロッテ", 
@@ -205,8 +205,8 @@
         "attack": "9980", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シャルロッテ", 
-        "imageURL": "./charaimgs/3040010000_01.png"
+        "imageURL": "./charaimgs/3040010000_01.png", 
+        "en": "Charlotta"
     }, 
     "マギサ": {
         "name": "マギサ", 
@@ -224,8 +224,8 @@
         "attack": "10450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "マギサ", 
-        "imageURL": "./charaimgs/3040011000_01.png"
+        "imageURL": "./charaimgs/3040011000_01.png", 
+        "en": "Magisa"
     }, 
     "メーテラ": {
         "name": "メーテラ", 
@@ -243,8 +243,8 @@
         "attack": "7300", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "メーテラ", 
-        "imageURL": "./charaimgs/3040012000_01.png"
+        "imageURL": "./charaimgs/3040012000_01.png", 
+        "en": "Metera"
     }, 
     "セルエル": {
         "name": "セルエル", 
@@ -262,8 +262,8 @@
         "attack": "8640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "セルエル", 
-        "imageURL": "./charaimgs/3040013000_01.png"
+        "imageURL": "./charaimgs/3040013000_01.png", 
+        "en": "Seruel"
     }, 
     "レ・フィーエ(2014年サマーver)": {
         "name": "レ・フィーエ(2014年サマーver)", 
@@ -281,8 +281,8 @@
         "attack": "6400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "レ・フィーエ(2014年サマーver)", 
-        "imageURL": "./charaimgs/3040014000_01.png"
+        "imageURL": "./charaimgs/3040014000_01.png", 
+        "en": "De La Fille (Summer)"
     }, 
     "イオ(2014年サマーver)": {
         "name": "イオ(2014年サマーver)", 
@@ -300,8 +300,8 @@
         "attack": "9680", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "イオ(2014年サマーver)", 
-        "imageURL": "./charaimgs/3040015000_01.png"
+        "imageURL": "./charaimgs/3040015000_01.png", 
+        "en": "Io (Summer)"
     }, 
     "ケルベロス": {
         "name": "ケルベロス", 
@@ -319,8 +319,8 @@
         "attack": "7333", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ケルベロス", 
-        "imageURL": "./charaimgs/3040016000_01.png"
+        "imageURL": "./charaimgs/3040016000_01.png", 
+        "en": "Cerberus"
     }, 
     "アギエルバ": {
         "name": "アギエルバ", 
@@ -338,8 +338,8 @@
         "attack": "7920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アギエルバ", 
-        "imageURL": "./charaimgs/3040017000_01.png"
+        "imageURL": "./charaimgs/3040017000_01.png", 
+        "en": "Agielba"
     }, 
     "クリスティーナ": {
         "name": "クリスティーナ", 
@@ -357,8 +357,8 @@
         "attack": "7777", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "クリスティーナ", 
-        "imageURL": "./charaimgs/3040018000_01.png"
+        "imageURL": "./charaimgs/3040018000_01.png", 
+        "en": "Christina"
     }, 
     "アルルメイヤ": {
         "name": "アルルメイヤ", 
@@ -376,8 +376,8 @@
         "attack": "8400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アルルメイヤ", 
-        "imageURL": "./charaimgs/3040019000_01.png"
+        "imageURL": "./charaimgs/3040019000_01.png", 
+        "en": "Arulumaya"
     }, 
     "シャルロッテ(ハロウィンver)": {
         "name": "シャルロッテ(ハロウィンver)", 
@@ -395,8 +395,8 @@
         "attack": "6720", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シャルロッテ(ハロウィンver)", 
-        "imageURL": "./charaimgs/3040020000_01.png"
+        "imageURL": "./charaimgs/3040020000_01.png", 
+        "en": "Charlotta (Halloween)"
     }, 
     "レナ": {
         "name": "レナ", 
@@ -414,8 +414,8 @@
         "attack": "6560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "レナ", 
-        "imageURL": "./charaimgs/3040021000_01.png"
+        "imageURL": "./charaimgs/3040021000_01.png", 
+        "en": "Lennah"
     }, 
     "メルゥ": {
         "name": "メルゥ", 
@@ -433,8 +433,8 @@
         "attack": "8640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "メルゥ", 
-        "imageURL": "./charaimgs/3040022000_01.png"
+        "imageURL": "./charaimgs/3040022000_01.png", 
+        "en": "Melleau"
     }, 
     "ランスロット(SSR)": {
         "name": "ランスロット(SSR)", 
@@ -452,8 +452,8 @@
         "attack": "10830", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ランスロット(SSR)", 
-        "imageURL": "./charaimgs/3040023000_01.png"
+        "imageURL": "./charaimgs/3040023000_01.png", 
+        "en": "Lancelot"
     }, 
     "ソフィア": {
         "name": "ソフィア", 
@@ -471,8 +471,8 @@
         "attack": "6160", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ソフィア", 
-        "imageURL": "./charaimgs/3040024000_01.png"
+        "imageURL": "./charaimgs/3040024000_01.png", 
+        "en": "Sophia"
     }, 
     "ジークフリート": {
         "name": "ジークフリート", 
@@ -490,8 +490,8 @@
         "attack": "9880", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジークフリート", 
-        "imageURL": "./charaimgs/3040025000_01.png"
+        "imageURL": "./charaimgs/3040025000_01.png", 
+        "en": "Siegfried"
     }, 
     "ロゼッタ(クリスマスver)": {
         "name": "ロゼッタ(クリスマスver)", 
@@ -509,8 +509,8 @@
         "attack": "7280", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ロゼッタ(クリスマスver)", 
-        "imageURL": "./charaimgs/3040026000_01.png"
+        "imageURL": "./charaimgs/3040026000_01.png", 
+        "en": "Rosetta (Christmas)"
     }, 
     "アニラ": {
         "name": "アニラ", 
@@ -528,8 +528,8 @@
         "attack": "8815", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アニラ", 
-        "imageURL": "./charaimgs/3040027000_01.png"
+        "imageURL": "./charaimgs/3040027000_01.png", 
+        "en": "Anila"
     }, 
     "ゼタ": {
         "name": "ゼタ", 
@@ -547,8 +547,8 @@
         "attack": "9600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ゼタ", 
-        "imageURL": "./charaimgs/3040028000_01.png"
+        "imageURL": "./charaimgs/3040028000_01.png", 
+        "en": "Zeta"
     }, 
     "バザラガ": {
         "name": "バザラガ", 
@@ -566,8 +566,8 @@
         "attack": "10560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "バザラガ", 
-        "imageURL": "./charaimgs/3040029000_01.png"
+        "imageURL": "./charaimgs/3040029000_01.png", 
+        "en": "Vaseraga"
     }, 
     "ウーノ": {
         "name": "ウーノ", 
@@ -585,8 +585,8 @@
         "attack": "8911", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ウーノ", 
-        "imageURL": "./charaimgs/3040030000_01.png"
+        "imageURL": "./charaimgs/3040030000_01.png", 
+        "en": "Anre"
     }, 
     "ソーン": {
         "name": "ソーン", 
@@ -604,8 +604,8 @@
         "attack": "9522", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ソーン", 
-        "imageURL": "./charaimgs/3040031000_01.png"
+        "imageURL": "./charaimgs/3040031000_01.png", 
+        "en": "Tweyen"
     }, 
     "サラーサ": {
         "name": "サラーサ", 
@@ -623,8 +623,8 @@
         "attack": "11333", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "サラーサ", 
-        "imageURL": "./charaimgs/3040032000_01.png"
+        "imageURL": "./charaimgs/3040032000_01.png", 
+        "en": "Threo"
     }, 
     "カトル": {
         "name": "カトル", 
@@ -642,8 +642,8 @@
         "attack": "8844", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "カトル", 
-        "imageURL": "./charaimgs/3040033000_01.png"
+        "imageURL": "./charaimgs/3040033000_01.png", 
+        "en": "Feower"
     }, 
     "フュンフ": {
         "name": "フュンフ", 
@@ -661,8 +661,8 @@
         "attack": "8055", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "フュンフ", 
-        "imageURL": "./charaimgs/3040034000_01.png"
+        "imageURL": "./charaimgs/3040034000_01.png", 
+        "en": "Fif"
     }, 
     "シス": {
         "name": "シス", 
@@ -680,8 +680,8 @@
         "attack": "6666", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シス", 
-        "imageURL": "./charaimgs/3040035000_01.png"
+        "imageURL": "./charaimgs/3040035000_01.png", 
+        "en": "Seox"
     }, 
     "シエテ": {
         "name": "シエテ", 
@@ -699,8 +699,8 @@
         "attack": "10777", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シエテ", 
-        "imageURL": "./charaimgs/3040036000_01.png"
+        "imageURL": "./charaimgs/3040036000_01.png", 
+        "en": "Seofon"
     }, 
     "オクトー": {
         "name": "オクトー", 
@@ -718,8 +718,8 @@
         "attack": "10788", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "オクトー", 
-        "imageURL": "./charaimgs/3040037000_01.png"
+        "imageURL": "./charaimgs/3040037000_01.png", 
+        "en": "Eahta"
     }, 
     "ニオ": {
         "name": "ニオ", 
@@ -737,8 +737,8 @@
         "attack": "10399", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ニオ", 
-        "imageURL": "./charaimgs/3040038000_01.png"
+        "imageURL": "./charaimgs/3040038000_01.png", 
+        "en": "Niyon"
     }, 
     "エッセル": {
         "name": "エッセル", 
@@ -756,8 +756,8 @@
         "attack": "8200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エッセル", 
-        "imageURL": "./charaimgs/3040039000_01.png"
+        "imageURL": "./charaimgs/3040039000_01.png", 
+        "en": "Tien"
     }, 
     "ジャンヌダルク": {
         "name": "ジャンヌダルク", 
@@ -775,8 +775,8 @@
         "attack": "9850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジャンヌダルク", 
-        "imageURL": "./charaimgs/3040040000_01.png"
+        "imageURL": "./charaimgs/3040040000_01.png", 
+        "en": "Jeanne d'Arc"
     }, 
     "サラ(SSR)": {
         "name": "サラ(SSR)", 
@@ -794,8 +794,8 @@
         "attack": "7200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "サラ(SSR)", 
-        "imageURL": "./charaimgs/3040041000_01.png"
+        "imageURL": "./charaimgs/3040041000_01.png", 
+        "en": "Sara"
     }, 
     "カルメリーナ": {
         "name": "カルメリーナ", 
@@ -813,8 +813,8 @@
         "attack": "9240", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "カルメリーナ", 
-        "imageURL": "./charaimgs/3040042000_01.png"
+        "imageURL": "./charaimgs/3040042000_01.png", 
+        "en": "Carmelina"
     }, 
     "ヴィーラ(SSR)": {
         "name": "ヴィーラ(SSR)", 
@@ -832,8 +832,8 @@
         "attack": "10640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヴィーラ(SSR)", 
-        "imageURL": "./charaimgs/3040043000_01.png"
+        "imageURL": "./charaimgs/3040043000_01.png", 
+        "en": "Vira"
     }, 
     "ソシエ": {
         "name": "ソシエ", 
@@ -851,8 +851,8 @@
         "attack": "7920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ソシエ", 
-        "imageURL": "./charaimgs/3040044000_01.png"
+        "imageURL": "./charaimgs/3040044000_01.png", 
+        "en": "Societte"
     }, 
     "アルベール": {
         "name": "アルベール", 
@@ -870,8 +870,8 @@
         "attack": "4800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アルベール", 
-        "imageURL": "./charaimgs/3040045000_01.png"
+        "imageURL": "./charaimgs/3040045000_01.png", 
+        "en": "Albert"
     }, 
     "クラリス": {
         "name": "クラリス", 
@@ -889,8 +889,8 @@
         "attack": "8480", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "クラリス", 
-        "imageURL": "./charaimgs/3040046000_01.png"
+        "imageURL": "./charaimgs/3040046000_01.png", 
+        "en": "Clarisse"
     }, 
     "ペトラ(SSR)": {
         "name": "ペトラ(SSR)", 
@@ -908,8 +908,8 @@
         "attack": "7680", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ペトラ(SSR)", 
-        "imageURL": "./charaimgs/3040047000_01.png"
+        "imageURL": "./charaimgs/3040047000_01.png", 
+        "en": "Petra"
     }, 
     "サルナーン(闇)": {
         "name": "サルナーン(闇)", 
@@ -927,8 +927,8 @@
         "attack": "8360", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "サルナーン(闇)", 
-        "imageURL": "./charaimgs/3040048000_01.png"
+        "imageURL": "./charaimgs/3040048000_01.png", 
+        "en": "Sarunan (Dark)"
     }, 
     "シルヴァ": {
         "name": "シルヴァ", 
@@ -946,8 +946,8 @@
         "attack": "9250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シルヴァ", 
-        "imageURL": "./charaimgs/3040049000_01.png"
+        "imageURL": "./charaimgs/3040049000_01.png", 
+        "en": "Silva"
     }, 
     "パーシヴァル": {
         "name": "パーシヴァル", 
@@ -965,8 +965,8 @@
         "attack": "10830", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "パーシヴァル", 
-        "imageURL": "./charaimgs/3040050000_01.png"
+        "imageURL": "./charaimgs/3040050000_01.png", 
+        "en": "Percival"
     }, 
     "アーミラ(SSR)": {
         "name": "アーミラ(SSR)", 
@@ -984,8 +984,8 @@
         "attack": "10270", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アーミラ(SSR)", 
-        "imageURL": "./charaimgs/3040051000_01.png"
+        "imageURL": "./charaimgs/3040051000_01.png", 
+        "en": "Amira"
     }, 
     "ガンダゴウザ": {
         "name": "ガンダゴウザ", 
@@ -1003,8 +1003,8 @@
         "attack": "10080", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ガンダゴウザ", 
-        "imageURL": "./charaimgs/3040052000_01.png"
+        "imageURL": "./charaimgs/3040052000_01.png", 
+        "en": "Ghandagoza"
     }, 
     "ヴィーラ(サマーver)": {
         "name": "ヴィーラ(サマーver)", 
@@ -1022,8 +1022,8 @@
         "attack": "8160", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヴィーラ(サマーver)", 
-        "imageURL": "./charaimgs/3040053000_01.png"
+        "imageURL": "./charaimgs/3040053000_01.png", 
+        "en": "Vira (Summer)"
     }, 
     "カタリナ(リミテッドver)": {
         "name": "カタリナ(リミテッドver)", 
@@ -1041,8 +1041,8 @@
         "attack": "8100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "カタリナ(リミテッドver)", 
-        "imageURL": "./charaimgs/3040054000_01.png"
+        "imageURL": "./charaimgs/3040054000_01.png", 
+        "en": "Katalina (Grand)"
     }, 
     "ダヌア(サマーver)": {
         "name": "ダヌア(サマーver)", 
@@ -1060,8 +1060,8 @@
         "attack": "8350", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ダヌア(サマーver)", 
-        "imageURL": "./charaimgs/3040055000_01.png"
+        "imageURL": "./charaimgs/3040055000_01.png", 
+        "en": "Danua (Summer)"
     }, 
     "ゼタ(サマーver)": {
         "name": "ゼタ(サマーver)", 
@@ -1079,8 +1079,8 @@
         "attack": "9600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ゼタ(サマーver)", 
-        "imageURL": "./charaimgs/3040056000_01.png"
+        "imageURL": "./charaimgs/3040056000_01.png", 
+        "en": "Zeta (Summer)"
     }, 
     "ヴァンピィ": {
         "name": "ヴァンピィ", 
@@ -1098,8 +1098,8 @@
         "attack": "9160", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヴァンピィ", 
-        "imageURL": "./charaimgs/3040057000_01.png"
+        "imageURL": "./charaimgs/3040057000_01.png", 
+        "en": "Vania"
     }, 
     "アンリエット": {
         "name": "アンリエット", 
@@ -1117,8 +1117,8 @@
         "attack": "8750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アンリエット", 
-        "imageURL": "./charaimgs/3040058000_01.png"
+        "imageURL": "./charaimgs/3040058000_01.png", 
+        "en": "Arriet"
     }, 
     "ラカム(リミテッドver)": {
         "name": "ラカム(リミテッドver)", 
@@ -1136,8 +1136,8 @@
         "attack": "8000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ラカム(リミテッドver)", 
-        "imageURL": "./charaimgs/3040059000_01.png"
+        "imageURL": "./charaimgs/3040059000_01.png", 
+        "en": "Rackam (Grand)"
     }, 
     "ヘルエス": {
         "name": "ヘルエス", 
@@ -1155,8 +1155,8 @@
         "attack": "8640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヘルエス", 
-        "imageURL": "./charaimgs/3040060000_01.png"
+        "imageURL": "./charaimgs/3040060000_01.png", 
+        "en": "Heles"
     }, 
     "フィーナ(SSR)": {
         "name": "フィーナ(SSR)", 
@@ -1174,8 +1174,8 @@
         "attack": "9400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "フィーナ(SSR)", 
-        "imageURL": "./charaimgs/3040061000_01.png"
+        "imageURL": "./charaimgs/3040061000_01.png", 
+        "en": "Feena"
     }, 
     "カリオストロ(ハロウィンver)": {
         "name": "カリオストロ(ハロウィンver)", 
@@ -1193,8 +1193,8 @@
         "attack": "8100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "カリオストロ(ハロウィンver)", 
-        "imageURL": "./charaimgs/3040062000_01.png"
+        "imageURL": "./charaimgs/3040062000_01.png", 
+        "en": "Cagliostro (Halloween)"
     }, 
     "ナルメア": {
         "name": "ナルメア", 
@@ -1212,8 +1212,8 @@
         "attack": "10240", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ナルメア", 
-        "imageURL": "./charaimgs/3040063000_01.png"
+        "imageURL": "./charaimgs/3040063000_01.png", 
+        "en": "Narmaya"
     }, 
     "ヨダルラーハ": {
         "name": "ヨダルラーハ", 
@@ -1231,8 +1231,8 @@
         "attack": "9580", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヨダルラーハ", 
-        "imageURL": "./charaimgs/3040064000_01.png"
+        "imageURL": "./charaimgs/3040064000_01.png", 
+        "en": "Yodarha"
     }, 
     "イオ(リミテッドver)": {
         "name": "イオ(リミテッドver)", 
@@ -1250,8 +1250,8 @@
         "attack": "7700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "イオ(リミテッドver)", 
-        "imageURL": "./charaimgs/3040065000_01.png"
+        "imageURL": "./charaimgs/3040065000_01.png", 
+        "en": "Io (Grand)"
     }, 
     "リルル": {
         "name": "リルル", 
@@ -1269,8 +1269,8 @@
         "attack": "8200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リルル", 
-        "imageURL": "./charaimgs/3040066000_01.png"
+        "imageURL": "./charaimgs/3040066000_01.png", 
+        "en": "Lilele"
     }, 
     "クラリス(クリスマスver)": {
         "name": "クラリス(クリスマスver)", 
@@ -1288,8 +1288,8 @@
         "attack": "8800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "クラリス(クリスマスver)", 
-        "imageURL": "./charaimgs/3040067000_01.png"
+        "imageURL": "./charaimgs/3040067000_01.png", 
+        "en": "Clarisse (Christmas)"
     }, 
     "ロゼッタ(リミテッドver)": {
         "name": "ロゼッタ(リミテッドver)", 
@@ -1307,8 +1307,8 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ロゼッタ(リミテッドver)", 
-        "imageURL": "./charaimgs/3040068000_01.png"
+        "imageURL": "./charaimgs/3040068000_01.png", 
+        "en": "Rosetta (Grand)"
     }, 
     "ユーステス": {
         "name": "ユーステス", 
@@ -1326,8 +1326,8 @@
         "attack": "8900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ユーステス", 
-        "imageURL": "./charaimgs/3040069000_01.png"
+        "imageURL": "./charaimgs/3040069000_01.png", 
+        "en": "Eustace"
     }, 
     "ベアトリクス": {
         "name": "ベアトリクス", 
@@ -1345,8 +1345,8 @@
         "attack": "9250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ベアトリクス", 
-        "imageURL": "./charaimgs/3040070000_01.png"
+        "imageURL": "./charaimgs/3040070000_01.png", 
+        "en": "Beatrix"
     }, 
     "アンチラ": {
         "name": "アンチラ", 
@@ -1364,8 +1364,8 @@
         "attack": "7560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アンチラ", 
-        "imageURL": "./charaimgs/3040071000_01.png"
+        "imageURL": "./charaimgs/3040071000_01.png", 
+        "en": "Andira"
     }, 
     "メーテラ(火属性ver)": {
         "name": "メーテラ(火属性ver)", 
@@ -1383,8 +1383,8 @@
         "attack": "8400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "メーテラ(火属性ver)", 
-        "imageURL": "./charaimgs/3040072000_01.png"
+        "imageURL": "./charaimgs/3040072000_01.png", 
+        "en": "Metera (Fire)"
     }, 
     "フェリ(SSR)": {
         "name": "フェリ(SSR)", 
@@ -1402,8 +1402,8 @@
         "attack": "7450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "フェリ(SSR)", 
-        "imageURL": "./charaimgs/3040073000_01.png"
+        "imageURL": "./charaimgs/3040073000_01.png", 
+        "en": "Ferry"
     }, 
     "キャサリン": {
         "name": "キャサリン", 
@@ -1421,8 +1421,8 @@
         "attack": "8170", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "キャサリン", 
-        "imageURL": "./charaimgs/3040074000_01.png"
+        "imageURL": "./charaimgs/3040074000_01.png", 
+        "en": "Catherine"
     }, 
     "ザルハメリナ": {
         "name": "ザルハメリナ", 
@@ -1440,8 +1440,8 @@
         "attack": "7560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ザルハメリナ", 
-        "imageURL": "./charaimgs/3040075000_01.png"
+        "imageURL": "./charaimgs/3040075000_01.png", 
+        "en": "Zahlhamelina"
     }, 
     "アオイドス": {
         "name": "アオイドス", 
@@ -1459,8 +1459,8 @@
         "attack": "8400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アオイドス", 
-        "imageURL": "./charaimgs/3040076000_01.png"
+        "imageURL": "./charaimgs/3040076000_01.png", 
+        "en": "Aoidos"
     }, 
     "オイゲン(リミテッドver)": {
         "name": "オイゲン(リミテッドver)", 
@@ -1478,8 +1478,8 @@
         "attack": "9900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "オイゲン(リミテッドver)", 
-        "imageURL": "./charaimgs/3040077000_01.png"
+        "imageURL": "./charaimgs/3040077000_01.png", 
+        "en": "Eugen (Grand)"
     }, 
     "ゾーイ": {
         "name": "ゾーイ", 
@@ -1497,8 +1497,8 @@
         "attack": "7200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ゾーイ", 
-        "imageURL": "./charaimgs/3040078000_01.png"
+        "imageURL": "./charaimgs/3040078000_01.png", 
+        "en": "Zooey"
     }, 
     "ハレゼナ": {
         "name": "ハレゼナ", 
@@ -1516,8 +1516,8 @@
         "attack": "10080", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ハレゼナ", 
-        "imageURL": "./charaimgs/3040079000_01.png"
+        "imageURL": "./charaimgs/3040079000_01.png", 
+        "en": "Hallessena"
     }, 
     "ジャンヌダルク(闇)": {
         "name": "ジャンヌダルク(闇)", 
@@ -1535,8 +1535,8 @@
         "attack": "9800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジャンヌダルク(闇)", 
-        "imageURL": "./charaimgs/3040080000_01.png"
+        "imageURL": "./charaimgs/3040080000_01.png", 
+        "en": "Jeanne d'Arc (Dark)"
     }, 
     "コルワ": {
         "name": "コルワ", 
@@ -1554,8 +1554,8 @@
         "attack": "7000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "コルワ", 
-        "imageURL": "./charaimgs/3040081000_01.png"
+        "imageURL": "./charaimgs/3040081000_01.png", 
+        "en": "Korwa"
     }, 
     "黒騎士(リミテッドver)": {
         "name": "黒騎士(リミテッドver)", 
@@ -1573,8 +1573,8 @@
         "attack": "10000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "黒騎士(リミテッドver)", 
-        "imageURL": "./charaimgs/3040082000_01.png"
+        "imageURL": "./charaimgs/3040082000_01.png", 
+        "en": "Black Knight (Grand)"
     }, 
     "アリーザ(SSR)": {
         "name": "アリーザ(SSR)", 
@@ -1592,8 +1592,8 @@
         "attack": "9830", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アリーザ(SSR)", 
-        "imageURL": "./charaimgs/3040083000_01.png"
+        "imageURL": "./charaimgs/3040083000_01.png", 
+        "en": "Aliza"
     }, 
     "アイル": {
         "name": "アイル", 
@@ -1611,8 +1611,8 @@
         "attack": "8800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アイル", 
-        "imageURL": "./charaimgs/3040084000_01.png"
+        "imageURL": "./charaimgs/3040084000_01.png", 
+        "en": "Ayer"
     }, 
     "ネモネ": {
         "name": "ネモネ", 
@@ -1630,8 +1630,8 @@
         "attack": "8800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ネモネ", 
-        "imageURL": "./charaimgs/3040085000_01.png"
+        "imageURL": "./charaimgs/3040085000_01.png", 
+        "en": "Nemone"
     }, 
     "フォルテ": {
         "name": "フォルテ", 
@@ -1649,8 +1649,8 @@
         "attack": "10130", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "フォルテ", 
-        "imageURL": "./charaimgs/3040086000_01.png"
+        "imageURL": "./charaimgs/3040086000_01.png", 
+        "en": "Forte"
     }, 
     "ロザミア(SSR)": {
         "name": "ロザミア(SSR)", 
@@ -1668,8 +1668,8 @@
         "attack": "8000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ロザミア(SSR)", 
-        "imageURL": "./charaimgs/3040087000_01.png"
+        "imageURL": "./charaimgs/3040087000_01.png", 
+        "en": "Rosamia"
     }, 
     "イングヴェイ": {
         "name": "イングヴェイ", 
@@ -1687,8 +1687,8 @@
         "attack": "7500", 
         "baseDA": 9.0, 
         "baseTA": 4.0, 
-        "en": "Yngwie", 
-        "imageURL": "./charaimgs/3040088000_01.png"
+        "imageURL": "./charaimgs/3040088000_01.png", 
+        "en": "Yngwie"
     }, 
     "ナルメア(サマーver)": {
         "name": "ナルメア(サマーver)", 
@@ -1706,8 +1706,8 @@
         "attack": "10240", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ナルメア(サマーver)", 
-        "imageURL": "./charaimgs/3040089000_01.png"
+        "imageURL": "./charaimgs/3040089000_01.png", 
+        "en": "Narmaya (Summer)"
     }, 
     "パーシヴァル(サマーver)": {
         "name": "パーシヴァル(サマーver)", 
@@ -1725,8 +1725,8 @@
         "attack": "9120", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "パーシヴァル(サマーver)", 
-        "imageURL": "./charaimgs/3040090000_01.png"
+        "imageURL": "./charaimgs/3040090000_01.png", 
+        "en": "Percival (Summer)"
     }, 
     "ヘルエス(サマーver)": {
         "name": "ヘルエス(サマーver)", 
@@ -1744,8 +1744,8 @@
         "attack": "8640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヘルエス(サマーver)", 
-        "imageURL": "./charaimgs/3040091000_01.png"
+        "imageURL": "./charaimgs/3040091000_01.png", 
+        "en": "Heles (Summer)"
     }, 
     "ゾーイ(サマーver)": {
         "name": "ゾーイ(サマーver)", 
@@ -1763,8 +1763,8 @@
         "attack": "9200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ゾーイ(サマーver)", 
-        "imageURL": "./charaimgs/3040092000_01.png"
+        "imageURL": "./charaimgs/3040092000_01.png", 
+        "en": "Zooey (Summer)"
     }, 
     "シャノワール": {
         "name": "シャノワール", 
@@ -1782,8 +1782,8 @@
         "attack": "8700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シャノワール", 
-        "imageURL": "./charaimgs/3040093000_01.png"
+        "imageURL": "./charaimgs/3040093000_01.png", 
+        "en": "Chat Noir"
     }, 
     "ヴァイト": {
         "name": "ヴァイト", 
@@ -1801,8 +1801,8 @@
         "attack": "9500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヴァイト", 
-        "imageURL": "./charaimgs/3040094000_01.png"
+        "imageURL": "./charaimgs/3040094000_01.png", 
+        "en": "Veight"
     }, 
     "ソシエ(火属性ver)": {
         "name": "ソシエ(火属性ver)", 
@@ -1820,8 +1820,8 @@
         "attack": "6470", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ソシエ(火属性ver)", 
-        "imageURL": "./charaimgs/3040095000_01.png"
+        "imageURL": "./charaimgs/3040095000_01.png", 
+        "en": "Societte (Fire)"
     }, 
     "ジュリエット": {
         "name": "ジュリエット", 
@@ -1839,8 +1839,8 @@
         "attack": "7200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジュリエット", 
-        "imageURL": "./charaimgs/3040096000_01.png"
+        "imageURL": "./charaimgs/3040096000_01.png", 
+        "en": "Juliet"
     }, 
     "ロミオ": {
         "name": "ロミオ", 
@@ -1858,8 +1858,8 @@
         "attack": "8500", 
         "baseDA": 7.5, 
         "baseTA": 2.5, 
-        "en": "Romeo", 
-        "imageURL": "./charaimgs/3040098000_01.png"
+        "imageURL": "./charaimgs/3040098000_01.png", 
+        "en": "Romeo"
     }, 
     "ユーステス(ハロウィンver)": {
         "name": "ユーステス(ハロウィンver)", 
@@ -1877,8 +1877,8 @@
         "attack": "8900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ユーステス(ハロウィンver)", 
-        "imageURL": "./charaimgs/3040099000_01.png"
+        "imageURL": "./charaimgs/3040099000_01.png", 
+        "en": "Eustace (Halloween)"
     }, 
     "イシュミール": {
         "name": "イシュミール", 
@@ -1896,8 +1896,8 @@
         "attack": "9980", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "イシュミール", 
-        "imageURL": "./charaimgs/3040100000_01.png"
+        "imageURL": "./charaimgs/3040100000_01.png", 
+        "en": "Izmir"
     }, 
     "リーシャ(リミテッドver)": {
         "name": "リーシャ(リミテッドver)", 
@@ -1915,8 +1915,8 @@
         "attack": "8500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リーシャ(リミテッドver)", 
-        "imageURL": "./charaimgs/3040101000_01.png"
+        "imageURL": "./charaimgs/3040101000_01.png", 
+        "en": "Lecia (Grand)"
     }, 
     "メリッサベル": {
         "name": "メリッサベル", 
@@ -1934,8 +1934,8 @@
         "attack": "10100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "メリッサベル", 
-        "imageURL": "./charaimgs/3040102000_01.png"
+        "imageURL": "./charaimgs/3040102000_01.png", 
+        "en": "Melissabelle"
     }, 
     "アンスリア": {
         "name": "アンスリア", 
@@ -1953,8 +1953,8 @@
         "attack": "7970", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アンスリア", 
-        "imageURL": "./charaimgs/3040103000_01.png"
+        "imageURL": "./charaimgs/3040103000_01.png", 
+        "en": "Anthuria"
     }, 
     "アルルメイヤ(クリスマスver)": {
         "name": "アルルメイヤ(クリスマスver)", 
@@ -1972,8 +1972,8 @@
         "attack": "8800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アルルメイヤ(クリスマスver)", 
-        "imageURL": "./charaimgs/3040104000_01.png"
+        "imageURL": "./charaimgs/3040104000_01.png", 
+        "en": "Arulumaya (Christmas)"
     }, 
     "ユイシス": {
         "name": "ユイシス", 
@@ -1991,8 +1991,8 @@
         "attack": "8000", 
         "baseDA": 8.0, 
         "baseTA": 4.0, 
-        "en": "Yuisis", 
-        "imageURL": "./charaimgs/3040105000_01.png"
+        "imageURL": "./charaimgs/3040105000_01.png", 
+        "en": "Yuisis"
     }, 
     "ルシオ(リミテッドver)": {
         "name": "ルシオ(リミテッドver)", 
@@ -2010,8 +2010,8 @@
         "attack": "7700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ルシオ(リミテッドver)", 
-        "imageURL": "./charaimgs/3040106000_01.png"
+        "imageURL": "./charaimgs/3040106000_01.png", 
+        "en": "Lucifer (Grand)"
     }, 
     "マキラ": {
         "name": "マキラ", 
@@ -2029,8 +2029,8 @@
         "attack": "8900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "マキラ", 
-        "imageURL": "./charaimgs/3040107000_01.png"
+        "imageURL": "./charaimgs/3040107000_01.png", 
+        "en": "Mahira"
     }, 
     "マルキアレス": {
         "name": "マルキアレス", 
@@ -2048,8 +2048,8 @@
         "attack": "9290", 
         "baseDA": 7.0, 
         "baseTA": 3.0, 
-        "en": "Marquiares", 
-        "imageURL": "./charaimgs/3040108000_01.png"
+        "imageURL": "./charaimgs/3040108000_01.png", 
+        "en": "Marquiares"
     }, 
     "ラスティナ": {
         "name": "ラスティナ", 
@@ -2067,8 +2067,8 @@
         "attack": "7100", 
         "baseDA": 7.0, 
         "baseTA": 3.0, 
-        "en": "Rastina", 
-        "imageURL": "./charaimgs/3040109000_01.png"
+        "imageURL": "./charaimgs/3040109000_01.png", 
+        "en": "Razia"
     }, 
     "ベアトリクス(水着ver)": {
         "name": "ベアトリクス(水着ver)", 
@@ -2086,8 +2086,8 @@
         "attack": "11000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ベアトリクス(水着ver)", 
-        "imageURL": "./charaimgs/3040110000_01.png"
+        "imageURL": "./charaimgs/3040110000_01.png", 
+        "en": "Beatrix (Themed)"
     }, 
     "オーキス(リミテッドver)": {
         "name": "オーキス(リミテッドver)", 
@@ -2105,8 +2105,8 @@
         "attack": "7300", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "Orchis", 
-        "imageURL": "./charaimgs/3040111000_01.png"
+        "imageURL": "./charaimgs/3040111000_01.png", 
+        "en": "Orchis (Grand)"
     }, 
     "ゼタ(闇属性ver)": {
         "name": "ゼタ(闇属性ver)", 
@@ -2124,8 +2124,8 @@
         "attack": "10400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "Zeta (Dark)", 
-        "imageURL": "./charaimgs/3040112000_01.png"
+        "imageURL": "./charaimgs/3040112000_01.png", 
+        "en": "Zeta (Dark)"
     }, 
     "レ・フィーエ(土属性ver)": {
         "name": "レ・フィーエ(土属性ver)", 
@@ -2143,8 +2143,8 @@
         "attack": "5800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "De La Fille (Earth)", 
-        "imageURL": "./charaimgs/3040113000_01.png"
+        "imageURL": "./charaimgs/3040113000_01.png", 
+        "en": "De La Fille (Earth)"
     }, 
     "スツルム": {
         "name": "スツルム", 
@@ -2162,8 +2162,8 @@
         "attack": "11100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "Strum", 
-        "imageURL": "./charaimgs/3040115000_01.png"
+        "imageURL": "./charaimgs/3040115000_01.png", 
+        "en": "Sturm"
     }, 
     "キャタピラとヴィーラ": {
         "name": "キャタピラとヴィーラ", 
@@ -2181,8 +2181,8 @@
         "attack": "8700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "Katapira & Vira", 
-        "imageURL": "./charaimgs/3040116000_01.png"
+        "imageURL": "./charaimgs/3040116000_01.png", 
+        "en": "Lady Katapillar and Vira"
     }, 
     "ノイシュ": {
         "name": "ノイシュ", 
@@ -2200,8 +2200,8 @@
         "attack": "5400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ノイシュ", 
-        "imageURL": "./charaimgs/3030000000_01.png"
+        "imageURL": "./charaimgs/3030000000_01.png", 
+        "en": "ノイシュ"
     }, 
     "テレーズ": {
         "name": "テレーズ", 
@@ -2219,8 +2219,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "テレーズ", 
-        "imageURL": "./charaimgs/3030001000_01.png"
+        "imageURL": "./charaimgs/3030001000_01.png", 
+        "en": "テレーズ"
     }, 
     "マイシェラ": {
         "name": "マイシェラ", 
@@ -2238,8 +2238,8 @@
         "attack": "5400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "マイシェラ", 
-        "imageURL": "./charaimgs/3030002000_01.png"
+        "imageURL": "./charaimgs/3030002000_01.png", 
+        "en": "マイシェラ"
     }, 
     "アレク": {
         "name": "アレク", 
@@ -2257,8 +2257,8 @@
         "attack": "8400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アレク", 
-        "imageURL": "./charaimgs/3030003000_01.png"
+        "imageURL": "./charaimgs/3030003000_01.png", 
+        "en": "アレク"
     }, 
     "ヘルナル": {
         "name": "ヘルナル", 
@@ -2276,8 +2276,8 @@
         "attack": "5625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヘルナル", 
-        "imageURL": "./charaimgs/3030004000_01.png"
+        "imageURL": "./charaimgs/3030004000_01.png", 
+        "en": "ヘルナル"
     }, 
     "カタリナ": {
         "name": "カタリナ", 
@@ -2295,8 +2295,8 @@
         "attack": "5400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "カタリナ", 
-        "imageURL": "./charaimgs/3030005000_01.png"
+        "imageURL": "./charaimgs/3030005000_01.png", 
+        "en": "カタリナ"
     }, 
     "イオ": {
         "name": "イオ", 
@@ -2314,8 +2314,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "イオ", 
-        "imageURL": "./charaimgs/3030006000_01.png"
+        "imageURL": "./charaimgs/3030006000_01.png", 
+        "en": "イオ"
     }, 
     "オイゲン": {
         "name": "オイゲン", 
@@ -2333,8 +2333,8 @@
         "attack": "6880", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "オイゲン", 
-        "imageURL": "./charaimgs/3030007000_01.png"
+        "imageURL": "./charaimgs/3030007000_01.png", 
+        "en": "オイゲン"
     }, 
     "ラカム": {
         "name": "ラカム", 
@@ -2352,8 +2352,8 @@
         "attack": "6250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ラカム", 
-        "imageURL": "./charaimgs/3030008000_01.png"
+        "imageURL": "./charaimgs/3030008000_01.png", 
+        "en": "ラカム"
     }, 
     "ガイーヌ": {
         "name": "ガイーヌ", 
@@ -2371,8 +2371,8 @@
         "attack": "7080", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ガイーヌ", 
-        "imageURL": "./charaimgs/3030009000_01.png"
+        "imageURL": "./charaimgs/3030009000_01.png", 
+        "en": "ガイーヌ"
     }, 
     "ロゼッタ": {
         "name": "ロゼッタ", 
@@ -2390,8 +2390,8 @@
         "attack": "5800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ロゼッタ", 
-        "imageURL": "./charaimgs/3030010000_01.png"
+        "imageURL": "./charaimgs/3030010000_01.png", 
+        "en": "ロゼッタ"
     }, 
     "アビー": {
         "name": "アビー", 
@@ -2409,8 +2409,8 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アビー", 
-        "imageURL": "./charaimgs/3030011000_01.png"
+        "imageURL": "./charaimgs/3030011000_01.png", 
+        "en": "アビー"
     }, 
     "アンジェ": {
         "name": "アンジェ", 
@@ -2428,8 +2428,8 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アンジェ", 
-        "imageURL": "./charaimgs/3030012000_01.png"
+        "imageURL": "./charaimgs/3030012000_01.png", 
+        "en": "アンジェ"
     }, 
     "ラムレッダ": {
         "name": "ラムレッダ", 
@@ -2447,8 +2447,8 @@
         "attack": "5600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ラムレッダ", 
-        "imageURL": "./charaimgs/3030013000_01.png"
+        "imageURL": "./charaimgs/3030013000_01.png", 
+        "en": "ラムレッダ"
     }, 
     "ウラムヌラン": {
         "name": "ウラムヌラン", 
@@ -2466,8 +2466,8 @@
         "attack": "7820", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ウラムヌラン", 
-        "imageURL": "./charaimgs/3030014000_01.png"
+        "imageURL": "./charaimgs/3030014000_01.png", 
+        "en": "ウラムヌラン"
     }, 
     "アリーザ": {
         "name": "アリーザ", 
@@ -2485,8 +2485,8 @@
         "attack": "6300", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アリーザ", 
-        "imageURL": "./charaimgs/3030015000_01.png"
+        "imageURL": "./charaimgs/3030015000_01.png", 
+        "en": "アリーザ"
     }, 
     "ジェシカ": {
         "name": "ジェシカ", 
@@ -2504,8 +2504,8 @@
         "attack": "5625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジェシカ", 
-        "imageURL": "./charaimgs/3030016000_01.png"
+        "imageURL": "./charaimgs/3030016000_01.png", 
+        "en": "ジェシカ"
     }, 
     "ダヌア": {
         "name": "ダヌア", 
@@ -2523,8 +2523,8 @@
         "attack": "7840", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ダヌア", 
-        "imageURL": "./charaimgs/3030017000_01.png"
+        "imageURL": "./charaimgs/3030017000_01.png", 
+        "en": "ダヌア"
     }, 
     "スーテラ": {
         "name": "スーテラ", 
@@ -2542,8 +2542,8 @@
         "attack": "7060", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "スーテラ", 
-        "imageURL": "./charaimgs/3030018000_01.png"
+        "imageURL": "./charaimgs/3030018000_01.png", 
+        "en": "スーテラ"
     }, 
     "ヴィーラ": {
         "name": "ヴィーラ", 
@@ -2561,8 +2561,8 @@
         "attack": "7000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヴィーラ", 
-        "imageURL": "./charaimgs/3030019000_01.png"
+        "imageURL": "./charaimgs/3030019000_01.png", 
+        "en": "ヴィーラ"
     }, 
     "ソリッズ": {
         "name": "ソリッズ", 
@@ -2580,8 +2580,8 @@
         "attack": "9000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ソリッズ", 
-        "imageURL": "./charaimgs/3030020000_01.png"
+        "imageURL": "./charaimgs/3030020000_01.png", 
+        "en": "ソリッズ"
     }, 
     "サラ": {
         "name": "サラ", 
@@ -2599,8 +2599,8 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "サラ", 
-        "imageURL": "./charaimgs/3030021000_01.png"
+        "imageURL": "./charaimgs/3030021000_01.png", 
+        "en": "サラ"
     }, 
     "ジン": {
         "name": "ジン", 
@@ -2618,8 +2618,8 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジン", 
-        "imageURL": "./charaimgs/3030022000_01.png"
+        "imageURL": "./charaimgs/3030022000_01.png", 
+        "en": "ジン"
     }, 
     "エルモート": {
         "name": "エルモート", 
@@ -2637,8 +2637,8 @@
         "attack": "6750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エルモート", 
-        "imageURL": "./charaimgs/3030023000_01.png"
+        "imageURL": "./charaimgs/3030023000_01.png", 
+        "en": "エルモート"
     }, 
     "キハール": {
         "name": "キハール", 
@@ -2656,8 +2656,8 @@
         "attack": "5850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "キハール", 
-        "imageURL": "./charaimgs/3030024000_01.png"
+        "imageURL": "./charaimgs/3030024000_01.png", 
+        "en": "キハール"
     }, 
     "エルタ": {
         "name": "エルタ", 
@@ -2675,8 +2675,8 @@
         "attack": "6875", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エルタ", 
-        "imageURL": "./charaimgs/3030025000_01.png"
+        "imageURL": "./charaimgs/3030025000_01.png", 
+        "en": "エルタ"
     }, 
     "セレフィラ": {
         "name": "セレフィラ", 
@@ -2694,8 +2694,8 @@
         "attack": "5880", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "セレフィラ", 
-        "imageURL": "./charaimgs/3030026000_01.png"
+        "imageURL": "./charaimgs/3030026000_01.png", 
+        "en": "セレフィラ"
     }, 
     "エゼクレイン": {
         "name": "エゼクレイン", 
@@ -2713,8 +2713,8 @@
         "attack": "6250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エゼクレイン", 
-        "imageURL": "./charaimgs/3030027000_01.png"
+        "imageURL": "./charaimgs/3030027000_01.png", 
+        "en": "エゼクレイン"
     }, 
     "シグ": {
         "name": "シグ", 
@@ -2732,8 +2732,8 @@
         "attack": "5900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シグ", 
-        "imageURL": "./charaimgs/3030028000_01.png"
+        "imageURL": "./charaimgs/3030028000_01.png", 
+        "en": "シグ"
     }, 
     "カタリナ(2014年サマーver)": {
         "name": "カタリナ(2014年サマーver)", 
@@ -2751,8 +2751,8 @@
         "attack": "5625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "カタリナ(2014年サマーver)", 
-        "imageURL": "./charaimgs/3030029000_01.png"
+        "imageURL": "./charaimgs/3030029000_01.png", 
+        "en": "カタリナ(2014年サマーver)"
     }, 
     "ジェシカ(2014年サマーver)": {
         "name": "ジェシカ(2014年サマーver)", 
@@ -2770,8 +2770,8 @@
         "attack": "6625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジェシカ(2014年サマーver)", 
-        "imageURL": "./charaimgs/3030030000_01.png"
+        "imageURL": "./charaimgs/3030030000_01.png", 
+        "en": "ジェシカ(2014年サマーver)"
     }, 
     "ヘルナル(2014年サマーver)": {
         "name": "ヘルナル(2014年サマーver)", 
@@ -2789,8 +2789,8 @@
         "attack": "5920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヘルナル(2014年サマーver)", 
-        "imageURL": "./charaimgs/3030031000_01.png"
+        "imageURL": "./charaimgs/3030031000_01.png", 
+        "en": "ヘルナル(2014年サマーver)"
     }, 
     "フェリ(SR)": {
         "name": "フェリ(SR)", 
@@ -2808,8 +2808,8 @@
         "attack": "5740", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "フェリ(SR)", 
-        "imageURL": "./charaimgs/3030032000_01.png"
+        "imageURL": "./charaimgs/3030032000_01.png", 
+        "en": "フェリ(SR)"
     }, 
     "ルシウス": {
         "name": "ルシウス", 
@@ -2827,8 +2827,8 @@
         "attack": "8760", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ルシウス", 
-        "imageURL": "./charaimgs/3030033000_01.png"
+        "imageURL": "./charaimgs/3030033000_01.png", 
+        "en": "ルシウス"
     }, 
     "ティナ": {
         "name": "ティナ", 
@@ -2846,8 +2846,8 @@
         "attack": "6460", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ティナ", 
-        "imageURL": "./charaimgs/3030034000_01.png"
+        "imageURL": "./charaimgs/3030034000_01.png", 
+        "en": "ティナ"
     }, 
     "フィーナ": {
         "name": "フィーナ", 
@@ -2865,8 +2865,8 @@
         "attack": "5200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "フィーナ", 
-        "imageURL": "./charaimgs/3030035000_01.png"
+        "imageURL": "./charaimgs/3030035000_01.png", 
+        "en": "フィーナ"
     }, 
     "アルシャ": {
         "name": "アルシャ", 
@@ -2884,8 +2884,8 @@
         "attack": "5625", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アルシャ", 
-        "imageURL": "./charaimgs/3030036000_01.png"
+        "imageURL": "./charaimgs/3030036000_01.png", 
+        "en": "アルシャ"
     }, 
     "ファラ": {
         "name": "ファラ", 
@@ -2903,8 +2903,8 @@
         "attack": "6380", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ファラ", 
-        "imageURL": "./charaimgs/3030037000_01.png"
+        "imageURL": "./charaimgs/3030037000_01.png", 
+        "en": "ファラ"
     }, 
     "ユーリ": {
         "name": "ユーリ", 
@@ -2922,8 +2922,8 @@
         "attack": "5100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ユーリ", 
-        "imageURL": "./charaimgs/3030038000_01.png"
+        "imageURL": "./charaimgs/3030038000_01.png", 
+        "en": "ユーリ"
     }, 
     "ノア": {
         "name": "ノア", 
@@ -2941,8 +2941,8 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ノア", 
-        "imageURL": "./charaimgs/3030039000_01.png"
+        "imageURL": "./charaimgs/3030039000_01.png", 
+        "en": "ノア"
     }, 
     "島村卯月": {
         "name": "島村卯月", 
@@ -2960,8 +2960,8 @@
         "attack": "5770", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "島村卯月", 
-        "imageURL": "./charaimgs/3030040000_01.png"
+        "imageURL": "./charaimgs/3030040000_01.png", 
+        "en": "島村卯月"
     }, 
     "渋谷凛": {
         "name": "渋谷凛", 
@@ -2979,8 +2979,8 @@
         "attack": "7080", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "渋谷凛", 
-        "imageURL": "./charaimgs/3030041000_01.png"
+        "imageURL": "./charaimgs/3030041000_01.png", 
+        "en": "渋谷凛"
     }, 
     "アンジェ(ハロウィンver)": {
         "name": "アンジェ(ハロウィンver)", 
@@ -2998,8 +2998,8 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アンジェ(ハロウィンver)", 
-        "imageURL": "./charaimgs/3030042000_01.png"
+        "imageURL": "./charaimgs/3030042000_01.png", 
+        "en": "アンジェ(ハロウィンver)"
     }, 
     "ミムルメモル": {
         "name": "ミムルメモル", 
@@ -3017,8 +3017,8 @@
         "attack": "6570", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ミムルメモル", 
-        "imageURL": "./charaimgs/3030043000_01.png"
+        "imageURL": "./charaimgs/3030043000_01.png", 
+        "en": "ミムルメモル"
     }, 
     "アステール": {
         "name": "アステール", 
@@ -3036,8 +3036,8 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アステール", 
-        "imageURL": "./charaimgs/3030044000_01.png"
+        "imageURL": "./charaimgs/3030044000_01.png", 
+        "en": "アステール"
     }, 
     "マライア": {
         "name": "マライア", 
@@ -3055,8 +3055,8 @@
         "attack": "7190", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "マライア", 
-        "imageURL": "./charaimgs/3030045000_01.png"
+        "imageURL": "./charaimgs/3030045000_01.png", 
+        "en": "マライア"
     }, 
     "カレン": {
         "name": "カレン", 
@@ -3074,8 +3074,8 @@
         "attack": "6500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "カレン", 
-        "imageURL": "./charaimgs/3030046000_01.png"
+        "imageURL": "./charaimgs/3030046000_01.png", 
+        "en": "カレン"
     }, 
     "ヴェイン": {
         "name": "ヴェイン", 
@@ -3093,8 +3093,8 @@
         "attack": "4350", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヴェイン", 
-        "imageURL": "./charaimgs/3030047000_01.png"
+        "imageURL": "./charaimgs/3030047000_01.png", 
+        "en": "ヴェイン"
     }, 
     "ラカム(クリスマスver)": {
         "name": "ラカム(クリスマスver)", 
@@ -3112,8 +3112,8 @@
         "attack": "6500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ラカム(クリスマスver)", 
-        "imageURL": "./charaimgs/3030048000_01.png"
+        "imageURL": "./charaimgs/3030048000_01.png", 
+        "en": "ラカム(クリスマスver)"
     }, 
     "ロザミア(SR)": {
         "name": "ロザミア(SR)", 
@@ -3131,8 +3131,8 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ロザミア(SR)", 
-        "imageURL": "./charaimgs/3030049000_01.png"
+        "imageURL": "./charaimgs/3030049000_01.png", 
+        "en": "ロザミア(SR)"
     }, 
     "ヨハン": {
         "name": "ヨハン", 
@@ -3150,8 +3150,8 @@
         "attack": "4150", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヨハン", 
-        "imageURL": "./charaimgs/3030050000_01.png"
+        "imageURL": "./charaimgs/3030050000_01.png", 
+        "en": "ヨハン"
     }, 
     "城ヶ崎美嘉": {
         "name": "城ヶ崎美嘉", 
@@ -3169,8 +3169,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "城ヶ崎美嘉", 
-        "imageURL": "./charaimgs/3030051000_01.png"
+        "imageURL": "./charaimgs/3030051000_01.png", 
+        "en": "城ヶ崎美嘉"
     }, 
     "本田未央": {
         "name": "本田未央", 
@@ -3188,8 +3188,8 @@
         "attack": "6230", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "本田未央", 
-        "imageURL": "./charaimgs/3030052000_01.png"
+        "imageURL": "./charaimgs/3030052000_01.png", 
+        "en": "本田未央"
     }, 
     "バウタオーダ": {
         "name": "バウタオーダ", 
@@ -3207,8 +3207,8 @@
         "attack": "6200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "バウタオーダ", 
-        "imageURL": "./charaimgs/3030053000_01.png"
+        "imageURL": "./charaimgs/3030053000_01.png", 
+        "en": "バウタオーダ"
     }, 
     "リタ": {
         "name": "リタ", 
@@ -3226,8 +3226,8 @@
         "attack": "6380", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リタ", 
-        "imageURL": "./charaimgs/3030054000_01.png"
+        "imageURL": "./charaimgs/3030054000_01.png", 
+        "en": "リタ"
     }, 
     "ファスティバ": {
         "name": "ファスティバ", 
@@ -3245,8 +3245,8 @@
         "attack": "7850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ファスティバ", 
-        "imageURL": "./charaimgs/3030055000_01.png"
+        "imageURL": "./charaimgs/3030055000_01.png", 
+        "en": "ファスティバ"
     }, 
     "ボレミア": {
         "name": "ボレミア", 
@@ -3264,8 +3264,8 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ボレミア", 
-        "imageURL": "./charaimgs/3030056000_01.png"
+        "imageURL": "./charaimgs/3030056000_01.png", 
+        "en": "ボレミア"
     }, 
     "クラウディア": {
         "name": "クラウディア", 
@@ -3283,8 +3283,8 @@
         "attack": "7250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "クラウディア", 
-        "imageURL": "./charaimgs/3030057000_01.png"
+        "imageURL": "./charaimgs/3030057000_01.png", 
+        "en": "クラウディア"
     }, 
     "ドロシー": {
         "name": "ドロシー", 
@@ -3302,8 +3302,8 @@
         "attack": "6630", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ドロシー", 
-        "imageURL": "./charaimgs/3030058000_01.png"
+        "imageURL": "./charaimgs/3030058000_01.png", 
+        "en": "ドロシー"
     }, 
     "ザザ": {
         "name": "ザザ", 
@@ -3321,8 +3321,8 @@
         "attack": "5920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ザザ", 
-        "imageURL": "./charaimgs/3030059000_01.png"
+        "imageURL": "./charaimgs/3030059000_01.png", 
+        "en": "ザザ"
     }, 
     "ゼヘク": {
         "name": "ゼヘク", 
@@ -3340,8 +3340,8 @@
         "attack": "4400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ゼヘク", 
-        "imageURL": "./charaimgs/3030060000_01.png"
+        "imageURL": "./charaimgs/3030060000_01.png", 
+        "en": "ゼヘク"
     }, 
     "エジェリー": {
         "name": "エジェリー", 
@@ -3359,8 +3359,8 @@
         "attack": "6250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エジェリー", 
-        "imageURL": "./charaimgs/3030061000_01.png"
+        "imageURL": "./charaimgs/3030061000_01.png", 
+        "en": "エジェリー"
     }, 
     "テレーズ(バニーver)": {
         "name": "テレーズ(バニーver)", 
@@ -3378,8 +3378,8 @@
         "attack": "6250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "テレーズ(バニーver)", 
-        "imageURL": "./charaimgs/3030062000_01.png"
+        "imageURL": "./charaimgs/3030062000_01.png", 
+        "en": "テレーズ(バニーver)"
     }, 
     "サーヤ": {
         "name": "サーヤ", 
@@ -3397,8 +3397,8 @@
         "attack": "5780", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "サーヤ", 
-        "imageURL": "./charaimgs/3030063000_01.png"
+        "imageURL": "./charaimgs/3030063000_01.png", 
+        "en": "サーヤ"
     }, 
     "ミラオル": {
         "name": "ミラオル", 
@@ -3416,8 +3416,8 @@
         "attack": "6570", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ミラオル", 
-        "imageURL": "./charaimgs/3030064000_01.png"
+        "imageURL": "./charaimgs/3030064000_01.png", 
+        "en": "ミラオル"
     }, 
     "アーミラ(SR)": {
         "name": "アーミラ(SR)", 
@@ -3435,8 +3435,8 @@
         "attack": "7000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アーミラ(SR)", 
-        "imageURL": "./charaimgs/3030065000_01.png"
+        "imageURL": "./charaimgs/3030065000_01.png", 
+        "en": "アーミラ(SR)"
     }, 
     "ヘイゼン": {
         "name": "ヘイゼン", 
@@ -3454,8 +3454,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヘイゼン", 
-        "imageURL": "./charaimgs/3030066000_01.png"
+        "imageURL": "./charaimgs/3030066000_01.png", 
+        "en": "ヘイゼン"
     }, 
     "スィール": {
         "name": "スィール", 
@@ -3473,8 +3473,8 @@
         "attack": "5250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "スィール", 
-        "imageURL": "./charaimgs/3030067000_01.png"
+        "imageURL": "./charaimgs/3030067000_01.png", 
+        "en": "スィール"
     }, 
     "マリー": {
         "name": "マリー", 
@@ -3492,8 +3492,8 @@
         "attack": "6200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "マリー", 
-        "imageURL": "./charaimgs/3030068000_01.png"
+        "imageURL": "./charaimgs/3030068000_01.png", 
+        "en": "マリー"
     }, 
     "川島瑞樹": {
         "name": "川島瑞樹", 
@@ -3511,8 +3511,8 @@
         "attack": "4860", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "川島瑞樹", 
-        "imageURL": "./charaimgs/3030069000_01.png"
+        "imageURL": "./charaimgs/3030069000_01.png", 
+        "en": "川島瑞樹"
     }, 
     "前川みく": {
         "name": "前川みく", 
@@ -3530,8 +3530,8 @@
         "attack": "5839", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "前川みく", 
-        "imageURL": "./charaimgs/3030070000_01.png"
+        "imageURL": "./charaimgs/3030070000_01.png", 
+        "en": "前川みく"
     }, 
     "双葉杏": {
         "name": "双葉杏", 
@@ -3549,8 +3549,8 @@
         "attack": "5150", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "双葉杏", 
-        "imageURL": "./charaimgs/3030071000_01.png"
+        "imageURL": "./charaimgs/3030071000_01.png", 
+        "en": "双葉杏"
     }, 
     "リーシャ": {
         "name": "リーシャ", 
@@ -3568,8 +3568,8 @@
         "attack": "5250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リーシャ", 
-        "imageURL": "./charaimgs/3030072000_01.png"
+        "imageURL": "./charaimgs/3030072000_01.png", 
+        "en": "リーシャ"
     }, 
     "ペンギー": {
         "name": "ペンギー", 
@@ -3587,8 +3587,8 @@
         "attack": "3500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ペンギー", 
-        "imageURL": "./charaimgs/3030073000_01.png"
+        "imageURL": "./charaimgs/3030073000_01.png", 
+        "en": "ペンギー"
     }, 
     "セイラン": {
         "name": "セイラン", 
@@ -3606,8 +3606,8 @@
         "attack": "4050", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "セイラン", 
-        "imageURL": "./charaimgs/3030074000_01.png"
+        "imageURL": "./charaimgs/3030074000_01.png", 
+        "en": "セイラン"
     }, 
     "Ｊ・Ｊ": {
         "name": "Ｊ・Ｊ", 
@@ -3625,8 +3625,8 @@
         "attack": "5750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "Ｊ・Ｊ", 
-        "imageURL": "./charaimgs/3030075000_01.png"
+        "imageURL": "./charaimgs/3030075000_01.png", 
+        "en": "Ｊ・Ｊ"
     }, 
     "ザーリリャオー": {
         "name": "ザーリリャオー", 
@@ -3644,8 +3644,8 @@
         "attack": "6320", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ザーリリャオー", 
-        "imageURL": "./charaimgs/3030076000_01.png"
+        "imageURL": "./charaimgs/3030076000_01.png", 
+        "en": "ザーリリャオー"
     }, 
     "ロミオ(SR)": {
         "name": "ロミオ(SR)", 
@@ -3663,8 +3663,8 @@
         "attack": "4900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ロミオ(SR)", 
-        "imageURL": "./charaimgs/3030077000_01.png"
+        "imageURL": "./charaimgs/3030077000_01.png", 
+        "en": "ロミオ(SR)"
     }, 
     "フェザー": {
         "name": "フェザー", 
@@ -3682,8 +3682,8 @@
         "attack": "7250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "フェザー", 
-        "imageURL": "./charaimgs/3030078000_01.png"
+        "imageURL": "./charaimgs/3030078000_01.png", 
+        "en": "フェザー"
     }, 
     "ロボミ": {
         "name": "ロボミ", 
@@ -3701,8 +3701,8 @@
         "attack": "4250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ロボミ", 
-        "imageURL": "./charaimgs/3030079000_01.png"
+        "imageURL": "./charaimgs/3030079000_01.png", 
+        "en": "ロボミ"
     }, 
     "ミラ＝マクスウェル": {
         "name": "ミラ＝マクスウェル", 
@@ -3720,8 +3720,8 @@
         "attack": "5250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ミラ＝マクスウェル", 
-        "imageURL": "./charaimgs/3030080000_01.png"
+        "imageURL": "./charaimgs/3030080000_01.png", 
+        "en": "ミラ＝マクスウェル"
     }, 
     "ユーリ・ローウェル": {
         "name": "ユーリ・ローウェル", 
@@ -3739,8 +3739,8 @@
         "attack": "6180", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ユーリ・ローウェル", 
-        "imageURL": "./charaimgs/3030081000_01.png"
+        "imageURL": "./charaimgs/3030081000_01.png", 
+        "en": "ユーリ・ローウェル"
     }, 
     "ソフィ": {
         "name": "ソフィ", 
@@ -3758,8 +3758,8 @@
         "attack": "5570", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ソフィ", 
-        "imageURL": "./charaimgs/3030082000_01.png"
+        "imageURL": "./charaimgs/3030082000_01.png", 
+        "en": "ソフィ"
     }, 
     "エルモート(サマーver)": {
         "name": "エルモート(サマーver)", 
@@ -3777,8 +3777,8 @@
         "attack": "6750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エルモート(サマーver)", 
-        "imageURL": "./charaimgs/3030083000_01.png"
+        "imageURL": "./charaimgs/3030083000_01.png", 
+        "en": "エルモート(サマーver)"
     }, 
     "ターニャ(サマーver)": {
         "name": "ターニャ(サマーver)", 
@@ -3796,8 +3796,8 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ターニャ(サマーver)", 
-        "imageURL": "./charaimgs/3030084000_01.png"
+        "imageURL": "./charaimgs/3030084000_01.png", 
+        "en": "ターニャ(サマーver)"
     }, 
     "オイゲン(サマーver)": {
         "name": "オイゲン(サマーver)", 
@@ -3815,8 +3815,8 @@
         "attack": "6820", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "オイゲン(サマーver)", 
-        "imageURL": "./charaimgs/3030085000_01.png"
+        "imageURL": "./charaimgs/3030085000_01.png", 
+        "en": "オイゲン(サマーver)"
     }, 
     "ジン(克己浪人)": {
         "name": "ジン(克己浪人)", 
@@ -3834,8 +3834,8 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジン(克己浪人)", 
-        "imageURL": "./charaimgs/3030086000_01.png"
+        "imageURL": "./charaimgs/3030086000_01.png", 
+        "en": "ジン(克己浪人)"
     }, 
     "リーシャ(サマーver)": {
         "name": "リーシャ(サマーver)", 
@@ -3853,8 +3853,8 @@
         "attack": "6570", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リーシャ(サマーver)", 
-        "imageURL": "./charaimgs/3030087000_01.png"
+        "imageURL": "./charaimgs/3030087000_01.png", 
+        "en": "リーシャ(サマーver)"
     }, 
     "城ヶ崎莉嘉": {
         "name": "城ヶ崎莉嘉", 
@@ -3872,8 +3872,8 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "城ヶ崎莉嘉", 
-        "imageURL": "./charaimgs/3030088000_01.png"
+        "imageURL": "./charaimgs/3030088000_01.png", 
+        "en": "城ヶ崎莉嘉"
     }, 
     "三村かな子": {
         "name": "三村かな子", 
@@ -3891,8 +3891,8 @@
         "attack": "4000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "三村かな子", 
-        "imageURL": "./charaimgs/3030089000_01.png"
+        "imageURL": "./charaimgs/3030089000_01.png", 
+        "en": "三村かな子"
     }, 
     "白坂小梅": {
         "name": "白坂小梅", 
@@ -3910,8 +3910,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "白坂小梅", 
-        "imageURL": "./charaimgs/3030090000_01.png"
+        "imageURL": "./charaimgs/3030090000_01.png", 
+        "en": "白坂小梅"
     }, 
     "スフラマール(サマーver)": {
         "name": "スフラマール(サマーver)", 
@@ -3929,8 +3929,8 @@
         "attack": "7230", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "スフラマール(サマーver)", 
-        "imageURL": "./charaimgs/3030091000_01.png"
+        "imageURL": "./charaimgs/3030091000_01.png", 
+        "en": "スフラマール(サマーver)"
     }, 
     "ウィル": {
         "name": "ウィル", 
@@ -3948,8 +3948,8 @@
         "attack": "6580", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ウィル", 
-        "imageURL": "./charaimgs/3030092000_01.png"
+        "imageURL": "./charaimgs/3030092000_01.png", 
+        "en": "ウィル"
     }, 
     "ベス(攻撃)": {
         "name": "ベス(攻撃)", 
@@ -3967,8 +3967,8 @@
         "attack": "4980", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ベス(攻撃)", 
-        "imageURL": "./charaimgs/3030093000_01.png"
+        "imageURL": "./charaimgs/3030093000_01.png", 
+        "en": "ベス(攻撃)"
     }, 
     "ベス(防御)": {
         "name": "ベス(防御)", 
@@ -3986,8 +3986,8 @@
         "attack": "4000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ベス(防御)", 
-        "imageURL": "./charaimgs/3030093000_01.png"
+        "imageURL": "./charaimgs/3030093000_01.png", 
+        "en": "ベス(防御)"
     }, 
     "ベス(バランス)": {
         "name": "ベス(バランス)", 
@@ -4005,8 +4005,8 @@
         "attack": "3900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ベス(バランス)", 
-        "imageURL": "./charaimgs/3030093000_01.png"
+        "imageURL": "./charaimgs/3030093000_01.png", 
+        "en": "ベス(バランス)"
     }, 
     "ガラドア": {
         "name": "ガラドア", 
@@ -4024,8 +4024,8 @@
         "attack": "5920", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ガラドア", 
-        "imageURL": "./charaimgs/3030094000_01.png"
+        "imageURL": "./charaimgs/3030094000_01.png", 
+        "en": "ガラドア"
     }, 
     "アンナ": {
         "name": "アンナ", 
@@ -4043,8 +4043,8 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アンナ", 
-        "imageURL": "./charaimgs/3030095000_01.png"
+        "imageURL": "./charaimgs/3030095000_01.png", 
+        "en": "アンナ"
     }, 
     "ノイシュ(火属性ver)": {
         "name": "ノイシュ(火属性ver)", 
@@ -4062,8 +4062,8 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ノイシュ(火属性ver)", 
-        "imageURL": "./charaimgs/3030096000_01.png"
+        "imageURL": "./charaimgs/3030096000_01.png", 
+        "en": "ノイシュ(火属性ver)"
     }, 
     "天道輝": {
         "name": "天道輝", 
@@ -4081,8 +4081,8 @@
         "attack": "5900", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "天道輝", 
-        "imageURL": "./charaimgs/3030097000_01.png"
+        "imageURL": "./charaimgs/3030097000_01.png", 
+        "en": "天道輝"
     }, 
     "桜庭薫": {
         "name": "桜庭薫", 
@@ -4100,8 +4100,8 @@
         "attack": "5100", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "桜庭薫", 
-        "imageURL": "./charaimgs/3030098000_01.png"
+        "imageURL": "./charaimgs/3030098000_01.png", 
+        "en": "桜庭薫"
     }, 
     "柏木翼": {
         "name": "柏木翼", 
@@ -4119,8 +4119,8 @@
         "attack": "5350", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "柏木翼", 
-        "imageURL": "./charaimgs/3030099000_01.png"
+        "imageURL": "./charaimgs/3030099000_01.png", 
+        "en": "柏木翼"
     }, 
     "ミニゴブ": {
         "name": "ミニゴブ", 
@@ -4138,8 +4138,8 @@
         "attack": "5640", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ミニゴブ", 
-        "imageURL": "./charaimgs/3030100000_01.png"
+        "imageURL": "./charaimgs/3030100000_01.png", 
+        "en": "ミニゴブ"
     }, 
     "フェリ(ハロウィンver)": {
         "name": "フェリ(ハロウィンver)", 
@@ -4157,8 +4157,8 @@
         "attack": "5740", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "フェリ(ハロウィンver)", 
-        "imageURL": "./charaimgs/3030101000_01.png"
+        "imageURL": "./charaimgs/3030101000_01.png", 
+        "en": "フェリ(ハロウィンver)"
     }, 
     "ジャスミン": {
         "name": "ジャスミン", 
@@ -4176,8 +4176,8 @@
         "attack": "5020", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジャスミン", 
-        "imageURL": "./charaimgs/3030102000_01.png"
+        "imageURL": "./charaimgs/3030102000_01.png", 
+        "en": "ジャスミン"
     }, 
     "ファラ(風属性ver)": {
         "name": "ファラ(風属性ver)", 
@@ -4195,8 +4195,8 @@
         "attack": "4150", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ファラ(風属性ver)", 
-        "imageURL": "./charaimgs/3030103000_01.png"
+        "imageURL": "./charaimgs/3030103000_01.png", 
+        "en": "ファラ(風属性ver)"
     }, 
     "リュウ": {
         "name": "リュウ", 
@@ -4214,8 +4214,8 @@
         "attack": "5400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リュウ", 
-        "imageURL": "./charaimgs/3030104000_01.png"
+        "imageURL": "./charaimgs/3030104000_01.png", 
+        "en": "リュウ"
     }, 
     "春麗": {
         "name": "春麗", 
@@ -4233,8 +4233,8 @@
         "attack": "5450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "春麗", 
-        "imageURL": "./charaimgs/3030105000_01.png"
+        "imageURL": "./charaimgs/3030105000_01.png", 
+        "en": "春麗"
     }, 
     "シグ(ガチャver)": {
         "name": "シグ(ガチャver)", 
@@ -4252,8 +4252,8 @@
         "attack": "7200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シグ(ガチャver)", 
-        "imageURL": "./charaimgs/3030106000_01.png"
+        "imageURL": "./charaimgs/3030106000_01.png", 
+        "en": "シグ(ガチャver)"
     }, 
     "ヴェイン(ガチャver)": {
         "name": "ヴェイン(ガチャver)", 
@@ -4271,8 +4271,8 @@
         "attack": "5800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヴェイン(ガチャver)", 
-        "imageURL": "./charaimgs/3030107000_01.png"
+        "imageURL": "./charaimgs/3030107000_01.png", 
+        "en": "ヴェイン(ガチャver)"
     }, 
     "ランスロット(SR)": {
         "name": "ランスロット(SR)", 
@@ -4290,8 +4290,8 @@
         "attack": "5700", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ランスロット(SR)", 
-        "imageURL": "./charaimgs/3030108000_01.png"
+        "imageURL": "./charaimgs/3030108000_01.png", 
+        "en": "ランスロット(SR)"
     }, 
     "ファスティバ(クリスマスver)": {
         "name": "ファスティバ(クリスマスver)", 
@@ -4309,8 +4309,8 @@
         "attack": "7850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ファスティバ(クリスマスver)", 
-        "imageURL": "./charaimgs/3030109000_01.png"
+        "imageURL": "./charaimgs/3030109000_01.png", 
+        "en": "ファスティバ(クリスマスver)"
     }, 
     "アニラ(SR)": {
         "name": "アニラ(SR)", 
@@ -4328,8 +4328,8 @@
         "attack": "5760", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アニラ(SR)", 
-        "imageURL": "./charaimgs/3030110000_01.png"
+        "imageURL": "./charaimgs/3030110000_01.png", 
+        "en": "アニラ(SR)"
     }, 
     "ヤイア": {
         "name": "ヤイア", 
@@ -4347,8 +4347,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヤイア", 
-        "imageURL": "./charaimgs/3030111000_01.png"
+        "imageURL": "./charaimgs/3030111000_01.png", 
+        "en": "ヤイア"
     }, 
     "スカル": {
         "name": "スカル", 
@@ -4366,8 +4366,8 @@
         "attack": "6150", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "スカル", 
-        "imageURL": "./charaimgs/3030112000_01.png"
+        "imageURL": "./charaimgs/3030112000_01.png", 
+        "en": "スカル"
     }, 
     "スーテラ(火属性ver)": {
         "name": "スーテラ(火属性ver)", 
@@ -4385,8 +4385,8 @@
         "attack": "5750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "スーテラ(火属性ver)", 
-        "imageURL": "./charaimgs/3030113000_01.png"
+        "imageURL": "./charaimgs/3030113000_01.png", 
+        "en": "スーテラ(火属性ver)"
     }, 
     "リナ＝インバース": {
         "name": "リナ＝インバース", 
@@ -4404,8 +4404,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リナ＝インバース", 
-        "imageURL": "./charaimgs/3030114000_01.png"
+        "imageURL": "./charaimgs/3030114000_01.png", 
+        "en": "リナ＝インバース"
     }, 
     "白蛇のナーガ": {
         "name": "白蛇のナーガ", 
@@ -4423,8 +4423,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "白蛇のナーガ", 
-        "imageURL": "./charaimgs/3030115000_01.png"
+        "imageURL": "./charaimgs/3030115000_01.png", 
+        "en": "白蛇のナーガ"
     }, 
     "ダエッタ": {
         "name": "ダエッタ", 
@@ -4442,8 +4442,8 @@
         "attack": "7800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ダエッタ", 
-        "imageURL": "./charaimgs/3030116000_01.png"
+        "imageURL": "./charaimgs/3030116000_01.png", 
+        "en": "ダエッタ"
     }, 
     "ソリッズ(光属性ver)": {
         "name": "ソリッズ(光属性ver)", 
@@ -4461,8 +4461,8 @@
         "attack": "4750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ソリッズ(光属性ver)", 
-        "imageURL": "./charaimgs/3030117000_01.png"
+        "imageURL": "./charaimgs/3030117000_01.png", 
+        "en": "ソリッズ(光属性ver)"
     }, 
     "サビルバラ": {
         "name": "サビルバラ", 
@@ -4480,8 +4480,8 @@
         "attack": "7400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "サビルバラ", 
-        "imageURL": "./charaimgs/3030118000_01.png"
+        "imageURL": "./charaimgs/3030118000_01.png", 
+        "en": "サビルバラ"
     }, 
     "ライアン": {
         "name": "ライアン", 
@@ -4499,8 +4499,8 @@
         "attack": "7400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ライアン", 
-        "imageURL": "./charaimgs/3030119000_01.png"
+        "imageURL": "./charaimgs/3030119000_01.png", 
+        "en": "ライアン"
     }, 
     "輿水幸子": {
         "name": "輿水幸子", 
@@ -4518,8 +4518,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "輿水幸子", 
-        "imageURL": "./charaimgs/3030120000_01.png"
+        "imageURL": "./charaimgs/3030120000_01.png", 
+        "en": "輿水幸子"
     }, 
     "十時愛梨": {
         "name": "十時愛梨", 
@@ -4537,8 +4537,8 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "十時愛梨", 
-        "imageURL": "./charaimgs/3030121000_01.png"
+        "imageURL": "./charaimgs/3030121000_01.png", 
+        "en": "十時愛梨"
     }, 
     "レッドラック": {
         "name": "レッドラック", 
@@ -4556,8 +4556,8 @@
         "attack": "7230", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "レッドラック", 
-        "imageURL": "./charaimgs/3030122000_01.png"
+        "imageURL": "./charaimgs/3030122000_01.png", 
+        "en": "レッドラック"
     }, 
     "ローアイン": {
         "name": "ローアイン", 
@@ -4575,8 +4575,8 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ローアイン", 
-        "imageURL": "./charaimgs/3030123000_01.png"
+        "imageURL": "./charaimgs/3030123000_01.png", 
+        "en": "ローアイン"
     }, 
     "シャオ": {
         "name": "シャオ", 
@@ -4594,8 +4594,8 @@
         "attack": "5350", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シャオ", 
-        "imageURL": "./charaimgs/3030124000_01.png"
+        "imageURL": "./charaimgs/3030124000_01.png", 
+        "en": "シャオ"
     }, 
     "神月かりん": {
         "name": "神月かりん", 
@@ -4613,8 +4613,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "神月かりん", 
-        "imageURL": "./charaimgs/3030125000_01.png"
+        "imageURL": "./charaimgs/3030125000_01.png", 
+        "en": "神月かりん"
     }, 
     "ラシード": {
         "name": "ラシード", 
@@ -4632,8 +4632,8 @@
         "attack": "5450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ラシード", 
-        "imageURL": "./charaimgs/3030126000_01.png"
+        "imageURL": "./charaimgs/3030126000_01.png", 
+        "en": "ラシード"
     }, 
     "セン": {
         "name": "セン", 
@@ -4651,8 +4651,8 @@
         "attack": "6750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "セン", 
-        "imageURL": "./charaimgs/3030127000_01.png"
+        "imageURL": "./charaimgs/3030127000_01.png", 
+        "en": "セン"
     }, 
     "エシオ": {
         "name": "エシオ", 
@@ -4670,8 +4670,8 @@
         "attack": "6400", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エシオ", 
-        "imageURL": "./charaimgs/3030128000_01.png"
+        "imageURL": "./charaimgs/3030128000_01.png", 
+        "en": "エシオ"
     }, 
     "スタン": {
         "name": "スタン", 
@@ -4689,8 +4689,8 @@
         "attack": "4750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "スタン", 
-        "imageURL": "./charaimgs/3030129000_01.png"
+        "imageURL": "./charaimgs/3030129000_01.png", 
+        "en": "スタン"
     }, 
     "真宮寺さくら": {
         "name": "真宮寺さくら", 
@@ -4708,8 +4708,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "真宮寺さくら", 
-        "imageURL": "./charaimgs/3030130000_01.png"
+        "imageURL": "./charaimgs/3030130000_01.png", 
+        "en": "真宮寺さくら"
     }, 
     "エリカ・フォンティーヌ": {
         "name": "エリカ・フォンティーヌ", 
@@ -4727,8 +4727,8 @@
         "attack": "4000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エリカ・フォンティーヌ", 
-        "imageURL": "./charaimgs/3030131000_01.png"
+        "imageURL": "./charaimgs/3030131000_01.png", 
+        "en": "エリカ・フォンティーヌ"
     }, 
     "ジェミニ・サンライズ": {
         "name": "ジェミニ・サンライズ", 
@@ -4746,8 +4746,8 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジェミニ・サンライズ", 
-        "imageURL": "./charaimgs/3030132000_01.png"
+        "imageURL": "./charaimgs/3030132000_01.png", 
+        "en": "ジェミニ・サンライズ"
     }, 
     "ラグナ": {
         "name": "ラグナ", 
@@ -4765,8 +4765,8 @@
         "attack": "7560", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ラグナ", 
-        "imageURL": "./charaimgs/3030133000_01.png"
+        "imageURL": "./charaimgs/3030133000_01.png", 
+        "en": "ラグナ"
     }, 
     "ジャミル": {
         "name": "ジャミル", 
@@ -4784,8 +4784,8 @@
         "attack": "6650", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジャミル", 
-        "imageURL": "./charaimgs/3030134000_01.png"
+        "imageURL": "./charaimgs/3030134000_01.png", 
+        "en": "ジャミル"
     }, 
     "モルフェとヴェトル": {
         "name": "モルフェとヴェトル", 
@@ -4803,8 +4803,8 @@
         "attack": "4000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "モルフェとヴェトル", 
-        "imageURL": "./charaimgs/3030135000_01.png"
+        "imageURL": "./charaimgs/3030135000_01.png", 
+        "en": "モルフェとヴェトル"
     }, 
     "スタン・エルロン": {
         "name": "スタン・エルロン", 
@@ -4822,8 +4822,8 @@
         "attack": "6180", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "スタン・エルロン", 
-        "imageURL": "./charaimgs/3030136000_01.png"
+        "imageURL": "./charaimgs/3030136000_01.png", 
+        "en": "スタン・エルロン"
     }, 
     "ティア・グランツ": {
         "name": "ティア・グランツ", 
@@ -4841,8 +4841,8 @@
         "attack": "4750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ティア・グランツ", 
-        "imageURL": "./charaimgs/3030137000_01.png"
+        "imageURL": "./charaimgs/3030137000_01.png", 
+        "en": "ティア・グランツ"
     }, 
     "エリーゼ・ルタス": {
         "name": "エリーゼ・ルタス", 
@@ -4860,8 +4860,8 @@
         "attack": "5450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エリーゼ・ルタス", 
-        "imageURL": "./charaimgs/3030138000_01.png"
+        "imageURL": "./charaimgs/3030138000_01.png", 
+        "en": "エリーゼ・ルタス"
     }, 
     "アルメイダ": {
         "name": "アルメイダ", 
@@ -4879,8 +4879,8 @@
         "attack": "7800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アルメイダ", 
-        "imageURL": "./charaimgs/3030139000_01.png"
+        "imageURL": "./charaimgs/3030139000_01.png", 
+        "en": "アルメイダ"
     }, 
     "ヨハン(ガチャver)": {
         "name": "ヨハン(ガチャver)", 
@@ -4898,8 +4898,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヨハン(ガチャver)", 
-        "imageURL": "./charaimgs/3030140000_01.png"
+        "imageURL": "./charaimgs/3030140000_01.png", 
+        "en": "ヨハン(ガチャver)"
     }, 
     "シロウ": {
         "name": "シロウ", 
@@ -4917,8 +4917,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "シロウ", 
-        "imageURL": "./charaimgs/3030141000_01.png"
+        "imageURL": "./charaimgs/3030141000_01.png", 
+        "en": "シロウ"
     }, 
     "ナーヴェ": {
         "name": "ナーヴェ", 
@@ -4936,8 +4936,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ナーヴェ", 
-        "imageURL": "./charaimgs/3030142000_01.png"
+        "imageURL": "./charaimgs/3030142000_01.png", 
+        "en": "ナーヴェ"
     }, 
     "サラ(サマーver)": {
         "name": "サラ(サマーver)", 
@@ -4955,8 +4955,8 @@
         "attack": "5600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "サラ(サマーver)", 
-        "imageURL": "./charaimgs/3030147000_01.png"
+        "imageURL": "./charaimgs/3030147000_01.png", 
+        "en": "サラ(サマーver)"
     }, 
     "Ｊ・Ｊ(サマーver)": {
         "name": "Ｊ・Ｊ(サマーver)", 
@@ -4974,8 +4974,8 @@
         "attack": "5750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "Ｊ・Ｊ(サマーver)", 
-        "imageURL": "./charaimgs/3030149000_01.png"
+        "imageURL": "./charaimgs/3030149000_01.png", 
+        "en": "Ｊ・Ｊ(サマーver)"
     }, 
     "ディアンサ": {
         "name": "ディアンサ", 
@@ -4993,8 +4993,8 @@
         "attack": "5000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ディアンサ", 
-        "imageURL": "./charaimgs/3030150000_01.png"
+        "imageURL": "./charaimgs/3030150000_01.png", 
+        "en": "ディアンサ"
     }, 
     "ジン(風属性ver)": {
         "name": "ジン(風属性ver)", 
@@ -5012,8 +5012,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジン(風属性ver)", 
-        "imageURL": "./charaimgs/3030151000_01.png"
+        "imageURL": "./charaimgs/3030151000_01.png", 
+        "en": "ジン(風属性ver)"
     }, 
     "クムユ(サマーver)": {
         "name": "クムユ(サマーver)", 
@@ -5031,8 +5031,8 @@
         "attack": "7480", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "クムユ(サマーver)", 
-        "imageURL": "./charaimgs/3030152000_01.png"
+        "imageURL": "./charaimgs/3030152000_01.png", 
+        "en": "クムユ(サマーver)"
     }, 
     "ペンギー(ガチャSRver)": {
         "name": "ペンギー(ガチャSRver)", 
@@ -5050,8 +5050,8 @@
         "attack": "3750", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ペンギー(ガチャSRver)", 
-        "imageURL": "./charaimgs/3030153000_01.png"
+        "imageURL": "./charaimgs/3030153000_01.png", 
+        "en": "ペンギー(ガチャSRver)"
     }, 
     "バロワ": {
         "name": "バロワ", 
@@ -5069,8 +5069,8 @@
         "attack": "6300", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "バロワ", 
-        "imageURL": "./charaimgs/3030154000_01.png"
+        "imageURL": "./charaimgs/3030154000_01.png", 
+        "en": "バロワ"
     }, 
     "ククル": {
         "name": "ククル", 
@@ -5088,8 +5088,8 @@
         "attack": "7800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ククル", 
-        "imageURL": "./charaimgs/3030155000_01.png"
+        "imageURL": "./charaimgs/3030155000_01.png", 
+        "en": "ククル"
     }, 
     "ダーント": {
         "name": "ダーント", 
@@ -5107,8 +5107,8 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ダーント", 
-        "imageURL": "./charaimgs/3030156000_01.png"
+        "imageURL": "./charaimgs/3030156000_01.png", 
+        "en": "ダーント"
     }, 
     "パリス": {
         "name": "パリス", 
@@ -5126,8 +5126,8 @@
         "attack": "4500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "パリス", 
-        "imageURL": "./charaimgs/3030157000_01.png"
+        "imageURL": "./charaimgs/3030157000_01.png", 
+        "en": "パリス"
     }, 
     "ジェシカ(土属性ver)": {
         "name": "ジェシカ(土属性ver)", 
@@ -5145,8 +5145,8 @@
         "attack": "6380", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ジェシカ(土属性ver)", 
-        "imageURL": "./charaimgs/3030159000_01.png"
+        "imageURL": "./charaimgs/3030159000_01.png", 
+        "en": "ジェシカ(土属性ver)"
     }, 
     "アナスタシア": {
         "name": "アナスタシア", 
@@ -5164,8 +5164,8 @@
         "attack": "4800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アナスタシア", 
-        "imageURL": "./charaimgs/3030160000_01.png"
+        "imageURL": "./charaimgs/3030160000_01.png", 
+        "en": "アナスタシア"
     }, 
     "赤城みりあ": {
         "name": "赤城みりあ", 
@@ -5183,8 +5183,8 @@
         "attack": "4250", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "赤城みりあ", 
-        "imageURL": "./charaimgs/3030161000_01.png"
+        "imageURL": "./charaimgs/3030161000_01.png", 
+        "en": "赤城みりあ"
     }, 
     "神崎蘭子": {
         "name": "神崎蘭子", 
@@ -5202,8 +5202,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "神崎蘭子", 
-        "imageURL": "./charaimgs/3030162000_01.png"
+        "imageURL": "./charaimgs/3030162000_01.png", 
+        "en": "神崎蘭子"
     }, 
     "ベアトリクス(ハロウィンver)": {
         "name": "ベアトリクス(ハロウィンver)", 
@@ -5221,8 +5221,8 @@
         "attack": "6580", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ベアトリクス(ハロウィンver)", 
-        "imageURL": "./charaimgs/3030163000_01.png"
+        "imageURL": "./charaimgs/3030163000_01.png", 
+        "en": "ベアトリクス(ハロウィンver)"
     }, 
     "エリン": {
         "name": "エリン", 
@@ -5240,8 +5240,8 @@
         "attack": "4800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "エリン", 
-        "imageURL": "./charaimgs/3030164000_01.png"
+        "imageURL": "./charaimgs/3030164000_01.png", 
+        "en": "エリン"
     }, 
     "リリィ(SR)": {
         "name": "リリィ(SR)", 
@@ -5259,8 +5259,8 @@
         "attack": "3800", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "リリィ(SR)", 
-        "imageURL": "./charaimgs/3030165000_01.png"
+        "imageURL": "./charaimgs/3030165000_01.png", 
+        "en": "リリィ(SR)"
     }, 
     "ミムルメモル＆切り株": {
         "name": "ミムルメモル＆切り株", 
@@ -5278,8 +5278,8 @@
         "attack": "8130", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ミムルメモル＆切り株", 
-        "imageURL": "./charaimgs/3030166000_01.png"
+        "imageURL": "./charaimgs/3030166000_01.png", 
+        "en": "ミムルメモル＆切り株"
     }, 
     "ターニャ": {
         "name": "ターニャ", 
@@ -5297,8 +5297,8 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ターニャ", 
-        "imageURL": "./charaimgs/3030167000_01.png"
+        "imageURL": "./charaimgs/3030167000_01.png", 
+        "en": "ターニャ"
     }, 
     "パーシヴァル(SR)": {
         "name": "パーシヴァル(SR)", 
@@ -5316,8 +5316,8 @@
         "attack": "6000", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "パーシヴァル(SR)", 
-        "imageURL": "./charaimgs/3030168000_01.png"
+        "imageURL": "./charaimgs/3030168000_01.png", 
+        "en": "パーシヴァル(SR)"
     }, 
     "セン(クリスマスver)": {
         "name": "セン(クリスマスver)", 
@@ -5335,8 +5335,8 @@
         "attack": "6850", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "セン(クリスマスver)", 
-        "imageURL": "./charaimgs/3030169000_01.png"
+        "imageURL": "./charaimgs/3030169000_01.png", 
+        "en": "セン(クリスマスver)"
     }, 
     "アンチラ(SR)": {
         "name": "アンチラ(SR)", 
@@ -5354,8 +5354,8 @@
         "attack": "4600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "アンチラ(SR)", 
-        "imageURL": "./charaimgs/3030170000_01.png"
+        "imageURL": "./charaimgs/3030170000_01.png", 
+        "en": "アンチラ(SR)"
     }, 
     "ルシウス(火属性)": {
         "name": "ルシウス(火属性)", 
@@ -5373,8 +5373,8 @@
         "attack": "7500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ルシウス(火属性)", 
-        "imageURL": "./charaimgs/3030171000_01.png"
+        "imageURL": "./charaimgs/3030171000_01.png", 
+        "en": "ルシウス(火属性)"
     }, 
     "ミュオン": {
         "name": "ミュオン", 
@@ -5392,8 +5392,8 @@
         "attack": "5500", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ミュオン", 
-        "imageURL": "./charaimgs/3030172000_01.png"
+        "imageURL": "./charaimgs/3030172000_01.png", 
+        "en": "ミュオン"
     }, 
     "覇王丸": {
         "name": "覇王丸", 
@@ -5411,8 +5411,8 @@
         "attack": "5600", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "覇王丸", 
-        "imageURL": "./charaimgs/3030173000_01.png"
+        "imageURL": "./charaimgs/3030173000_01.png", 
+        "en": "覇王丸"
     }, 
     "ナコルル": {
         "name": "ナコルル", 
@@ -5430,8 +5430,8 @@
         "attack": "6200", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ナコルル", 
-        "imageURL": "./charaimgs/3030174000_01.png"
+        "imageURL": "./charaimgs/3030174000_01.png", 
+        "en": "ナコルル"
     }, 
     "ヘリヤ": {
         "name": "ヘリヤ", 
@@ -5449,7 +5449,7 @@
         "attack": "6450", 
         "baseDA": 6.5, 
         "baseTA": 3.0, 
-        "en": "ヘリヤ", 
-        "imageURL": "./charaimgs/3030175000_01.png"
+        "imageURL": "./charaimgs/3030175000_01.png", 
+        "en": "ヘリヤ"
     }
 }

@@ -5,8 +5,7 @@ skillnamelist = OrderedDict()
 
 # normal L and LL
 skillnamelist["normalLL"] = {u"紅蓮の攻刃II": "fire", u"霧氷の攻刃II": "water", u"地裂の攻刃II": "earth", u"乱気の攻刃II": "wind", u"天光の攻刃II": "light", u"奈落の攻刃II": "dark"}
-# 守護IIがない？
-# skillnamelist["normalHPLL"] = {u"紅蓮の守護II": "fire", u"霧氷の守護II": "water", u"地裂の守護II": "earth", u"乱気の守護II": "wind", u"天光の守護II": "light", u"奈落の守護II": "dark"}
+skillnamelist["normalHPLL"] = {u"紅蓮の守護II": "fire", u"霧氷の守護II": "water", u"地裂の守護II": "earth", u"乱気の守護II": "wind", u"天光の守護II": "light", u"奈落の守護II": "dark"}
 skillnamelist["normalL"] = {u"紅蓮の攻刃": "fire", u"霧氷の攻刃": "water", u"地裂の攻刃": "earth", u"乱気の攻刃": "wind", u"天光の攻刃": "light", u"奈落の攻刃": "dark"}
 skillnamelist["normalHPL"] = {u"紅蓮の守護": "fire", u"霧氷の守護": "water", u"地裂の守護": "earth", u"乱気の守護": "wind", u"天光の守護": "light", u"奈落の守護": "dark"}
 skillnamelist["normalCriticalL"] = {u"紅蓮の技巧": "fire", u"霧氷の技巧": "water", u"地裂の技巧": "earth", u"乱気の技巧": "wind", u"天光の技巧": "light", u"奈落の技巧": "dark"}
@@ -155,6 +154,9 @@ armtypelist[u"弓"] = "bow"
 armtypelist[u"楽器"] = "music"
 armtypelist[u"刀"] = "katana"
 
+# json translation
+translation = json.load(open("./txt_source/weapon-translation.json", "r"))
+
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
     for inner_skillname, onelist in skillnamelist.items():
@@ -199,7 +201,7 @@ if __name__ == '__main__':
 
             name = row[2].translate(None, "&br;")
             name = name.replace("[]", "")
-            newdict["name"] = name
+            newdict["ja"] = name
 
             # element
             if row[3].find("火") > 0:
@@ -263,6 +265,14 @@ if __name__ == '__main__':
                     newdict["maxlv"] = 100
 
             newdict["imageURL"] = "./imgs/" + key + ".png"
+
+            decoded_name = name.decode("utf-8")
+            if translation.has_key(decoded_name):
+                newdict["en"] = translation[decoded_name].encode("utf-8")
+            else:
+                print "[Warning] " + name + " is not translated."
+                newdict["en"] = name
+
             json_data[name] = newdict
             # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + ".png\n")
 
@@ -280,7 +290,8 @@ if __name__ == '__main__':
                 key = row[1][m.start():m.end()]
 
             name = row[2].translate(None, "&br;")
-            newdict["name"] = name
+            newdict["ja"] = name
+            newdict["en"] = name
 
             # element
             if row[3].find("火") > 0:

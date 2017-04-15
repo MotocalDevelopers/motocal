@@ -1280,6 +1280,10 @@ var multiLangData = {
         "en": "Normal Aegis (L)",
         "ja": "通常守護(大)",
     },
+    "通常守護II": {
+        "en": "Normal Aegis (LL)",
+        "ja": "通常守護II",
+    },
     "マグナ守護": {
         "en": "Magna Aegis I",
         "ja": "マグナ守護",
@@ -1885,6 +1889,10 @@ var multiLangData = {
     "notice-20170410-1": {
         "en": "10/04/2017: Added a new skill Normal Tyranny II and Implemented the additional skill selection for Four beast weapons.",
         "ja": "2017/04/09: 通常暴君IIを追加 / 新四象武器選択時に追加スキルを追加するか選択可能に.",
+    },
+    "notice-20170414-1": {
+        "en": "14/04/2017: Added a skill Normal Aegis (LL).",
+        "ja": "2017/04/14: 通常守護IIを追加.",
     },
 }
 

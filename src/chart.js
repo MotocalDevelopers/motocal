@@ -55,7 +55,7 @@ var HPChart = React.createClass({
         var locale = this.props.locale
         var hlabel = (this.props.displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale));
 
-        options = {}
+        var options = {}
         for(var key in this.state.chartData) {
             if(key != "minMaxArr") {
                 options[key] = {
@@ -79,7 +79,6 @@ var HPChart = React.createClass({
         return options
     },
     handleEvent: function(key, e) {
-        var locale = this.props.locale
         var newState = this.state
         newState[key] = e.target.value
         this.setState(newState)
@@ -146,7 +145,7 @@ var SimulationChart = React.createClass({
     makeChartOption: function(sortKey) {
         var locale = this.props.locale
 
-        options = {}
+        var options = {}
         for(var key in this.props.data) {
             if(key != "minMaxArr") {
                 options[key] = {

@@ -152,7 +152,7 @@ var CharaList = React.createClass({
     },
     addTemplateChara: function(templateChara) {
         var minimumID = -1;
-        for(key in this.state.charalist) {
+        for(var key in this.state.charalist) {
             if(this.state.charalist[key].name == ""){
                 minimumID = key;
                 break;
@@ -275,7 +275,7 @@ var Chara = React.createClass({
         if(nextProps.dataName != this.props.dataName) {
             var chara = nextProps.dataForLoad
             if( chara != undefined && this.props.id in chara ){
-                state = chara[this.props.id]
+                var state = chara[this.props.id]
                 this.setState(state)
                 return 0;
             }

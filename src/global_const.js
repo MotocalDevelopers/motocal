@@ -182,6 +182,7 @@ var skilltypes = {
     "normalHPS": {name:"通常守護(小)", type:"normalHP", amount: "S"},
     "normalHPM": {name:"通常守護(中)", type:"normalHP", amount: "M"},
     "normalHPL": {name:"通常守護(大)", type:"normalHP", amount: "L"},
+    "normalHPLL": {name:"通常守護II", type:"normalHP", amount: "LL"},
     "magnaHPM": {name:"マグナ守護", type:"magnaHP", amount: "M"},
     "magnaHPL": {name:"マグナ守護II", type:"magnaHP", amount: "L"},
     "unknownHPS": {name:"アンノウン・VIT I(小)", type:"unknownHP", amount: "S"},
@@ -466,6 +467,7 @@ var skillAmounts = {
         "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.4, 12.8, 13.2, 13.6, 14.0],
         "M": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.4, 15.8, 16.2, 16.6, 17.0],
         "L": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
+        "LL":[10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0],
     },
     "magnaHP":{
         "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
