@@ -154,6 +154,9 @@ armtypelist[u"弓"] = "bow"
 armtypelist[u"楽器"] = "music"
 armtypelist[u"刀"] = "katana"
 
+# json translation
+translation = json.load(open("./txt_source/weapon-translation.json", "r"))
+
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
     for inner_skillname, onelist in skillnamelist.items():
@@ -262,6 +265,14 @@ if __name__ == '__main__':
                     newdict["maxlv"] = 100
 
             newdict["imageURL"] = "./imgs/" + key + ".png"
+
+            decoded_name = name.decode("utf-8")
+            if translation.has_key(decoded_name):
+                newdict["en_name"] = translation[decoded_name].encode("utf-8")
+            else:
+                print "[Warning] " + name + "is not translated."
+                newdict["en_name"] = name
+
             json_data[name] = newdict
             # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + ".png\n")
 
