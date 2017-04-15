@@ -201,7 +201,7 @@ if __name__ == '__main__':
 
             name = row[2].translate(None, "&br;")
             name = name.replace("[]", "")
-            newdict["name"] = name
+            newdict["ja"] = name
 
             # element
             if row[3].find("火") > 0:
@@ -268,10 +268,10 @@ if __name__ == '__main__':
 
             decoded_name = name.decode("utf-8")
             if translation.has_key(decoded_name):
-                newdict["en_name"] = translation[decoded_name].encode("utf-8")
+                newdict["en"] = translation[decoded_name].encode("utf-8")
             else:
-                print "[Warning] " + name + "is not translated."
-                newdict["en_name"] = name
+                print "[Warning] " + name + " is not translated."
+                newdict["en"] = name
 
             json_data[name] = newdict
             # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + ".png\n")
@@ -290,7 +290,8 @@ if __name__ == '__main__':
                 key = row[1][m.start():m.end()]
 
             name = row[2].translate(None, "&br;")
-            newdict["name"] = name
+            newdict["ja"] = name
+            newdict["en"] = name
 
             # element
             if row[3].find("火") > 0:
