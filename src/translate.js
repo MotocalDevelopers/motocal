@@ -1894,6 +1894,10 @@ var multiLangData = {
         "en": "14/04/2017: Added a skill Normal Aegis (LL).",
         "ja": "2017/04/14: 通常守護IIを追加.",
     },
+    "notice-20170415-1": {
+        "en": "15/04/2017: Partly added English Templates! Thanks theorycrafting guys.",
+        "ja": "2017/04/15: 武器とキャラテンプレートの一部を英語化.",
+    },
 }
 
 // 言語設定

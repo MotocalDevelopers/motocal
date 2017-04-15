@@ -198,8 +198,8 @@ thead.result>tr>th {
   background:-moz-linear-gradient(rgba(59,34,136,0.85), rgba(59,34,136,0.9) 50%);
   background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(59,34,136,0.85)), to(rgba(59,34,136,0.9)));
   border-color: rgb(59, 34, 136);
-  min-width: 50px;
-  max-width: 70px;
+  min-width: 60px;
+  max-width: 90px;
   font-size: 11pt;
   text-align: center;
 }
@@ -209,8 +209,8 @@ tbody.result>tr {
 }
 
 tbody.result>tr>td {
-  min-width: 50px;
-  max-width: 70px;
+  min-width: 60px;
+  max-width: 90px;
   vertical-align: middle;
   font-size: 11pt;
   text-align: center;
