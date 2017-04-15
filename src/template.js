@@ -264,7 +264,6 @@ var RegisteredArm = React.createClass({
         });
     },
     clickedTemplate: function(e) {
-
         this.setState({tempArm: this.state.armData[e.target.getAttribute("id")]});
         var arm = this.state.armData[e.target.getAttribute("id")]
         this.setState({armLv: parseInt(arm.maxlv)})
@@ -280,7 +279,7 @@ var RegisteredArm = React.createClass({
 
         var isAdditionalSelectFound = false;
         for(var key in GlobalConst.additionalSelectList) {
-            if( (!isAdditionalSelectFound) && (arm.name.indexOf(key) >= 0)) {
+            if( (!isAdditionalSelectFound) && (arm.ja.indexOf(key) >= 0)) {
                 this.setState({ additionalSelectKey: GlobalConst.additionalSelectList[key].selectKey })
                 this.setState({ additionalSelect: selector[this.props.locale][ GlobalConst.additionalSelectList[key].selector] })
                 this.setState({additionalSelectClass: "visible"})
@@ -298,6 +297,7 @@ var RegisteredArm = React.createClass({
     },
     clickedConsiderNumber: function(e) {
         var arm = this.state.tempArm
+        arm["name"] = arm[this.props.locale]
         arm["plus"] = this.state.plusNum
         arm["lv"] = this.state.armLv
         arm["slv"] = this.state.armSLv
@@ -342,13 +342,14 @@ var RegisteredArm = React.createClass({
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
-                            if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement)){
-                                if(filterText == "" || key.indexOf(filterText) != -1){
+                            var armName = armData[key][locale]
+                            if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element == "all")){
+                                if(filterText == "" || armName.indexOf(filterText) != -1){
                                     if(filterElement != "all" || displayed_count < limit) {
                                         displayed_count++;
                                         return (
                                             <div className="onearm" key={key}>
-                                                <p>{armData[key].name}</p><br/>
+                                                <p>{armName}</p><br/>
                                                 <Image rounded onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} />
                                             </div>
                                         );
@@ -416,11 +417,12 @@ var RegisteredArm = React.createClass({
                     <FormControl componentClass="select" value={this.state.filterElement} onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function(key, ind) {
+                            var armName = armData[key][locale]
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element == "all")){
-                                if(filterText == "" || key.indexOf(filterText) != -1){
+                                if(filterText == "" || armName.indexOf(filterText) != -1){
                                     return (
                                         <div className="onearm" key={key}>
-                                            <p>{armData[key].name}</p><br/>
+                                            <p>{armName}</p><br/>
                                             <Image rounded onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} />
                                         </div>
                                     );
