@@ -4,6 +4,7 @@ var GlobalConst = require('./global_const.js')
 var _ua = GlobalConst._ua;
 var selector = GlobalConst.selector
 var elementTypes = GlobalConst.elementTypes
+var skilltypes = GlobalConst.skilltypes
 var intl = require('./translate.js')
 var {githubAPItoken} = require('./secret_consts.js')
 
@@ -422,8 +423,12 @@ var RegisteredArm = React.createClass({
                                 if(filterText == "" || armName.indexOf(filterText) != -1){
                                     return (
                                         <div className="onearm" key={key}>
-                                            <p>{armName}</p><br/>
-                                            <Image rounded onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} />
+                                            <p>
+                                                {armName}<br/>
+                                                {intl.translate(skilltypes[armData[key].skill1].name, locale)}<br/>
+                                                {intl.translate(skilltypes[armData[key].skill2].name, locale)}
+                                            </p>
+                                            <Image rounded style={{"width":"100%"}} onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} />
                                         </div>
                                     );
                                 }
