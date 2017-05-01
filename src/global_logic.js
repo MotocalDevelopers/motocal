@@ -156,23 +156,23 @@ module.exports.calcDamage = function(totalAttack, enemyDefense, additionalDamage
     var damage = totalAttack / def
     var overedDamage = 0
     // 補正1
-    if(damage > 612500) {
-        overedDamage += 0.01 * (damage - 612500)
-        damage = 612500
+    if(damage > 600000) {
+        overedDamage += 0.01 * (damage - 600000)
+        damage = 600000
     }
     // 補正2
-    if(damage > 550000) {
-        overedDamage += 0.10 * (damage - 550000)
-        damage = 550000
+    if(damage > 500000) {
+        overedDamage += 0.05 * (damage - 500000)
+        damage = 500000
     }
     // 補正3
-    if(damage > 425000) {
-        overedDamage += 0.40 * (damage - 425000)
-        damage = 425000
+    if(damage > 400000) {
+        overedDamage += 0.60 * (damage - 400000)
+        damage = 400000
     }
     // 補正4
     if(damage > 300000) {
-        overedDamage += 0.70 * (damage - 300000)
+        overedDamage += 0.80 * (damage - 300000)
         damage = 300000
     }
 
