@@ -104,7 +104,7 @@ var Profile = React.createClass({
 
         return (
             <div className="profile">
-                <p className="text-success">最新のアップデート情報は <a href="http://www.hsimyu.net/entry/2017/04/13/192925" target="_blank"> こちら </a> </p>
+                <p className="text-success">最新のアップデート情報は <a href="http://www.hsimyu.net/entry/2017/05/01/211059" target="_blank"> こちら </a> </p>
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
                     <tr>
