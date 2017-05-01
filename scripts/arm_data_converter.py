@@ -4,7 +4,22 @@ from collections import OrderedDict
 skillnamelist = OrderedDict()
 
 # normal L and LL
-skillnamelist["normalLL"] = {u"紅蓮の攻刃II": "fire", u"霧氷の攻刃II": "water", u"地裂の攻刃II": "earth", u"乱気の攻刃II": "wind", u"天光の攻刃II": "light", u"奈落の攻刃II": "dark"}
+skillnamelist["normalLLM"] = {
+    u"紅蓮の攻刃III": "fire",
+    u"霧氷の攻刃III": "water",
+    u"地裂の攻刃III": "earth",
+    u"乱気の攻刃III": "wind",
+    u"天光の攻刃III": "light",
+    u"奈落の攻刃III": "dark"
+}
+skillnamelist["normalLL"] = {
+    u"紅蓮の攻刃II": "fire",
+    u"霧氷の攻刃II": "water",
+    u"地裂の攻刃II": "earth",
+    u"乱気の攻刃II": "wind",
+    u"天光の攻刃II": "light",
+    u"奈落の攻刃II": "dark"
+}
 skillnamelist["normalHPLL"] = {u"紅蓮の守護II": "fire", u"霧氷の守護II": "water", u"地裂の守護II": "earth", u"乱気の守護II": "wind", u"天光の守護II": "light", u"奈落の守護II": "dark"}
 skillnamelist["normalL"] = {u"紅蓮の攻刃": "fire", u"霧氷の攻刃": "water", u"地裂の攻刃": "earth", u"乱気の攻刃": "wind", u"天光の攻刃": "light", u"奈落の攻刃": "dark"}
 skillnamelist["normalHPL"] = {u"紅蓮の守護": "fire", u"霧氷の守護": "water", u"地裂の守護": "earth", u"乱気の守護": "wind", u"天光の守護": "light", u"奈落の守護": "dark"}
@@ -37,6 +52,7 @@ skillnamelist["normalCriticalS"] = {u"火の技巧": "fire", u"水の技巧": "w
 skillnamelist["normalHaisuiS"] = {u"火の背水": "fire", u"水の背水": "water", u"土の背水": "earth", u"風の背水": "wind", u"光の背水": "light", u"闇の背水": "dark"}
 skillnamelist["normalKamui"] = {u"火の神威": "fire", u"水の神威": "water", u"土の神威": "earth", u"風の神威": "wind", u"光の神威": "light", u"闇の神威": "dark"}
 skillnamelist["normalNiteS"] = {u"火の二手": "fire", u"水の二手": "water", u"土の二手": "earth", u"風の二手": "wind", u"光の二手": "light", u"闇の二手": "dark"}
+skillnamelist["normalSanteS"] = {u"火の三手": "fire", u"水の三手": "water", u"土の三手": "earth", u"風の三手": "wind", u"光の三手": "light", u"闇の三手": "dark"}
 
 # magna II
 skillnamelist["magnaL"] = {u"機炎方陣・攻刃II": "fire", u"海神方陣・攻刃II": "water", u"創樹方陣・攻刃II": "earth", u"嵐竜方陣・攻刃II": "wind", u"騎解方陣・攻刃II": "light", u"黒霧方陣・攻刃II": "dark"}

@@ -1,4 +1,140 @@
 {
+    "[蒼誓剣]ミュルグレス": {
+        "hplv100": "240", 
+        "element2": "water", 
+        "en": "[Skybound] Murgleis", 
+        "maxlv": 150, 
+        "skill2": "normalSanteS", 
+        "skill1": "normalLLM", 
+        "hp": "389", 
+        "element": "water", 
+        "attacklv100": "2760", 
+        "minattack": "450", 
+        "attack": "3835", 
+        "slvmax": 15, 
+        "minhp": "42", 
+        "type": "sword", 
+        "ja": "[蒼誓剣]ミュルグレス", 
+        "imageURL": "./imgs/1040004600.png"
+    }, 
+    "ブラック・ウロボロス": {
+        "element2": "dark", 
+        "en": "ブラック・ウロボロス", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "hp": "274", 
+        "element": "dark", 
+        "minattack": "400", 
+        "attack": "2230", 
+        "slvmax": 10, 
+        "minhp": "41", 
+        "type": "wand", 
+        "ja": "ブラック・ウロボロス", 
+        "imageURL": "./imgs/1040409900.png"
+    }, 
+    "ブルースフィア": {
+        "element2": "water", 
+        "en": "ブルースフィア", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "normalLL", 
+        "hp": "335", 
+        "element": "water", 
+        "minattack": "375", 
+        "attack": "2300", 
+        "slvmax": 10, 
+        "minhp": "64", 
+        "type": "gun", 
+        "ja": "ブルースフィア", 
+        "imageURL": "./imgs/1040410000.png"
+    }, 
+    "イイルクーン": {
+        "element2": "wind", 
+        "en": "Yrkoon", 
+        "maxlv": 100, 
+        "skill2": "normalRasetsuM", 
+        "skill1": "normalCriticalL", 
+        "hp": "216", 
+        "element": "wind", 
+        "minattack": "425", 
+        "attack": "2520", 
+        "slvmax": 10, 
+        "minhp": "36", 
+        "type": "sword", 
+        "ja": "イイルクーン", 
+        "imageURL": "./imgs/1040009400.png"
+    }, 
+    "[魂喰]ミストルテイン": {
+        "hplv100": "212", 
+        "element2": "fire", 
+        "en": "[Skybound] Mistilteinn", 
+        "maxlv": 150, 
+        "skill2": "normalHPL", 
+        "skill1": "normalL", 
+        "hp": "", 
+        "element": "dark", 
+        "attacklv100": "2540", 
+        "minattack": "440", 
+        "attack": "", 
+        "slvmax": 15, 
+        "minhp": "32", 
+        "type": "sword", 
+        "ja": "[魂喰]ミストルテイン", 
+        "imageURL": "./imgs/1040003100.png"
+    }, 
+    "[闇堕槍]サンスポットスピア": {
+        "element2": "dark", 
+        "en": "Sunspot Spear", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "hp": "254", 
+        "element": "dark", 
+        "minattack": "403", 
+        "attack": "2316", 
+        "slvmax": 10, 
+        "minhp": "39", 
+        "type": "spear", 
+        "ja": "[闇堕槍]サンスポットスピア", 
+        "imageURL": "./imgs/1040207500.png"
+    }, 
+    "[禁呪]封鍵クラウストルム": {
+        "hplv100": "293", 
+        "element2": "light", 
+        "en": "[禁呪]封鍵クラウストルム", 
+        "maxlv": 150, 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "hp": "342", 
+        "element": "light", 
+        "attacklv100": "2195", 
+        "minattack": "365", 
+        "attack": "2560", 
+        "slvmax": 15, 
+        "minhp": "49", 
+        "type": "wand", 
+        "ja": "[禁呪]封鍵クラウストルム", 
+        "imageURL": "./imgs/1040401000.png"
+    }, 
+    "[夢幻音]砂城の宮樂弦": {
+        "hplv100": "244", 
+        "element2": "light", 
+        "en": "[夢幻音]砂城の宮樂弦", 
+        "maxlv": 150, 
+        "skill2": "normalHPL", 
+        "skill1": "non", 
+        "hp": "", 
+        "element": "earth", 
+        "attacklv100": "2215", 
+        "minattack": "365", 
+        "attack": "", 
+        "slvmax": 15, 
+        "minhp": "72", 
+        "type": "music", 
+        "ja": "[夢幻音]砂城の宮樂弦", 
+        "imageURL": "./imgs/1040801100.png"
+    }, 
     "麒麟剣": {
         "element2": "dark", 
         "en": "Qilin Sword", 
@@ -1523,9 +1659,9 @@
         "ja": "七星剣・覚醒", 
         "imageURL": "./imgs/1040002400.png"
     }, 
-    "[魂喰]ミストルテイン": {
+    "ミストルテイン": {
         "element2": "fire", 
-        "en": "[Skybound] Mistilteinn", 
+        "en": "Mistilteinn", 
         "maxlv": 100, 
         "skill2": "normalHPL", 
         "skill1": "normalL", 
@@ -1536,7 +1672,7 @@
         "slvmax": 10, 
         "minhp": "32", 
         "type": "sword", 
-        "ja": "[魂喰]ミストルテイン", 
+        "ja": "ミストルテイン", 
         "imageURL": "./imgs/1040003100.png"
     }, 
     "[禍風剣]風神剣": {
@@ -1685,9 +1821,9 @@
         "ja": "[始原霊]フェアーソード", 
         "imageURL": "./imgs/1040004500.png"
     }, 
-    "[蒼誓剣]ミュルグレス": {
+    "ミュルグレス": {
         "element2": "water", 
-        "en": "[Skybound] Murgleis", 
+        "en": "ミュルグレス", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -1698,7 +1834,7 @@
         "slvmax": 10, 
         "minhp": "42", 
         "type": "sword", 
-        "ja": "[蒼誓剣]ミュルグレス", 
+        "ja": "ミュルグレス", 
         "imageURL": "./imgs/1040004600.png"
     }, 
     "[古黒刃]ディープデザイア": {
@@ -4243,9 +4379,9 @@
         "ja": "[春呼杖]氷晶杖", 
         "imageURL": "./imgs/1040400900.png"
     }, 
-    "[禁呪]封鍵クラウストルム": {
+    "封鍵クラウストルム": {
         "element2": "light", 
-        "en": "[禁呪]封鍵クラウストルム", 
+        "en": "Sealed Clausterum", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -4256,7 +4392,7 @@
         "slvmax": 10, 
         "minhp": "49", 
         "type": "wand", 
-        "ja": "[禁呪]封鍵クラウストルム", 
+        "ja": "封鍵クラウストルム", 
         "imageURL": "./imgs/1040401000.png"
     }, 
     "ウロボロス": {
@@ -6871,9 +7007,9 @@
         "ja": "九界琴・覚醒", 
         "imageURL": "./imgs/1040800400.png"
     }, 
-    "[夢幻音]砂城の宮樂弦": {
+    "砂城の宮樂弦": {
         "element2": "light", 
-        "en": "[夢幻音]砂城の宮樂弦", 
+        "en": "Sandcastle Song-Lume", 
         "maxlv": 100, 
         "skill2": "normalHPL", 
         "skill1": "normalHPL", 
@@ -6884,7 +7020,7 @@
         "slvmax": 10, 
         "minhp": "72", 
         "type": "music", 
-        "ja": "[夢幻音]砂城の宮樂弦", 
+        "ja": "砂城の宮樂弦", 
         "imageURL": "./imgs/1040801100.png"
     }, 
     "[愁歎奏]ブランウェンハープ": {

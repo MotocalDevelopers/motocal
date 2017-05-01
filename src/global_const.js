@@ -147,6 +147,7 @@ var skilltypes = {
     "normalM": {name:"通常攻刃(中)", type:"normal", amount: "M"},
     "normalL": {name:"通常攻刃(大)", type:"normal", amount: "L"},
     "normalLL": {name:"通常攻刃II", type:"normal", amount: "LL"},
+    "normalLLM": {name:"通常攻刃III", type:"normal", amount: "LLM"},
     "normalBoukunL": {name:"通常暴君", type:"normalBoukun", amount: "L"},
     "normalBoukunLLL": {name:"通常暴君II", type:"normalBoukun", amount: "LLL"},
     "normalHaisuiS": {name:"通常背水(小)", type:"normalHaisui", amount: "S"},
@@ -156,6 +157,7 @@ var skilltypes = {
     "normalNiteS": {name:"通常二手(小)", type:"normalNite", amount: "S"},
     "normalNiteM": {name:"通常二手(中)", type:"normalNite", amount: "M"},
     "normalNiteL": {name:"通常二手(大)", type:"normalNite", amount: "L"},
+    "normalSanteS": {name:"通常三手(小)", type:"normalSante", amount: "S"},
     "normalSanteL": {name:"通常三手(大)", type:"normalSante", amount: "L"},
     "normalKatsumiM": {name:"通常克己(中)", type:"normalKatsumi", amount: "M"},
     "normalKamui": {name:"通常神威", type:"normalKamui", amount: "S"},
@@ -422,6 +424,7 @@ var skillAmounts = {
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
         "LL": [7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.8, 17.6, 18.4, 19.2, 20.0],
+        "LLM": [8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0],
         "LLL": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0],
     },
     "magna":{
@@ -495,6 +498,7 @@ var skillAmounts = {
         "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
     },
     "normalSante":{
+        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
         "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
     },
     "magnaSante":{
@@ -609,7 +613,7 @@ module.exports.selector.en.filterelements = Object.keys(filterElementTypes).map(
 module.exports.selector.ja.summons = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{summonTypes[opt]}</option>;});
 module.exports.selector.en.summons = Object.keys(summonTypes).map(function(opt){return <option value={opt} key={opt}>{intl.translate(summonTypes[opt], "en")}</option>;});
 
-module.exports.selector.ja.skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{skilltypes[key].name}</option>;})
+module.exports.selector.ja.skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "ja")}</option>;})
 module.exports.selector.en.skills = Object.keys(skilltypes).map(function(key){ return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "en")}</option>;})
 
 module.exports.selector.ja.cosmosSkills = Object.keys(cosmosSkills).map(function(key){ return <option value={key} key={key}>{cosmosSkills[key].name}</option>;})

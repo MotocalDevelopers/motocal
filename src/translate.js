@@ -1140,6 +1140,10 @@ var multiLangData = {
         "en": "Normal Might (LL)",
         "ja": "通常攻刃II",
     },
+    "通常攻刃III": {
+        "en": "Normal Might (LLL)",
+        "ja": "通常攻刃III",
+    },
     "通常暴君": {
         "en": "Normal Tyranny",
         "ja": "通常暴君",
@@ -1175,6 +1179,10 @@ var multiLangData = {
     "通常二手(大)": {
         "en": "Normal Dual Edge (L)",
         "ja": "通常二手(大)",
+    },
+    "通常三手(小)": {
+        "en": "[UNVERIFIED] Normal Trium (S)",
+        "ja": "[未検証] 通常三手(小)",
     },
     "通常三手(大)": {
         "en": "Normal Trium (L)",
