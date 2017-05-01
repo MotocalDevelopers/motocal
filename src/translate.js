@@ -1906,6 +1906,10 @@ var multiLangData = {
         "en": "15/04/2017: Partly added English Templates! Thanks theorycrafting guys.",
         "ja": "2017/04/15: 武器とキャラテンプレートの一部を英語化.",
     },
+    "notice-20170501-1": {
+        "en": "01/05/2017: Added new weapons and skills.",
+        "ja": "2017/05/01: 武器追加、通常攻刃IIIと通常三手(小)[未検証]を追加.",
+    },
 }
 
 // 言語設定
