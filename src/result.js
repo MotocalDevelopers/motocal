@@ -345,7 +345,7 @@ var ResultList = React.createClass({
     render: function () {
         var locale = this.props.locale
 
-        res = this.state.result;
+        var res = this.state.result;
         var prof = this.props.profile
         var arm = this.props.armlist
         var chara = this.props.chara
@@ -358,7 +358,7 @@ var ResultList = React.createClass({
         var result = res.result
         var onAddToHaisuiData = this.addHaisuiData
 
-        switcher = this.state;
+        var switcher = this.state;
         var armnames = []
         for (var i = 0; i < arm.length; i++) {
             if (arm[i].considerNumberMax != 0) {
@@ -447,7 +447,7 @@ var ResultList = React.createClass({
                 charaInfo.push(<span key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
         }
-        buffInfoStr = intl.translate("通常バフ", locale) + prof.normalBuff + "%, "
+        var buffInfoStr = intl.translate("通常バフ", locale) + prof.normalBuff + "%, "
         buffInfoStr += intl.translate("属性バフ", locale) + prof.elementBuff + "%, "
         buffInfoStr += intl.translate("その他バフ", locale) + prof.otherBuff + "%, "
         buffInfoStr += intl.translate("DAバフ", locale) + prof.daBuff + "%, "
