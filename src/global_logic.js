@@ -230,6 +230,22 @@ module.exports.calcOugiDamage = function(totalAttack, enemyDefense, ougiRatio, o
     }
 };
 
+module.exports.calcChainBurst = function(ougiDamage, chainNumber) {
+    if(chainNumber <= 1) return 0.0;
+
+    var chainCoeff = 0.0;
+    if(chainNumber === 2) {
+        chainCoeff = 0.25;
+    } else if (chainNumber === 3) {
+        chainCoeff = 1.0/3.0;
+    } else {
+        // full or over chain
+        chainCoeff = 0.50;
+    }
+
+    return module.exports.calcOugiGensui(chainCoeff * ougiDamage);
+}
+
 module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, normalOtherCritical, summon) {
     var gikouArray = []
     var gikouRatioArray = []
