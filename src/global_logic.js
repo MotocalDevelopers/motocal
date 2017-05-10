@@ -189,38 +189,44 @@ module.exports.calcDamage = function(totalAttack, enemyDefense, additionalDamage
     return res
 };
 
+module.exports.calcOugiGensui = function(ougiDamage) {
+    var overedDamage = 0
+    // 補正1
+    if(ougiDamage > 1400000) {
+        overedDamage += 0.01 * (ougiDamage - 1400000)
+        ougiDamage = 1400000
+    }
+    // 補正2
+    if(ougiDamage > 1300000) {
+        overedDamage += 0.05 * (ougiDamage - 1300000)
+        ougiDamage = 1300000
+    }
+    // 補正3
+    if(ougiDamage > 1150000) {
+        overedDamage += 0.40 * (ougiDamage - 1150000)
+        ougiDamage = 1150000
+    }
+    // 補正4
+    if(ougiDamage > 1000000) {
+        overedDamage += 0.60 * (ougiDamage - 1000000)
+        ougiDamage = 1000000
+    }
+    return ougiDamage + overedDamage;
+}
+
 module.exports.calcOugiDamage = function(totalAttack, enemyDefense, ougiRatio, ougiDamageBuff, damageUP) {
     // ダメージ計算
     var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
     var ratio = (ougiRatio == undefined) ? 4.5 : ougiRatio
     var damage = (1.0 + ougiDamageBuff) * totalAttack * ratio / def
-    var overedDamage = 0
-    // 補正1
-    if(damage > 1400000) {
-        overedDamage += 0.01 * (damage - 1400000)
-        damage = 1400000
-    }
-    // 補正2
-    if(damage > 1300000) {
-        overedDamage += 0.05 * (damage - 1300000)
-        damage = 1300000
-    }
-    // 補正3
-    if(damage > 1150000) {
-        overedDamage += 0.40 * (damage - 1150000)
-        damage = 1150000
-    }
-    // 補正4
-    if(damage > 1000000) {
-        overedDamage += 0.60 * (damage - 1000000)
-        damage = 1000000
-    }
+
+    damage = module.exports.calcOugiGensui(damage);
 
     // 与ダメージアップ
     if(damageUP > 0) {
-        return (1.0 + damageUP) * (damage + overedDamage)
+        return (1.0 + damageUP) * damage;
     } else {
-        return damage + overedDamage
+        return damage
     }
 };
 
