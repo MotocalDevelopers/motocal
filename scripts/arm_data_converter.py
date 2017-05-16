@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
-import os, csv, sys, math, time, re, json, codecs, types
+import json
+import re
+import csv
 from collections import OrderedDict
 skillnamelist = OrderedDict()
 
@@ -81,27 +83,28 @@ skillnamelist["unknownHPM"] = {u"アンノウン・VIT": "unknown"}
 skillnamelist["strengthS"] = {u"スピードスペル": "light"}
 skillnamelist["strengthM"] = {u"大自然の摂理": "light"}
 skillnamelist["strengthL"] = {
-        u"ストレングス": "unknown",
-        u"セービングアタック": "water",
-        u"Vスキル": "earth",
-        u"その魂よ、安らかに": "light",
-        u"烈光の至恩": "dark",
-        u"自動辻斬装置": "water",
-        u"半獣の咆哮": "fire",
-        u"西風のラプソディ": "wind",
-        u"我流の太刀筋": "wind",
-        u"カースドテンタクル": "dark",
-        u"ポイント・オブ・エイム": "earth",
-        u"天の福音": "light",
-        u"森林の祝福": "wind",
-        u"お友達になってくれる？": "dark",
-        u"貴方へ贈る言葉": "wind",
-        u"蒼薔薇の棘": "water",
-        u"翠薔薇の棘": "wind",
-        u"橙薔薇の棘": "earth",
-        u"紅薔薇の棘": "fire",
-        u"震天の雷鳴": "light",
-        u"靂天の暗雲": "dark",
+    u"ストレングス": "unknown",
+    u"セービングアタック": "water",
+    u"Vスキル": "earth",
+    u"その魂よ、安らかに": "light",
+    u"烈光の至恩": "dark",
+    u"自動辻斬装置": "water",
+    u"半獣の咆哮": "fire",
+    u"西風のラプソディ": "wind",
+    u"我流の太刀筋": "wind",
+    u"カースドテンタクル": "dark",
+    u"ポイント・オブ・エイム": "earth",
+    u"天の福音": "light",
+    u"森林の祝福": "wind",
+    u"お友達になってくれる？": "dark",
+    u"貴方へ贈る言葉": "wind",
+    u"蒼薔薇の棘": "water",
+    u"翠薔薇の棘": "wind",
+    u"橙薔薇の棘": "earth",
+    u"紅薔薇の棘": "fire",
+    u"震天の雷鳴": "light",
+    u"靂天の暗雲": "dark",
+    u"大いなる業": "light",
 }
 
 skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire", u"裁考の覇道": "earth"}
@@ -286,7 +289,7 @@ if __name__ == '__main__':
             if translation.has_key(decoded_name):
                 newdict["en"] = translation[decoded_name].encode("utf-8")
             else:
-                print "[Warning] " + name + " is not translated."
+                print name
                 newdict["en"] = name
 
             json_data[name] = newdict
