@@ -826,11 +826,13 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             // 背水計算部分は別メソッドで
                             totals[key][stype] += comb[i] * module.exports.calcHaisuiValue(stype, amount, slv, totals[key]["remainHP"])
                         } else if(stype == 'normalKamui') {
+                            // 神威は攻撃力とHPの上昇量が等しい
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                            totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
+                            totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                         } else if(stype == 'magnaKamui') {
+                            // 神威は攻撃力とHPの上昇量が等しい
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
-                            totals[key]["magnaHP"] += comb[i] * skillAmounts["magnaHP"][amount][slv - 1];
+                            totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                         } else if(stype == 'normalCritical') {
                             // 通常技巧は複数発動するので確率を加算しないで残しておく
                             for(var setu = 0; setu < comb[i]; setu++){
