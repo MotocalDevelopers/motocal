@@ -828,11 +828,11 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         } else if(stype == 'normalKamui') {
                             // 神威は攻撃力とHPの上昇量が等しい
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                            totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            totals[key]["normalHP"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                         } else if(stype == 'magnaKamui') {
                             // 神威は攻撃力とHPの上昇量が等しい
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
-                            totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                            totals[key]["magnaHP"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                         } else if(stype == 'normalCritical') {
                             // 通常技巧は複数発動するので確率を加算しないで残しておく
                             for(var setu = 0; setu < comb[i]; setu++){
