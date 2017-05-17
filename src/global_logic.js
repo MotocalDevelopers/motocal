@@ -680,7 +680,7 @@ module.exports.getTotalBuff = function(prof) {
         ta: 0.0,
         ougiGage: 1.0,
         additionalDamage: 0.0,
-        chainNumber: 4,
+        chainNumber: 1,
     };
 
     if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -1339,7 +1339,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                     var newDamage = module.exports.calcDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
                     var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
 
-                    var chainNumber = isNaN(prof.chainNumber) ? 4 : parseInt(prof.chainNumber);
+                    var chainNumber = isNaN(prof.chainNumber) ? 1 : parseInt(prof.chainNumber);
                     var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement)) / chainNumber;
                     var newExpectedCycleDamagePerTurn = (newChainBurst + newOugiDamage 
                     + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
