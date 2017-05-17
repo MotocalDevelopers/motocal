@@ -330,9 +330,6 @@ module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, norm
 module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
     var res = {}
 
-    var remainChainNumber = buff["chainNumber"];
-    var summedOugiDamage = 0.0;
-
     for(var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind]
 
@@ -435,15 +432,17 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // 実質の技巧期待値
         var effectiveCriticalRatio = damage/damageWithoutCritical
 
+        // 総合攻撃力 * 技巧期待値 * 連撃期待値
+        var sougou_kaisuu_gikou = parseInt(totalAttack * criticalRatio * expectedAttack)
+
         var ougiDamage = module.exports.calcOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"], damageUP)
 
-        // チェイン数の最大値まで奥義ダメージを加算
-        if( remainChainNumber > 0 ) {
-            remainChainNumber--;
-            summedOugiDamage += ougiDamage;
-        }
+        // チェインバーストダメージは「そのキャラと同じダメージを出すやつが chainNumber 人だけいたら」という仮定の元で計算する
+        var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement));
 
-        var sougou_kaisuu_gikou = parseInt(totalAttack * criticalRatio * expectedAttack)
+        var expectedCycleDamage = expectedTurn * expectedAttack * damage // 通常攻撃 * n回
+            + ougiDamage + (chainBurst / buff["chainNumber"]) // 奥義 + チェインバースト (buff["chainNumber"] は 1 以上なので除算OK)
+        var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0)
 
         // 表示用配列
         var coeffs = {};
@@ -498,27 +497,10 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             damageWithCritical: damage, // 技巧のみ
             damageWithMultiple: damageWithoutCritical * expectedAttack, // 連撃のみ
             ougiDamage: ougiDamage,
+            chainBurst: chainBurst,
             expectedTurn: expectedTurn,
+            expectedCycleDamagePerTurn: expectedCycleDamagePerTurn,
         };
-    }
-
-    // remainChainNumber が 0 になっていない場合、チェイン数 > キャラ数になっている
-    // -> それまでの平均値を他のキャラの奥義ダメージとして採用する
-    if ( remainChainNumber > 0 ) {
-        var averageOugiDamage = summedOugiDamage / (buff["chainNumber"] - remainChainNumber);
-        summedOugiDamage += remainChainNumber * averageOugiDamage;
-    }
-
-    // チェインバーストを考慮するため、最終的なサイクルダメージのみは最後に算出する
-    var chainBurst = module.exports.calcChainBurst(summedOugiDamage, buff["chainNumber"], module.exports.getTypeBonus(prof.element, prof.enemy_elem));
-
-    for( var key in res ) {
-        var expectedCycleDamage = 
-                                res[key]["expectedTurn"] * res[key]["expectedAttack"] * res[key]["damageWithCritical"] // 通常攻撃
-                                + res[key]["ougiDamage"] // 奥義
-                                + (chainBurst/buff["chainNumber"]) // チェインバースト (buff["chainNumber"] は 1 以上なので除算OK)
-
-        res[key]["expectedCycleDamagePerTurn"] = expectedCycleDamage / (res[key]["expectedTurn"] + 1.0)
     }
 
     var average = 0.0;
@@ -537,7 +519,6 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         }
     }
 
-    res["Djeeta"]["chainBurst"] = parseInt(chainBurst);
     res["Djeeta"]["averageAttack"] = parseInt(average/cnt)
     res["Djeeta"]["averageCriticalAttack"] = parseInt(crit_average/cnt)
     res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average/cnt)
@@ -1355,7 +1336,11 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
                     var newDamage = module.exports.calcDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
                     var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
-                    var newExpectedCycleDamagePerTurn = (newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
+
+                    var chainNumber = isNaN(prof.chainNumber) ? 4 : parseInt(prof.chainNumber);
+                    var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement)) / chainNumber;
+                    var newExpectedCycleDamagePerTurn = (newChainBurst + newOugiDamage 
+                    + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
 
                     var hp;
                     if (displayRealHP) {

@@ -916,7 +916,7 @@ var Result = React.createClass({
                         ++colSize;
                     }
                     if (sw.switchChainBurst) {
-                        tablebody.push(m.data.Djeeta.chainBurst)
+                        tablebody.push(parseInt(m.data.Djeeta.chainBurst))
                         ++colSize;
                     }
                     if (sw.switchCycleDamage) {
