@@ -401,6 +401,14 @@ var multiLangData = {
         "en": "Input the name of the saved grid.",
         "ja": "保存した編成の名前を設定できます",
     },
+    "チェイン数": {
+        "en": "Chain Number",
+        "ja": "チェイン数",
+    },
+    "チェイン数説明": {
+        "en": "Input the number of Ougi Chain. (1~4)",
+        "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）",
+    },
     "ジータさんのみ": {
         "en": "(Player only)",
         "ja": "(ジータさんのみ)",
@@ -660,6 +668,10 @@ var multiLangData = {
     "奥義ダメージ": {
         "en": "Ougi Damage",
         "ja": "奥義ダメージ",
+    },
+    "チェインバースト": {
+        "en": "Chain Burst",
+        "ja": "チェインバースト",
     },
     "予想ターン毎ダメージ": {
         "en": "Exp. Damage per Turn",
