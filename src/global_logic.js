@@ -230,7 +230,7 @@ module.exports.calcOugiDamage = function(totalAttack, enemyDefense, ougiRatio, o
     }
 };
 
-module.exports.calcChainBurst = function(ougiDamage, chainNumber) {
+module.exports.calcChainBurst = function(ougiDamage, chainNumber, typeBonus) {
     if(chainNumber <= 1) return 0.0;
 
     var chainCoeff = 0.0;
@@ -243,7 +243,7 @@ module.exports.calcChainBurst = function(ougiDamage, chainNumber) {
         chainCoeff = 0.50;
     }
 
-    return module.exports.calcOugiGensui(chainCoeff * ougiDamage);
+    return module.exports.calcOugiGensui(typeBonus * chainCoeff * ougiDamage);
 }
 
 module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, normalOtherCritical, summon) {
@@ -329,6 +329,9 @@ module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, norm
 
 module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
     var res = {}
+
+    var remainChainNumber = buff["chainNumber"];
+    var summedOugiDamage = 0.0;
 
     for(var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind]
@@ -434,10 +437,13 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
 
         var ougiDamage = module.exports.calcOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"], damageUP)
 
-        var expectedCycleDamage = ougiDamage + expectedTurn * expectedAttack * damage
-        var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0)
+        // チェイン数の最大値まで奥義ダメージを加算
+        if( remainChainNumber > 0 ) {
+            remainChainNumber--;
+            summedOugiDamage += ougiDamage;
+        }
 
-        var nazo_number = parseInt(totalAttack * criticalRatio * expectedAttack)
+        var sougou_kaisuu_gikou = parseInt(totalAttack * criticalRatio * expectedAttack)
 
         // 表示用配列
         var coeffs = {};
@@ -484,7 +490,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             criticalAttack: criticalAttack,
             criticalRatio: criticalRatio,
             effectiveCriticalRatio: effectiveCriticalRatio,
-            totalExpected: nazo_number,
+            totalExpected: sougou_kaisuu_gikou,
             skilldata: coeffs,
             expectedOugiGage: expectedOugiGage,
             damage: damage * expectedAttack, // 技巧連撃
@@ -493,9 +499,28 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             damageWithMultiple: damageWithoutCritical * expectedAttack, // 連撃のみ
             ougiDamage: ougiDamage,
             expectedTurn: expectedTurn,
-            expectedCycleDamagePerTurn: expectedCycleDamagePerTurn
         };
     }
+
+    // remainChainNumber が 0 になっていない場合、チェイン数 > キャラ数になっている
+    // -> それまでの平均値を他のキャラの奥義ダメージとして採用する
+    if ( remainChainNumber > 0 ) {
+        var averageOugiDamage = summedOugiDamage / (buff["chainNumber"] - remainChainNumber);
+        summedOugiDamage += remainChainNumber * averageOugiDamage;
+    }
+
+    // チェインバーストを考慮するため、最終的なサイクルダメージのみは最後に算出する
+    var chainBurst = module.exports.calcChainBurst(summedOugiDamage, buff["chainNumber"], module.exports.getTypeBonus(prof.element, prof.enemy_elem));
+
+    for( var key in res ) {
+        var expectedCycleDamage = 
+                                res[key]["expectedTurn"] * res[key]["expectedAttack"] * res[key]["damageWithCritical"] // 通常攻撃
+                                + res[key]["ougiDamage"] // 奥義
+                                + (chainBurst/buff["chainNumber"]) // チェインバースト (buff["chainNumber"] は 1 以上なので除算OK)
+
+        res[key]["expectedCycleDamagePerTurn"] = expectedCycleDamage / (res[key]["expectedTurn"] + 1.0)
+    }
+
     var average = 0.0;
     var crit_average = 0.0;
     var totalExpected_average = 0.0;
@@ -511,6 +536,8 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             cnt += 1.0
         }
     }
+
+    res["Djeeta"]["chainBurst"] = parseInt(chainBurst);
     res["Djeeta"]["averageAttack"] = parseInt(average/cnt)
     res["Djeeta"]["averageCriticalAttack"] = parseInt(crit_average/cnt)
     res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average/cnt)
@@ -659,7 +686,21 @@ module.exports.recalcCharaHaisui = function(chara, remainHP) {
 };
 
 module.exports.getTotalBuff = function(prof) {
-    var totalBuff = {master: 0.0, masterHP: 0.0, normal: 0.0, element: 0.0, other: 0.0, zenith1: 0.0, zenith2: 0.0, hp: 0.0, da: 0.0, ta: 0.0, ougiGage: 1.0, additionalDamage: 0.0};
+    var totalBuff = {
+        master: 0.0,
+        masterHP: 0.0,
+        normal: 0.0,
+        element: 0.0,
+        other: 0.0,
+        zenith1: 0.0,
+        zenith2: 0.0,
+        hp: 0.0,
+        da: 0.0,
+        ta: 0.0,
+        ougiGage: 1.0,
+        additionalDamage: 0.0,
+        chainNumber: 4,
+    };
 
     if(!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
     if(!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
@@ -668,6 +709,7 @@ module.exports.getTotalBuff = function(prof) {
     if(!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseFloat(prof.taBuff);
     if(!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
     if(!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
+    if(!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);
     totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
     totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
     totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);

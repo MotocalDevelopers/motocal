@@ -190,6 +190,7 @@ var ResultList = React.createClass({
             switchCycleDamage: 0,
             switchAverageCycleDamage: 1,
             switchDebuffResistance: 0,
+            switchChainBurst: 0,
             disableAutoResultUpdate: 0,
             result: { summon: this.props.summon, result: [] },
             chartSortKey: "totalAttack",
@@ -419,6 +420,9 @@ var ResultList = React.createClass({
         if (switcher.switchOugiDamage) {
             tableheader.push(intl.translate("奥義ダメージ", locale))
         }
+        if (switcher.switchChainBurst) {
+            tableheader.push(intl.translate("チェインバースト", locale))
+        }
         if (switcher.switchCycleDamage) {
             tableheader.push(intl.translate("予想ターン毎ダメージ", locale))
         }
@@ -486,16 +490,16 @@ var ResultList = React.createClass({
                                 <td onClick={this.handleEvent.bind(this, "switchOugiGage")} className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> 奥義ゲージ上昇期待値 </td>
                             </tr><tr>
                                 <td onClick={this.handleEvent.bind(this, "switchOugiDamage")} className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> 奥義ダメージ </td>
+                                <td onClick={this.handleEvent.bind(this, "switchChainBurst")} className={(this.state.switchChainBurst == 1) ? "display-checked" : "display-unchecked"}> チェインバースト </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaAttack")} className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力</td>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP</td>
                             </tr><tr>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP</td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}> キャラ連続攻撃率</td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}> キャラ総回技値</td>
-                                <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                             </tr>
                             <tr>
+                                <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                                 <td onClick={this.handleEvent.bind(this, "switchDebuffResistance")} className={(this.state.switchDebuffResistance == 1) ? "display-checked" : "display-unchecked"}> 弱体耐性率</td>
-                                <td></td>
                                 <td></td>
                             </tr>
                         </tbody></table>
@@ -628,6 +632,7 @@ var ResultList = React.createClass({
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDamageWithMultiple")} active={(this.state.switchDamageWithMultiple == 1) ? true : false}> {intl.translate("単攻撃ダメージ(連撃有)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDamage")} active={(this.state.switchDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃有)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchOugiDamage")} active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchChainBurst")} active={(this.state.switchChainBurst == 1) ? true : false}> {intl.translate("チェインバースト", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchOugiGage")} active={(this.state.switchOugiGage == 1) ? true : false}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </MenuItem>
                         </DropdownButton>
 
@@ -908,6 +913,10 @@ var Result = React.createClass({
                     }
                     if (sw.switchOugiDamage) {
                         tablebody.push(parseInt(m.data.Djeeta.ougiDamage))
+                        ++colSize;
+                    }
+                    if (sw.switchChainBurst) {
+                        tablebody.push(m.data.Djeeta.chainBurst)
                         ++colSize;
                     }
                     if (sw.switchCycleDamage) {
