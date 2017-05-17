@@ -150,30 +150,24 @@ module.exports.makeSummonHeaderString = function(summon, locale) {
     return summonHeader;
 }
 
-module.exports.calcDamage = function(totalAttack, enemyDefense, additionalDamage, damageUP) {
+module.exports.calcDamage = function(totalAttack, enemyDefense, additionalDamage, damageUP, damageLimit) {
     // ダメージ計算
     var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
     var damage = totalAttack / def
     var overedDamage = 0
-    // 補正1
-    if(damage > 600000) {
-        overedDamage += 0.01 * (damage - 600000)
-        damage = 600000
-    }
-    // 補正2
-    if(damage > 500000) {
-        overedDamage += 0.05 * (damage - 500000)
-        damage = 500000
-    }
-    // 補正3
-    if(damage > 400000) {
-        overedDamage += 0.60 * (damage - 400000)
-        damage = 400000
-    }
-    // 補正4
-    if(damage > 300000) {
-        overedDamage += 0.80 * (damage - 300000)
-        damage = 300000
+
+    var limitValues = [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]];
+
+    for ( var index = 0; index < 4; index++ ) {
+        // 減衰ライン算出
+        var limitValue = limitValues[index][0] * (1.0 + damageLimit);
+        var limitRatio = limitValues[index][1];
+
+        // 減衰ラインを超えている分だけ減算
+        if ( damage > limitValue ) {
+            overedDamage += limitRatio * ( damage - limitValue );
+            damage = limitValue;
+        }
     }
 
     var res = damage + overedDamage;
@@ -182,6 +176,7 @@ module.exports.calcDamage = function(totalAttack, enemyDefense, additionalDamage
         res *= 1.0 + additionalDamage
     }
 
+    // "与ダメージアップ"は減衰後の補正
     if(damageUP > 0) {
         res *= 1.0 + damageUP
     }
@@ -423,11 +418,13 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // "additionalDamage"はノーマル枠として神石効果を考慮
         var additionalDamage = (0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
 
+        var damageLimit = buff["damageLimit"] + totals[key]["damageLimit"];
+
         // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
-        var damage = module.exports.calcDamage(criticalRatio * totalAttack, prof.enemyDefense, additionalDamage, damageUP)
+        var damage = module.exports.calcDamage(criticalRatio * totalAttack, prof.enemyDefense, additionalDamage, damageUP, damageLimit)
 
         // クリティカル無しの場合のダメージを技巧期待値の補正に使う
-        var damageWithoutCritical = module.exports.calcDamage(totalAttack, prof.enemyDefense, additionalDamage, damageUP)
+        var damageWithoutCritical = module.exports.calcDamage(totalAttack, prof.enemyDefense, additionalDamage, damageUP, buff["damageLimit"])
 
         // 実質の技巧期待値
         var effectiveCriticalRatio = damage/damageWithoutCritical
@@ -460,6 +457,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         coeffs["hpRatio"] = hpCoeff
         coeffs["additionalDamage"] = additionalDamage
         coeffs["damageUP"] = damageUP
+        coeffs["damageLimit"] = damageLimit
 
         // 連撃情報
         coeffs["normalDA"] = armDAupNormal
@@ -683,6 +681,7 @@ module.exports.getTotalBuff = function(prof) {
         ta: 0.0,
         ougiGage: 1.0,
         additionalDamage: 0.0,
+        damageLimit: 0.0,
         chainNumber: 1,
     };
 
@@ -694,6 +693,7 @@ module.exports.getTotalBuff = function(prof) {
     if(!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
     if(!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
     if(!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);
+    if(!isNaN(prof.damageLimit)) totalBuff["damageLimit"] = 0.01 * parseFloat(prof.damageLimit);
     totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
     totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
     totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
@@ -984,7 +984,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
     var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
     var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
     var zenithPartyHP = (prof.zenithPartyHPBonus == undefined) ? 0 : parseInt(prof.zenithPartyHPBonus)
-    var djeetaBuffList = {personalNormalBuff: 0.0, personalElementBuff: 0.0, personalOtherBuff: 0.0, personalDABuff: 0.0, personalTABuff: 0.0, personalOugiGageBuff: 0.0, personalAdditionalDamageBuff: 0.0}
+    var djeetaBuffList = {personalNormalBuff: 0.0, personalElementBuff: 0.0, personalOtherBuff: 0.0, personalDABuff: 0.0, personalTABuff: 0.0, personalOugiGageBuff: 0.0, personalAdditionalDamageBuff: 0.0, personalDamageLimit: 0.0}
 
     for(var djeetabuffkey in djeetaBuffList) {
         if (prof[djeetabuffkey] != undefined) {
@@ -992,7 +992,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
         }
     }
 
-    var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0, tenshiDamageUP: 0}};
+    var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, damageLimit: djeetaBuffList["personalDamageLimit"], support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0, tenshiDamageUP: 0}};
 
     for(var i = 0; i < chara.length; i++){
         if(chara[i].name != "") {
@@ -1010,7 +1010,16 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 k++;
             }
 
-            var charaBuffList = {normalBuff: 0.0, elementBuff: 0.0, otherBuff: 0.0, daBuff: 0.0, taBuff: 0.0, ougiGageBuff: 0.0, additionalDamageBuff: 0.0}
+            var charaBuffList = {
+                normalBuff: 0.0,
+                elementBuff: 0.0,
+                otherBuff: 0.0,
+                daBuff: 0.0,
+                taBuff: 0.0,
+                ougiGageBuff: 0.0,
+                additionalDamageBuff: 0.0,
+                damageLimit: 0.0,
+            }
 
             for(var charabuffkey in charaBuffList) {
                 if (chara[i][charabuffkey] != undefined) {
@@ -1018,7 +1027,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 }
             }
 
-            totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0, tenshiDamageUP: 0}
+            totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, damageLimit: charaBuffList["damageLimit"], support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0, tenshiDamageUP: 0}
         }
     }
 
@@ -1339,7 +1348,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                 for(var k = 0; k < 100; k++){
                     var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].charaHaisui
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
-                    var newDamage = module.exports.calcDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
+                    var newDamage = module.exports.calcDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit)
                     var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
 
                     var chainNumber = isNaN(prof.chainNumber) ? 1 : parseInt(prof.chainNumber);
@@ -1593,7 +1602,7 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
                         }
                     } else {
                         // 通常攻撃
-                        var newDamage = module.exports.calcDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP)
+                        var newDamage = module.exports.calcDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit)
                         if(key == "Djeeta") {
                             ExpectedDamage[t].push( parseInt(newDamage * onedata[key].expectedAttack) )
                             AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage/cnt)

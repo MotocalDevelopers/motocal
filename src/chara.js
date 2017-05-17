@@ -246,6 +246,7 @@ var Chara = React.createClass({
             daBuff: 0,
             taBuff: 0,
             ougiGageBuff: 0,
+            damageLimit: 0,
         };
     },
     componentDidMount: function(){
@@ -467,6 +468,10 @@ var Chara = React.createClass({
                             <tr key="ougiGageBuff">
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                                 <td><FormControl componentClass="select" value={this.state.ougiGageBuff} onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}>{selector.buffLevel}</FormControl></td>
+                            </tr>,
+                            <tr key="damageLimit">
+                                <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
+                                <td><FormControl componentClass="select" value={this.state.damageLimit} onChange={this.handleSelectEvent.bind(this, "damageLimit")}>{selector.buffLevel}</FormControl></td>
                             </tr>
                             ]
                         : null}

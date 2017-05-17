@@ -249,6 +249,14 @@ var multiLangData = {
         "en": "Used on the expected turn damage calculation.",
         "ja": "奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
     },
+    "ダメージ上限アップ": {
+        "en": "Damage Limit Buff",
+        "ja": "ダメージ上限アップ",
+    },
+    "ダメージ上限アップ説明": {
+        "en": "It is used to calc the normal attack damage.",
+        "ja": "通常攻撃ダメージの算出に使用されます。",
+    },
     "ゼニスパーク": {
         "en": "Zenith Perks",
         "ja": "ゼニスパーク",

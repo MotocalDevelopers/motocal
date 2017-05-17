@@ -958,6 +958,7 @@ var Result = React.createClass({
 
                             if (skilldata.additionalDamage != 0.0) { skillstr += intl.translate("追加ダメージ", locale) + (100.0 * skilldata.additionalDamage).toFixed(1); skillstr += "% "; }
                             if (skilldata.damageUP != 0.0) { skillstr += intl.translate("与ダメージ上昇", locale) + (100.0 * skilldata.damageUP).toFixed(1); skillstr += "% "; }
+                            if (skilldata.damageLimit != 0.0) { skillstr += intl.translate("ダメージ上限アップ", locale) + (100.0 * skilldata.damageLimit).toFixed(1); skillstr += "% "; }
                             if (skilldata.hpRatio != 1.0) { skillstr += intl.translate("HP増加", locale) + (100.0 * (skilldata.hpRatio - 1.0)).toFixed(1); skillstr += "% "; }
                             if (skilldata.other != 1.0) { skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% "; }
                             if (skilldata.ougiDamageBuff != 0.0) { skillstr += intl.translate("奥義ダメージ", locale) + (100.0 * (1.0 + skilldata.ougiDamageBuff)).toFixed(0); skillstr += "% "; }
