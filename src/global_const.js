@@ -85,6 +85,7 @@ var levelListNoLimit = { "Lv. 1": 1, "0凸 (Lv. 40)": 40, "1凸 (Lv. 60)": 60, "
 var skillLevelListNoLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10, "SLv. 11": 11, "SLv. 12": 12, "SLv. 13": 13, "SLv. 14": 14, "SLv. 15": 15 }
 var skillLevelListLimit = { "SLv. 1": 1, "SLv. 2": 2, "SLv. 3": 3, "SLv. 4": 4, "SLv. 5": 5, "SLv. 6": 6, "SLv. 7": 7, "SLv. 8": 8, "SLv. 9": 9, "SLv. 10": 10 }
 var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200];
+var chainNumberList = [1, 2, 3, 4];
 
 var enemyDefenseType = {
     10.0: {"name": "敵防御10"},
@@ -651,6 +652,7 @@ module.exports.selector.ougiRatio = ougiRatioList.map(function(opt){return <opti
 module.exports.selector.hplist = HPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.masteratk = masterATKList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.masterhp = masterHPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
+module.exports.selector.chainNumber = chainNumberList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 
 module.exports.selector.ja.ktypes = Object.keys(keyTypes).map(function(opt){ return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
 module.exports.selector.en.ktypes = Object.keys(keyTypes).map(function(opt){ return <option value={opt} key={opt}>{intl.translate(keyTypes[opt], "en")}</option> });

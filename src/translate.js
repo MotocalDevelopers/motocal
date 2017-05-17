@@ -401,6 +401,14 @@ var multiLangData = {
         "en": "Input the name of the saved grid.",
         "ja": "保存した編成の名前を設定できます",
     },
+    "チェイン数": {
+        "en": "Chain Number",
+        "ja": "チェイン数",
+    },
+    "チェイン数説明": {
+        "en": "Input the number of Ougi Chain. (1~4)",
+        "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 => 係数0.0, 2 => 0.25, 3 => 0.33.., 4 => 0.5",
+    },
     "ジータさんのみ": {
         "en": "(Player only)",
         "ja": "(ジータさんのみ)",
@@ -660,6 +668,10 @@ var multiLangData = {
     "奥義ダメージ": {
         "en": "Ougi Damage",
         "ja": "奥義ダメージ",
+    },
+    "チェインバースト": {
+        "en": "Chain Burst",
+        "ja": "チェインバースト",
     },
     "予想ターン毎ダメージ": {
         "en": "Exp. Damage per Turn",
@@ -1909,6 +1921,14 @@ var multiLangData = {
     "notice-20170501-1": {
         "en": "01/05/2017: Added new weapons and skills.",
         "ja": "2017/05/01: 武器追加、通常攻刃IIIと通常三手(小)[未検証]を追加.",
+    },
+    "notice-20170516-1": {
+        "en": "16/05/2017: Fixed the invalid value of Health Bonus by Majesty skills.",
+        "ja": "2017/05/16: 神威スキルのHP上昇量が通常守護のものとなっていたので修正.",
+    },
+    "notice-20170517-1": {
+        "en": "17/05/2017: Implemented Chain Burst calculation.",
+        "ja": "2017/05/17: チェインバーストダメージの計算を実装.",
     },
 }
 

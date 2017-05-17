@@ -66,6 +66,7 @@ var Profile = React.createClass({
             ougiGageBuff: 0,
             ougiRatio: 4.5,
             minimumHP: 0.0,
+            chainNumber: 1,
             personalNormalBuff: 0.0,
             personalElementBuff: 0.0,
             personalOtherBuff: 0.0,
@@ -405,6 +406,15 @@ var Profile = React.createClass({
                     <tr>
                         <th className="bg-primary">{intl.translate("確保HP", locale)}</th>
                         <td><FormControl type="number"  min="0" value={this.state.minimumHP} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
+                    </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("チェイン数説明", locale)} id={"tooltip-chain-number-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("チェイン数", locale)}</th>
+                        <td>
+                            <FormControl componentClass="select" value={this.state.chainNumber} onChange={this.handleSelectEvent.bind(this, "chainNumber")}> {selector.chainNumber} </FormControl>
+                        </td>
                     </tr>
                     </TextWithTooltip>
                     </tbody>
