@@ -507,6 +507,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
     var crit_average = 0.0;
     var totalExpected_average = 0.0;
     var averageCyclePerTurn = 0.0;
+    var averageChainBurst = 0.0;
 
     var cnt = 0.0
     for(key in res) {
@@ -515,6 +516,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             crit_average += res[key].criticalAttack
             totalExpected_average += res[key].totalExpected
             averageCyclePerTurn += res[key].expectedCycleDamagePerTurn
+            averageChainBurst += res[key].chainBurst;
             cnt += 1.0
         }
     }
@@ -523,6 +525,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
     res["Djeeta"]["averageCriticalAttack"] = parseInt(crit_average/cnt)
     res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average/cnt)
     res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn/cnt)
+    res["Djeeta"]["averageChainBurst"] = parseInt(averageChainBurst/cnt)
     return res
 };
 
