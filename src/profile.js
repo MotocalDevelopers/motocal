@@ -66,7 +66,7 @@ var Profile = React.createClass({
             ougiGageBuff: 0,
             ougiRatio: 4.5,
             minimumHP: 0.0,
-            chainNumber: 4,
+            chainNumber: 1,
             personalNormalBuff: 0.0,
             personalElementBuff: 0.0,
             personalOtherBuff: 0.0,
