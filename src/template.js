@@ -121,7 +121,9 @@ var RegisteredChara = React.createClass({
                 this.setState({charaData: data})
             }.bind(this),
             error: function(xhr, status, err) {
-                alert("Error!: キャラデータの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
+                alert("Error!: キャラデータの取得に失敗しました。\nstatus: " + status + "\nerror message: " + err.toString());
+                console.error("status:", status);
+                console.error("error: ", err);
             }.bind(this)
         });
     },
