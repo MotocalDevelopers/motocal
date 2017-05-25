@@ -11,7 +11,7 @@
 |&attachref(img/1040801100.png,15%);|[夢幻音]&br;砂城の宮樂弦|&color(#993300){土};|楽器|10|[[悲哀のファンタジア++>武器奥義#hiai]]|[[優しい世界>スキル一覧#yasasiisekai]]|[[天光の守護>スキル一覧#tennkounosyugo]]|72|365|280|2590|[[サラ (SSR)]]加入|レジェンドガチャ|○|244|2215|
 |&attachref(img/1040010000.png,15%);|[]&br;麒麟剣|&color(#800080){闇};|剣|80|[[黒召刃>奥義一覧#kokusyoujindown]]|[[靂天の暗雲>スキル一覧#rekitennoanun]]|[[靂天の黒鱗>スキル一覧#rekitennokokurin]]|30|420|207|2480|ショップ|トレジャー交換||
 |&attachref(img/1040706000.png,15%);|[]&br;麒麟弓|&color(#800080){闇};|弓|80|[[黒召刃>奥義一覧#kokusyoujincri]]|[[奈落の暴君II>スキル一覧#narakunoboukun2]]|[[靂天の極致>スキル一覧#rekitennokyokuti]]|32|415|220|2465|ショップ|トレジャー交換||
-|&attachref(img/1040805900.png,15%);|[]&br;麒麟弦|&color(#800080){闇};|楽器|80|[[黒召刃>奥義一覧#kokusyoujinclear]]|[[奈落の攻刃>スキル一覧#narakunoboukun2]]|[[靂天の極致>スキル一覧#rekitennokyokuti]]|63|370|232|2185|ショップ|トレジャー交換||
+|&attachref(img/1040805900.png,15%);|[]&br;麒麟弦|&color(#800080){闇};|楽器|80|[[黒召刃>奥義一覧#kokusyoujinclear]]|[[奈落の攻刃>スキル一覧#narakunoboukun2]]|[[靂天の境界へと至りし者>スキル一覧#rekitennokyokuti]]|63|370|232|2185|ショップ|トレジャー交換||
 |&attachref(img/1040207900.png,15%);|[]&br;黄龍槍|&color(#ff9900){光};|槍|80|[[白召刃>奥義一覧#hakusyoujinougiup]]|[[天光の攻刃>スキル一覧#tennkounokoujin]]|[[震天の境界へと至りし者>スキル一覧#sintennokyoukai]]|41|365|252|2250|ショップ|トレジャー交換||
 |&attachref(img/1040607100.png,15%);|[]&br;黄龍拳|&color(#ff9900){光};|格闘|80|[[白召刃>奥義一覧#hakusyoujindown]]|[[震天の雷鳴>スキル一覧#sintennoraimei]]|[[震天の黄鱗>スキル一覧#sintennokirin]]|40|370|242|2300|ショップ|トレジャー交換||
 |&attachref(img/1040906800.png,15%);|[]&br;黄龍刀|&color(#ff9900){光};|刀|80|[[白召刃>奥義一覧#hakusyoujinmukou]]|[[天光の暴君II>スキル一覧#tenkounoboukun2]]|[[震天の祈り>スキル一覧#sintennoinori]]|31|425|184|2610|ショップ|トレジャー交換||

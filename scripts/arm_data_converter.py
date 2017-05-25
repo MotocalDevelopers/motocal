@@ -155,6 +155,14 @@ skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
 skillnamelist["tenshiShukufukuII"] = {u"ミカエルの祝福II": "fire", u"ガブリエルの祝福II": "water", u"ウリエルの祝福II": "earth", u"ラファエルの祝福II": "wind"}
 skillnamelist["tenshiShukufuku"] = {u"ミカエルの祝福": "fire", u"ガブリエルの祝福": "water", u"ウリエルの祝福": "earth", u"ラファエルの祝福": "wind"}
 
+# ダメージ上限アップ系
+skillnamelist["normalDamageLimit2_5"] = {
+    u"賢者の加護": "earth",
+}
+skillnamelist["normalDamageLimit10"] = {
+    u"靂天の極致": "dark",
+}
+
 # キャラ固有武器
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
