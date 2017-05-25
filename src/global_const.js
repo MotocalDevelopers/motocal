@@ -259,18 +259,22 @@ var cosmosSkills = {
 var sishoSeiryu = {
     "non": {name: "無し", type:"non", amount: "non"},
     "normalCriticalM": {name:"王道: 竜巻の技巧"},
+    "normalDamageLimit7": {name:"邪道: 通常上限UP(7.0%)"},
 };
 var sishoSuzaku = {
     "non": {name: "無し", type:"non", amount: "non"},
     "normalHPS": {name:"王道: 火の守護"},
+    "normalDamageLimit7": {name:"邪道: 通常上限UP(7.0%)"},
 };
 var sishoByakko = {
     "non": {name: "無し", type:"non", amount: "non"},
     "normalCriticalM": {name:"王道: 大地の技巧"},
+    "normalDamageLimit7": {name:"邪道: 通常上限UP(7.0%)"},
 };
 var sishoGenbu = {
     "non": {name: "無し", type:"non", amount: "non"},
     "normalNiteS": {name:"王道: 水の二手"},
+    "normalDamageLimit7": {name:"邪道: 通常上限UP(7.0%)"},
 };
 
 var armTypes = {

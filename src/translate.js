@@ -1565,6 +1565,10 @@ var multiLangData = {
         "en": "Normal Duel Edge (M)",
         "ja": "王道: 水の二手",
     },
+    "邪道: 通常上限UP(7.0%)": {
+        "en": "Damage Limit UP(7.0%)",
+        "ja": "邪道: 通常上限UP(7.0%)",
+    },
     "敵防御10": {
         "en": "10.0(General)",
         "ja": "10.0(一般的な敵)",
