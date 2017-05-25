@@ -1536,6 +1536,18 @@ var multiLangData = {
         "en": "Angel's Blessing II",
         "ja": "天司の祝福II",
     },
+    "通常上限UP(2.5%)" : {
+        "en": "Damage Limit UP(2.5%)",
+        "ja": "通常上限UP(2.5%)",
+    },
+    "通常上限UP(7.0%)" : {
+        "en": "Damage Limit UP(7.0%)",
+        "ja": "通常上限UP(7.0%)",
+    },
+    "通常上限UP(10%)" : {
+        "en": "Damage Limit UP(10%)",
+        "ja": "通常上限UP(10%)",
+    },
     // テンプレート用
     "王道: 竜巻の技巧": {
         "en": "Normal Verity (M)",

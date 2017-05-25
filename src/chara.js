@@ -246,7 +246,7 @@ var Chara = React.createClass({
             daBuff: 0,
             taBuff: 0,
             ougiGageBuff: 0,
-            damageLimit: 0,
+            damageLimitBuff: 0,
         };
     },
     componentDidMount: function(){
@@ -471,7 +471,7 @@ var Chara = React.createClass({
                             </tr>,
                             <tr key="damageLimit">
                                 <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
-                                <td><FormControl componentClass="select" value={this.state.damageLimit} onChange={this.handleSelectEvent.bind(this, "damageLimit")}>{selector.buffLevel}</FormControl></td>
+                                <td><FormControl componentClass="select" value={this.state.damageLimitBuff} onChange={this.handleSelectEvent.bind(this, "damageLimitBuff")}>{selector.buffLevel}</FormControl></td>
                             </tr>
                             ]
                         : null}

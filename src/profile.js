@@ -50,7 +50,7 @@ var Profile = React.createClass({
             elementBuff: 0,
             otherBuff: 0,
             additionalDamageBuff: 0,
-            damageLimit: 0.0,
+            damageLimitBuff: 0.0,
             hpBuff: 0,
             daBuff: 0,
             taBuff: 0,
@@ -75,7 +75,7 @@ var Profile = React.createClass({
             personalDABuff: 0.0,
             personalTABuff: 0.0,
             personalOugiGageBuff: 0.0,
-            personalDamageLimit: 0.0,
+            personalDamageLimitBuff: 0.0,
         };
     },
     switchBufflist: function(e) {
@@ -227,7 +227,7 @@ var Profile = React.createClass({
                         </tr>,
                         <tr key="personalDamageLimit">
                             <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.personalDamageLimit} onChange={this.handleSelectEvent.bind(this, "personalDamageLimit")}>{selector.buffLevel}</FormControl></td>
+                            <td><FormControl componentClass="select" value={this.state.personalDamageLimitBuff} onChange={this.handleSelectEvent.bind(this, "personalDamageLimitBuff")}>{selector.buffLevel}</FormControl></td>
                         </tr>
                         ]
                     : null}
@@ -420,7 +420,7 @@ var Profile = React.createClass({
                         <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
                         <td>
                         <InputGroup>
-                        <FormControl componentClass="select" value={this.state.damageLimit} onChange={this.handleSelectEvent.bind(this, "damageLimit")}> {selector.buffLevel} </FormControl>
+                        <FormControl componentClass="select" value={this.state.damageLimitBuff} onChange={this.handleSelectEvent.bind(this, "damageLimitBuff")}> {selector.buffLevel} </FormControl>
                         <InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup>
                         </td>

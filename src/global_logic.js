@@ -418,13 +418,14 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // "additionalDamage"はノーマル枠として神石効果を考慮
         var additionalDamage = (0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
 
-        var damageLimit = buff["damageLimit"] + totals[key]["damageLimit"];
+        // ダメージ上限UP = 全体バフ + 個人バフ + スキル
+        var damageLimit = buff["damageLimit"] + totals[key]["damageLimitBuff"] + totals[key]["normalDamageLimit"];
 
         // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
         var damage = module.exports.calcDamage(criticalRatio * totalAttack, prof.enemyDefense, additionalDamage, damageUP, damageLimit)
 
         // クリティカル無しの場合のダメージを技巧期待値の補正に使う
-        var damageWithoutCritical = module.exports.calcDamage(totalAttack, prof.enemyDefense, additionalDamage, damageUP, buff["damageLimit"])
+        var damageWithoutCritical = module.exports.calcDamage(totalAttack, prof.enemyDefense, additionalDamage, damageUP, damageLimit)
 
         // 実質の技巧期待値
         var effectiveCriticalRatio = damage/damageWithoutCritical
@@ -693,7 +694,7 @@ module.exports.getTotalBuff = function(prof) {
     if(!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
     if(!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
     if(!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);
-    if(!isNaN(prof.damageLimit)) totalBuff["damageLimit"] = 0.01 * parseFloat(prof.damageLimit);
+    if(!isNaN(prof.damageLimitBuff)) totalBuff["damageLimit"] = 0.01 * parseFloat(prof.damageLimitBuff);
     totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
     totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
     totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
@@ -944,6 +945,9 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             } else if (amount == 'L') {
                                 totals[key]["tenshiDamageUP"] += comb[i] * 0.20;
                             }
+                        //! ダメージ上限アップ系
+                        } else if (stype == 'normalDamageLimit') {
+                            totals[key]["normalDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"][amount];
                         //! 4凸武器スキル
                         } else if(stype == 'tsuranukiKiba'){
                             if(skillname == 'tsuranukiKibaMain'){
@@ -984,7 +988,16 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
     var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
     var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
     var zenithPartyHP = (prof.zenithPartyHPBonus == undefined) ? 0 : parseInt(prof.zenithPartyHPBonus)
-    var djeetaBuffList = {personalNormalBuff: 0.0, personalElementBuff: 0.0, personalOtherBuff: 0.0, personalDABuff: 0.0, personalTABuff: 0.0, personalOugiGageBuff: 0.0, personalAdditionalDamageBuff: 0.0, personalDamageLimit: 0.0}
+    var djeetaBuffList = {
+        personalNormalBuff: 0.0,
+        personalElementBuff: 0.0,
+        personalOtherBuff: 0.0,
+        personalDABuff: 0.0,
+        personalTABuff: 0.0,
+        personalOugiGageBuff: 0.0,
+        personalAdditionalDamageBuff: 0.0,
+        personalDamageLimitBuff: 0.0
+    };
 
     for(var djeetabuffkey in djeetaBuffList) {
         if (prof[djeetabuffkey] != undefined) {
@@ -992,7 +1005,70 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
         }
     }
 
-    var totals = {"Djeeta": {baseAttack: (baseAttack + zenithATK), baseHP: (baseHP + zenithPartyHP + zenithHP), baseDA: djeetaDA, baseTA: djeetaTA, remainHP: djeetaRemainHP, armAttack: 0, armHP:0, fav1: job.favArm1, fav2: job.favArm2, race: "unknown", type: job.type, element: element, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0, normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: true, job: job, normalBuff: djeetaBuffList["personalNormalBuff"], elementBuff: djeetaBuffList["personalElementBuff"], otherBuff: djeetaBuffList["personalOtherBuff"], DABuff: djeetaBuffList["personalDABuff"], TABuff: djeetaBuffList["personalTABuff"], ougiGageBuff: djeetaBuffList["personalOugiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"], DAbuff: 0, TAbuff: 0, damageLimit: djeetaBuffList["personalDamageLimit"], support: "none", support2: "none", charaHaisui: 0, debuffResistance: 0, tenshiDamageUP: 0}};
+    var totals = {"Djeeta": 
+        {
+            baseAttack: (baseAttack + zenithATK),
+            baseHP: (baseHP + zenithPartyHP + zenithHP),
+            baseDA: djeetaDA,
+            baseTA: djeetaTA,
+            remainHP: djeetaRemainHP,
+            armAttack: 0,
+            armHP:0,
+            fav1: job.favArm1,
+            fav2: job.favArm2,
+            race: "unknown",
+            type: job.type,
+            element: element,
+            HPdebuff: 0.00,
+            magna: 0,
+            magnaHaisui: 0,
+            normal: 0,
+            normalOther: 0,
+            normalHaisui: 0,
+            normalKonshin: 0,
+            unknown: 0,
+            unknownOther: 0,
+            unknownOtherHaisui: 0,
+            bahaAT: 0,
+            bahaHP: 0,
+            bahaDA: 0,
+            bahaTA: 0,
+            magnaHP: 0,
+            normalHP: 0,
+            unknownHP: 0,
+            normalNite: 0,
+            magnaNite: 0,
+            normalSante: 0,
+            magnaSante: 0,
+            unknownOtherNite: 0,
+            normalCritical: [],
+            normalOtherCritical: [],
+            magnaCritical: 0,
+            cosmosAT: 0,
+            cosmosBL: 0,
+            normalDamageLimit: 0,
+            additionalDamage: 0,
+            ougiDebuff: 0,
+            isConsideredInAverage: true,
+            job: job,
+            normalBuff: djeetaBuffList["personalNormalBuff"],
+            elementBuff: djeetaBuffList["personalElementBuff"],
+            otherBuff: djeetaBuffList["personalOtherBuff"],
+            DABuff: djeetaBuffList["personalDABuff"],
+            TABuff: djeetaBuffList["personalTABuff"],
+            ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
+            ougiDamageBuff: 0,
+            additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
+            DAbuff: 0,
+            TAbuff: 0,
+            damageLimitBuff: djeetaBuffList["personalDamageLimitBuff"],
+            support: "none",
+            support2: "none",
+            charaHaisui: 0,
+            debuffResistance: 0,
+            tenshiDamageUP: 0
+        }
+    };
 
     for(var i = 0; i < chara.length; i++){
         if(chara[i].name != "") {
@@ -1018,7 +1094,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 taBuff: 0.0,
                 ougiGageBuff: 0.0,
                 additionalDamageBuff: 0.0,
-                damageLimit: 0.0,
+                damageLimitBuff: 0.0,
             }
 
             for(var charabuffkey in charaBuffList) {
@@ -1027,7 +1103,68 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 }
             }
 
-            totals[charakey] = {baseAttack: parseInt(chara[i].attack), baseHP: parseInt(chara[i].hp) + zenithPartyHP, baseDA: parseFloat(charaDA), baseTA: parseFloat(charaTA), remainHP: charaRemainHP, armAttack: 0, armHP:0, fav1: chara[i].favArm, fav2: chara[i].favArm2, race: chara[i].race, type: chara[i].type, element: charaelement, HPdebuff: 0.00, magna: 0, magnaHaisui: 0, normal: 0, normalOther: 0,normalHaisui: 0, normalKonshin: 0, unknown: 0, unknownOther: 0, unknownOtherHaisui: 0, bahaAT: 0, bahaHP: 0, bahaDA: 0, bahaTA: 0, magnaHP: 0, normalHP: 0, unknownHP: 0, bahaHP: 0, normalNite: 0, magnaNite: 0, normalSante: 0, magnaSante: 0, unknownOtherNite: 0, normalCritical: [], normalOtherCritical: [], magnaCritical: 0, cosmosAT: 0, cosmosBL: 0, additionalDamage: 0, ougiDebuff: 0, isConsideredInAverage: charaConsidered, normalBuff: charaBuffList["normalBuff"], elementBuff: charaBuffList["elementBuff"], otherBuff: charaBuffList["otherBuff"], DABuff: charaBuffList["daBuff"], TABuff: charaBuffList["taBuff"], ougiGageBuff: charaBuffList["ougiGageBuff"], ougiDamageBuff: 0, additionalDamageBuff: charaBuffList["additionalDamageBuff"], DAbuff: 0, TAbuff: 0, damageLimit: charaBuffList["damageLimit"], support: chara[i].support, support2: chara[i].support2, charaHaisui: 0, debuffResistance: 0, tenshiDamageUP: 0}
+            totals[charakey] = {
+                baseAttack: parseInt(chara[i].attack),
+                baseHP: parseInt(chara[i].hp) + zenithPartyHP,
+                baseDA: parseFloat(charaDA),
+                baseTA: parseFloat(charaTA),
+                remainHP: charaRemainHP,
+                armAttack: 0,
+                armHP:0,
+                fav1: chara[i].favArm,
+                fav2: chara[i].favArm2,
+                race: chara[i].race,
+                type: chara[i].type,
+                element: charaelement,
+                HPdebuff: 0.00,
+                magna: 0,
+                magnaHaisui: 0,
+                normal: 0,
+                normalOther: 0,
+                normalHaisui: 0,
+                normalKonshin: 0,
+                unknown: 0,
+                unknownOther: 0,
+                unknownOtherHaisui: 0,
+                bahaAT: 0,
+                bahaHP: 0,
+                bahaDA: 0,
+                bahaTA: 0,
+                magnaHP: 0,
+                normalHP: 0,
+                unknownHP: 0,
+                bahaHP: 0,
+                normalNite: 0,
+                magnaNite: 0,
+                normalSante: 0,
+                magnaSante: 0,
+                unknownOtherNite: 0,
+                normalCritical: [],
+                normalOtherCritical: [],
+                magnaCritical: 0,
+                cosmosAT: 0,
+                cosmosBL: 0,
+                normalDamageLimit: 0,
+                additionalDamage: 0,
+                ougiDebuff: 0,
+                isConsideredInAverage: charaConsidered,
+                normalBuff: charaBuffList["normalBuff"],
+                elementBuff: charaBuffList["elementBuff"],
+                otherBuff: charaBuffList["otherBuff"],
+                DABuff: charaBuffList["daBuff"],
+                TABuff: charaBuffList["taBuff"],
+                ougiGageBuff: charaBuffList["ougiGageBuff"],
+                ougiDamageBuff: 0,
+                additionalDamageBuff: charaBuffList["additionalDamageBuff"],
+                DAbuff: 0,
+                TAbuff: 0,
+                damageLimitBuff: charaBuffList["damageLimitBuff"],
+                support: chara[i].support,
+                support2: chara[i].support2,
+                charaHaisui: 0,
+                debuffResistance: 0,
+                tenshiDamageUP: 0
+            };
         }
     }
 
@@ -1084,28 +1221,43 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
 };
 
 module.exports.initializeTotals = function(totals) {
-    // 初期化
-    // 武器編成によって変わらないものは除く
+    // 武器編成によって変わる値を初期化する
     for(var key in totals){
-        totals[key]["armAttack"] = 0; totals[key]["armHP"] = 0;
-        totals[key]["HPdebuff"] = 0; totals[key]["magna"] = 0;
-        totals[key]["magnaHaisui"] = 0; totals[key]["normal"] = 0;
+        totals[key]["armAttack"] = 0;
+        totals[key]["armHP"] = 0;
+        totals[key]["HPdebuff"] = 0;
+        totals[key]["magna"] = 0;
+        totals[key]["magnaHaisui"] = 0;
+        totals[key]["normal"] = 0;
         totals[key]["normalOther"] = 0;
-        totals[key]["normalHaisui"] = 0; totals[key]["normalKonshin"] = 0;
-        totals[key]["unknown"] = 0; totals[key]["unknownOther"] = 0;
-        totals[key]["unknownOtherHaisui"] = 0; totals[key]["bahaAT"] = 0;
-        totals[key]["bahaHP"] = 0; totals[key]["bahaDA"] = 0;
-        totals[key]["bahaTA"] = 0; totals[key]["magnaHP"] = 0;
-        totals[key]["normalHP"] = 0; totals[key]["unknownHP"] = 0;
-        totals[key]["normalNite"] = 0; totals[key]["magnaNite"] = 0;
-        totals[key]["normalSante"] = 0; totals[key]["magnaSante"] = 0;
+        totals[key]["normalHaisui"] = 0;
+        totals[key]["normalKonshin"] = 0;
+        totals[key]["unknown"] = 0;
+        totals[key]["unknownOther"] = 0;
+        totals[key]["unknownOtherHaisui"] = 0;
+        totals[key]["bahaAT"] = 0;
+        totals[key]["bahaHP"] = 0;
+        totals[key]["bahaDA"] = 0;
+        totals[key]["bahaTA"] = 0;
+        totals[key]["magnaHP"] = 0;
+        totals[key]["normalHP"] = 0;
+        totals[key]["unknownHP"] = 0;
+        totals[key]["normalNite"] = 0;
+        totals[key]["magnaNite"] = 0;
+        totals[key]["normalSante"] = 0;
+        totals[key]["magnaSante"] = 0;
         totals[key]["unknownOtherNite"] = 0;
         totals[key]["normalCritical"] = [];
         totals[key]["magnaCritical"] = 0;
-        totals[key]["cosmosBL"] = 0; totals[key]["cosmosAT"] = 0;
-        totals[key]["additionalDamage"] = 0; totals[key]["ougiDebuff"] = 0;
-        totals[key]["DAbuff"] = 0; totals[key]["TAbuff"] = 0;
-        totals[key]["debuffResistance"] = 0; totals[key]["tenshiDamageUP"] = 0;
+        totals[key]["cosmosBL"] = 0;
+        totals[key]["cosmosAT"] = 0;
+        totals[key]["normalDamageLimit"] = 0;
+        totals[key]["additionalDamage"] = 0;
+        totals[key]["ougiDebuff"] = 0;
+        totals[key]["DAbuff"] = 0;
+        totals[key]["TAbuff"] = 0;
+        totals[key]["debuffResistance"] = 0;
+        totals[key]["tenshiDamageUP"] = 0;
     }
 };
 
