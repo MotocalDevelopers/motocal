@@ -156,7 +156,7 @@ skillnamelist["tenshiShukufukuII"] = {u"ミカエルの祝福II": "fire", u"ガ�
 skillnamelist["tenshiShukufuku"] = {u"ミカエルの祝福": "fire", u"ガブリエルの祝福": "water", u"ウリエルの祝福": "earth", u"ラファエルの祝福": "wind"}
 
 # ダメージ上限アップ系
-skillnamelist["normalDamageLimit2_5"] = {
+skillnamelist["normalDamageLimit7"] = {
     u"賢者の加護": "earth",
 }
 skillnamelist["normalDamageLimit10"] = {

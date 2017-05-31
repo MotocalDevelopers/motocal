@@ -1498,7 +1498,7 @@
         "element2": "earth", 
         "en": "[Skybound] Greatsword Andalius", 
         "maxlv": 150, 
-        "skill2": "normalDamageLimit2_5", 
+        "skill2": "normalDamageLimit7", 
         "skill1": "normalL", 
         "hp": "245", 
         "element": "earth", 
