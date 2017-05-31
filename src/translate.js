@@ -961,9 +961,13 @@ var multiLangData = {
         "en": "Name",
         "ja": "キャラ名",
     },
-    "平均に含める": {
-        "en": "In Average",
-        "ja": "平均に含める",
+    "平均に": {
+        "en": "Average?",
+        "ja": "平均に",
+    },
+    "含める": {
+        "en": "Include",
+        "ja": "含める",
     },
     "種族": {
         "en": "Race",
