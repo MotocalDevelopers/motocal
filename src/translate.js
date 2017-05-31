@@ -1954,6 +1954,14 @@ var multiLangData = {
         "en": "17/05/2017: Implemented Chain Burst calculation.",
         "ja": "2017/05/17: チェインバーストダメージの計算を実装.",
     },
+    "notice-20170525-1": {
+        "en": "25/05/2017: Implemented Damage Limit UP calculation.",
+        "ja": "2017/05/25: ダメージ上限UPの計算を実装.",
+    },
+    "notice-20170531-1": {
+        "en": "31/05/2017: Fixed an invalid status of Murgles / Modified the skill amount of Andalis 4* damage limit up to 7%.",
+        "ja": "2017/05/31: ミュルグレス4凸の武器ステータスが+99のものになっていたので修正 / アンダリス4凸の上限UP効果を7%に.",
+    },
 }
 
 // 言語設定
