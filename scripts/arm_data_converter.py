@@ -105,6 +105,7 @@ skillnamelist["strengthL"] = {
     u"震天の雷鳴": "light",
     u"靂天の暗雲": "dark",
     u"大いなる業": "light",
+    u"ロイヤルアフェクション": "earth",
 }
 
 skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire", u"裁考の覇道": "earth"}
