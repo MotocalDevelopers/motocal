@@ -1966,6 +1966,10 @@ var multiLangData = {
         "en": "31/05/2017: Fixed an invalid status of Murgles / Modified the skill amount of Andalis 4* damage limit up to 7%.",
         "ja": "2017/05/31: ミュルグレス4凸の武器ステータスが+99のものになっていたので修正 / アンダリス4凸の上限UP効果を7%に.",
     },
+    "notice-20170617-1": {
+        "en": "17/06/2017: Fixed Base ATK and HP calculation above Rank 175.",
+        "ja": "2017/06/17: Rank175以上の基礎攻撃力/HP計算式を修正.",
+    },
 }
 
 // 言語設定
