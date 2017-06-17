@@ -977,9 +977,27 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
     }
 };
 
+module.exports.calcBaseATK = function(rank) {
+    if ( rank > 175 ) return 6500 + (rank - 175) * 10
+    if ( rank > 100 ) return 5000 + (rank - 100) * 20
+    if ( rank > 1 ) return 1000 + rank * 40
+
+    // -> rank == 1
+    return 1000;
+}
+
+module.exports.calcBaseHP = function(rank) {
+    if ( rank > 175 ) return 1700 + (rank - 175) * 2
+    if ( rank > 100 ) return 1400 + (rank - 100) * 4
+    if ( rank > 1 ) return 600 + rank * 8
+
+    // -> rank == 1
+    return 600;
+}
+
 module.exports.getInitialTotals = function(prof, chara, summon) {
-    var baseAttack = (prof.rank > 100) ? 5000 + (parseInt(prof.rank) - 100) * 20 : ((prof.rank > 1) ? 1000 + (parseInt(prof.rank)) * 40 : 1000)
-    var baseHP = (prof.rank > 100) ? 1400 + (parseInt(prof.rank) - 100) * 4.0 : 600 + (parseInt(prof.rank)) * 8
+    var baseAttack = module.exports.calcBaseATK(parseInt(prof.rank))
+    var baseHP = module.exports.calcBaseHP(parseInt(prof.rank))
     var element = (prof.element == undefined) ? "fire" : prof.element
     var djeetaRemainHP = (prof.remainHP != undefined && parseInt(prof.remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(prof.remainHP) : 0.01 * parseInt(prof.hp)
     var djeetaDA = (prof.DA == undefined) ? 6.5 : parseFloat(prof.DA)
