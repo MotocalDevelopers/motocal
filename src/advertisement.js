@@ -13,14 +13,20 @@ var Advertisement = React.createClass({
         adstir.className = '';
         ReactDOM.findDOMNode(this.refs["adstir-space"]).appendChild(adstir);
     },
+    showUpAdsense: function() {
+        var adsense = document.getElementById("adsense-original-div");
+        adsense.className = '';
+        ReactDOM.findDOMNode(this.refs["adsense-space"]).appendChild(adsense);
+    },
     componentDidMount: function() {
         this.showUpAdstir();
     },
     render: function() {
         return (
             <div style={{width: "100%"}}>
-              <div ref="adstir-space"></div>
-              <div ref="admax-space"></div>
+                <div ref="adstir-space"></div>
+                <div ref="admax-space"></div>
+                <div ref="adsense-space"></div>
             </div>
         );
     },

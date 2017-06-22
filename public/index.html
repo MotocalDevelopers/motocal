@@ -22,15 +22,34 @@
     </head>
     <body>
 	<script type="text/javascript">
-            var nend_params = {"media":46029,"site":250042,"spot":723019,"type":1,"oriented":1};
+        var nend_params = {
+            "media": <%= htmlWebpackPlugin.options.NEND_MEDIA %>,
+            "site": 250042,
+            "spot": 723019,
+            "type": 1,
+            "oriented": 1
+        };
 	</script>
 	<script type="text/javascript" src="https://js1.nend.net/js/nendAdLoader.js"></script>
+
+        <div id="adsense-original-div" class="hidden">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- 元カレ計算機 PC版上部 -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:728px;height:90px"
+                data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
+                data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT %>>
+            </ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
 
         <div id="adstir-original-div" class="hidden">
             <script type="text/javascript">
             var adstir_vars = {
               ver: "4.0",
-              app_id: "MEDIA-2ff94f41",
+              app_id: <%= htmlWebpackPlugin.options.ADSTIR_APP_ID %>,
               ad_spot: 1,
               center: false
             };

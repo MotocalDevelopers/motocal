@@ -31,6 +31,10 @@ const plugins = [
       // minifyCSS: true,
       // minifyURLs: true,
     },
+    ADSENSE_AD_CLIENT: JSON.stringify(process.env.ADSENSE_AD_CLIENT || ''),
+    ADSENSE_AD_SLOT: JSON.stringify(process.env.ADSENSE_AD_SLOT || ''),
+    ADSTIR_APP_ID: JSON.stringify(process.env.ADSTIR_APP_ID || ''),
+    NEND_MEDIA: JSON.stringify(process.env.NEND_MEDIA || ''),
   }),
   new webpack.DefinePlugin({
     'process.env': {
