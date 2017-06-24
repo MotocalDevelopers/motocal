@@ -1979,14 +1979,13 @@ module.exports.getLocale = function() {
     window.navigator.language ||
     window.navigator.userLanguage ||
     window.navigator.browserLanguage);
-    if(lang == "ja-jp") lang = "ja";
+    if(lang == "ja-jp" || lang == "ja-JP") lang = "ja";
     if(lang != "ja") lang = "en";
 
     return lang;
 }
 
 module.exports.translate = function(key, locale) {
-    // console.log("key = ", key)
     if(key == undefined || key == "") return "";
     if(locale != "ja" && locale != "en") return multiLangData[key]["ja"];
 
