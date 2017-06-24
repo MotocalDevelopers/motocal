@@ -12,3 +12,4 @@ html2canvas
 gana.js
 build/content.js
 dist
+.env
