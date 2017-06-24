@@ -2,7 +2,7 @@ var React = require('react');
 var { Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover } = require('react-bootstrap');
 var Simulator = require('./simulator.js')
 var { HPChart } = require('./chart.js')
-var { AdsenseAdvertisement, AdstirAdvertisement } = require('./advertisement.js');
+var { AdsenseAdvertisement } = require('./advertisement.js');
 var intl = require('./translate.js');
 var { HPChartHowTo } = require('./howto.js')
 
@@ -510,6 +510,8 @@ var ResultList = React.createClass({
                     <hr />
                     <Button block bsStyle="success" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
                     <hr />
+                    <AdsenseAdvertisement locale={locale} type="mobile" />
+                    <hr />
                     {summon.map(function (s, summonindex) {
                         var selfSummonHeader = ""
                         if (s.selfSummonType == "odin") {
@@ -602,7 +604,7 @@ var ResultList = React.createClass({
             var changeSortKey = <FormControl componentClass="select" style={{ "width": "350px" }} value={this.props.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
-                    <AdsenseAdvertisement locale={locale} />
+                    <AdsenseAdvertisement locale={locale} type="pc" />
                     <hr />
 
                     <ControlLabel>{intl.translate("表示項目切替", locale)}</ControlLabel>
@@ -711,7 +713,6 @@ var ResultList = React.createClass({
                         );
                     })}
                     <hr />
-                    <AdstirAdvertisement locale={locale} />
 
                     <Modal className="hpChart" show={this.state.openHPChart} onHide={this.closeHPChart}>
                         <Modal.Header closeButton>

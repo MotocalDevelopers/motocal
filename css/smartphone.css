@@ -202,6 +202,14 @@ tr.result:hover {
     overflow: auto;
 }
 
+div.result {
+    margin-bottom: 20px;
+}
+
+div.resultList {
+    width: 99%;
+}
+
 .col-bordered {
   border:1px solid #258;
   border-color: rgb(59, 34, 136);
@@ -237,15 +245,6 @@ tbody.result>tr>td {
     vertical-align: middle;
 }
 
-div.result {
-    margin-bottom: 20px;
-}
-
-div.resultList {
-    width: calc(100% - 6px);
-    padding: 3px;
-}
-
 .notice {
     margin-top: 2pt;
     width: 100%;
@@ -272,7 +271,7 @@ div.resultList {
 .Tab {
     position: relative;
     width: 100%;
-    height: calc(100% - 90px);
+    height: calc(100% - 50px);
     overflow-y: scroll;
     overflow-x: visible;
     padding: 5px 0px;

@@ -21,40 +21,29 @@
         <script src="./gana.js"></script>
     </head>
     <body>
-	<script type="text/javascript">
-        var nend_params = {
-            "media": <%= htmlWebpackPlugin.options.NEND_MEDIA %>,
-            "site": 250042,
-            "spot": 723019,
-            "type": 1,
-            "oriented": 1
-        };
-	</script>
-	<script type="text/javascript" src="https://js1.nend.net/js/nendAdLoader.js"></script>
-
-        <div id="adsense-original-div" class="hidden">
+        <div id="adsense-original-div-pc" class="hidden">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- 元カレ計算機 PC版上部 -->
             <ins class="adsbygoogle"
                 style="display:inline-block;width:728px;height:90px"
                 data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
-                data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT %>>
+                data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC %>>
             </ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
 
-        <div id="adstir-original-div" class="hidden">
-            <script type="text/javascript">
-            var adstir_vars = {
-              ver: "4.0",
-              app_id: <%= htmlWebpackPlugin.options.ADSTIR_APP_ID %>,
-              ad_spot: <%= htmlWebpackPlugin.options.ADSTIR_AD_SPOT %>,
-              center: false
-            };
+        <div id="adsense-original-div-mobile" class="hidden">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- 元カレ計算機 スマホ版上部 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:100px"
+                 data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
+                 data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT_MOBILE %>></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-            <script type="text/javascript" src="https://js.ad-stir.com/js/adstir.js"></script>
         </div>
 
         <div id="app" align="center">

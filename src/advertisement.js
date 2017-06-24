@@ -4,7 +4,7 @@ var intl = require('./translate.js')
 
 var AdsenseAdvertisement = React.createClass({
     showUpAdsense: function() {
-        var adsense = document.getElementById("adsense-original-div");
+        var adsense = document.getElementById("adsense-original-div-" + this.props.type);
         adsense.className = '';
         ReactDOM.findDOMNode(this.refs["adsense-space"]).appendChild(adsense);
     },
@@ -20,23 +20,4 @@ var AdsenseAdvertisement = React.createClass({
     },
 });
 
-var AdstirAdvertisement = React.createClass({
-    showUpAdstir: function() {
-        var adstir = document.getElementById("adstir-original-div");
-        adstir.className = '';
-        ReactDOM.findDOMNode(this.refs["adstir-space"]).appendChild(adstir);
-    },
-    componentDidMount: function() {
-        this.showUpAdstir();
-    },
-    render: function() {
-        return (
-            <div style={{width: "100%"}}>
-                <div ref="adstir-space"></div>
-            </div>
-        );
-    },
-});
-
 module.exports.AdsenseAdvertisement = AdsenseAdvertisement;
-module.exports.AdstirAdvertisement = AdstirAdvertisement;
