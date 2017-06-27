@@ -271,7 +271,7 @@ tbody.result>tr>td {
 .Tab {
     position: relative;
     width: 100%;
-    height: calc(100% - 50px);
+    height: calc(100% - 90px);
     overflow-y: scroll;
     overflow-x: visible;
     padding: 5px 0px;

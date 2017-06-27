@@ -510,8 +510,6 @@ var ResultList = React.createClass({
                     <hr />
                     <Button block bsStyle="success" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
                     <hr />
-                    <AdsenseAdvertisement locale={locale} type="mobile" />
-                    <hr />
                     {summon.map(function (s, summonindex) {
                         var selfSummonHeader = ""
                         if (s.selfSummonType == "odin") {

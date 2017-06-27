@@ -6,6 +6,7 @@ var Profile = require('./profile.js')
 var {SummonList, Summon} = require('./summon.js');
 var {CharaList, Chara} = require('./chara.js');
 var {ArmList, Arm} = require('./armlist.js')
+var { AdsenseAdvertisement } = require('./advertisement.js');
 var GlobalConst = require('./global_const.js')
 var Notice = require('./notice.js')
 var {ResultList, Result} = require('./result.js')
@@ -277,6 +278,7 @@ var Root = React.createClass({
                         <NiteHowTo />
                     </Modal.Body>
                 </Modal>
+                <AdsenseAdvertisement locale={locale} type="mobile" />
                 <div className="smartphone-content">
                     <div className="Tab" id="inputTab">
                         <h2 style={{"marginTop": "10px", "marginBottom": "5px"}} >{intl.translate("motocal", locale)}</h2>
