@@ -1,4 +1,92 @@
 {
+    "[蒼導銃]ベネディーア": {
+        "hplv100": "196", 
+        "element2": "fire", 
+        "en": "[蒼導銃]ベネディーア", 
+        "maxlv": 150, 
+        "skill2": "normalKatsumiM", 
+        "skill1": "normalLLM", 
+        "hp": "240", 
+        "element": "fire", 
+        "attacklv100": "2980", 
+        "minattack": "505", 
+        "attack": "3600", 
+        "slvmax": 15, 
+        "minhp": "31", 
+        "type": "gun", 
+        "ja": "[蒼導銃]ベネディーア", 
+        "imageURL": "./imgs/1040502500.png"
+    }, 
+    "超カッコいいライフル": {
+        "element2": "water", 
+        "en": "超カッコいいライフル", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "strengthL", 
+        "hp": "140", 
+        "element": "water", 
+        "minattack": "348", 
+        "attack": "2180", 
+        "slvmax": 10, 
+        "minhp": "23", 
+        "type": "gun", 
+        "ja": "超カッコいいライフル", 
+        "imageURL": "./imgs/1040506700.png"
+    }, 
+    "[龍戮]アスカロン": {
+        "hplv100": "217", 
+        "element2": "water", 
+        "en": "Ascalon", 
+        "maxlv": 150, 
+        "skill2": "normalL", 
+        "skill1": "non", 
+        "hp": "", 
+        "element": "earth", 
+        "attacklv100": "2515", 
+        "minattack": "415", 
+        "attack": "", 
+        "slvmax": 15, 
+        "minhp": "37", 
+        "type": "sword", 
+        "ja": "[龍戮]アスカロン", 
+        "imageURL": "./imgs/1040000300.png"
+    }, 
+    "[狂恋剣]ラスト・シン": {
+        "hplv100": "216", 
+        "element2": "water", 
+        "en": "[Skybound] Lyst Sin", 
+        "maxlv": 150, 
+        "skill2": "normalL", 
+        "skill1": "non", 
+        "hp": "250", 
+        "element": "dark", 
+        "attacklv100": "2580", 
+        "minattack": "445", 
+        "attack": "3010", 
+        "slvmax": 15, 
+        "minhp": "33", 
+        "type": "sword", 
+        "ja": "[狂恋剣]ラスト・シン", 
+        "imageURL": "./imgs/1040003600.png"
+    }, 
+    "[霹靂]雷公刃ユピテル": {
+        "hplv100": "248", 
+        "element2": "light", 
+        "en": "[Skybound] Thunder Dirk Jove", 
+        "maxlv": 150, 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "hp": "289", 
+        "element": "light", 
+        "attacklv100": "2480", 
+        "minattack": "415", 
+        "attack": "2890", 
+        "slvmax": 15, 
+        "minhp": "41", 
+        "type": "dagger", 
+        "ja": "[霹靂]雷公刃ユピテル", 
+        "imageURL": "./imgs/1040101800.png"
+    }, 
     "桃色の団扇": {
         "element2": "wind", 
         "en": "桃色の団扇", 
@@ -1463,9 +1551,9 @@
         "ja": "[不滅刃]デュランダル", 
         "imageURL": "./imgs/1040000100.png"
     }, 
-    "[龍戮]アスカロン": {
+    "アスカロン": {
         "element2": "water", 
-        "en": "Ascalon", 
+        "en": "アスカロン", 
         "maxlv": 100, 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -1476,7 +1564,7 @@
         "slvmax": 10, 
         "minhp": "37", 
         "type": "sword", 
-        "ja": "[龍戮]アスカロン", 
+        "ja": "アスカロン", 
         "imageURL": "./imgs/1040000300.png"
     }, 
     "カラドボルグ": {
@@ -1889,9 +1977,9 @@
         "ja": "[真救天]スコフニュング・属性変更", 
         "imageURL": "./imgs/1040003500.png"
     }, 
-    "[狂恋剣]ラスト・シン": {
+    "ラスト・シン": {
         "element2": "water", 
-        "en": "[Skybound] Lyst Sin", 
+        "en": "ラスト・シン", 
         "maxlv": 100, 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -1902,7 +1990,7 @@
         "slvmax": 10, 
         "minhp": "33", 
         "type": "sword", 
-        "ja": "[狂恋剣]ラスト・シン", 
+        "ja": "ラスト・シン", 
         "imageURL": "./imgs/1040003600.png"
     }, 
     "[祖龍剣]バハムートソード・ノヴム": {
@@ -2627,9 +2715,9 @@
         "ja": "[界統]四天刃", 
         "imageURL": "./imgs/1040101700.png"
     }, 
-    "[霹靂]雷公刃ユピテル": {
+    "雷公刃ユピテル": {
         "element2": "light", 
-        "en": "[Skybound] Thunder Dirk Jove", 
+        "en": "Thunder Dirk Jove", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -2640,7 +2728,7 @@
         "slvmax": 10, 
         "minhp": "41", 
         "type": "dagger", 
-        "ja": "[霹靂]雷公刃ユピテル", 
+        "ja": "雷公刃ユピテル", 
         "imageURL": "./imgs/1040101800.png"
     }, 
     "[奇矯]コムラビ": {
@@ -5565,9 +5653,9 @@
         "ja": "[撒旋流]ヴリスラグナ", 
         "imageURL": "./imgs/1040502400.png"
     }, 
-    "[蒼導銃]ベネディーア": {
+    "ベネディーア": {
         "element2": "fire", 
-        "en": "[蒼導銃]ベネディーア", 
+        "en": "ベネディーア", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -5578,7 +5666,7 @@
         "slvmax": 10, 
         "minhp": "31", 
         "type": "gun", 
-        "ja": "[蒼導銃]ベネディーア", 
+        "ja": "ベネディーア", 
         "imageURL": "./imgs/1040502500.png"
     }, 
     "ティアマトボルト・マグナ": {
