@@ -33,24 +33,6 @@
         "ja": "超カッコいいライフル", 
         "imageURL": "./imgs/1040506700.png"
     }, 
-    "[龍戮]アスカロン": {
-        "hplv100": "217", 
-        "element2": "water", 
-        "en": "Ascalon", 
-        "maxlv": 150, 
-        "skill2": "normalL", 
-        "skill1": "non", 
-        "hp": "", 
-        "element": "earth", 
-        "attacklv100": "2515", 
-        "minattack": "415", 
-        "attack": "", 
-        "slvmax": 15, 
-        "minhp": "37", 
-        "type": "sword", 
-        "ja": "[龍戮]アスカロン", 
-        "imageURL": "./imgs/1040000300.png"
-    }, 
     "[狂恋剣]ラスト・シン": {
         "hplv100": "216", 
         "element2": "water", 
