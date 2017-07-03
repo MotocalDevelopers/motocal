@@ -602,9 +602,6 @@ var ResultList = React.createClass({
             var changeSortKey = <FormControl componentClass="select" style={{ "width": "350px" }} value={this.props.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
             return (
                 <div className="resultList">
-                    <AdsenseAdvertisement locale={locale} type="pc" />
-                    <hr />
-
                     <ControlLabel>{intl.translate("表示項目切替", locale)}</ControlLabel>
                     <ButtonToolbar>
                         <DropdownButton title={intl.translate("攻撃力・HP・連撃率", locale)} id="atk-hp-etcs">
@@ -653,6 +650,9 @@ var ResultList = React.createClass({
                         <Button block style={{ float: "left", width: "50%", margin: "0px" }} bsStyle="success" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
                         <Button block style={{ float: "left", width: "50%", margin: "0px" }} bsStyle="success" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータを開く", locale)}</Button>
                     </ButtonGroup>
+                    <hr />
+                    <AdsenseAdvertisement locale={locale} type="pc" />
+                    <hr />
 
                     {summon.map(function (s, summonindex) {
                         var selfSummonHeader = ""
