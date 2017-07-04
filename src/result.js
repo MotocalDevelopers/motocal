@@ -1097,10 +1097,10 @@ var Result = React.createClass({
                     for (var key in charaDetail) {
                         if (charaDetail[key].length > 0) {
                             res.push(<tr>
-                                <td colSpan="4">
+                                <td colSpan="3">
                                     <span className="text-info">{key}</span>
                                 </td>
-                                <td style={{ "textAlign": "left" }} colSpan={colSize - 4}>
+                                <td style={{ "textAlign": "left" }} colSpan={colSize - 3}>
                                     {charaDetail[key]}
                                 </td>
                             </tr>);

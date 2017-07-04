@@ -1995,8 +1995,8 @@ var multiLangData = {
         "ja": "2017/06/17: Rank175以上の基礎攻撃力/HP計算式を修正.",
     },
     "notice-20170704-1": {
-        "en": "04/07/2017: Added new weapons.",
-        "ja": "2017/06/17: 武器追加.",
+        "en": "04/07/2017: Added new weapons. Implemented 'Non' element type. Implemented critical ratio array displaying.",
+        "ja": "2017/06/17: 武器追加. 無属性と無属性（技巧あり）を実装. 技巧倍率毎の発生確率表示を実装.",
     },
 }
 
