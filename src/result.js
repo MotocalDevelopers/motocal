@@ -35,7 +35,7 @@ var { isCosmos, isValidResult, checkNumberofRaces, proceedIndex,
     calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
     calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
-    getInitialTotals, getTypeBonus, getTypeBonusStr } = require('./global_logic.js');
+    getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation } = require('./global_logic.js');
 
 var ResultList = React.createClass({
     calculateResult: function (newprops) {
@@ -959,11 +959,13 @@ var Result = React.createClass({
                             if (skilldata.otherTA != 0.0) { skillstr += intl.translate("TA上昇(その他)", locale) + skilldata.otherTA.toFixed(1); skillstr += "% "; }
 
                             if (Object.keys(skilldata.criticalArray).length > 0) {
-                                skillstr += "クリティカル[";
+                                skillstr += intl.translate("クリティカル", locale) + "[";
 
                                 for( var damageRatio in skilldata.criticalArray ) {
-                                    skillstr += damageRatio.toString() + "倍: " + (100.0 * skilldata.criticalArray[damageRatio]).toFixed(3).toString() + "%, "
+                                    skillstr += damageRatio.toString() + intl.translate("倍", locale) + ": " + (100.0 * skilldata.criticalArray[damageRatio]).toFixed(3).toString() + "%, "
                                 }
+
+                                skillstr += intl.translate("標準偏差", locale) + " " + calcCriticalDeviation(skilldata.criticalArray).toFixed(3).toString() + ""
 
                                 skillstr += "] "
                             }

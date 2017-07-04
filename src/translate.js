@@ -697,6 +697,18 @@ var multiLangData = {
         "en": "Party-Averaged Exp. Turn Damage",
         "ja": "ターン毎ダメージの\nパーティ平均",
     },
+    "クリティカル": {
+        "en": "Critical",
+        "ja": "クリティカル",
+    },
+    "倍": {
+        "en": "x",
+        "ja": "倍",
+    },
+    "標準偏差": {
+        "en": "Standard Deviation",
+        "ja": "標準偏差",
+    },
     "四人合計値": {
         "en": "x4",
         "ja": "x四人",

@@ -310,7 +310,6 @@ module.exports.calcCriticalArray = function(normalCritical, _magnaCritical, norm
             }
         }
     }
-    
     return criticalRatioArray;
 }
 
@@ -327,6 +326,17 @@ module.exports.calcCriticalRatio = function(criticalRatioArray) {
 
     return criticalRatio
 };
+
+module.exports.calcCriticalDeviation = function(criticalRatioArray) {
+    var expectedValue = module.exports.calcCriticalRatio(criticalRatioArray);
+    var variance = 0.0;
+
+    for (var attackRatio in criticalRatioArray) {
+        variance += criticalRatioArray[attackRatio] * Math.pow((attackRatio - expectedValue), 2)
+    }
+
+    return Math.sqrt(variance);
+}
 
 module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
     var res = {}
