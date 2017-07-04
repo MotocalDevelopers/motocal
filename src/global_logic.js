@@ -241,33 +241,31 @@ module.exports.calcChainBurst = function(ougiDamage, chainNumber, typeBonus) {
     return module.exports.calcOugiGensui(typeBonus * chainCoeff * ougiDamage);
 }
 
-module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, normalOtherCritical, summon) {
-    var gikouArray = []
-    var gikouRatioArray = []
+module.exports.calcCriticalArray = function(normalCritical, _magnaCritical, normalOtherCritical, summon) {
+    var probability = [] // それぞれの発生確率を格納する
+    var damageRatio = [] // 対応する倍率を格納する
 
     var magnaCritical = 0.01 * _magnaCritical * summon["magna"]
     if(magnaCritical > 1.0) {
-        gikouArray.push(1.0);
-        gikouRatioArray.push(0.5);
+        probability.push(1.0);
+        damageRatio.push(0.5);
     } else if (magnaCritical > 0.0) {
-        gikouArray.push(magnaCritical);
-        gikouRatioArray.push(0.5);
+        probability.push(magnaCritical);
+        damageRatio.push(0.5);
     }
 
     // 通常技巧配列は[確率1, 確率2, 確率3, ... ]という形式で渡される
     for(var j = 0; j < normalCritical.length; j++){
         // 単体スキル分なので1.0以上の値が来ないか確認しなくて良い
-        gikouArray.push(0.01 * normalCritical[j]["value"] * summon["zeus"]);
-        gikouRatioArray.push(normalCritical[j]["attackRatio"]);
+        probability.push(0.01 * normalCritical[j]["value"] * summon["zeus"]);
+        damageRatio.push(normalCritical[j]["attackRatio"]);
     }
 
     // LBやサポアビ分の技巧
     for(var j = 0; j < normalOtherCritical.length; j++){
-        gikouArray.push(normalOtherCritical[j]["value"]);
-        gikouRatioArray.push(normalOtherCritical[j]["attackRatio"]);
+        probability.push(normalOtherCritical[j]["value"]);
+        damageRatio.push(normalOtherCritical[j]["attackRatio"]);
     }
-
-    var criticalRatio = 0.0
 
     // 最大10要素 + LB + キャラ技巧の技巧配列が来る
     // それぞれ倍率と発動率は違う
@@ -275,25 +273,26 @@ module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, norm
     // {発動率: {発動本数: x, ケース: 1}}という配列にすればそのあとkeysを使うことで期待値が出せる
     // {ダメージ倍率: {発動確率: x}}という配列にして、
     // 同じ倍率の場合は発動確率を加算すればよい
-    if(gikouArray.length > 0){
+    var criticalRatioArray = {}
+
+    if(probability.length > 0){
         var bitmask = []
-        var criticalRatioArray = {}
-        for(var i = 0; i < gikouArray.length; i++) {
+        for(var i = 0; i < probability.length; i++) {
             bitmask.push(1 << i);
         }
 
-        for(var i = 0; i < Math.pow(2, gikouArray.length); i++) {
+        for(var i = 0; i < Math.pow(2, probability.length); i++) {
             var ratio = 1.0
             var attackRatio = 1.0
 
-            for(var j = 0; j < gikouArray.length; j++) {
+            for(var j = 0; j < probability.length; j++) {
                 if((bitmask[j] & i) > 0) {
                     // j番目の技巧が発動
-                    ratio *= gikouArray[j]
-                    attackRatio += gikouRatioArray[j]
+                    ratio *= probability[j]
+                    attackRatio += damageRatio[j]
                 } else {
                     // j番目の技巧は非発動
-                    ratio *= 1.0 - gikouArray[j]
+                    ratio *= 1.0 - probability[j]
                 }
             }
 
@@ -310,8 +309,15 @@ module.exports.calcCriticalRatio = function(normalCritical, _magnaCritical, norm
                 }
             }
         }
+    }
+    
+    return criticalRatioArray;
+}
 
-        // ここまでで全てのケースについて算出できた
+module.exports.calcCriticalRatio = function(criticalRatioArray) {
+    var criticalRatio = 0.0
+
+    if (Object.keys(criticalRatioArray).length > 0) {
         for(var attackRatio in criticalRatioArray) {
             criticalRatio += attackRatio * criticalRatioArray[attackRatio]["ratio"]
         }
@@ -402,11 +408,13 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
 
         if(totals[key]["typeBonus"] == 1.5) {
             var damageUP = totals[key]["tenshiDamageUP"]
-            var criticalRatio = module.exports.calcCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+            var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+            var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
         } else if (prof.enemyElement == "non-but-critical") {
             // "無（技巧あり）"の場合の処理
             var damageUP = 0.0
-            var criticalRatio = module.exports.calcCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+            var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+            var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
         } else {
             var damageUP = 0.0
             var criticalRatio = 1.0
