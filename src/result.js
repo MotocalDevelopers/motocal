@@ -803,10 +803,11 @@ var Result = React.createClass({
                 {this.props.data.map(function (m, rank) {
                     var colSize = 2;
                     var tablebody = []
-                    var tablebody2 = {};
-                    // initialize tablebody2
+                    var charaDetail = {};
+
                     for (key in m.data) {
-                        tablebody2[key] = "";
+                        charaDetail[key] = [];
+                        // { "Djeeta": [<p>攻撃力10000, HP15000</p>, <p>通常攻刃15%</p>, <p>DA 100%</p>], }のような連想配列を作る
                     }
 
                     if (sw.switchTotalAttack) {
@@ -820,12 +821,21 @@ var Result = React.createClass({
                     }
                     if (sw.switchCharaAttack) {
                         for (key in m.data) {
-                            tablebody2[key] += intl.translate("攻撃力", locale) + m.data[key].totalAttack + ", "
+                            charaDetail[key].push(
+                                <span className="result-chara-detail">
+                                    <span className="label label-primary">{intl.translate("攻撃力", locale)}</span> {m.data[key].totalAttack}&nbsp;
+                                </span>
+                            );
                         }
                     }
 
                     if (sw.switchDATA) {
-                        tablebody2["Djeeta"] += 'DA:' + (100.0 * m.data.Djeeta.totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data.Djeeta.totalTA).toFixed(1) + '%, '
+                        charaDetail["Djeeta"].push(
+                            <span className="result-chara-detail">
+                                <span className="label label-danger">DA</span> {(100.0 * m.data.Djeeta.totalDA).toFixed(1)}%&nbsp;
+                                <span className="label label-danger">TA</span> {(100.0 * m.data.Djeeta.totalTA).toFixed(1)}%&nbsp;
+                            </span>
+                        );
                     }
 
                     if (sw.switchCharaDA) {
@@ -833,7 +843,12 @@ var Result = React.createClass({
                             // switchDATAが指定されていなかったら全員分
                             // 指定されていたらDjeetaじゃない場合だけ
                             if (!sw.switchDATA || (key != "Djeeta")) {
-                                tablebody2[key] += 'DA:' + (100.0 * m.data[key].totalDA).toFixed(1) + '%,\n TA: ' + (100.0 * m.data[key].totalTA).toFixed(1) + '%, '
+                                charaDetail[key].push(
+                                    <span className="result-chara-detail">
+                                        <span className="label label-danger">DA</span> {(100.0 * m.data[key].totalDA).toFixed(1)}%&nbsp;
+                                        <span className="label label-danger">TA</span> {(100.0 * m.data[key].totalTA).toFixed(1)}%&nbsp;
+                                    </span>
+                                );
                             }
                         }
                     }
@@ -841,7 +856,11 @@ var Result = React.createClass({
                     if (sw.switchDebuffResistance) {
                         for (key in m.data) {
                             // 弱体耐性率は%表記のまま扱う
-                            tablebody2[key] += "弱体耐性率 " + parseInt(m.data[key].debuffResistance) + "%, "
+                            charaDetail[key].push(
+                                <span className="result-chara-detail">
+                                    <span className="label label-success">弱体耐性率</span> {parseInt(m.data[key].debuffResistance)}%&nbsp;
+                                </span>
+                            );
                         }
                     }
 
@@ -869,7 +888,12 @@ var Result = React.createClass({
                     }
                     if (sw.switchCharaHP) {
                         for (key in m.data) {
-                            tablebody2[key] += "HP" + m.data[key].totalHP + "\n (" + intl.translate("残HP", locale) + " " + parseInt(m.data[key].totalHP * m.data[key].remainHP) + "), "
+                            charaDetail[key].push(
+                                <span className="result-chara-detail">
+                                    <span className="label label-success">{intl.translate("残HP", locale)} / HP</span>&nbsp;
+                                    {parseInt(m.data[key].totalHP * m.data[key].remainHP)}&nbsp;/&nbsp;{m.data[key].totalHP}&nbsp;
+                                </span>
+                            );
                         }
                     }
                     if (sw.switchAverageAttack) {
@@ -886,7 +910,11 @@ var Result = React.createClass({
                     }
                     if (sw.switchCharaTotalExpected) {
                         for (key in m.data) {
-                            tablebody2[key] += intl.translate("総回技", locale) + m.data[key].totalExpected + ", "
+                            charaDetail[key].push(
+                                <span className="result-chara-detail">
+                                    <span className="label label-primary">{intl.translate("総回技", locale)}</span> {m.data[key].totalExpected}&nbsp;
+                                </span>
+                            );
                         }
                     }
                     if (sw.switchAverageTotalExpected) {
@@ -933,31 +961,60 @@ var Result = React.createClass({
 
                     if (sw.switchSkillTotal) {
                         for (var key in m.data) {
-                            var skillstr = "";
+                            var mainSkillInfo = [];
                             var skilldata = m.data[key].skilldata
 
-                            if (skilldata.normal != 1.0) { skillstr += intl.translate("通常攻刃", locale) + (100.0 * (skilldata.normal - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.normalHaisui != 1.0) { skillstr += intl.translate("通常背水", locale) + (100.0 * (skilldata.normalHaisui - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.normalKonshin != 1.0) { skillstr += intl.translate("通常渾身", locale) + (100.0 * (skilldata.normalKonshin - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.element != 1.0) { skillstr += intl.translate("属性", locale) + (100.0 * (skilldata.element - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.magna != 1.0) { skillstr += intl.translate("マグナ", locale) + (100.0 * (skilldata.magna - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.magnaHaisui != 1.0) { skillstr += intl.translate("マグナ背水", locale) + (100.0 * (skilldata.magnaHaisui - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.unknown != 1.0) { skillstr += intl.translate("アンノウン", locale) + (100.0 * (skilldata.unknown - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.unknownHaisui != 1.0) { skillstr += intl.translate("アンノウン背水", locale) + (100.0 * (skilldata.unknownHaisui - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.charaHaisui != 1.0) { skillstr += intl.translate("キャラ背水", locale) + (100.0 * (skilldata.charaHaisui - 1.0)).toFixed(1); skillstr += "% "; }
+                            // 攻刃系スキル用
+                            var pushSkillInfoElement1 = (key, label, labelType = "primary") => {
+                                // 外側のmainSkillInfoとskilldataとlocaleを使う
+                                if (skilldata[key] != 1.0) {
+                                    mainSkillInfo.push(
+                                        <span>
+                                            <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                            {(100.0 * (skilldata[key] - 1.0)).toFixed(1)}%&nbsp;
+                                        </span>
+                                    );
+                                }
+                            }
 
-                            if (skilldata.normalDA != 0.0) { skillstr += intl.translate("DA上昇(通常)", locale) + skilldata.normalDA.toFixed(1); skillstr += "% "; }
-                            if (skilldata.magnaDA != 0.0) { skillstr += intl.translate("DA上昇(マグナ)", locale) + skilldata.magnaDA.toFixed(1); skillstr += "% "; }
-                            if (skilldata.exDA != 0.0) { skillstr += intl.translate("DA上昇(EX)", locale) + skilldata.exDA.toFixed(1); skillstr += "% "; }
-                            if (skilldata.bahaDA != 0.0) { skillstr += intl.translate("DA上昇(バハ)", locale) + skilldata.bahaDA.toFixed(1); skillstr += "% "; }
-                            if (skilldata.cosmosDA != 0.0) { skillstr += intl.translate("DA上昇(コスモス)", locale) + skilldata.cosmosDA.toFixed(1); skillstr += "% "; }
-                            if (skilldata.otherDA != 0.0) { skillstr += intl.translate("DA上昇(その他)", locale) + skilldata.otherDA.toFixed(1); skillstr += "% "; }
+                            pushSkillInfoElement1("normal", "通常攻刃", "danger");
+                            pushSkillInfoElement1("normalHaisui", "通常背水", "light");
+                            pushSkillInfoElement1("normalKonshin", "通常渾身", "success");
+                            pushSkillInfoElement1("element", "属性", "primary");
+                            pushSkillInfoElement1("magna", "マグナ", "primary");
+                            pushSkillInfoElement1("magnaHaisui", "マグナ背水", "light");
+                            pushSkillInfoElement1("unknown", "アンノウン", "primary");
+                            pushSkillInfoElement1("unknownHaisui", "アンノウン背水", "light");
+                            pushSkillInfoElement1("charaHaisui", "キャラ背水", "light");
+                            pushSkillInfoElement1("hpRatio", "HP増加", "success");
+                            pushSkillInfoElement1("other", "その他バフ", "primary");
 
-                            if (skilldata.normalTA != 0.0) { skillstr += intl.translate("TA上昇(通常)", locale) + skilldata.normalTA.toFixed(1); skillstr += "% "; }
-                            if (skilldata.magnaTA != 0.0) { skillstr += intl.translate("TA上昇(マグナ)", locale) + skilldata.magnaTA.toFixed(1); skillstr += "% "; }
-                            if (skilldata.bahaTA != 0.0) { skillstr += intl.translate("TA上昇(バハ)", locale) + skilldata.bahaTA.toFixed(1); skillstr += "% "; }
-                            if (skilldata.otherTA != 0.0) { skillstr += intl.translate("TA上昇(その他)", locale) + skilldata.otherTA.toFixed(1); skillstr += "% "; }
+                            var multipleAttackSkillInfo = [];
+                            // 連撃スキル用
+                            var pushSkillInfoElement2 = (key, label, labelType = "primary") => {
+                                // 外側のskillInfoとskilldataとlocaleを使う
+                                if (skilldata[key] != 0.0) {
+                                    multipleAttackSkillInfo.push(
+                                        <span>
+                                            <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                            {skilldata[key].toFixed(1)}%&nbsp;
+                                        </span>
+                                    );
+                                }
+                            }
 
+                            pushSkillInfoElement2("normalDA", "DA上昇(通常)", "danger");
+                            pushSkillInfoElement2("magnaDA", "DA上昇(マグナ)", "danger");
+                            pushSkillInfoElement2("exDA", "DA上昇(EX)", "danger");
+                            pushSkillInfoElement2("bahaDA", "DA上昇(バハ)", "danger");
+                            pushSkillInfoElement2("cosmosDA", "DA上昇(コスモス)", "danger");
+                            pushSkillInfoElement2("otherDA", "DA上昇(その他)", "danger");
+                            pushSkillInfoElement2("normalTA", "TA上昇(通常)", "danger");
+                            pushSkillInfoElement2("magnaTA", "TA上昇(マグナ)", "danger");
+                            pushSkillInfoElement2("bahaTA", "TA上昇(バハ)", "danger");
+                            pushSkillInfoElement2("otherTA", "TA上昇(その他)", "danger");
+
+                            var skillstr = "";
                             if (Object.keys(skilldata.criticalArray).length > 0) {
                                 skillstr += intl.translate("クリティカル", locale) + "[";
 
@@ -970,14 +1027,27 @@ var Result = React.createClass({
                                 skillstr += "] "
                             }
 
-                            if (skilldata.additionalDamage != 0.0) { skillstr += intl.translate("追加ダメージ", locale) + (100.0 * skilldata.additionalDamage).toFixed(1); skillstr += "% "; }
-                            if (skilldata.damageUP != 0.0) { skillstr += intl.translate("与ダメージ上昇", locale) + (100.0 * skilldata.damageUP).toFixed(1); skillstr += "% "; }
-                            if (skilldata.damageLimit != 0.0) { skillstr += intl.translate("ダメージ上限アップ", locale) + (100.0 * skilldata.damageLimit).toFixed(1); skillstr += "% "; }
-                            if (skilldata.hpRatio != 1.0) { skillstr += intl.translate("HP増加", locale) + (100.0 * (skilldata.hpRatio - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.other != 1.0) { skillstr += intl.translate("その他バフ", locale) + (100.0 * (skilldata.other - 1.0)).toFixed(1); skillstr += "% "; }
-                            if (skilldata.ougiDamageBuff != 0.0) { skillstr += intl.translate("奥義ダメージ", locale) + (100.0 * (1.0 + skilldata.ougiDamageBuff)).toFixed(0); skillstr += "% "; }
+                            var otherSkillInfo = [];
+                            // その他スキル用
+                            var pushSkillInfoElement3 = (key, label, labelType = "primary") => {
+                                // 外側のskillInfoとskilldataとlocaleを使う
+                                if (skilldata[key] != 0.0) {
+                                    otherSkillInfo.push(
+                                        <span>
+                                            <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                            {(100.0 * skilldata[key]).toFixed(1)}%&nbsp;
+                                        </span>
+                                    );
+                                }
+                            }
+                            pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
+                            pushSkillInfoElement3("damageUP", "与ダメージ上昇", "default");
+                            pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
+                            pushSkillInfoElement3("ougiDamageBuff", "奥義ダメージ", "default");
 
-                            tablebody2[key] += skillstr;
+                            charaDetail[key].push( <div>{mainSkillInfo}</div>);
+                            charaDetail[key].push( <div>{multipleAttackSkillInfo}</div>);
+                            charaDetail[key].push( <div>{otherSkillInfo}</div>);
                         }
                     }
 
@@ -1001,14 +1071,14 @@ var Result = React.createClass({
                         </tr>,
                     ];
 
-                    for (var key in tablebody2) {
-                        if (tablebody2[key] != "") {
+                    for (var key in charaDetail) {
+                        if (charaDetail[key].length > 0) {
                             res.push(<tr>
                                 <td colSpan="4">
                                     <span className="text-info">{key}</span>
                                 </td>
                                 <td style={{ "textAlign": "left" }} colSpan={colSize - 4}>
-                                    <span>{tablebody2[key]}</span>
+                                    {charaDetail[key]}
                                 </td>
                             </tr>);
                         }

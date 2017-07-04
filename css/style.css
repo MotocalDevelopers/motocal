@@ -231,6 +231,10 @@ div.result {
     margin-bottom: 10px;
 }
 
+span.result-chara-detail {
+    margin: 0px 0px 3px;
+}
+
 .notice {
     margin-top: 2pt;
     width: 100%;
