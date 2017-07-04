@@ -511,7 +511,7 @@ label {
     color: white;
 }
 
-.btn-light, .label-light {
+.btn-light, .label-light, .bg-light {
     background-color: palegoldenrod;
     color: black;
 }

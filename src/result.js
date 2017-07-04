@@ -1014,17 +1014,38 @@ var Result = React.createClass({
                             pushSkillInfoElement2("bahaTA", "TA上昇(バハ)", "danger");
                             pushSkillInfoElement2("otherTA", "TA上昇(その他)", "danger");
 
-                            var skillstr = "";
+                            var criticalInfo = [];
                             if (Object.keys(skilldata.criticalArray).length > 0) {
-                                skillstr += intl.translate("クリティカル", locale) + "[";
+                                criticalInfo.push(
+                                    <span className="label label-light"></span>
+                                );
 
-                                for( var damageRatio in skilldata.criticalArray ) {
-                                    skillstr += damageRatio.toString() + intl.translate("倍", locale) + ": " + (100.0 * skilldata.criticalArray[damageRatio]).toFixed(3).toString() + "%, "
-                                }
-
-                                skillstr += intl.translate("標準偏差", locale) + " " + calcCriticalDeviation(skilldata.criticalArray).toFixed(3).toString() + ""
-
-                                skillstr += "] "
+                                criticalInfo.push(
+                                    <table className="table table-bordered" style={{"marginBottom": "0px"}} >
+                                        <thead>
+                                            <tr>
+                                                <th className="bg-light" style={{"fontSize": "10pt"}}>{intl.translate("技巧倍率", locale)}</th>
+                                                {Object.keys(skilldata.criticalArray).map( function (v) {
+                                                    return <th className="bg-light" style={{"fontSize": "10pt"}}>{parseFloat(v).toFixed(1)}{intl.translate("倍", locale)}</th>
+                                                })}
+                                                <th className="bg-light" style={{"fontSize": "10pt"}}>{intl.translate("標準偏差", locale)}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style={{"fontSize": "10pt"}}>{intl.translate("発生確率", locale)}</td>
+                                                {Object.keys(skilldata.criticalArray).map( function (v) {
+                                                    return (
+                                                        <td style={{ "fontSize": "10pt" }}>{(100.0 * skilldata.criticalArray[v]).toFixed(3)}%</td>
+                                                    )
+                                                })}
+                                                <td style={{"fontSize": "10pt"}}>
+                                                    {calcCriticalDeviation(skilldata.criticalArray).toFixed(3)}&nbsp;
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                );
                             }
 
                             var otherSkillInfo = [];
@@ -1047,12 +1068,13 @@ var Result = React.createClass({
 
                             charaDetail[key].push( <div>{mainSkillInfo}</div>);
                             charaDetail[key].push( <div>{multipleAttackSkillInfo}</div>);
+                            charaDetail[key].push( <div style={{"margin": "5px 0px"}}>{criticalInfo}</div>);
                             charaDetail[key].push( <div>{otherSkillInfo}</div>);
                         }
                     }
 
                     var res = [
-                        <tr className="result" title={skillstr} key={rank + 1}>
+                        <tr className="result" key={rank + 1}>
                             <td>{rank + 1}</td>
                             {tablebody.map(function (am, ind) {
                                 return (<td key={ind} >{am}</td>);
