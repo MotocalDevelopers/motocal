@@ -958,6 +958,16 @@ var Result = React.createClass({
                             if (skilldata.bahaTA != 0.0) { skillstr += intl.translate("TA上昇(バハ)", locale) + skilldata.bahaTA.toFixed(1); skillstr += "% "; }
                             if (skilldata.otherTA != 0.0) { skillstr += intl.translate("TA上昇(その他)", locale) + skilldata.otherTA.toFixed(1); skillstr += "% "; }
 
+                            if (Object.keys(skilldata.criticalArray).length > 0) {
+                                skillstr += "クリティカル[";
+
+                                for( var damageRatio in skilldata.criticalArray ) {
+                                    skillstr += damageRatio.toString() + "倍: " + (100.0 * skilldata.criticalArray[damageRatio]).toFixed(3).toString() + "%, "
+                                }
+
+                                skillstr += "] "
+                            }
+
                             if (skilldata.additionalDamage != 0.0) { skillstr += intl.translate("追加ダメージ", locale) + (100.0 * skilldata.additionalDamage).toFixed(1); skillstr += "% "; }
                             if (skilldata.damageUP != 0.0) { skillstr += intl.translate("与ダメージ上昇", locale) + (100.0 * skilldata.damageUP).toFixed(1); skillstr += "% "; }
                             if (skilldata.damageLimit != 0.0) { skillstr += intl.translate("ダメージ上限アップ", locale) + (100.0 * skilldata.damageLimit).toFixed(1); skillstr += "% "; }

@@ -282,30 +282,30 @@ module.exports.calcCriticalArray = function(normalCritical, _magnaCritical, norm
         }
 
         for(var i = 0; i < Math.pow(2, probability.length); i++) {
-            var ratio = 1.0
+            var eachProb = 1.0
             var attackRatio = 1.0
 
             for(var j = 0; j < probability.length; j++) {
                 if((bitmask[j] & i) > 0) {
                     // j番目の技巧が発動
-                    ratio *= probability[j]
+                    eachProb *= probability[j]
                     attackRatio += damageRatio[j]
                 } else {
                     // j番目の技巧は非発動
-                    ratio *= 1.0 - probability[j]
+                    eachProb *= 1.0 - probability[j]
                 }
             }
 
             // ここまでである1ケースの発動率が算出できた
-            if(ratio > 0.0) {
-                if(ratio > 1.0) ratio = 1.0
+            if(eachProb > 0.0) {
+                if(eachProb > 1.0) eachProb = 1.0
 
                 if(!(attackRatio in criticalRatioArray)) {
                     // ratioが存在しない場合
-                    criticalRatioArray[attackRatio] = {"ratio": ratio}
+                    criticalRatioArray[attackRatio] = eachProb
                 } else {
                     // ratioが存在する場合
-                    criticalRatioArray[attackRatio]["ratio"] += ratio
+                    criticalRatioArray[attackRatio] += eachProb
                 }
             }
         }
@@ -319,7 +319,7 @@ module.exports.calcCriticalRatio = function(criticalRatioArray) {
 
     if (Object.keys(criticalRatioArray).length > 0) {
         for(var attackRatio in criticalRatioArray) {
-            criticalRatio += attackRatio * criticalRatioArray[attackRatio]["ratio"]
+            criticalRatio += attackRatio * criticalRatioArray[attackRatio]
         }
     } else {
         criticalRatio = 1.0
@@ -417,6 +417,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
         } else {
             var damageUP = 0.0
+            var criticalArray = {}
             var criticalRatio = 1.0
         }
 
@@ -470,6 +471,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         coeffs["additionalDamage"] = additionalDamage
         coeffs["damageUP"] = damageUP
         coeffs["damageLimit"] = damageLimit
+        coeffs["criticalArray"] = criticalArray
 
         // 連撃情報
         coeffs["normalDA"] = armDAupNormal
@@ -478,7 +480,6 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         coeffs["cosmosDA"] = armDAupCosmos
         coeffs["bahaDA"] = armDAupBaha
         coeffs["otherDA"] = armDAupOther
-
         coeffs["normalTA"] = armTAupNormal
         coeffs["magnaTA"] = armTAupMagna
         coeffs["bahaTA"] = armTAupBaha
