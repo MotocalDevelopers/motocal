@@ -32,7 +32,8 @@ const plugins = [
       // minifyURLs: true,
     },
     ADSENSE_AD_CLIENT: JSON.stringify(process.env.ADSENSE_AD_CLIENT || ''),
-    ADSENSE_AD_SLOT_PC: JSON.stringify(process.env.ADSENSE_AD_SLOT_PC || ''),
+    ADSENSE_AD_SLOT_PC1: JSON.stringify(process.env.ADSENSE_AD_SLOT_PC1 || ''),
+    ADSENSE_AD_SLOT_PC2: JSON.stringify(process.env.ADSENSE_AD_SLOT_PC2 || ''),
     ADSENSE_AD_SLOT_MOBILE: JSON.stringify(process.env.ADSENSE_AD_SLOT_MOBILE || ''),
   }),
   new webpack.DefinePlugin({

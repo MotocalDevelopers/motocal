@@ -650,8 +650,12 @@ var ResultList = React.createClass({
                         <Button block style={{ float: "left", width: "50%", margin: "0px" }} bsStyle="success" bsSize="large" onClick={this.openHPChart} disabled={!this.state.ChartButtonActive} >{intl.translate("背水グラフ", locale)}</Button>
                         <Button block style={{ float: "left", width: "50%", margin: "0px" }} bsStyle="success" bsSize="large" onClick={this.openSimulator} disabled={!this.state.ChartButtonActive} >{intl.translate("ダメージシミュレータを開く", locale)}</Button>
                     </ButtonGroup>
+
                     <hr />
-                    <AdsenseAdvertisement locale={locale} type="pc" />
+                    <div style={{"width": "1050px"}}>
+                        <AdsenseAdvertisement locale={locale} type="pc-1" />
+                        <AdsenseAdvertisement locale={locale} type="pc-2" />
+                    </div>
                     <hr />
 
                     {summon.map(function (s, summonindex) {

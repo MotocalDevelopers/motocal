@@ -1,6 +1,5 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var intl = require('./translate.js')
 
 var AdsenseAdvertisement = React.createClass({
     showUpAdsense: function() {
@@ -13,9 +12,7 @@ var AdsenseAdvertisement = React.createClass({
     },
     render: function() {
         return (
-            <div style={{width: "100%"}}>
-                <div ref="adsense-space"></div>
-            </div>
+            <div ref="adsense-space" style={{"display": "inline-block"}}></div>
         );
     },
 });
