@@ -149,6 +149,14 @@ var multiLangData = {
         "en": "All",
         "ja": "全属性",
     },
+    "無": {
+        "en": "Non",
+        "ja": "無",
+    },
+    "無（技巧あり）": {
+        "en": "Non (but Crit.)",
+        "ja": "無（技巧あり）",
+    },
     "バフ": {
         "en": "Buff",
         "ja": "バフ",
@@ -1969,6 +1977,10 @@ var multiLangData = {
     "notice-20170617-1": {
         "en": "17/06/2017: Fixed Base ATK and HP calculation above Rank 175.",
         "ja": "2017/06/17: Rank175以上の基礎攻撃力/HP計算式を修正.",
+    },
+    "notice-20170704-1": {
+        "en": "04/07/2017: Added new weapons.",
+        "ja": "2017/06/17: 武器追加.",
     },
 }
 

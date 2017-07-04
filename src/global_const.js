@@ -27,6 +27,7 @@ module.exports.ElementColorLabel = React.createClass({
         if(element == "wind") return <span className="label label-success" style={{"fontSize": "12pt"}}>{this.props.children}</span>
         if(element == "light") return <span className="label label-light" style={{"fontSize": "12pt"}}>{this.props.children}</span>
         if(element == "dark") return <span className="label label-dark" style={{"fontSize": "12pt"}}>{this.props.children}</span>
+        if(element == "non" || element == "non-but-critical") return <span className="label label-non" style={{"fontSize": "12pt"}}>{this.props.children}</span>
         return <span className="label label-default" style={{"fontSize": "12pt"}}>{this.props.children}</span>
     },
     propTypes: {
@@ -41,6 +42,8 @@ module.exports.getElementColorLabel = (function(element, locale) {
     if(element == "wind") return <span className="label label-success">{intl.translate("風", locale)}</span>
     if(element == "light") return <span className="label label-light">{intl.translate("光", locale)}</span>
     if(element == "dark") return <span className="label label-dark">{intl.translate("闇", locale)}</span>
+    if(element == "non") return <span className="label label-non">{intl.translate("無", locale)}</span>
+    if(element == "non-but-critical") return <span className="label label-non">{intl.translate("無（技巧あり）", locale)}</span>
     return <span className="label label-danger">{intl.translate("火", locale)}</span>
 });
 
@@ -327,6 +330,17 @@ var elementTypes = {
     "dark": "闇",
 }
 
+var enemyElementTypes = {
+    "fire": "火",
+    "wind": "風",
+    "earth": "土",
+    "water": "水",
+    "light": "光",
+    "dark": "闇",
+    "non": "無",
+    "non-but-critical": "無（技巧あり）",
+}
+
 var filterElementTypes = {
     "fire": "火",
     "wind": "風",
@@ -563,6 +577,7 @@ module.exports.zenith = zenith
 module.exports.raceTypes = raceTypes
 module.exports.skillAmounts = skillAmounts
 module.exports.elementTypes = elementTypes
+module.exports.enemyElementTypes = enemyElementTypes
 module.exports.filterElementTypes = filterElementTypes
 module.exports.summonTypes = summonTypes
 module.exports.skilltypes = skilltypes
@@ -619,6 +634,9 @@ module.exports.selector.en.races = Object.keys(raceTypes).map(function(opt){retu
 
 module.exports.selector.ja.elements = Object.keys(elementTypes).map(function(opt){return <option value={opt} key={opt}>{elementTypes[opt]}</option>;});
 module.exports.selector.en.elements = Object.keys(elementTypes).map(function(opt){return <option value={opt} key={opt}>{intl.translate(elementTypes[opt], "en")}</option>;});
+
+module.exports.selector.ja.enemyElements = Object.keys(enemyElementTypes).map(function(opt){return <option value={opt} key={opt}>{enemyElementTypes[opt]}</option>;});
+module.exports.selector.en.enemyElements = Object.keys(enemyElementTypes).map(function(opt){return <option value={opt} key={opt}>{intl.translate(enemyElementTypes[opt], "en")}</option>;});
 
 module.exports.selector.ja.filterelements = Object.keys(filterElementTypes).map(function(opt){return <option value={opt} key={opt}>{filterElementTypes[opt]}</option>;});
 module.exports.selector.en.filterelements = Object.keys(filterElementTypes).map(function(opt){return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "en")}</option>;});

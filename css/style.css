@@ -511,3 +511,9 @@ label {
     background-color: palegoldenrod;
     color: black;
 }
+
+.btn-non, .label-non {
+    background-color: #FFFFFF;
+    color: black;
+    border: 1px solid #000000;
+}
