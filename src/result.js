@@ -855,7 +855,7 @@ var Result = React.createClass({
                         ++colSize;
                     }
                     if (sw.switchCriticalRatio) {
-                        if (getTypeBonus(prof.element, prof.enemyElement) == 1.5) {
+                        if (getTypeBonus(prof.element, prof.enemyElement) == 1.5 || prof.enemyElement == "non-but-critical") {
                             tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "\n(" + m.data.Djeeta.effectiveCriticalRatio.toFixed(4) + ")")
                             ++colSize;
                         } else {

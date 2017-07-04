@@ -1,32 +1,14 @@
 var React = require('react');
 
-var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Label, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var {Label, Button, ButtonGroup, FormControl, Modal, Panel, Glyphicon, Col, Row, Grid} = require('react-bootstrap');
 var GlobalConst = require('./global_const.js')
 var {ColP} = require('./gridp.js')
 var {RegisteredArm} = require('./template.js')
 var TextWithTooltip = GlobalConst.TextWithTooltip
-var ElementColorLabel = GlobalConst.ElementColorLabel
 var intl = require('./translate.js')
 
 // inject GlobalConst...
-var elementRelation = GlobalConst.elementRelation
-var bahamutRelation = GlobalConst.bahamutRelation
-var bahamutFURelation = GlobalConst.bahamutFURelation
-var supportAbilities = GlobalConst.supportAbilities
 var selector = GlobalConst.selector
-var zenith = GlobalConst.zenith
-var Jobs = GlobalConst.Jobs
-var armTypes = GlobalConst.armTypes
-var jobTypes = GlobalConst.jobTypes
-var keyTypes = GlobalConst.keyTypes
-var skilltypes = GlobalConst.skilltypes
-var skillAmounts = GlobalConst.skillAmounts
-var elementTypes = GlobalConst.elementTypes
-var summonTypes = GlobalConst.summonTypes
-var summonElementTypes = GlobalConst.summonElementTypes
-var raceTypes = GlobalConst.raceTypes
-var filterElementTypes = GlobalConst.filterElementTypes
-var enemyDefenseType = GlobalConst.enemyDefenseType
 var _ua = GlobalConst._ua;
 
 // ArmList has a number of Arm objects.

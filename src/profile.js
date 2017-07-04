@@ -187,7 +187,7 @@ var Profile = React.createClass({
                         <th className="bg-primary">
                         {intl.translate("敵の属性", locale)}*
                         </th>
-                        <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].elements} </FormControl></td>
+                        <td><FormControl componentClass="select" value={this.state.enemyElement} onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].enemyElements} </FormControl></td>
                     </tr></TextWithTooltip>
 
                     <tr>

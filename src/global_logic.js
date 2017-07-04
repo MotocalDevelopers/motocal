@@ -328,12 +328,11 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
     for(var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind]
 
-        // for attack
+        // 各種攻刃係数の計算
         var magnaCoeff = 1.0 + 0.01 * totals[key]["magna"] * totalSummon["magna"]
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"]) * totalSummon["magna"]
         var unknownCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["unknownOther"]
         var unknownHaisuiCoeff = 1.0 + 0.01 * totals[key]["unknownOtherHaisui"]
-
         var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
         var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"]
         var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
@@ -378,7 +377,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var magnaSante = totals[key]["magnaSante"] * totalSummon["magna"];
         var unknownOtherNite = totals[key]["unknownOtherNite"]
 
-        // DATA sup
+        // DATA 上限
         // 通常・方陣・EX・バハ・コスモスBLで別枠とする
         // DATA debuff は羅刹用
         var armDAupNormal = (normalNite + normalSante > 50.0) ? 50.0 : normalNite + normalSante
@@ -401,12 +400,16 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var daRate = (parseFloat(totalDA) >= 1.0) ? 1.0 : parseFloat(totalDA)
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
 
-        if(totals[key]["typeBonus"] != 1.5) {
-            var damageUP = 0.0
-            var criticalRatio = 1.0
-        } else {
+        if(totals[key]["typeBonus"] == 1.5) {
             var damageUP = totals[key]["tenshiDamageUP"]
             var criticalRatio = module.exports.calcCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+        } else if (prof.enemyElement == "non-but-critical") {
+            // "無（技巧あり）"の場合の処理
+            var damageUP = 0.0
+            var criticalRatio = module.exports.calcCriticalRatio(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+        } else {
+            var damageUP = 0.0
+            var criticalRatio = 1.0
         }
 
         var criticalAttack = parseInt(totalAttack * criticalRatio)
