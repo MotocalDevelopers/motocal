@@ -506,7 +506,7 @@ label {
 }
 
 /* bootstrap custom themes */
-.btn-dark, .label-dark {
+.btn-dark, .label-dark, .bg-dark {
     background-color: black;
     color: white;
 }

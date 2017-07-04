@@ -1017,18 +1017,14 @@ var Result = React.createClass({
                             var criticalInfo = [];
                             if (Object.keys(skilldata.criticalArray).length > 0) {
                                 criticalInfo.push(
-                                    <span className="label label-light"></span>
-                                );
-
-                                criticalInfo.push(
                                     <table className="table table-bordered" style={{"marginBottom": "0px"}} >
                                         <thead>
                                             <tr>
-                                                <th className="bg-light" style={{"fontSize": "10pt"}}>{intl.translate("技巧倍率", locale)}</th>
+                                                <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("技巧倍率", locale)}</th>
                                                 {Object.keys(skilldata.criticalArray).map( function (v) {
-                                                    return <th className="bg-light" style={{"fontSize": "10pt"}}>{parseFloat(v).toFixed(1)}{intl.translate("倍", locale)}</th>
+                                                    return <th className="bg-success" style={{"fontSize": "10pt"}}>{parseFloat(v).toFixed(1)}{intl.translate("倍", locale)}</th>
                                                 })}
-                                                <th className="bg-light" style={{"fontSize": "10pt"}}>{intl.translate("標準偏差", locale)}</th>
+                                                <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("標準偏差", locale)}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
