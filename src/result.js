@@ -1020,12 +1020,13 @@ var Result = React.createClass({
 
                             var criticalInfo = [];
                             if (Object.keys(skilldata.criticalArray).length > 0) {
+                                var sortedKeys = Object.keys(skilldata.criticalArray).sort();
                                 criticalInfo.push(
                                     <table className="table table-bordered" style={{"marginBottom": "0px"}} >
                                         <thead>
                                             <tr>
                                                 <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("技巧倍率", locale)}</th>
-                                                {Object.keys(skilldata.criticalArray).map( function (v) {
+                                                {sortedKeys.map( function (v) {
                                                     return <th className="bg-success" style={{"fontSize": "10pt"}}>{parseFloat(v).toFixed(1)}{intl.translate("倍", locale)}</th>
                                                 })}
                                                 <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("標準偏差", locale)}</th>
@@ -1034,7 +1035,7 @@ var Result = React.createClass({
                                         <tbody>
                                             <tr>
                                                 <td style={{"fontSize": "10pt"}}>{intl.translate("発生確率", locale)}</td>
-                                                {Object.keys(skilldata.criticalArray).map( function (v) {
+                                                {sortedKeys.map( function (v) {
                                                     return (
                                                         <td style={{ "fontSize": "10pt" }}>{(100.0 * skilldata.criticalArray[v]).toFixed(3)}%</td>
                                                     )
