@@ -826,7 +826,7 @@ var Result = React.createClass({
                     if (sw.switchCharaAttack) {
                         for (key in m.data) {
                             charaDetail[key].push(
-                                <span className="result-chara-detail">
+                                <span key={key + "-attack"} className="result-chara-detail">
                                     <span className="label label-primary">{intl.translate("攻撃力", locale)}</span> {m.data[key].totalAttack}&nbsp;
                                 </span>
                             );
@@ -835,7 +835,7 @@ var Result = React.createClass({
 
                     if (sw.switchDATA) {
                         charaDetail["Djeeta"].push(
-                            <span className="result-chara-detail">
+                            <span key={key + "-da"} className="result-chara-detail">
                                 <span className="label label-danger">DA</span> {(100.0 * m.data.Djeeta.totalDA).toFixed(1)}%&nbsp;
                                 <span className="label label-danger">TA</span> {(100.0 * m.data.Djeeta.totalTA).toFixed(1)}%&nbsp;
                             </span>
@@ -848,7 +848,7 @@ var Result = React.createClass({
                             // 指定されていたらDjeetaじゃない場合だけ
                             if (!sw.switchDATA || (key != "Djeeta")) {
                                 charaDetail[key].push(
-                                    <span className="result-chara-detail">
+                                    <span key={key + "-da"} className="result-chara-detail">
                                         <span className="label label-danger">DA</span> {(100.0 * m.data[key].totalDA).toFixed(1)}%&nbsp;
                                         <span className="label label-danger">TA</span> {(100.0 * m.data[key].totalTA).toFixed(1)}%&nbsp;
                                     </span>
@@ -861,7 +861,7 @@ var Result = React.createClass({
                         for (key in m.data) {
                             // 弱体耐性率は%表記のまま扱う
                             charaDetail[key].push(
-                                <span className="result-chara-detail">
+                                <span key={key + "-debuffResistance"} className="result-chara-detail">
                                     <span className="label label-success">弱体耐性率</span> {parseInt(m.data[key].debuffResistance)}%&nbsp;
                                 </span>
                             );
@@ -893,7 +893,7 @@ var Result = React.createClass({
                     if (sw.switchCharaHP) {
                         for (key in m.data) {
                             charaDetail[key].push(
-                                <span className="result-chara-detail">
+                                <span key={key + "-HP"} className="result-chara-detail">
                                     <span className="label label-success">{intl.translate("残HP", locale)} / HP</span>&nbsp;
                                     {parseInt(m.data[key].totalHP * m.data[key].remainHP)}&nbsp;/&nbsp;{m.data[key].totalHP}&nbsp;
                                 </span>
@@ -915,7 +915,7 @@ var Result = React.createClass({
                     if (sw.switchCharaTotalExpected) {
                         for (key in m.data) {
                             charaDetail[key].push(
-                                <span className="result-chara-detail">
+                                <span key={key + "-PCF"} className="result-chara-detail">
                                     <span className="label label-primary">{intl.translate("総回技", locale)}</span> {m.data[key].totalExpected}&nbsp;
                                 </span>
                             );
@@ -969,13 +969,13 @@ var Result = React.createClass({
                             var skilldata = m.data[key].skilldata
 
                             // 攻刃系スキル用
-                            var pushSkillInfoElement1 = (key, label, labelType = "primary") => {
+                            var pushSkillInfoElement1 = (skillKey, label, labelType = "primary") => {
                                 // 外側のmainSkillInfoとskilldataとlocaleを使う
-                                if (skilldata[key] != 1.0) {
+                                if (skilldata[skillKey] != 1.0) {
                                     mainSkillInfo.push(
-                                        <span>
+                                        <span key={key + "-" + skillKey}>
                                             <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
-                                            {(100.0 * (skilldata[key] - 1.0)).toFixed(1)}%&nbsp;
+                                            {(100.0 * (skilldata[skillKey] - 1.0)).toFixed(1)}%&nbsp;
                                         </span>
                                     );
                                 }
@@ -995,13 +995,13 @@ var Result = React.createClass({
 
                             var multipleAttackSkillInfo = [];
                             // 連撃スキル用
-                            var pushSkillInfoElement2 = (key, label, labelType = "primary") => {
+                            var pushSkillInfoElement2 = (skillKey, label, labelType = "primary") => {
                                 // 外側のskillInfoとskilldataとlocaleを使う
-                                if (skilldata[key] != 0.0) {
+                                if (skilldata[skillKey] != 0.0) {
                                     multipleAttackSkillInfo.push(
-                                        <span>
+                                        <span key={key + "-" + skillKey}>
                                             <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
-                                            {skilldata[key].toFixed(1)}%&nbsp;
+                                            {skilldata[skillKey].toFixed(1)}%&nbsp;
                                         </span>
                                     );
                                 }
@@ -1022,12 +1022,12 @@ var Result = React.createClass({
                             if (Object.keys(skilldata.criticalArray).length > 0) {
                                 var sortedKeys = Object.keys(skilldata.criticalArray).sort();
                                 criticalInfo.push(
-                                    <table className="table table-bordered" style={{"marginBottom": "0px"}} >
+                                    <table key={key + "-criticalInfoTable"} className="table table-bordered" style={{"marginBottom": "0px"}} >
                                         <thead>
                                             <tr>
                                                 <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("技巧倍率", locale)}</th>
-                                                {sortedKeys.map( function (v) {
-                                                    return <th className="bg-success" style={{"fontSize": "10pt"}}>{parseFloat(v).toFixed(1)}{intl.translate("倍", locale)}</th>
+                                                {sortedKeys.map( function (v, ind) {
+                                                    return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{parseFloat(v).toFixed(1)}{intl.translate("倍", locale)}</th>
                                                 })}
                                                 <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("標準偏差", locale)}</th>
                                             </tr>
@@ -1035,9 +1035,9 @@ var Result = React.createClass({
                                         <tbody>
                                             <tr>
                                                 <td style={{"fontSize": "10pt"}}>{intl.translate("発生確率", locale)}</td>
-                                                {sortedKeys.map( function (v) {
+                                                {sortedKeys.map( function (v, ind) {
                                                     return (
-                                                        <td style={{ "fontSize": "10pt" }}>{(100.0 * skilldata.criticalArray[v]).toFixed(3)}%</td>
+                                                        <td key={ind} style={{ "fontSize": "10pt" }}>{(100.0 * skilldata.criticalArray[v]).toFixed(3)}%</td>
                                                     )
                                                 })}
                                                 <td style={{"fontSize": "10pt"}}>
@@ -1051,13 +1051,13 @@ var Result = React.createClass({
 
                             var otherSkillInfo = [];
                             // その他スキル用
-                            var pushSkillInfoElement3 = (key, label, labelType = "primary") => {
+                            var pushSkillInfoElement3 = (skillKey, label, labelType = "primary") => {
                                 // 外側のskillInfoとskilldataとlocaleを使う
-                                if (skilldata[key] != 0.0) {
+                                if (skilldata[skillKey] != 0.0) {
                                     otherSkillInfo.push(
-                                        <span>
+                                        <span key={key + "-" + skillKey}>
                                             <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
-                                            {(100.0 * skilldata[key]).toFixed(1)}%&nbsp;
+                                            {(100.0 * skilldata[skillKey]).toFixed(1)}%&nbsp;
                                         </span>
                                     );
                                 }
@@ -1067,10 +1067,10 @@ var Result = React.createClass({
                             pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
                             pushSkillInfoElement3("ougiDamageBuff", "奥義ダメージ", "default");
 
-                            charaDetail[key].push( <div>{mainSkillInfo}</div>);
-                            charaDetail[key].push( <div>{multipleAttackSkillInfo}</div>);
-                            charaDetail[key].push( <div style={{"margin": "5px 0px"}}>{criticalInfo}</div>);
-                            charaDetail[key].push( <div>{otherSkillInfo}</div>);
+                            charaDetail[key].push( <div key={key + "-mainSkillInfo"} >{mainSkillInfo}</div>);
+                            charaDetail[key].push( <div key={key + "-multipleAttackInfo"} >{multipleAttackSkillInfo}</div>);
+                            charaDetail[key].push( <div key={key + "-criticalInfo"} style={{"margin": "5px 0px"}}>{criticalInfo}</div>);
+                            charaDetail[key].push( <div key={key + "-otherSkillInfo"} >{otherSkillInfo}</div>);
                         }
                     }
 
