@@ -1,7 +1,6 @@
 var React = require('react');
 var intl = require('./translate.js')
-var { Label, Checkbox, FormControl, InputGroup, FormGroup, Col, Row, Grid, Button, ButtonGroup, Modal } = require('react-bootstrap');
-var { ColP } = require('./gridp.js')
+var { Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, Panel, PanelGroup, Modal, Glyphicon } = require('react-bootstrap');
 var { RegisteredChara } = require('./template.js')
 var GlobalConst = require('./global_const.js')
 
@@ -181,6 +180,7 @@ var CharaList = React.createClass({
     render: function () {
         var locale = this.props.locale;
         var charas = this.state.charas;
+        var charalist = this.state.charalist;
         var hChange = this.handleOnChange;
         var dataName = this.props.dataName;
         var defaultElement = this.state.defaultElement;
@@ -200,13 +200,39 @@ var CharaList = React.createClass({
                 <br />
                 <span>{intl.translate("属性一括変更", locale)}</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector[locale].elements} </FormControl>
-                <Grid fluid style={{ "width": "100%" }} >
-                    <Row>
-                        {charas.map(function (c, ind) {
-                            return <Chara key={c} keyid={c} onChange={hChange} onRemove={handleOnRemove} onMoveUp={handleMoveUp} onMoveDown={handleMoveDown} id={ind} dataName={dataName} defaultElement={defaultElement} addChara={addChara} addCharaID={addCharaID} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} copyCompleted={copyCompleted} arrayForCopy={arrayForCopy[ind]} />;
-                        })}
-                    </Row>
-                </Grid>
+
+                <PanelGroup defaultActiveKey={0} accordion>
+                {charas.map(function (c, ind) {
+                    return (
+                        <Panel bsStyle="default" eventKey={ind} header={
+                                <span>
+                                    {(ind < 3) ? "Front " : "Sub "}
+                                    {(ind + 1)}: { (charalist[ind] != null) ? charalist[ind].name : "" }
+                                    &nbsp;<Glyphicon glyph="pencil"/>
+                                </span>
+                            }>
+
+                            <Chara
+                                key={c}
+                                onChange={hChange}
+                                onRemove={handleOnRemove}
+                                onMoveUp={handleMoveUp}
+                                onMoveDown={handleMoveDown}
+                                id={ind}
+                                dataName={dataName}
+                                defaultElement={defaultElement}
+                                addChara={addChara}
+                                addCharaID={addCharaID}
+                                locale={locale}
+                                openPresets={openPresets}
+                                dataForLoad={dataForLoad}
+                                copyCompleted={copyCompleted}
+                                arrayForCopy={arrayForCopy[ind]}
+                            />
+                        </Panel>
+                    );
+                })}
+                </PanelGroup>
 
                 <Modal show={this.state.openPresets} onHide={this.closePresets}>
                     <Modal.Header closeButton>
@@ -368,7 +394,7 @@ var Chara = React.createClass({
         var locale = this.props.locale
 
         return (
-            <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
+            <div className="chara-content">
                 {(this.props.id < 3) ?
                     <h3><Label bsStyle="primary">Front No.{this.props.id + 1}</Label></h3>
                     :
@@ -490,7 +516,7 @@ var Chara = React.createClass({
                     <Button bsStyle="danger" style={{ "width": "50%", "margin": "2px 0 2px 0" }} onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
                     <Button bsStyle="info" style={{ "width": "25%", "margin": "2px 0 2px 0" }} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
                 </ButtonGroup>
-            </ColP>
+            </div>
         );
     }
 });
