@@ -217,7 +217,7 @@ var ArmList = React.createClass({
                     return (
                         <Panel bsStyle="default" eventKey={ind} header={
                                 <span>
-                                    No. {(ind + 1)}: {alist[ind].name}
+                                    No. {(ind + 1)}: { (alist[ind] != null) ? alist[ind].name : "" }
                                     &nbsp;<Glyphicon glyph="pencil"/>
                                 </span>
                             }>
