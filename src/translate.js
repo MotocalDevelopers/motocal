@@ -1240,9 +1240,13 @@ var multiLangData = {
         "en": "Normal Restraint (M)",
         "ja": "通常克己(中)",
     },
-    "通常神威": {
-        "en": "Normal Majesty",
-        "ja": "通常神威",
+    "通常神威(小)": {
+        "en": "Normal Majesty (S)",
+        "ja": "通常神威(小)",
+    },
+    "通常神威(中)": {
+        "en": "Normal Majesty (M)",
+        "ja": "通常神威(中)",
     },
     "通常括目": {
         "en": "Normal Heed",
@@ -1251,6 +1255,10 @@ var multiLangData = {
     "通常羅刹": {
         "en": "Normal Haunt",
         "ja": "通常羅刹",
+    },
+    "通常無双(中)": {
+        "en": "Normal Primacy",
+        "ja": "通常無双(中)",
     },
     "マグナ攻刃": {
         "en": "Magna Might I",

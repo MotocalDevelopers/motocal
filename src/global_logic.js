@@ -897,9 +897,15 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             // 背水計算部分は別メソッドで
                             totals[key][stype] += comb[i] * module.exports.calcHaisuiValue(stype, amount, slv, totals[key]["remainHP"])
                         } else if(stype == 'normalKamui') {
-                            // 神威は攻撃力とHPの上昇量が等しい
-                            totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                            totals[key]["normalHP"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            if (amount == 'S') {
+                                // 神威小は攻撃力とHPの上昇量が等しい
+                                totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                                totals[key]["normalHP"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            } else {
+                                // 神威中は攻刃(中) & 守護(中)
+                                totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                                totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
+                            }
                         } else if(stype == 'magnaKamui') {
                             // 神威は攻撃力とHPの上昇量が等しい
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
@@ -937,6 +943,9 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             totals[key]["DAbuff"] -= comb[i] * 38.0;
                             totals[key]["TAbuff"] -= comb[i] * 38.0;
+                        } else if(stype == 'normalMusou') {
+                            totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            totals[key]["normalNite"] += comb[i] * skillAmounts["normalNite"][amount][slv - 1];
                         } else if(stype == 'normalBoukun') {
                             if(amount == "L") {
                                 totals[key]["HPdebuff"] += comb[i] * 0.10

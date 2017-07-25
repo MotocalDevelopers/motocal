@@ -151,6 +151,15 @@ skillnamelist["normalHPM"] = {
     u"憎悪の守護": "dark"
 }
 
+skillnamelist["normalKamuiM"] = {
+    u"業火の神威": "fire",
+    u"渦潮の神威": "water",
+    u"大地の神威": "earth",
+    u"竜巻の神威": "wind",
+    u"雷電の神威": "light",
+    u"憎悪の神威": "dark"
+}
+
 skillnamelist["normalNiteM"] = {
     u"業火の二手": "fire",
     u"渦潮の二手": "water",
@@ -203,6 +212,16 @@ skillnamelist["normalRasetsuM"] = {
     u"竜巻の羅刹": "wind",
     u"雷電の羅刹": "light",
     u"憎悪の羅刹": "dark"
+}
+
+# 無双: 攻刃 + 二手
+skillnamelist["normalMusouM"] = {
+    u"業火の無双": "fire",
+    u"渦潮の無双": "water",
+    u"大地の無双": "earth",
+    u"竜巻の無双": "wind",
+    u"雷電の無双": "light",
+    u"憎悪の無双": "dark"
 }
 
 # normalS
