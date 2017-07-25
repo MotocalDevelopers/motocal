@@ -1,6 +1,6 @@
 var React = require('react');
 
-var { Label, Button, ButtonGroup, FormControl, Modal, Panel, Glyphicon, Col, Row, Grid } = require('react-bootstrap');
+var { Label, Button, ButtonGroup, FormControl, Modal, Panel, PanelGroup, Glyphicon, Col, Row, Grid } = require('react-bootstrap');
 var GlobalConst = require('./global_const.js')
 var { ColP } = require('./gridp.js')
 var { RegisteredArm } = require('./template.js')
@@ -189,6 +189,7 @@ var ArmList = React.createClass({
         var locale = this.props.locale
         var dataName = this.props.dataName;
         var arms = this.state.arms;
+        var alist = this.state.alist;
         var hChange = this.handleOnChange;
         var hRemove = this.handleOnRemove;
         var hCopy = this.handleOnCopy;
@@ -210,13 +211,39 @@ var ArmList = React.createClass({
                 <br />
                 <span>{intl.translate("属性一括変更", locale)}</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector[locale].elements} </FormControl>
-                <Grid fluid>
-                    <Row>
-                        {arms.map(function (arm, ind) {
-                            return <Arm key={arm} onChange={hChange} onRemove={hRemove} onCopy={hCopy} onMoveUp={hMoveUp} onMoveDown={hMoveDown} addArm={addArm} addArmID={addArmID} considerNum={considerNum} id={ind} keyid={arm} dataName={dataName} defaultElement={defaultElement} locale={locale} openPresets={openPresets} dataForLoad={dataForLoad} arrayForCopy={arrayForCopy[ind]} copyCompleted={copyCompleted} />;
-                        })}
-                    </Row>
-                </Grid>
+
+                <PanelGroup defaultActiveKey={0} accordion>
+                {arms.map(function (arm, ind) {
+                    return (
+                        <Panel bsStyle="default" eventKey={ind} header={
+                                <span>
+                                    No. {(ind + 1)}: {alist[ind].name}
+                                    &nbsp;<Glyphicon glyph="pencil"/>
+                                </span>
+                            }>
+                            <Arm 
+                                key={arm}
+                                onChange={hChange}
+                                onRemove={hRemove}
+                                onCopy={hCopy}
+                                onMoveUp={hMoveUp}
+                                onMoveDown={hMoveDown}
+                                addArm={addArm}
+                                addArmID={addArmID}
+                                considerNum={considerNum}
+                                id={ind}
+                                keyid={arm}
+                                dataName={dataName}
+                                defaultElement={defaultElement}
+                                locale={locale}
+                                openPresets={openPresets}
+                                dataForLoad={dataForLoad}
+                                arrayForCopy={arrayForCopy[ind]}
+                                copyCompleted={copyCompleted} />
+                        </Panel>
+                    );
+                })}
+                </PanelGroup>
 
                 <Modal show={this.state.openPresets} onHide={this.closePresets}>
                     <Modal.Header closeButton>
@@ -425,8 +452,7 @@ var Arm = React.createClass({
         var locale = this.props.locale;
 
         return (
-            <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
-                <h3><Label bsStyle="primary">No.{this.props.id + 1}</Label></h3>
+            <div className="chara-content">
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
                         <tr>
@@ -493,7 +519,7 @@ var Arm = React.createClass({
                     <Button bsStyle="info" style={{ "width": "25%", "margin": "2px 0px 2px 0px" }} onClick={this.clickCopyButton}>{intl.translate("下にコピー", locale)}</Button>
                     <Button bsStyle="default" style={{ "width": "25%", "margin": "2px 0px 2px 0px" }} onClick={this.clickMoveDown}><i className="fa fa-angle-double-down" aria-hidden="true"></i>{intl.translate("後へ", locale)}</Button>
                 </ButtonGroup>
-            </ColP>
+            </div>
         );
     }
 });
