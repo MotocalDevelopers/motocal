@@ -1265,8 +1265,8 @@ var multiLangData = {
         "ja": "通常羅刹",
     },
     "通常無双(中)": {
-        "en": "Normal Primacy",
-        "ja": "通常無双(中)",
+        "en": "[UNVERIFIED] Normal Primacy",
+        "ja": "[未検証] 通常無双(中)",
     },
     "マグナ攻刃": {
         "en": "Magna Might I",
