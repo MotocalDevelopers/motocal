@@ -1596,6 +1596,10 @@ var multiLangData = {
         "en": "Damage Limit UP(10%)",
         "ja": "通常上限UP(10%)",
     },
+    "奥義上限UP(10%)" : {
+        "en": "Ougi Limit UP(10%)",
+        "ja": "奥義上限UP(10%)",
+    },
     // テンプレート用
     "王道: 竜巻の技巧": {
         "en": "Normal Verity (M)",
@@ -2016,7 +2020,11 @@ var multiLangData = {
     },
     "notice-20170704-1": {
         "en": "04/07/2017: Added new weapons. Implemented 'Non' element type. Implemented critical ratio array displaying.",
-        "ja": "2017/06/17: 武器追加. 無属性と無属性（技巧あり）を実装. 技巧倍率毎の発生確率表示を実装.",
+        "ja": "2017/07/04: 武器追加. 無属性と無属性（技巧あり）を実装. 技巧倍率毎の発生確率表示を実装.",
+    },
+    "notice-20170725-1": {
+        "en": "25/07/2017: Added new weapons. Implemented Ougi Damage Limit UP calculation. Added Primacy skill.",
+        "ja": "2017/07/25: 武器追加. 奥義上限UP計算の実装. 無双スキルと奥義上限UPと舞姫の演舞の実装.",
     },
 }
 

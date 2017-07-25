@@ -13,6 +13,7 @@ var Notice = React.createClass({
                 <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
                 <Panel bsStyle="default" collapsible header={<span><Glyphicon glyph="chevron-right" />&nbsp;Update Logs</span>}>
                     <ul className="list-group">
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20170725-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20170704-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20170617-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20170531-1", locale)}</li>
@@ -162,6 +163,7 @@ var Notice = React.createClass({
                     <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/801961194965766144"> @Hecate_mk2 さんの渾身修正検証結果 </a></li>
                     <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/809987671326072833"> @Hecate_mk2 さんのネツァ検証結果 </a></li>
                     <li className="list-group-item"> <a href="https://twitter.com/hibino_naoki/status/858792702514573312"> @hibino_naoki さんの攻刃III検証結果 </a></li>
+                    <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/889634680005414914"> @Hecate_mk2 さんの神威(中)、リミットブレイク検証結果 </a></li>
                 </ul>
 
                 <h3>スキル性能・各種計算式</h3>
@@ -217,10 +219,11 @@ var Notice = React.createClass({
                     </tbody></table>
                 </div>
                 <ul className="list-group">
+                    <li className="list-group-item">紅蓮の呪印: 通常攻刃(大)</li>
                     <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は<s>乗らない</s>乗る)</li>
                     <li className="list-group-item">霧氷の追牙・肆: パーティ4番目のキャラに追加ダメージ(1% * slv) / 奥義ゲージ上昇量 - 30%</li>
-                    <li className="list-group-item">通常神威: 通常攻刃(小) + 通常守護(小)</li>
-                    <li className="list-group-item">マグナ神威: マグナ攻刃(小) + マグナ守護(小)</li>
+                    <li className="list-group-item">通常神威: 通常攻刃(小)の値を攻刃と守護として扱う</li>
+                    <li className="list-group-item">マグナ神威: マグナ攻刃(小)の値を攻刃と守護として扱う</li>
                     <li className="list-group-item">通常刹那: 通常技巧(中) + 通常攻刃(中) </li>
                     <li className="list-group-item">マグナ刹那: マグナ技巧(中) + マグナ攻刃(中) </li>
                     <li className="list-group-item">通常克己: 通常技巧(中) + 通常二手(中) </li>
@@ -231,6 +234,7 @@ var Notice = React.createClass({
                     <li className="list-group-item">マグナ括目: マグナ二手(小)と同様</li>
                     <li className="list-group-item">通常羅刹: 通常攻刃(中) + (連撃率-38%) </li>
                     <li className="list-group-item">マグナ羅刹: マグナ攻刃(中) + (連撃率-38%)</li>
+                    <li className="list-group-item">通常無双: 通常攻刃(中) + 通常二手(中) </li>
                     <li className="list-group-item">アンノウン暴君(ミフネ): アンノウン攻刃(大) + HP減少(7%) </li>
                     <li className="list-group-item">技巧(小, 中, 大): クリティカル時倍率 50%</li>
                     <li className="list-group-item">マグナ技巧(小, 中, 大): クリティカル時倍率 50% </li>
@@ -239,7 +243,7 @@ var Notice = React.createClass({
                     <li className="list-group-item">背水(大): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br />(baseRateは (Slv10以下) -0.5 + Slv * 3.0, (Slv10以上) 30.0 + 7.5 * (Slv - 10) / 5.0 </li>
                     <li className="list-group-item">渾身(大): <a target="_blank" href="http://www.hsimyu.net/entry/2016/11/25/223209">こちらを参照</a></li>
                     <li className="list-group-item">攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率)) (TA→DAの順で判定、TA率が100％なら3回、TA率0％でDA率100％なら2回) </li>
-                    <li className="list-group-item">技巧期待値: 2.0 * 通常技巧確率 * マグナ技巧確率 + 1.5 * 通常技巧確率 + 1.5 * マグナ技巧確率 + 1.0 * (1.0 - 通常技巧確率 - マグナ技巧確率 - 通常技巧確率*マグナ技巧確率) (マグナと通常は重複)</li>
+                    <li className="list-group-item">技巧期待値: 通常技巧の複数発動分も計算してます</li>
                     <li className="list-group-item">基礎HP: 600 + 8 * rank(100まで) + 4 * (rank - 100)</li>
                 </ul>
             </div>

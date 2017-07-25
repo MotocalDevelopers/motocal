@@ -511,6 +511,11 @@ skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
 }
 
+skillnamelist["ougiDamageLimit10"] = {
+    u"リミットブレイク・アース": "earth",
+    u"リミットブレイク・ダーク": "dark",
+}
+
 # キャラ固有武器
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}

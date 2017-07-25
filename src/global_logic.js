@@ -974,6 +974,8 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         //! ダメージ上限アップ系
                         } else if (stype == 'normalDamageLimit') {
                             totals[key]["normalDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"][amount];
+                        } else if (stype == 'ougiDamageLimit') {
+                            totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["ougiDamageLimit"][amount];
                         //! 4凸武器スキル
                         } else if(stype == 'tsuranukiKiba'){
                             if(skillname == 'tsuranukiKibaMain'){
