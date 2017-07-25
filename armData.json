@@ -111,6 +111,40 @@
         "ja": "プロトタイプ", 
         "imageURL": "./imgs/1040011100.png"
     }, 
+    "ベッラ・アエテルヌス": {
+        "element2": "earth", 
+        "en": "ベッラ・アエテルヌス", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "hp": "260", 
+        "element": "earth", 
+        "minattack": "355", 
+        "attack": "2130", 
+        "slvmax": 10, 
+        "minhp": "75", 
+        "type": "music", 
+        "ja": "ベッラ・アエテルヌス", 
+        "imageURL": "./imgs/1040806100.png"
+    }, 
+    "[雅氷嵐]緋舞扇": {
+        "hplv100": "252", 
+        "element2": "fire", 
+        "en": "Scarlet Vane", 
+        "maxlv": 150, 
+        "skill2": "normalHPL", 
+        "skill1": "non", 
+        "hp": "290", 
+        "element": "water", 
+        "attacklv100": "2340", 
+        "minattack": "380", 
+        "attack": "2730", 
+        "slvmax": 15, 
+        "minhp": "44", 
+        "type": "fist", 
+        "ja": "[雅氷嵐]緋舞扇", 
+        "imageURL": "./imgs/1040602500.png"
+    }, 
     "[蒼導銃]ベネディーア": {
         "hplv100": "196", 
         "element2": "fire", 
@@ -6297,9 +6331,9 @@
         "ja": "[祖龍拳]バハムートナックル・ノヴム", 
         "imageURL": "./imgs/1040602400.png"
     }, 
-    "[雅氷嵐]緋舞扇": {
+    "緋舞扇": {
         "element2": "fire", 
-        "en": "Scarlet Vane", 
+        "en": "緋舞扇", 
         "maxlv": 100, 
         "skill2": "normalHPL", 
         "skill1": "normalL", 
@@ -6310,7 +6344,7 @@
         "slvmax": 10, 
         "minhp": "44", 
         "type": "fist", 
-        "ja": "[雅氷嵐]緋舞扇", 
+        "ja": "緋舞扇", 
         "imageURL": "./imgs/1040602500.png"
     }, 
     "[渇欲拳]マモーナスグローブ": {

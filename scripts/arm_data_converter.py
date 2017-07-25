@@ -514,6 +514,7 @@ skillnamelist["normalDamageLimit10"] = {
 # キャラ固有武器
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
+skillnamelist["maihimeEnbu"] =   {u"舞姫の演舞": "water"}
 skillnamelist["normalL"][u"聖女の行進"] = "light"
 skillnamelist["normalL"][u"血啜りの一閃"] = "dark"
 

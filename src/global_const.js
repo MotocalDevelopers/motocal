@@ -206,6 +206,7 @@ var skilltypes = {
     "tsuranukiKiba": {name:"貫きの牙", type:"tsuranukiKiba", amount: "M"},
     "tsuranukiKibaMain": {name:"貫きの牙(メイン装備時)", type:"tsuranukiKiba", amount: "M"},
     "washiouKekkai": {name:"鷲王の結界", type:"washiouKekkai", amount: "M"},
+    "maihimeEnbu": {name:"舞姫の演舞", type:"maihimeEnbu", amount: "M"},
     "normalCriticalS": {name:"通常技巧(小)", type:"normalCritical", amount: "S"},
     "normalCriticalM": {name:"通常技巧(中)", type:"normalCritical", amount: "M"},
     "normalCriticalL": {name:"通常技巧(大)", type:"normalCritical", amount: "L"},

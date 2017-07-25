@@ -1396,6 +1396,10 @@ var multiLangData = {
         "en": "Washiou no Kekkai",
         "ja": "鷲王の結界",
     },
+    "舞姫の演舞": {
+        "en": "Maihime no Enbu",
+        "ja": "舞姫の演舞",
+    },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
         "ja": "通常技巧(小)",
