@@ -1,8 +1,7 @@
 var React = require('react');
 
-var { Label, Button, ButtonGroup, FormControl, Modal, Panel, PanelGroup, Glyphicon, Col, Row, Grid } = require('react-bootstrap');
+var { Label, Button, ButtonGroup, FormControl, Modal, Panel, PanelGroup, Glyphicon } = require('react-bootstrap');
 var GlobalConst = require('./global_const.js')
-var { ColP } = require('./gridp.js')
 var { RegisteredArm } = require('./template.js')
 var TextWithTooltip = GlobalConst.TextWithTooltip
 var intl = require('./translate.js')
