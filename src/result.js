@@ -1063,6 +1063,7 @@ var Result = React.createClass({
                             pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
                             pushSkillInfoElement3("damageUP", "与ダメージ上昇", "default");
                             pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
+                            pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "default");
                             pushSkillInfoElement3("ougiDamageBuff", "奥義ダメージ", "default");
 
                             charaDetail[key].push( <div key={key + "-mainSkillInfo"} >{mainSkillInfo}</div>);

@@ -442,6 +442,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
 
         // ダメージ上限UP = 全体バフ + 個人バフ + スキル
         var damageLimit = buff["damageLimit"] + totals[key]["damageLimitBuff"] + totals[key]["normalDamageLimit"];
+        var ougiDamageLimit = buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"] + totals[key]["ougiDamageLimit"];
 
         // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
         var damage = module.exports.calcDamage(criticalRatio * totalAttack, prof.enemyDefense, additionalDamage, damageUP, damageLimit)
@@ -481,6 +482,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         coeffs["additionalDamage"] = additionalDamage
         coeffs["damageUP"] = damageUP
         coeffs["damageLimit"] = damageLimit
+        coeffs["ougiDamageLimit"] = ougiDamageLimit
         coeffs["criticalArray"] = criticalArray
 
         // 連撃情報
@@ -705,6 +707,7 @@ module.exports.getTotalBuff = function(prof) {
         ougiGage: 1.0,
         additionalDamage: 0.0,
         damageLimit: 0.0,
+        ougiDamageLimit: 0.0,
         chainNumber: 1,
     };
 
@@ -717,6 +720,7 @@ module.exports.getTotalBuff = function(prof) {
     if(!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
     if(!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);
     if(!isNaN(prof.damageLimitBuff)) totalBuff["damageLimit"] = 0.01 * parseFloat(prof.damageLimitBuff);
+    if(!isNaN(prof.ougiDamageLimitBuff)) totalBuff["ougiDamageLimit"] = 0.01 * parseFloat(prof.ougiDamageLimitBuff);
     totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
     totalBuff["element"] += 0.01 * parseInt(prof.elementBuff);
     totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
@@ -1049,7 +1053,8 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
         personalTABuff: 0.0,
         personalOugiGageBuff: 0.0,
         personalAdditionalDamageBuff: 0.0,
-        personalDamageLimitBuff: 0.0
+        personalDamageLimitBuff: 0.0,
+        personalOugiDamageLimitBuff: 0.0
     };
 
     for(var djeetabuffkey in djeetaBuffList) {
@@ -1100,6 +1105,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             cosmosAT: 0,
             cosmosBL: 0,
             normalDamageLimit: 0,
+            ougiDamageLimit: 0,
             additionalDamage: 0,
             ougiDebuff: 0,
             isConsideredInAverage: true,
@@ -1115,6 +1121,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             DAbuff: 0,
             TAbuff: 0,
             damageLimitBuff: djeetaBuffList["personalDamageLimitBuff"],
+            ougiDamageLimitBuff: djeetaBuffList["personalOugiDamageLimitBuff"],
             support: "none",
             support2: "none",
             charaHaisui: 0,
@@ -1148,6 +1155,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 ougiGageBuff: 0.0,
                 additionalDamageBuff: 0.0,
                 damageLimitBuff: 0.0,
+                ougiDamageLimitBuff: 0.0,
             }
 
             for(var charabuffkey in charaBuffList) {
@@ -1198,6 +1206,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 cosmosAT: 0,
                 cosmosBL: 0,
                 normalDamageLimit: 0,
+                ougiDamageLimit: 0,
                 additionalDamage: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
@@ -1212,6 +1221,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 DAbuff: 0,
                 TAbuff: 0,
                 damageLimitBuff: charaBuffList["damageLimitBuff"],
+                ougiDamageLimitBuff: charaBuffList["ougiDamageLimitBuff"],
                 support: chara[i].support,
                 support2: chara[i].support2,
                 charaHaisui: 0,
@@ -1305,6 +1315,7 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["cosmosBL"] = 0;
         totals[key]["cosmosAT"] = 0;
         totals[key]["normalDamageLimit"] = 0;
+        totals[key]["ougiDamageLimit"] = 0;
         totals[key]["additionalDamage"] = 0;
         totals[key]["ougiDebuff"] = 0;
         totals[key]["DAbuff"] = 0;

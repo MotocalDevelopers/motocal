@@ -265,6 +265,14 @@ var multiLangData = {
         "en": "It is used to calc the normal attack damage.",
         "ja": "通常攻撃ダメージの算出に使用されます。",
     },
+    "奥義ダメージ上限アップ": {
+        "en": "Ougi Damage Limit Buff",
+        "ja": "奥義ダメージ上限アップ",
+    },
+    "奥義ダメージ上限アップ説明": {
+        "en": "It is used to calc the Ougi damage.",
+        "ja": "奥義ダメージの算出に使用されます。",
+    },
     "ゼニスパーク": {
         "en": "Zenith Perks",
         "ja": "ゼニスパーク",
