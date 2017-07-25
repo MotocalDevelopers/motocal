@@ -184,38 +184,29 @@ module.exports.calcDamage = function(totalAttack, enemyDefense, additionalDamage
     return res
 };
 
-module.exports.calcOugiGensui = function(ougiDamage) {
-    var overedDamage = 0
-    // 補正1
-    if(ougiDamage > 1400000) {
-        overedDamage += 0.01 * (ougiDamage - 1400000)
-        ougiDamage = 1400000
-    }
-    // 補正2
-    if(ougiDamage > 1300000) {
-        overedDamage += 0.05 * (ougiDamage - 1300000)
-        ougiDamage = 1300000
-    }
-    // 補正3
-    if(ougiDamage > 1150000) {
-        overedDamage += 0.40 * (ougiDamage - 1150000)
-        ougiDamage = 1150000
-    }
-    // 補正4
-    if(ougiDamage > 1000000) {
-        overedDamage += 0.60 * (ougiDamage - 1000000)
-        ougiDamage = 1000000
-    }
-    return ougiDamage + overedDamage;
-}
-
-module.exports.calcOugiDamage = function(totalAttack, enemyDefense, ougiRatio, ougiDamageBuff, damageUP) {
+module.exports.calcOugiDamage = function(totalAttack, enemyDefense, ougiRatio, ougiDamageBuff, damageUP, ougiDamageLimit) {
     // ダメージ計算
     var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
     var ratio = (ougiRatio == undefined) ? 4.5 : ougiRatio
     var damage = (1.0 + ougiDamageBuff) * totalAttack * ratio / def
+    var overedDamage = 0.0
 
-    damage = module.exports.calcOugiGensui(damage);
+    var limitValues = [[1400000, 0.01], [1300000, 0.05], [1150000, 0.40], [1000000, 0.60]];
+
+    for ( var index = 0; index < 4; index++ ) {
+        // 減衰ライン算出
+        var limitValue = limitValues[index][0] * (1.0 + ougiDamageLimit);
+        var limitRatio = limitValues[index][1];
+
+        // 減衰ラインを超えている分だけ減算
+        if ( damage > limitValue ) {
+            overedDamage += limitRatio * ( damage - limitValue );
+            damage = limitValue;
+        }
+    }
+
+    // 最終的なダメージは補正分 + 最低減衰ラインになる
+    damage = damage + overedDamage
 
     // 与ダメージアップ
     if(damageUP > 0) {
@@ -456,7 +447,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // 総合攻撃力 * 技巧期待値 * 連撃期待値
         var sougou_kaisuu_gikou = parseInt(totalAttack * criticalRatio * expectedAttack)
 
-        var ougiDamage = module.exports.calcOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"], damageUP)
+        var ougiDamage = module.exports.calcOugiDamage(criticalRatio * totalAttack, prof.enemyDefense, prof.ougiRatio, totals[key]["ougiDamageBuff"], damageUP, ougiDamageLimit)
 
         // チェインバーストダメージは「そのキャラと同じダメージを出すやつが chainNumber 人だけいたら」という仮定の元で計算する
         var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement));
@@ -1565,7 +1556,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                     var newTotalAttack = totalAttackWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].charaHaisui
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
                     var newDamage = module.exports.calcDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit)
-                    var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
+                    var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * newTotalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
 
                     var chainNumber = isNaN(prof.chainNumber) ? 1 : parseInt(prof.chainNumber);
                     var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement)) / chainNumber;
@@ -1802,7 +1793,7 @@ module.exports.generateSimulationData = function(res, turnBuff, arml, summon, pr
                 for(var key in onedata) {
                     if(turnBuff.buffs["全体バフ"][t-1].turnType == "ougi" || turnBuff.buffs[key][t-1].turnType == "ougi") {
                         // 基本的に奥義の設定が優先
-                        var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP)
+                        var newOugiDamage = module.exports.calcOugiDamage(onedata[key].criticalRatio * onedata[key].totalAttack, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageBuff, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
 
                         if(key == "Djeeta") {
                             ExpectedDamage[t].push( parseInt(newOugiDamage) )
