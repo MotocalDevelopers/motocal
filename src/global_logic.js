@@ -153,7 +153,7 @@ module.exports.makeSummonHeaderString = function(summon, locale) {
 module.exports.calcDamage = function(summedAttack, totalSkillCoeff, criticalRatio, enemyDefense, additionalDamage, damageUP, damageLimit) {
     // ダメージ計算
     var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
-    var damage = Math.ceil(summedAttack * totalSkillCoeff * criticalRatio / def)
+    var damage = Math.ceil(Math.ceil(summedAttack / def) * totalSkillCoeff) * criticalRatio
     var overedDamage = 0
 
     var limitValues = [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]];
@@ -188,7 +188,7 @@ module.exports.calcOugiDamage = function(summedAttack, totalSkillCoeff, critical
     // ダメージ計算
     var def = (enemyDefense == undefined) ? 10.0 : enemyDefense
     var ratio = (ougiRatio == undefined) ? 4.5 : ougiRatio
-    var damage = (1.0 + ougiDamageBuff) * ratio * Math.ceil(summedAttack * totalSkillCoeff * criticalRatio / def)
+    var damage = (1.0 + ougiDamageBuff) * ratio * Math.ceil(Math.ceil(summedAttack / def) * totalSkillCoeff) * criticalRatio
     var overedDamage = 0.0
 
     var limitValues = [[1400000, 0.01], [1300000, 0.05], [1150000, 0.40], [1000000, 0.60]];
