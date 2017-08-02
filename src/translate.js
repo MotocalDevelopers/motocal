@@ -2026,6 +2026,10 @@ var multiLangData = {
         "en": "25/07/2017: Added new weapons. Implemented Ougi Damage Limit UP calculation. Added Primacy skill.",
         "ja": "2017/07/25: 武器追加. 奥義上限UP計算の実装. 無双スキルと奥義上限UPと舞姫の演舞の実装.",
     },
+    "notice-20170802-1": {
+        "en": "02/08/2017: Changed damage calculation ceiling timing to match the value shown in GBF game.",
+        "ja": "2017/08/02: ダメージ計算の切り上げタイミングの調整(ゲーム内予測ダメージと一致するようになりました)",
+    },
 }
 
 // 言語設定
