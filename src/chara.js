@@ -204,7 +204,7 @@ var CharaList = React.createClass({
                 <PanelGroup defaultActiveKey={0} accordion>
                 {charas.map(function (c, ind) {
                     return (
-                        <Panel bsStyle="default" eventKey={ind} header={
+                        <Panel key={c} bsStyle="default" eventKey={c} header={
                                 <span>
                                     {(ind < 3) ? "Front " : "Sub "}
                                     {(ind + 1)}: { (charalist[ind] != null) ? charalist[ind].name : "" }
@@ -395,12 +395,6 @@ var Chara = React.createClass({
 
         return (
             <div className="chara-content">
-                {(this.props.id < 3) ?
-                    <h3><Label bsStyle="primary">Front No.{this.props.id + 1}</Label></h3>
-                    :
-                    <h3><Label bsStyle="default">Sub No.{this.props.id + 1}</Label></h3>
-                }
-
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
                         <tr>

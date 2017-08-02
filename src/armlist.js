@@ -214,7 +214,7 @@ var ArmList = React.createClass({
                 <PanelGroup defaultActiveKey={0} accordion>
                 {arms.map(function (arm, ind) {
                     return (
-                        <Panel bsStyle="default" eventKey={ind} header={
+                        <Panel key={arm} bsStyle="default" eventKey={arm} header={
                                 <span>
                                     No. {(ind + 1)}: { (alist[ind] != null) ? alist[ind].name : "" }
                                     &nbsp;<Glyphicon glyph="pencil"/>
