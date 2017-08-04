@@ -340,7 +340,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"]) * totalSummon["magna"]
         var unknownCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["unknownOther"]
         var unknownHaisuiCoeff = 1.0 + 0.01 * totals[key]["unknownOtherHaisui"]
-        var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
+        var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + 0.01 * totals[key]["omegaNormal"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
         var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"]
         var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
         // 属性(経過ターン)も最大値で計算する
@@ -351,7 +351,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"]
 
         // hp倍率
-        var hpCoeff = (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
+        var hpCoeff = (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["omegaNormalHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
 
         if(key == "Djeeta") hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
         hpCoeff *= 1.0 - totals[key]["HPdebuff"]
@@ -381,7 +381,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // for DA and TA
         var normalNite = totals[key]["normalNite"] * totalSummon["zeus"];
         var magnaNite = totals[key]["magnaNite"] * totalSummon["magna"];
-        var normalSante = totals[key]["normalSante"] * totalSummon["zeus"];
+        var normalSante = totals[key]["normalSante"] * totalSummon["zeus"] + totals[key]["omegaNormalSante"];
         var magnaSante = totals[key]["magnaSante"] * totalSummon["magna"];
         var unknownOtherNite = totals[key]["unknownOtherNite"]
 
@@ -896,19 +896,19 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             // オメガウェポン
                             var omegatype = skillname.split("-")[1]
                             if (arm.armType === totals[key]["fav1"] || arm.armType === totals[key]["fav2"]) {
-                                totals[key]["normal"] += skillAmounts["omega"]["rawATK"][slv - 1];
-                                totals[key]["normalHP"] += skillAmounts["omega"]["rawHP"][slv - 1];
+                                totals[key]["omegaNormal"] += skillAmounts["omega"]["rawATK"][slv - 1];
+                                totals[key]["omegaNormalHP"] += skillAmounts["omega"]["rawHP"][slv - 1];
 
                                 if (omegatype === "senni") {
-                                    totals[key]["normal"] += skillAmounts["omega"][amount][slv - 1];
+                                    totals[key]["omegaNormal"] += skillAmounts["omega"][amount][slv - 1];
                                 } else if (omegatype === "tousou") {
-                                    totals[key]["normalSante"] += skillAmounts["omega"][amount][slv - 1];
+                                    totals[key]["omegaNormalSante"] += skillAmounts["omega"][amount][slv - 1];
                                 } else if (omegatype === "seimei") {
-                                    totals[key]["normalHP"] += skillAmounts["omega"][amount][slv - 1];
+                                    totals[key]["omegaNormalHP"] += skillAmounts["omega"][amount][slv - 1];
                                 } else if (omegatype === "kyousou") {
                                 } else if (omegatype === "gekijou") {
                                 } else if (omegatype === "yuuki") {
-                                    totals[key]["normalCritical"].push({"value": skillAmounts["omega"][amount][slv - 1], "attackRatio": 0.5});
+                                    totals[key]["normalOtherCritical"].push({"value": 0.01 * skillAmounts["omega"][amount][slv - 1], "attackRatio": 0.5});
                                 }
 
                                 isOmegaIncluded = true;
@@ -1135,6 +1135,9 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             magnaCritical: 0,
             cosmosAT: 0,
             cosmosBL: 0,
+            omegaNormal: 0,
+            omegaNormalHP: 0,
+            omegaNormalSante: 0,
             normalDamageLimit: 0,
             ougiDamageLimit: 0,
             additionalDamage: 0,
@@ -1236,6 +1239,9 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 magnaCritical: 0,
                 cosmosAT: 0,
                 cosmosBL: 0,
+                omegaNormal: 0,
+                omegaNormalHP: 0,
+                omegaNormalSante: 0,
                 normalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 additionalDamage: 0,
@@ -1342,9 +1348,13 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["magnaSante"] = 0;
         totals[key]["unknownOtherNite"] = 0;
         totals[key]["normalCritical"] = [];
+        totals[key]["normalOtherCritical"] = [];
         totals[key]["magnaCritical"] = 0;
         totals[key]["cosmosBL"] = 0;
         totals[key]["cosmosAT"] = 0;
+        totals[key]["omegaNormal"] = 0;
+        totals[key]["omegaNormalHP"] = 0;
+        totals[key]["omegaNormalSante"] = 0;
         totals[key]["normalDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
         totals[key]["additionalDamage"] = 0;
