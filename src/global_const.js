@@ -632,42 +632,54 @@ module.exports.supportAbilities = supportAbilities
 
 module.exports.additionalSelectList = {
     "・属性変更": {
+        notationText: "",
         selectKeys: ["elements"],
         selectors: ["elements"],
     },
     "・覚醒": {
+        notationText: "",
         selectKeys: ["elements"],
         selectors: ["elements"],
     },
     "コスモス": {
+        notationText: "",
         selectKeys: ["skill2"],
         selectors: ["cosmosSkills"],
     },
     "絶覇": {
+        notationText: "",
         selectKeys: ["main_weapon"],
         selectors: ["mainWeapon"],
     },
     "青竜牙矛": {
+        notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoSeiryu"],
     },
     "朱雀光剣": {
+        notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoSuzaku"],
     },
     "白虎咆拳": {
+        notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoByakko"],
     },
     "玄武甲槌": {
+        notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoGenbu"],
     },
     "オメガ": {
-        notation: "test",
+        notationText: "オメガウェポン注記",
         selectKeys: ["skill1", "skill2", "elements"],
         selectors: ["omegaWeaponSkill1", "omegaWeaponSkill2", "elements"],
     },
+    "ミカエル": { notationText: "天司武器注記", selectKeys: [], selectors: [], },
+    "ウリエル": { notationText: "天司武器注記", selectKeys: [], selectors: [], },
+    "ガブリエル": { notationText: "天司武器注記", selectKeys: [], selectors: [], },
+    "ラファエル": { notationText: "天司武器注記", selectKeys: [], selectors: [], },
 }
 
 

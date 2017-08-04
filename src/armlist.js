@@ -208,7 +208,6 @@ var ArmList = React.createClass({
 
         return (
             <div className="armList">
-                <p className="text-danger">{intl.translate("notice-20170329-2", locale)}</p>
                 <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>{intl.translate("武器テンプレート", locale)}</Button>
                 <br />
                 <span>{intl.translate("属性一括変更", locale)}</span>

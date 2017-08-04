@@ -1862,6 +1862,14 @@ var multiLangData = {
         "ja": "他心陣と奥義",
     },
     // Notice
+    "オメガウェポン注記": {
+        "en": "",
+        "ja": "ガフスキー[強壮](渾身), [激情](背水)は未実装です.",
+    },
+    "天司武器注記": {
+        "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
+        "ja": "天司武器入りで計算する場合、優先項目をダメージベースのものに設定してください.",
+    },
     "広告": {
         "en": "Ad.",
         "ja": "広告",
@@ -2013,10 +2021,6 @@ var multiLangData = {
     "notice-20170329-1": {
         "en": "29/03/2017: Fixed bugs.",
         "ja": "2017/03/29: 霧氷の追牙に神石効果が乗らない不具合を修正 / 天司スキルが非有利の場合でも計算されてしまう不具合を修正.",
-    },
-    "notice-20170329-2": {
-        "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
-        "ja": "天司スキルについて計算する場合、優先項目をダメージベースのものに設定してください..",
     },
     "notice-20170329-3": {
         "en": "29/03/2017: Fixed invalid loading if the weapon or summon number is not matched their default number. / Fixed that the server save function was corrupted.",

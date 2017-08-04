@@ -1,5 +1,5 @@
 var React = require('react');
-var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid, HelpBlock} = require('react-bootstrap');
 var GlobalConst = require('./global_const.js')
 var _ua = GlobalConst._ua;
 var selector = GlobalConst.selector
@@ -231,6 +231,7 @@ var RegisteredArm = React.createClass({
             plusNum: 0,
             armLv: 1,
             armSLv: 1,
+            additionalNotation: "",
             additionalSelectKeys: [],
             additionalSelectSelectors: [],
             additionalSelectClass: "hidden",
@@ -285,6 +286,7 @@ var RegisteredArm = React.createClass({
 
         for(var key in GlobalConst.additionalSelectList) {
             if( (!isAdditionalSelectFound) && (arm.ja.indexOf(key) >= 0)) {
+                this.setState({ additionalNotation: GlobalConst.additionalSelectList[key].notationText })
                 this.setState({ additionalSelectKeys: GlobalConst.additionalSelectList[key].selectKeys })
                 this.setState({ additionalSelectSelectors: GlobalConst.additionalSelectList[key].selectors })
                 this.setState({ additionalSelectClass: "visible" })
@@ -293,6 +295,7 @@ var RegisteredArm = React.createClass({
         }
 
         if(!isAdditionalSelectFound) {
+            this.setState({ additionalNotation: "" })
             this.setState({ additionalSelectKeys: [] })
             this.setState({ additionalSelectSelectors: [] })
             this.setState({ additionalSelectClass: "hidden" })
@@ -381,7 +384,24 @@ var RegisteredArm = React.createClass({
                             <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectSkillLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
-                            <FormControl componentClass="select" value={this.state[this.state.additionalSelectKey]} className={this.state.additionalSelectClass} onChange={this.handleEvent.bind(this, this.state.additionalSelectKey)}>{this.state.additionalSelect}</FormControl>
+
+                            {/* 追加の選択肢 */}
+                            <FormGroup className={this.state.additionalSelectClass}>
+                                {this.state.additionalSelectKeys.map(
+                                    (key, ind) => {
+                                        return (
+                                            <FormControl
+                                                key={key}
+                                                componentClass="select"
+                                                value={this.state[key]}
+                                                onChange={this.handleEvent.bind(this, key)}>
+                                                {selector[locale][this.state.additionalSelectSelectors[ind]]}
+                                            </FormControl>
+                                        );
+                                    }
+                                )}
+                            </FormGroup>
+
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1{intl.translate("本", locale)}</button>
@@ -482,6 +502,7 @@ var RegisteredArm = React.createClass({
                                         );
                                     }
                                 )}
+                                <HelpBlock>{(this.state.additionalNotation !== "") ? intl.translate(this.state.additionalNotation, locale) : ""}</HelpBlock>
                             </FormGroup>
 
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
