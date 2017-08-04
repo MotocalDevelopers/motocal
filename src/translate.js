@@ -1577,31 +1577,31 @@ var multiLangData = {
         "ja": "バハフツHP-楽器",
     },
     "オメガ-未強化": {
-        "en": "Omega (Raw)",
+        "en": "Ultima (Raw)",
         "ja": "オメガ-未強化",
     },
     "オメガ-戦意": {
-        "en": "Omega (Raw)",
+        "en": "Ultima (Will)",
         "ja": "オメガ-戦意",
     },
     "オメガ-闘争": {
-        "en": "Omega (Raw)",
+        "en": "Ultima (Strife)",
         "ja": "オメガ-闘争",
     },
     "オメガ-生命": {
-        "en": "Omega (Raw)",
+        "en": "Ultima (Vitality)",
         "ja": "オメガ-生命",
     },
     "オメガ-強壮": {
-        "en": "Omega (Raw)",
+        "en": "Ultima (Strength)",
         "ja": "オメガ-強壮",
     },
     "オメガ-激情": {
-        "en": "Omega (Raw)",
+        "en": "Ultima (Zeal)",
         "ja": "オメガ-激情",
     },
     "オメガ-勇気": {
-        "en": "Omega (Raw)",
+        "en": "Ultima (Courage)",
         "ja": "オメガ-勇気",
     },
     "ガフスキー[α]": {
@@ -1863,8 +1863,8 @@ var multiLangData = {
     },
     // Notice
     "オメガウェポン注記": {
-        "en": "",
-        "ja": "ガフスキー[強壮](渾身), [激情](背水)は未実装です.",
+        "en": "Gauph Key of Strength and Zeal is not implemented yet.",
+        "ja": "ガフスキー強壮(渾身), 激情(背水)は未実装です.",
     },
     "天司武器注記": {
         "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
@@ -2082,6 +2082,10 @@ var multiLangData = {
         "en": "02/08/2017: Changed damage calculation ceiling timing to match the value shown in GBF game.",
         "ja": "2017/08/02: ダメージ計算の切り上げタイミングの調整(ゲーム内予測ダメージと一致するようになりました)",
     },
+    "notice-20170805-1": {
+        "en": "05/08/2017: Implemented Ultima Weapons.",
+        "ja": "2017/08/05: オメガウェポンスキルを実装."
+    }
 }
 
 // 言語設定
