@@ -231,16 +231,13 @@ var RegisteredArm = React.createClass({
             plusNum: 0,
             armLv: 1,
             armSLv: 1,
-            // additionalSelect: null,
             additionalSelectKeys: [],
             additionalSelectSelectors: [],
             additionalSelectClass: "hidden",
-            old_element: "light",
-            cosmos_skill: "cosmosAT",
+            skill1: "non",
+            skill2: "non",
+            elements: "fire",
             main_weapon: 0,
-            sisho: "non",
-            omega_weapon: "omega-raw",
-            omega_weapon2: "non",
             openSendRequest: false,
         };
     },
@@ -285,13 +282,12 @@ var RegisteredArm = React.createClass({
         }
 
         var isAdditionalSelectFound = false;
-        var additionalSelectKeys = this.state.additionalSelectKeys;
-        var additionalSelectSelectors = this.state.additionalSelectSelectors;
 
         for(var key in GlobalConst.additionalSelectList) {
             if( (!isAdditionalSelectFound) && (arm.ja.indexOf(key) >= 0)) {
-                additionalSelectKeys.push(GlobalConst.additionalSelectList[key].selectKey);
-                additionalSelectSelectors.push(GlobalConst.additionalSelectList[key].selector);
+                this.setState({ additionalSelectKeys: GlobalConst.additionalSelectList[key].selectKeys })
+                this.setState({ additionalSelectSelectors: GlobalConst.additionalSelectList[key].selectors })
+                this.setState({ additionalSelectClass: "visible" })
                 isAdditionalSelectFound = true;
             }
         }
@@ -301,9 +297,6 @@ var RegisteredArm = React.createClass({
             this.setState({ additionalSelectSelectors: [] })
             this.setState({ additionalSelectClass: "hidden" })
         } else {
-            this.setState({ additionalSelectKeys: additionalSelectKeys })
-            this.setState({ additionalSelectSelectors: additionalSelectSelectors })
-            this.setState({ additionalSelectClass: "visible" })
         }
 
         this.setState({openConsiderNumberModal: true})
@@ -314,26 +307,27 @@ var RegisteredArm = React.createClass({
         arm["plus"] = this.state.plusNum
         arm["lv"] = this.state.armLv
         arm["slv"] = this.state.armSLv
-        if(this.state.additionalSelectKey == "old_element") {
-            arm["name"] += "[" + elementTypes[this.state.old_element] + "]"
-            arm["element"] = this.state.old_element
-            arm["element2"] = this.state.old_element
-        } else if(this.state.additionalSelectKey == "cosmos_skill") {
-            arm["skill2"] = this.state.cosmos_skill
-        } else if(this.state.additionalSelectKey == "main_weapon") {
-            if(this.state.main_weapon) {
-                // メイン装備時に効果が切り替わるスキルは2番目に配置する
-                arm["skill2"] += "Main"
+
+        for(var itr = 0; itr < this.state.additionalSelectKeys.length; ++itr) {
+            var additionalKeys = this.state.additionalSelectKeys[itr]
+
+            if (additionalKeys === "skill1") {
+                arm["skill1"] = this.state.skill1
+            } else if (additionalKeys === "skill2") {
+                arm["skill2"] = this.state.skill2
+            } else if (additionalKeys === "elements") {
+                arm["name"] += "[" + elementTypes[this.state.elements] + "]"
+                arm["element"] = this.state.elements
+                arm["element2"] = this.state.elements
+            } else if (additionalKeys === "main_weapon") {
+                if(this.state.main_weapon) {
+                    // メイン装備時に効果が切り替わるスキルは2番目に配置する
+                    arm["skill2"] += "Main"
+                }
             }
-        } else if(this.state.additionalSelectKey == "sisho") {
-            arm["skill2"] = this.state.sisho
-            arm["element2"] = arm["element"]
-        } else if(this.state.additionalSelectKey == "omega_weapon") {
-            arm["skill1"] = this.state.omega_weapon
-            arm["skill2"] = this.state.omega_weapon2
-            arm["element2"] = arm["element"]
         }
-        this.props.onClick(arm, e.target.value);
+
+        this.props.onClick(arm, e.target.value)
         this.setState({openConsiderNumberModal: false})
         this.setState({plusNum: 0})
     },
@@ -479,7 +473,9 @@ var RegisteredArm = React.createClass({
                                     (key, ind) => {
                                         return (
                                             <FormControl
-                                                componentClass="select" value={this.state[key]}
+                                                key={key}
+                                                componentClass="select"
+                                                value={this.state[key]}
                                                 onChange={this.handleEvent.bind(this, key)}>
                                                 {selector[locale][this.state.additionalSelectSelectors[ind]]}
                                             </FormControl>
