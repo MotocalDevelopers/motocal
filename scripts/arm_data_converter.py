@@ -472,6 +472,21 @@ skillnamelist["bahaFUATHP-axe"] = {u"コンキリオ・テラ": "dark"}
 skillnamelist["bahaFUATHP-wand"] = {u"コンキリオ・インベル": "dark"}
 skillnamelist["bahaFUATHP-gun"] = {u"コンキリオ・アルボス": "dark"}
 
+# オメガウェポン
+# 属性は仮として火としておく
+skillnamelist["omega-raw"] = {
+    u"グラディウス・ルーベル": "fire",
+    u"シーカー・ルーベル": "fire",
+    u"ランセア・ルーベル": "fire",
+    u"ラブリュス・ルーベル": "fire",
+    u"バクラム・ルーベル": "fire",
+    u"アルマ・ルーベル": "fire",
+    u"ルクトール・ルーベル": "fire",
+    u"アルクス・ルーベル": "fire",
+    u"ムーシカ・ルーベル": "fire",
+    u"マカエラ・ルーベル": "fire",
+}
+
 # コスモス
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
 skillnamelist["cosmosBL"] = {u"バランス・スタンス": "light"}
