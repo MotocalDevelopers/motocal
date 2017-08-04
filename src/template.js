@@ -286,7 +286,7 @@ var RegisteredArm = React.createClass({
             if( (!isAdditionalSelectFound) && (arm.ja.indexOf(key) >= 0)) {
                 this.setState({ additionalSelectKey: GlobalConst.additionalSelectList[key].selectKey })
                 this.setState({ additionalSelect: selector[this.props.locale][ GlobalConst.additionalSelectList[key].selector] })
-                this.setState({additionalSelectClass: "visible"})
+                this.setState({ additionalSelectClass: "visible" })
                 isAdditionalSelectFound = true;
             }
         }

@@ -295,6 +295,11 @@ var sishoGenbu = {
     "normalDamageLimit7": {name:"邪道: 通常上限UP(7.0%)"},
 };
 
+var omegaWeapon = {
+    "omega-raw": {name: "オメガ-未強化", type:"omega", amount: "raw"},
+    "omega-senni": {name:"オメガ-戦意"},
+};
+
 var armTypes = {
     "dagger": "短剣",
     "sword": "剣",
@@ -651,6 +656,10 @@ module.exports.additionalSelectList = {
         selectKey: "sisho",
         selector: "sishoGenbu",
     },
+    "オメガ": {
+        selectKey: "omega_weapon",
+        selector: "omegaWeapon",
+    },
 }
 
 
@@ -688,6 +697,10 @@ module.exports.selector.ja.sishoSuzaku = Object.keys(sishoSuzaku).map(function(k
 module.exports.selector.en.sishoSuzaku = Object.keys(sishoSuzaku).map(function(key){ return <option value={key} key={key}>{intl.translate(sishoSuzaku[key].name, "en")}</option>;})
 module.exports.selector.ja.sishoGenbu = Object.keys(sishoGenbu).map(function(key){ return <option value={key} key={key}>{sishoGenbu[key].name}</option>;})
 module.exports.selector.en.sishoGenbu = Object.keys(sishoGenbu).map(function(key){ return <option value={key} key={key}>{intl.translate(sishoGenbu[key].name, "en")}</option>;})
+
+// オメガウェポンテンプレート用セレクタ
+module.exports.selector.ja.omegaWeapon = Object.keys(omegaWeapon).map(function(key){ return <option value={key} key={key}>{intl.translate(omegaWeapon[key].name, "ja")}</option>;})
+module.exports.selector.en.omegaWeapon = Object.keys(omegaWeapon).map(function(key){ return <option value={key} key={key}>{intl.translate(omegaWeapon[key].name, "en")}</option>;})
 
 module.exports.selector.ja.types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{jobTypes[opt]}</option>;});
 module.exports.selector.en.types = Object.keys(jobTypes).map(function(opt){return <option value={opt} key={opt}>{intl.translate(jobTypes[opt], "en")}</option>;});
