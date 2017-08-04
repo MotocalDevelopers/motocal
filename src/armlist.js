@@ -220,7 +220,7 @@ var ArmList = React.createClass({
                         <Panel key={arm} bsStyle="default" style={panel_style} eventKey={arm} header={
                                 <span>
                                     No. {(ind + 1)}: { (alist[ind] != null) ? alist[ind].name : "" }
-                                    &nbsp;<Glyphicon glyph="pencil"/>
+                                    &nbsp; {(alist[ind] != null && alist[ind].name != "") ? alist[ind].considerNumberMax + "本" : ""}
                                 </span>
                             }>
                             <Arm 
