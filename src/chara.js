@@ -194,6 +194,9 @@ var CharaList = React.createClass({
         var arrayForCopy = this.state.arrayForCopy;
         var copyCompleted = this.copyCompleted;
 
+        // view 用
+        var panel_style = {"textAlign": "left"};
+
         return (
             <div className="charaList">
                 <Button block bsStyle="success" bsSize="large" onClick={this.openPresets}><i className="fa fa-folder-open" aria-hidden="true"></i>{intl.translate("キャラテンプレート", locale)}</Button>
@@ -204,7 +207,7 @@ var CharaList = React.createClass({
                 <PanelGroup defaultActiveKey={0} accordion>
                 {charas.map(function (c, ind) {
                     return (
-                        <Panel key={c} bsStyle="default" eventKey={c} header={
+                        <Panel key={c} bsStyle="default" style={panel_style} eventKey={c} header={
                                 <span>
                                     {(ind < 3) ? "Front " : "Sub "}
                                     {(ind + 1)}: { (charalist[ind] != null) ? charalist[ind].name : "" }

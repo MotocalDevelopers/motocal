@@ -203,6 +203,9 @@ var ArmList = React.createClass({
         var arrayForCopy = this.state.arrayForCopy;
         var copyCompleted = this.copyCompleted;
 
+        // view 用
+        var panel_style = {"textAlign": "left"};
+
         return (
             <div className="armList">
                 <p className="text-danger">{intl.translate("notice-20170329-2", locale)}</p>
@@ -214,7 +217,7 @@ var ArmList = React.createClass({
                 <PanelGroup defaultActiveKey={0} accordion>
                 {arms.map(function (arm, ind) {
                     return (
-                        <Panel key={arm} bsStyle="default" eventKey={arm} header={
+                        <Panel key={arm} bsStyle="default" style={panel_style} eventKey={arm} header={
                                 <span>
                                     No. {(ind + 1)}: { (alist[ind] != null) ? alist[ind].name : "" }
                                     &nbsp;<Glyphicon glyph="pencil"/>
