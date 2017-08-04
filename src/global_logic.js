@@ -805,7 +805,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                     // mask invalid slv
                     if(slv == 0) slv = 1
 
-                    // バハとコスモスは属性関係なし
+                    // バハとコスモスとオメガ武器は属性関係なし
                     if(stype == 'bahaAT') {
                         if(!isBahaAtIncluded) {
                             // バハ短剣など
@@ -868,7 +868,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
                         } else {
                             var bahatype = skillname.split("-")
-                            if( bahamutFURelation[bahatype[1]]["type1"] == totals[key]["race"] || bahamutFURelation[ bahatype[1]]["type2"] == totals[key]["race"] ) {
+                            if( bahamutFURelation[bahatype[1]]["type1"] == totals[key]["race"] || bahamutFURelation[ bahatype[1] ]["type2"] == totals[key]["race"] ) {
                                 totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUHP"]["HP"][slv - 1];
                                 totals[key]["bahaDA"] += comb[i] * skillAmounts["bahaFUHP"]["DA"][slv - 1];
                                 totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
@@ -888,6 +888,13 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         }
                     } else if(stype == 'cosmosArm') {
                         // コスモス武器スキルはスキップ
+                    } else if(stype == 'omegaNormal') {
+                        var omegatype = skillname.split("-")
+                        var armtype = omegatype[1]
+                        if (armtype === totals[key]["fav1"] || armtype === totals[key]["fav2"]) {
+                            totals[key]["normal"] += 10.0
+                            totals[key]["normalHP"] += 10.0
+                        }
                     } else if(totals[key]["element"] == element){
                         // 属性一致してれば計算
                         if(stype == 'normalHaisui' || stype == 'magnaHaisui' || stype == 'unknownOtherHaisui' || stype == 'normalKonshin'){
