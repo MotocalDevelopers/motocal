@@ -404,6 +404,7 @@ var RegisteredArm = React.createClass({
                                         );
                                     }
                                 )}
+                                <HelpBlock>{(this.state.additionalNotation !== "") ? intl.translate(this.state.additionalNotation, locale) : ""}</HelpBlock>
                             </FormGroup>
 
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
