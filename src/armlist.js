@@ -432,7 +432,9 @@ var Arm = React.createClass({
         }
     },
     clickRemoveButton: function (e) {
-        this.props.onRemove(this.props.id, this.getInitialState())
+        var initState = this.getInitialState();
+        initState["considerNumberMax"] = 0;
+        this.props.onRemove(this.props.id, initState)
     },
     clickCopyButton: function (e, state) {
         this.props.onCopy(this.props.id, this.state)
