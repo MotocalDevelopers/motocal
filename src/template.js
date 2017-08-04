@@ -231,13 +231,16 @@ var RegisteredArm = React.createClass({
             plusNum: 0,
             armLv: 1,
             armSLv: 1,
-            additionalSelect: null,
-            additionalSelectKey: "",
+            // additionalSelect: null,
+            additionalSelectKeys: [],
+            additionalSelectSelectors: [],
             additionalSelectClass: "hidden",
             old_element: "light",
             cosmos_skill: "cosmosAT",
             main_weapon: 0,
             sisho: "non",
+            omega_weapon: "omega-raw",
+            omega_weapon2: "non",
             openSendRequest: false,
         };
     },
@@ -282,19 +285,25 @@ var RegisteredArm = React.createClass({
         }
 
         var isAdditionalSelectFound = false;
+        var additionalSelectKeys = this.state.additionalSelectKeys;
+        var additionalSelectSelectors = this.state.additionalSelectSelectors;
+
         for(var key in GlobalConst.additionalSelectList) {
             if( (!isAdditionalSelectFound) && (arm.ja.indexOf(key) >= 0)) {
-                this.setState({ additionalSelectKey: GlobalConst.additionalSelectList[key].selectKey })
-                this.setState({ additionalSelect: selector[this.props.locale][ GlobalConst.additionalSelectList[key].selector] })
-                this.setState({ additionalSelectClass: "visible" })
+                additionalSelectKeys.push(GlobalConst.additionalSelectList[key].selectKey);
+                additionalSelectSelectors.push(GlobalConst.additionalSelectList[key].selector);
                 isAdditionalSelectFound = true;
             }
         }
 
         if(!isAdditionalSelectFound) {
-            this.setState({additionalSelectKey: ""})
-            this.setState({additionalSelect: null})
-            this.setState({additionalSelectClass: "hidden"})
+            this.setState({ additionalSelectKeys: [] })
+            this.setState({ additionalSelectSelectors: [] })
+            this.setState({ additionalSelectClass: "hidden" })
+        } else {
+            this.setState({ additionalSelectKeys: additionalSelectKeys })
+            this.setState({ additionalSelectSelectors: additionalSelectSelectors })
+            this.setState({ additionalSelectClass: "visible" })
         }
 
         this.setState({openConsiderNumberModal: true})
@@ -318,6 +327,10 @@ var RegisteredArm = React.createClass({
             }
         } else if(this.state.additionalSelectKey == "sisho") {
             arm["skill2"] = this.state.sisho
+            arm["element2"] = arm["element"]
+        } else if(this.state.additionalSelectKey == "omega_weapon") {
+            arm["skill1"] = this.state.omega_weapon
+            arm["skill2"] = this.state.omega_weapon2
             arm["element2"] = arm["element"]
         }
         this.props.onClick(arm, e.target.value);
@@ -459,7 +472,22 @@ var RegisteredArm = React.createClass({
                             <FormControl componentClass="select" value={this.state.armLv} onChange={this.handleEvent.bind(this, "armLv")}>{this.state.selectLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.armSLv} onChange={this.handleEvent.bind(this, "armSLv")}>{this.state.selectSkillLevel}</FormControl>
                             <FormControl componentClass="select" value={this.state.plusNum} onChange={this.handleEvent.bind(this, "plusNum")}>{selector.plusnum}</FormControl>
-                            <FormControl componentClass="select" value={this.state[this.state.additionalSelectKey]} className={this.state.additionalSelectClass} onChange={this.handleEvent.bind(this, this.state.additionalSelectKey)}>{this.state.additionalSelect}</FormControl>
+
+                            {/* 追加の選択肢 */}
+                            <FormGroup className={this.state.additionalSelectClass}>
+                                {this.state.additionalSelectKeys.map(
+                                    (key, ind) => {
+                                        return (
+                                            <FormControl
+                                                componentClass="select" value={this.state[key]}
+                                                onChange={this.handleEvent.bind(this, key)}>
+                                                {selector[locale][this.state.additionalSelectSelectors[ind]]}
+                                            </FormControl>
+                                        );
+                                    }
+                                )}
+                            </FormGroup>
+
                             <div className="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-default" value="1" onClick={this.clickedConsiderNumber}>1{intl.translate("本", locale)}</button>
