@@ -742,7 +742,10 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
     var index = 0;
     for(var key in totals ) {
         index = (index + 1)|0;
-        var isBahaAtIncluded = false; var isBahaAthpIncluded = false; var isBahaHpIncluded = false;
+        var isBahaAtIncluded = false
+        var isBahaAthpIncluded = false
+        var isBahaHpIncluded = false
+        var isOmegaIncluded = false // オメガウェポンもとりあえず1本のみ効果があるとする
 
         for(var i = 0; i < arml.length; i++){
             if(comb[i] == 0) continue
@@ -889,22 +892,26 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                     } else if(stype == 'cosmosArm') {
                         // コスモス武器スキルはスキップ
                     } else if(stype == 'omega') {
-                        // オメガウェポン
-                        var omegatype = skillname.split("-")[1]
-                        if (arm.armType === totals[key]["fav1"] || arm.armType === totals[key]["fav2"]) {
-                            totals[key]["normal"] += skillAmounts["omega"]["raw"][slv - 1];
-                            totals[key]["normalHP"] += skillAmounts["omega"]["raw"][slv - 1];
+                        if (!isOmegaIncluded) {
+                            // オメガウェポン
+                            var omegatype = skillname.split("-")[1]
+                            if (arm.armType === totals[key]["fav1"] || arm.armType === totals[key]["fav2"]) {
+                                totals[key]["normal"] += skillAmounts["omega"]["rawATK"][slv - 1];
+                                totals[key]["normalHP"] += skillAmounts["omega"]["rawHP"][slv - 1];
 
-                            if (omegatype === "senni") {
-                                totals[key]["normal"] += skillAmounts["omega"][amount][slv - 1];
-                            } else if (omegatype === "tousou") {
-                                totals[key]["normalSante"] += skillAmounts["omega"][amount][slv - 1];
-                            } else if (omegatype === "seimei") {
-                                totals[key]["normalHP"] += skillAmounts["omega"][amount][slv - 1];
-                            } else if (omegatype === "kyousou") {
-                            } else if (omegatype === "gekijou") {
-                            } else if (omegatype === "yuuki") {
-                                totals[key]["normalCritical"].push({"value": skillAmounts["omega"][amount][slv - 1], "attackRatio": 0.5});
+                                if (omegatype === "senni") {
+                                    totals[key]["normal"] += skillAmounts["omega"][amount][slv - 1];
+                                } else if (omegatype === "tousou") {
+                                    totals[key]["normalSante"] += skillAmounts["omega"][amount][slv - 1];
+                                } else if (omegatype === "seimei") {
+                                    totals[key]["normalHP"] += skillAmounts["omega"][amount][slv - 1];
+                                } else if (omegatype === "kyousou") {
+                                } else if (omegatype === "gekijou") {
+                                } else if (omegatype === "yuuki") {
+                                    totals[key]["normalCritical"].push({"value": skillAmounts["omega"][amount][slv - 1], "attackRatio": 0.5});
+                                }
+
+                                isOmegaIncluded = true;
                             }
                         }
                     } else if(stype === "gauphKey") {
