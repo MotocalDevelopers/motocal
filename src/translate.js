@@ -1576,45 +1576,33 @@ var multiLangData = {
         "en": "Bahamut Coda Harp",
         "ja": "バハフツHP-楽器",
     },
-    "オメガ-短剣": {
-        "en": "Omega Dagger",
-        "ja": "オメガ-短剣",
+    "オメガ-未強化": {
+        "en": "Omega (Raw)",
+        "ja": "オメガ-未強化",
     },
-    "オメガ-斧": {
-        "en": "Omega Axe",
-        "ja": "オメガ-斧",
+    "オメガ-戦意": {
+        "en": "Omega (Raw)",
+        "ja": "オメガ-戦意",
     },
-    "オメガ-槍": {
-        "en": "Omega Spear",
-        "ja": "オメガ-槍",
+    "オメガ-闘争": {
+        "en": "Omega (Raw)",
+        "ja": "オメガ-闘争",
     },
-    "オメガ-銃": {
-        "en": "Omega Gun",
-        "ja": "オメガ-銃",
+    "オメガ-生命": {
+        "en": "Omega (Raw)",
+        "ja": "オメガ-生命",
     },
-    "オメガ-剣": {
-        "en": "Omega Sword",
-        "ja": "オメガ-剣",
+    "オメガ-強壮": {
+        "en": "Omega (Raw)",
+        "ja": "オメガ-強壮",
     },
-    "オメガ-杖": {
-        "en": "Omega Staff",
-        "ja": "オメガ-杖",
+    "オメガ-激情": {
+        "en": "Omega (Raw)",
+        "ja": "オメガ-激情",
     },
-    "オメガ-格闘": {
-        "en": "Omega Fist",
-        "ja": "オメガ-格闘",
-    },
-    "オメガ-刀": {
-        "en": "Omega Katana",
-        "ja": "オメガ-刀",
-    },
-    "オメガ-弓": {
-        "en": "Omega Bow",
-        "ja": "オメガ-弓",
-    },
-    "オメガ-楽器": {
-        "en": "Omega Harp",
-        "ja": "オメガ-楽器",
+    "オメガ-勇気": {
+        "en": "Omega (Raw)",
+        "ja": "オメガ-勇気",
     },
     "天司の祝福": {
         "en": "Angel's Blessing",

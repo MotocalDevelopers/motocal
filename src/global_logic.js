@@ -888,12 +888,23 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         }
                     } else if(stype == 'cosmosArm') {
                         // コスモス武器スキルはスキップ
-                    } else if(stype == 'omegaNormal') {
-                        var omegatype = skillname.split("-")
-                        var armtype = omegatype[1]
-                        if (armtype === totals[key]["fav1"] || armtype === totals[key]["fav2"]) {
+                    } else if(stype == 'omega') {
+                        // オメガウェポン
+                        var omegatype = skillname.split("-")[1]
+                        if (arm.armType === totals[key]["fav1"] || arm.armType === totals[key]["fav2"]) {
                             totals[key]["normal"] += 10.0
                             totals[key]["normalHP"] += 10.0
+
+                            if (omegatype === "senni") {
+                                totals[key]["normal"] += 20.0
+                            } else if (omegatype === "tousou") {
+                                totals[key]["normalSante"] += 20.0
+                            } else if (omegatype === "seimei") {
+                            } else if (omegatype === "kyousou") {
+                            } else if (omegatype === "gekijou") {
+                            } else if (omegatype === "yuuki") {
+                                totals[key]["normalCritical"].push({"value": 15.0, "attackRatio": 0.5});
+                            }
                         }
                     } else if(totals[key]["element"] == element){
                         // 属性一致してれば計算
