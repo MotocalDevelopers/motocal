@@ -296,7 +296,6 @@ var sishoGenbu = {
 };
 
 var omegaWeaponSkill1 = {
-    "non": {name: "無し"},
     "omega-raw": {name: "オメガ-未強化"},
     "omega-senni": {name:"オメガ-戦意"},
     "omega-tousou": {name:"オメガ-闘争"},
@@ -639,46 +638,55 @@ module.exports.additionalSelectList = {
         notationText: "",
         selectKeys: ["elements"],
         selectors: ["elements"],
+        defaultKeys: ["light"],
     },
     "・覚醒": {
         notationText: "",
         selectKeys: ["elements"],
         selectors: ["elements"],
+        defaultKeys: ["light"],
     },
     "コスモス": {
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["cosmosSkills"],
+        defaultKeys: ["cosmotAT"],
     },
     "絶覇": {
         notationText: "",
         selectKeys: ["main_weapon"],
         selectors: ["mainWeapon"],
+        defaultKeys: [0],
     },
     "青竜牙矛": {
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoSeiryu"],
+        defaultKeys: ["non"],
     },
     "朱雀光剣": {
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoSuzaku"],
+        defaultKeys: ["non"],
     },
     "白虎咆拳": {
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoByakko"],
+        defaultKeys: ["non"],
     },
     "玄武甲槌": {
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoGenbu"],
+        defaultKeys: ["non"],
     },
     "オメガ": {
         notationText: "オメガウェポン注記",
         selectKeys: ["skill1", "skill2", "elements"],
         selectors: ["omegaWeaponSkill1", "omegaWeaponSkill2", "elements"],
+        defaultKeys: ["omega-raw", "non", "light"],
     },
     "ミカエル": { notationText: "天司武器注記", selectKeys: [], selectors: [], },
     "ウリエル": { notationText: "天司武器注記", selectKeys: [], selectors: [], },

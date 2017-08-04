@@ -235,10 +235,6 @@ var RegisteredArm = React.createClass({
             additionalSelectKeys: [],
             additionalSelectSelectors: [],
             additionalSelectClass: "hidden",
-            skill1: "non",
-            skill2: "non",
-            elements: "fire",
-            main_weapon: 0,
             openSendRequest: false,
         };
     },
@@ -269,40 +265,48 @@ var RegisteredArm = React.createClass({
         });
     },
     clickedTemplate: function(e) {
-        this.setState({tempArm: this.state.armData[e.target.getAttribute("id")]});
+        var newState = this.state
+        newState["tempArm"] = this.state.armData[e.target.getAttribute("id")]
+
         var arm = this.state.armData[e.target.getAttribute("id")]
-        this.setState({armLv: parseInt(arm.maxlv)})
-        this.setState({armSLv: parseInt(arm.slvmax)})
+        newState["armLv"] = parseInt(arm.maxlv)
+        newState["armSLv"] = parseInt(arm.slvmax)
 
         if(arm.maxlv == "150") {
-            this.setState({selectLevel: selector.levelNoLimit})
-            this.setState({selectSkillLevel: selector.skilllevelNoLimit})
+            newState["selectLevel"] = selector.levelNoLimit
+            newState["selectSkillLevel"] = selector.skilllevelNoLimit
         } else {
-            this.setState({selectLevel: selector.levelLimit})
-            this.setState({selectSkillLevel: selector.skilllevelLimit})
+            newState["selectLevel"] = selector.levelLimit
+            newState["selectSkillLevel"] = selector.skilllevelLimit
         }
 
         var isAdditionalSelectFound = false;
 
         for(var key in GlobalConst.additionalSelectList) {
             if( (!isAdditionalSelectFound) && (arm.ja.indexOf(key) >= 0)) {
-                this.setState({ additionalNotation: GlobalConst.additionalSelectList[key].notationText })
-                this.setState({ additionalSelectKeys: GlobalConst.additionalSelectList[key].selectKeys })
-                this.setState({ additionalSelectSelectors: GlobalConst.additionalSelectList[key].selectors })
-                this.setState({ additionalSelectClass: "visible" })
+                newState["additionalNotation"] = GlobalConst.additionalSelectList[key].notationText
+                newState["additionalSelectKeys"] = GlobalConst.additionalSelectList[key].selectKeys
+                newState["additionalSelectSelectors"] = GlobalConst.additionalSelectList[key].selectors
+
+                // 初期キーをセット
+                for(var itr = 0; itr < newState.additionalSelectKeys.length; ++itr) {
+                    newState[ newState.additionalSelectKeys[itr] ] = GlobalConst.additionalSelectList[key].defaultKeys[itr]
+                }
+
+                newState["additionalSelectClass"] = "visible"
                 isAdditionalSelectFound = true;
             }
         }
 
         if(!isAdditionalSelectFound) {
-            this.setState({ additionalNotation: "" })
-            this.setState({ additionalSelectKeys: [] })
-            this.setState({ additionalSelectSelectors: [] })
-            this.setState({ additionalSelectClass: "hidden" })
-        } else {
+            newState["additionalNotation"] = ""
+            newState["additionalSelectKeys"] = []
+            newState["additionalSelectSelectors"] = []
+            newState["additionalSelectClass"] = "hidden"
         }
 
-        this.setState({openConsiderNumberModal: true})
+        newState["openConsiderNumberModal"] = true
+        this.setState(newState)
     },
     clickedConsiderNumber: function(e) {
         var arm = this.state.tempArm
