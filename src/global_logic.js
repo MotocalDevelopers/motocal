@@ -892,20 +892,31 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         // オメガウェポン
                         var omegatype = skillname.split("-")[1]
                         if (arm.armType === totals[key]["fav1"] || arm.armType === totals[key]["fav2"]) {
-                            totals[key]["normal"] += 10.0
-                            totals[key]["normalHP"] += 10.0
+                            totals[key]["normal"] += skillAmounts["omega"]["raw"][slv - 1];
+                            totals[key]["normalHP"] += skillAmounts["omega"]["raw"][slv - 1];
 
                             if (omegatype === "senni") {
-                                totals[key]["normal"] += 20.0
+                                totals[key]["normal"] += skillAmounts["omega"][amount][slv - 1];
                             } else if (omegatype === "tousou") {
-                                totals[key]["normalSante"] += 20.0
+                                totals[key]["normalSante"] += skillAmounts["omega"][amount][slv - 1];
                             } else if (omegatype === "seimei") {
+                                totals[key]["normalHP"] += skillAmounts["omega"][amount][slv - 1];
                             } else if (omegatype === "kyousou") {
                             } else if (omegatype === "gekijou") {
                             } else if (omegatype === "yuuki") {
-                                totals[key]["normalCritical"].push({"value": 15.0, "attackRatio": 0.5});
+                                totals[key]["normalCritical"].push({"value": skillAmounts["omega"][amount][slv - 1], "attackRatio": 0.5});
                             }
                         }
+                    } else if(stype === "gauphKey") {
+                        // ガフスキーは得意武器、属性に関係なく発動する
+                        var gauphKeyType = skillname.split("-")[1]
+
+                        if (gauphKeyType === "alpha") {
+                            totals[key]["normalDamageLimit"] += 0.1
+                        } else if (gauphKeyType === "gamma") {
+                            totals[key]["ougiDamageLimit"] += 0.15
+                        }
+
                     } else if(totals[key]["element"] == element){
                         // 属性一致してれば計算
                         if(stype == 'normalHaisui' || stype == 'magnaHaisui' || stype == 'unknownOtherHaisui' || stype == 'normalKonshin'){
