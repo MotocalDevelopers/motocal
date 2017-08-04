@@ -299,6 +299,9 @@ var omegaWeaponSkill1 = {
     "non": {name: "無し"},
     "omega-raw": {name: "オメガ-未強化"},
     "omega-senni": {name:"オメガ-戦意"},
+    "omega-tousou": {name:"オメガ-闘争"},
+    "omega-seimei": {name:"オメガ-生命"},
+    "omega-yuuki": {name:"オメガ-勇気"},
 };
 
 var omegaWeaponSkill2 = {
