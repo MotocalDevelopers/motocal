@@ -650,7 +650,7 @@ module.exports.additionalSelectList = {
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["cosmosSkills"],
-        defaultKeys: ["cosmotAT"],
+        defaultKeys: ["cosmosAT"],
     },
     "絶覇": {
         notationText: "",
