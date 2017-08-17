@@ -26,7 +26,7 @@ racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
 racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン"] = "havin"
-racelist[u"星晶獣"] = "unknown"
+racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
 
 supportAbilist = OrderedDict()
