@@ -577,6 +577,7 @@ module.exports.checkNumberofRaces = function(chara){
         "erune": false,
         "doraf": false,
         "havin": false,
+        "seisho": false,
         "unknown": true,
     }
     // ジータがいるのでunknown枠は常にtrue
@@ -806,7 +807,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                     if(stype == 'bahaAT') {
                         if(!isBahaAtIncluded) {
                             // バハ短剣など
-                            if(totals[key]["race"] == "unknown") {
+                            if(totals[key]["race"] === "unknown" || totals[key]["race"] === "seisho") {
                                 totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
                                 isBahaAtIncluded = true;
                             } else {
@@ -820,7 +821,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                     } else if(stype == 'bahaATHP') {
                         if(!isBahaAthpIncluded) {
                             // バハ剣など
-                            if(totals[key]["race"] == "unknown") {
+                            if(totals[key]["race"] === "unknown" || totals[key]["race"] === "seisho") {
                                 totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
                                 totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
                                 isBahaAthpIncluded = true;
@@ -836,7 +837,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                     } else if(stype == 'bahaHP') {
                         if(!isBahaHpIncluded) {
                             // バハ拳など
-                            if(totals[key]["race"] == "unknown") {
+                            if(totals[key]["race"] === "unknown" || totals[key]["race"] === "seisho") {
                                 totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
                                 isBahaHpIncluded = true;
                             } else {
@@ -848,7 +849,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             }
                         }
                     } else if(stype == 'bahaFUATHP') {
-                        if(totals[key]["race"] == "unknown") {
+                        if(totals[key]["race"] === "unknown" || totals[key]["race"] === "seisho") {
                             totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaFUATHP"]["AT"][slv - 1];
                             totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUATHP"]["HP"][slv - 1];
                         } else {
@@ -859,7 +860,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             }
                         }
                     } else if(stype == 'bahaFUHP') {
-                        if(totals[key]["race"] == "unknown") {
+                        if(totals[key]["race"] === "unknown" || totals[key]["race"] === "seisho") {
                             totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUHP"]["HP"][slv - 1];
                             totals[key]["bahaDA"] += comb[i] * skillAmounts["bahaFUHP"]["DA"][slv - 1];
                             totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
@@ -1397,7 +1398,7 @@ module.exports.treatSupportAbility = function(totals, chara) {
                     if(totals[key].isConsideredInAverage) {
                         // ドラフと種族不明のみキャラ攻刃
                         for(var key2 in totals){
-                            if(totals[key2]["race"] == "doraf" || totals[key2]["race"] == "unknown") {
+                            if(totals[key2]["race"] === "doraf" || totals[key2]["race"] === "unknown" || totals[key2]["race"] === "seisho") {
                                 totals[key2]["normalBuff"] += support.value
                             }
                         }

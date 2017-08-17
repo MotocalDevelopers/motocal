@@ -340,6 +340,7 @@ var raceTypes = {
     "erune": "エルーン",
     "doraf": "ドラフ",
     "havin": "ハーヴィン",
+    "seisho": "星晶獣",
     "unknown": "種族不明",
 }
 

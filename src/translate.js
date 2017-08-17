@@ -1086,6 +1086,10 @@ var multiLangData = {
         "en": "Havin",
         "ja": "ハーヴィン",
     },
+    "星晶獣": {
+        "en": "Primal",
+        "ja": "星晶獣",
+    },
     "種族不明": {
         "en": "Unknown",
         "ja": "種族不明",
