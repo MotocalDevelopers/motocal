@@ -789,6 +789,14 @@ var multiLangData = {
         "en": "Element ",
         "ja": "属性",
     },
+    "EX": {
+        "en": "EX",
+        "ja": "EX",
+    },
+    "EX背水": {
+        "en": "EX Enmity",
+        "ja": "EX背水",
+    },
     "属性攻": {
         "en": "Element ",
         "ja": "属性攻",

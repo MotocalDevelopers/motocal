@@ -182,11 +182,11 @@ var skilltypes = {
     "magnaRasetsuM": {name: "マグナ羅刹", type: "magnaRasetsu", amount: "M"},
     "unknownM": {name:"アンノウンATK・I", type:"unknown", amount: "M"},
     "unknownL": {name:"アンノウンATK・II", type:"unknown", amount: "L"},
-    "strengthHaisuiM": {name:"EX背水(中)", type:"unknownOtherHaisui", amount: "M"},
-    "strengthS": {name:"EX攻刃(小)", type:"unknownOther", amount: "S"},
-    "strengthM": {name:"EX攻刃(中)", type:"unknownOther", amount: "M"},
-    "strengthL": {name:"EX攻刃(大)", type:"unknownOther", amount: "L"},
-    "strengthLL": {name:"EX攻刃(特大)", type:"unknownOther", amount: "LL"},
+    "strengthHaisuiM": {name:"EX背水(中)", type:"exHaisui", amount: "M"},
+    "strengthS": {name:"EX攻刃(小)", type:"ex", amount: "S"},
+    "strengthM": {name:"EX攻刃(中)", type:"ex", amount: "M"},
+    "strengthL": {name:"EX攻刃(大)", type:"ex", amount: "L"},
+    "strengthLL": {name:"EX攻刃(特大)", type:"ex", amount: "LL"},
     "exATKandHPM": {name:"EX攻刃+守護(中)", type:"exATKandHP", amount: "M"},
     "normalDamageLimit2_5": {name: "通常上限UP(2.5%)", type: "normalDamageLimit", amount: "S"},
     "normalDamageLimit7": {name: "通常上限UP(7.0%)", type: "normalDamageLimit", amount: "M"},
@@ -201,8 +201,8 @@ var skilltypes = {
     "unknownHPS": {name:"アンノウン・VIT I(小)", type:"unknownHP", amount: "S"},
     "unknownHPM": {name:"アンノウン・VIT I(中)", type:"unknownHP", amount: "M"},
     "unknownHPL": {name:"アンノウン・VIT II(大)", type:"unknownHP", amount: "L"},
-    "unknownOtherBoukunL": {name:"ミフネ流・極意", type:"unknownOtherBoukun", amount: "L"},
-    "unknownOtherNiteS": {name:"ミフネ流・双星", type:"unknownOtherNite", amount: "S"},
+    "unknownOtherBoukunL": {name:"ミフネ流・極意", type:"exBoukun", amount: "L"},
+    "unknownOtherNiteS": {name:"ミフネ流・双星", type:"exNite", amount: "S"},
     "gurenJuin": {name:"紅蓮の呪印・弐", type:"gurenJuin", amount: "L"},
     "muhyoTuiga": {name:"霧氷の追牙・肆", type:"muhyoTuiga", amount: "L"},
     "tsuranukiKiba": {name:"貫きの牙", type:"tsuranukiKiba", amount: "M"},
@@ -489,13 +489,7 @@ var skillAmounts = {
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
     },
-    "unknownOther":{
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
-        "LL": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0],
-    },
-    "exATK":{
+    "ex":{
         "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0],
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
@@ -572,7 +566,7 @@ var skillAmounts = {
         "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
         "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 6.6],
     },
-    "unknownOtherNite":{
+    "exNite":{
         "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
     },
     "normalSante":{
