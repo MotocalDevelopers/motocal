@@ -1340,6 +1340,10 @@ var multiLangData = {
         "en": "EX Might (LL)",
         "ja": "EX攻刃(特大)",
     },
+    "EX攻刃+守護(中)": {
+        "en": "EX Might and Aegis (M)",
+        "ja": "EX攻刃+守護(中)",
+    },
     "通常守護(小)": {
         "en": "Normal Aegis (S)",
         "ja": "通常守護(小)",

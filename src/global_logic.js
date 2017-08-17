@@ -338,8 +338,8 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // 各種攻刃係数の計算
         var magnaCoeff = 1.0 + 0.01 * totals[key]["magna"] * totalSummon["magna"]
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"]) * totalSummon["magna"]
-        var unknownCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["unknownOther"]
-        var unknownHaisuiCoeff = 1.0 + 0.01 * totals[key]["unknownOtherHaisui"]
+        var exCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["unknownOther"]
+        var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["unknownOtherHaisui"]
         var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + 0.01 * totals[key]["omegaNormal"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
         var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"]
         var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
@@ -351,7 +351,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"]
 
         // hp倍率
-        var hpCoeff = (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["omegaNormalHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"])
+        var hpCoeff = (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["omegaNormalHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"] + 0.01 * totals[key]["exHP"])
 
         if(key == "Djeeta") hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
         hpCoeff *= 1.0 - totals[key]["HPdebuff"]
@@ -372,7 +372,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             var totalHP = displayHP * hpCoeff
         }
 
-        var totalSkillCoeff = magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * unknownCoeff * otherCoeff * unknownHaisuiCoeff * normalKonshinCoeff * charaHaisuiCoeff
+        var totalSkillCoeff = magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * exCoeff * otherCoeff * exHaisuiCoeff * normalKonshinCoeff * charaHaisuiCoeff
         var totalAttack = summedAttack * totalSkillCoeff
 
         // HPの下限は 1
@@ -465,8 +465,8 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         coeffs["magna"] = magnaCoeff;
         coeffs["magnaHaisui"] = magnaHaisuiCoeff;
         coeffs["element"] = elementCoeff;
-        coeffs["unknown"] = unknownCoeff;
-        coeffs["unknownHaisui"] = unknownHaisuiCoeff;
+        coeffs["unknown"] = exCoeff;
+        coeffs["unknownHaisui"] = exHaisuiCoeff;
         coeffs["charaHaisui"] = charaHaisuiCoeff;
         coeffs["other"] = otherCoeff;
         coeffs["ougiDamageBuff"] = totals[key]["ougiDamageBuff"];
@@ -795,12 +795,6 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                 }
 
                 if(skillname != 'non'){
-                    // 古いデータ用の対応
-                    if(skillname == "bahaAT" || skillname == "bahaFUATHP") {
-                        skillname += "-dagger"
-                    } else if (skillname == "bahaATHP") {
-                        skillname += "-sword"
-                    }
                     var stype = skilltypes[skillname].type;
                     var amount = skilltypes[skillname].amount;
                     var slv = parseInt(arm.slv)
@@ -992,7 +986,10 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                         } else if(stype == 'unknownOtherBoukun'){
                             totals[key]["HPdebuff"] += comb[i] * 0.07
-                            totals[key]["unknown"] += comb[i] * skillAmounts["unknown"][amount][slv - 1];
+                            totals[key]["unknownOther"] += comb[i] * skillAmounts["unknownOther"][amount][slv - 1];
+                        } else if(stype == 'exATKandHP'){
+                            totals[key]["unknownOther"] += comb[i] * skillAmounts["exATKandHP"][amount]["ATK"][slv - 1];
+                            totals[key]["exHP"] += comb[i] * skillAmounts["exATKandHP"][amount]["HP"][slv - 1];
                         } else if(stype == 'gurenJuin'){
                             if(index == 2){
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
@@ -1125,6 +1122,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             magnaHP: 0,
             normalHP: 0,
             unknownHP: 0,
+            exHP: 0,
             normalNite: 0,
             magnaNite: 0,
             normalSante: 0,
@@ -1228,6 +1226,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 magnaHP: 0,
                 normalHP: 0,
                 unknownHP: 0,
+                exHP: 0,
                 bahaHP: 0,
                 normalNite: 0,
                 magnaNite: 0,
@@ -1342,6 +1341,7 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["magnaHP"] = 0;
         totals[key]["normalHP"] = 0;
         totals[key]["unknownHP"] = 0;
+        totals[key]["exHP"] = 0;
         totals[key]["normalNite"] = 0;
         totals[key]["magnaNite"] = 0;
         totals[key]["normalSante"] = 0;
