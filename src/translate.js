@@ -2101,6 +2101,10 @@ var multiLangData = {
     "notice-20170805-1": {
         "en": "05/08/2017: Implemented Ultima Weapons.",
         "ja": "2017/08/05: オメガウェポンスキルを実装."
+    },
+    "notice-20170817-1": {
+        "en": "17/08/2017: Implemented Rose weapons II. Added new charas. Implemented 'Primal' race.",
+        "ja": "2017/08/17: EX攻刃守護(中)を実装. ローズ武器2を追加. 水着キャラ追加. 種族: 星晶獣を追加."
     }
 }
 
