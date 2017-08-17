@@ -443,6 +443,12 @@ skillnamelist["strengthL"] = {
     u"ロイヤルアフェクション": "earth",
     u"超カッコいい攻刃": "water",
 }
+skillnamelist["exATKandHPM"] = {
+    u"蒼薔薇の髄": "water",
+    u"翠薔薇の髄": "wind",
+    u"橙薔薇の髄": "earth",
+    u"紅薔薇の髄": "fire",
+}
 
 skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire", u"裁考の覇道": "earth"}
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
