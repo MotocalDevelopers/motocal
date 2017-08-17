@@ -1,4 +1,20 @@
 {
+    "ウーチンフィスト": {
+        "element2": "fire", 
+        "en": "Urchin Fist", 
+        "maxlv": 100, 
+        "skill2": "strengthL", 
+        "skill1": "non", 
+        "hp": "200", 
+        "element": "fire", 
+        "minattack": "310", 
+        "attack": "1885", 
+        "slvmax": 10, 
+        "minhp": "30", 
+        "type": "fist", 
+        "ja": "ウーチンフィスト", 
+        "imageURL": "./imgs/1040608700.png"
+    }, 
     "オメガスウォード": {
         "element2": "dark", 
         "en": "オメガスウォード", 

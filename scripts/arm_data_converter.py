@@ -442,6 +442,7 @@ skillnamelist["strengthL"] = {
     u"大いなる業": "light",
     u"ロイヤルアフェクション": "earth",
     u"超カッコいい攻刃": "water",
+    u"叉棘": "fire",
 }
 skillnamelist["exATKandHPM"] = {
     u"蒼薔薇の髄": "water",
