@@ -76,7 +76,7 @@ def arm_replace(armtype):
         if m:
             res = inner_armtype
             return res
-    return "none"
+    return "no_favorite_arm_error"
 
 def type_replace(charatype):
     decoded_charatype = charatype.decode("utf-8")
