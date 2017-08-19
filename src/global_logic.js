@@ -191,7 +191,7 @@ module.exports.calcOugiDamage = function(summedAttack, totalSkillCoeff, critical
     var damage = (1.0 + ougiDamageBuff) * ratio * Math.ceil(Math.ceil(summedAttack / def) * totalSkillCoeff) * criticalRatio
     var overedDamage = 0.0
 
-    var limitValues = [[1400000, 0.01], [1300000, 0.05], [1150000, 0.40], [1000000, 0.60]];
+    var limitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]];
 
     for ( var index = 0; index < 4; index++ ) {
         // 減衰ライン算出
