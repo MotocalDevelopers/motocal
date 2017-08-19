@@ -229,7 +229,33 @@ module.exports.calcChainBurst = function(ougiDamage, chainNumber, typeBonus) {
         chainCoeff = 0.50;
     }
 
-    return module.exports.calcOugiGensui(typeBonus * chainCoeff * ougiDamage);
+    var chainDamageLimitUP = 0.0
+    var damage = typeBonus * chainCoeff * ougiDamage
+    var overedDamage = 0.0
+
+    if (chainNumber <= 2) {
+        var limitValues = [[1500000, 0.01], [1300000, 0.05], [1200000, 0.30], [1000000, 0.60]]
+    } else if ( chainNumber === 3) {
+        var limitValues = [[2000000, 0.01], [1600000, 0.05], [1400000, 0.30], [1200000, 0.60]]
+    } else {
+        var limitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]]
+    }
+
+    for ( var index = 0; index < 4; index++ ) {
+        // 減衰ライン算出
+        var limitValue = limitValues[index][0] * (1.0 + chainDamageLimitUP)
+        var limitRatio = limitValues[index][1]
+
+        // 減衰ラインを超えている分だけ減算
+        if ( damage > limitValue ) {
+            overedDamage += limitRatio * ( damage - limitValue )
+            damage = limitValue
+        }
+    }
+
+    // 最終的なダメージは補正分 + 最低減衰ラインになる
+    damage = damage + overedDamage
+    return damage;
 }
 
 module.exports.calcCriticalArray = function(normalCritical, _magnaCritical, normalOtherCritical, summon) {
