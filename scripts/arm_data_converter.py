@@ -451,7 +451,12 @@ skillnamelist["exATKandHPM"] = {
     u"紅薔薇の髄": "fire",
 }
 
-skillnamelist["strengthLL"] = {u"灼滅の覇道": "fire", u"裁考の覇道": "earth"}
+skillnamelist["strengthLL"] = {
+    u"灼滅の覇道": "fire",
+    u"裁考の覇道": "earth",
+    u"人馬の覇道": "wind",
+}
+
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
 skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", u"インテリジェンス": "dark"}
 skillnamelist["unknownOtherNiteS"] = {u"ミフネ流剣法・双星": "fire", u"デクステリティ": "dark"}
