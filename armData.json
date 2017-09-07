@@ -1,4 +1,70 @@
 {
+    "[魔封杖]ガンバンテイン": {
+        "hplv100": "317", 
+        "element2": "light", 
+        "en": "Gambanteinn", 
+        "maxlv": 150, 
+        "skill2": "normalSanteS", 
+        "skill1": "normalLLM", 
+        "hp": "380", 
+        "element": "light", 
+        "attacklv100": "2375", 
+        "minattack": "395", 
+        "attack": "2760", 
+        "slvmax": 15, 
+        "minhp": "53", 
+        "type": "wand", 
+        "ja": "[魔封杖]ガンバンテイン", 
+        "imageURL": "./imgs/1040404300.png"
+    }, 
+    "トレピリ": {
+        "element2": "water", 
+        "en": "トレピリ", 
+        "maxlv": 100, 
+        "skill2": "normalNiteM", 
+        "skill1": "normalCriticalL", 
+        "hp": "274", 
+        "element": "water", 
+        "minattack": "346", 
+        "attack": "2224", 
+        "slvmax": 10, 
+        "minhp": "50", 
+        "type": "fist", 
+        "ja": "トレピリ", 
+        "imageURL": "./imgs/1040608800.png"
+    }, 
+    "パーマフロスト・ソード": {
+        "element2": "water", 
+        "en": "パーマフロスト・ソード", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "hp": "205", 
+        "element": "water", 
+        "minattack": "435", 
+        "attack": "2575", 
+        "slvmax": 10, 
+        "minhp": "33", 
+        "type": "sword", 
+        "ja": "パーマフロスト・ソード", 
+        "imageURL": "./imgs/1040012500.png"
+    }, 
+    "シネンシス": {
+        "element2": "wind", 
+        "en": "シネンシス", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "hp": "180", 
+        "element": "wind", 
+        "minattack": "460", 
+        "attack": "2715", 
+        "slvmax": 10, 
+        "minhp": "29", 
+        "type": "katana", 
+        "ja": "シネンシス", 
+        "imageURL": "./imgs/1040908100.png"
+    }, 
     "六道・黄木天の箭": {
         "hplv100": "232", 
         "element2": "wind", 
@@ -5639,9 +5705,9 @@
         "ja": "トリート・ウロボロス", 
         "imageURL": "./imgs/1040404200.png"
     }, 
-    "[魔封杖]ガンバンテイン": {
+    "ガンバンテイン": {
         "element2": "light", 
-        "en": "Gambanteinn", 
+        "en": "ガンバンテイン", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -5652,7 +5718,7 @@
         "slvmax": 10, 
         "minhp": "53", 
         "type": "wand", 
-        "ja": "[魔封杖]ガンバンテイン", 
+        "ja": "ガンバンテイン", 
         "imageURL": "./imgs/1040404300.png"
     }, 
     "[聖祝杖]クリスマスワンド": {
@@ -8870,6 +8936,22 @@
         "type": "bow", 
         "ja": "リング・オブ・ラファエル(SR)", 
         "imageURL": "./imgs/1030703700.png"
+    }, 
+    "サラダトング": {
+        "element2": "wind", 
+        "en": "サラダトング", 
+        "maxlv": 75, 
+        "skill2": "non", 
+        "skill1": "strengthM", 
+        "hp": "134", 
+        "element": "wind", 
+        "minattack": "207", 
+        "attack": "1282", 
+        "slvmax": 10, 
+        "minhp": "20", 
+        "type": "fist", 
+        "ja": "サラダトング", 
+        "imageURL": "./imgs/1030605300.png"
     }, 
     "[閑麗]アロンダイト": {
         "element2": "light", 
