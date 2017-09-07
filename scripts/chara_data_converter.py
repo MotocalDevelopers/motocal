@@ -192,7 +192,7 @@ if __name__ == '__main__':
             if translation.has_key(decoded_name):
                 newdict["en"] = translation[decoded_name].encode("utf-8")
             else:
-                print "[Warning] " + name + " is not translated."
+                print(name)
                 newdict["en"] = name
 
             json_data[name] = newdict
