@@ -416,7 +416,10 @@ skillnamelist["unknownM"] = {u"アンノウン・ATK": "unknown"}
 skillnamelist["unknownHPL"] = {u"アンノウン・VIT II": "unknown"}
 skillnamelist["unknownHPM"] = {u"アンノウン・VIT": "unknown"}
 skillnamelist["strengthS"] = {u"スピードスペル": "light"}
-skillnamelist["strengthM"] = {u"大自然の摂理": "light"}
+skillnamelist["strengthM"] = {
+    u"大自然の摂理": "light",
+    u"花戦の攻刃": "wind"
+}
 skillnamelist["strengthL"] = {
     u"ストレングス": "unknown",
     u"セービングアタック": "water",
@@ -679,7 +682,7 @@ if __name__ == '__main__':
             if translation.has_key(decoded_name):
                 newdict["en"] = translation[decoded_name].encode("utf-8")
             else:
-                print name
+                print(name)
                 newdict["en"] = name
 
             json_data[name] = newdict
