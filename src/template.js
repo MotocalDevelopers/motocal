@@ -203,6 +203,15 @@ var RegisteredChara = React.createClass({
                         })}
 
                     </div>
+
+                    { locale == "en" ? 
+                        <p className="text-danger">
+                            Help me English translation of templates on&nbsp;
+                            <a href="https://docs.google.com/spreadsheets/d/12R-ZQD8xy1dYYoFxjcWNN0mva1NaDIQB1XSY95jfSKg/edit" target="_blank">Google Spreadsheet</a>!
+                        </p>
+                        :
+                        null
+                    }
                     <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>
 
                     <Modal show={this.state.openSendRequest} onHide={this.closeSendRequest}>
@@ -472,6 +481,14 @@ var RegisteredArm = React.createClass({
                         })}
                     </div>
 
+                    { locale == "en" ? 
+                        <p className="text-danger">
+                            Help me English translation of templates on&nbsp;
+                            <a href="https://docs.google.com/spreadsheets/d/12R-ZQD8xy1dYYoFxjcWNN0mva1NaDIQB1XSY95jfSKg/edit" target="_blank">Google Spreadsheet</a>!
+                        </p>
+                        :
+                        null
+                    }
                     <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>
 
                     <Modal show={this.state.openSendRequest} onHide={this.closeSendRequest}>
