@@ -1,4 +1,23 @@
 {
+    "グレア": {
+        "name": "グレア", 
+        "ja": "グレア", 
+        "element": "fire", 
+        "type": "attack", 
+        "race": "unknown", 
+        "fav1": "fist", 
+        "fav2": "none", 
+        "support": "none", 
+        "support2": "none", 
+        "minhp": "210", 
+        "hp": "1150", 
+        "minattack": "1950", 
+        "attack": "10100", 
+        "baseDA": 6.5, 
+        "baseTA": 3.0, 
+        "imageURL": "./charaimgs/3040130000_01.png", 
+        "en": "グレア"
+    }, 
     "ディアンサ(水着ver)": {
         "name": "ディアンサ(水着ver)", 
         "ja": "ディアンサ(水着ver)", 
