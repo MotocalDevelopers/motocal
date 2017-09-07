@@ -2109,6 +2109,10 @@ var multiLangData = {
     "notice-20170819-1": {
         "en": "19/08/2017: Fixed some character data without favorite weapons. Applied new Ougi Damage Limitation Range. Fixed stopping bug when the ChainBurst Number was changed.",
         "ja": "2017/08/19: 得意武器が抜けていたキャラを修正. 新奥義上限を適用. チェインバースト数を弄ると計算が止まる不具合を修正."
+    },
+    "notice-20170907-1": {
+        "en": "07/09/2017: Added new weapons and characters.",
+        "ja": "2017/09/07: 武器とキャラ追加."
     }
 }
 
