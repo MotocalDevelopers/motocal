@@ -418,7 +418,11 @@ skillnamelist["unknownHPM"] = {u"アンノウン・VIT": "unknown"}
 skillnamelist["strengthS"] = {u"スピードスペル": "light"}
 skillnamelist["strengthM"] = {
     u"大自然の摂理": "light",
-    u"花戦の攻刃": "wind"
+    u"花戦の攻刃": "wind",
+    u"国広第一の傑作": "earth",
+    u"足利宝剣": "dark",
+    u"龍馬の愛刀": "wind",
+    u"土方の愛刀": "fire",
 }
 skillnamelist["strengthL"] = {
     u"ストレングス": "unknown",
@@ -446,6 +450,8 @@ skillnamelist["strengthL"] = {
     u"ロイヤルアフェクション": "earth",
     u"超カッコいい攻刃": "water",
     u"叉棘": "fire",
+    u"天下五剣": "light",
+    u"利無動": "water",
 }
 skillnamelist["exATKandHPM"] = {
     u"蒼薔薇の髄": "water",
