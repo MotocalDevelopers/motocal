@@ -559,6 +559,7 @@ skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
 skillnamelist["maihimeEnbu"] =   {u"舞姫の演舞": "water"}
 skillnamelist["normalHPL"][u"氷晶宮の加護"] = "water"
 skillnamelist["normalL"][u"聖女の行進"] = "light"
+skillnamelist["normalL"][u"天を統べる強風"] = "wind"
 skillnamelist["normalL"][u"血啜りの一閃"] = "dark"
 
 armtypelist = OrderedDict()
