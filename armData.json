@@ -1,4 +1,20 @@
 {
+    "マナリアンホーリーロッド": {
+        "element2": "wind", 
+        "en": "マナリアンホーリーロッド", 
+        "maxlv": 100, 
+        "skill2": "strengthL", 
+        "skill1": "non", 
+        "hp": "227", 
+        "element": "wind", 
+        "minattack": "290", 
+        "attack": "1740", 
+        "slvmax": 10, 
+        "minhp": "34", 
+        "type": "wand", 
+        "ja": "マナリアンホーリーロッド", 
+        "imageURL": "./imgs/1040411400.png"
+    }, 
     "三日月宗近": {
         "element2": "light", 
         "en": "三日月宗近", 
