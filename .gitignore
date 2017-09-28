@@ -2,14 +2,7 @@ build/.module-cache
 node_modules
 imgs/*.png
 charaimgs/*.png
-otherImages
-utils.php
-sqldump
-jquery-ui-1.12.0.custom
-js-base64
 *.php
-html2canvas
 gana.js
-build/content.js
 dist
 .env
