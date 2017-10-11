@@ -453,6 +453,8 @@ skillnamelist["strengthL"] = {
     u"天下五剣": "light",
     u"利無動": "water",
     u"マナリアの聖なる息吹": "wind",
+    u"紫水の光輝": "dark",
+    u"闇の力を秘めし鍵": "dark"
 }
 skillnamelist["exATKandHPM"] = {
     u"蒼薔薇の髄": "water",
