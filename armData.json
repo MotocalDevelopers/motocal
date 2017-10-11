@@ -200,7 +200,7 @@
     "[魔封杖]ガンバンテイン": {
         "hplv100": "317", 
         "element2": "light", 
-        "en": "Gambanteinn", 
+        "en": "[Skybound] Gambanteinn", 
         "maxlv": 150, 
         "skill2": "normalSanteS", 
         "skill1": "normalLLM", 
@@ -217,7 +217,7 @@
     }, 
     "トレピリ": {
         "element2": "water", 
-        "en": "トレピリ", 
+        "en": "Tlepilli", 
         "maxlv": 100, 
         "skill2": "normalNiteM", 
         "skill1": "normalCriticalL", 
@@ -233,7 +233,7 @@
     }, 
     "パーマフロスト・ソード": {
         "element2": "water", 
-        "en": "パーマフロスト・ソード", 
+        "en": "Frostbite", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -249,7 +249,7 @@
     }, 
     "シネンシス": {
         "element2": "wind", 
-        "en": "シネンシス", 
+        "en": "Sinensis", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -266,7 +266,7 @@
     "六道・黄木天の箭": {
         "hplv100": "232", 
         "element2": "wind", 
-        "en": "六道・黄木天の箭", 
+        "en": "Xeno Conviction Flashspear", 
         "maxlv": 150, 
         "skill2": "non", 
         "skill1": "strengthLL", 
@@ -284,7 +284,7 @@
     "真・黄木天の箭": {
         "hplv100": "232", 
         "element2": "wind", 
-        "en": "真・黄木天の箭", 
+        "en": "[Skybound] True Conviction Flashspear", 
         "maxlv": 150, 
         "skill2": "non", 
         "skill1": "strengthLL", 
@@ -301,7 +301,7 @@
     }, 
     "ウーチンフィスト": {
         "element2": "fire", 
-        "en": "ウーチンフィスト", 
+        "en": "Urchin Fist", 
         "maxlv": 100, 
         "skill2": "strengthL", 
         "skill1": "non", 
@@ -317,7 +317,7 @@
     }, 
     "オメガスウォード": {
         "element2": "dark", 
-        "en": "オメガスウォード", 
+        "en": "Ultima Sword", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -333,7 +333,7 @@
     }, 
     "オメガバゼラード": {
         "element2": "dark", 
-        "en": "オメガバゼラード", 
+        "en": "Ultima Dagger", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -349,7 +349,7 @@
     }, 
     "オメガバルーチャ": {
         "element2": "dark", 
-        "en": "オメガバルーチャ", 
+        "en": "Ultima Spear", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -365,7 +365,7 @@
     }, 
     "オメガファルシャ": {
         "element2": "dark", 
-        "en": "オメガファルシャ", 
+        "en": "Ultima Axe", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -381,7 +381,7 @@
     }, 
     "オメガロッド": {
         "element2": "dark", 
-        "en": "オメガロッド", 
+        "en": "Ultima Staff", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -397,7 +397,7 @@
     }, 
     "オメガシューター": {
         "element2": "dark", 
-        "en": "オメガシューター", 
+        "en": "Ultima Gun", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -413,7 +413,7 @@
     }, 
     "オメガクロー": {
         "element2": "dark", 
-        "en": "オメガクロー", 
+        "en": "Ultima Claw", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -429,7 +429,7 @@
     }, 
     "オメガボウ": {
         "element2": "dark", 
-        "en": "オメガボウ", 
+        "en": "Ultima Bow", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -445,7 +445,7 @@
     }, 
     "オメガストリング": {
         "element2": "dark", 
-        "en": "オメガストリング", 
+        "en": "Ultima Harp", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -461,7 +461,7 @@
     }, 
     "オメガブレイド": {
         "element2": "dark", 
-        "en": "オメガブレイド", 
+        "en": "Ultima Blade", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -477,7 +477,7 @@
     }, 
     "無垢なる竜の剣": {
         "element2": "dark", 
-        "en": "無垢なる竜の剣", 
+        "en": "Atma Sword", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -493,7 +493,7 @@
     }, 
     "無垢なる竜の短剣": {
         "element2": "dark", 
-        "en": "無垢なる竜の短剣", 
+        "en": "Atma Dagger", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -509,7 +509,7 @@
     }, 
     "無垢なる竜の槍": {
         "element2": "dark", 
-        "en": "無垢なる竜の槍", 
+        "en": "Atma Spear", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -525,7 +525,7 @@
     }, 
     "無垢なる竜の斧": {
         "element2": "dark", 
-        "en": "無垢なる竜の斧", 
+        "en": "Atma Axe", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -541,7 +541,7 @@
     }, 
     "無垢なる竜の杖": {
         "element2": "dark", 
-        "en": "無垢なる竜の杖", 
+        "en": "Atma Staff", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -557,7 +557,7 @@
     }, 
     "無垢なる竜の筒": {
         "element2": "dark", 
-        "en": "無垢なる竜の筒", 
+        "en": "Atma Gun", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -573,7 +573,7 @@
     }, 
     "無垢なる竜の爪": {
         "element2": "dark", 
-        "en": "無垢なる竜の爪", 
+        "en": "Atma Claw", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -589,7 +589,7 @@
     }, 
     "無垢なる竜の弓": {
         "element2": "dark", 
-        "en": "無垢なる竜の弓", 
+        "en": "Atma Bow", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -605,7 +605,7 @@
     }, 
     "無垢なる竜の弦": {
         "element2": "dark", 
-        "en": "無垢なる竜の弦", 
+        "en": "Atma Harp", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -621,7 +621,7 @@
     }, 
     "無垢なる竜の刃": {
         "element2": "dark", 
-        "en": "無垢なる竜の刃", 
+        "en": "Atma Blade", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "omega-raw", 
@@ -637,7 +637,7 @@
     }, 
     "ローズクリスタルアクス": {
         "element2": "wind", 
-        "en": "ローズクリスタルアクス", 
+        "en": "Rose Crystal Axe", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "exATKandHPM", 
@@ -653,7 +653,7 @@
     }, 
     "ローズクリスタルクロー": {
         "element2": "earth", 
-        "en": "ローズクリスタルクロー", 
+        "en": "Rose Crystal Claw", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "exATKandHPM", 
@@ -669,7 +669,7 @@
     }, 
     "ローズクリスタルボウ": {
         "element2": "fire", 
-        "en": "ローズクリスタルボウ", 
+        "en": "Rose Crystal Bow", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "exATKandHPM", 
@@ -685,7 +685,7 @@
     }, 
     "ローズクリスタルハープ": {
         "element2": "water", 
-        "en": "ローズクリスタルハープ", 
+        "en": "Rose Crystal Harp", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "exATKandHPM", 
@@ -701,7 +701,7 @@
     }, 
     "ファイア・オブ・プロメテウス": {
         "element2": "fire", 
-        "en": "ファイア・オブ・プロメテウス", 
+        "en": "Fire of Prometheus", 
         "maxlv": 100, 
         "skill2": "normalMusouM", 
         "skill1": "normalL", 
@@ -717,7 +717,7 @@
     }, 
     "ル・フェイ": {
         "element2": "wind", 
-        "en": "ル・フェイ", 
+        "en": "Le Fay", 
         "maxlv": 100, 
         "skill2": "normalSanteL", 
         "skill1": "normalBoukunL", 
@@ -733,7 +733,7 @@
     }, 
     "英雄王の槍": {
         "element2": "earth", 
-        "en": "英雄王の槍", 
+        "en": "All-Might Spear", 
         "maxlv": 100, 
         "skill2": "ougiDamageLimit10", 
         "skill1": "normalLL", 
@@ -749,7 +749,7 @@
     }, 
     "聖域の守護剣": {
         "element2": "water", 
-        "en": "聖域の守護剣", 
+        "en": "Keeper of Hallowed Ground", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -765,7 +765,7 @@
     }, 
     "イーリアスボウ": {
         "element2": "light", 
-        "en": "イーリアスボウ", 
+        "en": "Bow of Iliad", 
         "maxlv": 100, 
         "skill2": "normalNiteM", 
         "skill1": "normalKonshinL", 
@@ -781,7 +781,7 @@
     }, 
     "ヘルマニビス": {
         "element2": "dark", 
-        "en": "ヘルマニビス", 
+        "en": "Hermanubis", 
         "maxlv": 100, 
         "skill2": "ougiDamageLimit10", 
         "skill1": "normalKamuiM", 
@@ -797,7 +797,7 @@
     }, 
     "プロトタイプ": {
         "element2": "dark", 
-        "en": "プロトタイプ", 
+        "en": "Prototype", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -813,7 +813,7 @@
     }, 
     "ベッラ・アエテルヌス": {
         "element2": "earth", 
-        "en": "ベッラ・アエテルヌス", 
+        "en": "Bella Aeterna", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -865,7 +865,7 @@
     }, 
     "超カッコいいライフル": {
         "element2": "water", 
-        "en": "超カッコいいライフル", 
+        "en": "Wicked Sick Blaster", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "strengthL", 
@@ -935,7 +935,7 @@
     }, 
     "桃色の団扇": {
         "element2": "wind", 
-        "en": "桃色の団扇", 
+        "en": "Pink Fan", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "unknownL", 
@@ -952,7 +952,7 @@
     "[ぴにゃ]桃色の団扇": {
         "hplv100": "197", 
         "element2": "wind", 
-        "en": "[ぴにゃ]桃色の団扇", 
+        "en": "[Skybound] Pink Fan", 
         "maxlv": 150, 
         "skill2": "non", 
         "skill1": "unknownL", 
@@ -987,7 +987,7 @@
     }, 
     "ディアドリッククロー": {
         "element2": "wind", 
-        "en": "ディアドリッククロー", 
+        "en": "Deirdre's Claws", 
         "maxlv": 100, 
         "skill2": "normalCriticalS", 
         "skill1": "normalHaisuiL", 
@@ -1003,7 +1003,7 @@
     }, 
     "[女蜂刺]女王の一刺し": {
         "element2": "earth", 
-        "en": "[女蜂刺]女王の一刺し", 
+        "en": "Queen's Stinger", 
         "maxlv": 100, 
         "skill2": "strengthL", 
         "skill1": "non", 
@@ -2399,7 +2399,7 @@
     }, 
     "アスカロン": {
         "element2": "water", 
-        "en": "アスカロン", 
+        "en": "Ascalon (Premium)", 
         "maxlv": 100, 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -2825,7 +2825,7 @@
     }, 
     "ラスト・シン": {
         "element2": "water", 
-        "en": "ラスト・シン", 
+        "en": "Lyst Sin", 
         "maxlv": 100, 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -3759,7 +3759,7 @@
     }, 
     "秘丹弥虚羅多包丁": {
         "element2": "water", 
-        "en": "秘丹弥虚羅多包丁", 
+        "en": "Pina Colata Cleaver", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "unknownL", 
@@ -5905,7 +5905,7 @@
     }, 
     "ガンバンテイン": {
         "element2": "light", 
-        "en": "ガンバンテイン", 
+        "en": "Gambanteinn", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -6501,7 +6501,7 @@
     }, 
     "ベネディーア": {
         "element2": "fire", 
-        "en": "ベネディーア", 
+        "en": "Benedia", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -7033,7 +7033,7 @@
     }, 
     "緋舞扇": {
         "element2": "fire", 
-        "en": "緋舞扇", 
+        "en": "Scarlet Vane", 
         "maxlv": 100, 
         "skill2": "normalHPL", 
         "skill1": "normalL", 
@@ -8913,7 +8913,7 @@
     }, 
     "[聖王剣]エクスカリバー": {
         "element2": "fire", 
-        "en": "[聖王剣]エクスカリバー", 
+        "en": "Excalibur", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "non", 
@@ -8929,7 +8929,7 @@
     }, 
     "[秘劫刃]ダマスカスナイフ": {
         "element2": "fire", 
-        "en": "[秘劫刃]ダマスカスナイフ", 
+        "en": "Damascus Knife", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "non", 
@@ -8945,7 +8945,7 @@
     }, 
     "[覇滅槍]ゲイボルグ": {
         "element2": "fire", 
-        "en": "[覇滅槍]ゲイボルグ", 
+        "en": "Gae Bulg", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "non", 
@@ -8961,7 +8961,7 @@
     }, 
     "ミョルニル": {
         "element2": "fire", 
-        "en": "ミョルニル", 
+        "en": "Mjolnir", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalL", 
@@ -8977,7 +8977,7 @@
     }, 
     "[蛇天導]カドゥケウス": {
         "element2": "fire", 
-        "en": "[蛇天導]カドゥケウス", 
+        "en": "Asclepius Rod", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalKamui", 
@@ -8993,7 +8993,7 @@
     }, 
     "フライクーゲル": {
         "element2": "fire", 
-        "en": "フライクーゲル", 
+        "en": "Freikugel", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalBoukunL", 
@@ -9009,7 +9009,7 @@
     }, 
     "方天画戟": {
         "element2": "fire", 
-        "en": "方天画戟", 
+        "en": "Sky Piercer", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "non", 
@@ -9025,7 +9025,7 @@
     }, 
     "ヘラクレス": {
         "element2": "fire", 
-        "en": "ヘラクレス", 
+        "en": "Hercules", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalKatsumiM", 
@@ -9041,7 +9041,7 @@
     }, 
     "[華薫琴]ウルリクムミ": {
         "element2": "fire", 
-        "en": "[華薫琴]ウルリクムミ", 
+        "en": "Ullikummi", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalKatsumokuS", 
@@ -9057,7 +9057,7 @@
     }, 
     "[八頸斬]天羽々斬": {
         "element2": "fire", 
-        "en": "[八頸斬]天羽々斬", 
+        "en": "Ameno Habakiri", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalSetsuna", 
