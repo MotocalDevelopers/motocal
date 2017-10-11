@@ -49,6 +49,7 @@ var Profile = React.createClass({
             normalBuff: 0,
             elementBuff: 0,
             otherBuff: 0,
+            otherBuff2: 0,
             additionalDamageBuff: 0,
             damageLimitBuff: 0.0,
             ougiDamageLimitBuff: 0.0,
@@ -72,6 +73,7 @@ var Profile = React.createClass({
             personalNormalBuff: 0.0,
             personalElementBuff: 0.0,
             personalOtherBuff: 0.0,
+            personalOtherBuff2: 0.0,
             personalAdditionalDamageBuff: 0.0,
             personalDABuff: 0.0,
             personalTABuff: 0.0,
@@ -211,6 +213,10 @@ var Profile = React.createClass({
                                     <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                                     <td><FormControl componentClass="select" value={this.state.personalOtherBuff} onChange={this.handleSelectEvent.bind(this, "personalOtherBuff")}>{selector.buffLevel}</FormControl></td>
                                 </tr>,
+                                <tr key="personalOtherBuff2">
+                                    <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
+                                    <td><FormControl componentClass="select" value={this.state.personalOtherBuff2} onChange={this.handleSelectEvent.bind(this, "personalOtherBuff2")}>{selector.buffLevel}</FormControl></td>
+                                </tr>,
                                 <tr key="personalDaBuff">
                                     <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                                     <td><FormControl componentClass="select" value={this.state.personalDABuff} onChange={this.handleSelectEvent.bind(this, "personalDABuff")}>{selector.buffLevel}</FormControl></td>
@@ -310,6 +316,16 @@ var Profile = React.createClass({
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.otherBuff} onChange={this.handleSelectEvent.bind(this, "otherBuff")}> {selector.buffLevel} </FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("その他バフ2説明", locale)} id={"tooltip-otherbuff2-detail"}><tr>
+                            <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.otherBuff2} onChange={this.handleSelectEvent.bind(this, "otherBuff2")}> {selector.buffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>

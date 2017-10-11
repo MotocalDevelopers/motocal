@@ -371,7 +371,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
         // 属性(経過ターン)も最大値で計算する
         var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"] + totals[key]["elementBuff"]
-        var otherCoeff = 1.0 + buff["other"] + totals[key]["otherBuff"]
+        var otherCoeff = (1.0 + buff["other"]) * (1.0 + buff["other2"]) * (1.0 + totals[key]["otherBuff"]) * (1.0 + totals[key]["otherBuff2"])
 
         // キャラ背水枠
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"]
@@ -719,6 +719,7 @@ module.exports.getTotalBuff = function(prof) {
         normal: 0.0,
         element: 0.0,
         other: 0.0,
+        other2: 0.0,
         zenith1: 0.0,
         zenith2: 0.0,
         hp: 0.0,
@@ -736,6 +737,7 @@ module.exports.getTotalBuff = function(prof) {
     if(!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
     if(!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseFloat(prof.daBuff);
     if(!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseFloat(prof.taBuff);
+    if(!isNaN(prof.otherBuff2)) totalBuff["other2"] += 0.01 * parseInt(prof.otherBuff2);
     if(!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
     if(!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
     if(!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);
@@ -1100,10 +1102,12 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
     var zenithATK = (prof.zenithAttackBonus == undefined) ? 3000 : parseInt(prof.zenithAttackBonus)
     var zenithHP = (prof.zenithHPBonus == undefined) ? 1000 : parseInt(prof.zenithHPBonus)
     var zenithPartyHP = (prof.zenithPartyHPBonus == undefined) ? 0 : parseInt(prof.zenithPartyHPBonus)
+
     var djeetaBuffList = {
         personalNormalBuff: 0.0,
         personalElementBuff: 0.0,
         personalOtherBuff: 0.0,
+        personalOtherBuff2: 0.0,
         personalDABuff: 0.0,
         personalTABuff: 0.0,
         personalOugiGageBuff: 0.0,
@@ -1172,6 +1176,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             normalBuff: djeetaBuffList["personalNormalBuff"],
             elementBuff: djeetaBuffList["personalElementBuff"],
             otherBuff: djeetaBuffList["personalOtherBuff"],
+            otherBuff2: djeetaBuffList["personalOtherBuff2"],
             DABuff: djeetaBuffList["personalDABuff"],
             TABuff: djeetaBuffList["personalTABuff"],
             ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
@@ -1209,6 +1214,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 normalBuff: 0.0,
                 elementBuff: 0.0,
                 otherBuff: 0.0,
+                otherBuff2: 0.0,
                 daBuff: 0.0,
                 taBuff: 0.0,
                 ougiGageBuff: 0.0,
@@ -1276,6 +1282,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 normalBuff: charaBuffList["normalBuff"],
                 elementBuff: charaBuffList["elementBuff"],
                 otherBuff: charaBuffList["otherBuff"],
+                otherBuff2: charaBuffList["otherBuff2"],
                 DABuff: charaBuffList["daBuff"],
                 TABuff: charaBuffList["taBuff"],
                 ougiGageBuff: charaBuffList["ougiGageBuff"],

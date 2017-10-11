@@ -183,7 +183,15 @@ var multiLangData = {
     },
     "その他バフ説明": {
         "en": "Other Buff",
-        "ja": "別枠乗算のバフ(乗算を複数加味したい場合は乗算後の値を入力してください)",
+        "ja": "別枠乗算のバフ",
+    },
+    "その他バフ2": {
+        "en": "Other Buff II",
+        "ja": "その他バフ2",
+    },
+    "その他バフ2説明": {
+        "en": "Other Buff II",
+        "ja": "別枠乗算のバフ(もし別枠バフが2つ以上ある場合用)",
     },
     "HPバフ": {
         "en": "HP Buff",
@@ -2113,6 +2121,14 @@ var multiLangData = {
     "notice-20170907-1": {
         "en": "07/09/2017: Added new weapons and characters.",
         "ja": "2017/09/07: 武器とキャラ追加."
+    },
+    "notice-20171011-1": {
+        "en": "11/10/2017: Added new weapons and characters.",
+        "ja": "2017/10/11: 武器とキャラ追加."
+    },
+    "notice-20171011-2": {
+        "en": "11/10/2017: Implemented second `other buff` input forms.",
+        "ja": "2017/10/11: 2つ目の`その他バフ`を入力する欄を追加."
     }
 }
 

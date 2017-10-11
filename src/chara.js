@@ -271,6 +271,7 @@ var Chara = React.createClass({
             normalBuff: 0,
             elementBuff: 0,
             otherBuff: 0,
+            otherBuff2: 0,
             additionalDamageBuff: 0,
             daBuff: 0,
             taBuff: 0,
@@ -479,6 +480,10 @@ var Chara = React.createClass({
                                 <tr key="otherBuff">
                                     <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                                     <td><FormControl componentClass="select" value={this.state.otherBuff} onChange={this.handleSelectEvent.bind(this, "otherBuff")}>{selector.buffLevel}</FormControl></td>
+                                </tr>,
+                                <tr key="otherBuff2">
+                                    <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
+                                    <td><FormControl componentClass="select" value={this.state.otherBuff2} onChange={this.handleSelectEvent.bind(this, "otherBuff2")}>{selector.buffLevel}</FormControl></td>
                                 </tr>,
                                 <tr key="daBuff">
                                     <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
