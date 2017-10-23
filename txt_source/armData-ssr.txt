@@ -1,4 +1,5 @@
-|&attachref(img/1040412800.png,15%);|封印の杖|&color(#800080){闇};|杖|10|[[しあわせの魔法>武器奥義#shiawasenomahou]]|[[闇の力を秘めし鍵>スキル一覧#yaminotikarawohimesikagi]]|[[私だけの笑顔の魔法>スキル一覧#watashidakenoegaonomahou]]|32|300|270|2100|カードキャプターさくら ～さくらと不思議な空の冒険～|コラボイベント||
+|&attachref(img/1040412800.png,15%);|[模造鍵]封印の杖|&color(#800080){闇};|杖|10|[[しあわせの魔法>武器奥義#shiawasenomahou]]|[[闇の力を秘めし鍵>スキル一覧#yaminotikarawohimesikagi]]|[[私だけの笑顔の魔法>スキル一覧#watashidakenoegaonomahou]]|32|300|270|2100|カードキャプターさくら ～さくらと不思議な空の冒険～|コラボイベント|○|225|1750|
+|&attachref(img/1040412800.png,15%);|封印の杖|&color(#800080){闇};|杖|10|[[しあわせの魔法>武器奥義#shiawasenomahou]]|[[闇の力を秘めし鍵>スキル一覧#yaminotikarawohimesikagi]]||32|300|225|1750|カードキャプターさくら ～さくらと不思議な空の冒険～|コラボイベント||
 |&attachref(img/1040708100.png,15%);|シャローム・ボウ|&color(#800080){闇};|弓|10|[[安寧の風>武器奥義#anneinokaze]]|[[紫水の至恩>スキル一覧#shisuinoshion]]|[[紫水の光輝>スキル一覧#shisuinokouki]]|25|345|180|2030|パープル・スケール|イベント||
 |&attachref(img/1040011000.png,15%);|フェアネスマーク|&color(#ff9900){光};|剣|10|[[光臨剣>武器奥義#kourinken]]|[[天光の攻刃>スキル一覧#tennkounokoujin]]|[[先制の白壁>スキル一覧#senseinohakuheki]]|43|395|246|2390|[[バウタオーダ (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040408900.png,15%);|モンタギュオウス|&color(#3366ff){水};|杖|10|[[ヘラルド・オブ・ザ・ムーン>武器奥義#heraldofthemoon]]|[[霧氷の攻刃>スキル一覧#muhyounokoujin]]|[[先制の氷壁>スキル一覧#senseinohyouheki]]|44|380|283|2175|[[ロミオ (SSR)]]加入|レジェンドガチャ||
