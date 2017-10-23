@@ -697,6 +697,12 @@ module.exports.additionalSelectList = {
         selectors: ["sishoGenbu"],
         defaultKeys: ["non"],
     },
+    "無垢なる": {
+        notationText: "オメガウェポン注記",
+        selectKeys: ["skill1", "elements"],
+        selectors: ["omegaWeaponSkill1", "elements"],
+        defaultKeys: ["omega-raw", "light"],
+    },
     "オメガ": {
         notationText: "オメガウェポン注記",
         selectKeys: ["skill1", "skill2", "elements"],
