@@ -288,6 +288,15 @@ skillnamelist["normalSanteS"] = {
     u"闇の三手": "dark"
 }
 
+skillnamelist["normalSetsunaS"] = {
+    u"火の刹那": "fire",
+    u"水の刹那": "water",
+    u"土の刹那": "earth",
+    u"風の刹那": "wind",
+    u"光の刹那": "light",
+    u"闇の刹那": "dark"
+}
+
 # magna II
 skillnamelist["magnaL"] = {
     u"機炎方陣・攻刃II": "fire",
@@ -423,6 +432,8 @@ skillnamelist["strengthM"] = {
     u"足利宝剣": "dark",
     u"龍馬の愛刀": "wind",
     u"土方の愛刀": "fire",
+    u"クールな攻刃": "water",
+    u"錬金の攻刃": "light"
 }
 skillnamelist["strengthL"] = {
     u"ストレングス": "unknown",
@@ -454,7 +465,8 @@ skillnamelist["strengthL"] = {
     u"利無動": "water",
     u"マナリアの聖なる息吹": "wind",
     u"紫水の光輝": "dark",
-    u"闇の力を秘めし鍵": "dark"
+    u"闇の力を秘めし鍵": "dark",
+    u"狐火の閃揺": "fire"
 }
 skillnamelist["exATKandHPM"] = {
     u"蒼薔薇の髄": "water",
@@ -563,6 +575,7 @@ skillnamelist["normalHPL"][u"氷晶宮の加護"] = "water"
 skillnamelist["normalL"][u"聖女の行進"] = "light"
 skillnamelist["normalL"][u"天を統べる強風"] = "wind"
 skillnamelist["normalL"][u"血啜りの一閃"] = "dark"
+skillnamelist["normalL"][u"未完の錬金術"] = "fire"
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
