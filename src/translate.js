@@ -1456,9 +1456,13 @@ var multiLangData = {
         "en": "Magna Verity (L)",
         "ja": "マグナ技巧(大)",
     },
-    "通常刹那": {
-        "en": "Normal Celere",
-        "ja": "通常刹那",
+    "通常刹那(小)": {
+        "en": "Normal Celere (S)",
+        "ja": "通常刹那(小)",
+    },
+    "通常刹那(中)": {
+        "en": "Normal Celere (M)",
+        "ja": "通常刹那(中)",
     },
     "マグナ刹那": {
         "en": "Magna Celere",
@@ -2129,6 +2133,10 @@ var multiLangData = {
     "notice-20171011-2": {
         "en": "11/10/2017: Implemented second `other buff` input forms.",
         "ja": "2017/10/11: 2つ目の`その他バフ`を入力する欄を追加."
+    },
+    "notice-20171117-1": {
+        "en": "17/11/2017: Added the new skill 'Normal Celere (S)' / Added new weapons and charas.",
+        "ja": "2017/11/17: 通常刹那(小)追加 / キャラと武器追加."
     }
 }
 
