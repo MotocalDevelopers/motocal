@@ -479,6 +479,7 @@ skillnamelist["strengthLL"] = {
     u"灼滅の覇道": "fire",
     u"裁考の覇道": "earth",
     u"人馬の覇道": "wind",
+    u"氷逆の覇道": "water"
 }
 
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}

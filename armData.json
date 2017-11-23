@@ -1,4 +1,38 @@
 {
+    "真・氷逆天の戦棍": {
+        "hplv100": "260", 
+        "element2": "water", 
+        "en": "真・氷逆天の戦棍", 
+        "maxlv": 150, 
+        "skill2": "non", 
+        "skill1": "strengthLL", 
+        "hp": "303", 
+        "element": "water", 
+        "attacklv100": "1940", 
+        "minattack": "310", 
+        "attack": "2270", 
+        "slvmax": 15, 
+        "minhp": "43", 
+        "type": "wand", 
+        "ja": "真・氷逆天の戦棍", 
+        "imageURL": "./imgs/1040413100.png"
+    }, 
+    "六道・氷逆天の戦棍": {
+        "element2": "water", 
+        "en": "六道・氷逆天の戦棍", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "strengthLL", 
+        "hp": "260", 
+        "element": "water", 
+        "minattack": "310", 
+        "attack": "1940", 
+        "slvmax": 10, 
+        "minhp": "43", 
+        "type": "wand", 
+        "ja": "六道・氷逆天の戦棍", 
+        "imageURL": "./imgs/1040413000.png"
+    }, 
     "[守護剣]ブルトガング": {
         "hplv100": "234", 
         "element2": "dark", 

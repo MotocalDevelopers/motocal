@@ -1,3 +1,5 @@
+|&attachref(img/1040413100.png,11%);|真・氷逆天の戦棍|&color(#3366ff){水};|杖|50|[[苦悩の川>武器奥義#kunounokawa]]|[[氷逆の覇道>スキル一覧#hyougyakunohadou]]|[[氷逆天の凍翼>スキル一覧#hyougyakutennotouyoku]]|43|310|303|2270|ゼノ・コキュートス撃滅戦|イベント|○|260|1940|
+|&attachref(img/1040413000.png,11%);|六道・氷逆天の戦棍|&color(#3366ff){水};|杖|50|[[嘆きの川>武器奥義#nagekinokawa]]|[[氷逆の覇道>スキル一覧#hyougyakunohadou]]||43|310|260|1940|ゼノ・コキュートス撃滅戦|イベント||
 |&attachref(img/1040008700.png,15%);|[守護剣]&br;ブルトガング|&color(#800080){闇};|剣|40|[[無明剣>武器奥義#mumeiken]]|[[奈落の攻刃III>スキル一覧#narakunokoujin3]]|[[闇の刹那>スキル一覧#yaminosetsuna]]|36|480|280|3370|[[黒騎士 (SSR)]]加入|レジェンドガチャ|○|234|2790|
 |&attachref(img/1040908500.png,15%);|武王の鉄剣|&color(#ff0000){火};|刀|10|[[封神演義>武器奥義#huujinengi]]|[[狐火の光炎>スキル一覧#kitunebinokouen]]|[[狐火の閃揺>スキル一覧#kitunebinosenyou]]|25|355|150|2150|ごめんなさいとありがとう|イベント||
 |&attachref(img/1040908400.png,15%);|十六夜|&color(#3366ff){水};|刀|10|[[陰二重>武器奥義#kagehutae]]|[[霧氷の攻刃>スキル一覧#muhyounokoujin]]|[[水の秘奥>スキル一覧#mizunohioku]]|28|466|184|2686|[[ユエル(水属性ver) (SSR)>ユエル (SSR)水属性バージョン]]加入|レジェンドガチャ||
