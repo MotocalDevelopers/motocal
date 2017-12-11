@@ -266,6 +266,12 @@ var skilltypes = {
     // "gauphKey-delta": {name: "ガフスキー[Δ]", type: "gauphKey", amount: "L"},
     "tenshiShukufuku":   {name:"天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name:"天司の祝福II", type: "tenshiShukufuku", amount: "L"},
+    "extendedDjeetaNormalDATA5": {name: "[ジータのみ] 通常枠DATA 5%", type: "extendedDjeetaNormalDATA", amount: 5.0},
+    "extendedDjeetaNormalDATA10": {name: "[ジータのみ] 通常枠DATA 10%", type: "extendedDjeetaNormalDATA", amount: 10.0},
+    "extendedDjeetaNormalDATA15": {name: "[ジータのみ] 通常枠DATA 15%", type: "extendedDjeetaNormalDATA", amount: 15.0},
+    "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
+    "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
+    "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
 };
 
 var cosmosSkills = {

@@ -1676,6 +1676,31 @@ var multiLangData = {
         "en": "Ougi Limit UP(10%)",
         "ja": "奥義上限UP(10%)",
     },
+    // 拡張スキル
+    "[ジータのみ] 通常枠DATA 5%" : {
+        "en": "[DjeetaOnly] Normal DA/TA 5%",
+        "ja": "[ジータのみ] 通常枠DATA 5%",
+    },
+    "[ジータのみ] 通常枠DATA 10%" : {
+        "en": "[DjeetaOnly] Normal DA/TA 10%",
+        "ja": "[ジータのみ] 通常枠DATA 10%",
+    },
+    "[ジータのみ] 通常枠DATA 15%" : {
+        "en": "[DjeetaOnly] Normal DA/TA 15%",
+        "ja": "[ジータのみ] 通常枠DATA 15%",
+    },
+    "[ジータのみ] 通常枠DATA 20%" : {
+        "en": "[DjeetaOnly] Normal DA/TA 20%",
+        "ja": "[ジータのみ] 通常枠DATA 20%",
+    },
+    "[ジータのみ] 通常枠DATA 25%" : {
+        "en": "[DjeetaOnly] Normal DA/TA 25%",
+        "ja": "[ジータのみ] 通常枠DATA 25%",
+    },
+    "[ジータのみ] 通常枠DATA 30%" : {
+        "en": "[DjeetaOnly] Normal DA/TA 30%",
+        "ja": "[ジータのみ] 通常枠DATA 30%",
+    },
     // テンプレート用
     "王道: 竜巻の技巧": {
         "en": "Normal Verity (M)",

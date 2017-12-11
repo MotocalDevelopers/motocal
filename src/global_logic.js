@@ -407,7 +407,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // for DA and TA
         var normalNite = totals[key]["normalNite"] * totalSummon["zeus"];
         var magnaNite = totals[key]["magnaNite"] * totalSummon["magna"];
-        var normalSante = totals[key]["normalSante"] * totalSummon["zeus"] + totals[key]["omegaNormalSante"];
+        var normalSante = totals[key]["normalSante"] * totalSummon["zeus"] + totals[key]["normalOtherSante"];
         var magnaSante = totals[key]["magnaSante"] * totalSummon["magna"];
         var exNite = totals[key]["exNite"]
 
@@ -925,7 +925,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                                 if (omegatype === "senni") {
                                     totals[key]["omegaNormal"] += skillAmounts["omega"][amount][slv - 1];
                                 } else if (omegatype === "tousou") {
-                                    totals[key]["omegaNormalSante"] += skillAmounts["omega"][amount][slv - 1];
+                                    totals[key]["normalOtherSante"] += skillAmounts["omega"][amount][slv - 1];
                                 } else if (omegatype === "seimei") {
                                     totals[key]["omegaNormalHP"] += skillAmounts["omega"][amount][slv - 1];
                                 } else if (omegatype === "kyousou") {
@@ -1059,6 +1059,11 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             // 舞姫の演舞: 通常攻刃大 + 上限アップ7%
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"]["L"][slv - 1];
                             totals[key]["normalDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"]["M"];
+                        // メインのみDATA追加拡張
+                        } else if (stype == 'extendedDjeetaNormalDATA') {
+                            if (key == 'Djeeta') {
+                                totals[key]["normalOtherSante"] += amount;
+                            }
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -1122,7 +1127,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
         }
     }
 
-    var totals = {"Djeeta": 
+    var totals = {"Djeeta":
         {
             baseAttack: (baseAttack + zenithATK),
             baseHP: (baseHP + zenithPartyHP + zenithHP),
@@ -1159,6 +1164,8 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             normalSante: 0,
             magnaSante: 0,
             exNite: 0,
+            normalOtherNite: 0,
+            normalOtherSante: 0,
             normalCritical: [],
             normalOtherCritical: [],
             magnaCritical: 0,
@@ -1166,7 +1173,6 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             cosmosBL: 0,
             omegaNormal: 0,
             omegaNormalHP: 0,
-            omegaNormalSante: 0,
             normalDamageLimit: 0,
             ougiDamageLimit: 0,
             additionalDamage: 0,
@@ -1266,6 +1272,8 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 normalSante: 0,
                 magnaSante: 0,
                 exNite: 0,
+                normalOtherNite: 0,
+                normalOtherSante: 0,
                 normalCritical: [],
                 normalOtherCritical: [],
                 magnaCritical: 0,
@@ -1273,7 +1281,6 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 cosmosBL: 0,
                 omegaNormal: 0,
                 omegaNormalHP: 0,
-                omegaNormalSante: 0,
                 normalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 additionalDamage: 0,
@@ -1388,7 +1395,8 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["cosmosAT"] = 0;
         totals[key]["omegaNormal"] = 0;
         totals[key]["omegaNormalHP"] = 0;
-        totals[key]["omegaNormalSante"] = 0;
+        totals[key]["normalOtherNite"] = 0;
+        totals[key]["normalOtherSante"] = 0;
         totals[key]["normalDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
         totals[key]["additionalDamage"] = 0;
@@ -1650,7 +1658,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
 
                     var chainNumber = isNaN(prof.chainNumber) ? 1 : parseInt(prof.chainNumber);
                     var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement)) / chainNumber;
-                    var newExpectedCycleDamagePerTurn = (newChainBurst + newOugiDamage 
+                    var newExpectedCycleDamagePerTurn = (newChainBurst + newOugiDamage
                     + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1)
 
                     var hp;
