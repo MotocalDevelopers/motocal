@@ -579,6 +579,9 @@ skillnamelist["normalL"][u"天を統べる強風"] = "wind"
 skillnamelist["normalL"][u"血啜りの一閃"] = "dark"
 skillnamelist["normalL"][u"未完の錬金術"] = "fire"
 
+# その他調整が必要な武器
+skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
+
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
 armtypelist[u"銃"] = "gun"

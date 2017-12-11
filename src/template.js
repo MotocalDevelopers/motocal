@@ -204,7 +204,7 @@ var RegisteredChara = React.createClass({
 
                     </div>
 
-                    { locale == "en" ? 
+                    { locale == "en" ?
                         <p className="text-danger">
                             Help me English translation of templates on&nbsp;
                             <a href="https://docs.google.com/spreadsheets/d/12R-ZQD8xy1dYYoFxjcWNN0mva1NaDIQB1XSY95jfSKg/edit" target="_blank">Google Spreadsheet</a>!
@@ -335,10 +335,15 @@ var RegisteredArm = React.createClass({
                 arm["name"] += "[" + elementTypes[this.state.elements] + "]"
                 arm["element"] = this.state.elements
                 arm["element2"] = this.state.elements
-            } else if (additionalKeys === "main_weapon") {
-                if(this.state.main_weapon) {
-                    // メイン装備時に効果が切り替わるスキルは2番目に配置する
+            } else if (additionalKeys === "main_weapon_change") {
+                // メイン装備時に効果が切り替わるスキルは2番目に配置する
+                if (this.state.main_weapon) {
                     arm["skill2"] += "Main"
+                }
+            } else if (additionalKeys === "main_weapon_switch") {
+                // メイン装備時に効果がONになるスキルは2番目に配置する
+                if (!this.state.main_weapon) {
+                    arm["skill2"] = ""
                 }
             }
         }
@@ -481,7 +486,7 @@ var RegisteredArm = React.createClass({
                         })}
                     </div>
 
-                    { locale == "en" ? 
+                    { locale == "en" ?
                         <p className="text-danger">
                             Help me English translation of templates on&nbsp;
                             <a href="https://docs.google.com/spreadsheets/d/12R-ZQD8xy1dYYoFxjcWNN0mva1NaDIQB1XSY95jfSKg/edit" target="_blank">Google Spreadsheet</a>!

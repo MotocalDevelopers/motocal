@@ -676,7 +676,13 @@ module.exports.additionalSelectList = {
     },
     "絶覇": {
         notationText: "",
-        selectKeys: ["main_weapon"],
+        selectKeys: ["main_weapon_change"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
+    },
+    "スナップブレード": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
