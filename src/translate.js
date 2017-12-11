@@ -2137,6 +2137,10 @@ var multiLangData = {
     "notice-20171117-1": {
         "en": "17/11/2017: Added the new skill 'Normal Celere (S)' / Added new weapons and charas.",
         "ja": "2017/11/17: 通常刹那(小)追加 / キャラと武器追加."
+    },
+    "notice-20171211-1": {
+        "en": "11/12/2017: Added new weapons.",
+        "ja": "2017/12/11: 武器追加."
     }
 }
 
