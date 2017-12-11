@@ -318,7 +318,7 @@ var RegisteredArm = React.createClass({
         this.setState(newState)
     },
     clickedConsiderNumber: function(e) {
-        var arm = this.state.tempArm
+        var arm = JSON.parse(JSON.stringify(this.state.tempArm))
         arm["name"] = arm[this.props.locale]
         arm["plus"] = this.state.plusNum
         arm["lv"] = this.state.armLv
@@ -337,13 +337,13 @@ var RegisteredArm = React.createClass({
                 arm["element2"] = this.state.elements
             } else if (additionalKeys === "main_weapon_change") {
                 // メイン装備時に効果が切り替わるスキルは2番目に配置する
-                if (this.state.main_weapon) {
+                if (this.state.main_weapon_change) {
                     arm["skill2"] += "Main"
                 }
             } else if (additionalKeys === "main_weapon_switch") {
                 // メイン装備時に効果がONになるスキルは2番目に配置する
-                if (!this.state.main_weapon) {
-                    arm["skill2"] = ""
+                if (!this.state.main_weapon_switch) {
+                    arm["skill2"] = "non"
                 }
             }
         }
