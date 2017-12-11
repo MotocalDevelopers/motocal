@@ -466,7 +466,8 @@ skillnamelist["strengthL"] = {
     u"マナリアの聖なる息吹": "wind",
     u"紫水の光輝": "dark",
     u"闇の力を秘めし鍵": "dark",
-    u"狐火の閃揺": "fire"
+    u"狐火の閃揺": "fire",
+    u"肉削ぐ撓刃": "wind"
 }
 skillnamelist["exATKandHPM"] = {
     u"蒼薔薇の髄": "water",
