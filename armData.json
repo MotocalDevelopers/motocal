@@ -1,4 +1,38 @@
 {
+    "真・普天幻魔": {
+        "hplv100": "165", 
+        "element2": "dark", 
+        "en": "真・普天幻魔", 
+        "maxlv": 150, 
+        "skill2": "non", 
+        "skill1": "strengthLL", 
+        "hp": "193", 
+        "element": "dark", 
+        "attacklv100": "2430", 
+        "minattack": "410", 
+        "attack": "2835", 
+        "slvmax": 15, 
+        "minhp": "24", 
+        "type": "katana", 
+        "ja": "真・普天幻魔", 
+        "imageURL": "./imgs/1040908700.png"
+    }, 
+    "六道・普天幻魔": {
+        "element2": "dark", 
+        "en": "六道・普天幻魔", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "strengthLL", 
+        "hp": "165", 
+        "element": "dark", 
+        "minattack": "410", 
+        "attack": "2430", 
+        "slvmax": 10, 
+        "minhp": "24", 
+        "type": "katana", 
+        "ja": "六道・普天幻魔", 
+        "imageURL": "./imgs/1040908600.png"
+    }, 
     "[超硬質]スナップブレード": {
         "hplv100": "137", 
         "element2": "wind", 
