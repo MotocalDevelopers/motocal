@@ -91,11 +91,32 @@ var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 85, 90, 9
 var chainNumberList = [1, 2, 3, 4];
 
 // limitBonus
-var limitBonusAttackList = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000];
-var limitBonusHPList = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000];
-var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-var limitBonusCriticalList = {"無": "none", "小": "small", "中": "medium", "大": "large"};
+var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2300, 2500, 2600, 2800, 3000];
+var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
+var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+var limitBonusCriticalList = {
+    "none": {
+        "name": "無",
+        "value": 0.0,
+        "attackRatio": 0.0,
+    },
+    "small": {
+        "name": "小",
+        "value": 0.125,
+        "attackRatio": 0.125,
+    },
+    "medium": {
+        "name": "中",
+        "value": 0.20,
+        "attackRatio": 0.20,
+    },
+    "large": {
+        "name": "大",
+        "value": 0.25,
+        "attackRatio": 0.25,
+    },
+};
 
 var enemyDefenseType = {
     10.0: {"name": "敵防御10"},
@@ -661,6 +682,7 @@ module.exports.supportedChartSortkeys = supportedChartSortkeys
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
 module.exports.enemyDefenseType = enemyDefenseType
 module.exports.supportAbilities = supportAbilities
+module.exports.limitBonusCriticalList = limitBonusCriticalList;
 
 module.exports.additionalSelectList = {
     "・属性変更": {
@@ -813,7 +835,7 @@ module.exports.selector.limitBonusAttackList = limitBonusAttackList.map(function
 module.exports.selector.limitBonusHPList = limitBonusHPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.limitBonusDAList = limitBonusDAList.map(function(opt){return <option value={opt} key={opt}>{opt}%</option>;});
 module.exports.selector.limitBonusTAList = limitBonusTAList.map(function(opt){return <option value={opt} key={opt}>{opt}%</option>;});
-module.exports.selector.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function(opt){ return <option value={limitBonusCriticalList[opt]} key={opt}>{opt}</option> });
+module.exports.selector.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function(opt){ return <option value={opt} key={opt}>{limitBonusCriticalList[opt].name}</option> });
 
 module.exports.selector.ja.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedChartSortkeys[opt]}</option> });
 module.exports.selector.en.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{intl.translate(supportedChartSortkeys[opt], "en")}</option> });

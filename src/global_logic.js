@@ -1310,9 +1310,11 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             var LBCriticalKeys = ["LBCritical1", "LBCritical2", "LBCritical3"];
             LBCriticalKeys.forEach((crit_key) => {
                 if (chara[i][crit_key] !== "none") {
-                    var test_value = 0.10;
-                    var test_ratio = 0.10;
-                    totals[charakey]["normalOtherCritical"].push({"value": test_value, "attackRatio": test_ratio});
+                    var chara_lb_crit_type = chara[i][crit_key];
+                    totals[charakey]["normalOtherCritical"].push({
+                        "value": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].value,
+                        "attackRatio": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].attackRatio
+                    });
                 }
             });
         }
