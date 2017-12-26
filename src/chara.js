@@ -268,6 +268,7 @@ var Chara = React.createClass({
             TA: 3.0,
             isConsideredInAverage: true,
             openBufflist: false,
+            openLBlist: false,
             normalBuff: 0,
             elementBuff: 0,
             otherBuff: 0,
@@ -394,6 +395,9 @@ var Chara = React.createClass({
     switchBufflist: function (e) {
         this.setState({ openBufflist: !(this.state.openBufflist) })
     },
+    switchLBlist: function (e) {
+        this.setState({ openLBlist: !(this.state.openLBlist) })
+    },
     render: function () {
         var locale = this.props.locale
 
@@ -510,6 +514,72 @@ var Chara = React.createClass({
                                     <td><FormControl componentClass="select" value={this.state.ougiDamageLimitBuff} onChange={this.handleSelectEvent.bind(this, "ougiDamageLimitBuff")}>{selector.buffLevel}</FormControl></td>
                                 </tr>
                             ]
+                            : null}
+                            <tr>
+                                <th className="bg-primary">
+                                    <Button onClick={this.switchLBlist}>{"LimitBonus"}</Button>
+                                </th>
+                                <td></td>
+                            </tr>
+                            {this.state.openLBlist ?
+                                [
+                                    <tr key="LBAttack">
+                                        <th className="bg-primary">攻撃力</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBAttack} onChange={this.handleSelectEvent.bind(this, "LBAttack")}>
+                                                {selector.limitBonusAttackList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>,
+                                    <tr key="LBHP">
+                                        <th className="bg-primary">HP</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBHP} onChange={this.handleSelectEvent.bind(this, "LBHP")}>
+                                                {selector.limitBonusHPList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>,
+                                    <tr key="LBDA">
+                                        <th className="bg-primary">DA</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBDA} onChange={this.handleSelectEvent.bind(this, "LBDA")}>
+                                                {selector.limitBonusDAList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>,
+                                    <tr key="LBTA">
+                                        <th className="bg-primary">TA</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBTA} onChange={this.handleSelectEvent.bind(this, "LBTA")}>
+                                                {selector.limitBonusTAList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>,
+                                    <tr key="LBCritical1">
+                                        <th className="bg-primary">クリティカル1</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBCritical1} onChange={this.handleSelectEvent.bind(this, "LBCritical1")}>
+                                                {selector.limitBonusCriticalList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>,
+                                    <tr key="LBCritical2">
+                                        <th className="bg-primary">クリティカル2</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBCritical2} onChange={this.handleSelectEvent.bind(this, "LBCritical2")}>
+                                                {selector.limitBonusCriticalList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>,
+                                    <tr key="LBCritical3">
+                                        <th className="bg-primary">クリティカル3</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBCritical3} onChange={this.handleSelectEvent.bind(this, "LBCritical3")}>
+                                                {selector.limitBonusCriticalList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>
+                                ]
                             : null}
                     </tbody>
                 </table>
