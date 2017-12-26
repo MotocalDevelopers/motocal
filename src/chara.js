@@ -279,6 +279,13 @@ var Chara = React.createClass({
             ougiGageBuff: 0,
             damageLimitBuff: 0,
             ougiDamageLimitBuff: 0,
+            LBATK: 0,
+            LBHP: 0,
+            LBDA: 0,
+            LBTA: 0,
+            LBCritical1: "none",
+            LBCritical2: "none",
+            LBCritical3: "none",
         };
     },
     componentDidMount: function () {
@@ -523,10 +530,10 @@ var Chara = React.createClass({
                             </tr>
                             {this.state.openLBlist ?
                                 [
-                                    <tr key="LBAttack">
+                                    <tr key="LBATK">
                                         <th className="bg-primary">攻撃力</th>
                                         <td>
-                                            <FormControl componentClass="select" value={this.state.LBAttack} onChange={this.handleSelectEvent.bind(this, "LBAttack")}>
+                                            <FormControl componentClass="select" value={this.state.LBATK} onChange={this.handleSelectEvent.bind(this, "LBATK")}>
                                                 {selector.limitBonusAttackList}
                                             </FormControl>
                                         </td>

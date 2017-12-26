@@ -1236,10 +1236,10 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             }
 
             totals[charakey] = {
-                baseAttack: parseInt(chara[i].attack),
-                baseHP: parseInt(chara[i].hp) + zenithPartyHP,
-                baseDA: parseFloat(charaDA),
-                baseTA: parseFloat(charaTA),
+                baseAttack: parseInt(chara[i].attack) + parseInt(chara[i].LBATK),
+                baseHP: parseInt(chara[i].hp) + zenithPartyHP + parseInt(chara[i].LBHP),
+                baseDA: parseFloat(charaDA) + parseFloat(chara[i].LBDA),
+                baseTA: parseFloat(charaTA) + parseFloat(chara[i].LBTA),
                 remainHP: charaRemainHP,
                 armAttack: 0,
                 armHP:0,
@@ -1305,6 +1305,16 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 debuffResistance: 0,
                 tenshiDamageUP: 0
             };
+
+            // LBCritical対応
+            var LBCriticalKeys = ["LBCritical1", "LBCritical2", "LBCritical3"];
+            LBCriticalKeys.forEach((crit_key) => {
+                if (chara[i][crit_key] !== "none") {
+                    var test_value = 0.10;
+                    var test_ratio = 0.10;
+                    totals[charakey]["normalOtherCritical"].push({"value": test_value, "attackRatio": test_ratio});
+                }
+            });
         }
     }
 

@@ -95,7 +95,7 @@ var limitBonusAttackList = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
 var limitBonusHPList = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000];
 var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-var limitBonusCriticalList = {"小": "small", "中": "medium", "大": "large"};
+var limitBonusCriticalList = {"無": "none", "小": "small", "中": "medium", "大": "large"};
 
 var enemyDefenseType = {
     10.0: {"name": "敵防御10"},
