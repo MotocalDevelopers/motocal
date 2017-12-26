@@ -177,6 +177,9 @@ var ResultList = React.createClass({
             switchCharaAttack: 0,
             switchCharaDA: 0,
             switchCharaTotalExpected: 0,
+            switchCharaCycleDamage: 0,
+            switchCharaPureDamage: 0,
+            switchCharaOugiDamage: 0,
             switchAverageAttack: 1,
             switchAverageCriticalAttack: 0,
             switchTotalExpected: 0,
@@ -496,8 +499,11 @@ var ResultList = React.createClass({
                                 <td onClick={this.handleEvent.bind(this, "switchCharaHP")} className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP</td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaDA")} className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}> キャラ連続攻撃率</td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}> キャラ総回技値</td>
-                            </tr>
-                            <tr>
+                            </tr><tr>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaCycleDamage")} className={(this.state.switchCharaCycleDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ予想ターン毎ダメージ </td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaPureDamage")} className={(this.state.switchCharaPureDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ</td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")} className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ダメージ</td>
+                            </tr><tr>
                                 <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                                 <td onClick={this.handleEvent.bind(this, "switchDebuffResistance")} className={(this.state.switchDebuffResistance == 1) ? "display-checked" : "display-unchecked"}> 弱体耐性率</td>
                                 <td></td>
@@ -638,6 +644,9 @@ var ResultList = React.createClass({
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaHP")} active={(this.state.switchCharaHP == 1) ? true : false}>{intl.translate("キャラ", locale)}HP</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaDA")} active={(this.state.switchCharaDA == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("連撃率", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")} active={(this.state.switchCharaTotalExpected == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("総回技", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaCycleDamage")} active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaPureDamage")} active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")} active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")} active={(this.state.switchSkillTotal == 1) ? true : false}>{intl.translate("スキル合計", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDebuffResistance")} active={(this.state.switchDebuffResistance == 1) ? true : false}>{intl.translate("弱体耐性率", locale)}</MenuItem>
                         </DropdownButton>
@@ -821,6 +830,7 @@ var Result = React.createClass({
                         tablebody.push(senryoku + "\n(" + parseInt(m.data.Djeeta.displayAttack) + ' + ' + parseInt(m.data.Djeeta.displayHP) + ')')
                         ++colSize;
                     }
+
                     if (sw.switchCharaAttack) {
                         for (key in m.data) {
                             charaDetail[key].push(
@@ -871,10 +881,12 @@ var Result = React.createClass({
                         tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack + ")")
                         ++colSize;
                     }
+
                     if (sw.switchCriticalAttack) {
                         tablebody.push(m.data.Djeeta.criticalAttack)
                         ++colSize;
                     }
+
                     if (sw.switchCriticalRatio) {
                         if (getTypeBonus(prof.element, prof.enemyElement) == 1.5 || prof.enemyElement == "non-but-critical") {
                             tablebody.push(m.data.Djeeta.criticalRatio.toFixed(4) + "\n(" + m.data.Djeeta.effectiveCriticalRatio.toFixed(4) + ")")
@@ -884,10 +896,12 @@ var Result = React.createClass({
                             ++colSize;
                         }
                     }
+
                     if (sw.switchHP) {
                         tablebody.push(m.data.Djeeta.totalHP + "\n(" + parseInt(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")")
                         ++colSize;
                     }
+
                     if (sw.switchCharaHP) {
                         for (key in m.data) {
                             charaDetail[key].push(
@@ -898,54 +912,85 @@ var Result = React.createClass({
                             );
                         }
                     }
+
                     if (sw.switchAverageAttack) {
                         tablebody.push(parseInt(m.data.Djeeta.averageAttack))
                         ++colSize;
                     }
+
                     if (sw.switchAverageCriticalAttack) {
                         tablebody.push(m.data.Djeeta.averageCriticalAttack)
                         ++colSize;
                     }
+
                     if (sw.switchTotalExpected) {
                         tablebody.push(m.data.Djeeta.totalExpected)
                         ++colSize;
                     }
+
                     if (sw.switchCharaTotalExpected) {
                         for (key in m.data) {
                             charaDetail[key].push(
                                 <span key={key + "-PCF"} className="result-chara-detail">
-                                    <span className="label label-primary">{intl.translate("総回技", locale)}</span> {m.data[key].totalExpected}&nbsp;
+                                    <span className="label label-primary">{intl.translate("総回技", locale)}</span>{m.data[key].totalExpected}&nbsp;
                                 </span>
                             );
                         }
                     }
+
                     if (sw.switchAverageTotalExpected) {
                         tablebody.push(m.data.Djeeta.averageTotalExpected)
                         ++colSize;
                     }
+
                     if (sw.switchPureDamage) {
                         tablebody.push(parseInt(m.data.Djeeta.pureDamage))
                         ++colSize;
                     }
+
+                    if (sw.switchCharaPureDamage) {
+                        for (key in m.data) {
+                            charaDetail[key].push(
+                                <span key={key + "-pure-damage"} className="result-chara-detail">
+                                    <span className="label label-primary">{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</span> {m.data[key].pureDamage.toFixed(0)}&nbsp;
+                                </span>
+                            );
+                        }
+                    }
+
                     if (sw.switchDamageWithCritical) {
                         tablebody.push(parseInt(m.data.Djeeta.damageWithCritical))
                         ++colSize;
                     }
+
                     if (sw.switchDamageWithMultiple) {
                         tablebody.push(parseInt(m.data.Djeeta.damageWithMultiple))
                         ++colSize;
                     }
+
                     if (sw.switchDamage) {
                         tablebody.push(parseInt(m.data.Djeeta.damage))
                         ++colSize;
                     }
+
                     if (sw.switchOugiGage) {
                         tablebody.push(m.data.Djeeta.expectedOugiGage.toFixed(2) + "%\n(" + m.data.Djeeta.expectedTurn.toFixed(2) + "T)")
                         ++colSize;
                     }
+
                     if (sw.switchOugiDamage) {
                         tablebody.push(parseInt(m.data.Djeeta.ougiDamage))
                         ++colSize;
+                    }
+
+                    if (sw.switchCharaOugiDamage) {
+                        for (key in m.data) {
+                            charaDetail[key].push(
+                                <span key={key + "-ougi-damage"} className="result-chara-detail">
+                                    <span className="label label-primary">{intl.translate("奥義ダメージ", locale)}</span> {m.data[key].ougiDamage.toFixed(0)}&nbsp;
+                                </span>
+                            );
+                        }
                     }
                     if (sw.switchChainBurst) {
                         tablebody.push(parseInt(m.data.Djeeta.averageChainBurst))
@@ -955,6 +1000,17 @@ var Result = React.createClass({
                         tablebody.push(parseInt(m.data.Djeeta.expectedCycleDamagePerTurn))
                         ++colSize;
                     }
+
+                    if (sw.switchCharaCycleDamage) {
+                        for (key in m.data) {
+                            charaDetail[key].push(
+                                <span key={key + "-cycle-damage"} className="result-chara-detail">
+                                    <span className="label label-primary">{intl.translate("予想ターン毎ダメージ", locale)}</span> {m.data[key].expectedCycleDamagePerTurn.toFixed(0)}&nbsp;
+                                </span>
+                            );
+                        }
+                    }
+
                     if (sw.switchAverageCycleDamage) {
                         var val = parseInt(m.data.Djeeta.averageCyclePerTurn)
                         tablebody.push(val.toString() + " (" + (4 * val).toString() + ")")
