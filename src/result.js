@@ -1025,7 +1025,7 @@ var Result = React.createClass({
                                             <tr>
                                                 <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("技巧倍率", locale)}</th>
                                                 {sortedKeys.map( function (v, ind) {
-                                                    return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{parseFloat(v).toFixed(1)}{intl.translate("倍", locale)}</th>
+                                                    return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{parseFloat(v).toFixed(2)}{intl.translate("倍", locale)}</th>
                                                 })}
                                                 <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("標準偏差", locale)}</th>
                                             </tr>
