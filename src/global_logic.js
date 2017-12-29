@@ -1096,6 +1096,35 @@ module.exports.calcBaseHP = function(rank) {
     return 600;
 }
 
+function getCharaLB(chara) {
+    var LB = {
+        "ATK": 0,
+        "HP": 0,
+        "Element": 0,
+        "DA": 0.0,
+        "TA": 0.0,
+        "Critical1": "none",
+        "Critical2": "none",
+        "Critical3": "none",
+        "Critical4": "none",
+    };
+
+    Object.keys(LB).map((key) => {
+        var exactKey = "LB" + key;
+        if (exactKey in chara) {
+            if (key == "ATK" || key == "HP" || key == "Element") {
+                LB[key] = parseInt(chara[exactKey]);
+            } else if (key == "DA" || key == "TA") {
+                LB[key] = parseFloat(chara[exactKey]);
+            } else {
+                LB[key] = chara[exactKey];
+            }
+        }
+    });
+
+    return LB;
+}
+
 module.exports.getInitialTotals = function(prof, chara, summon) {
     var baseAttack = module.exports.calcBaseATK(parseInt(prof.rank))
     var baseHP = module.exports.calcBaseHP(parseInt(prof.rank))
@@ -1235,11 +1264,13 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 }
             }
 
+            var charaLB = getCharaLB(chara[i]);
+
             totals[charakey] = {
-                baseAttack: parseInt(chara[i].attack) + parseInt(chara[i].LBATK),
-                baseHP: parseInt(chara[i].hp) + zenithPartyHP + parseInt(chara[i].LBHP),
-                baseDA: parseFloat(charaDA) + parseFloat(chara[i].LBDA),
-                baseTA: parseFloat(charaTA) + parseFloat(chara[i].LBTA),
+                baseAttack: parseInt(chara[i].attack) + charaLB.ATK,
+                baseHP: parseInt(chara[i].hp) + zenithPartyHP + charaLB.HP,
+                baseDA: parseFloat(charaDA) + charaLB.DA,
+                baseTA: parseFloat(charaTA) + charaLB.TA,
                 remainHP: charaRemainHP,
                 armAttack: 0,
                 armHP:0,
@@ -1287,7 +1318,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
                 normalBuff: charaBuffList["normalBuff"],
-                elementBuff: charaBuffList["elementBuff"],
+                elementBuff: charaBuffList["elementBuff"] + 0.01 * charaLB.Element,
                 otherBuff: charaBuffList["otherBuff"],
                 otherBuff2: charaBuffList["otherBuff2"],
                 DABuff: charaBuffList["daBuff"],
@@ -1307,10 +1338,10 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             };
 
             // LBCritical対応
-            var LBCriticalKeys = ["LBCritical1", "LBCritical2", "LBCritical3"];
+            var LBCriticalKeys = ["Critical1", "Critical2", "Critical3", "Critical4"];
             LBCriticalKeys.forEach((crit_key) => {
-                if (chara[i][crit_key] !== "none") {
-                    var chara_lb_crit_type = chara[i][crit_key];
+                if (charaLB[crit_key] !== "none") {
+                    var chara_lb_crit_type = charaLB[crit_key];
                     totals[charakey]["normalOtherCritical"].push({
                         "value": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].value,
                         "attackRatio": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].attackRatio

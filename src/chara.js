@@ -283,9 +283,11 @@ var Chara = React.createClass({
             LBHP: 0,
             LBDA: 0,
             LBTA: 0,
+            LBElement: 0,
             LBCritical1: "none",
             LBCritical2: "none",
             LBCritical3: "none",
+            LBCritical4: "none",
         };
     },
     componentDidMount: function () {
@@ -562,6 +564,14 @@ var Chara = React.createClass({
                                             </FormControl>
                                         </td>
                                     </tr>,
+                                    <tr key="LBElement">
+                                        <th className="bg-primary">属性攻撃力</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBElement} onChange={this.handleSelectEvent.bind(this, "LBElement")}>
+                                                {selector.limitBonusElementList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>,
                                     <tr key="LBCritical1">
                                         <th className="bg-primary">クリティカル1</th>
                                         <td>
@@ -582,6 +592,14 @@ var Chara = React.createClass({
                                         <th className="bg-primary">クリティカル3</th>
                                         <td>
                                             <FormControl componentClass="select" value={this.state.LBCritical3} onChange={this.handleSelectEvent.bind(this, "LBCritical3")}>
+                                                {selector.limitBonusCriticalList}
+                                            </FormControl>
+                                        </td>
+                                    </tr>,
+                                    <tr key="LBCritical4">
+                                        <th className="bg-primary">クリティカル4</th>
+                                        <td>
+                                            <FormControl componentClass="select" value={this.state.LBCritical4} onChange={this.handleSelectEvent.bind(this, "LBCritical4")}>
                                                 {selector.limitBonusCriticalList}
                                             </FormControl>
                                         </td>

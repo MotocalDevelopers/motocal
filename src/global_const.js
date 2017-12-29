@@ -95,6 +95,7 @@ var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 230
 var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
 var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+var limitBonusElementList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 24, 25, 28, 30, 32, 33, 35, 36, 38, 40];
 var limitBonusCriticalList = {
     "none": {
         "name": "無",
@@ -835,6 +836,7 @@ module.exports.selector.limitBonusAttackList = limitBonusAttackList.map(function
 module.exports.selector.limitBonusHPList = limitBonusHPList.map(function(opt){return <option value={opt} key={opt}>{opt}</option>;});
 module.exports.selector.limitBonusDAList = limitBonusDAList.map(function(opt){return <option value={opt} key={opt}>{opt}%</option>;});
 module.exports.selector.limitBonusTAList = limitBonusTAList.map(function(opt){return <option value={opt} key={opt}>{opt}%</option>;});
+module.exports.selector.limitBonusElementList = limitBonusElementList.map(function(opt){return <option value={opt} key={opt}>{opt}%</option>;});
 module.exports.selector.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function(opt){ return <option value={opt} key={opt}>{limitBonusCriticalList[opt].name}</option> });
 
 module.exports.selector.ja.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function(opt){ return <option value={opt} key={opt}>{supportedChartSortkeys[opt]}</option> });
