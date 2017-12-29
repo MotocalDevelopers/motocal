@@ -1037,6 +1037,14 @@ var multiLangData = {
         "en": "Support Abi.",
         "ja": "サポアビ",
     },
+    "属性攻撃力": {
+        "en": "Element LB",
+        "ja": "属性攻撃力",
+    },
+    "クリティカル": {
+        "en": "Critical",
+        "ja": "クリティカル",
+    },
     "前へ": {
         "en": "Front",
         "ja": "前へ",
@@ -2166,6 +2174,10 @@ var multiLangData = {
     "notice-20171211-1": {
         "en": "11/12/2017: Added new weapons.",
         "ja": "2017/12/11: 武器追加."
+    },
+    "notice-20171229-1": {
+        "en": "29/12/2017: Implemented Chara Limit Bonus Calculation.",
+        "ja": "2017/12/29: キャラLBの計算を実装."
     }
 }
 

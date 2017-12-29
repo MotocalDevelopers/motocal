@@ -533,7 +533,7 @@ var Chara = React.createClass({
                             {this.state.openLBlist ?
                                 [
                                     <tr key="LBATK">
-                                        <th className="bg-primary">攻撃力</th>
+                                        <th className="bg-primary">{intl.translate("攻撃力", locale)}</th>
                                         <td>
                                             <FormControl componentClass="select" value={this.state.LBATK} onChange={this.handleSelectEvent.bind(this, "LBATK")}>
                                                 {selector.limitBonusAttackList}
@@ -565,7 +565,7 @@ var Chara = React.createClass({
                                         </td>
                                     </tr>,
                                     <tr key="LBElement">
-                                        <th className="bg-primary">属性攻撃力</th>
+                                        <th className="bg-primary">{intl.translate("属性攻撃力", locale)}</th>
                                         <td>
                                             <FormControl componentClass="select" value={this.state.LBElement} onChange={this.handleSelectEvent.bind(this, "LBElement")}>
                                                 {selector.limitBonusElementList}
@@ -573,7 +573,7 @@ var Chara = React.createClass({
                                         </td>
                                     </tr>,
                                     <tr key="LBCritical1">
-                                        <th className="bg-primary">クリティカル1</th>
+                                        <th className="bg-primary">{intl.translate("クリティカル", locale)}1</th>
                                         <td>
                                             <FormControl componentClass="select" value={this.state.LBCritical1} onChange={this.handleSelectEvent.bind(this, "LBCritical1")}>
                                                 {selector.limitBonusCriticalList}
@@ -581,7 +581,7 @@ var Chara = React.createClass({
                                         </td>
                                     </tr>,
                                     <tr key="LBCritical2">
-                                        <th className="bg-primary">クリティカル2</th>
+                                        <th className="bg-primary">{intl.translate("クリティカル", locale)}2</th>
                                         <td>
                                             <FormControl componentClass="select" value={this.state.LBCritical2} onChange={this.handleSelectEvent.bind(this, "LBCritical2")}>
                                                 {selector.limitBonusCriticalList}
@@ -589,7 +589,7 @@ var Chara = React.createClass({
                                         </td>
                                     </tr>,
                                     <tr key="LBCritical3">
-                                        <th className="bg-primary">クリティカル3</th>
+                                        <th className="bg-primary">{intl.translate("クリティカル", locale)}3</th>
                                         <td>
                                             <FormControl componentClass="select" value={this.state.LBCritical3} onChange={this.handleSelectEvent.bind(this, "LBCritical3")}>
                                                 {selector.limitBonusCriticalList}
@@ -597,7 +597,7 @@ var Chara = React.createClass({
                                         </td>
                                     </tr>,
                                     <tr key="LBCritical4">
-                                        <th className="bg-primary">クリティカル4</th>
+                                        <th className="bg-primary">{intl.translate("クリティカル", locale)}4</th>
                                         <td>
                                             <FormControl componentClass="select" value={this.state.LBCritical4} onChange={this.handleSelectEvent.bind(this, "LBCritical4")}>
                                                 {selector.limitBonusCriticalList}
