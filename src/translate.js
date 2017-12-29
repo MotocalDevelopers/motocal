@@ -1924,8 +1924,8 @@ var multiLangData = {
     },
     // Notice
     "オメガウェポン注記": {
-        "en": "Gauph Key of Strength and Zeal is not implemented yet.",
-        "ja": "ガフスキー強壮(渾身), 激情(背水)は未実装です.",
+        "en": "Gauph Key of Strength is not implemented yet.",
+        "ja": "ガフスキー強壮(渾身)は未実装です.",
     },
     "天司武器注記": {
         "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
@@ -2176,9 +2176,9 @@ var multiLangData = {
         "ja": "2017/12/11: 武器追加."
     },
     "notice-20171229-1": {
-        "en": "29/12/2017: Implemented Chara Limit Bonus Calculation.",
-        "ja": "2017/12/29: キャラLBの計算を実装."
-    }
+        "en": "29/12/2017: Implemented Chara Limit Bonus Calculation and Ultima (Zeal) skill.",
+        "ja": "2017/12/29: キャラLBの計算を実装 / オメガ激情の計算を実装."
+    },
 }
 
 // 言語設定

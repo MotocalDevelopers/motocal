@@ -575,10 +575,10 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
 };
 
 module.exports.getTesukatoripokaAmount = function(amount, numOfRaces){
-    if(amount != 100 && amount != 120) return 0;
+    if (amount != 100 && amount != 120 && amount != 130) return 0;
 
     var resultAmount = 10;
-    switch(numOfRaces){
+    switch(numOfRaces) {
         case 1:
             break;
         case 2:
@@ -592,8 +592,10 @@ module.exports.getTesukatoripokaAmount = function(amount, numOfRaces){
             break;
     }
 
-    if(amount == 120){
+    if (amount == 120) {
         resultAmount += 20;
+    } else if (amount == 130) {
+        resultAmount += 30;
     }
 
     return resultAmount;
