@@ -370,7 +370,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"] + 0.01 * (totals[key]["normalOtherHaisui"])
         var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
         // 属性(経過ターン)も最大値で計算する
-        var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"] + totals[key]["elementBuff"]
+        var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"] + totals[key]["elementBuff"] + 0.01 * totals[key]["LB"].Element
         var otherCoeff = (1.0 + buff["other"]) * (1.0 + buff["other2"]) * (1.0 + totals[key]["otherBuff"]) * (1.0 + totals[key]["otherBuff2"])
 
         // キャラ背水枠
@@ -379,7 +379,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // hp倍率
         var hpCoeff = (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["omegaNormalHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"] + 0.01 * totals[key]["exHP"])
 
-        if(key == "Djeeta") hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
+        if (key == "Djeeta") hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
         hpCoeff *= 1.0 - totals[key]["HPdebuff"]
 
         // ベースHP
@@ -394,8 +394,9 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             var totalHP = displayHP * hpCoeff
         } else {
             // for chara
-            var summedAttack = totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"]
-            var totalHP = displayHP * hpCoeff
+            var summedAttack = totals[key]["baseAttack"] + totals[key]["armAttack"] + totalSummon["attack"] + totals[key]["LB"].ATK
+            displayHP += totals[key]["LB"].HP
+            var totalHP = displayHP* hpCoeff
         }
 
         var totalSkillCoeff = magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * exCoeff * otherCoeff * exHaisuiCoeff * normalKonshinCoeff * charaHaisuiCoeff
@@ -420,28 +421,32 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var armDAupCosmos = (totals[key]["cosmosBL"] > 50.0) ? 50.0 : totals[key]["cosmosBL"]
         var armDAupOther = (totals[key]["DAbuff"] > 50.0) ? 50.0 : totals[key]["DAbuff"] // 特殊スキルなどの分
         // unknownは現状50%に届くことはない
-        var totalDA = 0.01 * totals[key]["baseDA"] + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + armDAupOther)
+        var totalDA = 0.01 * (totals[key]["baseDA"] + totals[key]["LB"]["DA"]) + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + armDAupOther)
         if(totalDA < 0.0) totalDA = 0.0
 
         var armTAupNormal = (normalSante > 50.0) ? 50.0 : normalSante
         var armTAupMagna  = (magnaSante > 50.0)  ? 50.0 : magnaSante
         var armTAupBaha = (totals[key]["bahaTA"] > 50.0) ? 50.0 : totals[key]["bahaTA"]
         var armTAupOther = (totals[key]["TAbuff"] > 50.0) ? 50.0 : totals[key]["TAbuff"]
-        var totalTA = 0.01 * totals[key]["baseTA"] + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther)
+        var totalTA = 0.01 * (totals[key]["baseTA"] + totals[key]["LB"]["TA"]) + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther)
         if(totalTA < 0.0) totalTA = 0.0
 
         var taRate = (parseFloat(totalTA) >= 1.0) ? 1.0 : parseFloat(totalTA)
         var daRate = (parseFloat(totalDA) >= 1.0) ? 1.0 : parseFloat(totalDA)
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
 
-        if(totals[key]["typeBonus"] == 1.5) {
+        if (totals[key]["typeBonus"] == 1.5) {
             var damageUP = totals[key]["tenshiDamageUP"]
-            var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(getLBCriticalArray(totals[key]["LB"]));
+
+            var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon)
             var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
         } else if (prof.enemyElement == "non-but-critical") {
             // "無（技巧あり）"の場合の処理
             var damageUP = 0.0
-            var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], totals[key]["normalOtherCritical"], totalSummon)
+            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(getLBCriticalArray(totals[key]["LB"]));
+
+            var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon)
             var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
         } else {
             var damageUP = 0.0
@@ -1132,6 +1137,24 @@ function getCharaLB(chara) {
     return LB;
 }
 
+function getLBCriticalArray(charaLB) {
+    // LBCritical対応
+    var LBCriticalKeys = ["Critical1", "Critical2", "Critical3", "Critical4"];
+    var criticalArray = [];
+
+    LBCriticalKeys.forEach((crit_key) => {
+        if (charaLB[crit_key] !== "none") {
+            var chara_lb_crit_type = charaLB[crit_key];
+            criticalArray.push({
+                "value": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].value,
+                "attackRatio": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].attackRatio
+            });
+        }
+    })
+
+    return criticalArray;
+}
+
 module.exports.getInitialTotals = function(prof, chara, summon) {
     var baseAttack = module.exports.calcBaseATK(parseInt(prof.rank))
     var baseHP = module.exports.calcBaseHP(parseInt(prof.rank))
@@ -1177,6 +1200,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             race: "unknown",
             type: job.type,
             element: element,
+            LB: getCharaLB({}),
             HPdebuff: 0.00,
             magna: 0,
             magnaHaisui: 0,
@@ -1275,10 +1299,10 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             var charaLB = getCharaLB(chara[i]);
 
             totals[charakey] = {
-                baseAttack: parseInt(chara[i].attack) + charaLB.ATK,
-                baseHP: parseInt(chara[i].hp) + zenithPartyHP + charaLB.HP,
-                baseDA: parseFloat(charaDA) + charaLB.DA,
-                baseTA: parseFloat(charaTA) + charaLB.TA,
+                baseAttack: parseInt(chara[i].attack),
+                baseHP: parseInt(chara[i].hp) + zenithPartyHP,
+                baseDA: parseFloat(charaDA),
+                baseTA: parseFloat(charaTA),
                 remainHP: charaRemainHP,
                 armAttack: 0,
                 armHP:0,
@@ -1287,6 +1311,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 race: chara[i].race,
                 type: chara[i].type,
                 element: charaelement,
+                LB: charaLB,
                 HPdebuff: 0.00,
                 magna: 0,
                 magnaHaisui: 0,
@@ -1327,7 +1352,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
                 normalBuff: charaBuffList["normalBuff"],
-                elementBuff: charaBuffList["elementBuff"] + 0.01 * charaLB.Element,
+                elementBuff: charaBuffList["elementBuff"],
                 otherBuff: charaBuffList["otherBuff"],
                 otherBuff2: charaBuffList["otherBuff2"],
                 DABuff: charaBuffList["daBuff"],
@@ -1345,18 +1370,6 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 debuffResistance: 0,
                 tenshiDamageUP: 0
             };
-
-            // LBCritical対応
-            var LBCriticalKeys = ["Critical1", "Critical2", "Critical3", "Critical4"];
-            LBCriticalKeys.forEach((crit_key) => {
-                if (charaLB[crit_key] !== "none") {
-                    var chara_lb_crit_type = charaLB[crit_key];
-                    totals[charakey]["normalOtherCritical"].push({
-                        "value": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].value,
-                        "attackRatio": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].attackRatio
-                    });
-                }
-            });
         }
     }
 
