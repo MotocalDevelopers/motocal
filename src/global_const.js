@@ -287,7 +287,7 @@ var skilltypes = {
     "omega-tousou": {name:"オメガ-闘争", type:"omega", amount: "tousou"},
     "omega-seimei": {name:"オメガ-生命", type:"omega", amount: "seimei"},
     // "omega-kyousou": {name:"オメガ-強壮", type:"omega", amount: "L"},
-    // "omega-gekijou": {name:"オメガ-激情", type:"omega", amount: "L"},
+    "omega-gekijou": {name:"オメガ-激情", type:"omega", amount: "M"},
     "omega-yuuki": {name:"オメガ-勇気", type:"omega", amount: "yuuki"},
     "gauphKey-alpha": {name: "ガフスキー[α]", type: "gauphKey", amount: "L"},
     // "gauphKey-beta": {name: "ガフスキー[β]", type: "gauphKey", amount: "L"},

@@ -367,7 +367,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var exCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["ex"]
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"]
         var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + 0.01 * totals[key]["omegaNormal"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
-        var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"]
+        var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"] + 0.01 * (totals[key]["normalOtherHaisui"])
         var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
         // 属性(経過ターン)も最大値で計算する
         var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"] + totals[key]["elementBuff"]
@@ -526,6 +526,9 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             totalTA: totalTA,
             debuffResistance: totals[key]["debuffResistance"],
             totalSummon: totalSummon,
+            // グラフ用
+            fav1: totals[key]["fav1"],
+            fav2: totals[key]["fav2"],
             element: totals[key]["element"],
             expectedAttack: expectedAttack,
             criticalAttack: criticalAttack,
@@ -632,6 +635,7 @@ module.exports.calcHaisuiValue = function(haisuiType, haisuiAmount, haisuiSLv, h
     if(haisuiType == 'normalHaisui' || haisuiType == 'magnaHaisui' || haisuiType == 'exHaisui' || haisuiType == "charaHaisui")
     {
         // 背水倍率の実装は日比野さんのところのを参照
+        // baseRate: HP50%の時の値
         if(haisuiAmount == "S") {
             // 小
             if(haisuiSLv < 10) {
@@ -654,7 +658,7 @@ module.exports.calcHaisuiValue = function(haisuiType, haisuiAmount, haisuiSLv, h
                 baseRate = 30 + 7.5 * ((haisuiSLv - 10) / 5.0)
             }
         }
-        return (baseRate/3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
+        return (baseRate / 3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
     } else if(haisuiType == 'normalKonshin' || haisuiType == "magnaKonshin"){
         if(haisuiAmount == "S") {
         } else if ( haisuiAmount == "M" ){
@@ -930,6 +934,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                                     totals[key]["omegaNormalHP"] += skillAmounts["omega"][amount][slv - 1];
                                 } else if (omegatype === "kyousou") {
                                 } else if (omegatype === "gekijou") {
+                                    totals[key]["normalOtherHaisui"] += module.exports.calcHaisuiValue("normalHaisui", amount, slv, totals[key]["remainHP"]);
                                 } else if (omegatype === "yuuki") {
                                     totals[key]["normalOtherCritical"].push({"value": 0.01 * skillAmounts["omega"][amount][slv - 1], "attackRatio": 0.5});
                                 }
@@ -1176,6 +1181,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             normal: 0,
             normalOther: 0,
             normalHaisui: 0,
+            normalOtherHaisui: 0,
             normalKonshin: 0,
             unknown: 0,
             ex: 0,
@@ -1285,6 +1291,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 normal: 0,
                 normalOther: 0,
                 normalHaisui: 0,
+                normalOtherHaisui: 0,
                 normalKonshin: 0,
                 unknown: 0,
                 ex: 0,
@@ -1414,6 +1421,7 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["normal"] = 0;
         totals[key]["normalOther"] = 0;
         totals[key]["normalHaisui"] = 0;
+        totals[key]["normalOtherHaisui"] = 0;
         totals[key]["normalKonshin"] = 0;
         totals[key]["unknown"] = 0;
         totals[key]["ex"] = 0;
@@ -1653,7 +1661,9 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
 
                 // 武器データ計算
                 for(var i=0; i < arml.length; i++){
-                    var arm = arml[i]
+                    var arm = arml[i];
+                    var omegaHaisuiIncluded = false;
+
                     for(var jj = 1; jj <= 2; jj++){
                         var skillname = '';
                         var element = ''; (arm.element == undefined) ? "fire" : arm.element
@@ -1673,7 +1683,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                             // mask invalid slv
                             if(slv == 0) slv = 1
 
-                            if(stype === "normalHaisui" || stype === "magnaHaisui" || stype === "normalKonshin" || stype === "magnaKonshin" || stype === "exHaisui"){
+                            if (stype === "normalHaisui" || stype === "magnaHaisui" || stype === "normalKonshin" || stype === "magnaKonshin" || stype === "exHaisui") {
                                 for(var l=0; l < haisuiBuff.length; l++) {
                                     var remainHP = 0.01 * (l + 1)
 
@@ -1684,6 +1694,14 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                                     } else {
                                         haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP)
                                     }
+                                }
+                            } else if (skillname === "omega-gekijou") {
+                                if (!omegaHaisuiIncluded && (arm.armType === onedata[key].fav1 || arm.armType === onedata[key].fav2)) {
+                                    for(var l = 0; l < haisuiBuff.length; l++) {
+                                        var remainHP = 0.01 * (l + 1);
+                                        haisuiBuff[l]["normalHaisui"] += 0.01 * module.exports.calcHaisuiValue("normalHaisui", amount, slv, remainHP)
+                                    }
+                                    omegaHaisuiIncluded = true;
                                 }
                             }
                         }
