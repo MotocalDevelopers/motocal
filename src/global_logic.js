@@ -1660,11 +1660,11 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                 }
 
                 // 武器データ計算
-                for(var i=0; i < arml.length; i++){
+                for (var i = 0; i < arml.length; i++) {
                     var arm = arml[i];
                     var omegaHaisuiIncluded = false;
 
-                    for(var jj = 1; jj <= 2; jj++){
+                    for (var jj = 1; jj <= 2; jj++) {
                         var skillname = '';
                         var element = ''; (arm.element == undefined) ? "fire" : arm.element
                         if(jj == 1) {
@@ -1675,33 +1675,35 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                             element = (arm.element2 == undefined) ? "fire" : arm.element2
                         }
 
-                        if(skillname != 'non' && onedata[key].element == element){
+                        if (skillname != 'non') {
                             var stype = skilltypes[skillname].type;
                             var amount = skilltypes[skillname].amount;
                             var slv = parseInt(arm.slv)
 
                             // mask invalid slv
-                            if(slv == 0) slv = 1
+                            if (slv == 0) slv = 1
 
-                            if (stype === "normalHaisui" || stype === "magnaHaisui" || stype === "normalKonshin" || stype === "magnaKonshin" || stype === "exHaisui") {
-                                for(var l=0; l < haisuiBuff.length; l++) {
-                                    var remainHP = 0.01 * (l + 1)
-
-                                    if(stype === "normalHaisui" || stype === "normalKonshin") {
-                                        haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.zeus
-                                    } else if (stype === "magnaHaisui" || stype === "magnaKonsin") {
-                                        haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.magna
-                                    } else {
-                                        haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP)
-                                    }
-                                }
-                            } else if (skillname === "omega-gekijou") {
+                            if (skillname === "omega-gekijou") {
                                 if (!omegaHaisuiIncluded && (arm.armType === onedata[key].fav1 || arm.armType === onedata[key].fav2)) {
                                     for(var l = 0; l < haisuiBuff.length; l++) {
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l]["normalHaisui"] += 0.01 * module.exports.calcHaisuiValue("normalHaisui", amount, slv, remainHP)
                                     }
                                     omegaHaisuiIncluded = true;
+                                }
+                            } else if (onedata[key].element == element) {
+                                if (stype === "normalHaisui" || stype === "magnaHaisui" || stype === "normalKonshin" || stype === "magnaKonshin" || stype === "exHaisui") {
+                                    for(var l=0; l < haisuiBuff.length; l++) {
+                                        var remainHP = 0.01 * (l + 1)
+
+                                        if(stype === "normalHaisui" || stype === "normalKonshin") {
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.zeus
+                                        } else if (stype === "magnaHaisui" || stype === "magnaKonsin") {
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.magna
+                                        } else {
+                                            haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP)
+                                        }
+                                    }
                                 }
                             }
                         }
