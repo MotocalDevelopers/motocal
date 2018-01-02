@@ -466,6 +466,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var additionalDamage = (0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"] + totals[key]["additionalDamageBuff"] + buff["additionalDamage"])
 
         // ダメージ上限UP = 全体バフ + 個人バフ + スキル
+        // 奥義ダメージ上限UP = 全体バフ + 個人バフ + スキル + ダメージ上限UP分
         var damageLimit = buff["damageLimit"] + totals[key]["damageLimitBuff"] + totals[key]["normalDamageLimit"];
         var ougiDamageLimit = buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"] + totals[key]["ougiDamageLimit"];
 
@@ -1052,9 +1053,10 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             } else if (amount == 'L') {
                                 totals[key]["tenshiDamageUP"] += comb[i] * 0.20;
                             }
-                        //! ダメージ上限アップ系
+                        //! ダメージ上限アップ系は奥義と通常どちらにも効く
                         } else if (stype == 'normalDamageLimit') {
                             totals[key]["normalDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"][amount];
+                            totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"][amount];
                         } else if (stype == 'ougiDamageLimit') {
                             totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["ougiDamageLimit"][amount];
                         //! 4凸武器スキル
@@ -1076,6 +1078,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             // 舞姫の演舞: 通常攻刃大 + 上限アップ7%
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"]["L"][slv - 1];
                             totals[key]["normalDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"]["M"];
+                            totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"]["M"];
                         // メインのみDATA追加拡張
                         } else if (stype == 'extendedDjeetaNormalDATA') {
                             if (key == 'Djeeta') {
