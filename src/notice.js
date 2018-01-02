@@ -13,6 +13,7 @@ var Notice = React.createClass({
                 <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
                 <Panel bsStyle="default" collapsible header={<span><Glyphicon glyph="chevron-right" />&nbsp;Update Logs</span>}>
                     <ul className="list-group">
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20180102-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20171229-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20171211-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20171117-1", locale)}</li>
@@ -175,6 +176,7 @@ var Notice = React.createClass({
                     <li className="list-group-item"> <a href="https://twitter.com/hibino_naoki/status/858792702514573312"> @hibino_naoki さんの攻刃III検証結果 </a></li>
                     <li className="list-group-item"> <a href="https://twitter.com/Hecate_mk2/status/889634680005414914"> @Hecate_mk2 さんの神威(中)、リミットブレイク検証結果 </a></li>
                     <li className="list-group-item"> <a href="https://twitter.com/soufflex_/status/893379153478668288"> @soufflex_ さんの新奥義上限に関する情報 </a></li>
+                    <li className="list-group-item"> <a href="https://twitter.com/Granblue_GW/status/947109401294389249"> GameWithさん</a>, <a href="https://twitter.com/metalgaldra/status/946360446130327552"> @metalgaldraさん</a>の乱舞効果量に関する情報 </li>
                 </ul>
 
                 <h3>スキル性能・各種計算式</h3>

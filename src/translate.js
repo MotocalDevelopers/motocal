@@ -1293,8 +1293,12 @@ var multiLangData = {
         "ja": "通常羅刹",
     },
     "通常無双(中)": {
-        "en": "[UNVERIFIED] Normal Primacy",
+        "en": "[UNVERIFIED] Normal Primacy (M)",
         "ja": "[未検証] 通常無双(中)",
+    },
+    "通常乱舞(小)": {
+        "en": "Normal Fandango (S)",
+        "ja": "通常乱舞(小)",
     },
     "マグナ攻刃": {
         "en": "Magna Might I",
@@ -2178,6 +2182,10 @@ var multiLangData = {
     "notice-20171229-1": {
         "en": "29/12/2017: Implemented Chara Limit Bonus Calculation and Ultima (Zeal) skill.",
         "ja": "2017/12/29: キャラLBの計算を実装 / オメガ激情の計算を実装."
+    },
+    "notice-20180102-1": {
+        "en": "02/01/2018: Implemented Fandango skill.",
+        "ja": "2018/01/02: 乱舞(小)の計算を実装 / ダメージ上限上昇が奥義ダメージ上限へ影響していなかった不具合を修正."
     },
 }
 

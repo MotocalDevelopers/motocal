@@ -199,6 +199,7 @@ var skilltypes = {
     "normalKatsumokuS": {name: "通常括目", type: "normalKatsumoku", amount: "S"},
     "normalRasetsuM": {name: "通常羅刹", type: "normalRasetsu", amount: "M"},
     "normalMusouM": {name: "通常無双(中)", type: "normalMusou", amount: "M"},
+    "normalRanbuS": {name: "通常乱舞(小)", type: "normalRanbu", amount: "S"},
     "magnaM": {name: "マグナ攻刃", type:"magna", amount:"M"},
     "magnaL": {name: "マグナ攻刃II", type:"magna", amount:"L"},
     "magnaHaisuiS": {name:"マグナ背水(小)", type:"magnaHaisui", amount: "S"},
@@ -629,6 +630,9 @@ var skillAmounts = {
         "M": [3.02, 3.24, 3.46, 3.68, 3.90, 4.12, 4.34, 4.56, 4.78, 5.0, 5.22, 5.44, 5.66, 5.88, 6.10],
         "L": [4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6],
         "ratio": 0.5,
+    },
+    "normalRanbu": {
+        "S": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0]
     },
     // 鷲王の結界
     "washiouKekkai":{

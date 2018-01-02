@@ -422,9 +422,11 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var armDAupOther = (totals[key]["DAbuff"] > 50.0) ? 50.0 : totals[key]["DAbuff"] // 特殊スキルなどの分
         // unknownは現状50%に届くことはない
         var totalDA = 0.01 * (totals[key]["baseDA"] + totals[key]["LB"]["DA"]) + buff["da"] + totals[key]["DABuff"] + totalSummon["da"] + 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + armDAupOther)
-        if(totalDA < 0.0) totalDA = 0.0
+        if (totalDA < 0.0) totalDA = 0.0
 
-        var armTAupNormal = (normalSante > 50.0) ? 50.0 : normalSante
+        // TAのみ上昇するスキルを LesserSante と呼ぶ
+        var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"];
+        var armTAupNormal = (normalSante + normalLesserSante > 50.0) ? 50.0 : normalSante + normalLesserSante
         var armTAupMagna  = (magnaSante > 50.0)  ? 50.0 : magnaSante
         var armTAupBaha = (totals[key]["bahaTA"] > 50.0) ? 50.0 : totals[key]["bahaTA"]
         var armTAupOther = (totals[key]["TAbuff"] > 50.0) ? 50.0 : totals[key]["TAbuff"]
@@ -1014,6 +1016,9 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         } else if(stype == 'normalMusou') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             totals[key]["normalNite"] += comb[i] * skillAmounts["normalNite"][amount][slv - 1];
+                        } else if (stype == 'normalRanbu') {
+                            totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            totals[key]["normalLesserSante"] += comb[i] * skillAmounts["normalRanbu"][amount][slv - 1];
                         } else if(stype == 'normalBoukun') {
                             if(amount == "L") {
                                 totals[key]["HPdebuff"] += comb[i] * 0.10
@@ -1223,6 +1228,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             normalNite: 0,
             magnaNite: 0,
             normalSante: 0,
+            normalLesserSante: 0,
             magnaSante: 0,
             exNite: 0,
             normalOtherNite: 0,
@@ -1335,6 +1341,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 normalNite: 0,
                 magnaNite: 0,
                 normalSante: 0,
+                normalLesserSante: 0,
                 magnaSante: 0,
                 exNite: 0,
                 normalOtherNite: 0,
@@ -1452,6 +1459,7 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["normalNite"] = 0;
         totals[key]["magnaNite"] = 0;
         totals[key]["normalSante"] = 0;
+        totals[key]["normalLesserSante"] = 0;
         totals[key]["magnaSante"] = 0;
         totals[key]["exNite"] = 0;
         totals[key]["normalCritical"] = [];
