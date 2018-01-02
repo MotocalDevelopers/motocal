@@ -297,6 +297,15 @@ skillnamelist["normalSetsunaS"] = {
     u"闇の刹那": "dark"
 }
 
+skillnamelist["normalRanbuS"] = {
+    u"火の乱舞": "fire",
+    u"水の乱舞": "water",
+    u"土の乱舞": "earth",
+    u"風の乱舞": "wind",
+    u"光の乱舞": "light",
+    u"闇の乱舞": "dark"
+}
+
 # magna II
 skillnamelist["magnaL"] = {
     u"機炎方陣・攻刃II": "fire",

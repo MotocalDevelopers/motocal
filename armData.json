@@ -1,4 +1,22 @@
 {
+    "[連装弾]エーケイ・フォーエイ": {
+        "hplv100": "199", 
+        "element2": "earth", 
+        "en": "AK-4A", 
+        "maxlv": 150, 
+        "skill2": "normalRanbuS", 
+        "skill1": "normalLLM", 
+        "hp": "240", 
+        "element": "earth", 
+        "attacklv100": "2965", 
+        "minattack": "490", 
+        "attack": "3580", 
+        "slvmax": 15, 
+        "minhp": "34", 
+        "type": "gun", 
+        "ja": "[連装弾]エーケイ・フォーエイ", 
+        "imageURL": "./imgs/1040504300.png"
+    }, 
     "真・普天幻魔": {
         "hplv100": "165", 
         "element2": "dark", 
@@ -6853,9 +6871,9 @@
         "ja": "[真鋭撃]ネブカドネザル・属性変更", 
         "imageURL": "./imgs/1040503500.png"
     }, 
-    "[連装弾]エーケイ・フォーエイ": {
+    "エーケイ・フォーエイ": {
         "element2": "earth", 
-        "en": "AK-4A", 
+        "en": "エーケイ・フォーエイ", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -6866,7 +6884,7 @@
         "slvmax": 10, 
         "minhp": "34", 
         "type": "gun", 
-        "ja": "[連装弾]エーケイ・フォーエイ", 
+        "ja": "エーケイ・フォーエイ", 
         "imageURL": "./imgs/1040504300.png"
     }, 
     "[祖龍銃]バハムートマズル・フツルス": {
