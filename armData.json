@@ -1,4 +1,22 @@
 {
+    "[聖天槍]エデン": {
+        "hplv100": "280", 
+        "element2": "light", 
+        "en": "Eden", 
+        "maxlv": 150, 
+        "skill2": "normalKonshinM", 
+        "skill1": "normalLLM", 
+        "hp": "340", 
+        "element": "light", 
+        "attacklv100": "2600", 
+        "minattack": "430", 
+        "attack": "3140", 
+        "slvmax": 15, 
+        "minhp": "48", 
+        "type": "spear", 
+        "ja": "[聖天槍]エデン", 
+        "imageURL": "./imgs/1040207000.png"
+    }, 
     "[麟闇剣]麒麟剣": {
         "hplv100": "207", 
         "element2": "dark", 
@@ -2323,9 +2341,9 @@
         "ja": "ネプテゥヌスの三叉鉾", 
         "imageURL": "./imgs/1040206900.png"
     }, 
-    "[聖天槍]エデン": {
+    "エデン": {
         "element2": "light", 
-        "en": "Eden", 
+        "en": "エデン", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -2336,7 +2354,7 @@
         "slvmax": 10, 
         "minhp": "48", 
         "type": "spear", 
-        "ja": "[聖天槍]エデン", 
+        "ja": "エデン", 
         "imageURL": "./imgs/1040207000.png"
     }, 
     "ゲイダーグ": {

@@ -187,6 +187,15 @@ skillnamelist["normalHaisuiM"] = {
     u"憎悪の背水": "dark"
 }
 
+skillnamelist["normalKonshinM"] = {
+    u"業火の渾身": "fire",
+    u"渦潮の渾身": "water",
+    u"大地の渾身": "earth",
+    u"竜巻の渾身": "wind",
+    u"雷電の渾身": "light",
+    u"憎悪の渾身": "dark"
+}
+
 skillnamelist["normalSetsuna"] = {
     u"業火の刹那": "fire",
     u"渦潮の刹那": "water",
