@@ -670,19 +670,24 @@ module.exports.calcHaisuiValue = function(haisuiType, haisuiAmount, haisuiSLv, h
         }
         return (baseRate / 3.0) * ( 2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0 )
     } else if(haisuiType == 'normalKonshin' || haisuiType == "magnaKonshin"){
-        if(haisuiAmount == "S") {
-        } else if ( haisuiAmount == "M" ){
+        if (haisuiAmount == "S") {
+        } else if (haisuiAmount == "M"){
+            if(haisuiSLv <= 10) {
+                baseRate = 0.032 + 2.0e-3 * haisuiSLv
+            } else {
+                // 大SLv5の時の式に中SLv15で一致
+                baseRate = 0.0518 + 3.29e-3 * (haisuiSLv - 10)
+            }
         } else {
             if(haisuiSLv <= 10) {
-                // baseRate = 5.0 + haisuiSLv * 0.8;
                 baseRate = 0.0518 + 3.29e-3 * haisuiSLv
             } else {
-                // baseRate = 20.0 + ((haisuiSLv - 10) * 0.6);
                 // 11/24のアップデート、暫定対応
                 baseRate = 0.0847 + (haisuiSLv - 10) * 6.58e-3
             }
         }
-        if(remainHP >= 0.25) {
+
+        if (remainHP >= 0.25) {
             // HP25%以下で打ち切りになる
             return 100.0 * (baseRate * Math.pow(remainHP + 0.0317, 3) + 0.0207)
         } else {

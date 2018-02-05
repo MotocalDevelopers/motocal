@@ -1248,6 +1248,10 @@ var multiLangData = {
         "en": "Normal Enmity (L)",
         "ja": "通常背水(大)",
     },
+    "通常渾身(中)": {
+        "en": "Normal Stamina (M)",
+        "ja": "通常渾身(中)",
+    },
     "通常渾身(大)": {
         "en": "Normal Stamina (L)",
         "ja": "通常渾身(大)",
@@ -2186,6 +2190,10 @@ var multiLangData = {
     "notice-20180102-1": {
         "en": "02/01/2018: Implemented Fandango skill.",
         "ja": "2018/01/02: 乱舞(小)の計算を実装 / ダメージ上限上昇が奥義ダメージ上限へ影響していなかった不具合を修正."
+    },
+    "notice-20180205-1": {
+        "en": "05/02/2018: Implemented Stamina (M).",
+        "ja": "2018/02/05: 渾身(中)の計算を実装 / 武器テンプレート追加."
     },
 }
 
