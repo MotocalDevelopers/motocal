@@ -1030,7 +1030,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                                 totals[key]["HPdebuff"] += comb[i] * 0.10
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             } else if(amount == "LLL") {
-                                totals[key]["HPdebuff"] += comb[i] * 0.20
+                                totals[key]["HPdebuff"] += comb[i] * 0.10
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             }
                         } else if(stype == 'magnaBoukun') {
