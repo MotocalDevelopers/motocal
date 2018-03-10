@@ -1,4 +1,178 @@
 {
+    "[闇鏡刃]パラゾニウム": {
+        "hplv100": "259", 
+        "element2": "dark", 
+        "en": "Parazonium", 
+        "maxlv": 150, 
+        "skill2": "normalSanteS", 
+        "skill1": "normalLLM", 
+        "hp": "310", 
+        "element": "dark", 
+        "attacklv100": "2652", 
+        "minattack": "459", 
+        "attack": "3200", 
+        "slvmax": 15, 
+        "minhp": "40", 
+        "type": "dagger", 
+        "ja": "[闇鏡刃]パラゾニウム", 
+        "imageURL": "./imgs/1040108700.png"
+    }, 
+    "[蒼穹絆]リユニオン": {
+        "hplv100": "260", 
+        "element2": "wind", 
+        "en": "[蒼穹絆]リユニオン", 
+        "maxlv": 150, 
+        "skill2": "normalKamui", 
+        "skill1": "normalLLM", 
+        "hp": "310", 
+        "element": "wind", 
+        "attacklv100": "2650", 
+        "minattack": "450", 
+        "attack": "3200", 
+        "slvmax": 15, 
+        "minhp": "42", 
+        "type": "dagger", 
+        "ja": "[蒼穹絆]リユニオン", 
+        "imageURL": "./imgs/1040108200.png"
+    }, 
+    "[聖星銃]セイントスタークラッカー": {
+        "hplv100": "177", 
+        "element2": "light", 
+        "en": "[聖星銃]セイントスタークラッカー", 
+        "maxlv": 150, 
+        "skill2": "non", 
+        "skill1": "normalSetsuna", 
+        "hp": "210", 
+        "element": "light", 
+        "attacklv100": "2707", 
+        "minattack": "456", 
+        "attack": "3160", 
+        "slvmax": 15, 
+        "minhp": "29", 
+        "type": "gun", 
+        "ja": "[聖星銃]セイントスタークラッカー", 
+        "imageURL": "./imgs/1040508700.png"
+    }, 
+    "[屠竜]ドラゴンスレイヤー": {
+        "hplv100": "191", 
+        "element2": "light", 
+        "en": "Dragon Slayer", 
+        "maxlv": 150, 
+        "skill2": "normalL", 
+        "skill1": "normalL", 
+        "hp": "220", 
+        "element": "wind", 
+        "attacklv100": "2725", 
+        "minattack": "460", 
+        "attack": "3180", 
+        "slvmax": 15, 
+        "minhp": "32", 
+        "type": "katana", 
+        "ja": "[屠竜]ドラゴンスレイヤー", 
+        "imageURL": "./imgs/1040902100.png"
+    }, 
+    "[撒旋流]ヴリスラグナ": {
+        "hplv100": "182", 
+        "element2": "light", 
+        "en": "Vlisragna", 
+        "maxlv": 150, 
+        "skill2": "normalL", 
+        "skill1": "normalL", 
+        "hp": "210", 
+        "element": "water", 
+        "attacklv100": "2690", 
+        "minattack": "440", 
+        "attack": "3140", 
+        "slvmax": 15, 
+        "minhp": "32", 
+        "type": "gun", 
+        "ja": "[撒旋流]ヴリスラグナ", 
+        "imageURL": "./imgs/1040502400.png"
+    }, 
+    "ベルタワー": {
+        "element2": "wind", 
+        "en": "ベルタワー", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "non", 
+        "hp": "154", 
+        "element": "wind", 
+        "minattack": "337", 
+        "attack": "2118", 
+        "slvmax": 10, 
+        "minhp": "26", 
+        "type": "axe", 
+        "ja": "ベルタワー", 
+        "imageURL": "./imgs/1040309200.png"
+    }, 
+    "[不叶夢]カーラウロプス": {
+        "hplv100": "284", 
+        "element2": "earth", 
+        "en": "Kalaurops", 
+        "maxlv": 150, 
+        "skill2": "normalL", 
+        "skill1": "normalL", 
+        "hp": "333", 
+        "element": "dark", 
+        "attacklv100": "2180", 
+        "minattack": "380", 
+        "attack": "2530", 
+        "slvmax": 15, 
+        "minhp": "44", 
+        "type": "wand", 
+        "ja": "[不叶夢]カーラウロプス", 
+        "imageURL": "./imgs/1040403800.png"
+    }, 
+    "テュルソス": {
+        "element2": "earth", 
+        "en": "Thyrsus", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "normalL", 
+        "hp": "281", 
+        "element": "earth", 
+        "minattack": "395", 
+        "attack": "2185", 
+        "slvmax": 10, 
+        "minhp": "41", 
+        "type": "wand", 
+        "ja": "テュルソス", 
+        "imageURL": "./imgs/1040409800.png"
+    }, 
+    "[縫動友]ルナのおともだち": {
+        "hplv100": "220", 
+        "element2": "dark", 
+        "en": "Luna's Friend", 
+        "maxlv": 150, 
+        "skill2": "non", 
+        "skill1": "strengthL", 
+        "hp": "231", 
+        "element": "dark", 
+        "attacklv100": "1779", 
+        "minattack": "308", 
+        "attack": "2073", 
+        "slvmax": 15, 
+        "minhp": "31", 
+        "type": "wand", 
+        "ja": "[縫動友]ルナのおともだち", 
+        "imageURL": "./imgs/1040409300.png"
+    }, 
+    "アーキテクトベース": {
+        "element2": "dark", 
+        "en": "アーキテクトベース", 
+        "maxlv": 100, 
+        "skill2": "strengthL", 
+        "skill1": "non", 
+        "hp": "225", 
+        "element": "dark", 
+        "minattack": "300", 
+        "attack": "1760", 
+        "slvmax": 10, 
+        "minhp": "32", 
+        "type": "wand", 
+        "ja": "アーキテクトベース", 
+        "imageURL": "./imgs/1040413300.png"
+    }, 
     "[聖天槍]エデン": {
         "hplv100": "280", 
         "element2": "light", 
@@ -310,10 +484,10 @@
         "imageURL": "./imgs/1040014200.png"
     }, 
     "ウィルムスウォード": {
-        "element2": "earth", 
+        "element2": "wind", 
         "en": "ウィルムスウォード", 
         "maxlv": 100, 
-        "skill2": "non", 
+        "skill2": "strengthL", 
         "skill1": "non", 
         "hp": "175", 
         "element": "earth", 
@@ -1825,9 +1999,9 @@
         "ja": "メタルハンド", 
         "imageURL": "./imgs/1040606700.png"
     }, 
-    "[闇鏡刃]パラゾニウム": {
+    "パラゾニウム": {
         "element2": "dark", 
-        "en": "Parazonium", 
+        "en": "パラゾニウム", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "normalLL", 
@@ -1838,7 +2012,7 @@
         "slvmax": 10, 
         "minhp": "40", 
         "type": "dagger", 
-        "ja": "[闇鏡刃]パラゾニウム", 
+        "ja": "パラゾニウム", 
         "imageURL": "./imgs/1040108700.png"
     }, 
     "[蒲公英]ダンデライオン": {
@@ -2073,9 +2247,9 @@
         "ja": "[精霊弓]白銀の弓", 
         "imageURL": "./imgs/1040705600.png"
     }, 
-    "[縫動友]ルナのおともだち": {
+    "ルナのおともだち": {
         "element2": "dark", 
-        "en": "Luna's Friend", 
+        "en": "ルナのおともだち", 
         "maxlv": 100, 
         "skill2": "non", 
         "skill1": "strengthL", 
@@ -2086,7 +2260,7 @@
         "slvmax": 10, 
         "minhp": "31", 
         "type": "wand", 
-        "ja": "[縫動友]ルナのおともだち", 
+        "ja": "ルナのおともだち", 
         "imageURL": "./imgs/1040409300.png"
     }, 
     "スプリットエンド": {
@@ -6319,9 +6493,9 @@
         "ja": "[祖龍杖]バハムートスタッフ・ノヴム", 
         "imageURL": "./imgs/1040403700.png"
     }, 
-    "[不叶夢]カーラウロプス": {
+    "カーラウロプス": {
         "element2": "earth", 
-        "en": "Kalaurops", 
+        "en": "カーラウロプス", 
         "maxlv": 100, 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -6332,7 +6506,7 @@
         "slvmax": 10, 
         "minhp": "44", 
         "type": "wand", 
-        "ja": "[不叶夢]カーラウロプス", 
+        "ja": "カーラウロプス", 
         "imageURL": "./imgs/1040403800.png"
     }, 
     "[福鸚鵡]ゴトルベルケーン": {
@@ -6979,9 +7153,9 @@
         "ja": "[祖龍銃]バハムートマズル・ノヴム", 
         "imageURL": "./imgs/1040502300.png"
     }, 
-    "[撒旋流]ヴリスラグナ": {
+    "ヴリスラグナ": {
         "element2": "light", 
-        "en": "Vlisragna", 
+        "en": "ヴリスラグナ", 
         "maxlv": 100, 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -6992,7 +7166,7 @@
         "slvmax": 10, 
         "minhp": "32", 
         "type": "gun", 
-        "ja": "[撒旋流]ヴリスラグナ", 
+        "ja": "ヴリスラグナ", 
         "imageURL": "./imgs/1040502400.png"
     }, 
     "ベネディーア": {
@@ -9145,9 +9319,9 @@
         "ja": "[桜閃]薄緑", 
         "imageURL": "./imgs/1040902000.png"
     }, 
-    "[屠竜]ドラゴンスレイヤー": {
+    "ドラゴンスレイヤー": {
         "element2": "light", 
-        "en": "Dragon Slayer", 
+        "en": "ドラゴンスレイヤー", 
         "maxlv": 100, 
         "skill2": "normalL", 
         "skill1": "normalL", 
@@ -9158,7 +9332,7 @@
         "slvmax": 10, 
         "minhp": "32", 
         "type": "katana", 
-        "ja": "[屠竜]ドラゴンスレイヤー", 
+        "ja": "ドラゴンスレイヤー", 
         "imageURL": "./imgs/1040902100.png"
     }, 
     "[黒閃導]ニバンボシ": {

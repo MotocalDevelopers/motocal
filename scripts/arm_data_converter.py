@@ -485,8 +485,11 @@ skillnamelist["strengthL"] = {
     u"紫水の光輝": "dark",
     u"闇の力を秘めし鍵": "dark",
     u"狐火の閃揺": "fire",
-    u"肉削ぐ撓刃": "wind"
+    u"肉削ぐ撓刃": "wind",
+    u"竜伐の心得": "wind",
+    u"アーキテクト・ATK II": "dark"
 }
+
 skillnamelist["exATKandHPM"] = {
     u"蒼薔薇の髄": "water",
     u"翠薔薇の髄": "wind",
@@ -597,6 +600,9 @@ skillnamelist["normalL"][u"聖女の行進"] = "light"
 skillnamelist["normalL"][u"天を統べる強風"] = "wind"
 skillnamelist["normalL"][u"血啜りの一閃"] = "dark"
 skillnamelist["normalL"][u"未完の錬金術"] = "fire"
+skillnamelist["normalL"][u"英雄たる証明"] = "wind"
+skillnamelist["normalL"][u"禁忌の悲恋"] = "dark"
+skillnamelist["normalL"][u"狙撃の極意"] = "water"
 
 # その他調整が必要な武器
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
