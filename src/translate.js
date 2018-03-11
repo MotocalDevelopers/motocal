@@ -2203,6 +2203,10 @@ var multiLangData = {
         "en": "05/02/2018: Implemented Stamina (M).",
         "ja": "2018/02/05: 渾身(中)の計算を実装 / 武器テンプレート追加."
     },
+    "notice-20180311-1": {
+        "en": "11/03/2018: Implemented Magna Stamina (M), Ultima Strength, and added new magna II Weapons.",
+        "ja": "2018/03/11: 方陣渾身(中)、オメガ強壮の計算を実装 / マグナII武器テンプレート追加(スキルは未対応)."
+    },
 }
 
 // 言語設定
