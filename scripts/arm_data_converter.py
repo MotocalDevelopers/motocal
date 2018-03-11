@@ -343,7 +343,14 @@ skillnamelist["magnaHaisuiL"] = {
     u"黒霧方陣・背水II": "dark"
 }
 
-skillnamelist["magnaCriticalL"] = {u"海神方陣・技巧II": "water"}
+skillnamelist["magnaCriticalL"] = {
+    u"機炎方陣・技巧II": "fire",
+    u"海神方陣・技巧II": "water",
+    u"創樹方陣・技巧II": "earth",
+    u"嵐竜方陣・技巧II": "wind",
+    u"騎解方陣・技巧II": "light",
+    u"黒霧方陣・技巧II": "dark"
+}
 
 # magna I
 skillnamelist["magnaM"] = {
@@ -389,6 +396,15 @@ skillnamelist["magnaHaisuiS"] = {
     u"嵐竜方陣・背水": "wind",
     u"騎解方陣・背水": "light",
     u"黒霧方陣・背水": "dark"
+}
+
+skillnamelist["magnaKonshinM"] = {
+    u"機炎方陣・渾身": "fire",
+    u"海神方陣・渾身": "water",
+    u"創樹方陣・渾身": "earth",
+    u"嵐竜方陣・渾身": "wind",
+    u"騎解方陣・渾身": "light",
+    u"黒霧方陣・渾身": "dark"
 }
 
 skillnamelist["magnaSetsuna"] = {
