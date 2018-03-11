@@ -234,7 +234,7 @@ var RegisteredArm = React.createClass({
             filterText: "",
             filterElement: "all",
             armData: {},
-            limit: 50,
+            limit: (_ua.Mobile) ? 50 : 200,
             tempArm: {},
             openConsiderNumberModal: false,
             plusNum: 0,
@@ -366,7 +366,7 @@ var RegisteredArm = React.createClass({
         var limit = this.state.limit;
         var displayed_count = 0;
 
-        if(_ua.Mobile || _ua.Tablet){
+        if (_ua.Mobile || _ua.Tablet){
             return (
                 <div className="armTemplate">
                     <span>検索:</span>
@@ -470,16 +470,19 @@ var RegisteredArm = React.createClass({
                             var armName = armData[key][locale]
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element == "all")){
                                 if(filterText == "" || armName.indexOf(filterText) != -1){
-                                    return (
-                                        <div className="onearm" key={key}>
-                                            <p>
-                                                {armName}<br/>
-                                                {intl.translate(skilltypes[armData[key].skill1].name, locale)}<br/>
-                                                {intl.translate(skilltypes[armData[key].skill2].name, locale)}
-                                            </p>
-                                            <Image rounded style={{"width":"100%"}} onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} />
-                                        </div>
-                                    );
+                                    if(filterElement != "all" || displayed_count < limit) {
+                                        displayed_count++;
+                                        return (
+                                            <div className="onearm" key={key}>
+                                                <p>
+                                                    {armName}<br/>
+                                                    {intl.translate(skilltypes[armData[key].skill1].name, locale)}<br/>
+                                                    {intl.translate(skilltypes[armData[key].skill2].name, locale)}
+                                                </p>
+                                                <Image rounded style={{"width":"100%"}} onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} />
+                                            </div>
+                                        );
+                                    }
                                 }
                             }
                             return "";
@@ -494,6 +497,12 @@ var RegisteredArm = React.createClass({
                         :
                         null
                     }
+
+                    <p className="text-danger">
+                        最新{limit}件を表示しています。
+                        それより古い場合は武器検索/属性フィルターをご利用下さい。
+                    </p>
+
                     <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>
 
                     <Modal show={this.state.openSendRequest} onHide={this.closeSendRequest}>
