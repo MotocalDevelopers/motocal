@@ -369,7 +369,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"]
         var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + 0.01 * totals[key]["omegaNormal"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
         var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"] + 0.01 * (totals[key]["normalOtherHaisui"])
-        var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"]
+        var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"] + 0.01 * (totals[key]["normalOtherKonshin"])
         // 属性(経過ターン)も最大値で計算する
         var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"] + totals[key]["elementBuff"] + 0.01 * totals[key]["LB"].Element
         var otherCoeff = (1.0 + buff["other"]) * (1.0 + buff["other2"]) * (1.0 + totals[key]["otherBuff"]) * (1.0 + totals[key]["otherBuff2"])
@@ -699,7 +699,12 @@ module.exports.calcHaisuiValue = function(haisuiType, haisuiAmount, haisuiSLv, h
         } else {
             return 0.0;
         }
-
+    } else if (haisuiType === "omegaKonshin"){
+        if (remainHP >= 0.25) {
+            return Math.pow(100.0 * remainHP / (53.7 - haisuiSLv), 2.9) + 2.1;
+        } else {
+            return 0.0;
+        }
     } else {
         console.error("Unknown Haisui Type Passed: " + haisuiType)
         return 0.0;
@@ -955,6 +960,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                                 } else if (omegatype === "seimei") {
                                     totals[key]["omegaNormalHP"] += skillAmounts["omega"][amount][slv - 1];
                                 } else if (omegatype === "kyousou") {
+                                    totals[key]["normalOtherKonshin"] += module.exports.calcHaisuiValue("omegaKonshin", amount, slv, totals[key]["remainHP"]);
                                 } else if (omegatype === "gekijou") {
                                     totals[key]["normalOtherHaisui"] += module.exports.calcHaisuiValue("normalHaisui", amount, slv, totals[key]["remainHP"]);
                                 } else if (omegatype === "yuuki") {
@@ -1230,6 +1236,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             normalHaisui: 0,
             normalOtherHaisui: 0,
             normalKonshin: 0,
+            normalOtherKonshin: 0,
             unknown: 0,
             ex: 0,
             exHaisui: 0,
@@ -1343,6 +1350,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 normalHaisui: 0,
                 normalOtherHaisui: 0,
                 normalKonshin: 0,
+                normalOtherKonshin: 0,
                 unknown: 0,
                 ex: 0,
                 exHaisui: 0,
@@ -1463,6 +1471,7 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["normalHaisui"] = 0;
         totals[key]["normalOtherHaisui"] = 0;
         totals[key]["normalKonshin"] = 0;
+        totals[key]["normalOtherKonshin"] = 0;
         totals[key]["unknown"] = 0;
         totals[key]["ex"] = 0;
         totals[key]["exHaisui"] = 0;
