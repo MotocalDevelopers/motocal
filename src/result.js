@@ -1041,6 +1041,7 @@ var Result = React.createClass({
                             pushSkillInfoElement1("element", "属性", "primary");
                             pushSkillInfoElement1("magna", "マグナ", "primary");
                             pushSkillInfoElement1("magnaHaisui", "マグナ背水", "light");
+                            pushSkillInfoElement1("magnaKonshin", "マグナ渾身", "success");
                             pushSkillInfoElement1("ex", "EX", "primary");
                             pushSkillInfoElement1("exHaisui", "EX背水", "light");
                             pushSkillInfoElement1("charaHaisui", "キャラ背水", "light");

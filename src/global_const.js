@@ -206,6 +206,7 @@ var skilltypes = {
     "magnaHaisuiS": {name:"マグナ背水(小)", type:"magnaHaisui", amount: "S"},
     "magnaHaisuiM": {name:"マグナ背水(中)", type:"magnaHaisui", amount: "M"},
     "magnaHaisuiL": {name:"マグナ背水(大)", type:"magnaHaisui", amount: "L"},
+    "magnaKonshinM": {name:"マグナ渾身(中)", type:"magnaKonshin", amount: "M"},
     "magnaSanteL": {name:"マグナ三手(大)", type:"magnaSante", amount: "L"},
     "magnaKatsumiM": {name:"マグナ克己(中)", type:"magnaKatsumi", amount: "M"},
     "magnaKamui": {name:"マグナ神威", type:"magnaKamui", amount: "S"},

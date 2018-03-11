@@ -363,7 +363,8 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
 
         // 各種攻刃係数の計算
         var magnaCoeff = 1.0 + 0.01 * totals[key]["magna"] * totalSummon["magna"]
-        var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"]) * totalSummon["magna"]
+        var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"] * totalSummon["magna"])
+        var magnaKonshinCoeff = 1.0 + 0.01 * (totals[key]["magnaKonshin"] * totalSummon["magna"])
         var exCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["ex"]
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"]
         var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + 0.01 * totals[key]["omegaNormal"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
@@ -399,7 +400,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             var totalHP = displayHP* hpCoeff
         }
 
-        var totalSkillCoeff = magnaCoeff * magnaHaisuiCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * exCoeff * otherCoeff * exHaisuiCoeff * normalKonshinCoeff * charaHaisuiCoeff
+        var totalSkillCoeff = magnaCoeff * magnaHaisuiCoeff * magnaKonshinCoeff * normalCoeff * normalHaisuiCoeff * elementCoeff * exCoeff * otherCoeff * exHaisuiCoeff * normalKonshinCoeff * charaHaisuiCoeff
         var totalAttack = summedAttack * totalSkillCoeff
 
         // HPの下限は 1
@@ -498,6 +499,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         coeffs["normalKonshin"] = normalKonshinCoeff;
         coeffs["magna"] = magnaCoeff;
         coeffs["magnaHaisui"] = magnaHaisuiCoeff;
+        coeffs["magnaKonshin"] = magnaKonshinCoeff;
         coeffs["element"] = elementCoeff;
         coeffs["ex"] = exCoeff;
         coeffs["exHaisui"] = exHaisuiCoeff;
@@ -672,6 +674,7 @@ module.exports.calcHaisuiValue = function(haisuiType, haisuiAmount, haisuiSLv, h
     } else if (haisuiType === "normalKonshin"){
         if (remainHP >= 0.25) {
             if (haisuiAmount === "S") {
+                return 0.0;
             } else if (haisuiAmount === "M"){
                 // 通常渾身(中)
                 return Math.pow(100.0 * remainHP / (65.0 - haisuiSLv), 2.9) + 2.1;
@@ -684,6 +687,18 @@ module.exports.calcHaisuiValue = function(haisuiType, haisuiAmount, haisuiSLv, h
             return 0.0;
         }
     } else if (haisuiType === "magnaKonshin") {
+        if (remainHP >= 0.25) {
+            if (haisuiAmount === "S") {
+                return 0.0;
+            } else if (haisuiAmount === "M"){
+                // マグナ渾身(中)
+                return Math.pow(100.0 * remainHP / (60.4 - haisuiSLv), 2.9) + 2.1;
+            } else {
+                return 0.0;
+            }
+        } else {
+            return 0.0;
+        }
 
     } else {
         console.error("Unknown Haisui Type Passed: " + haisuiType)
@@ -961,8 +976,8 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
 
                     } else if(totals[key]["element"] == element){
                         // 属性一致してれば計算
-                        if(stype == 'normalHaisui' || stype == 'magnaHaisui' || stype == 'exHaisui' || stype == 'normalKonshin'){
-                            // 背水計算部分は別メソッドで
+                        if(stype == 'normalHaisui' || stype == 'magnaHaisui' || stype == 'exHaisui' || stype == 'normalKonshin' || stype === "magnaKonshin"){
+                            // 背水/渾身計算部分は別メソッドで
                             totals[key][stype] += comb[i] * module.exports.calcHaisuiValue(stype, amount, slv, totals[key]["remainHP"])
                         } else if(stype == 'normalKamui') {
                             if (amount == 'S') {
@@ -1209,6 +1224,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             HPdebuff: 0.00,
             magna: 0,
             magnaHaisui: 0,
+            magnaKonshin: 0,
             normal: 0,
             normalOther: 0,
             normalHaisui: 0,
@@ -1321,6 +1337,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 HPdebuff: 0.00,
                 magna: 0,
                 magnaHaisui: 0,
+                magnaKonshin: 0,
                 normal: 0,
                 normalOther: 0,
                 normalHaisui: 0,
@@ -1440,6 +1457,7 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["HPdebuff"] = 0;
         totals[key]["magna"] = 0;
         totals[key]["magnaHaisui"] = 0;
+        totals[key]["magnaKonshin"] = 0;
         totals[key]["normal"] = 0;
         totals[key]["normalOther"] = 0;
         totals[key]["normalHaisui"] = 0;

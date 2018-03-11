@@ -869,6 +869,10 @@ var multiLangData = {
         "en": "Magna Enmity ",
         "ja": "マグナ背水",
     },
+    "マグナ渾身": {
+        "en": "Magna Stamina ",
+        "ja": "マグナ渾身",
+    },
     "アンノウン": {
         "en": "Unknown ",
         "ja": "アンノウン",
@@ -1323,6 +1327,10 @@ var multiLangData = {
     "マグナ背水(大)": {
         "en": "Magna Enmity (L)",
         "ja": "マグナ背水(大)",
+    },
+    "マグナ渾身(中)": {
+        "en": "Magna Stamina (M)",
+        "ja": "マグナ渾身(中)",
     },
     "マグナ三手(大)": {
         "en": "Magna Trium (L)",
