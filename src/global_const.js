@@ -342,6 +342,7 @@ var omegaWeaponSkill1 = {
     "omega-tousou": {name:"オメガ-闘争"},
     "omega-seimei": {name:"オメガ-生命"},
     "omega-gekijou": {name:"オメガ-激情"},
+    "omega-kyousou": {name:"オメガ-強壮"},
     "omega-yuuki": {name:"オメガ-勇気"},
 };
 
