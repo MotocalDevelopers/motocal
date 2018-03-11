@@ -1689,15 +1689,16 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                 var totalSummon = onedata[key].totalSummon
                 var normalHaisuiOrig = onedata[key].skilldata.normalHaisui
                 var magnaHaisuiOrig = onedata[key].skilldata.magnaHaisui
+                var magnaKonshinOrig = onedata[key].skilldata.magnaKonshin
                 var charaHaisuiOrig = onedata[key].skilldata.charaHaisui
                 var normalKonshinOrig = onedata[key].skilldata.normalKonshin
                 var exHaisuiOrig = onedata[key].skilldata.exHaisui
-                var totalSkillWithoutHaisui = onedata[key].totalSkillCoeff / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig * charaHaisuiOrig * exHaisuiOrig)
+                var totalSkillWithoutHaisui = onedata[key].totalSkillCoeff / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig * charaHaisuiOrig * exHaisuiOrig * magnaKonshinOrig)
 
                 var haisuiBuff = []
                 // キャラ背水はキャラ個別で計算するべき
                 for(var k = 0; k < 100; k++){
-                    haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0, exHaisui: 1.0, charaHaisui: charaHaisuiBuff[k]})
+                    haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0, magnaKonshin: 1.0, exHaisui: 1.0, charaHaisui: charaHaisuiBuff[k]})
                 }
 
                 // 武器データ計算
@@ -1752,7 +1753,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                 }
 
                 for(var k = 0; k < 100; k++){
-                    var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui
+                    var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui
                     var summedAttack = onedata[key].displayAttack
                     var newTotalAttack = summedAttack * newTotalSkillCoeff
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
