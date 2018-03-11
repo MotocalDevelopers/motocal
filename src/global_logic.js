@@ -1714,6 +1714,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                 for (var i = 0; i < arml.length; i++) {
                     var arm = arml[i];
                     var omegaHaisuiIncluded = false;
+                    var omegaKonshinIncluded = false;
 
                     for (var jj = 1; jj <= 2; jj++) {
                         var skillname = '';
@@ -1741,6 +1742,14 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                                         haisuiBuff[l]["normalHaisui"] += 0.01 * module.exports.calcHaisuiValue("normalHaisui", amount, slv, remainHP)
                                     }
                                     omegaHaisuiIncluded = true;
+                                }
+                            } else if (skillname === "omega-kyousou") {
+                                if (!omegaKonshinIncluded && (arm.armType === onedata[key].fav1 || arm.armType === onedata[key].fav2)) {
+                                    for(var l = 0; l < haisuiBuff.length; l++) {
+                                        var remainHP = 0.01 * (l + 1);
+                                        haisuiBuff[l]["normalKonshin"] += 0.01 * module.exports.calcHaisuiValue("omegaKonshin", amount, slv, remainHP)
+                                    }
+                                    omegaKonshinIncluded = true;
                                 }
                             } else if (onedata[key].element == element) {
                                 if (stype === "normalHaisui" || stype === "magnaHaisui" || stype === "normalKonshin" || stype === "magnaKonshin" || stype === "exHaisui") {
