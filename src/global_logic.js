@@ -1758,7 +1758,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
 
                                         if(stype === "normalHaisui" || stype === "normalKonshin") {
                                             haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.zeus
-                                        } else if (stype === "magnaHaisui" || stype === "magnaKonsin") {
+                                        } else if (stype === "magnaHaisui" || stype === "magnaKonshin") {
                                             haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.magna
                                         } else {
                                             haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP)
