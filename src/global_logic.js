@@ -650,10 +650,12 @@ module.exports.calcHaisuiValue = function(haisuiType, haisuiAmount, haisuiSLv, h
         // baseRate: HP50%の時の値
         if(haisuiAmount == "S") {
             // 小
-            if(haisuiSLv < 10) {
+            if (haisuiSLv < 10) {
                 baseRate = -0.3 + haisuiSLv * 1.8;
+            } else if (haisuiSLv <= 15) {
+                baseRate = 18.0 + 3.0 * ((haisuiSLv - 10) / 5.0)
             } else {
-                baseRate = 18 + 3.0 * ((haisuiSLv - 10) / 5.0)
+                baseRate = 21.0 + 0.3 * (haisuiSLv - 15)
             }
         } else if ( haisuiAmount == "M" ){
             // 中
@@ -783,6 +785,23 @@ module.exports.getTotalBuff = function(prof) {
     return totalBuff
 };
 
+function maskInvalidSkillLevel(slv, stype, amount) {
+    if (slv < 1) return 1;
+    if (slv > 15) {
+        if (stype === 'magna') {
+            if (amount === 'M' || amount === 'L') return slv;
+        }
+
+        if (stype === 'magnaHaisui') {
+            if (amount === 'S') return slv;
+        }
+
+        // 該当しない場合はSLv15を上限とする
+        return 15;
+    }
+    return slv;
+}
+
 module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
     // cosmos武器があるかどうかを確認しておく
     var cosmosType = '';
@@ -859,8 +878,8 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                     var amount = skilltypes[skillname].amount;
                     var slv = parseInt(arm.slv)
 
-                    // mask invalid slv
-                    if(slv == 0) slv = 1
+                    // SLv20対応
+                    slv = maskInvalidSkillLevel(slv, stype, amount);
 
                     // バハとコスモスとオメガ武器は属性関係なし
                     if(stype == 'bahaAT') {
@@ -1732,8 +1751,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                             var amount = skilltypes[skillname].amount;
                             var slv = parseInt(arm.slv)
 
-                            // mask invalid slv
-                            if (slv == 0) slv = 1
+                            slv = maskInvalidSkillLevel(slv, stype, amount);
 
                             if (skillname === "omega-gekijou") {
                                 if (!omegaHaisuiIncluded && (arm.armType === onedata[key].fav1 || arm.armType === onedata[key].fav2)) {
