@@ -818,8 +818,8 @@ var multiLangData = {
         "ja": "属性(経過ターン)",
     },
     "ゼウス系": {
-        "en": "Zeus ",
-        "ja": "ゼウス系",
+        "en": "Primal ",
+        "ja": "神石系",
     },
     "蘭子": {
         "en": "Ranko ",
