@@ -1,4 +1,38 @@
 {
+    "真・道天浄土": {
+        "hplv100": "180", 
+        "element2": "light", 
+        "en": "真・道天浄土", 
+        "maxlv": 150, 
+        "skill2": "non", 
+        "skill1": "strengthLL", 
+        "hp": "210", 
+        "element": "light", 
+        "attacklv100": "2345", 
+        "minattack": "380", 
+        "attack": "2739", 
+        "slvmax": 15, 
+        "minhp": "29", 
+        "type": "sword", 
+        "ja": "真・道天浄土", 
+        "imageURL": "./imgs/1040015400.png"
+    }, 
+    "六道・道天浄土": {
+        "element2": "light", 
+        "en": "六道・道天浄土", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "strengthLL", 
+        "hp": "180", 
+        "element": "light", 
+        "minattack": "380", 
+        "attack": "2345", 
+        "slvmax": 10, 
+        "minhp": "29", 
+        "type": "sword", 
+        "ja": "六道・道天浄土", 
+        "imageURL": "./imgs/1040015300.png"
+    }, 
     "ラストストームランス": {
         "element2": "wind", 
         "en": "ラストストームランス", 
