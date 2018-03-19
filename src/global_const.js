@@ -189,6 +189,7 @@ var skilltypes = {
     "normalHaisuiL": {name:"通常背水(大)", type:"normalHaisui", amount: "L"},
     "normalKonshinM": {name:"通常渾身(中)", type:"normalKonshin", amount: "M"},
     "normalKonshinL": {name:"通常渾身(大)", type:"normalKonshin", amount: "L"},
+    "normalOtherKonshinL": {name: "通常渾身(大)(神石加護無効)", type: "normalOtherKonshin", amount: "L"},
     "normalNiteS": {name:"通常二手(小)", type:"normalNite", amount: "S"},
     "normalNiteM": {name:"通常二手(中)", type:"normalNite", amount: "M"},
     "normalNiteL": {name:"通常二手(大)", type:"normalNite", amount: "L"},

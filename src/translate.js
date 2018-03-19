@@ -1701,6 +1701,10 @@ var multiLangData = {
         "ja": "奥義上限UP(10%)",
     },
     // 拡張スキル
+    "通常渾身(大)(神石加護無効)": {
+        "en": "Normal Stamina (L) (No Summon Aura)",
+        "ja": "通常渾身(大)(神石加護無効)",
+    },
     "[ジータのみ] 通常枠DATA 5%" : {
         "en": "[DjeetaOnly] Normal DA/TA 5%",
         "ja": "[ジータのみ] 通常枠DATA 5%",
