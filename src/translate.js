@@ -817,7 +817,7 @@ var multiLangData = {
         "en": "Element(Sesuransu) ",
         "ja": "属性(経過ターン)",
     },
-    "ゼウス系": {
+    "神石系": {
         "en": "Primal ",
         "ja": "神石系",
     },

@@ -370,7 +370,7 @@ var armTypes = {
 var summonTypes = {
     "magna": "マグナ",
     "element": "属性",
-    "zeus": "ゼウス系",
+    "zeus": "神石系",
     "chara": "キャラ",
     "ranko": "蘭子",
     "odin": "属性攻+キャラ攻",
