@@ -1354,6 +1354,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             support2: "none",
             charaHaisui: 0,
             debuffResistance: 0,
+            charaDamageUP: 0,
             tenshiDamageUP: 0
         }
     };
@@ -1470,6 +1471,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 support2: chara[i].support2,
                 charaHaisui: 0,
                 debuffResistance: 0,
+                charaDamageUP: 0,
                 tenshiDamageUP: 0
             };
         }

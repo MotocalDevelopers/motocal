@@ -43,6 +43,23 @@ supportAbilist["ougi_damage_up_1_5"] = {u"天星剣王"}
 supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
 supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
+supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"}
+supportAbilist["damageUP_10"] = {u"婉麗な姉"}
+supportAbilist["damageUP_20"] = {
+    u"ピースメーカー",
+    u"炎帝の刃",
+    u"羅刹の豪槍",
+    u"死の舞踏",
+    u"冷たい女",
+    u"暴虎",
+    u"鬼神",
+    u"アニマ・アエテルヌス",
+    u"カンピオーネ",
+    u"惑乱の旋律",
+    u"真龍の鉤爪",
+    u"護国の双剣",
+    u"アニマ・ドゥクトゥス",
+}
 
 # Patching
 patching = OrderedDict()
