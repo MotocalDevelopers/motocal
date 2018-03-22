@@ -847,7 +847,19 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
         var isBahaAtIncluded = false
         var isBahaAthpIncluded = false
         var isBahaHpIncluded = false
-        var isOmegaIncluded = false // オメガウェポンもとりあえず1本のみ効果があるとする
+
+        // オメガウェポンは別スキルなら複数効果発動可能
+        var isOmegaIncluded = {
+            "omegaBase": false,
+            "senni": false,
+            "tousou": false,
+            "seimei": false,
+            "kyousou": false,
+            "gekijou": false,
+            "yuuki": false,
+            "alpha": false,
+            "gamma": false,
+        };
 
         for(var i = 0; i < arml.length; i++){
             if(comb[i] == 0) continue
@@ -988,38 +1000,46 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                     } else if(stype == 'cosmosArm') {
                         // コスモス武器スキルはスキップ
                     } else if(stype == 'omega') {
-                        if (!isOmegaIncluded) {
-                            // オメガウェポン
-                            var omegatype = skillname.split("-")[1]
-                            if (arm.armType === totals[key]["fav1"] || arm.armType === totals[key]["fav2"]) {
+                        // オメガウェポン
+                        var omegaType = skillname.split("-")[1]
+                        if (arm.armType === totals[key]["fav1"] || arm.armType === totals[key]["fav2"]) {
+
+                            if (!isOmegaIncluded["omegaBase"]) {
                                 totals[key]["omegaNormal"] += skillAmounts["omega"]["rawATK"][slv - 1];
                                 totals[key]["omegaNormalHP"] += skillAmounts["omega"]["rawHP"][slv - 1];
 
-                                if (omegatype === "senni") {
+                                isOmegaIncluded["omegaBase"] = true;
+                            }
+
+                            if (!isOmegaIncluded[omegaType]) {
+                                if (omegaType === "senni") {
                                     totals[key]["omegaNormal"] += skillAmounts["omega"][amount][slv - 1];
-                                } else if (omegatype === "tousou") {
+                                } else if (omegaType === "tousou") {
                                     totals[key]["normalOtherSante"] += skillAmounts["omega"][amount][slv - 1];
-                                } else if (omegatype === "seimei") {
+                                } else if (omegaType === "seimei") {
                                     totals[key]["omegaNormalHP"] += skillAmounts["omega"][amount][slv - 1];
-                                } else if (omegatype === "kyousou") {
+                                } else if (omegaType === "kyousou") {
                                     totals[key]["normalOtherKonshin"] += module.exports.calcHaisuiValue("omegaKonshin", amount, slv, totals[key]["remainHP"]);
-                                } else if (omegatype === "gekijou") {
+                                } else if (omegaType === "gekijou") {
                                     totals[key]["normalOtherHaisui"] += module.exports.calcHaisuiValue("normalHaisui", amount, slv, totals[key]["remainHP"]);
-                                } else if (omegatype === "yuuki") {
+                                } else if (omegaType === "yuuki") {
                                     totals[key]["normalOtherCritical"].push({"value": 0.01 * skillAmounts["omega"][amount][slv - 1], "attackRatio": 0.5});
                                 }
 
-                                isOmegaIncluded = true;
+                                isOmegaIncluded[omegaType] = true;
                             }
                         }
                     } else if(stype === "gauphKey") {
                         // ガフスキーは得意武器、属性に関係なく発動する
                         var gauphKeyType = skillname.split("-")[1]
 
-                        if (gauphKeyType === "alpha") {
-                            totals[key]["normalDamageLimit"] += 0.1
-                        } else if (gauphKeyType === "gamma") {
-                            totals[key]["ougiDamageLimit"] += 0.15
+                        if (!isOmegaIncluded[gauphKeyType]) {
+                            if (gauphKeyType === "alpha") {
+                                totals[key]["normalDamageLimit"] += 0.1
+                            } else if (gauphKeyType === "gamma") {
+                                totals[key]["ougiDamageLimit"] += 0.15
+                            }
+                            isOmegaIncluded[gauphKeyType] = true;
                         }
 
                     } else if(totals[key]["element"] == element){
