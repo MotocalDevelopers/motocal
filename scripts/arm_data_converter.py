@@ -453,6 +453,15 @@ skillnamelist["magnaRasetsuM"] = {
     u"黒霧方陣・羅刹": "dark"
 }
 
+skillnamelist["magnaRanbuM"] = {
+    u"機炎方陣・乱舞": "fire",
+    u"海神方陣・乱舞": "water",
+    u"創樹方陣・乱舞": "earth",
+    u"嵐竜方陣・乱舞": "wind",
+    u"騎解方陣・乱舞": "light",
+    u"黒霧方陣・乱舞": "dark"
+}
+
 # アンノウン
 skillnamelist["unknownL"] = {u"アンノウン・ATK II": "unknown"}
 skillnamelist["unknownM"] = {u"アンノウン・ATK": "unknown"}
