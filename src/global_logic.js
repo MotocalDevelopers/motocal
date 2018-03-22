@@ -455,7 +455,8 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate))
 
         if (totals[key]["typeBonus"] == 1.5) {
-            var damageUP = totals[key]["tenshiDamageUP"]
+            // 与ダメージ上昇サポアビは天司スキルと重複しない（効果の高い方のみ発揮）
+            var damageUP = (totals[key]["tenshiDamageUP"] > totals[key]["charaDamageUP"]) ? totals[key]["tenshiDamageUP"] : totals[key]["charaDamageUP"]
 
             // 通常別枠の技巧スキル配列を生成
             var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
