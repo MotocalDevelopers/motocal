@@ -442,8 +442,9 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
 
         // TAのみ上昇するスキルを LesserSante と呼ぶ
         var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"];
+        var magnaLesserSante = totals[key]["magnaLesserSante"] * totalSummon["magna"];
         var armTAupNormal = (normalSante + normalLesserSante > 50.0) ? 50.0 : normalSante + normalLesserSante
-        var armTAupMagna  = (magnaSante > 50.0)  ? 50.0 : magnaSante
+        var armTAupMagna  = (magnaSante > 50.0)  ? 50.0 : magnaSante + magnaLesserSante
         var armTAupBaha = (totals[key]["bahaTA"] > 50.0) ? 50.0 : totals[key]["bahaTA"]
         var armTAupOther = (totals[key]["TAbuff"] > 50.0) ? 50.0 : totals[key]["TAbuff"]
         var totalTA = 0.01 * (totals[key]["baseTA"] + totals[key]["LB"]["TA"]) + buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"] + 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther)
@@ -1090,6 +1091,9 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         } else if(stype == 'magnaBoukun') {
                             totals[key]["HPdebuff"] += comb[i] * 0.10
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                        } else if (stype == 'magnaRanbu') {
+                            totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                            totals[key]["magnaLesserSante"] += comb[i] * skillAmounts["magnaRanbu"][amount][slv - 1];
                         } else if(stype == 'exBoukun'){
                             totals[key]["HPdebuff"] += comb[i] * 0.07
                             totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];
@@ -1294,6 +1298,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             normalSante: 0,
             normalLesserSante: 0,
             magnaSante: 0,
+            magnaLesserSante: 0,
             exNite: 0,
             normalOtherNite: 0,
             normalOtherSante: 0,
@@ -1410,6 +1415,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 normalSante: 0,
                 normalLesserSante: 0,
                 magnaSante: 0,
+                magnaLesserSante: 0,
                 exNite: 0,
                 normalOtherNite: 0,
                 normalOtherSante: 0,
@@ -1531,6 +1537,7 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["normalSante"] = 0;
         totals[key]["normalLesserSante"] = 0;
         totals[key]["magnaSante"] = 0;
+        totals[key]["magnaLesserSante"] = 0;
         totals[key]["exNite"] = 0;
         totals[key]["normalCritical"] = [];
         totals[key]["normalOtherCritical"] = [];

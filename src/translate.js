@@ -1356,6 +1356,10 @@ var multiLangData = {
         "en": "Magna Haunt",
         "ja": "マグナ羅刹",
     },
+    "マグナ乱舞(中)": {
+        "en": "Magna Fandango (M)",
+        "ja": "マグナ乱舞(中)",
+    },
     "アンノウンATK・I": {
         "en": "Unknown ATK I",
         "ja": "アンノウンATK・I",
@@ -1684,19 +1688,19 @@ var multiLangData = {
         "en": "Angel's Blessing II",
         "ja": "天司の祝福II",
     },
-    "通常上限UP(2.5%)" : {
+    "通常上限UP(2.5%)": {
         "en": "Damage Limit UP(2.5%)",
         "ja": "通常上限UP(2.5%)",
     },
-    "通常上限UP(7.0%)" : {
+    "通常上限UP(7.0%)": {
         "en": "Damage Limit UP(7.0%)",
         "ja": "通常上限UP(7.0%)",
     },
-    "通常上限UP(10%)" : {
+    "通常上限UP(10%)": {
         "en": "Damage Limit UP(10%)",
         "ja": "通常上限UP(10%)",
     },
-    "奥義上限UP(10%)" : {
+    "奥義上限UP(10%)": {
         "en": "Ougi Limit UP(10%)",
         "ja": "奥義上限UP(10%)",
     },
@@ -1705,27 +1709,27 @@ var multiLangData = {
         "en": "Normal Stamina (L) (No Summon Aura)",
         "ja": "通常渾身(大)(神石加護無効)",
     },
-    "[ジータのみ] 通常枠DATA 5%" : {
+    "[ジータのみ] 通常枠DATA 5%": {
         "en": "[DjeetaOnly] Normal DA/TA 5%",
         "ja": "[ジータのみ] 通常枠DATA 5%",
     },
-    "[ジータのみ] 通常枠DATA 10%" : {
+    "[ジータのみ] 通常枠DATA 10%": {
         "en": "[DjeetaOnly] Normal DA/TA 10%",
         "ja": "[ジータのみ] 通常枠DATA 10%",
     },
-    "[ジータのみ] 通常枠DATA 15%" : {
+    "[ジータのみ] 通常枠DATA 15%": {
         "en": "[DjeetaOnly] Normal DA/TA 15%",
         "ja": "[ジータのみ] 通常枠DATA 15%",
     },
-    "[ジータのみ] 通常枠DATA 20%" : {
+    "[ジータのみ] 通常枠DATA 20%": {
         "en": "[DjeetaOnly] Normal DA/TA 20%",
         "ja": "[ジータのみ] 通常枠DATA 20%",
     },
-    "[ジータのみ] 通常枠DATA 25%" : {
+    "[ジータのみ] 通常枠DATA 25%": {
         "en": "[DjeetaOnly] Normal DA/TA 25%",
         "ja": "[ジータのみ] 通常枠DATA 25%",
     },
-    "[ジータのみ] 通常枠DATA 30%" : {
+    "[ジータのみ] 通常枠DATA 30%": {
         "en": "[DjeetaOnly] Normal DA/TA 30%",
         "ja": "[ジータのみ] 通常枠DATA 30%",
     },
@@ -2214,21 +2218,21 @@ var multiLangData = {
 }
 
 // 言語設定
-module.exports.getLocale = function() {
+module.exports.getLocale = function () {
     var lang = (
-    (window.navigator.languages && window.navigator.languages[0]) ||
-    window.navigator.language ||
-    window.navigator.userLanguage ||
-    window.navigator.browserLanguage);
-    if(lang == "ja-jp" || lang == "ja-JP") lang = "ja";
-    if(lang != "ja") lang = "en";
+        (window.navigator.languages && window.navigator.languages[0]) ||
+        window.navigator.language ||
+        window.navigator.userLanguage ||
+        window.navigator.browserLanguage);
+    if (lang == "ja-jp" || lang == "ja-JP") lang = "ja";
+    if (lang != "ja") lang = "en";
 
     return lang;
 }
 
-module.exports.translate = function(key, locale) {
-    if(key == undefined || key == "") return "";
-    if(locale != "ja" && locale != "en") return multiLangData[key]["ja"];
+module.exports.translate = function (key, locale) {
+    if (key == undefined || key == "") return "";
+    if (locale != "ja" && locale != "en") return multiLangData[key]["ja"];
 
     return multiLangData[key][locale];
 }

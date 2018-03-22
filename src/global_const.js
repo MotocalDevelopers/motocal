@@ -214,6 +214,7 @@ var skilltypes = {
     "magnaBoukun": {name:"マグナ暴君", type:"magnaBoukun", amount: "L"},
     "magnaKatsumokuS": {name: "マグナ括目", type: "magnaKatsumoku", amount: "S"},
     "magnaRasetsuM": {name: "マグナ羅刹", type: "magnaRasetsu", amount: "M"},
+    "magnaRanbuM": {name: "マグナ乱舞(中)", type: "magnaRanbu", amount: "M"},
     "unknownM": {name:"アンノウンATK・I", type:"unknown", amount: "M"},
     "unknownL": {name:"アンノウンATK・II", type:"unknown", amount: "L"},
     "strengthHaisuiM": {name:"EX背水(中)", type:"exHaisui", amount: "M"},
@@ -636,6 +637,9 @@ var skillAmounts = {
     },
     "normalRanbu": {
         "S": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0]
+    },
+    "magnaRanbu": {
+        "M": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
     },
     // 鷲王の結界
     "washiouKekkai":{
