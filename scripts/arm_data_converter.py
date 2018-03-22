@@ -503,7 +503,8 @@ skillnamelist["strengthL"] = {
     u"狐火の閃揺": "fire",
     u"肉削ぐ撓刃": "wind",
     u"竜伐の心得": "wind",
-    u"アーキテクト・ATK II": "dark"
+    u"アーキテクト・ATK II": "dark",
+    u"天の理": "light",
 }
 
 skillnamelist["exATKandHPM"] = {

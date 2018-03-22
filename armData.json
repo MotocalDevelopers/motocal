@@ -1,4 +1,20 @@
 {
+    "リバーススレッド": {
+        "element2": "light", 
+        "en": "リバーススレッド", 
+        "maxlv": 100, 
+        "skill2": "non", 
+        "skill1": "strengthL", 
+        "hp": "173", 
+        "element": "light", 
+        "minattack": "324", 
+        "attack": "2017", 
+        "slvmax": 10, 
+        "minhp": "28", 
+        "type": "sword", 
+        "ja": "リバーススレッド", 
+        "imageURL": "./imgs/1040015100.png"
+    }, 
     "真・道天浄土": {
         "hplv100": "180", 
         "element2": "light", 
