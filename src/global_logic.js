@@ -455,14 +455,21 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
 
         if (totals[key]["typeBonus"] == 1.5) {
             var damageUP = totals[key]["tenshiDamageUP"]
-            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(getLBCriticalArray(totals[key]["LB"]));
+
+            // 通常別枠の技巧スキル配列を生成
+            var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
+            var normalOtherCriticalBuffArray = totals[key]["normalOtherCriticalBuff"];
+            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray, normalOtherCriticalBuffArray);
 
             var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon)
             var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
         } else if (prof.enemyElement == "non-but-critical") {
             // "無（技巧あり）"の場合の処理
             var damageUP = 0.0
-            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(getLBCriticalArray(totals[key]["LB"]));
+
+            var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
+            var normalOtherCriticalBuffArray = totals[key]["normalOtherCriticalBuff"];
+            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray, normalOtherCriticalBuffArray);
 
             var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon)
             var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
@@ -1316,6 +1323,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             TAbuff: 0,
             damageLimitBuff: djeetaBuffList["personalDamageLimitBuff"],
             ougiDamageLimitBuff: djeetaBuffList["personalOugiDamageLimitBuff"],
+            normalOtherCriticalBuff: [],
             support: "none",
             support2: "none",
             charaHaisui: 0,
@@ -1430,6 +1438,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 TAbuff: 0,
                 damageLimitBuff: charaBuffList["damageLimitBuff"],
                 ougiDamageLimitBuff: charaBuffList["ougiDamageLimitBuff"],
+                normalOtherCriticalBuff: [],
                 support: chara[i].support,
                 support2: chara[i].support2,
                 charaHaisui: 0,
@@ -1566,7 +1575,7 @@ module.exports.treatSupportAbility = function(totals, chara) {
                 var support = supportAbilities[totals[key]["support2"]];
             }
 
-            if(support.type == "none") continue;
+            if (support.type == "none") continue;
 
             // 特殊なサポアビの処理
             switch(support.type){
@@ -1608,14 +1617,14 @@ module.exports.treatSupportAbility = function(totals, chara) {
             // 技巧系処理
             if(support.type == "criticalBuff") {
                 if(support.range == "own") {
-                    totals[key]["normalOtherCritical"].push({"value": support.value, "attackRatio": support.attackRatio})
+                    totals[key]["normalOtherCriticalBuff"].push({"value": support.value, "attackRatio": support.attackRatio})
                 } else {
                     if(totals[key].isConsideredInAverage) {
                         for(var key2 in totals){
-                            totals[key2]["normalOtherCritical"].push({"value": support.value, "attackRatio": support.attackRatio})
+                            totals[key2]["normalOtherCriticalBuff"].push({"value": support.value, "attackRatio": support.attackRatio})
                         }
                     } else {
-                        totals[key]["normalOtherCritical"].push({"value": support.value, "attackRatio": support.attackRatio})
+                        totals[key]["normalOtherCriticalBuff"].push({"value": support.value, "attackRatio": support.attackRatio})
                     }
                 }
                 continue;
