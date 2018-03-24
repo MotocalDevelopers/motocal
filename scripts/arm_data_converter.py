@@ -670,16 +670,14 @@ def type_replace(armtype):
             return res
     return "none"
 
-if __name__ == '__main__':
+def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = True):
     key_pattern = re.compile("\d+")
     skill_pattern = re.compile("\[\[([\W\w]+)\>")
     jougen_pattern = re.compile(u"○")
     baha_pattern = re.compile(u"bahaFU")
-    mycsv = csv.reader(open("txt_source/armData-ssr.txt", 'r'), delimiter="|")
-    json_data = OrderedDict()
-    imageURL = []
 
-    # ssr
+    mycsv = csv.reader(open(csv_file_name, 'r'), delimiter="|")
+
     for row in mycsv:
         newdict = {}
 
@@ -739,22 +737,33 @@ if __name__ == '__main__':
             newdict["attack"] = row[12]
 
             m = jougen_pattern.search(row[15].decode("utf-8"))
-            if m:
-                newdict["slvmax"] = 15
-                newdict["maxlv"] = 150
-                newdict["hplv100"] = row[16]
-                newdict["attacklv100"] = row[17]
-            else:
-                m = baha_pattern.search(newdict["skill1"])
 
+            if PROCESS_TYPE_SSR:
                 if m:
                     newdict["slvmax"] = 15
                     newdict["maxlv"] = 150
                     newdict["hplv100"] = row[16]
                     newdict["attacklv100"] = row[17]
                 else:
+                    m = baha_pattern.search(newdict["skill1"])
+
+                    if m:
+                        newdict["slvmax"] = 15
+                        newdict["maxlv"] = 150
+                        newdict["hplv100"] = row[16]
+                        newdict["attacklv100"] = row[17]
+                    else:
+                        newdict["slvmax"] = 10
+                        newdict["maxlv"] = 100
+            else:
+                if m:
+                    newdict["slvmax"] = 15
+                    newdict["maxlv"] = 120
+                    newdict["hplv75"] = row[16]
+                    newdict["attacklv75"] = row[17]
+                else:
                     newdict["slvmax"] = 10
-                    newdict["maxlv"] = 100
+                    newdict["maxlv"] = 75
 
             newdict["imageURL"] = "./imgs/" + key + ".png"
 
@@ -766,71 +775,17 @@ if __name__ == '__main__':
                 newdict["en"] = name
 
             json_data[name] = newdict
-            # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + ".png\n")
+            # image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + ".png\n")
 
-    mycsv = csv.reader(open("txt_source/armData-sr.txt", 'r'), delimiter="|")
-    # sr
-    for row in mycsv:
-        newdict = {}
+    return json_data, image_url_list
 
-        # print len(row)
-        if len(row) <= 1:
-            continue
-        else:
-            m = key_pattern.search(row[1])
-            if m:
-                key = row[1][m.start():m.end()]
 
-            name = row[2].translate(None, "&br;")
-            newdict["ja"] = name
-            newdict["en"] = name
+if __name__ == '__main__':
+    json_data = OrderedDict()
+    image_url_list = []
 
-            # element
-            if row[3].find("火") > 0:
-                newdict["element"] = "fire"
-            elif row[3].find("水") > 0:
-                newdict["element"] = "water"
-            elif row[3].find("土") > 0:
-                newdict["element"] = "earth"
-            elif row[3].find("風") > 0:
-                newdict["element"] = "wind"
-            elif row[3].find("光") > 0:
-                newdict["element"] = "light"
-            else:
-                newdict["element"] = "dark"
-
-            # type
-            newdict["type"] = type_replace(row[4])
-
-            skill = "non"
-            element1 = "none"
-            m = skill_pattern.search(row[7])
-            if m:
-                skill, element1 = skill_replace(m.group(1))
-
-            newdict["skill1"] = skill
-
-            skill = "non"
-            element2 = "none"
-            m = skill_pattern.search(row[8])
-            if m:
-                skill, element2 = skill_replace(m.group(1))
-
-            if element2 == "none" or element2 == "unknown":
-                element2 = newdict["element"]
-
-            newdict["skill2"] = skill
-            newdict["element2"] = element2
-            newdict["minhp"] = row[9]
-            newdict["minattack"] = row[10]
-            newdict["hp"] = row[11]
-            newdict["attack"] = row[12]
-            newdict["slvmax"] = 10
-            newdict["maxlv"] = 75
-
-            newdict["imageURL"] = "./imgs/" + key + ".png"
-            json_data[name] = newdict
-            imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + ".png\n")
+    json_data, image_url_list = processCSVdata("txt_source/armData-ssr.txt", json_data, image_url_list, True)
+    json_data, image_url_list = processCSVdata("txt_source/armData-sr.txt", json_data, image_url_list, False)
 
     f = open("./armData.json", "w")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
