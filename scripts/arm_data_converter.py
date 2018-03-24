@@ -650,10 +650,9 @@ armtypelist[u"刀"] = "katana"
 translation = json.load(open("./txt_source/weapon-translation.json", "r"))
 
 def skill_replace(skill):
-    decoded_skill = skill.decode("utf-8")
     for inner_skillname, onelist in skillnamelist.items():
         for skillname, elem in onelist.items():
-            m = re.match(skillname, decoded_skill)
+            m = re.match(skillname, skill)
             if m:
                 res = inner_skillname
                 element = elem
@@ -662,9 +661,8 @@ def skill_replace(skill):
     return "non", "none"
 
 def type_replace(armtype):
-    decoded_armtype = armtype.decode("utf-8")
     for armtypename, inner_armtype in armtypelist.items():
-        m = re.match(armtypename, decoded_armtype)
+        m = re.match(armtypename, armtype)
         if m:
             res = inner_armtype
             return res
@@ -681,7 +679,6 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
     for row in mycsv:
         newdict = {}
 
-        # print len(row)
         if len(row) <= 1:
             continue
         else:
@@ -689,7 +686,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
             if m:
                 key = row[1][m.start():m.end()]
 
-            name = row[2].translate(None, "&br;")
+            name = row[2].replace("&br;", "")
             name = name.replace("[]", "")
             newdict["ja"] = name
 
@@ -736,7 +733,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
             newdict["hp"] = row[11]
             newdict["attack"] = row[12]
 
-            m = jougen_pattern.search(row[15].decode("utf-8"))
+            m = jougen_pattern.search(row[15])
 
             if PROCESS_TYPE_SSR:
                 if m:
@@ -767,9 +764,8 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
 
             newdict["imageURL"] = "./imgs/" + key + ".png"
 
-            decoded_name = name.decode("utf-8")
-            if translation.has_key(decoded_name):
-                newdict["en"] = translation[decoded_name].encode("utf-8")
+            if name in translation:
+                newdict["en"] = translation[name]
             else:
                 print(name)
                 newdict["en"] = name
