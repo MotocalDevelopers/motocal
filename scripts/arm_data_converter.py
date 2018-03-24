@@ -671,7 +671,8 @@ def type_replace(armtype):
 def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = True):
     key_pattern = re.compile("\d+")
     skill_pattern = re.compile("\[\[([\W\w]+)\>")
-    jougen_pattern = re.compile(u"○")
+    jougen_4_pattern = re.compile(u"○")
+    jougen_5_pattern = re.compile(u"◎")
     baha_pattern = re.compile(u"bahaFU")
 
     mycsv = csv.reader(open(csv_file_name, 'r'), delimiter="|")
@@ -733,27 +734,39 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
             newdict["hp"] = row[11]
             newdict["attack"] = row[12]
 
-            m = jougen_pattern.search(row[15])
-
             if PROCESS_TYPE_SSR:
-                if m:
-                    newdict["slvmax"] = 15
-                    newdict["maxlv"] = 150
-                    newdict["hplv100"] = row[16]
-                    newdict["attacklv100"] = row[17]
-                else:
-                    m = baha_pattern.search(newdict["skill1"])
+                match_4 = jougen_4_pattern.search(row[15])
+                match_5 = jougen_5_pattern.search(row[15])
 
-                    if m:
+                if match_5:
+                    newdict["slvmax"] = 20
+                    newdict["maxlv"] = 200
+                    newdict["hplv100"] = int(row[16])
+                    newdict["attacklv100"] = int(row[17])
+                    newdict["hplv150"] = int(row[18])
+                    newdict["attacklv150"] = int(row[19])
+                else:
+                    if match_4:
                         newdict["slvmax"] = 15
                         newdict["maxlv"] = 150
                         newdict["hplv100"] = row[16]
                         newdict["attacklv100"] = row[17]
                     else:
-                        newdict["slvmax"] = 10
-                        newdict["maxlv"] = 100
+                        match_baha = baha_pattern.search(newdict["skill1"])
+
+                        if match_baha:
+                            newdict["slvmax"] = 15
+                            newdict["maxlv"] = 150
+                            newdict["hplv100"] = row[16]
+                            newdict["attacklv100"] = row[17]
+                        else:
+                            newdict["slvmax"] = 10
+                            newdict["maxlv"] = 100
+
             else:
-                if m:
+                match_4 = jougen_4_pattern.search(row[15])
+
+                if match_4:
                     newdict["slvmax"] = 15
                     newdict["maxlv"] = 120
                     newdict["hplv75"] = row[16]
