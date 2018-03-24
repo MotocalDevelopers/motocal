@@ -281,12 +281,15 @@ var RegisteredArm = React.createClass({
         newState["armLv"] = parseInt(arm.maxlv)
         newState["armSLv"] = parseInt(arm.slvmax)
 
-        if(arm.maxlv == "150") {
-            newState["selectLevel"] = selector.levelNoLimit
-            newState["selectSkillLevel"] = selector.skilllevelNoLimit
+        if (arm.maxlv == "200") {
+            newState["selectLevel"] = selector.level200Limit
+            newState["selectSkillLevel"] = selector.skilllevel20Limit
+        } else if (arm.maxlv == "150") {
+            newState["selectLevel"] = selector.level150Limit
+            newState["selectSkillLevel"] = selector.skilllevel15Limit
         } else {
-            newState["selectLevel"] = selector.levelLimit
-            newState["selectSkillLevel"] = selector.skilllevelLimit
+            newState["selectLevel"] = selector.level100Limit
+            newState["selectSkillLevel"] = selector.skilllevel10Limit
         }
 
         var isAdditionalSelectFound = false;
