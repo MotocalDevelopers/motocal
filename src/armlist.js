@@ -222,7 +222,7 @@ var ArmList = React.createClass({
                                     &nbsp; {(alist[ind] != null && alist[ind].name != "") ? alist[ind].considerNumberMax + "本" : ""}
                                 </span>
                             }>
-                            <Arm 
+                            <Arm
                                 key={arm}
                                 onChange={hChange}
                                 onRemove={hRemove}
@@ -361,24 +361,38 @@ var Arm = React.createClass({
 
             state["name"] = newarm.name
 
+            var attackCalcFunc = (lv, minlv, atk, minatk, plus, levelWidth) => {
+                return Math.floor((lv - minlv) * (parseInt(atk) - parseInt(minatk)) / levelWidth + parseInt(minatk) + 5 * parseInt(plus))
+            }
+            var hpCalcFunc = (lv, minlv, hp, minhp, plus, levelWidth) => {
+                return Math.floor((lv - minlv) * (parseInt(hp) - parseInt(minhp)) / levelWidth + parseInt(minhp) + parseInt(plus))
+            }
+
             // Lv別処理
             if (newarm.lv == 1) {
+                // Lv1の場合だけ特殊 (Lv2になるとステータスが2レベル分上がる)
                 state["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus
                 state["hp"] = parseInt(newarm.minhp) + newarm.plus
-            } else if (newarm.lv <= 100) {
-                if (newarm.maxlv == "100" || newarm.maxlv == "75") {
-                    state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack)) / 100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
-                    state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp)) / 100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
-                } else {
-                    // 4凸武器の場合は、Lv100以下の計算にattacklv100を使う
-                    state["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attacklv100) - parseInt(newarm.minattack)) / 100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
-                    state["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hplv100) - parseInt(newarm.minhp)) / 100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
-                }
             } else {
-                // 4凸がない場合は100までしか入ってこないので例外処理する必要なし
-                state["attack"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.attacklv100)) / 50 + parseInt(newarm.attacklv100) + 5 * parseInt(newarm.plus))
-                state["hp"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.hp) - parseInt(newarm.hplv100)) / 50 + parseInt(newarm.hplv100) + parseInt(newarm.plus))
+                var max_level = parseInt(newarm.maxlv)
+                if (max_level === 75) {
+                    state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attack, newarm.minattack, newarm.plus, 75.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hp, newarm.minhp, newarm.plus, 75.0)
+                } else if (max_level === 100) {
+                    state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attack, newarm.minattack, newarm.plus, 100.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hp, newarm.minhp, newarm.plus, 100.0)
+                } else if (max_level === 120) {
+                    state["attack"] = attackCalcFunc(newarm.lv, 75, newarm.attack, newarm.attacklv75, newarm.plus, 45.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 75, newarm.hp, newarm.hplv75, newarm.plus, 45.0)
+                } else if (max_level === 150) {
+                    state["attack"] = attackCalcFunc(newarm.lv, 100, newarm.attack, newarm.attacklv100, newarm.plus, 50.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 100, newarm.hp, newarm.hplv100, newarm.plus, 50.0)
+                } else if (max_level === 200) {
+                    state["attack"] = attackCalcFunc(newarm.lv, 150, newarm.attack, newarm.attacklv150, newarm.plus, 50.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 150, newarm.hp, newarm.hplv150, newarm.plus, 50.0)
+                }
             }
+
             if (newarm.lv != parseInt(newarm.maxlv)) state["name"] += "Lv." + newarm.lv
             if (newarm.plus != 0) state["name"] += "+" + newarm.plus
 
