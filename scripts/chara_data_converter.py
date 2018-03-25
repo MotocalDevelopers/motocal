@@ -87,27 +87,24 @@ def skill_replace(skill):
     return "non", "fire"
 
 def arm_replace(armtype):
-    decoded_armtype = armtype.decode("utf-8")
     for armtypename, inner_armtype in armtypelist.items():
-        m = re.match(armtypename, decoded_armtype)
+        m = re.match(armtypename, armtype)
         if m:
             res = inner_armtype
             return res
     return "no_favorite_arm_error"
 
 def type_replace(charatype):
-    decoded_charatype = charatype.decode("utf-8")
     for charatypename, inner_charatype in charatypelist.items():
-        m = re.match(charatypename, decoded_charatype)
+        m = re.match(charatypename, charatype)
         if m:
             res = inner_charatype
             return res
     return "error"
 
 def race_replace(racetype):
-    decoded_racetype = racetype.decode("utf-8")
     for racetypename, inner_racetype in racelist.items():
-        m = re.match(racetypename, decoded_racetype)
+        m = re.match(racetypename, racetype)
         if m:
             res = inner_racetype
             return res
@@ -118,24 +115,33 @@ def support_replace(support_str):
 
     m = support_pattern.search(support_str)
     if m:
-        decoded_support = m.group(1).decode("utf-8")
+        support = m.group(1)
         for support_typename, support_name in supportAbilist.items():
             for name in support_name:
-                m = re.match(name, decoded_support)
+                m = re.match(name, support)
                 if m:
                     res = support_typename
                     return res
     return "none"
 
-if __name__ == '__main__':
+def get_value(value_str):
+    value_pattern = re.compile("(\d+)")
+    matched = value_pattern.search(value_str)
+
+    if matched:
+        return matched.group(1)
+    else:
+        print("input: " + value_str)
+        print("matched: error")
+        return "error"
+
+def processCSVdata(csv_file_name, json_data, image_url_list):
     key_pattern = re.compile("\d+")
     br_pattern = re.compile("(\W+)&br;(\W+)")
     support_pattern = re.compile("([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \(")
-    mycsv = csv.reader(open("txt_source/charaData.txt", 'r'), delimiter="|")
-    json_data = OrderedDict()
-    imageURL = []
 
+    mycsv = csv.reader(open(csv_file_name, 'r'), delimiter="|")
     for row in mycsv:
         newdict = OrderedDict()
 
@@ -150,7 +156,7 @@ if __name__ == '__main__':
             if m:
                 name = m.group(1)
             else:
-                print "error"
+                print("error")
                 name = "error"
 
             newdict["name"] = name
@@ -190,11 +196,11 @@ if __name__ == '__main__':
                 newdict["support"] = support_replace(row[9])
                 newdict["support2"] = "none"
 
-            newdict["minhp"] = row[10].translate(None, "COLOR(red):'")
-            newdict["hp"] = row[12].translate(None, "COLOR(red):'")
+            newdict["minhp"] = get_value(row[10])
+            newdict["hp"] = get_value(row[12])
 
-            newdict["minattack"] = row[11].translate(None, "COLOR(red):'")
-            newdict["attack"] = row[13].translate(None, "COLOR(red):'")
+            newdict["minattack"] = get_value(row[11])
+            newdict["attack"] = get_value(row[13])
 
             if newdict["name"] in patching:
                 newdict["baseDA"] = patching[newdict["name"]]["DA"]
@@ -205,15 +211,22 @@ if __name__ == '__main__':
 
             newdict["imageURL"] = "./charaimgs/" + key + "_01.png"
 
-            decoded_name = name.decode("utf-8")
-            if translation.has_key(decoded_name):
-                newdict["en"] = translation[decoded_name].encode("utf-8")
+            if name in translation:
+                newdict["en"] = translation[name]
             else:
                 print(name)
                 newdict["en"] = name
 
             json_data[name] = newdict
             # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "_01.png\n")
+
+    return json_data, image_url_list
+
+if __name__ == '__main__':
+    json_data = OrderedDict()
+    image_url_list = []
+
+    json_data, image_url_list = processCSVdata("txt_source/charaData.txt", json_data, image_url_list)
 
     f = open("./charaData.json", "w")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
