@@ -355,14 +355,36 @@ var Arm = React.createClass({
                 state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attack, newarm.minattack, newarm.plus, 100.0)
                 state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hp, newarm.minhp, newarm.plus, 100.0)
             } else if (max_level === 120) {
-                state["attack"] = attackCalcFunc(newarm.lv, 75, newarm.attack, newarm.attacklv75, newarm.plus, 45.0)
-                state["hp"] = hpCalcFunc(newarm.lv, 75, newarm.hp, newarm.hplv75, newarm.plus, 45.0)
+                if (newarm.lv <= 75) {
+                    // Lv75以下が選択された場合は一段階下の値で処理する
+                    state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attacklv75, newarm.minattack, newarm.plus, 75.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hplv75, newarm.minhp, newarm.plus, 75.0)
+                } else {
+                    state["attack"] = attackCalcFunc(newarm.lv, 75, newarm.attack, newarm.attacklv75, newarm.plus, 45.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 75, newarm.hp, newarm.hplv75, newarm.plus, 45.0)
+                }
             } else if (max_level === 150) {
-                state["attack"] = attackCalcFunc(newarm.lv, 100, newarm.attack, newarm.attacklv100, newarm.plus, 50.0)
-                state["hp"] = hpCalcFunc(newarm.lv, 100, newarm.hp, newarm.hplv100, newarm.plus, 50.0)
+                if (newarm.lv <= 100) {
+                    // Lv100以下が選択された場合は一段階下の値で処理する
+                    state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attacklv100, newarm.minattack, newarm.plus, 100.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hplv100, newarm.minhp, newarm.plus, 100.0)
+                } else {
+                    state["attack"] = attackCalcFunc(newarm.lv, 100, newarm.attack, newarm.attacklv100, newarm.plus, 50.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 100, newarm.hp, newarm.hplv100, newarm.plus, 50.0)
+                }
             } else if (max_level === 200) {
-                state["attack"] = attackCalcFunc(newarm.lv, 150, newarm.attack, newarm.attacklv150, newarm.plus, 50.0)
-                state["hp"] = hpCalcFunc(newarm.lv, 150, newarm.hp, newarm.hplv150, newarm.plus, 50.0)
+                if (newarm.lv <= 100) {
+                    // Lv100以下が選択された場合は二段階下の値で処理する
+                    state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attacklv100, newarm.minattack, newarm.plus, 100.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hplv100, newarm.minhp, newarm.plus, 100.0)
+                } else if (newarm.lv <= 150) {
+                    // Lv150以下が選択された場合は一段階下の値で処理する
+                    state["attack"] = attackCalcFunc(newarm.lv, 100, newarm.attacklv150, newarm.attacklv100, newarm.plus, 50.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 100, newarm.hplv150, newarm.hplv100, newarm.plus, 50.0)
+                } else {
+                    state["attack"] = attackCalcFunc(newarm.lv, 150, newarm.attack, newarm.attacklv150, newarm.plus, 50.0)
+                    state["hp"] = hpCalcFunc(newarm.lv, 150, newarm.hp, newarm.hplv150, newarm.plus, 50.0)
+                }
             }
         }
 
