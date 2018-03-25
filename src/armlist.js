@@ -304,41 +304,7 @@ var Arm = React.createClass({
         }
 
         if (nextProps.addArm != null && nextProps.addArm != this.props.addArm && this.props.id == nextProps.addArmID) {
-            var newState = this.state
-            var newarm = nextProps.addArm
-
-            newState["name"] = newarm.name
-
-            // Lv別処理
-            if (newarm.lv == 1) {
-                newState["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus
-                newState["hp"] = parseInt(newarm.minhp) + newarm.plus
-            } else if (newarm.lv <= 100) {
-                if (newarm.maxlv == "100" || newarm.maxlv == "75") {
-                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attack) - parseInt(newarm.minattack)) / newarm.maxlv + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
-                    newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hp) - parseInt(newarm.minhp)) / 100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
-                } else {
-                    // 4凸武器の場合は、Lv100以下の計算にattacklv100を使う
-                    newState["attack"] = Math.floor(newarm.lv * (parseInt(newarm.attacklv100) - parseInt(newarm.minattack)) / 100.0 + parseInt(newarm.minattack) + 5 * parseInt(newarm.plus))
-                    newState["hp"] = Math.floor(newarm.lv * (parseInt(newarm.hplv100) - parseInt(newarm.minhp)) / 100 + parseInt(newarm.minhp) + parseInt(newarm.plus))
-                }
-            } else {
-                // 4凸がない場合は100までしか入ってこないので例外処理する必要なし
-                newState["attack"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.attack) - parseInt(newarm.attacklv100)) / 50 + parseInt(newarm.attacklv100) + 5 * parseInt(newarm.plus))
-                newState["hp"] = Math.floor((newarm.lv - 100) * (parseInt(newarm.hp) - parseInt(newarm.hplv100)) / 50 + parseInt(newarm.hplv100) + parseInt(newarm.plus))
-            }
-
-            if (newarm.lv != parseInt(newarm.maxlv)) newState["name"] += "Lv." + newarm.lv
-            if (newarm.plus != 0) newState["name"] += "+" + newarm.plus
-
-            newState["armType"] = newarm.type
-            newState["element"] = newarm.element
-            newState["skill1"] = newarm.skill1
-            newState["element2"] = newarm.element2
-            newState["skill2"] = newarm.skill2
-            newState["slv"] = newarm.slv
-            newState["considerNumberMax"] = parseInt(nextProps.considerNum)
-
+            var newState = this.treatAddArmFromTemplate(this.state, nextProps.addArm, nextProps.considerNum);
             this.setState(newState);
             this.props.onChange(this.props.id, newState, false);
         }
@@ -357,58 +323,61 @@ var Arm = React.createClass({
 
         // もし addArmID が自分のIDと同じなら、templateデータを読み込む
         if (this.props.addArm != null && this.props.id == this.props.addArmID) {
-            var newarm = this.props.addArm
-
-            state["name"] = newarm.name
-
-            var attackCalcFunc = (lv, minlv, atk, minatk, plus, levelWidth) => {
-                return Math.floor((lv - minlv) * (parseInt(atk) - parseInt(minatk)) / levelWidth + parseInt(minatk) + 5 * parseInt(plus))
-            }
-            var hpCalcFunc = (lv, minlv, hp, minhp, plus, levelWidth) => {
-                return Math.floor((lv - minlv) * (parseInt(hp) - parseInt(minhp)) / levelWidth + parseInt(minhp) + parseInt(plus))
-            }
-
-            // Lv別処理
-            if (newarm.lv == 1) {
-                // Lv1の場合だけ特殊 (Lv2になるとステータスが2レベル分上がる)
-                state["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus
-                state["hp"] = parseInt(newarm.minhp) + newarm.plus
-            } else {
-                var max_level = parseInt(newarm.maxlv)
-                if (max_level === 75) {
-                    state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attack, newarm.minattack, newarm.plus, 75.0)
-                    state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hp, newarm.minhp, newarm.plus, 75.0)
-                } else if (max_level === 100) {
-                    state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attack, newarm.minattack, newarm.plus, 100.0)
-                    state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hp, newarm.minhp, newarm.plus, 100.0)
-                } else if (max_level === 120) {
-                    state["attack"] = attackCalcFunc(newarm.lv, 75, newarm.attack, newarm.attacklv75, newarm.plus, 45.0)
-                    state["hp"] = hpCalcFunc(newarm.lv, 75, newarm.hp, newarm.hplv75, newarm.plus, 45.0)
-                } else if (max_level === 150) {
-                    state["attack"] = attackCalcFunc(newarm.lv, 100, newarm.attack, newarm.attacklv100, newarm.plus, 50.0)
-                    state["hp"] = hpCalcFunc(newarm.lv, 100, newarm.hp, newarm.hplv100, newarm.plus, 50.0)
-                } else if (max_level === 200) {
-                    state["attack"] = attackCalcFunc(newarm.lv, 150, newarm.attack, newarm.attacklv150, newarm.plus, 50.0)
-                    state["hp"] = hpCalcFunc(newarm.lv, 150, newarm.hp, newarm.hplv150, newarm.plus, 50.0)
-                }
-            }
-
-            if (newarm.lv != parseInt(newarm.maxlv)) state["name"] += "Lv." + newarm.lv
-            if (newarm.plus != 0) state["name"] += "+" + newarm.plus
-
-            state["armType"] = newarm.type
-            state["element"] = newarm.element
-            state["skill1"] = newarm.skill1
-            state["element2"] = newarm.element2
-            state["skill2"] = newarm.skill2
-            state["slv"] = newarm.slv
-            state["considerNumberMax"] = parseInt(this.props.considerNum)
-
+            state = this.treatAddArmFromTemplate(this.state, this.props.addArm, this.props.considerNum);
             this.setState(state);
         }
-        // 初期化後 state を 上の階層に渡しておく
+
+        // 初期化後 (何も処理が行われていなくても) state を 上の階層に渡しておく
         // armList では onChange が勝手に上に渡してくれるので必要なし
         this.props.onChange(this.props.id, state, false);
+    },
+    treatAddArmFromTemplate: function(state, newarm, considerNum) {
+        state["name"] = newarm.name
+
+        var attackCalcFunc = (lv, minlv, atk, minatk, plus, levelWidth) => {
+            return Math.floor((lv - minlv) * (parseInt(atk) - parseInt(minatk)) / levelWidth + parseInt(minatk) + 5 * parseInt(plus))
+        }
+        var hpCalcFunc = (lv, minlv, hp, minhp, plus, levelWidth) => {
+            return Math.floor((lv - minlv) * (parseInt(hp) - parseInt(minhp)) / levelWidth + parseInt(minhp) + parseInt(plus))
+        }
+
+        // Lv別処理
+        if (newarm.lv == 1) {
+            // Lv1の場合だけ特殊 (Lv2になるとステータスが2レベル分上がる)
+            state["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus
+            state["hp"] = parseInt(newarm.minhp) + newarm.plus
+        } else {
+            var max_level = parseInt(newarm.maxlv)
+            if (max_level === 75) {
+                state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attack, newarm.minattack, newarm.plus, 75.0)
+                state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hp, newarm.minhp, newarm.plus, 75.0)
+            } else if (max_level === 100) {
+                state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attack, newarm.minattack, newarm.plus, 100.0)
+                state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hp, newarm.minhp, newarm.plus, 100.0)
+            } else if (max_level === 120) {
+                state["attack"] = attackCalcFunc(newarm.lv, 75, newarm.attack, newarm.attacklv75, newarm.plus, 45.0)
+                state["hp"] = hpCalcFunc(newarm.lv, 75, newarm.hp, newarm.hplv75, newarm.plus, 45.0)
+            } else if (max_level === 150) {
+                state["attack"] = attackCalcFunc(newarm.lv, 100, newarm.attack, newarm.attacklv100, newarm.plus, 50.0)
+                state["hp"] = hpCalcFunc(newarm.lv, 100, newarm.hp, newarm.hplv100, newarm.plus, 50.0)
+            } else if (max_level === 200) {
+                state["attack"] = attackCalcFunc(newarm.lv, 150, newarm.attack, newarm.attacklv150, newarm.plus, 50.0)
+                state["hp"] = hpCalcFunc(newarm.lv, 150, newarm.hp, newarm.hplv150, newarm.plus, 50.0)
+            }
+        }
+
+        if (newarm.lv != parseInt(newarm.maxlv)) state["name"] += "Lv." + newarm.lv
+        if (newarm.plus != 0) state["name"] += "+" + newarm.plus
+
+        state["armType"] = newarm.type
+        state["element"] = newarm.element
+        state["skill1"] = newarm.skill1
+        state["element2"] = newarm.element2
+        state["skill2"] = newarm.skill2
+        state["slv"] = newarm.slv
+        state["considerNumberMax"] = parseInt(considerNum)
+
+        return state;
     },
     handleEvent: function (key, e) {
         // input の時は親に送らない
