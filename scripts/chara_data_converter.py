@@ -136,7 +136,7 @@ def get_value(value_str):
         return "error"
 
 def processCSVdata(csv_file_name, json_data, image_url_list):
-    key_pattern = re.compile("\d+")
+    key_pattern = re.compile("(\d+_\d+\.png)")
     br_pattern = re.compile("(\W+)&br;(\W+)")
     support_pattern = re.compile("([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \(")
@@ -150,7 +150,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
         else:
             m = key_pattern.search(row[1])
             if m:
-                key = row[1][m.start():m.end()]
+                key = m.group(1)
 
             m = name_pattern.search(row[2])
             if m:
@@ -209,7 +209,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
                 newdict["baseDA"] = 6.5
                 newdict["baseTA"] = 3.0
 
-            newdict["imageURL"] = "./charaimgs/" + key + "_01.png"
+            newdict["imageURL"] = "./charaimgs/" + key
 
             if name in translation:
                 newdict["en"] = translation[name]
