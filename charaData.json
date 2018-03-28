@@ -16,7 +16,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040030000_03.png",
-        "en": "[最終]ウーノ"
+        "en": "[5★] Anre"
     },
     "[最終]ソーン": {
         "name": "[最終]ソーン",
@@ -35,7 +35,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040031000_03.png",
-        "en": "[最終]ソーン"
+        "en": "[5★] Tweyen"
     },
     "[最終]サラーサ": {
         "name": "[最終]サラーサ",
@@ -54,7 +54,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040032000_03.png",
-        "en": "[最終]サラーサ"
+        "en": "[5★] Threo"
     },
     "[最終]カトル": {
         "name": "[最終]カトル",
@@ -73,7 +73,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040033000_03.png",
-        "en": "[最終]カトル"
+        "en": "[5★] Feower"
     },
     "[最終]フュンフ": {
         "name": "[最終]フュンフ",
@@ -92,7 +92,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040034000_03.png",
-        "en": "[最終]フュンフ"
+        "en": "[5★] Fif"
     },
     "[最終]シス": {
         "name": "[最終]シス",
@@ -102,7 +102,7 @@
         "race": "erune",
         "fav1": "fist",
         "fav2": "none",
-        "support": "none",
+        "support": "da_up_own_100",
         "support2": "none",
         "minhp": "266",
         "hp": "1966",
@@ -111,7 +111,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040035000_03.png",
-        "en": "[最終]シス"
+        "en": "[5★] Seox"
     },
     "[最終]シエテ": {
         "name": "[最終]シエテ",
@@ -130,7 +130,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040036000_03.png",
-        "en": "[最終]シエテ"
+        "en": "[5★] Seofon"
     },
     "[最終]オクトー": {
         "name": "[最終]オクトー",
@@ -149,7 +149,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040037000_03.png",
-        "en": "[最終]オクトー"
+        "en": "[5★] Eahta"
     },
     "[最終]ニオ": {
         "name": "[最終]ニオ",
@@ -168,7 +168,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040038000_03.png",
-        "en": "[最終]ニオ"
+        "en": "[5★] Niyon"
     },
     "[最終]エッセル": {
         "name": "[最終]エッセル",
@@ -187,7 +187,26 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040039000_03.png",
-        "en": "[最終]エッセル"
+        "en": "[5★] Tien"
+    },
+    "ジャンジャンヌダルク(水着ver)": {
+        "name": "ジャンジャンヌダルク(水着ver)",
+        "ja": "ジャンジャンヌダルク(水着ver)",
+        "element": "wind",
+        "type": "balance",
+        "race": "human",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "critical_up_own_20_20",
+        "support2": "none",
+        "minhp": "330",
+        "hp": "1780",
+        "minattack": "1350",
+        "attack": "7100",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040154000_01.png",
+        "en": "Jeanne d'Arc (Themed)"
     },
     "テレーズ(SSR)": {
         "name": "テレーズ(SSR)",
@@ -206,7 +225,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040149000_01.png",
-        "en": "テレーズ(SSR)"
+        "en": "Therese (SSR)"
     },
     "ゾーイ(ガチャver)": {
         "name": "ゾーイ(ガチャver)",
@@ -225,7 +244,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040150000_01.png",
-        "en": "ゾーイ(ガチャver)"
+        "en": "Zooey"
     },
     "メドゥーサ(バレンタインver)": {
         "name": "メドゥーサ(バレンタインver)",
@@ -244,7 +263,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040151000_01.png",
-        "en": "メドゥーサ(バレンタインver)"
+        "en": "Medusa (Valentine)"
     },
     "ティアマト": {
         "name": "ティアマト",
@@ -263,7 +282,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040152000_01.png",
-        "en": "ティアマト"
+        "en": "Tiamat"
     },
     "サンダルフォン": {
         "name": "サンダルフォン",
@@ -282,7 +301,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040153000_01.png",
-        "en": "サンダルフォン"
+        "en": "Sandalphon"
     },
     "ヴィーラ(リミテッドver)": {
         "name": "ヴィーラ(リミテッドver)",
@@ -301,7 +320,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040141000_01.png",
-        "en": "ヴィーラ(リミテッドver)"
+        "en": "Vira (Grand)"
     },
     "ランスロット(風属性ver)": {
         "name": "ランスロット(風属性ver)",
@@ -320,7 +339,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040140000_01.png",
-        "en": "ランスロット(風属性ver)"
+        "en": "Lancelot (Wind)"
     },
     "リヴァイ": {
         "name": "リヴァイ",
@@ -339,7 +358,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040142000_01.png",
-        "en": "リヴァイ"
+        "en": "Levi"
     },
     "マリー(クリスマスver)": {
         "name": "マリー(クリスマスver)",
@@ -358,7 +377,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040143000_01.png",
-        "en": "マリー(クリスマスver)"
+        "en": "Mary (Holiday)"
     },
     "シャリオス17世": {
         "name": "シャリオス17世",
@@ -377,7 +396,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040144000_01.png",
-        "en": "シャリオス17世"
+        "en": "Charioce XVII"
     },
     "オリヴィエ": {
         "name": "オリヴィエ",
@@ -396,7 +415,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040145000_01.png",
-        "en": "オリヴィエ"
+        "en": "Olivia"
     },
     "ヴァジラ": {
         "name": "ヴァジラ",
@@ -415,7 +434,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040147000_01.png",
-        "en": "ヴァジラ"
+        "en": "Vajra"
     },
     "バザラガ(土属性ver)": {
         "name": "バザラガ(土属性ver)",
@@ -434,7 +453,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040146000_01.png",
-        "en": "バザラガ(土属性ver)"
+        "en": "Vaseraga (Earth)"
     },
     "イルザ": {
         "name": "イルザ",
@@ -453,7 +472,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040148000_01.png",
-        "en": "イルザ"
+        "en": "Ilsa"
     },
     "アザゼル": {
         "name": "アザゼル",
@@ -472,7 +491,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040137000_01.png",
-        "en": "アザゼル"
+        "en": "Azazel"
     },
     "ダヌア(ハロウィンver)": {
         "name": "ダヌア(ハロウィンver)",
@@ -491,7 +510,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040135000_01.png",
-        "en": "ダヌア(ハロウィンver)"
+        "en": "Danua (Halloween)"
     },
     "ユエル(水属性ver)": {
         "name": "ユエル(水属性ver)",
@@ -510,7 +529,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040138000_01.png",
-        "en": "ユエル(水属性ver)"
+        "en": "Yuel (Water)"
     },
     "木之本桜": {
         "name": "木之本桜",
@@ -529,7 +548,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040136000_01.png",
-        "en": "木之本桜"
+        "en": "Sakura Kinomoto"
     },
     "サーヴァンツ ドロシー＆クラウディア": {
         "name": "サーヴァンツ ドロシー＆クラウディア",
@@ -548,7 +567,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040134000_01.png",
-        "en": "サーヴァンツ ドロシー＆クラウディア"
+        "en": "Dorothy and Claudia"
     },
     "ニーナ・ドランゴ": {
         "name": "ニーナ・ドランゴ",
@@ -567,7 +586,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040133000_01.png",
-        "en": "ニーナ・ドランゴ"
+        "en": "Nina Drango"
     },
     "アン": {
         "name": "アン",
@@ -586,7 +605,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040132000_01.png",
-        "en": "アン"
+        "en": "Anne"
     },
     "三日月宗近": {
         "name": "三日月宗近",
@@ -605,7 +624,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040131000_01.png",
-        "en": "三日月宗近"
+        "en": "Mikazuki Munechika"
     },
     "グレア": {
         "name": "グレア",
@@ -1546,7 +1565,7 @@
         "race": "erune",
         "fav1": "fist",
         "fav2": "none",
-        "support": "none",
+        "support": "da_up_own_100",
         "support2": "none",
         "minhp": "266",
         "hp": "1666",
@@ -1641,7 +1660,7 @@
         "race": "human",
         "fav1": "spear",
         "fav2": "none",
-        "support": "none",
+        "support": "critical_up_own_10_30",
         "support2": "none",
         "minhp": "290",
         "hp": "1840",
@@ -1737,7 +1756,7 @@
         "fav1": "sword",
         "fav2": "none",
         "support": "none",
-        "support2": "none",
+        "support2": "da_up_own_100",
         "minhp": "240",
         "hp": "1280",
         "minattack": "900",
@@ -2372,7 +2391,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040078000_01.png",
-        "en": "Zooey"
+        "en": "Zooey (Promo)"
     },
     "ハレゼナ": {
         "name": "ハレゼナ",
@@ -4272,7 +4291,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030063000_01.png",
-        "en": "Sarya"
+        "en": "Sarya (Event)"
     },
     "ミラオル": {
         "name": "ミラオル",
@@ -6353,7 +6372,7 @@
         "race": "human",
         "fav1": "sword",
         "fav2": "none",
-        "support": "none",
+        "support": "da_up_own_100",
         "support2": "none",
         "minhp": "240",
         "hp": "1240",
@@ -6695,7 +6714,7 @@
         "race": "human",
         "fav1": "sword",
         "fav2": "none",
-        "support": "none",
+        "support": "critical_up_own_20_20",
         "support2": "none",
         "minhp": "215",
         "hp": "1025",
@@ -6723,7 +6742,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030196000_01.png",
-        "en": "ジャミル(闇属性ver)"
+        "en": "Jamil (Dark)"
     },
     "ウェルダー(イベントver)": {
         "name": "ウェルダー(イベントver)",
@@ -6742,7 +6761,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030197000_01.png",
-        "en": "ウェルダー(イベントver)"
+        "en": "Walder (Event)"
     },
     "アイル(水着ver)": {
         "name": "アイル(水着ver)",
@@ -6761,7 +6780,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030199000_01.png",
-        "en": "アイル(水着ver)"
+        "en": "Ayer (Summer)"
     },
     "シャルロッテ(水着ver)": {
         "name": "シャルロッテ(水着ver)",
@@ -6780,7 +6799,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030198000_01.png",
-        "en": "シャルロッテ(水着ver)"
+        "en": "Charlotta (Summer)"
     },
     "カレン(イベントver)": {
         "name": "カレン(イベントver)",
@@ -6799,7 +6818,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030200000_01.png",
-        "en": "カレン(イベントver)"
+        "en": "Carren (Event)"
     },
     "ガンダゴウザ(水着ver)": {
         "name": "ガンダゴウザ(水着ver)",
@@ -6818,7 +6837,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030201000_01.png",
-        "en": "ガンダゴウザ(水着ver)"
+        "en": "Ghandagoza (Summer)"
     },
     "クロエ(水着ver)": {
         "name": "クロエ(水着ver)",
@@ -6837,7 +6856,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030202000_01.png",
-        "en": "クロエ(水着ver)"
+        "en": "Chloe (Summer)"
     },
     "炎獄先生エルモート": {
         "name": "炎獄先生エルモート",
@@ -6856,7 +6875,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030203000_01.png",
-        "en": "炎獄先生エルモート"
+        "en": "Blazing Teacher Elmott"
     },
     "グレア(SR)": {
         "name": "グレア(SR)",
@@ -6875,7 +6894,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030204000_01.png",
-        "en": "グレア(SR)"
+        "en": "Grea (Event)"
     },
     "和泉守兼定": {
         "name": "和泉守兼定",
@@ -6894,7 +6913,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030205000_01.png",
-        "en": "和泉守兼定"
+        "en": "Izuminokami Kanesada"
     },
     "山姥切国広": {
         "name": "山姥切国広",
@@ -6913,7 +6932,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030206000_01.png",
-        "en": "山姥切国広"
+        "en": "Yamanbagiri Kunihiro"
     },
     "オーウェン": {
         "name": "オーウェン",
@@ -6932,7 +6951,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030207000_01.png",
-        "en": "オーウェン"
+        "en": "Owen"
     },
     "サーヤ(ガチャver)": {
         "name": "サーヤ(ガチャver)",
@@ -6951,7 +6970,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030209000_01.png",
-        "en": "サーヤ(ガチャver)"
+        "en": "Sarya"
     },
     "エゼクレイン(イベントver)": {
         "name": "エゼクレイン(イベントver)",
@@ -6970,7 +6989,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030210000_01.png",
-        "en": "エゼクレイン(イベントver)"
+        "en": "Ezecrain (Event)"
     },
     "ヴァンピィ(SR)": {
         "name": "ヴァンピィ(SR)",
@@ -6989,7 +7008,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030221000_01.png",
-        "en": "ヴァンピィ(SR)"
+        "en": "Vania (SR)"
     },
     "ミムルメモル＆パンプキン(ハロウィンver)": {
         "name": "ミムルメモル＆パンプキン(ハロウィンver)",
@@ -7008,7 +7027,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030220000_01.png",
-        "en": "ミムルメモル＆パンプキン(ハロウィンver)"
+        "en": "Mimlemel and Pun-Kin (Halloween)"
     },
     "カルテイラ": {
         "name": "カルテイラ",
@@ -7027,7 +7046,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030222000_01.png",
-        "en": "カルテイラ"
+        "en": "Karteira (SR)"
     },
     "ユエル(イベントver)": {
         "name": "ユエル(イベントver)",
@@ -7046,7 +7065,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030223000_01.png",
-        "en": "ユエル(イベントver)"
+        "en": "Yuel (Event)"
     },
     "ミリン": {
         "name": "ミリン",
@@ -7065,7 +7084,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030224000_01.png",
-        "en": "ミリン"
+        "en": "Mirin"
     },
     "ラインハルザ": {
         "name": "ラインハルザ",
@@ -7084,7 +7103,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030208000_01.png",
-        "en": "ラインハルザ"
+        "en": "Reinhardtzar"
     },
     "ソフィア(SR)": {
         "name": "ソフィア(SR)",
@@ -7103,7 +7122,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030225000_01.png",
-        "en": "ソフィア(SR)"
+        "en": "Sophia (SR)"
     },
     "アーサー": {
         "name": "アーサー",
@@ -7122,7 +7141,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030226000_01.png",
-        "en": "アーサー"
+        "en": "Arthur"
     },
     "ミカサ": {
         "name": "ミカサ",
@@ -7141,7 +7160,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030227000_01.png",
-        "en": "ミカサ"
+        "en": "Mikasa"
     },
     "フィーナ(クリスマスver)": {
         "name": "フィーナ(クリスマスver)",
@@ -7160,7 +7179,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030228000_01.png",
-        "en": "フィーナ(クリスマスver)"
+        "en": "Feena (Holiday)"
     },
     "マキラ(SR)": {
         "name": "マキラ(SR)",
@@ -7179,7 +7198,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030229000_01.png",
-        "en": "マキラ(SR)"
+        "en": "Mahira (Event)"
     },
     "カルバ": {
         "name": "カルバ",
@@ -7198,7 +7217,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030230000_01.png",
-        "en": "カルバ"
+        "en": "Karva (SR)"
     },
     "ゼタ(SR)": {
         "name": "ゼタ(SR)",
@@ -7217,6 +7236,6 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030231000_01.png",
-        "en": "ゼタ(SR)"
+        "en": "Zeta (Event)"
     }
 }
