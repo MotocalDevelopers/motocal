@@ -189,9 +189,9 @@
         "imageURL": "./charaimgs/3040039000_03.png",
         "en": "[5★] Tien"
     },
-    "ジャンジャンヌダルク(水着ver)": {
-        "name": "ジャンジャンヌダルク(水着ver)",
-        "ja": "ジャンジャンヌダルク(水着ver)",
+    "ジャンヌダルク(水着ver)": {
+        "name": "ジャンヌダルク(水着ver)",
+        "ja": "ジャンヌダルク(水着ver)",
         "element": "wind",
         "type": "balance",
         "race": "human",
