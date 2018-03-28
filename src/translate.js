@@ -1356,6 +1356,10 @@ var multiLangData = {
         "en": "Magna Haunt",
         "ja": "マグナ羅刹",
     },
+    "マグナ無双(中)": {
+        "en": "Magna Primacy (M)",
+        "ja": "マグナ無双(中)",
+    },
     "マグナ乱舞(中)": {
         "en": "Magna Fandango (M)",
         "ja": "マグナ乱舞(中)",
