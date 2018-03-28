@@ -480,6 +480,16 @@ skillnamelist["magnaMusouM"] = {
     u"黒霧方陣・無双": "dark"
 }
 
+# 軍神は二手(小) + 守護(小)扱い?
+skillnamelist["magnaGunshinS"] = {
+    u"機炎方陣・軍神": "fire",
+    u"海神方陣・軍神": "water",
+    u"創樹方陣・軍神": "earth",
+    u"嵐竜方陣・軍神": "wind",
+    u"騎解方陣・軍神": "light",
+    u"黒霧方陣・軍神": "dark"
+}
+
 # 意志は技巧(中)扱い
 skillnamelist["magnaCriticalM"] = {
     u"機炎方陣・意志": "fire",

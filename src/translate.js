@@ -1364,6 +1364,10 @@ var multiLangData = {
         "en": "Magna Fandango (M)",
         "ja": "マグナ乱舞(中)",
     },
+    "マグナ軍神(小)": {
+        "en": "Magna Gunshin? (S)",
+        "ja": "マグナ軍神(小)",
+    },
     "アンノウンATK・I": {
         "en": "Unknown ATK I",
         "ja": "アンノウンATK・I",

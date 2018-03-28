@@ -1118,6 +1118,9 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         } else if (stype == 'magnaRanbu') {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             totals[key]["magnaLesserSante"] += comb[i] * skillAmounts["magnaRanbu"][amount][slv - 1];
+                        } else if(stype == 'magnaGunshin') {
+                            totals[key]["magnaHP"] += comb[i] * skillAmounts["magnaHP"][amount][slv - 1];
+                            totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaNite"][amount][slv - 1];
                         } else if(stype == 'exBoukun'){
                             totals[key]["HPdebuff"] += comb[i] * 0.07
                             totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];
