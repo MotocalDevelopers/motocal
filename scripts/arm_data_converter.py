@@ -490,6 +490,16 @@ skillnamelist["magnaCriticalM"] = {
     u"黒霧方陣・意志": "dark"
 }
 
+# 不可侵は守護(小)扱い
+skillnamelist["magnaHPS"] = {
+    u"機炎方陣・不可侵": "fire",
+    u"海神方陣・不可侵": "water",
+    u"創樹方陣・不可侵": "earth",
+    u"嵐竜方陣・不可侵": "wind",
+    u"騎解方陣・不可侵": "light",
+    u"黒霧方陣・不可侵": "dark"
+}
+
 # アンノウン
 skillnamelist["unknownL"] = {u"アンノウン・ATK II": "unknown"}
 skillnamelist["unknownM"] = {u"アンノウン・ATK": "unknown"}

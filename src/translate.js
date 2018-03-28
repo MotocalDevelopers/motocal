@@ -1412,13 +1412,17 @@ var multiLangData = {
         "en": "Normal Aegis (LL)",
         "ja": "通常守護II",
     },
-    "マグナ守護": {
-        "en": "Magna Aegis I",
-        "ja": "マグナ守護",
+    "マグナ守護(小)": {
+        "en": "Magna Aegis (S)",
+        "ja": "マグナ守護(小)",
     },
-    "マグナ守護II": {
-        "en": "Magna Aegis II",
-        "ja": "マグナ守護II",
+    "マグナ守護(中)": {
+        "en": "Magna Aegis I (M)",
+        "ja": "マグナ守護(中)",
+    },
+    "マグナ守護(大)": {
+        "en": "Magna Aegis II (L)",
+        "ja": "マグナ守護(大)",
     },
     "アンノウン・VIT I(小)": {
         "en": "Unknown VIT I (S)",
