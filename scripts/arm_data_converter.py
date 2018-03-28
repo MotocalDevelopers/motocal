@@ -408,6 +408,15 @@ skillnamelist["magnaKonshinM"] = {
 }
 
 skillnamelist["magnaSetsuna"] = {
+    u"機炎方陣・刹那II": "fire",
+    u"海神方陣・刹那II": "water",
+    u"創樹方陣・刹那II": "earth",
+    u"嵐竜方陣・刹那II": "wind",
+    u"騎解方陣・刹那II": "light",
+    u"黒霧方陣・刹那II": "dark"
+}
+
+skillnamelist["magnaSetsunaS"] = {
     u"機炎方陣・刹那": "fire",
     u"海神方陣・刹那": "water",
     u"創樹方陣・刹那": "earth",

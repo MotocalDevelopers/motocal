@@ -1492,9 +1492,13 @@ var multiLangData = {
         "en": "Normal Celere (M)",
         "ja": "通常刹那(中)",
     },
-    "マグナ刹那": {
-        "en": "Magna Celere",
-        "ja": "マグナ刹那",
+    "マグナ刹那(小)": {
+        "en": "Magna Celere (S)",
+        "ja": "マグナ刹那(小)",
+    },
+    "マグナ刹那(中)": {
+        "en": "Magna Celere (M)",
+        "ja": "マグナ刹那(中)",
     },
     "コスモス剣": {
         "en": "Cosmos Sword",
