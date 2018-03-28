@@ -662,8 +662,9 @@ skillnamelist["normalDamageLimit10"] = {
 }
 
 skillnamelist["ougiDamageLimit10"] = {
-    u"リミットブレイク・アース": "earth",
-    u"リミットブレイク・ダーク": "dark",
+    u"イクシード・ウォータ": "water",
+    u"イクシード・アース": "earth",
+    u"イクシード・ダーク": "dark",
 }
 
 # キャラ固有武器
