@@ -31,6 +31,7 @@ racelist[u"不明"] = "unknown"
 
 supportAbilist = OrderedDict()
 supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
+supportAbilist["da_up_own_100"] = {u"神狼", u"レヴィオンセイバー"}
 supportAbilist["da_up_all_5"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
 supportAbilist["atk_up_all_5"] = {u"羊神宮の主", u"クイーン・オブ・カジノ"}
@@ -41,7 +42,8 @@ supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼
 supportAbilist["ougi_gage_up_own_100"] = {u"明鏡止水"}
 supportAbilist["ougi_damage_up_1_5"] = {u"天星剣王"}
 supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
-supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル"}
+supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
+supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
 supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"}
 supportAbilist["damageUP_10"] = {u"婉麗な姉"}
@@ -72,7 +74,7 @@ patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0}
 patching["ユイシス"] = {"DA": 8.0, "TA": 4.0}
 
 # json translation
-translation = json.load(open("./txt_source/chara-translation.json", "r"))
+translation = json.load(open("../txt_source/chara-translation.json", "r", encoding="utf-8"))
 
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
@@ -141,7 +143,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
     support_pattern = re.compile("([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \(")
 
-    mycsv = csv.reader(open(csv_file_name, 'r'), delimiter="|")
+    mycsv = csv.reader(open(csv_file_name, 'r', encoding="utf-8"), delimiter="|")
     for row in mycsv:
         newdict = OrderedDict()
 
@@ -226,13 +228,13 @@ if __name__ == '__main__':
     json_data = OrderedDict()
     image_url_list = []
 
-    json_data, image_url_list = processCSVdata("txt_source/charaData.txt", json_data, image_url_list)
+    json_data, image_url_list = processCSVdata("../txt_source/charaData.txt", json_data, image_url_list)
 
-    f = open("./charaData.json", "w")
+    f = open("./charaData.json", "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    # f = open("./charaImageURLlist.txt", "w")
+    # f = open("./charaImageURLlist.txt", "w", encoding="utf-8")
     # for x in imageURL:
     #     f.write(x)
     # f.close()
