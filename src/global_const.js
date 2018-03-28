@@ -689,7 +689,6 @@ var skillAmounts = {
 var supportAbilities = {
     "none": { "name": "なし", "type": "none", "range": "own", "value": 0 },
     "da_up_all_5": { "name": "全体DA率UP5%(ランスロット)", "type": "DABuff", "range": "all", "value": 0.05 },
-    "da_up_own_100": { "name": "全体DA率UP100%(ランスロット)", "type": "DABuff", "range": "own", "value": 10.00 },
     "ta_up_all_3": { "name": "全体TA率UP3%(ネツァ)", "type": "TABuff", "range": "all", "value": 0.03 },
     "ta_up_all_5": { "name": "全体TA率UP5%", "type": "TABuff", "range": "all", "value": 0.05 },
     "atk_up_own_5": { "name": "攻撃UP5%(ネツァ,レディグレイ,ハロシャル)", "type": "normalBuff", "range": "own", "value": 0.05 },
@@ -703,7 +702,7 @@ var supportAbilities = {
     "ougi_damage_up_1_5": { "name": "全体の奥義ダメージ1.5倍(シエテ)", "type": "ougiDamageBuff", "range": "all", "value": 0.50 },
     "taiyou_sinkou": { "name": "味方全体に背水効果(ザルハメリナ)", "type": "taiyou_sinkou", "range": "all", "value": 0.00 },
     "critical_up_own_10_30": { "name": "クリティカル確率UP(ヴァンピィ, ハロカリ) 発動率10%, 倍率30%", "type": "criticalBuff", "range": "own", "value": 0.10, "attackRatio": 0.30 },
-    "critical_up_own_20_20": { "name": "クリティカル確率UP(ジャンジャンヌダルク(水着ver)) 発動率20%, 倍率20%", "type": "criticalBuff", "range": "own", "value": 0.20, "attackRatio": 0.20 },
+    "critical_up_own_20_20": { "name": "クリティカル確率UP(ジャンヌダルク(水着ver)) 発動率20%, 倍率20%", "type": "criticalBuff", "range": "own", "value": 0.20, "attackRatio": 0.20 },
     "critical_up_all_5_30": { "name": "味方全体のクリティカル確率UP(フェリ) 発動率5%, 倍率30%", "type": "criticalBuff", "range": "all", "value": 0.05, "attackRatio": 0.30 },
     "damageUP_5":  { "name": "与ダメージ上昇(5%)", "type": "charaDamageUP", "range": "own", "value": 0.05},
     "damageUP_10": { "name": "与ダメージ上昇(10%)", "type": "charaDamageUP", "range": "own", "value": 0.10},

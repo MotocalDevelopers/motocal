@@ -31,7 +31,6 @@ racelist[u"不明"] = "unknown"
 
 supportAbilist = OrderedDict()
 supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
-supportAbilist["da_up_own_100"] = {u"神狼", u"レヴィオンセイバー"}
 supportAbilist["da_up_all_5"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
 supportAbilist["atk_up_all_5"] = {u"羊神宮の主", u"クイーン・オブ・カジノ"}
@@ -72,9 +71,13 @@ patching["イングヴェイ"] = {"DA": 9.0, "TA": 4.0}
 patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0}
 patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0}
 patching["ユイシス"] = {"DA": 8.0, "TA": 4.0}
+patching["シス"] = {"DA": 100.0, "TA": 0.0}
+patching["[最終]シス"] = {"DA": 100.0, "TA": 0.0}
+patching["アルベール"] = {"DA": 100.0, "TA": 3.0}
+patching["アルベール(SR)"] = {"DA": 100.0, "TA": 3.0}
 
 # json translation
-translation = json.load(open("../txt_source/chara-translation.json", "r", encoding="utf-8"))
+translation = json.load(open("./txt_source/chara-translation.json", "r", encoding="utf-8"))
 
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
@@ -228,7 +231,7 @@ if __name__ == '__main__':
     json_data = OrderedDict()
     image_url_list = []
 
-    json_data, image_url_list = processCSVdata("../txt_source/charaData.txt", json_data, image_url_list)
+    json_data, image_url_list = processCSVdata("./txt_source/charaData.txt", json_data, image_url_list)
 
     f = open("./charaData.json", "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
