@@ -812,11 +812,17 @@ module.exports.getTotalBuff = function(prof) {
 function maskInvalidSkillLevel(slv, stype, amount) {
     if (slv < 1) return 1;
     if (slv > 15) {
-        if (stype === 'magna') {
-            if (amount === 'M' || amount === 'L') return slv;
-        }
+        if (stype === 'magna') return slv;
 
         if (stype === 'magnaHaisui') {
+            if (amount === 'S') return slv;
+        }
+
+        if (stype === 'normal') {
+            if (amount === 'S') return slv;
+        }
+
+        if (stype === 'magnaKamui') {
             if (amount === 'S') return slv;
         }
 
