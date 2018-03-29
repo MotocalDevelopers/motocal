@@ -1,3 +1,15 @@
+|&attachref(img/1040110400.png,15%);|[4凸]ミトロンの宝剣|&color(#ff9900){光};|短剣|120|[[昴>武器奥義#subaru]]|[[騎解方陣・刹那>スキル一覧#kikaihoujinsetuna]]|[[騎解方陣・背水>スキル一覧#kikaihoujinhaisui]]|36|359|260|2590|メタトロンHL討伐戦|方陣武器|○|222|2221|
+|&attachref(img/1040609900.png,15%);|[4凸]ミトロンの籠手|&color(#ff9900){光};|格闘|120|[[昴>武器奥義#subaru]]|[[騎解方陣・見切>スキル一覧#kikaihoujinmikiri]]|[[先制の白の結界>スキル一覧#sironokekkai]]|37|352|270|2540|メタトロンHL討伐戦|方陣武器|○|231|2176|
+|&attachref(img/1040708400.png,15%);|[4凸]ミトロンの弓|&color(#ff9900){光};|弓|120|[[昴>武器奥義#subaru]]|[[騎解方陣・渾身>スキル一覧#kikaihoujinkonsin]]|[[騎解方陣・意志>スキル一覧#kikaihoujinishi]]|34|375|250|2710|メタトロンHL討伐戦|方陣武器|○|212|2321|
+|&attachref(img/1040309400.png,15%);|[4凸]アビスストライカー|&color(#800080){闇};|斧|120|[[クアドラ>武器奥義#quadra]]|[[黒霧方陣・背水>スキル一覧#kurogirihoujinhaisui]]|[[黒霧方陣・括目>スキル一覧#kurogirihoujinkatsumoku]]|25|415|200|2870|アバターHL討伐戦|方陣武器|○|174|2463|
+|&attachref(img/1040414200.png,15%);|[4凸]アビススパイン|&color(#800080){闇};|杖|120|[[クアドラ>武器奥義#quadra]]|[[黒霧方陣・神威II>スキル一覧#kurogirihoujinshinni2]]|[[黒霧方陣・必殺>スキル一覧#kurogirihoujinhissatu]]|39|343|310|2350|アバターHL討伐戦|方陣武器|○|262|2019|
+|&attachref(img/1040508900.png,15%);|[4凸]アビスルック|&color(#800080){闇};|銃|120|[[クアドラ>武器奥義#quadra]]|[[黒霧方陣・攻刃>スキル一覧#kurogirihoujinkoujin]]|[[黒霧方陣・克己>スキル一覧#kurogirihoujinkokki]]|23|424|190|2940|アバターHL討伐戦|方陣武器|○|163|2518|
+|&attachref(img/1040110400.png,15%);|ミトロンの宝剣|&color(#ff9900){光};|短剣|120|[[昴>武器奥義#subaru]]|[[騎解方陣・刹那>スキル一覧#kikaihoujinsetuna]]|[[騎解方陣・背水>スキル一覧#kikaihoujinhaisui]]|36|359|222|2221|メタトロンHL討伐戦|方陣武器|
+|&attachref(img/1040609900.png,15%);|ミトロンの籠手|&color(#ff9900){光};|格闘|120|[[昴>武器奥義#subaru]]|[[騎解方陣・見切>スキル一覧#kikaihoujinmikiri]]|[[先制の白の結界>スキル一覧#sironokekkai]]|37|352|231|2176|メタトロンHL討伐戦|方陣武器|
+|&attachref(img/1040708400.png,15%);|ミトロンの弓|&color(#ff9900){光};|弓|120|[[昴>武器奥義#subaru]]|[[騎解方陣・渾身>スキル一覧#kikaihoujinkonsin]]||34|375|212|2321|メタトロンHL討伐戦|方陣武器|
+|&attachref(img/1040309400.png,15%);|アビスストライカー|&color(#800080){闇};|斧|120|[[クアドラ>武器奥義#quadra]]|[[黒霧方陣・背水>スキル一覧#kurogirihoujinhaisui]]|[[黒霧方陣・括目>スキル一覧#kurogirihoujinkatsumoku]]|25|415|174|2463|アバターHL討伐戦|方陣武器|
+|&attachref(img/1040414200.png,15%);|アビススパイン|&color(#800080){闇};|杖|120|[[クアドラ>武器奥義#quadra]]|[[黒霧方陣・神威II>スキル一覧#kurogirihoujinshinni2]]|[[黒霧方陣・必殺>スキル一覧#kurogirihoujinhissatu]]|39|343|262|2019|アバターHL討伐戦|方陣武器|
+|&attachref(img/1040508900.png,15%);|アビスルック|&color(#800080){闇};|銃|120|[[クアドラ>武器奥義#quadra]]|[[黒霧方陣・攻刃>スキル一覧#kurogirihoujinkoujin]]|[[黒霧方陣・克己>スキル一覧#kurogirihoujinkokki]]|23|424|163|2518|アバターHL討伐戦|方陣武器|
 |&attachref(img/1040210500.png,15%);|[4凸]ラストストームランス|&color(#339966){風};|槍|120|[[瞬滅閃>武器奥義#syunmetsu]]|[[嵐竜方陣・攻刃>スキル一覧#arashiryuhoujinkoujin]]|[[嵐竜方陣・暴風>スキル一覧#ranryuubouhuu]]|38|350|280|2490|グリームニルHLL討伐戦|方陣武器|○|239|2137|
 |&attachref(img/1040808300.png,15%);|[4凸]ラストストームハープ|&color(#339966){風};|楽器|120|[[瞬滅閃>武器奥義#syunmetsu]]|[[嵐竜方陣・渾身>スキル一覧#ranryuukonsin]]|[[嵐竜方陣・技巧II>スキル一覧#ranryuugikou2]]|62|337|260|2400|グリームニルHL討伐戦|方陣武器|○|223|2059|
 |&attachref(img/1040909000.png,15%);|[4凸]ラストストームブレイド|&color(#339966){風};|刀|120|[[瞬滅閃>武器奥義#syunmetsu]]|[[嵐竜方陣・軍神>スキル一覧#ranryuugunjin]]|[[嵐竜方陣・星晶>スキル一覧#ranryuuseisyou]]|28|405|200|2900|グリームニルHL討伐戦|方陣武器|○|173|2481|

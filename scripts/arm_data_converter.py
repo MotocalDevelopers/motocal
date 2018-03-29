@@ -380,6 +380,15 @@ skillnamelist["magnaKatsumiM"] = {
     u"黒霧方陣・克己": "dark"
 }
 
+skillnamelist["magnaKamuiM"] = {
+    u"機炎方陣・神威II": "fire",
+    u"海神方陣・神威II": "water",
+    u"創樹方陣・神威II": "earth",
+    u"嵐竜方陣・神威II": "wind",
+    u"騎解方陣・神威II": "light",
+    u"黒霧方陣・神威II": "dark"
+}
+
 skillnamelist["magnaKamui"] = {
     u"機炎方陣・神威": "fire",
     u"海神方陣・神威": "water",

@@ -1348,9 +1348,13 @@ var multiLangData = {
         "en": "Magna Restraint (M)",
         "ja": "マグナ克己(中)",
     },
-    "マグナ神威": {
-        "en": "Magna Majesty",
-        "ja": "マグナ神威",
+    "マグナ神威(小)": {
+        "en": "Magna Majesty (S)",
+        "ja": "マグナ神威(小)",
+    },
+    "マグナ神威(中)": {
+        "en": "Magna Majesty (M)",
+        "ja": "マグナ神威(中)",
     },
     "マグナ暴君": {
         "en": "Magna Tyranny",
