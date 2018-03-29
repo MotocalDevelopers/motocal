@@ -705,7 +705,7 @@ armtypelist[u"楽器"] = "music"
 armtypelist[u"刀"] = "katana"
 
 # json translation
-translation = json.load(open("./txt_source/weapon-translation.json", "r"))
+translation = json.load(open("./txt_source/weapon-translation.json", "r", encoding="utf-8"))
 
 def skill_replace(skill):
     for inner_skillname, onelist in skillnamelist.items():
@@ -733,7 +733,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
     jougen_5_pattern = re.compile(u"◎")
     baha_pattern = re.compile(u"bahaFU")
 
-    mycsv = csv.reader(open(csv_file_name, 'r'), delimiter="|")
+    mycsv = csv.reader(open(csv_file_name, 'r', encoding="utf-8"), delimiter="|")
 
     for row in mycsv:
         newdict = {}
@@ -851,14 +851,14 @@ if __name__ == '__main__':
     json_data = OrderedDict()
     image_url_list = []
 
-    json_data, image_url_list = processCSVdata("txt_source/armData-ssr.txt", json_data, image_url_list, True)
-    json_data, image_url_list = processCSVdata("txt_source/armData-sr.txt", json_data, image_url_list, False)
+    json_data, image_url_list = processCSVdata("./txt_source/armData-ssr.txt", json_data, image_url_list, True)
+    json_data, image_url_list = processCSVdata("./txt_source/armData-sr.txt", json_data, image_url_list, False)
 
-    f = open("./armData.json", "w")
+    f = open("./armData.json", "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    #f = open("./imageURLlist.txt", "w")
+    #f = open("./imageURLlist.txt", "w", encoding="utf-8")
     #for x in imageURL:
     #    f.write(x)
     #f.close()

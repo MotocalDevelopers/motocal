@@ -17,7 +17,7 @@
         "hplv150": 228,
         "attacklv150": 2660,
         "imageURL": "./imgs/1040007200.png",
-        "en": "[5凸]シュヴァリエソード・マグナ"
+        "en": "[5★] Luminiera Sword Omega"
     },
     "[5凸]シュヴァリエブージ・マグナ": {
         "ja": "[5凸]シュヴァリエブージ・マグナ",
@@ -37,7 +37,7 @@
         "hplv150": 202,
         "attacklv150": 2790,
         "imageURL": "./imgs/1040301100.png",
-        "en": "[5凸]シュヴァリエブージ・マグナ"
+        "en": "[5★] Luminiera Bhuj Omega"
     },
     "[5凸]シュヴァリエハープ・マグナ": {
         "ja": "[5凸]シュヴァリエハープ・マグナ",
@@ -57,7 +57,7 @@
         "hplv150": 249,
         "attacklv150": 2340,
         "imageURL": "./imgs/1040800000.png",
-        "en": "[5凸]シュヴァリエハープ・マグナ"
+        "en": "[5★] Luminiera Harp Omega"
     },
     "[5凸]シュヴァリエボルト・マグナ": {
         "ja": "[5凸]シュヴァリエボルト・マグナ",
@@ -77,7 +77,7 @@
         "hplv150": 189,
         "attacklv150": 2850,
         "imageURL": "./imgs/1040500600.png",
-        "en": "[5凸]シュヴァリエボルト・マグナ"
+        "en": "[5★] Luminiera Bolt Omega"
     },
     "[5凸]セレストホーン・マグナ": {
         "ja": "[5凸]セレストホーン・マグナ",
@@ -97,7 +97,7 @@
         "hplv150": 269,
         "attacklv150": 2450,
         "imageURL": "./imgs/1040201900.png",
-        "en": "[5凸]セレストホーン・マグナ"
+        "en": "[5★] Celeste Horn Omega"
     },
     "[5凸]セレストザグナル・マグナ": {
         "ja": "[5凸]セレストザグナル・マグナ",
@@ -117,7 +117,7 @@
         "hplv150": 198,
         "attacklv150": 2810,
         "imageURL": "./imgs/1040301400.png",
-        "en": "[5凸]セレストザグナル・マグナ"
+        "en": "[5★] Celeste Zaghnal Omega"
     },
     "[5凸]セレストクロー・マグナ": {
         "ja": "[5凸]セレストクロー・マグナ",
@@ -135,7 +135,7 @@
         "hplv100": "221",
         "attacklv100": "2145",
         "imageURL": "./imgs/1040604300.png",
-        "en": "[5凸]セレストクロー・マグナ"
+        "en": "[5★] Celeste Claw Omega"
     },
     "[5凸]セレストハープ・マグナ": {
         "ja": "[5凸]セレストハープ・マグナ",
@@ -153,7 +153,7 @@
         "hplv100": "214",
         "attacklv100": "2025",
         "imageURL": "./imgs/1040800100.png",
-        "en": "[5凸]セレストハープ・マグナ"
+        "en": "[5★] Celeste Harp Omega"
     },
     "[4凸]ミトロンの宝剣": {
         "ja": "[4凸]ミトロンの宝剣",
@@ -171,7 +171,7 @@
         "hplv100": "222",
         "attacklv100": "2221",
         "imageURL": "./imgs/1040110400.png",
-        "en": "[4凸]ミトロンの宝剣"
+        "en": "[4★] Mittron's Treasured Blade"
     },
     "[4凸]ミトロンの籠手": {
         "ja": "[4凸]ミトロンの籠手",
@@ -189,7 +189,7 @@
         "hplv100": "231",
         "attacklv100": "2176",
         "imageURL": "./imgs/1040609900.png",
-        "en": "[4凸]ミトロンの籠手"
+        "en": "[4★] Mittron's Gauntlet"
     },
     "[4凸]ミトロンの弓": {
         "ja": "[4凸]ミトロンの弓",
@@ -207,7 +207,7 @@
         "hplv100": "212",
         "attacklv100": "2321",
         "imageURL": "./imgs/1040708400.png",
-        "en": "[4凸]ミトロンの弓"
+        "en": "[4★] Mittron's Bow"
     },
     "[4凸]アビスストライカー": {
         "ja": "[4凸]アビスストライカー",
@@ -225,7 +225,7 @@
         "hplv100": "174",
         "attacklv100": "2463",
         "imageURL": "./imgs/1040309400.png",
-        "en": "[4凸]アビスストライカー"
+        "en": "[4★] Abyss Striker"
     },
     "[4凸]アビススパイン": {
         "ja": "[4凸]アビススパイン",
@@ -243,7 +243,7 @@
         "hplv100": "262",
         "attacklv100": "2019",
         "imageURL": "./imgs/1040414200.png",
-        "en": "[4凸]アビススパイン"
+        "en": "[4★] Abyss Spine"
     },
     "[4凸]アビスルック": {
         "ja": "[4凸]アビスルック",
@@ -261,7 +261,7 @@
         "hplv100": "163",
         "attacklv100": "2518",
         "imageURL": "./imgs/1040508900.png",
-        "en": "[4凸]アビスルック"
+        "en": "[4★] Abyss Gaze"
     },
     "ミトロンの宝剣": {
         "ja": "ミトロンの宝剣",
@@ -277,7 +277,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040110400.png",
-        "en": "ミトロンの宝剣"
+        "en": "Mittron's Treasured Blade"
     },
     "ミトロンの籠手": {
         "ja": "ミトロンの籠手",
@@ -293,7 +293,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040609900.png",
-        "en": "ミトロンの籠手"
+        "en": "Mittron's Gauntlet"
     },
     "ミトロンの弓": {
         "ja": "ミトロンの弓",
@@ -309,7 +309,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040708400.png",
-        "en": "ミトロンの弓"
+        "en": "Mittron's Bow"
     },
     "アビスストライカー": {
         "ja": "アビスストライカー",
@@ -325,7 +325,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040309400.png",
-        "en": "アビスストライカー"
+        "en": "Abyss Striker"
     },
     "アビススパイン": {
         "ja": "アビススパイン",
@@ -341,7 +341,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040414200.png",
-        "en": "アビススパイン"
+        "en": "Abyss Spine"
     },
     "アビスルック": {
         "ja": "アビスルック",
@@ -357,7 +357,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040508900.png",
-        "en": "アビスルック"
+        "en": "Abyss Gaze"
     },
     "[4凸]ラストストームランス": {
         "ja": "[4凸]ラストストームランス",
@@ -375,7 +375,7 @@
         "hplv100": "239",
         "attacklv100": "2137",
         "imageURL": "./imgs/1040210500.png",
-        "en": "[4凸]ラストストームランス"
+        "en": "[4★] Last Storm Lance"
     },
     "[4凸]ラストストームハープ": {
         "ja": "[4凸]ラストストームハープ",
@@ -393,7 +393,7 @@
         "hplv100": "223",
         "attacklv100": "2059",
         "imageURL": "./imgs/1040808300.png",
-        "en": "[4凸]ラストストームハープ"
+        "en": "[4★] Last Storm Harp"
     },
     "[4凸]ラストストームブレイド": {
         "ja": "[4凸]ラストストームブレイド",
@@ -411,7 +411,7 @@
         "hplv100": "173",
         "attacklv100": "2481",
         "imageURL": "./imgs/1040909000.png",
-        "en": "[4凸]ラストストームブレイド"
+        "en": "[4★] Last Storm Blade"
     },
     "[4凸]ブラフマンシミター": {
         "ja": "[4凸]ブラフマンシミター",
@@ -429,7 +429,7 @@
         "hplv100": "198",
         "attacklv100": "2342",
         "imageURL": "./imgs/1040015000.png",
-        "en": "[4凸]ブラフマンシミター"
+        "en": "[4★] Scimitar of Brahman"
     },
     "[4凸]ブラフマントライデント": {
         "ja": "[4凸]ブラフマントライデント",
@@ -447,7 +447,7 @@
         "hplv100": "238",
         "attacklv100": "2142",
         "imageURL": "./imgs/1040210400.png",
-        "en": "[4凸]ブラフマントライデント"
+        "en": "[4★] Trident of Brahman"
     },
     "[4凸]ブラフマンガントレ": {
         "ja": "[4凸]ブラフマンガントレ",
@@ -465,7 +465,7 @@
         "hplv100": "229",
         "attacklv100": "2186",
         "imageURL": "./imgs/1040609800.png",
-        "en": "[4凸]ブラフマンガントレ"
+        "en": "[4★] Hand of Brahman"
     },
     "[4凸]テュロスワンド": {
         "ja": "[4凸]テュロスワンド",
@@ -483,7 +483,7 @@
         "hplv100": "268",
         "attacklv100": "1989",
         "imageURL": "./imgs/1040414100.png",
-        "en": "[4凸]テュロスワンド"
+        "en": "[4★] Tyros Scepter"
     },
     "[4凸]テュロスボウ": {
         "ja": "[4凸]テュロスボウ",
@@ -501,7 +501,7 @@
         "hplv100": "214",
         "attacklv100": "2311",
         "imageURL": "./imgs/1040708300.png",
-        "en": "[4凸]テュロスボウ"
+        "en": "[4★] Tyros Bow"
     },
     "[4凸]テュロスビネット": {
         "ja": "[4凸]テュロスビネット",
@@ -519,7 +519,7 @@
         "hplv100": "226",
         "attacklv100": "2044",
         "imageURL": "./imgs/1040808200.png",
-        "en": "[4凸]テュロスビネット"
+        "en": "[4★] Tyros Zither"
     },
     "[4凸]ニーベルン・メッサー": {
         "ja": "[4凸]ニーベルン・メッサー",
@@ -537,7 +537,7 @@
         "hplv100": "223",
         "attacklv100": "2216",
         "imageURL": "./imgs/1040110300.png",
-        "en": "[4凸]ニーベルン・メッサー"
+        "en": "[4★] Nibelung Messer"
     },
     "[4凸]ニーベルン・ホルン": {
         "ja": "[4凸]ニーベルン・ホルン",
@@ -555,7 +555,7 @@
         "hplv100": "179",
         "attacklv100": "2438",
         "imageURL": "./imgs/1040309300.png",
-        "en": "[4凸]ニーベルン・ホルン"
+        "en": "[4★] Nibelung Horn"
     },
     "[4凸]ニーベルン・クリンゲ": {
         "ja": "[4凸]ニーベルン・クリンゲ",
@@ -573,7 +573,47 @@
         "hplv100": "175",
         "attacklv100": "2471",
         "imageURL": "./imgs/1040908900.png",
-        "en": "[4凸]ニーベルン・クリンゲ"
+        "en": "[4★] Nibelung Klinge"
+    },
+    "[5凸]ティアマトグレイブ・マグナ": {
+        "ja": "[5凸]ティアマトグレイブ・マグナ",
+        "element": "wind",
+        "type": "spear",
+        "skill1": "magnaHPL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "37",
+        "minattack": "340",
+        "hp": "292",
+        "attack": "2600",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 233,
+        "attacklv100": 2085,
+        "hplv150": 280,
+        "attacklv150": 2500,
+        "imageURL": "./imgs/1040201500.png",
+        "en": "[5★] Tiamat Glaive Omega"
+    },
+    "[5凸]ティアマトアムード・マグナ": {
+        "ja": "[5凸]ティアマトアムード・マグナ",
+        "element": "wind",
+        "type": "axe",
+        "skill1": "magnaHPL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "27",
+        "minattack": "390",
+        "hp": "216",
+        "attack": "2990",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 172,
+        "attacklv100": 2390,
+        "hplv150": 206,
+        "attacklv150": 2870,
+        "imageURL": "./imgs/1040300900.png",
+        "en": "[5★] Tiamat Amood Omega"
     },
     "[5凸]ティアマトボルト・マグナ": {
         "ja": "[5凸]ティアマトボルト・マグナ",
@@ -593,7 +633,7 @@
         "hplv150": 193,
         "attacklv150": 2930,
         "imageURL": "./imgs/1040502600.png",
-        "en": "[5凸]ティアマトボルト・マグナ"
+        "en": "[5★] Tiamat Bolt Omega"
     },
     "[5凸]ティアマトガントレ・マグナ": {
         "ja": "[5凸]ティアマトガントレ・マグナ",
@@ -613,7 +653,7 @@
         "hplv150": 269,
         "attacklv150": 2560,
         "imageURL": "./imgs/1040600500.png",
-        "en": "[5凸]ティアマトガントレ・マグナ"
+        "en": "[5★] Tiamat Gauntlet Omega"
     },
     "[5凸]コロッサスケーン・マグナ": {
         "ja": "[5凸]コロッサスケーン・マグナ",
@@ -633,7 +673,27 @@
         "hplv150": 302,
         "attacklv150": 2290,
         "imageURL": "./imgs/1040401500.png",
-        "en": "[5凸]コロッサスケーン・マグナ"
+        "en": "[5★] Colossus Cane Omega"
+    },
+    "[5凸]コロッサスカービン・マグナ": {
+        "ja": "[5凸]コロッサスカービン・マグナ",
+        "element": "fire",
+        "type": "gun",
+        "skill1": "magnaHPL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "24",
+        "minattack": "405",
+        "hp": "204",
+        "attack": "3060",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 160,
+        "attacklv100": 2450,
+        "hplv150": 187,
+        "attacklv150": 2860,
+        "imageURL": "./imgs/1040500500.png",
+        "en": "[5★] Colossus Carbine Omega"
     },
     "[5凸]コロッサスフィスト・マグナ": {
         "ja": "[5凸]コロッサスフィスト・マグナ",
@@ -653,7 +713,27 @@
         "hplv150": 261,
         "attacklv150": 2490,
         "imageURL": "./imgs/1040600700.png",
-        "en": "[5凸]コロッサスフィスト・マグナ"
+        "en": "[5★] Colossus Fist Omega"
+    },
+    "[5凸]コロッサスブレード・マグナ": {
+        "ja": "[5凸]コロッサスブレード・マグナ",
+        "element": "fire",
+        "type": "katana",
+        "skill1": "magnaHaisuiL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "26",
+        "minattack": "400",
+        "hp": "210",
+        "attack": "3030",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 168,
+        "attacklv100": 2425,
+        "hplv150": 196,
+        "attacklv150": 2830,
+        "imageURL": "./imgs/1040902700.png",
+        "en": "[5★] Colossus Blade Omega"
     },
     "[5凸]レヴィアンゲイズ・マグナ": {
         "ja": "[5凸]レヴィアンゲイズ・マグナ",
@@ -673,7 +753,27 @@
         "hplv150": 255,
         "attacklv150": 2520,
         "imageURL": "./imgs/1040101500.png",
-        "en": "[5凸]レヴィアンゲイズ・マグナ"
+        "en": "[5★] Leviathan Gaze Omega"
+    },
+    "[5凸]レヴィアンスピア・マグナ": {
+        "ja": "[5凸]レヴィアンスピア・マグナ",
+        "element": "water",
+        "type": "spear",
+        "skill1": "magnaCriticalL",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "40",
+        "minattack": "325",
+        "hp": "295",
+        "attack": "2590",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 236,
+        "attacklv100": 2070,
+        "hplv150": 275,
+        "attacklv150": 2420,
+        "imageURL": "./imgs/1040205100.png",
+        "en": "[5★] Leviathan Spear Omega"
     },
     "[5凸]レヴィアンセプター・マグナ": {
         "ja": "[5凸]レヴィアンセプター・マグナ",
@@ -693,7 +793,27 @@
         "hplv150": 306,
         "attacklv150": 2270,
         "imageURL": "./imgs/1040401400.png",
-        "en": "[5凸]レヴィアンセプター・マグナ"
+        "en": "[5★] Leviathan Scepter Omega"
+    },
+    "[5凸]レヴィアンボウ・マグナ": {
+        "ja": "[5凸]レヴィアンボウ・マグナ",
+        "element": "water",
+        "type": "bow",
+        "skill1": "magnaHPL",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "35",
+        "minattack": "355",
+        "hp": "261",
+        "attack": "2830",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 209,
+        "attacklv100": 2255,
+        "hplv150": 244,
+        "attacklv150": 2640,
+        "imageURL": "./imgs/1040700700.png",
+        "en": "[5★] Leviathan Bow Omega"
     },
     "[5凸]世界樹の晶剣・マグナ": {
         "ja": "[5凸]世界樹の晶剣・マグナ",
@@ -713,7 +833,27 @@
         "hplv150": 229,
         "attacklv150": 2650,
         "imageURL": "./imgs/1040002200.png",
-        "en": "[5凸]世界樹の晶剣・マグナ"
+        "en": "[5★] Yggdrasil Crystal Blade Omega"
+    },
+    "[5凸]世界樹の雫刃・マグナ": {
+        "ja": "[5凸]世界樹の雫刃・マグナ",
+        "element": "earth",
+        "type": "dagger",
+        "skill1": "magnaHPL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "36",
+        "minattack": "345",
+        "hp": "272",
+        "attack": "2700",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 218,
+        "attacklv100": 2160,
+        "hplv150": 254,
+        "attacklv150": 2520,
+        "imageURL": "./imgs/1040101400.png",
+        "en": "[5★] Yggdrasil Dagger Omega"
     },
     "[5凸]世界樹の雫枝・マグナ": {
         "ja": "[5凸]世界樹の雫枝・マグナ",
@@ -733,7 +873,27 @@
         "hplv150": 305,
         "attacklv150": 2270,
         "imageURL": "./imgs/1040405900.png",
-        "en": "[5凸]世界樹の雫枝・マグナ"
+        "en": "[5★] Yggdrasil Dewbranch Omega"
+    },
+    "[5凸]世界樹の蔦弓・マグナ": {
+        "ja": "[5凸]世界樹の蔦弓・マグナ",
+        "element": "earth",
+        "type": "bow",
+        "skill1": "magnaHaisuiL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "34",
+        "minattack": "360",
+        "hp": "260",
+        "attack": "2830",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 208,
+        "attacklv100": 2260,
+        "hplv150": 243,
+        "attacklv150": 2640,
+        "imageURL": "./imgs/1040700600.png",
+        "en": "[5★] Yggdrasil Bow Omega"
     },
     "リバーススレッド": {
         "ja": "リバーススレッド",
@@ -749,7 +909,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040015100.png",
-        "en": "リバーススレッド"
+        "en": "Glory Thread"
     },
     "真・道天浄土": {
         "ja": "真・道天浄土",
@@ -767,7 +927,7 @@
         "hplv100": "180",
         "attacklv100": "2345",
         "imageURL": "./imgs/1040015400.png",
-        "en": "真・道天浄土"
+        "en": "True Purity Sunblade"
     },
     "六道・道天浄土": {
         "ja": "六道・道天浄土",
@@ -783,7 +943,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040015300.png",
-        "en": "六道・道天浄土"
+        "en": "Xeno Purity Sunblade"
     },
     "ラストストームランス": {
         "ja": "ラストストームランス",
@@ -799,7 +959,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040210500.png",
-        "en": "ラストストームランス"
+        "en": "Last Storm Lance"
     },
     "ラストストームハープ": {
         "ja": "ラストストームハープ",
@@ -815,7 +975,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040808300.png",
-        "en": "ラストストームハープ"
+        "en": "Last Storm Harp"
     },
     "ラストストームブレイド": {
         "ja": "ラストストームブレイド",
@@ -831,7 +991,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040909000.png",
-        "en": "ラストストームブレイド"
+        "en": "Last Storm Blade"
     },
     "ブラフマンシミター": {
         "ja": "ブラフマンシミター",
@@ -847,7 +1007,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040015000.png",
-        "en": "ブラフマンシミター"
+        "en": "Scimitar of Brahman"
     },
     "ブラフマントライデント": {
         "ja": "ブラフマントライデント",
@@ -863,7 +1023,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040210400.png",
-        "en": "ブラフマントライデント"
+        "en": "Trident of Brahman"
     },
     "ブラフマンガントレ": {
         "ja": "ブラフマンガントレ",
@@ -879,7 +1039,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040609800.png",
-        "en": "ブラフマンガントレ"
+        "en": "Hand of Brahman"
     },
     "テュロスワンド": {
         "ja": "テュロスワンド",
@@ -895,7 +1055,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040414100.png",
-        "en": "テュロスワンド"
+        "en": "Tyros Scepter"
     },
     "テュロスボウ": {
         "ja": "テュロスボウ",
@@ -911,7 +1071,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040708300.png",
-        "en": "テュロスボウ"
+        "en": "Tyros Bow"
     },
     "テュロスビネット": {
         "ja": "テュロスビネット",
@@ -927,7 +1087,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040808200.png",
-        "en": "テュロスビネット"
+        "en": "Tyros Zither"
     },
     "ニーベルン・メッサー": {
         "ja": "ニーベルン・メッサー",
@@ -943,7 +1103,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040110300.png",
-        "en": "ニーベルン・メッサー"
+        "en": "Nibelung Messer"
     },
     "ニーベルン・ホルン": {
         "ja": "ニーベルン・ホルン",
@@ -959,7 +1119,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040309300.png",
-        "en": "ニーベルン・ホルン"
+        "en": "Nibelung Horn"
     },
     "ニーベルン・クリンゲ": {
         "ja": "ニーベルン・クリンゲ",
@@ -975,7 +1135,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040908900.png",
-        "en": "ニーベルン・クリンゲ"
+        "en": "Nibelung Klinge"
     },
     "[闇鏡刃]パラゾニウム": {
         "ja": "[闇鏡刃]パラゾニウム",
@@ -993,7 +1153,7 @@
         "hplv100": "259",
         "attacklv100": "2652",
         "imageURL": "./imgs/1040108700.png",
-        "en": "Parazonium"
+        "en": "[Skybound] Parazonium"
     },
     "[蒼穹絆]リユニオン": {
         "ja": "[蒼穹絆]リユニオン",
@@ -1011,7 +1171,7 @@
         "hplv100": "260",
         "attacklv100": "2650",
         "imageURL": "./imgs/1040108200.png",
-        "en": "[蒼穹絆]リユニオン"
+        "en": "[Skybound] Reunion"
     },
     "[聖星銃]セイントスタークラッカー": {
         "ja": "[聖星銃]セイントスタークラッカー",
@@ -1029,7 +1189,7 @@
         "hplv100": "177",
         "attacklv100": "2707",
         "imageURL": "./imgs/1040508700.png",
-        "en": "[聖星銃]セイントスタークラッカー"
+        "en": "[Skybound] Jolly Starcracker"
     },
     "[屠竜]ドラゴンスレイヤー": {
         "ja": "[屠竜]ドラゴンスレイヤー",
@@ -1047,7 +1207,7 @@
         "hplv100": "191",
         "attacklv100": "2725",
         "imageURL": "./imgs/1040902100.png",
-        "en": "Dragon Slayer"
+        "en": "[Skybound] Dragon Slayer"
     },
     "[撒旋流]ヴリスラグナ": {
         "ja": "[撒旋流]ヴリスラグナ",
@@ -1065,7 +1225,7 @@
         "hplv100": "182",
         "attacklv100": "2690",
         "imageURL": "./imgs/1040502400.png",
-        "en": "Vlisragna"
+        "en": "[Skybound] Vlisragna"
     },
     "ベルタワー": {
         "ja": "ベルタワー",
@@ -1081,7 +1241,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040309200.png",
-        "en": "ベルタワー"
+        "en": "Bell Striker"
     },
     "[不叶夢]カーラウロプス": {
         "ja": "[不叶夢]カーラウロプス",
@@ -1099,7 +1259,7 @@
         "hplv100": "284",
         "attacklv100": "2180",
         "imageURL": "./imgs/1040403800.png",
-        "en": "Kalaurops"
+        "en": "[Skybound] Kalaurops"
     },
     "テュルソス": {
         "ja": "テュルソス",
@@ -1133,7 +1293,7 @@
         "hplv100": "220",
         "attacklv100": "1779",
         "imageURL": "./imgs/1040409300.png",
-        "en": "Luna's Friend"
+        "en": "[Skybound] Luna's Friend"
     },
     "アーキテクトベース": {
         "ja": "アーキテクトベース",
@@ -1149,7 +1309,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040413300.png",
-        "en": "アーキテクトベース"
+        "en": "Architect Frame"
     },
     "[聖天槍]エデン": {
         "ja": "[聖天槍]エデン",
@@ -1167,7 +1327,7 @@
         "hplv100": "280",
         "attacklv100": "2600",
         "imageURL": "./imgs/1040207000.png",
-        "en": "Eden"
+        "en": "[Skybound] Eden"
     },
     "[麟闇剣]麒麟剣": {
         "ja": "[麟闇剣]麒麟剣",
@@ -1185,7 +1345,7 @@
         "hplv100": "207",
         "attacklv100": "2480",
         "imageURL": "./imgs/1040010000.png",
-        "en": "[麟闇剣]麒麟剣"
+        "en": "[4★] Qilin Sword"
     },
     "[麟闇弓]麒麟弓": {
         "ja": "[麟闇弓]麒麟弓",
@@ -1203,7 +1363,7 @@
         "hplv100": "220",
         "attacklv100": "2465",
         "imageURL": "./imgs/1040706000.png",
-        "en": "[麟闇弓]麒麟弓"
+        "en": "[4★] Qilin Bow"
     },
     "[麟闇弦]麒麟弦": {
         "ja": "[麟闇弦]麒麟弦",
@@ -1221,7 +1381,7 @@
         "hplv100": "232",
         "attacklv100": "2185",
         "imageURL": "./imgs/1040805900.png",
-        "en": "[麟闇弦]麒麟弦"
+        "en": "[4★] Qilin Lyre"
     },
     "[4凸]黄龍槍": {
         "ja": "[4凸]黄龍槍",
@@ -1239,7 +1399,7 @@
         "hplv100": "252",
         "attacklv100": "2250",
         "imageURL": "./imgs/1040207900.png",
-        "en": "[4凸]黄龍槍"
+        "en": "[4★] Huanglong Spear"
     },
     "[五光拳]黄龍拳": {
         "ja": "[五光拳]黄龍拳",
@@ -1257,7 +1417,7 @@
         "hplv100": "242",
         "attacklv100": "2300",
         "imageURL": "./imgs/1040607100.png",
-        "en": "[五光拳]黄龍拳"
+        "en": "[4★] Huanglong Gauntlet"
     },
     "[4凸]黄龍刀": {
         "ja": "[4凸]黄龍刀",
@@ -1275,7 +1435,7 @@
         "hplv100": "184",
         "attacklv100": "2610",
         "imageURL": "./imgs/1040906800.png",
-        "en": "[4凸]黄龍刀"
+        "en": "[4★] Huanglong Katana"
     },
     "[連装弾]エーケイ・フォーエイ": {
         "ja": "[連装弾]エーケイ・フォーエイ",
@@ -1293,7 +1453,7 @@
         "hplv100": "199",
         "attacklv100": "2965",
         "imageURL": "./imgs/1040504300.png",
-        "en": "AK-4A"
+        "en": "[Skybound] AK-4A"
     },
     "サティフィケイト": {
         "ja": "サティフィケイト",
@@ -1309,7 +1469,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040309000.png",
-        "en": "サティフィケイト"
+        "en": "Certificus"
     },
     "[4凸]シャドウサーペント": {
         "ja": "[4凸]シャドウサーペント",
@@ -1327,7 +1487,7 @@
         "hplv100": "250",
         "attacklv100": "2335",
         "imageURL": "./imgs/1040210300.png",
-        "en": "[4凸]シャドウサーペント"
+        "en": "[4★] Shadow Viperlance"
     },
     "シャドウサーペント": {
         "ja": "シャドウサーペント",
@@ -1343,7 +1503,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040210300.png",
-        "en": "シャドウサーペント"
+        "en": "Shadow Viperlance"
     },
     "ダイモーンスパイン": {
         "ja": "ダイモーンスパイン",
@@ -1359,7 +1519,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040209600.png",
-        "en": "ダイモーンスパイン"
+        "en": "Daemon's Spine"
     },
     "フュージョンメビウス": {
         "ja": "フュージョンメビウス",
@@ -1375,7 +1535,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040806000.png",
-        "en": "フュージョンメビウス"
+        "en": "Fusion Mobius"
     },
     "[超]D・ビィ": {
         "ja": "[超]D・ビィ",
@@ -1391,7 +1551,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040413200.png",
-        "en": "[超]D・ビィ"
+        "en": "Dragon Bar V"
     },
     "真・普天幻魔": {
         "ja": "真・普天幻魔",
@@ -1409,7 +1569,7 @@
         "hplv100": "165",
         "attacklv100": "2430",
         "imageURL": "./imgs/1040908700.png",
-        "en": "真・普天幻魔"
+        "en": "True Phantom Demon Blade"
     },
     "六道・普天幻魔": {
         "ja": "六道・普天幻魔",
@@ -1425,7 +1585,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040908600.png",
-        "en": "六道・普天幻魔"
+        "en": "Xeno Phantom Demon Blade"
     },
     "[超硬質]スナップブレード": {
         "ja": "[超硬質]スナップブレード",
@@ -1443,7 +1603,7 @@
         "hplv100": "137",
         "attacklv100": "2199",
         "imageURL": "./imgs/1040014200.png",
-        "en": "[超硬質]スナップブレード"
+        "en": "[Skybound] Snap Blade"
     },
     "スナップブレード": {
         "ja": "スナップブレード",
@@ -1459,7 +1619,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040014200.png",
-        "en": "スナップブレード"
+        "en": "Snap Blade"
     },
     "ウィルムスウォード": {
         "ja": "ウィルムスウォード",
@@ -1475,7 +1635,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040014100.png",
-        "en": "ウィルムスウォード"
+        "en": "Wyrmsword"
     },
     "真・氷逆天の戦棍": {
         "ja": "真・氷逆天の戦棍",
@@ -1493,7 +1653,7 @@
         "hplv100": "260",
         "attacklv100": "1940",
         "imageURL": "./imgs/1040413100.png",
-        "en": "真・氷逆天の戦棍"
+        "en": "True Glacial Dream Staff"
     },
     "六道・氷逆天の戦棍": {
         "ja": "六道・氷逆天の戦棍",
@@ -1509,7 +1669,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040413000.png",
-        "en": "六道・氷逆天の戦棍"
+        "en": "Xeno Glacial Dream Staff"
     },
     "[守護剣]ブルトガング": {
         "ja": "[守護剣]ブルトガング",
@@ -1527,7 +1687,7 @@
         "hplv100": "234",
         "attacklv100": "2790",
         "imageURL": "./imgs/1040008700.png",
-        "en": "Blutgang"
+        "en": "[Skybound] Blutgang"
     },
     "武王の鉄剣": {
         "ja": "武王の鉄剣",
@@ -1543,7 +1703,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040908500.png",
-        "en": "武王の鉄剣"
+        "en": "Martial Steel of the Sovereign"
     },
     "十六夜": {
         "ja": "十六夜",
@@ -1559,7 +1719,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040908400.png",
-        "en": "十六夜"
+        "en": "Izayoi"
     },
     "[久遠]エターナル・ラヴ": {
         "ja": "[久遠]エターナル・ラヴ",
@@ -1577,7 +1737,7 @@
         "hplv100": "263",
         "attacklv100": "2645",
         "imageURL": "./imgs/1040105400.png",
-        "en": "Eternal Love"
+        "en": "[Skybound] Eternal Love"
     },
     "[真理焔]メビウス": {
         "ja": "[真理焔]メビウス",
@@ -1595,7 +1755,7 @@
         "hplv100": "241",
         "attacklv100": "2230",
         "imageURL": "./imgs/1040802100.png",
-        "en": "Mobius Strip"
+        "en": "[Skybound] Mobius Strip"
     },
     "ゴシックカトラリー": {
         "ja": "ゴシックカトラリー",
@@ -1611,7 +1771,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040609000.png",
-        "en": "ゴシックカトラリー"
+        "en": "Gothic Cutlery"
     },
     "トリートスティック": {
         "ja": "トリートスティック",
@@ -1627,7 +1787,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040412900.png",
-        "en": "トリートスティック"
+        "en": "Trick Stick"
     },
     "[模造鍵]封印の杖": {
         "ja": "[模造鍵]封印の杖",
@@ -1645,7 +1805,7 @@
         "hplv100": "225",
         "attacklv100": "1750",
         "imageURL": "./imgs/1040412800.png",
-        "en": "[模造鍵]封印の杖"
+        "en": "[Skybound] Sealing Staff"
     },
     "封印の杖": {
         "ja": "封印の杖",
@@ -1661,7 +1821,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040412800.png",
-        "en": "封印の杖"
+        "en": "Sealing Staff"
     },
     "シャローム・ボウ": {
         "ja": "シャローム・ボウ",
@@ -1677,7 +1837,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040708100.png",
-        "en": "シャローム・ボウ"
+        "en": "Sharom Bow"
     },
     "フェアネスマーク": {
         "ja": "フェアネスマーク",
@@ -1693,7 +1853,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040011000.png",
-        "en": "フェアネスマーク"
+        "en": "Symbol of Justice"
     },
     "モンタギュオウス": {
         "ja": "モンタギュオウス",
@@ -1725,7 +1885,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040608900.png",
-        "en": "ドラグクロー"
+        "en": "Draco Claw"
     },
     "グリダーヴォル": {
         "ja": "グリダーヴォル",
@@ -1757,7 +1917,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040411400.png",
-        "en": "マナリアンホーリーロッド"
+        "en": "Mysterian Holy Scepter"
     },
     "[天雲宝]ヘヴンズクラウド": {
         "ja": "[天雲宝]ヘヴンズクラウド",
@@ -1775,7 +1935,7 @@
         "hplv100": "239",
         "attacklv100": "2405",
         "imageURL": "./imgs/1040103800.png",
-        "en": "Heaven's Cloud"
+        "en": "[Skybound] Heaven's Cloud"
     },
     "三日月宗近": {
         "ja": "三日月宗近",
@@ -1791,7 +1951,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040908200.png",
-        "en": "三日月宗近"
+        "en": "Mikazuki Munechika"
     },
     "[天月]三日月宗近": {
         "ja": "[天月]三日月宗近",
@@ -1809,7 +1969,7 @@
         "hplv100": "151",
         "attacklv100": "2142",
         "imageURL": "./imgs/1040908200.png",
-        "en": "[天月]三日月宗近"
+        "en": "[Skybound] Mikazuki Munechika"
     },
     "鶴丸国永": {
         "ja": "鶴丸国永",
@@ -1825,7 +1985,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040908300.png",
-        "en": "鶴丸国永"
+        "en": "Tsurumaru Kuninaga"
     },
     "[稀由]鶴丸国永": {
         "ja": "[稀由]鶴丸国永",
@@ -1843,7 +2003,7 @@
         "hplv100": "153",
         "attacklv100": "2132",
         "imageURL": "./imgs/1040908300.png",
-        "en": "[稀由]鶴丸国永"
+        "en": "[Skybound] Tsurumaru Kuninaga"
     },
     "[魔封杖]ガンバンテイン": {
         "ja": "[魔封杖]ガンバンテイン",
@@ -2991,7 +3151,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040108700.png",
-        "en": "パラゾニウム"
+        "en": "Parazonium"
     },
     "[蒲公英]ダンデライオン": {
         "ja": "[蒲公英]ダンデライオン",
@@ -3239,7 +3399,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040409300.png",
-        "en": "ルナのおともだち"
+        "en": "Luna's Friend"
     },
     "スプリットエンド": {
         "ja": "スプリットエンド",
@@ -3507,7 +3667,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040207000.png",
-        "en": "エデン"
+        "en": "Eden"
     },
     "ゲイダーグ": {
         "ja": "ゲイダーグ",
@@ -4875,7 +5035,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040008700.png",
-        "en": "ブルトガング"
+        "en": "Blutgang"
     },
     "[焔ノ剣]S・D": {
         "ja": "[焔ノ剣]S・D",
@@ -5403,7 +5563,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040103800.png",
-        "en": "ヘヴンズクラウド"
+        "en": "Heaven's Cloud"
     },
     "秘丹弥虚羅多包丁": {
         "ja": "秘丹弥虚羅多包丁",
@@ -5435,7 +5595,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040105400.png",
-        "en": "エターナル・ラヴ"
+        "en": "Eternal Love"
     },
     "[真闇葬]ミセリコルデ": {
         "ja": "[真闇葬]ミセリコルデ",
@@ -7485,7 +7645,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040403800.png",
-        "en": "カーラウロプス"
+        "en": "Kalaurops"
     },
     "[福鸚鵡]ゴトルベルケーン": {
         "ja": "[福鸚鵡]ゴトルベルケーン",
@@ -8145,7 +8305,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040502400.png",
-        "en": "ヴリスラグナ"
+        "en": "Vlisragna"
     },
     "ベネディーア": {
         "ja": "ベネディーア",
@@ -8261,7 +8421,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040504300.png",
-        "en": "エーケイ・フォーエイ"
+        "en": "AK-4A"
     },
     "[祖龍銃]バハムートマズル・フツルス": {
         "ja": "[祖龍銃]バハムートマズル・フツルス",
@@ -9817,7 +9977,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040802100.png",
-        "en": "メビウス"
+        "en": "Mobius Strip"
     },
     "[伝継琴]エスカラスハープ": {
         "ja": "[伝継琴]エスカラスハープ",
@@ -10311,7 +10471,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040902100.png",
-        "en": "ドラゴンスレイヤー"
+        "en": "Dragon Slayer"
     },
     "[黒閃導]ニバンボシ": {
         "ja": "[黒閃導]ニバンボシ",
