@@ -1195,6 +1195,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
 };
 
 module.exports.calcBaseATK = function(rank) {
+    if ( rank > 190 ) return 6650 + (rank - 190) * 5
     if ( rank > 175 ) return 6500 + (rank - 175) * 10
     if ( rank > 100 ) return 5000 + (rank - 100) * 20
     if ( rank > 1 ) return 1000 + rank * 40
@@ -1204,6 +1205,7 @@ module.exports.calcBaseATK = function(rank) {
 }
 
 module.exports.calcBaseHP = function(rank) {
+    if ( rank > 190 ) return 1730 + (rank - 190) * 1
     if ( rank > 175 ) return 1700 + (rank - 175) * 2
     if ( rank > 100 ) return 1400 + (rank - 100) * 4
     if ( rank > 1 ) return 600 + rank * 8
