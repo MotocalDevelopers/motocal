@@ -122,7 +122,7 @@ var Profile = React.createClass({
                         <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
                             <tr>
                                 <th className="bg-primary">Rank*</th>
-                                <td><FormControl type="number" min="1" max="200" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")} /></td>
+                                <td><FormControl type="number" min="1" max="225" value={this.state.rank} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")} /></td>
                             </tr>
                         </TextWithTooltip>
 
