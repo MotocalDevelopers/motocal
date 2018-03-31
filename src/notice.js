@@ -256,7 +256,7 @@ var Notice = React.createClass({
                     <li className="list-group-item">背水(小): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br />(baseRateは (Slv10以下) -0.3 + Slv * 1.8, (Slv10以上) 18.0 + 3.0 * (Slv - 10) / 5.0 </li>
                     <li className="list-group-item">背水(中): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br />(baseRateは (Slv10以下) -0.4 + Slv * 2.4, (Slv10以上) 24.0 + 6.0 * (Slv - 10) / 5.0 </li>
                     <li className="list-group-item">背水(大): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br />(baseRateは (Slv10以下) -0.5 + Slv * 3.0, (Slv10以上) 30.0 + 7.5 * (Slv - 10) / 5.0 </li>
-                    <li className="list-group-item">渾身(大): <a target="_blank" href="http://www.hsimyu.net/entry/2016/11/25/223209">こちらを参照</a></li>
+                    <li className="list-group-item">渾身: <a target="_blank" href="http://binarysblog.blog.fc2.com/blog-entry-1.html">こちらを参照</a></li>
                     <li className="list-group-item">攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率)) (TA→DAの順で判定、TA率が100％なら3回、TA率0％でDA率100％なら2回) </li>
                     <li className="list-group-item">技巧期待値: 通常技巧の複数発動分も計算してます</li>
                     <li className="list-group-item">基礎HP: 600 + 8 * rank(100まで) + 4 * (rank - 100)</li>
