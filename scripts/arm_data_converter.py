@@ -571,6 +571,7 @@ skillnamelist["strengthL"] = {
     u"竜伐の心得": "wind",
     u"アーキテクト・ATK II": "dark",
     u"天の理": "light",
+    u"超壊獣デスパワーZ": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {
