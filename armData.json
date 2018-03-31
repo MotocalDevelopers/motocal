@@ -16,7 +16,7 @@
         "attacklv100": 2040,
         "hplv150": 320,
         "attacklv150": 2410,
-        "imageURL": "./imgs/1040413400.png",
+        "imageURL": "./imgs/1040413400_note.png",
         "en": "Lunatic Broom [Element Changed]"
     },
     "リディル・属性変更": {
@@ -36,7 +36,7 @@
         "attacklv100": 2405,
         "hplv150": 240,
         "attacklv150": 2830,
-        "imageURL": "./imgs/1040014400.png",
+        "imageURL": "./imgs/1040014400_note.png",
         "en": "Ridill [Element Changed]"
     },
     "[5凸]シュヴァリエソード・マグナ": {
@@ -1262,7 +1262,7 @@
         "attacklv100": 2189,
         "hplv150": 290,
         "attacklv150": 2580,
-        "imageURL": "./imgs/1040209700.png",
+        "imageURL": "./imgs/1040209700_note.png",
         "en": "Helmwige [Element Changed]"
     },
     "シャンゼリゼ・属性変更": {
@@ -1282,7 +1282,7 @@
         "attacklv100": 2100,
         "hplv150": 266,
         "attacklv150": 2480,
-        "imageURL": "./imgs/1040807600.png",
+        "imageURL": "./imgs/1040807600_note.png",
         "en": "Chanteuse Angelique [Element Changed]"
     },
     "メース・属性変更": {
@@ -1302,7 +1302,7 @@
         "attacklv100": 2388,
         "hplv150": 256,
         "attacklv150": 2810,
-        "imageURL": "./imgs/1040707500.png",
+        "imageURL": "./imgs/1040707500_note.png",
         "en": "Maverick [Element Changed]"
     },
     "チャンピオンベルト・属性変更": {
@@ -1322,7 +1322,7 @@
         "attacklv100": 2245,
         "hplv150": 277,
         "attacklv150": 2640,
-        "imageURL": "./imgs/1040609100.png",
+        "imageURL": "./imgs/1040609100_note.png",
         "en": "Championship Belt [Element Changed]"
     },
     "浄瑠璃・属性変更": {
@@ -1342,7 +1342,7 @@
         "attacklv100": 2571,
         "hplv150": 200,
         "attacklv150": 3030,
-        "imageURL": "./imgs/1040508000.png",
+        "imageURL": "./imgs/1040508000_note.png",
         "en": "The Storyteller [Element Changed]"
     },
     "カオスクリエイター・属性変更": {
@@ -1362,7 +1362,7 @@
         "attacklv100": 2301,
         "hplv150": 265,
         "attacklv150": 2710,
-        "imageURL": "./imgs/1040013200.png",
+        "imageURL": "./imgs/1040013200_note.png",
         "en": "Original Sin [Element Changed]"
     },
     "デモンズシャフト・属性変更": {
@@ -1382,7 +1382,7 @@
         "attacklv100": 2105,
         "hplv150": 265,
         "attacklv150": 2570,
-        "imageURL": "./imgs/1040412200.png",
+        "imageURL": "./imgs/1040412200_note.png",
         "en": "Demonic Longstaff [Element Changed]"
     },
     "聖者の行進・属性変更": {
@@ -1402,7 +1402,7 @@
         "attacklv100": 2420,
         "hplv150": 332,
         "attacklv150": 2420,
-        "imageURL": "./imgs/1040411600.png",
+        "imageURL": "./imgs/1040411600_note.png",
         "en": "Hallowed Pilgrimage [Element Changed]"
     },
     "スパルタン・サイフォス・属性変更": {
@@ -1422,7 +1422,7 @@
         "attacklv100": 2405,
         "hplv150": 244,
         "attacklv150": 2810,
-        "imageURL": "./imgs/1040012600.png",
+        "imageURL": "./imgs/1040012600_note.png",
         "en": "Guardian's Xiphos [Element Changed]"
     },
     "ベルセルク・オクス・属性変更": {
@@ -1438,7 +1438,7 @@
         "attack": "244",
         "slvmax": 10,
         "maxlv": 100,
-        "imageURL": "./imgs/1040308400.png",
+        "imageURL": "./imgs/1040308400_note.png",
         "en": "Berserker's Barrage [Element Changed]"
     },
     "[己焔槍]ルーン": {

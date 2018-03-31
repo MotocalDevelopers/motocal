@@ -728,6 +728,7 @@ def type_replace(armtype):
 
 def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = True):
     key_pattern = re.compile("\d+")
+    key_pattern = re.compile("(\d+.*\.png)")
     skill_pattern = re.compile("\[\[([\W\w]+)\>")
     jougen_4_pattern = re.compile(u"○")
     jougen_5_pattern = re.compile(u"◎")
@@ -743,7 +744,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
         else:
             m = key_pattern.search(row[1])
             if m:
-                key = row[1][m.start():m.end()]
+                key = m.group(1)
 
             name = row[2].replace("&br;", "")
             name = name.replace("[]", "")
@@ -833,7 +834,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
                     newdict["slvmax"] = 10
                     newdict["maxlv"] = 75
 
-            newdict["imageURL"] = "./imgs/" + key + ".png"
+            newdict["imageURL"] = "./imgs/" + key
 
             if name in translation:
                 newdict["en"] = translation[name]
