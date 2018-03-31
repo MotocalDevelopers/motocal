@@ -1797,11 +1797,15 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                     haisuiBuff.push({normalHaisui: 1.0, magnaHaisui: 1.0, normalKonshin: 1.0, magnaKonshin: 1.0, exHaisui: 1.0, charaHaisui: charaHaisuiBuff[k]})
                 }
 
+                // オメガ武器スキルが重複して計算されるのを防ぐ
+                var omegaHaisuiIncluded = false;
+                var omegaKonshinIncluded = false;
+
                 // 武器データ計算
                 for (var i = 0; i < arml.length; i++) {
                     var arm = arml[i];
-                    var omegaHaisuiIncluded = false;
-                    var omegaKonshinIncluded = false;
+
+                    if (storedCombinations[j][i] === 0) continue;
 
                     for (var jj = 1; jj <= 2; jj++) {
                         var skillname = '';
