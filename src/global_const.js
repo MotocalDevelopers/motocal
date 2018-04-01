@@ -235,6 +235,7 @@ var skilltypes = {
     "magnaHaisuiM": { name: "マグナ背水(中)", type: "magnaHaisui", amount: "M" },
     "magnaHaisuiL": { name: "マグナ背水(大)", type: "magnaHaisui", amount: "L" },
     "magnaKonshinM": { name: "マグナ渾身(中)", type: "magnaKonshin", amount: "M" },
+    "magnaLesserSanteS": { name: "マグナ破壊(小)", type: "magnaLesserSante", amount: "S" },
     "magnaSanteL": { name: "マグナ三手(大)", type: "magnaSante", amount: "L" },
     "magnaKatsumiM": { name: "マグナ克己(中)", type: "magnaKatsumi", amount: "M" },
     "magnaKamui": { name: "マグナ神威(小)", type: "magnaKamui", amount: "S" },
@@ -648,6 +649,7 @@ var skillAmounts = {
         "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
     },
     "magnaSante": {
+        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
         "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
     },
     "normalCritical": {
@@ -668,6 +670,7 @@ var skillAmounts = {
         "S": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0]
     },
     "magnaRanbu": {
+        "S": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
         "M": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
     },
     // 鷲王の結界

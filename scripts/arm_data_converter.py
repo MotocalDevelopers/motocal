@@ -444,6 +444,15 @@ skillnamelist["magnaBoukun"] = {
     u"黒霧方陣・暴君": "dark"
 }
 
+skillnamelist["magnaLesserSanteS"] = {
+    u"機炎方陣・破壊": "fire",
+    u"海神方陣・破壊": "water",
+    u"創樹方陣・破壊": "earth",
+    u"嵐竜方陣・破壊": "wind",
+    u"騎解方陣・破壊": "light",
+    u"黒霧方陣・破壊": "dark"
+}
+
 skillnamelist["magnaSanteL"] = {
     u"機炎方陣・三手": "fire",
     u"海神方陣・三手": "water",
@@ -571,6 +580,7 @@ skillnamelist["strengthL"] = {
     u"竜伐の心得": "wind",
     u"アーキテクト・ATK II": "dark",
     u"天の理": "light",
+    u"超壊獣デスパワーZ": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {

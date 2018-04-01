@@ -1121,6 +1121,8 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         } else if(stype == 'magnaBoukun') {
                             totals[key]["HPdebuff"] += comb[i] * 0.10
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                        } else if (stype == 'magnaLesserSante') {
+                            totals[key]["magnaLesserSante"] += comb[i] * skillAmounts["magnaRanbu"][amount][slv - 1];
                         } else if (stype == 'magnaRanbu') {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             totals[key]["magnaLesserSante"] += comb[i] * skillAmounts["magnaRanbu"][amount][slv - 1];

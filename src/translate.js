@@ -1340,6 +1340,10 @@ var multiLangData = {
         "en": "Magna Stamina (M)",
         "ja": "マグナ渾身(中)",
     },
+    "マグナ破壊(小)": {
+        "en": "Magna Devastation (S)",
+        "ja": "マグナ破壊(小)",
+    },
     "マグナ三手(大)": {
         "en": "Magna Trium (L)",
         "ja": "マグナ三手(大)",

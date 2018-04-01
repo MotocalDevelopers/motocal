@@ -189,6 +189,44 @@
         "imageURL": "./charaimgs/3040039000_03.png",
         "en": "[5★] Tien"
     },
+    "シロウ(SSR)": {
+        "name": "シロウ(SSR)",
+        "ja": "シロウ(SSR)",
+        "element": "dark",
+        "type": "defense",
+        "race": "human",
+        "fav1": "katana",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "350",
+        "hp": "1850",
+        "minattack": "1400",
+        "attack": "7550",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040156000_01.png",
+        "en": "Nicholas (SSR)"
+    },
+    "ロボミ(SSR)": {
+        "name": "ロボミ(SSR)",
+        "ja": "ロボミ(SSR)",
+        "element": "light",
+        "type": "attack",
+        "race": "unknown",
+        "fav1": "gun",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "232",
+        "hp": "1260",
+        "minattack": "1875",
+        "attack": "9700",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040155000_01.png",
+        "en": "Robomi (SSR)"
+    },
     "ジャンヌダルク(水着ver)": {
         "name": "ジャンヌダルク(水着ver)",
         "ja": "ジャンヌダルク(水着ver)",
@@ -1264,9 +1302,9 @@
         "support": "none",
         "support2": "none",
         "minhp": "220",
-        "hp": "1160",
+        "hp": "1380",
         "minattack": "1580",
-        "attack": "8400",
+        "attack": "9980",
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040019000_01.png",
@@ -4595,7 +4633,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030079000_01.png",
-        "en": "Robomi"
+        "en": "Robomi (Event)"
     },
     "ミラ＝マクスウェル": {
         "name": "ミラ＝マクスウェル",
@@ -5235,9 +5273,9 @@
         "support": "none",
         "support2": "none",
         "minhp": "300",
-        "hp": "1515",
+        "hp": "1815",
         "minattack": "1100",
-        "attack": "5500",
+        "attack": "6600",
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030111000_01.png",
@@ -5811,7 +5849,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030141000_01.png",
-        "en": "Nicholas"
+        "en": "Nicholas (Event)"
     },
     "ナーヴェ": {
         "name": "ナーヴェ",
