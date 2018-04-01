@@ -444,7 +444,7 @@ skillnamelist["magnaBoukun"] = {
     u"黒霧方陣・暴君": "dark"
 }
 
-skillnamelist["magnaLesserSanteS"] = {
+skillnamelist["magnaHakaiS"] = {
     u"機炎方陣・破壊": "fire",
     u"海神方陣・破壊": "water",
     u"創樹方陣・破壊": "earth",

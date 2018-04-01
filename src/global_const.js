@@ -235,7 +235,7 @@ var skilltypes = {
     "magnaHaisuiM": { name: "マグナ背水(中)", type: "magnaHaisui", amount: "M" },
     "magnaHaisuiL": { name: "マグナ背水(大)", type: "magnaHaisui", amount: "L" },
     "magnaKonshinM": { name: "マグナ渾身(中)", type: "magnaKonshin", amount: "M" },
-    "magnaLesserSanteS": { name: "マグナ破壊(小)", type: "magnaLesserSante", amount: "S" },
+    "magnaHakaiS": { name: "マグナ破壊(小)", type: "magnaHakai", amount: "S" },
     "magnaSanteL": { name: "マグナ三手(大)", type: "magnaSante", amount: "L" },
     "magnaKatsumiM": { name: "マグナ克己(中)", type: "magnaKatsumi", amount: "M" },
     "magnaKamui": { name: "マグナ神威(小)", type: "magnaKamui", amount: "S" },
@@ -670,8 +670,10 @@ var skillAmounts = {
         "S": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0]
     },
     "magnaRanbu": {
-        "S": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
         "M": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
+    },
+    "magnaHakai": {
+        "S": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
     },
     // 鷲王の結界
     "washiouKekkai": {
