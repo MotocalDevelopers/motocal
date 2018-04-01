@@ -524,7 +524,7 @@
         "element": "fire",
         "type": "spear",
         "skill1": "magnaM",
-        "skill2": "magnaSanteS",
+        "skill2": "magnaLesserSanteS",
         "element2": "fire",
         "minhp": "37",
         "minattack": "355",
