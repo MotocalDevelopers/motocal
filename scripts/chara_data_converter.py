@@ -142,7 +142,7 @@ def get_value(value_str):
 
 def processCSVdata(csv_file_name, json_data, image_url_list):
     key_pattern = re.compile("(\d+_\d+\.png)")
-    br_pattern = re.compile("(\W+)&br;(\W+)")
+    br_pattern = re.compile("(\w+)&br;(\w+)")
     support_pattern = re.compile("([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \(")
 

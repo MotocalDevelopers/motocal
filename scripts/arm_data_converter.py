@@ -577,10 +577,12 @@ skillnamelist["strengthL"] = {
     u"闇の力を秘めし鍵": "dark",
     u"狐火の閃揺": "fire",
     u"肉削ぐ撓刃": "wind",
-    u"竜伐の心得": "wind",
+    u"竜伐の心得": "earth",
     u"アーキテクト・ATK II": "dark",
     u"天の理": "light",
     u"超壊獣デスパワーZ": "dark",
+    u"ウィーバースタンス": "wind",
+    u"阿笠博士の発明品": "light",
 }
 
 skillnamelist["exATKandHPM"] = {
