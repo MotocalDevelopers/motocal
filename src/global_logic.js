@@ -495,9 +495,9 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
 
         // 奥義ダメージ上限UP = 全体バフ + 個人バフ + スキル + ダメージ上限UP分
         // 奥義ダメージのスキル分上限は30%?
-        var ougiDamageLimitBySkill = totals[key]["ougiDamageLimit"] + totals[key]["magnaOugiDamageLimit"] * totalSummon["magna"]
-        if (ougiDamageLimitBySkill > 0.30) ougiDamageLimitBySkill = 0.30
-        var ougiDamageLimit = buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"] + ougiDamageLimitBySkill
+        var ougiDamageLimitByExceed = (totals[key]["ougiDamageLimit"] > 0.30) ? 0.30 : totals[key]["ougiDamageLimit"]
+        var ougiDamageLimitByMagna = (totals[key]["magnaOugiDamageLimit"] * totalSummon["magna"] > 0.30) ? 0.30 : totals[key]["magnaOugiDamageLimit"] * totalSummon["magna"]
+        var ougiDamageLimit = buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"] + ougiDamageLimitByMagna + ougiDamageLimitByExceed
 
         // damageは追加ダメージなしの単攻撃ダメージ(減衰・技巧補正あり)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, additionalDamage, damageUP, damageLimit)
