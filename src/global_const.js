@@ -251,6 +251,7 @@ var skilltypes = {
     "magnaSetsunaS": { name: "マグナ刹那(小)", type: "magnaSetsuna", amount: "S" },
     "magnaSetsuna": { name: "マグナ刹那(中)", type: "magnaSetsuna", amount: "M" },
     "magnaGunshinS": { name: "マグナ軍神(小)", type: "magnaGunshin", amount: "S" },
+    "magnaHissatsuM": { name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M" },
     "unknownM": { name: "アンノウンATK・I", type: "unknown", amount: "M" },
     "unknownL": { name: "アンノウンATK・II", type: "unknown", amount: "L" },
     "strengthHaisuiM": { name: "EX背水(中)", type: "exHaisui", amount: "M" },
@@ -674,6 +675,9 @@ var skillAmounts = {
     },
     "magnaHakai": {
         "S": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+    },
+    "magnaHissatsu": {
+        "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
     // 鷲王の結界
     "washiouKekkai": {

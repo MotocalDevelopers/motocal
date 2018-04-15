@@ -265,6 +265,10 @@ var multiLangData = {
         "en": "Used on the expected turn damage calculation.",
         "ja": "奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
     },
+    "奥義ダメージアップ": {
+        "en": "Ougi Damage UP",
+        "ja": "奥義ダメージUP",
+    },
     "ダメージ上限アップ": {
         "en": "Damage Limit Buff",
         "ja": "ダメージ上限アップ",
@@ -275,7 +279,7 @@ var multiLangData = {
     },
     "奥義ダメージ上限アップ": {
         "en": "Ougi Damage Limit Buff",
-        "ja": "奥義ダメージ上限アップ",
+        "ja": "奥義ダメージ上限UP",
     },
     "奥義ダメージ上限アップ説明": {
         "en": "It is used to calc the Ougi damage.",
@@ -1383,6 +1387,10 @@ var multiLangData = {
     "マグナ軍神(小)": {
         "en": "Magna Gunshin? (S)",
         "ja": "マグナ軍神(小)",
+    },
+    "マグナ必殺(中)": {
+        "en": "Magna Hissatsu? (M)",
+        "ja": "マグナ必殺(中)",
     },
     "アンノウンATK・I": {
         "en": "Unknown ATK I",
