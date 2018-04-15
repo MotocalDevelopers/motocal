@@ -233,6 +233,15 @@ skillnamelist["normalMusouM"] = {
     u"憎悪の無双": "dark"
 }
 
+skillnamelist["normalHiouM"] = {
+    u"業火の秘奥": "fire",
+    u"渦潮の秘奥": "water",
+    u"大地の秘奥": "earth",
+    u"竜巻の秘奥": "wind",
+    u"雷電の秘奥": "light",
+    u"憎悪の秘奥": "dark"
+}
+
 # normalS
 skillnamelist["normalS"] = {
     u"火の攻刃": "fire",
@@ -313,6 +322,15 @@ skillnamelist["normalRanbuS"] = {
     u"風の乱舞": "wind",
     u"光の乱舞": "light",
     u"闇の乱舞": "dark"
+}
+
+skillnamelist["normalHiouS"] = {
+    u"火の秘奥": "fire",
+    u"水の秘奥": "water",
+    u"土の秘奥": "earth",
+    u"風の秘奥": "wind",
+    u"光の秘奥": "light",
+    u"闇の秘奥": "dark"
 }
 
 # magna II
