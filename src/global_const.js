@@ -266,6 +266,7 @@ var skilltypes = {
     "normalDamageLimit7": { name: "通常上限UP(7.0%)", type: "normalDamageLimit", amount: "M" },
     "normalDamageLimit10": { name: "通常上限UP(10%)", type: "normalDamageLimit", amount: "L" },
     "ougiDamageLimit10": { name: "奥義上限UP(10%)", type: "ougiDamageLimit", amount: "L" },
+    "ougiDamageLimitExceedM": { name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M" },
     "normalHPS": { name: "通常守護(小)", type: "normalHP", amount: "S" },
     "normalHPM": { name: "通常守護(中)", type: "normalHP", amount: "M" },
     "normalHPL": { name: "通常守護(大)", type: "normalHP", amount: "L" },
@@ -698,6 +699,9 @@ var skillAmounts = {
         "S": 0.025,
         "M": 0.07,
         "L": 0.1,
+    },
+    "ougiDamageLimitExceed": {
+        "M": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]
     },
 }
 

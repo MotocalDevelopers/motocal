@@ -709,7 +709,7 @@ skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
 }
 
-skillnamelist["ougiDamageLimit10"] = {
+skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",
     u"イクシード・ダーク": "dark",

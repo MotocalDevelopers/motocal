@@ -1752,6 +1752,10 @@ var multiLangData = {
         "en": "Ougi Limit UP(10%)",
         "ja": "奥義上限UP(10%)",
     },
+    "奥義上限UP(イクシード)": {
+        "en": "Ougi Limit UP (Exceed)",
+        "ja": "奥義上限UP(イクシード)",
+    },
     // 拡張スキル
     "通常渾身(大)(神石加護無効)": {
         "en": "Normal Stamina (L) (No Summon Aura)",
