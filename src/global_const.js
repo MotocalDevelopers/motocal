@@ -229,6 +229,8 @@ var skilltypes = {
     "normalCriticalL": { name: "通常技巧(大)", type: "normalCritical", amount: "L" },
     "normalSetsunaS": { name: "通常刹那(小)", type: "normalSetsuna", amount: "S" },
     "normalSetsuna": { name: "通常刹那(中)", type: "normalSetsuna", amount: "M" },
+    "normalHiouS": { name: "通常秘奥(小)", type: "normalHiou", amount: "S" },
+    "normalHiouM": { name: "通常秘奥(中)", type: "normalHiou", amount: "M" },
     "magnaM": { name: "マグナ攻刃", type: "magna", amount: "M" },
     "magnaL": { name: "マグナ攻刃II", type: "magna", amount: "L" },
     "magnaHaisuiS": { name: "マグナ背水(小)", type: "magnaHaisui", amount: "S" },
@@ -675,6 +677,10 @@ var skillAmounts = {
     },
     "magnaHakai": {
         "S": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+    },
+    "normalHiou": {
+        "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5],
+        "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
     "magnaHissatsu": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]

@@ -1320,6 +1320,14 @@ var multiLangData = {
         "en": "Normal Fandango (S)",
         "ja": "通常乱舞(小)",
     },
+    "通常秘奥(小)": {
+        "en": "Normal Hiou? (S)",
+        "ja": "通常秘奥(小)",
+    },
+    "通常秘奥(中)": {
+        "en": "Normal Hiou? (M)",
+        "ja": "通常秘奥(中)",
+    },
     "マグナ攻刃": {
         "en": "Magna Might I",
         "ja": "マグナ攻刃",
