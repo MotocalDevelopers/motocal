@@ -505,7 +505,7 @@ var ResultList = React.createClass({
                                 <td onClick={this.handleEvent.bind(this, "switchCharaPureDamage")} className={(this.state.switchCharaPureDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ</td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")} className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ダメージ</td>
                             </tr><tr>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaOugiGage")} className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ゲージ上昇量</td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaOugiGage")} className={(this.state.switchCharaOugiGage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ゲージ上昇量</td>
                                 <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                                 <td onClick={this.handleEvent.bind(this, "switchDebuffResistance")} className={(this.state.switchDebuffResistance == 1) ? "display-checked" : "display-unchecked"}> 弱体耐性率</td>
                                 <td></td>
