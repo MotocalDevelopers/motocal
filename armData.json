@@ -4615,7 +4615,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040506100.png",
-        "en": "[Skybound] Spymur's Vision"
+        "en": "Spymur's Vision"
     },
     "インドラリム": {
         "ja": "インドラリム",
@@ -9118,7 +9118,7 @@
         "element": "dark",
         "type": "gun",
         "skill1": "normalSanteL",
-        "skill2": "normalHaisuiS",
+        "skill2": "non",
         "element2": "dark",
         "minhp": "20",
         "minattack": "375",
@@ -9129,8 +9129,8 @@
         "imageURL": "./imgs/1040506000.png",
         "en": "Cerberus Order"
     },
-    "[遊獣笛]ケルベロス・オーダー": {
-        "ja": "[遊獣笛]ケルベロス・オーダー",
+    "[4凸]ケルベロス・オーダー": {
+        "ja": "[4凸]ケルベロス・オーダー",
         "element": "dark",
         "type": "gun",
         "skill1": "normalSanteL",
@@ -9145,7 +9145,7 @@
         "hplv100": "142",
         "attacklv100": "2215",
         "imageURL": "./imgs/1040506000.png",
-        "en": "[Skybound] Cerberus Order"
+        "en": "[4★] Cerberus Order"
     },
     "獅子王戦拳": {
         "ja": "獅子王戦拳",
