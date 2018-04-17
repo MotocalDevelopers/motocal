@@ -1,4 +1,38 @@
 {
+    "[4凸]刃鏡片": {
+        "ja": "[4凸]刃鏡片",
+        "element": "earth",
+        "type": "dagger",
+        "skill1": "normalMusouL",
+        "skill2": "normalBladeWorld",
+        "element2": "earth",
+        "minhp": "42",
+        "minattack": "428",
+        "hp": "330",
+        "attack": "3180",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "272",
+        "attacklv100": "2630",
+        "imageURL": "./imgs/1040110600.png",
+        "en": "[4★] Mirror-Blade Shard"
+    },
+    "刃鏡片": {
+        "ja": "刃鏡片",
+        "element": "earth",
+        "type": "dagger",
+        "skill1": "normalMusouL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "42",
+        "minattack": "428",
+        "hp": "272",
+        "attack": "2630",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040110600.png",
+        "en": "Mirror-Blade Shard"
+    },
     "キック力増強シューズ": {
         "ja": "キック力増強シューズ",
         "element": "light",
@@ -11293,8 +11327,26 @@
         "imageURL": "./imgs/1040905800.png",
         "en": "Wood Sword"
     },
-    "[聖王剣]エクスカリバー・属性変更": {
-        "ja": "[聖王剣]エクスカリバー・属性変更",
+    "[4凸]エクスカリバー・属性変更": {
+        "ja": "[4凸]エクスカリバー・属性変更",
+        "element": "all",
+        "type": "sword",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "41",
+        "minattack": "475",
+        "hp": "280",
+        "attack": "3320",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "244",
+        "attacklv100": "2848",
+        "imageURL": "./imgs/1040007500.png",
+        "en": "[4★] Excalibur"
+    },
+    "エクスカリバー・属性変更": {
+        "ja": "エクスカリバー・属性変更",
         "element": "all",
         "type": "sword",
         "skill1": "non",
@@ -11309,8 +11361,26 @@
         "imageURL": "./imgs/1040007500.png",
         "en": "Excalibur"
     },
-    "[秘劫刃]ダマスカスナイフ・属性変更": {
-        "ja": "[秘劫刃]ダマスカスナイフ・属性変更",
+    "[4凸]ダマスカスナイフ・属性変更": {
+        "ja": "[4凸]ダマスカスナイフ・属性変更",
+        "element": "all",
+        "type": "dagger",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "41",
+        "minattack": "472",
+        "hp": "560",
+        "attack": "3230",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "267",
+        "attacklv100": "2732",
+        "imageURL": "./imgs/1040106600.png",
+        "en": "[4★] Damascus Knife"
+    },
+    "ダマスカスナイフ・属性変更": {
+        "ja": "ダマスカスナイフ・属性変更",
         "element": "all",
         "type": "dagger",
         "skill1": "non",
@@ -11325,8 +11395,26 @@
         "imageURL": "./imgs/1040106600.png",
         "en": "Damascus Knife"
     },
-    "[覇滅槍]ゲイボルグ・属性変更": {
-        "ja": "[覇滅槍]ゲイボルグ・属性変更",
+    "[4凸]ゲイボルグ・属性変更": {
+        "ja": "[4凸]ゲイボルグ・属性変更",
+        "element": "all",
+        "type": "spear",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "45",
+        "minattack": "454",
+        "hp": "340",
+        "attack": "3060",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "289",
+        "attacklv100": "2624",
+        "imageURL": "./imgs/1040205500.png",
+        "en": "[4★] Gae Bulg"
+    },
+    "ゲイボルグ・属性変更": {
+        "ja": "ゲイボルグ・属性変更",
         "element": "all",
         "type": "spear",
         "skill1": "non",
@@ -11340,6 +11428,24 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040205500.png",
         "en": "Gae Bulg"
+    },
+    "[4凸]ミョルニル・属性変更": {
+        "ja": "[4凸]ミョルニル・属性変更",
+        "element": "all",
+        "type": "axe",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "36",
+        "minattack": "497",
+        "hp": "250",
+        "attack": "3480",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "217",
+        "attacklv100": "2983",
+        "imageURL": "./imgs/1040304400.png",
+        "en": "[4★] Mjolnir"
     },
     "ミョルニル・属性変更": {
         "ja": "ミョルニル・属性変更",
@@ -11357,8 +11463,26 @@
         "imageURL": "./imgs/1040304400.png",
         "en": "Mjolnir"
     },
-    "[蛇天導]カドゥケウス・属性変更": {
-        "ja": "[蛇天導]カドゥケウス・属性変更",
+    "[4凸]カドゥケウス・属性変更": {
+        "ja": "[4凸]カドゥケウス・属性変更",
+        "element": "all",
+        "type": "wand",
+        "skill1": "normalKamui",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "54",
+        "minattack": "407",
+        "hp": "380",
+        "attack": "2850",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "325",
+        "attacklv100": "2441",
+        "imageURL": "./imgs/1040406900.png",
+        "en": "[4★] Caduceus"
+    },
+    "カドゥケウス・属性変更": {
+        "ja": "カドゥケウス・属性変更",
         "element": "all",
         "type": "wand",
         "skill1": "normalKamui",
@@ -11372,6 +11496,24 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040406900.png",
         "en": "Caduceus"
+    },
+    "[4凸]フライクーゲル・属性変更": {
+        "ja": "[4凸]フライクーゲル・属性変更",
+        "element": "all",
+        "type": "gun",
+        "skill1": "normalBoukunL",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "34",
+        "minattack": "509",
+        "hp": "240",
+        "attack": "3560",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "203",
+        "attacklv100": "3051",
+        "imageURL": "./imgs/1040504400.png",
+        "en": "[4★] Freikugel"
     },
     "フライクーゲル・属性変更": {
         "ja": "フライクーゲル・属性変更",
@@ -11389,6 +11531,24 @@
         "imageURL": "./imgs/1040504400.png",
         "en": "Freikugel"
     },
+    "[4凸]方天画戟・属性変更": {
+        "ja": "[4凸]方天画戟・属性変更",
+        "element": "all",
+        "type": "fist",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "43",
+        "minattack": "463",
+        "hp": "330",
+        "attack": "3120",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "278",
+        "attacklv100": "2678",
+        "imageURL": "./imgs/1040604500.png",
+        "en": "[4★] Sky Piercer"
+    },
     "方天画戟・属性変更": {
         "ja": "方天画戟・属性変更",
         "element": "all",
@@ -11404,6 +11564,24 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040604500.png",
         "en": "Sky Piercer"
+    },
+    "[4凸]ヘラクレス・属性変更": {
+        "ja": "[4凸]ヘラクレス・属性変更",
+        "element": "all",
+        "type": "bow",
+        "skill1": "normalKatsumiM",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "39",
+        "minattack": "492",
+        "hp": "300",
+        "attack": "3330",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "255",
+        "attacklv100": "2854",
+        "imageURL": "./imgs/1040703600.png",
+        "en": "[4★] Hercules"
     },
     "ヘラクレス・属性変更": {
         "ja": "ヘラクレス・属性変更",
@@ -11421,8 +11599,26 @@
         "imageURL": "./imgs/1040703600.png",
         "en": "Hercules"
     },
-    "[華薫琴]ウルリクムミ・属性変更": {
-        "ja": "[華薫琴]ウルリクムミ・属性変更",
+    "[4凸]ウルリクムミ・属性変更": {
+        "ja": "[4凸]ウルリクムミ・属性変更",
+        "element": "all",
+        "type": "music",
+        "skill1": "normalKatsumokuS",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "76",
+        "minattack": "438",
+        "hp": "310",
+        "attack": "2950",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "271",
+        "attacklv100": "2529",
+        "imageURL": "./imgs/1040803700.png",
+        "en": "[4★] Ullikummi"
+    },
+    "ウルリクムミ・属性変更": {
+        "ja": "ウルリクムミ・属性変更",
         "element": "all",
         "type": "music",
         "skill1": "normalKatsumokuS",
@@ -11437,8 +11633,26 @@
         "imageURL": "./imgs/1040803700.png",
         "en": "Ullikummi"
     },
-    "[八頸斬]天羽々斬・属性変更": {
-        "ja": "[八頸斬]天羽々斬・属性変更",
+    "[4凸]天羽々斬・属性変更": {
+        "ja": "[4凸]天羽々斬・属性変更",
+        "element": "all",
+        "type": "katana",
+        "skill1": "normalSetsuna",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "37",
+        "minattack": "504",
+        "hp": "250",
+        "attack": "3530",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "213",
+        "attacklv100": "3024",
+        "imageURL": "./imgs/1040904300.png",
+        "en": "[4★] Ameno Habakiri"
+    },
+    "天羽々斬・属性変更": {
+        "ja": "天羽々斬・属性変更",
         "element": "all",
         "type": "katana",
         "skill1": "normalSetsuna",

@@ -233,6 +233,19 @@ skillnamelist["normalMusouM"] = {
     u"憎悪の無双": "dark"
 }
 
+skillnamelist["normalMusouL"] = {
+    u"業火の無双II": "fire",
+    u"渦潮の無双II": "water",
+    u"地裂の無双II": "earth",
+    u"竜巻の無双II": "wind",
+    u"雷電の無双II": "light",
+    u"憎悪の無双II": "dark"
+}
+
+skillnamelist["normalBladeWorld"] = {
+    u"土の刃界": "earth"
+}
+
 # normalS
 skillnamelist["normalS"] = {
     u"火の攻刃": "fire",

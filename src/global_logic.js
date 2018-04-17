@@ -1073,6 +1073,11 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             for(var setu = 0; setu < comb[i]; setu++){
                                 totals[key]["normalCritical"].push({"value": skillAmounts["normalCritical"][amount][slv - 1], "attackRatio": 0.5});
                             }
+                        } else if(stype == 'normalBladeWorld') {
+                            totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
+                            for(var setu = 0; setu < comb[i]; setu++){
+                                totals[key]["normalCritical"].push({"value": skillAmounts["normalCritical"][amount][slv - 1], "attackRatio": 0.5});
+                            }
                         } else if(stype == 'normalSetsuna') {
                             for(var setu = 0; setu < comb[i]; setu++){
                                 totals[key]["normalCritical"].push({"value": skillAmounts["normalCritical"][amount][slv - 1], "attackRatio": 0.5});

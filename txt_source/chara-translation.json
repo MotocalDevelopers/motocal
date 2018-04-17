@@ -1,4 +1,5 @@
 {
+    "ブローディア": "Alexiel",
     "江戸川コナン": "Conan Edogawa",
     "シロウ(SSR)": "Nicholas (SSR)",
     "ロボミ(SSR)": "Robomi (SSR)",
@@ -315,7 +316,7 @@
     "ジン(風属性ver)": "Jin (Wind)",
     "クムユ(サマーver)": "Camieux",
     "ペンギー(ガチャSRver)": "Pengy",
-    "バロワ": "Barawa",
+    "バロワ": "Barawa (Event)",
     "ククル": "Cucuroux",
     "ダーント": "Dante",
     "パリス": "Paris",
@@ -382,5 +383,13 @@
     "フィーナ(クリスマスver)": "Feena (Holiday)",
     "マキラ(SR)": "Mahira (Event)",
     "カルバ": "Karva (SR)",
-    "ゼタ(SR)": "Zeta (Event)"
+    "ゼタ(SR)": "Zeta (Event)",
+    "イッパツ(SR)": "Ippatsu (SR)",
+    "ランドル(SR)": "Randall (SR)",
+    "ゾーイ(SR)": "Zooey (Event)",
+    "ナルメア(バレンタインver)": "Narmaya (Valentine)",
+    "ティナ(バレンタインver)": "Teena (Valentine)",
+    "ネツァワルピリ(SR)": "Nezahualpilli (SR)",
+    "安室透": "Tōru Amuro",
+    "バロワ(ガチャver)": "Barawa (SR)"
 }
