@@ -180,6 +180,7 @@ var ResultList = React.createClass({
             switchCharaCycleDamage: 0,
             switchCharaPureDamage: 0,
             switchCharaOugiDamage: 0,
+            switchCharaOugiGage: 0,
             switchAverageAttack: 1,
             switchAverageCriticalAttack: 0,
             switchTotalExpected: 0,
@@ -504,6 +505,7 @@ var ResultList = React.createClass({
                                 <td onClick={this.handleEvent.bind(this, "switchCharaPureDamage")} className={(this.state.switchCharaPureDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ</td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")} className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ダメージ</td>
                             </tr><tr>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaOugiGage")} className={(this.state.switchCharaOugiGage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ゲージ上昇量</td>
                                 <td onClick={this.handleEvent.bind(this, "switchSkillTotal")} className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値</td>
                                 <td onClick={this.handleEvent.bind(this, "switchDebuffResistance")} className={(this.state.switchDebuffResistance == 1) ? "display-checked" : "display-unchecked"}> 弱体耐性率</td>
                                 <td></td>
@@ -647,6 +649,7 @@ var ResultList = React.createClass({
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaCycleDamage")} active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaPureDamage")} active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")} active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiGage")} active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")} active={(this.state.switchSkillTotal == 1) ? true : false}>{intl.translate("スキル合計", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDebuffResistance")} active={(this.state.switchDebuffResistance == 1) ? true : false}>{intl.translate("弱体耐性率", locale)}</MenuItem>
                         </DropdownButton>
@@ -992,6 +995,17 @@ var Result = React.createClass({
                             );
                         }
                     }
+
+                    if (sw.switchCharaOugiGage) {
+                        for (key in m.data) {
+                            charaDetail[key].push(
+                                <span key={key + "-ougi-gage"} className="result-chara-detail">
+                                    <span className="label label-primary">{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</span> {m.data[key].expectedOugiGage.toFixed(2) + "%\n(" + m.data[key].expectedTurn.toFixed(2) + "T)"}&nbsp;
+                                </span>
+                            );
+                        }
+                    }
+
                     if (sw.switchChainBurst) {
                         tablebody.push(parseInt(m.data.Djeeta.averageChainBurst))
                         ++colSize;
@@ -1121,7 +1135,7 @@ var Result = React.createClass({
                             pushSkillInfoElement3("damageUP", "与ダメージ上昇", "default");
                             pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
                             pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "default");
-                            pushSkillInfoElement3("ougiDamageBuff", "奥義ダメージ", "default");
+                            pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");
 
                             charaDetail[key].push( <div key={key + "-mainSkillInfo"} >{mainSkillInfo}</div>);
                             charaDetail[key].push( <div key={key + "-multipleAttackInfo"} >{multipleAttackSkillInfo}</div>);

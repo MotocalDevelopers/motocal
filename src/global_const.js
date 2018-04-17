@@ -231,6 +231,8 @@ var skilltypes = {
     "normalCriticalL": { name: "通常技巧(大)", type: "normalCritical", amount: "L" },
     "normalSetsunaS": { name: "通常刹那(小)", type: "normalSetsuna", amount: "S" },
     "normalSetsuna": { name: "通常刹那(中)", type: "normalSetsuna", amount: "M" },
+    "normalHiouS": { name: "通常秘奥(小)", type: "normalHiou", amount: "S" },
+    "normalHiouM": { name: "通常秘奥(中)", type: "normalHiou", amount: "M" },
     "magnaM": { name: "マグナ攻刃", type: "magna", amount: "M" },
     "magnaL": { name: "マグナ攻刃II", type: "magna", amount: "L" },
     "magnaHaisuiS": { name: "マグナ背水(小)", type: "magnaHaisui", amount: "S" },
@@ -253,6 +255,7 @@ var skilltypes = {
     "magnaSetsunaS": { name: "マグナ刹那(小)", type: "magnaSetsuna", amount: "S" },
     "magnaSetsuna": { name: "マグナ刹那(中)", type: "magnaSetsuna", amount: "M" },
     "magnaGunshinS": { name: "マグナ軍神(小)", type: "magnaGunshin", amount: "S" },
+    "magnaHissatsuM": { name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M" },
     "unknownM": { name: "アンノウンATK・I", type: "unknown", amount: "M" },
     "unknownL": { name: "アンノウンATK・II", type: "unknown", amount: "L" },
     "strengthHaisuiM": { name: "EX背水(中)", type: "exHaisui", amount: "M" },
@@ -265,6 +268,7 @@ var skilltypes = {
     "normalDamageLimit7": { name: "通常上限UP(7.0%)", type: "normalDamageLimit", amount: "M" },
     "normalDamageLimit10": { name: "通常上限UP(10%)", type: "normalDamageLimit", amount: "L" },
     "ougiDamageLimit10": { name: "奥義上限UP(10%)", type: "ougiDamageLimit", amount: "L" },
+    "ougiDamageLimitExceedM": { name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M" },
     "normalHPS": { name: "通常守護(小)", type: "normalHP", amount: "S" },
     "normalHPM": { name: "通常守護(中)", type: "normalHP", amount: "M" },
     "normalHPL": { name: "通常守護(大)", type: "normalHP", amount: "L" },
@@ -677,6 +681,13 @@ var skillAmounts = {
     "magnaHakai": {
         "S": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
     },
+    "normalHiou": {
+        "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5],
+        "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
+    },
+    "magnaHissatsu": {
+        "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
+    },
     // 鷲王の結界
     "washiouKekkai": {
         "M": [6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0],
@@ -690,6 +701,9 @@ var skillAmounts = {
         "S": 0.025,
         "M": 0.07,
         "L": 0.1,
+    },
+    "ougiDamageLimitExceed": {
+        "M": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]
     },
 }
 

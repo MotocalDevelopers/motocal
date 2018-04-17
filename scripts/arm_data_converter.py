@@ -242,6 +242,15 @@ skillnamelist["normalMusouL"] = {
     u"憎悪の無双II": "dark"
 }
 
+skillnamelist["normalHiouM"] = {
+    u"業火の秘奥": "fire",
+    u"渦潮の秘奥": "water",
+    u"大地の秘奥": "earth",
+    u"竜巻の秘奥": "wind",
+    u"雷電の秘奥": "light",
+    u"憎悪の秘奥": "dark"
+}
+
 skillnamelist["normalBladeWorld"] = {
     u"土の刃界": "earth"
 }
@@ -326,6 +335,15 @@ skillnamelist["normalRanbuS"] = {
     u"風の乱舞": "wind",
     u"光の乱舞": "light",
     u"闇の乱舞": "dark"
+}
+
+skillnamelist["normalHiouS"] = {
+    u"火の秘奥": "fire",
+    u"水の秘奥": "water",
+    u"土の秘奥": "earth",
+    u"風の秘奥": "wind",
+    u"光の秘奥": "light",
+    u"闇の秘奥": "dark"
 }
 
 # magna II
@@ -541,6 +559,15 @@ skillnamelist["magnaHPS"] = {
     u"黒霧方陣・不可侵": "dark"
 }
 
+skillnamelist["magnaHissatsuM"] = {
+    u"機炎方陣・必殺": "fire",
+    u"海神方陣・必殺": "water",
+    u"創樹方陣・必殺": "earth",
+    u"嵐竜方陣・必殺": "wind",
+    u"騎解方陣・必殺": "light",
+    u"黒霧方陣・必殺": "dark"
+}
+
 # アンノウン
 skillnamelist["unknownL"] = {u"アンノウン・ATK II": "unknown"}
 skillnamelist["unknownM"] = {u"アンノウン・ATK": "unknown"}
@@ -695,7 +722,7 @@ skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
 }
 
-skillnamelist["ougiDamageLimit10"] = {
+skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",
     u"イクシード・ダーク": "dark",

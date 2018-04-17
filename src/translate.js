@@ -265,6 +265,10 @@ var multiLangData = {
         "en": "Used on the expected turn damage calculation.",
         "ja": "奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
     },
+    "奥義ダメージアップ": {
+        "en": "Ougi Damage UP",
+        "ja": "奥義ダメージUP",
+    },
     "ダメージ上限アップ": {
         "en": "Damage Limit Buff",
         "ja": "ダメージ上限アップ",
@@ -275,7 +279,7 @@ var multiLangData = {
     },
     "奥義ダメージ上限アップ": {
         "en": "Ougi Damage Limit Buff",
-        "ja": "奥義ダメージ上限アップ",
+        "ja": "奥義ダメージ上限UP",
     },
     "奥義ダメージ上限アップ説明": {
         "en": "It is used to calc the Ougi damage.",
@@ -1324,6 +1328,14 @@ var multiLangData = {
         "en": "Normal Fandango (S)",
         "ja": "通常乱舞(小)",
     },
+    "通常秘奥(小)": {
+        "en": "Normal Hiou? (S)",
+        "ja": "通常秘奥(小)",
+    },
+    "通常秘奥(中)": {
+        "en": "Normal Hiou? (M)",
+        "ja": "通常秘奥(中)",
+    },
     "マグナ攻刃": {
         "en": "Magna Might I",
         "ja": "マグナ攻刃",
@@ -1391,6 +1403,10 @@ var multiLangData = {
     "マグナ軍神(小)": {
         "en": "Magna Gunshin? (S)",
         "ja": "マグナ軍神(小)",
+    },
+    "マグナ必殺(中)": {
+        "en": "Magna Hissatsu? (M)",
+        "ja": "マグナ必殺(中)",
     },
     "アンノウンATK・I": {
         "en": "Unknown ATK I",
@@ -1743,6 +1759,10 @@ var multiLangData = {
     "奥義上限UP(10%)": {
         "en": "Ougi Limit UP(10%)",
         "ja": "奥義上限UP(10%)",
+    },
+    "奥義上限UP(イクシード)": {
+        "en": "Ougi Limit UP (Exceed)",
+        "ja": "奥義上限UP(イクシード)",
     },
     // 拡張スキル
     "通常渾身(大)(神石加護無効)": {
