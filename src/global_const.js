@@ -223,7 +223,7 @@ var skilltypes = {
     "normalKatsumokuS": { name: "通常括目", type: "normalKatsumoku", amount: "S" },
     "normalRasetsuM": { name: "通常羅刹", type: "normalRasetsu", amount: "M" },
     "normalMusouM": { name: "通常無双(中)", type: "normalMusou", amount: "M" },
-    "normalMusouL": { name: "通常無双(大)", type: "normalMusou", amount: "L" },
+    "normalMusouLL": { name: "通常無双II", type: "normalMusou", amount: "LL" },
     "normalBladeWorld": { name: "刃界", type: "normalBladeWorld", amount: "S" },
     "normalRanbuS": { name: "通常乱舞(小)", type: "normalRanbu", amount: "S" },
     "normalCriticalS": { name: "通常技巧(小)", type: "normalCritical", amount: "S" },
@@ -640,6 +640,7 @@ var skillAmounts = {
         "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
         "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
         "L": [1.0, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 7.0],
+        "LL": [1.6, 2.2, 2.8, 3.4, 4.0, 4.6, 5.2, 5.8, 6.4, 7.0, 7.6, 8.2, 8.8, 9.4, 10.0],
     },
     // 仮
     "magnaNite": {

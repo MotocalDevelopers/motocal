@@ -233,7 +233,7 @@ skillnamelist["normalMusouM"] = {
     u"憎悪の無双": "dark"
 }
 
-skillnamelist["normalMusouL"] = {
+skillnamelist["normalMusouLL"] = {
     u"業火の無双II": "fire",
     u"渦潮の無双II": "water",
     u"地裂の無双II": "earth",
