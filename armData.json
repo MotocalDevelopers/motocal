@@ -10312,7 +10312,7 @@
         "element": "water",
         "type": "bow",
         "skill1": "normalKonshinL",
-        "skill2": "normalHPS",
+        "skill2": "non",
         "element2": "water",
         "minhp": "32",
         "minattack": "320",
