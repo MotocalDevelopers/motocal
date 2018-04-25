@@ -251,8 +251,13 @@ skillnamelist["normalHiouM"] = {
     u"憎悪の秘奥": "dark"
 }
 
-skillnamelist["normalBladeWorld"] = {
-    u"土の刃界": "earth"
+skillnamelist["normalJinkaiS"] = {
+    u"火の刃界": "fire",
+    u"水の刃界": "water",
+    u"土の刃界": "earth",
+    u"風の刃界": "wind",
+    u"光の刃界": "light",
+    u"闇の刃界": "dark"
 }
 
 # normalS

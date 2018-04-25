@@ -224,7 +224,7 @@ var skilltypes = {
     "normalRasetsuM": { name: "通常羅刹", type: "normalRasetsu", amount: "M" },
     "normalMusouM": { name: "通常無双(中)", type: "normalMusou", amount: "M" },
     "normalMusouLL": { name: "通常無双II", type: "normalMusou", amount: "LL" },
-    "normalBladeWorld": { name: "刃界", type: "normalBladeWorld", amount: "S" },
+    "normalJinkaiS": { name: "通常刃界(小)", type: "normalJinkai", amount: "S" },
     "normalRanbuS": { name: "通常乱舞(小)", type: "normalRanbu", amount: "S" },
     "normalCriticalS": { name: "通常技巧(小)", type: "normalCritical", amount: "S" },
     "normalCriticalM": { name: "通常技巧(中)", type: "normalCritical", amount: "M" },

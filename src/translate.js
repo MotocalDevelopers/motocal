@@ -1317,12 +1317,12 @@ var multiLangData = {
         "ja": "[未検証] 通常無双(中)",
     },
     "通常無双II": {
-        "en": "[UNVERIFIED] Normal Primacy II",
-        "ja": "[未検証] 通常無双II",
+        "en": "Normal Primacy II",
+        "ja": "通常無双II",
     },
-    "刃界": {
-        "en": "[UNVERIFIED] Normal Bladeshield",
-        "ja": "[未検証] 通常刃界",
+    "通常刃界(小)": {
+        "en": "[UNVERIFIED] Normal Bladeshield (S)",
+        "ja": "[未検証] 通常刃界(小)",
     },
     "通常乱舞(小)": {
         "en": "Normal Fandango (S)",
