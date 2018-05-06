@@ -1497,20 +1497,28 @@ var multiLangData = {
         "ja": "霧氷の追牙・肆",
     },
     "貫きの牙": {
-        "en": "Tsuranuki no Kiba",
+        "en": "Piercing Fang",
         "ja": "貫きの牙",
     },
     "貫きの牙(メイン装備時)": {
-        "en": "Tsuranuki no Kiba (main)",
+        "en": "Piercing Fang (main)",
         "ja": "貫きの牙(メイン装備時)",
     },
     "鷲王の結界": {
-        "en": "Washiou no Kekkai",
+        "en": "Royal Wing Barrier",
         "ja": "鷲王の結界",
     },
-    "舞姫の演舞": {
-        "en": "Maihime no Enbu",
-        "ja": "舞姫の演舞",
+    "舞姫の演武": {
+        "en": "Dancer's Discipline",
+        "ja": "舞姫の演武",
+    },
+    "胡蝶の剣舞": {
+        "en": "Fluttering Slash",
+        "ja": "胡蝶の剣舞",
+    },
+    "変幻自在の剣技": {
+        "en": "Phantasmagoric Fencer",
+        "ja": "変幻自在の剣技",
     },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
@@ -2221,7 +2229,7 @@ var multiLangData = {
     },
     "notice-20170725-1": {
         "en": "25/07/2017: Added new weapons. Implemented Ougi Damage Limit UP calculation. Added Primacy skill.",
-        "ja": "2017/07/25: 武器追加. 奥義上限UP計算の実装. 無双スキルと奥義上限UPと舞姫の演舞の実装.",
+        "ja": "2017/07/25: 武器追加. 奥義上限UP計算の実装. 無双スキルと奥義上限UPと舞姫の演武の実装.",
     },
     "notice-20170802-1": {
         "en": "02/08/2017: Changed damage calculation ceiling timing to match the value shown in GBF game.",
