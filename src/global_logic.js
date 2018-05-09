@@ -1192,7 +1192,7 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         } else if(stype == 'washiouKekkai'){
                             if(key == 'Djeeta') totals[key]["DAbuff"] += comb[i] * skillAmounts["washiouKekkai"][amount][slv - 1];
                         } else if(stype == 'maihimeEnbu'){
-                            // 舞姫の演舞: 通常攻刃大 + 上限アップ7%
+                            // 舞姫の演武: 通常攻刃大 + 上限アップ7%
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"]["L"][slv - 1];
                             totals[key]["normalDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"]["M"];
                             totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"]["M"];

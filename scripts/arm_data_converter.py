@@ -628,6 +628,7 @@ skillnamelist["strengthL"] = {
     u"超壊獣デスパワーZ": "dark",
     u"ウィーバースタンス": "wind",
     u"阿笠博士の発明品": "light",
+    u"サウザンド・ドリーム": "fire",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -736,7 +737,9 @@ skillnamelist["ougiDamageLimitExceedM"] = {
 # キャラ固有武器
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
-skillnamelist["maihimeEnbu"] =   {u"舞姫の演舞": "water"}
+skillnamelist["maihimeEnbu"] =   {u"舞姫の演武": "water"}
+skillnamelist["hengenKengi"] =   {u"変幻自在の剣技": "dark"}
+skillnamelist["kochoKenbu"] =   {u"胡蝶の剣舞": "earth"}
 skillnamelist["normalHPL"][u"氷晶宮の加護"] = "water"
 skillnamelist["normalL"][u"聖女の行進"] = "light"
 skillnamelist["normalL"][u"天を統べる強風"] = "wind"

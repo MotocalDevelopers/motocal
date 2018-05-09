@@ -1,4 +1,36 @@
 {
+    "ホワイトホーク": {
+        "ja": "ホワイトホーク",
+        "element": "water",
+        "type": "gun",
+        "skill1": "normalKatsumokuS",
+        "skill2": "normalM",
+        "element2": "water",
+        "minhp": "35",
+        "minattack": "424",
+        "hp": "206",
+        "attack": "2556",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040509400.png",
+        "en": "White Hawk"
+    },
+    "レッドサイクロン": {
+        "ja": "レッドサイクロン",
+        "element": "fire",
+        "type": "sword",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "22",
+        "minattack": "354",
+        "hp": "152",
+        "attack": "2122",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040015500.png",
+        "en": "Red Cyclone"
+    },
     "[4凸]刃鏡片": {
         "ja": "[4凸]刃鏡片",
         "element": "earth",
@@ -3242,24 +3274,6 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040806100.png",
         "en": "Bella Aeterna"
-    },
-    "[雅氷嵐]緋舞扇": {
-        "ja": "[雅氷嵐]緋舞扇",
-        "element": "water",
-        "type": "fist",
-        "skill1": "non",
-        "skill2": "normalHPL",
-        "element2": "fire",
-        "minhp": "44",
-        "minattack": "380",
-        "hp": "290",
-        "attack": "2730",
-        "slvmax": 15,
-        "maxlv": 150,
-        "hplv100": "252",
-        "attacklv100": "2340",
-        "imageURL": "./imgs/1040602500.png",
-        "en": "Scarlet Vane"
     },
     "[蒼導銃]ベネディーア": {
         "ja": "[蒼導銃]ベネディーア",
@@ -9447,6 +9461,24 @@
         "imageURL": "./imgs/1040602400.png",
         "en": "Fist of Bahamut Nova"
     },
+    "[4凸]緋舞扇": {
+        "ja": "[4凸]緋舞扇",
+        "element": "water",
+        "type": "fist",
+        "skill1": "maihimeEnbu",
+        "skill2": "normalHPL",
+        "element2": "fire",
+        "minhp": "44",
+        "minattack": "380",
+        "hp": "290",
+        "attack": "2730",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "252",
+        "attacklv100": "2340",
+        "imageURL": "./imgs/1040602500.png",
+        "en": "[4★] Scarlet Vane"
+    },
     "緋舞扇": {
         "ja": "緋舞扇",
         "element": "water",
@@ -10833,8 +10865,26 @@
         "imageURL": "./imgs/1040900000.png",
         "en": "[Skybound] Asura"
     },
-    "[神宝]丙子椒林剣": {
-        "ja": "[神宝]丙子椒林剣",
+    "[4凸]丙子椒林剣": {
+        "ja": "[4凸]丙子椒林剣",
+        "element": "earth",
+        "type": "katana",
+        "skill1": "kochoKenbu",
+        "skill2": "normalL",
+        "element2": "wind",
+        "minhp": "33",
+        "minattack": "440",
+        "hp": "220",
+        "attack": "3100",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "189",
+        "attacklv100": "2660",
+        "imageURL": "./imgs/1040900100.png",
+        "en": "[4★] Venustas"
+    },
+    "丙子椒林剣": {
+        "ja": "丙子椒林剣",
         "element": "earth",
         "type": "katana",
         "skill1": "normalL",
@@ -11163,8 +11213,26 @@
         "imageURL": "./imgs/1040902500.png",
         "en": "[Skybound] Ray of Zhuque"
     },
-    "[妖紅刀]不動国行": {
-        "ja": "[妖紅刀]不動国行",
+    "[4凸]不動国行": {
+        "ja": "[4凸]不動国行",
+        "element": "dark",
+        "type": "katana",
+        "skill1": "hengenKengi",
+        "skill2": "normalL",
+        "element2": "water",
+        "minhp": "29",
+        "minattack": "475",
+        "hp": "220",
+        "attack": "3200",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "188",
+        "attacklv100": "2740",
+        "imageURL": "./imgs/1040902600.png",
+        "en": "[4★] Fudo-Kuniyuki"
+    },
+    "不動国行": {
+        "ja": "不動国行",
         "element": "dark",
         "type": "katana",
         "skill1": "normalL",
