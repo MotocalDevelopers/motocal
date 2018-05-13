@@ -819,22 +819,6 @@
         "imageURL": "./imgs/1040905000.png",
         "en": "Cosmic Blade"
     },
-    "一伐槍・真": {
-        "ja": "一伐槍・真",
-        "element": "light",
-        "type": "spear",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "43",
-        "minattack": "385",
-        "hp": "260",
-        "attack": "2300",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040202100.png",
-        "en": "One-Rift Spear Sterling"
-    },
     "一伐槍・属性変更": {
         "ja": "一伐槍・属性変更",
         "element": "all",
@@ -866,22 +850,6 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040202100.png",
         "en": "One-Rift Spear [Awakened]"
-    },
-    "二王弓・真": {
-        "ja": "二王弓・真",
-        "element": "light",
-        "type": "bow",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "38",
-        "minattack": "420",
-        "hp": "230",
-        "attack": "2510",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040701000.png",
-        "en": "Two-Crown Bow Sterling"
     },
     "二王弓・属性変更": {
         "ja": "二王弓・属性変更",
@@ -915,22 +883,6 @@
         "imageURL": "./imgs/1040701000.png",
         "en": "Two-Crown Bow [Awakened]"
     },
-    "三寅斧・真": {
-        "ja": "三寅斧・真",
-        "element": "light",
-        "type": "axe",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "32",
-        "minattack": "440",
-        "hp": "192",
-        "attack": "2640",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040301600.png",
-        "en": "Three-Tiger Axe Sterling"
-    },
     "三寅斧・属性変更": {
         "ja": "三寅斧・属性変更",
         "element": "all",
@@ -962,22 +914,6 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040301600.png",
         "en": "Three-Tiger Axe [Awakened]"
-    },
-    "四天刃・真": {
-        "ja": "四天刃・真",
-        "element": "light",
-        "type": "dagger",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "40",
-        "minattack": "400",
-        "hp": "240",
-        "attack": "2400",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040102200.png",
-        "en": "Four-Sky Blade Sterling"
     },
     "四天刃・属性変更": {
         "ja": "四天刃・属性変更",
@@ -1011,22 +947,6 @@
         "imageURL": "./imgs/1040102200.png",
         "en": "Four-Sky Blade [Awakened]"
     },
-    "五神杖・真": {
-        "ja": "五神杖・真",
-        "element": "light",
-        "type": "wand",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "48",
-        "minattack": "360",
-        "hp": "288",
-        "attack": "2160",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040402000.png",
-        "en": "Five-Soul Staff Sterling"
-    },
     "五神杖・属性変更": {
         "ja": "五神杖・属性変更",
         "element": "all",
@@ -1058,22 +978,6 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040402000.png",
         "en": "Five-Soul Staff [Awakened]"
-    },
-    "六崩拳・真": {
-        "ja": "六崩拳・真",
-        "element": "light",
-        "type": "fist",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "40",
-        "minattack": "400",
-        "hp": "240",
-        "attack": "2340",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040601000.png",
-        "en": "Six-Ruin Fist Sterling"
     },
     "六崩拳・属性変更": {
         "ja": "六崩拳・属性変更",
@@ -1107,22 +1011,6 @@
         "imageURL": "./imgs/1040601000.png",
         "en": "Six-Ruin Fist [Awakened]"
     },
-    "七星剣・真": {
-        "ja": "七星剣・真",
-        "element": "light",
-        "type": "sword",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "36",
-        "minattack": "420",
-        "hp": "216",
-        "attack": "2520",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040002400.png",
-        "en": "Seven Star Sword Sterling"
-    },
     "七星剣・属性変更": {
         "ja": "七星剣・属性変更",
         "element": "all",
@@ -1154,22 +1042,6 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040002400.png",
         "en": "Seven-Star Sword [Awakened]"
-    },
-    "八命切・真": {
-        "ja": "八命切・真",
-        "element": "light",
-        "type": "katana",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "33",
-        "minattack": "413",
-        "hp": "188",
-        "attack": "2675",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040900600.png",
-        "en": "Eight-Life Katana Sterling"
     },
     "八命切・属性変更": {
         "ja": "八命切・属性変更",
@@ -1203,22 +1075,6 @@
         "imageURL": "./imgs/1040900600.png",
         "en": "Eight-Life Katana [Awakened]"
     },
-    "九界琴・真": {
-        "ja": "九界琴・真",
-        "element": "light",
-        "type": "music",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "71",
-        "minattack": "370",
-        "hp": "243",
-        "attack": "2220",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040800400.png",
-        "en": "Nine-Realm Harp Sterling"
-    },
     "九界琴・属性変更": {
         "ja": "九界琴・属性変更",
         "element": "all",
@@ -1250,22 +1106,6 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040800400.png",
         "en": "Nine-Realm Harp [Awakened]"
-    },
-    "十狼雷・真": {
-        "ja": "十狼雷・真",
-        "element": "light",
-        "type": "gun",
-        "skill1": "normalL",
-        "skill2": "non",
-        "element2": "light",
-        "minhp": "30",
-        "minattack": "450",
-        "hp": "180",
-        "attack": "2700",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040500900.png",
-        "en": "Ten-Wolf Gun Sterling"
     },
     "十狼雷・属性変更": {
         "ja": "十狼雷・属性変更",
@@ -6123,6 +5963,22 @@
         "imageURL": "./imgs/1040001800.png",
         "en": "Seven-Star Sword"
     },
+    "七星剣・真": {
+        "ja": "七星剣・真",
+        "element": "light",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "36",
+        "minattack": "420",
+        "hp": "216",
+        "attack": "2520",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040002400.png",
+        "en": "Seven Star Sword Sterling"
+    },
     "フロッティ": {
         "ja": "フロッティ",
         "element": "light",
@@ -6973,6 +6829,22 @@
         "imageURL": "./imgs/1040101700.png",
         "en": "Four-Sky Blade"
     },
+    "四天刃・真": {
+        "ja": "四天刃・真",
+        "element": "light",
+        "type": "dagger",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "40",
+        "minattack": "400",
+        "hp": "240",
+        "attack": "2400",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040102200.png",
+        "en": "Four-Sky Blade Sterling"
+    },
     "雷公刃ユピテル": {
         "ja": "雷公刃ユピテル",
         "element": "light",
@@ -7486,6 +7358,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040201600.png",
         "en": "One-Rift Spear"
+    },
+    "一伐槍・真": {
+        "ja": "一伐槍・真",
+        "element": "light",
+        "type": "spear",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "43",
+        "minattack": "385",
+        "hp": "260",
+        "attack": "2300",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040202100.png",
+        "en": "One-Rift Spear Sterling"
     },
     "ガルガンチュア": {
         "ja": "ガルガンチュア",
@@ -8113,6 +8001,22 @@
         "imageURL": "./imgs/1040301300.png",
         "en": "Three-Tiger Axe"
     },
+    "三寅斧・真": {
+        "ja": "三寅斧・真",
+        "element": "light",
+        "type": "axe",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "32",
+        "minattack": "440",
+        "hp": "192",
+        "attack": "2640",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040301600.png",
+        "en": "Three-Tiger Axe Sterling"
+    },
     "グレイプニル": {
         "ja": "グレイプニル",
         "element": "water",
@@ -8690,6 +8594,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040401800.png",
         "en": "Five-Soul Staff"
+    },
+    "五神杖・真": {
+        "ja": "五神杖・真",
+        "element": "light",
+        "type": "wand",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "48",
+        "minattack": "360",
+        "hp": "288",
+        "attack": "2160",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040402000.png",
+        "en": "Five-Soul Staff Sterling"
     },
     "バビロンの導杖": {
         "ja": "バビロンの導杖",
@@ -9377,6 +9297,22 @@
         "imageURL": "./imgs/1040500800.png",
         "en": "Ten-Wolf Gun"
     },
+    "十狼雷・真": {
+        "ja": "十狼雷・真",
+        "element": "light",
+        "type": "gun",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "30",
+        "minattack": "450",
+        "hp": "180",
+        "attack": "2700",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040500900.png",
+        "en": "Ten-Wolf Gun Sterling"
+    },
     "ヴリスラグナ": {
         "ja": "ヴリスラグナ",
         "element": "water",
@@ -9738,6 +9674,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040600800.png",
         "en": "Six-Ruin Fist"
+    },
+    "六崩拳・真": {
+        "ja": "六崩拳・真",
+        "element": "light",
+        "type": "fist",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "40",
+        "minattack": "400",
+        "hp": "240",
+        "attack": "2340",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040601000.png",
+        "en": "Six-Ruin Fist Sterling"
     },
     "紅陽扇": {
         "ja": "紅陽扇",
@@ -10365,6 +10317,22 @@
         "imageURL": "./imgs/1040700500.png",
         "en": "Two-Crown Bow"
     },
+    "二王弓・真": {
+        "ja": "二王弓・真",
+        "element": "light",
+        "type": "bow",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "38",
+        "minattack": "420",
+        "hp": "230",
+        "attack": "2510",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040701000.png",
+        "en": "Two-Crown Bow Sterling"
+    },
     "ディアボロスボウ": {
         "ja": "ディアボロスボウ",
         "element": "dark",
@@ -10712,6 +10680,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040800300.png",
         "en": "Nine-Realm Harp"
+    },
+    "九界琴・真": {
+        "ja": "九界琴・真",
+        "element": "light",
+        "type": "music",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "71",
+        "minattack": "370",
+        "hp": "243",
+        "attack": "2220",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040800400.png",
+        "en": "Nine-Realm Harp Sterling"
     },
     "砂城の宮樂弦": {
         "ja": "砂城の宮樂弦",
@@ -11124,6 +11108,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040900500.png",
         "en": "Eight-Life Katana"
+    },
+    "八命切・真": {
+        "ja": "八命切・真",
+        "element": "light",
+        "type": "katana",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "33",
+        "minattack": "413",
+        "hp": "188",
+        "attack": "2675",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040900600.png",
+        "en": "Eight-Life Katana Sterling"
     },
     "ドラゴンスレイヤー": {
         "ja": "ドラゴンスレイヤー",

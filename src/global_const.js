@@ -453,13 +453,13 @@ var enemyElementTypes = {
 }
 
 var filterElementTypes = {
+    "all": "全属性",
     "fire": "火",
     "wind": "風",
     "earth": "土",
     "water": "水",
     "light": "光",
     "dark": "闇",
-    "all": "全属性",
 }
 
 // "key"属性が強い属性と弱い属性
