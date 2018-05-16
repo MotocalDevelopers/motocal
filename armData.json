@@ -2025,6 +2025,40 @@
         "imageURL": "./imgs/1040805800.png",
         "en": "True Judgement Lyre"
     },
+    "シャフレワル": {
+        "ja": "シャフレワル",
+        "element": "earth",
+        "type": "sword",
+        "skill1": "strengthLL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "39",
+        "minattack": "391",
+        "hp": "200",
+        "attack": "2240",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040015700.png",
+        "en": "Sahrivar"
+    },
+    "ラスト・シャフレワル": {
+        "ja": "ラスト・シャフレワル",
+        "element": "earth",
+        "type": "sword",
+        "skill1": "strengthLL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "39",
+        "minattack": "391",
+        "hp": "232",
+        "attack": "2611",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "200",
+        "attacklv100": "2240",
+        "imageURL": "./imgs/1040015800.png",
+        "en": "Last Sahrivar"
+    },
     "六道・黄木天の箭": {
         "ja": "六道・黄木天の箭",
         "element": "wind",
@@ -6501,7 +6535,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040009400.png",
-        "en": "Yrkoon"
+        "en": "Yyrkoon"
     },
     "カースドブレイド": {
         "ja": "カースドブレイド",
