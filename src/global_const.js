@@ -453,13 +453,13 @@ var enemyElementTypes = {
 }
 
 var filterElementTypes = {
+    "all": "全属性",
     "fire": "火",
     "wind": "風",
     "earth": "土",
     "water": "水",
     "light": "光",
     "dark": "闇",
-    "all": "全属性",
 }
 
 // "key"属性が強い属性と弱い属性
@@ -511,6 +511,7 @@ module.exports.Jobs = {
     "elysian": { "name": "エリュシオン", "favArm1": "music", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "glory": { "name": "ザ・グローリー", "favArm1": "sword", "favArm2": "katana", "type": "pecu", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "neko": { "name": "黒猫道士", "favArm1": "wand", "favArm2": "wand", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 3000.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 8.0 },
+    "kengo": { "name": "剣豪", "favArm1": "katana", "favArm2": "bow", "type": "attack", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "alche": { "name": "アルケミスト", "favArm1": "dagger", "favArm2": "gun", "type": "heal", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 100.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "ninja": { "name": "忍者", "favArm1": "katana", "favArm2": "fist", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 31.5, "TaBonus": 3.0 },
     "samurai": { "name": "侍", "favArm1": "katana", "favArm2": "bow", "type": "attack", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },

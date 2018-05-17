@@ -1107,12 +1107,10 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaNite"][amount][slv - 1];
                         } else if(stype == 'normalRasetsu') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                            totals[key]["DAbuff"] -= comb[i] * 38.0;
-                            totals[key]["TAbuff"] -= comb[i] * 38.0;
+                            totals[key]["DAbuff"] -= comb[i] * 10.0;
                         } else if(stype == 'magnaRasetsu') {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
-                            totals[key]["DAbuff"] -= comb[i] * 38.0;
-                            totals[key]["TAbuff"] -= comb[i] * 38.0;
+                            totals[key]["DAbuff"] -= comb[i] * 10.0;
                         } else if(stype == 'normalMusou') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             totals[key]["normalNite"] += comb[i] * skillAmounts["normalNite"][amount][slv - 1];

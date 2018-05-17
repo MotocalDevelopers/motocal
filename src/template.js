@@ -107,7 +107,7 @@ var RegisteredChara = React.createClass({
             filterText: "",
             filterElement: "all",
             charaData: {},
-            limit: 50,
+            limit: 99,
             openSendRequest: false,
         };
     },
@@ -234,7 +234,7 @@ var RegisteredArm = React.createClass({
             filterText: "",
             filterElement: "all",
             armData: {},
-            limit: (_ua.Mobile) ? 50 : 200,
+            limit: (_ua.Mobile) ? 99 : 300,
             tempArm: {},
             openConsiderNumberModal: false,
             plusNum: 0,
