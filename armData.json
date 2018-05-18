@@ -1919,6 +1919,26 @@
         "imageURL": "./imgs/1040900300.png",
         "en": "Murakumo [Element Changed]"
     },
+    "無銘金重・属性変更": {
+        "ja": "無銘金重・属性変更",
+        "element": "all",
+        "type": "katana",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "30",
+        "minattack": "411",
+        "hp": "241",
+        "attack": "3435",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 179,
+        "attacklv100": 2543,
+        "hplv150": 211,
+        "attacklv150": 3000,
+        "imageURL": "./imgs/1040909300_note.png",
+        "en": "Unsigned Kaneshige [Element Changed]"
+    },
     "千子村正": {
         "ja": "千子村正",
         "element": "dark",
