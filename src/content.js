@@ -461,6 +461,7 @@ var Sys = React.createClass({
             dataName: '',
             selectedData: '',
             uploadedData: '',
+            rawData: '',
         };
     },
     componentDidMount: function(){
@@ -559,6 +560,15 @@ var Sys = React.createClass({
     onSubmitUpload: function(e){
         console.log("データアップロードテスト")
     },
+    onSubmitSaveRawData: function(e){
+        var rawData = JSON.stringify(this.state.storedData);
+        this.setState({rawData: rawData});
+    },
+    onSubmitLoadRawData: function(e){
+        var storedData = JSON.parse(this.state.rawData);
+        this.setState({storedData: storedData});
+        this.setState({selectedData: Object.keys(storedData)[0]});
+    },
     render: function() {
         var locale = this.props.locale;
         var datalist = []
@@ -588,6 +598,14 @@ var Sys = React.createClass({
                 </FormGroup>
                 */}
                 <TwitterShareButton data={this.props.data} dataName={this.state.dataName} locale={locale} />
+                <FormGroup>
+                    {intl.translate("データ移行", locale)}
+                    <FormControl componentClass="textarea" value={this.state.rawData} onChange={this.handleEvent.bind(this, "rawData")} />
+                    <ButtonGroup>
+                    <Button tye="submit" bsStyle="primary" onClick={this.onSubmitSaveRawData}>{intl.translate("移行データ出力", locale)}</Button>
+                    <Button tye="submit" bsStyle="primary" onClick={this.onSubmitLoadRawData}>{intl.translate("移行データ入力", locale)}</Button>
+                    </ButtonGroup>
+                </FormGroup>
             </div>
         );
     }
