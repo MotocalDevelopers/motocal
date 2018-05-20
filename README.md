@@ -15,7 +15,7 @@ $ open index.html
 ```sh
 $ npm run build
 ```
-### Debug Watch
+### Debug Watch
 ```sh
 $ npm run watch-dev
 ```
@@ -32,8 +32,8 @@ $ npm run production-watch-dev
 - src: トランスパイル前のソースコード
 - dist: トランスパイル後のソースコード
 - scripts: データ生成用のスクリプト
-- txt_sources: テンプレート処理前のテキストデータ
-- imgs, charaimgs: テンプレート表示用の画像データ
+- txt_sources: テンプレート処理前のテキストデータ
+- imgs, charaimgs: テンプレート表示用の画像データ
 
 ## 作業フロー
 ### 機能開発時
@@ -44,14 +44,14 @@ $ npm run production-watch-dev
 3. リリース時にproductionブランチにmergeしてからnpm run production-build
 
 ### 武器テンプレート更新時
-1. 追加したい武器について、wikiの該当行をコピーし、txt_source/armData-ssr.txt の一番上に貼り付け
+1. 追加したい武器について、wikiの該当行をコピーし、txt_source/armData-ssr.txt の一番上に貼り付け
 2. arm_data_converter.py を実行
-    - 新スキル対応する場合には arm_data_converter.py に新スキル名 => 新スキルの計算機内部IDの対応を書き加えて下さい。
+    - 新スキル対応する場合には arm_data_converter.py に新スキル名 => 新スキルの計算機内部IDの対応を書き加えて下さい。
 
-※ 上限解放武器については3凸時、4凸時のステータスが必要になるため、コピーしてきたデータの末尾に○(4凸の場合)または◎(5凸の場合)と、Lv100時、Lv150時のステータスを追加するようにしています。実例を参考に適切に追加して下さい。
+※ 上限解放武器については3凸時、4凸時のステータスが必要になるため、コピーしてきたデータの末尾に○(4凸の場合)または◎(5凸の場合)と、Lv100時、Lv150時のステータスを追加するようにしています。実例を参考に適切に追加して下さい。
 
 ### キャラテンプレート更新時
-1. 追加したいキャラについて、wikiの該当行をコピーし、txt_source/charaData.txt の一番上に貼り付け
+1. 追加したいキャラについて、wikiの該当行をコピーし、txt_source/charaData.txt の一番上に貼り付け
 2. chara_data_converter.py を実行
 
 ※ キャラの上限解放についてはステータスをそのまま更新するだけでOKです。
@@ -85,7 +85,7 @@ $ ./scripts/download_armimages_from_wiki.sh
 - imgs/imageURLlist.txt内に記載されている画像データをwikiから持ってきます.
 #### download\_charaimages\_from\_wiki.sh
 - charaimgs/imageURLlist.txt内に記載されている画像データをwikiから持ってきます.
-- これら2つの画像ダウンロードスクリプトは、あくまで「最新のもの」だけをダウンロードする内容になっております。古いものも全て落としてくるスクリプトは現在存在しません。
+- これら2つの画像ダウンロードスクリプトは、あくまで「最新のもの」だけをダウンロードする内容になっております。古いものも全て落としてくるスクリプトは現在存在しません。
 
 ※ scriptsディレクトリ内ではなく、motocalのROOTディレクトリで実行してください。
 
