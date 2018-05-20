@@ -334,7 +334,7 @@ var Root = React.createClass({
                         </div>
                     </div>
                 </div>
-                <Nav className="footerNav" bsStyle="pills" 
+                <Nav className="footerNav" bsStyle="pills"
                     activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey}
                     onSelect={this.handleChangeTab}>
                     <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
@@ -496,37 +496,37 @@ var Sys = React.createClass({
         }
     },
     onSubmitLoad: function(e){
-      e.preventDefault();
-      if(this.state.selectedData != ''){
-          var dataForLoad = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
+        e.preventDefault();
+        if(this.state.selectedData != ''){
+            var dataForLoad = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
 
-          // これは will receive props が発火したあとしか反映されない
-          this.setState({dataName: this.state.selectedData});
-          this.props.onLoadNewData(this.state.selectedData, dataForLoad)
-      } else {
-          alert("読み込むデータを選択して下さい。")
-      }
+            // これは will receive props が発火したあとしか反映されない
+            this.setState({dataName: this.state.selectedData});
+            this.props.onLoadNewData(this.state.selectedData, dataForLoad)
+        } else {
+            alert("読み込むデータを選択して下さい。")
+        }
     },
     onSubmitSave: function(e){
-      e.preventDefault();
-      if(this.state.dataName != ''){
-          var newState = this.state;
-          var propsdata = JSON.parse(JSON.stringify(this.props.data));
+        e.preventDefault();
+        if(this.state.dataName != ''){
+            var newState = this.state;
+            var propsdata = JSON.parse(JSON.stringify(this.props.data));
 
-          // dataName だけ反映されていないので上書きしておく
-          propsdata["dataName"] = this.state.dataName;
+            // dataName だけ反映されていないので上書きしておく
+            propsdata["dataName"] = this.state.dataName;
 
-          newState["storedData"][this.state.dataName] = propsdata;
-          newState["selectedData"] = this.state.dataName;
+            newState["storedData"][this.state.dataName] = propsdata;
+            newState["selectedData"] = this.state.dataName;
 
-          // save data
-          var saveString = Base64.encodeURI(JSON.stringify(newState.storedData));
-          localStorage.setItem("data", saveString);
+            // save data
+            var saveString = Base64.encodeURI(JSON.stringify(newState.storedData));
+            localStorage.setItem("data", saveString);
 
-          this.setState(newState);
-      } else {
-          alert("データ名を入力して下さい。")
-      }
+            this.setState(newState);
+        } else {
+            alert("データ名を入力して下さい。")
+        }
     },
     onSubmitDownload: function(e){
         e.preventDefault();
@@ -651,8 +651,8 @@ var TwitterShareButton = React.createClass ({
         });
     },
     render: function() {
-      var sharehist = this.state.shareurl_history;
-      return (
+        var sharehist = this.state.shareurl_history;
+        return (
             <div className="tweet">
                 <Button bsStyle="primary" className="tweetButton" onClick={this.getShortenUrl}>{intl.translate("サーバに保存", this.props.locale)}</Button>
                 <div className="list-group">
@@ -663,7 +663,7 @@ var TwitterShareButton = React.createClass ({
                 })}
                 </div>
             </div>
-       );
+        );
     },
 });
 
