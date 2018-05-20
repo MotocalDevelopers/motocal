@@ -61,6 +61,18 @@ var multiLangData = {
         "en": "Save to Browser",
         "ja": "保存",
     },
+    "データ移行": {
+        "en": "Export/Import",
+        "ja": "データ移行",
+    },
+    "移行データ出力": {
+        "en": "Export",
+        "ja": "データ出力",
+    },
+    "移行データ入力": {
+        "en": "Import",
+        "ja": "データ入力",
+    },
     "ダウンロード": {
         "en": "Download",
         "ja": "ダウンロード",
