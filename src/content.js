@@ -529,39 +529,24 @@ var Sys = React.createClass({
       }
     },
     onSubmitDownload: function(e){
-      e.preventDefault();
-      if(this.state.dataName != ''){
-          var newState = this.state;
+        e.preventDefault();
+        if(this.state.rawData != ''){
+            var blob = new Blob([this.state.rawData], {"type": "application/json"});
 
-          // deep copy
-          var propsdata = JSON.parse(JSON.stringify(this.props.data));
-
-          // dataName だけ反映されていないので上書きしておく
-          propsdata["dataName"] = this.state.dataName;
-
-          var saveString = JSON.stringify(propsdata, null, "    ");
-
-          var blob = new Blob([saveString], {"type": "application/json"});
-
-          if (window.navigator.msSaveBlob) {
-              // IE10/11
-              window.navigator.msSaveBlob(blob, this.state.dataName + ".json");
-          } else {
-              // other browsers
-	      var newlink = document.createElement('a');
-	      newlink.href = window.URL.createObjectURL(blob);
-	      newlink.setAttribute('download', this.state.dataName + '.json');
-	      newlink.click();
-          }
-      } else {
-          alert("データ名を入力して下さい。")
-      }
-    },
-    onSubmitUpload: function(e){
-        console.log("データアップロードテスト")
+            if (window.navigator.msSaveBlob) {
+                // IE10/11
+                window.navigator.msSaveBlob(blob, "motocal_data.json");
+            } else {
+                // other browsers
+                var newlink = document.createElement('a');
+                newlink.href = window.URL.createObjectURL(blob);
+                newlink.setAttribute('download', 'motocal_data.json');
+                newlink.click();
+            }
+        }
     },
     onSubmitSaveRawData: function(e){
-        var rawData = JSON.stringify(this.state.storedData);
+        var rawData = JSON.stringify(this.state.storedData, null, 2);
         this.setState({rawData: rawData});
     },
     onSubmitLoadRawData: function(e){
@@ -592,7 +577,6 @@ var Sys = React.createClass({
                 </ButtonGroup>
                 {/*
                 <FormGroup className="systemButtonGroup">
-                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitDownload} >{intl.translate("ダウンロード", locale)}</Button>
                     <FormControl type="file" label="アップロード" value={this.state.uploadedData} onChange={this.handleEvent.bind(this, "uploadedData")} />
                     <Button type="submit" bsStyle="primary" className="systemButton" onClick={this.onSubmitUpload}>{intl.translate("アップロード", locale)}</Button>
                 </FormGroup>
@@ -600,10 +584,17 @@ var Sys = React.createClass({
                 <TwitterShareButton data={this.props.data} dataName={this.state.dataName} locale={locale} />
                 <FormGroup>
                     {intl.translate("データ移行", locale)}
-                    <FormControl componentClass="textarea" value={this.state.rawData} onChange={this.handleEvent.bind(this, "rawData")} />
+                    <FormControl componentClass="textarea" bsSize="large" value={this.state.rawData} onChange={this.handleEvent.bind(this, "rawData")} />
                     <ButtonGroup>
                     <Button tye="submit" bsStyle="primary" onClick={this.onSubmitSaveRawData}>{intl.translate("移行データ出力", locale)}</Button>
                     <Button tye="submit" bsStyle="primary" onClick={this.onSubmitLoadRawData}>{intl.translate("移行データ入力", locale)}</Button>
+
+                    {/* rawdataが発行されている場合にJSONダウンロードボタンを表示 */}
+                    { this.state.rawData != '' ?
+                        <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitDownload} >{intl.translate("ダウンロード", locale)}</Button>
+                        :
+                        null
+                    }
                     </ButtonGroup>
                 </FormGroup>
             </div>
