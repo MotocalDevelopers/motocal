@@ -553,6 +553,10 @@ var Sys = React.createClass({
         var storedData = JSON.parse(this.state.rawData);
         this.setState({storedData: storedData});
         this.setState({selectedData: Object.keys(storedData)[0]});
+
+        // save data
+        var saveString = Base64.encodeURI(JSON.stringify(storedData));
+        localStorage.setItem("data", saveString);
     },
     render: function() {
         var locale = this.props.locale;
