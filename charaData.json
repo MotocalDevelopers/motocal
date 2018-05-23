@@ -189,6 +189,25 @@
         "imageURL": "./charaimgs/3040039000_03.png",
         "en": "[5★] Tien"
     },
+    "ソリッズ(SSR)": {
+        "name": "ソリッズ(SSR)",
+        "ja": "ソリッズ(SSR)",
+        "element": "earth",
+        "type": "attack",
+        "race": "human",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "250",
+        "hp": "1300",
+        "minattack": "1860",
+        "attack": "10200",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040170000_01.png",
+        "en": "Soriz (SSR)"
+    },
     "ククル(SSR)": {
         "name": "ククル(SSR)",
         "ja": "ククル(SSR)",
@@ -7352,25 +7371,6 @@
         "imageURL": "./charaimgs/3030232000_01.png",
         "en": "Ippatsu (SR)"
     },
-    "ランドル(SR)": {
-        "name": "ランドル(SR)",
-        "ja": "ランドル(SR)",
-        "element": "dark",
-        "type": "attack",
-        "race": "human",
-        "fav1": "fist",
-        "fav2": "none",
-        "support": "none",
-        "support2": "none",
-        "minhp": "166",
-        "hp": "910",
-        "minattack": "1620",
-        "attack": "7950",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030234000_01.png",
-        "en": "Randall (SR)"
-    },
     "ゾーイ(SR)": {
         "name": "ゾーイ(SR)",
         "ja": "ゾーイ(SR)",
@@ -7389,6 +7389,25 @@
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030233000_01.png",
         "en": "Zooey (Event)"
+    },
+    "ランドル(SR)": {
+        "name": "ランドル(SR)",
+        "ja": "ランドル(SR)",
+        "element": "dark",
+        "type": "attack",
+        "race": "human",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "166",
+        "hp": "910",
+        "minattack": "1620",
+        "attack": "7950",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030234000_01.png",
+        "en": "Randall (SR)"
     },
     "ナルメア(バレンタインver)": {
         "name": "ナルメア(バレンタインver)",
@@ -7522,5 +7541,24 @@
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030242000_01.png",
         "en": "Aliza (Water)"
+    },
+    "レオナ": {
+        "name": "レオナ",
+        "ja": "レオナ",
+        "element": "earth",
+        "type": "attack",
+        "race": "human",
+        "fav1": "spear",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "260",
+        "hp": "1260",
+        "minattack": "1290",
+        "attack": "6550",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030241000_01.png",
+        "en": "Leona"
     }
 }
