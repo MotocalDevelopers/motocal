@@ -73,7 +73,9 @@ module.exports = {
       {
         test: /.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /.css?$/,
@@ -86,4 +88,11 @@ module.exports = {
     ],
   },
   plugins: plugins,
+  devServer: {
+     contentBase: './',
+     compress: true,
+     host: "0.0.0.0",
+     port: 8000
+  },
+  mode: process.env.NODE_ENV || 'development'
 }
