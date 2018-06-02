@@ -4,5 +4,6 @@ imgs/*.png
 charaimgs/*.png
 *.php
 gana.js
-dist
+/dist/*
+!/dist/.gitkeep
 .env
