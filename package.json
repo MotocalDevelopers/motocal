@@ -10,13 +10,15 @@
     "react-google-charts": "~1.6.6",
     "react-language": "^0.1.4"
   },
-  "engines" : {
-      "node" : "~8.11"
+  "engines": {
+    "node": "~8.11"
   },
   "scripts": {
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --display-error-details",
+    "lint": "eslint webpack.config.js src/*",
+    "lint:fix": "eslint webpack.config.js src/* --fix",
     "production-build": "NODE_ENV=production webpack",
     "watch-dev": "webpack --progress --watch",
     "production-watch-dev": "NODE_ENV=production webpack --progress --watch"
@@ -36,6 +38,7 @@
     "babelify": "8.0.0",
     "browserify": "16.2.2",
     "css-loader": "0.28.11",
+    "eslint": "^4.19.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "0.21.0",
