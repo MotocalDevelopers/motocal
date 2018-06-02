@@ -2,6 +2,8 @@
 元カレ計算機（グラブル攻撃力計算機）の開発用リポジトリです。
 
 ## 開発準備
+
+### ローカル開発
 ```sh
 $ git clone https://github.com/hoshimi/motocal.git motocal
 $ cd motocal
@@ -9,8 +11,19 @@ $ npm install
 $ npm run build
 $ open index.html
 ```
+### docker版
+```sh
+$ git clone https://github.com/hoshimi/motocal.git motocal
+$ cd motoca
+$ docker-compose up
+```
 
 ## ビルドコマンド
+### 開発環境用コマンド
+```sh
+$ npm run start
+```
+
 ### Debugビルド
 ```sh
 $ npm run build
