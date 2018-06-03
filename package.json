@@ -19,7 +19,7 @@
     "node": "~8.11"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --watch --inline",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --display-error-details",
     "lint": "eslint webpack.config.js src/*",
