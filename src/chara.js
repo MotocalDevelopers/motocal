@@ -205,7 +205,7 @@ var CharaList = CreateClass({
                 <span>{intl.translate("属性一括変更", locale)}</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector[locale].elements} </FormControl>
 
-                <PanelGroup defaultActiveKey={0} accordion>
+                <PanelGroup defaultActiveKey={0} accordion id="charaListView">
                 {charas.map(function (c, ind) {
                     return (
                         <Panel key={c} bsStyle="default" style={panel_style} eventKey={c} header={
