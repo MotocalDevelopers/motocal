@@ -1,9 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var { Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover, Panel, Glyphicon } = require('react-bootstrap');
+var CreateClass = require('create-react-class');
 var intl = require('./translate.js');
 
-var Notice = React.createClass({
+var Notice = CreateClass({
     render: function () {
         var locale = this.props.locale
 

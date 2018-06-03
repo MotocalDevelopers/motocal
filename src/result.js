@@ -1,5 +1,6 @@
 var React = require('react');
 var { Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover } = require('react-bootstrap');
+var CreateClass = require('create-react-class');
 var Simulator = require('./simulator.js')
 var { HPChart } = require('./chart.js')
 var { AdsenseAdvertisement } = require('./advertisement.js');
@@ -37,7 +38,7 @@ var { isCosmos, isValidResult, checkNumberofRaces, proceedIndex,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
     getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation } = require('./global_logic.js');
 
-var ResultList = React.createClass({
+var ResultList = CreateClass({
     calculateResult: function (newprops) {
         var prof = newprops.profile; var arml = newprops.armlist;
         var summon = newprops.summon; var chara = newprops.chara;
@@ -801,7 +802,7 @@ var ResultList = React.createClass({
     }
 });
 
-var Result = React.createClass({
+var Result = CreateClass({
     onClick: function (e) {
         this.props.onAddToHaisuiData(e.target.id, this.props.summonid)
     },
@@ -1184,7 +1185,7 @@ var Result = React.createClass({
     }
 });
 
-var StoredListEditor = React.createClass({
+var StoredListEditor = CreateClass({
     handleNameChange: function (e) {
         var newName = e.target.value;
         var ind = e.target.getAttribute("name");
@@ -1244,7 +1245,7 @@ var StoredListEditor = React.createClass({
     },
 });
 
-var ControlAutoUpdate = React.createClass({
+var ControlAutoUpdate = CreateClass({
     render: function() {
         var locale = this.props.locale;
         var gstyle = (this.props.mobile) ? {"width": "100%"} : {}

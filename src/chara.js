@@ -1,6 +1,7 @@
 var React = require('react');
 var intl = require('./translate.js')
 var { Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, Panel, PanelGroup, Modal, Glyphicon } = require('react-bootstrap');
+var CreateClass = require('create-react-class');
 var { RegisteredChara } = require('./template.js')
 var GlobalConst = require('./global_const.js')
 
@@ -25,7 +26,7 @@ var filterElementTypes = GlobalConst.filterElementTypes
 var enemyDefenseType = GlobalConst.enemyDefenseType
 var _ua = GlobalConst._ua;
 
-var CharaList = React.createClass({
+var CharaList = CreateClass({
     getInitialState: function () {
         var charas = [];
         for (var i = 0; i < this.props.charaNum; i++) {
@@ -250,7 +251,7 @@ var CharaList = React.createClass({
     }
 });
 
-var Chara = React.createClass({
+var Chara = CreateClass({
     getInitialState: function () {
         return {
             name: "",

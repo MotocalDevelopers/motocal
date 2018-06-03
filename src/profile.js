@@ -3,6 +3,7 @@ var { Button, FormControl, InputGroup, FormGroup } = require('react-bootstrap');
 var intl = require('./translate.js')
 var GlobalConst = require('./global_const.js')
 var TextWithTooltip = GlobalConst.TextWithTooltip
+var CreateClass = require('create-react-class');
 
 // const
 var zenith = GlobalConst.zenith
@@ -11,7 +12,7 @@ var jobTypes = GlobalConst.jobTypes
 var armTypes = GlobalConst.armTypes
 var selector = GlobalConst.selector
 
-var Profile = React.createClass({
+var Profile = CreateClass({
     getDefaultProps() {
         var zenithBonuses = { "ja": {}, "en": {} }
         zenithBonuses.ja = Object.keys(zenith).map(function (opt) { return <option value={opt} key={opt}>{opt}</option> });

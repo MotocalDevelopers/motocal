@@ -1,8 +1,9 @@
 var React = require('react');
 var { Tooltip, OverlayTrigger } = require('react-bootstrap');
 var intl = require('./translate.js');
+var CreateClass = require('create-react-class');
 
-module.exports.TextWithTooltip = React.createClass({
+module.exports.TextWithTooltip = CreateClass({
     render: function () {
         var tooltip = <Tooltip id={this.props.id}>{this.props.tooltip}</Tooltip>
 
@@ -17,7 +18,7 @@ module.exports.TextWithTooltip = React.createClass({
     }
 });
 
-module.exports.ElementColorLabel = React.createClass({
+module.exports.ElementColorLabel = CreateClass({
     render: function () {
         var element = this.props.element;
 

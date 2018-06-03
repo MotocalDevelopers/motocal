@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var intl = require('./translate.js')
 var {Chart} = require('react-google-charts')
+var CreateClass = require('create-react-class');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover, Panel, ListGroup, ListGroupItem, Glyphicon} = require('react-bootstrap');
 var {SimulationChart} = require('./chart.js')
 var GlobalConst = require('./global_const.js')
@@ -182,7 +183,7 @@ var select_hplist = {
 
 var {generateSimulationData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js')
 
-var Simulator = React.createClass({
+var Simulator = CreateClass({
     makeTurnBuff: function() {
         var storedCombinations = this.props.storedList.combinations
         var storedArmlist = this.props.storedList.armlist
@@ -710,7 +711,7 @@ var Simulator = React.createClass({
     }
 });
 
-var BuffListForm = React.createClass({
+var BuffListForm = CreateClass({
     render: function() {
         var locale = this.props.locale;
 

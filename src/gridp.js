@@ -1,7 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var CreateClass = require('create-react-class');
 
-var ColP = React.createClass({
+var ColP = CreateClass({
     propTypes: {
         lg: React.PropTypes.number,
         slg: React.PropTypes.number,

@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var CreateClass = require('create-react-class');
 var GlobalConst = require('./global_const.js')
 var intl = require('./translate.js')
 var selector = GlobalConst.selector
@@ -10,7 +11,7 @@ var supportedSimulationChartSortkeys = GlobalConst.supportedSimulationChartSortk
 var _ua = GlobalConst._ua;
 var {generateHaisuiData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js')
 
-var HPChart = React.createClass({
+var HPChart = CreateClass({
     makeChartData: function(props) {
         var storedCombinations = props.storedList.combinations
         var storedArmlist = props.storedList.armlist
@@ -133,7 +134,7 @@ var HPChart = React.createClass({
     },
 });
 
-var SimulationChart = React.createClass({
+var SimulationChart = CreateClass({
     getInitialState: function() {
         var sortKey = this.props.sortKey
         if(!(sortKey in supportedSimulationChartSortkeys)) sortKey = "summedAverageExpectedDamage"
