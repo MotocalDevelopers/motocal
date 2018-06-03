@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
-
-var HowTo = React.createClass({
+var CreateClass = require('create-react-class');
+var HowTo = CreateClass({
     render: function(){
         return (
             <div className="howTo">
@@ -75,7 +75,7 @@ var HowTo = React.createClass({
     },
 });
 
-var HPChartHowTo = React.createClass({
+var HPChartHowTo = CreateClass({
     render: function() {
         return (
             <Modal className="hpChartTutotial" show={this.props.show} onHide={this.props.onHide}>
@@ -120,7 +120,7 @@ var HPChartHowTo = React.createClass({
     },
 });
 
-var NiteHowTo = React.createClass({
+var NiteHowTo = CreateClass({
     render: function() {
         return (
             <div className="howTo">
@@ -201,7 +201,7 @@ var NiteHowTo = React.createClass({
     },
 });
 
-var SimulatorHowTo = React.createClass({
+var SimulatorHowTo = CreateClass({
     render: function(){
         return (
             <div className="howTo">

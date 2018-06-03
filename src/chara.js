@@ -1,6 +1,7 @@
 var React = require('react');
 var intl = require('./translate.js')
 var { Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, Panel, PanelGroup, Modal, Glyphicon } = require('react-bootstrap');
+var CreateClass = require('create-react-class');
 var { RegisteredChara } = require('./template.js')
 var GlobalConst = require('./global_const.js')
 
@@ -25,7 +26,7 @@ var filterElementTypes = GlobalConst.filterElementTypes
 var enemyDefenseType = GlobalConst.enemyDefenseType
 var _ua = GlobalConst._ua;
 
-var CharaList = React.createClass({
+var CharaList = CreateClass({
     getInitialState: function () {
         var charas = [];
         for (var i = 0; i < this.props.charaNum; i++) {
@@ -204,7 +205,7 @@ var CharaList = React.createClass({
                 <span>{intl.translate("属性一括変更", locale)}</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector[locale].elements} </FormControl>
 
-                <PanelGroup defaultActiveKey={0} accordion>
+                <PanelGroup defaultActiveKey={0} accordion id="charaListView">
                 {charas.map(function (c, ind) {
                     return (
                         <Panel key={c} bsStyle="default" style={panel_style} eventKey={c} header={
@@ -250,7 +251,7 @@ var CharaList = React.createClass({
     }
 });
 
-var Chara = React.createClass({
+var Chara = CreateClass({
     getInitialState: function () {
         return {
             name: "",

@@ -63,7 +63,7 @@ const plugins = [
 
 module.exports = {
   devtool: devtool,
-  entry: './src/content.js',
+  entry: ['./src/content.js', './css/style.css', './css/smartphone.css'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: `${fileName}.js`,
@@ -78,18 +78,17 @@ module.exports = {
         }
       },
       {
-        test: /.css?$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader",
-          publicPath: "/build"
-        })
-      }
-    ],
-  },
+        test: /.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader",
+            publicPath: "css",
+           })
+      },
+  ]},
   plugins: plugins,
   devServer: {
-     contentBase: './',
+     contentBase: [path.join(__dirname, "/"), path.join(__dirname, "/dist")],
      compress: true,
      host: "0.0.0.0",
      port: 8000

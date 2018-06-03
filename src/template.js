@@ -1,5 +1,6 @@
 var React = require('react');
 var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid, HelpBlock} = require('react-bootstrap');
+var CreateClass = require('create-react-class');
 var GlobalConst = require('./global_const.js')
 var _ua = GlobalConst._ua;
 var selector = GlobalConst.selector
@@ -8,7 +9,7 @@ var skilltypes = GlobalConst.skilltypes
 var intl = require('./translate.js')
 var {githubAPItoken} = require('./secret_consts.js')
 
-var SendRequest = React.createClass({
+var SendRequest = CreateClass({
     getInitialState: function() {
         return {
             name: "",
@@ -101,7 +102,7 @@ var SendRequest = React.createClass({
     },
 });
 
-var RegisteredChara = React.createClass({
+var RegisteredChara = CreateClass({
     getInitialState: function() {
         return {
             filterText: "",
@@ -228,7 +229,7 @@ var RegisteredChara = React.createClass({
     },
 });
 
-var RegisteredArm = React.createClass({
+var RegisteredArm = CreateClass({
     getInitialState: function() {
         return {
             filterText: "",

@@ -1,534 +1,536 @@
-body {
-    font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
-    width : 100%;
-    max-width: 960px;
-    font-size: 10pt;
-    font-weight: normal;
-    -webkit-overflow-scrolling: touch;
-}
-
-hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-h1, h2, h3 {
-    font-size: 100%;
-    font-weight: bold;
-}
-
-.margin-top {
-    margin-top: 10px;
-}
-
-table, button, li, label, th, td {
-    font-size: 8pt;
-}
-
-input, textarea {
-    text-align: left;
-    font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
-    font-size: 8pt;
-    font-weight: bold;
-}
-
-select, option {
-    font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
-    font-size: 8pt;
-    font-weight: bold;
-    color: #000;
-}
-
-table {
-  width: 100%;
-  border-spacing: 0;
-  font-size: 9pt;
-  font-weight: bold;
-}
-
-table th {
-  color: white;
-  background: #258;
-  background:-moz-linear-gradient(rgba(34,85,136,0.7), rgba(34,85,136,0.9) 50%);
-  background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(34,85,136,0.7)), to(rgba(34,85,136,0.9)));
-  font-weight: bold;
-  border-left:1px solid #258;
-  border-top:1px solid #258;
-  line-height: 120%;
-  text-align: center;
-  text-shadow:0 -1px 0 rgba(34,85,136,0.9);
-  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-}
-
-table th:last-child {
-  border-right:1px solid #258;
-}
-
-table tr td {
-  padding: 1px;
-  border-top: 1px solid #84b2e0;
-  border-left: 1px solid #84b2e0;
-  text-align: center;
-}
-
-table tr td:last-child {
-  border-right: 1px solid #84b2e0;
-}
-
-table tr:last-child td {
-  border-bottom: 1px solid #84b2e0;
-}
-
-table tr {
-  background: #fff;
-}
-
-table tr:nth-child(2n+1) {
-  background: #f1f6fc;
-}
-
-tr.result:hover {
-  background: #bbd4ee;
-  cursor:pointer;
-  transition-duration: 0;
-}
-
-.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    padding: 2px;
-}
-
-.charainfo {
-    text-align: left;
-    font-size: 6pt;
-}
-
-.banner {
-    float: right;
-    margin-top: 1px;
-    height: 100px;
-}
-
-.dataControl {
-    width: calc(100% - 6px);
-    padding: 3px;
-    overflow: auto;
-}
-
-.dataControl input {
-    width: calc(100% - 6px);
-}
-
-.dataControl select {
-    width: calc(100% - 6px);
-    margin-bottom: 2pt;
-}
-
-.tweet {
-    width: calc(100% - 6px);
-    overflow: auto;
-    word-wrap: break-word;
-    margin: 0px;
-    border-bottom:2px solid #258;
-    padding: 3px;
-}
-
-.dataControl .systemButtonGroup {
-    width: 100%;
-}
-.dataControl .systemButton {
-    width: calc(100%/3);
-}
-
-.tweet .tweetButton {
-    width: 100%;
-}
-
-.armList {
-    width: 99%;
-}
-
-.armList .element {
-    width: 30%;
-    display: inline;
-}
-
-.armList .skill {
-    width: 70%;
-    display: inline;
-}
-
-.profile {
-    width: 99%;
-}
-
-.summonList {
-    width: 99%;
-}
-
-.summonList .hidden {
-    overflow: hidden;
-    height: 0;
-}
-
-.summonList table, .armList table, .charaList table {
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
-.summonList .element, .charaList .element {
-    width: 30%;
-    display: inline;
-}
-
-.summonList .summontype {
-    width: 65%;
-    display: inline;
-}
-
-.charaList {
-    width: 99%;
-}
-
-.charaList th, .summonList th, .armList th {
-    width: 30%;
-}
-
-.charaList td, .summonList td, .armList td {
-    width: 70%;
-}
-
-.systemList {
-    width: 99%;
-    overflow: auto;
-}
-
-div.result {
-    margin-bottom: 20px;
-}
-
-div.resultList {
-    width: 99%;
-}
-
-.col-bordered {
-  border:1px solid #258;
-  border-color: rgb(59, 34, 136);
-  border-radius: 5px;
-  padding: 2px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-
-.col-fixed-height {
-  height: 50px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  border-radius: 0px;
-}
-
-thead.result th {
-    color: rgb(255, 255, 255);
-    background: rgb(59, 34, 136);
-    background:-moz-linear-gradient(rgba(59,34,136,0.85), rgba(59,34,136,0.9) 50%);
-    background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(59,34,136,0.85)), to(rgba(59,34,136,0.9)));
-    border-color: rgb(59, 34, 136);
-    writing-mode: vertical-rl;
-    -ms-writing-mode: tb-rl;
-    -webkit-writing-mode:vertical-rl;
-    -webkit-text-orientation: sideways;
-    text-orientation: sideways;
-    width: 1em;
-}
-
-tbody.result>tr>td {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.notice {
-    margin-top: 2pt;
-    width: 100%;
-}
-
-.tweet button, .dataControl button {
-    font-size: 10pt;
-}
-
-::-webkit-scrollbar {
-    width: 3px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-}
-
-.Tab {
-    position: relative;
-    width: 100%;
-    height: calc(100% - 90px);
-    overflow-y: scroll;
-    overflow-x: visible;
-    padding: 5px 0px;
-    border-top:1px solid #258;
-    border-bottom:1px solid #258;
-    border-color: rgb(59, 34, 136);
-}
-
-.Tab.hidden {
-    overflow: hidden;
-    height: 0%;
-}
-
-.footerNav {
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    height: 40px;
-    overflow-y: visible;
-    overflow-x: visible;
-}
-
-.footerNav {
-    margin: 0px;
-    padding: 0px;
-    display: table;
-    width: 100%;
-}
-
-.footerNav li {
-    padding: 0px;
-    display: table-cell;
-    align-items: center;
-    float: none;
-}
-
-.footerNav li a {
-    font-weight: bold;
-    font-size: 7pt;
-    text-align: center;
-    padding: 15px 5px;
-    border-left: 1px solid rgba(255, 255, 255, .75);
-    border-right: 1px solid rgba(0, 0, 0, .1);
-}
-
-.footerNav li:last-child a {
-    border-right: 0;
-    border-radius: 0 0px 0px 0;
-}
-
-.summonList .form-control.multi {
-    width: 70%;
-}
-
-.armList .form-control.consider {
-    width: 50%;
-}
-
-.checkbox-inline {
-    display: inline;
-    padding-left: 10px;
-}
-
-.checkbox-inline.autoupdate{
-    display: inline-block;
-}
-
-.checkbox-inline input[type=checkbox] {
-    position: relative;
-    margin-left: 0px;
-}
-
-.charaList .checkbox-inline, .armList .checkbox-inline {
-    padding-left: 0;
-}
-
-label {
-    display: inline;
-    font-size: 9pt;
-}
-
-.addRemoveButtonGroup {
-    width: 100%;
-}
-.addRemoveButton {
-    width: calc(100%/2);
-}
-
-.modal-dialog {
-    width: 80%;
-    height: 90%;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-/* armPresets */
-.armTemplate {
-    width: 100%;
-    height: 80%;
-}
-
-.armTemplateContent {
-    width: calc(100% - 3px);
-    height: 90%;
-    overflow: scroll;
-    text-align: center;
-}
-
-.armTemplate .form-control {
-    width: 38%;
-    margin-left: 5px;
-    display: inline;
-    margin-bottom: 5px;
-}
-
-.armTemplate .hidden {
-    overflow: hidden;
-    height: 0;
-}
-
-.onearm {
-    width: calc(100%/2 - 4px);
-    display: block;
-    float: left;
-    overflow: auto;
-    margin: 4px 1px 2px 0px;
-    border:1px solid #258;
-    border-radius: 2px;
-    padding: 3px;
-    font-size: 6pt;
-    font-weight: bold;
-    position: relative;
-}
-
-.onearm p {
-    position: absolute;
-}
-
-.onearm .img-rounded {
-    width: 85px;
-    height: 85px;
-    overflow: hidden;
-}
-
-.onearm:nth-child(2n) {
-    margin: 4px 0px 2px 1px;
-}
-/* charaPresets */
-.charaTemplate {
-    width: 100%;
-    height: 80%;
-}
-
-.charaTemplateContent {
-    width: calc(100% - 3px);
-    height: 90%;
-    overflow: scroll;
-}
-
-.charaTemplate .form-control {
-    width: 38%;
-    margin-left: 5px;
-    display: inline;
-    margin-bottom: 5px;
-}
-
-.onechara {
-    width: calc(100%/2 - 4px);
-    display: block;
-    float: left;
-    overflow: auto;
-    margin: 4px 1px;
-    border:1px solid #258;
-    border-radius: 2px;
-    padding: 3px;
-    font-size: 6pt;
-    font-weight: bold;
-    position: relative;
-}
-
-.onechara p {
-    position: absolute;
-}
-
-.onechara .img-rounded {
-    width: 85px;
-    height: 85px;
-    overflow: hidden;
-}
-
-.presetsConsiderNumber.fade.in.modal .modal-dialog {
-    margin-top: 150px;
-    width: 78%;
-    margin-left: 10.5%;
-    margin-right: 11.5%;
-}
-
-.presetsConsiderNumber.fade.in.modal .modal-dialog .form-control{
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5px;
-}
-
-.howTo.fade.in.modal .modal-dialog {
-    margin-left: 5%;
-    width: 90%;
-    overflow: visible;
-    margin-right: 5%;
-}
-
-.howTo {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.hpChart.fade.in.modal .modal-dialog {
-    margin-left: 5%;
-    width: 90%;
-    overflow: visible;
-    margin-right: 5%;
-}
-
-.hpChart.fade.in.modal .modal-content {
-    margin: 5px 1.0%;
-    width: 98%;
-    overflow-x: visible;
-    overflow-y: scroll;
-}
-
-.hpChartTutorial.fade.in.modal .modal-dialog {
-    margin-left: 20%;
-    width: 60%;
-    overflow: visible;
-    margin-right: 20%;
-}
-
-.display-checked {
-  background: #bbd4ff;
-  transition-duration: 0;
-  height: 20px;
-}
-.display-unchecked {
-  background: #FFFFFF;
-  cursor:pointer;
-  transition-duration: 0;
-  height: 20px;
-}
-
-/* bootstrap custom themes */
-.btn-dark, .label-dark {
-    background-color: black;
-    color: white;
-}
-
-.btn-light, .label-light {
-    background-color: palegoldenrod;
-    color: black;
+@media screen and (min-device-width: 320px) and (max-device-width: 768px){
+    body {
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+        width : 100%;
+        max-width: 960px;
+        font-size: 10pt;
+        font-weight: normal;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 100%;
+        font-weight: bold;
+    }
+
+    .margin-top {
+        margin-top: 10px;
+    }
+
+    table, button, li, label, th, td {
+        font-size: 8pt;
+    }
+
+    input, textarea {
+        text-align: left;
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+    }
+
+    select, option {
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: #000;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0;
+      font-size: 9pt;
+      font-weight: bold;
+    }
+
+    table th {
+      color: white;
+      background: #258;
+      background:-moz-linear-gradient(rgba(34,85,136,0.7), rgba(34,85,136,0.9) 50%);
+      background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(34,85,136,0.7)), to(rgba(34,85,136,0.9)));
+      font-weight: bold;
+      border-left:1px solid #258;
+      border-top:1px solid #258;
+      line-height: 120%;
+      text-align: center;
+      text-shadow:0 -1px 0 rgba(34,85,136,0.9);
+      box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+    }
+
+    table th:last-child {
+      border-right:1px solid #258;
+    }
+
+    table tr td {
+      padding: 1px;
+      border-top: 1px solid #84b2e0;
+      border-left: 1px solid #84b2e0;
+      text-align: center;
+    }
+
+    table tr td:last-child {
+      border-right: 1px solid #84b2e0;
+    }
+
+    table tr:last-child td {
+      border-bottom: 1px solid #84b2e0;
+    }
+
+    table tr {
+      background: #fff;
+    }
+
+    table tr:nth-child(2n+1) {
+      background: #f1f6fc;
+    }
+
+    tr.result:hover {
+      background: #bbd4ee;
+      cursor:pointer;
+      transition-duration: 0;
+    }
+
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+        padding: 2px;
+    }
+
+    .charainfo {
+        text-align: left;
+        font-size: 6pt;
+    }
+
+    .banner {
+        float: right;
+        margin-top: 1px;
+        height: 100px;
+    }
+
+    .dataControl {
+        width: calc(100% - 6px);
+        padding: 3px;
+        overflow: auto;
+    }
+
+    .dataControl input {
+        width: calc(100% - 6px);
+    }
+
+    .dataControl select {
+        width: calc(100% - 6px);
+        margin-bottom: 2pt;
+    }
+
+    .tweet {
+        width: calc(100% - 6px);
+        overflow: auto;
+        word-wrap: break-word;
+        margin: 0px;
+        border-bottom:2px solid #258;
+        padding: 3px;
+    }
+
+    .dataControl .systemButtonGroup {
+        width: 100%;
+    }
+    .dataControl .systemButton {
+        width: calc(100%/3);
+    }
+
+    .tweet .tweetButton {
+        width: 100%;
+    }
+
+    .armList {
+        width: 99%;
+    }
+
+    .armList .element {
+        width: 30%;
+        display: inline;
+    }
+
+    .armList .skill {
+        width: 70%;
+        display: inline;
+    }
+
+    .profile {
+        width: 99%;
+    }
+
+    .summonList {
+        width: 99%;
+    }
+
+    .summonList .hidden {
+        overflow: hidden;
+        height: 0;
+    }
+
+    .summonList table, .armList table, .charaList table {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    .summonList .element, .charaList .element {
+        width: 30%;
+        display: inline;
+    }
+
+    .summonList .summontype {
+        width: 65%;
+        display: inline;
+    }
+
+    .charaList {
+        width: 99%;
+    }
+
+    .charaList th, .summonList th, .armList th {
+        width: 30%;
+    }
+
+    .charaList td, .summonList td, .armList td {
+        width: 70%;
+    }
+
+    .systemList {
+        width: 99%;
+        overflow: auto;
+    }
+
+    div.result {
+        margin-bottom: 20px;
+    }
+
+    div.resultList {
+        width: 99%;
+    }
+
+    .col-bordered {
+      border:1px solid #258;
+      border-color: rgb(59, 34, 136);
+      border-radius: 5px;
+      padding: 2px;
+      margin-top: 3px;
+      margin-bottom: 3px;
+    }
+
+    .col-fixed-height {
+      height: 50px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      border-radius: 0px;
+    }
+
+    thead.result th {
+        color: rgb(255, 255, 255);
+        background: rgb(59, 34, 136);
+        background:-moz-linear-gradient(rgba(59,34,136,0.85), rgba(59,34,136,0.9) 50%);
+        background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(59,34,136,0.85)), to(rgba(59,34,136,0.9)));
+        border-color: rgb(59, 34, 136);
+        writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+        -webkit-writing-mode:vertical-rl;
+        -webkit-text-orientation: sideways;
+        text-orientation: sideways;
+        width: 1em;
+    }
+
+    tbody.result>tr>td {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .notice {
+        margin-top: 2pt;
+        width: 100%;
+    }
+
+    .tweet button, .dataControl button {
+        font-size: 10pt;
+    }
+
+    ::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    }
+
+    .Tab {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 90px);
+        overflow-y: scroll;
+        overflow-x: visible;
+        padding: 5px 0px;
+        border-top:1px solid #258;
+        border-bottom:1px solid #258;
+        border-color: rgb(59, 34, 136);
+    }
+
+    .Tab.hidden {
+        overflow: hidden;
+        height: 0%;
+    }
+
+    .footerNav {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        height: 40px;
+        overflow-y: visible;
+        overflow-x: visible;
+    }
+
+    .footerNav {
+        margin: 0px;
+        padding: 0px;
+        display: table;
+        width: 100%;
+    }
+
+    .footerNav li {
+        padding: 0px;
+        display: table-cell;
+        align-items: center;
+        float: none;
+    }
+
+    .footerNav li a {
+        font-weight: bold;
+        font-size: 7pt;
+        text-align: center;
+        padding: 15px 5px;
+        border-left: 1px solid rgba(255, 255, 255, .75);
+        border-right: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    .footerNav li:last-child a {
+        border-right: 0;
+        border-radius: 0 0px 0px 0;
+    }
+
+    .summonList .form-control.multi {
+        width: 70%;
+    }
+
+    .armList .form-control.consider {
+        width: 50%;
+    }
+
+    .checkbox-inline {
+        display: inline;
+        padding-left: 10px;
+    }
+
+    .checkbox-inline.autoupdate{
+        display: inline-block;
+    }
+
+    .checkbox-inline input[type=checkbox] {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .charaList .checkbox-inline, .armList .checkbox-inline {
+        padding-left: 0;
+    }
+
+    label {
+        display: inline;
+        font-size: 9pt;
+    }
+
+    .addRemoveButtonGroup {
+        width: 100%;
+    }
+    .addRemoveButton {
+        width: calc(100%/2);
+    }
+
+    .modal-dialog {
+        width: 80%;
+        height: 90%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    /* armPresets */
+    .armTemplate {
+        width: 100%;
+        height: 80%;
+    }
+
+    .armTemplateContent {
+        width: calc(100% - 3px);
+        height: 90%;
+        overflow: scroll;
+        text-align: center;
+    }
+
+    .armTemplate .form-control {
+        width: 38%;
+        margin-left: 5px;
+        display: inline;
+        margin-bottom: 5px;
+    }
+
+    .armTemplate .hidden {
+        overflow: hidden;
+        height: 0;
+    }
+
+    .onearm {
+        width: calc(100%/2 - 4px);
+        display: block;
+        float: left;
+        overflow: auto;
+        margin: 4px 1px 2px 0px;
+        border:1px solid #258;
+        border-radius: 2px;
+        padding: 3px;
+        font-size: 6pt;
+        font-weight: bold;
+        position: relative;
+    }
+
+    .onearm p {
+        position: absolute;
+    }
+
+    .onearm .img-rounded {
+        width: 85px;
+        height: 85px;
+        overflow: hidden;
+    }
+
+    .onearm:nth-child(2n) {
+        margin: 4px 0px 2px 1px;
+    }
+    /* charaPresets */
+    .charaTemplate {
+        width: 100%;
+        height: 80%;
+    }
+
+    .charaTemplateContent {
+        width: calc(100% - 3px);
+        height: 90%;
+        overflow: scroll;
+    }
+
+    .charaTemplate .form-control {
+        width: 38%;
+        margin-left: 5px;
+        display: inline;
+        margin-bottom: 5px;
+    }
+
+    .onechara {
+        width: calc(100%/2 - 4px);
+        display: block;
+        float: left;
+        overflow: auto;
+        margin: 4px 1px;
+        border:1px solid #258;
+        border-radius: 2px;
+        padding: 3px;
+        font-size: 6pt;
+        font-weight: bold;
+        position: relative;
+    }
+
+    .onechara p {
+        position: absolute;
+    }
+
+    .onechara .img-rounded {
+        width: 85px;
+        height: 85px;
+        overflow: hidden;
+    }
+
+    .presetsConsiderNumber.fade.in.modal .modal-dialog {
+        margin-top: 150px;
+        width: 78%;
+        margin-left: 10.5%;
+        margin-right: 11.5%;
+    }
+
+    .presetsConsiderNumber.fade.in.modal .modal-dialog .form-control{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 5px;
+    }
+
+    .howTo.fade.in.modal .modal-dialog {
+        margin-left: 5%;
+        width: 90%;
+        overflow: visible;
+        margin-right: 5%;
+    }
+
+    .howTo {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .hpChart.fade.in.modal .modal-dialog {
+        margin-left: 5%;
+        width: 90%;
+        overflow: visible;
+        margin-right: 5%;
+    }
+
+    .hpChart.fade.in.modal .modal-content {
+        margin: 5px 1.0%;
+        width: 98%;
+        overflow-x: visible;
+        overflow-y: scroll;
+    }
+
+    .hpChartTutorial.fade.in.modal .modal-dialog {
+        margin-left: 20%;
+        width: 60%;
+        overflow: visible;
+        margin-right: 20%;
+    }
+
+    .display-checked {
+      background: #bbd4ff;
+      transition-duration: 0;
+      height: 20px;
+    }
+    .display-unchecked {
+      background: #FFFFFF;
+      cursor:pointer;
+      transition-duration: 0;
+      height: 20px;
+    }
+
+    /* bootstrap custom themes */
+    .btn-dark, .label-dark {
+        background-color: black;
+        color: white;
+    }
+
+    .btn-light, .label-light {
+        background-color: palegoldenrod;
+        color: black;
+    }
 }
