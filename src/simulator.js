@@ -624,7 +624,7 @@ var Simulator = CreateClass({
         return (
             <div className="simulatorInput">
                 <div>
-                    <Panel bsStyle="success" collapsible header={<span><Glyphicon glyph="chevron-right"/>&nbsp;{intl.translate("バフテンプレート", locale)}</span>}>
+                    <Panel bsStyle="success" collapsible="true" header={<span><Glyphicon glyph="chevron-right"/>&nbsp;{intl.translate("バフテンプレート", locale)}</span>}>
                         <ListGroup fill>
                             <ListGroupItem>{intl.translate("バフテンプレート説明", locale)}</ListGroupItem>
                             <ListGroupItem>

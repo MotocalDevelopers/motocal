@@ -12,7 +12,7 @@ var Notice = CreateClass({
             <div className="notice">
                 <div className="divright"><a href="http://hsimyu.net/motocal/">入力リセット</a></div>
                 <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
-                <Panel bsStyle="default" collapsible header={<span><Glyphicon glyph="chevron-right" />&nbsp;Update Logs</span>}>
+                <Panel bsStyle="default" collapsible="true" header={<span><Glyphicon glyph="chevron-right" />&nbsp;Update Logs</span>}>
                     <ul className="list-group">
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180311-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180205-1", locale)}</li>
