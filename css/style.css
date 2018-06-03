@@ -1,523 +1,525 @@
-body {
-    font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
-    margin: 0 auto;
-    font-size: 9pt;
-    font-weight: bold;
-    padding-bottom: 10px;
-    width : 99%;
-    height: 100%;
-}
-
-[draggable] {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  /* Required to make elements draggable in old WebKit */
-  -khtml-user-drag: element;
-  -webkit-user-drag: element;
-}
-
-hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-h1, h2, h3 {
-    font-size: 120%;
-    font-weight: bold;
-}
-
-.margin-top {
-    margin-top: 10px;
-}
-
-input, textarea {
-    font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
-    font-weight: bold;
-}
-
-select, option {
-    font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
-    font-weight: bold;
-    font-size: 9pt;
-    color: #000;
-}
-
-.charainfo {
-    text-align: left;
-    font-size: 9pt;
-}
-
-.banner {
-    float: right;
-    margin-top: 1px;
-    height: 80px;
-    display: inline;
-}
-
-div.hidden {
-    visibility: hidden;
-    height: 0%;
-}
-
-div.Tab {
-    width: 100%;
-    overflow: auto;
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
-
-div.Tab.hidden {
-    overflow: hidden;
-    height: 0%;
-    margin: 0;
-}
-
-.rootleft {
-    width: 45%;
-    height: 95%;
-    float: left;
-    overflow: auto;
-    border-right:1px solid #116;
-    padding-right:3px;
-    overflow-x: visible;
-    overflow-y: visible;
-}
-
-.rootright {
-    margin-left: 5px;
-    padding-right: 5px;
-    float: left;
-    overflow-x: visible;
-    overflow-y: scroll;
-}
-
-.main-content {
-    width: 100%;
-    height: 82%;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 0px 5px;
-}
-
-div.drag-hr {
-    cursor: col-resize;
-    width: 5px;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    float: left;
-    text-align: center;
-    padding: 20px 0 0 0;
-}
-
-div.drag-hr span {
-    vertical-align: middle;
-    left: -20px;
-    position: relative;
-}
-
-.dataControl {
-    width: calc(100% - 6px);
-    padding: 3px;
-    overflow: auto;
-}
-
-.dataControl input {
-    width: calc(100% - 6px);
-}
-
-.dataControl select {
-    width: calc(100% - 6px);
-    margin-bottom: 2pt;
-}
-
-.tweet {
-    width: calc(100% - 6px);
-    overflow: auto;
-    word-wrap: break-word;
-    margin: 0px;
-    border-bottom:2px solid #258;
-    padding: 3px;
-}
-
-.dataControl .systemButtonGroup {
-    width: 100%;
-}
-.dataControl .systemButton {
-    width: calc(100%/3);
-}
-
-.tweet .tweetButton {
-    width: 100%;
-}
-
-.armList {
-    width: 100%;
-}
-
-.profile {
-    width: 100%;
-}
-
-.summonList {
-    width: 100%;
-}
-
-.charaList {
-    width: 100%;
-}
-
-.col-bordered {
-  border:1px solid #258;
-  border-color: rgb(59, 34, 136);
-  border-radius: 5px;
-  padding: 2px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-
-.col-no-bordered {
-  padding: 2px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-
-.nav>li>a {
-  padding: 5px 0;
-}
-
-.navbar-nav>li>a {
-  line-height: 40px;
-}
-
-thead.result>tr>th {
-  color: rgb(255, 255, 255);
-  background: rgb(59, 34, 136);
-  background:-moz-linear-gradient(rgba(59,34,136,0.85), rgba(59,34,136,0.9) 50%);
-  background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(59,34,136,0.85)), to(rgba(59,34,136,0.9)));
-  border-color: rgb(59, 34, 136);
-  min-width: 60px;
-  max-width: 90px;
-  font-size: 11pt;
-  text-align: center;
-}
-
-tbody.result>tr {
-  border-top: 1px solid rgb(59, 34, 136);
-}
-
-tbody.result>tr>td {
-  min-width: 60px;
-  max-width: 90px;
-  vertical-align: middle;
-  font-size: 11pt;
-  text-align: center;
-}
-
-tbody.result>tr>td:first-child {
-  border-left: 1px solid rgb(59, 34, 136);
-}
-tbody.result>tr>td:last-child {
-  border-right: 1px solid rgb(59, 34, 136);
-}
-
-tbody.result>tr:last-child>td {
-  border-bottom: 1px solid rgb(59, 34, 136);
-}
-
-div.result {
-    margin-bottom: 10px;
-}
-
-span.result-chara-detail {
-    margin: 0px 0px 3px;
-}
-
-.notice {
-    margin-top: 2pt;
-    width: 100%;
-}
-
-.form-group {
-    margin-bottom: 0;
-}
-
-::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-}
-
-.form-control {
-    display: inline;
-}
-
-.btn {
-    font-size: 12pt;
-}
-
-.btn-nopadding {
-    padding: 6px;
-}
-
-.checkbox-inline {
-    display: inline;
-    padding-left: 10px;
-}
-
-.checkbox-inline.autoupdate{
-    display: inline-block;
-}
-
-.checkbox-inline input[type=checkbox] {
-    position: relative;
-    margin-left: 0px;
-}
-
-.charaList .checkbox-inline {
-    padding-left: 0;
-}
-
-label {
-    display: inline;
-    font-size: 9pt;
-}
-
-.addRemoveButtonGroup {
-    width: 100%;
-}
-.addRemoveButton {
-    width: calc(100%/2);
-}
-
-/* armPresets */
-.armTemplate {
-    width: 100%;
-    height: 80%;
-}
-
-.armTemplateContent {
-    width: 100%;
-    height: 90%;
-    overflow: scroll;
-}
-
-.armTemplate .form-control {
-    width: 45%;
-    margin-left: 10px;
-    display: inline;
-    margin-bottom: 5px;
-}
-
-.armTemplate .hidden {
-    overflow: hidden;
-    height: 0;
-}
-
-.onearm {
-    width: calc(100%/3 - 2px);
-    float: left;
-    display: inline;
-    overflow: auto;
-    margin: 4px 1px;
-    border:1px solid #258;
-    border-radius: 2px;
-    padding: 3px;
-    font-size: 7pt;
-    position: relative;
-}
-
-.onearm p {
-    position: absolute;
-}
-
-.onearm .img-rounded {
-    width: 170px;
-    height: 170px;
-    overflow: hidden;
-}
-
-/* charaPresets */
-.charaTemplate {
-    width: 100%;
-    height: 80%;
-}
-
-.charaTemplateContent {
-    width: 100%;
-    height: 90%;
-    overflow: scroll;
-}
-
-.charaTemplate .form-control {
-    width: 45%;
-    margin-left: 10px;
-    display: inline;
-    margin-bottom: 5px;
-}
-
-.onechara {
-    width: calc(100%/3 - 2px);
-    float: left;
-    display: inline;
-    overflow: auto;
-    margin: 4px 1px;
-    border:1px solid #258;
-    border-radius: 2px;
-    padding: 3px;
-    font-size: 7pt;
-    position: relative;
-}
-
-.onechara p {
-    position: absolute;
-}
-
-.onechara .img-rounded {
-    width: 170px;
-    height: 170px;
-    overflow: hidden;
-}
-
-.presetsConsiderNumber.fade.in.modal .modal-dialog {
-    margin-top: 150px;
-    width: 500px;
-}
-
-.presetsConsiderNumber.fade.in.modal .modal-dialog .form-control{
-    width: 30.3%;
-    margin-left: 1.5%;
-    margin-right: 1.5%;
-    display: inline;
-    margin-bottom: 5px;
-}
-
-.howTo.fade.in.modal .modal-dialog {
-    margin-left: 15%;
-    width: 70%;
-    overflow: visible;
-    margin-right: 15%;
-}
-
-.howTo {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.hpChart.fade.in.modal .modal-dialog {
-    margin: 10px 2.5%;
-    width: 95%;
-    height: calc(100% - 20px);
-    overflow: visible;
-}
-
-.hpChart.fade.in.modal .modal-content {
-    margin: 5px 1.0%;
-    width: 98%;
-    height: calc(100% - 10px);
-    overflow-x: visible;
-    overflow-y: scroll;
-}
-
-@media screen and (min-width: 1000px) {
-    div#LineChart0, div#LineChart1, div#LineChart2, div#LineChart3, div#LineChart4, div#LineChart5 {
+@media screen and (min-device-width: 769px) {
+    body {
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+        margin: 0 auto;
+        font-size: 9pt;
+        font-weight: bold;
+        padding-bottom: 10px;
+        width : 99%;
+        height: 100%;
+    }
+
+    [draggable] {
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      /* Required to make elements draggable in old WebKit */
+      -khtml-user-drag: element;
+      -webkit-user-drag: element;
+    }
+
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 120%;
+        font-weight: bold;
+    }
+
+    .margin-top {
+        margin-top: 10px;
+    }
+
+    input, textarea {
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+        font-weight: bold;
+    }
+
+    select, option {
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
+        font-weight: bold;
+        font-size: 9pt;
+        color: #000;
+    }
+
+    .charainfo {
+        text-align: left;
+        font-size: 9pt;
+    }
+
+    .banner {
+        float: right;
+        margin-top: 1px;
+        height: 80px;
         display: inline;
+    }
+
+    div.hidden {
+        visibility: hidden;
+        height: 0%;
+    }
+
+    div.Tab {
+        width: 100%;
+        overflow: auto;
+        margin-bottom: 10px;
+        margin-top: 5px;
+    }
+
+    div.Tab.hidden {
+        overflow: hidden;
+        height: 0%;
+        margin: 0;
+    }
+
+    .rootleft {
+        width: 45%;
+        height: 95%;
         float: left;
+        overflow: auto;
+        border-right:1px solid #116;
+        padding-right:3px;
+        overflow-x: visible;
+        overflow-y: visible;
     }
-}
 
-@media screen and (max-width: 1000px) {
-    div#LineChart0, div#LineChart1, div#LineChart2, div#LineChart3, div#LineChart4, div#LineChart5 {
-        display: block;
+    .rootright {
+        margin-left: 5px;
+        padding-right: 5px;
+        float: left;
+        overflow-x: visible;
+        overflow-y: scroll;
     }
-}
 
-.hpChartTutorial.fade.in.modal .modal-dialog {
-    margin-left: 25%;
-    width: 50%;
-    overflow: visible;
-    margin-right: 25%;
-}
+    .main-content {
+        width: 100%;
+        height: 82%;
+        overflow-x: visible;
+        overflow-y: scroll;
+        padding: 0px 5px;
+    }
 
-.storedListEditor.fade.in.modal .modal-dialog {
-    margin-left: 15%;
-    width: 70%;
-    overflow: visible;
-    margin-right: 15%;
-}
+    div.drag-hr {
+        cursor: col-resize;
+        width: 5px;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        float: left;
+        text-align: center;
+        padding: 20px 0 0 0;
+    }
 
-.simulatorInput .input-table {
-    overflow: scroll;
-    width: 100%;
-    max-height: 300px;
-}
+    div.drag-hr span {
+        vertical-align: middle;
+        left: -20px;
+        position: relative;
+    }
 
-.simulatorInput .simulator-th, .simulatorInput .simulator-td {
-    padding: 2px;
-    width: 150px;
-    align-items: center;
-    vertical-align: middle;
-    text-align: center;
-}
+    .dataControl {
+        width: calc(100% - 6px);
+        padding: 3px;
+        overflow: auto;
+    }
 
-.simulatorInput .simulator-left {
-    padding: 2px;
-    width: 150px;
-    align-items: center;
-    vertical-align: middle;
-    text-align: center;
-}
+    .dataControl input {
+        width: calc(100% - 6px);
+    }
 
-.simulatorInput .form-control {
-    width: 146px;
-}
+    .dataControl select {
+        width: calc(100% - 6px);
+        margin-bottom: 2pt;
+    }
 
-.simulatorOperationButton {
-    width: calc(142px/4);
-}
+    .tweet {
+        width: calc(100% - 6px);
+        overflow: auto;
+        word-wrap: break-word;
+        margin: 0px;
+        border-bottom:2px solid #258;
+        padding: 3px;
+    }
 
-.simulator-droppable {
-    background-color: lightblue;
-    opacity: 0.6;
-}
+    .dataControl .systemButtonGroup {
+        width: 100%;
+    }
+    .dataControl .systemButton {
+        width: calc(100%/3);
+    }
 
-.display-checked {
-  background: #bbd4ff;
-  transition-duration: 0;
-}
-.display-unchecked {
-  background: #FFFFFF;
-  cursor:pointer;
-  transition-duration: 0;
-}
+    .tweet .tweetButton {
+        width: 100%;
+    }
 
-/* bootstrap custom themes */
-.btn-dark, .label-dark, .bg-dark {
-    background-color: black;
-    color: white;
-}
+    .armList {
+        width: 100%;
+    }
 
-.btn-light, .label-light, .bg-light {
-    background-color: palegoldenrod;
-    color: black;
-}
+    .profile {
+        width: 100%;
+    }
 
-.btn-non, .label-non {
-    background-color: #FFFFFF;
-    color: black;
-    border: 1px solid #000000;
+    .summonList {
+        width: 100%;
+    }
+
+    .charaList {
+        width: 100%;
+    }
+
+    .col-bordered {
+      border:1px solid #258;
+      border-color: rgb(59, 34, 136);
+      border-radius: 5px;
+      padding: 2px;
+      margin-top: 3px;
+      margin-bottom: 3px;
+    }
+
+    .col-no-bordered {
+      padding: 2px;
+      margin-top: 3px;
+      margin-bottom: 3px;
+    }
+
+    .nav>li>a {
+      padding: 5px 0;
+    }
+
+    .navbar-nav>li>a {
+      line-height: 40px;
+    }
+
+    thead.result>tr>th {
+      color: rgb(255, 255, 255);
+      background: rgb(59, 34, 136);
+      background:-moz-linear-gradient(rgba(59,34,136,0.85), rgba(59,34,136,0.9) 50%);
+      background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(59,34,136,0.85)), to(rgba(59,34,136,0.9)));
+      border-color: rgb(59, 34, 136);
+      min-width: 60px;
+      max-width: 90px;
+      font-size: 11pt;
+      text-align: center;
+    }
+
+    tbody.result>tr {
+      border-top: 1px solid rgb(59, 34, 136);
+    }
+
+    tbody.result>tr>td {
+      min-width: 60px;
+      max-width: 90px;
+      vertical-align: middle;
+      font-size: 11pt;
+      text-align: center;
+    }
+
+    tbody.result>tr>td:first-child {
+      border-left: 1px solid rgb(59, 34, 136);
+    }
+    tbody.result>tr>td:last-child {
+      border-right: 1px solid rgb(59, 34, 136);
+    }
+
+    tbody.result>tr:last-child>td {
+      border-bottom: 1px solid rgb(59, 34, 136);
+    }
+
+    div.result {
+        margin-bottom: 10px;
+    }
+
+    span.result-chara-detail {
+        margin: 0px 0px 3px;
+    }
+
+    .notice {
+        margin-top: 2pt;
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    }
+
+    .form-control {
+        display: inline;
+    }
+
+    .btn {
+        font-size: 12pt;
+    }
+
+    .btn-nopadding {
+        padding: 6px;
+    }
+
+    .checkbox-inline {
+        display: inline;
+        padding-left: 10px;
+    }
+
+    .checkbox-inline.autoupdate{
+        display: inline-block;
+    }
+
+    .checkbox-inline input[type=checkbox] {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .charaList .checkbox-inline {
+        padding-left: 0;
+    }
+
+    label {
+        display: inline;
+        font-size: 9pt;
+    }
+
+    .addRemoveButtonGroup {
+        width: 100%;
+    }
+    .addRemoveButton {
+        width: calc(100%/2);
+    }
+
+    /* armPresets */
+    .armTemplate {
+        width: 100%;
+        height: 80%;
+    }
+
+    .armTemplateContent {
+        width: 100%;
+        height: 90%;
+        overflow: scroll;
+    }
+
+    .armTemplate .form-control {
+        width: 45%;
+        margin-left: 10px;
+        display: inline;
+        margin-bottom: 5px;
+    }
+
+    .armTemplate .hidden {
+        overflow: hidden;
+        height: 0;
+    }
+
+    .onearm {
+        width: calc(100%/3 - 2px);
+        float: left;
+        display: inline;
+        overflow: auto;
+        margin: 4px 1px;
+        border:1px solid #258;
+        border-radius: 2px;
+        padding: 3px;
+        font-size: 7pt;
+        position: relative;
+    }
+
+    .onearm p {
+        position: absolute;
+    }
+
+    .onearm .img-rounded {
+        width: 170px;
+        height: 170px;
+        overflow: hidden;
+    }
+
+    /* charaPresets */
+    .charaTemplate {
+        width: 100%;
+        height: 80%;
+    }
+
+    .charaTemplateContent {
+        width: 100%;
+        height: 90%;
+        overflow: scroll;
+    }
+
+    .charaTemplate .form-control {
+        width: 45%;
+        margin-left: 10px;
+        display: inline;
+        margin-bottom: 5px;
+    }
+
+    .onechara {
+        width: calc(100%/3 - 2px);
+        float: left;
+        display: inline;
+        overflow: auto;
+        margin: 4px 1px;
+        border:1px solid #258;
+        border-radius: 2px;
+        padding: 3px;
+        font-size: 7pt;
+        position: relative;
+    }
+
+    .onechara p {
+        position: absolute;
+    }
+
+    .onechara .img-rounded {
+        width: 170px;
+        height: 170px;
+        overflow: hidden;
+    }
+
+    .presetsConsiderNumber.fade.in.modal .modal-dialog {
+        margin-top: 150px;
+        width: 500px;
+    }
+
+    .presetsConsiderNumber.fade.in.modal .modal-dialog .form-control{
+        width: 30.3%;
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+        display: inline;
+        margin-bottom: 5px;
+    }
+
+    .howTo.fade.in.modal .modal-dialog {
+        margin-left: 15%;
+        width: 70%;
+        overflow: visible;
+        margin-right: 15%;
+    }
+
+    .howTo {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .hpChart.fade.in.modal .modal-dialog {
+        margin: 10px 2.5%;
+        width: 95%;
+        height: calc(100% - 20px);
+        overflow: visible;
+    }
+
+    .hpChart.fade.in.modal .modal-content {
+        margin: 5px 1.0%;
+        width: 98%;
+        height: calc(100% - 10px);
+        overflow-x: visible;
+        overflow-y: scroll;
+    }
+
+    @media screen and (min-width: 1000px) {
+        div#LineChart0, div#LineChart1, div#LineChart2, div#LineChart3, div#LineChart4, div#LineChart5 {
+            display: inline;
+            float: left;
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        div#LineChart0, div#LineChart1, div#LineChart2, div#LineChart3, div#LineChart4, div#LineChart5 {
+            display: block;
+        }
+    }
+
+    .hpChartTutorial.fade.in.modal .modal-dialog {
+        margin-left: 25%;
+        width: 50%;
+        overflow: visible;
+        margin-right: 25%;
+    }
+
+    .storedListEditor.fade.in.modal .modal-dialog {
+        margin-left: 15%;
+        width: 70%;
+        overflow: visible;
+        margin-right: 15%;
+    }
+
+    .simulatorInput .input-table {
+        overflow: scroll;
+        width: 100%;
+        max-height: 300px;
+    }
+
+    .simulatorInput .simulator-th, .simulatorInput .simulator-td {
+        padding: 2px;
+        width: 150px;
+        align-items: center;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .simulatorInput .simulator-left {
+        padding: 2px;
+        width: 150px;
+        align-items: center;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .simulatorInput .form-control {
+        width: 146px;
+    }
+
+    .simulatorOperationButton {
+        width: calc(142px/4);
+    }
+
+    .simulator-droppable {
+        background-color: lightblue;
+        opacity: 0.6;
+    }
+
+    .display-checked {
+      background: #bbd4ff;
+      transition-duration: 0;
+    }
+    .display-unchecked {
+      background: #FFFFFF;
+      cursor:pointer;
+      transition-duration: 0;
+    }
+
+    /* bootstrap custom themes */
+    .btn-dark, .label-dark, .bg-dark {
+        background-color: black;
+        color: white;
+    }
+
+    .btn-light, .label-light, .bg-light {
+        background-color: palegoldenrod;
+        color: black;
+    }
+
+    .btn-non, .label-non {
+        background-color: #FFFFFF;
+        color: black;
+        border: 1px solid #000000;
+    }
 }
