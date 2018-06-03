@@ -1,6 +1,7 @@
 var React = require('react');
 var { Tooltip, OverlayTrigger } = require('react-bootstrap');
 var intl = require('./translate.js');
+var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
 
 module.exports.TextWithTooltip = CreateClass({
@@ -14,7 +15,7 @@ module.exports.TextWithTooltip = CreateClass({
         );
     },
     propTypes: {
-        tooltip: React.PropTypes.string.isRequired,
+        tooltip: PropTypes.string.isRequired,
     }
 });
 
@@ -32,7 +33,7 @@ module.exports.ElementColorLabel = CreateClass({
         return <span className="label label-default" style={{ "fontSize": "12pt" }}>{this.props.children}</span>
     },
     propTypes: {
-        element: React.PropTypes.string.isRequired,
+        element: PropTypes.string.isRequired,
     }
 });
 // 属性に対応した色のラベルを返す
