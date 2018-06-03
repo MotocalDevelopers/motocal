@@ -4769,6 +4769,22 @@
         "imageURL": "./imgs/1040906400.png",
         "en": "[4★] Ixaba"
     },
+    "一期一振": {
+        "ja": "一期一振",
+        "element": "earth",
+        "type": "katana",
+        "skill1": "normalLL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "42",
+        "minattack": "454",
+        "hp": "214",
+        "attack": "2900",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040910000.png",
+        "en": "Ichigo Hitofuri"
+    },
     "デュランダル": {
         "ja": "デュランダル",
         "element": "water",
@@ -8417,6 +8433,22 @@
         "imageURL": "./imgs/1040309200.png",
         "en": "Bell Striker"
     },
+    "バンチ・オブ・バナナス": {
+        "ja": "バンチ・オブ・バナナス",
+        "element": "water",
+        "type": "axe",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "20",
+        "minattack": "351",
+        "hp": "110",
+        "attack": "2333",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040309700.png",
+        "en": "Banana Bunch"
+    },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
         "element": "wind",
@@ -10372,6 +10404,22 @@
         "attacklv100": "2239",
         "imageURL": "./imgs/1040610600.png",
         "en": "[4★] Wyrmtiger Claw"
+    },
+    "ルーリングペン": {
+        "ja": "ルーリングペン",
+        "element": "dark",
+        "type": "fist",
+        "skill1": "normalL",
+        "skill2": "normalCriticalS",
+        "element2": "dark",
+        "minhp": "39",
+        "minattack": "401",
+        "hp": "249",
+        "attack": "2344",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040610700.png",
+        "en": "Ruling Pen"
     },
     "エーテリアルボウ": {
         "ja": "エーテリアルボウ",
