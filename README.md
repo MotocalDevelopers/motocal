@@ -14,7 +14,7 @@ $ open index.html
 ### docker版
 ```sh
 $ git clone https://github.com/hoshimi/motocal.git motocal
-$ cd motoca
+$ cd motocal
 $ docker-compose up
 ```
 
