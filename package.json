@@ -27,7 +27,8 @@
     "lint:fix": "eslint webpack.config.js src/* --fix",
     "production-build": "cross-env NODE_ENV=production webpack",
     "watch-dev": "webpack --progress --watch",
-    "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch"
+    "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch",
+    "postinstall": "cross-env NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
