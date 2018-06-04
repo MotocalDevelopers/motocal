@@ -19,6 +19,10 @@ const plugins = [
     template: path.join(__dirname, 'public/index.html'),
     inject: false,
     favicon: path.join(__dirname, 'public/favicon.ico'),
+    files:{
+      "js": `${fileName}.js`,
+      "css": `${fileName}.css`
+    },
     minify: {
       removeComments: true,
       // collapseWhitespace: true,
