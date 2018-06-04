@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -46,6 +47,12 @@ const plugins = [
       GITHUB_API_TOKEN: JSON.stringify(process.env.GITHUB_API_TOKEN || ''),
     },
   }),
+  CopyWebpackPlugin([
+    { from: path.join(__dirname, "/*Data.json"), to: path.join(__dirname, "/dist/") },
+    { from: path.join(__dirname, "/imgs/"), to: path.join(__dirname, "/dist/imgs/"), ignore: [ '*.txt' ]},
+    { from: path.join(__dirname, "/otherImages/"), to: path.join(__dirname, "/dist/otherImages//") },
+    { from: path.join(__dirname, "/charaimgs/"), to: path.join(__dirname, "/dist/charaimgs/"), ignore: [ '*.txt' ]},
+  ]),
   // new webpack.optimize.UglifyJsPlugin({
   //   compress: {
   //     screw_ie8: true, // React doesn't support IE8
