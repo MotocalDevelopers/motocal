@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -19,6 +20,10 @@ const plugins = [
     template: path.join(__dirname, 'public/index.html'),
     inject: false,
     favicon: path.join(__dirname, 'public/favicon.ico'),
+    files:{
+      "js": `${fileName}.js`,
+      "css": `${fileName}.css`
+    },
     minify: {
       removeComments: true,
       // collapseWhitespace: true,
@@ -42,6 +47,12 @@ const plugins = [
       GITHUB_API_TOKEN: JSON.stringify(process.env.GITHUB_API_TOKEN || ''),
     },
   }),
+  CopyWebpackPlugin([
+    { from: path.join(__dirname, "/*Data.json"), to: path.join(__dirname, "/dist/") },
+    { from: path.join(__dirname, "/imgs/"), to: path.join(__dirname, "/dist/imgs/"), ignore: [ '*.txt' ]},
+    { from: path.join(__dirname, "/otherImages/"), to: path.join(__dirname, "/dist/otherImages/") },
+    { from: path.join(__dirname, "/charaimgs/"), to: path.join(__dirname, "/dist/charaimgs/"), ignore: [ '*.txt' ]},
+  ]),
   // new webpack.optimize.UglifyJsPlugin({
   //   compress: {
   //     screw_ie8: true, // React doesn't support IE8
@@ -88,7 +99,7 @@ module.exports = {
   ]},
   plugins: plugins,
   devServer: {
-     contentBase: [path.join(__dirname, "/"), path.join(__dirname, "/dist")],
+     contentBase: [path.join(__dirname, "/dist")],
      compress: true,
      host: "0.0.0.0",
      port: 8000
