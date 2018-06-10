@@ -1,19 +1,9 @@
 var React = require('react');
+var createClass = require('create-react-class');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
-var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
-var Profile = require('./profile.js')
-var {SummonList, Summon} = require('./summon.js');
-var {CharaList, Chara} = require('./chara.js');
-var {ArmList, Arm} = require('./armlist.js')
-var { AdsenseAdvertisement } = require('./advertisement.js');
-var GlobalConst = require('./global_const.js')
-var Notice = require('./notice.js')
-var {ResultList, Result} = require('./result.js')
-var {HowTo, NiteHowTo, HPChartHowTo, SimulatorHowTo} = require('./howto.js')
-var {ColP} = require('./gridp.js')
+var {Button, ButtonGroup, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
 var intl = require('./translate.js')
-var _ua = GlobalConst._ua;
 
 // query 取得用の関数
 var urlid = getVarInQuery("id")
@@ -38,7 +28,7 @@ function getVarInQuery(key){
 }
 
 // Root class contains [Profile, ArmList, Results].
-var Root = React.createClass({
+var Root = createClass({
   getInitialState: function() {
       var initial_width = 25;
       var initial_height = 100;
@@ -258,203 +248,42 @@ var Root = React.createClass({
       }
   },
   render: function() {
-      var locale = this.state.locale
-    if(_ua.Mobile || _ua.Tablet) {
-        return (
-            <div className="root">
-                <Modal show={this.state.openHowTo} onHide={this.closeHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>元カレ計算機について</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <HowTo />
-                    </Modal.Body>
-                </Modal>
-                <Modal show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <NiteHowTo />
-                    </Modal.Body>
-                </Modal>
-                <AdsenseAdvertisement locale={locale} type="mobile" />
-                <div className="smartphone-content">
-                    <div className="Tab" id="inputTab">
-                        <h2 style={{"marginTop": "10px", "marginBottom": "5px"}} >{intl.translate("motocal", locale)}</h2>
-                        <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={locale} dataForLoad={this.state.dataForLoad.profile} />
-                    </div>
-                    <div className="Tab hidden" id="summonTab">
-                        <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} dataForLoad={this.state.dataForLoad.summon} />
-                        <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}(現在{this.state.summonNum}組)</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
-                        </ButtonGroup>
-                    </div>
-                    <div className="Tab hidden" id="charaTab">
-                        <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} dataForLoad={this.state.dataForLoad.chara} />
-                        <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}(現在{this.state.charaNum}人)</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
-                        </ButtonGroup>
-                    </div>
-                    <div className="Tab hidden" id="armTab">
-                        <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum} locale={locale} dataForLoad={this.state.dataForLoad.armlist} />
-                        <ButtonGroup className="addRemoveButtonGroup">
-                            <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}(現在{this.state.armNum}本)</Button>
-                            <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
-                        </ButtonGroup>
-                    </div>
-                    <div className="Tab hidden" id="resultTab">
-                        <ResultList
-                            profile={this.state.profile}
-                            armlist={this.state.armlist}
-                            chara={this.state.chara}
-                            summon={this.state.summon}
-                            sortKey={this.state.sortKey}
-                            simulator={this.state.simulator}
-                            noResultUpdate={this.state.noResultUpdate}
-                            onChangeSortkey={this.handleEvent.bind(this, "sortKey")}
-                            locale={locale}
-                         />
-                    </div>
-                    <div className="Tab hidden" id="systemTab">
-                        <ButtonGroup>
-                            <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
-                            <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
-                            <DropdownButton title={intl.translate("使い方", locale)}>
-                                <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
-                                <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
-                                <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
-                            </DropdownButton>
-                        </ButtonGroup>
-                        <div className="systemList">
-                            <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
-                            <Notice locale={locale} />
-                        </div>
-                    </div>
-                </div>
-                <Nav className="footerNav" bsStyle="pills"
-                    activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey}
-                    onSelect={this.handleChangeTab}>
-                    <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
-                    <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
-                    <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
-                    <NavItem eventKey="armTab">{intl.translate("武器", locale)}</NavItem>
-                    <NavItem eventKey="resultTab">{intl.translate("結果", locale)}</NavItem>
-                    <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
-                </Nav>
+    var locale = this.state.locale
+    return (
+        <div className="root" style={{width: "50%"}}>
+            <h1>元元カレ計算機 / moto motocal</h1>
+            <div>
+                <p>元カレ計算機は運営移譲に伴い、以下のURLへ移動しました。</p>
+                <p>長らくのご愛願ありがとうございました。 （ほしみ）</p>
             </div>
-        );
-    } else {
-        return (
-            <div className="root">
-                <div className="rootleft" id="rootleft2" style={{height: this.state.rootleftHeight + "%", width: this.state.rootleftWidth +"%"}}>
-                    <h1> {intl.translate("motocal", locale)} </h1>
-                    <Navbar fluid>
-                        <Navbar.Header>
-                        <Navbar.Brand> motocal </Navbar.Brand>
-                        </Navbar.Header>
-                        <Nav>
-                            <NavDropdown id="dropdown_howto" title={intl.translate("使い方", locale)}>
-                            <MenuItem> <p onClick={this.openHowTo}>{intl.translate("使い方", locale)}</p> </MenuItem>
-                            <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
-                            <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
-                            <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
-                            </NavDropdown>
-                        </Nav>
-                        <Navbar.Form pullRight>
-                            <ButtonGroup>
-                                <Button bsSize="small" onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
-                                <Button bsSize="small" onClick={this.changeLang.bind(this, "en")}>English</Button>
-                            </ButtonGroup>
-                        </Navbar.Form>
-                    </Navbar>
-                    <Nav bsStyle="tabs" justified activeKey={(this.state.activeKey == undefined) ? "inputTab" : this.state.activeKey} onSelect={this.handleChangeTab}>
-                        <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
-                        <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
-                        <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
-                        <NavItem eventKey="armTab">{intl.translate("武器", locale)}</NavItem>
-                        <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
-                    </Nav>
-                    <div className="main-content">
-                        <div className="Tab" id="inputTab">
-                            <Profile dataName={this.state.dataName} onChange={this.onChangeProfileData} locale={this.state.locale} dataForLoad={this.state.dataForLoad.profile} />
-                        </div>
-                        <div className="Tab hidden" id="summonTab">
-                            <SummonList dataName={this.state.dataName} summonNum={this.state.summonNum} onChange={this.onChangeSummonData} locale={locale} dataForLoad={this.state.dataForLoad.summon} />
-                            <ButtonGroup className="addRemoveButtonGroup">
-                                <Button className="addRemoveButton" bsStyle="primary" onClick={this.addSummonNum}>{intl.translate("追加", locale)}</Button>
-                                <Button className="addRemoveButton" bsStyle="danger" onClick={this.subSummonNum}>{intl.translate("削除", locale)}</Button>
-                            </ButtonGroup>
-                        </div>
-                        <div className="Tab hidden" id="charaTab">
-                            <CharaList dataName={this.state.dataName} onChange={this.onChangeCharaData} charaNum={this.state.charaNum} pleaseAddCharaNum={this.addCharaNum} locale={locale} dataForLoad={this.state.dataForLoad.chara}/>
-                            <ButtonGroup className="addRemoveButtonGroup">
-                                <Button className="addRemoveButton" bsStyle="primary" onClick={this.addCharaNum}>{intl.translate("追加", locale)}</Button>
-                                <Button className="addRemoveButton" bsStyle="danger" onClick={this.subCharaNum}>{intl.translate("削除", locale)}</Button>
-                            </ButtonGroup>
-                        </div>
-                        <div className="Tab hidden" id="armTab">
-                            <ArmList dataName={this.state.dataName} armNum={this.state.armNum} onChange={this.onChangeArmData} pleaseAddCharaNum={this.addCharaNum} pleaseAddArmNum={this.addArmNum} locale={locale} dataForLoad={this.state.dataForLoad.armlist}/>
-                            <ButtonGroup className="addRemoveButtonGroup">
-                                <Button className="addRemoveButton" bsStyle="primary" onClick={this.addArmNum}>{intl.translate("追加", locale)}</Button>
-                                <Button className="addRemoveButton" bsStyle="danger" onClick={this.subArmNum}>{intl.translate("削除", locale)}</Button>
-                            </ButtonGroup>
-                        </div>
-                        <div className="Tab hidden" id="systemTab">
-                            <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
-                            <Notice locale={locale} />
-                        </div>
-                    </div>
-                </div>
-                <div draggable="true" className="drag-hr" onDragEnd={this.onDragEnd}></div>
-                <div className="rootRight" style={{height: this.state.rootrightHeight + "%", width: "calc(" + this.state.rootrightWidth + "% - 10px)"}} >
-                    <ResultList
-                        profile={this.state.profile}
-                        armlist={this.state.armlist}
-                        chara={this.state.chara}
-                        summon={this.state.summon}
-                        sortKey={this.state.sortKey}
-                        dataName={this.state.dataName}
-                        simulator={this.state.simulator}
-                        noResultUpdate={this.state.noResultUpdate}
-                        onChangeSortkey={this.handleEvent.bind(this, "sortKey")}
-                        onChangeSimulationData={this.onChangeSimulationData}
-                        locale={locale}
-                     />
-                </div>
-                <Modal className="howTo" show={this.state.openHowTo} onHide={this.closeHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>元カレ計算機について</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <HowTo />
-                    </Modal.Body>
-                </Modal>
-                <Modal className="howTo" show={this.state.openNiteHowTo} onHide={this.closeNiteHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>二手・三手・技巧スキル込みの編成について</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <NiteHowTo />
-                    </Modal.Body>
-                </Modal>
-                <Modal className="howTo" show={this.state.openSimulatorHowTo} onHide={this.closeSimulatorHowTo}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>ダメージシミュレータについて</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <SimulatorHowTo />
-                    </Modal.Body>
-                </Modal>
+            <ul className="list-group">
+                <li className="list-group-item list-group-item-info">移転先1: <a href="">testtesttesttest</a></li>
+                <li className="list-group-item list-group-item-info">移転先2: <a href="">testtesttesttest</a></li>
+                <li className="list-group-item list-group-item-info">移転先3: <a href="">testtesttesttest</a></li>
+            </ul>
+            <div>
+                <p>Motocal was moved to the urls below.</p>
+                <p>Thank you very much for using my user-unfriendly calculator. (@hsimyu) </p>
             </div>
-        );
-    }
+
+            <hr/>
+            <div>
+                <p>※サーバー保存データを出力する際は、URLからアクセス後に、</p>
+                <p>データ名を入力し<strong>「保存」</strong>ボタンをクリックしてから、</p>
+                <p><strong>データ出力</strong>ボタンをクリックしてください。</p>
+                <p>※When you need to <strong>export</strong> your data saved on this server:</p>
+                <p>Access the data URL, input <strong>dataname</strong>, click <strong>save</strong>button,</p>
+                <p>then click <strong>export</strong> button.</p>
+            </div>
+            <hr/>
+
+            <Sys data={this.state} onLoadNewData={this.handleChangeData} locale={locale} />
+        </div>
+    );
   }
 });
 
-var Sys = React.createClass({
+var Sys = createClass({
     getInitialState: function() {
         return {
             storedData: {},
@@ -571,31 +400,21 @@ var Sys = React.createClass({
         }
         return (
             <div className="dataControl">
-                {intl.translate("データ名", locale)}: <FormControl size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} />
+                データ名 / DataName: <FormControl size="10" type="text" value={this.state.dataName} onChange={this.handleEvent.bind(this, "dataName")} />
                 {intl.translate("ブラウザデータリスト", locale)}
-                <FormControl componentClass="select" size={10} value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </FormControl>
+                <FormControl componentClass="select" size={15} value={this.state.selectedData} onClick={this.handleOnClick.bind(this, "selectedData")} onChange={this.handleEvent.bind(this, "selectedData")} > {datalist} </FormControl>
                 <ButtonGroup className="systemButtonGroup">
-                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitSave} >{intl.translate("ブラウザに保存", locale)}</Button>
-                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitLoad} >{intl.translate("ブラウザデータ読込", locale)}</Button>
-                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitRemove} >{intl.translate("削除", locale)}</Button>
+                    <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitSave} >ブラウザに保存 / Save</Button>
                 </ButtonGroup>
-                {/*
-                <FormGroup className="systemButtonGroup">
-                    <FormControl type="file" label="アップロード" value={this.state.uploadedData} onChange={this.handleEvent.bind(this, "uploadedData")} />
-                    <Button type="submit" bsStyle="primary" className="systemButton" onClick={this.onSubmitUpload}>{intl.translate("アップロード", locale)}</Button>
-                </FormGroup>
-                */}
-                <TwitterShareButton data={this.props.data} dataName={this.state.dataName} locale={locale} />
                 <FormGroup>
                     {intl.translate("データ移行", locale)}
-                    <FormControl componentClass="textarea" bsSize="large" value={this.state.rawData} onChange={this.handleEvent.bind(this, "rawData")} />
+                    <FormControl componentClass="textarea" size={20} bsSize="large" value={this.state.rawData} onChange={this.handleEvent.bind(this, "rawData")} />
                     <ButtonGroup>
-                    <Button tye="submit" bsStyle="primary" onClick={this.onSubmitSaveRawData}>{intl.translate("移行データ出力", locale)}</Button>
-                    <Button tye="submit" bsStyle="primary" onClick={this.onSubmitLoadRawData}>{intl.translate("移行データ入力", locale)}</Button>
+                    <Button tye="submit" bsStyle="primary" onClick={this.onSubmitSaveRawData}>データ出力 / Export</Button>
 
                     {/* rawdataが発行されている場合にJSONダウンロードボタンを表示 */}
                     { this.state.rawData != '' ?
-                        <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitDownload} >{intl.translate("ダウンロード", locale)}</Button>
+                        <Button bsStyle="primary" className="systemButton" onClick={this.onSubmitDownload} >ダウンロード / Download</Button>
                         :
                         null
                     }
@@ -604,71 +423,6 @@ var Sys = React.createClass({
             </div>
         );
     }
-});
-
-// Twitter Button
-var TwitterShareButton = React.createClass ({
-    componentDidMount: function(){
-        // localStorage から sharehistory をロードする
-        if ("sharehist" in localStorage && localStorage.sharehist != "{}" ) {
-            var sharehist = JSON.parse(localStorage["sharehist"])
-            this.setState({shareurl_history: sharehist})
-        }
-    },
-    getInitialState: function() {
-        return {
-            shareurl: "",
-            shareurl_history: {},
-        };
-    },
-    getShortenUrl: function() {
-        var data = JSON.parse(JSON.stringify(this.props.data));
-        if(this.props.dataName != '') {
-            // 基本的にSys.dataNameに入力されているものをベースにして保存
-            data["dataName"] = this.props.dataName;
-        } else {
-            // Sys.dataNameが空の場合
-            data["dataName"] = "savedData";
-        }
-
-        $.ajax({
-            url: "getshort.php",
-            type: 'POST',
-            dataType: 'text',
-            cache: false,
-            timeout: 10000,
-            data: {datachar: Base64.encodeURI(JSON.stringify(data))},
-            success: function(data, datatype) {
-                var shareurl = 'http://hsimyu.net/motocal?id=' + data
-                var tweeturl = 'https://twitter.com/intent/tweet?';
-                tweeturl += 'text=' + intl.translate("motocal", this.props.locale)
-                tweeturl += '&url=' + shareurl
-                window.open(tweeturl, '_blank')
-                var sharehist = this.state.shareurl_history
-                sharehist[this.props.data["dataName"]] = shareurl;
-                this.setState({shareurl: shareurl, shareurl_history: sharehist})
-                localStorage.setItem("sharehist", JSON.stringify(sharehist));
-            }.bind(this),
-            error: function(xhr, status, err) {
-                alert("Error!: 何かがおかしいです。@hsimyuまで連絡して下さい。status: ", status, ", error message: ", err.toString());
-            }.bind(this)
-        });
-    },
-    render: function() {
-        var sharehist = this.state.shareurl_history;
-        return (
-            <div className="tweet">
-                <Button bsStyle="primary" className="tweetButton" onClick={this.getShortenUrl}>{intl.translate("サーバに保存", this.props.locale)}</Button>
-                <div className="list-group">
-                {Object.keys(sharehist).map(function(s, ind){
-                    return (
-                        <a className="list-group-item" href={sharehist[s]} key={s} >{s}: {sharehist[s]} </a>
-                    )
-                })}
-                </div>
-            </div>
-        );
-    },
 });
 
 ReactDOM.render(<Root />, document.getElementById('app'));
