@@ -2009,6 +2009,40 @@
         "imageURL": "./imgs/1040306300.png",
         "en": "True Infernal Flamescythe"
     },
+    "焔ノ太刀": {
+        "ja": "焔ノ太刀",
+        "element": "fire",
+        "type": "katana",
+        "skill1": "strengthLL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "26",
+        "minattack": "400",
+        "hp": "168",
+        "attack": "2420",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040910100.png",
+        "en": "Emberfire Longblade"
+    },
+    "極マリシ烈火ノ太刀": {
+        "ja": "極マリシ烈火ノ太刀",
+        "element": "fire",
+        "type": "katana",
+        "skill1": "strengthLL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "26",
+        "minattack": "400",
+        "hp": "196",
+        "attack": "2825",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "168",
+        "attacklv100": "2420",
+        "imageURL": "./imgs/1040910200.png",
+        "en": "Wrathfire Longblade"
+    },
     "六道・裁考天の鳴弦": {
         "ja": "六道・裁考天の鳴弦",
         "element": "earth",
@@ -4768,6 +4802,22 @@
         "attacklv100": "3000",
         "imageURL": "./imgs/1040906400.png",
         "en": "[4★] Ixaba"
+    },
+    "一期一振": {
+        "ja": "一期一振",
+        "element": "earth",
+        "type": "katana",
+        "skill1": "normalLL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "42",
+        "minattack": "454",
+        "hp": "214",
+        "attack": "2900",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040910000.png",
+        "en": "Ichigo Hitofuri"
     },
     "デュランダル": {
         "ja": "デュランダル",
@@ -8417,6 +8467,22 @@
         "imageURL": "./imgs/1040309200.png",
         "en": "Bell Striker"
     },
+    "バンチ・オブ・バナナス": {
+        "ja": "バンチ・オブ・バナナス",
+        "element": "water",
+        "type": "axe",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "20",
+        "minattack": "351",
+        "hp": "110",
+        "attack": "2333",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040309700.png",
+        "en": "Banana Bunch"
+    },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
         "element": "wind",
@@ -10372,6 +10438,22 @@
         "attacklv100": "2239",
         "imageURL": "./imgs/1040610600.png",
         "en": "[4★] Wyrmtiger Claw"
+    },
+    "ルーリングペン": {
+        "ja": "ルーリングペン",
+        "element": "dark",
+        "type": "fist",
+        "skill1": "normalL",
+        "skill2": "normalCriticalS",
+        "element2": "dark",
+        "minhp": "39",
+        "minattack": "401",
+        "hp": "249",
+        "attack": "2344",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040610700.png",
+        "en": "Ruling Pen"
     },
     "エーテリアルボウ": {
         "ja": "エーテリアルボウ",

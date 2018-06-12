@@ -1,6 +1,7 @@
 var React = require('react');
 
 var { Label, Button, ButtonGroup, FormControl, Modal, Panel, PanelGroup, Glyphicon } = require('react-bootstrap');
+var CreateClass = require('create-react-class');
 var GlobalConst = require('./global_const.js')
 var { RegisteredArm } = require('./template.js')
 var TextWithTooltip = GlobalConst.TextWithTooltip
@@ -11,7 +12,7 @@ var selector = GlobalConst.selector
 var _ua = GlobalConst._ua;
 
 // ArmList has a number of Arm objects.
-var ArmList = React.createClass({
+var ArmList = CreateClass({
     getInitialState: function () {
         var al = []
         for (var i = 0; i < this.props.armNum; i++) al[i] = []
@@ -213,7 +214,7 @@ var ArmList = React.createClass({
                 <span>{intl.translate("属性一括変更", locale)}</span>
                 <FormControl componentClass="select" value={this.state.defaultElement} onChange={this.handleEvent.bind(this, "defaultElement")} > {selector[locale].elements} </FormControl>
 
-                <PanelGroup defaultActiveKey={0} accordion>
+                <PanelGroup defaultActiveKey={0} accordion id="armListView">
                 {arms.map(function (arm, ind) {
                     return (
                         <Panel key={arm} bsStyle="default" style={panel_style} eventKey={arm} header={
@@ -260,7 +261,7 @@ var ArmList = React.createClass({
 });
 
 // Arm is a fundamental object corresponding one arm.
-var Arm = React.createClass({
+var Arm = CreateClass({
     getInitialState: function () {
         return {
             name: '',

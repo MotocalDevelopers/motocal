@@ -3,6 +3,7 @@ var intl = require('./translate.js')
 var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Label, Button, ButtonGroup} = require('react-bootstrap');
 var {ColP} = require('./gridp.js')
 var GlobalConst = require('./global_const.js')
+var CreateClass = require('create-react-class');
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation
@@ -24,7 +25,7 @@ var raceTypes = GlobalConst.raceTypes
 var filterElementTypes = GlobalConst.filterElementTypes
 var enemyDefenseType = GlobalConst.enemyDefenseType
 
-var SummonList = React.createClass({
+var SummonList = CreateClass({
     getInitialState: function() {
         // summonsはkey管理のためだけの配列
         // summonsのindexが表示順 = Summonのprops.idになる
@@ -182,7 +183,7 @@ var SummonList = React.createClass({
     }
 });
 
-var Summon = React.createClass({
+var Summon = CreateClass({
     getInitialState: function() {
         return {
             selfSummonType: "magna",

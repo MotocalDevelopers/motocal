@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-var AdsenseAdvertisement = React.createClass({
+var CreateClass = require('create-react-class');
+var AdsenseAdvertisement = CreateClass({
     showUpAdsense: function() {
         var adsense = document.getElementById("adsense-original-div-" + this.props.type);
         adsense.className = '';

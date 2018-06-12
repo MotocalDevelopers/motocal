@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Base64} = require('js-base64');
 var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
+var CreateClass = require('create-react-class');
 var Profile = require('./profile.js')
 var {SummonList, Summon} = require('./summon.js');
 var {CharaList, Chara} = require('./chara.js');
@@ -38,7 +39,7 @@ function getVarInQuery(key){
 }
 
 // Root class contains [Profile, ArmList, Results].
-var Root = React.createClass({
+var Root = CreateClass({
   getInitialState: function() {
       var initial_width = 25;
       var initial_height = 100;
@@ -322,7 +323,7 @@ var Root = React.createClass({
                         <ButtonGroup>
                             <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
                             <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
-                            <DropdownButton title={intl.translate("使い方", locale)}>
+                            <DropdownButton title={intl.translate("使い方", locale)} id="system-howto">
                                 <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
                                 <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
                                 <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
@@ -454,7 +455,7 @@ var Root = React.createClass({
   }
 });
 
-var Sys = React.createClass({
+var Sys = CreateClass({
     getInitialState: function() {
         return {
             storedData: {},
@@ -607,7 +608,7 @@ var Sys = React.createClass({
 });
 
 // Twitter Button
-var TwitterShareButton = React.createClass ({
+var TwitterShareButton = CreateClass ({
     componentDidMount: function(){
         // localStorage から sharehistory をロードする
         if ("sharehist" in localStorage && localStorage.sharehist != "{}" ) {

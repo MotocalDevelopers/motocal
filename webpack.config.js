@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -19,6 +20,10 @@ const plugins = [
     template: path.join(__dirname, 'public/index.html'),
     inject: false,
     favicon: path.join(__dirname, 'public/favicon.ico'),
+    files:{
+      "js": `${fileName}.js`,
+      "css": `${fileName}.css`
+    },
     minify: {
       removeComments: true,
       // collapseWhitespace: true,
@@ -42,6 +47,12 @@ const plugins = [
       GITHUB_API_TOKEN: JSON.stringify(process.env.GITHUB_API_TOKEN || ''),
     },
   }),
+  CopyWebpackPlugin([
+    { from: path.join(__dirname, "/*Data.json"), to: path.join(__dirname, "/dist/") },
+    { from: path.join(__dirname, "/imgs/"), to: path.join(__dirname, "/dist/imgs/"), ignore: [ '*.txt' ]},
+    { from: path.join(__dirname, "/otherImages/"), to: path.join(__dirname, "/dist/otherImages/") },
+    { from: path.join(__dirname, "/charaimgs/"), to: path.join(__dirname, "/dist/charaimgs/"), ignore: [ '*.txt' ]},
+  ]),
   // new webpack.optimize.UglifyJsPlugin({
   //   compress: {
   //     screw_ie8: true, // React doesn't support IE8
@@ -63,7 +74,7 @@ const plugins = [
 
 module.exports = {
   devtool: devtool,
-  entry: './src/content.js',
+  entry: ['./src/content.js', './css/style.css', './css/smartphone.css'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: `${fileName}.js`,
@@ -73,17 +84,25 @@ module.exports = {
       {
         test: /.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
-        test: /.css?$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader",
-          publicPath: "/build"
-        })
-      }
-    ],
-  },
+        test: /.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader",
+            publicPath: "css",
+           })
+      },
+  ]},
   plugins: plugins,
+  devServer: {
+     contentBase: [path.join(__dirname, "/dist")],
+     compress: true,
+     host: "0.0.0.0",
+     port: 8000
+  },
+  mode: process.env.NODE_ENV || 'development'
 }

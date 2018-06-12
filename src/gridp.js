@@ -1,16 +1,18 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var PropTypes = require('prop-types');
+var CreateClass = require('create-react-class');
 
-var ColP = React.createClass({
+var ColP = CreateClass({
     propTypes: {
-        lg: React.PropTypes.number,
-        slg: React.PropTypes.number,
-        md: React.PropTypes.number,
-        smd: React.PropTypes.number,
-        sm: React.PropTypes.number,
-        ssm: React.PropTypes.number,
-        xs: React.PropTypes.number,
-        sxs: React.PropTypes.number,
+        lg: PropTypes.number,
+        slg: PropTypes.number,
+        md: PropTypes.number,
+        smd: PropTypes.number,
+        sm: PropTypes.number,
+        ssm: PropTypes.number,
+        xs: PropTypes.number,
+        sxs: PropTypes.number,
     },
     getInitialState: function(){
         return {

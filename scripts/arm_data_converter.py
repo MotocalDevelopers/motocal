@@ -629,6 +629,7 @@ skillnamelist["strengthL"] = {
     u"ウィーバースタンス": "wind",
     u"阿笠博士の発明品": "light",
     u"サウザンド・ドリーム": "fire",
+    u"極上バナナ": "water",
 }
 
 skillnamelist["exATKandHPM"] = {
