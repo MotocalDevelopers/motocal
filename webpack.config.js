@@ -36,10 +36,10 @@ const plugins = [
       // minifyCSS: true,
       // minifyURLs: true,
     },
-    ADSENSE_AD_CLIENT: JSON.stringify(process.env.ADSENSE_AD_CLIENT || ''),
-    ADSENSE_AD_SLOT_PC1: JSON.stringify(process.env.ADSENSE_AD_SLOT_PC1 || ''),
-    ADSENSE_AD_SLOT_PC2: JSON.stringify(process.env.ADSENSE_AD_SLOT_PC2 || ''),
-    ADSENSE_AD_SLOT_MOBILE: JSON.stringify(process.env.ADSENSE_AD_SLOT_MOBILE || ''),
+    ADSENSE_AD_CLIENT: process.env.ADSENSE_AD_CLIENT,
+    ADSENSE_AD_SLOT_PC1: process.env.ADSENSE_AD_SLOT_PC1,
+    ADSENSE_AD_SLOT_PC2: process.env.ADSENSE_AD_SLOT_PC2,
+    ADSENSE_AD_SLOT_MOBILE: process.env.ADSENSE_AD_SLOT_MOBILE,
   }),
   new webpack.DefinePlugin({
     'process.env': {

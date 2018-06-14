@@ -4,8 +4,10 @@ var CreateClass = require('create-react-class');
 var AdsenseAdvertisement = CreateClass({
     showUpAdsense: function() {
         var adsense = document.getElementById("adsense-original-div-" + this.props.type);
-        adsense.className = '';
-        ReactDOM.findDOMNode(this.refs["adsense-space-" + this.props.type]).appendChild(adsense);
+        if (adsense) {
+            adsense.className = '';
+            ReactDOM.findDOMNode(this.refs["adsense-space-" + this.props.type]).appendChild(adsense);                
+        }
     },
     componentDidMount: function() {
         this.showUpAdsense();
