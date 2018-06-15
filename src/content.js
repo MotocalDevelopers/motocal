@@ -257,9 +257,9 @@ var Root = createClass({
                 <p>長らくのご愛願ありがとうございました。 （ほしみ）</p>
             </div>
             <ul className="list-group">
-                <li className="list-group-item list-group-item-info">移転先1: <a href="">testtesttesttest</a></li>
-                <li className="list-group-item list-group-item-info">移転先2: <a href="">testtesttesttest</a></li>
-                <li className="list-group-item list-group-item-info">移転先3: <a href="">testtesttesttest</a></li>
+                <li className="list-group-item">移転先1: <a href="https://www.n0pj.com/motocal/">n0pjさん運用サイト</a></li>
+                <li className="list-group-item">移転先2: <a href="http://futatsume.com/motocal">ありこべさん運用サイト</a></li>
+                <li className="list-group-item">移転先3: <a href="https://medon-lab.com/keisanki">ミムメモ速報さん運用サイト</a></li>
             </ul>
             <div>
                 <p>Motocal was moved to the urls below.</p>
