@@ -20,44 +20,47 @@
         <script src="./gana.js"></script>
     </head>
     <body>
-        <div id="adsense-original-div-pc-1" class="hidden">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- 元カレ計算機 PC版上部 -->
-            <ins class="adsbygoogle"
-                style="display:inline-block;width:728px;height:90px"
-                data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
-                data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC1 %>>
-            </ins>
-            <script>
+        <% if (htmlWebpackPlugin.options.ADSENSE_AD_CLIENT && htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC1) { %>
+            <div id="adsense-original-div-pc-1" class="hidden">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- 元カレ計算機 PC版上部 -->
+                <ins class="adsbygoogle"
+                    style="display:inline-block;width:728px;height:90px"
+                    data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
+                    data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC1 %>>
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        <% } %>
+        <% if (htmlWebpackPlugin.options.ADSENSE_AD_CLIENT && htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC2) { %>
+            <div id="adsense-original-div-pc-2" class="hidden">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- 元カレ計算機 PC版上部 -->
+                <ins class="adsbygoogle"
+                    style="display:inline-block;width:320px;height:100px"
+                    data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
+                    data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC2 %>>
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        <% } %>
+        <% if (htmlWebpackPlugin.options.ADSENSE_AD_CLIENT && htmlWebpackPlugin.options.ADSENSE_AD_SLOT_MOBILE) { %>
+            <div id="adsense-original-div-mobile" class="hidden">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- 元カレ計算機 スマホ版上部 -->
+                <ins class="adsbygoogle"
+                    style="display:inline-block;width:320px;height:50px"
+                    data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
+                    data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT_MOBILE %>></ins>
+                <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
-        <div id="adsense-original-div-pc-2" class="hidden">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- 元カレ計算機 PC版上部 -->
-            <ins class="adsbygoogle"
-                style="display:inline-block;width:320px;height:100px"
-                data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
-                data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC2 %>>
-            </ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
-        <div id="adsense-original-div-mobile" class="hidden">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- 元カレ計算機 スマホ版上部 -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:320px;height:50px"
-                 data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
-                 data-ad-slot=<%= htmlWebpackPlugin.options.ADSENSE_AD_SLOT_MOBILE %>></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
+                </script>
+            </div>
+        <% } %>
         <div id="app" align="center">
             <div align="left">
                 <h2>元カレ計算機(グラブル攻撃力計算機) / motocal</h2>
