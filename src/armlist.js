@@ -217,31 +217,34 @@ var ArmList = CreateClass({
                 <PanelGroup defaultActiveKey={0} accordion id="armListView">
                 {arms.map(function (arm, ind) {
                     return (
-                        <Panel key={arm} bsStyle="default" style={panel_style} eventKey={arm} header={
-                                <span>
+                        <Panel key={arm} bsStyle="default" style={panel_style} eventKey={arm}>
+                            <Panel.Heading>
+                                <Panel.Title toggle>
                                     {(ind + 1)}: { (alist[ind] != null) ? alist[ind].name : "" }
                                     &nbsp; {(alist[ind] != null && alist[ind].name != "") ? alist[ind].considerNumberMax + "本" : ""}
-                                </span>
-                            }>
-                            <Arm
-                                key={arm}
-                                onChange={hChange}
-                                onRemove={hRemove}
-                                onCopy={hCopy}
-                                onMoveUp={hMoveUp}
-                                onMoveDown={hMoveDown}
-                                addArm={addArm}
-                                addArmID={addArmID}
-                                considerNum={considerNum}
-                                id={ind}
-                                keyid={arm}
-                                dataName={dataName}
-                                defaultElement={defaultElement}
-                                locale={locale}
-                                openPresets={openPresets}
-                                dataForLoad={dataForLoad}
-                                arrayForCopy={arrayForCopy[ind]}
-                                copyCompleted={copyCompleted} />
+                                </Panel.Title>
+                            </Panel.Heading>
+                            <Panel.Body collapsible>
+                                <Arm
+                                    key={arm}
+                                    onChange={hChange}
+                                    onRemove={hRemove}
+                                    onCopy={hCopy}
+                                    onMoveUp={hMoveUp}
+                                    onMoveDown={hMoveDown}
+                                    addArm={addArm}
+                                    addArmID={addArmID}
+                                    considerNum={considerNum}
+                                    id={ind}
+                                    keyid={arm}
+                                    dataName={dataName}
+                                    defaultElement={defaultElement}
+                                    locale={locale}
+                                    openPresets={openPresets}
+                                    dataForLoad={dataForLoad}
+                                    arrayForCopy={arrayForCopy[ind]}
+                                    copyCompleted={copyCompleted} />
+                            </Panel.Body>
                         </Panel>
                     );
                 })}
