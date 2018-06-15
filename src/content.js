@@ -143,7 +143,7 @@ var Root = CreateClass({
   onChangeArmData: function(state, isSubtle) {
       // armlistの武器名に変更があればresultはupdateしなくてよい
       this.setState({armlist: state});
-
+      this.setState({armNum: state.length});
       // tablet と smartphoneの時はタブ切り替え時以外updateしない
       if(isSubtle != undefined) {
           this.setState({noResultUpdate: isSubtle});
