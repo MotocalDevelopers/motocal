@@ -260,6 +260,7 @@ var Root = createClass({
                 <li className="list-group-item">移転先1: <a href="https://www.n0pj.com/motocal/">n0pjさん運用サイト</a></li>
                 <li className="list-group-item">移転先2: <a href="http://futatsume.com/motocal/">ありこべさん運用サイト</a></li>
                 <li className="list-group-item">移転先3: <a href="https://medon-lab.com/keisanki/">ミムメモ速報さん運用サイト</a></li>
+                <li className="list-group-item">移転先4: <a href="https://gbf-tools.com/motocal/">hyhrtさん運用サイト</a></li>
             </ul>
             <div>
                 <p>Motocal was moved to the urls below.</p>
