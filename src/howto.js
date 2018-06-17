@@ -67,9 +67,9 @@ var HowTo = CreateClass({
 
                 <hr/>
                 <h2>開発情報</h2>
-                <p>元カレ計算機は <a href="https://twitter.com/hsimyu/">@hsimyu</a> with ゼタの元カレ団 が開発しています。
-                ソースコードは<a href="https://github.com/hoshimi/motocal">github</a>にて公開しています。
-                ご要望のある方はPull requestを送って下さい。</p>
+                <p>元カレ計算機は<a href="https://twitter.com/hsimyu" target="_blank">@hsimyu</a>さん引退後、有志によって開発を継続しています。</p>
+                <p>ソースコードは<a href="https://github.com/MotocalDevelopers/motocal" target="_blank">GitHub</a>にて公開しています。</p>
+                <p>ご要望のある方は<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a>にてお願いします。</p>
             </div>
         );
     },
