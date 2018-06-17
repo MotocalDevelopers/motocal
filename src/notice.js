@@ -143,9 +143,7 @@ var Notice = CreateClass({
                     </li>
                 </ul>
 
-                <Image className="banner" src="./otherImages/banner.jpg" />
-                製作者: ほしみ <a href="http://twitter.com/hsimyu" target="_blank"> @hsimyu </a><br />
-                不具合報告・ご要望がありましたらTwitterにてご連絡をお願い致します。
+                不具合報告・ご要望がありましたら<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a>にてご連絡をお願い致します。
 
             <h3>LICENSE</h3>
                 <ul className="list-group">
