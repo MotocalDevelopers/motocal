@@ -10,8 +10,8 @@ var Notice = CreateClass({
 
         return (
             <div className="notice">
-                <div className="divright"><a href="http://hsimyu.net/motocal/">入力リセット</a></div>
-                <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
+                <div className="divright"><a href={`${location.origin}${location.pathname}`}>入力リセット</a></div>
+                <h2>入力例: <a href={`${location.origin}${location.pathname}thumbnail.php`} target="_blank"> 元カレ計算機データビューア </a> </h2>
                 <Panel bsStyle="default" collapsible="true" header={<span><Glyphicon glyph="chevron-right" />&nbsp;Update Logs</span>}>
                     <ul className="list-group">
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180311-1", locale)}</li>
