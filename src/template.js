@@ -162,7 +162,7 @@ var RegisteredChara = CreateClass({
                         {Object.keys(charaData).map(function(key, ind) {
                             var charaName = charaData[key][locale]
                             if(filterElement == "all" || (charaData[key].element == filterElement)){
-                                if(filterText == "" || charaName.indexOf(filterText) != -1){
+                                if(filterText == "" || charaName.toLowerCase().indexOf(filterText.toLowerCase()) != -1){
                                     if(displayed_count < limit) {
                                         displayed_count++;
                                         return (
@@ -191,7 +191,7 @@ var RegisteredChara = CreateClass({
                         {Object.keys(charaData).map(function(key, ind) {
                             var charaName = charaData[key][locale]
                             if(filterElement == "all" || (charaData[key].element == filterElement)){
-                                if(filterText == "" || charaName.indexOf(filterText) != -1){
+                                if(filterText == "" || charaName.toLowerCase().indexOf(filterText.toLowerCase()) != -1){
                                     return (
                                         <div className="onechara" key={key}>
                                             <p>{charaName}</p><br/>
@@ -380,7 +380,7 @@ var RegisteredArm = CreateClass({
                         {Object.keys(armData).map(function(key, ind) {
                             var armName = armData[key][locale]
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element == "all")){
-                                if(filterText == "" || armName.indexOf(filterText) != -1){
+                                if(filterText == "" || armName.toLowerCase().indexOf(filterText.toLowerCase()) != -1){
                                     if(filterElement != "all" || displayed_count < limit) {
                                         displayed_count++;
                                         return (
@@ -473,7 +473,7 @@ var RegisteredArm = CreateClass({
                         {Object.keys(armData).map(function(key, ind) {
                             var armName = armData[key][locale]
                             if(filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element == "all")){
-                                if(filterText == "" || armName.indexOf(filterText) != -1){
+                                if(filterText == "" || armName.toLowerCase().indexOf(filterText.toLowerCase()) != -1){
                                     if(filterElement != "all" || displayed_count < limit) {
                                         displayed_count++;
                                         return (
