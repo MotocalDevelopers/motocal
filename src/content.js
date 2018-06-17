@@ -360,7 +360,6 @@ var Root = CreateClass({
                             <MenuItem> <p onClick={this.openHowTo}>{intl.translate("使い方", locale)}</p> </MenuItem>
                             <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
                             <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
-                            <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
                             </NavDropdown>
                         </Nav>
                         <Navbar.Form pullRight>
