@@ -326,7 +326,6 @@ var Root = CreateClass({
                             <DropdownButton title={intl.translate("使い方", locale)} id="system-howto">
                                 <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
                                 <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
-                                <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
                             </DropdownButton>
                         </ButtonGroup>
                         <div className="systemList">
