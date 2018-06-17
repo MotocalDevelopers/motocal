@@ -651,7 +651,7 @@ var TwitterShareButton = CreateClass ({
                 localStorage.setItem("sharehist", JSON.stringify(sharehist));
             }.bind(this),
             error: function(xhr, status, err) {
-                alert("Error!: 何かがおかしいです。@hsimyuまで連絡して下さい。status: ", status, ", error message: ", err.toString());
+                alert("Error!: 何かがおかしいです。運営者まで連絡して下さい。status: ", status, ", error message: ", err.toString());
             }.bind(this)
         });
     },
