@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --watch --inline",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --display-error-details",
     "lint": "eslint webpack.config.js src/*",
     "lint:fix": "eslint webpack.config.js src/* --fix",
@@ -48,6 +48,7 @@
     "eslint": "^4.19.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "23.1.0",
     "style-loader": "^0.21.0",
     "watchify": "^3.11.0",
     "webpack": "^4.10.2",
