@@ -112,7 +112,6 @@ var Profile = CreateClass({
 
         return (
             <div className="profile">
-                <p className="text-success">最新のアップデート情報は <a href="http://dev-hsimyu.hatenablog.com" target="_blank"> こちら </a> </p>
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
                         <tr>

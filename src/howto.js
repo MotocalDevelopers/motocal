@@ -56,8 +56,8 @@ var HowTo = CreateClass({
                 <p>データの保存などを行うことができます。</p>
                 <p>"保存"ボタンはお使いのブラウザにデータを保存します。この場合、ブラウザを変えると保存されたデータは読み出せません。</p>
                 <p>データを他人に公開したい場合、もしくはブラウザを変えても結果が読み出せるようにしたい場合、"サーバに保存"ボタンを使用して下さい。
-                hsimyu.net/motocal/?id=数字 の形のURLにアクセスすることで、いつでもデータを読み出せるようになります。</p>
-                <p>上記の各タブの入力例をそのまま保存したものが<a href="http://hsimyu.net/motocal/?id=1101">こちら</a>です。ご参考になれば幸いです。</p>
+                {`${location.origin}${location.pathname}`}?id=数字 の形のURLにアクセスすることで、いつでもデータを読み出せるようになります。</p>
+                <p>上記の各タブの入力例をそのまま保存したものが<a href={`${location.origin}${location.pathname}?id=1101`}>こちら</a>です。ご参考になれば幸いです。</p>
 
                 <hr/>
                 <h3>結果 / Result タブ</h3>
@@ -67,9 +67,9 @@ var HowTo = CreateClass({
 
                 <hr/>
                 <h2>開発情報</h2>
-                <p>元カレ計算機は <a href="https://twitter.com/hsimyu/">@hsimyu</a> with ゼタの元カレ団 が開発しています。
-                ソースコードは<a href="https://github.com/hoshimi/motocal">github</a>にて公開しています。
-                ご要望のある方はPull requestを送って下さい。</p>
+                <p>元カレ計算機は<a href="https://twitter.com/hsimyu" target="_blank">@hsimyu</a>さん引退後、有志によって開発を継続しています。</p>
+                <p>ソースコードは<a href="https://github.com/MotocalDevelopers/motocal" target="_blank">GitHub</a>にて公開しています。</p>
+                <p>ご要望のある方は<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a>にてお願いします。</p>
             </div>
         );
     },
@@ -183,7 +183,7 @@ var NiteHowTo = CreateClass({
                 <p>
                 これまでの"総合*回数*技巧期待値"でソートした場合の結果と、上記のソートキーを用いた場合の結果を見比べると
                 やみくもにDA・TA率が最大となるように編成されるのではなく、DA・TA率を確保した上で総合攻撃力を高める、という編成が上位にきやすくなったと感じています。</p>
-                <p>例えばの<a href="http://hsimyu.net/motocal/?id=748">編成例</a>ですが、下記画像のように</p>
+                <p>例えばの<a href={`${location.origin}${location.pathname}?id=748`}>編成例</a>ですが、下記画像のように</p>
                 <Thumbnail alt="総合*回数*技巧期待値の場合" src="./otherImages/soukaigi.png">
                     <h2 className="text-warning">総合*回数*技巧期待値の場合</h2>
                     <p className="text-warning">DA:74.1%, 奥義ゲージ上昇期待値が19.89%、必要ターンは6</p>
