@@ -250,7 +250,7 @@ var Root = createClass({
   render: function() {
     var locale = this.state.locale
     return (
-        <div className="root" style={{width: "50%"}}>
+        <div className="root" style={{width: "60%"}}>
             <h1>元元カレ計算機 / moto motocal</h1>
             <div>
                 <p>元カレ計算機は運営移譲に伴い、以下のURLへ移動しました。</p>
@@ -261,6 +261,8 @@ var Root = createClass({
                 <li className="list-group-item">移転先2: <a href="http://futatsume.com/motocal/">ありこべさん運用サイト</a></li>
                 <li className="list-group-item">移転先3: <a href="https://medon-lab.com/keisanki/">ミムメモ速報さん運用サイト</a></li>
                 <li className="list-group-item">移転先4: <a href="https://gbf-tool.com/motocal/">hyhrtさん運用サイト</a></li>
+                <li className="list-group-item">移転先5: <a href="https://motocal.sys-cat.net/">sys-catさん運用サイト</a></li>
+                <li className="list-group-item">移転先6: <a href="https://okakiya.net/motocal/calc">おかきさん運用サイト</a></li>
             </ul>
             <div>
                 <p>Motocal was moved to the urls below.</p>
