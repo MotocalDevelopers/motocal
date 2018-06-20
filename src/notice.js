@@ -10,8 +10,8 @@ var Notice = CreateClass({
 
         return (
             <div className="notice">
-                <div className="divright"><a href="http://hsimyu.net/motocal/">入力リセット</a></div>
-                <h2>入力例: <a href="http://hsimyu.net/motocal/thumbnail.php" target="_blank"> 元カレ計算機データビューア </a> </h2>
+                <div className="divright"><a href={`${location.origin}${location.pathname}`}>入力リセット</a></div>
+                <h2>入力例: <a href={`${location.origin}${location.pathname}thumbnail.php`} target="_blank"> 元カレ計算機データビューア </a> </h2>
                 <Panel bsStyle="default" collapsible="true" header={<span><Glyphicon glyph="chevron-right" />&nbsp;Update Logs</span>}>
                     <ul className="list-group">
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180311-1", locale)}</li>
@@ -143,9 +143,7 @@ var Notice = CreateClass({
                     </li>
                 </ul>
 
-                <Image className="banner" src="./otherImages/banner.jpg" />
-                製作者: ほしみ <a href="http://twitter.com/hsimyu" target="_blank"> @hsimyu </a><br />
-                不具合報告・ご要望がありましたらTwitterにてご連絡をお願い致します。
+                不具合報告・ご要望がありましたら<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a>にてご連絡をお願い致します。
 
             <h3>LICENSE</h3>
                 <ul className="list-group">

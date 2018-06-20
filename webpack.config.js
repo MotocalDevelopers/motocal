@@ -40,6 +40,7 @@ const plugins = [
     ADSENSE_AD_SLOT_PC1: process.env.ADSENSE_AD_SLOT_PC1,
     ADSENSE_AD_SLOT_PC2: process.env.ADSENSE_AD_SLOT_PC2,
     ADSENSE_AD_SLOT_MOBILE: process.env.ADSENSE_AD_SLOT_MOBILE,
+    GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   }),
   new webpack.DefinePlugin({
     'process.env': {
