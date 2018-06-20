@@ -1,8 +1,8 @@
-FROM node:10-alpine as builder
+FROM node:8-alpine as builder
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci --production
+RUN npm install --only=production --no-progress
 
 COPY . .
 RUN npm run production-build
