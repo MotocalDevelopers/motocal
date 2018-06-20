@@ -8,7 +8,7 @@
 $ git clone https://github.com/hoshimi/motocal.git motocal
 $ cd motocal
 $ npm install
-$ npm run build
+$ yarn build
 $ open index.html
 ```
 ### docker版
@@ -21,24 +21,24 @@ $ docker-compose up
 ## ビルドコマンド
 ### 開発環境用コマンド
 ```sh
-$ npm run start
+$ yarn start
 ```
 
 ### Debugビルド
 ```sh
-$ npm run build
+$ yarn build
 ```
 ### Debug Watch
 ```sh
-$ npm run watch-dev
+$ yarn watch-dev
 ```
 ### リリース用ビルド
 ```sh
-$ npm run production-build
+$ yarn production-build
 ```
 ### リリース用 Watch
 ```sh
-$ npm run production-watch-dev
+$ yarn production-watch-dev
 ```
 
 ## 構成
@@ -51,10 +51,10 @@ $ npm run production-watch-dev
 ## 作業フロー
 ### 機能開発時
 1. src内をいじる
-2. npm run build で dist/main.js等を生成
-    - リリースビルドの場合はnpm run production-build
-    - もしくは npm run watch-dev で監視する
-3. リリース時にproductionブランチにmergeしてからnpm run production-build
+2. yarn build で dist/main.js等を生成
+    - リリースビルドの場合はyarn production-build
+    - もしくは yarn watch-dev で監視する
+3. リリース時にproductionブランチにmergeしてからyarn production-build
 
 ### 武器テンプレート更新時
 1. 追加したい武器について、wikiの該当行をコピーし、txt_source/armData-ssr.txt の一番上に貼り付け
