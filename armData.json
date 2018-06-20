@@ -8483,6 +8483,22 @@
         "imageURL": "./imgs/1040309700.png",
         "en": "Banana Bunch"
     },
+    "マスターキー": {
+        "ja": "マスターキー",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "22",
+        "minattack": "470",
+        "hp": "144",
+        "attack": "2830",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040309800.png",
+        "en": "Master Key"
+    },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
         "element": "wind",
@@ -9730,6 +9746,40 @@
         "attacklv100": "2180",
         "imageURL": "./imgs/1040509300.png",
         "en": "[4★] Compact Automatic Pistol"
+    },
+    "万魔の銃": {
+        "ja": "万魔の銃",
+        "element": "dark",
+        "type": "gun",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "20",
+        "minattack": "365",
+        "hp": "140",
+        "attack": "2185",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040509500.png",
+        "en": "God of a Thousand Demons"
+    },
+    "[4凸]万魔の銃": {
+        "ja": "[4凸]万魔の銃",
+        "element": "dark",
+        "type": "gun",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "20",
+        "minattack": "365",
+        "hp": "170",
+        "attack": "2640",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "140",
+        "attacklv100": "2185",
+        "imageURL": "./imgs/1040509500.png",
+        "en": "[4★] God of a Thousand Demons"
     },
     "ホワイトホーク": {
         "ja": "ホワイトホーク",
