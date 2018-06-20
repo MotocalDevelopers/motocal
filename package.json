@@ -16,9 +16,6 @@
     "react-google-charts": "~1.6.6",
     "react-language": "^0.1.4"
   },
-  "engines": {
-    "node": "~8.11"
-  },
   "scripts": {
     "start": "webpack-dev-server --watch --inline",
     "test": "jest",
