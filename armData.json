@@ -9517,6 +9517,24 @@
         "imageURL": "./imgs/1040503400.png",
         "en": "Stratomizer"
     },
+    "[4凸]ストラトゥムバンカー": {
+        "ja": "[4凸]ストラトゥムバンカー",
+        "element": "earth",
+        "type": "gun",
+        "skill1": "normalHaisuiL",
+        "skill2": "normalS",
+        "element2": "earth",
+        "minhp": "31",
+        "minattack": "445",
+        "hp": "211",
+        "attack": "3260",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "181",
+        "attacklv100": "2695",
+        "imageURL": "./imgs/1040503400.png",
+        "en": "[4★] Stratomizer"
+    },
     "ラファエル": {
         "ja": "ラファエル",
         "element": "light",
@@ -11116,6 +11134,24 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040802600.png",
         "en": "Melodic Sphere"
+    },
+    "[4凸]メロディックスフィア": {
+        "ja": "[4凸]メロディックスフィア",
+        "element": "water",
+        "type": "music",
+        "skill1": "normalHPL",
+        "skill2": "normalHPL",
+        "element2": "light",
+        "minhp": "74",
+        "minattack": "365",
+        "hp": "284",
+        "attack": "2720",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "249",
+        "attacklv100": "2245",
+        "imageURL": "./imgs/1040802600.png",
+        "en": "[4★] Melodic Sphere"
     },
     "スノウリィメビウス": {
         "ja": "スノウリィメビウス",
