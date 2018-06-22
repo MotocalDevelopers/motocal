@@ -102,7 +102,7 @@ var ArmList = CreateClass({
         var newalist = this.state.alist;
         newalist[id] = initialState;
         this.setState({ alist: newalist })
-        if(newalist.length <= 1){
+        if(newalist.length < 1){
             // Root へ変化を伝搬
             this.props.onChange(newalist, false);
             return
