@@ -225,6 +225,7 @@ var Root = CreateClass({
       var newArmNum = parseInt(this.state.armNum);
       if(newArmNum > 1) newArmNum -= 1
       this.setState({armNum: newArmNum});
+      this.setState({noResultUpdate: false});
   },
   addSummonNum: function(e) {
       var newSummonNum = parseInt(this.state.summonNum);
