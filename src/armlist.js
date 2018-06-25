@@ -93,21 +93,22 @@ var ArmList = CreateClass({
         }
     },
     handleOnRemove: function (id, initialState) {
-        // arrayForCopyに初期stateを入れておいて、
-        // componentWillReceivePropsで読み出されるようにする
-        var newArrayForCopy = this.state.arrayForCopy;
-        newArrayForCopy[id] = initialState;
-        this.setState({ arrayForCopy: newArrayForCopy });
-
+        var newarms = this.state.arms;
         var newalist = this.state.alist;
-        newalist[id] = initialState;
-        this.setState({ alist: newalist })
-        if(newalist.length <= 1){
-            // Root へ変化を伝搬
-            this.props.onChange(newalist, false);
-            return
+        if(this.state.alist.length > 1){
+            newarms.splice(id, 1);
+            newalist.splice(id, 1);
+        }else{
+            // arrayForCopyに初期stateを入れておいて、
+            // componentWillReceivePropsで読み出されるようにする
+            var newArrayForCopy = this.state.arrayForCopy;
+            newArrayForCopy[id] = initialState;
+            this.setState({ arrayForCopy: newArrayForCopy });
+            newalist[id] = initialState;
         }
-        newalist.splice(id - 1, 1);
+        this.setState({ arms: newarms })
+        this.setState({ alist: newalist })
+
         // Root へ変化を伝搬
         this.props.onChange(newalist, false);
     },
