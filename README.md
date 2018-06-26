@@ -1,6 +1,8 @@
 # motocal / 元カレ計算機
 元カレ計算機（グラブル攻撃力計算機）の開発用リポジトリです。
 
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy/?template=https://github.com/MotocalDevelopers/motocal)
+
 ## 開発準備
 
 ### ローカル開発
