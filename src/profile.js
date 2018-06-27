@@ -113,7 +113,7 @@ var Profile = CreateClass({
                 <p className="text-success">運営者のTwitterはこちら <a href={`https://twitter.com/${process.env.TWITTER_ID}`} target="_blank">{`@${process.env.TWITTER_ID}`}</a></p>
             );   
         }
-        return("");
+        return null;
     },
     render: function () {
         var locale = this.props.locale
