@@ -46,6 +46,7 @@ const plugins = [
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
       GITHUB_API_TOKEN: JSON.stringify(process.env.GITHUB_API_TOKEN || ''),
+      TWITTER_ID: JSON.stringify(process.env.TWITTER_ID || ''),
     },
   }),
   CopyWebpackPlugin([
