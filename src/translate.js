@@ -1364,6 +1364,10 @@ var multiLangData = {
         "en": "Magna Might II",
         "ja": "マグナ攻刃II",
     },
+    "マグナ楚歌": {
+        "en": "[Bugs have] Magna Soka",
+        "ja": "[バグあり] マグナ楚歌",
+    },
     "マグナ背水(小)": {
         "en": "Magna Enmity (S)",
         "ja": "マグナ背水(小)",
