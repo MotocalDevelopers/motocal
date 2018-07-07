@@ -11333,6 +11333,38 @@
         "imageURL": "./imgs/1040806300.png",
         "en": "Rose Crystal Harp"
     },
+    "キタラアングリカ": {
+        "ja": "キタラアングリカ",
+        "element": "wind",
+        "type": "music",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "72",
+        "minattack": "329",
+        "hp": "282",
+        "attack": "2013",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040808500.png",
+        "en": "Cythara Anglica"
+    },
+    "ルネサンス・ハープ": {
+        "ja": "ルネサンス・ハープ",
+        "element": "earth",
+        "type": "music",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "53",
+        "minattack": "298",
+        "hp": "175",
+        "attack": "1872",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040808600.png",
+        "en": "Renaissance Harp"
+    },
     "丙子椒林剣": {
         "ja": "丙子椒林剣",
         "element": "earth",
