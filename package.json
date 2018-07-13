@@ -16,6 +16,8 @@
     "js-base64": "~2.4.5",
     "react": "~16.4.0",
     "react-bootstrap": "^0.32.1",
+    "react-csv": "^1.0.14",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "~16.4.0",
     "react-google-charts": "~1.6.6",
     "react-language": "^0.1.4",
