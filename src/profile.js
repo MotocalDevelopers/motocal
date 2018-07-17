@@ -107,12 +107,20 @@ var Profile = CreateClass({
         this.setState(newState)
         this.props.onChange(newState)
     },
+    renderTwitterLink: function () {
+        if (process.env.TWITTER_ID) {
+            return (
+                <p className="text-success">運営者のTwitterはこちら <a href={`https://twitter.com/${process.env.TWITTER_ID}`} target="_blank">{`@${process.env.TWITTER_ID}`}</a></p>
+            );   
+        }
+        return null;
+    },
     render: function () {
         var locale = this.props.locale
 
         return (
             <div className="profile">
-                <p className="text-success">最新のアップデート情報は <a href="http://dev-hsimyu.hatenablog.com" target="_blank"> こちら </a> </p>
+                {this.renderTwitterLink()}
                 <table className="table table-sm table-bordered table-responsive">
                     <tbody>
                         <tr>

@@ -208,31 +208,33 @@ var CharaList = CreateClass({
                 <PanelGroup defaultActiveKey={0} accordion id="charaListView">
                 {charas.map(function (c, ind) {
                     return (
-                        <Panel key={c} bsStyle="default" style={panel_style} eventKey={c} header={
-                                <span>
+                        <Panel key={c} bsStyle="default" style={panel_style} eventKey={c} >
+                            <Panel.Heading>
+                                <Panel.Title toggle>
                                     {(ind < 3) ? "Front " : "Sub "}
                                     {(ind + 1)}: { (charalist[ind] != null) ? charalist[ind].name : "" }
                                     &nbsp;<Glyphicon glyph="pencil"/>
-                                </span>
-                            }>
-
-                            <Chara
-                                key={c}
-                                onChange={hChange}
-                                onRemove={handleOnRemove}
-                                onMoveUp={handleMoveUp}
-                                onMoveDown={handleMoveDown}
-                                id={ind}
-                                dataName={dataName}
-                                defaultElement={defaultElement}
-                                addChara={addChara}
-                                addCharaID={addCharaID}
-                                locale={locale}
-                                openPresets={openPresets}
-                                dataForLoad={dataForLoad}
-                                copyCompleted={copyCompleted}
-                                arrayForCopy={arrayForCopy[ind]}
-                            />
+                                </Panel.Title>
+                            </Panel.Heading>
+                            <Panel.Body collapsible>
+                                <Chara
+                                    key={c}
+                                    onChange={hChange}
+                                    onRemove={handleOnRemove}
+                                    onMoveUp={handleMoveUp}
+                                    onMoveDown={handleMoveDown}
+                                    id={ind}
+                                    dataName={dataName}
+                                    defaultElement={defaultElement}
+                                    addChara={addChara}
+                                    addCharaID={addCharaID}
+                                    locale={locale}
+                                    openPresets={openPresets}
+                                    dataForLoad={dataForLoad}
+                                    copyCompleted={copyCompleted}
+                                    arrayForCopy={arrayForCopy[ind]}
+                                />
+                            </Panel.Body>
                         </Panel>
                     );
                 })}

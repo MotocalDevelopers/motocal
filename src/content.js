@@ -143,7 +143,7 @@ var Root = CreateClass({
   onChangeArmData: function(state, isSubtle) {
       // armlistの武器名に変更があればresultはupdateしなくてよい
       this.setState({armlist: state});
-
+      this.setState({armNum: state.length});
       // tablet と smartphoneの時はタブ切り替え時以外updateしない
       if(isSubtle != undefined) {
           this.setState({noResultUpdate: isSubtle});
@@ -225,6 +225,7 @@ var Root = CreateClass({
       var newArmNum = parseInt(this.state.armNum);
       if(newArmNum > 1) newArmNum -= 1
       this.setState({armNum: newArmNum});
+      this.setState({noResultUpdate: false});
   },
   addSummonNum: function(e) {
       var newSummonNum = parseInt(this.state.summonNum);
@@ -326,7 +327,7 @@ var Root = CreateClass({
                             <DropdownButton title={intl.translate("使い方", locale)} id="system-howto">
                                 <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
                                 <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
-                                <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
+                                <MenuItem href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank"> 問い合わせ </MenuItem>
                             </DropdownButton>
                         </ButtonGroup>
                         <div className="systemList">
@@ -361,7 +362,7 @@ var Root = CreateClass({
                             <MenuItem> <p onClick={this.openHowTo}>{intl.translate("使い方", locale)}</p> </MenuItem>
                             <MenuItem> <p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p> </MenuItem>
                             <MenuItem> <p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p> </MenuItem>
-                            <MenuItem href="http://www.hsimyu.net/" target="_blank"> Blog </MenuItem>
+                            <MenuItem href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank"> 問い合わせ </MenuItem>
                             </NavDropdown>
                         </Nav>
                         <Navbar.Form pullRight>
@@ -640,7 +641,7 @@ var TwitterShareButton = CreateClass ({
             timeout: 10000,
             data: {datachar: Base64.encodeURI(JSON.stringify(data))},
             success: function(data, datatype) {
-                var shareurl = 'http://hsimyu.net/motocal?id=' + data
+                var shareurl = `${location.origin}${location.pathname}?id=${data}`;
                 var tweeturl = 'https://twitter.com/intent/tweet?';
                 tweeturl += 'text=' + intl.translate("motocal", this.props.locale)
                 tweeturl += '&url=' + shareurl
@@ -651,7 +652,7 @@ var TwitterShareButton = CreateClass ({
                 localStorage.setItem("sharehist", JSON.stringify(sharehist));
             }.bind(this),
             error: function(xhr, status, err) {
-                alert("Error!: 何かがおかしいです。@hsimyuまで連絡して下さい。status: ", status, ", error message: ", err.toString());
+                alert("Error!: 何かがおかしいです。運営者まで連絡して下さい。status: ", status, ", error message: ", err.toString());
             }.bind(this)
         });
     },

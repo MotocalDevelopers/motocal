@@ -75,6 +75,7 @@ patching["シス"] = {"DA": 100.0, "TA": 0.0}
 patching["[最終]シス"] = {"DA": 100.0, "TA": 0.0}
 patching["アルベール"] = {"DA": 100.0, "TA": 3.0}
 patching["アルベール(SR)"] = {"DA": 100.0, "TA": 3.0}
+patching["ウーフとレニー"] = {"DA": 100.0, "TA": 100.0}
 
 # json translation
 translation = json.load(open("./txt_source/chara-translation.json", "r", encoding="utf-8"))
