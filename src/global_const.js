@@ -521,7 +521,7 @@ module.exports.Jobs = {
     "gunsri": { "name": "ガンスリンガー", "favArm1": "gun", "favArm2": "gun", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 3.0 },
     "kenja": { "name": "賢者", "favArm1": "wand", "favArm2": "wand", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "assassin": { "name": "アサシン", "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "drummaster": { "name": "ドラムマスター", "favArm1": "music", "favArm2": "music", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 90.0 },
+    "drummaster": { "name": "ドラムマスター", "favArm1": "music", "favArm2": "music", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 90.0, "TaBonus": 90.0 },
     "dancer": { "name": "ダンサー", "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "atBonus": 900.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 1.0 },
     "mechanic": { "name": "メカニック", "favArm1": "gun", "favArm2": "gun", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "weaponmaster": { "name": "ウェポンマスター", "favArm1": "sword", "favArm2": "axe", "type": "attack", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 23.0, "TaBonus": 5.0 },
