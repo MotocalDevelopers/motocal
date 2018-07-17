@@ -1,4 +1,7 @@
 {
+    "セレフィラ(SSR)": "Selfira",
+    "ウーフとレニー": "Wulf and Renie",
+    "ジョーカー": "Joker",
     "ルナール(SSR)": "Lunalu (SSR)",
     "カイン(リミテッドver)": "Cain (Grand)",
     "ソリッズ(SSR)": "Soriz (SSR)",
@@ -194,8 +197,8 @@
     "ジン": "Jin",
     "エルモート": "Elmott",
     "キハール": "Keehar",
-    "エルタ": "Alte",
-    "セレフィラ": "Selfira",
+    "エルタ": "Elta",
+    "セレフィラ": "Selfira (Event)",
     "エゼクレイン": "Ezecrain",
     "シグ": "Sig (Event)",
     "カタリナ(2014年サマーver)": "Katalina (Summer)",
@@ -398,5 +401,7 @@
     "バロワ(ガチャver)": "Barawa (SR)",
     "アリーザ(水属性ver)": "Aliza (Water)",
     "カルメリーナ(SR)": "Carmelina (SR)",
-    "レオナ": "Leona"
+    "レオナ": "Leona",
+    "ヴァンツァ(SR)": "Vanzza (SR)",
+    "エルタ(光属性ver)": "Elta (Light)"
 }

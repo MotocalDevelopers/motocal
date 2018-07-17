@@ -93,14 +93,20 @@ var ArmList = CreateClass({
         }
     },
     handleOnRemove: function (id, initialState) {
-        // arrayForCopyに初期stateを入れておいて、
-        // componentWillReceivePropsで読み出されるようにする
-        var newArrayForCopy = this.state.arrayForCopy;
-        newArrayForCopy[id] = initialState;
-        this.setState({ arrayForCopy: newArrayForCopy });
-
+        var newarms = this.state.arms;
         var newalist = this.state.alist;
-        newalist[id] = initialState;
+        if(this.state.alist.length > 1){
+            newarms.splice(id, 1);
+            newalist.splice(id, 1);
+        }else{
+            // arrayForCopyに初期stateを入れておいて、
+            // componentWillReceivePropsで読み出されるようにする
+            var newArrayForCopy = this.state.arrayForCopy;
+            newArrayForCopy[id] = initialState;
+            this.setState({ arrayForCopy: newArrayForCopy });
+            newalist[id] = initialState;
+        }
+        this.setState({ arms: newarms })
         this.setState({ alist: newalist })
 
         // Root へ変化を伝搬
@@ -217,31 +223,34 @@ var ArmList = CreateClass({
                 <PanelGroup defaultActiveKey={0} accordion id="armListView">
                 {arms.map(function (arm, ind) {
                     return (
-                        <Panel key={arm} bsStyle="default" style={panel_style} eventKey={arm} header={
-                                <span>
+                        <Panel key={arm} bsStyle="default" style={panel_style} eventKey={arm}>
+                            <Panel.Heading>
+                                <Panel.Title toggle>
                                     {(ind + 1)}: { (alist[ind] != null) ? alist[ind].name : "" }
                                     &nbsp; {(alist[ind] != null && alist[ind].name != "") ? alist[ind].considerNumberMax + "本" : ""}
-                                </span>
-                            }>
-                            <Arm
-                                key={arm}
-                                onChange={hChange}
-                                onRemove={hRemove}
-                                onCopy={hCopy}
-                                onMoveUp={hMoveUp}
-                                onMoveDown={hMoveDown}
-                                addArm={addArm}
-                                addArmID={addArmID}
-                                considerNum={considerNum}
-                                id={ind}
-                                keyid={arm}
-                                dataName={dataName}
-                                defaultElement={defaultElement}
-                                locale={locale}
-                                openPresets={openPresets}
-                                dataForLoad={dataForLoad}
-                                arrayForCopy={arrayForCopy[ind]}
-                                copyCompleted={copyCompleted} />
+                                </Panel.Title>
+                            </Panel.Heading>
+                            <Panel.Body collapsible>
+                                <Arm
+                                    key={arm}
+                                    onChange={hChange}
+                                    onRemove={hRemove}
+                                    onCopy={hCopy}
+                                    onMoveUp={hMoveUp}
+                                    onMoveDown={hMoveDown}
+                                    addArm={addArm}
+                                    addArmID={addArmID}
+                                    considerNum={considerNum}
+                                    id={ind}
+                                    keyid={arm}
+                                    dataName={dataName}
+                                    defaultElement={defaultElement}
+                                    locale={locale}
+                                    openPresets={openPresets}
+                                    dataForLoad={dataForLoad}
+                                    arrayForCopy={arrayForCopy[ind]}
+                                    copyCompleted={copyCompleted} />
+                            </Panel.Body>
                         </Panel>
                     );
                 })}
