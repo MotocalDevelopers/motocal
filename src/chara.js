@@ -263,6 +263,7 @@ var Chara = CreateClass({
             hp: 0,
             support: "none",
             support2: "none",
+            ougiRatio:4.5,
             type: "attack",
             favArm: "dagger",
             favArm2: "none",
@@ -478,6 +479,10 @@ var Chara = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("サポアビ", locale)}2</th>
                             <td><FormControl componentClass="select" value={this.state.support2} onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("奥義倍率", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}>{selector.ougiRatio}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="bg-primary"><Button onClick={this.switchBufflist}>{intl.translate("個別バフ", locale)}</Button></th>
