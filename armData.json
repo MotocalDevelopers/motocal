@@ -4721,6 +4721,22 @@
         "imageURL": "./imgs/1040502500.png",
         "en": "[4★] Benedia"
     },
+    "リボン": {
+        "ja": "リボン",
+        "element": "dark",
+        "type": "fist",
+        "skill1": "normalHaisuiL",
+        "skill2": "normalS",
+        "element2": "dark",
+        "minhp": "37",
+        "minattack": "410",
+        "hp": "245",
+        "attack": "2365",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040605900.png",
+        "en": "Cute Ribbon"
+    },
     "天干地支爪・戌之飾": {
         "ja": "天干地支爪・戌之飾",
         "element": "water",
@@ -7494,6 +7510,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040108900.png",
         "en": "Queen's Stinger"
+    },
+    "トーニーローズ": {
+        "ja": "トーニーローズ",
+        "element": "earth",
+        "type": "dagger",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "42",
+        "minattack": "390",
+        "hp": "240",
+        "attack": "2385",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040110700.png",
+        "en": "Thorny Rose"
     },
     "クレティネ": {
         "ja": "クレティネ",
@@ -10426,22 +10458,6 @@
         "attacklv100": "1820",
         "imageURL": "./imgs/1040605800.png",
         "en": "[4★] Xuanwu Shellfists"
-    },
-    "リボン": {
-        "ja": "リボン",
-        "element": "dark",
-        "type": "fist",
-        "skill1": "normalHaisuiL",
-        "skill2": "normalS",
-        "element2": "dark",
-        "minhp": "37",
-        "minattack": "410",
-        "hp": "245",
-        "attack": "2365",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040605900.png",
-        "en": "Cute Ribbon"
     },
     "天華簪": {
         "ja": "天華簪",
