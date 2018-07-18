@@ -473,16 +473,16 @@ var Chara = CreateClass({
                             <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")} /></td>
                         </tr>
                         <tr>
+                            <th className="bg-primary">{intl.translate("奥義倍率", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}>{selector.ougiRatio}</FormControl></td>
+                        </tr>
+                        <tr>
                             <th className="bg-primary">{intl.translate("サポアビ", locale)}1</th>
                             <td><FormControl componentClass="select" value={this.state.support} onChange={this.handleSelectEvent.bind(this, "support")}>{selector.supportAbilities}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="bg-primary">{intl.translate("サポアビ", locale)}2</th>
                             <td><FormControl componentClass="select" value={this.state.support2} onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl></td>
-                        </tr>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("奥義倍率", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}>{selector.ougiRatio}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="bg-primary"><Button onClick={this.switchBufflist}>{intl.translate("個別バフ", locale)}</Button></th>
