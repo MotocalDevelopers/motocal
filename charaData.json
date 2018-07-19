@@ -1248,7 +1248,7 @@
         "hp": "2000",
         "minattack": "1350",
         "attack": "8550",
-        "baseDA": 6.5,
+        "baseDA": 11.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040006000_01.png",
         "en": "Yuel"
@@ -1566,12 +1566,12 @@
         "fav1": "sword",
         "fav2": "none",
         "support": "none",
-        "support2": "da_up_all_5",
+        "support2": "da_up_all_10",
         "minhp": "250",
         "hp": "1570",
         "minattack": "1710",
         "attack": "10830",
-        "baseDA": 6.5,
+        "baseDA": 16.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040023000_01.png",
         "en": "Lancelot"
@@ -7290,7 +7290,7 @@
         "hp": "1180",
         "minattack": "940",
         "attack": "4700",
-        "baseDA": 6.5,
+        "baseDA": 11.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030223000_01.png",
         "en": "Yuel (Event)"

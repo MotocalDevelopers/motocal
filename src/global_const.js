@@ -717,7 +717,7 @@ var skillAmounts = {
 // chara support
 var supportAbilities = {
     "none": { "name": "なし", "type": "none", "range": "own", "value": 0 },
-    "da_up_all_5": { "name": "全体DA率UP5%(ランスロット)", "type": "DABuff", "range": "all", "value": 0.05 },
+    "da_up_all_10": { "name": "全体DA率UP10%(ランスロット)", "type": "DABuff", "range": "all", "value": 0.10 },
     "ta_up_all_3": { "name": "全体TA率UP3%(ネツァ)", "type": "TABuff", "range": "all", "value": 0.03 },
     "ta_up_all_5": { "name": "全体TA率UP5%", "type": "TABuff", "range": "all", "value": 0.05 },
     "atk_up_own_5": { "name": "攻撃UP5%(ネツァ,レディグレイ,ハロシャル)", "type": "normalBuff", "range": "own", "value": 0.05 },
