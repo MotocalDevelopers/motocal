@@ -541,12 +541,12 @@ var multiLangData = {
         "en": "Nighthound",
         "ja": "ハウンドドッグ",
     },
-    "アプサラス（槍）": {
-        "en": "Apsaras(spear)",
+    "アプサラス(槍)" : {
+        "en": "Apsaras (Spear)",
         "ja": "アプサラス(槍)",
     },
-    "アプサラス(斧)": {
-        "en": "Apsaras(axe)",
+    "アプサラス(斧)" : {
+        "en": "Apsaras (Axe)",
         "ja": "アプサラス(斧)",
     },
     "エリュシオン": {

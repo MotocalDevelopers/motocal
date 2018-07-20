@@ -189,6 +189,25 @@
         "imageURL": "./charaimgs/3040039000_03.png",
         "en": "[5★] Tien"
     },
+    "セレフィラ(SSR)": {
+        "name": "セレフィラ(SSR)",
+        "ja": "セレフィラ(SSR)",
+        "element": "wind",
+        "type": "pecu",
+        "race": "erune",
+        "fav1": "music",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "340",
+        "hp": "1160",
+        "minattack": "1700",
+        "attack": "7880",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040175000_01.png",
+        "en": "Selfira"
+    },
     "ウーフとレニー": {
         "name": "ウーフとレニー",
         "ja": "ウーフとレニー",
@@ -1602,7 +1621,7 @@
         "type": "balance",
         "race": "doraf",
         "fav1": "spear",
-        "fav2": "none",
+        "fav2": "fist",
         "support": "atk_up_all_5",
         "support2": "none",
         "minhp": "315",
@@ -2765,9 +2784,9 @@
         "support": "none",
         "support2": "none",
         "minhp": "350",
-        "hp": "1860",
+        "hp": "2210",
         "minattack": "1400",
-        "attack": "7500",
+        "attack": "8900",
         "baseDA": 9.0,
         "baseTA": 4.0,
         "imageURL": "./charaimgs/3040088000_01.png",
@@ -3759,7 +3778,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030025000_01.png",
-        "en": "Alte"
+        "en": "Elta"
     },
     "セレフィラ": {
         "name": "セレフィラ",
@@ -3778,7 +3797,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030026000_01.png",
-        "en": "Selfira"
+        "en": "Selfira (Event)"
     },
     "エゼクレイン": {
         "name": "エゼクレイン",
@@ -4437,9 +4456,9 @@
         "support": "none",
         "support2": "none",
         "minhp": "250",
-        "hp": "1250",
+        "hp": "1500",
         "minattack": "1250",
-        "attack": "6250",
+        "attack": "7500",
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030061000_01.png",
@@ -7655,5 +7674,24 @@
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030243000_01.png",
         "en": "Vanzza (SR)"
+    },
+    "エルタ(光属性ver)": {
+        "name": "エルタ(光属性ver)",
+        "ja": "エルタ(光属性ver)",
+        "element": "light",
+        "type": "pecu",
+        "race": "human",
+        "fav1": "music",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "190",
+        "hp": "1051",
+        "minattack": "1325",
+        "attack": "6620",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030244000_01.png",
+        "en": "Elta (Light)"
     }
 }
