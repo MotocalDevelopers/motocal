@@ -593,6 +593,18 @@ var multiLangData = {
         "en": "Assassin",
         "ja": "アサシン",
     },
+    "ドラムマスター": {
+        "en": "Drum Master",
+        "ja": "ドラムマスター",
+    },
+    "ダンサー": {
+        "en": "Dancer",
+        "ja": "ダンサー",
+    },
+    "メカニック": {
+        "en": "Mechanic",
+        "ja": "メカニック",
+    },
     "ウェポンマスター": {
         "en": "Weapon master",
         "ja": "ウェポンマスター",
