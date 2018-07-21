@@ -541,12 +541,12 @@ var multiLangData = {
         "en": "Nighthound",
         "ja": "ハウンドドッグ",
     },
-    "アプサラス（槍）": {
-        "en": "Apsaras(spear)",
+    "アプサラス(槍)" : {
+        "en": "Apsaras (Spear)",
         "ja": "アプサラス(槍)",
     },
-    "アプサラス(斧)": {
-        "en": "Apsaras(axe)",
+    "アプサラス(斧)" : {
+        "en": "Apsaras (Axe)",
         "ja": "アプサラス(斧)",
     },
     "エリュシオン": {
@@ -592,6 +592,18 @@ var multiLangData = {
     "アサシン": {
         "en": "Assassin",
         "ja": "アサシン",
+    },
+    "ドラムマスター": {
+        "en": "Drum Master",
+        "ja": "ドラムマスター",
+    },
+    "ダンサー": {
+        "en": "Dancer",
+        "ja": "ダンサー",
+    },
+    "メカニック": {
+        "en": "Mechanic",
+        "ja": "メカニック",
     },
     "ウェポンマスター": {
         "en": "Weapon master",
