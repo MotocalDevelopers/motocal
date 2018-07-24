@@ -107,7 +107,7 @@ var HPChart = CreateClass({
         header.push(data[0][0]);
         for (var i = 1; i < data[0].length; i++) {
             // 不要な改行が見出しに含まれておりCSVが崩れるので消す
-            header.push(data[0][i].replace(/[\n]*$/gim, "").replace(/[\r\n]*$/gim, ""));
+            header.push(data[0][i].replace(/\r?\n/g, ""));
         }
         csvData.push(header);
         // 2行目以降がデータ
@@ -118,12 +118,7 @@ var HPChart = CreateClass({
     },
     /* ダウンロード用のCSVからクリップボード用のTSVを生成 */
     makeClipboardText: function (csvData) {
-        var csv = csvData;
-        var tsvArray = [];
-        for (var i in csv) {
-            tsvArray.push(csv[i].join("\t"));
-        }
-        return tsvArray.join("\n");
+        return csvData.map(v => v.join("\t")).join("\n");
     },
     render: function() {
         var locale = this.props.locale
