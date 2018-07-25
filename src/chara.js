@@ -263,6 +263,7 @@ var Chara = CreateClass({
             hp: 0,
             support: "none",
             support2: "none",
+            ougiRatio:4.5,
             type: "attack",
             favArm: "dagger",
             favArm2: "none",
@@ -470,6 +471,10 @@ var Chara = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("基礎TA率", locale)}</th>
                             <td><FormControl type="number" min="0" step="0.1" value={this.state.TA} onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")} /></td>
+                        </tr>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("奥義倍率", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio} onChange={this.handleSelectEvent.bind(this, "ougiRatio")}>{selector.ougiRatio}</FormControl></td>
                         </tr>
                         <tr>
                             <th className="bg-primary">{intl.translate("サポアビ", locale)}1</th>

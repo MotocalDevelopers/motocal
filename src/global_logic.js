@@ -514,7 +514,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         // 奥義ダメージ = 倍率 * (1 + 奥義ダメージバフ枠) * (1 + 奥義ダメージ上昇スキル枠)
         // 処理共通化のため係数部分(100% + deltaのdelta)のみ保存
         var ougiDamageUP = (1.0 + totals[key]["ougiDamageBuff"]) * (1.0 + 0.01 * totals[key]["magnaOugiDamage"] * totalSummon["magna"] + 0.01 * totals[key]["normalOugiDamage"] * totalSummon["zeus"]) - 1.0
-        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.ougiRatio, ougiDamageUP, damageUP, ougiDamageLimit)
+        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit)
 
         // チェインバーストダメージは「そのキャラと同じダメージを出すやつが chainNumber 人だけいたら」という仮定の元で計算する
         var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement));
@@ -582,6 +582,7 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
             pureDamage: damageWithoutCritical, // 純ダメージ
             damageWithCritical: damage, // 技巧のみ
             damageWithMultiple: damageWithoutCritical * expectedAttack, // 連撃のみ
+            ougiRatio: totals[key]["ougiRatio"],
             ougiDamage: ougiDamage,
             chainBurst: chainBurst,
             expectedTurn: expectedTurn,
@@ -1378,6 +1379,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             otherBuff2: djeetaBuffList["personalOtherBuff2"],
             DABuff: djeetaBuffList["personalDABuff"],
             TABuff: djeetaBuffList["personalTABuff"],
+            ougiRatio: prof.ougiRatio,
             ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
             ougiDamageBuff: 0,
             additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
@@ -1498,6 +1500,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 otherBuff2: charaBuffList["otherBuff2"],
                 DABuff: charaBuffList["daBuff"],
                 TABuff: charaBuffList["taBuff"],
+                ougiRatio: chara[i].ougiRatio,
                 ougiGageBuff: charaBuffList["ougiGageBuff"],
                 ougiDamageBuff: 0,
                 additionalDamageBuff: charaBuffList["additionalDamageBuff"],
@@ -1905,7 +1908,7 @@ module.exports.generateHaisuiData = function(res, arml, summon, prof, chara, sto
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack
 
                     var newDamage = module.exports.calcDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit)
-                    var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
+                    var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
 
                     var chainNumber = isNaN(prof.chainNumber) ? 1 : parseInt(prof.chainNumber);
                     var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement)) / chainNumber;

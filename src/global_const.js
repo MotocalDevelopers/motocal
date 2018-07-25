@@ -80,7 +80,7 @@ var buffLevelList = [
     200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 300,
     -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
 ];
-var ougiRatioList = [4.0, 4.5, 5.0];
+var ougiRatioList = [4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0];
 var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var HPList = [100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
@@ -522,6 +522,9 @@ module.exports.Jobs = {
     "gunsri": { "name": "ガンスリンガー", "favArm1": "gun", "favArm2": "gun", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 3.0 },
     "kenja": { "name": "賢者", "favArm1": "wand", "favArm2": "wand", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "assassin": { "name": "アサシン", "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
+    "drummaster": { "name": "ドラムマスター", "favArm1": "music", "favArm2": "music", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 90.0, "TaBonus": 90.0 },
+    "dancer": { "name": "ダンサー", "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "atBonus": 900.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 1.0 },
+    "mechanic": { "name": "メカニック", "favArm1": "gun", "favArm2": "gun", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "weaponmaster": { "name": "ウェポンマスター", "favArm1": "sword", "favArm2": "axe", "type": "attack", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 23.0, "TaBonus": 5.0 },
     "holyse": { "name": "ホーリーセイバー", "favArm1": "sword", "favArm2": "spear", "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
     "bishop": { "name": "ビショップ", "favArm1": "wand", "favArm2": "spear", "type": "heal", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
