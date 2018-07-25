@@ -1571,7 +1571,7 @@
         "hp": "1570",
         "minattack": "1710",
         "attack": "10830",
-        "baseDA": 16.5,
+        "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040023000_01.png",
         "en": "Lancelot"

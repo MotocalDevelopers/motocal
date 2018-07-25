@@ -74,7 +74,6 @@ patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0}
 patching["ユイシス"] = {"DA": 8.0, "TA": 4.0}
 patching["ユエル"] = {"DA": 11.5, "TA": 3.0}
 patching["ユエル(イベントver)"] = {"DA": 11.5, "TA": 3.0}
-patching["ランスロット(SSR)"] = {"DA": 16.5, "TA": 3.0}
 patching["シス"] = {"DA": 100.0, "TA": 0.0}
 patching["[最終]シス"] = {"DA": 100.0, "TA": 0.0}
 patching["アルベール"] = {"DA": 100.0, "TA": 3.0}
