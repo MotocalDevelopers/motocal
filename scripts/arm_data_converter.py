@@ -650,6 +650,47 @@ skillnamelist["strengthLL"] = {
     u"妃光の覇道": "light"
 }
 
+skillnamelist["strengthLL"] = {
+    u"灼滅の覇道": "fire",
+    u"裁考の覇道": "earth",
+    u"人馬の覇道": "wind",
+    u"氷逆の覇道": "water",
+    u"幻魔の覇道": "dark",
+    u"妃光の覇道": "light"
+}
+
+skillnamelist["strengthLL"] = {
+    u"灼滅の覇道": "fire",
+    u"裁考の覇道": "earth",
+    u"人馬の覇道": "wind",
+    u"氷逆の覇道": "water",
+    u"幻魔の覇道": "dark",
+    u"妃光の覇道": "light"
+}
+
+skillnamelist["normalSoka"] = {
+    u"竜巻の楚歌": "wind",
+}
+
+skillnamelist["magnaSoka"] = {
+    u"嵐竜方陣・楚歌": "wind",
+}
+
+skillnamelist["sensei"] = {
+    u"先制の炎刃": "fire",
+    u"先制の氷刃": "water",
+    u"先制の闇刃": "dark",
+}
+
+skillnamelist["strengthLL"] = {
+    u"灼滅の覇道": "fire",
+    u"裁考の覇道": "earth",
+    u"人馬の覇道": "wind",
+    u"氷逆の覇道": "water",
+    u"幻魔の覇道": "dark",
+    u"妃光の覇道": "light"
+}
+
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
 skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", u"インテリジェンス": "dark"}
 skillnamelist["unknownOtherNiteS"] = {u"ミフネ流剣法・双星": "fire", u"デクステリティ": "dark"}

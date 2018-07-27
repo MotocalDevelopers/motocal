@@ -208,6 +208,7 @@ var skilltypes = {
     "normalLLM": { name: "通常攻刃III", type: "normal", amount: "LLM" },
     "normalBoukunL": { name: "通常暴君", type: "normalBoukun", amount: "L" },
     "normalBoukunLLL": { name: "通常暴君II", type: "normalBoukun", amount: "LLL" },
+    "normalSoka": { name: "通常楚歌", type: "normalSoka", amount: "M" },
     "normalHaisuiS": { name: "通常背水(小)", type: "normalHaisui", amount: "S" },
     "normalHaisuiM": { name: "通常背水(中)", type: "normalHaisui", amount: "M" },
     "normalHaisuiL": { name: "通常背水(大)", type: "normalHaisui", amount: "L" },
@@ -237,6 +238,7 @@ var skilltypes = {
     "normalHiouM": { name: "通常秘奥(中)", type: "normalHiou", amount: "M" },
     "magnaM": { name: "マグナ攻刃", type: "magna", amount: "M" },
     "magnaL": { name: "マグナ攻刃II", type: "magna", amount: "L" },
+    "magnaSoka": { name: "マグナ楚歌", type: "magnaSoka", amount: "M" },
     "magnaHaisuiS": { name: "マグナ背水(小)", type: "magnaHaisui", amount: "S" },
     "magnaHaisuiM": { name: "マグナ背水(中)", type: "magnaHaisui", amount: "M" },
     "magnaHaisuiL": { name: "マグナ背水(大)", type: "magnaHaisui", amount: "L" },
@@ -325,6 +327,7 @@ var skilltypes = {
     "bahaFUHP-katana": { name: "バハフツHP-刀", type: "bahaFUHP", amount: "L" },
     "bahaFUHP-bow": { name: "バハフツHP-弓", type: "bahaFUHP", amount: "L" },
     "bahaFUHP-music": { name: "バハフツHP-楽器", type: "bahaFUHP", amount: "L" },
+    "sensei": { name: "先制", type: "sensei", amount: "M" },
     "omega-raw": { name: "オメガ-未強化", type: "omega", amount: "raw" },
     "omega-senni": { name: "オメガ-戦意", type: "omega", amount: "senni" },
     "omega-tousou": { name: "オメガ-闘争", type: "omega", amount: "tousou" },
@@ -697,6 +700,17 @@ var skillAmounts = {
     },
     "magnaHissatsu": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
+    },
+    // 楚歌 効果が1本のみとなる為、通常・マグナ攻刃とは別途定義
+    "normalSoka": {
+        "M": [3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
+    },
+    "magnaSoka": {
+        "M": [3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
+    },
+    // 先制スキルは加護が乗らない　Slv11~14までは仮入力
+    "sensei": {
+        "M": [5.0, 6.0, 7.0, 8.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0],
     },
     // 鷲王の結界
     "washiouKekkai": {
