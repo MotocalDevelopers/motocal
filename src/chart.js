@@ -2,6 +2,8 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Chart} = require('react-google-charts')
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {CSVLink, CSVDownload} = require('react-csv');
+var {CopyToClipboard} = require('react-copy-to-clipboard');
 var CreateClass = require('create-react-class');
 var GlobalConst = require('./global_const.js')
 var intl = require('./translate.js')
@@ -84,11 +86,47 @@ var HPChart = CreateClass({
         newState[key] = e.target.value
         this.setState(newState)
     },
+    /* CSV用に整形 */
+    makeCsvData: function () {
+        var d = this.state.chartData['まとめて比較'];
+        if (d == null) {
+            // "まとめて比較"が無いときは、召喚石のセットが1種類のとき
+            for (var p in this.state.chartData) {
+                if (p != "minMaxArr") {
+                    d = this.state.chartData[p];
+                    break;
+                }
+            }
+        }
+
+        if (d == null) return; // ここでdがnullはあり得ないが保守的にreturns
+
+        var data = d[this.state.sortKey];
+        var csvData = [];
+        var header = [];
+        header.push(data[0][0]);
+        for (var i = 1; i < data[0].length; i++) {
+            // 不要な改行が見出しに含まれておりCSVが崩れるので消す
+            header.push(data[0][i].replace(/\r?\n/g, ""));
+        }
+        csvData.push(header);
+        // 2行目以降がデータ
+        for (var i = 1; i < data.length; i++) {
+            csvData.push(data[i]);
+        }
+        return csvData;
+    },
+    /* ダウンロード用のCSVからクリップボード用のTSVを生成 */
+    makeClipboardText: function (csvData) {
+        return csvData.map(v => v.join("\t")).join("\n");
+    },
     render: function() {
         var locale = this.props.locale
         var sortKey = this.state.sortKey
         var data = this.state.chartData
         var options = this.makeChartOption(sortKey)
+        var csvData = this.makeCsvData();
+        var clipBoardData = this.makeClipboardText(csvData);
 
         if(_ua.Mobile) {
             return (
@@ -121,6 +159,9 @@ var HPChart = CreateClass({
                                 onChange={this.handleEvent.bind(this, "sortKey")}>
                                     {selector[locale].supported_chartsortkeys}
                             </FormControl>
+                            <span>CSV</span>
+                            <CSVLink className={"btn btn-default"} data={csvData}><span className={"glyphicon glyphicon-download-alt"} aria-hidden={"true"}></span></CSVLink>
+                            <button className={"btn btn-default"}><CopyToClipboard text={clipBoardData}><span className={"glyphicon glyphicon-copy"} aria-hidden={"true"}></span></CopyToClipboard></button>
                         </div>
                         {Object.keys(data).map(function(key, ind) {
                             if(key != "minMaxArr") {
