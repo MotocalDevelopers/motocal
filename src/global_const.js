@@ -836,54 +836,75 @@ module.exports.additionalSelectList = {
 
 
 // オプション用
-module.exports.selector = { "ja": {}, "en": {} }
+module.exports.selector = { "ja": {}, "en": {} , "zh": {}}
 module.exports.selector.ja.races = Object.keys(raceTypes).map(function (opt) { return <option value={opt} key={opt}>{raceTypes[opt]}</option>; });
 module.exports.selector.en.races = Object.keys(raceTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(raceTypes[opt], "en")}</option>; });
+module.exports.selector.zh.races = Object.keys(raceTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(raceTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.elements = Object.keys(elementTypes).map(function (opt) { return <option value={opt} key={opt}>{elementTypes[opt]}</option>; });
 module.exports.selector.en.elements = Object.keys(elementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(elementTypes[opt], "en")}</option>; });
+module.exports.selector.zh.elements = Object.keys(elementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(elementTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.enemyElements = Object.keys(enemyElementTypes).map(function (opt) { return <option value={opt} key={opt}>{enemyElementTypes[opt]}</option>; });
 module.exports.selector.en.enemyElements = Object.keys(enemyElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyElementTypes[opt], "en")}</option>; });
+module.exports.selector.zh.enemyElements = Object.keys(enemyElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyElementTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.filterelements = Object.keys(filterElementTypes).map(function (opt) { return <option value={opt} key={opt}>{filterElementTypes[opt]}</option>; });
 module.exports.selector.en.filterelements = Object.keys(filterElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "en")}</option>; });
+module.exports.selector.zh.filterelements = Object.keys(filterElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.summons = Object.keys(summonTypes).map(function (opt) { return <option value={opt} key={opt}>{summonTypes[opt]}</option>; });
 module.exports.selector.en.summons = Object.keys(summonTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(summonTypes[opt], "en")}</option>; });
+module.exports.selector.zh.summons = Object.keys(summonTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(summonTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.skills = Object.keys(skilltypes).map(function (key) { return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "ja")}</option>; })
 module.exports.selector.en.skills = Object.keys(skilltypes).map(function (key) { return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "en")}</option>; })
+module.exports.selector.zh.skills = Object.keys(skilltypes).map(function (key) { return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "zh")}</option>; })
 
 module.exports.selector.ja.cosmosSkills = Object.keys(cosmosSkills).map(function (key) { return <option value={key} key={key}>{cosmosSkills[key].name}</option>; })
 module.exports.selector.en.cosmosSkills = Object.keys(cosmosSkills).map(function (key) { return <option value={key} key={key}>{intl.translate(cosmosSkills[key].name, "en")}</option>; })
+module.exports.selector.zh.cosmosSkills = Object.keys(cosmosSkills).map(function (key) { return <option value={key} key={key}>{intl.translate(cosmosSkills[key].name, "zh")}</option>; })
 
 module.exports.selector.ja.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "ja")}</option>, <option value={1} key={"yes"}>{intl.translate("メイン装備yes", "ja")}</option>]
 module.exports.selector.en.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "en")}</option>, <option value={1} key={"yes"}>{intl.translate("メイン装備yes", "en")}</option>]
+module.exports.selector.zh.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "en")}</option>, <option value={1} key={"yes"}>{intl.translate("メイン装備yes", "zh")}</option>]
 
 module.exports.selector.ja.sishoSeiryu = Object.keys(sishoSeiryu).map(function (key) { return <option value={key} key={key}>{sishoSeiryu[key].name}</option>; })
 module.exports.selector.en.sishoSeiryu = Object.keys(sishoSeiryu).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoSeiryu[key].name, "en")}</option>; })
+module.exports.selector.zh.sishoSeiryu = Object.keys(sishoSeiryu).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoSeiryu[key].name, "zh")}</option>; })
+
 module.exports.selector.ja.sishoByakko = Object.keys(sishoByakko).map(function (key) { return <option value={key} key={key}>{sishoByakko[key].name}</option>; })
 module.exports.selector.en.sishoByakko = Object.keys(sishoByakko).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoByakko[key].name, "en")}</option>; })
+module.exports.selector.zh.sishoByakko = Object.keys(sishoByakko).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoByakko[key].name, "zh")}</option>; })
+
 module.exports.selector.ja.sishoSuzaku = Object.keys(sishoSuzaku).map(function (key) { return <option value={key} key={key}>{sishoSuzaku[key].name}</option>; })
 module.exports.selector.en.sishoSuzaku = Object.keys(sishoSuzaku).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoSuzaku[key].name, "en")}</option>; })
+module.exports.selector.zh.sishoSuzaku = Object.keys(sishoSuzaku).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoSuzaku[key].name, "zh")}</option>; })
+
 module.exports.selector.ja.sishoGenbu = Object.keys(sishoGenbu).map(function (key) { return <option value={key} key={key}>{sishoGenbu[key].name}</option>; })
 module.exports.selector.en.sishoGenbu = Object.keys(sishoGenbu).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoGenbu[key].name, "en")}</option>; })
+module.exports.selector.zh.sishoGenbu = Object.keys(sishoGenbu).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoGenbu[key].name, "zh")}</option>; })
 
 // オメガウェポンテンプレート用セレクタ
 module.exports.selector.ja.omegaWeaponSkill1 = Object.keys(omegaWeaponSkill1).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill1[key].name, "ja")}</option>; })
 module.exports.selector.en.omegaWeaponSkill1 = Object.keys(omegaWeaponSkill1).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill1[key].name, "en")}</option>; })
+module.exports.selector.zh.omegaWeaponSkill1 = Object.keys(omegaWeaponSkill1).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill1[key].name, "zh")}</option>; })
+
 module.exports.selector.ja.omegaWeaponSkill2 = Object.keys(omegaWeaponSkill2).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill2[key].name, "ja")}</option>; })
 module.exports.selector.en.omegaWeaponSkill2 = Object.keys(omegaWeaponSkill2).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill2[key].name, "en")}</option>; })
+module.exports.selector.zh.omegaWeaponSkill2 = Object.keys(omegaWeaponSkill2).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill2[key].name, "zh")}</option>; })
 
 module.exports.selector.ja.types = Object.keys(jobTypes).map(function (opt) { return <option value={opt} key={opt}>{jobTypes[opt]}</option>; });
 module.exports.selector.en.types = Object.keys(jobTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(jobTypes[opt], "en")}</option>; });
+module.exports.selector.zh.types = Object.keys(jobTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(jobTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.armtypes = Object.keys(armTypes).map(function (opt) { return <option value={opt} key={opt}>{armTypes[opt]}</option>; });
 module.exports.selector.en.armtypes = Object.keys(armTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(armTypes[opt], "en")}</option>; });
+module.exports.selector.zh.armtypes = Object.keys(armTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(armTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.summonElements = Object.keys(summonElementTypes).map(function (opt) { return <option value={opt} key={opt}>{summonElementTypes[opt].name}</option>; });
 module.exports.selector.en.summonElements = Object.keys(summonElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(summonElementTypes[opt].name, "en")}</option>; });
+module.exports.selector.zh.summonElements = Object.keys(summonElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(summonElementTypes[opt].name, "zh")}</option>; });
 
 module.exports.selector.summonAmounts = summonAmountList.map(function (opt) { return <option value={opt} key={opt}>{opt}</option>; });
 module.exports.selector.zenithAttack = zenithAttackBonus.map(function (opt) { return <option value={opt} key={opt}>{opt}</option>; });
@@ -900,6 +921,7 @@ module.exports.selector.chainNumber = chainNumberList.map(function (opt) { retur
 
 module.exports.selector.ja.ktypes = Object.keys(keyTypes).map(function (opt) { return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
 module.exports.selector.en.ktypes = Object.keys(keyTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(keyTypes[opt], "en")}</option> });
+module.exports.selector.zh.ktypes = Object.keys(keyTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(keyTypes[opt], "zh")}</option> });
 
 module.exports.selector.plusnum = Object.keys(plusNumList).map(function (opt) { return <option value={plusNumList[opt]} key={opt}>{opt}</option> });
 
@@ -921,15 +943,18 @@ module.exports.selector.limitBonusCriticalList = Object.keys(limitBonusCriticalL
 
 module.exports.selector.ja.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{supportedChartSortkeys[opt]}</option> });
 module.exports.selector.en.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(supportedChartSortkeys[opt], "en")}</option> });
+module.exports.selector.zh.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(supportedChartSortkeys[opt], "zh")}</option> });
 
 module.exports.selector.ja.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{supportedSimulationChartSortkeys[opt]}</option> });
 module.exports.selector.en.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(supportedSimulationChartSortkeys[opt], "en")}</option> });
+module.exports.selector.zh.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(supportedSimulationChartSortkeys[opt], "zh")}</option> });
 
 module.exports.supportedChartSortkeys = supportedChartSortkeys
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
 
 module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>; });
 module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "en")}</option>; });
+module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "zh")}</option>; });
 
 module.exports.selector.supportAbilities = Object.keys(supportAbilities).map(function (opt) { return <option value={opt} key={opt}>{supportAbilities[opt].name}</option>; });
 

@@ -198,7 +198,7 @@ var Root = CreateClass({
       this.setState({noResultUpdate: false});
   },
   changeLang: function(key, e) {
-      if(key != "ja" && key != "en") key = "ja";
+      if(key != "ja" && key != "en" && key != "zh") key = "ja";
 
       this.setState({locale: key});
   },
@@ -324,6 +324,7 @@ var Root = CreateClass({
                         <ButtonGroup>
                             <Button onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
                             <Button onClick={this.changeLang.bind(this, "en")}>English</Button>
+                            <Button onClick={this.changeLang.bind(this, "zh")}>中文</Button>
                             <DropdownButton title={intl.translate("使い方", locale)} id="system-howto">
                                 <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
                                 <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
@@ -369,6 +370,7 @@ var Root = CreateClass({
                             <ButtonGroup>
                                 <Button bsSize="small" onClick={this.changeLang.bind(this, "ja")}>日本語</Button>
                                 <Button bsSize="small" onClick={this.changeLang.bind(this, "en")}>English</Button>
+                                <Button bsSize="small" onClick={this.changeLang.bind(this, "zh")}>中文</Button>
                             </ButtonGroup>
                         </Navbar.Form>
                     </Navbar>

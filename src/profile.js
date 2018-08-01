@@ -14,13 +14,15 @@ var selector = GlobalConst.selector
 
 var Profile = CreateClass({
     getDefaultProps() {
-        var zenithBonuses = { "ja": {}, "en": {} }
+        var zenithBonuses = { "ja": {}, "en": {}, "zh": {} }
         zenithBonuses.ja = Object.keys(zenith).map(function (opt) { return <option value={opt} key={opt}>{opt}</option> });
         zenithBonuses.en = Object.keys(zenith).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option> });
+        zenithBonuses.zh = Object.keys(zenith).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option> });
 
-        var alljobs = { "ja": {}, "en": {} }
+        var alljobs = { "ja": {}, "en": {}, "zh": {} }
         alljobs.ja = Object.keys(Jobs).map(function (opt) { return <option value={opt} key={opt}>{Jobs[opt].name}</option> });
         alljobs.en = Object.keys(Jobs).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(Jobs[opt].name, "en")}</option> });
+        alljobs.zh = Object.keys(Jobs).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(Jobs[opt].name, "zh")}</option> });
 
         return {
             zenithBonuses: zenithBonuses,
