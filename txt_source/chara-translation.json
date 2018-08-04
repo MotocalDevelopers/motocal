@@ -1,4 +1,7 @@
 {
+    "ノイシュ(水着ver)": "Naoise (Summer)",
+    "イルザ(水着ver)": "Ilsa (Summer)",
+    "ロゼッタ(水着ver)": "Rosetta (Summer)",
     "セレフィラ(SSR)": "Selfira",
     "ウーフとレニー": "Wulf and Renie",
     "ジョーカー": "Joker",
@@ -135,7 +138,7 @@
     "ナルメア(サマーver)": "Narmaya (Summer)",
     "パーシヴァル(サマーver)": "Percival (Summer)",
     "ヘルエス(サマーver)": "Heles (Summer)",
-    "ゾーイ(サマーver)": "Zooey (Summer)",
+    "ゾーイ(水着ver)": "Zooey (Grand)",
     "シャノワール": "Chat Noir",
     "ヴァイト": "Veight",
     "ソシエ(火属性ver)": "Societte (Fire)",
@@ -403,5 +406,8 @@
     "カルメリーナ(SR)": "Carmelina (SR)",
     "レオナ": "Leona",
     "ヴァンツァ(SR)": "Vanzza (SR)",
-    "エルタ(光属性ver)": "Elta (Light)"
+    "エルタ(光属性ver)": "Elta (Light)",
+    "ユイシス(浴衣ver)": "Yuisis (Summer)",
+    "オリヴィエ(水着ver)": "Olivia (Event)",
+    "リルル(水着ver)": "Lilele (Summer)"
 }
