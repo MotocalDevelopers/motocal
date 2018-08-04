@@ -7807,5 +7807,43 @@
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030247000_01.png",
         "en": "Lilele (Summer)"
+    },
+    "ファラ(水着ver)": {
+        "name": "ファラ(水着ver)",
+        "ja": "ファラ(水着ver)",
+        "element": "water",
+        "type": "attack",
+        "race": "human",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "215",
+        "hp": "1100",
+        "minattack": "1425",
+        "attack": "7000",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030248000_01.png",
+        "en": "Farrah (Summer)"
+    },
+    "アルルメイヤ(浴衣ver)": {
+        "name": "アルルメイヤ(浴衣ver)",
+        "ja": "アルルメイヤ(浴衣ver)",
+        "element": "dark",
+        "type": "pecu",
+        "race": "havin",
+        "fav1": "wand",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "195",
+        "hp": "950",
+        "minattack": "1370",
+        "attack": "6970",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030249000_01.png",
+        "en": "Arulumaya (Summer)"
     }
 }
