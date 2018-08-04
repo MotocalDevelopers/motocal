@@ -1276,6 +1276,10 @@ var multiLangData = {
         "en": "Normal Might (LLL)",
         "ja": "通常攻刃III",
     },
+    "通常楚歌": {
+        "en": "Normal Betrayal",
+        "ja": "通常楚歌",
+    },
     "通常暴君": {
         "en": "Normal Tyranny",
         "ja": "通常暴君",
@@ -1368,6 +1372,10 @@ var multiLangData = {
         "en": "Normal Hiou? (M)",
         "ja": "通常秘奥(中)",
     },
+    "先制": {
+        "en": "Preemptive",
+        "ja": "先制",
+    },
     "マグナ攻刃": {
         "en": "Magna Might I",
         "ja": "マグナ攻刃",
@@ -1375,6 +1383,10 @@ var multiLangData = {
     "マグナ攻刃II": {
         "en": "Magna Might II",
         "ja": "マグナ攻刃II",
+    },
+    "マグナ楚歌": {
+        "en": "Magna Betrayal",
+        "ja": "マグナ楚歌",
     },
     "マグナ背水(小)": {
         "en": "Magna Enmity (S)",

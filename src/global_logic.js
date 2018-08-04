@@ -377,12 +377,14 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var totalSummon = totals[key]["totalSummon"][summonind]
 
         // 各種攻刃係数の計算
-        var magnaCoeff = 1.0 + 0.01 * totals[key]["magna"] * totalSummon["magna"]
+        var magnaCoeff = 1.0 + 0.01 * totals[key]["magna"] * totalSummon["magna"] + 0.01 * totals[key]["magnaSoka"] * totalSummon["magna"]
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"] * totalSummon["magna"])
         var magnaKonshinCoeff = 1.0 + 0.01 * (totals[key]["magnaKonshin"] * totalSummon["magna"])
         var exCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["ex"]
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"]
-        var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + 0.01 * totals[key]["omegaNormal"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
+        var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["normalSoka"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + 0.01 * totals[key]["omegaNormal"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"]
+            // 先制を通常攻刃へ加算
+            normalCoeff += 0.01 * totals[key]["sensei"]
         var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"] + 0.01 * (totals[key]["normalOtherHaisui"])
         var normalKonshinCoeff = 1.0 + 0.01 * (totals[key]["normalKonshin"]) * totalSummon["zeus"] + 0.01 * (totals[key]["normalOtherKonshin"])
         // 属性(経過ターン)も最大値で計算する
@@ -1200,6 +1202,15 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                             if (key == 'Djeeta') {
                                 totals[key]["normalOtherSante"] += amount;
                             }
+                        // 通常楚歌 効果は1本まで有効 かつ 効果量が大きい方を優先
+                        } else if (stype == 'normalSoka') {
+                            totals[key]["normalSoka"] = (skillAmounts[stype][amount][slv - 1] > totals[key]["normalSoka"] )? skillAmounts[stype][amount][slv - 1]:totals[key]["normalSoka"];
+                        // マグナ楚歌 効果は1本まで有効 かつ 効果量が大きい方を優先
+                        } else if (stype == 'magnaSoka') {
+                            totals[key]["magnaSoka"] = (skillAmounts[stype][amount][slv - 1] > totals[key]["magnaSoka"] )? skillAmounts[stype][amount][slv - 1]:totals[key]["magnaSoka"];
+                        // 先制 効果は1本まで有効 かつ 効果量が大きい方を優先
+                        } else if (stype == 'sensei') {
+                            totals[key]["sensei"] = (skillAmounts[stype][amount][slv - 1] > totals[key]["sensei"] )? skillAmounts[stype][amount][slv - 1]:totals[key]["sensei"];
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -1329,9 +1340,11 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             LB: getCharaLB({}),
             HPdebuff: 0.00,
             magna: 0,
+            magnaSoka:0,
             magnaHaisui: 0,
             magnaKonshin: 0,
             normal: 0,
+            normalSoka:0,
             normalOther: 0,
             normalHaisui: 0,
             normalOtherHaisui: 0,
@@ -1340,6 +1353,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             unknown: 0,
             ex: 0,
             exHaisui: 0,
+            sensei: 0,
             bahaAT: 0,
             bahaHP: 0,
             bahaDA: 0,
@@ -1450,9 +1464,11 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 LB: charaLB,
                 HPdebuff: 0.00,
                 magna: 0,
+                magnaSoka: 0,
                 magnaHaisui: 0,
                 magnaKonshin: 0,
                 normal: 0,
+                normalSoka:0,
                 normalOther: 0,
                 normalHaisui: 0,
                 normalOtherHaisui: 0,
@@ -1461,6 +1477,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 unknown: 0,
                 ex: 0,
                 exHaisui: 0,
+                sensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,
                 bahaDA: 0,
@@ -1578,9 +1595,11 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["armHP"] = 0;
         totals[key]["HPdebuff"] = 0;
         totals[key]["magna"] = 0;
+        totals[key]["magnaSoka"] = 0;
         totals[key]["magnaHaisui"] = 0;
         totals[key]["magnaKonshin"] = 0;
         totals[key]["normal"] = 0;
+        totals[key]["Soka"] = 0;
         totals[key]["normalOther"] = 0;
         totals[key]["normalHaisui"] = 0;
         totals[key]["normalOtherHaisui"] = 0;
@@ -1589,6 +1608,7 @@ module.exports.initializeTotals = function(totals) {
         totals[key]["unknown"] = 0;
         totals[key]["ex"] = 0;
         totals[key]["exHaisui"] = 0;
+        totals[key]["sensei"] = 0;
         totals[key]["bahaAT"] = 0;
         totals[key]["bahaHP"] = 0;
         totals[key]["bahaDA"] = 0;
