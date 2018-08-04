@@ -689,7 +689,7 @@ var skillAmounts = {
         "M": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
     },
     "magnaHakai": {
-        "S": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+        "S": [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5],
     },
     "normalHiou": {
         "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5],
@@ -720,11 +720,12 @@ var skillAmounts = {
 // chara support
 var supportAbilities = {
     "none": { "name": "なし", "type": "none", "range": "own", "value": 0 },
-    "da_up_all_5": { "name": "全体DA率UP5%(ランスロット)", "type": "DABuff", "range": "all", "value": 0.05 },
+    "da_up_all_10": { "name": "全体DA率UP10%(ランスロット)", "type": "DABuff", "range": "all", "value": 0.10 },
     "ta_up_all_3": { "name": "全体TA率UP3%(ネツァ)", "type": "TABuff", "range": "all", "value": 0.03 },
     "ta_up_all_5": { "name": "全体TA率UP5%", "type": "TABuff", "range": "all", "value": 0.05 },
     "atk_up_own_5": { "name": "攻撃UP5%(ネツァ,レディグレイ,ハロシャル)", "type": "normalBuff", "range": "own", "value": 0.05 },
-    "atk_up_all_5": { "name": "全体攻撃UP5%(アニラ,クリス)", "type": "normalBuff", "range": "all", "value": 0.05 },
+    "atk_up_all_5": { "name": "全体攻撃UP5%(クリス)", "type": "normalBuff", "range": "all", "value": 0.05 },
+    "atk_up_all_10": { "name": "全体攻撃UP10%(アニラ)", "type": "normalBuff", "range": "all", "value": 0.10 },
     "atk_up_doraf": { "name": "ドラフと種族不明の攻撃UP(ナルメア)", "type": "normalBuff_doraf", "range": "all", "value": 0.10 },
     "atk_up_depends_races": { "name": "バトルメンバーの種族数に応じて攻撃力アップ(リリィ)", "type": "normalBuff_depends_races", "range": "own", "value": 0.10 },
     // "atk_up_depends_member": {"name": "バトルメンバーの数に応じて攻撃力アップ(パシ)", "type": "normalBuff_depends_member", "range": "own", "value": 0.05},
