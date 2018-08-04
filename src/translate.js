@@ -1595,6 +1595,11 @@ var multiLangData = {
         "ja": "通常攻刃III",
         "zh": "通常攻刃III",
 	},
+    "通常楚歌": {
+        "en": "Normal Betrayal",
+        "ja": "通常楚歌",
+        "zh": "通常楚歌",
+  },
     "通常暴君": {
         "en": "Normal Tyranny",
         "ja": "通常暴君",
@@ -1710,6 +1715,11 @@ var multiLangData = {
         "ja": "通常秘奥(中)",
         "zh": "通常秘奥(中)",
 	},
+    "先制": {
+        "en": "Preemptive",
+        "ja": "先制",
+        "zh": "先制",
+  },
     "マグナ攻刃": {
         "en": "Magna Might I",
         "ja": "マグナ攻刃",
@@ -1720,6 +1730,11 @@ var multiLangData = {
         "ja": "マグナ攻刃II",
         "zh": "方阵攻刃II",
 	},
+    "マグナ楚歌": {
+        "en": "Magna Betrayal",
+        "ja": "マグナ楚歌",
+        "zh": "方阵楚歌",
+  },
     "マグナ背水(小)": {
         "en": "Magna Enmity (S)",
         "ja": "マグナ背水(小)",
