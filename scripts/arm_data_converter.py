@@ -632,6 +632,7 @@ skillnamelist["strengthL"] = {
     u"極上バナナ": "water",
     u"ザ・ファントム": "dark",
     u"フォルテ・スオーノ": "earth",
+    u"頂点捕食者": "light",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -639,6 +640,47 @@ skillnamelist["exATKandHPM"] = {
     u"翠薔薇の髄": "wind",
     u"橙薔薇の髄": "earth",
     u"紅薔薇の髄": "fire",
+}
+
+skillnamelist["strengthLL"] = {
+    u"灼滅の覇道": "fire",
+    u"裁考の覇道": "earth",
+    u"人馬の覇道": "wind",
+    u"氷逆の覇道": "water",
+    u"幻魔の覇道": "dark",
+    u"妃光の覇道": "light"
+}
+
+skillnamelist["strengthLL"] = {
+    u"灼滅の覇道": "fire",
+    u"裁考の覇道": "earth",
+    u"人馬の覇道": "wind",
+    u"氷逆の覇道": "water",
+    u"幻魔の覇道": "dark",
+    u"妃光の覇道": "light"
+}
+
+skillnamelist["strengthLL"] = {
+    u"灼滅の覇道": "fire",
+    u"裁考の覇道": "earth",
+    u"人馬の覇道": "wind",
+    u"氷逆の覇道": "water",
+    u"幻魔の覇道": "dark",
+    u"妃光の覇道": "light"
+}
+
+skillnamelist["normalSoka"] = {
+    u"竜巻の楚歌": "wind",
+}
+
+skillnamelist["magnaSoka"] = {
+    u"嵐竜方陣・楚歌": "wind",
+}
+
+skillnamelist["sensei"] = {
+    u"先制の炎刃": "fire",
+    u"先制の氷刃": "water",
+    u"先制の闇刃": "dark",
 }
 
 skillnamelist["strengthLL"] = {

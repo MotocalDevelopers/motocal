@@ -208,6 +208,7 @@ var skilltypes = {
     "normalLLM": { name: "通常攻刃III", type: "normal", amount: "LLM" },
     "normalBoukunL": { name: "通常暴君", type: "normalBoukun", amount: "L" },
     "normalBoukunLLL": { name: "通常暴君II", type: "normalBoukun", amount: "LLL" },
+    "normalSoka": { name: "通常楚歌", type: "normalSoka", amount: "M" },
     "normalHaisuiS": { name: "通常背水(小)", type: "normalHaisui", amount: "S" },
     "normalHaisuiM": { name: "通常背水(中)", type: "normalHaisui", amount: "M" },
     "normalHaisuiL": { name: "通常背水(大)", type: "normalHaisui", amount: "L" },
@@ -237,6 +238,7 @@ var skilltypes = {
     "normalHiouM": { name: "通常秘奥(中)", type: "normalHiou", amount: "M" },
     "magnaM": { name: "マグナ攻刃", type: "magna", amount: "M" },
     "magnaL": { name: "マグナ攻刃II", type: "magna", amount: "L" },
+    "magnaSoka": { name: "マグナ楚歌", type: "magnaSoka", amount: "M" },
     "magnaHaisuiS": { name: "マグナ背水(小)", type: "magnaHaisui", amount: "S" },
     "magnaHaisuiM": { name: "マグナ背水(中)", type: "magnaHaisui", amount: "M" },
     "magnaHaisuiL": { name: "マグナ背水(大)", type: "magnaHaisui", amount: "L" },
@@ -325,6 +327,7 @@ var skilltypes = {
     "bahaFUHP-katana": { name: "バハフツHP-刀", type: "bahaFUHP", amount: "L" },
     "bahaFUHP-bow": { name: "バハフツHP-弓", type: "bahaFUHP", amount: "L" },
     "bahaFUHP-music": { name: "バハフツHP-楽器", type: "bahaFUHP", amount: "L" },
+    "sensei": { name: "先制", type: "sensei", amount: "M" },
     "omega-raw": { name: "オメガ-未強化", type: "omega", amount: "raw" },
     "omega-senni": { name: "オメガ-戦意", type: "omega", amount: "senni" },
     "omega-tousou": { name: "オメガ-闘争", type: "omega", amount: "tousou" },
@@ -689,7 +692,7 @@ var skillAmounts = {
         "M": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
     },
     "magnaHakai": {
-        "S": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+        "S": [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5],
     },
     "normalHiou": {
         "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5],
@@ -697,6 +700,17 @@ var skillAmounts = {
     },
     "magnaHissatsu": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
+    },
+    // 楚歌 効果が1本のみとなる為、通常・マグナ攻刃とは別途定義
+    "normalSoka": {
+        "M": [3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
+    },
+    "magnaSoka": {
+        "M": [3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
+    },
+    // 先制スキルは加護が乗らない　Slv11~14までは仮入力
+    "sensei": {
+        "M": [5.0, 6.0, 7.0, 8.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0],
     },
     // 鷲王の結界
     "washiouKekkai": {
@@ -720,11 +734,12 @@ var skillAmounts = {
 // chara support
 var supportAbilities = {
     "none": { "name": "なし", "type": "none", "range": "own", "value": 0 },
-    "da_up_all_5": { "name": "全体DA率UP5%(ランスロット)", "type": "DABuff", "range": "all", "value": 0.05 },
+    "da_up_all_10": { "name": "全体DA率UP10%(ランスロット)", "type": "DABuff", "range": "all", "value": 0.10 },
     "ta_up_all_3": { "name": "全体TA率UP3%(ネツァ)", "type": "TABuff", "range": "all", "value": 0.03 },
     "ta_up_all_5": { "name": "全体TA率UP5%", "type": "TABuff", "range": "all", "value": 0.05 },
     "atk_up_own_5": { "name": "攻撃UP5%(ネツァ,レディグレイ,ハロシャル)", "type": "normalBuff", "range": "own", "value": 0.05 },
-    "atk_up_all_5": { "name": "全体攻撃UP5%(アニラ,クリス)", "type": "normalBuff", "range": "all", "value": 0.05 },
+    "atk_up_all_5": { "name": "全体攻撃UP5%(クリス)", "type": "normalBuff", "range": "all", "value": 0.05 },
+    "atk_up_all_10": { "name": "全体攻撃UP10%(アニラ)", "type": "normalBuff", "range": "all", "value": 0.10 },
     "atk_up_doraf": { "name": "ドラフと種族不明の攻撃UP(ナルメア)", "type": "normalBuff_doraf", "range": "all", "value": 0.10 },
     "atk_up_depends_races": { "name": "バトルメンバーの種族数に応じて攻撃力アップ(リリィ)", "type": "normalBuff_depends_races", "range": "own", "value": 0.10 },
     // "atk_up_depends_member": {"name": "バトルメンバーの数に応じて攻撃力アップ(パシ)", "type": "normalBuff_depends_member", "range": "own", "value": 0.05},
@@ -836,54 +851,75 @@ module.exports.additionalSelectList = {
 
 
 // オプション用
-module.exports.selector = { "ja": {}, "en": {} }
+module.exports.selector = { "ja": {}, "en": {} , "zh": {}}
 module.exports.selector.ja.races = Object.keys(raceTypes).map(function (opt) { return <option value={opt} key={opt}>{raceTypes[opt]}</option>; });
 module.exports.selector.en.races = Object.keys(raceTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(raceTypes[opt], "en")}</option>; });
+module.exports.selector.zh.races = Object.keys(raceTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(raceTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.elements = Object.keys(elementTypes).map(function (opt) { return <option value={opt} key={opt}>{elementTypes[opt]}</option>; });
 module.exports.selector.en.elements = Object.keys(elementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(elementTypes[opt], "en")}</option>; });
+module.exports.selector.zh.elements = Object.keys(elementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(elementTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.enemyElements = Object.keys(enemyElementTypes).map(function (opt) { return <option value={opt} key={opt}>{enemyElementTypes[opt]}</option>; });
 module.exports.selector.en.enemyElements = Object.keys(enemyElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyElementTypes[opt], "en")}</option>; });
+module.exports.selector.zh.enemyElements = Object.keys(enemyElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyElementTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.filterelements = Object.keys(filterElementTypes).map(function (opt) { return <option value={opt} key={opt}>{filterElementTypes[opt]}</option>; });
 module.exports.selector.en.filterelements = Object.keys(filterElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "en")}</option>; });
+module.exports.selector.zh.filterelements = Object.keys(filterElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.summons = Object.keys(summonTypes).map(function (opt) { return <option value={opt} key={opt}>{summonTypes[opt]}</option>; });
 module.exports.selector.en.summons = Object.keys(summonTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(summonTypes[opt], "en")}</option>; });
+module.exports.selector.zh.summons = Object.keys(summonTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(summonTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.skills = Object.keys(skilltypes).map(function (key) { return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "ja")}</option>; })
 module.exports.selector.en.skills = Object.keys(skilltypes).map(function (key) { return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "en")}</option>; })
+module.exports.selector.zh.skills = Object.keys(skilltypes).map(function (key) { return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "zh")}</option>; })
 
 module.exports.selector.ja.cosmosSkills = Object.keys(cosmosSkills).map(function (key) { return <option value={key} key={key}>{cosmosSkills[key].name}</option>; })
 module.exports.selector.en.cosmosSkills = Object.keys(cosmosSkills).map(function (key) { return <option value={key} key={key}>{intl.translate(cosmosSkills[key].name, "en")}</option>; })
+module.exports.selector.zh.cosmosSkills = Object.keys(cosmosSkills).map(function (key) { return <option value={key} key={key}>{intl.translate(cosmosSkills[key].name, "zh")}</option>; })
 
 module.exports.selector.ja.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "ja")}</option>, <option value={1} key={"yes"}>{intl.translate("メイン装備yes", "ja")}</option>]
 module.exports.selector.en.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "en")}</option>, <option value={1} key={"yes"}>{intl.translate("メイン装備yes", "en")}</option>]
+module.exports.selector.zh.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "en")}</option>, <option value={1} key={"yes"}>{intl.translate("メイン装備yes", "zh")}</option>]
 
 module.exports.selector.ja.sishoSeiryu = Object.keys(sishoSeiryu).map(function (key) { return <option value={key} key={key}>{sishoSeiryu[key].name}</option>; })
 module.exports.selector.en.sishoSeiryu = Object.keys(sishoSeiryu).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoSeiryu[key].name, "en")}</option>; })
+module.exports.selector.zh.sishoSeiryu = Object.keys(sishoSeiryu).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoSeiryu[key].name, "zh")}</option>; })
+
 module.exports.selector.ja.sishoByakko = Object.keys(sishoByakko).map(function (key) { return <option value={key} key={key}>{sishoByakko[key].name}</option>; })
 module.exports.selector.en.sishoByakko = Object.keys(sishoByakko).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoByakko[key].name, "en")}</option>; })
+module.exports.selector.zh.sishoByakko = Object.keys(sishoByakko).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoByakko[key].name, "zh")}</option>; })
+
 module.exports.selector.ja.sishoSuzaku = Object.keys(sishoSuzaku).map(function (key) { return <option value={key} key={key}>{sishoSuzaku[key].name}</option>; })
 module.exports.selector.en.sishoSuzaku = Object.keys(sishoSuzaku).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoSuzaku[key].name, "en")}</option>; })
+module.exports.selector.zh.sishoSuzaku = Object.keys(sishoSuzaku).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoSuzaku[key].name, "zh")}</option>; })
+
 module.exports.selector.ja.sishoGenbu = Object.keys(sishoGenbu).map(function (key) { return <option value={key} key={key}>{sishoGenbu[key].name}</option>; })
 module.exports.selector.en.sishoGenbu = Object.keys(sishoGenbu).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoGenbu[key].name, "en")}</option>; })
+module.exports.selector.zh.sishoGenbu = Object.keys(sishoGenbu).map(function (key) { return <option value={key} key={key}>{intl.translate(sishoGenbu[key].name, "zh")}</option>; })
 
 // オメガウェポンテンプレート用セレクタ
 module.exports.selector.ja.omegaWeaponSkill1 = Object.keys(omegaWeaponSkill1).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill1[key].name, "ja")}</option>; })
 module.exports.selector.en.omegaWeaponSkill1 = Object.keys(omegaWeaponSkill1).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill1[key].name, "en")}</option>; })
+module.exports.selector.zh.omegaWeaponSkill1 = Object.keys(omegaWeaponSkill1).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill1[key].name, "zh")}</option>; })
+
 module.exports.selector.ja.omegaWeaponSkill2 = Object.keys(omegaWeaponSkill2).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill2[key].name, "ja")}</option>; })
 module.exports.selector.en.omegaWeaponSkill2 = Object.keys(omegaWeaponSkill2).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill2[key].name, "en")}</option>; })
+module.exports.selector.zh.omegaWeaponSkill2 = Object.keys(omegaWeaponSkill2).map(function (key) { return <option value={key} key={key}>{intl.translate(omegaWeaponSkill2[key].name, "zh")}</option>; })
 
 module.exports.selector.ja.types = Object.keys(jobTypes).map(function (opt) { return <option value={opt} key={opt}>{jobTypes[opt]}</option>; });
 module.exports.selector.en.types = Object.keys(jobTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(jobTypes[opt], "en")}</option>; });
+module.exports.selector.zh.types = Object.keys(jobTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(jobTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.armtypes = Object.keys(armTypes).map(function (opt) { return <option value={opt} key={opt}>{armTypes[opt]}</option>; });
 module.exports.selector.en.armtypes = Object.keys(armTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(armTypes[opt], "en")}</option>; });
+module.exports.selector.zh.armtypes = Object.keys(armTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(armTypes[opt], "zh")}</option>; });
 
 module.exports.selector.ja.summonElements = Object.keys(summonElementTypes).map(function (opt) { return <option value={opt} key={opt}>{summonElementTypes[opt].name}</option>; });
 module.exports.selector.en.summonElements = Object.keys(summonElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(summonElementTypes[opt].name, "en")}</option>; });
+module.exports.selector.zh.summonElements = Object.keys(summonElementTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(summonElementTypes[opt].name, "zh")}</option>; });
 
 module.exports.selector.summonAmounts = summonAmountList.map(function (opt) { return <option value={opt} key={opt}>{opt}</option>; });
 module.exports.selector.zenithAttack = zenithAttackBonus.map(function (opt) { return <option value={opt} key={opt}>{opt}</option>; });
@@ -900,6 +936,7 @@ module.exports.selector.chainNumber = chainNumberList.map(function (opt) { retur
 
 module.exports.selector.ja.ktypes = Object.keys(keyTypes).map(function (opt) { return <option value={opt} key={opt}>{keyTypes[opt]}</option> });
 module.exports.selector.en.ktypes = Object.keys(keyTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(keyTypes[opt], "en")}</option> });
+module.exports.selector.zh.ktypes = Object.keys(keyTypes).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(keyTypes[opt], "zh")}</option> });
 
 module.exports.selector.plusnum = Object.keys(plusNumList).map(function (opt) { return <option value={plusNumList[opt]} key={opt}>{opt}</option> });
 
@@ -921,15 +958,18 @@ module.exports.selector.limitBonusCriticalList = Object.keys(limitBonusCriticalL
 
 module.exports.selector.ja.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{supportedChartSortkeys[opt]}</option> });
 module.exports.selector.en.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(supportedChartSortkeys[opt], "en")}</option> });
+module.exports.selector.zh.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(supportedChartSortkeys[opt], "zh")}</option> });
 
 module.exports.selector.ja.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{supportedSimulationChartSortkeys[opt]}</option> });
 module.exports.selector.en.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(supportedSimulationChartSortkeys[opt], "en")}</option> });
+module.exports.selector.zh.supported_simulationchartsortkeys = Object.keys(supportedSimulationChartSortkeys).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(supportedSimulationChartSortkeys[opt], "zh")}</option> });
 
 module.exports.supportedChartSortkeys = supportedChartSortkeys
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
 
 module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>; });
 module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "en")}</option>; });
+module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "zh")}</option>; });
 
 module.exports.selector.supportAbilities = Object.keys(supportAbilities).map(function (opt) { return <option value={opt} key={opt}>{supportAbilities[opt].name}</option>; });
 
