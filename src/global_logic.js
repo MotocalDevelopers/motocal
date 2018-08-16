@@ -1147,6 +1147,9 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         } else if(stype == 'magnaHissatsu') {
                             totals[key]["magnaOugiDamage"] += comb[i] * skillAmounts["magnaHissatsu"][amount][slv - 1];
                             totals[key]["magnaOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["magnaHissatsu"][amount][slv - 1];
+                        } else if(stype == 'normalHissatsu') {
+                            totals[key]["normalDamageLimit"] += comb[i] * skillAmounts["normalHissatsu"][amount][slv - 1];
+                            totals[key]["ougiDamageLimit"] += 0.01 * comb[i] * skillAmounts["normalHissatsu"][amount][slv - 1];
                         } else if(stype == 'exBoukun'){
                             totals[key]["HPdebuff"] += comb[i] * 0.07
                             totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];

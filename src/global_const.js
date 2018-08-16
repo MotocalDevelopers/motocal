@@ -236,6 +236,7 @@ var skilltypes = {
     "normalSetsuna": { name: "通常刹那(中)", type: "normalSetsuna", amount: "M" },
     "normalHiouS": { name: "通常秘奥(小)", type: "normalHiou", amount: "S" },
     "normalHiouM": { name: "通常秘奥(中)", type: "normalHiou", amount: "M" },
+    "normalHissatsuM": { name: "通常必殺(中)", type: "normalHissatsu", amount: "M" },
     "magnaM": { name: "マグナ攻刃", type: "magna", amount: "M" },
     "magnaL": { name: "マグナ攻刃II", type: "magna", amount: "L" },
     "magnaSoka": { name: "マグナ楚歌", type: "magnaSoka", amount: "M" },
@@ -697,6 +698,10 @@ var skillAmounts = {
     "normalHiou": {
         "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5],
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
+    },
+    // 通常必殺 source: https://twitter.com/Granblue_GW/status/1029352839171063808?s=19
+    "normalHissatsu": {
+        "M": [0.6, 1.0, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.1, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0]
     },
     "magnaHissatsu": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]

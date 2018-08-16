@@ -1715,6 +1715,11 @@ var multiLangData = {
         "ja": "通常秘奥(中)",
         "zh": "通常秘奥(中)",
 	},
+    "通常必殺(中)": {
+        "en": "Normal Hissatsu? (M)",
+        "ja": "通常必殺(中)",
+        "zh": "通常必杀(中)",
+	},
     "先制": {
         "en": "Preemptive",
         "ja": "先制",

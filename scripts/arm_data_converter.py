@@ -351,6 +351,15 @@ skillnamelist["normalHiouS"] = {
     u"闇の秘奥": "dark"
 }
 
+skillnamelist["normalHissatsuM"] = {
+    u"業火の必殺": "fire",
+    u"渦潮の必殺": "water",
+    u"大地の必殺": "earth",
+    u"竜巻の必殺": "wind",
+    u"雷電の必殺": "light",
+    u"憎悪の必殺": "dark"
+}
+
 # magna II
 skillnamelist["magnaL"] = {
     u"機炎方陣・攻刃II": "fire",

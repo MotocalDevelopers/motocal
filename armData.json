@@ -4623,6 +4623,22 @@
         "imageURL": "./imgs/1040410000.png",
         "en": "Blue Sphere"
     },
+    "[4凸]ブルースフィア": {
+        "ja": "[4凸]ブルースフィア",
+        "element": "water",
+        "type": "wand",
+        "skill1": "normalLLM",
+        "skill2": "normalHissatsuM",
+        "element2": "water",
+        "minhp": "64",
+        "minattack": "375",
+        "hp": "335",
+        "attack": "2300",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040410000.png",
+        "en": "[4*]Blue Sphere"
+    },
     "ガンバンテイン": {
         "ja": "ガンバンテイン",
         "element": "light",
