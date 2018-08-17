@@ -1322,7 +1322,7 @@ var multiLangData = {
         "zh": "角色名",
 	},
     "平均に": {
-        "en": "Average?",
+        "en": "Average",
         "ja": "平均に",
         "zh": "平均",
 	},
@@ -1686,9 +1686,9 @@ var multiLangData = {
         "zh": "通常罗刹",
 	},
     "通常無双(中)": {
-        "en": "[UNVERIFIED] Normal Primacy (M)",
-        "ja": "[未検証] 通常無双(中)",
-        "zh": "[未验证] 通常无双(中)",
+        "en": "Normal Primacy (M)",
+        "ja": "通常無双(中)",
+        "zh": "通常无双(中)",
 	},
     "通常無双II": {
         "en": "Normal Primacy II",
@@ -1696,9 +1696,9 @@ var multiLangData = {
         "zh": "通常无双II",
 	},
     "通常刃界(小)": {
-        "en": "[UNVERIFIED] Normal Bladeshield (S)",
-        "ja": "[未验证] 通常刃界(小)",
-        "zh": "a",
+        "en": "Normal Bladeshield (S)",
+        "ja": "通常刃界(小)",
+        "zh": "通常刃界(小)",
 	},
     "通常乱舞(小)": {
         "en": "Normal Fandango (S)",
@@ -1706,15 +1706,20 @@ var multiLangData = {
         "zh": "通常乱舞(小)",
 	},
     "通常秘奥(小)": {
-        "en": "Normal Hiou? (S)",
+        "en": "Normal Mystery (S)",
         "ja": "通常秘奥(小)",
         "zh": "通常秘奥(小)",
 	},
     "通常秘奥(中)": {
-        "en": "Normal Hiou? (M)",
+        "en": "Normal Mystery (M)",
         "ja": "通常秘奥(中)",
         "zh": "通常秘奥(中)",
 	},
+    "通常必殺(中)": {
+        "en": "Normal Sentence (M)",
+        "ja": "通常必殺(中)",
+        "zh": "通常必杀(中)",
+    },
     "先制": {
         "en": "Preemptive",
         "ja": "先制",
@@ -1806,12 +1811,12 @@ var multiLangData = {
         "zh": "方阵乱舞(中)",
 	},
     "マグナ軍神(小)": {
-        "en": "Magna Gunshin? (S)",
+        "en": "Magna Heroism (S)",
         "ja": "マグナ軍神(小)",
         "zh": "方阵军神(小)",
 	},
     "マグナ必殺(中)": {
-        "en": "Magna Hissatsu? (M)",
+        "en": "Magna Sentence (M)",
         "ja": "マグナ必殺(中)",
         "zh": "方阵必杀(中)",
 	},
@@ -2369,12 +2374,12 @@ var multiLangData = {
 	},
     "敵防御11": {
         "en": "11.0(Proto Bahamut)",
-        "ja": "11.0(プロバハ?)",
+        "ja": "11.0(プロトバハムート)",
         "zh": "11.0(巴哈)",
 	},
     "敵防御20": {
         "en": "20.0(Proto Baha HL)",
-        "ja": "20.0(プロバハHL?)",
+        "ja": "20.0(プロトバハムートHL)",
         "zh": "20.0(巴哈HL)",
 	},
     // chart sort key

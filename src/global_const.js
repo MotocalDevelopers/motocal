@@ -236,6 +236,7 @@ var skilltypes = {
     "normalSetsuna": { name: "通常刹那(中)", type: "normalSetsuna", amount: "M" },
     "normalHiouS": { name: "通常秘奥(小)", type: "normalHiou", amount: "S" },
     "normalHiouM": { name: "通常秘奥(中)", type: "normalHiou", amount: "M" },
+    "normalHissatsuM": { name: "通常必殺(中)", type: "normalHissatsu", amount: "M" },
     "magnaM": { name: "マグナ攻刃", type: "magna", amount: "M" },
     "magnaL": { name: "マグナ攻刃II", type: "magna", amount: "L" },
     "magnaSoka": { name: "マグナ楚歌", type: "magnaSoka", amount: "M" },
@@ -698,7 +699,7 @@ var skillAmounts = {
         "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5],
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
-    "magnaHissatsu": {
+    "magnaHiou": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
     // 楚歌 効果が1本のみとなる為、通常・マグナ攻刃とは別途定義
@@ -728,6 +729,12 @@ var skillAmounts = {
     },
     "ougiDamageLimitExceed": {
         "M": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]
+    },
+    "normalOugiDamageLimitHissatsu": {
+        "M": [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
+    },
+    "magnaOugiDamageLimitHissatsu": {
+        "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
 }
 
