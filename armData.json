@@ -8309,8 +8309,8 @@
         "imageURL": "./imgs/1040211400.png",
         "en": "Draco Horn"
     },
-    "[4凸]ドラグホーン(?)": {
-        "ja": "[4凸]ドラグホーン(?)",
+    "[4凸]ドラグホーン": {
+        "ja": "[4凸]ドラグホーン",
         "element": "water",
         "type": "spear",
         "skill1": "normalL",
@@ -8318,14 +8318,14 @@
         "element2": "water",
         "minhp": "34",
         "minattack": "397",
-        "hp": "269",
-        "attack": "2920",
+        "hp": "270",
+        "attack": "2860",
         "slvmax": 15,
         "maxlv": 150,
         "hplv100": "227",
         "attacklv100": "2450",
         "imageURL": "./imgs/1040211400.png",
-        "en": "[4★] Draco Horn(?)"
+        "en": "[4★] Draco Horn"
     },
     "ウコンバサラ": {
         "ja": "ウコンバサラ",
