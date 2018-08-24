@@ -205,6 +205,15 @@ skillnamelist["normalSetsuna"] = {
     u"憎悪の刹那": "dark"
 }
 
+skillnamelist["normalKatsumiS"] = {
+    u"火の克己": "fire",
+    u"水の克己": "water",
+    u"土の克己": "earth",
+    u"風の克己": "wind",
+    u"光の克己": "light",
+    u"闇の克己": "dark"
+}
+
 skillnamelist["normalKatsumiM"] = {
     u"業火の克己": "fire",
     u"渦潮の克己": "water",

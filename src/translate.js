@@ -1660,11 +1660,16 @@ var multiLangData = {
         "ja": "通常三手(大)",
         "zh": "通常三手(大)",
 	},
+    "通常克己(小)": {
+        "en": "Normal Restraint (S)",
+        "ja": "通常克己(小)",
+        "zh": "通常克己(小)",
+	},
     "通常克己(中)": {
         "en": "Normal Restraint (M)",
         "ja": "通常克己(中)",
         "zh": "通常克己(中)",
-	},
+    },
     "通常神威(小)": {
         "en": "Normal Majesty (S)",
         "ja": "通常神威(小)",

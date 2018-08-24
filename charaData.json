@@ -1321,12 +1321,12 @@
         "support": "damageUP_20",
         "support2": "none",
         "minhp": "310",
-        "hp": "1610",
+        "hp": "1900",
         "minattack": "1710",
-        "attack": "7150",
+        "attack": "8500",
         "baseDA": 6.5,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040122000_01.png",
+        "imageURL": "./charaimgs/3040122000_03.png",
         "en": "Scathacha"
     },
     "クラリス(光属性ver)": {

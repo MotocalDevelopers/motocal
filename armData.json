@@ -6701,6 +6701,24 @@
         "imageURL": "./imgs/1040005800.png",
         "en": "Gram"
     },
+    "[4凸]グラム": {
+        "ja": "[4凸]グラム",
+        "element": "dark",
+        "type": "sword",
+        "skill1": "normalHaisuiL",
+        "skill2": "normalKatsumiS",
+        "element2": "dark",
+        "minhp": "33",
+        "minattack": "455",
+        "hp": "260",
+        "attack": "3060",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "219",
+        "attacklv100": "2625",
+        "imageURL": "./imgs/1040005800.png",
+        "en": "[4★] Gram"
+    },
     "光の剣": {
         "ja": "光の剣",
         "element": "dark",

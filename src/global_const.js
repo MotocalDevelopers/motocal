@@ -220,6 +220,7 @@ var skilltypes = {
     "normalNiteL": { name: "通常二手(大)", type: "normalNite", amount: "L" },
     "normalSanteS": { name: "通常三手(小)", type: "normalSante", amount: "S" },
     "normalSanteL": { name: "通常三手(大)", type: "normalSante", amount: "L" },
+    "normalKatsumiS": { name: "通常克己(小)", type: "normalKatsumi", amount: "S" },
     "normalKatsumiM": { name: "通常克己(中)", type: "normalKatsumi", amount: "M" },
     "normalKamui": { name: "通常神威(小)", type: "normalKamui", amount: "S" },
     "normalKamuiM": { name: "通常神威(中)", type: "normalKamui", amount: "M" },
