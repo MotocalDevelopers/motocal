@@ -653,6 +653,7 @@ skillnamelist["strengthL"] = {
     u"頂点捕食者": "light",
     u"スクールフレンズ": "fire",
     u"サンシャイナー": "water",
+    u"摩武駄致": "wind",
 }
 
 skillnamelist["exATKandHPM"] = {
