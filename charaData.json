@@ -379,6 +379,25 @@
         "imageURL": "./charaimgs/3040039000_01.png",
         "en": "Tien"
     },
+    "フーちゃん": {
+        "name": "フーちゃん",
+        "ja": "フーちゃん",
+        "element": "dark",
+        "type": "pecu",
+        "race": "erune",
+        "fav1": "gun",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "215",
+        "hp": "1080",
+        "minattack": "1490",
+        "attack": "8120",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040182000_01.png",
+        "en": "Freezie"
+    },
     "フォリア(リミテッドver)": {
         "name": "フォリア(リミテッドver)",
         "ja": "フォリア(リミテッドver)",
@@ -7997,5 +8016,24 @@
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030251000_01.png",
         "en": "Cailana (SR)"
+    },
+    "チーム・ローアイン": {
+        "name": "チーム・ローアイン",
+        "ja": "チーム・ローアイン",
+        "element": "earth",
+        "type": "pecu",
+        "race": "erune",
+        "fav1": "dagger",
+        "fav2": "sword",
+        "support": "none",
+        "support2": "none",
+        "minhp": "170",
+        "hp": "770",
+        "minattack": "1360",
+        "attack": "7000",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030252000_01.png",
+        "en": "The Lowain Bros"
     }
 }
