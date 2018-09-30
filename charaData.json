@@ -360,6 +360,25 @@
         "imageURL": "./charaimgs/3040038000_01.png",
         "en": "Niyon"
     },
+    "シルヴァ(光属性ver)": {
+        "name": "シルヴァ(光属性ver)",
+        "ja": "シルヴァ(光属性ver)",
+        "element": "light",
+        "type": "attack",
+        "race": "human",
+        "fav1": "gun",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "250",
+        "hp": "1240",
+        "minattack": "1900",
+        "attack": "9800",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040187000_01.png",
+        "en": "Silva (Light)"
+    },
     "エッセル": {
         "name": "エッセル",
         "ja": "エッセル",
@@ -2670,12 +2689,12 @@
         "support": "none",
         "support2": "none",
         "minhp": "260",
-        "hp": "1350",
+        "hp": "1610",
         "minattack": "1890",
-        "attack": "10080",
+        "attack": "11970",
         "baseDA": 6.5,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040052000_01.png",
+        "imageURL": "./charaimgs/3040052000_03.png",
         "en": "Ghandagoza"
     },
     "アーミラ(SSR)": {
@@ -4215,7 +4234,7 @@
         "baseDA": 6.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030038000_01.png",
-        "en": "Juri"
+        "en": "Juri (Event)"
     },
     "ノア": {
         "name": "ノア",
@@ -8035,5 +8054,24 @@
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030252000_01.png",
         "en": "The Lowain Bros"
+    },
+    "ユーリ(風属性ver)": {
+        "name": "ユーリ(風属性ver)",
+        "ja": "ユーリ(風属性ver)",
+        "element": "wind",
+        "type": "attack",
+        "race": "human",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "190",
+        "hp": "970",
+        "minattack": "1450",
+        "attack": "7650",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030253000_01.png",
+        "en": "Juri"
     }
 }

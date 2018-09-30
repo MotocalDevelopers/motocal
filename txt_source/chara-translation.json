@@ -1,4 +1,5 @@
 {
+    "シルヴァ(光属性ver)": "Silva (Light)",
     "フーちゃん": "Freezie",
     "フォリア(リミテッドver)": "Pholia",
     "ツバサ": "Tsubasa",
@@ -220,7 +221,7 @@
     "フィーナ": "Feena (Event)",
     "アルシャ": "Arusha",
     "ファラ": "Farrah",
-    "ユーリ": "Juri",
+    "ユーリ": "Juri (Event)",
     "ノア": "Noa",
     "島村卯月": "Uzuki Shimamura",
     "渋谷凛": "Rin Shibuya",
@@ -421,5 +422,6 @@
     "アルルメイヤ(浴衣ver)": "Arulumaya (Summer)",
     "アルメイダ(水着ver)": "Almeida (Summer)",
     "カイラナ(SR)": "Cailana (SR)",
-    "チーム・ローアイン": "The Lowain Bros"
+    "チーム・ローアイン": "The Lowain Bros",
+    "ユーリ(風属性ver)": "Juri"
 }

@@ -1977,6 +1977,26 @@
         "imageURL": "./imgs/1040900400.png",
         "en": "Muramasa [Element Changed]"
     },
+    "テトラストリーマ・属性変更": {
+        "ja": "テトラストリーマ・属性変更",
+        "element": "all",
+        "type": "katana",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "26",
+        "minattack": "431",
+        "hp": "237",
+        "attack": "3455",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 175,
+        "attacklv100": 2563,
+        "hplv150": 207,
+        "attacklv150": 3020,
+        "imageURL": "./imgs/1040910300_note.png",
+        "en": "Tetrastreamer [Element Changed]"
+    },
     "六道・灼滅天の刃鎌": {
         "ja": "六道・灼滅天の刃鎌",
         "element": "fire",
@@ -6783,6 +6803,24 @@
         "imageURL": "./imgs/1040006100.png",
         "en": "Ethereal Lasher"
     },
+    "[4凸]オーラフラジェルム": {
+        "ja": "[4凸]オーラフラジェルム",
+        "element": "light",
+        "type": "sword",
+        "skill1": "normalMusouM",
+        "skill2": "normalHPM",
+        "element2": "light",
+        "minhp": "38",
+        "minattack": "450",
+        "hp": "280",
+        "attack": "3250",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "230",
+        "attacklv100": "2690",
+        "imageURL": "./imgs/1040006100.png",
+        "en": "[4★] Ethereal Lasher"
+    },
     "ショロトルリッパー": {
         "ja": "ショロトルリッパー",
         "element": "wind",
@@ -8377,6 +8415,22 @@
         "imageURL": "./imgs/1040211400.png",
         "en": "[4★] Draco Horn"
     },
+    "ドリル": {
+        "ja": "ドリル",
+        "element": "earth",
+        "type": "spear",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "35",
+        "minattack": "290",
+        "hp": "210",
+        "attack": "1830",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040211500.png",
+        "en": "Drill"
+    },
     "ウコンバサラ": {
         "ja": "ウコンバサラ",
         "element": "light",
@@ -8984,6 +9038,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040310000.png",
         "en": "Two-by-Four"
+    },
+    "ハイメタルストック": {
+        "ja": "ハイメタルストック",
+        "element": "light",
+        "type": "axe",
+        "skill1": "normalSetsuna",
+        "skill2": "normalHiouS",
+        "element2": "light",
+        "minhp": "30",
+        "minattack": "450",
+        "hp": "140",
+        "attack": "2890",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040310100.png",
+        "en": "Full Metal Recoil"
     },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
@@ -11210,6 +11280,24 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040703300.png",
         "en": "Roseate Aetherial Bow"
+    },
+    "[4凸]ピンク・エーテリアル": {
+        "ja": "[4凸]ピンク・エーテリアル",
+        "element": "fire",
+        "type": "bow",
+        "skill1": "normalM",
+        "skill2": "normalNiteM",
+        "element2": "fire",
+        "minhp": "37",
+        "minattack": "435",
+        "hp": "280",
+        "attack": "3090",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "231",
+        "attacklv100": "2560",
+        "imageURL": "./imgs/1040703300.png",
+        "en": "[4★] Roseate Aetherial Bow"
     },
     "扇抜": {
         "ja": "扇抜",
