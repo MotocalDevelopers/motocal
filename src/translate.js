@@ -696,6 +696,11 @@ var multiLangData = {
         "ja": "ザ・グローリー",
         "zh": "Glorybringer",
 	},
+    "魔法戦士": {
+        "en": "Runeslayer",
+        "ja": "魔法戦士",
+        "zh": "魔法戦士",
+    },
     "剣豪": {
         "en": "Kengo",
         "ja": "剣豪",
