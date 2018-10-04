@@ -146,7 +146,7 @@
         "hp": "2088",
         "minattack": "1788",
         "attack": "12888",
-        "baseDA": 6.5,
+        "baseDA": 26.5,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040037000_03.png",
         "en": "[5★] Eahta"
@@ -360,25 +360,6 @@
         "imageURL": "./charaimgs/3040038000_01.png",
         "en": "Niyon"
     },
-    "シルヴァ(光属性ver)": {
-        "name": "シルヴァ(光属性ver)",
-        "ja": "シルヴァ(光属性ver)",
-        "element": "light",
-        "type": "attack",
-        "race": "human",
-        "fav1": "gun",
-        "fav2": "none",
-        "support": "none",
-        "support2": "none",
-        "minhp": "250",
-        "hp": "1240",
-        "minattack": "1900",
-        "attack": "9800",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040187000_01.png",
-        "en": "Silva (Light)"
-    },
     "エッセル": {
         "name": "エッセル",
         "ja": "エッセル",
@@ -397,6 +378,25 @@
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040039000_01.png",
         "en": "Tien"
+    },
+    "シルヴァ(光属性ver)": {
+        "name": "シルヴァ(光属性ver)",
+        "ja": "シルヴァ(光属性ver)",
+        "element": "light",
+        "type": "attack",
+        "race": "human",
+        "fav1": "gun",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "250",
+        "hp": "1240",
+        "minattack": "1900",
+        "attack": "9800",
+        "baseDA": 6.5,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040187000_01.png",
+        "en": "Silva (Light)"
     },
     "フーちゃん": {
         "name": "フーちゃん",
