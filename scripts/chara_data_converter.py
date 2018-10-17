@@ -130,9 +130,10 @@ patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
 
 ## 光 - Light
 patching["アルベール"] = {"DA": 100.0, "TA": 0.0}
-patching["アルベール(SR)"] = {"DA": 100.0, "TA": 0.0}
+patching["プリキュア"] = {"DA": 100.0, "TA": 0.0}
 
 ### SR
+patching["アルベール(SR)"] = {"DA": 100.0, "TA": 0.0}
 
 ## 闇 - Dark
 patching["ウーフとレニー"] = {"DA": 100.0, "TA": 100.0}

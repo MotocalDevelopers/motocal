@@ -379,6 +379,25 @@
         "imageURL": "./charaimgs/3040039000_01.png",
         "en": "Tien"
     },
+    "プリキュア": {
+        "name": "プリキュア",
+        "ja": "プリキュア",
+        "element": "light",
+        "type": "attack",
+        "race": "human",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "201",
+        "hp": "1300",
+        "minattack": "1010",
+        "attack": "4400",
+        "baseDA": 100.0,
+        "baseTA": 0.0,
+        "imageURL": "./charaimgs/3040188000_01.png",
+        "en": "Cure Black and Cure White"
+    },
     "シルヴァ(光属性ver)": {
         "name": "シルヴァ(光属性ver)",
         "ja": "シルヴァ(光属性ver)",
