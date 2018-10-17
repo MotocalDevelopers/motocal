@@ -4611,6 +4611,22 @@
         "imageURL": "./imgs/1040207000.png",
         "en": "[4★] Eden"
     },
+    "ガリレオ・サイト": {
+        "ja": "ガリレオ・サイト",
+        "element": "water",
+        "type": "spear",
+        "skill1": "normalKonshinL",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "49",
+        "minattack": "411",
+        "hp": "286",
+        "attack": "2517",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040211600.png",
+        "en": "Galilei's Insight"
+    },
     "サティフィケイト": {
         "ja": "サティフィケイト",
         "element": "light",
@@ -11990,6 +12006,40 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040808600.png",
         "en": "Renaissance Harp"
+    },
+    "ディスタント・レクイエム": {
+        "ja": "ディスタント・レクイエム",
+        "element": "dark",
+        "type": "music",
+        "skill1": "normalSetsuna",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "66",
+        "minattack": "389",
+        "hp": "238",
+        "attack": "2233",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040808700.png",
+        "en": "Distant Requiem"
+    },
+    "[4凸]ディスタント・レクイエム": {
+        "ja": "[4凸]ディスタント・レクイエム",
+        "element": "dark",
+        "type": "music",
+        "skill1": "normalSetsuna",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "66",
+        "minattack": "389",
+        "hp": "238",
+        "attack": "2233",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "238",
+        "attacklv100": "2233",
+        "imageURL": "./imgs/1040808700.png",
+        "en": "[4★] Distant Requiem"
     },
     "丙子椒林剣": {
         "ja": "丙子椒林剣",
