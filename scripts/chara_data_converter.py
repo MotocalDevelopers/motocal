@@ -67,18 +67,78 @@ supportAbilist["damageUP_20"] = {
 patching = OrderedDict()
 
 # 連撃率 from すんどめ侍さん
-patching["ロミオ"] = {"DA": 7.5, "TA": 2.5}
-patching["イングヴェイ"] = {"DA": 9.0, "TA": 4.0}
-patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0}
-patching["マルキアレス"] = {"DA": 7.0, "TA": 3.0}
-patching["ユイシス"] = {"DA": 8.0, "TA": 4.0}
-patching["ユエル"] = {"DA": 11.5, "TA": 3.0}
-patching["ユエル(イベントver)"] = {"DA": 11.5, "TA": 3.0}
-patching["シス"] = {"DA": 100.0, "TA": 0.0}
+## 十天衆
+patching["[最終]ソーン"] = {"DA": 4.0, "TA": 1.0}
+patching["[最終]サラーサ"] = {"DA": 4.0, "TA": 1.0}
+patching["[最終]カトル"] = {"DA": 10.0, "TA": 5.0}
+patching["[最終]フュンフ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]シス"] = {"DA": 100.0, "TA": 0.0}
-patching["アルベール"] = {"DA": 100.0, "TA": 3.0}
-patching["アルベール(SR)"] = {"DA": 100.0, "TA": 3.0}
+patching["[最終]シエテ"] = {"DA": 10.0, "TA": 5.0}
+patching["[最終]オクトー"] = {"DA": 24.0, "TA": 1.0}
+patching["[最終]ニオ"] = {"DA": 4.0, "TA": 1.0}
+patching["[最終]エッセル"] = {"DA": 10.0, "TA": 5.0}
+patching["ソーン"] = {"DA": 4.0, "TA": 1.0}
+patching["サラーサ"] = {"DA": 4.0, "TA": 1.0}
+patching["カトル"] = {"DA": 10.0, "TA": 5.0}
+patching["フュンフ"] = {"DA": 4.0, "TA": 1.0}
+patching["シス"] = {"DA": 100.0, "TA": 0.0}
+patching["シエテ"] = {"DA": 10.0, "TA": 5.0}
+patching["オクトー"] = {"DA": 4.0, "TA": 1.0}
+patching["ニオ"] = {"DA": 4.0, "TA": 1.0}
+patching["エッセル"] = {"DA": 10.0, "TA": 5.0}
+
+## 火 - Fire
+patching["アオイドス"] = {"DA": 4.0, "TA": 1.0}
+patching["アニラ"] = {"DA": 4.0, "TA": 1.0}
+patching["アギエルバ"] = {"DA": 4.0, "TA": 1.0}
+patching["ザルハメリナ"] = {"DA": 4.0, "TA": 1.0}
+patching["ユエル"] = {"DA": 12.0, "TA": 3.0}
+patching["ゼタ"] = {"DA": 10.0, "TA": 5.0}
+patching["ラカム(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
+patching["テレーズ(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patching["メーテラ(火属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ヘルエス"] = {"DA": 10.0, "TA": 5.0}
+patching["ガンダゴウザ"] = {"DA": 10.0, "TA": 5.0}
+patching["アリーザ(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patching["グレア"] = {"DA": 10.0, "TA": 5.0}
+patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
+
+### SR
+
+## 水 - Water
+patching["リリィ"] = {"DA": 4.0, "TA": 1.0}
+patching["イングヴェイ"] = {"DA": 10.0, "TA": 5.0}
+patching["シルヴァ"] = {"DA": 10.0, "TA": 5.0}
+patching["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patching["桜内梨子＆高海千歌＆渡辺 曜"] = {"DA": 10.0, "TA": 5.0}
+patching["ヴァジラ"] = {"DA": 10.0, "TA": 5.0}
+patching["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ソシエ"] = {"DA": 10.0, "TA": 5.0}
+patching["イシュミール"] = {"DA": 10.0, "TA": 5.0}
+
+### SR
+patching["ユエル(イベントver)"] = {"DA": 12.0, "TA": 3.0}
+
+## 土 - Earth
+
+### SR
+
+## 風 - Wind
+patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
+
+### SR
+
+## 光 - Light
+patching["アルベール"] = {"DA": 100.0, "TA": 0.0}
+patching["プリキュア"] = {"DA": 100.0, "TA": 0.0}
+
+### SR
+patching["アルベール(SR)"] = {"DA": 100.0, "TA": 0.0}
+
+## 闇 - Dark
 patching["ウーフとレニー"] = {"DA": 100.0, "TA": 100.0}
+
+### SR
 
 # json translation
 translation = json.load(open("./txt_source/chara-translation.json", "r", encoding="utf-8"))
@@ -215,7 +275,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
                 newdict["baseDA"] = patching[newdict["name"]]["DA"]
                 newdict["baseTA"] = patching[newdict["name"]]["TA"]
             else:
-                newdict["baseDA"] = 6.5
+                newdict["baseDA"] = 7.0
                 newdict["baseTA"] = 3.0
 
             newdict["imageURL"] = "./charaimgs/" + key

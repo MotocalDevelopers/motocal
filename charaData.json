@@ -13,7 +13,7 @@
         "hp": "2311",
         "minattack": "1411",
         "attack": "10411",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040030000_03.png",
         "en": "[5★] Anre"
@@ -32,8 +32,8 @@
         "hp": "2222",
         "minattack": "1522",
         "attack": "11222",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040031000_03.png",
         "en": "[5★] Tweyen"
     },
@@ -51,8 +51,8 @@
         "hp": "1833",
         "minattack": "1883",
         "attack": "13333",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040032000_03.png",
         "en": "[5★] Threo"
     },
@@ -70,8 +70,8 @@
         "hp": "1644",
         "minattack": "1484",
         "attack": "10344",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040033000_03.png",
         "en": "[5★] Feower"
     },
@@ -89,8 +89,8 @@
         "hp": "2255",
         "minattack": "1255",
         "attack": "9355",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040034000_03.png",
         "en": "[5★] Fif"
     },
@@ -127,8 +127,8 @@
         "hp": "1777",
         "minattack": "1777",
         "attack": "12777",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040036000_03.png",
         "en": "[5★] Seofon"
     },
@@ -146,8 +146,8 @@
         "hp": "2088",
         "minattack": "1788",
         "attack": "12888",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 24.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040037000_03.png",
         "en": "[5★] Eahta"
     },
@@ -165,8 +165,8 @@
         "hp": "1599",
         "minattack": "1739",
         "attack": "12199",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040038000_03.png",
         "en": "[5★] Niyon"
     },
@@ -184,8 +184,8 @@
         "hp": "2000",
         "minattack": "1400",
         "attack": "10000",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040039000_03.png",
         "en": "[5★] Tien"
     },
@@ -203,7 +203,7 @@
         "hp": "1911",
         "minattack": "1411",
         "attack": "8911",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040030000_01.png",
         "en": "Anre"
@@ -222,8 +222,8 @@
         "hp": "1822",
         "minattack": "1522",
         "attack": "9522",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040031000_01.png",
         "en": "Tweyen"
     },
@@ -241,8 +241,8 @@
         "hp": "1533",
         "minattack": "1883",
         "attack": "11333",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040032000_01.png",
         "en": "Threo"
     },
@@ -260,8 +260,8 @@
         "hp": "1344",
         "minattack": "1484",
         "attack": "8844",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040033000_01.png",
         "en": "Feower"
     },
@@ -279,8 +279,8 @@
         "hp": "1855",
         "minattack": "1255",
         "attack": "8055",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040034000_01.png",
         "en": "Fif"
     },
@@ -317,8 +317,8 @@
         "hp": "1477",
         "minattack": "1777",
         "attack": "10777",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040036000_01.png",
         "en": "Seofon"
     },
@@ -336,8 +336,8 @@
         "hp": "1788",
         "minattack": "1788",
         "attack": "10788",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040037000_01.png",
         "en": "Eahta"
     },
@@ -355,8 +355,8 @@
         "hp": "1299",
         "minattack": "1739",
         "attack": "10399",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040038000_01.png",
         "en": "Niyon"
     },
@@ -374,10 +374,219 @@
         "hp": "1600",
         "minattack": "1400",
         "attack": "8200",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040039000_01.png",
         "en": "Tien"
+    },
+    "エウロペ": {
+        "name": "エウロペ",
+        "ja": "エウロペ",
+        "element": "water",
+        "type": "heal",
+        "race": "seisho",
+        "fav1": "wand",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "372",
+        "hp": "2000",
+        "minattack": "1290",
+        "attack": "6800",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040190000_01.png",
+        "en": "Europa"
+    },
+    "レディ・グレイ(ハロウィンver)": {
+        "name": "レディ・グレイ(ハロウィンver)",
+        "ja": "レディ・グレイ(ハロウィンver)",
+        "element": "dark",
+        "type": "pecu",
+        "race": "human",
+        "fav1": "spear",
+        "fav2": "fist",
+        "support": "none",
+        "support2": "none",
+        "minhp": "280",
+        "hp": "1460",
+        "minattack": "1600",
+        "attack": "8700",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040189000_01.png",
+        "en": "Lady Grey (Halloween)"
+    },
+    "プリキュア": {
+        "name": "プリキュア",
+        "ja": "プリキュア",
+        "element": "light",
+        "type": "attack",
+        "race": "human",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "201",
+        "hp": "1300",
+        "minattack": "1010",
+        "attack": "4400",
+        "baseDA": 100.0,
+        "baseTA": 0.0,
+        "imageURL": "./charaimgs/3040188000_01.png",
+        "en": "Cure Black and Cure White"
+    },
+    "シルヴァ(光属性ver)": {
+        "name": "シルヴァ(光属性ver)",
+        "ja": "シルヴァ(光属性ver)",
+        "element": "light",
+        "type": "attack",
+        "race": "human",
+        "fav1": "gun",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "250",
+        "hp": "1240",
+        "minattack": "1900",
+        "attack": "9800",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040187000_01.png",
+        "en": "Silva (Light)"
+    },
+    "フーちゃん": {
+        "name": "フーちゃん",
+        "ja": "フーちゃん",
+        "element": "dark",
+        "type": "pecu",
+        "race": "erune",
+        "fav1": "gun",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "215",
+        "hp": "1080",
+        "minattack": "1490",
+        "attack": "8120",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040182000_01.png",
+        "en": "Freezie"
+    },
+    "フォリア(リミテッドver)": {
+        "name": "フォリア(リミテッドver)",
+        "ja": "フォリア(リミテッドver)",
+        "element": "water",
+        "type": "pecu",
+        "race": "erune",
+        "fav1": "wand",
+        "fav2": "fist",
+        "support": "none",
+        "support2": "none",
+        "minhp": "222",
+        "hp": "1160",
+        "minattack": "1499",
+        "attack": "7899",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040181000_01.png",
+        "en": "Pholia"
+    },
+    "ツバサ": {
+        "name": "ツバサ",
+        "ja": "ツバサ",
+        "element": "fire",
+        "type": "attack",
+        "race": "human",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "220",
+        "hp": "1100",
+        "minattack": "1982",
+        "attack": "10500",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040180000_01.png",
+        "en": "Tsubasa"
+    },
+    "松浦果南＆黒澤ダイヤ＆小原鞠莉": {
+        "name": "松浦果南＆黒澤ダイヤ＆小原鞠莉",
+        "ja": "松浦果南＆黒澤ダイヤ＆小原鞠莉",
+        "element": "fire",
+        "type": "defense",
+        "race": "human",
+        "fav1": "spear",
+        "fav2": "gun",
+        "support": "none",
+        "support2": "none",
+        "minhp": "400",
+        "hp": "2000",
+        "minattack": "1120",
+        "attack": "6800",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040185000_01.png",
+        "en": "Aqours Third-Years"
+    },
+    "津島善子＆国木田花丸＆黒澤ルビィ": {
+        "name": "津島善子＆国木田花丸＆黒澤ルビィ",
+        "ja": "津島善子＆国木田花丸＆黒澤ルビィ",
+        "element": "earth",
+        "type": "heal",
+        "race": "human",
+        "fav1": "wand",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "400",
+        "hp": "1910",
+        "minattack": "1100",
+        "attack": "6100",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040184000_01.png",
+        "en": "Aqours First-Years"
+    },
+    "桜内梨子＆高海千歌＆渡辺 曜": {
+        "name": "桜内梨子＆高海千歌＆渡辺 曜",
+        "ja": "桜内梨子＆高海千歌＆渡辺 曜",
+        "element": "water",
+        "type": "balance",
+        "race": "human",
+        "fav1": "sword",
+        "fav2": "gun",
+        "support": "none",
+        "support2": "none",
+        "minhp": "200",
+        "hp": "1000",
+        "minattack": "1810",
+        "attack": "9660",
+        "baseDA": 10.0,
+        "baseTA": 5.0,
+        "imageURL": "./charaimgs/3040183000_01.png",
+        "en": "Aqours Second-Years"
+    },
+    "グレア(水着ver)": {
+        "name": "グレア(水着ver)",
+        "ja": "グレア(水着ver)",
+        "element": "water",
+        "type": "attack",
+        "race": "unknown",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "220",
+        "hp": "1160",
+        "minattack": "1900",
+        "attack": "10050",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040179000_01.png",
+        "en": "Grea (Summer)"
     },
     "ノイシュ(水着ver)": {
         "name": "ノイシュ(水着ver)",
@@ -393,7 +602,7 @@
         "hp": "2000",
         "minattack": "1370",
         "attack": "7160",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040178000_01.png",
         "en": "Naoise (Summer)"
@@ -412,7 +621,7 @@
         "hp": "1160",
         "minattack": "1620",
         "attack": "8640",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040177000_01.png",
         "en": "Ilsa (Summer)"
@@ -431,7 +640,7 @@
         "hp": "1340",
         "minattack": "1550",
         "attack": "8500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040176000_01.png",
         "en": "Rosetta (Summer)"
@@ -450,7 +659,7 @@
         "hp": "1160",
         "minattack": "1700",
         "attack": "7880",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040175000_01.png",
         "en": "Selfira"
@@ -488,7 +697,7 @@
         "hp": "1300",
         "minattack": "1600",
         "attack": "8700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040173000_01.png",
         "en": "Joker"
@@ -507,7 +716,7 @@
         "hp": "1160",
         "minattack": "1740",
         "attack": "9240",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040172000_01.png",
         "en": "Lunalu (SSR)"
@@ -526,7 +735,7 @@
         "hp": "1250",
         "minattack": "1700",
         "attack": "8950",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040171000_01.png",
         "en": "Cain (Grand)"
@@ -545,7 +754,7 @@
         "hp": "1300",
         "minattack": "1860",
         "attack": "10200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040170000_01.png",
         "en": "Soriz (SSR)"
@@ -564,7 +773,7 @@
         "hp": "1500",
         "minattack": "1500",
         "attack": "8500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040159000_01.png",
         "en": "Cucouroux (SSR)"
@@ -583,7 +792,7 @@
         "hp": "1960",
         "minattack": "1310",
         "attack": "7000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040158000_01.png",
         "en": "Alexiel"
@@ -602,7 +811,7 @@
         "hp": "1400",
         "minattack": "1100",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040157000_01.png",
         "en": "Conan Edogawa"
@@ -621,7 +830,7 @@
         "hp": "1850",
         "minattack": "1400",
         "attack": "7550",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040156000_01.png",
         "en": "Nicholas (SSR)"
@@ -640,7 +849,7 @@
         "hp": "1260",
         "minattack": "1875",
         "attack": "9700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040155000_01.png",
         "en": "Robomi (SSR)"
@@ -659,7 +868,7 @@
         "hp": "1780",
         "minattack": "1350",
         "attack": "7100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040154000_01.png",
         "en": "Jeanne d'Arc (Themed)"
@@ -678,7 +887,7 @@
         "hp": "1660",
         "minattack": "1450",
         "attack": "7700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040153000_01.png",
         "en": "Sandalphon"
@@ -697,7 +906,7 @@
         "hp": "1700",
         "minattack": "1500",
         "attack": "7300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040152000_01.png",
         "en": "Tiamat"
@@ -716,7 +925,7 @@
         "hp": "1500",
         "minattack": "1700",
         "attack": "8500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040151000_01.png",
         "en": "Medusa (Valentine)"
@@ -735,7 +944,7 @@
         "hp": "1460",
         "minattack": "1650",
         "attack": "8700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040150000_01.png",
         "en": "Zooey"
@@ -754,8 +963,8 @@
         "hp": "1240",
         "minattack": "1900",
         "attack": "9800",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040149000_01.png",
         "en": "Therese (SSR)"
     },
@@ -773,7 +982,7 @@
         "hp": "1200",
         "minattack": "1600",
         "attack": "8500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040148000_01.png",
         "en": "Ilsa"
@@ -792,8 +1001,8 @@
         "hp": "1140",
         "minattack": "1700",
         "attack": "8720",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040147000_01.png",
         "en": "Vajra"
     },
@@ -811,7 +1020,7 @@
         "hp": "1340",
         "minattack": "1890",
         "attack": "10130",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040146000_01.png",
         "en": "Vaseraga (Earth)"
@@ -830,7 +1039,7 @@
         "hp": "1480",
         "minattack": "1550",
         "attack": "7800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040145000_01.png",
         "en": "Olivia"
@@ -849,7 +1058,7 @@
         "hp": "1700",
         "minattack": "1800",
         "attack": "7400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040144000_01.png",
         "en": "Charioce XVII"
@@ -868,7 +1077,7 @@
         "hp": "1630",
         "minattack": "1490",
         "attack": "7900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040143000_01.png",
         "en": "Mary (Holiday)"
@@ -887,7 +1096,7 @@
         "hp": "1240",
         "minattack": "1940",
         "attack": "9760",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040142000_01.png",
         "en": "Levi"
@@ -906,7 +1115,7 @@
         "hp": "1950",
         "minattack": "1330",
         "attack": "7200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040141000_01.png",
         "en": "Vira (Grand)"
@@ -925,7 +1134,7 @@
         "hp": "1350",
         "minattack": "1730",
         "attack": "9400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040140000_01.png",
         "en": "Lancelot (Wind)"
@@ -944,8 +1153,8 @@
         "hp": "1140",
         "minattack": "1590",
         "attack": "8500",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040138000_01.png",
         "en": "Yuel (Water)"
     },
@@ -963,7 +1172,7 @@
         "hp": "1380",
         "minattack": "1890",
         "attack": "9990",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040137000_01.png",
         "en": "Azazel"
@@ -982,7 +1191,7 @@
         "hp": "1660",
         "minattack": "1200",
         "attack": "6730",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040136000_01.png",
         "en": "Sakura Kinomoto"
@@ -1001,7 +1210,7 @@
         "hp": "1550",
         "minattack": "1530",
         "attack": "8610",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040135000_01.png",
         "en": "Danua (Halloween)"
@@ -1020,7 +1229,7 @@
         "hp": "1400",
         "minattack": "1750",
         "attack": "9300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040134000_01.png",
         "en": "Dorothy and Claudia"
@@ -1039,7 +1248,7 @@
         "hp": "972",
         "minattack": "1480",
         "attack": "7720",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040133000_01.png",
         "en": "Nina Drango"
@@ -1058,7 +1267,7 @@
         "hp": "1615",
         "minattack": "1425",
         "attack": "7925",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040132000_01.png",
         "en": "Anne"
@@ -1077,7 +1286,7 @@
         "hp": "1490",
         "minattack": "1350",
         "attack": "7580",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040131000_01.png",
         "en": "Mikazuki Munechika"
@@ -1096,8 +1305,8 @@
         "hp": "1150",
         "minattack": "1950",
         "attack": "10100",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040130000_01.png",
         "en": "Grea"
     },
@@ -1115,7 +1324,7 @@
         "hp": "1420",
         "minattack": "1625",
         "attack": "8100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040129000_01.png",
         "en": "Diantha (Summer)"
@@ -1134,7 +1343,7 @@
         "hp": "1330",
         "minattack": "1750",
         "attack": "9500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040128000_01.png",
         "en": "Siegfried (Summer)"
@@ -1153,7 +1362,7 @@
         "hp": "1550",
         "minattack": "1300",
         "attack": "6850",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040127000_01.png",
         "en": "Korwa (Summer)"
@@ -1172,7 +1381,7 @@
         "hp": "1350",
         "minattack": "2000",
         "attack": "10100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040126000_01.png",
         "en": "Izmir (Summer)"
@@ -1191,7 +1400,7 @@
         "hp": "1900",
         "minattack": "1200",
         "attack": "6300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040125000_01.png",
         "en": "Yggdrasil"
@@ -1210,7 +1419,7 @@
         "hp": "1010",
         "minattack": "1820",
         "attack": "9200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040123000_01.png",
         "en": "Medusa"
@@ -1229,7 +1438,7 @@
         "hp": "2300",
         "minattack": "1430",
         "attack": "7420",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040124000_01.png",
         "en": "Baotorda (SSR)"
@@ -1245,12 +1454,12 @@
         "support": "damageUP_20",
         "support2": "none",
         "minhp": "310",
-        "hp": "1610",
+        "hp": "1900",
         "minattack": "1710",
-        "attack": "7150",
-        "baseDA": 6.5,
+        "attack": "8500",
+        "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040122000_01.png",
+        "imageURL": "./charaimgs/3040122000_03.png",
         "en": "Scathacha"
     },
     "クラリス(光属性ver)": {
@@ -1267,7 +1476,7 @@
         "hp": "1300",
         "minattack": "1780",
         "attack": "9500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040121000_01.png",
         "en": "Clarisse (Light)"
@@ -1286,7 +1495,7 @@
         "hp": "1805",
         "minattack": "1200",
         "attack": "6370",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040120000_01.png",
         "en": "Cagliostro (Dark)"
@@ -1305,7 +1514,7 @@
         "hp": "1250",
         "minattack": "1470",
         "attack": "7510",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040119000_01.png",
         "en": "Drang"
@@ -1324,7 +1533,7 @@
         "hp": "1540",
         "minattack": "1390",
         "attack": "7330",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040118000_01.png",
         "en": "Katalina (Dark)"
@@ -1343,7 +1552,7 @@
         "hp": "2180",
         "minattack": "1230",
         "attack": "6960",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040117000_01.png",
         "en": "Vane (SSR)"
@@ -1362,7 +1571,7 @@
         "hp": "1300",
         "minattack": "1600",
         "attack": "8700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040116000_01.png",
         "en": "Lady Katapillar and Vira"
@@ -1381,8 +1590,8 @@
         "hp": "1100",
         "minattack": "2090",
         "attack": "11100",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040115000_01.png",
         "en": "Sturm"
     },
@@ -1400,7 +1609,7 @@
         "hp": "1910",
         "minattack": "980",
         "attack": "5800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040113000_01.png",
         "en": "De La Fille (Earth)"
@@ -1419,7 +1628,7 @@
         "hp": "1020",
         "minattack": "1850",
         "attack": "10400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040112000_01.png",
         "en": "Zeta (Dark)"
@@ -1438,7 +1647,7 @@
         "hp": "1650",
         "minattack": "1550",
         "attack": "7300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040111000_01.png",
         "en": "Orchis (Grand)"
@@ -1457,7 +1666,7 @@
         "hp": "990",
         "minattack": "11000",
         "attack": "11000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040110000_01.png",
         "en": "Beatrix (Themed)"
@@ -1514,7 +1723,7 @@
         "hp": "1260",
         "minattack": "1550",
         "attack": "8900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040107000_01.png",
         "en": "Mahira"
@@ -1533,7 +1742,7 @@
         "hp": "1660",
         "minattack": "1450",
         "attack": "7700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040106000_01.png",
         "en": "Lucio (Grand)"
@@ -1552,8 +1761,8 @@
         "hp": "1300",
         "minattack": "1500",
         "attack": "8000",
-        "baseDA": 8.0,
-        "baseTA": 4.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040105000_01.png",
         "en": "Yuisis"
     },
@@ -1571,7 +1780,7 @@
         "hp": "1410",
         "minattack": "1650",
         "attack": "8800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040104000_01.png",
         "en": "Arulumaya (Christmas)"
@@ -1590,7 +1799,7 @@
         "hp": "1150",
         "minattack": "1540",
         "attack": "7970",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040103000_01.png",
         "en": "Anthuria"
@@ -1609,7 +1818,7 @@
         "hp": "1060",
         "minattack": "1890",
         "attack": "10100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040102000_01.png",
         "en": "Melissabelle"
@@ -1628,7 +1837,7 @@
         "hp": "1900",
         "minattack": "1260",
         "attack": "8500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040101000_01.png",
         "en": "Lecia (Grand)"
@@ -1647,8 +1856,8 @@
         "hp": "1370",
         "minattack": "1840",
         "attack": "9980",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040100000_01.png",
         "en": "Izmir"
     },
@@ -1666,7 +1875,7 @@
         "hp": "1100",
         "minattack": "1670",
         "attack": "8900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040099000_01.png",
         "en": "Eustace (Halloween)"
@@ -1685,8 +1894,8 @@
         "hp": "1500",
         "minattack": "1620",
         "attack": "8500",
-        "baseDA": 7.5,
-        "baseTA": 2.5,
+        "baseDA": 7.0,
+        "baseTA": 3.0,
         "imageURL": "./charaimgs/3040098000_01.png",
         "en": "Romeo"
     },
@@ -1704,7 +1913,7 @@
         "hp": "1920",
         "minattack": "1350",
         "attack": "7200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040096000_01.png",
         "en": "Juliet"
@@ -1723,7 +1932,7 @@
         "hp": "1730",
         "minattack": "1195",
         "attack": "6470",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040095000_01.png",
         "en": "Societte (Fire)"
@@ -1742,7 +1951,7 @@
         "hp": "1300",
         "minattack": "1700",
         "attack": "9500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040094000_01.png",
         "en": "Veight"
@@ -1761,7 +1970,7 @@
         "hp": "1300",
         "minattack": "1550",
         "attack": "8700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040093000_01.png",
         "en": "Chat Noir"
@@ -1780,7 +1989,7 @@
         "hp": "1180",
         "minattack": "1700",
         "attack": "9200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040092000_01.png",
         "en": "Zooey (Grand)"
@@ -1799,7 +2008,7 @@
         "hp": "1150",
         "minattack": "1620",
         "attack": "8640",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040091000_01.png",
         "en": "Heles (Summer)"
@@ -1818,7 +2027,7 @@
         "hp": "1540",
         "minattack": "1710",
         "attack": "9120",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040090000_01.png",
         "en": "Percival (Summer)"
@@ -1837,7 +2046,7 @@
         "hp": "1120",
         "minattack": "1920",
         "attack": "10240",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040089000_01.png",
         "en": "Narmaya (Summer)"
@@ -1856,8 +2065,8 @@
         "hp": "2210",
         "minattack": "1400",
         "attack": "8900",
-        "baseDA": 9.0,
-        "baseTA": 4.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040088000_01.png",
         "en": "Yngwie"
     },
@@ -1875,7 +2084,7 @@
         "hp": "1600",
         "minattack": "1500",
         "attack": "8000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040087000_01.png",
         "en": "Rosamia"
@@ -1894,7 +2103,7 @@
         "hp": "1340",
         "minattack": "1910",
         "attack": "10130",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040086000_01.png",
         "en": "Forte"
@@ -1913,7 +2122,7 @@
         "hp": "1120",
         "minattack": "1650",
         "attack": "8800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040085000_01.png",
         "en": "Nemone"
@@ -1932,7 +2141,7 @@
         "hp": "1440",
         "minattack": "1650",
         "attack": "8800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040084000_01.png",
         "en": "Ayer"
@@ -1951,8 +2160,8 @@
         "hp": "1400",
         "minattack": "1840",
         "attack": "9830",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040083000_01.png",
         "en": "Aliza"
     },
@@ -1970,7 +2179,7 @@
         "hp": "1500",
         "minattack": "1850",
         "attack": "10000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040082000_01.png",
         "en": "Black Knight (Grand)"
@@ -1989,7 +2198,7 @@
         "hp": "1520",
         "minattack": "1300",
         "attack": "7000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040081000_01.png",
         "en": "Korwa"
@@ -2008,7 +2217,7 @@
         "hp": "1200",
         "minattack": "1840",
         "attack": "9800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040080000_01.png",
         "en": "Jeanne d'Arc (Dark)"
@@ -2027,7 +2236,7 @@
         "hp": "1860",
         "minattack": "1890",
         "attack": "11970",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040079000_03.png",
         "en": "Hallessena"
@@ -2046,7 +2255,7 @@
         "hp": "1350",
         "minattack": "1350",
         "attack": "7200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040078000_01.png",
         "en": "Zooey (Promo)"
@@ -2065,7 +2274,7 @@
         "hp": "1400",
         "minattack": "1850",
         "attack": "9900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040077000_01.png",
         "en": "Eugen (Grand)"
@@ -2084,8 +2293,8 @@
         "hp": "1440",
         "minattack": "1580",
         "attack": "8400",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040076000_01.png",
         "en": "Aoidos"
     },
@@ -2103,8 +2312,8 @@
         "hp": "1510",
         "minattack": "1420",
         "attack": "7560",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040075000_01.png",
         "en": "Zahlhamelina"
     },
@@ -2122,7 +2331,7 @@
         "hp": "1250",
         "minattack": "1530",
         "attack": "8170",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040074000_01.png",
         "en": "Catherine"
@@ -2141,7 +2350,7 @@
         "hp": "1420",
         "minattack": "1240",
         "attack": "7450",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040073000_01.png",
         "en": "Ferry"
@@ -2160,8 +2369,8 @@
         "hp": "1200",
         "minattack": "1575",
         "attack": "8400",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040072000_01.png",
         "en": "Metera (Fire)"
     },
@@ -2179,7 +2388,7 @@
         "hp": "1400",
         "minattack": "1380",
         "attack": "7560",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040071000_01.png",
         "en": "Andira"
@@ -2198,7 +2407,7 @@
         "hp": "1300",
         "minattack": "1730",
         "attack": "9250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040070000_01.png",
         "en": "Beatrix"
@@ -2217,7 +2426,7 @@
         "hp": "1100",
         "minattack": "1670",
         "attack": "8900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040069000_01.png",
         "en": "Eustace"
@@ -2236,7 +2445,7 @@
         "hp": "2000",
         "minattack": "1400",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040068000_01.png",
         "en": "Rosetta (Grand)"
@@ -2255,7 +2464,7 @@
         "hp": "1280",
         "minattack": "1650",
         "attack": "8800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040067000_01.png",
         "en": "Clarisse (Christmas)"
@@ -2274,7 +2483,7 @@
         "hp": "1500",
         "minattack": "1540",
         "attack": "8200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040066000_01.png",
         "en": "Lilele"
@@ -2293,7 +2502,7 @@
         "hp": "1770",
         "minattack": "1440",
         "attack": "7700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040065000_01.png",
         "en": "Io (Grand)"
@@ -2312,7 +2521,7 @@
         "hp": "1150",
         "minattack": "1800",
         "attack": "9580",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040064000_01.png",
         "en": "Yodarha"
@@ -2331,7 +2540,7 @@
         "hp": "1330",
         "minattack": "1920",
         "attack": "12200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040063000_03.png",
         "en": "Narmaya"
@@ -2350,7 +2559,7 @@
         "hp": "1550",
         "minattack": "1520",
         "attack": "8100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040062000_01.png",
         "en": "Cagliostro (Halloween)"
@@ -2369,7 +2578,7 @@
         "hp": "1320",
         "minattack": "1760",
         "attack": "9400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040061000_01.png",
         "en": "Feena"
@@ -2388,8 +2597,8 @@
         "hp": "1150",
         "minattack": "1620",
         "attack": "8640",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040060000_01.png",
         "en": "Heles"
     },
@@ -2407,8 +2616,8 @@
         "hp": "1600",
         "minattack": "1500",
         "attack": "8000",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040059000_01.png",
         "en": "Rackam (Grand)"
     },
@@ -2426,7 +2635,7 @@
         "hp": "1300",
         "minattack": "1630",
         "attack": "8750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040058000_01.png",
         "en": "Arriet"
@@ -2445,7 +2654,7 @@
         "hp": "1170",
         "minattack": "1720",
         "attack": "9160",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040057000_01.png",
         "en": "Vania"
@@ -2464,7 +2673,7 @@
         "hp": "1280",
         "minattack": "1800",
         "attack": "9600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040056000_01.png",
         "en": "Zeta (Summer)"
@@ -2483,7 +2692,7 @@
         "hp": "1590",
         "minattack": "1570",
         "attack": "8350",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040055000_01.png",
         "en": "Danua (Summer)"
@@ -2502,7 +2711,7 @@
         "hp": "1980",
         "minattack": "1350",
         "attack": "8100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040054000_01.png",
         "en": "Katalina (Grand)"
@@ -2521,7 +2730,7 @@
         "hp": "1280",
         "minattack": "1530",
         "attack": "8160",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040053000_01.png",
         "en": "Vira (Summer)"
@@ -2537,12 +2746,12 @@
         "support": "none",
         "support2": "none",
         "minhp": "260",
-        "hp": "1350",
+        "hp": "1610",
         "minattack": "1890",
-        "attack": "10080",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040052000_01.png",
+        "attack": "11970",
+        "baseDA": 10.0,
+        "baseTA": 5.0,
+        "imageURL": "./charaimgs/3040052000_03.png",
         "en": "Ghandagoza"
     },
     "アーミラ(SSR)": {
@@ -2559,7 +2768,7 @@
         "hp": "1740",
         "minattack": "1620",
         "attack": "10270",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040051000_03.png",
         "en": "Amira"
@@ -2578,7 +2787,7 @@
         "hp": "1830",
         "minattack": "1710",
         "attack": "10830",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040050000_03.png",
         "en": "Percival"
@@ -2597,8 +2806,8 @@
         "hp": "1602",
         "minattack": "1740",
         "attack": "10990",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040049000_03.png",
         "en": "Silva"
     },
@@ -2616,7 +2825,7 @@
         "hp": "1340",
         "minattack": "1560",
         "attack": "8360",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040048000_01.png",
         "en": "Sarunan (Dark)"
@@ -2635,7 +2844,7 @@
         "hp": "1650",
         "minattack": "1440",
         "attack": "7680",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040047000_01.png",
         "en": "Petra"
@@ -2654,7 +2863,7 @@
         "hp": "1380",
         "minattack": "1590",
         "attack": "8480",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040046000_01.png",
         "en": "Clarisse"
@@ -2674,7 +2883,7 @@
         "minattack": "900",
         "attack": "4800",
         "baseDA": 100.0,
-        "baseTA": 3.0,
+        "baseTA": 0.0,
         "imageURL": "./charaimgs/3040045000_01.png",
         "en": "Albert"
     },
@@ -2692,8 +2901,8 @@
         "hp": "1160",
         "minattack": "1490",
         "attack": "7920",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040044000_01.png",
         "en": "Societte"
     },
@@ -2711,7 +2920,7 @@
         "hp": "1520",
         "minattack": "1680",
         "attack": "10640",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040043000_03.png",
         "en": "Vira"
@@ -2730,7 +2939,7 @@
         "hp": "1350",
         "minattack": "1740",
         "attack": "9240",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040042000_01.png",
         "en": "Carmelina"
@@ -2749,7 +2958,7 @@
         "hp": "2080",
         "minattack": "1350",
         "attack": "7200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040041000_01.png",
         "en": "Sara"
@@ -2768,7 +2977,7 @@
         "hp": "1840",
         "minattack": "1560",
         "attack": "9850",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040040000_03.png",
         "en": "Jeanne d'Arc"
@@ -2787,7 +2996,7 @@
         "hp": "1680",
         "minattack": "1980",
         "attack": "12540",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040029000_03.png",
         "en": "Vaseraga"
@@ -2806,8 +3015,8 @@
         "hp": "1280",
         "minattack": "1800",
         "attack": "9600",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040028000_01.png",
         "en": "Zeta"
     },
@@ -2825,8 +3034,8 @@
         "hp": "2015",
         "minattack": "1615",
         "attack": "10415",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040027000_03.png",
         "en": "Anila"
     },
@@ -2844,7 +3053,7 @@
         "hp": "1540",
         "minattack": "1370",
         "attack": "7280",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040026000_01.png",
         "en": "Rosetta (Christmas)"
@@ -2863,7 +3072,7 @@
         "hp": "1610",
         "minattack": "1560",
         "attack": "9880",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040025000_03.png",
         "en": "Siegfried"
@@ -2882,7 +3091,7 @@
         "hp": "1830",
         "minattack": "1160",
         "attack": "6160",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040024000_01.png",
         "en": "Sophia"
@@ -2901,8 +3110,8 @@
         "hp": "1570",
         "minattack": "1710",
         "attack": "10830",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040023000_03.png",
         "en": "Lancelot"
     },
@@ -2920,7 +3129,7 @@
         "hp": "1160",
         "minattack": "1620",
         "attack": "8640",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040022000_01.png",
         "en": "Melleau"
@@ -2939,7 +3148,7 @@
         "hp": "2370",
         "minattack": "1230",
         "attack": "7790",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040021000_03.png",
         "en": "Lennah"
@@ -2958,7 +3167,7 @@
         "hp": "1590",
         "minattack": "1260",
         "attack": "6720",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040020000_01.png",
         "en": "Charlotta (Halloween)"
@@ -2977,7 +3186,7 @@
         "hp": "1380",
         "minattack": "1580",
         "attack": "9980",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040019000_03.png",
         "en": "Arulumaya"
@@ -2996,7 +3205,7 @@
         "hp": "1650",
         "minattack": "1460",
         "attack": "7777",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040018000_01.png",
         "en": "Christina"
@@ -3015,8 +3224,8 @@
         "hp": "2110",
         "minattack": "1485",
         "attack": "7920",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040017000_01.png",
         "en": "Agielba"
     },
@@ -3034,7 +3243,7 @@
         "hp": "1333",
         "minattack": "1333",
         "attack": "7333",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040016000_01.png",
         "en": "Cerberus"
@@ -3053,7 +3262,7 @@
         "hp": "1225",
         "minattack": "1815",
         "attack": "9680",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040015000_01.png",
         "en": "Io (Summer)"
@@ -3072,7 +3281,7 @@
         "hp": "1600",
         "minattack": "1200",
         "attack": "6400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040014000_01.png",
         "en": "De La Fille (Summer)"
@@ -3091,7 +3300,7 @@
         "hp": "1365",
         "minattack": "1620",
         "attack": "10260",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040013000_03.png",
         "en": "Seruel"
@@ -3110,7 +3319,7 @@
         "hp": "1450",
         "minattack": "1370",
         "attack": "7300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040012000_01.png",
         "en": "Metera"
@@ -3129,7 +3338,7 @@
         "hp": "1520",
         "minattack": "1650",
         "attack": "10450",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040011000_03.png",
         "en": "Magisa"
@@ -3148,7 +3357,7 @@
         "hp": "1720",
         "minattack": "1575",
         "attack": "9980",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040010000_03.png",
         "en": "Charlotta"
@@ -3167,7 +3376,7 @@
         "hp": "1900",
         "minattack": "1300",
         "attack": "8310",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040009000_03.png",
         "en": "Cagliostro"
@@ -3186,7 +3395,7 @@
         "hp": "1340",
         "minattack": "1560",
         "attack": "8360",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040008000_03.png",
         "en": "Sarunan"
@@ -3205,8 +3414,8 @@
         "hp": "1580",
         "minattack": "1220",
         "attack": "6500",
-        "baseDA": 6.5,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040007000_01.png",
         "en": "Lily"
     },
@@ -3224,7 +3433,7 @@
         "hp": "2000",
         "minattack": "1350",
         "attack": "8550",
-        "baseDA": 11.5,
+        "baseDA": 12.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040006000_03.png",
         "en": "Yuel"
@@ -3243,7 +3452,7 @@
         "hp": "1520",
         "minattack": "1680",
         "attack": "10680",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040005000_03.png",
         "en": "Lady Grey"
@@ -3262,7 +3471,7 @@
         "hp": "1600",
         "minattack": "1200",
         "attack": "6400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040004000_01.png",
         "en": "De La Fille"
@@ -3281,7 +3490,7 @@
         "hp": "1520",
         "minattack": "1800",
         "attack": "11400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040003000_03.png",
         "en": "Nezahualpilli"
@@ -3300,7 +3509,7 @@
         "hp": "1360",
         "minattack": "1720",
         "attack": "9200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040002000_01.png",
         "en": "Aletheia"
@@ -3319,7 +3528,7 @@
         "hp": "1900",
         "minattack": "1500",
         "attack": "9500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040001000_03.png",
         "en": "Altair"
@@ -3338,7 +3547,7 @@
         "hp": "2110",
         "minattack": "1350",
         "attack": "8550",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040000000_03.png",
         "en": "Gawain"
@@ -3357,7 +3566,7 @@
         "hp": "1320",
         "minattack": "1080",
         "attack": "5400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030000000_01.png",
         "en": "Naoise (Light)"
@@ -3376,7 +3585,7 @@
         "hp": "1100",
         "minattack": "1100",
         "attack": "5500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030001000_01.png",
         "en": "Therese (Event)"
@@ -3395,7 +3604,7 @@
         "hp": "1300",
         "minattack": "1080",
         "attack": "5400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030002000_01.png",
         "en": "Mishra"
@@ -3414,7 +3623,7 @@
         "hp": "1010",
         "minattack": "1500",
         "attack": "8400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030003000_03.png",
         "en": "Alec"
@@ -3433,7 +3642,7 @@
         "hp": "1500",
         "minattack": "1125",
         "attack": "6800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030004000_03.png",
         "en": "Helnar"
@@ -3452,7 +3661,7 @@
         "hp": "1320",
         "minattack": "900",
         "attack": "5400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030005000_01.png",
         "en": "Katalina"
@@ -3471,7 +3680,7 @@
         "hp": "1450",
         "minattack": "800",
         "attack": "6000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030006000_03.png",
         "en": "Io"
@@ -3490,7 +3699,7 @@
         "hp": "1046",
         "minattack": "1090",
         "attack": "7970",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030007000_03.png",
         "en": "Eugen"
@@ -3509,7 +3718,7 @@
         "hp": "1450",
         "minattack": "1000",
         "attack": "7250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030008000_03.png",
         "en": "Rackam"
@@ -3528,7 +3737,7 @@
         "hp": "1590",
         "minattack": "1180",
         "attack": "7080",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030009000_03.png",
         "en": "Gayne"
@@ -3547,7 +3756,7 @@
         "hp": "1300",
         "minattack": "960",
         "attack": "5800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030010000_01.png",
         "en": "Rosetta"
@@ -3566,7 +3775,7 @@
         "hp": "800",
         "minattack": "1200",
         "attack": "6000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030011000_01.png",
         "en": "Abby"
@@ -3585,7 +3794,7 @@
         "hp": "1500",
         "minattack": "1250",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030012000_03.png",
         "en": "Ange"
@@ -3604,7 +3813,7 @@
         "hp": "1350",
         "minattack": "1120",
         "attack": "5600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030013000_01.png",
         "en": "Lamretta"
@@ -3623,7 +3832,7 @@
         "hp": "1200",
         "minattack": "1300",
         "attack": "7820",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030014000_03.png",
         "en": "Ulamnuran"
@@ -3642,7 +3851,7 @@
         "hp": "840",
         "minattack": "1260",
         "attack": "6300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030015000_01.png",
         "en": "Aliza (Event)"
@@ -3661,7 +3870,7 @@
         "hp": "1125",
         "minattack": "1125",
         "attack": "5625",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030016000_01.png",
         "en": "Jessica (Event)"
@@ -3680,7 +3889,7 @@
         "hp": "1490",
         "minattack": "1310",
         "attack": "7840",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030017000_03.png",
         "en": "Danua"
@@ -3699,7 +3908,7 @@
         "hp": "1560",
         "minattack": "1180",
         "attack": "7060",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030018000_03.png",
         "en": "Sutera (Wind)"
@@ -3718,7 +3927,7 @@
         "hp": "1000",
         "minattack": "1400",
         "attack": "7000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030019000_01.png",
         "en": "Vira (SR)"
@@ -3737,7 +3946,7 @@
         "hp": "1040",
         "minattack": "1500",
         "attack": "9000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030020000_03.png",
         "en": "Soriz"
@@ -3756,7 +3965,7 @@
         "hp": "1300",
         "minattack": "900",
         "attack": "4500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030021000_01.png",
         "en": "Sara (Event)"
@@ -3775,7 +3984,7 @@
         "hp": "700",
         "minattack": "1200",
         "attack": "6000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030022000_01.png",
         "en": "Jin"
@@ -3794,7 +4003,7 @@
         "hp": "900",
         "minattack": "1350",
         "attack": "6750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030023000_01.png",
         "en": "Elmott"
@@ -3813,7 +4022,7 @@
         "hp": "1125",
         "minattack": "1150",
         "attack": "5850",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030024000_01.png",
         "en": "Keehar"
@@ -3832,7 +4041,7 @@
         "hp": "1000",
         "minattack": "1375",
         "attack": "6875",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030025000_01.png",
         "en": "Elta"
@@ -3851,7 +4060,7 @@
         "hp": "1390",
         "minattack": "850",
         "attack": "5880",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030026000_03.png",
         "en": "Selfira (Event)"
@@ -3870,7 +4079,7 @@
         "hp": "1125",
         "minattack": "1250",
         "attack": "6250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030027000_01.png",
         "en": "Ezecrain"
@@ -3889,7 +4098,7 @@
         "hp": "850",
         "minattack": "1160",
         "attack": "5900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030028000_01.png",
         "en": "Sig (Event)"
@@ -3908,7 +4117,7 @@
         "hp": "1500",
         "minattack": "1125",
         "attack": "5625",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030029000_01.png",
         "en": "Katalina (Summer)"
@@ -3927,7 +4136,7 @@
         "hp": "1050",
         "minattack": "1325",
         "attack": "6625",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030030000_01.png",
         "en": "Jessica (Summer)"
@@ -3946,7 +4155,7 @@
         "hp": "1300",
         "minattack": "1185",
         "attack": "5920",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030031000_01.png",
         "en": "Helnar (Summer)"
@@ -3965,7 +4174,7 @@
         "hp": "1035",
         "minattack": "1150",
         "attack": "5740",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030032000_01.png",
         "en": "Ferry (SR)"
@@ -3984,7 +4193,7 @@
         "hp": "1250",
         "minattack": "1460",
         "attack": "8760",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030033000_03.png",
         "en": "Lucius"
@@ -4003,7 +4212,7 @@
         "hp": "1650",
         "minattack": "1000",
         "attack": "6460",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030034000_03.png",
         "en": "Teena"
@@ -4022,7 +4231,7 @@
         "hp": "960",
         "minattack": "1040",
         "attack": "5200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030035000_01.png",
         "en": "Feena (Event)"
@@ -4041,7 +4250,7 @@
         "hp": "1125",
         "minattack": "1125",
         "attack": "5625",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030036000_01.png",
         "en": "Arusha"
@@ -4060,7 +4269,7 @@
         "hp": "1230",
         "minattack": "1280",
         "attack": "6380",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030037000_01.png",
         "en": "Farrah"
@@ -4079,10 +4288,10 @@
         "hp": "980",
         "minattack": "1020",
         "attack": "5100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030038000_01.png",
-        "en": "Juri"
+        "en": "Juri (Event)"
     },
     "ノア": {
         "name": "ノア",
@@ -4098,7 +4307,7 @@
         "hp": "1200",
         "minattack": "1250",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030039000_03.png",
         "en": "Noa"
@@ -4117,7 +4326,7 @@
         "hp": "1400",
         "minattack": "920",
         "attack": "5770",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030040000_03.png",
         "en": "Uzuki Shimamura"
@@ -4136,7 +4345,7 @@
         "hp": "1060",
         "minattack": "1120",
         "attack": "7080",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030041000_03.png",
         "en": "Rin Shibuya"
@@ -4155,7 +4364,7 @@
         "hp": "1000",
         "minattack": "1250",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030042000_01.png",
         "en": "Ange (Halloween)"
@@ -4174,7 +4383,7 @@
         "hp": "900",
         "minattack": "1320",
         "attack": "6570",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030043000_01.png",
         "en": "Mimlemel"
@@ -4193,7 +4402,7 @@
         "hp": "720",
         "minattack": "900",
         "attack": "4500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030044000_01.png",
         "en": "Aster"
@@ -4212,7 +4421,7 @@
         "hp": "1070",
         "minattack": "1440",
         "attack": "7190",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030045000_01.png",
         "en": "Mariah"
@@ -4231,7 +4440,7 @@
         "hp": "1190",
         "minattack": "1300",
         "attack": "6500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030046000_01.png",
         "en": "Carren"
@@ -4250,7 +4459,7 @@
         "hp": "1360",
         "minattack": "820",
         "attack": "4350",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030047000_01.png",
         "en": "Vane (Event)"
@@ -4269,7 +4478,7 @@
         "hp": "1050",
         "minattack": "1300",
         "attack": "6500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030048000_01.png",
         "en": "Rackam (Christmas)"
@@ -4288,7 +4497,7 @@
         "hp": "1300",
         "minattack": "1200",
         "attack": "6000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030049000_01.png",
         "en": "Rosamia (SR)"
@@ -4307,7 +4516,7 @@
         "hp": "1090",
         "minattack": "830",
         "attack": "4150",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030050000_01.png",
         "en": "Johann (Event)"
@@ -4326,7 +4535,7 @@
         "hp": "960",
         "minattack": "1100",
         "attack": "6600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030051000_03.png",
         "en": "Mika Jougasaki"
@@ -4345,7 +4554,7 @@
         "hp": "1320",
         "minattack": "1000",
         "attack": "6230",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030052000_03.png",
         "en": "Mio Honda"
@@ -4364,7 +4573,7 @@
         "hp": "1650",
         "minattack": "1250",
         "attack": "6200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030053000_01.png",
         "en": "Baotorda"
@@ -4383,7 +4592,7 @@
         "hp": "1320",
         "minattack": "1280",
         "attack": "7660",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030054000_03.png",
         "en": "Rita"
@@ -4402,7 +4611,7 @@
         "hp": "1100",
         "minattack": "1580",
         "attack": "7850",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030055000_01.png",
         "en": "Ladiva"
@@ -4421,7 +4630,7 @@
         "hp": "1100",
         "minattack": "900",
         "attack": "4500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030056000_01.png",
         "en": "Volenna"
@@ -4440,7 +4649,7 @@
         "hp": "1130",
         "minattack": "1450",
         "attack": "7250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030057000_01.png",
         "en": "Claudia"
@@ -4459,7 +4668,7 @@
         "hp": "1110",
         "minattack": "1330",
         "attack": "6630",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030058000_01.png",
         "en": "Dorothy"
@@ -4478,7 +4687,7 @@
         "hp": "1450",
         "minattack": "1190",
         "attack": "5920",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030059000_01.png",
         "en": "Zaja"
@@ -4497,7 +4706,7 @@
         "hp": "1000",
         "minattack": "880",
         "attack": "4400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030060000_01.png",
         "en": "Zehek"
@@ -4516,7 +4725,7 @@
         "hp": "1500",
         "minattack": "1250",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030061000_03.png",
         "en": "Ejaeli"
@@ -4535,7 +4744,7 @@
         "hp": "1250",
         "minattack": "1250",
         "attack": "6250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030062000_01.png",
         "en": "Therese"
@@ -4554,7 +4763,7 @@
         "hp": "840",
         "minattack": "1160",
         "attack": "5780",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030063000_01.png",
         "en": "Sarya (Event)"
@@ -4573,7 +4782,7 @@
         "hp": "1130",
         "minattack": "1320",
         "attack": "6570",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030064000_01.png",
         "en": "Milleore"
@@ -4592,7 +4801,7 @@
         "hp": "1640",
         "minattack": "1400",
         "attack": "8200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030065000_03.png",
         "en": "Amira (SR)"
@@ -4611,7 +4820,7 @@
         "hp": "1300",
         "minattack": "1000",
         "attack": "5000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030066000_01.png",
         "en": "Hazen"
@@ -4630,7 +4839,7 @@
         "hp": "850",
         "minattack": "1050",
         "attack": "5250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030067000_01.png",
         "en": "Syr"
@@ -4649,7 +4858,7 @@
         "hp": "1200",
         "minattack": "1200",
         "attack": "6200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030068000_01.png",
         "en": "Mary"
@@ -4668,7 +4877,7 @@
         "hp": "1030",
         "minattack": "980",
         "attack": "4860",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030069000_01.png",
         "en": "Mizuki Kawashima"
@@ -4687,7 +4896,7 @@
         "hp": "839",
         "minattack": "1139",
         "attack": "5839",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030070000_01.png",
         "en": "Miku Maekawa"
@@ -4706,7 +4915,7 @@
         "hp": "1100",
         "minattack": "1030",
         "attack": "6180",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030071000_03.png",
         "en": "Anzu Futaba"
@@ -4725,7 +4934,7 @@
         "hp": "1050",
         "minattack": "1050",
         "attack": "5250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030072000_01.png",
         "en": "Lecia"
@@ -4744,7 +4953,7 @@
         "hp": "2000",
         "minattack": "700",
         "attack": "3500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030073000_01.png",
         "en": "Pengy (Event)"
@@ -4763,7 +4972,7 @@
         "hp": "990",
         "minattack": "810",
         "attack": "4050",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030074000_01.png",
         "en": "Ceylan"
@@ -4782,7 +4991,7 @@
         "hp": "1450",
         "minattack": "1150",
         "attack": "5750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030075000_01.png",
         "en": "J.J."
@@ -4801,7 +5010,7 @@
         "hp": "1180",
         "minattack": "1270",
         "attack": "6320",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030076000_01.png",
         "en": "Sahli Lao"
@@ -4820,7 +5029,7 @@
         "hp": "1020",
         "minattack": "980",
         "attack": "4900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030077000_01.png",
         "en": "Romeo (Event)"
@@ -4839,7 +5048,7 @@
         "hp": "1260",
         "minattack": "1450",
         "attack": "8700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030078000_03.png",
         "en": "Feather"
@@ -4858,7 +5067,7 @@
         "hp": "1350",
         "minattack": "850",
         "attack": "4250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030079000_01.png",
         "en": "Robomi (Event)"
@@ -4877,7 +5086,7 @@
         "hp": "1030",
         "minattack": "1020",
         "attack": "5250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030080000_01.png",
         "en": "Milla Maxwell"
@@ -4896,7 +5105,7 @@
         "hp": "830",
         "minattack": "1220",
         "attack": "6180",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030081000_01.png",
         "en": "Yuri Lowell"
@@ -4915,7 +5124,7 @@
         "hp": "980",
         "minattack": "1120",
         "attack": "5570",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030082000_01.png",
         "en": "Sophie"
@@ -4934,7 +5143,7 @@
         "hp": "900",
         "minattack": "1350",
         "attack": "6750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030083000_01.png",
         "en": "Elmott (Summer)"
@@ -4953,7 +5162,7 @@
         "hp": "1290",
         "minattack": "1200",
         "attack": "6000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030084000_01.png",
         "en": "Tanya (Summer)"
@@ -4972,7 +5181,7 @@
         "hp": "930",
         "minattack": "1370",
         "attack": "6820",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030085000_01.png",
         "en": "Eugen (Summer)"
@@ -4991,7 +5200,7 @@
         "hp": "700",
         "minattack": "1200",
         "attack": "6000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030086000_01.png",
         "en": "Jin (Event)"
@@ -5010,7 +5219,7 @@
         "hp": "1320",
         "minattack": "1320",
         "attack": "6570",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030087000_01.png",
         "en": "Lecia (Summer)"
@@ -5029,7 +5238,7 @@
         "hp": "960",
         "minattack": "1200",
         "attack": "7200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030088000_03.png",
         "en": "Rika Jougasaki"
@@ -5048,7 +5257,7 @@
         "hp": "1250",
         "minattack": "800",
         "attack": "4000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030089000_01.png",
         "en": "Kanako Mimura"
@@ -5067,7 +5276,7 @@
         "hp": "800",
         "minattack": "1100",
         "attack": "5500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030090000_01.png",
         "en": "Koume Shirasaka"
@@ -5086,7 +5295,7 @@
         "hp": "900",
         "minattack": "1450",
         "attack": "7230",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030091000_01.png",
         "en": "Suframare (Summer)"
@@ -5105,7 +5314,7 @@
         "hp": "1430",
         "minattack": "1320",
         "attack": "7900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030092000_03.png",
         "en": "Will"
@@ -5124,7 +5333,7 @@
         "hp": "860",
         "minattack": "1200",
         "attack": "4980",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030093000_01.png",
         "en": "Malinda (Attack)"
@@ -5143,7 +5352,7 @@
         "hp": "1100",
         "minattack": "840",
         "attack": "4000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030093000_01.png",
         "en": "Malinda (Defense)"
@@ -5162,7 +5371,7 @@
         "hp": "860",
         "minattack": "900",
         "attack": "3900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030093000_01.png",
         "en": "Malinda (Balanced)"
@@ -5181,7 +5390,7 @@
         "hp": "1580",
         "minattack": "1190",
         "attack": "5920",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030094000_01.png",
         "en": "Galadar"
@@ -5200,7 +5409,7 @@
         "hp": "1000",
         "minattack": "1500",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030095000_01.png",
         "en": "Anna"
@@ -5219,7 +5428,7 @@
         "hp": "1440",
         "minattack": "900",
         "attack": "5400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030096000_03.png",
         "en": "Naoise (Event)"
@@ -5238,7 +5447,7 @@
         "hp": "850",
         "minattack": "1170",
         "attack": "5900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030097000_01.png",
         "en": "Teru Tendo"
@@ -5257,7 +5466,7 @@
         "hp": "920",
         "minattack": "1020",
         "attack": "5100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030098000_01.png",
         "en": "Kaoru Sakuraba"
@@ -5276,7 +5485,7 @@
         "hp": "900",
         "minattack": "1070",
         "attack": "5350",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030099000_01.png",
         "en": "Tsubasa Kashiwagi"
@@ -5295,7 +5504,7 @@
         "hp": "1320",
         "minattack": "1120",
         "attack": "5640",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030100000_01.png",
         "en": "Goblin Mage"
@@ -5314,7 +5523,7 @@
         "hp": "1035",
         "minattack": "1150",
         "attack": "5740",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030101000_01.png",
         "en": "Ferry (Halloween)"
@@ -5333,7 +5542,7 @@
         "hp": "1370",
         "minattack": "1000",
         "attack": "5020",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030102000_01.png",
         "en": "Jasmine"
@@ -5352,7 +5561,7 @@
         "hp": "1200",
         "minattack": "930",
         "attack": "4150",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030103000_01.png",
         "en": "Farrah (Summer)"
@@ -5371,7 +5580,7 @@
         "hp": "1000",
         "minattack": "1080",
         "attack": "5400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030104000_01.png",
         "en": "Ryu"
@@ -5390,7 +5599,7 @@
         "hp": "950",
         "minattack": "1090",
         "attack": "5450",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030105000_01.png",
         "en": "Chun Li"
@@ -5409,7 +5618,7 @@
         "hp": "1060",
         "minattack": "1400",
         "attack": "7200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030106000_01.png",
         "en": "Sig"
@@ -5428,7 +5637,7 @@
         "hp": "1470",
         "minattack": "1160",
         "attack": "5800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030107000_01.png",
         "en": "Vane"
@@ -5447,7 +5656,7 @@
         "hp": "830",
         "minattack": "1140",
         "attack": "5700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030108000_01.png",
         "en": "Lancelot (SR)"
@@ -5466,7 +5675,7 @@
         "hp": "1100",
         "minattack": "1580",
         "attack": "7850",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030109000_01.png",
         "en": "Ladiva (Christmas)"
@@ -5485,7 +5694,7 @@
         "hp": "845",
         "minattack": "1140",
         "attack": "5760",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030110000_01.png",
         "en": "Anila (Event)"
@@ -5504,7 +5713,7 @@
         "hp": "1815",
         "minattack": "1100",
         "attack": "6600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030111000_03.png",
         "en": "Yaia"
@@ -5523,7 +5732,7 @@
         "hp": "720",
         "minattack": "1260",
         "attack": "6150",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030112000_01.png",
         "en": "Skull"
@@ -5542,7 +5751,7 @@
         "hp": "1320",
         "minattack": "1150",
         "attack": "5750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030113000_01.png",
         "en": "Sutera (Fire)"
@@ -5561,7 +5770,7 @@
         "hp": "1000",
         "minattack": "1000",
         "attack": "5000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030114000_01.png",
         "en": "Lina Inverse"
@@ -5580,7 +5789,7 @@
         "hp": "1000",
         "minattack": "1000",
         "attack": "5000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030115000_01.png",
         "en": "Naga the Serpent"
@@ -5599,7 +5808,7 @@
         "hp": "1150",
         "minattack": "1560",
         "attack": "7800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030116000_01.png",
         "en": "Daetta"
@@ -5618,7 +5827,7 @@
         "hp": "1150",
         "minattack": "950",
         "attack": "4750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030117000_01.png",
         "en": "Soriz (Event)"
@@ -5637,7 +5846,7 @@
         "hp": "1000",
         "minattack": "1480",
         "attack": "7400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030118000_01.png",
         "en": "Sevilbarra"
@@ -5656,7 +5865,7 @@
         "hp": "1100",
         "minattack": "1480",
         "attack": "7400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030119000_01.png",
         "en": "Ryan"
@@ -5675,7 +5884,7 @@
         "hp": "800",
         "minattack": "920",
         "attack": "5500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030120000_01.png",
         "en": "Sachiko Koshimizu"
@@ -5694,7 +5903,7 @@
         "hp": "1200",
         "minattack": "720",
         "attack": "4500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030121000_01.png",
         "en": "Airi Totoki"
@@ -5713,7 +5922,7 @@
         "hp": "1050",
         "minattack": "1450",
         "attack": "7230",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030122000_01.png",
         "en": "Redluck"
@@ -5732,7 +5941,7 @@
         "hp": "1140",
         "minattack": "900",
         "attack": "5400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030123000_03.png",
         "en": "Lowain"
@@ -5751,7 +5960,7 @@
         "hp": "1430",
         "minattack": "1070",
         "attack": "5350",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030124000_01.png",
         "en": "Shao"
@@ -5770,7 +5979,7 @@
         "hp": "900",
         "minattack": "1100",
         "attack": "5500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030125000_01.png",
         "en": "Karin"
@@ -5789,7 +5998,7 @@
         "hp": "950",
         "minattack": "1090",
         "attack": "5450",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030126000_01.png",
         "en": "Rashid"
@@ -5808,7 +6017,7 @@
         "hp": "900",
         "minattack": "1350",
         "attack": "6750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030127000_01.png",
         "en": "Sen"
@@ -5827,7 +6036,7 @@
         "hp": "1220",
         "minattack": "1280",
         "attack": "6400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030128000_01.png",
         "en": "Eso"
@@ -5846,7 +6055,7 @@
         "hp": "850",
         "minattack": "950",
         "attack": "4750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030129000_01.png",
         "en": "Stan"
@@ -5865,7 +6074,7 @@
         "hp": "1000",
         "minattack": "1000",
         "attack": "5000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030130000_01.png",
         "en": "Sakura Shinguji"
@@ -5884,7 +6093,7 @@
         "hp": "1100",
         "minattack": "800",
         "attack": "4000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030131000_01.png",
         "en": "Erica Fontaine"
@@ -5903,7 +6112,7 @@
         "hp": "800",
         "minattack": "1200",
         "attack": "6000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030132000_01.png",
         "en": "Gemini Sunrise"
@@ -5922,7 +6131,7 @@
         "hp": "1240",
         "minattack": "1510",
         "attack": "7560",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030133000_01.png",
         "en": "Laguna"
@@ -5941,7 +6150,7 @@
         "hp": "1170",
         "minattack": "1330",
         "attack": "6650",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030134000_01.png",
         "en": "Jamil"
@@ -5960,7 +6169,7 @@
         "hp": "1200",
         "minattack": "800",
         "attack": "4000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030135000_01.png",
         "en": "Morphe and Phoebe"
@@ -5979,7 +6188,7 @@
         "hp": "830",
         "minattack": "1220",
         "attack": "6180",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030136000_01.png",
         "en": "Stahn Aileron"
@@ -5998,7 +6207,7 @@
         "hp": "1050",
         "minattack": "950",
         "attack": "4750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030137000_01.png",
         "en": "Tear Grants"
@@ -6017,7 +6226,7 @@
         "hp": "810",
         "minattack": "1050",
         "attack": "5450",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030138000_01.png",
         "en": "Elize Lutus"
@@ -6036,7 +6245,7 @@
         "hp": "1100",
         "minattack": "1550",
         "attack": "7800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030139000_01.png",
         "en": "Almeida"
@@ -6055,7 +6264,7 @@
         "hp": "1380",
         "minattack": "1000",
         "attack": "5000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030140000_01.png",
         "en": "Johann"
@@ -6074,7 +6283,7 @@
         "hp": "1000",
         "minattack": "1000",
         "attack": "5000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030141000_01.png",
         "en": "Nicholas (Event)"
@@ -6093,7 +6302,7 @@
         "hp": "900",
         "minattack": "1000",
         "attack": "5000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030142000_01.png",
         "en": "Novei"
@@ -6112,7 +6321,7 @@
         "hp": "1510",
         "minattack": "1100",
         "attack": "5600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030147000_01.png",
         "en": "Sara (Summer)"
@@ -6131,7 +6340,7 @@
         "hp": "1450",
         "minattack": "1150",
         "attack": "5750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030149000_01.png",
         "en": "J.J. (Summer)"
@@ -6150,7 +6359,7 @@
         "hp": "900",
         "minattack": "1000",
         "attack": "5000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030150000_01.png",
         "en": "Diantha"
@@ -6169,7 +6378,7 @@
         "hp": "900",
         "minattack": "1100",
         "attack": "5500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030151000_01.png",
         "en": "Jin (Wind)"
@@ -6188,7 +6397,7 @@
         "hp": "1000",
         "minattack": "1500",
         "attack": "7480",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030152000_01.png",
         "en": "Camieux"
@@ -6207,7 +6416,7 @@
         "hp": "2000",
         "minattack": "750",
         "attack": "3750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030153000_01.png",
         "en": "Pengy"
@@ -6226,7 +6435,7 @@
         "hp": "840",
         "minattack": "1260",
         "attack": "6300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030154000_01.png",
         "en": "Barawa (Event)"
@@ -6245,7 +6454,7 @@
         "hp": "940",
         "minattack": "1400",
         "attack": "7800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030155000_01.png",
         "en": "Cucuroux"
@@ -6264,7 +6473,7 @@
         "hp": "1000",
         "minattack": "1500",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030156000_01.png",
         "en": "Dante"
@@ -6283,7 +6492,7 @@
         "hp": "1200",
         "minattack": "900",
         "attack": "4500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030157000_01.png",
         "en": "Paris"
@@ -6302,7 +6511,7 @@
         "hp": "1180",
         "minattack": "1330",
         "attack": "6380",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030159000_01.png",
         "en": "Jessica"
@@ -6321,7 +6530,7 @@
         "hp": "710",
         "minattack": "1180",
         "attack": "4800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030160000_01.png",
         "en": "Anastasia"
@@ -6340,7 +6549,7 @@
         "hp": "700",
         "minattack": "1000",
         "attack": "4250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030161000_01.png",
         "en": "Miria Akagi"
@@ -6359,7 +6568,7 @@
         "hp": "600",
         "minattack": "1050",
         "attack": "5500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030162000_01.png",
         "en": "Ranko Kanzaki"
@@ -6378,7 +6587,7 @@
         "hp": "1120",
         "minattack": "1300",
         "attack": "6580",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030163000_01.png",
         "en": "Beatrix (Halloween)"
@@ -6397,7 +6606,7 @@
         "hp": "1420",
         "minattack": "950",
         "attack": "4800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030164000_01.png",
         "en": "Erin"
@@ -6416,7 +6625,7 @@
         "hp": "1140",
         "minattack": "750",
         "attack": "3800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030165000_01.png",
         "en": "Lily (Event)"
@@ -6435,7 +6644,7 @@
         "hp": "850",
         "minattack": "1610",
         "attack": "8130",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030166000_01.png",
         "en": "Mimlemel and Stumpeye"
@@ -6454,7 +6663,7 @@
         "hp": "1000",
         "minattack": "1500",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030167000_01.png",
         "en": "Tanya"
@@ -6473,7 +6682,7 @@
         "hp": "800",
         "minattack": "1200",
         "attack": "6000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030168000_01.png",
         "en": "Percival (Event)"
@@ -6492,7 +6701,7 @@
         "hp": "880",
         "minattack": "1450",
         "attack": "6850",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030169000_01.png",
         "en": "Sen (Christmas)"
@@ -6511,7 +6720,7 @@
         "hp": "880",
         "minattack": "980",
         "attack": "4600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030170000_01.png",
         "en": "Andira (Event)"
@@ -6530,7 +6739,7 @@
         "hp": "1000",
         "minattack": "1500",
         "attack": "7500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030171000_01.png",
         "en": "Lucius (Fire)"
@@ -6549,7 +6758,7 @@
         "hp": "960",
         "minattack": "1100",
         "attack": "6600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030172000_03.png",
         "en": "Meteon"
@@ -6568,7 +6777,7 @@
         "hp": "900",
         "minattack": "1130",
         "attack": "5600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030173000_01.png",
         "en": "Haohmaru"
@@ -6587,7 +6796,7 @@
         "hp": "760",
         "minattack": "1230",
         "attack": "6200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030174000_01.png",
         "en": "Nakoruru"
@@ -6606,7 +6815,7 @@
         "hp": "1210",
         "minattack": "1450",
         "attack": "6450",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030175000_01.png",
         "en": "Herja"
@@ -6625,7 +6834,7 @@
         "hp": "1240",
         "minattack": "1275",
         "attack": "6300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030176000_01.png",
         "en": "Mina"
@@ -6645,7 +6854,7 @@
         "minattack": "650",
         "attack": "3150",
         "baseDA": 100.0,
-        "baseTA": 3.0,
+        "baseTA": 0.0,
         "imageURL": "./charaimgs/3030177000_01.png",
         "en": "Albert (Event)"
     },
@@ -6663,7 +6872,7 @@
         "hp": "1580",
         "minattack": "900",
         "attack": "4050",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030178000_01.png",
         "en": "Jin (Themed)"
@@ -6682,7 +6891,7 @@
         "hp": "1100",
         "minattack": "800",
         "attack": "4200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030179000_01.png",
         "en": "Arisa"
@@ -6701,7 +6910,7 @@
         "hp": "750",
         "minattack": "1200",
         "attack": "5800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030180000_01.png",
         "en": "Luna"
@@ -6720,7 +6929,7 @@
         "hp": "1050",
         "minattack": "1330",
         "attack": "6730",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030181000_01.png",
         "en": "Tyre"
@@ -6739,7 +6948,7 @@
         "hp": "640",
         "minattack": "880",
         "attack": "4400",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030182000_01.png",
         "en": "Lyria"
@@ -6758,7 +6967,7 @@
         "hp": "1130",
         "minattack": "1320",
         "attack": "6570",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030183000_01.png",
         "en": "Vermeil"
@@ -6777,7 +6986,7 @@
         "hp": "1050",
         "minattack": "1350",
         "attack": "6630",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030184000_01.png",
         "en": "Cain"
@@ -6796,7 +7005,7 @@
         "hp": "880",
         "minattack": "1650",
         "attack": "7980",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030185000_01.png",
         "en": "Ludmila"
@@ -6815,7 +7024,7 @@
         "hp": "1040",
         "minattack": "1395",
         "attack": "7040",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030186000_01.png",
         "en": "Lamretta (Water)"
@@ -6834,7 +7043,7 @@
         "hp": "1310",
         "minattack": "1180",
         "attack": "5930",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030187000_01.png",
         "en": "Sutera (Event)"
@@ -6853,7 +7062,7 @@
         "hp": "1330",
         "minattack": "1000",
         "attack": "4830",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030188000_01.png",
         "en": "Deliford"
@@ -6872,7 +7081,7 @@
         "hp": "1005",
         "minattack": "965",
         "attack": "4980",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030189000_01.png",
         "en": "Cagliostro (Event)"
@@ -6891,7 +7100,7 @@
         "hp": "960",
         "minattack": "573",
         "attack": "2700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030190000_01.png",
         "en": "Predator"
@@ -6910,7 +7119,7 @@
         "hp": "1100",
         "minattack": "1190",
         "attack": "5700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030191000_01.png",
         "en": "Sevastien"
@@ -6929,7 +7138,7 @@
         "hp": "1140",
         "minattack": "975",
         "attack": "4425",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030192000_01.png",
         "en": "Charlotta (Event)"
@@ -6948,7 +7157,7 @@
         "hp": "1050",
         "minattack": "1850",
         "attack": "4800",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030193000_01.png",
         "en": "Minami Nitta"
@@ -6967,7 +7176,7 @@
         "hp": "1100",
         "minattack": "1800",
         "attack": "4900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030194000_01.png",
         "en": "Shiki Ichinose"
@@ -6986,7 +7195,7 @@
         "hp": "1025",
         "minattack": "1320",
         "attack": "6750",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030195000_01.png",
         "en": "Jeanne d'Arc (SR)"
@@ -7005,7 +7214,7 @@
         "hp": "906",
         "minattack": "1520",
         "attack": "7700",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030196000_01.png",
         "en": "Jamil (Dark)"
@@ -7024,7 +7233,7 @@
         "hp": "1020",
         "minattack": "1000",
         "attack": "5100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030197000_01.png",
         "en": "Walder (Event)"
@@ -7043,7 +7252,7 @@
         "hp": "1135",
         "minattack": "1297",
         "attack": "6510",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030198000_01.png",
         "en": "Charlotta (Summer)"
@@ -7062,7 +7271,7 @@
         "hp": "970",
         "minattack": "1510",
         "attack": "7650",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030199000_01.png",
         "en": "Ayer (Summer)"
@@ -7081,7 +7290,7 @@
         "hp": "690",
         "minattack": "1395",
         "attack": "6685",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030200000_01.png",
         "en": "Carren (Event)"
@@ -7100,7 +7309,7 @@
         "hp": "900",
         "minattack": "1600",
         "attack": "8000",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030201000_01.png",
         "en": "Ghandagoza (Summer)"
@@ -7119,7 +7328,7 @@
         "hp": "900",
         "minattack": "1250",
         "attack": "6200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030202000_01.png",
         "en": "Chloe (Summer)"
@@ -7138,7 +7347,7 @@
         "hp": "1060",
         "minattack": "1180",
         "attack": "5950",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030203000_01.png",
         "en": "Blazing Teacher Elmott"
@@ -7157,7 +7366,7 @@
         "hp": "710",
         "minattack": "1300",
         "attack": "6600",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030204000_01.png",
         "en": "Grea (Event)"
@@ -7176,7 +7385,7 @@
         "hp": "750",
         "minattack": "1250",
         "attack": "6250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030205000_01.png",
         "en": "Izuminokami Kanesada"
@@ -7195,7 +7404,7 @@
         "hp": "880",
         "minattack": "1040",
         "attack": "5200",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030206000_01.png",
         "en": "Yamanbagiri Kunihiro"
@@ -7214,7 +7423,7 @@
         "hp": "1260",
         "minattack": "600",
         "attack": "3100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030207000_01.png",
         "en": "Owen"
@@ -7233,7 +7442,7 @@
         "hp": "800",
         "minattack": "1350",
         "attack": "7007",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030208000_01.png",
         "en": "Reinhardtzar"
@@ -7252,7 +7461,7 @@
         "hp": "1150",
         "minattack": "1490",
         "attack": "7310",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030209000_01.png",
         "en": "Sarya"
@@ -7271,7 +7480,7 @@
         "hp": "715",
         "minattack": "1160",
         "attack": "5900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030210000_01.png",
         "en": "Ezecrain (Event)"
@@ -7290,7 +7499,7 @@
         "hp": "820",
         "minattack": "1610",
         "attack": "8290",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030220000_01.png",
         "en": "Mimlemel and Pun-Kin (Halloween)"
@@ -7309,7 +7518,7 @@
         "hp": "945",
         "minattack": "1505",
         "attack": "7630",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030221000_01.png",
         "en": "Vania (SR)"
@@ -7328,7 +7537,7 @@
         "hp": "1390",
         "minattack": "960",
         "attack": "4650",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030222000_01.png",
         "en": "Karteira (SR)"
@@ -7347,7 +7556,7 @@
         "hp": "1180",
         "minattack": "940",
         "attack": "4700",
-        "baseDA": 11.5,
+        "baseDA": 12.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030223000_01.png",
         "en": "Yuel (Event)"
@@ -7366,7 +7575,7 @@
         "hp": "900",
         "minattack": "1700",
         "attack": "7900",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030224000_01.png",
         "en": "Mirin"
@@ -7385,7 +7594,7 @@
         "hp": "1600",
         "minattack": "975",
         "attack": "4950",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030225000_01.png",
         "en": "Sophia (SR)"
@@ -7404,7 +7613,7 @@
         "hp": "980",
         "minattack": "1050",
         "attack": "5100",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030226000_01.png",
         "en": "Arthur"
@@ -7423,7 +7632,7 @@
         "hp": "810",
         "minattack": "1320",
         "attack": "5960",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030227000_01.png",
         "en": "Mikasa"
@@ -7442,7 +7651,7 @@
         "hp": "840",
         "minattack": "1620",
         "attack": "8050",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030228000_01.png",
         "en": "Feena (Holiday)"
@@ -7461,7 +7670,7 @@
         "hp": "1050",
         "minattack": "1290",
         "attack": "6470",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030229000_01.png",
         "en": "Mahira (Event)"
@@ -7480,7 +7689,7 @@
         "hp": "1210",
         "minattack": "1280",
         "attack": "6460",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030230000_01.png",
         "en": "Karva (SR)"
@@ -7499,7 +7708,7 @@
         "hp": "750",
         "minattack": "1300",
         "attack": "6350",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030231000_01.png",
         "en": "Zeta (Event)"
@@ -7518,7 +7727,7 @@
         "hp": "1075",
         "minattack": "1275",
         "attack": "6500",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030232000_01.png",
         "en": "Ippatsu (SR)"
@@ -7537,7 +7746,7 @@
         "hp": "870",
         "minattack": "1040",
         "attack": "5150",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030233000_01.png",
         "en": "Zooey (Event)"
@@ -7556,7 +7765,7 @@
         "hp": "910",
         "minattack": "1620",
         "attack": "7950",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030234000_01.png",
         "en": "Randall (SR)"
@@ -7575,7 +7784,7 @@
         "hp": "1004",
         "minattack": "1560",
         "attack": "8214",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030235000_01.png",
         "en": "Narmaya (Valentine)"
@@ -7594,7 +7803,7 @@
         "hp": "1250",
         "minattack": "1250",
         "attack": "6250",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030236000_01.png",
         "en": "Teena (Valentine)"
@@ -7613,7 +7822,7 @@
         "hp": "880",
         "minattack": "1605",
         "attack": "8160",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030237000_01.png",
         "en": "Nezahualpilli (SR)"
@@ -7632,7 +7841,7 @@
         "hp": "925",
         "minattack": "1060",
         "attack": "5300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030238000_01.png",
         "en": "Tōru Amuro"
@@ -7651,7 +7860,7 @@
         "hp": "1080",
         "minattack": "1540",
         "attack": "7760",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030239000_01.png",
         "en": "Barawa (SR)"
@@ -7670,7 +7879,7 @@
         "hp": "1040",
         "minattack": "1380",
         "attack": "6880",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030240000_01.png",
         "en": "Carmelina (SR)"
@@ -7689,7 +7898,7 @@
         "hp": "1260",
         "minattack": "1290",
         "attack": "6550",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030241000_01.png",
         "en": "Leona"
@@ -7708,7 +7917,7 @@
         "hp": "810",
         "minattack": "1260",
         "attack": "6490",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030242000_01.png",
         "en": "Aliza (Water)"
@@ -7727,7 +7936,7 @@
         "hp": "900",
         "minattack": "1730",
         "attack": "8630",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030243000_01.png",
         "en": "Vanzza (SR)"
@@ -7746,7 +7955,7 @@
         "hp": "1051",
         "minattack": "1325",
         "attack": "6620",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030244000_01.png",
         "en": "Elta (Light)"
@@ -7765,7 +7974,7 @@
         "hp": "1250",
         "minattack": "1030",
         "attack": "5030",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030245000_01.png",
         "en": "Yuisis (Summer)"
@@ -7784,7 +7993,7 @@
         "hp": "1200",
         "minattack": "1100",
         "attack": "5300",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030246000_01.png",
         "en": "Olivia (Event)"
@@ -7803,9 +8012,142 @@
         "hp": "900",
         "minattack": "1450",
         "attack": "7230",
-        "baseDA": 6.5,
+        "baseDA": 7.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030247000_01.png",
         "en": "Lilele (Summer)"
+    },
+    "ファラ(水着ver)": {
+        "name": "ファラ(水着ver)",
+        "ja": "ファラ(水着ver)",
+        "element": "water",
+        "type": "attack",
+        "race": "human",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "215",
+        "hp": "1100",
+        "minattack": "1425",
+        "attack": "7000",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030248000_01.png",
+        "en": "Farrah (Summer)"
+    },
+    "アルルメイヤ(浴衣ver)": {
+        "name": "アルルメイヤ(浴衣ver)",
+        "ja": "アルルメイヤ(浴衣ver)",
+        "element": "dark",
+        "type": "pecu",
+        "race": "havin",
+        "fav1": "wand",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "195",
+        "hp": "950",
+        "minattack": "1370",
+        "attack": "6970",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030249000_01.png",
+        "en": "Arulumaya (Summer)"
+    },
+    "アルメイダ(水着ver)": {
+        "name": "アルメイダ(水着ver)",
+        "ja": "アルメイダ(水着ver)",
+        "element": "earth",
+        "type": "attack",
+        "race": "doraf",
+        "fav1": "axe",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "215",
+        "hp": "1050",
+        "minattack": "1600",
+        "attack": "8050",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030250000_01.png",
+        "en": "Almeida (Summer)"
+    },
+    "カイラナ(SR)": {
+        "name": "カイラナ(SR)",
+        "ja": "カイラナ(SR)",
+        "element": "water",
+        "type": "attack",
+        "race": "erune",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "150",
+        "hp": "880",
+        "minattack": "1500",
+        "attack": "6850",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030251000_01.png",
+        "en": "Cailana (SR)"
+    },
+    "チーム・ローアイン": {
+        "name": "チーム・ローアイン",
+        "ja": "チーム・ローアイン",
+        "element": "earth",
+        "type": "pecu",
+        "race": "erune",
+        "fav1": "dagger",
+        "fav2": "sword",
+        "support": "none",
+        "support2": "none",
+        "minhp": "170",
+        "hp": "770",
+        "minattack": "1360",
+        "attack": "7000",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030252000_01.png",
+        "en": "The Lowain Bros"
+    },
+    "ユーリ(風属性ver)": {
+        "name": "ユーリ(風属性ver)",
+        "ja": "ユーリ(風属性ver)",
+        "element": "wind",
+        "type": "attack",
+        "race": "human",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "190",
+        "hp": "970",
+        "minattack": "1450",
+        "attack": "7650",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030253000_01.png",
+        "en": "Juri"
+    },
+    "フェザー(ハロウィンver)": {
+        "name": "フェザー(ハロウィンver)",
+        "ja": "フェザー(ハロウィンver)",
+        "element": "dark",
+        "type": "attack",
+        "race": "human",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "220",
+        "hp": "1100",
+        "minattack": "1400",
+        "attack": "7200",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030254000_01.png",
+        "en": "Feather (Halloween)"
     }
 }

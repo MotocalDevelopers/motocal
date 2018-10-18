@@ -220,6 +220,7 @@ var skilltypes = {
     "normalNiteL": { name: "通常二手(大)", type: "normalNite", amount: "L" },
     "normalSanteS": { name: "通常三手(小)", type: "normalSante", amount: "S" },
     "normalSanteL": { name: "通常三手(大)", type: "normalSante", amount: "L" },
+    "normalKatsumiS": { name: "通常克己(小)", type: "normalKatsumi", amount: "S" },
     "normalKatsumiM": { name: "通常克己(中)", type: "normalKatsumi", amount: "M" },
     "normalKamui": { name: "通常神威(小)", type: "normalKamui", amount: "S" },
     "normalKamuiM": { name: "通常神威(中)", type: "normalKamui", amount: "M" },
@@ -236,6 +237,7 @@ var skilltypes = {
     "normalSetsuna": { name: "通常刹那(中)", type: "normalSetsuna", amount: "M" },
     "normalHiouS": { name: "通常秘奥(小)", type: "normalHiou", amount: "S" },
     "normalHiouM": { name: "通常秘奥(中)", type: "normalHiou", amount: "M" },
+    "normalHissatsuM": { name: "通常必殺(中)", type: "normalHissatsu", amount: "M" },
     "magnaM": { name: "マグナ攻刃", type: "magna", amount: "M" },
     "magnaL": { name: "マグナ攻刃II", type: "magna", amount: "L" },
     "magnaSoka": { name: "マグナ楚歌", type: "magnaSoka", amount: "M" },
@@ -504,41 +506,42 @@ module.exports.bahamutFURelation = {
 }
 
 module.exports.Jobs = {
-    "beruse": { "name": "ベルセルク", "favArm1": "sword", "favArm2": "axe", "type": "attack", "atBonus": 6000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 10.0, "DaBonus": 26.5, "TaBonus": 5.0 },
-    "sage": { "name": "セージ", "favArm1": "wand", "favArm2": "spear", "type": "heal", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 1.0 },
-    "suparuta": { "name": "スパルタ", "favArm1": "sword", "favArm2": "spear", "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1500.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "warlock": { "name": "ウォーロック", "favArm1": "wand", "favArm2": "dagger", "type": "attack", "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "chaos": { "name": "カオスルーダー", "favArm1": "sword", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "gizoku": { "name": "義賊", "favArm1": "dagger", "favArm2": "gun", "type": "balance", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 10.0 },
+    "beruse": { "name": "ベルセルク", "favArm1": "sword", "favArm2": "axe", "type": "attack", "atBonus": 6000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 10.0, "DaBonus": 25.0, "TaBonus": 5.0 },
+    "suparuta": { "name": "スパルタ", "favArm1": "sword", "favArm2": "spear", "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1500.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "sage": { "name": "セージ", "favArm1": "wand", "favArm2": "spear", "type": "heal", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 4.0, "TaBonus": 1.0 },
+    "warlock": { "name": "ウォーロック", "favArm1": "wand", "favArm2": "dagger", "type": "attack", "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "gizoku": { "name": "義賊", "favArm1": "dagger", "favArm2": "gun", "type": "balance", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 10.0, "TaBonus": 10.0 },
+    "chaos": { "name": "カオスルーダー", "favArm1": "sword", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
     "wrestler": { "name": "レスラー", "favArm1": "fist", "favArm2": "fist", "type": "attack", "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 300.0, "shugoBonus": 0.0, "DaBonus": 70.0, "TaBonus": 20.0 },
-    "hounddog": { "name": "ハウンドドッグ", "favArm1": "bow", "favArm2": "gun", "type": "balance", "atBonus": 1800.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 1.0 },
-    "apsaras_spear": { "name": "アプサラス(槍)", "favArm1": "spear", "favArm2": "axe", "type": "attack", "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 16.5, "TaBonus": 20.0 },
-    "apsaras_axe": { "name": "アプサラス(斧)", "favArm1": "spear", "favArm2": "axe", "type": "attack", "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 16.5, "TaBonus": 15.0 },
-    "elysian": { "name": "エリュシオン", "favArm1": "music", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "kengo": { "name": "剣豪", "favArm1": "katana", "favArm2": "bow", "type": "attack", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 1.0 },
-    "glory": { "name": "ザ・グローリー", "favArm1": "sword", "favArm2": "katana", "type": "pecu", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 5.0 },
-    "neko": { "name": "黒猫道士", "favArm1": "wand", "favArm2": "wand", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 3000.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 6.0 },
-    "alche": { "name": "アルケミスト", "favArm1": "dagger", "favArm2": "gun", "type": "heal", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 100.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "ninja": { "name": "忍者", "favArm1": "katana", "favArm2": "fist", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 31.5, "TaBonus": 3.0 },
-    "samurai": { "name": "侍", "favArm1": "katana", "favArm2": "bow", "type": "attack", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "kensei": { "name": "剣聖", "favArm1": "sword", "favArm2": "katana", "type": "pecu", "atBonus": 1500.0, "kouzinBonus": 0.0, "hpBonus": 300.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "gunsri": { "name": "ガンスリンガー", "favArm1": "gun", "favArm2": "gun", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 3.0 },
-    "kenja": { "name": "賢者", "favArm1": "wand", "favArm2": "wand", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "assassin": { "name": "アサシン", "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
+    "hounddog": { "name": "ハウンドドッグ", "favArm1": "bow", "favArm2": "gun", "type": "balance", "atBonus": 1800.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 4.0, "TaBonus": 1.0 },
+    "elysian": { "name": "エリュシオン", "favArm1": "music", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "apsaras_spear": { "name": "アプサラス(槍)", "favArm1": "spear", "favArm2": "axe", "type": "attack", "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 30.0, "TaBonus": 20.0 },
+    "apsaras_axe": { "name": "アプサラス(斧)", "favArm1": "spear", "favArm2": "axe", "type": "attack", "atBonus": 2000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 20.0, "TaBonus": 15.0 },
+    "rune": { "name": "魔法戦士", "favArm1": "katana", "favArm2": "fist", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 28.0, "TaBonus": 11.0 },
+    "kengo": { "name": "剣豪", "favArm1": "katana", "favArm2": "bow", "type": "attack", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 4.0, "TaBonus": 1.0 },
+    "glory": { "name": "ザ・グローリー", "favArm1": "sword", "favArm2": "katana", "type": "pecu", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 10.0, "TaBonus": 5.0 },
+    "neko": { "name": "黒猫道士", "favArm1": "wand", "favArm2": "wand", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 3000.0, "shugoBonus": 0.0, "DaBonus": 9.0, "TaBonus": 6.0 },
+    "alche": { "name": "アルケミスト", "favArm1": "dagger", "favArm2": "gun", "type": "heal", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 100.0, "shugoBonus": 0.0, "DaBonus": 4.0, "TaBonus": 1.0 },
+    "ninja": { "name": "忍者", "favArm1": "katana", "favArm2": "fist", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 29.0, "TaBonus": 1.0 },
+    "samurai": { "name": "侍", "favArm1": "katana", "favArm2": "bow", "type": "attack", "atBonus": 3000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 4.0, "TaBonus": 1.0 },
+    "kensei": { "name": "剣聖", "favArm1": "sword", "favArm2": "katana", "type": "pecu", "atBonus": 1500.0, "kouzinBonus": 0.0, "hpBonus": 300.0, "shugoBonus": 0.0, "DaBonus": 10.0, "TaBonus": 5.0 },
+    "gunsri": { "name": "ガンスリンガー", "favArm1": "gun", "favArm2": "gun", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 15.0, "TaBonus": 5.0 },
+    "kenja": { "name": "賢者", "favArm1": "wand", "favArm2": "wand", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 1000.0, "shugoBonus": 0.0, "DaBonus": 4.0, "TaBonus": 1.0 },
+    "assassin": { "name": "アサシン", "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 10.0, "TaBonus": 5.0 },
     "drummaster": { "name": "ドラムマスター", "favArm1": "music", "favArm2": "music", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 90.0, "TaBonus": 90.0 },
-    "dancer": { "name": "ダンサー", "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "atBonus": 900.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 1.0 },
-    "mechanic": { "name": "メカニック", "favArm1": "gun", "favArm2": "gun", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
+    "dancer": { "name": "ダンサー", "favArm1": "dagger", "favArm2": "dagger", "type": "pecu", "atBonus": 900.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 8.0, "TaBonus": 1.0 },
+    "mechanic": { "name": "メカニック", "favArm1": "gun", "favArm2": "gun", "type": "pecu", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
     "weaponmaster": { "name": "ウェポンマスター", "favArm1": "sword", "favArm2": "axe", "type": "attack", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 23.0, "TaBonus": 5.0 },
-    "holyse": { "name": "ホーリーセイバー", "favArm1": "sword", "favArm2": "spear", "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "bishop": { "name": "ビショップ", "favArm1": "wand", "favArm2": "spear", "type": "heal", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "hermit": { "name": "ハーミット", "favArm1": "wand", "favArm2": "dagger", "type": "attack", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "hokuai": { "name": "ホークアイ", "favArm1": "dagger", "favArm2": "gun", "type": "balance", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "darkfe": { "name": "ダークフェンサー", "favArm1": "sword", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
+    "holyse": { "name": "ホーリーセイバー", "favArm1": "sword", "favArm2": "spear", "type": "defense", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "bishop": { "name": "ビショップ", "favArm1": "wand", "favArm2": "spear", "type": "heal", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "hermit": { "name": "ハーミット", "favArm1": "wand", "favArm2": "dagger", "type": "attack", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "hokuai": { "name": "ホークアイ", "favArm1": "dagger", "favArm2": "gun", "type": "balance", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "darkfe": { "name": "ダークフェンサー", "favArm1": "sword", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
     "oga": { "name": "オーガ", "favArm1": "fist", "favArm2": "fist", "type": "attack", "atBonus": 2000.0, "kouzinBonus": 5.0, "hpBonus": 200.0, "shugoBonus": 0.0, "DaBonus": 60.0, "TaBonus": 5.0 },
-    "side": { "name": "サイドワインダー", "favArm1": "bow", "favArm2": "gun", "type": "balance", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "superstar": { "name": "スーパースター", "favArm1": "music", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
-    "valc": { "name": "ヴァルキュリア", "favArm1": "spear", "favArm2": "axe", "type": "attack", "atBonus": 500.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 11.5, "TaBonus": 8.0 },
-    "none": { "name": "なし", "favArm1": "none", "favArm2": "none", "type": "none", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 6.5, "TaBonus": 3.0 },
+    "side": { "name": "サイドワインダー", "favArm1": "bow", "favArm2": "gun", "type": "balance", "atBonus": 1000.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "superstar": { "name": "スーパースター", "favArm1": "music", "favArm2": "dagger", "type": "pecu", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
+    "valc": { "name": "ヴァルキュリア", "favArm1": "spear", "favArm2": "axe", "type": "attack", "atBonus": 500.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 12.0, "TaBonus": 8.0 },
+    "none": { "name": "なし", "favArm1": "none", "favArm2": "none", "type": "none", "atBonus": 0.0, "kouzinBonus": 0.0, "hpBonus": 0.0, "shugoBonus": 0.0, "DaBonus": 7.0, "TaBonus": 3.0 },
 }
 
 var summonElementTypes = {
@@ -698,7 +701,7 @@ var skillAmounts = {
         "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5],
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
-    "magnaHissatsu": {
+    "magnaHiou": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
     // 楚歌 効果が1本のみとなる為、通常・マグナ攻刃とは別途定義
@@ -728,6 +731,12 @@ var skillAmounts = {
     },
     "ougiDamageLimitExceed": {
         "M": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]
+    },
+    "normalOugiDamageLimitHissatsu": {
+        "M": [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
+    },
+    "magnaOugiDamageLimitHissatsu": {
+        "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
 }
 

@@ -1,4 +1,15 @@
 {
+    "エウロペ": "Europa",
+    "レディ・グレイ(ハロウィンver)":  "Lady Grey (Halloween)",
+    "プリキュア":  "Cure Black and Cure White",
+    "シルヴァ(光属性ver)": "Silva (Light)",
+    "フーちゃん": "Freezie",
+    "フォリア(リミテッドver)": "Pholia",
+    "ツバサ": "Tsubasa",
+    "松浦果南＆黒澤ダイヤ＆小原鞠莉": "Aqours Third-Years",
+    "津島善子＆国木田花丸＆黒澤ルビィ": "Aqours First-Years",
+    "桜内梨子＆高海千歌＆渡辺 曜": "Aqours Second-Years",
+    "グレア(水着ver)": "Grea (Summer)",
     "ノイシュ(水着ver)": "Naoise (Summer)",
     "イルザ(水着ver)": "Ilsa (Summer)",
     "ロゼッタ(水着ver)": "Rosetta (Summer)",
@@ -213,7 +224,7 @@
     "フィーナ": "Feena (Event)",
     "アルシャ": "Arusha",
     "ファラ": "Farrah",
-    "ユーリ": "Juri",
+    "ユーリ": "Juri (Event)",
     "ノア": "Noa",
     "島村卯月": "Uzuki Shimamura",
     "渋谷凛": "Rin Shibuya",
@@ -409,5 +420,12 @@
     "エルタ(光属性ver)": "Elta (Light)",
     "ユイシス(浴衣ver)": "Yuisis (Summer)",
     "オリヴィエ(水着ver)": "Olivia (Event)",
-    "リルル(水着ver)": "Lilele (Summer)"
+    "リルル(水着ver)": "Lilele (Summer)",
+    "ファラ(水着ver)": "Farrah (Summer)",
+    "アルルメイヤ(浴衣ver)": "Arulumaya (Summer)",
+    "アルメイダ(水着ver)": "Almeida (Summer)",
+    "カイラナ(SR)": "Cailana (SR)",
+    "チーム・ローアイン": "The Lowain Bros",
+    "ユーリ(風属性ver)": "Juri",
+    "フェザー(ハロウィンver)": "Feather (Halloween)"
 }

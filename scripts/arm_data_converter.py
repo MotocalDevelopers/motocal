@@ -205,6 +205,15 @@ skillnamelist["normalSetsuna"] = {
     u"憎悪の刹那": "dark"
 }
 
+skillnamelist["normalKatsumiS"] = {
+    u"火の克己": "fire",
+    u"水の克己": "water",
+    u"土の克己": "earth",
+    u"風の克己": "wind",
+    u"光の克己": "light",
+    u"闇の克己": "dark"
+}
+
 skillnamelist["normalKatsumiM"] = {
     u"業火の克己": "fire",
     u"渦潮の克己": "water",
@@ -349,6 +358,15 @@ skillnamelist["normalHiouS"] = {
     u"風の秘奥": "wind",
     u"光の秘奥": "light",
     u"闇の秘奥": "dark"
+}
+
+skillnamelist["normalHissatsuM"] = {
+    u"業火の必殺": "fire",
+    u"渦潮の必殺": "water",
+    u"地裂の必殺": "earth",
+    u"竜巻の必殺": "wind",
+    u"雷電の必殺": "light",
+    u"憎悪の必殺": "dark"
 }
 
 # magna II
@@ -633,6 +651,11 @@ skillnamelist["strengthL"] = {
     u"ザ・ファントム": "dark",
     u"フォルテ・スオーノ": "earth",
     u"頂点捕食者": "light",
+    u"スクールフレンズ": "fire",
+    u"サンシャイナー": "water",
+    u"摩武駄致": "wind",
+    u"螺旋の攻刃": "earth",
+    u"プリズムストーンの力": "light",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -640,24 +663,6 @@ skillnamelist["exATKandHPM"] = {
     u"翠薔薇の髄": "wind",
     u"橙薔薇の髄": "earth",
     u"紅薔薇の髄": "fire",
-}
-
-skillnamelist["strengthLL"] = {
-    u"灼滅の覇道": "fire",
-    u"裁考の覇道": "earth",
-    u"人馬の覇道": "wind",
-    u"氷逆の覇道": "water",
-    u"幻魔の覇道": "dark",
-    u"妃光の覇道": "light"
-}
-
-skillnamelist["strengthLL"] = {
-    u"灼滅の覇道": "fire",
-    u"裁考の覇道": "earth",
-    u"人馬の覇道": "wind",
-    u"氷逆の覇道": "water",
-    u"幻魔の覇道": "dark",
-    u"妃光の覇道": "light"
 }
 
 skillnamelist["strengthLL"] = {
@@ -681,15 +686,6 @@ skillnamelist["sensei"] = {
     u"先制の炎刃": "fire",
     u"先制の氷刃": "water",
     u"先制の闇刃": "dark",
-}
-
-skillnamelist["strengthLL"] = {
-    u"灼滅の覇道": "fire",
-    u"裁考の覇道": "earth",
-    u"人馬の覇道": "wind",
-    u"氷逆の覇道": "water",
-    u"幻魔の覇道": "dark",
-    u"妃光の覇道": "light"
 }
 
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
