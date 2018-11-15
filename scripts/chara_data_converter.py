@@ -132,6 +132,7 @@ patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
 ## 光 - Light
 patching["アルベール"] = {"DA": 100.0, "TA": 0.0}
 patching["プリキュア"] = {"DA": 100.0, "TA": 0.0}
+patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 100.0, "TA": 0.0}
 
 ### SR
 patching["アルベール(SR)"] = {"DA": 100.0, "TA": 0.0}
@@ -288,7 +289,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
                 newdict["en"] = name
 
             json_data[name] = newdict
-            # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "_01.png\n")
+            image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
 
     return json_data, image_url_list
 
@@ -302,7 +303,7 @@ if __name__ == '__main__':
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    # f = open("./charaImageURLlist.txt", "w", encoding="utf-8")
-    # for x in imageURL:
-    #     f.write(x)
-    # f.close()
+    f = open("./charaimgs/imageURLlist.txt", "w", encoding="utf-8")
+    for x in image_url_list:
+        f.write(x)
+    f.close()
