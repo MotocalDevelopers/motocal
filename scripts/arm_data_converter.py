@@ -947,6 +947,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
 
             json_data[name] = newdict
             image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+            image_url_list = list(OrderedDict.fromkeys(image_url_list))
 
     return json_data, image_url_list
 
