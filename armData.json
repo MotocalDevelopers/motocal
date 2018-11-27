@@ -7049,6 +7049,24 @@
         "imageURL": "./imgs/1040010000.png",
         "en": "[4★] Qilin Sword"
     },
+    "[5凸]麒麟剣": {
+        "ja": "[5凸]麒麟剣",
+        "element": "dark",
+        "type": "sword",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "30",
+        "minattack": "420",
+        "hp": "275",
+        "attack": "3310",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv150": "241",
+        "attacklv150": "2895",
+        "imageURL": "./imgs/1040010000.png",
+        "en": "[5★] Qilin Sword"
+    },
     "フェアネスマーク": {
         "ja": "フェアネスマーク",
         "element": "light",
@@ -8248,6 +8266,24 @@
         "attacklv100": "2250",
         "imageURL": "./imgs/1040207900.png",
         "en": "[4★] Huanglong Spear"
+    },
+    "[5凸]黄龍槍": {
+        "ja": "[5凸]黄龍槍",
+        "element": "light",
+        "type": "spear",
+        "skill1": "normalLL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "41",
+        "minattack": "365",
+        "hp": "336",
+        "attack": "3010",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv150": "294",
+        "attacklv150": "2630",
+        "imageURL": "./imgs/1040207900.png",
+        "en": "[5★] Huanglong Spear"
     },
     "サンスポットスピア": {
         "ja": "サンスポットスピア",
@@ -10883,6 +10919,24 @@
         "imageURL": "./imgs/1040607100.png",
         "en": "[4★] Huanglong Gauntlet"
     },
+    "[5凸]黄龍拳": {
+        "ja": "[5凸]黄龍拳",
+        "element": "light",
+        "type": "fist",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "40",
+        "minattack": "370",
+        "hp": "320",
+        "attack": "3080",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv150": "281",
+        "attacklv150": "2690",
+        "imageURL": "./imgs/1040607100.png",
+        "en": "[5★] Huanglong Gauntlet"
+    },
     "ディアドリッククロー": {
         "ja": "ディアドリッククロー",
         "element": "wind",
@@ -11483,6 +11537,24 @@
         "imageURL": "./imgs/1040706000.png",
         "en": "[4★] Qilin Bow"
     },
+    "[5凸]麒麟弓": {
+        "ja": "[5凸]麒麟弓",
+        "element": "dark",
+        "type": "bow",
+        "skill1": "normalBoukunLLL",
+        "skill2": "normalDamageLimit10",
+        "element2": "dark",
+        "minhp": "32",
+        "minattack": "415",
+        "hp": "395",
+        "attack": "3780",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv150": "258",
+        "attacklv150": "2875",
+        "imageURL": "./imgs/1040706000.png",
+        "en": "[5★] Qilin Bow"
+    },
     "ローズクリスタルボウ": {
         "ja": "ローズクリスタルボウ",
         "element": "fire",
@@ -11926,6 +11998,24 @@
         "attacklv100": "2185",
         "imageURL": "./imgs/1040805900.png",
         "en": "[4★] Qilin Lyre"
+    },
+    "[5凸]麒麟弦": {
+        "ja": "[5凸]麒麟弦",
+        "element": "dark",
+        "type": "music",
+        "skill1": "normalLL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "63",
+        "minattack": "370",
+        "hp": "300",
+        "attack": "2915",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv150": "266",
+        "attacklv150": "2550",
+        "imageURL": "./imgs/1040805900.png",
+        "en": "[5★] Qilin Lyre"
     },
     "フュージョンメビウス": {
         "ja": "フュージョンメビウス",
@@ -12402,6 +12492,24 @@
         "attacklv100": "2610",
         "imageURL": "./imgs/1040906800.png",
         "en": "[4★] Huanglong Katana"
+    },
+    "[5凸]黄龍刀": {
+        "ja": "[5凸]黄龍刀",
+        "element": "light",
+        "type": "katana",
+        "skill1": "normalBoukunLLL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "31",
+        "minattack": "425",
+        "hp": "246",
+        "attack": "3490",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv150": "215",
+        "attacklv150": "3050",
+        "imageURL": "./imgs/1040906800.png",
+        "en": "[5★] Huanglong Katana"
     },
     "シネンシス": {
         "ja": "シネンシス",
