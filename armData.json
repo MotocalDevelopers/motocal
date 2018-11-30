@@ -7775,6 +7775,22 @@
         "imageURL": "./imgs/1040110800.png",
         "en": "[4★] Sunshine Blade"
     },
+    "牛鬼包丁": {
+        "ja": "牛鬼包丁",
+        "element": "dark",
+        "type": "dagger",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "20",
+        "minattack": "349",
+        "hp": "155",
+        "attack": "2106",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040110900.png",
+        "en": "Chop-Chop"
+    },
     "クレティネ": {
         "ja": "クレティネ",
         "element": "light",
@@ -9194,6 +9210,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040310100.png",
         "en": "Full Metal Recoil"
+    },
+    "クレイヴ・ソリッシュ": {
+        "ja": "クレイヴ・ソリッシュ",
+        "element": "light",
+        "type": "axe",
+        "skill1": "normalL",
+        "skill2": "normalCriticalM",
+        "element2": "light",
+        "minhp": "31",
+        "minattack": "442",
+        "hp": "188",
+        "attack": "2646",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040310200.png",
+        "en": "Claidheamh Soluis"
     },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",

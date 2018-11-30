@@ -148,37 +148,27 @@ translation = json.load(open("./txt_source/chara-translation.json", "r", encodin
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
     for inner_skillname, onelist in skillnamelist.items():
-        for skillname, elem in onelist.items():
-            m = re.match(skillname, decoded_skill)
-            if m:
-                res = inner_skillname
-                element = elem
-                return res, element
-
+        for skillname, element in onelist.items():
+            if re.match(skillname, decoded_skill):
+                return inner_skillname, element
     return "non", "fire"
 
 def arm_replace(armtype):
     for armtypename, inner_armtype in armtypelist.items():
-        m = re.match(armtypename, armtype)
-        if m:
-            res = inner_armtype
-            return res
+        if re.match(armtypename, armtype):
+            return inner_armtype
     return "no_favorite_arm_error"
 
 def type_replace(charatype):
     for charatypename, inner_charatype in charatypelist.items():
-        m = re.match(charatypename, charatype)
-        if m:
-            res = inner_charatype
-            return res
+        if re.match(charatypename, charatype):
+            return inner_charatype
     return "error"
 
 def race_replace(racetype):
     for racetypename, inner_racetype in racelist.items():
-        m = re.match(racetypename, racetype)
-        if m:
-            res = inner_racetype
-            return res
+        if re.match(racetypename, racetype):
+            return inner_racetype
     return "error"
 
 def support_replace(support_str):
@@ -189,10 +179,8 @@ def support_replace(support_str):
         support = m.group(1)
         for support_typename, support_name in supportAbilist.items():
             for name in support_name:
-                m = re.match(name, support)
-                if m:
-                    res = support_typename
-                    return res
+                if re.match(name, support):
+                    return support_typename
     return "none"
 
 def get_value(value_str):

@@ -658,6 +658,7 @@ skillnamelist["strengthL"] = {
     u"プリズムストーンの力": "light",
     u"テイスティーズグッド": "fire",
     u"ブレイズオブアームズ": "fire",
+    u"紅ニ染マル刃": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -812,21 +813,15 @@ translation = json.load(open("./txt_source/weapon-translation.json", "r", encodi
 
 def skill_replace(skill):
     for inner_skillname, onelist in skillnamelist.items():
-        for skillname, elem in onelist.items():
-            m = re.match(skillname, skill)
-            if m:
-                res = inner_skillname
-                element = elem
-                return res, element
-
+        for skillname, element in onelist.items():
+            if re.match(skillname, skill):
+                return inner_skillname, element
     return "non", "none"
 
 def type_replace(armtype):
     for armtypename, inner_armtype in armtypelist.items():
-        m = re.match(armtypename, armtype)
-        if m:
-            res = inner_armtype
-            return res
+        if re.match(armtypename, armtype):
+            return inner_armtype
     return "none"
 
 def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = True):
@@ -897,10 +892,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
             newdict["attack"] = row[12]
 
             if PROCESS_TYPE_SSR:
-                match_4 = jougen_4_pattern.search(row[15])
-                match_5 = jougen_5_pattern.search(row[15])
-
-                if match_5:
+                if jougen_5_pattern.search(row[15]):
                     newdict["slvmax"] = 20
                     newdict["maxlv"] = 200
                     newdict["hplv100"] = int(row[16])
@@ -908,15 +900,13 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
                     newdict["hplv150"] = int(row[18])
                     newdict["attacklv150"] = int(row[19])
                 else:
-                    if match_4:
+                    if jougen_4_pattern.search(row[15]):
                         newdict["slvmax"] = 15
                         newdict["maxlv"] = 150
                         newdict["hplv100"] = row[16]
                         newdict["attacklv100"] = row[17]
                     else:
-                        match_baha = baha_pattern.search(newdict["skill1"])
-
-                        if match_baha:
+                        if baha_pattern.search(newdict["skill1"]):
                             newdict["slvmax"] = 15
                             newdict["maxlv"] = 150
                             newdict["hplv100"] = row[16]
@@ -926,9 +916,7 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
                             newdict["maxlv"] = 100
 
             else:
-                match_4 = jougen_4_pattern.search(row[15])
-
-                if match_4:
+                if jougen_4_pattern.search(row[15]):
                     newdict["slvmax"] = 15
                     newdict["maxlv"] = 120
                     newdict["hplv75"] = row[16]
