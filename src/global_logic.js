@@ -1218,6 +1218,14 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         // 先制 効果は1本まで有効 かつ 効果量が大きい方を優先
                         } else if (stype == 'sensei') {
                             totals[key]["sensei"] = (skillAmounts[stype][amount][slv - 1] > totals[key]["sensei"] )? skillAmounts[stype][amount][slv - 1]:totals[key]["sensei"];
+                        } else if (stype == 'magnaKenbu') { // 拳武
+                            if (totals[key]["fav1"] == "fist" || totals[key]["fav2"] == "fist") {
+                                totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                            }
+                        } else if (stype == 'magnaJojutsu') { // 杖術
+                            if (totals[key]["fav1"] == "wand" || totals[key]["fav2"] == "wand") {
+                                totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                            }
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }

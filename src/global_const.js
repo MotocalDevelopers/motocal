@@ -262,6 +262,8 @@ var skilltypes = {
     "magnaSetsuna": { name: "マグナ刹那(中)", type: "magnaSetsuna", amount: "M" },
     "magnaGunshinS": { name: "マグナ軍神(小)", type: "magnaGunshin", amount: "S" },
     "magnaHissatsuM": { name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M" },
+    "magnaKenbuL": { name: "マグナ拳武", type: "magnaKenbu", amount: "L"},
+    "magnaJojutsuL": { name: "マグナ杖術", type: "magnaJojutsu", amount: "L"},
     "unknownM": { name: "アンノウンATK・I", type: "unknown", amount: "M" },
     "unknownL": { name: "アンノウンATK・II", type: "unknown", amount: "L" },
     "strengthHaisuiM": { name: "EX背水(中)", type: "exHaisui", amount: "M" },
