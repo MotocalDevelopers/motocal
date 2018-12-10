@@ -667,6 +667,8 @@ skillnamelist["strengthL"] = {
     u"テイスティーズグッド": "fire",
     u"ブレイズオブアームズ": "fire",
     u"紅ニ染マル刃": "dark",
+    u"フローズン・ブレード": "water",
+    u"ジャスティス・ロッド": "light",
 }
 
 skillnamelist["exATKandHPM"] = {

@@ -30,9 +30,11 @@ racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
 
 supportAbilist = OrderedDict()
-supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
 supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
+supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
+supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
+supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
 supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ"}
 supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
