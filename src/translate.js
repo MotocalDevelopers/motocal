@@ -1829,7 +1829,18 @@ var multiLangData = {
         "en": "Magna Sentence (M)",
         "ja": "マグナ必殺(中)",
         "zh": "方阵必杀(中)",
-	},
+    },
+    "マグナ拳武": {
+        "en": "Magna Fist (L)",
+        "ja": "マグナ拳武(大)",
+        "zh": "方阵拳武(大)",
+    },
+    "マグナ杖術": {
+        "en": "Magna Wand (L)",
+        "ja": "マグナ杖術(大)",
+        "zh": "方阵杖術(大)",
+    },
+
     "アンノウンATK・I": {
         "en": "Unknown ATK I",
         "ja": "アンノウンATK・I",

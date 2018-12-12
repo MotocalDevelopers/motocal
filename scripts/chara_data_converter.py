@@ -30,9 +30,11 @@ racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
 
 supportAbilist = OrderedDict()
-supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
 supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
+supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
+supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
+supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
 supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ"}
 supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
@@ -102,6 +104,7 @@ patching["ガンダゴウザ"] = {"DA": 10.0, "TA": 5.0}
 patching["アリーザ(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["グレア"] = {"DA": 10.0, "TA": 5.0}
 patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
+patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 100.0, "TA": 0.0}
 
 ### SR
 
@@ -131,6 +134,7 @@ patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
 ## 光 - Light
 patching["アルベール"] = {"DA": 100.0, "TA": 0.0}
 patching["プリキュア"] = {"DA": 100.0, "TA": 0.0}
+patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 100.0, "TA": 0.0}
 
 ### SR
 patching["アルベール(SR)"] = {"DA": 100.0, "TA": 0.0}
@@ -146,37 +150,27 @@ translation = json.load(open("./txt_source/chara-translation.json", "r", encodin
 def skill_replace(skill):
     decoded_skill = skill.decode("utf-8")
     for inner_skillname, onelist in skillnamelist.items():
-        for skillname, elem in onelist.items():
-            m = re.match(skillname, decoded_skill)
-            if m:
-                res = inner_skillname
-                element = elem
-                return res, element
-
+        for skillname, element in onelist.items():
+            if re.match(skillname, decoded_skill):
+                return inner_skillname, element
     return "non", "fire"
 
 def arm_replace(armtype):
     for armtypename, inner_armtype in armtypelist.items():
-        m = re.match(armtypename, armtype)
-        if m:
-            res = inner_armtype
-            return res
+        if re.match(armtypename, armtype):
+            return inner_armtype
     return "no_favorite_arm_error"
 
 def type_replace(charatype):
     for charatypename, inner_charatype in charatypelist.items():
-        m = re.match(charatypename, charatype)
-        if m:
-            res = inner_charatype
-            return res
+        if re.match(charatypename, charatype):
+            return inner_charatype
     return "error"
 
 def race_replace(racetype):
     for racetypename, inner_racetype in racelist.items():
-        m = re.match(racetypename, racetype)
-        if m:
-            res = inner_racetype
-            return res
+        if re.match(racetypename, racetype):
+            return inner_racetype
     return "error"
 
 def support_replace(support_str):
@@ -187,10 +181,8 @@ def support_replace(support_str):
         support = m.group(1)
         for support_typename, support_name in supportAbilist.items():
             for name in support_name:
-                m = re.match(name, support)
-                if m:
-                    res = support_typename
-                    return res
+                if re.match(name, support):
+                    return support_typename
     return "none"
 
 def get_value(value_str):
@@ -287,7 +279,8 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
                 newdict["en"] = name
 
             json_data[name] = newdict
-            # imageURL.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "_01.png\n")
+            image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+            image_url_list = list(OrderedDict.fromkeys(image_url_list))
 
     return json_data, image_url_list
 
@@ -301,7 +294,7 @@ if __name__ == '__main__':
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    # f = open("./charaImageURLlist.txt", "w", encoding="utf-8")
-    # for x in imageURL:
-    #     f.write(x)
-    # f.close()
+    f = open("./charaimgs/imageURLlist.txt", "w", encoding="utf-8")
+    for x in image_url_list:
+        f.write(x)
+    f.close()

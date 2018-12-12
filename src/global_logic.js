@@ -395,9 +395,10 @@ module.exports.calcBasedOneSummon = function(summonind, prof, buff, totals) {
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"]
 
         // hp倍率
-        var hpCoeff = (1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["omegaNormalHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"] + 0.01 * totals[key]["exHP"])
+        var hpCoeff = 1.0 + buff["hp"] + totalSummon["hpBonus"] + 0.01 * totals[key]["bahaHP"] + 0.01 * totals[key]["omegaNormalHP"] + 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] + 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] + 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"] + 0.01 * totals[key]["exHP"]
 
         if (key == "Djeeta") hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus
+        hpCoeff *= 1.0 + totals[key]["HPBuff"]
         hpCoeff *= 1.0 - totals[key]["HPdebuff"]
 
         // ベースHP
@@ -1218,6 +1219,14 @@ module.exports.addSkilldataToTotals = function(totals, comb, arml, buff) {
                         // 先制 効果は1本まで有効 かつ 効果量が大きい方を優先
                         } else if (stype == 'sensei') {
                             totals[key]["sensei"] = (skillAmounts[stype][amount][slv - 1] > totals[key]["sensei"] )? skillAmounts[stype][amount][slv - 1]:totals[key]["sensei"];
+                        } else if (stype == 'magnaKenbu') { // 拳武
+                            if (totals[key]["fav1"] == "fist" || totals[key]["fav2"] == "fist") {
+                                totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                            }
+                        } else if (stype == 'magnaJojutsu') { // 杖術
+                            if (totals[key]["fav1"] == "wand" || totals[key]["fav2"] == "wand") {
+                                totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
+                            }
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -1316,6 +1325,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
         personalElementBuff: 0.0,
         personalOtherBuff: 0.0,
         personalOtherBuff2: 0.0,
+        personalHPBuff: 0.0,
         personalDABuff: 0.0,
         personalTABuff: 0.0,
         personalOugiGageBuff: 0.0,
@@ -1400,6 +1410,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
             elementBuff: djeetaBuffList["personalElementBuff"],
             otherBuff: djeetaBuffList["personalOtherBuff"],
             otherBuff2: djeetaBuffList["personalOtherBuff2"],
+            HPBuff: djeetaBuffList["personalHPBuff"],
             DABuff: djeetaBuffList["personalDABuff"],
             TABuff: djeetaBuffList["personalTABuff"],
             ougiRatio: prof.ougiRatio,
@@ -1441,6 +1452,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 elementBuff: 0.0,
                 otherBuff: 0.0,
                 otherBuff2: 0.0,
+                hpBuff: 0.0,
                 daBuff: 0.0,
                 taBuff: 0.0,
                 ougiGageBuff: 0.0,
@@ -1526,6 +1538,7 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 elementBuff: charaBuffList["elementBuff"],
                 otherBuff: charaBuffList["otherBuff"],
                 otherBuff2: charaBuffList["otherBuff2"],
+                HPBuff: charaBuffList["hpBuff"],
                 DABuff: charaBuffList["daBuff"],
                 TABuff: charaBuffList["taBuff"],
                 ougiRatio: chara[i].ougiRatio,
@@ -1706,6 +1719,21 @@ module.exports.treatSupportAbility = function(totals, chara) {
                     totals[key]["normalBuff"] += (races == 4 ? 0.50 : races * 0.10);
                     continue;
                 case "normalBuff_depends_member":
+                    continue;
+                case "dataBuff_wind":
+                    if(totals[key].isConsideredInAverage) {
+                        // ドラフと種族不明のみキャラ攻刃
+                        for(var key2 in totals){
+                            if(totals[key2]["element"] === "wind") {
+                                totals[key2]["DABuff"] += 0.10;
+                                totals[key2]["TABuff"] += 0.05;
+                            }
+                        }
+                    } else {
+                        // 平均に入れない場合は自分だけ計算
+                        totals[key]["DABuff"] += 0.10;
+                        totals[key]["TABuff"] += 0.05;
+                    }
                     continue;
                 case "taiyou_sinkou":
                     // ザルハメリナのHPを参照する
