@@ -17,4 +17,5 @@ for url in urllist:
     local_file = os.path.join(directory, url.split("=")[-1])
     # Game
     # local_file = os.path.join(directory, url.split("/")[-1])
-    urllib.request.urlretrieve(url, local_file)
+    if not os.path.exists(local_file)
+        urllib.request.urlretrieve(url, local_file)
