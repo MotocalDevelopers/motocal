@@ -168,7 +168,7 @@ var RegisteredChara = CreateClass({
                                         return (
                                             <div className="onechara" key={key}>
                                                 <p>{charaName}</p><br/>
-                                                <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
+                                                <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} onError={(e)=>{e.target.onerror = null; e.target.src="./otherImages/imgError.png"}}/>
                                             </div>
                                         );
                                     } else {
@@ -195,7 +195,7 @@ var RegisteredChara = CreateClass({
                                     return (
                                         <div className="onechara" key={key}>
                                             <p>{charaName}</p><br/>
-                                            <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} />
+                                            <Image rounded onClick={clickedTemplate} id={key} src={charaData[key].imageURL} alt={key} onError={(e)=>{e.target.onerror = null; e.target.src="./otherImages/imgError.png"}}/>
                                         </div>
                                     );
                                 }
@@ -386,7 +386,7 @@ var RegisteredArm = CreateClass({
                                         return (
                                             <div className="onearm" key={key}>
                                                 <p>{armName}</p><br/>
-                                                <Image rounded onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} />
+                                                <Image rounded onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} onError={(e)=>{e.target.onerror = null; e.target.src="./otherImages/imgError.png"}} />
                                             </div>
                                         );
                                     } else {
@@ -483,7 +483,7 @@ var RegisteredArm = CreateClass({
                                                     {intl.translate(skilltypes[armData[key].skill1].name, locale)}<br/>
                                                     {intl.translate(skilltypes[armData[key].skill2].name, locale)}
                                                 </p>
-                                                <Image rounded style={{"width":"100%"}} onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} />
+                                                <Image rounded style={{"width":"100%"}} onClick={clickedTemplate} id={key} src={armData[key].imageURL} alt={key} onError={(e)=>{e.target.onerror = null; e.target.src="./otherImages/imgError.png"}}/>
                                             </div>
                                         );
                                     }

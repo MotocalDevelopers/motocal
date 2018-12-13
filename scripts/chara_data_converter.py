@@ -1,5 +1,4 @@
-# -*- coding:utf-8 -*-
-import os, csv, sys, math, time, re, json, codecs, types
+import os, csv, sys, math, time, re, json, codecs, types, inspect
 from collections import OrderedDict
 
 armtypelist = OrderedDict()
@@ -28,6 +27,11 @@ racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
+
+sexlist = OrderedDict()
+sexlist[u"男"] = "male"
+sexlist[u"女"] = "female"
+sexlist[u"不詳"] = "other"
 
 supportAbilist = OrderedDict()
 supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
@@ -144,16 +148,12 @@ patching["ウーフとレニー"] = {"DA": 100.0, "TA": 100.0}
 
 ### SR
 
-# json translation
-translation = json.load(open("./txt_source/chara-translation.json", "r", encoding="utf-8"))
+########################################################################################################################
+filename = inspect.getframeinfo(inspect.currentframe()).filename
+path = os.path.dirname(os.path.abspath(filename))
 
-def skill_replace(skill):
-    decoded_skill = skill.decode("utf-8")
-    for inner_skillname, onelist in skillnamelist.items():
-        for skillname, element in onelist.items():
-            if re.match(skillname, decoded_skill):
-                return inner_skillname, element
-    return "non", "fire"
+# json translation
+translation = json.load(open(os.path.join(path, "../txt_source/chara-translation.json"), "r", encoding="utf-8"))
 
 def arm_replace(armtype):
     for armtypename, inner_armtype in armtypelist.items():
@@ -171,6 +171,12 @@ def race_replace(racetype):
     for racetypename, inner_racetype in racelist.items():
         if re.match(racetypename, racetype):
             return inner_racetype
+    return "error"
+
+def sex_replace(sextype):
+    for sextypename, inner_sextype in sexlist.items():
+        if re.match(sextypename, sextype):
+            return inner_sextype
     return "error"
 
 def support_replace(support_str):
@@ -240,28 +246,29 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
             # type
             newdict["type"] = type_replace(row[4])
             newdict["race"] = race_replace(row[5])
+            newdict["sex"] = sex_replace(row[6])
 
-            m = br_pattern.search(row[6])
+            m = br_pattern.search(row[7])
             if m:
                 newdict["fav1"] = arm_replace(m.group(1))
                 newdict["fav2"] = arm_replace(m.group(2))
             else:
-                newdict["fav1"] = arm_replace(row[6])
+                newdict["fav1"] = arm_replace(row[7])
                 newdict["fav2"] = "none"
 
-            m = support_pattern.search(row[9])
+            m = support_pattern.search(row[10])
             if m:
                 newdict["support"] = support_replace(m.group(1))
                 newdict["support2"] = support_replace(m.group(2))
             else:
-                newdict["support"] = support_replace(row[9])
+                newdict["support"] = support_replace(row[10])
                 newdict["support2"] = "none"
 
-            newdict["minhp"] = get_value(row[10])
-            newdict["hp"] = get_value(row[12])
+            newdict["minhp"] = get_value(row[11])
+            newdict["hp"] = get_value(row[13])
 
-            newdict["minattack"] = get_value(row[11])
-            newdict["attack"] = get_value(row[13])
+            newdict["minattack"] = get_value(row[12])
+            newdict["attack"] = get_value(row[14])
 
             if newdict["name"] in patching:
                 newdict["baseDA"] = patching[newdict["name"]]["DA"]
@@ -279,7 +286,10 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
                 newdict["en"] = name
 
             json_data[name] = newdict
+            # Wiki
             image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+            # Game - Might get you banned...
+            # image_url_list.append("http://game-a.granbluefantasy.jp/assets/img_light/sp/assets/npc/b/" + key + "\n")
             image_url_list = list(OrderedDict.fromkeys(image_url_list))
 
     return json_data, image_url_list
@@ -288,13 +298,13 @@ if __name__ == '__main__':
     json_data = OrderedDict()
     image_url_list = []
 
-    json_data, image_url_list = processCSVdata("./txt_source/charaData.txt", json_data, image_url_list)
+    json_data, image_url_list = processCSVdata(os.path.join(path, "../txt_source/charaData.txt"), json_data, image_url_list)
 
-    f = open("./charaData.json", "w", encoding="utf-8")
+    f = open(os.path.join(path, "../charaData.json"), "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    f = open("./charaimgs/imageURLlist.txt", "w", encoding="utf-8")
+    f = open(os.path.join(path, "../txt_source/charaImageURLList.txt"), "w", encoding="utf-8")
     for x in image_url_list:
         f.write(x)
     f.close()

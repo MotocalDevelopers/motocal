@@ -1,8 +1,6 @@
-# -*- coding:utf-8 -*-
-import json
-import re
-import csv
+import os, json, csv, re, inspect
 from collections import OrderedDict
+
 skillnamelist = OrderedDict()
 
 # normal L and LL
@@ -818,8 +816,12 @@ armtypelist[u"弓"] = "bow"
 armtypelist[u"楽器"] = "music"
 armtypelist[u"刀"] = "katana"
 
+########################################################################################################################
+filename = inspect.getframeinfo(inspect.currentframe()).filename
+path = os.path.dirname(os.path.abspath(filename))
+
 # json translation
-translation = json.load(open("./txt_source/weapon-translation.json", "r", encoding="utf-8"))
+translation = json.load(open(os.path.join(path, "../txt_source/arm-translation.json"), "r", encoding="utf-8"))
 
 def skill_replace(skill):
     for inner_skillname, onelist in skillnamelist.items():
@@ -944,7 +946,10 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
                 newdict["en"] = name
 
             json_data[name] = newdict
+            # Wiki
             image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+            # Game - Might get you banned...
+            # image_url_list.append("http://game-a.granbluefantasy.jp/assets/img_light/sp/assets/weapon/g/" + key + "\n")
             image_url_list = list(OrderedDict.fromkeys(image_url_list))
 
     return json_data, image_url_list
@@ -954,14 +959,14 @@ if __name__ == '__main__':
     json_data = OrderedDict()
     image_url_list = []
 
-    json_data, image_url_list = processCSVdata("./txt_source/armData-ssr.txt", json_data, image_url_list, True)
-    json_data, image_url_list = processCSVdata("./txt_source/armData-sr.txt", json_data, image_url_list, False)
+    json_data, image_url_list = processCSVdata(os.path.join(path, "../txt_source/armData-ssr.txt"), json_data, image_url_list, True)
+    json_data, image_url_list = processCSVdata(os.path.join(path, "../txt_source/armData-sr.txt"), json_data, image_url_list, False)
 
-    f = open("./armData.json", "w", encoding="utf-8")
+    f = open(os.path.join(path, "../armData.json"), "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    f = open("./imgs/imageURLlist.txt", "w", encoding="utf-8")
+    f = open(os.path.join(path, "../txt_source/armImageURLList.txt"), "w", encoding="utf-8")
     for x in image_url_list:
         f.write(x)
     f.close()
