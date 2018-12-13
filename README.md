@@ -83,11 +83,6 @@ pythonスクリプトなら、
 $ python3 ./scripts/arm_data_converter.py
 ```
 
-shellスクリプトなら
-```sh
-$ ./scripts/download_armimages_from_wiki.sh
-```
-
 という形で実行してください。
 
 #### arm\_data\_converter.py
@@ -96,13 +91,11 @@ $ ./scripts/download_armimages_from_wiki.sh
 #### chara\_data\_converter.py
 - txt_source/charaData.txtからcharaData.jsonを生成します.
 
-#### download\_armimages\_from\_wiki.sh
-- imgs/imageURLlist.txt内に記載されている画像データをwikiから持ってきます.
-#### download\_charaimages\_from\_wiki.sh
-- charaimgs/imageURLlist.txt内に記載されている画像データをwikiから持ってきます.
+#### download\_armimages\_from\_wiki.py
+- txt_source/armImageURLList.txt内に記載されている画像データをwikiから持ってきます.
+#### download\_charaimages\_from\_wiki.py
+- txt_source/charaImageURLList.txt内に記載されている画像データをwikiから持ってきます.
 - これら2つの画像ダウンロードスクリプトは、あくまで「最新のもの」だけをダウンロードする内容になっております。古いものも全て落としてくるスクリプトは現在存在しません。
-
-※ scriptsディレクトリ内ではなく、motocalのROOTディレクトリで実行してください。
 
 ## LICENSE
 MIT
