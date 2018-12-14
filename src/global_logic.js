@@ -15,56 +15,37 @@ var elementTypes = GlobalConst.elementTypes;
 var summonTypes = GlobalConst.summonTypes;
 var summonElementTypes = GlobalConst.summonElementTypes;
 var raceTypes = GlobalConst.raceTypes;
+var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
 
 module.exports.isCosmos = function (arm) {
-    var isCos = false;
-    if (skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") {
-        isCos = true;
-    } else if (skilltypes[arm.skill2] != undefined && skilltypes[arm.skill2].type == "cosmosArm") {
-        isCos = true;
-    }
-
-    return isCos
+    return (skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") ||
+        (skilltypes[arm.skill2] != undefined && skilltypes[arm.skill2].type == "cosmosArm");
 };
 
 function isHaisuiType(stype) {
-    if (
-        stype === "normalHaisui" ||
-        stype === "magnaHaisui" ||
-        stype === "normalKonshin" ||
-        stype === "normalOtherKonshin" ||
-        stype === "magnaKonshin" ||
-        stype === "exHaisui"
-    ) {
-        return true;
-    }
-
-    return false;
+    return (stype === "normalHaisui" || stype === "magnaHaisui" ||
+        stype === "normalKonshin" || stype === "magnaKonshin" ||
+        stype === "normalOtherKonshin" || stype === "exHaisui");
 }
 
 module.exports.isValidResult = function (res, minHP) {
     // 結果の前処理用の関数
 
     // 最低保証HP
-    if (minHP != undefined) {
-        if (minHP > res.Djeeta.totalHP) return false
-    }
-    return true
+    return !(minHP != undefined && minHP > res.Djeeta.totalHP);
 };
 
 module.exports.proceedIndex = function (index, ana, i) {
-    if (i == ana.length) {
-        return index;
-    } else {
+    if (i != ana.length) {
         index[i] = (index[i] + 1) | 0;
         if (index[i] > ana[i].length - 1) {
             index[i] = 0;
             index = arguments.callee(index, ana, i + 1);
         }
-        return index
     }
+    return index;
 };
 
 module.exports.calcCombinations = function (arml) {
@@ -376,13 +357,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     for (var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind];
 
-        // 各種攻刃係数の計算
+        // Calculation of various attack coefficients
         var magnaCoeff = 1.0 + 0.01 * totals[key]["magna"] * totalSummon["magna"] + 0.01 * totals[key]["magnaSoka"] * totalSummon["magna"];
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"] * totalSummon["magna"]);
         var magnaKonshinCoeff = 1.0 + 0.01 * (totals[key]["magnaKonshin"] * totalSummon["magna"]);
         var exCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["ex"];
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"];
         var normalCoeff = 1.0 + 0.01 * totals[key]["normal"] * totalSummon["zeus"] + 0.01 * totals[key]["normalSoka"] * totalSummon["zeus"] + 0.01 * totals[key]["bahaAT"] + 0.01 * totals[key]["normalOther"] + 0.01 * totals[key]["cosmosAT"] + 0.01 * totals[key]["omegaNormal"] + totalSummon["chara"] + buff["normal"] + totals[key]["normalBuff"];
+
         // 先制を通常攻刃へ加算
         normalCoeff += 0.01 * totals[key]["sensei"];
         var normalHaisuiCoeff = 1.0 + 0.01 * (totals[key]["normalHaisui"]) * totalSummon["zeus"] + 0.01 * (totals[key]["normalOtherHaisui"]);
@@ -391,7 +373,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var elementCoeff = totals[key]["typeBonus"] + (totalSummon["element"] - 1.0 + totalSummon["elementTurn"] - 1.0) + buff["element"] + totals[key]["elementBuff"] + 0.01 * totals[key]["LB"].Element;
         var otherCoeff = (1.0 + buff["other"]) * (1.0 + buff["other2"]) * (1.0 + totals[key]["otherBuff"]) * (1.0 + totals[key]["otherBuff2"]);
 
-        // キャラ背水枠
+        // Character Emnity
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"];
 
         // hp倍率
@@ -693,21 +675,25 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
             } else if (haisuiSLv <= 15) {
                 baseRate = 18.0 + 3.0 * ((haisuiSLv - 10) / 5.0)
             } else {
-                baseRate = 21.0 + 0.3 * (haisuiSLv - 15)
+                baseRate = 21.0 + 1.5 * ((haisuiSLv - 15) / 5.0)
             }
         } else if (haisuiAmount == "M") {
             // 中
             if (haisuiSLv < 10) {
                 baseRate = -0.4 + haisuiSLv * 2.4;
-            } else {
+            } else if (haisuiSLv <= 15) {
                 baseRate = 24 + 6.0 * ((haisuiSLv - 10) / 5.0)
+            } else {
+                baseRate = 30 + 6.0 * ((haisuiSLv - 15) / 5.0)
             }
         } else {
             // 大
             if (haisuiSLv < 10) {
                 baseRate = -0.5 + haisuiSLv * 3.0;
-            } else {
+            } else if (haisuiSLv <= 15) {
                 baseRate = 30 + 7.5 * ((haisuiSLv - 10) / 5.0)
+            } else {
+                baseRate = 37.5 + 7.5 * ((haisuiSLv - 15) / 5.0)
             }
         }
         return (baseRate / 3.0) * (2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0)
@@ -772,6 +758,10 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
                     case "taiyou_sinkou":
                         // ザルハメリナのHPを参照する
                         charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 10, remainHP);
+                        continue;
+                    case "la_pucelle":
+                        // ザルハメリナのHPを参照する
+                        charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 20, remainHP);
                         continue;
                     default:
                         break;
@@ -1330,6 +1320,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
     var baseAttack = module.exports.calcBaseATK(parseInt(prof.rank));
     var baseHP = module.exports.calcBaseHP(parseInt(prof.rank));
     var element = (prof.element == undefined) ? "fire" : prof.element;
+    var sex = (prof.sex == undefined) ? "male" : prof.sex;
     var djeetaRemainHP = (prof.remainHP != undefined && parseInt(prof.remainHP) < parseInt(prof.hp)) ? 0.01 * parseInt(prof.remainHP) : 0.01 * parseInt(prof.hp);
     var djeetaDA = (prof.DA == undefined) ? 6.5 : parseFloat(prof.DA);
     var djeetaTA = (prof.TA == undefined) ? 3.0 : parseFloat(prof.TA);
@@ -1371,6 +1362,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 fav1: job.favArm1,
                 fav2: job.favArm2,
                 race: "unknown",
+                sex: sex,
                 type: job.type,
                 element: element,
                 LB: getCharaLB({}),
@@ -1499,6 +1491,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 fav1: chara[i].favArm,
                 fav2: chara[i].favArm2,
                 race: chara[i].race,
+                sex: chara[i].sex,
                 type: chara[i].type,
                 element: charaelement,
                 LB: charaLB,
@@ -1776,6 +1769,10 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     } else {
                         totals[key]["charaHaisui"] += charaHaisuiValue
                     }
+                    continue;
+                case "la_pucelle":
+                    // ザルハメリナのHPを参照する
+                    totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "L", 20, totals[key]["remainHP"]);
                     continue;
                 default:
                     break;

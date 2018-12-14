@@ -572,6 +572,12 @@ var raceTypes = {
     "unknown": "種族不明",
 };
 
+var sexTypes = {
+    "female": "女",
+    "male": "男",
+    "other": "不詳"
+};
+
 var jobTypes = {
     "attack": "攻撃",
     "heal": "回復",
@@ -1301,7 +1307,7 @@ var supportAbilities = {
         "name": "全体風DA率UP10%とTA率UP5％(コッコロ)",
         "type": "dataBuff_wind",
         "range": "all",
-        "value": 0.10
+        "value": 0.00
     },
     "hp_up_own_15": {
         "name": "HPUP5%(ペコリーヌ)",
@@ -1370,6 +1376,12 @@ var supportAbilities = {
         "range": "all",
         "value": 0.00
     },
+    "la_pucelle": {
+        "name": "味方全体に背水効果(ジャンヌダルク(闇))",
+        "type": "la_pucelle",
+        "range": "own",
+        "value": 0.00
+    },
     "critical_up_own_10_30": {
         "name": "クリティカル確率UP(ヴァンピィ, ハロカリ) 発動率10%, 倍率30%",
         "type": "criticalBuff",
@@ -1414,6 +1426,7 @@ var supportAbilities = {
 // exports
 module.exports.zenith = zenith;
 module.exports.raceTypes = raceTypes;
+module.exports.sexTypes = sexTypes;
 module.exports.skillAmounts = skillAmounts;
 module.exports.elementTypes = elementTypes;
 module.exports.enemyElementTypes = enemyElementTypes;
@@ -1515,6 +1528,16 @@ module.exports.selector.en.races = Object.keys(raceTypes).map(function (opt) {
 });
 module.exports.selector.zh.races = Object.keys(raceTypes).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(raceTypes[opt], "zh")}</option>;
+});
+
+module.exports.selector.ja.sexes = Object.keys(sexTypes).map(function (opt) {
+    return <option value={opt} key={opt}>{sexTypes[opt]}</option>;
+});
+module.exports.selector.en.sexes = Object.keys(sexTypes).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(sexTypes[opt], "en")}</option>;
+});
+module.exports.selector.zh.sexes = Object.keys(sexTypes).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(sexTypes[opt], "zh")}</option>;
 });
 
 module.exports.selector.ja.elements = Object.keys(elementTypes).map(function (opt) {

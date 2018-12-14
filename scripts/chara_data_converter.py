@@ -48,6 +48,7 @@ supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼
 supportAbilist["ougi_gage_up_own_100"] = {u"明鏡止水"}
 supportAbilist["ougi_damage_up_1_5"] = {u"天星剣王"}
 supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
+supportAbilist["la_pucelle"] = {u"ダーク・ラピュセル"}
 supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}

@@ -22,6 +22,7 @@ var elementTypes = GlobalConst.elementTypes;
 var summonTypes = GlobalConst.summonTypes;
 var summonElementTypes = GlobalConst.summonElementTypes;
 var raceTypes = GlobalConst.raceTypes;
+var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
 var _ua = GlobalConst._ua;
@@ -261,6 +262,7 @@ var Chara = CreateClass({
             name: "",
             element: "fire",
             race: "human",
+            sex: "female",
             attack: 0,
             hp: 0,
             support: "none",
@@ -358,6 +360,7 @@ var Chara = CreateClass({
         newState["hp"] = parseInt(newchara.hp);
         newState["type"] = newchara.type;
         newState["race"] = newchara.race;
+        newState["sex"] = newchara.sex;
         newState["element"] = newchara.element;
         newState["favArm"] = newchara.fav1;
         newState["favArm2"] = newchara.fav2;
@@ -447,6 +450,12 @@ var Chara = CreateClass({
                         <th className="bg-primary">{intl.translate("種族", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.race}
                                          onChange={this.handleSelectEvent.bind(this, "race")}>{selector[locale].races}</FormControl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("性別", locale)}</th>
+                        <td><FormControl componentClass="select" value={this.state.sex}
+                                         onChange={this.handleSelectEvent.bind(this, "sex")}>{selector[locale].sexes}</FormControl>
                         </td>
                     </tr>
                     <tr>

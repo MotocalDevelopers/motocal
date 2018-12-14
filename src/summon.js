@@ -22,6 +22,7 @@ var elementTypes = GlobalConst.elementTypes;
 var summonTypes = GlobalConst.summonTypes;
 var summonElementTypes = GlobalConst.summonElementTypes;
 var raceTypes = GlobalConst.raceTypes;
+var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
 

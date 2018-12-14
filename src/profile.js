@@ -78,6 +78,7 @@ var Profile = CreateClass({
             enemyElement: "wind",
             enemyDefense: 10.0,
             job: "none",
+            sex: "female",
             element: "fire",
             DA: 6.5,
             TA: 3.0,
@@ -177,6 +178,13 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ジータさん性別", locale)}*</th>
+                        <td><FormControl componentClass="select" value={this.state.sex}
+                                         onChange={this.handleSelectEvent.bind(this, "sex")}> {selector[locale].sexes} </FormControl>
+                        </td>
+                    </tr>
 
                     <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
                         <tr>
