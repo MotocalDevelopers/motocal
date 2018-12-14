@@ -2589,22 +2589,6 @@
         "imageURL": "./imgs/1040201500.png",
         "en": "[4★] Tiamat Glaive Omega"
     },
-	    "ハイリゲスシュヴェールト": {
-        "ja": "ハイリゲスシュヴェールト",
-        "element": "wind",
-        "type": "sword",
-        "skill1": "normalL",
-        "skill2": "normalNiteM",
-        "element2": "wind",
-        "minhp": "36",
-        "minattack": "420",
-        "hp": "215",
-        "attack": "2510",
-        "slvmax": 10,
-        "maxlv": 100,
-        "imageURL": "./imgs/1040014000.png",
-        "en": "Heiliges Schwert"
-    },
     "[5凸]ティアマトグレイブ・マグナ": {
         "ja": "[5凸]ティアマトグレイブ・マグナ",
         "element": "wind",
@@ -7132,6 +7116,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040012500.png",
         "en": "Frostbite"
+    },
+    "ハイリゲスシュヴェールト": {
+        "ja": "ハイリゲスシュヴェールト",
+        "element": "wind",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "normalNiteM",
+        "element2": "wind",
+        "minhp": "36",
+        "minattack": "420",
+        "hp": "215",
+        "attack": "2510",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040014000.png",
+        "en": "Heiliges Schwert"
     },
     "ウィルムスウォード": {
         "ja": "ウィルムスウォード",

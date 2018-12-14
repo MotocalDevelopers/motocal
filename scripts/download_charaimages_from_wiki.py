@@ -14,8 +14,8 @@ if not os.path.exists(directory):
 
 for url in urllist:
     # Wiki
-    # local_file = os.path.join(directory, url.split("=")[-1])
+    local_file = os.path.join(directory, url.split("=")[-1])
     # Game
-    local_file = os.path.join(directory, url.split("/")[-1])
+    # local_file = os.path.join(directory, url.split("/")[-1])
     if not os.path.exists(local_file):
         urllib.request.urlretrieve(url, local_file)
