@@ -217,10 +217,10 @@ var SimulatorHowTo = CreateClass({
                 簡単に使いたい方は、全体バフの欄のみ弄れば各キャラクターの情報を入力しなくても問題ありません。
                 また、各キャラクターのバフは<strong>全体バフの量に加算</strong>されますのでご注意下さい。</p>
                 <p>（例: あるターンの全体バフが通常攻刃+10%、ジータバフ欄が通常攻刃+30%となっている場合、ジータのバフは通常攻刃+40%として計算される。）</p>
-                <p>バフを追加したい場合、<Button><i className="fa fa-plus-square"></i></Button> をクリックすることで欄が増えます。（現在は最大10個）
-                増やしすぎた場合は、バフ量を0%にするか、<Button><i className="fa fa-minus-square"></i></Button> で削除して下さい。（現在は一番下にあるもののみしか削除できません。）
-                また、<Button><i className="fa fa-arrow-left"></i></Button> や <Button><i className="fa fa-arrow-right"></i></Button> をクリックすることで、前（または次）のターンへコピーすることが可能です。</p>
-                <p>全てのターンのバフ情報を他のキャラ欄にコピーしたい場合は、<Button><i className="fa fa-angle-double-up"></i></Button> または <Button><i className="fa fa-angle-double-up"></i></Button> を使用して下さい。</p>
+                <p>バフを追加したい場合、<Button><i className="fa fa-plus-square"/></Button> をクリックすることで欄が増えます。（現在は最大10個）
+                増やしすぎた場合は、バフ量を0%にするか、<Button><i className="fa fa-minus-square"/></Button> で削除して下さい。（現在は一番下にあるもののみしか削除できません。）
+                また、<Button><i className="fa fa-arrow-left"/></Button> や <Button><i className="fa fa-arrow-right"/></Button> をクリックすることで、前（または次）のターンへコピーすることが可能です。</p>
+                <p>全てのターンのバフ情報を他のキャラ欄にコピーしたい場合は、<Button><i className="fa fa-angle-double-up"/></Button> または <Button><i className="fa fa-angle-double-up"/></Button> を使用して下さい。</p>
 
                 <h3>算出される値について</h3>
                 <p>基本的には他のグラフと同様、技巧や二手三手の期待値から予想される攻撃力（総回技値）ですが、予想ダメージについては少し異なります。
@@ -259,7 +259,7 @@ var SimulatorHowTo = CreateClass({
     },
 });
 
-module.exports.HowTo = HowTo
-module.exports.NiteHowTo = NiteHowTo
-module.exports.HPChartHowTo = HPChartHowTo
-module.exports.SimulatorHowTo = SimulatorHowTo
+module.exports.HowTo = HowTo;
+module.exports.NiteHowTo = NiteHowTo;
+module.exports.HPChartHowTo = HPChartHowTo;
+module.exports.SimulatorHowTo = SimulatorHowTo;

@@ -7,7 +7,7 @@
 
 ### ローカル開発
 ```sh
-$ git clone https://github.com/hoshimi/motocal.git motocal
+$ git clone https://github.com/MotocalDevelopers/motocal.git motocal
 $ cd motocal
 $ npm install
 $ npm run build
@@ -15,7 +15,7 @@ $ open index.html
 ```
 ### docker版
 ```sh
-$ git clone https://github.com/hoshimi/motocal.git motocal
+$ git clone https://github.com/MotocalDevelopers/motocal.git motocal
 $ cd motocal
 $ docker-compose up
 ```

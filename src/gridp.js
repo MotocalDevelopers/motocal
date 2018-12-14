@@ -20,15 +20,15 @@ var ColP = CreateClass({
         }
     },
     updateWidth: function() {
-        var width = 0
-        var myDiv = ReactDOM.findDOMNode(this.refs.colp)
-        if(myDiv != null) width = myDiv.parentNode.getBoundingClientRect().width
+        var width = 0;
+        var myDiv = ReactDOM.findDOMNode(this.refs.colp);
+        if(myDiv != null) width = myDiv.parentNode.getBoundingClientRect().width;
         if(width != 0) {
             this.setState({width: width})
         }
     },
     componentDidMount: function() {
-        window.addEventListener("resize", this.handleResize)
+        window.addEventListener("resize", this.handleResize);
         this.updateWidth();
     },
     componentWillUnmount: function() {
@@ -96,13 +96,13 @@ var ColP = CreateClass({
             size = values["lg"]
         }
 
-        var style = (100.0 * size/12.0).toString() + "%"
+        var style = (100.0 * size/12.0).toString() + "%";
         return (
             <div ref="colp" className={this.props.className} style={{"width": style, "float": "left"}}>
                 {this.props.children}
             </div>
         );
     }
-})
+});
 
-module.exports.ColP = ColP
+module.exports.ColP = ColP;
