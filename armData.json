@@ -8637,6 +8637,22 @@
         "imageURL": "./imgs/1040211700.png",
         "en": "Feendrache Pennant"
     },
+    "ピンキーニードル": {
+        "ja": "ピンキーニードル",
+        "element": "light",
+        "type": "spear",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "37",
+        "minattack": "406",
+        "hp": "225",
+        "attack": "2461",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040211800.png",
+        "en": "Pinkie Needle"
+    },
     "ウコンバサラ": {
         "ja": "ウコンバサラ",
         "element": "light",

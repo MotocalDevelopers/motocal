@@ -114,7 +114,7 @@
         "hp": "1966",
         "minattack": "1666",
         "attack": "8666",
-        "baseDA": 100.0,
+        "baseDA": 1000.0,
         "baseTA": 0.0,
         "imageURL": "./charaimgs/3040035000_03.png",
         "en": "[5★] Seox"
@@ -314,7 +314,7 @@
         "hp": "1666",
         "minattack": "1666",
         "attack": "6666",
-        "baseDA": 100.0,
+        "baseDA": 1000.0,
         "baseTA": 0.0,
         "imageURL": "./charaimgs/3040035000_01.png",
         "en": "Seox"
@@ -398,6 +398,26 @@
         "baseTA": 5.0,
         "imageURL": "./charaimgs/3040039000_01.png",
         "en": "Tien"
+    },
+    "メーテラ(クリスマスver)": {
+        "name": "メーテラ(クリスマスver)",
+        "ja": "メーテラ(クリスマスver)",
+        "element": "light",
+        "type": "balance",
+        "race": "erune",
+        "sex": "female",
+        "fav1": "bow",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "268",
+        "hp": "1418",
+        "minattack": "1360",
+        "attack": "7310",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040195000_01.png",
+        "en": "Metera (Holiday)"
     },
     "コッコロ": {
         "name": "コッコロ",
@@ -494,7 +514,7 @@
         "hp": "1320",
         "minattack": "800",
         "attack": "4300",
-        "baseDA": 100.0,
+        "baseDA": 1000.0,
         "baseTA": 0.0,
         "imageURL": "./charaimgs/3040193000_01.png",
         "en": "Levin Sisters"
@@ -534,7 +554,7 @@
         "hp": "1400",
         "minattack": "955",
         "attack": "4600",
-        "baseDA": 100.0,
+        "baseDA": 1000.0,
         "baseTA": 0.0,
         "imageURL": "./charaimgs/3040191000_01.png",
         "en": "Lancelot and Vane"
@@ -594,7 +614,7 @@
         "hp": "1300",
         "minattack": "1010",
         "attack": "4400",
-        "baseDA": 100.0,
+        "baseDA": 1000.0,
         "baseTA": 0.0,
         "imageURL": "./charaimgs/3040188000_01.png",
         "en": "Cure Black and Cure White"
@@ -874,8 +894,8 @@
         "hp": "1480",
         "minattack": "1700",
         "attack": "8600",
-        "baseDA": 100.0,
-        "baseTA": 100.0,
+        "baseDA": 1000.0,
+        "baseTA": 1000.0,
         "imageURL": "./charaimgs/3040174000_01.png",
         "en": "Wulf and Renie"
     },
@@ -3194,7 +3214,7 @@
         "hp": "1280",
         "minattack": "900",
         "attack": "4800",
-        "baseDA": 100.0,
+        "baseDA": 1000.0,
         "baseTA": 0.0,
         "imageURL": "./charaimgs/3040045000_01.png",
         "en": "Albert"
@@ -7454,7 +7474,7 @@
         "hp": "1240",
         "minattack": "650",
         "attack": "3150",
-        "baseDA": 100.0,
+        "baseDA": 1000.0,
         "baseTA": 0.0,
         "imageURL": "./charaimgs/3030177000_01.png",
         "en": "Albert (Event)"
@@ -8898,5 +8918,25 @@
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3030258000_01.png",
         "en": "Sevilbarra (Event)"
+    },
+    "ヤイア(クリスマスver)": {
+        "name": "ヤイア(クリスマスver)",
+        "ja": "ヤイア(クリスマスver)",
+        "element": "wind",
+        "type": "pecu",
+        "race": "doraf",
+        "sex": "female",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "minhp": "250",
+        "hp": "1150",
+        "minattack": "1200",
+        "attack": "6730",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030259000_01.png",
+        "en": "Yaia (Holiday)"
     }
 }
