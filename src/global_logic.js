@@ -373,6 +373,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         normalCoeff += totals[key]["normalBuff"];
         // 先制を通常攻刃へ加算
         normalCoeff += 0.01 * totals[key]["sensei"];
+        normalCoeff += 0.01 * totals[key]["akashaSensei"];
 
         var normalHaisuiCoeff = 1.0 + 0.01 * totals[key]["normalHaisui"] * totalSummon["zeus"];
         normalHaisuiCoeff += 0.01 * totals[key]["normalOtherHaisui"];
@@ -478,7 +479,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA = (totalDA > 1.0) ? 1.0 : totalDA;
 
         // TAのみ上昇するスキルを LesserSante と呼ぶ
-        var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"];
+        var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"] + totals[key]["normalOtherLesserSante"];
         var magnaLesserSante = totals[key]["magnaLesserSante"] * totalSummon["magna"];
         var armTAupNormal = (normalSante + normalLesserSante > 50.0) ? 50.0 : normalSante + normalLesserSante;
         var armTAupMagna = (magnaSante + magnaLesserSante > 50.0) ? 50.0 : magnaSante + magnaLesserSante;
@@ -803,12 +804,6 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
         }
     } else if (haisuiType === "omegaKonshin") {
         if (remainHP >= 0.25) {
-            return Math.pow(100.0 * remainHP / (53.7 - haisuiSLv), 2.9) + 2.1;
-        } else {
-            return 0.0;
-        }
-    } else if (haisuiType === "akashaKonshin") {
-        if (remainHP >= 0.80) {
             return Math.pow(100.0 * remainHP / (53.7 - haisuiSLv), 2.9) + 2.1;
         } else {
             return 0.0;
@@ -1164,7 +1159,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
                                 if (!isAkashaIncluded[akashaType]) {
                                     totals[key]["omegaNormal"] += skillAmounts[akasha]["rawATK"][slv - 1];
-                                    totals[key]["normalOtherSante"] += skillAmounts[akasha][akashaType][slv - 1];
+                                    totals[key]["normalOtherLesserSante"] += skillAmounts[akasha][akashaType][slv - 1];
                                     isAkashaIncluded[akashaType] = true;
                                 }
                             }
@@ -1192,8 +1187,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                 amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
                                 if (!isAkashaIncluded[akashaType]) {
-                                    totals[key]["omegaNormal"] += skillAmounts[akasha]["ATK"][slv - 1];
-                                    totals[key]["omegaNormal"] += skillAmounts[akasha][akashaType][slv - 1];
+                                    totals[key]["omegaNormal"] += skillAmounts[akasha]["rawATK"][slv - 1];
+                                    totals[key]["akashaSensei"] = skillAmounts[akasha][akashaType][slv - 1];
                                     isAkashaIncluded[akashaType] = true;
                                 }
                             }
@@ -1201,8 +1196,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                 amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
                                 if (!isAkashaIncluded[akashaType]) {
-                                    totals[key]["omegaNormal"] += skillAmounts[akasha]["ATK"][slv - 1];
-                                    totals[key]["normalOtherKonshin"] += module.exports.calcHaisuiValue("akashaKonshin", amount, slv, totals[key]["remainHP"]);
+                                    totals[key]["omegaNormal"] += skillAmounts[akasha]["rawATK"][slv - 1];
+                                    totals[key]["omegaNormalHP"] += skillAmounts[akasha][akashaType][slv - 1];
                                     isAkashaIncluded[akashaType] = true;
                                 }
                             }
@@ -1538,6 +1533,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ex: 0,
                 exHaisui: 0,
                 sensei: 0,
+                akashaSensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,
                 bahaDA: 0,
@@ -1555,6 +1551,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 exNite: 0,
                 normalOtherNite: 0,
                 normalOtherSante: 0,
+                normalOtherLesserSante: 0,
                 normalCritical: [],
                 normalOtherCritical: [],
                 magnaCritical: 0,
@@ -1667,6 +1664,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ex: 0,
                 exHaisui: 0,
                 sensei: 0,
+                akashaSensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,
                 bahaDA: 0,
@@ -1675,7 +1673,6 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalHP: 0,
                 unknownHP: 0,
                 exHP: 0,
-                bahaHP: 0,
                 normalNite: 0,
                 magnaNite: 0,
                 normalSante: 0,
@@ -1685,6 +1682,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 exNite: 0,
                 normalOtherNite: 0,
                 normalOtherSante: 0,
+                normalOtherLesserSante: 0,
                 normalCritical: [],
                 normalOtherCritical: [],
                 magnaCritical: 0,
@@ -1813,6 +1811,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["ex"] = 0;
         totals[key]["exHaisui"] = 0;
         totals[key]["sensei"] = 0;
+        totals[key]["akashaSensei"] = 0;
         totals[key]["bahaAT"] = 0;
         totals[key]["bahaHP"] = 0;
         totals[key]["bahaDA"] = 0;
@@ -1837,6 +1836,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["omegaNormalHP"] = 0;
         totals[key]["normalOtherNite"] = 0;
         totals[key]["normalOtherSante"] = 0;
+        totals[key]["normalOtherLesserSante"] = 0;
         totals[key]["ougiDamage"] = 0;
         totals[key]["normalOugiDamage"] = 0;
         totals[key]["magnaOugiDamage"] = 0;
@@ -2092,7 +2092,6 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 // オメガ武器スキルが重複して計算されるのを防ぐ
                 var omegaHaisuiIncluded = false;
                 var omegaKonshinIncluded = false;
-                var akashaKonshinIncluded = false;
 
                 // 武器データ計算
                 for (var i = 0; i < arml.length; i++) {
@@ -2134,14 +2133,6 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                         haisuiBuff[l]["normalKonshin"] += 0.01 * module.exports.calcHaisuiValue("omegaKonshin", amount, slv, remainHP)
                                     }
                                     omegaKonshinIncluded = true;
-                                }
-                            } else if (skillname === "akasha-spear") {
-                                if (!akashaKonshinIncluded && ('spear' === onedata[key].fav1 || 'spear' === onedata[key].fav2 || 'katana' === onedata[key].fav1 || 'katana' === onedata[key].fav2)) {
-                                    for (var l = 0; l < haisuiBuff.length; l++) {
-                                        var remainHP = 0.01 * (l + 1);
-                                        haisuiBuff[l]["normalKonshin"] += 0.01 * module.exports.calcHaisuiValue("akashaKonshin", amount, slv, remainHP)
-                                    }
-                                    akashaKonshinIncluded = true;
                                 }
                             } else if (onedata[key].element == element) {
                                 if (isHaisuiType(stype)) {
