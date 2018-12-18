@@ -741,6 +741,12 @@ skillnamelist["omega-raw"] = {
     u"マカエラ・ルーベル": "fire",
 }
 
+skillnamelist["akasha-sword"] = {u"虚脱の隻翼": "dark"}
+skillnamelist["akasha-spear"] = {u"虚栄の矛戟": "fire"}
+skillnamelist["akasha-axe"] = {u"虚勢の巌": "earth"}
+skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "earth"}
+skillnamelist["akasha-bow"] = {u"虚像の鋒鏑": "light"}
+
 # コスモス
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
 skillnamelist["cosmosBL"] = {u"バランス・スタンス": "light"}
@@ -783,6 +789,7 @@ skillnamelist["normalDamageLimit10"] = {
 skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",
+    u"イクシード・ウィンド": "wind",
     u"イクシード・ダーク": "dark",
 }
 

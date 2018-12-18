@@ -483,7 +483,7 @@ var skilltypes = {
     "gauphKey-gamma": {name: "ガフスキー[γ]", type: "gauphKey", amount: "L"},
     // "gauphKey-delta": {name: "ガフスキー[Δ]", type: "gauphKey", amount: "L"},
     "akasha-axe": {name: "アーカーシャ-斧", type: "akasha", amount: "fist"},
-    "akasha-dagger": {name: "アーカーシャ-短剣", type: "akasha", amount: "sword"},
+    "akasha-sword": {name: "アーカーシャ-剣", type: "akasha", amount: "dagger"},
     "akasha-bow": {name: "アーカーシャ-弓", type: "akasha", amount: "gun"},
     "akasha-wand": {name: "アーカーシャ-杖", type: "akasha", amount: "music"},
     "akasha-spear": {name: "アーカーシャ-槍", type: "akasha", amount: "katana"},
@@ -801,6 +801,18 @@ module.exports.Jobs = {
         "shugoBonus": 0.0,
         "DaBonus": 28.0,
         "TaBonus": 11.0
+    },
+    "docco": {
+        "name": "ドクター",
+        "favArm1": "dagger",
+        "favArm2": "gun",
+        "type": "heal",
+        "atBonus": 0.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 2000.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 4.0,
+        "TaBonus": 1.0
     },
     "kengo": {
         "name": "剣豪",
