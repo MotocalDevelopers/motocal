@@ -207,6 +207,7 @@ var Summon = CreateClass({
             DA: 0,
             TA: 0,
             criticalRatio: 0.0,
+            ougiDamage : 0.0
         };
     },
     componentDidMount: function () {
@@ -402,6 +403,13 @@ var Summon = CreateClass({
                         <td>
                             <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur}
                                          onChange={this.handleEvent.bind(this, "TA")}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("奥義ダメージ", locale)}</th>
+                        <td>
+                            <FormControl type="number" min="0" value={this.state.ougiDamage} onBlur={this.handleOnBlur}
+                                         onChange={this.handleEvent.bind(this, "ougiDamage")}/>
                         </td>
                     </tr>
                     </tbody>

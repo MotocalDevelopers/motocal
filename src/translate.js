@@ -1293,6 +1293,11 @@ var multiLangData = {
         "ja": "TA加護",
         "zh": "TA加护",
     },
+    "奥義ダメージ": {
+        "en": "Ougi Damage",
+        "ja": "奥義ダメージ",
+        "zh": "奥義ダメージ",
+    },
     "内容を消去": {
         "en": "Delete",
         "ja": "内容を消去",
