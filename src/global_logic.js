@@ -361,20 +361,21 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var magnaCoeff = 1.0 + (0.01 * totals[key]["magna"] + 0.01 * totals[key]["magnaSoka"]) * totalSummon["magna"];
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"] * totalSummon["magna"]);
         var magnaKonshinCoeff = 1.0 + 0.01 * (totals[key]["magnaKonshin"] * totalSummon["magna"]);
-        var exCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"] + 0.01 * totals[key]["ex"];
+        var exCoeff = 1.0 + 0.01 * totals[key]["unknown"] * totalSummon["ranko"];
+        exCoeff += 0.01 * totals[key]["ex"];
+        exCoeff += 0.01 * totals[key]["akashaATK"];
+        exCoeff += 0.01 * totals[key]["akashaSensei"];
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"];
         var normalCoeff = 1.0 + (0.01 * totals[key]["normal"] + 0.01 * totals[key]["normalSoka"]) * totalSummon["zeus"];
         normalCoeff += 0.01 * totals[key]["normalOther"];
         normalCoeff += 0.01 * totals[key]["bahaAT"];
         normalCoeff += 0.01 * totals[key]["cosmosAT"];
         normalCoeff += 0.01 * totals[key]["omegaNormal"];
-        normalCoeff += 0.01 * totals[key]["akashaNormal"];
         normalCoeff += totalSummon["chara"];
         normalCoeff += buff["normal"];
         normalCoeff += totals[key]["normalBuff"];
         // 先制を通常攻刃へ加算
         normalCoeff += 0.01 * totals[key]["sensei"];
-        normalCoeff += 0.01 * totals[key]["akashaSensei"];
 
         var normalHaisuiCoeff = 1.0 + 0.01 * totals[key]["normalHaisui"] * totalSummon["zeus"];
         normalHaisuiCoeff += 0.01 * totals[key]["normalOtherHaisui"];
@@ -405,7 +406,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         hpCoeff += 0.01 * totals[key]["exHP"];
         hpCoeff += 0.01 * totals[key]["bahaHP"];
         hpCoeff += 0.01 * totals[key]["omegaNormalHP"];
-        hpCoeff += 0.01 * totals[key]["akashaNormalHP"];
+        hpCoeff += 0.01 * totals[key]["akashaHP"];
         hpCoeff += buff["hp"];
         hpCoeff += totalSummon["hpBonus"];
         if (key == "Djeeta") {
@@ -1160,7 +1161,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                 amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
                                 if (!isAkashaIncluded[akashaType]) {
-                                    totals[key]["akashaNormal"] += skillAmounts[akasha]["rawATK"][slv - 1];
+                                    totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                     totals[key]["normalOtherLesserSante"] += skillAmounts[akasha][akashaType][slv - 1];
                                     isAkashaIncluded[akashaType] = true;
                                 }
@@ -1169,7 +1170,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                 amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
                                 if (!isAkashaIncluded[akashaType]) {
-                                    totals[key]["akashaNormal"] += skillAmounts[akasha]["rawATK"][slv - 1];
+                                    totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                     isAkashaIncluded[akashaType] = true;
                                 }
                             }
@@ -1177,7 +1178,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                 amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
                                 if (!isAkashaIncluded[akashaType]) {
-                                    totals[key]["akashaNormal"] += skillAmounts[akasha]["rawATK"][slv - 1];
+                                    totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                     totals[key]["normalOtherCritical"].push({
                                         "value": 0.01 * skillAmounts[akasha][akashaType][slv - 1],
                                         "attackRatio": 0.5
@@ -1189,7 +1190,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                 amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
                                 if (!isAkashaIncluded[akashaType]) {
-                                    totals[key]["akashaNormal"] += skillAmounts[akasha]["rawATK"][slv - 1];
+                                    totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                     totals[key]["akashaSensei"] = skillAmounts[akasha][akashaType][slv - 1];
                                     isAkashaIncluded[akashaType] = true;
                                 }
@@ -1198,8 +1199,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                 amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
                                 if (!isAkashaIncluded[akashaType]) {
-                                    totals[key]["akashaNormal"] += skillAmounts[akasha]["rawATK"][slv - 1];
-                                    totals[key]["akashaNormalHP"] += skillAmounts[akasha][akashaType][slv - 1];
+                                    totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
+                                    totals[key]["akashaHP"] += skillAmounts[akasha][akashaType][slv - 1];
                                     isAkashaIncluded[akashaType] = true;
                                 }
                             }
@@ -1561,8 +1562,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 cosmosBL: 0,
                 omegaNormal: 0,
                 omegaNormalHP: 0,
-                akashaNormal: 0,
-                akashaNormalHP: 0,
+                akashaATK: 0,
+                akashaHP: 0,
                 ougiDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
@@ -1694,8 +1695,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 cosmosBL: 0,
                 omegaNormal: 0,
                 omegaNormalHP: 0,
-                akashaNormal: 0,
-                akashaNormalHP: 0,
+                akashaATK: 0,
+                akashaHP: 0,
                 ougiDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
@@ -1842,8 +1843,8 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["cosmosAT"] = 0;
         totals[key]["omegaNormal"] = 0;
         totals[key]["omegaNormalHP"] = 0;
-        totals[key]["akashaNormal"] = 0;
-        totals[key]["akashaNormalHP"] = 0;
+        totals[key]["akashaATK"] = 0;
+        totals[key]["akashaHP"] = 0;
         totals[key]["normalOtherNite"] = 0;
         totals[key]["normalOtherSante"] = 0;
         totals[key]["normalOtherLesserSante"] = 0;
