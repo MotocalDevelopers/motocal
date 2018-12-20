@@ -578,7 +578,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiDamageByMagna = totals[key]["magnaOugiDamage"] * totalSummon["magna"];
         ougiDamageByMagna = (ougiDamageByMagna > 100) ? 100 : ougiDamageByMagna;
         var ougiDamageUP = 1.0 + totals[key]["ougiDamageBuff"];
-        ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery);
+        ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totalSummon["ougiDamage"]);
         ougiDamageUP -= 1.0;
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
 
@@ -1750,7 +1750,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 hp: 0.0,
                 hpBonus: 0.0,
                 da: 0,
-                ta: 0
+                ta: 0,
+                ougiDamage: 0
             };
 
             if ((summonElementTypes[selfElement]["type"].indexOf(totals[key]["element"]) >= 0) || selfElement == "all") {
@@ -1784,6 +1785,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             if (!isNaN(summon[s].hpBonus)) totalSummon["hpBonus"] = 0.01 * parseInt(summon[s].hpBonus);
             if (!isNaN(summon[s].DA)) totalSummon["da"] = 0.01 * parseInt(summon[s].DA);
             if (!isNaN(summon[s].TA)) totalSummon["ta"] = 0.01 * parseInt(summon[s].TA);
+            if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = parseInt(summon[s].ougiDamage);
 
             totals[key]["totalSummon"][s] = totalSummon
         }
