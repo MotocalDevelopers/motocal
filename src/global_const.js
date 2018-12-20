@@ -1388,9 +1388,15 @@ var supportAbilities = {
         "range": "own",
         "value": 1.00
     },
-    "ougi_damage_up_1_5": {
+    "ougi_damage_up_50": {
         "name": "全体の奥義ダメージ1.5倍(シエテ)",
         "type": "ougiDamageBuff",
+        "range": "all",
+        "value": 0.50
+    },
+    "ougi_damage_up_50_cap_10": {
+        "name": "全体の奥義ダメージ1.5倍([最終]シエテ)",
+        "type": "ougiDamageBuff_capBuff",
         "range": "all",
         "value": 0.50
     },
@@ -1442,6 +1448,12 @@ var supportAbilities = {
     "damageUP_20": {
         "name": "与ダメージ上昇(20%)",
         "type": "charaDamageUP",
+        "range": "own",
+        "value": 0.20
+    },
+    "damageUP_OugiCapUP_20": {
+        "name": "与ダメージ上昇(20%)",
+        "type": "charaDamageUP_OugiCap",
         "range": "own",
         "value": 0.20
     },

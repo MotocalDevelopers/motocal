@@ -843,7 +843,7 @@ def type_replace(armtype):
             return inner_armtype
     return "none"
 
-def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = True):
+def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list, PROCESS_TYPE_SSR = True):
     key_pattern = re.compile("\d+")
     key_pattern = re.compile("(\d+.*\.png)")
     skill_pattern = re.compile("\[\[([\W\w]+)\>")
@@ -954,26 +954,32 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
 
             json_data[name] = newdict
             # Wiki
-            image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+            image_wiki_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
             # Game - Might get you banned...
-            # image_url_list.append("http://game-a.granbluefantasy.jp/assets/img_light/sp/assets/weapon/g/" + key + "\n")
-            image_url_list = list(OrderedDict.fromkeys(image_url_list))
+            image_game_url_list.append("http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/" + key + "\n")
+            image_wiki_url_list = list(OrderedDict.fromkeys(image_wiki_url_list))
+            image_game_url_list = list(OrderedDict.fromkeys(image_game_url_list))
 
-    return json_data, image_url_list
+    return json_data, image_wiki_url_list, image_game_url_list
 
 
 if __name__ == '__main__':
     json_data = OrderedDict()
-    image_url_list = []
+    image_wiki_url_list = []
+    image_game_url_list = []
 
-    json_data, image_url_list = processCSVdata(os.path.join(path, "../txt_source/armData-ssr.txt"), json_data, image_url_list, True)
-    json_data, image_url_list = processCSVdata(os.path.join(path, "../txt_source/armData-sr.txt"), json_data, image_url_list, False)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path, "../txt_source/armData-ssr.txt"), json_data, image_wiki_url_list, image_game_url_list, True)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path, "../txt_source/armData-sr.txt"), json_data, image_wiki_url_list, image_game_url_list, False)
 
     f = open(os.path.join(path, "../armData.json"), "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    f = open(os.path.join(path, "../txt_source/armImageURLList.txt"), "w", encoding="utf-8")
-    for x in image_url_list:
+    f = open(os.path.join(path, "../txt_source/armImageWikiURLList.txt"), "w", encoding="utf-8")
+    for x in image_wiki_url_list:
+        f.write(x)
+    f.close()
+    f = open(os.path.join(path, "../txt_source/armImageGameURLList.txt"), "w", encoding="utf-8")
+    for x in image_game_url_list:
         f.write(x)
     f.close()

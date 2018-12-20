@@ -1941,6 +1941,23 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     // ザルハメリナのHPを参照する
                     totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "L", 20, totals[key]["remainHP"]);
                     continue;
+                case "charaDamageUP_OugiCap":
+                    totals[key]["charaDamageUP"] += support.value;
+                    totals[key]["ougiDamageLimitBuff"] += support.value;
+                    continue;
+                case "ougiDamageBuff_capBuff":
+                    if (totals[key].isConsideredInAverage) {
+                        // ドラフと種族不明のみキャラ攻刃
+                        for (var key2 in totals) {
+                            totals[key2]["ougiDamageBuff"] += support.value;
+                            totals[key2]["ougiDamageLimitBuff"] += 0.10;
+                        }
+                    } else {
+                        // 平均に入れない場合は自分だけ計算
+                        totals[key]["ougiDamageBuff"] += support.value;
+                        totals[key]["ougiDamageLimitBuff"] += 0.10;
+                    }
+                    continue;
                 default:
                     break;
             }

@@ -46,7 +46,8 @@ supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
 supportAbilist["ougi_gage_up_own_10"] = {u"戦賢の書"}
 supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼の悪魔"}
 supportAbilist["ougi_gage_up_own_100"] = {u"明鏡止水"}
-supportAbilist["ougi_damage_up_1_5"] = {u"天星剣王"}
+supportAbilist["ougi_damage_up_50_cap_10"] = {u"天星剣王2"}
+supportAbilist["ougi_damage_up_50"] = {u"天星剣王"}
 supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
 supportAbilist["la_pucelle"] = {u"ダーク・ラピュセル"}
 supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
@@ -55,19 +56,21 @@ supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
 supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"}
 supportAbilist["damageUP_10"] = {u"婉麗な姉"}
 supportAbilist["damageUP_20"] = {
-    u"ピースメーカー",
     u"炎帝の刃",
-    u"羅刹の豪槍",
-    u"死の舞踏",
     u"冷たい女",
-    u"暴虎",
-    u"鬼神",
     u"アニマ・アエテルヌス",
-    u"カンピオーネ",
-    u"惑乱の旋律",
     u"真龍の鉤爪",
     u"護国の双剣",
     u"アニマ・ドゥクトゥス",
+}
+supportAbilist["damageUP_OugiCapUP_20"] = {
+    u"羅刹の豪槍",
+    u"暴虎",
+    u"死の舞踏",
+    u"カンピオーネ",
+    u"鬼神",
+    u"惑乱の旋律",
+    u"ピースメーカー",
 }
 
 # Patching
@@ -203,7 +206,7 @@ def get_value(value_str):
         print("matched: error")
         return "error"
 
-def processCSVdata(csv_file_name, json_data, image_url_list):
+def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
     key_pattern = re.compile("(\d+_\d+\.png)")
     br_pattern = re.compile("(\w+)&br;(\w+)")
     support_pattern = re.compile("([\W\w]+)&br;([\W\w]+)")
@@ -288,24 +291,31 @@ def processCSVdata(csv_file_name, json_data, image_url_list):
 
             json_data[name] = newdict
             # Wiki
-            image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+            image_wiki_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
             # Game - Might get you banned...
-            # image_url_list.append("http://game-a.granbluefantasy.jp/assets/img_light/sp/assets/npc/b/" + key + "\n")
-            image_url_list = list(OrderedDict.fromkeys(image_url_list))
+            image_game_url_list.append("http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/" + key + "\n")
+            image_wiki_url_list = list(OrderedDict.fromkeys(image_wiki_url_list))
+            image_game_url_list = list(OrderedDict.fromkeys(image_game_url_list))
 
-    return json_data, image_url_list
+    return json_data, image_wiki_url_list, image_game_url_list
 
 if __name__ == '__main__':
     json_data = OrderedDict()
-    image_url_list = []
+    image_wiki_url_list = []
+    image_game_url_list = []
 
-    json_data, image_url_list = processCSVdata(os.path.join(path, "../txt_source/charaData.txt"), json_data, image_url_list)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path, "../txt_source/charaData.txt"), json_data, image_wiki_url_list, image_game_url_list)
 
     f = open(os.path.join(path, "../charaData.json"), "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    f = open(os.path.join(path, "../txt_source/charaImageURLList.txt"), "w", encoding="utf-8")
-    for x in image_url_list:
+    f = open(os.path.join(path, "../txt_source/charaImageWikiURLList.txt"), "w", encoding="utf-8")
+    for x in image_wiki_url_list:
+        f.write(x)
+    f.close()
+
+    f = open(os.path.join(path, "../txt_source/charaImageGameURLList.txt"), "w", encoding="utf-8")
+    for x in image_game_url_list:
         f.write(x)
     f.close()
