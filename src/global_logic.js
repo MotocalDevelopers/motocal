@@ -712,7 +712,7 @@ module.exports.getTesukatoripokaAmount = function (amount, numOfRaces) {
     return resultAmount;
 };
 
-module.exports.checkNumberofRaces = function (chara) {
+module.exports.checkNumberOfRaces = function (chara) {
     // check num of races
     var includedRaces = {
         "human": false,
@@ -739,6 +739,35 @@ module.exports.checkNumberofRaces = function (chara) {
         if (includedRaces[key]) races++;
     }
     return races
+};
+
+module.exports.checkNumberOfElements = function (totals) {
+    // check num of races
+    var includedElements = {
+        "fire": false,
+        "water": false,
+        "earth": false,
+        "wind": false,
+        "light": false,
+        "dark": false,
+    };
+
+    // indの初期値も1からで良い
+    var ind = 0;
+    for (var key in totals) {
+        if (totals[key].name != "" && totals[key].isConsideredInAverage) {
+            if (ind < 4) {
+                includedElements[totals[key]["element"]] = true
+            }
+            ind++;
+        }
+    }
+
+    var elements = 0;
+    for (var key in includedElements) {
+        if (includedElements[key]) elements++;
+    }
+    return elements
 };
 
 module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, haisuiRemainHP) {
@@ -1733,7 +1762,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
         }
     }
 
-    var races = module.exports.checkNumberofRaces(chara);
+    var races = module.exports.checkNumberOfRaces(chara);
     for (var key in totals) {
         totals[key]["totalSummon"] = [];
         for (var s = 0; s < summon.length; s++) {
@@ -1905,7 +1934,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     }
                     continue;
                 case "normalBuff_depends_races":
-                    var races = module.exports.checkNumberofRaces(chara);
+                    var races = module.exports.checkNumberOfRaces(chara);
                     // 4種族なら50%, それ以外なら種族数*10%
                     totals[key]["normalBuff"] += (races == 4 ? 0.50 : races * 0.10);
                     continue;
@@ -1940,6 +1969,13 @@ module.exports.treatSupportAbility = function (totals, chara) {
                 case "la_pucelle":
                     // ザルハメリナのHPを参照する
                     totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "L", 20, totals[key]["remainHP"]);
+                    continue;
+                case "envoy_meditation":
+                    var elements = module.exports.checkNumberOfElements(totals);
+                    // 4種族なら50%, それ以外なら種族数*10%
+                    totals[key]["normalBuff"] += (elements >= 4 ? 0.60 : elements * 0.15);
+                    totals[key]["DABuff"] += (elements >= 4 ? 0.40 : elements * 0.10);
+                    totals[key]["TABuff"] += (elements >= 4 ? 0.12 : elements * 0.03);
                     continue;
                 case "charaDamageUP_OugiCap":
                     totals[key]["charaDamageUP"] += support.value;

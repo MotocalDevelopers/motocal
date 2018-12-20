@@ -50,6 +50,7 @@ supportAbilist["ougi_damage_up_50_cap_10"] = {u"天星剣王2"}
 supportAbilist["ougi_damage_up_50"] = {u"天星剣王"}
 supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
 supportAbilist["la_pucelle"] = {u"ダーク・ラピュセル"}
+supportAbilist["envoy_meditation"] = {u"調停の使徒"}
 supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}

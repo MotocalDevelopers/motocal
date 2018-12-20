@@ -1407,8 +1407,14 @@ var supportAbilities = {
         "value": 0.00
     },
     "la_pucelle": {
-        "name": "味方全体に背水効果(ジャンヌダルク(闇))",
+        "name": "に背水効果(ジャンヌダルク(闇))",
         "type": "la_pucelle",
+        "range": "own",
+        "value": 0.00
+    },
+    "envoy_meditation": {
+        "name": "バトルメンバーの属性の数に応じて自分のステータスUP(ゾーイ)",
+        "type": "envoy_meditation",
         "range": "own",
         "value": 0.00
     },

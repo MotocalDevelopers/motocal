@@ -34,7 +34,7 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isValidResult, checkNumberofRaces, proceedIndex,
+    isCosmos, isValidResult, checkNumberOfRaces, proceedIndex,
     calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
     calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
@@ -365,7 +365,7 @@ var ResultList = CreateClass({
         var summon = this.props.summon;
 
         // テスカトリポカ計算用
-        var races = checkNumberofRaces(chara);
+        var races = checkNumberOfRaces(chara);
         var tesukatoripoka = getTesukatoripokaAmount;
 
         var result = res.result;

@@ -7505,6 +7505,22 @@
         "imageURL": "./imgs/1040016200.png",
         "en": "[4★] Ice Claymore"
     },
+    "ニンジンブレード": {
+        "ja": "ニンジンブレード",
+        "element": "earth",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "20",
+        "minattack": "342",
+        "hp": "158",
+        "attack": "2052",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040016400.png",
+        "en": "Carrot Blade"
+    },
     "アゾット": {
         "ja": "アゾット",
         "element": "dark",
