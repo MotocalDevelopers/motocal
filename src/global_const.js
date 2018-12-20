@@ -1333,11 +1333,29 @@ var supportAbilities = {
         "range": "all",
         "value": 0.00
     },
+    "da_up_fist_10": {
+        "name": "全体風DA率UP10%(ガンダゴウザ)",
+        "type": "daBuff_fist",
+        "range": "all",
+        "value": 0.10
+    },
+    "hp_down_own_15": {
+        "name": "HPDOWN15%(ペコリーヌ)",
+        "type": "HPdebuff",
+        "range": "own",
+        "value": 0.15
+    },
     "hp_up_own_15": {
-        "name": "HPUP5%(ペコリーヌ)",
+        "name": "HPUP15%(ペコリーヌ)",
         "type": "HPBuff",
         "range": "own",
         "value": 0.15
+    },
+    "hp_up_own_20": {
+        "name": "HPUP20%(ソリッズ)",
+        "type": "HPBuff",
+        "range": "own",
+        "value": 0.20
     },
     "atk_up_own_5": {
         "name": "攻撃UP5%(ネツァ,レディグレイ,ハロシャル)",
@@ -1346,7 +1364,7 @@ var supportAbilities = {
         "value": 0.05
     },
     "atk_up_all_5": {
-        "name": "全体攻撃UP5%(クリス)",
+        "name": "全体攻撃UP5%(クリスティーナ)",
         "type": "normalBuff",
         "range": "all",
         "value": 0.05
@@ -1400,15 +1418,15 @@ var supportAbilities = {
         "range": "all",
         "value": 0.50
     },
-    "taiyou_sinkou": {
+    "emnity_all_SL10": {
         "name": "味方全体に背水効果(ザルハメリナ)",
-        "type": "taiyou_sinkou",
+        "type": "emnity_all_SL10",
         "range": "all",
         "value": 0.00
     },
-    "la_pucelle": {
-        "name": "に背水効果(ジャンヌダルク(闇))",
-        "type": "la_pucelle",
+    "emnity_own_SL20": {
+        "name": "に背水効果(ジャンヌダルク(闇), 黒騎士)",
+        "type": "emnity_own_SL20",
         "range": "own",
         "value": 0.00
     },

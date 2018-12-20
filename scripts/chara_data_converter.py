@@ -37,9 +37,12 @@ supportAbilist = OrderedDict()
 supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
 supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
+supportAbilist["da_up_fist_10"] = {u"古今無双流"}
+supportAbilist["hp_down_own_15"] = {u"喪失する自我",u"アストラルチャージ", u"真夏の夜の夢"}
 supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
+supportAbilist["hp_up_own_20"] = {u"老當益壮"}
 supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
-supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ"}
+supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ", u"ディペンデンス"}
 supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
 supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
@@ -48,8 +51,8 @@ supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼
 supportAbilist["ougi_gage_up_own_100"] = {u"明鏡止水"}
 supportAbilist["ougi_damage_up_50_cap_10"] = {u"天星剣王2"}
 supportAbilist["ougi_damage_up_50"] = {u"天星剣王"}
-supportAbilist["taiyou_sinkou"] = {u"太陽信仰"}
-supportAbilist["la_pucelle"] = {u"ダーク・ラピュセル"}
+supportAbilist["emnity_all_SL10"] = {u"太陽信仰"}
+supportAbilist["emnity_own_SL20"] = {u"ダーク・ラピュセル", u"黒の鎧", u"砂神グラフォスの慈愛"}
 supportAbilist["envoy_meditation"] = {u"調停の使徒"}
 supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
@@ -150,6 +153,7 @@ patching["アルベール(SR)"] = {"DA": 1000.0, "TA": 0.0}
 
 ## 闇 - Dark
 patching["ウーフとレニー"] = {"DA": 1000.0, "TA": 1000.0}
+patching["ケルベロス"] = {"DA": 10.0, "TA": 55.0}
 
 ### SR
 

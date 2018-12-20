@@ -864,11 +864,11 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
 
                 // 背水サポアビのみ処理
                 switch (support.type) {
-                    case "taiyou_sinkou":
+                    case "emnity_all_SL10":
                         // ザルハメリナのHPを参照する
                         charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 10, remainHP);
                         continue;
-                    case "la_pucelle":
+                    case "emnity_own_SL20":
                         // ザルハメリナのHPを参照する
                         charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 20, remainHP);
                         continue;
@@ -1955,7 +1955,20 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["TABuff"] += 0.05;
                     }
                     continue;
-                case "taiyou_sinkou":
+                case "daBuff_fist":
+                    if (totals[key].isConsideredInAverage) {
+                        // ドラフと種族不明のみキャラ攻刃
+                        for (var key2 in totals) {
+                            if (totals[key2]["fav1"] === "fist" || totals[key2]["fav2"] === "fist") {
+                                totals[key2]["DABuff"] += support.value;
+                            }
+                        }
+                    } else {
+                        // 平均に入れない場合は自分だけ計算
+                        totals[key]["DABuff"] += support.value;
+                    }
+                    continue;
+                case "emnity_all_SL10":
                     // ザルハメリナのHPを参照する
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
                     if (totals[key].isConsideredInAverage) {
@@ -1966,7 +1979,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["charaHaisui"] += charaHaisuiValue
                     }
                     continue;
-                case "la_pucelle":
+                case "emnity_own_SL20":
                     // ザルハメリナのHPを参照する
                     totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "L", 20, totals[key]["remainHP"]);
                     continue;
