@@ -3,8 +3,7 @@ imgs/*.png
 charaimgs/*.png
 *.php
 gana.js
-/dist/charaimgs/*
-/dist/imgs/*
+/dist/*
 !/dist/.gitkeep
 
 ### https://raw.github.com/github/gitignore/1fb9ea045e619c61e223371533cdea118efbea5d/Node.gitignore
