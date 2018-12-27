@@ -1210,7 +1210,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                     totals[key]["normalOtherCritical"].push({
                                         "value": 0.01 * skillAmounts[akasha][akashaType][slv - 1],
-                                        "attackRatio": 0.5
+                                        "attackRatio": 0.45
                                     });
                                     isAkashaIncluded[akashaType] = true;
                                 }
