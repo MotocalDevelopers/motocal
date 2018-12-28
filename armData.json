@@ -4615,6 +4615,24 @@
         "imageURL": "./imgs/1040014300.png",
         "en": "Fallen Sword"
     },
+    "[4凸]フォールン・ソード": {
+        "ja": "[4凸]フォールン・ソード",
+        "element": "dark",
+        "type": "sword",
+        "skill1": "normalLLM",
+        "skill2": "normalKonshinM",
+        "element2": "dark",
+        "minhp": "36",
+        "minattack": "476",
+        "hp": "292",
+        "attack": "3319",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "241",
+        "attacklv100": "2750",
+        "imageURL": "./imgs/1040014300.png",
+        "en": "[4★] Fallen Sword"
+    },
     "エターナル・ラヴ": {
         "ja": "エターナル・ラヴ",
         "element": "wind",
@@ -5032,6 +5050,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040708700.png",
         "en": "Taisai Spirit Bow"
+    },
+    "悪滅の雷": {
+        "ja": "悪滅の雷",
+        "element": "fire",
+        "type": "bow",
+        "skill1": "normalHissatsuL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "32",
+        "minattack": "508",
+        "hp": "242",
+        "attack": "2800",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040709000.png",
+        "en": "Purifying Thunderbolt"
     },
     "天干地支刀・申之飾": {
         "ja": "天干地支刀・申之飾",

@@ -1768,6 +1768,11 @@ var multiLangData = {
         "ja": "通常必殺(中)",
         "zh": "通常必杀(中)",
     },
+    "通常必殺(大)": {
+        "en": "Normal Sentence (L)",
+        "ja": "通常必殺(大)",
+        "zh": "通常必杀(大)",
+    },
     "先制": {
         "en": "Preemptive",
         "ja": "先制",

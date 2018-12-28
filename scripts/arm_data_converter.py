@@ -367,6 +367,15 @@ skillnamelist["normalHissatsuM"] = {
     u"憎悪の必殺": "dark"
 }
 
+skillnamelist["normalHissatsuL"] = {
+    u"紅蓮の必殺": "fire",
+    u"霧氷の必殺": "water",
+    u"地裂の必殺": "earth",
+    u"乱気の必殺": "wind",
+    u"天光の必殺": "light",
+    u"奈落の必殺": "dark"
+}
+
 # magna II
 skillnamelist["magnaL"] = {
     u"機炎方陣・攻刃II": "fire",

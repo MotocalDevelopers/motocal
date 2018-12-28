@@ -399,6 +399,26 @@
         "imageURL": "./charaimgs/3040039000_01.png",
         "en": "Tien"
     },
+    "シヴァ": {
+        "name": "シヴァ",
+        "ja": "シヴァ",
+        "element": "fire",
+        "type": "attack",
+        "race": "seisho",
+        "sex": "male",
+        "fav1": "spear",
+        "fav2": "wand",
+        "support": "none",
+        "support2": "none",
+        "minhp": "224",
+        "hp": "1240",
+        "minattack": "2280",
+        "attack": "11400",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040196000_01.png",
+        "en": "Shiva"
+    },
     "メーテラ(クリスマスver)": {
         "name": "メーテラ(クリスマスver)",
         "ja": "メーテラ(クリスマスver)",
