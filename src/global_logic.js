@@ -369,7 +369,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var normalCoeff = 1.0 + (0.01 * totals[key]["normal"] + 0.01 * totals[key]["normalSoka"]) * totalSummon["zeus"];
         normalCoeff += 0.01 * totals[key]["normalOther"];
         normalCoeff += 0.01 * totals[key]["bahaAT"];
-        normalCoeff += 0.01 * totals[key]["cosmosAT"];
         normalCoeff += 0.01 * totals[key]["omegaNormal"];
         normalCoeff += totalSummon["chara"];
         normalCoeff += buff["normal"];
@@ -579,7 +578,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiDamageByMagna = totals[key]["magnaOugiDamage"] * totalSummon["magna"];
         ougiDamageByMagna = (ougiDamageByMagna > 100) ? 100 : ougiDamageByMagna;
         var ougiDamageUP = 1.0 + totals[key]["ougiDamageBuff"];
-        ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totalSummon["ougiDamage"]);
+        ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totalSummon["ougiDamage"] + totals[key]["cosmosAT"]);
         ougiDamageUP -= 1.0;
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
 
@@ -1127,7 +1126,6 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         // コスモス武器
                         if (skillname == 'cosmosAT' && totals[key]["type"] == "attack") {
                             totals[key]["cosmosAT"] += comb[i] * 20.0;
-                            totals[key]["HPdebuff"] += comb[i] * 0.40
                         } else if (skillname == 'cosmosDF' && totals[key]["type"] == "defense") {
                             totals[key]["HPdebuff"] -= comb[i] * 0.10
                         } else if (skillname == 'cosmosBL' && totals[key]["type"] == "balance") {
