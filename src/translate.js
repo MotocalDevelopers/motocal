@@ -1694,9 +1694,9 @@ var multiLangData = {
         "zh": "通常二手(大)",
     },
     "通常三手(小)": {
-        "en": "[UNVERIFIED] Normal Trium (S)",
-        "ja": "[未検証] 通常三手(小)",
-        "zh": "[未验证] 通常三手(小)",
+        "en": "Normal Trium (S)",
+        "ja": "通常三手(小)",
+        "zh": "通常三手(小)",
     },
     "通常三手(大)": {
         "en": "Normal Trium (L)",
@@ -1762,6 +1762,11 @@ var multiLangData = {
         "en": "Normal Mystery (M)",
         "ja": "通常秘奥(中)",
         "zh": "通常秘奥(中)",
+    },
+    "通常秘奥(大)": {
+        "en": "Normal Mystery (L)",
+        "ja": "通常秘奥(大)",
+        "zh": "通常秘奥(大)",
     },
     "通常必殺(中)": {
         "en": "Normal Sentence (M)",

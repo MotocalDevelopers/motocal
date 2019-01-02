@@ -249,15 +249,6 @@ skillnamelist["normalMusouLL"] = {
     u"憎悪の無双II": "dark"
 }
 
-skillnamelist["normalHiouM"] = {
-    u"業火の秘奥": "fire",
-    u"渦潮の秘奥": "water",
-    u"大地の秘奥": "earth",
-    u"竜巻の秘奥": "wind",
-    u"雷電の秘奥": "light",
-    u"憎悪の秘奥": "dark"
-}
-
 skillnamelist["normalJinkaiS"] = {
     u"火の刃界": "fire",
     u"水の刃界": "water",
@@ -356,6 +347,24 @@ skillnamelist["normalHiouS"] = {
     u"風の秘奥": "wind",
     u"光の秘奥": "light",
     u"闇の秘奥": "dark"
+}
+
+skillnamelist["normalHiouM"] = {
+    u"業火の秘奥": "fire",
+    u"渦潮の秘奥": "water",
+    u"大地の秘奥": "earth",
+    u"竜巻の秘奥": "wind",
+    u"雷電の秘奥": "light",
+    u"憎悪の秘奥": "dark"
+}
+
+skillnamelist["normalHiouL"] = {
+    u"紅蓮の秘奥": "fire",
+    u"霧氷の秘奥": "water",
+    u"地裂の秘奥": "earth",
+    u"乱気の秘奥": "wind",
+    u"天光の秘奥": "light",
+    u"奈落の秘奥": "dark"
 }
 
 skillnamelist["normalHissatsuM"] = {
@@ -676,6 +685,7 @@ skillnamelist["strengthL"] = {
     u"紅ニ染マル刃": "dark",
     u"フローズン・ブレード": "water",
     u"ジャスティス・ロッド": "light",
+    u"トラフィックエナジー": "light",
 }
 
 skillnamelist["exATKandHPM"] = {
