@@ -1,4 +1,5 @@
-import os, inspect
+import inspect
+import os
 import urllib.request
 
 filename = inspect.getframeinfo(inspect.currentframe()).filename

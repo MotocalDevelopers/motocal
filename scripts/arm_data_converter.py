@@ -1,4 +1,8 @@
-import os, json, csv, re, inspect
+import csv
+import inspect
+import json
+import os
+import re
 from collections import OrderedDict
 
 skillnamelist = OrderedDict()
@@ -815,9 +819,9 @@ skillnamelist["ougiDamageLimitExceedM"] = {
 # キャラ固有武器
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
-skillnamelist["maihimeEnbu"] =   {u"舞姫の演武": "water"}
-skillnamelist["hengenKengi"] =   {u"変幻自在の剣技": "dark"}
-skillnamelist["kochoKenbu"] =   {u"胡蝶の剣舞": "earth"}
+skillnamelist["maihimeEnbu"] = {u"舞姫の演武": "water"}
+skillnamelist["hengenKengi"] = {u"変幻自在の剣技": "dark"}
+skillnamelist["kochoKenbu"] = {u"胡蝶の剣舞": "earth"}
 skillnamelist["normalHPL"][u"氷晶宮の加護"] = "water"
 skillnamelist["normalL"][u"聖女の行進"] = "light"
 skillnamelist["normalL"][u"天を統べる強風"] = "wind"
@@ -849,6 +853,7 @@ path = os.path.dirname(os.path.abspath(filename))
 # json translation
 translation = json.load(open(os.path.join(path, "../txt_source/arm-translation.json"), "r", encoding="utf-8"))
 
+
 def skill_replace(skill):
     for inner_skillname, onelist in skillnamelist.items():
         for skillname, element in onelist.items():
@@ -856,13 +861,15 @@ def skill_replace(skill):
                 return inner_skillname, element
     return "non", "none"
 
+
 def type_replace(armtype):
     for armtypename, inner_armtype in armtypelist.items():
         if re.match(armtypename, armtype):
             return inner_armtype
     return "none"
 
-def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list, PROCESS_TYPE_SSR = True):
+
+def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list, PROCESS_TYPE_SSR=True):
     key_pattern = re.compile("\d+")
     key_pattern = re.compile("(\d+.*\.png)")
     skill_pattern = re.compile("\[\[([\W\w]+)\>")
@@ -987,8 +994,10 @@ if __name__ == '__main__':
     image_wiki_url_list = []
     image_game_url_list = []
 
-    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path, "../txt_source/armData-ssr.txt"), json_data, image_wiki_url_list, image_game_url_list, True)
-    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path, "../txt_source/armData-sr.txt"), json_data, image_wiki_url_list, image_game_url_list, False)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(
+        os.path.join(path, "../txt_source/armData-ssr.txt"), json_data, image_wiki_url_list, image_game_url_list, True)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(
+        os.path.join(path, "../txt_source/armData-sr.txt"), json_data, image_wiki_url_list, image_game_url_list, False)
 
     f = open(os.path.join(path, "../armData.json"), "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)

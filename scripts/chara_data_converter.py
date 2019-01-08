@@ -1,4 +1,8 @@
-import os, csv, sys, math, time, re, json, codecs, types, inspect
+import csv
+import inspect
+import json
+import os
+import re
 from collections import OrderedDict
 
 armtypelist = OrderedDict()
@@ -38,7 +42,7 @@ supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
 supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
 supportAbilist["da_up_fist_10"] = {u"古今無双流"}
-supportAbilist["hp_down_own_15"] = {u"喪失する自我",u"アストラルチャージ", u"真夏の夜の夢"}
+supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ", u"真夏の夜の夢"}
 supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
 supportAbilist["hp_up_own_20"] = {u"老當益壮"}
 supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
@@ -164,11 +168,13 @@ path = os.path.dirname(os.path.abspath(filename))
 # json translation
 translation = json.load(open(os.path.join(path, "../txt_source/chara-translation.json"), "r", encoding="utf-8"))
 
+
 def arm_replace(armtype):
     for armtypename, inner_armtype in armtypelist.items():
         if re.match(armtypename, armtype):
             return inner_armtype
     return "no_favorite_arm_error"
+
 
 def type_replace(charatype):
     for charatypename, inner_charatype in charatypelist.items():
@@ -176,17 +182,20 @@ def type_replace(charatype):
             return inner_charatype
     return "error"
 
+
 def race_replace(racetype):
     for racetypename, inner_racetype in racelist.items():
         if re.match(racetypename, racetype):
             return inner_racetype
     return "error"
 
+
 def sex_replace(sextype):
     for sextypename, inner_sextype in sexlist.items():
         if re.match(sextypename, sextype):
             return inner_sextype
     return "error"
+
 
 def support_replace(support_str):
     support_pattern = re.compile("\[\[([\W\w]+?)>")
@@ -200,6 +209,7 @@ def support_replace(support_str):
                     return support_typename
     return "none"
 
+
 def get_value(value_str):
     value_pattern = re.compile("(\d+)")
     matched = value_pattern.search(value_str)
@@ -210,6 +220,7 @@ def get_value(value_str):
         print("input: " + value_str)
         print("matched: error")
         return "error"
+
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
     key_pattern = re.compile("(\d+_\d+\.png)")
@@ -304,12 +315,14 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
 
     return json_data, image_wiki_url_list, image_game_url_list
 
+
 if __name__ == '__main__':
     json_data = OrderedDict()
     image_wiki_url_list = []
     image_game_url_list = []
 
-    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path, "../txt_source/charaData.txt"), json_data, image_wiki_url_list, image_game_url_list)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(
+        os.path.join(path, "../txt_source/charaData.txt"), json_data, image_wiki_url_list, image_game_url_list)
 
     f = open(os.path.join(path, "../charaData.json"), "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
