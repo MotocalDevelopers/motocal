@@ -1913,9 +1913,11 @@ module.exports.treatSupportAbility = function (totals, chara) {
             switch (support.type) {
                 case "normalBuff_doraf":
                     if (totals[key].isConsideredInAverage) {
-                        // ドラフと種族不明のみキャラ攻刃
                         for (var key2 in totals) {
-                            if (totals[key2]["race"] === "doraf" || totals[key2]["race"] === "unknown" || totals[key2]["race"] === "seisho") {
+                            // ドラフと種族不明と星晶獣のみキャラ攻刃
+                            if (totals[key2]["race"] === "doraf" ||
+                                totals[key2]["race"] === "unknown" ||
+                                totals[key2]["race"] === "seisho") {
                                 totals[key2]["normalBuff"] += support.value
                             }
                         }
@@ -1933,7 +1935,6 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     continue;
                 case "dataBuff_wind":
                     if (totals[key].isConsideredInAverage) {
-                        // ドラフと種族不明のみキャラ攻刃
                         for (var key2 in totals) {
                             if (totals[key2]["element"] === "wind") {
                                 totals[key2]["DABuff"] += 0.10;
@@ -1948,7 +1949,6 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     continue;
                 case "daBuff_fist":
                     if (totals[key].isConsideredInAverage) {
-                        // ドラフと種族不明のみキャラ攻刃
                         for (var key2 in totals) {
                             if (totals[key2]["fav1"] === "fist" || totals[key2]["fav2"] === "fist") {
                                 totals[key2]["DABuff"] += support.value;
@@ -1987,7 +1987,6 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     continue;
                 case "ougiDamageBuff_capBuff":
                     if (totals[key].isConsideredInAverage) {
-                        // ドラフと種族不明のみキャラ攻刃
                         for (var key2 in totals) {
                             totals[key2]["ougiDamageBuff"] += support.value;
                             totals[key2]["ougiDamageLimitBuff"] += 0.10;

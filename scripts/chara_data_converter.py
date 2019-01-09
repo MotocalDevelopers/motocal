@@ -87,21 +87,21 @@ patching = OrderedDict()
 # 連撃率 from すんどめ侍さん
 ## 十天衆
 patching["[最終]ソーン"] = {"DA": 4.0, "TA": 1.0}
-patching["[最終]サラーサ"] = {"DA": 4.0, "TA": 1.0}
+patching["[最終]サラーサ"] = {"DA": 5.0, "TA": 1.0}
 patching["[最終]カトル"] = {"DA": 10.0, "TA": 5.0}
 patching["[最終]フュンフ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]シス"] = {"DA": 1000.0, "TA": 0.0}
 patching["[最終]シエテ"] = {"DA": 10.0, "TA": 5.0}
-patching["[最終]オクトー"] = {"DA": 24.0, "TA": 1.0}
+patching["[最終]オクトー"] = {"DA": 25.0, "TA": 1.0}
 patching["[最終]ニオ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]エッセル"] = {"DA": 10.0, "TA": 5.0}
 patching["ソーン"] = {"DA": 4.0, "TA": 1.0}
-patching["サラーサ"] = {"DA": 4.0, "TA": 1.0}
+patching["サラーサ"] = {"DA": 5.0, "TA": 1.0}
 patching["カトル"] = {"DA": 10.0, "TA": 5.0}
 patching["フュンフ"] = {"DA": 4.0, "TA": 1.0}
 patching["シス"] = {"DA": 1000.0, "TA": 0.0}
 patching["シエテ"] = {"DA": 10.0, "TA": 5.0}
-patching["オクトー"] = {"DA": 4.0, "TA": 1.0}
+patching["オクトー"] = {"DA": 5.0, "TA": 1.0}
 patching["ニオ"] = {"DA": 4.0, "TA": 1.0}
 patching["エッセル"] = {"DA": 10.0, "TA": 5.0}
 
@@ -123,6 +123,7 @@ patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
 patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 1000.0, "TA": 0.0}
 
 ### SR
+patching["ジェミニ・サンライズ"] = {"DA": 10.0, "TA": 5.0}
 
 ## 水 - Water
 patching["リリィ"] = {"DA": 4.0, "TA": 1.0}
@@ -139,11 +140,20 @@ patching["イシュミール"] = {"DA": 10.0, "TA": 5.0}
 patching["ユエル(イベントver)"] = {"DA": 12.0, "TA": 3.0}
 
 ## 土 - Earth
+patching["アレーティア"] = {"DA": 10.0, "TA": 5.0}
+patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
+patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
+patching["サラ"] = {"DA": 4.0, "TA": 1.0}
+patching["ヴィーラ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["キャサリン"] = {"DA": 10.0, "TA": 5.0}
+patching["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
+patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
 
 ### SR
 
 ## 風 - Wind
 patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
+patching["コッコロ"] = {"DA": 12.0, "TA": 3.0}
 
 ### SR
 

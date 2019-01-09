@@ -54,7 +54,7 @@
         "hp": "1833",
         "minattack": "1883",
         "attack": "13333",
-        "baseDA": 4.0,
+        "baseDA": 5.0,
         "baseTA": 1.0,
         "imageURL": "./charaimgs/3040032000_03.png",
         "en": "[5★] Threo"
@@ -154,7 +154,7 @@
         "hp": "2088",
         "minattack": "1788",
         "attack": "12888",
-        "baseDA": 24.0,
+        "baseDA": 25.0,
         "baseTA": 1.0,
         "imageURL": "./charaimgs/3040037000_03.png",
         "en": "[5★] Eahta"
@@ -254,7 +254,7 @@
         "hp": "1533",
         "minattack": "1883",
         "attack": "11333",
-        "baseDA": 4.0,
+        "baseDA": 5.0,
         "baseTA": 1.0,
         "imageURL": "./charaimgs/3040032000_01.png",
         "en": "Threo"
@@ -354,7 +354,7 @@
         "hp": "1788",
         "minattack": "1788",
         "attack": "10788",
-        "baseDA": 4.0,
+        "baseDA": 5.0,
         "baseTA": 1.0,
         "imageURL": "./charaimgs/3040037000_01.png",
         "en": "Eahta"
@@ -514,7 +514,7 @@
         "hp": "1450",
         "minattack": "1430",
         "attack": "7700",
-        "baseDA": 7.0,
+        "baseDA": 12.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040201000_01.png",
         "en": "Kokkoro"
@@ -774,8 +774,8 @@
         "hp": "1910",
         "minattack": "1100",
         "attack": "6100",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040184000_01.png",
         "en": "Aqours First-Years"
     },
@@ -1954,8 +1954,8 @@
         "hp": "1910",
         "minattack": "980",
         "attack": "5800",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040113000_01.png",
         "en": "De La Fille (Earth)"
     },
@@ -2714,8 +2714,8 @@
         "hp": "1250",
         "minattack": "1530",
         "attack": "8170",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040074000_01.png",
         "en": "Catherine"
     },
@@ -3134,8 +3134,8 @@
         "hp": "1280",
         "minattack": "1530",
         "attack": "8160",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040053000_01.png",
         "en": "Vira (Summer)"
     },
@@ -3554,7 +3554,7 @@
         "hp": "1160",
         "minattack": "1620",
         "attack": "8640",
-        "baseDA": 7.0,
+        "baseDA": 12.0,
         "baseTA": 3.0,
         "imageURL": "./charaimgs/3040022000_01.png",
         "en": "Melleau"
@@ -3814,8 +3814,8 @@
         "hp": "1900",
         "minattack": "1300",
         "attack": "8310",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040009000_03.png",
         "en": "Cagliostro"
     },
@@ -3954,8 +3954,8 @@
         "hp": "1360",
         "minattack": "1720",
         "attack": "9200",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040002000_01.png",
         "en": "Aletheia"
     },
@@ -4434,8 +4434,8 @@
         "hp": "1300",
         "minattack": "900",
         "attack": "4500",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3030021000_01.png",
         "en": "Sara (Event)"
     },
@@ -6694,8 +6694,8 @@
         "hp": "800",
         "minattack": "1200",
         "attack": "6000",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3030132000_01.png",
         "en": "Gemini Sunrise"
     },
