@@ -750,14 +750,9 @@ module.exports.checkNumberOfElements = function (totals) {
         "dark": false,
     };
 
-    // indの初期値も1からで良い
-    var ind = 0;
     for (var key in totals) {
         if (totals[key].name != "" && totals[key].isConsideredInAverage) {
-            if (ind < 4) {
-                includedElements[totals[key]["element"]] = true
-            }
-            ind++;
+            includedElements[totals[key]["element"]] = true
         }
     }
 
@@ -1975,7 +1970,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     continue;
                 case "envoy_meditation":
                     var elements = module.exports.checkNumberOfElements(totals);
-                    // 4種族なら50%, それ以外なら種族数*10%
+                    // 属性数 * 攻撃15% DA10% TA3%
                     totals[key]["normalBuff"] += (elements >= 4 ? 0.60 : elements * 0.15);
                     totals[key]["DABuff"] += (elements >= 4 ? 0.40 : elements * 0.10);
                     totals[key]["TABuff"] += (elements >= 4 ? 0.12 : elements * 0.03);
