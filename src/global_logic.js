@@ -498,8 +498,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         var taRate = (parseFloat(totalTA) >= 1.0) ? 1.0 : parseFloat(totalTA);
         var daRate = (parseFloat(totalDA) >= 1.0) ? 1.0 : parseFloat(totalDA);
-        var expectedAttack = 3.0 * taRate + (1.0 - taRate);
-        expectedAttack *= 2.0 * daRate + (1.0 - daRate);
+        var expectedAttack =  3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate));
 
         if (totals[key]["typeBonus"] == 1.5) {
             // 与ダメージ上昇サポアビは天司スキルと重複しない（効果の高い方のみ発揮）
