@@ -38,7 +38,7 @@ skillnamelist["normalHPLL"] = {
 skillnamelist["gurenJuin"] = {u"紅蓮の呪印・弐": "fire"}
 skillnamelist["muhyoTuiga"] = {u"霧氷の追牙・肆": "water"}
 
-# 紅蓮の呪印（弐ではない）は通常攻刃大として扱う
+# Inferno's Insignia is usually treated as a large atk up
 skillnamelist["normalL"] = {
     u"紅蓮の攻刃": "fire",
     u"霧氷の攻刃": "water",
@@ -112,7 +112,7 @@ skillnamelist["normalSanteL"] = {
     u"奈落の三手": "dark"
 }
 
-# 渾身は現状通常扱いで良いが、〜星系スキルが別枠で扱われるようになった場合には別スキルにする必要がある
+# Although stamina can be handled normally at present, if ~ star skill is to be treated as a separate frame, it is necessary to make it different skill
 skillnamelist["normalKonshinL"] = {
     u"紅蓮の渾身": "fire",
     u"霧氷の渾身": "water",
@@ -234,7 +234,7 @@ skillnamelist["normalRasetsuM"] = {
     u"憎悪の羅刹": "dark"
 }
 
-# 無双: 攻刃 + 二手
+# Musou: Attack up + double atk rate
 skillnamelist["normalMusouM"] = {
     u"業火の無双": "fire",
     u"渦潮の無双": "water",
@@ -572,7 +572,7 @@ skillnamelist["magnaMusouM"] = {
     u"黒霧方陣・無双": "dark"
 }
 
-# 軍神は二手(小) + 守護(小)扱い?
+# Small hp up + double atk rate up
 skillnamelist["magnaGunshinS"] = {
     u"機炎方陣・軍神": "fire",
     u"海神方陣・軍神": "water",
@@ -582,7 +582,7 @@ skillnamelist["magnaGunshinS"] = {
     u"黒霧方陣・軍神": "dark"
 }
 
-# 意志は技巧(中)扱い
+# Critical skill (M)
 skillnamelist["magnaCriticalM"] = {
     u"機炎方陣・意志": "fire",
     u"海神方陣・意志": "water",
@@ -592,7 +592,7 @@ skillnamelist["magnaCriticalM"] = {
     u"黒霧方陣・意志": "dark"
 }
 
-# 不可侵は守護(小)扱い
+# Magna hp up (S)
 skillnamelist["magnaHPS"] = {
     u"機炎方陣・不可侵": "fire",
     u"海神方陣・不可侵": "water",
@@ -619,7 +619,11 @@ skillnamelist["magnaKenbuL"] = {
     u"機炎方陣・拳武": "fire"
 }
 
-# アンノウン
+skillnamelist["magnaSeisyouM"] = {
+    u"嵐竜方陣・星晶": "wind"
+}
+
+# Unknown skills
 skillnamelist["unknownL"] = {u"アンノウン・ATK II": "unknown"}
 skillnamelist["unknownM"] = {u"アンノウン・ATK": "unknown"}
 skillnamelist["unknownHPL"] = {u"アンノウン・VIT II": "unknown"}
@@ -726,8 +730,8 @@ skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
 skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", u"インテリジェンス": "dark"}
 skillnamelist["unknownOtherNiteS"] = {u"ミフネ流剣法・双星": "fire", u"デクステリティ": "dark"}
 
-# バハ
-# フツルス拳系はスキル名が同じなので先に処理
+# Baha
+# Bahamut fist has the same skill name so process first
 skillnamelist["bahaFUHP-fist"] = {u"ヒュムアニムス・メンスII": "dark"}
 skillnamelist["bahaFUHP-katana"] = {u"ドーラアニムス・メンスII": "dark"}
 skillnamelist["bahaFUHP-bow"] = {u"エルンアニムス・メンスII": "dark"}
@@ -749,8 +753,8 @@ skillnamelist["bahaFUATHP-axe"] = {u"コンキリオ・テラ": "dark"}
 skillnamelist["bahaFUATHP-wand"] = {u"コンキリオ・インベル": "dark"}
 skillnamelist["bahaFUATHP-gun"] = {u"コンキリオ・アルボス": "dark"}
 
-# オメガウェポン
-# 属性は仮として火としておく
+# Omega Weapon
+# Attribute as a temporary fire
 skillnamelist["omega-raw"] = {
     u"グラディウス・ルーベル": "fire",
     u"シーカー・ルーベル": "fire",
@@ -764,13 +768,14 @@ skillnamelist["omega-raw"] = {
     u"マカエラ・ルーベル": "fire",
 }
 
+# Akasha
 skillnamelist["akasha-sword"] = {u"虚脱の隻翼": "dark"}
 skillnamelist["akasha-spear"] = {u"虚栄の矛戟": "fire"}
 skillnamelist["akasha-axe"] = {u"虚勢の巌": "earth"}
 skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "earth"}
 skillnamelist["akasha-bow"] = {u"虚像の鋒鏑": "light"}
 
-# コスモス
+# Cosmos
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
 skillnamelist["cosmosBL"] = {u"バランス・スタンス": "light"}
 skillnamelist["cosmosDF"] = {u"ディフェンド・スタンス": "light"}
@@ -786,7 +791,7 @@ skillnamelist["cosmos-bow"] = {u"アロー・オブ・コスモス": "light"}
 skillnamelist["cosmos-katana"] = {u"ブレイド": "light"}
 skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
 
-# 天司の祝福系
+# Tenshi
 skillnamelist["tenshiShukufukuII"] = {
     u"ミカエルの祝福II": "fire",
     u"ガブリエルの祝福II": "water",
@@ -801,7 +806,7 @@ skillnamelist["tenshiShukufuku"] = {
     u"ラファエルの祝福": "wind"
 }
 
-# ダメージ上限アップ系
+# Damage cap up
 skillnamelist["normalDamageLimit7"] = {
     u"賢者の加護": "earth",
 }
@@ -816,7 +821,7 @@ skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ダーク": "dark",
 }
 
-# キャラ固有武器
+# Character specific weapon
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
 skillnamelist["maihimeEnbu"] = {u"舞姫の演武": "water"}
@@ -831,7 +836,7 @@ skillnamelist["normalL"][u"英雄たる証明"] = "wind"
 skillnamelist["normalL"][u"禁忌の悲恋"] = "dark"
 skillnamelist["normalL"][u"狙撃の極意"] = "water"
 
-# その他調整が必要な武器
+# Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
 
 armtypelist = OrderedDict()

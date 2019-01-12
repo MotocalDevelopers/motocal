@@ -1444,7 +1444,7 @@ var multiLangData = {
         "ja": "サーバに保存\n(短縮URLを取得)",
         "zh": "保存到服务器",
     },
-    //定数変換用
+    // For constant conversion
     "人間": {
         "en": "Human",
         "ja": "人間",
@@ -1612,7 +1612,7 @@ var multiLangData = {
         "ja": "キャラ情報・スキル合計値",
         "zh": "角色情报・技能合计值",
     },
-    // スキル名
+    // Skill name
     "通常攻刃(小)": {
         "en": "Normal Might (S)",
         "ja": "通常攻刃(小)",
@@ -1887,6 +1887,11 @@ var multiLangData = {
         "en": "Magna Wand (L)",
         "ja": "マグナ杖術(大)",
         "zh": "方阵杖術(大)",
+    },
+    "マグナ本質": {
+        "en": "Magna Essence (M)",
+        "ja": "マグナ本質(中)",
+        "zh": "方阵本質(中)",
     },
 
     "アンノウンATK・I": {
@@ -2369,7 +2374,7 @@ var multiLangData = {
         "ja": "奥義上限UP(イクシード)",
         "zh": "奥义上限UP(Exceed)",
     },
-    // 拡張スキル
+    // Extended skills
     "通常渾身(大)(神石加護無効)": {
         "en": "Normal Stamina (L) (No Summon Aura)",
         "ja": "通常渾身(大)(神石加護無効)",
@@ -2405,7 +2410,7 @@ var multiLangData = {
         "ja": "[ジータのみ] 通常枠DATA 30%",
         "zh": "[只限主角] 通常DATA 30%",
     },
-    // テンプレート用
+    // For templates
     "王道: 竜巻の技巧": {
         "en": "Normal Verity (M)",
         "ja": "王道: 竜巻の技巧",
@@ -2609,7 +2614,7 @@ var multiLangData = {
         "ja": "下の行にバフ設定をコピーします.",
         "zh": "把Buff设定复制到下面一行。",
     },
-    // バフテンプレート
+    // Buff template
     "レイジIII": {
         "en": "Rage III",
         "ja": "レイジIII",
@@ -3008,7 +3013,7 @@ var multiLangData = {
     },
 };
 
-// 言語設定
+// Language settings
 module.exports.getLocale = function () {
     var lang = (
         (window.navigator.languages && window.navigator.languages[0]) ||

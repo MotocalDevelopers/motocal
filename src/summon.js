@@ -28,8 +28,8 @@ var enemyDefenseType = GlobalConst.enemyDefenseType;
 
 var SummonList = CreateClass({
     getInitialState: function () {
-        // summonsはkey管理のためだけの配列
-        // summonsのindexが表示順 = Summonのprops.idになる
+        // summons is just an array for key management
+        // The index of summons will be props.id in display order = Summon
         var sm = [];
         for (var i = 0; i < this.props.summonNum; i++) {
             sm.push(i);
@@ -51,7 +51,6 @@ var SummonList = CreateClass({
                 summons.push(i + maxvalue + 1)
             }
         } else {
-            // ==の場合は考えなくてよい (問題がないので)
             while (summons.length > num) {
                 summons.pop();
             }
@@ -76,34 +75,34 @@ var SummonList = CreateClass({
     },
     handleOnCopy: function (id, state) {
         if (id < this.props.summonNum - 1) {
-            // arrayForCopyにコピー対象のstateを入れておいて、
-            // componentWillReceivePropsで読み出されるようにする
+            // Place the copy target state in arrayForCopy,
+            // Make it read by componentWillReceiveProps
             var newArrayForCopy = this.state.arrayForCopy;
             newArrayForCopy[id + 1] = JSON.parse(JSON.stringify(state));
             this.setState({arrayForCopy: newArrayForCopy});
 
-            // smlist側の更新
+            // Update on smlist side
             var newsmlist = this.state.smlist;
             newsmlist[id + 1] = JSON.parse(JSON.stringify(state));
             this.setState({smlist: newsmlist});
 
-            // Root へ変化を伝搬
+            //Propagate change to Root
             this.props.onChange(newsmlist);
         }
     },
     handleOnRemove: function (id, initialState) {
-        // arrayForCopyに初期stateを入れておいて、
-        // componentWillReceivePropsで読み出されるようにする
+        // Include initial state in arrayForCopy、
+        // Make it read by componentWillReceiveProps
         var newArrayForCopy = this.state.arrayForCopy;
         newArrayForCopy[id] = initialState;
         this.setState({arrayForCopy: newArrayForCopy});
 
-        // smlist側の更新
+        // Update on smlist side
         var newsmlist = this.state.smlist;
         newsmlist[id] = initialState;
         this.setState({smlist: newsmlist});
 
-        // Root へ変化を伝搬
+        // Propagate change to Root
         this.props.onChange(newsmlist);
     },
     copyCompleted: function (id) {
@@ -115,16 +114,16 @@ var SummonList = CreateClass({
         if (id > 0) {
             var newsummons = this.state.summons;
 
-            // charas swap
+            // Characters swap
             newsummons.splice(id - 1, 2, newsummons[id], newsummons[id - 1]);
             this.setState({summons: newsummons});
 
-            // charalist swap
+            // CharacterList swap
             var newsmlist = this.state.smlist;
             newsmlist.splice(id - 1, 2, newsmlist[id], newsmlist[id - 1]);
             this.setState({smlist: newsmlist});
 
-            // Root へ変化を伝搬
+            // Propagate change to Root
             this.props.onChange(newsmlist);
         }
     },
@@ -132,15 +131,15 @@ var SummonList = CreateClass({
         if (id < this.props.summonNum - 1) {
             var newsummons = this.state.summons;
 
-            // charas swap
+            // Characters swap
             newsummons.splice(id, 2, newsummons[id + 1], newsummons[id]);
             this.setState({summons: newsummons});
 
-            // charalist swap
+            // CharacterList swap
             var newsmlist = this.state.smlist;
             newsmlist.splice(id, 2, newsmlist[id + 1], newsmlist[id]);
             this.setState({smlist: newsmlist});
-            // Root へ変化を伝搬
+            // Propagate change to Root
             this.props.onChange(newsmlist);
         }
     },
@@ -213,8 +212,8 @@ var Summon = CreateClass({
     componentDidMount: function () {
         var state = this.state;
 
-        // もし dataForLoad に自分に該当するキーがあるなら読み込む
-        // (データロード時に新しく増えた場合)
+        // If dataForLoad has a key corresponding to you, read
+        // (When newly increased at data loading)
         if (this.props.dataForLoad != undefined) {
             var summon = this.props.dataForLoad;
 
@@ -225,14 +224,14 @@ var Summon = CreateClass({
             }
         }
 
-        // 初期化後 state を 上の階層に渡しておく
-        // summonList では onChange が勝手に上に渡してくれるので必要なし
+        // Pass initialized state to the upper hierarchy
+        // Since summaryList hands onChange without permission, it is unnecessary
         this.props.onChange(this.props.id, state);
     },
     componentWillReceiveProps: function (nextProps) {
-        // データロード時のみ読み込み
+        // Read only when loading data
         if (nextProps.dataName != this.props.dataName) {
-            // 対応するIDが無い場合は undefined が飛んでくる
+            // If there is no corresponding ID, undefined will fly
             if (nextProps.dataForLoad != undefined) {
                 var summon = nextProps.dataForLoad;
 
@@ -243,8 +242,8 @@ var Summon = CreateClass({
             return 0;
         }
 
-        // もし arrayForCopy に自分に該当するキーがあるなら読み込む
-        // コピー(またはリセット)後はSummonListに伝えて該当データを消す
+        // If arrayForCopy has a key applicable to you, read it
+        // After copying (or resetting), tell it to SummonList and delete the corresponding data
         if (nextProps.arrayForCopy != undefined) {
             var state = nextProps.arrayForCopy;
             this.setState(state);

@@ -16,7 +16,7 @@ var {ColP} = require('./gridp.js');
 var intl = require('./translate.js');
 var _ua = GlobalConst._ua;
 
-// query 取得用の関数
+// Function for obtaining query
 var urlid = getVarInQuery("id");
 
 function getVarInQuery(key) {
@@ -141,10 +141,10 @@ var Root = CreateClass({
         this.setState(newState)
     },
     onChangeArmData: function (state, isSubtle) {
-        // armlistの武器名に変更があればresultはupdateしなくてよい
+        // If you change the weapon name of armlist, you do not have to update the result
         this.setState({armlist: state});
         this.setState({armNum: state.length});
-        // tablet と smartphoneの時はタブ切り替え時以外updateしない
+        // When tablet and smartphone are used, it does not update except when tab switching
         if (isSubtle != undefined) {
             this.setState({noResultUpdate: isSubtle});
         } else {
@@ -173,7 +173,7 @@ var Root = CreateClass({
         this.setState({noResultUpdate: true});
     },
     handleChangeData: function (newDataName, newData) {
-        // Rootが持つデータを更新
+        // Update data held by Root
         this.setState({armNum: newData.armNum});
         this.setState({summonNum: newData.summonNum});
         this.setState({charaNum: newData.charaNum});
@@ -184,7 +184,7 @@ var Root = CreateClass({
         this.setState({chara: newData.chara});
         this.setState({simulator: newData.simulator});
 
-        // 子要素に伝搬させるためのデータも同様に更新
+        // Data for propagating to the child element is similarly updated
         this.setState({
             dataForLoad: {
                 "profile": newData.profile,
@@ -217,9 +217,8 @@ var Root = CreateClass({
             newArmNum += 1;
             this.setState({armNum: newArmNum});
             return newArmNum;
-        } else {
-            return -1;
         }
+        return -1;
     },
     subArmNum: function (e) {
         var newArmNum = parseInt(this.state.armNum);
@@ -243,9 +242,8 @@ var Root = CreateClass({
             newCharaNum += 1;
             this.setState({charaNum: newCharaNum});
             return newCharaNum;
-        } else {
-            return -1;
         }
+        return -1;
     },
     subCharaNum: function (e) {
         var newCharaNum = parseInt(this.state.charaNum);
@@ -555,7 +553,7 @@ var Sys = CreateClass({
             var newState = this.state;
             var propsdata = JSON.parse(JSON.stringify(this.props.data));
 
-            // dataName だけ反映されていないので上書きしておく
+            // Since it is not reflected only in dataName, overwrite it
             propsdata["dataName"] = this.state.dataName;
 
             newState["storedData"][this.state.dataName] = propsdata;
@@ -644,7 +642,7 @@ var Sys = CreateClass({
                         <Button tye="submit" bsStyle="primary"
                                 onClick={this.onSubmitLoadRawData}>{intl.translate("移行データ入力", locale)}</Button>
 
-                        {/* rawdataが発行されている場合にJSONダウンロードボタンを表示 */}
+                        {/* Show JSON download button when rawdata has been issued */}
                         {this.state.rawData != '' ?
                             <Button bsStyle="primary" className="systemButton"
                                     onClick={this.onSubmitDownload}>{intl.translate("ダウンロード", locale)}</Button>
@@ -661,7 +659,7 @@ var Sys = CreateClass({
 // Twitter Button
 var TwitterShareButton = CreateClass({
     componentDidMount: function () {
-        // localStorage から sharehistory をロードする
+        // load sharehistory from localStorage
         if ("sharehist" in localStorage && localStorage.sharehist != "{}") {
             var sharehist = JSON.parse(localStorage["sharehist"]);
             this.setState({shareurl_history: sharehist})
@@ -676,10 +674,10 @@ var TwitterShareButton = CreateClass({
     getShortenUrl: function () {
         var data = JSON.parse(JSON.stringify(this.props.data));
         if (this.props.dataName != '') {
-            // 基本的にSys.dataNameに入力されているものをベースにして保存
+            // Save basically based on what was entered in Sys.dataName
             data["dataName"] = this.props.dataName;
         } else {
-            // Sys.dataNameが空の場合
+            // if Sys.dataName is empty
             data["dataName"] = "savedData";
         }
 

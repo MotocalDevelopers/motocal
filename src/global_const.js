@@ -44,7 +44,7 @@ module.exports.ElementColorLabel = CreateClass({
         element: PropTypes.string.isRequired,
     }
 });
-// 属性に対応した色のラベルを返す
+// Return the label of the color corresponding to the attribute
 module.exports.getElementColorLabel = (function (element, locale) {
     if (element == "fire") {
         return <span className="label label-danger">{intl.translate("火", locale)}</span>;
@@ -405,6 +405,7 @@ var skilltypes = {
     "magnaHissatsuM": {name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M"},
     "magnaKenbuL": {name: "マグナ拳武", type: "magnaKenbu", amount: "L"},
     "magnaJojutsuL": {name: "マグナ杖術", type: "magnaJojutsu", amount: "L"},
+    "magnaSeisyouM": {name: "マグナ本質", type: "magnaSeisyou", amount: "M"},
     "unknownM": {name: "アンノウンATK・I", type: "unknown", amount: "M"},
     "unknownL": {name: "アンノウンATK・II", type: "unknown", amount: "L"},
     "strengthHaisuiM": {name: "EX背水(中)", type: "exHaisui", amount: "M"},
@@ -507,7 +508,7 @@ var cosmosSkills = {
     "non": {name: "無し", type: "non", amount: "non"},
 };
 
-// テンプレート選択時の追加選択
+// additional selection when template is selected
 var sishoSeiryu = {
     "non": {name: "無し", type: "non", amount: "non"},
     "normalCriticalM": {name: "王道: 竜巻の技巧"},
@@ -623,7 +624,7 @@ var filterElementTypes = {
     "dark": "闇",
 };
 
-// "key"属性が強い属性と弱い属性
+// strong and weak elements for each element
 module.exports.elementRelation = {
     "fire": {"weak": "water", "strong": "wind"},
     "wind": {"weak": "fire", "strong": "earth"},
@@ -633,6 +634,7 @@ module.exports.elementRelation = {
     "dark": {"weak": "none", "strong": "light"},
 };
 
+// Bahamut weapons
 module.exports.bahamutRelation = {
     "dagger": {"type1": "human"},
     "axe": {"type1": "doraf"},
@@ -659,6 +661,7 @@ module.exports.bahamutFURelation = {
     "music": {"type1": "havin"},
 };
 
+// Classes
 module.exports.Jobs = {
     "beruse": {
         "name": "ベルセルク",
@@ -1127,8 +1130,8 @@ var summonElementTypes = {
     "all": {"name": "全属性", "type": ["all"]},
 };
 
+// Skills
 var skillAmounts = {
-    // normal と unknown の M Slv11 以降については仮入力
     "normal": {
         "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 14.8, 15.1, 15.4, 15.7, 16.0],
@@ -1165,24 +1168,22 @@ var skillAmounts = {
         },
     },
     "bahaHP": {
-        // 剣など
+        // Sword etc.
         "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
         "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
     },
     "bahaAT": {
-        // 短剣など
+        // Daggers etc.
         "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 30.4, 30.8, 31.2, 31.6, 32.0],
         "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
     },
     "bahaFUATHP": {
-        // 短剣、剣など
+        // Dagger, sword etc.
         "HP": [15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
         "AT": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
     },
     "bahaFUHP": {
-        // 拳など
-        // "HP": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 32.0, 34.0, 36.0, 38.0, 40.0],
-        // wiki データ
+        // Fist etc
         "HP": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0],
         "DA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0],
         "TA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0],
@@ -1225,7 +1226,6 @@ var skillAmounts = {
         "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 5.2, 6.6, 7.0],
         "LL": [1.6, 2.2, 2.8, 3.4, 4.0, 4.6, 5.2, 5.8, 6.4, 7.0, 7.4, 7.8, 8.2, 8.6, 9.0],
     },
-    // 仮
     "magnaNite": {
         "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
         "M": [0.7, 1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 4.3, 4.6, 4.9],
@@ -1248,7 +1248,6 @@ var skillAmounts = {
         "L": [4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6],
         "ratio": 0.5,
     },
-    // 仮入力
     "magnaCritical": {
         "S": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.2, 2.3, 2.4],
         "M": [3.02, 3.24, 3.46, 3.68, 3.90, 4.12, 4.34, 4.56, 4.78, 5.0, 5.22, 5.44, 5.66, 5.88, 6.10],
@@ -1264,36 +1263,41 @@ var skillAmounts = {
     "magnaHakai": {
         "S": [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5],
     },
-    // 楚歌 効果が1本のみとなる為、通常・マグナ攻刃とは別途定義
+    // Since it is only one Soka effect, it is usually defined separately from Magna attacking blade
     "normalSoka": {
         "M": [3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
     },
     "magnaSoka": {
         "M": [3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
     },
-    // 先制スキルは加護が乗らない　Slv11~14までは仮入力
+    // Pre-emptive skills
     "sensei": {
         "M": [5.0, 6.0, 7.0, 8.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0],
     },
-    // 鷲王の結界
+    // Royal Wing Barrier
     "washiouKekkai": {
         "M": [6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0],
     },
+    // normal Mystery + Sentence
     "normalHiou": {
         "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5],
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5],
         "L": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5]
     },
+    // normal Sentence limit up
     "normalOugiDamageLimitHissatsu": {
         "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0],
         "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8]
     },
+    // normal Sentence
     "magnaHiou": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
+    // magna Sentence limit up
     "magnaOugiDamageLimitHissatsu": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
     },
+    // Dmg cap up
     "normalDamageLimit": {
         "S": 0.025,
         "M": 0.07,
@@ -1304,6 +1308,7 @@ var skillAmounts = {
         "M": 0.07,
         "L": 0.1,
     },
+    // Excelsior Ougi cap up
     "ougiDamageLimitExceed": {
         "M": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]
     },
@@ -1329,7 +1334,6 @@ var supportAbilities = {
         "range": "all",
         "value": 0.03
     },
-    // "ta_up_all_5": { "name": "全体TA率UP5%", "type": "TABuff", "range": "all", "value": 0.05 },
     "data_up_wind_10_5": {
         "name": "全体風DA率UP10%とTA率UP5％(コッコロ)",
         "type": "dataBuff_wind",
@@ -1390,7 +1394,6 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10
     },
-    // "atk_up_depends_member": {"name": "バトルメンバーの数に応じて攻撃力アップ(パシ)", "type": "normalBuff_depends_member", "range": "own", "value": 0.05},
     "ougi_gage_up_own_10": {
         "name": "奥義ゲージ上昇量UP10%(メガネ)",
         "type": "ougiGageBuff",

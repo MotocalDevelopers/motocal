@@ -42,7 +42,7 @@ var Profile = CreateClass({
         };
     },
     componentDidMount: function () {
-        // 初期化後 state を 上の階層に渡しておく
+        // Pass initialized state to the upper hierarchy
         this.props.onChange(this.state);
     },
     componentWillReceiveProps: function (nextProps) {
@@ -102,17 +102,17 @@ var Profile = CreateClass({
         this.setState({openBufflist: !(this.state.openBufflist)})
     },
     handleEvent: function (key, e) {
-        // input タイプの入力フォームはonBlurを利用する
+        // input type input form uses onBlur
         var newState = this.state;
         newState[key] = e.target.value;
         this.setState(newState)
     },
     handleOnBlur: function (e) {
-        // フォーカスが外れた時だけ変更を親に送る
+        // Send change to parent only when focus is off
         this.props.onChange(this.state)
     },
     handleSelectEvent: function (key, e) {
-        // select タイプの入力フォームはonChangeの際で良い
+        // A select type input form is good for onChange
         var newState = this.state;
         newState[key] = e.target.value;
         if (key == "job") {

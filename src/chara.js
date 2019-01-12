@@ -53,7 +53,6 @@ var CharaList = CreateClass({
                 charas.push(i + maxvalue + 1)
             }
         } else {
-            // ==の場合は考えなくてよい (問題がないので)
             while (charas.length > num) {
                 charas.pop();
             }
@@ -101,8 +100,8 @@ var CharaList = CreateClass({
         this.setState(newState)
     },
     handleOnRemove: function (id, initialState) {
-        // arrayForCopy に initial state を入れておいて、
-        // componentWillReceivePropsで読み出されるようにする
+        // put initial state in arrayForCopy,
+        // to be read by componentWillReceiveProps
         var newArrayForCopy = this.state.arrayForCopy;
         newArrayForCopy[id] = JSON.parse(JSON.stringify(initialState));
         this.setState({arrayForCopy: newArrayForCopy});
@@ -111,7 +110,7 @@ var CharaList = CreateClass({
         newcharalist[id] = initialState;
         this.setState({charalist: newcharalist});
 
-        // Root へ変化を伝搬
+        // Propagate changes to Root
         this.props.onChange(newcharalist, false);
     },
     copyCompleted: function (id) {
@@ -123,15 +122,15 @@ var CharaList = CreateClass({
         if (id > 0) {
             var newcharas = this.state.charas;
 
-            // charas swap
+            // Characters Swap
             newcharas.splice(id - 1, 2, newcharas[id], newcharas[id - 1]);
             this.setState({charas: newcharas});
 
-            // charalist swap
+            // CharacterList Swap
             var newcharalist = this.state.charalist;
             newcharalist.splice(id - 1, 2, newcharalist[id], newcharalist[id - 1]);
             this.setState({charalist: newcharalist});
-            // Root へ変化を伝搬
+            // Propagate changes to Root
             this.props.onChange(newcharalist, false);
         }
     },
@@ -139,15 +138,15 @@ var CharaList = CreateClass({
         if (id < this.props.charaNum - 1) {
             var newcharas = this.state.charas;
 
-            // charas swap
+            // Characters Swap
             newcharas.splice(id, 2, newcharas[id + 1], newcharas[id]);
             this.setState({charas: newcharas});
 
-            // charalist swap
+            // CharacterList Swap
             var newcharalist = this.state.charalist;
             newcharalist.splice(id, 2, newcharalist[id + 1], newcharalist[id]);
             this.setState({charalist: newcharalist});
-            // Root へ変化を伝搬
+            // Propagate changes to Root
             this.props.onChange(newcharalist, false);
         }
     },
@@ -196,7 +195,7 @@ var CharaList = CreateClass({
         var arrayForCopy = this.state.arrayForCopy;
         var copyCompleted = this.copyCompleted;
 
-        // view 用
+        // for view
         var panel_style = {"textAlign": "left"};
 
         return (
@@ -301,8 +300,8 @@ var Chara = CreateClass({
     componentDidMount: function () {
         var state = this.state;
 
-        // もし dataForLoad に自分に該当するキーがあるなら読み込む
-        // (データロード時に新しく増えたコンポーネント用)
+        // Read if there is a key corresponding to you in dataForLoad
+        // (for newly added components when loading data)
         var chara = this.props.dataForLoad;
         if (chara != undefined && this.props.id in chara) {
             state = chara[this.props.id];
@@ -310,14 +309,14 @@ var Chara = CreateClass({
             return 0
         }
 
-        // もし addCharaIDが設定されていて、自分と一致しているなら読み込む
+        // read if addCharaID is set and matches yourself
         if (this.props.addChara != null && this.props.id == this.props.addCharaID) {
             var newchara = this.props.addChara;
             state = this.setNewCharaState(state, newchara);
             this.setState(state);
         }
-        // 初期化後 state を 上の階層に渡しておく
-        // CharaList では onChange が勝手に上に渡してくれるので必要なし
+        // Pass state after initialization to upper layer
+        // Since CharaList hands onChange without permission, it is not necessary
         this.props.onChange(this.props.id, state, false);
     },
     componentWillReceiveProps: function (nextProps) {
@@ -331,8 +330,8 @@ var Chara = CreateClass({
             }
         }
 
-        // もし arrayForCopy に自分に該当するキーがあるなら読み込む
-        // (Charaの場合はコピーはなく、削除のみ)
+        // If there is a key corresponding to you in arrayForCopy read
+        // (In the case of Chara there is no copy, only deletion)
         if (nextProps.arrayForCopy != undefined) {
             state = nextProps.arrayForCopy;
             this.setState(state);

@@ -321,7 +321,7 @@ var RegisteredArm = CreateClass({
                 newState["additionalSelectKeys"] = GlobalConst.additionalSelectList[key].selectKeys;
                 newState["additionalSelectSelectors"] = GlobalConst.additionalSelectList[key].selectors;
 
-                // 初期キーをセット
+                // Set initial key
                 for (var itr = 0; itr < newState.additionalSelectKeys.length; ++itr) {
                     newState[newState.additionalSelectKeys[itr]] = GlobalConst.additionalSelectList[key].defaultKeys[itr]
                 }
@@ -360,12 +360,12 @@ var RegisteredArm = CreateClass({
                 arm["element"] = this.state.elements;
                 arm["element2"] = this.state.elements
             } else if (additionalKeys === "main_weapon_change") {
-                // メイン装備時に効果が切り替わるスキルは2番目に配置する
+                // The skill that switches the effect at the time of main equipment is placed second
                 if (this.state.main_weapon_change) {
                     arm["skill2"] += "Main"
                 }
             } else if (additionalKeys === "main_weapon_switch") {
-                // メイン装備時に効果がONになるスキルは2番目に配置する
+                // The skill that turns on the effect at the time of main equipment is placed second
                 if (!this.state.main_weapon_switch) {
                     arm["skill2"] = "non"
                 }

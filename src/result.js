@@ -51,8 +51,8 @@ var ResultList = CreateClass({
         if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
             var totalBuff = getTotalBuff(prof);
 
-            // 後から追加したパラメータはNaNなことがあるので追加処理
-            // sortKey がNaNでないならそちらを使う、NaNなら総合攻撃力で
+            // Since the parameter added later may be NaN, additional processing
+            // If sortKey is not a NaN, use that, NaN if it's general attack power
             var sortkey = "averageCyclePerTurn";
             var sortkeyname = "予想ターン毎ダメージのパーティ平均値";
             if (newprops.sortKey == newprops.sortKey) {
@@ -60,7 +60,7 @@ var ResultList = CreateClass({
                 sortkeyname = keyTypes[sortkey]
             }
 
-            // combinationsが変更されていないなら古いやつを使う
+            // If combinations have not been changed, use old guys
             if (this.state.previousArmlist != null) {
                 var isCombinationChanged = false;
                 if (this.state.previousArmlist.length != arml.length) {
@@ -71,7 +71,7 @@ var ResultList = CreateClass({
                         if (arml[i].considerNumberMax != this.state.previousArmlist[i].considerNumberMax || arml[i].considerNumberMin != this.state.previousArmlist[i].considerNumberMin) {
                             isCombinationChanged = true;
                         }
-                        // コスモス武器になったか、コスモス武器じゃなくなったかでコンビネーションが変わる
+                        // Combination changes depending on whether it became a cosmos weapon, or it was not a cosmos weapon
                         if (isCosmos(arml[i]) != isCosmos(this.state.previousArmlist[i])) {
                             isCombinationChanged = true;
                         }
@@ -102,27 +102,27 @@ var ResultList = CreateClass({
             var itr = combinations.length;
             var totalItr = itr * summon.length * Object.keys(totals).length;
 
-            // 前処理に必要な値があればここで用意
+            // If necessary values for preprocessing are prepared here
             var minHP = (prof.minimumHP == undefined) ? undefined : parseInt(prof.minimumHP);
 
             for (var i = 0; i < itr; i = (i + 1) | 0) {
                 var oneres = calcOneCombination(combinations[i], summon, prof, arml, totals, totalBuff);
                 for (var j = 0; j < summon.length; j++) {
-                    // 各結果に対して前処理
+                    // For each result preprocessing
                     if (isValidResult(oneres[j], minHP)) {
                         if (res[j].length < 10) {
-                            //  まずminSortkeyを更新する
+                            // First update minSortkey
                             if (minSortKey[j] < 0 || minSortKey[j] > oneres[j].Djeeta[sortkey]) {
                                 minSortKey[j] = oneres[j].Djeeta[sortkey]
                             }
                             res[j].push({data: oneres[j], armNumbers: combinations[i]});
                         } else {
-                            // minSortkey より大きいものだけpush
+                            // Only those larger than minSortkey push
                             if (oneres[j].Djeeta[sortkey] >= minSortKey[j]) {
-                                // 11番目に追加する
+                                // Add to eleventh
                                 res[j].push({data: oneres[j], armNumbers: combinations[i]});
 
-                                // 10番目まででminSortkey[j]と一致するものを消す
+                                // Erase what matches minSortkey [j] up to the 10th
                                 var spliceid = -1;
                                 for (var k = 0; k < 10; k = (k + 1) | 0) {
                                     if (res[j][k].data.Djeeta[sortkey] == minSortKey[j]) {
@@ -132,7 +132,7 @@ var ResultList = CreateClass({
                                 res[j].splice(spliceid, 1);
                                 minSortKey[j] = -1;
 
-                                // 10個の配列になったので、もう一度最小値を計算する
+                                // Since it became an array of ten, once again calculate the minimum value
                                 for (var k = 0; k < 10; k = (k + 1) | 0) {
                                     if (minSortKey[j] < 0 || minSortKey[j] > res[j][k].data.Djeeta[sortkey]) {
                                         minSortKey[j] = res[j][k].data.Djeeta[sortkey]
@@ -144,8 +144,7 @@ var ResultList = CreateClass({
                 }
                 initializeTotals(totals)
             }
-            // この時点で summonres は"各召喚石に対応する結果データの連想配列 を並べた配列"の配列になっているはず
-
+            // At this point, summonres should be an array of "array of associative arrays of result data corresponding to each summon"
             for (var i = 0; i < summon.length; i++) {
                 if (sortkey == "ATKandHP") {
                     res[i].sort(function (a, b) {
@@ -237,7 +236,7 @@ var ResultList = CreateClass({
             this.setState({result: allresult});
         }
 
-        // armlistが変更されていないかcheck => 変更されてたら今までの分消す
+        // Whether armlist has not been changed check => If changed, erase until now
         var isArmValid = true;
         for (var i = 0; i < this.state.storedList.combinations.length; i++) {
             if (nextProps.armlist.length != this.state.storedList.armlist[i].length) {
@@ -245,7 +244,7 @@ var ResultList = CreateClass({
                 continue;
             }
             for (var k = 0; k < nextProps.armlist.length; k++) {
-                // 名前と攻撃力が同時に変更されていた場合、削除や追加などが起こっていると予想される
+                // If name and attack power were changed at the same time, it is expected that deletion, addition, etc. are occurring
                 if (nextProps.armlist[k].name != this.state.storedList.armlist[i][k].name && nextProps.armlist[k].attack != this.state.storedList.armlist[i][k].attack) {
                     isArmValid = false;
                     break;
@@ -261,7 +260,7 @@ var ResultList = CreateClass({
         var newState = this.state;
         newState[key] = (newState[key] == 0) ? 1 : 0;
 
-        // 自動更新ONにしたらUPDATEする
+        // UPDATE after automatic update ON
         if (key == "disableAutoResultUpdate" && newState[key] == 0) {
             newState["result"] = this.calculateResult(this.props)
         }
@@ -364,7 +363,7 @@ var ResultList = CreateClass({
         var chara = this.props.chara;
         var summon = this.props.summon;
 
-        // テスカトリポカ計算用
+        // For Tezcatlipoca calculation
         var races = checkNumberOfRaces(chara);
         var tesukatoripoka = getTesukatoripokaAmount;
 
@@ -960,7 +959,7 @@ var Result = CreateClass({
 
                 for (key in m.data) {
                     charaDetail[key] = [];
-                    // { "Djeeta": [<p>攻撃力10000, HP15000</p>, <p>通常攻刃15%</p>, <p>DA 100%</p>], }のような連想配列を作る
+                    // Like { "Djeeta": [<p>攻撃力10000, HP15000</p>, <p>通常攻刃15%</p>, <p>DA 100%</p>], } Create an associative array
                 }
 
                 if (sw.switchTotalAttack) {
@@ -997,8 +996,8 @@ var Result = CreateClass({
 
                 if (sw.switchCharaDA) {
                     for (key in m.data) {
-                        // switchDATAが指定されていなかったら全員分
-                        // 指定されていたらDjeetaじゃない場合だけ
+                        // If switchDATA is not specified, all members
+                        // Only if it is not Djeeta if specified
                         if (!sw.switchDATA || (key != "Djeeta")) {
                             charaDetail[key].push(
                                 <span key={key + "-da"} className="result-chara-detail">
@@ -1014,7 +1013,7 @@ var Result = CreateClass({
 
                 if (sw.switchDebuffResistance) {
                     for (key in m.data) {
-                        // 弱体耐性率は%表記のまま扱う
+                        //Treat debuff tolerance rate as% notation
                         charaDetail[key].push(
                             <span key={key + "-debuffResistance"} className="result-chara-detail">
                                     <span
@@ -1187,9 +1186,9 @@ var Result = CreateClass({
                         var mainSkillInfo = [];
                         var skilldata = m.data[key].skilldata;
 
-                        // 攻刃系スキル用
+                        // For attacking skills
                         var pushSkillInfoElement1 = (skillKey, label, labelType = "primary") => {
-                            // 外側のmainSkillInfoとskilldataとlocaleを使う
+                            // Use outer mainSkillInfo, skilldata, and locale
                             if (skilldata[skillKey] != 1.0) {
                                 mainSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
@@ -1215,9 +1214,9 @@ var Result = CreateClass({
                         pushSkillInfoElement1("other", "その他バフ", "primary");
 
                         var multipleAttackSkillInfo = [];
-                        // 連撃スキル用
+                        // For batting skill
                         var pushSkillInfoElement2 = (skillKey, label, labelType = "primary") => {
-                            // 外側のskillInfoとskilldataとlocaleを使う
+                            // Use outer skillInfo, skilldata and locale
                             if (skilldata[skillKey] != 0.0) {
                                 multipleAttackSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
@@ -1277,9 +1276,9 @@ var Result = CreateClass({
                         }
 
                         var otherSkillInfo = [];
-                        // その他スキル用
+                        // For other skills
                         var pushSkillInfoElement3 = (skillKey, label, labelType = "primary") => {
-                            // 外側のskillInfoとskilldataとlocaleを使う
+                            // Use outer skillInfo, skilldata and locale
                             if (skilldata[skillKey] != 0.0) {
                                 otherSkillInfo.push(
                                     <span key={key + "-" + skillKey}>

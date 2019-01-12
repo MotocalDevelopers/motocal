@@ -84,8 +84,8 @@ supportAbilist["damageUP_OugiCapUP_20"] = {
 # Patching
 patching = OrderedDict()
 
-# 連撃率 from すんどめ侍さん
-## 十天衆
+# Consecutive atk rate from すんどめ侍さん
+## Eternals
 patching["[最終]ソーン"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]サラーサ"] = {"DA": 5.0, "TA": 1.0}
 patching["[最終]カトル"] = {"DA": 10.0, "TA": 5.0}

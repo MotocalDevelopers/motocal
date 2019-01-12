@@ -255,7 +255,7 @@ var Simulator = CreateClass({
         var buffs = this.state.buffs;
 
         for (var k = 0; k < maxTurn; k++) {
-            // 各ターン毎のバフ、HPなどをアレする
+            // Buff, HP etc for each turn
             totalBuff["normal"] = 0.01 * buffs["全体バフ"][k].normal;
             totalBuff["element"] = 0.01 * buffs["全体バフ"][k].element;
             totalBuff["other"] = 0.01 * buffs["全体バフ"][k].other;
@@ -264,7 +264,7 @@ var Simulator = CreateClass({
             totalBuff["ougiGage"] = 0.01 * buffs["全体バフ"][k].ougiGage;
             totalBuff["additionalDamage"] = 0.01 * buffs["全体バフ"][k].additionalDamage;
 
-            // 個別バフと残りHPを設定
+            // Set individual buff and remaining HP
             for (var key in totals) {
                 totals[key].remainHP = (buffs["全体バフ"][k].remainHP > buffs[key][k].remainHP) ? 0.01 * buffs[key][k].remainHP : 0.01 * buffs["全体バフ"][k].remainHP;
                 totals[key].normalBuff = 0.01 * buffs[key][k].normal;
@@ -287,8 +287,8 @@ var Simulator = CreateClass({
         return generateSimulationData(res, this.state, armlist, summon, prof, totalBuff, chara, storedCombinations, storedNames, this.props.locale);
     },
     componentDidMount: function () {
-        // Mount し終わった際のデータを
-        // Root.state.simulatorに保存する
+        // Mount When you finish the data
+        // Save to Root.state.simulator
         this.props.onChange(this.state);
     },
     updateBuffList: function (oldState) {
@@ -300,7 +300,7 @@ var Simulator = CreateClass({
             nowDragging: false,
         };
 
-        // 削除されてるかチェック
+        // Check if it has been deleted
         for (var key in oldState.buffs) {
             if ((key == "全体バフ") || (key == "Djeeta")) {
                 newState.buffs[key] = oldState.buffs[key];
@@ -318,7 +318,7 @@ var Simulator = CreateClass({
             }
         }
 
-        // いなかったキャラの分を追加
+        // Addition of characters that were not there
         for (var i = 0; i < this.props.chara.length; i++) {
             if (this.props.chara[i] != undefined) {
                 var namekey = this.props.chara[i].name;
@@ -348,14 +348,14 @@ var Simulator = CreateClass({
     getInitialState: function () {
         var initState = {};
 
-        // 毎回 Mount されるので
-        // データロードはinitial state設定で行う
-        // 初回は {} が降ってくるのでその場合は普通に初期化
+        // Because it is mounted every time
+        // Data loading is done with initial state setting
+        // In the first time {} comes down, so in that case normalize to initial
         if ((typeof this.props.dataForLoad === "undefined") || (!("maxTurn" in this.props.dataForLoad))) {
             var maxTurn = 6;
-            // 合計後のデータを入れる連想配列
+            // Associative array for storing data after total
             var buffs = {};
-            // 各選択メニューに対応する連想配列
+            // Associative array corresponding to each selection menu
             var bufflists = {};
             buffs["全体バフ"] = {};
             buffs["Djeeta"] = {};
@@ -392,15 +392,15 @@ var Simulator = CreateClass({
             initState["openPersonalBuff"] = false;
             initState["nowDragging"] = false;
         } else {
-            // 上から降ってきたデータはは
-            // 現在の形に合わせる処理が必要になる
+            // The data that came down from above is
+            // Processing that matches the current form is required
             initState = this.updateBuffList(this.props.dataForLoad)
         }
 
         return initState;
     },
     updateBuffAmount: function (newState, name, ind) {
-        // 更新されたターンのところだけアップデートすればよい
+        // Update only the updated turns
         newState.buffs[name][ind].normal = 0;
         newState.buffs[name][ind].element = 0;
         newState.buffs[name][ind].other = 0;
@@ -437,11 +437,11 @@ var Simulator = CreateClass({
         this.props.onChange(newState)
     },
     handleSelectEvent: function (key, e) {
-        // select タイプの入力フォームはonChangeの際で良い
+        // select type input form is good for onChange
         var newState = this.state;
         if (key == "maxTurn") {
             if (parseInt(this.state.maxTurn) < parseInt(e.target.value)) {
-                // ターン数が増えた場合
+                // When the number of turns increases
                 for (var i = parseInt(this.state.maxTurn); i < parseInt(e.target.value); i++) {
                     for (var buffkey in newState.buffs) {
                         newState.buffs[buffkey][i] = {
@@ -459,7 +459,7 @@ var Simulator = CreateClass({
                     }
                 }
             } else {
-                // ターン数が減った場合
+                // When the number of turns decreases
                 for (var i = parseInt(this.state.maxTurn) - 1; i >= parseInt(e.target.value); i--) {
                     for (var buffkey in newState.buffs) {
                         delete newState.buffs[buffkey][i];
@@ -535,7 +535,7 @@ var Simulator = CreateClass({
                 if (this.isDisplay(keys[id - index])) {
                     newState.buffs[keys[id - index]] = JSON.parse(JSON.stringify(newState.buffs[name]));
                     newState.bufflists[keys[id - index]] = JSON.parse(JSON.stringify(newState.bufflists[name]));
-                    // updateBuffAmount は必要ない（Buffsもコピーしているので）
+                    // updateBuffAmount is not necessary (since Buffs are also copied)
                     this.props.onChange(newState);
                     break;
                 } else {
@@ -547,7 +547,7 @@ var Simulator = CreateClass({
                 if (this.isDisplay(keys[id + index])) {
                     newState.buffs[keys[id + index]] = JSON.parse(JSON.stringify(newState.buffs[name]));
                     newState.bufflists[keys[id + index]] = JSON.parse(JSON.stringify(newState.bufflists[name]));
-                    // updateBuffAmount は必要ない（Buffsもコピーしているので）
+                    // updateBuffAmount is not necessary (since Buffs are also copied)
                     this.props.onChange(newState);
                     break;
                 } else {
@@ -571,7 +571,7 @@ var Simulator = CreateClass({
             if (id > 0) {
                 newState.buffs[name][id - 1] = JSON.parse(JSON.stringify(newState.buffs[name][id]));
                 newState.bufflists[name][id - 1] = JSON.parse(JSON.stringify(newState.bufflists[name][id]));
-                // updateBuffAmount は必要ない（Buffsもコピーしているので）
+                // updateBuffAmount is not necessary (since Buffs are also copied)
                 this.props.onChange(newState)
             }
         } else {

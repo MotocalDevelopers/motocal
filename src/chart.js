@@ -39,12 +39,12 @@ var HPChart = CreateClass({
             }
             initializeTotals(totals)
         }
-        // resに再計算されたデータが入っている状態
+        // State in which recalculated data is stored in res
         // res[summonind][rank]
         return generateHaisuiData(res, armlist, summon, prof, chara, storedCombinations, storedNames, props.displayRealHP, props.locale);
     },
     componentWillReceiveProps: function (nextProps) {
-        // チャートを開きながらStoredListの名前を変更した時などに呼ばれる
+        // It is called when changing the name of StoredList while opening the chart
         this.setState({chartData: this.makeChartData(nextProps)})
     },
     getInitialState: function () {
@@ -93,11 +93,11 @@ var HPChart = CreateClass({
         newState[key] = e.target.value;
         this.setState(newState)
     },
-    /* CSV用に整形 */
+    /* Formatted for CSV */
     makeCsvData: function () {
         var d = this.state.chartData['まとめて比較'];
         if (d == null) {
-            // "まとめて比較"が無いときは、召喚石のセットが1種類のとき
+            // When there is no "compare all together", when the set of summons is one type
             for (var p in this.state.chartData) {
                 if (p != "minMaxArr") {
                     d = this.state.chartData[p];
@@ -106,24 +106,24 @@ var HPChart = CreateClass({
             }
         }
 
-        if (d == null) return; // ここでdがnullはあり得ないが保守的にreturns
-
-        var data = d[this.state.sortKey];
-        var csvData = [];
-        var header = [];
-        header.push(data[0][0]);
-        for (var i = 1; i < data[0].length; i++) {
-            // 不要な改行が見出しに含まれておりCSVが崩れるので消す
-            header.push(data[0][i].replace(/\r?\n/g, ""));
+        // where d can not be null but conservatively returns
+        if (d != null) {
+            var data = d[this.state.sortKey];
+            var csvData = [];
+            var header = [];
+            header.push(data[0][0]);
+            for (var i = 1; i < data[0].length; i++) {
+                // 不要な改行が見出しに含まれておりCSVが崩れるので消す
+                header.push(data[0][i].replace(/\r?\n/g, ""));
+            }
+            csvData.push(header);
+            for (var i = 1; i < data.length; i++) {
+                csvData.push(data[i]);
+            }
+            return csvData;
         }
-        csvData.push(header);
-        // 2行目以降がデータ
-        for (var i = 1; i < data.length; i++) {
-            csvData.push(data[i]);
-        }
-        return csvData;
     },
-    /* ダウンロード用のCSVからクリップボード用のTSVを生成 */
+    /* Generate TSV for clipboard from CSV for download */
     makeClipboardText: function (csvData) {
         return csvData.map(v => v.join("\t")).join("\n");
     },

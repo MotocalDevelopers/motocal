@@ -23,11 +23,11 @@ var ArmList = CreateClass({
         }
 
         return {
-            // 武器リストをRootに渡すための連想配列
+            // Associative array to pass weapon list to Root
             alist: al,
-            // 武器リストを管理するための連想配列
-            // indexによって保存データとの対応を取り、
-            // その値をkeyとして使うことでコンポーネントの削除などを行う
+            // Associative array for managing weapons list
+            // Corresponds to stored data by index,
+            // Delete the component etc. by using that value as key
             arms: arms,
             defaultElement: "fire",
             addArm: null,
@@ -51,7 +51,6 @@ var ArmList = CreateClass({
                 arms.push(i + maxvalue + 1)
             }
         } else {
-            // ==の場合は考えなくてよい (問題がないので)
             while (arms.length > num) {
                 arms.pop();
             }
@@ -65,9 +64,9 @@ var ArmList = CreateClass({
             return 0;
         }
 
-        // iPadなどで一度数字が消された場合NaNになる
+        // Once the number is erased on iPad etc, it becomes NaN
         if (!isNaN(parseInt(nextProps.armNum))) {
-            // 今回のarmNumが小さくなったらalistも切り落とす (前回がNaNの場合も行う)
+            // When armNum of this time becomes smaller, alist is also cut off (also when NaN last time)
             if (isNaN(parseInt(this.props.armNum)) || (parseInt(nextProps.armNum) < parseInt(this.props.armNum))) {
                 var newalist = this.state.alist;
                 while (newalist.length > nextProps.armNum) {
@@ -80,8 +79,8 @@ var ArmList = CreateClass({
     },
     handleOnCopy: function (id, state) {
         if (id < this.props.armNum - 1) {
-            // arrayForCopyにコピー対象のstateを入れておいて、
-            // componentWillReceivePropsで読み出されるようにする
+            // Place the state to be copied in arrayForCopy,
+            // Make it read by componentWillReceiveProps
             var newArrayForCopy = this.state.arrayForCopy;
             newArrayForCopy[id + 1] = JSON.parse(JSON.stringify(state));
             this.setState({arrayForCopy: newArrayForCopy});
@@ -90,7 +89,7 @@ var ArmList = CreateClass({
             newalist[id + 1] = JSON.parse(JSON.stringify(state));
             this.setState({alist: newalist});
 
-            // Root へ変化を伝搬
+            // Propagate change to Root
             this.props.onChange(newalist, false);
         }
     },
@@ -101,8 +100,8 @@ var ArmList = CreateClass({
             newarms.splice(id, 1);
             newalist.splice(id, 1);
         } else {
-            // arrayForCopyに初期stateを入れておいて、
-            // componentWillReceivePropsで読み出されるようにする
+            // With initial state in arrayForCopy,
+            // Make it read by componentWillReceiveProps
             var newArrayForCopy = this.state.arrayForCopy;
             newArrayForCopy[id] = initialState;
             this.setState({arrayForCopy: newArrayForCopy});
@@ -111,14 +110,14 @@ var ArmList = CreateClass({
         this.setState({arms: newarms});
         this.setState({alist: newalist});
 
-        // Root へ変化を伝搬
+        // Propagate change to Root
         this.props.onChange(newalist, false);
     },
     handleMoveUp: function (id) {
         if (id > 0) {
             var newarms = this.state.arms;
 
-            // swap
+            // Swap
             newarms.splice(id - 1, 2, newarms[id], newarms[id - 1]);
             this.setState({arms: newarms});
 
@@ -126,7 +125,7 @@ var ArmList = CreateClass({
             newalist.splice(id - 1, 2, newalist[id], newalist[id - 1]);
             this.setState({alist: newalist});
 
-            // Root へ変化を伝搬
+            // Propagate change to Root
             this.props.onChange(newalist, false);
         }
     },
@@ -134,15 +133,15 @@ var ArmList = CreateClass({
         if (id < this.props.armNum - 1) {
             var newarms = this.state.arms;
 
-            // charas swap
+            // Characters Swap
             newarms.splice(id, 2, newarms[id + 1], newarms[id]);
             this.setState({arms: newarms});
 
-            // charalist swap
+            // characterList Swap
             var newalist = this.state.alist;
             newalist.splice(id, 2, newalist[id + 1], newalist[id]);
             this.setState({alist: newalist});
-            // Root へ変化を伝搬
+            // Propagate change to Root
             this.props.onChange(newalist, false);
         }
     },
@@ -212,7 +211,7 @@ var ArmList = CreateClass({
         var arrayForCopy = this.state.arrayForCopy;
         var copyCompleted = this.copyCompleted;
 
-        // view 用
+        // For view
         var panel_style = {"textAlign": "left"};
 
         return (
@@ -300,8 +299,8 @@ var Arm = CreateClass({
             }
         }
 
-        // もし arrayForCopy に自分に該当するキーがあるなら読み込む
-        // コピー(またはリセット)後は ArmList に伝えて該当データを消す
+        // If arrayForCopy has a key applicable to you, read it
+        // After copying (or resetting), tell it to ArmList and delete the corresponding data
         if (nextProps.arrayForCopy != undefined) {
             var state = nextProps.arrayForCopy;
             this.setState(state);
@@ -326,8 +325,8 @@ var Arm = CreateClass({
     componentDidMount: function () {
         var state = this.state;
 
-        // もし dataForLoad に自分に該当するキーがあるなら読み込む
-        // (データロード時に新しく増えたコンポーネント用)
+        // Read if there is a key corresponding to you in dataForLoad
+        // (for newly added components when loading data)
         var armlist = this.props.dataForLoad;
         if (this.props.dataForLoad != undefined && this.props.id in this.props.dataForLoad) {
             state = this.props.dataForLoad[this.props.id];
@@ -335,14 +334,14 @@ var Arm = CreateClass({
             return 0
         }
 
-        // もし addArmID が自分のIDと同じなら、templateデータを読み込む
+        // If addArmID is the same as your ID, read template data
         if (this.props.addArm != null && this.props.id == this.props.addArmID) {
             state = this.treatAddArmFromTemplate(this.state, this.props.addArm, this.props.considerNum);
             this.setState(state);
         }
 
-        // 初期化後 (何も処理が行われていなくても) state を 上の階層に渡しておく
-        // armList では onChange が勝手に上に渡してくれるので必要なし
+        // Pass state to the upper level after initialization (even if nothing is done)
+        // In armList it is not necessary because onChange hands itself up without permission
         this.props.onChange(this.props.id, state, false);
     },
     treatAddArmFromTemplate: function (state, newarm, considerNum) {
@@ -355,9 +354,9 @@ var Arm = CreateClass({
             return Math.floor((lv - minlv) * (parseInt(hp) - parseInt(minhp)) / levelWidth + parseInt(minhp) + parseInt(plus))
         };
 
-        // Lv別処理
+        // separate processing by Lv
         if (newarm.lv == 1) {
-            // Lv1の場合だけ特殊 (Lv2になるとステータスが2レベル分上がる)
+            // special only in case of Lv 1 (status goes up by 2 levels when it becomes Lv 2)
             state["attack"] = parseInt(newarm.minattack) + 5 * newarm.plus;
             state["hp"] = parseInt(newarm.minhp) + newarm.plus
         } else {
@@ -370,7 +369,7 @@ var Arm = CreateClass({
                 state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hp, newarm.minhp, newarm.plus, 100.0)
             } else if (max_level === 120) {
                 if (newarm.lv <= 75) {
-                    // Lv75以下が選択された場合は一段階下の値で処理する
+                    // If Lv 75 or less is selected, process with one step lower value
                     state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attacklv75, newarm.minattack, newarm.plus, 75.0);
                     state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hplv75, newarm.minhp, newarm.plus, 75.0)
                 } else {
@@ -379,7 +378,7 @@ var Arm = CreateClass({
                 }
             } else if (max_level === 150) {
                 if (newarm.lv <= 100) {
-                    // Lv100以下が選択された場合は一段階下の値で処理する
+                    // If Lv 100 or less is selected, process with one step lower value
                     state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attacklv100, newarm.minattack, newarm.plus, 100.0);
                     state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hplv100, newarm.minhp, newarm.plus, 100.0)
                 } else {
@@ -388,11 +387,11 @@ var Arm = CreateClass({
                 }
             } else if (max_level === 200) {
                 if (newarm.lv <= 100) {
-                    // Lv100以下が選択された場合は二段階下の値で処理する
+                    // If Lv 100 or less is selected, process with two steps lower value
                     state["attack"] = attackCalcFunc(newarm.lv, 0, newarm.attacklv100, newarm.minattack, newarm.plus, 100.0);
                     state["hp"] = hpCalcFunc(newarm.lv, 0, newarm.hplv100, newarm.minhp, newarm.plus, 100.0)
                 } else if (newarm.lv <= 150) {
-                    // Lv150以下が選択された場合は一段階下の値で処理する
+                    // If Lv 150 or less is selected, process with one step lower value
                     state["attack"] = attackCalcFunc(newarm.lv, 100, newarm.attacklv150, newarm.attacklv100, newarm.plus, 50.0);
                     state["hp"] = hpCalcFunc(newarm.lv, 100, newarm.hplv150, newarm.hplv100, newarm.plus, 50.0)
                 } else {
@@ -416,13 +415,13 @@ var Arm = CreateClass({
         return state;
     },
     handleEvent: function (key, e) {
-        // input の時は親に送らない
+        // Do not send to parent when input
         var newState = this.state;
         newState[key] = e.target.value;
         this.setState(newState)
     },
     handleSelectEvent: function (key, e) {
-        // Selectの時は親に送ってしまっていい
+        // You can send it to your parent when you select it
         var newState = this.state;
         if (key == "considerNumberMin") {
             if (parseInt(e.target.value) > parseInt(this.state.considerNumberMax)) {
@@ -442,7 +441,7 @@ var Arm = CreateClass({
         this.props.onChange(this.props.id, newState, false)
     },
     handleOnBlur: function (key, e) {
-        // フォーカスが外れた時だけ変更を親に送る
+        // Send change to parent only when focus is off
         if (key == "name") {
             this.props.onChange(this.props.id, this.state, true)
         } else {
