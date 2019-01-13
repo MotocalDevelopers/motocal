@@ -113,7 +113,7 @@ var HPChart = CreateClass({
             var header = [];
             header.push(data[0][0]);
             for (var i = 1; i < data[0].length; i++) {
-                // 不要な改行が見出しに含まれておりCSVが崩れるので消す
+                // Remove unnecessary line feed letters which break CSV format.
                 header.push(data[0][i].replace(/\r?\n/g, ""));
             }
             csvData.push(header);

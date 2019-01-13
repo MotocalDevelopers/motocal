@@ -155,7 +155,7 @@ module.exports.calcDamage = function (summedAttack, totalSkillCoeff, criticalRat
     var limitValues = [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]];
 
     for (var index = 0; index < 4; index++) {
-        // Damping line calculation
+        // Damage cap calculation
         var limitValue = limitValues[index][0] * (1.0 + damageLimit);
         var limitRatio = limitValues[index][1];
 
@@ -190,7 +190,7 @@ module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, critica
     var limitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]];
 
     for (var index = 0; index < 4; index++) {
-        // Damping line calculation
+        // Damage cap calculation
         var limitValue = limitValues[index][0] * (1.0 + ougiDamageLimit);
         var limitRatio = limitValues[index][1];
 
@@ -237,7 +237,7 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus) {
     }
 
     for (var index = 0; index < 4; index++) {
-        // Damping line calculation
+        // Damage cap calculation
         var limitValue = limitValues[index][0] * (1.0 + chainDamageLimitUP);
         var limitRatio = limitValues[index][1];
 
@@ -268,20 +268,20 @@ module.exports.calcCriticalArray = function (normalCritical, _magnaCritical, nor
         damageRatio.push(0.5);
     }
 
-    // Normal skill array is passed in the form of [probability 1, probability 2, probability 3, ...]
+    // Normal critical skill array is passed in the form of [probability 1, probability 2, probability 3, ...]
     for (var j = 0; j < normalCritical.length; j++) {
         // Since it is a simple skill, you do not have to check whether a value of 1.0 or more comes
         probability.push(0.01 * normalCritical[j]["value"] * summon["zeus"]);
         damageRatio.push(normalCritical[j]["attackRatio"]);
     }
 
-    // Skills for LB and Support abilities
+    // Critical for LB and Support abilities
     for (var j = 0; j < normalOtherCritical.length; j++) {
         probability.push(normalOtherCritical[j]["value"]);
         damageRatio.push(normalOtherCritical[j]["attackRatio"]);
     }
 
-    // Up to 10 elements + LB + character skill skill array comes
+    // Up to 10 elements + LB + character critical skill in array
     // The magnification and the activation rate are different
     // There are up to 2 ^ n activation probabilities when n elements
     // If you set the array to {activation rate: {activation number: x, case: 1}} then use keys to get the expected value
@@ -301,11 +301,11 @@ module.exports.calcCriticalArray = function (normalCritical, _magnaCritical, nor
 
             for (var j = 0; j < probability.length; j++) {
                 if ((bitmask[j] & i) > 0) {
-                    // The jth skill invoked
+                    // The jth critical skill invoked
                     eachProb *= probability[j];
                     attackRatio += damageRatio[j]
                 } else {
-                    // The jth skill is not invoked
+                    // The jth critical skill is not invoked
                     eachProb *= 1.0 - probability[j]
                 }
             }
@@ -508,7 +508,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             // Supplemental damage rise support ability does not overlap with Tenshi skill (the strongest effect overwrites the lesser)
             var damageUP = totals[key]["tenshiDamageUP"] > totals[key]["charaDamageUP"] ? totals[key]["tenshiDamageUP"] : totals[key]["charaDamageUP"];
 
-            // Generate a special skill skill array normally
+            // Generate normal critical skill arrays.
             var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
             var normalOtherCriticalBuffArray = totals[key]["normalOtherCriticalBuff"];
             var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray, normalOtherCriticalBuffArray);
@@ -560,13 +560,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += ougiDamageLimitByNormal;
         ougiDamageLimit += ougiDamageLimitByExceed;
 
-        // damage is single damage without additional damage (with attenuation and skill correction)
+        // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, additionalDamage, damageUP, damageLimit);
 
         // Use damage in case of no critical to correct skill expectation
         var damageWithoutCritical = module.exports.calcDamage(summedAttack, totalSkillCoeff, 1.0, prof.enemyDefense, additionalDamage, damageUP, damageLimit);
 
-        // Real skill expected value
+        // Expected critical skill ratio
         var effectiveCriticalRatio = damage / damageWithoutCritical;
 
         // Comprehensive attack power * Expected skill expectation * Multi-shot expected value
@@ -727,7 +727,7 @@ module.exports.checkNumberOfRaces = function (chara) {
         "seisho": false,
         "unknown": true,
     };
-    // Since there is a Djeeta, the unknown frame is always true
+    // Since there is a Djeeta, the unknown field is always true
     // The initial value of ind can also start from 1
     var ind = 1;
     for (var key in chara) {
@@ -1022,7 +1022,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         // Baha, cosmos and omega weapons have no attribute relation
                         if (stype == 'bahaAT') {
                             if (!isBahaAtIncluded) {
-                                // バハ短剣など
+                                // Baha dagger etc.
                                 if (totals[key]["race"] === "unknown" ||
                                     totals[key]["race"] === "seisho") {
                                     totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
@@ -1991,7 +1991,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     break;
             }
 
-            // Skill processing
+            // Critical processing
             if (support.type == "criticalBuff") {
                 if (support.range == "own") {
                     totals[key]["normalOtherCriticalBuff"].push({
