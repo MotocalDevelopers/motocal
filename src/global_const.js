@@ -68,7 +68,7 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-var zenith = { "無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10 }
+var zenith = { "無し": 0, "★1": 0.01, "★2": 0.03, "★3": 0.05, "★4": 0.06, "★5": 0.08, "★6": 0.10, "★7": 0.11, "★8": 0.13, "★9": 0.15 }
 var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
 var zenithPartyHPBonus = [3000, 2600, 2300, 2000, 1600, 1300, 1000, 600, 300, 0];
