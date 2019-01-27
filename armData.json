@@ -2479,7 +2479,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040009600.png",
-        "en": "Sword of Michael"
+        "en": "Sword of Michael (SSR)"
     },
     "ワンド・オブ・ガブリエル(SSR)": {
         "ja": "ワンド・オブ・ガブリエル(SSR)",
@@ -2511,9 +2511,9 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040606400.png",
-        "en": "Gauntlet of Uriel"
+        "en": "Gauntlet of Uriel (SSR)"
     },
-    "リング・オブ・ラファエル(SSR)": {
+	"リング・オブ・ラファエル(SSR)": {
         "ja": "リング・オブ・ラファエル(SSR)",
         "element": "wind",
         "type": "bow",
@@ -2527,7 +2527,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040705700.png",
-        "en": "Ring of Raphael"
+        "en": "Ring of Raphael (SSR)"
     },
     "世界樹の晶剣・マグナ": {
         "ja": "世界樹の晶剣・マグナ",
@@ -13819,7 +13819,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404800.png",
-        "en": "ピンクグリモワール"
+        "en": "Pink Magazine"
     },
     "超クールなダガー": {
         "ja": "超クールなダガー",
@@ -14019,7 +14019,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030006200.png",
-        "en": "ソード・オブ・ミカエル(SR)"
+        "en": "Sword of Michael (SR)"
     },
     "ワンド・オブ・ガブリエル(SR)": {
         "ja": "ワンド・オブ・ガブリエル(SR)",
@@ -14035,7 +14035,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404700.png",
-        "en": "ワンド・オブ・ガブリエル(SR)"
+        "en": "Wand of Gabriel (SR)"
     },
     "グローブ・オブ・ウリエル(SR)": {
         "ja": "グローブ・オブ・ウリエル(SR)",
@@ -14051,7 +14051,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030605200.png",
-        "en": "グローブ・オブ・ウリエル(SR)"
+        "en": "Gauntlet of Uriel (SR)"
     },
     "リング・オブ・ラファエル(SR)": {
         "ja": "リング・オブ・ラファエル(SR)",
@@ -14067,7 +14067,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703700.png",
-        "en": "リング・オブ・ラファエル(SR)"
+        "en": "Ring of Raphael (SR)"
     },
     "サラダトング": {
         "ja": "サラダトング",
@@ -18755,7 +18755,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802800.png",
-        "en": "[魔響杖]リサウンドワンド"
+        "en": "Resonating Wand"
     },
     "メロビィ": {
         "ja": "メロビィ",
@@ -18771,7 +18771,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802900.png",
-        "en": "メロビィ"
+        "en": "Vyrnstrument"
     },
     "[月樹琴]エントハープ": {
         "ja": "[月樹琴]エントハープ",
@@ -18787,7 +18787,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030803000.png",
-        "en": "[月樹琴]エントハープ"
+        "en": "Ent Harp"
     },
     "[大天使]アークエンジェルハープ": {
         "ja": "[大天使]アークエンジェルハープ",
@@ -18803,7 +18803,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030899000.png",
-        "en": "[大天使]アークエンジェルハープ"
+        "en": "Archangel Harp"
     },
     "[伊達刀]虎鉄": {
         "ja": "[伊達刀]虎鉄",
@@ -18819,7 +18819,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900000.png",
-        "en": "[伊達刀]虎鉄"
+        "en": "Iron Tiger"
     },
     "[無穢刀]蛍丸": {
         "ja": "[無穢刀]蛍丸",
@@ -18835,7 +18835,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900100.png",
-        "en": "[無穢刀]蛍丸"
+        "en": "Fluorithium"
     },
     "[瞑塗]蜥蜴丸": {
         "ja": "[瞑塗]蜥蜴丸",
@@ -18851,7 +18851,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900200.png",
-        "en": "[瞑塗]蜥蜴丸"
+        "en": "Sauria"
     },
     "模造刀": {
         "ja": "模造刀",
@@ -18867,7 +18867,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900300.png",
-        "en": "模造刀"
+        "en": "Murakumo Replica"
     },
     "贋作刀": {
         "ja": "贋作刀",
@@ -18883,7 +18883,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900400.png",
-        "en": "贋作刀"
+        "en": "Muramasa Replica"
     },
     "[祖龍刀]バハムートブレイド": {
         "ja": "[祖龍刀]バハムートブレイド",
@@ -18899,7 +18899,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900500.png",
-        "en": "[祖龍刀]バハムートブレイド"
+        "en": "Blade of Bahamut"
     },
     "[壊転]朽ち果てた太刀": {
         "ja": "[壊転]朽ち果てた太刀",
@@ -18915,7 +18915,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900600.png",
-        "en": "[壊転]朽ち果てた太刀"
+        "en": "Rusted Katana"
     },
     "[蒐索刀]アワリティアブレード": {
         "ja": "[蒐索刀]アワリティアブレード",
@@ -18931,7 +18931,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901300.png",
-        "en": "[蒐索刀]アワリティアブレード"
+        "en": "Avaritia Blade"
     },
     "[怪桃刀]アンノウンリッパー": {
         "ja": "[怪桃刀]アンノウンリッパー",
@@ -18947,7 +18947,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901400.png",
-        "en": "[怪桃刀]アンノウンリッパー"
+        "en": "Mysterious Cutter"
     },
     "[修刀]木刀": {
         "ja": "[修刀]木刀",
@@ -18963,7 +18963,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901500.png",
-        "en": "[修刀]木刀"
+        "en": "Wooden Sword"
     },
     "[刺貫]つらぬき丸": {
         "ja": "[刺貫]つらぬき丸",
@@ -18979,7 +18979,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901600.png",
-        "en": "[刺貫]つらぬき丸"
+        "en": "The Piercer"
     },
     "[斬甲]蟹鋏": {
         "ja": "[斬甲]蟹鋏",
@@ -18995,7 +18995,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901700.png",
-        "en": "[斬甲]蟹鋏"
+        "en": "King Crab Katana"
     },
     "[莫鉄]斬馬刀": {
         "ja": "[莫鉄]斬馬刀",
@@ -19011,7 +19011,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901800.png",
-        "en": "[莫鉄]斬馬刀"
+        "en": "Zanbato"
     },
     "[古樹刀]エントリッパー": {
         "ja": "[古樹刀]エントリッパー",
@@ -19027,7 +19027,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901900.png",
-        "en": "[古樹刀]エントリッパー"
+        "en": "Ent Ripper"
     },
     "[大天使]大天使刀": {
         "ja": "[大天使]大天使刀",
@@ -19043,7 +19043,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030999000.png",
-        "en": "[大天使]大天使刀"
+        "en": "Archangel Katana"
     },
     "[悪魔]デビルエレメント": {
         "ja": "[悪魔]デビルエレメント",
@@ -19059,6 +19059,6 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1039900000.png",
-        "en": "[悪魔]デビルエレメント"
+        "en": "Fury Stone"
     }
 }
