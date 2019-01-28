@@ -946,14 +946,13 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
         }
     }
 
-    var isAkashaIncluded = false;
-
     var index = 0;
     for (var key in totals) {
         index = index + 1 | 0;
         var isBahaAtIncluded = false;
         var isBahaAthpIncluded = false;
         var isBahaHpIncluded = false;
+        var isAkashaIncluded = false;
 
         // Omega Weapon can activate multiple effects if it is different skill
         var isOmegaIncluded = {
