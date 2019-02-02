@@ -1,4 +1,6 @@
 {
+    "セン(SSR)": "Sen (SSR)",
+    "ダーント＆フライハイト": "Dante and Freiheit",
     "ターニャ(SSR)": "Tanya (SSR)",
     "アテナ": "Athena",
     "ユーステス(闇属性ver)": "Eustace (Dark)",
@@ -369,7 +371,7 @@
     "ミムルメモル＆切り株": "Mimlemel and Stumpeye",
     "ターニャ(SR)": "Tanya (SR)",
     "パーシヴァル(SR)": "Percival (Event)",
-    "セン(クリスマスver)": "Sen (Christmas)",
+    "セン(クリスマスver)": "Sen (Holiday)",
     "アンチラ(SR)": "Andira (Event)",
     "ルシウス(火属性)": "Lucius (Fire)",
     "ミュオン": "Meteon",
@@ -453,5 +455,6 @@
     "ヤイア(クリスマスver)": "Yaia (Holiday)",
     "ベアトリクス(土属性ver)": "Beatrix (Earth)",
     "カシウス": "Cassius",
-    "スカル(闇属性ver)": "Skull"
+    "スカル(闇属性ver)": "Skull",
+    "キャサリン(SR)": "Catherine (SR)"
 }
