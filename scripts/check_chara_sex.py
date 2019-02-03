@@ -19,7 +19,7 @@ from itertools import count
 from operator import itemgetter
 from urllib.request import urlretrieve
 
-CHATABTER_TABLE_URL = 'http://gbf-wiki.com/index.php?cmd=edit&page=%A5%C6%A1%BC%A5%D6%A5%EB%2F%C1%B4%A5%AD%A5%E3%A5%E9%A5%AF%A5%BF%A1%BC%B0%EC%CD%F7'
+CHARACTER_TABLE_URL = 'http://gbf-wiki.com/index.php?cmd=edit&page=%A5%C6%A1%BC%A5%D6%A5%EB%2F%C1%B4%A5%AD%A5%E3%A5%E9%A5%AF%A5%BF%A1%BC%B0%EC%CD%F7'
 
 SEX = {
     '♂': 'male',
@@ -28,7 +28,7 @@ SEX = {
 }
 
 
-def _open_cache_or_url(path='./chara_table.cache.html', url=CHATABTER_TABLE_URL, charset='euc_jp'):
+def _open_cache_or_url(path='./chara_table.cache.html', url=CHARACTER_TABLE_URL, charset='euc_jp'):
     """
     During debug time, not send request to wiki many times.
     non-debug time, cleanup the cache file.

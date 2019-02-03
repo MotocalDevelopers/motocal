@@ -946,7 +946,14 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
         }
     }
 
-    var isAkashaIncluded = false;
+    var isAkashaIncludedGlobal = false;
+    var isAkashaIncludedLocal = {
+        "axe": false,
+        "sword": false,
+        "bow": false,
+        "wand": false,
+        "spear": false,
+    };
 
     var index = 0;
     for (var key in totals) {
@@ -1162,48 +1169,53 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType == "axe" && amount == "fist") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncluded) {
+                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["normalOtherLesserSante"] += skillAmounts[akasha][akashaType][slv - 1];
-                                        isAkashaIncluded = true;
+                                        isAkashaIncludedGlobal = true;
+                                        isAkashaIncludedLocal[akashaType] = true;
                                     }
                                 }
                             } else if (akashaType == "sword" && amount == "dagger") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncluded) {
+                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
-                                        isAkashaIncluded = true;
+                                        isAkashaIncludedGlobal = true;
+                                        isAkashaIncludedLocal[akashaType] = true;
                                     }
                                 }
                             } else if (akashaType == "bow" && amount == "gun") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncluded) {
+                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["normalOtherCritical"].push({
                                             "value": 0.01 * skillAmounts[akasha][akashaType][slv - 1],
                                             "attackRatio": 0.45
                                         });
-                                        isAkashaIncluded = true;
+                                        isAkashaIncludedGlobal = true;
+                                        isAkashaIncludedLocal[akashaType] = true;
                                     }
                                 }
                             } else if (akashaType == "wand" && amount == "music") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncluded) {
+                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["akashaSensei"] = skillAmounts[akasha][akashaType][slv - 1];
-                                        isAkashaIncluded = true;
+                                        isAkashaIncludedGlobal = true;
+                                        isAkashaIncludedLocal[akashaType] = true;
                                     }
                                 }
                             } else if (akashaType == "spear" && amount == "katana") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncluded) {
+                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["akashaHP"] += skillAmounts[akasha][akashaType][slv - 1];
-                                        isAkashaIncluded = true;
+                                        isAkashaIncludedGlobal = true;
+                                        isAkashaIncludedLocal[akashaType] = true;
                                     }
                                 }
                             }

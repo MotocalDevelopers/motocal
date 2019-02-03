@@ -9047,6 +9047,22 @@
         "imageURL": "./imgs/1040212000.png",
         "en": "Sacred Lance"
     },
+    "ギャラクティカインパクト": {
+        "ja": "ギャラクティカインパクト",
+        "element": "wind",
+        "type": "spear",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "36",
+        "minattack": "408",
+        "hp": "222",
+        "attack": "2476",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040212100.png",
+        "en": "Galactic Impact"
+    },
     "ウコンバサラ": {
         "ja": "ウコンバサラ",
         "element": "light",
@@ -10641,6 +10657,22 @@
         "imageURL": "./imgs/1040414600.png",
         "en": "[4★] Majestas"
     },
+    "キャットテイル": {
+        "ja": "キャットテイル",
+        "element": "earth",
+        "type": "wand",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "33",
+        "minattack": "298",
+        "hp": "211",
+        "attack": "1824",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040414800.png",
+        "en": "Cat's Tail"
+    },
     "裁きの鳴雷": {
         "ja": "裁きの鳴雷",
         "element": "earth",
@@ -11932,6 +11964,22 @@
         "attacklv100": "1882",
         "imageURL": "./imgs/1040610800.png",
         "en": "[4★] Rainbow Bracelet"
+    },
+    "ネコパンチ・プロ": {
+        "ja": "ネコパンチ・プロ",
+        "element": "earth",
+        "type": "fist",
+        "skill1": "normalSetsuna",
+        "skill2": "normalNiteM",
+        "element2": "earth",
+        "minhp": "33",
+        "minattack": "416",
+        "hp": "218",
+        "attack": "2499",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040610900.png",
+        "en": "Neko Punch Pro"
     },
     "エーテリアルボウ": {
         "ja": "エーテリアルボウ",
