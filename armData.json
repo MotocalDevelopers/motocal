@@ -2707,6 +2707,22 @@
         "imageURL": "./imgs/1040101500.png",
         "en": "Leviathan Gaze Omega"
     },
+	"セフィラの翠銃": {
+        "ja": "セフィラの翠銃",
+        "element": "water",
+        "type": "gun",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "29",
+        "minattack": "395",
+        "hp": "169",
+        "attack": "2490",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040509100.png",
+        "en": "Sephira Emerald Blaster"
+    },
     "[4凸]レヴィアンゲイズ・マグナ": {
         "ja": "[4凸]レヴィアンゲイズ・マグナ",
         "element": "water",
@@ -3408,6 +3424,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040600500.png",
         "en": "Tiamat Gauntlet Omega"
+    },
+	"セフィラの翠剣": {
+        "ja": "セフィラの翠剣",
+        "element": "wind",
+        "type": "sword",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "31",
+        "minattack": "385",
+        "hp": "199",
+        "attack": "2340",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040015200.png",
+        "en": "Sephira Emerald Sword"
     },
     "[4凸]ティアマトガントレ・マグナ": {
         "ja": "[4凸]ティアマトガントレ・マグナ",
