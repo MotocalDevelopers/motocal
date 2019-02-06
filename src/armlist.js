@@ -402,6 +402,7 @@ var Arm = CreateClass({
         }
 
         if (newarm.lv != parseInt(newarm.maxlv)) state["name"] += "Lv." + newarm.lv;
+		if (newarm.slv != newarm.slvmax) state["name"] += "SLv." + newarm.slv;
         if (newarm.plus != 0) state["name"] += "+" + newarm.plus;
 
         state["armType"] = newarm.type;
