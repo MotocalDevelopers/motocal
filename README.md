@@ -102,11 +102,11 @@ Please execute in the order of.
 #### chara\_data\_converter.py
 - Generate charaData.json from txt_source/charaData.txt.
 
-#### download\_armimages\_from\_wiki.py
-- Downloads the image data from urls described in txt_source/armImageWikiURLList.txt from the wiki.
-#### download\_charaimages\_from\_wiki.py
-- Downloads the image data described in txt_source/charaImageWikiURLList.txt from the wiki.
-- These two scripts download only images that are not already downloaded.
+#### download\_images.py arm
+- Downloads the image data for weapons described in txt_source/armImageWikiURLList.txt from the wiki.
+
+#### download\_images.py chara
+- Downloads the image data for characters described in txt_source/charaImageWikiURLList.txt from the wiki.
 
 ## LICENSE
 MIT

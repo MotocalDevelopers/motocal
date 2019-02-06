@@ -2,8 +2,8 @@
 """
 Motocal Image download script.
 
-Usage: python3 -m scripts.download_image.py arm
-       python3 -m scripts.download_image.py chara
+Usage: python download_image.py arm
+       python download_image.py chara
 
 Assume directory layous
   * /
@@ -14,26 +14,37 @@ Assume directory layous
 
 """
 
+import functools
+import logging
 import os
 import sys
-import logging
-import functools
 from urllib.request import urlretrieve
 
 _readlines = functools.partial(map, str.rstrip)
 
-
 TXT_SOURCE = {
     'arm-wiki': "armImageWikiURLList.txt",
     'chara-wiki': "charaImageWikiURLList.txt",
-    # 'arm-game': "armImageGameURLList.txt",
-    # 'chara-game': "charaImageGameURLList.txt",
+    'arm-game': "armImageGameURLList.txt",
+    'chara-game': "charaImageGameURLList.txt",
 }
 
 SAVE_DIR = {
     'arm': '../imgs',
     'chara': '../charaImgs',
 }
+
+
+def progress(count, total, status=''):
+    bar_len = 60
+    filled_len = int(round(bar_len * count / float(total)))
+
+    percents = round(100.0 * count / float(total), 1)
+    bar = '=' * filled_len + '-' * (bar_len - filled_len)
+
+    sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', status))
+    sys.stdout.flush()
+
 
 def main(target='arm', site='wiki', save_dir=None, dry_run=False):
     """
@@ -79,13 +90,19 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False):
         logging.info("Save directory is created: %s", save_dir)
         os.makedirs(save_dir)
 
+    num_lines = -1
+    with open(filename, encoding="utf-8") as f:
+        for line in f:
+            num_lines += 1
+
     with open(filename, encoding="utf-8") as stream:
-        for url in _readlines(stream):
-            save_file = os.path.join(save_dir, url.split(separator)[-1])
+        for line, url in enumerate(_readlines(stream)):
+            file = url.split(separator)[-1]
+            progress(line, num_lines, status=os.path.abspath(os.path.join(save_dir, file)))
+            save_file = os.path.join(save_dir, file)
             if not os.path.exists(save_file):
                 if not dry_run:
                     urlretrieve(url, save_file)
-                print(url)
 
 
 if __name__ == '__main__':
