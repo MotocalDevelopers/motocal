@@ -1169,7 +1169,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (akashaType == "axe" && amount == "fist") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
+                                    if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["normalOtherLesserSante"] += skillAmounts[akasha][akashaType][slv - 1];
                                         isAkashaIncludedGlobal = true;
@@ -1179,7 +1179,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             } else if (akashaType == "sword" && amount == "dagger") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
+                                    if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         isAkashaIncludedGlobal = true;
                                         isAkashaIncludedLocal[akashaType] = true;
@@ -1188,7 +1188,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             } else if (akashaType == "bow" && amount == "gun") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
+                                    if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["normalOtherCritical"].push({
                                             "value": 0.01 * skillAmounts[akasha][akashaType][slv - 1],
@@ -1201,7 +1201,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             } else if (akashaType == "wand" && amount == "music") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
+                                    if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["akashaSensei"] = skillAmounts[akasha][akashaType][slv - 1];
                                         isAkashaIncludedGlobal = true;
@@ -1211,7 +1211,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             } else if (akashaType == "spear" && amount == "katana") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
                                     amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
-                                    if (!isAkashaIncludedGlobal || (isAkashaIncludedGlobal && isAkashaIncludedLocal[akashaType])) {
+                                    if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["akashaHP"] += skillAmounts[akasha][akashaType][slv - 1];
                                         isAkashaIncludedGlobal = true;
