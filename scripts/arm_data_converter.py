@@ -695,6 +695,7 @@ skillnamelist["strengthL"] = {
     u"ジャスティス・ロッド": "light",
     u"トラフィックエナジー": "light",
     u"ふわふわしっぽ": "earth",
+    u"ゲイルオブアームズ": "wind",
 }
 
 skillnamelist["exATKandHPM"] = {

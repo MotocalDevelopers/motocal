@@ -5,6 +5,8 @@ Motocal Image download script.
 Usage: python download_image.py arm
        python download_image.py chara
 
+Debug e.g: python download_image.py arm wiki tmp -d plain
+
 Assume directory layous
   * /
     * ./imgs
@@ -34,19 +36,30 @@ SAVE_DIR = {
     'chara': '../charaImgs',
 }
 
-
-def progress(count, total, status=''):
-    bar_len = 60
+def progress_reporter(count, total, url='', path=''):
+    bar_len = 45
     filled_len = int(round(bar_len * count / float(total)))
+    status = os.path.basename(path)
 
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
 
-    sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', status))
+    sys.stdout.write('[%s] %s%s ...%20s\r' % (bar, percents, '%', status))
     sys.stdout.flush()
 
 
-def main(target='arm', site='wiki', save_dir=None, dry_run=False):
+def plain_reporter(count, total, url='', path=''):
+    "report plain text"
+    print('[{:4}/{:4}] Download {}'.format(count, total, url))
+
+
+REPORT_TYPE = {
+    'progress': progress_reporter,
+    'plain': plain_reporter,
+}
+
+
+def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="progress"):
     """
     Download image file in URL list.
 
@@ -69,6 +82,7 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False):
         key = "{}-{}".format(target, site)
         separator = {"wiki": "=", "game": "/"}[site]
         filename = os.path.join(txt_source, TXT_SOURCE[key])
+        report = REPORT_TYPE.get(report_type, progress_reporter)
     except KeyError:
         if not target in {'arm', 'chara'}:
             logging.error("target argument must be 'arm' or 'chara'")
@@ -90,19 +104,43 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False):
         logging.info("Save directory is created: %s", save_dir)
         os.makedirs(save_dir)
 
-    num_lines = -1
-    with open(filename, encoding="utf-8") as f:
-        for line in f:
-            num_lines += 1
+
+    def parse_file(stream, separator=separator):
+        """
+        Parse file line and return pair of (url, a local save path)
+        """
+        for url in _readlines(stream):
+            name = url.split(separator)[-1]
+            path = os.path.abspath(os.path.join(save_dir, name))
+            yield url, path
+
+    def scan_download(stream, override=False):
+        """
+        Filtering non-exists files
+
+        NOTE: `override` flag is currently unused.
+        pass this param if implement force download option in future.
+        """
+        for url, path in parse_file(stream):
+            if override or not os.path.exists(path):
+                yield url, path
+
+    def count_iter(iterable):
+        """
+        count number of elements in an iterator.
+        """
+        return sum(1 for _ in iterable)
+
 
     with open(filename, encoding="utf-8") as stream:
-        for line, url in enumerate(_readlines(stream)):
-            file = url.split(separator)[-1]
-            progress(line, num_lines, status=os.path.abspath(os.path.join(save_dir, file)))
-            save_file = os.path.join(save_dir, file)
-            if not os.path.exists(save_file):
-                if not dry_run:
-                    urlretrieve(url, save_file)
+        total = count_iter(scan_download(stream))
+
+        stream.seek(0)
+
+        for num, (url, path) in enumerate(scan_download(stream), start=1):
+            report(num, total, url, path)
+            if not dry_run:
+                urlretrieve(url, path)
 
 
 if __name__ == '__main__':
