@@ -823,6 +823,10 @@ skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ダーク": "dark",
 }
 
+skillnamelist["chainForce"] = {
+    u"チェインフォース": "dark",
+}
+
 # Character specific weapon
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}

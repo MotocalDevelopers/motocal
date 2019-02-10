@@ -211,7 +211,7 @@ module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, critica
     return damage
 };
 
-module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus) {
+module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, chainDamageUP, chainDamageLimitUP) {
     if (chainNumber <= 1) return 0.0;
 
     var chainCoeff = 0.0;
@@ -224,8 +224,8 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus) {
         chainCoeff = 0.50;
     }
 
-    var chainDamageLimitUP = 0.0;
-    var damage = typeBonus * chainCoeff * ougiDamage;
+    var chainDamageLimitUP = chainDamageLimitUP != undefined ? chainDamageLimitUP : 0.0;
+    var damage = (1.0 + chainDamageUP) * typeBonus * chainCoeff * ougiDamage;
     var overedDamage = 0.0;
 
     if (chainNumber <= 2) {
@@ -560,6 +560,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += ougiDamageLimitByNormal;
         ougiDamageLimit += ougiDamageLimitByExceed;
 
+        var chainDamageLimit = totals[key]["chainDamageLimit"] <= 0.50 ? totals[key]["chainDamageLimit"] : 0.50;
+
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, additionalDamage, damageUP, damageLimit);
 
@@ -583,10 +585,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totalSummon["ougiDamage"] + totals[key]["cosmosAT"]);
         ougiDamageUP -= 1.0;
 
+        var chainDamageUP = totals[key]["chainDamage"] <= 1.20 ? totals[key]["chainDamage"] : 1.20;
+
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
 
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
-        var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement));
+        var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), chainDamageUP, chainDamageLimit);
 
         // Normal attack * n times
         var expectedCycleDamage = expectedTurn * expectedAttack * damage;
@@ -610,9 +614,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["hpRatio"] = hpCoeff;
         coeffs["additionalDamage"] = additionalDamage;
         coeffs["ougiDamageUP"] = ougiDamageUP;
+        coeffs["chainDamageUP"] = chainDamageUP;
         coeffs["damageUP"] = damageUP;
         coeffs["damageLimit"] = damageLimit;
         coeffs["ougiDamageLimit"] = ougiDamageLimit;
+        coeffs["chainDamageLimit"] = chainDamageLimit;
         coeffs["criticalArray"] = criticalArray;
 
         // Consecutive shooting information
@@ -1117,6 +1123,10 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'cosmosArm') {
                             // Skip Cosmos Weapons Skill
+                        } else if (stype == 'chainForce') {
+                            // Chainforce weapons, chain DMG and Limit Up
+                            totals[key]["chainDamage"] += comb[i] *skillAmounts["chainDamage"][amount][slv - 1];
+                            totals[key]["chainDamageLimit"] += comb[i] * skillAmounts["chainDamageLimit"][amount][slv - 1];
                         } else if (stype == 'omega') {
                             // Omega Weapon
                             var omegaType = skillname.split("-")[1];
@@ -1159,6 +1169,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     totals[key]["normalDamageLimit"] += 0.1
                                 } else if (gauphKeyType === "gamma") {
                                     totals[key]["ougiDamageLimit"] += 0.15
+                                } else if (gauphKeyType === "delta") {
+                                    totals[key]["chainDamageLimit"] += 0.50
                                 }
                                 isOmegaIncluded[gauphKeyType] = true;
                             }
@@ -1588,8 +1600,10 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
+                chainDamage: 0,
                 normalDamageLimit: 0,
                 ougiDamageLimit: 0,
+                chainDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
                 additionalDamage: 0,
@@ -1720,10 +1734,12 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaATK: 0,
                 akashaHP: 0,
                 ougiDamage: 0,
+                chainDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
                 normalDamageLimit: 0,
                 ougiDamageLimit: 0,
+                chainDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
                 additionalDamage: 0,
@@ -1873,8 +1889,10 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["ougiDamage"] = 0;
         totals[key]["normalOugiDamage"] = 0;
         totals[key]["magnaOugiDamage"] = 0;
+        totals[key]["chainDamage"] = 0;
         totals[key]["normalDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
+        totals[key]["chainDamageLimit"] = 0;
         totals[key]["magnaOugiDamageLimit"] = 0;
         totals[key]["normalOugiDamageLimit"] = 0;
         totals[key]["additionalDamage"] = 0;
@@ -2242,7 +2260,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit);
 
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
-                    var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement)) / chainNumber;
+                    var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
                     var newExpectedCycleDamagePerTurn = (newChainBurst + newOugiDamage
                         + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1);
 

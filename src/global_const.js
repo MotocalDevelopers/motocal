@@ -102,7 +102,7 @@ var buffLevelList = [
     200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 300,
     -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
 ];
-var ougiRatioList = [4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0];
+var ougiRatioList = [0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.5, 10.0];
 var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var HPList = [
@@ -320,6 +320,7 @@ var keyTypes = {
     "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+//    "averageCyclePerTime": "予想ダメージ経時的な",
 };
 var supportedChartSortkeys = {
     "totalAttack": "攻撃力(二手技巧無し,ジータさんのみ)",
@@ -330,6 +331,7 @@ var supportedChartSortkeys = {
     "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+//    "averageCyclePerTime": "予想ダメージ経時的な",
     "totalHP": "ジータさん残りHP",
 };
 var supportedTurnChartSortkeys = {
@@ -339,6 +341,7 @@ var supportedTurnChartSortkeys = {
     "averageCriticalAttack": "技巧期待平均攻撃力",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+//    "averageCyclePerTime": "予想ダメージ経時的な",
 };
 var supportedSimulationChartSortkeys = {
     "averageAttack": "パーティ平均攻撃力(二手技巧無し)",
@@ -430,6 +433,7 @@ var skilltypes = {
     "normalDamageLimit10": {name: "通常上限UP(10%)", type: "normalDamageLimit", amount: "L"},
     "ougiDamageLimit10": {name: "奥義上限UP(10%)", type: "ougiDamageLimit", amount: "L"},
     "ougiDamageLimitExceedM": {name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M"},
+    "chainForce": {name: "チェインフォース", type: "chainForce", amount: "M"},
     "normalHPS": {name: "通常守護(小)", type: "normalHP", amount: "S"},
     "normalHPM": {name: "通常守護(中)", type: "normalHP", amount: "M"},
     "normalHPL": {name: "通常守護(大)", type: "normalHP", amount: "L"},
@@ -495,7 +499,7 @@ var skilltypes = {
     "gauphKey-alpha": {name: "ガフスキー[α]", type: "gauphKey", amount: "L"},
     // "gauphKey-beta": {name: "ガフスキー[β]", type: "gauphKey", amount: "L"},
     "gauphKey-gamma": {name: "ガフスキー[γ]", type: "gauphKey", amount: "L"},
-    // "gauphKey-delta": {name: "ガフスキー[Δ]", type: "gauphKey", amount: "L"},
+    "gauphKey-delta": {name: "ガフスキー[Δ]", type: "gauphKey", amount: "L"},
     "akasha-axe": {name: "アーカーシャ-斧", type: "akasha", amount: "fist"},
     "akasha-sword": {name: "アーカーシャ-剣", type: "akasha", amount: "dagger"},
     "akasha-bow": {name: "アーカーシャ-弓", type: "akasha", amount: "gun"},
@@ -555,6 +559,7 @@ var omegaWeaponSkill2 = {
     "non": {name: "無し"},
     "gauphKey-alpha": {name: "ガフスキー[α]"},
     "gauphKey-gamma": {name: "ガフスキー[γ]"},
+    "gauphKey-delta": {name: "ガフスキー[Δ]"},
 };
 
 var armTypes = {
@@ -1322,6 +1327,14 @@ var skillAmounts = {
     // Excelsior Ougi cap up
     "ougiDamageLimitExceed": {
         "M": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]
+    },
+    // Chain Force cap up
+    "chainDamageLimit": {
+        "M": [0.02, 0.04, 0.06, 0.08, 0.10, 0.12, 0.14, 0.16, 0.18, 0.20, 0.22, 0.24, 0.26, 0.28, 0.30]
+    },
+    // Chain Force damage up
+    "chainDamage": {
+        "M": [0.04, 0.08, 0.12, 0.16, 0.20, 0.24, 0.28, 0.32, 0.36, 0.40, 0.42, 0.44, 0.46, 0.48, 0.50]
     },
 };
 

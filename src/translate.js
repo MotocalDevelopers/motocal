@@ -351,6 +351,11 @@ var multiLangData = {
         "ja": "奥義ダメージUP",
         "zh": "奥义伤害上升",
     },
+    "チェインダメージアップ": {
+        "en": "Chain Damage UP",
+        "ja": "チェインダメージUP",
+        "zh": "チェイン义伤害上升",
+    },
     "ダメージ上限アップ": {
         "en": "Damage Limit Buff",
         "ja": "ダメージ上限アップ",
@@ -365,6 +370,11 @@ var multiLangData = {
         "en": "Ougi Damage Limit Buff",
         "ja": "奥義ダメージ上限UP",
         "zh": "奥义伤害上限上升",
+    },
+    "チェインダメージ上限アップ": {
+        "en": "Chain Damage Limit Buff",
+        "ja": "チェインダメージ上限UP",
+        "zh": "链义伤害上限上升",
     },
     "奥義ダメージ上限アップ説明": {
         "en": "It is used to calc the Ougi damage.",
@@ -1542,6 +1552,11 @@ var multiLangData = {
         "ja": "予想ターン毎ダメージのパーティ平均値",
         "zh": "预测DPT(全队平均值)",
     },
+//    "予想ダメージ経時的な": {
+//        "en": "Party-Averaged Exp. Over Time",
+//        "ja": "予想ダメージ経時的な",
+//        "zh": "预测DPS(全队平均值)",
+//    },
     "予想ダメージ(ジータさんのみ)": {
         "en": "Exp. Damage (Player only)",
         "ja": "予想ダメージ(ジータさんのみ)",
@@ -2388,6 +2403,11 @@ var multiLangData = {
         "en": "Ougi Limit UP (Exceed)",
         "ja": "奥義上限UP(イクシード)",
         "zh": "奥义上限UP(Exceed)",
+    },
+    "チェインフォース": {
+        "en": "Chain Force",
+        "ja": "チェインフォース",
+        "zh": "チェインフォース",
     },
     // Extended skills
     "通常渾身(大)(神石加護無効)": {
