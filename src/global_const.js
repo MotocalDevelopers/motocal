@@ -1466,6 +1466,18 @@ var supportAbilities = {
         "range": "own",
         "value": 0.00
     },
+    "dance_of_nataraja": {
+        "name": "奥義ゲージ上昇量DOWN35%&与ダメージ上昇(15%)(シヴァ)",
+        "type": "dance_of_nataraja",
+        "range": "own",
+        "value": 0.00
+    },
+    "recklessness_incarnate": {
+        "name": "奥義ゲージ上昇量DOWN35%&与ダメージ上昇(15%)&HPUP20%(クビラ)",
+        "type": "recklessness_incarnate",
+        "range": "own",
+        "value": 0.00
+    },
     "critical_up_own_10_30": {
         "name": "クリティカル確率UP(ヴァンピィ, ハロカリ) 発動率10%, 倍率30%",
         "type": "criticalBuff",

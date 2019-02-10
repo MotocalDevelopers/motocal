@@ -507,6 +507,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["typeBonus"] == 1.5) {
             // Supplemental damage rise support ability does not overlap with Tenshi skill (the strongest effect overwrites the lesser)
             var damageUP = totals[key]["tenshiDamageUP"] > totals[key]["charaDamageUP"] ? totals[key]["tenshiDamageUP"] : totals[key]["charaDamageUP"];
+            damageUP += totals[key]["charaUniqueDamageUP"];
 
             // Generate normal critical skill arrays.
             var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
@@ -1631,7 +1632,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 charaHaisui: 0,
                 debuffResistance: 0,
                 charaDamageUP: 0,
-                tenshiDamageUP: 0
+                tenshiDamageUP: 0,
+                charaUniqueDamageUP: 0
             }
     };
 
@@ -1766,7 +1768,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 charaHaisui: 0,
                 debuffResistance: 0,
                 charaDamageUP: 0,
-                tenshiDamageUP: 0
+                tenshiDamageUP: 0,
+                charaUniqueDamageUP: 0
             };
         }
     }
@@ -2000,6 +2003,15 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     totals[key]["normalBuff"] += elements * 0.15;
                     totals[key]["DABuff"] += elements * 0.10;
                     totals[key]["TABuff"] += elements * 0.03;
+                    continue;
+                case "dance_of_nataraja":
+                    totals[key]["ougiGageBuff"] -= 0.35;
+                    totals[key]["charaUniqueDamageUP"] += 0.15;
+                    continue;
+                case "recklessness_incarnate":
+                    totals[key]["ougiGageBuff"] -= 0.35;
+                    totals[key]["charaUniqueDamageUP"] += 0.15;
+                    totals[key]["HPBuff"] += 0.20;
                     continue;
                 case "charaDamageUP_OugiCap":
                     totals[key]["charaDamageUP"] += support.value;
