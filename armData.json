@@ -7675,6 +7675,40 @@
         "imageURL": "./imgs/1040016500.png",
         "en": "[4★] Windhose"
     },
+    "ソードコーン": {
+        "ja": "ソードコーン",
+        "element": "light",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "26",
+        "minattack": "469",
+        "hp": "180",
+        "attack": "2687",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040016600.png",
+        "en": "Sword on the Cob"
+    },
+    "[4凸]ソードコーン": {
+        "ja": "[4凸]ソードコーン",
+        "element": "light",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "26",
+        "minattack": "469",
+        "hp": "180",
+        "attack": "2687",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "180",
+        "attacklv100": "2687",
+        "imageURL": "./imgs/1040016600.png",
+        "en": "[4★] Sword on the Cob"
+    },
     "アゾット": {
         "ja": "アゾット",
         "element": "dark",
@@ -10786,6 +10820,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040414800.png",
         "en": "Cat's Tail"
+    },
+    "シルフィウム": {
+        "ja": "シルフィウム",
+        "element": "dark",
+        "type": "wand",
+        "skill1": "normalHaisuiL",
+        "skill2": "normalHPS",
+        "element2": "dark",
+        "minhp": "54",
+        "minattack": "329",
+        "hp": "303",
+        "attack": "2073",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040414900.png",
+        "en": "Silphium"
     },
     "裁きの鳴雷": {
         "ja": "裁きの鳴雷",

@@ -103,7 +103,7 @@ module.exports = {
   devServer: {
      contentBase: [path.join(__dirname, "/dist")],
      compress: true,
-     host: "0.0.0.0",
+     host: "localhost",
      port: 8000
   },
   mode: process.env.NODE_ENV || 'development'
