@@ -393,6 +393,8 @@ var skilltypes = {
     "normalHiouL": {name: "通常秘奥(大)", type: "normalHiou", amount: "L"},
     "normalHissatsuM": {name: "通常必殺(中)", type: "normalHissatsu", amount: "M"},
     "normalHissatsuL": {name: "通常必殺(大)", type: "normalHissatsu", amount: "L"},
+    "normalEiketsuL": {name: "通常英傑(大)", type: "normalEiketsu", amount: "L"},
+    "normalOntyouM": {name: "通常恩寵(中)", type: "normalOntyou", amount: "M"},
     "magnaM": {name: "マグナ攻刃", type: "magna", amount: "M"},
     "magnaL": {name: "マグナ攻刃II", type: "magna", amount: "L"},
     "magnaSoka": {name: "マグナ楚歌", type: "magnaSoka", amount: "M"},
@@ -1305,6 +1307,14 @@ var skillAmounts = {
         "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0],
         "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8]
     },
+    // normal Glory chain up
+    "normalEiketsu": {
+        "L": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5]
+    },
+    // normal Glory limit up
+    "normalEiketsuDamageLimit": {
+        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8]
+    },
     // normal Sentence
     "magnaHiou": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
@@ -1330,12 +1340,16 @@ var skillAmounts = {
     },
     // Chain Force cap up
     "chainDamageLimit": {
-        "M": [0.02, 0.04, 0.06, 0.08, 0.10, 0.12, 0.14, 0.16, 0.18, 0.20, 0.22, 0.24, 0.26, 0.28, 0.30]
+        "M": [2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0, 16.0, 18.0, 20.0, 22.0, 24.0, 26.0, 28.0, 30.0]
     },
     // Chain Force damage up
     "chainDamage": {
-        "M": [0.04, 0.08, 0.12, 0.16, 0.20, 0.24, 0.28, 0.32, 0.36, 0.40, 0.42, 0.44, 0.46, 0.48, 0.50]
+        "M": [4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0, 42.0, 44.0, 46.0, 48.0, 50.0]
     },
+    // Debuff Resistance Grace (Unconfirmed Placeholder)
+    "normalOntyou": {
+        "M": [20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
+    }
 };
 
 // chara support

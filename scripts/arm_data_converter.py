@@ -389,6 +389,25 @@ skillnamelist["normalHissatsuL"] = {
     u"奈落の必殺": "dark"
 }
 
+skillnamelist["normalEiketsuL"] = {
+    u"紅蓮の英傑": "fire",
+    u"霧氷の英傑": "water",
+    u"地裂の英傑": "earth",
+    u"乱気の英傑": "wind",
+    u"天光の英傑": "light",
+    u"奈落の英傑": "dark"
+}
+
+# Grace
+skillnamelist["normalOntyouM"] = {
+    u"業火の恩寵": "fire",
+    u"渦潮の恩寵": "water",
+    u"大地の恩寵": "earth",
+    u"竜巻の恩寵": "wind",
+    u"雷電の恩寵": "light",
+    u"憎悪の恩寵": "dark"
+}
+
 # magna II
 skillnamelist["magnaL"] = {
     u"機炎方陣・攻刃II": "fire",
@@ -696,6 +715,7 @@ skillnamelist["strengthL"] = {
     u"トラフィックエナジー": "light",
     u"ふわふわしっぽ": "earth",
     u"ゲイルオブアームズ": "wind",
+    u"獅子と牛の咆哮": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {

@@ -561,7 +561,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += ougiDamageLimitByNormal;
         ougiDamageLimit += ougiDamageLimitByExceed;
 
-        var chainDamageLimit = totals[key]["chainDamageLimit"] <= 0.50 ? totals[key]["chainDamageLimit"] : 0.50;
+        var chainDamageLimit = 0.01 * totals[key]["chainDamageLimit"] <= 0.50 ? 0.01 * totals[key]["chainDamageLimit"] : 0.50;
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, additionalDamage, damageUP, damageLimit);
@@ -586,7 +586,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totalSummon["ougiDamage"] + totals[key]["cosmosAT"]);
         ougiDamageUP -= 1.0;
 
-        var chainDamageUP = totals[key]["chainDamage"] <= 1.20 ? totals[key]["chainDamage"] : 1.20;
+        var chainDamageUP = 0.01 * totals[key]["chainDamage"] <= 1.20 ? 0.01 * totals[key]["chainDamage"] : 1.20;
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
 
@@ -1126,7 +1126,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             // Skip Cosmos Weapons Skill
                         } else if (stype == 'chainForce') {
                             // Chainforce weapons, chain DMG and Limit Up
-                            totals[key]["chainDamage"] += comb[i] *skillAmounts["chainDamage"][amount][slv - 1];
+                            totals[key]["chainDamage"] += comb[i] * skillAmounts["chainDamage"][amount][slv - 1];
                             totals[key]["chainDamageLimit"] += comb[i] * skillAmounts["chainDamageLimit"][amount][slv - 1];
                         } else if (stype == 'omega') {
                             // Omega Weapon
@@ -1332,6 +1332,16 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             } else if (stype == 'normalHissatsu') {
                                 totals[key]["normalOugiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
                                 totals[key]["normalOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["normalOugiDamageLimitHissatsu"][amount][slv - 1];
+                            } else if (stype == 'normalEiketsu') {
+                                // ougi DMG and Limit Up
+                                totals[key]["normalOugiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
+                                totals[key]["normalOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["normalOugiDamageLimitHissatsu"][amount][slv - 1];
+                                // chain DMG and Limit Up
+                                totals[key]["chainDamage"] += comb[i] * skillAmounts["normalEiketsu"][amount][slv - 1];
+                                totals[key]["chainDamageLimit"] += comb[i] * skillAmounts["normalEiketsuDamageLimit"][amount][slv - 1];
+                            } else if (stype == 'normalOntyou') {
+                                totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
+                                totals[key]["debuffResistance"] = comb[i] * skillAmounts["normalOntyou"][amount][slv - 1];
                             } else if (stype == 'magnaHissatsu') {
                                 totals[key]["magnaOugiDamage"] += comb[i] * skillAmounts["magnaHiou"][amount][slv - 1];
                                 totals[key]["magnaOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["magnaOugiDamageLimitHissatsu"][amount][slv - 1];
