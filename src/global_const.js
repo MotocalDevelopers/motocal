@@ -1537,6 +1537,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.20
     },
+    "OugiCapUP_25": {
+        "name": "限定の奥義ダメージ(25%)(シエテ)",
+        "type": "ougiDamageLimitBuff",
+        "range": "own",
+        "value": 0.25
+    },
 };
 
 // exports

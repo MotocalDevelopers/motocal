@@ -82,6 +82,9 @@ supportAbilist["damageUP_OugiCapUP_20"] = {
     u"惑乱の旋律",
     u"ピースメーカー",
 }
+supportAbilist["OugiCapUP_25"] = {
+    u"優しい心"
+}
 
 # Patching
 patching = OrderedDict()
