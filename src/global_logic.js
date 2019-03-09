@@ -561,7 +561,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += ougiDamageLimitByNormal;
         ougiDamageLimit += ougiDamageLimitByExceed;
 
-        var chainDamageLimit = 0.01 * totals[key]["chainDamageLimit"] <= 0.50 ? 0.01 * totals[key]["chainDamageLimit"] : 0.50;
+        var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
+        chainDamageLimit = chainDamageLimit <= 0.50 ? chainDamageLimit : 0.50;
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, additionalDamage, damageUP, damageLimit);
@@ -586,7 +587,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totalSummon["ougiDamage"] + totals[key]["cosmosAT"]);
         ougiDamageUP -= 1.0;
 
-        var chainDamageUP = 0.01 * totals[key]["chainDamage"] <= 1.20 ? 0.01 * totals[key]["chainDamage"] : 1.20;
+        var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
+        chainDamageUP = chainDamageUP <= 1.20 ? chainDamageUP : 1.20;
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
 
@@ -1337,8 +1339,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 totals[key]["normalOugiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
                                 totals[key]["normalOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["normalOugiDamageLimitHissatsu"][amount][slv - 1];
                                 // chain DMG and Limit Up
-                                totals[key]["chainDamage"] += comb[i] * skillAmounts["normalEiketsu"][amount][slv - 1];
-                                totals[key]["chainDamageLimit"] += comb[i] * skillAmounts["normalEiketsuDamageLimit"][amount][slv - 1];
+                                totals[key]["normalChainDamage"] += comb[i] * skillAmounts["normalEiketsu"][amount][slv - 1];
+                                totals[key]["normalChainDamageLimit"] += comb[i] * skillAmounts["normalEiketsuDamageLimit"][amount][slv - 1];
                             } else if (stype == 'normalOntyou') {
                                 totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
                                 totals[key]["debuffResistance"] = comb[i] * skillAmounts["normalOntyou"][amount][slv - 1];
@@ -1612,11 +1614,13 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
                 chainDamage: 0,
+                normalChainDamage: 0,
                 normalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 chainDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
+                normalChainDamageLimit: 0,
                 additionalDamage: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: true,
@@ -1749,11 +1753,13 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 chainDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
+                normalChainDamage: 0,
                 normalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 chainDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
+                normalChainDamageLimit: 0,
                 additionalDamage: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
@@ -1905,9 +1911,11 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["chainDamage"] = 0;
         totals[key]["normalDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
+        totals[key]["normalChainDamage"] = 0;
         totals[key]["chainDamageLimit"] = 0;
         totals[key]["magnaOugiDamageLimit"] = 0;
         totals[key]["normalOugiDamageLimit"] = 0;
+        totals[key]["normalChainDamageLimit"] = 0;
         totals[key]["additionalDamage"] = 0;
         totals[key]["ougiDebuff"] = 0;
         totals[key]["DAbuff"] = 0;
