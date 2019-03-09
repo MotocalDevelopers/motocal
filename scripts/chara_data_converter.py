@@ -82,6 +82,11 @@ supportAbilist["damageUP_OugiCapUP_20"] = {
     u"惑乱の旋律",
     u"ピースメーカー",
 }
+supportAbilist["OugiCapUP_20"] = {
+    u"孤高の狙撃手",
+    u"天性の才能",
+    u"反撃の狼煙"
+}
 supportAbilist["OugiCapUP_25"] = {
     u"優しい心",
     u"リレーション・コンバーター"
