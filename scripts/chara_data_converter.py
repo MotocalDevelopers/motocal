@@ -83,7 +83,8 @@ supportAbilist["damageUP_OugiCapUP_20"] = {
     u"ピースメーカー",
 }
 supportAbilist["OugiCapUP_25"] = {
-    u"優しい心"
+    u"優しい心",
+    u"リレーション・コンバーター"
 }
 
 # Patching

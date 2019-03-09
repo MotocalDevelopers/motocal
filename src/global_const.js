@@ -1538,7 +1538,7 @@ var supportAbilities = {
         "value": 0.20
     },
     "OugiCapUP_25": {
-        "name": "限定の奥義ダメージ(25%)(シエテ)",
+        "name": "奥義ダメージ上限25%UP(ルリア/ロボミ(SSR))",
         "type": "ougiDamageLimitBuff",
         "range": "own",
         "value": 0.25
