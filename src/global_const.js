@@ -1537,17 +1537,23 @@ var supportAbilities = {
         "range": "own",
         "value": 0.20
     },
-    "OugiCapUP_20": {
+    "ougiCapUP_20": {
         "name": "奥義ダメージ上限20%UP",
         "type": "ougiDamageLimitBuff",
         "range": "own",
         "value": 0.20
     },
-    "OugiCapUP_25": {
+    "ougiCapUP_25": {
         "name": "奥義ダメージ上限25%UP(ルリア/ロボミ(SSR))",
         "type": "ougiDamageLimitBuff",
         "range": "own",
         "value": 0.25
+    },
+    "wildcard": {
+        "name": "Break weapon skill limits (カイム)",
+        "type": "wildcard",
+        "range": "own",
+        "value": 0.0
     },
 };
 

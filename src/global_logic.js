@@ -1043,7 +1043,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (!isBahaAtIncluded) {
                                 // Baha dagger etc.
                                 if (totals[key]["race"] === "unknown" ||
-                                    totals[key]["race"] === "seisho") {
+                                    totals[key]["race"] === "seisho" ||
+                                    totals[key]["support"] === "wildcard") {
                                     totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
                                     isBahaAtIncluded = true;
                                 } else {
@@ -1058,7 +1059,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (!isBahaAthpIncluded) {
                                 // Baha sword etc.
                                 if (totals[key]["race"] === "unknown" ||
-                                    totals[key]["race"] === "seisho") {
+                                    totals[key]["race"] === "seisho" ||
+                                    totals[key]["support"] === "wildcard") {
                                     totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
                                     totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
                                     isBahaAthpIncluded = true;
@@ -1076,7 +1078,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (!isBahaHpIncluded) {
                                 // Baha Fist etc
                                 if (totals[key]["race"] === "unknown" ||
-                                    totals[key]["race"] === "seisho") {
+                                    totals[key]["race"] === "seisho" ||
+                                    totals[key]["support"] === "wildcard") {
                                     totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
                                     isBahaHpIncluded = true;
                                 } else {
@@ -1090,7 +1093,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'bahaFUATHP') {
                             if (totals[key]["race"] === "unknown" ||
-                                totals[key]["race"] === "seisho") {
+                                totals[key]["race"] === "seisho" ||
+                                totals[key]["support"] === "wildcard") {
                                 totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaFUATHP"]["AT"][slv - 1];
                                 totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUATHP"]["HP"][slv - 1];
                             } else {
@@ -1103,7 +1107,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'bahaFUHP') {
                             if (totals[key]["race"] === "unknown" ||
-                                totals[key]["race"] === "seisho") {
+                                totals[key]["race"] === "seisho" ||
+                                totals[key]["support"] === "wildcard") {
                                 totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUHP"]["HP"][slv - 1];
                                 totals[key]["bahaDA"] += comb[i] * skillAmounts["bahaFUHP"]["DA"][slv - 1];
                                 totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
@@ -1118,13 +1123,13 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'cosmos') {
                             // Cosmos weapons
-                            if (skillname == 'cosmosAT' && totals[key]["type"] == "attack") {
+                            if ((skillname == 'cosmosAT' && totals[key]["type"] == "attack") || totals[key]["support"] === "wildcard") {
                                 totals[key]["cosmosAT"] += comb[i] * 20.0;
-                            } else if (skillname == 'cosmosDF' && totals[key]["type"] == "defense") {
+                            } else if ((skillname == 'cosmosDF' && totals[key]["type"] == "defense") || totals[key]["support"] === "wildcard") {
                                 totals[key]["HPdebuff"] -= comb[i] * 0.10
-                            } else if (skillname == 'cosmosBL' && totals[key]["type"] == "balance") {
+                            } else if ((skillname == 'cosmosBL' && totals[key]["type"] == "balance") || totals[key]["support"] === "wildcard") {
                                 totals[key]["cosmosBL"] = comb[i] * 20.0
-                            } else if (skillname == 'cosmosPC' && totals[key]["type"] == "pecu") {
+                            } else if ((skillname == 'cosmosPC' && totals[key]["type"] == "pecu") || totals[key]["support"] === "wildcard") {
                                 totals[key]["debuffResistance"] = comb[i] * 20.0
                             }
                         } else if (stype == 'cosmosArm') {
@@ -1136,7 +1141,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'omega') {
                             // Omega Weapon
                             var omegaType = skillname.split("-")[1];
-                            if (arm.armType === totals[key]["fav1"] || arm.armType === totals[key]["fav2"]) {
+                            if (arm.armType === totals[key]["fav1"] ||
+                                arm.armType === totals[key]["fav2"] ||
+                                totals[key]["support"] === "wildcard") {
 
                                 if (!isOmegaIncluded["omegaBase"]) {
                                     totals[key]["omegaNormal"] += skillAmounts["omega"]["rawATK"][slv - 1];
@@ -1186,7 +1193,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             var akashaType = skillname.split("-")[1];
                             if (akashaType == "axe" && amount == "fist") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
-                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
+                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"] || totals[key]["support"] === "wildcard") {
                                     if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["normalOtherLesserSante"] += skillAmounts[akasha][akashaType][slv - 1];
@@ -1196,7 +1203,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                             } else if (akashaType == "sword" && amount == "dagger") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
-                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
+                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"] || totals[key]["support"] === "wildcard") {
                                     if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         isAkashaIncludedGlobal = true;
@@ -1205,7 +1212,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                             } else if (akashaType == "bow" && amount == "gun") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
-                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
+                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"] || totals[key]["support"] === "wildcard") {
                                     if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["normalOtherCritical"].push({
@@ -1218,7 +1225,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                             } else if (akashaType == "wand" && amount == "music") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
-                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
+                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"] || totals[key]["support"] === "wildcard") {
                                     if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["akashaSensei"] = skillAmounts[akasha][akashaType][slv - 1];
@@ -1228,7 +1235,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                             } else if (akashaType == "spear" && amount == "katana") {
                                 if (akashaType === totals[key]["fav1"] || akashaType === totals[key]["fav2"] ||
-                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"]) {
+                                    amount === totals[key]["fav1"] || amount === totals[key]["fav2"] || totals[key]["support"] === "wildcard") {
                                     if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                         totals[key]["akashaATK"] += skillAmounts[akasha]["rawATK"][slv - 1];
                                         totals[key]["akashaHP"] += skillAmounts[akasha][akashaType][slv - 1];
@@ -1424,17 +1431,17 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                                 // Shiva fist weapon skill only applies to fist prof characters
                             } else if (stype == 'magnaKenbu') {
-                                if (totals[key]["fav1"] == "fist" || totals[key]["fav2"] == "fist") {
+                                if (totals[key]["fav1"] == "fist" || totals[key]["fav2"] == "fist" || totals[key]["support"] === "wildcard") {
                                     totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 }
                                 // Europa staff weapon skill only applies to staff prof characters
                             } else if (stype == 'magnaJojutsu') {
-                                if (totals[key]["fav1"] == "wand" || totals[key]["fav2"] == "wand") {
+                                if (totals[key]["fav1"] == "wand" || totals[key]["fav2"] == "wand" || totals[key]["support"] === "wildcard") {
                                     totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 }
                                 // Grimnir katana weapon skill only applies to primal characters
                             } else if (stype == 'magnaSeisyou') {
-                                if (totals[key]["race"] === "seisho") {
+                                if (totals[key]["race"] === "seisho" || totals[key]["support"] === "wildcard") {
                                     totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 }
                             } else {
