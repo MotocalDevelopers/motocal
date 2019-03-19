@@ -266,6 +266,7 @@ var Chara = CreateClass({
             hp: 0,
             support: "none",
             support2: "none",
+            support3: "none",
             ougiRatio: 4.5,
             type: "attack",
             favArm: "dagger",
@@ -367,6 +368,7 @@ var Chara = CreateClass({
         newState["TA"] = parseFloat(newchara.baseTA);
         newState["support"] = newchara.support;
         newState["support2"] = newchara.support2;
+        newState["support3"] = newchara.support3;
 
         return newState;
     },
@@ -521,6 +523,12 @@ var Chara = CreateClass({
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}2</th>
                         <td><FormControl componentClass="select" value={this.state.support2}
                                          onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("サポアビ", locale)}3</th>
+                        <td><FormControl componentClass="select" value={this.state.support3}
+                                         onChange={this.handleSelectEvent.bind(this, "support3")}>{selector.supportAbilities}</FormControl>
                         </td>
                     </tr>
                     <tr>

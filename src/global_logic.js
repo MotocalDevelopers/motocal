@@ -859,13 +859,16 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
 
     for (var ch = 0; ch < chara.length; ch++) {
         if (chara[ch].name != "" && chara[ch].isConsideredInAverage) {
-            for (var i = 0; i < 2; i++) {
+            for (var i = 0; i < 3; i++) {
                 if (i == 0) {
                     if (chara[ch]["support"] == undefined) continue;
                     var support = supportAbilities[chara[ch]["support"]];
-                } else {
+                } else if (i == 1) {
                     if (chara[ch]["support2"] == undefined) continue;
                     var support = supportAbilities[chara[ch]["support2"]];
+                } else {
+                    if (chara[ch]["support3"] == undefined) continue;
+                    var support = supportAbilities[chara[ch]["support3"]];
                 }
 
                 if (support.type == "none") continue;
@@ -1643,6 +1646,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherCriticalBuff: [],
                 support: "none",
                 support2: "none",
+                support3: "none",
                 charaHaisui: 0,
                 debuffResistance: 0,
                 charaDamageUP: 0,
@@ -1781,6 +1785,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherCriticalBuff: [],
                 support: chara[i].support,
                 support2: chara[i].support2,
+                support3: chara[i].support3,
                 charaHaisui: 0,
                 debuffResistance: 0,
                 charaDamageUP: 0,
@@ -1939,13 +1944,16 @@ module.exports.calcOneCombination = function (comb, summon, prof, arml, totals, 
 // Overwrite the content of totals with what reflects charap's support
 module.exports.treatSupportAbility = function (totals, chara) {
     for (var key in totals) {
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 3; i++) {
             if (i == 0) {
                 if (totals[key]["support"] == undefined) continue;
                 var support = supportAbilities[totals[key]["support"]];
-            } else {
+            } else if (i == 1) {
                 if (totals[key]["support2"] == undefined) continue;
                 var support = supportAbilities[totals[key]["support2"]];
+            } else {
+                if (totals[key]["support3"] == undefined) continue;
+                var support = supportAbilities[totals[key]["support3"]];
             }
 
             if (support.type == "none") continue;
