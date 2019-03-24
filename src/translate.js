@@ -1627,6 +1627,21 @@ var multiLangData = {
         "ja": "★9",
         "zh": "★9",
     },
+    "★10": {
+        "en": "★10",
+        "ja": "★10",
+        "zh": "★10",
+    },
+    "★11": {
+        "en": "★11",
+        "ja": "★11",
+        "zh": "★11",
+    },
+    "★12": {
+        "en": "★12",
+        "ja": "★12",
+        "zh": "★12",
+    },
     "表示項目切替": {
         "en": "Select Display Elements",
         "ja": "表示する項目を選択してください",
@@ -3083,8 +3098,12 @@ module.exports.getLocale = function () {
 };
 
 module.exports.translate = function (key, locale) {
-    if (key == undefined || key == "") return "";
-    if (locale != "ja" && locale != "en" && locale != "zh") return multiLangData[key]["ja"];
+    try {
+        if (key == undefined || key == "") return "";
+        if (locale != "ja" && locale != "en" && locale != "zh") return multiLangData[key]["ja"];
 
-    return multiLangData[key][locale];
+        return multiLangData[key][locale];
+    } catch (e) {
+        console.error("Error! Key " + key + "for language " + locale + " not found")
+    }
 };
