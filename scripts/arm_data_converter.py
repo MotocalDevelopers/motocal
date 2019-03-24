@@ -818,14 +818,18 @@ skillnamelist["tenshiShukufukuII"] = {
     u"ミカエルの祝福II": "fire",
     u"ガブリエルの祝福II": "water",
     u"ウリエルの祝福II": "earth",
-    u"ラファエルの祝福II": "wind"
+    u"ラファエルの祝福II": "wind",
+    u"双子天司の導きII": "light",
+    u"堕落のすゝめII": "dark",
 }
 
 skillnamelist["tenshiShukufuku"] = {
     u"ミカエルの祝福": "fire",
     u"ガブリエルの祝福": "water",
     u"ウリエルの祝福": "earth",
-    u"ラファエルの祝福": "wind"
+    u"ラファエルの祝福": "wind",
+    u"双子天司の導き": "light",
+    u"堕落のすゝめ": "dark"
 }
 
 # Damage cap up
