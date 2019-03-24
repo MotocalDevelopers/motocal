@@ -813,6 +813,18 @@ module.exports.Jobs = {
         "DaBonus": 20.0,
         "TaBonus": 15.0
     },
+    "chrysaor": {
+        "name": "クリュサオル",
+        "favArm1": "sword",
+        "favArm2": "katana",
+        "type": "attack",
+        "atBonus": 2000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 600.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 30.0,
+        "TaBonus": 0.0
+    },
     "rune": {
         "name": "魔法戦士",
         "favArm1": "katana",
@@ -1112,6 +1124,18 @@ module.exports.Jobs = {
         "shugoBonus": 0.0,
         "DaBonus": 12.0,
         "TaBonus": 8.0
+    },
+    "gladiator": {
+        "name": "グラディエーター",
+        "favArm1": "sword",
+        "favArm2": "katana",
+        "type": "attack",
+        "atBonus": 2000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 15.0,
+        "TaBonus": 0.0
     },
     "none": {
         "name": "なし",

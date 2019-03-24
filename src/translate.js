@@ -708,6 +708,16 @@ var multiLangData = {
         "ja": "エリュシオン",
         "zh": "Elysian",
     },
+    "グラディエーター": {
+        "en": "Gladiator",
+        "ja": "グラディエーター",
+        "zh": "Gladiator",
+    },
+    "クリュサオル": {
+        "en": "Chrysaor",
+        "ja": "クリュサオル",
+        "zh": "Chrysaor",
+    },
     "ザ・グローリー": {
         "en": "Glorybringer",
         "ja": "ザ・グローリー",
