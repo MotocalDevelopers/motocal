@@ -7279,6 +7279,24 @@
         "imageURL": "./imgs/1040008600.png",
         "en": "Disparia"
     },
+    "[4凸]ディスペアー": {
+        "ja": "[4凸]ディスペアー",
+        "element": "dark",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "normalL",
+        "element2": "light",
+        "minhp": "34",
+        "minattack": "460",
+        "hp": "260",
+        "attack": "3100",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "223",
+        "attacklv100": "2665",
+        "imageURL": "./imgs/1040008600.png",
+        "en": "[4★] Disparia"
+    },
     "S・D": {
         "ja": "S・D",
         "element": "fire",
@@ -9690,6 +9708,24 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040305500.png",
         "en": "Soul Eater"
+    },
+    "[4凸]ソウルイーター": {
+        "ja": "[4凸]ソウルイーター",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "normalL",
+        "skill2": "normalCriticalM",
+        "element2": "dark",
+        "minhp": "29",
+        "minattack": "465",
+        "hp": "220",
+        "attack": "3150",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "191",
+        "attacklv100": "2705",
+        "imageURL": "./imgs/1040305500.png",
+        "en": "[4★] Soul Eater"
     },
     "黒旋風": {
         "ja": "黒旋風",

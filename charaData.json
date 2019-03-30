@@ -3582,12 +3582,12 @@
         "support2": "none",
         "support3": "none",
         "minhp": "220",
-        "hp": "1170",
+        "hp": "1390",
         "minattack": "1720",
-        "attack": "9160",
+        "attack": "10880",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040057000_01.png",
+        "imageURL": "./charaimgs/3040057000_03.png",
         "en": "Vania"
     },
     "ゼタ(水着ver)": {
