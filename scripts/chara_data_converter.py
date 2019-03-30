@@ -126,25 +126,7 @@ patching["エウロペ"] = {"DA": 4.0, "TA": 1.0}
 patching["ユエル(イベントver)"] = {"DA": 12.0, "TA": 3.0}
 
 ## 土 - Earth
-###DA率のみの検証データなので検証班が提唱しているDATA率ABCグループ分け理論から推測
-patching["メルゥ"] = {"DA": 10.0, "TA": 5.0}
-patching["アレーティア"] = {"DA": 10.0, "TA": 5.0}
-patching["ヴィーラ(サマーver)"] = {"DA": 10.0, "TA": 5.0}
-patching["キャサリン"] = {"DA": 10.0, "TA": 5.0}
 patching["ダーント＆フライハイト"] = {"DA": 10.0, "TA": 5.0}
-
-patching["アルルメイヤ"] = {"DA": 7.0, "TA": 3.0}
-patching["ジークフリート"] = {"DA": 7.0, "TA": 3.0}
-patching["マキラ"] = {"DA": 7.0, "TA": 3.0}
-patching["ラスティナ"] = {"DA": 7.0, "TA": 3.0}
-patching["ユグドラシル"] = {"DA": 7.0, "TA": 3.0}
-patching["ブローディア"] = {"DA": 7.0, "TA": 3.0}
-patching["カイン"] = {"DA": 7.0, "TA": 3.0}
-
-patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
-patching["サラ(SSR)"] = {"DA": 4.0, "TA": 1.0}
-patching["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
-patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
 
 ### SR
 
