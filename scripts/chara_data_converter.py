@@ -120,11 +120,6 @@ patching["ニオ"] = {"DA": 4.0, "TA": 1.0}
 patching["エッセル"] = {"DA": 10.0, "TA": 5.0}
 
 ## 火 - Fire
-patching["アオイドス"] = {"DA": 4.0, "TA": 1.0}
-patching["アニラ"] = {"DA": 4.0, "TA": 1.0}
-patching["アギエルバ"] = {"DA": 4.0, "TA": 1.0}
-patching["ザルハメリナ"] = {"DA": 4.0, "TA": 1.0}
-patching["ユエル"] = {"DA": 12.0, "TA": 3.0}
 patching["ゼタ"] = {"DA": 10.0, "TA": 5.0}
 patching["ラカム(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
 patching["テレーズ(SSR)"] = {"DA": 10.0, "TA": 5.0}
@@ -134,13 +129,19 @@ patching["ガンダゴウザ"] = {"DA": 10.0, "TA": 5.0}
 patching["アリーザ(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["グレア"] = {"DA": 10.0, "TA": 5.0}
 patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
+
+patching["アオイドス"] = {"DA": 4.0, "TA": 1.0}
+patching["アニラ"] = {"DA": 4.0, "TA": 1.0}
+patching["アギエルバ"] = {"DA": 4.0, "TA": 1.0}
+patching["ザルハメリナ"] = {"DA": 4.0, "TA": 1.0}
+
+patching["ユエル"] = {"DA": 12.0, "TA": 3.0}
 patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 1000.0, "TA": 0.0}
 
 ### SR
 patching["ジェミニ・サンライズ"] = {"DA": 10.0, "TA": 5.0}
 
 ## 水 - Water
-patching["リリィ"] = {"DA": 4.0, "TA": 1.0}
 patching["イングヴェイ"] = {"DA": 10.0, "TA": 5.0}
 patching["シルヴァ"] = {"DA": 10.0, "TA": 5.0}
 patching["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
@@ -150,28 +151,49 @@ patching["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["ソシエ"] = {"DA": 10.0, "TA": 5.0}
 patching["イシュミール"] = {"DA": 10.0, "TA": 5.0}
 
+patching["リリィ"] = {"DA": 4.0, "TA": 1.0}
+patching["エウロペ"] = {"DA": 4.0, "TA": 1.0}
+
 ### SR
 patching["ユエル(イベントver)"] = {"DA": 12.0, "TA": 3.0}
 
 ## 土 - Earth
 patching["アレーティア"] = {"DA": 10.0, "TA": 5.0}
-patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
-patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
-patching["サラ"] = {"DA": 4.0, "TA": 1.0}
+patching["ダーント＆フライハイト"] = {"DA": 10.0, "TA": 5.0}
 patching["ヴィーラ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["キャサリン"] = {"DA": 10.0, "TA": 5.0}
+
+patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
+patching["サラ"] = {"DA": 4.0, "TA": 1.0}
 patching["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
+
+patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
 
 ### SR
 
 ## 風 - Wind
 patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
+patching["ヘルエス(風属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ユエル(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+
 patching["コッコロ"] = {"DA": 12.0, "TA": 3.0}
 
 ### SR
 
 ## 光 - Light
+patching["アーミラ(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patching["ゼタ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ヘルエス(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ジャンヌダルク"] = {"DA": 10.0, "TA": 5.0}
+patching["セルエル"] = {"DA": 10.0, "TA": 5.0}
+patching["ロザミア(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patching["メリッサベル(バレンタインver)"] = {"DA": 10.0, "TA": 5.0}
+
+patching["バウタオーダ(SSR)"] = {"DA": 4.0, "TA": 1.0}
+patching["イオ(リミテッドver)"] = {"DA": 4.0, "TA": 1.0}
+patching["ソフィア"] = {"DA": 4.0, "TA": 1.0}
+
 patching["アルベール"] = {"DA": 1000.0, "TA": 0.0}
 patching["プリキュア"] = {"DA": 1000.0, "TA": 0.0}
 patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 1000.0, "TA": 0.0}
@@ -180,8 +202,22 @@ patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 100
 patching["アルベール(SR)"] = {"DA": 1000.0, "TA": 0.0}
 
 ## 闇 - Dark
+patching["フォルテ"] = {"DA": 10.0, "TA": 5.0}
+patching["ゼタ(闇属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ヴィーラ(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patching["黒騎士(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
+patching["レディ・グレイ"] = {"DA": 10.0, "TA": 5.0}
+patching["ジャンヌダルク(闇)"] = {"DA": 10.0, "TA": 5.0}
+patching["アザゼル"] = {"DA": 10.0, "TA": 5.0}
+
+patching["バザラガ"] = {"DA": 4.0, "TA": 1.0}
+patching["ダヌア"] = {"DA": 4.0, "TA": 1.0}
+patching["カリオストロ(闇属性ver)"] = {"DA": 4.0, "TA": 1.0}
+
 patching["ウーフとレニー"] = {"DA": 1000.0, "TA": 1000.0}
-patching["ケルベロス"] = {"DA": 10.0, "TA": 55.0}
+patching["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
+patching["ゾーイ(水着ver)"] = {"DA": 17.0, "TA": 6.0}
+patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 
 ### SR
 
