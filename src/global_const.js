@@ -825,8 +825,20 @@ module.exports.Jobs = {
         "kouzinBonus": 0.0,
         "hpBonus": 600.0,
         "shugoBonus": 0.0,
-        "DaBonus": 30.0,
-        "TaBonus": 0.0
+        "DaBonus": 37.0,
+        "TaBonus": 3.0
+    },
+    "chrysaor_dual": {
+        "name": "クリュサオル(二刀)",
+        "favArm1": "sword",
+        "favArm2": "katana",
+        "type": "attack",
+        "atBonus": 2000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 600.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 57.0,
+        "TaBonus": 3.0
     },
     "rune": {
         "name": "魔法戦士",
@@ -1137,8 +1149,8 @@ module.exports.Jobs = {
         "kouzinBonus": 0.0,
         "hpBonus": 0.0,
         "shugoBonus": 0.0,
-        "DaBonus": 15.0,
-        "TaBonus": 0.0
+        "DaBonus": 22.0,
+        "TaBonus": 3.0
     },
     "none": {
         "name": "なし",
