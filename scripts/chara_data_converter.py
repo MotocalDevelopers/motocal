@@ -107,6 +107,7 @@ patching["アリーザ(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["グレア"] = {"DA": 10.0, "TA": 5.0}
 patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
 patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 100.0, "TA": 0.0}
+patching["アラナン"] = {"DA": 10.0, "TA": 5.0}
 
 ### SR
 
@@ -140,7 +141,7 @@ patching["ユエル(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 ## 光 - Light
 patching["アーミラ(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["ゼタ(サマーver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ヘルエス(サマーver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ヘルエス(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["ジャンヌダルク"] = {"DA": 10.0, "TA": 5.0}
 patching["セルエル"] = {"DA": 10.0, "TA": 5.0}
 patching["ロザミア(SSR)"] = {"DA": 10.0, "TA": 5.0}
@@ -157,7 +158,7 @@ patching["シルヴァ(光属性ver)"] = {"DA": 7.0, "TA": 3.0}
 patching["ゾーイ(ガチャver)"] = {"DA": 7.0, "TA": 3.0}
 patching["レ・フィーエ"] = {"DA": 7.0, "TA": 3.0}
 patching["ヴィーラ(リミテッドver)"] = {"DA": 7.0, "TA": 3.0}
-patching["レ・フィーエ(2014年サマーver)"] = {"DA": 7.0, "TA": 3.0}
+patching["レ・フィーエ(水着ver)"] = {"DA": 7.0, "TA": 3.0}
 
 patching["バウタオーダ(SSR)"] = {"DA": 4.0, "TA": 1.0}
 patching["イオ(リミテッドver)"] = {"DA": 4.0, "TA": 1.0}
@@ -181,7 +182,7 @@ patching["ジャンヌダルク(闇)"] = {"DA": 10.0, "TA": 5.0}
 patching["アザゼル"] = {"DA": 10.0, "TA": 5.0}
 
 patching["ナルメア"] = {"DA": 7.0, "TA": 3.0}
-patching["サルナーン(闇)"] = {"DA": 7.0, "TA": 3.0}
+patching["サルナーン(闇属性ver)"] = {"DA": 7.0, "TA": 3.0}
 patching["ヴァンピィ"] = {"DA": 7.0, "TA": 3.0}
 patching["ジョーカー"] = {"DA": 7.0, "TA": 3.0}
 patching["ヴァイト"] = {"DA": 7.0, "TA": 3.0}
@@ -192,12 +193,12 @@ patching["カタリナ(闇属性ver)"] = {"DA": 7.0, "TA": 3.0}
 patching["ロゼッタ(クリスマスver)"] = {"DA": 7.0, "TA": 3.0}
 
 patching["バザラガ"] = {"DA": 4.0, "TA": 1.0}
-patching["ダヌア"] = {"DA": 4.0, "TA": 1.0}
+patching["ダヌア(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["カリオストロ(闇属性ver)"] = {"DA": 4.0, "TA": 1.0}
 
 patching["ケルベロス"] = {"DA": 0.0, "TA": 50.0}
-patching["ウーフとレニー"] = {"DA": 0.0, "TA": 100.0}
-patching["ゾーイ(水着ver)"] = {"DA": 17.0, "TA": 6.0}
+patching["ウーフとレニー"] = {"DA": 0.0, "TA": 100.0,}
+patching["ゾーイ(リミテッドver)"] = {"DA": 17.0, "TA": 6.0}
 patching["ユーステス(闇属性ver)"] = {"DA": 12.9, "TA": 5.4}
 
 ### SR
