@@ -65,6 +65,7 @@ var Profile = CreateClass({
             zenithBonus2: "無し",
             enemyElement: "wind",
             enemyDefense: 10.0,
+            defenseDebuff: 0.0,
             job: "none",
             element: "fire",
             DA: 6.5,
@@ -422,6 +423,14 @@ var Profile = CreateClass({
                                 <td><FormControl componentClass="select" value={this.state.enemyDefense} onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl></td>
                             </tr>
                         </TextWithTooltip>
+                        
+                        <TextWithTooltip tooltip={intl.translate("防御デバフ合計説明", locale)} id={"tooltip-defense-debuff-detail"}>
+                            <tr>
+                                <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}</th>
+                                <td><FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff} onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "defenseDebuff")} /></td>
+                            </tr>
+                        </TextWithTooltip>
+                        
 
                         <TextWithTooltip tooltip={intl.translate("ジータさん基礎DA率説明", locale)} id={"tooltip-player-baseda-detail"}>
                             <tr>

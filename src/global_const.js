@@ -145,13 +145,11 @@ var limitBonusCriticalList = {
 
 var enemyDefenseType = {
     10.0: { "name": "敵防御10" },
-    8.0: { "name": "敵防御8" },
-    7.0: { "name": "敵防御7" },
-    5.0: { "name": "敵防御5" },
-    13.0: { "name": "敵防御13" },
-    6.5: { "name": "敵防御6.5" },
     11.0: { "name": "敵防御11" },
-    5.5: { "name": "敵防御5.5" },
+    12.0: { "name": "敵防御12" },
+    13.0: { "name": "敵防御13" },
+    14.0: { "name": "敵防御14" },
+    15.0: { "name": "敵防御15" },
     20.0: { "name": "敵防御20" },
 }
 var keyTypes = {
@@ -979,7 +977,7 @@ module.exports.selector.zh.supported_simulationchartsortkeys = Object.keys(suppo
 module.exports.supportedChartSortkeys = supportedChartSortkeys
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
 
-module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{enemyDefenseType[opt].name}</option>; });
+module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "ja")}</option>; });
 module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "en")}</option>; });
 module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "zh")}</option>; });
 
