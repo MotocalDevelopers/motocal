@@ -2374,29 +2374,29 @@ var multiLangData = {
         "zh": "10.0(一般的敌人)",
 	},
     "敵防御11": {
-        "en": "11.0(Proto Bahamut)",
+        "en": "11.0(GW Nightmare/Ul Baha HL/Proto Baha N)",
         "ja": "11.0(通常古戦場HELL/アルバハHL/プロバハN)",
         "zh": "11.0(巴哈)",
     },
     "敵防御12": {
-        "en": "12.0()",
+        "en": "12.0(Omega II(Light&Dark)/Omega HL/Huanglong Qilin HL)",
         "ja": "12.0(マグナⅡ光闇/マグナHL/黄黒HL)",
-        "zh": "12.0()",
+        "zh": "12.0(Omega II(Light&Dark)/Omega HL/Huanglong Qilin HL)",
     },
     "敵防御13": {
-        "en": "13.0()",
+        "en": "13.0(Omega II(4 Elements))",
         "ja": "13.0(マグナⅡ4属性)",
-        "zh": "13.0()",
+        "zh": "13.0(Omega II(4 Elements))",
 	},
     "敵防御14": {
-        "en": "14.0()",
+        "en": "14.0(Freyr)",
         "ja": "14.0(フレイ)",
-        "zh": "14.0()",
+        "zh": "14.0(Freyr)",
     },
     "敵防御15": {
-        "en": "15.0()",
+        "en": "15.0(Malice/Akasha)",
         "ja": "15.0(マリス/アーカーシャ)",
-        "zh": "15.0()",
+        "zh": "15.0(Malice/Akasha)",
     },
     "敵防御20": {
         "en": "20.0(Proto Baha HL)",
