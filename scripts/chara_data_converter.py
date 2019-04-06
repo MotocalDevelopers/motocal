@@ -129,6 +129,7 @@ patching["ガンダゴウザ"] = {"DA": 10.0, "TA": 5.0}
 patching["アリーザ(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["グレア"] = {"DA": 10.0, "TA": 5.0}
 patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
+patching["アラナン"] = {"DA": 10.0, "TA": 5.0}
 
 patching["アオイドス"] = {"DA": 4.0, "TA": 1.0}
 patching["アニラ"] = {"DA": 4.0, "TA": 1.0}
@@ -211,7 +212,7 @@ patching["ジャンヌダルク(闇)"] = {"DA": 10.0, "TA": 5.0}
 patching["アザゼル"] = {"DA": 10.0, "TA": 5.0}
 
 patching["バザラガ"] = {"DA": 4.0, "TA": 1.0}
-patching["ダヌア"] = {"DA": 4.0, "TA": 1.0}
+patching["ダヌア(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["カリオストロ(闇属性ver)"] = {"DA": 4.0, "TA": 1.0}
 
 patching["ウーフとレニー"] = {"DA": 1000.0, "TA": 1000.0}

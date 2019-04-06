@@ -582,8 +582,8 @@
         "hp": "1319",
         "minattack": "1605",
         "attack": "9705",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 10.0,
+        "baseTA": 5.0,
         "imageURL": "./charaimgs/3040167000_01.png",
         "en": "Alanaan"
     },
@@ -3627,8 +3627,8 @@
         "hp": "1590",
         "minattack": "1570",
         "attack": "8350",
-        "baseDA": 7.0,
-        "baseTA": 3.0,
+        "baseDA": 4.0,
+        "baseTA": 1.0,
         "imageURL": "./charaimgs/3040055000_91.png",
         "en": "Danua (Summer)"
     },
@@ -4950,8 +4950,8 @@
         "hp": "1490",
         "minattack": "1310",
         "attack": "7840",
-        "baseDA": 4.0,
-        "baseTA": 1.0,
+        "baseDA": 7.0,
+        "baseTA": 3.0,
         "imageURL": "./charaimgs/3030017000_03.png",
         "en": "Danua"
     },
