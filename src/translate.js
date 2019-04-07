@@ -2370,7 +2370,7 @@ var multiLangData = {
 	},
     "敵防御10": {
         "en": "10.0(General)",
-        "ja": "10.0(一般的な敵)",
+        "ja": "10.0(一般的な敵/トライアル/高級鞄HL)",
         "zh": "10.0(一般的敌人)",
 	},
     "敵防御11": {
@@ -2384,9 +2384,9 @@ var multiLangData = {
         "zh": "12.0(Omega II(Light&Dark)/Omega HL/Huanglong Qilin HL)",
     },
     "敵防御13": {
-        "en": "13.0(Omega II(4 Elements))",
-        "ja": "13.0(マグナⅡ4属性)",
-        "zh": "13.0(Omega II(4 Elements))",
+        "en": "13.0(Omega II(4 Elements)/Tia-Magna/Chiva-Magna)",
+        "ja": "13.0(マグナⅡ4属性/ティアマグ/シュバマグ)",
+        "zh": "13.0(Omega II(4 Elements)/风/光方阵)",
 	},
     "敵防御14": {
         "en": "14.0(Freyr)",
