@@ -2370,23 +2370,23 @@ var multiLangData = {
 	},
     "敵防御10": {
         "en": "10.0(General)",
-        "ja": "10.0(一般的な敵/トライアル/高級鞄HL)",
+        "ja": "10.0(一般的な敵)",
         "zh": "10.0(一般的敌人)",
 	},
     "敵防御11": {
         "en": "11.0(GW Nightmare/Ul Baha HL/Proto Baha N)",
         "ja": "11.0(通常古戦場HELL/アルバハHL/プロバハN)",
-        "zh": "11.0(巴哈)",
+        "zh": "11.0(GW Nightmare/Ul Baha HL/Proto Baha N)",
     },
     "敵防御12": {
-        "en": "12.0(Omega II(Light&Dark)/Omega HL/Huanglong Qilin HL)",
-        "ja": "12.0(マグナⅡ光闇/マグナHL/黄黒HL)",
-        "zh": "12.0(Omega II(Light&Dark)/Omega HL/Huanglong Qilin HL)",
+        "en": "12.0(Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+        "ja": "12.0(マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL)",
+        "zh": "12.0(Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
     },
     "敵防御13": {
-        "en": "13.0(Omega II(4 Elements)/Tia-Magna/Chiva-Magna)",
-        "ja": "13.0(マグナⅡ4属性/ティアマグ/シュバマグ)",
-        "zh": "13.0(Omega II(4 Elements)/风/光方阵)",
+        "en": "13.0(Omega II(4 Elements))",
+        "ja": "13.0(マグナⅡ4属性)",
+        "zh": "13.0(Omega II(4 Elements))",
 	},
     "敵防御14": {
         "en": "14.0(Freyr)",
@@ -2401,7 +2401,7 @@ var multiLangData = {
     "敵防御20": {
         "en": "20.0(Proto Baha HL)",
         "ja": "20.0(プロトバハムートHL)",
-        "zh": "20.0(巴哈HL)",
+        "zh": "20.0(Proto Baha HL)",
 	},
     // chart sort key
     "ジータさん残りHP": {
