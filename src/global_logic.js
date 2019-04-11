@@ -133,7 +133,7 @@ module.exports.getTypeBonus = function(self_elem, enemy_elem) {
     } else {
         return 1.0
     }
-},
+};
 
 module.exports.getTypeBonusStr = function(self_elem, enemy_elem) {
     switch(module.exports.getTypeBonus(self_elem, enemy_elem)) {
@@ -165,9 +165,17 @@ module.exports.makeSummonHeaderString = function(summon, locale) {
     return summonHeader;
 }
 
+
+module.exports.calcDefenseDebuff = function(defense, debuff) {
+  defense = (defense == undefined) ? 10.0 : defense;
+  debuff = (debuff == undefined) ? 0 : debuff;
+
+  return Math.max(1, defense * (1 - debuff * 0.01));
+}
+
 module.exports.calcDamage = function(summedAttack, totalSkillCoeff, criticalRatio, enemyDefense, defenseDebuff, additionalDamage, damageUP, damageLimit) {
     // ダメージ計算
-    var def = ((enemyDefense == undefined) ? 10.0 : enemyDefense) * (1 - (defenseDebuff == undefined ? 0 : defenseDebuff) * 0.01);
+    var def = module.exports.calcDefenseDebuff(enemyDefense, defenseDebuff);
     var damage = Math.ceil(Math.ceil(summedAttack / def) * totalSkillCoeff) * criticalRatio
     var overedDamage = 0
 
@@ -201,7 +209,7 @@ module.exports.calcDamage = function(summedAttack, totalSkillCoeff, criticalRati
 
 module.exports.calcOugiDamage = function(summedAttack, totalSkillCoeff, criticalRatio, enemyDefense, defenseDebuff, ougiRatio, ougiDamageUP, damageUP, ougiDamageLimit) {
     // ダメージ計算
-    var def = ((enemyDefense == undefined) ? 10.0 : enemyDefense) * (1 - (defenseDebuff == undefined ? 0 : defenseDebuff) * 0.01);
+    var def = module.exports.calcDefenseDebuff(enemyDefense, defenseDebuff);
     var ratio = (ougiRatio == undefined) ? 4.5 : ougiRatio
     var damage = (1.0 + ougiDamageUP) * ratio * Math.ceil(Math.ceil(summedAttack / def) * totalSkillCoeff) * criticalRatio
     var overedDamage = 0.0
