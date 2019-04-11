@@ -35,7 +35,7 @@ var Profile = CreateClass({
     },
     componentWillReceiveProps: function (nextProps) {
         // only fired on Data Load
-        if (nextProps.dataName != this.props.dataName && (nextProps.dataForLoad != undefined)) {
+        if (nextProps.dataForLoad != undefined) {
             var newState = nextProps.dataForLoad
             this.setState(newState);
             return 0;
