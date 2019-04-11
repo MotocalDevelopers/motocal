@@ -819,6 +819,176 @@
         "imageURL": "./imgs/1040905000.png",
         "en": "Cosmic Blade"
     },
+    "虚空の裂剣": {
+        "ja": "虚空の裂剣",
+        "element": "dark",
+        "type": "sword",
+        "skill1": "akasha-sword",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "32",
+        "minattack": "440",
+        "hp": "216",
+        "attack": "2600",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040016300.png",
+        "en": "Hollowsky Blade"
+    },
+    "[4凸]虚空の裂剣": {
+        "ja": "[4凸]虚空の裂剣",
+        "element": "dark",
+        "type": "sword",
+        "skill1": "akasha-sword",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "32",
+        "minattack": "440",
+        "hp": "260",
+        "attack": "3140",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "216",
+        "attacklv100": "2600",
+        "imageURL": "./imgs/1040016300.png",
+        "en": "[4★] Hollowsky Blade"
+    },
+    "虚空の楔槍": {
+        "ja": "虚空の楔槍",
+        "element": "fire",
+        "type": "spear",
+        "skill1": "akasha-spear",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "41",
+        "minattack": "390",
+        "hp": "265",
+        "attack": "2370",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040211900.png",
+        "en": "Hollowsky Spear"
+    },
+    "[4凸]虚空の楔槍": {
+        "ja": "[4凸]虚空の楔槍",
+        "element": "fire",
+        "type": "spear",
+        "skill1": "akasha-spear",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "41",
+        "minattack": "390",
+        "hp": "320",
+        "attack": "2870",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "265",
+        "attacklv100": "2370",
+        "imageURL": "./imgs/1040211900.png",
+        "en": "[4★] Hollowsky Spear"
+    },
+    "虚空の晶塊": {
+        "ja": "虚空の晶塊",
+        "element": "earth",
+        "type": "axe",
+        "skill1": "akasha-axe",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "34",
+        "minattack": "430",
+        "hp": "200",
+        "attack": "2700",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040310300.png",
+        "en": "Hollowsky Axe"
+    },
+    "[4凸]虚空の晶塊": {
+        "ja": "[4凸]虚空の晶塊",
+        "element": "earth",
+        "type": "axe",
+        "skill1": "akasha-axe",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "34",
+        "minattack": "430",
+        "hp": "240",
+        "attack": "3270",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "200",
+        "attacklv100": "2700",
+        "imageURL": "./imgs/1040310300.png",
+        "en": "[4★] Hollowsky Axe"
+    },
+    "虚空の拝腕": {
+        "ja": "虚空の拝腕",
+        "element": "water",
+        "type": "wand",
+        "skill1": "akasha-wand",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "50",
+        "minattack": "350",
+        "hp": "300",
+        "attack": "2200",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040414700.png",
+        "en": "Hollowsky Staff"
+    },
+    "[4凸]虚空の拝腕": {
+        "ja": "[4凸]虚空の拝腕",
+        "element": "water",
+        "type": "wand",
+        "skill1": "akasha-wand",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "50",
+        "minattack": "350",
+        "hp": "360",
+        "attack": "2660",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "300",
+        "attacklv100": "2200",
+        "imageURL": "./imgs/1040414700.png",
+        "en": "[4★] Hollowsky Staff"
+    },
+    "虚空の歪弦": {
+        "ja": "虚空の歪弦",
+        "element": "light",
+        "type": "bow",
+        "skill1": "akasha-bow",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "37",
+        "minattack": "420",
+        "hp": "234",
+        "attack": "2580",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040708900.png",
+        "en": "Hollowsky Bow"
+    },
+    "[4凸]虚空の歪弦": {
+        "ja": "[4凸]虚空の歪弦",
+        "element": "light",
+        "type": "bow",
+        "skill1": "akasha-bow",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "37",
+        "minattack": "420",
+        "hp": "280",
+        "attack": "3120",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "234",
+        "attacklv100": "2580",
+        "imageURL": "./imgs/1040708900.png",
+        "en": "[4★] Hollowsky Bow"
+    },
     "一伐槍・属性変更": {
         "ja": "一伐槍・属性変更",
         "element": "all",
@@ -1334,6 +1504,26 @@
         "attacklv100": "2276",
         "imageURL": "./imgs/1040103000.png",
         "en": "Faust [Element Changed]"
+    },
+    "マッドネスシリンジ・属性変更": {
+        "ja": "マッドネスシリンジ・属性変更",
+        "element": "all",
+        "type": "gun",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "all",
+        "minhp": "38",
+        "minattack": "364",
+        "hp": "309",
+        "attack": "3065",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 229,
+        "attacklv100": 2276,
+        "hplv150": 270,
+        "attacklv150": 2680,
+        "imageURL": "./imgs/1040509700_note.png",
+        "en": "Psycho Syringe [Element Changed]"
     },
     "ミセリコルデ": {
         "ja": "ミセリコルデ",
@@ -2173,6 +2363,40 @@
         "imageURL": "./imgs/1040209500.png",
         "en": "True Conviction Flashspear"
     },
+    "アルカブ": {
+        "ja": "アルカブ",
+        "element": "wind",
+        "type": "fist",
+        "skill1": "strengthLL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "33",
+        "minattack": "357",
+        "hp": "220",
+        "attack": "2142",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040611000.png",
+        "en": "Arkab"
+    },
+    "アルカブ・プリオル": {
+        "ja": "アルカブ・プリオル",
+        "element": "wind",
+        "type": "fist",
+        "skill1": "strengthLL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "33",
+        "minattack": "357",
+        "hp": "257",
+        "attack": "2500",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "220",
+        "attacklv100": "2142",
+        "imageURL": "./imgs/1040611100.png",
+        "en": "Arkab Prior"
+    },
     "六道・氷逆天の戦棍": {
         "ja": "六道・氷逆天の戦棍",
         "element": "water",
@@ -2289,7 +2513,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040009600.png",
-        "en": "Sword of Michael"
+        "en": "Sword of Michael (SSR)"
     },
     "ワンド・オブ・ガブリエル(SSR)": {
         "ja": "ワンド・オブ・ガブリエル(SSR)",
@@ -2321,7 +2545,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040606400.png",
-        "en": "Gauntlet of Uriel"
+        "en": "Gauntlet of Uriel (SSR)"
     },
     "リング・オブ・ラファエル(SSR)": {
         "ja": "リング・オブ・ラファエル(SSR)",
@@ -2337,7 +2561,39 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040705700.png",
-        "en": "Ring of Raphael"
+        "en": "Ring of Raphael (SSR)"
+    },
+    "ハープ・オブ・ハルワアムル(SSR)": {
+        "ja": "ハープ・オブ・ハルワアムル(SSR)",
+        "element": "light",
+        "type": "music",
+        "skill1": "tenshiShukufukuII",
+        "skill2": "normalKamui",
+        "element2": "light",
+        "minhp": "65",
+        "minattack": "355",
+        "hp": "230",
+        "attack": "2200",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040809200.png",
+        "en": "Harp of the Teachers (SSR)"
+    },
+    "サイス・オブ・ベリアル(SSR)": {
+        "ja": "サイス・オブ・ベリアル(SSR)",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "tenshiShukufukuII",
+        "skill2": "normalKamui",
+        "element2": "dark",
+        "minhp": "27",
+        "minattack": "435",
+        "hp": "187",
+        "attack": "2565",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040310500.png",
+        "en": "Scythe of Belial (SSR)"
     },
     "世界樹の晶剣・マグナ": {
         "ja": "世界樹の晶剣・マグナ",
@@ -4216,7 +4472,7 @@
         "element": "wind",
         "type": "katana",
         "skill1": "magnaGunshinS",
-        "skill2": "non",
+        "skill2": "magnaSeisyouM",
         "element2": "wind",
         "minhp": "28",
         "minattack": "405",
@@ -4232,7 +4488,7 @@
         "element": "wind",
         "type": "katana",
         "skill1": "magnaGunshinS",
-        "skill2": "non",
+        "skill2": "magnaSeisyouM",
         "element2": "wind",
         "minhp": "28",
         "minattack": "405",
@@ -4424,6 +4680,24 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040014300.png",
         "en": "Fallen Sword"
+    },
+    "[4凸]フォールン・ソード": {
+        "ja": "[4凸]フォールン・ソード",
+        "element": "dark",
+        "type": "sword",
+        "skill1": "normalLLM",
+        "skill2": "normalKonshinM",
+        "element2": "dark",
+        "minhp": "36",
+        "minattack": "476",
+        "hp": "292",
+        "attack": "3319",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "241",
+        "attacklv100": "2750",
+        "imageURL": "./imgs/1040014300.png",
+        "en": "[4★] Fallen Sword"
     },
     "エターナル・ラヴ": {
         "ja": "エターナル・ラヴ",
@@ -4643,6 +4917,40 @@
         "imageURL": "./imgs/1040309000.png",
         "en": "Certificus"
     },
+    "[4凸]サティフィケイト": {
+        "ja": "[4凸]サティフィケイト",
+        "element": "light",
+        "type": "axe",
+        "skill1": "normalLLM",
+        "skill2": "normalHissatsuM",
+        "element2": "light",
+        "minhp": "41",
+        "minattack": "460",
+        "hp": "280",
+        "attack": "3385",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "232",
+        "attacklv100": "2800",
+        "imageURL": "./imgs/1040309000.png",
+        "en": "[4★] Certificus"
+    },
+    "天干地支鈴・亥之飾": {
+        "ja": "天干地支鈴・亥之飾",
+        "element": "light",
+        "type": "axe",
+        "skill1": "normalHiouL",
+        "skill2": "normalKonshinM",
+        "element2": "light",
+        "minhp": "30",
+        "minattack": "450",
+        "hp": "180",
+        "attack": "2690",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040310400.png",
+        "en": "Porculius"
+    },
     "ガンバンテイン": {
         "ja": "ガンバンテイン",
         "element": "light",
@@ -4697,7 +5005,7 @@
         "ja": "[4凸]ブルースフィア",
         "element": "water",
         "type": "wand",
-        "skill1": "normalLL",
+        "skill1": "normalLLM",
         "skill2": "normalHissatsuM",
         "element2": "water",
         "minhp": "64",
@@ -4843,6 +5151,22 @@
         "imageURL": "./imgs/1040708700.png",
         "en": "Taisai Spirit Bow"
     },
+    "悪滅の雷": {
+        "ja": "悪滅の雷",
+        "element": "fire",
+        "type": "bow",
+        "skill1": "normalHissatsuL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "32",
+        "minattack": "508",
+        "hp": "242",
+        "attack": "2800",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040709000.png",
+        "en": "Purifying Thunderbolt"
+    },
     "天干地支刀・申之飾": {
         "ja": "天干地支刀・申之飾",
         "element": "light",
@@ -4858,6 +5182,40 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040904200.png",
         "en": "Dormius"
+    },
+    "ウン・ハイル": {
+        "ja": "ウン・ハイル",
+        "element": "dark",
+        "type": "music",
+        "skill1": "normalHissatsuL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "72",
+        "minattack": "431",
+        "hp": "252",
+        "attack": "2505",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040809100.png",
+        "en": "Unheil"
+    },
+    "[4凸]ウン・ハイル": {
+        "ja": "[4凸]ウン・ハイル",
+        "element": "dark",
+        "type": "music",
+        "skill1": "normalEiketsuL",
+        "skill2": "normalOntyouM",
+        "element2": "dark",
+        "minhp": "72",
+        "minattack": "431",
+        "hp": "297",
+        "attack": "3024",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "252",
+        "attacklv100": "2505",
+        "imageURL": "./imgs/1040809100.png",
+        "en": "[4★] Unheil"
     },
     "イクサバ": {
         "ja": "イクサバ",
@@ -5078,6 +5436,42 @@
         "attacklv100": "2325",
         "imageURL": "./imgs/1040200700.png",
         "en": "[4★] Gisla"
+    },
+    "ゲイアサイル": {
+        "ja": "ゲイアサイル",
+        "element": "wind",
+        "type": "spear",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "31",
+        "minattack": "442",
+        "hp": "314",
+        "attack": "2780",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "257",
+        "attacklv100": "2310",
+        "imageURL": "./imgs/1040212200.png",
+        "en": "Spear of Assail"
+    },
+    "[4凸]ゲイアサイル": {
+        "ja": "[4凸]ゲイアサイル",
+        "element": "wind",
+        "type": "spear",
+        "skill1": "normalLL",
+        "skill2": "normalHaisuiM",
+        "element2": "wind",
+        "minhp": "31",
+        "minattack": "442",
+        "hp": "314",
+        "attack": "2780",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "257",
+        "attacklv100": "2310",
+        "imageURL": "./imgs/1040212200.png",
+        "en": "[4★] Spear of Assail"
     },
     "パラシュ": {
         "ja": "パラシュ",
@@ -6064,8 +6458,8 @@
         "element": "water",
         "type": "sword",
         "skill1": "normalLL",
-        "skill2": "non",
-        "element2": "water",
+        "skill2": "chainForce",
+        "element2": "dark",
         "minhp": "34",
         "minattack": "367",
         "hp": "202",
@@ -6885,6 +7279,24 @@
         "imageURL": "./imgs/1040008600.png",
         "en": "Disparia"
     },
+    "[4凸]ディスペアー": {
+        "ja": "[4凸]ディスペアー",
+        "element": "dark",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "normalL",
+        "element2": "light",
+        "minhp": "34",
+        "minattack": "460",
+        "hp": "260",
+        "attack": "3100",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "223",
+        "attacklv100": "2665",
+        "imageURL": "./imgs/1040008600.png",
+        "en": "[4★] Disparia"
+    },
     "S・D": {
         "ja": "S・D",
         "element": "fire",
@@ -7117,6 +7529,22 @@
         "imageURL": "./imgs/1040012500.png",
         "en": "Frostbite"
     },
+    "ハイリゲスシュヴェールト": {
+        "ja": "ハイリゲスシュヴェールト",
+        "element": "wind",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "normalNiteM",
+        "element2": "wind",
+        "minhp": "36",
+        "minattack": "420",
+        "hp": "215",
+        "attack": "2510",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040014000.png",
+        "en": "Heiliges Schwert"
+    },
     "ウィルムスウォード": {
         "ja": "ウィルムスウォード",
         "element": "earth",
@@ -7182,6 +7610,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040015100.png",
         "en": "Glory Thread"
+    },
+    "セフィラの翠剣": {
+        "ja": "セフィラの翠剣",
+        "element": "wind",
+        "type": "sword",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "31",
+        "minattack": "385",
+        "hp": "199",
+        "attack": "2340",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040015200.png",
+        "en": "Sephira Emerald Sword"
     },
     "レッドサイクロン": {
         "ja": "レッドサイクロン",
@@ -7298,6 +7742,90 @@
         "attacklv100": "2022",
         "imageURL": "./imgs/1040016200.png",
         "en": "[4★] Ice Claymore"
+    },
+    "ニンジンブレード": {
+        "ja": "ニンジンブレード",
+        "element": "earth",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "20",
+        "minattack": "342",
+        "hp": "158",
+        "attack": "2052",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040016400.png",
+        "en": "Carrot Blade"
+    },
+    "ヴィントホーゼ": {
+        "ja": "ヴィントホーゼ",
+        "element": "wind",
+        "type": "sword",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "31",
+        "minattack": "370",
+        "hp": "193",
+        "attack": "2275",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040016500.png",
+        "en": "Windhose"
+    },
+    "[4凸]ヴィントホーゼ": {
+        "ja": "[4凸]ヴィントホーゼ",
+        "element": "wind",
+        "type": "sword",
+        "skill1": "strengthL",
+        "skill2": "chainForce",
+        "element2": "dark",
+        "minhp": "31",
+        "minattack": "370",
+        "hp": "230",
+        "attack": "2750",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "193",
+        "attacklv100": "2275",
+        "imageURL": "./imgs/1040016500.png",
+        "en": "[4★] Windhose"
+    },
+    "ソードコーン": {
+        "ja": "ソードコーン",
+        "element": "light",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "26",
+        "minattack": "469",
+        "hp": "180",
+        "attack": "2687",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040016600.png",
+        "en": "Sword on the Cob"
+    },
+    "[4凸]ソードコーン": {
+        "ja": "[4凸]ソードコーン",
+        "element": "light",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "26",
+        "minattack": "469",
+        "hp": "180",
+        "attack": "2687",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "180",
+        "attacklv100": "2687",
+        "imageURL": "./imgs/1040016600.png",
+        "en": "[4★] Sword on the Cob"
     },
     "アゾット": {
         "ja": "アゾット",
@@ -7759,6 +8287,22 @@
         "imageURL": "./imgs/1040108900.png",
         "en": "Queen's Stinger"
     },
+    "セフィラの翠刃": {
+        "ja": "セフィラの翠刃",
+        "element": "fire",
+        "type": "dagger",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "34",
+        "minattack": "370",
+        "hp": "220",
+        "attack": "2235",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040110500.png",
+        "en": "Sephira Emerald Dagger"
+    },
     "トーニーローズ": {
         "ja": "トーニーローズ",
         "element": "earth",
@@ -7824,6 +8368,74 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040110900.png",
         "en": "Chop-Chop"
+    },
+    "ハツオイイルハル": {
+        "ja": "ハツオイイルハル",
+        "element": "wind",
+        "type": "dagger",
+        "skill1": "ougiDamageLimitExceedM",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "35",
+        "minattack": "365",
+        "hp": "220",
+        "attack": "2230",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040111000.png",
+        "en": "Hatsoiiłhał"
+    },
+    "[4凸]ハツオイイルハル": {
+        "ja": "[4凸]ハツオイイルハル",
+        "element": "wind",
+        "type": "dagger",
+        "skill1": "ougiDamageLimitExceedM",
+        "skill2": "normalHaisuiL",
+        "element2": "wind",
+        "minhp": "35",
+        "minattack": "365",
+        "hp": "270",
+        "attack": "2700",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "220",
+        "attacklv100": "2230",
+        "imageURL": "./imgs/1040111000.png",
+        "en": "[4★] Hatsoiiłhał"
+    },
+    "ガンドリン": {
+        "ja": "ガンドリン",
+        "element": "dark",
+        "type": "dagger",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "40",
+        "minattack": "400",
+        "hp": "250",
+        "attack": "2360",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040111100.png",
+        "en": "Gandring"
+    },
+    "[4凸]ガンドリン": {
+        "ja": "[4凸]ガンドリン",
+        "element": "dark",
+        "type": "dagger",
+        "skill1": "normalL",
+        "skill2": "ougiDamageLimitExceedM",
+        "element2": "dark",
+        "minhp": "40",
+        "minattack": "400",
+        "hp": "290",
+        "attack": "2750",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "250",
+        "attacklv100": "2360",
+        "imageURL": "./imgs/1040111100.png",
+        "en": "[4★] Gandring"
     },
     "クレティネ": {
         "ja": "クレティネ",
@@ -8123,7 +8735,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040202000.png",
-        "en": "Rozen Maiden"
+        "en": "Rosen Maiden"
     },
     "雷神矛": {
         "ja": "雷神矛",
@@ -8489,6 +9101,22 @@
         "imageURL": "./imgs/1040210300.png",
         "en": "[4★] Shadow Viperlance"
     },
+    "セフィラの翠矛": {
+        "ja": "セフィラの翠矛",
+        "element": "fire",
+        "type": "spear",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "37",
+        "minattack": "355",
+        "hp": "238",
+        "attack": "2145",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040210800.png",
+        "en": "Sephira Emerald Fork"
+    },
     "オルレアン・フラッグ": {
         "ja": "オルレアン・フラッグ",
         "element": "wind",
@@ -8620,6 +9248,86 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040211700.png",
         "en": "Feendrache Pennant"
+    },
+    "ピンキーニードル": {
+        "ja": "ピンキーニードル",
+        "element": "light",
+        "type": "spear",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "37",
+        "minattack": "406",
+        "hp": "225",
+        "attack": "2461",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040211800.png",
+        "en": "Pinkie Needle"
+    },
+    "セイクリッドランス": {
+        "ja": "セイクリッドランス",
+        "element": "fire",
+        "type": "spear",
+        "skill1": "normalHPL",
+        "skill2": "normalNiteM",
+        "element2": "fire",
+        "minhp": "50",
+        "minattack": "350",
+        "hp": "270",
+        "attack": "2240",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040212000.png",
+        "en": "Sacred Lance"
+    },
+    "ギャラクティカインパクト": {
+        "ja": "ギャラクティカインパクト",
+        "element": "wind",
+        "type": "spear",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "36",
+        "minattack": "408",
+        "hp": "222",
+        "attack": "2476",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040212100.png",
+        "en": "Galactic Impact"
+    },
+    "ディアドリックシンボル": {
+        "ja": "ディアドリックシンボル",
+        "element": "wind",
+        "type": "spear",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "46",
+        "minattack": "368",
+        "hp": "261",
+        "attack": "2281",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040212300.png",
+        "en": "Deirdre's Symbol"
+    },
+    "ランス・オブ・ケルヴィム": {
+        "ja": "ランス・オブ・ケルヴィム",
+        "element": "dark",
+        "type": "spear",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "26",
+        "minattack": "332",
+        "hp": "200",
+        "attack": "1879",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040212400.png",
+        "en": "Cherubim's Lance"
     },
     "ウコンバサラ": {
         "ja": "ウコンバサラ",
@@ -9001,6 +9709,24 @@
         "imageURL": "./imgs/1040305500.png",
         "en": "Soul Eater"
     },
+    "[4凸]ソウルイーター": {
+        "ja": "[4凸]ソウルイーター",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "normalL",
+        "skill2": "normalCriticalM",
+        "element2": "dark",
+        "minhp": "29",
+        "minattack": "465",
+        "hp": "220",
+        "attack": "3150",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "191",
+        "attacklv100": "2705",
+        "imageURL": "./imgs/1040305500.png",
+        "en": "[4★] Soul Eater"
+    },
     "黒旋風": {
         "ja": "黒旋風",
         "element": "wind",
@@ -9119,7 +9845,7 @@
         "ja": "ウルツァイトサイズ",
         "element": "earth",
         "type": "axe",
-        "skill1": "non",
+        "skill1": "normalHiouL",
         "skill2": "normalHaisuiS",
         "element2": "earth",
         "minhp": "28",
@@ -9146,6 +9872,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040309200.png",
         "en": "Bell Striker"
+    },
+    "セフィラの翠鎌": {
+        "ja": "セフィラの翠鎌",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "25",
+        "minattack": "415",
+        "hp": "236",
+        "attack": "2465",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040309600.png",
+        "en": "Sephira Emerald Reaper"
     },
     "バンチ・オブ・バナナス": {
         "ja": "バンチ・オブ・バナナス",
@@ -10131,6 +10873,22 @@
         "imageURL": "./imgs/1040414000.png",
         "en": "[4★] Medusiana Staff"
     },
+    "セフィラの翠杖": {
+        "ja": "セフィラの翠杖",
+        "element": "light",
+        "type": "wand",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "43",
+        "minattack": "325",
+        "hp": "266",
+        "attack": "2000",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040414300.png",
+        "en": "Sephira Emerald Staff"
+    },
     "リターナースタッフ": {
         "ja": "リターナースタッフ",
         "element": "wind",
@@ -10180,6 +10938,72 @@
         "attacklv100": "1704",
         "imageURL": "./imgs/1040414500.png",
         "en": "[4★] Staff of Divine Justice"
+    },
+    "マジェスタス": {
+        "ja": "マジェスタス",
+        "element": "dark",
+        "type": "wand",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "40",
+        "minattack": "345",
+        "hp": "262",
+        "attack": "2020",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040414600.png",
+        "en": "Majestas"
+    },
+    "[4凸]マジェスタス": {
+        "ja": "[4凸]マジェスタス",
+        "element": "dark",
+        "type": "wand",
+        "skill1": "non",
+        "skill2": "normalKamuiM",
+        "element2": "dark",
+        "minhp": "40",
+        "minattack": "345",
+        "hp": "320",
+        "attack": "2440",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "262",
+        "attacklv100": "2020",
+        "imageURL": "./imgs/1040414600.png",
+        "en": "[4★] Majestas"
+    },
+    "キャットテイル": {
+        "ja": "キャットテイル",
+        "element": "earth",
+        "type": "wand",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "33",
+        "minattack": "298",
+        "hp": "211",
+        "attack": "1824",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040414800.png",
+        "en": "Cat's Tail"
+    },
+    "シルフィウム": {
+        "ja": "シルフィウム",
+        "element": "dark",
+        "type": "wand",
+        "skill1": "normalHaisuiL",
+        "skill2": "normalHPS",
+        "element2": "dark",
+        "minhp": "54",
+        "minattack": "329",
+        "hp": "303",
+        "attack": "2073",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040414900.png",
+        "en": "Silphium"
     },
     "裁きの鳴雷": {
         "ja": "裁きの鳴雷",
@@ -10545,6 +11369,22 @@
         "imageURL": "./imgs/1040509000.png",
         "en": "Tiamat Bolt Prime"
     },
+    "セフィラの翠銃": {
+        "ja": "セフィラの翠銃",
+        "element": "water",
+        "type": "gun",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "29",
+        "minattack": "395",
+        "hp": "169",
+        "attack": "2490",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040509100.png",
+        "en": "Sephira Emerald Blaster"
+    },
     "レールガン": {
         "ja": "レールガン",
         "element": "light",
@@ -10678,6 +11518,54 @@
         "attacklv100": "2741",
         "imageURL": "./imgs/1040509600.png",
         "en": "[4★] Arachne"
+    },
+    "イシュタル": {
+        "ja": "イシュタル",
+        "element": "dark",
+        "type": "gun",
+        "skill1": "normalL",
+        "skill2": "normalHiouM",
+        "element2": "dark",
+        "minhp": "25",
+        "minattack": "475",
+        "hp": "170",
+        "attack": "2740",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040510300.png",
+        "en": "Ishtar"
+    },
+    "ミーティアライト": {
+        "ja": "ミーティアライト",
+        "element": "light",
+        "type": "gun",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "15",
+        "minattack": "385",
+        "hp": "135",
+        "attack": "2205",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040510400.png",
+        "en": "Meteor's Light"
+    },
+    "エビスプレッダー": {
+        "ja": "エビスプレッダー",
+        "element": "fire",
+        "type": "gun",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "fire",
+        "minhp": "20",
+        "minattack": "363",
+        "hp": "139",
+        "attack": "2195",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040510500.png",
+        "en": "SHRIMP Spreader"
     },
     "マナウィダンガントレ": {
         "ja": "マナウィダンガントレ",
@@ -11291,6 +12179,22 @@
         "imageURL": "./imgs/1040609000.png",
         "en": "Gothic Cutlery"
     },
+    "セフィラの翠甲": {
+        "ja": "セフィラの翠甲",
+        "element": "earth",
+        "type": "fist",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "38",
+        "minattack": "350",
+        "hp": "232",
+        "attack": "2175",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040610000.png",
+        "en": "Sephira Emerald Duke"
+    },
     "キック力増強シューズ": {
         "ja": "キック力増強シューズ",
         "element": "light",
@@ -11424,6 +12328,22 @@
         "attacklv100": "1882",
         "imageURL": "./imgs/1040610800.png",
         "en": "[4★] Rainbow Bracelet"
+    },
+    "ネコパンチ・プロ": {
+        "ja": "ネコパンチ・プロ",
+        "element": "earth",
+        "type": "fist",
+        "skill1": "normalSetsuna",
+        "skill2": "normalNiteM",
+        "element2": "earth",
+        "minhp": "33",
+        "minattack": "416",
+        "hp": "218",
+        "attack": "2499",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040610900.png",
+        "en": "Neko Punch Pro"
     },
     "エーテリアルボウ": {
         "ja": "エーテリアルボウ",
@@ -11828,6 +12748,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040708200.png",
         "en": "Gandiva"
+    },
+    "セフィラの翠弓": {
+        "ja": "セフィラの翠弓",
+        "element": "wind",
+        "type": "bow",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "33",
+        "minattack": "380",
+        "hp": "211",
+        "attack": "2330",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040708500.png",
+        "en": "Sephira Emerald Bow"
     },
     "アルジュナン・ボウ": {
         "ja": "アルジュナン・ボウ",
@@ -12326,6 +13262,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040806300.png",
         "en": "Rose Crystal Harp"
+    },
+    "セフィラの翠弦": {
+        "ja": "セフィラの翠弦",
+        "element": "water",
+        "type": "music",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "water",
+        "minhp": "65",
+        "minattack": "325",
+        "hp": "226",
+        "attack": "2045",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040808400.png",
+        "en": "Sephira Emerald Harp"
     },
     "キタラアングリカ": {
         "ja": "キタラアングリカ",
@@ -12941,6 +13893,22 @@
         "imageURL": "./imgs/1040908800.png",
         "en": "[4★] Tanzanite Blade"
     },
+    "セフィラの翠刀": {
+        "ja": "セフィラの翠刀",
+        "element": "earth",
+        "type": "katana",
+        "skill1": "magnaL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "30",
+        "minattack": "395",
+        "hp": "175",
+        "attack": "2475",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040909100.png",
+        "en": "Sephira Emerald Blade"
+    },
     "ギガントスライサー": {
         "ja": "ギガントスライサー",
         "element": "dark",
@@ -12956,6 +13924,40 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040909200.png",
         "en": "Gigante Slicer"
+    },
+    "蒼紅之華刀": {
+        "ja": "蒼紅之華刀",
+        "element": "wind",
+        "type": "katana",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "36",
+        "minattack": "430",
+        "hp": "202",
+        "attack": "2597",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040910900.png",
+        "en": "Crimson Sapphire"
+    },
+    "[4凸]蒼紅之華刀": {
+        "ja": "[4凸]蒼紅之華刀",
+        "element": "wind",
+        "type": "katana",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "wind",
+        "minhp": "36",
+        "minattack": "430",
+        "hp": "240",
+        "attack": "3140",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": "202",
+        "attacklv100": "2597",
+        "imageURL": "./imgs/1040910900.png",
+        "en": "[4★] Crimson Sapphire"
     },
     "エクスカリバー・属性変更": {
         "ja": "エクスカリバー・属性変更",
@@ -13311,7 +14313,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404800.png",
-        "en": "ピンクグリモワール"
+        "en": "Pink Magazine"
     },
     "超クールなダガー": {
         "ja": "超クールなダガー",
@@ -13375,10 +14377,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030902400.png",
-        "en": "骨喰藤四郎"
+        "en": "Honebami Toushirou"
     },
-    "[想来]骨喰藤四郎": {
-        "ja": "[想来]骨喰藤四郎",
+    "[4凸]骨喰藤四郎": {
+        "ja": "[4凸]骨喰藤四郎",
         "element": "dark",
         "type": "katana",
         "skill1": "strengthM",
@@ -13393,7 +14395,7 @@
         "hplv75": "98",
         "attacklv75": "1472",
         "imageURL": "./imgs/1030902400.png",
-        "en": "[想来]骨喰藤四郎"
+        "en": "[4★] Honebami Toushirou"
     },
     "陸奥守吉行": {
         "ja": "陸奥守吉行",
@@ -13409,10 +14411,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030902500.png",
-        "en": "陸奥守吉行"
+        "en": "Mutsunokami Yoshiyuki"
     },
-    "[望遥]陸奥守吉行": {
-        "ja": "[望遥]陸奥守吉行",
+    "[4凸]陸奥守吉行": {
+        "ja": "[4凸]陸奥守吉行",
         "element": "wind",
         "type": "katana",
         "skill1": "strengthM",
@@ -13427,7 +14429,7 @@
         "hplv75": "101",
         "attacklv75": "1457",
         "imageURL": "./imgs/1030902500.png",
-        "en": "[望遥]陸奥守吉行"
+        "en": "[4★] Mutsunokami Yoshiyuki"
     },
     "和泉守兼定": {
         "ja": "和泉守兼定",
@@ -13443,10 +14445,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030902600.png",
-        "en": "和泉守兼定"
+        "en": "Izuminokami Kanesada"
     },
-    "[誠志]和泉守兼定": {
-        "ja": "[誠志]和泉守兼定",
+    "[4凸]和泉守兼定": {
+        "ja": "[4凸]和泉守兼定",
         "element": "fire",
         "type": "katana",
         "skill1": "strengthM",
@@ -13461,7 +14463,7 @@
         "hplv75": "100",
         "attacklv75": "1462",
         "imageURL": "./imgs/1030902600.png",
-        "en": "[誠志]和泉守兼定"
+        "en": "[4★] Izuminokami Kanesada"
     },
     "山姥切国広": {
         "ja": "山姥切国広",
@@ -13477,10 +14479,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030902700.png",
-        "en": "山姥切国広"
+        "en": "Yamanbagiri Kunihiro"
     },
-    "[傑刀]山姥切国広": {
-        "ja": "[傑刀]山姥切国広",
+    "[4凸]山姥切国広": {
+        "ja": "[4凸]山姥切国広",
         "element": "earth",
         "type": "katana",
         "skill1": "strengthM",
@@ -13495,7 +14497,7 @@
         "hplv75": "103",
         "attacklv75": "1447",
         "imageURL": "./imgs/1030902700.png",
-        "en": "[傑刀]山姥切国広"
+        "en": "[4★] Yamanbagiri Kunihiro"
     },
     "ソード・オブ・ミカエル(SR)": {
         "ja": "ソード・オブ・ミカエル(SR)",
@@ -13511,7 +14513,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030006200.png",
-        "en": "ソード・オブ・ミカエル(SR)"
+        "en": "Sword of Michael (SR)"
     },
     "ワンド・オブ・ガブリエル(SR)": {
         "ja": "ワンド・オブ・ガブリエル(SR)",
@@ -13527,7 +14529,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404700.png",
-        "en": "ワンド・オブ・ガブリエル(SR)"
+        "en": "Wand of Gabriel (SR)"
     },
     "グローブ・オブ・ウリエル(SR)": {
         "ja": "グローブ・オブ・ウリエル(SR)",
@@ -13543,7 +14545,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030605200.png",
-        "en": "グローブ・オブ・ウリエル(SR)"
+        "en": "Gauntlet of Uriel (SR)"
     },
     "リング・オブ・ラファエル(SR)": {
         "ja": "リング・オブ・ラファエル(SR)",
@@ -13559,7 +14561,39 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703700.png",
-        "en": "リング・オブ・ラファエル(SR)"
+        "en": "Ring of Raphael (SR)"
+    },
+    "ハープ・オブ・ハルワアムル(SR)": {
+        "ja": "ハープ・オブ・ハルワアムル(SR)",
+        "element": "light",
+        "type": "music",
+        "skill1": "tenshiShukufuku",
+        "skill2": "non",
+        "element2": "light",
+        "minhp": "45",
+        "minattack": "232",
+        "hp": "150",
+        "attack": "1520",
+        "slvmax": 10,
+        "maxlv": 75,
+        "imageURL": "./imgs/1040809200.png",
+        "en": "Harp of the Teachers (SR)"
+    },
+    "サイス・オブ・ベリアル(SR)": {
+        "ja": "サイス・オブ・ベリアル(SR)",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "tenshiShukufuku",
+        "skill2": "non",
+        "element2": "dark",
+        "minhp": "16",
+        "minattack": "296",
+        "hp": "120",
+        "attack": "1785",
+        "slvmax": 10,
+        "maxlv": 75,
+        "imageURL": "./imgs/1040310500.png",
+        "en": "Scythe of Belial (SR)"
     },
     "サラダトング": {
         "ja": "サラダトング",
@@ -13577,8 +14611,8 @@
         "imageURL": "./imgs/1030605300.png",
         "en": "サラダトング"
     },
-    "[閑麗]アロンダイト": {
-        "ja": "[閑麗]アロンダイト",
+    "アロンダイト": {
+        "ja": "アロンダイト",
         "element": "light",
         "type": "sword",
         "skill1": "normalHPM",
@@ -13591,10 +14625,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000000.png",
-        "en": "[閑麗]アロンダイト"
+        "en": "アロンダイト"
     },
-    "[帯薙]イルウーン": {
-        "ja": "[帯薙]イルウーン",
+    "イルウーン": {
+        "ja": "イルウーン",
         "element": "earth",
         "type": "sword",
         "skill1": "normalM",
@@ -13607,10 +14641,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000100.png",
-        "en": "[帯薙]イルウーン"
+        "en": "イルウーン"
     },
-    "[讐心]フラガラッハ": {
-        "ja": "[讐心]フラガラッハ",
+    "フラガラッハ": {
+        "ja": "フラガラッハ",
         "element": "fire",
         "type": "sword",
         "skill1": "normalM",
@@ -13623,10 +14657,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000200.png",
-        "en": "[讐心]フラガラッハ"
+        "en": "フラガラッハ"
     },
-    "[破幸]ティルヴァング": {
-        "ja": "[破幸]ティルヴァング",
+    "ティルヴァング": {
+        "ja": "ティルヴァング",
         "element": "dark",
         "type": "sword",
         "skill1": "normalM",
@@ -13639,10 +14673,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000300.png",
-        "en": "[破幸]ティルヴァング"
+        "en": "ティルヴァング"
     },
-    "[嵐竜剣]ティアマトブレード": {
-        "ja": "[嵐竜剣]ティアマトブレード",
+    "ティアマトブレード": {
+        "ja": "ティアマトブレード",
         "element": "wind",
         "type": "sword",
         "skill1": "magnaM",
@@ -13655,10 +14689,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000400.png",
-        "en": "[嵐竜剣]ティアマトブレード"
+        "en": "ティアマトブレード"
     },
-    "[羅象剣]世界樹の晶剣": {
-        "ja": "[羅象剣]世界樹の晶剣",
+    "世界樹の晶剣": {
+        "ja": "世界樹の晶剣",
         "element": "earth",
         "type": "sword",
         "skill1": "magnaHPM",
@@ -13671,10 +14705,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000500.png",
-        "en": "[羅象剣]世界樹の晶剣"
+        "en": "世界樹の晶剣"
     },
-    "[灼業剣]イフリートブレード": {
-        "ja": "[灼業剣]イフリートブレード",
+    "イフリートブレード": {
+        "ja": "イフリートブレード",
         "element": "fire",
         "type": "sword",
         "skill1": "normalM",
@@ -13687,10 +14721,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000700.png",
-        "en": "[灼業剣]イフリートブレード"
+        "en": "イフリートブレード"
     },
-    "[宿輪環]カダラ": {
-        "ja": "[宿輪環]カダラ",
+    "カダラ": {
+        "ja": "カダラ",
         "element": "fire",
         "type": "sword",
         "skill1": "normalM",
@@ -13703,10 +14737,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001100.png",
-        "en": "[宿輪環]カダラ"
+        "en": "カダラ"
     },
-    "[澄刃]アルマス": {
-        "ja": "[澄刃]アルマス",
+    "アルマス": {
+        "ja": "アルマス",
         "element": "water",
         "type": "sword",
         "skill1": "normalHPM",
@@ -13719,10 +14753,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001200.png",
-        "en": "[澄刃]アルマス"
+        "en": "アルマス"
     },
-    "[瑠璃剣]タンザナイトソード": {
-        "ja": "[瑠璃剣]タンザナイトソード",
+    "タンザナイトソード": {
+        "ja": "タンザナイトソード",
         "element": "water",
         "type": "sword",
         "skill1": "normalHPM",
@@ -13735,10 +14769,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001300.png",
-        "en": "[瑠璃剣]タンザナイトソード"
+        "en": "タンザナイトソード"
     },
-    "[百首鬼]ラム・ダオ": {
-        "ja": "[百首鬼]ラム・ダオ",
+    "ラム・ダオ": {
+        "ja": "ラム・ダオ",
         "element": "fire",
         "type": "sword",
         "skill1": "normalM",
@@ -13751,10 +14785,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001400.png",
-        "en": "[百首鬼]ラム・ダオ"
+        "en": "ラム・ダオ"
     },
-    "[呪剣]マボムバーム": {
-        "ja": "[呪剣]マボムバーム",
+    "マボムバーム": {
+        "ja": "マボムバーム",
         "element": "earth",
         "type": "sword",
         "skill1": "normalM",
@@ -13767,10 +14801,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001500.png",
-        "en": "[呪剣]マボムバーム"
+        "en": "マボムバーム"
     },
-    "[王華]ロイヤルレイピア": {
-        "ja": "[王華]ロイヤルレイピア",
+    "ロイヤルレイピア": {
+        "ja": "ロイヤルレイピア",
         "element": "water",
         "type": "sword",
         "skill1": "normalM",
@@ -13783,10 +14817,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001800.png",
-        "en": "[王華]ロイヤルレイピア"
+        "en": "ロイヤルレイピア"
     },
-    "[執愛]ラスト": {
-        "ja": "[執愛]ラスト",
+    "ラスト": {
+        "ja": "ラスト",
         "element": "dark",
         "type": "sword",
         "skill1": "normalM",
@@ -13799,10 +14833,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001900.png",
-        "en": "[執愛]ラスト"
+        "en": "ラスト"
     },
-    "[氷冥剣]マケブランケ": {
-        "ja": "[氷冥剣]マケブランケ",
+    "マケブランケ": {
+        "ja": "マケブランケ",
         "element": "water",
         "type": "sword",
         "skill1": "normalHPM",
@@ -13815,10 +14849,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002100.png",
-        "en": "[氷冥剣]マケブランケ"
+        "en": "マケブランケ"
     },
-    "[密智剣]ネフティスレイピア": {
-        "ja": "[密智剣]ネフティスレイピア",
+    "ネフティスレイピア": {
+        "ja": "ネフティスレイピア",
         "element": "wind",
         "type": "sword",
         "skill1": "normalHPM",
@@ -13831,10 +14865,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002200.png",
-        "en": "[密智剣]ネフティスレイピア"
+        "en": "ネフティスレイピア"
     },
-    "[輝騎剣]シュヴァリエソード": {
-        "ja": "[輝騎剣]シュヴァリエソード",
+    "シュヴァリエソード": {
+        "ja": "シュヴァリエソード",
         "element": "light",
         "type": "sword",
         "skill1": "magnaHPM",
@@ -13847,10 +14881,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002300.png",
-        "en": "[輝騎剣]シュヴァリエソード"
+        "en": "シュヴァリエソード"
     },
-    "[波閃]リプルレイピア": {
-        "ja": "[波閃]リプルレイピア",
+    "リプルレイピア": {
+        "ja": "リプルレイピア",
         "element": "water",
         "type": "sword",
         "skill1": "normalHPM",
@@ -13863,10 +14897,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002400.png",
-        "en": "[波閃]リプルレイピア"
+        "en": "リプルレイピア"
     },
-    "[旋風剣]スカートチェイサー": {
-        "ja": "[旋風剣]スカートチェイサー",
+    "スカートチェイサー": {
+        "ja": "スカートチェイサー",
         "element": "wind",
         "type": "sword",
         "skill1": "normalM",
@@ -13879,10 +14913,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002600.png",
-        "en": "[旋風剣]スカートチェイサー"
+        "en": "スカートチェイサー"
     },
-    "[悪閃]無垢白刃": {
-        "ja": "[悪閃]無垢白刃",
+    "無垢白刃": {
+        "ja": "無垢白刃",
         "element": "dark",
         "type": "sword",
         "skill1": "normalM",
@@ -13895,10 +14929,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002700.png",
-        "en": "[悪閃]無垢白刃"
+        "en": "無垢白刃"
     },
-    "[星鎧剣]サジタリウスブレード": {
-        "ja": "[星鎧剣]サジタリウスブレード",
+    "サジタリウスブレード": {
+        "ja": "サジタリウスブレード",
         "element": "wind",
         "type": "sword",
         "skill1": "normalHPM",
@@ -13911,10 +14945,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002800.png",
-        "en": "[星鎧剣]サジタリウスブレード"
+        "en": "サジタリウスブレード"
     },
-    "[失聖]朽ち果てた剣": {
-        "ja": "[失聖]朽ち果てた剣",
+    "朽ち果てた剣": {
+        "ja": "朽ち果てた剣",
         "element": "dark",
         "type": "sword",
         "skill1": "non",
@@ -13927,10 +14961,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002900.png",
-        "en": "[失聖]朽ち果てた剣"
+        "en": "朽ち果てた剣"
     },
-    "[灯輝]ランタンブレード": {
-        "ja": "[灯輝]ランタンブレード",
+    "ランタンブレード": {
+        "ja": "ランタンブレード",
         "element": "light",
         "type": "sword",
         "skill1": "non",
@@ -13943,10 +14977,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030003100.png",
-        "en": "[灯輝]ランタンブレード"
+        "en": "ランタンブレード"
     },
-    "[古尊剣]バビロンの刀剣": {
-        "ja": "[古尊剣]バビロンの刀剣",
+    "バビロンの刀剣": {
+        "ja": "バビロンの刀剣",
         "element": "earth",
         "type": "sword",
         "skill1": "normalM",
@@ -13959,10 +14993,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030003200.png",
-        "en": "[古尊剣]バビロンの刀剣"
+        "en": "バビロンの刀剣"
     },
-    "[火符]護焔の剣": {
-        "ja": "[火符]護焔の剣",
+    "護焔の剣": {
+        "ja": "護焔の剣",
         "element": "fire",
         "type": "sword",
         "skill1": "normalHPM",
@@ -13975,10 +15009,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030003400.png",
-        "en": "[火符]護焔の剣"
+        "en": "護焔の剣"
     },
-    "[蒼空]旅立ちの剣": {
-        "ja": "[蒼空]旅立ちの剣",
+    "旅立ちの剣": {
+        "ja": "旅立ちの剣",
         "element": "fire",
         "type": "sword",
         "skill1": "non",
@@ -13991,10 +15025,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030003500.png",
-        "en": "[蒼空]旅立ちの剣"
+        "en": "旅立ちの剣"
     },
-    "[愁歎剣]ブランウェンレイピア": {
-        "ja": "[愁歎剣]ブランウェンレイピア",
+    "ブランウェンレイピア": {
+        "ja": "ブランウェンレイピア",
         "element": "water",
         "type": "sword",
         "skill1": "normalHPM",
@@ -14007,10 +15041,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004200.png",
-        "en": "[愁歎剣]ブランウェンレイピア"
+        "en": "ブランウェンレイピア"
     },
-    "[狂輝剣]マギ・パニッシュメントソード": {
-        "ja": "[狂輝剣]マギ・パニッシュメントソード",
+    "マギ・パニッシュメントソード": {
+        "ja": "マギ・パニッシュメントソード",
         "element": "light",
         "type": "sword",
         "skill1": "normalM",
@@ -14023,10 +15057,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004300.png",
-        "en": "[狂輝剣]マギ・パニッシュメントソード"
+        "en": "マギ・パニッシュメントソード"
     },
-    "[祖龍剣]バハムートソード": {
-        "ja": "[祖龍剣]バハムートソード",
+    "バハムートソード": {
+        "ja": "バハムートソード",
         "element": "dark",
         "type": "sword",
         "skill1": "bahaATHP-sword",
@@ -14039,7 +15073,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004400.png",
-        "en": "[祖龍剣]バハムートソード"
+        "en": "バハムートソード"
     },
     "タンザナイトソード・ミコー": {
         "ja": "タンザナイトソード・ミコー",
@@ -14057,8 +15091,8 @@
         "imageURL": "./imgs/1030004500.png",
         "en": "タンザナイトソード・ミコー"
     },
-    "[不融剣]コントラリーソード": {
-        "ja": "[不融剣]コントラリーソード",
+    "コントラリーソード": {
+        "ja": "コントラリーソード",
         "element": "fire",
         "type": "sword",
         "skill1": "normalHPM",
@@ -14071,10 +15105,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004600.png",
-        "en": "[不融剣]コントラリーソード"
+        "en": "コントラリーソード"
     },
-    "[鋼電剣]エレクトロソード": {
-        "ja": "[鋼電剣]エレクトロソード",
+    "エレクトロソード": {
+        "ja": "エレクトロソード",
         "element": "light",
         "type": "sword",
         "skill1": "normalHPM",
@@ -14087,7 +15121,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004700.png",
-        "en": "[鋼電剣]エレクトロソード"
+        "en": "エレクトロソード"
     },
     "パイレーツソード": {
         "ja": "パイレーツソード",
@@ -14105,8 +15139,8 @@
         "imageURL": "./imgs/1030004800.png",
         "en": "パイレーツソード"
     },
-    "[幽撲鞭]オーラウィップ": {
-        "ja": "[幽撲鞭]オーラウィップ",
+    "オーラウィップ": {
+        "ja": "オーラウィップ",
         "element": "light",
         "type": "sword",
         "skill1": "normalNiteM",
@@ -14119,10 +15153,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004900.png",
-        "en": "[幽撲鞭]オーラウィップ"
+        "en": "オーラウィップ"
     },
-    "[オイラは]ビィスタードソード": {
-        "ja": "[オイラは]ビィスタードソード",
+    "ビィスタードソード": {
+        "ja": "ビィスタードソード",
         "element": "dark",
         "type": "sword",
         "skill1": "non",
@@ -14135,10 +15169,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005000.png",
-        "en": "[オイラは]ビィスタードソード"
+        "en": "ビィスタードソード"
     },
-    "[廉剣]白竜騎士団制式帯剣": {
-        "ja": "[廉剣]白竜騎士団制式帯剣",
+    "白竜騎士団制式帯剣": {
+        "ja": "白竜騎士団制式帯剣",
         "element": "fire",
         "type": "sword",
         "skill1": "normalHPM",
@@ -14151,10 +15185,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005100.png",
-        "en": "[廉剣]白竜騎士団制式帯剣"
+        "en": "白竜騎士団制式帯剣"
     },
-    "[寿樹]まゆ玉": {
-        "ja": "[寿樹]まゆ玉",
+    "まゆ玉": {
+        "ja": "まゆ玉",
         "element": "fire",
         "type": "sword",
         "skill1": "normalNiteM",
@@ -14167,10 +15201,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005200.png",
-        "en": "[寿樹]まゆ玉"
+        "en": "まゆ玉"
     },
-    "[釘棍]釘バット": {
-        "ja": "[釘棍]釘バット",
+    "釘バット": {
+        "ja": "釘バット",
         "element": "water",
         "type": "sword",
         "skill1": "normalM",
@@ -14183,10 +15217,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005300.png",
-        "en": "[釘棍]釘バット"
+        "en": "釘バット"
     },
-    "[形見鍋]フライパン": {
-        "ja": "[形見鍋]フライパン",
+    "フライパン": {
+        "ja": "フライパン",
         "element": "earth",
         "type": "sword",
         "skill1": "normalCriticalM",
@@ -14199,10 +15233,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005400.png",
-        "en": "[形見鍋]フライパン"
+        "en": "フライパン"
     },
-    "[蒼誓]アルビオン制式帯剣": {
-        "ja": "[蒼誓]アルビオン制式帯剣",
+    "アルビオン制式帯剣": {
+        "ja": "アルビオン制式帯剣",
         "element": "light",
         "type": "sword",
         "skill1": "non",
@@ -14215,10 +15249,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005600.png",
-        "en": "[蒼誓]アルビオン制式帯剣"
+        "en": "アルビオン制式帯剣"
     },
-    "[大天使]アークエンジェルソード": {
-        "ja": "[大天使]アークエンジェルソード",
+    "アークエンジェルソード": {
+        "ja": "アークエンジェルソード",
         "element": "light",
         "type": "sword",
         "skill1": "non",
@@ -14231,10 +15265,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030099000.png",
-        "en": "[大天使]アークエンジェルソード"
+        "en": "アークエンジェルソード"
     },
-    "[夜天降]チンクエディア": {
-        "ja": "[夜天降]チンクエディア",
+    "チンクエディア": {
+        "ja": "チンクエディア",
         "element": "light",
         "type": "dagger",
         "skill1": "normalM",
@@ -14247,10 +15281,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100000.png",
-        "en": "[夜天降]チンクエディア"
+        "en": "チンクエディア"
     },
-    "[瞬蜃]ミラージュナイフ": {
-        "ja": "[瞬蜃]ミラージュナイフ",
+    "ミラージュナイフ": {
+        "ja": "ミラージュナイフ",
         "element": "water",
         "type": "dagger",
         "skill1": "normalHPM",
@@ -14263,10 +15297,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100100.png",
-        "en": "[瞬蜃]ミラージュナイフ"
+        "en": "ミラージュナイフ"
     },
-    "[穿遍]スティレット": {
-        "ja": "[穿遍]スティレット",
+    "スティレット": {
+        "ja": "スティレット",
         "element": "earth",
         "type": "dagger",
         "skill1": "normalM",
@@ -14279,10 +15313,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100200.png",
-        "en": "[穿遍]スティレット"
+        "en": "スティレット"
     },
-    "[鎮嵐]ストームクリス": {
-        "ja": "[鎮嵐]ストームクリス",
+    "ストームクリス": {
+        "ja": "ストームクリス",
         "element": "wind",
         "type": "dagger",
         "skill1": "normalCriticalM",
@@ -14295,10 +15329,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100500.png",
-        "en": "[鎮嵐]ストームクリス"
+        "en": "ストームクリス"
     },
-    "[機殻刃]コロッサスブレイカー": {
-        "ja": "[機殻刃]コロッサスブレイカー",
+    "コロッサスブレイカー": {
+        "ja": "コロッサスブレイカー",
         "element": "fire",
         "type": "dagger",
         "skill1": "magnaM",
@@ -14311,10 +15345,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100600.png",
-        "en": "[機殻刃]コロッサスブレイカー"
+        "en": "コロッサスブレイカー"
     },
-    "[海嘯刃]レヴィアンゲイズ": {
-        "ja": "[海嘯刃]レヴィアンゲイズ",
+    "レヴィアンゲイズ": {
+        "ja": "レヴィアンゲイズ",
         "element": "water",
         "type": "dagger",
         "skill1": "magnaM",
@@ -14327,10 +15361,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100800.png",
-        "en": "[海嘯刃]レヴィアンゲイズ"
+        "en": "レヴィアンゲイズ"
     },
-    "[矜持賭]ファコン": {
-        "ja": "[矜持賭]ファコン",
+    "ファコン": {
+        "ja": "ファコン",
         "element": "earth",
         "type": "dagger",
         "skill1": "normalM",
@@ -14343,10 +15377,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101000.png",
-        "en": "[矜持賭]ファコン"
+        "en": "ファコン"
     },
-    "[刻命]フセット": {
-        "ja": "[刻命]フセット",
+    "フセット": {
+        "ja": "フセット",
         "element": "wind",
         "type": "dagger",
         "skill1": "normalHPM",
@@ -14359,7 +15393,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101100.png",
-        "en": "[刻命]フセット"
+        "en": "フセット"
     },
     "バタディア": {
         "ja": "バタディア",
@@ -14377,8 +15411,8 @@
         "imageURL": "./imgs/1030101200.png",
         "en": "バタディア"
     },
-    "[騎千]アキナケス": {
-        "ja": "[騎千]アキナケス",
+    "アキナケス": {
+        "ja": "アキナケス",
         "element": "water",
         "type": "dagger",
         "skill1": "normalM",
@@ -14391,10 +15425,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101300.png",
-        "en": "[騎千]アキナケス"
+        "en": "アキナケス"
     },
-    "[破刃]ソードブレイカー": {
-        "ja": "[破刃]ソードブレイカー",
+    "ソードブレイカー": {
+        "ja": "ソードブレイカー",
         "element": "dark",
         "type": "dagger",
         "skill1": "normalM",
@@ -14407,10 +15441,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101400.png",
-        "en": "[破刃]ソードブレイカー"
+        "en": "ソードブレイカー"
     },
-    "[憑操刃]傀儡の包丁": {
-        "ja": "[憑操刃]傀儡の包丁",
+    "傀儡の包丁": {
+        "ja": "傀儡の包丁",
         "element": "dark",
         "type": "dagger",
         "skill1": "normalM",
@@ -14423,10 +15457,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101800.png",
-        "en": "[憑操刃]傀儡の包丁"
+        "en": "傀儡の包丁"
     },
-    "[裁考刃]裁きの霊剣": {
-        "ja": "[裁考刃]裁きの霊剣",
+    "裁きの霊剣": {
+        "ja": "裁きの霊剣",
         "element": "earth",
         "type": "dagger",
         "skill1": "normalM",
@@ -14439,10 +15473,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101900.png",
-        "en": "[裁考刃]裁きの霊剣"
+        "en": "裁きの霊剣"
     },
-    "[水恵刃]マナウィダンダガー": {
-        "ja": "[水恵刃]マナウィダンダガー",
+    "マナウィダンダガー": {
+        "ja": "マナウィダンダガー",
         "element": "water",
         "type": "dagger",
         "skill1": "normalHPM",
@@ -14455,10 +15489,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102000.png",
-        "en": "[水恵刃]マナウィダンダガー"
+        "en": "マナウィダンダガー"
     },
-    "[灼業刃]イフリートダガー": {
-        "ja": "[灼業刃]イフリートダガー",
+    "イフリートダガー": {
+        "ja": "イフリートダガー",
         "element": "fire",
         "type": "dagger",
         "skill1": "normalM",
@@ -14471,10 +15505,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102100.png",
-        "en": "[灼業刃]イフリートダガー"
+        "en": "イフリートダガー"
     },
-    "[蛇神刃]ミドガルドの断刃": {
-        "ja": "[蛇神刃]ミドガルドの断刃",
+    "ミドガルドの断刃": {
+        "ja": "ミドガルドの断刃",
         "element": "earth",
         "type": "dagger",
         "skill1": "normalM",
@@ -14487,10 +15521,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102200.png",
-        "en": "[蛇神刃]ミドガルドの断刃"
+        "en": "ミドガルドの断刃"
     },
-    "[霧幻]ソウルエッジ": {
-        "ja": "[霧幻]ソウルエッジ",
+    "ソウルエッジ": {
+        "ja": "ソウルエッジ",
         "element": "light",
         "type": "dagger",
         "skill1": "normalM",
@@ -14503,10 +15537,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102300.png",
-        "en": "[霧幻]ソウルエッジ"
+        "en": "ソウルエッジ"
     },
-    "[想縁]絆の短剣": {
-        "ja": "[想縁]絆の短剣",
+    "絆の短剣": {
+        "ja": "絆の短剣",
         "element": "fire",
         "type": "dagger",
         "skill1": "normalHPM",
@@ -14519,10 +15553,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102400.png",
-        "en": "[想縁]絆の短剣"
+        "en": "絆の短剣"
     },
-    "[塵界]朽ち果てた刃": {
-        "ja": "[塵界]朽ち果てた刃",
+    "朽ち果てた刃": {
+        "ja": "朽ち果てた刃",
         "element": "dark",
         "type": "dagger",
         "skill1": "non",
@@ -14535,10 +15569,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102500.png",
-        "en": "[塵界]朽ち果てた刃"
+        "en": "朽ち果てた刃"
     },
-    "[純誓]ソード・オブ・リスブラン": {
-        "ja": "[純誓]ソード・オブ・リスブラン",
+    "ソード・オブ・リスブラン": {
+        "ja": "ソード・オブ・リスブラン",
         "element": "wind",
         "type": "dagger",
         "skill1": "normalHPM",
@@ -14551,10 +15585,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102600.png",
-        "en": "[純誓]ソード・オブ・リスブラン"
+        "en": "ソード・オブ・リスブラン"
     },
-    "[紅焔]紅陽刃": {
-        "ja": "[紅焔]紅陽刃",
+    "紅陽刃": {
+        "ja": "紅陽刃",
         "element": "light",
         "type": "dagger",
         "skill1": "normalHPM",
@@ -14567,10 +15601,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102700.png",
-        "en": "[紅焔]紅陽刃"
+        "en": "紅陽刃"
     },
-    "[暴狼刃]レージング": {
-        "ja": "[暴狼刃]レージング",
+    "レージング": {
+        "ja": "レージング",
         "element": "water",
         "type": "dagger",
         "skill1": "normalNiteM",
@@ -14583,10 +15617,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102900.png",
-        "en": "[暴狼刃]レージング"
+        "en": "レージング"
     },
-    "[邪絶刃]ディアボロスダガー": {
-        "ja": "[邪絶刃]ディアボロスダガー",
+    "ディアボロスダガー": {
+        "ja": "ディアボロスダガー",
         "element": "dark",
         "type": "dagger",
         "skill1": "normalHPM",
@@ -14599,10 +15633,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030103700.png",
-        "en": "[邪絶刃]ディアボロスダガー"
+        "en": "ディアボロスダガー"
     },
-    "[祖龍刃]バハムートダガー": {
-        "ja": "[祖龍刃]バハムートダガー",
+    "バハムートダガー": {
+        "ja": "バハムートダガー",
         "element": "dark",
         "type": "dagger",
         "skill1": "bahaAT-dagger",
@@ -14615,10 +15649,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030103800.png",
-        "en": "[祖龍刃]バハムートダガー"
+        "en": "バハムートダガー"
     },
-    "[沈命]シェイドナイフ": {
-        "ja": "[沈命]シェイドナイフ",
+    "シェイドナイフ": {
+        "ja": "シェイドナイフ",
         "element": "dark",
         "type": "dagger",
         "skill1": "normalCriticalM",
@@ -14631,10 +15665,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030103900.png",
-        "en": "[沈命]シェイドナイフ"
+        "en": "シェイドナイフ"
     },
-    "[引切技]刺身包丁": {
-        "ja": "[引切技]刺身包丁",
+    "刺身包丁": {
+        "ja": "刺身包丁",
         "element": "water",
         "type": "dagger",
         "skill1": "normalNiteM",
@@ -14647,10 +15681,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104000.png",
-        "en": "[引切技]刺身包丁"
+        "en": "刺身包丁"
     },
-    "[輝影刃]ヴェセラゴセイバー": {
-        "ja": "[輝影刃]ヴェセラゴセイバー",
+    "ヴェセラゴセイバー": {
+        "ja": "ヴェセラゴセイバー",
         "element": "light",
         "type": "dagger",
         "skill1": "non",
@@ -14663,10 +15697,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104100.png",
-        "en": "[輝影刃]ヴェセラゴセイバー"
+        "en": "ヴェセラゴセイバー"
     },
-    "[瑞玉剣]タッドポウルテイル": {
-        "ja": "[瑞玉剣]タッドポウルテイル",
+    "タッドポウルテイル": {
+        "ja": "タッドポウルテイル",
         "element": "fire",
         "type": "dagger",
         "skill1": "unknownHPM",
@@ -14679,10 +15713,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104200.png",
-        "en": "[瑞玉剣]タッドポウルテイル"
+        "en": "タッドポウルテイル"
     },
-    "[聖等刃]ペティナイフ": {
-        "ja": "[聖等刃]ペティナイフ",
+    "ペティナイフ": {
+        "ja": "ペティナイフ",
         "element": "earth",
         "type": "dagger",
         "skill1": "normalNiteM",
@@ -14695,10 +15729,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104300.png",
-        "en": "[聖等刃]ペティナイフ"
+        "en": "ペティナイフ"
     },
-    "[蒼艶]エゴイズム": {
-        "ja": "[蒼艶]エゴイズム",
+    "エゴイズム": {
+        "ja": "エゴイズム",
         "element": "wind",
         "type": "dagger",
         "skill1": "non",
@@ -14711,10 +15745,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104500.png",
-        "en": "[蒼艶]エゴイズム"
+        "en": "エゴイズム"
     },
-    "[怪黒刃]ブラックナイフ": {
-        "ja": "[怪黒刃]ブラックナイフ",
+    "ブラックナイフ": {
+        "ja": "ブラックナイフ",
         "element": "dark",
         "type": "dagger",
         "skill1": "unknownM",
@@ -14727,7 +15761,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104600.png",
-        "en": "[怪黒刃]ブラックナイフ"
+        "en": "ブラックナイフ"
     },
     "スカルペル": {
         "ja": "スカルペル",
@@ -14745,8 +15779,8 @@
         "imageURL": "./imgs/1030104700.png",
         "en": "スカルペル"
     },
-    "[宵刃]オネイロスダガー": {
-        "ja": "[宵刃]オネイロスダガー",
+    "オネイロスダガー": {
+        "ja": "オネイロスダガー",
         "element": "water",
         "type": "dagger",
         "skill1": "normalHPM",
@@ -14759,7 +15793,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104800.png",
-        "en": "[宵刃]オネイロスダガー"
+        "en": "オネイロスダガー"
     },
     "キルナイフ": {
         "ja": "キルナイフ",
@@ -14777,8 +15811,8 @@
         "imageURL": "./imgs/1030104900.png",
         "en": "キルナイフ"
     },
-    "[大天使]アークエンジェルナイフ": {
-        "ja": "[大天使]アークエンジェルナイフ",
+    "アークエンジェルナイフ": {
+        "ja": "アークエンジェルナイフ",
         "element": "light",
         "type": "dagger",
         "skill1": "non",
@@ -14791,10 +15825,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030199000.png",
-        "en": "[大天使]アークエンジェルナイフ"
+        "en": "アークエンジェルナイフ"
     },
-    "[雷光牙]ヴァジュランダ": {
-        "ja": "[雷光牙]ヴァジュランダ",
+    "ヴァジュランダ": {
+        "ja": "ヴァジュランダ",
         "element": "light",
         "type": "spear",
         "skill1": "normalM",
@@ -14807,10 +15841,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200000.png",
-        "en": "[雷光牙]ヴァジュランダ"
+        "en": "ヴァジュランダ"
     },
-    "[凪命]蜻蛉切": {
-        "ja": "[凪命]蜻蛉切",
+    "蜻蛉切": {
+        "ja": "蜻蛉切",
         "element": "wind",
         "type": "spear",
         "skill1": "normalM",
@@ -14823,10 +15857,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200100.png",
-        "en": "[凪命]蜻蛉切"
+        "en": "蜻蛉切"
     },
-    "[革抗]パルチザン": {
-        "ja": "[革抗]パルチザン",
+    "パルチザン": {
+        "ja": "パルチザン",
         "element": "earth",
         "type": "spear",
         "skill1": "normalM",
@@ -14839,10 +15873,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200200.png",
-        "en": "[革抗]パルチザン"
+        "en": "パルチザン"
     },
-    "[飛閃]シューラヴァラ": {
-        "ja": "[飛閃]シューラヴァラ",
+    "シューラヴァラ": {
+        "ja": "シューラヴァラ",
         "element": "light",
         "type": "spear",
         "skill1": "normalHPM",
@@ -14855,7 +15889,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200300.png",
-        "en": "[飛閃]シューラヴァラ"
+        "en": "シューラヴァラ"
     },
     "ロンギヌス": {
         "ja": "ロンギヌス",
@@ -14873,8 +15907,8 @@
         "imageURL": "./imgs/1030200400.png",
         "en": "ロンギヌス"
     },
-    "[海嘯槍]レヴィアスパイン": {
-        "ja": "[海嘯槍]レヴィアスパイン",
+    "レヴィアスパイン": {
+        "ja": "レヴィアスパイン",
         "element": "water",
         "type": "spear",
         "skill1": "magnaM",
@@ -14887,10 +15921,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200500.png",
-        "en": "[海嘯槍]レヴィアスパイン"
+        "en": "レヴィアスパイン"
     },
-    "[海叉]トライデント": {
-        "ja": "[海叉]トライデント",
+    "トライデント": {
+        "ja": "トライデント",
         "element": "water",
         "type": "spear",
         "skill1": "normalM",
@@ -14903,10 +15937,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200700.png",
-        "en": "[海叉]トライデント"
+        "en": "トライデント"
     },
-    "[鳳凰槍]不死鳥の爪槍": {
-        "ja": "[鳳凰槍]不死鳥の爪槍",
+    "不死鳥の爪槍": {
+        "ja": "不死鳥の爪槍",
         "element": "fire",
         "type": "spear",
         "skill1": "normalHPM",
@@ -14919,10 +15953,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030201600.png",
-        "en": "[鳳凰槍]不死鳥の爪槍"
+        "en": "不死鳥の爪槍"
     },
-    "[極芸]ナーヴァル": {
-        "ja": "[極芸]ナーヴァル",
+    "ナーヴァル": {
+        "ja": "ナーヴァル",
         "element": "water",
         "type": "spear",
         "skill1": "normalHPM",
@@ -14935,10 +15969,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030201700.png",
-        "en": "[極芸]ナーヴァル"
+        "en": "ナーヴァル"
     },
-    "[砂槍]砂城の尖塔": {
-        "ja": "[砂槍]砂城の尖塔",
+    "砂城の尖塔": {
+        "ja": "砂城の尖塔",
         "element": "earth",
         "type": "spear",
         "skill1": "normalHPM",
@@ -14951,10 +15985,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030201800.png",
-        "en": "[砂槍]砂城の尖塔"
+        "en": "砂城の尖塔"
     },
-    "[戦国]摩阿姫薙刀": {
-        "ja": "[戦国]摩阿姫薙刀",
+    "摩阿姫薙刀": {
+        "ja": "摩阿姫薙刀",
         "element": "wind",
         "type": "spear",
         "skill1": "normalM",
@@ -14967,10 +16001,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030201900.png",
-        "en": "[戦国]摩阿姫薙刀"
+        "en": "摩阿姫薙刀"
     },
-    "[輝騎槍]シュヴァリエスピア": {
-        "ja": "[輝騎槍]シュヴァリエスピア",
+    "シュヴァリエスピア": {
+        "ja": "シュヴァリエスピア",
         "element": "light",
         "type": "spear",
         "skill1": "magnaHPM",
@@ -14983,10 +16017,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202000.png",
-        "en": "[輝騎槍]シュヴァリエスピア"
+        "en": "シュヴァリエスピア"
     },
-    "[蛇神槍]ミドガルドの大槍": {
-        "ja": "[蛇神槍]ミドガルドの大槍",
+    "ミドガルドの大槍": {
+        "ja": "ミドガルドの大槍",
         "element": "earth",
         "type": "spear",
         "skill1": "normalM",
@@ -14999,10 +16033,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202100.png",
-        "en": "[蛇神槍]ミドガルドの大槍"
+        "en": "ミドガルドの大槍"
     },
-    "[魚突]アルバコアノーズ": {
-        "ja": "[魚突]アルバコアノーズ",
+    "アルバコアノーズ": {
+        "ja": "アルバコアノーズ",
         "element": "dark",
         "type": "spear",
         "skill1": "normalM",
@@ -15015,10 +16049,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202200.png",
-        "en": "[魚突]アルバコアノーズ"
+        "en": "アルバコアノーズ"
     },
-    "[漁魂]ハープーン": {
-        "ja": "[漁魂]ハープーン",
+    "ハープーン": {
+        "ja": "ハープーン",
         "element": "water",
         "type": "spear",
         "skill1": "normalM",
@@ -15031,10 +16065,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202300.png",
-        "en": "[漁魂]ハープーン"
+        "en": "ハープーン"
     },
-    "[偽明]朽ち果てた槍": {
-        "ja": "[偽明]朽ち果てた槍",
+    "朽ち果てた槍": {
+        "ja": "朽ち果てた槍",
         "element": "dark",
         "type": "spear",
         "skill1": "non",
@@ -15047,10 +16081,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202400.png",
-        "en": "[偽明]朽ち果てた槍"
+        "en": "朽ち果てた槍"
     },
-    "[怪緑針]アンノウンニードル": {
-        "ja": "[怪緑針]アンノウンニードル",
+    "アンノウンニードル": {
+        "ja": "アンノウンニードル",
         "element": "water",
         "type": "spear",
         "skill1": "unknownM",
@@ -15063,10 +16097,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202500.png",
-        "en": "[怪緑針]アンノウンニードル"
+        "en": "アンノウンニードル"
     },
-    "[融撃]フレアグレイブ": {
-        "ja": "[融撃]フレアグレイブ",
+    "フレアグレイブ": {
+        "ja": "フレアグレイブ",
         "element": "fire",
         "type": "spear",
         "skill1": "normalM",
@@ -15079,10 +16113,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202600.png",
-        "en": "[融撃]フレアグレイブ"
+        "en": "フレアグレイブ"
     },
-    "[竜尖]竜鱗の槍": {
-        "ja": "[竜尖]竜鱗の槍",
+    "竜鱗の槍": {
+        "ja": "竜鱗の槍",
         "element": "fire",
         "type": "spear",
         "skill1": "normalM",
@@ -15095,10 +16129,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202700.png",
-        "en": "[竜尖]竜鱗の槍"
+        "en": "竜鱗の槍"
     },
-    "[殲掃]スウィーピングモップ": {
-        "ja": "[殲掃]スウィーピングモップ",
+    "スウィーピングモップ": {
+        "ja": "スウィーピングモップ",
         "element": "earth",
         "type": "spear",
         "skill1": "normalM",
@@ -15111,10 +16145,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203500.png",
-        "en": "[殲掃]スウィーピングモップ"
+        "en": "スウィーピングモップ"
     },
-    "[狂輝槍]マギ・ディケイデッドスピア": {
-        "ja": "[狂輝槍]マギ・ディケイデッドスピア",
+    "マギ・ディケイデッドスピア": {
+        "ja": "マギ・ディケイデッドスピア",
         "element": "light",
         "type": "spear",
         "skill1": "normalM",
@@ -15127,10 +16161,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203600.png",
-        "en": "[狂輝槍]マギ・ディケイデッドスピア"
+        "en": "マギ・ディケイデッドスピア"
     },
-    "[祖龍槍]バハムートスピア": {
-        "ja": "[祖龍槍]バハムートスピア",
+    "バハムートスピア": {
+        "ja": "バハムートスピア",
         "element": "dark",
         "type": "spear",
         "skill1": "bahaAT-spear",
@@ -15143,10 +16177,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203700.png",
-        "en": "[祖龍槍]バハムートスピア"
+        "en": "バハムートスピア"
     },
-    "[蒼龍]ドラグーンランス": {
-        "ja": "[蒼龍]ドラグーンランス",
+    "ドラグーンランス": {
+        "ja": "ドラグーンランス",
         "element": "fire",
         "type": "spear",
         "skill1": "non",
@@ -15159,10 +16193,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203800.png",
-        "en": "[蒼龍]ドラグーンランス"
+        "en": "ドラグーンランス"
     },
-    "[鋼電槍]エレクトロフォーク": {
-        "ja": "[鋼電槍]エレクトロフォーク",
+    "エレクトロフォーク": {
+        "ja": "エレクトロフォーク",
         "element": "light",
         "type": "spear",
         "skill1": "normalM",
@@ -15175,10 +16209,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203900.png",
-        "en": "[鋼電槍]エレクトロフォーク"
+        "en": "エレクトロフォーク"
     },
-    "[炙叩]藁焼き": {
-        "ja": "[炙叩]藁焼き",
+    "藁焼き": {
+        "ja": "藁焼き",
         "element": "water",
         "type": "spear",
         "skill1": "normalCriticalM",
@@ -15191,7 +16225,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204000.png",
-        "en": "[炙叩]藁焼き"
+        "en": "藁焼き"
     },
     "槍烏賊": {
         "ja": "槍烏賊",
@@ -15209,8 +16243,8 @@
         "imageURL": "./imgs/1030204100.png",
         "en": "槍烏賊"
     },
-    "[青緑槍]エメラルドスピア": {
-        "ja": "[青緑槍]エメラルドスピア",
+    "エメラルドスピア": {
+        "ja": "エメラルドスピア",
         "element": "wind",
         "type": "spear",
         "skill1": "normalHPM",
@@ -15223,10 +16257,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204200.png",
-        "en": "[青緑槍]エメラルドスピア"
+        "en": "エメラルドスピア"
     },
-    "[幽幻]ゴーストツリー": {
-        "ja": "[幽幻]ゴーストツリー",
+    "ゴーストツリー": {
+        "ja": "ゴーストツリー",
         "element": "dark",
         "type": "spear",
         "skill1": "non",
@@ -15239,10 +16273,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204300.png",
-        "en": "[幽幻]ゴーストツリー"
+        "en": "ゴーストツリー"
     },
-    "[大漁魂]チタンハープーン": {
-        "ja": "[大漁魂]チタンハープーン",
+    "チタンハープーン": {
+        "ja": "チタンハープーン",
         "element": "water",
         "type": "spear",
         "skill1": "normalHaisuiM",
@@ -15255,7 +16289,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204400.png",
-        "en": "[大漁魂]チタンハープーン"
+        "en": "チタンハープーン"
     },
     "レイジングハルバード": {
         "ja": "レイジングハルバード",
@@ -15273,8 +16307,8 @@
         "imageURL": "./imgs/1030204500.png",
         "en": "レイジングハルバード"
     },
-    "[刺爪]鱈場": {
-        "ja": "[刺爪]鱈場",
+    "鱈場": {
+        "ja": "鱈場",
         "element": "dark",
         "type": "spear",
         "skill1": "normalHPS",
@@ -15287,10 +16321,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204600.png",
-        "en": "[刺爪]鱈場"
+        "en": "鱈場"
     },
-    "[青閃光]ブラウジャベリン": {
-        "ja": "[青閃光]ブラウジャベリン",
+    "ブラウジャベリン": {
+        "ja": "ブラウジャベリン",
         "element": "water",
         "type": "spear",
         "skill1": "non",
@@ -15303,7 +16337,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204700.png",
-        "en": "[青閃光]ブラウジャベリン"
+        "en": "ブラウジャベリン"
     },
     "ビッグフォーク": {
         "ja": "ビッグフォーク",
@@ -15321,8 +16355,8 @@
         "imageURL": "./imgs/1030204800.png",
         "en": "ビッグフォーク"
     },
-    "[古暴槍]タイラントフォーク": {
-        "ja": "[古暴槍]タイラントフォーク",
+    "タイラントフォーク": {
+        "ja": "タイラントフォーク",
         "element": "light",
         "type": "spear",
         "skill1": "normalHPM",
@@ -15335,7 +16369,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204900.png",
-        "en": "[古暴槍]タイラントフォーク"
+        "en": "タイラントフォーク"
     },
     "バリアントスパイク": {
         "ja": "バリアントスパイク",
@@ -15353,8 +16387,8 @@
         "imageURL": "./imgs/1030205000.png",
         "en": "バリアントスパイク"
     },
-    "[獣突槍]竹槍": {
-        "ja": "[獣突槍]竹槍",
+    "竹槍": {
+        "ja": "竹槍",
         "element": "earth",
         "type": "spear",
         "skill1": "normalHPM",
@@ -15367,10 +16401,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030205100.png",
-        "en": "[獣突槍]竹槍"
+        "en": "竹槍"
     },
-    "[大天使]アークエンジェルスピア": {
-        "ja": "[大天使]アークエンジェルスピア",
+    "アークエンジェルスピア": {
+        "ja": "アークエンジェルスピア",
         "element": "light",
         "type": "spear",
         "skill1": "non",
@@ -15383,7 +16417,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030299000.png",
-        "en": "[大天使]アークエンジェルスピア"
+        "en": "アークエンジェルスピア"
     },
     "アクゥ": {
         "ja": "アクゥ",
@@ -15401,8 +16435,8 @@
         "imageURL": "./imgs/1030300000.png",
         "en": "アクゥ"
     },
-    "[朱戦斧]ショカ": {
-        "ja": "[朱戦斧]ショカ",
+    "ショカ": {
+        "ja": "ショカ",
         "element": "earth",
         "type": "axe",
         "skill1": "normalM",
@@ -15415,10 +16449,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300100.png",
-        "en": "[朱戦斧]ショカ"
+        "en": "ショカ"
     },
-    "[千齧]ブローバ": {
-        "ja": "[千齧]ブローバ",
+    "ブローバ": {
+        "ja": "ブローバ",
         "element": "water",
         "type": "axe",
         "skill1": "normalM",
@@ -15431,10 +16465,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300200.png",
-        "en": "[千齧]ブローバ"
+        "en": "ブローバ"
     },
-    "[万馬斧]ホースマンズハンマー": {
-        "ja": "[万馬斧]ホースマンズハンマー",
+    "ホースマンズハンマー": {
+        "ja": "ホースマンズハンマー",
         "element": "light",
         "type": "axe",
         "skill1": "normalM",
@@ -15447,10 +16481,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300300.png",
-        "en": "[万馬斧]ホースマンズハンマー"
+        "en": "ホースマンズハンマー"
     },
-    "[嵐竜斧]ティアマトアムード": {
-        "ja": "[嵐竜斧]ティアマトアムード",
+    "ティアマトアムード": {
+        "ja": "ティアマトアムード",
         "element": "wind",
         "type": "axe",
         "skill1": "magnaM",
@@ -15463,10 +16497,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300600.png",
-        "en": "[嵐竜斧]ティアマトアムード"
+        "en": "ティアマトアムード"
     },
-    "[機殻斧]コロッサスハーケン": {
-        "ja": "[機殻斧]コロッサスハーケン",
+    "コロッサスハーケン": {
+        "ja": "コロッサスハーケン",
         "element": "fire",
         "type": "axe",
         "skill1": "magnaM",
@@ -15479,10 +16513,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300700.png",
-        "en": "[機殻斧]コロッサスハーケン"
+        "en": "コロッサスハーケン"
     },
-    "[悉断]フットマンズアックス": {
-        "ja": "[悉断]フットマンズアックス",
+    "フットマンズアックス": {
+        "ja": "フットマンズアックス",
         "element": "fire",
         "type": "axe",
         "skill1": "normalNiteM",
@@ -15495,10 +16529,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300800.png",
-        "en": "[悉断]フットマンズアックス"
+        "en": "フットマンズアックス"
     },
-    "[陽槌]サンハンマー": {
-        "ja": "[陽槌]サンハンマー",
+    "サンハンマー": {
+        "ja": "サンハンマー",
         "element": "light",
         "type": "axe",
         "skill1": "normalM",
@@ -15511,10 +16545,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300900.png",
-        "en": "[陽槌]サンハンマー"
+        "en": "サンハンマー"
     },
-    "[水恵斧]マナウィダンハーケン": {
-        "ja": "[水恵斧]マナウィダンハーケン",
+    "マナウィダンハーケン": {
+        "ja": "マナウィダンハーケン",
         "element": "water",
         "type": "axe",
         "skill1": "normalHPM",
@@ -15527,10 +16561,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301000.png",
-        "en": "[水恵斧]マナウィダンハーケン"
+        "en": "マナウィダンハーケン"
     },
-    "[輝騎斧]シュヴァリエブージ": {
-        "ja": "[輝騎斧]シュヴァリエブージ",
+    "シュヴァリエブージ": {
+        "ja": "シュヴァリエブージ",
         "element": "light",
         "type": "axe",
         "skill1": "magnaHPM",
@@ -15543,10 +16577,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301100.png",
-        "en": "[輝騎斧]シュヴァリエブージ"
+        "en": "シュヴァリエブージ"
     },
-    "[灼業斧]イフリートアクス": {
-        "ja": "[灼業斧]イフリートアクス",
+    "イフリートアクス": {
+        "ja": "イフリートアクス",
         "element": "fire",
         "type": "axe",
         "skill1": "normalM",
@@ -15559,10 +16593,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301200.png",
-        "en": "[灼業斧]イフリートアクス"
+        "en": "イフリートアクス"
     },
-    "[幽霧斧]セレストザグナル": {
-        "ja": "[幽霧斧]セレストザグナル",
+    "セレストザグナル": {
+        "ja": "セレストザグナル",
         "element": "dark",
         "type": "axe",
         "skill1": "magnaHPM",
@@ -15575,10 +16609,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301300.png",
-        "en": "[幽霧斧]セレストザグナル"
+        "en": "セレストザグナル"
     },
-    "[星鎧斧]サジタリウスアックス": {
-        "ja": "[星鎧斧]サジタリウスアックス",
+    "サジタリウスアックス": {
+        "ja": "サジタリウスアックス",
         "element": "wind",
         "type": "axe",
         "skill1": "normalHPM",
@@ -15591,10 +16625,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301500.png",
-        "en": "[星鎧斧]サジタリウスアックス"
+        "en": "サジタリウスアックス"
     },
-    "[水神斧]ポセイドンハーケン": {
-        "ja": "[水神斧]ポセイドンハーケン",
+    "ポセイドンハーケン": {
+        "ja": "ポセイドンハーケン",
         "element": "water",
         "type": "axe",
         "skill1": "normalM",
@@ -15607,10 +16641,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301700.png",
-        "en": "[水神斧]ポセイドンハーケン"
+        "en": "ポセイドンハーケン"
     },
-    "[怪緑斧]アンノウンハンマー": {
-        "ja": "[怪緑斧]アンノウンハンマー",
+    "アンノウンハンマー": {
+        "ja": "アンノウンハンマー",
         "element": "earth",
         "type": "axe",
         "skill1": "unknownHPM",
@@ -15623,10 +16657,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301800.png",
-        "en": "[怪緑斧]アンノウンハンマー"
+        "en": "アンノウンハンマー"
     },
-    "[崩礎]朽ち果てた斧": {
-        "ja": "[崩礎]朽ち果てた斧",
+    "朽ち果てた斧": {
+        "ja": "朽ち果てた斧",
         "element": "dark",
         "type": "axe",
         "skill1": "non",
@@ -15639,10 +16673,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030302000.png",
-        "en": "[崩礎]朽ち果てた斧"
+        "en": "朽ち果てた斧"
     },
-    "[禍風斧]風司の鉞": {
-        "ja": "[禍風斧]風司の鉞",
+    "風司の鉞": {
+        "ja": "風司の鉞",
         "element": "wind",
         "type": "axe",
         "skill1": "normalM",
@@ -15655,10 +16689,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030302700.png",
-        "en": "[禍風斧]風司の鉞"
+        "en": "風司の鉞"
     },
-    "[凶戮]ヴォウジェ": {
-        "ja": "[凶戮]ヴォウジェ",
+    "ヴォウジェ": {
+        "ja": "ヴォウジェ",
         "element": "dark",
         "type": "axe",
         "skill1": "normalM",
@@ -15671,10 +16705,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030302800.png",
-        "en": "[凶戮]ヴォウジェ"
+        "en": "ヴォウジェ"
     },
-    "[祖龍斧]バハムートアクス": {
-        "ja": "[祖龍斧]バハムートアクス",
+    "バハムートアクス": {
+        "ja": "バハムートアクス",
         "element": "dark",
         "type": "axe",
         "skill1": "bahaAT-axe",
@@ -15687,7 +16721,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030302900.png",
-        "en": "[祖龍斧]バハムートアクス"
+        "en": "バハムートアクス"
     },
     "グレートハンマー": {
         "ja": "グレートハンマー",
@@ -15705,8 +16739,8 @@
         "imageURL": "./imgs/1030303000.png",
         "en": "グレートハンマー"
     },
-    "[祝搗]杵": {
-        "ja": "[祝搗]杵",
+    "杵": {
+        "ja": "杵",
         "element": "fire",
         "type": "axe",
         "skill1": "normalHPM",
@@ -15719,10 +16753,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303100.png",
-        "en": "[祝搗]杵"
+        "en": "杵"
     },
-    "[金塊棍]ゴールデンダッグ": {
-        "ja": "[金塊棍]ゴールデンダッグ",
+    "ゴールデンダッグ": {
+        "ja": "ゴールデンダッグ",
         "element": "light",
         "type": "axe",
         "skill1": "normalM",
@@ -15735,7 +16769,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303200.png",
-        "en": "[金塊棍]ゴールデンダッグ"
+        "en": "ゴールデンダッグ"
     },
     "マッシヴアクス": {
         "ja": "マッシヴアクス",
@@ -15753,8 +16787,8 @@
         "imageURL": "./imgs/1030303300.png",
         "en": "マッシヴアクス"
     },
-    "[麗腰]レザーベルト": {
-        "ja": "[麗腰]レザーベルト",
+    "レザーベルト": {
+        "ja": "レザーベルト",
         "element": "fire",
         "type": "axe",
         "skill1": "normalM",
@@ -15767,7 +16801,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303400.png",
-        "en": "[麗腰]レザーベルト"
+        "en": "レザーベルト"
     },
     "メタルハマー": {
         "ja": "メタルハマー",
@@ -15817,8 +16851,8 @@
         "imageURL": "./imgs/1030303700.png",
         "en": "フレイメルンハンマー"
     },
-    "[鋼電斧]エレクトロアックス": {
-        "ja": "[鋼電斧]エレクトロアックス",
+    "エレクトロアックス": {
+        "ja": "エレクトロアックス",
         "element": "dark",
         "type": "axe",
         "skill1": "normalM",
@@ -15831,10 +16865,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303800.png",
-        "en": "[鋼電斧]エレクトロアックス"
+        "en": "エレクトロアックス"
     },
-    "[大天使]アークエンジェルアクス": {
-        "ja": "[大天使]アークエンジェルアクス",
+    "アークエンジェルアクス": {
+        "ja": "アークエンジェルアクス",
         "element": "light",
         "type": "axe",
         "skill1": "non",
@@ -15847,10 +16881,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030399000.png",
-        "en": "[大天使]アークエンジェルアクス"
+        "en": "アークエンジェルアクス"
     },
-    "[鍛極]金剛杖": {
-        "ja": "[鍛極]金剛杖",
+    "金剛杖": {
+        "ja": "金剛杖",
         "element": "light",
         "type": "wand",
         "skill1": "normalHPM",
@@ -15863,10 +16897,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400000.png",
-        "en": "[鍛極]金剛杖"
+        "en": "金剛杖"
     },
-    "[双蛇癒]ジェズル": {
-        "ja": "[双蛇癒]ジェズル",
+    "ジェズル": {
+        "ja": "ジェズル",
         "element": "water",
         "type": "wand",
         "skill1": "normalHPM",
@@ -15879,10 +16913,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400100.png",
-        "en": "[双蛇癒]ジェズル"
+        "en": "ジェズル"
     },
-    "[導命]パストラルスタッフ": {
-        "ja": "[導命]パストラルスタッフ",
+    "パストラルスタッフ": {
+        "ja": "パストラルスタッフ",
         "element": "earth",
         "type": "wand",
         "skill1": "normalM",
@@ -15895,10 +16929,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400200.png",
-        "en": "[導命]パストラルスタッフ"
+        "en": "パストラルスタッフ"
     },
-    "[麗美華]ジャカランダ": {
-        "ja": "[麗美華]ジャカランダ",
+    "ジャカランダ": {
+        "ja": "ジャカランダ",
         "element": "earth",
         "type": "wand",
         "skill1": "normalCriticalM",
@@ -15911,10 +16945,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400300.png",
-        "en": "[麗美華]ジャカランダ"
+        "en": "ジャカランダ"
     },
-    "[羅象杖]世界樹の雫枝": {
-        "ja": "[羅象杖]世界樹の雫枝",
+    "世界樹の雫枝": {
+        "ja": "世界樹の雫枝",
         "element": "earth",
         "type": "wand",
         "skill1": "magnaHPM",
@@ -15927,10 +16961,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400400.png",
-        "en": "[羅象杖]世界樹の雫枝"
+        "en": "世界樹の雫枝"
     },
-    "[鳳凰杖]不死鳥の尾飾": {
-        "ja": "[鳳凰杖]不死鳥の尾飾",
+    "不死鳥の尾飾": {
+        "ja": "不死鳥の尾飾",
         "element": "fire",
         "type": "wand",
         "skill1": "normalHPM",
@@ -15943,10 +16977,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400600.png",
-        "en": "[鳳凰杖]不死鳥の尾飾"
+        "en": "不死鳥の尾飾"
     },
-    "[魔樹理]森精の杖": {
-        "ja": "[魔樹理]森精の杖",
+    "森精の杖": {
+        "ja": "森精の杖",
         "element": "water",
         "type": "wand",
         "skill1": "normalHPM",
@@ -15959,10 +16993,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400700.png",
-        "en": "[魔樹理]森精の杖"
+        "en": "森精の杖"
     },
-    "[酒精杖]ツォンペリ": {
-        "ja": "[酒精杖]ツォンペリ",
+    "ツォンペリ": {
+        "ja": "ツォンペリ",
         "element": "earth",
         "type": "wand",
         "skill1": "normalHPM",
@@ -15975,10 +17009,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400800.png",
-        "en": "[酒精杖]ツォンペリ"
+        "en": "ツォンペリ"
     },
-    "[焔祷]転生の祈杖": {
-        "ja": "[焔祷]転生の祈杖",
+    "転生の祈杖": {
+        "ja": "転生の祈杖",
         "element": "fire",
         "type": "wand",
         "skill1": "normalM",
@@ -15991,10 +17025,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400900.png",
-        "en": "[焔祷]転生の祈杖"
+        "en": "転生の祈杖"
     },
-    "[密智杖]ネフティスポール": {
-        "ja": "[密智杖]ネフティスポール",
+    "ネフティスポール": {
+        "ja": "ネフティスポール",
         "element": "wind",
         "type": "wand",
         "skill1": "normalM",
@@ -16007,10 +17041,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401000.png",
-        "en": "[密智杖]ネフティスポール"
+        "en": "ネフティスポール"
     },
-    "[裁考杖]裁きの天秤": {
-        "ja": "[裁考杖]裁きの天秤",
+    "裁きの天秤": {
+        "ja": "裁きの天秤",
         "element": "earth",
         "type": "wand",
         "skill1": "normalM",
@@ -16023,10 +17057,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401100.png",
-        "en": "[裁考杖]裁きの天秤"
+        "en": "裁きの天秤"
     },
-    "[逐雷棍]ヤグルシ": {
-        "ja": "[逐雷棍]ヤグルシ",
+    "ヤグルシ": {
+        "ja": "ヤグルシ",
         "element": "water",
         "type": "wand",
         "skill1": "normalM",
@@ -16039,10 +17073,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401200.png",
-        "en": "[逐雷棍]ヤグルシ"
+        "en": "ヤグルシ"
     },
-    "[炎従]アーソン": {
-        "ja": "[炎従]アーソン",
+    "アーソン": {
+        "ja": "アーソン",
         "element": "fire",
         "type": "wand",
         "skill1": "normalM",
@@ -16055,10 +17089,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401300.png",
-        "en": "[炎従]アーソン"
+        "en": "アーソン"
     },
-    "[光宿]ホーリーケーン": {
-        "ja": "[光宿]ホーリーケーン",
+    "ホーリーケーン": {
+        "ja": "ホーリーケーン",
         "element": "light",
         "type": "wand",
         "skill1": "normalM",
@@ -16071,10 +17105,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401400.png",
-        "en": "[光宿]ホーリーケーン"
+        "en": "ホーリーケーン"
     },
-    "[幽霧杖]セレストケーン": {
-        "ja": "[幽霧杖]セレストケーン",
+    "セレストケーン": {
+        "ja": "セレストケーン",
         "element": "dark",
         "type": "wand",
         "skill1": "magnaHPM",
@@ -16087,10 +17121,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401500.png",
-        "en": "[幽霧杖]セレストケーン"
+        "en": "セレストケーン"
     },
-    "[遊獣杖]ヘルウォードセプター": {
-        "ja": "[遊獣杖]ヘルウォードセプター",
+    "ヘルウォードセプター": {
+        "ja": "ヘルウォードセプター",
         "element": "dark",
         "type": "wand",
         "skill1": "normalM",
@@ -16103,7 +17137,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401600.png",
-        "en": "[遊獣杖]ヘルウォードセプター"
+        "en": "ヘルウォードセプター"
     },
     "エアリアルケーン": {
         "ja": "エアリアルケーン",
@@ -16121,8 +17155,8 @@
         "imageURL": "./imgs/1030401700.png",
         "en": "エアリアルケーン"
     },
-    "[嘆骸]スカルワンド": {
-        "ja": "[嘆骸]スカルワンド",
+    "スカルワンド": {
+        "ja": "スカルワンド",
         "element": "dark",
         "type": "wand",
         "skill1": "non",
@@ -16135,10 +17169,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401800.png",
-        "en": "[嘆骸]スカルワンド"
+        "en": "スカルワンド"
     },
-    "[征風]風詠みの杖": {
-        "ja": "[征風]風詠みの杖",
+    "風詠みの杖": {
+        "ja": "風詠みの杖",
         "element": "wind",
         "type": "wand",
         "skill1": "normalM",
@@ -16151,10 +17185,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030402100.png",
-        "en": "[征風]風詠みの杖"
+        "en": "風詠みの杖"
     },
-    "[虚叡]朽ち果てた杖": {
-        "ja": "[虚叡]朽ち果てた杖",
+    "朽ち果てた杖": {
+        "ja": "朽ち果てた杖",
         "element": "dark",
         "type": "wand",
         "skill1": "non",
@@ -16167,10 +17201,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030402200.png",
-        "en": "[虚叡]朽ち果てた杖"
+        "en": "朽ち果てた杖"
     },
-    "[勝炎]サルヴトーチ": {
-        "ja": "[勝炎]サルヴトーチ",
+    "サルヴトーチ": {
+        "ja": "サルヴトーチ",
         "element": "fire",
         "type": "wand",
         "skill1": "normalHPM",
@@ -16183,10 +17217,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030402900.png",
-        "en": "[勝炎]サルヴトーチ"
+        "en": "サルヴトーチ"
     },
-    "[禍雷杖]雷司の杖": {
-        "ja": "[禍雷杖]雷司の杖",
+    "雷司の杖": {
+        "ja": "雷司の杖",
         "element": "light",
         "type": "wand",
         "skill1": "normalM",
@@ -16199,10 +17233,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403000.png",
-        "en": "[禍雷杖]雷司の杖"
+        "en": "雷司の杖"
     },
-    "[邪絶杖]ディアボロスセプター": {
-        "ja": "[邪絶杖]ディアボロスセプター",
+    "ディアボロスセプター": {
+        "ja": "ディアボロスセプター",
         "element": "dark",
         "type": "wand",
         "skill1": "normalHPM",
@@ -16215,10 +17249,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403100.png",
-        "en": "[邪絶杖]ディアボロスセプター"
+        "en": "ディアボロスセプター"
     },
-    "[祖龍杖]バハムートスタッフ": {
-        "ja": "[祖龍杖]バハムートスタッフ",
+    "バハムートスタッフ": {
+        "ja": "バハムートスタッフ",
         "element": "dark",
         "type": "wand",
         "skill1": "bahaATHP-wand",
@@ -16231,10 +17265,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403200.png",
-        "en": "[祖龍杖]バハムートスタッフ"
+        "en": "バハムートスタッフ"
     },
-    "[蒼心]リトルウィッチセプター": {
-        "ja": "[蒼心]リトルウィッチセプター",
+    "リトルウィッチセプター": {
+        "ja": "リトルウィッチセプター",
         "element": "water",
         "type": "wand",
         "skill1": "non",
@@ -16247,7 +17281,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403300.png",
-        "en": "[蒼心]リトルウィッチセプター"
+        "en": "リトルウィッチセプター"
     },
     "アーソン・デス": {
         "ja": "アーソン・デス",
@@ -16297,8 +17331,8 @@
         "imageURL": "./imgs/1030403600.png",
         "en": "カースドケーン"
     },
-    "[魔箒]魔女の箒": {
-        "ja": "[魔箒]魔女の箒",
+    "魔女の箒": {
+        "ja": "魔女の箒",
         "element": "fire",
         "type": "wand",
         "skill1": "normalNiteM",
@@ -16311,10 +17345,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403700.png",
-        "en": "[魔箒]魔女の箒"
+        "en": "魔女の箒"
     },
-    "[獣杖]アンライトセプター": {
-        "ja": "[獣杖]アンライトセプター",
+    "アンライトセプター": {
+        "ja": "アンライトセプター",
         "element": "dark",
         "type": "wand",
         "skill1": "normalM",
@@ -16327,7 +17361,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403800.png",
-        "en": "[獣杖]アンライトセプター"
+        "en": "アンライトセプター"
     },
     "フラワークラウン": {
         "ja": "フラワークラウン",
@@ -16345,8 +17379,8 @@
         "imageURL": "./imgs/1030403900.png",
         "en": "フラワークラウン"
     },
-    "[オイラは]アスクレビィオスの杖": {
-        "ja": "[オイラは]アスクレビィオスの杖",
+    "アスクレビィオスの杖": {
+        "ja": "アスクレビィオスの杖",
         "element": "light",
         "type": "wand",
         "skill1": "non",
@@ -16359,10 +17393,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404000.png",
-        "en": "[オイラは]アスクレビィオスの杖"
+        "en": "アスクレビィオスの杖"
     },
-    "[哭司]ショロトルケーン": {
-        "ja": "[哭司]ショロトルケーン",
+    "ショロトルケーン": {
+        "ja": "ショロトルケーン",
         "element": "wind",
         "type": "wand",
         "skill1": "normalHPM",
@@ -16375,10 +17409,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404200.png",
-        "en": "[哭司]ショロトルケーン"
+        "en": "ショロトルケーン"
     },
-    "[覇翼]ファルコンメイス": {
-        "ja": "[覇翼]ファルコンメイス",
+    "ファルコンメイス": {
+        "ja": "ファルコンメイス",
         "element": "earth",
         "type": "wand",
         "skill1": "normalHaisuiM",
@@ -16391,7 +17425,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404300.png",
-        "en": "[覇翼]ファルコンメイス"
+        "en": "ファルコンメイス"
     },
     "ホーリーインデックス": {
         "ja": "ホーリーインデックス",
@@ -16409,8 +17443,8 @@
         "imageURL": "./imgs/1030404400.png",
         "en": "ホーリーインデックス"
     },
-    "[大天使]アークエンジェルワンド": {
-        "ja": "[大天使]アークエンジェルワンド",
+    "アークエンジェルワンド": {
+        "ja": "アークエンジェルワンド",
         "element": "light",
         "type": "wand",
         "skill1": "non",
@@ -16423,10 +17457,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030499000.png",
-        "en": "[大天使]アークエンジェルワンド"
+        "en": "アークエンジェルワンド"
     },
-    "[疾迅]ウィンドクロス": {
-        "ja": "[疾迅]ウィンドクロス",
+    "ウィンドクロス": {
+        "ja": "ウィンドクロス",
         "element": "wind",
         "type": "gun",
         "skill1": "normalM",
@@ -16439,10 +17473,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500000.png",
-        "en": "[疾迅]ウィンドクロス"
+        "en": "ウィンドクロス"
     },
-    "[竜棘]ドラゴンテイル": {
-        "ja": "[竜棘]ドラゴンテイル",
+    "ドラゴンテイル": {
+        "ja": "ドラゴンテイル",
         "element": "fire",
         "type": "gun",
         "skill1": "normalM",
@@ -16455,10 +17489,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500100.png",
-        "en": "[竜棘]ドラゴンテイル"
+        "en": "ドラゴンテイル"
     },
-    "[燕光]スワロウテイル": {
-        "ja": "[燕光]スワロウテイル",
+    "スワロウテイル": {
+        "ja": "スワロウテイル",
         "element": "light",
         "type": "gun",
         "skill1": "normalM",
@@ -16471,10 +17505,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500200.png",
-        "en": "[燕光]スワロウテイル"
+        "en": "スワロウテイル"
     },
-    "[至匠]スナップハンス": {
-        "ja": "[至匠]スナップハンス",
+    "スナップハンス": {
+        "ja": "スナップハンス",
         "element": "wind",
         "type": "gun",
         "skill1": "normalM",
@@ -16487,10 +17521,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500300.png",
-        "en": "[至匠]スナップハンス"
+        "en": "スナップハンス"
     },
-    "[紫速]トラドール": {
-        "ja": "[紫速]トラドール",
+    "トラドール": {
+        "ja": "トラドール",
         "element": "water",
         "type": "gun",
         "skill1": "normalM",
@@ -16503,10 +17537,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500400.png",
-        "en": "[紫速]トラドール"
+        "en": "トラドール"
     },
-    "[嵐竜銃]ティアマトボルト": {
-        "ja": "[嵐竜銃]ティアマトボルト",
+    "ティアマトボルト": {
+        "ja": "ティアマトボルト",
         "element": "wind",
         "type": "gun",
         "skill1": "magnaM",
@@ -16519,10 +17553,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500500.png",
-        "en": "[嵐竜銃]ティアマトボルト"
+        "en": "ティアマトボルト"
     },
-    "[海嘯銃]レヴィアンマズル": {
-        "ja": "[海嘯銃]レヴィアンマズル",
+    "レヴィアンマズル": {
+        "ja": "レヴィアンマズル",
         "element": "water",
         "type": "gun",
         "skill1": "magnaM",
@@ -16535,10 +17569,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500600.png",
-        "en": "[海嘯銃]レヴィアンマズル"
+        "en": "レヴィアンマズル"
     },
-    "[斧銃]ホイルロックアックス": {
-        "ja": "[斧銃]ホイルロックアックス",
+    "ホイルロックアックス": {
+        "ja": "ホイルロックアックス",
         "element": "earth",
         "type": "gun",
         "skill1": "normalM",
@@ -16551,10 +17585,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500800.png",
-        "en": "[斧銃]ホイルロックアックス"
+        "en": "ホイルロックアックス"
     },
-    "[氷冥筒]シモニア": {
-        "ja": "[氷冥筒]シモニア",
+    "シモニア": {
+        "ja": "シモニア",
         "element": "water",
         "type": "gun",
         "skill1": "normalHPM",
@@ -16567,10 +17601,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501000.png",
-        "en": "[氷冥筒]シモニア"
+        "en": "シモニア"
     },
-    "[蒼碧砲]アークゥイバス": {
-        "ja": "[蒼碧砲]アークゥイバス",
+    "アークゥイバス": {
+        "ja": "アークゥイバス",
         "element": "fire",
         "type": "gun",
         "skill1": "normalM",
@@ -16583,10 +17617,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501100.png",
-        "en": "[蒼碧砲]アークゥイバス"
+        "en": "アークゥイバス"
     },
-    "[蛇神銃]ミドガルドの破弾": {
-        "ja": "[蛇神銃]ミドガルドの破弾",
+    "ミドガルドの破弾": {
+        "ja": "ミドガルドの破弾",
         "element": "earth",
         "type": "gun",
         "skill1": "normalM",
@@ -16599,10 +17633,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501200.png",
-        "en": "[蛇神銃]ミドガルドの破弾"
+        "en": "ミドガルドの破弾"
     },
-    "[蒼碧銃]アークゥイバス・カスタム": {
-        "ja": "[蒼碧銃]アークゥイバス・カスタム",
+    "アークゥイバス・カスタム": {
+        "ja": "アークゥイバス・カスタム",
         "element": "fire",
         "type": "gun",
         "skill1": "normalM",
@@ -16615,10 +17649,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501300.png",
-        "en": "[蒼碧銃]アークゥイバス・カスタム"
+        "en": "アークゥイバス・カスタム"
     },
-    "[魚撃]アルバコアライフル": {
-        "ja": "[魚撃]アルバコアライフル",
+    "アルバコアライフル": {
+        "ja": "アルバコアライフル",
         "element": "dark",
         "type": "gun",
         "skill1": "normalM",
@@ -16631,10 +17665,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501400.png",
-        "en": "[魚撃]アルバコアライフル"
+        "en": "アルバコアライフル"
     },
-    "[幽霧銃]セレストライフル": {
-        "ja": "[幽霧銃]セレストライフル",
+    "セレストライフル": {
+        "ja": "セレストライフル",
         "element": "dark",
         "type": "gun",
         "skill1": "magnaHPM",
@@ -16647,10 +17681,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501500.png",
-        "en": "[幽霧銃]セレストライフル"
+        "en": "セレストライフル"
     },
-    "[百煌銃]ヘカトンケイルマズル": {
-        "ja": "[百煌銃]ヘカトンケイルマズル",
+    "ヘカトンケイルマズル": {
+        "ja": "ヘカトンケイルマズル",
         "element": "light",
         "type": "gun",
         "skill1": "normalHPM",
@@ -16663,10 +17697,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501600.png",
-        "en": "[百煌銃]ヘカトンケイルマズル"
+        "en": "ヘカトンケイルマズル"
     },
-    "[暴狼銃]スキールニル": {
-        "ja": "[暴狼銃]スキールニル",
+    "スキールニル": {
+        "ja": "スキールニル",
         "element": "water",
         "type": "gun",
         "skill1": "normalNiteM",
@@ -16679,10 +17713,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501800.png",
-        "en": "[暴狼銃]スキールニル"
+        "en": "スキールニル"
     },
-    "[棄昏]朽ち果てた銃": {
-        "ja": "[棄昏]朽ち果てた銃",
+    "朽ち果てた銃": {
+        "ja": "朽ち果てた銃",
         "element": "dark",
         "type": "gun",
         "skill1": "non",
@@ -16695,10 +17729,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502500.png",
-        "en": "[棄昏]朽ち果てた銃"
+        "en": "朽ち果てた銃"
     },
-    "[祖龍銃]バハムートマズル": {
-        "ja": "[祖龍銃]バハムートマズル",
+    "バハムートマズル": {
+        "ja": "バハムートマズル",
         "element": "dark",
         "type": "gun",
         "skill1": "bahaAT-gun",
@@ -16711,10 +17745,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502600.png",
-        "en": "[祖龍銃]バハムートマズル"
+        "en": "バハムートマズル"
     },
-    "[蒐索銃]アワリティアガン": {
-        "ja": "[蒐索銃]アワリティアガン",
+    "アワリティアガン": {
+        "ja": "アワリティアガン",
         "element": "earth",
         "type": "gun",
         "skill1": "normalHPM",
@@ -16727,10 +17761,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502700.png",
-        "en": "[蒐索銃]アワリティアガン"
+        "en": "アワリティアガン"
     },
-    "[怪桃銃]アンノウンショット": {
-        "ja": "[怪桃銃]アンノウンショット",
+    "アンノウンショット": {
+        "ja": "アンノウンショット",
         "element": "fire",
         "type": "gun",
         "skill1": "unknownM",
@@ -16743,10 +17777,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502800.png",
-        "en": "[怪桃銃]アンノウンショット"
+        "en": "アンノウンショット"
     },
-    "[寧弩]クォレル": {
-        "ja": "[寧弩]クォレル",
+    "クォレル": {
+        "ja": "クォレル",
         "element": "water",
         "type": "gun",
         "skill1": "normalM",
@@ -16759,10 +17793,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502900.png",
-        "en": "[寧弩]クォレル"
+        "en": "クォレル"
     },
-    "[翼艶炎]ピーシーズ": {
-        "ja": "[翼艶炎]ピーシーズ",
+    "ピーシーズ": {
+        "ja": "ピーシーズ",
         "element": "fire",
         "type": "gun",
         "skill1": "normalCriticalM",
@@ -16775,7 +17809,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503000.png",
-        "en": "[翼艶炎]ピーシーズ"
+        "en": "ピーシーズ"
     },
     "デザートアームズ": {
         "ja": "デザートアームズ",
@@ -16793,8 +17827,8 @@
         "imageURL": "./imgs/1030503100.png",
         "en": "デザートアームズ"
     },
-    "[怪緑銃]秘丹弥虚羅多鉄砲": {
-        "ja": "[怪緑銃]秘丹弥虚羅多鉄砲",
+    "秘丹弥虚羅多鉄砲": {
+        "ja": "秘丹弥虚羅多鉄砲",
         "element": "dark",
         "type": "gun",
         "skill1": "unknownM",
@@ -16807,10 +17841,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503200.png",
-        "en": "[怪緑銃]秘丹弥虚羅多鉄砲"
+        "en": "秘丹弥虚羅多鉄砲"
     },
-    "[蒼烈]ドライゼン": {
-        "ja": "[蒼烈]ドライゼン",
+    "ドライゼン": {
+        "ja": "ドライゼン",
         "element": "earth",
         "type": "gun",
         "skill1": "non",
@@ -16823,10 +17857,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503300.png",
-        "en": "[蒼烈]ドライゼン"
+        "en": "ドライゼン"
     },
-    "[廉銃]白竜騎士団制式ボルト": {
-        "ja": "[廉銃]白竜騎士団制式ボルト",
+    "白竜騎士団制式ボルト": {
+        "ja": "白竜騎士団制式ボルト",
         "element": "fire",
         "type": "gun",
         "skill1": "normalM",
@@ -16839,10 +17873,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503400.png",
-        "en": "[廉銃]白竜騎士団制式ボルト"
+        "en": "白竜騎士団制式ボルト"
     },
-    "[聖隠銃]ステッキライフル": {
-        "ja": "[聖隠銃]ステッキライフル",
+    "ステッキライフル": {
+        "ja": "ステッキライフル",
         "element": "earth",
         "type": "gun",
         "skill1": "normalHPM",
@@ -16855,10 +17889,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503500.png",
-        "en": "[聖隠銃]ステッキライフル"
+        "en": "ステッキライフル"
     },
-    "[骸銃]オダヅモッキーモデル": {
-        "ja": "[骸銃]オダヅモッキーモデル",
+    "オダヅモッキーモデル": {
+        "ja": "オダヅモッキーモデル",
         "element": "water",
         "type": "gun",
         "skill1": "normalM",
@@ -16871,10 +17905,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503600.png",
-        "en": "[骸銃]オダヅモッキーモデル"
+        "en": "オダヅモッキーモデル"
     },
-    "[緑潜]グラスマスケット": {
-        "ja": "[緑潜]グラスマスケット",
+    "グラスマスケット": {
+        "ja": "グラスマスケット",
         "element": "wind",
         "type": "gun",
         "skill1": "normalHPM",
@@ -16887,7 +17921,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503700.png",
-        "en": "[緑潜]グラスマスケット"
+        "en": "グラスマスケット"
     },
     "カラフリャーガン": {
         "ja": "カラフリャーガン",
@@ -16905,8 +17939,8 @@
         "imageURL": "./imgs/1030503900.png",
         "en": "カラフリャーガン"
     },
-    "[大天使]アークエンジェルガン": {
-        "ja": "[大天使]アークエンジェルガン",
+    "アークエンジェルガン": {
+        "ja": "アークエンジェルガン",
         "element": "light",
         "type": "gun",
         "skill1": "non",
@@ -16919,10 +17953,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030599000.png",
-        "en": "[大天使]アークエンジェルガン"
+        "en": "アークエンジェルガン"
     },
-    "[猫爪]ネコパンチ": {
-        "ja": "[猫爪]ネコパンチ",
+    "ネコパンチ": {
+        "ja": "ネコパンチ",
         "element": "earth",
         "type": "fist",
         "skill1": "normalHPM",
@@ -16935,10 +17969,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600000.png",
-        "en": "[猫爪]ネコパンチ"
+        "en": "ネコパンチ"
     },
-    "[拳刃]ジャマダハル": {
-        "ja": "[拳刃]ジャマダハル",
+    "ジャマダハル": {
+        "ja": "ジャマダハル",
         "element": "wind",
         "type": "fist",
         "skill1": "normalHPM",
@@ -16951,10 +17985,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600100.png",
-        "en": "[拳刃]ジャマダハル"
+        "en": "ジャマダハル"
     },
-    "[帝撃]カイザーナックル": {
-        "ja": "[帝撃]カイザーナックル",
+    "カイザーナックル": {
+        "ja": "カイザーナックル",
         "element": "water",
         "type": "fist",
         "skill1": "normalM",
@@ -16967,10 +18001,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600200.png",
-        "en": "[帝撃]カイザーナックル"
+        "en": "カイザーナックル"
     },
-    "[八角鬼]ジュル": {
-        "ja": "[八角鬼]ジュル",
+    "ジュル": {
+        "ja": "ジュル",
         "element": "dark",
         "type": "fist",
         "skill1": "non",
@@ -16983,10 +18017,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600400.png",
-        "en": "[八角鬼]ジュル"
+        "en": "ジュル"
     },
-    "[機殻拳]コロッサスフィスト": {
-        "ja": "[機殻拳]コロッサスフィスト",
+    "コロッサスフィスト": {
+        "ja": "コロッサスフィスト",
         "element": "fire",
         "type": "fist",
         "skill1": "magnaM",
@@ -16999,10 +18033,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600500.png",
-        "en": "[機殻拳]コロッサスフィスト"
+        "en": "コロッサスフィスト"
     },
-    "[羅象拳]世界樹の幹甲": {
-        "ja": "[羅象拳]世界樹の幹甲",
+    "世界樹の幹甲": {
+        "ja": "世界樹の幹甲",
         "element": "earth",
         "type": "fist",
         "skill1": "magnaM",
@@ -17015,10 +18049,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600700.png",
-        "en": "[羅象拳]世界樹の幹甲"
+        "en": "世界樹の幹甲"
     },
-    "[土竜爪]モールハンド": {
-        "ja": "[土竜爪]モールハンド",
+    "モールハンド": {
+        "ja": "モールハンド",
         "element": "earth",
         "type": "fist",
         "skill1": "normalHPM",
@@ -17031,10 +18065,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600800.png",
-        "en": "[土竜爪]モールハンド"
+        "en": "モールハンド"
     },
-    "[氷冥爪]リンボ": {
-        "ja": "[氷冥爪]リンボ",
+    "リンボ": {
+        "ja": "リンボ",
         "element": "water",
         "type": "fist",
         "skill1": "normalHPM",
@@ -17047,10 +18081,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600900.png",
-        "en": "[氷冥爪]リンボ"
+        "en": "リンボ"
     },
-    "[厳砕甲]インパクトナックル": {
-        "ja": "[厳砕甲]インパクトナックル",
+    "インパクトナックル": {
+        "ja": "インパクトナックル",
         "element": "earth",
         "type": "fist",
         "skill1": "normalM",
@@ -17063,10 +18097,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601000.png",
-        "en": "[厳砕甲]インパクトナックル"
+        "en": "インパクトナックル"
     },
-    "[紫晶拳]チェインナックル": {
-        "ja": "[紫晶拳]チェインナックル",
+    "チェインナックル": {
+        "ja": "チェインナックル",
         "element": "fire",
         "type": "fist",
         "skill1": "normalM",
@@ -17079,10 +18113,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601100.png",
-        "en": "[紫晶拳]チェインナックル"
+        "en": "チェインナックル"
     },
-    "[魚打]アルバコアヘッド": {
-        "ja": "[魚打]アルバコアヘッド",
+    "アルバコアヘッド": {
+        "ja": "アルバコアヘッド",
         "element": "dark",
         "type": "fist",
         "skill1": "normalM",
@@ -17095,10 +18129,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601200.png",
-        "en": "[魚打]アルバコアヘッド"
+        "en": "アルバコアヘッド"
     },
-    "[墨撃]スキッドハンド": {
-        "ja": "[墨撃]スキッドハンド",
+    "スキッドハンド": {
+        "ja": "スキッドハンド",
         "element": "water",
         "type": "fist",
         "skill1": "non",
@@ -17111,10 +18145,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601300.png",
-        "en": "[墨撃]スキッドハンド"
+        "en": "スキッドハンド"
     },
-    "[不砕]朽ち果てた手甲": {
-        "ja": "[不砕]朽ち果てた手甲",
+    "朽ち果てた手甲": {
+        "ja": "朽ち果てた手甲",
         "element": "dark",
         "type": "fist",
         "skill1": "non",
@@ -17127,10 +18161,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601400.png",
-        "en": "[不砕]朽ち果てた手甲"
+        "en": "朽ち果てた手甲"
     },
-    "[猛虎]タイガーファング": {
-        "ja": "[猛虎]タイガーファング",
+    "タイガーファング": {
+        "ja": "タイガーファング",
         "element": "light",
         "type": "fist",
         "skill1": "normalM",
@@ -17143,10 +18177,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601500.png",
-        "en": "[猛虎]タイガーファング"
+        "en": "タイガーファング"
     },
-    "[炎撃甲]バルカンガントレット": {
-        "ja": "[炎撃甲]バルカンガントレット",
+    "バルカンガントレット": {
+        "ja": "バルカンガントレット",
         "element": "fire",
         "type": "fist",
         "skill1": "normalM",
@@ -17159,10 +18193,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030602000.png",
-        "en": "[炎撃甲]バルカンガントレット"
+        "en": "バルカンガントレット"
     },
-    "[禍雷爪]雷司の爪": {
-        "ja": "[禍雷爪]雷司の爪",
+    "雷司の爪": {
+        "ja": "雷司の爪",
         "element": "light",
         "type": "fist",
         "skill1": "normalM",
@@ -17175,10 +18209,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603200.png",
-        "en": "[禍雷爪]雷司の爪"
+        "en": "雷司の爪"
     },
-    "[怪緑拳]アンノウングラブ": {
-        "ja": "[怪緑拳]アンノウングラブ",
+    "アンノウングラブ": {
+        "ja": "アンノウングラブ",
         "element": "wind",
         "type": "fist",
         "skill1": "unknownM",
@@ -17191,10 +18225,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603300.png",
-        "en": "[怪緑拳]アンノウングラブ"
+        "en": "アンノウングラブ"
     },
-    "[壊撃]メタルグローブ": {
-        "ja": "[壊撃]メタルグローブ",
+    "メタルグローブ": {
+        "ja": "メタルグローブ",
         "element": "earth",
         "type": "fist",
         "skill1": "normalM",
@@ -17207,10 +18241,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603400.png",
-        "en": "[壊撃]メタルグローブ"
+        "en": "メタルグローブ"
     },
-    "[饗炎]カップ＆ソーサー": {
-        "ja": "[饗炎]カップ＆ソーサー",
+    "カップ＆ソーサー": {
+        "ja": "カップ＆ソーサー",
         "element": "fire",
         "type": "fist",
         "skill1": "normalM",
@@ -17223,10 +18257,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603500.png",
-        "en": "[饗炎]カップ＆ソーサー"
+        "en": "カップ＆ソーサー"
     },
-    "[極愛拳]バレンタイングラブ": {
-        "ja": "[極愛拳]バレンタイングラブ",
+    "バレンタイングラブ": {
+        "ja": "バレンタイングラブ",
         "element": "wind",
         "type": "fist",
         "skill1": "normalM",
@@ -17239,10 +18273,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603600.png",
-        "en": "[極愛拳]バレンタイングラブ"
+        "en": "バレンタイングラブ"
     },
-    "[祖龍拳]バハムートナックル": {
-        "ja": "[祖龍拳]バハムートナックル",
+    "バハムートナックル": {
+        "ja": "バハムートナックル",
         "element": "dark",
         "type": "fist",
         "skill1": "bahaHP-fist",
@@ -17255,10 +18289,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603700.png",
-        "en": "[祖龍拳]バハムートナックル"
+        "en": "バハムートナックル"
     },
-    "[咎砕]無慈悲な制裁": {
-        "ja": "[咎砕]無慈悲な制裁",
+    "無慈悲な制裁": {
+        "ja": "無慈悲な制裁",
         "element": "wind",
         "type": "fist",
         "skill1": "normalM",
@@ -17271,10 +18305,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603800.png",
-        "en": "[咎砕]無慈悲な制裁"
+        "en": "無慈悲な制裁"
     },
-    "[願結]ミサンガ": {
-        "ja": "[願結]ミサンガ",
+    "ミサンガ": {
+        "ja": "ミサンガ",
         "element": "light",
         "type": "fist",
         "skill1": "normalHPM",
@@ -17287,10 +18321,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603900.png",
-        "en": "[願結]ミサンガ"
+        "en": "ミサンガ"
     },
-    "[迅雷拳]ブラストヘヴィナックル": {
-        "ja": "[迅雷拳]ブラストヘヴィナックル",
+    "ブラストヘヴィナックル": {
+        "ja": "ブラストヘヴィナックル",
         "element": "light",
         "type": "fist",
         "skill1": "normalM",
@@ -17303,10 +18337,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604000.png",
-        "en": "[迅雷拳]ブラストヘヴィナックル"
+        "en": "ブラストヘヴィナックル"
     },
-    "[青緑爪]エメラルドクロー": {
-        "ja": "[青緑爪]エメラルドクロー",
+    "エメラルドクロー": {
+        "ja": "エメラルドクロー",
         "element": "wind",
         "type": "fist",
         "skill1": "non",
@@ -17319,10 +18353,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604100.png",
-        "en": "[青緑爪]エメラルドクロー"
+        "en": "エメラルドクロー"
     },
-    "[瑞鳴拳]ゲコヘッド": {
-        "ja": "[瑞鳴拳]ゲコヘッド",
+    "ゲコヘッド": {
+        "ja": "ゲコヘッド",
         "element": "water",
         "type": "fist",
         "skill1": "unknownM",
@@ -17335,7 +18369,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604200.png",
-        "en": "[瑞鳴拳]ゲコヘッド"
+        "en": "ゲコヘッド"
     },
     "ホーリーグローブ": {
         "ja": "ホーリーグローブ",
@@ -17353,8 +18387,8 @@
         "imageURL": "./imgs/1030604300.png",
         "en": "ホーリーグローブ"
     },
-    "[哭砕]ショロトルスタンプ": {
-        "ja": "[哭砕]ショロトルスタンプ",
+    "ショロトルスタンプ": {
+        "ja": "ショロトルスタンプ",
         "element": "wind",
         "type": "fist",
         "skill1": "normalM",
@@ -17367,10 +18401,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604400.png",
-        "en": "[哭砕]ショロトルスタンプ"
+        "en": "ショロトルスタンプ"
     },
-    "[怪黒拳]ブラックガントレット": {
-        "ja": "[怪黒拳]ブラックガントレット",
+    "ブラックガントレット": {
+        "ja": "ブラックガントレット",
         "element": "earth",
         "type": "fist",
         "skill1": "unknownHPM",
@@ -17383,10 +18417,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604500.png",
-        "en": "[怪黒拳]ブラックガントレット"
+        "en": "ブラックガントレット"
     },
-    "[美獣輪]シルバーブレスレット": {
-        "ja": "[美獣輪]シルバーブレスレット",
+    "シルバーブレスレット": {
+        "ja": "シルバーブレスレット",
         "element": "fire",
         "type": "fist",
         "skill1": "normalHPM",
@@ -17399,7 +18433,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604600.png",
-        "en": "[美獣輪]シルバーブレスレット"
+        "en": "シルバーブレスレット"
     },
     "グレートタロン": {
         "ja": "グレートタロン",
@@ -17449,8 +18483,8 @@
         "imageURL": "./imgs/1030604900.png",
         "en": "ウォーターバルーン"
     },
-    "[大天使]アークエンジェルナックル": {
-        "ja": "[大天使]アークエンジェルナックル",
+    "アークエンジェルナックル": {
+        "ja": "アークエンジェルナックル",
         "element": "light",
         "type": "fist",
         "skill1": "non",
@@ -17463,10 +18497,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030699000.png",
-        "en": "[大天使]アークエンジェルナックル"
+        "en": "アークエンジェルナックル"
     },
-    "[仕掛弓]サルンガ": {
-        "ja": "[仕掛弓]サルンガ",
+    "サルンガ": {
+        "ja": "サルンガ",
         "element": "fire",
         "type": "bow",
         "skill1": "normalM",
@@ -17479,10 +18513,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700000.png",
-        "en": "[仕掛弓]サルンガ"
+        "en": "サルンガ"
     },
-    "[落涙]烏号": {
-        "ja": "[落涙]烏号",
+    "烏号": {
+        "ja": "烏号",
         "element": "water",
         "type": "bow",
         "skill1": "normalM",
@@ -17495,10 +18529,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700100.png",
-        "en": "[落涙]烏号"
+        "en": "烏号"
     },
-    "[神吹]エルフィンボウ": {
-        "ja": "[神吹]エルフィンボウ",
+    "エルフィンボウ": {
+        "ja": "エルフィンボウ",
         "element": "wind",
         "type": "bow",
         "skill1": "normalM",
@@ -17511,10 +18545,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700200.png",
-        "en": "[神吹]エルフィンボウ"
+        "en": "エルフィンボウ"
     },
-    "[密智弓]ネフティスボウ": {
-        "ja": "[密智弓]ネフティスボウ",
+    "ネフティスボウ": {
+        "ja": "ネフティスボウ",
         "element": "wind",
         "type": "bow",
         "skill1": "normalHPM",
@@ -17527,10 +18561,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700300.png",
-        "en": "[密智弓]ネフティスボウ"
+        "en": "ネフティスボウ"
     },
-    "[昏征弓]シャドウボウ": {
-        "ja": "[昏征弓]シャドウボウ",
+    "シャドウボウ": {
+        "ja": "シャドウボウ",
         "element": "dark",
         "type": "bow",
         "skill1": "normalM",
@@ -17543,10 +18577,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700500.png",
-        "en": "[昏征弓]シャドウボウ"
+        "en": "シャドウボウ"
     },
-    "[帝月]インペリアルボウ": {
-        "ja": "[帝月]インペリアルボウ",
+    "インペリアルボウ": {
+        "ja": "インペリアルボウ",
         "element": "fire",
         "type": "bow",
         "skill1": "normalM",
@@ -17559,10 +18593,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700600.png",
-        "en": "[帝月]インペリアルボウ"
+        "en": "インペリアルボウ"
     },
-    "[杜守]翠枝の弓": {
-        "ja": "[杜守]翠枝の弓",
+    "翠枝の弓": {
+        "ja": "翠枝の弓",
         "element": "wind",
         "type": "bow",
         "skill1": "normalM",
@@ -17575,10 +18609,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700700.png",
-        "en": "[杜守]翠枝の弓"
+        "en": "翠枝の弓"
     },
-    "[裁考弓]裁きの弓箭": {
-        "ja": "[裁考弓]裁きの弓箭",
+    "裁きの弓箭": {
+        "ja": "裁きの弓箭",
         "element": "earth",
         "type": "bow",
         "skill1": "normalM",
@@ -17591,10 +18625,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700800.png",
-        "en": "[裁考弓]裁きの弓箭"
+        "en": "裁きの弓箭"
     },
-    "[水恵弓]マナウィダンボウ": {
-        "ja": "[水恵弓]マナウィダンボウ",
+    "マナウィダンボウ": {
+        "ja": "マナウィダンボウ",
         "element": "water",
         "type": "bow",
         "skill1": "normalHPM",
@@ -17607,10 +18641,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700900.png",
-        "en": "[水恵弓]マナウィダンボウ"
+        "en": "マナウィダンボウ"
     },
-    "[黒麗]漆弓": {
-        "ja": "[黒麗]漆弓",
+    "漆弓": {
+        "ja": "漆弓",
         "element": "earth",
         "type": "bow",
         "skill1": "normalM",
@@ -17623,10 +18657,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030701000.png",
-        "en": "[黒麗]漆弓"
+        "en": "漆弓"
     },
-    "[遊獣弓]ヘルウォードボウ": {
-        "ja": "[遊獣弓]ヘルウォードボウ",
+    "ヘルウォードボウ": {
+        "ja": "ヘルウォードボウ",
         "element": "dark",
         "type": "bow",
         "skill1": "normalM",
@@ -17639,10 +18673,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030701200.png",
-        "en": "[遊獣弓]ヘルウォードボウ"
+        "en": "ヘルウォードボウ"
     },
-    "[水神弓]ポセイドンボウ": {
-        "ja": "[水神弓]ポセイドンボウ",
+    "ポセイドンボウ": {
+        "ja": "ポセイドンボウ",
         "element": "water",
         "type": "bow",
         "skill1": "normalHPM",
@@ -17655,10 +18689,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030701300.png",
-        "en": "[水神弓]ポセイドンボウ"
+        "en": "ポセイドンボウ"
     },
-    "[落暉]紅陽弓": {
-        "ja": "[落暉]紅陽弓",
+    "紅陽弓": {
+        "ja": "紅陽弓",
         "element": "light",
         "type": "bow",
         "skill1": "normalM",
@@ -17671,10 +18705,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030701400.png",
-        "en": "[落暉]紅陽弓"
+        "en": "紅陽弓"
     },
-    "[愁歎弓]ブランウェンボウ": {
-        "ja": "[愁歎弓]ブランウェンボウ",
+    "ブランウェンボウ": {
+        "ja": "ブランウェンボウ",
         "element": "water",
         "type": "bow",
         "skill1": "normalHPM",
@@ -17687,10 +18721,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702200.png",
-        "en": "[愁歎弓]ブランウェンボウ"
+        "en": "ブランウェンボウ"
     },
-    "[狂審]朽ち果てた弓": {
-        "ja": "[狂審]朽ち果てた弓",
+    "朽ち果てた弓": {
+        "ja": "朽ち果てた弓",
         "element": "dark",
         "type": "bow",
         "skill1": "non",
@@ -17703,7 +18737,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702300.png",
-        "en": "[狂審]朽ち果てた弓"
+        "en": "朽ち果てた弓"
     },
     "バハムートボウ": {
         "ja": "バハムートボウ",
@@ -17721,8 +18755,8 @@
         "imageURL": "./imgs/1030702400.png",
         "en": "バハムートボウ"
     },
-    "[渇欲弓]マモーナスボウ": {
-        "ja": "[渇欲弓]マモーナスボウ",
+    "マモーナスボウ": {
+        "ja": "マモーナスボウ",
         "element": "wind",
         "type": "bow",
         "skill1": "normalHPM",
@@ -17735,10 +18769,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702500.png",
-        "en": "[渇欲弓]マモーナスボウ"
+        "en": "マモーナスボウ"
     },
-    "[氷至]アイスボウ": {
-        "ja": "[氷至]アイスボウ",
+    "アイスボウ": {
+        "ja": "アイスボウ",
         "element": "water",
         "type": "bow",
         "skill1": "normalM",
@@ -17751,10 +18785,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702600.png",
-        "en": "[氷至]アイスボウ"
+        "en": "アイスボウ"
     },
-    "[不融弓]コントラリーボウ": {
-        "ja": "[不融弓]コントラリーボウ",
+    "コントラリーボウ": {
+        "ja": "コントラリーボウ",
         "element": "fire",
         "type": "bow",
         "skill1": "normalM",
@@ -17767,10 +18801,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702800.png",
-        "en": "[不融弓]コントラリーボウ"
+        "en": "コントラリーボウ"
     },
-    "[怪緑弓]秘丹弥虚羅多弓": {
-        "ja": "[怪緑弓]秘丹弥虚羅多弓",
+    "秘丹弥虚羅多弓": {
+        "ja": "秘丹弥虚羅多弓",
         "element": "wind",
         "type": "bow",
         "skill1": "unknownHPM",
@@ -17783,10 +18817,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702900.png",
-        "en": "[怪緑弓]秘丹弥虚羅多弓"
+        "en": "秘丹弥虚羅多弓"
     },
-    "[山弓]クラフトボウ": {
-        "ja": "[山弓]クラフトボウ",
+    "クラフトボウ": {
+        "ja": "クラフトボウ",
         "element": "earth",
         "type": "bow",
         "skill1": "normalHPM",
@@ -17799,10 +18833,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703000.png",
-        "en": "[山弓]クラフトボウ"
+        "en": "クラフトボウ"
     },
-    "[朏弓]クレセントボーゲン": {
-        "ja": "[朏弓]クレセントボーゲン",
+    "クレセントボーゲン": {
+        "ja": "クレセントボーゲン",
         "element": "light",
         "type": "bow",
         "skill1": "normalHaisuiM",
@@ -17815,7 +18849,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703100.png",
-        "en": "[朏弓]クレセントボーゲン"
+        "en": "クレセントボーゲン"
     },
     "グラスボウ": {
         "ja": "グラスボウ",
@@ -17833,8 +18867,8 @@
         "imageURL": "./imgs/1030703200.png",
         "en": "グラスボウ"
     },
-    "[古暴弓]タイラントボウ": {
-        "ja": "[古暴弓]タイラントボウ",
+    "タイラントボウ": {
+        "ja": "タイラントボウ",
         "element": "light",
         "type": "bow",
         "skill1": "normalNiteM",
@@ -17847,10 +18881,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703300.png",
-        "en": "[古暴弓]タイラントボウ"
+        "en": "タイラントボウ"
     },
-    "[宵弓]オネイロスボウ": {
-        "ja": "[宵弓]オネイロスボウ",
+    "オネイロスボウ": {
+        "ja": "オネイロスボウ",
         "element": "water",
         "type": "bow",
         "skill1": "normalM",
@@ -17863,10 +18897,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703400.png",
-        "en": "[宵弓]オネイロスボウ"
+        "en": "オネイロスボウ"
     },
-    "[野生弓]木矢": {
-        "ja": "[野生弓]木矢",
+    "木矢": {
+        "ja": "木矢",
         "element": "earth",
         "type": "bow",
         "skill1": "normalNiteM",
@@ -17879,10 +18913,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703500.png",
-        "en": "[野生弓]木矢"
+        "en": "木矢"
     },
-    "[大天使]アークエンジェルボウ": {
-        "ja": "[大天使]アークエンジェルボウ",
+    "アークエンジェルボウ": {
+        "ja": "アークエンジェルボウ",
         "element": "light",
         "type": "bow",
         "skill1": "non",
@@ -17895,10 +18929,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030799000.png",
-        "en": "[大天使]アークエンジェルボウ"
+        "en": "アークエンジェルボウ"
     },
-    "[想奏]吟遊詩人の竪琴": {
-        "ja": "[想奏]吟遊詩人の竪琴",
+    "吟遊詩人の竪琴": {
+        "ja": "吟遊詩人の竪琴",
         "element": "wind",
         "type": "music",
         "skill1": "normalHPM",
@@ -17911,10 +18945,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800000.png",
-        "en": "[想奏]吟遊詩人の竪琴"
+        "en": "吟遊詩人の竪琴"
     },
-    "[祓音]白金の竪琴": {
-        "ja": "[祓音]白金の竪琴",
+    "白金の竪琴": {
+        "ja": "白金の竪琴",
         "element": "wind",
         "type": "music",
         "skill1": "normalHPM",
@@ -17927,10 +18961,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800100.png",
-        "en": "[祓音]白金の竪琴"
+        "en": "白金の竪琴"
     },
-    "[麗琴]アタナシウス": {
-        "ja": "[麗琴]アタナシウス",
+    "アタナシウス": {
+        "ja": "アタナシウス",
         "element": "earth",
         "type": "music",
         "skill1": "normalM",
@@ -17943,10 +18977,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800200.png",
-        "en": "[麗琴]アタナシウス"
+        "en": "アタナシウス"
     },
-    "[幽月]ストラヴァリア": {
-        "ja": "[幽月]ストラヴァリア",
+    "ストラヴァリア": {
+        "ja": "ストラヴァリア",
         "element": "wind",
         "type": "music",
         "skill1": "normalM",
@@ -17959,10 +18993,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800300.png",
-        "en": "[幽月]ストラヴァリア"
+        "en": "ストラヴァリア"
     },
-    "[百煌琴]ヘカトンケイルハープ": {
-        "ja": "[百煌琴]ヘカトンケイルハープ",
+    "ヘカトンケイルハープ": {
+        "ja": "ヘカトンケイルハープ",
         "element": "light",
         "type": "music",
         "skill1": "normalM",
@@ -17975,10 +19009,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800400.png",
-        "en": "[百煌琴]ヘカトンケイルハープ"
+        "en": "ヘカトンケイルハープ"
     },
-    "[妖奏]ドラキュラハープ": {
-        "ja": "[妖奏]ドラキュラハープ",
+    "ドラキュラハープ": {
+        "ja": "ドラキュラハープ",
         "element": "dark",
         "type": "music",
         "skill1": "normalM",
@@ -17991,10 +19025,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800500.png",
-        "en": "[妖奏]ドラキュラハープ"
+        "en": "ドラキュラハープ"
     },
-    "[古尊琴]バビロンの竪琴": {
-        "ja": "[古尊琴]バビロンの竪琴",
+    "バビロンの竪琴": {
+        "ja": "バビロンの竪琴",
         "element": "earth",
         "type": "music",
         "skill1": "normalM",
@@ -18007,10 +19041,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800600.png",
-        "en": "[古尊琴]バビロンの竪琴"
+        "en": "バビロンの竪琴"
     },
-    "[聖奏]ホーリーチャンター": {
-        "ja": "[聖奏]ホーリーチャンター",
+    "ホーリーチャンター": {
+        "ja": "ホーリーチャンター",
         "element": "light",
         "type": "music",
         "skill1": "normalHPM",
@@ -18023,10 +19057,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800800.png",
-        "en": "[聖奏]ホーリーチャンター"
+        "en": "ホーリーチャンター"
     },
-    "[竜奏]竜髭の弦": {
-        "ja": "[竜奏]竜髭の弦",
+    "竜髭の弦": {
+        "ja": "竜髭の弦",
         "element": "fire",
         "type": "music",
         "skill1": "normalM",
@@ -18039,10 +19073,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800900.png",
-        "en": "[竜奏]竜髭の弦"
+        "en": "竜髭の弦"
     },
-    "[禍風琴]風司の琴": {
-        "ja": "[禍風琴]風司の琴",
+    "風司の琴": {
+        "ja": "風司の琴",
         "element": "wind",
         "type": "music",
         "skill1": "normalM",
@@ -18055,10 +19089,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030801000.png",
-        "en": "[禍風琴]風司の琴"
+        "en": "風司の琴"
     },
-    "[怪緑琴]アンノウンハープ": {
-        "ja": "[怪緑琴]アンノウンハープ",
+    "アンノウンハープ": {
+        "ja": "アンノウンハープ",
         "element": "dark",
         "type": "music",
         "skill1": "unknownHPM",
@@ -18071,10 +19105,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030801100.png",
-        "en": "[怪緑琴]アンノウンハープ"
+        "en": "アンノウンハープ"
     },
-    "[墜楽]朽ち果てた竪琴": {
-        "ja": "[墜楽]朽ち果てた竪琴",
+    "朽ち果てた竪琴": {
+        "ja": "朽ち果てた竪琴",
         "element": "dark",
         "type": "music",
         "skill1": "non",
@@ -18087,10 +19121,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030801200.png",
-        "en": "[墜楽]朽ち果てた竪琴"
+        "en": "朽ち果てた竪琴"
     },
-    "[極愛琴]バレンタインハープ": {
-        "ja": "[極愛琴]バレンタインハープ",
+    "バレンタインハープ": {
+        "ja": "バレンタインハープ",
         "element": "fire",
         "type": "music",
         "skill1": "normalHPM",
@@ -18103,10 +19137,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030801900.png",
-        "en": "[極愛琴]バレンタインハープ"
+        "en": "バレンタインハープ"
     },
-    "[祖龍琴]バハムートハープ": {
-        "ja": "[祖龍琴]バハムートハープ",
+    "バハムートハープ": {
+        "ja": "バハムートハープ",
         "element": "dark",
         "type": "music",
         "skill1": "bahaHP-music",
@@ -18119,10 +19153,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802000.png",
-        "en": "[祖龍琴]バハムートハープ"
+        "en": "バハムートハープ"
     },
-    "[癒樂]アクアリウムハープ": {
-        "ja": "[癒樂]アクアリウムハープ",
+    "アクアリウムハープ": {
+        "ja": "アクアリウムハープ",
         "element": "water",
         "type": "music",
         "skill1": "normalHPM",
@@ -18135,10 +19169,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802100.png",
-        "en": "[癒樂]アクアリウムハープ"
+        "en": "アクアリウムハープ"
     },
-    "[渇欲琴]マモーナスハープ": {
-        "ja": "[渇欲琴]マモーナスハープ",
+    "マモーナスハープ": {
+        "ja": "マモーナスハープ",
         "element": "wind",
         "type": "music",
         "skill1": "normalM",
@@ -18151,10 +19185,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802200.png",
-        "en": "[渇欲琴]マモーナスハープ"
+        "en": "マモーナスハープ"
     },
-    "[輝影琴]ヴェセラゴハープ": {
-        "ja": "[輝影琴]ヴェセラゴハープ",
+    "ヴェセラゴハープ": {
+        "ja": "ヴェセラゴハープ",
         "element": "light",
         "type": "music",
         "skill1": "non",
@@ -18167,10 +19201,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802300.png",
-        "en": "[輝影琴]ヴェセラゴハープ"
+        "en": "ヴェセラゴハープ"
     },
-    "[盾琴]ハープロン": {
-        "ja": "[盾琴]ハープロン",
+    "ハープロン": {
+        "ja": "ハープロン",
         "element": "earth",
         "type": "music",
         "skill1": "normalHaisuiM",
@@ -18183,7 +19217,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802400.png",
-        "en": "[盾琴]ハープロン"
+        "en": "ハープロン"
     },
     "オルフェウス": {
         "ja": "オルフェウス",
@@ -18201,8 +19235,8 @@
         "imageURL": "./imgs/1030802500.png",
         "en": "オルフェウス"
     },
-    "[鋼電琴]エレクトロハープ": {
-        "ja": "[鋼電琴]エレクトロハープ",
+    "エレクトロハープ": {
+        "ja": "エレクトロハープ",
         "element": "dark",
         "type": "music",
         "skill1": "normalHPM",
@@ -18215,7 +19249,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802600.png",
-        "en": "[鋼電琴]エレクトロハープ"
+        "en": "エレクトロハープ"
     },
     "さざ波の砂弦": {
         "ja": "さざ波の砂弦",
@@ -18233,8 +19267,8 @@
         "imageURL": "./imgs/1030802700.png",
         "en": "さざ波の砂弦"
     },
-    "[魔響杖]リサウンドワンド": {
-        "ja": "[魔響杖]リサウンドワンド",
+    "リサウンドワンド": {
+        "ja": "リサウンドワンド",
         "element": "water",
         "type": "music",
         "skill1": "non",
@@ -18247,7 +19281,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802800.png",
-        "en": "[魔響杖]リサウンドワンド"
+        "en": "Resonating Wand"
     },
     "メロビィ": {
         "ja": "メロビィ",
@@ -18263,10 +19297,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802900.png",
-        "en": "メロビィ"
+        "en": "Vyrnstrument"
     },
-    "[月樹琴]エントハープ": {
-        "ja": "[月樹琴]エントハープ",
+    "エントハープ": {
+        "ja": "エントハープ",
         "element": "wind",
         "type": "music",
         "skill1": "normalCriticalM",
@@ -18279,10 +19313,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030803000.png",
-        "en": "[月樹琴]エントハープ"
+        "en": "Ent Harp"
     },
-    "[大天使]アークエンジェルハープ": {
-        "ja": "[大天使]アークエンジェルハープ",
+    "アークエンジェルハープ": {
+        "ja": "アークエンジェルハープ",
         "element": "light",
         "type": "music",
         "skill1": "non",
@@ -18295,10 +19329,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030899000.png",
-        "en": "[大天使]アークエンジェルハープ"
+        "en": "Archangel Harp"
     },
-    "[伊達刀]虎鉄": {
-        "ja": "[伊達刀]虎鉄",
+    "虎鉄": {
+        "ja": "虎鉄",
         "element": "fire",
         "type": "katana",
         "skill1": "normalM",
@@ -18311,10 +19345,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900000.png",
-        "en": "[伊達刀]虎鉄"
+        "en": "Iron Tiger"
     },
-    "[無穢刀]蛍丸": {
-        "ja": "[無穢刀]蛍丸",
+    "蛍丸": {
+        "ja": "蛍丸",
         "element": "water",
         "type": "katana",
         "skill1": "normalHPM",
@@ -18327,10 +19361,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900100.png",
-        "en": "[無穢刀]蛍丸"
+        "en": "Fluorithium"
     },
-    "[瞑塗]蜥蜴丸": {
-        "ja": "[瞑塗]蜥蜴丸",
+    "蜥蜴丸": {
+        "ja": "蜥蜴丸",
         "element": "dark",
         "type": "katana",
         "skill1": "normalM",
@@ -18343,7 +19377,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900200.png",
-        "en": "[瞑塗]蜥蜴丸"
+        "en": "Sauria"
     },
     "模造刀": {
         "ja": "模造刀",
@@ -18359,7 +19393,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900300.png",
-        "en": "模造刀"
+        "en": "Murakumo Replica"
     },
     "贋作刀": {
         "ja": "贋作刀",
@@ -18375,10 +19409,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900400.png",
-        "en": "贋作刀"
+        "en": "Muramasa Replica"
     },
-    "[祖龍刀]バハムートブレイド": {
-        "ja": "[祖龍刀]バハムートブレイド",
+    "バハムートブレイド": {
+        "ja": "バハムートブレイド",
         "element": "dark",
         "type": "katana",
         "skill1": "bahaHP-katana",
@@ -18391,10 +19425,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900500.png",
-        "en": "[祖龍刀]バハムートブレイド"
+        "en": "Blade of Bahamut"
     },
-    "[壊転]朽ち果てた太刀": {
-        "ja": "[壊転]朽ち果てた太刀",
+    "朽ち果てた太刀": {
+        "ja": "朽ち果てた太刀",
         "element": "dark",
         "type": "katana",
         "skill1": "non",
@@ -18407,10 +19441,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030900600.png",
-        "en": "[壊転]朽ち果てた太刀"
+        "en": "Rusted Katana"
     },
-    "[蒐索刀]アワリティアブレード": {
-        "ja": "[蒐索刀]アワリティアブレード",
+    "アワリティアブレード": {
+        "ja": "アワリティアブレード",
         "element": "earth",
         "type": "katana",
         "skill1": "normalHPM",
@@ -18423,10 +19457,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901300.png",
-        "en": "[蒐索刀]アワリティアブレード"
+        "en": "アワリティアブレード"
     },
-    "[怪桃刀]アンノウンリッパー": {
-        "ja": "[怪桃刀]アンノウンリッパー",
+    "アンノウンリッパー": {
+        "ja": "アンノウンリッパー",
         "element": "wind",
         "type": "katana",
         "skill1": "unknownM",
@@ -18439,10 +19473,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901400.png",
-        "en": "[怪桃刀]アンノウンリッパー"
+        "en": "Mysterious Cutter"
     },
-    "[修刀]木刀": {
-        "ja": "[修刀]木刀",
+    "木刀": {
+        "ja": "木刀",
         "element": "earth",
         "type": "katana",
         "skill1": "normalM",
@@ -18455,10 +19489,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901500.png",
-        "en": "[修刀]木刀"
+        "en": "Wooden Sword"
     },
-    "[刺貫]つらぬき丸": {
-        "ja": "[刺貫]つらぬき丸",
+    "つらぬき丸": {
+        "ja": "つらぬき丸",
         "element": "dark",
         "type": "katana",
         "skill1": "normalCriticalM",
@@ -18471,10 +19505,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901600.png",
-        "en": "[刺貫]つらぬき丸"
+        "en": "The Piercer"
     },
-    "[斬甲]蟹鋏": {
-        "ja": "[斬甲]蟹鋏",
+    "蟹鋏": {
+        "ja": "蟹鋏",
         "element": "dark",
         "type": "katana",
         "skill1": "normalCriticalM",
@@ -18487,10 +19521,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901700.png",
-        "en": "[斬甲]蟹鋏"
+        "en": "King Crab Katana"
     },
-    "[莫鉄]斬馬刀": {
-        "ja": "[莫鉄]斬馬刀",
+    "斬馬刀": {
+        "ja": "斬馬刀",
         "element": "wind",
         "type": "katana",
         "skill1": "normalM",
@@ -18503,10 +19537,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901800.png",
-        "en": "[莫鉄]斬馬刀"
+        "en": "Zanbato"
     },
-    "[古樹刀]エントリッパー": {
-        "ja": "[古樹刀]エントリッパー",
+    "エントリッパー": {
+        "ja": "エントリッパー",
         "element": "wind",
         "type": "katana",
         "skill1": "normalM",
@@ -18519,10 +19553,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901900.png",
-        "en": "[古樹刀]エントリッパー"
+        "en": "Ent Ripper"
     },
-    "[大天使]大天使刀": {
-        "ja": "[大天使]大天使刀",
+    "大天使刀": {
+        "ja": "大天使刀",
         "element": "light",
         "type": "katana",
         "skill1": "non",
@@ -18535,10 +19569,10 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030999000.png",
-        "en": "[大天使]大天使刀"
+        "en": "Archangel Katana"
     },
-    "[悪魔]デビルエレメント": {
-        "ja": "[悪魔]デビルエレメント",
+    "デビルエレメント": {
+        "ja": "デビルエレメント",
         "element": "dark",
         "type": "none",
         "skill1": "non",
@@ -18551,6 +19585,6 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1039900000.png",
-        "en": "[悪魔]デビルエレメント"
+        "en": "Fury Stone"
     }
 }

@@ -41,18 +41,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://github/hoshimi/motocal.git"
+    "url": "ssh://github/MotocalDevelopers/motocal.git"
   },
   "author": "hoshimi",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "8.6.0",
     "babelify": "8.0.0",
-    "browserify": "16.2.2",
+    "browserify": "16.2.3",
     "eslint": "^4.19.1",
-    "jest": "23.1.0",
+    "jest": "23.6.0",
     "prop-types": "^15.6.1",
     "watchify": "^3.11.0",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.10"
   }
 }
