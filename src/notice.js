@@ -1071,7 +1071,6 @@ var Notice = CreateClass({
                         </tr>
                         <tr>
                             <td>方陣技巧(大)</td>
-                            <td>4.0</td>
                             <td>4.4</td>
                             <td>4.8</td>
                             <td>5.2</td>
@@ -1085,7 +1084,8 @@ var Notice = CreateClass({
                             <td>8.4</td>
                             <td>8.8</td>
                             <td>9.2</td>
-                            <td>9.6</td>
+                            <td>9.4</td>
+                            <td>10.0</td>
                         </tr>
                         </tbody>
                     </table>
