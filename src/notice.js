@@ -239,6 +239,9 @@ var Notice = CreateClass({
                         href="http://greatsundome.hatenablog.com/entry/2015/10/07/114737">すんどめ侍のグラブル生活 -
                         【グラブル】減衰補正検証まとめ</a></li>
                     <li className="list-group-item"><a
+                        href="http://greatsundome.hatenablog.com/archive/category/%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E6%A4%9C%E8%A8%BC">すんどめ侍のグラブル生活 -
+                        キャラクター検証</a></li>
+                    <li className="list-group-item"><a
                         href="https://twitter.com/hibino_naoki/status/722338377127735296"> @hibino_naoki
                         さんのコルタナ(三手大)検証情報</a></li>
                     <li className="list-group-item"><a
@@ -284,7 +287,7 @@ var Notice = CreateClass({
                     </li>
                     <li className="list-group-item"><a
                         href="https://twitter.com/Granblue_GW/status/947109401294389249"> GameWithさん</a>, <a
-                        href="https://twitter.com/metalgaldra/status/946360446130327552"> @metalgaldraさん</a>の乱舞効果量に関する情報
+                        href="https://twitter.com/metalgaldra/status/946360446130327552"> @metalgaldra さん</a>の乱舞効果量に関する情報
                     </li>
                     <li className="list-group-item"><a
                         href="http://hiroxgbf.blog.fc2.com/blog-entry-7.html"> グラブル調べもの記録 - 過去検証まとめ </a>
@@ -305,13 +308,22 @@ var Notice = CreateClass({
                         href="http://gbf-verification.blog.jp/"> グラブル検証Logさんの諸々のスキル効果量検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/Hecate_mk2"> @Hecate_mk2さんの諸々の検証結果 </a>
+                        href="https://twitter.com/Hecate_mk2"> @Hecate_mk2 さんの諸々の検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
                         href="https://docs.google.com/spreadsheets/d/1SUhqwiq3UC7ba7jh22s0mhHJ_33Zi443aRywe-CmURQ/edit#gid=321585253"> スフレさんの背水・渾身検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/i/moments/1040200666260459520"> @Duran_grabluさんの方陣技巧検証結果 </a>
+                        href="https://twitter.com/i/moments/1040200666260459520"> @Duran_grablu さんの方陣技巧検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://twitter.com/search?f=tweets&q=from%3A%40usa_akasa%20%E6%A4%9C%E8%A8%BC&src=typd"> @usa_akasa さんの基礎連撃率検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://twitter.com/i/moments/1112721760560926721"> @takeshi310310 さんの基礎連撃率検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://twitter.com/search?f=tweets&vertical=default&q=from%3A%40KST33166653%20%E6%A4%9C%E8%A8%BC&src=typd"> @KST33166653 さんの基礎連撃率検証結果 </a>
                     </li>
                 </ul>
 
