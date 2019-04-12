@@ -286,6 +286,33 @@ var Notice = CreateClass({
                         href="https://twitter.com/Granblue_GW/status/947109401294389249"> GameWithさん</a>, <a
                         href="https://twitter.com/metalgaldra/status/946360446130327552"> @metalgaldraさん</a>の乱舞効果量に関する情報
                     </li>
+                    <li className="list-group-item"><a
+                        href="http://hiroxgbf.blog.fc2.com/blog-entry-7.html"> グラブル調べもの記録 - 過去検証まとめ </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://twitter.com/search?f=tweets&q=from%3A%40agavenighto%20%E6%A4%9C%E8%A8%BC&src=typd"> @agavenighto さんの方陣破壊(小)、方陣乱舞(中)検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://twitter.com/agavenighto/status/1091626790714404865"> 神ゲー攻略 - 防御値の解説と敵の防御値一覧  </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968"> ポキールさんのグラブル検証置き場 - 奥義性能 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/"> Gamewithさんの諸々のスキル効果量検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="http://gbf-verification.blog.jp/"> グラブル検証Logさんの諸々のスキル効果量検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://twitter.com/Hecate_mk2"> @Hecate_mk2さんの諸々の検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://docs.google.com/spreadsheets/d/1SUhqwiq3UC7ba7jh22s0mhHJ_33Zi443aRywe-CmURQ/edit#gid=321585253"> スフレさんの背水・渾身検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://twitter.com/i/moments/1040200666260459520"> @Duran_grabluさんの方陣技巧検証結果 </a>
+                    </li>
                 </ul>
 
                 <h3>スキル性能・各種計算式</h3>
