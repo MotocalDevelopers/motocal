@@ -2399,9 +2399,9 @@ var multiLangData = {
         "zh": "15 (Malice/Akasha)",
     },
     "敵防御20": {
-        "en": "20 (Proto Baha HL)",
-        "ja": "20 (プロトバハムートHL)",
-        "zh": "20 (Proto Baha HL)",
+        "en": "20 (Proto Baha HL/Lucilius (HARD))",
+        "ja": "20 (プロトバハムートHL/ルシファー HARD)",
+        "zh": "20 (Proto Baha HL/Lucilius (HARD))",
 	},
     // chart sort key
     "ジータさん残りHP": {
