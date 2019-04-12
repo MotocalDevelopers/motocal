@@ -1189,7 +1189,7 @@ var Notice = CreateClass({
                             <td>8.0</td>
                             <td>8.0</td>
                             <td>8.0</td>
-                            <td>8.0/td>
+                            <td>8.0</td>
                         </tr>
                         <tr>
                             <td>先制の刃(中)</td>
@@ -1207,7 +1207,7 @@ var Notice = CreateClass({
                             <td>17.0</td>
                             <td>18.0</td>
                             <td>19.0</td>
-                            <td>20.0/td>
+                            <td>20.0</td>
                         </tr>
                         <tr>
                             <td>鷲王の結界(中)</td>
@@ -1225,7 +1225,7 @@ var Notice = CreateClass({
                             <td>11.5</td>
                             <td>12.0</td>
                             <td>12.5</td>
-                            <td>23.0/td>
+                            <td>23.0</td>
                         </tr>
                         <tr>
                             <td>秘奥/必殺(奥義ダメージ) (小)</td>
