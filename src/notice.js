@@ -348,6 +348,11 @@ var Notice = CreateClass({
                             <th>13</th>
                             <th>14</th>
                             <th>15</th>
+                            <th>16</th>
+                            <th>17</th>
+                            <th>18</th>
+                            <th>19</th>
+                            <th>20</th>
                         </tr>
                         <tr>
                             <td>通常攻刃(小)</td>
@@ -366,6 +371,11 @@ var Notice = CreateClass({
                             <td>11.2</td>
                             <td>11.6</td>
                             <td>12.0</td>
+                            <td>12.2</td>
+                            <td>12.4</td>
+                            <td>12.6</td>
+                            <td>12.8</td>
+                            <td>13.0</td>
                         </tr>
                         <tr>
                             <td>通常攻刃(中)</td>
