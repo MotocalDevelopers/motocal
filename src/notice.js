@@ -394,6 +394,11 @@ var Notice = CreateClass({
                             <td>13.5</td>
                             <td>14.0</td>
                             <td>14.5</td>
+                            <td>14.8</td>
+                            <td>15.1</td>
+                            <td>15.4</td>
+                            <td>15.7</td>
+                            <td>16.3</td>
                         </tr>
                         <tr>
                             <td>通常攻刃(大)</td>
@@ -412,6 +417,11 @@ var Notice = CreateClass({
                             <td>16.8</td>
                             <td>17.4</td>
                             <td>18.0</td>
+                            <td>18.4</td>
+                            <td>18.8</td>
+                            <td>19.2</td>
+                            <td>19.6</td>
+                            <td>20.0</td>
                         </tr>
                         <tr>
                             <td>通常攻刃II</td>
@@ -430,6 +440,11 @@ var Notice = CreateClass({
                             <td>18.4</td>
                             <td>19.2</td>
                             <td>20.0</td>
+                            <td>20.4</td>
+                            <td>20.8</td>
+                            <td>21.2</td>
+                            <td>21.6</td>
+                            <td>22.0</td>
                         </tr>
                         <tr>
                             <td>通常攻刃III</td>
@@ -443,11 +458,11 @@ var Notice = CreateClass({
                             <td>15.0</td>
                             <td>16.0</td>
                             <td>17.0</td>
-                            <td>18.0</td>
-                            <td>19.0</td>
-                            <td>20.0</td>
-                            <td>21.0</td>
-                            <td>22.0</td>
+                            <td>22.5</td>
+                            <td>23.0</td>
+                            <td>23.5</td>
+                            <td>24.0</td>
+                            <td>24.5</td>
                         </tr>
                         <tr>
                             <td>通常暴君II</td>
@@ -466,6 +481,11 @@ var Notice = CreateClass({
                             <td>21.0</td>
                             <td>22.0</td>
                             <td>23.0</td>
+                            <td>23.5</td>
+                            <td>24.0</td>
+                            <td>24.5</td>
+                            <td>25.0</td>
+                            <td>25.5</td>
                         </tr>
                         <tr>
                             <td>マグナ攻刃(小)</td>
@@ -484,6 +504,11 @@ var Notice = CreateClass({
                             <td>11.2</td>
                             <td>11.6</td>
                             <td>12.0</td>
+                            <td>12.1</td>
+                            <td>12.2</td>
+                            <td>12.3</td>
+                            <td>12.4</td>
+                            <td>12.5</td>
                         </tr>
                         <tr>
                             <td>マグナ攻刃(中)</td>
@@ -502,6 +527,11 @@ var Notice = CreateClass({
                             <td>13.5</td>
                             <td>14.0</td>
                             <td>14.5</td>
+                            <td>14.8</td>
+                            <td>15.1</td>
+                            <td>15.4</td>
+                            <td>15.7</td>
+                            <td>16.0</td>
                         </tr>
                         <tr>
                             <td>マグナ攻刃(大)</td>
@@ -520,9 +550,14 @@ var Notice = CreateClass({
                             <td>16.8</td>
                             <td>17.4</td>
                             <td>18.0</td>
+                            <td>18.4</td>
+                            <td>18.8</td>
+                            <td>19.2</td>
+                            <td>19.6</td>
+                            <td>20.0</td>
                         </tr>
                         <tr>
-                            <td>アンノウン(小)</td>
+                            <td>EX/アンノウン(小)</td>
                             <td>1.0</td>
                             <td>2.0</td>
                             <td>3.0</td>
@@ -537,10 +572,15 @@ var Notice = CreateClass({
                             <td>10.8</td>
                             <td>11.2</td>
                             <td>11.6</td>
-                            <td>12.0</td>
+                            <td>12.0</td> 
+                            <td>12.6</td>
+                            <td>13.2</td>
+                            <td>13.8</td>
+                            <td>14.4</td>
+                            <td>15.0</td>
                         </tr>
                         <tr>
-                            <td>アンノウン(中)</td>
+                            <td>EX/アンノウン(中)</td>
                             <td>3.0</td>
                             <td>4.0</td>
                             <td>5.0</td>
@@ -556,9 +596,14 @@ var Notice = CreateClass({
                             <td>13.5</td>
                             <td>14.0</td>
                             <td>14.5</td>
+                            <td>15.0</td>
+                            <td>15.5</td>
+                            <td>16.0</td>
+                            <td>16.5</td>
+                            <td>17.0</td>
                         </tr>
                         <tr>
-                            <td>アンノウン(大)</td>
+                            <td>EX/アンノウン(大)</td>
                             <td>6.0</td>
                             <td>7.0</td>
                             <td>8.0</td>
@@ -574,6 +619,34 @@ var Notice = CreateClass({
                             <td>16.8</td>
                             <td>17.4</td>
                             <td>18.0</td>
+                            <td>18.6</td> 
+                            <td>19.2</td>
+                            <td>19.8</td>
+                            <td>20.4</td>
+                            <td>21.0</td>
+                        </tr>
+                        <tr>
+                            <td>EX/アンノウン(特大)</td>
+                            <td>9.0</td>
+                            <td>10.0</td>
+                            <td>11.0</td>
+                            <td>12.0</td>
+                            <td>13.0</td>
+                            <td>14.0</td>
+                            <td>15.0</td>
+                            <td>16.0</td>
+                            <td>17.0</td>
+                            <td>18.0</td>
+                            <td>19.0</td>
+                            <td>20.0</td>
+                            <td>21.0</td>
+                            <td>22.0</td>
+                            <td>23.0</td>
+                            <td>24.0</td> 
+                            <td>25.0</td>
+                            <td>26.0</td>
+                            <td>27.0</td>
+                            <td>28.0</td>
                         </tr>
                         <tr>
                             <td>バハHP(剣など)</td>
@@ -712,12 +785,12 @@ var Notice = CreateClass({
                             <td>0.0</td>
                             <td>0.0</td>
                             <td>0.0</td>
-                            <td>7.5</td>
+                            <td>5.0</td>
+                            <td>5.6</td>
+                            <td>6.2</td>
+                            <td>6.8</td>
+                            <td>7.4</td>
                             <td>8.0</td>
-                            <td>8.5</td>
-                            <td>9.0</td>
-                            <td>9.5</td>
-                            <td>10.0</td>
                         </tr>
                         <tr>
                             <td>バハフツTA率</td>
@@ -730,12 +803,12 @@ var Notice = CreateClass({
                             <td>0.0</td>
                             <td>0.0</td>
                             <td>0.0</td>
-                            <td>6.0</td>
-                            <td>6.4</td>
-                            <td>6.8</td>
-                            <td>7.2</td>
-                            <td>7.6</td>
-                            <td>8.0</td>
+                            <td>5.0</td>
+                            <td>5.4</td>
+                            <td>5.8</td>
+                            <td>6.2</td>
+                            <td>6.6</td>
+                            <td>7.0</td>
                         </tr>
                         <tr>
                             <td>通常守護(小)</td>
@@ -790,6 +863,24 @@ var Notice = CreateClass({
                             <td>19.8</td>
                             <td>20.4</td>
                             <td>21.0</td>
+                        </tr>
+                        <tr>
+                            <td>通常守護(特大)</td>
+                            <td>10.0</td>
+                            <td>11.0</td>
+                            <td>12.0</td>
+                            <td>13.0</td>
+                            <td>14.0</td>
+                            <td>15.0</td>
+                            <td>16.0</td>
+                            <td>17.0</td>
+                            <td>18.0</td>
+                            <td>19.0</td>
+                            <td>20.0</td>
+                            <td>21.0</td>
+                            <td>22.0</td>
+                            <td>23.0</td>
+                            <td>24.0</td>
                         </tr>
                         <tr>
                             <td>マグナ守護(小)</td>
@@ -918,7 +1009,7 @@ var Notice = CreateClass({
                             <td>15.0</td>
                         </tr>
                         <tr>
-                            <td>通常二手(小)</td>
+                            <td>二手三手(小)</td>
                             <td>0.4</td>
                             <td>0.6</td>
                             <td>0.8</td>
@@ -929,107 +1020,53 @@ var Notice = CreateClass({
                             <td>1.8</td>
                             <td>2.0</td>
                             <td>2.2</td>
-                            <td>2.4</td>
-                            <td>2.6</td>
-                            <td>2.8</td>
-                            <td>3.0</td>
-                            <td>3.2</td>
+                            <td>2.46</td>
+                            <td>2.72</td>
+                            <td>2.98</td>
+                            <td>3.24</td>
+                            <td>3.5</td>
                         </tr>
                         <tr>
-                            <td>通常二手(中)</td>
-                            <td>0.7</td>
-                            <td>1.0</td>
-                            <td>1.3</td>
-                            <td>1.6</td>
-                            <td>1.9</td>
-                            <td>2.2</td>
-                            <td>2.5</td>
-                            <td>2.8</td>
-                            <td>3.1</td>
-                            <td>3.4</td>
-                            <td>3.7</td>
-                            <td>4.0</td>
-                            <td>4.3</td>
-                            <td>4.6</td>
-                            <td>4.9</td>
-                        </tr>
-                        <tr>
-                            <td>通常二手(大)</td>
-                            <td>1.0</td>
+                            <td>通常二手/マグナ二手(中)</td>
+                            <td>0.8</td>
+                            <td>1.1</td>
                             <td>1.4</td>
-                            <td>1.8</td>
-                            <td>2.2</td>
+                            <td>1.7</td>
+                            <td>2.0</td>
+                            <td>2.3</td>
                             <td>2.6</td>
-                            <td>3.0</td>
-                            <td>3.4</td>
+                            <td>2.9</td>
+                            <td>3.2</td>
+                            <td>3.5</td>
                             <td>3.8</td>
-                            <td>4.2</td>
-                            <td>4.6</td>
+                            <td>4.1</td>
+                            <td>4.4</td>
+                            <td>4.7</td>
+                            <td>5.0</td>
+                        </tr>
+                        <tr>
+                            <td>二手三手(大)</td>
+                            <td>1.2</td>
+                            <td>1.6</td>
+                            <td>2.0</td>
+                            <td>2.4</td>
+                            <td>2.8</td>
+                            <td>3.2</td>
+                            <td>3.6</td>
+                            <td>4.0</td>
+                            <td>4.4</td>
                             <td>5.0</td>
                             <td>5.4</td>
                             <td>5.8</td>
                             <td>6.2</td>
+                            <td>6.6</td>
                             <td>7.0</td>
                         </tr>
                         {/*<tr><td>マグナ二手(小)</td><td>0.4</td><td>0.6</td><td>0.8</td><td>1.0</td><td>1.2</td><td>1.4</td><td>1.6</td><td>1.8</td><td>2.0</td><td>2.2</td><td>2.4</td><td>2.6</td><td>2.8</td><td>3.0</td><td>3.2</td></tr>
                 <tr><td>マグナ二手(中)</td><td>0.7</td><td>1.0</td><td>1.3</td><td>1.6</td><td>1.9</td><td>2.2</td><td>2.5</td><td>2.8</td><td>3.1</td><td>3.4</td><td>3.7</td><td>4.0</td><td>4.3</td><td>4.6</td><td>4.9</td></tr>
                 <tr><td>マグナ二手(大)</td><td>1.0</td><td>1.4</td><td>1.8</td><td>2.2</td><td>2.6</td><td>3.0</td><td>3.4</td><td>3.8</td><td>4.2</td><td>4.6</td><td>5.0</td><td>5.4</td><td>5.8</td><td>6.2</td><td>6.6</td></tr>*/}
                         <tr>
-                            <td>アンノウン二手(小)</td>
-                            <td>0.4</td>
-                            <td>0.6</td>
-                            <td>0.8</td>
-                            <td>1.0</td>
-                            <td>1.2</td>
-                            <td>1.4</td>
-                            <td>1.6</td>
-                            <td>1.8</td>
-                            <td>2.0</td>
-                            <td>2.2</td>
-                            <td>2.4</td>
-                            <td>2.6</td>
-                            <td>2.8</td>
-                            <td>3.0</td>
-                            <td>3.2</td>
-                        </tr>
-                        <tr>
-                            <td>通常三手(大)</td>
-                            <td>1.0</td>
-                            <td>1.4</td>
-                            <td>1.8</td>
-                            <td>2.2</td>
-                            <td>2.6</td>
-                            <td>3.0</td>
-                            <td>3.4</td>
-                            <td>3.8</td>
-                            <td>4.2</td>
-                            <td>4.6</td>
-                            <td>5.0</td>
-                            <td>5.4</td>
-                            <td>5.8</td>
-                            <td>6.2</td>
-                            <td>7.0</td>
-                        </tr>
-                        <tr>
-                            <td>マグナ三手(大)</td>
-                            <td>1.0</td>
-                            <td>1.4</td>
-                            <td>1.8</td>
-                            <td>2.2</td>
-                            <td>2.6</td>
-                            <td>3.0</td>
-                            <td>3.4</td>
-                            <td>3.8</td>
-                            <td>4.2</td>
-                            <td>4.6</td>
-                            <td>5.0</td>
-                            <td>5.4</td>
-                            <td>5.8</td>
-                            <td>6.2</td>
-                            <td>7.0</td>
-                        </tr>
-                        <tr>
-                            <td>通常技巧(小)</td>
+                            <td>技巧(小)</td>
                             <td>1.0</td>
                             <td>1.1</td>
                             <td>1.2</td>
@@ -1038,35 +1075,34 @@ var Notice = CreateClass({
                             <td>1.5</td>
                             <td>1.6</td>
                             <td>1.7</td>
-                            <td>1.8</td>
                             <td>1.9</td>
                             <td>2.0</td>
-                            <td>2.1</td>
                             <td>2.2</td>
-                            <td>2.3</td>
                             <td>2.4</td>
+                            <td>2.6</td>
+                            <td>2.8</td>
+                            <td>3.0</td>
                         </tr>
                         <tr>
-                            <td>通常技巧(中)</td>
-                            <td>3.02</td>
-                            <td>3.24</td>
-                            <td>3.46</td>
-                            <td>3.68</td>
-                            <td>3.90</td>
-                            <td>4.12</td>
-                            <td>4.34</td>
-                            <td>4.56</td>
-                            <td>4.78</td>
-                            <td>5.0</td>
-                            <td>5.22</td>
-                            <td>5.44</td>
-                            <td>5.66</td>
-                            <td>5.88</td>
-                            <td>6.1</td>
-                        </tr>
-                        <tr>
-                            <td>通常技巧(大)</td>
+                            <td>技巧(中)</td>
+                            <td>3.2</td>
+                            <td>3.4</td>
+                            <td>3.6</td>
+                            <td>3.8</td>
                             <td>4.0</td>
+                            <td>4.2</td>
+                            <td>4.4</td>
+                            <td>4.6</td>
+                            <td>4.8</td>
+                            <td>5.0</td>
+                            <td>5.2</td>
+                            <td>5.4</td>
+                            <td>5.6</td>
+                            <td>5.8</td>
+                            <td>6.0</td>
+                        </tr>
+                        <tr>
+                            <td>技巧(大)</td>
                             <td>4.4</td>
                             <td>4.8</td>
                             <td>5.2</td>
@@ -1081,45 +1117,198 @@ var Notice = CreateClass({
                             <td>8.8</td>
                             <td>9.2</td>
                             <td>9.6</td>
+                            <td>10.0</td>
                         </tr>
                         <tr>
-                            <td>方陣技巧(小)</td>
+                            <td>通常乱舞TA(小)</td>
                             <td>1.0</td>
-                            <td>1.1</td>
+                            <td>1.0</td>
+                            <td>1.0</td>
+                            <td>1.0</td>
+                            <td>1.0</td>
+                            <td>1.0</td>
+                            <td>1.0</td>
+                            <td>1.0</td>
+                            <td>1.0</td>
+                            <td>1.0</td>
                             <td>1.2</td>
-                            <td>1.3</td>
                             <td>1.4</td>
-                            <td>1.5</td>
                             <td>1.6</td>
-                            <td>1.7</td>
                             <td>1.8</td>
-                            <td>1.9</td>
                             <td>2.0</td>
-                            <td>2.2</td>
-                            <td>2.2</td>
-                            <td>2.3</td>
-                            <td>2.4</td>
                         </tr>
                         <tr>
-                            <td>方陣技巧(中)</td>
-                            <td>3.02</td>
-                            <td>3.24</td>
-                            <td>3.46</td>
-                            <td>3.68</td>
-                            <td>3.90</td>
-                            <td>4.12</td>
-                            <td>4.34</td>
-                            <td>4.56</td>
-                            <td>4.78</td>
+                            <td>マグナ乱舞TA(中)</td>
+                            <td>0.18</td>
+                            <td>0.31</td>
+                            <td>0.44</td>
+                            <td>0.57</td>
+                            <td>0.7</td>
+                            <td>0.83</td>
+                            <td>1.96</td>
+                            <td>1.09</td>
+                            <td>1.22</td>
+                            <td>1.35</td>
+                            <td>1.48</td>
+                            <td>1.61</td>
+                            <td>1.74</td>
+                            <td>1.87</td>
+                            <td>2.0</td>
+                        </tr>
+                        <tr>
+                            <td>マグナ破壊(中)</td>
+                            <td>0.4</td>
+                            <td>0.55</td>
+                            <td>0.7</td>
+                            <td>0.85</td>
+                            <td>1.0</td>
+                            <td>1.15</td>
+                            <td>1.3</td>
+                            <td>1.45</td>
+                            <td>1.6</td>
+                            <td>1.75</td>
+                            <td>1.9</td>
+                            <td>2.05</td>
+                            <td>2.20</td>
+                            <td>2.35</td>
+                            <td>2.5</td>
+                        </tr>
+                        <tr>
+                            <td>楚歌(1本目)</td>
+                            <td>3.0</td>
+                            <td>3.0</td>
+                            <td>4.0</td>
+                            <td>4.0</td>
                             <td>5.0</td>
-                            <td>5.22</td>
-                            <td>5.44</td>
-                            <td>5.66</td>
-                            <td>5.88</td>
-                            <td>6.1</td>
+                            <td>5.0</td>
+                            <td>6.0</td>
+                            <td>6.0</td>
+                            <td>7.0</td>
+                            <td>8.0</td>
+                            <td>8.0</td>
+                            <td>8.0</td>
+                            <td>8.0</td>
+                            <td>8.0</td>
+                            <td>8.0/td>
                         </tr>
                         <tr>
-                            <td>方陣技巧(大)</td>
+                            <td>先制の刃(中)</td>
+                            <td>5.0</td>
+                            <td>6.0</td>
+                            <td>7.0</td>
+                            <td>8.0</td>
+                            <td>10.0</td>
+                            <td>11.0</td>
+                            <td>12.0</td>
+                            <td>13.0</td>
+                            <td>14.0</td>
+                            <td>15.0</td>
+                            <td>16.0</td>
+                            <td>17.0</td>
+                            <td>18.0</td>
+                            <td>19.0</td>
+                            <td>20.0/td>
+                        </tr>
+                        <tr>
+                            <td>鷲王の結界(中)</td>
+                            <td>6.0</td>
+                            <td>6.5</td>
+                            <td>7.0</td>
+                            <td>7.5</td>
+                            <td>8.0</td>
+                            <td>8.5</td>
+                            <td>9.0</td>
+                            <td>9.5</td>
+                            <td>10.0</td>
+                            <td>10.5</td>
+                            <td>11.0</td>
+                            <td>11.5</td>
+                            <td>12.0</td>
+                            <td>12.5</td>
+                            <td>23.0/td>
+                        </tr>
+                        <tr>
+                            <td>秘奥/必殺(奥義ダメージ) (小)</td>
+                            <td>0.5</td>
+                            <td>1.0</td>
+                            <td>1.5</td>
+                            <td>2.0</td>
+                            <td>2.5</td>
+                            <td>3.0</td>
+                            <td>3.5</td>
+                            <td>4.0</td>
+                            <td>4.5</td>
+                            <td>5.0</td>
+                            <td>5.5</td>
+                            <td>6.0</td>
+                            <td>6.5</td>
+                            <td>7.0</td>
+                            <td>7.5</td>
+                        </tr>
+                        <tr>
+                            <td>秘奥/必殺(奥義ダメージ) (中)</td>
+                            <td>2.5</td>
+                            <td>3.0</td>
+                            <td>3.5</td>
+                            <td>4.0</td>
+                            <td>4.5</td>
+                            <td>5.0</td>
+                            <td>5.5</td>
+                            <td>6.0</td>
+                            <td>6.5</td>
+                            <td>7.0</td>
+                            <td>7.5</td>
+                            <td>8.0</td>
+                            <td>8.5</td>
+                            <td>9.0</td>
+                            <td>9.5</td>
+                        </tr>
+                        <tr>
+                            <td>秘奥/必殺(奥義ダメージ) (大)</td>
+                            <td>5.5</td>
+                            <td>5.0</td>
+                            <td>6.5</td>
+                            <td>6.0</td>
+                            <td>7.5</td>
+                            <td>7.0</td>
+                            <td>8.5</td>
+                            <td>8.0</td>
+                            <td>9.5</td>
+                            <td>10.0</td>
+                            <td>10.5</td>
+                            <td>11.0</td>
+                            <td>11.5</td>
+                            <td>12.0</td>
+                            <td>12.5</td>
+                        </tr>
+                        <tr>
+                            <td>必殺(奥義上限) (中)</td>
+                            <td>0.8</td>
+                            <td>1.1</td>
+                            <td>1.4</td>
+                            <td>1.7</td>
+                            <td>2.0</td>
+                            <td>2.3</td>
+                            <td>2.6</td>
+                            <td>2.9</td>
+                            <td>3.2</td>
+                            <td>3.5</td>
+                            <td>3.8</td>
+                            <td>4.1</td>
+                            <td>4.4</td>
+                            <td>4.7</td>
+                            <td>5.0</td>
+                        </tr>
+                        <tr>
+                            <td>必殺(奥義上限) (大)</td>
+                            <td>1.2</td>
+                            <td>1.6</td>
+                            <td>2.0</td>
+                            <td>2.4</td>
+                            <td>2.8</td>
+                            <td>3.2</td>
+                            <td>3.6</td>
+                            <td>4.0</td>
                             <td>4.4</td>
                             <td>4.8</td>
                             <td>5.2</td>
@@ -1127,14 +1316,60 @@ var Notice = CreateClass({
                             <td>6.0</td>
                             <td>6.4</td>
                             <td>6.8</td>
-                            <td>7.2</td>
-                            <td>7.6</td>
+                        </tr>
+                        <tr>
+                            <td>英傑(CB)</td>
+                            <td>3.0</td>
+                            <td>4.0</td>
+                            <td>5.0</td>
+                            <td>6.0</td>
+                            <td>7.0</td>
                             <td>8.0</td>
-                            <td>8.4</td>
-                            <td>8.8</td>
-                            <td>9.2</td>
-                            <td>9.4</td>
+                            <td>9.0</td>
                             <td>10.0</td>
+                            <td>11.0</td>
+                            <td>12.0</td>
+                            <td>12.5</td>
+                            <td>13.0</td>
+                            <td>13.5</td>
+                            <td>14.0</td>
+                            <td>14.5</td>
+                        </tr>
+                        <tr>
+                            <td>英傑(奥義上限)</td>
+                            <td>1.2</td>
+                            <td>1.6</td>
+                            <td>2.0</td>
+                            <td>2.4</td>
+                            <td>2.8</td>
+                            <td>3.2</td>
+                            <td>3.6</td>
+                            <td>4.0</td>
+                            <td>4.4</td>
+                            <td>4.8</td>
+                            <td>5.2</td>
+                            <td>5.6</td>
+                            <td>6.0</td>
+                            <td>6.4</td>
+                            <td>6.8</td>
+                        </tr>
+                        <tr>
+                            <td>イクシード(奥義上限)</td>
+                            <td>5.5</td>
+                            <td>6.0</td>
+                            <td>6.5</td>
+                            <td>7.0</td>
+                            <td>7.5</td>
+                            <td>8.0</td>
+                            <td>8.5</td>
+                            <td>9.0</td>
+                            <td>9.5</td>
+                            <td>10.0</td>
+                            <td>11.0</td>
+                            <td>12.0</td>
+                            <td>13.0</td>
+                            <td>14.0</td>
+                            <td>15.0</td>
                         </tr>
                         </tbody>
                     </table>
