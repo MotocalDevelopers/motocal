@@ -1399,7 +1399,7 @@ var skillAmounts = {
     "magnaGunshin": {
         //only DA effect
         "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5]
-    }
+    },
 };
 
 // chara support
