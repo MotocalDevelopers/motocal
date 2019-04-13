@@ -514,10 +514,10 @@ var skilltypes = {
     "akasha-bow": {name: "アーカーシャ-弓", type: "akasha", amount: "gun"},
     "akasha-wand": {name: "アーカーシャ-杖", type: "akasha", amount: "music"},
     "akasha-spear": {name: "アーカーシャ-槍", type: "akasha", amount: "katana"},
-    "opus-alpha": {name: "振り子キー[α]", type: "opusKey", amount: "L"},
-    //"opus-beta": {name: "振り子キー[β]", type: "opusKey", amount: "L"},
-    "opus-gamma": {name: "振り子キー[γ]", type: "opusKey", amount: "L"},
-    "opus-delta": {name: "振り子キー[Δ]", type: "opusKey", amount: "L"},
+    "opus-alpha": {name: "ペンデュラム[α]", type: "opusKey", amount: "L"},
+    //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
+    "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
+    "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "extendedDjeetaNormalDATA5": {name: "[ジータのみ] 通常枠DATA 5%", type: "extendedDjeetaNormalDATA", amount: 5.0},
@@ -577,9 +577,9 @@ var omegaWeaponSkill2 = {
 
 var opusWeaponSkill1 = {
     "non": {name: "無し"},
-    "opus-alpha": {name: "振り子キー[α]"},
-    "opus-gamma": {name: "振り子キー[γ]"},
-    "opus-delta": {name: "振り子キー[Δ]"},
+    "opus-alpha": {name: "ペンデュラム[α]"},
+    "opus-gamma": {name: "ペンデュラム[γ]"},
+    "opus-delta": {name: "ペンデュラム[Δ]"},
 };
 
 var opusNormalWeaponSkill2 = {
