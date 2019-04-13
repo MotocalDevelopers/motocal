@@ -380,15 +380,15 @@ var multiLangData = {
         "en": "It is used to calc the Ougi damage.",
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
-    },
-    "ゼニスパーク": {
-        "en": "Zenith Perks",
-        "ja": "ゼニスパーク",
+	},
+    "リミットボーナス": {
+        "en": "Limit Bonus",
+        "ja": "リミットボーナス",
         "zh": "Zenith Perks",
     },
     "味方全体のHP": {
         "en": "HP Bonus for All member",
-        "ja": "味方HPゼニス",
+        "ja": "味方全体HP",
         "zh": "己方全体HP LB",
     },
     "Advanced": {
@@ -472,17 +472,17 @@ var multiLangData = {
         "en": "Job bonuses and Favorite arm bonuses are automatically inclueded in calculation. Select \"none\" if you want no bonuses and favorite arms.",
         "ja": "ジョブごとのボーナス等は自動で反映されます。得意武器補正などを反映したくない場合\"なし\"を選択して下さい。",
         "zh": "不同职业的Bonus会自动反映。不想让得意武器补正之类反映出的话请选择\"无\"。",
-    },
-    "ゼニス攻撃力": {
-        "en": "Zenith Park ATK ",
-        "ja": "ゼニス攻撃力",
-        "zh": "LB 攻击力",
-    },
-    "ゼニスHP": {
-        "en": "Zenith Park HP ",
-        "ja": "ゼニスHP",
-        "zh": "LB HP",
-    },
+	},
+    "LB 攻撃力": {
+        "en": "ATK ",
+        "ja": "攻撃力",
+        "zh": "攻击力",
+	},
+    "LB HP": {
+        "en": "HP ",
+        "ja": "HP",
+        "zh": "HP",
+	},
     "マスボATK": {
         "en": "Master Bonus ATK ",
         "ja": "マスターボーナスATK",
@@ -517,20 +517,20 @@ var multiLangData = {
         "en": "Element Correlation is automatically judged.",
         "ja": "有利/非有利/不利は、敵の属性に従って自動で判定されます。",
         "zh": "有利/非有利/不利会随着敌人的属性自动判定出。",
-    },
-    "武器ゼニス1": {
+	},
+    "得意武器攻撃1": {
         "en": "Weapon I ",
-        "ja": "武器ゼニスI",
+        "ja": "得意武器攻撃I",
         "zh": "武器LB 1",
-    },
-    "武器ゼニス2": {
+	},
+    "得意武器攻撃2": {
         "en": "Weapon II ",
-        "ja": "武器ゼニスII",
+        "ja": "得意武器攻撃II",
         "zh": "武器LB 2",
-    },
-    "武器ゼニス説明": {
+	},
+    "得意武器攻撃の説明": {
         "en": "",
-        "ja": "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
+        "ja": "得意武器IIのLB（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
         "zh": "得意武器II的LB(★4以上)在I全部取得的前提下按6%, 8%, 10%计算。",
     },
     "攻撃ボーナス": {
