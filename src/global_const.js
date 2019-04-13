@@ -373,11 +373,13 @@ var skilltypes = {
     "normalNiteM": {name: "通常二手(中)", type: "normalNite", amount: "M"},
     "normalNiteL": {name: "通常二手(大)", type: "normalNite", amount: "L"},
     "normalSanteS": {name: "通常三手(小)", type: "normalSante", amount: "S"},
+    "normalSanteM": {name: "通常三手(中)", type: "normalSante", amount: "M"},
     "normalSanteL": {name: "通常三手(大)", type: "normalSante", amount: "L"},
     "normalKatsumiS": {name: "通常克己(小)", type: "normalKatsumi", amount: "S"},
     "normalKatsumiM": {name: "通常克己(中)", type: "normalKatsumi", amount: "M"},
     "normalKamui": {name: "通常神威(小)", type: "normalKamui", amount: "S"},
     "normalKamuiM": {name: "通常神威(中)", type: "normalKamui", amount: "M"},
+    "normalKamuiL": {name: "通常神威(大)", type: "normalKamui", amount: "L"},
     "normalKatsumokuS": {name: "通常括目", type: "normalKatsumoku", amount: "S"},
     "normalRasetsuM": {name: "通常羅刹", type: "normalRasetsu", amount: "M"},
     "normalMusouM": {name: "通常無双(中)", type: "normalMusou", amount: "M"},
@@ -403,11 +405,15 @@ var skilltypes = {
     "magnaHaisuiM": {name: "マグナ背水(中)", type: "magnaHaisui", amount: "M"},
     "magnaHaisuiL": {name: "マグナ背水(大)", type: "magnaHaisui", amount: "L"},
     "magnaKonshinM": {name: "マグナ渾身(中)", type: "magnaKonshin", amount: "M"},
+    "magnaKonshinL": {name: "マグナ渾身(大)", type: "magnaKonshin", amount: "L"},
     "magnaHakaiS": {name: "マグナ破壊(小)", type: "magnaHakai", amount: "S"},
+    "magnaSanteS": {name: "マグナ三手(小)", type: "magnaSante", amount: "S"},
+    "magnaSanteM": {name: "マグナ三手(中)", type: "magnaSante", amount: "M"},
     "magnaSanteL": {name: "マグナ三手(大)", type: "magnaSante", amount: "L"},
     "magnaKatsumiM": {name: "マグナ克己(中)", type: "magnaKatsumi", amount: "M"},
     "magnaKamui": {name: "マグナ神威(小)", type: "magnaKamui", amount: "S"},
     "magnaKamuiM": {name: "マグナ神威(中)", type: "magnaKamui", amount: "M"},
+    "magnaKamuiL": {name: "マグナ神威(大)", type: "magnaKamui", amount: "L"},
     "magnaBoukun": {name: "マグナ暴君", type: "magnaBoukun", amount: "L"},
     "magnaKatsumokuS": {name: "マグナ括目", type: "magnaKatsumoku", amount: "S"},
     "magnaRasetsuM": {name: "マグナ羅刹", type: "magnaRasetsu", amount: "M"},
@@ -508,6 +514,10 @@ var skilltypes = {
     "akasha-bow": {name: "アーカーシャ-弓", type: "akasha", amount: "gun"},
     "akasha-wand": {name: "アーカーシャ-杖", type: "akasha", amount: "music"},
     "akasha-spear": {name: "アーカーシャ-槍", type: "akasha", amount: "katana"},
+    "opus-alpha": {name: "振り子キー[α]", type: "opusKey", amount: "L"},
+    //"opus-beta": {name: "振り子キー[β]", type: "opusKey", amount: "L"},
+    "opus-gamma": {name: "振り子キー[γ]", type: "opusKey", amount: "L"},
+    "opus-delta": {name: "振り子キー[Δ]", type: "opusKey", amount: "L"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "extendedDjeetaNormalDATA5": {name: "[ジータのみ] 通常枠DATA 5%", type: "extendedDjeetaNormalDATA", amount: 5.0},
@@ -563,6 +573,27 @@ var omegaWeaponSkill2 = {
     "gauphKey-alpha": {name: "ガフスキー[α]"},
     "gauphKey-gamma": {name: "ガフスキー[γ]"},
     "gauphKey-delta": {name: "ガフスキー[Δ]"},
+};
+
+var opusWeaponSkill1 = {
+    "non": {name: "無し"},
+    "opus-alpha": {name: "振り子キー[α]"},
+    "opus-gamma": {name: "振り子キー[γ]"},
+    "opus-delta": {name: "振り子キー[Δ]"},
+};
+
+var opusNormalWeaponSkill2 = {
+    "non": {name: "無し"},
+    "normalKonshinL": {name: "通常渾身(大)"},
+    "normalHaisuiL": {name: "通常背水(大)"},
+    "normalSanteM": {name: "通常三手(中)"},
+};
+
+var opusMagnaWeaponSkill2 = {
+    "non": {name: "無し"},
+    "magnaKonshinL": {name: "マグナ渾身(大)"},
+    "magnaHaisuiL": {name: "マグナ背水(大)"},
+    "magnaSanteM": {name: "マグナ三手(中)"},
 };
 
 var armTypes = {
@@ -1279,28 +1310,30 @@ var skillAmounts = {
         "LL": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0],
     },
     "normalNite": {
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5],
-        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0],
-        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0],
+        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5, 3.66, 3.82, 3.98, 4.14, 4.3],
+        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5],
+        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0, 7.4, 7.8, 8.2, 8.6, 9.0],
         // used by Mirror-Blade Shard(刃鏡片)
-        "LL": [1.6, 2.2, 2.8, 3.4, 4.0, 4.6, 5.2, 5.8, 6.4, 7.0, 7.4, 7.8, 8.2, 8.6, 9.0],
+        "LL": [1.6, 2.2, 2.8, 3.4, 4.0, 4.6, 5.2, 5.8, 6.4, 7.0, 7.4, 7.8, 8.2, 8.6, 9.0, 9.4, 9.8, 10.2, 10.6, 11.0],
     },
     "magnaNite": {
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5],
-        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0],
-        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0],
+        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5, 3.66, 3.82, 3.98, 4.14, 4.3],
+        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5],
+        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0, 7.4, 7.8, 8.2, 8.6, 9.0],
     },
     "exNite": {
         // used by Red Sun(レッド・サン)
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5],
+        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5, 3.66, 3.82, 3.98, 4.14, 4.3],
     },
     "normalSante": {
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5],
-        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0],
+        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5, 3.66, 3.82, 3.98, 4.14, 4.3],
+        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5],
+        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0, 7.4, 7.8, 8.2, 8.6, 9.0],
     },
     "magnaSante": {
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5],
-        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0],
+        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5, 3.66, 3.82, 3.98, 4.14, 4.3],
+        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5],
+        "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0, 7.4, 7.8, 8.2, 8.6, 9.0],
     },
     "normalCritical": {
         "S": [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0],
@@ -1693,6 +1726,78 @@ module.exports.additionalSelectList = {
     "ウリエル": {notationText: "天司武器注記", selectKeys: [], selectors: [],},
     "ガブリエル": {notationText: "天司武器注記", selectKeys: [], selectors: [],},
     "ラファエル": {notationText: "天司武器注記", selectKeys: [], selectors: [],},
+    "絶対否定の剣": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "永遠拒絶の剣": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "絶対否定の槍": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "永遠拒絶の槍": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "絶対否定の大鎌": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "永遠拒絶の大鎌": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "絶対否定の杖": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "永遠拒絶の杖": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "絶対否定の竪琴": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "永遠拒絶の竪琴": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "絶対否定の太刀": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
+    "永遠拒絶の太刀": {
+        notationText: "",
+        selectKeys: ["skill2", "skill3"],
+        selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
+        defaultKeys: ["non", "non"],
+    },
 };
 
 
@@ -1844,6 +1949,36 @@ module.exports.selector.en.omegaWeaponSkill2 = Object.keys(omegaWeaponSkill2).ma
 });
 module.exports.selector.zh.omegaWeaponSkill2 = Object.keys(omegaWeaponSkill2).map(function (key) {
     return <option value={key} key={key}>{intl.translate(omegaWeaponSkill2[key].name, "zh")}</option>;
+});
+
+module.exports.selector.ja.opusWeaponSkill1 = Object.keys(opusWeaponSkill1).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusWeaponSkill1[key].name, "ja")}</option>;
+});
+module.exports.selector.en.opusWeaponSkill1 = Object.keys(opusWeaponSkill1).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusWeaponSkill1[key].name, "en")}</option>;
+});
+module.exports.selector.zh.opusWeaponSkill1 = Object.keys(opusWeaponSkill1).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusWeaponSkill1[key].name, "zh")}</option>;
+});
+
+module.exports.selector.ja.opusNormalWeaponSkill2 = Object.keys(opusNormalWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusNormalWeaponSkill2[key].name, "ja")}</option>;
+});
+module.exports.selector.en.opusNormalWeaponSkill2 = Object.keys(opusNormalWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusNormalWeaponSkill2[key].name, "en")}</option>;
+});
+module.exports.selector.zh.opusNormalWeaponSkill2 = Object.keys(opusNormalWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusNormalWeaponSkill2[key].name, "zh")}</option>;
+});
+
+module.exports.selector.ja.opusMagnaWeaponSkill2 = Object.keys(opusMagnaWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusMagnaWeaponSkill2[key].name, "ja")}</option>;
+});
+module.exports.selector.en.opusMagnaWeaponSkill2 = Object.keys(opusMagnaWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusMagnaWeaponSkill2[key].name, "en")}</option>;
+});
+module.exports.selector.zh.opusMagnaWeaponSkill2 = Object.keys(opusMagnaWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(opusMagnaWeaponSkill2[key].name, "zh")}</option>;
 });
 
 module.exports.selector.ja.types = Object.keys(jobTypes).map(function (opt) {

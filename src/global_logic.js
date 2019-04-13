@@ -21,7 +21,8 @@ var enemyDefenseType = GlobalConst.enemyDefenseType;
 
 module.exports.isCosmos = function (arm) {
     return (skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") ||
-        (skilltypes[arm.skill2] != undefined && skilltypes[arm.skill2].type == "cosmosArm");
+        (skilltypes[arm.skill2] != undefined && skilltypes[arm.skill2].type == "cosmosArm") ||
+        (skilltypes[arm.skill3] != undefined && skilltypes[arm.skill3].type == "cosmosArm");
 };
 
 function isHaisuiType(stype) {
@@ -231,7 +232,7 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, ch
         chainCoeff = 0.50;
     }
 
-    var chainDamageLimitUP = chainDamageLimitUP != undefined ? chainDamageLimitUP : 0.0;
+    var chainDamageLimit = chainDamageLimitUP != undefined ? chainDamageLimitUP : 0.0;
     var damage = (1.0 + chainDamageUP) * typeBonus * chainCoeff * ougiDamage;
     var overedDamage = 0.0;
 
@@ -245,7 +246,7 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, ch
 
     for (var index = 0; index < 4; index++) {
         // Damage cap calculation
-        var limitValue = limitValues[index][0] * (1.0 + chainDamageLimitUP);
+        var limitValue = limitValues[index][0] * (1.0 + chainDamageLimit);
         var limitRatio = limitValues[index][1];
 
         // Subtract only by the extent exceeding the attenuation line
@@ -597,7 +598,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
         chainDamageUP = chainDamageUP <= 1.20 ? chainDamageUP : 1.20;
 
-        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
+        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff ,totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
 
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
         var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), chainDamageUP, chainDamageLimit);
@@ -849,6 +850,9 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
             } else if (haisuiAmount === "M") {
                 // Magna Stamina (M)
                 return Math.pow(100.0 * remainHP / (60.4 - haisuiSLv), 2.9) + 2.1;
+            } else {
+                // Magna Stamina (L) (APPROXIMATION)
+                return Math.pow(100.0 * remainHP / (54.0 - haisuiSLv), 2.9) + 2.1;
             }
         }
     } else if (haisuiType === "omegaKonshin") {
@@ -960,7 +964,13 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
         if (comb[i] > 0) {
             var arm = arml[i];
             if (module.exports.isCosmos(arm)) {
-                cosmosType = skilltypes[arm.skill1].type == "cosmosArm" ? skilltypes[arm.skill1].cosmosArm : skilltypes[arm.skill2].cosmosArm;
+                if (skilltypes[arm.skill1].type == "cosmosArm") {
+                    cosmosType = skilltypes[arm.skill1].cosmosArm;
+                } else if (skilltypes[arm.skill2].type == "cosmosArm") {
+                    cosmosType = skilltypes[arm.skill2].cosmosArm;
+                } else {
+                    cosmosType = skilltypes[arm.skill3].cosmosArm;
+                }
             }
         }
     }
@@ -992,6 +1002,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
             "yuuki": false,
             "alpha": false,
             "gamma": false,
+            "delta": false,
         };
 
         for (var i = 0; i < arml.length; i++) {
@@ -1025,16 +1036,19 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                 }
                 totals[key]["armAttack"] += armSup * parseInt(arm.attack) * comb[i];
                 totals[key]["armHP"] += hpSup * parseInt(arm.hp) * comb[i];
-                for (var j = 1; j <= 2; j++) {
+                for (var j = 1; j <= 3; j++) {
                     var skillname = '';
                     var element = '';
                     arm.element != undefined ? arm.element : "fire";
                     if (j == 1) {
                         skillname = arm.skill1;
                         element = arm.element != undefined ? arm.element : "fire"
-                    } else {
+                    } else if (j == 2) {
                         skillname = arm.skill2;
                         element = arm.element2 != undefined ? arm.element2 : "fire"
+                    } else {
+                        skillname = arm.skill3;
+                        element = arm.element3 != undefined ? arm.element3 : "fire"
                     }
 
                     if (skillname != 'non') {
@@ -1190,9 +1204,23 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 } else if (gauphKeyType === "gamma") {
                                     totals[key]["ougiDamageLimit"] += 0.15
                                 } else if (gauphKeyType === "delta") {
-                                    totals[key]["chainDamageLimit"] += 0.50
+                                    totals[key]["chainDamageLimit"] += 50
                                 }
                                 isOmegaIncluded[gauphKeyType] = true;
+                            }
+                        } else if (stype === "opusKey") {
+                            // Opus key is good on weapons, irrespective of attributes
+                            var opusKeyType = skillname.split("-")[1];
+
+                            if (!isOmegaIncluded[opusKeyType]) {
+                                if (opusKeyType === "alpha") {
+                                    totals[key]["normalDamageLimit"] += 0.1
+                                } else if (opusKeyType === "gamma") {
+                                    totals[key]["ougiDamageLimit"] += 0.15
+                                } else if (opusKeyType === "delta") {
+                                    totals[key]["chainDamageLimit"] += 50
+                                }
+                                isOmegaIncluded[opusKeyType] = true;
                             }
                         } else if (stype == 'akasha') {
                             // Akasha Weapon
@@ -1257,15 +1285,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 // Emnity/Stamina calculation part is another method
                                 totals[key][stype] += comb[i] * module.exports.calcHaisuiValue(stype, amount, slv, totals[key]["remainHP"])
                             } else if (stype == 'normalKamui') {
-                                if (amount == 'S') {
-                                    // Kamui small is equal in attack power and HP rise
-                                    totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                                    totals[key]["normalHP"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                                } else {
-                                    // Kamui is an atk up (middle) & hp up (middle)
-                                    totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                                    totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
-                                }
+                                // Kamui is equal in attack power and HP rise
+                                totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                                totals[key]["normalHP"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             } else if (stype == 'magnaKamui') {
                                 // Kamui is equal in attack power and HP rise
                                 totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
@@ -2238,16 +2260,19 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                     if (storedCombinations[j][i] === 0) continue;
 
-                    for (var jj = 1; jj <= 2; jj++) {
+                    for (var jj = 1; jj <= 3; jj++) {
                         var skillname = '';
                         var element = '';
                         arm.element != undefined ? arm.element : "fire";
                         if (jj == 1) {
                             skillname = arm.skill1;
                             element = arm.element != undefined ? arm.element : "fire"
-                        } else {
+                        } else if (jj == 2) {
                             skillname = arm.skill2;
                             element = arm.element2 != undefined ? arm.element2 : "fire"
+                        } else {
+                            skillname = arm.skill3;
+                            element = arm.element3 != undefined ? arm.element3 : "fire"
                         }
 
                         if (skillname != 'non') {
