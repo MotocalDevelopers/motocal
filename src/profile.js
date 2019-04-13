@@ -77,6 +77,7 @@ var Profile = CreateClass({
             zenithBonus2: "無し",
             enemyElement: "wind",
             enemyDefense: 10.0,
+            defenseDebuff: 0.0,
             job: "none",
             sex: "female",
             element: "fire",
@@ -323,28 +324,28 @@ var Profile = CreateClass({
 
                     <tr>
                         <td colSpan="2">
-                            <strong>{intl.translate("ゼニスパーク", locale)}</strong>
+                            <strong>{intl.translate("リミットボーナス", locale)}</strong>
                         </td>
                     </tr>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("ゼニス攻撃力", locale)}*</th>
+                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}*</th>
                         <td><FormControl componentClass="select" value={this.state.zenithAttackBonus}
                                          onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl>
                         </td>
                     </tr>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("ゼニスHP", locale)}</th>
+                        <th className="bg-primary">{intl.translate("LB HP", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.zenithHPBonus}
                                          onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")}> {selector.zenithHP} </FormControl>
                         </td>
                     </tr>
 
-                    <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("武器ゼニス1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})
+                                {intl.translate("得意武器攻撃1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})
                             </th>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus1}
                                              onChange={this.handleSelectEvent.bind(this, "zenithBonus1")}> {this.props.zenithBonuses[locale]} </FormControl>
@@ -352,10 +353,10 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("武器ゼニス説明", locale)} id={"tooltip-weapon-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("武器ゼニス2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})
+                                {intl.translate("得意武器攻撃2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})
                             </th>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus2}
                                              onChange={this.handleSelectEvent.bind(this, "zenithBonus2")}> {this.props.zenithBonuses[locale]} </FormControl>
@@ -515,6 +516,16 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.enemyDefense}
                                              onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("防御デバフ合計説明", locale)} id={"tooltip-defense-debuff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}</th>
+                            <td><FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
+                                             onBlur={this.handleOnBlur}
+                                             onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
                             </td>
                         </tr>
                     </TextWithTooltip>

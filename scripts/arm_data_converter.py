@@ -124,7 +124,15 @@ skillnamelist["normalKonshinL"] = {
     u"白星の渾身": "light"
 }
 
-# skillnamelist["normalKamui"] = {u"紅蓮の神威": "fire", u"霧氷の神威": "water", u"地裂の神威": "earth", u"乱気の神威": "wind", u"天光の神威": "light", u"奈落の神威": "dark"}
+skillnamelist["normalKamuiL"] = {
+    u"紅蓮の神威": "fire",
+    u"霧氷の神威": "water",
+    u"地裂の神威": "earth",
+    u"乱気の神威": "wind",
+    u"天光の神威": "light",
+    u"奈落の神威": "dark"
+}
+
 skillnamelist["normalKatsumokuS"] = {
     u"紅蓮の括目": "fire",
     u"霧氷の括目": "water",
@@ -473,6 +481,15 @@ skillnamelist["magnaKatsumiM"] = {
     u"黒霧方陣・克己": "dark"
 }
 
+skillnamelist["magnaKamuiL"] = {
+    u"機炎方陣・神威III": "fire",
+    u"海神方陣・神威III": "water",
+    u"創樹方陣・神威III": "earth",
+    u"嵐竜方陣・神威III": "wind",
+    u"騎解方陣・神威III": "light",
+    u"黒霧方陣・神威III": "dark"
+}
+
 skillnamelist["magnaKamuiM"] = {
     u"機炎方陣・神威II": "fire",
     u"海神方陣・神威II": "water",
@@ -716,6 +733,7 @@ skillnamelist["strengthL"] = {
     u"ふわふわしっぽ": "earth",
     u"ゲイルオブアームズ": "wind",
     u"獅子と牛の咆哮": "dark",
+    u"サイコ攻刃": "earth",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -915,95 +933,164 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
     mycsv = csv.reader(open(csv_file_name, 'r', encoding="utf-8"), delimiter="|")
 
     for row in mycsv:
-        newdict = {}
+        newdict = OrderedDict()
 
-        if len(row) <= 1:
+        row_lenth = len(row)
+        if row_lenth <= 1:
             continue
         else:
-            m = key_pattern.search(row[1])
-            if m:
-                key = m.group(1)
-
-            name = row[2].replace("&br;", "")
-            name = name.replace("[]", "")
-            newdict["ja"] = name
-
-            # element
-            if row[3].find("火") > 0:
-                newdict["element"] = "fire"
-            elif row[3].find("水") > 0:
-                newdict["element"] = "water"
-            elif row[3].find("土") > 0:
-                newdict["element"] = "earth"
-            elif row[3].find("風") > 0:
-                newdict["element"] = "wind"
-            elif row[3].find("光") > 0:
-                newdict["element"] = "light"
-            elif row[3].find("全属性") > 0:
-                newdict["element"] = "all"
-            else:
-                newdict["element"] = "dark"
-
-            # type
-            newdict["type"] = type_replace(row[4])
-
-            skill = "non"
-            element1 = "none"
-            m = skill_pattern.search(row[7])
-            if m:
-                skill, element1 = skill_replace(m.group(1))
-
-            newdict["skill1"] = skill
-
-            skill = "non"
-            element2 = "none"
-            m = skill_pattern.search(row[8])
-            if m:
-                skill, element2 = skill_replace(m.group(1))
-
-            if element2 == "none" or element2 == "unknown":
-                element2 = newdict["element"]
-
-            newdict["skill2"] = skill
-            newdict["element2"] = element2
-            newdict["minhp"] = row[9]
-            newdict["minattack"] = row[10]
-            newdict["hp"] = row[11]
-            newdict["attack"] = row[12]
-
-            if PROCESS_TYPE_SSR:
-                if jougen_5_pattern.search(row[15]):
-                    newdict["slvmax"] = 20
-                    newdict["maxlv"] = 200
-                    newdict["hplv100"] = int(row[16])
-                    newdict["attacklv100"] = int(row[17])
-                    newdict["hplv150"] = int(row[18])
-                    newdict["attacklv150"] = int(row[19])
-                else:
-                    if jougen_4_pattern.search(row[15]):
-                        newdict["slvmax"] = 15
-                        newdict["maxlv"] = 150
-                        newdict["hplv100"] = row[16]
-                        newdict["attacklv100"] = row[17]
+            has_3rd_skill: bool = row_lenth >= 22
+            for index, value in enumerate(row):
+                if index == 1:
+                    m = key_pattern.search(value)
+                    if m:
+                        key = m.group(1)
+                elif index == 2:
+                    name = value.replace("&br;", "")
+                    name = name.replace("[]", "")
+                    newdict["ja"] = name
+                elif index == 3:
+                    # element
+                    if value.find("火") > 0:
+                        newdict["element"] = "fire"
+                    elif value.find("水") > 0:
+                        newdict["element"] = "water"
+                    elif value.find("土") > 0:
+                        newdict["element"] = "earth"
+                    elif value.find("風") > 0:
+                        newdict["element"] = "wind"
+                    elif value.find("光") > 0:
+                        newdict["element"] = "light"
+                    elif value.find("全属性") > 0:
+                        newdict["element"] = "all"
                     else:
-                        if baha_pattern.search(newdict["skill1"]):
-                            newdict["slvmax"] = 15
-                            newdict["maxlv"] = 150
-                            newdict["hplv100"] = row[16]
-                            newdict["attacklv100"] = row[17]
-                        else:
-                            newdict["slvmax"] = 10
-                            newdict["maxlv"] = 100
+                        newdict["element"] = "dark"
+                elif index == 4:
+                    # type
+                    newdict["type"] = type_replace(value)
+                elif index == 7:
+                    skill = "non"
+                    element1 = "none"
+                    m = skill_pattern.search(value)
+                    if m:
+                        skill, element1 = skill_replace(m.group(1))
 
-            else:
-                if jougen_4_pattern.search(row[15]):
-                    newdict["slvmax"] = 15
-                    newdict["maxlv"] = 120
-                    newdict["hplv75"] = row[16]
-                    newdict["attacklv75"] = row[17]
+                    newdict["skill1"] = skill
+                elif index == 8:
+                    skill = "non"
+                    element2 = "none"
+                    m = skill_pattern.search(value)
+                    if m:
+                        skill, element2 = skill_replace(m.group(1))
+
+                    if element2 == "none" or element2 == "unknown":
+                        element2 = newdict["element"]
+
+                    newdict["skill2"] = skill
+                    newdict["element2"] = element2
+                elif has_3rd_skill:
+                    if index == 9:
+                        skill = "non"
+                        element3 = "none"
+                        m = skill_pattern.search(value)
+                        if m:
+                            skill, element3 = skill_replace(m.group(1))
+
+                        if element3 == "none" or element3 == "unknown":
+                            element3 = newdict["element"]
+
+                        newdict["skill3"] = skill
+                        newdict["element3"] = element3
+                    elif index == 10:
+                        newdict["minhp"] = int(value)
+                    elif index == 11:
+                        newdict["minattack"] = int(value)
+                    elif index == 12:
+                        newdict["hp"] = int(value)
+                    elif index == 13:
+                        newdict["attack"] = int(value)
+                    elif index == 16:
+                        if PROCESS_TYPE_SSR:
+                            if jougen_5_pattern.search(value):
+                                newdict["slvmax"] = 20
+                                newdict["maxlv"] = 200
+                            elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
+                                newdict["slvmax"] = 15
+                                newdict["maxlv"] = 150
+                            else:
+                                newdict["slvmax"] = 10
+                                newdict["maxlv"] = 100
+                        else:
+                            if jougen_4_pattern.search(value):
+                                newdict["slvmax"] = 15
+                                newdict["maxlv"] = 120
+                            else:
+                                newdict["slvmax"] = 10
+                                newdict["maxlv"] = 75
+                    elif index == 17 and newdict["slvmax"] >= 15:
+                        if PROCESS_TYPE_SSR:
+                            newdict["hplv100"] = int(value)
+                        else:
+                            newdict["hplv75"] = int(value)
+                    elif index == 18 and newdict["slvmax"] >= 15:
+                        if PROCESS_TYPE_SSR:
+                            newdict["attacklv100"] = int(value)
+                        else:
+                            newdict["attacklv75"] = int(value)
+                    elif index == 19 and newdict["slvmax"] >= 20:
+                        newdict["hplv150"] = int(value)
+                    elif index == 20 and newdict["slvmax"] >= 20:
+                        newdict["attacklv150"] = int(value)
                 else:
-                    newdict["slvmax"] = 10
-                    newdict["maxlv"] = 75
+                    if index == 9:
+                        skill = "non"
+                        element3 = "none"
+
+                        if element3 == "none" or element3 == "unknown":
+                            element3 = newdict["element"]
+
+                        newdict["skill3"] = skill
+                        newdict["element3"] = element3
+
+                        newdict["minhp"] = int(value)
+                    elif index == 10:
+                        newdict["minattack"] = int(value)
+                    elif index == 11:
+                        newdict["hp"] = int(value)
+                    elif index == 12:
+                        newdict["attack"] = int(value)
+                    elif index == 15:
+                        if PROCESS_TYPE_SSR:
+                            if jougen_5_pattern.search(value):
+                                newdict["slvmax"] = 20
+                                newdict["maxlv"] = 200
+                            elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
+                                newdict["slvmax"] = 15
+                                newdict["maxlv"] = 150
+                            else:
+                                newdict["slvmax"] = 10
+                                newdict["maxlv"] = 100
+                        else:
+                            if jougen_4_pattern.search(value):
+                                newdict["slvmax"] = 15
+                                newdict["maxlv"] = 120
+                            else:
+                                newdict["slvmax"] = 10
+                                newdict["maxlv"] = 75
+                    elif index == 16 and newdict["slvmax"] >= 15:
+                        if PROCESS_TYPE_SSR:
+                            newdict["hplv100"] = int(value)
+                        else:
+                            newdict["hplv75"] = int(value)
+                    elif index == 17 and newdict["slvmax"] >= 15:
+                        if PROCESS_TYPE_SSR:
+                            newdict["attacklv100"] = int(value)
+                        else:
+                            newdict["attacklv75"] = int(value)
+                    elif index == 18 and newdict["slvmax"] >= 20:
+                        newdict["hplv150"] = int(value)
+                    elif index == 19 and newdict["slvmax"] >= 20:
+                        newdict["attacklv150"] = int(value)
 
             newdict["imageURL"] = "./imgs/" + key
 

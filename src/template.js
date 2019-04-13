@@ -355,19 +355,24 @@ var RegisteredArm = CreateClass({
                 arm["skill1"] = this.state.skill1
             } else if (additionalKeys === "skill2") {
                 arm["skill2"] = this.state.skill2
+            } else if (additionalKeys === "skill3") {
+                arm["skill3"] = this.state.skill3
             } else if (additionalKeys === "elements") {
                 arm["name"] += "[" + elementTypes[this.state.elements] + "]";
                 arm["element"] = this.state.elements;
-                arm["element2"] = this.state.elements
+                arm["element2"] = this.state.elements;
+                arm["element3"] = this.state.elements;
             } else if (additionalKeys === "main_weapon_change") {
                 // The skill that switches the effect at the time of main equipment is placed second
                 if (this.state.main_weapon_change) {
-                    arm["skill2"] += "Main"
+                    arm["skill2"] += "Main";
+                    arm["skill3"] = "non";
                 }
             } else if (additionalKeys === "main_weapon_switch") {
                 // The skill that turns on the effect at the time of main equipment is placed second
                 if (!this.state.main_weapon_switch) {
-                    arm["skill2"] = "non"
+                    arm["skill2"] = "non";
+                    arm["skill3"] = "non";
                 }
             }
         }
@@ -401,7 +406,7 @@ var RegisteredArm = CreateClass({
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function (key, ind) {
                             var armName = armData[key][locale];
-                            if (filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element == "all")) {
+                            if (filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element3 == filterElement || armData[key].element == "all")) {
                                 if (filterText == "" || armName.toLowerCase().indexOf(filterText.toLowerCase()) != -1) {
                                     if (filterElement != "all" || displayed_count < limit) {
                                         displayed_count++;
@@ -514,7 +519,7 @@ var RegisteredArm = CreateClass({
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function (key, ind) {
                             var armName = armData[key][locale];
-                            if (filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element == "all")) {
+                            if (filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element3 == filterElement || armData[key].element == "all")) {
                                 if (filterText == "" || armName.toLowerCase().indexOf(filterText.toLowerCase()) != -1) {
                                     if (filterElement != "all" || displayed_count < limit) {
                                         displayed_count++;
@@ -523,7 +528,8 @@ var RegisteredArm = CreateClass({
                                                 <p>
                                                     {armName}<br/>
                                                     {intl.translate(skilltypes[armData[key].skill1].name, locale)}<br/>
-                                                    {intl.translate(skilltypes[armData[key].skill2].name, locale)}
+                                                    {intl.translate(skilltypes[armData[key].skill2].name, locale)}<br/>
+                                                    {intl.translate(skilltypes[armData[key].skill3].name, locale)}
                                                 </p>
                                                 <Image rounded style={{"width": "100%"}} onClick={clickedTemplate}
                                                        id={key} src={armData[key].imageURL} alt={key} onError={(e) => {

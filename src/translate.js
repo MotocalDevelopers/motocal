@@ -380,15 +380,15 @@ var multiLangData = {
         "en": "It is used to calc the Ougi damage.",
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
-    },
-    "ゼニスパーク": {
-        "en": "Zenith Perks",
-        "ja": "ゼニスパーク",
+	},
+    "リミットボーナス": {
+        "en": "Limit Bonus",
+        "ja": "リミットボーナス",
         "zh": "Zenith Perks",
     },
     "味方全体のHP": {
         "en": "HP Bonus for All member",
-        "ja": "味方HPゼニス",
+        "ja": "味方全体HP",
         "zh": "己方全体HP LB",
     },
     "Advanced": {
@@ -410,6 +410,16 @@ var multiLangData = {
         "en": "Select enemy's defense value.\nIt affects damage calculations.",
         "ja": "想定される敵の防御固有値を設定します。\n単攻撃ダメージ、奥義ダメージ、\n 予想ターン毎ダメージの計算に影響します。\n (単攻撃ダメージに減衰補正がかかる(44万超え) \n ような攻撃力でない限り、編成の順位自体は変化しないと思われます。)",
         "zh": "设定假想敌的防御值。\n影响攻击伤害、奥义伤害、预想DPT。",
+    },
+    "防御デバフ合計": {
+        "en": "Total defense debuff",
+        "ja": "防御デバフ合計",
+        "zh": "Total defense debuff",
+    },
+    "防御デバフ合計説明": {
+        "en": "Set sums of defense debuff values.",
+        "ja": "防御デバフの合計をパーセントで設定します。",
+        "zh": "Set sums of defense debuff values.",
     },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
@@ -472,17 +482,17 @@ var multiLangData = {
         "en": "Job bonuses and Favorite arm bonuses are automatically inclueded in calculation. Select \"none\" if you want no bonuses and favorite arms.",
         "ja": "ジョブごとのボーナス等は自動で反映されます。得意武器補正などを反映したくない場合\"なし\"を選択して下さい。",
         "zh": "不同职业的Bonus会自动反映。不想让得意武器补正之类反映出的话请选择\"无\"。",
-    },
-    "ゼニス攻撃力": {
-        "en": "Zenith Park ATK ",
-        "ja": "ゼニス攻撃力",
-        "zh": "LB 攻击力",
-    },
-    "ゼニスHP": {
-        "en": "Zenith Park HP ",
-        "ja": "ゼニスHP",
-        "zh": "LB HP",
-    },
+	},
+    "LB 攻撃力": {
+        "en": "ATK ",
+        "ja": "攻撃力",
+        "zh": "攻击力",
+	},
+    "LB HP": {
+        "en": "HP ",
+        "ja": "HP",
+        "zh": "HP",
+	},
     "マスボATK": {
         "en": "Master Bonus ATK ",
         "ja": "マスターボーナスATK",
@@ -517,20 +527,20 @@ var multiLangData = {
         "en": "Element Correlation is automatically judged.",
         "ja": "有利/非有利/不利は、敵の属性に従って自動で判定されます。",
         "zh": "有利/非有利/不利会随着敌人的属性自动判定出。",
-    },
-    "武器ゼニス1": {
+	},
+    "得意武器攻撃1": {
         "en": "Weapon I ",
-        "ja": "武器ゼニスI",
+        "ja": "得意武器攻撃I",
         "zh": "武器LB 1",
-    },
-    "武器ゼニス2": {
+	},
+    "得意武器攻撃2": {
         "en": "Weapon II ",
-        "ja": "武器ゼニスII",
+        "ja": "得意武器攻撃II",
         "zh": "武器LB 2",
-    },
-    "武器ゼニス説明": {
+	},
+    "得意武器攻撃の説明": {
         "en": "",
-        "ja": "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
+        "ja": "得意武器IIのLB（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
         "zh": "得意武器II的LB(★4以上)在I全部取得的前提下按6%, 8%, 10%计算。",
     },
     "攻撃ボーナス": {
@@ -1700,7 +1710,7 @@ var multiLangData = {
     },
     "通常楚歌": {
         "en": "Normal Betrayal",
-        "ja": "通常楚歌",
+        "ja": "通常楚歌(永続)",
         "zh": "通常楚歌",
     },
     "通常暴君": {
@@ -1758,6 +1768,11 @@ var multiLangData = {
         "ja": "通常三手(小)",
         "zh": "通常三手(小)",
     },
+    "通常三手(中)": {
+        "en": "Normal Trium (M)",
+        "ja": "通常三手(中)",
+        "zh": "通常三手(中)",
+    },
     "通常三手(大)": {
         "en": "Normal Trium (L)",
         "ja": "通常三手(大)",
@@ -1782,6 +1797,11 @@ var multiLangData = {
         "en": "Normal Majesty (M)",
         "ja": "通常神威(中)",
         "zh": "通常神威(中)",
+    },
+    "通常神威(大)": {
+        "en": "Normal Majesty (L)",
+        "ja": "通常神威(大)",
+        "zh": "通常神威(大)",
     },
     "通常括目": {
         "en": "Normal Heed",
@@ -1850,7 +1870,7 @@ var multiLangData = {
     },
     "先制": {
         "en": "Preemptive",
-        "ja": "先制",
+        "ja": "先制(永続)",
         "zh": "先制",
     },
     "マグナ攻刃": {
@@ -1865,7 +1885,7 @@ var multiLangData = {
     },
     "マグナ楚歌": {
         "en": "Magna Betrayal",
-        "ja": "マグナ楚歌",
+        "ja": "マグナ楚歌(永続)",
         "zh": "方阵楚歌",
     },
     "マグナ背水(小)": {
@@ -1888,10 +1908,25 @@ var multiLangData = {
         "ja": "マグナ渾身(中)",
         "zh": "方阵浑身(中)",
     },
+    "マグナ渾身(大)": {
+        "en": "Magna Stamina (L)",
+        "ja": "マグナ渾身(大)",
+        "zh": "方阵浑身(大)",
+    },
     "マグナ破壊(小)": {
         "en": "Magna Devastation (S)",
         "ja": "マグナ破壊(小)",
         "zh": "方阵破坏(小",
+    },
+    "マグナ三手(小)": {
+        "en": "Magna Trium (S)",
+        "ja": "マグナ三手(小)",
+        "zh": "方阵三手(小)",
+    },
+    "マグナ三手(中)": {
+        "en": "Magna Trium (M)",
+        "ja": "マグナ三手(中)",
+        "zh": "方阵三手(中)",
     },
     "マグナ三手(大)": {
         "en": "Magna Trium (L)",
@@ -1912,6 +1947,11 @@ var multiLangData = {
         "en": "Magna Majesty (M)",
         "ja": "マグナ神威(中)",
         "zh": "方阵神威(中)",
+    },
+    "マグナ神威(大)": {
+        "en": "Magna Majesty (L)",
+        "ja": "マグナ神威(大)",
+        "zh": "方阵神威(大)",
     },
     "マグナ暴君": {
         "en": "Magna Tyranny",
@@ -1960,7 +2000,7 @@ var multiLangData = {
     },
     "マグナ本質": {
         "en": "Magna Essence (M)",
-        "ja": "マグナ本質(中)",
+        "ja": "マグナ星晶(中)",
         "zh": "方阵本質(中)",
     },
 
@@ -2331,57 +2371,52 @@ var multiLangData = {
     },
     "オメガ-戦意": {
         "en": "Ultima (Will)",
-        "ja": "オメガ-戦意",
+        "ja": "オメガ-戦意(通常攻刃10%UP)",
         "zh": "Omega-战意",
     },
     "オメガ-闘争": {
         "en": "Ultima (Strife)",
-        "ja": "オメガ-闘争",
+        "ja": "オメガ-闘争(DATA20%UP)",
         "zh": "Omega-斗争",
     },
     "オメガ-生命": {
         "en": "Ultima (Vitality)",
-        "ja": "オメガ-生命",
+        "ja": "オメガ-生命(HP10%UP)",
         "zh": "Omega-生命",
     },
     "オメガ-強壮": {
         "en": "Ultima (Strength)",
-        "ja": "オメガ-強壮",
+        "ja": "オメガ-強壮(渾身(大))",
         "zh": "Omega-强壮",
     },
     "オメガ-激情": {
         "en": "Ultima (Zeal)",
-        "ja": "オメガ-激情",
+        "ja": "オメガ-激情(背水(大))",
         "zh": "Omega-激情",
     },
     "オメガ-勇気": {
         "en": "Ultima (Courage)",
-        "ja": "オメガ-勇気",
+        "ja": "オメガ-勇気(クリティカルUP(発動率10%,倍率50%))",
         "zh": "Omega-勇气",
     },
     "ガフスキー[α]": {
         "en": "Gauph Key α",
-        "ja": "ガフスキー[α]",
-        "zh": "1技能插件[α]",
-    },
-    "ガフスキー[α]": {
-        "en": "Gauph Key α",
-        "ja": "ガフスキー[α]",
+        "ja": "ガフスキー[α](通常上限10%UP)",
         "zh": "1技能插件[α]",
     },
     "ガフスキー[β]": {
         "en": "Gauph Key β",
-        "ja": "ガフスキー[β]",
+        "ja": "ガフスキー[β](アビ上限50%UP)",
         "zh": "1技能插件[β]",
     },
     "ガフスキー[γ]": {
         "en": "Gauph Key γ",
-        "ja": "ガフスキー[γ]",
+        "ja": "ガフスキー[γ](奥義上限15%UP)",
         "zh": "1技能插件[γ]",
     },
     "ガフスキー[Δ]": {
         "en": "Gauph Key Δ",
-        "ja": "ガフスキー[Δ]",
+        "ja": "ガフスキー[Δ](CB上限50%UP)",
         "zh": "1技能插件[Δ]",
     },
     "アーカーシャ-斧": {
@@ -2408,6 +2443,26 @@ var multiLangData = {
         "en": "Akasha (Spear)",
         "ja": "アーカーシャ-槍",
         "zh": "アーカーシャ-槍",
+    },
+    "振り子キー[α]": {
+        "en": "Pendulum Key α",
+        "ja": "振り子キー[α](通常上限10%UP)",
+        "zh": "振り子キー[α](通常上限10%UP)",
+    },
+    "振り子キー[β]": {
+        "en": "Pendulum Key β",
+        "ja": "振り子キー[β](アビ上限50%UP)",
+        "zh": "振り子キー[β](アビ上限50%UP)",
+    },
+    "振り子キー[γ]": {
+        "en": "Pendulum Key γ",
+        "ja": "振り子キー[γ](奥義上限15%UP)",
+        "zh": "振り子キー[γ](奥義上限15%UP)",
+    },
+    "振り子キー[Δ]": {
+        "en": "Pendulum Key Δ",
+        "ja": "振り子キー[Δ](CB上限50%UP)",
+        "zh": "振り子キー[Δ](CB上限50%UP)",
     },
     "天司の祝福": {
         "en": "Angel's Blessing",
@@ -2512,50 +2567,40 @@ var multiLangData = {
         "zh": "邪道: 通常上限UP(7.0%)",
     },
     "敵防御10": {
-        "en": "10.0(General)",
-        "ja": "10.0(一般的な敵)",
-        "zh": "10.0(一般的敌人)",
+        "en": "10 (General)",
+        "ja": "10 (一般的な敵)",
+        "zh": "10 (一般的敌人)",
+	},
+    "敵防御11": {
+        "en": "11 (GW Nightmare/Ul Baha HL/Proto Baha N)",
+        "ja": "11 (通常古戦場HELL/アルバハHL/プロバハN)",
+        "zh": "11 (GW Nightmare/Ul Baha HL/Proto Baha N)",
     },
-    "敵防御8": {
-        "en": "8.0(General -20% DEF)",
-        "ja": "8.0(一般 防御-20%)",
-        "zh": "8.0(一般 防御-20%)",
-    },
-    "敵防御7": {
-        "en": "7.0(General -30% DEF)",
-        "ja": "7.0(一般 防御-30%)",
-        "zh": "7.0(一般 防御-30%)",
-    },
-    "敵防御6.5": {
-        "en": "6.5(Tia-Magna, Chiva-Magna -50% DEF)",
-        "ja": "6.5(ティアシュバ防御-50%)",
-        "zh": "6.5(风、光方阵防御-50%)",
-    },
-    "敵防御5.5": {
-        "en": "5.5(Proto Bahamut -50%)",
-        "ja": "5.5(プロバハ(防御-50%))",
-        "zh": "5.5(巴哈(防御-50%))",
-    },
-    "敵防御5": {
-        "en": "5.0(General -50% DEF)",
-        "ja": "5.0(一般 防御-50%))",
-        "zh": "5.0(一般 防御-50%))",
+    "敵防御12": {
+        "en": "12 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+        "ja": "12 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL)",
+        "zh": "12 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
     },
     "敵防御13": {
-        "en": "13.0(Tia-Magna, Chiva-Magna)",
-        "ja": "13.0(ティアマグ・シュバマグ)",
-        "zh": "13.0(风、光方阵)",
+        "en": "13 (Omega II(4 Elements))",
+        "ja": "13 (マグナⅡ4属性)",
+        "zh": "13 (Omega II(4 Elements))",
+	},
+    "敵防御14": {
+        "en": "14 (Freyr)",
+        "ja": "14 (フレイ)",
+        "zh": "14 (Freyr)",
     },
-    "敵防御11": {
-        "en": "11.0(Proto Bahamut)",
-        "ja": "11.0(プロトバハムート)",
-        "zh": "11.0(巴哈)",
+    "敵防御15": {
+        "en": "15 (Malice/Akasha)",
+        "ja": "15 (マリス/アーカーシャ)",
+        "zh": "15 (Malice/Akasha)",
     },
     "敵防御20": {
-        "en": "20.0(Proto Baha HL)",
-        "ja": "20.0(プロトバハムートHL)",
-        "zh": "20.0(巴哈HL)",
-    },
+        "en": "20 (Proto Baha HL/Lucilius (HARD))",
+        "ja": "20 (プロトバハムートHL/ルシファー HARD)",
+        "zh": "20 (Proto Baha HL/Lucilius (HARD))",
+	},
     // chart sort key
     "ジータさん残りHP": {
         "en": "Player Remain HP",

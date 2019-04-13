@@ -282,11 +282,13 @@ var Arm = CreateClass({
             armType: 'sword',
             skill1: 'non',
             skill2: 'non',
+            skill3: 'non',
             slv: 1,
             considerNumberMin: 0,
             considerNumberMax: 1,
             element: 'fire',
             element2: 'fire',
+            element3: 'fire',
         };
     },
     componentWillReceiveProps: function (nextProps) {
@@ -312,6 +314,7 @@ var Arm = CreateClass({
             var newState = this.state;
             newState["element"] = nextProps.defaultElement;
             newState["element2"] = nextProps.defaultElement;
+            newState["element3"] = nextProps.defaultElement;
             this.setState(newState);
             this.props.onChange(this.props.id, newState, false);
         }
@@ -410,6 +413,8 @@ var Arm = CreateClass({
         state["skill1"] = newarm.skill1;
         state["element2"] = newarm.element2;
         state["skill2"] = newarm.skill2;
+        state["element3"] = newarm.element3;
+        state["skill3"] = newarm.skill3;
         state["slv"] = newarm.slv;
         state["considerNumberMax"] = parseInt(considerNum);
 
@@ -524,6 +529,15 @@ var Arm = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "element2")}> {selector[locale].elements} </FormControl>
                             <FormControl componentClass="select" value={this.state.skill2}
                                          onChange={this.handleSelectEvent.bind(this, "skill2")}> {selector[locale].skills}</FormControl><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("スキル", locale)}3</th>
+                        <td>
+                            <FormControl componentClass="select" value={this.state.element3}
+                                         onChange={this.handleSelectEvent.bind(this, "element3")}> {selector[locale].elements} </FormControl>
+                            <FormControl componentClass="select" value={this.state.skill3}
+                                         onChange={this.handleSelectEvent.bind(this, "skill3")}> {selector[locale].skills}</FormControl><br/>
                         </td>
                     </tr>
                     <tr>

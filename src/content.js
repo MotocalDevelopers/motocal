@@ -173,7 +173,11 @@ var Root = CreateClass({
         this.setState({noResultUpdate: true});
     },
     handleChangeData: function (newDataName, newData) {
-        // Update data held by Root
+        // デバフ量の初期値を設定(編成データの互換性対応)
+        if (typeof newData.profile.defenseDebuff === 'undefined')
+            newData.profile.defenseDebuff = 0;
+
+        // Rootが持つデータを更新
         this.setState({armNum: newData.armNum});
         this.setState({summonNum: newData.summonNum});
         this.setState({charaNum: newData.charaNum});

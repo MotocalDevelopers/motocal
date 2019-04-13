@@ -629,6 +629,27 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "ヴィーラ(風属性ver)": {
+        "name": "ヴィーラ(風属性ver)",
+        "ja": "ヴィーラ(風属性ver)",
+        "element": "wind",
+        "type": "attack",
+        "race": "human",
+        "sex": "female",
+        "fav1": "music",
+        "fav2": "fist",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "200",
+        "hp": "1250",
+        "minattack": "2000",
+        "attack": "9750",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040211000_01.png",
+        "en": "Vira (Wind)"
+    },
     "ユエル(水着ver)": {
         "name": "ユエル(水着ver)",
         "ja": "ユエル(水着ver)",
@@ -4422,12 +4443,12 @@
         "support2": "atk_up_depends_races",
         "support3": "none",
         "minhp": "296",
-        "hp": "1580",
+        "hp": "1876",
         "minattack": "1220",
-        "attack": "6500",
+        "attack": "7720",
         "baseDA": 4.0,
         "baseTA": 1.0,
-        "imageURL": "./charaimgs/3040007000_01.png",
+        "imageURL": "./charaimgs/3040007000_03.png",
         "en": "Lily"
     },
     "ユエル": {
