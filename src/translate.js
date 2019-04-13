@@ -2000,7 +2000,7 @@ var multiLangData = {
     },
     "マグナ本質": {
         "en": "Magna Essence (M)",
-        "ja": "マグナ本質(中)",
+        "ja": "マグナ星晶(中)",
         "zh": "方阵本質(中)",
     },
 
