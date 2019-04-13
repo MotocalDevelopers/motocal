@@ -1418,7 +1418,7 @@ var supportAbilities = {
         "value": 0.00
     },
     "da_up_fist_10": {
-        "name": "全体風DA率UP10%(ガンダゴウザ)",
+        "name": "格闘キャラDA率10%UP(ガンダゴウザ)",
         "type": "daBuff_fist",
         "range": "all",
         "value": 0.10
