@@ -716,6 +716,7 @@ skillnamelist["strengthL"] = {
     u"ふわふわしっぽ": "earth",
     u"ゲイルオブアームズ": "wind",
     u"獅子と牛の咆哮": "dark",
+    u"サイコ攻刃": "earth",
 }
 
 skillnamelist["exATKandHPM"] = {

@@ -12345,6 +12345,22 @@
         "imageURL": "./imgs/1040610900.png",
         "en": "Neko Punch Pro"
     },
+    "サイコガントレット": {
+        "ja": "サイコガントレット",
+        "element": "earth",
+        "type": "fist",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "earth",
+        "minhp": "32",
+        "minattack": "300",
+        "hp": "200",
+        "attack": "1882",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040611200.png",
+        "en": "Psycho Gauntlet"
+    },
     "エーテリアルボウ": {
         "ja": "エーテリアルボウ",
         "element": "wind",
@@ -13360,6 +13376,22 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040808800.png",
         "en": "Golden Bell"
+    },
+    "アナザースカイ": {
+        "ja": "アナザースカイ",
+        "element": "wind",
+        "type": "music",
+        "skill1": "normalL",
+        "skill2": "normalHiouS",
+        "element2": "wind",
+        "minhp": "70",
+        "minattack": "370",
+        "hp": "240",
+        "attack": "2222",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040809300.png",
+        "en": "Another Sky"
     },
     "丙子椒林剣": {
         "ja": "丙子椒林剣",
