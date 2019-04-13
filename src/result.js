@@ -1312,7 +1312,7 @@ var Result = CreateClass({
                             return (<td key={ind}>{am}</td>);
                         })}
                         {m.armNumbers.map(function (am, ind) {
-                            if (arm[ind].considerNumberMax != 0) {
+                            if (typeof arm[ind] !== 'undefined' && arm[ind].considerNumberMax != 0) {
                                 ++colSize;
                                 if (parseInt(am) > 0) {
                                     return (<td key={ind}><span
