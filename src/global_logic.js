@@ -1338,7 +1338,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 totals[key]["magnaLesserSante"] += comb[i] * skillAmounts["magnaRanbu"][amount][slv - 1];
                             } else if (stype == 'magnaGunshin') {
                                 totals[key]["magnaHP"] += comb[i] * skillAmounts["magnaHP"][amount][slv - 1];
-                                totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaNite"][amount][slv - 1];
+                                totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaGunshin"][amount][slv - 1];
                             } else if (stype == 'normalHiou') {
                                 totals[key]["ougiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
                             } else if (stype == 'normalHissatsu') {
