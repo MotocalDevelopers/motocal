@@ -851,8 +851,9 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
                 // Magna Stamina (M)
                 return Math.pow(100.0 * remainHP / (60.4 - haisuiSLv), 2.9) + 2.1;
             } else {
-                // Magna Stamina (L) (APPROXIMATION)
-                return Math.pow(100.0 * remainHP / (54.0 - haisuiSLv), 2.9) + 2.1;
+                // Magna Stamina (L)
+                // ref: https://twitter.com/Hecate_mk2/status/1117394776414777344
+                return Math.pow(100.0 * remainHP / (56.4 - haisuiSLv), 2.9) + 2.1;
             }
         }
     } else if (haisuiType === "omegaKonshin") {
