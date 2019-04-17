@@ -816,7 +816,7 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
             } else if (haisuiSLv <= 15) {
                 baseRate = 24 + 6.0 * ((haisuiSLv - 10) / 5.0)
             } else {
-                baseRate = 30 + 6.0 * ((haisuiSLv - 15) / 5.0)
+                baseRate = 30 + 2.5 * ((haisuiSLv - 15) / 5.0)
             }
         } else {
             // 大
@@ -825,7 +825,7 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
             } else if (haisuiSLv <= 15) {
                 baseRate = 30 + 7.5 * ((haisuiSLv - 10) / 5.0)
             } else {
-                baseRate = 37.5 + 7.5 * ((haisuiSLv - 15) / 5.0)
+                baseRate = 37.5 + 3.0 * ((haisuiSLv - 15) / 5.0)
             }
         }
         return (baseRate / 3.0) * (2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0)
@@ -836,11 +836,19 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
 
             } else if (haisuiAmount === "M") {
                 // Normal Stamina (M)
-                return Math.pow(100.0 * remainHP / (65.0 - haisuiSLv), 2.9) + 2.1;
+                if (haisuiSLv < 15) {
+                    return Math.pow(100.0 * remainHP / (65.0 - haisuiSLv), 2.9) + 2.1;
+                } else {
+                    return Math.pow(100.0 * remainHP / (65.0 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
+                }
             } else {
                 // Normal Stamina (L)
                 // ref: http://binarysblog.blog.fc2.com/blog-entry-1.html
-                return Math.pow(100.0 * remainHP / (56.4 - haisuiSLv), 2.9) + 2.1;
+                if (haisuiSLv < 15) {
+                    return Math.pow(100.0 * remainHP / (56.4 - haisuiSLv), 2.9) + 2.1;
+                } else {
+                    return Math.pow(100.0 * remainHP / (56.4 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
+                }
             }
         }
     } else if (haisuiType === "magnaKonshin") {
@@ -849,11 +857,19 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
 
             } else if (haisuiAmount === "M") {
                 // Magna Stamina (M)
-                return Math.pow(100.0 * remainHP / (60.4 - haisuiSLv), 2.9) + 2.1;
+                if (haisuiSLv < 15) {
+                    return Math.pow(100.0 * remainHP / (60.4 - haisuiSLv), 2.9) + 2.1;
+                } else {
+                    return Math.pow(100.0 * remainHP / (60.4 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
+                }
             } else {
                 // Magna Stamina (L)
                 // ref: https://twitter.com/Hecate_mk2/status/1117394776414777344
-                return Math.pow(100.0 * remainHP / (56.4 - haisuiSLv), 2.9) + 2.1;
+                if (haisuiSLv < 15) {
+                    return Math.pow(100.0 * remainHP / (56.4 - haisuiSLv), 2.9) + 2.1;
+                } else {
+                    return Math.pow(100.0 * remainHP / (56.4 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
+                }
             }
         }
     } else if (haisuiType === "omegaKonshin") {
@@ -947,14 +963,7 @@ module.exports.getTotalBuff = function (prof) {
 
 function maskInvalidSkillLevel(slv, stype, amount) {
     if (slv < 1) return 1;
-    if (slv > 15) {
-        if (stype === 'magna') return slv;
-        if (stype === 'magnaHaisui' && amount === 'S') return slv;
-        if (stype === 'normal' && amount === 'S') return slv;
-        if (stype === 'magnaKamui' && amount === 'S') return slv;
-        // If not applicable, set the upper limit to SLv 15
-        return 15;
-    }
+    if (slv > 20) return 20;
     return slv;
 }
 

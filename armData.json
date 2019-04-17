@@ -6111,7 +6111,7 @@
         "ja": "[4凸]イクサバ",
         "element": "fire",
         "type": "katana",
-        "skill1": "normalLL",
+        "skill1": "normalLLM",
         "skill2": "normalKonshinM",
         "element2": "fire",
         "skill3": "non",

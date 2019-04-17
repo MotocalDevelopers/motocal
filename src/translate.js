@@ -421,6 +421,16 @@ var multiLangData = {
         "ja": "防御デバフの合計をパーセントで設定します。",
         "zh": "Set sums of defense debuff values.",
     },
+    "防御デバフ合計": {
+        "en": "Total defense debuff",
+        "ja": "防御デバフ合計",
+        "zh": "Total defense debuff",
+    },
+    "防御デバフ合計説明": {
+        "en": "Set sums of defense debuff values.",
+        "ja": "防御デバフの合計をパーセントで設定します。",
+        "zh": "Set sums of defense debuff values.",
+    },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
         "ja": "ジータさんの基礎DA率を設定します。\nジョブを変更すると自動的に切り替わります。",
