@@ -281,8 +281,8 @@ var limitBonusCriticalList = {
     },
     "small": {
         "name": "小",
-        "value": 0.125,
-        "attackRatio": 0.125,
+        "value": 0.12,
+        "attackRatio": 0.12,
     },
     "medium": {
         "name": "中",
