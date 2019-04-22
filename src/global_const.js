@@ -1057,7 +1057,7 @@ module.exports.Jobs = {
         "atBonus": 0.0,
         "kouzinBonus": 0.0,
         "hpBonus": 0.0,
-        "shugoBonus": 0.0,
+        "shugoBonus": 5.0,
         "DaBonus": 23.0,
         "TaBonus": 5.0
     },
