@@ -63,8 +63,9 @@ supportAbilist["recklessness_incarnate"] = {u"猪突・上宝沁金ノ撃槍"}
 supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
-supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"}
-supportAbilist["damageUP_10"] = {u"婉麗な姉"}
+supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"} 
+#The effect size of "真っ二つにしてやるんだっ！" has not been verified.
+#supportAbilist["damageUP_10"] =  {u""} 
 supportAbilist["damageUP_20"] = {
     u"炎帝の刃",
     u"冷たい女",
