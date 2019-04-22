@@ -223,7 +223,7 @@ var multiLangData = {
     },
     "通常バフ説明": {
         "en": "Normal Buff",
-        "ja": "通常枠のバフ",
+        "ja": "攻刃(攻撃)バフ。レイジなど。",
         "zh": "通常攻刃Buff",
     },
     "属性バフ": {
@@ -233,7 +233,7 @@ var multiLangData = {
     },
     "属性バフ説明": {
         "en": "Element Buff",
-        "ja": "属性枠のバフ",
+        "ja": "属性枠のバフ。",
         "zh": "属性Buff",
     },
     "その他バフ": {
@@ -243,7 +243,7 @@ var multiLangData = {
     },
     "その他バフ説明": {
         "en": "Other Buff",
-        "ja": "別枠乗算のバフ",
+        "ja": "別枠乗算のバフ。騎空艇効果(10%)、騎空団炉サポ効果(10%)、副団アビ(5%)、攻撃アビ(20%)など。",
         "zh": "独立乘算Buff",
     },
     "その他バフ2": {
@@ -263,7 +263,7 @@ var multiLangData = {
     },
     "HPバフ説明": {
         "en": "HP Buff(GW Buff etc.)",
-        "ja": "HP上昇のバフ(古戦場スタックとかの計算用)",
+        "ja": "HP上昇のバフ。副団長アビ(10%)、防衛アビ(20%)など。",
         "zh": "HP上升Buff(古战场等计算用)",
     },
     "DAバフ": {
@@ -273,7 +273,7 @@ var multiLangData = {
     },
     "DAバフ説明": {
         "en": "Double Attack Buff for Party. The value will be added to Character's base double attack ratio.",
-        "ja": "DA率が上がります。各キャラの基礎DA率に加算されます。",
+        "ja": "DA率が上がります。各キャラの基礎DA率に加算されます。四天刃(30%)など。",
         "zh": "DA率上升。加在每个角色的基础DA率上。",
     },
     "TAバフ": {
@@ -283,7 +283,7 @@ var multiLangData = {
     },
     "TAバフ説明": {
         "en": "Triple Attack Buff for Party. The value will be added to Character's base triple attack ratio.",
-        "ja": "TA率が上がります。各キャラの基礎TA率に加算されます。",
+        "ja": "TA率が上がります。各キャラの基礎TA率に加算されます。四天刃(30%)など。",
         "zh": "TA率上升。加在每个角色的基础DA率上。",
     },
     "追加ダメージ": {
@@ -298,7 +298,7 @@ var multiLangData = {
     },
     "追加ダメージバフ説明": {
         "en": "Additional damage will be added to \"Expected Turn Damage\".",
-        "ja": "追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。",
+        "ja": "追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)など。",
         "zh": "视作追加伤害，额外加在伤害上。用在预想DPT的计算中。",
     },
     "与ダメージ上昇": {
@@ -363,7 +363,7 @@ var multiLangData = {
     },
     "ダメージ上限アップ説明": {
         "en": "It is used to calc the normal attack damage.",
-        "ja": "通常攻撃ダメージの算出に使用されます。",
+        "ja": "通常攻撃ダメージの算出に使用されます。グラブルの仕様とは異なり奥義ダメージ上限は上がりません。",
         "zh": "通常攻击伤害的计算中有用到。",
     },
     "奥義ダメージ上限アップ": {
