@@ -144,13 +144,14 @@ var limitBonusCriticalList = {
 };
 
 var enemyDefenseType = {
-    10.0: { "name": "敵防御10" },
-    11.0: { "name": "敵防御11" },
-    12.0: { "name": "敵防御12" },
-    13.0: { "name": "敵防御13" },
-    14.0: { "name": "敵防御14" },
-    15.0: { "name": "敵防御15" },
-    20.0: { "name": "敵防御20" },
+    10.0: { "name": "敵防御10.0" },
+    10.5: { "name": "敵防御10.5" },
+    11.0: { "name": "敵防御11.0" },
+    12.0: { "name": "敵防御12.0" },
+    13.0: { "name": "敵防御13.0" },
+    14.0: { "name": "敵防御14.0" },
+    15.0: { "name": "敵防御15.0" },
+    20.0: { "name": "敵防御20.0" },
 }
 var keyTypes = {
     "totalAttack": "攻撃力(二手技巧無し,ジータさんのみ)",
@@ -977,9 +978,9 @@ module.exports.selector.zh.supported_simulationchartsortkeys = Object.keys(suppo
 module.exports.supportedChartSortkeys = supportedChartSortkeys
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys
 
-module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "ja")}</option>; });
-module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "en")}</option>; });
-module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "zh")}</option>; });
+module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).sort().map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "ja")}</option>; });
+module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).sort().map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "en")}</option>; });
+module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).sort().map(function (opt) { return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "zh")}</option>; });
 
 module.exports.selector.supportAbilities = Object.keys(supportAbilities).map(function (opt) { return <option value={opt} key={opt}>{supportAbilities[opt].name}</option>; });
 

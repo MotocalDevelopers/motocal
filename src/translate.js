@@ -407,9 +407,9 @@ var multiLangData = {
         "zh": "Total defense debuff",
     },
     "防御デバフ合計説明": {
-        "en": "Set sums of defense debuff values.",
-        "ja": "防御デバフの合計をパーセントで設定します。",
-        "zh": "Set sums of defense debuff values.",
+        "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
+        "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
+        "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
     },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
@@ -2368,40 +2368,45 @@ var multiLangData = {
         "ja": "邪道: 通常上限UP(7.0%)",
         "zh": "邪道: 通常上限UP(7.0%)",
 	},
-    "敵防御10": {
-        "en": "10 (General)",
-        "ja": "10 (一般的な敵)",
-        "zh": "10 (一般的敌人)",
+    "敵防御10.0": {
+        "en": "10.0 (General)",
+        "ja": "10.0 (一般的な敵)",
+        "zh": "10.0 (一般的敌人)",
+    },
+    "敵防御10.5": {
+        "en": "10.5 (Ul Baha N)",
+        "ja": "10.5 (アルバハN)",
+        "zh": "10.5 (Ul Baha N)",
+    },
+    "敵防御11.0": {
+        "en": "11.0 (GW Nightmare/Ul Baha HL/Proto Baha N)",
+        "ja": "11.0 (通常古戦場HELL/アルバハHL/プロバハN)",
+        "zh": "11.0 (GW Nightmare/Ul Baha HL/Proto Baha N)",
+    },
+    "敵防御12.0": {
+        "en": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+        "ja": "12.0 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL)",
+        "zh": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+    },
+    "敵防御13.0": {
+        "en": "13.0 (Omega II(4 Elements))",
+        "ja": "13.0 (マグナⅡ4属性)",
+        "zh": "13.0 (Omega II(4 Elements))",
 	},
-    "敵防御11": {
-        "en": "11 (GW Nightmare/Ul Baha HL/Proto Baha N)",
-        "ja": "11 (通常古戦場HELL/アルバハHL/プロバハN)",
-        "zh": "11 (GW Nightmare/Ul Baha HL/Proto Baha N)",
+    "敵防御14.0": {
+        "en": "14.0 (Freyr)",
+        "ja": "14.0 (フレイ)",
+        "zh": "14.0 (Freyr)",
     },
-    "敵防御12": {
-        "en": "12 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
-        "ja": "12 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL)",
-        "zh": "12 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+    "敵防御15.0": {
+        "en": "15.0 (Malice/Akasha/Lucilius N)",
+        "ja": "15.0 (マリス/アーカーシャ/ルシファーN)",
+        "zh": "15.0 (Malice/Akasha/Lucilius N)",
     },
-    "敵防御13": {
-        "en": "13 (Omega II(4 Elements))",
-        "ja": "13 (マグナⅡ4属性)",
-        "zh": "13 (Omega II(4 Elements))",
-	},
-    "敵防御14": {
-        "en": "14 (Freyr)",
-        "ja": "14 (フレイ)",
-        "zh": "14 (Freyr)",
-    },
-    "敵防御15": {
-        "en": "15 (Malice/Akasha)",
-        "ja": "15 (マリス/アーカーシャ)",
-        "zh": "15 (Malice/Akasha)",
-    },
-    "敵防御20": {
-        "en": "20 (Proto Baha HL/Lucilius (HARD))",
-        "ja": "20 (プロトバハムートHL/ルシファー HARD)",
-        "zh": "20 (Proto Baha HL/Lucilius (HARD))",
+    "敵防御20.0": {
+        "en": "20.0 (Proto Baha HL/Lucilius H)",
+        "ja": "20.0 (プロトバハムートHL/ルシファーH)",
+        "zh": "20.0 (Proto Baha HL/Lucilius H)",
 	},
     // chart sort key
     "ジータさん残りHP": {
