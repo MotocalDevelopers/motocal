@@ -100,6 +100,8 @@ supportAbilist["wildcard"] = {
 patching = OrderedDict()
 
 # Consecutive atk rate from すんどめ侍さん
+# default: DA7%,TA3%
+# Once we assume that the version differences are the same.(The possibility of being different is high.)
 ## Eternals
 patching["[最終]ソーン"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]サラーサ"] = {"DA": 5.0, "TA": 1.0}
@@ -107,7 +109,7 @@ patching["[最終]カトル"] = {"DA": 10.0, "TA": 5.0}
 patching["[最終]フュンフ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]シス"] = {"DA": 1000.0, "TA": 0.0}
 patching["[最終]シエテ"] = {"DA": 10.0, "TA": 5.0}
-patching["[最終]オクトー"] = {"DA": 25.0, "TA": 1.0}
+patching["[最終]オクトー"] = {"DA": 25.0, "TA": 1.0} ##support skill DA20%
 patching["[最終]ニオ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]エッセル"] = {"DA": 10.0, "TA": 5.0}
 patching["ソーン"] = {"DA": 4.0, "TA": 1.0}
@@ -131,39 +133,55 @@ patching["アリーザ(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["グレア"] = {"DA": 10.0, "TA": 5.0}
 patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
 patching["アラナン"] = {"DA": 10.0, "TA": 5.0}
+patching["パーシヴァル"] = {"DA": 10.0, "TA": 5.0}
+
+patching["ユエル"] = {"DA": 12.0, "TA": 3.0} ##support skill DA5%
 
 patching["アオイドス"] = {"DA": 4.0, "TA": 1.0}
 patching["アニラ"] = {"DA": 4.0, "TA": 1.0}
 patching["アギエルバ"] = {"DA": 4.0, "TA": 1.0}
 patching["ザルハメリナ"] = {"DA": 4.0, "TA": 1.0}
+patching["イオ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 
-patching["ユエル"] = {"DA": 12.0, "TA": 3.0}
-patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 1000.0, "TA": 0.0}
+patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 1000.0, "TA": 3.0}
 
 ### SR
 patching["ジェミニ・サンライズ"] = {"DA": 10.0, "TA": 5.0}
+patching["テレーズ(バニーver)"] = {"DA": 10.0, "TA": 5.0}
+patching["天道輝"] = {"DA": 10.0, "TA": 5.0}
 
 ## 水 - Water
 patching["イングヴェイ"] = {"DA": 10.0, "TA": 5.0}
 patching["シルヴァ"] = {"DA": 10.0, "TA": 5.0}
-patching["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patching["ランスロット(SSR)"] = {"DA": 25.0, "TA": 5.0} ##support skill DA15%
 patching["桜内梨子＆高海千歌＆渡辺 曜"] = {"DA": 10.0, "TA": 5.0}
 patching["ヴァジラ"] = {"DA": 10.0, "TA": 5.0}
 patching["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ソシエ"] = {"DA": 10.0, "TA": 5.0}
+patching["ソシエ"] = {"DA": 20.0, "TA": 5.0} ##support skill DA10%
 patching["イシュミール"] = {"DA": 10.0, "TA": 5.0}
+patching["イシュミール(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["グレア(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 
 patching["リリィ"] = {"DA": 4.0, "TA": 1.0}
 patching["エウロペ"] = {"DA": 4.0, "TA": 1.0}
+patching["ダヌア(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
+patching["シャルロッテ"] = {"DA": 4.0, "TA": 1.0}
 
 ### SR
-patching["ユエル(イベントver)"] = {"DA": 12.0, "TA": 3.0}
+patching["アンジェ"] = {"DA": 12.0, "TA": 3.0}  ##support skill DA5%
+
+patching["テレーズ"] = {"DA": 10.0, "TA": 5.0}
+patching["春麗"] = {"DA": 10.0, "TA": 5.0}
+
+patching["オーウェン"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 土 - Earth
 patching["アレーティア"] = {"DA": 10.0, "TA": 5.0}
 patching["ダーント＆フライハイト"] = {"DA": 10.0, "TA": 5.0}
 patching["ヴィーラ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["キャサリン"] = {"DA": 10.0, "TA": 5.0}
+patching["ネモネ"] = {"DA": 10.0, "TA": 5.0}
+patching["ユーステス(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
 
 patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
 patching["サラ"] = {"DA": 4.0, "TA": 1.0}
@@ -171,17 +189,34 @@ patching["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
 
 patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
+patching["ユーステス(ハロウィンver)"] = {"DA": 13.0, "TA": 5.5}
+patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 6.0, "TA": 5.0}
 
 ### SR
+patching["カルメリーナ(SR)"] = {"DA": 4.0, "TA": 1.0}
 
 ## 風 - Wind
-patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
-patching["ヘルエス(風属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ユエル(水着ver)"] = {"DA": 10.0, "TA": 5.0}
-
+patching["ユエル(水着ver)"] = {"DA": 12.0, "TA": 3.0}
 patching["コッコロ"] = {"DA": 12.0, "TA": 3.0}
 
+patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
+patching["ヘルエス(風属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["メリッサベル"] = {"DA": 10.0, "TA": 5.0}
+patching["スカーサハ"] = {"DA": 10.0, "TA": 5.0}
+patching["ジャンヌダルク(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+
+patching["コルワ"] = {"DA": 4.0, "TA": 1.0}
+patching["コルワ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
+patching["フィーナ(SSR)"] = {"DA": 4.0, "TA": 1.0}
+patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
+
+patching["リヴァイ"] = {"DA": 0.0, "TA": 1000.0}
+
 ### SR
+patching["ユイシス(浴衣ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
+
+patching["フィーナ"] = {"DA": 4.0, "TA": 1.0}
 
 ## 光 - Light
 patching["アーミラ(SSR)"] = {"DA": 10.0, "TA": 5.0}
@@ -191,17 +226,31 @@ patching["ジャンヌダルク"] = {"DA": 10.0, "TA": 5.0}
 patching["セルエル"] = {"DA": 10.0, "TA": 5.0}
 patching["ロザミア(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["メリッサベル(バレンタインver)"] = {"DA": 10.0, "TA": 5.0}
+patching["メーテラ(クリスマスver)"] = {"DA": 10.0, "TA": 5.0}
+patching["シルヴァ(光属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ルシオ(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
 
 patching["バウタオーダ(SSR)"] = {"DA": 4.0, "TA": 1.0}
 patching["イオ(リミテッドver)"] = {"DA": 4.0, "TA": 1.0}
 patching["ソフィア"] = {"DA": 4.0, "TA": 1.0}
+patching["レ・フィーエ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
+patching["レ・フィーエ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
+patching["シャルロッテ(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
+patching["シャルロッテ(光属性ver)"] = {"DA": 4.0, "TA": 1.0}
 
-patching["アルベール"] = {"DA": 1000.0, "TA": 0.0}
-patching["プリキュア"] = {"DA": 1000.0, "TA": 0.0}
-patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 1000.0, "TA": 0.0}
+patching["アルベール"] = {"DA": 1000.0, "TA": 3.0}
+patching["プリキュア"] = {"DA": 1000.0, "TA": 3.0}
+patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 1000.0, "TA": 3.0}
 
 ### SR
-patching["アルベール(SR)"] = {"DA": 1000.0, "TA": 0.0}
+patching["ゼタ(SR)"] = {"DA": 10.0, "TA": 5.0}
+patching["フェリ(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
+
+patching["アンジェ(ハロウィンver)"] = {"DA": 12.0, "TA": 3.0}  ##support skill DA5%
+
+patching["フィーナ(クリスマスver)"] = {"DA": 4.0, "TA": 1.0}
+
+patching["アルベール(SR)"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 闇 - Dark
 patching["フォルテ"] = {"DA": 10.0, "TA": 5.0}
@@ -215,13 +264,14 @@ patching["アザゼル"] = {"DA": 10.0, "TA": 5.0}
 patching["バザラガ"] = {"DA": 4.0, "TA": 1.0}
 patching["ダヌア(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["カリオストロ(闇属性ver)"] = {"DA": 4.0, "TA": 1.0}
+patching["ベアトリクス"] = {"DA": 4.0, "TA": 1.0}
 
 patching["ウーフとレニー"] = {"DA": 1000.0, "TA": 1000.0}
 patching["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
-patching["ゾーイ(水着ver)"] = {"DA": 17.0, "TA": 6.0}
 patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 
 ### SR
+patching["プレデター"] = {"DA": 1000.0, "TA": 3.0}
 
 ########################################################################################################################
 filename = inspect.getframeinfo(inspect.currentframe()).filename
