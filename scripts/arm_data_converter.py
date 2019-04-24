@@ -112,6 +112,15 @@ skillnamelist["normalSanteL"] = {
     u"奈落の三手": "dark"
 }
 
+skillnamelist["normalSanteM"] = {
+    u"業火の三手": "fire",
+    u"渦潮の三手": "water",
+    u"大地の三手": "earth",
+    u"竜巻の三手": "wind",
+    u"雷電の三手": "light",
+    u"憎悪の三手": "dark"
+}
+
 # Although stamina can be handled normally at present, if ~ star skill is to be treated as a separate frame, it is necessary to make it different skill
 skillnamelist["normalKonshinL"] = {
     u"紅蓮の渾身": "fire",
@@ -416,6 +425,16 @@ skillnamelist["normalOntyouM"] = {
     u"憎悪の恩寵": "dark"
 }
 
+# Essence
+skillnamelist["normalSeisyouM"] = {
+    u"業火の星晶": "fire",
+    u"渦潮の星晶": "water",
+    u"大地の星晶": "earth",
+    u"竜巻の星晶": "wind",
+    u"雷電の星晶": "light",
+    u"憎悪の星晶": "dark"
+}
+
 # magna II
 skillnamelist["magnaL"] = {
     u"機炎方陣・攻刃II": "fire",
@@ -648,15 +667,30 @@ skillnamelist["magnaHissatsuM"] = {
 }
 
 skillnamelist["magnaJojutsuL"] = {
-    u"海神方陣・杖術": "water"
+    u"機炎方陣・杖術": "fire",
+    u"海神方陣・杖術": "water",
+    u"創樹方陣・杖術": "earth",
+    u"嵐竜方陣・杖術": "wind",
+    u"騎解方陣・杖術": "light",
+    u"黒霧方陣・杖術": "dark"
 }
 
 skillnamelist["magnaKenbuL"] = {
-    u"機炎方陣・拳武": "fire"
+    u"機炎方陣・拳武": "fire",
+    u"海神方陣・拳武": "water",
+    u"創樹方陣・拳武": "earth",
+    u"嵐竜方陣・拳武": "wind",
+    u"騎解方陣・拳武": "light",
+    u"黒霧方陣・拳武": "dark"
 }
 
 skillnamelist["magnaSeisyouM"] = {
-    u"嵐竜方陣・星晶": "wind"
+    u"機炎方陣・星晶": "fire",
+    u"海神方陣・星晶": "water",
+    u"創樹方陣・星晶": "earth",
+    u"嵐竜方陣・星晶": "wind",
+    u"騎解方陣・星晶": "light",
+    u"黒霧方陣・星晶": "dark"
 }
 
 # Unknown skills
@@ -832,6 +866,15 @@ skillnamelist["cosmos-katana"] = {u"ブレイド": "light"}
 skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
 
 # Tenshi
+skillnamelist["tenshiShukufukuIII"] = {
+    u"ミカエルの祝福III": "fire",
+    u"ガブリエルの祝福III": "water",
+    u"ウリエルの祝福III": "earth",
+    u"ラファエルの祝福III": "wind",
+    u"双子天司の導きIII": "light",
+    u"堕落のすゝめIII": "dark",
+}
+
 skillnamelist["tenshiShukufukuII"] = {
     u"ミカエルの祝福II": "fire",
     u"ガブリエルの祝福II": "water",

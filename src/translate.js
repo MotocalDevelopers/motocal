@@ -1878,6 +1878,11 @@ var multiLangData = {
         "ja": "通常恩寵(中)",
         "zh": "通常恩寵(中)",
     },
+    "通常ナ本質(中)": {
+        "en": "Normal Essence (M)",
+        "ja": "通常ナ本質(中)",
+        "zh": "通常本質(中)",
+    },
     "先制": {
         "en": "Preemptive",
         "ja": "先制(永続)",
@@ -1998,22 +2003,21 @@ var multiLangData = {
         "ja": "マグナ必殺(中)",
         "zh": "方阵必杀(中)",
     },
-    "マグナ拳武": {
+    "マグナ拳武(大)": {
         "en": "Magna Fist (L)",
         "ja": "マグナ拳武(大)",
         "zh": "方阵拳武(大)",
     },
-    "マグナ杖術": {
+    "マグナ杖術(大)": {
         "en": "Magna Wand (L)",
         "ja": "マグナ杖術(大)",
         "zh": "方阵杖術(大)",
     },
-    "マグナ本質": {
+    "マグナ本質(中)": {
         "en": "Magna Essence (M)",
         "ja": "マグナ星晶(中)",
         "zh": "方阵本質(中)",
     },
-
     "アンノウンATK・I": {
         "en": "Unknown ATK I",
         "ja": "アンノウンATK・I",
@@ -2483,6 +2487,11 @@ var multiLangData = {
         "en": "Angel's Blessing II",
         "ja": "天司の祝福II",
         "zh": "天司的祝福II",
+    },
+    "天司の祝福III": {
+        "en": "Angel's Blessing III",
+        "ja": "天司の祝福III",
+        "zh": "天司的祝福III",
     },
     "通常上限UP(2.5%)": {
         "en": "Damage Limit UP(2.5%)",

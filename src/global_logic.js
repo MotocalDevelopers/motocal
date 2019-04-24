@@ -1417,6 +1417,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     totals[key]["tenshiDamageUP"] += comb[i] * 0.10;
                                 } else if (amount == 'L') {
                                     totals[key]["tenshiDamageUP"] += comb[i] * 0.20;
+                                } else if (amount == 'LL') {
+                                    totals[key]["tenshiDamageUP"] += comb[i] * 0.23;
                                 }
                                 // Damage upper limit up system works for both mystery and normal
                             } else if (stype == 'normalDamageLimit') {
@@ -1453,33 +1455,38 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 if (key == 'Djeeta') {
                                     totals[key]["normalOtherSante"] += amount;
                                 }
-                                // Normal Soka is effective for up to one effect and the one with the larger effective amount has priority
                             } else if (stype == 'normalSoka') {
+                                // Normal Soka is effective for up to one effect and the one with the larger effective amount has priority
                                 if (skillAmounts[stype][amount][slv - 1] > totals[key]["normalSoka"]) {
                                     totals[key]["normalSoka"] = skillAmounts[stype][amount][slv - 1];
                                 }
-                                // Magna Soka effect is effective up to one with greater effect size
                             } else if (stype == 'magnaSoka') {
+                                // Magna Soka effect is effective up to one with greater effect size
                                 if (skillAmounts[stype][amount][slv - 1] > totals[key]["magnaSoka"]) {
                                     totals[key]["magnaSoka"] = skillAmounts[stype][amount][slv - 1];
                                 }
-                                // Preemptive is effective up to 1, whichever is greater
                             } else if (stype == 'sensei') {
+                                // Preemptive is effective up to 1, whichever is greater
                                 if (skillAmounts[stype][amount][slv - 1] > totals[key]["sensei"]) {
                                     totals[key]["sensei"] = skillAmounts[stype][amount][slv - 1];
                                 }
-                                // Shiva fist weapon skill only applies to fist prof characters
                             } else if (stype == 'magnaKenbu') {
+                                // Only applies to fist prof characters
                                 if (totals[key]["fav1"] == "fist" || totals[key]["fav2"] == "fist" || totals[key]["support"] === "wildcard") {
                                     totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 }
-                                // Europa staff weapon skill only applies to staff prof characters
                             } else if (stype == 'magnaJojutsu') {
+                                // Only applies to staff prof characters
                                 if (totals[key]["fav1"] == "wand" || totals[key]["fav2"] == "wand" || totals[key]["support"] === "wildcard") {
                                     totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 }
-                                // Grimnir katana weapon skill only applies to primal characters
+                            } else if (stype == 'normalSeisyou') {
+                                // Only applies to primal characters
+                                if (totals[key]["race"] === "seisho" || totals[key]["support"] === "wildcard") {
+                                    totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                                }
                             } else if (stype == 'magnaSeisyou') {
+                                // Only applies to primal characters
                                 if (totals[key]["race"] === "seisho" || totals[key]["support"] === "wildcard") {
                                     totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 }
