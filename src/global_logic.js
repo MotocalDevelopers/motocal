@@ -1398,7 +1398,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                             } else if (stype == 'muhyoTuiga') {
                                 if (index == 4) {
-                                    totals[key]["additionalDamage"] += comb[i] * slv;
+                                    totals[key]["additionalDamage"] += comb[i] * skillAmounts["tuiga"][amount][slv - 1];
                                     totals[key]["ougiDebuff"] += comb[i] * 0.30;
                                 }
                                 // The Four Great Tenshi blessing
