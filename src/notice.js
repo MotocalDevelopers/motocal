@@ -16,6 +16,10 @@ var Notice = CreateClass({
                 <Panel bsStyle="default" collapsible="true"
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
                     <ul className="list-group">
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190426-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190424-2", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190424-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190414-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180311-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180205-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180102-1", locale)}</li>
@@ -1010,24 +1014,24 @@ var Notice = CreateClass({
                         </tr>
                         <tr>
                             <td>二手三手(小)</td>
-                            <td>0.4</td>
-                            <td>0.6</td>
-                            <td>0.8</td>
-                            <td>1.0</td>
-                            <td>1.2</td>
-                            <td>1.4</td>
-                            <td>1.6</td>
-                            <td>1.8</td>
-                            <td>2.0</td>
-                            <td>2.2</td>
-                            <td>2.46</td>
-                            <td>2.72</td>
-                            <td>2.98</td>
-                            <td>3.24</td>
+                            <td>0.25</td>
+                            <td>0.50</td>
+                            <td>0.75</td>
+                            <td>1.00</td>
+                            <td>1.25</td>
+                            <td>1.50</td>
+                            <td>1.75</td>
+                            <td>2.00</td>
+                            <td>2.25</td>
+                            <td>2.5</td>
+                            <td>2.7</td>
+                            <td>2.9</td>
+                            <td>3.1</td>
+                            <td>3.3</td>
                             <td>3.5</td>
                         </tr>
                         <tr>
-                            <td>通常二手/マグナ二手(中)</td>
+                            <td>二手三手(中)</td>
                             <td>0.8</td>
                             <td>1.1</td>
                             <td>1.4</td>
