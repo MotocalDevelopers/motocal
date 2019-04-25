@@ -13,6 +13,8 @@ var Notice = CreateClass({
                 <div className="divright"><a href={`${location.origin}${location.pathname}`}>入力リセット</a></div>
                 <h2>入力例: <a href={`${location.origin}${location.pathname}thumbnail.php`}
                             target="_blank"> 元カレ計算機データビューア </a></h2>
+                <h2>開発者募集:<a href="https://github.com/MotocalDevelopers/motocal">MotocalDevelopers/motocal</a></h2>
+                <h3>更新履歴</h3>
                 <Panel bsStyle="default" collapsible="true"
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
                     <ul className="list-group">
