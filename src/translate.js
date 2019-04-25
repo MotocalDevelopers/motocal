@@ -3131,6 +3131,26 @@ var multiLangData = {
         "ja": "2018/03/11: 方陣渾身(中)、オメガ強壮の計算を実装 / マグナII武器テンプレート追加(スキルは未対応).",
         "zh": "2018/03/11: 方阵浑身(中)、Omega强壮的计算实装 / 方阵2武器的列表追加(无技能)",
     },
+    "notice-20190414-1": {
+        "en": "14/04/2019: Add Opus weapons and 3rd skill slot.",
+        "ja": "2019/04/14: 終末武器追加。3番目のスキル欄追加(過去の編成データが読み込めなくなっています)",
+        "zh": "2019/04/14: Add Opus weapons and 3rd skill slot.",
+    },
+    "notice-20190424-1": {
+        "en": "24/04/2019: Separate enemy defense value and debuff fields.",
+        "ja": "2019/04/24: デバフ量項目実装。",
+        "zh": "2019/04/24: Separate enemy defense value and debuff fields",
+    },
+    "notice-20190424-2": {
+        "en": "24/04/2019: Add character and weapons.",
+        "ja": "2019/04/24: 天司武器4凸追加。他キャラ・武器追加。",
+        "zh": "2019/04/24: Add character and weapons.",
+    },
+    "notice-20190426-1": {
+        "en": "26/04/2019: Add the total of Magna/Normal/Exceed ougi damage limits is 60%.",
+        "ja": "2019/04/26: 方陣+通常+イクシードの合算枠上限を60%に設定。他奥義上限枠見直し。",
+        "zh": "2019/04/26: Add the total of Magna/Normal/Exceed ougi damage limits is 60%.",
+    },
 };
 
 // Language settings
