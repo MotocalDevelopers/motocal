@@ -371,14 +371,14 @@ var multiLangData = {
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
 	},
-    "ゼニスパーク": {
-        "en": "Zenith Perks",
-        "ja": "ゼニスパーク",
+    "リミットボーナス": {
+        "en": "Limit Bonus",
+        "ja": "リミットボーナス",
         "zh": "Zenith Perks",
 	},
     "味方全体のHP": {
         "en": "HP Bonus for All member",
-        "ja": "味方HPゼニス",
+        "ja": "味方全体HP",
         "zh": "己方全体HP LB",
 	},
     "Advanced": {
@@ -400,6 +400,16 @@ var multiLangData = {
         "en": "Select enemy's defense value.\nIt affects damage calculations.",
         "ja": "想定される敵の防御固有値を設定します。\n単攻撃ダメージ、奥義ダメージ、\n 予想ターン毎ダメージの計算に影響します。\n (単攻撃ダメージに減衰補正がかかる(44万超え) \n ような攻撃力でない限り、編成の順位自体は変化しないと思われます。)",
         "zh": "设定假想敌的防御值。\n影响攻击伤害、奥义伤害、预想DPT。", 
+    },
+    "防御デバフ合計": {
+        "en": "Total defense debuff",
+        "ja": "防御デバフ合計",
+        "zh": "Total defense debuff",
+    },
+    "防御デバフ合計説明": {
+        "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
+        "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
+        "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
     },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
@@ -456,15 +466,15 @@ var multiLangData = {
         "ja": "ジョブごとのボーナス等は自動で反映されます。得意武器補正などを反映したくない場合\"なし\"を選択して下さい。",
         "zh": "不同职业的Bonus会自动反映。不想让得意武器补正之类反映出的话请选择\"无\"。",
 	},
-    "ゼニス攻撃力": {
-        "en": "Zenith Park ATK ",
-        "ja": "ゼニス攻撃力",
-        "zh": "LB 攻击力",
+    "LB 攻撃力": {
+        "en": "ATK ",
+        "ja": "攻撃力",
+        "zh": "攻击力",
 	},
-    "ゼニスHP": {
-        "en": "Zenith Park HP ",
-        "ja": "ゼニスHP",
-        "zh": "LB HP",
+    "LB HP": {
+        "en": "HP ",
+        "ja": "HP",
+        "zh": "HP",
 	},
     "マスボATK": {
         "en": "Master Bonus ATK ",
@@ -501,19 +511,19 @@ var multiLangData = {
         "ja": "有利/非有利/不利は、敵の属性に従って自動で判定されます。",
         "zh": "有利/非有利/不利会随着敌人的属性自动判定出。",
 	},
-    "武器ゼニス1": {
+    "得意武器攻撃1": {
         "en": "Weapon I ",
-        "ja": "武器ゼニスI",
+        "ja": "得意武器攻撃I",
         "zh": "武器LB 1",
 	},
-    "武器ゼニス2": {
+    "得意武器攻撃2": {
         "en": "Weapon II ",
-        "ja": "武器ゼニスII",
+        "ja": "得意武器攻撃II",
         "zh": "武器LB 2",
 	},
-    "武器ゼニス説明": {
+    "得意武器攻撃の説明": {
         "en": "",
-        "ja": "得意武器IIのゼニス（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
+        "ja": "得意武器IIのLB（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
         "zh": "得意武器II的LB(★4以上)在I全部取得的前提下按6%, 8%, 10%计算。",
 	},
     "攻撃ボーナス": {
@@ -2358,50 +2368,45 @@ var multiLangData = {
         "ja": "邪道: 通常上限UP(7.0%)",
         "zh": "邪道: 通常上限UP(7.0%)",
 	},
-    "敵防御10": {
-        "en": "10.0(General)",
-        "ja": "10.0(一般的な敵)",
-        "zh": "10.0(一般的敌人)",
+    "敵防御10.0": {
+        "en": "10.0 (General)",
+        "ja": "10.0 (一般的な敵)",
+        "zh": "10.0 (一般的敌人)",
+    },
+    "敵防御10.5": {
+        "en": "10.5 (Ul Baha N)",
+        "ja": "10.5 (アルバハN)",
+        "zh": "10.5 (Ul Baha N)",
+    },
+    "敵防御11.0": {
+        "en": "11.0 (GW Nightmare/Ul Baha HL/Proto Baha N)",
+        "ja": "11.0 (通常古戦場HELL/アルバハHL/プロバハN)",
+        "zh": "11.0 (GW Nightmare/Ul Baha HL/Proto Baha N)",
+    },
+    "敵防御12.0": {
+        "en": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+        "ja": "12.0 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL)",
+        "zh": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+    },
+    "敵防御13.0": {
+        "en": "13.0 (Omega II(4 Elements))",
+        "ja": "13.0 (マグナⅡ4属性)",
+        "zh": "13.0 (Omega II(4 Elements))",
 	},
-    "敵防御8": {
-        "en": "8.0(General -20% DEF)",
-        "ja": "8.0(一般 防御-20%)",
-        "zh": "8.0(一般 防御-20%)",
-	},
-    "敵防御7": {
-        "en": "7.0(General -30% DEF)",
-        "ja": "7.0(一般 防御-30%)",
-        "zh": "7.0(一般 防御-30%)",
-	},
-    "敵防御6.5": {
-        "en": "6.5(Tia-Magna, Chiva-Magna -50% DEF)",
-        "ja": "6.5(ティアシュバ防御-50%)",
-        "zh": "6.5(风、光方阵防御-50%)",
-	},
-    "敵防御5.5": {
-        "en": "5.5(Proto Bahamut -50%)",
-        "ja": "5.5(プロバハ(防御-50%))",
-        "zh": "5.5(巴哈(防御-50%))",
-	},
-    "敵防御5": {
-        "en": "5.0(General -50% DEF)",
-        "ja": "5.0(一般 防御-50%))",
-        "zh": "5.0(一般 防御-50%))",
-	},
-    "敵防御13": {
-        "en": "13.0(Tia-Magna, Chiva-Magna)",
-        "ja": "13.0(ティアマグ・シュバマグ)",
-        "zh": "13.0(风、光方阵)",
-	},
-    "敵防御11": {
-        "en": "11.0(Proto Bahamut)",
-        "ja": "11.0(プロトバハムート)",
-        "zh": "11.0(巴哈)",
-	},
-    "敵防御20": {
-        "en": "20.0(Proto Baha HL)",
-        "ja": "20.0(プロトバハムートHL)",
-        "zh": "20.0(巴哈HL)",
+    "敵防御14.0": {
+        "en": "14.0 (Freyr)",
+        "ja": "14.0 (フレイ)",
+        "zh": "14.0 (Freyr)",
+    },
+    "敵防御15.0": {
+        "en": "15.0 (Malice/Akasha/Lucilius N)",
+        "ja": "15.0 (マリス/アーカーシャ/ルシファーN)",
+        "zh": "15.0 (Malice/Akasha/Lucilius N)",
+    },
+    "敵防御20.0": {
+        "en": "20.0 (Proto Baha HL/Lucilius H)",
+        "ja": "20.0 (プロトバハムートHL/ルシファーH)",
+        "zh": "20.0 (Proto Baha HL/Lucilius H)",
 	},
     // chart sort key
     "ジータさん残りHP": {

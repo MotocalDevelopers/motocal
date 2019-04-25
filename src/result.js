@@ -462,7 +462,8 @@ var ResultList = CreateClass({
         buffInfoStr += intl.translate("DAバフ", locale) + prof.daBuff + "%, "
         buffInfoStr += intl.translate("TAバフ", locale) + prof.taBuff + "%, "
         buffInfoStr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, "
-        buffInfoStr += intl.translate("敵防御固有値", locale) + prof.enemyDefense
+        buffInfoStr += intl.translate("敵防御固有値", locale) + prof.enemyDefense + " "
+        buffInfoStr += intl.translate("防御デバフ合計", locale) + ((prof.defenseDebuff == undefined) ? "0" : prof.defenseDebuff) + "%"
 
         if (_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{ "width": "100%", padding: "0" }} value={this.props.sortKey} onChange={this.props.onChangeSortkey} > {selector[locale].ktypes} </FormControl>
@@ -1152,7 +1153,7 @@ var Result = CreateClass({
                                 return (<td key={ind} >{am}</td>);
                             })}
                             {m.armNumbers.map(function (am, ind) {
-                                if (arm[ind].considerNumberMax != 0) {
+                                if (typeof arm[ind] !== 'undefined' && arm[ind].considerNumberMax != 0) {
                                     ++colSize;
                                     if (parseInt(am) > 0) {
                                         return (<td key={ind}><span className="text-info"><strong>{am} {intl.translate("本", locale)}</strong></span></td>);
