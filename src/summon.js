@@ -411,6 +411,13 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "ougiDamage")}/>
                         </td>
                     </tr>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("セラフィック加護", locale)}</th>
+                        <td>
+                            <FormControl type="number" min="0" value={this.state.tenshiDamageUP} onBlur={this.handleOnBlur}
+                                         onChange={this.handleEvent.bind(this, "tenshiDamageUP")}/>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
 
