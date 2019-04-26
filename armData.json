@@ -6303,6 +6303,26 @@
         "imageURL": "./imgs/1040910000.png",
         "en": "Ichigo Hitofuri"
     },
+    "[4凸]一期一振": {
+        "ja": "[4凸]一期一振",
+        "element": "earth",
+        "type": "katana",
+        "skill1": "normalLLM",
+        "skill2": "normalKonshinM",
+        "element2": "earth",
+        "skill3": "non",
+        "element3": "earth",
+        "minhp": 42,
+        "minattack": 454,
+        "hp": 257,
+        "attack": 3512,
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": 214,
+        "attacklv100": 2900,
+        "imageURL": "./imgs/1040910000.png",
+        "en": "[4★] Ichigo Hitofuri"
+    },
     "デュランダル": {
         "ja": "デュランダル",
         "element": "water",
