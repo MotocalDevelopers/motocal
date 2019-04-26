@@ -515,7 +515,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["typeBonus"] == 1.5) {
             // Supplemental damage rise support ability does not overlap with Tenshi skill (the strongest effect overwrites the lesser)
             var damageUP = totals[key]["tenshiDamageUP"] > totals[key]["charaDamageUP"] ? totals[key]["tenshiDamageUP"] : totals[key]["charaDamageUP"];
-            damageUP += totalSummon["tenshiDamageUP"]
+            damageUP += 0.01 * totalSummon["tenshiDamageUP"]
             damageUP += totals[key]["charaUniqueDamageUP"];
 
             // Generate normal critical skill arrays.
@@ -1853,7 +1853,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 hpBonus: 0.0,
                 da: 0,
                 ta: 0,
-                ougiDamage: 0
+                ougiDamage: 0,
+                tenshiDamageUP: 0
             };
 
             if (summonElementTypes[selfElement]["type"].indexOf(totals[key]["element"]) >= 0 || selfElement == "all") {
@@ -1888,6 +1889,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             if (!isNaN(summon[s].DA)) totalSummon["da"] = 0.01 * parseInt(summon[s].DA);
             if (!isNaN(summon[s].TA)) totalSummon["ta"] = 0.01 * parseInt(summon[s].TA);
             if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = parseInt(summon[s].ougiDamage);
+            if (!isNaN(summon[s].tenshiDamageUP)) totalSummon["tenshiDamageUP"] = parseInt(summon[s].tenshiDamageUP);
 
             totals[key]["totalSummon"][s] = totalSummon
         }
