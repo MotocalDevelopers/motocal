@@ -351,6 +351,16 @@ var multiLangData = {
         "ja": "奥義ダメージUP",
         "zh": "奥义伤害上升",
     },
+    "セラフィック加護": {
+        "en": "Damage UP (Seraphic)",
+        "ja": "セラフィック加護",
+        "zh": "Damage UP (Seraphic)",
+    },
+    "セラフィック加護説明": {
+        "en": "It is added to the Seraphic effect. Arcarum summons(SR3~5%, SSR7~10%) etc.",
+        "ja": "セラフィック効果に加算されます。アーカルム石(SR3~5%, SSR7~10%)など",
+        "zh": "It is added to the Seraphic effect. Arcarum summons(SR3~5%, SSR7~10%) etc.",
+    },
     "チェインダメージアップ": {
         "en": "Chain Damage UP",
         "ja": "チェインダメージUP",

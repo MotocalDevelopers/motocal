@@ -206,7 +206,8 @@ var Summon = CreateClass({
             DA: 0,
             TA: 0,
             criticalRatio: 0.0,
-            ougiDamage : 0.0
+            ougiDamage : 0.0,
+            tenshiDamageUP : 0.0
         };
     },
     componentDidMount: function () {
@@ -409,6 +410,13 @@ var Summon = CreateClass({
                         <td>
                             <FormControl type="number" min="0" value={this.state.ougiDamage} onBlur={this.handleOnBlur}
                                          onChange={this.handleEvent.bind(this, "ougiDamage")}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("セラフィック加護", locale)}</th>
+                        <td>
+                            <FormControl type="number" min="0" value={this.state.tenshiDamageUP} onBlur={this.handleOnBlur}
+                                         onChange={this.handleEvent.bind(this, "tenshiDamageUP")}/>
                         </td>
                     </tr>
                     </tbody>
