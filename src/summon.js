@@ -207,6 +207,7 @@ var Summon = CreateClass({
             TA: 0,
             criticalRatio: 0.0,
             ougiDamage : 0.0
+            tenshiDamageUP : 0.0
         };
     },
     componentDidMount: function () {
