@@ -3131,10 +3131,20 @@ var multiLangData = {
         "ja": "2018/03/11: 方陣渾身(中)、オメガ強壮の計算を実装 / マグナII武器テンプレート追加(スキルは未対応).",
         "zh": "2018/03/11: 方阵浑身(中)、Omega强壮的计算实装 / 方阵2武器的列表追加(无技能)",
     },
+    "notice-20190310-1": {
+        "en": "10/03/2019: Add 3rd support ability slot and Gladiator Class and character and weapons.",
+        "ja": "2019/03/10: 3番目のサポアビ欄実装。クリュサオル追加。最終十天等一部キャラに奥義上限を引き上げるサポアビ追加。他キャラ・武器追加。",
+        "zh": "2019/03/10: Add 3rd support ability slot and Gladiator Class and character and weapons.",
+    },
     "notice-20190414-1": {
         "en": "14/04/2019: Add Opus weapons and 3rd skill slot.",
         "ja": "2019/04/14: 終末武器追加。3番目のスキル欄追加(過去の編成データが読み込めなくなっています)",
         "zh": "2019/04/14: Add Opus weapons and 3rd skill slot.",
+    },
+    "notice-20190414-2": {
+        "en": "14/04/2019: Fix the skill effect amount.",
+        "ja": "2019/04/14: 二手三手技巧軍神スキル効果量修正。",
+        "zh": "2019/04/14: Fix the skill effect amount.",
     },
     "notice-20190424-1": {
         "en": "24/04/2019: Separate enemy defense value and debuff fields.",
