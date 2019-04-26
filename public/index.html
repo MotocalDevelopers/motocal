@@ -30,10 +30,10 @@
             crossorigin="anonymous"></script>
     </head>
     <body>
+        <!-- motocal PC version headers -->
         <% if (htmlWebpackPlugin.options.ADSENSE_AD_CLIENT && htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC1) { %>
             <div id="adsense-original-div-pc-1" class="hidden">
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- 元カレ計算機 PC版上部 -->
                 <ins class="adsbygoogle"
                     style="display:inline-block;width:728px;height:90px"
                     data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
@@ -47,7 +47,7 @@
         <% if (htmlWebpackPlugin.options.ADSENSE_AD_CLIENT && htmlWebpackPlugin.options.ADSENSE_AD_SLOT_PC2) { %>
             <div id="adsense-original-div-pc-2" class="hidden">
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- 元カレ計算機 PC版上部 -->
+
                 <ins class="adsbygoogle"
                     style="display:inline-block;width:320px;height:100px"
                     data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>
@@ -58,10 +58,10 @@
                 </script>
             </div>
         <% } %>
+        <!-- motocal smartphone version header -->
         <% if (htmlWebpackPlugin.options.ADSENSE_AD_CLIENT && htmlWebpackPlugin.options.ADSENSE_AD_SLOT_MOBILE) { %>
             <div id="adsense-original-div-mobile" class="hidden">
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- 元カレ計算機 スマホ版上部 -->
                 <ins class="adsbygoogle"
                     style="display:inline-block;width:320px;height:50px"
                     data-ad-client=<%= htmlWebpackPlugin.options.ADSENSE_AD_CLIENT %>

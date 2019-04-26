@@ -1,8 +1,10 @@
-# -*- coding:utf-8 -*-
-import json
-import re
 import csv
+import inspect
+import json
+import os
+import re
 from collections import OrderedDict
+
 skillnamelist = OrderedDict()
 
 # normal L and LL
@@ -36,7 +38,7 @@ skillnamelist["normalHPLL"] = {
 skillnamelist["gurenJuin"] = {u"紅蓮の呪印・弐": "fire"}
 skillnamelist["muhyoTuiga"] = {u"霧氷の追牙・肆": "water"}
 
-# 紅蓮の呪印（弐ではない）は通常攻刃大として扱う
+# Inferno's Insignia is usually treated as a large atk up
 skillnamelist["normalL"] = {
     u"紅蓮の攻刃": "fire",
     u"霧氷の攻刃": "water",
@@ -110,7 +112,16 @@ skillnamelist["normalSanteL"] = {
     u"奈落の三手": "dark"
 }
 
-# 渾身は現状通常扱いで良いが、〜星系スキルが別枠で扱われるようになった場合には別スキルにする必要がある
+skillnamelist["normalSanteM"] = {
+    u"業火の三手": "fire",
+    u"渦潮の三手": "water",
+    u"大地の三手": "earth",
+    u"竜巻の三手": "wind",
+    u"雷電の三手": "light",
+    u"憎悪の三手": "dark"
+}
+
+# Although stamina can be handled normally at present, if ~ star skill is to be treated as a separate frame, it is necessary to make it different skill
 skillnamelist["normalKonshinL"] = {
     u"紅蓮の渾身": "fire",
     u"霧氷の渾身": "water",
@@ -122,7 +133,15 @@ skillnamelist["normalKonshinL"] = {
     u"白星の渾身": "light"
 }
 
-# skillnamelist["normalKamui"] = {u"紅蓮の神威": "fire", u"霧氷の神威": "water", u"地裂の神威": "earth", u"乱気の神威": "wind", u"天光の神威": "light", u"奈落の神威": "dark"}
+skillnamelist["normalKamuiL"] = {
+    u"紅蓮の神威": "fire",
+    u"霧氷の神威": "water",
+    u"地裂の神威": "earth",
+    u"乱気の神威": "wind",
+    u"天光の神威": "light",
+    u"奈落の神威": "dark"
+}
+
 skillnamelist["normalKatsumokuS"] = {
     u"紅蓮の括目": "fire",
     u"霧氷の括目": "water",
@@ -232,7 +251,7 @@ skillnamelist["normalRasetsuM"] = {
     u"憎悪の羅刹": "dark"
 }
 
-# 無双: 攻刃 + 二手
+# Musou: Attack up + double atk rate
 skillnamelist["normalMusouM"] = {
     u"業火の無双": "fire",
     u"渦潮の無双": "water",
@@ -249,15 +268,6 @@ skillnamelist["normalMusouLL"] = {
     u"竜巻の無双II": "wind",
     u"雷電の無双II": "light",
     u"憎悪の無双II": "dark"
-}
-
-skillnamelist["normalHiouM"] = {
-    u"業火の秘奥": "fire",
-    u"渦潮の秘奥": "water",
-    u"大地の秘奥": "earth",
-    u"竜巻の秘奥": "wind",
-    u"雷電の秘奥": "light",
-    u"憎悪の秘奥": "dark"
 }
 
 skillnamelist["normalJinkaiS"] = {
@@ -360,6 +370,24 @@ skillnamelist["normalHiouS"] = {
     u"闇の秘奥": "dark"
 }
 
+skillnamelist["normalHiouM"] = {
+    u"業火の秘奥": "fire",
+    u"渦潮の秘奥": "water",
+    u"大地の秘奥": "earth",
+    u"竜巻の秘奥": "wind",
+    u"雷電の秘奥": "light",
+    u"憎悪の秘奥": "dark"
+}
+
+skillnamelist["normalHiouL"] = {
+    u"紅蓮の秘奥": "fire",
+    u"霧氷の秘奥": "water",
+    u"地裂の秘奥": "earth",
+    u"乱気の秘奥": "wind",
+    u"天光の秘奥": "light",
+    u"奈落の秘奥": "dark"
+}
+
 skillnamelist["normalHissatsuM"] = {
     u"業火の必殺": "fire",
     u"渦潮の必殺": "water",
@@ -367,6 +395,44 @@ skillnamelist["normalHissatsuM"] = {
     u"竜巻の必殺": "wind",
     u"雷電の必殺": "light",
     u"憎悪の必殺": "dark"
+}
+
+skillnamelist["normalHissatsuL"] = {
+    u"紅蓮の必殺": "fire",
+    u"霧氷の必殺": "water",
+    u"地裂の必殺": "earth",
+    u"乱気の必殺": "wind",
+    u"天光の必殺": "light",
+    u"奈落の必殺": "dark"
+}
+
+skillnamelist["normalEiketsuL"] = {
+    u"紅蓮の英傑": "fire",
+    u"霧氷の英傑": "water",
+    u"地裂の英傑": "earth",
+    u"乱気の英傑": "wind",
+    u"天光の英傑": "light",
+    u"奈落の英傑": "dark"
+}
+
+# Grace
+skillnamelist["normalOntyouM"] = {
+    u"業火の恩寵": "fire",
+    u"渦潮の恩寵": "water",
+    u"大地の恩寵": "earth",
+    u"竜巻の恩寵": "wind",
+    u"雷電の恩寵": "light",
+    u"憎悪の恩寵": "dark"
+}
+
+# Essence
+skillnamelist["normalSeisyouM"] = {
+    u"業火の星晶": "fire",
+    u"渦潮の星晶": "water",
+    u"大地の星晶": "earth",
+    u"竜巻の星晶": "wind",
+    u"雷電の星晶": "light",
+    u"憎悪の星晶": "dark"
 }
 
 # magna II
@@ -432,6 +498,15 @@ skillnamelist["magnaKatsumiM"] = {
     u"嵐竜方陣・克己": "wind",
     u"騎解方陣・克己": "light",
     u"黒霧方陣・克己": "dark"
+}
+
+skillnamelist["magnaKamuiL"] = {
+    u"機炎方陣・神威III": "fire",
+    u"海神方陣・神威III": "water",
+    u"創樹方陣・神威III": "earth",
+    u"嵐竜方陣・神威III": "wind",
+    u"騎解方陣・神威III": "light",
+    u"黒霧方陣・神威III": "dark"
 }
 
 skillnamelist["magnaKamuiM"] = {
@@ -552,7 +627,7 @@ skillnamelist["magnaMusouM"] = {
     u"黒霧方陣・無双": "dark"
 }
 
-# 軍神は二手(小) + 守護(小)扱い?
+# Small hp up + double atk rate up
 skillnamelist["magnaGunshinS"] = {
     u"機炎方陣・軍神": "fire",
     u"海神方陣・軍神": "water",
@@ -562,7 +637,7 @@ skillnamelist["magnaGunshinS"] = {
     u"黒霧方陣・軍神": "dark"
 }
 
-# 意志は技巧(中)扱い
+# Critical skill (M)
 skillnamelist["magnaCriticalM"] = {
     u"機炎方陣・意志": "fire",
     u"海神方陣・意志": "water",
@@ -572,7 +647,7 @@ skillnamelist["magnaCriticalM"] = {
     u"黒霧方陣・意志": "dark"
 }
 
-# 不可侵は守護(小)扱い
+# Magna hp up (S)
 skillnamelist["magnaHPS"] = {
     u"機炎方陣・不可侵": "fire",
     u"海神方陣・不可侵": "water",
@@ -592,14 +667,33 @@ skillnamelist["magnaHissatsuM"] = {
 }
 
 skillnamelist["magnaJojutsuL"] = {
-    u"海神方陣・杖術": "water"
+    u"機炎方陣・杖術": "fire",
+    u"海神方陣・杖術": "water",
+    u"創樹方陣・杖術": "earth",
+    u"嵐竜方陣・杖術": "wind",
+    u"騎解方陣・杖術": "light",
+    u"黒霧方陣・杖術": "dark"
 }
 
 skillnamelist["magnaKenbuL"] = {
-    u"機炎方陣・拳武": "fire"
+    u"機炎方陣・拳武": "fire",
+    u"海神方陣・拳武": "water",
+    u"創樹方陣・拳武": "earth",
+    u"嵐竜方陣・拳武": "wind",
+    u"騎解方陣・拳武": "light",
+    u"黒霧方陣・拳武": "dark"
 }
 
-# アンノウン
+skillnamelist["magnaSeisyouM"] = {
+    u"機炎方陣・星晶": "fire",
+    u"海神方陣・星晶": "water",
+    u"創樹方陣・星晶": "earth",
+    u"嵐竜方陣・星晶": "wind",
+    u"騎解方陣・星晶": "light",
+    u"黒霧方陣・星晶": "dark"
+}
+
+# Unknown skills
 skillnamelist["unknownL"] = {u"アンノウン・ATK II": "unknown"}
 skillnamelist["unknownM"] = {u"アンノウン・ATK": "unknown"}
 skillnamelist["unknownHPL"] = {u"アンノウン・VIT II": "unknown"}
@@ -669,6 +763,11 @@ skillnamelist["strengthL"] = {
     u"紅ニ染マル刃": "dark",
     u"フローズン・ブレード": "water",
     u"ジャスティス・ロッド": "light",
+    u"トラフィックエナジー": "light",
+    u"ふわふわしっぽ": "earth",
+    u"ゲイルオブアームズ": "wind",
+    u"獅子と牛の咆哮": "dark",
+    u"サイコ攻刃": "earth",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -705,8 +804,8 @@ skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
 skillnamelist["unknownOtherBoukunL"] = {u"ミフネ流剣法・極意": "fire", u"インテリジェンス": "dark"}
 skillnamelist["unknownOtherNiteS"] = {u"ミフネ流剣法・双星": "fire", u"デクステリティ": "dark"}
 
-# バハ
-# フツルス拳系はスキル名が同じなので先に処理
+# Baha
+# Bahamut fist has the same skill name so process first
 skillnamelist["bahaFUHP-fist"] = {u"ヒュムアニムス・メンスII": "dark"}
 skillnamelist["bahaFUHP-katana"] = {u"ドーラアニムス・メンスII": "dark"}
 skillnamelist["bahaFUHP-bow"] = {u"エルンアニムス・メンスII": "dark"}
@@ -728,8 +827,8 @@ skillnamelist["bahaFUATHP-axe"] = {u"コンキリオ・テラ": "dark"}
 skillnamelist["bahaFUATHP-wand"] = {u"コンキリオ・インベル": "dark"}
 skillnamelist["bahaFUATHP-gun"] = {u"コンキリオ・アルボス": "dark"}
 
-# オメガウェポン
-# 属性は仮として火としておく
+# Omega Weapon
+# Attribute as a temporary fire
 skillnamelist["omega-raw"] = {
     u"グラディウス・ルーベル": "fire",
     u"シーカー・ルーベル": "fire",
@@ -743,7 +842,14 @@ skillnamelist["omega-raw"] = {
     u"マカエラ・ルーベル": "fire",
 }
 
-# コスモス
+# Akasha
+skillnamelist["akasha-sword"] = {u"虚脱の隻翼": "dark"}
+skillnamelist["akasha-spear"] = {u"虚栄の矛戟": "fire"}
+skillnamelist["akasha-axe"] = {u"虚勢の巌": "earth"}
+skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "earth"}
+skillnamelist["akasha-bow"] = {u"虚像の鋒鏑": "light"}
+
+# Cosmos
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
 skillnamelist["cosmosBL"] = {u"バランス・スタンス": "light"}
 skillnamelist["cosmosDF"] = {u"ディフェンド・スタンス": "light"}
@@ -759,22 +865,35 @@ skillnamelist["cosmos-bow"] = {u"アロー・オブ・コスモス": "light"}
 skillnamelist["cosmos-katana"] = {u"ブレイド": "light"}
 skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
 
-# 天司の祝福系
+# Tenshi
+skillnamelist["tenshiShukufukuIII"] = {
+    u"ミカエルの祝福III": "fire",
+    u"ガブリエルの祝福III": "water",
+    u"ウリエルの祝福III": "earth",
+    u"ラファエルの祝福III": "wind",
+    u"双子天司の導きIII": "light",
+    u"堕落のすゝめIII": "dark",
+}
+
 skillnamelist["tenshiShukufukuII"] = {
     u"ミカエルの祝福II": "fire",
     u"ガブリエルの祝福II": "water",
     u"ウリエルの祝福II": "earth",
-    u"ラファエルの祝福II": "wind"
+    u"ラファエルの祝福II": "wind",
+    u"双子天司の導きII": "light",
+    u"堕落のすゝめII": "dark",
 }
 
 skillnamelist["tenshiShukufuku"] = {
     u"ミカエルの祝福": "fire",
     u"ガブリエルの祝福": "water",
     u"ウリエルの祝福": "earth",
-    u"ラファエルの祝福": "wind"
+    u"ラファエルの祝福": "wind",
+    u"双子天司の導き": "light",
+    u"堕落のすゝめ": "dark"
 }
 
-# ダメージ上限アップ系
+# Damage cap up
 skillnamelist["normalDamageLimit7"] = {
     u"賢者の加護": "earth",
 }
@@ -785,15 +904,20 @@ skillnamelist["normalDamageLimit10"] = {
 skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",
+    u"イクシード・ウィンド": "wind",
     u"イクシード・ダーク": "dark",
 }
 
-# キャラ固有武器
+skillnamelist["chainForce"] = {
+    u"チェインフォース": "dark",
+}
+
+# Character specific weapon
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
-skillnamelist["maihimeEnbu"] =   {u"舞姫の演武": "water"}
-skillnamelist["hengenKengi"] =   {u"変幻自在の剣技": "dark"}
-skillnamelist["kochoKenbu"] =   {u"胡蝶の剣舞": "earth"}
+skillnamelist["maihimeEnbu"] = {u"舞姫の演武": "water"}
+skillnamelist["hengenKengi"] = {u"変幻自在の剣技": "dark"}
+skillnamelist["kochoKenbu"] = {u"胡蝶の剣舞": "earth"}
 skillnamelist["normalHPL"][u"氷晶宮の加護"] = "water"
 skillnamelist["normalL"][u"聖女の行進"] = "light"
 skillnamelist["normalL"][u"天を統べる強風"] = "wind"
@@ -803,7 +927,7 @@ skillnamelist["normalL"][u"英雄たる証明"] = "wind"
 skillnamelist["normalL"][u"禁忌の悲恋"] = "dark"
 skillnamelist["normalL"][u"狙撃の極意"] = "water"
 
-# その他調整が必要な武器
+# Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
 
 armtypelist = OrderedDict()
@@ -818,8 +942,13 @@ armtypelist[u"弓"] = "bow"
 armtypelist[u"楽器"] = "music"
 armtypelist[u"刀"] = "katana"
 
+########################################################################################################################
+filename = inspect.getframeinfo(inspect.currentframe()).filename
+path = os.path.dirname(os.path.abspath(filename))
+
 # json translation
-translation = json.load(open("./txt_source/weapon-translation.json", "r", encoding="utf-8"))
+translation = json.load(open(os.path.join(path, "../txt_source/arm-translation.json"), "r", encoding="utf-8"))
+
 
 def skill_replace(skill):
     for inner_skillname, onelist in skillnamelist.items():
@@ -828,13 +957,15 @@ def skill_replace(skill):
                 return inner_skillname, element
     return "non", "none"
 
+
 def type_replace(armtype):
     for armtypename, inner_armtype in armtypelist.items():
         if re.match(armtypename, armtype):
             return inner_armtype
     return "none"
 
-def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = True):
+
+def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list, PROCESS_TYPE_SSR=True):
     key_pattern = re.compile("\d+")
     key_pattern = re.compile("(\d+.*\.png)")
     skill_pattern = re.compile("\[\[([\W\w]+)\>")
@@ -845,95 +976,164 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
     mycsv = csv.reader(open(csv_file_name, 'r', encoding="utf-8"), delimiter="|")
 
     for row in mycsv:
-        newdict = {}
+        newdict = OrderedDict()
 
-        if len(row) <= 1:
+        row_lenth = len(row)
+        if row_lenth <= 1:
             continue
         else:
-            m = key_pattern.search(row[1])
-            if m:
-                key = m.group(1)
-
-            name = row[2].replace("&br;", "")
-            name = name.replace("[]", "")
-            newdict["ja"] = name
-
-            # element
-            if row[3].find("火") > 0:
-                newdict["element"] = "fire"
-            elif row[3].find("水") > 0:
-                newdict["element"] = "water"
-            elif row[3].find("土") > 0:
-                newdict["element"] = "earth"
-            elif row[3].find("風") > 0:
-                newdict["element"] = "wind"
-            elif row[3].find("光") > 0:
-                newdict["element"] = "light"
-            elif row[3].find("全属性") > 0:
-                newdict["element"] = "all"
-            else:
-                newdict["element"] = "dark"
-
-            # type
-            newdict["type"] = type_replace(row[4])
-
-            skill = "non"
-            element1 = "none"
-            m = skill_pattern.search(row[7])
-            if m:
-                skill, element1 = skill_replace(m.group(1))
-
-            newdict["skill1"] = skill
-
-            skill = "non"
-            element2 = "none"
-            m = skill_pattern.search(row[8])
-            if m:
-                skill, element2 = skill_replace(m.group(1))
-
-            if element2 == "none" or element2 == "unknown":
-                element2 = newdict["element"]
-
-            newdict["skill2"] = skill
-            newdict["element2"] = element2
-            newdict["minhp"] = row[9]
-            newdict["minattack"] = row[10]
-            newdict["hp"] = row[11]
-            newdict["attack"] = row[12]
-
-            if PROCESS_TYPE_SSR:
-                if jougen_5_pattern.search(row[15]):
-                    newdict["slvmax"] = 20
-                    newdict["maxlv"] = 200
-                    newdict["hplv100"] = int(row[16])
-                    newdict["attacklv100"] = int(row[17])
-                    newdict["hplv150"] = int(row[18])
-                    newdict["attacklv150"] = int(row[19])
-                else:
-                    if jougen_4_pattern.search(row[15]):
-                        newdict["slvmax"] = 15
-                        newdict["maxlv"] = 150
-                        newdict["hplv100"] = row[16]
-                        newdict["attacklv100"] = row[17]
+            has_3rd_skill: bool = row_lenth >= 22
+            for index, value in enumerate(row):
+                if index == 1:
+                    m = key_pattern.search(value)
+                    if m:
+                        key = m.group(1)
+                elif index == 2:
+                    name = value.replace("&br;", "")
+                    name = name.replace("[]", "")
+                    newdict["ja"] = name
+                elif index == 3:
+                    # element
+                    if value.find("火") > 0:
+                        newdict["element"] = "fire"
+                    elif value.find("水") > 0:
+                        newdict["element"] = "water"
+                    elif value.find("土") > 0:
+                        newdict["element"] = "earth"
+                    elif value.find("風") > 0:
+                        newdict["element"] = "wind"
+                    elif value.find("光") > 0:
+                        newdict["element"] = "light"
+                    elif value.find("全属性") > 0:
+                        newdict["element"] = "all"
                     else:
-                        if baha_pattern.search(newdict["skill1"]):
-                            newdict["slvmax"] = 15
-                            newdict["maxlv"] = 150
-                            newdict["hplv100"] = row[16]
-                            newdict["attacklv100"] = row[17]
-                        else:
-                            newdict["slvmax"] = 10
-                            newdict["maxlv"] = 100
+                        newdict["element"] = "dark"
+                elif index == 4:
+                    # type
+                    newdict["type"] = type_replace(value)
+                elif index == 7:
+                    skill = "non"
+                    element1 = "none"
+                    m = skill_pattern.search(value)
+                    if m:
+                        skill, element1 = skill_replace(m.group(1))
 
-            else:
-                if jougen_4_pattern.search(row[15]):
-                    newdict["slvmax"] = 15
-                    newdict["maxlv"] = 120
-                    newdict["hplv75"] = row[16]
-                    newdict["attacklv75"] = row[17]
+                    newdict["skill1"] = skill
+                elif index == 8:
+                    skill = "non"
+                    element2 = "none"
+                    m = skill_pattern.search(value)
+                    if m:
+                        skill, element2 = skill_replace(m.group(1))
+
+                    if element2 == "none" or element2 == "unknown":
+                        element2 = newdict["element"]
+
+                    newdict["skill2"] = skill
+                    newdict["element2"] = element2
+                elif has_3rd_skill:
+                    if index == 9:
+                        skill = "non"
+                        element3 = "none"
+                        m = skill_pattern.search(value)
+                        if m:
+                            skill, element3 = skill_replace(m.group(1))
+
+                        if element3 == "none" or element3 == "unknown":
+                            element3 = newdict["element"]
+
+                        newdict["skill3"] = skill
+                        newdict["element3"] = element3
+                    elif index == 10:
+                        newdict["minhp"] = int(value)
+                    elif index == 11:
+                        newdict["minattack"] = int(value)
+                    elif index == 12:
+                        newdict["hp"] = int(value)
+                    elif index == 13:
+                        newdict["attack"] = int(value)
+                    elif index == 16:
+                        if PROCESS_TYPE_SSR:
+                            if jougen_5_pattern.search(value):
+                                newdict["slvmax"] = 20
+                                newdict["maxlv"] = 200
+                            elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
+                                newdict["slvmax"] = 15
+                                newdict["maxlv"] = 150
+                            else:
+                                newdict["slvmax"] = 10
+                                newdict["maxlv"] = 100
+                        else:
+                            if jougen_4_pattern.search(value):
+                                newdict["slvmax"] = 15
+                                newdict["maxlv"] = 120
+                            else:
+                                newdict["slvmax"] = 10
+                                newdict["maxlv"] = 75
+                    elif index == 17 and newdict["slvmax"] >= 15:
+                        if PROCESS_TYPE_SSR:
+                            newdict["hplv100"] = int(value)
+                        else:
+                            newdict["hplv75"] = int(value)
+                    elif index == 18 and newdict["slvmax"] >= 15:
+                        if PROCESS_TYPE_SSR:
+                            newdict["attacklv100"] = int(value)
+                        else:
+                            newdict["attacklv75"] = int(value)
+                    elif index == 19 and newdict["slvmax"] >= 20:
+                        newdict["hplv150"] = int(value)
+                    elif index == 20 and newdict["slvmax"] >= 20:
+                        newdict["attacklv150"] = int(value)
                 else:
-                    newdict["slvmax"] = 10
-                    newdict["maxlv"] = 75
+                    if index == 9:
+                        skill = "non"
+                        element3 = "none"
+
+                        if element3 == "none" or element3 == "unknown":
+                            element3 = newdict["element"]
+
+                        newdict["skill3"] = skill
+                        newdict["element3"] = element3
+
+                        newdict["minhp"] = int(value)
+                    elif index == 10:
+                        newdict["minattack"] = int(value)
+                    elif index == 11:
+                        newdict["hp"] = int(value)
+                    elif index == 12:
+                        newdict["attack"] = int(value)
+                    elif index == 15:
+                        if PROCESS_TYPE_SSR:
+                            if jougen_5_pattern.search(value):
+                                newdict["slvmax"] = 20
+                                newdict["maxlv"] = 200
+                            elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
+                                newdict["slvmax"] = 15
+                                newdict["maxlv"] = 150
+                            else:
+                                newdict["slvmax"] = 10
+                                newdict["maxlv"] = 100
+                        else:
+                            if jougen_4_pattern.search(value):
+                                newdict["slvmax"] = 15
+                                newdict["maxlv"] = 120
+                            else:
+                                newdict["slvmax"] = 10
+                                newdict["maxlv"] = 75
+                    elif index == 16 and newdict["slvmax"] >= 15:
+                        if PROCESS_TYPE_SSR:
+                            newdict["hplv100"] = int(value)
+                        else:
+                            newdict["hplv75"] = int(value)
+                    elif index == 17 and newdict["slvmax"] >= 15:
+                        if PROCESS_TYPE_SSR:
+                            newdict["attacklv100"] = int(value)
+                        else:
+                            newdict["attacklv75"] = int(value)
+                    elif index == 18 and newdict["slvmax"] >= 20:
+                        newdict["hplv150"] = int(value)
+                    elif index == 19 and newdict["slvmax"] >= 20:
+                        newdict["attacklv150"] = int(value)
 
             newdict["imageURL"] = "./imgs/" + key
 
@@ -944,24 +1144,35 @@ def processCSVdata(csv_file_name, json_data, image_url_list, PROCESS_TYPE_SSR = 
                 newdict["en"] = name
 
             json_data[name] = newdict
-            image_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
-            image_url_list = list(OrderedDict.fromkeys(image_url_list))
+            # Wiki
+            image_wiki_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+            # Game - Might get you banned...
+            image_game_url_list.append("http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/" + key + "\n")
+            image_wiki_url_list = list(OrderedDict.fromkeys(image_wiki_url_list))
+            image_game_url_list = list(OrderedDict.fromkeys(image_game_url_list))
 
-    return json_data, image_url_list
+    return json_data, image_wiki_url_list, image_game_url_list
 
 
 if __name__ == '__main__':
     json_data = OrderedDict()
-    image_url_list = []
+    image_wiki_url_list = []
+    image_game_url_list = []
 
-    json_data, image_url_list = processCSVdata("./txt_source/armData-ssr.txt", json_data, image_url_list, True)
-    json_data, image_url_list = processCSVdata("./txt_source/armData-sr.txt", json_data, image_url_list, False)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(
+        os.path.join(path, "../txt_source/armData-ssr.txt"), json_data, image_wiki_url_list, image_game_url_list, True)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(
+        os.path.join(path, "../txt_source/armData-sr.txt"), json_data, image_wiki_url_list, image_game_url_list, False)
 
-    f = open("./armData.json", "w", encoding="utf-8")
+    f = open(os.path.join(path, "../armData.json"), "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    f = open("./imgs/imageURLlist.txt", "w", encoding="utf-8")
-    for x in image_url_list:
+    f = open(os.path.join(path, "../txt_source/armImageWikiURLList.txt"), "w", encoding="utf-8")
+    for x in image_wiki_url_list:
+        f.write(x)
+    f.close()
+    f = open(os.path.join(path, "../txt_source/armImageGameURLList.txt"), "w", encoding="utf-8")
+    for x in image_game_url_list:
         f.write(x)
     f.close()
