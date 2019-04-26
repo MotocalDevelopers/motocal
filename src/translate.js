@@ -3195,6 +3195,11 @@ var multiLangData = {
         "ja": "2019/04/26: 方陣+通常+イクシードの合算枠上限を60%に設定。他奥義上限枠見直し。",
         "zh": "2019/04/26: Add the total of Magna/Normal/Exceed ougi damage limits is 60%.",
     },
+    "notice-20190427-1": {
+        "en": "27/04/2019: Implement Boost damage aura. Add [4凸]Ichigo Hitofuri. Fix Character base DATA. Others, fine-tuned.",
+        "ja": "2019/04/27: 与ダメージ加護実装。[4凸]一期一振追加。キャラ基礎連撃修正。その他微調整。",
+        "zh": "2019/04/27: Implement Boost damage aura. Add [4凸]Ichigo Hitofuri. Fix Character base DATA. Others, fine-tuned.",
+    },
 };
 
 // Language settings
