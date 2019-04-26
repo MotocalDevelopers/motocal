@@ -351,15 +351,15 @@ var multiLangData = {
         "ja": "奥義ダメージUP",
         "zh": "奥义伤害上升",
     },
-    "セラフィック加護": {
-        "en": "Damage UP (Seraphic)",
-        "ja": "セラフィック加護",
-        "zh": "Damage UP (Seraphic)",
+    "与ダメージ加護": {
+        "en": "Boost Damage",
+        "ja": "与ダメ加護",
+        "zh": "Boost Damage",
     },
-    "セラフィック加護説明": {
-        "en": "It is added to the Seraphic effect. Arcarum summons(SR3~5%, SSR7~10%) etc.",
-        "ja": "セラフィック効果に加算されます。アーカルム石(SR3~5%, SSR7~10%)など",
-        "zh": "It is added to the Seraphic effect. Arcarum summons(SR3~5%, SSR7~10%) etc.",
+    "与ダメージ加護説明": {
+        "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
+        "ja": "最終的な与ダメージが上昇します。アーカルム石(SR3~5%, SSR7~10%)など",
+        "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
     "チェインダメージアップ": {
         "en": "Chain Damage UP",
@@ -998,9 +998,9 @@ var multiLangData = {
         "ja": "ターン毎の\n奥義ゲージ上昇量",
         "zh": "每回合奥义槽上升量",
     },
-    "奥義ダメージ": {
+    "奥義ダメージUP": {
         "en": "Ougi Damage",
-        "ja": "奥義ダメージ",
+        "ja": "奥義ダメージUP",
         "zh": "奥义伤害",
     },
     "チェインバースト": {

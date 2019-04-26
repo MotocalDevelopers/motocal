@@ -406,22 +406,22 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "TA")}/>
                         </td>
                     </tr>
+                    <TextWithTooltip tooltip={intl.translate("与ダメージ加護説明", locale)} id={"tooltip-boost-damage-detail"}>
                     <tr>
-                        <th className="bg-primary">{intl.translate("奥義ダメージ", locale)}</th>
-                        <td>
-                            <FormControl type="number" min="0" value={this.state.ougiDamage} onBlur={this.handleOnBlur}
-                                         onChange={this.handleEvent.bind(this, "ougiDamage")}/>
-                        </td>
-                    </tr>
-                    <TextWithTooltip tooltip={intl.translate("セラフィック加護説明", locale)} id={"tooltip-tenshi-aura-detail"}>
-                    <tr>
-                        <th className="bg-primary">{intl.translate("セラフィック加護", locale)}</th>
+                        <th className="bg-primary">{intl.translate("与ダメージ加護", locale)}</th>
                         <td>
                             <FormControl type="number" min="0" value={this.state.tenshiDamageUP} onBlur={this.handleOnBlur}
                                          onChange={this.handleEvent.bind(this, "tenshiDamageUP")}/>
                         </td>
                     </tr>
                     </TextWithTooltip>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                        <td>
+                            <FormControl type="number" min="0" value={this.state.ougiDamage} onBlur={this.handleOnBlur}
+                                         onChange={this.handleEvent.bind(this, "ougiDamage")}/>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
 
