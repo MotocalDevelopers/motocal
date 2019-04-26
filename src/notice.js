@@ -13,7 +13,7 @@ var Notice = CreateClass({
                 <div className="divright"><a href={`${location.origin}${location.pathname}`}>入力リセット</a></div>
                 <h2>入力例: <a href={`${location.origin}${location.pathname}thumbnail.php`}
                             target="_blank"> 元カレ計算機データビューア </a></h2>
-                不具合報告・ご要望がありましたら<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a>にてご連絡をお願い致します。
+                <h2>不具合報告・ご要望:<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a></h2>
                 <h2>開発者募集:<a href="https://github.com/MotocalDevelopers/motocal" target="_blank">MotocalDevelopers/motocal</a></h2>
                 <h3>更新履歴</h3>
                 <Panel bsStyle="default" collapsible="true"
@@ -22,7 +22,9 @@ var Notice = CreateClass({
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190426-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190424-2", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190424-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190414-2", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190414-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190310-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180311-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180205-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180102-1", locale)}</li>
@@ -333,6 +335,7 @@ var Notice = CreateClass({
                 </ul>
 
                 <h3>スキル性能・各種計算式</h3>
+                表示する項目 → キャラ情報・スキル合計値 → スキル合計で確認できます。(加護適応済みの値)
                 <div className="table-responsive">
                     <table className="table">
                         <tbody>
@@ -1233,6 +1236,29 @@ var Notice = CreateClass({
                             <td>23.0</td>
                         </tr>
                         <tr>
+                            <td>追牙・肆</td>
+                            <td>1.0</td>
+                            <td>2.0</td>
+                            <td>3.0</td>
+                            <td>4.0</td>
+                            <td>5.0</td>
+                            <td>6.0</td>
+                            <td>7.0</td>
+                            <td>8.0</td>
+                            <td>9.0</td>
+                            <td>10.0</td>
+                            <td>10.4</td>
+                            <td>10.8</td>
+                            <td>11.2</td>
+                            <td>11.6</td>
+                            <td>12.0</td>
+                            <td>12.2</td>
+                            <td>12.4</td>
+                            <td>12.6</td>
+                            <td>12.8</td>
+                            <td>13.0</td>
+                        </tr>
+                        <tr>
                             <td>秘奥/必殺(奥義ダメージ) (小)</td>
                             <td>0.5</td>
                             <td>1.0</td>
@@ -1380,25 +1406,21 @@ var Notice = CreateClass({
                     </table>
                 </div>
                 <ul className="list-group">
-                    <li className="list-group-item">紅蓮の呪印: 通常攻刃(大)</li>
-                    <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は<s>乗らない</s>乗る)</li>
-                    <li className="list-group-item">霧氷の追牙・肆: パーティ4番目のキャラに追加ダメージ(1% * slv) / 奥義ゲージ上昇量 - 30%</li>
-                    <li className="list-group-item">通常神威: 通常攻刃(小)の値を攻刃と守護として扱う</li>
-                    <li className="list-group-item">マグナ神威: マグナ攻刃(小)の値を攻刃と守護として扱う</li>
-                    <li className="list-group-item">通常刹那: 通常技巧(中) + 通常攻刃(中)</li>
-                    <li className="list-group-item">マグナ刹那: マグナ技巧(中) + マグナ攻刃(中)</li>
-                    <li className="list-group-item">通常克己: 通常技巧(中) + 通常二手(中)</li>
-                    <li className="list-group-item">マグナ克己: マグナ技巧(中) + マグナ二手(中)</li>
-                    <li className="list-group-item">通常暴君: 通常攻刃(大) + HP減少(10%)</li>
-                    <li className="list-group-item">マグナ暴君: マグナ攻刃(大) + HP減少(10%)</li>
-                    <li className="list-group-item">通常括目: 通常二手(小)と同様</li>
-                    <li className="list-group-item">マグナ括目: マグナ二手(小)と同様</li>
-                    <li className="list-group-item">通常羅刹: 通常攻刃(中) + (連撃率-38%)</li>
-                    <li className="list-group-item">マグナ羅刹: マグナ攻刃(中) + (連撃率-38%)</li>
-                    <li className="list-group-item">通常無双: 通常攻刃(中) + 通常二手(中)</li>
+                    <li className="list-group-item">神威: 攻刃の値を攻刃と守護として扱う</li>
+                    <li className="list-group-item">刹那: 技巧 + 攻刃</li>
+                    <li className="list-group-item">克己: 技巧 + 二手</li>
+                    <li className="list-group-item">刃界: HP + 技巧</li>
+                    <li className="list-group-item">無双: 攻刃 + 二手</li>
+                    <li className="list-group-item">乱舞: 攻刃 + 三手(二手は上昇しない)</li>
+                    <li className="list-group-item">軍神: 守護 + 二手(軍神)</li>
+                    <li className="list-group-item">暴君: 攻刃(大) + HP減少(10%)</li>
+                    <li className="list-group-item">暴君II: 攻刃(暴君II) + HP減少(10%)</li>
+                    <li className="list-group-item">羅刹: 攻刃 + (DA率-20%)</li>
+                    <li className="list-group-item">破壊: 三手(破壊)(二手は上昇しない)</li>
+                    <li className="list-group-item">楚歌,先制: 1本目しか発動しない</li>
+                    <li className="list-group-item">括目: 二手</li>
                     <li className="list-group-item">アンノウン暴君(ミフネ): アンノウン攻刃(大) + HP減少(7%)</li>
                     <li className="list-group-item">技巧(小, 中, 大): クリティカル時倍率 50%</li>
-                    <li className="list-group-item">マグナ技巧(小, 中, 大): クリティカル時倍率 50%</li>
                     <li className="list-group-item">背水(小): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br/>(baseRateは
                         (Slv10以下) -0.3 + Slv * 1.8, (Slv10以上) 18.0 + 3.0 * (Slv - 10) / 5.0
                     </li>
@@ -1411,11 +1433,15 @@ var Notice = CreateClass({
                     <li className="list-group-item">渾身: <a target="_blank"
                                                            href="http://binarysblog.blog.fc2.com/blog-entry-1.html">こちらを参照</a>
                     </li>
+                    <li className="list-group-item">紅蓮の呪印: 通常攻刃(大)</li>
+                    <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は<s>乗らない</s>乗る)</li>
+                    <li className="list-group-item">霧氷の追牙・肆: パーティ4番目のキャラに追加ダメージ / 奥義ゲージ上昇量 - 30%</li>
                     <li className="list-group-item">攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率))
                         (TA→DAの順で判定、TA率が100％なら3回、TA率0％でDA率100％なら2回)
                     </li>
                     <li className="list-group-item">技巧期待値: 通常技巧の複数発動分も計算してます</li>
                     <li className="list-group-item">基礎HP: 600 + 8 * rank(100まで) + 4 * (rank - 100)</li>
+                    <li className="list-group-item">奥義上限枠: [通常必殺枠(上限30%)、方陣必殺枠(上限30%)、イクシード枠(上限30%)](上限60%)、四象邪系枠(上限20%)、オメガ枠(上限15%)</li>
                 </ul>
             </div>
         );
