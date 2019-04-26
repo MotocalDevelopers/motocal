@@ -206,7 +206,7 @@ var Summon = CreateClass({
             DA: 0,
             TA: 0,
             criticalRatio: 0.0,
-            ougiDamage : 0.0
+            ougiDamage : 0.0,
             tenshiDamageUP : 0.0
         };
     },
