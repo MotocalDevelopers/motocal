@@ -13,9 +13,18 @@ var Notice = CreateClass({
                 <div className="divright"><a href={`${location.origin}${location.pathname}`}>入力リセット</a></div>
                 <h2>入力例: <a href={`${location.origin}${location.pathname}thumbnail.php`}
                             target="_blank"> 元カレ計算機データビューア </a></h2>
+                <h2>不具合報告・ご要望:<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a></h2>
+                <h2>開発者募集:<a href="https://github.com/MotocalDevelopers/motocal" target="_blank">MotocalDevelopers/motocal</a></h2>
+                <h3>更新履歴</h3>
                 <Panel bsStyle="default" collapsible="true"
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
                     <ul className="list-group">
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190426-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190424-2", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190424-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190414-2", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190414-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190310-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180311-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180205-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20180102-1", locale)}</li>
@@ -207,8 +216,6 @@ var Notice = CreateClass({
                     </li>
                 </ul>
 
-                不具合報告・ご要望がありましたら<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a>にてご連絡をお願い致します。
-
                 <h3>LICENSE</h3>
                 <ul className="list-group">
                     <li className="list-group-item"> テンプレート用の画像: &copy; Cygames</li>
@@ -224,110 +231,111 @@ var Notice = CreateClass({
                 <h3>参考文献</h3>
                 以下のサイト・ツイートを参考にさせていただきました。
                 <ul className="list-group">
-                    <li className="list-group-item"><a href="http://gbf-wiki.com">グランブルーファンタジー(グラブル)攻略wiki</a></li>
+                    <li className="list-group-item"><a href="http://gbf-wiki.com" target="_blank">グランブルーファンタジー(グラブル)攻略wiki</a></li>
                     <li className="list-group-item"><a
-                        href="http://hibin0.web.fc2.com/grbr_atk_calc/atk_calc.html">グランブルーファンタジー攻撃力計算機</a></li>
+                        href="http://hibin0.web.fc2.com/grbr_atk_calc/atk_calc.html" target="_blank">グランブルーファンタジー攻撃力計算機</a></li>
                     <li className="list-group-item"><a
-                        href="http://hibin0.web.fc2.com/grbr_weapon_calc/weapon_calc.html">オススメ装備に自信ニキ</a></li>
+                        href="http://hibin0.web.fc2.com/grbr_weapon_calc/weapon_calc.html" target="_blank">オススメ装備に自信ニキ</a></li>
                     <li className="list-group-item"><a
-                        href="http://greatsundome.hatenablog.com/entry/2015/12/09/230544">すんどめ侍のグラブル生活 -
+                        href="http://greatsundome.hatenablog.com/entry/2015/12/09/230544" target="_blank">すんどめ侍のグラブル生活 -
                         【グラブル】武器スキル検証結果</a></li>
                     <li className="list-group-item"><a
-                        href="http://greatsundome.hatenablog.com/entry/2015/10/11/175521">すんどめ侍のグラブル生活 -
+                        href="http://greatsundome.hatenablog.com/entry/2015/10/11/175521" target="_blank">すんどめ侍のグラブル生活 -
                         【グラブル】ジョブデータ検証結果</a></li>
                     <li className="list-group-item"><a
-                        href="http://greatsundome.hatenablog.com/entry/2015/10/07/114737">すんどめ侍のグラブル生活 -
+                        href="http://greatsundome.hatenablog.com/entry/2015/10/07/114737" target="_blank">すんどめ侍のグラブル生活 -
                         【グラブル】減衰補正検証まとめ</a></li>
                     <li className="list-group-item"><a
-                        href="http://greatsundome.hatenablog.com/archive/category/%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E6%A4%9C%E8%A8%BC">すんどめ侍のグラブル生活 -
+                        href="http://greatsundome.hatenablog.com/archive/category/%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E6%A4%9C%E8%A8%BC" target="_blank">すんどめ侍のグラブル生活 -
                         キャラクター検証</a></li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/hibino_naoki/status/722338377127735296"> @hibino_naoki
+                        href="https://twitter.com/hibino_naoki/status/722338377127735296" target="_blank"> @hibino_naoki
                         さんのコルタナ(三手大)検証情報</a></li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/gekikara_s/status/746274346251882496"> @gekikara_s さんのバハフツ拳検証情報</a>
+                        href="https://twitter.com/gekikara_s/status/746274346251882496" target="_blank"> @gekikara_s さんのバハフツ拳検証情報</a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/Hecate_mk2/status/765508148689985537"> @Hecate_mk2 さんの渾身(大)検証情報</a>
+                        href="https://twitter.com/Hecate_mk2/status/765508148689985537" target="_blank"> @Hecate_mk2 さんの渾身(大)検証情報</a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/firemagma/status/765632239526830080"> @firemagma さんの渾身(大)検証情報</a></li>
+                        href="https://twitter.com/firemagma/status/765632239526830080" target="_blank"> @firemagma さんの渾身(大)検証情報</a></li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/hibino_naoki/status/765749475457413120"> @hibino_naoki
+                        href="https://twitter.com/hibino_naoki/status/765749475457413120" target="_blank"> @hibino_naoki
                         さんの渾身(大)検証情報</a></li>
                     <li className="list-group-item"><a
-                        href="http://twitter.com/Hecate_mk2/status/773365651465396225"> @Hecate_mk2 さんの三手検証結果検証結果</a>
+                        href="http://twitter.com/Hecate_mk2/status/773365651465396225" target="_blank"> @Hecate_mk2 さんの三手検証結果検証結果</a>
                     </li>
                     <li className="list-group-item"><a
-                        href="http://twitter.com/umiumipkm/status/773383133739622400"> @umiumipkm さんのコスモスBLの枠についての情報</a>
+                        href="http://twitter.com/umiumipkm/status/773383133739622400" target="_blank"> @umiumipkm さんのコスモスBLの枠についての情報</a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/hakanid/status/770966731271512065/photo/1"> @hakanid
+                        href="https://twitter.com/hakanid/status/770966731271512065/photo/1" target="_blank"> @hakanid
                         さんのセスランス加護量変動検証結果</a></li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/yah68291/status/730397040891453445"> @yah68291 さんのオールドペルセウス検証結果 </a>
+                        href="https://twitter.com/yah68291/status/730397040891453445" target="_blank"> @yah68291 さんのオールドペルセウス検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="http://gbf.xzz.jp/dev/%E9%98%B2%E5%BE%A1%E5%9B%BA%E6%9C%89%E5%80%A4%E3%83%A1%E3%83%A2/"> 防御固有値メモ
+                        href="http://gbf.xzz.jp/dev/%E9%98%B2%E5%BE%A1%E5%9B%BA%E6%9C%89%E5%80%A4%E3%83%A1%E3%83%A2/" target="_blank"> 防御固有値メモ
                         - グラメモ</a></li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/Hecate_mk2/status/801961194965766144"> @Hecate_mk2 さんの渾身修正検証結果 </a>
+                        href="https://twitter.com/Hecate_mk2/status/801961194965766144" target="_blank"> @Hecate_mk2 さんの渾身修正検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/Hecate_mk2/status/809987671326072833"> @Hecate_mk2 さんのネツァ検証結果 </a>
+                        href="https://twitter.com/Hecate_mk2/status/809987671326072833" target="_blank"> @Hecate_mk2 さんのネツァ検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/hibino_naoki/status/858792702514573312"> @hibino_naoki
+                        href="https://twitter.com/hibino_naoki/status/858792702514573312" target="_blank"> @hibino_naoki
                         さんの攻刃III検証結果 </a></li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/Hecate_mk2/status/889634680005414914"> @Hecate_mk2
+                        href="https://twitter.com/Hecate_mk2/status/889634680005414914" target="_blank"> @Hecate_mk2
                         さんの神威(中)、リミットブレイク検証結果 </a></li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/soufflex_/status/893379153478668288"> @soufflex_ さんの新奥義上限に関する情報 </a>
+                        href="https://twitter.com/soufflex_/status/893379153478668288" target="_blank"> @soufflex_ さんの新奥義上限に関する情報 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/Granblue_GW/status/947109401294389249"> GameWithさん</a>, <a
-                        href="https://twitter.com/metalgaldra/status/946360446130327552"> @metalgaldra さん</a>の乱舞効果量に関する情報
+                        href="https://twitter.com/Granblue_GW/status/947109401294389249" target="_blank"> GameWithさん</a>, <a
+                        href="https://twitter.com/metalgaldra/status/946360446130327552" target="_blank"> @metalgaldra さん</a>の乱舞効果量に関する情報
                     </li>
                     <li className="list-group-item"><a
-                        href="http://hiroxgbf.blog.fc2.com/blog-entry-7.html"> グラブル調べもの記録 - 過去検証まとめ </a>
+                        href="http://hiroxgbf.blog.fc2.com/blog-entry-7.html" target="_blank"> グラブル調べもの記録 - 過去検証まとめ </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/search?f=tweets&q=from%3A%40agavenighto%20%E6%A4%9C%E8%A8%BC&src=typd"> @agavenighto さんの方陣破壊(小)、方陣乱舞(中)検証結果 </a>
+                        href="https://twitter.com/search?f=tweets&q=from%3A%40agavenighto%20%E6%A4%9C%E8%A8%BC&src=typd" target="_blank"> @agavenighto さんの方陣破壊(小)、方陣乱舞(中)検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/agavenighto/status/1091626790714404865"> 神ゲー攻略 - 防御値の解説と敵の防御値一覧  </a>
+                        href="https://twitter.com/agavenighto/status/1091626790714404865" target="_blank"> 神ゲー攻略 - 防御値の解説と敵の防御値一覧  </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968"> ポキールさんのグラブル検証置き場 - 奥義性能 </a>
+                        href="https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968" target="_blank"> ポキールさんのグラブル検証置き場 - 奥義性能 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/"> Gamewithさんの諸々のスキル効果量検証結果 </a>
+                        href="https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/" target="_blank"> Gamewithさんの諸々のスキル効果量検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="http://gbf-verification.blog.jp/"> グラブル検証Logさんの諸々のスキル効果量検証結果 </a>
+                        href="http://gbf-verification.blog.jp/" target="_blank"> グラブル検証Logさんの諸々のスキル効果量検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/Hecate_mk2"> @Hecate_mk2 さんの諸々の検証結果 </a>
+                        href="https://twitter.com/Hecate_mk2" target="_blank"> @Hecate_mk2 さんの諸々の検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://docs.google.com/spreadsheets/d/1SUhqwiq3UC7ba7jh22s0mhHJ_33Zi443aRywe-CmURQ/edit#gid=321585253"> スフレさんの背水・渾身検証結果 </a>
+                        href="https://docs.google.com/spreadsheets/d/1SUhqwiq3UC7ba7jh22s0mhHJ_33Zi443aRywe-CmURQ/edit#gid=321585253" target="_blank"> スフレさんの背水・渾身検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/i/moments/1040200666260459520"> @Duran_grablu さんの方陣技巧検証結果 </a>
+                        href="https://twitter.com/i/moments/1040200666260459520" target="_blank"> @Duran_grablu さんの方陣技巧検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/search?f=tweets&q=from%3A%40usa_akasa%20%E6%A4%9C%E8%A8%BC&src=typd"> @usa_akasa さんの基礎連撃率検証結果 </a>
+                        href="https://twitter.com/search?f=tweets&q=from%3A%40usa_akasa%20%E6%A4%9C%E8%A8%BC&src=typd" target="_blank"> @usa_akasa さんの基礎連撃率検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/i/moments/1112721760560926721"> @takeshi310310 さんの基礎連撃率検証結果 </a>
+                        href="https://twitter.com/i/moments/1112721760560926721" target="_blank"> @takeshi310310 さんの基礎連撃率検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/search?f=tweets&vertical=default&q=from%3A%40KST33166653%20%E6%A4%9C%E8%A8%BC&src=typd"> @KST33166653 さんの基礎連撃率検証結果 </a>
+                        href="https://twitter.com/search?f=tweets&vertical=default&q=from%3A%40KST33166653%20%E6%A4%9C%E8%A8%BC&src=typd" target="_blank"> @KST33166653 さんの基礎連撃率検証結果 </a>
                     </li>
                 </ul>
 
                 <h3>スキル性能・各種計算式</h3>
+                表示する項目 → キャラ情報・スキル合計値 → スキル合計で確認できます。(加護適応済みの値)
                 <div className="table-responsive">
                     <table className="table">
                         <tbody>
@@ -1010,24 +1018,24 @@ var Notice = CreateClass({
                         </tr>
                         <tr>
                             <td>二手三手(小)</td>
-                            <td>0.4</td>
-                            <td>0.6</td>
-                            <td>0.8</td>
-                            <td>1.0</td>
-                            <td>1.2</td>
-                            <td>1.4</td>
-                            <td>1.6</td>
-                            <td>1.8</td>
-                            <td>2.0</td>
-                            <td>2.2</td>
-                            <td>2.46</td>
-                            <td>2.72</td>
-                            <td>2.98</td>
-                            <td>3.24</td>
+                            <td>0.25</td>
+                            <td>0.50</td>
+                            <td>0.75</td>
+                            <td>1.00</td>
+                            <td>1.25</td>
+                            <td>1.50</td>
+                            <td>1.75</td>
+                            <td>2.00</td>
+                            <td>2.25</td>
+                            <td>2.5</td>
+                            <td>2.7</td>
+                            <td>2.9</td>
+                            <td>3.1</td>
+                            <td>3.3</td>
                             <td>3.5</td>
                         </tr>
                         <tr>
-                            <td>通常二手/マグナ二手(中)</td>
+                            <td>二手三手(中)</td>
                             <td>0.8</td>
                             <td>1.1</td>
                             <td>1.4</td>
@@ -1228,6 +1236,29 @@ var Notice = CreateClass({
                             <td>23.0</td>
                         </tr>
                         <tr>
+                            <td>追牙・肆</td>
+                            <td>1.0</td>
+                            <td>2.0</td>
+                            <td>3.0</td>
+                            <td>4.0</td>
+                            <td>5.0</td>
+                            <td>6.0</td>
+                            <td>7.0</td>
+                            <td>8.0</td>
+                            <td>9.0</td>
+                            <td>10.0</td>
+                            <td>10.4</td>
+                            <td>10.8</td>
+                            <td>11.2</td>
+                            <td>11.6</td>
+                            <td>12.0</td>
+                            <td>12.2</td>
+                            <td>12.4</td>
+                            <td>12.6</td>
+                            <td>12.8</td>
+                            <td>13.0</td>
+                        </tr>
+                        <tr>
                             <td>秘奥/必殺(奥義ダメージ) (小)</td>
                             <td>0.5</td>
                             <td>1.0</td>
@@ -1375,25 +1406,21 @@ var Notice = CreateClass({
                     </table>
                 </div>
                 <ul className="list-group">
-                    <li className="list-group-item">紅蓮の呪印: 通常攻刃(大)</li>
-                    <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は<s>乗らない</s>乗る)</li>
-                    <li className="list-group-item">霧氷の追牙・肆: パーティ4番目のキャラに追加ダメージ(1% * slv) / 奥義ゲージ上昇量 - 30%</li>
-                    <li className="list-group-item">通常神威: 通常攻刃(小)の値を攻刃と守護として扱う</li>
-                    <li className="list-group-item">マグナ神威: マグナ攻刃(小)の値を攻刃と守護として扱う</li>
-                    <li className="list-group-item">通常刹那: 通常技巧(中) + 通常攻刃(中)</li>
-                    <li className="list-group-item">マグナ刹那: マグナ技巧(中) + マグナ攻刃(中)</li>
-                    <li className="list-group-item">通常克己: 通常技巧(中) + 通常二手(中)</li>
-                    <li className="list-group-item">マグナ克己: マグナ技巧(中) + マグナ二手(中)</li>
-                    <li className="list-group-item">通常暴君: 通常攻刃(大) + HP減少(10%)</li>
-                    <li className="list-group-item">マグナ暴君: マグナ攻刃(大) + HP減少(10%)</li>
-                    <li className="list-group-item">通常括目: 通常二手(小)と同様</li>
-                    <li className="list-group-item">マグナ括目: マグナ二手(小)と同様</li>
-                    <li className="list-group-item">通常羅刹: 通常攻刃(中) + (連撃率-38%)</li>
-                    <li className="list-group-item">マグナ羅刹: マグナ攻刃(中) + (連撃率-38%)</li>
-                    <li className="list-group-item">通常無双: 通常攻刃(中) + 通常二手(中)</li>
+                    <li className="list-group-item">神威: 攻刃の値を攻刃と守護として扱う</li>
+                    <li className="list-group-item">刹那: 技巧 + 攻刃</li>
+                    <li className="list-group-item">克己: 技巧 + 二手</li>
+                    <li className="list-group-item">刃界: HP + 技巧</li>
+                    <li className="list-group-item">無双: 攻刃 + 二手</li>
+                    <li className="list-group-item">乱舞: 攻刃 + 三手(二手は上昇しない)</li>
+                    <li className="list-group-item">軍神: 守護 + 二手(軍神)</li>
+                    <li className="list-group-item">暴君: 攻刃(大) + HP減少(10%)</li>
+                    <li className="list-group-item">暴君II: 攻刃(暴君II) + HP減少(10%)</li>
+                    <li className="list-group-item">羅刹: 攻刃 + (DA率-20%)</li>
+                    <li className="list-group-item">破壊: 三手(破壊)(二手は上昇しない)</li>
+                    <li className="list-group-item">楚歌,先制: 1本目しか発動しない</li>
+                    <li className="list-group-item">括目: 二手</li>
                     <li className="list-group-item">アンノウン暴君(ミフネ): アンノウン攻刃(大) + HP減少(7%)</li>
                     <li className="list-group-item">技巧(小, 中, 大): クリティカル時倍率 50%</li>
-                    <li className="list-group-item">マグナ技巧(小, 中, 大): クリティカル時倍率 50%</li>
                     <li className="list-group-item">背水(小): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br/>(baseRateは
                         (Slv10以下) -0.3 + Slv * 1.8, (Slv10以上) 18.0 + 3.0 * (Slv - 10) / 5.0
                     </li>
@@ -1406,11 +1433,15 @@ var Notice = CreateClass({
                     <li className="list-group-item">渾身: <a target="_blank"
                                                            href="http://binarysblog.blog.fc2.com/blog-entry-1.html">こちらを参照</a>
                     </li>
+                    <li className="list-group-item">紅蓮の呪印: 通常攻刃(大)</li>
+                    <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は<s>乗らない</s>乗る)</li>
+                    <li className="list-group-item">霧氷の追牙・肆: パーティ4番目のキャラに追加ダメージ / 奥義ゲージ上昇量 - 30%</li>
                     <li className="list-group-item">攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率))
                         (TA→DAの順で判定、TA率が100％なら3回、TA率0％でDA率100％なら2回)
                     </li>
                     <li className="list-group-item">技巧期待値: 通常技巧の複数発動分も計算してます</li>
                     <li className="list-group-item">基礎HP: 600 + 8 * rank(100まで) + 4 * (rank - 100)</li>
+                    <li className="list-group-item">奥義上限枠: [通常必殺枠(上限30%)、方陣必殺枠(上限30%)、イクシード枠(上限30%)](上限60%)、四象邪系枠(上限20%)、オメガ枠(上限15%)</li>
                 </ul>
             </div>
         );

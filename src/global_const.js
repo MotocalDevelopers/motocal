@@ -281,8 +281,8 @@ var limitBonusCriticalList = {
     },
     "small": {
         "name": "小",
-        "value": 0.125,
-        "attackRatio": 0.125,
+        "value": 0.12,
+        "attackRatio": 0.12,
     },
     "medium": {
         "name": "中",
@@ -866,7 +866,7 @@ module.exports.Jobs = {
         "favArm2": "katana",
         "type": "attack",
         "atBonus": 2000.0,
-        "kouzinBonus": 0.0,
+        "kouzinBonus": 20.0,
         "hpBonus": 600.0,
         "shugoBonus": 0.0,
         "DaBonus": 57.0,
@@ -1060,7 +1060,7 @@ module.exports.Jobs = {
         "atBonus": 0.0,
         "kouzinBonus": 0.0,
         "hpBonus": 0.0,
-        "shugoBonus": 0.0,
+        "shugoBonus": 5.0,
         "DaBonus": 23.0,
         "TaBonus": 5.0
     },
@@ -1289,7 +1289,7 @@ var skillAmounts = {
         "yuuki": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
     },
     "multiAttack": {
-        "S": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5, 3.66, 3.82, 3.98, 4.14, 4.3],
+        "S": [0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.66, 3.82, 3.98, 4.14, 4.3],
         "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.2, 5.4, 5.6, 5.8, 6.0],
         "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0, 7.3, 7.6, 7.9, 8.2, 8.5],
         // used by Mirror-Blade Shard(刃鏡片)
@@ -1381,6 +1381,9 @@ var skillAmounts = {
         //only DA effect
         "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]
     },
+    "tuiga": {
+        "L": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
+    },
     // Debuff Resistance Grace (Unconfirmed Placeholder)
     "normalOntyou": {
         "M": [20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
@@ -1396,19 +1399,19 @@ var supportAbilities = {
         "value": 0
     },
     "da_up_all_10": {
-        "name": "全体DA率UP10%(ランスロット)",
+        "name": "全体DA率10%UP(ランスロット)",
         "type": "DABuff",
         "range": "all",
         "value": 0.10
     },
     "ta_up_all_3": {
-        "name": "全体TA率UP3%(ネツァ)",
+        "name": "全体TA率3%UP(ネツァ)",
         "type": "TABuff",
         "range": "all",
         "value": 0.03
     },
     "data_up_wind_10_5": {
-        "name": "全体風DA率UP10%とTA率UP5％(コッコロ)",
+        "name": "全体風DA率10%UP&TA率5%UP(コッコロ)",
         "type": "dataBuff_wind",
         "range": "all",
         "value": 0.00
@@ -1420,37 +1423,37 @@ var supportAbilities = {
         "value": 0.10
     },
     "hp_down_own_15": {
-        "name": "HPDOWN15%(ペコリーヌ)",
+        "name": "HP15%DOWN(水着イシュ, マルキ, ロザミア)",
         "type": "HPBuff",
         "range": "own",
         "value": -0.15
     },
     "hp_up_own_15": {
-        "name": "HPUP15%(ペコリーヌ)",
+        "name": "HP15%UP(ペコリーヌ)",
         "type": "HPBuff",
         "range": "own",
         "value": 0.15
     },
     "hp_up_own_20": {
-        "name": "HPUP20%(ソリッズ)",
+        "name": "HP20%UP(ソリッズ)",
         "type": "HPBuff",
         "range": "own",
         "value": 0.20
     },
     "atk_up_own_5": {
-        "name": "攻撃UP5%(ネツァ,レディグレイ,ハロシャル)",
+        "name": "攻撃5%UP(ネツァ,レディグレイ,ハロシャル)",
         "type": "normalBuff",
         "range": "own",
         "value": 0.05
     },
     "atk_up_all_5": {
-        "name": "全体攻撃UP5%(クリスティーナ)",
+        "name": "全体攻撃5%UP(クリスティーナ)",
         "type": "normalBuff",
         "range": "all",
         "value": 0.05
     },
     "atk_up_all_10": {
-        "name": "全体攻撃UP10%(アニラ)",
+        "name": "全体攻撃10%UP(アニラ)",
         "type": "normalBuff",
         "range": "all",
         "value": 0.10
@@ -1468,31 +1471,31 @@ var supportAbilities = {
         "value": 0.10
     },
     "ougi_gage_up_own_10": {
-        "name": "奥義ゲージ上昇量UP10%(メガネ)",
+        "name": "奥義ゲージ上昇量10%UP(アルタイル)",
         "type": "ougiGageBuff",
         "range": "own",
         "value": 0.10
     },
     "ougi_gage_up_own_20": {
-        "name": "奥義ゲージ上昇量UP20%(アレ爺,シルヴァ,アーミラ)",
+        "name": "奥義ゲージ上昇量20%UP(アレ爺,シルヴァ,アーミラ)",
         "type": "ougiGageBuff",
         "range": "own",
         "value": 0.20
     },
     "ougi_gage_up_own_100": {
-        "name": "奥義ゲージ上昇量UP100%(オクトー)",
+        "name": "奥義ゲージ上昇量100%UP(オクトー)",
         "type": "ougiGageBuff",
         "range": "own",
         "value": 1.00
     },
     "ougi_damage_up_50": {
-        "name": "全体の奥義ダメージ1.5倍(シエテ)",
+        "name": "全体の奥義ダメージ50%UP(シエテ)",
         "type": "ougiDamageBuff",
         "range": "all",
         "value": 0.50
     },
     "ougi_damage_up_50_cap_10": {
-        "name": "全体の奥義ダメージ1.5倍&奥義上限10%UP([最終]シエテ)",
+        "name": "全体の奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
         "type": "ougiDamageBuff_capBuff",
         "range": "all",
         "value": 0.50
@@ -1504,70 +1507,70 @@ var supportAbilities = {
         "value": 0.00
     },
     "emnity_own_SL20": {
-        "name": "自分に背水効果(ジャンヌダルク(闇), 黒騎士)",
+        "name": "自分に背水効果(闇ジャンヌダルク, 黒騎士)",
         "type": "emnity_own_SL20",
         "range": "own",
         "value": 0.00
     },
     "envoy_meditation": {
-        "name": "バトルメンバーの属性の数に応じて自分のステータスUP(ゾーイ)",
+        "name": "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)",
         "type": "envoy_meditation",
         "range": "own",
         "value": 0.00
     },
     "dance_of_nataraja": {
-        "name": "奥義ゲージ上昇量DOWN35%&与ダメージ上昇(15%)(シヴァ)",
+        "name": "奥義ゲージ上昇量35%DOWN&与ダメージ上昇15%UP(シヴァ)",
         "type": "dance_of_nataraja",
         "range": "own",
         "value": 0.00
     },
     "recklessness_incarnate": {
-        "name": "奥義ゲージ上昇量DOWN35%&与ダメージ上昇(15%)&HPUP20%(クビラ)",
+        "name": "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)",
         "type": "recklessness_incarnate",
         "range": "own",
         "value": 0.00
     },
     "critical_up_own_10_30": {
-        "name": "クリティカル確率UP(ヴァンピィ, ハロカリ) 発動率10%, 倍率30%",
+        "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ハロカリ)",
         "type": "criticalBuff",
         "range": "own",
         "value": 0.10,
         "attackRatio": 0.30
     },
     "critical_up_own_20_20": {
-        "name": "クリティカル確率UP(ジャンヌダルク(水着ver)) 発動率20%, 倍率20%",
+        "name": "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)",
         "type": "criticalBuff",
         "range": "own",
         "value": 0.20,
         "attackRatio": 0.20
     },
     "critical_up_all_5_30": {
-        "name": "味方全体のクリティカル確率UP(フェリ) 発動率5%, 倍率30%",
+        "name": "味方全体のクリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
         "type": "criticalBuff",
         "range": "all",
         "value": 0.05,
         "attackRatio": 0.30
     },
     "damageUP_5": {
-        "name": "与ダメージ上昇(5%)",
+        "name": "与ダメージ上昇5%UP(アビー)",
         "type": "charaDamageUP",
         "range": "own",
         "value": 0.05
     },
     "damageUP_10": {
-        "name": "与ダメージ上昇(10%)",
+        "name": "与ダメージ上昇10%UP",
         "type": "charaDamageUP",
         "range": "own",
         "value": 0.10
     },
     "damageUP_20": {
-        "name": "与ダメージ上昇(20%)",
+        "name": "与ダメージ上昇20%UP(色々)",
         "type": "charaDamageUP",
         "range": "own",
         "value": 0.20
     },
     "damageUP_OugiCapUP_20": {
-        "name": "与ダメージ上昇(20%)",
+        "name": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
         "type": "charaDamageUP_OugiCap",
         "range": "own",
         "value": 0.20
@@ -1579,7 +1582,7 @@ var supportAbilities = {
         "value": 0.20
     },
     "ougiCapUP_25": {
-        "name": "奥義ダメージ上限25%UP(ルリア, ロボミ(SSR))",
+        "name": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
         "type": "ougiDamageLimitBuff",
         "range": "own",
         "value": 0.25

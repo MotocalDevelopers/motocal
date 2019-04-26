@@ -346,6 +346,8 @@ var Root = CreateClass({
                                 <DropdownButton title={intl.translate("使い方", locale)} id="system-howto">
                                     <MenuItem onClick={this.openHowTo}>{intl.translate("使い方", locale)}</MenuItem>
                                     <MenuItem onClick={this.openNiteHowTo}>二手等について </MenuItem>
+                                    <MenuItem href="https://docs.google.com/document/d/169gKHe33eO2IuFzlcBjPsZsznPLqbPeCPJHIIrm_-n8/edit"
+                                              target="_blank"> Guide to using Motocal (by ZuruiKonzatsu) </MenuItem>
                                     <MenuItem href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2"
                                               target="_blank"> 問い合わせ </MenuItem>
                                 </DropdownButton>
@@ -383,6 +385,8 @@ var Root = CreateClass({
                                     <MenuItem><p onClick={this.openHowTo}>{intl.translate("使い方", locale)}</p></MenuItem>
                                     <MenuItem><p onClick={this.openNiteHowTo}> 二手技巧等込みの最適編成について </p></MenuItem>
                                     <MenuItem><p onClick={this.openSimulatorHowTo}> ダメージシミュレータについて </p></MenuItem>
+                                    <MenuItem href="https://docs.google.com/document/d/169gKHe33eO2IuFzlcBjPsZsznPLqbPeCPJHIIrm_-n8/edit"
+                                              target="_blank"> Guide to using Motocal (by ZuruiKonzatsu) </MenuItem>
                                     <MenuItem href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2"
                                               target="_blank"> 問い合わせ </MenuItem>
                                 </NavDropdown>
