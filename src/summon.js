@@ -25,6 +25,7 @@ var raceTypes = GlobalConst.raceTypes;
 var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
+var TextWithTooltip = GlobalConst.TextWithTooltip;
 
 var SummonList = CreateClass({
     getInitialState: function () {
@@ -412,6 +413,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "ougiDamage")}/>
                         </td>
                     </tr>
+                    <TextWithTooltip tooltip={intl.translate("セラフィック加護説明", locale)} id={"tooltip-tenshi-aura-detail"}>
                     <tr>
                         <th className="bg-primary">{intl.translate("セラフィック加護", locale)}</th>
                         <td>
@@ -419,6 +421,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "tenshiDamageUP")}/>
                         </td>
                     </tr>
+                    </TextWithTooltip>
                     </tbody>
                 </table>
 
