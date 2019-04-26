@@ -72,7 +72,7 @@ var multiLangData = {
         "zh": "读取",
     },
     "ブラウザに保存": {
-        "en": "Save to Browser",
+        "en": "Save",
         "ja": "保存",
         "zh": "保存",
     },
@@ -2844,6 +2844,26 @@ var multiLangData = {
         "en": "Ad.",
         "ja": "広告",
         "zh": "广告",
+    },
+    "入力例:": {
+        "en": "Input Example:",
+        "ja": "入力例:",
+        "zh": "入力例:",
+    },
+    "不具合報告・ご要望:": {
+        "en": "Bug Report/Request:",
+        "ja": "不具合報告・ご要望:",
+        "zh": "不具合報告・要望:",
+    },
+    "開発者募集:": {
+        "en": "Recruiting Developers:\n",
+        "ja": "開発者募集:",
+        "zh": "開発者募集:",
+    },
+    "更新履歴": {
+        "en": "Changelog",
+        "ja": "更新履歴",
+        "zh": "更新履歴",
     },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",

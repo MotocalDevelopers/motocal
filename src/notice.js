@@ -11,11 +11,11 @@ var Notice = CreateClass({
         return (
             <div className="notice">
                 <div className="divright"><a href={`${location.origin}${location.pathname}`}>入力リセット</a></div>
-                <h2>入力例: <a href={`${location.origin}${location.pathname}thumbnail.php`}
+                <h2>{intl.translate("入力例:", locale)}<a href={`${location.origin}${location.pathname}thumbnail.php`}
                             target="_blank"> 元カレ計算機データビューア </a></h2>
-                <h2>不具合報告・ご要望:<a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a></h2>
-                <h2>開発者募集:<a href="https://github.com/MotocalDevelopers/motocal" target="_blank">MotocalDevelopers/motocal</a></h2>
-                <h3>更新履歴</h3>
+                <h2>{intl.translate("不具合報告・ご要望:", locale)} <a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a></h2>
+                <h2>{intl.translate("開発者募集:", locale)} <a href="https://github.com/MotocalDevelopers/motocal" target="_blank">MotocalDevelopers/motocal</a></h2>
+                <h3>{intl.translate("更新履歴", locale)}</h3>
                 <Panel bsStyle="default" collapsible="true"
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
                     <ul className="list-group">
