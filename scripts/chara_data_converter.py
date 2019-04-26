@@ -210,7 +210,7 @@ patching["コルワ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["フィーナ(SSR)"] = {"DA": 4.0, "TA": 1.0}
 patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
 
-patching["リヴァイ"] = {"DA": 0.0, "TA": 1000.0}
+patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
 
 ### SR
 patching["ユイシス(浴衣ver)"] = {"DA": 10.0, "TA": 5.0}
@@ -233,7 +233,6 @@ patching["ルシオ(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
 patching["バウタオーダ(SSR)"] = {"DA": 4.0, "TA": 1.0}
 patching["イオ(リミテッドver)"] = {"DA": 4.0, "TA": 1.0}
 patching["ソフィア"] = {"DA": 4.0, "TA": 1.0}
-patching["レ・フィーエ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["レ・フィーエ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["シャルロッテ(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
 patching["シャルロッテ(光属性ver)"] = {"DA": 4.0, "TA": 1.0}
@@ -268,6 +267,7 @@ patching["ベアトリクス"] = {"DA": 4.0, "TA": 1.0}
 
 patching["ウーフとレニー"] = {"DA": 1000.0, "TA": 1000.0}
 patching["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
+patching["ゾーイ(水着ver)"] = {"DA": 17.0, "TA": 6.0}
 patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 
 ### SR
