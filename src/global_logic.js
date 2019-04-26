@@ -559,15 +559,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         // Mystery damage upper limit UP = whole buff + individual buff + skill + damage upper limit UP minutes
         // The upper limit of skill of mystery damage is 30%
-        var ougiDamageLimitByExceed = totals[key]["ougiDamageLimit"] <= 0.30 ? totals[key]["ougiDamageLimit"] : 0.30;
-        var ougiDamageLimitByNormal = totals[key]["normalOugiDamageLimit"] * totalSummon["zeus"];
-        ougiDamageLimitByNormal = ougiDamageLimitByNormal <= 0.30 ? ougiDamageLimitByNormal : 0.30;
-        var ougiDamageLimitByMagna = totals[key]["magnaOugiDamageLimit"] * totalSummon["magna"];
-        ougiDamageLimitByMagna = ougiDamageLimitByMagna <= 0.30 ? ougiDamageLimitByMagna : 0.30;
-        var ougiDamageLimit = buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
-        ougiDamageLimit += ougiDamageLimitByMagna;
-        ougiDamageLimit += ougiDamageLimitByNormal;
-        ougiDamageLimit += ougiDamageLimitByExceed;
+        var ougiDamageLimitByExceed = Math.min(0.30, totals[key]["exceedOugiDamageLimit"]);
+        var ougiDamageLimitByNormal = Math.min(0.30, totals[key]["normalOugiDamageLimit"] * totalSummon["zeus"]);
+        var ougiDamageLimitByMagna = Math.min(0.30, totals[key]["magnaOugiDamageLimit"] * totalSummon["magna"]);
+        var ougiDamageLimit = Math.min(0.20, totals[key]["ougiDamageLimit"]);
+        ougiDamageLimit += Math.min(0.15, totals[key]["omegaOugiDamageLimit"]);
+        ougiDamageLimit += Math.min(0.60, (ougiDamageLimitByMagna + ougiDamageLimitByNormal + ougiDamageLimitByExceed));
+        ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
 
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
         chainDamageLimit = chainDamageLimit <= 0.50 ? chainDamageLimit : 0.50;
@@ -1212,7 +1210,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 if (gauphKeyType === "alpha") {
                                     totals[key]["normalDamageLimit"] += 0.1
                                 } else if (gauphKeyType === "gamma") {
-                                    totals[key]["ougiDamageLimit"] += 0.15
+                                    totals[key]["omegaOugiDamageLimit"] += 0.15
                                 } else if (gauphKeyType === "delta") {
                                     totals[key]["chainDamageLimit"] += 50
                                 }
@@ -1226,7 +1224,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 if (opusKeyType === "alpha") {
                                     totals[key]["normalDamageLimit"] += 0.1
                                 } else if (opusKeyType === "gamma") {
-                                    totals[key]["ougiDamageLimit"] += 0.15
+                                    totals[key]["omegaOugiDamageLimit"] += 0.15
                                 } else if (opusKeyType === "delta") {
                                     totals[key]["chainDamageLimit"] += 50
                                 }
@@ -1441,7 +1439,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             } else if (stype == 'ougiDamageLimit') {
                                 totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["ougiDamageLimit"][amount];
                             } else if (stype == 'ougiDamageLimitExceed') {
-                                totals[key]["ougiDamageLimit"] += 0.01 * comb[i] * skillAmounts["ougiDamageLimitExceed"][amount][slv - 1];
+                                totals[key]["exceedOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["ougiDamageLimitExceed"][amount][slv - 1];
                                 // 4* Weapon Skills
                             } else if (stype == 'tsuranukiKiba') {
                                 if (skillname == 'tsuranukiKibaMain') {
@@ -1687,9 +1685,11 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
                 ougiDamageLimit: 0,
-                chainDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
+                exceedOugiDamageLimit: 0,
+                omegaOugiDamageLimit: 0,
+                chainDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
                 ougiDebuff: 0,
@@ -1987,6 +1987,8 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["chainDamageLimit"] = 0;
         totals[key]["magnaOugiDamageLimit"] = 0;
         totals[key]["normalOugiDamageLimit"] = 0;
+        totals[key]["exceedOugiDamageLimit"] = 0;
+        totals[key]["omegaOugiDamageLimit"] = 0;
         totals[key]["normalChainDamageLimit"] = 0;
         totals[key]["additionalDamage"] = 0;
         totals[key]["ougiDebuff"] = 0;
