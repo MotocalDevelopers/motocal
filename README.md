@@ -1,32 +1,41 @@
-# motocal / 元カレ計算機
-元カレ計算機（グラブル攻撃力計算機）の開発用リポジトリです。
+# motocal
+This is a repository for the development of former curry calculator (gbf attack power calculator).\
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy/?template=https://github.com/MotocalDevelopers/motocal)
 
-## 開発準備
+## Preparation for development
 
-### ローカル開発
+### Local Development
 ```sh
-$ git clone https://github.com/hoshimi/motocal.git motocal
+$ git clone https://github.com/MotocalDevelopers/motocal.git motocal
 $ cd motocal
 $ npm install
 $ npm run build
 $ open index.html
 ```
-### docker版
+or
 ```sh
-$ git clone https://github.com/hoshimi/motocal.git motocal
+$ git clone https://github.com/MotocalDevelopers/motocal.git motocal
+$ cd motocal
+$ npm install
+$ npm run build
+$ npm run start
+$ open localhost:8000
+```
+### Docker version
+```sh
+$ git clone https://github.com/MotocalDevelopers/motocal.git motocal
 $ cd motocal
 $ docker-compose up
 ```
 
-## ビルドコマンド
-### 開発環境用コマンド
+## Build command
+### Commands for development environment
 ```sh
 $ npm run start
 ```
 
-### Debugビルド
+### Debug Build
 ```sh
 $ npm run build
 ```
@@ -34,75 +43,70 @@ $ npm run build
 ```sh
 $ npm run watch-dev
 ```
-### リリース用ビルド
+### Build for release
 ```sh
 $ npm run production-build
 ```
-### リリース用 Watch
+### Release Watch
 ```sh
 $ npm run production-watch-dev
 ```
 
-## 構成
-- src: トランスパイル前のソースコード
-- dist: トランスパイル後のソースコード
-- scripts: データ生成用のスクリプト
-- txt_sources: テンプレート処理前のテキストデータ
-- imgs, charaimgs: テンプレート表示用の画像データ
+## Structure
+- src: Source code before trans-piling
+- dist: Source code after trans-piling
+- scripts: Script for generating data
+- txt_sources: Text data for template processing
+- imgs, charaimgs: Image data for templates display
 
-## 作業フロー
-### 機能開発時
-1. src内をいじる
-2. npm run build で dist/main.js等を生成
-    - リリースビルドの場合はnpm run production-build
-    - もしくは npm run watch-dev で監視する
-3. リリース時にproductionブランチにmergeしてからnpm run production-build
+## Workflow
+### Function development
+1. Fiddling inside src
+2. Generate dist / main.js etc. with npm run build
+    - For release builds, run ''npm run production-build''
+    - Or monitor with ''npm run watch-dev''
+3. Merge the production branch on release and then run ''npm run production-build''
 
-### 武器テンプレート更新時
-1. 追加したい武器について、wikiの該当行をコピーし、txt_source/armData-ssr.txt の一番上に貼り付け
-2. arm_data_converter.py を実行
-    - 新スキル対応する場合には arm_data_converter.py に新スキル名 => 新スキルの計算機内部IDの対応を書き加えて下さい。
+### Updating weapon templates
+1. For the weapon you want to add, copy the corresponding line of the wiki and paste it on the top of txt_source/armData-ssr.txt
+2. Run arm_data_converter.py
+    - When dealing with new skills, please add the corresponding new skill name to arm_data_converter.py => Add the new skill to the calculator.
 
-※ 上限解放武器については3凸時、4凸時のステータスが必要になるため、コピーしてきたデータの末尾に○(4凸の場合)または◎(5凸の場合)と、Lv100時、Lv150時のステータスを追加するようにしています。実例を参考に適切に追加して下さい。
+※ For new upper limit breaking weapon it is necessary, to add a status at the end for 4 stars and 5 stars, the data added at the end is ○ (4 stars) or ◎ (5 stars) and Lv 100, Lv 150 stats. Please add it appropriately with reference to the examples.
 
-### キャラテンプレート更新時
-1. 追加したいキャラについて、wikiの該当行をコピーし、txt_source/charaData.txt の一番上に貼り付け
-2. chara_data_converter.py を実行
+### Updating character templates
+1. For the character you want to add, copy the corresponding line of the wiki and paste it on the top of txt_source/charaData.txt
+2. Run chara_data_converter.py
 
-※ キャラの上限解放についてはステータスをそのまま更新するだけでOKです。
+※ For new upper limit breaking of a character, it is OK just to update the stats (All characters stats are for their highest uncap, only exception are eternal character that have a version for 4 and 5 star)
 
-## 注記
-- DB通信用の*phpファイルは管理していません。
-- テンプレート用の画像ファイルも管理していません。下記の作業用スクリプトを用いてDLする必要があります。
+## Note
+- Php file for DB communication is not managed.
+- The repository does not manage image files for templates. It is necessary to DL using the following scripts.
 
-## 作業用スクリプトについて
-テンプレート用のjsonデータ生成や、gbfwikiから武器/キャラの画像データを引っ張ってくるスクリプト群です。
+## About scripts / 作業用スクリプトについて
+This is section for scripts that generates json data for templates and pulls weapon/character image data from gbfwiki.
 
-pythonスクリプトなら、
+※ Downloading images from the game is possible, but that may be considered as a bannable offense, if you use that script, you use it on your own personal responsibility.
+
+For python scripts / pythonスクリプトなら、
 ```sh
 $ python3 ./scripts/arm_data_converter.py
 ```
 
-shellスクリプトなら
-```sh
-$ ./scripts/download_armimages_from_wiki.sh
-```
-
-という形で実行してください。
+Please execute in the order of.
 
 #### arm\_data\_converter.py
-- txt_source/armData-ssr.txtとtxt_source/armData-sr.txtからarmData.jsonを生成します.
+- Generate armData.json from txt_source/armData-ssr.txt and txt_source/armData-sr.txt.
 
 #### chara\_data\_converter.py
-- txt_source/charaData.txtからcharaData.jsonを生成します.
+- Generate charaData.json from txt_source/charaData.txt.
 
-#### download\_armimages\_from\_wiki.sh
-- imgs/imageURLlist.txt内に記載されている画像データをwikiから持ってきます.
-#### download\_charaimages\_from\_wiki.sh
-- charaimgs/imageURLlist.txt内に記載されている画像データをwikiから持ってきます.
-- これら2つの画像ダウンロードスクリプトは、あくまで「最新のもの」だけをダウンロードする内容になっております。古いものも全て落としてくるスクリプトは現在存在しません。
+#### download\_images.py arm
+- Downloads the image data for weapons described in txt_source/armImageWikiURLList.txt from the wiki.
 
-※ scriptsディレクトリ内ではなく、motocalのROOTディレクトリで実行してください。
+#### download\_images.py chara
+- Downloads the image data for characters described in txt_source/charaImageWikiURLList.txt from the wiki.
 
 ## LICENSE
 MIT
