@@ -1544,6 +1544,8 @@ module.exports.getInitialTotals = function(prof, chara, summon) {
                 ougiDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
+                exceedOugiDamageLimit: 0,
+                omegaOugiDamageLimit: 0,
                 additionalDamage: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
