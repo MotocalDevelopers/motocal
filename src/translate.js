@@ -361,6 +361,16 @@ var multiLangData = {
         "ja": "セラフィック効果に加算されます。アーカルム石(SR3~5%, SSR7~10%)など",
         "zh": "It is added to the Seraphic effect. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
+    "ダメージ上限加護": {
+        "en": "Damage cap",
+        "ja": "ダメージ上限加護",
+        "zh": "Damage cap",
+    },
+    "ダメージ上限加護説明": {
+        "en": "Increases the damage cap. Primarch summons(5~10%) etc.",
+        "ja": "ダメージ上限に加算されます。天司石(5~10%)など",
+        "zh": "Increases the damage cap. Primarch summons(5~10%) etc.",
+    },
     "チェインダメージアップ": {
         "en": "Chain Damage UP",
         "ja": "チェインダメージUP",
