@@ -217,13 +217,13 @@ var multiLangData = {
         "zh": "Buff",
     },
     "通常バフ": {
-        "en": "Normal Buff",
-        "ja": "通常バフ",
+        "en": "ATK Buff",
+        "ja": "攻撃バフ",
         "zh": "通常Buff",
     },
     "通常バフ説明": {
-        "en": "Normal Buff",
-        "ja": "攻刃(攻撃)バフ。レイジなど。",
+        "en": "ATK Buff. ",
+        "ja": "攻撃(攻刃)バフ。レイジなど。",
         "zh": "通常攻刃Buff",
     },
     "属性バフ": {
@@ -238,7 +238,7 @@ var multiLangData = {
     },
     "その他バフ": {
         "en": "Other Buff",
-        "ja": "その他バフ",
+        "ja": "別枠バフ",
         "zh": "其他Buff",
     },
     "その他バフ説明": {
@@ -248,7 +248,7 @@ var multiLangData = {
     },
     "その他バフ2": {
         "en": "Other Buff II",
-        "ja": "その他バフ2",
+        "ja": "別枠バフ2",
         "zh": "其他Buff2",
     },
     "その他バフ2説明": {
@@ -337,7 +337,7 @@ var multiLangData = {
         "zh": "奥义槽上升量",
     },
     "奥義ゲージ上昇率アップ": {
-        "en": "Ougi Gage Buff",
+        "en": "Charge Bar Speed UP",
         "ja": "奥義ゲージ上昇量アップ",
         "zh": "奥义槽上升量上升",
     },
@@ -367,18 +367,18 @@ var multiLangData = {
         "zh": "チェイン义伤害上升",
     },
     "ダメージ上限アップ": {
-        "en": "Damage Limit Buff",
-        "ja": "ダメージ上限アップ",
+        "en": "DMG Cap",
+        "ja": "ダメージ上限",
         "zh": "伤害上限上升",
     },
     "ダメージ上限アップ説明": {
-        "en": "It is used to calc the normal attack damage.",
+        "en": "It is used to calc the normal attack damage. Unlike the game specification, C.A. Damage Cap does not go up.",
         "ja": "通常攻撃ダメージの算出に使用されます。グラブルの仕様とは異なり奥義ダメージ上限は上がりません。",
         "zh": "通常攻击伤害的计算中有用到。",
     },
     "奥義ダメージ上限アップ": {
-        "en": "Ougi Damage Limit Buff",
-        "ja": "奥義ダメージ上限UP",
+        "en": "C.A. DMG Cap",
+        "ja": "奥義ダメージ上限",
         "zh": "奥义伤害上限上升",
     },
     "チェインダメージ上限アップ": {
@@ -391,16 +391,6 @@ var multiLangData = {
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
 	},
-    "リミットボーナス": {
-        "en": "Limit Bonus",
-        "ja": "リミットボーナス",
-        "zh": "Zenith Perks",
-    },
-    "味方全体のHP": {
-        "en": "HP Bonus for All member",
-        "ja": "味方全体HP",
-        "zh": "己方全体HP LB",
-    },
     "Advanced": {
         "en": "Advanced Settings",
         "ja": "より細かい設定",
@@ -503,6 +493,17 @@ var multiLangData = {
         "ja": "ジョブごとのボーナス等は自動で反映されます。得意武器補正などを反映したくない場合\"なし\"を選択して下さい。",
         "zh": "不同职业的Bonus会自动反映。不想让得意武器补正之类反映出的话请选择\"无\"。",
 	},
+	
+    "ジータさんリミットボーナス": {
+        "en": "Player's Extended Mastery",
+        "ja": "ジータさんリミットボーナス",
+        "zh": "Player's Extended Mastery",
+    },
+    "味方全体のHP": {
+        "en": "Total Party HP",
+        "ja": "味方全体HP",
+        "zh": "己方全体HP LB",
+    },
     "LB 攻撃力": {
         "en": "ATK ",
         "ja": "攻撃力",
@@ -513,10 +514,31 @@ var multiLangData = {
         "ja": "HP",
         "zh": "HP",
 	},
+    "得意武器攻撃1": {
+        "en": "Specialty WPN I",
+        "ja": "得意武器攻撃I",
+        "zh": "武器LB 1",
+	},
+    "得意武器攻撃2": {
+        "en": "Specialty WPN II",
+        "ja": "得意武器攻撃II",
+        "zh": "武器LB 2",
+	},
+    "得意武器攻撃の説明": {
+        "en": "Specialty WPN II (Over ★4) is calculated as 6%, 8%, 10% on the assumption that I is all mastered.",
+        "ja": "得意武器IIのLB（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
+        "zh": "得意武器II的LB(★4以上)在I全部取得的前提下按6%, 8%, 10%计算。",
+    },
+	
+    "ジータさんマスターボーナス": {
+        "en": "Player's Master Bonuses",
+        "ja": "ジータさんマスターボーナス",
+        "zh": "主角的职业满级Bonu",
+    },
     "マスボATK": {
-        "en": "Master Bonus ATK ",
-        "ja": "マスターボーナスATK",
-        "zh": "职业满级Bonus 攻击力",
+        "en": "ATK",
+        "ja": "攻撃力",
+        "zh": "攻击力",
     },
     "マスボATK説明": {
         "en": "The value of Job Master bonus \"ATK+○○%\"",
@@ -524,15 +546,46 @@ var multiLangData = {
         "zh": "职业满级Bonus中\"攻击力+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
     "マスボHP": {
-        "en": "Master Bonus HP",
-        "ja": "マスターボーナスHP",
-        "zh": "职业满级Bonus HP",
+        "en": "HP",
+        "ja": "HP",
+        "zh": "HP",
     },
     "マスボHP説明": {
         "en": "The value of Job Master bonus \"HP+○○%\"",
         "ja": "ジョブマスターボーナスの\"HP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"HP+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
+    "マスボDA": {
+        "en": "DA",
+        "ja": "DA",
+        "zh": "DA",
+    },
+    "マスボDA説明": {
+        "en": "The value of Job Master bonus \"DA+○○%\"",
+        "ja": "ジョブマスターボーナスの\"DA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "职业满级Bonus中\"DA+○○％\"中的值\n(和各职业的Bonus是独立的)",
+    },
+    "マスボTA": {
+        "en": "TA",
+        "ja": "TA",
+        "zh": "TA",
+    },
+    "マスボTA説明": {
+        "en": "The value of Job Master bonus \"TA+○○%\"",
+        "ja": "ジョブマスターボーナスの\"TA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "职业满级Bonus中\"TA+○○％\"中的值\n(和各职业的Bonus是独立的)",
+    },
+    "マスボダメ上限": {
+        "en": "DMG Cap",
+        "ja": "ダメージ上限",
+        "zh": "DMG Cap",
+    },
+    "マスボダメ上限説明": {
+        "en": "The value of Job Master bonus \"DMG Cap+○○%\"",
+        "ja": "ジョブマスターボーナスの\"ダメージ上限+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "职业满级Bonus中\"DMG Cap+○○％\"中的值\n(和各职业的Bonus是独立的)",
+    },
+	
     "ジータさん属性": {
         "en": "Player's Element",
         "ja": "ジータさん属性",
@@ -548,21 +601,6 @@ var multiLangData = {
         "ja": "有利/非有利/不利は、敵の属性に従って自動で判定されます。",
         "zh": "有利/非有利/不利会随着敌人的属性自动判定出。",
 	},
-    "得意武器攻撃1": {
-        "en": "Weapon I ",
-        "ja": "得意武器攻撃I",
-        "zh": "武器LB 1",
-	},
-    "得意武器攻撃2": {
-        "en": "Weapon II ",
-        "ja": "得意武器攻撃II",
-        "zh": "武器LB 2",
-	},
-    "得意武器攻撃の説明": {
-        "en": "",
-        "ja": "得意武器IIのLB（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
-        "zh": "得意武器II的LB(★4以上)在I全部取得的前提下按6%, 8%, 10%计算。",
-    },
     "攻撃ボーナス": {
         "en": "Attack Bonus",
         "ja": "攻撃ボーナス",
@@ -609,13 +647,13 @@ var multiLangData = {
         "zh": "设定保存到编成的名字",
     },
     "チェイン数": {
-        "en": "Chain Number",
+        "en": "Chain Burst Number",
         "ja": "チェイン数",
         "zh": "Chain数",
     },
     "チェイン数説明": {
         "en": "Input the number of Ougi Chain. (1~4)",
-        "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 => 係数0.0, 2 => 0.25, 3 => 0.33.., 4 => 0.5",
+        "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 → 0倍\n 2 → 1.25倍\n 3 → 1.33…倍\n 4 → 1.5倍",
         "zh": "设定Chain数(Chain Burst的系数会变化)",
     },
     "ジータさんのみ": {
@@ -1440,7 +1478,7 @@ var multiLangData = {
         "zh": "被动技能",
     },
     "属性攻撃力": {
-        "en": "Element LB",
+        "en": "Element ATK",
         "ja": "属性攻撃力",
         "zh": "属性攻击力",
     },
