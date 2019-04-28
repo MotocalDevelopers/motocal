@@ -1524,6 +1524,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 if (totals[key]["race"] === "seisho" || totals[key]["support"] === "wildcard") {
                                     totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 }
+                            } else if (stype == 'magnaCritical') {
+                                totals[key][stype] += comb[i] * skillAmounts['critical'][amount][slv - 1];
                             } else {
                                 totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                             }
