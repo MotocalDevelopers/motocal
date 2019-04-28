@@ -3205,6 +3205,11 @@ var multiLangData = {
         "ja": "2019/04/26: 方陣+通常+イクシードの合算枠上限を60%に設定。他奥義上限枠見直し。",
         "zh": "2019/04/26: Add the total of Magna/Normal/Exceed ougi damage limits is 60%.",
     },
+    "notice-20190428-1": {
+        "en": "28/04/2019: Implement a damage limit aura.",
+        "ja": "2019/04/28: ダメージ上限加護実装。",
+        "zh": "2019/04/28: Implement a damage limit aura.",
+    },
 };
 
 // Language settings
