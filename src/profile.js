@@ -61,6 +61,9 @@ var Profile = CreateClass({
             zenithPartyHPBonus: 0,
             masterBonus: 0,
             masterBonusHP: 0,
+            masterBonusDA: 0,
+            masterBonusTA: 0,
+            masterBonusDamageLimit: 0,
             normalBuff: 0,
             elementBuff: 0,
             otherBuff: 0,
@@ -145,9 +148,28 @@ var Profile = CreateClass({
                             <strong>{intl.translate("プロフィールタイトル", locale)}</strong>
                         </td>
                     </tr>
+
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ジータさん属性", locale)}<font color="#ffff00">*</font></th>
+                        <td><FormControl componentClass="select" value={this.state.element}
+                                         onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl>
+                        </td>
+                    </tr>
+
+                    <TextWithTooltip tooltip={intl.translate("敵の属性説明", locale)} id={"tooltip-enemy-element-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("敵の属性", locale)}<font color="#ffff00">*</font>
+                            </th>
+                            <td><FormControl componentClass="select" value={this.state.enemyElement}
+                                             onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].enemyElements} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
                         <tr>
-                            <th className="bg-primary">Rank*</th>
+                            <th className="bg-primary">Rank<font color="#ffff00">*</font></th>
                             <td><FormControl type="number" min="1" max="225" value={this.state.rank}
                                              onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/>
                             </td>
@@ -156,7 +178,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("ジョブ説明", locale)} id={"tooltip-job-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("ジョブ", locale)}*
+                            <th className="bg-primary">{intl.translate("ジョブ", locale)}<font color="#ffff00">*</font>
                                 <span style={{display: "block"}}
                                       className="label label-default">{intl.translate("得意", locale)} [{intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}]</span>
                                 <span style={{display: "block"}}
@@ -181,41 +203,11 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("ジータさん性別", locale)}*</th>
+                        <th className="bg-primary">{intl.translate("ジータさん性別", locale)}<font color="#ffff00">*</font></th>
                         <td><FormControl componentClass="select" value={this.state.sex}
                                          onChange={this.handleSelectEvent.bind(this, "sex")}> {selector[locale].sexes} </FormControl>
                         </td>
                     </tr>
-
-                    <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                                {intl.translate("マスボATK", locale)}*
-                            </th>
-                            <td>
-                                <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.masterBonus}
-                                                 onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>
-
-                    <TextWithTooltip tooltip={intl.translate("マスボHP説明", locale)} id={"tooltip-masterbonus-hp-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                                {intl.translate("マスボHP", locale)}
-                            </th>
-                            <td>
-                                <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.masterBonusHP}
-                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)}
                                      id={"tooltip-remain-hp-djeeta-detail"}>
@@ -229,24 +221,6 @@ var Profile = CreateClass({
                                                  onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>
-
-                    <tr>
-                        <th className="bg-primary">{intl.translate("ジータさん属性", locale)}*</th>
-                        <td><FormControl componentClass="select" value={this.state.element}
-                                         onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl>
-                        </td>
-                    </tr>
-
-                    <TextWithTooltip tooltip={intl.translate("敵の属性説明", locale)} id={"tooltip-enemy-element-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                                {intl.translate("敵の属性", locale)}*
-                            </th>
-                            <td><FormControl componentClass="select" value={this.state.enemyElement}
-                                             onChange={this.handleSelectEvent.bind(this, "enemyElement")}> {selector[locale].enemyElements} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -324,12 +298,93 @@ var Profile = CreateClass({
 
                     <tr>
                         <td colSpan="2">
-                            <strong>{intl.translate("リミットボーナス", locale)}</strong>
+                            <strong>{intl.translate("ジータさんマスターボーナス", locale)}</strong>
+                        </td>
+                    </tr>
+
+                    <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("マスボATK", locale)}<font color="#ffff00">*</font>
+                            </th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.masterBonus}
+                                                 onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("マスボHP説明", locale)} id={"tooltip-masterbonus-hp-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("マスボHP", locale)}
+                            </th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.masterBonusHP}
+                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("マスボDA説明", locale)} id={"tooltip-masterbonus-da-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("マスボDA", locale)}<font color="#ffff00">*</font>
+                            </th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.masterBonusDA}
+                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusDA")}>{selector.masterDA}</FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("マスボTA説明", locale)} id={"tooltip-masterbonus-ta-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("マスボTA", locale)}<font color="#ffff00">*</font>
+                            </th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.masterBonusTA}
+                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusTA")}>{selector.masterTA}</FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("マスボダメ上限説明", locale)} id={"tooltip-masterbonus-damagelimit-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("マスボダメ上限", locale)}<font color="#ffff00">*</font>
+                            </th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.masterBonusDamageLimit}
+                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusDamageLimit")}>{selector.masterDamageLimit}</FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <tr>
+                        <td colSpan="2">
+                            <strong>{intl.translate("ジータさんリミットボーナス", locale)}</strong>
                         </td>
                     </tr>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}*</th>
+                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}<font color="#ffff00">*</font></th>
                         <td><FormControl componentClass="select" value={this.state.zenithAttackBonus}
                                          onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl>
                         </td>

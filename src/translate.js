@@ -218,12 +218,12 @@ var multiLangData = {
     },
     "通常バフ": {
         "en": "Normal Buff",
-        "ja": "通常バフ",
+        "ja": "攻撃バフ",
         "zh": "通常Buff",
     },
     "通常バフ説明": {
         "en": "Normal Buff",
-        "ja": "攻刃(攻撃)バフ。レイジなど。",
+        "ja": "攻撃(攻刃)バフ。レイジなど。",
         "zh": "通常攻刃Buff",
     },
     "属性バフ": {
@@ -238,7 +238,7 @@ var multiLangData = {
     },
     "その他バフ": {
         "en": "Other Buff",
-        "ja": "その他バフ",
+        "ja": "別枠バフ",
         "zh": "其他Buff",
     },
     "その他バフ説明": {
@@ -248,7 +248,7 @@ var multiLangData = {
     },
     "その他バフ2": {
         "en": "Other Buff II",
-        "ja": "その他バフ2",
+        "ja": "別枠バフ2",
         "zh": "其他Buff2",
     },
     "その他バフ2説明": {
@@ -391,10 +391,10 @@ var multiLangData = {
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
 	},
-    "リミットボーナス": {
-        "en": "Limit Bonus",
-        "ja": "リミットボーナス",
-        "zh": "Zenith Perks",
+    "ジータさんリミットボーナス": {
+        "en": "Player's Limit Bonus",
+        "ja": "ジータさんリミットボーナス",
+        "zh": "Player's Limit Bonus",
     },
     "味方全体のHP": {
         "en": "HP Bonus for All member",
@@ -513,9 +513,14 @@ var multiLangData = {
         "ja": "HP",
         "zh": "HP",
 	},
+    "ジータさんマスターボーナス": {
+        "en": "Player's Master Bonus",
+        "ja": "ジータさんマスターボーナス",
+        "zh": "主角的职业满级Bonu",
+    },
     "マスボATK": {
-        "en": "Master Bonus ATK ",
-        "ja": "マスターボーナスATK",
+        "en": "Master Bonus ATK",
+        "ja": "攻撃力",
         "zh": "职业满级Bonus 攻击力",
     },
     "マスボATK説明": {
@@ -525,13 +530,43 @@ var multiLangData = {
     },
     "マスボHP": {
         "en": "Master Bonus HP",
-        "ja": "マスターボーナスHP",
+        "ja": "HP",
         "zh": "职业满级Bonus HP",
     },
     "マスボHP説明": {
         "en": "The value of Job Master bonus \"HP+○○%\"",
         "ja": "ジョブマスターボーナスの\"HP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"HP+○○％\"中的值\n(和各职业的Bonus是独立的)",
+    },
+    "マスボDA": {
+        "en": "Master Bonus DA",
+        "ja": "DA",
+        "zh": "职业满级Bonus DA",
+    },
+    "マスボDA説明": {
+        "en": "The value of Job Master bonus \"DA+○○%\"",
+        "ja": "ジョブマスターボーナスの\"DA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "职业满级Bonus中\"DA+○○％\"中的值\n(和各职业的Bonus是独立的)",
+    },
+    "マスボTA": {
+        "en": "Master Bonus TA",
+        "ja": "TA",
+        "zh": "职业满级Bonus TA",
+    },
+    "マスボTA説明": {
+        "en": "The value of Job Master bonus \"TA+○○%\"",
+        "ja": "ジョブマスターボーナスの\"TA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "职业满级Bonus中\"TA+○○％\"中的值\n(和各职业的Bonus是独立的)",
+    },
+    "マスボダメ上限": {
+        "en": "Master Bonus DMG Cap",
+        "ja": "ダメージ上限",
+        "zh": "职业满级Bonus DMG Cap",
+    },
+    "マスボダメ上限説明": {
+        "en": "The value of Job Master bonus \"DMG Cap+○○%\"",
+        "ja": "ジョブマスターボーナスの\"ダメージ上限+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "职业满级Bonus中\"DMG Cap+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
     "ジータさん属性": {
         "en": "Player's Element",
