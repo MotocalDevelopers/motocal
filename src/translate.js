@@ -361,6 +361,16 @@ var multiLangData = {
         "ja": "セラフィック効果に加算されます。アーカルム石(SR3~5%, SSR7~10%)など",
         "zh": "It is added to the Seraphic effect. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
+    "ダメージ上限加護": {
+        "en": "Damage cap",
+        "ja": "ダメージ上限加護",
+        "zh": "Damage cap",
+    },
+    "ダメージ上限加護説明": {
+        "en": "Increases the damage cap. Primarch summons(5~10%) etc.",
+        "ja": "ダメージ上限に加算されます。天司石(5~10%)など",
+        "zh": "Increases the damage cap. Primarch summons(5~10%) etc.",
+    },
     "チェインダメージアップ": {
         "en": "Chain Damage UP",
         "ja": "チェインダメージUP",
@@ -3232,6 +3242,11 @@ var multiLangData = {
         "en": "26/04/2019: Add the total of Magna/Normal/Exceed ougi damage limits is 60%.",
         "ja": "2019/04/26: 方陣+通常+イクシードの合算枠上限を60%に設定。他奥義上限枠見直し。",
         "zh": "2019/04/26: Add the total of Magna/Normal/Exceed ougi damage limits is 60%.",
+    },
+    "notice-20190428-1": {
+        "en": "28/04/2019: Implement a damage limit aura.",
+        "ja": "2019/04/28: ダメージ上限加護実装。",
+        "zh": "2019/04/28: Implement a damage limit aura.",
     },
 };
 

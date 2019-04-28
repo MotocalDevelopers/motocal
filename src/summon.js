@@ -208,7 +208,8 @@ var Summon = CreateClass({
             TA: 0,
             criticalRatio: 0.0,
             ougiDamage : 0.0,
-            tenshiDamageUP : 0.0
+            tenshiDamageUP : 0.0,
+            damageLimit : 0.0
         };
     },
     componentDidMount: function () {
@@ -406,6 +407,15 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "TA")}/>
                         </td>
                     </tr>
+                    <TextWithTooltip tooltip={intl.translate("ダメージ上限加護説明", locale)} id={"tooltip-damege-limit-aura-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ダメージ上限加護", locale)}</th>
+                        <td>
+                            <FormControl type="number" min="0" value={this.state.damageLimit} onBlur={this.handleOnBlur}
+                                         onChange={this.handleEvent.bind(this, "damageLimit")}/>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
                     <tr>
                         <th className="bg-primary">{intl.translate("奥義ダメージ", locale)}</th>
                         <td>
