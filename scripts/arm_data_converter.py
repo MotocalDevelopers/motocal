@@ -900,6 +900,9 @@ skillnamelist["normalDamageLimit7"] = {
 skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
 }
+skillnamelist["huanglongHissatsu"] = {
+    u"震天の境界へと至りし者": "light",
+}
 
 skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
