@@ -898,25 +898,50 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
     return 0.0;
 };
 
+
+function* eachSkill(arm) {
+    const _skill_element_keys = [
+        ["skill1", "element"],
+        ["skill2", "element2"],
+        ["skill3", "element3"],
+    ];
+    for (let {skey,ekey} of _skill_element_keys) {
+        var skillname = arm[skey] ? arm[skey] : "non";
+        var element = arm[ekey] != undefined ? arm[ekey] : "fire";
+        if (typeof skilltypes[skillname] === 'undefined') {
+            console.error("unknown skill name:", skillname);
+            continue;
+        }
+
+        yield [skillname, element];
+    }
+}
+
+function* eachSupport(chara) {
+    for (let key of ["support", "support2", "support3"]) {
+        if (typeof chara[key] === 'undefined') {
+            continue; // Data maybe broken.
+        }
+
+        if (chara[key] == 'none') {
+            continue; // Safe for skip
+        }
+
+        if (typeof supportAbilities[chara[key]] === 'undefined') {
+            console.error("unknown support ability ID:", chara[key]);
+            continue;
+        }
+
+        yield supportAbilities[chara[key]];
+    }
+}
+
 module.exports.recalcCharaHaisui = function (chara, remainHP) {
     var charaHaisuiValue = 1.0;
 
     for (var ch = 0; ch < chara.length; ch++) {
         if (chara[ch].name != "" && chara[ch].isConsideredInAverage) {
-            for (var i = 0; i < 3; i++) {
-                if (i == 0) {
-                    if (chara[ch]["support"] == undefined) continue;
-                    var support = supportAbilities[chara[ch]["support"]];
-                } else if (i == 1) {
-                    if (chara[ch]["support2"] == undefined) continue;
-                    var support = supportAbilities[chara[ch]["support2"]];
-                } else {
-                    if (chara[ch]["support3"] == undefined) continue;
-                    var support = supportAbilities[chara[ch]["support3"]];
-                }
-
-                if (support.type == "none") continue;
-
+            for (let support of eachSupport(chara[ch])) {
                 // Treatment of emnity supplements only
                 switch (support.type) {
                     case "emnity_all_SL10":
@@ -1068,21 +1093,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                 }
                 totals[key]["armAttack"] += armSup * parseInt(arm.attack) * comb[i];
                 totals[key]["armHP"] += hpSup * parseInt(arm.hp) * comb[i];
-                for (var j = 1; j <= 3; j++) {
-                    var skillname = '';
-                    var element = '';
-                    arm.element != undefined ? arm.element : "fire";
-                    if (j == 1) {
-                        skillname = arm.skill1;
-                        element = arm.element != undefined ? arm.element : "fire"
-                    } else if (j == 2) {
-                        skillname = arm.skill2;
-                        element = arm.element2 != undefined ? arm.element2 : "fire"
-                    } else {
-                        skillname = arm.skill3;
-                        element = arm.element3 != undefined ? arm.element3 : "fire"
-                    }
-
+                for (let {skillname, element} of eachSkill(arm)) {
                     if (skillname != 'non') {
                         var stype = skilltypes[skillname].type;
                         var amount = skilltypes[skillname].amount;
@@ -2045,20 +2056,7 @@ module.exports.calcOneCombination = function (comb, summon, prof, arml, totals, 
 // Overwrite the content of totals with what reflects charap's support
 module.exports.treatSupportAbility = function (totals, chara) {
     for (var key in totals) {
-        for (var i = 0; i < 3; i++) {
-            if (i == 0) {
-                if (totals[key]["support"] == undefined) continue;
-                var support = supportAbilities[totals[key]["support"]];
-            } else if (i == 1) {
-                if (totals[key]["support2"] == undefined) continue;
-                var support = supportAbilities[totals[key]["support2"]];
-            } else {
-                if (totals[key]["support3"] == undefined) continue;
-                var support = supportAbilities[totals[key]["support3"]];
-            }
-
-            if (support.type == "none") continue;
-
+        for (let support of eachSupport(totals[key])) {
             // Processing of special supporter abilities
             switch (support.type) {
                 case "normalBuff_doraf":
@@ -2325,21 +2323,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                     if (storedCombinations[j][i] === 0) continue;
 
-                    for (var jj = 1; jj <= 3; jj++) {
-                        var skillname = '';
-                        var element = '';
-                        arm.element != undefined ? arm.element : "fire";
-                        if (jj == 1) {
-                            skillname = arm.skill1;
-                            element = arm.element != undefined ? arm.element : "fire"
-                        } else if (jj == 2) {
-                            skillname = arm.skill2;
-                            element = arm.element2 != undefined ? arm.element2 : "fire"
-                        } else {
-                            skillname = arm.skill3;
-                            element = arm.element3 != undefined ? arm.element3 : "fire"
-                        }
-
+                    for (let {skillname, element} of eachSkill(arm[i])) {
                         if (skillname != 'non') {
                             var stype = skilltypes[skillname].type;
                             var amount = skilltypes[skillname].amount;
