@@ -445,7 +445,7 @@ var skilltypes = {
     "normalDamageLimit2_5": {name: "通常上限UP(2.5%)", type: "normalDamageLimit", amount: "S"},
     "normalDamageLimit7": {name: "通常上限UP(7.0%)", type: "normalDamageLimit", amount: "M"},
     "normalDamageLimit10": {name: "通常上限UP(10%)", type: "normalDamageLimit", amount: "L"},
-    "ougiDamageLimit10": {name: "奥義上限UP(10%)", type: "ougiDamageLimit", amount: "L"},
+    "ougiDamageLimit10": {name: "奥義上限UP(10%)", type: "ougiDamageLimit", amount: "L"}, //現在未使用
     "ougiDamageLimitExceedM": {name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M"},
     "chainForce": {name: "チェインフォース", type: "chainForce", amount: "M"},
     "normalHPS": {name: "通常守護(小)", type: "normalHP", amount: "S"},
@@ -869,7 +869,7 @@ module.exports.Jobs = {
         "favArm2": "katana",
         "type": "attack",
         "atBonus": 2000.0,
-        "kouzinBonus": 20.0,
+        "kouzinBonus": 0.0,
         "hpBonus": 600.0,
         "shugoBonus": 0.0,
         "DaBonus": 57.0,
@@ -1385,6 +1385,7 @@ var skillAmounts = {
         "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]
     },
     "tuiga": {
+        //Xuanwu Shellfists/玄武拳の霧氷の追牙・肆
         "L": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
     },
     // Debuff Resistance Grace (Unconfirmed Placeholder)
@@ -1468,7 +1469,7 @@ var supportAbilities = {
         "value": 0.10
     },
     "atk_up_depends_races": {
-        "name": "バトルメンバーの種族数に応じて攻撃力アップ(リリィ)",
+        "name": "バトルメンバーの種族数に応じて攻撃力UP(リリィ)",
         "type": "normalBuff_depends_races",
         "range": "own",
         "value": 0.10
@@ -1492,25 +1493,25 @@ var supportAbilities = {
         "value": 1.00
     },
     "ougi_damage_up_50": {
-        "name": "全体の奥義ダメージ50%UP(シエテ)",
+        "name": "全体奥義ダメージ50%UP(シエテ)",
         "type": "ougiDamageBuff",
         "range": "all",
         "value": 0.50
     },
     "ougi_damage_up_50_cap_10": {
-        "name": "全体の奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "name": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
         "type": "ougiDamageBuff_capBuff",
         "range": "all",
         "value": 0.50
     },
     "emnity_all_SL10": {
-        "name": "味方全体に背水効果(ザルハメリナ)",
+        "name": "全体背水効果(ザルハメリナ)",
         "type": "emnity_all_SL10",
         "range": "all",
         "value": 0.00
     },
     "emnity_own_SL20": {
-        "name": "自分に背水効果(闇ジャンヌダルク, 黒騎士)",
+        "name": "背水効果(闇ジャンヌダルク, 黒騎士)",
         "type": "emnity_own_SL20",
         "range": "own",
         "value": 0.00
@@ -1548,11 +1549,18 @@ var supportAbilities = {
         "attackRatio": 0.20
     },
     "critical_up_all_5_30": {
-        "name": "味方全体のクリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
+        "name": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
         "type": "criticalBuff",
         "range": "all",
         "value": 0.05,
         "attackRatio": 0.30
+    },
+    "critical_up_all_100_50": {
+        "name": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
+        "type": "criticalBuff",
+        "range": "all",
+        "value": 1.00,
+        "attackRatio": 0.50
     },
     "damageUP_5": {
         "name": "与ダメージ上昇5%UP(アビー)",
