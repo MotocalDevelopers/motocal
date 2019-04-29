@@ -59,6 +59,16 @@ var Profile = CreateClass({
             zenithAttackBonus: 0,
             zenithHPBonus: 0,
             zenithPartyHPBonus: 0,
+            zenithBonus1: "無し",
+            zenithBonus2: "無し",
+            zenithDABonus: 0,
+            zenithTABonus: 0,
+            //zenithCriticalBonus: 0,
+            zenithOugiDamageBonus: 0,
+            zenithChainDamageBonus: 0,
+            zenithChainDamageLimitBonus: 0,
+            zenithElementBonus: 0,
+            zenithDamageLimitBonus: 0,
             masterBonus: 0,
             masterBonusHP: 0,
             masterBonusDA: 0,
@@ -76,8 +86,6 @@ var Profile = CreateClass({
             taBuff: 0,
             hp: 100,
             remainHP: 100,
-            zenithBonus1: "無し",
-            zenithBonus2: "無し",
             enemyElement: "wind",
             enemyDefense: 10.0,
             defenseDebuff: 0.0,
@@ -104,6 +112,9 @@ var Profile = CreateClass({
     },
     switchBufflist: function (e) {
         this.setState({openBufflist: !(this.state.openBufflist)})
+    },
+    switchLBlist: function (e) {
+        this.setState({openLBlist: !(this.state.openLBlist)})
     },
     handleEvent: function (key, e) {
         // input type input form uses onBlur
@@ -397,6 +408,84 @@ var Profile = CreateClass({
                         </td>
                     </tr>
 
+                    <tr>
+                        <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
+                        <td><FormControl componentClass="select" value={this.state.zenithPartyHPBonus}
+                                         onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")}> {selector.zenithPartyHP} </FormControl>
+                        </td>
+                    </tr>
+
+                    <TextWithTooltip tooltip={intl.translate("LB DAの説明", locale)} id={"tooltip-da-zenith-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("LB DA", locale)}<font color="#ffff00">*</font></th>
+                            <td><FormControl componentClass="select" value={this.state.zenithDABonus}
+                                             onChange={this.handleSelectEvent.bind(this, "zenithDABonus")}> {selector.zenithDABonus} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("LB TAの説明", locale)} id={"tooltip-ta-zenith-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("LB TA", locale)}<font color="#ffff00">*</font></th>
+                            <td><FormControl componentClass="select" value={this.state.zenithTABonus}
+                                             onChange={this.handleSelectEvent.bind(this, "zenithTABonus")}> {selector.zenithTABonus} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("LB ダメージ上限UPの説明", locale)} id={"tooltip-ta-zenith-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("LB ダメージ上限UP", locale)}<font color="#ffff00">*</font></th>
+                            <td><FormControl componentClass="select" value={this.state.zenithDamageLimitBonus}
+                                             onChange={this.handleSelectEvent.bind(this, "zenithDamageLimitBonus")}> {selector.zenithDamageLimitBonus} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("LB 奥義の説明", locale)} id={"tooltip-ougidamage-zenith-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("LB 奥義", locale)}<font color="#ffff00">*</font></th>
+                            <td><FormControl componentClass="select" value={this.state.zenithOugiDamageBonus}
+                                             onChange={this.handleSelectEvent.bind(this, "zenithOugiDamageBonus")}> {selector.zenithOugiDamageBonus} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <tr>
+                        <th className="bg-primary"><Button
+                            onClick={this.switchLBlist}>{intl.translate("その他ジータさんLB", locale)}</Button></th>
+                        <td/>
+                    </tr>
+
+                    {this.state.openLBlist ?
+                        [
+                    <TextWithTooltip tooltip={intl.translate("LB 属性攻撃の説明", locale)} id={"tooltip-critical-zenith-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("LB 属性攻撃", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.zenithElementBonus}
+                                             onChange={this.handleSelectEvent.bind(this, "zenithElementBonus")}> {selector.zenithElementBonus} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>,
+
+                    <TextWithTooltip tooltip={intl.translate("LB チェンバの説明", locale)} id={"tooltip-chaindamage-zenith-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("LB チェンバ", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.zenithChainDamageBonus}
+                                             onChange={this.handleSelectEvent.bind(this, "zenithChainDamageBonus")}> {selector.zenithChainDamageBonus} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>,
+
+                    <TextWithTooltip tooltip={intl.translate("LB チェンバ上限の説明", locale)} id={"tooltip-chaindamagelimit-zenith-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("LB チェンバ上限", locale)}</th>
+                            <td><FormControl componentClass="select" value={this.state.zenithChainDamageLimitBonus}
+                                             onChange={this.handleSelectEvent.bind(this, "zenithChainDamageLimitBonus")}> {selector.zenithChainDamageLimitBonus} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>,
+
                     <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"}>
                         <tr>
                             <th className="bg-primary">
@@ -406,7 +495,7 @@ var Profile = CreateClass({
                                              onChange={this.handleSelectEvent.bind(this, "zenithBonus1")}> {this.props.zenithBonuses[locale]} </FormControl>
                             </td>
                         </tr>
-                    </TextWithTooltip>
+                    </TextWithTooltip>,
 
                     <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"}>
                         <tr>
@@ -418,13 +507,8 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
-
-                    <tr>
-                        <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.zenithPartyHPBonus}
-                                         onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")}> {selector.zenithPartyHP} </FormControl>
-                        </td>
-                    </tr>
+                        ]
+                        : null}
 
                     <tr>
                         <td colSpan="2">

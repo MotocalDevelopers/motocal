@@ -47,6 +47,11 @@ var multiLangData = {
         "zh": "角色",
     },
     "武器": {
+        "en": "WPN",
+        "ja": "武器",
+        "zh": "武器",
+    },
+    "武器(タブ)": {
         "en": "Weapon",
         "ja": "武器",
         "zh": "武器",
@@ -267,7 +272,7 @@ var multiLangData = {
         "zh": "HP上升Buff(古战场等计算用)",
     },
     "DAバフ": {
-        "en": "Double Attack Buff",
+        "en": "DA Buff",
         "ja": "DAバフ",
         "zh": "DA Buff",
     },
@@ -277,7 +282,7 @@ var multiLangData = {
         "zh": "DA率上升。加在每个角色的基础DA率上。",
     },
     "TAバフ": {
-        "en": "Triple Attack Buff",
+        "en": "TA Buff",
         "ja": "TAバフ",
         "zh": "TA Buff",
     },
@@ -292,12 +297,12 @@ var multiLangData = {
         "zh": "追加伤害",
     },
     "追加ダメージバフ": {
-        "en": "Additional Damage Buff",
+        "en": "Bonus DMG Buff",
         "ja": "追加ダメージバフ",
         "zh": "追加伤害Buff",
     },
     "追加ダメージバフ説明": {
-        "en": "Additional damage will be added to \"Expected Turn Damage\".",
+        "en": "Bonus Damage will be added to \"Expected Turn Damage\".",
         "ja": "追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)など。",
         "zh": "视作追加伤害，额外加在伤害上。用在预想DPT的计算中。",
     },
@@ -308,7 +313,7 @@ var multiLangData = {
     },
     "個別バフ": {
         "en": "Personal Buff",
-        "ja": "個別バフ",
+        "ja": "ジータさん個別バフ",
         "zh": "个别Buff",
     },
     "残HP割合": {
@@ -337,7 +342,7 @@ var multiLangData = {
         "zh": "奥义槽上升量",
     },
     "奥義ゲージ上昇率アップ": {
-        "en": "Charge Bar Speed UP",
+        "en": "Charge Bar\nSpeed UP",
         "ja": "奥義ゲージ上昇量アップ",
         "zh": "奥义槽上升量上升",
     },
@@ -422,19 +427,9 @@ var multiLangData = {
         "zh": "设定假想敌的防御值。\n影响攻击伤害、奥义伤害、预想DPT。",
     },
     "防御デバフ合計": {
-        "en": "Total defense debuff",
+        "en": "Total DEF debuff",
         "ja": "防御デバフ合計",
-        "zh": "Total defense debuff",
-    },
-    "防御デバフ合計説明": {
-        "en": "Set sums of defense debuff values.",
-        "ja": "防御デバフの合計をパーセントで設定します。",
-        "zh": "Set sums of defense debuff values.",
-    },
-    "防御デバフ合計": {
-        "en": "Total defense debuff",
-        "ja": "防御デバフ合計",
-        "zh": "Total defense debuff",
+        "zh": "Total DEF debuff",
     },
     "防御デバフ合計説明": {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
@@ -447,7 +442,7 @@ var multiLangData = {
         "zh": "设定主角的基础DA率。\n随着职业变更会自动切换。",
     },
     "奥義倍率": {
-        "en": "Ougi Ratio",
+        "en": "C.A. Ratio",
         "ja": "奥義倍率",
         "zh": "奥义倍率",
     },
@@ -520,25 +515,110 @@ var multiLangData = {
         "zh": "攻击力",
 	},
     "LB HP": {
-        "en": "HP ",
+        "en": "HP",
         "ja": "HP",
         "zh": "HP",
 	},
     "得意武器攻撃1": {
-        "en": "Specialty WPN I",
+        "en": "Specialty WPN I\n",
         "ja": "得意武器攻撃I",
         "zh": "武器LB 1",
 	},
     "得意武器攻撃2": {
-        "en": "Specialty WPN II",
+        "en": "Specialty WPN II\n",
         "ja": "得意武器攻撃II",
         "zh": "武器LB 2",
 	},
     "得意武器攻撃の説明": {
-        "en": "Specialty WPN II (Over ★4) is calculated as 6%, 8%, 10% on the assumption that I is all mastered.",
+        "en": "Specialty WPN Ⅱ (Over ★4) is calculated as 6%, 8%, 10% on the assumption that Ⅰ is all mastered.",
         "ja": "得意武器IIのLB（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
         "zh": "得意武器II的LB(★4以上)在I全部取得的前提下按6%, 8%, 10%计算。",
     },
+    "LB DA": {
+        "en": "DA",
+        "ja": "DA",
+        "zh": "DA",
+	},
+    "LB DAの説明": {
+        "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+        "ja": "II以降はIを★3まで取得していること前提です。",
+        "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+	},
+    "LB TA": {
+        "en": "TA",
+        "ja": "TA",
+        "zh": "TA",
+	},
+    "LB TAの説明": {
+        "en": "TA",
+        "ja": "TA",
+        "zh": "TA",
+	},
+    "LB ダメージ上限UP": {
+        "en": "DMG Cap",
+        "ja": "ダメージ上限UP",
+        "zh": "DMG Cap",
+	},
+    "LB ダメージ上限UPの説明": {
+        "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+        "ja": "II以降はIを★3まで取得していること前提です。",
+        "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+	},
+    "LB 奥義": {
+        "en": "C.A. DMG",
+        "ja": "奥義ダメージ",
+        "zh": "C.A. DMG",
+	},
+    "LB 奥義の説明": {
+        "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+        "ja": "II以降はIを★3まで取得していること前提です。",
+        "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+	},
+    "LB 属性攻撃": {
+        "en": "Element ATK",
+        "ja": "属性攻撃",
+        "zh": "Element ATK",
+	},
+    "LB 属性攻撃の説明": {
+        "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+        "ja": "II以降はIを★3まで取得していること前提です。",
+        "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+	},
+    "LB チェンバ": {
+        "en": "Chain Burst DMG",
+        "ja": "チェンバ",
+        "zh": "Chain Burst DMG",
+	},
+    "LB チェンバの説明": {
+        "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+        "ja": "II以降はIを★3まで取得していること前提です。",
+        "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+	},
+    "LB チェンバ上限": {
+        "en": "Chain Burst DMG Cap",
+        "ja": "チェンバ上限",
+        "zh": "Chain Burst DMG Cap",
+	},
+    "LB チェンバ上限の説明": {
+        "en": "Chain Burst DMG Cap",
+        "ja": "チェンバ上限",
+        "zh": "Chain Burst DMG Cap",
+	},
+    "LB クリティカル": {
+        "en": "Critical",
+        "ja": "クリティカル",
+        "zh": "Critical",
+	},
+    "LB クリティカルの説明": {
+        "en": "",
+        "ja": "発生率と倍率共にの%",
+        "zh": "",
+	},
+    "その他ジータさんLB": {
+        "en": "Other Extended Mastery",
+        "ja": "その他ジータさんLB",
+        "zh": "Other Extended Mastery",
+	},
 	
     "ジータさんマスターボーナス": {
         "en": "Player's Master Bonuses",
@@ -657,7 +737,7 @@ var multiLangData = {
         "zh": "设定保存到编成的名字",
     },
     "チェイン数": {
-        "en": "Chain Burst Number",
+        "en": "Chain Burst\nNumber",
         "ja": "チェイン数",
         "zh": "Chain数",
     },
