@@ -208,7 +208,8 @@ var Summon = CreateClass({
             TA: 0,
             criticalRatio: 0.0,
             ougiDamage : 0.0,
-            tenshiDamageUP : 0.0
+            tenshiDamageUP : 0.0,
+            damageLimit : 0.0
         };
     },
     componentDidMount: function () {
@@ -331,12 +332,14 @@ var Summon = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "selfElement")}>{selector[locale].summonElements}</FormControl>
                         </td>
                     </tr>
+
                     <tr>
                         <td>
                             <FormControl componentClass="select" value={this.state.selfSummonType}
                                          onChange={this.handleSelectEvent.bind(this, "selfSummonType")}>{selector[locale].summons}</FormControl>
                         </td>
                     </tr>
+
                     <tr>
                         <td>
                             {selfSummon[0].label}<FormControl componentClass="select"
@@ -347,6 +350,7 @@ var Summon = CreateClass({
                                                               onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
                         </td>
                     </tr>
+
                     <tr>
                         <th rowSpan={3} className="bg-primary">{intl.translate("フレの石", locale)}</th>
                         <td>
@@ -354,12 +358,14 @@ var Summon = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "friendElement")}>{selector[locale].summonElements}</FormControl>
                         </td>
                     </tr>
+
                     <tr>
                         <td>
                             <FormControl componentClass="select" value={this.state.friendSummonType}
                                          onChange={this.handleSelectEvent.bind(this, "friendSummonType")}>{selector[locale].summons}</FormControl>
                         </td>
                     </tr>
+
                     <tr>
                         <td>
                             {friendSummon[0].label}<FormControl componentClass="select"
@@ -371,6 +377,7 @@ var Summon = CreateClass({
                                                                 onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
                         </td>
                     </tr>
+
                     <tr>
                         <th className="bg-primary">{intl.translate("合計攻撃力", locale)}</th>
                         <td>
@@ -378,6 +385,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "attack")}/>
                         </td>
                     </tr>
+
                     <tr>
                         <th className="bg-primary">{intl.translate("合計HP", locale)}</th>
                         <td>
@@ -385,6 +393,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "hp")}/>
                         </td>
                     </tr>
+
                     <tr>
                         <th className="bg-primary">{intl.translate("HP加護", locale)}</th>
                         <td>
@@ -392,6 +401,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "hpBonus")}/>
                         </td>
                     </tr>
+
                     <tr>
                         <th className="bg-primary">{intl.translate("DA加護", locale)}</th>
                         <td>
@@ -399,6 +409,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "DA")}/>
                         </td>
                     </tr>
+
                     <tr>
                         <th className="bg-primary">{intl.translate("TA加護", locale)}</th>
                         <td>
@@ -406,6 +417,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "TA")}/>
                         </td>
                     </tr>
+
                     <TextWithTooltip tooltip={intl.translate("与ダメージ加護説明", locale)} id={"tooltip-boost-damage-detail"}>
                     <tr>
                         <th className="bg-primary">{intl.translate("与ダメージ加護", locale)}</th>
@@ -415,6 +427,17 @@ var Summon = CreateClass({
                         </td>
                     </tr>
                     </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("ダメージ上限加護説明", locale)} id={"tooltip-damege-limit-aura-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("ダメージ上限加護", locale)}</th>
+                        <td>
+                            <FormControl type="number" min="0" value={this.state.damageLimit} onBlur={this.handleOnBlur}
+                                         onChange={this.handleEvent.bind(this, "damageLimit")}/>
+                        </td>
+                    </tr>
+                    </TextWithTooltip>
+
                     <tr>
                         <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
                         <td>

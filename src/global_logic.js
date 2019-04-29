@@ -440,6 +440,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             displayHP += totals["Djeeta"]["job"].hpBonus;
             displayHP *= 1.0 + buff["masterHP"];
             var totalHP = displayHP * hpCoeff
+
         } else {
             // for character
             // ATK
@@ -490,6 +491,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + armDAupOther);
         totalDA = totalDA >= 0.0 ? totalDA : 0.0;
         totalDA = totalDA <= 1.0 ? totalDA : 1.0;
+       
 
         // skill that rises only TA is called LesserSante
         var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"];
@@ -507,6 +509,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther);
         totalTA = totalTA >= 0.0 ? totalTA : 0.0;
         totalTA = totalTA <= 1.0 ? totalTA : 1.0;
+        
+        // master bonus of Djeeta(DA,TA)
+        if (key == "Djeeta") {
+            totalDA += buff["masterDA"];
+            totalTA += buff["masterTA"];
+        }
 
         var taRate = parseFloat(totalTA) < 1.0 ? parseFloat(totalTA) : 1.0;
         var daRate = parseFloat(totalDA) < 1.0 ? parseFloat(totalDA) : 1.0;
@@ -557,6 +565,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var damageLimit = buff["damageLimit"];
         damageLimit += totals[key]["damageLimitBuff"];
         damageLimit += totals[key]["normalDamageLimit"];
+        damageLimit += 0.01 * totalSummon["damageLimit"];
 
         // Mystery damage upper limit UP = whole buff + individual buff + skill + damage upper limit UP minutes
         // The upper limit of skill of mystery damage is 30%
@@ -567,9 +576,16 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += Math.min(0.15, totals[key]["omegaOugiDamageLimit"]);
         ougiDamageLimit += Math.min(0.60, (ougiDamageLimitByMagna + ougiDamageLimitByNormal + ougiDamageLimitByExceed));
         ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
+        ougiDamageLimit += 0.01 * totalSummon["damageLimit"];
 
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
         chainDamageLimit = chainDamageLimit <= 0.50 ? chainDamageLimit : 0.50;
+        
+        // master bonus of Djeeta(limit)
+        if (key == "Djeeta") {
+            damageLimit += buff["masterDamageLimit"];
+            ougiDamageLimit += buff["masterDamageLimit"];
+        }
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, additionalDamage, damageUP, damageLimit);
@@ -607,7 +623,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // Ougi + chain burst (buff ["chainNumber"] is 1 or more so division OK)
         expectedCycleDamage += ougiDamage + chainBurst / buff["chainNumber"];
         var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
-
+        
+        
         // Display array
         var coeffs = {};
         coeffs["normal"] = normalCoeff;
@@ -924,6 +941,9 @@ module.exports.getTotalBuff = function (prof) {
     var totalBuff = {
         master: 0.0,
         masterHP: 0.0,
+        masterDA: 0.0,
+        masterTA: 0.0,
+        masterDamageLimit: 0.0,
         normal: 0.0,
         element: 0.0,
         other: 0.0,
@@ -942,6 +962,9 @@ module.exports.getTotalBuff = function (prof) {
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
     if (!isNaN(prof.masterBonusHP)) totalBuff["masterHP"] += 0.01 * parseInt(prof.masterBonusHP);
+    if (!isNaN(prof.masterBonusDA)) totalBuff["masterDA"] += 0.01 * parseInt(prof.masterBonusDA);
+    if (!isNaN(prof.masterBonusTA)) totalBuff["masterTA"] += 0.01 * parseInt(prof.masterBonusTA);
+    if (!isNaN(prof.masterBonusDamageLimit)) totalBuff["masterDamageLimit"] += 0.01 * parseInt(prof.masterBonusDamageLimit);
     if (!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
     if (!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseFloat(prof.daBuff);
     if (!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseFloat(prof.taBuff);
@@ -1503,6 +1526,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 if (totals[key]["race"] === "seisho" || totals[key]["support"] === "wildcard") {
                                     totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                                 }
+                            } else if (stype == 'magnaCritical') {
+                                totals[key][stype] += comb[i] * skillAmounts['critical'][amount][slv - 1];
                             } else {
                                 totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                             }
@@ -1885,7 +1910,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 da: 0,
                 ta: 0,
                 ougiDamage: 0,
-                tenshiDamageUP: 0
+                tenshiDamageUP: 0,
+                damageLimit: 0
             };
 
             if (summonElementTypes[selfElement]["type"].indexOf(totals[key]["element"]) >= 0 || selfElement == "all") {
@@ -1921,6 +1947,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             if (!isNaN(summon[s].TA)) totalSummon["ta"] = 0.01 * parseInt(summon[s].TA);
             if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = parseInt(summon[s].ougiDamage);
             if (!isNaN(summon[s].tenshiDamageUP)) totalSummon["tenshiDamageUP"] = parseInt(summon[s].tenshiDamageUP);
+            if (!isNaN(summon[s].damageLimit)) totalSummon["damageLimit"] = parseInt(summon[s].damageLimit);
 
             totals[key]["totalSummon"][s] = totalSummon
         }
