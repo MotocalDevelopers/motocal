@@ -228,7 +228,7 @@ var multiLangData = {
     },
     "通常バフ説明": {
         "en": "ATK Buff. ",
-        "ja": "攻撃(攻刃)バフ。レイジなど。",
+        "ja": "攻撃(攻刃)バフ。レイジIII(30%)、レイジIV(40%)など。",
         "zh": "通常攻刃Buff",
     },
     "属性バフ": {
@@ -237,8 +237,8 @@ var multiLangData = {
         "zh": "属性Buff",
     },
     "属性バフ説明": {
-        "en": "Element Buff",
-        "ja": "属性枠のバフ。",
+        "en": "Element Buff. Ultima Weapon(30%) etc.",
+        "ja": "属性枠のバフ。オメガ武器(30%)など",
         "zh": "属性Buff",
     },
     "その他バフ": {
@@ -247,7 +247,7 @@ var multiLangData = {
         "zh": "其他Buff",
     },
     "その他バフ説明": {
-        "en": "Other Buff",
+        "en": "Other Buff(GW Buff etc.)",
         "ja": "別枠乗算のバフ。騎空艇効果(10%)、騎空団炉サポ効果(10%)、副団アビ(5%)、攻撃アビ(20%)など。",
         "zh": "独立乘算Buff",
     },
@@ -277,8 +277,8 @@ var multiLangData = {
         "zh": "DA Buff",
     },
     "DAバフ説明": {
-        "en": "Double Attack Buff for Party. The value will be added to Character's base double attack ratio.",
-        "ja": "DA率が上がります。各キャラの基礎DA率に加算されます。四天刃(30%)など。",
+        "en": "Double Attack Buff for Party. The value will be added to Character's base double attack ratio. Four-Sky Blade(30%), Love Eternal(35%), Ultima Weapon(20%) etc.",
+        "ja": "DA率が上がります。各キャラの基礎DA率に加算されます。四天刃(30%)、エタラブ(35%)、オメガ武器(20%)など。",
         "zh": "DA率上升。加在每个角色的基础DA率上。",
     },
     "TAバフ": {
@@ -287,8 +287,8 @@ var multiLangData = {
         "zh": "TA Buff",
     },
     "TAバフ説明": {
-        "en": "Triple Attack Buff for Party. The value will be added to Character's base triple attack ratio.",
-        "ja": "TA率が上がります。各キャラの基礎TA率に加算されます。四天刃(30%)など。",
+        "en": "Triple Attack Buff for Party. The value will be added to Character's base triple attack ratio. Four-Sky Blade(30%), Love Eternal(35%) etc.",
+        "ja": "TA率が上がります。各キャラの基礎TA率に加算されます。四天刃(30%)、エタラブ(35%)など。",
         "zh": "TA率上升。加在每个角色的基础DA率上。",
     },
     "追加ダメージ": {
@@ -298,12 +298,12 @@ var multiLangData = {
     },
     "追加ダメージバフ": {
         "en": "Bonus DMG Buff",
-        "ja": "追加ダメージバフ",
+        "ja": "追撃バフ",
         "zh": "追加伤害Buff",
     },
     "追加ダメージバフ説明": {
-        "en": "Bonus Damage will be added to \"Expected Turn Damage\".",
-        "ja": "追加ダメージが発生するとしてダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)など。",
+        "en": "Bonus Damage will be added to \"Expected Turn Damage\". Chaser of Warlock(20%), Parazonium(15%) etc.",
+        "ja": "通常攻撃に割合分の追加ダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)、パラゾ(15%)など。",
         "zh": "视作追加伤害，额外加在伤害上。用在预想DPT的计算中。",
     },
     "与ダメージ上昇": {
@@ -312,8 +312,8 @@ var multiLangData = {
         "zh": "造成伤害上升",
     },
     "個別バフ": {
-        "en": "Personal Buff",
-        "ja": "ジータさん個別バフ",
+        "en": "Personal\nBuff",
+        "ja": "個別バフ",
         "zh": "个别Buff",
     },
     "残HP割合": {
@@ -338,43 +338,18 @@ var multiLangData = {
     },
     "奥義ゲージ上昇量": {
         "en": "Ougi Gage Buff",
-        "ja": "奥義ゲージ上昇量",
+        "ja": "奥義ゲージ\n上昇量",
         "zh": "奥义槽上升量",
     },
     "奥義ゲージ上昇率アップ": {
         "en": "Charge Bar\nSpeed UP",
-        "ja": "奥義ゲージ上昇量アップ",
+        "ja": "奥義ゲージ\n上昇量",
         "zh": "奥义槽上升量上升",
     },
     "奥義ゲージ上昇率アップ説明": {
         "en": "Used on the expected turn damage calculation.",
-        "ja": "奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
+        "ja": "攻撃回数に応じた奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
         "zh": "影响奥义槽上升量。在预想DPT计算中有用到。",
-    },
-    "奥義ダメージアップ": {
-        "en": "Ougi Damage UP",
-        "ja": "奥義ダメージUP",
-        "zh": "奥义伤害上升",
-    },
-    "与ダメージ加護": {
-        "en": "Boost Damage",
-        "ja": "与ダメ加護",
-        "zh": "Boost Damage",
-    },
-    "与ダメージ加護説明": {
-        "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
-        "ja": "最終的な与ダメージが上昇します。アーカルム石(SR3~5%, SSR7~10%)など",
-        "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
-    },
-    "ダメージ上限加護": {
-        "en": "Damage cap",
-        "ja": "ダメージ上限加護",
-        "zh": "Damage cap",
-    },
-    "ダメージ上限加護説明": {
-        "en": "Increases the damage cap. Primarch summons(5~10%) etc.",
-        "ja": "ダメージ上限に加算されます。天司石(5~10%)など",
-        "zh": "Increases the damage cap. Primarch summons(5~10%) etc.",
     },
     "チェインダメージアップ": {
         "en": "Chain Damage UP",
@@ -393,7 +368,7 @@ var multiLangData = {
     },
     "奥義ダメージ上限アップ": {
         "en": "C.A. DMG Cap",
-        "ja": "奥義ダメージ上限",
+        "ja": "奥義ダメージ\n上限",
         "zh": "奥义伤害上限上升",
     },
     "チェインダメージ上限アップ": {
@@ -457,7 +432,7 @@ var multiLangData = {
         "zh": "设定主角的奥义倍率。\n影响奥义伤害和预测DPT。",
     },
     "確保HP": {
-        "en": "Minimum Player HP",
+        "en": "Minimum\nPlayer HP",
         "ja": "確保したい\nジータさんHP",
         "zh": "希望确保的主角HP量",
     },
@@ -615,9 +590,9 @@ var multiLangData = {
         "zh": "",
 	},
     "その他ジータさんLB": {
-        "en": "Other Extended Mastery",
-        "ja": "その他ジータさんLB",
-        "zh": "Other Extended Mastery",
+        "en": "Other Perk",
+        "ja": "他LB",
+        "zh": "Other Perk",
 	},
 	
     "ジータさんマスターボーナス": {
@@ -702,7 +677,7 @@ var multiLangData = {
         "zh": "HP Bonus",
     },
     "攻刃ボーナス": {
-        "en": "Normal Buff Bonus",
+        "en": "Normal Buff\nBonus",
         "ja": "攻刃ボーナス",
         "zh": "通常攻刃Bonus",
     },
@@ -777,7 +752,7 @@ var multiLangData = {
         "zh": "弓",
     },
     "剣": {
-        "en": "Sword",
+        "en": "Sabre",
         "ja": "剣",
         "zh": "剑",
     },
@@ -787,7 +762,7 @@ var multiLangData = {
         "zh": "短剑",
     },
     "格闘": {
-        "en": "Fist",
+        "en": "Melee",
         "ja": "格闘",
         "zh": "格斗",
     },
@@ -807,7 +782,7 @@ var multiLangData = {
         "zh": "杖",
     },
     "得意": {
-        "en": "Favorite",
+        "en": "Specialty",
         "ja": "得意",
         "zh": "得意",
     },
@@ -1443,12 +1418,12 @@ var multiLangData = {
     },
     "自分の石": {
         "en": "Player Summon",
-        "ja": "自分の石",
+        "ja": "自石の加護",
         "zh": "自己的召唤石",
     },
     "フレの石": {
         "en": "Friend Summon",
-        "ja": "フレの石",
+        "ja": "フレ石の加護",
         "zh": "好友的召唤石",
     },
     "合計攻撃力": {
@@ -1471,10 +1446,40 @@ var multiLangData = {
         "ja": "DA加護",
         "zh": "DA加护",
     },
+    "DA加護の説明": {
+        "en": "Halluel and Malluel(5~10%)etc.",
+        "ja": "ハーマー(5~10%)など",
+        "zh": "Halluel and Malluel(5~10%)etc.",
+    },
     "TA加護": {
         "en": "Triple Attack",
         "ja": "TA加護",
         "zh": "TA加护",
+    },
+    "奥義ダメージアップ": {
+        "en": "Ougi Damage UP",
+        "ja": "奥義ダメージUP",
+        "zh": "奥义伤害上升",
+    },
+    "与ダメージ加護": {
+        "en": "Boost Damage",
+        "ja": "与ダメ加護",
+        "zh": "Boost Damage",
+    },
+    "与ダメージ加護説明": {
+        "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
+        "ja": "最終的な与ダメージが上昇します。アーカルム石(SR3~5%, SSR7~10%)など",
+        "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
+    },
+    "ダメージ上限加護": {
+        "en": "Damage cap",
+        "ja": "ダメージ上限加護",
+        "zh": "Damage cap",
+    },
+    "ダメージ上限加護説明": {
+        "en": "Increases the damage cap. Primarch summons(5~10%) etc.",
+        "ja": "ダメージ上限に加算されます。天司石(5~10%)など",
+        "zh": "Increases the damage cap. Primarch summons(5~10%) etc.",
     },
     "奥義ダメージ": {
         "en": "Ougi Damage",
