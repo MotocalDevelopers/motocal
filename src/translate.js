@@ -72,7 +72,7 @@ var multiLangData = {
         "zh": "读取",
     },
     "ブラウザに保存": {
-        "en": "Save to Browser",
+        "en": "Save",
         "ja": "保存",
         "zh": "保存",
     },
@@ -351,15 +351,15 @@ var multiLangData = {
         "ja": "奥義ダメージUP",
         "zh": "奥义伤害上升",
     },
-    "セラフィック加護": {
-        "en": "Damage UP (Seraphic)",
-        "ja": "セラフィック加護",
-        "zh": "Damage UP (Seraphic)",
+    "与ダメージ加護": {
+        "en": "Boost Damage",
+        "ja": "与ダメ加護",
+        "zh": "Boost Damage",
     },
-    "セラフィック加護説明": {
-        "en": "It is added to the Seraphic effect. Arcarum summons(SR3~5%, SSR7~10%) etc.",
-        "ja": "セラフィック効果に加算されます。アーカルム石(SR3~5%, SSR7~10%)など",
-        "zh": "It is added to the Seraphic effect. Arcarum summons(SR3~5%, SSR7~10%) etc.",
+    "与ダメージ加護説明": {
+        "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
+        "ja": "最終的な与ダメージが上昇します。アーカルム石(SR3~5%, SSR7~10%)など",
+        "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
     "ダメージ上限加護": {
         "en": "Damage cap",
@@ -1046,9 +1046,9 @@ var multiLangData = {
         "ja": "ターン毎の\n奥義ゲージ上昇量",
         "zh": "每回合奥义槽上升量",
     },
-    "奥義ダメージ": {
+    "奥義ダメージUP": {
         "en": "Ougi Damage",
-        "ja": "奥義ダメージ",
+        "ja": "奥義ダメージUP",
         "zh": "奥义伤害",
     },
     "チェインバースト": {
@@ -2893,6 +2893,26 @@ var multiLangData = {
         "ja": "広告",
         "zh": "广告",
     },
+    "入力例:": {
+        "en": "Input Example:",
+        "ja": "入力例:",
+        "zh": "入力例:",
+    },
+    "不具合報告・ご要望:": {
+        "en": "Bug Report/Request:",
+        "ja": "不具合報告・ご要望:",
+        "zh": "不具合報告・要望:",
+    },
+    "開発者募集:": {
+        "en": "Recruiting Developers:\n",
+        "ja": "開発者募集:",
+        "zh": "開発者募集:",
+    },
+    "更新履歴": {
+        "en": "Changelog",
+        "ja": "更新履歴",
+        "zh": "更新履歴",
+    },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",
         "ja": "2017/01/14: 英語対応",
@@ -3243,10 +3263,15 @@ var multiLangData = {
         "ja": "2019/04/26: 方陣+通常+イクシードの合算枠上限を60%に設定。他奥義上限枠見直し。",
         "zh": "2019/04/26: Add the total of Magna/Normal/Exceed ougi damage limits is 60%.",
     },
+    "notice-20190427-1": {
+        "en": "27/04/2019: Implement Boost damage aura. Add [4凸]Ichigo Hitofuri. Fix Character base DATA. Others, fine-tuned.",
+        "ja": "2019/04/27: 与ダメージ加護実装。[4凸]一期一振追加。キャラ基礎連撃修正。その他微調整。",
+        "zh": "2019/04/27: Implement Boost damage aura. Add [4凸]Ichigo Hitofuri. Fix Character base DATA. Others, fine-tuned.",
+    },
     "notice-20190428-1": {
-        "en": "28/04/2019: Implement a damage limit aura.",
-        "ja": "2019/04/28: ダメージ上限加護実装。",
-        "zh": "2019/04/28: Implement a damage limit aura.",
+        "en": "28/04/2019: Implement a damage limit aura. Add Master Bonuses.",
+        "ja": "2019/04/28: ダメージ上限加護実装。マスボ追加。",
+        "zh": "2019/04/28: Implement a damage limit aura. Add Master Bonuses.",
     },
 };
 
