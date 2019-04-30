@@ -583,21 +583,20 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += Math.min(0.60, (ougiDamageLimitByMagna + ougiDamageLimitByNormal + ougiDamageLimitByExceed));
         ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
         ougiDamageLimit += 0.01 * totalSummon["damageLimit"];
-
-        var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
         
-        if (key == "Djeeta") {
-            chainDamageLimit += buff["zenithChainDamageLimit"];
-        }
-        
-        chainDamageLimit = chainDamageLimit <= 0.50 ? chainDamageLimit : 0.50;
-        
-        // Djeeta(limit damage)
         if (key == "Djeeta") {
             damageLimit += buff["masterDamageLimit"];
             damageLimit += buff["zenithDamageLimit"];
             ougiDamageLimit += buff["masterDamageLimit"];
             ougiDamageLimit += buff["zenithDamageLimit"];
+        }
+        
+        // Chain Burst
+        var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
+        chainDamageLimit = chainDamageLimit <= 0.50 ? chainDamageLimit : 0.50;
+        
+        if (key == "Djeeta") {
+            chainDamageLimit += buff["zenithChainDamageLimit"];
         }
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
