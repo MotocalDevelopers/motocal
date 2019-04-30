@@ -20,6 +20,7 @@ var Notice = CreateClass({
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
                     <ul className="list-group">
 
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190430-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190428-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190427-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190426-1", locale)}</li>

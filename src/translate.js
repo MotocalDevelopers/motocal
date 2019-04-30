@@ -3350,8 +3350,13 @@ var multiLangData = {
     },
     "notice-20190428-1": {
         "en": "28/04/2019: Implement a damage limit aura. Add Master Bonuses.",
-        "ja": "2019/04/28: ダメージ上限加護実装。マスボ追加。",
+        "ja": "2019/04/28: ダメージ上限加護実装。マスボ追加。最終ソーンの奥義をサポアビとして実装(今の所手動で選択する必要があります)。",
         "zh": "2019/04/28: Implement a damage limit aura. Add Master Bonuses.",
+    },
+    "notice-20190430-1": {
+        "en": "30/04/2019: Add Player's Extended Mastery. Improved Save data compatibility.",
+        "ja": "2019/04/30: ジータLB追加。編成データの互換性強化。",
+        "zh": "2019/04/30: Add Player's Extended Mastery. Improved Save data compatibility.",
     },
 };
 
