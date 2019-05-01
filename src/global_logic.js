@@ -601,11 +601,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         // Mystery damage = magnification * (1 + mystery damage buff frame) * (1 + mystery damage rise skill frame)
         // Save only the coefficient part (100% + delta of delta) for common processing
-        var ougiDamageByMystery = totals[key]["ougiDamage"] * totalSummon["zeus"];
-        var ougiDamageByNormal = totals[key]["normalOugiDamage"] * totalSummon["zeus"];
-        ougiDamageByNormal = ougiDamageByNormal <= 100 ? ougiDamageByNormal : 100;
-        var ougiDamageByMagna = totals[key]["magnaOugiDamage"] * totalSummon["magna"];
-        ougiDamageByMagna = ougiDamageByMagna <= 100 ? ougiDamageByMagna : 100;
+        var ougiDamageByMystery = Math.min(100, totals[key]["ougiDamage"] * totalSummon["zeus"]);
+        var ougiDamageByNormal = Math.min(100, totals[key]["normalOugiDamage"] * totalSummon["zeus"]);
+        var ougiDamageByMagna = Math.min(100, totals[key]["magnaOugiDamage"] * totalSummon["magna"]);
         var ougiDamageUP = 1.0 + totals[key]["ougiDamageBuff"];
         ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totalSummon["ougiDamage"] + totals[key]["cosmosAT"]);
         ougiDamageUP -= 1.0;
