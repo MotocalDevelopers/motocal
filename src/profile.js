@@ -191,21 +191,23 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("ジョブ", locale)}<font color="#ffff00">*</font>
                                 <span style={{display: "block"}}
-                                      className="label label-default">{intl.translate("得意", locale)} [{intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}]</span>
+                                      className="label label-default">{intl.translate("得意", locale)}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-primary">{intl.translate(jobTypes[Jobs[this.state.job].type], locale)}{intl.translate("タイプ", locale)}</span>
+                                      className="label label-default">[{intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}]</span>
                                 <span style={{display: "block"}}
-                                      className="label label-success">{intl.translate("攻撃ボーナス", locale)} {Jobs[this.state.job].atBonus}</span>
+                                      className="label label-info">{intl.translate(jobTypes[Jobs[this.state.job].type], locale)}{intl.translate("タイプ", locale)}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-danger">{intl.translate("HPボーナス", locale)} {Jobs[this.state.job].hpBonus}</span>
+                                      className="label label-danger">{intl.translate("攻撃ボーナス", locale)} {Jobs[this.state.job].atBonus}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-success">{intl.translate("攻刃ボーナス", locale)} {Jobs[this.state.job].kouzinBonus}</span>
+                                      className="label label-success">{intl.translate("HPボーナス", locale)} {Jobs[this.state.job].hpBonus}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-primary">{intl.translate("守護ボーナス", locale)} {Jobs[this.state.job].shugoBonus}</span>
+                                      className="label label-danger">{intl.translate("攻刃ボーナス", locale)} {Jobs[this.state.job].kouzinBonus}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-danger">{intl.translate("基礎DA率", locale)} {Jobs[this.state.job].DaBonus}%</span>
+                                      className="label label-success">{intl.translate("守護ボーナス", locale)} {Jobs[this.state.job].shugoBonus}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-default">{intl.translate("基礎TA率", locale)} {Jobs[this.state.job].TaBonus}%</span>
+                                      className="label label-warning">{intl.translate("基礎DA率", locale)} {Jobs[this.state.job].DaBonus}%</span>
+                                <span style={{display: "block"}}
+                                      className="label label-warning">{intl.translate("基礎TA率", locale)} {Jobs[this.state.job].TaBonus}%</span>
                             </th>
                             <td><FormControl componentClass="select" value={this.state.job}
                                              onChange={this.handleSelectEvent.bind(this, "job")}> {this.props.alljobs[locale]} </FormControl>

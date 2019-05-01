@@ -312,7 +312,7 @@ var multiLangData = {
         "zh": "造成伤害上升",
     },
     "個別バフ": {
-        "en": "Personal\nBuff",
+        "en": "Indiv Buff",
         "ja": "個別バフ",
         "zh": "个别Buff",
     },
@@ -417,7 +417,7 @@ var multiLangData = {
         "zh": "设定主角的基础DA率。\n随着职业变更会自动切换。",
     },
     "奥義倍率": {
-        "en": "C.A. Ratio",
+        "en": "C.A. Multiplier",
         "ja": "奥義倍率",
         "zh": "奥义倍率",
     },
@@ -464,15 +464,35 @@ var multiLangData = {
     },
 
     "ジョブ": {
-        "en": "Job",
+        "en": "Classes",
         "ja": "ジョブ",
         "zh": "职业",
     },
     "ジョブ説明": {
-        "en": "Job bonuses and Favorite arm bonuses are automatically inclueded in calculation. Select \"none\" if you want no bonuses and favorite arms.",
+        "en": "Classes bonuses and Favorite arm bonuses are automatically inclueded in calculation. Select \"none\" if you want no bonuses and favorite arms.",
         "ja": "ジョブごとのボーナス等は自動で反映されます。得意武器補正などを反映したくない場合\"なし\"を選択して下さい。",
         "zh": "不同职业的Bonus会自动反映。不想让得意武器补正之类反映出的话请选择\"无\"。",
 	},
+    "攻撃ボーナス": {
+        "en": "ATK Bonus",
+        "ja": "攻撃ボーナス",
+        "zh": "攻击Bonus",
+    },
+    "HPボーナス": {
+        "en": "HP Bonus",
+        "ja": "HPボーナス",
+        "zh": "HP Bonus",
+    },
+    "攻刃ボーナス": {
+        "en": "Might Bonus",
+        "ja": "攻刃ボーナス",
+        "zh": "攻刃Bonus",
+    },
+    "守護ボーナス": {
+        "en": "Aegis Bonus",
+        "ja": "守護ボーナス",
+        "zh": "守护Bonus",
+    },
 	
     "ジータさんリミットボーナス": {
         "en": "Player's Extended Mastery",
@@ -666,33 +686,13 @@ var multiLangData = {
         "ja": "有利/非有利/不利は、敵の属性に従って自動で判定されます。",
         "zh": "有利/非有利/不利会随着敌人的属性自动判定出。",
 	},
-    "攻撃ボーナス": {
-        "en": "Attack Bonus",
-        "ja": "攻撃ボーナス",
-        "zh": "攻击Bonus",
-    },
-    "HPボーナス": {
-        "en": "HP Bonus",
-        "ja": "HPボーナス",
-        "zh": "HP Bonus",
-    },
-    "攻刃ボーナス": {
-        "en": "Normal Buff\nBonus",
-        "ja": "攻刃ボーナス",
-        "zh": "通常攻刃Bonus",
-    },
-    "守護ボーナス": {
-        "en": "Health Bonus",
-        "ja": "守護ボーナス",
-        "zh": "守护Bonus",
-    },
     "基礎DA率": {
-        "en": "Base DA Ratio",
+        "en": "Base DA Rate",
         "ja": "基礎DA率",
         "zh": "基础DA率",
     },
     "基礎TA率": {
-        "en": "Base TA Ratio",
+        "en": "Base TA Rate",
         "ja": "基礎TA率",
         "zh": "基础TA率",
     },
@@ -1027,7 +1027,7 @@ var multiLangData = {
         "zh": "战力",
     },
     "連撃率": {
-        "en": "DA/TA Ratio",
+        "en": "DA/TA Rate",
         "ja": "連撃率",
         "zh": "连击率",
     },
@@ -1042,7 +1042,7 @@ var multiLangData = {
         "zh": "考虑技巧的攻击力期望",
     },
     "技巧期待値": {
-        "en": "Exp. Critical Ratio",
+        "en": "Exp. Critical Rate",
         "ja": "技巧期待値\n(減衰補正後)",
         "zh": "技巧期望\n(考虑上限)",
     },
@@ -1122,7 +1122,7 @@ var multiLangData = {
         "zh": "期望DPT/人",
     },
     "技巧倍率": {
-        "en": "Critical Ratio",
+        "en": "Critical Rate",
         "ja": "技巧倍率",
         "zh": "技巧倍率",
     },
@@ -1696,12 +1696,12 @@ var multiLangData = {
         "zh": "主角HP",
     },
     "技巧期待値(ジータさんのみ)": {
-        "en": "Exp. Critical Ratio (Player only)",
+        "en": "Exp. Critical Rate (Player only)",
         "ja": "技巧期待値(ジータさんのみ)",
         "zh": "技巧期望(只考虑主角)",
     },
     "技巧期待値(ジータさんのみ)": {
-        "en": "Exp. Critical Ratio (Player only)",
+        "en": "Exp. Critical Rate (Player only)",
         "ja": "技巧期待値(ジータさんのみ)",
         "zh": "技巧期望(只考虑主角)",
     },
