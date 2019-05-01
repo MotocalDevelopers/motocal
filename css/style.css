@@ -161,6 +161,10 @@
     .profile {
         width: 100%;
     }
+    
+    .profile table tbody tr th {
+        white-space: pre-line;
+    }
 
     .summonList {
         width: 100%;
