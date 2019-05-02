@@ -393,7 +393,7 @@ var multiLangData = {
     },
     "敵防御固有値": {
         "en": "Enemy's defense",
-        "ja": "敵防御固有値",
+        "ja": "敵防御\n固有値",
         "zh": "敌人的防御值",
     },
     "敵防御固有値説明": {
@@ -402,9 +402,9 @@ var multiLangData = {
         "zh": "设定假想敌的防御值。\n影响攻击伤害、奥义伤害、预想DPT。",
     },
     "防御デバフ合計": {
-        "en": "Total DEF debuff",
-        "ja": "防御デバフ合計",
-        "zh": "Total DEF debuff",
+        "en": "DEF debuff",
+        "ja": "防御デバフ",
+        "zh": "DEF debuff",
     },
     "防御デバフ合計説明": {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
@@ -459,7 +459,7 @@ var multiLangData = {
 
     "ジータさん性別": {
         "en": "Player's Sex",
-        "ja": "ジータさん性別",
+        "ja": "ジータさん\n性別",
         "zh": "主角的性別",
     },
 
@@ -595,9 +595,9 @@ var multiLangData = {
         "zh": "Chain Burst DMG Cap",
 	},
     "LB チェンバ上限の説明": {
-        "en": "Chain Burst DMG Cap",
-        "ja": "チェンバ上限",
-        "zh": "Chain Burst DMG Cap",
+        "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
+        "ja": "II以降はIを★3まで取得していること前提です。",
+        "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
 	},
     "LB クリティカル": {
         "en": "Critical",
@@ -673,7 +673,7 @@ var multiLangData = {
 	
     "ジータさん属性": {
         "en": "Player's Element",
-        "ja": "ジータさん属性",
+        "ja": "ジータさん\n属性",
         "zh": "主角的属性",
     },
     "敵の属性": {
@@ -687,12 +687,12 @@ var multiLangData = {
         "zh": "有利/非有利/不利会随着敌人的属性自动判定出。",
 	},
     "基礎DA率": {
-        "en": "Base DA Rate",
+        "en": "Base DA",
         "ja": "基礎DA率",
         "zh": "基础DA率",
     },
     "基礎TA率": {
-        "en": "Base TA Rate",
+        "en": "Base TA",
         "ja": "基礎TA率",
         "zh": "基础TA率",
     },
@@ -1027,7 +1027,7 @@ var multiLangData = {
         "zh": "战力",
     },
     "連撃率": {
-        "en": "DA/TA Rate",
+        "en": "DA/TA Ratio",
         "ja": "連撃率",
         "zh": "连击率",
     },
@@ -1042,7 +1042,7 @@ var multiLangData = {
         "zh": "考虑技巧的攻击力期望",
     },
     "技巧期待値": {
-        "en": "Exp. Critical Rate",
+        "en": "Exp. Critical Ratio",
         "ja": "技巧期待値\n(減衰補正後)",
         "zh": "技巧期望\n(考虑上限)",
     },
@@ -1122,7 +1122,7 @@ var multiLangData = {
         "zh": "期望DPT/人",
     },
     "技巧倍率": {
-        "en": "Critical Rate",
+        "en": "Critical Ratio",
         "ja": "技巧倍率",
         "zh": "技巧倍率",
     },
@@ -1696,12 +1696,12 @@ var multiLangData = {
         "zh": "主角HP",
     },
     "技巧期待値(ジータさんのみ)": {
-        "en": "Exp. Critical Rate (Player only)",
+        "en": "Exp. Critical Ratio (Player only)",
         "ja": "技巧期待値(ジータさんのみ)",
         "zh": "技巧期望(只考虑主角)",
     },
     "技巧期待値(ジータさんのみ)": {
-        "en": "Exp. Critical Rate (Player only)",
+        "en": "Exp. Critical Ratio (Player only)",
         "ja": "技巧期待値(ジータさんのみ)",
         "zh": "技巧期望(只考虑主角)",
     },

@@ -7,6 +7,14 @@ var CreateClass = require('create-react-class');
 
 // const
 var zenith = GlobalConst.zenith;
+var zenithDA = GlobalConst.zenithDA;
+var zenithTA = GlobalConst.zenithTA;
+//var zenithCritical = GlobalConst.zenithCritical;
+var zenithOugiDamage = GlobalConst.zenithOugiDamage;
+var zenithChainDamage = GlobalConst.zenithChainDamage;
+var zenithChainDamageLimit = GlobalConst.zenithChainDamageLimit;
+var zenithElement = GlobalConst.zenithElement;
+var zenithDamageLimit = GlobalConst.zenithDamageLimit;
 var Jobs = GlobalConst.Jobs;
 var jobTypes = GlobalConst.jobTypes;
 var armTypes = GlobalConst.armTypes;
@@ -24,7 +32,95 @@ var Profile = CreateClass({
         zenithBonuses.zh = Object.keys(zenith).map(function (opt) {
             return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         });
+        
+        var zenithDABonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithDABonuses.ja = Object.keys(zenithDA).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithDABonuses.en = Object.keys(zenithDA).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithDABonuses.zh = Object.keys(zenithDA).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
+        var zenithTABonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithTABonuses.ja = Object.keys(zenithTA).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithTABonuses.en = Object.keys(zenithTA).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithTABonuses.zh = Object.keys(zenithTA).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
+        //var zenithCriticalBonuses = {"ja": {}, "en": {}, "zh": {}};
+        //zenithCriticalBonus.ja = Object.keys(zenithCritical).map(function (opt) {
+        //    return <option value={opt} key={opt}>{opt}</option>
+        //});
+        //zenithCriticalBonuses.en = Object.keys(zenithCritical).map(function (opt) {
+        //    return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        //});
+        //zenithCriticalBonuses.zh = Object.keys(zenithCritical).map(function (opt) {
+        //    return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        //});
+        
+        var zenithOugiDamageBonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithOugiDamageBonuses.ja = Object.keys(zenithOugiDamage).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithOugiDamageBonuses.en = Object.keys(zenithOugiDamage).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithOugiDamageBonuses.zh = Object.keys(zenithOugiDamage).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
+        var zenithChainDamageBonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithChainDamageBonuses.ja = Object.keys(zenithChainDamage).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithChainDamageBonuses.en = Object.keys(zenithChainDamage).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithChainDamageBonuses.zh = Object.keys(zenithChainDamage).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
+        var zenithChainDamageLimitBonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithChainDamageLimitBonuses.ja = Object.keys(zenithChainDamageLimit).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithChainDamageLimitBonuses.en = Object.keys(zenithChainDamageLimit).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithChainDamageLimitBonuses.zh = Object.keys(zenithChainDamageLimit).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
+        var zenithElementBonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithElementBonuses.ja = Object.keys(zenithElement).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithElementBonuses.en = Object.keys(zenithElement).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithElementBonuses.zh = Object.keys(zenithElement).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
 
+        var zenithDamageLimitBonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithDamageLimitBonuses.ja = Object.keys(zenithDamageLimit).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithDamageLimitBonuses.en = Object.keys(zenithDamageLimit).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithDamageLimitBonuses.zh = Object.keys(zenithDamageLimit).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
         var alljobs = {"ja": {}, "en": {}, "zh": {}};
         alljobs.ja = Object.keys(Jobs).map(function (opt) {
             return <option value={opt} key={opt}>{Jobs[opt].name}</option>
@@ -38,6 +134,14 @@ var Profile = CreateClass({
 
         return {
             zenithBonuses: zenithBonuses,
+            zenithDABonuses: zenithDABonuses,
+            zenithTABonuses: zenithTABonuses,
+            //zenithCriticalBonuses: zenithCriticalBonuses,
+            zenithOugiDamageBonuses: zenithOugiDamageBonuses,
+            zenithChainDamageBonuses: zenithChainDamageBonuses,
+            zenithChainDamageLimitBonuses: zenithChainDamageLimitBonuses,
+            zenithElementBonuses: zenithElementBonuses,
+            zenithDamageLimitBonuses: zenithDamageLimitBonuses,
             alljobs: alljobs,
         };
     },
@@ -61,14 +165,14 @@ var Profile = CreateClass({
             zenithPartyHPBonus: 0,
             zenithBonus1: "無し",
             zenithBonus2: "無し",
-            zenithDABonus: 0,
-            zenithTABonus: 0,
+            zenithDABonus: "無し",
+            zenithTABonus: "無し",
             //zenithCriticalBonus: 0,
-            zenithOugiDamageBonus: 0,
-            zenithChainDamageBonus: 0,
-            zenithChainDamageLimitBonus: 0,
-            zenithElementBonus: 0,
-            zenithDamageLimitBonus: 0,
+            zenithOugiDamageBonus: "無し",
+            zenithChainDamageBonus: "無し",
+            zenithChainDamageLimitBonus: "無し",
+            zenithElementBonus: "無し",
+            zenithDamageLimitBonus: "無し",
             masterBonus: 0,
             masterBonusHP: 0,
             masterBonusDA: 0,
@@ -422,7 +526,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("LB DA", locale)}<font color="#ffff00">*</font></th>
                             <td><FormControl componentClass="select" value={this.state.zenithDABonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithDABonus")}> {selector.zenithDABonus} </FormControl>
+                                             onChange={this.handleSelectEvent.bind(this, "zenithDABonus")}> {this.props.zenithDABonuses[locale]} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -431,7 +535,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("LB TA", locale)}<font color="#ffff00">*</font></th>
                             <td><FormControl componentClass="select" value={this.state.zenithTABonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithTABonus")}> {selector.zenithTABonus} </FormControl>
+                                             onChange={this.handleSelectEvent.bind(this, "zenithTABonus")}> {this.props.zenithTABonuses[locale]} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -440,7 +544,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("LB ダメージ上限UP", locale)}<font color="#ffff00">*</font></th>
                             <td><FormControl componentClass="select" value={this.state.zenithDamageLimitBonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithDamageLimitBonus")}> {selector.zenithDamageLimitBonus} </FormControl>
+                                             onChange={this.handleSelectEvent.bind(this, "zenithDamageLimitBonus")}> {this.props.zenithDamageLimitBonuses[locale]} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -449,7 +553,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("LB 奥義", locale)}<font color="#ffff00">*</font></th>
                             <td><FormControl componentClass="select" value={this.state.zenithOugiDamageBonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithOugiDamageBonus")}> {selector.zenithOugiDamageBonus} </FormControl>
+                                             onChange={this.handleSelectEvent.bind(this, "zenithOugiDamageBonus")}> {this.props.zenithOugiDamageBonuses[locale]} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -466,7 +570,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("LB 属性攻撃", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithElementBonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithElementBonus")}> {selector.zenithElementBonus} </FormControl>
+                                             onChange={this.handleSelectEvent.bind(this, "zenithElementBonus")}> {this.props.zenithElementBonuses[locale]} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>,
@@ -475,7 +579,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("LB チェンバ", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithChainDamageBonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithChainDamageBonus")}> {selector.zenithChainDamageBonus} </FormControl>
+                                             onChange={this.handleSelectEvent.bind(this, "zenithChainDamageBonus")}> {this.props.zenithChainDamageBonuses[locale]} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>,
@@ -484,7 +588,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("LB チェンバ上限", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithChainDamageLimitBonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithChainDamageLimitBonus")}> {selector.zenithChainDamageLimitBonus} </FormControl>
+                                             onChange={this.handleSelectEvent.bind(this, "zenithChainDamageLimitBonus")}> {this.props.zenithChainDamageLimitBonuses[locale]} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>,

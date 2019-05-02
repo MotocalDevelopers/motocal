@@ -584,20 +584,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
         ougiDamageLimit += 0.01 * totalSummon["damageLimit"];
         
-        if (key == "Djeeta") {
-            damageLimit += buff["masterDamageLimit"];
-            damageLimit += buff["zenithDamageLimit"];
-            ougiDamageLimit += buff["masterDamageLimit"];
-            ougiDamageLimit += buff["zenithDamageLimit"];
-        }
         
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
         chainDamageLimit = chainDamageLimit <= 0.50 ? chainDamageLimit : 0.50;
         
-        if (key == "Djeeta") {
-            chainDamageLimit += buff["zenithChainDamageLimit"];
-        }
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, additionalDamage, damageUP, damageLimit);
@@ -618,24 +609,26 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageByNormal = ougiDamageByNormal <= 100 ? ougiDamageByNormal : 100;
         var ougiDamageByMagna = totals[key]["magnaOugiDamage"] * totalSummon["magna"];
         ougiDamageByMagna = ougiDamageByMagna <= 100 ? ougiDamageByMagna : 100;
-        var ougiDamageUP = 1.0 + totals[key]["ougiDamageBuff"];
-        ougiDamageUP *= 1.0 + 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totalSummon["ougiDamage"] + totals[key]["cosmosAT"]);
+        var ougiDamageSkill = 0.01 * (ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + totals[key]["cosmosAT"]);
         
+        var ougiDamageExceptSkill = totals[key]["ougiDamageBuff"] + totalSummon["ougiDamage"];
         if (key == "Djeeta") {
-            ougiDamageUP += buff["zenithOugiDamage"];
+            ougiDamageExceptSkill += buff["zenithOugiDamage"];
         }
         
-        ougiDamageUP -= 1.0;
+        var ougiDamageUP = (1.0 + ougiDamageSkill) * (1.0 + ougiDamageExceptSkill) - 1.0;
         
 
 
         var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
+        chainDamageUP = chainDamageUP <= 1.20 ? chainDamageUP : 1.20; //check skill limit
         
         if (key == "Djeeta") {
+            damageLimit += buff["masterDamageLimit"] + buff["zenithDamageLimit"];
+            ougiDamageLimit += buff["masterDamageLimit"] + buff["zenithDamageLimit"];
             chainDamageUP += buff["zenithChainDamage"];
+            chainDamageLimit += buff["zenithChainDamageLimit"];
         }
-        
-        chainDamageUP = chainDamageUP <= 1.20 ? chainDamageUP : 1.20;
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
 
@@ -997,14 +990,6 @@ module.exports.getTotalBuff = function (prof) {
     if (!isNaN(prof.masterBonusDA)) totalBuff["masterDA"] += 0.01 * parseInt(prof.masterBonusDA);
     if (!isNaN(prof.masterBonusTA)) totalBuff["masterTA"] += 0.01 * parseInt(prof.masterBonusTA);
     if (!isNaN(prof.masterBonusDamageLimit)) totalBuff["masterDamageLimit"] += 0.01 * parseInt(prof.masterBonusDamageLimit);
-    if (!isNaN(prof.zenithTABonus)) totalBuff["zenithTA"] += 0.01 * parseInt(prof.zenithTABonus);
-    if (!isNaN(prof.zenithDABonus)) totalBuff["zenithDA"] += 0.01 * parseInt(prof.zenithDABonus);
-    //if (!isNaN(prof.zenithCriticalBonus)) totalBuff["zenithCritical"] += 0.01 * parseInt(prof.zenithCriticalBonus);
-    if (!isNaN(prof.zenithOugiDamageBonus)) totalBuff["zenithOugiDamage"] += 0.01 * parseInt(prof.zenithOugiDamageBonus);
-    if (!isNaN(prof.zenithChainDamageBonus)) totalBuff["zenithChainDamage"] += 0.01 * parseInt(prof.zenithChainDamageBonus);
-    if (!isNaN(prof.zenithChainDamageLimitBonus)) totalBuff["zenithChainDamageLimit"] += 0.01 * parseInt(prof.zenithChainDamageLimitBonus);
-    if (!isNaN(prof.zenithElementBonus)) totalBuff["zenithElement"] += 0.01 * parseInt(prof.zenithElementBonus);
-    if (!isNaN(prof.zenithDamageLimitBonus)) totalBuff["zenithDamageLimit"] += 0.01 * parseInt(prof.zenithDamageLimitBonus);
     if (!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
     if (!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseFloat(prof.daBuff);
     if (!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseFloat(prof.taBuff);
@@ -1019,6 +1004,14 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
     totalBuff["zenith1"] += zenith[prof.zenithBonus1];
     totalBuff["zenith2"] += zenith[prof.zenithBonus2];
+    totalBuff["zenithDA"] += zenith[prof.zenithDABonus];
+    totalBuff["zenithTA"] += zenith[prof.zenithTABonus];
+    //totalBuff["zenithCritical"] += zenith[prof.zenithCriticalBonus];
+    totalBuff["zenithOugiDamage"] += zenith[prof.zenithOugiDamageBonus];
+    totalBuff["zenithChainDamage"] += zenith[prof.zenithChainDamageBonus];
+    totalBuff["zenithChainDamageLimit"] += zenith[prof.zenithChainDamageLimitBonus];
+    totalBuff["zenithElement"] += zenith[prof.zenithElementBonus];
+    totalBuff["zenithDamageLimit"] += zenith[prof.zenithDamageLimitBonus];
 
     return totalBuff
 };
@@ -1985,7 +1978,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             if (!isNaN(summon[s].hpBonus)) totalSummon["hpBonus"] = 0.01 * parseInt(summon[s].hpBonus);
             if (!isNaN(summon[s].DA)) totalSummon["da"] = 0.01 * parseInt(summon[s].DA);
             if (!isNaN(summon[s].TA)) totalSummon["ta"] = 0.01 * parseInt(summon[s].TA);
-            if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = parseInt(summon[s].ougiDamage);
+            if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = 0.01 * parseInt(summon[s].ougiDamage);
             if (!isNaN(summon[s].tenshiDamageUP)) totalSummon["tenshiDamageUP"] = parseInt(summon[s].tenshiDamageUP);
             if (!isNaN(summon[s].damageLimit)) totalSummon["damageLimit"] = parseInt(summon[s].damageLimit);
 

@@ -79,7 +79,7 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-var zenith = {
+var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
     "★2": 0.03,
@@ -98,14 +98,68 @@ var zenith = {
 var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
 var zenithPartyHPBonus = [3000, 2600, 2300, 2000, 1600, 1300, 1000, 600, 300, 0];
-var zenithDABonus = [0, 1, 3, 5, 6, 8, 10];
-var zenithTABonus = [0, 1, 3, 5];
+var zenithDABonus = {
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
+    "★3": 0.05,
+    "★4": 0.06,
+    "★5": 0.08,
+    "★6": 0.10
+};
+var zenithTABonus = {
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
+    "★3": 0.05
+};
+
 //var zenithCriticalBonus = [0, 1, 3, 5, 6, 8, 10];
-var zenithOugiDamageBonus = [0, 1, 3, 5, 6, 8, 10, 11, 13, 15];
-var zenithChainDamageBonus = [0, 1, 3, 5];
-var zenithChainDamageLimitBonus = [0, 1, 3, 5];
-var zenithElementBonus = [0, 1, 3, 5, 6, 8, 10];
-var zenithDamageLimitBonus = [0, 3, 6, 10, 11, 13, 15];
+var zenithOugiDamageBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05, 
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10, 
+    "★7": 0.11, 
+    "★8": 0.13,
+    "★9": 0.15
+};
+var zenithChainDamageBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05,
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10
+};
+var zenithChainDamageLimitBonus = {
+    "無し": 0, 
+    "★1":  0.01, 
+    "★2": 0.03, 
+    "★3": 0.05
+};
+var zenithElementBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05, 
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10
+};
+var zenithDamageLimitBonus = {
+    "無し": 0, 
+    "★1": 0.03, 
+    "★2": 0.06, 
+    "★3": 0.10, 
+    "★4": 0.11, 
+    "★5": 0.13, 
+    "★6": 0.15
+};
 
 
 var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -1619,6 +1673,14 @@ var supportAbilities = {
 
 // exports
 module.exports.zenith = zenith;
+module.exports.zenithDA = zenithDABonus;
+module.exports.zenithTA = zenithTABonus;
+//module.exports.zenithCritical = zenithCritical;
+module.exports.zenithOugiDamage = zenithOugiDamageBonus;
+module.exports.zenithChainDamage = zenithChainDamageBonus;
+module.exports.zenithChainDamageLimit = zenithChainDamageLimitBonus;
+module.exports.zenithElement = zenithElementBonus;
+module.exports.zenithDamageLimit = zenithDamageLimitBonus;
 module.exports.raceTypes = raceTypes;
 module.exports.sexTypes = sexTypes;
 module.exports.skillAmounts = skillAmounts;
@@ -2007,30 +2069,11 @@ module.exports.selector.zenithHP = zenithHPBonus.map(function (opt) {
 module.exports.selector.zenithPartyHP = zenithPartyHPBonus.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
-module.exports.selector.zenithDABonus = zenithDABonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithTABonus = zenithTABonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+
 //module.exports.selector.zenithCriticalBonus = zenithCriticalBonus.map(function (opt) {
 //    return <option value={opt} key={opt}>{opt}</option>;
 //});
-module.exports.selector.zenithOugiDamageBonus = zenithOugiDamageBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithChainDamageBonus = zenithChainDamageBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithChainDamageLimitBonus = zenithChainDamageLimitBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithElementBonus = zenithElementBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithDamageLimitBonus = zenithDamageLimitBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+
 
 module.exports.selector.slv = skilllevels.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
