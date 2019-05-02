@@ -292,12 +292,12 @@ var multiLangData = {
         "zh": "TA率上升。加在每个角色的基础DA率上。",
     },
     "追加ダメージ": {
-        "en": "Additional Damage ",
+        "en": "Bonus DMG", //a.k.a: additionalDamage
         "ja": "追加ダメージ",
         "zh": "追加伤害",
     },
     "追加ダメージバフ": {
-        "en": "Bonus DMG Buff",
+        "en": "Bonus DMG Buff", //a.k.a: additionalDamageBuff
         "ja": "追撃バフ",
         "zh": "追加伤害Buff",
     },
@@ -312,7 +312,7 @@ var multiLangData = {
         "zh": "造成伤害上升",
     },
     "個別バフ": {
-        "en": "Indiv Buff",
+        "en": "Indiv Buff", //a.k.a: Personal buff
         "ja": "個別バフ",
         "zh": "个别Buff",
     },
@@ -337,7 +337,7 @@ var multiLangData = {
         "zh": "全队的剩余HP比例。(角色个别的值也有输入的话适用更低的)",
     },
     "奥義ゲージ上昇量": {
-        "en": "Ougi Gage Buff",
+        "en": "Charge Bar Buff", //a.k.a: ougiGageBuff
         "ja": "奥義ゲージ\n上昇量",
         "zh": "奥义槽上升量",
     },
@@ -352,12 +352,12 @@ var multiLangData = {
         "zh": "影响奥义槽上升量。在预想DPT计算中有用到。",
     },
     "チェインダメージアップ": {
-        "en": "Chain Damage UP",
+        "en": "Chain Damage UP", //a.k.a: chainDamageUP
         "ja": "チェインダメージUP",
         "zh": "チェイン义伤害上升",
     },
     "ダメージ上限アップ": {
-        "en": "DMG Cap",
+        "en": "DMG Cap", //a.k.a: damagelimit
         "ja": "ダメージ上限",
         "zh": "伤害上限上升",
     },
@@ -367,12 +367,12 @@ var multiLangData = {
         "zh": "通常攻击伤害的计算中有用到。",
     },
     "奥義ダメージ上限アップ": {
-        "en": "C.A. DMG Cap",
+        "en": "C.A. DMG Cap", //a.k.a: ougiDamageLimit
         "ja": "奥義ダメージ\n上限",
         "zh": "奥义伤害上限上升",
     },
     "チェインダメージ上限アップ": {
-        "en": "Chain Damage Limit Buff",
+        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
         "ja": "チェインダメージ上限UP",
         "zh": "链义伤害上限上升",
     },
@@ -393,7 +393,7 @@ var multiLangData = {
     },
     "敵防御固有値": {
         "en": "Enemy's defense",
-        "ja": "敵防御\n固有値",
+        "ja": "敵防御固有値",
         "zh": "敌人的防御值",
     },
     "敵防御固有値説明": {
@@ -417,7 +417,7 @@ var multiLangData = {
         "zh": "设定主角的基础DA率。\n随着职业变更会自动切换。",
     },
     "奥義倍率": {
-        "en": "C.A. Multiplier",
+        "en": "C.A. Multiplier", //a.k.a: ougiRatio
         "ja": "奥義倍率",
         "zh": "奥义倍率",
     },
@@ -427,7 +427,7 @@ var multiLangData = {
         "zh": "设定主角的基础TA率。\n随着职业变更会自动切换。",
     },
     "ジータさん奥義倍率説明": {
-        "en": "Input ougi ratio of player.\nIt affects calculation of Ougi Damage and Expected Turn Damage.",
+        "en": "Input C.A. ratio of player.\nIt affects calculation of C.A. Damage and Expected Turn Damage.",
         "ja": "ジータさんの奥義倍率を設定します。\n奥義ダメージ、予想ターン毎ダメージの計算に影響します。",
         "zh": "设定主角的奥义倍率。\n影响奥义伤害和预测DPT。",
     },
@@ -464,12 +464,12 @@ var multiLangData = {
     },
 
     "ジョブ": {
-        "en": "Classes",
+        "en": "Classes", //a.k.a: job
         "ja": "ジョブ",
         "zh": "职业",
     },
     "ジョブ説明": {
-        "en": "Classes bonuses and Favorite arm bonuses are automatically inclueded in calculation. Select \"none\" if you want no bonuses and favorite arms.",
+        "en": "Classes bonuses and Specialty weapons bonuses are automatically inclueded in calculation. Select \"none\" if you want no bonuses and Specialty weapons.",
         "ja": "ジョブごとのボーナス等は自動で反映されます。得意武器補正などを反映したくない場合\"なし\"を選択して下さい。",
         "zh": "不同职业的Bonus会自动反映。不想让得意武器补正之类反映出的话请选择\"无\"。",
 	},
@@ -717,7 +717,7 @@ var multiLangData = {
         "zh": "Chain数",
     },
     "チェイン数説明": {
-        "en": "Input the number of Ougi Chain. (1~4)",
+        "en": "Input the number of C.A. Chain. (1~4)",
         "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 → 0倍\n 2 → 1.25倍\n 3 → 1.33…倍\n 4 → 1.5倍",
         "zh": "设定Chain数(Chain Burst的系数会变化)",
     },
@@ -752,7 +752,7 @@ var multiLangData = {
         "zh": "弓",
     },
     "剣": {
-        "en": "Sabre",
+        "en": "Sword",
         "ja": "剣",
         "zh": "剑",
     },
@@ -762,7 +762,7 @@ var multiLangData = {
         "zh": "短剑",
     },
     "格闘": {
-        "en": "Melee",
+        "en": "Melee", //a.k.a: Fist
         "ja": "格闘",
         "zh": "格斗",
     },
@@ -772,7 +772,7 @@ var multiLangData = {
         "zh": "枪",
     },
     "楽器": {
-        "en": "Harp",
+        "en": "Music",
         "ja": "楽器",
         "zh": "乐器",
     },
@@ -782,7 +782,7 @@ var multiLangData = {
         "zh": "杖",
     },
     "得意": {
-        "en": "Specialty",
+        "en": "Specialty", //a.k.a: Favorite
         "ja": "得意",
         "zh": "得意",
     },
@@ -1097,12 +1097,12 @@ var multiLangData = {
         "zh": "单次攻击伤害(考虑连击技巧)",
     },
     "ターン毎の奥義ゲージ上昇量": {
-        "en": "Ougi Gage Rise per Turn",
+        "en": "Charge Bar Rise per Turn",
         "ja": "ターン毎の\n奥義ゲージ上昇量",
         "zh": "每回合奥义槽上升量",
     },
     "奥義ダメージUP": {
-        "en": "Ougi Damage",
+        "en": "C.A. DMG", //a.k.a: ougiDamage
         "ja": "奥義ダメージUP",
         "zh": "奥义伤害",
     },
@@ -1112,7 +1112,7 @@ var multiLangData = {
         "zh": "Chain Burst",
     },
     "予想ターン毎ダメージ": {
-        "en": "Exp. Damage per Turn",
+        "en": "Exp. Damage per Turn", //a.k.a: expectedCycleDamagePerTurn
         "ja": "予想ターンダメージ",
         "zh": "期望DPT",
     },
@@ -1252,7 +1252,7 @@ var multiLangData = {
         "zh": "属性(经过回合)",
     },
     "神石系": {
-        "en": "Primal ",
+        "en": "Primal",
         "ja": "神石系",
         "zh": "神石系",
     },
@@ -1457,12 +1457,12 @@ var multiLangData = {
         "zh": "TA加护",
     },
     "奥義ダメージアップ": {
-        "en": "Ougi Damage UP",
+        "en": "C.A. Damage UP", //a.k.a: OugiDamageUP
         "ja": "奥義ダメージUP",
         "zh": "奥义伤害上升",
     },
     "与ダメージ加護": {
-        "en": "Boost Damage",
+        "en": "Boost Damage", //a.k.a: tenshiDamageUP
         "ja": "与ダメ加護",
         "zh": "Boost Damage",
     },
@@ -1472,7 +1472,7 @@ var multiLangData = {
         "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
     "ダメージ上限加護": {
-        "en": "Damage cap",
+        "en": "Damage cap", //a.k.a: damageLimit
         "ja": "ダメージ上限加護",
         "zh": "Damage cap",
     },
@@ -1482,7 +1482,7 @@ var multiLangData = {
         "zh": "Increases the damage cap. Primarch summons(5~10%) etc.",
     },
     "奥義ダメージ": {
-        "en": "Ougi Damage",
+        "en": "C.A. Damage", //a.k.a: ougiDamage
         "ja": "奥義ダメージ",
         "zh": "奥義ダメージ",
     },
@@ -1553,7 +1553,7 @@ var multiLangData = {
         "zh": "性別",
     },
     "得意武器": {
-        "en": "Favorite",
+        "en": "Specialty weapons",
         "ja": "得意武器",
         "zh": "得意武器",
     },
@@ -1644,17 +1644,17 @@ var multiLangData = {
         "zh": "Erune",
     },
     "ドラフ": {
-        "en": "Doraf",
+        "en": "Draph", //a.k.a: Doraf
         "ja": "ドラフ",
-        "zh": "Doraf",
+        "zh": "Draph",
     },
     "ハーヴィン": {
-        "en": "Havin",
+        "en": "Harvin", //a.k.a: Havin
         "ja": "ハーヴィン",
-        "zh": "Havin",
+        "zh": "Harvin",
     },
     "星晶獣": {
-        "en": "Primal",
+        "en": "Seisho",
         "ja": "星晶獣",
         "zh": "星晶兽",
     },
@@ -2637,27 +2637,27 @@ var multiLangData = {
         "zh": "天司的祝福III",
     },
     "通常上限UP(2.5%)": {
-        "en": "Damage Limit UP(2.5%)",
+        "en": "Damage Cap UP(2.5%)",
         "ja": "通常上限UP(2.5%)",
         "zh": "通常上限UP(2.5%)",
     },
     "通常上限UP(7.0%)": {
-        "en": "Damage Limit UP(7.0%)",
+        "en": "Damage Cap UP(7.0%)",
         "ja": "通常上限UP(7.0%)",
         "zh": "通常上限UP(7.0%)",
     },
     "通常上限UP(10%)": {
-        "en": "Damage Limit UP(10%)",
+        "en": "Damage Cap UP(10%)", //a.k.a:damageLimit
         "ja": "通常上限UP(10%)",
         "zh": "通常上限UP(10%)",
     },
     "奥義上限UP(10%)": {
-        "en": "Ougi Limit UP(10%)",
+        "en": "C.A. Cap UP(10%)",  //a.k.a:ougiDamageLimit
         "ja": "奥義上限UP(10%)",
         "zh": "奥义上限UP(10%)",
     },
     "奥義上限UP(イクシード)": {
-        "en": "Ougi Limit UP (Exceed)",
+        "en": "C.A. Cap UP (Exceed)",  //a.k.a:ougiDamageLimitByExceed
         "ja": "奥義上限UP(イクシード)",
         "zh": "奥义上限UP(Exceed)",
     },
@@ -2724,7 +2724,7 @@ var multiLangData = {
         "zh": "王道: 水的二手",
     },
     "邪道: 通常上限UP(7.0%)": {
-        "en": "Damage Limit UP(7.0%)",
+        "en": "Damage Cap UP(7.0%)",
         "ja": "邪道: 通常上限UP(7.0%)",
         "zh": "邪道: 通常上限UP(7.0%)",
 	},
@@ -2862,12 +2862,12 @@ var multiLangData = {
         "zh": "通常攻击",
     },
     "奥義": {
-        "en": "Ougi",
+        "en": "C.A.",
         "ja": "奥義",
         "zh": "奥义",
     },
     "奥義(ダメージ無し)": {
-        "en": "Ougi w/o damage",
+        "en": "C.A. w/o damage",
         "ja": "奥義(ダメージ無し)",
         "zh": "奥义(无伤害)",
     },
@@ -2958,7 +2958,7 @@ var multiLangData = {
         "zh": "天眼阵(3T)",
     },
     "他心陣と奥義": {
-        "en": "Splitting Spirit and Ougi",
+        "en": "Splitting Spirit and C.A.",
         "ja": "他心陣と奥義",
         "zh": "他心阵和奥义",
     },
