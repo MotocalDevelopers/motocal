@@ -374,7 +374,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     for (var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind];
 
-        // Calculation of various attack coefficients
+        // Calculation of various attack coefficients  各種攻刃係数の計算
         var magnaCoeff = 1.0 + (0.01 * totals[key]["magna"] + 0.01 * totals[key]["magnaSoka"]) * totalSummon["magna"];
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"] * totalSummon["magna"]);
         var magnaKonshinCoeff = 1.0 + 0.01 * (totals[key]["magnaKonshin"] * totalSummon["magna"]);
@@ -390,15 +390,18 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         normalCoeff += totalSummon["chara"];
         normalCoeff += buff["normal"];
         normalCoeff += totals[key]["normalBuff"];
-        // Add pre-emptive to normal attack
+        // Add pre-emptive to normal attack 先制を通常攻刃へ加算
         normalCoeff += 0.01 * totals[key]["sensei"];
+        if (key == "Djeeta") {
+            normalCoeff += 0.01 * totals["Djeeta"]["job"].kouzinBonus;
+        }
 
         var normalHaisuiCoeff = 1.0 + 0.01 * totals[key]["normalHaisui"] * totalSummon["zeus"];
         normalHaisuiCoeff += 0.01 * totals[key]["normalOtherHaisui"];
 
         var normalKonshinCoeff = 1.0 + 0.01 * totals[key]["normalKonshin"] * totalSummon["zeus"];
         normalKonshinCoeff += 0.01 * totals[key]["normalOtherKonshin"];
-        // Also calculate the attribute (elapsed turn) with the maximum value
+        // Also calculate the attribute (elapsed turn) with the maximum value 属性(経過ターン)も最大値で計算する
         var elementCoeff = totals[key]["typeBonus"];
         elementCoeff += totalSummon["element"] - 1.0;
         elementCoeff += totalSummon["elementTurn"] - 1.0;
