@@ -37,7 +37,8 @@
     "lint:fix": "eslint webpack.config.js src/* --fix",
     "production-build": "cross-env NODE_ENV=production webpack",
     "watch-dev": "webpack --progress --watch",
-    "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch"
+    "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch",
+    "storybook": "start-storybook -p 9009 -s ./  --ci"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,12 @@
   "author": "hoshimi",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-centered": "^5.0.11",
+    "@storybook/addon-knobs": "^5.0.11",
+    "@storybook/addon-viewport": "^5.0.11",
+    "@storybook/cli": "^5.0.11",
+    "@storybook/react": "^5.0.11",
     "autoprefixer": "8.6.0",
     "babelify": "8.0.0",
     "browserify": "16.2.3",
