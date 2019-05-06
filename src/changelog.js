@@ -14,8 +14,6 @@ var {Button} = require('react-bootstrap');
         super(props);
 
         this.state = {
-            start: props.start,
-            step: props.step,
             length: props.length,
         };
 
@@ -26,9 +24,7 @@ var {Button} = require('react-bootstrap');
      * Increment length count for showing more children.
      */
     handleClick() {
-        const {props: {children}, state: {start, step, length}} = this;
-
-        console.log("CLICKED", start, step, length)
+        const {props: {children, start, step}, state: {length}} = this;
 
         this.setState({
             length: Math.min(children.length, length+step),
@@ -39,8 +35,8 @@ var {Button} = require('react-bootstrap');
      * Renders the top {step} nodes and show-more button.
      */
     render() {
-        const {start, step, length} = this.state;
-        const {className, buttonText, children} = this.props;
+        const {state: {length},
+               props: {start, step, className, buttonText, children}} = this;
         const text = buttonText.replace('{step}', step);
 
         return [
