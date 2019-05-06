@@ -145,9 +145,12 @@
 
     .dataControl .systemButtonGroup {
         width: 100%;
+        text-align: center;
     }
     .dataControl .systemButton {
+        /*
         width: calc(100%/3);
+        */
     }
 
     .tweet .tweetButton {

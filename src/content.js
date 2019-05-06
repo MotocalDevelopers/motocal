@@ -543,6 +543,44 @@ var Sys = CreateClass({
             alert("削除するデータを選択して下さい。")
         }
     },
+    onSubmitPartialLoad: function(key, e) {
+        e.preventDefault();
+        if (this.state.selectedData != '') {
+            var newData = JSON.parse(JSON.stringify(this.state.storedData[this.state.selectedData]));
+            var oldData = this.props.data;
+            var dataForLoad = {
+                profile: oldData.profile,
+                summon: oldData.summon,
+                chara: oldData.chara,
+                armlist: oldData.armlist,
+                simulator: oldData.simulator,
+                summonNum: oldData.summonNum,
+                charaNum: oldData.charaNum,
+                armNum: oldData.armNum,
+            };
+
+            dataForLoad[key] = newData[key];
+
+            switch (key) {
+            case 'profile':
+                break;
+            case 'summon':
+                dataForLoad.summonNum = newData.summonNum;
+                break;
+            case 'chara':
+                dataForLoad.charaNum = newData.charaNum;
+                break;
+            case 'armlist':
+                dataForLoad.armNum = newData.armNum;
+                break;
+            }
+
+            this.setState({dataName: this.state.selectedData});
+            this.props.onLoadNewData(this.state.selectedData, dataForLoad)
+        } else {
+            alert("読み込むデータを選択して下さい。")
+        }
+    },
     onSubmitLoad: function (e) {
         e.preventDefault();
         if (this.state.selectedData != '') {
@@ -630,6 +668,12 @@ var Sys = CreateClass({
                             onClick={this.onSubmitSave}>{intl.translate("ブラウザに保存", locale)}</Button>
                     <Button bsStyle="primary" className="systemButton"
                             onClick={this.onSubmitLoad}>{intl.translate("ブラウザデータ読込", locale)}</Button>
+                    <DropdownButton title="&nbsp;" bsStyle="primary" className="systemButton" id="partial-load-menu">
+                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'profile')}>Load Djeeta</MenuItem>
+                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'summon')}>Load Summon</MenuItem>
+                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'chara')}>Load Charactor</MenuItem>
+                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'armlist')}>Load Weapon</MenuItem>
+                    </DropdownButton>
                     <Button bsStyle="primary" className="systemButton"
                             onClick={this.onSubmitRemove}>{intl.translate("削除", locale)}</Button>
                 </ButtonGroup>
