@@ -71,6 +71,7 @@ var Profile = CreateClass({
             additionalDamageBuff: 0,
             damageLimitBuff: 0.0,
             ougiDamageLimitBuff: 0.0,
+            ougiGageUpOugiBuff: 0.0,
             hpBuff: 0,
             daBuff: 0,
             taBuff: 0,
@@ -553,6 +554,20 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇奥義説明", locale)}
+                                     id={"tooltip-ougi-gage-up-ougi-buff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("奥義ゲージ上昇奥義", locale)}</th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.ougiGageUpOugiBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "ougiGageUpOugiBuff")}> {selector.ougiGageUpOugiBuffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
