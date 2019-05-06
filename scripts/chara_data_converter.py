@@ -96,7 +96,7 @@ supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
 
-# Patching
+# Patching DA TA
 patching = OrderedDict()
 
 # Consecutive atk rate from すんどめ侍さん
@@ -272,6 +272,138 @@ patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 ### SR
 patching["プレデター"] = {"DA": 1000.0, "TA": 3.0}
 
+# Patching ougi ratio https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968
+patchingOugiRatio = OrderedDict()
+
+defaultOugiRatio = {
+    "R": 3.5,
+    "SR": 3.5,
+    "SSR": 4.5,
+}
+
+## SSR(Lv100) https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/article/show/22824
+patchingOugiRatio["レディ・グレイ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["バザラガ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ナルメア"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ヴィーラ(SSR)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ジャンヌダルク"] = {"ougiRatio": 5.0}
+patchingOugiRatio["セルエル"] = {"ougiRatio": 5.0}
+patchingOugiRatio["サルナーン"] = {"ougiRatio": 5.0}
+patchingOugiRatio["アーミラ(SSR)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["レナ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ネツァワルピリ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ガウェイン"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ハレゼナ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ジークフリート"] = {"ougiRatio": 5.0}
+patchingOugiRatio["カリオストロ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["アルルメイヤ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ランスロット(SSR)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["シルヴァ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["シャルロッテ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["イングヴェイ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["アルタイル"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ユエル"] = {"ougiRatio": 5.0}
+patchingOugiRatio["マギサ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["パーシヴァル"] = {"ougiRatio": 5.0}
+patchingOugiRatio["スカーサハ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ガンダゴウザ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["メーテラ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["アルベール"] = {"ougiRatio": 5.0}
+patchingOugiRatio["桜内梨子＆高海千歌＆渡辺 曜"] = {"ougiRatio": 5.0}
+patchingOugiRatio["サンダルフォン"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ヴァンピィ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["リリィ"] = {"ougiRatio": 5.0}
+
+### SSR(Guardian Deity(十二神将) Lv100)
+patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["アニラ"] = {"ougiRatio": 5.5}
+
+### SSR(Guardian Deity(十二神将))
+patchingOugiRatio["クビラ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["マキラ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ヴァジラ"] = {"ougiRatio": 5.0}
+
+### SSR(The Eternals(十天衆) Lv100)
+patchingOugiRatio["[最終]ウーノ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]ソーン"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]サラーサ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]カトル"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]フュンフ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]シス"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]シエテ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]オクトー"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]ニオ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["[最終]エッセル"] = {"ougiRatio": 5.0}
+
+### SSR(Other)
+patchingOugiRatio["アギエルバ"] = {"ougiRatio": 4.7}
+patchingOugiRatio["イオ(水着ver)"] = {"ougiRatio": 4.7}
+patchingOugiRatio["レ・フィーエ(水着ver)"] = {"ougiRatio": 4.7}
+patchingOugiRatio["ソフィア"] = {"ougiRatio": 4.7}
+patchingOugiRatio["シャルロッテ(ハロウィンver)"] = {"ougiRatio": 4.7}
+patchingOugiRatio["ロゼッタ(クリスマスver)"] = {"ougiRatio": 4.7}
+patchingOugiRatio["サラ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
+
+### SSR(Not Ougi)
+patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
+patchingOugiRatio["コルワ(水着ver)"] = {"ougiRatio": 0.0}
+patchingOugiRatio["コッコロ"] = {"ougiRatio": 0.0}
+patchingOugiRatio["ディアンサ(水着ver)"] = {"ougiRatio": 0.0}
+patchingOugiRatio["木之本桜"] = {"ougiRatio": 0.0}
+
+## SR
+### SR(Lv90)
+patchingOugiRatio["ルシウス"] = {"ougiRatio": 4.0}
+patchingOugiRatio["リタ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ダヌア"] = {"ougiRatio": 4.0}
+patchingOugiRatio["城ヶ崎美嘉"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ウィル"] = {"ougiRatio": 4.0}
+patchingOugiRatio["フェザー"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ノア"] = {"ougiRatio": 4.0}
+patchingOugiRatio["島村卯月"] = {"ougiRatio": 4.0}
+patchingOugiRatio["アーミラ(SR)"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ミュオン"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ヘルナル"] = {"ougiRatio": 4.0}
+patchingOugiRatio["セレフィラ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["スーテラ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["双葉杏"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ソリッズ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ガイーヌ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["オイゲン"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ローアイン"] = {"ougiRatio": 4.0}
+patchingOugiRatio["渋谷凛"] = {"ougiRatio": 4.0}
+patchingOugiRatio["エジェリー"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ウラムヌラン"] = {"ougiRatio": 4.0}
+patchingOugiRatio["イオ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["アンジェ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ラカム"] = {"ougiRatio": 4.0}
+patchingOugiRatio["本田未央"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ノイシュ(火属性ver)"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ティナ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["城ヶ崎莉嘉"] = {"ougiRatio": 4.0}
+
+
+### SR(Other)
+patchingOugiRatio["カタリナ(水着ver)"] = {"ougiRatio": 3.7}
+patchingOugiRatio["ヘルナル(水着ver)"] = {"ougiRatio": 3.7}
+patchingOugiRatio["アンジェ(ハロウィンver)"] = {"ougiRatio": 3.7}
+patchingOugiRatio["アレク"] = {"ougiRatio": 4.2}
+patchingOugiRatio["ルリア"] = {"ougiRatio": 6.0}
+
+### SR(Not Ougi)
+patchingOugiRatio["ヤイア"] = {"ougiRatio": 0.0}
+patchingOugiRatio["ローアイン"] = {"ougiRatio": 0.0}
+patchingOugiRatio["ディアンサ"] = {"ougiRatio": 0.0}
+patchingOugiRatio["一ノ瀬志希"] = {"ougiRatio": 0.0}
+patchingOugiRatio["クロエ(水着ver)"] = {"ougiRatio": 0.0}
+patchingOugiRatio["ソフィア(SR)"] = {"ougiRatio": 0.0}
+patchingOugiRatio["カルメリーナ(SR)"] = {"ougiRatio": 0.0}
+patchingOugiRatio["リルル(水着ver)"] = {"ougiRatio": 0.0}
+patchingOugiRatio["ルドミリア"] = {"ougiRatio": 0.0}
+
+
 ########################################################################################################################
 filename = inspect.getframeinfo(inspect.currentframe()).filename
 path = os.path.dirname(os.path.abspath(filename))
@@ -338,7 +470,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
     br_pattern = re.compile("(\w+)&br;(\w+)")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
     support_pattern3 = re.compile("([\W\w]+)&br;([\W\w]+)&br;([\W\w]+)")
-    name_pattern = re.compile("\[\[([\W\w]+?) \(")
+    name_pattern = re.compile("\[\[([\W\w]+?) \((S?S?R)\)")
 
     mycsv = csv.reader(open(csv_file_name, 'r', encoding="utf-8"), delimiter="|")
     for row in mycsv:
@@ -354,6 +486,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             m = name_pattern.search(row[2])
             if m:
                 name = m.group(1)
+                rare = m.group(2)    # <- "SSR", "SR", "R"
             else:
                 print("error")
                 name = "error"
@@ -415,6 +548,12 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             else:
                 newdict["baseDA"] = 7.0
                 newdict["baseTA"] = 3.0
+				
+            if newdict["name"] in patchingOugiRatio:
+                newdict["ougiRatio"] = patchingOugiRatio[newdict["name"]]["ougiRatio"]
+            else:
+                newdict["ougiRatio"] = defaultOugiRatio[rare]
+			
 
             newdict["imageURL"] = "./charaimgs/" + key
 

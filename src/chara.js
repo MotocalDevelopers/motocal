@@ -369,6 +369,7 @@ var Chara = CreateClass({
         newState["support"] = newchara.support;
         newState["support2"] = newchara.support2;
         newState["support3"] = newchara.support3;
+        newState["ougiRatio"] = newchara.ougiRatio;
 
         return newState;
     },
@@ -509,8 +510,8 @@ var Chara = CreateClass({
                     </tr>
                     <tr>
                         <th className="bg-primary">{intl.translate("奥義倍率", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.ougiRatio}
-                                         onChange={this.handleSelectEvent.bind(this, "ougiRatio")}>{selector.ougiRatio}</FormControl>
+                        <td><FormControl type="number" min="0" step="0.5" max="20" value={this.state.ougiRatio}
+                                         onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "ougiRatio")}/>
                         </td>
                     </tr>
                     <tr>
