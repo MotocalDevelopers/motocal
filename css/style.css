@@ -1,22 +1,22 @@
 @media screen and (min-device-width: 769px) {
     body {
-        font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Meiryo UI', 'メイリオ', 'Meiryo', Verdana, 'ＭＳ Ｐゴシック', sans-serif;
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
         margin: 0 auto;
         font-size: 9pt;
         font-weight: bold;
         padding-bottom: 10px;
-        width: 99%;
+        width : 99%;
         height: 100%;
     }
 
     [draggable] {
-        -moz-user-select: none;
-        -khtml-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;
-        /* Required to make elements draggable in old WebKit */
-        -khtml-user-drag: element;
-        -webkit-user-drag: element;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      /* Required to make elements draggable in old WebKit */
+      -khtml-user-drag: element;
+      -webkit-user-drag: element;
     }
 
     hr {
@@ -34,12 +34,12 @@
     }
 
     input, textarea {
-        font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Meiryo UI', 'メイリオ', 'Meiryo', Verdana, 'ＭＳ Ｐゴシック', sans-serif;
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
         font-weight: bold;
     }
 
     select, option {
-        font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Meiryo UI', 'メイリオ', 'Meiryo', Verdana, 'ＭＳ Ｐゴシック', sans-serif;
+        font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Meiryo UI','メイリオ','Meiryo',Verdana,'ＭＳ Ｐゴシック',sans-serif;
         font-weight: bold;
         font-size: 9pt;
         color: #000;
@@ -80,8 +80,8 @@
         height: 95%;
         float: left;
         overflow: auto;
-        border-right: 1px solid #116;
-        padding-right: 3px;
+        border-right:1px solid #116;
+        padding-right:3px;
         overflow-x: visible;
         overflow-y: visible;
     }
@@ -138,16 +138,15 @@
         overflow: auto;
         word-wrap: break-word;
         margin: 0;
-        border-bottom: 2px solid #258;
+        border-bottom:2px solid #258;
         padding: 3px;
     }
 
     .dataControl .systemButtonGroup {
         width: 100%;
     }
-
     .dataControl .systemButton {
-        width: calc(100% / 3);
+        width: calc(100%/3);
     }
 
     .tweet .tweetButton {
@@ -161,7 +160,6 @@
     .profile {
         width: 100%;
     }
-
     .input-suggest {
         color: #ffff00;
     }
@@ -175,61 +173,61 @@
     }
 
     .col-bordered {
-        border: 1px solid rgb(59, 34, 136);
-        border-radius: 5px;
-        padding: 2px;
-        margin-top: 3px;
-        margin-bottom: 3px;
+      border:1px solid #258;
+      border-color: rgb(59, 34, 136);
+      border-radius: 5px;
+      padding: 2px;
+      margin-top: 3px;
+      margin-bottom: 3px;
     }
 
     .col-no-bordered {
-        padding: 2px;
-        margin-top: 3px;
-        margin-bottom: 3px;
+      padding: 2px;
+      margin-top: 3px;
+      margin-bottom: 3px;
     }
 
-    .nav > li > a {
-        padding: 5px 0;
+    .nav>li>a {
+      padding: 5px 0;
     }
 
-    .navbar-nav > li > a {
-        line-height: 40px;
+    .navbar-nav>li>a {
+      line-height: 40px;
     }
 
-    thead.result > tr > th {
-        color: rgb(255, 255, 255);
-        background: rgb(59, 34, 136);
-        background: -moz-linear-gradient(rgba(59, 34, 136, 0.85), rgba(59, 34, 136, 0.9) 50%);
-        background: -webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(59, 34, 136, 0.85)), to(rgba(59, 34, 136, 0.9)));
-        border-color: rgb(59, 34, 136);
-        min-width: 60px;
-        max-width: 150px;
-        font-size: 11pt;
-        text-align: center;
+    thead.result>tr>th {
+      color: rgb(255, 255, 255);
+      background: rgb(59, 34, 136);
+      background:-moz-linear-gradient(rgba(59,34,136,0.85), rgba(59,34,136,0.9) 50%);
+      background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(59,34,136,0.85)), to(rgba(59,34,136,0.9)));
+      border-color: rgb(59, 34, 136);
+      min-width: 60px;
+      max-width: 150px;
+      font-size: 11pt;
+      text-align: center;
     }
 
-    tbody.result > tr {
-        border-top: 1px solid rgb(59, 34, 136);
+    tbody.result>tr {
+      border-top: 1px solid rgb(59, 34, 136);
     }
 
-    tbody.result > tr > td {
-        min-width: 60px;
-        max-width: 90px;
-        vertical-align: middle;
-        font-size: 11pt;
-        text-align: center;
+    tbody.result>tr>td {
+      min-width: 60px;
+      max-width: 90px;
+      vertical-align: middle;
+      font-size: 11pt;
+      text-align: center;
     }
 
-    tbody.result > tr > td:first-child {
-        border-left: 1px solid rgb(59, 34, 136);
+    tbody.result>tr>td:first-child {
+      border-left: 1px solid rgb(59, 34, 136);
+    }
+    tbody.result>tr>td:last-child {
+      border-right: 1px solid rgb(59, 34, 136);
     }
 
-    tbody.result > tr > td:last-child {
-        border-right: 1px solid rgb(59, 34, 136);
-    }
-
-    tbody.result > tr:last-child > td {
-        border-bottom: 1px solid rgb(59, 34, 136);
+    tbody.result>tr:last-child>td {
+      border-bottom: 1px solid rgb(59, 34, 136);
     }
 
     div.result {
@@ -255,15 +253,15 @@
     }
 
     ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         border-radius: 5px;
     }
 
     ::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
     }
 
     .form-control {
@@ -283,7 +281,7 @@
         padding-left: 10px;
     }
 
-    .checkbox-inline.autoupdate {
+    .checkbox-inline.autoupdate{
         display: inline-block;
     }
 
@@ -304,9 +302,8 @@
     .addRemoveButtonGroup {
         width: 100%;
     }
-
     .addRemoveButton {
-        width: calc(100% / 2);
+        width: calc(100%/2);
     }
 
     /* armPresets */
@@ -334,12 +331,12 @@
     }
 
     .onearm {
-        width: calc(100% / 3 - 2px);
+        width: calc(100%/3 - 2px);
         float: left;
         display: inline;
         overflow: auto;
         margin: 4px 1px;
-        border: 1px solid #258;
+        border:1px solid #258;
         border-radius: 2px;
         padding: 3px;
         font-size: 7pt;
@@ -376,12 +373,12 @@
     }
 
     .onechara {
-        width: calc(100% / 3 - 2px);
+        width: calc(100%/3 - 2px);
         float: left;
         display: inline;
         overflow: auto;
         margin: 4px 1px;
-        border: 1px solid #258;
+        border:1px solid #258;
         border-radius: 2px;
         padding: 3px;
         font-size: 7pt;
@@ -403,7 +400,7 @@
         width: 500px;
     }
 
-    .presetsConsiderNumber.fade.in.modal .modal-dialog .form-control {
+    .presetsConsiderNumber.fade.in.modal .modal-dialog .form-control{
         width: 30.3%;
         margin-left: 1.5%;
         margin-right: 1.5%;
@@ -493,7 +490,7 @@
     }
 
     .simulatorOperationButton {
-        width: calc(142px / 4);
+        width: calc(142px/4);
     }
 
     .simulator-droppable {
@@ -502,14 +499,13 @@
     }
 
     .display-checked {
-        background: #bbd4ff;
-        transition-duration: 0ms;
+      background: #bbd4ff;
+      transition-duration: 0ms;
     }
-
     .display-unchecked {
-        background: #FFFFFF;
-        cursor: pointer;
-        transition-duration: 0ms;
+      background: #FFFFFF;
+      cursor:pointer;
+      transition-duration: 0ms;
     }
 
     /* bootstrap custom themes */
