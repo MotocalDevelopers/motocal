@@ -2571,6 +2571,11 @@ var multiLangData = {
         "ja": "奥義上限UP(10%)",
         "zh": "奥义上限UP(10%)",
     },
+    "黄龍槍 (メイン装備時)": {
+        "en": "Huanglong spear (main)",
+        "ja": "黄龍槍 (メイン装備時)",
+        "zh": "Huanglong spear (main)",
+    },
     "奥義上限UP(イクシード)": {
         "en": "Ougi Limit UP (Exceed)",
         "ja": "奥義上限UP(イクシード)",
