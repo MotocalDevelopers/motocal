@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -107,4 +107,4 @@ module.exports = {
      port: 8000
   },
   mode: process.env.NODE_ENV || 'development'
-}
+};
