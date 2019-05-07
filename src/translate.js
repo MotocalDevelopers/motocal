@@ -2918,6 +2918,11 @@ var multiLangData = {
         "ja": "更新履歴",
         "zh": "更新履歴",
     },
+    "次の{step}件を表示": {
+        "en": "Show next {step} logs",
+        "ja": "次の{step}件を表示",
+        "zh": "Show next {step} logs",
+    },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",
         "ja": "2017/01/14: 英語対応",
