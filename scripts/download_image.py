@@ -15,6 +15,8 @@ Assume directory layouts
     * ./scripts/download_image.py This script
 
 """
+from concurrent.futures import as_completed
+from concurrent.futures.thread import ThreadPoolExecutor
 from functools import partial
 from logging import error, info
 from optparse import OptionParser
@@ -22,7 +24,6 @@ from os import makedirs
 from os.path import basename, abspath, dirname, join, isdir, isfile, exists
 from sys import stdout, argv
 from urllib.request import urlretrieve
-from concurrent.futures import ThreadPoolExecutor
 
 _readlines = partial(map, str.rstrip)
 
@@ -123,21 +124,22 @@ def main(argvs):
             if override or not exists(_path):
                 yield _url, _path
 
-    def count_iter(iterable):
-        """
-        count number of elements in an iterator.
-        """
-        return sum(1 for _ in iterable)
+    def download_image(durl, dpath, num):
+        if not options.dry_run:
+            urlretrieve(durl, dpath)
 
-    with open(filename, encoding="utf-8") as stream:
-        total = count_iter(scan_download(stream))
-
-        stream.seek(0)
-
-        for num, (url, path) in enumerate(scan_download(stream), start=1):
-            report(num, total, ''.join([url, path]))
-            if not options.dry_run:
-                urlretrieve(url, path)
+    with open(filename, encoding="utf-8", mode='r') as stream:
+        # CPU wise copying to list is cheaper as we need to load all items into memory in order to count them anyways
+        items = list(scan_download(stream))
+        total = len(items)
+        if total > 0:
+            with ThreadPoolExecutor(max_workers=options.workers) as executor:
+                future_to_image = {executor.submit(download_image, url, path, num): (url, path, num) for
+                                   num, (url, path) in
+                                   enumerate(items, start=1)}
+                for future in as_completed(future_to_image):
+                    url, path, num = future_to_image[future]
+                    report(num, total, path if options.reporter == 'progress' else url)
 
 
 def create_parser():
