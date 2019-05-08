@@ -36,7 +36,8 @@ SAVE_DIR = {
     'chara': '../charaImgs',
 }
 
-def progress_reporter(count, total, url='', path=''):
+
+def progress_reporter(count, total, path=''):
     bar_len = 45
     filled_len = int(round(bar_len * count / float(total)))
     status = os.path.basename(path)
@@ -48,8 +49,8 @@ def progress_reporter(count, total, url='', path=''):
     sys.stdout.flush()
 
 
-def plain_reporter(count, total, url='', path=''):
-    "report plain text"
+def plain_reporter(count, total, url=''):
+    """report plain text"""
     print('[{:4}/{:4}] Download {}'.format(count, total, url))
 
 
@@ -68,7 +69,7 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="p
       * site: (wiki|game)
       * save_dir: (./imgs|./charaimgs)
       * dry_run: -d for enabled. (must be set as the 4th argument)
-                 print url list without downlaod.
+                 print _url list without downlaod.
     """
 
     script_dir = os.path.abspath(os.path.dirname(__file__))
@@ -84,15 +85,15 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="p
         filename = os.path.join(txt_source, TXT_SOURCE[key])
         report = REPORT_TYPE.get(report_type, progress_reporter)
     except KeyError:
-        if not target in {'arm', 'chara'}:
+        if target not in {'arm', 'chara'}:
             logging.error("target argument must be 'arm' or 'chara'")
-        if not site in {'wiki', 'game'}:
+        if site not in {'wiki', 'game'}:
             logging.error("site argument must be 'wiki' or 'game'")
         print(main.__doc__, file=sys.stderr)
         return
 
     if not os.path.isfile(filename):
-        logging.error("No url list file found: %s", filename)
+        logging.error("No _url list file found: %s", filename)
         return
 
     if not save_dir:
@@ -104,26 +105,25 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="p
         logging.info("Save directory is created: %s", save_dir)
         os.makedirs(save_dir)
 
-
-    def parse_file(stream, separator=separator):
+    def parse_file(_stream, _separator=separator):
         """
-        Parse file line and return pair of (url, a local save path)
+        Parse file line and return pair of (_url, a local save _path)
         """
-        for url in _readlines(stream):
-            name = url.split(separator)[-1]
-            path = os.path.abspath(os.path.join(save_dir, name))
-            yield url, path
+        for _url in _readlines(_stream):
+            name = _url.split(_separator)[-1]
+            _path = os.path.abspath(os.path.join(save_dir, name))
+            yield _url, _path
 
-    def scan_download(stream, override=False):
+    def scan_download(_stream, override=False):
         """
         Filtering non-exists files
 
         NOTE: `override` flag is currently unused.
         pass this param if implement force download option in future.
         """
-        for url, path in parse_file(stream):
-            if override or not os.path.exists(path):
-                yield url, path
+        for _url, _path in parse_file(_stream):
+            if override or not os.path.exists(_path):
+                yield _url, _path
 
     def count_iter(iterable):
         """
@@ -131,14 +131,13 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="p
         """
         return sum(1 for _ in iterable)
 
-
     with open(filename, encoding="utf-8") as stream:
         total = count_iter(scan_download(stream))
 
         stream.seek(0)
 
         for num, (url, path) in enumerate(scan_download(stream), start=1):
-            report(num, total, url, path)
+            report(num, total, ''.join([url, path]))
             if not dry_run:
                 urlretrieve(url, path)
 
