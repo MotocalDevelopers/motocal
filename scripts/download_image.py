@@ -15,27 +15,26 @@ Assume directory layouts
     * ./scripts/download_image.py This script
 
 """
-import sys
+import functools
+import logging as log
+import os.path as op
 from concurrent.futures import as_completed
 from concurrent.futures.thread import ThreadPoolExecutor
-from functools import partial
 from os import makedirs
-import os.path as op
-import logging as log
 from urllib.request import urlretrieve
 
-_readlines = partial(map, str.rstrip)
+read_lines = functools.partial(map, str.rstrip)
 
 TXT_SOURCE = {
-    'arm-wiki': "armImageWikiURLList.txt",
-    'chara-wiki': "charaImageWikiURLList.txt",
-    'arm-game': "armImageGameURLList.txt",
-    'chara-game': "charaImageGameURLList.txt",
+        'arm-wiki': "armImageWikiURLList.txt",
+        'chara-wiki': "charaImageWikiURLList.txt",
+        'arm-game': "armImageGameURLList.txt",
+        'chara-game': "charaImageGameURLList.txt",
 }
 
 SAVE_DIR = {
-    'arm': '../imgs',
-    'chara': '../charaImgs',
+        'arm': '../imgs',
+        'chara': '../charaImgs',
 }
 
 
@@ -48,13 +47,13 @@ def progress_reporter(count, total, path='', multiline=True):
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     if not multiline:
         print(
-            '[%s] %s%s ...%20s' %
-            (bar,
-             percents,
-             '%',
-             status),
-            flush=True,
-            end='\r')
+                '[%s] %s%s ...%20s' %
+                (bar,
+                 percents,
+                 '%',
+                 status),
+                flush=True,
+                end='\r')
     else:
         print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
 
@@ -65,8 +64,8 @@ def plain_reporter(count, total, url=''):
 
 
 REPORT_TYPE = {
-    'progress': progress_reporter,
-    'plain': plain_reporter,
+        'progress': progress_reporter,
+        'plain': plain_reporter,
 }
 
 
@@ -112,46 +111,38 @@ def main(argv):
         log.info("Save directory is created: %s", options.save_dir)
         makedirs(options.save_dir)
 
-    def parse_file(_stream, _separator=separator):
+    def scan_file_for_download_list(file):
         """
-        Parse file line and return pair of (_url, a local save _path)
+        Finding and filtering existent files
         """
-        for _url in _readlines(_stream):
-            name = _url.split(_separator)[-1]
-            _path = op.abspath(op.join(options.save_dir, name))
-            yield _url, _path
+        url_list = []
+        for url in read_lines(file):
+            path = op.abspath(
+                    op.join(options.save_dir, url.split(separator)[-1]))
+            if options.overwrite or not op.exists(path):
+                url_list.append((url, path))
+        return url_list
 
-    def scan_download(_stream):
-        """
-        Filtering non-exists files
-
-        NOTE: `override` flag is currently unused.
-        pass this param if implement force download option in future.
-        """
-        for _url, _path in parse_file(_stream):
-            if options.overwrite or not op.exists(_path):
-                yield _url, _path
-
-    def download_image(durl, dpath):
+    def download_image(url, path):
         if not options.dry_run:
-            urlretrieve(durl, dpath)
+            urlretrieve(url, path)
 
-    with open(filename, encoding="utf-8", mode='r') as stream:
+    with open(filename, encoding="utf-8", mode='r') as url_list_file:
         # CPU wise copying to list is cheaper as we need to load all items into
         # memory in order to count them anyways
-        items = list(scan_download(stream))
+        items = scan_file_for_download_list(url_list_file)
         total = len(items)
         if total > 0:
             with ThreadPoolExecutor(max_workers=options.workers) as executor:
                 future_to_image = {
-                    executor.submit(
-                        download_image,
-                        url,
-                        path): (
-                        url,
-                        path) for (
-                        url,
-                        path) in items}
+                        executor.submit(
+                                download_image,
+                                url,
+                                path): (
+                                url,
+                                path) for (
+                                url,
+                                path) in items}
                 for num, future in enumerate(
                         as_completed(future_to_image), start=1):
                     url, path = future_to_image[future]
@@ -160,57 +151,59 @@ def main(argv):
                     else:
                         report_address = url
                     report(
-                        num, total, report_address)
+                            num, total, report_address)
 
 
 def create_parser():
     from optparse import OptionParser
     parser = OptionParser(usage=main.__doc__, add_help_option=False)
     parser.add_option(
-        '--target',
-        '-t',
-        action='store',
-        dest="target",
-        default="arm",
-        choices=list(
-            SAVE_DIR.keys()))
+            '--target',
+            '-t',
+            action='store',
+            dest="target",
+            default="arm",
+            choices=list(
+                    SAVE_DIR.keys()))
     parser.add_option(
-        '--site',
-        action='store',
-        dest="site",
-        default="wiki",
-        choices=[
-            "wiki",
-            "game"])
+            '--site',
+            action='store',
+            dest="site",
+            default="wiki",
+            choices=[
+                    "wiki",
+                    "game"])
     parser.add_option(
-        '--save_dir',
-        action='store',
-        dest="save_dir",
-        default=None)
+            '--save_dir',
+            action='store',
+            dest="save_dir",
+            default=None)
     parser.add_option('--dry-run', '-d', action='store_true', dest="dry_run")
     parser.add_option(
-        '--workers',
-        '-w',
-        action='store',
-        dest="workers",
-        type='int',
-        default=1)
+            '--workers',
+            '-w',
+            action='store',
+            dest="workers",
+            type='int',
+            default=1)
     parser.add_option(
-        '--reporter',
-        '-r',
-        action='store',
-        dest="reporter",
-        default='progress',
-        choices=[
-            'progress',
-            'plain'])
+            '--reporter',
+            '-r',
+            action='store',
+            dest="reporter",
+            default='progress',
+            choices=[
+                    'progress',
+                    'plain'])
     parser.add_option(
-        '--overwrite',
-        '-o',
-        action='store_true',
-        dest="overwrite")
+            '--overwrite',
+            '-o',
+            action='store_true',
+            dest="overwrite")
     return parser
 
 
 if __name__ == '__main__':
+    import sys
+
     main(sys.argv[1:])
