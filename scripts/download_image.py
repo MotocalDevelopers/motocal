@@ -63,9 +63,6 @@ def main(argv):
     Download image file in URL list.
     """
     parser = _create_parser()
-    if len(argv) == 1:  # if only 1 argument, it's the script name
-        parser.print_usage()
-        return
     options = parser.parse_args(argv)
     script_dir = os.path.abspath(os.path.dirname(__file__))
     txt_source = os.path.join(script_dir, "../txt_source")
