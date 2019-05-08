@@ -31,7 +31,7 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'arm-game': "armImageGameURLList.txt",
               'chara-game': "charaImageGameURLList.txt"}
 
-SAVE_DIR = {'arm': '../imgs', 'chara': '../charaImgs'}
+SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
 
 
 def _progress_reporter(count, total, path='', multiline=True):
