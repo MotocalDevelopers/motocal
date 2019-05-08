@@ -22,7 +22,7 @@ from logging import error, info
 from optparse import OptionParser
 from os import makedirs
 from os.path import basename, abspath, dirname, join, isdir, isfile, exists
-from sys import stdout, argv
+from sys import argv
 from urllib.request import urlretrieve
 
 _readlines = partial(map, str.rstrip)
