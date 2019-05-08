@@ -88,15 +88,23 @@ def main(argv):
         logging.info("Save directory is created: %s", options.directory)
         makedirs(options.directory)
 
+    def transform_wiki_url(file_name):
+        url = r'http://gbf-wiki.com/attach2/%s_%s.png'
+        return url % ('img'.encode('utf-8').hex().upper(),
+                      file_name.encode('utf-8').hex().upper())
+
     def scan_file_for_download_list(file):
         """
         Finding and filtering existent files
         """
         url_list = []
         for url in _read_lines(file):
+            name = url.split(separator)[-1]
             path = os.path.abspath(
-                    os.path.join(options.directory, url.split(separator)[-1]))
+                    os.path.join(options.directory, name))
             if options.force or not os.path.exists(path):
+                if options.site == "wiki":
+                    url = transform_wiki_url(name)
                 url_list.append((url, path))
         return url_list
 
