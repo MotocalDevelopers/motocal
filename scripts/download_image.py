@@ -15,14 +15,13 @@ Assume directory layouts
     * ./scripts/download_image.py This script
 
 """
+import sys
 from concurrent.futures import as_completed
 from concurrent.futures.thread import ThreadPoolExecutor
 from functools import partial
-from logging import error, info
-from optparse import OptionParser
 from os import makedirs
-from os.path import basename, abspath, dirname, join, isdir, isfile, exists
-from sys import argv
+import os.path as op
+import logging as log
 from urllib.request import urlretrieve
 
 _readlines = partial(map, str.rstrip)
@@ -44,7 +43,7 @@ def progress_reporter(count, total, path='', multiline=True):
     bar_len = 45
     filled_len = int(round(bar_len * count / float(total)))
 
-    status = basename(path)
+    status = op.basename(path)
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     if not multiline:
@@ -71,7 +70,7 @@ REPORT_TYPE = {
 }
 
 
-def main(argvs):
+def main(argv):
     """
     Download image file in URL list.
 
@@ -85,32 +84,32 @@ def main(argvs):
       * --overwrite -o: Redownloads all images even if it exists
     """
     parser = create_parser()
-    if len(argvs) == 1:  # if only 1 argument, it's the script name
+    if len(argv) == 1:  # if only 1 argument, it's the script name
         parser.print_usage()
         return
-    (options, args) = parser.parse_args(argvs)
-    script_dir = abspath(dirname(__file__))
-    txt_source = join(script_dir, "../txt_source")
+    (options, args) = parser.parse_args(argv)
+    script_dir = op.abspath(op.dirname(__file__))
+    txt_source = op.join(script_dir, "../txt_source")
 
-    if not isdir(txt_source):
-        error("no directory found: %s", txt_source)
+    if not op.isdir(txt_source):
+        log.error("no directory found: %s", txt_source)
         return
 
     key = "{}-{}".format(options.target, options.site)
     separator = {"wiki": "=", "game": "/"}[options.site]
-    filename = join(txt_source, TXT_SOURCE[key])
+    filename = op.join(txt_source, TXT_SOURCE[key])
     report = REPORT_TYPE.get(options.reporter, progress_reporter)
 
-    if not isfile(filename):
-        error("No url list file found: %s", filename)
+    if not op.isfile(filename):
+        log.error("No url list file found: %s", filename)
         return
 
     if not options.save_dir:
-        options.save_dir = join(script_dir, SAVE_DIR[options.target])
-        info("Set default save directory: %s", options.save_dir)
+        options.save_dir = op.join(script_dir, SAVE_DIR[options.target])
+        log.info("Set default save directory: %s", options.save_dir)
 
-    if not isdir(options.save_dir):
-        info("Save directory is created: %s", options.save_dir)
+    if not op.isdir(options.save_dir):
+        log.info("Save directory is created: %s", options.save_dir)
         makedirs(options.save_dir)
 
     def parse_file(_stream, _separator=separator):
@@ -119,7 +118,7 @@ def main(argvs):
         """
         for _url in _readlines(_stream):
             name = _url.split(_separator)[-1]
-            _path = abspath(join(options.save_dir, name))
+            _path = op.abspath(op.join(options.save_dir, name))
             yield _url, _path
 
     def scan_download(_stream):
@@ -130,7 +129,7 @@ def main(argvs):
         pass this param if implement force download option in future.
         """
         for _url, _path in parse_file(_stream):
-            if options.overwrite or not exists(_path):
+            if options.overwrite or not op.exists(_path):
                 yield _url, _path
 
     def download_image(durl, dpath):
@@ -165,6 +164,7 @@ def main(argvs):
 
 
 def create_parser():
+    from optparse import OptionParser
     parser = OptionParser(usage=main.__doc__, add_help_option=False)
     parser.add_option(
         '--target',
@@ -213,4 +213,4 @@ def create_parser():
 
 
 if __name__ == '__main__':
-    main(argv[1:])
+    main(sys.argv[1:])
