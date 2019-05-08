@@ -38,7 +38,9 @@
     "production-build": "cross-env NODE_ENV=production webpack",
     "watch-dev": "webpack --progress --watch",
     "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch",
-    "storybook": "start-storybook -p 9009 -s ./  --ci"
+    "storybook": "start-storybook -p 9009 -s ./  --ci",
+    "download:arm": "python3 ./scripts/download_image.py -t arm",
+    "download:chara": "python3 ./scripts/download_image.py -t chara"
   },
   "repository": {
     "type": "git",
