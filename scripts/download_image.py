@@ -48,7 +48,14 @@ def progress_reporter(count, total, path='', multiline=True):
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     if not multiline:
-        print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True, end='\r')
+        print(
+            '[%s] %s%s ...%20s' %
+            (bar,
+             percents,
+             '%',
+             status),
+            flush=True,
+            end='\r')
     else:
         print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
 
@@ -131,27 +138,77 @@ def main(argvs):
             urlretrieve(durl, dpath)
 
     with open(filename, encoding="utf-8", mode='r') as stream:
-        # CPU wise copying to list is cheaper as we need to load all items into memory in order to count them anyways
+        # CPU wise copying to list is cheaper as we need to load all items into
+        # memory in order to count them anyways
         items = list(scan_download(stream))
         total = len(items)
         if total > 0:
             with ThreadPoolExecutor(max_workers=options.workers) as executor:
-                future_to_image = {executor.submit(download_image, url, path): (url, path) for (url, path) in items}
-                for num, future in enumerate(as_completed(future_to_image), start=1):
+                future_to_image = {
+                    executor.submit(
+                        download_image,
+                        url,
+                        path): (
+                        url,
+                        path) for (
+                        url,
+                        path) in items}
+                for num, future in enumerate(
+                        as_completed(future_to_image), start=1):
                     url, path = future_to_image[future]
-                    report(num, total, path if options.reporter == 'progress' else url)
+                    if options.reporter == "progress":
+                        report_address = path
+                    else:
+                        report_address = url
+                    report(
+                        num, total, report_address)
 
 
 def create_parser():
     parser = OptionParser(usage=main.__doc__, add_help_option=False)
-    parser.add_option('--target', '-t', action='store', dest="target", default="arm", choices=list(SAVE_DIR.keys()))
-    parser.add_option('--site', action='store', dest="site", default="wiki", choices=["wiki", "game"])
-    parser.add_option('--save_dir', action='store', dest="save_dir", default=None)
+    parser.add_option(
+        '--target',
+        '-t',
+        action='store',
+        dest="target",
+        default="arm",
+        choices=list(
+            SAVE_DIR.keys()))
+    parser.add_option(
+        '--site',
+        action='store',
+        dest="site",
+        default="wiki",
+        choices=[
+            "wiki",
+            "game"])
+    parser.add_option(
+        '--save_dir',
+        action='store',
+        dest="save_dir",
+        default=None)
     parser.add_option('--dry-run', '-d', action='store_true', dest="dry_run")
-    parser.add_option('--workers', '-w', action='store', dest="workers", type='int', default=1)
-    parser.add_option('--reporter', '-r', action='store', dest="reporter", default='progress',
-                      choices=['progress', 'plain'])
-    parser.add_option('--overwrite', '-o', action='store_true', dest="overwrite")
+    parser.add_option(
+        '--workers',
+        '-w',
+        action='store',
+        dest="workers",
+        type='int',
+        default=1)
+    parser.add_option(
+        '--reporter',
+        '-r',
+        action='store',
+        dest="reporter",
+        default='progress',
+        choices=[
+            'progress',
+            'plain'])
+    parser.add_option(
+        '--overwrite',
+        '-o',
+        action='store_true',
+        dest="overwrite")
     return parser
 
 
