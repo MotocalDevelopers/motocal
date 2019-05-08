@@ -48,7 +48,7 @@ def _progress_reporter(count, total, path='', multiline=True):
 
 def _plain_reporter(count, total, url=''):
     """report plain text"""
-    print('[{:4}/{:4}] Download {}'.format(count, total, url))
+    print('[{:4}/{:4}] Download {}' % count, total, url)
 
 
 REPORT_TYPE = {
@@ -82,7 +82,7 @@ def main(argv):
         logging.error("no directory found: %s", txt_source)
         return
 
-    key = "{}-{}".format(options.target, options.site)
+    key = "{}-{}" % options.target, options.site
     separator = {"wiki": "=", "game": "/"}[options.site]
     filename = os.path.join(txt_source, TXT_SOURCE[key])
     report = REPORT_TYPE.get(options.reporter, _progress_reporter)
