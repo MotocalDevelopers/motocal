@@ -18,10 +18,12 @@ Assume directory layouts
 import functools
 import logging
 import os.path
+import time
 from concurrent.futures import as_completed
 from concurrent.futures.thread import ThreadPoolExecutor
 from os import makedirs
 from shutil import copyfileobj
+from urllib.error import HTTPError
 from urllib.request import urlopen
 
 _read_lines = functools.partial(map, str.rstrip)
@@ -109,11 +111,26 @@ def main(argv):
         return url_list
 
     def download_image(url, path):
-        if not options.quiet:
-            with urlopen(url) as response, open(path, mode="wb") as image_file:
-                if response.code == 200:
-                    copyfileobj(response, image_file)
-                response.close()
+        success = False
+        error_count = 0
+        while not success:
+            if not options.quiet:
+                try:
+                    with urlopen(url) as response, open(path, mode="wb") as image_file:
+                        copyfileobj(response, image_file)
+                        response.close()
+                        success = True
+                        break
+                except HTTPError as error:
+                    if error.code == 404:
+                        print("Bad Url %s at path %s" % (url, path))
+                        error_count = 3
+                    else:
+                        error_count += 1
+                    if error_count >= 3:
+                        break
+                    time.sleep(0.5)
+        return success
 
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
         # CPU wise copying to list is cheaper as we need to load all items into
