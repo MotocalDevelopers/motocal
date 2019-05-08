@@ -1296,8 +1296,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 if (!isAkashaIncludedGlobal || isAkashaIncludedLocal[akashaType]) {
                                     totals[key]["akashaATK"] += 20.0;
                                     totals[key]["normalOtherCritical"].push({
-                                        "value": 0.01 * 10.0,
-                                        "attackRatio": 0.45
+                                        "value": 0.01 * 20.0,
+                                        "attackRatio": 0.50
                                     });
                                     isAkashaIncludedGlobal = true;
                                     isAkashaIncludedLocal[akashaType] = true;
