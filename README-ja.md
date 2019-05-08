@@ -103,10 +103,10 @@ $ python3 ./scripts/arm_data_converter.py
 #### chara\_data\_converter.py
 - txt_source/charaData.txtからcharaData.jsonを生成します.
 
-#### download\_armimages\_from\_wiki.py
-- txt_source/armImageURLList.txt内に記載されている画像データをwikiから持ってきます.
-#### download\_charaimages\_from\_wiki.py
-- txt_source/charaImageURLList.txt内に記載されている画像データをwikiから持ってきます.
+#### download\_images.py -t arm
+- txt_source/armImageURLList.txt内に記載されている画像データをwikiから持ってきます. (Python 3.7 以降が必要)
+#### download\_images.py -t chara
+- txt_source/charaImageURLList.txt内に記載されている画像データをwikiから持ってきます. (Python 3.7 以降が必要)
 - これら2つの画像ダウンロードスクリプトは、あくまで「最新のもの」だけをダウンロードする内容になっております。
 
 ## LICENSE
