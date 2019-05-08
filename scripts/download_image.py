@@ -23,7 +23,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from os import makedirs
 from urllib.request import urlretrieve
 
-read_lines = functools.partial(map, str.rstrip)
+_read_lines = functools.partial(map, str.rstrip)
 
 TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-wiki': "charaImageWikiURLList.txt",
@@ -33,7 +33,7 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaImgs'}
 
 
-def progress_reporter(count, total, path='', multiline=True):
+def _progress_reporter(count, total, path='', multiline=True):
     bar_len = 45
     filled_len = int(round(bar_len * count / float(total)))
     status = os.path.basename(path)
@@ -46,14 +46,14 @@ def progress_reporter(count, total, path='', multiline=True):
         print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
 
 
-def plain_reporter(count, total, url=''):
+def _plain_reporter(count, total, url=''):
     """report plain text"""
     print('[{:4}/{:4}] Download {}'.format(count, total, url))
 
 
 REPORT_TYPE = {
-        'progress': progress_reporter,
-        'plain': plain_reporter,
+        'progress': _progress_reporter,
+        'plain': _plain_reporter,
 }
 
 
@@ -62,15 +62,15 @@ def main(argv):
     Download image file in URL list.
 
     Options: [--target arm] [--site wiki] [--save_dir path] [-d] [--workers=1]
-      * --target -t: (arm|chara)
-      * --site: (wiki|game)
+      * -t: (arm|chara)
+      * -s: (wiki|game)
       * --save_dir: (./imgs|./charaimgs)
-      * --dry-run -d: Prints url list without download.
-      * --workers -w: Number of threads to download images.
-      * --reporter -r: (progress|plain)
-      * --overwrite -o: Redownloads all images even if it exists
+      * -d: Prints url list without download.
+      * -w: Number of threads to download images.
+      * -r: (progress|plain)
+      * -o: Redownloads all images even if it exists
     """
-    parser = create_parser()
+    parser = _create_parser()
     if len(argv) == 1:  # if only 1 argument, it's the script name
         parser.print_usage()
         return
@@ -85,7 +85,7 @@ def main(argv):
     key = "{}-{}".format(options.target, options.site)
     separator = {"wiki": "=", "game": "/"}[options.site]
     filename = os.path.join(txt_source, TXT_SOURCE[key])
-    report = REPORT_TYPE.get(options.reporter, progress_reporter)
+    report = REPORT_TYPE.get(options.reporter, _progress_reporter)
 
     if not os.path.isfile(filename):
         logging.error("No url list file found: %s", filename)
@@ -104,7 +104,7 @@ def main(argv):
         Finding and filtering existent files
         """
         url_list = []
-        for url in read_lines(file):
+        for url in _read_lines(file):
             path = os.path.abspath(
                     os.path.join(options.save_dir, url.split(separator)[-1]))
             if options.overwrite or not os.path.exists(path):
@@ -135,22 +135,21 @@ def main(argv):
                     report(num, total, report_address)
 
 
-def create_parser():
+def _create_parser():
     from optparse import OptionParser
     parser = OptionParser(usage=main.__doc__, add_help_option=False)
-    parser.add_option('--target', '-t', action='store', dest="target",
-                      default="arm", choices=list(SAVE_DIR.keys()))
-    parser.add_option('--site', action='store', dest="site", default="wiki",
+    parser.add_option('-t', action='store', dest="target", default="arm",
+                      choices=list(SAVE_DIR.keys()))
+    parser.add_option('-s', action='store', dest="site", default="wiki",
                       choices=["wiki", "game"])
     parser.add_option('--save_dir', action='store', dest="save_dir",
                       default=None)
-    parser.add_option('--dry-run', '-d', action='store_true', dest="dry_run")
-    parser.add_option('--workers', '-w', action='store', dest="workers",
-                      type='int', default=1)
-    parser.add_option('--reporter', '-r', action='store', dest="reporter",
+    parser.add_option('-d', action='store_true', dest="dry_run")
+    parser.add_option('-w', action='store', dest="workers", type='int',
+                      default=1)
+    parser.add_option('-r', action='store', dest="reporter",
                       default='progress', choices=['progress', 'plain'])
-    parser.add_option('--overwrite', '-o', action='store_true',
-                      dest="overwrite")
+    parser.add_option('-o', action='store_true', dest="overwrite")
     return parser
 
 
