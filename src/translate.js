@@ -2571,6 +2571,11 @@ var multiLangData = {
         "ja": "奥義上限UP(10%)",
         "zh": "奥义上限UP(10%)",
     },
+    "黄龍槍 (メイン装備時)": {
+        "en": "Huanglong spear (main)",
+        "ja": "黄龍槍 (メイン装備時)",
+        "zh": "Huanglong spear (main)",
+    },
     "奥義上限UP(イクシード)": {
         "en": "Ougi Limit UP (Exceed)",
         "ja": "奥義上限UP(イクシード)",
@@ -2912,6 +2917,11 @@ var multiLangData = {
         "en": "Changelog",
         "ja": "更新履歴",
         "zh": "更新履歴",
+    },
+    "次の{step}件を表示": {
+        "en": "Show next {step} logs",
+        "ja": "次の{step}件を表示",
+        "zh": "Show next {step} logs",
     },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",
