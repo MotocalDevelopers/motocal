@@ -17,7 +17,7 @@ Assume directory layouts
 """
 import functools
 import logging
-import os.path as op
+import os.path
 from concurrent.futures import as_completed
 from concurrent.futures.thread import ThreadPoolExecutor
 from os import makedirs
@@ -36,7 +36,7 @@ SAVE_DIR = {'arm': '../imgs', 'chara': '../charaImgs'}
 def progress_reporter(count, total, path='', multiline=True):
     bar_len = 45
     filled_len = int(round(bar_len * count / float(total)))
-    status = op.basename(path)
+    status = os.path.basename(path)
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     if not multiline:
@@ -75,27 +75,27 @@ def main(argv):
         parser.print_usage()
         return
     (options, args) = parser.parse_args(argv)
-    script_dir = op.abspath(op.dirname(__file__))
-    txt_source = op.join(script_dir, "../txt_source")
+    script_dir = os.path.abspath(os.path.dirname(__file__))
+    txt_source = os.path.join(script_dir, "../txt_source")
 
-    if not op.isdir(txt_source):
+    if not os.path.isdir(txt_source):
         logging.error("no directory found: %s", txt_source)
         return
 
     key = "{}-{}".format(options.target, options.site)
     separator = {"wiki": "=", "game": "/"}[options.site]
-    filename = op.join(txt_source, TXT_SOURCE[key])
+    filename = os.path.join(txt_source, TXT_SOURCE[key])
     report = REPORT_TYPE.get(options.reporter, progress_reporter)
 
-    if not op.isfile(filename):
+    if not os.path.isfile(filename):
         logging.error("No url list file found: %s", filename)
         return
 
     if not options.save_dir:
-        options.save_dir = op.join(script_dir, SAVE_DIR[options.target])
+        options.save_dir = os.path.join(script_dir, SAVE_DIR[options.target])
         logging.info("Set default save directory: %s", options.save_dir)
 
-    if not op.isdir(options.save_dir):
+    if not os.path.isdir(options.save_dir):
         logging.info("Save directory is created: %s", options.save_dir)
         makedirs(options.save_dir)
 
@@ -105,9 +105,9 @@ def main(argv):
         """
         url_list = []
         for url in read_lines(file):
-            path = op.abspath(
-                op.join(options.save_dir, url.split(separator)[-1]))
-            if options.overwrite or not op.exists(path):
+            path = os.path.abspath(
+                    os.path.join(options.save_dir, url.split(separator)[-1]))
+            if options.overwrite or not os.path.exists(path):
                 url_list.append((url, path))
         return url_list
 
