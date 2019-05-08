@@ -61,14 +61,14 @@ def main(argv):
     """
     Download image file in URL list.
 
-    Options: [--target arm] [--site wiki] [--save_dir path] [-d] [--workers=1]
-      * -t: (arm|chara)
-      * -s: (wiki|game)
-      * --save_dir: (./imgs|./charaimgs)
-      * -d: Prints url list without download.
-      * -w: Number of threads to download images.
-      * -r: (progress|plain)
-      * -o: Redownloads all images even if it exists
+    Options: [-t arm] [-s wiki] [-d path] [-q] [-w=10] [-r=progress] [-f]
+      * --target -t: Data to be downloaded (arm|chara)
+      * --site -s: Source to download from (wiki|game)
+      * --directory -d: Save directory (./imgs|./charaimgs)
+      * --quiet -q: Prints url list without download.
+      * --workers -w: Number of threads to download images.
+      * --reporter -r: Type of reporter (progress|plain)
+      * --force -f: Redownloads all images even if it exists
     """
     parser = _create_parser()
     if len(argv) == 1:  # if only 1 argument, it's the script name
@@ -138,18 +138,21 @@ def main(argv):
 def _create_parser():
     from optparse import OptionParser
     parser = OptionParser(usage=main.__doc__, add_help_option=False)
-    parser.add_option('-t', action='store', dest="target", default="arm",
+    parser.add_option('--target', '-t', action='store', dest="target",
+                      default="arm",
                       choices=list(SAVE_DIR.keys()))
-    parser.add_option('-s', action='store', dest="site", default="wiki",
+    parser.add_option('--site', '-s', action='store', dest="site",
+                      default="wiki",
                       choices=["wiki", "game"])
-    parser.add_option('--save_dir', action='store', dest="save_dir",
+    parser.add_option('--directory', '-d', action='store', dest="save_dir",
                       default=None)
-    parser.add_option('-d', action='store_true', dest="dry_run")
-    parser.add_option('-w', action='store', dest="workers", type='int',
+    parser.add_option('--quiet', '-q', action='store_true', dest="dry_run")
+    parser.add_option('--workers', '-w', action='store', dest="workers",
+                      type='int',
                       default=10)
-    parser.add_option('-r', action='store', dest="reporter",
+    parser.add_option('--reporter', '-r', action='store', dest="reporter",
                       default='progress', choices=['progress', 'plain'])
-    parser.add_option('-o', action='store_true', dest="overwrite")
+    parser.add_option('force', '-f', action='store_true', dest="overwrite")
     return parser
 
 
