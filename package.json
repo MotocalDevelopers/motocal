@@ -15,7 +15,7 @@
     "html-webpack-plugin": "^3.2.0",
     "js-base64": "~2.4.5",
     "react": "~16.6.0",
-    "react-bootstrap": "^0.32.1",
+    "react-bootstrap": "^0.32.4",
     "react-copy-to-clipboard": "^5.0.1",
     "react-csv": "^1.0.14",
     "react-dom": "~16.6.0",
@@ -27,7 +27,7 @@
     "webpack-manifest-plugin": "^2.0.3"
   },
   "engines": {
-    "node": "~8.11"
+    "node": ">= 8.11"
   },
   "scripts": {
     "start": "webpack-dev-server --watch --inline",
