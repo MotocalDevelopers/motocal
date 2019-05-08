@@ -48,7 +48,7 @@ def _progress_reporter(count, total, path='', multiline=True):
 
 def _plain_reporter(count, total, url=''):
     """report plain text"""
-    print('[{:4}/{:4}] Download {}' % count, total, url)
+    print('[%4d/%4d] Download %s' % count, total, url)
 
 
 REPORT_TYPE = {
@@ -82,7 +82,7 @@ def main(argv):
         logging.error("no directory found: %s", txt_source)
         return
 
-    key = "{}-{}" % options.target, options.site
+    key = "%s-%s" % (options.target, options.site)
     separator = {"wiki": "=", "game": "/"}[options.site]
     filename = os.path.join(txt_source, TXT_SOURCE[key])
     report = REPORT_TYPE.get(options.reporter, _progress_reporter)
@@ -122,9 +122,9 @@ def main(argv):
         total = len(items)
         if total > 0:
             with ThreadPoolExecutor(max_workers=options.workers) as executor:
-                future_to_image = {
-                        executor.submit(download_image, url, path): (url, path)
-                        for (url, path) in items}
+                submit = functools.partial(executor.submit, download_image)
+                future_to_image = {submit(url, path): (url, path) for
+                                   (url, path) in items}
                 for num, future in enumerate(as_completed(future_to_image),
                                              start=1):
                     url, path = future_to_image[future]
@@ -146,7 +146,7 @@ def _create_parser():
                       default=None)
     parser.add_option('-d', action='store_true', dest="dry_run")
     parser.add_option('-w', action='store', dest="workers", type='int',
-                      default=1)
+                      default=10)
     parser.add_option('-r', action='store', dest="reporter",
                       default='progress', choices=['progress', 'plain'])
     parser.add_option('-o', action='store_true', dest="overwrite")
