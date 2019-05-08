@@ -112,8 +112,11 @@ def main(argv):
         return url_list
 
     def download_image(url, path):
-        if not options.dry_run:
-            urlretrieve(url, path)
+        try:
+            if not options.dry_run:
+                urlretrieve(url, path)
+        except BaseException as ex:
+            print("Failed to download %s" % str(ex))
 
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
         # CPU wise copying to list is cheaper as we need to load all items into
@@ -137,22 +140,25 @@ def main(argv):
 
 def _create_parser():
     from optparse import OptionParser
-    parser = OptionParser(usage=main.__doc__, add_help_option=False)
+    parser = OptionParser()
     parser.add_option('--target', '-t', action='store', dest="target",
-                      default="arm",
-                      choices=list(SAVE_DIR.keys()))
+                      default="arm", choices=list(SAVE_DIR.keys()),
+                      help='Data to be downloaded (arm|chara)')
     parser.add_option('--site', '-s', action='store', dest="site",
-                      default="wiki",
-                      choices=["wiki", "game"])
+                      default="wiki", choices=["wiki", "game"],
+                      help="Source to download from (wiki|game)")
     parser.add_option('--directory', '-d', action='store', dest="save_dir",
-                      default=None)
-    parser.add_option('--quiet', '-q', action='store_true', dest="dry_run")
+                      default=None, help="Save directory (./imgs|./charaimgs)")
+    parser.add_option('--quiet', '-q', action='store_true', dest="dry_run",
+                      help="Prints url list without download.")
     parser.add_option('--workers', '-w', action='store', dest="workers",
-                      type='int',
-                      default=10)
+                      type='int', default=10,
+                      help="Number of threads to download images.")
     parser.add_option('--reporter', '-r', action='store', dest="reporter",
-                      default='progress', choices=['progress', 'plain'])
-    parser.add_option('force', '-f', action='store_true', dest="overwrite")
+                      default='progress', choices=['progress', 'plain'],
+                      help="Type of reporter (progress|plain)")
+    parser.add_option('force', '-f', action='store_true', dest="overwrite",
+                      help="Redownloads all images even if it exists")
     return parser
 
 
