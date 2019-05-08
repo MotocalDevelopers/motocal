@@ -1277,7 +1277,7 @@
         "attack": "10500",
         "baseDA": 10.0,
         "baseTA": 5.0,
-        "imageURL": "./charaimgs/3040183000_03.png",
+        "imageURL": "./charaimgs/3040183000_01.png",
         "en": "Aqours Second-Years"
     },
     "フーちゃん": {
@@ -1697,7 +1697,7 @@
         "attack": "9150",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040153000_03.png",
+        "imageURL": "./charaimgs/3040153000_01.png",
         "en": "Sandalphon"
     },
     "ティアマト": {
@@ -2327,7 +2327,7 @@
         "attack": "8500",
         "baseDA": 10.0,
         "baseTA": 5.0,
-        "imageURL": "./charaimgs/3040122000_03.png",
+        "imageURL": "./charaimgs/3040122000_01.png",
         "en": "Scathacha"
     },
     "クラリス(光属性ver)": {
@@ -3356,7 +3356,7 @@
         "attack": "8940",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040071000_03.png",
+        "imageURL": "./charaimgs/3040071000_01.png",
         "en": "Andira"
     },
     "ベアトリクス": {
@@ -3524,7 +3524,7 @@
         "attack": "12200",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040063000_03.png",
+        "imageURL": "./charaimgs/3040063000_01.png",
         "en": "Narmaya"
     },
     "カリオストロ(ハロウィンver)": {
@@ -3650,7 +3650,7 @@
         "attack": "10880",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040057000_03.png",
+        "imageURL": "./charaimgs/3040057000_01.png",
         "en": "Vania"
     },
     "ゼタ(水着ver)": {
@@ -3755,7 +3755,7 @@
         "attack": "11970",
         "baseDA": 10.0,
         "baseTA": 5.0,
-        "imageURL": "./charaimgs/3040052000_03.png",
+        "imageURL": "./charaimgs/3040052000_01.png",
         "en": "Ghandagoza"
     },
     "アーミラ(SSR)": {
@@ -3818,7 +3818,7 @@
         "attack": "10990",
         "baseDA": 10.0,
         "baseTA": 5.0,
-        "imageURL": "./charaimgs/3040049000_03.png",
+        "imageURL": "./charaimgs/3040049000_01.png",
         "en": "Silva"
     },
     "サルナーン(闇属性ver)": {
@@ -3902,7 +3902,7 @@
         "attack": "6080",
         "baseDA": 1000.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040045000_03.png",
+        "imageURL": "./charaimgs/3040045000_01.png",
         "en": "Albert"
     },
     "ソシエ": {
@@ -4028,7 +4028,7 @@
         "attack": "12540",
         "baseDA": 4.0,
         "baseTA": 1.0,
-        "imageURL": "./charaimgs/3040029000_03.png",
+        "imageURL": "./charaimgs/3040029000_01.png",
         "en": "Vaseraga"
     },
     "ゼタ": {
@@ -4196,7 +4196,7 @@
         "attack": "7790",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040021000_03.png",
+        "imageURL": "./charaimgs/3040021000_01.png",
         "en": "Lennah"
     },
     "シャルロッテ(ハロウィンver)": {
@@ -4238,7 +4238,7 @@
         "attack": "9980",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040019000_03.png",
+        "imageURL": "./charaimgs/3040019000_01.png",
         "en": "Arulumaya"
     },
     "クリスティーナ": {
@@ -4385,7 +4385,7 @@
         "attack": "8670",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040012000_03.png",
+        "imageURL": "./charaimgs/3040012000_01.png",
         "en": "Metera"
     },
     "マギサ": {
@@ -4469,7 +4469,7 @@
         "attack": "8360",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040008000_03.png",
+        "imageURL": "./charaimgs/3040008000_01.png",
         "en": "Sarunan"
     },
     "リリィ": {
@@ -4616,7 +4616,7 @@
         "attack": "9500",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3040001000_03.png",
+        "imageURL": "./charaimgs/3040001000_01.png",
         "en": "Altair"
     },
     "ガウェイン": {
@@ -4805,7 +4805,7 @@
         "attack": "7970",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030007000_03.png",
+        "imageURL": "./charaimgs/3030007000_01.png",
         "en": "Eugen"
     },
     "ラカム": {
@@ -4826,7 +4826,7 @@
         "attack": "7250",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030008000_03.png",
+        "imageURL": "./charaimgs/3030008000_01.png",
         "en": "Rackam"
     },
     "ガイーヌ": {
@@ -5729,7 +5729,7 @@
         "attack": "6600",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030051000_03.png",
+        "imageURL": "./charaimgs/3030051000_01.png",
         "en": "Mika Jougasaki"
     },
     "本田未央": {
@@ -5792,7 +5792,7 @@
         "attack": "7660",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030054000_03.png",
+        "imageURL": "./charaimgs/3030054000_01.png",
         "en": "Rita"
     },
     "ファスティバ": {
@@ -5939,7 +5939,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030061000_03.png",
+        "imageURL": "./charaimgs/3030061000_01.png",
         "en": "Ejaeli"
     },
     "テレーズ(バニーver)": {
@@ -6023,7 +6023,7 @@
         "attack": "8200",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030065000_03.png",
+        "imageURL": "./charaimgs/3030065000_01.png",
         "en": "Amira (SR)"
     },
     "ヘイゼン": {
@@ -6149,7 +6149,7 @@
         "attack": "6180",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030071000_03.png",
+        "imageURL": "./charaimgs/3030071000_01.png",
         "en": "Anzu Futaba"
     },
     "リーシャ": {
@@ -6506,7 +6506,7 @@
         "attack": "7200",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030088000_03.png",
+        "imageURL": "./charaimgs/3030088000_01.png",
         "en": "Rika Jougasaki"
     },
     "三村かな子": {
@@ -6590,7 +6590,7 @@
         "attack": "7900",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030092000_03.png",
+        "imageURL": "./charaimgs/3030092000_01.png",
         "en": "Will"
     },
     "ベス(攻撃)": {
@@ -7031,7 +7031,7 @@
         "attack": "6600",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030111000_03.png",
+        "imageURL": "./charaimgs/3030111000_01.png",
         "en": "Yaia"
     },
     "スカル": {
@@ -8270,7 +8270,7 @@
         "attack": "6600",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "imageURL": "./charaimgs/3030172000_03.png",
+        "imageURL": "./charaimgs/3030172000_01.png",
         "en": "Meteon"
     },
     "覇王丸": {
