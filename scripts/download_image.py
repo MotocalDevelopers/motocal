@@ -21,7 +21,8 @@ import os.path
 from concurrent.futures import as_completed
 from concurrent.futures.thread import ThreadPoolExecutor
 from os import makedirs
-from urllib.request import urlretrieve
+from shutil import copyfileobj
+from urllib.request import urlopen
 
 _read_lines = functools.partial(map, str.rstrip)
 
@@ -60,21 +61,12 @@ REPORT_TYPE = {
 def main(argv):
     """
     Download image file in URL list.
-
-    Options: [-t arm] [-s wiki] [-d path] [-q] [-w=10] [-r=progress] [-f]
-      * --target -t: Data to be downloaded (arm|chara)
-      * --site -s: Source to download from (wiki|game)
-      * --directory -d: Save directory (./imgs|./charaimgs)
-      * --quiet -q: Prints url list without download.
-      * --workers -w: Number of threads to download images.
-      * --reporter -r: Type of reporter (progress|plain)
-      * --force -f: Redownloads all images even if it exists
     """
     parser = _create_parser()
     if len(argv) == 1:  # if only 1 argument, it's the script name
         parser.print_usage()
         return
-    (options, args) = parser.parse_args(argv)
+    options = parser.parse_args(argv)
     script_dir = os.path.abspath(os.path.dirname(__file__))
     txt_source = os.path.join(script_dir, "../txt_source")
 
@@ -91,13 +83,13 @@ def main(argv):
         logging.error("No url list file found: %s", filename)
         return
 
-    if not options.save_dir:
-        options.save_dir = os.path.join(script_dir, SAVE_DIR[options.target])
-        logging.info("Set default save directory: %s", options.save_dir)
+    if not options.directory:
+        options.directory = os.path.join(script_dir, SAVE_DIR[options.target])
+        logging.info("Set default save directory: %s", options.directory)
 
-    if not os.path.isdir(options.save_dir):
-        logging.info("Save directory is created: %s", options.save_dir)
-        makedirs(options.save_dir)
+    if not os.path.isdir(options.directory):
+        logging.info("Save directory is created: %s", options.directory)
+        makedirs(options.directory)
 
     def scan_file_for_download_list(file):
         """
@@ -106,17 +98,17 @@ def main(argv):
         url_list = []
         for url in _read_lines(file):
             path = os.path.abspath(
-                    os.path.join(options.save_dir, url.split(separator)[-1]))
-            if options.overwrite or not os.path.exists(path):
+                    os.path.join(options.directory, url.split(separator)[-1]))
+            if options.force or not os.path.exists(path):
                 url_list.append((url, path))
         return url_list
 
     def download_image(url, path):
-        try:
-            if not options.dry_run:
-                urlretrieve(url, path)
-        except BaseException as ex:
-            print("Failed to download %s" % str(ex))
+        if not options.quiet:
+            with urlopen(url) as response, open(path, mode="wb") as image_file:
+                if response.code == 200:
+                    copyfileobj(response, image_file)
+                response.close()
 
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
         # CPU wise copying to list is cheaper as we need to load all items into
@@ -139,26 +131,20 @@ def main(argv):
 
 
 def _create_parser():
-    from optparse import OptionParser
-    parser = OptionParser()
-    parser.add_option('--target', '-t', action='store', dest="target",
-                      default="arm", choices=list(SAVE_DIR.keys()),
-                      help='Data to be downloaded (arm|chara)')
-    parser.add_option('--site', '-s', action='store', dest="site",
-                      default="wiki", choices=["wiki", "game"],
-                      help="Source to download from (wiki|game)")
-    parser.add_option('--directory', '-d', action='store', dest="save_dir",
-                      default=None, help="Save directory (./imgs|./charaimgs)")
-    parser.add_option('--quiet', '-q', action='store_true', dest="dry_run",
-                      help="Prints url list without download.")
-    parser.add_option('--workers', '-w', action='store', dest="workers",
-                      type='int', default=10,
-                      help="Number of threads to download images.")
-    parser.add_option('--reporter', '-r', action='store', dest="reporter",
-                      default='progress', choices=['progress', 'plain'],
-                      help="Type of reporter (progress|plain)")
-    parser.add_option('force', '-f', action='store_true', dest="overwrite",
-                      help="Redownloads all images even if it exists")
+    from argparse import ArgumentParser
+    parser = ArgumentParser()
+    parser.add_argument('-t', '--target', type=str, action='store',
+                        default="arm", choices=list(SAVE_DIR.keys()))
+    parser.add_argument('-s', '--site', type=str, action='store',
+                        default="wiki", choices=["wiki", "game"])
+    parser.add_argument('-d', '--directory', type=str, action='store',
+                        default=None)
+    parser.add_argument('-q', '--quiet', action='store_true')
+    parser.add_argument('-w', '--workers', type=int, action='store',
+                        default=10)
+    parser.add_argument('-r', '--reporter', type=str, action='store',
+                        default='progress', choices=['progress', 'plain'])
+    parser.add_argument('-f', '--force', action='store_true')
     return parser
 
 
