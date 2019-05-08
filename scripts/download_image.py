@@ -7,7 +7,7 @@ Usage: python download_image.py arm
 
 Debug e.g: python download_image.py arm wiki tmp -d plain
 
-Assume directory layous
+Assume directory layouts
   * /
     * ./imgs
     * ./charaImages
@@ -20,6 +20,7 @@ import functools
 import logging
 import os
 import sys
+from optparse import OptionParser
 from urllib.request import urlretrieve
 
 _readlines = functools.partial(map, str.rstrip)
@@ -60,18 +61,23 @@ REPORT_TYPE = {
 }
 
 
-def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="progress"):
+def main(argv):
     """
     Download image file in URL list.
 
-    Options: [target='arm'] [site='wiki'] [save_dir=None] [dry_run=False]
-      * target: (arm|chara)
-      * site: (wiki|game)
-      * save_dir: (./imgs|./charaimgs)
-      * dry_run: -d for enabled. (must be set as the 4th argument)
-                 print _url list without downlaod.
+    Options: [--target arm] [--site wiki] [--save_dir path] [-d] [--workers=1]
+      * --target -t: (arm|chara)
+      * --site: (wiki|game)
+      * --save_dir: (./imgs|./charaimgs)
+      * --dry-run -d: Prints url list without download.
+      * --workers -w: Number of threads to download images.
+      * --reporter -r: (progress|plain)
     """
-
+    parser = create_parser()
+    if len(sys.argv) == 1:  # if only 1 argument, it's the script name
+        parser.print_usage()
+        exit(2)
+    (options, args) = parser.parse_args(argv)
     script_dir = os.path.abspath(os.path.dirname(__file__))
     txt_source = os.path.join(script_dir, "../txt_source")
 
@@ -79,31 +85,22 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="p
         logging.error("no directory found: %s", txt_source)
         return
 
-    try:
-        key = "{}-{}".format(target, site)
-        separator = {"wiki": "=", "game": "/"}[site]
-        filename = os.path.join(txt_source, TXT_SOURCE[key])
-        report = REPORT_TYPE.get(report_type, progress_reporter)
-    except KeyError:
-        if target not in {'arm', 'chara'}:
-            logging.error("target argument must be 'arm' or 'chara'")
-        if site not in {'wiki', 'game'}:
-            logging.error("site argument must be 'wiki' or 'game'")
-        print(main.__doc__, file=sys.stderr)
-        return
+    key = "{}-{}".format(options.target, options.site)
+    separator = {"wiki": "=", "game": "/"}[options.site]
+    filename = os.path.join(txt_source, TXT_SOURCE[key])
+    report = REPORT_TYPE.get(options.reporter, progress_reporter)
 
     if not os.path.isfile(filename):
-        logging.error("No _url list file found: %s", filename)
+        logging.error("No url list file found: %s", filename)
         return
 
-    if not save_dir:
-        assert target in SAVE_DIR
-        save_dir = os.path.join(script_dir, SAVE_DIR[target])
-        logging.info("Set default save directory: %s", save_dir)
+    if not options.save_dir:
+        options.save_dir = os.path.join(script_dir, SAVE_DIR[options.target])
+        logging.info("Set default save directory: %s", options.save_dir)
 
-    if not os.path.isdir(save_dir):
-        logging.info("Save directory is created: %s", save_dir)
-        os.makedirs(save_dir)
+    if not os.path.isdir(options.save_dir):
+        logging.info("Save directory is created: %s", options.save_dir)
+        os.makedirs(options.save_dir)
 
     def parse_file(_stream, _separator=separator):
         """
@@ -111,7 +108,7 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="p
         """
         for _url in _readlines(_stream):
             name = _url.split(_separator)[-1]
-            _path = os.path.abspath(os.path.join(save_dir, name))
+            _path = os.path.abspath(os.path.join(options.save_dir, name))
             yield _url, _path
 
     def scan_download(_stream, override=False):
@@ -138,9 +135,21 @@ def main(target='arm', site='wiki', save_dir=None, dry_run=False, report_type="p
 
         for num, (url, path) in enumerate(scan_download(stream), start=1):
             report(num, total, ''.join([url, path]))
-            if not dry_run:
+            if not options.dry_run:
                 urlretrieve(url, path)
 
 
+def create_parser():
+    parser = OptionParser(usage=main.__doc__, add_help_option=False)
+    parser.add_option('--target', '-t', action='store', dest="target", default="arm", choices=list(SAVE_DIR.keys()))
+    parser.add_option('--site', action='store', dest="site", default="wiki", choices=["wiki", "game"])
+    parser.add_option('--save_dir', action='store', dest="save_dir", default=None)
+    parser.add_option('--dry-run', '-d', action='store_true', dest="dry_run", )
+    parser.add_option('--workers', '-w', action='store', dest="workers", type='int', default=1)
+    parser.add_option('--reporter', '-r', action='store', dest="reporter", default='progress',
+                      choices=['progress', 'plain'])
+    return parser
+
+
 if __name__ == '__main__':
-    main(*sys.argv[1:])
+    main(sys.argv[1:])
