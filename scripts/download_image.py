@@ -15,15 +15,16 @@ Assume directory layouts
     * ./scripts/download_image.py This script
 
 """
-
-import functools
-import logging
-import os
-import sys
+from functools import partial
+from logging import error, info
 from optparse import OptionParser
+from os import makedirs
+from os.path import basename, abspath, dirname, join, isdir, isfile, exists
+from sys import stdout, argv
 from urllib.request import urlretrieve
+from concurrent.futures import ThreadPoolExecutor
 
-_readlines = functools.partial(map, str.rstrip)
+_readlines = partial(map, str.rstrip)
 
 TXT_SOURCE = {
     'arm-wiki': "armImageWikiURLList.txt",
@@ -41,13 +42,13 @@ SAVE_DIR = {
 def progress_reporter(count, total, path=''):
     bar_len = 45
     filled_len = int(round(bar_len * count / float(total)))
-    status = os.path.basename(path)
+    status = basename(path)
 
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
 
-    sys.stdout.write('[%s] %s%s ...%20s\r' % (bar, percents, '%', status))
-    sys.stdout.flush()
+    stdout.write('[%s] %s%s ...%20s\r' % (bar, percents, '%', status))
+    stdout.flush()
 
 
 def plain_reporter(count, total, url=''):
@@ -61,7 +62,7 @@ REPORT_TYPE = {
 }
 
 
-def main(argv):
+def main(argvs):
     """
     Download image file in URL list.
 
@@ -74,33 +75,33 @@ def main(argv):
       * --reporter -r: (progress|plain)
     """
     parser = create_parser()
-    if len(sys.argv) == 1:  # if only 1 argument, it's the script name
+    if len(argvs) == 1:  # if only 1 argument, it's the script name
         parser.print_usage()
-        exit(2)
-    (options, args) = parser.parse_args(argv)
-    script_dir = os.path.abspath(os.path.dirname(__file__))
-    txt_source = os.path.join(script_dir, "../txt_source")
+        return
+    (options, args) = parser.parse_args(argvs)
+    script_dir = abspath(dirname(__file__))
+    txt_source = join(script_dir, "../txt_source")
 
-    if not os.path.isdir(txt_source):
-        logging.error("no directory found: %s", txt_source)
+    if not isdir(txt_source):
+        error("no directory found: %s", txt_source)
         return
 
     key = "{}-{}".format(options.target, options.site)
     separator = {"wiki": "=", "game": "/"}[options.site]
-    filename = os.path.join(txt_source, TXT_SOURCE[key])
+    filename = join(txt_source, TXT_SOURCE[key])
     report = REPORT_TYPE.get(options.reporter, progress_reporter)
 
-    if not os.path.isfile(filename):
-        logging.error("No url list file found: %s", filename)
+    if not isfile(filename):
+        error("No url list file found: %s", filename)
         return
 
     if not options.save_dir:
-        options.save_dir = os.path.join(script_dir, SAVE_DIR[options.target])
-        logging.info("Set default save directory: %s", options.save_dir)
+        options.save_dir = join(script_dir, SAVE_DIR[options.target])
+        info("Set default save directory: %s", options.save_dir)
 
-    if not os.path.isdir(options.save_dir):
-        logging.info("Save directory is created: %s", options.save_dir)
-        os.makedirs(options.save_dir)
+    if not isdir(options.save_dir):
+        info("Save directory is created: %s", options.save_dir)
+        makedirs(options.save_dir)
 
     def parse_file(_stream, _separator=separator):
         """
@@ -108,7 +109,7 @@ def main(argv):
         """
         for _url in _readlines(_stream):
             name = _url.split(_separator)[-1]
-            _path = os.path.abspath(os.path.join(options.save_dir, name))
+            _path = abspath(join(options.save_dir, name))
             yield _url, _path
 
     def scan_download(_stream, override=False):
@@ -119,7 +120,7 @@ def main(argv):
         pass this param if implement force download option in future.
         """
         for _url, _path in parse_file(_stream):
-            if override or not os.path.exists(_path):
+            if override or not exists(_path):
                 yield _url, _path
 
     def count_iter(iterable):
@@ -152,4 +153,4 @@ def create_parser():
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main(argv[1:])
