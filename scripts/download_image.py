@@ -57,6 +57,7 @@ def _plain_reporter(count, total, url=''):
 REPORT_TYPE = {
     'progress': _progress_reporter,
     'plain': _plain_reporter,
+
 }
 
 
@@ -95,12 +96,12 @@ def main(argv):
         return url % ('img'.encode('utf-8').hex().upper(),
                       file_name.encode('utf-8').hex().upper())
 
-    def scan_file_for_download_list(file):
+    def scan_file_for_download_list(file_path):
         """
         Finding and filtering existent files
         """
         url_list = []
-        for url in _read_lines(file):
+        for url in _read_lines(file_path):
             name = url.split(separator)[-1]
             path = os.path.abspath(
                 os.path.join(options.directory, name))
@@ -113,7 +114,7 @@ def main(argv):
     def download_image(url, path, _retry_count=3, _timeout=1000):
         for _ in range(_retry_count):
             try:
-                with urlopen(url, timeout=_timeout) as response,\
+                with urlopen(url, timeout=_timeout) as response, \
                         open(path, mode="wb") as image_file:
                     if not options.quiet:
                         copyfileobj(response, image_file)
