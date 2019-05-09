@@ -110,27 +110,19 @@ def main(argv):
                 url_list.append((url, path))
         return url_list
 
-    def download_image(url, path):
-        success = False
-        error_count = 0
-        while not success:
-            if not options.quiet:
-                try:
-                    with urlopen(url) as response, open(path, mode="wb") as image_file:
+    def download_image(url, path, _retry_count=3, _timeout=1000):
+        for _ in range(_retry_count):
+            try:
+                with urlopen(url, timeout=_timeout) as response, open(path, mode="wb") as image_file:
+                    if not options.quiet:
                         copyfileobj(response, image_file)
-                        response.close()
-                        success = True
-                        break
-                except HTTPError as error:
-                    if error.code == 404:
-                        print("Bad Url %s at path %s" % (url, path))
-                        error_count = 3
-                    else:
-                        error_count += 1
-                    if error_count >= 3:
-                        break
-                    time.sleep(0.5)
-        return success
+                    return True
+            except HTTPError as error:
+                if error.code == 404:
+                    print("Bad Url %s at path %s" % (url, path), file=sys.stderr)
+                    break
+                time.sleep(0.5)
+        return False
 
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
         # CPU wise copying to list is cheaper as we need to load all items into
