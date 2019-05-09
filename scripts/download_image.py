@@ -155,8 +155,7 @@ def main(argv):
 def _create_parser():
     from argparse import ArgumentParser
     parser = ArgumentParser()
-    parser.add_argument('-t', '--target', type=str, action='store',
-                        default="arm", choices=list(SAVE_DIR.keys()))
+    parser.add_argument('target', type=str, action='store', choices=list(SAVE_DIR.keys()))
     parser.add_argument('-s', '--site', type=str, action='store',
                         default="wiki", choices=["wiki", "game"])
     parser.add_argument('-d', '--directory', type=str, action='store',

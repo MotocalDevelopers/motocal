@@ -103,11 +103,21 @@ Please execute in the order of.
 #### chara\_data\_converter.py
 - Generate charaData.json from txt_source/charaData.txt.
 
-#### download\_images.py -t arm
-- Downloads the image data for weapons described in txt_source/armImageWikiURLList.txt from the wiki. Requires Python 3.7+.
+#### download\_images.py arm
+- Downloads the image data for weapons described in txt_source/armImageWikiURLList.txt from the wiki.
+- Requires Python 3.7+ and python3 in the path.
+- Can be directly called using npm run download:run.
+- More advanced configuration can be done by passing parameters to npm script -- [PARAMETERS].
+- Help on script options can be learn via npm run download:help
+- Updates on images can be fetch by rerunning script.
 
-#### download\_images.py -t chara
-- Downloads the image data for characters described in txt_source/charaImageWikiURLList.txt from the wiki. Requires Python 3.7+.
+#### download\_images.py chara
+- Downloads the image data for characters described in txt_source/charaImageWikiURLList.txt from the wiki.
+- Requires Python 3.7+ and python3 in the path.
+- Can be directly called using npm run download:run.
+- More advanced configuration can be done by passing parameters to npm script -- [PARAMETERS].
+- Help on script options can be learn via npm run download:help
+- Updates on images can be fetch by rerunning script.
 
 ## LICENSE
 MIT
