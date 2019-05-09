@@ -101,20 +101,18 @@ def main(argv):
         return url % ('img'.encode('utf-8').hex().upper(),
                       file_name.encode('utf-8').hex().upper())
 
-    def scan_file_for_download_list(file_path):
+    def scan_file_for_download_list(url_map):
         """
         Finding and filtering existent files
         """
-        url_list = []
-        for url in _read_lines(file_path):
+        for url in url_map:
             name = url.split(separator)[-1]
             path = os.path.abspath(
                 os.path.join(options.output, name))
             if options.force or not os.path.exists(path):
                 if options.site == "wiki":
                     url = transform_wiki_url(name)
-                url_list.append((url, path))
-        return url_list
+                yield url, path
 
     def download_image(url, path, _retry_count=3, _timeout=1000):
         for _ in range(_retry_count):
@@ -135,7 +133,7 @@ def main(argv):
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
         # CPU wise copying to list is cheaper as we need to load all items into
         # memory in order to count them anyways
-        items = scan_file_for_download_list(url_list_file)
+        items = list(scan_file_for_download_list(_read_lines(url_list_file)))
         total = len(items)
         if total > 0:
             with ThreadPoolExecutor(max_workers=options.workers) as executor:
