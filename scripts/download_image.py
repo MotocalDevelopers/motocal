@@ -55,8 +55,8 @@ def _plain_reporter(count, total, url=''):
 
 
 REPORT_TYPE = {
-        'progress': _progress_reporter,
-        'plain': _plain_reporter,
+    'progress': _progress_reporter,
+    'plain': _plain_reporter,
 }
 
 
@@ -103,7 +103,7 @@ def main(argv):
         for url in _read_lines(file):
             name = url.split(separator)[-1]
             path = os.path.abspath(
-                    os.path.join(options.directory, name))
+                os.path.join(options.directory, name))
             if options.force or not os.path.exists(path):
                 if options.site == "wiki":
                     url = transform_wiki_url(name)
@@ -113,13 +113,15 @@ def main(argv):
     def download_image(url, path, _retry_count=3, _timeout=1000):
         for _ in range(_retry_count):
             try:
-                with urlopen(url, timeout=_timeout) as response, open(path, mode="wb") as image_file:
+                with urlopen(url, timeout=_timeout) as response,\
+                        open(path, mode="wb") as image_file:
                     if not options.quiet:
                         copyfileobj(response, image_file)
                     return True
             except HTTPError as error:
                 if error.code == 404:
-                    print("Bad Url %s at path %s" % (url, path), file=sys.stderr)
+                    print("Bad Url %s at path %s" % (url, path),
+                          file=sys.stderr)
                     break
                 time.sleep(0.5)
         return False
@@ -147,7 +149,8 @@ def main(argv):
 def _create_parser():
     from argparse import ArgumentParser
     parser = ArgumentParser()
-    parser.add_argument('target', type=str, action='store', choices=list(SAVE_DIR.keys()))
+    parser.add_argument('target', type=str, action='store',
+                        choices=list(SAVE_DIR.keys()))
     parser.add_argument('-s', '--site', type=str, action='store',
                         default="wiki", choices=["wiki", "game"])
     parser.add_argument('-d', '--directory', type=str, action='store',
