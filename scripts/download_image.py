@@ -54,10 +54,15 @@ def _plain_reporter(count, total, url=''):
     print('[%4d/%4d] Download %s' % count, total, url)
 
 
+def _quiet_reporter(*args, **kwargs):
+    """quiet"""
+    pass
+
+
 REPORT_TYPE = {
     'progress': _progress_reporter,
     'plain': _plain_reporter,
-
+    'quiet': _quiet_reporter
 }
 
 
@@ -83,13 +88,13 @@ def main(argv):
         logging.error("No url list file found: %s", filename)
         return
 
-    if not options.directory:
-        options.directory = os.path.join(script_dir, SAVE_DIR[options.target])
-        logging.info("Set default save directory: %s", options.directory)
+    if not options.output:
+        options.output = os.path.join(script_dir, SAVE_DIR[options.target])
+        logging.info("Set default save directory: %s", options.output)
 
-    if not os.path.isdir(options.directory):
-        logging.info("Save directory is created: %s", options.directory)
-        makedirs(options.directory)
+    if not os.path.isdir(options.output):
+        logging.info("Save directory is created: %s", options.output)
+        makedirs(options.output)
 
     def transform_wiki_url(file_name):
         url = r'http://gbf-wiki.com/attach2/%s_%s.png'
@@ -104,7 +109,7 @@ def main(argv):
         for url in _read_lines(file_path):
             name = url.split(separator)[-1]
             path = os.path.abspath(
-                os.path.join(options.directory, name))
+                os.path.join(options.output, name))
             if options.force or not os.path.exists(path):
                 if options.site == "wiki":
                     url = transform_wiki_url(name)
@@ -116,7 +121,7 @@ def main(argv):
             try:
                 with urlopen(url, timeout=_timeout) as response, \
                         open(path, mode="wb") as image_file:
-                    if not options.quiet:
+                    if not options.dry_run:
                         copyfileobj(response, image_file)
                     return True
             except HTTPError as error:
@@ -154,13 +159,13 @@ def _create_parser():
                         choices=list(SAVE_DIR.keys()))
     parser.add_argument('-s', '--site', type=str, action='store',
                         default="wiki", choices=["wiki", "game"])
-    parser.add_argument('-d', '--directory', type=str, action='store',
+    parser.add_argument('-o', '--output', type=str, action='store',
                         default=None)
-    parser.add_argument('-q', '--quiet', action='store_true')
+    parser.add_argument('-d', '--dry-run', action='store_true')
     parser.add_argument('-w', '--workers', type=int, action='store',
                         default=10)
     parser.add_argument('-r', '--reporter', type=str, action='store',
-                        default='progress', choices=['progress', 'plain'])
+                        default='progress', choices=list(REPORT_TYPE.keys()))
     parser.add_argument('-f', '--force', action='store_true')
     return parser
 
