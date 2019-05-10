@@ -16,6 +16,7 @@ Assume directory layouts
 
 """
 import functools
+import itertools
 import logging
 import os.path
 import time
@@ -25,8 +26,10 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from os import makedirs
 from shutil import copyfileobj
 from urllib.error import HTTPError
+from collections import namedtuple
 
-_read_lines = functools.partial(map, str.rstrip)
+FutureResult = namedtuple("FutureResult", "url,path")
+
 
 TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-wiki': "charaImageWikiURLList.txt",
@@ -36,10 +39,10 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
 
 
-def _progress_reporter(count, total, path='', multiline=True):
+def _progress_reporter(count, total, result, multiline=True):
     bar_len = 45
     filled_len = int(round(bar_len * count / float(total)))
-    status = os.path.basename(path)
+    status = os.path.basename(result.path)
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     if not multiline:
@@ -49,14 +52,15 @@ def _progress_reporter(count, total, path='', multiline=True):
         print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
 
 
-def _plain_reporter(count, total, url=''):
+def _plain_reporter(count, total, result):
     """report plain text"""
-    print('[%4d/%4d] Download %s' % count, total, url)
+    print('[%4d/%4d] Download %s' % count, total, result.url)
 
 
-def _quiet_reporter(*args, **kwargs):
+def _quiet_reporter(count, total, result):
+    # UNUSED: count, total, result
     # Added in case of it may be used internal logging for future
-    return _do_nothing(args, kwargs)
+    pass
 
 
 def _do_nothing(*args, **kwargs):
@@ -68,6 +72,29 @@ REPORT_TYPE = {
     'plain': _plain_reporter,
     'quiet': _quiet_reporter
 }
+
+
+def download_image(url, path, method='GET', validate=False,
+        _retry_count=3, _timeout=1000, _wait_interval=0.5):
+    """
+    download image (for worker method)
+    """
+    for _ in range(_retry_count):
+        try:
+            http_request = urllib.request.Request(url, method=method)
+            with urllib.request.urlopen(http_request, timeout=_timeout) as response:
+                # FIXME: validate need to create empty file?
+                # or just pass status code to reporter
+                if not validate:
+                    with open(path, mode="wb") as image_file:
+                        copyfileobj(response, image_file)
+                break
+        except HTTPError as error:
+            if error.code == 404:
+                logging.error("Bad Url %s at path %s" % (url, path))
+                break
+            time.sleep(_wait_interval)
+    return FutureResult(url, path)
 
 
 def main(argv):
@@ -109,6 +136,7 @@ def main(argv):
         """
         Finding and filtering existent files
         """
+        # TODO: options.output, site, force -> param
         for url in url_map:
             name = url.split(separator)[-1]
             path = os.path.abspath(
@@ -118,55 +146,29 @@ def main(argv):
                     url = transform_wiki_url(name)
                 yield url, path
 
-    def download_image(url, path, _retry_count=3, _timeout=1000,
-                       _method='GET'):
-        for _ in range(_retry_count):
-            try:
-                http_request = urllib.request.Request(url, method=_method)
-                with urllib.request.urlopen(http_request,
-                                            timeout=_timeout) as response, \
-                        open(path, mode="wb") as image_file:
-                    if not options.validate:
-                        copyfileobj(response, image_file)
-                    return True
-            except HTTPError as error:
-                if error.code == 404:
-                    print("Bad Url %s at path %s" % (url, path),
-                          file=sys.stderr)
-                    break
-                time.sleep(0.5)
-        return False
+    if options.dry_run:
+        # In case of dry-run do nothing
+        worker_method = _do_nothing
+    elif options.validate:
+        # In case of validation run HEAD request
+        worker_method = functools.partial(download_image, method='HEAD')
+    else:
+        worker_method = download_image
 
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
-        # CPU wise copying to list is cheaper as we need to load all items into
-        # memory in order to count them anyways
+        _read_lines=functools.partial(map, str.rstrip)
         url_map = _read_lines(url_list_file)
         items = list(scan_file_for_download_list(url_map))
         total = len(items)
-        if total > 0:
-            # Do not create workers in case number of items are low
-            _max_workers = min(total, options.workers)
-            if options.dry_run:
-                # In case of dry-run do nothing
-                worker_method = _do_nothing
-            elif options.validate:
-                # In case of validation run HEAD request
-                worker_method = functools.partial(download_image,
-                                                  method='HEAD')
-            else:
-                worker_method = download_image
-            with ThreadPoolExecutor(max_workers=_max_workers) as executor:
-                submit = functools.partial(executor.submit, worker_method)
-                future_to_image = {submit(url, path): (url, path) for
-                                   (url, path) in items}
-                for num, future in enumerate(as_completed(future_to_image),
-                                             start=1):
-                    url, path = future_to_image[future]
-                    if options.reporter == "progress":
-                        report_address = path
-                    else:
-                        report_address = url
-                    report(num, total, report_address)
+
+    # Do not create workers in case number of items are low
+    _max_workers = max(1, min(total, options.workers))
+
+    with ThreadPoolExecutor(max_workers=_max_workers) as executor:
+        submit = functools.partial(executor.submit, worker_method)
+        counter = functools.partial(next, itertools.count(start=1))
+        for future in as_completed(itertools.starmap(submit, items)):
+            report(counter(), total, future.result())
 
 
 def _create_parser():
