@@ -2336,7 +2336,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                     if (storedCombinations[j][i] === 0) continue;
 
-                    for (let [skillname, element] of eachSkill(arm[i])) {
+                    for (let [skillname, element] of eachSkill(arm)) {
                         var stype = skilltypes[skillname].type;
                         var amount = skilltypes[skillname].amount;
                         var slv = parseInt(arm.slv);
