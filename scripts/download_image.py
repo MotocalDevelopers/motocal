@@ -162,9 +162,12 @@ def _create_parser():
     parser.add_argument('-d', '--dry-run', action='store_true')
     parser.add_argument('-w', '--workers', type=int, action='store',
                         default=10)
-    parser.add_argument('-r', '--reporter', type=str, action='store',
-                        default='progress', choices=list(REPORT_TYPE.keys()))
     parser.add_argument('-f', '--force', action='store_true')
+    group = parser.add_mutually_exclusive_group(required=False)
+    group.add_argument('-r', '--reporter', type=str, action='store',
+                       default='progress', choices=['progress', 'plain'])
+    group.add_argument('-q', '--quiet', action='store_const', dest='reporter',
+                       const='quiet')
     return parser
 
 
