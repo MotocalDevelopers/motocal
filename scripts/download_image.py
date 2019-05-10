@@ -21,15 +21,14 @@ import logging
 import os.path
 import time
 import urllib.request
+from collections import namedtuple
 from concurrent.futures import as_completed
 from concurrent.futures.thread import ThreadPoolExecutor
 from os import makedirs
 from shutil import copyfileobj
 from urllib.error import HTTPError
-from collections import namedtuple
 
 FutureResult = namedtuple("FutureResult", "url,path")
-
 
 TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-wiki': "charaImageWikiURLList.txt",
@@ -37,29 +36,55 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-game': "charaImageGameURLList.txt"}
 
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
+REQUIRED_REPORT_VALUES = ['count', 'total', 'message']
 
 
-def _progress_reporter(count, total, result, multiline=True):
+class Reporter:
+    def __init__(self, total: int, report_function: callable, *args, **kwargs):
+        self.count = 1
+        self.total = total
+        self.report_function = functools.partial(report_function, *args,
+                                                 **kwargs)
+        self._validate_report_function()
+
+    def report(self, message, multiline=True, *args, **kwargs):
+        if not multiline:
+            message += '\r'
+        self.report_function(count=self.count, total=self.total,
+                             message=message, *args, **kwargs)
+
+    def _validate_report_function(self):
+        var_names = map(str.casefold,
+                        self.report_function.func.__code__.co_varnames
+                        [0:self.report_function.func.__code__.co_argcount])
+        if not all(x.casefold() in var_names for x in REQUIRED_REPORT_VALUES):
+            raise AttributeError(
+                'Reporter methods have to have count,'
+                ' total and message arguments')
+
+
+def _progress_reporter(count, total, message):
     bar_len = 45
     filled_len = int(round(bar_len * count / float(total)))
-    status = os.path.basename(result.path)
+    status = os.path.basename(message.path)
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
-    if not multiline:
-        print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True,
-              end='\r')
-    else:
-        print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
+    print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
 
 
-def _plain_reporter(count, total, result):
+def _plain_reporter(count, total, message):
     """report plain text"""
-    print('[%4d/%4d] Download %s' % count, total, result.url)
+    print('[%4d/%4d] Download %s' % count, total, message.url)
 
 
-def _quiet_reporter(count, total, result):
-    # UNUSED: count, total, result
-    # Added in case of it may be used internal logging for future
+def _quiet_reporter(count, total, message):
+    """
+    :type message: object unused
+    :type total: int unused
+    :type count: int unused
+
+    Added in case of it may be used internal logging for future
+    """
     pass
 
 
@@ -75,14 +100,15 @@ REPORT_TYPE = {
 
 
 def download_image(url, path, method='GET', validate=False,
-        _retry_count=3, _timeout=1000, _wait_interval=0.5):
+                   _retry_count=3, _timeout=1000, _wait_interval=0.5):
     """
     download image (for worker method)
     """
     for _ in range(_retry_count):
         try:
             http_request = urllib.request.Request(url, method=method)
-            with urllib.request.urlopen(http_request, timeout=_timeout) as response:
+            with urllib.request.urlopen(http_request,
+                                        timeout=_timeout) as response:
                 # FIXME: validate need to create empty file?
                 # or just pass status code to reporter
                 if not validate:
@@ -156,19 +182,23 @@ def main(argv):
         worker_method = download_image
 
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
-        _read_lines=functools.partial(map, str.rstrip)
+        _read_lines = functools.partial(map, str.rstrip)
         url_map = _read_lines(url_list_file)
         items = list(scan_file_for_download_list(url_map))
         total = len(items)
+
+    if total < 0:
+        # Nothing to process
+        return
 
     # Do not create workers in case number of items are low
     _max_workers = max(1, min(total, options.workers))
 
     with ThreadPoolExecutor(max_workers=_max_workers) as executor:
+        reporter = Reporter(total=total, report_function=report)
         submit = functools.partial(executor.submit, worker_method)
-        counter = functools.partial(next, itertools.count(start=1))
         for future in as_completed(itertools.starmap(submit, items)):
-            report(counter(), total, future.result())
+            reporter.report(future.result())
 
 
 def _create_parser():
