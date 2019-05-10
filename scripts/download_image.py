@@ -133,10 +133,13 @@ def main(argv):
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
         # CPU wise copying to list is cheaper as we need to load all items into
         # memory in order to count them anyways
-        items = list(scan_file_for_download_list(_read_lines(url_list_file)))
+        url_map = _read_lines(url_list_file)
+        items = list(scan_file_for_download_list(url_map))
         total = len(items)
+        # Do not create workers in case number of items are low
+        _max_workers = min(total, options.workers)
         if total > 0:
-            with ThreadPoolExecutor(max_workers=options.workers) as executor:
+            with ThreadPoolExecutor(max_workers=_max_workers) as executor:
                 submit = functools.partial(executor.submit, download_image)
                 future_to_image = {submit(url, path): (url, path) for
                                    (url, path) in items}
