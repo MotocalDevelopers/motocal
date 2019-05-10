@@ -524,7 +524,8 @@ var skilltypes = {
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
-    "opus-Element": {name: "属性攻撃力(大)", type: "opusElement", amount: "L"},
+    "opus-normalElement": {name: "属性攻撃力(大)", type: "opusnormalElement", amount: "L"},
+    "opus-magnaElement": {name: "属性攻撃力(大)", type: "opusmagnaElement", amount: "L"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
@@ -595,7 +596,7 @@ var opusNormalWeaponSkill2 = {
     "normalKonshinL": {name: "通常渾身(大)"},
     "normalHaisuiL": {name: "通常背水(大)"},
     "normalSanteM": {name: "通常三手(中)"},
-    "opus-Element": {name: "属性攻撃力(大)"},
+    "opus-normalElement": {name: "属性攻撃力(大)"},
 };
 
 var opusMagnaWeaponSkill2 = {
@@ -603,7 +604,7 @@ var opusMagnaWeaponSkill2 = {
     "magnaKonshinL": {name: "マグナ渾身(大)"},
     "magnaHaisuiL": {name: "マグナ背水(大)"},
     "magnaSanteM": {name: "マグナ三手(中)"},
-    "opus-Element": {name: "属性攻撃力(大)"},
+    "opus-magnaElement": {name: "属性攻撃力(大)"},
 };
 
 var armTypes = {
