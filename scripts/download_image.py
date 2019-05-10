@@ -19,12 +19,12 @@ import functools
 import logging
 import os.path
 import time
+import urllib.request
 from concurrent.futures import as_completed
 from concurrent.futures.thread import ThreadPoolExecutor
 from os import makedirs
 from shutil import copyfileobj
 from urllib.error import HTTPError
-from urllib.request import urlopen
 
 _read_lines = functools.partial(map, str.rstrip)
 
@@ -118,12 +118,16 @@ def main(argv):
                     url = transform_wiki_url(name)
                 yield url, path
 
-    def download_image(url, path, _retry_count=3, _timeout=1000):
+    def download_image(url, path, _retry_count=3, _timeout=1000,
+                       _method='GET'):
         for _ in range(_retry_count):
             try:
-                with urlopen(url, timeout=_timeout) as response, \
+                http_request = urllib.request.Request(url, method=_method)
+                with urllib.request.urlopen(http_request,
+                                            timeout=_timeout) as response, \
                         open(path, mode="wb") as image_file:
-                    copyfileobj(response, image_file)
+                    if not options.validate:
+                        copyfileobj(response, image_file)
                     return True
             except HTTPError as error:
                 if error.code == 404:
@@ -142,12 +146,17 @@ def main(argv):
         if total > 0:
             # Do not create workers in case number of items are low
             _max_workers = min(total, options.workers)
-            function = download_image
             if options.dry_run:
                 # In case of dry-run do nothing
-                function = _do_nothing
+                worker_method = _do_nothing
+            elif options.validate:
+                # In case of validation run HEAD request
+                worker_method = functools.partial(download_image,
+                                                  method='HEAD')
+            else:
+                worker_method = download_image
             with ThreadPoolExecutor(max_workers=_max_workers) as executor:
-                submit = functools.partial(executor.submit, function)
+                submit = functools.partial(executor.submit, worker_method)
                 future_to_image = {submit(url, path): (url, path) for
                                    (url, path) in items}
                 for num, future in enumerate(as_completed(future_to_image),
@@ -169,15 +178,19 @@ def _create_parser():
                         default="wiki", choices=["wiki", "game"])
     parser.add_argument('-o', '--output', type=str, action='store',
                         default=None)
-    parser.add_argument('-d', '--dry-run', action='store_true')
     parser.add_argument('-w', '--workers', type=int, action='store',
                         default=10)
     parser.add_argument('-f', '--force', action='store_true')
-    group = parser.add_mutually_exclusive_group(required=False)
-    group.add_argument('-r', '--reporter', type=str, action='store',
-                       default='progress', choices=['progress', 'plain'])
-    group.add_argument('-q', '--quiet', action='store_const', dest='reporter',
-                       const='quiet')
+    report_group = parser.add_mutually_exclusive_group(required=False)
+    report_group.add_argument('-r', '--reporter', type=str, action='store',
+                              default='progress',
+                              choices=['progress', 'plain'])
+    report_group.add_argument('-q', '--quiet', action='store_const',
+                              dest='reporter',
+                              const='quiet')
+    run_group = parser.add_mutually_exclusive_group(required=False)
+    run_group.add_argument('-d', '--dry-run', action='store_true')
+    run_group.add_argument('-v', '--validate', action='store_true')
     return parser
 
 
