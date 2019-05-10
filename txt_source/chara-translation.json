@@ -1,4 +1,5 @@
 {
+    "メドゥーサ(ガチャver)": "Medusa",
     "マキュラ・マリウス": "Macula Marius",
     "グリームニル": "Grimnir",
     "ヴィーラ(風属性ver)": "Vira (Wind)",
@@ -212,7 +213,7 @@
     "イシュミール(水着ver)": "Izmir (Summer)",
     "コルワ(水着ver)": "Korwa (Summer)",
     "ユグドラシル": "Yggdrasil",
-    "メドゥーサ": "Medusa",
+    "メドゥーサ": "Medusa (Promo)",
     "バウタオーダ(SSR)": "Baotorda (SSR)",
     "スカーサハ": "Scathacha",
     "ヴェイン(SSR)": "Vane (SSR)",
@@ -475,5 +476,7 @@
     "カシウス": "Cassius",
     "スカル(闇属性ver)": "Skull",
     "キャサリン(SR)": "Catherine (SR)",
-    "ミリン(光属性ver)": "Mirin (Light)"
+    "ミリン(光属性ver)": "Mirin (Light)",
+    "コルワ(SR)": "Korwa (SR)",
+    "リチャード": "Richard"
 }
