@@ -55,7 +55,11 @@ def _plain_reporter(count, total, url=''):
 
 
 def _quiet_reporter(*args, **kwargs):
-    """quiet"""
+    # Added in case of it may be used internal logging for future
+    return _do_nothing(args, kwargs)
+
+
+def _do_nothing(*args, **kwargs):
     pass
 
 
@@ -119,8 +123,7 @@ def main(argv):
             try:
                 with urlopen(url, timeout=_timeout) as response, \
                         open(path, mode="wb") as image_file:
-                    if not options.dry_run:
-                        copyfileobj(response, image_file)
+                    copyfileobj(response, image_file)
                     return True
             except HTTPError as error:
                 if error.code == 404:
@@ -136,11 +139,15 @@ def main(argv):
         url_map = _read_lines(url_list_file)
         items = list(scan_file_for_download_list(url_map))
         total = len(items)
-        # Do not create workers in case number of items are low
-        _max_workers = min(total, options.workers)
         if total > 0:
+            # Do not create workers in case number of items are low
+            _max_workers = min(total, options.workers)
+            function = download_image
+            if options.dry_run:
+                # In case of dry-run do nothing
+                function = _do_nothing
             with ThreadPoolExecutor(max_workers=_max_workers) as executor:
-                submit = functools.partial(executor.submit, download_image)
+                submit = functools.partial(executor.submit, function)
                 future_to_image = {submit(url, path): (url, path) for
                                    (url, path) in items}
                 for num, future in enumerate(as_completed(future_to_image),
