@@ -435,6 +435,15 @@ skillnamelist["normalSeisyouM"] = {
     u"憎悪の星晶": "dark"
 }
 
+skillnamelist["normalHigoS"] = {
+    u"火の庇護": "fire",
+    u"水の庇護": "water",
+    u"土の庇護": "earth",
+    u"風の庇護": "wind",
+    u"光の庇護": "light",
+    u"闇の庇護": "dark"
+}
+
 # magna II
 skillnamelist["magnaL"] = {
     u"機炎方陣・攻刃II": "fire",

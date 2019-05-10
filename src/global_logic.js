@@ -1488,6 +1488,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'normalOntyou') {
                             totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
                             totals[key]["debuffResistance"] = comb[i] * skillAmounts["normalOntyou"][amount][slv - 1];
+                         } else if (stype == 'normalHigo') {
+                            totals[key]["debuffResistance"] = comb[i] * skillAmounts["normalHigo"][amount][slv - 1];
                         } else if (stype == 'magnaHissatsu') {
                             totals[key]["magnaOugiDamage"] += comb[i] * skillAmounts["magnaHiou"][amount][slv - 1];
                             totals[key]["magnaOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["magnaOugiDamageLimitHissatsu"][amount][slv - 1];
