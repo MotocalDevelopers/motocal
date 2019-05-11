@@ -606,7 +606,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // Save only the coefficient part (100% + delta of delta) for common processing
 
         var ougiDamageByCosmosAT = Math.min(20, totals[key]["cosmosAT"]);
-        var ougiDamageByMystery = totals[key]["ougiDamage"] * totalSummon["zeus"];
+        var ougiDamageByMystery = Math.min(100, totals[key]["ougiDamage"] * totalSummon["zeus"]);
         var ougiDamageByNormal = Math.min(100, totals[key]["normalOugiDamage"] * totalSummon["zeus"]);
         var ougiDamageByMagna = Math.min(100, totals[key]["magnaOugiDamage"] * totalSummon["magna"]);
         var ougiDamageSkill = 0.01 * (ougiDamageByCosmosAT + ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery);
