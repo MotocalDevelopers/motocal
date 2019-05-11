@@ -768,6 +768,7 @@ skillnamelist["strengthL"] = {
     u"ゲイルオブアームズ": "wind",
     u"獅子と牛の咆哮": "dark",
     u"サイコ攻刃": "earth",
+    u"心頭滅欲": "earth",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -899,6 +900,9 @@ skillnamelist["normalDamageLimit7"] = {
 }
 skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
+}
+skillnamelist["huanglongHissatsu"] = {
+    u"震天の境界へと至りし者": "light",
 }
 
 skillnamelist["ougiDamageLimitExceedM"] = {

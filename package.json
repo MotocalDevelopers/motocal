@@ -15,7 +15,7 @@
     "html-webpack-plugin": "^3.2.0",
     "js-base64": "~2.4.5",
     "react": "~16.4.0",
-    "react-bootstrap": "^0.32.1",
+    "react-bootstrap": "^0.32.4",
     "react-copy-to-clipboard": "^5.0.1",
     "react-csv": "^1.0.14",
     "react-dom": "16.4.0",
@@ -27,7 +27,7 @@
     "webpack-manifest-plugin": "^2.0.3"
   },
   "engines": {
-    "node": "~8.11"
+    "node": ">= 8.11"
   },
   "scripts": {
     "start": "webpack-dev-server --watch --inline",
@@ -37,7 +37,8 @@
     "lint:fix": "eslint webpack.config.js src/* --fix",
     "production-build": "cross-env NODE_ENV=production webpack",
     "watch-dev": "webpack --progress --watch",
-    "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch"
+    "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch",
+    "storybook": "start-storybook -p 9009 -s ./  --ci"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,12 @@
   "author": "hoshimi",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-centered": "^5.0.11",
+    "@storybook/addon-knobs": "^5.0.11",
+    "@storybook/addon-viewport": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "@storybook/theming": "^5.0.11",
     "autoprefixer": "8.6.0",
     "babelify": "8.0.0",
     "browserify": "16.2.3",

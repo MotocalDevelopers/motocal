@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover, Panel, Glyphicon} = require('react-bootstrap');
 var CreateClass = require('create-react-class');
 var intl = require('./translate.js');
+var ChangeLog = require('./changelog.js');
 
 var Notice = CreateClass({
     render: function () {
@@ -18,7 +19,7 @@ var Notice = CreateClass({
                 <h3>{intl.translate("更新履歴", locale)}</h3>
                 <Panel bsStyle="default" collapsible="true"
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
-                    <ul className="list-group">
+                    <ChangeLog className="list-group" length={10} step={20} buttonText={intl.translate("次の{step}件を表示", locale)}>
 
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190430-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190428-1", locale)}</li>
@@ -200,7 +201,7 @@ var Notice = CreateClass({
                             フェリ(SSR)がキャラテンプレートに表示されていない不具合を修正
                         </li>
                         <li className="list-group-item list-group-item-info">2016/08/25: 武器追加時に+を計算できるようにした</li>
-                    </ul>
+                    </ChangeLog>
                 </Panel>
 
                 <h3>注記</h3>
