@@ -2,10 +2,10 @@
 """
 Motocal Image download script.
 
-Usage: python download_image.py arm
-       python download_image.py chara
+Usage: python3 download_image.py arm
+       python3 download_image.py chara
 
-Debug e.g: python download_image.py arm wiki tmp -d plain
+Debug e.g: python3 download_image.py arm -c
 
 Assume directory layouts
   * /
@@ -20,6 +20,7 @@ import itertools
 import logging
 import os.path
 import re
+import threading
 import time
 import urllib.request
 from collections import namedtuple
@@ -37,17 +38,31 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-game': "charaImageGameURLList.txt"}
 
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
-_report_printer = functools.partial(print, flush=True)
+_print_lock = threading.Lock()
+
+
+def _report_print(string, flush=True, multi=True):
+    """
+    Thread safe printing
+    :param string: Message to be printed
+    :param flush: Whatever printer will not buffer or not
+    :param multi: Skip to next line or overwrite
+    :return:
+    >>> _report_print('Hello World!')
+    Hello World!
+    """
+    with _print_lock:
+        print(string, flush=flush, end='\r' if not multi else '')
 
 
 def _progress_reporter(count: int, total: int, result: FutureResult,
-                       bar_len: int = 40, multiple_lines: bool = True):
+                       bar_len: int = 40, multi: bool = True):
     """
     Gives current progress on a progress bar.
-    :type multiple_lines: Allows multiple lines of report to fill
+    :type multi: Allows multiple lines of report to fill
     :param count: Current item index.
     :param total: Number of items.
-    :param result: Message to print to console.
+    :param result: Result from worker thread
     :param bar_len: Length of the progress bar.
     :return:
 
@@ -58,28 +73,25 @@ def _progress_reporter(count: int, total: int, result: FutureResult,
     status = os.path.basename(result.path)
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
-    if not multiple_lines:
-        _report_printer.keywords['end'] = '\r'
-    _report_printer('[{}] {}{} ...{:>20}'.format(bar, percents, '%', status))
+    _report_print('[{}] {}{} ...{:>20}'.format(bar, percents, '%', status),
+                  multi=multi)
 
 
 def _plain_reporter(count: int, total: int, result: FutureResult,
-                    multiple_lines: bool = True):
+                    multi: bool = True):
     """
     Gives current file and turn
     :param count: Current item index.
     :param total: Number of items.
-    :param result: Message to print to console.
-    :param multiple_lines: Allows multiple lines of report to fill
+    :param result: Result from worker thread
+    :param multi: Allows multiple lines of report to fill
     :return:
 
     >>> _plain_reporter(1, 100, FutureResult(r'url', r'path'))
     [   1/ 100] Download url
     """
-    if not multiple_lines:
-        _report_printer.keywords['end'] = '\r'
-    _report_printer(
-        '[{:>4}/{:>4}] Download {}'.format(count, total, result.url))
+    _report_print('[{:>4}/{:>4}] Download {}'.format(count, total, result.url),
+                  multi=multi)
 
 
 def _quiet_reporter(count: int, total: int, result: FutureResult):
@@ -123,10 +135,10 @@ def download_image(url: str, path: str, _retry_count: int = 3,
     :param _timeout: Connection timeout between client and server
     :param _wait_interval: Time to wait before retry
     :return: url and path back for reporting
-    >>> download_image('http://www.example.com',
-    ... 'C://motocal//imgs//1040809500.png')
-    FutureResult(url='http://www.example.com', \
-path='C://motocal//imgs//1040809500.png')
+    >>> download_image('http://www.example.com/attach2/696D67_31303430383039\
+3530302E706E67.png','C://motocal//imgs//1040809500.png') # doctest: +SKIP
+    FutureResult(url='http://www.example.com/attach2/696D67_3130343038303935\
+30302E706E67.png', path='C://motocal//imgs//1040809500.png')
     """
     for _ in range(_retry_count):
         try:
@@ -150,16 +162,18 @@ def check_image_url(url: str, path: str,
     :param url: URL to be check
     :param path: not used
     :return: url and path back for reporting
-    >>> check_image_url('http://example.com',
-    ... 'C://motocal//imgs//1040809500.png')
-    FutureResult(url='http://example.com', \
-path='C://motocal//imgs//1040809500.png')
+
+    >>> check_image_url('http://www.example.com/attach2/696D67_31303430383039\
+3530302E706E67.png','C://motocal//imgs//1040809500.png') # doctest: +SKIP
+    FutureResult(url='http://www.example.com/attach2/696D67_3130343038303935\
+30302E706E67.png', path='C://motocal//imgs//1040809500.png')
     """
     try:
         url_request = urllib.request.Request(url=url, method='HEAD')
         urllib.request.urlopen(url_request, timeout=_timeout)
     except HTTPError as error:
-        logging.error("Bad Url {} at path {} with error {}".format(url, path, error))
+        logging.error(
+                "Bad Url {} at path {} with error {}".format(url, path, error))
     return FutureResult(url, path)
 
 
@@ -173,7 +187,8 @@ def transform_wiki_url(file_name: str) -> str:
     """
     url = r'http://gbf-wiki.com/attach2/{}_{}.png'
     file_name = file_name.replace('_03.png', '_03_full.png')
-    return url.format('img'.encode('utf-8').hex().upper(),file_name.encode('utf-8').hex().upper())
+    return url.format('img'.encode('utf-8').hex().upper(),
+                      file_name.encode('utf-8').hex().upper())
 
 
 def main(argv: list):
@@ -205,7 +220,8 @@ def main(argv: list):
 
     try:
         if not os.path.isdir(options.output):
-            logging.info("Save directory is created: {}".format(options.output))
+            logging.info(
+                    "Save directory is created: {}".format(options.output))
             makedirs(options.output)
     except IOError as error:
         logging.error("Can't create the file/folders {}".format(error))
