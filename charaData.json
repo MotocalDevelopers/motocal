@@ -659,6 +659,27 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "メドゥーサ(ガチャver)": {
+        "name": "メドゥーサ(ガチャver)",
+        "ja": "メドゥーサ(ガチャver)",
+        "element": "earth",
+        "type": "balance",
+        "race": "seisho",
+        "sex": "female",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "280",
+        "hp": "1560",
+        "minattack": "1600",
+        "attack": "8200",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3040214000_01.png",
+        "en": "Medusa"
+    },
     "マキュラ・マリウス": {
         "name": "マキュラ・マリウス",
         "ja": "マキュラ・マリウス",
@@ -2395,7 +2416,7 @@
         "baseTA": 3.0,
         "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040123000_01.png",
-        "en": "Medusa"
+        "en": "Medusa (Promo)"
     },
     "バウタオーダ(SSR)": {
         "name": "バウタオーダ(SSR)",
@@ -10492,5 +10513,47 @@
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030265000_01.png",
         "en": "Mirin (Light)"
+    },
+    "コルワ(SR)": {
+        "name": "コルワ(SR)",
+        "ja": "コルワ(SR)",
+        "element": "wind",
+        "type": "balance",
+        "race": "erune",
+        "sex": "female",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "210",
+        "hp": "1110",
+        "minattack": "1200",
+        "attack": "5700",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030266000_01.png",
+        "en": "Korwa (SR)"
+    },
+    "リチャード": {
+        "name": "リチャード",
+        "ja": "リチャード",
+        "element": "dark",
+        "type": "pecu",
+        "race": "human",
+        "sex": "male",
+        "fav1": "gun",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "200",
+        "hp": "1020",
+        "minattack": "1377",
+        "attack": "6777",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "imageURL": "./charaimgs/3030267000_01.png",
+        "en": "Richard"
     }
 }
