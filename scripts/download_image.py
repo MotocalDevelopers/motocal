@@ -59,7 +59,7 @@ def _progress_reporter(count: int, total: int, result: FutureResult,
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     print('[{}] {}{} ...{:>20}'.format(bar, percents, '%', status),
-          flush=True, end='\r' if not multi else '')
+          flush=True, end='\r' if not multi else os.linesep)
 
 
 def _plain_reporter(count: int, total: int, result: FutureResult,
@@ -76,7 +76,7 @@ def _plain_reporter(count: int, total: int, result: FutureResult,
     [   1/ 100] Download url
     """
     print('[{:>4}/{:>4}] Download {}'.format(count, total, result.url),
-          flush=True, end='\r' if not multi else '')
+          flush=True, end='\r' if not multi else os.linesep)
 
 
 def _quiet_reporter(count: int, total: int, result: FutureResult):
@@ -169,10 +169,11 @@ def transform_wiki_url(file_name: str) -> str:
     :return: file url
     >>> transform_wiki_url('1040017000.png')
     'http://gbf-wiki.com/attach2/696D67_313034303031373030302E706E67.png'
+    >>> b'img'.hex().upper()
+    '696D67'
     """
     url = r'http://gbf-wiki.com/attach2/{}_{}.png'
-    file_name = file_name.replace('_03.png', '_03_full.png')
-    return url.format('img'.encode('utf-8').hex().upper(),
+    return url.format('696D67',
                       file_name.encode('utf-8').hex().upper())
 
 
