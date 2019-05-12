@@ -37,6 +37,7 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-game': "charaImageGameURLList.txt"}
 
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
+GAME_WORKER_LIMIT = 1
 
 
 def _progress_reporter(count: int, total: int, result: FutureResult,
@@ -187,6 +188,29 @@ def main(argv: list):
     parser = _create_parser()
     options = parser.parse_args(argv)
 
+    if options.site == 'game' and options.workers > GAME_WORKER_LIMIT:
+        if options.y:
+            logging.info("Passing warning message...")
+        else:
+            choice = input(
+                    'WARNING: You specified {} workers which is over limit {'
+                    '} to '
+                    'download images from game website. This may lead you to '
+                    'get '
+                    'banned. If you accept it enter Y or enter N to exit '
+                    'script. '
+                    'If not please define number of threads with -w '
+                    'parameter. '
+                    'If you want to skip this warning you can enter -y while '
+                    'calling script.:'.format(options.workers,
+                                              GAME_WORKER_LIMIT)).lower()
+            while choice not in ['y', 'n']:
+                choice = input('Either enter Y or N as an argument:').lower()
+            if choice == 'n':
+                return
+            else:
+                logging.info('Warning accepted, script will continue')
+
     key = "{}-{}".format(options.target, options.site)
     filename = os.path.join(source_location, TXT_SOURCE[key])
 
@@ -211,15 +235,15 @@ def main(argv: list):
         logging.error("Can't create the file/folders {}".format(error))
         return
 
-    def scan_file_for_download_list(url_list: list, output: str, force: bool):
+    def scan_file_for_download_list(urls: list, output: str, force: bool):
         """
         Scans text file and collects valid links into a generator
-        :param url_list: Content of text file
+        :param urls: Content of text file
         :param output: Save location
         :param force: Whatever to overwrite current file or not
         :return:
         """
-        for url in url_list:
+        for url in urls:
             name = re.findall(r'\d[^ /].*', url)[0]
             path = os.path.abspath(os.path.join(output, name))
             if force or not os.path.exists(path):
@@ -254,10 +278,10 @@ def main(argv: list):
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         submit = functools.partial(executor.submit, worker_method)
-        counter = functools.partial(next, itertools.count(start=1))
-        reporter = REPORT_TYPE.get(options.reporter)
+        count = itertools.count(start=1)
+        report = REPORT_TYPE.get(options.reporter)
         for future in as_completed(itertools.starmap(submit, items)):
-            reporter(counter(), total, future.result())
+            report(next(count), total, future.result())
 
 
 def _create_parser():
@@ -270,8 +294,6 @@ def _create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('target', type=str, action='store',
                         choices=list(SAVE_DIR.keys()))
-    parser.add_argument('-s', '--site', type=str, action='store',
-                        default="wiki", choices=["wiki", "game"])
     parser.add_argument('-o', '--output', type=str, action='store',
                         default=None)
     parser.add_argument('-w', '--workers', type=int, action='store',
@@ -287,6 +309,10 @@ def _create_parser():
     run_group = parser.add_mutually_exclusive_group(required=False)
     run_group.add_argument('-d', '--dry-run', action='store_true')
     run_group.add_argument('-c', '--check', action='store_true')
+    source_group = parser.add_argument_group('source arguments')
+    source_group.add_argument('-s', '--site', type=str, action='store',
+                              default="wiki", choices=["wiki", "game"])
+    source_group.add_argument('-y', action='store_true', help='pass warning')
     return parser
 
 
