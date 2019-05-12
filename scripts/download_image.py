@@ -188,10 +188,11 @@ def scan_file_for_download_list(urls: list, site: str, output: str,
                                 force: bool):
     """
     Scans text file and collects valid links into a generator
-    :param site: Source tp be downloaded
+    :param site: Where to download 'wiki' or 'game'
     :param urls: Content of text file
     :param output: Save location
     :param force: Whatever to overwrite current file or not
+    :param site: Where to download 'wiki' or 'game'
     :return:
     """
     for url in urls:
@@ -218,8 +219,10 @@ def main(argv: list):
     if options.site == 'game' and options.workers > GAME_WORKER_LIMIT:
         if options.yes:
             logging.info("Passing warning message...")
-        elif not show_game_download_warning(options.workers):
+        elif not accept_game_download_warning(options.workers):
             return
+        else:
+            logging.info('Warning accepted, script will continue')
 
     key = "{}-{}".format(options.target, options.site)
     filename = os.path.join(source_location, TXT_SOURCE[key])
@@ -256,11 +259,11 @@ def main(argv: list):
     else:
         worker_method = download_image
 
-    with open(filename, encoding="utf-8", mode='r') as url_list_file:
+    with open(filename, encoding="utf-8", mode='r') as url_file:
         read_lines = functools.partial(map, str.rstrip)
-        url_list = read_lines(url_list_file)
+        urls = read_lines(url_file)
         items = list(
-            scan_file_for_download_list(url_list, options.site, options.output,
+            scan_file_for_download_list(urls, options.site, options.output,
                                         options.force))
         total = len(items)
 
@@ -279,16 +282,16 @@ def main(argv: list):
             report(next(count), total, future.result())
 
 
-def show_game_download_warning(workers: int,
-                               input_fn: callable = input) -> bool:
+def accept_game_download_warning(workers: int,
+                                 input_fn: callable = input) -> bool:
     """
     Shows warning in case user selected game as a source
     :param input_fn: Input function for test or file reading
     :param workers: Number of workers
     :return:
-    >>> show_game_download_warning(10, input_fn=lambda x: "y")
+    >>> accept_game_download_warning(10, input_fn=lambda _: "y")
     True
-    >>> show_game_download_warning(10, input_fn=lambda x: "n")
+    >>> accept_game_download_warning(10, input_fn=lambda _: "n")
     False
     """
     import textwrap
@@ -299,11 +302,7 @@ def show_game_download_warning(workers: int,
             shutil.get_terminal_size().columns))).lower()
     while choice not in ['y', 'n']:
         choice = input_fn('Either enter Y or N as an argument:').lower()
-    if choice == 'n':
-        return False
-    else:
-        logging.info('Warning accepted, script will continue')
-        return True
+    return choice == 'y'
 
 
 def _create_parser():
