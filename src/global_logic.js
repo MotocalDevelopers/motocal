@@ -493,7 +493,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA += totals[key]["DABuff"];
         totalDA += totalSummon["da"];
         totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + armDAupOther);
-        totalDA = totalDA >= 0.0 ? totalDA : 0.0;
+        if (key == "Djeeta") {
+            totalDA += buff["masterDA"];
+            totalDA += buff["zenithDA"];
+        }
+        
+        totalDA = totalDA >= 0.0 ? totalDA : 0.0; // Fit 100% >= DA >= 0%
         totalDA = totalDA <= 1.0 ? totalDA : 1.0;
        
 
@@ -511,16 +516,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalTA += totals[key]["TABuff"];
         totalTA += totalSummon["ta"];
         totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther);
-        totalTA = totalTA >= 0.0 ? totalTA : 0.0;
-        totalTA = totalTA <= 1.0 ? totalTA : 1.0;
-        
-        // Djeeta(DA,TA)
         if (key == "Djeeta") {
-            totalDA += buff["masterDA"];
-            totalDA += buff["zenithDA"];
             totalTA += buff["masterTA"];
             totalTA += buff["zenithTA"];
         }
+        
+        totalTA = totalTA >= 0.0 ? totalTA : 0.0; // Fit 100% >= TA >= 0%
+        totalTA = totalTA <= 1.0 ? totalTA : 1.0;
+        
 
         var taRate = parseFloat(totalTA) < 1.0 ? parseFloat(totalTA) : 1.0;
         var daRate = parseFloat(totalDA) < 1.0 ? parseFloat(totalDA) : 1.0;
