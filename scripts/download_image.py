@@ -41,11 +41,11 @@ TXT_SOURCE = {
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
 GAME_WORKER_LIMIT = 1
 
-WARNING_MESSAGE = """ WARNING: You specified {} workers which is over limit \
-{} to download images from game website This may lead you to get banned. If \
-you accept it enter Y or enter N to exit script. If not please define number \
-of threads with -w parameter. If you want to skip this warning you can enter \
--y while calling script : """
+WARNING_MESSAGE = """WARNING: You specified {} workers which is over limit
+{} to download images from game website This may lead you to get banned. If
+you accept it enter Y or enter N to exit script. If not please define number
+of threads with -w parameter. If you want to skip this warning you can enter
+-y while calling script: """
 
 
 def _progress_reporter(count: int, total: int, result: FutureResult,
@@ -263,8 +263,8 @@ def main(argv: list):
         read_lines = functools.partial(map, str.rstrip)
         urls = read_lines(url_file)
         items = list(
-            scan_file_for_download_list(urls, options.site, options.output,
-                                        options.force))
+                scan_file_for_download_list(urls, options.site, options.output,
+                                            options.force))
         total = len(items)
 
     if total <= 0:
@@ -295,13 +295,10 @@ def accept_game_download_warning(workers: int,
     False
     """
     import textwrap
-    import shutil
-    choice = input_fn('\n'.join(textwrap.wrap(
-            textwrap.dedent(
-                    WARNING_MESSAGE.format(workers, GAME_WORKER_LIMIT)),
-            shutil.get_terminal_size().columns))).lower()
-    while choice not in ['y', 'n']:
-        choice = input_fn('Either enter Y or N as an argument:').lower()
+    choice = input_fn('\n'.join(textwrap.wrap(textwrap.dedent(
+        WARNING_MESSAGE.format(workers, GAME_WORKER_LIMIT)))))
+    while choice.lower() not in ['y', 'n']:
+        choice = input_fn('Either enter Y or N as an argument:')
     return choice == 'y'
 
 
