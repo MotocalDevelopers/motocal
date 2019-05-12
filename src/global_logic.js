@@ -524,9 +524,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalTA = totalTA >= 0.0 ? totalTA : 0.0; // Fit 100% >= TA >= 0%
         totalTA = totalTA <= 1.0 ? totalTA : 1.0;
         
-
-        var taRate = parseFloat(totalTA) < 1.0 ? parseFloat(totalTA) : 1.0;
-        var daRate = parseFloat(totalDA) < 1.0 ? parseFloat(totalDA) : 1.0;
+        var taTruncation = Math.floor(totalTA * 100) * 0.01;
+        var daTruncation = Math.floor(totalDA * 100) * 0.01;
+        var taRate = taTruncation < 1.0 ? taTruncation : 1.0;
+        var daRate = daTruncation < 1.0 ? daTruncation : 1.0;
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate));
 
         if (totals[key]["typeBonus"] == 1.5) {
