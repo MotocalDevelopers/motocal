@@ -13,13 +13,13 @@ Assume directory layouts
     * ./charaImages
     * ./txt_source/ URL list files
     * ./scripts/download_image.py This script
-
 """
 import argparse
 import functools
 import itertools
 import logging
 import os.path
+import re
 import time
 import urllib.request
 from collections import namedtuple
@@ -37,73 +37,62 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-game': "charaImageGameURLList.txt"}
 
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
-REQUIRED_REPORT_VALUES = ['count', 'total', 'message']
 
 
-class Reporter:
-    def __init__(self, total: int, report_function: callable, *args, **kwargs):
-        self.count = 1
-        self.total = total
-        self.report_function = functools.partial(report_function, *args,
-                                                 **kwargs)
-        self._validate_report_function()
-
-    def report(self, message: str, next_line: bool = True, *args, **kwargs):
-        """
-        Prints requested message to the console.
-        :param next_line: whatever reporting should skip a line or not.
-        :type message: str message to print to the console.
-        :return:
-        """
-        if not next_line:
-            message += '\r'
-        self.report_function(count=self.count, total=self.total,
-                             message=message, *args, **kwargs)
-        self.count += 1
-
-    def _validate_report_function(self):
-        """
-        Validates if reporting function has necessary parameters to function.
-        :except AttributeError if all attributes are not provided.
-        :return:
-        """
-        var_names = map(str.casefold,
-                        self.report_function.func.__code__.co_varnames
-                        [0:self.report_function.func.__code__.co_argcount])
-        if not all(x.casefold() in var_names for x in REQUIRED_REPORT_VALUES):
-            raise AttributeError(
-                'Reporter methods have to have count,'
-                ' total and message arguments')
-
-
-def _progress_reporter(count: int, total: int, message: FutureResult,
-                       bar_len: int = 45):
+def _progress_reporter(count: int, total: int, future_result: FutureResult,
+                       bar_len: int = 40, multiple_lines: bool = True):
     """
     Gives current progress on a progress bar.
+    :type multiple_lines: Allows multiple lines of report to fill
     :param count: Current item index.
     :param total: Number of items.
-    :param message: Message to print to console.
+    :param future_result: Message to print to console.
     :param bar_len: Length of the progress bar.
     :return:
+
+    >>> _progress_reporter(1, 100, FutureResult(r'url', r'path'))
+    [----------------------------------------] 1.0% ...                path
     """
     filled_len = int(round(bar_len * count / float(total)))
-    status = os.path.basename(message.path)
+    status = os.path.basename(future_result.path)
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
-    print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
+    if multiple_lines:
+        print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
+    else:
+        print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True,
+              end='\r')
 
 
-def _plain_reporter(count: int, total: int, message: FutureResult):
-    print('[%4d/%4d] Download %s' % (count, total, message.url), flush=True)
+def _plain_reporter(count: int, total: int, future_result: FutureResult,
+                    multiple_lines: bool = True):
+    """
+    Gives current file and turn
+    :param count: Current item index.
+    :param total: Number of items.
+    :param future_result: Message to print to console.
+    :param multiple_lines: Allows multiple lines of report to fill
+    :return:
+
+    >>> _plain_reporter(1, 100, FutureResult(r'url', r'path'))
+    [   1/ 100] Download url
+    """
+    if multiple_lines:
+        print('[%4d/%4d] Download %s' % (count, total, future_result.url),
+              flush=True)
+    else:
+        print('[%4d/%4d] Download %s' % (count, total, future_result.url),
+              flush=True, end='\r')
 
 
-def _quiet_reporter(count: int, total: int, message: FutureResult):
+def _quiet_reporter(count: int, total: int, future_result: FutureResult):
     """
     Added in case of it may be used internal logging for future
-    :param message: object unused
+    :param future_result: object unused
     :param total: int unused
     :param count: int unused
     :return:
+    >>> _quiet_reporter(1, 100, FutureResult(r'url', r'path'))
     """
     pass
 
@@ -114,14 +103,15 @@ def _do_nothing(*args, **kwargs):
     :param args:
     :param kwargs:
     :return:
+    >>> _do_nothing()
     """
     pass
 
 
 REPORT_TYPE = {
-    'progress': _progress_reporter,
-    'plain': _plain_reporter,
-    'quiet': _quiet_reporter,
+        'progress': _progress_reporter,
+        'plain': _plain_reporter,
+        'quiet': _quiet_reporter,
 }
 
 
@@ -136,6 +126,11 @@ def download_image(url: str, path: str, _retry_count: int = 3,
     :param _timeout: Connection timeout between client and server
     :param _wait_interval: Time to wait before retry
     :return: url and path back for reporting
+    >>> download_image(
+    ... 'http://gbf-wiki.com/attach2/696D67_313034303830393530302E706E67.png',
+    ... 'C://motocal//imgs//1040809500.png')
+    FutureResult(url='http://gbf-wiki.com/attach2/696D67_31303430383039353030\
+2E706E67.png', path='C://motocal//imgs//1040809500.png')
     """
     for _ in range(_retry_count):
         try:
@@ -151,34 +146,40 @@ def download_image(url: str, path: str, _retry_count: int = 3,
     return FutureResult(url, path)
 
 
-def validate_image_url(url: str, path: str,
-                       _timeout: int = 1000) -> FutureResult:
+def check_image_url(url: str, path: str,
+                    _timeout: int = 1000) -> FutureResult:
     """
-    Validates any image url
+    Checks any image url
     :param _timeout: Connection timeout between client and server
     :param url: URL to be check
     :param path: not used
     :return: url and path back for reporting
+    >>> check_image_url(
+    ... 'http://gbf-wiki.com/attach2/696D67_313034303830393530302E706E67.png',
+    ... 'C://motocal//imgs//1040809500.png')
+    FutureResult(url='http://gbf-wiki.com/attach2/696D67_31303430383039353030\
+2E706E67.png', path='C://motocal//imgs//1040809500.png')
     """
     try:
         url_request = urllib.request.Request(url=url, method='HEAD')
         urllib.request.urlopen(url_request, timeout=_timeout)
     except HTTPError as error:
         logging.error(
-            "Bad Url %s at path %s with error %s" % (url, path, error))
+                "Bad Url %s at path %s with error %s" % (url, path, error))
     return FutureResult(url, path)
 
 
-def validate_source_files(source_location: str, filename: str) -> bool:
-    if not os.path.isdir(source_location):
-        logging.error("No directory found: %s", source_location)
-        return False
-
-    if not os.path.isfile(filename):
-        logging.error("No url list file found: %s", filename)
-        return False
-
-    return True
+def transform_wiki_url(file_name):
+    """
+    Transforms attach url to original wiki url
+    :param file_name: name of the file
+    :return: file url
+    >>> transform_wiki_url('1040017000.png')
+    'http://gbf-wiki.com/attach2/696D67_313034303031373030302E706E67.png'
+    """
+    url = r'http://gbf-wiki.com/attach2/%s_%s.png'
+    return url % ('img'.encode('utf-8').hex().upper(),
+                  file_name.encode('utf-8').hex().upper())
 
 
 def main(argv: list):
@@ -186,6 +187,7 @@ def main(argv: list):
     Entry point of the download image script
     :param argv: Console arguments
     :return:
+    >>> main(['arm', '-c'])
     """
     script_dir = os.path.abspath(os.path.dirname(__file__))
     source_location = os.path.join(script_dir, "../txt_source")
@@ -196,42 +198,58 @@ def main(argv: list):
     key = "%s-%s" % (options.target, options.site)
     filename = os.path.join(source_location, TXT_SOURCE[key])
 
-    if not validate_source_files(source_location,
-                                 filename) or not _create_save_locations(
-        options.output, options.target, script_dir):
+    if not os.path.isdir(source_location):
+        logging.error("No directory found: %s", source_location)
         return
 
-    def transform_wiki_url(file_name):
-        url = r'http://gbf-wiki.com/attach2/%s_%s.png'
-        return url % ('img'.encode('utf-8').hex().upper(),
-                      file_name.encode('utf-8').hex().upper())
+    if not os.path.isfile(filename):
+        logging.error("No url list file found: %s", filename)
+        return
 
-    def scan_file_for_download_list(url_map: map, site: str, output: str,
-                                    force: bool):
+    if not options.output:
+        options.output = os.path.join(script_dir, SAVE_DIR[options.target])
+        logging.info("Set default save directory: %s", options.output)
+
+    try:
+        if not os.path.isdir(options.output):
+            logging.info("Save directory is created: %s", options.output)
+            makedirs(options.output)
+    except IOError as error:
+        logging.error("Can't create the file/folders %s" % error)
+        return
+
+    def scan_file_for_download_list(url_list: list, output: str, force: bool):
         """
         Scans text file and collects valid links into a generator
-        :param url_map: Content of text file
-        :param site:  Data source to be used
+        :param url_list: Content of text file
         :param output: Save location
         :param force: Whatever to overwrite current file or not
         :return:
         """
-        separator = {"wiki": "=", "game": "/"}[site]
-        for url in url_map:
-            name = url.split(separator)[-1]
-            path = os.path.abspath(
-                os.path.join(output, name))
+        for url in url_list:
+            name = re.findall(r'\d[^ /].*', url)[0]
+            path = os.path.abspath(os.path.join(output, name))
             if force or not os.path.exists(path):
-                if site == "wiki":
+                if 'wiki' in url:
                     url = transform_wiki_url(name)
                 yield url, path
 
+    if options.dry_run:
+        # In case of dry-run do nothing
+        worker_method = _do_nothing
+    elif options.check:
+        # In case of validation run validate method
+        worker_method = check_image_url
+        options.force = True
+        options.reporter = 'quiet'
+    else:
+        worker_method = download_image
+
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
         _read_lines = functools.partial(map, str.rstrip)
-        url_map = _read_lines(url_list_file)
-        items = list(
-            scan_file_for_download_list(url_map, options.site, options.output,
-                                        options.force))
+        url_list = _read_lines(url_list_file)
+        items = list(scan_file_for_download_list(url_list, options.output,
+                                                 options.force))
         total = len(items)
 
     if total <= 0:
@@ -242,70 +260,20 @@ def main(argv: list):
     _max_workers = max(1, min(total, options.workers))
 
     with ThreadPoolExecutor(max_workers=_max_workers) as executor:
-        reporter = _create_reporter(options.validate, options.reporter, total)
-        worker_method = _decide_worker_method(options.dry_run,
-                                              options.validate)
         submit = functools.partial(executor.submit, worker_method)
+        counter = functools.partial(next, itertools.count(start=1))
+        reporter = REPORT_TYPE.get(options.reporter)
         for future in as_completed(itertools.starmap(submit, items)):
-            reporter.report(future.result())
-
-
-def _create_reporter(validate: bool, report_type: str, total: int) -> Reporter:
-    """
-    Create a reporter object
-    :param validate: Validate implies quiet in order to not overwrite errors
-    :param report_type: Report type supplied from command line
-    :param total: Total amount of items
-    :return:
-    """
-    if validate:
-        report_type = 'quiet'
-    report_function = REPORT_TYPE.get(report_type, _progress_reporter)
-    reporter = Reporter(total=total, report_function=report_function)
-    return reporter
-
-
-def _decide_worker_method(dry_run: bool = False,
-                          validate: bool = False) -> callable:
-    """
-    Decides which method to use in order to run user request
-    :param dry_run: Does nothing
-    :param validate: Validates all urls
-    :return:
-    """
-    if dry_run:
-        # In case of dry-run do nothing
-        worker_method = _do_nothing
-    elif validate:
-        # In case of validation run validate method
-        worker_method = validate_image_url
-    else:
-        worker_method = download_image
-    return worker_method
-
-
-def _create_save_locations(output: str, target: str, script_dir: str) -> bool:
-    """
-    Create files and folders for save location if they don't exist
-    :param output: Desired save location
-    :param target: Arm or chara type
-    :param script_dir: Current location of script
-    :return:
-    """
-    try:
-        if not output:
-            output = os.path.join(script_dir, SAVE_DIR[target])
-            logging.info("Set default save directory: %s", output)
-        if not os.path.isdir(output):
-            logging.info("Save directory is created: %s", output)
-            makedirs(output)
-        return True
-    except IOError as err:
-        logging.error("Cannot create necessary folder or files %s" % err)
-        return False
+            reporter(counter(), total, future.result())
 
 
 def _create_parser():
+    """
+    Creates default parser for the application
+    :return:
+    >>> any('target' in x.dest for x in _create_parser()._actions)
+    True
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('target', type=str, action='store',
                         choices=list(SAVE_DIR.keys()))
@@ -325,7 +293,7 @@ def _create_parser():
                               const='quiet')
     run_group = parser.add_mutually_exclusive_group(required=False)
     run_group.add_argument('-d', '--dry-run', action='store_true')
-    run_group.add_argument('-v', '--validate', action='store_true')
+    run_group.add_argument('-c', '--check', action='store_true')
     return parser
 
 
