@@ -20,7 +20,6 @@ import itertools
 import logging
 import os.path
 import re
-import threading
 import time
 import urllib.request
 from collections import namedtuple
@@ -38,21 +37,6 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-game': "charaImageGameURLList.txt"}
 
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
-_print_lock = threading.Lock()
-
-
-def _report_print(string, flush=True, multi=True):
-    """
-    Thread safe printing
-    :param string: Message to be printed
-    :param flush: Whatever printer will not buffer or not
-    :param multi: Skip to next line or overwrite
-    :return:
-    >>> _report_print('Hello World!')
-    Hello World!
-    """
-    with _print_lock:
-        print(string, flush=flush, end='\r' if not multi else '')
 
 
 def _progress_reporter(count: int, total: int, result: FutureResult,
@@ -73,8 +57,8 @@ def _progress_reporter(count: int, total: int, result: FutureResult,
     status = os.path.basename(result.path)
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
-    _report_print('[{}] {}{} ...{:>20}'.format(bar, percents, '%', status),
-                  multi=multi)
+    print('[{}] {}{} ...{:>20}'.format(bar, percents, '%', status),
+          flush=True, end='\r' if not multi else '')
 
 
 def _plain_reporter(count: int, total: int, result: FutureResult,
@@ -90,8 +74,8 @@ def _plain_reporter(count: int, total: int, result: FutureResult,
     >>> _plain_reporter(1, 100, FutureResult(r'url', r'path'))
     [   1/ 100] Download url
     """
-    _report_print('[{:>4}/{:>4}] Download {}'.format(count, total, result.url),
-                  multi=multi)
+    print('[{:>4}/{:>4}] Download {}'.format(count, total, result.url),
+          flush=True, end='\r' if not multi else '')
 
 
 def _quiet_reporter(count: int, total: int, result: FutureResult):
