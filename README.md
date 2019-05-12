@@ -85,12 +85,12 @@ $ npm run production-watch-dev
 - Php file for DB communication is not managed.
 - The repository does not manage image files for templates. It is necessary to DL using the following scripts.
 
-## About scripts / 作業用スクリプトについて
+## About scripts
 This is section for scripts that generates json data for templates and pulls weapon/character image data from gbfwiki.
 
 ※ Downloading images from the game is possible, but that may be considered as a bannable offense, if you use that script, you use it on your own personal responsibility.
 
-For python scripts / pythonスクリプトなら、
+For python scripts
 ```sh
 $ python3 ./scripts/arm_data_converter.py
 ```
