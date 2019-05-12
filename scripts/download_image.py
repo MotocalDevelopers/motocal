@@ -59,7 +59,7 @@ def _progress_reporter(count: int, total: int, result: FutureResult,
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     print('[{}] {}{} ...{:>20}'.format(bar, percents, '%', status),
-          flush=True, end='\r' if not multi else os.linesep)
+          flush=True, end='\r' if not multi else '\n')
 
 
 def _plain_reporter(count: int, total: int, result: FutureResult,
@@ -76,7 +76,7 @@ def _plain_reporter(count: int, total: int, result: FutureResult,
     [   1/ 100] Download url
     """
     print('[{:>4}/{:>4}] Download {}'.format(count, total, result.url),
-          flush=True, end='\r' if not multi else os.linesep)
+          flush=True, end='\r' if not multi else '\n')
 
 
 def _quiet_reporter(count: int, total: int, result: FutureResult):
