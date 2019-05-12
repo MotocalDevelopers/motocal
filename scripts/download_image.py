@@ -286,8 +286,7 @@ def show_game_download_warning(workers: int,
               'banned. If you accept it enter Y or enter N to exit script. ' \
               'If not please define number of threads with -w parameter. If ' \
               'you want to skip this warning you can enter -y while calling ' \
-              'script : '.format(
-        workers, GAME_WORKER_LIMIT)
+              'script : '.format(workers, GAME_WORKER_LIMIT)
     warning = '\n'.join(warning[i:i + 92] for i in range(0, len(warning), 92))
     choice = input_fn(warning).lower()
     while choice not in ['y', 'n']:
