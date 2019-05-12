@@ -17,6 +17,7 @@
         "attack": "10411",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040030000_03.png",
         "en": "[5★] Anre"
     },
@@ -38,6 +39,7 @@
         "attack": "11222",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040031000_03.png",
         "en": "[5★] Tweyen"
     },
@@ -59,6 +61,7 @@
         "attack": "13333",
         "baseDA": 5.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040032000_03.png",
         "en": "[5★] Threo"
     },
@@ -80,6 +83,7 @@
         "attack": "10344",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040033000_03.png",
         "en": "[5★] Feower"
     },
@@ -101,6 +105,7 @@
         "attack": "9355",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040034000_03.png",
         "en": "[5★] Fif"
     },
@@ -122,6 +127,7 @@
         "attack": "8666",
         "baseDA": 1000.0,
         "baseTA": 0.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040035000_03.png",
         "en": "[5★] Seox"
     },
@@ -143,6 +149,7 @@
         "attack": "12777",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040036000_03.png",
         "en": "[5★] Seofon"
     },
@@ -164,6 +171,7 @@
         "attack": "12888",
         "baseDA": 25.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040037000_03.png",
         "en": "[5★] Eahta"
     },
@@ -185,6 +193,7 @@
         "attack": "12199",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040038000_03.png",
         "en": "[5★] Niyon"
     },
@@ -206,6 +215,7 @@
         "attack": "10000",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040039000_03.png",
         "en": "[5★] Tien"
     },
@@ -227,6 +237,7 @@
         "attack": "8911",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040030000_01.png",
         "en": "Anre"
     },
@@ -248,6 +259,7 @@
         "attack": "9522",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040031000_01.png",
         "en": "Tweyen"
     },
@@ -269,6 +281,7 @@
         "attack": "11333",
         "baseDA": 5.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040032000_01.png",
         "en": "Threo"
     },
@@ -290,6 +303,7 @@
         "attack": "8844",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040033000_01.png",
         "en": "Feower"
     },
@@ -311,6 +325,7 @@
         "attack": "8055",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040034000_01.png",
         "en": "Fif"
     },
@@ -332,6 +347,7 @@
         "attack": "6666",
         "baseDA": 1000.0,
         "baseTA": 0.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040035000_01.png",
         "en": "Seox"
     },
@@ -353,6 +369,7 @@
         "attack": "10777",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040036000_01.png",
         "en": "Seofon"
     },
@@ -374,6 +391,7 @@
         "attack": "10788",
         "baseDA": 5.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040037000_01.png",
         "en": "Eahta"
     },
@@ -395,6 +413,7 @@
         "attack": "10399",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040038000_01.png",
         "en": "Niyon"
     },
@@ -416,6 +435,7 @@
         "attack": "8200",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040039000_01.png",
         "en": "Tien"
     },
@@ -437,6 +457,7 @@
         "attack": "11403",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040160000_01.png",
         "en": "Maria Theresa"
     },
@@ -458,6 +479,7 @@
         "attack": "9808",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040161000_01.png",
         "en": "Fraux"
     },
@@ -479,6 +501,7 @@
         "attack": "11407",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040162000_01.png",
         "en": "Geisenborger"
     },
@@ -500,6 +523,7 @@
         "attack": "10409",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040163000_01.png",
         "en": "Estarriola"
     },
@@ -521,6 +545,7 @@
         "attack": "10000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040164000_01.png",
         "en": "Caim"
     },
@@ -542,6 +567,7 @@
         "attack": "10901",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040165000_01.png",
         "en": "Lobelia"
     },
@@ -563,6 +589,7 @@
         "attack": "7604",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040166000_01.png",
         "en": "Katzelia"
     },
@@ -584,6 +611,7 @@
         "attack": "9705",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040167000_01.png",
         "en": "Alanaan"
     },
@@ -605,6 +633,7 @@
         "attack": "10402",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040168000_01.png",
         "en": "Haaselia"
     },
@@ -626,6 +655,7 @@
         "attack": "8906",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
@@ -668,6 +698,7 @@
         "attack": "8020",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040213000_01.png",
         "en": "Macula Marius"
     },
@@ -689,6 +720,7 @@
         "attack": "7800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040212000_01.png",
         "en": "Grimnir"
     },
@@ -710,6 +742,7 @@
         "attack": "9750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040211000_01.png",
         "en": "Vira (Wind)"
     },
@@ -731,6 +764,7 @@
         "attack": "7440",
         "baseDA": 12.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040210000_01.png",
         "en": "Yuel (Themed)"
     },
@@ -752,6 +786,7 @@
         "attack": "7100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040209000_01.png",
         "en": "Ferry (Grand)"
     },
@@ -773,6 +808,7 @@
         "attack": "8600",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040208000_01.png",
         "en": "Heles (Wind)"
     },
@@ -794,6 +830,7 @@
         "attack": "9210",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040207000_01.png",
         "en": "Melissabelle (Valentine)"
     },
@@ -815,6 +852,7 @@
         "attack": "9130",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040206000_01.png",
         "en": "Clarisse (Valentine)"
     },
@@ -836,6 +874,7 @@
         "attack": "8700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040204000_01.png",
         "en": "Sen (SSR)"
     },
@@ -857,6 +896,7 @@
         "attack": "9750",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040205000_01.png",
         "en": "Dante and Freiheit"
     },
@@ -878,6 +918,7 @@
         "attack": "8800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040203000_01.png",
         "en": "Tanya (SSR)"
     },
@@ -899,6 +940,7 @@
         "attack": "7000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040202000_01.png",
         "en": "Athena"
     },
@@ -920,6 +962,7 @@
         "attack": "8600",
         "baseDA": 13.0,
         "baseTA": 5.5,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040198000_01.png",
         "en": "Eustace (Dark)"
     },
@@ -941,6 +984,7 @@
         "attack": "10600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040197000_01.png",
         "en": "Kumbhira"
     },
@@ -962,6 +1006,7 @@
         "attack": "11400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040196000_01.png",
         "en": "Shiva"
     },
@@ -983,6 +1028,7 @@
         "attack": "7310",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040195000_01.png",
         "en": "Metera (Holiday)"
     },
@@ -1004,6 +1050,7 @@
         "attack": "7700",
         "baseDA": 12.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3040201000_01.png",
         "en": "Kokkoro"
     },
@@ -1025,6 +1072,7 @@
         "attack": "6150",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040200000_01.png",
         "en": "Pecorine"
     },
@@ -1046,6 +1094,7 @@
         "attack": "8900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040199000_01.png",
         "en": "Yurius"
     },
@@ -1067,6 +1116,7 @@
         "attack": "10350",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040194000_01.png",
         "en": "Charlotta (Light)"
     },
@@ -1088,6 +1138,7 @@
         "attack": "4300",
         "baseDA": 1000.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040193000_01.png",
         "en": "Levin Sisters"
     },
@@ -1109,6 +1160,7 @@
         "attack": "10030",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040192000_01.png",
         "en": "Aglovale"
     },
@@ -1130,6 +1182,7 @@
         "attack": "4600",
         "baseDA": 1000.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040191000_01.png",
         "en": "Lancelot and Vane"
     },
@@ -1151,6 +1204,7 @@
         "attack": "6800",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040190000_01.png",
         "en": "Europa"
     },
@@ -1172,6 +1226,7 @@
         "attack": "8700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040189000_01.png",
         "en": "Lady Grey (Halloween)"
     },
@@ -1193,6 +1248,7 @@
         "attack": "4400",
         "baseDA": 1000.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040188000_01.png",
         "en": "Cure Black and Cure White"
     },
@@ -1214,6 +1270,7 @@
         "attack": "9800",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040187000_01.png",
         "en": "Silva (Light)"
     },
@@ -1235,6 +1292,7 @@
         "attack": "8640",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040186000_01.png",
         "en": "Monika"
     },
@@ -1256,6 +1314,7 @@
         "attack": "6800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040185000_01.png",
         "en": "Aqours Third-Years"
     },
@@ -1277,6 +1336,7 @@
         "attack": "6100",
         "baseDA": 6.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040184000_01.png",
         "en": "Aqours First-Years"
     },
@@ -1298,6 +1358,7 @@
         "attack": "10500",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040183000_03.png",
         "en": "Aqours Second-Years"
     },
@@ -1319,6 +1380,7 @@
         "attack": "8120",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040182000_01.png",
         "en": "Freezie"
     },
@@ -1340,6 +1402,7 @@
         "attack": "7899",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040181000_01.png",
         "en": "Pholia"
     },
@@ -1361,6 +1424,7 @@
         "attack": "10500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040180000_01.png",
         "en": "Tsubasa"
     },
@@ -1382,6 +1446,7 @@
         "attack": "10050",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040179000_01.png",
         "en": "Grea (Summer)"
     },
@@ -1403,6 +1468,7 @@
         "attack": "7160",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040178000_01.png",
         "en": "Naoise (Summer)"
     },
@@ -1424,6 +1490,7 @@
         "attack": "8640",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040177000_01.png",
         "en": "Ilsa (Summer)"
     },
@@ -1445,6 +1512,7 @@
         "attack": "8500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040176000_01.png",
         "en": "Rosetta (Summer)"
     },
@@ -1466,6 +1534,7 @@
         "attack": "7880",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040175000_01.png",
         "en": "Selfira"
     },
@@ -1487,6 +1556,7 @@
         "attack": "8600",
         "baseDA": 1000.0,
         "baseTA": 1000.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040174000_01.png",
         "en": "Wulf and Renie"
     },
@@ -1508,6 +1578,7 @@
         "attack": "8700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040173000_01.png",
         "en": "Joker"
     },
@@ -1529,6 +1600,7 @@
         "attack": "9240",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040172000_01.png",
         "en": "Lunalu (SSR)"
     },
@@ -1550,6 +1622,7 @@
         "attack": "8950",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040171000_01.png",
         "en": "Cain (Grand)"
     },
@@ -1571,6 +1644,7 @@
         "attack": "10200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040170000_01.png",
         "en": "Soriz (SSR)"
     },
@@ -1592,6 +1666,7 @@
         "attack": "8500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040159000_01.png",
         "en": "Cucouroux (SSR)"
     },
@@ -1613,6 +1688,7 @@
         "attack": "7000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040158000_01.png",
         "en": "Alexiel"
     },
@@ -1634,6 +1710,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040157000_01.png",
         "en": "Conan Edogawa"
     },
@@ -1655,6 +1732,7 @@
         "attack": "7550",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040156000_01.png",
         "en": "Nicholas (SSR)"
     },
@@ -1676,6 +1754,7 @@
         "attack": "9700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 12.5,
         "imageURL": "./charaimgs/3040155000_01.png",
         "en": "Robomi (SSR)"
     },
@@ -1697,6 +1776,7 @@
         "attack": "7100",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040154000_01.png",
         "en": "Jeanne d'Arc (Themed)"
     },
@@ -1718,6 +1798,7 @@
         "attack": "9150",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040153000_03.png",
         "en": "Sandalphon"
     },
@@ -1739,6 +1820,7 @@
         "attack": "7300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040152000_01.png",
         "en": "Tiamat"
     },
@@ -1760,6 +1842,7 @@
         "attack": "8500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040151000_01.png",
         "en": "Medusa (Valentine)"
     },
@@ -1781,6 +1864,7 @@
         "attack": "8700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040150000_01.png",
         "en": "Zooey"
     },
@@ -1802,6 +1886,7 @@
         "attack": "9800",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040149000_01.png",
         "en": "Therese (SSR)"
     },
@@ -1823,6 +1908,7 @@
         "attack": "8500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040148000_01.png",
         "en": "Ilsa"
     },
@@ -1844,6 +1930,7 @@
         "attack": "8720",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040147000_01.png",
         "en": "Vajra"
     },
@@ -1865,6 +1952,7 @@
         "attack": "10130",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040146000_01.png",
         "en": "Vaseraga (Earth)"
     },
@@ -1886,6 +1974,7 @@
         "attack": "7800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040145000_01.png",
         "en": "Olivia"
     },
@@ -1907,6 +1996,7 @@
         "attack": "7400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040144000_01.png",
         "en": "Charioce XVII"
     },
@@ -1928,6 +2018,7 @@
         "attack": "7900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040143000_01.png",
         "en": "Mary (Holiday)"
     },
@@ -1949,6 +2040,7 @@
         "attack": "9760",
         "baseDA": 0.0,
         "baseTA": 100.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040142000_01.png",
         "en": "Levi"
     },
@@ -1970,6 +2062,7 @@
         "attack": "7200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040141000_01.png",
         "en": "Vira (Grand)"
     },
@@ -1991,6 +2084,7 @@
         "attack": "9400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040140000_01.png",
         "en": "Lancelot (Wind)"
     },
@@ -2012,6 +2106,7 @@
         "attack": "8500",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040138000_01.png",
         "en": "Yuel (Water)"
     },
@@ -2033,6 +2128,7 @@
         "attack": "9990",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040137000_01.png",
         "en": "Azazel"
     },
@@ -2054,6 +2150,7 @@
         "attack": "6730",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3040136000_01.png",
         "en": "Sakura Kinomoto"
     },
@@ -2075,6 +2172,7 @@
         "attack": "8610",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040135000_01.png",
         "en": "Danua (Halloween)"
     },
@@ -2096,6 +2194,7 @@
         "attack": "9300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040134000_01.png",
         "en": "Dorothy and Claudia"
     },
@@ -2117,6 +2216,7 @@
         "attack": "7720",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040133000_01.png",
         "en": "Nina Drango"
     },
@@ -2138,6 +2238,7 @@
         "attack": "7925",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040132000_01.png",
         "en": "Anne"
     },
@@ -2159,6 +2260,7 @@
         "attack": "7580",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040131000_01.png",
         "en": "Mikazuki Munechika"
     },
@@ -2180,6 +2282,7 @@
         "attack": "10100",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040130000_01.png",
         "en": "Grea"
     },
@@ -2201,6 +2304,7 @@
         "attack": "8100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3040129000_01.png",
         "en": "Diantha (Summer)"
     },
@@ -2222,6 +2326,7 @@
         "attack": "9500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040128000_01.png",
         "en": "Siegfried (Summer)"
     },
@@ -2243,6 +2348,7 @@
         "attack": "6850",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3040127000_01.png",
         "en": "Korwa (Summer)"
     },
@@ -2264,6 +2370,7 @@
         "attack": "10100",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040126000_01.png",
         "en": "Izmir (Summer)"
     },
@@ -2285,6 +2392,7 @@
         "attack": "6300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040125000_01.png",
         "en": "Yggdrasil"
     },
@@ -2306,6 +2414,7 @@
         "attack": "9200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040123000_01.png",
         "en": "Medusa (Promo)"
     },
@@ -2327,6 +2436,7 @@
         "attack": "7420",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040124000_01.png",
         "en": "Baotorda (SSR)"
     },
@@ -2348,6 +2458,7 @@
         "attack": "8500",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040122000_03.png",
         "en": "Scathacha"
     },
@@ -2369,6 +2480,7 @@
         "attack": "9500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040121000_01.png",
         "en": "Clarisse (Light)"
     },
@@ -2390,6 +2502,7 @@
         "attack": "6370",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040120000_01.png",
         "en": "Cagliostro (Dark)"
     },
@@ -2411,6 +2524,7 @@
         "attack": "7510",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040119000_01.png",
         "en": "Drang"
     },
@@ -2432,6 +2546,7 @@
         "attack": "7330",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040118000_01.png",
         "en": "Katalina (Dark)"
     },
@@ -2453,6 +2568,7 @@
         "attack": "6960",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040117000_01.png",
         "en": "Vane (SSR)"
     },
@@ -2474,6 +2590,7 @@
         "attack": "8700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040116000_01.png",
         "en": "Lady Katapillar and Vira"
     },
@@ -2495,6 +2612,7 @@
         "attack": "11100",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040115000_01.png",
         "en": "Sturm"
     },
@@ -2516,6 +2634,7 @@
         "attack": "5800",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040113000_01.png",
         "en": "De La Fille (Earth)"
     },
@@ -2537,6 +2656,7 @@
         "attack": "10400",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040112000_01.png",
         "en": "Zeta (Dark)"
     },
@@ -2558,6 +2678,7 @@
         "attack": "7300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040111000_01.png",
         "en": "Orchis (Grand)"
     },
@@ -2579,6 +2700,7 @@
         "attack": "11000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040110000_01.png",
         "en": "Beatrix (Themed)"
     },
@@ -2600,6 +2722,7 @@
         "attack": "7100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040109000_01.png",
         "en": "Razia"
     },
@@ -2621,6 +2744,7 @@
         "attack": "9290",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040108000_01.png",
         "en": "Marquiares"
     },
@@ -2642,6 +2766,7 @@
         "attack": "8900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040107000_01.png",
         "en": "Mahira"
     },
@@ -2663,6 +2788,7 @@
         "attack": "7700",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040106000_01.png",
         "en": "Lucio (Grand)"
     },
@@ -2684,6 +2810,7 @@
         "attack": "8000",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040105000_01.png",
         "en": "Yuisis"
     },
@@ -2705,6 +2832,7 @@
         "attack": "8800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040104000_01.png",
         "en": "Arulumaya (Christmas)"
     },
@@ -2726,6 +2854,7 @@
         "attack": "7970",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040103000_01.png",
         "en": "Anthuria"
     },
@@ -2747,6 +2876,7 @@
         "attack": "10100",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040102000_01.png",
         "en": "Melissabelle"
     },
@@ -2768,6 +2898,7 @@
         "attack": "8500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040101000_01.png",
         "en": "Lecia (Grand)"
     },
@@ -2789,6 +2920,7 @@
         "attack": "9980",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040100000_01.png",
         "en": "Izmir"
     },
@@ -2810,6 +2942,7 @@
         "attack": "8900",
         "baseDA": 13.0,
         "baseTA": 5.5,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040099000_01.png",
         "en": "Eustace (Halloween)"
     },
@@ -2831,6 +2964,7 @@
         "attack": "8500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040098000_01.png",
         "en": "Romeo"
     },
@@ -2852,6 +2986,7 @@
         "attack": "7200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040096000_01.png",
         "en": "Juliet"
     },
@@ -2873,6 +3008,7 @@
         "attack": "6470",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040095000_01.png",
         "en": "Societte (Fire)"
     },
@@ -2894,6 +3030,7 @@
         "attack": "9500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040094000_01.png",
         "en": "Veight"
     },
@@ -2915,6 +3052,7 @@
         "attack": "8700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040093000_01.png",
         "en": "Chat Noir"
     },
@@ -2936,6 +3074,7 @@
         "attack": "9200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040092000_01.png",
         "en": "Zooey (Grand)"
     },
@@ -2957,6 +3096,7 @@
         "attack": "8640",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040091000_01.png",
         "en": "Heles (Summer)"
     },
@@ -2978,6 +3118,7 @@
         "attack": "9120",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040090000_01.png",
         "en": "Percival (Summer)"
     },
@@ -2999,6 +3140,7 @@
         "attack": "10240",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040089000_01.png",
         "en": "Narmaya (Summer)"
     },
@@ -3020,6 +3162,7 @@
         "attack": "8900",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040088000_01.png",
         "en": "Yngwie"
     },
@@ -3041,6 +3184,7 @@
         "attack": "8000",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040087000_01.png",
         "en": "Rosamia"
     },
@@ -3062,6 +3206,7 @@
         "attack": "10130",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040086000_01.png",
         "en": "Forte"
     },
@@ -3083,6 +3228,7 @@
         "attack": "8800",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040085000_01.png",
         "en": "Nemone"
     },
@@ -3104,6 +3250,7 @@
         "attack": "8800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040084000_01.png",
         "en": "Ayer"
     },
@@ -3125,6 +3272,7 @@
         "attack": "9830",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040083000_01.png",
         "en": "Aliza"
     },
@@ -3146,6 +3294,7 @@
         "attack": "10000",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040082000_01.png",
         "en": "Black Knight (Grand)"
     },
@@ -3167,6 +3316,7 @@
         "attack": "7000",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3040081000_01.png",
         "en": "Korwa"
     },
@@ -3188,6 +3338,7 @@
         "attack": "9800",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040080000_01.png",
         "en": "Jeanne d'Arc (Dark)"
     },
@@ -3209,6 +3360,7 @@
         "attack": "11970",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040079000_03.png",
         "en": "Hallessena"
     },
@@ -3230,6 +3382,7 @@
         "attack": "7200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040078000_01.png",
         "en": "Zooey (Promo)"
     },
@@ -3251,6 +3404,7 @@
         "attack": "9900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040077000_01.png",
         "en": "Eugen (Grand)"
     },
@@ -3272,6 +3426,7 @@
         "attack": "8400",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040076000_01.png",
         "en": "Aoidos"
     },
@@ -3293,6 +3448,7 @@
         "attack": "7560",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040075000_01.png",
         "en": "Zahlhamelina"
     },
@@ -3314,6 +3470,7 @@
         "attack": "8170",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040074000_01.png",
         "en": "Catherine"
     },
@@ -3335,6 +3492,7 @@
         "attack": "7450",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040073000_01.png",
         "en": "Ferry"
     },
@@ -3356,6 +3514,7 @@
         "attack": "8400",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040072000_01.png",
         "en": "Metera (Fire)"
     },
@@ -3377,6 +3536,7 @@
         "attack": "8940",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.5,
         "imageURL": "./charaimgs/3040071000_03.png",
         "en": "Andira"
     },
@@ -3398,6 +3558,7 @@
         "attack": "9250",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040070000_01.png",
         "en": "Beatrix"
     },
@@ -3419,6 +3580,7 @@
         "attack": "8900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040069000_01.png",
         "en": "Eustace"
     },
@@ -3440,6 +3602,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040068000_01.png",
         "en": "Rosetta (Grand)"
     },
@@ -3461,6 +3624,7 @@
         "attack": "8800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040067000_01.png",
         "en": "Clarisse (Christmas)"
     },
@@ -3482,6 +3646,7 @@
         "attack": "8200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040066000_01.png",
         "en": "Lilele"
     },
@@ -3503,6 +3668,7 @@
         "attack": "7700",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040065000_01.png",
         "en": "Io (Grand)"
     },
@@ -3524,6 +3690,7 @@
         "attack": "9580",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040064000_01.png",
         "en": "Yodarha"
     },
@@ -3545,6 +3712,7 @@
         "attack": "12200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040063000_03.png",
         "en": "Narmaya"
     },
@@ -3566,6 +3734,7 @@
         "attack": "8100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040062000_01.png",
         "en": "Cagliostro (Halloween)"
     },
@@ -3587,6 +3756,7 @@
         "attack": "9400",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040061000_01.png",
         "en": "Feena"
     },
@@ -3608,6 +3778,7 @@
         "attack": "8640",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040060000_01.png",
         "en": "Heles"
     },
@@ -3629,6 +3800,7 @@
         "attack": "8000",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040059000_01.png",
         "en": "Rackam (Grand)"
     },
@@ -3650,6 +3822,7 @@
         "attack": "8750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040058000_01.png",
         "en": "Arriet"
     },
@@ -3671,6 +3844,7 @@
         "attack": "10880",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040057000_03.png",
         "en": "Vania"
     },
@@ -3692,6 +3866,7 @@
         "attack": "9600",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040056000_91.png",
         "en": "Zeta (Summer)"
     },
@@ -3713,6 +3888,7 @@
         "attack": "8350",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040055000_91.png",
         "en": "Danua (Summer)"
     },
@@ -3734,6 +3910,7 @@
         "attack": "8100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040054000_01.png",
         "en": "Katalina (Grand)"
     },
@@ -3755,6 +3932,7 @@
         "attack": "8160",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040053000_91.png",
         "en": "Vira (Summer)"
     },
@@ -3776,6 +3954,7 @@
         "attack": "11970",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040052000_03.png",
         "en": "Ghandagoza"
     },
@@ -3797,6 +3976,7 @@
         "attack": "10270",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040051000_03.png",
         "en": "Amira"
     },
@@ -3818,6 +3998,7 @@
         "attack": "10830",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040050000_03.png",
         "en": "Percival"
     },
@@ -3839,6 +4020,7 @@
         "attack": "10990",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040049000_03.png",
         "en": "Silva"
     },
@@ -3860,6 +4042,7 @@
         "attack": "8360",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040048000_01.png",
         "en": "Sarunan (Dark)"
     },
@@ -3881,6 +4064,7 @@
         "attack": "7680",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040047000_01.png",
         "en": "Petra"
     },
@@ -3902,6 +4086,7 @@
         "attack": "8480",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040046000_01.png",
         "en": "Clarisse"
     },
@@ -3923,6 +4108,7 @@
         "attack": "6080",
         "baseDA": 1000.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040045000_03.png",
         "en": "Albert"
     },
@@ -3944,6 +4130,7 @@
         "attack": "7920",
         "baseDA": 20.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040044000_01.png",
         "en": "Societte"
     },
@@ -3965,6 +4152,7 @@
         "attack": "10640",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040043000_03.png",
         "en": "Vira"
     },
@@ -3986,6 +4174,7 @@
         "attack": "9240",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040042000_01.png",
         "en": "Carmelina"
     },
@@ -4007,6 +4196,7 @@
         "attack": "7200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040041000_01.png",
         "en": "Sara"
     },
@@ -4028,6 +4218,7 @@
         "attack": "9850",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040040000_03.png",
         "en": "Jeanne d'Arc"
     },
@@ -4049,6 +4240,7 @@
         "attack": "12540",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040029000_03.png",
         "en": "Vaseraga"
     },
@@ -4070,6 +4262,7 @@
         "attack": "9600",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040028000_01.png",
         "en": "Zeta"
     },
@@ -4091,6 +4284,7 @@
         "attack": "10415",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.5,
         "imageURL": "./charaimgs/3040027000_03.png",
         "en": "Anila"
     },
@@ -4112,6 +4306,7 @@
         "attack": "7280",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.7,
         "imageURL": "./charaimgs/3040026000_01.png",
         "en": "Rosetta (Christmas)"
     },
@@ -4133,6 +4328,7 @@
         "attack": "9880",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040025000_03.png",
         "en": "Siegfried"
     },
@@ -4154,6 +4350,7 @@
         "attack": "6160",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.7,
         "imageURL": "./charaimgs/3040024000_01.png",
         "en": "Sophia"
     },
@@ -4175,6 +4372,7 @@
         "attack": "10830",
         "baseDA": 25.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040023000_03.png",
         "en": "Lancelot"
     },
@@ -4196,6 +4394,7 @@
         "attack": "8640",
         "baseDA": 12.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040022000_01.png",
         "en": "Melleau"
     },
@@ -4217,6 +4416,7 @@
         "attack": "7790",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040021000_03.png",
         "en": "Lennah"
     },
@@ -4238,6 +4438,7 @@
         "attack": "6720",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.7,
         "imageURL": "./charaimgs/3040020000_01.png",
         "en": "Charlotta (Halloween)"
     },
@@ -4259,6 +4460,7 @@
         "attack": "9980",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040019000_03.png",
         "en": "Arulumaya"
     },
@@ -4280,6 +4482,7 @@
         "attack": "7777",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040018000_01.png",
         "en": "Christina"
     },
@@ -4301,6 +4504,7 @@
         "attack": "7920",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.7,
         "imageURL": "./charaimgs/3040017000_01.png",
         "en": "Agielba"
     },
@@ -4322,6 +4526,7 @@
         "attack": "7333",
         "baseDA": 0.0,
         "baseTA": 55.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040016000_01.png",
         "en": "Cerberus"
     },
@@ -4343,6 +4548,7 @@
         "attack": "9680",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.7,
         "imageURL": "./charaimgs/3040015000_91.png",
         "en": "Io (Summer)"
     },
@@ -4364,6 +4570,7 @@
         "attack": "6400",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 4.7,
         "imageURL": "./charaimgs/3040014000_91.png",
         "en": "De La Fille (Summer)"
     },
@@ -4385,6 +4592,7 @@
         "attack": "10260",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040013000_03.png",
         "en": "Seruel"
     },
@@ -4406,6 +4614,7 @@
         "attack": "8670",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040012000_03.png",
         "en": "Metera"
     },
@@ -4427,6 +4636,7 @@
         "attack": "10450",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040011000_03.png",
         "en": "Magisa"
     },
@@ -4448,6 +4658,7 @@
         "attack": "9980",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040010000_03.png",
         "en": "Charlotta"
     },
@@ -4469,6 +4680,7 @@
         "attack": "8310",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040009000_03.png",
         "en": "Cagliostro"
     },
@@ -4490,6 +4702,7 @@
         "attack": "8360",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040008000_03.png",
         "en": "Sarunan"
     },
@@ -4511,6 +4724,7 @@
         "attack": "7720",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040007000_03.png",
         "en": "Lily"
     },
@@ -4532,6 +4746,7 @@
         "attack": "8550",
         "baseDA": 12.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040006000_03.png",
         "en": "Yuel"
     },
@@ -4553,6 +4768,7 @@
         "attack": "10680",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040005000_03.png",
         "en": "Lady Grey"
     },
@@ -4574,6 +4790,7 @@
         "attack": "6400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.5,
         "imageURL": "./charaimgs/3040004000_01.png",
         "en": "De La Fille"
     },
@@ -4595,6 +4812,7 @@
         "attack": "11400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040003000_03.png",
         "en": "Nezahualpilli"
     },
@@ -4616,6 +4834,7 @@
         "attack": "9200",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040002000_01.png",
         "en": "Aletheia"
     },
@@ -4637,6 +4856,7 @@
         "attack": "9500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040001000_03.png",
         "en": "Altair"
     },
@@ -4658,6 +4878,7 @@
         "attack": "8550",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040000000_03.png",
         "en": "Gawain"
     },
@@ -4679,6 +4900,7 @@
         "attack": "5400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030000000_01.png",
         "en": "Naoise (Light)"
     },
@@ -4700,6 +4922,7 @@
         "attack": "5500",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030001000_01.png",
         "en": "Therese (Event)"
     },
@@ -4721,6 +4944,7 @@
         "attack": "5400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030002000_01.png",
         "en": "Mishra"
     },
@@ -4742,6 +4966,7 @@
         "attack": "8400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.2,
         "imageURL": "./charaimgs/3030003000_03.png",
         "en": "Alec"
     },
@@ -4763,6 +4988,7 @@
         "attack": "6800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030004000_03.png",
         "en": "Helnar"
     },
@@ -4784,6 +5010,7 @@
         "attack": "5400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030005000_01.png",
         "en": "Katalina"
     },
@@ -4805,6 +5032,7 @@
         "attack": "6000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030006000_03.png",
         "en": "Io"
     },
@@ -4826,6 +5054,7 @@
         "attack": "7970",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030007000_03.png",
         "en": "Eugen"
     },
@@ -4847,6 +5076,7 @@
         "attack": "7250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030008000_03.png",
         "en": "Rackam"
     },
@@ -4868,6 +5098,7 @@
         "attack": "7080",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030009000_03.png",
         "en": "Gayne"
     },
@@ -4889,6 +5120,7 @@
         "attack": "5800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030010000_01.png",
         "en": "Rosetta"
     },
@@ -4910,6 +5142,7 @@
         "attack": "6000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030011000_01.png",
         "en": "Abby"
     },
@@ -4931,6 +5164,7 @@
         "attack": "7500",
         "baseDA": 12.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030012000_03.png",
         "en": "Ange"
     },
@@ -4952,6 +5186,7 @@
         "attack": "5600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030013000_01.png",
         "en": "Lamretta"
     },
@@ -4973,6 +5208,7 @@
         "attack": "7820",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030014000_03.png",
         "en": "Ulamnuran"
     },
@@ -4994,6 +5230,7 @@
         "attack": "6300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030015000_01.png",
         "en": "Aliza (Event)"
     },
@@ -5015,6 +5252,7 @@
         "attack": "5625",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030016000_01.png",
         "en": "Jessica (Event)"
     },
@@ -5036,6 +5274,7 @@
         "attack": "7840",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030017000_03.png",
         "en": "Danua"
     },
@@ -5057,6 +5296,7 @@
         "attack": "7060",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030018000_03.png",
         "en": "Sutera (Wind)"
     },
@@ -5078,6 +5318,7 @@
         "attack": "7000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030019000_01.png",
         "en": "Vira (SR)"
     },
@@ -5099,6 +5340,7 @@
         "attack": "9000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030020000_03.png",
         "en": "Soriz"
     },
@@ -5120,6 +5362,7 @@
         "attack": "4500",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3030021000_01.png",
         "en": "Sara (Event)"
     },
@@ -5141,6 +5384,7 @@
         "attack": "6000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030022000_01.png",
         "en": "Jin"
     },
@@ -5162,6 +5406,7 @@
         "attack": "6750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030023000_01.png",
         "en": "Elmott"
     },
@@ -5183,6 +5428,7 @@
         "attack": "5850",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030024000_01.png",
         "en": "Keehar"
     },
@@ -5204,6 +5450,7 @@
         "attack": "6875",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030025000_01.png",
         "en": "Elta"
     },
@@ -5225,6 +5472,7 @@
         "attack": "5880",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030026000_03.png",
         "en": "Selfira (Event)"
     },
@@ -5246,6 +5494,7 @@
         "attack": "6250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030027000_01.png",
         "en": "Ezecrain"
     },
@@ -5267,6 +5516,7 @@
         "attack": "5900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030028000_01.png",
         "en": "Sig (Event)"
     },
@@ -5288,6 +5538,7 @@
         "attack": "5625",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.7,
         "imageURL": "./charaimgs/3030029000_91.png",
         "en": "Katalina (Summer)"
     },
@@ -5309,6 +5560,7 @@
         "attack": "6625",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030030000_01.png",
         "en": "Jessica (Summer)"
     },
@@ -5330,6 +5582,7 @@
         "attack": "5920",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.7,
         "imageURL": "./charaimgs/3030031000_01.png",
         "en": "Helnar (Summer)"
     },
@@ -5351,6 +5604,7 @@
         "attack": "5740",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030032000_01.png",
         "en": "Ferry (SR)"
     },
@@ -5372,6 +5626,7 @@
         "attack": "8760",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030033000_03.png",
         "en": "Lucius"
     },
@@ -5393,6 +5648,7 @@
         "attack": "6460",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030034000_03.png",
         "en": "Teena"
     },
@@ -5414,6 +5670,7 @@
         "attack": "5200",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030035000_01.png",
         "en": "Feena (Event)"
     },
@@ -5435,6 +5692,7 @@
         "attack": "5625",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030036000_01.png",
         "en": "Arusha"
     },
@@ -5456,6 +5714,7 @@
         "attack": "6380",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030037000_01.png",
         "en": "Farrah"
     },
@@ -5477,6 +5736,7 @@
         "attack": "5100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030038000_01.png",
         "en": "Juri (Event)"
     },
@@ -5498,6 +5758,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030039000_03.png",
         "en": "Noa"
     },
@@ -5519,6 +5780,7 @@
         "attack": "5770",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030040000_03.png",
         "en": "Uzuki Shimamura"
     },
@@ -5540,6 +5802,7 @@
         "attack": "7080",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030041000_03.png",
         "en": "Rin Shibuya"
     },
@@ -5561,6 +5824,7 @@
         "attack": "7500",
         "baseDA": 12.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.7,
         "imageURL": "./charaimgs/3030042000_01.png",
         "en": "Ange (Halloween)"
     },
@@ -5582,6 +5846,7 @@
         "attack": "6570",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030043000_01.png",
         "en": "Mimlemel"
     },
@@ -5603,6 +5868,7 @@
         "attack": "4500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030044000_01.png",
         "en": "Aster"
     },
@@ -5624,6 +5890,7 @@
         "attack": "7190",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030045000_01.png",
         "en": "Mariah"
     },
@@ -5645,6 +5912,7 @@
         "attack": "6500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030046000_01.png",
         "en": "Carren"
     },
@@ -5666,6 +5934,7 @@
         "attack": "4350",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030047000_01.png",
         "en": "Vane (Event)"
     },
@@ -5687,6 +5956,7 @@
         "attack": "6500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030048000_01.png",
         "en": "Rackam (Christmas)"
     },
@@ -5708,6 +5978,7 @@
         "attack": "6000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030049000_01.png",
         "en": "Rosamia (SR)"
     },
@@ -5729,6 +6000,7 @@
         "attack": "4150",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030050000_01.png",
         "en": "Johann (Event)"
     },
@@ -5750,6 +6022,7 @@
         "attack": "6600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030051000_03.png",
         "en": "Mika Jougasaki"
     },
@@ -5771,6 +6044,7 @@
         "attack": "6230",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030052000_03.png",
         "en": "Mio Honda"
     },
@@ -5792,6 +6066,7 @@
         "attack": "6200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030053000_01.png",
         "en": "Baotorda"
     },
@@ -5813,6 +6088,7 @@
         "attack": "7660",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030054000_03.png",
         "en": "Rita"
     },
@@ -5834,6 +6110,7 @@
         "attack": "7850",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030055000_01.png",
         "en": "Ladiva"
     },
@@ -5855,6 +6132,7 @@
         "attack": "4500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030056000_01.png",
         "en": "Volenna"
     },
@@ -5876,6 +6154,7 @@
         "attack": "7250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030057000_01.png",
         "en": "Claudia"
     },
@@ -5897,6 +6176,7 @@
         "attack": "6630",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030058000_01.png",
         "en": "Dorothy"
     },
@@ -5918,6 +6198,7 @@
         "attack": "5920",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030059000_01.png",
         "en": "Zaja"
     },
@@ -5939,6 +6220,7 @@
         "attack": "4400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030060000_01.png",
         "en": "Zehek"
     },
@@ -5960,6 +6242,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030061000_03.png",
         "en": "Ejaeli"
     },
@@ -5981,6 +6264,7 @@
         "attack": "6250",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030062000_01.png",
         "en": "Therese"
     },
@@ -6002,6 +6286,7 @@
         "attack": "5780",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030063000_01.png",
         "en": "Sarya (Event)"
     },
@@ -6023,6 +6308,7 @@
         "attack": "6570",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030064000_01.png",
         "en": "Milleore"
     },
@@ -6044,6 +6330,7 @@
         "attack": "8200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030065000_03.png",
         "en": "Amira (SR)"
     },
@@ -6065,6 +6352,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030066000_01.png",
         "en": "Hazen"
     },
@@ -6086,6 +6374,7 @@
         "attack": "5250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030067000_01.png",
         "en": "Syr"
     },
@@ -6107,6 +6396,7 @@
         "attack": "6200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030068000_01.png",
         "en": "Mary"
     },
@@ -6128,6 +6418,7 @@
         "attack": "4860",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030069000_01.png",
         "en": "Mizuki Kawashima"
     },
@@ -6149,6 +6440,7 @@
         "attack": "5839",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030070000_01.png",
         "en": "Miku Maekawa"
     },
@@ -6170,6 +6462,7 @@
         "attack": "6180",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030071000_03.png",
         "en": "Anzu Futaba"
     },
@@ -6191,6 +6484,7 @@
         "attack": "5250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030072000_01.png",
         "en": "Lecia"
     },
@@ -6212,6 +6506,7 @@
         "attack": "3500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030073000_01.png",
         "en": "Pengy (Event)"
     },
@@ -6233,6 +6528,7 @@
         "attack": "4050",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030074000_01.png",
         "en": "Ceylan"
     },
@@ -6254,6 +6550,7 @@
         "attack": "5750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030075000_01.png",
         "en": "J.J."
     },
@@ -6275,6 +6572,7 @@
         "attack": "6320",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030076000_01.png",
         "en": "Sahli Lao"
     },
@@ -6296,6 +6594,7 @@
         "attack": "4900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030077000_01.png",
         "en": "Romeo (Event)"
     },
@@ -6317,6 +6616,7 @@
         "attack": "8700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030078000_03.png",
         "en": "Feather"
     },
@@ -6338,6 +6638,7 @@
         "attack": "4250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030079000_01.png",
         "en": "Robomi (Event)"
     },
@@ -6359,6 +6660,7 @@
         "attack": "5250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030080000_01.png",
         "en": "Milla Maxwell"
     },
@@ -6380,6 +6682,7 @@
         "attack": "6180",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030081000_01.png",
         "en": "Yuri Lowell"
     },
@@ -6401,6 +6704,7 @@
         "attack": "5570",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030082000_01.png",
         "en": "Sophie"
     },
@@ -6422,6 +6726,7 @@
         "attack": "6750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030083000_01.png",
         "en": "Elmott (Summer)"
     },
@@ -6443,6 +6748,7 @@
         "attack": "6000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030084000_01.png",
         "en": "Tanya (Summer)"
     },
@@ -6464,6 +6770,7 @@
         "attack": "6820",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030085000_01.png",
         "en": "Eugen (Summer)"
     },
@@ -6485,6 +6792,7 @@
         "attack": "6000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030086000_01.png",
         "en": "Jin (Event)"
     },
@@ -6506,6 +6814,7 @@
         "attack": "6570",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030087000_91.png",
         "en": "Lecia (Summer)"
     },
@@ -6527,6 +6836,7 @@
         "attack": "7200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030088000_03.png",
         "en": "Rika Jougasaki"
     },
@@ -6548,6 +6858,7 @@
         "attack": "4000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030089000_01.png",
         "en": "Kanako Mimura"
     },
@@ -6569,6 +6880,7 @@
         "attack": "5500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030090000_01.png",
         "en": "Koume Shirasaka"
     },
@@ -6590,6 +6902,7 @@
         "attack": "7230",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030091000_01.png",
         "en": "Suframare (Summer)"
     },
@@ -6611,6 +6924,7 @@
         "attack": "7900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030092000_03.png",
         "en": "Will"
     },
@@ -6632,6 +6946,7 @@
         "attack": "4980",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030093000_01.png",
         "en": "Malinda (Attack)"
     },
@@ -6653,6 +6968,7 @@
         "attack": "4000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030093000_01.png",
         "en": "Malinda (Defense)"
     },
@@ -6674,6 +6990,7 @@
         "attack": "3900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030093000_01.png",
         "en": "Malinda (Balanced)"
     },
@@ -6695,6 +7012,7 @@
         "attack": "5920",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030094000_01.png",
         "en": "Galadar"
     },
@@ -6716,6 +7034,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030095000_01.png",
         "en": "Anna"
     },
@@ -6737,6 +7056,7 @@
         "attack": "5400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030096000_03.png",
         "en": "Naoise (Event)"
     },
@@ -6758,6 +7078,7 @@
         "attack": "5900",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030097000_01.png",
         "en": "Teru Tendo"
     },
@@ -6779,6 +7100,7 @@
         "attack": "5100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030098000_01.png",
         "en": "Kaoru Sakuraba"
     },
@@ -6800,6 +7122,7 @@
         "attack": "5350",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030099000_01.png",
         "en": "Tsubasa Kashiwagi"
     },
@@ -6821,6 +7144,7 @@
         "attack": "5640",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030100000_01.png",
         "en": "Goblin Mage"
     },
@@ -6842,6 +7166,7 @@
         "attack": "5740",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030101000_01.png",
         "en": "Ferry (Halloween)"
     },
@@ -6863,6 +7188,7 @@
         "attack": "5020",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030102000_01.png",
         "en": "Jasmine"
     },
@@ -6884,6 +7210,7 @@
         "attack": "4150",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030103000_01.png",
         "en": "Farrah (Summer)"
     },
@@ -6905,6 +7232,7 @@
         "attack": "5400",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030104000_01.png",
         "en": "Ryu"
     },
@@ -6926,6 +7254,7 @@
         "attack": "5450",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030105000_01.png",
         "en": "Chun Li"
     },
@@ -6947,6 +7276,7 @@
         "attack": "7200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030106000_01.png",
         "en": "Sig"
     },
@@ -6968,6 +7298,7 @@
         "attack": "5800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030107000_01.png",
         "en": "Vane"
     },
@@ -6989,6 +7320,7 @@
         "attack": "5700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030108000_01.png",
         "en": "Lancelot (SR)"
     },
@@ -7010,6 +7342,7 @@
         "attack": "7850",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030109000_01.png",
         "en": "Ladiva (Christmas)"
     },
@@ -7031,6 +7364,7 @@
         "attack": "5760",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030110000_01.png",
         "en": "Anila (Event)"
     },
@@ -7052,6 +7386,7 @@
         "attack": "6600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030111000_03.png",
         "en": "Yaia"
     },
@@ -7073,6 +7408,7 @@
         "attack": "6150",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030112000_01.png",
         "en": "Skull (Event)"
     },
@@ -7094,6 +7430,7 @@
         "attack": "5750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030113000_01.png",
         "en": "Sutera (Fire)"
     },
@@ -7115,6 +7452,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030114000_01.png",
         "en": "Lina Inverse"
     },
@@ -7136,6 +7474,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030115000_01.png",
         "en": "Naga the Serpent"
     },
@@ -7157,6 +7496,7 @@
         "attack": "7800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030116000_01.png",
         "en": "Daetta"
     },
@@ -7178,6 +7518,7 @@
         "attack": "4750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030117000_01.png",
         "en": "Soriz (Event)"
     },
@@ -7199,6 +7540,7 @@
         "attack": "7400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030118000_01.png",
         "en": "Sevilbarra"
     },
@@ -7220,6 +7562,7 @@
         "attack": "7400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030119000_01.png",
         "en": "Ryan"
     },
@@ -7241,6 +7584,7 @@
         "attack": "5500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030120000_01.png",
         "en": "Sachiko Koshimizu"
     },
@@ -7262,6 +7606,7 @@
         "attack": "4500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030121000_01.png",
         "en": "Airi Totoki"
     },
@@ -7283,6 +7628,7 @@
         "attack": "7230",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030122000_01.png",
         "en": "Redluck"
     },
@@ -7304,6 +7650,7 @@
         "attack": "5400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030123000_03.png",
         "en": "Lowain"
     },
@@ -7325,6 +7672,7 @@
         "attack": "5350",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030124000_01.png",
         "en": "Shao"
     },
@@ -7346,6 +7694,7 @@
         "attack": "5500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030125000_01.png",
         "en": "Karin"
     },
@@ -7367,6 +7716,7 @@
         "attack": "5450",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030126000_01.png",
         "en": "Rashid"
     },
@@ -7388,6 +7738,7 @@
         "attack": "6750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030127000_01.png",
         "en": "Sen"
     },
@@ -7409,6 +7760,7 @@
         "attack": "6400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030128000_01.png",
         "en": "Eso"
     },
@@ -7430,6 +7782,7 @@
         "attack": "4750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030129000_01.png",
         "en": "Stan"
     },
@@ -7451,6 +7804,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030130000_01.png",
         "en": "Sakura Shinguji"
     },
@@ -7472,6 +7826,7 @@
         "attack": "4000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030131000_01.png",
         "en": "Erica Fontaine"
     },
@@ -7493,6 +7848,7 @@
         "attack": "6000",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030132000_01.png",
         "en": "Gemini Sunrise"
     },
@@ -7514,6 +7870,7 @@
         "attack": "7560",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030133000_01.png",
         "en": "Laguna"
     },
@@ -7535,6 +7892,7 @@
         "attack": "6650",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030134000_01.png",
         "en": "Jamil"
     },
@@ -7556,6 +7914,7 @@
         "attack": "4000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030135000_01.png",
         "en": "Morphe and Phoebe"
     },
@@ -7577,6 +7936,7 @@
         "attack": "6180",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030136000_01.png",
         "en": "Stahn Aileron"
     },
@@ -7598,6 +7958,7 @@
         "attack": "4750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030137000_01.png",
         "en": "Tear Grants"
     },
@@ -7619,6 +7980,7 @@
         "attack": "5450",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030138000_01.png",
         "en": "Elize Lutus"
     },
@@ -7640,6 +8002,7 @@
         "attack": "7800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030139000_01.png",
         "en": "Almeida"
     },
@@ -7661,6 +8024,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030140000_01.png",
         "en": "Johann"
     },
@@ -7682,6 +8046,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030141000_01.png",
         "en": "Nicholas (Event)"
     },
@@ -7703,6 +8068,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030142000_01.png",
         "en": "Novei"
     },
@@ -7724,6 +8090,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030143000_01.png",
         "en": "Augusta"
     },
@@ -7745,6 +8112,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030144000_01.png",
         "en": "Robertina"
     },
@@ -7766,6 +8134,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030145000_01.png",
         "en": "Pamela"
     },
@@ -7787,6 +8156,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030146000_01.png",
         "en": "Cecile"
     },
@@ -7808,6 +8178,7 @@
         "attack": "5600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030147000_01.png",
         "en": "Sara (Summer)"
     },
@@ -7829,6 +8200,7 @@
         "attack": "5750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030149000_01.png",
         "en": "J.J. (Summer)"
     },
@@ -7850,6 +8222,7 @@
         "attack": "5000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030150000_01.png",
         "en": "Diantha"
     },
@@ -7871,6 +8244,7 @@
         "attack": "5500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030151000_01.png",
         "en": "Jin (Wind)"
     },
@@ -7892,6 +8266,7 @@
         "attack": "7480",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030152000_01.png",
         "en": "Camieux"
     },
@@ -7913,6 +8288,7 @@
         "attack": "3750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030153000_01.png",
         "en": "Pengy"
     },
@@ -7934,6 +8310,7 @@
         "attack": "6300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030154000_01.png",
         "en": "Barawa (Event)"
     },
@@ -7955,6 +8332,7 @@
         "attack": "7800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030155000_01.png",
         "en": "Cucuroux"
     },
@@ -7976,6 +8354,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030156000_01.png",
         "en": "Dante"
     },
@@ -7997,6 +8376,7 @@
         "attack": "4500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030157000_01.png",
         "en": "Paris"
     },
@@ -8018,6 +8398,7 @@
         "attack": "6380",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030159000_01.png",
         "en": "Jessica"
     },
@@ -8039,6 +8420,7 @@
         "attack": "4800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030160000_01.png",
         "en": "Anastasia"
     },
@@ -8060,6 +8442,7 @@
         "attack": "4250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030161000_01.png",
         "en": "Miria Akagi"
     },
@@ -8081,6 +8464,7 @@
         "attack": "5500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030162000_01.png",
         "en": "Ranko Kanzaki"
     },
@@ -8102,6 +8486,7 @@
         "attack": "6580",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030163000_01.png",
         "en": "Beatrix (Halloween)"
     },
@@ -8123,6 +8508,7 @@
         "attack": "4800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030164000_01.png",
         "en": "Erin"
     },
@@ -8144,6 +8530,7 @@
         "attack": "3800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030165000_01.png",
         "en": "Lily (Event)"
     },
@@ -8165,6 +8552,7 @@
         "attack": "8130",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030166000_01.png",
         "en": "Mimlemel and Stumpeye"
     },
@@ -8186,6 +8574,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030167000_01.png",
         "en": "Tanya (SR)"
     },
@@ -8207,6 +8596,7 @@
         "attack": "6000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030168000_01.png",
         "en": "Percival (Event)"
     },
@@ -8228,6 +8618,7 @@
         "attack": "6850",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030169000_01.png",
         "en": "Sen (Holiday)"
     },
@@ -8249,6 +8640,7 @@
         "attack": "4600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030170000_01.png",
         "en": "Andira (Event)"
     },
@@ -8270,6 +8662,7 @@
         "attack": "7500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030171000_01.png",
         "en": "Lucius (Fire)"
     },
@@ -8291,6 +8684,7 @@
         "attack": "6600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030172000_03.png",
         "en": "Meteon"
     },
@@ -8312,6 +8706,7 @@
         "attack": "5600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030173000_01.png",
         "en": "Haohmaru"
     },
@@ -8333,6 +8728,7 @@
         "attack": "6200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030174000_01.png",
         "en": "Nakoruru"
     },
@@ -8354,6 +8750,7 @@
         "attack": "6450",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030175000_01.png",
         "en": "Herja"
     },
@@ -8375,6 +8772,7 @@
         "attack": "6300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030176000_01.png",
         "en": "Mina"
     },
@@ -8396,6 +8794,7 @@
         "attack": "3150",
         "baseDA": 1000.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030177000_01.png",
         "en": "Albert (Event)"
     },
@@ -8417,6 +8816,7 @@
         "attack": "4050",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030178000_01.png",
         "en": "Jin (Themed)"
     },
@@ -8438,6 +8838,7 @@
         "attack": "4200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030179000_01.png",
         "en": "Arisa"
     },
@@ -8459,6 +8860,7 @@
         "attack": "5800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030180000_01.png",
         "en": "Luna"
     },
@@ -8480,6 +8882,7 @@
         "attack": "6730",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030181000_01.png",
         "en": "Tyre"
     },
@@ -8501,6 +8904,7 @@
         "attack": "4400",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 6.0,
         "imageURL": "./charaimgs/3030182000_01.png",
         "en": "Lyria"
     },
@@ -8522,6 +8926,7 @@
         "attack": "6570",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030183000_01.png",
         "en": "Vermeil"
     },
@@ -8543,6 +8948,7 @@
         "attack": "6630",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030184000_01.png",
         "en": "Cain"
     },
@@ -8564,6 +8970,7 @@
         "attack": "7980",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030185000_01.png",
         "en": "Ludmila"
     },
@@ -8585,6 +8992,7 @@
         "attack": "7040",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030186000_01.png",
         "en": "Lamretta (Water)"
     },
@@ -8606,6 +9014,7 @@
         "attack": "5930",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030187000_01.png",
         "en": "Sutera (Event)"
     },
@@ -8627,6 +9036,7 @@
         "attack": "4830",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030188000_01.png",
         "en": "Deliford"
     },
@@ -8648,6 +9058,7 @@
         "attack": "4980",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030189000_01.png",
         "en": "Cagliostro (Event)"
     },
@@ -8669,6 +9080,7 @@
         "attack": "2700",
         "baseDA": 1000.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030190000_01.png",
         "en": "Predator"
     },
@@ -8690,6 +9102,7 @@
         "attack": "5700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030191000_01.png",
         "en": "Sevastien"
     },
@@ -8711,6 +9124,7 @@
         "attack": "4425",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030192000_01.png",
         "en": "Charlotta (Event)"
     },
@@ -8732,6 +9146,7 @@
         "attack": "4800",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030193000_01.png",
         "en": "Minami Nitta"
     },
@@ -8753,6 +9168,7 @@
         "attack": "4900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030194000_01.png",
         "en": "Shiki Ichinose"
     },
@@ -8774,6 +9190,7 @@
         "attack": "6750",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030195000_01.png",
         "en": "Jeanne d'Arc (SR)"
     },
@@ -8795,6 +9212,7 @@
         "attack": "7700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030196000_01.png",
         "en": "Jamil (Dark)"
     },
@@ -8816,6 +9234,7 @@
         "attack": "5100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030197000_01.png",
         "en": "Walder (Event)"
     },
@@ -8837,6 +9256,7 @@
         "attack": "6510",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030198000_01.png",
         "en": "Charlotta (Summer)"
     },
@@ -8858,6 +9278,7 @@
         "attack": "7650",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030199000_01.png",
         "en": "Ayer (Summer)"
     },
@@ -8879,6 +9300,7 @@
         "attack": "6685",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030200000_01.png",
         "en": "Carren (Event)"
     },
@@ -8900,6 +9322,7 @@
         "attack": "8000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030201000_01.png",
         "en": "Ghandagoza (Summer)"
     },
@@ -8921,6 +9344,7 @@
         "attack": "6200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030202000_01.png",
         "en": "Chloe (Summer)"
     },
@@ -8942,6 +9366,7 @@
         "attack": "5950",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030203000_01.png",
         "en": "Blazing Teacher Elmott"
     },
@@ -8963,6 +9388,7 @@
         "attack": "6600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030204000_01.png",
         "en": "Grea (Event)"
     },
@@ -8984,6 +9410,7 @@
         "attack": "6250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030205000_01.png",
         "en": "Izuminokami Kanesada"
     },
@@ -9005,6 +9432,7 @@
         "attack": "5200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030206000_01.png",
         "en": "Yamanbagiri Kunihiro"
     },
@@ -9026,6 +9454,7 @@
         "attack": "3100",
         "baseDA": 1000.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030207000_01.png",
         "en": "Owen"
     },
@@ -9047,6 +9476,7 @@
         "attack": "7007",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030208000_01.png",
         "en": "Reinhardtzar"
     },
@@ -9068,6 +9498,7 @@
         "attack": "7310",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030209000_01.png",
         "en": "Sarya"
     },
@@ -9089,6 +9520,7 @@
         "attack": "5900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030210000_01.png",
         "en": "Ezecrain (Event)"
     },
@@ -9110,6 +9542,7 @@
         "attack": "8290",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030220000_01.png",
         "en": "Mimlemel and Pun-Kin (Halloween)"
     },
@@ -9131,6 +9564,7 @@
         "attack": "7630",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030221000_01.png",
         "en": "Vania (SR)"
     },
@@ -9152,6 +9586,7 @@
         "attack": "4650",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030222000_01.png",
         "en": "Karteira (SR)"
     },
@@ -9173,6 +9608,7 @@
         "attack": "4700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030223000_01.png",
         "en": "Yuel (Event)"
     },
@@ -9194,6 +9630,7 @@
         "attack": "7900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030224000_01.png",
         "en": "Mirin"
     },
@@ -9215,6 +9652,7 @@
         "attack": "4950",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030225000_01.png",
         "en": "Sophia (SR)"
     },
@@ -9236,6 +9674,7 @@
         "attack": "5100",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030226000_01.png",
         "en": "Arthur"
     },
@@ -9257,6 +9696,7 @@
         "attack": "5960",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030227000_01.png",
         "en": "Mikasa"
     },
@@ -9278,6 +9718,7 @@
         "attack": "8050",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030228000_01.png",
         "en": "Feena (Holiday)"
     },
@@ -9299,6 +9740,7 @@
         "attack": "6470",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030229000_01.png",
         "en": "Mahira (Event)"
     },
@@ -9320,6 +9762,7 @@
         "attack": "6460",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030230000_01.png",
         "en": "Karva (SR)"
     },
@@ -9341,6 +9784,7 @@
         "attack": "6350",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030231000_01.png",
         "en": "Zeta (Event)"
     },
@@ -9362,6 +9806,7 @@
         "attack": "6500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030232000_01.png",
         "en": "Ippatsu (SR)"
     },
@@ -9383,6 +9828,7 @@
         "attack": "5150",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030233000_01.png",
         "en": "Zooey (Event)"
     },
@@ -9404,6 +9850,7 @@
         "attack": "7950",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030234000_01.png",
         "en": "Randall (SR)"
     },
@@ -9425,6 +9872,7 @@
         "attack": "8214",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030235000_01.png",
         "en": "Narmaya (Valentine)"
     },
@@ -9446,6 +9894,7 @@
         "attack": "6250",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030236000_01.png",
         "en": "Teena (Valentine)"
     },
@@ -9467,6 +9916,7 @@
         "attack": "8160",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030237000_01.png",
         "en": "Nezahualpilli (SR)"
     },
@@ -9488,6 +9938,7 @@
         "attack": "5300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030238000_01.png",
         "en": "Tōru Amuro"
     },
@@ -9509,6 +9960,7 @@
         "attack": "7760",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030239000_01.png",
         "en": "Barawa (SR)"
     },
@@ -9530,6 +9982,7 @@
         "attack": "6880",
         "baseDA": 4.0,
         "baseTA": 1.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030240000_01.png",
         "en": "Carmelina (SR)"
     },
@@ -9551,6 +10004,7 @@
         "attack": "6550",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030241000_01.png",
         "en": "Leona"
     },
@@ -9572,6 +10026,7 @@
         "attack": "6490",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030242000_01.png",
         "en": "Aliza (Water)"
     },
@@ -9593,6 +10048,7 @@
         "attack": "8630",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030243000_01.png",
         "en": "Vanzza (SR)"
     },
@@ -9614,6 +10070,7 @@
         "attack": "6620",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030244000_01.png",
         "en": "Elta (Light)"
     },
@@ -9635,6 +10092,7 @@
         "attack": "5030",
         "baseDA": 10.0,
         "baseTA": 5.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030245000_01.png",
         "en": "Yuisis (Summer)"
     },
@@ -9656,6 +10114,7 @@
         "attack": "5300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030246000_01.png",
         "en": "Olivia (Event)"
     },
@@ -9677,6 +10136,7 @@
         "attack": "7230",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 0.0,
         "imageURL": "./charaimgs/3030247000_01.png",
         "en": "Lilele (Summer)"
     },
@@ -9698,6 +10158,7 @@
         "attack": "7000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030248000_01.png",
         "en": "Farrah (Summer)"
     },
@@ -9719,6 +10180,7 @@
         "attack": "6970",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030249000_01.png",
         "en": "Arulumaya (Summer)"
     },
@@ -9740,6 +10202,7 @@
         "attack": "8050",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030250000_01.png",
         "en": "Almeida (Summer)"
     },
@@ -9761,6 +10224,7 @@
         "attack": "6850",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030251000_01.png",
         "en": "Cailana (SR)"
     },
@@ -9782,6 +10246,7 @@
         "attack": "7000",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030252000_01.png",
         "en": "The Lowain Bros"
     },
@@ -9803,6 +10268,7 @@
         "attack": "7650",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030253000_01.png",
         "en": "Juri"
     },
@@ -9824,6 +10290,7 @@
         "attack": "7200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030254000_01.png",
         "en": "Feather (Halloween)"
     },
@@ -9845,6 +10312,7 @@
         "attack": "6300",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030255000_01.png",
         "en": "Arthur and Mordred"
     },
@@ -9866,6 +10334,7 @@
         "attack": "5900",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030256000_01.png",
         "en": "Rosine"
     },
@@ -9887,6 +10356,7 @@
         "attack": "6150",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030257000_01.png",
         "en": "Razia (SR)"
     },
@@ -9908,6 +10378,7 @@
         "attack": "6500",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030258000_01.png",
         "en": "Sevilbarra (Event)"
     },
@@ -9929,6 +10400,7 @@
         "attack": "6730",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030259000_01.png",
         "en": "Yaia (Holiday)"
     },
@@ -9950,6 +10422,7 @@
         "attack": "7550",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030261000_01.png",
         "en": "Beatrix (Earth)"
     },
@@ -9971,6 +10444,7 @@
         "attack": "6600",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030262000_01.png",
         "en": "Cassius"
     },
@@ -9992,6 +10466,7 @@
         "attack": "7950",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030263000_01.png",
         "en": "Skull"
     },
@@ -10013,6 +10488,7 @@
         "attack": "7970",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030264000_01.png",
         "en": "Catherine (SR)"
     },
@@ -10034,6 +10510,7 @@
         "attack": "7320",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030265000_01.png",
         "en": "Mirin (Light)"
     },
