@@ -32,14 +32,20 @@ from urllib.error import HTTPError
 FutureResult = namedtuple("FutureResult", "url,path")
 
 TXT_SOURCE = {
-        'arm-wiki': "armImageWikiURLList.txt",
-        'chara-wiki': "charaImageWikiURLList.txt",
-        'arm-game': "armImageGameURLList.txt",
-        'chara-game': "charaImageGameURLList.txt"
+    'arm-wiki': "armImageWikiURLList.txt",
+    'chara-wiki': "charaImageWikiURLList.txt",
+    'arm-game': "armImageGameURLList.txt",
+    'chara-game': "charaImageGameURLList.txt"
 }
 
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
 GAME_WORKER_LIMIT = 1
+
+WARNING_MESSAGE = """ WARNING: You specified {} workers which is over limit \
+{} to download images from game website This may lead you to get banned. If \
+you accept it enter Y or enter N to exit script. If not please define number \
+of threads with -w parameter. If you want to skip this warning you can enter \
+-y while calling script : """
 
 
 def _progress_reporter(count: int, total: int, result: FutureResult,
@@ -105,9 +111,9 @@ def _do_nothing(*args, **kwargs):
 
 
 REPORT_TYPE = {
-        'progress': _progress_reporter,
-        'plain': _plain_reporter,
-        'quiet': _quiet_reporter,
+    'progress': _progress_reporter,
+    'plain': _plain_reporter,
+    'quiet': _quiet_reporter,
 }
 
 
@@ -178,6 +184,25 @@ def transform_wiki_url(file_name: str) -> str:
     return url.format(file_name.encode('utf-8').hex().upper())
 
 
+def scan_file_for_download_list(urls: list, site: str, output: str,
+                                force: bool):
+    """
+    Scans text file and collects valid links into a generator
+    :param site: Source tp be downloaded
+    :param urls: Content of text file
+    :param output: Save location
+    :param force: Whatever to overwrite current file or not
+    :return:
+    """
+    for url in urls:
+        name = re.findall(r'\d[^ /].*', url)[0]
+        path = os.path.abspath(os.path.join(output, name))
+        if force or not os.path.exists(path):
+            if site == 'wiki':
+                url = transform_wiki_url(name)
+            yield url, path
+
+
 def main(argv: list):
     """
     Entry point of the download image script
@@ -193,7 +218,7 @@ def main(argv: list):
     if options.site == 'game' and options.workers > GAME_WORKER_LIMIT:
         if options.yes:
             logging.info("Passing warning message...")
-        elif show_game_download_warning(options.workers):
+        elif not show_game_download_warning(options.workers):
             return
 
     key = "{}-{}".format(options.target, options.site)
@@ -220,22 +245,6 @@ def main(argv: list):
         logging.error("Can't create the file/folders {}".format(error))
         return
 
-    def scan_file_for_download_list(urls: list, output: str, force: bool):
-        """
-        Scans text file and collects valid links into a generator
-        :param urls: Content of text file
-        :param output: Save location
-        :param force: Whatever to overwrite current file or not
-        :return:
-        """
-        for url in urls:
-            name = re.findall(r'\d[^ /].*', url)[0]
-            path = os.path.abspath(os.path.join(output, name))
-            if force or not os.path.exists(path):
-                if 'wiki' in url:
-                    url = transform_wiki_url(name)
-                yield url, path
-
     if options.dry_run:
         # In case of dry-run do nothing
         worker_method = _do_nothing
@@ -250,8 +259,9 @@ def main(argv: list):
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
         read_lines = functools.partial(map, str.rstrip)
         url_list = read_lines(url_list_file)
-        items = list(scan_file_for_download_list(url_list, options.output,
-                                                 options.force))
+        items = list(
+            scan_file_for_download_list(url_list, options.site, options.output,
+                                        options.force))
         total = len(items)
 
     if total <= 0:
@@ -277,25 +287,23 @@ def show_game_download_warning(workers: int,
     :param workers: Number of workers
     :return:
     >>> show_game_download_warning(10, input_fn=lambda x: "y")
-    False
-    >>> show_game_download_warning(10, input_fn=lambda x: "n")
     True
+    >>> show_game_download_warning(10, input_fn=lambda x: "n")
+    False
     """
-    warning = 'WARNING: You specified {} workers which is over limit {} to ' \
-              'download images from game website This may lead you to get ' \
-              'banned. If you accept it enter Y or enter N to exit script. ' \
-              'If not please define number of threads with -w parameter. If ' \
-              'you want to skip this warning you can enter -y while calling ' \
-              'script : '.format(workers, GAME_WORKER_LIMIT)
-    warning = '\n'.join(warning[i:i + 92] for i in range(0, len(warning), 92))
-    choice = input_fn(warning).lower()
+    import textwrap
+    import shutil
+    choice = input_fn('\n'.join(textwrap.wrap(
+            textwrap.dedent(
+                    WARNING_MESSAGE.format(workers, GAME_WORKER_LIMIT)),
+            shutil.get_terminal_size().columns))).lower()
     while choice not in ['y', 'n']:
         choice = input_fn('Either enter Y or N as an argument:').lower()
     if choice == 'n':
-        return True
+        return False
     else:
         logging.info('Warning accepted, script will continue')
-        return False
+        return True
 
 
 def _create_parser():
