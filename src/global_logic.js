@@ -1032,14 +1032,14 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
     totalBuff["zenith1"] += zenith[prof.zenithBonus1];
     totalBuff["zenith2"] += zenith[prof.zenithBonus2];
-    totalBuff["zenithDA"] += zenith[prof.zenithDABonus];
-    totalBuff["zenithTA"] += zenith[prof.zenithTABonus];
-    //totalBuff["zenithCritical"] += zenith[prof.zenithCriticalBonus];
-    totalBuff["zenithOugiDamage"] += zenith[prof.zenithOugiDamageBonus];
-    totalBuff["zenithChainDamage"] += zenith[prof.zenithChainDamageBonus];
-    totalBuff["zenithChainDamageLimit"] += zenith[prof.zenithChainDamageLimitBonus];
-    totalBuff["zenithElement"] += zenith[prof.zenithElementBonus];
-    totalBuff["zenithDamageLimit"] += zenith[prof.zenithDamageLimitBonus];
+    totalBuff["zenithDA"] += zenith[prof.zenithTABonus] != undefined ? zenith[prof.zenithDABonus] : 0;
+    totalBuff["zenithTA"] += zenith[prof.zenithTABonus] != undefined ? zenith[prof.zenithTABonus] : 0;
+    //totalBuff["zenithCritical"] += zenith[prof.zenithCriticalBonus] != undefined ? zenith[prof.zenithCriticalBonus] : 0;
+    totalBuff["zenithOugiDamage"] += zenith[prof.zenithOugiDamageBonus] != undefined ? zenith[prof.zenithOugiDamageBonus] : 0;
+    totalBuff["zenithChainDamage"] += zenith[prof.zenithChainDamageBonus] != undefined ? zenith[prof.zenithChainDamageBonus] : 0;
+    totalBuff["zenithChainDamageLimit"] += zenith[prof.zenithChainDamageLimitBonus] != undefined ? zenith[prof.zenithChainDamageLimitBonus] : 0;
+    totalBuff["zenithElement"] += zenith[prof.zenithElementBonus] != undefined ? zenith[prof.zenithElementBonus] : 0;
+    totalBuff["zenithDamageLimit"] += zenith[prof.zenithDamageLimitBonus] != undefined ? zenith[prof.zenithDamageLimitBonus] : 0;
 
     return totalBuff
 };
