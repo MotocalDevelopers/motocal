@@ -303,7 +303,7 @@ def accept_game_download_warning(workers: int,
         textwrap.dedent(WARNING_MESSAGE.format(workers, GAME_WORKER_LIMIT)))
     while choice.lower() not in ['y', 'n']:
         choice = input_fn('Either enter Y or N as an argument:')
-    return choice == 'y'
+    return choice.lower() == 'y'
 
 
 def _create_parser():
