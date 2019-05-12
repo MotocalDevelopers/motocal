@@ -102,11 +102,8 @@ def _do_nothing(*args, **kwargs):
     pass
 
 
-REPORT_TYPE = {
-        'progress': _progress_reporter,
-        'plain': _plain_reporter,
-        'quiet': _quiet_reporter,
-}
+REPORT_TYPE = {'progress': _progress_reporter, 'plain': _plain_reporter,
+               'quiet': _quiet_reporter}
 
 
 def download_image(url: str, path: str, _retry_count: int = 3,
@@ -192,25 +189,8 @@ def main(argv: list):
     if options.site == 'game' and options.workers > GAME_WORKER_LIMIT:
         if options.y:
             logging.info("Passing warning message...")
-        else:
-            choice = input(
-                    'WARNING: You specified {} workers which is over limit {'
-                    '} to '
-                    'download images from game website. This may lead you to '
-                    'get '
-                    'banned. If you accept it enter Y or enter N to exit '
-                    'script. '
-                    'If not please define number of threads with -w '
-                    'parameter. '
-                    'If you want to skip this warning you can enter -y while '
-                    'calling script.:'.format(options.workers,
-                                              GAME_WORKER_LIMIT)).lower()
-            while choice not in ['y', 'n']:
-                choice = input('Either enter Y or N as an argument:').lower()
-            if choice == 'n':
-                return
-            else:
-                logging.info('Warning accepted, script will continue')
+        elif show_game_download_warning(options.workers):
+            return
 
     key = "{}-{}".format(options.target, options.site)
     filename = os.path.join(source_location, TXT_SOURCE[key])
@@ -285,6 +265,39 @@ def main(argv: list):
             report(next(count), total, future.result())
 
 
+def show_game_download_warning(workers: int,
+                               input_fn: callable = input) -> bool:
+    """
+    Shows warning in case user selected game as a source
+    :param input_fn: Input function for test or file reading
+    :param workers: Number of workers
+    :return:
+    >>> show_game_download_warning(10, input_fn=lambda x: "y")
+    False
+    >>> show_game_download_warning(10, input_fn=lambda x: "n")
+    True
+    """
+    choice = input_fn(
+            'WARNING: You specified {} workers which is over limit {'
+            '} to '
+            'download images from game website. This may lead you to '
+            'get '
+            'banned. If you accept it enter Y or enter N to exit '
+            'script. '
+            'If not please define number of threads with -w '
+            'parameter. '
+            'If you want to skip this warning you can enter -y while '
+            'calling script.:'.format(workers,
+                                      GAME_WORKER_LIMIT)).lower()
+    while choice not in ['y', 'n']:
+        choice = input_fn('Either enter Y or N as an argument:').lower()
+    if choice == 'n':
+        return True
+    else:
+        logging.info('Warning accepted, script will continue')
+        return False
+
+
 def _create_parser():
     """
     Creates default parser for the application
@@ -313,7 +326,8 @@ def _create_parser():
     source_group = parser.add_argument_group('source arguments')
     source_group.add_argument('-s', '--site', type=str, action='store',
                               default="wiki", choices=["wiki", "game"])
-    source_group.add_argument('-y', action='store_true', help='pass warning')
+    source_group.add_argument('-y', '--yes', action='store_true',
+                              help='pass warning')
     return parser
 
 
