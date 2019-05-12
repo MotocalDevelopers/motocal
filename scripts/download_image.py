@@ -37,16 +37,17 @@ TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
               'chara-game': "charaImageGameURLList.txt"}
 
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
+_report_printer = functools.partial(print, flush=True)
 
 
-def _progress_reporter(count: int, total: int, future_result: FutureResult,
+def _progress_reporter(count: int, total: int, result: FutureResult,
                        bar_len: int = 40, multiple_lines: bool = True):
     """
     Gives current progress on a progress bar.
     :type multiple_lines: Allows multiple lines of report to fill
     :param count: Current item index.
     :param total: Number of items.
-    :param future_result: Message to print to console.
+    :param result: Message to print to console.
     :param bar_len: Length of the progress bar.
     :return:
 
@@ -54,41 +55,37 @@ def _progress_reporter(count: int, total: int, future_result: FutureResult,
     [----------------------------------------] 1.0% ...                path
     """
     filled_len = int(round(bar_len * count / float(total)))
-    status = os.path.basename(future_result.path)
+    status = os.path.basename(result.path)
     percents = round(100.0 * count / float(total), 1)
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
-    if multiple_lines:
-        print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True)
-    else:
-        print('[%s] %s%s ...%20s' % (bar, percents, '%', status), flush=True,
-              end='\r')
+    if not multiple_lines:
+        _report_printer.keywords['end'] = '\r'
+    _report_printer('[{}] {}{} ...{:>20}'.format(bar, percents, '%', status))
 
 
-def _plain_reporter(count: int, total: int, future_result: FutureResult,
+def _plain_reporter(count: int, total: int, result: FutureResult,
                     multiple_lines: bool = True):
     """
     Gives current file and turn
     :param count: Current item index.
     :param total: Number of items.
-    :param future_result: Message to print to console.
+    :param result: Message to print to console.
     :param multiple_lines: Allows multiple lines of report to fill
     :return:
 
     >>> _plain_reporter(1, 100, FutureResult(r'url', r'path'))
     [   1/ 100] Download url
     """
-    if multiple_lines:
-        print('[%4d/%4d] Download %s' % (count, total, future_result.url),
-              flush=True)
-    else:
-        print('[%4d/%4d] Download %s' % (count, total, future_result.url),
-              flush=True, end='\r')
+    if not multiple_lines:
+        _report_printer.keywords['end'] = '\r'
+    _report_printer(
+        '[{:>4}/{:>4}] Download {}'.format(count, total, result.url))
 
 
-def _quiet_reporter(count: int, total: int, future_result: FutureResult):
+def _quiet_reporter(count: int, total: int, result: FutureResult):
     """
     Added in case of it may be used internal logging for future
-    :param future_result: object unused
+    :param result: object unused
     :param total: int unused
     :param count: int unused
     :return:
@@ -126,11 +123,10 @@ def download_image(url: str, path: str, _retry_count: int = 3,
     :param _timeout: Connection timeout between client and server
     :param _wait_interval: Time to wait before retry
     :return: url and path back for reporting
-    >>> download_image(
-    ... 'http://gbf-wiki.com/attach2/696D67_313034303830393530302E706E67.png',
+    >>> download_image('http://www.example.com',
     ... 'C://motocal//imgs//1040809500.png')
-    FutureResult(url='http://gbf-wiki.com/attach2/696D67_31303430383039353030\
-2E706E67.png', path='C://motocal//imgs//1040809500.png')
+    FutureResult(url='http://www.example.com', \
+path='C://motocal//imgs//1040809500.png')
     """
     for _ in range(_retry_count):
         try:
@@ -140,7 +136,7 @@ def download_image(url: str, path: str, _retry_count: int = 3,
                     break
         except HTTPError as error:
             if error.code == 404:
-                logging.error("Bad Url %s at path %s" % (url, path))
+                logging.error("Bad Url {} at path {}".format(url, path))
                 break
             time.sleep(_wait_interval)
     return FutureResult(url, path)
@@ -154,22 +150,20 @@ def check_image_url(url: str, path: str,
     :param url: URL to be check
     :param path: not used
     :return: url and path back for reporting
-    >>> check_image_url(
-    ... 'http://gbf-wiki.com/attach2/696D67_313034303830393530302E706E67.png',
+    >>> check_image_url('http://example.com',
     ... 'C://motocal//imgs//1040809500.png')
-    FutureResult(url='http://gbf-wiki.com/attach2/696D67_31303430383039353030\
-2E706E67.png', path='C://motocal//imgs//1040809500.png')
+    FutureResult(url='http://example.com', \
+path='C://motocal//imgs//1040809500.png')
     """
     try:
         url_request = urllib.request.Request(url=url, method='HEAD')
         urllib.request.urlopen(url_request, timeout=_timeout)
     except HTTPError as error:
-        logging.error(
-                "Bad Url %s at path %s with error %s" % (url, path, error))
+        logging.error("Bad Url {} at path {} with error {}".format(url, path, error))
     return FutureResult(url, path)
 
 
-def transform_wiki_url(file_name):
+def transform_wiki_url(file_name: str) -> str:
     """
     Transforms attach url to original wiki url
     :param file_name: name of the file
@@ -177,9 +171,9 @@ def transform_wiki_url(file_name):
     >>> transform_wiki_url('1040017000.png')
     'http://gbf-wiki.com/attach2/696D67_313034303031373030302E706E67.png'
     """
-    url = r'http://gbf-wiki.com/attach2/%s_%s.png'
-    return url % ('img'.encode('utf-8').hex().upper(),
-                  file_name.encode('utf-8').hex().upper())
+    url = r'http://gbf-wiki.com/attach2/{}_{}.png'
+    file_name = file_name.replace('_03.png', '_03_full.png')
+    return url.format('img'.encode('utf-8').hex().upper(),file_name.encode('utf-8').hex().upper())
 
 
 def main(argv: list):
@@ -187,7 +181,6 @@ def main(argv: list):
     Entry point of the download image script
     :param argv: Console arguments
     :return:
-    >>> main(['arm', '-c'])
     """
     script_dir = os.path.abspath(os.path.dirname(__file__))
     source_location = os.path.join(script_dir, "../txt_source")
@@ -195,27 +188,27 @@ def main(argv: list):
     parser = _create_parser()
     options = parser.parse_args(argv)
 
-    key = "%s-%s" % (options.target, options.site)
+    key = "{}-{}".format(options.target, options.site)
     filename = os.path.join(source_location, TXT_SOURCE[key])
 
     if not os.path.isdir(source_location):
-        logging.error("No directory found: %s", source_location)
+        logging.error("No directory found: {}".format(source_location))
         return
 
     if not os.path.isfile(filename):
-        logging.error("No url list file found: %s", filename)
+        logging.error("No url list file found: {}".format(filename))
         return
 
     if not options.output:
         options.output = os.path.join(script_dir, SAVE_DIR[options.target])
-        logging.info("Set default save directory: %s", options.output)
+        logging.info("Set default save directory: {}".format(options.output))
 
     try:
         if not os.path.isdir(options.output):
-            logging.info("Save directory is created: %s", options.output)
+            logging.info("Save directory is created: {}".format(options.output))
             makedirs(options.output)
     except IOError as error:
-        logging.error("Can't create the file/folders %s" % error)
+        logging.error("Can't create the file/folders {}".format(error))
         return
 
     def scan_file_for_download_list(url_list: list, output: str, force: bool):
@@ -246,8 +239,8 @@ def main(argv: list):
         worker_method = download_image
 
     with open(filename, encoding="utf-8", mode='r') as url_list_file:
-        _read_lines = functools.partial(map, str.rstrip)
-        url_list = _read_lines(url_list_file)
+        read_lines = functools.partial(map, str.rstrip)
+        url_list = read_lines(url_list_file)
         items = list(scan_file_for_download_list(url_list, options.output,
                                                  options.force))
         total = len(items)
@@ -257,9 +250,9 @@ def main(argv: list):
         return
 
     # Do not create workers in case number of items are low
-    _max_workers = max(1, min(total, options.workers))
+    max_workers = max(1, min(total, options.workers))
 
-    with ThreadPoolExecutor(max_workers=_max_workers) as executor:
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
         submit = functools.partial(executor.submit, worker_method)
         counter = functools.partial(next, itertools.count(start=1))
         reporter = REPORT_TYPE.get(options.reporter)
