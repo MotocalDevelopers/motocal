@@ -31,10 +31,12 @@ from urllib.error import HTTPError
 
 FutureResult = namedtuple("FutureResult", "url,path")
 
-TXT_SOURCE = {'arm-wiki': "armImageWikiURLList.txt",
-              'chara-wiki': "charaImageWikiURLList.txt",
-              'arm-game': "armImageGameURLList.txt",
-              'chara-game': "charaImageGameURLList.txt"}
+TXT_SOURCE = {
+        'arm-wiki': "armImageWikiURLList.txt",
+        'chara-wiki': "charaImageWikiURLList.txt",
+        'arm-game': "armImageGameURLList.txt",
+        'chara-game': "charaImageGameURLList.txt"
+}
 
 SAVE_DIR = {'arm': '../imgs', 'chara': '../charaimgs'}
 GAME_WORKER_LIMIT = 1
@@ -102,8 +104,11 @@ def _do_nothing(*args, **kwargs):
     pass
 
 
-REPORT_TYPE = {'progress': _progress_reporter, 'plain': _plain_reporter,
-               'quiet': _quiet_reporter}
+REPORT_TYPE = {
+        'progress': _progress_reporter,
+        'plain': _plain_reporter,
+        'quiet': _quiet_reporter,
+}
 
 
 def download_image(url: str, path: str, _retry_count: int = 3,
@@ -169,9 +174,8 @@ def transform_wiki_url(file_name: str) -> str:
     >>> b'img'.hex().upper()
     '696D67'
     """
-    url = r'http://gbf-wiki.com/attach2/{}_{}.png'
-    return url.format('696D67',
-                      file_name.encode('utf-8').hex().upper())
+    url = r'http://gbf-wiki.com/attach2/696D67_{}.png'
+    return url.format(file_name.encode('utf-8').hex().upper())
 
 
 def main(argv: list):
@@ -187,7 +191,7 @@ def main(argv: list):
     options = parser.parse_args(argv)
 
     if options.site == 'game' and options.workers > GAME_WORKER_LIMIT:
-        if options.y:
+        if options.yes:
             logging.info("Passing warning message...")
         elif show_game_download_warning(options.workers):
             return
@@ -277,18 +281,15 @@ def show_game_download_warning(workers: int,
     >>> show_game_download_warning(10, input_fn=lambda x: "n")
     True
     """
-    choice = input_fn(
-            'WARNING: You specified {} workers which is over limit {'
-            '} to '
-            'download images from game website. This may lead you to '
-            'get '
-            'banned. If you accept it enter Y or enter N to exit '
-            'script. '
-            'If not please define number of threads with -w '
-            'parameter. '
-            'If you want to skip this warning you can enter -y while '
-            'calling script.:'.format(workers,
-                                      GAME_WORKER_LIMIT)).lower()
+    warning = 'WARNING: You specified {} workers which is over limit {} to ' \
+              'download images from game website This may lead you to get ' \
+              'banned. If you accept it enter Y or enter N to exit script. ' \
+              'If not please define number of threads with -w parameter. If ' \
+              'you want to skip this warning you can enter -y while calling ' \
+              'script : '.format(
+        workers, GAME_WORKER_LIMIT)
+    warning = '\n'.join(warning[i:i + 92] for i in range(0, len(warning), 92))
+    choice = input_fn(warning).lower()
     while choice not in ['y', 'n']:
         choice = input_fn('Either enter Y or N as an argument:').lower()
     if choice == 'n':
