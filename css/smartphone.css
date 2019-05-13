@@ -161,6 +161,10 @@
     .profile {
         width: 99%;
     }
+    
+    .input-suggest {
+        color: #ffff00;
+    }
 
     .summonList {
         width: 99%;
