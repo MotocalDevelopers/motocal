@@ -404,6 +404,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += totalSummon["elementTurn"] - 1.0;
         elementCoeff += buff["element"];
         elementCoeff += totals[key]["elementBuff"];
+        elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
+        elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
         elementCoeff += 0.01 * totals[key]["LB"].Element;
         
         if (key == "Djeeta") {
@@ -931,7 +933,7 @@ function* eachSkill(arm) {
         ["skill2", "element2"],
         ["skill3", "element3"],
     ];
-    for (let {skey,ekey} of _skill_element_keys) {
+    for (let [skey,ekey] of _skill_element_keys) {
         var skillname = arm[skey] ? arm[skey] : "non";
         var element = arm[ekey] != undefined ? arm[ekey] : "fire";
         if (typeof skilltypes[skillname] === 'undefined') {
@@ -1139,7 +1141,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                 }
                 totals[key]["armAttack"] += armSup * parseInt(arm.attack) * comb[i];
                 totals[key]["armHP"] += hpSup * parseInt(arm.hp) * comb[i];
-                for (let {skillname, element} of eachSkill(arm)) {
+                for (let [skillname, element] of eachSkill(arm)) {
                     var stype = skilltypes[skillname].type;
                     var amount = skilltypes[skillname].amount;
                     var slv = parseInt(arm.slv);
@@ -1584,6 +1586,10 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'magnaCritical') {
                             totals[key][stype] += comb[i] * skillAmounts['critical'][amount][slv - 1];
+                        } else if (stype == 'opusnormalElement') {
+                            totals[key][stype] += 0.15;
+                        } else if (stype == 'opusmagnaElement') {
+                            totals[key][stype] += 0.15;
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -1759,6 +1765,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 omegaNormalHP: 0,
                 akashaATK: 0,
                 akashaHP: 0,
+                opusnormalElement: 0,
+                opusmagnaElement: 0,
                 ougiDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
@@ -1901,6 +1909,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 omegaNormalHP: 0,
                 akashaATK: 0,
                 akashaHP: 0,
+                opusnormalElement: 0,
+                opusmagnaElement: 0,
                 ougiDamage: 0,
                 chainDamage: 0,
                 normalOugiDamage: 0,
@@ -2061,6 +2071,8 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["omegaNormalHP"] = 0;
         totals[key]["akashaATK"] = 0;
         totals[key]["akashaHP"] = 0;
+        totals[key]["opusnormalElement"] = 0;
+        totals[key]["opusmagnaElement"] = 0;
         totals[key]["normalOtherNite"] = 0;
         totals[key]["normalOtherSante"] = 0;
         totals[key]["normalOtherLesserSante"] = 0;
@@ -2367,7 +2379,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                     if (storedCombinations[j][i] === 0) continue;
 
-                    for (let {skillname, element} of eachSkill(arm[i])) {
+                    for (let [skillname, element] of eachSkill(arm)) {
                         var stype = skilltypes[skillname].type;
                         var amount = skilltypes[skillname].amount;
                         var slv = parseInt(arm.slv);

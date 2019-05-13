@@ -170,7 +170,7 @@ var buffLevelList = [
     200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 300,
     -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
 ];
-var ougiRatioList = [0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.5, 10.0];
+var ougiRatioList = [0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0];
 var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var masterDAList = [0, 1, 2, 3, 4];
@@ -589,6 +589,8 @@ var skilltypes = {
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
+    "opus-normalElement": {name: "進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
+    "opus-magnaElement": {name: "進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
@@ -659,6 +661,7 @@ var opusNormalWeaponSkill2 = {
     "normalKonshinL": {name: "通常渾身(大)"},
     "normalHaisuiL": {name: "通常背水(大)"},
     "normalSanteM": {name: "通常三手(中)"},
+    "opus-normalElement": {name: "進境(大)(最大時)"},
 };
 
 var opusMagnaWeaponSkill2 = {
@@ -666,6 +669,7 @@ var opusMagnaWeaponSkill2 = {
     "magnaKonshinL": {name: "マグナ渾身(大)"},
     "magnaHaisuiL": {name: "マグナ背水(大)"},
     "magnaSanteM": {name: "マグナ三手(中)"},
+    "opus-magnaElement": {name: "進境(大)(最大時)"},
 };
 
 var armTypes = {
