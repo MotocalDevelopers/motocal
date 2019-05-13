@@ -1477,6 +1477,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["normalDamageLimit"][amount];
                         } else if (stype == 'ougiDamageLimit') {
                             totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["ougiDamageLimit"][amount];
+                        } else if (stype == 'huanglongHissatsu') {
+                            totals[key]["ougiDamage"] += 20; // for Zeus aura (Hiou)
+                            totals[key]["ougiDamageLimit"] += 0.2;
                         } else if (stype == 'ougiDamageLimitExceed') {
                             totals[key]["exceedOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["ougiDamageLimitExceed"][amount][slv - 1];
                             // 4* Weapon Skills
