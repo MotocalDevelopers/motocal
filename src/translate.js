@@ -3335,7 +3335,7 @@ var multiLangData = {
     },
     "notice-20190414-1": {
         "en": "14/04/2019: Add Opus weapons and 3rd skill slot.",
-        "ja": "2019/04/14: 終末武器追加。3番目のスキル欄追加(過去の編成データが読み込めなくなっています)",
+        "ja": "2019/04/14: 終末武器追加。3番目のスキル欄追加(過去の編成データが読み込めなくなっています(現在修正済))",
         "zh": "2019/04/14: Add Opus weapons and 3rd skill slot.",
     },
     "notice-20190414-2": {
@@ -3372,6 +3372,16 @@ var multiLangData = {
         "en": "30/04/2019: Add Player's Extended Mastery. Improved Save data compatibility.",
         "ja": "2019/04/30: ジータLB追加。編成データの互換性強化。",
         "zh": "2019/04/30: Add Player's Extended Mastery. Improved Save data compatibility.",
+    },
+    "notice-20190501-1": {
+        "en": "01/05/2019: Add huanglong spear skill2. Fix Eahta's support ability and Belltower Skill.",
+        "ja": "2019/05/01: 黄龍槍メイン装備時スキル追加。最終オクトーサポアビ修正。ベルタワースキル修正。",
+        "zh": "2019/05/01: Add huanglong spear skill2. Fix Eahta's support ability and Belltower Skill.",
+    },
+    "notice-20190511-1": {
+        "en": "11/05/2019: Add characters and weapons and chara's default ougi ratio.",
+        "ja": "2019/05/11: キャラ・武器追加。キャラのデフォルト奥義倍率追加。",
+        "zh": "2019/05/11: Add characters and weapons and chara's default ougi ratio.",
     },
 };
 
