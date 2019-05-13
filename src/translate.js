@@ -76,6 +76,26 @@ var multiLangData = {
         "ja": "保存",
         "zh": "保存",
     },
+    "ジータ読込": {
+        "en": "Load Djeeta",
+        "ja": "ジータの読込",
+        "zh": "Load Djeeta",
+    },
+    "召喚石読込": {
+        "en": "Load Summon",
+        "ja": "召喚石の読込",
+        "zh": "Load Summon",
+    },
+    "キャラ読込": {
+        "en": "Load Character",
+        "ja": "キャラの読込",
+        "zh": "Load Character",
+    },
+    "武器読込": {
+        "en": "Load Weapon",
+        "ja": "武器の読込",
+        "zh": "Load Weapon",
+    },
     "データ移行": {
         "en": "Export/Import",
         "ja": "データ移行",

@@ -669,10 +669,14 @@ var Sys = CreateClass({
                     <Button bsStyle="primary" className="systemButton"
                             onClick={this.onSubmitLoad}>{intl.translate("ブラウザデータ読込", locale)}</Button>
                     <DropdownButton title="&nbsp;" bsStyle="primary" className="systemButton" id="partial-load-menu">
-                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'profile')}>Load Djeeta</MenuItem>
-                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'summon')}>Load Summon</MenuItem>
-                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'chara')}>Load Charactor</MenuItem>
-                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'armlist')}>Load Weapon</MenuItem>
+                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'profile')}>
+                            {intl.translate("ジータ読込", locale)}</MenuItem>
+                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'summon')}>
+                            {intl.translate("召喚石読込", locale)}</MenuItem>
+                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'chara')}>
+                            {intl.translate("キャラ読込", locale)}</MenuItem>
+                        <MenuItem onClick={this.onSubmitPartialLoad.bind(this, 'armlist')}>
+                            {intl.translate("武器読込", locale)}</MenuItem>
                     </DropdownButton>
                     <Button bsStyle="primary" className="systemButton"
                             onClick={this.onSubmitRemove}>{intl.translate("削除", locale)}</Button>
