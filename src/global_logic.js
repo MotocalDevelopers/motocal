@@ -5,6 +5,14 @@ var bahamutRelation = GlobalConst.bahamutRelation;
 var bahamutFURelation = GlobalConst.bahamutFURelation;
 var supportAbilities = GlobalConst.supportAbilities;
 var zenith = GlobalConst.zenith;
+var zenithDA = GlobalConst.zenithDA;
+var zenithTA = GlobalConst.zenithTA;
+//var zenithCritical = GlobalConst.zenithCritical;
+var zenithOugiDamage = GlobalConst.zenithOugiDamage;
+var zenithChainDamage = GlobalConst.zenithChainDamage;
+var zenithChainDamageLimit = GlobalConst.zenithChainDamageLimit;
+var zenithElement = GlobalConst.zenithElement;
+var zenithDamageLimit = GlobalConst.zenithDamageLimit;
 var Jobs = GlobalConst.Jobs;
 var armTypes = GlobalConst.armTypes;
 var jobTypes = GlobalConst.jobTypes;
@@ -524,10 +532,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalTA = totalTA >= 0.0 ? totalTA : 0.0; // Fit 100% >= TA >= 0%
         totalTA = totalTA <= 1.0 ? totalTA : 1.0;
         
-        var taTruncation = Math.floor(totalTA * 100) * 0.01;
-        var daTruncation = Math.floor(totalDA * 100) * 0.01;
-        var taRate = taTruncation < 1.0 ? taTruncation : 1.0;
-        var daRate = daTruncation < 1.0 ? daTruncation : 1.0;
+        var taRate = Math.min(1.0, Math.floor(totalTA * 100) * 0.01);
+        var daRate = Math.min(1.0, Math.floor(totalDA * 100) * 0.01);
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate));
 
         if (totals[key]["typeBonus"] == 1.5) {
@@ -1036,14 +1042,14 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
     totalBuff["zenith1"] += zenith[prof.zenithBonus1];
     totalBuff["zenith2"] += zenith[prof.zenithBonus2];
-    totalBuff["zenithDA"] += zenith[prof.zenithTABonus] != undefined ? zenith[prof.zenithDABonus] : 0;
-    totalBuff["zenithTA"] += zenith[prof.zenithTABonus] != undefined ? zenith[prof.zenithTABonus] : 0;
-    //totalBuff["zenithCritical"] += zenith[prof.zenithCriticalBonus] != undefined ? zenith[prof.zenithCriticalBonus] : 0;
-    totalBuff["zenithOugiDamage"] += zenith[prof.zenithOugiDamageBonus] != undefined ? zenith[prof.zenithOugiDamageBonus] : 0;
-    totalBuff["zenithChainDamage"] += zenith[prof.zenithChainDamageBonus] != undefined ? zenith[prof.zenithChainDamageBonus] : 0;
-    totalBuff["zenithChainDamageLimit"] += zenith[prof.zenithChainDamageLimitBonus] != undefined ? zenith[prof.zenithChainDamageLimitBonus] : 0;
-    totalBuff["zenithElement"] += zenith[prof.zenithElementBonus] != undefined ? zenith[prof.zenithElementBonus] : 0;
-    totalBuff["zenithDamageLimit"] += zenith[prof.zenithDamageLimitBonus] != undefined ? zenith[prof.zenithDamageLimitBonus] : 0;
+    totalBuff["zenithDA"] += zenithDA[prof.zenithTABonus] != undefined ? zenithDA[prof.zenithDABonus] : 0;
+    totalBuff["zenithTA"] += zenithTA[prof.zenithTABonus] != undefined ? zenithTA[prof.zenithTABonus] : 0;
+    //totalBuff["zenithCritical"] += zenithCritical[prof.zenithCriticalBonus] != undefined ? zenithCritical[prof.zenithCriticalBonus] : 0;
+    totalBuff["zenithOugiDamage"] += zenithOugiDamage[prof.zenithOugiDamageBonus] != undefined ? zenithOugiDamage[prof.zenithOugiDamageBonus] : 0;
+    totalBuff["zenithChainDamage"] += zenithChainDamage[prof.zenithChainDamageBonus] != undefined ? zenithChainDamage[prof.zenithChainDamageBonus] : 0;
+    totalBuff["zenithChainDamageLimit"] += zenithChainDamageLimit[prof.zenithChainDamageLimitBonus] != undefined ? zenithChainDamageLimit[prof.zenithChainDamageLimitBonus] : 0;
+    totalBuff["zenithElement"] += zenithElement[prof.zenithElementBonus] != undefined ? zenithElement[prof.zenithElementBonus] : 0;
+    totalBuff["zenithDamageLimit"] += zenithDamageLimit[prof.zenithDamageLimitBonus] != undefined ? zenithDamageLimit[prof.zenithDamageLimitBonus] : 0;
 
     return totalBuff
 };
