@@ -161,6 +161,14 @@
     .profile {
         width: 100%;
     }
+    
+    .profile table tbody tr th {
+        white-space: pre-line;
+    }
+    
+    .profile table tbody tr th {}
+    .profile table tbody tr td {}
+
     .input-suggest {
         color: #ffff00;
     }

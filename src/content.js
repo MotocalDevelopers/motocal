@@ -364,7 +364,7 @@ var Root = CreateClass({
                         <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
                         <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
                         <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
-                        <NavItem eventKey="armTab">{intl.translate("武器", locale)}</NavItem>
+                        <NavItem eventKey="armTab">{intl.translate("武器(タブ)", locale)}</NavItem>
                         <NavItem eventKey="resultTab">{intl.translate("結果", locale)}</NavItem>
                         <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
                     </Nav>
@@ -405,7 +405,7 @@ var Root = CreateClass({
                             <NavItem eventKey="inputTab">{intl.translate("ジータ", locale)}</NavItem>
                             <NavItem eventKey="summonTab">{intl.translate("召喚石", locale)}</NavItem>
                             <NavItem eventKey="charaTab">{intl.translate("キャラ", locale)}</NavItem>
-                            <NavItem eventKey="armTab">{intl.translate("武器", locale)}</NavItem>
+                            <NavItem eventKey="armTab">{intl.translate("武器(タブ)", locale)}</NavItem>
                             <NavItem eventKey="systemTab">{intl.translate("保存", locale)}</NavItem>
                         </Nav>
                         <div className="main-content">
