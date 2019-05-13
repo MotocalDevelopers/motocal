@@ -532,8 +532,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalTA = totalTA >= 0.0 ? totalTA : 0.0; // Fit 100% >= TA >= 0%
         totalTA = totalTA <= 1.0 ? totalTA : 1.0;
         
-        var taRate = Math.min(1.0, Math.floor(totalTA * 100) * 0.01);
-        var daRate = Math.min(1.0, Math.floor(totalDA * 100) * 0.01);
+        var taRate = Math.min(1.0, Math.floor(totalTA * 100) / 100); // Truncated values are used to calculate multi attack.
+        var daRate = Math.min(1.0, Math.floor(totalDA * 100) / 100);
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate));
 
         if (totals[key]["typeBonus"] == 1.5) {
