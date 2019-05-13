@@ -79,7 +79,7 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-var zenith = {
+var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
     "★2": 0.03,
@@ -94,9 +94,74 @@ var zenith = {
     "★11": 0.18,
     "★12": 0.20
 };
+
 var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
 var zenithPartyHPBonus = [3000, 2600, 2300, 2000, 1600, 1300, 1000, 600, 300, 0];
+var zenithDABonus = {
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
+    "★3": 0.05,
+    "★4": 0.06,
+    "★5": 0.08,
+    "★6": 0.10
+};
+var zenithTABonus = {
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
+    "★3": 0.05
+};
+
+//var zenithCriticalBonus = [0, 1, 3, 5, 6, 8, 10];
+var zenithOugiDamageBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05, 
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10, 
+    "★7": 0.11, 
+    "★8": 0.13,
+    "★9": 0.15
+};
+var zenithChainDamageBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05,
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10
+};
+var zenithChainDamageLimitBonus = {
+    "無し": 0, 
+    "★1":  0.01, 
+    "★2": 0.03, 
+    "★3": 0.05
+};
+var zenithElementBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05, 
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10
+};
+var zenithDamageLimitBonus = {
+    "無し": 0, 
+    "★1": 0.03, 
+    "★2": 0.06, 
+    "★3": 0.10, 
+    "★4": 0.11, 
+    "★5": 0.13, 
+    "★6": 0.15
+};
+
+
 var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var buffLevelList = [
@@ -270,7 +335,7 @@ var skillLevelList20Limit = skillLevelListFactory(20);
 var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200];
 var chainNumberList = [1, 2, 3, 4];
 
-// limitBonus
+// Chara limitBonus
 var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2300, 2500, 2600, 2800, 3000];
 var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
 var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
@@ -1613,6 +1678,14 @@ var supportAbilities = {
 
 // exports
 module.exports.zenith = zenith;
+module.exports.zenithDA = zenithDABonus;
+module.exports.zenithTA = zenithTABonus;
+//module.exports.zenithCritical = zenithCritical;
+module.exports.zenithOugiDamage = zenithOugiDamageBonus;
+module.exports.zenithChainDamage = zenithChainDamageBonus;
+module.exports.zenithChainDamageLimit = zenithChainDamageLimitBonus;
+module.exports.zenithElement = zenithElementBonus;
+module.exports.zenithDamageLimit = zenithDamageLimitBonus;
 module.exports.raceTypes = raceTypes;
 module.exports.sexTypes = sexTypes;
 module.exports.skillAmounts = skillAmounts;
@@ -2003,6 +2076,7 @@ module.exports.selector.zh.summonElements = Object.keys(summonElementTypes).map(
 module.exports.selector.summonAmounts = summonAmountList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
+
 module.exports.selector.zenithAttack = zenithAttackBonus.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
@@ -2012,6 +2086,12 @@ module.exports.selector.zenithHP = zenithHPBonus.map(function (opt) {
 module.exports.selector.zenithPartyHP = zenithPartyHPBonus.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
+
+//module.exports.selector.zenithCriticalBonus = zenithCriticalBonus.map(function (opt) {
+//    return <option value={opt} key={opt}>{opt}</option>;
+//});
+
+
 module.exports.selector.slv = skilllevels.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
