@@ -386,6 +386,7 @@ var keyTypes = {
     "damageWithMultiple": "単攻撃ダメージ(連撃有)",
     "damage": "単攻撃ダメージ(技巧連撃有)",
     "ougiDamage": "奥義ダメージ",
+    "ougiDamageWithChainDamage": "奥義+チェンバダメージ",
     "totalExpected": "総合攻撃*期待回数*技巧期待値(ジータさんのみ)",
     "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
