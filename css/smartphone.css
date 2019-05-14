@@ -58,7 +58,7 @@
       line-height: 120%;
       text-align: center;
       text-shadow:0 -1px 0 rgba(34,85,136,0.9);
-      box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+      box-shadow: 0 1px 1px rgba(255,255,255,0.3) inset;
     }
 
     table th:last-child {
@@ -91,7 +91,7 @@
     tr.result:hover {
       background: #bbd4ee;
       cursor:pointer;
-      transition-duration: 0;
+      transition-duration: 0ms;
     }
 
     .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -128,7 +128,7 @@
         width: calc(100% - 6px);
         overflow: auto;
         word-wrap: break-word;
-        margin: 0px;
+        margin: 0;
         border-bottom:2px solid #258;
         padding: 3px;
     }
@@ -222,9 +222,9 @@
 
     .col-fixed-height {
       height: 50px;
-      margin-top: 0px;
-      margin-bottom: 0px;
-      border-radius: 0px;
+      margin-top: 0;
+      margin-bottom: 0;
+      border-radius: 0;
     }
 
     thead.result th {
@@ -275,7 +275,7 @@
         height: calc(100% - 90px);
         overflow-y: scroll;
         overflow-x: visible;
-        padding: 5px 0px;
+        padding: 5px 0;
         border-top:1px solid #258;
         border-bottom:1px solid #258;
         border-color: rgb(59, 34, 136);
@@ -288,7 +288,7 @@
 
     .footerNav {
         position: fixed;
-        bottom: 0px;
+        bottom: 0;
         width: 100%;
         height: 40px;
         overflow-y: visible;
@@ -296,14 +296,14 @@
     }
 
     .footerNav {
-        margin: 0px;
-        padding: 0px;
+        margin: 0;
+        padding: 0;
         display: table;
         width: 100%;
     }
 
     .footerNav li {
-        padding: 0px;
+        padding: 0;
         display: table-cell;
         align-items: center;
         float: none;
@@ -320,7 +320,7 @@
 
     .footerNav li:last-child a {
         border-right: 0;
-        border-radius: 0 0px 0px 0;
+        border-radius: 0 0 0 0;
     }
 
     .summonList .form-control.multi {
@@ -342,7 +342,7 @@
 
     .checkbox-inline input[type=checkbox] {
         position: relative;
-        margin-left: 0px;
+        margin-left: 0;
     }
 
     .charaList .checkbox-inline, .armList .checkbox-inline {
@@ -398,7 +398,7 @@
         display: block;
         float: left;
         overflow: auto;
-        margin: 4px 1px 2px 0px;
+        margin: 4px 1px 2px 0;
         border:1px solid #258;
         border-radius: 2px;
         padding: 3px;
@@ -418,7 +418,7 @@
     }
 
     .onearm:nth-child(2n) {
-        margin: 4px 0px 2px 1px;
+        margin: 4px 0 2px 1px;
     }
     /* charaPresets */
     .charaTemplate {
@@ -513,13 +513,13 @@
 
     .display-checked {
       background: #bbd4ff;
-      transition-duration: 0;
+      transition-duration: 0ms;
       height: 20px;
     }
     .display-unchecked {
       background: #FFFFFF;
       cursor:pointer;
-      transition-duration: 0;
+      transition-duration: 0ms;
       height: 20px;
     }
 
