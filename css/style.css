@@ -59,7 +59,7 @@
 
     div.hidden {
         visibility: hidden;
-        height: 0%;
+        height: 0;
     }
 
     div.Tab {
@@ -71,7 +71,7 @@
 
     div.Tab.hidden {
         overflow: hidden;
-        height: 0%;
+        height: 0;
         margin: 0;
     }
 
@@ -99,14 +99,13 @@
         height: 72%;
         overflow-x: visible;
         overflow-y: scroll;
-        padding: 0px 5px;
+        padding: 0 5px;
     }
 
     div.drag-hr {
         cursor: col-resize;
         width: 5px;
         height: 100%;
-        padding: 0;
         margin: 0;
         float: left;
         text-align: center;
@@ -138,7 +137,7 @@
         width: calc(100% - 6px);
         overflow: auto;
         word-wrap: break-word;
-        margin: 0px;
+        margin: 0;
         border-bottom:2px solid #258;
         padding: 3px;
     }
@@ -161,6 +160,14 @@
     .profile {
         width: 100%;
     }
+    
+    .profile table tbody tr th {
+        white-space: pre-line;
+    }
+    
+    .profile table tbody tr th {}
+    .profile table tbody tr td {}
+
     .input-suggest {
         color: #ffff00;
     }
@@ -236,7 +243,7 @@
     }
 
     span.result-chara-detail {
-        margin: 0px 0px 3px;
+        margin: 0 0 3px;
     }
 
     .notice {
@@ -288,7 +295,7 @@
 
     .checkbox-inline input[type=checkbox] {
         position: relative;
-        margin-left: 0px;
+        margin-left: 0;
     }
 
     .charaList .checkbox-inline {
@@ -501,12 +508,12 @@
 
     .display-checked {
       background: #bbd4ff;
-      transition-duration: 0;
+      transition-duration: 0ms;
     }
     .display-unchecked {
       background: #FFFFFF;
       cursor:pointer;
-      transition-duration: 0;
+      transition-duration: 0ms;
     }
 
     /* bootstrap custom themes */
