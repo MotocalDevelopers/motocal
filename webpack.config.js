@@ -54,6 +54,7 @@ const plugins = [
     { from: path.join(__dirname, "/imgs/"), to: path.join(__dirname, "/dist/imgs/"), ignore: [ '*.txt' ]},
     { from: path.join(__dirname, "/otherImages/"), to: path.join(__dirname, "/dist/otherImages/") },
     { from: path.join(__dirname, "/charaimgs/"), to: path.join(__dirname, "/dist/charaimgs/"), ignore: [ '*.txt' ]},
+    { from: path.join(__dirname, "/json/"), to: path.join(__dirname, "/dist/json"), ignore: [ '*.txt' ] },
   ]),
   // new webpack.optimize.UglifyJsPlugin({
   //   compress: {
