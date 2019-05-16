@@ -1840,7 +1840,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 daBuff: 0.0,
                 taBuff: 0.0,
                 ougiGageBuff: 0.0,
-                ougiDamageChara: 0.0,
+                ougiDamageBuff: 0.0,
                 additionalDamageBuff: 0.0,
                 damageLimitBuff: 0.0,
                 ougiDamageLimitBuff: 0.0,
