@@ -18,6 +18,7 @@ var _ua = GlobalConst._ua;
 
 // Function for obtaining query
 var urlid = getVarInQuery("id");
+var url_preset = getVarInQuery("preset");
 
 function getVarInQuery(key) {
     var vars = {}, max = 0, hash = "", array = "";
@@ -88,6 +89,46 @@ var Root = CreateClass({
     closeSimulatorHowTo: function (e) {
         this.setState({openSimulatorHowTo: false})
     },
+    loadDatachar: function (data, datatype) {
+        var initState = JSON.parse(data);
+        var oldState = this.state;
+        initState["noResultUpdate"] = false;
+        initState["oldWidth"] = oldState.oldWidth;
+        initState["activeKey"] = "inputTab";
+        initState["rootleftHeight"] = oldState.rootleftHeight;
+        initState["rootleftWidth"] = oldState.rootleftWidth;
+        initState["rootrightHeight"] = oldState.rootrightHeight;
+        initState["rootrightWidth"] = oldState.rootrightWidth;
+        initState["locale"] = intl.getLocale();
+        initState["dataName"] = "serverData";
+
+        if (initState["dataForLoad"] == undefined) {
+            initState["dataForLoad"] = {}
+        }
+
+        initState["dataForLoad"]["profile"] = initState.profile;
+        initState["dataForLoad"]["summon"] = initState.summon;
+        initState["dataForLoad"]["chara"] = initState.chara;
+        initState["dataForLoad"]["armlist"] = initState.armlist;
+
+        this.setState(initState);
+    },
+    getDatacharByFragment: function(data) {
+    	this.loadDatachar(Base64.decode(data));
+    },
+    getDatacharByURL: function(filename) {
+        $.ajax({
+            url: "json/" + filename + ".json",
+            type: 'GET',
+            dataType: 'text',
+            cache: false,
+            timeout: 10000,
+            success: this.loadDatachar.bind(this),
+            error: function (xhr, status, err) {
+                alert("Error! status: ", status, ", error message: ", err.toString());
+            }.bind(this)
+        });
+    },
     getDatacharById: function (id) {
         $.ajax({
             url: "getdata.php",
@@ -96,29 +137,8 @@ var Root = CreateClass({
             cache: false,
             timeout: 10000,
             data: {id: id},
-            success: function (data, datatype) {
-                var initState = JSON.parse(Base64.decode(data));
-                var oldState = this.state;
-                initState["noResultUpdate"] = false;
-                initState["oldWidth"] = oldState.oldWidth;
-                initState["activeKey"] = "inputTab";
-                initState["rootleftHeight"] = oldState.rootleftHeight;
-                initState["rootleftWidth"] = oldState.rootleftWidth;
-                initState["rootrightHeight"] = oldState.rootrightHeight;
-                initState["rootrightWidth"] = oldState.rootrightWidth;
-                initState["locale"] = intl.getLocale();
-                initState["dataName"] = "serverData";
-
-                if (initState["dataForLoad"] == undefined) {
-                    initState["dataForLoad"] = {}
-                }
-
-                initState["dataForLoad"]["profile"] = initState.profile;
-                initState["dataForLoad"]["summon"] = initState.summon;
-                initState["dataForLoad"]["chara"] = initState.chara;
-                initState["dataForLoad"]["armlist"] = initState.armlist;
-
-                this.setState(initState);
+            success: function (data, datatype){
+                this.loadDatachar(Base64.decode(data), datatype);
             }.bind(this),
             error: function (xhr, status, err) {
                 alert("Error!: IDが不正です. status: ", status, ", error message: ", err.toString());
@@ -128,6 +148,12 @@ var Root = CreateClass({
     componentDidMount: function () {
         if (urlid != '') {
             this.getDatacharById(urlid);
+        } else if (url_preset != '') {
+        	if (url_preset == 'HASH') {
+        		this.getDatacharByFragment(location.hash);
+        	} else if (url_preset.match(/^[\w\-\_]+$/)) {
+        		this.getDatacharByURL(url_preset);
+        	}
         }
         this.setState({noResultUpdate: false});
     },
