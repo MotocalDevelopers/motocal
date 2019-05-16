@@ -1321,10 +1321,15 @@ var multiLangData = {
         "ja": "マグナ渾身",
         "zh": "方针浑身",
     },
-    "進境(大)(最大時)": {
-        "en": "Element ATK L",
-        "ja": "進境(大)(最大時)",
-        "zh": "属性攻击力(大)",
+    "通常進境(大)(最大時)": {
+        "en": "Normal Element ATK L",
+        "ja": "通常進境(大)(最大時)",
+        "zh": "通常属性攻击力(大)",
+    },
+    "マグナ進境(大)(最大時)": {
+        "en": "Magna Element ATK L",
+        "ja": "マグナ進境(大)(最大時)",
+        "zh": "方阵属性攻击力(大)",
     },
     "アンノウン": {
         "en": "Unknown ",
@@ -1754,6 +1759,11 @@ var multiLangData = {
         "en": "Integration of Party-Averaged Exp. Turn Damage",
         "ja": "予想ダメージ平均の積分値",
         "zh": "预测伤害平均积分值",
+    },
+    "奥義+チェンバダメージ": {
+        "en": "C.A.+Chain Damage",
+        "ja": "奥義+チェンバダメージ",
+        "zh": "C.A.+Chain Damage",
     },
     "★1": {
         "en": "★1",

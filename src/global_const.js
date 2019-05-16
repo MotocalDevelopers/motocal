@@ -386,6 +386,7 @@ var keyTypes = {
     "damageWithMultiple": "単攻撃ダメージ(連撃有)",
     "damage": "単攻撃ダメージ(技巧連撃有)",
     "ougiDamage": "奥義ダメージ",
+    "ougiDamageWithChainDamage": "奥義+チェンバダメージ",
     "totalExpected": "総合攻撃*期待回数*技巧期待値(ジータさんのみ)",
     "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
@@ -589,8 +590,8 @@ var skilltypes = {
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
-    "opus-normalElement": {name: "進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
-    "opus-magnaElement": {name: "進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
+    "opus-normalElement": {name: "通常進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
+    "opus-magnaElement": {name: "マグナ進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
@@ -661,7 +662,7 @@ var opusNormalWeaponSkill2 = {
     "normalKonshinL": {name: "通常渾身(大)"},
     "normalHaisuiL": {name: "通常背水(大)"},
     "normalSanteM": {name: "通常三手(中)"},
-    "opus-normalElement": {name: "進境(大)(最大時)"},
+    "opus-normalElement": {name: "通常進境(大)(最大時)"},
 };
 
 var opusMagnaWeaponSkill2 = {
@@ -669,7 +670,7 @@ var opusMagnaWeaponSkill2 = {
     "magnaKonshinL": {name: "マグナ渾身(大)"},
     "magnaHaisuiL": {name: "マグナ背水(大)"},
     "magnaSanteM": {name: "マグナ三手(中)"},
-    "opus-magnaElement": {name: "進境(大)(最大時)"},
+    "opus-magnaElement": {name: "マグナ進境(大)(最大時)"},
 };
 
 var armTypes = {
