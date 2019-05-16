@@ -285,7 +285,7 @@ var Chara = CreateClass({
             daBuff: 0,
             taBuff: 0,
             ougiGageBuff: 0,
-            ougiDamageChara: 0,
+            ougiDamageBuff: 0,
             damageLimitBuff: 0,
             ougiDamageLimitBuff: 0,
             LBATK: 0,
@@ -588,10 +588,10 @@ var Chara = CreateClass({
                                                  onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}>{selector.buffLevel}</FormControl>
                                 </td>
                             </tr>,
-                            <tr key="ougiDamageChara">
+                            <tr key="ougiDamageBuff">
                                 <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
-                                <td><FormControl componentClass="select" value={this.state.ougiDamageChara}
-                                                 onChange={this.handleSelectEvent.bind(this, "ougiDamageChara")}>{selector.buffLevel}</FormControl>
+                                <td><FormControl componentClass="select" value={this.state.ougiDamageBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "ougiDamageBuff")}>{selector.buffLevel}</FormControl>
                                 </td>
                             </tr>,
                             <tr key="damageLimit">
