@@ -718,6 +718,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             damageWithCritical: damage,
             // Only consecutive shots
             damageWithMultiple: damageWithoutCritical * expectedAttack,
+            ougiDamageWithChainDamage: ougiDamage + chainBurst,
             ougiRatio: totals[key]["ougiRatio"],
             ougiDamage: ougiDamage,
             chainBurst: chainBurst,
