@@ -2168,7 +2168,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["DABuff"] += support.value;
                     }
                     continue;
-                case "elementBuff_ifElementBuff":
+                case "element_buff_boost":
                     if (totals[key]["elementBuff"] > 0) {
                         totals[key]["elementBuff"] += support.value;
                     }
@@ -2196,15 +2196,24 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     totals[key]["TABuff"] += elements * 0.03;
                     continue;
                 case "ideal_vassals":
-                    if (totals[key].name != "" && totals[key].isConsideredInAverage && Object.keys(totals).length == 2){
-                        totals[key]["normalBuff"] += 0.05;
-                    } else if (totals[key].name != "" && totals[key].isConsideredInAverage && Object.keys(totals).length == 3){
-                        totals[key]["normalBuff"] += 0.10;
-                        totals[key]["DABuff"] += 0.03;
-                    } else if (totals[key].name != "" && totals[key].isConsideredInAverage && Object.keys(totals).length >= 4){
-                        totals[key]["normalBuff"] += 0.15;
-                        totals[key]["DABuff"] += 0.10;
-                        totals[key]["TABuff"] += 0.06;
+                    var num = Math.min(4, Object.values(totals).filter((x) => x.name != "" && x.isConsideredInAverage).length);
+                    switch (num) {
+                        case 1:
+                            break;
+                        case 2:
+                            totals[key]["normalBuff"] += 0.05;
+                            break;
+                        case 3:
+                            totals[key]["normalBuff"] += 0.10;
+                            totals[key]["DABuff"] += 0.03;
+                            break;
+                        case 4:
+                            totals[key]["normalBuff"] += 0.15;
+                            totals[key]["DABuff"] += 0.10;
+                            totals[key]["TABuff"] += 0.06;
+                            break;
+                        default:
+                            break;
                     }
                     continue;
                 case "dance_of_nataraja":

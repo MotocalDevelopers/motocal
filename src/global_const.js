@@ -1545,9 +1545,9 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10
     },
-    "elementBuff_ifElementBuff_own_30": {
+    "element_buff_boost_own_30": {
         "name": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
-        "type": "elementBuff_ifElementBuff",
+        "type": "element_buff_boost",
         "range": "own",
         "value": 0.30
     },
