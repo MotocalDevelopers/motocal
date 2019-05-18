@@ -677,6 +677,7 @@
         "attack": "8200",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040214000_01.png",
         "en": "Medusa"
     },
@@ -3989,8 +3990,8 @@
         "sex": "male",
         "fav1": "sword",
         "fav2": "none",
-        "support": "none",
-        "support2": "none",
+        "support": "elementBuff_ifElementBuff_own_30",
+        "support2": "ideal_vassals",
         "support3": "none",
         "minhp": "290",
         "hp": "1830",
@@ -8587,7 +8588,7 @@
         "sex": "male",
         "fav1": "sword",
         "fav2": "none",
-        "support": "none",
+        "support": "elementBuff_ifElementBuff_own_30",
         "support2": "none",
         "support3": "none",
         "minhp": "160",
@@ -10532,6 +10533,7 @@
         "attack": "5700",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030266000_01.png",
         "en": "Korwa (SR)"
     },
@@ -10553,6 +10555,7 @@
         "attack": "6777",
         "baseDA": 7.0,
         "baseTA": 3.0,
+        "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030267000_01.png",
         "en": "Richard"
     }

@@ -2168,6 +2168,11 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["DABuff"] += support.value;
                     }
                     continue;
+                case "elementBuff_ifElementBuff":
+                    if (totals[key]["elementBuff"] > 0) {
+                        totals[key]["elementBuff"] += support.value;
+                    }
+                    continue;
                 case "emnity_all_SL10":
                     // Refer to HP of Zahlhamelina
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
@@ -2189,6 +2194,18 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     totals[key]["normalBuff"] += elements * 0.15;
                     totals[key]["DABuff"] += elements * 0.10;
                     totals[key]["TABuff"] += elements * 0.03;
+                    continue;
+                case "ideal_vassals":
+                    if (totals[key].name != "" && totals[key].isConsideredInAverage && Object.keys(totals).length == 2){
+                        totals[key]["normalBuff"] += 0.05;
+                    } else if (totals[key].name != "" && totals[key].isConsideredInAverage && Object.keys(totals).length == 3){
+                        totals[key]["normalBuff"] += 0.10;
+                        totals[key]["DABuff"] += 0.03;
+                    } else if (totals[key].name != "" && totals[key].isConsideredInAverage && Object.keys(totals).length >= 4){
+                        totals[key]["normalBuff"] += 0.15;
+                        totals[key]["DABuff"] += 0.10;
+                        totals[key]["TABuff"] += 0.06;
+                    }
                     continue;
                 case "dance_of_nataraja":
                     totals[key]["ougiGageBuff"] -= 0.35;

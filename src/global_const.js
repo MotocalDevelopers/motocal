@@ -1545,6 +1545,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10
     },
+    "elementBuff_ifElementBuff_own_30": {
+        "name": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
+        "type": "elementBuff_ifElementBuff",
+        "range": "own",
+        "value": 0.30
+    },
     "ougi_gage_up_own_10": {
         "name": "奥義ゲージ上昇量10%UP(アルタイル)",
         "type": "ougiGageBuff",
@@ -1590,6 +1596,12 @@ var supportAbilities = {
     "envoy_meditation": {
         "name": "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)",
         "type": "envoy_meditation",
+        "range": "own",
+        "value": 0.00
+    },
+    "ideal_vassals": {
+        "name": "バトルメンバーの数が多い程自分のステータスUP(パーシヴァル)",
+        "type": "ideal_vassals",
         "range": "own",
         "value": 0.00
     },
