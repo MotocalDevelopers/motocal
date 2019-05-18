@@ -417,6 +417,7 @@ var Profile = CreateClass({
                     <tr>
                         <td colSpan="2">
                             <strong>{intl.translate("ジータさんマスターボーナス", locale)}</strong>
+                            <p>{intl.translate("ジータさんマスターボーナス説明", locale)}</p>
                         </td>
                     </tr>
 
@@ -498,6 +499,7 @@ var Profile = CreateClass({
                     <tr>
                         <td colSpan="2">
                             <strong>{intl.translate("ジータさんリミットボーナス", locale)}</strong>
+                            <p>{intl.translate("ジータさんリミットボーナス説明", locale)}</p>
                         </td>
                     </tr>
 
