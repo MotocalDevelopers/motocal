@@ -473,6 +473,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalSkillCoeff *= elementCoeff;
         totalSkillCoeff *= otherCoeff;
         totalSkillCoeff *= charaHaisuiCoeff;
+        totalSkillCoeff *= 1.0 - totals[key]["ATKDebuff"];
         var totalAttack = summedAttack * totalSkillCoeff;
 
         // Lowest HP limit = 1
@@ -662,6 +663,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["magnaHaisui"] = magnaHaisuiCoeff;
         coeffs["magnaKonshin"] = magnaKonshinCoeff;
         coeffs["element"] = elementCoeff;
+        coeffs["ATKDebuff"] = 1.0 + totals[key]["ATKDebuff"];
         coeffs["ex"] = exCoeff;
         coeffs["exHaisui"] = exHaisuiCoeff;
         coeffs["charaHaisui"] = charaHaisuiCoeff;
@@ -1497,6 +1499,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'exATKandHP') {
                             totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];
                             totals[key]["exHP"] += comb[i] * skillAmounts["exHP"][amount][slv - 1];
+                        } else if (stype == 'rankiShikku') {
+                            if (index == 1) {
+                                totals[key]["normalLesserSante"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
+                                totals[key]["ATKDebuff"] += comb[i] * 0.15;
+                            }
                         } else if (stype == 'gurenJuin') {
                             if (index == 2) {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
@@ -1737,6 +1744,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherHaisui: 0,
                 normalKonshin: 0,
                 normalOtherKonshin: 0,
+                ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
                 exHaisui: 0,
@@ -1882,6 +1890,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherHaisui: 0,
                 normalKonshin: 0,
                 normalOtherKonshin: 0,
+                ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
                 exHaisui: 0,
@@ -2047,6 +2056,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["normalOtherHaisui"] = 0;
         totals[key]["normalKonshin"] = 0;
         totals[key]["normalOtherKonshin"] = 0;
+        totals[key]["ATKDebuff"] = 0;
         totals[key]["unknown"] = 0;
         totals[key]["ex"] = 0;
         totals[key]["exHaisui"] = 0;
