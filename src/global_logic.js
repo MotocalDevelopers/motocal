@@ -1700,6 +1700,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
         personalDABuff: 0.0,
         personalTABuff: 0.0,
         personalOugiGageBuff: 0.0,
+        personalOugiDamageBuff: 0.0,
         personalAdditionalDamageBuff: 0.0,
         personalDamageLimitBuff: 0.0,
         personalOugiDamageLimitBuff: 0.0
@@ -1800,7 +1801,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: djeetaBuffList["personalTABuff"],
                 ougiRatio: prof.ougiRatio,
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
-                ougiDamageBuff: 0,
+                ougiDamageBuff: djeetaBuffList["personalOugiDamageBuff"],
                 additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
                 DAbuff: 0,
                 TAbuff: 0,
