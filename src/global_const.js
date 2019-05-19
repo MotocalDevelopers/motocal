@@ -940,7 +940,7 @@ module.exports.Jobs = {
         "favArm2": "katana",
         "type": "attack",
         "atBonus": 2000.0,
-        "kouzinBonus": 0.0,
+        "kouzinBonus": 20.0,
         "hpBonus": 600.0,
         "shugoBonus": 0.0,
         "DaBonus": 57.0,
