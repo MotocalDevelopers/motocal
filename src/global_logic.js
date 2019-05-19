@@ -2196,8 +2196,8 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     totals[key]["TABuff"] += elements * 0.03;
                     continue;
                 case "ideal_vassals":
-                    var num = Math.min(4, Object.values(totals).filter((x) => x.name != "" && x.isConsideredInAverage).length);
-                    switch (num) {
+                    var countBattleMembers = Math.min(4, Object.values(totals).filter((x) => x.name != "" && x.isConsideredInAverage).length);
+                    switch (countBattleMembers) {
                         case 1:
                             break;
                         case 2:
