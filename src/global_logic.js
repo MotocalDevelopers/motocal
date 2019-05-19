@@ -2171,6 +2171,11 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["DABuff"] += support.value;
                     }
                     continue;
+                case "element_buff_boost":
+                    if (totals[key]["elementBuff"] > 0) {
+                        totals[key]["elementBuff"] += support.value;
+                    }
+                    continue;
                 case "emnity_all_SL10":
                     // Refer to HP of Zahlhamelina
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
@@ -2192,6 +2197,27 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     totals[key]["normalBuff"] += elements * 0.15;
                     totals[key]["DABuff"] += elements * 0.10;
                     totals[key]["TABuff"] += elements * 0.03;
+                    continue;
+                case "ideal_vassals":
+                    var countBattleMembers = Math.min(4, Object.values(totals).filter((x) => x.name != "" && x.isConsideredInAverage).length);
+                    switch (countBattleMembers) {
+                        case 1:
+                            break;
+                        case 2:
+                            totals[key]["normalBuff"] += 0.05;
+                            break;
+                        case 3:
+                            totals[key]["normalBuff"] += 0.10;
+                            totals[key]["DABuff"] += 0.03;
+                            break;
+                        case 4:
+                            totals[key]["normalBuff"] += 0.15;
+                            totals[key]["DABuff"] += 0.10;
+                            totals[key]["TABuff"] += 0.06;
+                            break;
+                        default:
+                            break;
+                    }
                     continue;
                 case "dance_of_nataraja":
                     totals[key]["ougiGageBuff"] -= 0.35;
