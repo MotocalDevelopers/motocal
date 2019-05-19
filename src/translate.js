@@ -499,6 +499,11 @@ var multiLangData = {
         "ja": "ジータさんリミットボーナス",
         "zh": "Player's Extended Mastery",
     },
+    "ジータさんリミットボーナス説明": {
+        "en": "Enter the Extended Mastery for each Class.",
+        "ja": "ジョブごとのリミットボーナス(LB)を入力して下さい。",
+        "zh": "Enter the Extended Mastery for each Class.",
+    },
     "味方全体のHP": {
         "en": "Total Party HP",
         "ja": "味方全体HP",
@@ -619,6 +624,11 @@ var multiLangData = {
         "en": "Player's Master Bonuses",
         "ja": "ジータさんマスターボーナス",
         "zh": "主角的职业满级Bonu",
+    },
+    "ジータさんマスターボーナス説明": {
+        "en": "Enter the total value of Master Bonuses to be acquired when you make Class Lv20.\n(GBF Party screen > Classes > Bonuses tab)",
+        "ja": "ジョブLv20になると取得するマスターボーナスの合計値を入力して下さい\n(グラブル編成画面>ジョブ詳細>ボーナスタブ)",
+        "zh": "Enter the total value of Master Bonuses to be acquired when you make Class Lv20.\n(GBF Party screen > Classes > Bonuses tab)",
     },
     "マスボATK": {
         "en": "ATK",
