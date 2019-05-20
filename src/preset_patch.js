@@ -1,14 +1,14 @@
 'use strict';
 
-var {zip_longest, dict_get, do_nothing} = require('./utils');
-const {CATEGORIES} = require('./preset_consts');
+import {zip_longest, dict_get, do_nothing} from './utils';
+import {CATEGORIES} from './preset_consts';
 
 
 /**
  * partial_patch_array
- * @param {object} root old state data
- * @param {string} category "all" or {"profile", "summon", "chara", "armlist"}
- * @param {object} data new state data
+ * @param {object} orig base state data
+ * @param {object} patch new state data
+ * @param {function} merge
  * @return {object} root patched new state data
  * @private
  */

@@ -6,6 +6,12 @@ import {dict_get} from './utils';
 // I do not make unittest for now, need to install mock.
 
 
+
+const DESERIALIZE_METHOD = JSON.parse;
+
+const DECODE_METHOD = Base64.decode;
+
+
 /**
  * download_getdata
  * @param {string} category UNUSED
@@ -24,7 +30,7 @@ function download_getdata(category, id) {
         timeout: 10000,
         data: {id: id}
     };
-    return $.ajax(param).then(Base64.decode);
+    return $.ajax(param).then(DECODE_METHOD);
 }
 
 
@@ -60,7 +66,7 @@ function download_getjson(category, name) {
  * @return {string} base64 decoded URL fragment.
  */
 async function download_fragment(category, _) {
-    return Base64.decode(location.hash);
+    return DECODE_METHOD(location.hash);
 }
 
 
@@ -87,5 +93,5 @@ const _DOWNLOAD_METHOD = {
  */
 export function promise_download(request_type, category, args) {
     let download = dict_get(_DOWNLOAD_METHOD, request_type, async () => "{}");
-    return download(category, args).then(JSON.parse).catch(() => {});
+    return download(category, args).then(DESERIALIZE_METHOD).catch(() => {});
 }
