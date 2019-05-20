@@ -319,6 +319,24 @@ var levelList200Limit = levelListFactory({
     "5凸 (Lv. 200)": 200
 }, 200);
 
+//SR
+var SRLevelList75Limit = levelListFactory({
+    "Lv. 1": 1,
+    "0凸 (Lv. 30)": 30,
+    "1凸 (Lv. 45)": 45,
+    "2凸 (Lv. 60)": 60,
+    "3凸 (Lv. 75)": 75,
+}, 75);
+
+var SRLevelList120Limit = levelListFactory({
+    "Lv. 1": 1,
+    "0凸 (Lv. 30)": 30,
+    "1凸 (Lv. 45)": 45,
+    "2凸 (Lv. 60)": 60,
+    "3凸 (Lv. 75)": 75,
+    "4凸 (Lv. 120)": 120,
+}, 120);
+
 // Skill Level Lists
 var skillLevelListFactory = function (max_level) {
     var base_list = {};
@@ -2161,6 +2179,12 @@ module.exports.selector.level150Limit = Object.keys(levelList150Limit).map(funct
 });
 module.exports.selector.level200Limit = Object.keys(levelList200Limit).map(function (opt) {
     return <option value={levelList200Limit[opt]} key={opt}>{opt}</option>
+});
+module.exports.selector.SRLevel75Limit = Object.keys(SRLevelList75Limit).map(function (opt) {
+    return <option value={SRLevelList75Limit[opt]} key={opt}>{opt}</option>
+});
+module.exports.selector.SRLevel120Limit = Object.keys(SRLevelList120Limit).map(function (opt) {
+    return <option value={SRLevelList120Limit[opt]} key={opt}>{opt}</option>
 });
 
 module.exports.selector.skilllevel10Limit = Object.keys(skillLevelList10Limit).map(function (opt) {

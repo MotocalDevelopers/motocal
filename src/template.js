@@ -308,6 +308,13 @@ var RegisteredArm = CreateClass({
         } else if (arm.maxlv == "150") {
             newState["selectLevel"] = selector.level150Limit;
             newState["selectSkillLevel"] = selector.skilllevel15Limit
+        //SR
+        } else if (arm.maxlv == "120") {
+            newState["selectLevel"] = selector.SRLevel120Limit;
+            newState["selectSkillLevel"] = selector.skilllevel15Limit
+        } else if (arm.maxlv == "75") {
+            newState["selectLevel"] = selector.SRLevel75Limit;
+            newState["selectSkillLevel"] = selector.skilllevel10Limit
         } else {
             newState["selectLevel"] = selector.level100Limit;
             newState["selectSkillLevel"] = selector.skilllevel10Limit
