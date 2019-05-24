@@ -1552,7 +1552,7 @@ var supportAbilities = {
         "value": 0.30
     },
     "eternal_wisdom": {
-        "name": "風属性攻撃UPが付与されている場合ステータスUP(スカーサハ)",
+        "name": "属性バフ付与時にステータスUP(スカーサハ)",
         "type": "eternal_wisdom",
         "range": "own",
         "value": 0.00
