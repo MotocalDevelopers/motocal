@@ -277,6 +277,7 @@ var Chara = CreateClass({
             isConsideredInAverage: true,
             openBufflist: false,
             openLBlist: false,
+            openEXLBlist: false,
             normalBuff: 0,
             elementBuff: 0,
             otherBuff: 0,
@@ -297,6 +298,15 @@ var Chara = CreateClass({
             LBCritical2: "none",
             LBCritical3: "none",
             LBCritical4: "none",
+            EXLBATK: 0,
+            EXLBHP: 0,
+            EXLBOugiDamage: 0,
+            EXLBOugiDamageLimit: 0,
+            EXLBCritical: 0,
+            EXLBHaisui: 0,
+            EXLBKonshin: 0,
+            EXLBDA: 0,
+            EXLBTA: 0,
         };
     },
     componentDidMount: function () {
@@ -418,6 +428,9 @@ var Chara = CreateClass({
     },
     switchLBlist: function (e) {
         this.setState({openLBlist: !(this.state.openLBlist)})
+    },
+    switchEXLBlist: function (e) {
+        this.setState({openEXLBlist: !(this.state.openEXLBlist)})
     },
     render: function () {
         var locale = this.props.locale;
@@ -699,6 +712,99 @@ var Chara = CreateClass({
                             </tr>
                         ]
                         : null}
+
+                    <tr>
+                        <th className="bg-primary">
+                            <Button onClick={this.switchEXLBlist}>{intl.translate("指輪", locale)}</Button>
+                        </th>
+                        <td></td>
+                    </tr>
+                    {this.state.openEXLBlist ?
+                        [
+                            <tr key="EXLBATK">
+                                <th className="bg-primary">{intl.translate("攻撃力", locale)}</th>
+                                <td>
+                                    <FormControl componentClass="select" value={this.state.EXLBATK}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBATK")}>
+                                        {selector.EXlimitBonusAttackList}
+                                    </FormControl>
+                                </td>
+                            </tr>,
+                            <tr key="EXLBHP">
+                                <th className="bg-primary">HP</th>
+                                <td>
+                                    <FormControl componentClass="select" value={this.state.EXLBHP}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBHP")}>
+                                        {selector.EXlimitBonusHPList}
+                                    </FormControl>
+                                </td>
+                            </tr>,
+                            <tr key="EXLBOugiDamage">
+                                <th className="bg-primary">{intl.translate("奥義ダメージ", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.EXLBOugiDamage}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBOugiDamage")}>
+                                        {selector.EXlimitBonusOugiDamageList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="EXLBOugiDamageLimit">
+                                <th className="bg-primary">{intl.translate("奥義ダメージ上限", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.EXLBOugiDamageLimit}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBOugiDamageLimit")}>
+                                        {selector.EXlimitBonusOugiDamageLimitList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="EXLBCritical">
+                                <th className="bg-primary">{intl.translate("クリティカル確率", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.EXLBCritical}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBCritical")}>
+                                        {selector.EXlimitBonusCriticalList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="EXLBHaisui">
+                                <th className="bg-primary">{intl.translate("背水", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.EXLBHaisui}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBHaisui")}>
+                                        {selector.EXlimitBonusHaisuiList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="EXLBKonshin">
+                                <th className="bg-primary">{intl.translate("渾身", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.EXLBKonshin}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBKonshin")}>
+                                        {selector.EXlimitBonusKonshinList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="EXLBDA">
+                                <th className="bg-primary">{intl.translate("DA", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.EXLBDA}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBDA")}>
+                                        {selector.EXlimitBonusDAList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="EXLBTA">
+                                <th className="bg-primary">{intl.translate("TA", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.EXLBTA}
+                                                 onChange={this.handleSelectEvent.bind(this, "EXLBTA")}>
+                                        {selector.EXlimitBonusTAList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>
+                        ]
+                        : null}
+
                     </tbody>
                 </table>
                 <ButtonGroup style={{"width": "100%"}}>
