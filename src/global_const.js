@@ -528,6 +528,7 @@ var skilltypes = {
     "unknownHPL": {name: "アンノウン・VIT II(大)", type: "unknownHP", amount: "L"},
     "unknownOtherBoukunL": {name: "ミフネ流・極意", type: "exBoukun", amount: "L"},
     "unknownOtherNiteS": {name: "ミフネ流・双星", type: "exNite", amount: "S"},
+    "rankiShikku": {name: "乱気の疾駆・壱", type: "rankiShikku", amount: "L"},
     "gurenJuin": {name: "紅蓮の呪印・弐", type: "gurenJuin", amount: "L"},
     "muhyoTuiga": {name: "霧氷の追牙・肆", type: "muhyoTuiga", amount: "L"},
     "tsuranukiKiba": {name: "貫きの牙", type: "tsuranukiKiba", amount: "M"},
@@ -941,7 +942,7 @@ module.exports.Jobs = {
         "favArm2": "katana",
         "type": "attack",
         "atBonus": 2000.0,
-        "kouzinBonus": 0.0,
+        "kouzinBonus": 20.0,
         "hpBonus": 600.0,
         "shugoBonus": 0.0,
         "DaBonus": 57.0,
@@ -1549,6 +1550,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10
     },
+    "element_buff_boost_own_30": {
+        "name": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
+        "type": "element_buff_boost",
+        "range": "own",
+        "value": 0.30
+    },
     "ougi_gage_up_own_10": {
         "name": "奥義ゲージ上昇量10%UP(アルタイル)",
         "type": "ougiGageBuff",
@@ -1594,6 +1601,12 @@ var supportAbilities = {
     "envoy_meditation": {
         "name": "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)",
         "type": "envoy_meditation",
+        "range": "own",
+        "value": 0.00
+    },
+    "ideal_vassals": {
+        "name": "バトルメンバーの数が多い程自分のステータスUP(パーシヴァル)",
+        "type": "ideal_vassals",
         "range": "own",
         "value": 0.00
     },

@@ -1213,6 +1213,7 @@ var Result = CreateClass({
                         pushSkillInfoElement1("charaHaisui", "キャラ背水", "light");
                         pushSkillInfoElement1("hpRatio", "HP増加", "success");
                         pushSkillInfoElement1("other", "その他バフ", "primary");
+                        pushSkillInfoElement1("ATKDebuff", "攻撃力減少(特殊)", "primary");
 
                         var multipleAttackSkillInfo = [];
                         // For batting skill

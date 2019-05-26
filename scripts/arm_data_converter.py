@@ -35,6 +35,7 @@ skillnamelist["normalHPLL"] = {
     u"奈落の守護II": "dark"
 }
 
+skillnamelist["rankiShikku"] = {u"乱気の疾駆・壱": "wind"}
 skillnamelist["gurenJuin"] = {u"紅蓮の呪印・弐": "fire"}
 skillnamelist["muhyoTuiga"] = {u"霧氷の追牙・肆": "water"}
 

@@ -374,7 +374,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     for (var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind];
 
-        // Calculation of various attack coefficients
+        // Calculation of various attack coefficients  各種攻刃係数の計算
         var magnaCoeff = 1.0 + (0.01 * totals[key]["magna"] + 0.01 * totals[key]["magnaSoka"]) * totalSummon["magna"];
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"] * totalSummon["magna"]);
         var magnaKonshinCoeff = 1.0 + 0.01 * (totals[key]["magnaKonshin"] * totalSummon["magna"]);
@@ -390,15 +390,18 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         normalCoeff += totalSummon["chara"];
         normalCoeff += buff["normal"];
         normalCoeff += totals[key]["normalBuff"];
-        // Add pre-emptive to normal attack
+        // Add pre-emptive to normal attack 先制を通常攻刃へ加算
         normalCoeff += 0.01 * totals[key]["sensei"];
+        if (key == "Djeeta") {
+            normalCoeff += 0.01 * totals["Djeeta"]["job"].kouzinBonus;
+        }
 
         var normalHaisuiCoeff = 1.0 + 0.01 * totals[key]["normalHaisui"] * totalSummon["zeus"];
         normalHaisuiCoeff += 0.01 * totals[key]["normalOtherHaisui"];
 
         var normalKonshinCoeff = 1.0 + 0.01 * totals[key]["normalKonshin"] * totalSummon["zeus"];
         normalKonshinCoeff += 0.01 * totals[key]["normalOtherKonshin"];
-        // Also calculate the attribute (elapsed turn) with the maximum value
+        // Also calculate the attribute (elapsed turn) with the maximum value 属性(経過ターン)も最大値で計算する
         var elementCoeff = totals[key]["typeBonus"];
         elementCoeff += totalSummon["element"] - 1.0;
         elementCoeff += totalSummon["elementTurn"] - 1.0;
@@ -473,6 +476,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalSkillCoeff *= elementCoeff;
         totalSkillCoeff *= otherCoeff;
         totalSkillCoeff *= charaHaisuiCoeff;
+        totalSkillCoeff *= 1.0 - totals[key]["ATKDebuff"];
         var totalAttack = summedAttack * totalSkillCoeff;
 
         // Lowest HP limit = 1
@@ -667,6 +671,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["magnaHaisui"] = magnaHaisuiCoeff;
         coeffs["magnaKonshin"] = magnaKonshinCoeff;
         coeffs["element"] = elementCoeff;
+        coeffs["ATKDebuff"] = 1.0 + totals[key]["ATKDebuff"];
         coeffs["ex"] = exCoeff;
         coeffs["exHaisui"] = exHaisuiCoeff;
         coeffs["charaHaisui"] = charaHaisuiCoeff;
@@ -1504,6 +1509,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'exATKandHP') {
                             totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];
                             totals[key]["exHP"] += comb[i] * skillAmounts["exHP"][amount][slv - 1];
+                        } else if (stype == 'rankiShikku') {
+                            if (index == 1) {
+                                totals[key]["normalLesserSante"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
+                                totals[key]["ATKDebuff"] += comb[i] * 0.15;
+                            }
                         } else if (stype == 'gurenJuin') {
                             if (index == 2) {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
@@ -1744,6 +1754,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherHaisui: 0,
                 normalKonshin: 0,
                 normalOtherKonshin: 0,
+                ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
                 exHaisui: 0,
@@ -1890,6 +1901,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherHaisui: 0,
                 normalKonshin: 0,
                 normalOtherKonshin: 0,
+                ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
                 exHaisui: 0,
@@ -2056,6 +2068,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["normalOtherHaisui"] = 0;
         totals[key]["normalKonshin"] = 0;
         totals[key]["normalOtherKonshin"] = 0;
+        totals[key]["ATKDebuff"] = 0;
         totals[key]["unknown"] = 0;
         totals[key]["ex"] = 0;
         totals[key]["exHaisui"] = 0;
@@ -2178,6 +2191,11 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["DABuff"] += support.value;
                     }
                     continue;
+                case "element_buff_boost":
+                    if (totals[key]["elementBuff"] > 0) {
+                        totals[key]["elementBuff"] += support.value;
+                    }
+                    continue;
                 case "emnity_all_SL10":
                     // Refer to HP of Zahlhamelina
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
@@ -2199,6 +2217,27 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     totals[key]["normalBuff"] += elements * 0.15;
                     totals[key]["DABuff"] += elements * 0.10;
                     totals[key]["TABuff"] += elements * 0.03;
+                    continue;
+                case "ideal_vassals":
+                    var countBattleMembers = Math.min(4, Object.values(totals).filter((x) => x.name != "" && x.isConsideredInAverage).length);
+                    switch (countBattleMembers) {
+                        case 1:
+                            break;
+                        case 2:
+                            totals[key]["normalBuff"] += 0.05;
+                            break;
+                        case 3:
+                            totals[key]["normalBuff"] += 0.10;
+                            totals[key]["DABuff"] += 0.03;
+                            break;
+                        case 4:
+                            totals[key]["normalBuff"] += 0.15;
+                            totals[key]["DABuff"] += 0.10;
+                            totals[key]["TABuff"] += 0.06;
+                            break;
+                        default:
+                            break;
+                    }
                     continue;
                 case "dance_of_nataraja":
                     totals[key]["ougiGageBuff"] -= 0.35;

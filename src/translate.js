@@ -499,6 +499,11 @@ var multiLangData = {
         "ja": "ジータさんリミットボーナス",
         "zh": "Player's Extended Mastery",
     },
+    "ジータさんリミットボーナス説明": {
+        "en": "Enter the Extended Mastery for each Class.",
+        "ja": "ジョブごとのリミットボーナス(LB)を入力して下さい。",
+        "zh": "Enter the Extended Mastery for each Class.",
+    },
     "味方全体のHP": {
         "en": "Total Party HP",
         "ja": "味方全体HP",
@@ -619,6 +624,11 @@ var multiLangData = {
         "en": "Player's Master Bonuses",
         "ja": "ジータさんマスターボーナス",
         "zh": "主角的职业满级Bonu",
+    },
+    "ジータさんマスターボーナス説明": {
+        "en": "Enter the total value of Master Bonuses to be acquired when you make Class Lv20.\n(GBF Party screen > Classes > Bonuses tab)",
+        "ja": "ジョブLv20になると取得するマスターボーナスの合計値を入力して下さい\n(グラブル編成画面>ジョブ詳細>ボーナスタブ)",
+        "zh": "Enter the total value of Master Bonuses to be acquired when you make Class Lv20.\n(GBF Party screen > Classes > Bonuses tab)",
     },
     "マスボATK": {
         "en": "ATK",
@@ -1345,6 +1355,11 @@ var multiLangData = {
         "en": "Chara Enmity ",
         "ja": "キャラ背水",
         "zh": "角色背水",
+    },
+    "攻撃力減少(特殊)": {
+        "en": "ATK Debuff (special) ",
+        "ja": "攻撃力減少(特殊)",
+        "zh": "攻击力減少(特殊)",
     },
     "DA上昇(通常)": {
         "en": "DA up (normal) ",
@@ -2290,6 +2305,11 @@ var multiLangData = {
         "en": "Hoarfrost's Fourth Pursuit",
         "ja": "霧氷の追牙・肆",
         "zh": "雾冰的追牙・肆",
+    },
+    "乱気の疾駆・壱": {
+        "en": "Ventosus's First Dash",
+        "ja": "乱気の疾駆・壱",
+        "zh": "Ventosus's First Dash",
     },
     "貫きの牙": {
         "en": "Piercing Fang",
