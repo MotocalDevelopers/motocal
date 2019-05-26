@@ -1,8 +1,8 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -11,10 +11,8 @@ const DEBUG = process.env.NODE_ENV === 'development' || process.env.NODE_ENV ===
 const devtool = DEBUG ? '#inline-source-map' : '#eval';
 const fileName = DEBUG ? '[name]' : '[name]-[hash]';
 const plugins = [
-  new ExtractTextPlugin({
-    filename: `${fileName}.css`,
-    disable: false,
-    allChunks: true
+  new MiniCssExtractPlugin({
+    filename: `${fileName}.css`
   }),
   new HtmlWebpackPlugin({
     template: path.join(__dirname, 'public/index.html'),
@@ -92,11 +90,15 @@ module.exports = {
       },
       {
         test: /.css$/,
-          use: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: "css-loader",
-            publicPath: "css",
-           })
+          use: [
+              {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: {
+                      publicPath: 'css'
+                  }
+              },
+              'css-loader'
+          ]
       },
   ]},
   plugins: plugins,
@@ -107,4 +109,4 @@ module.exports = {
      port: 8000
   },
   mode: process.env.NODE_ENV || 'development'
-}
+};

@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var {Thumbnail, ControlLabel, Button, ButtonGroup, FormControl, Checkbox, Modal, Image, Popover, Panel, Glyphicon} = require('react-bootstrap');
 var CreateClass = require('create-react-class');
 var intl = require('./translate.js');
+var ChangeLog = require('./changelog.js');
 
 var Notice = CreateClass({
     render: function () {
@@ -18,8 +19,11 @@ var Notice = CreateClass({
                 <h3>{intl.translate("更新履歴", locale)}</h3>
                 <Panel bsStyle="default" collapsible="true"
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
-                    <ul className="list-group">
+                    <ChangeLog className="list-group" length={10} step={20} buttonText={intl.translate("次の{step}件を表示", locale)}>
 
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190511-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190501-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190430-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190428-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190427-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190426-1", locale)}</li>
@@ -199,24 +203,17 @@ var Notice = CreateClass({
                             フェリ(SSR)がキャラテンプレートに表示されていない不具合を修正
                         </li>
                         <li className="list-group-item list-group-item-info">2016/08/25: 武器追加時に+を計算できるようにした</li>
-                    </ul>
+                    </ChangeLog>
                 </Panel>
 
                 <h3>注記</h3>
                 <ul className="list-group">
-                    <li className="list-group-item list-group-item-info">未対応: 召喚石のクリティカル率</li>
-                    <li className="list-group-item list-group-item-info">
-                        <strong>バハ武器フツルスのHP/攻撃力を正しく計算したい場合はスキルに"バハフツ(攻/HP)"を選択してください。</strong>
-                        <br/>
-                        (バハ攻SLv11~の場合のHPと、バハ攻HPのSLv10の場合にズレが出ます。それ以外は問題ありません)
-                    </li>
-                    <li className="list-group-item list-group-item-info">バハフツルス系の連続攻撃率については、SLv15以外は情報がありませんので、ご検証お待ちしています。</li>
+                    <li className="list-group-item list-group-item-info">未対応: ゲージ200%キャラ、バフの効果ターン・リキャスト</li>
+                    <li className="list-group-item list-group-item-info">編成データを読み込むとホワイトアウトしてしまう場合は仕様変更によるものです。新しく編成を作り直すか、対策パッチをお待ち下さい。</li>
+                    <li className="list-group-item list-group-item-info">キャラの基礎連撃率やサポアビ等が追加されても既存の編成データは自動で更新されません。キャラの入れ直しをお願いします。</li>
                     <li className="list-group-item list-group-item-info">基本的に考えうる全ての編成のデータを計算しますが、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。(計算量削減のため)</li>
                     <li className="list-group-item list-group-item-info">パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用)</li>
-                    <li className="list-group-item list-group-item-info">
-                        敵防御固有値は単攻撃ダメージ計算に使用されます。(10から15程度が目安)<br/>
-                        防御デバフを考慮する場合、防御固有値を半分にしてください。
-                    </li>
+                    <li className="list-group-item list-group-item-info">1本は必ず入れたい武器がある時は最小本数を入力して下さい。</li>
                 </ul>
 
                 <h3>LICENSE</h3>

@@ -79,7 +79,7 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-var zenith = {
+var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
     "★2": 0.03,
@@ -94,9 +94,74 @@ var zenith = {
     "★11": 0.18,
     "★12": 0.20
 };
+
 var zenithAttackBonus = [3000, 1500, 500, 0];
 var zenithHPBonus = [1000, 600, 300, 0];
 var zenithPartyHPBonus = [3000, 2600, 2300, 2000, 1600, 1300, 1000, 600, 300, 0];
+var zenithDABonus = {
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
+    "★3": 0.05,
+    "★4": 0.06,
+    "★5": 0.08,
+    "★6": 0.10
+};
+var zenithTABonus = {
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
+    "★3": 0.05
+};
+
+//var zenithCriticalBonus = [0, 1, 3, 5, 6, 8, 10];
+var zenithOugiDamageBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05, 
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10, 
+    "★7": 0.11, 
+    "★8": 0.13,
+    "★9": 0.15
+};
+var zenithChainDamageBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05,
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10
+};
+var zenithChainDamageLimitBonus = {
+    "無し": 0, 
+    "★1":  0.01, 
+    "★2": 0.03, 
+    "★3": 0.05
+};
+var zenithElementBonus = {
+    "無し": 0, 
+    "★1": 0.01, 
+    "★2": 0.03, 
+    "★3": 0.05, 
+    "★4": 0.06, 
+    "★5": 0.08, 
+    "★6": 0.10
+};
+var zenithDamageLimitBonus = {
+    "無し": 0, 
+    "★1": 0.03, 
+    "★2": 0.06, 
+    "★3": 0.10, 
+    "★4": 0.11, 
+    "★5": 0.13, 
+    "★6": 0.15
+};
+
+
 var skilllevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var buffLevelList = [
@@ -105,10 +170,8 @@ var buffLevelList = [
     200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 300,
     -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
 ];
-var ougiGageUpOugiBuffLevelList = [
-    0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
-];
-var ougiRatioList = [0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.5, 10.0];
+var ougiGageUpOugiBuffLevelList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,];
+var ougiRatioList = [0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0];
 var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var masterDAList = [0, 1, 2, 3, 4];
@@ -257,6 +320,24 @@ var levelList200Limit = levelListFactory({
     "5凸 (Lv. 200)": 200
 }, 200);
 
+//SR
+var SRLevelList75Limit = levelListFactory({
+    "Lv. 1": 1,
+    "0凸 (Lv. 30)": 30,
+    "1凸 (Lv. 45)": 45,
+    "2凸 (Lv. 60)": 60,
+    "3凸 (Lv. 75)": 75,
+}, 75);
+
+var SRLevelList120Limit = levelListFactory({
+    "Lv. 1": 1,
+    "0凸 (Lv. 30)": 30,
+    "1凸 (Lv. 45)": 45,
+    "2凸 (Lv. 60)": 60,
+    "3凸 (Lv. 75)": 75,
+    "4凸 (Lv. 120)": 120,
+}, 120);
+
 // Skill Level Lists
 var skillLevelListFactory = function (max_level) {
     var base_list = {};
@@ -273,7 +354,7 @@ var skillLevelList20Limit = skillLevelListFactory(20);
 var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200];
 var chainNumberList = [1, 2, 3, 4];
 
-// limitBonus
+// Chara limitBonus
 var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2300, 2500, 2600, 2800, 3000];
 var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
 var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
@@ -324,6 +405,7 @@ var keyTypes = {
     "damageWithMultiple": "単攻撃ダメージ(連撃有)",
     "damage": "単攻撃ダメージ(技巧連撃有)",
     "ougiDamage": "奥義ダメージ",
+    "ougiDamageWithChainDamage": "奥義+チェンバダメージ",
     "totalExpected": "総合攻撃*期待回数*技巧期待値(ジータさんのみ)",
     "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
@@ -406,6 +488,7 @@ var skilltypes = {
     "normalEiketsuL": {name: "通常英傑(大)", type: "normalEiketsu", amount: "L"},
     "normalOntyouM": {name: "通常恩寵(中)", type: "normalOntyou", amount: "M"},
     "normalSeisyouM": {name: "通常本質(中)", type: "normalSeisyou", amount: "M"},
+    "normalHigoS": {name: "通常庇護(小)", type: "normalHigo", amount: "S"},
     "magnaM": {name: "マグナ攻刃", type: "magna", amount: "M"},
     "magnaL": {name: "マグナ攻刃II", type: "magna", amount: "L"},
     "magnaSoka": {name: "マグナ楚歌", type: "magnaSoka", amount: "M"},
@@ -449,6 +532,7 @@ var skilltypes = {
     "normalDamageLimit7": {name: "通常上限UP(7.0%)", type: "normalDamageLimit", amount: "M"},
     "normalDamageLimit10": {name: "通常上限UP(10%)", type: "normalDamageLimit", amount: "L"},
     "ougiDamageLimit10": {name: "奥義上限UP(10%)", type: "ougiDamageLimit", amount: "L"}, //現在未使用
+    "huanglongHissatsu": {name: "黄龍槍 (メイン装備時)", type: "huanglongHissatsu", amount: "non"},
     "ougiDamageLimitExceedM": {name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M"},
     "chainForce": {name: "チェインフォース", type: "chainForce", amount: "M"},
     "normalHPS": {name: "通常守護(小)", type: "normalHP", amount: "S"},
@@ -463,6 +547,7 @@ var skilltypes = {
     "unknownHPL": {name: "アンノウン・VIT II(大)", type: "unknownHP", amount: "L"},
     "unknownOtherBoukunL": {name: "ミフネ流・極意", type: "exBoukun", amount: "L"},
     "unknownOtherNiteS": {name: "ミフネ流・双星", type: "exNite", amount: "S"},
+    "rankiShikku": {name: "乱気の疾駆・壱", type: "rankiShikku", amount: "L"},
     "gurenJuin": {name: "紅蓮の呪印・弐", type: "gurenJuin", amount: "L"},
     "muhyoTuiga": {name: "霧氷の追牙・肆", type: "muhyoTuiga", amount: "L"},
     "tsuranukiKiba": {name: "貫きの牙", type: "tsuranukiKiba", amount: "M"},
@@ -526,6 +611,8 @@ var skilltypes = {
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
+    "opus-normalElement": {name: "通常進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
+    "opus-magnaElement": {name: "マグナ進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
@@ -596,6 +683,7 @@ var opusNormalWeaponSkill2 = {
     "normalKonshinL": {name: "通常渾身(大)"},
     "normalHaisuiL": {name: "通常背水(大)"},
     "normalSanteM": {name: "通常三手(中)"},
+    "opus-normalElement": {name: "通常進境(大)(最大時)"},
 };
 
 var opusMagnaWeaponSkill2 = {
@@ -603,6 +691,7 @@ var opusMagnaWeaponSkill2 = {
     "magnaKonshinL": {name: "マグナ渾身(大)"},
     "magnaHaisuiL": {name: "マグナ背水(大)"},
     "magnaSanteM": {name: "マグナ三手(中)"},
+    "opus-magnaElement": {name: "マグナ進境(大)(最大時)"},
 };
 
 var armTypes = {
@@ -872,7 +961,7 @@ module.exports.Jobs = {
         "favArm2": "katana",
         "type": "attack",
         "atBonus": 2000.0,
-        "kouzinBonus": 0.0,
+        "kouzinBonus": 20.0,
         "hpBonus": 600.0,
         "shugoBonus": 0.0,
         "DaBonus": 57.0,
@@ -1393,7 +1482,10 @@ var skillAmounts = {
     },
     // Debuff Resistance Grace (Unconfirmed Placeholder)
     "normalOntyou": {
-        "M": [20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
+        "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0]
+    },
+    "normalHigo": {
+        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
     }
 };
 
@@ -1477,6 +1569,18 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10
     },
+    "element_buff_boost_own_30": {
+        "name": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
+        "type": "element_buff_boost",
+        "range": "own",
+        "value": 0.30
+    },
+    "eternal_wisdom": {
+        "name": "属性バフ付与時にステータスUP(スカーサハ)",
+        "type": "eternal_wisdom",
+        "range": "own",
+        "value": 0.00
+    },
     "ougi_gage_up_own_10": {
         "name": "奥義ゲージ上昇量10%UP(アルタイル)",
         "type": "ougiGageBuff",
@@ -1522,6 +1626,12 @@ var supportAbilities = {
     "envoy_meditation": {
         "name": "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)",
         "type": "envoy_meditation",
+        "range": "own",
+        "value": 0.00
+    },
+    "ideal_vassals": {
+        "name": "バトルメンバーの数が多い程自分のステータスUP(パーシヴァル)",
+        "type": "ideal_vassals",
         "range": "own",
         "value": 0.00
     },
@@ -1611,6 +1721,14 @@ var supportAbilities = {
 
 // exports
 module.exports.zenith = zenith;
+module.exports.zenithDA = zenithDABonus;
+module.exports.zenithTA = zenithTABonus;
+//module.exports.zenithCritical = zenithCritical;
+module.exports.zenithOugiDamage = zenithOugiDamageBonus;
+module.exports.zenithChainDamage = zenithChainDamageBonus;
+module.exports.zenithChainDamageLimit = zenithChainDamageLimitBonus;
+module.exports.zenithElement = zenithElementBonus;
+module.exports.zenithDamageLimit = zenithDamageLimitBonus;
 module.exports.raceTypes = raceTypes;
 module.exports.sexTypes = sexTypes;
 module.exports.skillAmounts = skillAmounts;
@@ -1655,6 +1773,12 @@ module.exports.additionalSelectList = {
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
+    "[4凸]ブリューナク": {
+        notationText: "",
+        selectKeys: ["main_weapon_change"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
+    },
     "スナップブレード": {
         notationText: "",
         selectKeys: ["main_weapon_switch"],
@@ -1684,6 +1808,12 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2"],
         selectors: ["sishoGenbu"],
         defaultKeys: ["non"],
+    },
+    "黄龍槍": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
     },
     "無垢なる": {
         notationText: "",
@@ -1989,6 +2119,7 @@ module.exports.selector.zh.summonElements = Object.keys(summonElementTypes).map(
 module.exports.selector.summonAmounts = summonAmountList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
+
 module.exports.selector.zenithAttack = zenithAttackBonus.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
@@ -1998,6 +2129,12 @@ module.exports.selector.zenithHP = zenithHPBonus.map(function (opt) {
 module.exports.selector.zenithPartyHP = zenithPartyHPBonus.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
+
+//module.exports.selector.zenithCriticalBonus = zenithCriticalBonus.map(function (opt) {
+//    return <option value={opt} key={opt}>{opt}</option>;
+//});
+
+
 module.exports.selector.slv = skilllevels.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
@@ -2057,6 +2194,12 @@ module.exports.selector.level150Limit = Object.keys(levelList150Limit).map(funct
 });
 module.exports.selector.level200Limit = Object.keys(levelList200Limit).map(function (opt) {
     return <option value={levelList200Limit[opt]} key={opt}>{opt}</option>
+});
+module.exports.selector.SRLevel75Limit = Object.keys(SRLevelList75Limit).map(function (opt) {
+    return <option value={SRLevelList75Limit[opt]} key={opt}>{opt}</option>
+});
+module.exports.selector.SRLevel120Limit = Object.keys(SRLevelList120Limit).map(function (opt) {
+    return <option value={SRLevelList120Limit[opt]} key={opt}>{opt}</option>
 });
 
 module.exports.selector.skilllevel10Limit = Object.keys(skillLevelList10Limit).map(function (opt) {

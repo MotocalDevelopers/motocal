@@ -2,6 +2,7 @@
 元カレ計算機（グラブル攻撃力計算機）の開発用リポジトリです。
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy/?template=https://github.com/MotocalDevelopers/motocal)
+[<img alt="Edit on CodeSandbox" src="https://codesandbox.io/static/img/play-codesandbox.svg" height="32" />](https://kei-gbf.github.io/codesandbox-button/redirect.html)
 
 ## 開発準備
 
@@ -102,10 +103,10 @@ $ python3 ./scripts/arm_data_converter.py
 #### chara\_data\_converter.py
 - txt_source/charaData.txtからcharaData.jsonを生成します.
 
-#### download\_armimages\_from\_wiki.py
-- txt_source/armImageURLList.txt内に記載されている画像データをwikiから持ってきます.
-#### download\_charaimages\_from\_wiki.py
-- txt_source/charaImageURLList.txt内に記載されている画像データをwikiから持ってきます.
+#### download\_images.py arm
+- txt_source/armImageURLList.txt内に記載されている画像データをwikiから持ってきます. (Python 3.7 以降が必要)
+#### download\_images.py chara
+- txt_source/charaImageURLList.txt内に記載されている画像データをwikiから持ってきます. (Python 3.7 以降が必要)
 - これら2つの画像ダウンロードスクリプトは、あくまで「最新のもの」だけをダウンロードする内容になっております。
 
 ## LICENSE

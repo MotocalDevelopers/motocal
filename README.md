@@ -2,6 +2,7 @@
 This is a repository for the development of former curry calculator (gbf attack power calculator).\
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy/?template=https://github.com/MotocalDevelopers/motocal)
+[<img alt="Edit on CodeSandbox" src="https://codesandbox.io/static/img/play-codesandbox.svg" height="32" />](https://kei-gbf.github.io/codesandbox-button/redirect.html)
 
 ## Preparation for development
 
@@ -84,12 +85,12 @@ $ npm run production-watch-dev
 - Php file for DB communication is not managed.
 - The repository does not manage image files for templates. It is necessary to DL using the following scripts.
 
-## About scripts / 作業用スクリプトについて
+## About scripts
 This is section for scripts that generates json data for templates and pulls weapon/character image data from gbfwiki.
 
 ※ Downloading images from the game is possible, but that may be considered as a bannable offense, if you use that script, you use it on your own personal responsibility.
 
-For python scripts / pythonスクリプトなら、
+For python scripts
 ```sh
 $ python3 ./scripts/arm_data_converter.py
 ```
@@ -104,9 +105,19 @@ Please execute in the order of.
 
 #### download\_images.py arm
 - Downloads the image data for weapons described in txt_source/armImageWikiURLList.txt from the wiki.
+- Requires Python 3.7+ and python3 in the path.
+- Can be directly called using npm run download:run.
+- More advanced configuration can be done by passing parameters to npm script -- [PARAMETERS].
+- Help on script options can be learn via npm run download:help
+- Updates on images can be fetch by rerunning script.
 
 #### download\_images.py chara
 - Downloads the image data for characters described in txt_source/charaImageWikiURLList.txt from the wiki.
+- Requires Python 3.7+ and python3 in the path.
+- Can be directly called using npm run download:run.
+- More advanced configuration can be done by passing parameters to npm script -- [PARAMETERS].
+- Help on script options can be learn via npm run download:help
+- Updates on images can be fetch by rerunning script.
 
 ## LICENSE
 MIT

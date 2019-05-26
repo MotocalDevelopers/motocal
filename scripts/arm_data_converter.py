@@ -35,6 +35,7 @@ skillnamelist["normalHPLL"] = {
     u"奈落の守護II": "dark"
 }
 
+skillnamelist["rankiShikku"] = {u"乱気の疾駆・壱": "wind"}
 skillnamelist["gurenJuin"] = {u"紅蓮の呪印・弐": "fire"}
 skillnamelist["muhyoTuiga"] = {u"霧氷の追牙・肆": "water"}
 
@@ -435,6 +436,15 @@ skillnamelist["normalSeisyouM"] = {
     u"憎悪の星晶": "dark"
 }
 
+skillnamelist["normalHigoS"] = {
+    u"火の庇護": "fire",
+    u"水の庇護": "water",
+    u"土の庇護": "earth",
+    u"風の庇護": "wind",
+    u"光の庇護": "light",
+    u"闇の庇護": "dark"
+}
+
 # magna II
 skillnamelist["magnaL"] = {
     u"機炎方陣・攻刃II": "fire",
@@ -768,6 +778,8 @@ skillnamelist["strengthL"] = {
     u"ゲイルオブアームズ": "wind",
     u"獅子と牛の咆哮": "dark",
     u"サイコ攻刃": "earth",
+    u"菩提の探究": "wind",
+    u"退路無き攻刃": "water",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -899,6 +911,9 @@ skillnamelist["normalDamageLimit7"] = {
 }
 skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
+}
+skillnamelist["huanglongHissatsu"] = {
+    u"震天の境界へと至りし者": "light",
 }
 
 skillnamelist["ougiDamageLimitExceedM"] = {
