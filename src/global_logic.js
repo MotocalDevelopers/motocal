@@ -645,6 +645,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             chainDamageLimit += buff["zenithChainDamageLimit"];
         }
 
+        var debuffResistanceByHigo = 0.01 * Math.min(30, totals[key]["debuffResistance"] * totalSummon["zeus"]);
+        //Other than Higo skill category.
+        var debuffResistanceByNormal = 0.01 * totals[key]["cosmosDebuffResistance"]; 
+        var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
+
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
 
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
@@ -702,7 +707,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             remainHP: totals[key]["remainHP"],
             totalDA: totalDA,
             totalTA: totalTA,
-            debuffResistance: totals[key]["debuffResistance"],
+            debuffResistance: debuffResistance,
             totalSummon: totalSummon,
             // For graphs
             fav1: totals[key]["fav1"],
@@ -1247,7 +1252,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if ((skillname == 'cosmosBL' && totals[key]["type"] == "balance") || totals[key]["support"] === "wildcard") {
                             totals[key]["cosmosBL"] = comb[i] * 20.0
                         } else if ((skillname == 'cosmosPC' && totals[key]["type"] == "pecu") || totals[key]["support"] === "wildcard") {
-                            totals[key]["debuffResistance"] = comb[i] * 20.0
+                            totals[key]["cosmosDebuffResistance"] = comb[i] * 20.0
                         }
                     } else if (stype == 'cosmosArm') {
                         // Skip Cosmos Weapons Skill
@@ -1492,7 +1497,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["normalChainDamageLimit"] += comb[i] * skillAmounts["normalEiketsuDamageLimit"][amount][slv - 1];
                         } else if (stype == 'normalOntyou') {
                             totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
-                            totals[key]["debuffResistance"] = comb[i] * skillAmounts["normalOntyou"][amount][slv - 1];
+                            totals[key]["debuffResistance"] += comb[i] * skillAmounts["normalOntyou"][amount][slv - 1];
+                         } else if (stype == 'normalHigo') {
+                            totals[key]["debuffResistance"] += comb[i] * skillAmounts["normalHigo"][amount][slv - 1];
                         } else if (stype == 'magnaHissatsu') {
                             totals[key]["magnaOugiDamage"] += comb[i] * skillAmounts["magnaHiou"][amount][slv - 1];
                             totals[key]["magnaOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["magnaOugiDamageLimitHissatsu"][amount][slv - 1];
@@ -1820,6 +1827,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 support3: "none",
                 charaHaisui: 0,
                 debuffResistance: 0,
+                cosmosDebuffResistance: 0,
                 charaDamageUP: 0,
                 tenshiDamageUP: 0,
                 charaUniqueDamageUP: 0
@@ -1965,6 +1973,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 support3: chara[i].support3,
                 charaHaisui: 0,
                 debuffResistance: 0,
+                cosmosDebuffResistance: 0,
                 charaDamageUP: 0,
                 tenshiDamageUP: 0,
                 charaUniqueDamageUP: 0
@@ -2112,6 +2121,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["DAbuff"] = 0;
         totals[key]["TAbuff"] = 0;
         totals[key]["debuffResistance"] = 0;
+        totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
     }
 };

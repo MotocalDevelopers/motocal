@@ -1018,7 +1018,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-debuffResistance"} className="result-chara-detail">
                                     <span
-                                        className="label label-success">弱体耐性率</span> {parseInt(m.data[key].debuffResistance)}%&nbsp;
+                                        className="label label-success">弱体耐性率</span> {parseFloat(m.data[key].debuffResistance.toFixed(1))}%&nbsp;
                                 </span>
                         );
                     }
