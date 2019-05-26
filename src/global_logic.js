@@ -577,8 +577,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         
         var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"]);
         var OugiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
-        var minimumTurn = Math.ceil(OugiGage / (37.0 * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"])));
-        var expectedTurn = OugiGage / expectedOugiGage > minimumTurn ? OugiGage / expectedOugiGage : minimumTurn;
+        var minimumTurn = Math.min(9999, Math.ceil(OugiGage / (37.0 * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"]))));
+        var expectedTurn = Math.min(OugiGage / expectedOugiGage, minimumTurn);
 
         // "additionalDamage" considers the Fourth Pursuit effect as a normal frame
         var additionalDamage = 0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"];
