@@ -743,19 +743,6 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
-                    <TextWithTooltip tooltip={intl.translate("追加ダメージバフ説明", locale)}
-                                     id={"tooltip-additionalbuff-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
-                            <td>
-                                <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.additionalDamageBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
                                      id={"tooltip-ougidamagebuff-detail"}>
@@ -765,6 +752,20 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiDamageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiDamageBuff")}> {selector.buffLevel} </FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("追加ダメージバフ説明", locale)}
+                                     id={"tooltip-additionalbuff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.additionalDamageBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
