@@ -527,6 +527,7 @@ var skilltypes = {
     "unknownHPL": {name: "アンノウン・VIT II(大)", type: "unknownHP", amount: "L"},
     "unknownOtherBoukunL": {name: "ミフネ流・極意", type: "exBoukun", amount: "L"},
     "unknownOtherNiteS": {name: "ミフネ流・双星", type: "exNite", amount: "S"},
+    "rankiShikku": {name: "乱気の疾駆・壱", type: "rankiShikku", amount: "L"},
     "gurenJuin": {name: "紅蓮の呪印・弐", type: "gurenJuin", amount: "L"},
     "muhyoTuiga": {name: "霧氷の追牙・肆", type: "muhyoTuiga", amount: "L"},
     "tsuranukiKiba": {name: "貫きの牙", type: "tsuranukiKiba", amount: "M"},
