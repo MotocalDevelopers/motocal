@@ -1356,6 +1356,11 @@ var multiLangData = {
         "ja": "キャラ背水",
         "zh": "角色背水",
     },
+    "攻撃力減少(特殊)": {
+        "en": "ATK Debuff (special) ",
+        "ja": "攻撃力減少(特殊)",
+        "zh": "攻击力減少(特殊)",
+    },
     "DA上昇(通常)": {
         "en": "DA up (normal) ",
         "ja": "DA上昇(通常)",
@@ -2051,6 +2056,11 @@ var multiLangData = {
         "ja": "通常本質(中)",
         "zh": "通常本質(中)",
     },
+    "通常庇護(小)": {
+        "en": "Normal Refuge (S)",
+        "ja": "通常庇護(小)",
+        "zh": "通常庇護(小)",
+    },
     "先制": {
         "en": "Preemptive",
         "ja": "先制(永続)",
@@ -2295,6 +2305,11 @@ var multiLangData = {
         "en": "Hoarfrost's Fourth Pursuit",
         "ja": "霧氷の追牙・肆",
         "zh": "雾冰的追牙・肆",
+    },
+    "乱気の疾駆・壱": {
+        "en": "Ventosus's First Dash",
+        "ja": "乱気の疾駆・壱",
+        "zh": "Ventosus's First Dash",
     },
     "貫きの牙": {
         "en": "Piercing Fang",

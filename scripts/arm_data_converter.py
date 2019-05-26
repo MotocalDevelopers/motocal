@@ -35,6 +35,7 @@ skillnamelist["normalHPLL"] = {
     u"奈落の守護II": "dark"
 }
 
+skillnamelist["rankiShikku"] = {u"乱気の疾駆・壱": "wind"}
 skillnamelist["gurenJuin"] = {u"紅蓮の呪印・弐": "fire"}
 skillnamelist["muhyoTuiga"] = {u"霧氷の追牙・肆": "water"}
 
@@ -433,6 +434,15 @@ skillnamelist["normalSeisyouM"] = {
     u"竜巻の星晶": "wind",
     u"雷電の星晶": "light",
     u"憎悪の星晶": "dark"
+}
+
+skillnamelist["normalHigoS"] = {
+    u"火の庇護": "fire",
+    u"水の庇護": "water",
+    u"土の庇護": "earth",
+    u"風の庇護": "wind",
+    u"光の庇護": "light",
+    u"闇の庇護": "dark"
 }
 
 # magna II
