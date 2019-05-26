@@ -1574,6 +1574,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.30
     },
+    "eternal_wisdom": {
+        "name": "属性バフ付与時にステータスUP(スカーサハ)",
+        "type": "eternal_wisdom",
+        "range": "own",
+        "value": 0.00
+    },
     "ougi_gage_up_own_10": {
         "name": "奥義ゲージ上昇量10%UP(アルタイル)",
         "type": "ougiGageBuff",

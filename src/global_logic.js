@@ -2196,6 +2196,13 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["elementBuff"] += support.value;
                     }
                     continue;
+                case "eternal_wisdom":
+                    if (totals[key]["elementBuff"] > 0) {
+                        totals[key]["normalBuff"] += 0.30;
+                        totals[key]["DABuff"] += 0.35;
+                        totals[key]["TABuff"] += 0.10;
+                    }
+                    continue;
                 case "emnity_all_SL10":
                     // Refer to HP of Zahlhamelina
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
