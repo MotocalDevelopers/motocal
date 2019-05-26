@@ -51,6 +51,7 @@ supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
 supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
 supportAbilist["element_buff_boost_own_30"] = {u"王者の風格"}
+supportAbilist["eternal_wisdom"] = {u"久遠の叡智"}
 supportAbilist["ougi_gage_up_own_10"] = {u"戦賢の書"}
 supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼の悪魔"}
 supportAbilist["ougi_gage_up_own_100"] = {u"刀神"}
@@ -385,7 +386,7 @@ patchingOugiRatio["本田未央"] = {"ougiRatio": 4.0}
 patchingOugiRatio["ノイシュ(火属性ver)"] = {"ougiRatio": 4.0}
 patchingOugiRatio["ティナ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["城ヶ崎莉嘉"] = {"ougiRatio": 4.0}
-
+patchingOugiRatio["シャオ"] = {"ougiRatio": 4.0}
 
 ### SR(Other)
 patchingOugiRatio["カタリナ(水着ver)"] = {"ougiRatio": 3.7}
