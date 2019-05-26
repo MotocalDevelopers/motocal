@@ -1018,7 +1018,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-debuffResistance"} className="result-chara-detail">
                                     <span
-                                        className="label label-success">弱体耐性率</span> {parseInt(m.data[key].debuffResistance)}%&nbsp;
+                                        className="label label-success">弱体耐性率</span> {parseFloat(m.data[key].debuffResistance.toFixed(1))}%&nbsp;
                                 </span>
                         );
                     }
@@ -1213,6 +1213,7 @@ var Result = CreateClass({
                         pushSkillInfoElement1("charaHaisui", "キャラ背水", "light");
                         pushSkillInfoElement1("hpRatio", "HP増加", "success");
                         pushSkillInfoElement1("other", "その他バフ", "primary");
+                        pushSkillInfoElement1("ATKDebuff", "攻撃力減少(特殊)", "primary");
 
                         var multipleAttackSkillInfo = [];
                         // For batting skill
