@@ -574,9 +574,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var criticalAttack = parseInt(totalAttack * criticalRatio);
         var expectedOugiGage = buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"];
         expectedOugiGage *= taRate * 37.0 + (1.0 - taRate) * daRate * 22.0 + (1.0 - daRate) * 10.0;
-
-        var minimumTurn = Math.ceil(100.0 / (37.0 * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"])));
-        var expectedTurn = 100.0 / expectedOugiGage > minimumTurn ? 100.0 / expectedOugiGage : minimumTurn;
+        
+        var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"]);
+        var OugiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
+        var minimumTurn = Math.ceil(OugiGage / (37.0 * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"])));
+        var expectedTurn = OugiGage / expectedOugiGage > minimumTurn ? OugiGage / expectedOugiGage : minimumTurn;
 
         // "additionalDamage" considers the Fourth Pursuit effect as a normal frame
         var additionalDamage = 0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"];
@@ -1032,6 +1034,7 @@ module.exports.getTotalBuff = function (prof) {
         ougiGage: 1.0,
         ougiDamage: 0.0,
         additionalDamage: 0.0,
+        ougiGageUpOugi: 0.0,
         damageLimit: 0.0,
         ougiDamageLimit: 0.0,
         chainNumber: 1,
@@ -1047,6 +1050,7 @@ module.exports.getTotalBuff = function (prof) {
     if (!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseFloat(prof.taBuff);
     if (!isNaN(prof.otherBuff2)) totalBuff["other2"] += 0.01 * parseInt(prof.otherBuff2);
     if (!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
+    if (!isNaN(prof.ougiGageUpOugiBuff)) totalBuff["ougiGageUpOugi"] += parseInt(prof.ougiGageUpOugiBuff);
     if (!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
     if (!isNaN(prof.ougiDamageBuff)) totalBuff["ougiDamage"] += 0.01 * parseInt(prof.ougiDamageBuff);
     if (!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);

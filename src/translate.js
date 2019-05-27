@@ -366,6 +366,11 @@ var multiLangData = {
         "ja": "通常攻撃ダメージの算出に使用されます。グラブルの仕様とは異なり奥義ダメージ上限は上がりません。",
         "zh": "通常攻击伤害的计算中有用到。",
     },
+    "チェインダメージ上限アップ": {
+        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
+        "ja": "チェインダメージ上限UP",
+        "zh": "链义伤害上限上升",
+    },
     "奥義ダメージ上限アップ": {
         "en": "C.A. DMG Cap", //a.k.a: ougiDamageLimit
         "ja": "奥義ダメージ\n上限",
@@ -380,6 +385,16 @@ var multiLangData = {
         "en": "It is used to calc the Ougi damage.",
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
+	},
+    "奥義ゲージ上昇奥義": {
+        "en": "Charge Boost C.A.",
+        "ja": "奥義ゲージ上昇奥義",
+        "zh": "Charge Boost C.A.",
+    },
+    "奥義ゲージ上昇奥義説明": {
+        "en": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
+        "ja": "奥義ゲージ最大値を効果分マイナスします(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
+        "zh": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
 	},
     "Advanced": {
         "en": "Advanced Settings",
