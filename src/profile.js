@@ -185,6 +185,7 @@ var Profile = CreateClass({
             additionalDamageBuff: 0,
             damageLimitBuff: 0.0,
             ougiDamageLimitBuff: 0.0,
+            ougiGageUpOugiBuff: 0.0,
             hpBuff: 0,
             daBuff: 0,
             taBuff: 0,
@@ -210,6 +211,7 @@ var Profile = CreateClass({
             personalDABuff: 0.0,
             personalTABuff: 0.0,
             personalOugiGageBuff: 0.0,
+            personalOugiDamageBuff: 0.0,
             personalDamageLimitBuff: 0.0,
             personalOugiDamageLimitBuff: 0.0,
         };
@@ -405,6 +407,12 @@ var Profile = CreateClass({
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiGageBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="personalOugiDamageBuff">
+                                <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageBuff}
+                                                             onChange={this.handleSelectEvent.bind(this, "personalOugiDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="personalDamageLimit">
@@ -756,6 +764,28 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
+                                     id={"tooltip-ougidamagebuff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.ougiDamageBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "ougiDamageBuff")}> {selector.buffLevel} </FormControl>
+                    <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇奥義説明", locale)}
+                                     id={"tooltip-ougi-gage-up-ougi-buff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("奥義ゲージ上昇奥義", locale)}</th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.ougiGageUpOugiBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "ougiGageUpOugiBuff")}> {selector.ougiGageUpOugiBuffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>

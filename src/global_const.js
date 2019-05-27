@@ -170,6 +170,7 @@ var buffLevelList = [
     200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 300,
     -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
 ];
+var ougiGageUpOugiBuffLevelList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,];
 var ougiRatioList = [0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0];
 var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
@@ -318,6 +319,24 @@ var levelList200Limit = levelListFactory({
     "4凸 (Lv. 150)": 150,
     "5凸 (Lv. 200)": 200
 }, 200);
+
+//SR
+var SRLevelList75Limit = levelListFactory({
+    "Lv. 1": 1,
+    "0凸 (Lv. 30)": 30,
+    "1凸 (Lv. 45)": 45,
+    "2凸 (Lv. 60)": 60,
+    "3凸 (Lv. 75)": 75,
+}, 75);
+
+var SRLevelList120Limit = levelListFactory({
+    "Lv. 1": 1,
+    "0凸 (Lv. 30)": 30,
+    "1凸 (Lv. 45)": 45,
+    "2凸 (Lv. 60)": 60,
+    "3凸 (Lv. 75)": 75,
+    "4凸 (Lv. 120)": 120,
+}, 120);
 
 // Skill Level Lists
 var skillLevelListFactory = function (max_level) {
@@ -480,6 +499,7 @@ var skilltypes = {
     "normalEiketsuL": {name: "通常英傑(大)", type: "normalEiketsu", amount: "L"},
     "normalOntyouM": {name: "通常恩寵(中)", type: "normalOntyou", amount: "M"},
     "normalSeisyouM": {name: "通常本質(中)", type: "normalSeisyou", amount: "M"},
+    "normalHigoS": {name: "通常庇護(小)", type: "normalHigo", amount: "S"},
     "magnaM": {name: "マグナ攻刃", type: "magna", amount: "M"},
     "magnaL": {name: "マグナ攻刃II", type: "magna", amount: "L"},
     "magnaSoka": {name: "マグナ楚歌", type: "magnaSoka", amount: "M"},
@@ -538,6 +558,7 @@ var skilltypes = {
     "unknownHPL": {name: "アンノウン・VIT II(大)", type: "unknownHP", amount: "L"},
     "unknownOtherBoukunL": {name: "ミフネ流・極意", type: "exBoukun", amount: "L"},
     "unknownOtherNiteS": {name: "ミフネ流・双星", type: "exNite", amount: "S"},
+    "rankiShikku": {name: "乱気の疾駆・壱", type: "rankiShikku", amount: "L"},
     "gurenJuin": {name: "紅蓮の呪印・弐", type: "gurenJuin", amount: "L"},
     "muhyoTuiga": {name: "霧氷の追牙・肆", type: "muhyoTuiga", amount: "L"},
     "tsuranukiKiba": {name: "貫きの牙", type: "tsuranukiKiba", amount: "M"},
@@ -1472,7 +1493,10 @@ var skillAmounts = {
     },
     // Debuff Resistance Grace (Unconfirmed Placeholder)
     "normalOntyou": {
-        "M": [20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
+        "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0]
+    },
+    "normalHigo": {
+        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
     }
 };
 
@@ -1561,6 +1585,12 @@ var supportAbilities = {
         "type": "element_buff_boost",
         "range": "own",
         "value": 0.30
+    },
+    "eternal_wisdom": {
+        "name": "属性バフ付与時にステータスUP(スカーサハ)",
+        "type": "eternal_wisdom",
+        "range": "own",
+        "value": 0.00
     },
     "ougi_gage_up_own_10": {
         "name": "奥義ゲージ上昇量10%UP(アルタイル)",
@@ -2125,6 +2155,9 @@ module.exports.selector.consider = considerNum.map(function (opt) {
 module.exports.selector.buffLevel = buffLevelList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
+module.exports.selector.ougiGageUpOugiBuffLevel = ougiGageUpOugiBuffLevelList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
 module.exports.selector.ougiRatio = ougiRatioList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
@@ -2172,6 +2205,12 @@ module.exports.selector.level150Limit = Object.keys(levelList150Limit).map(funct
 });
 module.exports.selector.level200Limit = Object.keys(levelList200Limit).map(function (opt) {
     return <option value={levelList200Limit[opt]} key={opt}>{opt}</option>
+});
+module.exports.selector.SRLevel75Limit = Object.keys(SRLevelList75Limit).map(function (opt) {
+    return <option value={SRLevelList75Limit[opt]} key={opt}>{opt}</option>
+});
+module.exports.selector.SRLevel120Limit = Object.keys(SRLevelList120Limit).map(function (opt) {
+    return <option value={SRLevelList120Limit[opt]} key={opt}>{opt}</option>
 });
 
 module.exports.selector.skilllevel10Limit = Object.keys(skillLevelList10Limit).map(function (opt) {

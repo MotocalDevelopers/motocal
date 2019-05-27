@@ -2451,7 +2451,7 @@
         "fav1": "fist",
         "fav2": "none",
         "support": "damageUP_20",
-        "support2": "none",
+        "support2": "eternal_wisdom",
         "support3": "none",
         "minhp": "310",
         "hp": "1900",
@@ -7673,7 +7673,7 @@
         "attack": "5350",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "ougiRatio": 3.5,
+        "ougiRatio": 4.0,
         "imageURL": "./charaimgs/3030124000_01.png",
         "en": "Shao"
     },

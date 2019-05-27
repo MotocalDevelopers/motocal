@@ -366,6 +366,11 @@ var multiLangData = {
         "ja": "通常攻撃ダメージの算出に使用されます。グラブルの仕様とは異なり奥義ダメージ上限は上がりません。",
         "zh": "通常攻击伤害的计算中有用到。",
     },
+    "チェインダメージ上限アップ": {
+        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
+        "ja": "チェインダメージ上限UP",
+        "zh": "链义伤害上限上升",
+    },
     "奥義ダメージ上限アップ": {
         "en": "C.A. DMG Cap", //a.k.a: ougiDamageLimit
         "ja": "奥義ダメージ\n上限",
@@ -380,6 +385,16 @@ var multiLangData = {
         "en": "It is used to calc the Ougi damage.",
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
+	},
+    "奥義ゲージ上昇奥義": {
+        "en": "Charge Boost C.A.",
+        "ja": "奥義ゲージ上昇奥義",
+        "zh": "Charge Boost C.A.",
+    },
+    "奥義ゲージ上昇奥義説明": {
+        "en": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
+        "ja": "奥義ゲージ最大値を効果分マイナスします(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
+        "zh": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
 	},
     "Advanced": {
         "en": "Advanced Settings",
@@ -1398,6 +1413,11 @@ var multiLangData = {
         "ja": "キャラ背水",
         "zh": "角色背水",
     },
+    "攻撃力減少(特殊)": {
+        "en": "ATK Debuff (special) ",
+        "ja": "攻撃力減少(特殊)",
+        "zh": "攻击力減少(特殊)",
+    },
     "DA上昇(通常)": {
         "en": "DA up (normal) ",
         "ja": "DA上昇(通常)",
@@ -2106,6 +2126,11 @@ var multiLangData = {
         "ja": "通常本質(中)",
         "zh": "通常本質(中)",
     },
+    "通常庇護(小)": {
+        "en": "Normal Refuge (S)",
+        "ja": "通常庇護(小)",
+        "zh": "通常庇護(小)",
+    },
     "先制": {
         "en": "Preemptive",
         "ja": "先制(永続)",
@@ -2350,6 +2375,11 @@ var multiLangData = {
         "en": "Hoarfrost's Fourth Pursuit",
         "ja": "霧氷の追牙・肆",
         "zh": "雾冰的追牙・肆",
+    },
+    "乱気の疾駆・壱": {
+        "en": "Ventosus's First Dash",
+        "ja": "乱気の疾駆・壱",
+        "zh": "Ventosus's First Dash",
     },
     "貫きの牙": {
         "en": "Piercing Fang",
