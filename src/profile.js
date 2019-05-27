@@ -212,7 +212,6 @@ var Profile = CreateClass({
             personalTABuff: 0.0,
             personalOugiDamageBuff: 0.0,
             personalOugiGageBuff: 0.0,
-            personalOugiDamageBuff: 0.0,
             personalDamageLimitBuff: 0.0,
             personalOugiDamageLimitBuff: 0.0,
         };
@@ -414,12 +413,6 @@ var Profile = CreateClass({
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiGageBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
-                            </tr>,
-                            <tr key="personalOugiDamageBuff">
-                                <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageBuff}
-                                                             onChange={this.handleSelectEvent.bind(this, "personalOugiDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="personalDamageLimit">
@@ -793,14 +786,6 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
-                                     id={"tooltip-ougidamagebuff-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
-                            <td>
-                                <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.ougiDamageBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "ougiDamageBuff")}> {selector.buffLevel} </FormControl>
                     <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇奥義説明", locale)}
                                      id={"tooltip-ougi-gage-up-ougi-buff-detail"}>
                         <tr>
