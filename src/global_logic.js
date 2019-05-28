@@ -963,7 +963,7 @@ module.exports.calcLBHaisuiValue = function (haisuiType, haisuiAmount, haisuiRem
     var remainHP = haisuiRemainHP;
     var value = 0.0;
     
-     if (haisuiType == 'EXLBHaisui' || haisuiType == 'LBHaisui') 
+     if (haisuiType == 'EXLBHaisui' || haisuiType == 'LBHaisui') {
         if (haisuiAmount == "1") {
             if (remainHP > 0.75 && remainHP <= 1) {
                 value = 0.01;
@@ -1044,11 +1044,10 @@ module.exports.calcLBHaisuiValue = function (haisuiType, haisuiAmount, haisuiRem
             } else {
                 value = -0.1834 * remainHP + 0.15;
             } 
-            
-        return value;
         }
+    }
             
-     if (haisuiType == 'EXLBKonshin' || haisuiType == 'LBKonshin') 
+     if (haisuiType == 'EXLBKonshin' || haisuiType == 'LBKonshin') {
         switch (haisuiAmount) {
             case 1: return value = Math.min(0.03, 0.03 * remainHP + 0.01);
             case 2: return value = Math.min(0.04, 0.03 * remainHP + 0.01);
@@ -1061,6 +1060,9 @@ module.exports.calcLBHaisuiValue = function (haisuiType, haisuiAmount, haisuiRem
             case 9: return value = Math.min(0.11, 0.08 * remainHP + 0.04);
             case 10: return value = Math.min(0.12, 0.08 * remainHP + 0.04);
         }
+     }
+
+return value;  
 };
             
 function* eachSkill(arm) {
