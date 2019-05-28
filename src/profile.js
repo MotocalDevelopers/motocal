@@ -778,6 +778,12 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiDamageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiDamageBuff")}> {selector.buffLevel} </FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇奥義説明", locale)}
                                      id={"tooltip-ougi-gage-up-ougi-buff-detail"}>
                         <tr>
