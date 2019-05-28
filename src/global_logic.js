@@ -1049,16 +1049,16 @@ module.exports.calcLBHaisuiValue = function (haisuiType, haisuiAmount, haisuiRem
             
      if (haisuiType == 'EXLBKonshin' || haisuiType == 'LBKonshin') {
         switch (haisuiAmount) {
-            case 1: return value = Math.min(0.03, 0.03 * remainHP + 0.01);
-            case 2: return value = Math.min(0.04, 0.03 * remainHP + 0.01);
-            case 3: return value = Math.min(0.05, 0.04 * remainHP + 0.02);
-            case 4: return value = Math.min(0.06, 0.04 * remainHP + 0.02);
-            case 5: return value = Math.min(0.07, 0.06 * remainHP + 0.03);
-            case 6: return value = Math.min(0.08, 0.06 * remainHP + 0.03);
-            case 7: return value = Math.min(0.09, 0.06 * remainHP + 0.03);
-            case 8: return value = Math.min(0.10, 0.08 * remainHP + 0.04);
-            case 9: return value = Math.min(0.11, 0.08 * remainHP + 0.04);
-            case 10: return value = Math.min(0.12, 0.08 * remainHP + 0.04);
+            case 1: value = Math.min(0.03, 0.03 * remainHP + 0.01); break;
+            case 2: value = Math.min(0.04, 0.03 * remainHP + 0.01); break;
+            case 3: value = Math.min(0.05, 0.04 * remainHP + 0.02); break;
+            case 4: value = Math.min(0.06, 0.04 * remainHP + 0.02); break;
+            case 5: value = Math.min(0.07, 0.06 * remainHP + 0.03); break;
+            case 6: value = Math.min(0.08, 0.06 * remainHP + 0.03); break;
+            case 7: value = Math.min(0.09, 0.06 * remainHP + 0.03); break;
+            case 8: value = Math.min(0.10, 0.08 * remainHP + 0.04); break;
+            case 9: value = Math.min(0.11, 0.08 * remainHP + 0.04); break;
+            case 10: value = Math.min(0.12, 0.08 * remainHP + 0.04); break;
         }
      }
 
