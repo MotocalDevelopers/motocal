@@ -1872,8 +1872,8 @@ function getCharaEXLB(chara) {
     Object.keys(EXLB).map((key) => {
         var exactKey = "EXLB" + key;
         if (exactKey in chara) {
-                EXLB[key] = parseInt(chara[exactKey], 10);
-            }
+            EXLB[key] = parseInt(chara[exactKey], 10);
+        }
     });
 
     return EXLB;
