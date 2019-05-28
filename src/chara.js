@@ -524,9 +524,9 @@ var Chara = CreateClass({
                     </tr>
                     <tr>
                         <th className="bg-primary">{intl.translate("奥義倍率", locale)}</th>
-                        <td><InputGroup><FormControl type="number" min="0" step="0.5" max="20" value={this.state.ougiRatio}
-                                         onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "ougiRatio")}/><InputGroup.Addon>%</InputGroup.Addon>
-                        </InputGroup></td>
+                        <td><FormControl type="number" min="0" step="0.5" max="20" value={this.state.ougiRatio}
+                                         onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "ougiRatio")}/>
+                        </td>
                     </tr>
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}1</th>
@@ -768,21 +768,21 @@ var Chara = CreateClass({
                             </tr>,
                             <tr key="EXLBHaisui">
                                 <th className="bg-primary">{intl.translate("背水", locale)}</th>
-                                <td><InputGroup>
+                                <td>
                                     <FormControl componentClass="select" value={this.state.EXLBHaisui}
                                                  onChange={this.handleSelectEvent.bind(this, "EXLBHaisui")}>
                                         {selector.EXlimitBonusHaisuiList}
                                     </FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                                </td>
                             </tr>,
                             <tr key="EXLBKonshin">
                                 <th className="bg-primary">{intl.translate("渾身", locale)}</th>
-                                <td><InputGroup>
+                                <td>
                                     <FormControl componentClass="select" value={this.state.EXLBKonshin}
                                                  onChange={this.handleSelectEvent.bind(this, "EXLBKonshin")}>
                                         {selector.EXlimitBonusKonshinList}
                                     </FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                                </td>
                             </tr>,
                             <tr key="EXLBDA">
                                 <th className="bg-primary">{intl.translate("DA", locale)}</th>
