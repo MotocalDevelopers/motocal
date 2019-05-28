@@ -659,6 +659,28 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "バアル": {
+        "name": "バアル",
+        "ja": "バアル",
+        "element": "earth",
+        "type": "balance",
+        "race": "seisho",
+        "sex": "male",
+        "fav1": "music",
+        "fav2": "axe",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "270",
+        "hp": "1540",
+        "minattack": "1650",
+        "attack": "8320",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040215000_01.png",
+        "en": "Baal"
+    },
     "メドゥーサ(ガチャver)": {
         "name": "メドゥーサ(ガチャver)",
         "ja": "メドゥーサ(ガチャver)",
@@ -5871,7 +5893,7 @@
         "baseTA": 3.0,
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030044000_01.png",
-        "en": "Aster"
+        "en": "Aster (Event)"
     },
     "マライア": {
         "name": "マライア",
@@ -7668,13 +7690,13 @@
         "support2": "none",
         "support3": "none",
         "minhp": "280",
-        "hp": "1430",
+        "hp": "1710",
         "minattack": "1070",
-        "attack": "5350",
+        "attack": "6420",
         "baseDA": 7.0,
         "baseTA": 3.0,
         "ougiRatio": 4.0,
-        "imageURL": "./charaimgs/3030124000_01.png",
+        "imageURL": "./charaimgs/3030124000_03.png",
         "en": "Shao"
     },
     "神月かりん": {
@@ -10558,5 +10580,27 @@
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030267000_01.png",
         "en": "Richard"
+    },
+    "アステール(火属性ver)": {
+        "name": "アステール(火属性ver)",
+        "ja": "アステール(火属性ver)",
+        "element": "fire",
+        "type": "pecu",
+        "race": "erune",
+        "sex": "female",
+        "fav1": "bow",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "190",
+        "hp": "1000",
+        "minattack": "1208",
+        "attack": "5688",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 3.5,
+        "imageURL": "./charaimgs/3030268000_01.png",
+        "en": "Aster"
     }
 }

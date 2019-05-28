@@ -1015,6 +1015,18 @@ module.exports.Jobs = {
         "DaBonus": 10.0,
         "TaBonus": 5.0
     },
+    "rambo": {
+        "name": "ソルジャー",
+        "favArm1": "gun",
+        "favArm2": "gun",
+        "type": "pecu",
+        "atBonus": 2000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 10.0,
+        "TaBonus": 15.0
+    },
     "neko": {
         "name": "黒猫道士",
         "favArm1": "wand",
