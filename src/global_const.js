@@ -351,7 +351,7 @@ var skillLevelList10Limit = skillLevelListFactory(10);
 var skillLevelList15Limit = skillLevelListFactory(15);
 var skillLevelList20Limit = skillLevelListFactory(20);
 
-var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200];
+var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300];
 var chainNumberList = [1, 2, 3, 4];
 
 // Chara limitBonus
