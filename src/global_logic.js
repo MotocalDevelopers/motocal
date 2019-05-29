@@ -756,6 +756,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             chainBurst: chainBurst,
             expectedTurn: expectedTurn,
             expectedCycleDamagePerTurn: expectedCycleDamagePerTurn,
+            exlbHaisui: totals[key]["EXLB"]["Haisui"],
+            exlbKonshin: totals[key]["EXLB"]["Konshin"],
         };
     }
 
@@ -2530,7 +2532,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     // Because the character formation is unchanged every weapon organization, it can be calculated earlier
     var charaHaisuiBuff = [];
     for (var k = 0; k < 100; ++k) {
-        var charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * (k + 1));
+        let charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * (k + 1));
         charaHaisuiBuff.push(charaHaisuiValue);
     }
 
@@ -2586,7 +2588,19 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 var charaHaisuiOrig = onedata[key].skilldata.charaHaisui;
                 var normalKonshinOrig = onedata[key].skilldata.normalKonshin;
                 var exHaisuiOrig = onedata[key].skilldata.exHaisui;
-                var totalSkillWithoutHaisui = onedata[key].totalSkillCoeff / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig * charaHaisuiOrig * exHaisuiOrig * magnaKonshinOrig);
+                var lbHaisuiOrig = onedata[key].skilldata.LBHaisui;
+                var lbKonshinOrig = onedata[key].skilldata.LBKonshin;
+                var totalSkillWithoutHaisui = onedata[key].totalSkillCoeff / (normalHaisuiOrig * magnaHaisuiOrig * normalKonshinOrig * charaHaisuiOrig * exHaisuiOrig * magnaKonshinOrig * lbHaisuiOrig * lbKonshinOrig);
+
+                var lbHaisuiBuff = [],
+                    lbKonshinBuff = [];
+                for (let k = 0; k < 100; ++k) {
+                    let hp = 0.01 * (k + 1);
+                    let exlbHaisuiValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", onedata[key].exlbHaisui, hp);
+                    let exlbKonshinValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", onedata[key].exlbKonshin, hp);
+                    lbHaisuiBuff.push(exlbHaisuiValue);
+                    lbKonshinBuff.push(exlbKonshinValue);
+                }
 
                 var haisuiBuff = [];
                 // Character emnity should be calculated for each character
@@ -2597,7 +2611,9 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                         normalKonshin: 1.0,
                         magnaKonshin: 1.0,
                         exHaisui: 1.0,
-                        charaHaisui: charaHaisuiBuff[k]
+                        charaHaisui: charaHaisuiBuff[k],
+                        lbHaisui: lbHaisuiBuff[k],
+                        lbKonshin: lbKonshinBuff[k],
                     })
                 }
 
@@ -2663,7 +2679,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 }
 
                 for (var k = 0; k < 100; k++) {
-                    var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui;
+                    var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui * haisuiBuff[k].lbHaisui * haisuiBuff[k].lbKonshin;
                     var summedAttack = onedata[key].displayAttack;
                     var newTotalAttack = summedAttack * newTotalSkillCoeff;
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack;

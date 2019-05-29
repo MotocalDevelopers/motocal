@@ -36,59 +36,62 @@ describe('#calcLBHaisui', () => {
     const haisui = calcLBHaisuiValue.bind(null, 'EXLBHaisui');
     const konshin = calcLBHaisuiValue.bind(null, 'EXLBKonshin');
 
-    test('Haisui max value', () => {
-        expect(haisui(1, 0.0)).toBeCloseTo(0.05);
-        expect(haisui(2, 0.0)).toBeCloseTo(0.06);
-        expect(haisui(3, 0.0)).toBeCloseTo(0.075);
-        expect(haisui(4, 0.0)).toBeCloseTo(0.09);
-        expect(haisui(5, 0.0)).toBeCloseTo(0.10);
-        expect(haisui(6, 0.0)).toBeCloseTo(0.11);
-        expect(haisui(7, 0.0)).toBeCloseTo(0.12);
-        expect(haisui(8, 0.0)).toBeCloseTo(0.125);
-        expect(haisui(9, 0.0)).toBeCloseTo(0.1375);
-        expect(haisui(10, 0.0)).toBeCloseTo(0.15);
+    const exlbHaisuiMaxTable = [
+        [1, 0.05],
+        [2, 0.06],
+        [3, 0.075],
+        [4, 0.09],
+        [5, 0.10],
+        [6, 0.11],
+        [7, 0.12],
+        [8, 0.125],
+        [9, 0.1375],
+        [10, 0.15],
+    ];
+    const exlbHaisuiMinTable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const exlbKonshinMaxTable = [
+        [1, 0.03],
+        [2, 0.04],
+        [3, 0.05],
+        [4, 0.06],
+        [5, 0.07],
+        [6, 0.08],
+        [7, 0.09],
+        [8, 0.10],
+        [9, 0.11],
+        [10, 0.12],
+    ];
+    const exlbKonshinMinTable = [
+        [1, 0.01],
+        [2, 0.01],
+        [3, 0.02],
+        [4, 0.02],
+        [5, 0.03],
+        [6, 0.03],
+        [7, 0.03],
+        [8, 0.04],
+        [9, 0.04],
+        [10, 0.04],
+    ];
+
+    test.each(exlbHaisuiMaxTable, 'Haisui max value', (amount, expected) => {
+        expect(haisui(amount, 0.0)).toBeCloseTo(expected);
     });
 
-    test('Haisui min value', () => {
-        expect(haisui(1, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(2, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(3, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(4, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(5, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(6, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(7, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(8, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(9, 0.751)).toBeCloseTo(0.01);
-        expect(haisui(10, 0.751)).toBeCloseTo(0.01);
+    test.each(exlbHaisuiMinTable, 'Haisui min value (until HP 75.1%)', (amount) => {
+        expect(haisui(amount, 1.0)).toBeCloseTo(0.01);
+        expect(haisui(amount, 0.751)).toBeCloseTo(0.01);
     });
 
-    test('konshin max value', () => {
-        expect(konshin(1, 1.0)).toBeCloseTo(0.03);
-        expect(konshin(2, 1.0)).toBeCloseTo(0.04);
-        expect(konshin(3, 1.0)).toBeCloseTo(0.05);
-        expect(konshin(4, 1.0)).toBeCloseTo(0.06);
-        expect(konshin(5, 1.0)).toBeCloseTo(0.07);
-        expect(konshin(6, 1.0)).toBeCloseTo(0.08);
-        expect(konshin(7, 1.0)).toBeCloseTo(0.09);
-        expect(konshin(8, 1.0)).toBeCloseTo(0.10);
-        expect(konshin(9, 1.0)).toBeCloseTo(0.11);
-        expect(konshin(10, 1.0)).toBeCloseTo(0.12);
+    test.each(exlbKonshinMaxTable, 'konshin max value', (amount, expected) => {
+        expect(konshin(amount, 1.0)).toBeCloseTo(expected);
     });
 
-    test('konshin min value', () => {
-        expect(konshin(1, 0.0)).toBeCloseTo(0.01);
-        expect(konshin(2, 0.0)).toBeCloseTo(0.01);
-        expect(konshin(3, 0.0)).toBeCloseTo(0.02);
-        expect(konshin(4, 0.0)).toBeCloseTo(0.02);
-        expect(konshin(5, 0.0)).toBeCloseTo(0.03);
-        expect(konshin(6, 0.0)).toBeCloseTo(0.03);
-        expect(konshin(7, 0.0)).toBeCloseTo(0.03);
-        expect(konshin(8, 0.0)).toBeCloseTo(0.04);
-        expect(konshin(9, 0.0)).toBeCloseTo(0.04);
-        expect(konshin(10, 0.0)).toBeCloseTo(0.04);
+    test.each(exlbKonshinMinTable, 'konshin min value', (amount, expected) => {
+        expect(konshin(amount, 0.0)).toBeCloseTo(expected);
     });
 
-    test('ignore unexpected type arguments', () => {
+    test('ignore unknown type arguments', () => {
         expect(calcLBHaisuiValue('unknown-type', 10, 0.0)).toBeCloseTo(0.0);
     });
 
@@ -99,7 +102,7 @@ describe('#calcLBHaisui', () => {
         expect(konshin(11, 0.0)).toBeCloseTo(0.0);
     });
 
-    test('illegal remainHP return ?', () => {
-        // TODO
+    test.skip('illegal remainHP return ?', () => {
+        // TODO: what illegal remainHP should return?
     });
 });
