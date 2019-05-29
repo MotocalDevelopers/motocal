@@ -756,6 +756,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             chainBurst: chainBurst,
             expectedTurn: expectedTurn,
             expectedCycleDamagePerTurn: expectedCycleDamagePerTurn,
+            exlbHaisui: totals[key]["EXLB"]["Haisui"],
+            exlbKonshin: totals[key]["EXLB"]["Konshin"],
         };
     }
 
@@ -2594,8 +2596,8 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     lbKonshinBuff = [];
                 for (let k = 0; k < 100; ++k) {
                     let hp = 0.01 * (k + 1);
-                    let exlbHaisuiValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", exHaisuiOrig, hp);
-                    let exlbKonshinValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", lbKonshinOrig, hp);
+                    let exlbHaisuiValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", onedata[key].exlbHaisui, hp);
+                    let exlbKonshinValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", onedata[key].exlbKonshin, hp);
                     lbHaisuiBuff.push(exlbHaisuiValue);
                     lbKonshinBuff.push(exlbKonshinValue);
                 }
