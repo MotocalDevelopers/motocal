@@ -965,7 +965,7 @@ module.exports.calcLBHaisuiValue = function (haisuiType, haisuiAmount, haisuiRem
     var remainHP = haisuiRemainHP;
     var value = 0.0;
     
-     if (haisuiType == 'EXLBHaisui' || haisuiType == 'LBHaisui') {
+    if (haisuiType == 'EXLBHaisui' || haisuiType == 'LBHaisui') {
         if (haisuiAmount == "1") {
             if (remainHP > 0.75 && remainHP <= 1) {
                 value = 0.01;
