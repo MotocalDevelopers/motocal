@@ -3443,6 +3443,11 @@ var multiLangData = {
         "ja": "2019/05/11: キャラ・武器追加。キャラのデフォルト奥義倍率追加。",
         "zh": "2019/05/11: Add characters and weapons and chara's default ougi ratio.",
     },
+    "notice-20190528-1": {
+        "en": "28/05/2019: Added new weapons and characters.",
+        "ja": "2019/05/28: 武器とキャラ追加.",
+        "zh": "2019/05/28: 增加新武器和新角色。",
+    },
 };
 
 // Language settings
