@@ -1,4 +1,5 @@
 {
+    "バアル": "Baal",
     "メドゥーサ(ガチャver)": "Medusa",
     "マキュラ・マリウス": "Macula Marius",
     "グリームニル": "Grimnir",
@@ -265,7 +266,7 @@
     "渋谷凛": "Rin Shibuya",
     "アンジェ(ハロウィンver)": "Ange (Halloween)",
     "ミムルメモル": "Mimlemel",
-    "アステール": "Aster",
+    "アステール": "Aster (Event)",
     "マライア": "Mariah",
     "カレン": "Carren",
     "ヴェイン": "Vane (Event)",
@@ -478,5 +479,6 @@
     "キャサリン(SR)": "Catherine (SR)",
     "ミリン(光属性ver)": "Mirin (Light)",
     "コルワ(SR)": "Korwa (SR)",
-    "リチャード": "Richard"
+    "リチャード": "Richard",
+    "アステール(火属性ver)": "Aster"
 }

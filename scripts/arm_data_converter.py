@@ -780,6 +780,7 @@ skillnamelist["strengthL"] = {
     u"サイコ攻刃": "earth",
     u"菩提の探究": "wind",
     u"退路無き攻刃": "water",
+    u"パワーボム": "earth",
 }
 
 skillnamelist["exATKandHPM"] = {

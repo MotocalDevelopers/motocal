@@ -336,6 +336,7 @@ var Simulator = CreateClass({
                             DA: 0,
                             TA: 0,
                             ougiGage: 0,
+                            ougiDamage: 0,
                             additionalDamage: 0,
                             turnType: "normal",
                             remainHP: 100
