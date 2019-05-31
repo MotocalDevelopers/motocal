@@ -635,6 +635,43 @@ var multiLangData = {
         "zh": "Other Perk",
 	},
 	
+    "指輪": {
+        "en": "Over Mastery",
+        "ja": "EXLB",
+        "zh": "Over Mastery",
+	},
+    "奥義ダメージ上限": {
+        "en": "C.A. DMG Cap",
+        "ja": "奥義ダメージ上限",
+        "zh": "奧義上限",
+	},
+    "クリティカル確率": {
+        "en": "Critical Hit",
+        "ja": "クリティカル確率",
+        "zh": "暴擊率",
+	},
+    "背水": {
+        "en": "Enmity",
+        "ja": "背水",
+        "zh": "背水",
+	},
+    "渾身": {
+        "en": "Stamina",
+        "ja": "渾身",
+        "zh": "渾身",
+	},
+    "DA": {
+        "en": "DA",
+        "ja": "DA",
+        "zh": "DA",
+	},
+    "TA": {
+        "en": "TA",
+        "ja": "TA",
+        "zh": "TA",
+	},
+	
+	
     "ジータさんマスターボーナス": {
         "en": "Player's Master Bonuses",
         "ja": "ジータさんマスターボーナス",
@@ -1431,6 +1468,19 @@ var multiLangData = {
         "ja": "TA上昇(その他)",
         "zh": "TA上升(其他)",
     },
+    "LB背水ラベル": {
+        "en": "Enmity Perk",
+        "ja": "LB背水",
+        "zh": "LB背水",
+	},
+    "LB渾身ラベル": {
+        "en": "Stamina Perk",
+        "ja": "LB渾身",
+        "zh": "LB渾身",
+	},
+	
+	
+
     "グラフに加える": {
         "en": "Add to \ngraphs",
         "ja": "グラフに\n加える",

@@ -383,6 +383,17 @@ var limitBonusCriticalList = {
     },
 };
 
+// Chara EX limitBonus
+var EXlimitBonusAttackList = [0, 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000];
+var EXlimitBonusHPList = [0, 150, 300, 450, 600, 750, 900, 1050, 1200, 1350, 1500];
+var EXlimitBonusOugiDamageList = [0, 10, 12, 14, 16, 18, 20, 22, 24, 27, 30];
+var EXlimitBonusOugiDamageLimitList = [0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+var EXlimitBonusCriticalList = [0, 10, 12, 14, 16, 18, 20, 22, 24, 27, 30];
+var EXlimitBonusHaisuiList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var EXlimitBonusKonshinList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var EXlimitBonusDAList = [0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+var EXlimitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 var enemyDefenseType = {
     10.0: { "name": "敵防御10.0" },
     10.5: { "name": "敵防御10.5" },
@@ -2224,7 +2235,7 @@ module.exports.selector.skilllevel20Limit = Object.keys(skillLevelList20Limit).m
     return <option value={skillLevelList20Limit[opt]} key={opt}>{opt}</option>
 });
 
-// Limit Bonus Selectors
+// Chara Limit Bonus Selectors
 module.exports.selector.limitBonusAttackList = limitBonusAttackList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
@@ -2243,6 +2254,36 @@ module.exports.selector.limitBonusElementList = limitBonusElementList.map(functi
 module.exports.selector.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
     return <option value={opt} key={opt}>{limitBonusCriticalList[opt].name}</option>
 });
+
+// Chara EX Limit Bonus Selectors
+module.exports.selector.EXlimitBonusAttackList = EXlimitBonusAttackList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.EXlimitBonusHPList = EXlimitBonusHPList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.EXlimitBonusOugiDamageList = EXlimitBonusOugiDamageList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.EXlimitBonusOugiDamageLimitList = EXlimitBonusOugiDamageLimitList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.EXlimitBonusCriticalList = EXlimitBonusCriticalList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.EXlimitBonusHaisuiList = EXlimitBonusHaisuiList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.EXlimitBonusKonshinList = EXlimitBonusKonshinList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.EXlimitBonusDAList = EXlimitBonusDAList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.EXlimitBonusTAList = EXlimitBonusTAList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+
 
 module.exports.selector.ja.supported_chartsortkeys = Object.keys(supportedChartSortkeys).map(function (opt) {
     return <option value={opt} key={opt}>{supportedChartSortkeys[opt]}</option>
