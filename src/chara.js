@@ -649,30 +649,30 @@ var Chara = CreateClass({
                             </tr>,
                             <tr key="LBDA">
                                 <th className="bg-primary">DA</th>
-                                <td>
+                                <td><InputGroup>
                                     <FormControl componentClass="select" value={this.state.LBDA}
                                                  onChange={this.handleSelectEvent.bind(this, "LBDA")}>
                                         {selector.limitBonusDAList}
                                     </FormControl>
-                                </td>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
                             </tr>,
                             <tr key="LBTA">
                                 <th className="bg-primary">TA</th>
-                                <td>
+                                <td><InputGroup>
                                     <FormControl componentClass="select" value={this.state.LBTA}
                                                  onChange={this.handleSelectEvent.bind(this, "LBTA")}>
                                         {selector.limitBonusTAList}
                                     </FormControl>
-                                </td>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
                             </tr>,
                             <tr key="LBElement">
                                 <th className="bg-primary">{intl.translate("属性攻撃力", locale)}</th>
-                                <td>
+                                <td><InputGroup>
                                     <FormControl componentClass="select" value={this.state.LBElement}
                                                  onChange={this.handleSelectEvent.bind(this, "LBElement")}>
                                         {selector.limitBonusElementList}
                                     </FormControl>
-                                </td>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
                             </tr>,
                             <tr key="LBCritical1">
                                 <th className="bg-primary">{intl.translate("クリティカル", locale)}1</th>

@@ -2243,13 +2243,13 @@ module.exports.selector.limitBonusHPList = limitBonusHPList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.limitBonusDAList = limitBonusDAList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}%</option>;
+    return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.limitBonusTAList = limitBonusTAList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}%</option>;
+    return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.limitBonusElementList = limitBonusElementList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}%</option>;
+    return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
     return <option value={opt} key={opt}>{limitBonusCriticalList[opt].name}</option>
