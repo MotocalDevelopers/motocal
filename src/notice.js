@@ -212,8 +212,9 @@ var Notice = CreateClass({
 
                 <h3>注記</h3>
                 <ul className="list-group">
-                    <li className="list-group-item list-group-item-info">未対応: ゲージ200%キャラ、バフの効果ターン・リキャスト</li>
-                    <li className="list-group-item list-group-item-info">編成データを読み込むとホワイトアウトしてしまう場合は仕様変更によるものです。新しく編成を作り直すか、対策パッチをお待ち下さい。</li>
+                    <li className="list-group-item list-group-item-info">情報求: Rank200辺りからの基礎攻撃力計算式、キャラの基礎連撃率(現在対応済リストは<a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a>の100行辺りから。デフォルト値はDA7%,TA3%)、グラブルの各種計算式まとめ。</li>
+                    <li className="list-group-item list-group-item-info">未対応: ゲージ200%キャラ、バフの効果ターン・リキャスト、経過ターンで増減するスキル、虚空武器の与ダメージ上昇効果。</li>
+                    <li className="list-group-item list-group-item-info">編成データを読み込むとホワイトアウトしてしまう場合があります。恐らく仕様変更が原因なので、新しく編成を作り直すか対策パッチをお待ち下さい。</li>
                     <li className="list-group-item list-group-item-info">キャラの基礎連撃率やサポアビ等が追加されても既存の編成データは自動で更新されません。キャラの入れ直しをお願いします。</li>
                     <li className="list-group-item list-group-item-info">基本的に考えうる全ての編成のデータを計算しますが、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。(計算量削減のため)</li>
                     <li className="list-group-item list-group-item-info">パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用)</li>
