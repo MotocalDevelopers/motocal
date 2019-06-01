@@ -1662,6 +1662,11 @@ var multiLangData = {
         "ja": "素のHP",
         "zh": "基本HP",
     },
+    "プラスボーナス": {
+        "en": "Plus Bonus",
+        "ja": "+ボーナス",
+        "zh": "Plus Bonus",
+    },
     "サポアビ": {
         "en": "Support Abi.",
         "ja": "サポアビ",

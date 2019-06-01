@@ -475,9 +475,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             summedAttack += totalSummon["attack"];
             summedAttack += totals[key]["LB"].ATK;
             summedAttack += totals[key]["EXLB"].ATK;
+            summedAttack += totals[key]["plusBonus"] * 3;
+            
             // HP
             displayHP += totals[key]["LB"].HP;
             displayHP += totals[key]["EXLB"].HP;
+            displayHP += totals[key]["plusBonus"];
             var totalHP = displayHP * hpCoeff
         }
 
@@ -2031,6 +2034,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 baseHP: parseInt(chara[i].hp) + zenithPartyHP,
                 baseDA: parseFloat(charaDA),
                 baseTA: parseFloat(charaTA),
+                plusBonus: chara[i].plusBonus != undefined ? parseInt(chara[i].plusBonus) : 0,
                 remainHP: charaRemainHP,
                 armAttack: 0,
                 armHP: 0,
