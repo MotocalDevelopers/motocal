@@ -298,7 +298,7 @@ var Chara = CreateClass({
             LBCritical2: "none",
             LBCritical3: "none",
             LBCritical4: "none",
-            EXWED: false,
+            EXLBWED: false,
             EXLBATK: 0,
             EXLBHP: 0,
             EXLBOugiDamage: 0,
@@ -395,7 +395,7 @@ var Chara = CreateClass({
 
         if (key == "isConsideredInAverage") {
             newState[key] = (newState[key] == false) ? true : false
-        } else if (key == "EXWED") {
+        } else if (key == "EXLBWED") {
             newState[key] = (newState[key] == false) ? true : false
         } else {
             newState[key] = e.target.value
@@ -724,11 +724,11 @@ var Chara = CreateClass({
                     </tr>
                     {this.state.openEXLBlist ?
                         [
-                            <tr key="EXWedding">
+                            <tr key="EXLBWED">
                                 <th className="bg-primary">{intl.translate("LB 久遠の指輪", locale)}</th>
                                 <td>
-                                    <Checkbox inline checked={this.state.EXWED}
-                                              onChange={this.handleSelectEvent.bind(this, "EXWED")}>
+                                    <Checkbox inline checked={this.state.EXLBWED}
+                                              onChange={this.handleSelectEvent.bind(this, "EXLBWED")}>
                                     </Checkbox>
                                 </td>
                             </tr>,
