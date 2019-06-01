@@ -679,7 +679,7 @@ var Chara = CreateClass({
                                 <td>
                                     <FormControl componentClass="select" value={this.state.LBCritical1}
                                                  onChange={this.handleSelectEvent.bind(this, "LBCritical1")}>
-                                        {selector.limitBonusCriticalList}
+                                        {selector[locale].limitBonusCriticalList}
                                     </FormControl>
                                 </td>
                             </tr>,
@@ -688,7 +688,7 @@ var Chara = CreateClass({
                                 <td>
                                     <FormControl componentClass="select" value={this.state.LBCritical2}
                                                  onChange={this.handleSelectEvent.bind(this, "LBCritical2")}>
-                                        {selector.limitBonusCriticalList}
+                                        {selector[locale].limitBonusCriticalList}
                                     </FormControl>
                                 </td>
                             </tr>,
@@ -697,7 +697,7 @@ var Chara = CreateClass({
                                 <td>
                                     <FormControl componentClass="select" value={this.state.LBCritical3}
                                                  onChange={this.handleSelectEvent.bind(this, "LBCritical3")}>
-                                        {selector.limitBonusCriticalList}
+                                        {selector[locale].limitBonusCriticalList}
                                     </FormControl>
                                 </td>
                             </tr>,
@@ -706,7 +706,7 @@ var Chara = CreateClass({
                                 <td>
                                     <FormControl componentClass="select" value={this.state.LBCritical4}
                                                  onChange={this.handleSelectEvent.bind(this, "LBCritical4")}>
-                                        {selector.limitBonusCriticalList}
+                                        {selector[locale].limitBonusCriticalList}
                                     </FormControl>
                                 </td>
                             </tr>
