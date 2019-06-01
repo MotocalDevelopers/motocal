@@ -1118,6 +1118,11 @@ var multiLangData = {
         "ja": "残HP",
         "zh": "剩余HP",
     },
+    "キャラ(result)": {
+        "en": "Chara ",
+        "ja": "キャラ",
+        "zh": "角色",
+    },
     "パーティ平均攻撃力": {
         "en": "Party-Averaged Pure ATK",
         "ja": "パーティ平均攻撃力(二手技巧無し)",
