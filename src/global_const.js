@@ -79,6 +79,13 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+var opusNames = [
+    "of Repudiation",
+    "絶対否定の",
+    "of Renunciation",
+    "永遠拒絶の"
+];
+
 var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
@@ -1743,6 +1750,7 @@ var supportAbilities = {
 };
 
 // exports
+module.exports.opusNames = opusNames;
 module.exports.zenith = zenith;
 module.exports.zenithDA = zenithDABonus;
 module.exports.zenithTA = zenithTABonus;

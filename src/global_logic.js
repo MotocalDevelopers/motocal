@@ -26,6 +26,7 @@ var raceTypes = GlobalConst.raceTypes;
 var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
+var opusNames = GlobalConst.opusNames;
 
 module.exports.isCosmos = function (arm) {
     return (skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") ||
@@ -34,8 +35,8 @@ module.exports.isCosmos = function (arm) {
 };
 
 module.exports.isDarkOpus = function (arm) {
-    return (arm.skill1 != undefined && arm.skill1 == "normalKamuiL") ||
-        (arm.skill1 != undefined && arm.skill1 == "magnaKamuiL");
+    return (GlobalConst.opusNames.some(value => arm.name.includes(value)) && skilltypes[arm.skill1]) &&
+        ["magnaKamuiL","normalKamuiL"].some(value => arm.skill1 == value);
 };
 
 function isHaisuiType(stype) {
