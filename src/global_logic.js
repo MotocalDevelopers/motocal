@@ -35,8 +35,8 @@ module.exports.isCosmos = function (arm) {
 };
 
 module.exports.isDarkOpus = function (arm) {
-    return (GlobalConst.opusNames.some(value => arm.name.includes(value)) && skilltypes[arm.skill1]) &&
-        ["magnaKamuiL","normalKamuiL"].some(value => arm.skill1 == value);
+    return (GlobalConst.opusNames.some(value => arm.name.includes(value))) &&
+        (["magnaKamuiL","normalKamuiL"].some(value => arm.skill1 == value));
 };
 
 function isHaisuiType(stype) {
