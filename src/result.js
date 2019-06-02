@@ -463,14 +463,19 @@ var ResultList = CreateClass({
                     key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
         }
-        var buffInfoStr = intl.translate("通常バフ", locale) + intl.translate("英語空白", locale) + prof.normalBuff + "%, ";
-        buffInfoStr += intl.translate("属性バフ", locale) + intl.translate("英語空白", locale) + prof.elementBuff + "%, ";
-        buffInfoStr += intl.translate("その他バフ", locale) + intl.translate("英語空白", locale) + prof.otherBuff + "%, ";
-        buffInfoStr += intl.translate("DAバフ", locale) + intl.translate("英語空白", locale) + prof.daBuff + "%, ";
-        buffInfoStr += intl.translate("TAバフ", locale) + intl.translate("英語空白", locale) + prof.taBuff + "%, ";
-        buffInfoStr += intl.translate("追加ダメージバフ", locale) + intl.translate("英語空白", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, ";
-        buffInfoStr += intl.translate("敵防御固有値", locale) + intl.translate("英語空白", locale) + prof.enemyDefense + " ";
-        buffInfoStr += intl.translate("防御デバフ合計", locale) + intl.translate("英語空白", locale) + ((prof.defenseDebuff == undefined) ? "0" : prof.defenseDebuff) + "%";
+
+        // Create buff info line
+        var buffInfo = [];
+        var addPercent = (value) => intl.translate("percent", locale).replace("{}", value === undefined ? "0" : value);
+        buffInfo.push(intl.translate("通常バフ", locale) + addPercent(prof.normalBuff));
+        buffInfo.push(intl.translate("属性バフ", locale) + addPercent(prof.elementBuff));
+        buffInfo.push(intl.translate("その他バフ", locale) + addPercent(prof.otherBuff));
+        buffInfo.push(intl.translate("DAバフ", locale) + addPercent(prof.daBuff));
+        buffInfo.push(intl.translate("TAバフ", locale) + addPercent(prof.taBuff));
+        buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
+        buffInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
+        buffInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
+        var buffInfoStr = buffInfo.join(", ");
 
         if (_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "100%", padding: "0"}}

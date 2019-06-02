@@ -3138,10 +3138,10 @@ var multiLangData = {
         "ja": "次の{step}件を表示",
         "zh": "Show next {step} logs",
     },
-    "英語空白": {
-        "en": " ",
-        "ja": "",
-        "zh": "",
+    "percent": {
+        "en": " {}%",
+        "ja": "{}%",
+        "zh": " {}%",
     },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",
