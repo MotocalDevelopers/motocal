@@ -1138,46 +1138,6 @@ var multiLangData = {
         "ja": "キャラ",
         "zh": "角色",
     },
-    "通常バフ(result)": {
-        "en": "ATK Buff ",
-        "ja": "攻撃バフ",
-        "zh": "通常Buff",
-    },
-    "属性バフ(result)": {
-        "en": "Element Buff ",
-        "ja": "属性バフ",
-        "zh": "属性Buff",
-    },
-    "その他バフ(result)": {
-        "en": "Other Buff ",
-        "ja": "別枠バフ",
-        "zh": "其他Buff",
-    },
-    "DAバフ(result)": {
-        "en": "DA Buff ",
-        "ja": "DAバフ",
-        "zh": "DA Buff",
-    },
-    "TAバフ(result)": {
-        "en": "TA Buff ",
-        "ja": "TAバフ",
-        "zh": "TA Buff",
-    },
-    "追加ダメージバフ(result)": {
-        "en": "Bonus DMG Buff ", //a.k.a: additionalDamageBuff
-        "ja": "追撃バフ",
-        "zh": "追加伤害Buff",
-    },
-    "敵防御固有値(result)": {
-        "en": "Enemy's defense ",
-        "ja": "敵防御固有値",
-        "zh": "敌人的防御值",
-    },
-    "防御デバフ合計(result)": {
-        "en": "DEF debuff ",
-        "ja": "防御デバフ",
-        "zh": "DEF debuff",
-    },
     "パーティ平均攻撃力": {
         "en": "Party-Averaged Pure ATK",
         "ja": "パーティ平均攻撃力(二手技巧無し)",
@@ -3177,6 +3137,11 @@ var multiLangData = {
         "en": "Show next {step} logs",
         "ja": "次の{step}件を表示",
         "zh": "Show next {step} logs",
+    },
+    "英語空白": {
+        "en": " ",
+        "ja": "",
+        "zh": "",
     },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",

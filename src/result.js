@@ -463,14 +463,14 @@ var ResultList = CreateClass({
                     key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
         }
-        var buffInfoStr = intl.translate("通常バフ(result)", locale) + prof.normalBuff + "%, ";
-        buffInfoStr += intl.translate("属性バフ(result)", locale) + prof.elementBuff + "%, ";
-        buffInfoStr += intl.translate("その他バフ(result)", locale) + prof.otherBuff + "%, ";
-        buffInfoStr += intl.translate("DAバフ(result)", locale) + prof.daBuff + "%, ";
-        buffInfoStr += intl.translate("TAバフ(result)", locale) + prof.taBuff + "%, ";
-        buffInfoStr += intl.translate("追加ダメージバフ(result)", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, ";
-        buffInfoStr += intl.translate("敵防御固有値(result)", locale) + prof.enemyDefense + " ";
-        buffInfoStr += intl.translate("防御デバフ合計(result)", locale) + ((prof.defenseDebuff == undefined) ? "0" : prof.defenseDebuff) + "%";
+        var buffInfoStr = intl.translate("通常バフ", locale) + intl.translate("英語空白", locale) + prof.normalBuff + "%, ";
+        buffInfoStr += intl.translate("属性バフ", locale) + intl.translate("英語空白", locale) + prof.elementBuff + "%, ";
+        buffInfoStr += intl.translate("その他バフ", locale) + intl.translate("英語空白", locale) + prof.otherBuff + "%, ";
+        buffInfoStr += intl.translate("DAバフ", locale) + intl.translate("英語空白", locale) + prof.daBuff + "%, ";
+        buffInfoStr += intl.translate("TAバフ", locale) + intl.translate("英語空白", locale) + prof.taBuff + "%, ";
+        buffInfoStr += intl.translate("追加ダメージバフ", locale) + intl.translate("英語空白", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, ";
+        buffInfoStr += intl.translate("敵防御固有値", locale) + intl.translate("英語空白", locale) + prof.enemyDefense + " ";
+        buffInfoStr += intl.translate("防御デバフ合計", locale) + intl.translate("英語空白", locale) + ((prof.defenseDebuff == undefined) ? "0" : prof.defenseDebuff) + "%";
 
         if (_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "100%", padding: "0"}}
