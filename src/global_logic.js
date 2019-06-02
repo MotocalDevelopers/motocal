@@ -35,7 +35,7 @@ module.exports.isCosmos = function (arm) {
 };
 
 module.exports.isDarkOpus = function (arm) {
-    return GlobalConst.opusNames.some(value => arm.name.includes(value));
+    return arm.name != undefined && GlobalConst.opusNames.some(value => arm.name.includes(value));
 };
 
 function isHaisuiType(stype) {

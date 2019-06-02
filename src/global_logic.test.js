@@ -1,4 +1,4 @@
-var {getTypeBonus, calcDefenseDebuff, calcLBHaisuiValue} = require('./global_logic.js');
+var {getTypeBonus, calcDefenseDebuff, calcLBHaisuiValue, isDarkOpus, opusNames} = require('./global_logic.js');
 
 describe('#getTypeBonus', () => {
     test('when self element and enemy element is not set, type bonus is 1', () => {
@@ -105,4 +105,64 @@ describe('#calcLBHaisui', () => {
     test.skip('illegal remainHP return ?', () => {
         // TODO: what illegal remainHP should return?
     });
+});
+
+describe('#isDarkOpus', () => {
+    const sampleArmJA = {
+        "name": "絶対否定の剣",
+        "attack": 3660,
+        "hp": 316,
+        "armType": "sword",
+        "skill1": "normalKamuiL",
+        "skill2": "non",
+        "skill3": "non",
+        "slv": 20,
+        "considerNumberMin": 0,
+        "considerNumberMax": 1,
+        "element": "light",
+        "element2": "light",
+        "element3": "light"
+    };
+
+    const sampleArmEN = {
+        "name": "Sword of Repudiation",
+        "attack": 3660,
+        "hp": 316,
+        "armType": "sword",
+        "skill1": "normalKamuiL",
+        "skill2": "non",
+        "skill3": "non",
+        "slv": 20,
+        "considerNumberMin": 0,
+        "considerNumberMax": 1,
+        "element": "light",
+        "element2": "light",
+        "element3": "light"
+    };
+
+    const sampleArm = {
+        "name": "Sword of Renunciation",
+        "skill1": "magnaKamuiL"
+    };
+
+    const sampleNonDarkOpusArm = {
+        "name": "Ultima Sword",
+        "skill1": "omega-raw"
+    };
+
+    const sampleBrokenArm = {
+        "skill1": "omega-raw"
+    };
+
+    test('should be dark opus weapon', () => {
+        expect(isDarkOpus(sampleArmJA)).toBeTruthy();
+        expect(isDarkOpus(sampleArmEN)).toBeTruthy();
+        expect(isDarkOpus(sampleArm)).toBeTruthy();
+    });
+
+    test('should not be dark opus weapon', () => {
+        expect(isDarkOpus(sampleNonDarkOpusArm)).toBeFalsy();
+        expect(isDarkOpus(sampleBrokenArm)).toBeFalsy();
+    });
+
 });
