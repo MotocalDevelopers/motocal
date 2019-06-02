@@ -393,10 +393,8 @@ var Chara = CreateClass({
     handleSelectEvent: function (key, e) {
         var newState = this.state;
 
-        if (key == "isConsideredInAverage") {
-            newState[key] = (newState[key] == false) ? true : false
-        } else if (key == "EXLBWED") {
-            newState[key] = (newState[key] == false) ? true : false
+        if (key == "isConsideredInAverage" || key == "EXLBWED") {
+            newState[key] = (newState[key] == false)
         } else {
             newState[key] = e.target.value
         }

@@ -426,7 +426,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         otherCoeff *= 1.0 + totals[key]["otherBuff"];
         otherCoeff *= 1.0 + totals[key]["otherBuff2"];
         if (totals[key]["EXLB"]["WED"]){
-            otherCoeff *= 1.1
+            otherCoeff *= 1.1;
         }
 
         // Character Emnity
@@ -614,7 +614,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"]);
         damageLimit += 0.01 * totalSummon["damageLimit"];
         if (totals[key]["EXLB"]["WED"]){
-            damageLimit += 0.05
+            damageLimit += 0.05;
         }
 
         // Mystery damage upper limit UP = whole buff + individual buff + skill + damage upper limit UP minutes
@@ -630,7 +630,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += 0.01 * totals[key]["EXLB"]["OugiDamageLimit"];
         ougiDamageLimit += 0.01 * totals[key]["EXLB"]["OugiDamageLimit"];
         if (totals[key]["EXLB"]["WED"]){
-            ougiDamageLimit += 0.05
+            ougiDamageLimit += 0.05;
         }
         
         // Chain Burst
