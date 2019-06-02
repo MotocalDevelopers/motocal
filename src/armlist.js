@@ -276,7 +276,6 @@ var ArmList = CreateClass({
 var Arm = CreateClass({
     getInitialState: function () {
         return {
-            id: 0,
             name: '',
             attack: 0,
             hp: 0,
@@ -349,12 +348,6 @@ var Arm = CreateClass({
         this.props.onChange(this.props.id, state, false);
     },
     treatAddArmFromTemplate: function (state, newarm, considerNum) {
-        var pattern = new RegExp("(\\d+)","i");
-        var matches = pattern.exec(newarm.imageURL);
-        if (matches != null)
-        {
-            state["id"] = matches[0];
-        }
         state["name"] = newarm.name;
 
         var attackCalcFunc = (lv, minlv, atk, minatk, plus, levelWidth) => {

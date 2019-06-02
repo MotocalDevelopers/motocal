@@ -79,21 +79,6 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-var darkOpusWeapons = [
-    "1040017000",
-    "1040017100",
-    "1040212500",
-    "1040212600",
-    "1040310600",
-    "1040310700",
-    "1040415000",
-    "1040415100",
-    "1040809400",
-    "1040809500",
-    "1040911000",
-    "1040911100"
-];
-
 var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
@@ -1758,7 +1743,6 @@ var supportAbilities = {
 };
 
 // exports
-module.exports.darkOpusWeapons = darkOpusWeapons;
 module.exports.zenith = zenith;
 module.exports.zenithDA = zenithDABonus;
 module.exports.zenithTA = zenithTABonus;
