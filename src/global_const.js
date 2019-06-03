@@ -668,7 +668,7 @@ var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 var limitBonusElementList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 24, 25, 28, 30, 32, 33, 35, 36, 38, 40];
 var limitBonusCriticalList = {
     "none": {
-        "name": "無",
+        "name": "無し",
         "value": 0.0,
         "attackRatio": 0.0,
     },
@@ -2552,16 +2552,22 @@ module.exports.selector.limitBonusHPList = limitBonusHPList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.limitBonusDAList = limitBonusDAList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}%</option>;
+    return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.limitBonusTAList = limitBonusTAList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}%</option>;
+    return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.limitBonusElementList = limitBonusElementList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}%</option>;
+    return <option value={opt} key={opt}>{opt}</option>;
 });
-module.exports.selector.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
-    return <option value={opt} key={opt}>{limitBonusCriticalList[opt].name}</option>
+module.exports.selector.ja.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
+    return <option value={opt} key={opt}>{limitBonusCriticalList[opt].name}</option>;
+});
+module.exports.selector.en.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "en")}</option>;
+});
+module.exports.selector.zh.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "zh")}</option>;
 });
 
 // Chara EX Limit Bonus Selectors
