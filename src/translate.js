@@ -635,7 +635,7 @@ var multiLangData = {
         "zh": "中",
 	},
     "大": {
-        "en": "Large",
+        "en": "Big",
         "ja": "大",
         "zh": "大",
 	},
