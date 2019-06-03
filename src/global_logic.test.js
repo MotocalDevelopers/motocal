@@ -114,10 +114,16 @@ describe('#isDarkOpus', () => {
         [{"name": "永遠拒絶の槍"}, true],
         [{"name": "Scythe of Repudiation"}, true],
         [{"name": "Katana of Renunciation.Lvl185.Sl18+78"}, true],
-        [{"name": "永遠拒絶の杖Lv.26SLv.6+17"}, true],
+        [{"name": "永遠拒絶の杖Lv.26SLv.6+17"}, true]
+    ];
+
+    const invalidArms = [
         [undefined ,false],
         [{}, false],
         [{"name":""}, false],
+    ];
+
+    const nonDarkOpusArms = [
         [{"name": "Ultima Bow"}, false],
         [{"name": "バハムートソード・フツルスLv.60SLv.4+13"}, false],
         [{"name": "Katana of Repudiatio"}, false],
@@ -129,8 +135,16 @@ describe('#isDarkOpus', () => {
         [{"name": "Staff of epudiation"}, false],
     ];
 
-    test.each(darkOpusArms)('Checking if weapon %s isDarkOpus is %s', (arm, expected) => {
+    test.each(darkOpusArms)('Checking Dark Opus arm: %s}', (arm, expected) => {
         expect(isDarkOpus(arm)).toBe(expected);
-    })
+    });
+
+    test.each(invalidArms)('Checking invalid arms: %s', (arm, expected) => {
+        expect(isDarkOpus(arm)).toBe(expected);
+    });
+
+    test.each(nonDarkOpusArms)('Checking non dark opus arms: %s', (arm, expected) => {
+        expect(isDarkOpus(arm)).toBe(expected);
+    });
 
 });
