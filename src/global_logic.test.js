@@ -109,42 +109,48 @@ describe('#calcLBHaisui', () => {
 
 describe('#isDarkOpus', () => {
     const darkOpusArms = [
-        [{"name": "絶対否定の剣"}, true],
-        [{"name": "Sword of Renunciation"}, true],
-        [{"name": "永遠拒絶の槍"}, true],
-        [{"name": "Scythe of Repudiation"}, true],
-        [{"name": "Katana of Renunciation.Lvl185.Sl18+78"}, true],
-        [{"name": "永遠拒絶の杖Lv.26SLv.6+17"}, true]
+        {"name": "絶対否定の剣"},
+        {"name": "Sword of Renunciation"},
+        {"name": "永遠拒絶の槍"},
+        {"name": "Scythe of Repudiation"},
+        {"name": "Katana of Renunciation.Lvl185.Sl18+78"},
+        {"name": "永遠拒絶の杖Lv.26SLv.6+17"}
     ];
 
     const invalidArms = [
-        [undefined ,false],
-        [{}, false],
-        [{"name":""}, false],
+        undefined,
+        {},
+        {"name":""},
     ];
 
     const nonDarkOpusArms = [
-        [{"name": "Ultima Bow"}, false],
-        [{"name": "バハムートソード・フツルスLv.60SLv.4+13"}, false],
-        [{"name": "Katana of Repudiatio"}, false],
-        [{"name": "永遠拒絶大鎌"}, false],
-        [{"name": "Katana f Repudiation"}, false],
-        [{"name": "遠拒絶の太刀"}, false],
-        [{"name": "Staff of Repudition"}, false],
-        [{"name": "絶対力定の竪琴"}, false],
-        [{"name": "Staff of epudiation"}, false],
+        {"name": "Ultima Bow"},
+        {"name": "バハムートソード・フツルスLv.60SLv.4+13"},
+        {"name": "Katana of Repudiatio"},
+        {"name": "永遠拒絶大鎌"},
+        {"name": "Katana f Repudiation"},
+        {"name": "遠拒絶の太刀"},
+        {"name": "Staff of Repudition"},
+        {"name": "絶対力定の竪琴"},
+        {"name": "Staff of epudiation"},
     ];
 
-    test.each(darkOpusArms)('Checking Dark Opus arm: %s}', (arm, expected) => {
-        expect(isDarkOpus(arm)).toBe(expected);
+    test('Checking Dark Opus arm', () => {
+        for(let i = 0 ; i < darkOpusArms.length ; i++){
+            expect(isDarkOpus(darkOpusArms[i])).toBeTruthy();
+        }
     });
 
-    test.each(invalidArms)('Checking invalid arms: %s', (arm, expected) => {
-        expect(isDarkOpus(arm)).toBe(expected);
+    test('Checking invalid arms', () => {
+        for(let i = 0 ; i < invalidArms.length ; i++){
+            expect(isDarkOpus(invalidArms[i])).toBeFalsy();
+        }
     });
 
-    test.each(nonDarkOpusArms)('Checking non dark opus arms: %s', (arm, expected) => {
-        expect(isDarkOpus(arm)).toBe(expected);
+    test('Checking non dark opus arms', () => {
+        for(let i = 0 ; i < nonDarkOpusArms.length ; i++){
+            expect(isDarkOpus(nonDarkOpusArms[i])).toBeFalsy();
+        }
     });
 
 });
