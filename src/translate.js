@@ -884,9 +884,9 @@ var multiLangData = {
         "zh": "Warlock",
     },
     "カオスルーダー": {
-        "en": "Chaos Ruler",
+        "en": "Chaos lewder",
         "ja": "カオスルーダー",
-        "zh": "Chaos Ruler",
+        "zh": "Chaos Lewder",
     },
     "義賊": {
         "en": "Bandit Tycoon",
