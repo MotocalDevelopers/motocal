@@ -624,6 +624,21 @@ var multiLangData = {
         "ja": "クリティカル",
         "zh": "Critical",
 	},
+    "小": {
+        "en": "Small",
+        "ja": "小",
+        "zh": "小",
+	},
+    "中": {
+        "en": "Medium",
+        "ja": "中",
+        "zh": "中",
+	},
+    "大": {
+        "en": "Big",
+        "ja": "大",
+        "zh": "大",
+	},
     "LB クリティカルの説明": {
         "en": "",
         "ja": "発生率と倍率共にの%",
@@ -1117,6 +1132,11 @@ var multiLangData = {
         "en": "Remain HP",
         "ja": "残HP",
         "zh": "剩余HP",
+    },
+    "キャラ(result)": {
+        "en": "Chara ",
+        "ja": "キャラ",
+        "zh": "角色",
     },
     "パーティ平均攻撃力": {
         "en": "Party-Averaged Pure ATK",
@@ -1661,6 +1681,11 @@ var multiLangData = {
         "en": "Raw HP",
         "ja": "素のHP",
         "zh": "基本HP",
+    },
+    "プラスボーナス": {
+        "en": "Plus Bonus",
+        "ja": "+ボーナス",
+        "zh": "Plus Bonus",
     },
     "サポアビ": {
         "en": "Support Abi.",
@@ -3118,6 +3143,11 @@ var multiLangData = {
         "ja": "次の{step}件を表示",
         "zh": "Show next {step} logs",
     },
+    "percent": {
+        "en": " {}%",
+        "ja": "{}%",
+        "zh": " {}%",
+    },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",
         "ja": "2017/01/14: 英語対応",
@@ -3493,10 +3523,25 @@ var multiLangData = {
         "ja": "2019/05/11: キャラ・武器追加。キャラのデフォルト奥義倍率追加。",
         "zh": "2019/05/11: Add characters and weapons and chara's default ougi ratio.",
     },
+    "notice-20190514-1": {
+        "en": "14/05/2019: Added sort key: C.A.+Chain damage(need to change chain number to 4). Added support for rounding down the decimal point of multi attack.",
+        "ja": "2019/05/14: 優先項目(ソートキー)に「奥義+チェンバダメージ」追加(より細かい設定から4チェインにする必要有)。連撃率の小数点以下切り捨て対応。",
+        "zh": "2019/05/14: Added sort key: C.A.+Chain damage(need to change chain number to 4). Added support for rounding down the decimal point of multi attack.",
+    },
+    "notice-20190517-1": {
+        "en": "17/05/2019: Added C.A. damage bonus buff to Indiv Buff. Set to default value of ATK and HP of summon. Changed default arua valus to 140.",
+        "ja": "2019/05/17: 個別バフに奥義バフ入力欄追加。召喚石の攻撃力HPデフォルト値追加。召喚石のデフォルト加護値を140に。",
+        "zh": "2019/05/17: Added C.A. damage bonus buff to Indiv Buff. Set to default value of ATK and HP of summon. Changed default arua valus to 140.",
+    },
+    "notice-20190518-1": {
+        "en": "18/05/2019: Added rankiShikku skill, and support skills of Percival and Scathacha, and level list of SR weapon.",
+        "ja": "2019/05/18: 青竜髭刃のスキル「乱気の疾駆・壱」追加。パーシヴァル、スカーサハのサポアビ追加。SR武器のレベル区域追加。",
+        "zh": "2019/05/18: Added rankiShikku skill, and support skills of Percival and Scathacha, and level list of SR weapon.",
+    },
     "notice-20190528-1": {
-        "en": "28/05/2019: Added new weapons and characters.",
-        "ja": "2019/05/28: 武器とキャラ追加.",
-        "zh": "2019/05/28: 增加新武器和新角色。",
+        "en": "28/05/2019: Added new weapons and characters, and new normal critical calculation, and Over Masterys, and Soldier.",
+        "ja": "2019/05/28: 武器とキャラ追加。通常技巧の計算方法を方陣技巧と共通化。EXLB(指輪)入力欄追加。ソルジャー追加。",
+        "zh": "2019/05/28: Added new weapons and characters, and new normal critical calculation, and Over Masterys. and Soldier.",
     },
 };
 
