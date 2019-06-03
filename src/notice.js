@@ -210,6 +210,12 @@ var Notice = CreateClass({
                     </ChangeLog>
                 </Panel>
 
+                <h3>Tips</h3>
+                    <li className="list-group-item list-group-item-info">メイン武器等1本は必ず入れたい武器がある時は最小本数を入力して下さい。</li>
+                    <li className="list-group-item list-group-item-info">スキル効果は上部「表示する項目を選択」 → 「キャラ情報・スキル合計値」 → 「スキル合計」で確認できます。(加護適応済みの値)</li>
+                    <li className="list-group-item list-group-item-info">奥義編成の理想を知りたい場合は、ジータタブ「より細かい設定」からチェイン数4選択後、編成一覧上の優先項目から「奥義+チェンバダメージ」を選択して下さい。</li>
+                    <li className="list-group-item list-group-item-info">上部「背水渾身グラフを開く」を選択するには、その前に編成右側からグラフ「追加」を選択する必要があります。</li>
+
                 <h3>注記</h3>
                 <ul className="list-group">
                     <li className="list-group-item list-group-item-info">情報求: Rank200辺りからの基礎攻撃力計算式、キャラの基礎連撃率(現在対応済リストは<a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a>の100行辺りから。デフォルト値はDA7%,TA3%)、グラブルの各種計算式まとめ。</li>
@@ -218,7 +224,9 @@ var Notice = CreateClass({
                     <li className="list-group-item list-group-item-info">キャラの基礎連撃率やサポアビ等が追加されても既存の編成データは自動で更新されません。キャラの入れ直しをお願いします。</li>
                     <li className="list-group-item list-group-item-info">基本的に考えうる全ての編成のデータを計算しますが、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。(計算量削減のため)</li>
                     <li className="list-group-item list-group-item-info">パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用)</li>
-                    <li className="list-group-item list-group-item-info">1本は必ず入れたい武器がある時は最小本数を入力して下さい。</li>
+                    <li className="list-group-item list-group-item-info">スキル効果表示「別枠バフ」は複数ある場合乗算後の数字が出てきます。</li>
+                    <li className="list-group-item list-group-item-info">弱体耐性率は目安です。あまり参考にしないで下さい。</li>
+                    <li className="list-group-item list-group-item-info">"パーティ平均〇〇"にはSubに配置したキャラも含まれます。</li>
                 </ul>
 
                 <h3>LICENSE</h3>
