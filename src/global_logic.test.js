@@ -108,21 +108,6 @@ describe('#calcLBHaisui', () => {
 });
 
 describe('#isDarkOpus', () => {
-    const darkOpusArms = [
-        {"name": "絶対否定の剣"},
-        {"name": "Sword of Renunciation"},
-        {"name": "永遠拒絶の槍"},
-        {"name": "Scythe of Repudiation"},
-        {"name": "Katana of Renunciation.Lvl185.Sl18+78"},
-        {"name": "永遠拒絶の杖Lv.26SLv.6+17"}
-    ];
-
-    const invalidArms = [
-        undefined,
-        {},
-        {"name":""},
-    ];
-
     const nonDarkOpusArms = [
         {"name": "Ultima Bow"},
         {"name": "バハムートソード・フツルスLv.60SLv.4+13"},
@@ -136,21 +121,31 @@ describe('#isDarkOpus', () => {
     ];
 
     test('Checking Dark Opus arm', () => {
-        for(let i = 0 ; i < darkOpusArms.length ; i++){
-            expect(isDarkOpus(darkOpusArms[i])).toBeTruthy();
-        }
+        expect(isDarkOpus({"name": "絶対否定の剣"})).toBeTruthy();
+        expect(isDarkOpus({"name": "Sword of Renunciation"})).toBeTruthy();
+        expect(isDarkOpus({"name": "永遠拒絶の槍"})).toBeTruthy();
+        expect(isDarkOpus({"name": "Scythe of Repudiation"})).toBeTruthy();
+        expect(isDarkOpus({"name": "Katana of Renunciation.Lvl185.Sl18+78"})).toBeTruthy();
+        expect(isDarkOpus({"name": "永遠拒絶の杖Lv.26SLv.6+17"})).toBeTruthy();
     });
 
     test('Checking invalid arms', () => {
-        for(let i = 0 ; i < invalidArms.length ; i++){
-            expect(isDarkOpus(invalidArms[i])).toBeFalsy();
-        }
+        expect(isDarkOpus(undefined)).toBeFalsy();
+        expect(isDarkOpus({})).toBeFalsy();
+        expect(isDarkOpus({"name": ""})).toBeFalsy();
+        expect(isDarkOpus({"name": undefined})).toBeFalsy();
     });
 
     test('Checking non dark opus arms', () => {
-        for(let i = 0 ; i < nonDarkOpusArms.length ; i++){
-            expect(isDarkOpus(nonDarkOpusArms[i])).toBeFalsy();
-        }
+        expect(isDarkOpus({"name": "Ultima Bow"})).toBeFalsy();
+        expect(isDarkOpus({"name": "バハムートソード・フツルスLv.60SLv.4+13"})).toBeFalsy();
+        expect(isDarkOpus({"name": "Katana of Repudiatio"})).toBeFalsy();
+        expect(isDarkOpus({"name": "永遠拒絶大鎌"})).toBeFalsy();
+        expect(isDarkOpus({"name": "Katana f Repudiation"})).toBeFalsy();
+        expect(isDarkOpus({"name": "遠拒絶の太刀"})).toBeFalsy();
+        expect(isDarkOpus({"name": "Staff of Repudition"})).toBeFalsy();
+        expect(isDarkOpus({"name": "絶対力定の竪琴"})).toBeFalsy();
+        expect(isDarkOpus({"name": "Staff of epudiation"})).toBeFalsy();
     });
 
 });
