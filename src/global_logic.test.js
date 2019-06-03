@@ -1,4 +1,4 @@
-var {getTypeBonus, calcDefenseDebuff, calcLBHaisuiValue, isDarkOpus, opusNames} = require('./global_logic.js');
+var {getTypeBonus, calcDefenseDebuff, calcLBHaisuiValue, isDarkOpus} = require('./global_logic.js');
 
 describe('#getTypeBonus', () => {
     test('when self element and enemy element is not set, type bonus is 1', () => {
@@ -108,18 +108,6 @@ describe('#calcLBHaisui', () => {
 });
 
 describe('#isDarkOpus', () => {
-    const nonDarkOpusArms = [
-        {"name": "Ultima Bow"},
-        {"name": "バハムートソード・フツルスLv.60SLv.4+13"},
-        {"name": "Katana of Repudiatio"},
-        {"name": "永遠拒絶大鎌"},
-        {"name": "Katana f Repudiation"},
-        {"name": "遠拒絶の太刀"},
-        {"name": "Staff of Repudition"},
-        {"name": "絶対力定の竪琴"},
-        {"name": "Staff of epudiation"},
-    ];
-
     test('Checking Dark Opus arm', () => {
         expect(isDarkOpus({"name": "絶対否定の剣"})).toBeTruthy();
         expect(isDarkOpus({"name": "Sword of Renunciation"})).toBeTruthy();
