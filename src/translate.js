@@ -2391,20 +2391,25 @@ var multiLangData = {
         "ja": "ミフネ流・双星",
         "zh": "ミフネ流・双星",
     },
+    "乱気の疾駆・壱": {
+        "en": "Ventosus's First Dash",
+        "ja": "乱気の疾駆・壱",
+        "zh": "Ventosus's First Dash",
+    },
     "紅蓮の呪印・弐": {
         "en": "Inferno's Second Insignia",
         "ja": "紅蓮の呪印・弐",
         "zh": "红莲的咒印・叁",
     },
+    "地裂の煽惑・参": {
+        "en": "Terra's Third Spur",
+        "ja": "地裂の煽惑・参",
+        "zh": "Terra's Third Spur",
+    },
     "霧氷の追牙・肆": {
         "en": "Hoarfrost's Fourth Pursuit",
         "ja": "霧氷の追牙・肆",
         "zh": "雾冰的追牙・肆",
-    },
-    "乱気の疾駆・壱": {
-        "en": "Ventosus's First Dash",
-        "ja": "乱気の疾駆・壱",
-        "zh": "Ventosus's First Dash",
     },
     "貫きの牙": {
         "en": "Piercing Fang",
