@@ -395,7 +395,7 @@ var Chara = CreateClass({
         var newState = this.state;
 
         if (e.target.type === "checkbox") {
-            newState[key] = !newState[key];
+            newState[key] = e.target.checked;
         } else {
             newState[key] = e.target.value;
         }
