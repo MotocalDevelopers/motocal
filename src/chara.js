@@ -395,12 +395,12 @@ var Chara = CreateClass({
         var newState = this.state;
 
         if (key == "isConsideredInAverage" || key == "EXLBWED") {
-            newState[key] = (newState[key] == false)
+            newState[key] = !newState[key];
         } else {
-            newState[key] = e.target.value
+            newState[key] = e.target.value;
         }
         this.setState(newState);
-        this.props.onChange(this.props.id, newState, false)
+        this.props.onChange(this.props.id, newState, false);
     },
     handleOnBlur: function (key, e) {
         if (key == "name" && this.state.name != "" && e.target.value != "") {

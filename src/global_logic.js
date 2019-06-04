@@ -425,8 +425,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         otherCoeff *= 1.0 + buff["other2"];
         otherCoeff *= 1.0 + totals[key]["otherBuff"];
         otherCoeff *= 1.0 + totals[key]["otherBuff2"];
-        if (totals[key]["EXLB"]["WED"]){
-            otherCoeff *= 1.1;
+        if (totals[key]["EXLB"]["WED"]) {
+            otherCoeff *= 1.10;
         }
 
         // Character Emnity
@@ -449,8 +449,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (key == "Djeeta") {
             hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus;
         }
-        if (totals[key]["EXLB"]["WED"]){
-            hpCoeff += 0.01 * 10;
+        if (totals[key]["EXLB"]["WED"]) {
+            hpCoeff += 0.10;
         }
         hpCoeff *= 1.0 + totals[key]["HPBuff"];
         hpCoeff *= 1.0 - totals[key]["HPdebuff"];
@@ -616,7 +616,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         damageLimit += totals[key]["damageLimitBuff"];
         damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"]);
         damageLimit += 0.01 * totalSummon["damageLimit"];
-        if (totals[key]["EXLB"]["WED"]){
+        if (totals[key]["EXLB"]["WED"]) {
             damageLimit += 0.05;
         }
 
@@ -631,8 +631,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
         ougiDamageLimit += 0.01 * totalSummon["damageLimit"];
         ougiDamageLimit += 0.01 * totals[key]["EXLB"]["OugiDamageLimit"];
-        ougiDamageLimit += 0.01 * totals[key]["EXLB"]["OugiDamageLimit"];
-        if (totals[key]["EXLB"]["WED"]){
+        if (totals[key]["EXLB"]["WED"]) {
             ougiDamageLimit += 0.05;
         }
         
@@ -1837,10 +1836,9 @@ function getCharaEXLB(chara) {
     Object.keys(EXLB).map((key) => {
         var exactKey = "EXLB" + key;
         if (exactKey in chara) {
-            if(exactKey == "EXLBWED"){
+            if(exactKey == "EXLBWED") {
                 EXLB[key] = chara[exactKey];
-            }
-            else{
+            } else {
                 EXLB[key] = parseInt(chara[exactKey], 10);
             }
         }
