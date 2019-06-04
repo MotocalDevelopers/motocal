@@ -394,7 +394,7 @@ var Chara = CreateClass({
     handleSelectEvent: function (key, e) {
         var newState = this.state;
 
-        if (key == "isConsideredInAverage" || key == "EXLBWED") {
+        if (e.target.type === "checkbox") {
             newState[key] = !newState[key];
         } else {
             newState[key] = e.target.value;
