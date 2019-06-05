@@ -57,6 +57,10 @@ module.exports.proceedIndex = function (index, ana, i) {
     return index;
 };
 
+module.exports.isHollowsky = function (arm) {
+    return arm != undefined && arm.name != undefined && GlobalConst.hollowskyNames.some( value => arm.name.includes(value));
+};
+
 module.exports.calcCombinations = function (arml) {
     // Calculate the array of [Minimum consideration number, ..., Maximum consideration number] for all weapons
     var armNumArray = [];
@@ -80,27 +84,34 @@ module.exports.calcCombinations = function (arml) {
 
     // isCosmos advance judgment
     var isCosmosArray = [];
+    var isHollowskyArray = []; //isAkasha
     for (var i = 0; i < arml.length; i++) {
-        isCosmosArray[i] = module.exports.isCosmos(arml[i])
+        isCosmosArray[i] = module.exports.isCosmos(arml[i]);
+        isHollowskyArray[i] = module.exports.isHollowsky(arml[i]);
     }
 
     for (var i = 0; i < totalItr; i = (i + 1) | 0) {
         var temp = [];
         var num = 0;
         var isCosmosIncluded = false;
+        var isHollowskyIncluded =false;
         var isValidCombination = true;
         for (var j = 0; j < armNumArray.length; j = (j + 1) | 0) {
-            if (!isCosmosArray[j]) {
+            if (!isCosmosArray[j] && !isHollowskyArray[j]) {
                 temp.push(armNumArray[j][index[j]]);
                 num += parseInt(armNumArray[j][index[j]])
             } else {
                 // cosmos weapons
                 if (armNumArray[j][index[j]] == 0) {
                     temp.push(armNumArray[j][index[j]]);
-                } else if (armNumArray[j][index[j]] > 0 && !isCosmosIncluded) {
+                } else if (armNumArray[j][index[j]] > 0 && isCosmosArray[j] && !isCosmosIncluded) {
                     temp.push(armNumArray[j][index[j]]);
                     num += parseInt(armNumArray[j][index[j]]);
                     isCosmosIncluded = true;
+                } else if (armNumArray[j][index[j]] > 0 && armNumArray[j][index[j]] <= 1 && isHollowskyArray[j] && !isHollowskyIncluded) {
+                    temp.push(armNumArray[j][index[j]]);
+                    num += parseInt(armNumArray[j][index[j]]);
+                    isHollowskyIncluded = true;
                 } else {
                     isValidCombination = false;
                 }
@@ -680,16 +691,90 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
         var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), chainDamageUP, chainDamageLimit);
 
-        // Normal attack * n times
-        var expectedCycleDamage = expectedTurn * expectedAttack * damage;
-        // Ougi + chain burst (buff ["chainNumber"] is 1 or more so division OK)
-        expectedCycleDamage += ougiDamage + chainBurst / buff["chainNumber"];
-        var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
-
-        if (expectedTurn === Infinity) {
-            expectedCycleDamagePerTurn = expectedAttack * damage;
+        //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
+        var supplementalDamageArray = {};
+        var supplementalDamageBuff = Math.max(totals[key]['supplementalDamageBuff'], buff['supplementalDamageBuff']);
+        if (supplementalDamageBuff > 0) {
+            supplementalDamageArray["Buff"] = {};
+            supplementalDamageArray["Buff"]["damage"] = supplementalDamageBuff;
+            supplementalDamageArray["Buff"]["ougiDamage"] = supplementalDamageBuff;
+            supplementalDamageArray["Buff"]["damageWithoutCritical"] = supplementalDamageBuff;
         }
+        if (totals[key]['covenant'] === 'impervious' && totals[key]['remainHP'] >= 0.8) {
+            supplementalDamageArray['impervious'] = {};
+            supplementalDamageArray['impervious']['damage'] = 30000;
+            supplementalDamageArray['impervious']['ougiDamage'] = 30000;
+            supplementalDamageArray['impervious']['damageWithoutCritical'] = 30000;
+        }
+        else if (totals[key]['covenant'] === 'victorious' && totals['Djeeta']['DjeetaBuffsCount'] > 0) {
+            supplementalDamageArray['victorious'] = {};
+            var DjeetaBuffsCount = Math.min(10, totals['Djeeta']['DjeetaBuffsCount']);
+            supplementalDamageArray['victorious']['damage'] =  DjeetaBuffsCount * 3000;
+            supplementalDamageArray['victorious']['ougiDamage'] = DjeetaBuffsCount * 3000;
+            supplementalDamageArray['victorious']['damageWithoutCritical'] = DjeetaBuffsCount * 3000;
+        }
+        else if (totals[key]['covenant'] === 'contentious' && taRate > 0) {
+            supplementalDamageArray['contentious'] = {};
+            supplementalDamageArray['contentious']['damage'] = Math.ceil(taRate * 100000);
+            supplementalDamageArray['contentious']['damageWithoutCritical'] = Math.ceil(taRate * 100000);
+        }
+        else if (totals[key]['covenant'] === 'deleterious') {
+            var hasCrit = false;
+            var critRate = 0;
+            for (var val in criticalArray) {
+              hasCrit = true;
+              break;
+            }
+            if (hasCrit && !isNaN(criticalArray[1])) {
+              critRate = 1.0 - criticalArray[1];
+            } else if (hasCrit) {
+              critRate = 1.0;
+            }
+            if (critRate != 0) {
+              supplementalDamageArray['deleterious'] = {};
+              supplementalDamageArray['deleterious']['damage'] = Math.ceil(critRate * 30000);
+              supplementalDamageArray['deleterious']['ougiDamage'] = Math.ceil(critRate * 30000);
+              supplementalDamageArray['deleterious']['damageWithoutCritical'] = 0;
+            }
+        }
+        else if (totals[key]['covenant'] === 'calamitous') {
+            supplementalDamageArray['calamitous'] = {};
+            var debuffsCount = Math.min(10, totals['Djeeta']['debuffsCount']);
+            supplementalDamageArray['calamitous']['damage'] = debuffsCount * 3000;
+            supplementalDamageArray['calamitous']['ougiDamage'] = debuffsCount * 3000;
+            supplementalDamageArray['calamitous']['damageWithoutCritical'] = debuffsCount * 3000;
+        }
+        
+        for (var supplementalDamageKey in supplementalDamageArray) {
+            if (supplementalDamageKey != 'contentious') {
+                damage += supplementalDamageArray[supplementalDamageKey].damage;
+                ougiDamage += supplementalDamageArray[supplementalDamageKey].ougiDamage;
+                damageWithoutCritical += supplementalDamageArray[supplementalDamageKey].damageWithoutCritical;
+            }
+        }
+        
+        if (expectedTurn === Infinity) {
+            var expectedCycleDamagePerTurn = expectedAttack * damage;
 
+            if (supplementalDamageArray['contentious'] != undefined) {
+                expectedCycleDamagePerTurn += supplementalDamageArray.contentious.damage;
+                damage += supplementalDamageArray.contentious.damage;
+                damageWithoutCritical += supplementalDamageArray.contentious.damageWithoutCritical;
+            }
+        } else {
+            // Normal attack * n times
+            var expectedCycleDamage = expectedTurn * expectedAttack * damage;
+            // Ougi + chain burst (buff ["chainNumber"] is 1 or more so division OK)
+            expectedCycleDamage += ougiDamage + chainBurst / buff["chainNumber"];
+
+            if (supplementalDamageArray['contentious'] != undefined) {
+                expectedCycleDamage += supplementalDamageArray.contentious.damage * expectedTurn;
+                damage += supplementalDamageArray.contentious.damage;
+                damageWithoutCritical += supplementalDamageArray.contentious.damageWithoutCritical;
+            }
+
+            var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
+        }
         
         // Display array
         var coeffs = {};
@@ -716,6 +801,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["ougiDamageLimit"] = ougiDamageLimit;
         coeffs["chainDamageLimit"] = chainDamageLimit;
         coeffs["criticalArray"] = criticalArray;
+        coeffs["supplementalDamageArray"] = supplementalDamageArray;
 
         // Consecutive shooting information
         coeffs["normalDA"] = armDAupNormal;
@@ -1085,6 +1171,7 @@ function* eachSkill(arm) {
     for (let [skey,ekey] of _skill_element_keys) {
         var skillname = arm[skey] ? arm[skey] : "non";
         var element = arm[ekey] != undefined ? arm[ekey] : "fire";
+        var skillkey = skey;
         if (typeof skilltypes[skillname] === 'undefined') {
             console.error("unknown skill name:", skillname);
             continue;
@@ -1094,7 +1181,7 @@ function* eachSkill(arm) {
             continue; // Safe for skip
         }
 
-        yield [skillname, element];
+        yield [skillkey, skillname, element];
     }
 }
 
@@ -1174,6 +1261,7 @@ module.exports.getTotalBuff = function (prof) {
         damageLimit: 0.0,
         ougiDamageLimit: 0.0,
         chainNumber: 1,
+        supplementalDamage: 0,
     };
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -1205,6 +1293,7 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["zenithChainDamageLimit"] += zenithChainDamageLimit[prof.zenithChainDamageLimitBonus] != undefined ? zenithChainDamageLimit[prof.zenithChainDamageLimitBonus] : 0;
     totalBuff["zenithElement"] += zenithElement[prof.zenithElementBonus] != undefined ? zenithElement[prof.zenithElementBonus] : 0;
     totalBuff["zenithDamageLimit"] += zenithDamageLimit[prof.zenithDamageLimitBonus] != undefined ? zenithDamageLimit[prof.zenithDamageLimitBonus] : 0;
+    totalBuff["supplementalDamage"] += parseInt(prof.supplementalDamageBuff);
 
     return totalBuff
 };
@@ -1294,7 +1383,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                 }
                 totals[key]["armAttack"] += armSup * parseInt(arm.attack) * comb[i];
                 totals[key]["armHP"] += hpSup * parseInt(arm.hp) * comb[i];
-                for (let [skillname, element] of eachSkill(arm)) {
+                for (let [skillkey, skillname, element] of eachSkill(arm)) {
                     var stype = skilltypes[skillname].type;
                     var amount = skilltypes[skillname].amount;
                     var slv = parseInt(arm.slv);
@@ -1520,6 +1609,36 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     isAkashaIncludedGlobal = true;
                                     isAkashaIncludedLocal[akashaType] = true;
                                 }
+                            }
+                        }
+                    } else if (stype == 'covenant') {
+                        // Akasha Weapon 2nd Skill
+                        if (amount == 'impervious') {
+                            if (totals[key]["fav1"] == 'spear' || totals[key]["fav2"] == 'spear' ||
+                                totals[key]["fav1"] == 'katana' || totals[key]["fav2"] == 'katana') {
+                                    totals[key]["covenant"] = amount;
+                            }
+                        } else if (amount == 'victorious') {
+                            if (totals[key]["fav1"] == 'wand' || totals[key]["fav2"] == 'wand' ||
+                                totals[key]["fav1"] == 'music' || totals[key]["fav2"] == 'music') {
+                                    totals[key]["covenant"] = amount;
+                                    totals['Djeeta']['DjeetaBuffsCount'] = arm[skillkey + "Detail"];
+                            }
+                        } else if (amount == 'contentious') {
+                            if (totals[key]["fav1"] == 'axe' || totals[key]["fav2"] == 'axe' ||
+                                totals[key]["fav1"] == 'fist' || totals[key]["fav2"] == 'fist') {
+                                    totals[key]["covenant"] = amount;
+                            }
+                        } else if (amount == 'deleterious') {
+                            if (totals[key]["fav1"] == 'bow' || totals[key]["fav2"] == 'bow' ||
+                                totals[key]["fav1"] == 'gun' || totals[key]["fav2"] == 'gun') {
+                                    totals[key]["covenant"] = amount;
+                            }
+                        } else if (amount == 'calamitous') {
+                            if (totals[key]["fav1"] == 'sword' || totals[key]["fav2"] == 'sword' ||
+                                totals[key]["fav1"] == 'dagger' || totals[key]["fav2"] == 'dagger') {
+                                    totals[key]["covenant"] = amount;
+                                    totals['Djeeta']['debuffsCount'] = arm[skillkey + "Detail"];
                             }
                         }
                     } else if (totals[key]["element"] == element) {
@@ -1869,7 +1988,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
         personalOugiGageBuff: 0.0,
         personalAdditionalDamageBuff: 0.0,
         personalDamageLimitBuff: 0.0,
-        personalOugiDamageLimitBuff: 0.0
+        personalOugiDamageLimitBuff: 0.0,
+        personalSupplementalDamageBuff: 0,
     };
 
     for (var djeetabuffkey in djeetaBuffList) {
@@ -1984,7 +2104,11 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 cosmosDebuffResistance: 0,
                 charaDamageUP: 0,
                 tenshiDamageUP: 0,
-                charaUniqueDamageUP: 0
+                charaUniqueDamageUP: 0,
+                supplementalDamageBuff: 100 * djeetaBuffList['personalSupplementalDamageBuff'],
+                covenant: null,
+                debuffsCount: 0,
+                DjeetaBuffsCount: 0,
             }
     };
 
@@ -2018,6 +2142,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 additionalDamageBuff: 0.0,
                 damageLimitBuff: 0.0,
                 ougiDamageLimitBuff: 0.0,
+                supplementalDamageBuff: 0
             };
 
             for (var charabuffkey in charaBuffList) {
@@ -2133,7 +2258,9 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 cosmosDebuffResistance: 0,
                 charaDamageUP: 0,
                 tenshiDamageUP: 0,
-                charaUniqueDamageUP: 0
+                charaUniqueDamageUP: 0,
+                supplementalDamageBuff: 100 * charaBuffList['supplementalDamageBuff'],
+                covenant: null,
             };
         }
     }
@@ -2280,6 +2407,8 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["debuffResistance"] = 0;
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
+        totals[key]['supplementalDamageBuff'] = 0;
+        totals[key]['covenant'] = null;
     }
 };
 
@@ -2611,7 +2740,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                     if (storedCombinations[j][i] === 0) continue;
 
-                    for (let [skillname, element] of eachSkill(arm)) {
+                    for (let [skillkey, skillname, element] of eachSkill(arm)) {
                         var stype = skilltypes[skillname].type;
                         var amount = skilltypes[skillname].amount;
                         var slv = parseInt(arm.slv);

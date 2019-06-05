@@ -381,6 +381,12 @@ var RegisteredArm = CreateClass({
                     arm["skill2"] = "non";
                     arm["skill3"] = "non";
                 }
+            } else if (additionalKeys === "skill1Detail") {
+                arm["skill1Detail"] = this.state.skill1Detail;
+            } else if (additionalKeys === "skill2Detail") {
+                arm["skill2Detail"] = this.state.skill2Detail;
+            } else if (additionalKeys === "skill2Detail") {
+                arm["skill3Detail"] = this.state.skill3Detail;
             }
         }
 

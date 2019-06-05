@@ -284,6 +284,7 @@ var Chara = CreateClass({
             otherBuff: 0,
             otherBuff2: 0,
             additionalDamageBuff: 0,
+            supplementalDamageBuff: 0,
             daBuff: 0,
             taBuff: 0,
             ougiGageBuff: 0,
@@ -618,6 +619,12 @@ var Chara = CreateClass({
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.additionalDamageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
+                            </tr>,
+                            <tr key="supplementalDamageBuff">
+                                <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
+                                <td><FormControl type="number" value={this.state.supplementalDamageBuff}
+                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
+                                </td>
                             </tr>,
                             <tr key="ougiGageBuff">
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>

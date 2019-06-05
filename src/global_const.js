@@ -79,6 +79,11 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+module.exports.hollowskyNames = [
+    "虚空の",
+    "Hollowsky"
+];
+
 var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
@@ -924,6 +929,11 @@ var skilltypes = {
     "akasha-bow": {name: "アーカーシャ-弓", type: "akasha", amount: "gun"},
     "akasha-wand": {name: "アーカーシャ-杖", type: "akasha", amount: "music"},
     "akasha-spear": {name: "アーカーシャ-槍", type: "akasha", amount: "katana"},
+    "impervious-covenant": {name: "不壊の誓約", type: "covenant", amount:"impervious"},
+    "victorious-covenant": {name: "凱歌の誓約", type: "covenant", amount:"victorious"},
+    "contentious-covenant": {name: "修羅の誓約", type: "covenant", amount:"contentious"},
+    "deleterious-covenant": {name: "致命の誓約", type: "covenant", amount:"deleterious"},
+    "calamitous-covenant": {name: "災禍の誓約", type: "covenant", amount:"calamitous"},
     "opus-alpha": {name: "ペンデュラム[α]", type: "opusKey", amount: "L"},
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
@@ -950,6 +960,25 @@ var cosmosSkills = {
 };
 
 // additional selection when template is selected
+module.exports.skillDetails = {
+    'victorious-covenant': 'victorious_calamitous_covenant',
+    'calamitous-covenant': 'victorious_calamitous_covenant'
+};
+
+var victorious_calamitous_covenant = {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10
+};
+
 var sishoSeiryu = {
     "non": {name: "無し", type: "non", amount: "non"},
     "normalCriticalM": {name: "王道: 竜巻の技巧"},
@@ -2232,6 +2261,18 @@ module.exports.additionalSelectList = {
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
+    "[4凸]虚空の裂剣": {
+        notationText: "弱体の数",
+        selectKeys: ["skill2Detail"],
+        selectors: ["victorious_calamitous_covenant"],
+        defaultKeys: ["0"],
+    },
+    "[4凸]虚空の拝腕": {
+        notationText: "ジータバフの数",
+        selectKeys: ["skill2Detail"],
+        selectors: ["victorious_calamitous_covenant"],
+        defaultKeys: ["0"],
+    }
 };
 
 
@@ -2365,6 +2406,16 @@ module.exports.selector.zh.sishoGenbu = Object.keys(sishoGenbu).map(function (ke
 });
 
 // オメガウェポンテンプレート用セレクタ
+module.exports.selector.ja.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.en.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.zh.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+
 module.exports.selector.ja.omegaWeaponSkill1 = Object.keys(omegaWeaponSkill1).map(function (key) {
     return <option value={key} key={key}>{intl.translate(omegaWeaponSkill1[key].name, "ja")}</option>;
 });

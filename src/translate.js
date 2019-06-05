@@ -306,6 +306,16 @@ var multiLangData = {
         "ja": "通常攻撃に割合分の追加ダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)、パラゾ(15%)など。",
         "zh": "视作追加伤害，额外加在伤害上。用在预想DPT的计算中。",
     },
+    "supplementalDamageBuff": {
+        "en": "Supplemental Damage Buff",
+        "ja": "Supplemental Damage Buff",
+        "zh": "Supplemental Damage Buff",
+    },
+    "supplementalDamageBuff-tooltip": {
+        "en": "Supplemental Damage Buff (added to everything). DMG Boosted status effect, Rosetta (Grand)'s Iron Maiden, Hollowsky Axe (Ougi)",
+        "ja": "Supplemental Damage Buff (added to everything). DMG Boosted status effect, Rosetta (Grand)'s Iron Maiden, Hollowsky Axe (Ougi)",
+        "zh": "Supplemental Damage Buff (added to everything). DMG Boosted status effect, Rosetta (Grand)'s Iron Maiden, Hollowsky Axe (Ougi)",
+    },
     "与ダメージ上昇": {
         "en": "Damage UP ",
         "ja": "与ダメージ上昇",
@@ -1227,6 +1237,21 @@ var multiLangData = {
         "en": "SD",
         "ja": "標準偏差",
         "zh": "标准差",
+    },
+    "Supplemental Damage Source":{
+        "en": "Supplemental Damage Source",
+        "ja": "Supplemental Damage Source",
+        "zh": "Supplemental Damage Source",
+    },
+    "Total":{
+        "en": "Total",
+        "ja": "Total",
+        "zh": "Total",
+    },
+    "Damage": {
+        "en": "Damage",
+        "ja": "全額",
+        "zh": "全額",
     },
     "四人合計値": {
         "en": "x4",
@@ -2736,6 +2761,31 @@ var multiLangData = {
         "ja": "アーカーシャ-槍",
         "zh": "アーカーシャ-槍",
     },
+    "不壊の誓約": {
+        "en": "Impervious Covenant",
+        "ja": "不壊の誓約",
+        "zh": "不壊の誓約",
+    },
+    "凱歌の誓約": {
+        "en": "Victorious Covenant",
+        "ja": "凱歌の誓約",
+        "zh": "凱歌の誓約",
+    },
+    "修羅の誓約": {
+        "en": "Contentious Covenant",
+        "ja": "修羅の誓約",
+        "zh": "修羅の誓約",
+    },
+    "致命の誓約": {
+        "en": "Deleterious Covenant",
+        "ja": "致命の誓約",
+        "zh": "致命の誓約",
+    },
+    "災禍の誓約": {
+        "en": "Calamitous Covenant",
+        "ja": "災禍の誓約",
+        "zh": "災禍の誓約",
+    },
     "ペンデュラム[α]": {
         "en": "Pendulum Key α",
         "ja": "ペンデュラム[α](通常上限10%UP)",
@@ -3112,6 +3162,16 @@ var multiLangData = {
         "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
         "ja": "天司武器入りで計算する場合、優先項目をダメージベースのものに設定してください.",
         "zh": "把天司武器加入计算的时候，请选择基于伤害的优先项目。",
+    },
+    "弱体の数": {
+        "en": "Number of Debuffs (on target)",
+        "ja": "弱体の数",
+        "za": "弱体の数",
+    },
+    "ジータバフの数": {
+        "en": "Number of Buffs (on Djeeta)",
+        "ja": "ジータバフの数",
+        "za": "ジータバフの数",
     },
     "広告": {
         "en": "Ad.",
