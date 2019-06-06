@@ -521,7 +521,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalSkillCoeff *= charaHaisuiCoeff;
         totalSkillCoeff *= LBHaisuiCoeff;
         totalSkillCoeff *= LBKonshinCoeff;
-        totalSkillCoeff *= 1.0 - totals[key]["ATKDebuff"];
+        totalSkillCoeff -= totals[key]["ATKDebuff"];
         var totalAttack = summedAttack * totalSkillCoeff;
 
         // Lowest HP limit = 1
@@ -1784,6 +1784,10 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'gurenJuin') {
                             if (index == 2) {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            }
+                        } else if (stype == 'chiretsuSenwaku') {
+                            if (index == 3) {
+                                totals[key]["ougiDamage"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             }
                         } else if (stype == 'muhyoTuiga') {
                             if (index == 4) {

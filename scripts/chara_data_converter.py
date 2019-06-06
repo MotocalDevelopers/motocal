@@ -156,7 +156,7 @@ patching["天道輝"] = {"DA": 10.0, "TA": 5.0}
 ## 水 - Water
 patching["イングヴェイ"] = {"DA": 10.0, "TA": 5.0}
 patching["シルヴァ"] = {"DA": 10.0, "TA": 5.0}
-patching["ランスロット(SSR)"] = {"DA": 25.0, "TA": 5.0} ##support skill DA15%
+patching["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["桜内梨子＆高海千歌＆渡辺 曜"] = {"DA": 10.0, "TA": 5.0}
 patching["ヴァジラ"] = {"DA": 10.0, "TA": 5.0}
 patching["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}

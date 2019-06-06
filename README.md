@@ -72,14 +72,23 @@ $ npm run production-watch-dev
 1. For the weapon you want to add, copy the corresponding line of the wiki and paste it on the top of txt_source/armData-ssr.txt
 2. Run arm_data_converter.py
     - When dealing with new skills, please add the corresponding new skill name to arm_data_converter.py => Add the new skill to the calculator.
+    
+SSR: https://gbf-wiki.com/index.php?%C9%F0%B4%EFSSR  
+SSR2: https://gbf-wiki.com/index.php?%C9%F0%B4%EFSSR%2F%C6%C3%BC%EC%C9%F0%B4%EF  
+SR: https://gbf-wiki.com/index.php?%C9%F0%B4%EFSR  
 
-※ For new upper limit breaking weapon it is necessary, to add a status at the end for 4 stars and 5 stars, the data added at the end is ○ (4 stars) or ◎ (5 stars) and Lv 100, Lv 150 stats. Please add it appropriately with reference to the examples.
+\* For new upper limit breaking weapon it is necessary, to add a status at the end for 4 stars and 5 stars, the data added at the end is ○ (4 stars) or ◎ (5 stars) and Lv 100, Lv 150 stats. Please add it appropriately with reference to the examples.
 
 ### Updating character templates
 1. For the character you want to add, copy the corresponding line of the wiki and paste it on the top of txt_source/charaData.txt
 2. Run chara_data_converter.py
 
-※ For new upper limit breaking of a character, it is OK just to update the stats (All characters stats are for their highest uncap, only exception are eternal character that have a version for 4 and 5 star)
+SSR: https://gbf-wiki.com/index.php?%BF%CD%CA%AASSR  
+SR: https://gbf-wiki.com/index.php?%BF%CD%CA%AASR  
+R: https://gbf-wiki.com/index.php?%BF%CD%CA%AAR  
+
+\* For new upper limit breaking of a character, it is OK just to update the stats (All characters stats are for their highest uncap, only exception are eternal character that have a version for 4 and 5 star)  
+\* Updating of Base Multiattack Rate and C.A. Multiplier is done by adding to chara\_data\_converter.py.
 
 ## Note
 - Php file for DB communication is not managed.
@@ -88,7 +97,7 @@ $ npm run production-watch-dev
 ## About scripts
 This is section for scripts that generates json data for templates and pulls weapon/character image data from gbfwiki.
 
-※ Downloading images from the game is possible, but that may be considered as a bannable offense, if you use that script, you use it on your own personal responsibility.
+\* Downloading images from the game is possible, but that may be considered as a bannable offense, if you use that script, you use it on your own personal responsibility.
 
 For python scripts
 ```sh
