@@ -2762,7 +2762,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                     haisuiBuff[l]["normalKonshin"] += 0.01 * module.exports.calcHaisuiValue("omegaKonshin", amount, slv, remainHP)
                                 }
                                 omegaKonshinIncluded = true;
-                            }
+                            } 
                         } else if (onedata[key].element == element) {
                             if (isHaisuiType(stype)) {
                                 if (stype === "normalHaisui" || stype === "normalKonshin") {
@@ -2787,10 +2787,9 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                     }
                                 }
                             }
-                        }
+                        }//
                     }
                 }
-
                 for (var k = 0; k < 100; k++) {
                     var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui * haisuiBuff[k].lbHaisui * haisuiBuff[k].lbKonshin;
                     var summedAttack = onedata[key].displayAttack;
@@ -2799,13 +2798,32 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                     var newDamage = module.exports.calcDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit)
                     var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
+                    
+                    for (var supplementalDamageKey in onedata[key].skilldata.supplementalDamageArray) {
+                        if (supplementalDamageKey == 'impervious' && k >= 80) {
+                            newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
+                            newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
+                        } else if (supplementalDamageKey != 'contentious' && supplementalDamageKey != 'impervious') {
+                            newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
+                            newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
+                            //damageWithoutCritical += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damageWithoutCritical;
+                        }
+                    }
 
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
                     var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
                     var newExpectedCycleDamagePerTurn = (onedata[key].expectedTurn === Infinity)
                         ? (onedata[key].expectedAttack * newDamage)
-                        : (newChainBurst + newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage) / (onedata[key].expectedTurn + 1);
-
+                        : (newChainBurst + newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage);
+                    
+                    if (onedata[key].skilldata.supplementalDamageArray['contentious'] != undefined) {
+                        newExpectedCycleDamagePerTurn += onedata[key].skilldata.supplementalDamageArray.contentious.damage;
+                        newDamage += onedata[key].skilldata.supplementalDamageArray.contentious.damage;
+                        //damageWithoutCritical += onedata[key].skilldata.supplementalDamageArray.contentious.damageWithoutCritical;
+                    }
+                    
+                    newExpectedCycleDamagePerTurn /= (onedata[key].expectedTurn + 1);
+                    
                     var hp;
                     if (displayRealHP) {
                         // Actual HP
