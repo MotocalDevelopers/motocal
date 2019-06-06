@@ -1690,7 +1690,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'huanglongHissatsu') {
                             totals[key]["ougiDamage"] += 20; // for Zeus aura (Hiou)
                             totals[key]["ougiDamageLimit"] += 0.2;
-                        } else if (stype == 'cherubimHissatsu') {
+                        } else if (stype == 'cherubimKonshin') {
                             let bonus = totals[key]["remainHP"] < 0.50 ? 0 : 18 * totals[key]["remainHP"] - 8;
                             totals[key]["normalOtherKonshin"] = Math.max(totals[key]["normalOtherKonshin"], bonus);
                         } else if (stype == 'ougiDamageLimitExceed') {
