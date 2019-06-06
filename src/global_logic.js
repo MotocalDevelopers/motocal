@@ -33,6 +33,10 @@ module.exports.isCosmos = function (arm) {
         (skilltypes[arm.skill3] != undefined && skilltypes[arm.skill3].type == "cosmosArm");
 };
 
+module.exports.isDarkOpus = function (arm) {
+    return arm != undefined && arm.name != undefined && GlobalConst.opusNames.some(value => arm.name.includes(value));
+};
+
 function isHaisuiType(stype) {
     return (stype === "normalHaisui" || stype === "magnaHaisui" ||
         stype === "normalKonshin" || stype === "magnaKonshin" ||
@@ -80,27 +84,34 @@ module.exports.calcCombinations = function (arml) {
 
     // isCosmos advance judgment
     var isCosmosArray = [];
+    var isDarkOpusArray = [];
     for (var i = 0; i < arml.length; i++) {
-        isCosmosArray[i] = module.exports.isCosmos(arml[i])
+        isCosmosArray[i] = module.exports.isCosmos(arml[i]);
+        isDarkOpusArray[i] = module.exports.isDarkOpus(arml[i]);
     }
 
     for (var i = 0; i < totalItr; i = (i + 1) | 0) {
         var temp = [];
         var num = 0;
         var isCosmosIncluded = false;
+        var isDarkOpusIncluded = false;
         var isValidCombination = true;
         for (var j = 0; j < armNumArray.length; j = (j + 1) | 0) {
-            if (!isCosmosArray[j]) {
+            if (!isCosmosArray[j] && !isDarkOpusArray[j]) {
                 temp.push(armNumArray[j][index[j]]);
                 num += parseInt(armNumArray[j][index[j]])
             } else {
                 // cosmos weapons
                 if (armNumArray[j][index[j]] == 0) {
                     temp.push(armNumArray[j][index[j]]);
-                } else if (armNumArray[j][index[j]] > 0 && !isCosmosIncluded) {
+                } else if (armNumArray[j][index[j]] > 0 && isCosmosArray[j] && !isCosmosIncluded) {
                     temp.push(armNumArray[j][index[j]]);
                     num += parseInt(armNumArray[j][index[j]]);
                     isCosmosIncluded = true;
+                } else if (armNumArray[j][index[j]] > 0 && armNumArray[j][index[j]] <= 1 && isDarkOpusArray[j] && !isDarkOpusIncluded) {
+                    temp.push(armNumArray[j][index[j]]);
+                    num += parseInt(armNumArray[j][index[j]]);
+                    isDarkOpusIncluded = true;
                 } else {
                     isValidCombination = false;
                 }
