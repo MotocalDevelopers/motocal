@@ -745,8 +745,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             var hasCrit = false;
             var critRate = 0;
             for (var val in criticalArray) {
-              hasCrit = true;
-              break;
+                hasCrit = true;
+                break;
             }
             if (hasCrit && !isNaN(criticalArray[1])) {
               critRate = 1.0 - criticalArray[1];
@@ -2829,6 +2829,17 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     
                     for (var supplementalDamageKey in onedata[key].skilldata.supplementalDamageArray) {
                         if (supplementalDamageKey == 'impervious' && k >= 80) {
+                            newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
+                            newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
+                        } else if (supplementalDamageKey != 'contentious' && supplementalDamageKey != 'impervious') {
+                            newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
+                            newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
+                            //damageWithoutCritical += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damageWithoutCritical;
+                        }
+                    }
+
+                    for (var supplementalDamageKey in onedata[key].skilldata.supplementalDamageArray) {
+                        if (supplementalDamageKey == 'impervious' && k >= 79) {
                             newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
                             newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
                         } else if (supplementalDamageKey != 'contentious' && supplementalDamageKey != 'impervious') {

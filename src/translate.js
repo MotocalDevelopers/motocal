@@ -1250,8 +1250,8 @@ var multiLangData = {
     },
     "Total":{
         "en": "Total",
-        "ja": "全額",
-        "zh": "全額",
+        "ja": "合計",
+        "zh": "Total",
     },
     "Damage": {
         "en": "Damage",
