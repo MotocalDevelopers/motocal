@@ -12,12 +12,12 @@ var multiLangData = {
         "zh": "支持制作者",
     },
     "メイン装備yes": {
-        "en": "main",
+        "en": "Main",
         "ja": "メイン武器である",
         "zh": "是主手武器",
     },
     "メイン装備no": {
-        "en": "not main",
+        "en": "Sub",
         "ja": "メイン武器ではない",
         "zh": "不是主手武器",
     },
@@ -2805,6 +2805,11 @@ var multiLangData = {
         "en": "Huanglong spear (main)",
         "ja": "黄龍槍 (メイン装備時)",
         "zh": "Huanglong spear (main)",
+    },
+    "ケルヴィム (メイン装備時)": {
+        "en": "Cherubim Lance (main)",
+        "ja": "ケルヴィム (メイン装備時)",
+        "zh": "ケルヴィム (メイン装備時)",
     },
     "奥義上限UP(イクシード)": {
         "en": "C.A. Cap UP (Exceed)",  //a.k.a:ougiDamageLimitByExceed
