@@ -1690,8 +1690,6 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'huanglongHissatsu') {
                             totals[key]["ougiDamage"] += 20; // for Zeus aura (Hiou)
                             totals[key]["ougiDamageLimit"] += 0.2;
-                        } else if (stype == 'cherubimHissatsu') {
-                            // TODO
                         } else if (stype == 'ougiDamageLimitExceed') {
                             totals[key]["exceedOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["ougiDamageLimitExceed"][amount][slv - 1];
                             // 4* Weapon Skills
@@ -1757,6 +1755,12 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key][stype] += 0.15;
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
+                        }
+                    } else {
+                        // Special Skills that effects everyone
+                        if (stype == 'cherubimHissatsu') {
+                            let bonus = totals[key]["remainHP"] < 0.50 ? 0 : 18 * totals[key]["remainHP"] - 8;
+                            totals[key]["normalOtherKonshin"] = Math.max(totals[key]["normalOtherKonshin"], bonus);
                         }
                     }
                 }
