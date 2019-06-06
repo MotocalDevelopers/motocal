@@ -385,7 +385,7 @@ var RegisteredArm = CreateClass({
                 arm["skill1Detail"] = this.state.skill1Detail;
             } else if (additionalKeys === "skill2Detail") {
                 arm["skill2Detail"] = this.state.skill2Detail;
-            } else if (additionalKeys === "skill2Detail") {
+            } else if (additionalKeys === "skill3Detail") {
                 arm["skill3Detail"] = this.state.skill3Detail;
             }
         }
