@@ -300,6 +300,7 @@ var Chara = CreateClass({
             LBCritical2: "none",
             LBCritical3: "none",
             LBCritical4: "none",
+            EXLBWED: false,
             EXLBATK: 0,
             EXLBHP: 0,
             EXLBOugiDamage: 0,
@@ -394,13 +395,13 @@ var Chara = CreateClass({
     handleSelectEvent: function (key, e) {
         var newState = this.state;
 
-        if (key == "isConsideredInAverage") {
-            newState[key] = (newState[key] == false) ? true : false
+        if (e.target.type === "checkbox") {
+            newState[key] = e.target.checked;
         } else {
-            newState[key] = e.target.value
+            newState[key] = e.target.value;
         }
         this.setState(newState);
-        this.props.onChange(this.props.id, newState, false)
+        this.props.onChange(this.props.id, newState, false);
     },
     handleOnBlur: function (key, e) {
         if (key == "name" && this.state.name != "" && e.target.value != "") {
@@ -752,6 +753,14 @@ var Chara = CreateClass({
                     </tr>
                     {this.state.openEXLBlist ?
                         [
+                            <tr key="EXLBWED">
+                                <th className="bg-primary">{intl.translate("LB 久遠の指輪", locale)}</th>
+                                <td>
+                                    <Checkbox inline checked={this.state.EXLBWED}
+                                              onChange={this.handleSelectEvent.bind(this, "EXLBWED")}>
+                                    </Checkbox>
+                                </td>
+                            </tr>,
                             <tr key="EXLBATK">
                                 <th className="bg-primary">{intl.translate("攻撃力", locale)}</th>
                                 <td>

@@ -34,7 +34,7 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isHollowsky, isValidResult, checkNumberOfRaces, proceedIndex,
+    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces, proceedIndex,
     calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
     calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
@@ -76,6 +76,9 @@ var ResultList = CreateClass({
                             isCombinationChanged = true;
                         }
                         if (isHollowsky(arml[i]) != isHollowsky(this.state.previousArmlist[i])) {
+                            isCombinationChanged = true;
+                        }
+                        if (isDarkOpus(arml[i]) != isDarkOpus(this.state.previousArmlist[i])) {
                             isCombinationChanged = true;
                         }
                     }
