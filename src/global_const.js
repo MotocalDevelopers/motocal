@@ -1869,7 +1869,7 @@ var supportAbilities = {
         "value": 0.20
     },
     "atk_up_own_5": {
-        "name": "攻撃5%UP(ネツァ,レディグレイ,ハロシャル)",
+        "name": "攻撃5%UP(レディグレイ)",
         "type": "normalBuff",
         "range": "own",
         "value": 0.05

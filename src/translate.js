@@ -1840,8 +1840,8 @@ var multiLangData = {
         "ja": "HP20%UP(ソリッズ)",
         "zh": "HP20%UP(ソリッズ)",
     },
-    "攻撃5%UP(ネツァ,レディグレイ,ハロシャル)": {
-        "en": "5% boost to ATK.",
+    "攻撃5%UP(レディグレイ)": {
+        "en": "5% boost to ATK. (Lady Grey)",
         "ja": "攻撃5%UP",
         "zh": "攻撃5%UP",
     },
