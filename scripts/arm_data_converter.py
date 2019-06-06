@@ -37,6 +37,7 @@ skillnamelist["normalHPLL"] = {
 
 skillnamelist["rankiShikku"] = {u"乱気の疾駆・壱": "wind"}
 skillnamelist["gurenJuin"] = {u"紅蓮の呪印・弐": "fire"}
+skillnamelist["chiretsuSenwaku"] = {u"地裂の煽惑・参": "earth"}
 skillnamelist["muhyoTuiga"] = {u"霧氷の追牙・肆": "water"}
 
 # Inferno's Insignia is usually treated as a large atk up

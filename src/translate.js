@@ -407,7 +407,7 @@ var multiLangData = {
         "zh": "适合想要进行更加详细的计算的人。",
     },
     "敵防御固有値": {
-        "en": "Enemy's defense",
+        "en": "Enemy Innate DEF",
         "ja": "敵防御固有値",
         "zh": "敌人的防御值",
     },
@@ -417,9 +417,9 @@ var multiLangData = {
         "zh": "设定假想敌的防御值。\n影响攻击伤害、奥义伤害、预想DPT。",
     },
     "防御デバフ合計": {
-        "en": "DEF debuff",
+        "en": "DEF Debuff",
         "ja": "防御デバフ",
-        "zh": "DEF debuff",
+        "zh": "DEF Debuff",
     },
     "防御デバフ合計説明": {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
@@ -524,6 +524,11 @@ var multiLangData = {
         "ja": "味方全体HP",
         "zh": "己方全体HP LB",
     },
+    "LB 久遠の指輪": {
+        "en": "Perpetuity Ring",
+        "ja": "久遠の指輪",
+        "zh": "久遠の指輪",
+    },
     "LB 攻撃力": {
         "en": "ATK ",
         "ja": "攻撃力",
@@ -623,6 +628,21 @@ var multiLangData = {
         "en": "Critical",
         "ja": "クリティカル",
         "zh": "Critical",
+	},
+    "小": {
+        "en": "Small",
+        "ja": "小",
+        "zh": "小",
+	},
+    "中": {
+        "en": "Medium",
+        "ja": "中",
+        "zh": "中",
+	},
+    "大": {
+        "en": "Big",
+        "ja": "大",
+        "zh": "大",
 	},
     "LB クリティカルの説明": {
         "en": "",
@@ -1118,6 +1138,11 @@ var multiLangData = {
         "ja": "残HP",
         "zh": "剩余HP",
     },
+    "キャラ(result)": {
+        "en": "Chara ",
+        "ja": "キャラ",
+        "zh": "角色",
+    },
     "パーティ平均攻撃力": {
         "en": "Party-Averaged Pure ATK",
         "ja": "パーティ平均攻撃力(二手技巧無し)",
@@ -1359,32 +1384,32 @@ var multiLangData = {
         "zh": "操作",
     },
     "HP増加": {
-        "en": "Health ",
+        "en": "Health",
         "ja": "HP増加",
         "zh": "HP增加",
     },
     "通常攻刃": {
-        "en": "Normal Might ",
+        "en": "Normal Might",
         "ja": "通常攻刃",
         "zh": "通常攻刃",
     },
     "通常背水": {
-        "en": "Normal Enmity ",
+        "en": "Normal Enmity",
         "ja": "通常背水",
         "zh": "通常背水",
     },
     "通常渾身": {
-        "en": "Normal Stamina ",
+        "en": "Normal Stamina",
         "ja": "通常渾身",
         "zh": "通常浑身",
     },
     "マグナ背水": {
-        "en": "Magna Enmity ",
+        "en": "Magna Enmity",
         "ja": "マグナ背水",
         "zh": "方阵背水",
     },
     "マグナ渾身": {
-        "en": "Magna Stamina ",
+        "en": "Magna Stamina",
         "ja": "マグナ渾身",
         "zh": "方针浑身",
     },
@@ -1399,72 +1424,72 @@ var multiLangData = {
         "zh": "方阵属性攻击力(大)",
     },
     "アンノウン": {
-        "en": "Unknown ",
+        "en": "Unknown",
         "ja": "アンノウン",
         "zh": "UNK",
     },
     "アンノウン背水": {
-        "en": "Unknown Enmity ",
+        "en": "Unknown Enmity",
         "ja": "アンノウン背水",
         "zh": "UNK背水",
     },
     "キャラ背水": {
-        "en": "Chara Enmity ",
+        "en": "Chara Enmity",
         "ja": "キャラ背水",
         "zh": "角色背水",
     },
     "攻撃力減少(特殊)": {
-        "en": "ATK Debuff (special) ",
+        "en": "ATK Debuff (Special)",
         "ja": "攻撃力減少(特殊)",
         "zh": "攻击力減少(特殊)",
     },
     "DA上昇(通常)": {
-        "en": "DA up (normal) ",
+        "en": "DA Up (Normal)",
         "ja": "DA上昇(通常)",
         "zh": "DA上升(通常)",
     },
     "DA上昇(マグナ)": {
-        "en": "DA up (magna) ",
+        "en": "DA Up (Magna)",
         "ja": "DA上昇(マグナ)",
         "zh": "DA上升(方针)",
     },
     "DA上昇(EX)": {
-        "en": "DA up (EX) ",
+        "en": "DA Up (EX)",
         "ja": "DA上昇(EX)",
         "zh": "DA上升(EX)",
     },
     "DA上昇(バハ)": {
-        "en": "DA up (bahamut) ",
+        "en": "DA Up (Bahamut)",
         "ja": "DA上昇(バハ)",
         "zh": "DA上升(巴哈)",
     },
     "DA上昇(コスモス)": {
-        "en": "DA up (cosmos) ",
+        "en": "DA Up (Cosmos)",
         "ja": "DA上昇(コスモス)",
         "zh": "DA上升(Cosmos)",
     },
     "DA上昇(その他)": {
-        "en": "DA up (other) ",
+        "en": "DA Up (Other)",
         "ja": "DA上昇(その他)",
         "zh": "DA上升(其他)",
     },
     "TA上昇(通常)": {
-        "en": "TA up (normal) ",
+        "en": "TA Up (Normal)",
         "ja": "TA上昇(通常)",
         "zh": "TA上升(通常)",
     },
     "TA上昇(マグナ)": {
-        "en": "TA up (magna) ",
+        "en": "TA Up (Magna)",
         "ja": "TA上昇(マグナ)",
         "zh": "TA上升(方阵)",
     },
     "TA上昇(バハ)": {
-        "en": "TA up (bahamut) ",
+        "en": "TA Up (Bahamut)",
         "ja": "TA上昇(バハ)",
         "zh": "TA上升(巴哈)",
     },
     "TA上昇(その他)": {
-        "en": "TA up (other) ",
+        "en": "TA Up (Other)",
         "ja": "TA上昇(その他)",
         "zh": "TA上升(其他)",
     },
@@ -1567,9 +1592,9 @@ var multiLangData = {
         "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
     "ダメージ上限加護": {
-        "en": "Damage cap", //a.k.a: damageLimit
+        "en": "Damage Cap", //a.k.a: damageLimit
         "ja": "ダメージ上限加護",
-        "zh": "Damage cap",
+        "zh": "Damage Cap",
     },
     "ダメージ上限加護説明": {
         "en": "Increases the damage cap. Primarch summons(5~10%) etc.",
@@ -1661,6 +1686,11 @@ var multiLangData = {
         "en": "Raw HP",
         "ja": "素のHP",
         "zh": "基本HP",
+    },
+    "プラスボーナス": {
+        "en": "Plus Bonus",
+        "ja": "+ボーナス",
+        "zh": "Plus Bonus",
     },
     "サポアビ": {
         "en": "Support Abi.",
@@ -2366,20 +2396,25 @@ var multiLangData = {
         "ja": "ミフネ流・双星",
         "zh": "ミフネ流・双星",
     },
+    "乱気の疾駆・壱": {
+        "en": "Ventosus's First Dash",
+        "ja": "乱気の疾駆・壱",
+        "zh": "Ventosus's First Dash",
+    },
     "紅蓮の呪印・弐": {
         "en": "Inferno's Second Insignia",
         "ja": "紅蓮の呪印・弐",
         "zh": "红莲的咒印・叁",
     },
+    "地裂の煽惑・参": {
+        "en": "Terra's Third Spur",
+        "ja": "地裂の煽惑・参",
+        "zh": "Terra's Third Spur",
+    },
     "霧氷の追牙・肆": {
         "en": "Hoarfrost's Fourth Pursuit",
         "ja": "霧氷の追牙・肆",
         "zh": "雾冰的追牙・肆",
-    },
-    "乱気の疾駆・壱": {
-        "en": "Ventosus's First Dash",
-        "ja": "乱気の疾駆・壱",
-        "zh": "Ventosus's First Dash",
     },
     "貫きの牙": {
         "en": "Piercing Fang",
@@ -3118,6 +3153,11 @@ var multiLangData = {
         "ja": "次の{step}件を表示",
         "zh": "Show next {step} logs",
     },
+    "percent": {
+        "en": " {}%",
+        "ja": "{}%",
+        "zh": " {}%",
+    },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",
         "ja": "2017/01/14: 英語対応",
@@ -3493,10 +3533,25 @@ var multiLangData = {
         "ja": "2019/05/11: キャラ・武器追加。キャラのデフォルト奥義倍率追加。",
         "zh": "2019/05/11: Add characters and weapons and chara's default ougi ratio.",
     },
+    "notice-20190514-1": {
+        "en": "14/05/2019: Added sort key: C.A.+Chain damage(need to change chain number to 4). Added support for rounding down the decimal point of multi attack.",
+        "ja": "2019/05/14: 優先項目(ソートキー)に「奥義+チェンバダメージ」追加(より細かい設定から4チェインにする必要有)。連撃率の小数点以下切り捨て対応。",
+        "zh": "2019/05/14: Added sort key: C.A.+Chain damage(need to change chain number to 4). Added support for rounding down the decimal point of multi attack.",
+    },
+    "notice-20190517-1": {
+        "en": "17/05/2019: Added C.A. damage bonus buff to Indiv Buff. Set to default value of ATK and HP of summon. Changed default arua valus to 140.",
+        "ja": "2019/05/17: 個別バフに奥義バフ入力欄追加。召喚石の攻撃力HPデフォルト値追加。召喚石のデフォルト加護値を140に。",
+        "zh": "2019/05/17: Added C.A. damage bonus buff to Indiv Buff. Set to default value of ATK and HP of summon. Changed default arua valus to 140.",
+    },
+    "notice-20190518-1": {
+        "en": "18/05/2019: Added rankiShikku skill, and support skills of Percival and Scathacha, and level list of SR weapon.",
+        "ja": "2019/05/18: 青竜髭刃のスキル「乱気の疾駆・壱」追加。パーシヴァル、スカーサハのサポアビ追加。SR武器のレベル区域追加。",
+        "zh": "2019/05/18: Added rankiShikku skill, and support skills of Percival and Scathacha, and level list of SR weapon.",
+    },
     "notice-20190528-1": {
-        "en": "28/05/2019: Added new weapons and characters.",
-        "ja": "2019/05/28: 武器とキャラ追加.",
-        "zh": "2019/05/28: 增加新武器和新角色。",
+        "en": "28/05/2019: Added new weapons and characters, and new normal critical calculation, and Over Masterys, and Soldier.",
+        "ja": "2019/05/28: 武器とキャラ追加。通常技巧の計算方法を方陣技巧と共通化。EXLB(指輪)入力欄追加。ソルジャー追加。",
+        "zh": "2019/05/28: Added new weapons and characters, and new normal critical calculation, and Over Masterys. and Soldier.",
     },
 };
 

@@ -34,7 +34,7 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isValidResult, checkNumberOfRaces, proceedIndex,
+    isCosmos, isDarkOpus, isValidResult, checkNumberOfRaces, proceedIndex,
     calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
     calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
@@ -73,6 +73,9 @@ var ResultList = CreateClass({
                         }
                         // Combination changes depending on whether it became a cosmos weapon, or it was not a cosmos weapon
                         if (isCosmos(arml[i]) != isCosmos(this.state.previousArmlist[i])) {
+                            isCombinationChanged = true;
+                        }
+                        if (isDarkOpus(arml[i]) != isDarkOpus(this.state.previousArmlist[i])) {
                             isCombinationChanged = true;
                         }
                     }
@@ -463,14 +466,19 @@ var ResultList = CreateClass({
                     key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
         }
-        var buffInfoStr = intl.translate("通常バフ", locale) + prof.normalBuff + "%, ";
-        buffInfoStr += intl.translate("属性バフ", locale) + prof.elementBuff + "%, ";
-        buffInfoStr += intl.translate("その他バフ", locale) + prof.otherBuff + "%, ";
-        buffInfoStr += intl.translate("DAバフ", locale) + prof.daBuff + "%, ";
-        buffInfoStr += intl.translate("TAバフ", locale) + prof.taBuff + "%, ";
-        buffInfoStr += intl.translate("追加ダメージバフ", locale) + ((prof.additionalDamageBuff == undefined) ? "0" : prof.additionalDamageBuff) + "%, ";
-        buffInfoStr += intl.translate("敵防御固有値", locale) + prof.enemyDefense + " ";
-        buffInfoStr += intl.translate("防御デバフ合計", locale) + ((prof.defenseDebuff == undefined) ? "0" : prof.defenseDebuff) + "%";
+
+        // Create buff info line
+        var buffInfo = [];
+        var addPercent = (value) => intl.translate("percent", locale).replace("{}", value === undefined ? "0" : value);
+        buffInfo.push(intl.translate("通常バフ", locale) + addPercent(prof.normalBuff));
+        buffInfo.push(intl.translate("属性バフ", locale) + addPercent(prof.elementBuff));
+        buffInfo.push(intl.translate("その他バフ", locale) + addPercent(prof.otherBuff));
+        buffInfo.push(intl.translate("DAバフ", locale) + addPercent(prof.daBuff));
+        buffInfo.push(intl.translate("TAバフ", locale) + addPercent(prof.taBuff));
+        buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
+        buffInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
+        buffInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
+        var buffInfoStr = buffInfo.join(", ");
 
         if (_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "100%", padding: "0"}}
@@ -755,21 +763,21 @@ var ResultList = CreateClass({
 
                         <DropdownButton title={intl.translate("キャラ情報・スキル合計値", locale)} id="chara-and-skill-info">
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaAttack")}
-                                      active={(this.state.switchCharaAttack == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("攻撃力", locale)}</MenuItem>
+                                      active={(this.state.switchCharaAttack == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("攻撃力", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaHP")}
-                                      active={(this.state.switchCharaHP == 1) ? true : false}>{intl.translate("キャラ", locale)}HP</MenuItem>
+                                      active={(this.state.switchCharaHP == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}HP</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaDA")}
-                                      active={(this.state.switchCharaDA == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("連撃率", locale)}</MenuItem>
+                                      active={(this.state.switchCharaDA == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("連撃率", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")}
-                                      active={(this.state.switchCharaTotalExpected == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("総回技", locale)}</MenuItem>
+                                      active={(this.state.switchCharaTotalExpected == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("総回技", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaCycleDamage")}
-                                      active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
+                                      active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
-                                      active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
+                                      active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
-                                      active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
+                                      active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
-                                      active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
+                                      active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")}
                                       active={(this.state.switchSkillTotal == 1) ? true : false}>{intl.translate("スキル合計", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDebuffResistance")}
