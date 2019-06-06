@@ -729,12 +729,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             supplementalDamageArray['impervious']['ougiDamage'] = 30000;
             supplementalDamageArray['impervious']['damageWithoutCritical'] = 30000;
         }
-        else if (totals[key]['covenant'] === 'victorious' && totals['Djeeta']['DjeetaBuffsCount'] > 0) {
+        else if (totals[key]['covenant'] === 'victorious' && totals['Djeeta']['buffCount'] > 0) {
             supplementalDamageArray['victorious'] = {};
-            var DjeetaBuffsCount = Math.min(10, totals['Djeeta']['DjeetaBuffsCount']);
-            supplementalDamageArray['victorious']['damage'] =  DjeetaBuffsCount * 3000;
-            supplementalDamageArray['victorious']['ougiDamage'] = DjeetaBuffsCount * 3000;
-            supplementalDamageArray['victorious']['damageWithoutCritical'] = DjeetaBuffsCount * 3000;
+            var djeetaBuffCount = Math.min(10, totals['Djeeta']['buffCount']);
+            supplementalDamageArray['victorious']['damage'] =  djeetaBuffCount * 3000;
+            supplementalDamageArray['victorious']['ougiDamage'] = djeetaBuffCount * 3000;
+            supplementalDamageArray['victorious']['damageWithoutCritical'] = djeetaBuffCount * 3000;
         }
         else if (totals[key]['covenant'] === 'contentious' && taRate > 0) {
             supplementalDamageArray['contentious'] = {};
@@ -762,10 +762,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
         else if (totals[key]['covenant'] === 'calamitous') {
             supplementalDamageArray['calamitous'] = {};
-            var debuffsCount = Math.min(10, totals['Djeeta']['debuffsCount']);
-            supplementalDamageArray['calamitous']['damage'] = debuffsCount * 3000;
-            supplementalDamageArray['calamitous']['ougiDamage'] = debuffsCount * 3000;
-            supplementalDamageArray['calamitous']['damageWithoutCritical'] = debuffsCount * 3000;
+            var enemyDebuffCount = Math.min(10, buff['enemyDebuffCount']);
+            supplementalDamageArray['calamitous']['damage'] = enemyDebuffCount * 3000;
+            supplementalDamageArray['calamitous']['ougiDamage'] = enemyDebuffCount * 3000;
+            supplementalDamageArray['calamitous']['damageWithoutCritical'] = enemyDebuffCount * 3000;
         }
         
         for (var supplementalDamageKey in supplementalDamageArray) {
@@ -786,7 +786,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             }
         } else {
             // Normal attack * n times
-            var expectedCycleDamage = expectedTurn * expectedAttack * damage;
+            let expectedCycleDamage = expectedTurn * expectedAttack * damage;
             // Ougi + chain burst (buff ["chainNumber"] is 1 or more so division OK)
             expectedCycleDamage += ougiDamage + chainBurst / buff["chainNumber"];
 
@@ -1285,6 +1285,8 @@ module.exports.getTotalBuff = function (prof) {
         ougiDamageLimit: 0.0,
         chainNumber: 1,
         supplementalDamage: 0,
+        //enemyBuffCount: 0,
+        enemyDebuffCount: 0,
     };
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -1645,7 +1647,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (totals[key]["fav1"] == 'wand' || totals[key]["fav2"] == 'wand' ||
                                 totals[key]["fav1"] == 'music' || totals[key]["fav2"] == 'music') {
                                     totals[key]["covenant"] = amount;
-                                    totals['Djeeta']['DjeetaBuffsCount'] = arm[skillkey + "Detail"];
+                                    totals['Djeeta']['buffCount'] = arm[skillkey + "Detail"];
                             }
                         } else if (amount == 'contentious') {
                             if (totals[key]["fav1"] == 'axe' || totals[key]["fav2"] == 'axe' ||
@@ -1661,7 +1663,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (totals[key]["fav1"] == 'sword' || totals[key]["fav2"] == 'sword' ||
                                 totals[key]["fav1"] == 'dagger' || totals[key]["fav2"] == 'dagger') {
                                     totals[key]["covenant"] = amount;
-                                    totals['Djeeta']['debuffsCount'] = arm[skillkey + "Detail"];
+                                    buff["enemyDebuffCount"] = arm[skillkey + "Detail"];
                             }
                         }
                     } else if (totals[key]["element"] == element) {
@@ -2135,8 +2137,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 charaUniqueDamageUP: 0,
                 supplementalDamageBuff: 100 * djeetaBuffList['personalSupplementalDamageBuff'],
                 covenant: null,
-                debuffsCount: 0,
-                DjeetaBuffsCount: 0,
+                buffCount: 0,
+                //debuffCount: 0,
             }
     };
 
@@ -2289,6 +2291,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 charaUniqueDamageUP: 0,
                 supplementalDamageBuff: 100 * charaBuffList['supplementalDamageBuff'],
                 covenant: null,
+                //buffCount: 0,
+                //debuffCount: 0,
             };
         }
     }
@@ -2838,30 +2842,20 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                         }
                     }
 
-                    for (var supplementalDamageKey in onedata[key].skilldata.supplementalDamageArray) {
-                        if (supplementalDamageKey == 'impervious' && k >= 79) {
-                            newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
-                            newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
-                        } else if (supplementalDamageKey != 'contentious' && supplementalDamageKey != 'impervious') {
-                            newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
-                            newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
-                            //damageWithoutCritical += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damageWithoutCritical;
-                        }
-                    }
-
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
                     var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
+                    
                     var newExpectedCycleDamagePerTurn = (onedata[key].expectedTurn === Infinity)
                         ? (onedata[key].expectedAttack * newDamage)
                         : (newChainBurst + newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage);
                     
                     if (onedata[key].skilldata.supplementalDamageArray['contentious'] != undefined) {
-                        newExpectedCycleDamagePerTurn += onedata[key].skilldata.supplementalDamageArray.contentious.damage;
+                        newExpectedCycleDamagePerTurn += onedata[key].skilldata.supplementalDamageArray.contentious.damage * (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn);
                         newDamage += onedata[key].skilldata.supplementalDamageArray.contentious.damage;
                         //damageWithoutCritical += onedata[key].skilldata.supplementalDamageArray.contentious.damageWithoutCritical;
                     }
                     
-                    newExpectedCycleDamagePerTurn /= (onedata[key].expectedTurn + 1);
+                    newExpectedCycleDamagePerTurn /= (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn + 1);
                     
                     var hp;
                     if (displayRealHP) {
