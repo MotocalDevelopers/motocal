@@ -1805,11 +1805,11 @@ var multiLangData = {
         "ja": "なし",
         "zh": "なし",
     },
-    ///全体DA率10%UP(ランスロット)": {
-        //"en": "",
-        //"ja": "全体DA率10%UP(ランスロット)",
-        //"zh": "全体DA率10%UP(ランスロット)",
-    //},
+    "全体DA率10%UP(ランスロット)": {
+        "en": "10% boost to double attack rate for all allies. (Lancelot)",
+        "ja": "全体DA率10%UP(ランスロット)",
+        "zh": "全体DA率10%UP(ランスロット)",
+    },
     "全体TA率3%UP(ネツァ)": {
         "en": "3% boost to TA rate for all allies (Nezahualpilli)",
         "ja": "全体TA率3%UP(ネツァ)",
@@ -1850,7 +1850,7 @@ var multiLangData = {
         "ja": "全体攻撃5%UP(クリスティーナ)",
         "zh": "全体攻撃5%UP(クリスティーナ)",
     },
-    "全体攻撃10%UP": {
+    "全体攻撃10%UP(アニラ)": {
         "en": "10% ATK boost for all allies. (Anila)",
         "ja": "全体攻撃10%UP(アニラ)",
         "zh": "全体攻撃10%UP(アニラ)",
@@ -1931,22 +1931,22 @@ var multiLangData = {
         "zh": "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)",
     },
     "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)": {
-        "en": "10% chance of dealing 30% critical damage. (Vania, Jeanne D'Ark)",
+        "en": "Boost to critical hit rate (10% chance, 30% damage). (Vania, Jeanne D'Ark)",
         "ja": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
         "zh": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
     },
     "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)": {
-        "en": "20% chance of dealing 20% critical damage. (Jeanne D'Ark (Themed))",
+        "en": "Boost to critical hit rate (10% chance, 30% damage). (Jeanne D'Ark (Themed))",
         "ja": "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)",
         "zh": "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)",
     },
     "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)": {
-        "en": "boost to critical hit rate for all allies (5% chance, 30% damage). (Ferry)",
+        "en": "Boost to critical hit rate for all allies (5% chance, 30% damage). (Ferry)",
         "ja": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
         "zh": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
     },
     "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)": {
-        "en": "boost to critical hit rate for all allies (100% chance, 50% damage). (5★ Tweyen C.A.)",
+        "en": "Boost to critical hit rate for all allies (100% chance, 50% damage). (5★ Tweyen C.A.)",
         "ja": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
         "zh": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
     },
