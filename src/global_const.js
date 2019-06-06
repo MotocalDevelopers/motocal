@@ -968,7 +968,8 @@ module.exports.skillDetails = {
 var skillDetailsDescription = {
     'victorious-covenant': 'ジータバフの数',
     'calamitous-covenant': '敵の弱体効果'  
-}
+};
+
 var victorious_calamitous_covenant = {
     "0": 0,
     "1": 1,
