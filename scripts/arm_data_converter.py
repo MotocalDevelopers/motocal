@@ -926,7 +926,6 @@ skillnamelist["huanglongHissatsu"] = {
     u"震天の境界へと至りし者": "light",
 }
 
-
 skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",

@@ -40,7 +40,8 @@ module.exports.isDarkOpus = function (arm) {
 function isHaisuiType(stype) {
     return (stype === "normalHaisui" || stype === "magnaHaisui" ||
         stype === "normalKonshin" || stype === "magnaKonshin" ||
-        stype === "normalOtherKonshin" || stype === "exHaisui");
+        stype === "normalOtherKonshin" || stype === "exHaisui" ||
+        stype === "normalSupportKonshin");
 }
 
 module.exports.isValidResult = function (res, minHP) {
@@ -415,6 +416,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         var normalKonshinCoeff = 1.0 + 0.01 * totals[key]["normalKonshin"] * totalSummon["zeus"];
         normalKonshinCoeff += 0.01 * totals[key]["normalOtherKonshin"];
+        normalKonshinCoeff += 0.01 * totals[key]["normalSupportKonshin"];
 
         var LBKonshinCoeff = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", totals[key]["EXLB"]["Konshin"], totals[key]["remainHP"]);
 
@@ -940,7 +942,7 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
         }
         return (baseRate / 3.0) * (2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0)
     }
-    if (haisuiType === "normalKonshin") {
+    if (haisuiType === "normalKonshin" || haisuiType === "normalOtherKonshin") {
         if (remainHP >= 0.25) {
             if (haisuiAmount === "S") {
 
@@ -961,7 +963,7 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
                 }
             }
         }
-    } else if (haisuiType === "normalOtherKonshin") {
+    } else if (haisuiType === "normalSupportKonshin") {
         if (remainHP >= 0.50) {
             if (haisuiAmount === "S") {
 
@@ -1555,9 +1557,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         }
                     } else if (stype == 'cherubimKonshin') {
-                        totals[key]["normalOtherKonshin"] = Math.max(module.exports.calcHaisuiValue("normalOtherKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalOtherKonshin"]);
+                        totals[key]["normalSupportKonshin"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshin"]);
                     } else if (stype == 'sunbladeKonshin') {
-                        totals[key]["normalOtherKonshin"] = Math.max(module.exports.calcHaisuiValue("normalOtherKonshin", "L", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalOtherKonshin"]);
+                        totals[key]["normalSupportKonshin"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshin"]);
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
@@ -1953,6 +1955,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherHaisui: 0,
                 normalKonshin: 0,
                 normalOtherKonshin: 0,
+                normalSupportKonshin: 0,
                 ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
@@ -2103,6 +2106,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherHaisui: 0,
                 normalKonshin: 0,
                 normalOtherKonshin: 0,
+                normalSupportKonshin: 0,
                 ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
@@ -2473,14 +2477,17 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
-                case "normalOtherKonshin_15UP":
-                    let otherHaisuiValue = module.exports.calcHaisuiValue("normalOtherKonshin", "L", 1, totals[key]["remainHP"]);
+                case "normalSupportKonshin_UP":
+                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
-                            totals[key2]["normalOtherKonshin"] = Math.max(totals[key2]["normalOtherKonshin"], otherHaisuiValue);
+                            totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
                         }
                     } else {
-                        totals[key]["charaHaisui"] = Math.max(totals[key]["normalOtherKonshin"], otherHaisuiValue);
+                        totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
+                    }
+                    if (support.hasOwnProperty("HPBuff")){
+                        totals[key]["HPBuff"] += support.HPBuff;
                     }
                     continue;
                 default:
@@ -2696,7 +2703,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.zeus
                                     }
-                                } else if (stype === "normalOtherKonshin") {
+                                } else if (stype === "normalOtherKonshin" || stype === "normalSupportKonshin") {
                                     for (var l = 0; l < haisuiBuff.length; l++) {
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l]["normalKonshin"] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP)

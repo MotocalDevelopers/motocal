@@ -42,7 +42,7 @@ supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
 supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
 supportAbilist["da_up_fist_10"] = {u"古今無双流"}
-supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ", u"真夏の夜の夢"}
+supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ"}
 supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
 supportAbilist["hp_up_own_20"] = {u"老當益壮"}
 supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
@@ -99,11 +99,14 @@ supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
 
-supportAbilist["normalOtherKonshin_15UP"] = {
+supportAbilist["stamina_all_L"] = {
     u"夏祭りの思い出",
-    u"白の切っ先",
     u"不退転の戦旗",
     u"絶対だいじょうぶだよ"
+}
+
+supportAbilist["stamina_all_L_hp_down_own_15"] = {
+    u"真夏の夜の夢",
 }
 
 # Patching DA TA
