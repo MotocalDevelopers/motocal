@@ -648,7 +648,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiDamageByMystery = Math.min(100, totals[key]["ougiDamage"] * totalSummon["zeus"]);
         var ougiDamageByNormal = Math.min(100, totals[key]["normalOugiDamage"] * totalSummon["zeus"]);
         var ougiDamageByMagna = Math.min(100, totals[key]["magnaOugiDamage"] * totalSummon["magna"]);
-        var ougiDamageSkill = 0.01 * (ougiDamageByCosmosAT + ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery + (totals[key]["chiretsuOugiDamage"] * totalSummon["zeus"]));
+        var ougiDamageSkill = 0.01 * (ougiDamageByCosmosAT + ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery);
 
         var ougiDamageExceptSkill = totals[key]["ougiDamageBuff"] + totalSummon["ougiDamage"] + buff['ougiDamage'];
         ougiDamageExceptSkill += 0.01 * totals[key]["EXLB"]["OugiDamage"];
@@ -1643,7 +1643,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'chiretsuSenwaku') {
                             if (index == 3) {
-                                totals[key]["chiretsuOugiDamage"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                                totals[key]["ougiDamage"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             }
                         } else if (stype == 'muhyoTuiga') {
                             if (index == 4) {
@@ -1950,7 +1950,6 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
-                chiretsuOugiDamage: 0,
                 chainDamage: 0,
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
@@ -2102,7 +2101,6 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 chainDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
-                chiretsuOugiDamage: 0,
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
                 ougiDamageLimit: 0,
@@ -2269,7 +2267,6 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["ougiDamage"] = 0;
         totals[key]["normalOugiDamage"] = 0;
         totals[key]["magnaOugiDamage"] = 0;
-        totals[key]["chiretsuOugiDamage"] = 0;
         totals[key]["chainDamage"] = 0;
         totals[key]["normalDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
