@@ -4393,7 +4393,7 @@
         "hp": "1570",
         "minattack": "1710",
         "attack": "10830",
-        "baseDA": 25.0,
+        "baseDA": 10.0,
         "baseTA": 5.0,
         "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040023000_03.png",
