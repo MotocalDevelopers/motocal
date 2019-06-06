@@ -2021,6 +2021,11 @@ var multiLangData = {
         "ja": "通常背水(大)",
         "zh": "通常背水(大)",
     },
+    "通常渾身(小)": {
+        "en": "Normal Stamina (S)",
+        "ja": "通常渾身(小)",
+        "zh": "通常渾身(小)",
+    },
     "通常渾身(中)": {
         "en": "Normal Stamina (M)",
         "ja": "通常渾身(中)",

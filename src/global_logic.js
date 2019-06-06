@@ -942,7 +942,9 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
     if (haisuiType === "normalKonshin" || haisuiType === "normalOtherKonshin") {
         if (remainHP >= 0.25) {
             if (haisuiAmount === "S") {
-
+                // Normal Stamina (S)
+                // TODO: No Data
+                return 0.0
             } else if (haisuiAmount === "M") {
                 // Normal Stamina (M)
                 if (haisuiSLv < 15) {
