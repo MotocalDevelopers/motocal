@@ -426,6 +426,16 @@ var multiLangData = {
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
     },
+    "敵の耐性": {
+        "en": "Enemy Resistance",
+        "ja": "敵の耐性",
+        "zh": "Enemy Resistance",
+    },
+    "敵の耐性説明": {
+        "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
+        "ja": "弱属性以外の攻撃に対して耐性を持つ点。星の古戦場HELL(50%)など。",
+        "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
+    },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
         "ja": "ジータさんの基礎DA率を設定します。\nジョブを変更すると自動的に切り替わります。",

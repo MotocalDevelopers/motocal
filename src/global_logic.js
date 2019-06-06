@@ -199,12 +199,8 @@ module.exports.calcDamage = function (summedAttack, totalSkillCoeff, criticalRat
         res *= 1.0 + additionalDamage
     }
 
-    // "Granted Damage Increase" is a correction after attenuation
-    if (damageUP > 0) {
-        res *= 1.0 + damageUP
-    }
-
-    return res
+    // "Granted Damage Increase" / Elemenal Resistance
+    return res *= (1.0 + damageUP);
 };
 
 module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, criticalRatio, enemyDefense, defenseDebuff, ougiRatio, ougiDamageUP, damageUP, ougiDamageLimit) {
@@ -231,8 +227,7 @@ module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, critica
     // The final damage becomes the correction amount + the minimum attenuation line
     damage = damage + overedDamage;
 
-    // Damage raised
-    if (damageUP > 0) {
+    // Damage raised / Elemental Resistance
         return (1.0 + damageUP) * damage;
     }
     return damage
@@ -607,7 +602,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             var criticalArray = {};
             var criticalRatio = 1.0
         }
-
+        //Apply Elemental Resistance if not superior element.
+        damageUP -= totals[key]["typeBonus"] == 1.5 ? 0 : parseFloat(prof.enemyResistance);
+        
         var criticalAttack = parseInt(totalAttack * criticalRatio);
         var expectedOugiGage = buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"];
         expectedOugiGage *= taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0);
