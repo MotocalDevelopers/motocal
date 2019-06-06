@@ -308,13 +308,13 @@ var multiLangData = {
     },
     "supplementalDamageBuff": {
         "en": "Supplemental Damage Buff",
-        "ja": "Supplemental Damage Buff",
+        "ja": "与ダメージ上昇効果バフ",
         "zh": "Supplemental Damage Buff",
     },
     "supplementalDamageBuff-tooltip": {
-        "en": "Supplemental Damage Buff (added to everything). DMG Boosted status effect, Rosetta (Grand)'s Iron Maiden, Hollowsky Axe (Ougi)",
-        "ja": "Supplemental Damage Buff (added to everything). DMG Boosted status effect, Rosetta (Grand)'s Iron Maiden, Hollowsky Axe (Ougi)",
-        "zh": "Supplemental Damage Buff (added to everything). DMG Boosted status effect, Rosetta (Grand)'s Iron Maiden, Hollowsky Axe (Ougi)",
+        "en": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
+        "ja": "与ダメージ上昇効果。ロゼッタ（リミテッド）のアイアン・メイデン(5000)、虚空の晶塊の奥義(10000)など。",
+        "zh": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
     },
     "与ダメージ上昇": {
         "en": "Damage UP ",
@@ -1240,18 +1240,18 @@ var multiLangData = {
     },
     "Supplemental Damage Source":{
         "en": "Supplemental Damage Source",
-        "ja": "Supplemental Damage Source",
+        "ja": "与ダメージ上昇効果のソース",
         "zh": "Supplemental Damage Source",
     },
     "Total":{
         "en": "Total",
-        "ja": "Total",
-        "zh": "Total",
+        "ja": "全額",
+        "zh": "全額",
     },
     "Damage": {
         "en": "Damage",
-        "ja": "全額",
-        "zh": "全額",
+        "ja": "ダメージ",
+        "zh": "伤害",
     },
     "四人合計値": {
         "en": "x4",
@@ -3163,15 +3163,15 @@ var multiLangData = {
         "ja": "天司武器入りで計算する場合、優先項目をダメージベースのものに設定してください.",
         "zh": "把天司武器加入计算的时候，请选择基于伤害的优先项目。",
     },
-    "弱体の数": {
+    "敵の弱体効果": {
         "en": "Number of Debuffs (on target)",
-        "ja": "弱体の数",
-        "za": "弱体の数",
+        "ja": "敵の弱体効果の数",
+        "za": "敵の弱体効果の数",
     },
     "ジータバフの数": {
         "en": "Number of Buffs (on Djeeta)",
-        "ja": "ジータバフの数",
-        "za": "ジータバフの数",
+        "ja": "バフの数（ジータ）",
+        "za": "バフの数（ジータ）",
     },
     "広告": {
         "en": "Ad.",
