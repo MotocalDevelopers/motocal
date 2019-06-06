@@ -2798,7 +2798,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                     haisuiBuff[l]["normalKonshin"] += 0.01 * module.exports.calcHaisuiValue("omegaKonshin", amount, slv, remainHP)
                                 }
                                 omegaKonshinIncluded = true;
-                            } 
+                            }
                         } else if (onedata[key].element == element) {
                             if (isHaisuiType(stype)) {
                                 if (stype === "normalHaisui" || stype === "normalKonshin") {
@@ -2823,7 +2823,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                     }
                                 }
                             }
-                        }//
+                        }
                     }
                 }
                 for (var k = 0; k < 100; k++) {
