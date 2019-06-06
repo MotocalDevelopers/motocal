@@ -436,6 +436,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         otherCoeff *= 1.0 + buff["other2"];
         otherCoeff *= 1.0 + totals[key]["otherBuff"];
         otherCoeff *= 1.0 + totals[key]["otherBuff2"];
+        if (totals[key]["EXLB"]["WED"]) {
+            otherCoeff *= 1.10;
+        }
 
         // Character Emnity
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"];
@@ -456,6 +459,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         hpCoeff += totalSummon["hpBonus"];
         if (key == "Djeeta") {
             hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus;
+        }
+        if (totals[key]["EXLB"]["WED"]) {
+            hpCoeff += 0.10;
         }
         hpCoeff *= 1.0 + totals[key]["HPBuff"];
         hpCoeff *= 1.0 - totals[key]["HPdebuff"];
@@ -621,6 +627,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         damageLimit += totals[key]["damageLimitBuff"];
         damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"]);
         damageLimit += 0.01 * totalSummon["damageLimit"];
+        if (totals[key]["EXLB"]["WED"]) {
+            damageLimit += 0.05;
+        }
 
         // Mystery damage upper limit UP = whole buff + individual buff + skill + damage upper limit UP minutes
         // The upper limit of skill of mystery damage is 30%
@@ -633,7 +642,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
         ougiDamageLimit += 0.01 * totalSummon["damageLimit"];
         ougiDamageLimit += 0.01 * totals[key]["EXLB"]["OugiDamageLimit"];
-
+        if (totals[key]["EXLB"]["WED"]) {
+            ougiDamageLimit += 0.05;
+        }
         
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
@@ -1830,12 +1841,17 @@ function getCharaEXLB(chara) {
         "Konshin": "0",
         "DA": 0.0,
         "TA": 0.0,
+        "WED": false
     };
 
     Object.keys(EXLB).map((key) => {
         var exactKey = "EXLB" + key;
         if (exactKey in chara) {
-            EXLB[key] = parseInt(chara[exactKey], 10);
+            if (key === "WED") {
+                EXLB[key] = chara[exactKey];
+            } else {
+                EXLB[key] = parseInt(chara[exactKey], 10);
+            }
         }
     });
 
