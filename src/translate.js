@@ -524,6 +524,11 @@ var multiLangData = {
         "ja": "味方全体HP",
         "zh": "己方全体HP LB",
     },
+    "LB 久遠の指輪": {
+        "en": "Perpetuity Ring",
+        "ja": "久遠の指輪",
+        "zh": "久遠の指輪",
+    },
     "LB 攻撃力": {
         "en": "ATK ",
         "ja": "攻撃力",

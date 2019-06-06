@@ -34,7 +34,7 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isValidResult, checkNumberOfRaces, proceedIndex,
+    isCosmos, isDarkOpus, isValidResult, checkNumberOfRaces, proceedIndex,
     calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
     calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
@@ -73,6 +73,9 @@ var ResultList = CreateClass({
                         }
                         // Combination changes depending on whether it became a cosmos weapon, or it was not a cosmos weapon
                         if (isCosmos(arml[i]) != isCosmos(this.state.previousArmlist[i])) {
+                            isCombinationChanged = true;
+                        }
+                        if (isDarkOpus(arml[i]) != isDarkOpus(this.state.previousArmlist[i])) {
                             isCombinationChanged = true;
                         }
                     }
