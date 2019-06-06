@@ -1069,6 +1069,7 @@ var jobTypes = {
 };
 
 var elementTypes = {
+    "all": "全属性",
     "fire": "火",
     "wind": "風",
     "earth": "土",
