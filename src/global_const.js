@@ -2056,6 +2056,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0
     },
+    "normalOtherKonshin_15UP": {
+        "name": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+        "type": "normalOtherKonshin_15UP",
+        "range": "all",
+        "value": 0.0
+    }
 };
 
 // exports

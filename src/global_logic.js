@@ -2473,6 +2473,16 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
+                case "normalOtherKonshin_15UP":
+                    let otherHaisuiValue = module.exports.calcHaisuiValue("normalOtherKonshin", "L", 1, totals[key]["remainHP"]);
+                    if (totals[key].isConsideredInAverage) {
+                        for (var key2 in totals) {
+                            totals[key2]["normalOtherKonshin"] = Math.max(totals[key2]["normalOtherKonshin"], otherHaisuiValue);
+                        }
+                    } else {
+                        totals[key]["charaHaisui"] = Math.max(totals[key]["normalOtherKonshin"], otherHaisuiValue);
+                    }
+                    continue;
                 default:
                     break;
             }
