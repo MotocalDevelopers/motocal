@@ -745,8 +745,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             var hasCrit = false;
             var critRate = 0;
             for (var val in criticalArray) {
-              hasCrit = true;
-              break;
+                hasCrit = true;
+                break;
             }
             if (hasCrit && !isNaN(criticalArray[1])) {
               critRate = 1.0 - criticalArray[1];
