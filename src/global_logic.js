@@ -464,7 +464,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             hpCoeff += 0.10;
         }
         hpCoeff *= 1.0 + totals[key]["HPBuff"];
-        hpCoeff *= 1.0 - totals[key]["HPdebuff"];
+        hpCoeff *= Math.max(0.7, 1.0 - totals[key]["HPdebuff"]);
 
         // Base HP
         var displayHP = totals[key]["baseHP"];
