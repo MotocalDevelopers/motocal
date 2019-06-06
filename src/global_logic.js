@@ -509,7 +509,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalSkillCoeff *= charaHaisuiCoeff;
         totalSkillCoeff *= LBHaisuiCoeff;
         totalSkillCoeff *= LBKonshinCoeff;
-        totalSkillCoeff *= 1.0 - totals[key]["ATKDebuff"];
+        totalSkillCoeff -= totals[key]["ATKDebuff"];
         var totalAttack = summedAttack * totalSkillCoeff;
 
         // Lowest HP limit = 1
