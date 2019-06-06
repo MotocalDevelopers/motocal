@@ -1,4 +1,4 @@
-var {getTypeBonus, calcDefenseDebuff, calcLBHaisuiValue} = require('./global_logic.js');
+var {getTypeBonus, calcDefenseDebuff, calcLBHaisuiValue, isDarkOpus} = require('./global_logic.js');
 
 describe('#getTypeBonus', () => {
     test('when self element and enemy element is not set, type bonus is 1', () => {
@@ -105,4 +105,35 @@ describe('#calcLBHaisui', () => {
     test.skip('illegal remainHP return ?', () => {
         // TODO: what illegal remainHP should return?
     });
+});
+
+describe('#isDarkOpus', () => {
+    test('Checking Dark Opus arm', () => {
+        expect(isDarkOpus({"name": "絶対否定の剣"})).toBeTruthy();
+        expect(isDarkOpus({"name": "Sword of Renunciation"})).toBeTruthy();
+        expect(isDarkOpus({"name": "永遠拒絶の槍"})).toBeTruthy();
+        expect(isDarkOpus({"name": "Scythe of Repudiation"})).toBeTruthy();
+        expect(isDarkOpus({"name": "Katana of Renunciation.Lvl185.Sl18+78"})).toBeTruthy();
+        expect(isDarkOpus({"name": "永遠拒絶の杖Lv.26SLv.6+17"})).toBeTruthy();
+    });
+
+    test('Checking invalid arms', () => {
+        expect(isDarkOpus(undefined)).toBeFalsy();
+        expect(isDarkOpus({})).toBeFalsy();
+        expect(isDarkOpus({"name": ""})).toBeFalsy();
+        expect(isDarkOpus({"name": undefined})).toBeFalsy();
+    });
+
+    test('Checking non dark opus arms', () => {
+        expect(isDarkOpus({"name": "Ultima Bow"})).toBeFalsy();
+        expect(isDarkOpus({"name": "バハムートソード・フツルスLv.60SLv.4+13"})).toBeFalsy();
+        expect(isDarkOpus({"name": "Katana of Repudiatio"})).toBeFalsy();
+        expect(isDarkOpus({"name": "永遠拒絶大鎌"})).toBeFalsy();
+        expect(isDarkOpus({"name": "Katana f Repudiation"})).toBeFalsy();
+        expect(isDarkOpus({"name": "遠拒絶の太刀"})).toBeFalsy();
+        expect(isDarkOpus({"name": "Staff of Repudition"})).toBeFalsy();
+        expect(isDarkOpus({"name": "絶対力定の竪琴"})).toBeFalsy();
+        expect(isDarkOpus({"name": "Staff of epudiation"})).toBeFalsy();
+    });
+
 });
