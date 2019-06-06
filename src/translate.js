@@ -2811,6 +2811,11 @@ var multiLangData = {
         "ja": "ケルヴィム (メイン装備時)",
         "zh": "ケルヴィム (メイン装備時)",
     },
+    "真・道天浄土 (メイン装備時)": {
+        "en": "Purity Sunblade (main)",
+        "ja": "真・道天浄土 (メイン装備時)",
+        "zh": "真・道天浄土 (メイン装備時)",
+    },
     "奥義上限UP(イクシード)": {
         "en": "C.A. Cap UP (Exceed)",  //a.k.a:ougiDamageLimitByExceed
         "ja": "奥義上限UP(イクシード)",

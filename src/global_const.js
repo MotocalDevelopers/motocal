@@ -858,6 +858,7 @@ var skilltypes = {
     "ougiDamageLimit10": {name: "奥義上限UP(10%)", type: "ougiDamageLimit", amount: "L"}, //現在未使用
     "huanglongHissatsu": {name: "黄龍槍 (メイン装備時)", type: "huanglongHissatsu", amount: "non"},
     "cherubimKonshin": {name: "ケルヴィム (メイン装備時)", type: "cherubimKonshin", amount: "non"},
+    "sunbladeKonshin": {name: "真・道天浄土 (メイン装備時)", type: "sunbladeKonshin", amount: "non"},
     "ougiDamageLimitExceedM": {name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M"},
     "chainForce": {name: "チェインフォース", type: "chainForce", amount: "M"},
     "normalHPS": {name: "通常守護(小)", type: "normalHP", amount: "S"},
@@ -1069,7 +1070,6 @@ var jobTypes = {
 };
 
 var elementTypes = {
-    "all": "全属性",
     "fire": "火",
     "wind": "風",
     "earth": "土",
@@ -2244,6 +2244,12 @@ module.exports.additionalSelectList = {
         defaultKeys: ["non", "non"],
     },
     "ランス・オブ・ケルヴィム": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
+    },
+    "真・道天浄土": {
         notationText: "",
         selectKeys: ["main_weapon_switch"],
         selectors: ["mainWeapon"],

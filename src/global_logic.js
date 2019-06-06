@@ -1554,7 +1554,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                             }
                         }
-                    } else if (totals[key]["element"] == element || element == 'all') {
+                    } else if (stype == 'cherubimKonshin') {
+                        totals[key]["normalOtherKonshin"] = Math.max(module.exports.calcHaisuiValue("normalOtherKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalOtherKonshin"]);
+                    } else if (stype == 'sunbladeKonshin') {
+                        totals[key]["normalOtherKonshin"] = Math.max(module.exports.calcHaisuiValue("normalOtherKonshin", "L", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalOtherKonshin"]);
+                    } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
                             // Emnity/Stamina calculation part is another method
@@ -1700,8 +1704,6 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'huanglongHissatsu') {
                             totals[key]["ougiDamage"] += 20; // for Zeus aura (Hiou)
                             totals[key]["ougiDamageLimit"] += 0.2;
-                        } else if (stype == 'cherubimKonshin') {
-                            totals[key]["normalOtherKonshin"] = Math.max(module.exports.calcHaisuiValue("normalOtherKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalOtherKonshin"]);
                         } else if (stype == 'ougiDamageLimitExceed') {
                             totals[key]["exceedOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["ougiDamageLimitExceed"][amount][slv - 1];
                             // 4* Weapon Skills
