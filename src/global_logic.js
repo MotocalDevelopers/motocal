@@ -1663,6 +1663,10 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (index == 2) {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             }
+                        } else if (stype == 'chiretsuSenwaku') {
+                            if (index == 3) {
+                                totals[key]["ougiDamage"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            }
                         } else if (stype == 'muhyoTuiga') {
                             if (index == 4) {
                                 totals[key]["additionalDamage"] += comb[i] * skillAmounts["tuiga"][amount][slv - 1];
