@@ -79,6 +79,13 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+var opusNames = [
+    "of Repudiation",
+    "絶対否定の",
+    "of Renunciation",
+    "永遠拒絶の"
+];
+
 var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
@@ -866,6 +873,7 @@ var skilltypes = {
     "unknownOtherNiteS": {name: "ミフネ流・双星", type: "exNite", amount: "S"},
     "rankiShikku": {name: "乱気の疾駆・壱", type: "rankiShikku", amount: "L"},
     "gurenJuin": {name: "紅蓮の呪印・弐", type: "gurenJuin", amount: "L"},
+    "chiretsuSenwaku": {name: "地裂の煽惑・参", type: "chiretsuSenwaku", amount: "L"},
     "muhyoTuiga": {name: "霧氷の追牙・肆", type: "muhyoTuiga", amount: "L"},
     "tsuranukiKiba": {name: "貫きの牙", type: "tsuranukiKiba", amount: "M"},
     "tsuranukiKibaMain": {name: "貫きの牙(メイン装備時)", type: "tsuranukiKiba", amount: "M"},
@@ -1721,7 +1729,7 @@ var skillAmounts = {
     },
     "critical": {
         "S": [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0],
-        "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0],
+        "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5],
         "L": [4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
         "ratio": 0.5,
     },
@@ -2055,6 +2063,7 @@ var supportAbilities = {
 };
 
 // exports
+module.exports.opusNames = opusNames;
 module.exports.zenith = zenith;
 module.exports.zenithDA = zenithDABonus;
 module.exports.zenithTA = zenithTABonus;

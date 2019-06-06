@@ -407,7 +407,7 @@ var multiLangData = {
         "zh": "适合想要进行更加详细的计算的人。",
     },
     "敵防御固有値": {
-        "en": "Enemy's defense",
+        "en": "Enemy Innate DEF",
         "ja": "敵防御固有値",
         "zh": "敌人的防御值",
     },
@@ -417,9 +417,9 @@ var multiLangData = {
         "zh": "设定假想敌的防御值。\n影响攻击伤害、奥义伤害、预想DPT。",
     },
     "防御デバフ合計": {
-        "en": "DEF debuff",
+        "en": "DEF Debuff",
         "ja": "防御デバフ",
-        "zh": "DEF debuff",
+        "zh": "DEF Debuff",
     },
     "防御デバフ合計説明": {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
@@ -523,6 +523,11 @@ var multiLangData = {
         "en": "Total Party HP",
         "ja": "味方全体HP",
         "zh": "己方全体HP LB",
+    },
+    "LB 久遠の指輪": {
+        "en": "Perpetuity Ring",
+        "ja": "久遠の指輪",
+        "zh": "久遠の指輪",
     },
     "LB 攻撃力": {
         "en": "ATK ",
@@ -1379,32 +1384,32 @@ var multiLangData = {
         "zh": "操作",
     },
     "HP増加": {
-        "en": "Health ",
+        "en": "Health",
         "ja": "HP増加",
         "zh": "HP增加",
     },
     "通常攻刃": {
-        "en": "Normal Might ",
+        "en": "Normal Might",
         "ja": "通常攻刃",
         "zh": "通常攻刃",
     },
     "通常背水": {
-        "en": "Normal Enmity ",
+        "en": "Normal Enmity",
         "ja": "通常背水",
         "zh": "通常背水",
     },
     "通常渾身": {
-        "en": "Normal Stamina ",
+        "en": "Normal Stamina",
         "ja": "通常渾身",
         "zh": "通常浑身",
     },
     "マグナ背水": {
-        "en": "Magna Enmity ",
+        "en": "Magna Enmity",
         "ja": "マグナ背水",
         "zh": "方阵背水",
     },
     "マグナ渾身": {
-        "en": "Magna Stamina ",
+        "en": "Magna Stamina",
         "ja": "マグナ渾身",
         "zh": "方针浑身",
     },
@@ -1419,72 +1424,72 @@ var multiLangData = {
         "zh": "方阵属性攻击力(大)",
     },
     "アンノウン": {
-        "en": "Unknown ",
+        "en": "Unknown",
         "ja": "アンノウン",
         "zh": "UNK",
     },
     "アンノウン背水": {
-        "en": "Unknown Enmity ",
+        "en": "Unknown Enmity",
         "ja": "アンノウン背水",
         "zh": "UNK背水",
     },
     "キャラ背水": {
-        "en": "Chara Enmity ",
+        "en": "Chara Enmity",
         "ja": "キャラ背水",
         "zh": "角色背水",
     },
     "攻撃力減少(特殊)": {
-        "en": "ATK Debuff (special) ",
+        "en": "ATK Debuff (Special)",
         "ja": "攻撃力減少(特殊)",
         "zh": "攻击力減少(特殊)",
     },
     "DA上昇(通常)": {
-        "en": "DA up (normal) ",
+        "en": "DA Up (Normal)",
         "ja": "DA上昇(通常)",
         "zh": "DA上升(通常)",
     },
     "DA上昇(マグナ)": {
-        "en": "DA up (magna) ",
+        "en": "DA Up (Magna)",
         "ja": "DA上昇(マグナ)",
         "zh": "DA上升(方针)",
     },
     "DA上昇(EX)": {
-        "en": "DA up (EX) ",
+        "en": "DA Up (EX)",
         "ja": "DA上昇(EX)",
         "zh": "DA上升(EX)",
     },
     "DA上昇(バハ)": {
-        "en": "DA up (bahamut) ",
+        "en": "DA Up (Bahamut)",
         "ja": "DA上昇(バハ)",
         "zh": "DA上升(巴哈)",
     },
     "DA上昇(コスモス)": {
-        "en": "DA up (cosmos) ",
+        "en": "DA Up (Cosmos)",
         "ja": "DA上昇(コスモス)",
         "zh": "DA上升(Cosmos)",
     },
     "DA上昇(その他)": {
-        "en": "DA up (other) ",
+        "en": "DA Up (Other)",
         "ja": "DA上昇(その他)",
         "zh": "DA上升(其他)",
     },
     "TA上昇(通常)": {
-        "en": "TA up (normal) ",
+        "en": "TA Up (Normal)",
         "ja": "TA上昇(通常)",
         "zh": "TA上升(通常)",
     },
     "TA上昇(マグナ)": {
-        "en": "TA up (magna) ",
+        "en": "TA Up (Magna)",
         "ja": "TA上昇(マグナ)",
         "zh": "TA上升(方阵)",
     },
     "TA上昇(バハ)": {
-        "en": "TA up (bahamut) ",
+        "en": "TA Up (Bahamut)",
         "ja": "TA上昇(バハ)",
         "zh": "TA上升(巴哈)",
     },
     "TA上昇(その他)": {
-        "en": "TA up (other) ",
+        "en": "TA Up (Other)",
         "ja": "TA上昇(その他)",
         "zh": "TA上升(其他)",
     },
@@ -1587,9 +1592,9 @@ var multiLangData = {
         "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
     "ダメージ上限加護": {
-        "en": "Damage cap", //a.k.a: damageLimit
+        "en": "Damage Cap", //a.k.a: damageLimit
         "ja": "ダメージ上限加護",
-        "zh": "Damage cap",
+        "zh": "Damage Cap",
     },
     "ダメージ上限加護説明": {
         "en": "Increases the damage cap. Primarch summons(5~10%) etc.",
@@ -2582,20 +2587,25 @@ var multiLangData = {
         "ja": "ミフネ流・双星",
         "zh": "ミフネ流・双星",
     },
+    "乱気の疾駆・壱": {
+        "en": "Ventosus's First Dash",
+        "ja": "乱気の疾駆・壱",
+        "zh": "Ventosus's First Dash",
+    },
     "紅蓮の呪印・弐": {
         "en": "Inferno's Second Insignia",
         "ja": "紅蓮の呪印・弐",
         "zh": "红莲的咒印・叁",
     },
+    "地裂の煽惑・参": {
+        "en": "Terra's Third Spur",
+        "ja": "地裂の煽惑・参",
+        "zh": "Terra's Third Spur",
+    },
     "霧氷の追牙・肆": {
         "en": "Hoarfrost's Fourth Pursuit",
         "ja": "霧氷の追牙・肆",
         "zh": "雾冰的追牙・肆",
-    },
-    "乱気の疾駆・壱": {
-        "en": "Ventosus's First Dash",
-        "ja": "乱気の疾駆・壱",
-        "zh": "Ventosus's First Dash",
     },
     "貫きの牙": {
         "en": "Piercing Fang",
