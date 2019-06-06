@@ -228,9 +228,7 @@ module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, critica
     damage = damage + overedDamage;
 
     // Damage raised / Elemental Resistance
-        return (1.0 + damageUP) * damage;
-    }
-    return damage
+    return (1.0 + damageUP) * damage;
 };
 
 module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, chainDamageUP, chainDamageLimitUP) {
