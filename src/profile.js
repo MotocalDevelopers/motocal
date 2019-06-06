@@ -862,7 +862,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("敵の耐性説明", locale)} id={"tooltip-enemy-resistance-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("敵の耐性", locale)}</th>
-                            <td><InputGroup><FormControl type="number" value={this.state.enemyResistance}
+                            <td><InputGroup><FormControl type="number" min="0" max="100" value={this.state.enemyResistance}
                                              onbBlur={this.state.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/> 
                                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
