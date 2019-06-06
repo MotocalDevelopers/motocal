@@ -609,12 +609,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
 
         var criticalAttack = parseInt(totalAttack * criticalRatio);
+        //while exact uplift effect does not stack. special effects that could lead to uplift like Linkage (SS Grea) does stack with normal uplift.
+        var uplift = 100 * (buff["uplift"] + totals[key]["uplift"]);
         var expectedOugiGage = buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"];
-        expectedOugiGage *= taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0);
+        expectedOugiGage *= uplift + (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0));
         
         var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"]);
         var OugiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
-        var minimumTurn = Math.ceil(OugiGage / (37.0 * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"])));
+        var minimumTurn = Math.ceil(OugiGage / ((uplift + 37.0) * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"])));
         var expectedTurn = Math.max(minimumTurn, OugiGage / expectedOugiGage);
 
         // "additionalDamage" considers the Fourth Pursuit effect as a normal frame
@@ -1196,6 +1198,7 @@ module.exports.getTotalBuff = function (prof) {
         damageLimit: 0.0,
         ougiDamageLimit: 0.0,
         chainNumber: 1,
+        uplift: 0,
     };
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -1209,6 +1212,7 @@ module.exports.getTotalBuff = function (prof) {
     if (!isNaN(prof.otherBuff2)) totalBuff["other2"] += 0.01 * parseInt(prof.otherBuff2);
     if (!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
     if (!isNaN(prof.ougiGageUpOugiBuff)) totalBuff["ougiGageUpOugi"] += parseInt(prof.ougiGageUpOugiBuff);
+    if (!isNaN(prof.uplift)) totalBuff["uplift"] += 0.01 * parseInt(prof.uplift);
     if (!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
     if (!isNaN(prof.ougiDamageBuff)) totalBuff["ougiDamage"] += 0.01 * parseInt(prof.ougiDamageBuff);
     if (!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);
@@ -1900,7 +1904,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
         personalOugiGageBuff: 0.0,
         personalAdditionalDamageBuff: 0.0,
         personalDamageLimitBuff: 0.0,
-        personalOugiDamageLimitBuff: 0.0
+        personalOugiDamageLimitBuff: 0.0,
+        personalUplift: 0.0,
     };
 
     for (var djeetabuffkey in djeetaBuffList) {
@@ -2000,6 +2005,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: djeetaBuffList["personalTABuff"],
                 ougiRatio: prof.ougiRatio,
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
+                uplift: djeetaBuffList["personalUplift"],
                 ougiDamageBuff: djeetaBuffList["personalOugiDamageBuff"],
                 additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
                 DAbuff: 0,
@@ -2049,6 +2055,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 additionalDamageBuff: 0.0,
                 damageLimitBuff: 0.0,
                 ougiDamageLimitBuff: 0.0,
+                uplift: 0,
             };
 
             for (var charabuffkey in charaBuffList) {
@@ -2149,6 +2156,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: charaBuffList["taBuff"],
                 ougiRatio: chara[i].ougiRatio,
                 ougiGageBuff: charaBuffList["ougiGageBuff"],
+                uplift: charaBuffList["uplift"],
                 ougiDamageBuff: charaBuffList["ougiDamageBuff"],
                 additionalDamageBuff: charaBuffList["additionalDamageBuff"],
                 DAbuff: 0,
@@ -2311,6 +2319,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["debuffResistance"] = 0;
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
+        //totals[key]["uplift"] = 0;
     }
 };
 
