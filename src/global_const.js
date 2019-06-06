@@ -965,6 +965,10 @@ module.exports.skillDetails = {
     'calamitous-covenant': 'victorious_calamitous_covenant'
 };
 
+var skillDetailsDescription = {
+    'victorious-covenant': 'ジータバフの数',
+    'calamitous-covenant': '弱体の数'  
+}
 var victorious_calamitous_covenant = {
     "0": 0,
     "1": 1,
@@ -2105,6 +2109,7 @@ module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortke
 module.exports.enemyDefenseType = enemyDefenseType;
 module.exports.supportAbilities = supportAbilities;
 module.exports.limitBonusCriticalList = limitBonusCriticalList;
+module.exports.skillDetailsDescription = skillDetailsDescription;
 
 module.exports.additionalSelectList = {
     "・属性変更": {
@@ -2262,13 +2267,13 @@ module.exports.additionalSelectList = {
         defaultKeys: ["non", "non"],
     },
     "[4凸]虚空の裂剣": {
-        notationText: "弱体の数",
+        notationText: skillDetailsDescription['calamitous-covenant'],
         selectKeys: ["skill2Detail"],
         selectors: ["victorious_calamitous_covenant"],
         defaultKeys: ["0"],
     },
     "[4凸]虚空の拝腕": {
-        notationText: "ジータバフの数",
+        notationText: skillDetailsDescription['victorious-covenant'],
         selectKeys: ["skill2Detail"],
         selectors: ["victorious_calamitous_covenant"],
         defaultKeys: ["0"],
@@ -2405,7 +2410,7 @@ module.exports.selector.zh.sishoGenbu = Object.keys(sishoGenbu).map(function (ke
     return <option value={key} key={key}>{intl.translate(sishoGenbu[key].name, "zh")}</option>;
 });
 
-// オメガウェポンテンプレート用セレクタ
+
 module.exports.selector.ja.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
     return <option value={key} key={key}>{key}</option>;
 });
@@ -2416,6 +2421,7 @@ module.exports.selector.zh.victorious_calamitous_covenant = Object.keys(victorio
     return <option value={key} key={key}>{key}</option>;
 });
 
+// オメガウェポンテンプレート用セレクタ
 module.exports.selector.ja.omegaWeaponSkill1 = Object.keys(omegaWeaponSkill1).map(function (key) {
     return <option value={key} key={key}>{intl.translate(omegaWeaponSkill1[key].name, "ja")}</option>;
 });

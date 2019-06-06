@@ -528,11 +528,13 @@ var Arm = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl>
                             <FormControl componentClass="select" value={this.state.skill1}
                                          onChange={this.handleSelectEvent.bind(this, "skill1")}> {selector[locale].skills}</FormControl>
-                            
                             {GlobalConst.skillDetails[this.state.skill1] != undefined ?
-                                 <FormControl componentClass="select" value={this.state.skill1Detail}
-                                         onChange={this.handleSelectEvent.bind(this, "skill1Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill1]]} </FormControl>
-                            : null}<br/>
+                                 <div>
+                                    <label>{intl.translate(GlobalConst.skillDetailsDescription[this.state.skill1], locale)}</label>
+                                    <FormControl componentClass="select" value={this.state.skill1Detail}
+                                                 onChange={this.handleSelectEvent.bind(this, "skill1Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill1]]} </FormControl>
+                                 </div>
+                            : null}
                         </td>
                     </tr>
                     <tr>
@@ -543,9 +545,12 @@ var Arm = CreateClass({
                             <FormControl componentClass="select" value={this.state.skill2}
                                          onChange={this.handleSelectEvent.bind(this, "skill2")}> {selector[locale].skills}</FormControl>
                             {GlobalConst.skillDetails[this.state.skill2] != undefined ?
-                                 <FormControl componentClass="select" value={this.state.skill2Detail}
-                                         onChange={this.handleSelectEvent.bind(this, "skill2Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill2]]} </FormControl>
-                            : null}<br/>
+                                 <div>
+                                    <label>{intl.translate(GlobalConst.skillDetailsDescription[this.state.skill2], locale)}</label>
+                                    <FormControl componentClass="select" value={this.state.skill2Detail}
+                                                 onChange={this.handleSelectEvent.bind(this, "skill2Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill2]]} </FormControl>
+                                 </div>
+                            : null}
                         </td>
                     </tr>
                     <tr>
@@ -556,9 +561,12 @@ var Arm = CreateClass({
                             <FormControl componentClass="select" value={this.state.skill3}
                                          onChange={this.handleSelectEvent.bind(this, "skill3")}> {selector[locale].skills}</FormControl>
                             {GlobalConst.skillDetails[this.state.skill3] != undefined ?
-                                 <FormControl componentClass="select" value={this.state.skill3Detail}
-                                         onChange={this.handleSelectEvent.bind(this, "skill3Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill3]]} </FormControl>
-                            : null}<br/>
+                                 <div>
+                                    <label>{intl.translate(GlobalConst.skillDetailsDescription[this.state.skill3], locale)}</label>
+                                    <FormControl componentClass="select" value={this.state.skil3Detail}
+                                                 onChange={this.handleSelectEvent.bind(this, "skill3Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill3]]} </FormControl>
+                                 </div>
+                            : null}
                         </td>
                     </tr>
                     <tr>
