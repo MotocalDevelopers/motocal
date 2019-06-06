@@ -963,12 +963,12 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
         }
     } else if (haisuiType === "normalOtherKonshin") {
         if (remainHP >= 0.50) {
-            if (haisuiAmount === "S"){
+            if (haisuiAmount === "S") {
 
             } else if (haisuiAmount === "M") {
-                return 17.3333 * Math.pow(remainHP,3) - 13.1746 * Math.pow(remainHP,2) + 7.44714 * remainHP - 1.59476;
+                return 17.3333 * Math.pow(remainHP, 3) - 13.1746 * Math.pow(remainHP, 2) + 7.44714 * remainHP - 1.59476;
             } else {
-                return 24.3323 * Math.pow(remainHP,3) - 15.6128 * Math.pow(remainHP,2) + 7.84802 * remainHP - 1.5524;
+                return 24.3323 * Math.pow(remainHP, 3) - 15.6128 * Math.pow(remainHP, 2) + 7.84802 * remainHP - 1.5524;
             }
         }
     } else if (haisuiType === "magnaKonshin") {
@@ -1701,7 +1701,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["ougiDamage"] += 20; // for Zeus aura (Hiou)
                             totals[key]["ougiDamageLimit"] += 0.2;
                         } else if (stype == 'cherubimKonshin') {
-                            totals[key]["normalOtherKonshin"] = Math.max(module.exports.calcHaisuiValue("normalOtherKonshin", "M", "1", totals[key]["remainHP"]), totals[key]["normalOtherKonshin"]);
+                            totals[key]["normalOtherKonshin"] = Math.max(module.exports.calcHaisuiValue("normalOtherKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalOtherKonshin"]);
                         } else if (stype == 'ougiDamageLimitExceed') {
                             totals[key]["exceedOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["ougiDamageLimitExceed"][amount][slv - 1];
                             // 4* Weapon Skills
