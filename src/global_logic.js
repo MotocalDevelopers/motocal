@@ -2829,7 +2829,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
 
                     for (var supplementalDamageKey in onedata[key].skilldata.supplementalDamageArray) {
-                        if (supplementalDamageKey == 'impervious' && k >= 80) {
+                        if (supplementalDamageKey == 'impervious' && k >= 79) {
                             newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
                             newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
                         } else if (supplementalDamageKey != 'contentious' && supplementalDamageKey != 'impervious') {
