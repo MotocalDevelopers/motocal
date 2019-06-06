@@ -775,9 +775,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical += supplementalDamageArray[supplementalDamageKey].damageWithoutCritical;
             }
         }
-        
+        var expectedCycleDamagePerTurn;
         if (expectedTurn === Infinity) {
-            var expectedCycleDamagePerTurn = expectedAttack * damage;
+            expectedCycleDamagePerTurn = expectedAttack * damage;
 
             if (supplementalDamageArray['contentious'] != undefined) {
                 expectedCycleDamagePerTurn += supplementalDamageArray.contentious.damage;
@@ -796,7 +796,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical += supplementalDamageArray.contentious.damageWithoutCritical;
             }
 
-            var expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
+            expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
         }
         
         // Display array
