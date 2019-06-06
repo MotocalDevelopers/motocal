@@ -95,6 +95,9 @@ supportAbilist["ougiCapUP_25"] = {
     u"優しい心",
     u"リレーション・コンバーター"
 }
+supportAbilist["ougiCapUP_100"] = {
+    u"神魔を恐れぬ王"
+}
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
@@ -348,6 +351,7 @@ patchingOugiRatio["ロゼッタ(クリスマスver)"] = {"ougiRatio": 4.7}
 patchingOugiRatio["サラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
+patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 
 ### SSR(Not Ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
