@@ -66,7 +66,7 @@ supportAbilist["recklessness_incarnate"] = {u"猪突・上宝沁金ノ撃槍"}
 supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
-supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"} 
+supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"}
 #The effect size of "真っ二つにしてやるんだっ！" has not been verified.
 #supportAbilist["damageUP_10"] =  {u""} 
 supportAbilist["damageUP_20"] = {
@@ -97,6 +97,13 @@ supportAbilist["ougiCapUP_25"] = {
 }
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
+}
+
+supportAbilist["normalOtherKonshin_15UP"] = {
+    u"夏祭りの思い出",
+    u"白の切っ先",
+    u"不退転の戦旗",
+    u"絶対だいじょうぶだよ"
 }
 
 # Patching DA TA
