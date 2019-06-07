@@ -240,8 +240,9 @@ var Profile = CreateClass({
         // A select type input form is good for onChange
         var newState = this.state;
         if (Array.isArray(key)) {
-            if (key.length == 2) newState[key[0]][key[1]] = e.target.value;
-            if (key.length == 3) newState[key[0]][key[1]][key[2]] = e.target.value/100;
+            if (key.length == 3 && (key[0] == 'criticalBuff' || key[0] == 'personalCriticalBuff')) {
+                newState[key[0]][key[1]][key[2]] = e.target.value/100;
+            }
         } else {
             newState[key] = e.target.value;
         }
@@ -270,11 +271,11 @@ var Profile = CreateClass({
             if (this.state.criticalBuff[i] == undefined) this.state.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
                 criticalBuffRender[i] = (<div>
                    <hr/>
-                   <strong>{intl.translate("発動率", locale)}#i</strong>
+                   <strong>{intl.translate("発動率", locale)}#{i+1}</strong>
                    <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["value"]}
                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "value"])}>{selector.criticalRateLevel}</FormControl>
                    <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
-                   <strong>{intl.translate("倍率", locale)}#i</strong>
+                   <strong>{intl.translate("倍率", locale)}#{i+1}</strong>
                    <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["attackRatio"]}
                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "attackRatio"])}>{selector.buffLevel}</FormControl>
                    <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
