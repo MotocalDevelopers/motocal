@@ -2058,16 +2058,9 @@ var supportAbilities = {
     },
     "stamina_all_L": {
         "name": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
-        "type": "normalSupportKonshin_UP",
+        "type": "normalSupportKonshin",
         "range": "all",
         "value": "L"
-    },
-    "stamina_all_L_hp_down_own_15": {
-        "name": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
-        "type": "normalSupportKonshin_UP",
-        "range": "all",
-        "value": "L",
-        "HPBuff": -0.15
     }
 };
 
