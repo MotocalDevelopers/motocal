@@ -2348,8 +2348,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     continue;
                 case "normalBuff_depends_races":
                     var races = Math.min(4, module.exports.checkNumberOfRaces(chara));
-                    // 50% for 4 races, otherwise 10% for each race
-                    totals[key]["normalBuff"] += races == 4 ? 0.50 : races * 0.10;
+                    totals[key]["otherBuff"] = (1.0 + totals[key]["otherBuff"]) * (1.0 + Math.min(3, races) * 0.10) - 1.0;
                     continue;
                 case "normalBuff_depends_member":
                     continue;
