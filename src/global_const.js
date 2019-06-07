@@ -1873,7 +1873,7 @@ var supportAbilities = {
         "value": 0.15
     },
     "hp_up_own_20": {
-        "name": "HP20%UP(ソリッズ, ファスティバ)",
+        "name": "HP20%UP(ソリッズ, ファスティバ(SSR))",
         "type": "HPBuff",
         "range": "own",
         "value": 0.20

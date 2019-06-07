@@ -1840,10 +1840,10 @@ var multiLangData = {
         "ja": "HP15%UP(ペコリーヌ)",
         "zh": "HP15%UP(ペコリーヌ)",
     },
-    "HP20%UP(ソリッズ)": {
-        "en": "20% boost to max HP. (Soriz)",
-        "ja": "HP20%UP(ソリッズ)",
-        "zh": "HP20%UP(ソリッズ)",
+    "HP20%UP(ソリッズ, ファスティバ(SSR))": {
+        "en": "20% boost to max HP. (Soriz, Ladiva(SSR))",
+        "ja": "HP20%UP(ソリッズ, ファスティバ(SSR))",
+        "zh": "HP20%UP(ソリッズ, ファスティバ(SSR))",
     },
     "攻撃5%UP(レディグレイ)": {
         "en": "5% boost to ATK. (Lady Grey)",
@@ -1949,6 +1949,11 @@ var multiLangData = {
         "en": "Boost to critical hit rate for all allies (5% chance, 30% damage). (Ferry)",
         "ja": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
         "zh": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
+    },
+    "クリティカル確率UP(発動率40%, 倍率50%)(キャル)": {
+        "en": "Boost to critical hit rate (40% chance, 50% damage). (Karyl)",
+        "ja": "クリティカル確率UP(発動率40%, 倍率50%)(キャル)",
+        "zh": "クリティカル確率UP(発動率40%, 倍率50%)(キャル)",
     },
     "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)": {
         "en": "Boost to critical hit rate for all allies (100% chance, 50% damage). (5★ Tweyen C.A.)",
