@@ -9,7 +9,6 @@ var GlobalConst = require('./global_const.js');
 var elementRelation = GlobalConst.elementRelation;
 var bahamutRelation = GlobalConst.bahamutRelation;
 var bahamutFURelation = GlobalConst.bahamutFURelation;
-var supportAbilities = GlobalConst.supportAbilities;
 var selector = GlobalConst.selector;
 var zenith = GlobalConst.zenith;
 var Jobs = GlobalConst.Jobs;
@@ -553,21 +552,21 @@ var Chara = CreateClass({
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}1</th>
                         <td><FormControl componentClass="select" value={this.state.support}
-                                         onChange={this.handleSelectEvent.bind(this, "support")}>{selector.supportAbilities}</FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "support")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}2</th>
                         <td><FormControl componentClass="select" value={this.state.support2}
-                                         onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "support2")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}3</th>
                         <td><FormControl componentClass="select" value={this.state.support3}
-                                         onChange={this.handleSelectEvent.bind(this, "support3")}>{selector.supportAbilities}</FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "support3")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
 
