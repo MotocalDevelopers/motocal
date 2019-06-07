@@ -2812,7 +2812,7 @@ var multiLangData = {
         "zh": "ケルヴィム (メイン装備時)",
     },
     "真・道天浄土 (メイン装備時)": {
-        "en": "Purity Sunblade (main)",
+        "en": "True Purity Sunblade (main)",
         "ja": "真・道天浄土 (メイン装備時)",
         "zh": "真・道天浄土 (メイン装備時)",
     },
