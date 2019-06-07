@@ -309,6 +309,8 @@ var Chara = CreateClass({
             EXLBKonshin: 0,
             EXLBDA: 0,
             EXLBTA: 0,
+            criticalBuffCount: 0,
+            criticalBuff: [],
         };
     },
     componentDidMount: function () {
@@ -393,8 +395,10 @@ var Chara = CreateClass({
     },
     handleSelectEvent: function (key, e) {
         var newState = this.state;
-
-        if (e.target.type === "checkbox") {
+        if (Array.isArray(key)) {
+            if (key.length == 2) newState[key[0]][key[1]] = e.target.value;
+            if (key.length == 3) newState[key[0]][key[1]][key[2]] = e.target.value/100;
+        } else if (e.target.type === "checkbox") {
             newState[key] = e.target.checked;
         } else {
             newState[key] = e.target.value;
@@ -436,7 +440,23 @@ var Chara = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
-
+        var criticalBuffRender = [];
+        if (this.state.criticalBuff.length != this.state.criticalBuffCount) this.state.criticalBuff = this.state.criticalBuff.slice(0, this.state.criticalBuffCount);
+        for (var i = 0; i < this.state.criticalBuffCount; i++) {
+            if (this.state.criticalBuff[i] == undefined) this.state.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                criticalBuffRender[i] = (<div>
+                   <hr/>
+                   <strong>{intl.translate("発動率", locale)}#i</strong>
+                   <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["value"]}
+                                            onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "value"])}>{selector.criticalRateLevel}</FormControl>
+                   <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                   <strong>{intl.translate("倍率", locale)}#i</strong>
+                   <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["attackRatio"]}
+                                            onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "attackRatio"])}>{selector.buffLevel}</FormControl>
+                   <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                </div>);
+        }
+        
         return (
             <div className="chara-content">
                 <table className="table table-sm table-bordered table-responsive">
@@ -601,6 +621,15 @@ var Chara = CreateClass({
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.otherBuff2}
                                                  onChange={this.handleSelectEvent.bind(this, "otherBuff2")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
+                            </tr>,
+                            <tr key="criticalBuff">
+                                <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
+                                <td>
+                                    <strong>{intl.translate("数", locale)}</strong>
+                                    <FormControl type="number" min="0" value={this.state.criticalBuffCount}
+                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "criticalBuffCount")}/>
+                                    {criticalBuffRender}
+                                </td>
                             </tr>,
                             <tr key="daBuff">
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
