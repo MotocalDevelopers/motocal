@@ -426,12 +426,12 @@ var multiLangData = {
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
     },
-    "敵の耐性": {
+    "敵非有利耐性": {
         "en": "Enemy Resistance",
         "ja": "敵非有利耐性",
         "zh": "Enemy Resistance",
     },
-    "敵の耐性説明": {
+    "敵非有利耐性説明": {
         "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
         "ja": "敵の非有利属性時に生じる耐性を設定します。古戦場HELL(50%)など。",
         "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
