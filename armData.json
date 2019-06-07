@@ -2587,7 +2587,7 @@
         "hplv100": 219,
         "attacklv100": 2410,
         "imageURL": "./imgs/1040701700.png",
-        "en": "Rosenborgen [Element Changed]"
+        "en": "Rosenbogen [Element Changed]"
     },
     "メース・属性変更": {
         "ja": "メース・属性変更",
@@ -16817,7 +16817,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030105500.png",
-        "en": "超クールなダガー"
+        "en": "Wicked Cool Stabber"
     },
     "ボルト・オブ・アルベド": {
         "ja": "ボルト・オブ・アルベド",
@@ -16835,7 +16835,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030504600.png",
-        "en": "ボルト・オブ・アルベド"
+        "en": "Albedo Blaster"
     },
     "フロートソード": {
         "ja": "フロートソード",
@@ -16853,7 +16853,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030006700.png",
-        "en": "フロートソード"
+        "en": "Floaty Sword"
     },
     "骨喰藤四郎": {
         "ja": "骨喰藤四郎",
@@ -17131,7 +17131,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030605300.png",
-        "en": "サラダトング"
+        "en": "Salad Tongs"
     },
     "アロンダイト": {
         "ja": "アロンダイト",
@@ -17149,7 +17149,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000000.png",
-        "en": "アロンダイト"
+        "en": "Arondight"
     },
     "イルウーン": {
         "ja": "イルウーン",
@@ -17167,7 +17167,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000100.png",
-        "en": "イルウーン"
+        "en": "Ilhoon"
     },
     "フラガラッハ": {
         "ja": "フラガラッハ",
@@ -17185,7 +17185,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000200.png",
-        "en": "フラガラッハ"
+        "en": "Fragarach"
     },
     "ティルヴァング": {
         "ja": "ティルヴァング",
@@ -17203,7 +17203,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000300.png",
-        "en": "ティルヴァング"
+        "en": "Tilvung"
     },
     "ティアマトブレード": {
         "ja": "ティアマトブレード",
@@ -17221,7 +17221,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000400.png",
-        "en": "ティアマトブレード"
+        "en": "Tiamat Blade"
     },
     "世界樹の晶剣": {
         "ja": "世界樹の晶剣",
@@ -17239,7 +17239,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000500.png",
-        "en": "世界樹の晶剣"
+        "en": "Yggdrasil Crystal Blade"
     },
     "イフリートブレード": {
         "ja": "イフリートブレード",
@@ -17257,7 +17257,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030000700.png",
-        "en": "イフリートブレード"
+        "en": "Ifrit Blade"
     },
     "カダラ": {
         "ja": "カダラ",
@@ -17275,7 +17275,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001100.png",
-        "en": "カダラ"
+        "en": "Kadala"
     },
     "アルマス": {
         "ja": "アルマス",
@@ -17293,7 +17293,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001200.png",
-        "en": "アルマス"
+        "en": "Almace"
     },
     "タンザナイトソード": {
         "ja": "タンザナイトソード",
@@ -17311,7 +17311,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001300.png",
-        "en": "タンザナイトソード"
+        "en": "Tanzanite Sword"
     },
     "ラム・ダオ": {
         "ja": "ラム・ダオ",
@@ -17329,7 +17329,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001400.png",
-        "en": "ラム・ダオ"
+        "en": "Ram-Dao"
     },
     "マボムバーム": {
         "ja": "マボムバーム",
@@ -17347,7 +17347,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001500.png",
-        "en": "マボムバーム"
+        "en": "Twisted Dagger"
     },
     "ロイヤルレイピア": {
         "ja": "ロイヤルレイピア",
@@ -17365,7 +17365,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001800.png",
-        "en": "ロイヤルレイピア"
+        "en": "Royal Rapier"
     },
     "ラスト": {
         "ja": "ラスト",
@@ -17383,7 +17383,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030001900.png",
-        "en": "ラスト"
+        "en": "Lyst"
     },
     "マケブランケ": {
         "ja": "マケブランケ",
@@ -17401,7 +17401,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002100.png",
-        "en": "マケブランケ"
+        "en": "Makebranche"
     },
     "ネフティスレイピア": {
         "ja": "ネフティスレイピア",
@@ -17419,7 +17419,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002200.png",
-        "en": "ネフティスレイピア"
+        "en": "Nephthys Rapier"
     },
     "シュヴァリエソード": {
         "ja": "シュヴァリエソード",
@@ -17437,7 +17437,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002300.png",
-        "en": "シュヴァリエソード"
+        "en": "Luminiera Sword"
     },
     "リプルレイピア": {
         "ja": "リプルレイピア",
@@ -17455,7 +17455,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002400.png",
-        "en": "リプルレイピア"
+        "en": "Ripple Rapier"
     },
     "スカートチェイサー": {
         "ja": "スカートチェイサー",
@@ -17473,7 +17473,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002600.png",
-        "en": "スカートチェイサー"
+        "en": "Skirt Chaser"
     },
     "無垢白刃": {
         "ja": "無垢白刃",
@@ -17491,7 +17491,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002700.png",
-        "en": "無垢白刃"
+        "en": "Purity Blade"
     },
     "サジタリウスブレード": {
         "ja": "サジタリウスブレード",
@@ -17509,7 +17509,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002800.png",
-        "en": "サジタリウスブレード"
+        "en": "Sagittarius Blade"
     },
     "朽ち果てた剣": {
         "ja": "朽ち果てた剣",
@@ -17527,7 +17527,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030002900.png",
-        "en": "朽ち果てた剣"
+        "en": "Rusted Sword"
     },
     "ランタンブレード": {
         "ja": "ランタンブレード",
@@ -17545,7 +17545,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030003100.png",
-        "en": "ランタンブレード"
+        "en": "Lantern Blade"
     },
     "バビロンの刀剣": {
         "ja": "バビロンの刀剣",
@@ -17563,7 +17563,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030003200.png",
-        "en": "バビロンの刀剣"
+        "en": "Babylon Sword"
     },
     "護焔の剣": {
         "ja": "護焔の剣",
@@ -17581,7 +17581,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030003400.png",
-        "en": "護焔の剣"
+        "en": "Ember Blade"
     },
     "旅立ちの剣": {
         "ja": "旅立ちの剣",
@@ -17599,7 +17599,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030003500.png",
-        "en": "旅立ちの剣"
+        "en": "Traveller's Sword"
     },
     "ブランウェンレイピア": {
         "ja": "ブランウェンレイピア",
@@ -17617,7 +17617,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004200.png",
-        "en": "ブランウェンレイピア"
+        "en": "Branwen Rapier"
     },
     "マギ・パニッシュメントソード": {
         "ja": "マギ・パニッシュメントソード",
@@ -17635,7 +17635,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004300.png",
-        "en": "マギ・パニッシュメントソード"
+        "en": "Magus Punishment Sword"
     },
     "バハムートソード": {
         "ja": "バハムートソード",
@@ -17653,7 +17653,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004400.png",
-        "en": "バハムートソード"
+        "en": "Sword of Bahamut"
     },
     "タンザナイトソード・ミコー": {
         "ja": "タンザナイトソード・ミコー",
@@ -17671,7 +17671,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004500.png",
-        "en": "タンザナイトソード・ミコー"
+        "en": "Tanzanite Sword Mikoh"
     },
     "コントラリーソード": {
         "ja": "コントラリーソード",
@@ -17689,7 +17689,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004600.png",
-        "en": "コントラリーソード"
+        "en": "Contrary Sword"
     },
     "エレクトロソード": {
         "ja": "エレクトロソード",
@@ -17707,7 +17707,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004700.png",
-        "en": "エレクトロソード"
+        "en": "Electro Sword"
     },
     "パイレーツソード": {
         "ja": "パイレーツソード",
@@ -17725,7 +17725,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004800.png",
-        "en": "パイレーツソード"
+        "en": "Pirate Sword"
     },
     "オーラウィップ": {
         "ja": "オーラウィップ",
@@ -17743,7 +17743,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030004900.png",
-        "en": "オーラウィップ"
+        "en": "Aura Whip"
     },
     "ビィスタードソード": {
         "ja": "ビィスタードソード",
@@ -17761,7 +17761,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005000.png",
-        "en": "ビィスタードソード"
+        "en": "Vyrn Star Sword"
     },
     "白竜騎士団制式帯剣": {
         "ja": "白竜騎士団制式帯剣",
@@ -17779,7 +17779,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005100.png",
-        "en": "白竜騎士団制式帯剣"
+        "en": "White Dragon Sword"
     },
     "まゆ玉": {
         "ja": "まゆ玉",
@@ -17797,7 +17797,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005200.png",
-        "en": "まゆ玉"
+        "en": "New Year Mayudama Branch"
     },
     "釘バット": {
         "ja": "釘バット",
@@ -17815,7 +17815,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005300.png",
-        "en": "釘バット"
+        "en": "Spiked Baseball Bat"
     },
     "フライパン": {
         "ja": "フライパン",
@@ -17833,7 +17833,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005400.png",
-        "en": "フライパン"
+        "en": "Frying Pan"
     },
     "アルビオン制式帯剣": {
         "ja": "アルビオン制式帯剣",
@@ -17851,7 +17851,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030005600.png",
-        "en": "アルビオン制式帯剣"
+        "en": "Standard Albion Blade"
     },
     "アークエンジェルソード": {
         "ja": "アークエンジェルソード",
@@ -17869,7 +17869,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030099000.png",
-        "en": "アークエンジェルソード"
+        "en": "Archangel Sword"
     },
     "チンクエディア": {
         "ja": "チンクエディア",
@@ -17887,7 +17887,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100000.png",
-        "en": "チンクエディア"
+        "en": "Cinquedea"
     },
     "ミラージュナイフ": {
         "ja": "ミラージュナイフ",
@@ -17905,7 +17905,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100100.png",
-        "en": "ミラージュナイフ"
+        "en": "Mirage Knife"
     },
     "スティレット": {
         "ja": "スティレット",
@@ -17923,7 +17923,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100200.png",
-        "en": "スティレット"
+        "en": "Stiletto"
     },
     "ストームクリス": {
         "ja": "ストームクリス",
@@ -17941,7 +17941,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100500.png",
-        "en": "ストームクリス"
+        "en": "Storm Kris"
     },
     "コロッサスブレイカー": {
         "ja": "コロッサスブレイカー",
@@ -17959,7 +17959,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100600.png",
-        "en": "コロッサスブレイカー"
+        "en": "Colossus Breaker"
     },
     "レヴィアンゲイズ": {
         "ja": "レヴィアンゲイズ",
@@ -17977,7 +17977,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030100800.png",
-        "en": "レヴィアンゲイズ"
+        "en": "Leviathan Gaze"
     },
     "ファコン": {
         "ja": "ファコン",
@@ -17995,7 +17995,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101000.png",
-        "en": "ファコン"
+        "en": "Facon"
     },
     "フセット": {
         "ja": "フセット",
@@ -18013,7 +18013,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101100.png",
-        "en": "フセット"
+        "en": "Fusetto"
     },
     "バタディア": {
         "ja": "バタディア",
@@ -18031,7 +18031,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101200.png",
-        "en": "バタディア"
+        "en": "Batadia"
     },
     "アキナケス": {
         "ja": "アキナケス",
@@ -18049,7 +18049,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101300.png",
-        "en": "アキナケス"
+        "en": "Acinaces"
     },
     "ソードブレイカー": {
         "ja": "ソードブレイカー",
@@ -18067,7 +18067,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101400.png",
-        "en": "ソードブレイカー"
+        "en": "Sword Breaker"
     },
     "傀儡の包丁": {
         "ja": "傀儡の包丁",
@@ -18085,7 +18085,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101800.png",
-        "en": "傀儡の包丁"
+        "en": "Puppet Knife"
     },
     "裁きの霊剣": {
         "ja": "裁きの霊剣",
@@ -18103,7 +18103,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030101900.png",
-        "en": "裁きの霊剣"
+        "en": "Tribunal Dagger"
     },
     "マナウィダンダガー": {
         "ja": "マナウィダンダガー",
@@ -18121,7 +18121,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102000.png",
-        "en": "マナウィダンダガー"
+        "en": "Manawydan Dagger"
     },
     "イフリートダガー": {
         "ja": "イフリートダガー",
@@ -18139,7 +18139,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102100.png",
-        "en": "イフリートダガー"
+        "en": "Ifrit Dagger"
     },
     "ミドガルドの断刃": {
         "ja": "ミドガルドの断刃",
@@ -18157,7 +18157,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102200.png",
-        "en": "ミドガルドの断刃"
+        "en": "Severing Blade of Midgardsormr"
     },
     "ソウルエッジ": {
         "ja": "ソウルエッジ",
@@ -18175,7 +18175,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102300.png",
-        "en": "ソウルエッジ"
+        "en": "Soul Edge"
     },
     "絆の短剣": {
         "ja": "絆の短剣",
@@ -18193,7 +18193,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102400.png",
-        "en": "絆の短剣"
+        "en": "Soulbond Dirk"
     },
     "朽ち果てた刃": {
         "ja": "朽ち果てた刃",
@@ -18211,7 +18211,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102500.png",
-        "en": "朽ち果てた刃"
+        "en": "Rusted Dagger"
     },
     "ソード・オブ・リスブラン": {
         "ja": "ソード・オブ・リスブラン",
@@ -18229,7 +18229,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102600.png",
-        "en": "ソード・オブ・リスブラン"
+        "en": "Sword of Lisblanc"
     },
     "紅陽刃": {
         "ja": "紅陽刃",
@@ -18247,7 +18247,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102700.png",
-        "en": "紅陽刃"
+        "en": "Sunset Dagger"
     },
     "レージング": {
         "ja": "レージング",
@@ -18265,7 +18265,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030102900.png",
-        "en": "レージング"
+        "en": "Leyding"
     },
     "ディアボロスダガー": {
         "ja": "ディアボロスダガー",
@@ -18283,7 +18283,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030103700.png",
-        "en": "ディアボロスダガー"
+        "en": "Diablo Dagger"
     },
     "バハムートダガー": {
         "ja": "バハムートダガー",
@@ -18301,7 +18301,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030103800.png",
-        "en": "バハムートダガー"
+        "en": "Dagger of Bahamut"
     },
     "シェイドナイフ": {
         "ja": "シェイドナイフ",
@@ -18319,7 +18319,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030103900.png",
-        "en": "シェイドナイフ"
+        "en": "Shade Knife"
     },
     "刺身包丁": {
         "ja": "刺身包丁",
@@ -18337,7 +18337,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104000.png",
-        "en": "刺身包丁"
+        "en": "Sashimi Knife"
     },
     "ヴェセラゴセイバー": {
         "ja": "ヴェセラゴセイバー",
@@ -18355,7 +18355,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104100.png",
-        "en": "ヴェセラゴセイバー"
+        "en": "Veselago Saber"
     },
     "タッドポウルテイル": {
         "ja": "タッドポウルテイル",
@@ -18373,7 +18373,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104200.png",
-        "en": "タッドポウルテイル"
+        "en": "Tadpole Tail"
     },
     "ペティナイフ": {
         "ja": "ペティナイフ",
@@ -18391,7 +18391,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104300.png",
-        "en": "ペティナイフ"
+        "en": "Holly Knife"
     },
     "エゴイズム": {
         "ja": "エゴイズム",
@@ -18409,7 +18409,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104500.png",
-        "en": "エゴイズム"
+        "en": "Egoism"
     },
     "ブラックナイフ": {
         "ja": "ブラックナイフ",
@@ -18427,7 +18427,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104600.png",
-        "en": "ブラックナイフ"
+        "en": "Sombre Knife"
     },
     "スカルペル": {
         "ja": "スカルペル",
@@ -18445,7 +18445,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104700.png",
-        "en": "スカルペル"
+        "en": "Scalpel"
     },
     "オネイロスダガー": {
         "ja": "オネイロスダガー",
@@ -18463,7 +18463,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104800.png",
-        "en": "オネイロスダガー"
+        "en": "Oneiros Dagger"
     },
     "キルナイフ": {
         "ja": "キルナイフ",
@@ -18481,7 +18481,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030104900.png",
-        "en": "キルナイフ"
+        "en": "Shrike's Beak"
     },
     "アークエンジェルナイフ": {
         "ja": "アークエンジェルナイフ",
@@ -18499,7 +18499,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030199000.png",
-        "en": "アークエンジェルナイフ"
+        "en": "Archangel Knife"
     },
     "ヴァジュランダ": {
         "ja": "ヴァジュランダ",
@@ -18517,7 +18517,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200000.png",
-        "en": "ヴァジュランダ"
+        "en": "Vajranda"
     },
     "蜻蛉切": {
         "ja": "蜻蛉切",
@@ -18535,7 +18535,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200100.png",
-        "en": "蜻蛉切"
+        "en": "Dragonfliar Cutter"
     },
     "パルチザン": {
         "ja": "パルチザン",
@@ -18553,7 +18553,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200200.png",
-        "en": "パルチザン"
+        "en": "Partisan"
     },
     "シューラヴァラ": {
         "ja": "シューラヴァラ",
@@ -18571,7 +18571,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200300.png",
-        "en": "シューラヴァラ"
+        "en": "Shura Vhara"
     },
     "ロンギヌス": {
         "ja": "ロンギヌス",
@@ -18589,7 +18589,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200400.png",
-        "en": "ロンギヌス"
+        "en": "Longinus"
     },
     "レヴィアスパイン": {
         "ja": "レヴィアスパイン",
@@ -18607,7 +18607,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200500.png",
-        "en": "レヴィアスパイン"
+        "en": "Leviathan Spine"
     },
     "トライデント": {
         "ja": "トライデント",
@@ -18625,7 +18625,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030200700.png",
-        "en": "トライデント"
+        "en": "Trident"
     },
     "不死鳥の爪槍": {
         "ja": "不死鳥の爪槍",
@@ -18643,7 +18643,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030201600.png",
-        "en": "不死鳥の爪槍"
+        "en": "Phoenix Talon-Lance"
     },
     "ナーヴァル": {
         "ja": "ナーヴァル",
@@ -18661,7 +18661,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030201700.png",
-        "en": "ナーヴァル"
+        "en": "Narval"
     },
     "砂城の尖塔": {
         "ja": "砂城の尖塔",
@@ -18679,7 +18679,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030201800.png",
-        "en": "砂城の尖塔"
+        "en": "Sandcastle Spear"
     },
     "摩阿姫薙刀": {
         "ja": "摩阿姫薙刀",
@@ -18697,7 +18697,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030201900.png",
-        "en": "摩阿姫薙刀"
+        "en": "Cherry Blossom Lance"
     },
     "シュヴァリエスピア": {
         "ja": "シュヴァリエスピア",
@@ -18715,7 +18715,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202000.png",
-        "en": "シュヴァリエスピア"
+        "en": "Luminiera Spear"
     },
     "ミドガルドの大槍": {
         "ja": "ミドガルドの大槍",
@@ -18733,7 +18733,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202100.png",
-        "en": "ミドガルドの大槍"
+        "en": "Great Spear of Midgardsormr"
     },
     "アルバコアノーズ": {
         "ja": "アルバコアノーズ",
@@ -18751,7 +18751,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202200.png",
-        "en": "アルバコアノーズ"
+        "en": "Albacore Nose"
     },
     "ハープーン": {
         "ja": "ハープーン",
@@ -18769,7 +18769,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202300.png",
-        "en": "ハープーン"
+        "en": "Harpoon"
     },
     "朽ち果てた槍": {
         "ja": "朽ち果てた槍",
@@ -18787,7 +18787,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202400.png",
-        "en": "朽ち果てた槍"
+        "en": "Rusted Lance"
     },
     "アンノウンニードル": {
         "ja": "アンノウンニードル",
@@ -18805,7 +18805,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202500.png",
-        "en": "アンノウンニードル"
+        "en": "Mysterious Needle"
     },
     "フレアグレイブ": {
         "ja": "フレアグレイブ",
@@ -18823,7 +18823,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202600.png",
-        "en": "フレアグレイブ"
+        "en": "Flare Glaive"
     },
     "竜鱗の槍": {
         "ja": "竜鱗の槍",
@@ -18841,7 +18841,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030202700.png",
-        "en": "竜鱗の槍"
+        "en": "Dragonscale Lance"
     },
     "スウィーピングモップ": {
         "ja": "スウィーピングモップ",
@@ -18859,7 +18859,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203500.png",
-        "en": "スウィーピングモップ"
+        "en": "Golden Mop"
     },
     "マギ・ディケイデッドスピア": {
         "ja": "マギ・ディケイデッドスピア",
@@ -18877,7 +18877,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203600.png",
-        "en": "マギ・ディケイデッドスピア"
+        "en": "Magus Necro Spear"
     },
     "バハムートスピア": {
         "ja": "バハムートスピア",
@@ -18895,7 +18895,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203700.png",
-        "en": "バハムートスピア"
+        "en": "Spear of Bahamut"
     },
     "ドラグーンランス": {
         "ja": "ドラグーンランス",
@@ -18913,7 +18913,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203800.png",
-        "en": "ドラグーンランス"
+        "en": "Dragoon Lance"
     },
     "エレクトロフォーク": {
         "ja": "エレクトロフォーク",
@@ -18931,7 +18931,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030203900.png",
-        "en": "エレクトロフォーク"
+        "en": "Electro Fork"
     },
     "藁焼き": {
         "ja": "藁焼き",
@@ -18949,7 +18949,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204000.png",
-        "en": "藁焼き"
+        "en": "Spit Roast"
     },
     "槍烏賊": {
         "ja": "槍烏賊",
@@ -18967,7 +18967,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204100.png",
-        "en": "槍烏賊"
+        "en": "Squidpiercer"
     },
     "エメラルドスピア": {
         "ja": "エメラルドスピア",
@@ -18985,7 +18985,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204200.png",
-        "en": "エメラルドスピア"
+        "en": "Emerald Spear"
     },
     "ゴーストツリー": {
         "ja": "ゴーストツリー",
@@ -19003,7 +19003,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204300.png",
-        "en": "ゴーストツリー"
+        "en": "Ghost Tree"
     },
     "チタンハープーン": {
         "ja": "チタンハープーン",
@@ -19021,7 +19021,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204400.png",
-        "en": "チタンハープーン"
+        "en": "Titanium Harpoon"
     },
     "レイジングハルバード": {
         "ja": "レイジングハルバード",
@@ -19039,7 +19039,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204500.png",
-        "en": "レイジングハルバード"
+        "en": "Raging Halberd"
     },
     "鱈場": {
         "ja": "鱈場",
@@ -19057,7 +19057,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204600.png",
-        "en": "鱈場"
+        "en": "King Crab Spear"
     },
     "ブラウジャベリン": {
         "ja": "ブラウジャベリン",
@@ -19075,7 +19075,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204700.png",
-        "en": "ブラウジャベリン"
+        "en": "Blau Javelin"
     },
     "ビッグフォーク": {
         "ja": "ビッグフォーク",
@@ -19093,7 +19093,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204800.png",
-        "en": "ビッグフォーク"
+        "en": "Giant Fork"
     },
     "タイラントフォーク": {
         "ja": "タイラントフォーク",
@@ -19111,7 +19111,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030204900.png",
-        "en": "タイラントフォーク"
+        "en": "Tyrant Fork"
     },
     "バリアントスパイク": {
         "ja": "バリアントスパイク",
@@ -19129,7 +19129,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030205000.png",
-        "en": "バリアントスパイク"
+        "en": "Dreadflayer"
     },
     "竹槍": {
         "ja": "竹槍",
@@ -19147,7 +19147,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030205100.png",
-        "en": "竹槍"
+        "en": "Bamboo Spear"
     },
     "アークエンジェルスピア": {
         "ja": "アークエンジェルスピア",
@@ -19165,7 +19165,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030299000.png",
-        "en": "アークエンジェルスピア"
+        "en": "Archangel Spear"
     },
     "アクゥ": {
         "ja": "アクゥ",
@@ -19183,7 +19183,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300000.png",
-        "en": "アクゥ"
+        "en": "Akhu"
     },
     "ショカ": {
         "ja": "ショカ",
@@ -19201,7 +19201,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300100.png",
-        "en": "ショカ"
+        "en": "Shoka"
     },
     "ブローバ": {
         "ja": "ブローバ",
@@ -19219,7 +19219,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300200.png",
-        "en": "ブローバ"
+        "en": "Bullova"
     },
     "ホースマンズハンマー": {
         "ja": "ホースマンズハンマー",
@@ -19237,7 +19237,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300300.png",
-        "en": "ホースマンズハンマー"
+        "en": "Horseman's Hammer"
     },
     "ティアマトアムード": {
         "ja": "ティアマトアムード",
@@ -19255,7 +19255,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300600.png",
-        "en": "ティアマトアムード"
+        "en": "Tiamat Amood"
     },
     "コロッサスハーケン": {
         "ja": "コロッサスハーケン",
@@ -19273,7 +19273,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300700.png",
-        "en": "コロッサスハーケン"
+        "en": "Colossus Piton"
     },
     "フットマンズアックス": {
         "ja": "フットマンズアックス",
@@ -19291,7 +19291,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300800.png",
-        "en": "フットマンズアックス"
+        "en": "Footman's Axe"
     },
     "サンハンマー": {
         "ja": "サンハンマー",
@@ -19309,7 +19309,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030300900.png",
-        "en": "サンハンマー"
+        "en": "Sun Hammer"
     },
     "マナウィダンハーケン": {
         "ja": "マナウィダンハーケン",
@@ -19327,7 +19327,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301000.png",
-        "en": "マナウィダンハーケン"
+        "en": "Manawydan Piton"
     },
     "シュヴァリエブージ": {
         "ja": "シュヴァリエブージ",
@@ -19345,7 +19345,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301100.png",
-        "en": "シュヴァリエブージ"
+        "en": "Luminiera Bhuj"
     },
     "イフリートアクス": {
         "ja": "イフリートアクス",
@@ -19363,7 +19363,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301200.png",
-        "en": "イフリートアクス"
+        "en": "Ifrit Axe"
     },
     "セレストザグナル": {
         "ja": "セレストザグナル",
@@ -19381,7 +19381,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301300.png",
-        "en": "セレストザグナル"
+        "en": "Celeste Zaghnal"
     },
     "サジタリウスアックス": {
         "ja": "サジタリウスアックス",
@@ -19399,7 +19399,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301500.png",
-        "en": "サジタリウスアックス"
+        "en": "Sagittarius Axe"
     },
     "ポセイドンハーケン": {
         "ja": "ポセイドンハーケン",
@@ -19417,7 +19417,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301700.png",
-        "en": "ポセイドンハーケン"
+        "en": "Poseidon Piton"
     },
     "アンノウンハンマー": {
         "ja": "アンノウンハンマー",
@@ -19435,7 +19435,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030301800.png",
-        "en": "アンノウンハンマー"
+        "en": "Mysterious Hammer"
     },
     "朽ち果てた斧": {
         "ja": "朽ち果てた斧",
@@ -19453,7 +19453,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030302000.png",
-        "en": "朽ち果てた斧"
+        "en": "Rusted Axe"
     },
     "風司の鉞": {
         "ja": "風司の鉞",
@@ -19471,7 +19471,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030302700.png",
-        "en": "風司の鉞"
+        "en": "Wind God Axe"
     },
     "ヴォウジェ": {
         "ja": "ヴォウジェ",
@@ -19489,7 +19489,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030302800.png",
-        "en": "ヴォウジェ"
+        "en": "Voulge"
     },
     "バハムートアクス": {
         "ja": "バハムートアクス",
@@ -19507,7 +19507,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030302900.png",
-        "en": "バハムートアクス"
+        "en": "Axe of Bahamut"
     },
     "グレートハンマー": {
         "ja": "グレートハンマー",
@@ -19525,7 +19525,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303000.png",
-        "en": "グレートハンマー"
+        "en": "Great Hammer"
     },
     "杵": {
         "ja": "杵",
@@ -19543,7 +19543,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303100.png",
-        "en": "杵"
+        "en": "Mochi Mallet"
     },
     "ゴールデンダッグ": {
         "ja": "ゴールデンダッグ",
@@ -19561,7 +19561,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303200.png",
-        "en": "ゴールデンダッグ"
+        "en": "Golden Woofer"
     },
     "マッシヴアクス": {
         "ja": "マッシヴアクス",
@@ -19579,7 +19579,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303300.png",
-        "en": "マッシヴアクス"
+        "en": "Massive Axe"
     },
     "レザーベルト": {
         "ja": "レザーベルト",
@@ -19597,7 +19597,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303400.png",
-        "en": "レザーベルト"
+        "en": "Leather Belt"
     },
     "メタルハマー": {
         "ja": "メタルハマー",
@@ -19615,7 +19615,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303500.png",
-        "en": "メタルハマー"
+        "en": "Stalwart Hammer"
     },
     "クラウドトマホーク": {
         "ja": "クラウドトマホーク",
@@ -19633,7 +19633,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303600.png",
-        "en": "クラウドトマホーク"
+        "en": "Cloud Tomahawk"
     },
     "フレイメルンハンマー": {
         "ja": "フレイメルンハンマー",
@@ -19651,7 +19651,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303700.png",
-        "en": "フレイメルンハンマー"
+        "en": "Fremel Hammer"
     },
     "エレクトロアックス": {
         "ja": "エレクトロアックス",
@@ -19669,7 +19669,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030303800.png",
-        "en": "エレクトロアックス"
+        "en": "Electro Axe"
     },
     "アークエンジェルアクス": {
         "ja": "アークエンジェルアクス",
@@ -19687,7 +19687,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030399000.png",
-        "en": "アークエンジェルアクス"
+        "en": "Archangel Axe"
     },
     "金剛杖": {
         "ja": "金剛杖",
@@ -19705,7 +19705,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400000.png",
-        "en": "金剛杖"
+        "en": "Pilgrim's Staff"
     },
     "ジェズル": {
         "ja": "ジェズル",
@@ -19723,7 +19723,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400100.png",
-        "en": "ジェズル"
+        "en": "Zhezl"
     },
     "パストラルスタッフ": {
         "ja": "パストラルスタッフ",
@@ -19741,7 +19741,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400200.png",
-        "en": "パストラルスタッフ"
+        "en": "Pastoral Staff"
     },
     "ジャカランダ": {
         "ja": "ジャカランダ",
@@ -19759,7 +19759,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400300.png",
-        "en": "ジャカランダ"
+        "en": "Jacaranda"
     },
     "世界樹の雫枝": {
         "ja": "世界樹の雫枝",
@@ -19777,7 +19777,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400400.png",
-        "en": "世界樹の雫枝"
+        "en": "Yggdrasil Dewbranch"
     },
     "不死鳥の尾飾": {
         "ja": "不死鳥の尾飾",
@@ -19795,7 +19795,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400600.png",
-        "en": "不死鳥の尾飾"
+        "en": "Phoenix Tail Feathers"
     },
     "森精の杖": {
         "ja": "森精の杖",
@@ -19813,7 +19813,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400700.png",
-        "en": "森精の杖"
+        "en": "Spritewood Staff"
     },
     "ツォンペリ": {
         "ja": "ツォンペリ",
@@ -19831,7 +19831,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400800.png",
-        "en": "ツォンペリ"
+        "en": "Zhonpeli"
     },
     "転生の祈杖": {
         "ja": "転生の祈杖",
@@ -19849,7 +19849,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030400900.png",
-        "en": "転生の祈杖"
+        "en": "Staff of Reincarnation"
     },
     "ネフティスポール": {
         "ja": "ネフティスポール",
@@ -19867,7 +19867,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401000.png",
-        "en": "ネフティスポール"
+        "en": "Nephthys Pole"
     },
     "裁きの天秤": {
         "ja": "裁きの天秤",
@@ -19885,7 +19885,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401100.png",
-        "en": "裁きの天秤"
+        "en": "Spear of Judgement"
     },
     "ヤグルシ": {
         "ja": "ヤグルシ",
@@ -19903,7 +19903,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401200.png",
-        "en": "ヤグルシ"
+        "en": "Yagrush"
     },
     "アーソン": {
         "ja": "アーソン",
@@ -19921,7 +19921,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401300.png",
-        "en": "アーソン"
+        "en": "Arson"
     },
     "ホーリーケーン": {
         "ja": "ホーリーケーン",
@@ -19939,7 +19939,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401400.png",
-        "en": "ホーリーケーン"
+        "en": "Holy Cane"
     },
     "セレストケーン": {
         "ja": "セレストケーン",
@@ -19957,7 +19957,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401500.png",
-        "en": "セレストケーン"
+        "en": "Celeste Cane"
     },
     "ヘルウォードセプター": {
         "ja": "ヘルウォードセプター",
@@ -19975,7 +19975,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401600.png",
-        "en": "ヘルウォードセプター"
+        "en": "Hellward Scepter"
     },
     "エアリアルケーン": {
         "ja": "エアリアルケーン",
@@ -19993,7 +19993,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401700.png",
-        "en": "エアリアルケーン"
+        "en": "Aerial Cane"
     },
     "スカルワンド": {
         "ja": "スカルワンド",
@@ -20011,7 +20011,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030401800.png",
-        "en": "スカルワンド"
+        "en": "Skull Wand"
     },
     "風詠みの杖": {
         "ja": "風詠みの杖",
@@ -20029,7 +20029,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030402100.png",
-        "en": "風詠みの杖"
+        "en": "Wind-Rhyme Staff"
     },
     "朽ち果てた杖": {
         "ja": "朽ち果てた杖",
@@ -20047,7 +20047,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030402200.png",
-        "en": "朽ち果てた杖"
+        "en": "Rusted Staff"
     },
     "サルヴトーチ": {
         "ja": "サルヴトーチ",
@@ -20065,7 +20065,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030402900.png",
-        "en": "サルヴトーチ"
+        "en": "Soothing Torch"
     },
     "雷司の杖": {
         "ja": "雷司の杖",
@@ -20083,7 +20083,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403000.png",
-        "en": "雷司の杖"
+        "en": "Thunder God Staff"
     },
     "ディアボロスセプター": {
         "ja": "ディアボロスセプター",
@@ -20101,7 +20101,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403100.png",
-        "en": "ディアボロスセプター"
+        "en": "Diablo Scepter"
     },
     "バハムートスタッフ": {
         "ja": "バハムートスタッフ",
@@ -20119,7 +20119,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403200.png",
-        "en": "バハムートスタッフ"
+        "en": "Staff of Bahamut"
     },
     "リトルウィッチセプター": {
         "ja": "リトルウィッチセプター",
@@ -20137,7 +20137,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403300.png",
-        "en": "リトルウィッチセプター"
+        "en": "Little Witch Scepter"
     },
     "アーソン・デス": {
         "ja": "アーソン・デス",
@@ -20155,7 +20155,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403400.png",
-        "en": "アーソン・デス"
+        "en": "Deathly Arson"
     },
     "サンシェードパラソル": {
         "ja": "サンシェードパラソル",
@@ -20173,7 +20173,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403500.png",
-        "en": "サンシェードパラソル"
+        "en": "Sunshade Parasol"
     },
     "カースドケーン": {
         "ja": "カースドケーン",
@@ -20191,7 +20191,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403600.png",
-        "en": "カースドケーン"
+        "en": "Cursed Cane"
     },
     "魔女の箒": {
         "ja": "魔女の箒",
@@ -20209,7 +20209,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403700.png",
-        "en": "魔女の箒"
+        "en": "Witch's Broom"
     },
     "アンライトセプター": {
         "ja": "アンライトセプター",
@@ -20227,7 +20227,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403800.png",
-        "en": "アンライトセプター"
+        "en": "Shadow Scepter"
     },
     "フラワークラウン": {
         "ja": "フラワークラウン",
@@ -20245,7 +20245,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030403900.png",
-        "en": "フラワークラウン"
+        "en": "Flower Crown"
     },
     "アスクレビィオスの杖": {
         "ja": "アスクレビィオスの杖",
@@ -20263,7 +20263,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404000.png",
-        "en": "アスクレビィオスの杖"
+        "en": "Vyrnellious Staff"
     },
     "ショロトルケーン": {
         "ja": "ショロトルケーン",
@@ -20281,7 +20281,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404200.png",
-        "en": "ショロトルケーン"
+        "en": "Xolotl Staff"
     },
     "ファルコンメイス": {
         "ja": "ファルコンメイス",
@@ -20299,7 +20299,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404300.png",
-        "en": "ファルコンメイス"
+        "en": "Falcon Mace"
     },
     "ホーリーインデックス": {
         "ja": "ホーリーインデックス",
@@ -20317,7 +20317,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030404400.png",
-        "en": "ホーリーインデックス"
+        "en": "Sacred Codex"
     },
     "アークエンジェルワンド": {
         "ja": "アークエンジェルワンド",
@@ -20335,7 +20335,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030499000.png",
-        "en": "アークエンジェルワンド"
+        "en": "Archangel Wand"
     },
     "ウィンドクロス": {
         "ja": "ウィンドクロス",
@@ -20353,7 +20353,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500000.png",
-        "en": "ウィンドクロス"
+        "en": "Crosswind"
     },
     "ドラゴンテイル": {
         "ja": "ドラゴンテイル",
@@ -20371,7 +20371,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500100.png",
-        "en": "ドラゴンテイル"
+        "en": "Dragon Tail"
     },
     "スワロウテイル": {
         "ja": "スワロウテイル",
@@ -20389,7 +20389,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500200.png",
-        "en": "スワロウテイル"
+        "en": "Swallowtail"
     },
     "スナップハンス": {
         "ja": "スナップハンス",
@@ -20407,7 +20407,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500300.png",
-        "en": "スナップハンス"
+        "en": "Snaphance"
     },
     "トラドール": {
         "ja": "トラドール",
@@ -20425,7 +20425,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500400.png",
-        "en": "トラドール"
+        "en": "Torador"
     },
     "ティアマトボルト": {
         "ja": "ティアマトボルト",
@@ -20443,7 +20443,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500500.png",
-        "en": "ティアマトボルト"
+        "en": "Tiamat Bolt"
     },
     "レヴィアンマズル": {
         "ja": "レヴィアンマズル",
@@ -20461,7 +20461,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500600.png",
-        "en": "レヴィアンマズル"
+        "en": "Leviathan Muzzle"
     },
     "ホイルロックアックス": {
         "ja": "ホイルロックアックス",
@@ -20479,7 +20479,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030500800.png",
-        "en": "ホイルロックアックス"
+        "en": "Wheellock Axe"
     },
     "シモニア": {
         "ja": "シモニア",
@@ -20497,7 +20497,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501000.png",
-        "en": "シモニア"
+        "en": "Fraud Fire"
     },
     "アークゥイバス": {
         "ja": "アークゥイバス",
@@ -20515,7 +20515,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501100.png",
-        "en": "アークゥイバス"
+        "en": "Arquebus"
     },
     "ミドガルドの破弾": {
         "ja": "ミドガルドの破弾",
@@ -20533,7 +20533,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501200.png",
-        "en": "ミドガルドの破弾"
+        "en": "Piercing Bolt of Midgardsormr"
     },
     "アークゥイバス・カスタム": {
         "ja": "アークゥイバス・カスタム",
@@ -20551,7 +20551,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501300.png",
-        "en": "アークゥイバス・カスタム"
+        "en": "Custom Arquebus"
     },
     "アルバコアライフル": {
         "ja": "アルバコアライフル",
@@ -20569,7 +20569,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501400.png",
-        "en": "アルバコアライフル"
+        "en": "Albacore Rifle"
     },
     "セレストライフル": {
         "ja": "セレストライフル",
@@ -20587,7 +20587,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501500.png",
-        "en": "セレストライフル"
+        "en": "Celeste Rifle"
     },
     "ヘカトンケイルマズル": {
         "ja": "ヘカトンケイルマズル",
@@ -20605,7 +20605,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501600.png",
-        "en": "ヘカトンケイルマズル"
+        "en": "Hekatonkheir Muzzle"
     },
     "スキールニル": {
         "ja": "スキールニル",
@@ -20623,7 +20623,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030501800.png",
-        "en": "スキールニル"
+        "en": "Skirnir"
     },
     "朽ち果てた銃": {
         "ja": "朽ち果てた銃",
@@ -20641,7 +20641,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502500.png",
-        "en": "朽ち果てた銃"
+        "en": "Rusted Gun"
     },
     "バハムートマズル": {
         "ja": "バハムートマズル",
@@ -20659,7 +20659,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502600.png",
-        "en": "バハムートマズル"
+        "en": "Pistol of Bahamut"
     },
     "アワリティアガン": {
         "ja": "アワリティアガン",
@@ -20677,7 +20677,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502700.png",
-        "en": "アワリティアガン"
+        "en": "Avaritia Pistol"
     },
     "アンノウンショット": {
         "ja": "アンノウンショット",
@@ -20695,7 +20695,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502800.png",
-        "en": "アンノウンショット"
+        "en": "Mysterious Shooter"
     },
     "クォレル": {
         "ja": "クォレル",
@@ -20713,7 +20713,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030502900.png",
-        "en": "クォレル"
+        "en": "Quarrel"
     },
     "ピーシーズ": {
         "ja": "ピーシーズ",
@@ -20731,7 +20731,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503000.png",
-        "en": "ピーシーズ"
+        "en": "Fire Piece"
     },
     "デザートアームズ": {
         "ja": "デザートアームズ",
@@ -20749,7 +20749,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503100.png",
-        "en": "デザートアームズ"
+        "en": "Desert Arms"
     },
     "秘丹弥虚羅多鉄砲": {
         "ja": "秘丹弥虚羅多鉄砲",
@@ -20767,7 +20767,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503200.png",
-        "en": "秘丹弥虚羅多鉄砲"
+        "en": "Pina Colata Pistol"
     },
     "ドライゼン": {
         "ja": "ドライゼン",
@@ -20785,7 +20785,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503300.png",
-        "en": "ドライゼン"
+        "en": "Dreyse"
     },
     "白竜騎士団制式ボルト": {
         "ja": "白竜騎士団制式ボルト",
@@ -20803,7 +20803,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503400.png",
-        "en": "白竜騎士団制式ボルト"
+        "en": "White Dragon Rifle"
     },
     "ステッキライフル": {
         "ja": "ステッキライフル",
@@ -20821,7 +20821,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503500.png",
-        "en": "ステッキライフル"
+        "en": "Candy Cane Rifle"
     },
     "オダヅモッキーモデル": {
         "ja": "オダヅモッキーモデル",
@@ -20839,7 +20839,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503600.png",
-        "en": "オダヅモッキーモデル"
+        "en": "Odajumoki Gun"
     },
     "グラスマスケット": {
         "ja": "グラスマスケット",
@@ -20857,7 +20857,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503700.png",
-        "en": "グラスマスケット"
+        "en": "Grass Musket"
     },
     "カラフリャーガン": {
         "ja": "カラフリャーガン",
@@ -20875,7 +20875,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030503900.png",
-        "en": "カラフリャーガン"
+        "en": "Colorful Crackerjack"
     },
     "アークエンジェルガン": {
         "ja": "アークエンジェルガン",
@@ -20893,7 +20893,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030599000.png",
-        "en": "アークエンジェルガン"
+        "en": "Archangel Gun"
     },
     "ネコパンチ": {
         "ja": "ネコパンチ",
@@ -20911,7 +20911,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600000.png",
-        "en": "ネコパンチ"
+        "en": "Neko Punch"
     },
     "ジャマダハル": {
         "ja": "ジャマダハル",
@@ -20929,7 +20929,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600100.png",
-        "en": "ジャマダハル"
+        "en": "Jamadhar"
     },
     "カイザーナックル": {
         "ja": "カイザーナックル",
@@ -20947,7 +20947,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600200.png",
-        "en": "カイザーナックル"
+        "en": "Kaiser Knuckles"
     },
     "ジュル": {
         "ja": "ジュル",
@@ -20965,7 +20965,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600400.png",
-        "en": "ジュル"
+        "en": "Jule"
     },
     "コロッサスフィスト": {
         "ja": "コロッサスフィスト",
@@ -20983,7 +20983,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600500.png",
-        "en": "コロッサスフィスト"
+        "en": "Colossus Fist"
     },
     "世界樹の幹甲": {
         "ja": "世界樹の幹甲",
@@ -21001,7 +21001,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600700.png",
-        "en": "世界樹の幹甲"
+        "en": "Yggdrasil Bark"
     },
     "モールハンド": {
         "ja": "モールハンド",
@@ -21019,7 +21019,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600800.png",
-        "en": "モールハンド"
+        "en": "Mauler"
     },
     "リンボ": {
         "ja": "リンボ",
@@ -21037,7 +21037,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030600900.png",
-        "en": "リンボ"
+        "en": "Limbo"
     },
     "インパクトナックル": {
         "ja": "インパクトナックル",
@@ -21055,7 +21055,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601000.png",
-        "en": "インパクトナックル"
+        "en": "Impact Knuckles"
     },
     "チェインナックル": {
         "ja": "チェインナックル",
@@ -21073,7 +21073,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601100.png",
-        "en": "チェインナックル"
+        "en": "Chain Knuckles"
     },
     "アルバコアヘッド": {
         "ja": "アルバコアヘッド",
@@ -21091,7 +21091,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601200.png",
-        "en": "アルバコアヘッド"
+        "en": "Albacore Head"
     },
     "スキッドハンド": {
         "ja": "スキッドハンド",
@@ -21109,7 +21109,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601300.png",
-        "en": "スキッドハンド"
+        "en": "Squid Hand"
     },
     "朽ち果てた手甲": {
         "ja": "朽ち果てた手甲",
@@ -21127,7 +21127,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601400.png",
-        "en": "朽ち果てた手甲"
+        "en": "Rusted Gauntlet"
     },
     "タイガーファング": {
         "ja": "タイガーファング",
@@ -21145,7 +21145,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030601500.png",
-        "en": "タイガーファング"
+        "en": "Tiger Fang"
     },
     "バルカンガントレット": {
         "ja": "バルカンガントレット",
@@ -21163,7 +21163,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030602000.png",
-        "en": "バルカンガントレット"
+        "en": "Vulcan Gauntlet"
     },
     "雷司の爪": {
         "ja": "雷司の爪",
@@ -21181,7 +21181,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603200.png",
-        "en": "雷司の爪"
+        "en": "Thunder God Gauntlet"
     },
     "アンノウングラブ": {
         "ja": "アンノウングラブ",
@@ -21199,7 +21199,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603300.png",
-        "en": "アンノウングラブ"
+        "en": "Mysterious Glove"
     },
     "メタルグローブ": {
         "ja": "メタルグローブ",
@@ -21217,7 +21217,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603400.png",
-        "en": "メタルグローブ"
+        "en": "Metal Glove"
     },
     "カップ＆ソーサー": {
         "ja": "カップ＆ソーサー",
@@ -21235,7 +21235,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603500.png",
-        "en": "カップ＆ソーサー"
+        "en": "Cup and Saucer"
     },
     "バレンタイングラブ": {
         "ja": "バレンタイングラブ",
@@ -21253,7 +21253,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603600.png",
-        "en": "バレンタイングラブ"
+        "en": "Valentine Glove"
     },
     "バハムートナックル": {
         "ja": "バハムートナックル",
@@ -21271,7 +21271,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603700.png",
-        "en": "バハムートナックル"
+        "en": "Fist of Bahamut"
     },
     "無慈悲な制裁": {
         "ja": "無慈悲な制裁",
@@ -21289,7 +21289,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603800.png",
-        "en": "無慈悲な制裁"
+        "en": "Merciless Chastening"
     },
     "ミサンガ": {
         "ja": "ミサンガ",
@@ -21307,7 +21307,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030603900.png",
-        "en": "ミサンガ"
+        "en": "Misanga Bracelet"
     },
     "ブラストヘヴィナックル": {
         "ja": "ブラストヘヴィナックル",
@@ -21325,7 +21325,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604000.png",
-        "en": "ブラストヘヴィナックル"
+        "en": "Heavy Blast Knuckles"
     },
     "エメラルドクロー": {
         "ja": "エメラルドクロー",
@@ -21343,7 +21343,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604100.png",
-        "en": "エメラルドクロー"
+        "en": "Emerald Claw"
     },
     "ゲコヘッド": {
         "ja": "ゲコヘッド",
@@ -21361,7 +21361,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604200.png",
-        "en": "ゲコヘッド"
+        "en": "Croak Head"
     },
     "ホーリーグローブ": {
         "ja": "ホーリーグローブ",
@@ -21379,7 +21379,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604300.png",
-        "en": "ホーリーグローブ"
+        "en": "Holy Glove"
     },
     "ショロトルスタンプ": {
         "ja": "ショロトルスタンプ",
@@ -21397,7 +21397,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604400.png",
-        "en": "ショロトルスタンプ"
+        "en": "Xolotl Fist"
     },
     "ブラックガントレット": {
         "ja": "ブラックガントレット",
@@ -21415,7 +21415,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604500.png",
-        "en": "ブラックガントレット"
+        "en": "Sombre Gauntlet"
     },
     "シルバーブレスレット": {
         "ja": "シルバーブレスレット",
@@ -21433,7 +21433,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604600.png",
-        "en": "シルバーブレスレット"
+        "en": "Silver Bracelet"
     },
     "グレートタロン": {
         "ja": "グレートタロン",
@@ -21451,7 +21451,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604700.png",
-        "en": "グレートタロン"
+        "en": "Crimson Talons"
     },
     "シルバーリング": {
         "ja": "シルバーリング",
@@ -21469,7 +21469,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604800.png",
-        "en": "シルバーリング"
+        "en": "Silver Rings"
     },
     "ウォーターバルーン": {
         "ja": "ウォーターバルーン",
@@ -21487,7 +21487,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030604900.png",
-        "en": "ウォーターバルーン"
+        "en": "Water Balloons"
     },
     "アークエンジェルナックル": {
         "ja": "アークエンジェルナックル",
@@ -21505,7 +21505,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030699000.png",
-        "en": "アークエンジェルナックル"
+        "en": "Archangel Brass Knuckles"
     },
     "サルンガ": {
         "ja": "サルンガ",
@@ -21523,7 +21523,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700000.png",
-        "en": "サルンガ"
+        "en": "Sarnga"
     },
     "烏号": {
         "ja": "烏号",
@@ -21541,7 +21541,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700100.png",
-        "en": "烏号"
+        "en": "Aves"
     },
     "エルフィンボウ": {
         "ja": "エルフィンボウ",
@@ -21559,7 +21559,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700200.png",
-        "en": "エルフィンボウ"
+        "en": "Elfin Bow"
     },
     "ネフティスボウ": {
         "ja": "ネフティスボウ",
@@ -21577,7 +21577,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700300.png",
-        "en": "ネフティスボウ"
+        "en": "Nephthys Bow"
     },
     "シャドウボウ": {
         "ja": "シャドウボウ",
@@ -21595,7 +21595,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700500.png",
-        "en": "シャドウボウ"
+        "en": "Shadow Bow"
     },
     "インペリアルボウ": {
         "ja": "インペリアルボウ",
@@ -21613,7 +21613,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700600.png",
-        "en": "インペリアルボウ"
+        "en": "Imperial Bow"
     },
     "翠枝の弓": {
         "ja": "翠枝の弓",
@@ -21631,7 +21631,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700700.png",
-        "en": "翠枝の弓"
+        "en": "Sutera's Bow"
     },
     "裁きの弓箭": {
         "ja": "裁きの弓箭",
@@ -21649,7 +21649,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700800.png",
-        "en": "裁きの弓箭"
+        "en": "Bow of Judgement"
     },
     "マナウィダンボウ": {
         "ja": "マナウィダンボウ",
@@ -21667,7 +21667,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030700900.png",
-        "en": "マナウィダンボウ"
+        "en": "Manawydan Bow"
     },
     "漆弓": {
         "ja": "漆弓",
@@ -21685,7 +21685,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030701000.png",
-        "en": "漆弓"
+        "en": "Obsidian Bow"
     },
     "ヘルウォードボウ": {
         "ja": "ヘルウォードボウ",
@@ -21703,7 +21703,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030701200.png",
-        "en": "ヘルウォードボウ"
+        "en": "Hellward Bow"
     },
     "ポセイドンボウ": {
         "ja": "ポセイドンボウ",
@@ -21721,7 +21721,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030701300.png",
-        "en": "ポセイドンボウ"
+        "en": "Poseidon Bow"
     },
     "紅陽弓": {
         "ja": "紅陽弓",
@@ -21739,7 +21739,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030701400.png",
-        "en": "紅陽弓"
+        "en": "Sunset Bow"
     },
     "ブランウェンボウ": {
         "ja": "ブランウェンボウ",
@@ -21757,7 +21757,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702200.png",
-        "en": "ブランウェンボウ"
+        "en": "Branwen Bow"
     },
     "朽ち果てた弓": {
         "ja": "朽ち果てた弓",
@@ -21775,7 +21775,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702300.png",
-        "en": "朽ち果てた弓"
+        "en": "Rusted Bow"
     },
     "バハムートボウ": {
         "ja": "バハムートボウ",
@@ -21793,7 +21793,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702400.png",
-        "en": "バハムートボウ"
+        "en": "Bow of Bahamut"
     },
     "マモーナスボウ": {
         "ja": "マモーナスボウ",
@@ -21811,7 +21811,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702500.png",
-        "en": "マモーナスボウ"
+        "en": "Mammon Bow"
     },
     "アイスボウ": {
         "ja": "アイスボウ",
@@ -21829,7 +21829,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702600.png",
-        "en": "アイスボウ"
+        "en": "Ice Bow"
     },
     "コントラリーボウ": {
         "ja": "コントラリーボウ",
@@ -21847,7 +21847,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702800.png",
-        "en": "コントラリーボウ"
+        "en": "Contrary Bow"
     },
     "秘丹弥虚羅多弓": {
         "ja": "秘丹弥虚羅多弓",
@@ -21865,7 +21865,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030702900.png",
-        "en": "秘丹弥虚羅多弓"
+        "en": "Pina Colata Bow"
     },
     "クラフトボウ": {
         "ja": "クラフトボウ",
@@ -21883,7 +21883,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703000.png",
-        "en": "クラフトボウ"
+        "en": "Crafted Bow"
     },
     "クレセントボーゲン": {
         "ja": "クレセントボーゲン",
@@ -21901,7 +21901,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703100.png",
-        "en": "クレセントボーゲン"
+        "en": "Vogen Crescent"
     },
     "グラスボウ": {
         "ja": "グラスボウ",
@@ -21919,7 +21919,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703200.png",
-        "en": "グラスボウ"
+        "en": "Glass Bow"
     },
     "タイラントボウ": {
         "ja": "タイラントボウ",
@@ -21937,7 +21937,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703300.png",
-        "en": "タイラントボウ"
+        "en": "Tyrant Bow"
     },
     "オネイロスボウ": {
         "ja": "オネイロスボウ",
@@ -21955,7 +21955,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703400.png",
-        "en": "オネイロスボウ"
+        "en": "Oneiros Bow"
     },
     "木矢": {
         "ja": "木矢",
@@ -21973,7 +21973,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030703500.png",
-        "en": "木矢"
+        "en": "Wood Bow"
     },
     "アークエンジェルボウ": {
         "ja": "アークエンジェルボウ",
@@ -21991,7 +21991,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030799000.png",
-        "en": "アークエンジェルボウ"
+        "en": "Archangel Bow"
     },
     "吟遊詩人の竪琴": {
         "ja": "吟遊詩人の竪琴",
@@ -22009,7 +22009,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800000.png",
-        "en": "吟遊詩人の竪琴"
+        "en": "Songsmith's Harp"
     },
     "白金の竪琴": {
         "ja": "白金の竪琴",
@@ -22027,7 +22027,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800100.png",
-        "en": "白金の竪琴"
+        "en": "Platinum Harp"
     },
     "アタナシウス": {
         "ja": "アタナシウス",
@@ -22045,7 +22045,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800200.png",
-        "en": "アタナシウス"
+        "en": "Athanasius"
     },
     "ストラヴァリア": {
         "ja": "ストラヴァリア",
@@ -22063,7 +22063,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800300.png",
-        "en": "ストラヴァリア"
+        "en": "Stravaria"
     },
     "ヘカトンケイルハープ": {
         "ja": "ヘカトンケイルハープ",
@@ -22081,7 +22081,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800400.png",
-        "en": "ヘカトンケイルハープ"
+        "en": "Hekatonkheir Harp"
     },
     "ドラキュラハープ": {
         "ja": "ドラキュラハープ",
@@ -22099,7 +22099,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800500.png",
-        "en": "ドラキュラハープ"
+        "en": "Dracula Harp"
     },
     "バビロンの竪琴": {
         "ja": "バビロンの竪琴",
@@ -22117,7 +22117,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800600.png",
-        "en": "バビロンの竪琴"
+        "en": "Babylon Harp"
     },
     "ホーリーチャンター": {
         "ja": "ホーリーチャンター",
@@ -22135,7 +22135,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800800.png",
-        "en": "ホーリーチャンター"
+        "en": "Holy Harp"
     },
     "竜髭の弦": {
         "ja": "竜髭の弦",
@@ -22153,7 +22153,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030800900.png",
-        "en": "竜髭の弦"
+        "en": "Dragonbeard's Harp"
     },
     "風司の琴": {
         "ja": "風司の琴",
@@ -22171,7 +22171,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030801000.png",
-        "en": "風司の琴"
+        "en": "Wind God Harp"
     },
     "アンノウンハープ": {
         "ja": "アンノウンハープ",
@@ -22189,7 +22189,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030801100.png",
-        "en": "アンノウンハープ"
+        "en": "Mysterious Harp"
     },
     "朽ち果てた竪琴": {
         "ja": "朽ち果てた竪琴",
@@ -22207,7 +22207,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030801200.png",
-        "en": "朽ち果てた竪琴"
+        "en": "Rusted Harp"
     },
     "バレンタインハープ": {
         "ja": "バレンタインハープ",
@@ -22225,7 +22225,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030801900.png",
-        "en": "バレンタインハープ"
+        "en": "Valentine Harp"
     },
     "バハムートハープ": {
         "ja": "バハムートハープ",
@@ -22243,7 +22243,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802000.png",
-        "en": "バハムートハープ"
+        "en": "Harp of Bahamut"
     },
     "アクアリウムハープ": {
         "ja": "アクアリウムハープ",
@@ -22261,7 +22261,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802100.png",
-        "en": "アクアリウムハープ"
+        "en": "Aquarium Harp"
     },
     "マモーナスハープ": {
         "ja": "マモーナスハープ",
@@ -22279,7 +22279,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802200.png",
-        "en": "マモーナスハープ"
+        "en": "Mammon Harp"
     },
     "ヴェセラゴハープ": {
         "ja": "ヴェセラゴハープ",
@@ -22297,7 +22297,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802300.png",
-        "en": "ヴェセラゴハープ"
+        "en": "Veselago Harp"
     },
     "ハープロン": {
         "ja": "ハープロン",
@@ -22315,7 +22315,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802400.png",
-        "en": "ハープロン"
+        "en": "Harpronus"
     },
     "オルフェウス": {
         "ja": "オルフェウス",
@@ -22333,7 +22333,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802500.png",
-        "en": "オルフェウス"
+        "en": "Orpheus Harp"
     },
     "エレクトロハープ": {
         "ja": "エレクトロハープ",
@@ -22351,7 +22351,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802600.png",
-        "en": "エレクトロハープ"
+        "en": "Electro Harp"
     },
     "さざ波の砂弦": {
         "ja": "さざ波の砂弦",
@@ -22369,7 +22369,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030802700.png",
-        "en": "さざ波の砂弦"
+        "en": "Ripple Harp"
     },
     "リサウンドワンド": {
         "ja": "リサウンドワンド",
@@ -22585,7 +22585,7 @@
         "slvmax": 10,
         "maxlv": 75,
         "imageURL": "./imgs/1030901300.png",
-        "en": "アワリティアブレード"
+        "en": "Avaritia Blade"
     },
     "アンノウンリッパー": {
         "ja": "アンノウンリッパー",
