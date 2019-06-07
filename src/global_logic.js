@@ -525,13 +525,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // DATA upper limit
         // Normal * Magna * EX * Baha * Cosmos BL
         // DATA debuff for Rasetsu
-        var armDAupNormal = Math.min(normalNite + normalSante, 50.0);
-        var armDAupMagna = Math.min(magnaNite + magnaSante, 50.0);
-        var armDAupBaha = Math.min(totals[key]["bahaDA"], 50.0);
-        var armDAupCosmos = Math.min(totals[key]["cosmosBL"], 50.0);
+        var armDAupNormal = Math.min(50.0, normalNite + normalSante);
+        var armDAupMagna = Math.min(50.0, magnaNite + magnaSante);
+        var armDAupBaha = Math.min(50.0, totals[key]["bahaDA"]);
+        var armDAupCosmos = Math.min(50.0, totals[key]["cosmosBL"]);
 
         // Special skills etc
-        var armDAupOther = Math.min(totals[key]["DAbuff"], 50.0);
+        var armDAupOther = Math.min(50.0, totals[key]["DAbuff"]);
 
         // unknown never reaches 50% of the current situation
         var totalDA = 0.01 * totals[key]["baseDA"];
@@ -547,16 +547,16 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
 
         // Fit 0% < DA < 100%
-        totalDA = Math.min(Math.max(totalDA, 0.0), 1.0);
+        totalDA = Math.min(1.0, Math.max(0.0, totalDA));
 
         // skill that rises only TA is called LesserSante
         var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"];
         normalLesserSante += totals[key]["normalOtherLesserSante"];
         var magnaLesserSante = totals[key]["magnaLesserSante"] * totalSummon["magna"];
-        var armTAupNormal = Math.min(normalSante + normalLesserSante, 50.0);
-        var armTAupMagna = Math.min(magnaSante + magnaLesserSante, 50.0);
-        var armTAupBaha = Math.min(totals[key]["bahaTA"], 50.0);
-        var armTAupOther = Math.min(totals[key]["TAbuff"], 50.0);
+        var armTAupNormal = Math.min(50.0, normalSante + normalLesserSante);
+        var armTAupMagna = Math.min(50.0, magnaSante + magnaLesserSante);
+        var armTAupBaha = Math.min(50.0, totals[key]["bahaTA"]);
+        var armTAupOther = Math.min(50.0, totals[key]["TAbuff"]);
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
         totalTA += 0.01 * totals[key]["EXLB"]["TA"];
@@ -570,7 +570,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
 
         // Fit 0% < TA < 100%
-        totalTA = Math.min(Math.max(totalTA, 0.0), 1.0);
+        totalTA = Math.min(1.0, Math.max(0.0, totalTA));
         
         var taRate = Math.min(1.0, Math.floor(totalTA * 100) / 100); // Truncated values are used to calculate multi attack.
         var daRate = Math.min(1.0, Math.floor(totalDA * 100) / 100);
@@ -579,7 +579,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["typeBonus"] == 1.5) {
             // Supplemental damage rise support ability does not overlap with Tenshi skill (the strongest effect overwrites the lesser)
             var damageUP = Math.max(totals[key]["tenshiDamageUP"], totals[key]["charaDamageUP"]);
-            damageUP += 0.01 * totalSummon["tenshiDamageUP"]
+            damageUP += 0.01 * totalSummon["tenshiDamageUP"];
             damageUP += totals[key]["charaUniqueDamageUP"];
 
             // Generate normal critical skill arrays.
@@ -647,7 +647,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
-        chainDamageLimit = Math.min(chainDamageLimit, 0.50);
+        chainDamageLimit = Math.min(0.50, chainDamageLimit);
         
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
@@ -682,7 +682,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
 
         var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
-        chainDamageUP = Math.min(chainDamageUP, 1.20); //check skill limit
+        chainDamageUP = Math.min(1.20, chainDamageUP); //check skill limit
         
         if (key == "Djeeta") {
             damageLimit += buff["masterDamageLimit"] + buff["zenithDamageLimit"];
