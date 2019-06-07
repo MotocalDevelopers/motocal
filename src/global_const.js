@@ -1879,7 +1879,7 @@ var supportAbilities = {
         "value": 0.20
     },
     "atk_up_own_5": {
-        "name": "攻撃5%UP(ネツァ,レディグレイ,ハロシャル)",
+        "name": "攻撃5%UP(レディグレイ)",
         "type": "normalBuff",
         "range": "own",
         "value": 0.05
@@ -1987,7 +1987,7 @@ var supportAbilities = {
         "value": 0.00
     },
     "critical_up_own_10_30": {
-        "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ハロカリ)",
+        "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
         "type": "criticalBuff",
         "range": "own",
         "value": 0.10,
@@ -2056,6 +2056,12 @@ var supportAbilities = {
         "type": "ougiDamageLimitBuff",
         "range": "own",
         "value": 0.25
+    },
+    "ougiCapUP_100": {
+        "name": "奥義ダメージ上限100%UP(シャリオス17世)",
+        "type": "ougiDamageLimitBuff",
+        "range": "own",
+        "value": 1.0
     },
     "wildcard": {
         "name": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
@@ -2651,6 +2657,12 @@ module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).map(fun
     return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "zh")}</option>;
 });
 
-module.exports.selector.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
-    return <option value={opt} key={opt}>{supportAbilities[opt].name}</option>;
+module.exports.selector.ja.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "ja")}</option>;
+});
+module.exports.selector.en.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "en")}</option>;
+});
+module.exports.selector.zh.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "zh")}</option>;
 });

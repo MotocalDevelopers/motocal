@@ -2076,7 +2076,7 @@
         "sex": "male",
         "fav1": "sword",
         "fav2": "none",
-        "support": "none",
+        "support": "ougiCapUP_100",
         "support2": "none",
         "support3": "none",
         "minhp": "240",
@@ -2085,7 +2085,7 @@
         "attack": "7400",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "ougiRatio": 4.5,
+        "ougiRatio": 12.5,
         "imageURL": "./charaimgs/3040144000_01.png",
         "en": "Charioce XVII"
     },
