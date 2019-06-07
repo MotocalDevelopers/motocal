@@ -1227,29 +1227,37 @@ var Result = CreateClass({
 
                         var multipleAttackSkillInfo = [];
                         // For batting skill
-                        var pushSkillInfoElement2 = (skillKey, label, labelType = "primary") => {
+                        var pushSkillInfoElement2 = (skillKey, maxvalue, label, labelType = "primary") => {
                             // Use outer skillInfo, skilldata and locale
-                            if (skilldata[skillKey] != 0.0) {
+                            if (skilldata[skillKey] != 0.0 && skilldata[skillKey] < maxvalue) {
                                 multipleAttackSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
                                             <span
                                                 className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
                                         {skilldata[skillKey].toFixed(1)}%&nbsp;
                                         </span>
-                                );
-                            }
+                                   );
+                               } else if (skilldata[skillKey] != 0.0 && skilldata[skillKey] >= maxvalue) {
+                                multipleAttackSkillInfo.push(
+                                    <span key={key + "-" + skillKey}>
+                                            <span
+                                                className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                        <font color="ff0000">{skilldata[skillKey].toFixed(1)}%</font>&nbsp;
+                                        </span>
+                                   );
+                               }
                         };
 
-                        pushSkillInfoElement2("normalDA", "DA上昇(通常)", "danger");
-                        pushSkillInfoElement2("magnaDA", "DA上昇(マグナ)", "danger");
-                        pushSkillInfoElement2("exDA", "DA上昇(EX)", "danger");
-                        pushSkillInfoElement2("bahaDA", "DA上昇(バハ)", "danger");
-                        pushSkillInfoElement2("cosmosDA", "DA上昇(コスモス)", "danger");
-                        pushSkillInfoElement2("otherDA", "DA上昇(その他)", "danger");
-                        pushSkillInfoElement2("normalTA", "TA上昇(通常)", "danger");
-                        pushSkillInfoElement2("magnaTA", "TA上昇(マグナ)", "danger");
-                        pushSkillInfoElement2("bahaTA", "TA上昇(バハ)", "danger");
-                        pushSkillInfoElement2("otherTA", "TA上昇(その他)", "danger");
+                        pushSkillInfoElement2("normalDA", 50, "DA上昇(通常)", "danger");
+                        pushSkillInfoElement2("magnaDA", 50, "DA上昇(マグナ)", "danger");
+                        pushSkillInfoElement2("exDA", 99999, "DA上昇(EX)", "danger");
+                        pushSkillInfoElement2("bahaDA", 50, "DA上昇(バハ)", "danger");
+                        pushSkillInfoElement2("cosmosDA", 50, "DA上昇(コスモス)", "danger");
+                        pushSkillInfoElement2("otherDA", 99999, "DA上昇(その他)", "danger");
+                        pushSkillInfoElement2("normalTA", 50, "TA上昇(通常)", "danger");
+                        pushSkillInfoElement2("magnaTA", 50, "TA上昇(マグナ)", "danger");
+                        pushSkillInfoElement2("bahaTA", 50, "TA上昇(バハ)", "danger");
+                        pushSkillInfoElement2("otherTA", 99999, "TA上昇(その他)", "danger");
 
                         var criticalInfo = [];
                         if (Object.keys(skilldata.criticalArray).length > 0) {
