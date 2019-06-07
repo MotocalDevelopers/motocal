@@ -601,7 +601,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             var criticalRatio = 1.0
         }
         //Apply Elemental Resistance if not superior element.
-        damageUP -= totals[key]["typeBonus"] == 1.5 ? 0 : Math.max(1, 0.01 * parseFloat(prof.enemyResistance));
+        damageUP -= totals[key]["typeBonus"] == 1.5 ? 0 : Math.max(0, Math.min(1, 0.01 * parseFloat(prof.enemyResistance)));
 
         var criticalAttack = parseInt(totalAttack * criticalRatio);
         var expectedOugiGage = buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"];
