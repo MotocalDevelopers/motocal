@@ -718,36 +718,46 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var supplementalDamageArray = {};
         var supplementalDamageBuff = Math.ceil(Math.max(totals[key]['supplementalDamageBuff'], buff['supplementalDamageBuff']) * (1 + damageUP));
         if (supplementalDamageBuff > 0) {
-            supplementalDamageArray["Buff"] = {};
-            supplementalDamageArray["Buff"]["damage"] = supplementalDamageBuff;
-            supplementalDamageArray["Buff"]["damageWithoutCritical"] = supplementalDamageBuff;
-            supplementalDamageArray["Buff"]["ougiDamage"] = supplementalDamageBuff;
-            supplementalDamageArray["Buff"]["chainBurst"] = supplementalDamageBuff;
+            supplementalDamageArray["Buff"] = {
+                damage: supplementalDamageBuff,
+                damageWithoutCritical: supplementalDamageBuff,
+                ougiDamage: supplementalDamageBuff,
+                chainBurst: supplementalDamageBuff,
+            };
+        }
+        if (totals[key]["supplemental_thirdHit"] > 0 && taRate > 0) {
+                supplementalDamageArray['supplemental_thirdHit'] = {
+                    damage: Math.ceil(taRate * totals[key]["supplemental_thirdHit"] * (1 + damageUP)),
+                    damageWithoutCritical: Math.ceil(taRate * totals[key]["supplemental_thirdHit"] * (1 + damageUP)),
+                };
         }
         if (totals[key]['covenant'] === 'impervious' && totals[key]['remainHP'] >= 0.8) {
-            supplementalDamageArray['impervious'] = {};
-            supplementalDamageArray['impervious']['damage'] = Math.ceil(30000 * (1 + damageUP));
-            supplementalDamageArray['impervious']['damageWithoutCritical'] = Math.ceil(30000 * (1 + damageUP));
-            supplementalDamageArray['impervious']['ougiDamage'] = Math.ceil(30000 * (1 + damageUP));
-            supplementalDamageArray["impervious"]["chainBurst"] = Math.ceil(30000 * (1 + damageUP));
+            supplementalDamageArray['impervious'] = {
+                damage: Math.ceil(30000 * (1 + damageUP)),
+                damageWithoutCritical: Math.ceil(30000 * (1 + damageUP)),
+                ougiDamage: Math.ceil(30000 * (1 + damageUP)),
+                chainBurst: Math.ceil(30000 * (1 + damageUP)),
+            };
         }
         else if (totals[key]['covenant'] === 'victorious' && totals['Djeeta']['buffCount'] > 0) {
-            supplementalDamageArray['victorious'] = {};
             var djeetaBuffCount = Math.min(10, totals['Djeeta']['buffCount']);
-            supplementalDamageArray['victorious']['damage'] =  Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP));
-            supplementalDamageArray['victorious']['damageWithoutCritical'] = Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP));
-            supplementalDamageArray['victorious']['ougiDamage'] = Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP));
-            supplementalDamageArray['victorious']['chainBurst'] = Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP));
+            supplementalDamageArray['victorious'] = {
+                damage:  Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP)),
+                damageWithoutCritical: Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP)),
+                ougiDamage: Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP)),
+                chainBurst: Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP)),
+            };
         }
         else if (totals[key]['covenant'] === 'contentious' && taRate > 0) {
-            supplementalDamageArray['contentious'] = {};
-            supplementalDamageArray['contentious']['damage'] = Math.ceil(taRate * 100000 * (1 + damageUP));
-            supplementalDamageArray['contentious']['damageWithoutCritical'] = Math.ceil(taRate * 100000 * (1 + damageUP));
+            supplementalDamageArray['contentious'] = {
+                damage: Math.ceil(taRate * 100000 * (1 + damageUP)),
+                damageWithoutCritical: Math.ceil(taRate * 100000 * (1 + damageUP)),
+            };
         }
         else if (totals[key]['covenant'] === 'deleterious') {
             var hasCrit = false;
             var critRate = 0;
-            for (var val in criticalArray) {
+            for (let val in criticalArray) {
                 hasCrit = true;
                 break;
             }
@@ -757,24 +767,26 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 critRate = 1.0;
             }
             if (critRate != 0) {
-              supplementalDamageArray['deleterious'] = {};
-              supplementalDamageArray['deleterious']['damage'] = Math.ceil(critRate * 30000 * (1 + damageUP));
-              supplementalDamageArray['deleterious']['damageWithoutCritical'] = 0;
-              supplementalDamageArray['deleterious']['ougiDamage'] = Math.ceil(critRate * 30000 * (1 + damageUP));
-              supplementalDamageArray['deleterious']['chainBurst'] = 0;
+                supplementalDamageArray['deleterious'] = {
+                    damage: Math.ceil(critRate * 30000 * (1 + damageUP)),
+                    damageWithoutCritical: 0,
+                    ougiDamage: Math.ceil(critRate * 30000 * (1 + damageUP)),
+                    chainBurst: 0,
+                };
             }
         }
         else if (totals[key]['covenant'] === 'calamitous') {
-            supplementalDamageArray['calamitous'] = {};
             var enemyDebuffCount = Math.min(10, buff['enemyDebuffCount']);
-            supplementalDamageArray['calamitous']['damage'] = Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP));
-            supplementalDamageArray['calamitous']['damageWithoutCritical'] = Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP));
-            supplementalDamageArray['calamitous']['ougiDamage'] = Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP));
-            supplementalDamageArray['calamitous']['chainBurst'] = Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP));
+            supplementalDamageArray['calamitous'] = {
+                damage: Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP)),
+                damageWithoutCritical: Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP)),
+                ougiDamage: Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP)),
+                chainBurst: Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP)),
+            };
         }
         
         for (var supplementalDamageKey in supplementalDamageArray) {
-            if (supplementalDamageKey != 'contentious') {
+            if (!['contentious', 'supplemental_thirdHit'].includes(supplementalDamageKey)) {
                 damage += supplementalDamageArray[supplementalDamageKey].damage;
                 ougiDamage += supplementalDamageArray[supplementalDamageKey].ougiDamage;
                 damageWithoutCritical += supplementalDamageArray[supplementalDamageKey].damageWithoutCritical;
@@ -785,22 +797,26 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (expectedTurn === Infinity) {
             expectedCycleDamagePerTurn = expectedAttack * damage;
 
-            if (supplementalDamageArray['contentious'] != undefined) {
-                expectedCycleDamagePerTurn += supplementalDamageArray.contentious.damage;
-                damage += supplementalDamageArray.contentious.damage;
-                damageWithoutCritical += supplementalDamageArray.contentious.damageWithoutCritical;
-            }
+            ['contentious', 'supplemental_thirdHit'].some(key => function(key) {
+                if (supplementalDamageArray.includes(key)) {
+                    expectedCycleDamagePerTurn += supplementalDamageArray[key].damage * expectedTurn;
+                    damage += supplementalDamageArray[key].damage;
+                    damageWithoutCritical += supplementalDamageArray[key].damageWithoutCritical;
+                }
+            });
         } else {
             // Normal attack * n times
             let expectedCycleDamage = expectedTurn * expectedAttack * damage;
             // Ougi + chain burst (buff ["chainNumber"] is 1 or more so division OK)
             expectedCycleDamage += ougiDamage + chainBurst / buff["chainNumber"];
 
-            if (supplementalDamageArray['contentious'] != undefined) {
-                expectedCycleDamage += supplementalDamageArray.contentious.damage * expectedTurn;
-                damage += supplementalDamageArray.contentious.damage;
-                damageWithoutCritical += supplementalDamageArray.contentious.damageWithoutCritical;
-            }
+            ['contentious', 'supplemental_thirdHit'].some(key => function(key) {
+                if (supplementalDamageArray.includes(key)) {
+                    expectedCycleDamage += supplementalDamageArray[key].damage * expectedTurn;
+                    damage += supplementalDamageArray[key].damage;
+                    damageWithoutCritical += supplementalDamageArray[key].damageWithoutCritical;
+                }
+            });
 
             expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
         }
@@ -2146,6 +2162,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 tenshiDamageUP: 0,
                 charaUniqueDamageUP: 0,
                 supplementalDamageBuff: 100 * djeetaBuffList['personalSupplementalDamageBuff'],
+                supplemental_thirdHit: 0,
                 covenant: null,
                 buffCount: 0,
                 //debuffCount: 0,
@@ -2300,6 +2317,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 tenshiDamageUP: 0,
                 charaUniqueDamageUP: 0,
                 supplementalDamageBuff: 100 * charaBuffList['supplementalDamageBuff'],
+                supplemental_thirdHit: 0,
                 covenant: null,
                 //buffCount: 0,
                 //debuffCount: 0,
@@ -2598,6 +2616,12 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
+                case "supplemental_third_hit":
+                    if (support.range == "own") {
+                        console.log('asd');
+                        totals[key]["supplemental_thirdHit"] += support.value;
+                    }
+                    continue;
                 default:
                     break;
             }
@@ -2847,7 +2871,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                         if (supplementalDamageKey == 'impervious' && k >= 80) {
                             newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
                             newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
-                        } else if (supplementalDamageKey != 'contentious' && supplementalDamageKey != 'impervious') {
+                        } else if (supplementalDamageKey != 'contentious' || supplementalDamageKey != 'impervious' || supplementalDamageKey != 'supplemental_thirdHit') {
                             newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
                             newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
                             newChainBurst += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].chainBurst;
@@ -2858,13 +2882,15 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newExpectedCycleDamagePerTurn = (onedata[key].expectedTurn === Infinity)
                         ? (onedata[key].expectedAttack * newDamage)
                         : (newChainBurst + newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage);
-                    
-                    if (onedata[key].skilldata.supplementalDamageArray['contentious'] != undefined) {
-                        newExpectedCycleDamagePerTurn += onedata[key].skilldata.supplementalDamageArray.contentious.damage * (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn);
-                        newDamage += onedata[key].skilldata.supplementalDamageArray.contentious.damage;
-                        //damageWithoutCritical += onedata[key].skilldata.supplementalDamageArray.contentious.damageWithoutCritical;
-                    }
-                    
+
+                    ['contentious', 'supplemental_thirdHit'].some(key => function(key) {
+                        if (supplementalDamageArray.includes(key)) {
+                            newExpectedCycleDamagePerTurn += supplementalDamageArray[key].damage * expectedTurn;
+                            newDamage += supplementalDamageArray[key].damage;
+                            //damageWithoutCritical += supplementalDamageArray[key].damageWithoutCritical;
+                        }
+                    });
+
                     newExpectedCycleDamagePerTurn /= (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn + 1);
                     
                     var hp;

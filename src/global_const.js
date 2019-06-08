@@ -2094,6 +2094,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0
     },
+    "supplemental_third_hit_50k": { //like contentious-covenant
+        "name": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
+        "type": "supplemental_third_hit",
+        "range": "own",
+        "value": 50000
+    },
 };
 
 // exports
