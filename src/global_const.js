@@ -79,6 +79,19 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+module.exports.LIMIT_SKILL_INFO = {
+    normalDA: 50,
+    magnaDA: 50,
+    exDA: 99999,
+    bahaDA: 50,
+    cosmosDA: 50,
+    otherDA: 99999,
+    normalTA: 50,
+    magnaTA: 50,
+    bahaTA: 50,
+    otherTA: 99999,
+};
+
 var opusNames = [
     "of Repudiation",
     "絶対否定の",
