@@ -111,7 +111,7 @@ supportAbilist["stamina_all_L"] = {
 }
 
 supportAbilist["stamina_all_L_hp_down_own_15"] = {
-    u"真夏の夜の夢",
+    u"真夏の夜の夢"
 }
 
 # Patching DA TA
