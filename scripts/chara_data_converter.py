@@ -45,7 +45,7 @@ supportAbilist["da_up_fist_10"] = {u"古今無双流"}
 supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ"}
 supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
 supportAbilist["hp_up_own_20"] = {u"老當益壮"}
-supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
+supportAbilist["atk_up_own_5"] = {u"愛憎の衝動"}
 supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ", u"ディペンデンス"}
 supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
@@ -63,7 +63,9 @@ supportAbilist["envoy_meditation"] = {u"調停の使徒"}
 supportAbilist["ideal_vassals"] = {u"理想の家臣"}
 supportAbilist["dance_of_nataraja"] = {u"破滅の舞踏"}
 supportAbilist["recklessness_incarnate"] = {u"猪突・上宝沁金ノ撃槍"}
-supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
+supportAbilist["critical_up_own_10_30"] = {
+    u"セルフィッシュ・ロイヤル",
+    u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
 supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"}
@@ -94,6 +96,9 @@ supportAbilist["ougiCapUP_20"] = {
 supportAbilist["ougiCapUP_25"] = {
     u"優しい心",
     u"リレーション・コンバーター"
+}
+supportAbilist["ougiCapUP_100"] = {
+    u"神魔を恐れぬ王"
 }
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
@@ -358,6 +363,7 @@ patchingOugiRatio["ロゼッタ(クリスマスver)"] = {"ougiRatio": 4.7}
 patchingOugiRatio["サラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
+patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 
 ### SSR(Not Ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
