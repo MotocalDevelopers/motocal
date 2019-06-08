@@ -1243,20 +1243,25 @@ var multiLangData = {
         "ja": "標準偏差",
         "zh": "标准差",
     },
-    "Supplemental Damage Source":{
-        "en": "Supplemental Damage Source",
-        "ja": "与ダメージ上昇効果のソース",
-        "zh": "Supplemental Damage Source",
+    "与ダメージ上昇効果のソース": {
+        "en": "Supplemental Damage Source (incl. DamageUP)",
+        "ja": "与ダメージ上昇効果のソース (与ダメージ上昇を含む)",
+        "zh": "Supplemental Damage Source (incl. DamageUP)",
     },
-    "Total":{
+    "合計": {
         "en": "Total",
         "ja": "合計",
         "zh": "Total",
     },
-    "Damage": {
+    "ダメージ": {
         "en": "Damage",
         "ja": "ダメージ",
         "zh": "伤害",
+    },
+    "サポアビ": {
+        "en": "Support Ability",
+        "ja": "サポアビ",
+        "zh": "Support Ability",
     },
     "四人合計値": {
         "en": "x4",

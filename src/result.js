@@ -1298,16 +1298,16 @@ var Result = CreateClass({
                                 <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px"}} >
                                     <thead>
                                         <tr>
-                                            <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("Supplemental Damage Source", locale)}</th>
+                                            <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
                                             {sortedKeys.map( function (v, ind) {
-                                                return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{v}</th>
+                                                return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate(v, locale)}</th>
                                             })}
-                                            <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("Total", locale)}</th>
+                                            <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("合計", locale)}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td style={{"fontSize": "10pt"}}>{intl.translate("Damage", locale)}</td>
+                                            <td style={{"fontSize": "10pt"}}>{intl.translate("ダメージ", locale)}</td>
                                             {sortedKeys.map( function (v, ind) {
                                                 totalSupplementalDamage += skilldata.supplementalDamageArray[v].damage;
                                                 return (
