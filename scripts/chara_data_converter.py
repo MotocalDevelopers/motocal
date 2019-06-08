@@ -103,7 +103,9 @@ supportAbilist["ougiCapUP_100"] = {
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
-
+supportAbilist["supplemental_third_hit_50k"] = {
+    u"みんなのあんぜんあんしん"
+}
 # Patching DA TA
 patching = OrderedDict()
 
