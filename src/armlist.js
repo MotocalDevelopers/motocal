@@ -292,7 +292,6 @@ var Arm = CreateClass({
             skill1Detail: 0,
             skill2Detail: 0,
             skill3Detail: 0,
-              
         };
     },
     componentWillReceiveProps: function (nextProps) {
@@ -422,9 +421,9 @@ var Arm = CreateClass({
         state["slv"] = newarm.slv;
         state["considerNumberMax"] = parseInt(considerNum);
 
-        state["skill1Detail"] = newarm.skill1Detail != undefined ? newarm.skill1Detail : 0;
-        state["skill2Detail"] = newarm.skill2Detail != undefined ? newarm.skill2Detail : 0;
-        state["skill3Detail"] = newarm.skill3Detail != undefined ? newarm.skill3Detail : 0;
+        state["skill1Detail"] = newarm.skill1Detail != undefined ? parseInt(newarm.skill1Detail) : 0;
+        state["skill2Detail"] = newarm.skill2Detail != undefined ? parseInt(newarm.skill2Detail) : 0;
+        state["skill3Detail"] = newarm.skill3Detail != undefined ? parseInt(newarm.skill3Detail) : 0;
         
         return state;
     },
