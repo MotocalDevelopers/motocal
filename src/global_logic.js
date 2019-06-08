@@ -1177,6 +1177,32 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
     return charaHaisuiValue;
 };
 
+module.exports.recalcNormalSupportKonshin = function (chara, remainHP) {
+    var normalSupportKonshinValue = 0;
+
+    for (var ch = 0; ch < chara.length; ch++) {
+        if (chara[ch].name != "" && chara[ch].isConsideredInAverage) {
+            for (let support of eachSupport(chara[ch])) {
+                // Treatment of emnity supplements only
+                switch (support.type) {
+                    case "normalSupportKonshin":
+                        // Refer to owner's HP
+                        normalSupportKonshinValue += 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", 1, remainHP);
+                        continue;
+                    case "normalSupportKonshin_hpDebuff":
+                        // Refer to owner's HP.
+                        normalSupportKonshinValue += 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", 1, remainHP);
+                        continue;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+    return normalSupportKonshinValue;
+};
+
 module.exports.getTotalBuff = function (prof) {
     var totalBuff = {
         master: 0.0,
@@ -2477,17 +2503,29 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
-                case "normalSupportKonshin_UP":
-                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
+                case "normalSupportKonshin":
+                    {
+                        let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
+                        if (totals[key].isConsideredInAverage) {
+                            for (var key2 in totals) {
+                                totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
+                            }
+                        } else {
+                            totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
                         }
-                    } else {
-                        totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
                     }
-                    if (support.hasOwnProperty("HPBuff")){
-                        totals[key]["HPBuff"] += support.HPBuff;
+                    continue;
+                case "normalSupportKonshin_hpDebuff":
+                    {
+                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
+                        if (totals[key].isConsideredInAverage) {
+                            for (var key2 in totals) {
+                                totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
+                            }
+                        } else {
+                            totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
+                        }
+                        totals[key]["HPdebuff"] += support.hpDebuff;
                     }
                     continue;
                 default:
@@ -2581,6 +2619,12 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
         let charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * (k + 1));
         charaHaisuiBuff.push(charaHaisuiValue);
     }
+    
+    var normalSupportKonshin = [];
+    for (var k = 0; k < 100; ++k) {
+        let normalSupportKonshinValue = module.exports.recalcNormalSupportKonshin(chara, 0.01 * (k + 1));
+        normalSupportKonshin.push(normalSupportKonshinValue);
+    }
 
     var allAlreadyUsedHP = {};
 
@@ -2658,6 +2702,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                         magnaKonshin: 1.0,
                         exHaisui: 1.0,
                         charaHaisui: charaHaisuiBuff[k],
+                        normalSupportKonshin: normalSupportKonshin[k],
                         lbHaisui: lbHaisuiBuff[k],
                         lbKonshin: lbKonshinBuff[k],
                     })
@@ -2696,6 +2741,16 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                 }
                                 omegaKonshinIncluded = true;
                             }
+                        } else if (stype == 'cherubimKonshin') {
+                            for (var l = 0; l < haisuiBuff.length; l++) {
+                                    let normalSupportKonshinValue = 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", 0.01 * (l + 1));
+                                    haisuiBuff[l]["normalSupportKonshin"] = Math.max(haisuiBuff[l]["normalSupportKonshin"], normalSupportKonshinValue);
+                            }
+                        } else if (stype == 'sunbladeKonshin') {
+                            for (var l = 0; l < haisuiBuff.length; l++) {
+                                    let normalSupportKonshinValue = 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", 0.01 * (l + 1));
+                                    haisuiBuff[l]["normalSupportKonshin"] = Math.max(haisuiBuff[l]["normalSupportKonshin"], normalSupportKonshinValue);
+                            }
                         } else if (onedata[key].element == element) {
                             if (isHaisuiType(stype)) {
                                 if (stype === "normalHaisui" || stype === "normalKonshin") {
@@ -2703,7 +2758,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.zeus
                                     }
-                                } else if (stype === "normalOtherKonshin" || stype === "normalSupportKonshin") {
+                                } else if (stype === "normalOtherKonshin") {
                                     for (var l = 0; l < haisuiBuff.length; l++) {
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l]["normalKonshin"] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP)
@@ -2725,7 +2780,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 }
 
                 for (var k = 0; k < 100; k++) {
-                    var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * haisuiBuff[k].normalKonshin * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui * haisuiBuff[k].lbHaisui * haisuiBuff[k].lbKonshin;
+                    var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * (haisuiBuff[k].normalKonshin + haisuiBuff[k].normalSupportKonshin) * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui * haisuiBuff[k].lbHaisui * haisuiBuff[k].lbKonshin;
                     var summedAttack = onedata[key].displayAttack;
                     var newTotalAttack = summedAttack * newTotalSkillCoeff;
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack;
