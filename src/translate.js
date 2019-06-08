@@ -1779,7 +1779,7 @@ var multiLangData = {
         "zh": "Harvin",
     },
     "星晶獣": {
-        "en": "Seisho",
+        "en": "Primal",
         "ja": "星晶獣",
         "zh": "星晶兽",
     },
@@ -1994,6 +1994,16 @@ var multiLangData = {
         "en": "Subject to all specialty weapon-, style-, and race-related weapon skills. (Caim)",
         "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
         "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
+    },
+    "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "15% boost to all allies ATK based on how high character HP is (various)",
+        "ja": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+    },
+    "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "Has 15% less HP. %15 boost to all allies' ATK based on how high character HP is (various)",
+        "ja": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
     },
     // sort keys
     "攻撃力(二手技巧無し,ジータさんのみ)": {
