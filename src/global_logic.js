@@ -1186,7 +1186,11 @@ module.exports.recalcNormalSupportKonshin = function (chara, remainHP) {
                 // Treatment of emnity supplements only
                 switch (support.type) {
                     case "normalSupportKonshin":
-                        // Refer to Zahlhamelina's HP
+                        // Refer to owner's HP
+                        normalSupportKonshinValue += 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", 1, remainHP);
+                        continue;
+                    case "normalSupportKonshin_hpDebuff":
+                        // Refer to owner's HP.
                         normalSupportKonshinValue += 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", 1, remainHP);
                         continue;
                     default:
@@ -2500,13 +2504,28 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     }
                     continue;
                 case "normalSupportKonshin":
-                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
+                    {
+                        let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
+                        if (totals[key].isConsideredInAverage) {
+                            for (var key2 in totals) {
+                                totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
+                            }
+                        } else {
+                            totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
                         }
-                    } else {
-                        totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
+                    }
+                    continue;
+                case "normalSupportKonshin_hpDebuff":
+                    {
+                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
+                        if (totals[key].isConsideredInAverage) {
+                            for (var key2 in totals) {
+                                totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
+                            }
+                        } else {
+                            totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
+                        }
+                        totals[key]["HPdebuff"] += support.hpDebuff;
                     }
                     continue;
                 default:
