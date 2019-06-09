@@ -209,7 +209,7 @@ var Profile = CreateClass({
             personalOtherBuff: 0.0,
             personalOtherBuff2: 0.0,
             personalAdditionalDamageBuff: 0.0,
-            personalSupplementalDamage: 0,
+            personalSupplementalDamageBuff: 0,
             personalDABuff: 0.0,
             personalTABuff: 0.0,
             personalOugiDamageBuff: 0.0,
@@ -404,10 +404,10 @@ var Profile = CreateClass({
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
-                            <tr key="personalSupplementalDamage">
+                            <tr key="personalSupplementalDamageBuff">
                                 <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
-                                <td><FormControl type="number" value={this.state.personalSupplementalDamage}
-                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "personalSupplementalDamage")}></FormControl>
+                                <td><FormControl type="number" value={this.state.personalSupplementalDamageBuff}
+                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "personalSupplementalDamageBuff")}></FormControl>
                                 </td>
                             </tr>,
                             <tr key="personalOugiDamageBuff">

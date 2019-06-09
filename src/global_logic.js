@@ -715,9 +715,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
         var supplementalDamageArray = {};
 
-        var supplementalDamageBuff = Math.ceil(Math.max(totals[key]['supplementalDamageBuff'] * (1 + damageUP), buff['supplementalDamageBuff']) * (1 + damageUP));
+        var supplementalDamageBuff = Math.ceil(Math.max(totals[key]["supplementalDamageBuff"], buff["supplementalDamageBuff"]) * (1 + damageUP));
         if (supplementalDamageBuff > 0) {
-            supplementalDamageArray["Buff"] = {
+            supplementalDamageArray["バフ"] = {
                 damage: supplementalDamageBuff,
                 damageWithoutCritical: supplementalDamageBuff,
                 ougiDamage: supplementalDamageBuff,
@@ -1324,7 +1324,7 @@ module.exports.getTotalBuff = function (prof) {
         damageLimit: 0.0,
         ougiDamageLimit: 0.0,
         chainNumber: 1,
-        supplementalDamage: 0,
+        supplementalDamageBuff: 0,
         //enemyBuffCount: 0,
         enemyDebuffCount: 0,
     };
@@ -1358,7 +1358,7 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["zenithChainDamageLimit"] += zenithChainDamageLimit[prof.zenithChainDamageLimitBonus] != undefined ? zenithChainDamageLimit[prof.zenithChainDamageLimitBonus] : 0;
     totalBuff["zenithElement"] += zenithElement[prof.zenithElementBonus] != undefined ? zenithElement[prof.zenithElementBonus] : 0;
     totalBuff["zenithDamageLimit"] += zenithDamageLimit[prof.zenithDamageLimitBonus] != undefined ? zenithDamageLimit[prof.zenithDamageLimitBonus] : 0;
-    totalBuff["supplementalDamage"] += parseInt(prof.supplementalDamageBuff);
+    totalBuff["supplementalDamageBuff"] += parseInt(prof.supplementalDamageBuff);
 
     return totalBuff
 };
@@ -2485,7 +2485,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["debuffResistance"] = 0;
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
-        totals[key]['supplementalDamageBuff'] = 0;
+        //totals[key]['supplementalDamageBuff'] = 0;
         totals[key]['covenant'] = null;
     }
 };
