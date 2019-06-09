@@ -416,7 +416,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         var normalKonshinCoeff = 1.0 + 0.01 * totals[key]["normalKonshin"] * totalSummon["zeus"];
         normalKonshinCoeff += 0.01 * totals[key]["normalOtherKonshin"];
-        normalKonshinCoeff += 0.01 * totals[key]["normalSupportKonshin"];
+        normalKonshinCoeff += 0.01 * Math.max(totals[key]["normalSupportKonshin"], totals[key]["normalSupportKonshinWeapon"]);
 
         var LBKonshinCoeff = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", totals[key]["EXLB"]["Konshin"], totals[key]["remainHP"]);
 
@@ -1583,9 +1583,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         }
                     } else if (stype == 'cherubimKonshin') {
-                        totals[key]["normalOtherKonshin"] += Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]) - totals[key]["normalSupportKonshin"], 0);
+                        totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'sunbladeKonshin') {
-                        totals[key]["normalOtherKonshin"] += Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", totals["Djeeta"]["remainHP"]) - totals[key]["normalSupportKonshin"], 0);
+                        totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
@@ -1982,6 +1982,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalKonshin: 0,
                 normalOtherKonshin: 0,
                 normalSupportKonshin: 0,
+                normalSupportKonshinWeapon: 0,
                 ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
@@ -2133,6 +2134,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalKonshin: 0,
                 normalOtherKonshin: 0,
                 normalSupportKonshin: 0,
+                normalSupportKonshinWeapon: 0,
                 ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
@@ -2300,6 +2302,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["normalOtherHaisui"] = 0;
         totals[key]["normalKonshin"] = 0;
         totals[key]["normalOtherKonshin"] = 0;
+        totals[key]["normalSupportKonshinWeapon"] = 0;
         totals[key]["ATKDebuff"] = 0;
         totals[key]["unknown"] = 0;
         totals[key]["ex"] = 0;
