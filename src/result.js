@@ -961,7 +961,7 @@ var Result = CreateClass({
 
         return (
             <tbody className="result">
-            {this.props.data.map(function (m, rank) {
+            {(this.props.data || []).map(function (m, rank) {
                 var colSize = 2;
                 var tablebody = [];
                 var charaDetail = {};
