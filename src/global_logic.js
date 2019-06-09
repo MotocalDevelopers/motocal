@@ -599,8 +599,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
             var EXLBCriticalArray = getEXLBCriticalArray(totals[key]["EXLB"]["Critical"]);
             var normalOtherCriticalBuffArray = totals[key]["normalOtherCriticalBuff"];
-            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray, EXLBCriticalArray, normalOtherCriticalBuffArray);
 
+            var criticalBuff = totals[key]["criticalBuff"].concat(buff["criticalBuff"]);
+
+            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray,EXLBCriticalArray, normalOtherCriticalBuffArray, criticalBuff);//, criticalBuff);
             var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon);
             var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
         } else if (prof.enemyElement == "non-but-critical") {
@@ -1324,6 +1326,7 @@ module.exports.getTotalBuff = function (prof) {
         damageLimit: 0.0,
         ougiDamageLimit: 0.0,
         chainNumber: 1,
+        criticalBuff: [],
         supplementalDamageBuff: 0,
         //enemyBuffCount: 0,
         enemyDebuffCount: 0,
@@ -1358,6 +1361,7 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["zenithChainDamageLimit"] += zenithChainDamageLimit[prof.zenithChainDamageLimitBonus] != undefined ? zenithChainDamageLimit[prof.zenithChainDamageLimitBonus] : 0;
     totalBuff["zenithElement"] += zenithElement[prof.zenithElementBonus] != undefined ? zenithElement[prof.zenithElementBonus] : 0;
     totalBuff["zenithDamageLimit"] += zenithDamageLimit[prof.zenithDamageLimitBonus] != undefined ? zenithDamageLimit[prof.zenithDamageLimitBonus] : 0;
+    totalBuff["criticalBuff"] = prof.criticalBuff;// != undefined ? prof.criticalBuff : [];
     totalBuff["supplementalDamageBuff"] += parseInt(prof.supplementalDamageBuff);
 
     return totalBuff
@@ -2179,6 +2183,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 charaDamageUP: 0,
                 tenshiDamageUP: 0,
                 charaUniqueDamageUP: 0,
+                criticalBuff: prof.personalCriticalBuff != undefined ? prof.personalCriticalBuff : [],
                 supplementalDamageBuff: 100 * djeetaBuffList['personalSupplementalDamageBuff'],
                 supplementalThirdHit: [],
                 covenant: null,
@@ -2334,6 +2339,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 charaDamageUP: 0,
                 tenshiDamageUP: 0,
                 charaUniqueDamageUP: 0,
+                criticalBuff: chara[i].criticalBuff,
                 supplementalDamageBuff: 100 * charaBuffList['supplementalDamageBuff'],
                 supplementalThirdHit: [],
                 covenant: null,
