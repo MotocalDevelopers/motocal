@@ -525,13 +525,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // DATA upper limit
         // Normal * Magna * EX * Baha * Cosmos BL
         // DATA debuff for Rasetsu
-        var armDAupNormal = normalNite + normalSante <= 50.0 ? normalNite + normalSante : 50.0;
-        var armDAupMagna = magnaNite + magnaSante <= 50.0 ? magnaNite + magnaSante : 50.0;
-        var armDAupBaha = totals[key]["bahaDA"] <= 50.0 ? totals[key]["bahaDA"] : 50.0;
-        var armDAupCosmos = totals[key]["cosmosBL"] <= 50.0 ? totals[key]["cosmosBL"] : 50.0;
-
-        // Special skills etc
-        var armDAupOther = totals[key]["DAbuff"] <= 50.0 ? totals[key]["DAbuff"] : 50.0;
+        var armDAupNormal = Math.min(GlobalConst.LIMIT_SKILL_INFO.normalDA, normalNite + normalSante);
+        var armDAupMagna = Math.min(GlobalConst.LIMIT_SKILL_INFO.magnaDA, magnaNite + magnaSante);
+        var armDAupBaha = Math.min(GlobalConst.LIMIT_SKILL_INFO.bahaDA, totals[key]["bahaDA"]);
+        var armDAupCosmos = Math.min(GlobalConst.LIMIT_SKILL_INFO.cosmosDA, totals[key]["cosmosBL"]);
 
         // unknown never reaches 50% of the current situation
         var totalDA = 0.01 * totals[key]["baseDA"];
@@ -540,7 +537,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA += buff["da"];
         totalDA += totals[key]["DABuff"];
         totalDA += totalSummon["da"];
-        totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + armDAupOther);
+        totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos);
         if (key == "Djeeta") {
             totalDA += buff["masterDA"];
             totalDA += buff["zenithDA"];
@@ -554,17 +551,16 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"];
         normalLesserSante += totals[key]["normalOtherLesserSante"];
         var magnaLesserSante = totals[key]["magnaLesserSante"] * totalSummon["magna"];
-        var armTAupNormal = normalSante + normalLesserSante <= 50.0 ? normalSante + normalLesserSante : 50.0;
-        var armTAupMagna = magnaSante + magnaLesserSante <= 50.0 ? magnaSante + magnaLesserSante : 50.0;
-        var armTAupBaha = totals[key]["bahaTA"] <= 50.0 ? totals[key]["bahaTA"] : 50.0;
-        var armTAupOther = totals[key]["TAbuff"] <= 50.0 ? totals[key]["TAbuff"] : 50.0;
+        var armTAupNormal = Math.min(GlobalConst.LIMIT_SKILL_INFO.normalTA, normalSante + normalLesserSante);
+        var armTAupMagna = Math.min(GlobalConst.LIMIT_SKILL_INFO.magnaTA, magnaSante + magnaLesserSante);
+        var armTAupBaha = Math.min(GlobalConst.LIMIT_SKILL_INFO.bahaTA, totals[key]["bahaTA"]);
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
         totalTA += 0.01 * totals[key]["EXLB"]["TA"];
         totalTA += buff["ta"];
         totalTA += totals[key]["TABuff"];
         totalTA += totalSummon["ta"];
-        totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther);
+        totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha);
         if (key == "Djeeta") {
             totalTA += buff["masterTA"];
             totalTA += buff["zenithTA"];
@@ -745,11 +741,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["exDA"] = exNite;
         coeffs["cosmosDA"] = armDAupCosmos;
         coeffs["bahaDA"] = armDAupBaha;
-        coeffs["otherDA"] = armDAupOther;
+        coeffs["otherDA"] = totals[key]["DAbuff"];
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = armTAupOther;
+        coeffs["otherTA"] = totals[key]["TAbuff"];
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
