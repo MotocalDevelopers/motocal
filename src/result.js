@@ -34,7 +34,7 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces, proceedIndex,
+    isCosmos, isDarkOpus, isValidResult, checkNumberOfRaces, proceedIndex,
     calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
     calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
@@ -73,9 +73,6 @@ var ResultList = CreateClass({
                         }
                         // Combination changes depending on whether it became a cosmos weapon, or it was not a cosmos weapon
                         if (isCosmos(arml[i]) != isCosmos(this.state.previousArmlist[i])) {
-                            isCombinationChanged = true;
-                        }
-                        if (isHollowsky(arml[i]) != isHollowsky(this.state.previousArmlist[i])) {
                             isCombinationChanged = true;
                         }
                         if (isDarkOpus(arml[i]) != isDarkOpus(this.state.previousArmlist[i])) {
@@ -781,7 +778,7 @@ var ResultList = CreateClass({
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                       active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
-                                      active={(this.state.switchCharaOugiGage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
+                                      active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")}
                                       active={(this.state.switchSkillTotal == 1) ? true : false}>{intl.translate("スキル合計", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDebuffResistance")}
@@ -1030,7 +1027,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-debuffResistance"} className="result-chara-detail">
                                     <span
-                                        className="label label-success">{intl.translate("弱体耐性率", locale)}</span> {parseFloat(m.data[key].debuffResistance.toFixed(1))}%&nbsp;
+                                        className="label label-success">弱体耐性率</span> {parseFloat(m.data[key].debuffResistance.toFixed(1))}%&nbsp;
                                 </span>
                         );
                     }
@@ -1291,39 +1288,6 @@ var Result = CreateClass({
                             );
                         }
 
-                        var supplementalDamageInfo = [];
-                        if (Object.keys(skilldata.supplementalDamageArray).length > 0) {
-                            var totalSupplementalDamage = 0;
-                            var sortedKeys = Object.keys(skilldata.supplementalDamageArray).sort();
-                            supplementalDamageInfo.push(
-                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px"}} >
-                                    <thead>
-                                        <tr>
-                                            <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
-                                            {sortedKeys.map( function (v, ind) {
-                                                return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate(v, locale)}</th>
-                                            })}
-                                            <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("合計", locale)}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style={{"fontSize": "10pt"}}>{intl.translate("ダメージ", locale)}</td>
-                                            {sortedKeys.map( function (v, ind) {
-                                                totalSupplementalDamage += skilldata.supplementalDamageArray[v].damage;
-                                                return (
-                                                    <td key={ind} style={{ "fontSize": "10pt" }}>{skilldata.supplementalDamageArray[v].damage}</td>
-                                                )
-                                            })}
-                                            <td style={{"fontSize": "10pt"}}>
-                                                {totalSupplementalDamage}&nbsp;
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            );
-                        }
-
                         var otherSkillInfo = [];
                         // For other skills
                         var pushSkillInfoElement3 = (skillKey, label, labelType = "primary") => {
@@ -1350,8 +1314,6 @@ var Result = CreateClass({
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-criticalInfo"}
                                                    style={{"margin": "5px 0px"}}>{criticalInfo}</div>);
-                        charaDetail[key].push(<div key={key + "-supplementalDamageInfo"}
-                                                   style={{"margin": "5px 0px"}}>{supplementalDamageInfo}</div>);
                         charaDetail[key].push(<div key={key + "-otherSkillInfo"}>{otherSkillInfo}</div>);
                     }
                 }

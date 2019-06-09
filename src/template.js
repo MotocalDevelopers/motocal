@@ -262,7 +262,6 @@ var RegisteredArm = CreateClass({
             armLv: 1,
             armSLv: 1,
             additionalNotation: "",
-            additionalSelectKeysNotation: "",
             additionalSelectKeys: [],
             additionalSelectSelectors: [],
             additionalSelectClass: "hidden",
@@ -326,7 +325,6 @@ var RegisteredArm = CreateClass({
         for (var key in GlobalConst.additionalSelectList) {
             if ((!isAdditionalSelectFound) && (arm.ja.indexOf(key) >= 0)) {
                 newState["additionalNotation"] = GlobalConst.additionalSelectList[key].notationText;
-                newState["additionalSelectKeysNotation"] = GlobalConst.additionalSelectList[key].selectKeysNotation;
                 newState["additionalSelectKeys"] = GlobalConst.additionalSelectList[key].selectKeys;
                 newState["additionalSelectSelectors"] = GlobalConst.additionalSelectList[key].selectors;
 
@@ -342,7 +340,6 @@ var RegisteredArm = CreateClass({
 
         if (!isAdditionalSelectFound) {
             newState["additionalNotation"] = "";
-            newState["additionalSelectKeysNotation"] = "";
             newState["additionalSelectKeys"] = [];
             newState["additionalSelectSelectors"] = [];
             newState["additionalSelectClass"] = "hidden"
@@ -384,12 +381,6 @@ var RegisteredArm = CreateClass({
                     arm["skill2"] = "non";
                     arm["skill3"] = "non";
                 }
-            } else if (additionalKeys === "skill1Detail") {
-                arm["skill1Detail"] = this.state.skill1Detail;
-            } else if (additionalKeys === "skill2Detail") {
-                arm["skill2Detail"] = this.state.skill2Detail;
-            } else if (additionalKeys === "skill3Detail") {
-                arm["skill3Detail"] = this.state.skill3Detail;
             }
         }
 
@@ -460,7 +451,6 @@ var RegisteredArm = CreateClass({
 
                             {/* 追加の選択肢 */}
                             <FormGroup className={this.state.additionalSelectClass}>
-                                <HelpBlock>{(this.state.additionalSelectKeysNotation !== "") ? intl.translate(this.state.additionalSelectKeysNotation, locale) : ""}</HelpBlock>
                                 {this.state.additionalSelectKeys.map(
                                     (key, ind) => {
                                         return (
@@ -604,7 +594,6 @@ var RegisteredArm = CreateClass({
 
                             {/* 追加の選択肢 */}
                             <FormGroup className={this.state.additionalSelectClass}>
-                                <HelpBlock>{(this.state.additionalSelectKeysNotation !== "") ? intl.translate(this.state.additionalSelectKeysNotation, locale) : ""}</HelpBlock>
                                 {this.state.additionalSelectKeys.map(
                                     (key, ind) => {
                                         return (
