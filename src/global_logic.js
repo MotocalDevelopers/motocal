@@ -710,13 +710,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
-
-        // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
-        var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), chainDamageUP, chainDamageLimit);
+        var chainBurstSupplemental = 0;
 
         //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
         var supplementalDamageArray = {};
-        var supplementalThirdHitNames = ["修羅の誓約"];
 
         var supplementalDamageBuff = Math.ceil(Math.max(totals[key]['supplementalDamageBuff'] * (1 + damageUP), buff['supplementalDamageBuff']) * (1 + damageUP));
         if (supplementalDamageBuff > 0) {
@@ -725,67 +722,56 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical: supplementalDamageBuff,
                 ougiDamage: supplementalDamageBuff,
                 chainBurst: supplementalDamageBuff,
+                type: "other",
             };
         }
         if (totals[key]["supplementalThirdHit"].length > 0) {
             for (let sKey in totals[key]["supplementalThirdHit"]) {
                 let value = Math.ceil(taRate * totals[key]["supplementalThirdHit"][sKey].value * (1 + damageUP));
-                supplementalThirdHitNames.push(totals[key]["supplementalThirdHit"][sKey].source);
                 supplementalDamageArray[totals[key]["supplementalThirdHit"][sKey].source] = {
                     damage: value,
                     damageWithoutCritical: value,
+                    type: "third_hit",
                 };
             }
         }
         if (totals[key]['covenant'] === "impervious") {
-            let value = totals[key]['remainHP'] >= 0.8 ? Math.ceil(30000 * (1 + damageUP)) : 0; 
+            let value = Math.ceil(30000 * (1 + damageUP)); 
             supplementalDamageArray["不壊の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
                 ougiDamage: value,
                 chainBurst: value,
+                type: "hp_based",
             };
-        }
-        else if (totals[key]['covenant'] === 'victorious' && totals['Djeeta']['buffCount'] > 0) {
+        } else if (totals[key]['covenant'] === 'victorious' && totals['Djeeta']['buffCount'] > 0) {
             let djeetaBuffCount = Math.min(10, totals['Djeeta']['buffCount']);
             let value = Math.ceil(djeetaBuffCount * 3000 * (1 + damageUP));
             supplementalDamageArray["凱歌の誓約"] = {
-                damage:  value,
+                damage: value,
                 damageWithoutCritical: value,
                 ougiDamage: value,
                 chainBurst: value,
+                type: "other",
             };
-        }
-        else if (totals[key]['covenant'] === 'contentious' && taRate > 0) {
+        } else if (totals[key]['covenant'] === 'contentious' && taRate > 0) {
             let value = Math.ceil(taRate * 100000 * (1 + damageUP));
             supplementalDamageArray["修羅の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
+                type: "third_hit",
             };
-        }
-        else if (totals[key]['covenant'] === 'deleterious') {
-            var hasCrit = false;
-            var critRate = 0;
-            for (let val in criticalArray) {
-                hasCrit = true;
-                break;
-            }
-            if (hasCrit && !isNaN(criticalArray[1.0])) {
-                critRate = 1.0 - Math.max(0, Math.min(1, criticalArray[1.0]));
-            } else if (hasCrit) {
-                critRate = 1.0;
-            }
-            if (critRate != 0) {
-                let value = Math.ceil(critRate * 30000 * (1 + damageUP));
-                supplementalDamageArray["致命の誓約"] = {
-                    damage: value,
-                    damageWithoutCritical: 0,
-                    ougiDamage: value,
-                    chainBurst: 0,
-                };
-            }
-        }
-        else if (totals[key]['covenant'] === 'calamitous') {
+        } else if (totals[key]['covenant'] === 'deleterious' && Object.keys(criticalArray).length > 0) {
+            let critRate = 1.0 - (isNaN(criticalArray[1.0]) ? 0 : Math.max(0, Math.min(1, criticalArray[1.0])));
+            let value = Math.ceil(critRate * 30000 * (1 + damageUP));
+            supplementalDamageArray["致命の誓約"] = {
+                damage: value,
+                damageWithoutCritical: 0,
+                ougiDamage: value,
+                chainBurst: 0,
+                type: "other",
+            };
+        } else if (totals[key]['covenant'] === 'calamitous') {
             let enemyDebuffCount = Math.min(10, buff['enemyDebuffCount']);
             let value = Math.ceil(enemyDebuffCount * 3000 * (1 + damageUP));
             supplementalDamageArray["災禍の誓約"] = {
@@ -793,41 +779,26 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical: value,
                 ougiDamage: value,
                 chainBurst: value,
+                type: "other",
             };
         }
 
-        for (var supplementalDamageKey in supplementalDamageArray) {
-            if (!supplementalThirdHitNames.includes(supplementalDamageKey)) {
-                damage += supplementalDamageArray[supplementalDamageKey].damage;
-                ougiDamage += supplementalDamageArray[supplementalDamageKey].ougiDamage;
-                damageWithoutCritical += supplementalDamageArray[supplementalDamageKey].damageWithoutCritical;
-                chainBurst += supplementalDamageArray[supplementalDamageKey].chainBurst;
-            }
-        }
+        [damage, damageWithCritical, ougiDamage, chainBurstSupplemental] = module.exports.calcSupplementalDamage(supplementalDamageArray, ["other", "hp_based"], [damage, damageWithCritical, ougiDamage, chainBurstSupplemental], {"remainHP": totals[key]["remainHP"]});
+        // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
+        var chainBurst = chainBurstSupplemental + module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), chainDamageUP, chainDamageLimit);
+
         var expectedCycleDamagePerTurn;
         if (expectedTurn === Infinity) {
             expectedCycleDamagePerTurn = expectedAttack * damage;
 
-            supplementalThirdHitNames.forEach(function(key) {
-            if (supplementalDamageArray[key] != undefined) {
-                    expectedCycleDamagePerTurn += supplementalDamageArray[key].damage;
-                    damage += supplementalDamageArray[key].damage;
-                    damageWithoutCritical += supplementalDamageArray[key].damageWithoutCritical;
-                }
-            });
+            [damage, damageWithoutCritical, expectedCycleDamagePerTurn] = module.exports.calcSupplementalDamage(supplementalDamageArray, ["third_hit"], [damage, damageWithoutCritical, expectedCycleDamagePerTurn], {"expectedTurn": 1});
         } else {
             // Normal attack * n times
             let expectedCycleDamage = expectedTurn * expectedAttack * damage;
             // Ougi + chain burst (buff ["chainNumber"] is 1 or more so division OK)
             expectedCycleDamage += ougiDamage + chainBurst / buff["chainNumber"];
 
-            supplementalThirdHitNames.forEach(function(key) {
-                if (supplementalDamageArray[key] != undefined) {
-                    expectedCycleDamage += supplementalDamageArray[key].damage * expectedTurn;
-                    damage += supplementalDamageArray[key].damage;
-                    damageWithoutCritical += supplementalDamageArray[key].damageWithoutCritical;
-                }
-            });
+            [damage, damageWithoutCritical, expectedCycleDamage] = module.exports.calcSupplementalDamage(supplementalDamageArray, ["third_hit"], [damage, damageWithoutCritical, expectedCycleDamage], {"expectedTurn": expectedTurn});
 
             expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
         }
@@ -858,7 +829,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["chainDamageLimit"] = chainDamageLimit;
         coeffs["criticalArray"] = criticalArray;
         coeffs["supplementalDamageArray"] = supplementalDamageArray;
-        coeffs["supplementalThirdHitNames"] = supplementalThirdHitNames;
 
         // Consecutive shooting information
         coeffs["normalDA"] = armDAupNormal;
@@ -1260,6 +1230,42 @@ function* eachSupport(chara) {
         yield supportAbilities[chara[key]];
     }
 }
+
+module.exports.calcSupplementalDamage = function (supplementalDamageArray, types, vals, additionalVals) {
+    for (let key in supplementalDamageArray) {
+        if (types.includes(supplementalDamageArray[key].type)) {
+            switch (supplementalDamageArray[key].type) {
+                case "other":
+                    if (vals.length == 4) {
+                        vals[0] += supplementalDamageArray[key].damage;
+                        vals[1] += supplementalDamageArray[key].damageWithoutCritical;
+                        vals[2] += supplementalDamageArray[key].ougiDamage;
+                        vals[3] += supplementalDamageArray[key].chainBurst;
+                    }
+                    continue;
+                case "hp_based":
+                    if (vals.length == 4 && additionalVals["remainHP"] != undefined && additionalVals["remainHP"] >= 0.8) {
+                        vals[0] += supplementalDamageArray[key].damage;
+                        vals[1] += supplementalDamageArray[key].damageWithoutCritical;
+                        vals[2] += supplementalDamageArray[key].ougiDamage;
+                        vals[3] += supplementalDamageArray[key].chainBurst;
+                    }
+                    continue;
+                case "third_hit":
+                    if (vals.length == 3 && additionalVals["expectedTurn"] != undefined) {
+                        vals[0] += supplementalDamageArray[key].damage;
+                        vals[1] += supplementalDamageArray[key].damageWithoutCritical;
+                        vals[2] += supplementalDamageArray[key].damage * additionalVals["expectedTurn"];
+                    }
+                    continue;
+                default:
+                    console.error("unknown supplemental damage type");
+                    break;
+            }
+        }
+    }
+    return vals;
+};
 
 module.exports.recalcCharaHaisui = function (chara, remainHP) {
     var charaHaisuiValue = 1.0;
@@ -2874,35 +2880,25 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                     var newDamage = module.exports.calcDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit)
                     var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
-                    
+                    var chainBurstSupplemental = 0;
+
+                    [newDamage, undefined, newOugiDamage, chainBurstSupplemental] =
+                        module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["other", "hp_based"], [newDamage, undefined, newOugiDamage, chainBurstSupplemental], {"remainHP": (k+1)/100});
+
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
-                    var newChainBurst = module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
-                    
-                    for (let supplementalDamageKey in onedata[key].skilldata.supplementalDamageArray) {
-                        if (supplementalDamageKey == "不壊の誓約" && k >= 79) {
-                            let value = (1 + onedata[key].skilldata.damageUP) * 30000;
-                            newDamage += value;
-                            newOugiDamage += value;
-                            newChainBurst += value;
-                        } else if (!onedata[key].skilldata.supplementalThirdHitNames.includes(supplementalDamageKey) && supplementalDamageKey != "不壊の誓約") {
-                            newDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damage;
-                            newOugiDamage += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].ougiDamage;
-                            newChainBurst += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].chainBurst;
-                            //damageWithoutCritical += onedata[key].skilldata.supplementalDamageArray[supplementalDamageKey].damageWithoutCritical;
-                        }
+                    var newChainBurst = chainBurstSupplemental + module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
+
+                    if (onedata[key].expectedTurn === Infinity) {
+                        var newExpectedCycleDamagePerTurn = onedata[key].expectedAttack * newDamage;
+
+                        [newDamage, undefined, newExpectedCycleDamagePerTurn] =
+                            module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["third_hit"], [newDamage, undefined, newExpectedCycleDamagePerTurn] , {"expectedTurn": 1});
+                    } else {
+                        var newExpectedCycleDamagePerTurn = newChainBurst + newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage;
+
+                        [newDamage, undefined, newExpectedCycleDamagePerTurn] =
+                            module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["third_hit"], [newDamage, undefined, newExpectedCycleDamagePerTurn], {"expectedTurn": onedata[key].expectedTurn});
                     }
-
-                    var newExpectedCycleDamagePerTurn = (onedata[key].expectedTurn === Infinity)
-                        ? (onedata[key].expectedAttack * newDamage)
-                        : (newChainBurst + newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage);
-
-                    onedata[key].skilldata.supplementalThirdHitNames.forEach(function(sKey) {
-                        if (onedata[key].skilldata.supplementalDamageArray[sKey] != undefined) {
-                            newExpectedCycleDamagePerTurn += onedata[key].skilldata.supplementalDamageArray[sKey].damage * (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn);
-                            newDamage += onedata[key].skilldata.supplementalDamageArray[sKey].damage;
-                            //damageWithoutCritical += supplementalDamageArray[key].damageWithoutCritical;
-                        }
-                    });
 
                     newExpectedCycleDamagePerTurn /= (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn + 1);
                     
