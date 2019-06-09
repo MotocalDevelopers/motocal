@@ -45,11 +45,13 @@ supportAbilist["da_up_fist_10"] = {u"古今無双流"}
 supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ", u"真夏の夜の夢"}
 supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
 supportAbilist["hp_up_own_20"] = {u"老當益壮"}
-supportAbilist["atk_up_own_5"] = {u"翼の王者", u"愛憎の衝動", u"お祭りの正装"}
+supportAbilist["atk_up_own_5"] = {u"愛憎の衝動"}
 supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ", u"ディペンデンス"}
 supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
 supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
+supportAbilist["element_buff_boost_own_30"] = {u"王者の風格"}
+supportAbilist["eternal_wisdom"] = {u"久遠の叡智"}
 supportAbilist["ougi_gage_up_own_10"] = {u"戦賢の書"}
 supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼の悪魔"}
 supportAbilist["ougi_gage_up_own_100"] = {u"刀神"}
@@ -58,9 +60,12 @@ supportAbilist["ougi_damage_up_50"] = {u"天星剣王"}
 supportAbilist["emnity_all_SL10"] = {u"太陽信仰"}
 supportAbilist["emnity_own_SL20"] = {u"ダーク・ラピュセル", u"黒の鎧", u"砂神グラフォスの慈愛"}
 supportAbilist["envoy_meditation"] = {u"調停の使徒"}
+supportAbilist["ideal_vassals"] = {u"理想の家臣"}
 supportAbilist["dance_of_nataraja"] = {u"破滅の舞踏"}
 supportAbilist["recklessness_incarnate"] = {u"猪突・上宝沁金ノ撃槍"}
-supportAbilist["critical_up_own_10_30"] = {u"イ・タ・ズ・ラしちゃうぞ☆", u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
+supportAbilist["critical_up_own_10_30"] = {
+    u"セルフィッシュ・ロイヤル",
+    u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
 supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"} 
@@ -91,6 +96,9 @@ supportAbilist["ougiCapUP_20"] = {
 supportAbilist["ougiCapUP_25"] = {
     u"優しい心",
     u"リレーション・コンバーター"
+}
+supportAbilist["ougiCapUP_100"] = {
+    u"神魔を恐れぬ王"
 }
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
@@ -153,7 +161,7 @@ patching["天道輝"] = {"DA": 10.0, "TA": 5.0}
 ## 水 - Water
 patching["イングヴェイ"] = {"DA": 10.0, "TA": 5.0}
 patching["シルヴァ"] = {"DA": 10.0, "TA": 5.0}
-patching["ランスロット(SSR)"] = {"DA": 25.0, "TA": 5.0} ##support skill DA15%
+patching["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["桜内梨子＆高海千歌＆渡辺 曜"] = {"DA": 10.0, "TA": 5.0}
 patching["ヴァジラ"] = {"DA": 10.0, "TA": 5.0}
 patching["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}
@@ -345,6 +353,7 @@ patchingOugiRatio["ロゼッタ(クリスマスver)"] = {"ougiRatio": 4.7}
 patchingOugiRatio["サラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
+patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 
 ### SSR(Not Ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
@@ -383,7 +392,7 @@ patchingOugiRatio["本田未央"] = {"ougiRatio": 4.0}
 patchingOugiRatio["ノイシュ(火属性ver)"] = {"ougiRatio": 4.0}
 patchingOugiRatio["ティナ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["城ヶ崎莉嘉"] = {"ougiRatio": 4.0}
-
+patchingOugiRatio["シャオ"] = {"ougiRatio": 4.0}
 
 ### SR(Other)
 patchingOugiRatio["カタリナ(水着ver)"] = {"ougiRatio": 3.7}

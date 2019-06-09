@@ -28,6 +28,7 @@ http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040166000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040167000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040168000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040169000_01.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040215000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040214000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040213000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040212000_01.png
@@ -344,7 +345,7 @@ http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030120000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030121000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030122000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030123000_03.png
-http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030124000_01.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030124000_03.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030125000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030126000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030127000_01.png
@@ -476,3 +477,4 @@ http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030264000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030265000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030266000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030267000_01.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030268000_01.png

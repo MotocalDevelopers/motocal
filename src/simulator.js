@@ -262,6 +262,7 @@ var Simulator = CreateClass({
             totalBuff["da"] = 0.01 * buffs["全体バフ"][k].DA;
             totalBuff["ta"] = 0.01 * buffs["全体バフ"][k].TA;
             totalBuff["ougiGage"] = 0.01 * buffs["全体バフ"][k].ougiGage;
+            totalBuff["ougiDamage"] = 0.01 * buffs["全体バフ"][k].ougiDamage;
             totalBuff["additionalDamage"] = 0.01 * buffs["全体バフ"][k].additionalDamage;
 
             // Set individual buff and remaining HP
@@ -273,6 +274,7 @@ var Simulator = CreateClass({
                 totals[key].DABuff = 0.01 * buffs[key][k].DA;
                 totals[key].TABuff = 0.01 * buffs[key][k].TA;
                 totals[key].ougiGageBuff = 0.01 * buffs[key][k].ougiGage;
+                totals[key].ougiDamageBuff = 0.01 * buffs[key][k].ougiDamage;
                 totals[key].additionalDamageBuff = 0.01 * buffs[key][k].additionalDamage
             }
 
@@ -334,6 +336,7 @@ var Simulator = CreateClass({
                             DA: 0,
                             TA: 0,
                             ougiGage: 0,
+                            ougiDamage: 0,
                             additionalDamage: 0,
                             turnType: "normal",
                             remainHP: 100
@@ -378,6 +381,7 @@ var Simulator = CreateClass({
                         DA: 0,
                         TA: 0,
                         ougiGage: 0,
+                        ougiDamage: 0,
                         additionalDamage: 0,
                         turnType: "normal",
                         remainHP: 100

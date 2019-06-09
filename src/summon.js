@@ -198,11 +198,11 @@ var Summon = CreateClass({
             selfSummonAmount2: 0,
             selfElement: "fire",
             friendSummonType: "element",
-            friendSummonAmount: 80,
+            friendSummonAmount: 140,
             friendSummonAmount2: 0,
             friendElement: "fire",
-            attack: 0,
-            hp: 0,
+            attack: 9500,
+            hp: 4000,
             hpBonus: 0,
             DA: 0,
             TA: 0,
@@ -341,14 +341,14 @@ var Summon = CreateClass({
                     </tr>
 
                     <tr>
-                        <td>
+                        <td><InputGroup>
                             {selfSummon[0].label}<FormControl componentClass="select"
                                                               value={this.state.selfSummonAmount}
                                                               onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
                             {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input}
                                                               value={this.state.selfSummonAmount2}
-                                                              onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
-                        </td>
+                                                              onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup></td>
                     </tr>
 
                     <tr>
@@ -367,15 +367,15 @@ var Summon = CreateClass({
                     </tr>
 
                     <tr>
-                        <td>
+                        <td><InputGroup>
                             {friendSummon[0].label}<FormControl componentClass="select"
                                                                 value={this.state.friendSummonAmount}
                                                                 onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
                             {friendSummon[1].label}<FormControl componentClass="select"
                                                                 className={friendSummon[1].input}
                                                                 value={this.state.friendSummonAmount2}
-                                                                onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
-                        </td>
+                                                                onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup></td>
                     </tr>
 
                     <tr>
@@ -396,54 +396,54 @@ var Summon = CreateClass({
 
                     <tr>
                         <th className="bg-primary">{intl.translate("HP加護", locale)}</th>
-                        <td>
+                        <td><InputGroup>
                             <FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur}
-                                         onChange={this.handleEvent.bind(this, "hpBonus")}/>
-                        </td>
+                                         onChange={this.handleEvent.bind(this, "hpBonus")}/><InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup></td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("DA加護", locale)}</th>
-                        <td>
+                        <td><InputGroup>
                             <FormControl type="number" min="0" value={this.state.DA} onBlur={this.handleOnBlur}
-                                         onChange={this.handleEvent.bind(this, "DA")}/>
-                        </td>
+                                         onChange={this.handleEvent.bind(this, "DA")}/><InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup></td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("TA加護", locale)}</th>
-                        <td>
+                        <td><InputGroup>
                             <FormControl type="number" min="0" value={this.state.TA} onBlur={this.handleOnBlur}
-                                         onChange={this.handleEvent.bind(this, "TA")}/>
-                        </td>
+                                         onChange={this.handleEvent.bind(this, "TA")}/><InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup></td>
                     </tr>
 
                     <TextWithTooltip tooltip={intl.translate("与ダメージ加護説明", locale)} id={"tooltip-boost-damage-detail"}>
                     <tr>
                         <th className="bg-primary">{intl.translate("与ダメージ加護", locale)}</th>
-                        <td>
+                        <td><InputGroup>
                             <FormControl type="number" min="0" value={this.state.tenshiDamageUP} onBlur={this.handleOnBlur}
-                                         onChange={this.handleEvent.bind(this, "tenshiDamageUP")}/>
-                        </td>
+                                         onChange={this.handleEvent.bind(this, "tenshiDamageUP")}/><InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup></td>
                     </tr>
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("ダメージ上限加護説明", locale)} id={"tooltip-damege-limit-aura-detail"}>
                     <tr>
                         <th className="bg-primary">{intl.translate("ダメージ上限加護", locale)}</th>
-                        <td>
+                        <td><InputGroup>
                             <FormControl type="number" min="0" value={this.state.damageLimit} onBlur={this.handleOnBlur}
-                                         onChange={this.handleEvent.bind(this, "damageLimit")}/>
-                        </td>
+                                         onChange={this.handleEvent.bind(this, "damageLimit")}/><InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup></td>
                     </tr>
                     </TextWithTooltip>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
-                        <td>
+                        <td><InputGroup>
                             <FormControl type="number" min="0" value={this.state.ougiDamage} onBlur={this.handleOnBlur}
-                                         onChange={this.handleEvent.bind(this, "ougiDamage")}/>
-                        </td>
+                                         onChange={this.handleEvent.bind(this, "ougiDamage")}/><InputGroup.Addon>%</InputGroup.Addon>
+                        </InputGroup></td>
                     </tr>
                     </tbody>
                 </table>
