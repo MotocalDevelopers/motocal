@@ -261,6 +261,31 @@ var multiLangData = {
         "ja": "別枠乗算のバフ(もし別枠バフが2つ以上ある場合用)",
         "zh": "独立乘算Buff(独立Buff有2个以上时用)",
     },
+    "クリティカルバフ": {
+        "en": "Critical Buff",
+        "ja": "クリティカルバフ",
+        "zh": "Critical Buff",
+    },
+    "クリティカルバフ説明": {
+        "en": "",
+        "ja": "",
+        "zh": "",
+    },
+    "発動率": {
+        "en": "Hit Rate ",
+        "ja": "発動率 ",
+        "zh": "Hit Rate ",
+    },
+    "倍率": {
+        "en": "Damage Multiplier ",
+        "ja": "倍率 ",
+        "zh": "Damage Multiplier ",
+    },
+    "数": {
+        "en": "Count:",
+        "ja": "数",
+        "zh": "Count:",
+    },
     "HPバフ": {
         "en": "HP Buff",
         "ja": "HPバフ",
@@ -305,6 +330,16 @@ var multiLangData = {
         "en": "Bonus Damage will be added to \"Expected Turn Damage\". Chaser of Warlock(20%), Parazonium(15%) etc.",
         "ja": "通常攻撃に割合分の追加ダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)、パラゾ(15%)など。",
         "zh": "视作追加伤害，额外加在伤害上。用在预想DPT的计算中。",
+    },
+    "supplementalDamageBuff": {
+        "en": "Supplemental Damage Buff",
+        "ja": "与ダメージ上昇効果バフ",
+        "zh": "Supplemental Damage Buff",
+    },
+    "supplementalDamageBuff-tooltip": {
+        "en": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
+        "ja": "与ダメージ上昇効果。ロゼッタ（リミテッド）のアイアン・メイデン(5000)、虚空の晶塊の奥義(10000)など。",
+        "zh": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
     },
     "与ダメージ上昇": {
         "en": "Damage UP ",
@@ -1243,6 +1278,26 @@ var multiLangData = {
         "ja": "標準偏差",
         "zh": "标准差",
     },
+    "与ダメージ上昇効果のソース": {
+        "en": "Supplemental Damage Source (incl. DamageUP)",
+        "ja": "与ダメージ上昇効果のソース (与ダメージ上昇を含む)",
+        "zh": "Supplemental Damage Source (incl. DamageUP)",
+    },
+    "合計": {
+        "en": "Total",
+        "ja": "合計",
+        "zh": "Total",
+    },
+    "ダメージ": {
+        "en": "Damage",
+        "ja": "ダメージ",
+        "zh": "伤害",
+    },
+    "サポアビ": {
+        "en": "Support Ability",
+        "ja": "サポアビ",
+        "zh": "Support Ability",
+    },
     "四人合計値": {
         "en": "x4",
         "ja": "x四人",
@@ -1813,6 +1868,202 @@ var multiLangData = {
         "en": "Other",
         "ja": "不詳",
         "zh": "不詳",
+    },
+    //support abilities
+    "なし": {
+        "en": "None",
+        "ja": "なし",
+        "zh": "なし",
+    },
+    "全体DA率10%UP(ランスロット)": {
+        "en": "10% boost to double attack rate for all allies. (Lancelot)",
+        "ja": "全体DA率10%UP(ランスロット)",
+        "zh": "全体DA率10%UP(ランスロット)",
+    },
+    "全体TA率3%UP(ネツァ)": {
+        "en": "3% boost to TA rate for all allies (Nezahualpilli)",
+        "ja": "全体TA率3%UP(ネツァ)",
+        "zh": "全体TA率3%UP(ネツァ)",
+    },
+    "全体風DA率10%UP&TA率5%UP(コッコロ)": {
+        "en": "10% boost to DA rate and 5% boost to TA rate for wind allies. (Kokkoro)",
+        "ja": "全体風DA率10%UP&TA率5%UP(コッコロ)",
+        "zh": "全体風DA率10%UP&TA率5%UP(コッコロ)",
+    },
+    "格闘キャラDA率10%UP(ガンダゴウザ)": {
+        "en": "10% boost to melee-specialty allies' double attack rate. (Ghandagoza)",
+        "ja": "格闘キャラDA率10%UP(ガンダゴウザ)",
+        "zh": "格闘キャラDA率10%UP(ガンダゴウザ)",
+    },
+    "HP15%DOWN(水着イシュ, マルキ, ロザミア)": {
+        "en": "15% reduced max HP. (Izmir (Summer), Marquiares, Rosamia)",
+        "ja": "HP15%DOWN(水着イシュ, マルキ, ロザミア)",
+        "zh": "HP15%DOWN(水着イシュ, マルキ, ロザミア)",
+    },
+    "HP15%UP(ペコリーヌ)": {
+        "en": "15% boost to max HP. (Pecorine)",
+        "ja": "HP15%UP(ペコリーヌ)",
+        "zh": "HP15%UP(ペコリーヌ)",
+    },
+    "HP20%UP(ソリッズ)": {
+        "en": "20% boost to max HP. (Soriz)",
+        "ja": "HP20%UP(ソリッズ)",
+        "zh": "HP20%UP(ソリッズ)",
+    },
+    "攻撃5%UP(レディグレイ)": {
+        "en": "5% boost to ATK. (Lady Grey)",
+        "ja": "攻撃5%UP",
+        "zh": "攻撃5%UP",
+    },
+    "全体攻撃5%UP(クリスティーナ)": {
+        "en": "5% boost to all allies' ATK. (Christina)",
+        "ja": "全体攻撃5%UP(クリスティーナ)",
+        "zh": "全体攻撃5%UP(クリスティーナ)",
+    },
+    "全体攻撃10%UP(アニラ)": {
+        "en": "10% ATK boost for all allies. (Anila)",
+        "ja": "全体攻撃10%UP(アニラ)",
+        "zh": "全体攻撃10%UP(アニラ)",
+    },
+    "ドラフと種族不明の攻撃UP(ナルメア)": {
+        "en": "10% boost to ATK for all Draph, Primal, and Unknown allies. (Narmaya)",
+        "ja": "ドラフと種族不明の攻撃UP(ナルメア)", //to seishou
+        "zh": "ドラフと種族不明の攻撃UP(ナルメア)",
+    },
+    "バトルメンバーの種族数に応じて攻撃力UP(リリィ)": {
+        "en": "Boost to ATK based on number of main allies' races. (Lily)",
+        "ja": "バトルメンバーの種族数に応じて攻撃力UP(リリィ)",
+        "zh": "バトルメンバーの種族数に応じて攻撃力UP(リリィ)",
+    },
+    "属性バフ付与時に属性攻撃30%UP(パーシヴァル)": {
+        "en": "Gain an additional 30% boost to Elemental buffs when affected by Elemental Buff (Percival)",
+        "ja": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
+        "zh": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
+    },
+    "属性バフ付与時にステータスUP(スカーサハ)": {
+        "en": "Boost to ATK and multiattack rate when buffed by Elemental Buff (Scathacha)",
+        "ja": "属性バフ付与時にステータスUP(スカーサハ)",
+        "zh": "属性バフ付与時にステータスUP(スカーサハ)",
+    },
+    "奥義ゲージ上昇量10%UP(アルタイル)": {
+        "en": "Charge bar fills up 10% faster. (Altair)",
+        "ja": "奥義ゲージ上昇量10%UP(アルタイル)",
+        "zh": "奥義ゲージ上昇量10%UP(アルタイル)",
+    },
+    "奥義ゲージ上昇量20%UP(アレ爺,シルヴァ,アーミラ)": {
+        "en": "Charge bar fills up 20% faster. (Aletheia, Silva, Amira)",
+        "ja": "奥義ゲージ上昇量20%UP(アレ爺,シルヴァ,アーミラ)",
+        "zh": "奥義ゲージ上昇量20%UP(アレ爺,シルヴァ,アーミラ)",
+    },
+    "奥義ゲージ上昇量100%UP(オクトー)": {
+        "en": "Charge bar fills up 100% faster. (Eahta)",
+        "ja": "奥義ゲージ上昇量100%UP(オクトー)",
+        "zh": "奥義ゲージ上昇量100%UP(オクトー)",
+    },
+    "全体奥義ダメージ50%UP(シエテ)": {
+        "en": "50% boost to C.A. DMG for all allies. (Seofon)",
+        "ja": "全体奥義ダメージ50%UP(シエテ)",
+        "zh": "全体奥義ダメージ50%UP(シエテ)",
+    },
+    "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)": {
+        "en": "50% boost to C.A. DMG and 10% boost to C.A. DMG cap for all allies. (5★ Seofon)",
+        "ja": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "zh": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+    },
+    "全体背水効果(ザルハメリナ)": {
+        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina)",
+        "ja": "全体背水効果(ザルハメリナ)",
+        "zh": "全体背水効果(ザルハメリナ)",
+    },
+    "背水効果(闇ジャンヌダルク, 黒騎士)": {
+        "en": "Boost to ATK based on how low HP is. (Jeanne D'Ark (Dark), Black Knight)",
+        "ja": "背水効果(闇ジャンヌダルク, 黒騎士)",
+        "zh": "背水効果(闇ジャンヌダルク, 黒騎士)",
+    },
+    "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)": {
+        "en": "Boost to stats based on number of different elements among allies. (Zooey (Promo), Zooey (Grand))",
+        "ja": "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)",
+        "zh": "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)",
+    },
+    "バトルメンバーの数が多い程自分のステータスUP(パーシヴァル)": {
+        "en": "Boost to ATK, double attack rate, and triple attack rate based on number of allies in battle. (Percival)",
+        "ja": "バトルメンバーの数が多い程自分のステータスUP(パーシヴァル)",
+        "zh": "バトルメンバーの数が多い程自分のステータスUP(パーシヴァル)",
+    },
+    "奥義ゲージ上昇量35%DOWN&与ダメージ上昇15%UP(シヴァ)": {
+        "en": "Charge bar fills up 35% slower and 15% boost to one-foe attack damage. (Shiva)",
+        "ja": "奥義ゲージ上昇量35%DOWN&与ダメージ上昇15%UP(シヴァ)",
+        "zh": "奥義ゲージ上昇量35%DOWN&与ダメージ上昇15%UP(シヴァ)",
+    },
+    "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)": {
+        "en": "Charge bar fills up 35% slower, 15% boost to one-foe attack damage and 20% boost to max HP. (Kumbhira)",
+        "ja": "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)",
+        "zh": "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)",
+    },
+    "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)": {
+        "en": "Boost to critical hit rate (10% chance, 30% damage). (Vania, Jeanne D'Ark)",
+        "ja": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
+        "zh": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
+    },
+    "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)": {
+        "en": "Boost to critical hit rate (10% chance, 30% damage). (Jeanne D'Ark (Themed))",
+        "ja": "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)",
+        "zh": "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)",
+    },
+    "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)": {
+        "en": "Boost to critical hit rate for all allies (5% chance, 30% damage). (Ferry)",
+        "ja": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
+        "zh": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
+    },
+    "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)": {
+        "en": "Boost to critical hit rate for all allies (100% chance, 50% damage). (5★ Tweyen C.A.)",
+        "ja": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
+        "zh": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
+    },
+    "与ダメージ上昇5%UP(アビー)": {
+        "en": "5% Boost to Damage. (Abby)",
+        "ja": "与ダメージ上昇5%UP(アビー)",
+        "zh": "与ダメージ上昇5%UP(アビー)",
+    },
+    "与ダメージ上昇10%UP": {
+        "en": "10% Boost to Damage.",
+        "ja": "与ダメージ上昇10%UP",
+        "zh": "与ダメージ上昇10%UP",
+    },
+    "与ダメージ上昇20%UP(色々)": {
+        "en": "20% Boost to Damage. (various)",
+        "ja": "与ダメージ上昇20%UP(色々)",
+        "zh": "与ダメージ上昇20%UP(色々)",
+    },
+    "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)": {
+        "en": "20% Boost to Damage and C.A. DMG Cap. (5★ Eternals)",
+        "ja": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
+        "zh": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
+    },
+    "奥義ダメージ上限20%UP(最終十天衆)": {
+        "en": "20% Boost to C.A. DMG Cap. (5★ Eternals)",
+        "ja": "奥義ダメージ上限20%UP(最終十天衆)",
+        "zh": "奥義ダメージ上限20%UP(最終十天衆)",
+    },
+    "奥義ダメージ上限25%UP(ルリア,SSRロボミ)": {
+        "en": "25% Boost to C.A. DMG Cap. (Robomi (SSR), Lyria)",
+        "ja": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
+        "zh": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
+    },
+    "奥義ダメージ上限100%UP(シャリオス17世)": {
+        "en": "100% Boost to C.A. DMG Cap. (Charioce XVII)",
+        "ja": "奥義ダメージ上限100%UP(シャリオス17世)",
+        "zh": "奥義ダメージ上限100%UP(シャリオス17世)",
+    },
+    "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)": {
+        "en": "Subject to all specialty weapon-, style-, and race-related weapon skills. (Caim)",
+        "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
+        "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
+    },
+    "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)": {
+        "en": "50,000 Supplemental DMG to the third hit of triple attacks. (Hallessena)",
+        "ja": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
+        "zh": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
     },
     // sort keys
     "攻撃力(二手技巧無し,ジータさんのみ)": {
@@ -2756,6 +3007,31 @@ var multiLangData = {
         "ja": "アーカーシャ-槍",
         "zh": "アーカーシャ-槍",
     },
+    "不壊の誓約": {
+        "en": "Impervious Covenant",
+        "ja": "不壊の誓約",
+        "zh": "不壊の誓約",
+    },
+    "凱歌の誓約": {
+        "en": "Victorious Covenant",
+        "ja": "凱歌の誓約",
+        "zh": "凱歌の誓約",
+    },
+    "修羅の誓約": {
+        "en": "Contentious Covenant",
+        "ja": "修羅の誓約",
+        "zh": "修羅の誓約",
+    },
+    "致命の誓約": {
+        "en": "Deleterious Covenant",
+        "ja": "致命の誓約",
+        "zh": "致命の誓約",
+    },
+    "災禍の誓約": {
+        "en": "Calamitous Covenant",
+        "ja": "災禍の誓約",
+        "zh": "災禍の誓約",
+    },
     "ペンデュラム[α]": {
         "en": "Pendulum Key α",
         "ja": "ペンデュラム[α](通常上限10%UP)",
@@ -3132,6 +3408,16 @@ var multiLangData = {
         "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
         "ja": "天司武器入りで計算する場合、優先項目をダメージベースのものに設定してください.",
         "zh": "把天司武器加入计算的时候，请选择基于伤害的优先项目。",
+    },
+    "敵の弱体効果": {
+        "en": "Number of Debuffs (on target)",
+        "ja": "敵の弱体効果の数",
+        "za": "敵の弱体効果の数",
+    },
+    "ジータバフの数": {
+        "en": "Number of Buffs (on Djeeta)",
+        "ja": "バフの数（ジータ）",
+        "za": "バフの数（ジータ）",
     },
     "広告": {
         "en": "Ad.",
