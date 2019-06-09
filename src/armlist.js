@@ -447,8 +447,13 @@ var Arm = CreateClass({
             }
             newState[key] = parseInt(e.target.value)
         } else {
-            newState[key] = e.target.value
+            newState[key] = e.target.value;
         }
+
+         if (key == "skill1" || key == "skill2" || key == "skill3") {
+            newState[key] = e.target.value;
+            newState[key + "Detail"] = 0;
+         }
 
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false)
