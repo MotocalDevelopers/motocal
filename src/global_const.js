@@ -1742,7 +1742,7 @@ var skillAmounts = {
     },
     "critical": {
         "S": [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0],
-        "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0],
+        "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5],
         "L": [4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
         "ratio": 0.5,
     },
@@ -1890,7 +1890,7 @@ var supportAbilities = {
         "value": 0.20
     },
     "atk_up_own_5": {
-        "name": "攻撃5%UP(ネツァ,レディグレイ,ハロシャル)",
+        "name": "攻撃5%UP(レディグレイ)",
         "type": "normalBuff",
         "range": "own",
         "value": 0.05
@@ -1998,7 +1998,7 @@ var supportAbilities = {
         "value": 0.00
     },
     "critical_up_own_10_30": {
-        "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ハロカリ)",
+        "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
         "type": "criticalBuff",
         "range": "own",
         "value": 0.10,
@@ -2060,6 +2060,12 @@ var supportAbilities = {
         "type": "ougiDamageLimitBuff",
         "range": "own",
         "value": 0.25
+    },
+    "ougiCapUP_100": {
+        "name": "奥義ダメージ上限100%UP(シャリオス17世)",
+        "type": "ougiDamageLimitBuff",
+        "range": "own",
+        "value": 1.0
     },
     "wildcard": {
         "name": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
@@ -2655,6 +2661,12 @@ module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).map(fun
     return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "zh")}</option>;
 });
 
-module.exports.selector.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
-    return <option value={opt} key={opt}>{supportAbilities[opt].name}</option>;
+module.exports.selector.ja.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "ja")}</option>;
+});
+module.exports.selector.en.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "en")}</option>;
+});
+module.exports.selector.zh.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "zh")}</option>;
 });
