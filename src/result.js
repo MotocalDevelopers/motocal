@@ -777,7 +777,7 @@ var ResultList = CreateClass({
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                       active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
-                                      active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
+                                      active={(this.state.switchCharaOugiGage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")}
                                       active={(this.state.switchSkillTotal == 1) ? true : false}>{intl.translate("スキル合計", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDebuffResistance")}
@@ -961,7 +961,7 @@ var Result = CreateClass({
 
         return (
             <tbody className="result">
-            {this.props.data.map(function (m, rank) {
+            {(this.props.data || []).map(function (m, rank) {
                 var colSize = 2;
                 var tablebody = [];
                 var charaDetail = {};
