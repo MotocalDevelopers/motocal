@@ -672,7 +672,7 @@ var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 230
 var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
 var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-var limitBonusElementList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 24, 25, 28, 30, 32, 33, 35, 36, 38, 40];
+var limitBonusElementList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
 var limitBonusCriticalList = {
     "none": {
         "name": "無し",
@@ -695,6 +695,16 @@ var limitBonusCriticalList = {
         "attackRatio": 0.25,
     },
 };
+var limitBonusOugiDamageList = [0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80];
+var limitBonusOugiDamageLimitList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
+var limitBonusOugiGageBuffList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
+
+/*var limitBonusHaisuiList = {
+    "none": "無し",
+    "small": "小",
+    "medium": "中",
+    "large": "大",
+    };*/
 
 // Chara EX limitBonus
 var EXlimitBonusAttackList = [0, 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000];
@@ -2583,6 +2593,15 @@ module.exports.selector.en.limitBonusCriticalList = Object.keys(limitBonusCritic
 });
 module.exports.selector.zh.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "zh")}</option>;
+});
+module.exports.selector.limitBonusOugiDamageList = limitBonusOugiDamageList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.limitBonusOugiDamageLimitList = limitBonusOugiDamageLimitList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.limitBonusOugiGageBuffList = limitBonusOugiGageBuffList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
 });
 
 // Chara EX Limit Bonus Selectors
