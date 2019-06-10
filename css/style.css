@@ -171,6 +171,10 @@
     .input-suggest {
         color: #ffff00;
     }
+    
+    .charaList table tbody tr th {
+        white-space: pre-line;
+    }
 
     .summonList {
         width: 100%;
