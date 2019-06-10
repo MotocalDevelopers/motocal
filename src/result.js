@@ -205,6 +205,7 @@ var ResultList = CreateClass({
             switchAverageCycleDamage: 1,
             switchDebuffResistance: 0,
             switchChainBurst: 0,
+            switchTotalOugiDamageWithChain: 0,
             disableAutoResultUpdate: 0,
             result: {summon: this.props.summon, result: []},
             chartSortKey: "totalAttack",
@@ -437,6 +438,9 @@ var ResultList = CreateClass({
         if (switcher.switchChainBurst) {
             tableheader.push(intl.translate("チェインバースト", locale))
         }
+        if (switcher.switchTotalOugiDamageWithChain) {
+            tableheader.push(intl.translate("奥義+チェンバダメージ", locale))
+        }
         if (switcher.switchCycleDamage) {
             tableheader.push(intl.translate("予想ターン毎ダメージ", locale))
         }
@@ -554,6 +558,9 @@ var ResultList = CreateClass({
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchChainBurst")}
                                     className={(this.state.switchChainBurst == 1) ? "display-checked" : "display-unchecked"}> チェインバースト
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchTotalOugiDamageWithChain")}
+                                    className={(this.state.switchTotalOugiDamageWithChain == 1) ? "display-checked" : "display-unchecked"}> 奥義+チェンバダメージ
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaAttack")}
                                     className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力
@@ -757,6 +764,8 @@ var ResultList = CreateClass({
                                       active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchChainBurst")}
                                       active={(this.state.switchChainBurst == 1) ? true : false}> {intl.translate("チェインバースト", locale)} </MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchTotalOugiDamageWithChain")}
+                                      active={(this.state.switchTotalOugiDamageWithChain == 1) ? true : false}> {intl.translate("奥義+チェンバダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchOugiGage")}
                                       active={(this.state.switchOugiGage == 1) ? true : false}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </MenuItem>
                         </DropdownButton>
@@ -1166,6 +1175,10 @@ var Result = CreateClass({
 
                 if (sw.switchChainBurst) {
                     tablebody.push(parseInt(m.data.Djeeta.averageChainBurst));
+                    ++colSize;
+                }
+                if (sw.switchTotalOugiDamageWithChain) {
+                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamageWithChain));
                     ++colSize;
                 }
                 if (sw.switchCycleDamage) {
