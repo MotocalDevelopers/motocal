@@ -670,7 +670,7 @@ var chainNumberList = [1, 2, 3, 4];
 // Chara limitBonus
 var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2300, 2500, 2600, 2800, 3000];
 var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
-var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var limitBonusElementList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
 var limitBonusCriticalList = {
