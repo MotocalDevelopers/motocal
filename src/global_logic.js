@@ -733,6 +733,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["LBKonshin"] = LBKonshinCoeff;
         coeffs["other"] = otherCoeff;
         coeffs["hpRatio"] = hpCoeff;
+        coeffs["ougiGageBuff"] = ougiGageBuff - 1.0;
         coeffs["additionalDamage"] = additionalDamage;
         coeffs["ougiDamageUP"] = ougiDamageUP;
         coeffs["chainDamageUP"] = chainDamageUP;

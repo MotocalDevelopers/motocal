@@ -352,7 +352,7 @@ var multiLangData = {
         "zh": "影响奥义槽上升量。在预想DPT计算中有用到。",
     },
     "チェインダメージアップ": {
-        "en": "Chain Damage UP", //a.k.a: chainDamageUP
+        "en": "Chain DMG UP", //a.k.a: chainDamageUP
         "ja": "チェインダメージUP",
         "zh": "チェイン义伤害上升",
     },
@@ -367,7 +367,7 @@ var multiLangData = {
         "zh": "通常攻击伤害的计算中有用到。",
     },
     "チェインダメージ上限アップ": {
-        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
+        "en": "Chain DMG Cap",  //a.k.a: chainDamageLimit
         "ja": "チェインダメージ上限UP",
         "zh": "链义伤害上限上升",
     },
@@ -377,7 +377,7 @@ var multiLangData = {
         "zh": "奥义伤害上限上升",
     },
     "チェインダメージ上限アップ": {
-        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
+        "en": "Chain DMG Cap",  //a.k.a: chainDamageLimit
         "ja": "チェインダメージ上限UP",
         "zh": "链义伤害上限上升",
     },
