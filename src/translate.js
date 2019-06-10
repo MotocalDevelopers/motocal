@@ -3754,6 +3754,11 @@ var multiLangData = {
         "ja": "2019/05/28: 武器とキャラ追加。通常技巧の計算方法を方陣技巧と共通化。EXLB(指輪)入力欄追加。ソルジャー追加。",
         "zh": "2019/05/28: Added new weapons and characters, and new normal critical calculation, and Over Masterys. and Soldier.",
     },
+    "notice-20190606-1": {
+        "en": "06/06/2019: Added new weapons and characters, Character Balance Patch.",
+        "ja": "2019/06/06: 武器とキャラ追加。キャラバランスパッチ。",
+        "zh": "2019/06/06: Added new weapons and characters, Character Balance Patch.",
+    },
 };
 
 // Language settings
