@@ -741,11 +741,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["exDA"] = exNite;
         coeffs["cosmosDA"] = armDAupCosmos;
         coeffs["bahaDA"] = armDAupBaha;
-        coeffs["otherDA"] = totals[key]["DAbuff"];
+        coeffs["otherDA"] = totals[key]["DAbuff"] * 100;
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = totals[key]["TAbuff"];
+        coeffs["otherTA"] = totals[key]["TAbuff"] * 100;
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
@@ -1592,10 +1592,10 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["magnaNite"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
                         } else if (stype == 'normalRasetsu') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                            totals[key]["DAbuff"] -= comb[i] * 10.0;
+                            totals[key]["DAbuff"] -= (comb[i] * 10.0) / 100;
                         } else if (stype == 'magnaRasetsu') {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
-                            totals[key]["DAbuff"] -= comb[i] * 10.0;
+                            totals[key]["DAbuff"] -= (comb[i] * 10.0) / 100;
                         } else if (stype == 'normalMusou') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             totals[key]["normalNite"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
@@ -1699,7 +1699,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 totals[key]["normalHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
                             }
                         } else if (stype == 'washiouKekkai') {
-                            if (key == 'Djeeta') totals[key]["DAbuff"] += comb[i] * skillAmounts["washiouKekkai"][amount][slv - 1];
+                            if (key == 'Djeeta') {
+                                totals[key]["DAbuff"] += (comb[i] * skillAmounts["washiouKekkai"][amount][slv - 1]) / 100;
+                            }
                         } else if (stype == 'maihimeEnbu') {
                             // Maihime's performance: normal attacker's large + upper limit up 7%
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"]["L"][slv - 1];
