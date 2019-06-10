@@ -1,5 +1,5 @@
 var React = require('react');
-var {Button, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
+var {Button, Checkbox, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
@@ -214,7 +214,12 @@ var Profile = CreateClass({
             personalOugiGageBuff: 0.0,
             personalDamageLimitBuff: 0.0,
             personalOugiDamageLimitBuff: 0.0,
-        };
+            criticalBuff: [],
+            criticalBuffCount: 0,
+            personalCriticalBuff: [],
+            personalCriticalBuffCount: 0,
+            retsujitsuNoRakuen: false,
+    };
     },
     switchBufflist: function (e) {
         this.setState({openBufflist: !(this.state.openBufflist)})
@@ -235,13 +240,21 @@ var Profile = CreateClass({
     handleSelectEvent: function (key, e) {
         // A select type input form is good for onChange
         var newState = this.state;
-        newState[key] = e.target.value;
+        if (Array.isArray(key)) {
+            if (key.length == 3 && (key[0] == 'criticalBuff' || key[0] == 'personalCriticalBuff')) {
+                newState[key[0]][key[1]][key[2]] = e.target.value/100;
+            }
+        } else if (e.target.type === "checkbox") {
+            newState[key] = e.target.checked;
+        } else {
+            newState[key] = e.target.value;
+        }
         if (key == "job") {
             newState.DA = Jobs[e.target.value].DaBonus;
             newState.TA = Jobs[e.target.value].TaBonus
         }
         this.setState(newState);
-        this.props.onChange(newState)
+        this.props.onChange(newState);
     },
     renderTwitterLink: function () {
         if (process.env.TWITTER_ID) {
@@ -254,6 +267,42 @@ var Profile = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
+        //Generate Critical Buff Fields
+        var criticalBuffRender = [];
+        if (this.state.criticalBuff.length != this.state.criticalBuffCount) this.state.criticalBuff = this.state.criticalBuff.slice(0, this.state.criticalBuffCount);
+        for (var i = 0; i < this.state.criticalBuffCount; i++) {
+            if (this.state.criticalBuff[i] == undefined) this.state.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                criticalBuffRender[i] = (
+                <div key={"criticalBuff" + i}>
+                   <hr/>
+                   <strong>{intl.translate("発動率", locale)}#{i+1}</strong>
+                   <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["value"]}
+                                            onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "value"])}>{selector.criticalRateLevel}</FormControl>
+                   <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                   <strong>{intl.translate("発動率", locale)}#{i+1}</strong>
+                   <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["attackRatio"]}
+                                            onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "attackRatio"])}>{selector.buffLevel}</FormControl>
+                   <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                </div>);
+        }
+        //Djeeta's
+        var personalCriticalBuffRender = [];
+        if (this.state.personalCriticalBuff.length != this.state.personalCriticalBuffCount) this.state.personalCriticalBuff = this.state.personalCriticalBuff.slice(0, this.state.personalCriticalBuffCount);
+        for (var i = 0; i < this.state.personalCriticalBuffCount; i++) {
+            if (this.state.personalCriticalBuff[i] == undefined) this.state.personalCriticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                personalCriticalBuffRender[i] = (
+                <div key={"personalCriticalBuff" + i}>
+                   <hr/>
+                   <strong>{intl.translate("発動率", locale)}#{i+1}</strong>
+                   <InputGroup><FormControl componentClass="select" value={100*this.state.personalCriticalBuff[i]["value"]}
+                                            onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["personalCriticalBuff", i, "value"])}>{selector.criticalRateLevel}</FormControl>
+                   <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                   <strong>{intl.translate("倍率", locale)}#{i+1}</strong>
+                   <InputGroup><FormControl componentClass="select" value={100*this.state.personalCriticalBuff[i]["attackRatio"]}
+                                            onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["personalCriticalBuff", i, "attackRatio"])}>{selector.buffLevel}</FormControl>
+                   <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                </div>);
+        }
 
         return (
             <div className="profile">
@@ -380,6 +429,15 @@ var Profile = CreateClass({
                                                  onChange={this.handleSelectEvent.bind(this, "personalOtherBuff2")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
+                            </tr>,
+                            <tr key="personalCriticalBuff">
+                                <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
+                                <td>
+                                    <strong>{intl.translate("数", locale)}</strong>
+                                    <FormControl type="number" min="0" value={this.state.personalCriticalBuffCount}
+                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "personalCriticalBuffCount")}/>
+                                    {personalCriticalBuffRender}
+                                </td>
                             </tr>,
                             <tr key="personalDaBuff">
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
@@ -695,6 +753,19 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("クリティカルバフ説明", locale)} id={"tooltip-critical-buff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
+                            <td>
+                                <strong>{intl.translate("数", locale)}</strong>
+                                <FormControl type="number" min="0" value={this.state.criticalBuffCount}
+                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "criticalBuffCount")}/>
+                                {criticalBuffRender}
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("HPバフ説明", locale)} id={"tooltip-hpbuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
@@ -707,6 +778,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("DAバフ説明", locale)} id={"tooltip-dabuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
@@ -719,6 +791,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("TAバフ説明", locale)} id={"tooltip-tabuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
@@ -731,6 +804,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("残HP割合", locale)} id={"tooltip-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("残HP割合", locale)}</th>
@@ -854,6 +928,18 @@ var Profile = CreateClass({
                                             onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
+                                </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)} id={"tooltip-sun-touched-paradise-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("特殊効果", locale)}</th>
+                                <td>
+                                    <Checkbox inline checked={this.state.retsujitsuNoRakuen}
+                                              onChange={this.handleSelectEvent.bind(this, "retsujitsuNoRakuen")}>
+                                        <strong>{intl.translate("烈日の楽園", locale)}</strong>
+                                    </Checkbox>
                                 </td>
                         </tr>
                     </TextWithTooltip>
