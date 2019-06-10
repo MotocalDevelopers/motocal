@@ -730,7 +730,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 let value = Math.ceil(taRate * totals[key]["supplementalThirdHit"][sKey].value * (1 + damageUP));
                 supplementalDamageArray[totals[key]["supplementalThirdHit"][sKey].source] = {
                     damage: value,
-                    damageWithoutCritical: value,
                     type: "third_hit",
                 };
             }
@@ -758,7 +757,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             let value = Math.ceil(taRate * 100000 * (1 + damageUP));
             supplementalDamageArray["修羅の誓約"] = {
                 damage: value,
-                damageWithoutCritical: value,
                 type: "third_hit",
             };
         } else if (totals[key]['covenant'] === 'deleterious' && Object.keys(criticalArray).length > 0) {
@@ -791,14 +789,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (expectedTurn === Infinity) {
             expectedCycleDamagePerTurn = expectedAttack * damage;
 
-            [damage, damageWithoutCritical, expectedCycleDamagePerTurn] = module.exports.calcSupplementalDamage(supplementalDamageArray, ["third_hit"], [damage, damageWithoutCritical, expectedCycleDamagePerTurn], {"expectedTurn": 1});
+            [damage, expectedCycleDamagePerTurn] = module.exports.calcSupplementalDamage(supplementalDamageArray, ["third_hit"], [damage, expectedCycleDamagePerTurn], {"expectedTurn": 1});
         } else {
             // Normal attack * n times
             let expectedCycleDamage = expectedTurn * expectedAttack * damage;
             // Ougi + chain burst (buff ["chainNumber"] is 1 or more so division OK)
             expectedCycleDamage += ougiDamage + chainBurst / buff["chainNumber"];
 
-            [damage, damageWithoutCritical, expectedCycleDamage] = module.exports.calcSupplementalDamage(supplementalDamageArray, ["third_hit"], [damage, damageWithoutCritical, expectedCycleDamage], {"expectedTurn": expectedTurn});
+            [damage, expectedCycleDamage] = module.exports.calcSupplementalDamage(supplementalDamageArray, ["third_hit"], [damage, expectedCycleDamage], {"expectedTurn": expectedTurn});
 
             expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
         }
@@ -1252,10 +1250,9 @@ module.exports.calcSupplementalDamage = function (supplementalDamageArray, types
                     }
                     break;
                 case "third_hit":
-                    if (vals.length == 3 && additionalVals["expectedTurn"] != undefined) {
+                    if (vals.length == 2 && additionalVals["expectedTurn"] != undefined) {
                         vals[0] += supplementalDamageArray[key].damage;
-                        vals[1] += supplementalDamageArray[key].damageWithoutCritical;
-                        vals[2] += supplementalDamageArray[key].damage * additionalVals["expectedTurn"];
+                        vals[1] += supplementalDamageArray[key].damage * additionalVals["expectedTurn"];
                     }
                     break;
                 default:
@@ -2882,8 +2879,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
                     var chainBurstSupplemental = 0;
                     var newDamageWithoutCritical = 0; //just a placeholder. not to be used in any calculation.
-                    [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] =
-                        module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["other", "hp_based"], [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {"remainHP": (k+1)/100});
+                    [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] = module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["other", "hp_based"], [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {"remainHP": (k+1)/100});
 
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
                     var newChainBurst = chainBurstSupplemental + module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
@@ -2891,13 +2887,11 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     if (onedata[key].expectedTurn === Infinity) {
                         var newExpectedCycleDamagePerTurn = onedata[key].expectedAttack * newDamage;
 
-                        [newDamage, newDamageWithoutCritical, newExpectedCycleDamagePerTurn] =
-                            module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["third_hit"], [newDamage, newDamageWithoutCritical, newExpectedCycleDamagePerTurn] , {"expectedTurn": 1});
+                        [newDamage, newExpectedCycleDamagePerTurn] = module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["third_hit"], [newDamage, newExpectedCycleDamagePerTurn] , {"expectedTurn": 1});
                     } else {
                         var newExpectedCycleDamagePerTurn = newChainBurst + newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage;
 
-                        [newDamage, newDamageWithoutCritical, newExpectedCycleDamagePerTurn] =
-                            module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["third_hit"], [newDamage, newDamageWithoutCritical, newExpectedCycleDamagePerTurn], {"expectedTurn": onedata[key].expectedTurn});
+                        [newDamage, newExpectedCycleDamagePerTurn] = module.exports.calcSupplementalDamage(onedata[key].skilldata.supplementalDamageArray, ["third_hit"], [newDamage, ewExpectedCycleDamagePerTurn], {"expectedTurn": onedata[key].expectedTurn});
                     }
 
                     newExpectedCycleDamagePerTurn /= (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn + 1);
