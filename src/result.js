@@ -1147,7 +1147,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchOugiDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.ougiDamage));
+                    tablebody.push(parseInt(m.data.Djeeta.totalOugiDamage));
                     ++colSize;
                 }
 

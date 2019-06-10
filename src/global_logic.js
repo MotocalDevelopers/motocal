@@ -781,7 +781,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             damageWithCritical: damage,
             // Only consecutive shots
             damageWithMultiple: damageWithoutCritical * expectedAttack,
-            ougiDamageWithChainDamage: ougiDamage + chainBurst,
             ougiRatio: totals[key]["ougiRatio"],
             ougiDamage: ougiDamage,
             chainBurst: chainBurst,
@@ -797,7 +796,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     var totalExpected_average = 0.0;
     var averageCyclePerTurn = 0.0;
     var averageChainBurst = 0.0;
-    var totalOugiDamageWithChain = 0.0;
+    var totalOugiDamage = 0.0;
 
     var cnt = 0.0;
     for (key in res) {
@@ -807,7 +806,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             totalExpected_average += res[key].totalExpected;
             averageCyclePerTurn += res[key].expectedCycleDamagePerTurn;
             averageChainBurst += res[key].chainBurst;
-            totalOugiDamageWithChain += res[key].ougiDamage;
+            totalOugiDamage += res[key].ougiDamage;
             cnt += 1.0
         }
     }
@@ -817,8 +816,15 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average / cnt);
     res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn / cnt);
     res["Djeeta"]["averageChainBurst"] = parseInt(averageChainBurst / cnt);
-    res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamageWithChain + res["Djeeta"]["averageChainBurst"];
-    return res
+    res["Djeeta"]["totalOugiDamage"] = totalOugiDamage;
+    res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamage + chainBurst;
+
+    for (var key in totals) {
+        res[key]["totalOugiDamage"] = totalOugiDamage;
+        res[key]["ougiDamageWithChainDamage"] = totalOugiDamage + chainBurst;
+    }
+
+    return res;
 };
 
 module.exports.getTesukatoripokaAmount = function (amount, numOfRaces) {
