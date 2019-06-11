@@ -1,4 +1,4 @@
-var {calcSingleHitSupplementalDamage, calcThirdHitSupplementalDamage} = require('supplemental.js');
+var {calcSingleHitSupplementalDamage, calcThirdHitSupplementalDamage} = require('./supplemental.js');
 describe("#calcSupplementalDamage", () => {
     // generate temporary vals: [0, 0, 0, 0]
     const INITIAL_VALS = (length=4, value=0) => (new Array(length)).fill(value);
@@ -33,6 +33,7 @@ describe("#calcSupplementalDamage", () => {
         it("test hp based supplemental damage", () => {
             let {supplementalDamageArray} = this;
             supplementalDamageArray['test-buff-a']['type'] = 'hp_based';
+            supplementalDamageArray['test-buff-a']['threshold'] = 0.80;
         
             let vals = calcSingleHitSupplementalDamage(supplementalDamageArray, INITIAL_VALS());
             expect(vals.length).toBe(4);
