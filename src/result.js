@@ -985,8 +985,8 @@ var Result = CreateClass({
                     ++colSize;
                 }
                 if (sw.switchATKandHP) {
-                    var senryoku = parseInt(m.data.Djeeta.displayAttack) + parseInt(m.data.Djeeta.displayHP);
-                    tablebody.push(senryoku + "\n(" + parseInt(m.data.Djeeta.displayAttack) + ' + ' + parseInt(m.data.Djeeta.displayHP) + ')');
+                    var senryoku = Math.round(m.data.Djeeta.displayAttack) + Math.round(m.data.Djeeta.displayHP);
+                    tablebody.push(senryoku + "\n(" + Math.round(m.data.Djeeta.displayAttack) + ' + ' + Math.round(m.data.Djeeta.displayHP) + ')');
                     ++colSize;
                 }
 
@@ -1042,7 +1042,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchExpectedAttack) {
-                    var expectedAttack = parseInt(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
+                    var expectedAttack = Math.round(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
                     tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack + ")");
                     ++colSize;
                 }
@@ -1063,7 +1063,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchHP) {
-                    tablebody.push(m.data.Djeeta.totalHP + "\n(" + parseInt(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")");
+                    tablebody.push(m.data.Djeeta.totalHP + "\n(" + Math.round(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")");
                     ++colSize;
                 }
 
@@ -1073,19 +1073,19 @@ var Result = CreateClass({
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
                                         className="label label-success">{intl.translate("残HP", locale)} / HP</span>&nbsp;
-                                {parseInt(m.data[key].totalHP * m.data[key].remainHP)}&nbsp;/&nbsp;{m.data[key].totalHP}&nbsp;
+                                {Math.round(m.data[key].totalHP * m.data[key].remainHP)}&nbsp;/&nbsp;{m.data[key].totalHP}&nbsp;
                                 </span>
                         );
                     }
                 }
 
                 if (sw.switchAverageAttack) {
-                    tablebody.push(parseInt(m.data.Djeeta.averageAttack));
+                    tablebody.push(Math.round(m.data.Djeeta.averageAttack));
                     ++colSize;
                 }
 
                 if (sw.switchAverageCriticalAttack) {
-                    tablebody.push(m.data.Djeeta.averageCriticalAttack);
+                    tablebody.push(Math.round(m.data.Djeeta.averageCriticalAttack));
                     ++colSize;
                 }
 
@@ -1106,12 +1106,12 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageTotalExpected) {
-                    tablebody.push(m.data.Djeeta.averageTotalExpected);
+                    tablebody.push(Math.round(m.data.Djeeta.averageTotalExpected));
                     ++colSize;
                 }
 
                 if (sw.switchPureDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.pureDamage));
+                    tablebody.push(Math.round(m.data.Djeeta.pureDamage));
                     ++colSize;
                 }
 
@@ -1127,17 +1127,17 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchDamageWithCritical) {
-                    tablebody.push(parseInt(m.data.Djeeta.damageWithCritical));
+                    tablebody.push(Math.round(m.data.Djeeta.damageWithCritical));
                     ++colSize;
                 }
 
                 if (sw.switchDamageWithMultiple) {
-                    tablebody.push(parseInt(m.data.Djeeta.damageWithMultiple));
+                    tablebody.push(Math.round(m.data.Djeeta.damageWithMultiple));
                     ++colSize;
                 }
 
                 if (sw.switchDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.damage));
+                    tablebody.push(Math.round(m.data.Djeeta.damage));
                     ++colSize;
                 }
 
@@ -1147,7 +1147,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchOugiDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.totalOugiDamage));
+                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamage));
                     ++colSize;
                 }
 
@@ -1174,7 +1174,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchChainBurst) {
-                    tablebody.push(parseInt(m.data.Djeeta.averageChainBurst));
+                    tablebody.push(Math.round(m.data.Djeeta.averageChainBurst));
                     ++colSize;
                 }
                 if (sw.switchTotalOugiDamageWithChain) {
@@ -1182,7 +1182,7 @@ var Result = CreateClass({
                     ++colSize;
                 }
                 if (sw.switchCycleDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.expectedCycleDamagePerTurn));
+                    tablebody.push(Math.round(m.data.Djeeta.expectedCycleDamagePerTurn));
                     ++colSize;
                 }
 
@@ -1198,7 +1198,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageCycleDamage) {
-                    var val = parseInt(m.data.Djeeta.averageCyclePerTurn);
+                    var val = Math.round(m.data.Djeeta.averageCyclePerTurn);
                     tablebody.push(val.toString() + " (" + (4 * val).toString() + ")");
                     ++colSize;
                 }

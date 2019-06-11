@@ -811,11 +811,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
     }
 
-    res["Djeeta"]["averageAttack"] = parseInt(average / cnt);
-    res["Djeeta"]["averageCriticalAttack"] = parseInt(crit_average / cnt);
-    res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average / cnt);
-    res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn / cnt);
-    res["Djeeta"]["averageChainBurst"] = parseInt(averageChainBurst / cnt);
+    res["Djeeta"]["averageAttack"] = average / cnt;
+    res["Djeeta"]["averageCriticalAttack"] = crit_average / cnt;
+    res["Djeeta"]["averageTotalExpected"] = totalExpected_average / cnt;
+    res["Djeeta"]["averageCyclePerTurn"] = averageCyclePerTurn / cnt;
+    res["Djeeta"]["averageChainBurst"] = averageChainBurst / cnt;
     res["Djeeta"]["totalOugiDamage"] = totalOugiDamage;
     res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamage + chainBurst;
 
