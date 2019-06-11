@@ -1294,6 +1294,14 @@ var Result = CreateClass({
                         if (Object.keys(skilldata.supplementalDamageArray).length > 0) {
                             var totalSupplementalDamage = 0;
                             var sortedKeys = Object.keys(skilldata.supplementalDamageArray).sort();
+                            sortedKeys = sortedKeys.filter(function (supplemental) {
+                                if (skilldata.supplementalDamageArray[supplemental].type == "hp_based"
+                                    && "threshold" in skilldata.supplementalDamageArray[supplemental]
+                                    && m.data[key].remainHP < skilldata.supplementalDamageArray[supplemental].threshold) {
+                                    return false;
+                                }
+                                return true;
+                            });
                             supplementalDamageInfo.push(
                                 <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px"}} >
                                     <thead>
