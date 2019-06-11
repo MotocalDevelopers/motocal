@@ -35,6 +35,19 @@ function calcSupplementalDamage(types, damageArray, vals, {remainHP = 1.0, expec
     return vals;
 }
 
+function collectSkillInfo(damageArray, {remainHP = 1.0}={}) {
+    const isAvailable = ([key, val]) => !((val.type == "hp_based") && (remainHP < val.threshold));
+    const xs = Object.entries(damageArray).filter(isAvailable).sort();
+    return {
+        keys: xs.map(([key, val]) => key),
+        values: xs.map(([key, val]) => val.damage),
+        total: xs.reduce((total, [key,val]) => total + val.damage, 0),
+    };
+}
+
+//exports
 module.exports._calcDamage = calcSupplementalDamage;
 module.exports.calcOthersDamage = calcSupplementalDamage.bind(null, ["other", "hp_based"]);
 module.exports.calcThirdHitDamage = calcSupplementalDamage.bind(null, ["third_hit"]);
+
+module.exports.collectSkillInfo = collectSkillInfo;

@@ -6,7 +6,7 @@ var {HPChart} = require('./chart.js');
 var {AdsenseAdvertisement} = require('./advertisement.js');
 var intl = require('./translate.js');
 var {HPChartHowTo} = require('./howto.js');
-
+var supplemental = require('./supplemental.js');
 var GlobalConst = require('./global_const.js');
 
 var TextWithTooltip = GlobalConst.TextWithTooltip;
@@ -1291,18 +1291,14 @@ var Result = CreateClass({
                         }
 
                         var supplementalDamageInfo = [];
-                        if (Object.keys(skilldata.supplementalDamageArray).length > 0) {
-                            var totalSupplementalDamage = 0;
-                            var sortedKeys = Object.keys(skilldata.supplementalDamageArray).sort();
-                            sortedKeys = sortedKeys.filter(function (supplemental) {
-                                return supplemental.show;
-                            });
+                        const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
+                        if ("keys" in supplementalInfo && "values" in supplementalInfo && "total" in supplementalInfo) {
                             supplementalDamageInfo.push(
                                 <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px"}} >
                                     <thead>
                                         <tr>
                                             <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
-                                            {sortedKeys.map( function (v, ind) {
+                                            {supplementalInfo.keys.map( function (v, ind) {
                                                 return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate(v, locale)}</th>
                                             })}
                                             <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("合計", locale)}</th>
@@ -1311,14 +1307,13 @@ var Result = CreateClass({
                                     <tbody>
                                         <tr>
                                             <td style={{"fontSize": "10pt"}}>{intl.translate("ダメージ", locale)}</td>
-                                            {sortedKeys.map( function (v, ind) {
-                                                totalSupplementalDamage += skilldata.supplementalDamageArray[v].damage;
+                                            {supplementalInfo.values.map( function (v, ind) {
                                                 return (
-                                                    <td key={ind} style={{ "fontSize": "10pt" }}>{skilldata.supplementalDamageArray[v].damage}</td>
+                                                    <td key={ind} style={{"fontSize": "10pt"}}>{v}</td>
                                                 )
                                             })}
                                             <td style={{"fontSize": "10pt"}}>
-                                                {totalSupplementalDamage}&nbsp;
+                                                {supplementalInfo.total}&nbsp;
                                             </td>
                                         </tr>
                                     </tbody>
