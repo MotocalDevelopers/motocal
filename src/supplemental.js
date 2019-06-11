@@ -17,14 +17,14 @@ function calcSupplementalDamage(types, damageArray, vals, {remainHP = 1.0, expec
                 vals[1] += supplemental.damageWithoutCritical;
                 vals[2] += supplemental.ougiDamage;
                 vals[3] += supplemental.chainBurst;
-                continue;
+                break;
             case "third_hit":
                 if (expectedTurn === Infinity) {
                     expectedTurn = 1;
                 }
                 vals[0] += supplemental.damage;
                 vals[1] += supplemental.damage * expectedTurn;
-                continue;
+                break;
             default:
                 console.error("unknown supplemental damage type: " + supplemental.type); //does not reach here typically, if ever.
                 break;
@@ -33,6 +33,6 @@ function calcSupplementalDamage(types, damageArray, vals, {remainHP = 1.0, expec
     return vals;
 }
 
-module.exports.calcSingleHitSupplementalDamage = calcSupplementalDamage.bind(null, ["other", "hp_based"]);
-
-module.exports.calcThirdHitSupplementalDamage = calcSupplementalDamage.bind(null, ["third_hit"]);
+module.exports.calcSupplementalDamage = calcSupplementalDamage;
+module.exports.calcOthersDamage = calcSupplementalDamage.bind(null, ["other", "hp_based"]);
+module.exports.calcThirdHitDamage = calcSupplementalDamage.bind(null, ["third_hit"]);
