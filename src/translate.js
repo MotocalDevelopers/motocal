@@ -1263,6 +1263,26 @@ var multiLangData = {
         "ja": "サポアビ",
         "zh": "Support Ability",
     },
+    "supplemental_other": {
+        "en": "",
+        "ja": "",
+        "zh": "",
+    },
+    "supplemental_third_hit": {
+        "en": " (Applies to third hit)",
+        "ja": " (3回目の攻撃に)",
+        "zh": " (Applies to third hit)",
+    },
+    "supplemental_on_critical": {
+        "en": " (Applies to critical hit)",
+        "ja": " (クリティカル攻撃に)",
+        "zh": " (Applies to critical hit)",
+    },
+    "supplemental_hp_based": {
+        "en": "",
+        "ja": "",
+        "zh": "",
+    },
     "四人合計値": {
         "en": "x4",
         "ja": "x四人",

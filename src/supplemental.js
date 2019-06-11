@@ -12,6 +12,8 @@ function calcSupplementalDamage(types, damageArray, vals, {remainHP = 1.0, expec
                 if (remainHP < supplemental.threshold)
                     continue;
                 /* FALLTHROUGH */
+            case "on_critical":
+                /* FALLTHROUGH */
             case "other":
                 vals[0] += supplemental.damage;
                 vals[1] += supplemental.damageWithoutCritical;
@@ -34,10 +36,10 @@ function calcSupplementalDamage(types, damageArray, vals, {remainHP = 1.0, expec
 }
 
 function collectSkillInfo(damageArray, {remainHP = 1.0}={}) {
-    const isAvailable = ([key, val]) => !((val.type == "hp_based") && (remainHP < val.threshold));
+    const isAvailable = ([key, val]) => (!((val.type == "hp_based") && (remainHP < val.threshold)) && !(val.damage == 0));
     const xs = Object.entries(damageArray).filter(isAvailable).sort();
     return {
-        keys: xs.map(([key, val]) => key),
+        keys: xs.map(([key, val]) => [key, val.type]),
         values: xs.map(([key, val]) => val.damage),
         total: xs.reduce((total, [key,val]) => total + val.damage, 0),
     };
