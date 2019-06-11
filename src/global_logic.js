@@ -817,7 +817,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     res["Djeeta"]["averageCyclePerTurn"] = averageCyclePerTurn / cnt;
     res["Djeeta"]["averageChainBurst"] = averageChainBurst / cnt;
     res["Djeeta"]["totalOugiDamage"] = totalOugiDamage;
-    res["Djeeta"]["totalOugiDamageWithChain"] = res["Djeeta"]["averageChainBurst"];
+    res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
 
     for (var key in totals) {
         res[key]["totalOugiDamage"] = totalOugiDamage;
