@@ -208,6 +208,7 @@ var ResultList = CreateClass({
             switchAverageCycleDamage: 1,
             switchDebuffResistance: 0,
             switchChainBurst: 0,
+            switchTotalOugiDamageWithChain: 0,
             disableAutoResultUpdate: 0,
             result: {summon: this.props.summon, result: []},
             chartSortKey: "totalAttack",
@@ -440,6 +441,9 @@ var ResultList = CreateClass({
         if (switcher.switchChainBurst) {
             tableheader.push(intl.translate("チェインバースト", locale))
         }
+        if (switcher.switchTotalOugiDamageWithChain) {
+            tableheader.push(intl.translate("奥義+チェンバダメージ", locale))
+        }
         if (switcher.switchCycleDamage) {
             tableheader.push(intl.translate("予想ターン毎ダメージ", locale))
         }
@@ -557,6 +561,9 @@ var ResultList = CreateClass({
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchChainBurst")}
                                     className={(this.state.switchChainBurst == 1) ? "display-checked" : "display-unchecked"}> チェインバースト
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchTotalOugiDamageWithChain")}
+                                    className={(this.state.switchTotalOugiDamageWithChain == 1) ? "display-checked" : "display-unchecked"}> 奥義+チェンバダメージ
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaAttack")}
                                     className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力
@@ -760,6 +767,8 @@ var ResultList = CreateClass({
                                       active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchChainBurst")}
                                       active={(this.state.switchChainBurst == 1) ? true : false}> {intl.translate("チェインバースト", locale)} </MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchTotalOugiDamageWithChain")}
+                                      active={(this.state.switchTotalOugiDamageWithChain == 1) ? true : false}> {intl.translate("奥義+チェンバダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchOugiGage")}
                                       active={(this.state.switchOugiGage == 1) ? true : false}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </MenuItem>
                         </DropdownButton>
@@ -979,8 +988,8 @@ var Result = CreateClass({
                     ++colSize;
                 }
                 if (sw.switchATKandHP) {
-                    var senryoku = parseInt(m.data.Djeeta.displayAttack) + parseInt(m.data.Djeeta.displayHP);
-                    tablebody.push(senryoku + "\n(" + parseInt(m.data.Djeeta.displayAttack) + ' + ' + parseInt(m.data.Djeeta.displayHP) + ')');
+                    var senryoku = Math.round(m.data.Djeeta.displayAttack) + Math.round(m.data.Djeeta.displayHP);
+                    tablebody.push(senryoku + "\n(" + Math.round(m.data.Djeeta.displayAttack) + ' + ' + Math.round(m.data.Djeeta.displayHP) + ')');
                     ++colSize;
                 }
 
@@ -1036,7 +1045,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchExpectedAttack) {
-                    var expectedAttack = parseInt(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
+                    var expectedAttack = Math.round(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
                     tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack + ")");
                     ++colSize;
                 }
@@ -1057,7 +1066,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchHP) {
-                    tablebody.push(m.data.Djeeta.totalHP + "\n(" + parseInt(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")");
+                    tablebody.push(m.data.Djeeta.totalHP + "\n(" + Math.round(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")");
                     ++colSize;
                 }
 
@@ -1067,19 +1076,19 @@ var Result = CreateClass({
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
                                         className="label label-success">{intl.translate("残HP", locale)} / HP</span>&nbsp;
-                                {parseInt(m.data[key].totalHP * m.data[key].remainHP)}&nbsp;/&nbsp;{m.data[key].totalHP}&nbsp;
+                                {Math.round(m.data[key].totalHP * m.data[key].remainHP)}&nbsp;/&nbsp;{m.data[key].totalHP}&nbsp;
                                 </span>
                         );
                     }
                 }
 
                 if (sw.switchAverageAttack) {
-                    tablebody.push(parseInt(m.data.Djeeta.averageAttack));
+                    tablebody.push(Math.round(m.data.Djeeta.averageAttack));
                     ++colSize;
                 }
 
                 if (sw.switchAverageCriticalAttack) {
-                    tablebody.push(m.data.Djeeta.averageCriticalAttack);
+                    tablebody.push(Math.round(m.data.Djeeta.averageCriticalAttack));
                     ++colSize;
                 }
 
@@ -1100,12 +1109,12 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageTotalExpected) {
-                    tablebody.push(m.data.Djeeta.averageTotalExpected);
+                    tablebody.push(Math.round(m.data.Djeeta.averageTotalExpected));
                     ++colSize;
                 }
 
                 if (sw.switchPureDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.pureDamage));
+                    tablebody.push(Math.round(m.data.Djeeta.pureDamage));
                     ++colSize;
                 }
 
@@ -1121,17 +1130,17 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchDamageWithCritical) {
-                    tablebody.push(parseInt(m.data.Djeeta.damageWithCritical));
+                    tablebody.push(Math.round(m.data.Djeeta.damageWithCritical));
                     ++colSize;
                 }
 
                 if (sw.switchDamageWithMultiple) {
-                    tablebody.push(parseInt(m.data.Djeeta.damageWithMultiple));
+                    tablebody.push(Math.round(m.data.Djeeta.damageWithMultiple));
                     ++colSize;
                 }
 
                 if (sw.switchDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.damage));
+                    tablebody.push(Math.round(m.data.Djeeta.damage));
                     ++colSize;
                 }
 
@@ -1141,7 +1150,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchOugiDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.ougiDamage));
+                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamage));
                     ++colSize;
                 }
 
@@ -1168,11 +1177,15 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchChainBurst) {
-                    tablebody.push(parseInt(m.data.Djeeta.averageChainBurst));
+                    tablebody.push(Math.round(m.data.Djeeta.averageChainBurst));
+                    ++colSize;
+                }
+                if (sw.switchTotalOugiDamageWithChain) {
+                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamageWithChain));
                     ++colSize;
                 }
                 if (sw.switchCycleDamage) {
-                    tablebody.push(parseInt(m.data.Djeeta.expectedCycleDamagePerTurn));
+                    tablebody.push(Math.round(m.data.Djeeta.expectedCycleDamagePerTurn));
                     ++colSize;
                 }
 
@@ -1188,7 +1201,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageCycleDamage) {
-                    var val = parseInt(m.data.Djeeta.averageCyclePerTurn);
+                    var val = Math.round(m.data.Djeeta.averageCyclePerTurn);
                     tablebody.push(val.toString() + " (" + (4 * val).toString() + ")");
                     ++colSize;
                 }
