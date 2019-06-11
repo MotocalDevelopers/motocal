@@ -271,7 +271,7 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, ch
     if (chainNumber <= 2) {
         var limitValues = [[1500000, 0.01], [1300000, 0.05], [1200000, 0.30], [1000000, 0.60]]
     } else if (chainNumber === 3) {
-        var limitValues = [[2000000, 0.01], [1600000, 0.05], [1400000, 0.30], [1200000, 0.60]]
+        var limitValues = [[2000000, 0.01], [1500000, 0.05], [1450000, 0.30], [1250000, 0.60]]
     } else {
         var limitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]]
     }
@@ -879,7 +879,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             damageWithCritical: damage,
             // Only consecutive shots
             damageWithMultiple: damageWithoutCritical * expectedAttack,
-            ougiDamageWithChainDamage: ougiDamage + chainBurst,
             ougiRatio: totals[key]["ougiRatio"],
             ougiDamage: ougiDamage,
             chainBurst: chainBurst,
@@ -895,6 +894,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     var totalExpected_average = 0.0;
     var averageCyclePerTurn = 0.0;
     var averageChainBurst = 0.0;
+    var totalOugiDamage = 0.0;
 
     var cnt = 0.0;
     for (key in res) {
@@ -904,16 +904,25 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             totalExpected_average += res[key].totalExpected;
             averageCyclePerTurn += res[key].expectedCycleDamagePerTurn;
             averageChainBurst += res[key].chainBurst;
+            totalOugiDamage += res[key].ougiDamage;
             cnt += 1.0
         }
     }
 
-    res["Djeeta"]["averageAttack"] = parseInt(average / cnt);
-    res["Djeeta"]["averageCriticalAttack"] = parseInt(crit_average / cnt);
-    res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average / cnt);
-    res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn / cnt);
-    res["Djeeta"]["averageChainBurst"] = parseInt(averageChainBurst / cnt);
-    return res
+    res["Djeeta"]["averageAttack"] = average / cnt;
+    res["Djeeta"]["averageCriticalAttack"] = crit_average / cnt;
+    res["Djeeta"]["averageTotalExpected"] = totalExpected_average / cnt;
+    res["Djeeta"]["averageCyclePerTurn"] = averageCyclePerTurn / cnt;
+    res["Djeeta"]["averageChainBurst"] = averageChainBurst / cnt;
+    res["Djeeta"]["totalOugiDamage"] = totalOugiDamage;
+    res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
+
+    for (var key in totals) {
+        res[key]["totalOugiDamage"] = totalOugiDamage;
+        res[key]["ougiDamageWithChainDamage"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
+    }
+
+    return res;
 };
 
 module.exports.getTesukatoripokaAmount = function (amount, numOfRaces) {
