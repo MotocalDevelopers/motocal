@@ -33,6 +33,6 @@ function calcSupplementalDamage(types, damageArray, vals, {remainHP = 1.0, expec
     return vals;
 }
 
-module.exports.calcSupplementalDamage = calcSupplementalDamage;
+module.exports._calcDamage = calcSupplementalDamage;
 module.exports.calcOthersDamage = calcSupplementalDamage.bind(null, ["other", "hp_based"]);
 module.exports.calcThirdHitDamage = calcSupplementalDamage.bind(null, ["third_hit"]);

@@ -103,7 +103,7 @@ describe("#calcSupplementalDamage", () => {
         let {supplementalDamageArray} = this;
         supplementalDamageArray["test-buff-a"]["type"] = "unknown";
       
-        let vals = calcSupplementalDamage(["unknown"], supplementalDamageArray, INITIAL_VALS());
+        let vals = _calcDamage(["unknown"], supplementalDamageArray, INITIAL_VALS());
         expect(vals).toEqual([0, 0, 0, 0]);
       
         // Console will show switch/default case, unknown supplemental damage type.
