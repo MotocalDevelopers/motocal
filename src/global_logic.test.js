@@ -74,20 +74,20 @@ describe('#calcLBHaisui', () => {
         [10, 0.04],
     ];
 
-    test.each(exlbHaisuiMaxTable, 'Haisui max value', (amount, expected) => {
+    test.each(exlbHaisuiMaxTable)('Haisui slv%d max is %d', (amount, expected) => {
         expect(haisui(amount, 0.0)).toBeCloseTo(expected);
     });
 
-    test.each(exlbHaisuiMinTable, 'Haisui min value (until HP 75.1%)', (amount) => {
+    test.each(exlbHaisuiMinTable)('Haisui slv%d min is 0.01 (until HP 75.1%)', (amount) => {
         expect(haisui(amount, 1.0)).toBeCloseTo(0.01);
         expect(haisui(amount, 0.751)).toBeCloseTo(0.01);
     });
 
-    test.each(exlbKonshinMaxTable, 'konshin max value', (amount, expected) => {
+    test.each(exlbKonshinMaxTable)('konshin slv%d max is %d', (amount, expected) => {
         expect(konshin(amount, 1.0)).toBeCloseTo(expected);
     });
 
-    test.each(exlbKonshinMinTable, 'konshin min value', (amount, expected) => {
+    test.each(exlbKonshinMinTable)('konshin slv%d min is %d', (amount, expected) => {
         expect(konshin(amount, 0.0)).toBeCloseTo(expected);
     });
 
