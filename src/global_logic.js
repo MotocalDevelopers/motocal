@@ -2515,30 +2515,28 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
-                case "normalSupportKonshin":
-                    {
-                        let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
-                        if (totals[key].isConsideredInAverage) {
-                            for (var key2 in totals) {
-                                totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
-                            }
-                        } else {
-                            totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
-                        }
-                    }
-                    continue;
-                case "normalSupportKonshin_hpDebuff":
-                    {
+                case "normalSupportKonshin": {
                     let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
-                        if (totals[key].isConsideredInAverage) {
-                            for (var key2 in totals) {
-                                totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
-                            }
-                        } else {
-                            totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
+                    if (totals[key].isConsideredInAverage) {
+                        for (var key2 in totals) {
+                            totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
                         }
-                        totals[key]["HPdebuff"] += support.hpDebuff;
+                    } else {
+                        totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
                     }
+                }
+                    continue;
+                case "normalSupportKonshin_hpDebuff": {
+                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
+                    if (totals[key].isConsideredInAverage) {
+                        for (var key2 in totals) {
+                            totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
+                        }
+                    } else {
+                        totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
+                    }
+                    totals[key]["HPdebuff"] += support.hpDebuff;
+                }
                     continue;
                 default:
                     break;
@@ -2631,7 +2629,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
         let charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * (k + 1));
         charaHaisuiBuff.push(charaHaisuiValue);
     }
-    
+
     var normalSupportKonshin = [];
     for (var k = 0; k < 100; ++k) {
         let normalSupportKonshinValue = module.exports.recalcNormalSupportKonshin(chara, 0.01 * (k + 1));
@@ -2755,13 +2753,13 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                             }
                         } else if (stype == 'cherubimKonshin') {
                             for (var l = 0; l < haisuiBuff.length; l++) {
-                                    let normalSupportKonshinValue = 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", 0.01 * (l + 1));
-                                    haisuiBuff[l]["normalSupportKonshin"] = Math.max(haisuiBuff[l]["normalSupportKonshin"], normalSupportKonshinValue);
+                                let normalSupportKonshinValue = 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", 0.01 * (l + 1));
+                                haisuiBuff[l]["normalSupportKonshin"] = Math.max(haisuiBuff[l]["normalSupportKonshin"], normalSupportKonshinValue);
                             }
                         } else if (stype == 'sunbladeKonshin') {
                             for (var l = 0; l < haisuiBuff.length; l++) {
-                                    let normalSupportKonshinValue = 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", 0.01 * (l + 1));
-                                    haisuiBuff[l]["normalSupportKonshin"] = Math.max(haisuiBuff[l]["normalSupportKonshin"], normalSupportKonshinValue);
+                                let normalSupportKonshinValue = 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", 0.01 * (l + 1));
+                                haisuiBuff[l]["normalSupportKonshin"] = Math.max(haisuiBuff[l]["normalSupportKonshin"], normalSupportKonshinValue);
                             }
                         } else if (onedata[key].element == element) {
                             if (isHaisuiType(stype)) {
