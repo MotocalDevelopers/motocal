@@ -744,11 +744,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["exDA"] = exNite;
         coeffs["cosmosDA"] = armDAupCosmos;
         coeffs["bahaDA"] = armDAupBaha;
-        coeffs["otherDA"] = totals[key]["DADebuff"];
+        coeffs["otherDA"] = (buff["da"] + totals[key]["DABuff"]) * 100 + totals[key]["DADebuff"];
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = 0;
+        coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"]) * 100;
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
@@ -2005,8 +2005,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
                 ougiDamageBuff: djeetaBuffList["personalOugiDamageBuff"],
                 additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
-                DAbuff: 0,
-                TAbuff: 0,
+                DADebuff: 0,
                 damageLimitBuff: djeetaBuffList["personalDamageLimitBuff"],
                 ougiDamageLimitBuff: djeetaBuffList["personalOugiDamageLimitBuff"],
                 normalOtherCriticalBuff: [],
@@ -2156,8 +2155,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiGageBuff: charaBuffList["ougiGageBuff"],
                 ougiDamageBuff: charaBuffList["ougiDamageBuff"],
                 additionalDamageBuff: charaBuffList["additionalDamageBuff"],
-                DAbuff: 0,
-                TAbuff: 0,
+                DADebuff: 0,
                 damageLimitBuff: charaBuffList["damageLimitBuff"],
                 ougiDamageLimitBuff: charaBuffList["ougiDamageLimitBuff"],
                 normalOtherCriticalBuff: [],
