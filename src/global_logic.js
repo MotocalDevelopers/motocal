@@ -1,5 +1,6 @@
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
+const {LIMIT} = GlobalConst;
 var elementRelation = GlobalConst.elementRelation;
 var bahamutRelation = GlobalConst.bahamutRelation;
 var bahamutFURelation = GlobalConst.bahamutFURelation;
@@ -525,10 +526,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // DATA upper limit
         // Normal * Magna * EX * Baha * Cosmos BL
         // DATA debuff for Rasetsu
-        var armDAupNormal = Math.min(GlobalConst.LIMIT_SKILL_INFO.normalDA, normalNite + normalSante);
-        var armDAupMagna = Math.min(GlobalConst.LIMIT_SKILL_INFO.magnaDA, magnaNite + magnaSante);
-        var armDAupBaha = Math.min(GlobalConst.LIMIT_SKILL_INFO.bahaDA, totals[key]["bahaDA"]);
-        var armDAupCosmos = Math.min(GlobalConst.LIMIT_SKILL_INFO.cosmosDA, totals[key]["cosmosBL"]);
+        var armDAupNormal = Math.min(LIMIT.normalDA, normalNite + normalSante);
+        var armDAupMagna = Math.min(LIMIT.magnaDA, magnaNite + magnaSante);
+        var armDAupBaha = Math.min(LIMIT.bahaDA, totals[key]["bahaDA"]);
+        var armDAupCosmos = Math.min(LIMIT.cosmosDA, totals[key]["cosmosBL"]);
 
         // unknown never reaches 50% of the current situation
         var totalDA = 0.01 * totals[key]["baseDA"];
