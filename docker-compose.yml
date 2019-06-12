@@ -11,5 +11,7 @@ services:
       - "8000:8000"
     networks:
       - front
+    environment:
+    - HOST=0.0.0.0
 networks:
   front:

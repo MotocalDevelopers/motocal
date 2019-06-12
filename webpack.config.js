@@ -7,6 +7,7 @@ const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const DEBUG = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;
+const HOST = process.env.HOST || 'localhost';
 
 const devtool = DEBUG ? '#inline-source-map' : '#eval';
 const fileName = DEBUG ? '[name]' : '[name]-[hash]';
@@ -105,7 +106,7 @@ module.exports = {
   devServer: {
      contentBase: [path.join(__dirname, "/dist")],
      compress: true,
-     host: "localhost",
+     host: HOST,
      port: 8000
   },
   mode: process.env.NODE_ENV || 'development'
