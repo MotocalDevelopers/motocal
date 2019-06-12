@@ -1,3 +1,5 @@
+var intl = require('./translate.js');
+
 function calcSupplementalDamage(types, damageArray, vals, {remainHP = 1.0, expectedTurn = 1}={}) {
     for (let supplemental of Object.values(damageArray)) {
         if (! types.includes(supplemental.type))
@@ -11,6 +13,10 @@ function calcSupplementalDamage(types, damageArray, vals, {remainHP = 1.0, expec
                 }
                 if (remainHP < supplemental.threshold)
                     continue;
+                /* FALLTHROUGH */
+            case "boss_debuff_based":
+                /* FALLTHROUGH */
+            case "djeeta_buff_based":
                 /* FALLTHROUGH */
             case "on_critical":
                 /* FALLTHROUGH */
@@ -39,15 +45,24 @@ function collectSkillInfo(damageArray, {remainHP = 1.0}={}) {
     const isAvailable = ([key, val]) => (!((val.type == "hp_based") && (remainHP < val.threshold)) && !(val.damage == 0));
     const xs = Object.entries(damageArray).filter(isAvailable).sort();
     return {
-        keys: xs.map(([key, val]) => [key, val.type]),
+        headers: xs.map(([key, val]) => [key, val.type, "additionalVal" in val ? val.additionalVal : null]),
         values: xs.map(([key, val]) => val.damage),
         total: xs.reduce((total, [key,val]) => total + val.damage, 0),
     };
 }
 
+function tableHeader([key, type, additionalVal], locale) {
+    var str = intl.translate(key, locale);
+    str += intl.translate(("supplemental_" + type), locale);
+    str = str.replace("{value}", additionalVal == null ? "" : additionalVal);
+    return str;
+}
+
 //exports
 module.exports._calcDamage = calcSupplementalDamage;
-module.exports.calcOthersDamage = calcSupplementalDamage.bind(null, ["other", "hp_based"]);
+module.exports.calcOthersDamage = calcSupplementalDamage.bind(null, ["other", "hp_based", "on_critical", "boss_debuff_based", "djeeta_buff_based"]);
 module.exports.calcThirdHitDamage = calcSupplementalDamage.bind(null, ["third_hit"]);
 
 module.exports.collectSkillInfo = collectSkillInfo;
+
+module.exports.tableHeader = tableHeader;

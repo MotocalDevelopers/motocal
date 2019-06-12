@@ -1305,14 +1305,14 @@ var Result = CreateClass({
 
                         var supplementalDamageInfo = [];
                         const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
-                        if ("keys" in supplementalInfo && "values" in supplementalInfo && "total" in supplementalInfo && supplementalInfo.total > 0) {
+                        if (supplementalInfo.total > 0) {
                             supplementalDamageInfo.push(
                                 <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px"}} >
                                     <thead>
                                         <tr>
                                             <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
-                                            {supplementalInfo.keys.map( function (v, ind) {
-                                                return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate(v[0], locale) + intl.translate(("supplemental_"+v[1]), locale)}</th>
+                                            {supplementalInfo.headers.map( function (head, ind) {
+                                                return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{supplemental.tableHeader(head, locale)}</th>;
                                             })}
                                             <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("合計", locale)}</th>
                                         </tr>

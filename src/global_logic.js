@@ -732,6 +732,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 supplementalDamageArray[totals[key]["supplementalThirdHit"][key2].source] = {
                     damage: value,
                     type: "third_hit",
+                    //additionalVal: taRate,
                 };
             }
         }
@@ -744,6 +745,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 chainBurst: value,
                 threshold: 0.80,
                 type: "hp_based",
+                //additionalVal: totals[key].remainHP,
             };
         } else if (totals[key]['covenant'] === 'victorious' && totals['Djeeta']['buffCount'] > 0) {
             let djeetaBuffCount = Math.min(10, totals['Djeeta']['buffCount']);
@@ -753,13 +755,15 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical: value,
                 ougiDamage: value,
                 chainBurst: value,
-                type: "other",
+                type: "djeeta_buff_based",
+                additionalVal: djeetaBuffCount,
             };
         } else if (totals[key]['covenant'] === 'contentious' && taRate > 0) {
             let value = Math.ceil(taRate * 100000 * (1 + damageUP));
             supplementalDamageArray["修羅の誓約"] = {
                 damage: value,
                 type: "third_hit",
+                //additionalVal: taRate,
             };
         } else if (totals[key]['covenant'] === 'deleterious' && Object.keys(criticalArray).length > 0) {
             let critRate = 1.0 - (isNaN(criticalArray[1.0]) ? 0 : Math.max(0, Math.min(1, criticalArray[1.0])));
@@ -769,7 +773,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical: 0,
                 ougiDamage: value,
                 chainBurst: 0,
-                type: "other",
+                type: "on_critical",
+                additionalVal: (100 * critRate).toFixed(2),
             };
         } else if (totals[key]['covenant'] === 'calamitous') {
             let enemyDebuffCount = Math.min(10, buff['enemyDebuffCount']);
@@ -779,7 +784,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical: value,
                 ougiDamage: value,
                 chainBurst: value,
-                type: "other",
+                type: "boss_debuff_based",
+                additionalVal: enemyDebuffCount,
             };
         }
 

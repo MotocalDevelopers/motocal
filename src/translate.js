@@ -1268,20 +1268,30 @@ var multiLangData = {
         "ja": "",
         "zh": "",
     },
+    "supplemental_hp_based": {
+        "en": "",
+        "ja": "",
+        "zh": "",
+    },
     "supplemental_third_hit": {
         "en": " (Applies to third hit)",
         "ja": " (3回目の攻撃に)",
         "zh": " (Applies to third hit)",
     },
     "supplemental_on_critical": {
-        "en": " (Applies to critical hit)",
-        "ja": " (クリティカル攻撃に)",
-        "zh": " (Applies to critical hit)",
+        "en": " (Applies to critical hit, {value}%)",
+        "ja": " (クリティカル攻撃に、 {value}%)",
+        "zh": " (Applies to critical hit, {value}%)",
     },
-    "supplemental_hp_based": {
-        "en": "",
-        "ja": "",
-        "zh": "",
+    "supplemental_boss_debuff_based": {
+        "en": " (Enemy Debuff: {value})",
+        "ja": " (敵の弱体効果: {value})",
+        "zh": " (Enemy Debuff: {value})",
+    },
+    "supplemental_djeeta_buff_based": {
+        "en": " (Djeeta Buff: {value})",
+        "ja": " (ジータのバフ: {value})",
+        "zh": " (Djeeta Buff: {value})",
     },
     "四人合計値": {
         "en": "x4",

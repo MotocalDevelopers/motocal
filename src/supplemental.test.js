@@ -1,5 +1,5 @@
-const {calcOthersDamage, calcThirdHitDamage, calcSupplementalDamage} = require('./supplemental.js');
-
+const supplemental = require('./supplemental.js');
+//{calcOthersDamage, calcThirdHitDamage, calcSupplementalDamage}
 describe("#calcSupplementalDamage", () => {
     // generate temporary vals: [0, 0, 0, 0]
     const INITIAL_VALS = (length=4, value=0) => (new Array(length)).fill(value);
@@ -26,7 +26,7 @@ describe("#calcSupplementalDamage", () => {
     describe("#calcOthersDamage", () => {
         it("test single hit supplemental damage", () => {
             let {supplementalDamageArray} = this;
-            let vals = calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
+            let vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
             expect(vals.length).toBe(4);
             expect(vals).toEqual([30, 30, 300, 500]);
         });
@@ -36,7 +36,7 @@ describe("#calcSupplementalDamage", () => {
             supplementalDamageArray['test-buff-a']['type'] = 'hp_based';
             supplementalDamageArray['test-buff-a']['threshold'] = 0.80;
             
-            let vals = calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
+            let vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
             expect(vals).toEqual([30, 30, 300, 500]);
         
             // border check
@@ -45,12 +45,12 @@ describe("#calcSupplementalDamage", () => {
             // OK: if (! (remainHP >= 0.80))
             //
             // Why not (remainHP < 0.80) ... Spec explains it's 80%+
-            vals = calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.80});
+            vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.80});
             expect(vals).toEqual([30, 30, 300, 500]);
-            vals = calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.79});
+            vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.79});
             expect(vals).toEqual([20, 20, 200, 300]);
         
-            vals = calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.00});
+            vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.00});
             expect(vals).toEqual([20, 20, 200, 300]);
         });
       
@@ -71,7 +71,7 @@ describe("#calcSupplementalDamage", () => {
             // they are both heavy solution for this small issue.
             // E2E tests can check the typo.
           
-            let vals = calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
+            let vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
             expect(vals).toEqual([0, 0, 0, 0]);
         });
     });
@@ -82,18 +82,18 @@ describe("#calcSupplementalDamage", () => {
             supplementalDamageArray['test-buff-a']['type'] = 'third_hit';
  
             // default expectedTurn: 1
-            let vals = calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2));
+            let vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2));
             expect(vals).toEqual([10, 10]);
 
             // safe to pass Infinity
-            vals = calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:Infinity});
+            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:Infinity});
             expect(vals).toEqual([10, 10]);
 
             // but not -Infinity (currently, not happen in actual global_logic.js)
-            vals = calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:-Infinity});
+            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:-Infinity});
             expect(vals).toEqual([10, -Infinity]);
           
-            vals = calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:3});
+            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:3});
             expect(vals).toEqual([10, 30]);
         });
     });
@@ -103,10 +103,70 @@ describe("#calcSupplementalDamage", () => {
         let {supplementalDamageArray} = this;
         supplementalDamageArray["test-buff-a"]["type"] = "unknown";
       
-        let vals = _calcDamage(["unknown"], supplementalDamageArray, INITIAL_VALS());
+        let vals = supplemental._calcDamage(["unknown"], supplementalDamageArray, INITIAL_VALS());
         expect(vals).toEqual([0, 0, 0, 0]);
       
         // Console will show switch/default case, unknown supplemental damage type.
         // no much chances to typo those types.
+    });
+});
+
+describe("#collectSkillInfo", () => {
+    beforeEach(() => {
+        this.supplementalDamageArray = {
+            "D": { // for checking sort keys
+                damage: 10,
+                type: "other", 
+            },
+            "B": {
+                damage: 20,
+                type: "hp_based",
+                threshold: 0.80,
+            },
+            "C": {
+                damage: 30,
+                type: "third_hit",
+            },
+            // for damage=0 case
+            // 1. Add this test data first
+            // 2. Run test to confirm it's failed at keys() check
+            // 3. Add `&& (val.damage != 0)` to isAvailable
+            // 4. Run test to check pass
+            "A": {
+                damage: 0,
+                type: "other",
+            },
+        };
+    });
+  
+    it("test empty damageArray", () => {
+        let supplementalInfo = supplemental.collectSkillInfo({});
+ 
+        // This test show no chances supplementalInfo missing those keys.
+        expect(supplementalInfo.keys).toEqual([]);
+        expect(supplementalInfo.values).toEqual([]);
+        expect(supplementalInfo.total).toEqual(0);
+      
+        // XXX: but not for collectSkillInfo(undefined), it throws TypeError
+        // Lodash library has _.castArray function, that can ensure any object as array.
+        // then omit the undefined check.
+    });
+  
+    // TODO:
+    // Jest has `test.each` to test similar cases for different data set.
+    // https://jestjs.io/docs/ja/api#testeachtable-name-fn-timeout
+    // (Jasmine in codepen.io did not support the same method)
+    it("test damageArray remainHP 100%,50%", () => {
+        let {supplementalDamageArray} = this;
+      
+        let supplementalInfo = supplemental.collectSkillInfo(supplementalDamageArray, {remainHP: 1.00});
+        expect(supplementalInfo.total).toEqual(60);
+        expect(supplementalInfo.keys).toEqual(["B", "C", "D"]);
+        expect(supplementalInfo.values).toEqual([20, 30, 10]);
+      
+        supplementalInfo = supplemental.collectSkillInfo(supplementalDamageArray, {remainHP: 0.50});
+        expect(supplementalInfo.total).toEqual(40);
+        expect(supplementalInfo.keys).toEqual(["C", "D"]);
+        expect(supplementalInfo.values).toEqual([30, 10]);
     });
 });
