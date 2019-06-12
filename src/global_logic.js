@@ -537,8 +537,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA += 0.01 * totals[key]["EXLB"]["DA"];
         totalDA += buff["da"];
         totalDA += totals[key]["DASupport"];
+        totalDA += totals[key]["DABuff"];
         totalDA += totalSummon["da"];
-        totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + totals[key]["DAbuff"]);
+        totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + totals[key]["DADebuff"]);
         if (key == "Djeeta") {
             totalDA += buff["masterDA"];
             totalDA += buff["zenithDA"];
@@ -560,8 +561,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalTA += 0.01 * totals[key]["EXLB"]["TA"];
         totalTA += buff["ta"];
         totalTA += totals[key]["TASupport"];
+        totalTA += totals[key]["TABuff"];
         totalTA += totalSummon["ta"];
-        totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + totals[key]["TAbuff"]);
+        totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha);
         if (key == "Djeeta") {
             totalTA += buff["masterTA"];
             totalTA += buff["zenithTA"];
@@ -742,11 +744,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["exDA"] = exNite;
         coeffs["cosmosDA"] = armDAupCosmos;
         coeffs["bahaDA"] = armDAupBaha;
-        coeffs["otherDA"] = totals[key]["DAbuff"];
+        coeffs["otherDA"] = totals[key]["DADebuff"];
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = totals[key]["TAbuff"];
+        coeffs["otherTA"] = 0;
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
@@ -1593,10 +1595,10 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["magnaNite"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
                         } else if (stype == 'normalRasetsu') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                            totals[key]["DAbuff"] -= comb[i] * 10.0;
+                            totals[key]["DADebuff"] -= comb[i] * 10.0;
                         } else if (stype == 'magnaRasetsu') {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
-                            totals[key]["DAbuff"] -= comb[i] * 10.0;
+                            totals[key]["DADebuff"] -= comb[i] * 10.0;
                         } else if (stype == 'normalMusou') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             totals[key]["normalNite"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
@@ -1701,7 +1703,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'washiouKekkai') {
                             if (key == 'Djeeta') {
-                                totals[key]["DAbuff"] += comb[i] * skillAmounts["washiouKekkai"][amount][slv - 1];
+                                totals[key]["DADebuff"] += comb[i] * skillAmounts["washiouKekkai"][amount][slv - 1];
                             }
                         } else if (stype == 'maihimeEnbu') {
                             // Maihime's performance: normal attacker's large + upper limit up 7%
@@ -2309,8 +2311,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["normalChainDamageLimit"] = 0;
         totals[key]["additionalDamage"] = 0;
         totals[key]["ougiDebuff"] = 0;
-        totals[key]["DAbuff"] = 0;
-        totals[key]["TAbuff"] = 0;
+        totals[key]["DADebuff"] = 0;
         totals[key]["debuffResistance"] = 0;
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
