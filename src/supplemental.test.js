@@ -184,3 +184,25 @@ describe("#collectSkillInfo", () => {
         expect(supplementalInfo.values).toEqual([30, 10, 20]);
     });
 });
+
+describe("#tableHeader", () => {
+
+    it("test empty head", () => {
+        let head = supplemental.tableHeader([], "en");
+ 
+        expect(head).toEqual("");
+      
+    });
+  
+    test('test head locale:en', () => {
+        expect(supplemental.tableHeader(["バフ", undefined, 10], "en")).toEqual("Buff");
+        expect(supplemental.tableHeader(["修羅の誓約", "third_hit", undefined], "en")).toEqual("Contentious Covenant (Applies to third hit)");
+        expect(supplemental.tableHeader(["致命の誓約", "on_critical", 50], "en")).toEqual("Deleterious Covenant (Applies to critical hit, 50%)");
+    });
+  
+    test('test head locale:ja', () => {
+        expect(supplemental.tableHeader(["バフ", undefined, 10], "ja")).toEqual("バフ");
+        expect(supplemental.tableHeader(["修羅の誓約", "third_hit", undefined], "ja")).toEqual("修羅の誓約 (3回目の攻撃に)");
+        expect(supplemental.tableHeader(["致命の誓約", "on_critical", 50], "ja")).toEqual("致命の誓約 (クリティカル攻撃に、 50%)");
+    });
+});

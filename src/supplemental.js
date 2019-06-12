@@ -53,8 +53,10 @@ function collectSkillInfo(damageArray, {remainHP = 1.0}={}) {
 
 function tableHeader([key, type, additionalVal], locale) {
     var str = intl.translate(key, locale);
-    str += intl.translate(("supplemental_" + type), locale);
-    str = str.replace("{value}", additionalVal == null ? "" : additionalVal);
+    if (type != undefined) {
+        str += intl.translate("supplemental_" + type, locale);
+        str = str.replace("{value}", additionalVal == null ? "" : additionalVal);
+    }
     return str;
 }
 
