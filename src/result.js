@@ -1230,7 +1230,7 @@ var Result = CreateClass({
                         var pushSkillInfoElement2 = (skillKey, label, labelType = "primary") => {
                             // Use outer skillInfo, skilldata and locale
                             let value = skilldata[skillKey];
-                            let isOver = GlobalConst.LIMIT_SKILL_INFO[skillKey] && (value >= GlobalConst.LIMIT_SKILL_INFO[skillKey]);
+                            let isOver = GlobalConst.LIMIT[skillKey] && (value >= GlobalConst.LIMIT[skillKey]);
                             if (value != 0.0) {
                                 multipleAttackSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
