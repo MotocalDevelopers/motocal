@@ -1209,7 +1209,6 @@ module.exports.recalcNormalSupportKonshin = function (chara, remainHP) {
             }
         }
     }
-
     return normalSupportKonshinValue;
 };
 
@@ -2515,28 +2514,17 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
-                case "normalSupportKonshin": {
+                case "normalSupportKonshin":
+                case "normalSupportKonshin_hpDebuff":
                     let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
                     if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
+                        for (let key2 in totals) {
                             totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
                         }
                     } else {
                         totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
                     }
-                }
-                    continue;
-                case "normalSupportKonshin_hpDebuff": {
-                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
-                        }
-                    } else {
-                        totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
-                    }
-                    totals[key]["HPdebuff"] += support.hpDebuff;
-                }
+                    totals[key]["HPdebuff"] += support.hpDebuff || 0;
                     continue;
                 default:
                     break;
