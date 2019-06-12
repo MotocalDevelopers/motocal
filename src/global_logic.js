@@ -1188,19 +1188,16 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
 };
 
 module.exports.recalcNormalSupportKonshin = function (chara, remainHP) {
-    var normalSupportKonshinValue = 0;
+    let normalSupportKonshinValue = 0;
 
-    for (var ch = 0; ch < chara.length; ch++) {
+    for (let ch = 0; ch < chara.length; ch++) {
         if (chara[ch].name != "" && chara[ch].isConsideredInAverage) {
             for (let support of eachSupport(chara[ch])) {
                 // Treatment of emnity supplements only
                 switch (support.type) {
                     case "normalSupportKonshin":
-                        // Refer to owner's HP
-                        normalSupportKonshinValue += 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", 1, remainHP);
-                        continue;
                     case "normalSupportKonshin_hpDebuff":
-                        // Refer to owner's HP.
+                        // Refer to owner's HP
                         normalSupportKonshinValue += 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", 1, remainHP);
                         continue;
                     default:
