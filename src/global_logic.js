@@ -2514,8 +2514,10 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
-                case "normalSupportKonshin":
                 case "normalSupportKonshin_hpDebuff":
+                    totals[key]["HPdebuff"] += support.hpDebuff;
+                    // falls through
+                case "normalSupportKonshin":
                     let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
                     if (totals[key].isConsideredInAverage) {
                         for (let key2 in totals) {
@@ -2524,7 +2526,6 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     } else {
                         totals[key]["normalSupportKonshin"] = Math.max(totals[key]["normalSupportKonshin"], supportKonshinValue);
                     }
-                    totals[key]["HPdebuff"] += support.hpDebuff || 0;
                     continue;
                 default:
                     break;
