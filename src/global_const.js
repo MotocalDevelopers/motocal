@@ -779,6 +779,7 @@ var skilltypes = {
     "normalHaisuiS": {name: "通常背水(小)", type: "normalHaisui", amount: "S"},
     "normalHaisuiM": {name: "通常背水(中)", type: "normalHaisui", amount: "M"},
     "normalHaisuiL": {name: "通常背水(大)", type: "normalHaisui", amount: "L"},
+    "normalKonshinS": {name: "通常渾身(小)", type: "normalKonshin", amount: "S"},
     "normalKonshinM": {name: "通常渾身(中)", type: "normalKonshin", amount: "M"},
     "normalKonshinL": {name: "通常渾身(大)", type: "normalKonshin", amount: "L"},
     "normalOtherKonshinL": {name: "通常渾身(大)(神石加護無効)", type: "normalOtherKonshin", amount: "L"},
@@ -1840,6 +1841,7 @@ var supportAbilities = {
         "range": "all",
         "value": 0.10
     },
+    // TODO: Nezahualpilli support skill update when confirmed
     "ta_up_all_3": {
         "name": "全体TA率3%UP(ネツァ)",
         "type": "TABuff",
@@ -1871,7 +1873,7 @@ var supportAbilities = {
         "value": 0.15
     },
     "hp_up_own_20": {
-        "name": "HP20%UP(ソリッズ)",
+        "name": "HP20%UP(ソリッズ, ファスティバ(SSR))",
         "type": "HPBuff",
         "range": "own",
         "value": 0.20
@@ -1997,6 +1999,13 @@ var supportAbilities = {
         "range": "own",
         "value": 0.20,
         "attackRatio": 0.20
+    },
+    "critical_up_own_40_50": {
+        "name": "クリティカル確率UP(発動率40%, 倍率50%)(キャル)",
+        "type": "criticalBuff",
+        "range": "own",
+        "value": 0.40,
+        "attackRatio": 0.50
     },
     "critical_up_all_5_30": {
         "name": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
