@@ -536,9 +536,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA += 0.01 * totals[key]["LB"]["DA"];
         totalDA += 0.01 * totals[key]["EXLB"]["DA"];
         totalDA += buff["da"];
-        totalDA += totals[key]["DABuff"];
+        totalDA += totals[key]["DASupport"];
         totalDA += totalSummon["da"];
-        totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos);
+        totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + totals[key]["DAbuff"]);
         if (key == "Djeeta") {
             totalDA += buff["masterDA"];
             totalDA += buff["zenithDA"];
@@ -552,16 +552,16 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"];
         normalLesserSante += totals[key]["normalOtherLesserSante"];
         var magnaLesserSante = totals[key]["magnaLesserSante"] * totalSummon["magna"];
-        var armTAupNormal = Math.min(GlobalConst.LIMIT_SKILL_INFO.normalTA, normalSante + normalLesserSante);
-        var armTAupMagna = Math.min(GlobalConst.LIMIT_SKILL_INFO.magnaTA, magnaSante + magnaLesserSante);
-        var armTAupBaha = Math.min(GlobalConst.LIMIT_SKILL_INFO.bahaTA, totals[key]["bahaTA"]);
+        var armTAupNormal = Math.min(LIMIT.normalTA, normalSante + normalLesserSante);
+        var armTAupMagna = Math.min(LIMIT.magnaTA, magnaSante + magnaLesserSante);
+        var armTAupBaha = Math.min(LIMIT.bahaTA, totals[key]["bahaTA"]);
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
         totalTA += 0.01 * totals[key]["EXLB"]["TA"];
         totalTA += buff["ta"];
-        totalTA += totals[key]["TABuff"];
+        totalTA += totals[key]["TASupport"];
         totalTA += totalSummon["ta"];
-        totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha);
+        totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + totals[key]["TAbuff"]);
         if (key == "Djeeta") {
             totalTA += buff["masterTA"];
             totalTA += buff["zenithTA"];
@@ -742,11 +742,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["exDA"] = exNite;
         coeffs["cosmosDA"] = armDAupCosmos;
         coeffs["bahaDA"] = armDAupBaha;
-        coeffs["otherDA"] = totals[key]["DAbuff"] * 100;
+        coeffs["otherDA"] = totals[key]["DAbuff"];
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = totals[key]["TAbuff"] * 100;
+        coeffs["otherTA"] = totals[key]["TAbuff"];
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
@@ -1593,10 +1593,10 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["magnaNite"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
                         } else if (stype == 'normalRasetsu') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
-                            totals[key]["DAbuff"] -= (comb[i] * 10.0) / 100;
+                            totals[key]["DAbuff"] -= comb[i] * 10.0;
                         } else if (stype == 'magnaRasetsu') {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
-                            totals[key]["DAbuff"] -= (comb[i] * 10.0) / 100;
+                            totals[key]["DAbuff"] -= comb[i] * 10.0;
                         } else if (stype == 'normalMusou') {
                             totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             totals[key]["normalNite"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
@@ -1701,7 +1701,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'washiouKekkai') {
                             if (key == 'Djeeta') {
-                                totals[key]["DAbuff"] += (comb[i] * skillAmounts["washiouKekkai"][amount][slv - 1]) / 100;
+                                totals[key]["DAbuff"] += comb[i] * skillAmounts["washiouKekkai"][amount][slv - 1];
                             }
                         } else if (stype == 'maihimeEnbu') {
                             // Maihime's performance: normal attacker's large + upper limit up 7%
@@ -2355,26 +2355,26 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
                             if (totals[key2]["element"] === "wind") {
-                                totals[key2]["DABuff"] += 0.10;
-                                totals[key2]["TABuff"] += 0.05;
+                                totals[key2]["DASupport"] += 0.10;
+                                totals[key2]["TASupport"] += 0.05;
                             }
                         }
                     } else {
                         // Calculate yourself only if you do not put it in the average
-                        totals[key]["DABuff"] += 0.10;
-                        totals[key]["TABuff"] += 0.05;
+                        totals[key]["DASupport"] += 0.10;
+                        totals[key]["TASupport"] += 0.05;
                     }
                     continue;
                 case "daBuff_fist":
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
                             if (totals[key2]["fav1"] === "fist" || totals[key2]["fav2"] === "fist") {
-                                totals[key2]["DABuff"] += support.value;
+                                totals[key2]["DASupport"] += support.value;
                             }
                         }
                     } else {
                         // Calculate yourself only if you do not put it in the average
-                        totals[key]["DABuff"] += support.value;
+                        totals[key]["DASupport"] += support.value;
                     }
                     continue;
                 case "element_buff_boost":
@@ -2385,8 +2385,8 @@ module.exports.treatSupportAbility = function (totals, chara) {
                 case "eternal_wisdom":
                     if (totals[key]["elementBuff"] > 0) {
                         totals[key]["normalBuff"] += 0.30;
-                        totals[key]["DABuff"] += 0.35;
-                        totals[key]["TABuff"] += 0.10;
+                        totals[key]["DASupport"] += 0.35;
+                        totals[key]["TASupport"] += 0.10;
                     }
                     continue;
                 case "emnity_all_SL10":
@@ -2408,8 +2408,8 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     var elements = Math.min(4, module.exports.checkNumberOfElements(totals));
                     // number of elements * attack 15% DA 10% TA 3%
                     totals[key]["normalBuff"] += elements * 0.15;
-                    totals[key]["DABuff"] += elements * 0.10;
-                    totals[key]["TABuff"] += elements * 0.03;
+                    totals[key]["DASupport"] += elements * 0.10;
+                    totals[key]["TASupport"] += elements * 0.03;
                     continue;
                 case "ideal_vassals":
                     var countBattleMembers = Math.min(4, Object.values(totals).filter((x) => x.name != "" && x.isConsideredInAverage).length);
@@ -2421,12 +2421,12 @@ module.exports.treatSupportAbility = function (totals, chara) {
                             break;
                         case 3:
                             totals[key]["normalBuff"] += 0.10;
-                            totals[key]["DABuff"] += 0.03;
+                            totals[key]["DASupport"] += 0.03;
                             break;
                         case 4:
                             totals[key]["normalBuff"] += 0.15;
-                            totals[key]["DABuff"] += 0.10;
-                            totals[key]["TABuff"] += 0.06;
+                            totals[key]["DASupport"] += 0.10;
+                            totals[key]["TASupport"] += 0.06;
                             break;
                         default:
                             break;
