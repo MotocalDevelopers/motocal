@@ -79,7 +79,7 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-module.exports.LIMIT_SKILL_INFO = {
+module.exports.LIMIT = {
     normalDA: 50,
     magnaDA: 50,
     exDA: 99999,
