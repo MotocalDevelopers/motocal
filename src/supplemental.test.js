@@ -114,7 +114,7 @@ describe("#calcSupplementalDamage", () => {
 describe("#collectSkillInfo", () => {
     beforeEach(() => {
         this.supplementalDamageArray = {
-            "D": { // for checking sort keys
+            "D": { // for checking sort headers
                 damage: 10,
                 type: "other", 
             },
@@ -122,6 +122,11 @@ describe("#collectSkillInfo", () => {
                 damage: 20,
                 type: "hp_based",
                 threshold: 0.80,
+            },
+            "E": {
+                damage: 20,
+                type: "on_critical",
+                additionalVal: 50.0
             },
             "C": {
                 damage: 30,
@@ -142,8 +147,8 @@ describe("#collectSkillInfo", () => {
     it("test empty damageArray", () => {
         let supplementalInfo = supplemental.collectSkillInfo({});
  
-        // This test show no chances supplementalInfo missing those keys.
-        expect(supplementalInfo.keys).toEqual([]);
+        // This test show no chances supplementalInfo missing those headers.
+        expect(supplementalInfo.headers).toEqual([]);
         expect(supplementalInfo.values).toEqual([]);
         expect(supplementalInfo.total).toEqual(0);
       
@@ -160,13 +165,22 @@ describe("#collectSkillInfo", () => {
         let {supplementalDamageArray} = this;
       
         let supplementalInfo = supplemental.collectSkillInfo(supplementalDamageArray, {remainHP: 1.00});
-        expect(supplementalInfo.total).toEqual(60);
-        expect(supplementalInfo.keys).toEqual(["B", "C", "D"]);
-        expect(supplementalInfo.values).toEqual([20, 30, 10]);
+        expect(supplementalInfo.total).toEqual(80);
+        expect(supplementalInfo.headers).toEqual([
+            ["B", "hp_based", null],
+            ["C", "third_hit", null],
+            ["D", "other", null],
+            ["E", "on_critical", 50]
+        ]);
+        expect(supplementalInfo.values).toEqual([20, 30, 10, 20]);
       
         supplementalInfo = supplemental.collectSkillInfo(supplementalDamageArray, {remainHP: 0.50});
-        expect(supplementalInfo.total).toEqual(40);
-        expect(supplementalInfo.keys).toEqual(["C", "D"]);
-        expect(supplementalInfo.values).toEqual([30, 10]);
+        expect(supplementalInfo.total).toEqual(60);
+        expect(supplementalInfo.headers).toEqual([
+            ["C", "third_hit", null],
+            ["D", "other", null],
+            ["E", "on_critical", 50]
+        ]);
+        expect(supplementalInfo.values).toEqual([30, 10, 20]);
     });
 });
