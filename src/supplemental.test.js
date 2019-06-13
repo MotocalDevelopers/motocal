@@ -132,11 +132,6 @@ describe("#collectSkillInfo", () => {
                 damage: 30,
                 type: "third_hit",
             },
-            // for damage=0 case
-            // 1. Add this test data first
-            // 2. Run test to confirm it's failed at keys() check
-            // 3. Add `&& (val.damage != 0)` to isAvailable
-            // 4. Run test to check pass
             "A": {
                 damage: 0,
                 type: "other",
@@ -163,46 +158,14 @@ describe("#collectSkillInfo", () => {
     // (Jasmine in codepen.io did not support the same method)
     it("test damageArray remainHP 100%,50%", () => {
         let {supplementalDamageArray} = this;
+        const toKey = ([key, type, additionalVal]) => key;
       
         let supplementalInfo = supplemental.collectSkillInfo(supplementalDamageArray, {remainHP: 1.00});
         expect(supplementalInfo.total).toEqual(80);
-        expect(supplementalInfo.headers).toEqual([
-            ["B", "hp_based", null],
-            ["C", "third_hit", null],
-            ["D", "other", null],
-            ["E", "on_critical", 50]
-        ]);
-        expect(supplementalInfo.values).toEqual([20, 30, 10, 20]);
+        expect(supplementalInfo.headers.map(toKey)).toEqual(["B", "C", "D", "E"]);
       
         supplementalInfo = supplemental.collectSkillInfo(supplementalDamageArray, {remainHP: 0.50});
         expect(supplementalInfo.total).toEqual(60);
-        expect(supplementalInfo.headers).toEqual([
-            ["C", "third_hit", null],
-            ["D", "other", null],
-            ["E", "on_critical", 50]
-        ]);
-        expect(supplementalInfo.values).toEqual([30, 10, 20]);
-    });
-});
-
-describe("#tableHeader", () => {
-
-    it("test empty head", () => {
-        let head = supplemental.tableHeader([], "en");
- 
-        expect(head).toEqual("");
-      
-    });
-  
-    test('test head locale:en', () => {
-        expect(supplemental.tableHeader(["バフ", undefined, 10], "en")).toEqual("Buff");
-        expect(supplemental.tableHeader(["修羅の誓約", "third_hit", undefined], "en")).toEqual("Contentious Covenant (Applies to third hit)");
-        expect(supplemental.tableHeader(["致命の誓約", "on_critical", 50], "en")).toEqual("Deleterious Covenant (Applies to critical hit, 50%)");
-    });
-  
-    test('test head locale:ja', () => {
-        expect(supplemental.tableHeader(["バフ", undefined, 10], "ja")).toEqual("バフ");
-        expect(supplemental.tableHeader(["修羅の誓約", "third_hit", undefined], "ja")).toEqual("修羅の誓約 (3回目の攻撃に)");
-        expect(supplemental.tableHeader(["致命の誓約", "on_critical", 50], "ja")).toEqual("致命の誓約 (クリティカル攻撃に、 50%)");
+        expect(supplementalInfo.headers.map(toKey)).toEqual(["C", "D", "E"]);
     });
 });

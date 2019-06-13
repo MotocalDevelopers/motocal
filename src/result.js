@@ -1307,25 +1307,23 @@ var Result = CreateClass({
                         const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
                         if (supplementalInfo.total > 0) {
                             supplementalDamageInfo.push(
-                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px"}} >
+                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px", "font-size": "10pt"}} >
                                     <thead>
                                         <tr>
-                                            <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
-                                            {supplementalInfo.headers.map( function (head, ind) {
-                                                return <th key={ind} className="bg-success" style={{"fontSize": "10pt"}}>{supplemental.tableHeader(head, locale)}</th>;
-                                            })}
-                                            <th className="bg-success" style={{"fontSize": "10pt"}}>{intl.translate("合計", locale)}</th>
+                                            <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
+                                            {supplementalInfo.headers.map(([key, type, val]) =>
+                                                <th key={key} className="bg-success">
+                                                    {intl.translate(key, locale) + 
+                                                     (intl.translate("supplemental_"+type, locale)||"").replace("{value}", (val||"").toString())}
+                                                </th>)}
+                                            <th className="bg-success">{intl.translate("合計", locale)}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td style={{"fontSize": "10pt"}}>{intl.translate("ダメージ", locale)}</td>
-                                            {supplementalInfo.values.map( function (v, ind) {
-                                                return (
-                                                    <td key={ind} style={{"fontSize": "10pt"}}>{v}</td>
-                                                )
-                                            })}
-                                            <td style={{"fontSize": "10pt"}}>
+                                            <td>{intl.translate("ダメージ", locale)}</td>
+                                            {supplementalInfo.values.map(([key, damage]) => <td key={key}>{damage}</td>)}
+                                            <td>
                                                 {supplementalInfo.total}&nbsp;
                                             </td>
                                         </tr>
