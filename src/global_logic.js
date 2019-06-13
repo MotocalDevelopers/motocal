@@ -259,7 +259,7 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, ch
     if (chainNumber <= 2) {
         var limitValues = [[1500000, 0.01], [1300000, 0.05], [1200000, 0.30], [1000000, 0.60]]
     } else if (chainNumber === 3) {
-        var limitValues = [[2000000, 0.01], [1600000, 0.05], [1400000, 0.30], [1200000, 0.60]]
+        var limitValues = [[2000000, 0.01], [1500000, 0.05], [1450000, 0.30], [1250000, 0.60]]
     } else {
         var limitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]]
     }
@@ -526,6 +526,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // DATA upper limit
         // Normal * Magna * EX * Baha * Cosmos BL
         // DATA debuff for Rasetsu
+
         var armDAupNormal = Math.min(LIMIT.normalDA, normalNite + normalSante);
         var armDAupMagna = Math.min(LIMIT.magnaDA, magnaNite + magnaSante);
         var armDAupBaha = Math.min(LIMIT.bahaDA, totals[key]["bahaDA"]);
@@ -544,10 +545,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             totalDA += buff["masterDA"];
             totalDA += buff["zenithDA"];
         }
-        
-        totalDA = totalDA >= 0.0 ? totalDA : 0.0; // Fit 100% >= DA >= 0%
-        totalDA = totalDA <= 1.0 ? totalDA : 1.0;
-       
+
+        // Fit 0% < DA < 100%
+        totalDA = Math.min(1.0, Math.max(0.0, totalDA));
 
         // skill that rises only TA is called LesserSante
         var normalLesserSante = totals[key]["normalLesserSante"] * totalSummon["zeus"];
@@ -556,6 +556,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var armTAupNormal = Math.min(LIMIT.normalTA, normalSante + normalLesserSante);
         var armTAupMagna = Math.min(LIMIT.magnaTA, magnaSante + magnaLesserSante);
         var armTAupBaha = Math.min(LIMIT.bahaTA, totals[key]["bahaTA"]);
+
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
         totalTA += 0.01 * totals[key]["EXLB"]["TA"];
@@ -568,9 +569,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             totalTA += buff["masterTA"];
             totalTA += buff["zenithTA"];
         }
-        
-        totalTA = totalTA >= 0.0 ? totalTA : 0.0; // Fit 100% >= TA >= 0%
-        totalTA = totalTA <= 1.0 ? totalTA : 1.0;
+
+        // Fit 0% < TA < 100%
+        totalTA = Math.min(1.0, Math.max(0.0, totalTA));
         
         var taRate = Math.min(1.0, Math.floor(totalTA * 100) / 100); // Truncated values are used to calculate multi attack.
         var daRate = Math.min(1.0, Math.floor(totalDA * 100) / 100);
@@ -578,8 +579,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         if (totals[key]["typeBonus"] == 1.5) {
             // Supplemental damage rise support ability does not overlap with Tenshi skill (the strongest effect overwrites the lesser)
-            var damageUP = totals[key]["tenshiDamageUP"] > totals[key]["charaDamageUP"] ? totals[key]["tenshiDamageUP"] : totals[key]["charaDamageUP"];
-            damageUP += 0.01 * totalSummon["tenshiDamageUP"]
+            var damageUP = Math.max(totals[key]["tenshiDamageUP"], totals[key]["charaDamageUP"]);
+            damageUP += 0.01 * totalSummon["tenshiDamageUP"];
             damageUP += totals[key]["charaUniqueDamageUP"];
 
             // Generate normal critical skill arrays.
@@ -647,7 +648,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
-        chainDamageLimit = chainDamageLimit <= 0.50 ? chainDamageLimit : 0.50;
+        chainDamageLimit = Math.min(0.50, chainDamageLimit);
         
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
@@ -682,7 +683,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
 
         var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
-        chainDamageUP = chainDamageUP <= 1.20 ? chainDamageUP : 1.20; //check skill limit
+        chainDamageUP = Math.min(1.20, chainDamageUP); //check skill limit
         
         if (key == "Djeeta") {
             damageLimit += buff["masterDamageLimit"] + buff["zenithDamageLimit"];
@@ -780,7 +781,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             damageWithCritical: damage,
             // Only consecutive shots
             damageWithMultiple: damageWithoutCritical * expectedAttack,
-            ougiDamageWithChainDamage: ougiDamage + chainBurst,
             ougiRatio: totals[key]["ougiRatio"],
             ougiDamage: ougiDamage,
             chainBurst: chainBurst,
@@ -796,6 +796,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     var totalExpected_average = 0.0;
     var averageCyclePerTurn = 0.0;
     var averageChainBurst = 0.0;
+    var totalOugiDamage = 0.0;
 
     var cnt = 0.0;
     for (key in res) {
@@ -805,16 +806,25 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             totalExpected_average += res[key].totalExpected;
             averageCyclePerTurn += res[key].expectedCycleDamagePerTurn;
             averageChainBurst += res[key].chainBurst;
+            totalOugiDamage += res[key].ougiDamage;
             cnt += 1.0
         }
     }
 
-    res["Djeeta"]["averageAttack"] = parseInt(average / cnt);
-    res["Djeeta"]["averageCriticalAttack"] = parseInt(crit_average / cnt);
-    res["Djeeta"]["averageTotalExpected"] = parseInt(totalExpected_average / cnt);
-    res["Djeeta"]["averageCyclePerTurn"] = parseInt(averageCyclePerTurn / cnt);
-    res["Djeeta"]["averageChainBurst"] = parseInt(averageChainBurst / cnt);
-    return res
+    res["Djeeta"]["averageAttack"] = average / cnt;
+    res["Djeeta"]["averageCriticalAttack"] = crit_average / cnt;
+    res["Djeeta"]["averageTotalExpected"] = totalExpected_average / cnt;
+    res["Djeeta"]["averageCyclePerTurn"] = averageCyclePerTurn / cnt;
+    res["Djeeta"]["averageChainBurst"] = averageChainBurst / cnt;
+    res["Djeeta"]["totalOugiDamage"] = totalOugiDamage;
+    res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
+
+    for (var key in totals) {
+        res[key]["totalOugiDamage"] = totalOugiDamage;
+        res[key]["ougiDamageWithChainDamage"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
+    }
+
+    return res;
 };
 
 module.exports.getTesukatoripokaAmount = function (amount, numOfRaces) {
@@ -942,7 +952,9 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
     if (haisuiType === "normalKonshin" || haisuiType === "normalOtherKonshin") {
         if (remainHP >= 0.25) {
             if (haisuiAmount === "S") {
-
+                // Normal Stamina (S)
+                // TODO: No Data
+                return 0.0
             } else if (haisuiAmount === "M") {
                 // Normal Stamina (M)
                 if (haisuiSLv < 15) {
