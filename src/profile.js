@@ -244,7 +244,9 @@ var Profile = CreateClass({
         }
         if (e.target.type === "checkbox") {
             newState[key] = e.target.checked;
-            newState.filterOptionsChanged = true;
+            if (key.toLocaleString().toLowerCase().includes("rule")) {
+                newState.filterOptionsChanged = true;
+            }
         }
         this.setState(newState);
         this.props.onChange(newState)

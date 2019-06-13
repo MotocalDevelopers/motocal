@@ -138,7 +138,7 @@ var RegisteredChara = CreateClass({
             });
         });
     },
-    onDataObtained: async function(callback) {
+    onDataObtained: async function (callback) {
         this.onDataRequested().then(callback)
     },
     componentDidMount: function () {
@@ -302,13 +302,13 @@ var RegisteredArm = CreateClass({
                     resolve(data)
                 }.bind(this),
                 error: function (xhr, status, err) {
-                    alert("Error!: 武器データの取得に失敗しました。 status: ", status, ", error message: " , err.toString());
+                    alert("Error!: 武器データの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
                     throw new Error(err.toString());
                 }.bind(this)
             });
         });
     },
-    onDataObtained: async function(callback) {
+    onDataObtained: async function (callback) {
         this.onDataRequested().then(callback)
     },
     componentDidMount: function () {
