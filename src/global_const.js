@@ -1849,13 +1849,13 @@ var supportAbilities = {
     },
     "da_up_all_10": {
         "name": "全体DA率10%UP(ランスロット)",
-        "type": "DABuff",
+        "type": "DASupport",
         "range": "all",
         "value": 0.10
     },
     "ta_up_all_3": {
         "name": "全体TA率3%UP(ネツァ)",
-        "type": "TABuff",
+        "type": "TASupport",
         "range": "all",
         "value": 0.03
     },
