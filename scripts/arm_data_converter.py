@@ -318,6 +318,15 @@ skillnamelist["normalHaisuiS"] = {
     u"闇の背水": "dark"
 }
 
+skillnamelist["normalKonshinS"] = {
+    u"火の渾身": "fire",
+    u"水の渾身": "water",
+    u"土の渾身": "earth",
+    u"風の渾身": "wind",
+    u"光の渾身": "light",
+    u"闇の渾身": "dark"
+}
+
 skillnamelist["normalKamui"] = {
     u"火の神威": "fire",
     u"水の神威": "water",
@@ -782,6 +791,7 @@ skillnamelist["strengthL"] = {
     u"菩提の探究": "wind",
     u"退路無き攻刃": "water",
     u"パワーボム": "earth",
+    u"フラッドオブアームズ": "water",
 }
 
 skillnamelist["exATKandHPM"] = {
