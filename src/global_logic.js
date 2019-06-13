@@ -2376,6 +2376,20 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["TABuff"] += 0.05;
                     }
                     continue;
+                case "dataBuff_water":
+                    if (totals[key].isConsideredInAverage) {
+                        for (var key2 in totals) {
+                            if (totals[key2]["element"] === "water") {
+                                totals[key2]["DABuff"] += 0.10;
+                                totals[key2]["TABuff"] += 0.05;
+                            }
+                        }
+                    } else {
+                        // Calculate yourself only if you do not put it in the average
+                        totals[key]["DABuff"] += 0.10;
+                        totals[key]["TABuff"] += 0.05;
+                    }
+                    continue;
                 case "daBuff_fist":
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {

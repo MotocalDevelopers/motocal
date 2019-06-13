@@ -1841,16 +1841,21 @@ var supportAbilities = {
         "range": "all",
         "value": 0.10
     },
-    // TODO: Nezahualpilli support skill update when confirmed
     "ta_up_all_3": {
-        "name": "全体TA率3%UP(ネツァ)",
+        "name": "全体TA率5%UP(ネツァ)",
         "type": "TABuff",
         "range": "all",
-        "value": 0.03
+        "value": 0.05
     },
     "data_up_wind_10_5": {
         "name": "全体風DA率10%UP&TA率5%UP(コッコロ)",
         "type": "dataBuff_wind",
+        "range": "all",
+        "value": 0.00
+    },
+    "data_up_water_10_5": {
+        "name": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
+        "type": "dataBuff_water",
         "range": "all",
         "value": 0.00
     },
