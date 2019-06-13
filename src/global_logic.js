@@ -1196,6 +1196,7 @@ module.exports.recalcNormalSupportKonshin = function (chara, remainHP) {
                 // Treatment of emnity supplements only
                 switch (support.type) {
                     case "normalSupportKonshin":
+                        // fall through
                     case "normalSupportKonshin_hpDebuff":
                         // Refer to owner's HP
                         normalSupportKonshinValue += 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", 1, remainHP);
