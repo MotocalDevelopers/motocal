@@ -1,5 +1,5 @@
 var React = require('react');
-var {Button, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
+var {Button, FormControl, InputGroup, FormGroup, Checkbox} = require('react-bootstrap');
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
@@ -214,6 +214,8 @@ var Profile = CreateClass({
             personalOugiGageBuff: 0.0,
             personalDamageLimitBuff: 0.0,
             personalOugiDamageLimitBuff: 0.0,
+            ruleMaxSize: true,
+            filterOptionsChanged: false
         };
     },
     switchBufflist: function (e) {
@@ -239,6 +241,10 @@ var Profile = CreateClass({
         if (key == "job") {
             newState.DA = Jobs[e.target.value].DaBonus;
             newState.TA = Jobs[e.target.value].TaBonus
+        }
+        if (e.target.type === "checkbox") {
+            newState[key] = e.target.checked;
+            newState.filterOptionsChanged = true;
         }
         this.setState(newState);
         this.props.onChange(newState)
@@ -904,6 +910,17 @@ var Profile = CreateClass({
                             <td>
                                 <FormControl componentClass="select" value={this.state.chainNumber}
                                              onChange={this.handleSelectEvent.bind(this, "chainNumber")}> {selector.chainNumber} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("弱いを隠す", locale)} id={"tooltip-hide-grids"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("弱いを隠す", locale)}</th>
+                            <td>
+                                <Checkbox inline checked={this.state.ruleMaxSize}
+                                          onChange={this.handleSelectEvent.bind(this, "ruleMaxSize")}>
+                                </Checkbox>
                             </td>
                         </tr>
                     </TextWithTooltip>

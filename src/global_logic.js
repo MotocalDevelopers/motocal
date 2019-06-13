@@ -64,17 +64,17 @@ module.exports.proceedIndex = function (index, ana, i) {
 /**
  * This function aims to remove all combinations that has no chance to be top dps henceforth saving processing time
  * @param combinations
- * @param rule_max_size Eliminate any grid that doesn't reach maximum weapon possible for given weapon list
+ * @param ruleMaxSize Eliminate any grid that doesn't reach maximum weapon possible for given weapon list
  */
-filterCombinations = function (combinations, max_size, rule_max_size = true) {
-    if (rule_max_size) {
+filterCombinations = function (combinations, maxSize, ruleMaxSize = true) {
+    if (ruleMaxSize) {
         let reducer = (accumulator, currentValue) => accumulator + currentValue;
-        combinations = combinations.filter(combination => combination.reduce(reducer) === max_size);
+        combinations = combinations.filter(combination => combination.reduce(reducer) === maxSize);
     }
     return combinations;
 };
 
-module.exports.calcCombinations = function (arml) {
+module.exports.calcCombinations = function (arml, ruleMaxSize) {
     // Calculate the array of [Minimum consideration number, ..., Maximum consideration number] for all weapons
     var armNumArray = [];
     var totalItr = 1;
@@ -102,7 +102,7 @@ module.exports.calcCombinations = function (arml) {
         isCosmosArray[i] = module.exports.isCosmos(arml[i]);
         isDarkOpusArray[i] = module.exports.isDarkOpus(arml[i]);
     }
-    let max_size = 0;
+    let maxSize = 0;
     for (var i = 0; i < totalItr; i = (i + 1) | 0) {
         var temp = [];
         var num = 0;
@@ -132,11 +132,11 @@ module.exports.calcCombinations = function (arml) {
         }
         if (isValidCombination && ((totalItr <= 1024 && num <= 10) || num === 10)) {
             combinations.push(temp);
-            max_size = Math.max(max_size, num);
+            maxSize = Math.max(maxSize, num);
         }
         index = module.exports.proceedIndex(index, armNumArray, 0)
     }
-    return filterCombinations(combinations, max_size);
+    return filterCombinations(combinations, maxSize, ruleMaxSize);
 };
 
 module.exports.getTypeBonus = function (self_elem, enemy_elem) {
