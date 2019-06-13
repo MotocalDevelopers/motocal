@@ -67,7 +67,7 @@ module.exports.proceedIndex = function (index, ana, i) {
  * @param rule_max_size Eliminate any grid that doesn't reach maximum weapon possible for given weapon list
  */
 filterCombinations = function (combinations, max_size, rule_max_size = true) {
-    if (rule_max_size){
+    if (rule_max_size) {
         let reducer = (accumulator, currentValue) => accumulator + currentValue;
         combinations = combinations.filter(combination => combination.reduce(reducer) === max_size);
     }
