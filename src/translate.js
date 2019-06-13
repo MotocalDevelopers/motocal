@@ -1826,7 +1826,7 @@ var multiLangData = {
         "zh": "全体風DA率10%UP&TA率5%UP(コッコロ)",
     },
     "全体水DA率10%UP&TA率5%UP(水着ディアンサ)": {
-        "en": "10% boost to DA rate and 5% boost to TA rate for wind allies. (Diantha (Summer))",
+        "en": "10% boost to DA rate and 5% boost to TA rate for water allies. (Diantha (Summer))",
         "ja": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
         "zh": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
     },
