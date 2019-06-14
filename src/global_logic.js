@@ -531,16 +531,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var armDAupMagna = Math.min(LIMIT.magnaDA, magnaNite + magnaSante);
         var armDAupBaha = Math.min(LIMIT.bahaDA, totals[key]["bahaDA"]);
         var armDAupCosmos = Math.min(LIMIT.cosmosDA, totals[key]["cosmosBL"]);
-        var armDAupOther = Math.min(LIMIT.otherDA, totals[key]["DAOther"]); // 99999 for no limit
+        var armDAupOther = Math.min(LIMIT.otherDA, totals[key]["DAOther"] + (buff["da"] + totals[key]["DABuff"] + totalSummon["da"]) * 100); // 99999 for no limit
 
         // unknown never reaches 50% of the current situation
         var totalDA = 0.01 * totals[key]["baseDA"];
         totalDA += 0.01 * totals[key]["LB"]["DA"];
         totalDA += 0.01 * totals[key]["EXLB"]["DA"];
-        totalDA += buff["da"];
         totalDA += totals[key]["DASupport"];
-        totalDA += totals[key]["DABuff"];
-        totalDA += totalSummon["da"];
         totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + armDAupOther);
         if (key == "Djeeta") {
             totalDA += buff["masterDA"];
@@ -557,15 +554,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var armTAupNormal = Math.min(LIMIT.normalTA, normalSante + normalLesserSante);
         var armTAupMagna = Math.min(LIMIT.magnaTA, magnaSante + magnaLesserSante);
         var armTAupBaha = Math.min(LIMIT.bahaTA, totals[key]["bahaTA"]);
-        var armTAupOther = Math.min(LIMIT.otherTA, totals[key]["TAOther"]); // UNUSED  // 99999 for no limit
+        var armTAupOther = Math.min(LIMIT.otherTA, totals[key]["TAOther"] + (buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"]) * 100); // UNUSED  // 99999 for no limit
 
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
         totalTA += 0.01 * totals[key]["EXLB"]["TA"];
-        totalTA += buff["ta"];
         totalTA += totals[key]["TASupport"];
-        totalTA += totals[key]["TABuff"];
-        totalTA += totalSummon["ta"];
         totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther);
         if (key == "Djeeta") {
             totalTA += buff["masterTA"];
@@ -747,11 +741,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["exDA"] = exNite;
         coeffs["cosmosDA"] = armDAupCosmos;
         coeffs["bahaDA"] = armDAupBaha;
-        coeffs["otherDA"] = (buff["da"] + totals[key]["DABuff"]) * 100 + totals[key]["DAOther"];
+        coeffs["otherDA"] = armDAupOther;
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"]) * 100 + totals[key]["TAOther"];
+        coeffs["otherTA"] = armTAupOther;
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
