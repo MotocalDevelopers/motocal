@@ -126,7 +126,7 @@ describe("#collectSkillInfo", () => {
             "E": {
                 damage: 20,
                 type: "on_critical",
-                additionalVal: 50.0
+                extraValue: 50.0
             },
             "C": {
                 damage: 30,
@@ -158,7 +158,7 @@ describe("#collectSkillInfo", () => {
     // (Jasmine in codepen.io did not support the same method)
     it("test damageArray remainHP 100%,50%", () => {
         let {supplementalDamageArray} = this;
-        const toKey = ([key, type, additionalVal]) => key;
+        const toKey = ([key, type, extraValue]) => key;
       
         let supplementalInfo = supplemental.collectSkillInfo(supplementalDamageArray, {remainHP: 1.00});
         expect(supplementalInfo.total).toEqual(80);

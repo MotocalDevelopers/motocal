@@ -1,4 +1,3 @@
-
 function calcSupplementalDamage(
     types,
     damageArray,
@@ -46,7 +45,7 @@ function collectSkillInfo(damageArray, {remainHP = 1.0}={}) {
         .filter(isAvailable)
         .sort();
     return {
-        headers: xs.map(([key, val]) => [key, val.type, val.additionalVal]),
+        headers: xs.map(([key, val]) => [key, val.type, val.extraValue]),
         values: xs.map(([key, val]) => [key, val.damage]),
         total: xs.reduce((total, [key,val]) => total + val.damage, 0),
     };
