@@ -454,7 +454,7 @@ var Root = CreateClass({
                         </div>
                     </div>
                     <div draggable="true" className="drag-hr" onDragEnd={this.onDragEnd}></div>
-                    <div className="rootRight" style={{
+                    <div className="rootright" style={{
                         height: this.state.rootrightHeight + "%",
                         width: "calc(" + this.state.rootrightWidth + "% - 10px)"
                     }}>
