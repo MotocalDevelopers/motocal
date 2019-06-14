@@ -43,6 +43,7 @@ supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
 supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
 supportAbilist["da_up_fist_10"] = {u"古今無双流"}
 supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ", u"真夏の夜の夢"}
+#supportAbilist["hp_up_own_10"] = {u""}
 supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
 supportAbilist["hp_up_own_20"] = {u"老當益壮"}
 supportAbilist["atk_up_own_5"] = {u"愛憎の衝動"}
@@ -50,10 +51,11 @@ supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ", u"ディ
 supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
 supportAbilist["atk_up_doraf"] = {u"質実剛健"}
 supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
-supportAbilist["element_buff_boost_own_30"] = {u"王者の風格"}
+supportAbilist["element_buff_boost_own_30"] = {u"王者の風格", u"覇者の風格"}
 supportAbilist["eternal_wisdom"] = {u"久遠の叡智"}
+supportAbilist["ougi_gage_down_own_35"] = {u"ケンプファー", u"闘争求む重鎧"}
 supportAbilist["ougi_gage_up_own_10"] = {u"戦賢の書"}
-supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼の悪魔"}
+supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼の悪魔", u"見た目は子供、頭脳は大人"}
 supportAbilist["ougi_gage_up_own_100"] = {u"刀神"}
 supportAbilist["ougi_damage_up_50_cap_10"] = {u"天星剣王2"}
 supportAbilist["ougi_damage_up_50"] = {u"天星剣王"}
@@ -103,7 +105,9 @@ supportAbilist["ougiCapUP_100"] = {
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
-
+supportAbilist["critical_cap_up"] = {
+    u"ヘッドショット"
+}
 # Patching DA TA
 patching = OrderedDict()
 

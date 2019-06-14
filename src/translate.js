@@ -1995,6 +1995,102 @@ var multiLangData = {
         "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
         "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
     },
+    "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)": {
+        "en": "All Other Allies gain gain 5% ATK UP and Boost to critical hit rate (20% chance, 20% damage). (Yaia)",
+        "ja": "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)",
+        "zh": "All Other Allies gain gain 5% ATK UP and Boost to critical hit rate (20% chance, 20% damage). (Yaia)",
+    },
+    "自分以外の味方のクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア(クリスマスver))": {
+        "en": "Boost to All Other Allies critical hit rate (20% chance, 20% damage). (Yaia Crismas Ver.)",
+        "ja": "自分以外の味方のクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア(クリスマスver))",
+        "zh": "",
+    },
+    "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))": {
+        "en": "Boost to critical hit rate based on how low HP is (Only activates when below 60%HP). (Beatrix (Themed))",
+        "ja": "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))",
+        "zh": "Boost to critical hit rate based on how low HP is (Only activates when below 60%HP). (Beatrix (Themed))",
+    },
+    "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)": {
+        "en": "80% bonus Fire damage for single attacks and 30% bonus Fire damage for double attacks. (Sturm)",
+        "ja": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
+        "zh": "80% bonus Fire damage for single attacks and 30% bonus Fire damage for double attacks. (Sturm)",
+    },
+    "属性バフ付与時に属性攻撃30%UP": {
+        "en": "Allies gain an additional 30% boost to Element ATK when affected by Element ATK Up.",
+        "ja": "属性バフ付与時に属性攻撃30%UP",
+        "zh": "Allies gain an additional 30% boost to Element ATK when affected by Element ATK Up.",
+    },
+    "属性バフ付与時に属性攻撃15%UP": {
+        "en": "Allies gain an additional 15% boost to Element ATK when affected by Element ATK Up.",
+        "ja": "属性バフ付与時に属性攻撃30%UP",
+        "zh": "Allies gain an additional 15% boost to Element ATK when affected by Element ATK Up.",
+    },
+    "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)": {
+        "en": "Gain an additional 30% boost to Element ATK and 20% Boost to C.A. specs when affected by Element ATK Up.",
+        "ja": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)",
+        "zh": "Gain an additional 30% boost to Element ATK and 20% Boost to C.A. specs when affected by Element ATK Up.",
+    },
+    "光属性キャラがクリティカル発動時にダメージ上限3%UP": {
+        "en": "3% boost to Light characters' critical hit damage cap.",
+        "ja": "光属性キャラがクリティカル発動時にダメージ上限3%UP",
+        "zh": "3% boost to Light characters' critical hit damage cap.",
+    },
+    "": {
+        "en": "10% boost to critical hit DMG cap.",
+        "ja": "クリティカル発動時にダメージ上限10%",
+        "zh": "10% boost to critical hit DMG cap.",
+    },
+    "自分のHPが少ないほど攻撃UP": {
+        "en": "Boost to ATK as HP decreases.",
+        "ja": "自分のHPが少ないほど攻撃UP",
+        "zh": "Boost to ATK as HP decreases.",
+    },
+    "属性攻撃UPが付与されている時、自分の攻撃UP": {
+        "en": "30% boost to Heles's ATK when affected by Element ATK Up",
+        "ja": "属性攻撃UPが付与されている時、自分の攻撃UP",
+        "zh": "30% boost to Heles's ATK when affected by Element ATK Up",
+    },
+    "トリプルアタック時に光属性追撃効果": {
+        "en": " 15% Bonus Light DMG effect upon triple attack.",
+        "ja": "トリプルアタック時に光属性追撃効果",
+        "zh": " 15% Bonus Light DMG effect upon triple attack.",
+    },
+    "闇属性攻撃力UPが付与されている時、光属性の敵に対して与ダメージUP": {
+        "en": "10% boost to damage against Light foes when Olivia has Dark ATK Up",
+        "ja": "闇属性攻撃力UPが付与されている時、光属性の敵に対して与ダメージUP",
+        "zh": "10% boost to damage against Light foes when Olivia has Dark ATK Up",
+    },
+    "奥義ゲージ上昇量35%DOWN": {
+        "en": "Charge bar fills up 35% slower",
+        "ja": "奥義ゲージ上昇量35%DOWN",
+        "zh": "Charge bar fills up 35% slower",
+    },
+    "主人公の奥義ゲージ上昇量UP(20%)": {
+        "en": "MC's charge bar fills up 20% faster.",
+        "ja": "主人公の奥義ゲージ上昇量UP(20%)",
+        "zh": "MC's charge bar fills up 20% faster.",
+    },
+    "HP10%UP": {
+        "en": "10% boost to max HP",
+        "ja": "HP10%UP",
+        "zh": "10% boost to max HP",
+    },
+    "通常攻撃を行わない": {
+        "en": "Doesn't attack",
+        "ja": "通常攻撃を行わない",
+        "zh": "Doesn't attack",
+    },
+    "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP": {
+        "en": "Boost to double attack rate and damage cap based on how low HP is.",
+        "ja": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP",
+        "zh": "Boost to double attack rate and damage cap based on how low HP is.",
+    },
+    // "": {
+    //     "en": "",
+    //     "ja": "",
+    //     "zh": "",
+    // },
+    
     // sort keys
     "攻撃力(二手技巧無し,ジータさんのみ)": {
         "en": "Pure ATK, Player only",
@@ -3767,6 +3863,6 @@ module.exports.translate = function (key, locale) {
 
         return multiLangData[key][locale];
     } catch (e) {
-        console.error("Error! Key " + key + "for language " + locale + " not found")
+        console.error("Error! Key " + key + "for language " + locale + " not found");
     }
 };

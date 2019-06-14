@@ -177,6 +177,7 @@ module.exports.calcDamage = function (summedAttack, totalSkillCoeff, criticalRat
     // Damage calculation
     var def = module.exports.calcDefenseDebuff(enemyDefense, defenseDebuff);
     var damage = Math.ceil(Math.ceil(summedAttack / def) * totalSkillCoeff) * criticalRatio;
+    console.log(criticalRatio);
     var overedDamage = 0;
 
     var limitValues = [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]];
@@ -424,6 +425,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += totalSummon["elementTurn"] - 1.0;
         elementCoeff += buff["element"];
         elementCoeff += totals[key]["elementBuff"];
+        elementCoeff += totals[key]["elementBuffBoostBuff"]
         elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
         elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
         elementCoeff += 0.01 * totals[key]["LB"].Element;
@@ -609,6 +611,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
 
         var criticalAttack = parseInt(totalAttack * criticalRatio);
+        var critRate = 0;
+        if (Object.keys(criticalArray).length > 0){
+            critRate = 1.0 - (isNaN(criticalArray[1.0]) ? 0 : Math.max(0, Math.min(1, criticalArray[1.0])));
+        }
+        var effectiveCriticalLimit = critRate * totals[key]["criticalDamageLimit"];
+
         var expectedOugiGage = buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"];
         expectedOugiGage *= taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0);
         
@@ -630,7 +638,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["EXLB"]["WED"]) {
             damageLimit += 0.05;
         }
-
+        var criticalNormalDamageLimit = damageLimit + effectiveCriticalLimit;
         // Mystery damage upper limit UP = whole buff + individual buff + skill + damage upper limit UP minutes
         // The upper limit of skill of mystery damage is 30%
         var ougiDamageLimitByExceed = Math.min(0.30, totals[key]["exceedOugiDamageLimit"]);
@@ -645,14 +653,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["EXLB"]["WED"]) {
             ougiDamageLimit += 0.05;
         }
-        
+        var criticalOugiDamageLimit = ougiDamageLimit + effectiveCriticalLimit;
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
         chainDamageLimit = chainDamageLimit <= 0.50 ? chainDamageLimit : 0.50;
-        
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
-        var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, additionalDamage, damageUP, damageLimit);
+        var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, additionalDamage, damageUP, criticalNormalDamageLimit);
 
         // Use damage in case of no critical to correct skill expectation
         var damageWithoutCritical = module.exports.calcDamage(summedAttack, totalSkillCoeff, 1.0, prof.enemyDefense, prof.defenseDebuff, additionalDamage, damageUP, damageLimit);
@@ -697,7 +704,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var debuffResistanceByNormal = 0.01 * totals[key]["cosmosDebuffResistance"]; 
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
 
-        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
+        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio"], ougiDamageUP, damageUP, criticalOugiDamageLimit);
 
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
         var chainBurst = module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), chainDamageUP, chainDamageLimit);
@@ -738,7 +745,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["ougiDamageLimit"] = ougiDamageLimit;
         coeffs["chainDamageLimit"] = chainDamageLimit;
         coeffs["criticalArray"] = criticalArray;
-
+        coeffs["criticalDamageLimit"] = totals[key]["criticalDamageLimit"];
+        coeffs["critRate"] = critRate;
         // Consecutive shooting information
         coeffs["normalDA"] = armDAupNormal;
         coeffs["magnaDA"] = armDAupMagna;
@@ -1980,6 +1988,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 chainDamage: 0,
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
+                criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
@@ -1993,6 +2002,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 job: job,
                 normalBuff: djeetaBuffList["personalNormalBuff"],
                 elementBuff: djeetaBuffList["personalElementBuff"],
+                elementBuffBoostBuff: 0,
                 otherBuff: djeetaBuffList["personalOtherBuff"],
                 otherBuff2: djeetaBuffList["personalOtherBuff2"],
                 HPBuff: djeetaBuffList["personalHPBuff"],
@@ -2130,6 +2140,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 magnaOugiDamage: 0,
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
+                criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 chainDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
@@ -2142,6 +2153,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 isConsideredInAverage: charaConsidered,
                 normalBuff: charaBuffList["normalBuff"],
                 elementBuff: charaBuffList["elementBuff"],
+                elementBuffBoostBuff: 0,
                 otherBuff: charaBuffList["otherBuff"],
                 otherBuff2: charaBuffList["otherBuff2"],
                 HPBuff: charaBuffList["hpBuff"],
@@ -2379,8 +2391,16 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     }
                     continue;
                 case "element_buff_boost":
-                    if (totals[key]["elementBuff"] > 0) {
-                        totals[key]["elementBuff"] += support.value;
+                    if (support.range == "own") {
+                        if (totals[key]["elementBuff"] > 0) {
+                            totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
+                        }
+                    } else if (support.range == "all" && totals[key].isConsideredInAverage) {
+                        for (key2 in totals) {
+                            if (totals[key2]["elementBuff"] > 0) {
+                            totals[key2]["elementBuffBoostBuff"] = Math.max(support.value, totals[key2]["elementBuffBoostBuff"]);
+                            }
+                        }
                     }
                     continue;
                 case "eternal_wisdom":
@@ -2458,6 +2478,66 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
+                case "mamoritai_kono_egao":
+                    if (totals[key].isConsideredInAverage) {
+                        for (var key2 in totals) {
+                            if (key != key2) {
+                                totals[key2]["normalOtherCriticalBuff"].push({
+                                    "value": support.value,
+                                    "attackRatio": support.attackRatio
+                                });
+                                totals[key2]["normalBuff"] += support.normalBuff;
+                            }   
+                        }
+                    }
+                    continue;
+                case "tousou_no_chishio":
+                    if (totals[key]['remainHP'] <= 1 && totals[key]['remainHP'] > 0.6) {
+                        totals[key]["daBuff"] += 0.10;
+                        totals[key]["damageLimit"] += 0.0;
+                        totals[key]["ougiDamageLimitBuff"] += 0.0;
+                    } else if (totals[key]['remainHP'] <= 0.6 && totals[key]['remainHP'] > 0.4) {
+                        totals[key]["daBuff"] += 0.20;
+                        totals[key]["damageLimit"] += 0.10;
+                        totals[key]["ougiDamageLimitBuff"] += 0.0;
+                    } else if (totals[key]['remainHP'] <= 0.4 && totals[key]['remainHP'] > 0.2) {
+                        totals[key]["daBuff"] += 0.30;
+                        totals[key]["damageLimit"] += 0.20;
+                        totals[key]["ougiDamageLimitBuff"] += -0.05;
+                    } else {
+                        totals[key]["daBuff"] += 0.40;
+                        totals[key]["damageLimit"] += 0.30;
+                        totals[key]["ougiDamageLimitBuff"] += -0.10;
+                    }
+                    continue;
+                case "fumetsu_no_mikiri":
+                    if (remainHP <= 0.6) {
+                        totals[key]["normalOtherCriticalBuff"].push({
+                            "value": -0.34 * totals[key]["remainHP"] + 0.40,
+                            "attackRatio": 0.50,
+                        });
+                    }
+                    continue;
+                case "chikara_atsu_no_ha":
+                    totals[key]["additionalDamageBuffSA"] = support.SingleAddtionalDamage;
+                    totals[key]["additionalDamageBuffDA"] = support.DoubleAddtionalDamage;
+                    continue;
+                case "element_buff_boost_own_30_and_ca_specs_20":
+                    if (totals[key]["elementBuff"] > 0) {
+                        totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
+                        totals[key]["ougiDamageLimitBuff"] += support.ougiDamageLimitBuff;
+                        totals[key]["ougiDamageBuff"] = support.ougiDamageBuff;
+                    }
+                case "critical_cap_up":
+                    if (support.range == "all" && totals[key].isConsideredInAverage) {
+                        for (let key2 in totals) {
+                            if (support.element == totals[key2].element || support.element == "all")
+                                totals[key2]["criticalDamageLimit"] += support.value;
+                        }
+                    } else if (support.range == "own") {
+                        totals[key]["criticalDamageLimit"] += support.value;
+                    }
+
                 default:
                     break;
             }
@@ -2469,6 +2549,17 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         "value": support.value,
                         "attackRatio": support.attackRatio
                     })
+                } else if (support.range == "others") {
+                    if (totals[key].isConsideredInAverage) {
+                        for (var key2 in totals) {
+                            if (key != key2) {
+                                totals[key2]["normalOtherCriticalBuff"].push({
+                                    "value": support.value,
+                                    "attackRatio": support.attackRatio
+                                });
+                            }   
+                        }
+                    }
                 } else {
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
