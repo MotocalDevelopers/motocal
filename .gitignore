@@ -66,6 +66,7 @@ typings/
 
 # dotenv environment variables file
 .env
+venv
 
 # next.js build output
 .next
@@ -80,4 +81,6 @@ Jetbrains directories
 .idea/
 
 # SonarQube
-.sonar-project.properties
+sonar-project.properties
+.scannerwork
+src/tests/reports

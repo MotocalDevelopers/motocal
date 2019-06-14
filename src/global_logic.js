@@ -1810,18 +1810,18 @@ function getCharaLB(chara) {
         "Critical4": "none",
     };
 
-    Object.keys(LB).map((key) => {
-        var exactKey = "LB" + key;
+    for (let key in LB) {
+        let exactKey = "LB" + key;
         if (exactKey in chara) {
-            if (key == "ATK" || key == "HP" || key == "Element") {
+            if (key === "ATK" || key === "HP" || key === "Element") {
                 LB[key] = parseInt(chara[exactKey]);
-            } else if (key == "DA" || key == "TA") {
+            } else if (key === "DA" || key === "TA") {
                 LB[key] = parseFloat(chara[exactKey]);
             } else {
                 LB[key] = chara[exactKey];
             }
         }
-    });
+    }
 
     return LB;
 }
@@ -1858,8 +1858,8 @@ function getCharaEXLB(chara) {
         "WED": false
     };
 
-    Object.keys(EXLB).map((key) => {
-        var exactKey = "EXLB" + key;
+    for (let key in EXLB) {
+        let exactKey = "EXLB" + key;
         if (exactKey in chara) {
             if (key === "WED") {
                 EXLB[key] = chara[exactKey];
@@ -1867,7 +1867,7 @@ function getCharaEXLB(chara) {
                 EXLB[key] = parseInt(chara[exactKey], 10);
             }
         }
-    });
+    }
 
     return EXLB;
 }

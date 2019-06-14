@@ -62,8 +62,17 @@
     "browserify": "16.2.3",
     "eslint": "^4.19.1",
     "jest": "24.8.0",
+    "jest-sonar-reporter": "^2.0.0",
     "prop-types": "^15.6.1",
     "watchify": "^3.11.1",
     "webpack-dev-server": "^3.3.1"
+  },
+  "jest": {
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "jestSonar": {
+    "reportPath": "tests/reports",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   }
 }
