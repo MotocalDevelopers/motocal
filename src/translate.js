@@ -1263,12 +1263,12 @@ var multiLangData = {
         "ja": "サポアビ",
         "zh": "Support Ability",
     },
-    "supplemental_other": {
+    "supplemental_other": { //left empty intentionally
         "en": "",
         "ja": "",
         "zh": "",
     },
-    "supplemental_hp_based": {
+    "supplemental_hp_based": { //left empty intentionally
         "en": "",
         "ja": "",
         "zh": "",
