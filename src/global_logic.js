@@ -531,6 +531,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var armDAupMagna = Math.min(LIMIT.magnaDA, magnaNite + magnaSante);
         var armDAupBaha = Math.min(LIMIT.bahaDA, totals[key]["bahaDA"]);
         var armDAupCosmos = Math.min(LIMIT.cosmosDA, totals[key]["cosmosBL"]);
+        var armDAupOther = Math.min(LIMIT.otherDA, totals[key]["DAOther"]); // 99999 for no limit
 
         // unknown never reaches 50% of the current situation
         var totalDA = 0.01 * totals[key]["baseDA"];
@@ -540,7 +541,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA += totals[key]["DASupport"];
         totalDA += totals[key]["DABuff"];
         totalDA += totalSummon["da"];
-        totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + totals[key]["DAOther"]);
+        totalDA += 0.01 * (armDAupNormal + armDAupMagna + exNite + armDAupBaha + armDAupCosmos + armDAupOther);
         if (key == "Djeeta") {
             totalDA += buff["masterDA"];
             totalDA += buff["zenithDA"];
@@ -556,6 +557,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var armTAupNormal = Math.min(LIMIT.normalTA, normalSante + normalLesserSante);
         var armTAupMagna = Math.min(LIMIT.magnaTA, magnaSante + magnaLesserSante);
         var armTAupBaha = Math.min(LIMIT.bahaTA, totals[key]["bahaTA"]);
+        var armTAupOther = Math.min(LIMIT.otherTA, totals[key]["TAOther"]); // UNUSED  // 99999 for no limit
 
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
@@ -564,7 +566,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalTA += totals[key]["TASupport"];
         totalTA += totals[key]["TABuff"];
         totalTA += totalSummon["ta"];
-        totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha);
+        totalTA += 0.01 * (armTAupNormal + armTAupMagna + armTAupBaha + armTAupOther);
         if (key == "Djeeta") {
             totalTA += buff["masterTA"];
             totalTA += buff["zenithTA"];
@@ -749,7 +751,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"]) * 100;
+        coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"]) * 100 + totals[key]["TAOther"];
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
@@ -2018,6 +2020,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiDamageBuff: djeetaBuffList["personalOugiDamageBuff"],
                 additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
                 DAOther: 0,
+                TAOther: 0,
                 damageLimitBuff: djeetaBuffList["personalDamageLimitBuff"],
                 ougiDamageLimitBuff: djeetaBuffList["personalOugiDamageLimitBuff"],
                 normalOtherCriticalBuff: [],
@@ -2168,6 +2171,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiDamageBuff: charaBuffList["ougiDamageBuff"],
                 additionalDamageBuff: charaBuffList["additionalDamageBuff"],
                 DAOther: 0,
+                TAOther: 0,
                 damageLimitBuff: charaBuffList["damageLimitBuff"],
                 ougiDamageLimitBuff: charaBuffList["ougiDamageLimitBuff"],
                 normalOtherCriticalBuff: [],
@@ -2322,6 +2326,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["additionalDamage"] = 0;
         totals[key]["ougiDebuff"] = 0;
         totals[key]["DAOther"] = 0;
+        totals[key]["TAOther"] = 0;
         totals[key]["debuffResistance"] = 0;
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
