@@ -78,3 +78,6 @@ typings/
 
 Jetbrains directories
 .idea/
+
+# SonarQube
+.sonar-project.properties
