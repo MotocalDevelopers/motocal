@@ -1914,7 +1914,7 @@ var supportAbilities = {
         "value": -0.15
     },
     "hp_up_own_10": {
-        "name": "HP10%UP()",
+        "name": "HP10%UP(黒騎士)",
         "type": "HPBuff",
         "range": "own",
         "value": 0.10
@@ -1992,13 +1992,13 @@ var supportAbilities = {
         "value": 1.00
     },
     "ougi_gage_down_own_35": {
-        "name": "奥義ゲージ上昇量35%DOWN",
+        "name": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ、ウーフとレニー)",
         "type": "ougiGageBuff",
         "range": "own",
         "value": -0.35,
     },
     "ougi_gage_up_djeeta_20": {
-        "name": "主人公の奥義ゲージ上昇量UP(20%)",
+        "name": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
         "type": "ougiGageBuff",
         "range": "Djeeta",
         "value": 0.20,
@@ -2197,7 +2197,7 @@ var supportAbilities = {
         "value": 0.30
     },
     "element_buff_boost_own_30_ca_specs_20": { //Aglovale, 覇者の風格
-        "name": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)。()",
+        "name": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)。(アグロヴァル)",
         "type": "element_buff_boost_own_30_ca_specs_20",
         "range": "own",
         "value": 0.30,
@@ -2205,7 +2205,7 @@ var supportAbilities = {
         "ougiDamageLimitBuff": 0.20,
     },
     "matatsu_to_no_kizuna": { //Heles_(Wind), 真龍との絆
-        "name": "属性攻撃UPが付与されている時、自分の攻撃UPPと奥義性能UP(ダメージと上限20%)。()",
+        "name": "属性攻撃UPが付与されている時、自分の攻撃UPと奥義性能UP(ダメージと上限20%)。(ヘルエス(風属性ver))",
         "type": "matatsu_to_no_kizuna",
         "range": "own",
         "value": 0.0,
@@ -2236,7 +2236,7 @@ var supportAbilities = {
         "additionalDamageTA": 0.0,
     },
     "Revion_kishi_sanshimai": { //Levin_Sisters, レヴィオン騎士三姉妹
-        "name": "トリプルアタック時に光属性追撃効果。()",
+        "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
         "range": "own",
         "additionalDamageSA": 0.0,
@@ -2244,24 +2244,24 @@ var supportAbilities = {
         "additionalDamageTA": 0.15,
     },
     "element_buff_boost_damageUP_own_10": { //olivia, 堕天司
-        "name": "闇属性攻撃力UPが付与されている時、光属性の敵に対して与ダメージUP。()",
+        "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
         "type": "element_buff_boost_damageUP_own_10",
         "range": "own",
         "value": 0.10,
     },
     "tousou_no_chishio": { //ayer, 闘争の血潮
-        "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。()",
+        "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
         "type": "tousou_no_chishio",
         "range": "own",
     },
     "critical_cap_up_light_3": { //silva, スポッター
-        "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。()",
+        "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
         "type": "critical_cap_up",
         "range": "light",
         "value": 0.03,
     },
     "critical_cap_up_own_10": { // Eugen_(Grand), ヘッドショット
-        "name": "クリティカル発動時にダメージ上限10%。()",
+        "name": "クリティカル発動時にダメージ上限10%UP。(オイゲン(リミテッドver))",
         "type": "critical_cap_up",
         "range": "own",
         "value": 0.10,
@@ -2273,13 +2273,13 @@ var supportAbilities = {
     //     "value": true,
     // },
     "debuff_resistance_up_own_15": {
-        "name": "。()",
+        "name": "弱体耐性15%UP。(レナ、カルメリーナ)",
         "type": "debuffResistanceBuff",
         "range": "own",
         "value": 0.15,
     },
     "debuff_resistance_up_own_80": {
-        "name": "。()",
+        "name": "弱体耐性80%UP。(フュンフ)",
         "type": "debuffResistanceBuff",
         "range": "own",
         "value": 0.80,
