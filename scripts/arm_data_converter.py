@@ -938,6 +938,7 @@ skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",
     u"イクシード・ウィンド": "wind",
+    u"イクシード・ライト": "light",
     u"イクシード・ダーク": "dark",
 }
 
@@ -1011,11 +1012,17 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
     for row in mycsv:
         newdict = OrderedDict()
 
-        row_lenth = len(row)
-        if row_lenth <= 1:
+        row_length = len(row)
+        if row_length <= 1:
             continue
         else:
-            has_3rd_skill: bool = row_lenth >= 22
+            # Row Lengths Overview
+            # 17: 3*
+            # 19: 4*
+            # 20: 4* + 3rd Skill
+            # 21: 5*
+            # 22: 5* + 3rd Skill
+            has_3rd_skill: bool = row_length == 20 or row_length == 22
             for index, value in enumerate(row):
                 if index == 1:
                     m = key_pattern.search(value)
