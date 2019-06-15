@@ -2283,6 +2283,7 @@ var supportAbilities = {
         "type": "debuffResistanceBuff",
         "range": "own",
         "value": 0.80,
+    },
     "stamina_all_L": {
         "name": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
         "type": "normalSupportKonshin",

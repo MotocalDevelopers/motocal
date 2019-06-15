@@ -238,7 +238,7 @@ supportAbilist["element_buff_boost_damageUP_own_10"] = {
 }
 supportAbilist["no_normal_attack"] = {
     u"優しい心",
-    u"絶対だいじょうぶだよ"
+    u"カードキャプター"
 }
 supportAbilist["tousou_no_chishio"] = {
     u"闘争の血潮"
