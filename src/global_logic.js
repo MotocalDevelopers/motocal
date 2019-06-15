@@ -846,11 +846,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["exDA"] = armDAupEX;
         coeffs["cosmosDA"] = armDAupCosmos;
         coeffs["bahaDA"] = armDAupBaha;
-        coeffs["otherDA"] = (buff["da"] + totals[key]["DABuff"] + totalSummon["da"]) * 100 + armDAupOther;
+        coeffs["otherDA"] = (buff["da"] + totals[key]["DABuff"]) * 100 + totals[key]["DAOther"];
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"]) * 100 + armTAupOther;
+        coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"]) * 100 + totals[key]["TAOther"];
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
