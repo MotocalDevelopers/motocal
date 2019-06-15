@@ -42,9 +42,9 @@ supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
 supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
 supportAbilist["da_up_fist_10"] = {u"古今無双流"}
-supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ", u"真夏の夜の夢"}
+supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ"}
 supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
-supportAbilist["hp_up_own_20"] = {u"老當益壮"}
+supportAbilist["hp_up_own_20"] = {u"老當益壮",u"本物のヒーロー"}
 supportAbilist["atk_up_own_5"] = {u"愛憎の衝動"}
 supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ", u"ディペンデンス"}
 supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
@@ -63,12 +63,11 @@ supportAbilist["envoy_meditation"] = {u"調停の使徒"}
 supportAbilist["ideal_vassals"] = {u"理想の家臣"}
 supportAbilist["dance_of_nataraja"] = {u"破滅の舞踏"}
 supportAbilist["recklessness_incarnate"] = {u"猪突・上宝沁金ノ撃槍"}
-supportAbilist["critical_up_own_10_30"] = {
-    u"セルフィッシュ・ロイヤル",
-    u"ラ・ピュセル30"}
+supportAbilist["critical_up_own_10_30"] = {u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
+supportAbilist["critical_up_own_40_50"] = {u"ぶっ殺すわよ！"}
 supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
-supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"} 
+supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"}
 #The effect size of "真っ二つにしてやるんだっ！" has not been verified.
 #supportAbilist["damageUP_10"] =  {u""} 
 supportAbilist["damageUP_20"] = {
@@ -102,6 +101,20 @@ supportAbilist["ougiCapUP_100"] = {
 }
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
+}
+
+supportAbilist["stamina_all_L"] = {
+    u"夏祭りの思い出",
+    u"不退転の戦旗",
+    u"絶対だいじょうぶだよ"
+}
+
+supportAbilist["stamina_all_L_hp_down_own_15"] = {
+    u"真夏の夜の夢"
+}
+
+supportAbilist["supplemental_third_hit_50k"] = {
+    u"みんなのあんぜんあんしん"
 }
 
 # Patching DA TA
