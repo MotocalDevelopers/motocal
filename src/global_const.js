@@ -1864,6 +1864,12 @@ var supportAbilities = {
         "range": "own",
         "value": -0.15
     },
+    "hp_up_own_10": {
+        "name": "HP10%UP()",
+        "type": "HPBuff",
+        "range": "own",
+        "value": 0.10
+    },
     "hp_up_own_15": {
         "name": "HP15%UP(ペコリーヌ)",
         "type": "HPBuff",
@@ -1871,7 +1877,7 @@ var supportAbilities = {
         "value": 0.15
     },
     "hp_up_own_20": {
-        "name": "HP20%UP(ソリッズ)", //Ladiva SSR,本物のヒーロー
+        "name": "HP20%UP(ソリッズ)",
         "type": "HPBuff",
         "range": "own",
         "value": 0.20
@@ -1935,6 +1941,18 @@ var supportAbilities = {
         "type": "ougiGageBuff",
         "range": "own",
         "value": 1.00
+    },
+    "ougi_gage_down_own_35": {
+        "name": "奥義ゲージ上昇量35%DOWN",
+        "type": "ougiGageBuff",
+        "range": "own",
+        "value": -0.35,
+    },
+    "ougi_gage_up_djeeta_20": {
+        "name": "主人公の奥義ゲージ上昇量UP(20%)",
+        "type": "ougiGageBuff",
+        "range": "Djeeta",
+        "value": 0.20,
     },
     "ougi_damage_up_50": {
         "name": "全体奥義ダメージ50%UP(シエテ)",
@@ -2012,6 +2030,13 @@ var supportAbilities = {
         "value": 1.00,
         "attackRatio": 0.50
     },
+    "critical_up_others_20_20": {
+        "name": "自分以外の味方のクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア(クリスマスver))",
+        "type": "criticalBuff",
+        "range": "others",
+        "value": 0.20,
+        "attackRatio": 0.20,
+    },
     "damageUP_5": {
         "name": "与ダメージ上昇5%UP(アビー)",
         "type": "charaDamageUP",
@@ -2059,7 +2084,44 @@ var supportAbilities = {
         "type": "wildcard",
         "range": "own",
         "value": 0.0
-    }, //re-order later
+    },
+     //re-order later
+    "aegisUP_30": { //Lancelot_and_Vane, 護国の双肩
+        "name": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
+        "type": "aegisUP",
+        "range": "own",
+        "value": 0.3,
+    },
+    //the following two ONLY applies to the "same" element as holder.
+    "element_buff_boost_all_30": {
+        "name": "属性バフ付与時に属性攻撃30%UP",
+        "type": "element_buff_boost",
+        "range": "all",
+        "value": 0.30
+    },
+    "element_buff_boost_all_15": { //kokkoro, 精霊の啓示
+        "name": "属性バフ付与時に属性攻撃15%UP",
+        "type": "element_buff_boost",
+        "range": "all",
+        "value": 0.15
+    },
+    "element_buff_boost_own_30_ca_specs_20": { //Aglovale, 覇者の風格
+        "name": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)",
+        "type": "element_buff_boost_own_30_ca_specs_20",
+        "range": "own",
+        "value": 0.30,
+        "ougiDamageBuff": 0.20,
+        "ougiDamageLimitBuff": 0.20,
+    },
+    "matatsu_to_no_kizuna": { //Heles_(Wind), 真龍との絆
+        "name": "属性攻撃UPが付与されている時、自分の攻撃UPPと奥義性能UP(ダメージと上限20%)",
+        "type": "matatsu_to_no_kizuna",
+        "range": "own",
+        "value": 0.0,
+        "normalBuff": 0.30,
+        "ougiDamageBuff": 0.20,
+        "ougiDamageLimitBuff": 0.20,
+    },
     "mamoritai_kono_egao": { //yaia. 護りたい、この笑顔
         "name": "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)",
         "type": "mamoritai_kono_egao",
@@ -2068,53 +2130,38 @@ var supportAbilities = {
         "attackRatio": 0.20,
         "normalBuff": 0.05,
     },
-    "critical_up_others_20_20": { //xmas yaia, 護るべし、その笑顔
-        "name": "自分以外の味方のクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア(クリスマスver))",
-        "type": "criticalBuff",
-        "range": "others",
-        "value": 0.20,
-        "attackRatio": 0.20,
-    },
     "fumetsu_no_mikiri": { //beato, 不滅の見切り
         "name": "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))",
         "type": "fumetsu_no_mikiri",
         "range": "own",
         "value": 0.0,
     },
-    "gokoku_no_futaken": { //Lancelot_and_Vane, 護国の双肩
-        "name": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
-        "type": "aegisUP",
-        "range": "own",
-        "value": 0.3,
-    },
-    "chikara_atsu_no_ha": { //sturm, 力圧の刃
+    "chikara_atsu_no_ha": { //Levin_Sisters, レヴィオン騎士三姉妹
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
-        "type": "chikara_atsu_no_ha",
+        "type": "additionalDamageXA",
         "range": "own",
-        "value": 0.0,
-        "SingleAddtionalDamage": 0.8,
-        "DoubleAddtionalDamage": 0.3,
+        "additionalDamageSA": 0.8,
+        "additionalDamageDA": 0.3,
+        "additionalDamageTA": 0.0,
     },
-    "element_buff_boost_all_30": { //genesis (shiva/etc)
-        "name": "属性バフ付与時に属性攻撃30%UP",
-        "type": "element_buff_boost",
-        "range": "all",
-        "value": 0.30
-    },
-    "element_buff_boost_all_15": { //kokkoro
-        "name": "属性バフ付与時に属性攻撃15%UP",
-        "type": "element_buff_boost",
-        "range": "all",
-        "value": 0.15
-    },
-    "element_buff_boost_own_30_and_ca_specs_20": { //Aglovale, 
-        "name": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)",
-        "type": "element_buff_boost_own_30_and_ca_specs_20",
+    "Revion_kishi_sanshimai": { //Levin_Sisters, レヴィオン騎士三姉妹
+        "name": "トリプルアタック時に光属性追撃効果",
+        "type": "additionalDamageXA",
         "range": "own",
-        "value": 0.0,
-        "element_buff_boost": 0.30,
-        "ougiDamageBuff": 0.20,
-        "ougiDamageLimitBuff": 0.20,
+        "additionalDamageSA": 0.0,
+        "additionalDamageDA": 0.0,
+        "additionalDamageTA": 0.15,
+    },
+    "element_buff_boost_damageUP_own_10": { //olivia, 堕天司
+        "name": "闇属性攻撃力UPが付与されている時、光属性の敵に対して与ダメージUP",
+        "type": "element_buff_boost_damageUP_own_10",
+        "range": "own",
+        "value": 0.10,
+    },
+    "tousou_no_chishio": { //ayer, 闘争の血潮
+        "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP",
+        "type": "tousou_no_chishio",
+        "range": "own",
     },
     "critical_cap_up_light_3": { //silva, スポッター
         "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP",
@@ -2128,58 +2175,23 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10,
     },
-    "suna_shin_gurafosu_no_jiai": { //sara, 砂神グラフォスの慈愛
-        "name": "",
-        "type": "fumetsu_no_mikiri",
-        "range": "own",
-        "func": function(remainHP) {return remainHP <= 0.5 ? (-60 * remainHP + 45) : 0;},
-    },
-    "matatsu_to_no_kizuna": { //Heles_(Wind), 真龍との絆
-        "name": "属性攻撃UPが付与されている時、自分の攻撃UP",
-        "type": "",
-        "range": "own",
-        "normalBuff": 0.30,
-    },
-    "Revion_kishi_sanshimai": { //Levin_Sisters, レヴィオン騎士三姉妹
-        "name": "トリプルアタック時に光属性追撃効果",
-        "type": "",
-        "range": "own",
-        "ta": 0.15,
-    },
-    "element_buff_boost_damageUP_own_10": { //olivia, 堕天司
-        "name": "",
-        "type": "element_buff_boost_damageUP_own_10",
-        "range": "own",
-        "value": 0.10,
-    },
-    "ougi_gage_down_own_35": { //wulf, ケンプファー; geisonborger, 闘争求む重鎧
-        "name": "奥義ゲージ上昇量35%DOWN",
-        "type": "ougiGageDebuff",
-        "range": "own",
-        "value": 0.35,
-    },
-    "ougi_gage_up_djeeta_20": { //vClarisse, クラリスちゃんの特製チョコ☆
-        "name": "主人公の奥義ゲージ上昇量UP(20%)",
-        "type": "",
-        "range": "djeeta",
-        "value": 0.20,
-    },
-    "hp_up_own_10": { //BK, 黒の鎧
-        "name": "HP10%UP",
-        "type": "",
-        "range": "own",
-        "value": 0.10,
-    },
     "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ
         "name": "通常攻撃を行わない",
         "type": "",
         "range": "",
         "value": "",
     },
-    "tousou_no_chishio": { //ayer, 闘争の血潮
-        "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP",
-        "type": "tousou_no_chishio",
+    "debuff_resistance_up_own_15": {
+        "name": "",
+        "type": "debuffResistanceBuff",
         "range": "own",
+        "value": 0.15,
+    },
+    "debuff_resistance_up_own_80": {
+        "name": "",
+        "type": "debuffResistanceBuff",
+        "range": "own",
+        "value": 0.80,
     },
 };
 

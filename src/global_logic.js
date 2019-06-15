@@ -425,7 +425,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += totalSummon["elementTurn"] - 1.0;
         elementCoeff += buff["element"];
         elementCoeff += totals[key]["elementBuff"];
-        elementCoeff += totals[key]["elementBuffBoostBuff"]
+        elementCoeff += totals[key]["elementBuffBoostBuff"];
         elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
         elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
         elementCoeff += 0.01 * totals[key]["LB"].Element;
@@ -450,8 +450,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         // hp magnification
         var hpCoeff = 1.0;
-        hpCoeff += 0.01 * totals[key]["normalHP"] * totalSummon["zeus"];
-        hpCoeff += 0.01 * totals[key]["magnaHP"] * totalSummon["magna"];
+        hpCoeff += 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] * (1 + totals[key]["aegisUP"]);
+        hpCoeff += 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] * (1 + totals[key]["aegisUP"]);
         hpCoeff += 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"];
         hpCoeff += 0.01 * totals[key]["exHP"];
         hpCoeff += 0.01 * totals[key]["bahaHP"];
@@ -629,7 +629,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var additionalDamage = 0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"];
         additionalDamage += totals[key]["additionalDamageBuff"];
         additionalDamage += buff["additionalDamage"];
-
+        //additionalDamage based on attacks per turn (sturm support ability-like)
+        additionalDamage += taRate * totals[key]["additionalDamageTA"]; // additionalDamage On Triple Attack
+        additionalDamage += (1.0 - taRate) * daRate * totals[key]["additionalDamageDA"]; // additionalDamage On Double Attack
+        additionalDamage += (1.0 - taRate) * (1.0 - daRate) * totals[key]["additionalDamageSA"]; // additionalDamage On Single Attack
+        
         // Damage limit UP = Overall buff + Personal buff + skill
         var damageLimit = buff["damageLimit"];
         damageLimit += totals[key]["damageLimitBuff"];
@@ -703,6 +707,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         //Other than Higo skill category.
         var debuffResistanceByNormal = 0.01 * totals[key]["cosmosDebuffResistance"]; 
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
+        debuffResistance += 100 * totals[key]["debuffResistanceBuff"];
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio"], ougiDamageUP, damageUP, criticalOugiDamageLimit);
 
@@ -1161,7 +1166,7 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
                         continue;
                     case "emnity_own_SL20":
                         // Refer to Dark Jeanne's HP
-                        charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 20, remainHP);
+                        charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 27.5, remainHP);
                         continue;
                     default:
                         break;
@@ -1997,6 +2002,9 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 chainDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
+                additionalDamageSA: 0,
+                additionalDamageDA: 0,
+                additionalDamageTA: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: true,
                 job: job,
@@ -2022,10 +2030,12 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 support3: "none",
                 charaHaisui: 0,
                 debuffResistance: 0,
+                debuffResistanceBuff: 0,
                 cosmosDebuffResistance: 0,
                 charaDamageUP: 0,
                 tenshiDamageUP: 0,
-                charaUniqueDamageUP: 0
+                charaUniqueDamageUP: 0,
+                aegisUP: 0,
             }
     };
 
@@ -2149,6 +2159,9 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 omegaOugiDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
+                additionalDamageSA: 0,
+                additionalDamageDA: 0,
+                additionalDamageTA: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
                 normalBuff: charaBuffList["normalBuff"],
@@ -2173,10 +2186,12 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 support3: chara[i].support3,
                 charaHaisui: 0,
                 debuffResistance: 0,
+                debuffResistanceBuff: 0,
                 cosmosDebuffResistance: 0,
                 charaDamageUP: 0,
                 tenshiDamageUP: 0,
-                charaUniqueDamageUP: 0
+                charaUniqueDamageUP: 0,
+                aegisUP: 0,
             };
         }
     }
@@ -2338,7 +2353,7 @@ module.exports.calcOneCombination = function (comb, summon, prof, arml, totals, 
 };
 
 // Overwrite the content of totals with what reflects charap's support
-module.exports.treatSupportAbility = function (totals, chara) {
+module.exports.treatSupportAbility = function (totals, chara, buff) {
     for (var key in totals) {
         for (let support of eachSupport(totals[key])) {
             // Processing of special supporter abilities
@@ -2390,21 +2405,35 @@ module.exports.treatSupportAbility = function (totals, chara) {
                         totals[key]["DABuff"] += support.value;
                     }
                     continue;
+                case "matatsu_to_no_kizuna":
+                    if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
+                        totals[key]["normalBuff"] += support.normalBuff;
+                    }
+                /* FALLTHROUGH */
+                case "element_buff_boost_own_30_ca_specs_20":
+                    if (( support.type == "element_buff_boost_own_30_ca_specs_20" || support.type == "matatsu_to_no_kizuna")
+                        && (totals[key]["elementBuff"] > 0 || buff["element"] > 0)) {
+                        totals[key]["ougiDamageBuff"] += support.ougiDamageBuff;
+                        totals[key]["ougiDamageLimitBuff"] += support.ougiDamageLimitBuff;
+                    }
+                /* FALLTHROUGH */
                 case "element_buff_boost":
                     if (support.range == "own") {
-                        if (totals[key]["elementBuff"] > 0) {
+                        if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
                             totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
                         }
                     } else if (support.range == "all" && totals[key].isConsideredInAverage) {
                         for (key2 in totals) {
-                            if (totals[key2]["elementBuff"] > 0) {
-                            totals[key2]["elementBuffBoostBuff"] = Math.max(support.value, totals[key2]["elementBuffBoostBuff"]);
+                            if (totals[key2]["elementBuff"] > 0 || buff["element"] > 0) {
+                                totals[key2]["elementBuffBoostBuff"] = Math.max(support.value, totals[key2]["elementBuffBoostBuff"]);
                             }
                         }
+                    } else if (support.range == "all" && !totals[key].isConsideredInAverage) {
+                        totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
                     }
                     continue;
                 case "eternal_wisdom":
-                    if (totals[key]["elementBuff"] > 0) {
+                    if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
                         totals[key]["normalBuff"] += 0.30;
                         totals[key]["DABuff"] += 0.35;
                         totals[key]["TABuff"] += 0.10;
@@ -2422,8 +2451,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     }
                     continue;
                 case "emnity_own_SL20":
-                    // Refer to Dark Jeanne's HP
-                    totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "L", 20, totals[key]["remainHP"]);
+                    totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "L", 27.5, totals[key]["remainHP"]);
                     continue;
                 case "envoy_meditation":
                     var elements = Math.min(4, module.exports.checkNumberOfElements(totals));
@@ -2493,41 +2521,41 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     continue;
                 case "tousou_no_chishio":
                     if (totals[key]['remainHP'] <= 1 && totals[key]['remainHP'] > 0.6) {
-                        totals[key]["daBuff"] += 0.10;
-                        totals[key]["damageLimit"] += 0.0;
+                        totals[key]["DABuff"] += 0.10;
+                        totals[key]["damageLimitBuff"] += 0.0;
                         totals[key]["ougiDamageLimitBuff"] += 0.0;
                     } else if (totals[key]['remainHP'] <= 0.6 && totals[key]['remainHP'] > 0.4) {
-                        totals[key]["daBuff"] += 0.20;
-                        totals[key]["damageLimit"] += 0.10;
+                        totals[key]["DABuff"] += 0.20;
+                        totals[key]["damageLimitBuff"] += 0.10;
                         totals[key]["ougiDamageLimitBuff"] += 0.0;
                     } else if (totals[key]['remainHP'] <= 0.4 && totals[key]['remainHP'] > 0.2) {
-                        totals[key]["daBuff"] += 0.30;
-                        totals[key]["damageLimit"] += 0.20;
-                        totals[key]["ougiDamageLimitBuff"] += -0.05;
+                        totals[key]["DABuff"] += 0.30;
+                        totals[key]["damageLimitBuff"] += 0.20;
+                        totals[key]["ougiDamageLimitBuff"] += 0.15;
                     } else {
-                        totals[key]["daBuff"] += 0.40;
-                        totals[key]["damageLimit"] += 0.30;
-                        totals[key]["ougiDamageLimitBuff"] += -0.10;
+                        totals[key]["DABuff"] += 0.40;
+                        totals[key]["damageLimitBuff"] += 0.30;
+                        totals[key]["ougiDamageLimitBuff"] += 0.20;
                     }
                     continue;
                 case "fumetsu_no_mikiri":
-                    if (remainHP <= 0.6) {
+                    if (totals[key].remainHP <= 0.6) {
                         totals[key]["normalOtherCriticalBuff"].push({
-                            "value": -0.34 * totals[key]["remainHP"] + 0.40,
+                            "value": (-1/3) * totals[key]["remainHP"] + 0.40,
                             "attackRatio": 0.50,
                         });
                     }
                     continue;
-                case "chikara_atsu_no_ha":
-                    totals[key]["additionalDamageBuffSA"] = support.SingleAddtionalDamage;
-                    totals[key]["additionalDamageBuffDA"] = support.DoubleAddtionalDamage;
+                case "additionalDamageXA":
+                    totals[key]["additionalDamageSA"] += support.additionalDamageSA;
+                    totals[key]["additionalDamageDA"] += support.additionalDamageDA;
+                    totals[key]["additionalDamageTA"] += support.additionalDamageTA;
                     continue;
-                case "element_buff_boost_own_30_and_ca_specs_20":
-                    if (totals[key]["elementBuff"] > 0) {
-                        totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
-                        totals[key]["ougiDamageLimitBuff"] += support.ougiDamageLimitBuff;
-                        totals[key]["ougiDamageBuff"] = support.ougiDamageBuff;
+                case "element_buff_boost_damageUP_own_10":
+                    if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
+                        totals[key]["charaDamageUP"] += support.value;
                     }
+                    continue;
                 case "critical_cap_up":
                     if (support.range == "all" && totals[key].isConsideredInAverage) {
                         for (let key2 in totals) {
@@ -2537,7 +2565,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     } else if (support.range == "own") {
                         totals[key]["criticalDamageLimit"] += support.value;
                     }
-
+                    continue;
                 default:
                     break;
             }
@@ -2581,8 +2609,7 @@ module.exports.treatSupportAbility = function (totals, chara) {
             // Processing in case of simple buff system
             if (support.range == "own") {
                 totals[key][support.type] += support.value
-            } else {
-                // range == "all"
+            } else if (support.range == "all") {
                 // If it is included in the average it affects the whole
                 if (totals[key].isConsideredInAverage) {
                     for (var key2 in totals) {
@@ -2591,6 +2618,8 @@ module.exports.treatSupportAbility = function (totals, chara) {
                 } else {
                     totals[key][support.type] += support.value
                 }
+            } else if (support.range == "Djeeta") {
+                totals["Djeeta"][support.type] += support.value;
             }
         }
     }

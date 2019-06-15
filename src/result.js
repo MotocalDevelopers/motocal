@@ -101,7 +101,7 @@ var ResultList = CreateClass({
             }
 
             var totals = getInitialTotals(prof, chara, summon);
-            treatSupportAbility(totals, chara);
+            treatSupportAbility(totals, chara, totalBuff);
             var itr = combinations.length;
             var totalItr = itr * summon.length * Object.keys(totals).length;
 
