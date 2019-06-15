@@ -532,4 +532,9 @@
         color: black;
         border: 1px solid #000000;
     }
+
+    /* skill info */
+    span.is-over {
+        color: red;
+    }
 }

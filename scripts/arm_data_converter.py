@@ -153,6 +153,14 @@ skillnamelist["normalKatsumokuS"] = {
     u"奈落の括目": "dark"
 }
 
+skillnamelist["cherubimKonshin"] = {
+    u"鷲と人間の思慮": "dark"
+}
+
+skillnamelist["sunbladeKonshin"] = {
+    u"道天の眩耀": "light"
+}
+
 # normalM
 skillnamelist["normalM"] = {
     u"業火の攻刃": "fire",
@@ -316,6 +324,15 @@ skillnamelist["normalHaisuiS"] = {
     u"風の背水": "wind",
     u"光の背水": "light",
     u"闇の背水": "dark"
+}
+
+skillnamelist["normalKonshinS"] = {
+    u"火の渾身": "fire",
+    u"水の渾身": "water",
+    u"土の渾身": "earth",
+    u"風の渾身": "wind",
+    u"光の渾身": "light",
+    u"闇の渾身": "dark"
 }
 
 skillnamelist["normalKamui"] = {
@@ -782,6 +799,7 @@ skillnamelist["strengthL"] = {
     u"菩提の探究": "wind",
     u"退路無き攻刃": "water",
     u"パワーボム": "earth",
+    u"フラッドオブアームズ": "water",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -860,8 +878,14 @@ skillnamelist["omega-raw"] = {
 skillnamelist["akasha-sword"] = {u"虚脱の隻翼": "dark"}
 skillnamelist["akasha-spear"] = {u"虚栄の矛戟": "fire"}
 skillnamelist["akasha-axe"] = {u"虚勢の巌": "earth"}
-skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "earth"}
+skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "water"}
 skillnamelist["akasha-bow"] = {u"虚像の鋒鏑": "light"}
+#Covenant
+skillnamelist["impervious-covenant"] = {u"不壊の誓約": "fire"}
+skillnamelist["victorious-covenant"] = {u"凱歌の誓約": "water"}
+skillnamelist["contentious-covenant"] = {u"修羅の誓約": "earth"}
+skillnamelist["deleterious-covenant"] = {u"致命の誓約": "light"}
+skillnamelist["calamitous-covenant"] = {u"災禍の誓約": "dark"}
 
 # Cosmos
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
@@ -922,6 +946,7 @@ skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",
     u"イクシード・ウィンド": "wind",
+    u"イクシード・ライト": "light",
     u"イクシード・ダーク": "dark",
 }
 
@@ -995,11 +1020,17 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
     for row in mycsv:
         newdict = OrderedDict()
 
-        row_lenth = len(row)
-        if row_lenth <= 1:
+        row_length = len(row)
+        if row_length <= 1:
             continue
         else:
-            has_3rd_skill: bool = row_lenth >= 22
+            # Row Lengths Overview
+            # 17: 3*
+            # 19: 4*
+            # 20: 4* + 3rd Skill
+            # 21: 5*
+            # 22: 5* + 3rd Skill
+            has_3rd_skill: bool = row_length == 20 or row_length == 22
             for index, value in enumerate(row):
                 if index == 1:
                     m = key_pattern.search(value)
