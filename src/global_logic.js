@@ -556,7 +556,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA += totals[key]["DASupport"];
         totalDA += totals[key]["DABuff"];
         totalDA += totalSummon["da"];
-        totalDA += 0.01 * (armDAupNormal + armDAupMagna + armDAupBaha + armDAupCosmos + armDAupOther);
+        totalDA += 0.01 * (armDAupNormal + armDAupMagna + armDAupBaha + armDAupCosmos + armDAupEX + armDAupOther);
         if (key == "Djeeta") {
             totalDA += buff["masterDA"];
             totalDA += buff["zenithDA"];
