@@ -536,6 +536,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var magnaNite = totals[key]["magnaNite"] * totalSummon["magna"];
         var normalSante = totals[key]["normalSante"] * totalSummon["zeus"] + totals[key]["normalOtherSante"];
         var magnaSante = totals[key]["magnaSante"] * totalSummon["magna"];
+        var exNite = Math.min(LIMIT.exDA, totals[key]["exNite"]);
 
         // DATA upper limit
         // Normal * Magna * EX * Baha * Cosmos BL
@@ -545,7 +546,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var armDAupMagna = Math.min(LIMIT.magnaDA, magnaNite + magnaSante);
         var armDAupBaha = Math.min(LIMIT.bahaDA, totals[key]["bahaDA"]);
         var armDAupCosmos = Math.min(LIMIT.cosmosDA, totals[key]["cosmosBL"]);
-        var armDAupEX = Math.min(LIMIT.exDA, totals[key]["exNite"]);
         var armDAupOther = Math.min(LIMIT.otherDA, totals[key]["DAOther"]); // 99999 for no limit
 
         // unknown never reaches 50% of the current situation
@@ -556,7 +556,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         totalDA += totals[key]["DASupport"];
         totalDA += totals[key]["DABuff"];
         totalDA += totalSummon["da"];
-        totalDA += 0.01 * (armDAupNormal + armDAupMagna + armDAupBaha + armDAupCosmos + armDAupEX + armDAupOther);
+        totalDA += 0.01 * (armDAupNormal + armDAupMagna + armDAupBaha + armDAupCosmos + exNite + armDAupOther);
         if (key == "Djeeta") {
             totalDA += buff["masterDA"];
             totalDA += buff["zenithDA"];
@@ -843,7 +843,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // Consecutive shooting information
         coeffs["normalDA"] = armDAupNormal;
         coeffs["magnaDA"] = armDAupMagna;
-        coeffs["exDA"] = armDAupEX;
+        coeffs["exDA"] = exNite;
         coeffs["cosmosDA"] = armDAupCosmos;
         coeffs["bahaDA"] = armDAupBaha;
         coeffs["otherDA"] = (buff["da"] + totals[key]["DABuff"]) * 100 + totals[key]["DAOther"];
