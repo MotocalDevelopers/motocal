@@ -6,7 +6,7 @@ var {HPChart} = require('./chart.js');
 var {AdsenseAdvertisement} = require('./advertisement.js');
 var intl = require('./translate.js');
 var {HPChartHowTo} = require('./howto.js');
-
+var supplemental = require('./supplemental.js');
 var GlobalConst = require('./global_const.js');
 
 var TextWithTooltip = GlobalConst.TextWithTooltip;
@@ -34,7 +34,7 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isDarkOpus, isValidResult, checkNumberOfRaces, proceedIndex,
+    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces, proceedIndex,
     calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
     calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
@@ -73,6 +73,9 @@ var ResultList = CreateClass({
                         }
                         // Combination changes depending on whether it became a cosmos weapon, or it was not a cosmos weapon
                         if (isCosmos(arml[i]) != isCosmos(this.state.previousArmlist[i])) {
+                            isCombinationChanged = true;
+                        }
+                        if (isHollowsky(arml[i]) != isHollowsky(this.state.previousArmlist[i])) {
                             isCombinationChanged = true;
                         }
                         if (isDarkOpus(arml[i]) != isDarkOpus(this.state.previousArmlist[i])) {
@@ -1035,7 +1038,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-debuffResistance"} className="result-chara-detail">
                                     <span
-                                        className="label label-success">弱体耐性率</span> {parseFloat(m.data[key].debuffResistance.toFixed(1))}%&nbsp;
+                                        className="label label-success">{intl.translate("弱体耐性率", locale)}</span> {parseFloat(m.data[key].debuffResistance.toFixed(1))}%&nbsp;
                                 </span>
                         );
                     }
@@ -1301,6 +1304,35 @@ var Result = CreateClass({
                             );
                         }
 
+                        var supplementalDamageInfo = [];
+                        const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
+                        if (supplementalInfo.total > 0) {
+                            supplementalDamageInfo.push(
+                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px", "font-size": "10pt"}} >
+                                    <thead>
+                                        <tr>
+                                            <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
+                                            {supplementalInfo.headers.map(([key, type, val]) =>
+                                                <th key={key} className="bg-success">
+                                                    {intl.translate(key, locale) + 
+                                                     (intl.translate("supplemental_"+type, locale)||"").replace("{value}", (val||"").toString())}
+                                                </th>)}
+                                            <th className="bg-success">{intl.translate("合計", locale)}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{intl.translate("ダメージ", locale)}</td>
+                                            {supplementalInfo.values.map(([key, damage]) => <td key={key}>{damage}</td>)}
+                                            <td>
+                                                {supplementalInfo.total}&nbsp;
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            );
+                        }
+
                         var otherSkillInfo = [];
                         // For other skills
                         var pushSkillInfoElement3 = (skillKey, label, labelType = "primary") => {
@@ -1327,6 +1359,8 @@ var Result = CreateClass({
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-criticalInfo"}
                                                    style={{"margin": "5px 0px"}}>{criticalInfo}</div>);
+                        charaDetail[key].push(<div key={key + "-supplementalDamageInfo"}
+                                                   style={{"margin": "5px 0px"}}>{supplementalDamageInfo}</div>);
                         charaDetail[key].push(<div key={key + "-otherSkillInfo"}>{otherSkillInfo}</div>);
                     }
                 }

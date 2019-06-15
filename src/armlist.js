@@ -289,6 +289,9 @@ var Arm = CreateClass({
             element: 'fire',
             element2: 'fire',
             element3: 'fire',
+            skill1Detail: 0,
+            skill2Detail: 0,
+            skill3Detail: 0,
         };
     },
     componentWillReceiveProps: function (nextProps) {
@@ -418,6 +421,10 @@ var Arm = CreateClass({
         state["slv"] = newarm.slv;
         state["considerNumberMax"] = parseInt(considerNum);
 
+        state["skill1Detail"] = newarm.skill1Detail != undefined ? parseInt(newarm.skill1Detail) : 0;
+        state["skill2Detail"] = newarm.skill2Detail != undefined ? parseInt(newarm.skill2Detail) : 0;
+        state["skill3Detail"] = newarm.skill3Detail != undefined ? parseInt(newarm.skill3Detail) : 0;
+        
         return state;
     },
     handleEvent: function (key, e) {
@@ -440,8 +447,13 @@ var Arm = CreateClass({
             }
             newState[key] = parseInt(e.target.value)
         } else {
-            newState[key] = e.target.value
+            newState[key] = e.target.value;
         }
+
+         if (key == "skill1" || key == "skill2" || key == "skill3") {
+            newState[key] = e.target.value;
+            newState[key + "Detail"] = 0;
+         }
 
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false)
@@ -519,7 +531,14 @@ var Arm = CreateClass({
                             <FormControl componentClass="select" value={this.state.element}
                                          onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl>
                             <FormControl componentClass="select" value={this.state.skill1}
-                                         onChange={this.handleSelectEvent.bind(this, "skill1")}> {selector[locale].skills}</FormControl><br/>
+                                         onChange={this.handleSelectEvent.bind(this, "skill1")}> {selector[locale].skills}</FormControl>
+                            {GlobalConst.skillDetails[this.state.skill1] != undefined ?
+                                 <div>
+                                    <label>{intl.translate(GlobalConst.skillDetailsDescription[this.state.skill1], locale)}</label>
+                                    <FormControl componentClass="select" value={this.state.skill1Detail}
+                                                 onChange={this.handleSelectEvent.bind(this, "skill1Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill1]]} </FormControl>
+                                 </div>
+                            : null}
                         </td>
                     </tr>
                     <tr>
@@ -528,7 +547,14 @@ var Arm = CreateClass({
                             <FormControl componentClass="select" value={this.state.element2}
                                          onChange={this.handleSelectEvent.bind(this, "element2")}> {selector[locale].elements} </FormControl>
                             <FormControl componentClass="select" value={this.state.skill2}
-                                         onChange={this.handleSelectEvent.bind(this, "skill2")}> {selector[locale].skills}</FormControl><br/>
+                                         onChange={this.handleSelectEvent.bind(this, "skill2")}> {selector[locale].skills}</FormControl>
+                            {GlobalConst.skillDetails[this.state.skill2] != undefined ?
+                                 <div>
+                                    <label>{intl.translate(GlobalConst.skillDetailsDescription[this.state.skill2], locale)}</label>
+                                    <FormControl componentClass="select" value={this.state.skill2Detail}
+                                                 onChange={this.handleSelectEvent.bind(this, "skill2Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill2]]} </FormControl>
+                                 </div>
+                            : null}
                         </td>
                     </tr>
                     <tr>
@@ -537,7 +563,14 @@ var Arm = CreateClass({
                             <FormControl componentClass="select" value={this.state.element3}
                                          onChange={this.handleSelectEvent.bind(this, "element3")}> {selector[locale].elements} </FormControl>
                             <FormControl componentClass="select" value={this.state.skill3}
-                                         onChange={this.handleSelectEvent.bind(this, "skill3")}> {selector[locale].skills}</FormControl><br/>
+                                         onChange={this.handleSelectEvent.bind(this, "skill3")}> {selector[locale].skills}</FormControl>
+                            {GlobalConst.skillDetails[this.state.skill3] != undefined ?
+                                 <div>
+                                    <label>{intl.translate(GlobalConst.skillDetailsDescription[this.state.skill3], locale)}</label>
+                                    <FormControl componentClass="select" value={this.state.skil3Detail}
+                                                 onChange={this.handleSelectEvent.bind(this, "skill3Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill3]]} </FormControl>
+                                 </div>
+                            : null}
                         </td>
                     </tr>
                     <tr>
