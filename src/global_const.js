@@ -82,12 +82,14 @@ module.exports._ua = (function (u) {
 module.exports.LIMIT = {
     normalDA: 50,
     magnaDA: 50,
+    exDA: 99999,
     bahaDA: 50,
     cosmosDA: 50,
+    otherDA: 99999,
     normalTA: 50,
     magnaTA: 50,
     bahaTA: 50,
-    unlimit: 99999,
+    otherTA: 99999,
 };
 
 var opusNames = [

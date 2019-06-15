@@ -530,8 +530,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var armDAupMagna = Math.min(LIMIT.magnaDA, magnaNite + magnaSante);
         var armDAupBaha = Math.min(LIMIT.bahaDA, totals[key]["bahaDA"]);
         var armDAupCosmos = Math.min(LIMIT.cosmosDA, totals[key]["cosmosBL"]);
-        var armDAupEX = Math.min(LIMIT.unlimit, totals[key]["exNite"]);
-        var armDAupOther = Math.min(LIMIT.unlimit, totals[key]["DAOther"]); // 99999 for no limit
+        var armDAupEX = Math.min(LIMIT.exDA, totals[key]["exNite"]);
+        var armDAupOther = Math.min(LIMIT.otherDA, totals[key]["DAOther"]); // 99999 for no limit
 
         // unknown never reaches 50% of the current situation
         var totalDA = 0.01 * totals[key]["baseDA"];
@@ -557,7 +557,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var armTAupNormal = Math.min(LIMIT.normalTA, normalSante + normalLesserSante);
         var armTAupMagna = Math.min(LIMIT.magnaTA, magnaSante + magnaLesserSante);
         var armTAupBaha = Math.min(LIMIT.bahaTA, totals[key]["bahaTA"]);
-        var armTAupOther = Math.min(LIMIT.unlimit, totals[key]["TAOther"]); // UNUSED  // 99999 for no limit
+        var armTAupOther = Math.min(LIMIT.otherTA, totals[key]["TAOther"]); // UNUSED  // 99999 for no limit
 
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
