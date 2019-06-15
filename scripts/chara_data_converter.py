@@ -113,6 +113,10 @@ supportAbilist["stamina_all_L_hp_down_own_15"] = {
     u"真夏の夜の夢"
 }
 
+supportAbilist["supplemental_third_hit_50k"] = {
+    u"みんなのあんぜんあんしん"
+}
+
 # Patching DA TA
 patching = OrderedDict()
 

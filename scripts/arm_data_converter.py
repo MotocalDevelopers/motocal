@@ -878,8 +878,14 @@ skillnamelist["omega-raw"] = {
 skillnamelist["akasha-sword"] = {u"虚脱の隻翼": "dark"}
 skillnamelist["akasha-spear"] = {u"虚栄の矛戟": "fire"}
 skillnamelist["akasha-axe"] = {u"虚勢の巌": "earth"}
-skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "earth"}
+skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "water"}
 skillnamelist["akasha-bow"] = {u"虚像の鋒鏑": "light"}
+#Covenant
+skillnamelist["impervious-covenant"] = {u"不壊の誓約": "fire"}
+skillnamelist["victorious-covenant"] = {u"凱歌の誓約": "water"}
+skillnamelist["contentious-covenant"] = {u"修羅の誓約": "earth"}
+skillnamelist["deleterious-covenant"] = {u"致命の誓約": "light"}
+skillnamelist["calamitous-covenant"] = {u"災禍の誓約": "dark"}
 
 # Cosmos
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
@@ -940,6 +946,7 @@ skillnamelist["ougiDamageLimitExceedM"] = {
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",
     u"イクシード・ウィンド": "wind",
+    u"イクシード・ライト": "light",
     u"イクシード・ダーク": "dark",
 }
 
@@ -1013,11 +1020,17 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
     for row in mycsv:
         newdict = OrderedDict()
 
-        row_lenth = len(row)
-        if row_lenth <= 1:
+        row_length = len(row)
+        if row_length <= 1:
             continue
         else:
-            has_3rd_skill: bool = row_lenth >= 22
+            # Row Lengths Overview
+            # 17: 3*
+            # 19: 4*
+            # 20: 4* + 3rd Skill
+            # 21: 5*
+            # 22: 5* + 3rd Skill
+            has_3rd_skill: bool = row_length == 20 or row_length == 22
             for index, value in enumerate(row):
                 if index == 1:
                     m = key_pattern.search(value)
