@@ -850,7 +850,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["normalTA"] = armTAupNormal;
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
-        coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"]) * 100 + totals[key]["TAOther"];
+        coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"]) * 100 + armTAupOther;
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
