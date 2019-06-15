@@ -52,8 +52,7 @@ supportAbilist["da_up_fist_10"] = {
 }
 supportAbilist["hp_down_own_15"] = {
    u"喪失する自我",
-   u"アストラルチャージ",
-   u"真夏の夜の夢"
+   u"アストラルチャージ"
 }
 supportAbilist["hp_up_own_10"] = {
     u"黒の鎧"
@@ -62,7 +61,8 @@ supportAbilist["hp_up_own_15"] = {
    u"やばいですね☆"
 }
 supportAbilist["hp_up_own_20"] = {
-   u"老當益壮"
+   u"老當益壮",
+   u"本物のヒーロー"
 }
 supportAbilist["atk_up_own_5"] = {
    u"愛憎の衝動"
@@ -138,6 +138,9 @@ supportAbilist["critical_up_own_10_30"] = {
 }
 supportAbilist["critical_up_own_20_20"] = {
    u"ラ・ピュセル20"
+}
+supportAbilist["critical_up_own_40_50"] = {
+   u"ぶっ殺すわよ！"
 }
 supportAbilist["critical_up_all_5_30"] = {
    u"調教してやる"
@@ -236,10 +239,10 @@ supportAbilist["Revion_kishi_sanshimai"] = {
 supportAbilist["element_buff_boost_damageUP_own_10"] = {
     u"堕天司"
 }
-supportAbilist["no_normal_attack"] = {
-    u"優しい心",
-    u"カードキャプター"
-}
+# supportAbilist["no_normal_attack"] = {
+#     u"優しい心",
+#     u"カードキャプター"
+# }
 supportAbilist["tousou_no_chishio"] = {
     u"闘争の血潮"
 }

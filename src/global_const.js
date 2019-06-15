@@ -2141,7 +2141,7 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0
     },
-     //re-order later
+//NEW re-order later
     "aegisUP_30": { //Lancelot_and_Vane, 護国の双肩
         "name": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
         "type": "aegisUP",
@@ -2266,12 +2266,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10,
     },
-    "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ
-        "name": "通常攻撃を行わない。()",
-        "type": "no_normal_attack",
-        "range": "own",
-        "value": "",
-    },
+    // "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ >> カードキャプター
+    //     "name": "通常攻撃を行わない。()",
+    //     "type": "no_normal_attack",
+    //     "range": "own",
+    //     "value": true,
+    // },
     "debuff_resistance_up_own_15": {
         "name": "。()",
         "type": "debuffResistanceBuff",
