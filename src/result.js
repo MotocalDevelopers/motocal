@@ -1308,13 +1308,15 @@ var Result = CreateClass({
                         pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");
                         pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "default");
                         pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "default");
-                        otherSkillInfo.push(
-                            <span key={key + "-" + "normalCriticalDamageLimit"}>
-                                    <span
-                                        className={"label label-" + "default"}>{intl.translate("CriticalDamageLimit (effective)", locale)}</span>&nbsp;
-                                {(100.0 * skilldata["normalCriticalDamageLimit"]).toFixed(1) + "%\n(" + (100.0 * skilldata["critRate"]).toFixed(1) + "%)"}&nbsp;
-                                </span>
-                        );
+                        if (skilldata["criticalDamageLimit"] != 0) {
+                            otherSkillInfo.push(
+                                <span key={key + "-" + "normalCriticalDamageLimit"}>
+                                        <span
+                                            className={"label label-" + "default"}>{intl.translate("CriticalDamageLimit (effective)", locale)}</span>&nbsp;
+                                    {(100.0 * skilldata["criticalDamageLimit"]).toFixed(1) + "%\n(" + (100.0 * skilldata["critRate"]).toFixed(1) + "%)"}&nbsp;
+                                    </span>
+                            );
+                        }
                         charaDetail[key].push(<div key={key + "-mainSkillInfo"}>{mainSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-criticalInfo"}

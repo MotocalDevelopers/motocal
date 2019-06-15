@@ -194,13 +194,28 @@ supportAbilist["aegisUP_30"] = {
 supportAbilist["chikara_atsu_no_ha"] = {
     u"力圧の刃"
 }
-supportAbilist["element_buff_boost_all_30"] = {
-    u"崇拝の尊神",
-    u"神虜の麗姫",
-    u"神域の守護者",
+supportAbilist["element_buff_boost_fire_30"] = {
+    u"崇拝の尊神"
+}
+supportAbilist["element_buff_boost_water_30"] = {
+    u"神虜の麗姫"
+}
+supportAbilist["element_buff_boost_earth_30"] = {
+    u"神域の守護者"
+}
+supportAbilist["element_buff_boost_wind_30"] = {
     u"踊り狂う暴風"
 }
-supportAbilist["element_buff_boost_all_15"] = {
+# supportAbilist["element_buff_boost_light_30"] = {
+#     u""
+# }
+# supportAbilist["element_buff_boost_dark_30"] = {
+#     u""
+# }
+# supportAbilist["element_buff_boost_all_30"] = {
+#     u""
+# }
+supportAbilist["element_buff_boost_wind_15"] = {
     u"精霊の啓示"
 }
 supportAbilist["element_buff_boost_own_30_ca_specs_20"] = {
@@ -209,7 +224,7 @@ supportAbilist["element_buff_boost_own_30_ca_specs_20"] = {
 supportAbilist["critical_cap_up_light_3"] = {
     u"スポッター"
 }
-supportAbilist["critical_cap_up_own_3"] = {
+supportAbilist["critical_cap_up_own_10"] = {
     u"ヘッドショット"
 }
 supportAbilist["matatsu_to_no_kizuna"] = {

@@ -1503,7 +1503,16 @@ var multiLangData = {
         "ja": "LB渾身",
         "zh": "LB渾身",
 	},
-	
+    "CriticalDamageLimit (effective)": {
+        "en": "CriticalDamageLimit (effective)",
+        "ja": "CriticalDamageLimit (effective)",
+        "zh": "CriticalDamageLimit (effective)",
+    },
+    // "": {
+    //     "en": "",
+    //     "ja": "",
+    //     "zh": "",
+    // },
 	
 
     "グラフに加える": {

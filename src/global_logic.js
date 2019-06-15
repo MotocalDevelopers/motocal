@@ -177,7 +177,6 @@ module.exports.calcDamage = function (summedAttack, totalSkillCoeff, criticalRat
     // Damage calculation
     var def = module.exports.calcDefenseDebuff(enemyDefense, defenseDebuff);
     var damage = Math.ceil(Math.ceil(summedAttack / def) * totalSkillCoeff) * criticalRatio;
-    console.log(criticalRatio);
     var overedDamage = 0;
 
     var limitValues = [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]];
@@ -612,7 +611,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         var criticalAttack = parseInt(totalAttack * criticalRatio);
         var critRate = 0;
-        if (Object.keys(criticalArray).length > 0){
+        if (Object.keys(criticalArray).length > 0) {
             critRate = 1.0 - (isNaN(criticalArray[1.0]) ? 0 : Math.max(0, Math.min(1, criticalArray[1.0])));
         }
         var effectiveCriticalLimit = critRate * totals[key]["criticalDamageLimit"];
@@ -2430,7 +2429,19 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                         }
                     } else if (support.range == "all" && !totals[key].isConsideredInAverage) {
                         totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
-                    }
+                    } else {
+                        if (totals[key].isConsideredInAverage) {
+                            for (key2 in totals) {
+                                if (totals[key2].element == support.range && (totals[key2]["elementBuff"] > 0 || buff["element"] > 0)) {
+                                    totals[key2]["elementBuffBoostBuff"] = Math.max(support.value, totals[key2]["elementBuffBoostBuff"]);
+                                }
+                            }
+                        } else {
+                            if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
+                                totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
+                            }
+                        }
+                   }
                     continue;
                 case "eternal_wisdom":
                     if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
@@ -2557,14 +2568,27 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     }
                     continue;
                 case "critical_cap_up":
-                    if (support.range == "all" && totals[key].isConsideredInAverage) {
-                        for (let key2 in totals) {
-                            if (support.element == totals[key2].element || support.element == "all")
-                                totals[key2]["criticalDamageLimit"] += support.value;
-                        }
-                    } else if (support.range == "own") {
+                     if (support.range == "own") {
                         totals[key]["criticalDamageLimit"] += support.value;
+                    } else if (support.range == "all" && totals[key].isConsideredInAverage) {
+                        for (let key2 in totals) {
+                            totals[key2]["criticalDamageLimit"] += support.value;
+                        }
+                    } else if (support.range == "all" && !totals[key].isConsideredInAverage) {
+                        totals[key]["criticalDamageLimit"] += support.value;
+                    } else {
+                        if (totals[key].isConsideredInAverage) {
+                            for (key2 in totals) {
+                                if (totals[key2].element == support.range) {
+                                    totals[key2]["criticalDamageLimit"] += support.value;
+                                }
+                            }
+                        } else {
+                            totals[key]["criticalDamageLimit"] += support.value;
+                        }
                     }
+                    continue;
+                case "no_normal_attack":
                     continue;
                 default:
                     break;

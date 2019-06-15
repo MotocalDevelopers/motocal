@@ -2092,21 +2092,56 @@ var supportAbilities = {
         "range": "own",
         "value": 0.3,
     },
-    //the following two ONLY applies to the "same" element as holder.
+    "element_buff_boost_fire_30": {
+        "name": "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)",
+        "type": "element_buff_boost",
+        "range": "fire",
+        "value": 0.30
+    },
+    "element_buff_boost_water_30": {
+        "name": "味方全体の強化効果「水属性攻撃UP」の効果30%UP。(エウロペ)",
+        "type": "element_buff_boost",
+        "range": "water",
+        "value": 0.30
+    },
+    "element_buff_boost_earth_30": {
+        "name": "味方全体の強化効果「土属性攻撃UP」の効果30%UP。(ブローディア)",
+        "type": "element_buff_boost",
+        "range": "earth",
+        "value": 0.30
+    },
+    "element_buff_boost_wind_30": {
+        "name": "味方全体の強化効果「風属性攻撃UP」の効果30%UP。(グリームニル)",
+        "type": "element_buff_boost",
+        "range": "wind",
+        "value": 0.30
+    },
+    "element_buff_boost_wind_15": { //kokkoro, 精霊の啓示
+        "name": "味方全体の強化効果「風属性攻撃UP」の効果15%UP。(コッコロ)",
+        "type": "element_buff_boost",
+        "range": "wind",
+        "value": 0.15
+    },
+    "element_buff_boost_light_30": {
+        "name": "味方全体の強化効果「光属性攻撃UP」の効果30%UP。",
+        "type": "element_buff_boost",
+        "range": "light",
+        "value": 0.30
+    },
+    "element_buff_boost_dark_30": {
+        "name": "味方全体の強化効果「闇属性攻撃UP」の効果30%UP。",
+        "type": "element_buff_boost",
+        "range": "dark",
+        "value": 0.30
+    },
     "element_buff_boost_all_30": {
-        "name": "属性バフ付与時に属性攻撃30%UP",
+        "name": "味方全体の強化効果「属性攻撃UP」の効果30%UP。",
         "type": "element_buff_boost",
         "range": "all",
         "value": 0.30
     },
-    "element_buff_boost_all_15": { //kokkoro, 精霊の啓示
-        "name": "属性バフ付与時に属性攻撃15%UP",
-        "type": "element_buff_boost",
-        "range": "all",
-        "value": 0.15
-    },
     "element_buff_boost_own_30_ca_specs_20": { //Aglovale, 覇者の風格
-        "name": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)",
+        "name": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)。()",
         "type": "element_buff_boost_own_30_ca_specs_20",
         "range": "own",
         "value": 0.30,
@@ -2114,7 +2149,7 @@ var supportAbilities = {
         "ougiDamageLimitBuff": 0.20,
     },
     "matatsu_to_no_kizuna": { //Heles_(Wind), 真龍との絆
-        "name": "属性攻撃UPが付与されている時、自分の攻撃UPPと奥義性能UP(ダメージと上限20%)",
+        "name": "属性攻撃UPが付与されている時、自分の攻撃UPPと奥義性能UP(ダメージと上限20%)。()",
         "type": "matatsu_to_no_kizuna",
         "range": "own",
         "value": 0.0,
@@ -2136,7 +2171,7 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0,
     },
-    "chikara_atsu_no_ha": { //Levin_Sisters, レヴィオン騎士三姉妹
+    "chikara_atsu_no_ha": { //sturm, 力圧の刃
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
         "range": "own",
@@ -2145,7 +2180,7 @@ var supportAbilities = {
         "additionalDamageTA": 0.0,
     },
     "Revion_kishi_sanshimai": { //Levin_Sisters, レヴィオン騎士三姉妹
-        "name": "トリプルアタック時に光属性追撃効果",
+        "name": "トリプルアタック時に光属性追撃効果。()",
         "type": "additionalDamageXA",
         "range": "own",
         "additionalDamageSA": 0.0,
@@ -2153,42 +2188,42 @@ var supportAbilities = {
         "additionalDamageTA": 0.15,
     },
     "element_buff_boost_damageUP_own_10": { //olivia, 堕天司
-        "name": "闇属性攻撃力UPが付与されている時、光属性の敵に対して与ダメージUP",
+        "name": "闇属性攻撃力UPが付与されている時、光属性の敵に対して与ダメージUP。()",
         "type": "element_buff_boost_damageUP_own_10",
         "range": "own",
         "value": 0.10,
     },
     "tousou_no_chishio": { //ayer, 闘争の血潮
-        "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP",
+        "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。()",
         "type": "tousou_no_chishio",
         "range": "own",
     },
     "critical_cap_up_light_3": { //silva, スポッター
-        "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP",
+        "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。()",
         "type": "critical_cap_up",
         "range": "light",
         "value": 0.03,
     },
-    "critical_cap_up_own_3": { // Eugen_(Grand), ヘッドショット
-        "name": "クリティカル発動時にダメージ上限10%",
+    "critical_cap_up_own_10": { // Eugen_(Grand), ヘッドショット
+        "name": "クリティカル発動時にダメージ上限10%。()",
         "type": "critical_cap_up",
         "range": "own",
         "value": 0.10,
     },
     "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ
-        "name": "通常攻撃を行わない",
-        "type": "",
-        "range": "",
+        "name": "通常攻撃を行わない。()",
+        "type": "no_normal_attack",
+        "range": "own",
         "value": "",
     },
     "debuff_resistance_up_own_15": {
-        "name": "",
+        "name": "。()",
         "type": "debuffResistanceBuff",
         "range": "own",
         "value": 0.15,
     },
     "debuff_resistance_up_own_80": {
-        "name": "",
+        "name": "。()",
         "type": "debuffResistanceBuff",
         "range": "own",
         "value": 0.80,
