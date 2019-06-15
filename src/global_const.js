@@ -863,6 +863,8 @@ var skilltypes = {
     "normalDamageLimit10": {name: "通常上限UP(10%)", type: "normalDamageLimit", amount: "L"},
     "ougiDamageLimit10": {name: "奥義上限UP(10%)", type: "ougiDamageLimit", amount: "L"}, //現在未使用
     "huanglongHissatsu": {name: "黄龍槍 (メイン装備時)", type: "huanglongHissatsu", amount: "non"},
+    "cherubimKonshin": {name: "ケルヴィム (メイン装備時)", type: "cherubimKonshin", amount: "non"},
+    "sunbladeKonshin": {name: "真・道天浄土 (メイン装備時)", type: "sunbladeKonshin", amount: "non"},
     "ougiDamageLimitExceedM": {name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M"},
     "chainForce": {name: "チェインフォース", type: "chainForce", amount: "M"},
     "normalHPS": {name: "通常守護(小)", type: "normalHP", amount: "S"},
@@ -2103,6 +2105,19 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0
     },
+    "stamina_all_L": {
+        "name": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+        "type": "normalSupportKonshin",
+        "range": "all",
+        "value": "L"
+    },
+    "stamina_all_L_hp_down_own_15": {
+        "name": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
+        "type": "normalSupportKonshin_hpDebuff",
+        "range": "all",
+        "value": "L",
+        "hpDebuff": 0.15
+    },
     "supplemental_third_hit_50k": { //like contentious-covenant
         "name": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
         "type": "supplemental_third_hit",
@@ -2321,6 +2336,18 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
+    },
+    "ランス・オブ・ケルヴィム": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
+    },
+    "真・道天浄土": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
     },
     "[4凸]虚空の裂剣": {
         selectKeysNotation: skillDetailsDescription['calamitous-covenant'],

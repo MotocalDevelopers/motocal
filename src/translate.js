@@ -12,12 +12,12 @@ var multiLangData = {
         "zh": "支持制作者",
     },
     "メイン装備yes": {
-        "en": "main",
+        "en": "Main",
         "ja": "メイン武器である",
         "zh": "是主手武器",
     },
     "メイン装備no": {
-        "en": "not main",
+        "en": "Sub",
         "ja": "メイン武器ではない",
         "zh": "不是主手武器",
     },
@@ -1839,7 +1839,7 @@ var multiLangData = {
         "zh": "Harvin",
     },
     "星晶獣": {
-        "en": "Seisho",
+        "en": "Primal",
         "ja": "星晶獣",
         "zh": "星晶兽",
     },
@@ -2059,6 +2059,16 @@ var multiLangData = {
         "en": "Subject to all specialty weapon-, style-, and race-related weapon skills. (Caim)",
         "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
         "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
+    },
+    "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "15% boost to all allies ATK based on how high character HP is (various)",
+        "ja": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+    },
+    "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "Has 15% less HP. %15 boost to all allies' ATK based on how high character HP is (various)",
+        "ja": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
     },
     "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)": {
         "en": "50,000 Supplemental DMG to the third hit of triple attacks. (Hallessena)",
@@ -3096,6 +3106,16 @@ var multiLangData = {
         "en": "Huanglong spear (main)",
         "ja": "黄龍槍 (メイン装備時)",
         "zh": "Huanglong spear (main)",
+    },
+    "ケルヴィム (メイン装備時)": {
+        "en": "Cherubim Lance (main)",
+        "ja": "ケルヴィム (メイン装備時)",
+        "zh": "ケルヴィム (メイン装備時)",
+    },
+    "真・道天浄土 (メイン装備時)": {
+        "en": "True Purity Sunblade (main)",
+        "ja": "真・道天浄土 (メイン装備時)",
+        "zh": "真・道天浄土 (メイン装備時)",
     },
     "奥義上限UP(イクシード)": {
         "en": "C.A. Cap UP (Exceed)",  //a.k.a:ougiDamageLimitByExceed

@@ -153,6 +153,14 @@ skillnamelist["normalKatsumokuS"] = {
     u"奈落の括目": "dark"
 }
 
+skillnamelist["cherubimKonshin"] = {
+    u"鷲と人間の思慮": "dark"
+}
+
+skillnamelist["sunbladeKonshin"] = {
+    u"道天の眩耀": "light"
+}
+
 # normalM
 skillnamelist["normalM"] = {
     u"業火の攻刃": "fire",
