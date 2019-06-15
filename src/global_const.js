@@ -79,17 +79,18 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+const UNLIMIT_VALUE = 99999;
 module.exports.LIMIT = {
     normalDA: 50,
     magnaDA: 50,
-    exDA: 99999,
+    exDA: UNLIMIT_VALUE,
     bahaDA: 50,
     cosmosDA: 50,
-    otherDA: 99999,
+    otherDA: UNLIMIT_VALUE,
     normalTA: 50,
     magnaTA: 50,
     bahaTA: 50,
-    otherTA: 99999,
+    otherTA: UNLIMIT_VALUE,
 };
 module.exports.hollowskyNames = [
     "虚空の",
