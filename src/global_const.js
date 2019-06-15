@@ -80,7 +80,7 @@ module.exports._ua = (function (u) {
 })(window.navigator.userAgent.toLowerCase());
 
 const UNLIMIT_VALUE = 99999;
-const LIMIT = {
+module.exports.LIMIT = {
     normalDA: 50,
     magnaDA: 50,
     exDA: UNLIMIT_VALUE,
@@ -92,8 +92,6 @@ const LIMIT = {
     bahaTA: 50,
     otherTA: UNLIMIT_VALUE,
 };
-module.exports.LIMIT
-
 module.exports.hollowskyNames = [
     "虚空の",
     "Hollowsky"
