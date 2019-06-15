@@ -870,8 +870,14 @@ skillnamelist["omega-raw"] = {
 skillnamelist["akasha-sword"] = {u"虚脱の隻翼": "dark"}
 skillnamelist["akasha-spear"] = {u"虚栄の矛戟": "fire"}
 skillnamelist["akasha-axe"] = {u"虚勢の巌": "earth"}
-skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "earth"}
+skillnamelist["akasha-wand"] = {u"虚飾の隻腕": "water"}
 skillnamelist["akasha-bow"] = {u"虚像の鋒鏑": "light"}
+#Covenant
+skillnamelist["impervious-covenant"] = {u"不壊の誓約": "fire"}
+skillnamelist["victorious-covenant"] = {u"凱歌の誓約": "water"}
+skillnamelist["contentious-covenant"] = {u"修羅の誓約": "earth"}
+skillnamelist["deleterious-covenant"] = {u"致命の誓約": "light"}
+skillnamelist["calamitous-covenant"] = {u"災禍の誓約": "dark"}
 
 # Cosmos
 skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}

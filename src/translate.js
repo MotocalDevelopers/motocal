@@ -306,6 +306,16 @@ var multiLangData = {
         "ja": "通常攻撃に割合分の追加ダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)、パラゾ(15%)など。",
         "zh": "视作追加伤害，额外加在伤害上。用在预想DPT的计算中。",
     },
+    "supplementalDamageBuff": {
+        "en": "Supplemental Damage Buff",
+        "ja": "与ダメージ上昇効果バフ",
+        "zh": "Supplemental Damage Buff",
+    },
+    "supplementalDamageBuff-tooltip": {
+        "en": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
+        "ja": "与ダメージ上昇効果。ロゼッタ（リミテッド）のアイアン・メイデン(5000)、虚空の晶塊の奥義(10000)など。",
+        "zh": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
+    },
     "与ダメージ上昇": {
         "en": "Damage UP ",
         "ja": "与ダメージ上昇",
@@ -1233,6 +1243,56 @@ var multiLangData = {
         "ja": "標準偏差",
         "zh": "标准差",
     },
+    "与ダメージ上昇効果のソース": {
+        "en": "Supplemental Damage Source (incl. DamageUP)",
+        "ja": "与ダメージ上昇効果のソース (与ダメージ上昇を含む)",
+        "zh": "Supplemental Damage Source (incl. DamageUP)",
+    },
+    "合計": {
+        "en": "Total",
+        "ja": "合計",
+        "zh": "Total",
+    },
+    "ダメージ": {
+        "en": "Damage",
+        "ja": "ダメージ",
+        "zh": "伤害",
+    },
+    "サポアビ": {
+        "en": "Support Ability",
+        "ja": "サポアビ",
+        "zh": "Support Ability",
+    },
+    "supplemental_other": { //left empty intentionally
+        "en": "",
+        "ja": "",
+        "zh": "",
+    },
+    "supplemental_hp_based": { //left empty intentionally
+        "en": "",
+        "ja": "",
+        "zh": "",
+    },
+    "supplemental_third_hit": {
+        "en": " (Applies to third hit)",
+        "ja": " (3回目の攻撃に)",
+        "zh": " (Applies to third hit)",
+    },
+    "supplemental_on_critical": {
+        "en": " (Applies to critical hit, {value}%)",
+        "ja": " (クリティカル攻撃に、 {value}%)",
+        "zh": " (Applies to critical hit, {value}%)",
+    },
+    "supplemental_boss_debuff_based": {
+        "en": " (Enemy Debuff: {value})",
+        "ja": " (敵の弱体効果: {value})",
+        "zh": " (Enemy Debuff: {value})",
+    },
+    "supplemental_djeeta_buff_based": {
+        "en": " (Djeeta Buff: {value})",
+        "ja": " (ジータのバフ: {value})",
+        "zh": " (Djeeta Buff: {value})",
+    },
     "四人合計値": {
         "en": "x4",
         "ja": "x四人",
@@ -1999,6 +2059,11 @@ var multiLangData = {
         "en": "Subject to all specialty weapon-, style-, and race-related weapon skills. (Caim)",
         "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
         "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
+    },
+    "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)": {
+        "en": "50,000 Supplemental DMG to the third hit of triple attacks. (Hallessena)",
+        "ja": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
+        "zh": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
     },
     // sort keys
     "攻撃力(二手技巧無し,ジータさんのみ)": {
@@ -2947,6 +3012,31 @@ var multiLangData = {
         "ja": "アーカーシャ-槍",
         "zh": "アーカーシャ-槍",
     },
+    "不壊の誓約": {
+        "en": "Impervious Covenant",
+        "ja": "不壊の誓約",
+        "zh": "不壊の誓約",
+    },
+    "凱歌の誓約": {
+        "en": "Victorious Covenant",
+        "ja": "凱歌の誓約",
+        "zh": "凱歌の誓約",
+    },
+    "修羅の誓約": {
+        "en": "Contentious Covenant",
+        "ja": "修羅の誓約",
+        "zh": "修羅の誓約",
+    },
+    "致命の誓約": {
+        "en": "Deleterious Covenant",
+        "ja": "致命の誓約",
+        "zh": "致命の誓約",
+    },
+    "災禍の誓約": {
+        "en": "Calamitous Covenant",
+        "ja": "災禍の誓約",
+        "zh": "災禍の誓約",
+    },
     "ペンデュラム[α]": {
         "en": "Pendulum Key α",
         "ja": "ペンデュラム[α](通常上限10%UP)",
@@ -3323,6 +3413,16 @@ var multiLangData = {
         "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
         "ja": "天司武器入りで計算する場合、優先項目をダメージベースのものに設定してください.",
         "zh": "把天司武器加入计算的时候，请选择基于伤害的优先项目。",
+    },
+    "敵の弱体効果": {
+        "en": "Number of Debuffs (on target)",
+        "ja": "敵の弱体効果の数",
+        "za": "敵の弱体効果の数",
+    },
+    "ジータバフの数": {
+        "en": "Number of Buffs (on Djeeta)",
+        "ja": "バフの数（ジータ）",
+        "za": "バフの数（ジータ）",
     },
     "広告": {
         "en": "Ad.",
@@ -3782,6 +3882,6 @@ module.exports.translate = function (key, locale) {
 
         return multiLangData[key][locale];
     } catch (e) {
-        console.error("Error! Key " + key + "for language " + locale + " not found")
+        console.error("Error! Key " + key + " for language " + locale + " not found")
     }
 };

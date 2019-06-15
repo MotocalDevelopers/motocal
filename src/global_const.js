@@ -79,6 +79,11 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+
+module.exports.hollowskyNames = [
+    "虚空の",
+    "Hollowsky"
+];
 var opusNames = [
     "of Repudiation",
     "絶対否定の",
@@ -933,6 +938,11 @@ var skilltypes = {
     "akasha-bow": {name: "アーカーシャ-弓", type: "akasha", amount: "gun"},
     "akasha-wand": {name: "アーカーシャ-杖", type: "akasha", amount: "music"},
     "akasha-spear": {name: "アーカーシャ-槍", type: "akasha", amount: "katana"},
+    "impervious-covenant": {name: "不壊の誓約", type: "covenant", amount:"impervious"},
+    "victorious-covenant": {name: "凱歌の誓約", type: "covenant", amount:"victorious"},
+    "contentious-covenant": {name: "修羅の誓約", type: "covenant", amount:"contentious"},
+    "deleterious-covenant": {name: "致命の誓約", type: "covenant", amount:"deleterious"},
+    "calamitous-covenant": {name: "災禍の誓約", type: "covenant", amount:"calamitous"},
     "opus-alpha": {name: "ペンデュラム[α]", type: "opusKey", amount: "L"},
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
@@ -959,6 +969,30 @@ var cosmosSkills = {
 };
 
 // additional selection when template is selected
+module.exports.skillDetails = {
+    'victorious-covenant': 'victorious_calamitous_covenant',
+    'calamitous-covenant': 'victorious_calamitous_covenant'
+};
+
+var skillDetailsDescription = {
+    'victorious-covenant': 'ジータバフの数',
+    'calamitous-covenant': '敵の弱体効果'  
+};
+
+var victorious_calamitous_covenant = {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10
+};
+
 var sishoSeiryu = {
     "non": {name: "無し", type: "non", amount: "non"},
     "normalCriticalM": {name: "王道: 竜巻の技巧"},
@@ -2069,6 +2103,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0
     },
+    "supplemental_third_hit_50k": { //like contentious-covenant
+        "name": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
+        "type": "supplemental_third_hit",
+        "range": "own",
+        "value": 50000
+    },
 };
 
 // exports
@@ -2100,162 +2140,202 @@ module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortke
 module.exports.enemyDefenseType = enemyDefenseType;
 module.exports.supportAbilities = supportAbilities;
 module.exports.limitBonusCriticalList = limitBonusCriticalList;
+module.exports.skillDetailsDescription = skillDetailsDescription;
 
 module.exports.additionalSelectList = {
     "・属性変更": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["elements"],
         selectors: ["elements"],
         defaultKeys: ["light"],
     },
     "・覚醒": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["elements"],
         selectors: ["elements"],
         defaultKeys: ["light"],
     },
     "コスモス": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["cosmosSkills"],
         defaultKeys: ["cosmosAT"],
     },
     "絶覇": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["main_weapon_change"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
     "[4凸]ブリューナク": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["main_weapon_change"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
     "スナップブレード": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["main_weapon_switch"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
     "青竜牙矛": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoSeiryu"],
         defaultKeys: ["non"],
     },
     "朱雀光剣": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoSuzaku"],
         defaultKeys: ["non"],
     },
     "白虎咆拳": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoByakko"],
         defaultKeys: ["non"],
     },
     "玄武甲槌": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2"],
         selectors: ["sishoGenbu"],
         defaultKeys: ["non"],
     },
     "黄龍槍": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["main_weapon_switch"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
     "無垢なる": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill1", "elements"],
         selectors: ["omegaWeaponSkill1", "elements"],
         defaultKeys: ["omega-raw", "light"],
     },
     "オメガ": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill1", "skill2", "elements"],
         selectors: ["omegaWeaponSkill1", "omegaWeaponSkill2", "elements"],
         defaultKeys: ["omega-raw", "non", "light"],
     },
-    "ミカエル": {notationText: "天司武器注記", selectKeys: [], selectors: [],},
-    "ウリエル": {notationText: "天司武器注記", selectKeys: [], selectors: [],},
-    "ガブリエル": {notationText: "天司武器注記", selectKeys: [], selectors: [],},
-    "ラファエル": {notationText: "天司武器注記", selectKeys: [], selectors: [],},
+    "ミカエル": {selectKeysNotation: "", notationText: "天司武器注記", selectKeys: [], selectors: [],},
+    "ウリエル": {selectKeysNotation: "", notationText: "天司武器注記", selectKeys: [], selectors: [],},
+    "ガブリエル": {selectKeysNotation: "", notationText: "天司武器注記", selectKeys: [], selectors: [],},
+    "ラファエル": {selectKeysNotation: "", notationText: "天司武器注記", selectKeys: [], selectors: [],},
     "絶対否定の剣": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "永遠拒絶の剣": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "絶対否定の槍": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "永遠拒絶の槍": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "絶対否定の大鎌": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "永遠拒絶の大鎌": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "絶対否定の杖": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "永遠拒絶の杖": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "絶対否定の竪琴": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "永遠拒絶の竪琴": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "絶対否定の太刀": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusNormalWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
     "永遠拒絶の太刀": {
+        selectKeysNotation: "",
         notationText: "",
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
     },
+    "[4凸]虚空の裂剣": {
+        selectKeysNotation: skillDetailsDescription['calamitous-covenant'],
+        notationText: "",
+        selectKeys: ["skill2Detail"],
+        selectors: ["victorious_calamitous_covenant"],
+        defaultKeys: ["0"],
+    },
+    "[4凸]虚空の拝腕": {
+        selectKeysNotation: skillDetailsDescription['victorious-covenant'],
+        notationText: "",
+        selectKeys: ["skill2Detail"],
+        selectors: ["victorious_calamitous_covenant"],
+        defaultKeys: ["0"],
+    }
 };
 
 
@@ -2386,6 +2466,17 @@ module.exports.selector.en.sishoGenbu = Object.keys(sishoGenbu).map(function (ke
 });
 module.exports.selector.zh.sishoGenbu = Object.keys(sishoGenbu).map(function (key) {
     return <option value={key} key={key}>{intl.translate(sishoGenbu[key].name, "zh")}</option>;
+});
+
+
+module.exports.selector.ja.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.en.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.zh.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
 });
 
 // オメガウェポンテンプレート用セレクタ
