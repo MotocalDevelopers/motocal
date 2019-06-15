@@ -1245,13 +1245,14 @@ var Result = CreateClass({
                         // For batting skill
                         var pushSkillInfoElement2 = (skillKey, label, labelType = "primary") => {
                             // Use outer skillInfo, skilldata and locale
-                            if (skilldata[skillKey] != 0.0) {
+                            let value = skilldata[skillKey];
+                            let isOver = GlobalConst.LIMIT[skillKey] && (value >= GlobalConst.LIMIT[skillKey]);
+                            if (value != 0.0) {
                                 multipleAttackSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
-                                            <span
-                                                className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
-                                        {skilldata[skillKey].toFixed(1)}%&nbsp;
-                                        </span>
+                                        <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                        <span className={isOver ? "is-over" : ""}>{value.toFixed(1)}%</span>&nbsp;
+                                    </span>
                                 );
                             }
                         };
