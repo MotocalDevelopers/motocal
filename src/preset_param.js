@@ -41,7 +41,7 @@ export function *represent_load_command(param, loadLimit=2) {
         for (let load_type of param.load.split(/,/, loadLimit)) {
             switch (load_type) {
             case "PART":
-                for (let category of CATEGORIES) {
+                for (let key of CATEGORIES) {
                     if (key in param) {
                         yield ["MERGE", key, key, "get-json", param[key]];
                     }
