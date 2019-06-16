@@ -1666,6 +1666,26 @@ var multiLangData = {
         "ja": "奥義ダメージ",
         "zh": "奥義ダメージ",
     },
+    "二回目奥義有効": {
+        "en": "Enable C.A. Two Times",
+        "ja": "二回目奥義有効",
+        "zh": "二回目奥義有効",
+    },
+    "ジータさん二回目奥義説明": {
+        "en": "When Sort Key is related to C.A., Please set if you want to take account of the second C.A., such as when Kengo, Chrysaor, etc.",
+        "ja": "優先項目が奥義関連のとき、ジータさんが剣豪、クリュ時等の2回目奥義を考慮にしたい場合は設定して下さい。",
+        "zh": "When Sort Key is related to C.A., Please set if you want to take account of the second C.A., such as when Kengo, Chrysaor, etc.",
+    },
+    "ニ回目奥義倍率": {
+        "en": "Second C.A. Multiplier",
+        "ja": "ニ回目奥義倍率",
+        "zh": "ニ回目奥義倍率",
+    },
+    "ジータさんニ回目奥義倍率説明": {
+        "en": "Input Second C.A. ratio of player.\nIt affects calculation of C.A. Damage and Expected Turn Damage.",
+        "ja": "ジータさんのニ回目の奥義倍率を設定します。\n奥義ダメージ、予想ターン毎ダメージの計算に影響します。",
+        "zh": "设定主角的第二奥义倍率。\n影响奥义伤害和预测DPT。",
+    },
     "奥義回数": {
         "en": "C.A. Times",
         "ja": "奥義回数",

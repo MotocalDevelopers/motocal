@@ -1,5 +1,5 @@
 var React = require('react');
-var {Button, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
+var {Button, FormControl, InputGroup, FormGroup, Checkbox} = require('react-bootstrap');
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
@@ -202,6 +202,8 @@ var Profile = CreateClass({
             TA: 3.0,
             ougiGageBuff: 0,
             ougiRatio: 4.5,
+            ougiTwoTimes: false,
+            ougiRatio2: 4.5,
             minimumHP: 0.0,
             chainNumber: 1,
             personalNormalBuff: 0.0,
@@ -237,7 +239,11 @@ var Profile = CreateClass({
     handleSelectEvent: function (key, e) {
         // A select type input form is good for onChange
         var newState = this.state;
-        newState[key] = e.target.value;
+        if (e.target.type === "checkbox") {
+            newState[key] = e.target.checked;
+        } else {
+            newState[key] = e.target.value;
+        }
         if (key == "job") {
             newState.DA = Jobs[e.target.value].DaBonus;
             newState.TA = Jobs[e.target.value].TaBonus
@@ -905,6 +911,24 @@ var Profile = CreateClass({
                             </th>
                             <td><FormControl componentClass="select" value={this.state.ougiRatio}
                                              onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("ジータさん二回目奥義説明", locale)} id={"tooltip-ougi-ratio-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("二回目奥義有効", locale)}
+                            </th>
+                            <td><Checkbox inline checked={this.state.ougiTwoTimes}
+                                      onChange={this.handleSelectEvent.bind(this, "ougiTwoTimes")}></Checkbox>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+                    <TextWithTooltip tooltip={intl.translate("ジータさんニ回目奥義倍率説明", locale)} id={"tooltip-ougi-times-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("ニ回目奥義倍率", locale)}
+                            </th>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio2}
+                                             onChange={this.handleSelectEvent.bind(this, "ougiRatio2")}> {selector.ougiRatio} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>

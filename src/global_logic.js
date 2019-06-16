@@ -712,7 +712,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
-        if (key != "Djeeta") {
+        if (key == "Djeeta" && totals[key]["ougiTwoTimes"]) {
+            ougiDamage += module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio2"], ougiDamageUP, damageUP, ougiDamageLimit);;
+        } else if (key != "Djeeta") {
             ougiDamage *= totals[key]["ougiTimes"];
         }
         var chainBurstSupplemental = 0;
@@ -2186,6 +2188,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 DABuff: djeetaBuffList["personalDABuff"],
                 TABuff: djeetaBuffList["personalTABuff"],
                 ougiRatio: prof.ougiRatio,
+                ougiTwoTimes: prof.ougiTwoTimes,
+                ougiRatio2: prof.ougiRatio2,
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
                 ougiDamageBuff: djeetaBuffList["personalOugiDamageBuff"],
                 additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
