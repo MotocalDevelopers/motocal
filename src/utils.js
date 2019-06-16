@@ -82,10 +82,10 @@ const zip = (arr, ...args) =>
  * @param {array} b list
  * @return {array} array of pair [(a,b)] fit to longest
  * 
- * - zip([1,2,3],[4,5,6]) => [[1,4],[2,5],[3,6]]
- * - zip([1,2,3],[4,5]) => [[1,4],[2,5],[3,undefined]]
- * - zip([1,2],[3,4,5]) => [[1,3],[2,4],[undefined,5]]
- * - zip([1,2],[3,4,5],fillvalue=0) => [[1,3],[2,4],[0,5]]
+ * - zip_longest([1,2,3],[4,5,6]) => [[1,4],[2,5],[3,6]]
+ * - zip_longest([1,2,3],[4,5]) => [[1,4],[2,5],[3,undefined]]
+ * - zip_longest([1,2],[3,4,5]) => [[1,3],[2,4],[undefined,5]]
+ * - zip_longest([1,2],[3,4,5],fillvalue=0) => [[1,3],[2,4],[0,5]]
  * 
  * @see Python itertools.zip_longest
  */

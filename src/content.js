@@ -94,9 +94,9 @@ var Root = CreateClass({
         const param = get_url_parameter(location.search.slice(1));
 
         let infos = [], tasks = [];
-        for (const [command, category, request, data] of represent_load_command(param)) {
+        for (const [command, category, directory, request, data] of represent_load_command(param)) {
             infos.push([command, category]);
-            tasks.push(promise_download(request, category, data));
+            tasks.push(promise_download(request, directory, data));
         }
         const results = await Promise.all(tasks);
 

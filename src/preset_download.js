@@ -1,5 +1,6 @@
 'use strict';
 
+import {Base64} from 'js-base64';
 import {dict_get} from './utils';
 
 // NOTE: This file use jquery $.ajax and location.hash
@@ -14,14 +15,14 @@ const DECODE_METHOD = Base64.decode;
 
 /**
  * download_getdata
- * @param {string} category UNUSED
+ * @param {string} directory UNUSED
  * @param {string} id
  * @return {Promise}
  *
  * An original server get data method used for ?id= parameger.
  * Server return Base64 encoded JSON data.
  */
-function download_getdata(category, id) {
+function download_getdata(directory, id) {
     let param = {
         url: "getdata.php",
         type: 'POST',
@@ -36,7 +37,7 @@ function download_getdata(category, id) {
 
 /**
  * download_getjson
- * @param {string} category "all" for preset, or "summon", "chara", "armlist"
+ * @param {string} directory {"preset", "test", "profile", "summon", "chara", "armlist"}
  * @param {string} name file name (without .json extension)
  * @return {Promise}
  *
@@ -46,8 +47,8 @@ function download_getdata(category, id) {
  *
  * NOTE: this may require server setting MIME type for .json
  */
-function download_getjson(category, name) {
-    const path = "./json/" + category.replace("all", "preset") + "/" + name + ".json";
+function download_getjson(directory, name) {
+    const path = "./json/" + directory + "/" + name + ".json";
     let param = {
         url: path,
         type: 'GET',
@@ -61,11 +62,11 @@ function download_getjson(category, name) {
 
 /**
  * download_fragment
- * @param {string} category UNUSED
+ * @param {string} directory UNUSED
  * @param {string} _ UNUSED
  * @return {string} base64 decoded URL fragment.
  */
-async function download_fragment(category, _) {
+async function download_fragment(directory, _) {
     return DECODE_METHOD(location.hash);
 }
 
@@ -80,7 +81,7 @@ const _DOWNLOAD_METHOD = {
 /**
  * promise_download
  * @param {string} request_type "post-id", "get-json", "fragment"
- * @param {string} category "all" or {"profile", "summon", "chara", "armlist"}
+ * @param {string} directory {"preset", "test", "profile", "summon", "chara", "armlist"}
  * @param {string} args argument pass to download method.
  * @return {Promise}
  *
@@ -91,7 +92,7 @@ const _DOWNLOAD_METHOD = {
  *
  * TODO: report error to console, now it's a quick dirty way.
  */
-export function promise_download(request_type, category, args) {
+export function promise_download(request_type, directory, args) {
     let download = dict_get(_DOWNLOAD_METHOD, request_type, async () => "{}");
-    return download(category, args).then(DESERIALIZE_METHOD).catch(() => {});
+    return download(directory, args).then(DESERIALIZE_METHOD).catch(() => {});
 }

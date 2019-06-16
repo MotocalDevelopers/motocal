@@ -21,6 +21,7 @@ import {CATEGORIES} from './preset_consts';
  * retuen type
  *   - command: "REPLACE", "MERGE", "APPEND" ("APPEND" is not used now)
  *   - category: "all" or {"profile", "summon", "chara", "armlist"}
+ *   - directory: 
  *   - request:
  *     - "post-id": is used in the original save to server method.
  *     - "get-json": require "category" field.
@@ -31,30 +32,32 @@ import {CATEGORIES} from './preset_consts';
  */
 export function *represent_load_command(param, loadLimit=2) {
     if ("id" in param) {
-        yield ["REPLACE", "all", "post-id", param.id];
+        yield ["REPLACE", "all", undefined, "post-id", param.id];
+    } else if ("test" in param) {
+        yield ["REPLACE", "all", "test", "get-json", param.test];
     } else if ("preset" in param) {
-        yield ["REPLACE", "all", "get-json", param.preset];
+        yield ["REPLACE", "all", "preset", "get-json", param.preset];
     } else if ("load" in param) {
         for (let load_type of param.load.split(/,/, loadLimit)) {
             switch (load_type) {
             case "PART":
-                for (let key of CATEGORIES) {
+                for (let category of CATEGORIES) {
                     if (key in param) {
-                        yield ["MERGE", key, "get-json", param[key]];
+                        yield ["MERGE", key, key, "get-json", param[key]];
                     }
                 }
                 break;
             case "PATCH":
-                yield ["MERGE", "all", "fragment", undefined];
+                yield ["MERGE", "all", undefined, "fragment", undefined];
                 break;
             case "HASH":
-                yield ["REPLACE", "all", "fragment", undefined];
+                yield ["REPLACE", "all", undefined, "fragment", undefined];
                 break;
             case "FILE":
                 load_type = ("file" in param) ? param.file : "";
                 // fallthrough for "?load=name"
             default:
-                yield ["REPLACE", "all", "get-json", load_type];
+                yield ["REPLACE", "all", "preset", "get-json", load_type];
                 break;
             }
         }
