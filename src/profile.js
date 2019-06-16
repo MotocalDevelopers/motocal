@@ -183,6 +183,7 @@ var Profile = CreateClass({
             otherBuff: 0,
             otherBuff2: 0,
             additionalDamageBuff: 0,
+            supplementalDamageBuff: 0,
             damageLimitBuff: 0.0,
             ougiDamageLimitBuff: 0.0,
             ougiGageUpOugiBuff: 0.0,
@@ -209,6 +210,7 @@ var Profile = CreateClass({
             personalOtherBuff: 0.0,
             personalOtherBuff2: 0.0,
             personalAdditionalDamageBuff: 0.0,
+            personalSupplementalDamageBuff: 0,
             personalDABuff: 0.0,
             personalTABuff: 0.0,
             personalOugiDamageBuff: 0.0,
@@ -403,6 +405,12 @@ var Profile = CreateClass({
                                                  onChange={this.handleSelectEvent.bind(this, "personalAdditionalDamageBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
+                            </tr>,
+                            <tr key="personalSupplementalDamageBuff">
+                                <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
+                                <td><FormControl type="number" value={this.state.personalSupplementalDamageBuff}
+                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "personalSupplementalDamageBuff")}></FormControl>
+                                </td>
                             </tr>,
                             <tr key="personalOugiDamageBuff">
                                 <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
@@ -777,6 +785,17 @@ var Profile = CreateClass({
                                                  onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("supplementalDamageBuff-tooltip", locale)}
+                                     id={"tooltip-supplementalDamageBuff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
+                            <td>
+                                <FormControl type="number" value={this.state.supplementalDamageBuff}
+                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
