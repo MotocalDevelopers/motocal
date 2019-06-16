@@ -841,6 +841,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["chainDamageLimit"] = chainDamageLimit;
         coeffs["criticalArray"] = criticalArray;
         coeffs["supplementalDamageArray"] = supplementalDamageArray;
+        coeffs["uplift"] = 0.01 * uplift;
 
         // Consecutive shooting information
         coeffs["normalDA"] = armDAupNormal;
