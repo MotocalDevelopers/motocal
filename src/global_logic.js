@@ -403,6 +403,65 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     for (var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind];
 
+        // hp magnification
+        var hpCoeff = 1.0;
+        hpCoeff += 0.01 * totals[key]["normalHP"] * totalSummon["zeus"];
+        hpCoeff += 0.01 * totals[key]["magnaHP"] * totalSummon["magna"];
+        hpCoeff += 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"];
+        hpCoeff += 0.01 * totals[key]["exHP"];
+        hpCoeff += 0.01 * totals[key]["bahaHP"];
+        hpCoeff += 0.01 * totals[key]["omegaNormalHP"];
+        hpCoeff += 0.01 * totals[key]["akashaHP"];
+        hpCoeff += buff["hp"];
+        hpCoeff += totalSummon["hpBonus"];
+        if (key == "Djeeta") {
+            hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus;
+        }
+        if (totals[key]["EXLB"]["WED"]) {
+            hpCoeff += 0.10;
+        }
+        hpCoeff *= 1.0 + totals[key]["HPBuff"];
+        hpCoeff *= 1.0 - Math.min(0.70, totals[key]["HPdebuff"]);
+
+        // Base HP
+        var displayHP = totals[key]["baseHP"];
+        displayHP += totals[key]["armHP"];
+        displayHP += totalSummon["hp"];
+
+        if (key == "Djeeta") {
+            // for Djeeta
+            // ATK
+            var summedAttack = totals[key]["baseAttack"];
+            summedAttack += totals[key]["armAttack"];
+            summedAttack += totalSummon["attack"];
+            summedAttack += totals["Djeeta"]["job"].atBonus;
+            summedAttack *= 1.0 + buff["master"];
+            // HP
+            displayHP += totals["Djeeta"]["job"].hpBonus;
+            displayHP *= 1.0 + buff["masterHP"];
+            var totalHP = displayHP * hpCoeff
+
+        } else {
+            // for character
+            // ATK
+            var summedAttack = totals[key]["baseAttack"];
+            summedAttack += totals[key]["armAttack"];
+            summedAttack += totalSummon["attack"];
+            summedAttack += totals[key]["LB"].ATK;
+            summedAttack += totals[key]["EXLB"].ATK;
+            summedAttack += totals[key]["plusBonus"] * 3;
+            
+            // HP
+            displayHP += totals[key]["LB"].HP;
+            displayHP += totals[key]["EXLB"].HP;
+            displayHP += totals[key]["plusBonus"];
+            var totalHP = displayHP * hpCoeff;
+        }
+
+        if (totals[key]["remainHP"] == 0) {
+            totals[key]["remainHP"] = 1.0 / parseFloat(totalHP);
+        }
+
         // Calculation of various attack coefficients  各種攻刃係数の計算
         var magnaCoeff = 1.0 + (0.01 * totals[key]["magna"] + 0.01 * totals[key]["magnaSoka"]) * totalSummon["magna"];
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"] * totalSummon["magna"]);
@@ -461,61 +520,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         //chara LB Emnity
         var LBHaisuiCoeff = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", totals[key]["EXLB"]["Haisui"], totals[key]["remainHP"]);
-
-        // hp magnification
-        var hpCoeff = 1.0;
-        hpCoeff += 0.01 * totals[key]["normalHP"] * totalSummon["zeus"];
-        hpCoeff += 0.01 * totals[key]["magnaHP"] * totalSummon["magna"];
-        hpCoeff += 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"];
-        hpCoeff += 0.01 * totals[key]["exHP"];
-        hpCoeff += 0.01 * totals[key]["bahaHP"];
-        hpCoeff += 0.01 * totals[key]["omegaNormalHP"];
-        hpCoeff += 0.01 * totals[key]["akashaHP"];
-        hpCoeff += buff["hp"];
-        hpCoeff += totalSummon["hpBonus"];
-        if (key == "Djeeta") {
-            hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus;
-        }
-        if (totals[key]["EXLB"]["WED"]) {
-            hpCoeff += 0.10;
-        }
-        hpCoeff *= 1.0 + totals[key]["HPBuff"];
-        hpCoeff *= 1.0 - Math.min(0.70, totals[key]["HPdebuff"]);
-
-        // Base HP
-        var displayHP = totals[key]["baseHP"];
-        displayHP += totals[key]["armHP"];
-        displayHP += totalSummon["hp"];
-
-        if (key == "Djeeta") {
-            // for Djeeta
-            // ATK
-            var summedAttack = totals[key]["baseAttack"];
-            summedAttack += totals[key]["armAttack"];
-            summedAttack += totalSummon["attack"];
-            summedAttack += totals["Djeeta"]["job"].atBonus;
-            summedAttack *= 1.0 + buff["master"];
-            // HP
-            displayHP += totals["Djeeta"]["job"].hpBonus;
-            displayHP *= 1.0 + buff["masterHP"];
-            var totalHP = displayHP * hpCoeff
-
-        } else {
-            // for character
-            // ATK
-            var summedAttack = totals[key]["baseAttack"];
-            summedAttack += totals[key]["armAttack"];
-            summedAttack += totalSummon["attack"];
-            summedAttack += totals[key]["LB"].ATK;
-            summedAttack += totals[key]["EXLB"].ATK;
-            summedAttack += totals[key]["plusBonus"] * 3;
-            
-            // HP
-            displayHP += totals[key]["LB"].HP;
-            displayHP += totals[key]["EXLB"].HP;
-            displayHP += totals[key]["plusBonus"];
-            var totalHP = displayHP * hpCoeff
-        }
 
         var totalSkillCoeff = normalCoeff * normalHaisuiCoeff * normalKonshinCoeff;
         totalSkillCoeff *= magnaCoeff * magnaHaisuiCoeff * magnaKonshinCoeff;
