@@ -4,6 +4,7 @@ var {Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, P
 var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
 var GlobalConst = require('./global_const.js');
+var TextWithTooltip = GlobalConst.TextWithTooltip;
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation;
@@ -268,6 +269,7 @@ var Chara = CreateClass({
             support2: "none",
             support3: "none",
             ougiRatio: 4.5,
+            ougiTimes: 1,
             type: "attack",
             favArm: "dagger",
             favArm2: "none",
@@ -549,6 +551,17 @@ var Chara = CreateClass({
                                          onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "ougiRatio")}/>
                         </td>
                     </tr>
+
+                    <TextWithTooltip tooltip={intl.translate("奥義回数説明", locale)}
+                                     id={"tooltip-ougi-times-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("奥義回数", locale)}</th>
+                            <td>
+                                    <FormControl componentClass="select" value={this.state.ougiTimes}
+                                                 onChange={this.handleSelectEvent.bind(this, "ougiTimes")}> {selector.ougiTimesList} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}1</th>

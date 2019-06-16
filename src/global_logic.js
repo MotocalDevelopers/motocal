@@ -712,6 +712,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
+        if (key != "Djeeta") {
+            ougiDamage *= totals[key]["ougiTimes"];
+        }
         var chainBurstSupplemental = 0;
 
         //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
@@ -2256,6 +2259,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 baseDA: parseFloat(charaDA),
                 baseTA: parseFloat(charaTA),
                 plusBonus: chara[i].plusBonus != undefined ? parseInt(chara[i].plusBonus) : 0,
+                ougiTimes: chara[i].ougiTimes != undefined ? parseInt(chara[i].ougiTimes) : 1,
                 remainHP: charaRemainHP,
                 armAttack: 0,
                 armHP: 0,

@@ -1666,6 +1666,16 @@ var multiLangData = {
         "ja": "奥義ダメージ",
         "zh": "奥義ダメージ",
     },
+    "奥義回数": {
+        "en": "C.A. Times",
+        "ja": "奥義回数",
+        "zh": "奥義回数",
+    },
+    "奥義回数説明": {
+        "en": "When Sort Key is related to C.A., please set if you want to take account of the C.A. number of times of some of the 200% charge bar character.",
+        "ja": "優先項目が奥義関連のとき、一部奥義ゲージ200%キャラの奥義回数増加を考慮したい場合は設定して下さい。",
+        "zh": "When Sort Key is related to C.A., please set if you want to take account of the C.A. number of times of some of the 200% charge bar character.",
+    },
     "内容を消去": {
         "en": "Delete",
         "ja": "内容を消去",
