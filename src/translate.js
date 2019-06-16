@@ -1254,9 +1254,9 @@ var multiLangData = {
         "zh": "标准差",
     },
     "与ダメージ上昇効果のソース": {
-        "en": "Supplemental Damage Source (incl. DamageUP)",
-        "ja": "与ダメージ上昇効果のソース (与ダメージ上昇を含む)",
-        "zh": "Supplemental Damage Source (incl. DamageUP)",
+        "en": "Supplemental Damage Source)",
+        "ja": "与ダメージ上昇効果のソース",
+        "zh": "Supplemental Damage Source",
     },
     "合計": {
         "en": "Total",
@@ -1264,9 +1264,9 @@ var multiLangData = {
         "zh": "Total",
     },
     "ダメージ": {
-        "en": "Damage",
-        "ja": "ダメージ",
-        "zh": "伤害",
+        "en": "Damage (incl. Damage UP and Enemy Resistance)",
+        "ja": "ダメージ  (与ダメージ上と敵非有利耐性昇を含むいる)",
+        "zh": "伤害 (incl. Damage UP and Enemy Resistance)",
     },
     "サポアビ": {
         "en": "Support Ability",
