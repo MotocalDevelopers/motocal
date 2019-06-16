@@ -79,7 +79,19 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-
+const UNLIMIT_VALUE = 99999;
+module.exports.LIMIT = {
+    normalDA: 50,
+    magnaDA: 50,
+    exDA: UNLIMIT_VALUE,
+    bahaDA: 50,
+    cosmosDA: 50,
+    otherDA: UNLIMIT_VALUE,
+    normalTA: 50,
+    magnaTA: 50,
+    bahaTA: 50,
+    otherTA: UNLIMIT_VALUE,
+};
 module.exports.hollowskyNames = [
     "虚空の",
     "Hollowsky"
@@ -90,7 +102,6 @@ var opusNames = [
     "of Renunciation",
     "永遠拒絶の"
 ];
-
 var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
@@ -1873,14 +1884,14 @@ var supportAbilities = {
     },
     "da_up_all_10": {
         "name": "全体DA率10%UP(ランスロット)",
-        "type": "DABuff",
+        "type": "DASupport",
         "range": "all",
         "value": 0.10
     },
     // TODO: Nezahualpilli support skill update when confirmed
     "ta_up_all_3": {
         "name": "全体TA率3%UP(ネツァ)",
-        "type": "TABuff",
+        "type": "TASupport",
         "range": "all",
         "value": 0.03
     },
