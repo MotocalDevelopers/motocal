@@ -1810,12 +1810,10 @@ function getCharaLB(chara) {
     Object.keys(LB).map((key) => {
         var exactKey = "LB" + key;
         if (exactKey in chara) {
-            if (key == "ATK" || key == "HP" || key == "Element") {
-                LB[key] = parseInt(chara[exactKey]);
-            } else if (key == "DA" || key == "TA") {
+            if (key == "DA" || key == "TA") {
                 LB[key] = parseFloat(chara[exactKey]);
             } else {
-                LB[key] = chara[exactKey];
+                LB[key] = parseInt(chara[exactKey]);
             }
         }
     });
