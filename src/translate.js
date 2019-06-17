@@ -376,11 +376,6 @@ var multiLangData = {
         "ja": "奥義ダメージ\n上限",
         "zh": "奥义伤害上限上升",
     },
-    "チェインダメージ上限アップ": {
-        "en": "Chain DMG Cap",  //a.k.a: chainDamageLimit
-        "ja": "チェインダメージ上限UP",
-        "zh": "链义伤害上限上升",
-    },
     "奥義ダメージ上限アップ説明": {
         "en": "It is used to calc the Ougi damage.",
         "ja": "奥義ダメージの算出に使用されます。",
