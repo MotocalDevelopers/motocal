@@ -537,4 +537,9 @@
         background-color: palegoldenrod;
         color: black;
     }
+
+    /* skill info */
+    span.is-over {
+        color: red;
+    }
 }
