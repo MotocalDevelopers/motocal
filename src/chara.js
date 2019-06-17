@@ -283,6 +283,7 @@ var Chara = CreateClass({
             otherBuff: 0,
             otherBuff2: 0,
             additionalDamageBuff: 0,
+            supplementalDamageBuff: 0,
             daBuff: 0,
             taBuff: 0,
             ougiGageBuff: 0,
@@ -294,6 +295,9 @@ var Chara = CreateClass({
             LBDA: 0,
             LBTA: 0,
             LBElement: 0,
+            LBOugiDamage: 0,
+            LBOugiDamageLimit: 0,
+            LBOugiGageBuff: 0,
             LBCritical1: "none",
             LBCritical2: "none",
             LBCritical3: "none",
@@ -619,6 +623,12 @@ var Chara = CreateClass({
                                                  onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
+                            <tr key="supplementalDamageBuff">
+                                <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
+                                <td><FormControl type="number" value={this.state.supplementalDamageBuff}
+                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
+                                </td>
+                            </tr>,
                             <tr key="ougiGageBuff">
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.ougiGageBuff}
@@ -695,6 +705,33 @@ var Chara = CreateClass({
                                     <FormControl componentClass="select" value={this.state.LBElement}
                                                  onChange={this.handleSelectEvent.bind(this, "LBElement")}>
                                         {selector.limitBonusElementList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiDamage">
+                                <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiDamage}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiDamage")}>
+                                        {selector.limitBonusOugiDamageList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiDamageLimit">
+                                <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiDamageLimit}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiDamageLimit")}>
+                                        {selector.limitBonusOugiDamageLimitList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiGageBuff">
+                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiGageBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiGageBuff")}>
+                                        {selector.limitBonusOugiGageBuffList}
                                     </FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
                             </tr>,
