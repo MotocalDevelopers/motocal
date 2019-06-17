@@ -1339,6 +1339,7 @@ var Result = CreateClass({
                                 );
                             }
                         };
+                        pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "default");
                         pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
                         pushSkillInfoElement3("damageUP", "与ダメージ上昇", "default");
                         pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");

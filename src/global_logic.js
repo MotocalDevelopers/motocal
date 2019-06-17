@@ -626,13 +626,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
 
         var criticalAttack = parseInt(totalAttack * criticalRatio);
-        var expectedOugiGage = buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"];
+        var ougiGageBuff = buff["ougiGage"] + totals[key]["ougiGageBuff"] + (0.01 * totals[key]["LB"]["OugiGageBuff"]) - totals[key]["ougiDebuff"];
+        var expectedOugiGage = ougiGageBuff;
         expectedOugiGage *= taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0);
         
-        var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"]);
-        var OugiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
-        var minimumTurn = Math.ceil(OugiGage / (37.0 * (buff["ougiGage"] + totals[key]["ougiGageBuff"] - totals[key]["ougiDebuff"])));
-        var expectedTurn = Math.max(minimumTurn, OugiGage / expectedOugiGage);
+        var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * ougiGageBuff;
+        var ougiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
+        var minimumTurn = Math.ceil(ougiGage / (37.0 * ougiGageBuff));
+        var expectedTurn = Math.max(minimumTurn, ougiGage / expectedOugiGage);
 
         // "additionalDamage" considers the Fourth Pursuit effect as a normal frame
         var additionalDamage = 0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"];
@@ -658,6 +659,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += Math.min(0.15, totals[key]["omegaOugiDamageLimit"]);
         ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
         ougiDamageLimit += 0.01 * totalSummon["damageLimit"];
+        ougiDamageLimit += 0.01 * totals[key]["LB"]["OugiDamageLimit"];
         ougiDamageLimit += 0.01 * totals[key]["EXLB"]["OugiDamageLimit"];
         if (totals[key]["EXLB"]["WED"]) {
             ougiDamageLimit += 0.05;
@@ -690,6 +692,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiDamageSkill = 0.01 * (ougiDamageByCosmosAT + ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery);
 
         var ougiDamageExceptSkill = totals[key]["ougiDamageBuff"] + totalSummon["ougiDamage"] + buff['ougiDamage'];
+        ougiDamageExceptSkill += 0.01 * totals[key]["LB"]["OugiDamage"];
         ougiDamageExceptSkill += 0.01 * totals[key]["EXLB"]["OugiDamage"];
 
         if (key == "Djeeta") {
@@ -830,6 +833,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["LBKonshin"] = LBKonshinCoeff;
         coeffs["other"] = otherCoeff;
         coeffs["hpRatio"] = hpCoeff;
+        coeffs["ougiGageBuff"] = ougiGageBuff - 1.0;
         coeffs["additionalDamage"] = additionalDamage;
         coeffs["ougiDamageUP"] = ougiDamageUP;
         coeffs["chainDamageUP"] = chainDamageUP;
@@ -1978,6 +1982,9 @@ function getCharaLB(chara) {
         "ATK": 0,
         "HP": 0,
         "Element": 0,
+        "OugiDamage": 0,
+        "OugiDamageLimit": 0,
+        "OugiGageBuff": 0,
         "DA": 0.0,
         "TA": 0.0,
         "Critical1": "none",
@@ -1989,12 +1996,10 @@ function getCharaLB(chara) {
     for (let key in LB) {
         let exactKey = "LB" + key;
         if (exactKey in chara) {
-            if (key === "ATK" || key === "HP" || key === "Element") {
-                LB[key] = parseInt(chara[exactKey]);
-            } else if (key === "DA" || key === "TA") {
-                LB[key] = parseFloat(chara[exactKey]);
-            } else {
+            if (key == "Critical1" || key == "Critical2" || key == "Critical3" || key == "Critical4") {
                 LB[key] = chara[exactKey];
+            } else {
+                LB[key] = parseFloat(chara[exactKey]);
             }
         }
     }
