@@ -81,6 +81,5 @@ Jetbrains directories
 .idea/
 
 # SonarQube
-sonar-project.properties
 .scannerwork
-src/tests/reports
+tests

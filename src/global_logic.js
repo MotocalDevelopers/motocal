@@ -2541,7 +2541,8 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
         }
     }
 
-    if (res.length > 1) {
+    let multiple = res.length > 1;
+    if (multiple) {
         var AllTotalAttack = [["残りHP(%)"]];
         var AllCycleDamagePerTurn = [["残りHP(%)"]];
         var AllCriticalAttack = [["残りHP(%)"]];
@@ -2592,7 +2593,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
             AverageCriticalAttack[0].push(title);
 
             // In the case of two or more summons
-            if (res.length > 1) {
+            if (multiple) {
                 AllTotalAttack[0].push("[" + summonHeader + "] " + title);
                 AllTotalHP[0].push("[" + summonHeader + "] " + title);
                 AllCriticalAttack[0].push("[" + summonHeader + "] " + title);
@@ -2755,7 +2756,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                 AverageCriticalAttack[index].push(null)
                             }
 
-                            if (res.length > 1) {
+                            if (multiple) {
                                 var allindex;
                                 if (hp in allAlreadyUsedHP) {
                                     allindex = allAlreadyUsedHP[hp] - 1
@@ -2806,7 +2807,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 }
             }
 
-            if (res.length > 1) {
+            if (multiple) {
                 for (var k = 0; k < 100; k++) {
                     var hp;
                     if (displayRealHP) {
@@ -2846,7 +2847,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
         data[summonHeader]["totalHP"] = TotalHP
     }
 
-    if (res.length > 1) {
+    if (multiple) {
         var matomete = intl.translate("まとめて比較", locale);
         data[matomete] = {};
         data[matomete]["totalAttack"] = AllTotalAttack;
@@ -2898,7 +2899,8 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
         }
     }
 
-    if (res.length > 1) {
+    let multiple = res.length > 1;
+    if (multiple) {
         var AllAverageTotalAttack = [["ターン"]];
         var AllAverageTotalExpected = [["ターン"]];
         var AllExpectedDamage = [["ターン"]];
@@ -2983,7 +2985,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                     SummedAverageExpectedDamage[0].push(title);
 
                     // In the case of two or more summons
-                    if (res.length > 1) {
+                    if (multiple) {
                         AllAverageTotalAttack[0].push("[" + summonHeader + "] " + title);
                         AllAverageTotalExpected[0].push("[" + summonHeader + "] " + title);
                         AllExpectedDamage[0].push("[" + summonHeader + "] " + title);
@@ -2995,7 +2997,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                     SummedAverageExpectedDamage[t][j + 1] = SummedAverageExpectedDamage[t - 1][j + 1] + AverageExpectedDamage[t][j + 1]
                 }
 
-                if (res.length > 1) {
+                if (multiple) {
                     AllAverageTotalAttack[t].push(AverageTotalAttack[t][j + 1]);
                     AllAverageTotalExpected[t].push(AverageTotalExpected[t][j + 1]);
                     AllExpectedDamage[t].push(ExpectedDamage[t][j + 1]);
@@ -3013,7 +3015,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
         data[summonHeader]["summedAverageExpectedDamage"] = SummedAverageExpectedDamage
     }
 
-    if (res.length > 1) {
+    if (multiple) {
         var matomete = intl.translate("まとめて比較", locale);
         data[matomete] = {};
         data[matomete]["averageAttack"] = AllAverageTotalAttack;

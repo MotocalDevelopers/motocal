@@ -3,13 +3,16 @@
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "jquery": true,
+        "jest": true
     },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaVersion": 2017
     },
     "rules": {
         "no-const-assign": "warn",

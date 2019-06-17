@@ -106,11 +106,6 @@ var multiLangData = {
         "ja": "アップロード",
         "zh": "上传",
     },
-    "なし": {
-        "en": "No job",
-        "ja": "なし",
-        "zh": "无职业",
-    },
     "無し": {
         "en": "none",
         "ja": "無し",
@@ -375,11 +370,6 @@ var multiLangData = {
         "en": "C.A. DMG Cap", //a.k.a: ougiDamageLimit
         "ja": "奥義ダメージ\n上限",
         "zh": "奥义伤害上限上升",
-    },
-    "チェインダメージ上限アップ": {
-        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
-        "ja": "チェインダメージ上限UP",
-        "zh": "链义伤害上限上升",
     },
     "奥義ダメージ上限アップ説明": {
         "en": "It is used to calc the Ougi damage.",
@@ -1142,11 +1132,6 @@ var multiLangData = {
         "en": "Chara ",
         "ja": "キャラ",
         "zh": "角色",
-    },
-    "パーティ平均攻撃力": {
-        "en": "Party-Averaged Pure ATK",
-        "ja": "パーティ平均攻撃力(二手技巧無し)",
-        "zh": "全队平均攻击力(不考虑连击技巧)",
     },
     "技巧平均攻撃力": {
         "en": "Party-Averaged ATK with Critical",
@@ -2015,11 +2000,6 @@ var multiLangData = {
         "en": "Player HP",
         "ja": "ジータさんHP",
         "zh": "主角HP",
-    },
-    "技巧期待値(ジータさんのみ)": {
-        "en": "Exp. Critical Ratio (Player only)",
-        "ja": "技巧期待値(ジータさんのみ)",
-        "zh": "技巧期望(只考虑主角)",
     },
     "技巧期待値(ジータさんのみ)": {
         "en": "Exp. Critical Ratio (Player only)",
@@ -3146,11 +3126,6 @@ var multiLangData = {
         "zh": "已保存的编成",
     },
     // send request
-    "追加要望を送る": {
-        "en": "Send new template request",
-        "ja": "追加要望を送る",
-        "zh": "发送新的追加请求",
-    },
     "追加要望を送る": {
         "en": "Send new template request",
         "ja": "追加要望を送る",

@@ -55,7 +55,7 @@ var ResultList = CreateClass({
             // If sortKey is not a NaN, use that, NaN if it's general attack power
             var sortkey = "averageCyclePerTurn";
             var sortkeyname = "予想ターン毎ダメージのパーティ平均値";
-            if (newprops.sortKey == newprops.sortKey) {
+            if (newprops.sortKey) {
                 sortkey = newprops.sortKey;
                 sortkeyname = keyTypes[sortkey]
             }
@@ -273,7 +273,7 @@ var ResultList = CreateClass({
     openHPChart: function (e) {
         var sortkey = "averageCyclePerTurn";
         var sortkeyname = "予想ターン毎ダメージのパーティ平均値";
-        if (this.props.sortKey == this.props.sortKey) {
+        if (this.props.sortKey) {
             sortkey = this.props.sortKey;
             sortkeyname = keyTypes[sortkey]
         }
@@ -651,11 +651,7 @@ var ResultList = CreateClass({
                                         })}
                                         {
                                             armnames.map(function (m, ind) {
-                                                if (ind == 0) {
-                                                    return <th key={ind}>{m}</th>;
-                                                } else {
-                                                    return <th key={ind}>{m}</th>;
-                                                }
+                                                return <th key={ind}>{m}</th>;
                                             })
                                         }
                                         <th>{intl.translate("グラフ", locale)}</th>
@@ -856,11 +852,7 @@ var ResultList = CreateClass({
                                         })}
                                         {
                                             armnames.map(function (m, ind) {
-                                                if (ind == 0) {
-                                                    return <th key={ind}>{m}</th>;
-                                                } else {
-                                                    return <th key={ind}>{m}</th>;
-                                                }
+                                                return <th key={ind}>{m}</th>;
                                             })
                                         }
                                         <th>{intl.translate("グラフ", locale)}</th>
