@@ -3229,6 +3229,16 @@ var multiLangData = {
         "ja": "20.0 (プロトバハムートHL/ルシファーH)",
         "zh": "20.0 (Proto Baha HL/Lucilius H)",
 	},
+    "素敵な防御値": {
+        "en": "Manual Input",
+        "ja": "素敵な防御値",
+        "zh": "Manual Input",
+    },
+    "キャラ特定の敵防御": {
+        "en": "Character Specific Enemy Defense",
+        "ja": "キャラ特定の敵防御",
+        "zh": "Character Specific Enemy Defense",
+    },
     // chart sort key
     "ジータさん残りHP": {
         "en": "Player Remain HP",
