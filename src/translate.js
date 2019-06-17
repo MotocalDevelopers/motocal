@@ -1254,7 +1254,7 @@ var multiLangData = {
         "zh": "标准差",
     },
     "与ダメージ上昇効果のソース": {
-        "en": "Supplemental Damage Source)",
+        "en": "Supplemental Damage Source",
         "ja": "与ダメージ上昇効果のソース",
         "zh": "Supplemental Damage Source",
     },

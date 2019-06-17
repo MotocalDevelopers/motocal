@@ -722,7 +722,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
         var supplementalDamageArray = {};
 
-        var supplementalDamageBuff = Math.ceil(Math.max(totals[key]["supplementalDamageBuff"], buff["supplementalDamageBuff"]) * (1 + damageUP) * (1 - enemyResistance));
+        var supplementalDamageBuff = Math.ceil(
+            Math.max(
+                totals[key]["supplementalDamageBuff"],
+                buff["supplementalDamageBuff"]
+            ) * (1 + damageUP) * (1 - enemyResistance)
+        );
+
         if (supplementalDamageBuff > 0) {
             supplementalDamageArray["バフ"] = {
                 damage: supplementalDamageBuff,
