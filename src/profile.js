@@ -195,6 +195,7 @@ var Profile = CreateClass({
             enemyElement: "wind",
             enemyDefense: 10.0,
             defenseDebuff: 0.0,
+            enemyResistance: 0.0,
             job: "none",
             sex: "female",
             element: "fire",
@@ -874,6 +875,16 @@ var Profile = CreateClass({
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("敵非有利耐性説明", locale)} id={"tooltip-enemy-resistance-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("敵非有利耐性", locale)}</th>
+                            <td><InputGroup><FormControl type="number" min="0" step="5" max="100" value={this.state.enemyResistance}
+                                             onBlur={this.state.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/> 
+                                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
 
