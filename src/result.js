@@ -486,6 +486,7 @@ var ResultList = CreateClass({
         buffInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
         buffInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
         buffInfo.push(intl.translate("烈日の楽園", locale) + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
+        buffInfo.push(intl.translate("敵非有利耐性", locale) + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance)))));
         var buffInfoStr = buffInfo.join(", ");
 
         if (_ua.Mobile || _ua.Tablet) {
@@ -1348,6 +1349,7 @@ var Result = CreateClass({
                                 );
                             }
                         };
+                        pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "default");
                         pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
                         pushSkillInfoElement3("damageUP", "与ダメージ上昇", "default");
                         pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
