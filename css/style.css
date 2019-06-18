@@ -171,6 +171,10 @@
     .input-suggest {
         color: #ffff00;
     }
+    
+    .charaList table tbody tr th {
+        white-space: pre-line;
+    }
 
     .summonList {
         width: 100%;
@@ -531,5 +535,10 @@
         background-color: #FFFFFF;
         color: black;
         border: 1px solid #000000;
+    }
+
+    /* skill info */
+    span.is-over {
+        color: red;
     }
 }
