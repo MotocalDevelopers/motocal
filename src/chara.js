@@ -297,6 +297,9 @@ var Chara = CreateClass({
             LBDA: 0,
             LBTA: 0,
             LBElement: 0,
+            LBOugiDamage: 0,
+            LBOugiDamageLimit: 0,
+            LBOugiGageBuff: 0,
             LBCritical1: "none",
             LBCritical2: "none",
             LBCritical3: "none",
@@ -715,6 +718,33 @@ var Chara = CreateClass({
                                     <FormControl componentClass="select" value={this.state.LBElement}
                                                  onChange={this.handleSelectEvent.bind(this, "LBElement")}>
                                         {selector.limitBonusElementList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiDamage">
+                                <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiDamage}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiDamage")}>
+                                        {selector.limitBonusOugiDamageList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiDamageLimit">
+                                <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiDamageLimit}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiDamageLimit")}>
+                                        {selector.limitBonusOugiDamageLimitList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiGageBuff">
+                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiGageBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiGageBuff")}>
+                                        {selector.limitBonusOugiGageBuffList}
                                     </FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
                             </tr>,

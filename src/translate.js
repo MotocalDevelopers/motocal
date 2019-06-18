@@ -362,7 +362,7 @@ var multiLangData = {
         "zh": "影响奥义槽上升量。在预想DPT计算中有用到。",
     },
     "チェインダメージアップ": {
-        "en": "Chain Damage UP", //a.k.a: chainDamageUP
+        "en": "Chain DMG UP", //a.k.a: chainDamageUP
         "ja": "チェインダメージUP",
         "zh": "チェイン义伤害上升",
     },
@@ -377,7 +377,7 @@ var multiLangData = {
         "zh": "通常攻击伤害的计算中有用到。",
     },
     "チェインダメージ上限アップ": {
-        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
+        "en": "Chain DMG Cap",  //a.k.a: chainDamageLimit
         "ja": "チェインダメージ上限UP",
         "zh": "链义伤害上限上升",
     },
@@ -385,11 +385,6 @@ var multiLangData = {
         "en": "C.A. DMG Cap", //a.k.a: ougiDamageLimit
         "ja": "奥義ダメージ\n上限",
         "zh": "奥义伤害上限上升",
-    },
-    "チェインダメージ上限アップ": {
-        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
-        "ja": "チェインダメージ上限UP",
-        "zh": "链义伤害上限上升",
     },
     "奥義ダメージ上限アップ説明": {
         "en": "It is used to calc the Ougi damage.",
@@ -435,6 +430,16 @@ var multiLangData = {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
+    },
+    "敵非有利耐性": {
+        "en": "Enemy Resistance",
+        "ja": "敵非有利耐性",
+        "zh": "Enemy Resistance",
+    },
+    "敵非有利耐性説明": {
+        "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
+        "ja": "敵の非有利属性時に生じる耐性を設定します。古戦場HELL(50%)など。",
+        "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
     },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
@@ -1244,9 +1249,9 @@ var multiLangData = {
         "zh": "标准差",
     },
     "与ダメージ上昇効果のソース": {
-        "en": "Supplemental Damage Source (incl. DamageUP)",
-        "ja": "与ダメージ上昇効果のソース (与ダメージ上昇を含む)",
-        "zh": "Supplemental Damage Source (incl. DamageUP)",
+        "en": "Supplemental Damage Source",
+        "ja": "与ダメージ上昇効果のソース",
+        "zh": "Supplemental Damage Source",
     },
     "合計": {
         "en": "Total",
@@ -1254,9 +1259,9 @@ var multiLangData = {
         "zh": "Total",
     },
     "ダメージ": {
-        "en": "Damage",
-        "ja": "ダメージ",
-        "zh": "伤害",
+        "en": "Damage (incl. Damage UP and Enemy Resistance)",
+        "ja": "ダメージ  (与ダメージ上と敵非有利耐性昇を含むいる)",
+        "zh": "伤害 (incl. Damage UP and Enemy Resistance)",
     },
     "サポアビ": {
         "en": "Support Ability",
