@@ -1365,6 +1365,8 @@ var Result = CreateClass({
                                     </span>
                             );
                         }
+                        pushSkillInfoElement3("uplift", "高揚", "default");
+
                         charaDetail[key].push(<div key={key + "-mainSkillInfo"}>{mainSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-criticalInfo"}
