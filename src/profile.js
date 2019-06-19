@@ -187,6 +187,7 @@ var Profile = CreateClass({
             damageLimitBuff: 0.0,
             ougiDamageLimitBuff: 0.0,
             ougiGageUpOugiBuff: 0.0,
+            uplift: 0,
             hpBuff: 0,
             daBuff: 0,
             taBuff: 0,
@@ -215,6 +216,7 @@ var Profile = CreateClass({
             personalTABuff: 0.0,
             personalOugiDamageBuff: 0.0,
             personalOugiGageBuff: 0.0,
+            personalUplift: 0,
             personalDamageLimitBuff: 0.0,
             personalOugiDamageLimitBuff: 0.0,
             criticalBuff: [],
@@ -479,6 +481,13 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiGageBuff")}>{selector.buffLevel}</FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="personalUplift">
+                                <th className="bg-primary">{intl.translate("高揚", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalUplift}
+                                                 onChange={this.handleSelectEvent.bind(this, "personalUplift")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
@@ -874,6 +883,20 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("高揚説明", locale)}
+                                     id={"tooltip-uplift-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("高揚", locale)}</th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.uplift}
+                                                 onChange={this.handleSelectEvent.bind(this, "uplift")}> {selector.buffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>

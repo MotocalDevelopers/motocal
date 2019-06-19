@@ -426,6 +426,16 @@ var multiLangData = {
         "ja": "奥義ゲージ最大値を効果分マイナスします(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
         "zh": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
 	},
+    "高揚": {
+        "en": "Uplift",
+        "ja": "高揚",
+        "zh": "Uplift",
+    },
+    "高揚説明": {
+        "en": "Increase charge bar each turn. True Purity Sunblade C.A.(10%) and likes-",
+        "ja": "毎ターン奥義ゲージが上昇する状態。真・道天浄土の奥義(10%)など",
+        "zh": "Increase charge bar each turn. True Purity Sunblade C.A.(10%) and likes-",
+    },
     "Advanced": {
         "en": "Advanced Settings",
         "ja": "より細かい設定",

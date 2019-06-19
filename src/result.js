@@ -1357,6 +1357,7 @@ var Result = CreateClass({
                         pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");
                         pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "default");
                         pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "default");
+                        pushSkillInfoElement3("uplift", "高揚", "default");
 
                         charaDetail[key].push(<div key={key + "-mainSkillInfo"}>{mainSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
