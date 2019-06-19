@@ -732,7 +732,6 @@ var enemyDefenseType = {
     14.0: { "name": "敵防御14.0" },
     15.0: { "name": "敵防御15.0" },
     20.0: { "name": "敵防御20.0" },
-    0.00: { "name": "素敵な防御値" },
 }
 var keyTypes = {
     "totalAttack": "攻撃力(二手技巧無し,ジータさんのみ)",

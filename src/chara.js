@@ -3,6 +3,7 @@ var intl = require('./translate.js');
 var {Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, Panel, PanelGroup, Modal, Glyphicon} = require('react-bootstrap');
 var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
+var EnemyDefense = require('./enemy_defense.js');
 var GlobalConst = require('./global_const.js');
 
 // inject GlobalConst...
@@ -309,6 +310,9 @@ var Chara = CreateClass({
             EXLBKonshin: 0,
             EXLBDA: 0,
             EXLBTA: 0,
+            manualEnemyDefense: false,
+            enemyDefense: 10.0,
+            defenseDebuff: 0.0,
         };
     },
     componentDidMount: function () {
@@ -570,6 +574,43 @@ var Chara = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "support3")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
+
+                    {EnemyDefense.perCharaEnemyDefense
+                     ? [
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("敵防御固有値", locale)}
+                                <Checkbox inline checked={this.state.manualEnemyDefense}
+                                          onChange={this.handleSelectEvent.bind(this, "manualEnemyDefense")}>
+                                 <strong>{intl.translate("素敵な防御値", locale)}</strong>
+                                </Checkbox>
+                            </th>
+                            <td>
+                                {this.state.manualEnemyDefense
+                                 ?
+                                    <FormControl type="number" min="0" step="0.5" value={this.state.enemyDefense}
+                                                 onBlur={this.handleOnBlur}
+                                                 onChange={this.handleEvent.bind(this, "enemyDefense")}/>
+                                 :
+                                    <FormControl componentClass="select" value={this.state.enemyDefense}
+                                                 onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl>
+                                }
+                             </td>
+                        </tr>,
+                        <tr>
+                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}</th>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
+                                            onBlur={this.handleOnBlur}
+                                            onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
+                        </tr>
+                     ] : 
+                        null
+                    }
 
                     <tr>
                         <th className="bg-primary"><Button

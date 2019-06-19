@@ -4,7 +4,7 @@ var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
 var CreateClass = require('create-react-class');
-
+var EnemyDefense = require('./enemy_defense.js');
 // const
 var zenith = GlobalConst.zenith;
 var zenithDA = GlobalConst.zenithDA;
@@ -196,7 +196,6 @@ var Profile = CreateClass({
             manualEnemyDefense: false,
             perCharaEnemyDefense: false,
             enemyDefense: 10.0,
-            enemyDefenseValue: 10.0,
             defenseDebuff: 0.0,
             job: "none",
             sex: "female",
@@ -242,18 +241,11 @@ var Profile = CreateClass({
         var newState = this.state;
         if (e.target.type === "checkbox") {
             newState[key] = e.target.checked;
-        } else if (key == "enemyDefenseValue" && e.target.value == 0 && !newState.manualEnemyDefense) {
-            newState[key] = e.target.value;
-            newState.manualEnemyDefense = true;
-            newState.defenseDebuff = 0.0;
-            newState.enemyDefense = 10.0;
-        } else if (key == "enemyDefenseValue" && e.target.value != 0 && newState.manualEnemyDefense) {
-            newState[key] = e.target.value;
-            newState.manualEnemyDefense = false;
-            newState.enemyDefense = e.target.value;
-        } else if (key == "enemyDefenseValue") {
-            newState[key] = e.target.value;
-            newState.enemyDefense = newState[key];
+            if (key == 'perCharaEnemyDefense') {
+                EnemyDefense.perCharaEnemyDefense = this.state.perCharaEnemyDefense;
+            } else if (key == 'manualEnemyDefense') {
+                newState.enemyDefense = newState.enemyDefense in GlobalConst.enemyDefenseType ? newState.enemyDefense : 10.0;
+           }
         } else {
             newState[key] = e.target.value;
         }
@@ -873,60 +865,48 @@ var Profile = CreateClass({
                         </td>
                     </tr>
 
-                    {this.state.manualEnemyDefense 
-                     ? 
-                        [
-                            <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
-                                <tr>
-                                    <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
-                                    <td>
-                                        <FormControl componentClass="select" value={this.state.enemyDefenseValue}
-                                                     onChange={this.handleSelectEvent.bind(this, "enemyDefenseValue")}> {selector[locale].enemydeftypes} </FormControl>
-                                        <Checkbox inline checked={this.state.perCharaEnemyDefense}
-                                                  onChange={this.handleSelectEvent.bind(this, "perCharaEnemyDefense")}>
-                                         <strong>{intl.translate("キャラ特定の敵防御", locale)}</strong>
-                                        </Checkbox>
-                                    </td>
-                                </tr>
-                            </TextWithTooltip>
-,
-                            <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-2-detail"}>
-                                <tr>
-                                    <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
-                                        <td>
-                                            <FormControl type="number" min="0" step="0.5" value={this.state.enemyDefense}
-                                                onBlur={this.handleOnBlur}
-                                                onChange={this.handleEvent.bind(this, "enemyDefense")}/>
-                                        </td>
-                                </tr>
-                            </TextWithTooltip>
-                        ]
-                     : //------
-                        [
-                            <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
-                                <tr>
-                                    <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
-                                    <td><FormControl componentClass="select" value={this.state.enemyDefenseValue}
-                                                     onChange={this.handleSelectEvent.bind(this, "enemyDefenseValue")}> {selector[locale].enemydeftypes} </FormControl>
-                                    </td>
-                                </tr>
-                            </TextWithTooltip>
-,
-                            <TextWithTooltip tooltip={intl.translate("防御デバフ合計説明", locale)} id={"tooltip-defense-debuff-detail"}>
-                                <tr>
-                                    <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}</th>
-                                        <td>
-                                            <InputGroup>
-                                                <FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
-                                                    onBlur={this.handleOnBlur}
-                                                    onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
-                                                <InputGroup.Addon>%</InputGroup.Addon>
-                                            </InputGroup>
-                                        </td>
-                                </tr>
-                            </TextWithTooltip>
-                        ]
-                    }
+                    
+                    <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("敵防御固有値", locale)}
+                                <Checkbox inline checked={this.state.manualEnemyDefense}
+                                          onChange={this.handleSelectEvent.bind(this, "manualEnemyDefense")}>
+                                 <strong>{intl.translate("素敵な防御値", locale)}</strong>
+                                </Checkbox>
+                            </th>
+                            <td>
+                                <Checkbox inline checked={this.state.perCharaEnemyDefense}
+                                          onChange={this.handleSelectEvent.bind(this, "perCharaEnemyDefense")}>
+                                 <strong>{intl.translate("キャラ特定の敵防御", locale)}</strong>
+                                </Checkbox>
+                                {this.state.manualEnemyDefense
+                                 ?
+                                    <FormControl type="number" min="0" step="0.5" value={this.state.enemyDefense}
+                                                 onBlur={this.handleOnBlur}
+                                                 onChange={this.handleEvent.bind(this, "enemyDefense")}/>
+                                 :
+                                    <FormControl componentClass="select" value={this.state.enemyDefense}
+                                                 onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl>
+                                }
+                                
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("防御デバフ合計説明", locale)} id={"tooltip-defense-debuff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}</th>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
+                                            onBlur={this.handleOnBlur}
+                                            onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
+                        </tr>
+                    </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("ジータさん基礎DA率説明", locale)}
                                      id={"tooltip-player-baseda-detail"}>

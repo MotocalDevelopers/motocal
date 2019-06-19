@@ -3230,9 +3230,9 @@ var multiLangData = {
         "zh": "20.0 (Proto Baha HL/Lucilius H)",
 	},
     "素敵な防御値": {
-        "en": "Manual Input",
-        "ja": "素敵な防御値",
-        "zh": "Manual Input",
+        "en": "\nManual Input",
+        "ja": "\n素敵な防御値",
+        "zh": "\nManual Input",
     },
     "キャラ特定の敵防御": {
         "en": "Character Specific Enemy Defense",
