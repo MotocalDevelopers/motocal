@@ -312,9 +312,9 @@ var multiLangData = {
         "zh": "Supplemental Damage Buff",
     },
     "supplementalDamageBuff-tooltip": {
-        "en": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
-        "ja": "与ダメージ上昇効果。ロゼッタ（リミテッド）のアイアン・メイデン(5000)、虚空の晶塊の奥義(10000)など。",
-        "zh": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
+        "en": "DMG Boosted status effect. Hollowsky Axe's C.A. (10000), etc.",
+        "ja": "与ダメージ上昇効果。虚空斧奥義(10000)など。",
+        "zh": "DMG Boosted status effect. Hollowsky Axe's C.A. (10000), etc.",
     },
     "与ダメージ上昇": {
         "en": "Damage UP ",
@@ -437,9 +437,9 @@ var multiLangData = {
         "zh": "Enemy Resistance",
     },
     "敵非有利耐性説明": {
-        "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
-        "ja": "敵の非有利属性時に生じる耐性を設定します。古戦場HELL(50%)など。",
-        "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
+        "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(25%), EX+(50%) and likes-",
+        "ja": "敵の非有利属性時に生じる耐性を設定します。古戦場HELL(20%)、犬EX+(50%)など。",
+        "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(25%), EX+(50%) and likes-",
     },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
@@ -1250,7 +1250,7 @@ var multiLangData = {
     },
     "与ダメージ上昇効果のソース": {
         "en": "Supplemental Damage Source",
-        "ja": "与ダメージ上昇効果のソース",
+        "ja": "与ダメージ上昇効果の種類",
         "zh": "Supplemental Damage Source",
     },
     "合計": {
@@ -1260,7 +1260,7 @@ var multiLangData = {
     },
     "ダメージ": {
         "en": "Damage (incl. Damage UP and Enemy Resistance)",
-        "ja": "ダメージ  (与ダメージ上と敵非有利耐性昇を含むいる)",
+        "ja": "ダメージ  (与ダメージ上昇と敵非有利耐性が反映済み)",
         "zh": "伤害 (incl. Damage UP and Enemy Resistance)",
     },
     "サポアビ": {
@@ -2983,22 +2983,22 @@ var multiLangData = {
         "zh": "Omega-勇气",
     },
     "ガフスキー[α]": {
-        "en": "Gauph Key α",
+        "en": "Gauph Key α (Normal Attack Cap 10%)",
         "ja": "ガフスキー[α](通常上限10%UP)",
         "zh": "1技能插件[α]",
     },
     "ガフスキー[β]": {
-        "en": "Gauph Key β",
+        "en": "Gauph Key β (Skill Cap 50%)",
         "ja": "ガフスキー[β](アビ上限50%UP)",
         "zh": "1技能插件[β]",
     },
     "ガフスキー[γ]": {
-        "en": "Gauph Key γ",
+        "en": "Gauph Key γ (C.A. Cap 15%)",
         "ja": "ガフスキー[γ](奥義上限15%UP)",
         "zh": "1技能插件[γ]",
     },
     "ガフスキー[Δ]": {
-        "en": "Gauph Key Δ",
+        "en": "Gauph Key Δ (CB Cap 50%)",
         "ja": "ガフスキー[Δ](CB上限50%UP)",
         "zh": "1技能插件[Δ]",
     },
@@ -3053,22 +3053,22 @@ var multiLangData = {
         "zh": "災禍の誓約",
     },
     "ペンデュラム[α]": {
-        "en": "Pendulum Key α",
+        "en": "Pendulum Key α (Normal Attack Cap 10%)",
         "ja": "ペンデュラム[α](通常上限10%UP)",
         "zh": "ペンデュラム[α](通常上限10%UP)",
     },
     "ペンデュラム[β]": {
-        "en": "Pendulum Key β",
+        "en": "Pendulum Key β (Skill Cap 50%)",
         "ja": "ペンデュラム[β](アビ上限50%UP)",
         "zh": "ペンデュラム[β](アビ上限50%UP)",
     },
     "ペンデュラム[γ]": {
-        "en": "Pendulum Key γ",
+        "en": "Pendulum Key γ (C.A. Cap 15%)",
         "ja": "ペンデュラム[γ](奥義上限15%UP)",
         "zh": "ペンデュラム[γ](奥義上限15%UP)",
     },
     "ペンデュラム[Δ]": {
-        "en": "Pendulum Key Δ",
+        "en": "Pendulum Key Δ (CB Cap 50%)",
         "ja": "ペンデュラム[Δ](CB上限50%UP)",
         "zh": "ペンデュラム[Δ](CB上限50%UP)",
     },
