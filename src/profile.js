@@ -290,7 +290,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
                         <tr>
                             <th className="bg-primary">Rank<span className="input-suggest">*</span></th>
-                            <td><FormControl type="number" min="1" max="225" value={this.state.rank}
+                            <td><FormControl type="number" min="1" max="300" value={this.state.rank}
                                              onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/>
                             </td>
                         </tr>
@@ -781,13 +781,13 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("supplementalDamageBuff-tooltip", locale)}
+                    <TextWithTooltip tooltip={intl.translate("supplementalDamageBuff-tooltip", locale)} //与ダメージ上昇効果バフ
                                      id={"tooltip-supplementalDamageBuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                             <td>
-                                <FormControl type="number" value={this.state.supplementalDamageBuff}
-                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
+                                <FormControl type="number" min="0" step="1000" max="100000" value={this.state.supplementalDamageBuff}
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "supplementalDamageBuff")}></FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
