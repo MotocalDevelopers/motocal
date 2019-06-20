@@ -401,6 +401,16 @@ var multiLangData = {
         "ja": "奥義ゲージ最大値を効果分マイナスします(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
         "zh": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
 	},
+    "高揚": {
+        "en": "Uplift",
+        "ja": "高揚",
+        "zh": "Uplift",
+    },
+    "高揚説明": {
+        "en": "Increase charge bar each turn. True Purity Sunblade C.A.(10%) and likes-",
+        "ja": "毎ターン奥義ゲージが上昇する状態。真・道天浄土の奥義(10%)など",
+        "zh": "Increase charge bar each turn. True Purity Sunblade C.A.(10%) and likes-",
+    },
     "Advanced": {
         "en": "Advanced Settings",
         "ja": "より細かい設定",
@@ -430,6 +440,16 @@ var multiLangData = {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
+    },
+    "敵非有利耐性": {
+        "en": "Enemy Resistance",
+        "ja": "敵非有利耐性",
+        "zh": "Enemy Resistance",
+    },
+    "敵非有利耐性説明": {
+        "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
+        "ja": "敵の非有利属性時に生じる耐性を設定します。古戦場HELL(50%)など。",
+        "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
     },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
@@ -1239,9 +1259,9 @@ var multiLangData = {
         "zh": "标准差",
     },
     "与ダメージ上昇効果のソース": {
-        "en": "Supplemental Damage Source (incl. DamageUP)",
-        "ja": "与ダメージ上昇効果のソース (与ダメージ上昇を含む)",
-        "zh": "Supplemental Damage Source (incl. DamageUP)",
+        "en": "Supplemental Damage Source",
+        "ja": "与ダメージ上昇効果のソース",
+        "zh": "Supplemental Damage Source",
     },
     "合計": {
         "en": "Total",
@@ -1249,9 +1269,9 @@ var multiLangData = {
         "zh": "Total",
     },
     "ダメージ": {
-        "en": "Damage",
-        "ja": "ダメージ",
-        "zh": "伤害",
+        "en": "Damage (incl. Damage UP and Enemy Resistance)",
+        "ja": "ダメージ  (与ダメージ上と敵非有利耐性昇を含むいる)",
+        "zh": "伤害 (incl. Damage UP and Enemy Resistance)",
     },
     "サポアビ": {
         "en": "Support Ability",

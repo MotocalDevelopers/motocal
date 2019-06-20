@@ -485,6 +485,7 @@ var ResultList = CreateClass({
         buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
         buffInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
         buffInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
+        buffInfo.push(intl.translate("敵非有利耐性", locale) + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance)))));
         var buffInfoStr = buffInfo.join(", ");
 
         if (_ua.Mobile || _ua.Tablet) {
@@ -1355,6 +1356,7 @@ var Result = CreateClass({
                         pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");
                         pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "default");
                         pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "default");
+                        pushSkillInfoElement3("uplift", "高揚", "default");
 
                         charaDetail[key].push(<div key={key + "-mainSkillInfo"}>{mainSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
