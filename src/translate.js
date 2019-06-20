@@ -3880,9 +3880,29 @@ var multiLangData = {
         "zh": "2019/05/28: Added new weapons and characters, and new normal critical calculation, and Over Masterys. and Soldier.",
     },
     "notice-20190606-1": {
-        "en": "06/06/2019: Added new weapons and characters, Character Balance Patch.",
-        "ja": "2019/06/06: 武器とキャラ追加。キャラバランスパッチ。",
-        "zh": "2019/06/06: Added new weapons and characters, Character Balance Patch.",
+        "en": "06/06/2019: Added new weapons and characters, Character Balance Patch, Hollowsky/Dark opus weapon limit (1 per grid). Updated critical(M) Slv15 effect size to 6.5.",
+        "ja": "2019/06/06: 武器とキャラ追加。キャラ調整アプデ対応。虚空/終末武器が1編成に1つしか入らないように制限。技巧中Slv15の効果量を6.5に変更。",
+        "zh": "2019/06/06: Added new weapons and characters, Character Balance Patch, Hollowsky/Dark opus weapon limit (1 per grid). Updated critical(M) Slv15 effect size to 6.5.",
+    },
+    "notice-20190608-1": {
+        "en": "08/06/2019: Added Wedding Rings to Characters, Plus bonus of character, ChiretsuSenwaku skill. Fixed Vania favorite weapon.",
+        "ja": "2019/06/08: 久遠の指輪対応。キャラバランスパッチ。キャラのプラスボーナス対応。スキル「地裂の煽惑・参」追加。ヴァンピィ得意武器修正。",
+        "zh": "2019/06/08: Added Wedding Rings to Characters, Plus bonus of character, ChiretsuSenwaku skill. Fixed Vania favorite weapon.",
+    },
+    "notice-20190615-1": {
+        "en": "15/06/2019: Added Hollowsky weapons skill2, supplemental damage skill/support, Translation for Characters Support Abilities.",
+        "ja": "2019/06/15: 与ダメ上昇対応(虚空武器スキル、サポアビ、バフ欄)。サポアビ英訳対応。暴君70%制限対応。",
+        "zh": "2019/06/15: Added Hollowsky weapons skill2, supplemental damage skill/support, Translation for Characters Support Abilities.",
+    },
+    "notice-20190617-1": {
+        "en": "17/06/2019: Added Support stamina weapon/Character skills, Elemental Resistance, Uplift. Changed Lily support ability by game update.",
+        "ja": "2019/06/17: メイン装備時渾身スキル/渾身サポアビ対応。敵非有利耐性欄追加。高揚バフ欄追加。リリィのサポアビ変更アプデ対応。",
+        "zh": "2019/06/17: Added Support stamina weapon/Character skills, Elemental Resistance, Uplift. Changed Lily support ability by game update.",
+    },
+    "notice-20190618-1": {
+        "en": "06/06/2019: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
+        "ja": "2019/06/06: 武器上限開放対応。DA/TAスキル効果量表示時に上限で赤色表示に。奥義、奥義上限、奥義ゲージ上昇量のキャラLB追加。",
+        "zh": "2019/06/06: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
     },
 };
 
