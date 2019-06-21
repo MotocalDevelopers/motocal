@@ -325,7 +325,7 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("ジータさん性別", locale)}<span className="input-suggest">*</span></th>
+                        <th className="bg-primary">{intl.translate("ジータさん性別", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.sex}
                                          onChange={this.handleSelectEvent.bind(this, "sex")}> {selector[locale].sexes} </FormControl>
                         </td>
@@ -451,7 +451,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("マスボATK", locale)}<span className="input-suggest">*</span>
+                                {intl.translate("マスボATK", locale)}
                             </th>
                             <td>
                                 <InputGroup>
@@ -481,7 +481,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("マスボDA説明", locale)} id={"tooltip-masterbonus-da-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("マスボDA", locale)}<span className="input-suggest">*</span>
+                                {intl.translate("マスボDA", locale)}
                             </th>
                             <td>
                                 <InputGroup>
@@ -496,7 +496,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("マスボTA説明", locale)} id={"tooltip-masterbonus-ta-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("マスボTA", locale)}<span className="input-suggest">*</span>
+                                {intl.translate("マスボTA", locale)}
                             </th>
                             <td>
                                 <InputGroup>
@@ -511,7 +511,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("マスボダメ上限説明", locale)} id={"tooltip-masterbonus-damagelimit-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("マスボダメ上限", locale)}<span className="input-suggest">*</span>
+                                {intl.translate("マスボダメ上限", locale)}
                             </th>
                             <td>
                                 <InputGroup>
@@ -531,7 +531,7 @@ var Profile = CreateClass({
                     </tr>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}<span className="input-suggest">*</span></th>
+                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.zenithAttackBonus}
                                          onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl>
                         </td>
@@ -553,7 +553,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("LB DAの説明", locale)} id={"tooltip-da-zenith-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("LB DA", locale)}<font color="#ffff00">*</font></th>
+                            <th className="bg-primary">{intl.translate("LB DA", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithDABonus}
                                              onChange={this.handleSelectEvent.bind(this, "zenithDABonus")}> {this.props.zenithDABonuses[locale]} </FormControl>
                             </td>
@@ -562,7 +562,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("LB TAの説明", locale)} id={"tooltip-ta-zenith-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("LB TA", locale)}<font color="#ffff00">*</font></th>
+                            <th className="bg-primary">{intl.translate("LB TA", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithTABonus}
                                              onChange={this.handleSelectEvent.bind(this, "zenithTABonus")}> {this.props.zenithTABonuses[locale]} </FormControl>
                             </td>
@@ -571,7 +571,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("LB ダメージ上限UPの説明", locale)} id={"tooltip-ta-zenith-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("LB ダメージ上限UP", locale)}<font color="#ffff00">*</font></th>
+                            <th className="bg-primary">{intl.translate("LB ダメージ上限UP", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithDamageLimitBonus}
                                              onChange={this.handleSelectEvent.bind(this, "zenithDamageLimitBonus")}> {this.props.zenithDamageLimitBonuses[locale]} </FormControl>
                             </td>
@@ -580,7 +580,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("LB 奥義の説明", locale)} id={"tooltip-ougidamage-zenith-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("LB 奥義", locale)}<font color="#ffff00">*</font></th>
+                            <th className="bg-primary">{intl.translate("LB 奥義", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithOugiDamageBonus}
                                              onChange={this.handleSelectEvent.bind(this, "zenithOugiDamageBonus")}> {this.props.zenithOugiDamageBonuses[locale]} </FormControl>
                             </td>
@@ -648,7 +648,7 @@ var Profile = CreateClass({
 
                     <tr>
                         <td colSpan="2">
-                            <strong>{intl.translate("パーティバフタイトル", locale)}</strong>
+                            <strong>{intl.translate("パーティバフタイトル", locale)}</strong><span className="input-suggest">*</span>
                             <p>{intl.translate("パーティバフ説明", locale)}</p>
                         </td>
                     </tr>
@@ -866,7 +866,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("防御デバフ合計説明", locale)} id={"tooltip-defense-debuff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}</th>
+                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}<span className="input-suggest">*</span></th>
                                 <td>
                                     <InputGroup>
                                         <FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
