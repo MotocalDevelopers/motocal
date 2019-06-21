@@ -316,6 +316,27 @@ var multiLangData = {
         "ja": "与ダメージ上昇効果。虚空斧奥義(10000)など。",
         "zh": "DMG Boosted status effect. Hollowsky Axe's C.A. (10000), etc.",
     },
+    "奥義ダメージバフ": {
+        "en": "C.A. DMG Buff",
+        "ja": "奥義ダメージバフ",
+        "zh": "C.A. DMG Buff",
+    },
+    "奥義ゲージ上昇量バフ": {
+        "en": "Charge Bar Speed UP Buff",
+        "ja": "奥義ゲージ上昇量バフ",
+        "zh": "Charge Bar Speed UP Buff",
+    },
+    "ダメージ上限バフ": {
+        "en": "DMG Cap Buff",
+        "ja": "ダメージ上限バフ",
+        "zh": "DMG Cap Buff",
+    },
+    "奥義ダメージ上限バフ": {
+        "en": "C.A. DMG Buff",
+        "ja": "奥義ダメージ上限バフ",
+        "zh": "C.A. DMG Buff",
+    },
+	
     "与ダメージ上昇": {
         "en": "Damage UP ",
         "ja": "与ダメージ上昇",
@@ -348,7 +369,7 @@ var multiLangData = {
     },
     "奥義ゲージ上昇量": {
         "en": "Charge Bar Buff", //a.k.a: ougiGageBuff
-        "ja": "奥義ゲージ\n上昇量",
+        "ja": "奥義ゲージ上昇量",
         "zh": "奥义槽上升量",
     },
     "奥義ゲージ上昇率アップ": {
@@ -358,7 +379,7 @@ var multiLangData = {
     },
     "奥義ゲージ上昇率アップ説明": {
         "en": "Used on the expected turn damage calculation.",
-        "ja": "攻撃回数に応じた奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
+        "ja": "攻撃等の奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
         "zh": "影响奥义槽上升量。在预想DPT计算中有用到。",
     },
     "チェインダメージアップ": {
@@ -387,18 +408,18 @@ var multiLangData = {
         "zh": "奥义伤害上限上升",
     },
     "奥義ダメージ上限アップ説明": {
-        "en": "It is used to calc the Ougi damage.",
+        "en": "It is used to calc the C.A damage.",
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
 	},
     "奥義ゲージ上昇奥義": {
         "en": "Charge Boost C.A.",
-        "ja": "奥義ゲージ上昇奥義",
+        "ja": "奥義時の奥義ゲージ上昇効果",
         "zh": "Charge Boost C.A.",
     },
     "奥義ゲージ上昇奥義説明": {
         "en": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
-        "ja": "奥義ゲージ最大値を効果分マイナスします(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
+        "ja": "奥義ゲージ最大値を効果分マイナスして擬似的に再現します(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
         "zh": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
 	},
     "Advanced": {
@@ -794,13 +815,13 @@ var multiLangData = {
         "zh": "基础TA率",
     },
     "パーティバフタイトル": {
-        "en": "Buff for Party (Percentage)",
-        "ja": "パーティ全体へのバフ等 (%表記)",
-        "zh": "全队Buff (百分比)",
+        "en": "Buff for Party",
+        "ja": "パーティ全体へのバフ等",
+        "zh": "全队Buff",
     },
     "パーティバフ説明": {
-        "en": "Input buffs for a party.",
-        "ja": "パーティメンバ全体にかかるバフ等の情報を入力してください",
+        "en": "Input buffs for a party.(There is no Duration and it will be reflected permanently.)",
+        "ja": "パーティメンバー全体にかかるバフ等の情報を入力してください。(効果ターンはなく永続的に反映されます)",
         "zh": "输入全队Buff",
     },
     "保存済みリスト名説明": {

@@ -412,27 +412,27 @@ var Profile = CreateClass({
                                 </td>
                             </tr>,
                             <tr key="personalOugiDamageBuff">
-                                <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                                <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageBuff}
                                                              onChange={this.handleSelectEvent.bind(this, "personalOugiDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="personalOugiGageBuff">
-                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇量バフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiGageBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="personalDamageLimit">
-                                <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
+                                <th className="bg-primary">{intl.translate("ダメージ上限バフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalDamageLimitBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalDamageLimitBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="personalOugiDamageLimit">
-                                <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
+                                <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageLimitBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiDamageLimitBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
@@ -648,7 +648,7 @@ var Profile = CreateClass({
 
                     <tr>
                         <td colSpan="2">
-                            <strong>{intl.translate("パーティバフタイトル", locale)}</strong><span className="input-suggest">*</span>
+                            <strong>{intl.translate("パーティバフタイトル", locale)}</strong>
                             <p>{intl.translate("パーティバフ説明", locale)}</p>
                         </td>
                     </tr>
@@ -756,7 +756,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
                                      id={"tooltip-ougidamagebuff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                            <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiDamageBuff}
@@ -795,7 +795,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇率アップ説明", locale)}
                                      id={"tooltip-ougigagebuff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                            <th className="bg-primary">{intl.translate("奥義ゲージ上昇量バフ", locale)}</th>
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiGageBuff}
@@ -823,7 +823,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("ダメージ上限アップ説明", locale)}
                                      id={"tooltip-damage-limit-buff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
+                            <th className="bg-primary">{intl.translate("ダメージ上限バフ", locale)}</th>
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.damageLimitBuff}
@@ -837,7 +837,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
                                      id={"tooltip-ougi-damage-limit-buff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
+                            <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiDamageLimitBuff}
