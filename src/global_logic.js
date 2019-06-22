@@ -711,7 +711,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         
         var ougiDamageUP = (1.0 + ougiDamageSkill) * (1.0 + ougiDamageExceptSkill) - 1.0;
         
-        //It's not additional damage(such as Yodarha).
+        // NOT plain additional damage such as Yodarha (SRR)
         var ougiFixedDamage = calcOugiFixedDamage(key);
 
         var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
