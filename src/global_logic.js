@@ -254,6 +254,7 @@ module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, critica
 function calcOugiFixedDamage(key) {
     return (key == "Djeeta") ? 3000 : 2000;
 }
+module.exports.calcOugiFixedDamage = calcOugiFixedDamage;
 
 module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, enemyResistance, chainDamageUP, chainDamageLimitUP) {
     if (chainNumber <= 1) return 0.0;

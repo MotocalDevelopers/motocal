@@ -1,4 +1,10 @@
-var {getTypeBonus, calcDefenseDebuff, calcLBHaisuiValue, isDarkOpus} = require('./global_logic.js');
+const {
+    getTypeBonus,
+    calcDefenseDebuff,
+    calcLBHaisuiValue,
+    isDarkOpus,
+    calcOugiFixedDamage
+} = require('./global_logic.js');
 
 describe('#getTypeBonus', () => {
     test('when self element and enemy element is not set, type bonus is 1', () => {
@@ -107,6 +113,7 @@ describe('#calcLBHaisui', () => {
     });
 });
 
+
 describe('#isDarkOpus', () => {
     test('Checking Dark Opus arm', () => {
         expect(isDarkOpus({"name": "絶対否定の剣"})).toBeTruthy();
@@ -136,4 +143,18 @@ describe('#isDarkOpus', () => {
         expect(isDarkOpus({"name": "Staff of epudiation"})).toBeFalsy();
     });
 
+});
+
+describe('#calcOugiFixedDamage', () => {
+    test('ougi fixed damage for Djeeta is 3000', () => {
+        expect(calcOugiFixedDamage("Djeeta")).toBe(3000);
+    });
+
+    test('ougi fixed damage for others is 2000', () => {
+        expect(calcOugiFixedDamage("test")).toBe(2000);
+    });
+
+    test('ougi fixed damage for empty key is 2000', () => {
+        expect(calcOugiFixedDamage("")).toBe(2000);
+    });
 });
