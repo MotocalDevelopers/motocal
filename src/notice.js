@@ -21,6 +21,10 @@ var Notice = CreateClass({
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
                     <ChangeLog className="list-group" length={10} step={20} buttonText={intl.translate("次の{step}件を表示", locale)}>
 
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190618-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190617-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190615-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190608-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190606-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190528-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190518-1", locale)}</li>
@@ -213,19 +217,20 @@ var Notice = CreateClass({
 
                 <h3>Tips</h3>
                     <li className="list-group-item list-group-item-info">メイン武器等1本は必ず入れたい武器がある時は最小本数を入力して下さい。</li>
-                    <li className="list-group-item list-group-item-info">スキル効果は上部「表示する項目を選択」 → 「キャラ情報・スキル合計値」 → 「スキル合計」で確認できます。(加護適応済みの値)</li>
-                    <li className="list-group-item list-group-item-info">奥義編成の理想を知りたい場合は、ジータタブ「より細かい設定」からチェイン数4選択後、編成一覧上の優先項目から「奥義+チェンバダメージ」を選択して下さい。</li>
+                    <li className="list-group-item list-group-item-info">スキル効果は上部「表示する項目を選択」 → 「キャラ情報・スキル合計値」 → 「スキル合計」で確認できます。(加護適応済みの値)(バフ・サポアビも含む)</li>
+                    <li className="list-group-item list-group-item-info">奥義編成の理想を知りたい場合は、ジータタブ「より細かい設定」からチェイン数4選択後、編成一覧上の「優先項目」から「奥義+チェンバダメージ」を選択して下さい。</li>
                     <li className="list-group-item list-group-item-info">上部「背水渾身グラフを開く」を選択するには、その前に編成右側からグラフ「追加」を選択する必要があります。</li>
 
                 <h3>注記</h3>
                 <ul className="list-group">
-                    <li className="list-group-item list-group-item-info">情報求: Rank200辺りからの基礎攻撃力計算式、キャラの基礎連撃率(現在対応済リストは<a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a>の100行辺りから。デフォルト値はDA7%,TA3%)、グラブルの各種計算式まとめ。</li>
-                    <li className="list-group-item list-group-item-info">未対応: ゲージ200%キャラ、バフの効果ターン・リキャスト、経過ターンで増減するスキル、虚空武器の与ダメージ上昇効果。</li>
+                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">情報求:</font> 武器やキャラのステータスズレ、Rank200辺りからの基礎攻撃力増加量、キャラの基礎連撃率(現在対応済リストは<a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a>の100行辺りから。デフォルト値はDA7%,TA3%)、各種計算式の検証データ。</li>
+                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">未対応:</font> ゲージ200%キャラ、バフの効果ターン・リキャスト、経過ターンで増減するスキル、多数の英雄武器の効果。</li>
                     <li className="list-group-item list-group-item-info">編成データを読み込むとホワイトアウトしてしまう場合があります。恐らく仕様変更が原因なので、新しく編成を作り直すか対策パッチをお待ち下さい。</li>
+                    <li className="list-group-item list-group-item-info">乱数や技巧によるブレがあるため、実際のダメージとは多少異なる可能性があります。</li>
                     <li className="list-group-item list-group-item-info">キャラの基礎連撃率やサポアビ等が追加されても既存の編成データは自動で更新されません。キャラの入れ直しをお願いします。</li>
-                    <li className="list-group-item list-group-item-info">基本的に考えうる全ての編成のデータを計算しますが、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。(計算量削減のため)</li>
+                    <li className="list-group-item list-group-item-info">基本的に考えうる全ての武器編成パターンを計算しますが、計算数が1024通りを超えた場合は合計本数10本の編成のみ算出・比較します。(計算量削減のため)</li>
                     <li className="list-group-item list-group-item-info">パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用)</li>
-                    <li className="list-group-item list-group-item-info">スキル効果表示「別枠バフ」は複数ある場合乗算後の数字が出てきます。</li>
+                    <li className="list-group-item list-group-item-info">別枠バフが複数ある場合、スキル効果表示には乗算後の値が出てきます。</li>
                     <li className="list-group-item list-group-item-info">弱体耐性率は目安です。あまり参考にしないで下さい。</li>
                     <li className="list-group-item list-group-item-info">"パーティ平均〇〇"にはSubに配置したキャラも含まれます。</li>
                 </ul>
@@ -317,7 +322,7 @@ var Notice = CreateClass({
                         href="https://twitter.com/search?f=tweets&q=from%3A%40agavenighto%20%E6%A4%9C%E8%A8%BC&src=typd" target="_blank"> @agavenighto さんの方陣破壊(小)、方陣乱舞(中)検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://twitter.com/agavenighto/status/1091626790714404865" target="_blank"> 神ゲー攻略 - 防御値の解説と敵の防御値一覧  </a>
+                        href="https://twitter.com/Hecate_mk2/status/1119458102934269953" target="_blank"> @Hecate_mk2 さんの防御値一覧 </a>
                     </li>
                     <li className="list-group-item"><a
                         href="https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968" target="_blank"> ポキールさんのグラブル検証置き場 - 奥義性能 </a>
@@ -326,16 +331,19 @@ var Notice = CreateClass({
                         href="https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/" target="_blank"> Gamewithさんの諸々のスキル効果量検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="http://gbf-verification.blog.jp/" target="_blank"> グラブル検証Logさんの諸々のスキル効果量検証結果 </a>
+                        href="http://gbf-verification.blog.jp/" target="_blank"> グラブル検証Logさんの諸々の検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
                         href="https://twitter.com/Hecate_mk2" target="_blank"> @Hecate_mk2 さんの諸々の検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
-                        href="https://docs.google.com/spreadsheets/d/1SUhqwiq3UC7ba7jh22s0mhHJ_33Zi443aRywe-CmURQ/edit#gid=321585253" target="_blank"> スフレさんの背水・渾身検証結果 </a>
+                        href="https://docs.google.com/spreadsheets/d/1SUhqwiq3UC7ba7jh22s0mhHJ_33Zi443aRywe-CmURQ/edit#gid=321585253" target="_blank"> スフレさんのLB背水・渾身検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
                         href="https://twitter.com/i/moments/1040200666260459520" target="_blank"> @Duran_grablu さんの方陣技巧検証結果 </a>
+                    </li>
+                    <li className="list-group-item"><a
+                        href="https://twitter.com/CryingOfLot307/status/1134475816065069056" target="_blank"> @CryingOfLot307 さんの技巧中Slv15検証結果 </a>
                     </li>
                     <li className="list-group-item"><a
                         href="https://twitter.com/search?f=tweets&q=from%3A%40usa_akasa%20%E6%A4%9C%E8%A8%BC&src=typd" target="_blank"> @usa_akasa さんの基礎連撃率検証結果 </a>
@@ -1117,11 +1125,11 @@ var Notice = CreateClass({
                             <td>4.6</td>
                             <td>4.8</td>
                             <td>5.0</td>
-                            <td>5.2</td>
-                            <td>5.4</td>
+                            <td>5.3</td>
                             <td>5.6</td>
-                            <td>5.8</td>
-                            <td>6.0</td>
+                            <td>5.9</td>
+                            <td>6.2</td>
+                            <td>6.5</td>
                         </tr>
                         <tr>
                             <td>技巧(大)</td>
