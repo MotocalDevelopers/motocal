@@ -831,7 +831,7 @@ var multiLangData = {
     "弱い編成を隠す": {
         "en": "Hide Weaker Grids",
         "ja": "弱い編成を隠す",
-        "zh": "弱い編成を隠す"
+        "zh": "Hide Weaker Grids"
     },
     "ジータさんのみ": {
         "en": "(Player only)",
