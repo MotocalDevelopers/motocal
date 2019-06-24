@@ -69,15 +69,28 @@ module.exports.isHollowsky = function (arm) {
 };
 
 /**
- * This function aims to remove all combinations that has no chance to be top dps henceforth saving processing time
- * @param combinations
- * @param maxSize
- * @param ruleMaxSize Eliminate any grid that doesn't reach maximum weapon possible for given weapon list
+ * Add and returns sum of numbers in array
+ * @param {number[]} arr array contains numbers
+ * @param {number} total sum of numbers in array
+ * @returns {number} sum of array
  */
-const filterCombinations = function (combinations, maxSize, ruleMaxSize = true) {
+module.exports.sum = (arr, total = 0) => {
+    for (const num of arr) {
+        total += parseInt(num);
+    }
+    return total;
+};
+
+/**
+ * This function aims to remove all combinations that has no chance to be top dps henceforth saving processing time
+ * @param {Array<number[]>} combinations all possible combinations
+ * @param {number} maxSize desired size of a combination
+ * @param {boolean} ruleMaxSize Eliminate any grid that doesn't reach maximum weapon possible for given weapon list
+ * @returns {Array<number[]>} filtered combinations
+ */
+module.exports.filterCombinations = function (combinations, maxSize, ruleMaxSize = true) {
     if (ruleMaxSize) {
-        let reducer = (accumulator, currentValue) => accumulator + currentValue;
-        combinations = combinations.filter(combination => combination.reduce(reducer) === maxSize);
+        combinations = combinations.filter(combination => module.exports.sum(combination) === maxSize);
     }
     return combinations;
 };
@@ -152,7 +165,7 @@ module.exports.calcCombinations = function (arml, ruleMaxSize) {
         }
         index = module.exports.proceedIndex(index, armNumArray, 0)
     }
-    return filterCombinations(combinations, maxSize, ruleMaxSize);
+    return module.exports.filterCombinations(combinations, maxSize, ruleMaxSize);
 };
 
 module.exports.getTypeBonus = function (self_elem, enemy_elem) {
