@@ -9,6 +9,7 @@ addons:
   sonarcloud:
     organization: "orkunkocyigit-github"
 before_install:
+  - "git fetch --unshallow --quiet"
   - "nvm install $NODE_VERSION"
   - "npm update -g npm"
   - "npm ci"
