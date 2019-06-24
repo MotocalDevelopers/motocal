@@ -5,11 +5,12 @@ dist: trusty
 env:
   - NODE_VERSION="8"
 sudo: required
+git:
+  depth: false
 addons:
   sonarcloud:
     organization: "orkunkocyigit-github"
 before_install:
-  - "git fetch --unshallow --quiet"
   - "nvm install $NODE_VERSION"
   - "npm update -g npm"
   - "npm ci"
