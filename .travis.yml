@@ -1,8 +1,17 @@
-language: node_js
-node_js:
-  - 8
-before_install:
-  - "npm update -g npm"
-script:
-  - npm test
-  - npm run production-build
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - 8
+      before_install:
+        - "npm update -g npm"
+      script:
+        - npm run production-build
+    - language: java
+      dist: trusty
+      addons:
+        sonarcloud:
+          organization: orkunkocyigit-github
+      script:
+        - npm test
+        - sonar-scanner
