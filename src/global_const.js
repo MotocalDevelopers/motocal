@@ -2151,8 +2151,7 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0
     },
-//NEW re-order later
-    "aegisUP_30": { //Lancelot_and_Vane, 護国の双肩
+    "aegisUP_30": {
         "name": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
         "type": "aegisUP",
         "range": "own",
@@ -2182,7 +2181,7 @@ var supportAbilities = {
         "range": "wind",
         "value": 0.30
     },
-    "element_buff_boost_wind_15": { //kokkoro, 精霊の啓示
+    "element_buff_boost_wind_15": {
         "name": "味方全体の強化効果「風属性攻撃UP」の効果15%UP。(コッコロ)",
         "type": "element_buff_boost",
         "range": "wind",
@@ -2206,7 +2205,7 @@ var supportAbilities = {
         "range": "all",
         "value": 0.30
     },
-    "element_buff_boost_own_30_ca_specs_20": { //Aglovale, 覇者の風格
+    "element_buff_boost_own_30_ca_specs_20": {
         "name": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)。(アグロヴァル)",
         "type": "element_buff_boost_own_30_ca_specs_20",
         "range": "own",
@@ -2214,7 +2213,7 @@ var supportAbilities = {
         "ougiDamageBuff": 0.20,
         "ougiDamageLimitBuff": 0.20,
     },
-    "matatsu_to_no_kizuna": { //Heles_(Wind), 真龍との絆
+    "matatsu_to_no_kizuna": {
         "name": "属性攻撃UPが付与されている時、自分の攻撃UPと奥義性能UP(ダメージと上限20%)。(ヘルエス(風属性ver))",
         "type": "matatsu_to_no_kizuna",
         "range": "own",
@@ -2223,7 +2222,7 @@ var supportAbilities = {
         "ougiDamageBuff": 0.20,
         "ougiDamageLimitBuff": 0.20,
     },
-    "mamoritai_kono_egao": { //yaia. 護りたい、この笑顔
+    "mamoritai_kono_egao": {
         "name": "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)",
         "type": "mamoritai_kono_egao",
         "range": "others",
@@ -2231,13 +2230,13 @@ var supportAbilities = {
         "attackRatio": 0.20,
         "normalBuff": 0.05,
     },
-    "fumetsu_no_mikiri": { //beato, 不滅の見切り
+    "fumetsu_no_mikiri": {
         "name": "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))",
         "type": "fumetsu_no_mikiri",
         "range": "own",
         "value": 0.0,
     },
-    "chikara_atsu_no_ha": { //sturm, 力圧の刃
+    "chikara_atsu_no_ha": {
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
         "range": "own",
@@ -2245,7 +2244,7 @@ var supportAbilities = {
         "additionalDamageDA": 0.3,
         "additionalDamageTA": 0.0,
     },
-    "Revion_kishi_sanshimai": { //Levin_Sisters, レヴィオン騎士三姉妹
+    "Revion_kishi_sanshimai": {
         "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
         "range": "own",
@@ -2253,24 +2252,24 @@ var supportAbilities = {
         "additionalDamageDA": 0.0,
         "additionalDamageTA": 0.15,
     },
-    "element_buff_boost_damageUP_own_10": { //olivia, 堕天司
+    "element_buff_boost_damageUP_own_10": {
         "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
         "type": "element_buff_boost_damageUP_own_10",
         "range": "own",
         "value": 0.10,
     },
-    "tousou_no_chishio": { //ayer, 闘争の血潮
+    "tousou_no_chishio": {
         "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
         "type": "tousou_no_chishio",
         "range": "own",
     },
-    "critical_cap_up_light_3": { //silva, スポッター
+    "critical_cap_up_light_3": {
         "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
         "type": "critical_cap_up",
         "range": "light",
         "value": 0.03,
     },
-    "critical_cap_up_own_10": { // Eugen_(Grand), ヘッドショット
+    "critical_cap_up_own_10": {
         "name": "クリティカル発動時にダメージ上限10%UP。(オイゲン(リミテッドver))",
         "type": "critical_cap_up",
         "range": "own",
