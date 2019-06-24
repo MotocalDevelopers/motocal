@@ -2798,13 +2798,13 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     // Because the character formation is unchanged every weapon organization, it can be calculated earlier
     var charaHaisuiBuff = [];
     for (let k = 0; k <= 100; k++) {
-        let charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * (k));
+        let charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * k);
         charaHaisuiBuff.push(charaHaisuiValue);
     }
 
     var normalSupportKonshin = [];
     for (let k = 0; k <= 100; k++) {
-        let normalSupportKonshinValue = module.exports.recalcNormalSupportKonshin(chara, 0.01 * (k));
+        let normalSupportKonshinValue = module.exports.recalcNormalSupportKonshin(chara, 0.01 * k);
         normalSupportKonshin.push(normalSupportKonshinValue);
     }
 
@@ -2867,7 +2867,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 var lbHaisuiBuff = [],
                     lbKonshinBuff = [];
                 for (let k = 0; k <= 100; k++) {
-                    let hp = 0.01 * (k);
+                    let hp = 0.01 * k;
                     let exlbHaisuiValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", onedata[key].exlbHaisui, hp);
                     let exlbKonshinValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", onedata[key].exlbKonshin, hp);
                     lbHaisuiBuff.push(exlbHaisuiValue);
