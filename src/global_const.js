@@ -1841,6 +1841,7 @@ var supportAbilities = {
         "range": "all",
         "value": 0.10
     },
+    // ID is not changed for compatibility of save data.
     "ta_up_all_3": {
         "name": "全体TA率5%UP(ネツァ)",
         "type": "TABuff",
