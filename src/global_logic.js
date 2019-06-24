@@ -620,7 +620,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         } else {
                 var criticalArray = {};
                 var criticalRatio = 1.0;
-            }
         }
         //Enemy (Elemental) Resistance if not superior element.
         var enemyResistance = totals[key]["typeBonus"] == 1.5 ? 0 : Math.max(0, Math.min(1.0, 0.01 * parseFloat(prof.enemyResistance)));
