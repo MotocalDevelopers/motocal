@@ -246,7 +246,7 @@ var Profile = CreateClass({
         }
         if (e.target.type === "checkbox") {
             newState[key] = e.target.checked;
-            if (key.toLocaleString().toLowerCase().includes("rule")) {
+            if (key.toLowerCase().includes("rule")) {
                 newState.filterOptionsChanged = true;
             }
         }
@@ -935,9 +935,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("弱いを隠す", locale)} id={"tooltip-hide-grids"}>
+                    <TextWithTooltip tooltip={intl.translate("弱い編成を隠す", locale)} id={"tooltip-hide-grids"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("弱いを隠す", locale)}</th>
+                            <th className="bg-primary">{intl.translate("弱い編成を隠す", locale)}</th>
                             <td>
                                 <Checkbox inline checked={this.state.ruleMaxSize}
                                           onChange={this.handleSelectEvent.bind(this, "ruleMaxSize")}>
