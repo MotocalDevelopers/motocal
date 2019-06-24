@@ -606,7 +606,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray, EXLBCriticalArray, normalOtherCriticalBuffArray, totals[key]["criticalBuff"], buff["criticalBuff"]);
             var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon);
             var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
-        } else if (prof.enemyElement == "non-but-critical") {
+        } else if (prof.enemyElement == "non-but-critical" || prof.retsujitsuNoRakuen) {
             // Processing in the case of "Non (with critical)"
             var damageUP = 0.0;
 
@@ -618,18 +618,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon);
             var criticalRatio = module.exports.calcCriticalRatio(criticalArray);
         } else {
-            var damageUP = 0.0;
-            if (prof.retsujitsuNoRakuen) {
-                var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
-                var EXLBCriticalArray = getEXLBCriticalArray(totals[key]["EXLB"]["Critical"]);
-                var normalOtherCriticalBuffArray = totals[key]["normalOtherCriticalBuff"];
-                var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray, EXLBCriticalArray, normalOtherCriticalBuffArray, totals[key]["criticalBuff"], buff["criticalBuff"]);
-
-                var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon);
-                var criticalRatio = module.exports.calcCriticalRatio(criticalArray);
-            } else {
                 var criticalArray = {};
-                var criticalRatio = 1.0
+                var criticalRatio = 1.0;
             }
         }
         //Enemy (Elemental) Resistance if not superior element.
