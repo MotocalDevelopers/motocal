@@ -12,12 +12,12 @@ var multiLangData = {
         "zh": "支持制作者",
     },
     "メイン装備yes": {
-        "en": "main",
+        "en": "Main",
         "ja": "メイン武器である",
         "zh": "是主手武器",
     },
     "メイン装備no": {
-        "en": "not main",
+        "en": "Sub",
         "ja": "メイン武器ではない",
         "zh": "不是主手武器",
     },
@@ -306,6 +306,16 @@ var multiLangData = {
         "ja": "通常攻撃に割合分の追加ダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)、パラゾ(15%)など。",
         "zh": "视作追加伤害，额外加在伤害上。用在预想DPT的计算中。",
     },
+    "supplementalDamageBuff": {
+        "en": "Supplemental Damage Buff",
+        "ja": "与ダメージ上昇効果バフ",
+        "zh": "Supplemental Damage Buff",
+    },
+    "supplementalDamageBuff-tooltip": {
+        "en": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
+        "ja": "与ダメージ上昇効果。ロゼッタ（リミテッド）のアイアン・メイデン(5000)、虚空の晶塊の奥義(10000)など。",
+        "zh": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
+    },
     "与ダメージ上昇": {
         "en": "Damage UP ",
         "ja": "与ダメージ上昇",
@@ -352,7 +362,7 @@ var multiLangData = {
         "zh": "影响奥义槽上升量。在预想DPT计算中有用到。",
     },
     "チェインダメージアップ": {
-        "en": "Chain Damage UP", //a.k.a: chainDamageUP
+        "en": "Chain DMG UP", //a.k.a: chainDamageUP
         "ja": "チェインダメージUP",
         "zh": "チェイン义伤害上升",
     },
@@ -367,7 +377,7 @@ var multiLangData = {
         "zh": "通常攻击伤害的计算中有用到。",
     },
     "チェインダメージ上限アップ": {
-        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
+        "en": "Chain DMG Cap",  //a.k.a: chainDamageLimit
         "ja": "チェインダメージ上限UP",
         "zh": "链义伤害上限上升",
     },
@@ -375,11 +385,6 @@ var multiLangData = {
         "en": "C.A. DMG Cap", //a.k.a: ougiDamageLimit
         "ja": "奥義ダメージ\n上限",
         "zh": "奥义伤害上限上升",
-    },
-    "チェインダメージ上限アップ": {
-        "en": "Chain Damage Cap",  //a.k.a: chainDamageLimit
-        "ja": "チェインダメージ上限UP",
-        "zh": "链义伤害上限上升",
     },
     "奥義ダメージ上限アップ説明": {
         "en": "It is used to calc the Ougi damage.",
@@ -396,6 +401,16 @@ var multiLangData = {
         "ja": "奥義ゲージ最大値を効果分マイナスします(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
         "zh": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
 	},
+    "高揚": {
+        "en": "Uplift",
+        "ja": "高揚",
+        "zh": "Uplift",
+    },
+    "高揚説明": {
+        "en": "Increase charge bar each turn. True Purity Sunblade C.A.(10%) and likes-",
+        "ja": "毎ターン奥義ゲージが上昇する状態。真・道天浄土の奥義(10%)など",
+        "zh": "Increase charge bar each turn. True Purity Sunblade C.A.(10%) and likes-",
+    },
     "Advanced": {
         "en": "Advanced Settings",
         "ja": "より細かい設定",
@@ -425,6 +440,16 @@ var multiLangData = {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
+    },
+    "敵非有利耐性": {
+        "en": "Enemy Resistance",
+        "ja": "敵非有利耐性",
+        "zh": "Enemy Resistance",
+    },
+    "敵非有利耐性説明": {
+        "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
+        "ja": "敵の非有利属性時に生じる耐性を設定します。古戦場HELL(50%)など。",
+        "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
     },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
@@ -1233,6 +1258,56 @@ var multiLangData = {
         "ja": "標準偏差",
         "zh": "标准差",
     },
+    "与ダメージ上昇効果のソース": {
+        "en": "Supplemental Damage Source",
+        "ja": "与ダメージ上昇効果のソース",
+        "zh": "Supplemental Damage Source",
+    },
+    "合計": {
+        "en": "Total",
+        "ja": "合計",
+        "zh": "Total",
+    },
+    "ダメージ": {
+        "en": "Damage (incl. Damage UP and Enemy Resistance)",
+        "ja": "ダメージ  (与ダメージ上と敵非有利耐性昇を含むいる)",
+        "zh": "伤害 (incl. Damage UP and Enemy Resistance)",
+    },
+    "サポアビ": {
+        "en": "Support Ability",
+        "ja": "サポアビ",
+        "zh": "Support Ability",
+    },
+    "supplemental_other": { //left empty intentionally
+        "en": "",
+        "ja": "",
+        "zh": "",
+    },
+    "supplemental_hp_based": { //left empty intentionally
+        "en": "",
+        "ja": "",
+        "zh": "",
+    },
+    "supplemental_third_hit": {
+        "en": " (Applies to third hit)",
+        "ja": " (3回目の攻撃に)",
+        "zh": " (Applies to third hit)",
+    },
+    "supplemental_on_critical": {
+        "en": " (Applies to critical hit, {value}%)",
+        "ja": " (クリティカル攻撃に、 {value}%)",
+        "zh": " (Applies to critical hit, {value}%)",
+    },
+    "supplemental_boss_debuff_based": {
+        "en": " (Enemy Debuff: {value})",
+        "ja": " (敵の弱体効果: {value})",
+        "zh": " (Enemy Debuff: {value})",
+    },
+    "supplemental_djeeta_buff_based": {
+        "en": " (Djeeta Buff: {value})",
+        "ja": " (ジータのバフ: {value})",
+        "zh": " (Djeeta Buff: {value})",
+    },
     "四人合計値": {
         "en": "x4",
         "ja": "x四人",
@@ -1779,7 +1854,7 @@ var multiLangData = {
         "zh": "Harvin",
     },
     "星晶獣": {
-        "en": "Seisho",
+        "en": "Primal",
         "ja": "星晶獣",
         "zh": "星晶兽",
     },
@@ -2004,6 +2079,21 @@ var multiLangData = {
         "en": "Subject to all specialty weapon-, style-, and race-related weapon skills. (Caim)",
         "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
         "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
+    },
+    "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "15% boost to all allies ATK based on how high character HP is (various)",
+        "ja": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+    },
+    "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "Has 15% less HP. %15 boost to all allies' ATK based on how high character HP is (various)",
+        "ja": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
+    },
+    "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)": {
+        "en": "50,000 Supplemental DMG to the third hit of triple attacks. (Hallessena)",
+        "ja": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
+        "zh": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
     },
     // sort keys
     "攻撃力(二手技巧無し,ジータさんのみ)": {
@@ -2952,6 +3042,31 @@ var multiLangData = {
         "ja": "アーカーシャ-槍",
         "zh": "アーカーシャ-槍",
     },
+    "不壊の誓約": {
+        "en": "Impervious Covenant",
+        "ja": "不壊の誓約",
+        "zh": "不壊の誓約",
+    },
+    "凱歌の誓約": {
+        "en": "Victorious Covenant",
+        "ja": "凱歌の誓約",
+        "zh": "凱歌の誓約",
+    },
+    "修羅の誓約": {
+        "en": "Contentious Covenant",
+        "ja": "修羅の誓約",
+        "zh": "修羅の誓約",
+    },
+    "致命の誓約": {
+        "en": "Deleterious Covenant",
+        "ja": "致命の誓約",
+        "zh": "致命の誓約",
+    },
+    "災禍の誓約": {
+        "en": "Calamitous Covenant",
+        "ja": "災禍の誓約",
+        "zh": "災禍の誓約",
+    },
     "ペンデュラム[α]": {
         "en": "Pendulum Key α",
         "ja": "ペンデュラム[α](通常上限10%UP)",
@@ -3011,6 +3126,16 @@ var multiLangData = {
         "en": "Huanglong spear (main)",
         "ja": "黄龍槍 (メイン装備時)",
         "zh": "Huanglong spear (main)",
+    },
+    "ケルヴィム (メイン装備時)": {
+        "en": "Cherubim Lance (main)",
+        "ja": "ケルヴィム (メイン装備時)",
+        "zh": "ケルヴィム (メイン装備時)",
+    },
+    "真・道天浄土 (メイン装備時)": {
+        "en": "True Purity Sunblade (main)",
+        "ja": "真・道天浄土 (メイン装備時)",
+        "zh": "真・道天浄土 (メイン装備時)",
     },
     "奥義上限UP(イクシード)": {
         "en": "C.A. Cap UP (Exceed)",  //a.k.a:ougiDamageLimitByExceed
@@ -3328,6 +3453,16 @@ var multiLangData = {
         "en": "If you added Angel's weapon in your grid, set the sort key to that based on \'Damage\'.",
         "ja": "天司武器入りで計算する場合、優先項目をダメージベースのものに設定してください.",
         "zh": "把天司武器加入计算的时候，请选择基于伤害的优先项目。",
+    },
+    "敵の弱体効果": {
+        "en": "Number of Debuffs (on target)",
+        "ja": "敵の弱体効果の数",
+        "za": "敵の弱体効果の数",
+    },
+    "ジータバフの数": {
+        "en": "Number of Buffs (on Djeeta)",
+        "ja": "バフの数（ジータ）",
+        "za": "バフの数（ジータ）",
     },
     "広告": {
         "en": "Ad.",
@@ -3787,6 +3922,6 @@ module.exports.translate = function (key, locale) {
 
         return multiLangData[key][locale];
     } catch (e) {
-        console.error("Error! Key " + key + "for language " + locale + " not found")
+        console.error("Error! Key " + key + " for language " + locale + " not found")
     }
 };

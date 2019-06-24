@@ -183,9 +183,11 @@ var Profile = CreateClass({
             otherBuff: 0,
             otherBuff2: 0,
             additionalDamageBuff: 0,
+            supplementalDamageBuff: 0,
             damageLimitBuff: 0.0,
             ougiDamageLimitBuff: 0.0,
             ougiGageUpOugiBuff: 0.0,
+            uplift: 0,
             hpBuff: 0,
             daBuff: 0,
             taBuff: 0,
@@ -194,6 +196,7 @@ var Profile = CreateClass({
             enemyElement: "wind",
             enemyDefense: 10.0,
             defenseDebuff: 0.0,
+            enemyResistance: 0.0,
             job: "none",
             sex: "female",
             element: "fire",
@@ -208,10 +211,12 @@ var Profile = CreateClass({
             personalOtherBuff: 0.0,
             personalOtherBuff2: 0.0,
             personalAdditionalDamageBuff: 0.0,
+            personalSupplementalDamageBuff: 0,
             personalDABuff: 0.0,
             personalTABuff: 0.0,
             personalOugiDamageBuff: 0.0,
             personalOugiGageBuff: 0.0,
+            personalUplift: 0,
             personalDamageLimitBuff: 0.0,
             personalOugiDamageLimitBuff: 0.0,
         };
@@ -402,6 +407,12 @@ var Profile = CreateClass({
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
+                            <tr key="personalSupplementalDamageBuff">
+                                <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
+                                <td><FormControl type="number" value={this.state.personalSupplementalDamageBuff}
+                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "personalSupplementalDamageBuff")}></FormControl>
+                                </td>
+                            </tr>,
                             <tr key="personalOugiDamageBuff">
                                 <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageBuff}
@@ -412,6 +423,13 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiGageBuff")}>{selector.buffLevel}</FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="personalUplift">
+                                <th className="bg-primary">{intl.translate("高揚", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalUplift}
+                                                 onChange={this.handleSelectEvent.bind(this, "personalUplift")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
@@ -772,6 +790,17 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
+                    <TextWithTooltip tooltip={intl.translate("supplementalDamageBuff-tooltip", locale)}
+                                     id={"tooltip-supplementalDamageBuff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
+                            <td>
+                                <FormControl type="number" value={this.state.supplementalDamageBuff}
+                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇率アップ説明", locale)}
                                      id={"tooltip-ougigagebuff-detail"}>
                         <tr>
@@ -780,6 +809,20 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("高揚説明", locale)}
+                                     id={"tooltip-uplift-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("高揚", locale)}</th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.uplift}
+                                                 onChange={this.handleSelectEvent.bind(this, "uplift")}> {selector.buffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -855,6 +898,16 @@ var Profile = CreateClass({
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("敵非有利耐性説明", locale)} id={"tooltip-enemy-resistance-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("敵非有利耐性", locale)}</th>
+                            <td><InputGroup><FormControl type="number" min="0" step="5" max="100" value={this.state.enemyResistance}
+                                             onBlur={this.state.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/> 
+                                            <InputGroup.Addon>%</InputGroup.Addon>
+                            </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
 
