@@ -1,17 +1,16 @@
-matrix:
-  include:
-    - language: node_js
-      node_js:
-        - 8
-      before_install:
-        - "npm update -g npm"
-      script:
-        - npm run production-build
-    - language: java
-      dist: trusty
-      addons:
-        sonarcloud:
-          organization: orkunkocyigit-github
-      script:
-        - npm test
-        - sonar-scanner
+language: java
+jdk:
+  - oraclejdk8
+dist: trusty
+env:
+  - NODE_VERSION="8"
+addons:
+  sonarcloud:
+    organization: "orkunkocyigit-github"
+before_install:
+  - "nvm install $NODE_VERSION"
+  - "npm update -g npm"
+script:
+  - npm test
+  - sonar-scanner
+  - npm run production-build
