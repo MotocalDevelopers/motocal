@@ -305,6 +305,10 @@ module.exports.calcCriticalArray = function (_normalCritical, _magnaCritical, no
     var probability = [];
     // Store the corresponding magnification
     var damageRatio = [];
+    //'ignore' any undefined
+    _normalCritical = _normalCritical == undefined ? 0 : _normalCritical;
+    _magnaCritical = _magnaCritical == undefined ? 0 : _magnaCritical;
+    normalOtherCritical = normalOtherCritical.filter((val) => val != undefined);
 
     var magnaCritical = 0.01 * _magnaCritical * summon["magna"];
     if (magnaCritical > 1.0) {
