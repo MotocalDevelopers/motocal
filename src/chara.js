@@ -287,6 +287,7 @@ var Chara = CreateClass({
             daBuff: 0,
             taBuff: 0,
             ougiGageBuff: 0,
+            uplift: 0,
             ougiDamageBuff: 0,
             damageLimitBuff: 0,
             ougiDamageLimitBuff: 0,
@@ -633,6 +634,12 @@ var Chara = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.ougiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="uplift">
+                                <th className="bg-primary">{intl.translate("高揚", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.uplift}
+                                                 onChange={this.handleSelectEvent.bind(this, "uplift")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="ougiDamageBuff">
