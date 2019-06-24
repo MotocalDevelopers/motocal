@@ -218,11 +218,12 @@ module.exports.calcDamage = function (summedAttack, totalSkillCoeff, criticalRat
     return res;
 };
 
-module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, criticalRatio, enemyDefense, defenseDebuff, enemyResistance, ougiRatio, ougiDamageUP, damageUP, ougiDamageLimit) {
+module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, criticalRatio, enemyDefense, defenseDebuff, enemyResistance, ougiRatio, ougiDamageUP, damageUP, ougiDamageLimit, ougiFixedDamage) {
     // Damage calculation
     var def = module.exports.calcDefenseDebuff(enemyDefense, defenseDebuff);
     var ratio = ougiRatio != undefined ? ougiRatio : 4.5;
     var damage = (1.0 + ougiDamageUP) * ratio * Math.ceil(Math.ceil(summedAttack / def) * totalSkillCoeff) * criticalRatio;
+    damage += ougiFixedDamage * criticalRatio;
     var overedDamage = 0.0;
 
     var limitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]];
@@ -247,7 +248,13 @@ module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, critica
     damage *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
     
     return damage;
+
 };
+
+function calcOugiFixedDamage(key) {
+    return (key == "Djeeta") ? 3000 : 2000;
+}
+module.exports.calcOugiFixedDamage = calcOugiFixedDamage;
 
 module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, enemyResistance, chainDamageUP, chainDamageLimitUP) {
     if (chainNumber <= 1) return 0.0;
@@ -626,13 +633,16 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var enemyResistance = totals[key]["typeBonus"] == 1.5 ? 0 : Math.max(0, Math.min(1.0, 0.01 * parseFloat(prof.enemyResistance)));
 
         var criticalAttack = parseInt(totalAttack * criticalRatio);
+
+        //while exact uplift effect does not stack. special effects that could lead to uplift like Linkage (SS Grea) does stack with normal uplift.
+        var uplift = 100 * (buff["uplift"] + totals[key]["uplift"]);
         var ougiGageBuff = buff["ougiGage"] + totals[key]["ougiGageBuff"] + (0.01 * totals[key]["LB"]["OugiGageBuff"]) - totals[key]["ougiDebuff"];
         var expectedOugiGage = ougiGageBuff;
-        expectedOugiGage *= taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0);
+        expectedOugiGage *= uplift + (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0));
         
         var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * ougiGageBuff;
         var ougiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
-        var minimumTurn = Math.ceil(ougiGage / (37.0 * ougiGageBuff));
+        var minimumTurn = Math.ceil(ougiGage / ((uplift + 37.0) * ougiGageBuff));
         var expectedTurn = Math.max(minimumTurn, ougiGage / expectedOugiGage);
 
         // "additionalDamage" considers the Fourth Pursuit effect as a normal frame
@@ -700,7 +710,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
         
         var ougiDamageUP = (1.0 + ougiDamageSkill) * (1.0 + ougiDamageExceptSkill) - 1.0;
-
+        
+        // NOT plain additional damage such as Yodarha (SRR)
+        var ougiFixedDamage = calcOugiFixedDamage(key);
 
         var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
         chainDamageUP = Math.min(1.20, chainDamageUP); //check skill limit
@@ -717,7 +729,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var debuffResistanceByNormal = 0.01 * totals[key]["cosmosDebuffResistance"]; 
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
 
-        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit);
+        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiDamageLimit, ougiFixedDamage);
         var chainBurstSupplemental = 0;
 
         //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
@@ -850,6 +862,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["criticalArray"] = criticalArray;
         coeffs["enemyResistance"] = enemyResistance;
         coeffs["supplementalDamageArray"] = supplementalDamageArray;
+        coeffs["uplift"] = 0.01 * uplift;
 
         // Consecutive shooting information
         coeffs["normalDA"] = armDAupNormal;
@@ -895,6 +908,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             damageWithMultiple: damageWithoutCritical * expectedAttack,
             ougiRatio: totals[key]["ougiRatio"],
             ougiDamage: ougiDamage,
+            ougiFixedDamage: ougiFixedDamage,
             chainBurst: chainBurst,
             expectedTurn: expectedTurn,
             expectedCycleDamagePerTurn: expectedCycleDamagePerTurn,
@@ -1353,6 +1367,7 @@ module.exports.getTotalBuff = function (prof) {
         damageLimit: 0.0,
         ougiDamageLimit: 0.0,
         chainNumber: 1,
+        uplift: 0,
         supplementalDamageBuff: 0,
         //enemyBuffCount: 0,
         enemyDebuffCount: 0,
@@ -1369,6 +1384,7 @@ module.exports.getTotalBuff = function (prof) {
     if (!isNaN(prof.otherBuff2)) totalBuff["other2"] += 0.01 * parseInt(prof.otherBuff2);
     if (!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
     if (!isNaN(prof.ougiGageUpOugiBuff)) totalBuff["ougiGageUpOugi"] += parseInt(prof.ougiGageUpOugiBuff);
+    if (!isNaN(prof.uplift)) totalBuff["uplift"] += 0.01 * parseInt(prof.uplift);
     if (!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
     if (!isNaN(prof.ougiDamageBuff)) totalBuff["ougiDamage"] += 0.01 * parseInt(prof.ougiDamageBuff);
     if (!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);
@@ -2099,6 +2115,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
         personalAdditionalDamageBuff: 0.0,
         personalDamageLimitBuff: 0.0,
         personalOugiDamageLimitBuff: 0.0,
+        personalUplift: 0.0,
         personalSupplementalDamageBuff: 0,
     };
 
@@ -2203,6 +2220,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TASupport: 0,
                 ougiRatio: prof.ougiRatio,
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
+                uplift: djeetaBuffList["personalUplift"],
                 ougiDamageBuff: djeetaBuffList["personalOugiDamageBuff"],
                 additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
                 DAOther: 0,
@@ -2257,6 +2275,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 additionalDamageBuff: 0.0,
                 damageLimitBuff: 0.0,
                 ougiDamageLimitBuff: 0.0,
+                uplift: 0,
                 supplementalDamageBuff: 0
             };
 
@@ -2362,6 +2381,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TASupport: 0,
                 ougiRatio: chara[i].ougiRatio,
                 ougiGageBuff: charaBuffList["ougiGageBuff"],
+                uplift: charaBuffList["uplift"],
                 ougiDamageBuff: charaBuffList["ougiDamageBuff"],
                 additionalDamageBuff: charaBuffList["additionalDamageBuff"],
                 DAOther: 0,
@@ -2953,7 +2973,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack;
 
                     var newDamage = module.exports.calcDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit)
-                    var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit)
+                    var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit, onedata[key].ougiFixedDamage)
                     var chainBurstSupplemental = 0;
                     var newDamageWithoutCritical = 0; //just a placeholder. not to be used in any calculation.
                     [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {remainHP: (k+1)/100});
@@ -3200,7 +3220,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                 for (var key in onedata) {
                     if (turnBuff.buffs["全体バフ"][t - 1].turnType == "ougi" || turnBuff.buffs[key][t - 1].turnType == "ougi") {
                         // Basically, setting of mystery takes precedence
-                        var newOugiDamage = module.exports.calcOugiDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, prof.ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit);
+                        var newOugiDamage = module.exports.calcOugiDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, prof.ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit, onedata[key].ougiFixedDamage);
 
                         if (key == "Djeeta") {
                             ExpectedDamage[t].push(parseInt(newOugiDamage));
