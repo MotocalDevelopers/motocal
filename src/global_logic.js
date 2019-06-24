@@ -2592,32 +2592,21 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     continue;
                 case "normalBuff_depends_member":
                     continue;
-                case "dataBuff_wind":
+                case "DATASupport":
+                    let [daRate, taRate] = support.value;
                     if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            if (totals[key2]["element"] === "wind") {
-                                totals[key2]["DASupport"] += 0.10;
-                                totals[key2]["TASupport"] += 0.05;
+                        for (let key2 in totals) {
+                            if (totals[key2]["element"] === support.range
+                              || support.range === "all"
+                              || (support.range === "own" && key === key2)) {
+                                totals[key2]["DASupport"] += daRate;
+                                totals[key2]["TASupport"] += taRate;
                             }
                         }
                     } else {
                         // Calculate yourself only if you do not put it in the average
-                        totals[key]["DASupport"] += 0.10;
-                        totals[key]["TASupport"] += 0.05;
-                    }
-                    continue;
-                case "dataBuff_water":
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            if (totals[key2]["element"] === "water") {
-                                totals[key2]["DABuff"] += 0.10;
-                                totals[key2]["TABuff"] += 0.05;
-                            }
-                        }
-                    } else {
-                        // Calculate yourself only if you do not put it in the average
-                        totals[key]["DABuff"] += 0.10;
-                        totals[key]["TABuff"] += 0.05;
+                        totals[key]["DASupport"] += daRate;
+                        totals[key]["TASupport"] += taRate;
                     }
                     continue;
                 case "daBuff_fist":

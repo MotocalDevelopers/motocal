@@ -1907,15 +1907,15 @@ var supportAbilities = {
     },
     "data_up_wind_10_5": {
         "name": "全体風DA率10%UP&TA率5%UP(コッコロ)",
-        "type": "dataBuff_wind",
-        "range": "all",
-        "value": 0.00
+        "type": "DATASupport",
+        "range": "wind",
+        "value": [0.10, 0.05]
     },
     "data_up_water_10_5": {
         "name": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
-        "type": "dataBuff_water",
-        "range": "all",
-        "value": 0.00
+        "type": "DATASupport",
+        "range": "water",
+        "value": [0.10, 0.05]
     },
     "da_up_fist_10": {
         "name": "格闘キャラDA率10%UP(ガンダゴウザ)",
