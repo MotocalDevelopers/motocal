@@ -236,6 +236,27 @@ var Profile = CreateClass({
         // input type input form uses onBlur
         var newState = this.state;
         newState[key] = e.target.value;
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        } else if (key == "personalCriticalBuffCount") {
+            if (newState.personalCriticalBuff.length > newState.personalCriticalBuffCount) {
+                newState.personalCriticalBuff = newState.personalCriticalBuff.slice(0, newState.personalCriticalBuffCount);
+            }
+            for (let i = 0; i < newState.personalCriticalBuffCount; i++) {
+                if (newState.personalCriticalBuff[i] == undefined) {
+                    newState.personalCriticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+
         this.setState(newState)
     },
     handleOnBlur: function (e) {
@@ -258,24 +279,6 @@ var Profile = CreateClass({
         if (key == "job") {
             newState.DA = Jobs[e.target.value].DaBonus;
             newState.TA = Jobs[e.target.value].TaBonus
-        } else if (key == "criticalBuffCount") {
-            if (newState.criticalBuff.length > newState.criticalBuffCount) {
-                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
-            }
-            for (let i = 0; i < newState.criticalBuffCount; i++) {
-                if (newState.criticalBuff[i] == undefined) {
-                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
-                }
-            }
-        } else if (key == "personalCriticalBuffCount") {
-            if (newState.personalCriticalBuff.length > newState.personalCriticalBuffCount) {
-                newState.personalCriticalBuff = newState.personalCriticalBuff.slice(0, newState.personalCriticalBuffCount);
-            }
-            for (let i = 0; i < newState.personalCriticalBuffCount; i++) {
-                if (newState.personalCriticalBuff[i] == undefined) {
-                    newState.personalCriticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
-                }
-            }
         }
 
         this.setState(newState);
@@ -458,7 +461,7 @@ var Profile = CreateClass({
                                 <td>
                                     <strong>{intl.translate("数", locale)}</strong>
                                     <FormControl type="number" min="0" value={this.state.personalCriticalBuffCount}
-                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "personalCriticalBuffCount")}/>
+                                                 onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "personalCriticalBuffCount")}/>
                                     {personalCriticalBuffRender}
                                 </td>
                             </tr>,
@@ -796,7 +799,7 @@ var Profile = CreateClass({
                             <td>
                                 <strong>{intl.translate("数", locale)}</strong>
                                 <FormControl type="number" min="0" value={this.state.criticalBuffCount}
-                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "criticalBuffCount")}/>
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "criticalBuffCount")}/>
                                 {criticalBuffRender}
                             </td>
                         </tr>

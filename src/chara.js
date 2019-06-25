@@ -395,6 +395,18 @@ var Chara = CreateClass({
     handleEvent: function (key, e) {
         var newState = this.state;
         newState[key] = e.target.value;
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+
         this.setState(newState)
     },
     handleSelectEvent: function (key, e) {
@@ -408,17 +420,6 @@ var Chara = CreateClass({
             newState[key] = e.target.checked;
         } else {
             newState[key] = e.target.value;
-        }
-
-        if (key == "criticalBuffCount") {
-            if (newState.criticalBuff.length > newState.criticalBuffCount) {
-                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
-            }
-            for (let i = 0; i < newState.criticalBuffCount; i++) {
-                if (newState.criticalBuff[i] == undefined) {
-                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
-                }
-            }
         }
 
         this.setState(newState);
@@ -645,7 +646,7 @@ var Chara = CreateClass({
                                 <td>
                                     <strong>{intl.translate("数", locale)}</strong>
                                     <FormControl type="number" min="0" value={this.state.criticalBuffCount}
-                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "criticalBuffCount")}/>
+                                                 onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "criticalBuffCount")}/>
                                     {criticalBuffRender}
                                 </td>
                             </tr>,
