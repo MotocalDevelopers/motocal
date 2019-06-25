@@ -241,9 +241,10 @@ var Profile = CreateClass({
         // Send change to parent only when focus is off
         let newState = this.state;
         let value = e.target.value;
-        if (e.target.type === "number") {
+        if (e.target.attributes["targettype"].value === "number") {
             value = Utilities.parseNumberInputField(e.target, placeholder);
         }
+        e.target.value = value.toString();
         newState[key] = value;
         this.props.onChange(newState);
     },
@@ -593,6 +594,7 @@ var Profile = CreateClass({
                                     <Typeahead
                                         id="masterBonusField"
                                         defaultInputValue={this.state.masterBonus.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", "0", "30")}
                                         onFocus={this.handleOnFocus}
                                         onChange={this.handleEvent.bind(this, "masterBonus")}
                                         onBlur={this.handleOnBlur.bind(this, "masterBonus")}

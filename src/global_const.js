@@ -66,6 +66,9 @@ module.exports.getElementColorLabel = (function (element, locale) {
     return <span className="label label-danger">{intl.translate("火", locale)}</span>
 });
 
+module.exports.generateTypeaheadData = (type, min, max) => {
+  return {"targettype": type.toString(), "min": min.toString(), "max": max.toString()}
+};
 
 module.exports._ua = (function (u) {
     return {
