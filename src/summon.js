@@ -289,22 +289,41 @@ var Summon = CreateClass({
         this.props.onMoveDown(this.props.id)
     },
     handleSummonAmountChange(type, ind, e) {
-        var newState = this.state;
+        let newState = this.state;
+        let value = e.target.value;
+        if (e.target.type === "number") {
+            value = parseFloat(value);
+            // Empty Check
+            if (isNaN(value)) {
+                value = 0;
+            }
+            // Boundary Check
+            let max = parseFloat(e.target.max);
+            let min = parseFloat(e.target.min);
+            if (value > max) {
+                value = max;
+            } else if (value < min) {
+                value = min
+            }
+        }
         if (type == "self") {
             if (ind == 0) {
-                newState["selfSummonAmount"] = e.target.value
+                newState["selfSummonAmount"] = value;
             } else {
-                newState["selfSummonAmount2"] = e.target.value
+                newState["selfSummonAmount2"] = value;
             }
         } else {
             if (ind == 0) {
-                newState["friendSummonAmount"] = e.target.value
+                newState["friendSummonAmount"] = value;
             } else {
-                newState["friendSummonAmount2"] = e.target.value
+                newState["friendSummonAmount2"] = value;
             }
         }
         this.setState(newState);
         this.props.onChange(this.props.id, newState)
+    },
+    handleOnFocus: function (e) {
+        e.target.value = "";
     },
     render: function () {
         var locale = this.props.locale;
@@ -341,14 +360,27 @@ var Summon = CreateClass({
                     </tr>
 
                     <tr>
-                        <td><InputGroup>
-                            {selfSummon[0].label}<FormControl componentClass="select"
-                                                              value={this.state.selfSummonAmount}
-                                                              onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
-                            {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input}
-                                                              value={this.state.selfSummonAmount2}
-                                                              onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
-                        </InputGroup></td>
+                        <td>
+                            <InputGroup>
+                                {selfSummon[0].label}
+                                <FormControl type="number" min="0" max="400"
+                                             value={this.state.selfSummonAmount}
+                                             list="selfSummonAmount"
+                                             onFocus={this.handleOnFocus}
+                                             onBlur={this.handleSummonAmountChange.bind(this, "self", 0)}>
+                                </FormControl>
+                                {selfSummon[1].label}
+                                <FormControl type="number" min="0" max="400"
+                                             className={selfSummon[1].input}
+                                             value={this.state.selfSummonAmount2}
+                                             list="selfSummonAmount"
+                                             onFocus={this.handleOnFocus}
+                                             onBlur={this.handleSummonAmountChange.bind(this, "self", 1)}>
+                                </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon>
+                                <datalist id="selfSummonAmount">{selector.summonAmounts}</datalist>
+                            </InputGroup>
+                        </td>
                     </tr>
 
                     <tr>
@@ -367,15 +399,27 @@ var Summon = CreateClass({
                     </tr>
 
                     <tr>
-                        <td><InputGroup>
-                            {friendSummon[0].label}<FormControl componentClass="select"
-                                                                value={this.state.friendSummonAmount}
-                                                                onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
-                            {friendSummon[1].label}<FormControl componentClass="select"
-                                                                className={friendSummon[1].input}
-                                                                value={this.state.friendSummonAmount2}
-                                                                onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
-                        </InputGroup></td>
+                        <td>
+                            <InputGroup>
+                                {selfSummon[0].label}
+                                <FormControl type="number" min="0" max="400"
+                                             value={this.state.friendSummonAmount}
+                                             list="friendSummonAmount"
+                                             onFocus={this.handleOnFocus}
+                                             onBlur={this.handleSummonAmountChange.bind(this, "friend", 0)}>
+                                </FormControl>
+                                {selfSummon[1].label}
+                                <FormControl type="number" min="0" max="400"
+                                             className={friendSummon[1].input}
+                                             value={this.state.friendSummonAmount2}
+                                             list="friendSummonAmount"
+                                             onFocus={this.handleOnFocus}
+                                             onBlur={this.handleSummonAmountChange.bind(this, "friend", 1)}>
+                                </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon>
+                                <datalist id="friendSummonAmount">{selector.summonAmounts}</datalist>
+                            </InputGroup>
+                        </td>
                     </tr>
 
                     <tr>
