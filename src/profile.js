@@ -32,7 +32,7 @@ var Profile = CreateClass({
         zenithBonuses.zh = Object.keys(zenith).map(function (opt) {
             return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         });
-        
+
         var zenithDABonuses = {"ja": {}, "en": {}, "zh": {}};
         zenithDABonuses.ja = Object.keys(zenithDA).map(function (opt) {
             return <option value={opt} key={opt}>{opt}</option>
@@ -43,7 +43,7 @@ var Profile = CreateClass({
         zenithDABonuses.zh = Object.keys(zenithDA).map(function (opt) {
             return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         });
-        
+
         var zenithTABonuses = {"ja": {}, "en": {}, "zh": {}};
         zenithTABonuses.ja = Object.keys(zenithTA).map(function (opt) {
             return <option value={opt} key={opt}>{opt}</option>
@@ -54,7 +54,7 @@ var Profile = CreateClass({
         zenithTABonuses.zh = Object.keys(zenithTA).map(function (opt) {
             return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         });
-        
+
         //var zenithCriticalBonuses = {"ja": {}, "en": {}, "zh": {}};
         //zenithCriticalBonus.ja = Object.keys(zenithCritical).map(function (opt) {
         //    return <option value={opt} key={opt}>{opt}</option>
@@ -65,7 +65,7 @@ var Profile = CreateClass({
         //zenithCriticalBonuses.zh = Object.keys(zenithCritical).map(function (opt) {
         //    return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         //});
-        
+
         var zenithOugiDamageBonuses = {"ja": {}, "en": {}, "zh": {}};
         zenithOugiDamageBonuses.ja = Object.keys(zenithOugiDamage).map(function (opt) {
             return <option value={opt} key={opt}>{opt}</option>
@@ -76,7 +76,7 @@ var Profile = CreateClass({
         zenithOugiDamageBonuses.zh = Object.keys(zenithOugiDamage).map(function (opt) {
             return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         });
-        
+
         var zenithChainDamageBonuses = {"ja": {}, "en": {}, "zh": {}};
         zenithChainDamageBonuses.ja = Object.keys(zenithChainDamage).map(function (opt) {
             return <option value={opt} key={opt}>{opt}</option>
@@ -87,7 +87,7 @@ var Profile = CreateClass({
         zenithChainDamageBonuses.zh = Object.keys(zenithChainDamage).map(function (opt) {
             return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         });
-        
+
         var zenithChainDamageLimitBonuses = {"ja": {}, "en": {}, "zh": {}};
         zenithChainDamageLimitBonuses.ja = Object.keys(zenithChainDamageLimit).map(function (opt) {
             return <option value={opt} key={opt}>{opt}</option>
@@ -98,7 +98,7 @@ var Profile = CreateClass({
         zenithChainDamageLimitBonuses.zh = Object.keys(zenithChainDamageLimit).map(function (opt) {
             return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         });
-        
+
         var zenithElementBonuses = {"ja": {}, "en": {}, "zh": {}};
         zenithElementBonuses.ja = Object.keys(zenithElement).map(function (opt) {
             return <option value={opt} key={opt}>{opt}</option>
@@ -120,7 +120,7 @@ var Profile = CreateClass({
         zenithDamageLimitBonuses.zh = Object.keys(zenithDamageLimit).map(function (opt) {
             return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
         });
-        
+
         var alljobs = {"ja": {}, "en": {}, "zh": {}};
         alljobs.ja = Object.keys(Jobs).map(function (opt) {
             return <option value={opt} key={opt}>{Jobs[opt].name}</option>
@@ -182,6 +182,7 @@ var Profile = CreateClass({
             elementBuff: 0,
             otherBuff: 0,
             otherBuff2: 0,
+            ougiDamageBuff: 0,
             additionalDamageBuff: 0,
             supplementalDamageBuff: 0,
             damageLimitBuff: 0.0,
@@ -229,13 +230,34 @@ var Profile = CreateClass({
     },
     handleEvent: function (key, e) {
         // input type input form uses onBlur
-        var newState = this.state;
+        let newState = this.state;
         newState[key] = e.target.value;
         this.setState(newState)
     },
-    handleOnBlur: function (e) {
+    handleOnBlur: function (key, e) {
         // Send change to parent only when focus is off
-        this.props.onChange(this.state)
+        let newState = this.state;
+        let value = e.target.value;
+        if (e.target.type === "number") {
+            value = parseFloat(value);
+            // Empty Check
+            if (isNaN(value)) {
+                value = 0;
+            }
+            // Boundary Check
+            let max = parseFloat(e.target.max);
+            let min = parseFloat(e.target.min);
+            if (value > max) {
+                value = max;
+            } else if (value < min) {
+                value = min
+            }
+        }
+        newState[key] = value;
+        this.props.onChange(newState);
+    },
+    handleOnFocus: function(e) {
+        e.target.value = "";
     },
     handleSelectEvent: function (key, e) {
         // A select type input form is good for onChange
@@ -293,7 +315,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">Rank<span className="input-suggest">*</span></th>
                             <td><FormControl type="number" min="1" max="300" value={this.state.rank}
-                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/>
+                                             onBlur={this.handleOnBlur.bind(this, "rank")} onChange={this.handleEvent.bind(this, "rank")}/>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -341,111 +363,223 @@ var Profile = CreateClass({
 
                     {this.state.openBufflist ?
                         [
-
-                    <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)}
-                                     id={"tooltip-remain-hp-djeeta-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                                {intl.translate("残HP割合", locale)}<br/>{intl.translate("ジータさんのみ", locale)}
-                            </th>
-                            <td>
-                                <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.remainHP}
-                                                 onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}</FormControl>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>,
-
+                            <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)}
+                                             id={"tooltip-remain-hp-djeeta-detail"}>
+                                <tr>
+                                    <th className="bg-primary">
+                                        {intl.translate("残HP割合", locale)}<br/>{intl.translate("ジータさんのみ", locale)}
+                                    </th>
+                                    <td>
+                                        <InputGroup>
+                                            <FormControl componentClass="select" value={this.state.remainHP}
+                                                         onChange={this.handleSelectEvent.bind(this, "remainHP")}>{selector.hplist}
+                                            </FormControl>
+                                            <InputGroup.Addon>%</InputGroup.Addon>
+                                        </InputGroup>
+                                    </td>
+                                </tr>
+                            </TextWithTooltip>,
                             <tr key="personalNormalBuff">
                                 <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalNormalBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalNormalBuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalNormalBuff}
+                                                     list="personalNormalBuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalNormalBuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalNormalBuff")}>
+                                        </FormControl>
+                                        <datalist id="personalNormalBuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
                             <tr key="personalElementBuff">
                                 <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalElementBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalElementBuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalElementBuff}
+                                                     list="personalElementBuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalElementBuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalElementBuff")}>
+                                        </FormControl>
+                                        <datalist id="personalElementBuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
                             <tr key="personalOtherBuff">
                                 <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalOtherBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalOtherBuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalOtherBuff}
+                                                     list="personalOtherBuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalOtherBuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalOtherBuff")}>
+                                        </FormControl>
+                                        <datalist id="personalOtherBuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
                             <tr key="personalOtherBuff2">
                                 <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalOtherBuff2}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalOtherBuff2")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalOtherBuff2}
+                                                     list="personalOtherBuff2"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalOtherBuff2")}
+                                                     onChange={this.handleEvent.bind(this, "personalOtherBuff2")}>
+                                        </FormControl>
+                                        <datalist id="personalOtherBuff2">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
-                            <tr key="personalDaBuff">
+                            <tr key="personalDABuff">
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalDABuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalDABuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalDABuff}
+                                                     list="personalDABuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalDABuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalDABuff")}>
+                                        </FormControl>
+                                        <datalist id="personalDABuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
-                            <tr key="personalTaBuff">
+                            <tr key="personalTABuff">
                                 <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalTABuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalTABuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalTABuff}
+                                                     list="personalTABuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalTABuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalTABuff")}>
+                                        </FormControl>
+                                        <datalist id="personalTABuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
                             <tr key="personalAdditionalDamageBuff">
                                 <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalAdditionalDamageBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalAdditionalDamageBuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalAdditionalDamageBuff}
+                                                     list="personalAdditionalDamageBuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalAdditionalDamageBuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalAdditionalDamageBuff")}>
+                                        </FormControl>
+                                        <datalist id="personalAdditionalDamageBuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
                             <tr key="personalSupplementalDamageBuff">
                                 <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
-                                <td><FormControl type="number" value={this.state.personalSupplementalDamageBuff}
-                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "personalSupplementalDamageBuff")}></FormControl>
+                                <td>
+                                    <FormControl type="number"
+                                                 value={this.state.personalSupplementalDamageBuff}
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "personalSupplementalDamageBuff")}
+                                                 onChange={this.handleEvent.bind(this, "personalSupplementalDamageBuff")}/>
                                 </td>
                             </tr>,
                             <tr key="personalOugiDamageBuff">
-                                <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageBuff}
-                                                             onChange={this.handleSelectEvent.bind(this, "personalOugiDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalOugiDamageBuff}
+                                                     list="personalOugiDamageBuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalOugiDamageBuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalOugiDamageBuff")}>
+                                        </FormControl>
+                                        <datalist id="personalOugiDamageBuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
                             <tr key="personalOugiGageBuff">
-                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇量バフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiGageBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalOugiGageBuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalOugiGageBuff}
+                                                     list="personalOugiGageBuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalOugiGageBuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalOugiGageBuff")}>
+                                        </FormControl>
+                                        <datalist id="personalOugiGageBuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
                             <tr key="personalUplift">
                                 <th className="bg-primary">{intl.translate("高揚", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalUplift}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalUplift")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalUplift}
+                                                     list="personalUplift"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalUplift")}
+                                                     onChange={this.handleEvent.bind(this, "personalUplift")}>
+                                        </FormControl>
+                                        <datalist id="personalUplift">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
-                            <tr key="personalDamageLimit">
-                                <th className="bg-primary">{intl.translate("ダメージ上限バフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalDamageLimitBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalDamageLimitBuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                            <tr key="personalDamageLimitBuff">
+                                <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalDamageLimitBuff}
+                                                     list="personalDamageLimitBuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalDamageLimitBuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalDamageLimitBuff")}>
+                                        </FormControl>
+                                        <datalist id="personalDamageLimitBuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>,
-                            <tr key="personalOugiDamageLimit">
-                                <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageLimitBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "personalOugiDamageLimitBuff")}>{selector.buffLevel}</FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
+                            <tr key="personalOugiDamageLimitBuff">
+                                <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="-1000" max="1000"
+                                                     value={this.state.personalOugiDamageLimitBuff}
+                                                     list="personalOugiDamageLimitBuff"
+                                                     onFocus={this.handleOnFocus}
+                                                     onBlur={this.handleOnBlur.bind(this, "personalOugiDamageLimitBuff")}
+                                                     onChange={this.handleEvent.bind(this, "personalOugiDamageLimitBuff")}>
+                                        </FormControl>
+                                        <datalist id="personalOugiDamageLimitBuff">{selector.buffLevel}</datalist>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                             </tr>
                         ]
                         : null}
@@ -464,8 +598,14 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.masterBonus}
-                                                 onChange={this.handleSelectEvent.bind(this, "masterBonus")}>{selector.masteratk}</FormControl>
+                                    <FormControl type="number" min="0" max="100"
+                                                 value={this.state.masterBonus}
+                                                 list="masterATK"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "masterBonus")}
+                                                 onChange={this.handleEvent.bind(this, "masterBonus")}>
+                                    </FormControl>
+                                    <datalist id="masterATK">{selector.masteratk}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -479,8 +619,14 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.masterBonusHP}
-                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusHP")}>{selector.masterhp}</FormControl>
+                                    <FormControl type="number" min="0" max="100"
+                                                 value={this.state.masterBonusHP}
+                                                 list="masterBonusHP"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "masterBonusHP")}
+                                                 onChange={this.handleEvent.bind(this, "masterBonusHP")}>
+                                    </FormControl>
+                                    <datalist id="masterBonusHP">{selector.masterhp}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -494,8 +640,14 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.masterBonusDA}
-                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusDA")}>{selector.masterDA}</FormControl>
+                                    <FormControl type="number" min="0" max="100"
+                                                 value={this.state.masterBonusDA}
+                                                 list="masterBonusDA"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "masterBonusDA")}
+                                                 onChange={this.handleEvent.bind(this, "masterBonusDA")}>
+                                    </FormControl>
+                                    <datalist id="masterBonusDA">{selector.masterDA}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -509,8 +661,14 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.masterBonusTA}
-                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusTA")}>{selector.masterTA}</FormControl>
+                                    <FormControl type="number" min="0" max="100"
+                                                 value={this.state.masterBonusTA}
+                                                 list="masterBonusTA"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "masterBonusTA")}
+                                                 onChange={this.handleEvent.bind(this, "masterBonusTA")}>
+                                    </FormControl>
+                                    <datalist id="masterBonusTA">{selector.masterTA}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -524,8 +682,14 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.masterBonusDamageLimit}
-                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusDamageLimit")}>{selector.masterDamageLimit}</FormControl>
+                                    <FormControl type="number" min="0" max="100"
+                                                 value={this.state.masterBonusDamageLimit}
+                                                 list="masterBonusDamageLimit"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "masterBonusDamageLimit")}
+                                                 onChange={this.handleEvent.bind(this, "masterBonusDamageLimit")}>
+                                    </FormControl>
+                                    <datalist id="masterBonusDamageLimit">{selector.masterDamageLimit}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -540,23 +704,46 @@ var Profile = CreateClass({
                     </tr>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.zenithAttackBonus}
-                                         onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl>
+                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}
+                            <span className="input-suggest">*</span>
+                        </th>
+                        <td>
+                            <FormControl type="number" min="0" max="10000"
+                                         value={this.state.zenithAttackBonus}
+                                         list="zenithAttackBonus"
+                                         onFocus={this.handleOnFocus}
+                                         onBlur={this.handleOnBlur.bind(this, "zenithAttackBonus")}
+                                         onChange={this.handleEvent.bind(this, "zenithAttackBonus")}>
+                            </FormControl>
+                            <datalist id="zenithAttackBonus">{selector.zenithAttack}</datalist>
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("LB HP", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.zenithHPBonus}
-                                         onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")}> {selector.zenithHP} </FormControl>
+                        <td>
+                            <FormControl type="number" min="0" max="10000"
+                                         value={this.state.zenithHPBonus}
+                                         list="zenithHPBonus"
+                                         onFocus={this.handleOnFocus}
+                                         onBlur={this.handleOnBlur.bind(this, "zenithHPBonus")}
+                                         onChange={this.handleEvent.bind(this, "zenithHPBonus")}>
+                            </FormControl>
+                            <datalist id="zenithHPBonus">{selector.zenithHP}</datalist>
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.zenithPartyHPBonus}
-                                         onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")}> {selector.zenithPartyHP} </FormControl>
+                        <td>
+                            <FormControl type="number" min="0" max="10000"
+                                         value={this.state.zenithPartyHPBonus}
+                                         list="zenithPartyHPBonus"
+                                         onFocus={this.handleOnFocus}
+                                         onBlur={this.handleOnBlur.bind(this, "zenithPartyHPBonus")}
+                                         onChange={this.handleEvent.bind(this, "zenithPartyHPBonus")}>
+                            </FormControl>
+                            <datalist id="zenithPartyHPBonus">{selector.zenithPartyHP}</datalist>
                         </td>
                     </tr>
 
@@ -669,8 +856,14 @@ var Profile = CreateClass({
                             </th>
                             <td className="table-profile-td">
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.normalBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "normalBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.normalBuff}
+                                                 list="normalBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "normalBuff")}
+                                                 onChange={this.handleEvent.bind(this, "normalBuff")}>
+                                    </FormControl>
+                                    <datalist id="normalBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -682,8 +875,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.elementBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "elementBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.elementBuff}
+                                                 list="elementBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "elementBuff")}
+                                                 onChange={this.handleEvent.bind(this, "elementBuff")}>
+                                    </FormControl>
+                                    <datalist id="elementBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -694,8 +893,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.otherBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "otherBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.otherBuff}
+                                                 list="otherBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "otherBuff")}
+                                                 onChange={this.handleEvent.bind(this, "otherBuff")}>
+                                    </FormControl>
+                                    <datalist id="otherBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -706,8 +911,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.otherBuff2}
-                                                 onChange={this.handleSelectEvent.bind(this, "otherBuff2")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.otherBuff2}
+                                                 list="otherBuff2"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "otherBuff2")}
+                                                 onChange={this.handleEvent.bind(this, "otherBuff2")}>
+                                    </FormControl>
+                                    <datalist id="otherBuff2">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -718,8 +929,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.hpBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "hpBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.hpBuff}
+                                                 list="hpBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "hpBuff")}
+                                                 onChange={this.handleEvent.bind(this, "hpBuff")}>
+                                    </FormControl>
+                                    <datalist id="hpBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -730,8 +947,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.daBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "daBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.daBuff}
+                                                 list="daBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "daBuff")}
+                                                 onChange={this.handleEvent.bind(this, "daBuff")}>
+                                    </FormControl>
+                                    <datalist id="daBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -742,8 +965,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.taBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "taBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.taBuff}
+                                                 list="taBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "taBuff")}
+                                                 onChange={this.handleEvent.bind(this, "taBuff")}>
+                                    </FormControl>
+                                    <datalist id="taBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -768,8 +997,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.ougiDamageBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "ougiDamageBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.ougiDamageBuff}
+                                                 list="ougiDamageBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "ougiDamageBuff")}
+                                                 onChange={this.handleEvent.bind(this, "ougiDamageBuff")}>
+                                    </FormControl>
+                                    <datalist id="ougiDamageBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -782,8 +1017,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.additionalDamageBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.additionalDamageBuff}
+                                                 list="additionalDamageBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "additionalDamageBuff")}
+                                                 onChange={this.handleEvent.bind(this, "additionalDamageBuff")}>
+                                    </FormControl>
+                                    <datalist id="additionalDamageBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -795,8 +1036,12 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                             <td>
-                                <FormControl type="number" min="0" step="1000" max="100000" value={this.state.supplementalDamageBuff}
-                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "supplementalDamageBuff")}></FormControl>
+                                <FormControl type="number"
+                                             value={this.state.supplementalDamageBuff}
+                                             onFocus={this.handleOnFocus}
+                                             onBlur={this.handleOnBlur.bind(this, "supplementalDamageBuff")}
+                                             onChange={this.handleEvent.bind(this, "supplementalDamageBuff")}>
+                                </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -807,8 +1052,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ゲージ上昇量バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.ougiGageBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.ougiGageBuff}
+                                                 list="ougiGageBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "ougiGageBuff")}
+                                                 onChange={this.handleEvent.bind(this, "ougiGageBuff")}>
+                                    </FormControl>
+                                    <datalist id="ougiGageBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -821,8 +1072,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.uplift}
-                                                 onChange={this.handleSelectEvent.bind(this, "uplift")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.uplift}
+                                                 list="uplift"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "uplift")}
+                                                 onChange={this.handleEvent.bind(this, "uplift")}>
+                                    </FormControl>
+                                    <datalist id="uplift">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -835,8 +1092,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ゲージ上昇奥義", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.ougiGageUpOugiBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "ougiGageUpOugiBuff")}> {selector.ougiGageUpOugiBuffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.ougiGageUpOugiBuff}
+                                                 list="ougiGageUpOugiBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "ougiGageUpOugiBuff")}
+                                                 onChange={this.handleEvent.bind(this, "ougiGageUpOugiBuff")}>
+                                    </FormControl>
+                                    <datalist id="ougiGageUpOugiBuff">{selector.ougiGageUpOugiBuffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -849,8 +1112,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("ダメージ上限バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.damageLimitBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "damageLimitBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.damageLimitBuff}
+                                                 list="damageLimitBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "damageLimitBuff")}
+                                                 onChange={this.handleEvent.bind(this, "damageLimitBuff")}>
+                                    </FormControl>
+                                    <datalist id="damageLimitBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -863,8 +1132,14 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.ougiDamageLimitBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "ougiDamageLimitBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl type="number" min="-1000" max="1000"
+                                                 value={this.state.ougiDamageLimitBuff}
+                                                 list="ougiDamageLimitBuff"
+                                                 onFocus={this.handleOnFocus}
+                                                 onBlur={this.handleOnBlur.bind(this, "ougiDamageLimitBuff")}
+                                                 onChange={this.handleEvent.bind(this, "ougiDamageLimitBuff")}>
+                                    </FormControl>
+                                    <datalist id="ougiDamageLimitBuff">{selector.buffLevel}</datalist>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -881,8 +1156,15 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.enemyDefense}
-                                             onChange={this.handleSelectEvent.bind(this, "enemyDefense")}> {selector[locale].enemydeftypes} </FormControl>
+                            <td>
+                                <FormControl type="number" min="0" max="100"
+                                             value={this.state.enemyDefense}
+                                             list="enemyDefense"
+                                             onFocus={this.handleOnFocus}
+                                             onBlur={this.handleOnBlur.bind(this, "enemyDefense")}
+                                             onChange={this.handleEvent.bind(this, "enemyDefense")}>
+                                </FormControl>
+                                <datalist id="enemyDefense">{selector[locale].enemydeftypes}</datalist>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -893,7 +1175,7 @@ var Profile = CreateClass({
                                 <td>
                                     <InputGroup>
                                         <FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
-                                            onBlur={this.handleOnBlur}
+                                            onBlur={this.handleOnBlur.bind(this, "defenseDebuff")}
                                             onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
@@ -905,7 +1187,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("敵非有利耐性", locale)}</th>
                             <td><InputGroup><FormControl type="number" min="0" step="5" max="100" value={this.state.enemyResistance}
-                                             onBlur={this.state.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/> 
+                                             onBlur={this.state.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/>
                                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
@@ -917,7 +1199,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎DA率", locale)}
                             </th>
                             <td><InputGroup><FormControl type="number" min="0" step="0.1" value={this.state.DA}
-                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/>
+                                             onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/>
                                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
@@ -928,7 +1210,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎TA率", locale)}
                             </th>
                             <td><InputGroup><FormControl type="number" min="0" step="0.1" value={this.state.TA}
-                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
+                                             onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
                                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
@@ -937,8 +1219,15 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}
                             </th>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio}
-                                             onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl>
+                            <td>
+                                <FormControl type="number" min="0" max="20" step="0.5"
+                                             value={this.state.ougiRatio}
+                                             list="ougiRatio"
+                                             onFocus={this.handleOnFocus}
+                                             onBlur={this.handleOnBlur.bind(this, "ougiRatio")}
+                                             onChange={this.handleEvent.bind(this, "ougiRatio")}>
+                                </FormControl>
+                                <datalist id="ougiRatio">{selector.ougiRatio}</datalist>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -946,7 +1235,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("確保HP", locale)}</th>
                             <td><FormControl type="number" min="0" value={this.state.minimumHP}
-                                             onBlur={this.handleOnBlur}
+                                             onBlur={this.handleOnBlur.bind(this, "minimumHP")}
                                              onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
                         </tr>
                     </TextWithTooltip>
