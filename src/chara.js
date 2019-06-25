@@ -409,6 +409,18 @@ var Chara = CreateClass({
         } else {
             newState[key] = e.target.value;
         }
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false);
     },
@@ -447,10 +459,8 @@ var Chara = CreateClass({
     render: function () {
         var locale = this.props.locale;
         var criticalBuffRender = [];
-        if (this.state.criticalBuff.length != this.state.criticalBuffCount) this.state.criticalBuff = this.state.criticalBuff.slice(0, this.state.criticalBuffCount);
-        for (var i = 0; i < this.state.criticalBuffCount; i++) {
-            if (this.state.criticalBuff[i] == undefined) this.state.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
-                criticalBuffRender[i] = (
+        for (let i = 0; i < this.state.criticalBuffCount; i++) {
+            criticalBuffRender[i] = (
                 <div key={"criticalBuff" + i}>
                    <hr/>
                    <strong>{intl.translate("発動率", locale)}#{i+1}</strong>
@@ -461,7 +471,8 @@ var Chara = CreateClass({
                    <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["attackRatio"]}
                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "attackRatio"])}>{selector.buffLevel}</FormControl>
                    <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
-                </div>);
+                </div>
+            );
         }
 
         return (
