@@ -75,7 +75,7 @@ const plugins = [
 
 module.exports = {
   devtool: devtool,
-  entry: ['./src/content.js', './css/style.css', './css/smartphone.css'],
+  entry: ['./src/content.js', './css/style.css', './css/smartphone.css', require.resolve("datalist-polyfill/datalist-polyfill")],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: `${fileName}.js`,
