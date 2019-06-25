@@ -19,6 +19,10 @@
       -webkit-user-drag: element;
     }
 
+    [hidden] {
+        display: none;
+    }
+
     hr {
         margin-top: 10px;
         margin-bottom: 10px;
