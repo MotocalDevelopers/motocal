@@ -2043,6 +2043,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.00
     },
+    "knightmare_frame": {
+        "name": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
+        "type": "knightmare_frame",
+        "range": "own",
+        "value": 0.00
+    },
     "critical_up_own_10_30": {
         "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
         "type": "criticalBuff",
