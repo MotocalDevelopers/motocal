@@ -17,6 +17,7 @@
     "mini-css-extract-plugin": "~0.6.0",
     "react": "~16.6.0",
     "react-bootstrap": "^0.32.4",
+    "react-bootstrap-typeahead": "^3.4.5",
     "react-copy-to-clipboard": "^5.0.1",
     "react-csv": "^1.0.14",
     "react-dom": "~16.6.0",

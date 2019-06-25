@@ -2651,9 +2651,7 @@ module.exports.selector.ougiRatio = ougiRatioList.map(function (opt) {
 module.exports.selector.hplist = HPList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
-module.exports.selector.masteratk = masterATKList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+module.exports.selector.masteratk = masterATKList.map(String);
 module.exports.selector.masterhp = masterHPList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });

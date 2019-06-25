@@ -1,5 +1,6 @@
 var React = require('react');
 var {Button, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
+var Typeahead = require('react-bootstrap-typeahead').Typeahead;
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
 const Utilities = require('./utilities');
@@ -230,10 +231,10 @@ var Profile = CreateClass({
     switchLBlist: function (e) {
         this.setState({openLBlist: !(this.state.openLBlist)})
     },
-    handleEvent: function (key, e) {
+    handleEvent: function (key, selected) {
         // input type input form uses onBlur
         let newState = this.state;
-        newState[key] = e.target.value;
+        newState[key] = parseFloat(selected);
         this.setState(newState)
     },
     handleOnBlur: function (key, e) {
@@ -589,14 +590,13 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="masterATKField" type="number" min="0" max="100"
-                                                 value={this.state.masterBonus}
-                                                 list="masterATK"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "masterBonus")}
-                                                 onChange={this.handleEvent.bind(this, "masterBonus")}>
-                                    </FormControl>
-                                    <datalist id="masterATK">{selector.masteratk}</datalist>
+                                    <Typeahead
+                                        id="masterBonusField"
+                                        defaultInputValue={this.state.masterBonus.toString()}
+                                        onFocus={this.handleOnFocus}
+                                        onChange={this.handleEvent.bind(this, "masterBonus")}
+                                        onBlur={this.handleOnBlur.bind(this, "masterBonus")}
+                                        options={selector.masteratk} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
