@@ -374,7 +374,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalNormalBuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalNormalBuff}
                                                      list="personalNormalBuff"
                                                      onFocus={this.handleOnFocus}
@@ -390,7 +390,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalElementBuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalElementBuff}
                                                      list="personalElementBuff"
                                                      onFocus={this.handleOnFocus}
@@ -406,7 +406,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalOtherBuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalOtherBuff}
                                                      list="personalOtherBuff"
                                                      onFocus={this.handleOnFocus}
@@ -422,7 +422,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalOtherBuff2Field" type="number" min="-1000" max="1000"
                                                      value={this.state.personalOtherBuff2}
                                                      list="personalOtherBuff2"
                                                      onFocus={this.handleOnFocus}
@@ -438,7 +438,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalDABuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalDABuff}
                                                      list="personalDABuff"
                                                      onFocus={this.handleOnFocus}
@@ -454,7 +454,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalTABuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalTABuff}
                                                      list="personalTABuff"
                                                      onFocus={this.handleOnFocus}
@@ -470,7 +470,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalAdditionalDamageBuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalAdditionalDamageBuff}
                                                      list="personalAdditionalDamageBuff"
                                                      onFocus={this.handleOnFocus}
@@ -485,7 +485,7 @@ var Profile = CreateClass({
                             <tr key="personalSupplementalDamageBuff">
                                 <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                                 <td>
-                                    <FormControl type="number"
+                                    <FormControl id="personalSupplementalDamageBuffField" type="number"
                                                  value={this.state.personalSupplementalDamageBuff}
                                                  onFocus={this.handleOnFocus}
                                                  onBlur={this.handleOnBlur.bind(this, "personalSupplementalDamageBuff")}
@@ -496,7 +496,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalOugiDamageBuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalOugiDamageBuff}
                                                      list="personalOugiDamageBuff"
                                                      onFocus={this.handleOnFocus}
@@ -512,7 +512,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalOugiGageBuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalOugiGageBuff}
                                                      list="personalOugiGageBuff"
                                                      onFocus={this.handleOnFocus}
@@ -528,7 +528,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalUpliftField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalUplift}
                                                      list="personalUplift"
                                                      onFocus={this.handleOnFocus}
@@ -544,7 +544,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalDamageLimitBuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalDamageLimitBuff}
                                                      list="personalDamageLimitBuff"
                                                      onFocus={this.handleOnFocus}
@@ -560,7 +560,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl type="number" min="-1000" max="1000"
+                                        <FormControl id="personalOugiDamageLimitBuffField" type="number" min="-1000" max="1000"
                                                      value={this.state.personalOugiDamageLimitBuff}
                                                      list="personalOugiDamageLimitBuff"
                                                      onFocus={this.handleOnFocus}
@@ -589,7 +589,7 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="0" max="100"
+                                    <FormControl id="masterATKField" type="number" min="0" max="100"
                                                  value={this.state.masterBonus}
                                                  list="masterATK"
                                                  onFocus={this.handleOnFocus}
@@ -610,7 +610,7 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="0" max="100"
+                                    <FormControl id="masterBonusHPField" type="number" min="0" max="100"
                                                  value={this.state.masterBonusHP}
                                                  list="masterBonusHP"
                                                  onFocus={this.handleOnFocus}
@@ -631,7 +631,7 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="0" max="100"
+                                    <FormControl id="masterBonusDAField" type="number" min="0" max="100"
                                                  value={this.state.masterBonusDA}
                                                  list="masterBonusDA"
                                                  onFocus={this.handleOnFocus}
@@ -652,7 +652,7 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="0" max="100"
+                                    <FormControl id="masterBonusTAField" type="number" min="0" max="100"
                                                  value={this.state.masterBonusTA}
                                                  list="masterBonusTA"
                                                  onFocus={this.handleOnFocus}
@@ -673,7 +673,7 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="0" max="100"
+                                    <FormControl id="masterBonusDamageLimitField" type="number" min="0" max="100"
                                                  value={this.state.masterBonusDamageLimit}
                                                  list="masterBonusDamageLimit"
                                                  onFocus={this.handleOnFocus}
@@ -699,7 +699,7 @@ var Profile = CreateClass({
                             <span className="input-suggest">*</span>
                         </th>
                         <td>
-                            <FormControl type="number" min="0" max="10000"
+                            <FormControl id="zenithAttackBonusField" type="number" min="0" max="10000"
                                          value={this.state.zenithAttackBonus}
                                          list="zenithAttackBonus"
                                          onFocus={this.handleOnFocus}
@@ -713,7 +713,7 @@ var Profile = CreateClass({
                     <tr>
                         <th className="bg-primary">{intl.translate("LB HP", locale)}</th>
                         <td>
-                            <FormControl type="number" min="0" max="10000"
+                            <FormControl id="zenithHPBonusField" type="number" min="0" max="10000"
                                          value={this.state.zenithHPBonus}
                                          list="zenithHPBonus"
                                          onFocus={this.handleOnFocus}
@@ -727,7 +727,7 @@ var Profile = CreateClass({
                     <tr>
                         <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
                         <td>
-                            <FormControl type="number" min="0" max="10000"
+                            <FormControl id="zenithPartyHPBonusField" type="number" min="0" max="10000"
                                          value={this.state.zenithPartyHPBonus}
                                          list="zenithPartyHPBonus"
                                          onFocus={this.handleOnFocus}
@@ -847,7 +847,7 @@ var Profile = CreateClass({
                             </th>
                             <td className="table-profile-td">
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="normalBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.normalBuff}
                                                  list="normalBuff"
                                                  onFocus={this.handleOnFocus}
@@ -866,7 +866,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="elementBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.elementBuff}
                                                  list="elementBuff"
                                                  onFocus={this.handleOnFocus}
@@ -884,7 +884,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="otherBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.otherBuff}
                                                  list="otherBuff"
                                                  onFocus={this.handleOnFocus}
@@ -902,7 +902,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="otherBuff2Field" type="number" min="-1000" max="1000"
                                                  value={this.state.otherBuff2}
                                                  list="otherBuff2"
                                                  onFocus={this.handleOnFocus}
@@ -920,7 +920,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="hpBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.hpBuff}
                                                  list="hpBuff"
                                                  onFocus={this.handleOnFocus}
@@ -938,7 +938,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl field="daBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.daBuff}
                                                  list="daBuff"
                                                  onFocus={this.handleOnFocus}
@@ -956,7 +956,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="taBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.taBuff}
                                                  list="taBuff"
                                                  onFocus={this.handleOnFocus}
@@ -988,7 +988,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="ougiDamageBuff" type="number" min="-1000" max="1000"
                                                  value={this.state.ougiDamageBuff}
                                                  list="ougiDamageBuff"
                                                  onFocus={this.handleOnFocus}
@@ -1008,7 +1008,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="additionalDamageBuff" type="number" min="-1000" max="1000"
                                                  value={this.state.additionalDamageBuff}
                                                  list="additionalDamageBuff"
                                                  onFocus={this.handleOnFocus}
@@ -1027,7 +1027,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                             <td>
-                                <FormControl type="number"
+                                <FormControl id="supplementalDamageBuffField" type="number"
                                              value={this.state.supplementalDamageBuff}
                                              onFocus={this.handleOnFocus}
                                              onBlur={this.handleOnBlur.bind(this, "supplementalDamageBuff")}
@@ -1043,7 +1043,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ゲージ上昇量バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="ougiGageBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.ougiGageBuff}
                                                  list="ougiGageBuff"
                                                  onFocus={this.handleOnFocus}
@@ -1063,7 +1063,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="upliftField" type="number" min="-1000" max="1000"
                                                  value={this.state.uplift}
                                                  list="uplift"
                                                  onFocus={this.handleOnFocus}
@@ -1083,7 +1083,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ゲージ上昇奥義", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="ougiGageUpOugiBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.ougiGageUpOugiBuff}
                                                  list="ougiGageUpOugiBuff"
                                                  onFocus={this.handleOnFocus}
@@ -1103,7 +1103,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("ダメージ上限バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="damageLimitBuffField" type="number" min="-1000" max="1000"
                                                  value={this.state.damageLimitBuff}
                                                  list="damageLimitBuff"
                                                  onFocus={this.handleOnFocus}
@@ -1123,7 +1123,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl type="number" min="-1000" max="1000"
+                                    <FormControl id="ougiDamageLimitBuff" type="number" min="-1000" max="1000"
                                                  value={this.state.ougiDamageLimitBuff}
                                                  list="ougiDamageLimitBuff"
                                                  onFocus={this.handleOnFocus}
@@ -1148,7 +1148,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
                             <td>
-                                <FormControl type="number" min="0" max="100"
+                                <FormControl id="enemyDefenseField" type="number" min="0" max="100"
                                              value={this.state.enemyDefense}
                                              list="enemyDefense"
                                              onFocus={this.handleOnFocus}
@@ -1211,7 +1211,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}
                             </th>
                             <td>
-                                <FormControl type="number" min="0" max="20" step="0.5"
+                                <FormControl id="ougiRatio" type="number" min="0" max="20" step="0.5"
                                              value={this.state.ougiRatio}
                                              list="ougiRatio"
                                              onFocus={this.handleOnFocus}
