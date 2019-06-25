@@ -2,6 +2,7 @@ var React = require('react');
 var {Button, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
+const Utilities = require('./utilities');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
 var CreateClass = require('create-react-class');
 
@@ -19,6 +20,7 @@ var Jobs = GlobalConst.Jobs;
 var jobTypes = GlobalConst.jobTypes;
 var armTypes = GlobalConst.armTypes;
 var selector = GlobalConst.selector;
+var placeholder = "";
 
 var Profile = CreateClass({
     getDefaultProps() {
@@ -239,24 +241,13 @@ var Profile = CreateClass({
         let newState = this.state;
         let value = e.target.value;
         if (e.target.type === "number") {
-            value = parseFloat(value);
-            // Empty Check
-            if (isNaN(value)) {
-                value = 0;
-            }
-            // Boundary Check
-            let max = parseFloat(e.target.max);
-            let min = parseFloat(e.target.min);
-            if (value > max) {
-                value = max;
-            } else if (value < min) {
-                value = min
-            }
+            value = Utilities.parseNumberInputField(e.target, placeholder);
         }
         newState[key] = value;
         this.props.onChange(newState);
     },
     handleOnFocus: function(e) {
+        placeholder = e.target.value;
         e.target.value = "";
     },
     handleSelectEvent: function (key, e) {
