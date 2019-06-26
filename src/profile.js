@@ -232,9 +232,9 @@ var Profile = CreateClass({
     switchLBlist: function (e) {
         this.setState({openLBlist: !(this.state.openLBlist)})
     },
-    handleAutoCompleteEvent: function (key, selected) {
+    handleAutoCompleteEvent: function (ref, key, selected) {
         let newState = this.state;
-        newState[key] = parseFloat(selected[0]);
+        newState[key] = parseFloat(selected[0].id || selected[0]);
         this.setState(newState)
     },
     handleEvent: function (key, e) {
