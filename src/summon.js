@@ -1,6 +1,7 @@
 var React = require('react');
 var intl = require('./translate.js');
 var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Label, Button, ButtonGroup} = require('react-bootstrap');
+var Typeahead = require('react-bootstrap-typeahead').Typeahead;
 var {ColP} = require('./gridp.js');
 var GlobalConst = require('./global_const.js');
 const Utilities = require('./utilities');
@@ -290,31 +291,35 @@ var Summon = CreateClass({
     clickMoveDown: function (e) {
         this.props.onMoveDown(this.props.id)
     },
-    handleSummonAmountChange(e, focus=true) {
+    handleSummonAmountChange(ref, selected) {
         let newState = this.state;
-        newState[e.target.name] = focus ? e.target.value : Utilities.parseNumberInputField(e.target, placeholder);
+        if (ref.props.inputProps.targettype === "number") {
+            selected = Utilities.parseNumberInputField(selected[0], ref.props.inputProps, placeholder);
+        }
+        newState[ref.props.inputProps.name] = selected;
+        ref.state.text = selected.toString();
         this.setState(newState);
         this.props.onChange(this.props.id, newState)
     },
-    handleOnSummonAmountFocus: function (e) {
-        placeholder = e.target.value;
-        e.target.value = "";
-    },
-    handleOnSummonAmountBlur: function (e) {
-        this.handleSummonAmountChange(e,false);
+    handleOnSummonAmountFocus: function (ref, e) {
+        if (e.target.value) {
+            placeholder = e.target.value;
+        }
+        ref.state.text = "";
+        ref.state.selected = [];
     },
     render: function () {
         var locale = this.props.locale;
 
         var selfSummon = [{"label": "", "input": "select"}, {"input": "hidden"}];
         if (this.state.selfSummonType == "odin") {
-            selfSummon[1] = {"label": intl.translate("キャラ", locale) + " ", "input": "select"};
-            selfSummon[0].label = intl.translate("属性", locale) + " "
+            selfSummon[1].label = intl.translate("キャラ", locale) + " ";
+            selfSummon[0].label = intl.translate("属性", locale) + " ";
         }
         var friendSummon = [{"label": "", "input": "select"}, {"input": "hidden"}];
         if (this.state.friendSummonType == "odin") {
-            friendSummon[1] = {"label": intl.translate("キャラ", locale) + " ", "input": "select"};
-            friendSummon[0].label = intl.translate("属性", locale) + " "
+            friendSummon[1].label = intl.translate("キャラ", locale) + " ";
+            friendSummon[0].label = intl.translate("属性", locale) + " ";
         }
         return (
             <ColP sxs={12} ssm={6} smd={4} className="col-no-bordered">
@@ -339,29 +344,34 @@ var Summon = CreateClass({
 
                     <tr>
                         <td>
-                            <InputGroup>
-                                {selfSummon[0].label}
-                                <FormControl type="number" min="0" max="400"
-                                             name="selfSummonAmount"
-                                             value={this.state.selfSummonAmount}
-                                             list="selfSummonAmount"
-                                             onFocus={this.handleOnSummonAmountFocus}
-                                             onBlur={this.handleOnSummonAmountBlur}
-                                             onChange={this.handleSummonAmountChange}>
-                                </FormControl>
-                                {selfSummon[1].label}
-                                <FormControl type="number" min="0" max="400"
-                                             name="selfSummonAmount2"
-                                             className={selfSummon[1].input}
-                                             value={this.state.selfSummonAmount2}
-                                             list="selfSummonAmount"
-                                             onFocus={this.handleOnSummonAmountFocus}
-                                             onBlur={this.handleOnSummonAmountBlur}
-                                             onChange={this.handleSummonAmountChange}>
-                                </FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                <datalist id="selfSummonAmount">{selector.summonAmounts}</datalist>
-                            </InputGroup>
+                            <div>
+                                <span>{selfSummon[0].label}</span>
+                                <InputGroup>
+                                    <Typeahead id="selfSummonAmountField"
+                                               defaultInputValue={this.state.selfSummonAmount.toString()}
+                                               inputProps={GlobalConst.generateTypeaheadData("number", '0', '400', "selfSummonAmount")}
+                                               onFocus={this.handleOnSummonAmountFocus.bind(this, this.selfSummonAmountFieldTypeahead)}
+                                               onChange={this.handleSummonAmountChange.bind(this, this.selfSummonAmountFieldTypeahead)}
+                                               ref={(ref) => this.selfSummonAmountFieldTypeahead = ref}
+                                               options={selector.summonAmounts}>
+                                    </Typeahead>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </div>
+                            <div class={this.state.selfSummonType !== "odin" ? "hidden" : ""}>
+                                <span>{selfSummon[1].label}</span>
+                                <InputGroup>
+                                    <Typeahead id="selfSummonAmount2Field"
+                                               defaultInputValue={this.state.selfSummonAmount2.toString()}
+                                               inputProps={GlobalConst.generateTypeaheadData("number", '0', '400', "selfSummonAmount2")}
+                                               onFocus={this.handleOnSummonAmountFocus.bind(this, this.selfSummonAmount2FieldTypeahead)}
+                                               onChange={this.handleSummonAmountChange.bind(this, this.selfSummonAmount2FieldTypeahead)}
+                                               ref={(ref) => this.selfSummonAmount2FieldTypeahead = ref}
+                                               options={selector.summonAmounts}>
+                                    </Typeahead>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </div>
                         </td>
                     </tr>
 
@@ -382,29 +392,34 @@ var Summon = CreateClass({
 
                     <tr>
                         <td>
-                            <InputGroup>
-                                {selfSummon[0].label}
-                                <FormControl type="number" min="0" max="400"
-                                             name="friendSummonAmount"
-                                             value={this.state.friendSummonAmount}
-                                             list="friendSummonAmount"
-                                             onFocus={this.handleOnSummonAmountFocus}
-                                             onBlur={this.handleOnSummonAmountBlur}
-                                             onChange={this.handleSummonAmountChange}>
-                                </FormControl>
-                                {selfSummon[1].label}
-                                <FormControl type="number" min="0" max="400"
-                                             className={friendSummon[1].input}
-                                             name="friendSummonAmount2"
-                                             value={this.state.friendSummonAmount2}
-                                             list="friendSummonAmount"
-                                             onFocus={this.handleOnSummonAmountFocus}
-                                             onBlur={this.handleOnSummonAmountBlur}
-                                             onChange={this.handleSummonAmountChange}>
-                                </FormControl>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                                <datalist id="friendSummonAmount">{selector.summonAmounts}</datalist>
-                            </InputGroup>
+                            <div>
+                                <span>{friendSummon[0].label}</span>
+                                <InputGroup>
+                                    <Typeahead id="friendSummonAmountField"
+                                               defaultInputValue={this.state.friendSummonAmount.toString()}
+                                               inputProps={GlobalConst.generateTypeaheadData("number", '0', '400', "friendSummonAmount")}
+                                               onFocus={this.handleOnSummonAmountFocus.bind(this, this.friendSummonAmountFieldTypeahead)}
+                                               onChange={this.handleSummonAmountChange.bind(this, this.friendSummonAmountFieldTypeahead)}
+                                               ref={(ref) => this.friendSummonAmountFieldTypeahead = ref}
+                                               options={selector.summonAmounts}>
+                                    </Typeahead>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </div>
+                            <div className={this.state.friendSummonType !== "odin" ? "hidden" : ""}>
+                                <span>{friendSummon[1].label}</span>
+                                <InputGroup>
+                                    <Typeahead id="friendSummonAmount2Field"
+                                               defaultInputValue={this.state.friendSummonAmount2.toString()}
+                                               inputProps={GlobalConst.generateTypeaheadData("number", '0', '400', "friendSummonAmount2")}
+                                               onFocus={this.handleOnSummonAmountFocus.bind(this, this.friendSummonAmount2FieldTypeahead)}
+                                               onChange={this.handleSummonAmountChange.bind(this, this.friendSummonAmount2FieldTypeahead)}
+                                               ref={(ref) => this.friendSummonAmount2FieldTypeahead = ref}
+                                               options={selector.summonAmounts}>
+                                    </Typeahead>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </div>
                         </td>
                     </tr>
 

@@ -270,6 +270,7 @@ var Profile = CreateClass({
             placeholder = e.target.value;
         }
         ref.state.text = "";
+        ref.state.selected = [];
     },
     handleOnFocus: function(e) {
         if (e.target.value){

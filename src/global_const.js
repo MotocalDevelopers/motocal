@@ -66,8 +66,8 @@ module.exports.getElementColorLabel = (function (element, locale) {
     return <span className="label label-danger">{intl.translate("火", locale)}</span>
 });
 
-module.exports.generateTypeaheadData = (type, min, max) => {
-  return {"targettype": type.toString(), "min": min.toString(), "max": max.toString()}
+module.exports.generateTypeaheadData = (type, min, max, name="") => {
+  return {"targettype": type.toString(), "min": min.toString(), "max": max.toString(), "name": name.toString()}
 };
 
 module.exports._ua = (function (u) {
@@ -2617,9 +2617,7 @@ module.exports.selector.zh.summonElements = Object.keys(summonElementTypes).map(
     return <option value={opt} key={opt}>{intl.translate(summonElementTypes[opt].name, "zh")}</option>;
 });
 
-module.exports.selector.summonAmounts = summonAmountList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+module.exports.selector.summonAmounts = summonAmountList.map(String);
 
 module.exports.selector.zenithAttack = zenithAttackBonus.map(String);
 module.exports.selector.zenithHP = zenithHPBonus.map(String);
