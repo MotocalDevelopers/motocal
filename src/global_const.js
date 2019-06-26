@@ -79,7 +79,19 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
-
+const UNLIMIT_VALUE = 99999;
+module.exports.LIMIT = {
+    normalDA: 50,
+    magnaDA: 50,
+    exDA: UNLIMIT_VALUE,
+    bahaDA: 50,
+    cosmosDA: 50,
+    otherDA: UNLIMIT_VALUE,
+    normalTA: 50,
+    magnaTA: 50,
+    bahaTA: 50,
+    otherTA: UNLIMIT_VALUE,
+};
 module.exports.hollowskyNames = [
     "虚空の",
     "Hollowsky"
@@ -90,7 +102,6 @@ var opusNames = [
     "of Renunciation",
     "永遠拒絶の"
 ];
-
 var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
@@ -675,9 +686,9 @@ var chainNumberList = [1, 2, 3, 4];
 // Chara limitBonus
 var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2300, 2500, 2600, 2800, 3000];
 var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
-var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-var limitBonusElementList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 24, 25, 28, 30, 32, 33, 35, 36, 38, 40];
+var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+var limitBonusElementList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
 var limitBonusCriticalList = {
     "none": {
         "name": "無し",
@@ -700,6 +711,16 @@ var limitBonusCriticalList = {
         "attackRatio": 0.25,
     },
 };
+var limitBonusOugiDamageList = [0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80];
+var limitBonusOugiDamageLimitList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
+var limitBonusOugiGageBuffList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
+
+/*var limitBonusHaisuiList = {
+    "none": "無し",
+    "small": "小",
+    "medium": "中",
+    "large": "大",
+    };*/
 
 // Chara EX limitBonus
 var EXlimitBonusAttackList = [0, 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000];
@@ -1873,22 +1894,28 @@ var supportAbilities = {
     },
     "da_up_all_10": {
         "name": "全体DA率10%UP(ランスロット)",
-        "type": "DABuff",
+        "type": "DASupport",
         "range": "all",
         "value": 0.10
     },
-    // TODO: Nezahualpilli support skill update when confirmed
+    // ID is not changed for compatibility of save data.
     "ta_up_all_3": {
-        "name": "全体TA率3%UP(ネツァ)",
-        "type": "TABuff",
+        "name": "全体TA率5%UP(ネツァ)",
+        "type": "TASupport",
         "range": "all",
-        "value": 0.03
+        "value": 0.05
     },
     "data_up_wind_10_5": {
         "name": "全体風DA率10%UP&TA率5%UP(コッコロ)",
-        "type": "dataBuff_wind",
-        "range": "all",
-        "value": 0.00
+        "type": "DATASupport",
+        "range": "wind",
+        "value": [0.10, 0.05]
+    },
+    "data_up_water_10_5": {
+        "name": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
+        "type": "DATASupport",
+        "range": "water",
+        "value": [0.10, 0.05]
     },
     "da_up_fist_10": {
         "name": "格闘キャラDA率10%UP(ガンダゴウザ)",
@@ -2710,6 +2737,15 @@ module.exports.selector.en.limitBonusCriticalList = Object.keys(limitBonusCritic
 });
 module.exports.selector.zh.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "zh")}</option>;
+});
+module.exports.selector.limitBonusOugiDamageList = limitBonusOugiDamageList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.limitBonusOugiDamageLimitList = limitBonusOugiDamageLimitList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.limitBonusOugiGageBuffList = limitBonusOugiGageBuffList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
 });
 
 // Chara EX Limit Bonus Selectors

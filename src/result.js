@@ -485,6 +485,7 @@ var ResultList = CreateClass({
         buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
         buffInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
         buffInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
+        buffInfo.push(intl.translate("敵非有利耐性", locale) + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance)))));
         var buffInfoStr = buffInfo.join(", ");
 
         if (_ua.Mobile || _ua.Tablet) {
@@ -1245,13 +1246,14 @@ var Result = CreateClass({
                         // For batting skill
                         var pushSkillInfoElement2 = (skillKey, label, labelType = "primary") => {
                             // Use outer skillInfo, skilldata and locale
-                            if (skilldata[skillKey] != 0.0) {
+                            let value = skilldata[skillKey];
+                            let isOver = GlobalConst.LIMIT[skillKey] && (value >= GlobalConst.LIMIT[skillKey]);
+                            if (value != 0.0) {
                                 multipleAttackSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
-                                            <span
-                                                className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
-                                        {skilldata[skillKey].toFixed(1)}%&nbsp;
-                                        </span>
+                                        <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                        <span className={isOver ? "is-over" : ""}>{value.toFixed(1)}%</span>&nbsp;
+                                    </span>
                                 );
                             }
                         };
@@ -1346,6 +1348,7 @@ var Result = CreateClass({
                                 );
                             }
                         };
+                        pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "default");
                         pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
                         pushSkillInfoElement3("damageUP", "与ダメージ上昇", "default");
                         pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
@@ -1353,6 +1356,7 @@ var Result = CreateClass({
                         pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");
                         pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "default");
                         pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "default");
+                        pushSkillInfoElement3("uplift", "高揚", "default");
 
                         charaDetail[key].push(<div key={key + "-mainSkillInfo"}>{mainSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
