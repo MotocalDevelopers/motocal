@@ -41,6 +41,7 @@ supportAbilist = OrderedDict()
 supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
 supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
 supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
+supportAbilist["data_up_water_10_5"] = {u"舞い歌う夏の巫女"}
 supportAbilist["da_up_fist_10"] = {u"古今無双流"}
 supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ"}
 supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
