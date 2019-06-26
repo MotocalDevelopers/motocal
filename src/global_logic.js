@@ -604,35 +604,35 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var daRate = Math.min(1.0, Math.floor(totalDA * 100) / 100);
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate));
 
+        var damageUP = 0.0;
         if (totals[key]["typeBonus"] == 1.5) {
             // Supplemental damage rise support ability does not overlap with Tenshi skill (the strongest effect overwrites the lesser)
-            var damageUP = Math.max(totals[key]["tenshiDamageUP"], totals[key]["charaDamageUP"]);
+            damageUP = Math.max(totals[key]["tenshiDamageUP"], totals[key]["charaDamageUP"]);
             damageUP += 0.01 * totalSummon["tenshiDamageUP"];
             damageUP += totals[key]["charaUniqueDamageUP"];
-
-            // Generate normal critical skill arrays.
-            var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
-            var EXLBCriticalArray = getEXLBCriticalArray(totals[key]["EXLB"]["Critical"]);
-            var normalOtherCriticalBuffArray = totals[key]["normalOtherCriticalBuff"];
-            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray, EXLBCriticalArray, normalOtherCriticalBuffArray, totals[key]["criticalBuff"], buff["criticalBuff"]);
-            var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon);
-            var criticalRatio = module.exports.calcCriticalRatio(criticalArray)
-        } else if (prof.enemyElement == "non-but-critical" || prof.retsujitsuNoRakuen) {
-            // Processing in the case of "Non (with critical)"
-            var damageUP = 0.0;
-
-            var LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
-            var EXLBCriticalArray = getEXLBCriticalArray(totals[key]["EXLB"]["Critical"]);
-            var normalOtherCriticalBuffArray = totals[key]["normalOtherCriticalBuff"];
-            var normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(LBCriticalArray, EXLBCriticalArray, normalOtherCriticalBuffArray, totals[key]["criticalBuff"], buff["criticalBuff"]);
-
-            var criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon);
-            var criticalRatio = module.exports.calcCriticalRatio(criticalArray);
-        } else {
-            var damageUP = 0.0;
-            var criticalArray = {};
-            var criticalRatio = 1.0;
         }
+
+        var criticalArray = {};
+        var criticalRatio = 1.0;
+        if (totals[key]["typeBonus"] == 1.5
+            || prof.enemyElement == "non-but-critical"
+            || prof.retsujitsuNoRakuen
+        ) {
+            let LBCriticalArray = getLBCriticalArray(totals[key]["LB"]);
+            let EXLBCriticalArray = getEXLBCriticalArray(totals[key]["EXLB"]["Critical"]);
+            let normalOtherCriticalBuffArray = totals[key]["normalOtherCriticalBuff"];
+            let normalOtherCriticalArray = totals[key]["normalOtherCritical"].concat(
+                LBCriticalArray,
+                EXLBCriticalArray,
+                normalOtherCriticalBuffArray,
+                totals[key]["criticalBuff"] || [],
+                buff["criticalBuff"]
+             );
+
+            criticalArray = module.exports.calcCriticalArray(totals[key]["normalCritical"], totals[key]["magnaCritical"], normalOtherCriticalArray, totalSummon);
+            criticalRatio = module.exports.calcCriticalRatio(criticalArray);
+        }
+
         //Enemy (Elemental) Resistance if not superior element.
         var enemyResistance = totals[key]["typeBonus"] == 1.5 ? 0 : Math.max(0, Math.min(1.0, 0.01 * parseFloat(prof.enemyResistance)));
 
