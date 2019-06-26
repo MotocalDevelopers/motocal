@@ -2106,6 +2106,11 @@ var multiLangData = {
         "ja": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
         "zh": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
     },
+    "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "10% boost to all allies ATK based on how high character HP is (Lelouch Lamperouge)",
+        "ja": "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP",
+    },
     "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP": {
         "en": "Has 15% less HP. %15 boost to all allies' ATK based on how high character HP is (various)",
         "ja": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
