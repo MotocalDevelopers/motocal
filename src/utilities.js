@@ -27,3 +27,14 @@ module.exports.getLabelFromId = function (selector, id) {
     }
     return "";
 };
+
+module.exports.filterObjectsFromSave = function (save) {
+    for (let item in save) {
+        if (item.includes("FieldTypeahead")) {
+            delete save[item];
+        }
+        if (save[item] !== null && typeof (save[item]) == "object") {
+            this.filterObjectsFromSave(save[item]);
+        }
+    }
+};
