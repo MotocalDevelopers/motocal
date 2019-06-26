@@ -1961,15 +1961,20 @@ var multiLangData = {
         "ja": "全体DA率10%UP(ランスロット)",
         "zh": "全体DA率10%UP(ランスロット)",
     },
-    "全体TA率3%UP(ネツァ)": {
-        "en": "3% boost to TA rate for all allies (Nezahualpilli)",
-        "ja": "全体TA率3%UP(ネツァ)",
-        "zh": "全体TA率3%UP(ネツァ)",
+    "全体TA率5%UP(ネツァ)": {
+        "en": "5% boost to TA rate for all allies (Nezahualpilli)",
+        "ja": "全体TA率5%UP(ネツァ)",
+        "zh": "全体TA率5%UP(ネツァ)",
     },
     "全体風DA率10%UP&TA率5%UP(コッコロ)": {
         "en": "10% boost to DA rate and 5% boost to TA rate for wind allies. (Kokkoro)",
         "ja": "全体風DA率10%UP&TA率5%UP(コッコロ)",
         "zh": "全体風DA率10%UP&TA率5%UP(コッコロ)",
+    },
+    "全体水DA率10%UP&TA率5%UP(水着ディアンサ)": {
+        "en": "10% boost to DA rate and 5% boost to TA rate for water allies. (Diantha (Summer))",
+        "ja": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
+        "zh": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
     },
     "格闘キャラDA率10%UP(ガンダゴウザ)": {
         "en": "10% boost to melee-specialty allies' double attack rate. (Ghandagoza)",
