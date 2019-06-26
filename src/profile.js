@@ -22,6 +22,7 @@ var jobTypes = GlobalConst.jobTypes;
 var armTypes = GlobalConst.armTypes;
 var selector = GlobalConst.selector;
 var placeholder = "";
+const TypeaheadInstanceList = {};
 
 var Profile = CreateClass({
     getDefaultProps() {
@@ -231,25 +232,49 @@ var Profile = CreateClass({
     switchLBlist: function (e) {
         this.setState({openLBlist: !(this.state.openLBlist)})
     },
-    handleEvent: function (key, selected) {
-        // input type input form uses onBlur
+    handleAutoCompleteEvent: function (key, selected) {
         let newState = this.state;
-        newState[key] = parseFloat(selected);
+        newState[key] = parseFloat(selected[0]);
         this.setState(newState)
     },
-    handleOnBlur: function (key, e) {
-        // Send change to parent only when focus is off
+    handleEvent: function (key, e) {
+        this.handleAutoCompleteEvent(key, [e.target.value])
+    },
+    completeBlurAction: function (ref, key) {
         let newState = this.state;
-        let value = e.target.value;
-        if (e.target.attributes["targettype"].value === "number") {
-            value = Utilities.parseNumberInputField(e.target, placeholder);
+        let value = ref.state.text;
+        if (ref.props.inputProps.targettype === "number") {
+            value = Utilities.parseNumberInputField(value, ref.props.inputProps, placeholder);
         }
-        e.target.value = value.toString();
+        ref.state.text = value.toString();
         newState[key] = value;
         this.props.onChange(newState);
     },
+    handleAutoCompleteOnBlur: function (ref, key) {
+        // Send change to parent only when focus is off
+        ref = TypeaheadInstanceList[ref];
+        this.completeBlurAction(ref, key);
+    },
+    handleOnBlur: function (key, e) {
+        // Send change to parent only when focus is off
+        let ref = {state: {}, props: {inputProps: {}}};
+        ref.state.text = e.target.value;
+        ref.props.inputProps.min = e.target.min;
+        ref.props.inputProps.max = e.target.max;
+        ref.props.inputProps.targettype = e.target.type;
+        this.completeBlurAction(ref, key);
+    },
+    handleAutoCompleteOnFocus: function (ref, e) {
+        ref = TypeaheadInstanceList[ref];
+        if (e.target.value) {
+            placeholder = e.target.value;
+        }
+        ref.state.text = "";
+    },
     handleOnFocus: function(e) {
-        placeholder = e.target.value;
+        if (e.target.value){
+            placeholder = e.target.value;
+        }
         e.target.value = "";
     },
     handleSelectEvent: function (key, e) {
@@ -307,8 +332,11 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
                         <tr>
                             <th className="bg-primary">Rank<span className="input-suggest">*</span></th>
-                            <td><FormControl type="number" min="1" max="300" value={this.state.rank}
-                                             onBlur={this.handleOnBlur.bind(this, "rank")} onChange={this.handleEvent.bind(this, "rank")}/>
+                            <td>
+                                <FormControl type="number" min="1" max="250" value={this.state.rank}
+                                             onBlur={this.handleOnBlur.bind(this, "rank")}
+                                             onFocus={this.handleOnFocus}
+                                             onChange={this.handleEvent.bind(this, "rank")}/>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -376,14 +404,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalNormalBuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalNormalBuff}
-                                                     list="personalNormalBuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalNormalBuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalNormalBuff")}>
-                                        </FormControl>
-                                        <datalist id="personalNormalBuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalNormalBuffField"
+                                            defaultInputValue={this.state.personalNormalBuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalNormalBuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalNormalBuffFieldTypeahead", "personalNormalBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalNormalBuffFieldTypeahead", "personalNormalBuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalNormalBuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -392,14 +421,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalElementBuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalElementBuff}
-                                                     list="personalElementBuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalElementBuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalElementBuff")}>
-                                        </FormControl>
-                                        <datalist id="personalElementBuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalElementBuffField"
+                                            defaultInputValue={this.state.personalNormalBuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalElementBuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalElementBuffFieldTypeahead", "personalElementBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalElementBuffFieldTypeahead", "personalElementBuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalElementBuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -408,14 +438,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalOtherBuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalOtherBuff}
-                                                     list="personalOtherBuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalOtherBuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalOtherBuff")}>
-                                        </FormControl>
-                                        <datalist id="personalOtherBuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalOtherBuffField"
+                                            defaultInputValue={this.state.personalOtherBuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalOtherBuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalOtherBuffFieldTypeahead", "personalOtherBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalOtherBuffFieldTypeahead", "personalOtherBuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalOtherBuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -424,14 +455,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalOtherBuff2Field" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalOtherBuff2}
-                                                     list="personalOtherBuff2"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalOtherBuff2")}
-                                                     onChange={this.handleEvent.bind(this, "personalOtherBuff2")}>
-                                        </FormControl>
-                                        <datalist id="personalOtherBuff2">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalOtherBuff2Field"
+                                            defaultInputValue={this.state.personalOtherBuff2.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalOtherBuff2FieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalOtherBuff2FieldTypeahead", "personalOtherBuff2")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalOtherBuff2FieldTypeahead", "personalOtherBuff2")}
+                                            ref={(ref) => TypeaheadInstanceList["personalOtherBuff2FieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -440,14 +472,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalDABuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalDABuff}
-                                                     list="personalDABuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalDABuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalDABuff")}>
-                                        </FormControl>
-                                        <datalist id="personalDABuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalDABuffField"
+                                            defaultInputValue={this.state.personalDABuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalDABuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalDABuffFieldTypeahead", "personalDABuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalDABuffFieldTypeahead", "personalDABuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalDABuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -456,14 +489,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalTABuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalTABuff}
-                                                     list="personalTABuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalTABuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalTABuff")}>
-                                        </FormControl>
-                                        <datalist id="personalTABuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalTABuffField"
+                                            defaultInputValue={this.state.personalTABuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalTABuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalTABuffFieldTypeahead", "personalTABuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalTABuffFieldTypeahead", "personalTABuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalTABuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -472,14 +506,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalAdditionalDamageBuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalAdditionalDamageBuff}
-                                                     list="personalAdditionalDamageBuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalAdditionalDamageBuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalAdditionalDamageBuff")}>
-                                        </FormControl>
-                                        <datalist id="personalAdditionalDamageBuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalAdditionalDamageBuffField"
+                                            defaultInputValue={this.state.personalAdditionalDamageBuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalAdditionalDamageBuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalAdditionalDamageBuffFieldTypeahead", "personalAdditionalDamageBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalAdditionalDamageBuffFieldTypeahead", "personalAdditionalDamageBuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalAdditionalDamageBuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -498,14 +533,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalOugiDamageBuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalOugiDamageBuff}
-                                                     list="personalOugiDamageBuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalOugiDamageBuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalOugiDamageBuff")}>
-                                        </FormControl>
-                                        <datalist id="personalOugiDamageBuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalOugiDamageBuffField"
+                                            defaultInputValue={this.state.personalOugiDamageBuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalOugiDamageBuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalOugiDamageBuffFieldTypeahead", "personalOugiDamageBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalOugiDamageBuffFieldTypeahead", "personalOugiDamageBuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalOugiDamageBuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -514,14 +550,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalOugiGageBuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalOugiGageBuff}
-                                                     list="personalOugiGageBuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalOugiGageBuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalOugiGageBuff")}>
-                                        </FormControl>
-                                        <datalist id="personalOugiGageBuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalOugiGageBuffField"
+                                            defaultInputValue={this.state.personalOugiGageBuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalOugiGageBuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalOugiGageBuffFieldTypeahead", "personalOugiGageBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalOugiGageBuffFieldTypeahead", "personalOugiGageBuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalOugiGageBuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -530,14 +567,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalUpliftField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalUplift}
-                                                     list="personalUplift"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalUplift")}
-                                                     onChange={this.handleEvent.bind(this, "personalUplift")}>
-                                        </FormControl>
-                                        <datalist id="personalUplift">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalUpliftField"
+                                            defaultInputValue={this.state.personalUplift.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalUpliftFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalUpliftFieldTypeahead", "personalUplift")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalUpliftFieldTypeahead", "personalUplift")}
+                                            ref={(ref) => TypeaheadInstanceList["personalUpliftFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -546,14 +584,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalDamageLimitBuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalDamageLimitBuff}
-                                                     list="personalDamageLimitBuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalDamageLimitBuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalDamageLimitBuff")}>
-                                        </FormControl>
-                                        <datalist id="personalDamageLimitBuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalDamageLimitBuffField"
+                                            defaultInputValue={this.state.personalDamageLimitBuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalDamageLimitBuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalDamageLimitBuffFieldTypeahead", "personalDamageLimitBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalDamageLimitBuffFieldTypeahead", "personalDamageLimitBuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalDamageLimitBuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -562,14 +601,15 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
                                 <td>
                                     <InputGroup>
-                                        <FormControl id="personalOugiDamageLimitBuffField" type="number" min="-1000" max="1000"
-                                                     value={this.state.personalOugiDamageLimitBuff}
-                                                     list="personalOugiDamageLimitBuff"
-                                                     onFocus={this.handleOnFocus}
-                                                     onBlur={this.handleOnBlur.bind(this, "personalOugiDamageLimitBuff")}
-                                                     onChange={this.handleEvent.bind(this, "personalOugiDamageLimitBuff")}>
-                                        </FormControl>
-                                        <datalist id="personalOugiDamageLimitBuff">{selector.buffLevel}</datalist>
+                                        <Typeahead
+                                            id="personalOugiDamageLimitBuffField"
+                                            defaultInputValue={this.state.personalOugiDamageLimitBuff.toString()}
+                                            inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this,  "personalOugiDamageLimitBuffFieldTypeahead")}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this,  "personalOugiDamageLimitBuffFieldTypeahead", "personalOugiDamageLimitBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this,  "personalOugiDamageLimitBuffFieldTypeahead", "personalOugiDamageLimitBuff")}
+                                            ref={(ref) => TypeaheadInstanceList["personalOugiDamageLimitBuffFieldTypeahead"] = ref}
+                                            options={selector.buffLevel} />
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </td>
@@ -594,11 +634,12 @@ var Profile = CreateClass({
                                     <Typeahead
                                         id="masterBonusField"
                                         defaultInputValue={this.state.masterBonus.toString()}
-                                        inputProps={GlobalConst.generateTypeaheadData("number", "0", "30")}
-                                        onFocus={this.handleOnFocus}
-                                        onChange={this.handleEvent.bind(this, "masterBonus")}
-                                        onBlur={this.handleOnBlur.bind(this, "masterBonus")}
-                                        options={selector.masteratk} />
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, "masterBonusFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, "masterBonusFieldTypeahead", "masterBonus")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, "masterBonusFieldTypeahead", "masterBonus")}
+                                        ref={(ref) => TypeaheadInstanceList["masterBonusFieldTypeahead"] = ref}
+                                        options={selector.masteratk}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -612,14 +653,15 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="masterBonusHPField" type="number" min="0" max="100"
-                                                 value={this.state.masterBonusHP}
-                                                 list="masterBonusHP"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "masterBonusHP")}
-                                                 onChange={this.handleEvent.bind(this, "masterBonusHP")}>
-                                    </FormControl>
-                                    <datalist id="masterBonusHP">{selector.masterhp}</datalist>
+                                    <Typeahead
+                                        id="masterBonusHPField"
+                                        defaultInputValue={this.state.masterBonusHP.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, "masterBonusHPFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, "masterBonusHPFieldTypeahead", "masterBonusHP")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,"masterBonusHPFieldTypeahead", "masterBonusHP")}
+                                        ref={(ref) => TypeaheadInstanceList["masterBonusHPFieldTypeahead"] = ref}
+                                        options={selector.masterhp}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -633,14 +675,15 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="masterBonusDAField" type="number" min="0" max="100"
-                                                 value={this.state.masterBonusDA}
-                                                 list="masterBonusDA"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "masterBonusDA")}
-                                                 onChange={this.handleEvent.bind(this, "masterBonusDA")}>
-                                    </FormControl>
-                                    <datalist id="masterBonusDA">{selector.masterDA}</datalist>
+                                    <Typeahead
+                                        id="masterBonusDAField"
+                                        defaultInputValue={this.state.masterBonusDA.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, "masterBonusDAFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, "masterBonusDAFieldTypeahead", "masterBonusDA")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, "masterBonusDAFieldTypeahead", "masterBonusDA")}
+                                        ref={(ref) => TypeaheadInstanceList["masterBonusDAFieldTypeahead"] = ref}
+                                        options={selector.masterDA}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -654,14 +697,15 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="masterBonusTAField" type="number" min="0" max="100"
-                                                 value={this.state.masterBonusTA}
-                                                 list="masterBonusTA"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "masterBonusTA")}
-                                                 onChange={this.handleEvent.bind(this, "masterBonusTA")}>
-                                    </FormControl>
-                                    <datalist id="masterBonusTA">{selector.masterTA}</datalist>
+                                    <Typeahead
+                                        id="masterBonusTAField"
+                                        defaultInputValue={this.state.masterBonusTA.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, "masterBonusTAFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, "masterBonusTAFieldTypeahead", "masterBonusTA")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, "masterBonusTAFieldTypeahead", "masterBonusTA")}
+                                        ref={(ref) => TypeaheadInstanceList["masterBonusTAFieldTypeahead"] = ref}
+                                        options={selector.masterTA}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -675,14 +719,15 @@ var Profile = CreateClass({
                             </th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="masterBonusDamageLimitField" type="number" min="0" max="100"
-                                                 value={this.state.masterBonusDamageLimit}
-                                                 list="masterBonusDamageLimit"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "masterBonusDamageLimit")}
-                                                 onChange={this.handleEvent.bind(this, "masterBonusDamageLimit")}>
-                                    </FormControl>
-                                    <datalist id="masterBonusDamageLimit">{selector.masterDamageLimit}</datalist>
+                                    <Typeahead
+                                        id="masterBonusDamageLimitField"
+                                        defaultInputValue={this.state.masterBonusDamageLimit.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, "masterBonusDamageLimitFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, "masterBonusDamageLimitFieldTypeahead", "masterBonusDamageLimit")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, "masterBonusDamageLimitFieldTypeahead", "masterBonusDamageLimit")}
+                                        ref={(ref) => TypeaheadInstanceList["masterBonusDamageLimitFieldTypeahead"] = ref}
+                                        options={selector.masterDamageLimit}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -701,42 +746,45 @@ var Profile = CreateClass({
                             <span className="input-suggest">*</span>
                         </th>
                         <td>
-                            <FormControl id="zenithAttackBonusField" type="number" min="0" max="10000"
-                                         value={this.state.zenithAttackBonus}
-                                         list="zenithAttackBonus"
-                                         onFocus={this.handleOnFocus}
-                                         onBlur={this.handleOnBlur.bind(this, "zenithAttackBonus")}
-                                         onChange={this.handleEvent.bind(this, "zenithAttackBonus")}>
-                            </FormControl>
-                            <datalist id="zenithAttackBonus">{selector.zenithAttack}</datalist>
+                            <Typeahead
+                                id="zenithAttackBonusField"
+                                defaultInputValue={this.state.zenithAttackBonus.toString()}
+                                inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
+                                onFocus={this.handleAutoCompleteOnFocus.bind(this,  "zenithAttackBonusFieldTypeahead")}
+                                onBlur={this.handleAutoCompleteOnBlur.bind(this,  "zenithAttackBonusFieldTypeahead", "zenithAttackBonus")}
+                                onChange={this.handleAutoCompleteEvent.bind(this,  "zenithAttackBonusFieldTypeahead", "zenithAttackBonus")}
+                                ref={(ref) => TypeaheadInstanceList["zenithAttackBonusFieldTypeahead"] = ref}
+                                options={selector.zenithAttack} />
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("LB HP", locale)}</th>
                         <td>
-                            <FormControl id="zenithHPBonusField" type="number" min="0" max="10000"
-                                         value={this.state.zenithHPBonus}
-                                         list="zenithHPBonus"
-                                         onFocus={this.handleOnFocus}
-                                         onBlur={this.handleOnBlur.bind(this, "zenithHPBonus")}
-                                         onChange={this.handleEvent.bind(this, "zenithHPBonus")}>
-                            </FormControl>
-                            <datalist id="zenithHPBonus">{selector.zenithHP}</datalist>
+                            <Typeahead
+                                id="zenithHPBonusField"
+                                defaultInputValue={this.state.zenithHPBonus.toString()}
+                                inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
+                                onFocus={this.handleAutoCompleteOnFocus.bind(this,  "zenithHPBonusFieldTypeahead")}
+                                onBlur={this.handleAutoCompleteOnBlur.bind(this,  "zenithHPBonusFieldTypeahead", "zenithHPBonus")}
+                                onChange={this.handleAutoCompleteEvent.bind(this,  "zenithHPBonusFieldTypeahead", "zenithHPBonus")}
+                                ref={(ref) => TypeaheadInstanceList["zenithHPBonusFieldTypeahead"] = ref}
+                                options={selector.zenithHP} />
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
                         <td>
-                            <FormControl id="zenithPartyHPBonusField" type="number" min="0" max="10000"
-                                         value={this.state.zenithPartyHPBonus}
-                                         list="zenithPartyHPBonus"
-                                         onFocus={this.handleOnFocus}
-                                         onBlur={this.handleOnBlur.bind(this, "zenithPartyHPBonus")}
-                                         onChange={this.handleEvent.bind(this, "zenithPartyHPBonus")}>
-                            </FormControl>
-                            <datalist id="zenithPartyHPBonus">{selector.zenithPartyHP}</datalist>
+                            <Typeahead
+                                id="zenithPartyHPBonusField"
+                                defaultInputValue={this.state.zenithPartyHPBonus.toString()}
+                                inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
+                                onFocus={this.handleAutoCompleteOnFocus.bind(this,  "zenithPartyHPBonusFieldTypeahead")}
+                                onBlur={this.handleAutoCompleteOnBlur.bind(this,  "zenithPartyHPBonusFieldTypeahead", "zenithPartyHPBonus")}
+                                onChange={this.handleAutoCompleteEvent.bind(this,  "zenithPartyHPBonusFieldTypeahead", "zenithPartyHPBonus")}
+                                ref={(ref) => TypeaheadInstanceList["zenithPartyHPBonusFieldTypeahead"] = ref}
+                                options={selector.zenithPartyHP} />
                         </td>
                     </tr>
 
@@ -849,14 +897,15 @@ var Profile = CreateClass({
                             </th>
                             <td className="table-profile-td">
                                 <InputGroup>
-                                    <FormControl id="normalBuffField" type="number" min="-1000" max="1000"
-                                                 value={this.state.normalBuff}
-                                                 list="normalBuff"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "normalBuff")}
-                                                 onChange={this.handleEvent.bind(this, "normalBuff")}>
-                                    </FormControl>
-                                    <datalist id="normalBuff">{selector.buffLevel}</datalist>
+                                    <Typeahead
+                                        id="normalBuffField"
+                                        defaultInputValue={this.state.normalBuff.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  "normalBuffFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  "normalBuffFieldTypeahead", "normalBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,  "normalBuffFieldTypeahead", "normalBuff")}
+                                        ref={(ref) => TypeaheadInstanceList["normalBuffFieldTypeahead"] = ref}
+                                        options={selector.buffLevel} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -868,14 +917,15 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="elementBuffField" type="number" min="-1000" max="1000"
-                                                 value={this.state.elementBuff}
-                                                 list="elementBuff"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "elementBuff")}
-                                                 onChange={this.handleEvent.bind(this, "elementBuff")}>
-                                    </FormControl>
-                                    <datalist id="elementBuff">{selector.buffLevel}</datalist>
+                                    <Typeahead
+                                        id="elementBuffField"
+                                        defaultInputValue={this.state.elementBuff.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  "elementBuffFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  "elementBuffFieldTypeahead", "elementBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,  "elementBuffFieldTypeahead", "elementBuff")}
+                                        ref={(ref) => TypeaheadInstanceList["elementBuffFieldTypeahead"] = ref}
+                                        options={selector.buffLevel} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -886,14 +936,15 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="otherBuffField" type="number" min="-1000" max="1000"
-                                                 value={this.state.otherBuff}
-                                                 list="otherBuff"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "otherBuff")}
-                                                 onChange={this.handleEvent.bind(this, "otherBuff")}>
-                                    </FormControl>
-                                    <datalist id="otherBuff">{selector.buffLevel}</datalist>
+                                    <Typeahead
+                                        id="otherBuffField"
+                                        defaultInputValue={this.state.otherBuff.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  "otherBuffFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  "otherBuffFieldTypeahead", "otherBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,  "otherBuffFieldTypeahead", "otherBuff")}
+                                        ref={(ref) => TypeaheadInstanceList["otherBuffFieldTypeahead"] = ref}
+                                        options={selector.buffLevel} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -904,14 +955,15 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="otherBuff2Field" type="number" min="-1000" max="1000"
-                                                 value={this.state.otherBuff2}
-                                                 list="otherBuff2"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "otherBuff2")}
-                                                 onChange={this.handleEvent.bind(this, "otherBuff2")}>
-                                    </FormControl>
-                                    <datalist id="otherBuff2">{selector.buffLevel}</datalist>
+                                    <Typeahead
+                                        id="otherBuff2Field"
+                                        defaultInputValue={this.state.otherBuff2.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  "otherBuff2FieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  "otherBuff2FieldTypeahead", "otherBuff2")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,  "otherBuff2FieldTypeahead", "otherBuff2")}
+                                        ref={(ref) => TypeaheadInstanceList["otherBuff2FieldTypeahead"] = ref}
+                                        options={selector.buffLevel} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -922,14 +974,15 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="hpBuffField" type="number" min="-1000" max="1000"
-                                                 value={this.state.hpBuff}
-                                                 list="hpBuff"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "hpBuff")}
-                                                 onChange={this.handleEvent.bind(this, "hpBuff")}>
-                                    </FormControl>
-                                    <datalist id="hpBuff">{selector.buffLevel}</datalist>
+                                    <Typeahead
+                                        id="hpBuffField"
+                                        defaultInputValue={this.state.hpBuff.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  "hpBuffFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  "hpBuffFieldTypeahead", "hpBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,  "hpBuffFieldTypeahead", "hpBuff")}
+                                        ref={(ref) => TypeaheadInstanceList["hpBuffFieldTypeahead"] = ref}
+                                        options={selector.buffLevel} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -940,14 +993,15 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl field="daBuffField" type="number" min="-1000" max="1000"
-                                                 value={this.state.daBuff}
-                                                 list="daBuff"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "daBuff")}
-                                                 onChange={this.handleEvent.bind(this, "daBuff")}>
-                                    </FormControl>
-                                    <datalist id="daBuff">{selector.buffLevel}</datalist>
+                                    <Typeahead
+                                        id="daBuffField"
+                                        defaultInputValue={this.state.daBuff.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  "daBuffFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  "daBuffFieldTypeahead", "daBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,  "daBuffFieldTypeahead", "daBuff")}
+                                        ref={(ref) => TypeaheadInstanceList["daBuffFieldTypeahead"] = ref}
+                                        options={selector.buffLevel} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -958,14 +1012,15 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="taBuffField" type="number" min="-1000" max="1000"
-                                                 value={this.state.taBuff}
-                                                 list="taBuff"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "taBuff")}
-                                                 onChange={this.handleEvent.bind(this, "taBuff")}>
-                                    </FormControl>
-                                    <datalist id="taBuff">{selector.buffLevel}</datalist>
+                                    <Typeahead
+                                        id="taBuffField"
+                                        defaultInputValue={this.state.taBuff.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  "taBuffFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  "taBuffFieldTypeahead", "taBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,  "taBuffFieldTypeahead", "taBuff")}
+                                        ref={(ref) => TypeaheadInstanceList["taBuffFieldTypeahead"] = ref}
+                                        options={selector.buffLevel} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -990,14 +1045,15 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl id="ougiDamageBuff" type="number" min="-1000" max="1000"
-                                                 value={this.state.ougiDamageBuff}
-                                                 list="ougiDamageBuff"
-                                                 onFocus={this.handleOnFocus}
-                                                 onBlur={this.handleOnBlur.bind(this, "ougiDamageBuff")}
-                                                 onChange={this.handleEvent.bind(this, "ougiDamageBuff")}>
-                                    </FormControl>
-                                    <datalist id="ougiDamageBuff">{selector.buffLevel}</datalist>
+                                    <Typeahead
+                                        id="ougiDamageBuffField"
+                                        defaultInputValue={this.state.ougiDamageBuff.toString()}
+                                        inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  "ougiDamageBuffFieldTypeahead")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  "ougiDamageBuffFieldTypeahead", "ougiDamageBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this,  "ougiDamageBuffFieldTypeahead", "ougiDamageBuff")}
+                                        ref={(ref) => TypeaheadInstanceList["ougiDamageBuffFieldTypeahead"] = ref}
+                                        options={selector.buffLevel} />
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>

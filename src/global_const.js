@@ -2621,15 +2621,9 @@ module.exports.selector.summonAmounts = summonAmountList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 
-module.exports.selector.zenithAttack = zenithAttackBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithHP = zenithHPBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithPartyHP = zenithPartyHPBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+module.exports.selector.zenithAttack = zenithAttackBonus.map(String);
+module.exports.selector.zenithHP = zenithHPBonus.map(String);
+module.exports.selector.zenithPartyHP = zenithPartyHPBonus.map(String);
 
 //module.exports.selector.zenithCriticalBonus = zenithCriticalBonus.map(function (opt) {
 //    return <option value={opt} key={opt}>{opt}</option>;
@@ -2642,9 +2636,7 @@ module.exports.selector.slv = skilllevels.map(function (opt) {
 module.exports.selector.consider = considerNum.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
-module.exports.selector.buffLevel = buffLevelList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+module.exports.selector.buffLevel = buffLevelList.map(String);
 module.exports.selector.ougiGageUpOugiBuffLevel = ougiGageUpOugiBuffLevelList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
@@ -2655,18 +2647,10 @@ module.exports.selector.hplist = HPList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.masteratk = masterATKList.map(String);
-module.exports.selector.masterhp = masterHPList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.masterDA = masterDAList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.masterTA = masterTAList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.masterDamageLimit = masterDamageLimitList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+module.exports.selector.masterhp = masterHPList.map(String);
+module.exports.selector.masterDA = masterDAList.map(String);
+module.exports.selector.masterTA = masterTAList.map(String);
+module.exports.selector.masterDamageLimit = masterDamageLimitList.map(String);
 module.exports.selector.chainNumber = chainNumberList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });

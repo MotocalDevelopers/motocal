@@ -49,6 +49,10 @@
         color: #000;
     }
 
+    .rbt-input {
+        float:none!important;
+    }
+
     .charainfo {
         text-align: left;
         font-size: 9pt;

@@ -13,9 +13,8 @@ const parseNumberInputField = function(value, min, max, def) {
     return value;
 };
 
-module.exports.parseNumberInputField = function(target, def=0) {
-    let value = parseFloat(target.value);
-    let max = parseFloat(target.max);
-    let min = parseFloat(target.min);
+module.exports.parseNumberInputField = function(value, props, def=0) {
+    let max = parseFloat(props.max);
+    let min = parseFloat(props.min);
     return parseNumberInputField(value, min, max, def);
 };
