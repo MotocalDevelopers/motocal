@@ -456,22 +456,6 @@ var Chara = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
-        var criticalBuffRender = [];
-        for (let i = 0; i < this.state.criticalBuffCount; i++) {
-            criticalBuffRender[i] = (
-                <div key={"criticalBuff" + i}>
-                   <hr/>
-                   <strong>{intl.translate("発動率", locale)}#{i+1}</strong>
-                   <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["value"]}
-                                            onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "value"])}>{selector.criticalRateLevel}</FormControl>
-                   <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
-                   <strong>{intl.translate("倍率", locale)}#{i+1}</strong>
-                   <InputGroup><FormControl componentClass="select" value={100*this.state.criticalBuff[i]["attackRatio"]}
-                                            onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, ["criticalBuff", i, "attackRatio"])}>{selector.buffLevel}</FormControl>
-                   <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
-                </div>
-            );
-        }
 
         return (
             <div className="chara-content">
