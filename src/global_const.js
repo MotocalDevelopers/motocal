@@ -2662,8 +2662,9 @@ module.exports.selector.zh.ktypes = Object.keys(keyTypes).map(function (opt) {
 module.exports.selector.plusnum = Object.keys(plusNumList).map(function (opt) {
     return <option value={plusNumList[opt]} key={opt}>{opt}</option>
 });
+
 module.exports.selector.charaPlusNumList = Object.keys(charaPlusNumList).map(function (opt) {
-    return <option value={charaPlusNumList[opt]} key={opt}>{opt}</option>
+    return {id: charaPlusNumList[opt], label:opt};
 });
 
 module.exports.selector.level100Limit = Object.keys(levelList100Limit).map(function (opt) {

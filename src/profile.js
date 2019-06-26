@@ -238,7 +238,7 @@ var Profile = CreateClass({
         this.setState(newState)
     },
     handleEvent: function (key, e) {
-        this.handleAutoCompleteEvent(key, [e.target.value])
+        this.handleAutoCompleteEvent(null, key, [e.target.value])
     },
     completeBlurAction: function (ref, key) {
         let newState = this.state;
@@ -1215,7 +1215,7 @@ var Profile = CreateClass({
                             <td>
                                 <Typeahead
                                     id="enemyDefenseField"
-                                    defaultInputValue={this.state.enemyDefense.toString()}
+                                    defaultInputValue={Utilities.getLabelFromId(selector[locale].enemydeftypes, this.state.enemyDefense)}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this,  "enemyDefenseFieldTypeahead")}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this,  "enemyDefenseFieldTypeahead", "enemyDefense")}

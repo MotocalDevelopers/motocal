@@ -1,4 +1,4 @@
-const parseNumberInputField = function(value, min, max, def) {
+const parseNumberInputField = function (value, min, max, def) {
     value = parseFloat(value);
     // Empty Check
     if (isNaN(value)) {
@@ -13,8 +13,17 @@ const parseNumberInputField = function(value, min, max, def) {
     return value;
 };
 
-module.exports.parseNumberInputField = function(value, props, def=0) {
+module.exports.parseNumberInputField = function (value, props, def = 0) {
     let max = parseFloat(props.max);
     let min = parseFloat(props.min);
     return parseNumberInputField(value, min, max, def);
+};
+
+module.exports.getLabelFromId = function (selector, id) {
+    for (let select of selector) {
+        if (select.id == id) {
+            return select.label
+        }
+    }
+    return "";
 };
