@@ -2637,12 +2637,8 @@ module.exports.selector.consider = considerNum.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.buffLevel = buffLevelList.map(String);
-module.exports.selector.ougiGageUpOugiBuffLevel = ougiGageUpOugiBuffLevelList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.ougiRatio = ougiRatioList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+module.exports.selector.ougiGageUpOugiBuffLevel = ougiGageUpOugiBuffLevelList.map(String);
+module.exports.selector.ougiRatio = ougiRatioList.map(String);
 module.exports.selector.hplist = HPList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
@@ -2787,13 +2783,13 @@ module.exports.supportedChartSortkeys = supportedChartSortkeys;
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys;
 
 module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) {
-    return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "ja")}</option>;
+    return {id: opt.toString(), label:intl.translate(enemyDefenseType[opt].name, "ja")};
 });
 module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) {
-    return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "en")}</option>;
+    return {id: opt.toString(), label:intl.translate(enemyDefenseType[opt].name, "en")};
 });
 module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) {
-    return <option value={opt} key={opt}>{intl.translate(enemyDefenseType[opt].name, "zh")}</option>;
+    return {id: opt.toString(), label:intl.translate(enemyDefenseType[opt].name, "zh")};
 });
 
 module.exports.selector.ja.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
