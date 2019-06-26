@@ -225,7 +225,7 @@ var Profile = CreateClass({
             personalCriticalBuff: [],
             personalCriticalBuffCount: 0,
             retsujitsuNoRakuen: false,
-    };
+        };
     },
     switchBufflist: function (e) {
         this.setState({openBufflist: !(this.state.openBufflist)})
@@ -237,6 +237,27 @@ var Profile = CreateClass({
         // input type input form uses onBlur
         var newState = this.state;
         newState[key] = e.target.value;
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        } else if (key == "personalCriticalBuffCount") {
+            if (newState.personalCriticalBuff.length > newState.personalCriticalBuffCount) {
+                newState.personalCriticalBuff = newState.personalCriticalBuff.slice(0, newState.personalCriticalBuffCount);
+            }
+            for (let i = 0; i < newState.personalCriticalBuffCount; i++) {
+                if (newState.personalCriticalBuff[i] == undefined) {
+                    newState.personalCriticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+
         this.setState(newState)
     },
     handleOnBlur: function (e) {
@@ -251,10 +272,12 @@ var Profile = CreateClass({
         } else {
             newState[key] = e.target.value;
         }
+
         if (key == "job") {
             newState.DA = Jobs[e.target.value].DaBonus;
             newState.TA = Jobs[e.target.value].TaBonus
         }
+
         this.setState(newState);
         this.props.onChange(newState);
     },
