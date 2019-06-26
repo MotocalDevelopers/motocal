@@ -2,7 +2,7 @@ const parseNumberInputField = function(value, min, max, def) {
     value = parseFloat(value);
     // Empty Check
     if (isNaN(value)) {
-        value = def;
+        value = parseFloat(def);
     }
     // Boundary Check
     if (value > max) {
