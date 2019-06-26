@@ -4,6 +4,7 @@ var {Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, P
 var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
 var GlobalConst = require('./global_const.js');
+var {CriticalBuffList} = require('./components.js');
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation;
@@ -400,11 +401,7 @@ var Chara = CreateClass({
     handleSelectEvent: function (key, e) {
         var newState = this.state;
 
-        if (Array.isArray(key)) {
-            if (key.length == 3 && key[0] == "criticalBuff") {
-                newState[key[0]][key[1]][key[2]] = e.target.value/100;
-            }
-        } else if (e.target.type === "checkbox") {
+        if (e.target.type === "checkbox") {
             newState[key] = e.target.checked;
         } else {
             newState[key] = e.target.value;
@@ -632,10 +629,12 @@ var Chara = CreateClass({
                             <tr key="criticalBuff">
                                 <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                                 <td>
-                                    <strong>{intl.translate("数", locale)}</strong>
-                                    <FormControl type="number" min="0" value={this.state.criticalBuffCount}
-                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "criticalBuffCount")}/>
-                                    {criticalBuffRender}
+                                    <CriticalBuffList locale={locale}
+                                        onBlur={this.handleOnBlur.bind(this, null)}
+                                        onCountChange={(count) => this.setState({criticalBuffCount: count})}
+                                        label="criticalBuff"
+                                        criticalArray={this.state.criticalBuff}
+                                        initialCount={this.state.criticalBuffCount} />
                                 </td>
                             </tr>,
                             <tr key="daBuff">
