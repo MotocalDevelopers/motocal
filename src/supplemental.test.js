@@ -109,6 +109,9 @@ describe("#calcSupplementalDamage", () => {
 });
 
 describe("#collectSkillInfo", () => {
+
+    let supplementalDamageArray;
+
     beforeEach(() => {
         supplementalDamageArray = {
             "D": { // for checking sort headers
