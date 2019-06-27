@@ -301,7 +301,7 @@ var Summon = CreateClass({
         } else {
             newState[ref.props.inputProps.name] = parseFloat(ref.state.text);
         }
-        this.setState(newState)
+        this.props.onChange(ref.props.inputProps.name, newState);
     },
     handleOnSummonAmountFocus: function (ref, e) {
         if (e.target.value) {
@@ -320,7 +320,7 @@ var Summon = CreateClass({
         }
         ref.setState({text: value.toString()});
         newState[ref.props.inputProps.name] = value;
-        this.props.onChange(newState);
+        this.props.onChange(ref.props.inputProps.name, newState);
     },
     render: function () {
         var locale = this.props.locale;
