@@ -249,7 +249,6 @@ var Profile = CreateClass({
         } else {
             newState[key] = parseFloat(ref.state.text);
         }
-        this.setState(newState);
 
         if (key == "criticalBuffCount") {
             if (newState.criticalBuff.length > newState.criticalBuffCount) {
@@ -270,6 +269,8 @@ var Profile = CreateClass({
                 }
             }
         }
+
+        this.props.onChange(newState);
     },
     handleEvent: function (key, e) {
         this.handleAutoCompleteEvent(null, key, [e.target.value])
