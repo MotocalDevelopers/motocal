@@ -261,6 +261,31 @@ var multiLangData = {
         "ja": "別枠乗算のバフ(もし別枠バフが2つ以上ある場合用)",
         "zh": "独立乘算Buff(独立Buff有2个以上时用)",
     },
+    "クリティカルバフ": {
+        "en": "Critical Buff",
+        "ja": "クリティカルバフ",
+        "zh": "Critical Buff",
+    },
+    "クリティカルバフ説明": {
+        "en": "Critical Buffs.",
+        "ja": "クリティカルバフ",
+        "zh": "Critical Buffs.",
+    },
+    "発動率": {
+        "en": "Hit Rate ",
+        "ja": "発動率 ",
+        "zh": "Hit Rate ",
+    },
+    "倍率": {
+        "en": "Damage Multiplier ",
+        "ja": "倍率 ",
+        "zh": "Damage Multiplier ",
+    },
+    "数": {
+        "en": "Count:",
+        "ja": "数",
+        "zh": "Count:",
+    },
     "HPバフ": {
         "en": "HP Buff",
         "ja": "HPバフ",
@@ -461,6 +486,31 @@ var multiLangData = {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
+    },
+    "特殊効果": {
+        "en": "Special Effects",
+        "ja": "特殊効果",
+        "zh": "Special Effects",
+    },
+    "烈日の楽園": {
+        "en": "Sun-Touched Paradise",
+        "ja": "烈日の楽園",
+        "zh": "烈日の楽園",
+    },
+    "烈日の楽園説明": {
+        "en": "All Allies gain 25% normal buff, and can deal critical hits regardless of element. (Alanaan)",
+        "ja": "対象の属性に関係なく味方のクリティカルが発生し、味方の通常攻刃25%UP。(アラナン)",
+        "zh": "All Allies gain 25% normal buff, and can deal critical hits regardless of element. (Alanaan)",
+    },
+    "アクティブ": {
+        "en": ": Active",
+        "ja": ": アクティブ",
+        "zh": ": Active",
+    },
+    "無効": {
+        "en": ": Inactive",
+        "ja": ": 無効",
+        "zh": ": Inactive",
     },
     "敵非有利耐性": {
         "en": "Enemy Resistance",
@@ -848,6 +898,11 @@ var multiLangData = {
         "en": "Input the number of C.A. Chain. (1~4)",
         "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 → 0倍\n 2 → 1.25倍\n 3 → 1.33…倍\n 4 → 1.5倍",
         "zh": "设定Chain数(Chain Burst的系数会变化)",
+    },
+    "弱い編成を隠す": {
+        "en": "Hide Weaker Grids",
+        "ja": "弱い編成を隠す",
+        "zh": "Hide Weaker Grids"
     },
     "ジータさんのみ": {
         "en": "(Player only)",
