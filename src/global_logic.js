@@ -604,12 +604,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var daRate = Math.min(1.0, Math.floor(totalDA * 100) / 100);
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate));
 
-        var damageUP = 0.0;
+        var damageUP = totals[key]["charaUniqueDamageUP"];
         if (totals[key]["typeBonus"] == 1.5) {
             // Supplemental damage rise support ability does not overlap with Tenshi skill (the strongest effect overwrites the lesser)
             damageUP = Math.max(totals[key]["tenshiDamageUP"], totals[key]["charaDamageUP"]);
             damageUP += 0.01 * totalSummon["tenshiDamageUP"];
-            damageUP += totals[key]["charaUniqueDamageUP"];
         }
 
         var criticalArray = {};
