@@ -25,17 +25,32 @@ describe("#Utility Methods", () => {
         });
 
         test('Empty Id', () => {
-            expect(Utilities.getLabelFromId([{label: "a", id:"1"}, {label: "b", id:"2"}, {label: "c", id:"3"}], "")).toBe("");
+            expect(Utilities.getLabelFromId([{label: "a", id: "1"}, {label: "b", id: "2"}, {
+                label: "c",
+                id: "3"
+            }], "")).toBe("");
         });
 
         test('No Match', () => {
-            expect(Utilities.getLabelFromId([{label: "a", id:"1"}, {label: "b", id:"2"}, {label: "c", id:"3"}], "4")).toBe("4");
+            expect(Utilities.getLabelFromId([{label: "a", id: "1"}, {label: "b", id: "2"}, {
+                label: "c",
+                id: "3"
+            }], "4")).toBe("4");
         });
 
         test('Match', () => {
-            expect(Utilities.getLabelFromId([{label: "a", id:"1"}, {label: "b", id:"2"}, {label: "c", id:"3"}], "1")).toBe("a");
-            expect(Utilities.getLabelFromId([{label: "a", id:"1"}, {label: "b", id:"2"}, {label: "c", id:"3"}], "2")).toBe("b");
-            expect(Utilities.getLabelFromId([{label: "a", id:"1"}, {label: "b", id:"2"}, {label: "c", id:"3"}], "3")).toBe("c");
+            expect(Utilities.getLabelFromId([{label: "a", id: "1"}, {label: "b", id: "2"}, {
+                label: "c",
+                id: "3"
+            }], "1")).toBe("a");
+            expect(Utilities.getLabelFromId([{label: "a", id: "1"}, {label: "b", id: "2"}, {
+                label: "c",
+                id: "3"
+            }], "2")).toBe("b");
+            expect(Utilities.getLabelFromId([{label: "a", id: "1"}, {label: "b", id: "2"}, {
+                label: "c",
+                id: "3"
+            }], "3")).toBe("c");
         });
     });
 
@@ -62,9 +77,13 @@ describe("#Utility Methods", () => {
         let save = [];
 
         beforeEach(() => {
-            save = {name: "mike", surname: "tyson", body: {height: "177", heightField: "heightRef",
-                    weight: "86kg", weightField: "weightRef"}, boxerField: "boxRef", gloves: "red",
-                    ui: [{time: 10, timeField: "tk"}, {time: 5, timeField: "aj"}]};
+            save = {
+                name: "mike", surname: "tyson", body: {
+                    height: "177", heightField: "heightRef",
+                    weight: "86kg", weightField: "weightRef"
+                }, boxerField: "boxRef", gloves: "red",
+                ui: [{time: 10, timeField: "tk"}, {time: 5, timeField: "aj"}]
+            };
         });
 
         test('Filter', () => {

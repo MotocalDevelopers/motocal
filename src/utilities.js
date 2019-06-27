@@ -73,7 +73,7 @@ module.exports.arrayContainsValue = function (arr, obj) {
  * @param {Object} save Any json object to be filtered.
  * @param {Array<Object>} list Data contains filter rules.
  */
-module.exports.filterObjectsFromSave = function (save, list=saveFilterMaskList) {
+module.exports.filterObjectsFromSave = function (save, list = saveFilterMaskList) {
     for (let item in save) {
         if (this.arrayContainsValue(list, item)) {
             delete save[item];

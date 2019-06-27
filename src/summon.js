@@ -28,7 +28,6 @@ var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
 var TextWithTooltip = GlobalConst.TextWithTooltip;
-let placeholder;
 
 var SummonList = CreateClass({
     getInitialState: function () {
@@ -294,7 +293,7 @@ var Summon = CreateClass({
     handleSummonAmountChange(ref, selected) {
         let newState = this.state;
         if (selected[0]) {
-            if(selected[0].hasOwnProperty("id")) {
+            if (selected[0].hasOwnProperty("id")) {
                 newState[ref.props.inputProps.name] = parseFloat(selected[0].id);
             } else {
                 newState[ref.props.inputProps.name] = parseFloat(selected[0]);
@@ -306,7 +305,7 @@ var Summon = CreateClass({
     },
     handleOnSummonAmountFocus: function (ref, e) {
         if (e.target.value) {
-            placeholder = e.target.value;
+            this.state.StatePlaceholder = e.target.value;
         }
         ref.setState({
             text: "",
@@ -317,7 +316,7 @@ var Summon = CreateClass({
         let newState = this.state;
         let value = ref.state.text;
         if (ref.props.inputProps.targettype === "number") {
-            value = Utilities.parseNumberInputField(value, ref.props.inputProps, placeholder);
+            value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.StatePlaceholder);
         }
         ref.setState({text: value.toString()});
         newState[ref.props.inputProps.name] = value;

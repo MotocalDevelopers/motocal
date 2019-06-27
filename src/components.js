@@ -35,7 +35,7 @@ class CriticalBuffList extends React.Component {
      * Notify event
      * @param {Object} ref ... Reference of the input
      */
-    handleOnBlur(e, ref){
+    handleOnBlur(e, ref) {
         if (this.props.onBlur) {
             if (ref) {
                 this.props.onBlur(ref, "CriticalStatePlaceholder");
@@ -48,7 +48,7 @@ class CriticalBuffList extends React.Component {
      * @param {Object} ref ... Reference of the input
      * @param {Object} e  ... Event
      */
-    handleOnFocus(ref, e){
+    handleOnFocus(ref, e) {
         if (this.props.onFocus) {
             this.props.onFocus(ref, e);
         }
@@ -68,7 +68,7 @@ class CriticalBuffList extends React.Component {
      */
     handleOnChange(key, idx, e) {
         let array = this.props.criticalArray;
-        
+
         if (key === "count") {
             const count = e.target.value;
 
@@ -104,39 +104,39 @@ class CriticalBuffList extends React.Component {
                          onFocus={(e) => this.handleOnFocus(this.countField, e)}
                          ref={(ref) => this.countField = ref}
                          onChange={this.handleOnChange.bind(this, "count", null)}/>
-            {array.slice(0, count).map(({value,attackRatio}, idx) =>
-            <div key={label + idx}>
-                <strong>{intl.translate("発動率", locale)}#{idx+1}</strong>
-                <InputGroup>
-                    <Typeahead
-                        id="criticalRateField"
-                        defaultInputValue={(Math.round(100 * value)).toString()}
-                        inputProps={generateTypeaheadData("number", '0', '100')}
-                        labelKey={"value"}
-                        onBlur={(e) => (this.handleOnBlur(e, this.state["criticalRateFieldTypeahead" + idx]))}
-                        onChange={(e) => (this.handleOnChange("value", idx, e[0]))}
-                        onInputChange={(e) => (this.handleOnChange("value", idx, e))}
-                        onFocus={(e) => (this.handleOnFocus(this.state["criticalRateFieldTypeahead" + idx], e))}
-                        ref={(ref) => this.state["criticalRateFieldTypeahead" + idx] = ref}
-                        options={selector.criticalRateLevel}/>
-                    <InputGroup.Addon>%</InputGroup.Addon>
-                </InputGroup>
-                <strong>{intl.translate("倍率", locale)}#{idx+1}</strong>
-                <InputGroup>
-                    <Typeahead
-                        id="attackRatioField"
-                        defaultInputValue={(Math.round(100*attackRatio)).toString()}
-                        inputProps={generateTypeaheadData("number", '0', '1000')}
-                        labelKey={"attackRatio"}
-                        onBlur={(e) => (this.handleOnBlur(e, this.state["attackRatioFieldTypeahead" + idx]))}
-                        onChange={(e) => (this.handleOnChange("attackRatio", idx, e[0]))}
-                        onInputChange={(e) => (this.handleOnChange("attackRatio", idx, e))}
-                        onFocus={(e) => (this.handleOnFocus(this.state["attackRatioFieldTypeahead" + idx], e))}
-                        ref={(ref) => this.state["attackRatioFieldTypeahead" + idx] = ref}
-                        options={selector.buffLevel}/>
-                    <InputGroup.Addon>%</InputGroup.Addon>
-                </InputGroup>
-            </div>)}
+            {array.slice(0, count).map(({value, attackRatio}, idx) =>
+                <div key={label + idx}>
+                    <strong>{intl.translate("発動率", locale)}#{idx + 1}</strong>
+                    <InputGroup>
+                        <Typeahead
+                            id="criticalRateField"
+                            defaultInputValue={(Math.round(100 * value)).toString()}
+                            inputProps={generateTypeaheadData("number", '0', '100')}
+                            labelKey={"value"}
+                            onBlur={(e) => (this.handleOnBlur(e, this.state["criticalRateFieldTypeahead" + idx]))}
+                            onChange={(e) => (this.handleOnChange("value", idx, e[0]))}
+                            onInputChange={(e) => (this.handleOnChange("value", idx, e))}
+                            onFocus={(e) => (this.handleOnFocus(this.state["criticalRateFieldTypeahead" + idx], e))}
+                            ref={(ref) => this.state["criticalRateFieldTypeahead" + idx] = ref}
+                            options={selector.criticalRateLevel}/>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                    </InputGroup>
+                    <strong>{intl.translate("倍率", locale)}#{idx + 1}</strong>
+                    <InputGroup>
+                        <Typeahead
+                            id="attackRatioField"
+                            defaultInputValue={(Math.round(100 * attackRatio)).toString()}
+                            inputProps={generateTypeaheadData("number", '0', '1000')}
+                            labelKey={"attackRatio"}
+                            onBlur={(e) => (this.handleOnBlur(e, this.state["attackRatioFieldTypeahead" + idx]))}
+                            onChange={(e) => (this.handleOnChange("attackRatio", idx, e[0]))}
+                            onInputChange={(e) => (this.handleOnChange("attackRatio", idx, e))}
+                            onFocus={(e) => (this.handleOnFocus(this.state["attackRatioFieldTypeahead" + idx], e))}
+                            ref={(ref) => this.state["attackRatioFieldTypeahead" + idx] = ref}
+                            options={selector.buffLevel}/>
+                        <InputGroup.Addon>%</InputGroup.Addon>
+                    </InputGroup>
+                </div>)}
         </React.Fragment>;
     }
 }

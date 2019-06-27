@@ -398,7 +398,7 @@ var Chara = CreateClass({
     handleAutoCompleteEvent: function (ref, key, selected) {
         let newState = this.state;
         if (selected[0]) {
-            if(selected[0].hasOwnProperty("id")) {
+            if (selected[0].hasOwnProperty("id")) {
                 newState[key] = parseFloat(selected[0].id);
             } else {
                 newState[key] = parseFloat(selected[0]);
@@ -432,8 +432,8 @@ var Chara = CreateClass({
             selected: []
         });
     },
-    handleOnFocus: function(e) {
-        if (e.target.value){
+    handleOnFocus: function (e) {
+        if (e.target.value) {
             placeholder = e.target.value;
         }
         e.target.value = "";
@@ -454,7 +454,7 @@ var Chara = CreateClass({
         let newState = this.state;
         if (key) {
             let value;
-            if(ref.state.hasOwnProperty("text")) {
+            if (ref.state.hasOwnProperty("text")) {
                 value = ref.state.text;
             } else {
                 value = ref.props.value;
@@ -674,6 +674,7 @@ var Chara = CreateClass({
                             onClick={this.switchBufflist}>{intl.translate("個別バフ", locale)}</Button></th>
                         <td></td>
                     </tr>
+
                     <tr className={showInvul} key="normalBuff">
                         <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
                         <td>
@@ -691,6 +692,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="elementBuff">
                         <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                         <td>
@@ -708,6 +710,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="otherBuff">
                         <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                         <td>
@@ -725,6 +728,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="otherBuff2">
                         <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                         <td>
@@ -742,6 +746,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="criticalBuff">
                         <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                         <td>
@@ -751,9 +756,10 @@ var Chara = CreateClass({
                                               onCountChange={(count) => this.setState({criticalBuffCount: count})}
                                               label="criticalBuff"
                                               criticalArray={this.state.criticalBuff}
-                                              initialCount={this.state.criticalBuffCount} />
+                                              initialCount={this.state.criticalBuffCount}/>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="daBuff">
                         <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                         <td>
@@ -771,6 +777,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="taBuff">
                         <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                         <td>
@@ -788,6 +795,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="additionalDamageBuff">
                         <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                         <td>
@@ -805,12 +813,15 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="supplementalDamageBuff">
                         <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                         <td><FormControl type="number" value={this.state.supplementalDamageBuff}
-                                         onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
+                                         onBlur={this.handleOnBlur}
+                                         onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="ougiGageBuff">
                         <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                         <td>
@@ -828,6 +839,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="uplift">
                         <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                         <td>
@@ -845,6 +857,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="ougiDamageBuff">
                         <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
                         <td>
@@ -862,6 +875,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="damageLimitBuff">
                         <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
                         <td>
@@ -879,6 +893,7 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="ougiDamageLimitBuff">
                         <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
                         <td>
@@ -896,12 +911,14 @@ var Chara = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr>
                         <th className="bg-primary">
                             <Button onClick={this.switchLBlist}>{"LimitBonus"}</Button>
                         </th>
                         <td></td>
                     </tr>
+
                     {this.state.openLBlist ?
                         [
                             <tr key="LBATK">

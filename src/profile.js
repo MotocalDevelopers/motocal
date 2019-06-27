@@ -241,7 +241,7 @@ var Profile = CreateClass({
     handleAutoCompleteEvent: function (ref, key, selected) {
         let newState = this.state;
         if (selected[0]) {
-            if(selected[0].hasOwnProperty("id")) {
+            if (selected[0].hasOwnProperty("id")) {
                 newState[key] = parseFloat(selected[0].id);
             } else {
                 newState[key] = parseFloat(selected[0]);
@@ -278,18 +278,18 @@ var Profile = CreateClass({
         let newState = this.state;
         if (key) {
             let value;
-            if(ref.state.text) {
+            if (ref.state.text) {
                 value = ref.state.text;
             } else {
                 value = ref.props.value;
             }
             if (ref.props.inputProps) {
                 if (ref.props.inputProps.targettype === "number") {
-                    value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.placeholder);
+                    value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.StatePlaceholder);
                 }
             } else {
                 if (ref.props.type === "number") {
-                    value = Utilities.parseNumberInputField(value, ref.props, this.state.placeholder);
+                    value = Utilities.parseNumberInputField(value, ref.props, this.state.StatePlaceholder);
                 }
             }
             newState[key] = value;
@@ -316,16 +316,16 @@ var Profile = CreateClass({
     },
     handleAutoCompleteOnFocus: function (ref, e) {
         if (e.target.value) {
-            this.state.placeholder = e.target.value;
+            this.state.StatePlaceholder = e.target.value;
         }
         ref.setState({
             text: "",
             selected: []
         });
     },
-    handleOnFocus: function(e) {
-        if (e.target.value){
-            this.state.placeholder = e.target.value;
+    handleOnFocus: function (e) {
+        if (e.target.value) {
+            this.state.StatePlaceholder = e.target.value;
         }
         e.target.value = "";
     },
@@ -375,7 +375,8 @@ var Profile = CreateClass({
                     </tr>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("ジータさん属性", locale)}<span className="input-suggest">*</span></th>
+                        <th className="bg-primary">{intl.translate("ジータさん属性", locale)}<span
+                            className="input-suggest">*</span></th>
                         <td><FormControl componentClass="select" value={this.state.element}
                                          onChange={this.handleSelectEvent.bind(this, "element")}> {selector[locale].elements} </FormControl>
                         </td>
@@ -406,7 +407,8 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("ジョブ説明", locale)} id={"tooltip-job-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("ジョブ", locale)}<span className="input-suggest">*</span>
+                            <th className="bg-primary">{intl.translate("ジョブ", locale)}<span
+                                className="input-suggest">*</span>
                                 <span style={{display: "block"}}
                                       className="label label-default">{intl.translate("得意", locale)}</span>
                                 <span style={{display: "block"}}
@@ -444,6 +446,7 @@ var Profile = CreateClass({
                             onClick={this.switchBufflist}>{intl.translate("個別バフ", locale)}</Button></th>
                         <td/>
                     </tr>
+
                     <TextWithTooltip className={showInvul} tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)}
                                      id={"tooltip-remain-hp-djeeta-detail"}>
                         <tr className={showInvul}>
@@ -460,6 +463,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <tr className={showInvul} key="personalNormalBuff">
                         <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
                         <td>
@@ -477,6 +481,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalElementBuff">
                         <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                         <td>
@@ -494,6 +499,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalOtherBuff">
                         <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                         <td>
@@ -511,6 +517,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalOtherBuff2">
                         <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                         <td>
@@ -528,6 +535,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalCriticalBuff">
                         <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                         <td>
@@ -537,9 +545,10 @@ var Profile = CreateClass({
                                               onCountChange={(count) => this.setState({personalCriticalBuffCount: count})}
                                               label="personalCriticalBuff"
                                               criticalArray={this.state.personalCriticalBuff}
-                                              initialCount={this.state.personalCriticalBuffCount} />
+                                              initialCount={this.state.personalCriticalBuffCount}/>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalDABuff">
                         <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                         <td>
@@ -557,6 +566,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalTABuff">
                         <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                         <td>
@@ -574,6 +584,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalAdditionalDamageBuff">
                         <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                         <td>
@@ -591,6 +602,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalSupplementalDamageBuff">
                         <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                         <td>
@@ -601,6 +613,7 @@ var Profile = CreateClass({
                                          onChange={this.handleEvent.bind(this, "personalSupplementalDamageBuff")}/>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalOugiDamageBuff">
                         <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
                         <td>
@@ -618,6 +631,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalOugiGageBuff">
                         <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                         <td>
@@ -635,6 +649,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalUplift">
                         <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                         <td>
@@ -652,6 +667,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalDamageLimitBuff">
                         <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
                         <td>
@@ -669,6 +685,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr className={showInvul} key="personalOugiDamageLimitBuff">
                         <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
                         <td>
@@ -686,6 +703,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
+
                     <tr>
                         <td colSpan="2">
                             <strong>{intl.translate("ジータさんマスターボーナス", locale)}</strong>
@@ -728,7 +746,7 @@ var Profile = CreateClass({
                                         inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.masterBonusHPFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusHPFieldTypeahead, "masterBonusHP")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,this.state.masterBonusHPFieldTypeahead, "masterBonusHP")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.masterBonusHPFieldTypeahead, "masterBonusHP")}
                                         ref={(ref) => this.state.masterBonusHPFieldTypeahead = ref}
                                         options={selector.masterhp}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
@@ -781,7 +799,8 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("マスボダメ上限説明", locale)} id={"tooltip-masterbonus-damagelimit-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("マスボダメ上限説明", locale)}
+                                     id={"tooltip-masterbonus-damagelimit-detail"}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("マスボダメ上限", locale)}
@@ -819,11 +838,11 @@ var Profile = CreateClass({
                                 id="zenithAttackBonusField"
                                 defaultInputValue={this.state.zenithAttackBonus.toString()}
                                 inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
-                                onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.zenithAttackBonusFieldTypeahead)}
-                                onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.zenithAttackBonusFieldTypeahead, "zenithAttackBonus")}
-                                onChange={this.handleAutoCompleteEvent.bind(this,  this.state.zenithAttackBonusFieldTypeahead, "zenithAttackBonus")}
+                                onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.zenithAttackBonusFieldTypeahead)}
+                                onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithAttackBonusFieldTypeahead, "zenithAttackBonus")}
+                                onChange={this.handleAutoCompleteEvent.bind(this, this.state.zenithAttackBonusFieldTypeahead, "zenithAttackBonus")}
                                 ref={(ref) => this.state.zenithAttackBonusFieldTypeahead = ref}
-                                options={selector.zenithAttack} />
+                                options={selector.zenithAttack}/>
                         </td>
                     </tr>
 
@@ -834,11 +853,11 @@ var Profile = CreateClass({
                                 id="zenithHPBonusField"
                                 defaultInputValue={this.state.zenithHPBonus.toString()}
                                 inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
-                                onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.zenithHPBonusFieldTypeahead)}
-                                onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.zenithHPBonusFieldTypeahead, "zenithHPBonus")}
-                                onChange={this.handleAutoCompleteEvent.bind(this,  this.state.zenithHPBonusFieldTypeahead, "zenithHPBonus")}
+                                onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.zenithHPBonusFieldTypeahead)}
+                                onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithHPBonusFieldTypeahead, "zenithHPBonus")}
+                                onChange={this.handleAutoCompleteEvent.bind(this, this.state.zenithHPBonusFieldTypeahead, "zenithHPBonus")}
                                 ref={(ref) => this.state.zenithHPBonusFieldTypeahead = ref}
-                                options={selector.zenithHP} />
+                                options={selector.zenithHP}/>
                         </td>
                     </tr>
 
@@ -849,11 +868,11 @@ var Profile = CreateClass({
                                 id="zenithPartyHPBonusField"
                                 defaultInputValue={this.state.zenithPartyHPBonus.toString()}
                                 inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
-                                onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.zenithPartyHPBonusFieldTypeahead )}
-                                onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.zenithPartyHPBonusFieldTypeahead , "zenithPartyHPBonus")}
-                                onChange={this.handleAutoCompleteEvent.bind(this,  this.state.zenithPartyHPBonusFieldTypeahead , "zenithPartyHPBonus")}
+                                onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.zenithPartyHPBonusFieldTypeahead)}
+                                onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithPartyHPBonusFieldTypeahead, "zenithPartyHPBonus")}
+                                onChange={this.handleAutoCompleteEvent.bind(this, this.state.zenithPartyHPBonusFieldTypeahead, "zenithPartyHPBonus")}
                                 ref={(ref) => this.state.zenithPartyHPBonusFieldTypeahead = ref}
-                                options={selector.zenithPartyHP} />
+                                options={selector.zenithPartyHP}/>
                         </td>
                     </tr>
 
@@ -884,7 +903,8 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("LB 奥義の説明", locale)} id={"tooltip-ougidamage-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("LB 奥義の説明", locale)}
+                                     id={"tooltip-ougidamage-zenith-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("LB 奥義", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithOugiDamageBonus}
@@ -901,54 +921,60 @@ var Profile = CreateClass({
 
                     {this.state.openLBlist ?
                         [
-                    <TextWithTooltip tooltip={intl.translate("LB 属性攻撃の説明", locale)} id={"tooltip-critical-zenith-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("LB 属性攻撃", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.zenithElementBonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithElementBonus")}> {this.props.zenithElementBonuses[locale]} </FormControl>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>,
+                            <TextWithTooltip tooltip={intl.translate("LB 属性攻撃の説明", locale)}
+                                             id={"tooltip-critical-zenith-detail"}>
+                                <tr>
+                                    <th className="bg-primary">{intl.translate("LB 属性攻撃", locale)}</th>
+                                    <td><FormControl componentClass="select" value={this.state.zenithElementBonus}
+                                                     onChange={this.handleSelectEvent.bind(this, "zenithElementBonus")}> {this.props.zenithElementBonuses[locale]} </FormControl>
+                                    </td>
+                                </tr>
+                            </TextWithTooltip>,
 
-                    <TextWithTooltip tooltip={intl.translate("LB チェンバの説明", locale)} id={"tooltip-chaindamage-zenith-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("LB チェンバ", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.zenithChainDamageBonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithChainDamageBonus")}> {this.props.zenithChainDamageBonuses[locale]} </FormControl>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>,
+                            <TextWithTooltip tooltip={intl.translate("LB チェンバの説明", locale)}
+                                             id={"tooltip-chaindamage-zenith-detail"}>
+                                <tr>
+                                    <th className="bg-primary">{intl.translate("LB チェンバ", locale)}</th>
+                                    <td><FormControl componentClass="select" value={this.state.zenithChainDamageBonus}
+                                                     onChange={this.handleSelectEvent.bind(this, "zenithChainDamageBonus")}> {this.props.zenithChainDamageBonuses[locale]} </FormControl>
+                                    </td>
+                                </tr>
+                            </TextWithTooltip>,
 
-                    <TextWithTooltip tooltip={intl.translate("LB チェンバ上限の説明", locale)} id={"tooltip-chaindamagelimit-zenith-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("LB チェンバ上限", locale)}</th>
-                            <td><FormControl componentClass="select" value={this.state.zenithChainDamageLimitBonus}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithChainDamageLimitBonus")}> {this.props.zenithChainDamageLimitBonuses[locale]} </FormControl>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>,
+                            <TextWithTooltip tooltip={intl.translate("LB チェンバ上限の説明", locale)}
+                                             id={"tooltip-chaindamagelimit-zenith-detail"}>
+                                <tr>
+                                    <th className="bg-primary">{intl.translate("LB チェンバ上限", locale)}</th>
+                                    <td><FormControl componentClass="select"
+                                                     value={this.state.zenithChainDamageLimitBonus}
+                                                     onChange={this.handleSelectEvent.bind(this, "zenithChainDamageLimitBonus")}> {this.props.zenithChainDamageLimitBonuses[locale]} </FormControl>
+                                    </td>
+                                </tr>
+                            </TextWithTooltip>,
 
-                    <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                                {intl.translate("得意武器攻撃1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})
-                            </th>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus1}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithBonus1")}> {this.props.zenithBonuses[locale]} </FormControl>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>,
+                            <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)}
+                                             id={"tooltip-weapon-zenith-detail"}>
+                                <tr>
+                                    <th className="bg-primary">
+                                        {intl.translate("得意武器攻撃1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})
+                                    </th>
+                                    <td><FormControl componentClass="select" value={this.state.zenithBonus1}
+                                                     onChange={this.handleSelectEvent.bind(this, "zenithBonus1")}> {this.props.zenithBonuses[locale]} </FormControl>
+                                    </td>
+                                </tr>
+                            </TextWithTooltip>,
 
-                    <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"}>
-                        <tr>
-                            <th className="bg-primary">
-                                {intl.translate("得意武器攻撃2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})
-                            </th>
-                            <td><FormControl componentClass="select" value={this.state.zenithBonus2}
-                                             onChange={this.handleSelectEvent.bind(this, "zenithBonus2")}> {this.props.zenithBonuses[locale]} </FormControl>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>
+                            <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)}
+                                             id={"tooltip-weapon-zenith-detail"}>
+                                <tr>
+                                    <th className="bg-primary">
+                                        {intl.translate("得意武器攻撃2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})
+                                    </th>
+                                    <td><FormControl componentClass="select" value={this.state.zenithBonus2}
+                                                     onChange={this.handleSelectEvent.bind(this, "zenithBonus2")}> {this.props.zenithBonuses[locale]} </FormControl>
+                                    </td>
+                                </tr>
+                            </TextWithTooltip>
                         ]
                         : null}
 
@@ -970,11 +996,11 @@ var Profile = CreateClass({
                                         id="normalBuffField"
                                         defaultInputValue={this.state.normalBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.normalBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.normalBuffFieldTypeahead, "normalBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.normalBuffFieldTypeahead, "normalBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.normalBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
                                         ref={(ref) => this.state.normalBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -990,16 +1016,17 @@ var Profile = CreateClass({
                                         id="elementBuffField"
                                         defaultInputValue={this.state.elementBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.elementBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.elementBuffFieldTypeahead, "elementBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.elementBuffFieldTypeahead, "elementBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.elementBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
                                         ref={(ref) => this.state.elementBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("その他バフ説明", locale)} id={"tooltip-otherbuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
@@ -1009,16 +1036,17 @@ var Profile = CreateClass({
                                         id="otherBuffField"
                                         defaultInputValue={this.state.otherBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.otherBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.otherBuffFieldTypeahead, "otherBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.otherBuffFieldTypeahead, "otherBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.otherBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
                                         ref={(ref) => this.state.otherBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("その他バフ2説明", locale)} id={"tooltip-otherbuff2-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
@@ -1028,11 +1056,11 @@ var Profile = CreateClass({
                                         id="otherBuff2Field"
                                         defaultInputValue={this.state.otherBuff2.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.otherBuff2FieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.otherBuff2FieldTypeahead, "otherBuff2")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.otherBuff2FieldTypeahead, "otherBuff2")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.otherBuff2FieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
                                         ref={(ref) => this.state.otherBuff2FieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1049,7 +1077,7 @@ var Profile = CreateClass({
                                                   onCountChange={(count) => this.setState({criticalBuffCount: count})}
                                                   label="criticalBuff"
                                                   criticalArray={this.state.criticalBuff}
-                                                  initialCount={this.state.criticalBuffCount} />
+                                                  initialCount={this.state.criticalBuffCount}/>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -1063,11 +1091,11 @@ var Profile = CreateClass({
                                         id="hpBuffField"
                                         defaultInputValue={this.state.hpBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.hpBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.hpBuffFieldTypeahead, "hpBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.hpBuffFieldTypeahead, "hpBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.hpBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.hpBuffFieldTypeahead, "hpBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.hpBuffFieldTypeahead, "hpBuff")}
                                         ref={(ref) => this.state.hpBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1083,11 +1111,11 @@ var Profile = CreateClass({
                                         id="daBuffField"
                                         defaultInputValue={this.state.daBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.daBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.daBuffFieldTypeahead, "daBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.daBuffFieldTypeahead, "daBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.daBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
                                         ref={(ref) => this.state.daBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1103,11 +1131,11 @@ var Profile = CreateClass({
                                         id="taBuffField"
                                         defaultInputValue={this.state.taBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.taBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.taBuffFieldTypeahead, "taBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.taBuffFieldTypeahead, "taBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.taBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
                                         ref={(ref) => this.state.taBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1137,11 +1165,11 @@ var Profile = CreateClass({
                                         id="ougiDamageBuffField"
                                         defaultInputValue={this.state.ougiDamageBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.ougiDamageBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiDamageBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
                                         ref={(ref) => this.state.ougiDamageBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1158,11 +1186,11 @@ var Profile = CreateClass({
                                         id="additionalDamageBuffField"
                                         defaultInputValue={this.state.additionalDamageBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.additionalDamageBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.additionalDamageBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
                                         ref={(ref) => this.state.additionalDamageBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1194,11 +1222,11 @@ var Profile = CreateClass({
                                         id="ougiGageBuffField"
                                         defaultInputValue={this.state.ougiGageBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.ougiGageBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiGageBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
                                         ref={(ref) => this.state.ougiGageBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1215,11 +1243,11 @@ var Profile = CreateClass({
                                         id="upliftField"
                                         defaultInputValue={this.state.uplift.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.upliftFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.upliftFieldTypeahead, "uplift")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.upliftFieldTypeahead, "uplift")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.upliftFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.upliftFieldTypeahead, "uplift")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.upliftFieldTypeahead, "uplift")}
                                         ref={(ref) => this.state.upliftFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1237,10 +1265,10 @@ var Profile = CreateClass({
                                         defaultInputValue={this.state.ougiGageUpOugiBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '0', '99')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiGageUpOugiBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.ougiGageUpOugiBuffFieldTypeahead, "ougiGageUpOugiBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.ougiGageUpOugiBuffFieldTypeahead, "ougiGageUpOugiBuff")}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiGageUpOugiBuffFieldTypeahead, "ougiGageUpOugiBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiGageUpOugiBuffFieldTypeahead, "ougiGageUpOugiBuff")}
                                         ref={(ref) => this.state.ougiGageUpOugiBuffFieldTypeahead = ref}
-                                        options={selector.ougiGageUpOugiBuffLevel} />
+                                        options={selector.ougiGageUpOugiBuffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1257,11 +1285,11 @@ var Profile = CreateClass({
                                         id="damageLimitBuffField"
                                         defaultInputValue={this.state.damageLimitBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.damageLimitBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.damageLimitBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
                                         ref={(ref) => this.state.damageLimitBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1278,11 +1306,11 @@ var Profile = CreateClass({
                                         id="ougiDamageLimitBuffField"
                                         defaultInputValue={this.state.ougiDamageLimitBuff.toString()}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                        onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.ougiDamageLimitBuffFieldTypeahead)}
-                                        onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
-                                        onChange={this.handleAutoCompleteEvent.bind(this,  this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
+                                        onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead)}
+                                        onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
+                                        onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
                                         ref={(ref) => this.state.ougiDamageLimitBuffFieldTypeahead = ref}
-                                        options={selector.buffLevel} />
+                                        options={selector.buffLevel}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
@@ -1304,50 +1332,56 @@ var Profile = CreateClass({
                                     id="enemyDefenseField"
                                     defaultInputValue={Utilities.getLabelFromId(selector[locale].enemydeftypes, this.state.enemyDefense)}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.enemyDefenseFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this,  this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
+                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.enemyDefenseFieldTypeahead)}
+                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
+                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
                                     align={"left"}
                                     positionFixed={true}
                                     ref={(ref) => this.state.enemyDefenseFieldTypeahead = ref}
-                                    options={selector[locale].enemydeftypes} />
+                                    options={selector[locale].enemydeftypes}/>
                             </td>
                         </tr>
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("防御デバフ合計説明", locale)} id={"tooltip-defense-debuff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}<span className="input-suggest">*</span></th>
-                                <td>
-                                    <InputGroup>
-                                        <FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
-                                            onBlur={this.handleOnBlur.bind(this, "defenseDebuff")}
-                                            onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
-                                        <InputGroup.Addon>%</InputGroup.Addon>
-                                    </InputGroup>
-                                </td>
+                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}<span
+                                className="input-suggest">*</span></th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl type="number" min="0" step="5" max="100"
+                                                 value={this.state.defenseDebuff}
+                                                 onBlur={this.handleOnBlur.bind(this, "defenseDebuff")}
+                                                 onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("敵非有利耐性説明", locale)} id={"tooltip-enemy-resistance-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("敵非有利耐性説明", locale)}
+                                     id={"tooltip-enemy-resistance-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("敵非有利耐性", locale)}</th>
-                            <td><InputGroup><FormControl type="number" min="0" step="5" max="100" value={this.state.enemyResistance}
-                                             onBlur={this.state.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/>
-                                            <InputGroup.Addon>%</InputGroup.Addon>
+                            <td><InputGroup><FormControl type="number" min="0" step="5" max="100"
+                                                         value={this.state.enemyResistance}
+                                                         onBlur={this.state.handleOnBlur}
+                                                         onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/>
+                                <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)} id={"tooltip-sun-touched-paradise-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)}
+                                     id={"tooltip-sun-touched-paradise-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("特殊効果", locale)}</th>
-                                <td>
-                                    <Checkbox inline checked={this.state.retsujitsuNoRakuen}
-                                              onChange={this.handleSelectEvent.bind(this, "retsujitsuNoRakuen")}>
-                                        <strong>{intl.translate("烈日の楽園", locale)}</strong>
-                                    </Checkbox>
-                                </td>
+                            <td>
+                                <Checkbox inline checked={this.state.retsujitsuNoRakuen}
+                                          onChange={this.handleSelectEvent.bind(this, "retsujitsuNoRakuen")}>
+                                    <strong>{intl.translate("烈日の楽園", locale)}</strong>
+                                </Checkbox>
+                            </td>
                         </tr>
                     </TextWithTooltip>
 
@@ -1357,22 +1391,26 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎DA率", locale)}
                             </th>
                             <td><InputGroup><FormControl type="number" min="0" step="0.1" value={this.state.DA}
-                                             onBlur={this.handleOnBlur.bind(this, "DA")} onChange={this.handleEvent.bind(this, "DA")}/>
-                                            <InputGroup.Addon>%</InputGroup.Addon>
+                                                         onBlur={this.handleOnBlur.bind(this, "DA")}
+                                                         onChange={this.handleEvent.bind(this, "DA")}/>
+                                <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("ジータさん基礎TA率説明", locale)}
                                      id={"tooltip-player-baseta-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎TA率", locale)}
                             </th>
                             <td><InputGroup><FormControl type="number" min="0" step="0.1" value={this.state.TA}
-                                             onBlur={this.handleOnBlur.bind(this, "TA")} onChange={this.handleEvent.bind(this, "TA")}/>
-                                            <InputGroup.Addon>%</InputGroup.Addon>
+                                                         onBlur={this.handleOnBlur.bind(this, "TA")}
+                                                         onChange={this.handleEvent.bind(this, "TA")}/>
+                                <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("ジータさん奥義倍率説明", locale)} id={"tooltip-ougi-ratio-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}
@@ -1382,14 +1420,15 @@ var Profile = CreateClass({
                                     id="ougiRatioField"
                                     defaultInputValue={this.state.ougiRatio.toString()}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.ougiRatioFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.ougiRatioFieldTypeahead, "ougiRatio")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this,  this.state.ougiRatioFieldTypeahead, "ougiRatio")}
+                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiRatioFieldTypeahead)}
+                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiRatioFieldTypeahead, "ougiRatio")}
+                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiRatioFieldTypeahead, "ougiRatio")}
                                     ref={(ref) => this.state.ougiRatioFieldTypeahead = ref}
-                                    options={selector.ougiRatio} />
+                                    options={selector.ougiRatio}/>
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("確保HP説明", locale)} id={"tooltip-minimu-hp-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("確保HP", locale)}</th>
@@ -1419,6 +1458,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     </tbody>
                 </table>
             </div>

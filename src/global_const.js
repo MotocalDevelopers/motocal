@@ -74,8 +74,8 @@ module.exports.getElementColorLabel = (function (element, locale) {
  * @param {String} name Name to be passed to input
  * @returns {Object} JSON holder
  */
-module.exports.generateTypeaheadData = (type, min, max, name="") => {
-  return {"targettype": type.toString(), "min": min.toString(), "max": max.toString(), "name": name.toString()}
+module.exports.generateTypeaheadData = (type, min, max, name = "") => {
+    return {"targettype": type.toString(), "min": min.toString(), "max": max.toString(), "name": name.toString()}
 };
 
 module.exports._ua = (function (u) {
@@ -107,12 +107,14 @@ module.exports.hollowskyNames = [
     "虚空の",
     "Hollowsky"
 ];
+
 var opusNames = [
     "of Repudiation",
     "絶対否定の",
     "of Renunciation",
     "永遠拒絶の"
 ];
+
 module.exports.saveFilterMaskList = [
     "FieldTypeahead",
     "StatePlaceholder"
@@ -2691,7 +2693,7 @@ module.exports.selector.plusnum = Object.keys(plusNumList).map(function (opt) {
 });
 
 module.exports.selector.charaPlusNumList = Object.keys(charaPlusNumList).map(function (opt) {
-    return {id: charaPlusNumList[opt], label:opt};
+    return {id: charaPlusNumList[opt], label: opt};
 });
 
 module.exports.selector.level100Limit = Object.keys(levelList100Limit).map(function (opt) {
@@ -2809,13 +2811,13 @@ module.exports.supportedChartSortkeys = supportedChartSortkeys;
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys;
 
 module.exports.selector.ja.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) {
-    return {id: opt.toString(), label:intl.translate(enemyDefenseType[opt].name, "ja")};
+    return {id: opt.toString(), label: intl.translate(enemyDefenseType[opt].name, "ja")};
 });
 module.exports.selector.en.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) {
-    return {id: opt.toString(), label:intl.translate(enemyDefenseType[opt].name, "en")};
+    return {id: opt.toString(), label: intl.translate(enemyDefenseType[opt].name, "en")};
 });
 module.exports.selector.zh.enemydeftypes = Object.keys(enemyDefenseType).map(function (opt) {
-    return {id: opt.toString(), label:intl.translate(enemyDefenseType[opt].name, "zh")};
+    return {id: opt.toString(), label: intl.translate(enemyDefenseType[opt].name, "zh")};
 });
 
 module.exports.selector.ja.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
