@@ -105,6 +105,10 @@ var opusNames = [
     "of Renunciation",
     "永遠拒絶の"
 ];
+module.exports.saveFilterMaskList = [
+    "FieldTypeahead"
+];
+
 var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
