@@ -68,7 +68,34 @@ module.exports.isHollowsky = function (arm) {
     return arm != undefined && arm.name != undefined && GlobalConst.hollowskyNames.some( value => arm.name.includes(value));
 };
 
-module.exports.calcCombinations = function (arml) {
+/**
+ * Add and returns sum of numbers in array
+ * @param {number[]} arr array contains numbers
+ * @param {number} total sum of numbers in array
+ * @returns {number} sum of array
+ */
+module.exports.sum = (arr, total = 0) => {
+    for (const num of arr) {
+        total += parseInt(num);
+    }
+    return total;
+};
+
+/**
+ * This function aims to remove all combinations that has no chance to be top dps henceforth saving processing time
+ * @param {Array<number[]>} combinations all possible combinations
+ * @param {number} maxSize desired size of a combination
+ * @param {boolean} ruleMaxSize Eliminate any grid that doesn't reach maximum weapon possible for given weapon list
+ * @returns {Array<number[]>} filtered combinations
+ */
+module.exports.filterCombinations = function (combinations, maxSize, ruleMaxSize = true) {
+    if (ruleMaxSize) {
+        combinations = combinations.filter(combination => module.exports.sum(combination) === maxSize);
+    }
+    return combinations;
+};
+
+module.exports.calcCombinations = function (arml, ruleMaxSize) {
     // Calculate the array of [Minimum consideration number, ..., Maximum consideration number] for all weapons
     var armNumArray = [];
     var totalItr = 1;
@@ -99,7 +126,7 @@ module.exports.calcCombinations = function (arml) {
         isHollowskyArray[i] = module.exports.isHollowsky(arml[i]);
 
     }
-
+    let maxSize = 0;
     for (var i = 0; i < totalItr; i = (i + 1) | 0) {
         var temp = [];
         var num = 0;
@@ -132,10 +159,13 @@ module.exports.calcCombinations = function (arml) {
                 }
             }
         }
-        if (isValidCombination && ((totalItr <= 1024 && num <= 10) || num == 10)) combinations.push(temp);
+        if (isValidCombination && ((totalItr <= 1024 && num <= 10) || num === 10)) {
+            combinations.push(temp);
+            maxSize = Math.max(maxSize, num);
+        }
         index = module.exports.proceedIndex(index, armNumArray, 0)
     }
-    return combinations
+    return module.exports.filterCombinations(combinations, maxSize, ruleMaxSize);
 };
 
 module.exports.getTypeBonus = function (self_elem, enemy_elem) {
@@ -1378,7 +1408,7 @@ module.exports.getTotalBuff = function (prof) {
         uplift: 0,
         supplementalDamageBuff: 0,
         //enemyBuffCount: 0,
-        enemyDebuffCount: 0,
+        enemyDebuffCount: 0
     };
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -2250,7 +2280,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuff: 100 * djeetaBuffList['personalSupplementalDamageBuff'],
                 supplementalThirdHit: [],
                 covenant: null,
-                buffCount: 0,
+                buffCount: 0
                 //debuffCount: 0,
             }
     };
@@ -2411,7 +2441,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 criticalBuff: chara[i].criticalBuff,
                 supplementalDamageBuff: 100 * charaBuffList['supplementalDamageBuff'],
                 supplementalThirdHit: [],
-                covenant: null,
+                covenant: null
                 //buffCount: 0,
                 //debuffCount: 0,
             };

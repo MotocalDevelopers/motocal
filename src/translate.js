@@ -899,6 +899,11 @@ var multiLangData = {
         "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 → 0倍\n 2 → 1.25倍\n 3 → 1.33…倍\n 4 → 1.5倍",
         "zh": "设定Chain数(Chain Burst的系数会变化)",
     },
+    "弱い編成を隠す": {
+        "en": "Hide Weaker Grids",
+        "ja": "弱い編成を隠す",
+        "zh": "Hide Weaker Grids"
+    },
     "ジータさんのみ": {
         "en": "(Player only)",
         "ja": "(ジータさんのみ)",

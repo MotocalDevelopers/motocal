@@ -63,8 +63,9 @@ var ResultList = CreateClass({
             // If combinations have not been changed, use old guys
             if (this.state.previousArmlist != null) {
                 var isCombinationChanged = false;
-                if (this.state.previousArmlist.length != arml.length) {
+                if (this.state.previousArmlist.length != arml.length || prof.filterOptionsChanged) {
                     isCombinationChanged = true;
+                    prof.filterOptionsChanged = false;
                 }
                 if (!isCombinationChanged) {
                     for (var i = 0; i < arml.length; i = (i + 1) | 0) {
@@ -84,14 +85,14 @@ var ResultList = CreateClass({
                     }
                 }
                 if (isCombinationChanged) {
-                    var combinations = calcCombinations(arml);
+                    var combinations = calcCombinations(arml, prof.ruleMaxSize);
                     this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
                     this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
                 } else {
                     var combinations = this.state.previousCombinations
                 }
             } else {
-                var combinations = calcCombinations(arml);
+                var combinations = calcCombinations(arml, prof.ruleMaxSize);
                 this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
                 this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
             }
@@ -223,6 +224,8 @@ var ResultList = CreateClass({
             ChartButtonActive: false,
             previousArmlist: null,
             previousCombinations: null,
+            ruleMaxSize: true,
+            filterOptionsChanged: false
         };
     },
     closeHPChart: function () {
