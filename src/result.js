@@ -63,8 +63,9 @@ var ResultList = CreateClass({
             // If combinations have not been changed, use old guys
             if (this.state.previousArmlist != null) {
                 var isCombinationChanged = false;
-                if (this.state.previousArmlist.length != arml.length) {
+                if (this.state.previousArmlist.length != arml.length || prof.filterOptionsChanged) {
                     isCombinationChanged = true;
+                    prof.filterOptionsChanged = false;
                 }
                 if (!isCombinationChanged) {
                     for (var i = 0; i < arml.length; i = (i + 1) | 0) {
@@ -84,14 +85,14 @@ var ResultList = CreateClass({
                     }
                 }
                 if (isCombinationChanged) {
-                    var combinations = calcCombinations(arml);
+                    var combinations = calcCombinations(arml, prof.ruleMaxSize);
                     this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
                     this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
                 } else {
                     var combinations = this.state.previousCombinations
                 }
             } else {
-                var combinations = calcCombinations(arml);
+                var combinations = calcCombinations(arml, prof.ruleMaxSize);
                 this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
                 this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
             }
@@ -223,6 +224,8 @@ var ResultList = CreateClass({
             ChartButtonActive: false,
             previousArmlist: null,
             previousCombinations: null,
+            ruleMaxSize: true,
+            filterOptionsChanged: false
         };
     },
     closeHPChart: function () {
@@ -485,6 +488,7 @@ var ResultList = CreateClass({
         buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
         buffInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
         buffInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
+        buffInfo.push(intl.translate("烈日の楽園", locale) + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         buffInfo.push(intl.translate("敵非有利耐性", locale) + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance)))));
         var buffInfoStr = buffInfo.join(", ");
 

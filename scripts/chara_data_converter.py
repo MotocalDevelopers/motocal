@@ -42,116 +42,122 @@ supportAbilist["da_up_all_10"] = {
     u"双剣乱舞"
 }
 supportAbilist["ta_up_all_3"] = {
-   u"大いなる翼"
+    u"大いなる翼"
 }
 supportAbilist["data_up_wind_10_5"] = {
-   u"溢れる母性"
+    u"溢れる母性"
+}
+supportAbilist["data_up_water_10_5"] = {
+    u"舞い歌う夏の巫女"
 }
 supportAbilist["da_up_fist_10"] = {
-   u"古今無双流"
+    u"古今無双流"
 }
 supportAbilist["hp_down_own_15"] = {
-   u"喪失する自我",
-   u"アストラルチャージ"
+    u"喪失する自我",
+    u"アストラルチャージ"
 }
 supportAbilist["hp_up_own_10"] = {
     u"黒の鎧"
 }
 supportAbilist["hp_up_own_15"] = {
-   u"やばいですね☆"
+    u"やばいですね☆"
 }
 supportAbilist["hp_up_own_20"] = {
-   u"老當益壮",
-   u"本物のヒーロー"
+    u"老當益壮",
+    u"本物のヒーロー"
 }
 supportAbilist["atk_up_own_5"] = {
-   u"愛憎の衝動"
+    u"愛憎の衝動"
 }
 supportAbilist["atk_up_all_5"] = {
-   u"クイーン・オブ・カジノ",
-   u"ディペンデンス"
+    u"クイーン・オブ・カジノ",
+    u"ディペンデンス"
 }
 supportAbilist["atk_up_all_10"] = {
-   u"羊神宮の主"
+    u"羊神宮の主"
 }
 supportAbilist["atk_up_doraf"] = {
-   u"質実剛健"
+    u"質実剛健"
 }
 supportAbilist["atk_up_depends_races"] = {
-   u"氷晶宮の特使"
+    u"氷晶宮の特使"
 }
 supportAbilist["element_buff_boost_own_30"] = {
-   u"王者の風格"
+    u"王者の風格"
 }
 supportAbilist["eternal_wisdom"] = {
-   u"久遠の叡智"
+    u"久遠の叡智"
 }
 supportAbilist["ougi_gage_up_own_10"] = {
-   u"戦賢の書"
+    u"戦賢の書"
 }
 supportAbilist["ougi_gage_up_own_20"] = {
-   u"剣聖",
-   u"静かな威圧",
-   u"片翼の悪魔",
-   u"見た目は子供、頭脳は大人"
+    u"剣聖",
+    u"静かな威圧",
+    u"片翼の悪魔",
+    u"見た目は子供、頭脳は大人"
 }
 supportAbilist["ougi_gage_up_own_100"] = {
-   u"刀神"
+    u"刀神"
 }
 supportAbilist["ougi_gage_down_own_35"] = {
-   u"ケンプファー",
-   u"闘争求む重鎧"
+    u"ケンプファー",
+    u"闘争求む重鎧"
 }
 supportAbilist["ougi_gage_up_djeeta_20"] = {
     u"クラリスちゃんの特製チョコ☆"
 }
 supportAbilist["ougi_damage_up_50_cap_10"] = {
-   u"天星剣王2"
+    u"天星剣王2"
 }
 supportAbilist["ougi_damage_up_50"] = {
-   u"天星剣王"
+    u"天星剣王"
 }
 supportAbilist["emnity_all_SL10"] = {
-   u"太陽信仰"
+    u"太陽信仰"
 }
 supportAbilist["emnity_own_SL20"] = {
-   u"ダーク・ラピュセル",
-   u"絶望の剣",
-   u"砂神グラフォスの慈愛",
-   u"砂神グラフォスの慈愛"
+    u"ダーク・ラピュセル",
+    u"絶望の剣",
+    u"砂神グラフォスの慈愛"
 }
 supportAbilist["envoy_meditation"] = {
-   u"調停の使徒"
+    u"調停の使徒"
 }
 supportAbilist["ideal_vassals"] = {
-   u"理想の家臣"
+    u"理想の家臣"
 }
 supportAbilist["dance_of_nataraja"] = {
-   u"破滅の舞踏"
+    u"破滅の舞踏"
 }
 supportAbilist["recklessness_incarnate"] = {
-   u"猪突・上宝沁金ノ撃槍"
+    u"猪突・上宝沁金ノ撃槍"
 }
+supportAbilist["knightmare_frame"] = {
+    u"人型自在戦闘装甲騎",
+    u"ナイトメアフレーム"
+
 supportAbilist["critical_up_own_10_30"] = {
     u"セルフィッシュ・ロイヤル",
     u"ラ・ピュセル30"
 }
 supportAbilist["critical_up_own_20_20"] = {
-   u"ラ・ピュセル20"
+    u"ラ・ピュセル20"
 }
 supportAbilist["critical_up_own_40_50"] = {
-   u"ぶっ殺すわよ！"
+    u"ぶっ殺すわよ！"
 }
 supportAbilist["critical_up_all_5_30"] = {
-   u"調教してやる"
+    u"調教してやる"
 }
 supportAbilist["critical_up_others_20_20"] = {
     u"護るべし、その笑顔"
 }
-supportAbilist["damageUP_5"] = {
-   u"真っ二つにしてやるんだっ！"
-}
 #The effect size of "真っ二つにしてやるんだっ！" has not been verified.
+supportAbilist["damageUP_5"] = {
+    u"真っ二つにしてやるんだっ！"
+}
 #supportAbilist["damageUP_10"] = {u""}
 supportAbilist["damageUP_20"] = {
     u"炎帝の刃",
@@ -253,17 +259,17 @@ supportAbilist["debuff_resistance_up_own_15"] = {
 supportAbilist["debuff_resistance_up_own_80"] = {
     u"魔道の申し子"
 }
-
 supportAbilist["stamina_all_L"] = {
     u"夏祭りの思い出",
     u"不退転の戦旗",
     u"絶対だいじょうぶだよ"
 }
-
+supportAbilist["stamina_all_M"] = {
+    u"黒の騎士団 総司令"
+}
 supportAbilist["stamina_all_L_hp_down_own_15"] = {
     u"真夏の夜の夢"
 }
-
 supportAbilist["supplemental_third_hit_50k"] = {
     u"みんなのあんぜんあんしん"
 }
