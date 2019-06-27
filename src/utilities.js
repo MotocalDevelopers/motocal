@@ -79,7 +79,7 @@ module.exports.filterObjectsFromSave = function (save, list=saveFilterMaskList) 
             delete save[item];
         }
         if (save[item] !== null && typeof (save[item]) == "object") {
-            this.filterObjectsFromSave(save[item]);
+            this.filterObjectsFromSave(save[item], list);
         }
     }
 };
