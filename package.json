@@ -6,7 +6,6 @@
     "@babel/core": "^7.4.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.6",
-    "babel-plugin-rewire": "^1.2.0",
     "babel-plugin-transform-inline-environment-variables": "0.4.3",
     "babel-preset-react": "6.24.1",
     "copy-webpack-plugin": "^4.5.1",

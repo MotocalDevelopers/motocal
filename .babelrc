@@ -3,7 +3,6 @@
     "@babel/preset-react"
   ],
   "plugins": [
-    "transform-inline-environment-variables",
-    "rewire"
+    "transform-inline-environment-variables"
   ]
 }
