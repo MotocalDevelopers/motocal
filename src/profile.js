@@ -232,7 +232,15 @@ var Profile = CreateClass({
     },
     handleAutoCompleteEvent: function (ref, key, selected) {
         let newState = this.state;
-        newState[key] = parseFloat(selected[0].id || selected[0]);
+        if (selected[0]) {
+            if(selected[0].hasOwnProperty("id")) {
+                newState[key] = parseFloat(selected[0].id);
+            } else {
+                newState[key] = parseFloat(selected[0]);
+            }
+        } else {
+            newState[key] = parseFloat(ref.state.text);
+        }
         this.setState(newState)
     },
     handleEvent: function (key, e) {

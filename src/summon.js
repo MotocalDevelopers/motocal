@@ -293,13 +293,16 @@ var Summon = CreateClass({
     },
     handleSummonAmountChange(ref, selected) {
         let newState = this.state;
-        if (ref.props.inputProps.targettype === "number") {
-            selected = Utilities.parseNumberInputField(selected[0], ref.props.inputProps, placeholder);
+        if (selected[0]) {
+            if(selected[0].hasOwnProperty("id")) {
+                newState[ref.props.inputProps.name] = parseFloat(selected[0].id);
+            } else {
+                newState[ref.props.inputProps.name] = parseFloat(selected[0]);
+            }
+        } else {
+            newState[ref.props.inputProps.name] = parseFloat(ref.state.text);
         }
-        newState[ref.props.inputProps.name] = selected;
-        ref.setState({text: selected.toString()});
-        this.setState(newState);
-        this.props.onChange(this.props.id, newState)
+        this.setState(newState)
     },
     handleOnSummonAmountFocus: function (ref, e) {
         if (e.target.value) {
