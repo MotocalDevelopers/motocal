@@ -66,6 +66,14 @@ module.exports.getElementColorLabel = (function (element, locale) {
     return <span className="label label-danger">{intl.translate("火", locale)}</span>
 });
 
+/**
+ * Generates input parameters for typeaheads.
+ * @param {String} type Type to be passed to input
+ * @param {String|number} min Minimum value for numbers
+ * @param {String|number} max Maximum value for numbers
+ * @param {String} name Name to be passed to input
+ * @returns {Object} JSON holder
+ */
 module.exports.generateTypeaheadData = (type, min, max, name="") => {
   return {"targettype": type.toString(), "min": min.toString(), "max": max.toString(), "name": name.toString()}
 };
