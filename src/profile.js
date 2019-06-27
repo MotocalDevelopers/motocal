@@ -244,7 +244,7 @@ var Profile = CreateClass({
         if (ref.props.inputProps.targettype === "number") {
             value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.placeholder);
         }
-        ref.state.text = value.toString();
+        ref.setState({text: value.toString()});
         newState[key] = value;
         this.props.onChange(newState);
     },
@@ -265,8 +265,10 @@ var Profile = CreateClass({
         if (e.target.value) {
             this.state.placeholder = e.target.value;
         }
-        ref.state.text = "";
-        ref.state.selected = [];
+        ref.setState({
+           text: "",
+           selected: []
+        });
     },
     handleOnFocus: function(e) {
         if (e.target.value){
@@ -295,8 +297,8 @@ var Profile = CreateClass({
         return null;
     },
     render: function () {
-        var locale = this.props.locale;
-
+        let locale = this.props.locale;
+        let showInvul = this.state.openBufflist ? "" : "hidden";
         return (
             <div className="profile">
                 {this.renderTwitterLink()}
@@ -378,10 +380,9 @@ var Profile = CreateClass({
                             onClick={this.switchBufflist}>{intl.translate("個別バフ", locale)}</Button></th>
                         <td/>
                     </tr>
-                    // INVUL BUFF
-                    <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)}
+                    <TextWithTooltip className={showInvul} tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)}
                                      id={"tooltip-remain-hp-djeeta-detail"}>
-                        <tr>
+                        <tr className={showInvul}>
                             <th className="bg-primary">
                                 {intl.translate("残HP割合", locale)}<br/>{intl.translate("ジータさんのみ", locale)}
                             </th>
@@ -395,7 +396,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
-                    <tr key="personalNormalBuff">
+                    <tr className={showInvul} key="personalNormalBuff">
                         <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -412,7 +413,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalElementBuff">
+                    <tr className={showInvul} key="personalElementBuff">
                         <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -429,7 +430,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalOtherBuff">
+                    <tr className={showInvul} key="personalOtherBuff">
                         <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -446,7 +447,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalOtherBuff2">
+                    <tr className={showInvul} key="personalOtherBuff2">
                         <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                         <td>
                             <InputGroup>
@@ -463,7 +464,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalDABuff">
+                    <tr className={showInvul} key="personalDABuff">
                         <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -480,7 +481,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalTABuff">
+                    <tr className={showInvul} key="personalTABuff">
                         <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -497,7 +498,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalAdditionalDamageBuff">
+                    <tr className={showInvul} key="personalAdditionalDamageBuff">
                         <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -514,7 +515,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalSupplementalDamageBuff">
+                    <tr className={showInvul} key="personalSupplementalDamageBuff">
                         <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                         <td>
                             <FormControl id="personalSupplementalDamageBuffField" type="number"
@@ -524,7 +525,7 @@ var Profile = CreateClass({
                                          onChange={this.handleEvent.bind(this, "personalSupplementalDamageBuff")}/>
                         </td>
                     </tr>
-                    <tr key="personalOugiDamageBuff">
+                    <tr className={showInvul} key="personalOugiDamageBuff">
                         <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
                         <td>
                             <InputGroup>
@@ -541,7 +542,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalOugiGageBuff">
+                    <tr className={showInvul} key="personalOugiGageBuff">
                         <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -558,7 +559,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalUplift">
+                    <tr className={showInvul} key="personalUplift">
                         <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                         <td>
                             <InputGroup>
@@ -575,7 +576,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalDamageLimitBuff">
+                    <tr className={showInvul} key="personalDamageLimitBuff">
                         <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -592,7 +593,7 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr key="personalOugiDamageLimitBuff">
+                    <tr className={showInvul} key="personalOugiDamageLimitBuff">
                         <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
                         <td>
                             <InputGroup>
@@ -609,7 +610,6 @@ var Profile = CreateClass({
                             </InputGroup>
                         </td>
                     </tr>
-                    // INVUL BUFF
                     <tr>
                         <td colSpan="2">
                             <strong>{intl.translate("ジータさんマスターボーナス", locale)}</strong>

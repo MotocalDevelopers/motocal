@@ -401,12 +401,13 @@ var Chara = CreateClass({
         this.handleAutoCompleteEvent(null, key, [e.target.value])
     },
     handleAutoCompleteOnFocus: function (ref, e) {
-        ref = this.state[ref];
         if (e.target.value) {
             this.state.placeholder = e.target.value;
         }
-        ref.state.text = "";
-        ref.state.selected = [];
+        ref.setState({
+            text: "",
+            selected: []
+        });
     },
     handleOnFocus: function(e) {
         if (e.target.value){
@@ -431,7 +432,7 @@ var Chara = CreateClass({
         if (ref.props.inputProps.targettype === "number") {
             value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.placeholder);
         }
-        ref.state.text = value.toString();
+        ref.setState({text: value.toString()});
         newState[key] = value;
         if (key === "name" && this.state.name !== "" && ref.state.text !== "") {
             this.props.onChange(this.props.id, this.state, true)
@@ -441,7 +442,6 @@ var Chara = CreateClass({
     },
     handleAutoCompleteOnBlur: function (ref, key) {
         // Send change to parent only when focus is off
-        ref = this.state[ref];
         this.completeBlurAction(ref, key);
     },
     handleOnBlur: function (key, e) {
@@ -567,9 +567,9 @@ var Chara = CreateClass({
                                 id="plusBonusField"
                                 defaultInputValue={Utilities.getLabelFromId(selector.charaPlusNumList, this.state.plusBonus.toString())}
                                 inputProps={GlobalConst.generateTypeaheadData("number", '0', '999')}
-                                onFocus={this.handleAutoCompleteOnFocus.bind(this, "plusBonusFieldTypeahead")}
-                                onBlur={this.handleAutoCompleteOnBlur.bind(this, "plusBonusFieldTypeahead", "plusBonus")}
-                                onChange={this.handleAutoCompleteEvent.bind(this, "plusBonusFieldTypeahead", "plusBonus")}
+                                onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.plusBonusFieldTypeahead)}
+                                onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.plusBonusFieldTypeahead, "plusBonus")}
+                                onChange={this.handleAutoCompleteEvent.bind(this, this.state.plusBonusFieldTypeahead, "plusBonus")}
                                 ref={(ref) => this.state.plusBonusFieldTypeahead = ref}
                                 options={selector.charaPlusNumList}/>
                         </td>
@@ -639,9 +639,9 @@ var Chara = CreateClass({
                                             id="normalBuffField"
                                             defaultInputValue={this.state.normalBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "normalBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "normalBuffFieldTypeahead", "normalBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "normalBuffFieldTypeahead", "normalBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.normalBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
                                             ref={(ref) => this.state.normalBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -656,9 +656,9 @@ var Chara = CreateClass({
                                             id="elementBuffField"
                                             defaultInputValue={this.state.elementBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "elementBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "elementBuffFieldTypeahead", "elementBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "elementBuffFieldTypeahead", "elementBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.elementBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
                                             ref={(ref) => this.state.elementBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -673,9 +673,9 @@ var Chara = CreateClass({
                                             id="otherBuffField"
                                             defaultInputValue={this.state.otherBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "otherBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "otherBuffFieldTypeahead", "otherBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "otherBuffFieldTypeahead", "otherBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.otherBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
                                             ref={(ref) => this.state.otherBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -690,9 +690,9 @@ var Chara = CreateClass({
                                             id="otherBuff2Field"
                                             defaultInputValue={this.state.otherBuff2.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "otherBuff2FieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "otherBuff2FieldTypeahead", "otherBuff2")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "otherBuff2FieldTypeahead", "otherBuff2")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.otherBuff2FieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
                                             ref={(ref) => this.state.otherBuff2FieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -707,9 +707,9 @@ var Chara = CreateClass({
                                             id="daBuffField"
                                             defaultInputValue={this.state.daBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "daBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "daBuffFieldTypeahead", "daBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "daBuffFieldTypeahead", "daBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.daBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
                                             ref={(ref) => this.state.daBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -724,9 +724,9 @@ var Chara = CreateClass({
                                             id="taBuffField"
                                             defaultInputValue={this.state.taBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "taBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "taBuffFieldTypeahead", "taBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "taBuffFieldTypeahead", "taBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.taBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
                                             ref={(ref) => this.state.taBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -741,9 +741,9 @@ var Chara = CreateClass({
                                             id="additionalDamageBuffField"
                                             defaultInputValue={this.state.additionalDamageBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "additionalDamageBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "additionalDamageBuffFieldTypeahead", "additionalDamageBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "additionalDamageBuffFieldTypeahead", "additionalDamageBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.additionalDamageBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
                                             ref={(ref) => this.state.additionalDamageBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -764,9 +764,9 @@ var Chara = CreateClass({
                                             id="ougiGageBuffField"
                                             defaultInputValue={this.state.ougiGageBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "ougiGageBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "ougiGageBuffFieldTypeahead", "ougiGageBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "ougiGageBuffFieldTypeahead", "ougiGageBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiGageBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
                                             ref={(ref) => this.state.ougiGageBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -781,9 +781,9 @@ var Chara = CreateClass({
                                             id="upliftField"
                                             defaultInputValue={this.state.uplift.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "upliftFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "upliftFieldTypeahead", "uplift")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "upliftFieldTypeahead", "uplift")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.upliftFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.upliftFieldTypeahead, "uplift")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.upliftFieldTypeahead, "uplift")}
                                             ref={(ref) => this.state.upliftFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -798,9 +798,9 @@ var Chara = CreateClass({
                                             id="ougiDamageBuffField"
                                             defaultInputValue={this.state.ougiDamageBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "ougiDamageBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "ougiDamageBuffFieldTypeahead", "ougiDamageBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "ougiDamageBuffFieldTypeahead", "ougiDamageBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiDamageBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
                                             ref={(ref) => this.state.ougiDamageBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -815,9 +815,9 @@ var Chara = CreateClass({
                                             id="damageLimitBuffField"
                                             defaultInputValue={this.state.damageLimitBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "damageLimitBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "damageLimitBuffFieldTypeahead", "damageLimitBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "damageLimitBuffFieldTypeahead", "damageLimitBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.damageLimitBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
                                             ref={(ref) => this.state.damageLimitBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -832,9 +832,9 @@ var Chara = CreateClass({
                                             id="ougiDamageLimitBuffField"
                                             defaultInputValue={this.state.ougiDamageLimitBuff.toString()}
                                             inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, "ougiDamageLimitBuffFieldTypeahead")}
-                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, "ougiDamageLimitBuffFieldTypeahead", "ougiDamageLimitBuff")}
-                                            onChange={this.handleAutoCompleteEvent.bind(this, "ougiDamageLimitBuffFieldTypeahead", "ougiDamageLimitBuff")}
+                                            onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead)}
+                                            onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
+                                            onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
                                             ref={(ref) => this.state.ougiDamageLimitBuffFieldTypeahead = ref}
                                             options={selector.buffLevel}/>
                                         <InputGroup.Addon>%</InputGroup.Addon>

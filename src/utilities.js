@@ -44,7 +44,7 @@ module.exports.parseNumberInputField = function (value, props, def = 0) {
  */
 module.exports.getLabelFromId = function (selector, id) {
     for (let select of selector) {
-        if (select.id === id) {
+        if (select.id === id.toString()) {
             return select.label
         }
     }
