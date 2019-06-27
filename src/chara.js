@@ -454,7 +454,7 @@ var Chara = CreateClass({
         let newState = this.state;
         if (key) {
             let value;
-            if(ref.state.text) {
+            if(ref.state.hasOwnProperty("text")) {
                 value = ref.state.text;
             } else {
                 value = ref.props.value;
