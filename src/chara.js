@@ -418,7 +418,11 @@ var Chara = CreateClass({
             }
         }
 
-        this.setState(newState)
+        if (key === "name" && this.state.name !== "" && ref.state.text !== "") {
+            this.props.onChange(this.props.id, newState, true)
+        } else {
+            this.props.onChange(this.props.id, newState, false)
+        }
     },
     handleEvent: function (key, e) {
         this.handleAutoCompleteEvent(null, key, [e.target.value])
