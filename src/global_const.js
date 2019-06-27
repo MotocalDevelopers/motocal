@@ -205,7 +205,7 @@ var HPList = [
     80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61,
     60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41,
     40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21,
-    20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+    20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 var plusNumList = {
     "+0": 0,
     "+99(max)": 99,
@@ -1898,18 +1898,24 @@ var supportAbilities = {
         "range": "all",
         "value": 0.10
     },
-    // TODO: Nezahualpilli support skill update when confirmed
+    // ID is not changed for compatibility of save data.
     "ta_up_all_3": {
-        "name": "全体TA率3%UP(ネツァ)",
+        "name": "全体TA率5%UP(ネツァ)",
         "type": "TASupport",
         "range": "all",
-        "value": 0.03
+        "value": 0.05
     },
     "data_up_wind_10_5": {
         "name": "全体風DA率10%UP&TA率5%UP(コッコロ)",
-        "type": "dataBuff_wind",
-        "range": "all",
-        "value": 0.00
+        "type": "DATASupport",
+        "range": "wind",
+        "value": [0.10, 0.05]
+    },
+    "data_up_water_10_5": {
+        "name": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
+        "type": "DATASupport",
+        "range": "water",
+        "value": [0.10, 0.05]
     },
     "da_up_fist_10": {
         "name": "格闘キャラDA率10%UP(ガンダゴウザ)",
