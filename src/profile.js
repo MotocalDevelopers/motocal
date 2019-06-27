@@ -1044,7 +1044,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                             <td>
                                 <CriticalBuffList locale={locale}
-                                                  onBlur={this.handleOnBlur}
+                                                  onBlur={this.handleAutoCompleteOnBlur}
                                                   onFocus={this.handleAutoCompleteOnFocus}
                                                   onCountChange={(count) => this.setState({criticalBuffCount: count})}
                                                   label="criticalBuff"

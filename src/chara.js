@@ -417,6 +417,7 @@ var Chara = CreateClass({
                 }
             }
         }
+
         this.setState(newState)
     },
     handleEvent: function (key, e) {
@@ -451,21 +452,37 @@ var Chara = CreateClass({
     },
     completeBlurAction: function (ref, key) {
         let newState = this.state;
-        let value = ref.state.text;
-        if (ref.props.inputProps.targettype === "number") {
-            value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.placeholder);
+        if (key) {
+            let value;
+            if(ref.state.text) {
+                value = ref.state.text;
+            } else {
+                value = ref.props.value;
+            }
+            if (ref.props.inputProps) {
+                if (ref.props.inputProps.targettype === "number") {
+                    value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.placeholder);
+                }
+            } else {
+                if (ref.props.type === "number") {
+                    value = Utilities.parseNumberInputField(value, ref.props, this.state.placeholder);
+                }
+            }
+            newState[key] = value;
         }
-        ref.setState({text: value.toString()});
-        newState[key] = value;
-        if (key === "name" && this.state.name !== "" && ref.state.text !== "") {
-            this.props.onChange(this.props.id, this.state, true)
-        } else {
-            this.props.onChange(this.props.id, this.state, false)
-        }
+        return newState
     },
     handleAutoCompleteOnBlur: function (ref, key) {
         // Send change to parent only when focus is off
-        this.completeBlurAction(ref, key);
+        let newState = this.completeBlurAction(ref, key);
+        if (key) {
+            ref.setState({text: newState[key].toString()});
+        }
+        if (key === "name" && this.state.name !== "" && ref.state.text !== "") {
+            this.props.onChange(this.props.id, newState, true)
+        } else {
+            this.props.onChange(this.props.id, newState, false)
+        }
     },
     handleOnBlur: function (key, e) {
         // Send change to parent only when focus is off
@@ -474,7 +491,12 @@ var Chara = CreateClass({
         ref.props.inputProps.min = e.target.min;
         ref.props.inputProps.max = e.target.max;
         ref.props.inputProps.targettype = e.target.type;
-        this.completeBlurAction(ref, key);
+        let newState = this.completeBlurAction(ref, key);
+        if (key == "name" && newState.name != "" && e.target.value != "") {
+            this.props.onChange(this.props.id, newState, true)
+        } else {
+            this.props.onChange(this.props.id, newState, false)
+        }
     },
     openPresets: function (e) {
         if (e.target.value == "" && this.state.attack == 0) {
@@ -724,7 +746,8 @@ var Chara = CreateClass({
                         <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                         <td>
                             <CriticalBuffList locale={locale}
-                                              onBlur={this.handleOnBlur.bind(this, null)}
+                                              onBlur={this.handleAutoCompleteOnBlur}
+                                              onFocus={this.handleAutoCompleteOnFocus}
                                               onCountChange={(count) => this.setState({criticalBuffCount: count})}
                                               label="criticalBuff"
                                               criticalArray={this.state.criticalBuff}

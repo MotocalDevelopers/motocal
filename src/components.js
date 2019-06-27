@@ -35,7 +35,7 @@ class CriticalBuffList extends React.Component {
      * Notify event
      * @param {Object} ref ... Reference of the input
      */
-    handleOnBlur(ref){
+    handleOnBlur(e, ref){
         if (this.props.onBlur) {
             if (ref) {
                 this.props.onBlur(ref, "CriticalStatePlaceholder");
@@ -100,7 +100,7 @@ class CriticalBuffList extends React.Component {
             <strong>{intl.translate("数", locale)}</strong>
             <FormControl type="number"
                          min="0" max={maxCount} value={count}
-                         onBlur={() => this.handleOnBlur(this.countField)}
+                         onBlur={(e) => this.handleOnBlur(e, this.countField)}
                          onFocus={(e) => this.handleOnFocus(this.countField, e)}
                          ref={(ref) => this.countField = ref}
                          onChange={this.handleOnChange.bind(this, "count", null)}/>
@@ -112,8 +112,10 @@ class CriticalBuffList extends React.Component {
                         id="criticalRateField"
                         defaultInputValue={(Math.round(100 * value)).toString()}
                         inputProps={generateTypeaheadData("number", '0', '100')}
-                        onBlur={() => (this.handleOnBlur(this.state["criticalRateFieldTypeahead" + idx]))}
+                        labelKey={"value"}
+                        onBlur={(e) => (this.handleOnBlur(e, this.state["criticalRateFieldTypeahead" + idx]))}
                         onChange={(e) => (this.handleOnChange("value", idx, e[0]))}
+                        onInputChange={(e) => (this.handleOnChange("value", idx, e))}
                         onFocus={(e) => (this.handleOnFocus(this.state["criticalRateFieldTypeahead" + idx], e))}
                         ref={(ref) => this.state["criticalRateFieldTypeahead" + idx] = ref}
                         options={selector.criticalRateLevel}/>
@@ -124,9 +126,11 @@ class CriticalBuffList extends React.Component {
                     <Typeahead
                         id="attackRatioField"
                         defaultInputValue={(Math.round(100*attackRatio)).toString()}
-                        inputProps={generateTypeaheadData("number", '0', '100')}
-                        onBlur={() => (this.handleOnBlur(this.state["attackRatioFieldTypeahead" + idx]))}
+                        inputProps={generateTypeaheadData("number", '0', '1000')}
+                        labelKey={"attackRatio"}
+                        onBlur={(e) => (this.handleOnBlur(e, this.state["attackRatioFieldTypeahead" + idx]))}
                         onChange={(e) => (this.handleOnChange("attackRatio", idx, e[0]))}
+                        onInputChange={(e) => (this.handleOnChange("attackRatio", idx, e))}
                         onFocus={(e) => (this.handleOnFocus(this.state["attackRatioFieldTypeahead" + idx], e))}
                         ref={(ref) => this.state["attackRatioFieldTypeahead" + idx] = ref}
                         options={selector.buffLevel}/>
