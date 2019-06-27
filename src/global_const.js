@@ -114,7 +114,8 @@ var opusNames = [
     "永遠拒絶の"
 ];
 module.exports.saveFilterMaskList = [
-    "FieldTypeahead"
+    "FieldTypeahead",
+    "StatePlaceholder"
 ];
 
 var zenith = {　//得意武器
@@ -2661,9 +2662,7 @@ module.exports.selector.consider = considerNum.map(function (opt) {
 });
 module.exports.selector.buffLevel = buffLevelList.map(String);
 module.exports.selector.ougiGageUpOugiBuffLevel = ougiGageUpOugiBuffLevelList.map(String);
-module.exports.selector.criticalRateLevel = criticalRateLevelList.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
+module.exports.selector.criticalRateLevel = criticalRateLevelList.map(String);
 module.exports.selector.ougiRatio = ougiRatioList.map(String);
 module.exports.selector.hplist = HPList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;

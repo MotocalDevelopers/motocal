@@ -249,7 +249,7 @@ var Profile = CreateClass({
         } else {
             newState[key] = parseFloat(ref.state.text);
         }
-        this.setState(newState)
+        this.setState(newState);
 
         if (key == "criticalBuffCount") {
             if (newState.criticalBuff.length > newState.criticalBuffCount) {
@@ -276,17 +276,33 @@ var Profile = CreateClass({
     },
     completeBlurAction: function (ref, key) {
         let newState = this.state;
-        let value = ref.state.text;
-        if (ref.props.inputProps.targettype === "number") {
-            value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.placeholder);
+        if (key) {
+            let value;
+            if(ref.state.text) {
+                value = ref.state.text;
+            } else {
+                value = ref.props.value;
+            }
+            if (ref.props.inputProps) {
+                if (ref.props.inputProps.targettype === "number") {
+                    value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.placeholder);
+                }
+            } else {
+                if (ref.props.type === "number") {
+                    value = Utilities.parseNumberInputField(value, ref.props, this.state.placeholder);
+                }
+            }
+            newState[key] = value;
         }
-        ref.setState({text: value.toString()});
-        newState[key] = value;
-        this.props.onChange(newState);
+        return newState
     },
     handleAutoCompleteOnBlur: function (ref, key) {
         // Send change to parent only when focus is off
-        this.completeBlurAction(ref, key);
+        let newState = this.completeBlurAction(ref, key);
+        if (key) {
+            ref.setState({text: newState[key].toString()});
+        }
+        this.props.onChange(newState);
     },
     handleOnBlur: function (key, e) {
         // Send change to parent only when focus is off
@@ -295,15 +311,16 @@ var Profile = CreateClass({
         ref.props.inputProps.min = e.target.min;
         ref.props.inputProps.max = e.target.max;
         ref.props.inputProps.targettype = e.target.type;
-        this.completeBlurAction(ref, key);
+        let newState = this.completeBlurAction(ref, key);
+        this.props.onChange(newState);
     },
     handleAutoCompleteOnFocus: function (ref, e) {
         if (e.target.value) {
             this.state.placeholder = e.target.value;
         }
         ref.setState({
-           text: "",
-           selected: []
+            text: "",
+            selected: []
         });
     },
     handleOnFocus: function(e) {
@@ -515,7 +532,8 @@ var Profile = CreateClass({
                         <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                         <td>
                             <CriticalBuffList locale={locale}
-                                              onBlur={this.handleOnBlur.bind(this)}
+                                              onBlur={this.handleAutoCompleteOnBlur}
+                                              onFocus={this.handleAutoCompleteOnFocus}
                                               onCountChange={(count) => this.setState({personalCriticalBuffCount: count})}
                                               label="personalCriticalBuff"
                                               criticalArray={this.state.personalCriticalBuff}
@@ -1026,11 +1044,12 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                             <td>
                                 <CriticalBuffList locale={locale}
-                                    onBlur={this.handleOnBlur.bind(this)}
-                                    onCountChange={(count) => this.setState({criticalBuffCount: count})}
-                                    label="criticalBuff"
-                                    criticalArray={this.state.criticalBuff}
-                                    initialCount={this.state.criticalBuffCount} />
+                                                  onBlur={this.handleOnBlur}
+                                                  onFocus={this.handleAutoCompleteOnFocus}
+                                                  onCountChange={(count) => this.setState({criticalBuffCount: count})}
+                                                  label="criticalBuff"
+                                                  criticalArray={this.state.criticalBuff}
+                                                  initialCount={this.state.criticalBuffCount} />
                             </td>
                         </tr>
                     </TextWithTooltip>

@@ -33,12 +33,24 @@ class CriticalBuffList extends React.Component {
 
     /**
      * Notify event
-     *
-     * @param {Object} e  ... Event object
+     * @param {Object} ref ... Reference of the input
      */
-    handleOnBlur(e, ref){
+    handleOnBlur(ref){
         if (this.props.onBlur) {
-            this.props.onBlur(null, e);
+            if (ref) {
+                this.props.onBlur(ref, "CriticalStatePlaceholder");
+            }
+        }
+    }
+
+    /**
+     * Notify event
+     * @param {Object} ref ... Reference of the input
+     * @param {Object} e  ... Event
+     */
+    handleOnFocus(ref, e){
+        if (this.props.onFocus) {
+            this.props.onFocus(ref, e);
         }
     }
 
@@ -70,9 +82,7 @@ class CriticalBuffList extends React.Component {
             this.setState({count: count, array: array});
             this.handleOnCountChange(count);
         } else if (key === "value" || key === "attackRatio") {
-            const val = parseInt(e.target.value);
-
-            array[idx][key] = val / 100;
+            array[idx][key] = e / 100;
 
             this.setState({array: array});
         }
@@ -89,9 +99,11 @@ class CriticalBuffList extends React.Component {
         return <React.Fragment>
             <strong>{intl.translate("数", locale)}</strong>
             <FormControl type="number"
-              min="0" max={maxCount} value={count}
-              onBlur={this.handleOnBlur.bind(this)}
-              onChange={this.handleOnChange.bind(this, "count", null)}/>
+                         min="0" max={maxCount} value={count}
+                         onBlur={() => this.handleOnBlur(this.countField)}
+                         onFocus={(e) => this.handleOnFocus(this.countField, e)}
+                         ref={(ref) => this.countField = ref}
+                         onChange={this.handleOnChange.bind(this, "count", null)}/>
             {array.slice(0, count).map(({value,attackRatio}, idx) =>
             <div key={label + idx}>
                 <strong>{intl.translate("発動率", locale)}#{idx+1}</strong>
@@ -100,9 +112,10 @@ class CriticalBuffList extends React.Component {
                         id="criticalRateField"
                         defaultInputValue={(Math.round(100 * value)).toString()}
                         inputProps={generateTypeaheadData("number", '0', '100')}
-                        onBlur={this.handleOnBlur}
-                        onChange={this.handleOnChange.bind(this, "value", idx)}
-                        ref={(ref) => this.state.criticalRateFieldTypeahead = ref}
+                        onBlur={() => (this.handleOnBlur(this.state["criticalRateFieldTypeahead" + idx]))}
+                        onChange={(e) => (this.handleOnChange("value", idx, e[0]))}
+                        onFocus={(e) => (this.handleOnFocus(this.state["criticalRateFieldTypeahead" + idx], e))}
+                        ref={(ref) => this.state["criticalRateFieldTypeahead" + idx] = ref}
                         options={selector.criticalRateLevel}/>
                     <InputGroup.Addon>%</InputGroup.Addon>
                 </InputGroup>
@@ -112,9 +125,10 @@ class CriticalBuffList extends React.Component {
                         id="attackRatioField"
                         defaultInputValue={(Math.round(100*attackRatio)).toString()}
                         inputProps={generateTypeaheadData("number", '0', '100')}
-                        onBlur={this.handleOnBlur}
-                        onChange={this.handleOnChange.bind(this, "attackRatio", idx)}
-                        ref={(ref) => this.state.attackRatioFieldTypeahead = ref}
+                        onBlur={() => (this.handleOnBlur(this.state["attackRatioFieldTypeahead" + idx]))}
+                        onChange={(e) => (this.handleOnChange("attackRatio", idx, e[0]))}
+                        onFocus={(e) => (this.handleOnFocus(this.state["attackRatioFieldTypeahead" + idx], e))}
+                        ref={(ref) => this.state["attackRatioFieldTypeahead" + idx] = ref}
                         options={selector.buffLevel}/>
                     <InputGroup.Addon>%</InputGroup.Addon>
                 </InputGroup>
