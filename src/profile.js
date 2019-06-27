@@ -1307,6 +1307,8 @@ var Profile = CreateClass({
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this,  this.state.enemyDefenseFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this,  this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
                                     onChange={this.handleAutoCompleteEvent.bind(this,  this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
+                                    align={"left"}
+                                    positionFixed={true}
                                     ref={(ref) => this.state.enemyDefenseFieldTypeahead = ref}
                                     options={selector[locale].enemydeftypes} />
                             </td>
