@@ -408,6 +408,65 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     for (var key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind];
 
+        // hp magnification
+        var hpCoeff = 1.0;
+        hpCoeff += 0.01 * totals[key]["normalHP"] * totalSummon["zeus"];
+        hpCoeff += 0.01 * totals[key]["magnaHP"] * totalSummon["magna"];
+        hpCoeff += 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"];
+        hpCoeff += 0.01 * totals[key]["exHP"];
+        hpCoeff += 0.01 * totals[key]["bahaHP"];
+        hpCoeff += 0.01 * totals[key]["omegaNormalHP"];
+        hpCoeff += 0.01 * totals[key]["akashaHP"];
+        hpCoeff += buff["hp"];
+        hpCoeff += totalSummon["hpBonus"];
+        if (key == "Djeeta") {
+            hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus;
+        }
+        if (totals[key]["EXLB"]["WED"]) {
+            hpCoeff += 0.10;
+        }
+        hpCoeff *= 1.0 + totals[key]["HPBuff"];
+        hpCoeff *= 1.0 - Math.min(0.70, totals[key]["HPdebuff"]);
+
+        // Base HP
+        var displayHP = totals[key]["baseHP"];
+        displayHP += totals[key]["armHP"];
+        displayHP += totalSummon["hp"];
+
+        if (key == "Djeeta") {
+            // for Djeeta
+            // ATK
+            var summedAttack = totals[key]["baseAttack"];
+            summedAttack += totals[key]["armAttack"];
+            summedAttack += totalSummon["attack"];
+            summedAttack += totals["Djeeta"]["job"].atBonus;
+            summedAttack *= 1.0 + buff["master"];
+            // HP
+            displayHP += totals["Djeeta"]["job"].hpBonus;
+            displayHP *= 1.0 + buff["masterHP"];
+            var totalHP = displayHP * hpCoeff
+
+        } else {
+            // for character
+            // ATK
+            var summedAttack = totals[key]["baseAttack"];
+            summedAttack += totals[key]["armAttack"];
+            summedAttack += totalSummon["attack"];
+            summedAttack += totals[key]["LB"].ATK;
+            summedAttack += totals[key]["EXLB"].ATK;
+            summedAttack += totals[key]["plusBonus"] * 3;
+            
+            // HP
+            displayHP += totals[key]["LB"].HP;
+            displayHP += totals[key]["EXLB"].HP;
+            displayHP += totals[key]["plusBonus"];
+            var totalHP = displayHP * hpCoeff;
+        }
+
+        if (totals[key]["remainHP"] == 0) {
+            totals[key]["remainHP"] = 1.0 / parseFloat(totalHP);
+        }
+
         // Calculation of various attack coefficients  各種攻刃係数の計算
         var magnaCoeff = 1.0 + (0.01 * totals[key]["magna"] + 0.01 * totals[key]["magnaSoka"]) * totalSummon["magna"];
         var magnaHaisuiCoeff = 1.0 + 0.01 * (totals[key]["magnaHaisui"] * totalSummon["magna"]);
@@ -466,61 +525,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         //chara LB Emnity
         var LBHaisuiCoeff = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", totals[key]["EXLB"]["Haisui"], totals[key]["remainHP"]);
-
-        // hp magnification
-        var hpCoeff = 1.0;
-        hpCoeff += 0.01 * totals[key]["normalHP"] * totalSummon["zeus"];
-        hpCoeff += 0.01 * totals[key]["magnaHP"] * totalSummon["magna"];
-        hpCoeff += 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"];
-        hpCoeff += 0.01 * totals[key]["exHP"];
-        hpCoeff += 0.01 * totals[key]["bahaHP"];
-        hpCoeff += 0.01 * totals[key]["omegaNormalHP"];
-        hpCoeff += 0.01 * totals[key]["akashaHP"];
-        hpCoeff += buff["hp"];
-        hpCoeff += totalSummon["hpBonus"];
-        if (key == "Djeeta") {
-            hpCoeff += 0.01 * totals["Djeeta"]["job"].shugoBonus;
-        }
-        if (totals[key]["EXLB"]["WED"]) {
-            hpCoeff += 0.10;
-        }
-        hpCoeff *= 1.0 + totals[key]["HPBuff"];
-        hpCoeff *= 1.0 - Math.min(0.70, totals[key]["HPdebuff"]);
-
-        // Base HP
-        var displayHP = totals[key]["baseHP"];
-        displayHP += totals[key]["armHP"];
-        displayHP += totalSummon["hp"];
-
-        if (key == "Djeeta") {
-            // for Djeeta
-            // ATK
-            var summedAttack = totals[key]["baseAttack"];
-            summedAttack += totals[key]["armAttack"];
-            summedAttack += totalSummon["attack"];
-            summedAttack += totals["Djeeta"]["job"].atBonus;
-            summedAttack *= 1.0 + buff["master"];
-            // HP
-            displayHP += totals["Djeeta"]["job"].hpBonus;
-            displayHP *= 1.0 + buff["masterHP"];
-            var totalHP = displayHP * hpCoeff
-
-        } else {
-            // for character
-            // ATK
-            var summedAttack = totals[key]["baseAttack"];
-            summedAttack += totals[key]["armAttack"];
-            summedAttack += totalSummon["attack"];
-            summedAttack += totals[key]["LB"].ATK;
-            summedAttack += totals[key]["EXLB"].ATK;
-            summedAttack += totals[key]["plusBonus"] * 3;
-            
-            // HP
-            displayHP += totals[key]["LB"].HP;
-            displayHP += totals[key]["EXLB"].HP;
-            displayHP += totals[key]["plusBonus"];
-            var totalHP = displayHP * hpCoeff
-        }
 
         var totalSkillCoeff = normalCoeff * normalHaisuiCoeff * normalKonshinCoeff;
         totalSkillCoeff *= magnaCoeff * magnaHaisuiCoeff * magnaKonshinCoeff;
@@ -2806,14 +2810,14 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
     // Because the character formation is unchanged every weapon organization, it can be calculated earlier
     var charaHaisuiBuff = [];
-    for (var k = 0; k < 100; ++k) {
-        let charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * (k + 1));
+    for (let k = 0; k <= 100; k++) {
+        let charaHaisuiValue = module.exports.recalcCharaHaisui(chara, 0.01 * k);
         charaHaisuiBuff.push(charaHaisuiValue);
     }
 
     var normalSupportKonshin = [];
-    for (var k = 0; k < 100; ++k) {
-        let normalSupportKonshinValue = module.exports.recalcNormalSupportKonshin(chara, 0.01 * (k + 1));
+    for (let k = 0; k <= 100; k++) {
+        let normalSupportKonshinValue = module.exports.recalcNormalSupportKonshin(chara, 0.01 * k);
         normalSupportKonshin.push(normalSupportKonshinValue);
     }
 
@@ -2875,8 +2879,8 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                 var lbHaisuiBuff = [],
                     lbKonshinBuff = [];
-                for (let k = 0; k < 100; ++k) {
-                    let hp = 0.01 * (k + 1);
+                for (let k = 0; k <= 100; k++) {
+                    let hp = 0.01 * k;
                     let exlbHaisuiValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", onedata[key].exlbHaisui, hp);
                     let exlbKonshinValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", onedata[key].exlbKonshin, hp);
                     lbHaisuiBuff.push(exlbHaisuiValue);
@@ -2885,7 +2889,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                 var haisuiBuff = [];
                 // Character emnity should be calculated for each character
-                for (var k = 0; k < 100; k++) {
+                for (var k = 0; k <= 100; k++) {
                     haisuiBuff.push({
                         normalHaisui: 1.0,
                         magnaHaisui: 1.0,
@@ -2969,7 +2973,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                         }
                     }
                 }
-                for (var k = 0; k < 100; k++) {
+                for (var k = 0; k <= 100; k++) {
                     var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * (haisuiBuff[k].normalKonshin + haisuiBuff[k].normalSupportKonshin) * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui * haisuiBuff[k].lbHaisui * haisuiBuff[k].lbKonshin;
                     var summedAttack = onedata[key].displayAttack;
                     var newTotalAttack = summedAttack * newTotalSkillCoeff;
@@ -2979,7 +2983,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit, onedata[key].ougiFixedDamage)
                     var chainBurstSupplemental = 0;
                     var newDamageWithoutCritical = 0; //just a placeholder. not to be used in any calculation.
-                    [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {remainHP: (k+1)/100});
+                    [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {remainHP: k/100});
 
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
                     var newChainBurst = chainBurstSupplemental + module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.enemyResistance, onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
@@ -2996,10 +3000,10 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var hp;
                     if (displayRealHP) {
                         // Actual HP
-                        hp = parseInt(0.01 * (k + 1) * onedata["Djeeta"].totalHP);
+                        hp = parseInt(0.01 * k * onedata["Djeeta"].totalHP);
                     } else {
                         // Residual HP ratio
-                        hp = k + 1
+                        hp = k;
                     }
 
                     if (key == "Djeeta") {
@@ -3083,14 +3087,14 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
             }
 
             if (res.length > 1) {
-                for (var k = 0; k < 100; k++) {
+                for (var k = 0; k <= 100; k++) {
                     var hp;
                     if (displayRealHP) {
                         // Actual HP
-                        hp = parseInt(0.01 * (k + 1) * onedata["Djeeta"].totalHP);
+                        hp = parseInt(0.01 * k * onedata["Djeeta"].totalHP);
                     } else {
                         // Residual HP ratio
-                        hp = k + 1
+                        hp = k;
                     }
 
                     index = alreadyUsedHP[hp] - 1;
@@ -3139,7 +3143,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     // Extract graph maximum value minimum value
     for (var key in minMaxArr) {
         for (var summonkey in data) {
-            for (var k = 1; k <= 100; k++) {
+            for (var k = 0; k <= 100; k++) {
                 for (var j = 1; j <= res[0].length; j++) {
                     // Save maximum graph minimum value
                     if (data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j];
