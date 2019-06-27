@@ -64,6 +64,7 @@ supportAbilist["envoy_meditation"] = {u"調停の使徒"}
 supportAbilist["ideal_vassals"] = {u"理想の家臣"}
 supportAbilist["dance_of_nataraja"] = {u"破滅の舞踏"}
 supportAbilist["recklessness_incarnate"] = {u"猪突・上宝沁金ノ撃槍"}
+supportAbilist["knightmare_frame"] = {u"人型自在戦闘装甲騎", u"ナイトメアフレーム"}
 supportAbilist["critical_up_own_10_30"] = {u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
 supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
 supportAbilist["critical_up_own_40_50"] = {u"ぶっ殺すわよ！"}
@@ -108,6 +109,10 @@ supportAbilist["stamina_all_L"] = {
     u"夏祭りの思い出",
     u"不退転の戦旗",
     u"絶対だいじょうぶだよ"
+}
+
+supportAbilist["stamina_all_M"] = {
+    u"黒の騎士団 総司令"
 }
 
 supportAbilist["stamina_all_L_hp_down_own_15"] = {

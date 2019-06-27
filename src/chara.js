@@ -6,6 +6,7 @@ var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
 var GlobalConst = require('./global_const.js');
 var Utilities = require('./utilities');
+var {CriticalBuffList} = require('./components.js');
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation;
@@ -315,6 +316,8 @@ var Chara = CreateClass({
             EXLBKonshin: 0,
             EXLBDA: 0,
             EXLBTA: 0,
+            criticalBuffCount: 0,
+            criticalBuff: [],
         };
     },
     componentDidMount: function () {
@@ -403,7 +406,18 @@ var Chara = CreateClass({
         } else {
             newState[key] = parseFloat(ref.state.text);
         }
-        this.setState(newState);
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+        this.setState(newState)
     },
     handleEvent: function (key, e) {
         this.handleAutoCompleteEvent(null, key, [e.target.value])
@@ -431,6 +445,7 @@ var Chara = CreateClass({
         } else {
             newState[key] = e.target.value;
         }
+
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false);
     },
@@ -703,6 +718,17 @@ var Chara = CreateClass({
                                     options={selector.buffLevel}/>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup>
+                        </td>
+                    </tr>
+                    <tr className={showInvul} key="criticalBuff">
+                        <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
+                        <td>
+                            <CriticalBuffList locale={locale}
+                                              onBlur={this.handleOnBlur.bind(this, null)}
+                                              onCountChange={(count) => this.setState({criticalBuffCount: count})}
+                                              label="criticalBuff"
+                                              criticalArray={this.state.criticalBuff}
+                                              initialCount={this.state.criticalBuffCount} />
                         </td>
                     </tr>
                     <tr className={showInvul} key="daBuff">
