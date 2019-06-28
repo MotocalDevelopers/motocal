@@ -137,7 +137,7 @@ supportAbilist["recklessness_incarnate"] = {
 supportAbilist["knightmare_frame"] = {
     u"人型自在戦闘装甲騎",
     u"ナイトメアフレーム"
-
+}
 supportAbilist["critical_up_own_10_30"] = {
     u"セルフィッシュ・ロイヤル",
     u"ラ・ピュセル30"
@@ -236,7 +236,7 @@ supportAbilist["critical_cap_up_light_3"] = {
 supportAbilist["critical_cap_up_own_10"] = {
     u"ヘッドショット"
 }
-supportAbilist["matatsu_to_no_kizuna"] = {
+supportAbilist["shinryu_to_no_kizuna"] = {
     u"真龍との絆"
 }
 supportAbilist["Revion_kishi_sanshimai"] = {

@@ -2693,13 +2693,13 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                         totals[key]["DASupport"] += support.value;
                     }
                     continue;
-                case "matatsu_to_no_kizuna":
+                case "shinryu_to_no_kizuna":
                     if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
                         totals[key]["normalBuff"] += support.normalBuff;
                     }
                 /* FALLTHROUGH */
                 case "element_buff_boost_own_30_ca_specs_20":
-                    if (( support.type == "element_buff_boost_own_30_ca_specs_20" || support.type == "matatsu_to_no_kizuna")
+                    if (( support.type == "element_buff_boost_own_30_ca_specs_20" || support.type == "shinryu_to_no_kizuna")
                         && (totals[key]["elementBuff"] > 0 || buff["element"] > 0)) {
                         totals[key]["ougiDamageBuff"] += support.ougiDamageBuff;
                         totals[key]["ougiDamageLimitBuff"] += support.ougiDamageLimitBuff;

@@ -2226,9 +2226,9 @@ var supportAbilities = {
         "ougiDamageBuff": 0.20,
         "ougiDamageLimitBuff": 0.20,
     },
-    "matatsu_to_no_kizuna": {
+    "shinryu_to_no_kizuna": {
         "name": "属性攻撃UPが付与されている時、自分の攻撃UPと奥義性能UP(ダメージと上限20%)。(ヘルエス(風属性ver))",
-        "type": "matatsu_to_no_kizuna",
+        "type": "shinryu_to_no_kizuna",
         "range": "own",
         "value": 0.0,
         "normalBuff": 0.30,
