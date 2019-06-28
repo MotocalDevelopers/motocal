@@ -3,7 +3,9 @@ const {
     calcDefenseDebuff,
     calcLBHaisuiValue,
     isDarkOpus,
-    calcOugiFixedDamage
+    calcOugiFixedDamage,
+    sum,
+    filterCombinations
 } = require('./global_logic.js');
 
 describe('#getTypeBonus', () => {
@@ -156,5 +158,36 @@ describe('#calcOugiFixedDamage', () => {
 
     test('ougi fixed damage for empty key is 2000', () => {
         expect(calcOugiFixedDamage("")).toBe(2000);
+    });
+});
+
+describe('#sum', () => {
+    let testArray1 = [1, 2, 3, 4];
+    let testArray2 = [-1, 0, 1, 0];
+    let testArray3 = ['a', 'b', 'c', 'd'];
+
+    test('Checking valid array totals', () => {
+        expect(sum(testArray1)).toBe(10);
+        expect(sum(testArray2)).toBe(0);
+    });
+
+    test('Checking invalid array totals', () => {
+        expect(sum(testArray3)).toBeNaN();
+    });
+});
+
+describe('#filterCombinations', () => {
+    let testArray1 = [[0, 0, 0, 1]];
+    let testArray2 = [[1, 1, 2, 3], [2, 1, 2, 2], [0, 3, 0, 3], [], [0, 0, 0, 0], [6, 0, 0, 1]];
+    let result1 = [];
+    let result2 = [[1, 1, 2, 3], [2, 1, 2, 2], [6, 0, 0, 1]];
+
+    test('RuleMaxSize disabled', () => {
+        expect(filterCombinations(testArray1, 2, false)).toStrictEqual(testArray1);
+    });
+
+    test('Filtering lower size combinations', () => {
+        expect(filterCombinations(testArray1, 2, true)).toStrictEqual(result1);
+        expect(filterCombinations(testArray2, 7, true)).toStrictEqual(result2);
     });
 });
