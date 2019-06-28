@@ -7,7 +7,6 @@ const Typeahead = require('react-bootstrap-typeahead').Typeahead;
 
 Typeahead.defaultProps.positionFixed = true;
 Typeahead.defaultProps.align = "left";
-Typeahead.defaultProps.flip = true;
 module.exports.Typeahead = Typeahead;
 
 
