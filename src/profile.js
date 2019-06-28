@@ -974,7 +974,7 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("敵非有利耐性", locale)}</th>
                             <td><InputGroup><FormControl type="number" min="0" step="5" max="100" value={this.state.enemyResistance}
-                                             onBlur={this.state.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/> 
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "enemyResistance")}/> 
                                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
