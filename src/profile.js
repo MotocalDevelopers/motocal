@@ -500,7 +500,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalNormalBuffField"
-                                    defaultInputValue={this.state.personalNormalBuff.toString()}
+                                    selected={[this.state.personalNormalBuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.personalNormalBuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.personalNormalBuffFieldTypeahead, "personalNormalBuff")}
@@ -518,7 +518,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalElementBuffField"
-                                    defaultInputValue={this.state.personalNormalBuff.toString()}
+                                    selected={[this.state.personalNormalBuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalElementBuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalElementBuffFieldTypeahead, "personalElementBuff")}
@@ -536,7 +536,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalOtherBuffField"
-                                    defaultInputValue={this.state.personalOtherBuff.toString()}
+                                    selected={[this.state.personalOtherBuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalOtherBuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOtherBuffFieldTypeahead, "personalOtherBuff")}
@@ -554,7 +554,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalOtherBuff2Field"
-                                    defaultInputValue={this.state.personalOtherBuff2.toString()}
+                                    selected={[this.state.personalOtherBuff2.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalOtherBuff2FieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOtherBuff2FieldTypeahead, "personalOtherBuff2")}
@@ -585,7 +585,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalDABuffField"
-                                    defaultInputValue={this.state.personalDABuff.toString()}
+                                    selected={[this.state.personalDABuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalDABuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalDABuffFieldTypeahead, "personalDABuff")}
@@ -603,7 +603,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalTABuffField"
-                                    defaultInputValue={this.state.personalTABuff.toString()}
+                                    selected={[this.state.personalTABuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalTABuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalTABuffFieldTypeahead, "personalTABuff")}
@@ -621,7 +621,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalAdditionalDamageBuffField"
-                                    defaultInputValue={this.state.personalAdditionalDamageBuff.toString()}
+                                    selected={[this.state.personalAdditionalDamageBuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalAdditionalDamageBuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalAdditionalDamageBuffFieldTypeahead, "personalAdditionalDamageBuff")}
@@ -650,7 +650,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalOugiDamageBuffField"
-                                    defaultInputValue={this.state.personalOugiDamageBuff.toString()}
+                                    selected={[this.state.personalOugiDamageBuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalOugiDamageBuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOugiDamageBuffFieldTypeahead, "personalOugiDamageBuff")}
@@ -668,7 +668,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalOugiGageBuffField"
-                                    defaultInputValue={this.state.personalOugiGageBuff.toString()}
+                                    selected={[this.state.personalOugiGageBuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalOugiGageBuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOugiGageBuffFieldTypeahead, "personalOugiGageBuff")}
@@ -686,7 +686,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalUpliftField"
-                                    defaultInputValue={this.state.personalUplift.toString()}
+                                    selected={[this.state.personalUplift.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalUpliftFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalUpliftFieldTypeahead, "personalUplift")}
@@ -704,7 +704,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalDamageLimitBuffField"
-                                    defaultInputValue={this.state.personalDamageLimitBuff.toString()}
+                                    selected={[this.state.personalDamageLimitBuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalDamageLimitBuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalDamageLimitBuffFieldTypeahead, "personalDamageLimitBuff")}
@@ -722,7 +722,7 @@ var Profile = CreateClass({
                             <InputGroup>
                                 <Typeahead
                                     id="personalOugiDamageLimitBuffField"
-                                    defaultInputValue={this.state.personalOugiDamageLimitBuff.toString()}
+                                    selected={[this.state.personalOugiDamageLimitBuff.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.personalOugiDamageLimitBuffFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOugiDamageLimitBuffFieldTypeahead, "personalOugiDamageLimitBuff")}
@@ -750,7 +750,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="masterBonusField"
-                                        defaultInputValue={this.state.masterBonus.toString()}
+                                        selected={[this.state.masterBonus.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.masterBonusFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusFieldTypeahead, "masterBonus")}
@@ -772,7 +772,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="masterBonusHPField"
-                                        defaultInputValue={this.state.masterBonusHP.toString()}
+                                        selected={[this.state.masterBonusHP.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.masterBonusHPFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusHPFieldTypeahead, "masterBonusHP")}
@@ -794,7 +794,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="masterBonusDAField"
-                                        defaultInputValue={this.state.masterBonusDA.toString()}
+                                        selected={[this.state.masterBonusDA.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.masterBonusDAFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusDAFieldTypeahead, "masterBonusDA")}
@@ -816,7 +816,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="masterBonusTAField"
-                                        defaultInputValue={this.state.masterBonusTA.toString()}
+                                        selected={[this.state.masterBonusTA.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.masterBonusTAFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusTAFieldTypeahead, "masterBonusTA")}
@@ -839,7 +839,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="masterBonusDamageLimitField"
-                                        defaultInputValue={this.state.masterBonusDamageLimit.toString()}
+                                        selected={[this.state.masterBonusDamageLimit.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '0', '30')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.masterBonusDamageLimitFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusDamageLimitFieldTypeahead, "masterBonusDamageLimit")}
@@ -866,7 +866,7 @@ var Profile = CreateClass({
                         <td>
                             <Typeahead
                                 id="zenithAttackBonusField"
-                                defaultInputValue={this.state.zenithAttackBonus.toString()}
+                                selected={[this.state.zenithAttackBonus.toString()]}
                                 inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
                                 onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.zenithAttackBonusFieldTypeahead)}
                                 onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithAttackBonusFieldTypeahead, "zenithAttackBonus")}
@@ -881,7 +881,7 @@ var Profile = CreateClass({
                         <td>
                             <Typeahead
                                 id="zenithHPBonusField"
-                                defaultInputValue={this.state.zenithHPBonus.toString()}
+                                selected={[this.state.zenithHPBonus.toString()]}
                                 inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
                                 onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.zenithHPBonusFieldTypeahead)}
                                 onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithHPBonusFieldTypeahead, "zenithHPBonus")}
@@ -896,7 +896,7 @@ var Profile = CreateClass({
                         <td>
                             <Typeahead
                                 id="zenithPartyHPBonusField"
-                                defaultInputValue={this.state.zenithPartyHPBonus.toString()}
+                                selected={[this.state.zenithPartyHPBonus.toString()]}
                                 inputProps={GlobalConst.generateTypeaheadData("number", '0', '10000')}
                                 onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.zenithPartyHPBonusFieldTypeahead)}
                                 onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithPartyHPBonusFieldTypeahead, "zenithPartyHPBonus")}
@@ -1024,7 +1024,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="normalBuffField"
-                                        defaultInputValue={this.state.normalBuff.toString()}
+                                        selected={[this.state.normalBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.normalBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
@@ -1044,7 +1044,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="elementBuffField"
-                                        defaultInputValue={this.state.elementBuff.toString()}
+                                        selected={[this.state.elementBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.elementBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
@@ -1064,7 +1064,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="otherBuffField"
-                                        defaultInputValue={this.state.otherBuff.toString()}
+                                        selected={[this.state.otherBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.otherBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
@@ -1084,7 +1084,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="otherBuff2Field"
-                                        defaultInputValue={this.state.otherBuff2.toString()}
+                                        selected={[this.state.otherBuff2.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.otherBuff2FieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
@@ -1119,7 +1119,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="hpBuffField"
-                                        defaultInputValue={this.state.hpBuff.toString()}
+                                        selected={[this.state.hpBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.hpBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.hpBuffFieldTypeahead, "hpBuff")}
@@ -1139,7 +1139,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="daBuffField"
-                                        defaultInputValue={this.state.daBuff.toString()}
+                                        selected={[this.state.daBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.daBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
@@ -1159,7 +1159,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="taBuffField"
-                                        defaultInputValue={this.state.taBuff.toString()}
+                                        selected={[this.state.taBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.taBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
@@ -1193,7 +1193,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="ougiDamageBuffField"
-                                        defaultInputValue={this.state.ougiDamageBuff.toString()}
+                                        selected={[this.state.ougiDamageBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiDamageBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
@@ -1214,7 +1214,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="additionalDamageBuffField"
-                                        defaultInputValue={this.state.additionalDamageBuff.toString()}
+                                        selected={[this.state.additionalDamageBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.additionalDamageBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
@@ -1250,7 +1250,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="ougiGageBuffField"
-                                        defaultInputValue={this.state.ougiGageBuff.toString()}
+                                        selected={[this.state.ougiGageBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiGageBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
@@ -1271,7 +1271,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="upliftField"
-                                        defaultInputValue={this.state.uplift.toString()}
+                                        selected={[this.state.uplift.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.upliftFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.upliftFieldTypeahead, "uplift")}
@@ -1292,7 +1292,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="ougiGageUpOugiBuffField"
-                                        defaultInputValue={this.state.ougiGageUpOugiBuff.toString()}
+                                        selected={[this.state.ougiGageUpOugiBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '0', '99')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiGageUpOugiBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiGageUpOugiBuffFieldTypeahead, "ougiGageUpOugiBuff")}
@@ -1313,7 +1313,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="damageLimitBuffField"
-                                        defaultInputValue={this.state.damageLimitBuff.toString()}
+                                        selected={[this.state.damageLimitBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.damageLimitBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
@@ -1334,7 +1334,7 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <Typeahead
                                         id="ougiDamageLimitBuffField"
-                                        defaultInputValue={this.state.ougiDamageLimitBuff.toString()}
+                                        selected={[this.state.ougiDamageLimitBuff.toString()]}
                                         inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
@@ -1360,7 +1360,7 @@ var Profile = CreateClass({
                             <td>
                                 <Typeahead
                                     id="enemyDefenseField"
-                                    defaultInputValue={Utilities.getLabelFromId(selector[locale].enemydeftypes, this.state.enemyDefense)}
+                                    selected={[Utilities.getLabelFromId(selector[locale].enemydeftypes, this.state.enemyDefense)]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.enemyDefenseFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
@@ -1446,7 +1446,7 @@ var Profile = CreateClass({
                             <td>
                                 <Typeahead
                                     id="ougiRatioField"
-                                    defaultInputValue={this.state.ougiRatio.toString()}
+                                    selected={[this.state.ougiRatio.toString()]}
                                     inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiRatioFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiRatioFieldTypeahead, "ougiRatio")}
