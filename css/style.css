@@ -54,7 +54,13 @@
     }
 
     .rbt-menu {
-        min-width: 11.6%;
+        min-width: 100%;
+        min-width: -moz-available;
+        min-width: -webkit-fill-available;
+        min-width: stretch;
+        display: inline-block !important;
+        overflow: visible;
+        z-index: 10000;
     }
 
     .rbt-menu::-webkit-scrollbar {

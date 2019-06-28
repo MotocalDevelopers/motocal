@@ -5,7 +5,6 @@ var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
 const Typeahead = require('react-bootstrap-typeahead').Typeahead;
 
-Typeahead.defaultProps.positionFixed = true;
 Typeahead.defaultProps.align = "left";
 module.exports.Typeahead = Typeahead;
 
