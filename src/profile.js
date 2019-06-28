@@ -1367,7 +1367,7 @@ var Profile = CreateClass({
                             <td><InputGroup><FormControl type="number" min="0" step="5" max="100"
                                                          value={this.state.enemyResistance}
                                                          onBlur={this.state.handleOnBlur}
-                                                         onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/>
+                                                         onChange={this.handleEvent.bind(this, "enemyResistance")}/>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
