@@ -677,7 +677,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
-        chainDamageLimit = Math.min(0.50, chainDamageLimit); // Check skill limit
+        chainDamageLimit = Math.min(LIMIT.chainDamageLimit, chainDamageLimit);
         
         chainDamageLimit += buff["zenithChainDamageLimit"];
         
@@ -717,7 +717,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiFixedDamage = calcOugiFixedDamage(key);
 
         var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
-        chainDamageUP = Math.min(1.20, chainDamageUP); // Check skill limit
+        chainDamageUP = Math.min(LIMIT.chainDamageUP, chainDamageUP);
 
         chainDamageUP += buff["zenithChainDamage"];
         
