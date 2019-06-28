@@ -6293,6 +6293,26 @@
         "imageURL": "./imgs/1040708700.png",
         "en": "Taisai Spirit Bow"
     },
+    "[4凸]太歳精弓": {
+        "ja": "[4凸]太歳精弓",
+        "element": "water",
+        "type": "bow",
+        "skill1": "normalLLM",
+        "skill2": "normalCriticalL",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 50,
+        "minattack": 420,
+        "hp": 363,
+        "attack": 3020,
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": 300,
+        "attacklv100": 2500,
+        "imageURL": "./imgs/1040708700.png",
+        "en": "[4★] Taisai Spirit Bow"
+    },
     "悪滅の雷": {
         "ja": "悪滅の雷",
         "element": "fire",
