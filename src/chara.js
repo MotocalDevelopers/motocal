@@ -397,14 +397,14 @@ var Chara = CreateClass({
     },
     handleAutoCompleteEvent: function (ref, key, selected) {
         let newState = this.state;
-        if (selected[0]) {
+        if (selected[0] !== undefined) {
             if (selected[0].hasOwnProperty("id")) {
-                newState[key] = parseFloat(selected[0].id);
+                newState[key] = selected[0].id;
             } else {
-                newState[key] = parseFloat(selected[0]);
+                newState[key] = selected[0];
             }
         } else {
-            newState[key] = parseFloat(ref.state.text);
+            newState[key] = ref.state.text;
         }
 
         if (key == "criticalBuffCount") {
@@ -427,20 +427,33 @@ var Chara = CreateClass({
     handleEvent: function (key, e) {
         this.handleAutoCompleteEvent(null, key, [e.target.value])
     },
-    handleAutoCompleteOnFocus: function (ref, e) {
-        if (e.target.value) {
-            this.state.placeholder = e.target.value;
+    handleAutoCompleteOnFocus: function (ref, e, activeIndex = -1, input=undefined) {
+        let value = e.target.value;
+
+        if (value) {
+            this.state.StatePlaceholder = value;
+            if (ref.props.hasOwnProperty("options") && ref.props.options.includes(value)) {
+                activeIndex = ref.props.options.indexOf(value);
+            }
         }
+
+        if (ref instanceof Typeahead) {
+            input = ref.getInput();
+        } else if (ref instanceof FormControl) {
+            input = e.target;
+        }
+
         ref.setState({
+            activeIndex: activeIndex,
             text: "",
-            selected: []
-        });
+            selected: [],
+        }, this.selectInputElement(input));
     },
     handleOnFocus: function (e) {
         if (e.target.value) {
-            placeholder = e.target.value;
+            this.state.StatePlaceholder = e.target.value;
         }
-        e.target.value = "";
+        e.target.select();
     },
     handleSelectEvent: function (key, e) {
         var newState = this.state;
@@ -458,29 +471,39 @@ var Chara = CreateClass({
         let newState = this.state;
         if (key) {
             let value;
-            if (ref.state.hasOwnProperty("text")) {
+            if (ref.state.text !== undefined) {
                 value = ref.state.text;
+            } else if (ref.state.hasOwnProperty("selected") && ref.state.selected.length > 0) {
+                if (ref.state.selected[0]) {
+                    if (ref.state.selected[0].hasOwnProperty("id")) {
+                        value = ref.state.selected[0].id;
+                    } else {
+                        value = ref.state.selected[0];
+                    }
+                }
             } else {
                 value = ref.props.value;
             }
             if (ref.props.inputProps) {
                 if (ref.props.inputProps.targettype === "number") {
-                    value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.placeholder);
+                    value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.StatePlaceholder);
                 }
             } else {
                 if (ref.props.type === "number") {
-                    value = Utilities.parseNumberInputField(value, ref.props, this.state.placeholder);
+                    value = Utilities.parseNumberInputField(value, ref.props, this.state.StatePlaceholder);
                 }
             }
             newState[key] = value;
         }
-        return newState
+        return newState;
     },
     handleAutoCompleteOnBlur: function (ref, key) {
         // Send change to parent only when focus is off
         let newState = this.completeBlurAction(ref, key);
         if (key) {
-            ref.setState({text: newState[key].toString()});
+            if (ref instanceof Typeahead){
+                ref.setState({text: newState[key].toString()});
+            }
         }
         if (key === "name" && this.state.name !== "" && ref.state.text !== "") {
             this.props.onChange(this.props.id, newState, true)
@@ -526,6 +549,10 @@ var Chara = CreateClass({
     },
     switchEXLBlist: function (e) {
         this.setState({openEXLBlist: !(this.state.openEXLBlist)})
+    },
+    selectInputElement: function (input) {
+        input.value = this.state.StatePlaceholder;
+        input.select();
     },
     render: function () {
         let locale = this.props.locale;

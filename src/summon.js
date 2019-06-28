@@ -303,13 +303,21 @@ var Summon = CreateClass({
         }
         this.props.onChange(ref.props.inputProps.name, newState);
     },
-    handleOnSummonAmountFocus: function (ref, e) {
-        if (e.target.value) {
-            this.state.StatePlaceholder = e.target.value;
+    handleOnSummonAmountFocus: function (ref, e, activeIndex = -1) {
+        let value = e.target.value;
+        if (value) {
+            this.state.StatePlaceholder = value;
+            if (ref.props.options.includes(value)) {
+                activeIndex = ref.props.options.indexOf(value);
+            }
         }
         ref.setState({
+            activeIndex: activeIndex,
             text: "",
-            selected: []
+            selected: [],
+        }, () => {
+            ref.getInput().value = this.state.StatePlaceholder;
+            ref.getInput().select();
         });
     },
     handleOnSummonAmountBlur: function (ref, e) {
