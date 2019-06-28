@@ -53,6 +53,14 @@
         float: none !important;
     }
 
+    .rbt-menu {
+        min-width: 11.6%;
+    }
+
+    .rbt-menu::-webkit-scrollbar {
+        width: 0.5em;
+    }
+
     .charainfo {
         text-align: left;
         font-size: 9pt;

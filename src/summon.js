@@ -1,9 +1,9 @@
 var React = require('react');
 var intl = require('./translate.js');
 var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Label, Button, ButtonGroup} = require('react-bootstrap');
-var Typeahead = require('react-bootstrap-typeahead').Typeahead;
 var {ColP} = require('./gridp.js');
 var GlobalConst = require('./global_const.js');
+const Typeahead = GlobalConst.Typeahead;
 const Utilities = require('./utilities');
 var CreateClass = require('create-react-class');
 

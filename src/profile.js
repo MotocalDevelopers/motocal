@@ -1,13 +1,12 @@
 var React = require('react');
 var {Button, FormControl, InputGroup, Checkbox} = require('react-bootstrap');
-var Typeahead = require('react-bootstrap-typeahead').Typeahead;
 var intl = require('./translate.js');
-var GlobalConst = require('./global_const.js');
+const GlobalConst = require('./global_const.js');
 const Utilities = require('./utilities');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
+var Typeahead = GlobalConst.Typeahead;
 var CreateClass = require('create-react-class');
 var {CriticalBuffList} = require('./components.js');
-
 // const
 var zenith = GlobalConst.zenith;
 var zenithDA = GlobalConst.zenithDA;
@@ -22,6 +21,9 @@ var Jobs = GlobalConst.Jobs;
 var jobTypes = GlobalConst.jobTypes;
 var armTypes = GlobalConst.armTypes;
 var selector = GlobalConst.selector;
+
+
+
 
 var Profile = CreateClass({
     getDefaultProps() {
@@ -1363,8 +1365,6 @@ var Profile = CreateClass({
                                     onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.enemyDefenseFieldTypeahead)}
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
-                                    align={"left"}
-                                    positionFixed={true}
                                     ref={(ref) => this.state.enemyDefenseFieldTypeahead = ref}
                                     options={selector[locale].enemydeftypes}/>
                             </td>

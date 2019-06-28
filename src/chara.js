@@ -1,10 +1,10 @@
 var React = require('react');
 var intl = require('./translate.js');
 var {Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, Panel, PanelGroup, Modal, Glyphicon} = require('react-bootstrap');
-var Typeahead = require('react-bootstrap-typeahead').Typeahead;
 var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
 var GlobalConst = require('./global_const.js');
+const Typeahead = GlobalConst.Typeahead;
 var Utilities = require('./utilities');
 var {CriticalBuffList} = require('./components.js');
 

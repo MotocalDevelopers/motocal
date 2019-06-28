@@ -3,6 +3,13 @@ var {Tooltip, OverlayTrigger} = require('react-bootstrap');
 var intl = require('./translate.js');
 var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
+const Typeahead = require('react-bootstrap-typeahead').Typeahead;
+
+Typeahead.defaultProps.positionFixed = true;
+Typeahead.defaultProps.align = "left";
+Typeahead.defaultProps.flip = true;
+module.exports.Typeahead = Typeahead;
+
 
 module.exports.TextWithTooltip = CreateClass({
     render: function () {
