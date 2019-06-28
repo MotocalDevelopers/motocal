@@ -223,7 +223,7 @@ var Notice = CreateClass({
 
                 <h3>注記</h3>
                 <ul className="list-group">
-                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">情報求:</font> 武器やキャラのステータスズレ、Rank200辺りからの基礎攻撃力増加量、キャラの基礎連撃率(現在対応済リストは<a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a>の100行辺りから。デフォルト値はDA7%,TA3%)、各種計算式の検証データ。</li>
+                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">情報求:</font> 武器やキャラのステータスズレ、Rank200辺りからの基礎攻撃力増加量、キャラの基礎連撃率(現在対応済リストは<u><a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a></u>の100行辺りから。デフォルト値はDA7%,TA3%)、各種計算式の検証データ。</li>
                     <li className="list-group-item list-group-item-info"><font color="#6c2c2f">未対応:</font> ゲージ200%キャラ、バフの効果ターン・リキャスト、経過ターンで増減するスキル、多数の英雄武器の効果。</li>
                     <li className="list-group-item list-group-item-info">編成データを読み込むとホワイトアウトしてしまう場合があります。恐らく仕様変更が原因なので、新しく編成を作り直すか対策パッチをお待ち下さい。</li>
                     <li className="list-group-item list-group-item-info">乱数や技巧によるブレがあるため、実際のダメージとは多少異なる可能性があります。</li>
@@ -1148,6 +1148,11 @@ var Notice = CreateClass({
                             <td>9.2</td>
                             <td>9.6</td>
                             <td>10.0</td>
+                            <td>10.2</td>
+                            <td>10.4</td>
+                            <td>10.6</td>
+                            <td>10.8</td>
+                            <td>11.0</td>
                         </tr>
                         <tr>
                             <td>通常乱舞TA(小)</td>
@@ -1442,7 +1447,7 @@ var Notice = CreateClass({
                     <li className="list-group-item">楚歌,先制: 1本目しか発動しない</li>
                     <li className="list-group-item">括目: 二手</li>
                     <li className="list-group-item">アンノウン暴君(ミフネ): アンノウン攻刃(大) + HP減少(7%)</li>
-                    <li className="list-group-item">技巧(小, 中, 大): クリティカル時倍率 50%</li>
+                    <li className="list-group-item">技巧(小, 中, 大): クリティカル時倍率 50%, 方陣と通常の仕様同じ</li>
                     <li className="list-group-item">背水(小): (baseRate/3) * (2 * 残りHP割合^2 - 5 * 残りHP割合 + 3) <br/>(baseRateは
                         (Slv10以下) -0.3 + Slv * 1.8, (Slv10以上) 18.0 + 3.0 * (Slv - 10) / 5.0
                     </li>
@@ -1458,11 +1463,24 @@ var Notice = CreateClass({
                     <li className="list-group-item">紅蓮の呪印: 通常攻刃(大)</li>
                     <li className="list-group-item">紅蓮の呪印・弐: パーティ2番目のキャラに通常攻刃(大)(ゼウス石は<s>乗らない</s>乗る)</li>
                     <li className="list-group-item">霧氷の追牙・肆: パーティ4番目のキャラに追加ダメージ / 奥義ゲージ上昇量 - 30%</li>
-                    <li className="list-group-item">攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率))
-                        (TA→DAの順で判定、TA率が100％なら3回、TA率0％でDA率100％なら2回)
+                    <li className="list-group-item">攻撃回数期待値: 3.0 * TA率 + (1.0 - TA率) * (2.0 * DA率 + (1.0 - DA率))<br/>
+                        (TA→DAの順で判定、TA率が100%なら3回、TA率0%でDA率100%なら2回)
                     </li>
-                    <li className="list-group-item">技巧期待値: 通常技巧の複数発動分も計算してます</li>
-                    <li className="list-group-item">基礎HP: 600 + 8 * rank(100まで) + 4 * (rank - 100)</li>
+                    <li className="list-group-item">連撃率の小数点以下は切り捨てられます(グラブルの仕様に伴い)</li>
+                    <li className="list-group-item">ジータ基礎HP:<br/>
+                                                    ランク191以上: 1730 + (rank - 190) * 1<br/>
+                                                    ランク176以上: 1700 + (rank - 175) * 2<br/>
+                                                    ランク101以上: 1400 + (rank - 100) * 4<br/>
+                                                    ランク2以上: 600 + rank * 8<br/>
+                                                    ランク1: 600</li>
+                    <li className="list-group-item">ジータ基礎攻撃力:<br/>
+                                                    ランク191以上: 6650 + (rank - 190) * 5<br/>
+                                                    ランク176以上: 6500 + (rank - 175) * 10<br/>
+                                                    ランク101以上: 5000 + (rank - 100) * 20<br/>
+                                                    ランク2以上: 1000 + rank * 40<br/>
+                                                    ランク1: 1000</li>
+                    <li className="list-group-item">奥義固定ダメージ: ジータ3000, 他キャラ2000</li>
+                    <li className="list-group-item">奥義UP枠: 通常必殺枠(上限100%)、方陣必殺枠(上限100%)、秘奥枠(上限100%)</li>
                     <li className="list-group-item">奥義上限枠: [通常必殺枠(上限30%)、方陣必殺枠(上限30%)、イクシード枠(上限30%)](上限60%)、四象邪系枠(上限20%)、オメガ枠(上限15%)</li>
                 </ul>
             </div>
