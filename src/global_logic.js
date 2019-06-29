@@ -699,7 +699,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["additionalDamageXA"]) {
             //additionalDamage based on attacks per turn (sturm support ability-like)
             let [saDamage, daDamage, taDamage] = totals[key]["additionalDamageXA"];
-            additionalDamage += taRate * ta; // additionalDamage On Triple Attack
+            additionalDamage += taRate * taDamage; // additionalDamage On Triple Attack
             additionalDamage += (1.0 - taRate) * daRate * daDamage; // additionalDamage On Double Attack
             additionalDamage += (1.0 - taRate) * (1.0 - daRate) * saDamage; // additionalDamage On Single Attack
         }
