@@ -43,7 +43,7 @@ Object.assign(range_element, {
 });
 
 // FIXME: This race check is now not completed.
-// e.g. baha race check will match to "unknown", "seisyo"
+// e.g. baha race check will match to "unknown", "seisho"
 const range_race = (race) => range_custom(chara => chara.race == race);
 
 // TODO: Support two favorite weapons.
