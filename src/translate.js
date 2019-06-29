@@ -2040,10 +2040,10 @@ var multiLangData = {
         "ja": "バトルメンバーの種族数に応じて攻撃力UP(リリィ)",
         "zh": "バトルメンバーの種族数に応じて攻撃力UP(リリィ)",
     },
-    "属性バフ付与時に属性攻撃30%UP(パーシヴァル)": {
-        "en": "Gain an additional 30% boost to Elemental buffs when affected by Elemental Buff (Percival)",
-        "ja": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
-        "zh": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
+    "属性バフ付与時に属性攻撃30%UP(パーシヴァル,アグロヴァル)": {
+        "en": "Gain an additional 30% boost to Elemental buffs when affected by Elemental Buff (Percival,Agloval)",
+        "ja": "属性バフ付与時に属性攻撃30%UP(パーシヴァル,アグロヴァル)",
+        "zh": "属性バフ付与時に属性攻撃30%UP(パーシヴァル,アグロヴァル)",
     },
     "属性バフ付与時にステータスUP(スカーサハ)": {
         "en": "Boost to ATK and multiattack rate when buffed by Elemental Buff (Scathacha)",
@@ -2235,15 +2235,10 @@ var multiLangData = {
         "ja": "味方全体の強化効果「属性攻撃UP」の効果30%UP。",
         "zh": "All Allies gain an additional 30% boost to Element ATK when affected by Element ATK Buff.",
     },
-    "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)。(アグロヴァル)": {
-        "en": "Gain an additional 30% boost to Element ATK and 20% Boost to C.A. Damage and Cap, when affected by Element ATK Buff. (Aglovale)",
-        "ja": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)。(アグロヴァル)",
-        "zh": "Gain an additional 30% boost to Element ATK and 20% Boost to C.A. Damage and Cap, when affected by Element ATK Buff. (Aglovale)",
-    },
-    "属性攻撃UPが付与されている時、自分の攻撃UPと奥義性能UP(ダメージと上限20%)。(ヘルエス(風属性ver))": {
-        "en": "30% boost to ATK and 20% Boost to C.A. Damage and Cap, when affected by Element ATK Buff (Heles (Wind))",
-        "ja": "属性攻撃UPが付与されている時、自分の攻撃UPと奥義性能UP(ダメージと上限20%)。(ヘルエス(風属性ver))",
-        "zh": "30% boost to ATK and 20% Boost to C.A. Damage and Cap, when affected by Element ATK Buff (Heles (Wind))",
+    "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver)": {
+        "en": "30% boost to ATK when affected by Element ATK Buff (Heles (Wind))",
+        "ja": "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver)",
+        "zh": "30% boost to ATK when affected by Element ATK Buff (Heles (Wind))",
     },
     "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)": {
         "en": "All Other Allies gain gain 5% ATK UP and Boost to critical hit rate (20% chance, 20% damage). (Yaia)",

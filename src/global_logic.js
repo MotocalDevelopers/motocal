@@ -28,6 +28,7 @@ var raceTypes = GlobalConst.raceTypes;
 var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
+const {when} = require('./support_filter');
 
 module.exports.isCosmos = function (arm) {
     return (skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") ||
@@ -2694,43 +2695,16 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     }
                     continue;
                 case "shinryu_to_no_kizuna":
-                    if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
-                        totals[key]["normalBuff"] += support.normalBuff;
+                    if (when.element_buff(chara, buff)) {
+                        totals[key]["normalBuff"] += support.value;
                     }
-                /* FALLTHROUGH */
-                case "element_buff_boost_own_30_ca_specs_20":
-                    if (( support.type == "element_buff_boost_own_30_ca_specs_20" || support.type == "shinryu_to_no_kizuna")
-                        && (totals[key]["elementBuff"] > 0 || buff["element"] > 0)) {
-                        totals[key]["ougiDamageBuff"] += support.ougiDamageBuff;
-                        totals[key]["ougiDamageLimitBuff"] += support.ougiDamageLimitBuff;
-                    }
-                /* FALLTHROUGH */
+                    continue;
                 case "element_buff_boost":
-                    if (support.range == "own") {
-                        if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
-                            totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
+                    for (let [name, chara] of support.range(totals, key)) {
+                        if (when.element_buff(chara, buff)) {
+                            chara["elementBuffBoostBuff"] = Math.max(support.value, chara["elementBuffBoostBuff"]);
                         }
-                    } else if (support.range == "all" && totals[key].isConsideredInAverage) {
-                        for (key2 in totals) {
-                            if (totals[key2]["elementBuff"] > 0 || buff["element"] > 0) {
-                                totals[key2]["elementBuffBoostBuff"] = Math.max(support.value, totals[key2]["elementBuffBoostBuff"]);
-                            }
-                        }
-                    } else if (support.range == "all" && !totals[key].isConsideredInAverage) {
-                        totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
-                    } else {
-                        if (totals[key].isConsideredInAverage) {
-                            for (key2 in totals) {
-                                if (totals[key2].element == support.range && (totals[key2]["elementBuff"] > 0 || buff["element"] > 0)) {
-                                    totals[key2]["elementBuffBoostBuff"] = Math.max(support.value, totals[key2]["elementBuffBoostBuff"]);
-                                }
-                            }
-                        } else {
-                            if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
-                                totals[key]["elementBuffBoostBuff"] = Math.max(support.value, totals[key]["elementBuffBoostBuff"]);
-                            }
-                        }
-                   }
+                    }
                     continue;
                 case "eternal_wisdom":
                     if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
@@ -2856,32 +2830,17 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["additionalDamageTA"] += support.additionalDamageTA;
                     continue;
                 case "element_buff_boost_damageUP_own_10":
-                    if (totals[key]["elementBuff"] > 0 || buff["element"] > 0) {
+                    if (when.element_buff(totals[key], buff)) {
                         totals[key]["charaDamageUP"] += support.value;
                     }
                     continue;
                 case "critical_cap_up":
-                     if (support.range == "own") {
-                        totals[key]["criticalDamageLimit"] += support.value;
-                    } else if (support.range == "all" && totals[key].isConsideredInAverage) {
-                        for (let key2 in totals) {
-                            totals[key2]["criticalDamageLimit"] += support.value;
-                        }
-                    } else if (support.range == "all" && !totals[key].isConsideredInAverage) {
-                        totals[key]["criticalDamageLimit"] += support.value;
-                    } else {
-                        if (totals[key].isConsideredInAverage) {
-                            for (key2 in totals) {
-                                if (totals[key2].element == support.range) {
-                                    totals[key2]["criticalDamageLimit"] += support.value;
-                                }
-                            }
-                        } else {
-                            totals[key]["criticalDamageLimit"] += support.value;
-                        }
+                    for (let [name, chara] of support.range(totals, key)) {
+                        chara["criticalDamageLimit"] += support.value;
                     }
                     continue;
                 case "no_normal_attack":
+                    continue;
                 case "normalSupportKonshin_hpDebuff":
                     totals[key]["HPdebuff"] += support.hpDebuff;
                     // falls through

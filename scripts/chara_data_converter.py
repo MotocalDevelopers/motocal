@@ -84,7 +84,8 @@ supportAbilist["atk_up_depends_races"] = {
     u"氷晶宮の特使"
 }
 supportAbilist["element_buff_boost_own_30"] = {
-    u"王者の風格"
+    u"王者の風格",
+    u"覇者の風格"
 }
 supportAbilist["eternal_wisdom"] = {
     u"久遠の叡智"
@@ -226,9 +227,6 @@ supportAbilist["element_buff_boost_wind_30"] = {
 # }
 supportAbilist["element_buff_boost_wind_15"] = {
     u"精霊の啓示"
-}
-supportAbilist["element_buff_boost_own_30_ca_specs_20"] = {
-    u"覇者の風格"
 }
 supportAbilist["critical_cap_up_light_3"] = {
     u"スポッター"

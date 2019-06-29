@@ -3,6 +3,7 @@ var {Tooltip, OverlayTrigger} = require('react-bootstrap');
 var intl = require('./translate.js');
 var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
+const {range} = require("./support_filter.js");
 
 module.exports.TextWithTooltip = CreateClass({
     render: function () {
@@ -1979,9 +1980,9 @@ var supportAbilities = {
         "value": 0.10
     },
     "element_buff_boost_own_30": {
-        "name": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
+        "name": "属性バフ付与時に属性攻撃30%UP(パーシヴァル,アグロヴァル)",
         "type": "element_buff_boost",
-        "range": "own",
+        "range": range.own,
         "value": 0.30
     },
     "eternal_wisdom": {
@@ -2173,67 +2174,56 @@ var supportAbilities = {
     "element_buff_boost_fire_30": {
         "name": "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)",
         "type": "element_buff_boost",
-        "range": "fire",
+        "range": range.element("fire"),
         "value": 0.30
     },
     "element_buff_boost_water_30": {
         "name": "味方全体の強化効果「水属性攻撃UP」の効果30%UP。(エウロペ)",
         "type": "element_buff_boost",
-        "range": "water",
+        "range": range.element("water"),
         "value": 0.30
     },
     "element_buff_boost_earth_30": {
         "name": "味方全体の強化効果「土属性攻撃UP」の効果30%UP。(ブローディア)",
         "type": "element_buff_boost",
-        "range": "earth",
+        "range": range.element("earth"),
         "value": 0.30
     },
     "element_buff_boost_wind_30": {
         "name": "味方全体の強化効果「風属性攻撃UP」の効果30%UP。(グリームニル)",
         "type": "element_buff_boost",
-        "range": "wind",
+        "range": range.element("wind"),
         "value": 0.30
     },
     "element_buff_boost_wind_15": {
         "name": "味方全体の強化効果「風属性攻撃UP」の効果15%UP。(コッコロ)",
         "type": "element_buff_boost",
-        "range": "wind",
+        "range": range.element("wind"),
         "value": 0.15
     },
-    "element_buff_boost_light_30": {
+    "element_buff_boost_light_30": { // UNUSED
         "name": "味方全体の強化効果「光属性攻撃UP」の効果30%UP。",
         "type": "element_buff_boost",
-        "range": "light",
+        "range": range.element("light"),
         "value": 0.30
     },
-    "element_buff_boost_dark_30": {
+    "element_buff_boost_dark_30": { // UNUSED
         "name": "味方全体の強化効果「闇属性攻撃UP」の効果30%UP。",
         "type": "element_buff_boost",
-        "range": "dark",
+        "range": range.element("dark"),
         "value": 0.30
     },
-    "element_buff_boost_all_30": {
+    "element_buff_boost_all_30": { // UNUSED
         "name": "味方全体の強化効果「属性攻撃UP」の効果30%UP。",
         "type": "element_buff_boost",
-        "range": "all",
+        "range": range.element("all"),
         "value": 0.30
     },
-    "element_buff_boost_own_30_ca_specs_20": {
-        "name": "属性バフ付与時に属性攻撃15%UPと奥義性能UP(ダメージと上限20%)。(アグロヴァル)",
-        "type": "element_buff_boost_own_30_ca_specs_20",
-        "range": "own",
-        "value": 0.30,
-        "ougiDamageBuff": 0.20,
-        "ougiDamageLimitBuff": 0.20,
-    },
     "shinryu_to_no_kizuna": {
-        "name": "属性攻撃UPが付与されている時、自分の攻撃UPと奥義性能UP(ダメージと上限20%)。(ヘルエス(風属性ver))",
+        "name": "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver)",
         "type": "shinryu_to_no_kizuna",
         "range": "own",
-        "value": 0.0,
-        "normalBuff": 0.30,
-        "ougiDamageBuff": 0.20,
-        "ougiDamageLimitBuff": 0.20,
+        "value": 0.30
     },
     "mamoritai_kono_egao": {
         "name": "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)",
@@ -2279,13 +2269,13 @@ var supportAbilities = {
     "critical_cap_up_light_3": {
         "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
         "type": "critical_cap_up",
-        "range": "light",
+        "range": range.element("light"),
         "value": 0.03,
     },
     "critical_cap_up_own_10": {
         "name": "クリティカル発動時にダメージ上限10%UP。(オイゲン(リミテッドver))",
         "type": "critical_cap_up",
-        "range": "own",
+        "range": range.own,
         "value": 0.10,
     },
     // "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ >> カードキャプター
