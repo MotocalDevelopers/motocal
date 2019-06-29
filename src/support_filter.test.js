@@ -51,6 +51,14 @@ describe("support.range", () => {
     it("range_others", () => {
         expect(range.others(totals, "Djeeta").length).toBe(3);
     });
+
+    it("range_none", () => {
+        expect(range.none(totals, "Djeeta").length).toBe(0);
+    })
+
+    it("range_Djeeta", () => {
+        expect(range.Djeeta(totals, "CharaA").length).toBe(1);
+    })
     
     it("range_light", () => {
         expect(range.element("light")(totals, "Djeeta").length).toBe(2);

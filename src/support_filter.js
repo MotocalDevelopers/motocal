@@ -3,6 +3,8 @@
 
 const _entries = Object.entries;
 
+const range_none = (totals, key) => [];
+
 // no need to care isConsideredInAverage, and default for isConsideredInAverage: off case.
 const range_own = (totals, key) => [[key, totals[key]]];
 
@@ -13,6 +15,10 @@ const range_all = (totals, key) =>
 // no use range_custom_func because need "key"
 const range_others = (totals, key) =>
   (!totals[key].isConsideredInAverage) ? range_own(totals, key) : _entries(totals).filter(([name, chara]) => name != key);
+
+const range_Djeeta = (totals, key) =>
+  (!totals[key].isConsideredInAverage) ? range_none(totals, key) : range_own(totals, "Djeeta");
+
 
 // Base filtering function takes parameter totals and key
 // if totals[key].isConsideredInAverage then return range_own
@@ -43,6 +49,8 @@ module.exports = {
         own: range_own,
         all: range_all,
         others: range_others,
+        none: range_none,
+        Djeeta: range_Djeeta,
 
         element: range_element,
         race: range_race,
