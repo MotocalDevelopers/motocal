@@ -294,31 +294,21 @@ var Summon = CreateClass({
         let newState = this.state;
         if (selected[0]) {
             if (selected[0].hasOwnProperty("id")) {
-                newState[ref.props.inputProps.name] = parseFloat(selected[0].id);
+                newState[ref.props.inputProps.name] = selected[0].id;
             } else {
-                newState[ref.props.inputProps.name] = parseFloat(selected[0]);
+                newState[ref.props.inputProps.name] = selected[0];
             }
         } else {
-            newState[ref.props.inputProps.name] = parseFloat(ref.state.text);
+            newState[ref.props.inputProps.name] = ref.state.text;
         }
         this.props.onChange(ref.props.inputProps.name, newState);
     },
-    handleOnSummonAmountFocus: function (ref, e, activeIndex = -1) {
+    handleOnSummonAmountFocus: function (ref, e) {
         let value = e.target.value;
         if (value) {
             this.state.StatePlaceholder = value;
-            if (ref.props.options.includes(value)) {
-                activeIndex = ref.props.options.indexOf(value);
-            }
         }
-        ref.setState({
-            activeIndex: activeIndex,
-            text: "",
-            selected: [],
-        }, () => {
-            ref.getInput().value = this.state.StatePlaceholder;
-            ref.getInput().select();
-        });
+        ref.getInput().select();
     },
     handleOnSummonAmountBlur: function (ref, e) {
         let newState = this.state;
@@ -375,6 +365,8 @@ var Summon = CreateClass({
                                                onFocus={this.handleOnSummonAmountFocus.bind(this, this.state.selfSummonAmountFieldTypeahead)}
                                                onChange={this.handleSummonAmountChange.bind(this, this.state.selfSummonAmountFieldTypeahead)}
                                                onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.selfSummonAmountFieldTypeahead)}
+                                               renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.selfSummonAmountFieldTypeahead)}
+                                               filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                                ref={(ref) => this.state.selfSummonAmountFieldTypeahead = ref}
                                                options={selector.summonAmounts}>
                                     </Typeahead>
@@ -390,6 +382,8 @@ var Summon = CreateClass({
                                                onFocus={this.handleOnSummonAmountFocus.bind(this, this.state.selfSummonAmount2FieldTypeahead)}
                                                onChange={this.handleSummonAmountChange.bind(this, this.state.selfSummonAmount2FieldTypeahead)}
                                                onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.selfSummonAmount2FieldTypeahead)}
+                                               renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.selfSummonAmount2FieldTypeahead)}
+                                               filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                                ref={(ref) => this.state.selfSummonAmount2FieldTypeahead = ref}
                                                options={selector.summonAmounts}>
                                     </Typeahead>
@@ -425,6 +419,8 @@ var Summon = CreateClass({
                                                onFocus={this.handleOnSummonAmountFocus.bind(this, this.state.friendSummonAmountFieldTypeahead)}
                                                onChange={this.handleSummonAmountChange.bind(this, this.state.friendSummonAmountFieldTypeahead)}
                                                onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.friendSummonAmountFieldTypeahead)}
+                                               renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.friendSummonAmountFieldTypeahead)}
+                                               filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                                ref={(ref) => this.state.friendSummonAmountFieldTypeahead = ref}
                                                options={selector.summonAmounts}>
                                     </Typeahead>
@@ -440,6 +436,8 @@ var Summon = CreateClass({
                                                onFocus={this.handleOnSummonAmountFocus.bind(this, this.state.friendSummonAmount2FieldTypeahead)}
                                                onChange={this.handleSummonAmountChange.bind(this, this.state.friendSummonAmount2FieldTypeahead)}
                                                onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.friendSummonAmount2FieldTypeahead)}
+                                               renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.friendSummonAmount2FieldTypeahead)}
+                                               filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                                ref={(ref) => this.state.friendSummonAmount2FieldTypeahead = ref}
                                                options={selector.summonAmounts}>
                                     </Typeahead>

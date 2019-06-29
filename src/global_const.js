@@ -3,11 +3,34 @@ var {Tooltip, OverlayTrigger} = require('react-bootstrap');
 var intl = require('./translate.js');
 var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
-const Typeahead = require('react-bootstrap-typeahead').Typeahead;
+const {Typeahead, Menu, MenuItem} = require('react-bootstrap-typeahead');
 
 Typeahead.defaultProps.align = "left";
-module.exports.Typeahead = Typeahead;
+Typeahead.defaultProps.highlightOnlyResult = true;
+module.exports.filterBy = (option, props, initial, value = props.text.toLowerCase()) => {
+    if (initial === value || (props.selected[0] && props.selected[0] === initial)) {
+        return true;
+    } else {
+        return (option.label && option.label.toLowerCase().indexOf(value) >= 0) || (option.id && option.id.toLowerCase().indexOf(value) >= 0) || (typeof option.indexOf === "function" && option.toLowerCase().indexOf(value) >= 0);
+    }
+};
 
+module.exports.renderMenu = function (results, menuProps, ref) {
+    return (
+        <Menu {...menuProps}>
+            {
+                results.map(
+                    (result, index) => (
+                        <MenuItem option={result.id || result} position={index}
+                                  className={(ref && ref.state.text === result) ? "active" : ""}>{result.label || result}</MenuItem>
+                    )
+                )
+            }
+        </Menu>
+    )
+};
+
+module.exports.Typeahead = Typeahead;
 
 module.exports.TextWithTooltip = CreateClass({
     render: function () {

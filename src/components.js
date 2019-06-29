@@ -117,6 +117,8 @@ class CriticalBuffList extends React.Component {
                             onChange={(e) => (this.handleOnChange("value", idx, e[0]))}
                             onInputChange={(e) => (this.handleOnChange("value", idx, e))}
                             onFocus={(e) => (this.handleOnFocus(this.state["criticalRateFieldTypeahead" + idx], e))}
+                            renderMenu={(results, props) => this.props.renderMenu(results, props, this.state["criticalRateFieldTypeahead" + idx])}
+                            filterBy={(a, b) => this.props.filterBy(a, b, this.props.placeHolder)}
                             ref={(ref) => this.state["criticalRateFieldTypeahead" + idx] = ref}
                             options={selector.criticalRateLevel}/>
                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -131,6 +133,8 @@ class CriticalBuffList extends React.Component {
                             onBlur={(e) => (this.handleOnBlur(e, this.state["attackRatioFieldTypeahead" + idx]))}
                             onChange={(e) => (this.handleOnChange("attackRatio", idx, e[0]))}
                             onInputChange={(e) => (this.handleOnChange("attackRatio", idx, e))}
+                            renderMenu={(results, props) => this.props.renderMenu(results, props, this.state["attackRatioFieldTypeahead" + idx])}
+                            filterBy={(a, b) => this.props.filterBy(a, b, this.props.placeHolder)}
                             onFocus={(e) => (this.handleOnFocus(this.state["attackRatioFieldTypeahead" + idx], e))}
                             ref={(ref) => this.state["attackRatioFieldTypeahead" + idx] = ref}
                             options={selector.buffLevel}/>
