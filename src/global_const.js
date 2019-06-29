@@ -4,31 +4,120 @@ var intl = require('./translate.js');
 var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
 const {Typeahead, Menu, MenuItem} = require('react-bootstrap-typeahead');
-
 Typeahead.defaultProps.align = "left";
 Typeahead.defaultProps.highlightOnlyResult = true;
 Typeahead.defaultProps.flip = true;
 module.exports.filterBy = (option, props, initial, value = props.text.toLowerCase()) => {
-    if (initial === value || (props.selected[0] && props.selected[0] === initial)) {
-        return true;
-    } else {
-        return (option.label && option.label.toLowerCase().indexOf(value) >= 0) || (option.id && option.id.toLowerCase().indexOf(value) >= 0) || (typeof option.indexOf === "function" && option.toLowerCase().indexOf(value) >= 0);
+    return true;
+};
+
+(function(elmProto){
+        if ('scrollTopMax' in elmProto) {
+            return;
+        }
+        Object.defineProperties(elmProto, {
+            'scrollTopMax': {
+                get: function scrollTopMax() {
+                    return this.scrollHeight - this.clientHeight;
+                }
+            },
+            'scrollLeftMax': {
+                get: function scrollLeftMax() {
+                    return this.scrollWidth - this.clientWidth;
+                }
+            }
+        });
     }
+)(Element.prototype);
+
+let observer;
+let observerRef;
+let observerOrder = {};
+const createObserver = (ref) => {
+    let menu = document.getElementById(ref.props.id);
+    let MO = MutationObserver || WebKitMutationObserver || MozMutationObserver;
+    observer = new MO(function(mutations) {
+        mutations.forEach(function() {
+            decideDefaultOrientation(observerRef);
+            if (observerOrder[ref.props.id] !== observerRef.state.order) {
+                observerRef.props.options = observerRef.props.options.reverse();
+                observerOrder[ref.props.id] = ! observerOrder[ref.props.id];
+                observerRef.setState({showMenu: true}, createObserver(observerRef));
+            }
+        });
+    });
+    if (ref.props.options.indexOf(ref.state.text) >= 0) {
+        menu.scrollTop = (menu.scrollTopMax / ref.props.options.length) * (ref.props.options.indexOf(ref.state.text) + 0.5);
+    } else {
+        if (ref.state.order === false) {
+            menu.scrollTop = menu.scrollTopMax;
+        } else {
+            menu.scrollTop = 0;
+        }
+    }
+    observerRef = ref;
+    observer.observe(menu, {attributes: true, attributeFilter: ['style']});
+};
+
+const decideDefaultOrientation = (ref, result = true) => {
+    let menu = document.getElementById(ref.props.id);
+    if (menu) {
+        let re1='.*?';
+        let re2='([-+]\\d+)';
+
+        let p = new RegExp(re1+re2,["i"]);
+        let m = p.exec(menu.style.transform);
+        if (m != null)
+        {
+            let corY = m[1];
+            result = corY >= 0;
+        }
+    } else {
+        result = ref.state.order;
+    }
+    ref.state.order = result;
+    return result;
 };
 
 module.exports.renderMenu = function (results, menuProps, ref) {
-    return (
-        <Menu {...menuProps}>
-            {
-                results.map(
-                    (result, index) => (
-                        <MenuItem option={result.id || result} position={index}
-                                  className={(ref && ref.state.text === result) ? "active" : ""}>{result.label || result}</MenuItem>
+    if (ref) {
+        return (
+            <Menu {...menuProps}>
+                {
+                    results.map(
+                        (result, index) => (
+                            <MenuItem option={result.id || result} position={index}
+                                      className={(ref.state.text === result) ? "active" : ""}>{result.label || result}</MenuItem>
+                        )
                     )
-                )
+                }
+            </Menu>
+        )
+    }
+};
+
+module.exports.onMenuToggle = (isOpen, ref) => {
+    if (isOpen) {
+        if(observerOrder[ref.props.id] === undefined) {
+            observerOrder[ref.props.id] = true;
+        }
+        $('#'+ref.props.id).ready(() => {
+            decideDefaultOrientation(observerRef);
+            if (observerRef.state.order !== observerOrder[ref.props.id]) {
+                observerRef.props.options = observerRef.props.options.reverse();
+                observerOrder[ref.props.id] = !observerOrder[ref.props.id];
             }
-        </Menu>
-    )
+            observerRef.setState({showMenu: true}, createObserver(observerRef));
+        });
+        observerRef = ref;
+    } else {
+        if (!observerOrder[ref.props.id]) {
+            observerOrder[ref.props.id] = true;
+            ref.props.options = ref.props.options.reverse();
+        }
+        observer.disconnect();
+        observerRef = undefined;
+    }
 };
 
 module.exports.Typeahead = Typeahead;

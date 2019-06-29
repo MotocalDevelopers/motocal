@@ -366,6 +366,7 @@ var Summon = CreateClass({
                                                onChange={this.handleSummonAmountChange.bind(this, this.state.selfSummonAmountFieldTypeahead)}
                                                onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.selfSummonAmountFieldTypeahead)}
                                                renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.selfSummonAmountFieldTypeahead)}
+                                               onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.selfSummonAmountFieldTypeahead)}
                                                filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                                ref={(ref) => this.state.selfSummonAmountFieldTypeahead = ref}
                                                options={selector.summonAmounts}>
@@ -383,6 +384,7 @@ var Summon = CreateClass({
                                                onChange={this.handleSummonAmountChange.bind(this, this.state.selfSummonAmount2FieldTypeahead)}
                                                onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.selfSummonAmount2FieldTypeahead)}
                                                renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.selfSummonAmount2FieldTypeahead)}
+                                               onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.selfSummonAmount2FieldTypeahead)}
                                                filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                                ref={(ref) => this.state.selfSummonAmount2FieldTypeahead = ref}
                                                options={selector.summonAmounts}>
@@ -420,6 +422,7 @@ var Summon = CreateClass({
                                                onChange={this.handleSummonAmountChange.bind(this, this.state.friendSummonAmountFieldTypeahead)}
                                                onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.friendSummonAmountFieldTypeahead)}
                                                renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.friendSummonAmountFieldTypeahead)}
+                                               onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.friendSummonAmountFieldTypeahead)}
                                                filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                                ref={(ref) => this.state.friendSummonAmountFieldTypeahead = ref}
                                                options={selector.summonAmounts}>
@@ -437,6 +440,7 @@ var Summon = CreateClass({
                                                onChange={this.handleSummonAmountChange.bind(this, this.state.friendSummonAmount2FieldTypeahead)}
                                                onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.friendSummonAmount2FieldTypeahead)}
                                                renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.friendSummonAmount2FieldTypeahead)}
+                                               onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.friendSummonAmount2FieldTypeahead)}
                                                filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                                ref={(ref) => this.state.friendSummonAmount2FieldTypeahead = ref}
                                                options={selector.summonAmounts}>

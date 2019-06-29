@@ -4,7 +4,7 @@ const React = require('react');
 const {FormControl, InputGroup} = require('react-bootstrap');
 const Typeahead = require('react-bootstrap-typeahead').Typeahead;
 const intl = require('./translate.js');
-const {selector, generateTypeaheadData} = require('./global_const.js');
+const {selector, generateTypeaheadData, onMenuToggle} = require('./global_const.js');
 
 /**
  * Dynamic List component for Critical Buff inputs
@@ -118,6 +118,7 @@ class CriticalBuffList extends React.Component {
                             onInputChange={(e) => (this.handleOnChange("value", idx, e))}
                             onFocus={(e) => (this.handleOnFocus(this.state["criticalRateFieldTypeahead" + idx], e))}
                             renderMenu={(results, props) => this.props.renderMenu(results, props, this.state["criticalRateFieldTypeahead" + idx])}
+                            onMenuToggle={(e) => onMenuToggle(e, this.state["criticalRateFieldTypeahead" + idx])}
                             filterBy={(a, b) => this.props.filterBy(a, b, this.props.placeHolder)}
                             ref={(ref) => this.state["criticalRateFieldTypeahead" + idx] = ref}
                             options={selector.criticalRateLevel}/>
@@ -134,6 +135,7 @@ class CriticalBuffList extends React.Component {
                             onChange={(e) => (this.handleOnChange("attackRatio", idx, e[0]))}
                             onInputChange={(e) => (this.handleOnChange("attackRatio", idx, e))}
                             renderMenu={(results, props) => this.props.renderMenu(results, props, this.state["attackRatioFieldTypeahead" + idx])}
+                            onMenuToggle={(e) => onMenuToggle(e, this.state["attackRatioFieldTypeahead" + idx])}
                             filterBy={(a, b) => this.props.filterBy(a, b, this.props.placeHolder)}
                             onFocus={(e) => (this.handleOnFocus(this.state["attackRatioFieldTypeahead" + idx], e))}
                             ref={(ref) => this.state["attackRatioFieldTypeahead" + idx] = ref}

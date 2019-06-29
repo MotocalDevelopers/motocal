@@ -498,6 +498,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.personalNormalBuffFieldTypeahead, "personalNormalBuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.personalNormalBuffFieldTypeahead, "personalNormalBuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalNormalBuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalNormalBuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.personalNormalBuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -518,6 +519,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalElementBuffFieldTypeahead, "personalElementBuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalElementBuffFieldTypeahead, "personalElementBuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalElementBuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalElementBuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalElementBuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -538,6 +540,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOtherBuffFieldTypeahead, "personalOtherBuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalOtherBuffFieldTypeahead, "personalOtherBuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalOtherBuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalOtherBuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalOtherBuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -558,6 +561,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOtherBuff2FieldTypeahead, "personalOtherBuff2")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalOtherBuff2FieldTypeahead, "personalOtherBuff2")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalOtherBuff2FieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalOtherBuff2FieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalOtherBuff2FieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -594,6 +598,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalDABuffFieldTypeahead, "personalDABuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalDABuffFieldTypeahead, "personalDABuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalDABuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalDABuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalDABuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -614,6 +619,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalTABuffFieldTypeahead, "personalTABuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalTABuffFieldTypeahead, "personalTABuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalTABuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalTABuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalTABuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -634,6 +640,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalAdditionalDamageBuffFieldTypeahead, "personalAdditionalDamageBuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalAdditionalDamageBuffFieldTypeahead, "personalAdditionalDamageBuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalAdditionalDamageBuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalAdditionalDamageBuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalAdditionalDamageBuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -665,6 +672,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOugiDamageBuffFieldTypeahead, "personalOugiDamageBuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalOugiDamageBuffFieldTypeahead, "personalOugiDamageBuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalOugiDamageBuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalOugiDamageBuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalOugiDamageBuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -685,6 +693,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOugiGageBuffFieldTypeahead, "personalOugiGageBuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalOugiGageBuffFieldTypeahead, "personalOugiGageBuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalOugiGageBuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalOugiGageBuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalOugiGageBuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -705,6 +714,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalUpliftFieldTypeahead, "personalUplift")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalUpliftFieldTypeahead, "personalUplift")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalUpliftFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalUpliftFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalUpliftFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -725,6 +735,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalDamageLimitBuffFieldTypeahead, "personalDamageLimitBuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalDamageLimitBuffFieldTypeahead, "personalDamageLimitBuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalDamageLimitBuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalDamageLimitBuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalDamageLimitBuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -745,6 +756,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.personalOugiDamageLimitBuffFieldTypeahead, "personalOugiDamageLimitBuff")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.personalOugiDamageLimitBuffFieldTypeahead, "personalOugiDamageLimitBuff")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.personalOugiDamageLimitBuffFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.personalOugiDamageLimitBuffFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.personalOugiDamageLimitBuffFieldTypeahead = ref}
                                     options={selector.buffLevel}/>
@@ -775,6 +787,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusFieldTypeahead, "masterBonus")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.masterBonusFieldTypeahead, "masterBonus")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.masterBonusFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.masterBonusFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.masterBonusFieldTypeahead = ref}
                                         options={selector.masteratk}/>
@@ -799,6 +812,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusHPFieldTypeahead, "masterBonusHP")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.masterBonusHPFieldTypeahead, "masterBonusHP")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.masterBonusHPFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.masterBonusHPFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.masterBonusHPFieldTypeahead = ref}
                                         options={selector.masterhp}/>
@@ -823,6 +837,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusDAFieldTypeahead, "masterBonusDA")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.masterBonusDAFieldTypeahead, "masterBonusDA")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.masterBonusDAFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.masterBonusDAFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.masterBonusDAFieldTypeahead = ref}
                                         options={selector.masterDA}/>
@@ -847,6 +862,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusTAFieldTypeahead, "masterBonusTA")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.masterBonusTAFieldTypeahead, "masterBonusTA")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.masterBonusTAFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.masterBonusTAFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.masterBonusTAFieldTypeahead = ref}
                                         options={selector.masterTA}/>
@@ -872,6 +888,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.masterBonusDamageLimitFieldTypeahead, "masterBonusDamageLimit")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.masterBonusDamageLimitFieldTypeahead, "masterBonusDamageLimit")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.masterBonusDamageLimitFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.masterBonusDamageLimitFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.masterBonusDamageLimitFieldTypeahead = ref}
                                         options={selector.masterDamageLimit}/>
@@ -901,6 +918,7 @@ var Profile = CreateClass({
                                 onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithAttackBonusFieldTypeahead, "zenithAttackBonus")}
                                 onChange={this.handleAutoCompleteEvent.bind(this, this.state.zenithAttackBonusFieldTypeahead, "zenithAttackBonus")}
                                 renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.zenithAttackBonusFieldTypeahead)}
+                                onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.zenithAttackBonusFieldTypeahead)}
                                 filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                 ref={(ref) => this.state.zenithAttackBonusFieldTypeahead = ref}
                                 options={selector.zenithAttack}/>
@@ -918,6 +936,7 @@ var Profile = CreateClass({
                                 onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithHPBonusFieldTypeahead, "zenithHPBonus")}
                                 onChange={this.handleAutoCompleteEvent.bind(this, this.state.zenithHPBonusFieldTypeahead, "zenithHPBonus")}
                                 renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.zenithHPBonusFieldTypeahead)}
+                                onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.zenithHPBonusFieldTypeahead)}
                                 filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                 ref={(ref) => this.state.zenithHPBonusFieldTypeahead = ref}
                                 options={selector.zenithHP}/>
@@ -935,6 +954,7 @@ var Profile = CreateClass({
                                 onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.zenithPartyHPBonusFieldTypeahead, "zenithPartyHPBonus")}
                                 onChange={this.handleAutoCompleteEvent.bind(this, this.state.zenithPartyHPBonusFieldTypeahead, "zenithPartyHPBonus")}
                                 renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.zenithPartyHPBonusFieldTypeahead)}
+                                onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.zenithPartyHPBonusFieldTypeahead)}
                                 filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                 ref={(ref) => this.state.zenithPartyHPBonusFieldTypeahead = ref}
                                 options={selector.zenithPartyHP}/>
@@ -1064,6 +1084,7 @@ var Profile = CreateClass({
                                         onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.normalBuffFieldTypeahead)}
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.normalBuffFieldTypeahead)}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.normalBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.normalBuffFieldTypeahead = ref}
@@ -1087,6 +1108,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.elementBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.elementBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.elementBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1109,6 +1131,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.otherBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.otherBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.otherBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1131,6 +1154,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.otherBuff2FieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.otherBuff2FieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.otherBuff2FieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1171,6 +1195,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.hpBuffFieldTypeahead, "hpBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.hpBuffFieldTypeahead, "hpBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.hpBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.hpBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.hpBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1193,6 +1218,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.daBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.daBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.daBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1215,6 +1241,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.taBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.taBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.taBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1251,6 +1278,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.ougiDamageBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.ougiDamageBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.ougiDamageBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1274,6 +1302,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.additionalDamageBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.additionalDamageBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.additionalDamageBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1312,6 +1341,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.ougiGageBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.ougiGageBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.ougiGageBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1335,6 +1365,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.upliftFieldTypeahead, "uplift")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.upliftFieldTypeahead, "uplift")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.upliftFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.upliftFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.upliftFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1358,6 +1389,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiGageUpOugiBuffFieldTypeahead, "ougiGageUpOugiBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiGageUpOugiBuffFieldTypeahead, "ougiGageUpOugiBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.ougiGageUpOugiBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.ougiGageUpOugiBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.ougiGageUpOugiBuffFieldTypeahead = ref}
                                         options={selector.ougiGageUpOugiBuffLevel}/>
@@ -1381,6 +1413,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.damageLimitBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.damageLimitBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.damageLimitBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1404,6 +1437,7 @@ var Profile = CreateClass({
                                         onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
                                         onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
                                         renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.ougiDamageLimitBuffFieldTypeahead)}
+                                        onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.ougiDamageLimitBuffFieldTypeahead)}
                                         filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                         ref={(ref) => this.state.ougiDamageLimitBuffFieldTypeahead = ref}
                                         options={selector.buffLevel}/>
@@ -1432,6 +1466,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.enemyDefenseFieldTypeahead, "enemyDefense")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.enemyDefenseFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.enemyDefenseFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.enemyDefenseFieldTypeahead = ref}
                                     options={selector[locale].enemydeftypes}/>
@@ -1520,6 +1555,7 @@ var Profile = CreateClass({
                                     onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiRatioFieldTypeahead, "ougiRatio")}
                                     onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiRatioFieldTypeahead, "ougiRatio")}
                                     renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.ougiRatioFieldTypeahead)}
+                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.ougiRatioFieldTypeahead)}
                                     filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
                                     ref={(ref) => this.state.ougiRatioFieldTypeahead = ref}
                                     options={selector.ougiRatio}/>
