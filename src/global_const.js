@@ -7,6 +7,7 @@ const {Typeahead, Menu, MenuItem} = require('react-bootstrap-typeahead');
 
 Typeahead.defaultProps.align = "left";
 Typeahead.defaultProps.highlightOnlyResult = true;
+Typeahead.defaultProps.flip = true;
 module.exports.filterBy = (option, props, initial, value = props.text.toLowerCase()) => {
     if (initial === value || (props.selected[0] && props.selected[0] === initial)) {
         return true;
