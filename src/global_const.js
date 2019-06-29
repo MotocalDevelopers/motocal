@@ -2721,7 +2721,7 @@ module.exports.selector.plusnum = Object.keys(plusNumList).map(function (opt) {
 });
 
 module.exports.selector.charaPlusNumList = Object.keys(charaPlusNumList).map(function (opt) {
-    return {id: charaPlusNumList[opt], label: opt};
+    return {id: charaPlusNumList[opt].toString(), label: opt.toString()};
 });
 
 module.exports.selector.level100Limit = Object.keys(levelList100Limit).map(function (opt) {
