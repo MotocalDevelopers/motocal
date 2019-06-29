@@ -2010,10 +2010,16 @@ var supportAbilities = {
         "value": 1.00
     },
     "ougi_gage_down_own_35": {
-        "name": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ、ウーフとレニー)",
+        "name": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
         "type": "ougiGageBuff",
         "range": "own",
-        "value": -0.35,
+        "value": -0.35
+    },
+    "ougi_gage_down_own_35_ta_100": { // NOTE: reserve for TASupport
+        "name": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
+        "type": "ougiGageBuff",
+        "range": "own",
+        "value": -0.35
     },
     "ougi_gage_up_djeeta_20": {
         "name": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
@@ -2077,45 +2083,53 @@ var supportAbilities = {
     },
     "critical_up_own_10_30": {
         "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "own",
-        "value": 0.10,
-        "attackRatio": 0.30
+        "value": {value: 0.10, attackRatio: 0.30}
     },
     "critical_up_own_20_20": {
         "name": "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "own",
-        "value": 0.20,
-        "attackRatio": 0.20
+        "value": {value: 0.20, attackRatio: 0.20}
     },
     "critical_up_own_40_50": {
         "name": "クリティカル確率UP(発動率40%, 倍率50%)(キャル)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "own",
-        "value": 0.40,
-        "attackRatio": 0.50
+        "value": {value: 0.40, attackRatio: 0.50}
     },
     "critical_up_all_5_30": {
         "name": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "all",
-        "value": 0.05,
-        "attackRatio": 0.30
+        "value": {value: 0.05, attackRatio: 0.30}
     },
     "critical_up_all_100_50": {
         "name": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "all",
-        "value": 1.00,
-        "attackRatio": 0.50
+        "value": {value: 1.00, attackRatio: 0.50}
     },
-    "critical_up_others_20_20": {
+    "mamoritai_kono_egao": {
+        "name": "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)",
+        "type": "composite",
+        "value": [
+            {ID: "mamorubeshi_sono_egao"},
+            {type: "normalBuff", range: "others", value: 0.05}
+        ]
+    },
+    "mamorubeshi_sono_egao": {
         "name": "自分以外の味方のクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア(クリスマスver))",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "others",
-        "value": 0.20,
-        "attackRatio": 0.20,
+        "value": {value: 0.20, attackRatio: 0.20}
     },
     "damageUP_5": {
         "name": "与ダメージ上昇5%UP(アビー)",
@@ -2225,14 +2239,6 @@ var supportAbilities = {
         "range": "own",
         "value": 0.30
     },
-    "mamoritai_kono_egao": {
-        "name": "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)",
-        "type": "mamoritai_kono_egao",
-        "range": "others",
-        "value": 0.20,
-        "attackRatio": 0.20,
-        "normalBuff": 0.05,
-    },
     "fumetsu_no_mikiri": {
         "name": "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))",
         "type": "fumetsu_no_mikiri",
@@ -2243,17 +2249,13 @@ var supportAbilities = {
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
         "range": "own",
-        "additionalDamageSA": 0.8,
-        "additionalDamageDA": 0.3,
-        "additionalDamageTA": 0.0,
+        "additionalDamageXA": [0.8, 0.3, 0.0]
     },
     "Revion_kishi_sanshimai": {
         "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
         "range": "own",
-        "additionalDamageSA": 0.0,
-        "additionalDamageDA": 0.0,
-        "additionalDamageTA": 0.15,
+        "additionalDamageXA": [0.0, 0.0, 0.15]
     },
     "element_buff_boost_damageUP_own_10": {
         "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
