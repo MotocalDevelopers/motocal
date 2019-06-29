@@ -2698,11 +2698,11 @@ module.exports.selector.ougiRatio = ougiRatioList.map(String);
 module.exports.selector.hplist = HPList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
-module.exports.selector.masteratk = masterATKList.map(String);
-module.exports.selector.masterhp = masterHPList.map(String);
-module.exports.selector.masterDA = masterDAList.map(String);
-module.exports.selector.masterTA = masterTAList.map(String);
-module.exports.selector.masterDamageLimit = masterDamageLimitList.map(String);
+module.exports.selector.masteratk = masterATKList.reverse().map(String);
+module.exports.selector.masterhp = masterHPList.reverse().map(String);
+module.exports.selector.masterDA = masterDAList.reverse().map(String);
+module.exports.selector.masterTA = masterTAList.reverse().map(String);
+module.exports.selector.masterDamageLimit = masterDamageLimitList.reverse().map(String);
 module.exports.selector.chainNumber = chainNumberList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
