@@ -61,7 +61,7 @@ describe("support.range", () => {
     })
     
     it("range_light", () => {
-        expect(range.element("light")(totals, "Djeeta").length).toBe(2);
+        expect(range.element.light(totals, "Djeeta").length).toBe(2);
     });
     
     it("range_fist", () => {

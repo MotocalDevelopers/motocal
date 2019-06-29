@@ -33,12 +33,29 @@ const range_custom = (func) => range_custom_func(([name, chara]) => func(chara))
 
 const range_element = (element) => range_custom(chara => chara.element == element);
 
+Object.assign(range_element, {
+    fire: range_element("fire"),
+    water: range_element("water"),
+    wind: range_element("wind"),
+    earth: range_element("earth"),
+    light: range_element("light"),
+    dark: range_element("dark"),
+});
+
+// FIXME: This race check is now not completed.
+// e.g. baha race check will match to "unknown", "seisyo"
 const range_race = (race) => range_custom(chara => chara.race == race);
 
 // TODO: Support two favorite weapons.
 const range_fav = (fav) => range_custom(chara => [chara.fav1, chara.fav2].includes(fav));
 
 const range_sex = (sex) => range_custom(chara => chara.sex === sex);
+
+Object.assign(range_sex, {
+    male: range_sex("male"),
+    female: range_sex("female"),
+    other: range_sex("other"),
+});
 
 
 const when_element_buff = (chara, buff) => (chara.elementBuff > 0 || buff.element > 0);
