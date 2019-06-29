@@ -445,8 +445,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         // hp magnification
         var hpCoeff = 1.0;
-        hpCoeff += 0.01 * totals[key]["normalHP"] * totalSummon["zeus"];
-        hpCoeff += 0.01 * totals[key]["magnaHP"] * totalSummon["magna"];
+        hpCoeff += 0.01 * totals[key]["normalHP"] * totalSummon["zeus"] * (1 + totals[key]["aegisUP"]);
+        hpCoeff += 0.01 * totals[key]["magnaHP"] * totalSummon["magna"] * (1 + totals[key]["aegisUP"]);
         hpCoeff += 0.01 * totals[key]["unknownHP"] * totalSummon["ranko"];
         hpCoeff += 0.01 * totals[key]["exHP"];
         hpCoeff += 0.01 * totals[key]["bahaHP"];
