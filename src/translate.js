@@ -2065,10 +2065,15 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量100%UP(オクトー)",
         "zh": "奥義ゲージ上昇量100%UP(オクトー)",
     },
-    "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ、ウーフとレニー)": {
-        "en": "Charge bar fills up 35% slower. (Geisenborger, Wulf and Renie)",
-        "ja": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ、ウーフとレニー)",
-        "zh": "Charge bar fills up 35% slower. (Geisenborger, Wulf and Renie)",
+    "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)": {
+        "en": "Charge bar fills up 35% slower. (Geisenborger)",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
+        "zh": "Charge bar fills up 35% slower. (Geisenborger)",
+    },
+    "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))": {
+        "en": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
+        "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
     },
     "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))": {
         "en": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",

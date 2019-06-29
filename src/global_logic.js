@@ -28,7 +28,7 @@ var raceTypes = GlobalConst.raceTypes;
 var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
-const {when} = require('./support_filter');
+const {range, when} = require('./support_filter');
 
 module.exports.isCosmos = function (arm) {
     return (skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") ||
@@ -696,11 +696,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var additionalDamage = 0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"];
         additionalDamage += totals[key]["additionalDamageBuff"];
         additionalDamage += buff["additionalDamage"];
-        //additionalDamage based on attacks per turn (sturm support ability-like)
-        additionalDamage += taRate * totals[key]["additionalDamageTA"]; // additionalDamage On Triple Attack
-        additionalDamage += (1.0 - taRate) * daRate * totals[key]["additionalDamageDA"]; // additionalDamage On Double Attack
-        additionalDamage += (1.0 - taRate) * (1.0 - daRate) * totals[key]["additionalDamageSA"]; // additionalDamage On Single Attack
-        
+        if (totals[key]["additionalDamageXA"]) {
+            //additionalDamage based on attacks per turn (sturm support ability-like)
+            let [saDamage, daDamage, taDamage] = totals[key]["additionalDamageXA"];
+            additionalDamage += taRate * ta; // additionalDamage On Triple Attack
+            additionalDamage += (1.0 - taRate) * daRate * daDamage; // additionalDamage On Double Attack
+            additionalDamage += (1.0 - taRate) * (1.0 - daRate) * saDamage; // additionalDamage On Single Attack
+        }
+
         // Damage limit UP = Overall buff + Personal buff + skill
         var damageLimit = buff["damageLimit"];
         damageLimit += totals[key]["damageLimitBuff"];
@@ -1333,12 +1336,24 @@ function* eachSupport(chara) {
             continue; // Safe for skip
         }
 
-        if (typeof supportAbilities[chara[key]] === 'undefined') {
-            console.error("unknown support ability ID:", chara[key]);
+        let supportID = chara[key];
+        let support = supportAbilities[supportID];
+
+        if (typeof support === 'undefined') {
+            console.error("unknown support ability ID:", supportID);
             continue;
         }
 
-        yield supportAbilities[chara[key]];
+        // process composite support
+        if (support.type === "composite") {
+            for (let subSupport of support.value) {
+                // TODO: check undefined and" "none" support
+                yield supportAbilities[subSupport.ID] || subSupport;
+            }
+            continue;
+        }
+
+        yield support;
     }
 }
 
@@ -2264,9 +2279,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 chainDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
-                additionalDamageSA: 0,
-                additionalDamageDA: 0,
-                additionalDamageTA: 0,
+                additionalDamageXA: null,
                 ougiDebuff: 0,
                 isConsideredInAverage: true,
                 job: job,
@@ -2434,9 +2447,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 omegaOugiDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
-                additionalDamageSA: 0,
-                additionalDamageDA: 0,
-                additionalDamageTA: 0,
+                additionalDamageXA: null,
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
                 normalBuff: charaBuffList["normalBuff"],
@@ -2784,19 +2795,6 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                         totals[key]["ougiDamageLimitBuff"] += 0.10;
                     }
                     continue;
-                case "mamoritai_kono_egao":
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            if (key != key2) {
-                                totals[key2]["normalOtherCriticalBuff"].push({
-                                    "value": support.value,
-                                    "attackRatio": support.attackRatio
-                                });
-                                totals[key2]["normalBuff"] += support.normalBuff;
-                            }   
-                        }
-                    }
-                    continue;
                 case "tousou_no_chishio":
                     if (totals[key]['remainHP'] <= 1 && totals[key]['remainHP'] > 0.6) {
                         totals[key]["DASupport"] += 0.10;
@@ -2825,9 +2823,8 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     }
                     continue;
                 case "additionalDamageXA":
-                    totals[key]["additionalDamageSA"] += support.additionalDamageSA;
-                    totals[key]["additionalDamageDA"] += support.additionalDamageDA;
-                    totals[key]["additionalDamageTA"] += support.additionalDamageTA;
+                    // currently, range: own only, and no chances to stack.
+                    totals[key]["additionalDamageXA"] = support.value;
                     continue;
                 case "element_buff_boost_damageUP_own_10":
                     if (when.element_buff(totals[key], buff)) {
@@ -2863,56 +2860,27 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     break;
             }
 
-            // Critical processing
-            if (support.type == "criticalBuff") {
-                if (support.range == "own") {
-                    totals[key]["normalOtherCriticalBuff"].push({
-                        "value": support.value,
-                        "attackRatio": support.attackRatio
-                    })
-                } else if (support.range == "others") {
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            if (key != key2) {
-                                totals[key2]["normalOtherCriticalBuff"].push({
-                                    "value": support.value,
-                                    "attackRatio": support.attackRatio
-                                });
-                            }   
-                        }
-                    }
-                } else {
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            totals[key2]["normalOtherCriticalBuff"].push({
-                                "value": support.value,
-                                "attackRatio": support.attackRatio
-                            })
-                        }
-                    } else {
-                        totals[key]["normalOtherCriticalBuff"].push({
-                            "value": support.value,
-                            "attackRatio": support.attackRatio
-                        })
-                    }
-                }
-                continue;
-            }
-
             // Processing in case of simple buff system
-            if (support.range == "own") {
-                totals[key][support.type] += support.value
-            } else if (support.range == "all") {
-                // If it is included in the average it affects the whole
-                if (totals[key].isConsideredInAverage) {
-                    for (var key2 in totals) {
-                        totals[key2][support.type] += support.value
-                    }
-                } else {
-                    totals[key][support.type] += support.value
+
+            // FIXME: restrict filtering range function lookup
+            //   currently support "all", "own", "others", "Djeeta"
+            //   not work well with, range: "element" etc .. use range function
+            let range_filter = range[support.range] || support.range;
+
+            for (let [name, chara] of range_filter(totals, key)) {
+                if (support.when && !support.when(chara, buff))
+                    continue;
+                switch (support.assign || "add") {
+                case "push":
+                    chara[support.type].push(support.value);
+                    break;
+                case "max":
+                    chara[support.type] = Math.max(support.value, chara[support.type]);
+                    break;
+                case "add":
+                    chara[support.type] += support.value;
+                    break;
                 }
-            } else if (support.range == "Djeeta") {
-                totals["Djeeta"][support.type] += support.value;
             }
         }
     }

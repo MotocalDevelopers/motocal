@@ -103,8 +103,11 @@ supportAbilist["ougi_gage_up_own_100"] = {
     u"刀神"
 }
 supportAbilist["ougi_gage_down_own_35"] = {
-    u"ケンプファー",
     u"闘争求む重鎧"
+}
+supportAbilist["ougi_gage_down_own_35_ta_100"] = {
+    u"ケンプファー",
+    u"凶爪"
 }
 supportAbilist["ougi_gage_up_djeeta_20"] = {
     u"クラリスちゃんの特製チョコ☆"
@@ -152,7 +155,10 @@ supportAbilist["critical_up_own_40_50"] = {
 supportAbilist["critical_up_all_5_30"] = {
     u"調教してやる"
 }
-supportAbilist["critical_up_others_20_20"] = {
+supportAbilist["mamoritai_kono_egao"] = {
+    u"護りたい、この笑顔"
+}
+supportAbilist["mamorubeshi_sono_egao"] = {
     u"護るべし、その笑顔"
 }
 #The effect size of "真っ二つにしてやるんだっ！" has not been verified.
@@ -191,9 +197,6 @@ supportAbilist["ougiCapUP_100"] = {
 }
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
-}
-supportAbilist["mamoritai_kono_egao"] = {
-    u"護りたい、この笑顔"
 }
 supportAbilist["fumetsu_no_mikiri"] = {
     u"不滅の見切り"
@@ -446,7 +449,7 @@ patching["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
 patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 
 ### SR
-patching["プレデター"] = {"DA": 1000.0, "TA": 3.0}
+patching["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
 
 # Patching ougi ratio https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968
 patchingOugiRatio = OrderedDict()
