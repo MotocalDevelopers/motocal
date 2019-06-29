@@ -1328,15 +1328,17 @@ function* eachSkill(arm) {
 
 function* eachSupport(chara) {
     for (let key of ["support", "support2", "support3"]) {
-        if (typeof chara[key] === 'undefined') {
+
+        let supportID = chara[key];
+
+        if (typeof supportID === 'undefined') {
             continue; // Data maybe broken.
         }
 
-        if (chara[key] == 'none') {
+        if (supportID === 'none') {
             continue; // Safe for skip
         }
 
-        let supportID = chara[key];
         let support = supportAbilities[supportID];
 
         if (typeof support === 'undefined') {
@@ -1345,7 +1347,7 @@ function* eachSupport(chara) {
         }
 
         // process composite support
-        if (support.type === "composite") {
+        if (support.type === 'composite') {
             for (let subSupport of support.value) {
                 // TODO: check undefined and" "none" support
                 yield supportAbilities[subSupport.ID] || subSupport;
