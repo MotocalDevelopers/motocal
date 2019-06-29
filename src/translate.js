@@ -2235,9 +2235,9 @@ var multiLangData = {
         "ja": "味方全体の強化効果「属性攻撃UP」の効果30%UP。",
         "zh": "All Allies gain an additional 30% boost to Element ATK when affected by Element ATK Buff.",
     },
-    "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver)": {
+    "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver))": {
         "en": "30% boost to ATK when affected by Element ATK Buff (Heles (Wind))",
-        "ja": "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver)",
+        "ja": "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver))",
         "zh": "30% boost to ATK when affected by Element ATK Buff (Heles (Wind))",
     },
     "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)": {

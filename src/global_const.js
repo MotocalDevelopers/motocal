@@ -2220,7 +2220,7 @@ var supportAbilities = {
         "value": 0.30
     },
     "shinryu_to_no_kizuna": {
-        "name": "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver)",
+        "name": "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver))",
         "type": "shinryu_to_no_kizuna",
         "range": "own",
         "value": 0.30
