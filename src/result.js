@@ -1309,6 +1309,31 @@ var Result = CreateClass({
                             );
                         }
 
+                        var additionalInfo = [];
+                        if (skilldata["additionalDamageXA"]) {
+                            let {additionalDamageXA} = skilldata;
+                            console.log(additionalDamageXA)
+                            additionalInfo.push(
+                                <table key={key + "-additionalInfoTable"} className="table table-bordered"
+                                       style={{"marginBottom": "0px", "fontSize": "10pt"}}>
+                                    <thead>
+                                    <tr>
+                                        <th className="bg-success">{intl.translate("追加ダメージXA", locale)}</th>
+                                        <th className="bg-success">SA</th>
+                                        <th className="bg-success">DA</th>
+                                        <th className="bg-success">TA</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{intl.translate("効果量", locale)}</td>
+                                        {additionalDamageXA.map(value => <td>{Math.round(value*100)}%</td>)}
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            );
+                        }
+
                         var supplementalDamageInfo = [];
                         const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
                         if (supplementalInfo.total > 0) {
@@ -1375,6 +1400,8 @@ var Result = CreateClass({
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-criticalInfo"}
                                                    style={{"margin": "5px 0px"}}>{criticalInfo}</div>);
+                        charaDetail[key].push(<div key={key + "-additionalInfo"}
+                                                   style={{"margin": "5px 0px"}}>{additionalInfo}</div>);
                         charaDetail[key].push(<div key={key + "-supplementalDamageInfo"}
                                                    style={{"margin": "5px 0px"}}>{supplementalDamageInfo}</div>);
                         charaDetail[key].push(<div key={key + "-otherSkillInfo"}>{otherSkillInfo}</div>);
