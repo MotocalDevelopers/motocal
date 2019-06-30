@@ -553,7 +553,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["EXLB"]["WED"]) {
             otherCoeff *= 1.10;
         }
-        otherCoeff *= prof.retsujitsuNoRakuen ? 1.25 : 1;
+        otherCoeff *= prof.retsujitsuNoRakuen ? 1.20 : 1;
 
         // Character Emnity
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"];
