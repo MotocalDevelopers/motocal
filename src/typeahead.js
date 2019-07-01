@@ -11,10 +11,12 @@ class Typeahead extends React.Component {
         super(props);
         DefaultTypeahead.defaultProps.positionFixed = true;
         DefaultTypeahead.defaultProps.align = "left";
+        DefaultTypeahead.defaultProps.highlightOnlyResult = true;
         this.state = {
             text: props.value.toString()
         };
         this.defaultTypeahead = React.createRef();
+        this.menu = React.createRef();
     }
 
     handleOnFocus() {
@@ -113,7 +115,7 @@ class Typeahead extends React.Component {
 
     renderMenu(results, menuProps) {
         return (
-            <Menu {...menuProps}>
+            <Menu {...menuProps} ref={this.menu}>
                 {
                     results.map(
                         (result, index) => (
@@ -142,7 +144,7 @@ class Typeahead extends React.Component {
         if (this.props.value !== undefined && this.props.options && this.props.stat && this.props.onChange) {
             typeahead = <DefaultTypeahead
                 id={this.props.stat}
-                selected={[this.props.value]}
+                selected={[this.props.value.toString()]}
                 onFocus={this.handleOnFocus.bind(this)}
                 onBlur={this.handleOnBlur.bind(this)}
                 onChange={this.handleOnChange.bind(this)}
@@ -168,7 +170,7 @@ class Typeahead extends React.Component {
 
 Typeahead.propTypes = {
     value: PropTypes.any.isRequired,
-    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    options: PropTypes.arrayOf(PropTypes.any).isRequired,
     stat: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     onFocus: PropTypes.func,

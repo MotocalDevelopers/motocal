@@ -4,8 +4,7 @@ var {Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, P
 var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
 var GlobalConst = require('./global_const.js');
-const Typeahead = GlobalConst.Typeahead;
-var Utilities = require('./utilities');
+const Typeahead = require('./typeahead').Typeahead;
 var {CriticalBuffList} = require('./components.js');
 
 // inject GlobalConst...
@@ -395,17 +394,9 @@ var Chara = CreateClass({
 
         return newState;
     },
-    handleAutoCompleteEvent: function (ref, key, selected) {
-        let newState = this.state;
-        if (selected[0] !== undefined) {
-            if (selected[0].hasOwnProperty("id")) {
-                newState[key] = selected[0].id;
-            } else {
-                newState[key] = selected[0];
-            }
-        } else {
-            newState[key] = ref.state.text;
-        }
+    handleEvent: function (key, e) {
+        var newState = this.state;
+        newState[key] = e.target.value;
 
         if (key == "criticalBuffCount") {
             if (newState.criticalBuff.length > newState.criticalBuffCount) {
@@ -418,35 +409,7 @@ var Chara = CreateClass({
             }
         }
 
-        if (key === "name" && this.state.name !== "" && ref.state.text !== "") {
-            this.props.onChange(this.props.id, newState, true)
-        } else {
-            this.props.onChange(this.props.id, newState, false)
-        }
-    },
-    handleEvent: function (key, e) {
-        this.handleAutoCompleteEvent(null, key, [e.target.value])
-    },
-    handleAutoCompleteOnFocus: function (ref, e, input=undefined) {
-        let value = e.target.value;
-
-        if (value) {
-            this.state.StatePlaceholder = value;
-        }
-
-        if (ref instanceof Typeahead) {
-            input = ref.getInput();
-        } else if (ref instanceof FormControl) {
-            input = e.target;
-        }
-
-        this.selectInputElement(input);
-    },
-    handleOnFocus: function (e) {
-        if (e.target.value) {
-            this.state.StatePlaceholder = e.target.value;
-        }
-        e.target.select();
+        this.setState(newState)
     },
     handleSelectEvent: function (key, e) {
         var newState = this.state;
@@ -460,62 +423,11 @@ var Chara = CreateClass({
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false);
     },
-    completeBlurAction: function (ref, key) {
-        let newState = this.state;
-        if (key) {
-            let value;
-            if (ref.state.text !== undefined) {
-                value = ref.state.text;
-            } else if (ref.state.hasOwnProperty("selected") && ref.state.selected.length > 0) {
-                if (ref.state.selected[0]) {
-                    if (ref.state.selected[0].hasOwnProperty("id")) {
-                        value = ref.state.selected[0].id;
-                    } else {
-                        value = ref.state.selected[0];
-                    }
-                }
-            } else {
-                value = ref.props.value;
-            }
-            if (ref.props.inputProps) {
-                if (ref.props.inputProps.targettype === "number") {
-                    value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.StatePlaceholder);
-                }
-            } else {
-                if (ref.props.type === "number") {
-                    value = Utilities.parseNumberInputField(value, ref.props, this.state.StatePlaceholder);
-                }
-            }
-            newState[key] = value;
-        }
-        return newState;
-    },
-    handleAutoCompleteOnBlur: function (ref, key) {
-        // Send change to parent only when focus is off
-        let newState = this.completeBlurAction(ref, key);
-        if (key) {
-            if (ref instanceof Typeahead){
-                ref.setState({text: newState[key].toString()});
-            }
-        }
-        if (key === "name" && this.state.name !== "" && ref.state.text !== "") {
-            this.props.onChange(this.props.id, newState, true)
-        } else {
-            this.props.onChange(this.props.id, newState, false)
-        }
-    },
     handleOnBlur: function (key, e) {
-        // Send change to parent only when focus is off
-        let ref = {state: {}, props: {inputProps: {}}};
-        ref.state.text = e.target.value;
-        ref.props.inputProps.min = e.target.min;
-        ref.props.inputProps.max = e.target.max;
-        ref.props.inputProps.targettype = e.target.type;
-        let newState = this.completeBlurAction(ref, key);
-        if (key == "name" && newState.name != "" && e.target.value != "") {
-            this.props.onChange(this.props.id, newState, true)
+        if (key == "name" && this.state.name != "" && e.target.value != "") {
+            this.props.onChange(this.props.id, this.state, true)
         } else {
-            this.props.onChange(this.props.id, newState, false)
+            this.props.onChange(this.props.id, this.state, false)
         }
     },
     openPresets: function (e) {
@@ -542,10 +454,6 @@ var Chara = CreateClass({
     },
     switchEXLBlist: function (e) {
         this.setState({openEXLBlist: !(this.state.openEXLBlist)})
-    },
-    selectInputElement: function (input) {
-        input.value = this.state.StatePlaceholder;
-        input.select();
     },
     render: function () {
         let locale = this.props.locale;
@@ -632,18 +540,13 @@ var Chara = CreateClass({
                     <tr>
                         <th className="bg-primary">{intl.translate("プラスボーナス", locale)}</th>
                         <td>
-                            <Typeahead
-                                id="plusBonusField"
-                                selected={[Utilities.getLabelFromId(selector.charaPlusNumList, this.state.plusBonus.toString())]}
-                                inputProps={GlobalConst.generateTypeaheadData("number", '0', '999')}
-                                onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.plusBonusFieldTypeahead)}
-                                onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.plusBonusFieldTypeahead, "plusBonus")}
-                                onChange={this.handleAutoCompleteEvent.bind(this, this.state.plusBonusFieldTypeahead, "plusBonus")}
-                                renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.plusBonusFieldTypeahead)}
-                                onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.plusBonusFieldTypeahead)}
-                                filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                ref={(ref) => this.state.plusBonusFieldTypeahead = ref}
-                                options={selector.charaPlusNumList}/>
+                            <Typeahead value={this.state.plusBonus}
+                                       options={selector.charaPlusNumList}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="plusBonus"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
@@ -705,84 +608,52 @@ var Chara = CreateClass({
                     <tr className={showInvul} key="normalBuff">
                         <th className="bg-primary">{intl.translate("通常バフ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="normalBuffField"
-                                    selected={[this.state.normalBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.normalBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.normalBuffFieldTypeahead, "normalBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.normalBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.normalBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.normalBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.normalBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="normalBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="elementBuff">
                         <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="elementBuffField"
-                                    selected={[this.state.elementBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.elementBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.elementBuffFieldTypeahead, "elementBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.elementBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.elementBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.elementBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.elementBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="elementBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="otherBuff">
                         <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="otherBuffField"
-                                    selected={[this.state.otherBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.otherBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.otherBuffFieldTypeahead, "otherBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.otherBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.otherBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.otherBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.otherBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="otherBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="otherBuff2">
                         <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="otherBuff2Field"
-                                    selected={[this.state.otherBuff2.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.otherBuff2FieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.otherBuff2FieldTypeahead, "otherBuff2")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.otherBuff2FieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.otherBuff2FieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.otherBuff2FieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.otherBuff2}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="otherBuff2"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
@@ -790,14 +661,10 @@ var Chara = CreateClass({
                         <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                         <td>
                             <CriticalBuffList locale={locale}
-                                              onBlur={this.handleAutoCompleteOnBlur}
-                                              onFocus={this.handleAutoCompleteOnFocus}
+                                              onBlur={this.handleOnBlur}
                                               onCountChange={(count) => this.setState({criticalBuffCount: count})}
                                               label="criticalBuff"
                                               criticalArray={this.state.criticalBuff}
-                                              renderMenu={GlobalConst.renderMenu}
-                                              filterBy={GlobalConst.filterBy}
-                                              placeHolder={this.state.StatePlaceholder}
                                               initialCount={this.state.criticalBuffCount}/>
                         </td>
                     </tr>
@@ -805,63 +672,39 @@ var Chara = CreateClass({
                     <tr className={showInvul} key="daBuff">
                         <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="daBuffField"
-                                    selected={[this.state.daBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.daBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.daBuffFieldTypeahead, "daBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.daBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.daBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.daBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.daBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="daBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="taBuff">
                         <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="taBuffField"
-                                    selected={[this.state.taBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.taBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.taBuffFieldTypeahead, "taBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.taBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.taBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.taBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.taBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="taBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="additionalDamageBuff">
                         <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="additionalDamageBuffField"
-                                    selected={[this.state.additionalDamageBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.additionalDamageBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.additionalDamageBuffFieldTypeahead, "additionalDamageBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.additionalDamageBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.additionalDamageBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.additionalDamageBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.additionalDamageBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="additionalDamageBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
@@ -876,105 +719,65 @@ var Chara = CreateClass({
                     <tr className={showInvul} key="ougiGageBuff">
                         <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="ougiGageBuffField"
-                                    selected={[this.state.ougiGageBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiGageBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiGageBuffFieldTypeahead, "ougiGageBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.ougiGageBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.ougiGageBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.ougiGageBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.ougiGageBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="ougiGageBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="uplift">
                         <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="upliftField"
-                                    selected={[this.state.uplift.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.upliftFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.upliftFieldTypeahead, "uplift")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.upliftFieldTypeahead, "uplift")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.upliftFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.upliftFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.upliftFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.uplift}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="uplift"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="ougiDamageBuff">
                         <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="ougiDamageBuffField"
-                                    selected={[this.state.ougiDamageBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiDamageBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiDamageBuffFieldTypeahead, "ougiDamageBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.ougiDamageBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.ougiDamageBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.ougiDamageBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.ougiDamageBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="ougiDamageBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="damageLimitBuff">
                         <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="damageLimitBuffField"
-                                    selected={[this.state.damageLimitBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.damageLimitBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.damageLimitBuffFieldTypeahead, "damageLimitBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.damageLimitBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.damageLimitBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.damageLimitBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.damageLimitBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="damageLimitBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 
                     <tr className={showInvul} key="ougiDamageLimitBuff">
                         <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
                         <td>
-                            <InputGroup>
-                                <Typeahead
-                                    id="ougiDamageLimitBuffField"
-                                    selected={[this.state.ougiDamageLimitBuff.toString()]}
-                                    inputProps={GlobalConst.generateTypeaheadData("number", '-1000', '1000')}
-                                    onFocus={this.handleAutoCompleteOnFocus.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead)}
-                                    onBlur={this.handleAutoCompleteOnBlur.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
-                                    onChange={this.handleAutoCompleteEvent.bind(this, this.state.ougiDamageLimitBuffFieldTypeahead, "ougiDamageLimitBuff")}
-                                    renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.ougiDamageLimitBuffFieldTypeahead)}
-                                    onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.ougiDamageLimitBuffFieldTypeahead)}
-                                    filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                    ref={(ref) => this.state.ougiDamageLimitBuffFieldTypeahead = ref}
-                                    options={selector.buffLevel}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
-                            </InputGroup>
+                            <Typeahead value={this.state.ougiDamageLimitBuff}
+                                       options={selector.buffLevel}
+                                       onBlur={this.handleOnBlur}
+                                       onChange={this.handleEvent}
+                                       stat="ougiDamageLimitBuff"
+                                       addon="%">
+                            </Typeahead>
                         </td>
                     </tr>
 

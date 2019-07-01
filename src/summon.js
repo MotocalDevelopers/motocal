@@ -3,8 +3,7 @@ var intl = require('./translate.js');
 var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Label, Button, ButtonGroup} = require('react-bootstrap');
 var {ColP} = require('./gridp.js');
 var GlobalConst = require('./global_const.js');
-const Typeahead = GlobalConst.Typeahead;
-const Utilities = require('./utilities');
+const Typeahead = require('./typeahead').Typeahead;
 var CreateClass = require('create-react-class');
 
 // inject GlobalConst...
@@ -290,35 +289,23 @@ var Summon = CreateClass({
     clickMoveDown: function (e) {
         this.props.onMoveDown(this.props.id)
     },
-    handleSummonAmountChange(ref, selected) {
-        let newState = this.state;
-        if (selected[0]) {
-            if (selected[0].hasOwnProperty("id")) {
-                newState[ref.props.inputProps.name] = selected[0].id;
+    handleSummonAmountChange(type, ind, e) {
+        var newState = this.state;
+        if (type == "self") {
+            if (ind == 0) {
+                newState["selfSummonAmount"] = e.target.value
             } else {
-                newState[ref.props.inputProps.name] = selected[0];
+                newState["selfSummonAmount2"] = e.target.value
             }
         } else {
-            newState[ref.props.inputProps.name] = ref.state.text;
+            if (ind == 0) {
+                newState["friendSummonAmount"] = e.target.value
+            } else {
+                newState["friendSummonAmount2"] = e.target.value
+            }
         }
-        this.props.onChange(ref.props.inputProps.name, newState);
-    },
-    handleOnSummonAmountFocus: function (ref, e) {
-        let value = e.target.value;
-        if (value) {
-            this.state.StatePlaceholder = value;
-        }
-        ref.getInput().select();
-    },
-    handleOnSummonAmountBlur: function (ref, e) {
-        let newState = this.state;
-        let value = ref.state.text;
-        if (ref.props.inputProps.targettype === "number") {
-            value = Utilities.parseNumberInputField(value, ref.props.inputProps, this.state.StatePlaceholder);
-        }
-        ref.setState({text: value.toString()});
-        newState[ref.props.inputProps.name] = value;
-        this.props.onChange(ref.props.inputProps.name, newState);
+        this.setState(newState);
+        this.props.onChange(this.props.id, newState)
     },
     render: function () {
         var locale = this.props.locale;
@@ -358,39 +345,21 @@ var Summon = CreateClass({
                         <td>
                             <div>
                                 <span>{selfSummon[0].label}</span>
-                                <InputGroup>
-                                    <Typeahead id="selfSummonAmountField"
-                                               selected={[this.state.selfSummonAmount.toString()]}
-                                               inputProps={GlobalConst.generateTypeaheadData("number", '0', '400', "selfSummonAmount")}
-                                               onFocus={this.handleOnSummonAmountFocus.bind(this, this.state.selfSummonAmountFieldTypeahead)}
-                                               onChange={this.handleSummonAmountChange.bind(this, this.state.selfSummonAmountFieldTypeahead)}
-                                               onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.selfSummonAmountFieldTypeahead)}
-                                               renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.selfSummonAmountFieldTypeahead)}
-                                               onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.selfSummonAmountFieldTypeahead)}
-                                               filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                               ref={(ref) => this.state.selfSummonAmountFieldTypeahead = ref}
-                                               options={selector.summonAmounts}>
-                                    </Typeahead>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
+                                <Typeahead value={this.state.selfSummonAmount}
+                                           options={selector.summonAmounts}
+                                           onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}
+                                           stat="selfSummonAmount"
+                                           addon="%">
+                                </Typeahead>
                             </div>
                             <div className={this.state.selfSummonType !== "odin" ? "hidden" : ""}>
                                 <span>{selfSummon[1].label}</span>
-                                <InputGroup>
-                                    <Typeahead id="selfSummonAmount2Field"
-                                               selected={[this.state.selfSummonAmount2.toString()]}
-                                               inputProps={GlobalConst.generateTypeaheadData("number", '0', '400', "selfSummonAmount2")}
-                                               onFocus={this.handleOnSummonAmountFocus.bind(this, this.state.selfSummonAmount2FieldTypeahead)}
-                                               onChange={this.handleSummonAmountChange.bind(this, this.state.selfSummonAmount2FieldTypeahead)}
-                                               onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.selfSummonAmount2FieldTypeahead)}
-                                               renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.selfSummonAmount2FieldTypeahead)}
-                                               onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.selfSummonAmount2FieldTypeahead)}
-                                               filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                               ref={(ref) => this.state.selfSummonAmount2FieldTypeahead = ref}
-                                               options={selector.summonAmounts}>
-                                    </Typeahead>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
+                                <Typeahead value={this.state.selfSummonAmount2}
+                                           options={selector.summonAmounts}
+                                           onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}
+                                           stat="selfSummonAmount2"
+                                           addon="%">
+                                </Typeahead>
                             </div>
                         </td>
                     </tr>
@@ -414,39 +383,23 @@ var Summon = CreateClass({
                         <td>
                             <div>
                                 <span>{friendSummon[0].label}</span>
-                                <InputGroup>
-                                    <Typeahead id="friendSummonAmountField"
-                                               selected={[this.state.friendSummonAmount.toString()]}
-                                               inputProps={GlobalConst.generateTypeaheadData("number", '0', '400', "friendSummonAmount")}
-                                               onFocus={this.handleOnSummonAmountFocus.bind(this, this.state.friendSummonAmountFieldTypeahead)}
-                                               onChange={this.handleSummonAmountChange.bind(this, this.state.friendSummonAmountFieldTypeahead)}
-                                               onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.friendSummonAmountFieldTypeahead)}
-                                               renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.friendSummonAmountFieldTypeahead)}
-                                               onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.friendSummonAmountFieldTypeahead)}
-                                               filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                               ref={(ref) => this.state.friendSummonAmountFieldTypeahead = ref}
-                                               options={selector.summonAmounts}>
-                                    </Typeahead>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
+                                <Typeahead value={this.state.friendSummonAmount}
+                                           options={selector.summonAmounts}
+                                           onBlur={this.handleOnBlur}
+                                           onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}
+                                           stat="friendSummonAmount"
+                                           addon="%">
+                                </Typeahead>
                             </div>
                             <div className={this.state.friendSummonType !== "odin" ? "hidden" : ""}>
                                 <span>{friendSummon[1].label}</span>
-                                <InputGroup>
-                                    <Typeahead id="friendSummonAmount2Field"
-                                               selected={[this.state.friendSummonAmount2.toString()]}
-                                               inputProps={GlobalConst.generateTypeaheadData("number", '0', '400', "friendSummonAmount2")}
-                                               onFocus={this.handleOnSummonAmountFocus.bind(this, this.state.friendSummonAmount2FieldTypeahead)}
-                                               onChange={this.handleSummonAmountChange.bind(this, this.state.friendSummonAmount2FieldTypeahead)}
-                                               onBlur={this.handleOnSummonAmountBlur.bind(this, this.state.friendSummonAmount2FieldTypeahead)}
-                                               renderMenu={(results, props) => GlobalConst.renderMenu(results, props, this.state.friendSummonAmount2FieldTypeahead)}
-                                               onMenuToggle={(e) => GlobalConst.onMenuToggle(e, this.state.friendSummonAmount2FieldTypeahead)}
-                                               filterBy={(a, b) => GlobalConst.filterBy(a, b, this.state.StatePlaceholder)}
-                                               ref={(ref) => this.state.friendSummonAmount2FieldTypeahead = ref}
-                                               options={selector.summonAmounts}>
-                                    </Typeahead>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
+                                <Typeahead value={this.state.friendSummonAmount2}
+                                           options={selector.summonAmounts}
+                                           onBlur={this.handleOnBlur}
+                                           onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}
+                                           stat="friendSummonAmount2"
+                                           addon="%">
+                                </Typeahead>
                             </div>
                         </td>
                     </tr>

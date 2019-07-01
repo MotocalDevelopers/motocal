@@ -3,13 +3,6 @@ var {Tooltip, OverlayTrigger} = require('react-bootstrap');
 var intl = require('./translate.js');
 var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
-const {Menu, MenuItem, Typeahead} = require('react-bootstrap-typeahead');
-Typeahead.defaultProps.align = "left";
-Typeahead.defaultProps.highlightOnlyResult = true;
-Typeahead.defaultProps.flip = true;
-module.exports.filterBy = (option, props, initial, value = props.text.toLowerCase()) => {
-    return true;
-};
 
 let observer;
 let observerRef;
@@ -60,23 +53,6 @@ const decideDefaultOrientation = (ref, result = true) => {
     return result;
 };
 
-module.exports.renderMenu = function (results, menuProps, ref) {
-    if (ref) {
-        return (
-            <Menu {...menuProps}>
-                {
-                    results.map(
-                        (result, index) => (
-                            <MenuItem option={result.id || result} position={index}
-                                      className={(ref.state.text === result) ? "active" : ""}>{result.label || result}</MenuItem>
-                        )
-                    )
-                }
-            </Menu>
-        )
-    }
-};
-
 module.exports.onMenuToggle = (isOpen, ref) => {
     if (isOpen) {
         if(observerOrder[ref.props.id] === undefined) {
@@ -100,8 +76,6 @@ module.exports.onMenuToggle = (isOpen, ref) => {
         observerRef = undefined;
     }
 };
-
-module.exports.Typeahead = Typeahead;
 
 module.exports.TextWithTooltip = CreateClass({
     render: function () {

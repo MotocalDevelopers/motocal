@@ -2,9 +2,10 @@
 
 const React = require('react');
 const {FormControl, InputGroup} = require('react-bootstrap');
-const Typeahead = require('react-bootstrap-typeahead').Typeahead;
+const Typeahead = require('./typeahead').Typeahead;
 const intl = require('./translate.js');
-const {selector, generateTypeaheadData, onMenuToggle} = require('./global_const.js');
+const {selector} = require('./global_const.js');
+
 
 /**
  * Dynamic List component for Critical Buff inputs
@@ -33,24 +34,13 @@ class CriticalBuffList extends React.Component {
 
     /**
      * Notify event
-     * @param {Object} ref ... Reference of the input
+     *
+     * @param {string} key ... UNUSED
+     * @param {Object} e  ... Event object
      */
-    handleOnBlur(e, ref) {
+    handleOnBlur(key, value) {
         if (this.props.onBlur) {
-            if (ref) {
-                this.props.onBlur(ref, "CriticalStatePlaceholder");
-            }
-        }
-    }
-
-    /**
-     * Notify event
-     * @param {Object} ref ... Reference of the input
-     * @param {Object} e  ... Event
-     */
-    handleOnFocus(ref, e) {
-        if (this.props.onFocus) {
-            this.props.onFocus(ref, e);
+            this.props.onBlur(key, value);
         }
     }
 
@@ -82,7 +72,9 @@ class CriticalBuffList extends React.Component {
             this.setState({count: count, array: array});
             this.handleOnCountChange(count);
         } else if (key === "value" || key === "attackRatio") {
-            array[idx][key] = e / 100;
+            const val = parseInt(e.target.value);
+
+            array[idx][key] = val / 100;
 
             this.setState({array: array});
         }
@@ -99,50 +91,28 @@ class CriticalBuffList extends React.Component {
         return <React.Fragment>
             <strong>{intl.translate("数", locale)}</strong>
             <FormControl type="number"
-                         min="0" max={maxCount} value={count}
-                         onBlur={(e) => this.handleOnBlur(e, this.countField)}
-                         onFocus={(e) => this.handleOnFocus(this.countField, e)}
-                         ref={(ref) => this.countField = ref}
-                         onChange={this.handleOnChange.bind(this, "count", null)}/>
-            {array.slice(0, count).map(({value, attackRatio}, idx) =>
-                <div key={label + idx}>
-                    <strong>{intl.translate("発動率", locale)}#{idx + 1}</strong>
-                    <InputGroup>
-                        <Typeahead
-                            id="criticalRateField"
-                            defaultInputValue={(Math.round(100 * value)).toString()}
-                            inputProps={generateTypeaheadData("number", '0', '100')}
-                            labelKey={"value"}
-                            onBlur={(e) => (this.handleOnBlur(e, this.state["criticalRateFieldTypeahead" + idx]))}
-                            onChange={(e) => (this.handleOnChange("value", idx, e[0]))}
-                            onInputChange={(e) => (this.handleOnChange("value", idx, e))}
-                            onFocus={(e) => (this.handleOnFocus(this.state["criticalRateFieldTypeahead" + idx], e))}
-                            renderMenu={(results, props) => this.props.renderMenu(results, props, this.state["criticalRateFieldTypeahead" + idx])}
-                            onMenuToggle={(e) => onMenuToggle(e, this.state["criticalRateFieldTypeahead" + idx])}
-                            filterBy={(a, b) => this.props.filterBy(a, b, this.props.placeHolder)}
-                            ref={(ref) => this.state["criticalRateFieldTypeahead" + idx] = ref}
-                            options={selector.criticalRateLevel}/>
-                        <InputGroup.Addon>%</InputGroup.Addon>
-                    </InputGroup>
-                    <strong>{intl.translate("倍率", locale)}#{idx + 1}</strong>
-                    <InputGroup>
-                        <Typeahead
-                            id="attackRatioField"
-                            defaultInputValue={(Math.round(100 * attackRatio)).toString()}
-                            inputProps={generateTypeaheadData("number", '0', '1000')}
-                            labelKey={"attackRatio"}
-                            onBlur={(e) => (this.handleOnBlur(e, this.state["attackRatioFieldTypeahead" + idx]))}
-                            onChange={(e) => (this.handleOnChange("attackRatio", idx, e[0]))}
-                            onInputChange={(e) => (this.handleOnChange("attackRatio", idx, e))}
-                            renderMenu={(results, props) => this.props.renderMenu(results, props, this.state["attackRatioFieldTypeahead" + idx])}
-                            onMenuToggle={(e) => onMenuToggle(e, this.state["attackRatioFieldTypeahead" + idx])}
-                            filterBy={(a, b) => this.props.filterBy(a, b, this.props.placeHolder)}
-                            onFocus={(e) => (this.handleOnFocus(this.state["attackRatioFieldTypeahead" + idx], e))}
-                            ref={(ref) => this.state["attackRatioFieldTypeahead" + idx] = ref}
-                            options={selector.buffLevel}/>
-                        <InputGroup.Addon>%</InputGroup.Addon>
-                    </InputGroup>
-                </div>)}
+              min="0" max={maxCount} value={count}
+              onBlur={this.handleOnBlur}
+              onChange={this.handleOnChange.bind(this, "count", null)}/>
+            {array.slice(0, count).map(({value,attackRatio}, idx) =>
+            <div key={label + idx}>
+                <strong>{intl.translate("発動率", locale)}#{idx+1}</strong>
+                <Typeahead value={Math.round(100*value)}
+                           options={selector.criticalRateLevel}
+                           onBlur={this.handleOnBlur}
+                           onChange={this.handleOnChange.bind(this, "value", idx)}
+                           stat={"criticalRateLevel" + idx}
+                           addon="%">
+                </Typeahead>
+                <strong>{intl.translate("倍率", locale)}#{idx+1}</strong>
+                <Typeahead value={Math.round(100*attackRatio)}
+                           options={selector.buffLevel}
+                           onBlur={this.handleOnBlur}
+                           onChange={this.handleOnChange.bind(this, "attackRatio", idx)}
+                           stat={"attackRatio" + idx}
+                           addon="%">
+                </Typeahead>
+            </div>)}
         </React.Fragment>;
     }
 }
