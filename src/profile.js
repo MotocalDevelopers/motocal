@@ -318,15 +318,10 @@ var Profile = CreateClass({
         }
         this.props.onChange(newState);
     },
-    handleOnBlur: function (key, e) {
+    handleOnBlur: function (key, value) {
         // Send change to parent only when focus is off
-        let ref = {state: {}, props: {inputProps: {}}};
-        ref.state.text = e.target.value;
-        ref.props.inputProps.min = e.target.min;
-        ref.props.inputProps.max = e.target.max;
-        ref.props.inputProps.targettype = e.target.type;
-        let newState = this.completeBlurAction(ref, key);
-        this.props.onChange(newState);
+        this.state[key] = value;
+        this.props.onChange(this.state);
     },
     selectInputElement: function (input) {
         input.value = this.state.StatePlaceholder;
@@ -806,6 +801,7 @@ var Profile = CreateClass({
                             <td>
                                 <CustomTypeahead value={this.state.masterBonus.toString()}
                                                  options={selector.masteratk}
+                                                 onBlur={this.handleOnBlur}
                                                  stat="masterBonus"
                                                  addon="%"
                                                  onChange={(value) => this.state.masterBonus = value}>

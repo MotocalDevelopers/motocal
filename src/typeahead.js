@@ -15,16 +15,56 @@ class Typeahead extends React.Component {
     }
 
     handleOnFocus() {
-        this.setState({text: this.props.value.toString()});
-        this.defaultTypeahead.current.getInput().select();
-        if (this.props.onFocus) {
-            this.props.onFocus();
+        if(this.defaultTypeahead.current) {
+            this.setState({text: this.props.value.toString()});
+            this.defaultTypeahead.current.getInput().select();
+            if (this.props.onFocus) {
+                this.props.onFocus();
+            }
+        }
+    }
+
+    static getValidData(type, min, max, selected, previous) {
+        switch (type) {
+            case "number":
+                return Typeahead.validateNumber(parseFloat(selected), min, max, previous);
+            case "text":
+                let value = selected.toString();
+                if (value) {
+                    return value;
+                } else {
+                    return previous;
+                }
+            default:
+                return selected;
+        }
+    }
+
+    static validateNumber(selected, min, max, previous) {
+        if(isNaN(selected)) {
+            if (previous) {
+                return previous;
+            } else {
+                return min;
+            }
+        } else {
+            if(selected < min) {
+                return min;
+            } else if(selected > max) {
+                return max;
+            } else {
+                return selected;
+            }
         }
     }
 
     handleOnBlur() {
-        if (this.props.onBlur) {
-            this.props.onBlur();
+        if(this.defaultTypeahead.current) {
+            let value = Typeahead.getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
+            this.setState({text: value});
+            if (this.props.onBlur) {
+                this.props.onBlur(this.props.stat, value);
+            }
         }
     }
 
@@ -48,6 +88,8 @@ class Typeahead extends React.Component {
                 </Menu>
             )
     }
+
+
 
     filterResults(option, props) {
         return true;
@@ -83,6 +125,7 @@ class Typeahead extends React.Component {
                 {addOn}
             </InputGroup>
     }
+
 }
 
 Typeahead.propTypes = {
