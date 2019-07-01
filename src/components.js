@@ -36,11 +36,11 @@ class CriticalBuffList extends React.Component {
      * Notify event
      *
      * @param {string} key ... UNUSED
-     * @param {Object} e  ... Event object
+     * @param {string} value ... UNUSED
      */
     handleOnBlur(key, value) {
         if (this.props.onBlur) {
-            this.props.onBlur(key, value);
+            this.props.onBlur();
         }
     }
 
@@ -99,16 +99,16 @@ class CriticalBuffList extends React.Component {
                 <strong>{intl.translate("発動率", locale)}#{idx+1}</strong>
                 <Typeahead value={Math.round(100*value)}
                            options={selector.criticalRateLevel}
-                           onBlur={this.handleOnBlur}
-                           onChange={this.handleOnChange.bind(this, "value", idx)}
+                           onBlur={this.handleOnBlur.bind(this)}
+                           onChange={(key, value) => this.handleOnChange("value", idx, value)}
                            stat={"criticalRateLevel" + idx}
                            addon="%">
                 </Typeahead>
                 <strong>{intl.translate("倍率", locale)}#{idx+1}</strong>
                 <Typeahead value={Math.round(100*attackRatio)}
                            options={selector.buffLevel}
-                           onBlur={this.handleOnBlur}
-                           onChange={this.handleOnChange.bind(this, "attackRatio", idx)}
+                           onBlur={this.handleOnBlur.bind(this)}
+                           onChange={(key, value) => this.handleOnChange("attackRatio", idx, value)}
                            stat={"attackRatio" + idx}
                            addon="%">
                 </Typeahead>

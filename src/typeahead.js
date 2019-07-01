@@ -5,6 +5,7 @@ const {Menu, MenuItem} = require('react-bootstrap-typeahead');
 const DefaultTypeahead = require('react-bootstrap-typeahead').Typeahead;
 const {InputGroup} = require('react-bootstrap');
 const PropTypes = require('prop-types').PropTypes;
+const Utilities = require('./utilities');
 
 class Typeahead extends React.Component {
     constructor(props) {
@@ -79,7 +80,6 @@ class Typeahead extends React.Component {
             this.updateActiveItem(this.props.stat, this.props.options, value);
             let e = Typeahead.createDataPlaceholder(this.defaultTypeahead.current.state.text);
             this.props.onChange(this.props.stat, e);
-            console.log('dead');
         }
     }
 
@@ -144,7 +144,7 @@ class Typeahead extends React.Component {
         if (this.props.value !== undefined && this.props.options && this.props.stat && this.props.onChange) {
             typeahead = <DefaultTypeahead
                 id={this.props.stat}
-                selected={[this.props.value.toString()]}
+                selected={[Utilities.getLabelFromId(this.props.options, this.props.value.toString())]}
                 onFocus={this.handleOnFocus.bind(this)}
                 onBlur={this.handleOnBlur.bind(this)}
                 onChange={this.handleOnChange.bind(this)}

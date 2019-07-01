@@ -267,7 +267,7 @@ var Profile = CreateClass({
     },
     handleOnBlur: function (key, value) {
         // Send change to parent only when focus is off
-        if(key && value) {
+        if(key && value && typeof value === "string") {
             this.state[key] = value;
         }
         this.props.onChange(this.state);
