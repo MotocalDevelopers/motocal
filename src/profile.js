@@ -23,9 +23,6 @@ var jobTypes = GlobalConst.jobTypes;
 var armTypes = GlobalConst.armTypes;
 var selector = GlobalConst.selector;
 
-
-
-
 var Profile = CreateClass({
     getDefaultProps() {
         var zenithBonuses = {"ja": {}, "en": {}, "zh": {}};
@@ -276,7 +273,31 @@ var Profile = CreateClass({
         this.props.onChange(newState);
     },
     handleEvent: function (key, e) {
-        this.handleAutoCompleteEvent(null, key, [e.target.value])
+        // input type input form uses onBlur
+        var newState = this.state;
+        newState[key] = e.target.value;
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        } else if (key == "personalCriticalBuffCount") {
+            if (newState.personalCriticalBuff.length > newState.personalCriticalBuffCount) {
+                newState.personalCriticalBuff = newState.personalCriticalBuff.slice(0, newState.personalCriticalBuffCount);
+            }
+            for (let i = 0; i < newState.personalCriticalBuffCount; i++) {
+                if (newState.personalCriticalBuff[i] == undefined) {
+                    newState.personalCriticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+
+        this.setState(newState)
     },
     completeBlurAction: function (ref, key) {
         let newState = this.state;
@@ -802,9 +823,9 @@ var Profile = CreateClass({
                                 <CustomTypeahead value={this.state.masterBonus.toString()}
                                                  options={selector.masteratk}
                                                  onBlur={this.handleOnBlur}
+                                                 onChange={this.handleEvent}
                                                  stat="masterBonus"
-                                                 addon="%"
-                                                 onChange={(value) => this.state.masterBonus = value}>
+                                                 addon="%">
                                 </CustomTypeahead>
                             </td>
                         </tr>

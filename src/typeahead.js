@@ -1,4 +1,5 @@
 "use strict";
+
 const React = require('react');
 const {Menu, MenuItem} = require('react-bootstrap-typeahead');
 const DefaultTypeahead = require('react-bootstrap-typeahead').Typeahead;
@@ -15,8 +16,9 @@ class Typeahead extends React.Component {
     }
 
     handleOnFocus() {
-        if(this.defaultTypeahead.current) {
+        if (this.defaultTypeahead.current) {
             this.setState({text: this.props.value.toString()});
+            this.updateActiveItem(this.props.stat, this.props.options, this.state.text);
             this.defaultTypeahead.current.getInput().select();
             if (this.props.onFocus) {
                 this.props.onFocus();
@@ -41,16 +43,16 @@ class Typeahead extends React.Component {
     }
 
     static validateNumber(selected, min, max, previous) {
-        if(isNaN(selected)) {
+        if (isNaN(selected)) {
             if (previous) {
                 return previous;
             } else {
                 return min;
             }
         } else {
-            if(selected < min) {
+            if (selected < min) {
                 return min;
-            } else if(selected > max) {
+            } else if (selected > max) {
                 return max;
             } else {
                 return selected;
@@ -59,9 +61,8 @@ class Typeahead extends React.Component {
     }
 
     handleOnBlur() {
-        if(this.defaultTypeahead.current) {
+        if (this.defaultTypeahead.current) {
             let value = Typeahead.getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
-            this.setState({text: value});
             if (this.props.onBlur) {
                 this.props.onBlur(this.props.stat, value);
             }
@@ -69,26 +70,62 @@ class Typeahead extends React.Component {
     }
 
     handleOnChange() {
-        this.props.onChange();
+        if (this.defaultTypeahead.current) {
+            let value = Typeahead.getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
+            this.updateActiveItem(this.props.stat, this.props.options, value);
+            let e = Typeahead.createDataPlaceholder(this.defaultTypeahead.current.state.text);
+            if (e.target.value) {
+                this.props.onChange(this.props.stat, e);
+            }
+        }
+    }
+
+    updateActiveItem(id, options, value, index = -1) {
+        let dropdown = document.getElementById(id);
+        if (dropdown) {
+            let maxScrollLength = Typeahead.getMaxScrollLength(dropdown);
+            if ((index = options.indexOf(value.toString())) >= 0) {
+                dropdown.scrollTop = (maxScrollLength / options.length) * (index + 0.5);
+            } else {
+                if (this.state.order === false) {
+                    dropdown.scrollTop = dropdown.scrollTopMax;
+                } else {
+                    dropdown.scrollTop = 0;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    static getMaxScrollLength(input) {
+        if ('scrollTopMax' in input) {
+            return input.scrollTopMax;
+        } else {
+            return input.scrollHeight - input.clientHeight;
+        }
+    }
+
+    static createDataPlaceholder(value) {
+        return {target: {value: value}};
     }
 
     renderMenu(results, menuProps) {
-            return (
-                <Menu {...menuProps}>
-                    {
-                        results.map(
-                            (result, index) => (
-                                <MenuItem option={result.id || result} position={index}
-                                          className={(this.props.value === result) ? "active" : ""}>
-                                    {result.label || result}
-                                </MenuItem>
-                            )
+        return (
+            <Menu {...menuProps}>
+                {
+                    results.map(
+                        (result, index) => (
+                            <MenuItem option={result.id || result} position={index}
+                                      className={(this.props.value === result) ? "active" : ""}>
+                                {result.label || result}
+                            </MenuItem>
                         )
-                    }
-                </Menu>
-            )
+                    )
+                }
+            </Menu>
+        )
     }
-
 
 
     filterResults(option, props) {
@@ -121,9 +158,9 @@ class Typeahead extends React.Component {
         }
 
         return <InputGroup>
-                {typeahead}
-                {addOn}
-            </InputGroup>
+            {typeahead}
+            {addOn}
+        </InputGroup>
     }
 
 }
