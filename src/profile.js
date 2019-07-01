@@ -5,6 +5,7 @@ const GlobalConst = require('./global_const.js');
 const Utilities = require('./utilities');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
 var Typeahead = GlobalConst.Typeahead;
+var CustomTypeahead = require('./typeahead').Typeahead;
 var CreateClass = require('create-react-class');
 var {CriticalBuffList} = require('./components.js');
 // const
@@ -793,6 +794,22 @@ var Profile = CreateClass({
                                         options={selector.masteratk}/>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("マスボATK", locale)}
+                            </th>
+                            <td>
+                                <CustomTypeahead value={this.state.masterBonus.toString()}
+                                                 options={selector.masteratk}
+                                                 stat="masterBonus"
+                                                 addon="%"
+                                                 onChange={(value) => this.state.masterBonus = value}>
+                                </CustomTypeahead>
                             </td>
                         </tr>
                     </TextWithTooltip>
