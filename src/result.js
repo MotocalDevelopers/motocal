@@ -1312,7 +1312,6 @@ var Result = CreateClass({
                         var additionalInfo = [];
                         if (skilldata["additionalDamageXA"]) {
                             let {additionalDamageXA} = skilldata;
-                            console.log(additionalDamageXA)
                             additionalInfo.push(
                                 <table key={key + "-additionalInfoTable"} className="table table-bordered"
                                        style={{"marginBottom": "0px", "fontSize": "10pt"}}>
