@@ -91,7 +91,7 @@ class Typeahead extends React.Component {
                 dropdown.scrollTop = (maxScrollLength / options.length) * (index + 0.5);
             } else {
                 if (this.state.order === false) {
-                    dropdown.scrollTop = dropdown.scrollTopMax;
+                    dropdown.scrollTop = maxScrollLength
                 } else {
                     dropdown.scrollTop = 0;
                 }

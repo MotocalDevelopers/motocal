@@ -289,21 +289,9 @@ var Summon = CreateClass({
     clickMoveDown: function (e) {
         this.props.onMoveDown(this.props.id)
     },
-    handleSummonAmountChange(type, ind, e) {
-        var newState = this.state;
-        if (type == "self") {
-            if (ind == 0) {
-                newState["selfSummonAmount"] = e.target.value
-            } else {
-                newState["selfSummonAmount2"] = e.target.value
-            }
-        } else {
-            if (ind == 0) {
-                newState["friendSummonAmount"] = e.target.value
-            } else {
-                newState["friendSummonAmount2"] = e.target.value
-            }
-        }
+    handleSummonAmountChange(key, value) {
+        let newState = this.state;
+        newState[key] = value.target.value;
         this.setState(newState);
         this.props.onChange(this.props.id, newState)
     },
@@ -347,7 +335,7 @@ var Summon = CreateClass({
                                 <span>{selfSummon[0].label}</span>
                                 <Typeahead value={this.state.selfSummonAmount}
                                            options={selector.summonAmounts}
-                                           onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}
+                                           onChange={this.handleSummonAmountChange}
                                            stat="selfSummonAmount"
                                            addon="%">
                                 </Typeahead>
@@ -356,7 +344,7 @@ var Summon = CreateClass({
                                 <span>{selfSummon[1].label}</span>
                                 <Typeahead value={this.state.selfSummonAmount2}
                                            options={selector.summonAmounts}
-                                           onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}
+                                           onChange={this.handleSummonAmountChange}
                                            stat="selfSummonAmount2"
                                            addon="%">
                                 </Typeahead>
@@ -386,7 +374,7 @@ var Summon = CreateClass({
                                 <Typeahead value={this.state.friendSummonAmount}
                                            options={selector.summonAmounts}
                                            onBlur={this.handleOnBlur}
-                                           onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}
+                                           onChange={this.handleSummonAmountChange}
                                            stat="friendSummonAmount"
                                            addon="%">
                                 </Typeahead>
@@ -396,7 +384,7 @@ var Summon = CreateClass({
                                 <Typeahead value={this.state.friendSummonAmount2}
                                            options={selector.summonAmounts}
                                            onBlur={this.handleOnBlur}
-                                           onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}
+                                           onChange={this.handleSummonAmountChange}
                                            stat="friendSummonAmount2"
                                            addon="%">
                                 </Typeahead>
