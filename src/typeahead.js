@@ -9,6 +9,7 @@ const PropTypes = require('prop-types').PropTypes;
 class Typeahead extends React.Component {
     constructor(props) {
         super(props);
+        DefaultTypeahead.positionFixed = true;
         this.state = {
             text: props.value.toString()
         };

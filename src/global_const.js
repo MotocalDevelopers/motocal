@@ -11,25 +11,6 @@ module.exports.filterBy = (option, props, initial, value = props.text.toLowerCas
     return true;
 };
 
-(function(elmProto){
-        if ('scrollTopMax' in elmProto) {
-            return;
-        }
-        Object.defineProperties(elmProto, {
-            'scrollTopMax': {
-                get: function scrollTopMax() {
-                    return this.scrollHeight - this.clientHeight;
-                }
-            },
-            'scrollLeftMax': {
-                get: function scrollLeftMax() {
-                    return this.scrollWidth - this.clientWidth;
-                }
-            }
-        });
-    }
-)(Element.prototype);
-
 let observer;
 let observerRef;
 let observerOrder = {};
