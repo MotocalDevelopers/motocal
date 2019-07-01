@@ -15,6 +15,8 @@ class Typeahead extends React.Component {
     }
 
     handleOnFocus() {
+        this.setState({text: this.props.value.toString()});
+        this.defaultTypeahead.current.getInput().select();
         if (this.props.onFocus) {
             this.props.onFocus();
         }
