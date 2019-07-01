@@ -9,7 +9,8 @@ const PropTypes = require('prop-types').PropTypes;
 class Typeahead extends React.Component {
     constructor(props) {
         super(props);
-        DefaultTypeahead.positionFixed = true;
+        DefaultTypeahead.defaultProps.positionFixed = true;
+        DefaultTypeahead.defaultProps.align = "left";
         this.state = {
             text: props.value.toString()
         };

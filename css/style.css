@@ -49,13 +49,6 @@
         color: #000;
     }
 
-    .rbt-menu {
-        min-width: 100%;
-        min-width: -moz-available;
-        min-width: -webkit-fill-available;
-        min-width: stretch;
-    }
-
     .rbt-menu::-webkit-scrollbar {
         width: 0.5em;
     }
