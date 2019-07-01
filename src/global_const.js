@@ -20,15 +20,6 @@ const createObserver = (ref) => {
             }
         });
     });
-    if (ref.props.options.indexOf(ref.state.text) >= 0) {
-        menu.scrollTop = (menu.scrollTopMax / ref.props.options.length) * (ref.props.options.indexOf(ref.state.text) + 0.5);
-    } else {
-        if (ref.state.order === false) {
-            menu.scrollTop = menu.scrollTopMax;
-        } else {
-            menu.scrollTop = 0;
-        }
-    }
     observerRef = ref;
     observer.observe(menu, {attributes: true, attributeFilter: ['style']});
 };
@@ -139,17 +130,6 @@ module.exports.getElementColorLabel = (function (element, locale) {
     return <span className="label label-danger">{intl.translate("火", locale)}</span>
 });
 
-/**
- * Generates input parameters for typeaheads.
- * @param {String} type Type to be passed to input
- * @param {String|number} min Minimum value for numbers
- * @param {String|number} max Maximum value for numbers
- * @param {String} name Name to be passed to input
- * @returns {Object} JSON holder
- */
-module.exports.generateTypeaheadData = (type, min, max, name = "") => {
-    return {"targettype": type.toString(), "min": min.toString(), "max": max.toString(), "name": name.toString()}
-};
 
 module.exports._ua = (function (u) {
     return {
@@ -180,19 +160,12 @@ module.exports.hollowskyNames = [
     "虚空の",
     "Hollowsky"
 ];
-
 var opusNames = [
     "of Repudiation",
     "絶対否定の",
     "of Renunciation",
     "永遠拒絶の"
 ];
-
-module.exports.saveFilterMaskList = [
-    "FieldTypeahead",
-    "StatePlaceholder"
-];
-
 var zenith = {　//得意武器
     "無し": 0,
     "★1": 0.01,
@@ -1832,9 +1805,9 @@ var skillAmounts = {
         "LL": [10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 24.0, 24.0, 24.0, 24.0, 24.0],
     },
     "magnaHP": {
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0],
+        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.1, 12.2, 12.3, 12.4, 12.5],
+        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 14.8, 15.1, 15.4, 15.7, 16.0],
+        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.4, 18.8, 19.2, 19.6, 20.0],
     },
     "exHP": {
         "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.6, 13.2, 13.8, 14.4, 15.0],
@@ -2764,7 +2737,6 @@ module.exports.selector.zh.ktypes = Object.keys(keyTypes).map(function (opt) {
 module.exports.selector.plusnum = Object.keys(plusNumList).map(function (opt) {
     return <option value={plusNumList[opt]} key={opt}>{opt}</option>
 });
-
 module.exports.selector.charaPlusNumList = Object.keys(charaPlusNumList).map(function (opt) {
     return {id: charaPlusNumList[opt].toString(), label: opt.toString()};
 });

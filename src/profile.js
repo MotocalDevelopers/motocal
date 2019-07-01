@@ -2,7 +2,6 @@ var React = require('react');
 var {Button, Checkbox, FormControl, InputGroup} = require('react-bootstrap');
 var intl = require('./translate.js');
 const GlobalConst = require('./global_const.js');
-const Utilities = require('./utilities');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
 var Typeahead = require('./typeahead').Typeahead;
 var CreateClass = require('create-react-class');

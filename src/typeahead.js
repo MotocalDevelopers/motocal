@@ -13,8 +13,10 @@ class Typeahead extends React.Component {
         DefaultTypeahead.defaultProps.positionFixed = true;
         DefaultTypeahead.defaultProps.align = "left";
         DefaultTypeahead.defaultProps.highlightOnlyResult = true;
+        DefaultTypeahead.defaultProps.flip = true;
         this.state = {
-            text: props.value.toString()
+            text: props.value.toString(),
+            order: true
         };
         this.defaultTypeahead = React.createRef();
         this.menu = React.createRef();
@@ -119,8 +121,10 @@ class Typeahead extends React.Component {
                 {
                     results.map(
                         (result, index) => (
-                            <MenuItem option={result.id || result} position={index}
-                                      className={(this.props.value === result) ? "active" : ""}>
+                            <MenuItem option={result.id || result}
+                                      position={index}
+                                      className={(this.props.value === result) ? "active" : ""}
+                                      key={index}>
                                 {result.label || result}
                             </MenuItem>
                         )
@@ -130,13 +134,26 @@ class Typeahead extends React.Component {
         )
     }
 
-
     filterResults(option, props) {
         return true;
     }
 
+    createObserver(instance, ref) {
+        // eslint-disable-next-line no-undef
+        let observer = MutationObserver || WebKitMutationObserver || MozMutationObserver;
+        observer = new observer(function (mutations) {
+            mutations.forEach(function () {
+                if (instance.state.order !== $(ref.getInput()).offset().top > $('#' + ref.props.id).offset().top) {
+                    ref.props.options = ref.props.options.reverse();
+                    instance.setState({order: !instance.state.order});
+                }
+            });
+        });
+        return observer;
+    }
+
     onMenuToggle() {
-        return;
+
     }
 
     render() {
@@ -155,15 +172,19 @@ class Typeahead extends React.Component {
                 options={this.props.options}/>
         }
 
-        let addOn = "";
         if (this.props.addon) {
-            addOn = <InputGroup.Addon>{this.props.addon}</InputGroup.Addon>
+            typeahead = <InputGroup>{typeahead}<InputGroup.Addon>{this.props.addon}</InputGroup.Addon></InputGroup>
         }
 
-        return <InputGroup>
-            {typeahead}
-            {addOn}
-        </InputGroup>
+        $('#' + this.props.stat).ready(() => {
+            let menu = document.getElementById(this.props.stat);
+            this.createObserver(this, this.defaultTypeahead.current).observe(menu, {
+                attributes: true,
+                attributeFilter: ['style']
+            });
+        });
+
+        return typeahead
     }
 
 }
