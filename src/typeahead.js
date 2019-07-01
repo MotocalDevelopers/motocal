@@ -74,9 +74,8 @@ class Typeahead extends React.Component {
             let value = Typeahead.getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
             this.updateActiveItem(this.props.stat, this.props.options, value);
             let e = Typeahead.createDataPlaceholder(this.defaultTypeahead.current.state.text);
-            if (e.target.value) {
-                this.props.onChange(this.props.stat, e);
-            }
+            this.props.onChange(this.props.stat, e);
+            console.log('dead');
         }
     }
 
@@ -138,7 +137,7 @@ class Typeahead extends React.Component {
 
     render() {
         let typeahead = "";
-        if (this.props.value && this.props.options && this.props.stat && this.props.onChange) {
+        if (this.props.value !== undefined && this.props.options && this.props.stat && this.props.onChange) {
             typeahead = <DefaultTypeahead
                 id={this.props.stat}
                 selected={[this.props.value]}
