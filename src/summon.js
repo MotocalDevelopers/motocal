@@ -4,6 +4,7 @@ var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Label, Button, ButtonGr
 var {ColP} = require('./gridp.js');
 var GlobalConst = require('./global_const.js');
 var CreateClass = require('create-react-class');
+const {getFormControlClass} = require('./form-components');
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation;
@@ -308,6 +309,7 @@ var Summon = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
+        var FormControl = getFormControlClass(this.props.backend);
 
         var selfSummon = [{"label": "", "input": "select"}, {"input": "hidden"}];
         if (this.state.selfSummonType == "odin") {

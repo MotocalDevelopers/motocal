@@ -5,6 +5,7 @@ var GlobalConst = require('./global_const.js');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
 var CreateClass = require('create-react-class');
 var {CriticalBuffList} = require('./components.js');
+const {getFormControlClass} = require('./form-components');
 
 // const
 var zenith = GlobalConst.zenith;
@@ -299,6 +300,7 @@ var Profile = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
+        var FormControl = getFormControlClass(this.props.backend);
 
         return (
             <div className="profile">

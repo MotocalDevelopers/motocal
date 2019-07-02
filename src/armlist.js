@@ -6,6 +6,7 @@ var GlobalConst = require('./global_const.js');
 var {RegisteredArm} = require('./template.js');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
 var intl = require('./translate.js');
+const {getFormControlClass} = require('./form-components');
 
 // inject GlobalConst...
 var selector = GlobalConst.selector;
@@ -489,6 +490,7 @@ var Arm = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
+        var FormControl = getFormControlClass(this.props.backend);
 
         return (
             <div className="chara-content">

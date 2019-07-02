@@ -5,6 +5,7 @@ var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
 var GlobalConst = require('./global_const.js');
 var {CriticalBuffList} = require('./components.js');
+const {getFormControlClass} = require('./form-components');
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation;
@@ -456,6 +457,7 @@ var Chara = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
+        var FormControl = getFormControlClass(this.props.backend);
 
         return (
             <div className="chara-content">
