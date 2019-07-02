@@ -19,13 +19,13 @@ class Typeahead extends React.Component {
             order: true
         };
         this.defaultTypeahead = React.createRef();
-        this.menu = React.createRef();
+        this.observer = undefined;
     }
 
     handleOnFocus() {
         if (this.defaultTypeahead.current) {
             this.setState({text: this.props.value.toString()});
-            this.updateActiveItem(this.props.stat, this.props.options, this.state.text);
+            this.updateActiveItem(this.props.stat, this.props.options, this.state.text, this.state.order);
             this.defaultTypeahead.current.getInput().select();
             if (this.props.onFocus) {
                 this.props.onFocus();
@@ -79,17 +79,20 @@ class Typeahead extends React.Component {
     handleOnChange() {
         if (this.defaultTypeahead.current) {
             let value = Typeahead.getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
-            this.updateActiveItem(this.props.stat, this.props.options, value);
+            this.updateActiveItem(this.props.stat, this.props.options, value, this.state.order);
             let e = Typeahead.createDataPlaceholder(this.defaultTypeahead.current.state.text);
             this.props.onChange(this.props.stat, e);
         }
     }
 
-    updateActiveItem(id, options, value, index = -1) {
+    updateActiveItem(id, options, value, order, index = -1) {
         let dropdown = document.getElementById(id);
         if (dropdown) {
             let maxScrollLength = Typeahead.getMaxScrollLength(dropdown);
             if ((index = options.indexOf(value.toString())) >= 0) {
+                if (!order) {
+                    index = options.length - index - 1;
+                }
                 dropdown.scrollTop = (maxScrollLength / options.length) * (index + 0.5);
             } else {
                 if (this.state.order === false) {
@@ -116,14 +119,17 @@ class Typeahead extends React.Component {
     }
 
     renderMenu(results, menuProps) {
+        if (!this.state.order) {
+            results = results.reverse();
+        }
         return (
-            <Menu {...menuProps} ref={this.menu}>
+            <Menu {...menuProps}>
                 {
                     results.map(
                         (result, index) => (
                             <MenuItem option={result.id || result}
                                       position={index}
-                                      className={(this.props.value === result) ? "active" : ""}
+                                      className={(this.props.value.toString() === result) ? "active" : ""}
                                       key={index}>
                                 {result.label || result}
                             </MenuItem>
@@ -140,20 +146,38 @@ class Typeahead extends React.Component {
 
     createObserver(instance, ref) {
         // eslint-disable-next-line no-undef
-        let observer = MutationObserver || WebKitMutationObserver || MozMutationObserver;
-        observer = new observer(function (mutations) {
+        let observerInstance = MutationObserver || WebKitMutationObserver || MozMutationObserver;
+        this.observer = new observerInstance(function (mutations) {
             mutations.forEach(function () {
-                if (instance.state.order !== $(ref.getInput()).offset().top > $('#' + ref.props.id).offset().top) {
-                    ref.props.options = ref.props.options.reverse();
-                    instance.setState({order: !instance.state.order});
-                }
+                this.updateScreenOrientation(instance, ref);
             });
         });
-        return observer;
     }
 
-    onMenuToggle() {
+    updateScreenOrientation(instance, ref) {
+        if (instance.state.order !== $(ref.getInput()).offset().top < $('#' + ref.props.id).offset().top) {
+            instance.setState({order: !instance.state.order});
+            this.updateActiveItem(instance.props.stat, instance.props.options, ref.state.text, instance.state.order);
+        }
+    }
 
+    onMenuToggle(isOpen) {
+        if (isOpen) {
+            $('#' + this.props.stat).ready(() => {
+                this.updateScreenOrientation(this, this.defaultTypeahead.current);
+                let menu = document.getElementById(this.props.stat);
+                this.createObserver(this, this.defaultTypeahead.current);
+                this.observer.observe(menu, {
+                    attributes: true,
+                    attributeFilter: ['style']
+                });
+            });
+        } else {
+            if (this.observer) {
+                this.observer.disconnect();
+                this.observer = undefined;
+            }
+        }
     }
 
     render() {
@@ -175,14 +199,6 @@ class Typeahead extends React.Component {
         if (this.props.addon) {
             typeahead = <InputGroup>{typeahead}<InputGroup.Addon>{this.props.addon}</InputGroup.Addon></InputGroup>
         }
-
-        $('#' + this.props.stat).ready(() => {
-            let menu = document.getElementById(this.props.stat);
-            this.createObserver(this, this.defaultTypeahead.current).observe(menu, {
-                attributes: true,
-                attributeFilter: ['style']
-            });
-        });
 
         return typeahead
     }
