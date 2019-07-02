@@ -4,7 +4,6 @@ var {Base64} = require('js-base64');
 var {Label, Nav, NavItem, Navbar, NavDropdown, MenuItem, Collapse, Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, DropdownButton, SplitButton, FormControl, InputGroup, FormGroup, Checkbox, Modal, Image, Popover, Col, Row, Grid} = require('react-bootstrap');
 var CreateClass = require('create-react-class');
 var Profile = require('./profile.js');
-var Utilities = require('./utilities');
 var {SummonList, Summon} = require('./summon.js');
 var {CharaList, Chara} = require('./chara.js');
 var {ArmList, Arm} = require('./armlist.js');
@@ -560,9 +559,7 @@ var Sys = CreateClass({
         e.preventDefault();
         if (this.state.dataName != '') {
             var newState = this.state;
-            let propsdata = this.props.data;
-            Utilities.filterObjectsFromSave(propsdata);
-            propsdata = JSON.parse(JSON.stringify(propsdata));
+            var propsdata = JSON.parse(JSON.stringify(this.props.data));
 
             // Since it is not reflected only in dataName, overwrite it
             propsdata["dataName"] = this.state.dataName;

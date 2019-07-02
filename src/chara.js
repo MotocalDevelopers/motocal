@@ -787,7 +787,6 @@ var Chara = CreateClass({
                         </th>
                         <td></td>
                     </tr>
-
                     {this.state.openLBlist ?
                         [
                             <tr key="LBATK">

@@ -498,9 +498,9 @@ var multiLangData = {
         "zh": "烈日の楽園",
     },
     "烈日の楽園説明": {
-        "en": "All Allies gain 25% normal buff, and can deal critical hits regardless of element. (Alanaan)",
-        "ja": "対象の属性に関係なく味方のクリティカルが発生し、味方の通常攻刃25%UP。(アラナン)",
-        "zh": "All Allies gain 25% normal buff, and can deal critical hits regardless of element. (Alanaan)",
+        "en": "All Allies gain 20% unique buff, and can deal critical hits regardless of element. (Alanaan)",
+        "ja": "対象の属性に関係なく味方のクリティカルが発生し、味方の攻撃力上昇 別枠乗算20% (アラナン)",
+        "zh": "All Allies gain 20% unique buff, and can deal critical hits regardless of element. (Alanaan)",
     },
     "アクティブ": {
         "en": ": Active",

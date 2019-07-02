@@ -586,7 +586,9 @@ var Profile = CreateClass({
                         </td>
                     </tr>
 
-                    <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)}
+                                     id={"tooltip-masterbonus-atk-detail"}
+                                     ref={(ref) => this["tooltip-masterbonus-atk-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("マスボATK", locale)}
@@ -596,6 +598,7 @@ var Profile = CreateClass({
                                            options={selector.masteratk}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-masterbonus-atk-detail"]}
                                            stat="masterBonus"
                                            addon="%">
                                 </Typeahead>
@@ -603,7 +606,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("マスボHP説明", locale)} id={"tooltip-masterbonus-hp-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("マスボHP説明", locale)}
+                                     id={"tooltip-masterbonus-hp-detail"}
+                                     ref={(ref) => this["tooltip-masterbonus-hp-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("マスボHP", locale)}
@@ -613,6 +618,7 @@ var Profile = CreateClass({
                                            options={selector.masterhp}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-masterbonus-hp-detail"]}
                                            stat="masterBonusHP"
                                            addon="%">
                                 </Typeahead>
@@ -620,7 +626,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("マスボDA説明", locale)} id={"tooltip-masterbonus-da-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("マスボDA説明", locale)}
+                                     id={"tooltip-masterbonus-da-detail"}
+                                     ref={(ref) => this["tooltip-masterbonus-da-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("マスボDA", locale)}
@@ -630,6 +638,7 @@ var Profile = CreateClass({
                                            options={selector.masterDA}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-masterbonus-da-detail"]}
                                            stat="masterBonusDAField"
                                            addon="%">
                                 </Typeahead>
@@ -637,7 +646,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("マスボTA説明", locale)} id={"tooltip-masterbonus-ta-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("マスボTA説明", locale)}
+                                     id={"tooltip-masterbonus-ta-detail"}
+                                     ref={(ref) => this["tooltip-masterbonus-ta-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("マスボTA", locale)}
@@ -647,6 +658,7 @@ var Profile = CreateClass({
                                            options={selector.masterTA}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-masterbonus-ta-detail"]}
                                            stat="masterBonusTA"
                                            addon="%">
                                 </Typeahead>
@@ -655,7 +667,8 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("マスボダメ上限説明", locale)}
-                                     id={"tooltip-masterbonus-damagelimit-detail"}>
+                                     id={"tooltip-masterbonus-damagelimit-detail"}
+                                     ref={(ref) => this["tooltip-masterbonus-damagelimit-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("マスボダメ上限", locale)}
@@ -665,6 +678,7 @@ var Profile = CreateClass({
                                            options={selector.masterDamageLimit}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-masterbonus-damagelimit-detail"]}
                                            stat="masterBonusDamageLimit"
                                            addon="%">
                                 </Typeahead>
@@ -747,8 +761,7 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("LB 奥義の説明", locale)}
-                                     id={"tooltip-ougidamage-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("LB 奥義の説明", locale)} id={"tooltip-ougidamage-zenith-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("LB 奥義", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithOugiDamageBonus}
@@ -829,7 +842,9 @@ var Profile = CreateClass({
                         </td>
                     </tr>
 
-                    <TextWithTooltip tooltip={intl.translate("通常バフ説明", locale)} id={"tooltip-normalbuff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("通常バフ説明", locale)}
+                                     id={"tooltip-normalbuff-detail"}
+                                     ref={(ref) => this["tooltip-normalbuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("通常バフ", locale)}
@@ -839,6 +854,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-normalbuff-detail"]}
                                            stat="normalBuff"
                                            addon="%">
                                 </Typeahead>
@@ -846,7 +862,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("属性バフ説明", locale)} id={"tooltip-elementbuff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("属性バフ説明", locale)}
+                                     id={"tooltip-elementbuff-detail"}
+                                     ref={(ref) => this["tooltip-elementbuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("属性バフ", locale)}</th>
                             <td>
@@ -854,6 +872,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-elementbuff-detail"]}
                                            stat="elementBuff"
                                            addon="%">
                                 </Typeahead>
@@ -861,7 +880,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("その他バフ説明", locale)} id={"tooltip-otherbuff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("その他バフ説明", locale)}
+                                     id={"tooltip-otherbuff-detail"}
+                                     ref={(ref) => this["tooltip-otherbuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("その他バフ", locale)}</th>
                             <td>
@@ -869,6 +890,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-otherbuff-detail"]}
                                            stat="otherBuff"
                                            addon="%">
                                 </Typeahead>
@@ -876,7 +898,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("その他バフ2説明", locale)} id={"tooltip-otherbuff2-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("その他バフ2説明", locale)}
+                                     id={"tooltip-otherbuff2-detail"}
+                                     ref={(ref) => this['tooltip-otherbuff2-detail'] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                             <td>
@@ -884,6 +908,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this['tooltip-otherbuff2-detail']}
                                            stat="otherBuff2"
                                            addon="%">
                                 </Typeahead>
@@ -891,7 +916,8 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("クリティカルバフ説明", locale)} id={"tooltip-critical-buff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("クリティカルバフ説明", locale)}
+                                     id={"tooltip-critical-buff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                             <td>
@@ -905,7 +931,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("HPバフ説明", locale)} id={"tooltip-hpbuff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("HPバフ説明", locale)}
+                                     id={"tooltip-hpbuff-detail"}
+                                     ref={(ref) => this["tooltip-hpbuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
                             <td>
@@ -913,6 +941,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-hpbuff-detail"]}
                                            stat="hpBuff"
                                            addon="%">
                                 </Typeahead>
@@ -920,7 +949,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("DAバフ説明", locale)} id={"tooltip-dabuff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("DAバフ説明", locale)}
+                                     id={"tooltip-dabuff-detail"}
+                                     ref={(ref) => this["tooltip-dabuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                             <td>
@@ -928,6 +959,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-dabuff-detail"]}
                                            stat="daBuff"
                                            addon="%">
                                 </Typeahead>
@@ -935,7 +967,9 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("TAバフ説明", locale)} id={"tooltip-tabuff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("TAバフ説明", locale)}
+                                     id={"tooltip-tabuff-detail"}
+                                     ref={(ref) => this["tooltip-tabuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
                             <td>
@@ -943,6 +977,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-tabuff-detail"]}
                                            stat="taBuff"
                                            addon="%">
                                 </Typeahead>
@@ -964,7 +999,8 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
-                                     id={"tooltip-ougidamagebuff-detail"}>
+                                     id={"tooltip-ougidamagebuff-detail"}
+                                     ref={(ref) => this["tooltip-ougidamagebuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
                             <td>
@@ -972,6 +1008,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-ougidamagebuff-detail"]}
                                            stat="ougiDamageBuff"
                                            addon="%">
                                 </Typeahead>
@@ -980,7 +1017,8 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("追加ダメージバフ説明", locale)}
-                                     id={"tooltip-additionalbuff-detail"}>
+                                     id={"tooltip-additionalbuff-detail"}
+                                     ref={(ref) => this["tooltip-additionalbuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("追加ダメージバフ", locale)}</th>
                             <td>
@@ -988,6 +1026,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-additionalbuff-detail"]}
                                            stat="additionalDamageBuff"
                                            addon="%">
                                 </Typeahead>
@@ -1000,18 +1039,15 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                             <td>
-                                <FormControl id="supplementalDamageBuffField" type="number"
-                                             value={this.state.supplementalDamageBuff}
-                                             onFocus={this.handleOnFocus}
-                                             onBlur={this.handleOnBlur.bind(this, "supplementalDamageBuff")}
-                                             onChange={this.handleEvent.bind(this, "supplementalDamageBuff")}>
-                                </FormControl>
+                                <FormControl type="number" min="0" step="1000" max="100000" value={this.state.supplementalDamageBuff}
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "supplementalDamageBuff")}></FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇率アップ説明", locale)}
-                                     id={"tooltip-ougigagebuff-detail"}>
+                                     id={"tooltip-ougigagebuff-detail"}
+                                     ref={(ref) => this["tooltip-ougigagebuff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("奥義ゲージ上昇量バフ", locale)}</th>
                             <td>
@@ -1019,6 +1055,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-ougigagebuff-detail"]}
                                            stat="ougiGageBuff"
                                            addon="%">
                                 </Typeahead>
@@ -1027,7 +1064,8 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("高揚説明", locale)}
-                                     id={"tooltip-uplift-detail"}>
+                                     id={"tooltip-uplift-detail"}
+                                     ref={(ref) => this["tooltip-uplift-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("高揚", locale)}</th>
                             <td>
@@ -1035,6 +1073,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-uplift-detail"]}
                                            stat="uplift"
                                            addon="%">
                                 </Typeahead>
@@ -1043,7 +1082,8 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇奥義説明", locale)}
-                                     id={"tooltip-ougi-gage-up-ougi-buff-detail"}>
+                                     id={"tooltip-ougi-gage-up-ougi-buff-detail"}
+                                     ref={(ref) => this["tooltip-ougi-gage-up-ougi-buff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("奥義ゲージ上昇奥義", locale)}</th>
                             <td>
@@ -1051,6 +1091,7 @@ var Profile = CreateClass({
                                            options={selector.ougiGageUpOugiBuffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-ougi-gage-up-ougi-buff-detail"]}
                                            stat="ougiGageUpOugiBuff"
                                            addon="%">
                                 </Typeahead>
@@ -1059,7 +1100,8 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("ダメージ上限アップ説明", locale)}
-                                     id={"tooltip-damage-limit-buff-detail"}>
+                                     id={"tooltip-damage-limit-buff-detail"}
+                                     ref={(ref) => this["tooltip-damage-limit-buff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("ダメージ上限バフ", locale)}</th>
                             <td>
@@ -1067,6 +1109,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-damage-limit-buff-detail"]}
                                            stat="damageLimitBuff"
                                            addon="%">
                                 </Typeahead>
@@ -1075,7 +1118,8 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
-                                     id={"tooltip-ougi-damage-limit-buff-detail"}>
+                                     id={"tooltip-ougi-damage-limit-buff-detail"}
+                                     ref={(ref) => this["tooltip-ougi-damage-limit-buff-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
                             <td>
@@ -1083,6 +1127,7 @@ var Profile = CreateClass({
                                            options={selector.buffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-ougi-damage-limit-buff-detail"]}
                                            stat="ougiDamageLimitBuff"
                                            addon="%">
                                 </Typeahead>
@@ -1097,7 +1142,9 @@ var Profile = CreateClass({
                         </td>
                     </tr>
 
-                    <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)}
+                                     id={"tooltip-enemy-defense-detail"}
+                                     ref={(ref) => this["tooltip-enemy-defense-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("敵防御固有値", locale)}</th>
                             <td>
@@ -1105,6 +1152,7 @@ var Profile = CreateClass({
                                            options={selector[locale].enemydeftypes}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           tooltip={this["tooltip-enemy-defense-detail"]}
                                            stat="enemyDefense">
                                 </Typeahead>
                             </td>
@@ -1113,43 +1161,37 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("防御デバフ合計説明", locale)} id={"tooltip-defense-debuff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}<span
-                                className="input-suggest">*</span></th>
-                            <td>
-                                <InputGroup>
-                                    <FormControl type="number" min="0" step="5" max="100"
-                                                 value={this.state.defenseDebuff}
-                                                 onBlur={this.handleOnBlur.bind(this, "defenseDebuff")}
-                                                 onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
-                            </td>
+                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}<span className="input-suggest">*</span></th>
+                                <td>
+                                    <InputGroup>
+                                        <FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
+                                            onBlur={this.handleOnBlur}
+                                            onChange={this.handleEvent.bind(this, "defenseDebuff")}/>
+                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                    </InputGroup>
+                                </td>
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("敵非有利耐性説明", locale)}
-                                     id={"tooltip-enemy-resistance-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("敵非有利耐性説明", locale)} id={"tooltip-enemy-resistance-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("敵非有利耐性", locale)}</th>
-                            <td><InputGroup><FormControl type="number" min="0" step="5" max="100"
-                                                         value={this.state.enemyResistance}
-                                                         onBlur={this.state.handleOnBlur}
-                                                         onChange={this.handleEvent.bind(this, "enemyResistance")}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
+                            <td><InputGroup><FormControl type="number" min="0" step="5" max="100" value={this.state.enemyResistance}
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "enemyResistance")}/>
+                                            <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)}
-                                     id={"tooltip-sun-touched-paradise-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)} id={"tooltip-sun-touched-paradise-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("特殊効果", locale)}</th>
-                            <td>
-                                <Checkbox inline checked={this.state.retsujitsuNoRakuen}
-                                          onChange={this.handleSelectEvent.bind(this, "retsujitsuNoRakuen")}>
-                                    <strong>{intl.translate("烈日の楽園", locale)}</strong>
-                                </Checkbox>
-                            </td>
+                                <td>
+                                    <Checkbox inline checked={this.state.retsujitsuNoRakuen}
+                                              onChange={this.handleSelectEvent.bind(this, "retsujitsuNoRakuen")}>
+                                        <strong>{intl.translate("烈日の楽園", locale)}</strong>
+                                    </Checkbox>
+                                </td>
                         </tr>
                     </TextWithTooltip>
 
@@ -1159,46 +1201,36 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎DA率", locale)}
                             </th>
                             <td><InputGroup><FormControl type="number" min="0" step="0.1" value={this.state.DA}
-                                                         onBlur={this.handleOnBlur.bind(this, "DA")}
-                                                         onChange={this.handleEvent.bind(this, "DA")}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "DA")}/>
+                                            <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
-
                     <TextWithTooltip tooltip={intl.translate("ジータさん基礎TA率説明", locale)}
                                      id={"tooltip-player-baseta-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("基礎TA率", locale)}
                             </th>
                             <td><InputGroup><FormControl type="number" min="0" step="0.1" value={this.state.TA}
-                                                         onBlur={this.handleOnBlur.bind(this, "TA")}
-                                                         onChange={this.handleEvent.bind(this, "TA")}/>
-                                <InputGroup.Addon>%</InputGroup.Addon>
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "TA")}/>
+                                            <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
-
                     <TextWithTooltip tooltip={intl.translate("ジータさん奥義倍率説明", locale)} id={"tooltip-ougi-ratio-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}
                             </th>
-                            <td>
-                                <Typeahead value={this.state.ougiRatio}
-                                           options={selector.ougiRatio}
-                                           onBlur={this.handleOnBlur}
-                                           onChange={this.handleEvent}
-                                           stat="ougiRatio">
-                                </Typeahead>
+                            <td><FormControl componentClass="select" value={this.state.ougiRatio}
+                                             onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
-
                     <TextWithTooltip tooltip={intl.translate("確保HP説明", locale)} id={"tooltip-minimu-hp-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("確保HP", locale)}</th>
                             <td><FormControl type="number" min="0" value={this.state.minimumHP}
-                                             onBlur={this.handleOnBlur.bind(this, "minimumHP")}
+                                             onBlur={this.handleOnBlur}
                                              onChange={this.handleEvent.bind(this, "minimumHP")}/></td>
                         </tr>
                     </TextWithTooltip>
@@ -1223,12 +1255,11 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
-
                     </tbody>
                 </table>
             </div>
         );
-    },
+    }
 });
 
 module.exports = Profile;

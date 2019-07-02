@@ -96,16 +96,16 @@ class CriticalBuffList extends React.Component {
               onChange={this.handleOnChange.bind(this, "count", null)}/>
             {array.slice(0, count).map(({value,attackRatio}, idx) =>
             <div key={label + idx}>
-                <strong>{intl.translate("発動率", locale)}#{idx+1}</strong>
-                <Typeahead value={Math.round(100*value)}
+                <strong>{intl.translate("発動率", locale)}#{idx + 1}</strong>
+                <Typeahead value={Math.round(100 * value)}
                            options={selector.criticalRateLevel}
                            onBlur={this.handleOnBlur.bind(this)}
                            onChange={(key, value) => this.handleOnChange("value", idx, value)}
                            stat={"criticalRateLevel" + idx}
                            addon="%">
                 </Typeahead>
-                <strong>{intl.translate("倍率", locale)}#{idx+1}</strong>
-                <Typeahead value={Math.round(100*attackRatio)}
+                <strong>{intl.translate("倍率", locale)}#{idx + 1}</strong>
+                <Typeahead value={Math.round(100 * attackRatio)}
                            options={selector.buffLevel}
                            onBlur={this.handleOnBlur.bind(this)}
                            onChange={(key, value) => this.handleOnChange("attackRatio", idx, value)}

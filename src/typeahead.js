@@ -5,7 +5,7 @@ const {Menu, MenuItem} = require('react-bootstrap-typeahead');
 const DefaultTypeahead = require('react-bootstrap-typeahead').Typeahead;
 const {InputGroup} = require('react-bootstrap');
 const PropTypes = require('prop-types').PropTypes;
-const Utilities = require('./utilities');
+const {getValidData, createDataPlaceholder, getMaxScrollLength, getLabelFromId} = require('./utilities');
 
 class Typeahead extends React.Component {
     constructor(props) {
@@ -33,43 +33,9 @@ class Typeahead extends React.Component {
         }
     }
 
-    static getValidData(type, min, max, selected, previous) {
-        switch (type) {
-            case "number":
-                return Typeahead.validateNumber(parseFloat(selected), min, max, previous);
-            case "text":
-                let value = selected.toString();
-                if (value) {
-                    return value;
-                } else {
-                    return previous;
-                }
-            default:
-                return selected;
-        }
-    }
-
-    static validateNumber(selected, min, max, previous) {
-        if (isNaN(selected)) {
-            if (previous) {
-                return previous;
-            } else {
-                return min;
-            }
-        } else {
-            if (selected < min) {
-                return min;
-            } else if (selected > max) {
-                return max;
-            } else {
-                return selected;
-            }
-        }
-    }
-
     handleOnBlur() {
         if (this.defaultTypeahead.current) {
-            let value = Typeahead.getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
+            let value = getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
             if (this.props.onBlur) {
                 this.props.onBlur(this.props.stat, value);
             }
@@ -78,9 +44,9 @@ class Typeahead extends React.Component {
 
     handleOnChange() {
         if (this.defaultTypeahead.current) {
-            let value = Typeahead.getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
+            let value = getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
             this.updateActiveItem(this.props.stat, this.props.options, value, this.state.order);
-            let e = Typeahead.createDataPlaceholder(this.defaultTypeahead.current.state.text);
+            let e = createDataPlaceholder(this.defaultTypeahead.current.state.text);
             this.props.onChange(this.props.stat, e);
         }
     }
@@ -88,7 +54,7 @@ class Typeahead extends React.Component {
     updateActiveItem(id, options, value, order, index = -1) {
         let dropdown = document.getElementById(id);
         if (dropdown) {
-            let maxScrollLength = Typeahead.getMaxScrollLength(dropdown);
+            let maxScrollLength = getMaxScrollLength(dropdown);
             if ((index = options.indexOf(value.toString())) >= 0) {
                 if (!order) {
                     index = options.length - index - 1;
@@ -104,18 +70,6 @@ class Typeahead extends React.Component {
             return true;
         }
         return false;
-    }
-
-    static getMaxScrollLength(input) {
-        if ('scrollTopMax' in input) {
-            return input.scrollTopMax;
-        } else {
-            return input.scrollHeight - input.clientHeight;
-        }
-    }
-
-    static createDataPlaceholder(value) {
-        return {target: {value: value}};
     }
 
     renderMenu(results, menuProps) {
@@ -149,7 +103,7 @@ class Typeahead extends React.Component {
         let observerInstance = MutationObserver || WebKitMutationObserver || MozMutationObserver;
         this.observer = new observerInstance(function (mutations) {
             mutations.forEach(function () {
-                this.updateScreenOrientation(instance, ref);
+                instance.updateScreenOrientation(instance, ref);
             });
         });
     }
@@ -158,6 +112,9 @@ class Typeahead extends React.Component {
         if (instance.state.order !== $(ref.getInput()).offset().top < $('#' + ref.props.id).offset().top) {
             instance.setState({order: !instance.state.order});
             this.updateActiveItem(instance.props.stat, instance.props.options, ref.state.text, instance.state.order);
+            if(instance.props.tooltip) {
+                instance.props.tooltip.setPlacement(instance.state.order);
+            }
         }
     }
 
@@ -185,7 +142,7 @@ class Typeahead extends React.Component {
         if (this.props.value !== undefined && this.props.options && this.props.stat && this.props.onChange) {
             typeahead = <DefaultTypeahead
                 id={this.props.stat}
-                selected={[Utilities.getLabelFromId(this.props.options, this.props.value.toString())]}
+                selected={[getLabelFromId(this.props.options, this.props.value.toString())]}
                 onFocus={this.handleOnFocus.bind(this)}
                 onBlur={this.handleOnBlur.bind(this)}
                 onChange={this.handleOnChange.bind(this)}
@@ -215,7 +172,8 @@ Typeahead.propTypes = {
     type: PropTypes.oneOf(['text', 'number']),
     min: PropTypes.number,
     max: PropTypes.number,
-    addon: PropTypes.string
+    addon: PropTypes.string,
+    tooltip: PropTypes.object
 };
 
 Typeahead.defaultProps = {

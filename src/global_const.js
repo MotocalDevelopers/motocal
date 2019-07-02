@@ -5,11 +5,18 @@ var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
 
 module.exports.TextWithTooltip = CreateClass({
+    getInitialState: function() {
+        return {
+            placement : "top"
+        };
+    },
+    setPlacement: function(isTop) {
+        this.setState({placement: isTop ? "top" : "bottom"})
+    },
     render: function () {
-        var tooltip = <Tooltip id={this.props.id}>{this.props.tooltip}</Tooltip>;
-
+        let tooltip = <Tooltip id={this.props.id}>{this.props.tooltip}</Tooltip>;
         return (
-            <OverlayTrigger overlay={tooltip} placement="top" delayShow={300} delayHide={150}>
+            <OverlayTrigger overlay={tooltip} placement={this.state.placement} delayShow={300} delayHide={150}>
                 {this.props.children}
             </OverlayTrigger>
         );

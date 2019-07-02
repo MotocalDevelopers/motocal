@@ -102,4 +102,31 @@ describe("#Utility Methods", () => {
             expect(save.ui[1].hasOwnProperty("timeField")).toBeFalsy();
         });
     });
+
+    describe("#getValidData", () => {
+
+        test('Empty String', () => {
+            expect(Utilities.getValidData("text", undefined, undefined, "", "VALID")).toBe("VALID");
+            expect(Utilities.getValidData("text", undefined, undefined, "", "")).toBe("");
+            expect(Utilities.getValidData("text", undefined, undefined, "", undefined)).toBe("");
+            expect(Utilities.getValidData("text", undefined, undefined, undefined, "VALID")).toBe("VALID");
+            expect(Utilities.getValidData("text", undefined, undefined, undefined, "")).toBe("");
+            expect(Utilities.getValidData("text", undefined, undefined, undefined, undefined)).toBe("");
+        });
+
+        test('Valid String', () => {
+            expect(Utilities.getValidData("text", undefined, undefined, "VALID", "NOT VALID")).toBe("VALID");
+            expect(Utilities.getValidData("text", undefined, undefined, "VALID", "")).toBe("VALID");
+            expect(Utilities.getValidData("text", undefined, undefined, "VALID", undefined)).toBe("VALID");
+        });
+
+        test('Invalid Number', () => {
+            expect(Utilities.getValidData("number", undefined, undefined, "ABC", 1)).toBe(1);
+            expect(Utilities.getValidData("number", undefined, undefined, "ABC", "1")).toBe(1);
+            expect(Utilities.getValidData("number", undefined, undefined, "ABC", "ABC")).toBe(0);
+            expect(Utilities.getValidData("number", 5, undefined, "ABC", undefined)).toBe(5);
+            expect(Utilities.getValidData("number", undefined, undefined, "ABC", undefined)).toBe(0);
+        });
+
+    });
 });
