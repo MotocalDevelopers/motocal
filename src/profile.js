@@ -446,7 +446,7 @@ var Profile = CreateClass({
                                        options={selector.buffLevel}
                                        onBlur={this.handleOnBlur}
                                        onChange={this.handleEvent}
-                                       stat="personalOtherBuff"
+                                       stat="personalOtherBuff2"
                                        addon="%">
                             </Typeahead>
                         </td>
@@ -639,7 +639,7 @@ var Profile = CreateClass({
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
                                            tooltip={this["tooltip-masterbonus-da-detail"]}
-                                           stat="masterBonusDAField"
+                                           stat="masterBonusDA"
                                            addon="%">
                                 </Typeahead>
                             </td>
@@ -702,8 +702,7 @@ var Profile = CreateClass({
                                        options={selector.zenithAttack}
                                        onBlur={this.handleOnBlur}
                                        onChange={this.handleEvent}
-                                       stat="zenithAttackBonus"
-                                       addon="%">
+                                       stat="zenithAttackBonus">
                             </Typeahead>
                         </td>
                     </tr>
@@ -715,8 +714,7 @@ var Profile = CreateClass({
                                        options={selector.zenithHP}
                                        onBlur={this.handleOnBlur}
                                        onChange={this.handleEvent}
-                                       stat="zenithHPBonus"
-                                       addon="%">
+                                       stat="zenithHPBonus">
                             </Typeahead>
                         </td>
                     </tr>
@@ -728,8 +726,7 @@ var Profile = CreateClass({
                                        options={selector.zenithPartyHP}
                                        onBlur={this.handleOnBlur}
                                        onChange={this.handleEvent}
-                                       stat="zenithPartyHPBonus"
-                                       addon="%">
+                                       stat="zenithPartyHPBonus">
                             </Typeahead>
                         </td>
                     </tr>
@@ -1091,6 +1088,8 @@ var Profile = CreateClass({
                                            options={selector.ougiGageUpOugiBuffLevel}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           min={0}
+                                           max={100}
                                            tooltip={this["tooltip-ougi-gage-up-ougi-buff-detail"]}
                                            stat="ougiGageUpOugiBuff"
                                            addon="%">
@@ -1152,6 +1151,7 @@ var Profile = CreateClass({
                                            options={selector[locale].enemydeftypes}
                                            onBlur={this.handleOnBlur}
                                            onChange={this.handleEvent}
+                                           inputProps={{type:"text"}}
                                            tooltip={this["tooltip-enemy-defense-detail"]}
                                            stat="enemyDefense">
                                 </Typeahead>
@@ -1217,12 +1217,20 @@ var Profile = CreateClass({
                             </InputGroup></td>
                         </tr>
                     </TextWithTooltip>
-                    <TextWithTooltip tooltip={intl.translate("ジータさん奥義倍率説明", locale)} id={"tooltip-ougi-ratio-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("ジータさん奥義倍率説明", locale)}
+                                     id={"tooltip-ougi-ratio-detail"}
+                                     ref={(ref) => this["tooltip-ougi-ratio-detail"] = ref}>
                         <tr>
                             <th className="bg-primary">{intl.translate("ジータさん", locale)}<br/>{intl.translate("奥義倍率", locale)}
                             </th>
-                            <td><FormControl componentClass="select" value={this.state.ougiRatio}
-                                             onChange={this.handleSelectEvent.bind(this, "ougiRatio")}> {selector.ougiRatio} </FormControl>
+                            <td>
+                                <Typeahead value={this.state.ougiRatio}
+                                           options={selector.ougiRatio}
+                                           onBlur={this.handleOnBlur}
+                                           onChange={this.handleEvent}
+                                           tooltip={this["tooltip-ougi-ratio-detail"]}
+                                           stat="ougiRatio">
+                                </Typeahead>
                             </td>
                         </tr>
                     </TextWithTooltip>

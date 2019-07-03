@@ -544,8 +544,8 @@ var Chara = CreateClass({
                                        options={selector.charaPlusNumList}
                                        onBlur={this.handleOnBlur}
                                        onChange={this.handleEvent}
-                                       stat="plusBonus"
-                                       addon="%">
+                                       inputProps={{type: "text"}}
+                                       stat="plusBonus">
                             </Typeahead>
                         </td>
                     </tr>

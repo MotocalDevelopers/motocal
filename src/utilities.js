@@ -6,6 +6,7 @@
  * @returns {String|number} valid value according to specs.
  */
 const parseNumberInputField = function (value, props, def = 0) {
+    value = parseFloat(value);
     let max = parseFloat(props.max);
     let min = parseFloat(props.min);
     return validateNumber(value, min, max, def);
@@ -105,14 +106,14 @@ module.exports.getValidData = getValidData;
  */
 const validateNumber = function (selected, min, max, previous) {
     if (isNaN(selected)) {
-        if (previous) {
+        if (previous !== undefined) {
             if (!isNaN(parseFloat(previous))) {
-                return parseFloat(previous);
+                return validateNumber(parseFloat(previous), min, max, undefined);
             } else {
                 return 0;
             }
         } else {
-            if (min) {
+            if (min !== undefined) {
                 return min;
             } else {
                 return 0;

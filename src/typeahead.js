@@ -139,10 +139,21 @@ class Typeahead extends React.Component {
 
     render() {
         let typeahead = "";
+        let inputProps = {};
+        if (this.props.inputProps !== undefined) {
+            inputProps = this.props.inputProps;
+            if (inputProps["type"] === undefined) {
+                inputProps["type"] = this.props.type;
+            }
+        } else {
+            inputProps = {type: this.props.type};
+        }
+
         if (this.props.value !== undefined && this.props.options && this.props.stat && this.props.onChange) {
             typeahead = <DefaultTypeahead
                 id={this.props.stat}
                 selected={[getLabelFromId(this.props.options, this.props.value.toString())]}
+                inputProps={inputProps}
                 onFocus={this.handleOnFocus.bind(this)}
                 onBlur={this.handleOnBlur.bind(this)}
                 onChange={this.handleOnChange.bind(this)}
@@ -173,7 +184,8 @@ Typeahead.propTypes = {
     min: PropTypes.number,
     max: PropTypes.number,
     addon: PropTypes.string,
-    tooltip: PropTypes.object
+    tooltip: PropTypes.object,
+    inputProps: PropTypes.object
 };
 
 Typeahead.defaultProps = {

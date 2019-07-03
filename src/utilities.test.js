@@ -128,5 +128,14 @@ describe("#Utility Methods", () => {
             expect(Utilities.getValidData("number", undefined, undefined, "ABC", undefined)).toBe(0);
         });
 
+
+        test('Valid Number', () => {
+            expect(Utilities.getValidData("number", -100, 100, 0, 5)).toBe(0);
+            expect(Utilities.getValidData("number", -100, 100, 101, 5)).toBe(100);
+            expect(Utilities.getValidData("number", -100, 100, -101, 5)).toBe(-100);
+            expect(Utilities.getValidData("number", -100, 100, undefined, -101)).toBe(-100);
+            expect(Utilities.getValidData("number", -100, 100, undefined, 101)).toBe(100);
+            expect(Utilities.getValidData("number", -100, 100, undefined, 5)).toBe(5);
+        });
     });
 });

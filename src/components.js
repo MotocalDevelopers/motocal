@@ -92,7 +92,7 @@ class CriticalBuffList extends React.Component {
             <strong>{intl.translate("数", locale)}</strong>
             <FormControl type="number"
               min="0" max={maxCount} value={count}
-              onBlur={this.handleOnBlur}
+              onBlur={this.handleOnBlur.bind(this)}
               onChange={this.handleOnChange.bind(this, "count", null)}/>
             {array.slice(0, count).map(({value,attackRatio}, idx) =>
             <div key={label + idx}>
