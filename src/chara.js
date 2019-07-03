@@ -627,7 +627,7 @@ var Chara = CreateClass({
                             <tr key="criticalBuff">
                                 <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                                 <td>
-                                    <CriticalBuffList locale={locale}
+                                    <CriticalBuffList locale={locale} backend={this.props.backend}
                                         onBlur={this.handleOnBlur.bind(this, null)}
                                         onCountChange={(count) => this.setState({criticalBuffCount: count})}
                                         label="criticalBuff"

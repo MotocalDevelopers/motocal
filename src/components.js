@@ -4,6 +4,7 @@ const React = require('react');
 const {FormControl, InputGroup} = require('react-bootstrap');
 const intl = require('./translate.js');
 const {selector} = require('./global_const.js');
+const {getFormControlClass} = require('./form-components');
 
 
 /**
@@ -87,6 +88,7 @@ class CriticalBuffList extends React.Component {
      */
     render() {
         const {state: {count, array}, props: {locale, label, maxCount}} = this;
+        var FormControl = getFormControlClass(this.props.backend);
 
         return <React.Fragment>
             <strong>{intl.translate("数", locale)}</strong>
@@ -128,6 +130,7 @@ CriticalBuffList.defaultProps = {
     initialCount: 0,
     truncate: true,
     label: "criticalBuff",
+    backend: "bootstrap",
 };
 
 

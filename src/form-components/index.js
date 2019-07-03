@@ -5,16 +5,9 @@
 
 // XXX: no error check in this sample.
 
-// XXX: this sample implementation replace *ALL* FormControl which has componentClass
-// that may have unexpected replace. we does not expect manual input for text value.
-// (e.g. profile Job ... produce undefined reference, because manual input job does not exists in Jobs table)
-//
-// solution: add flag <FormControl switchable={true} ... />
-//           that would be the minimam change for original code.
-//           or another way to detect the switch for number input only.
-
 
 const React = require('react');
+const fix = require('./fix-options');
 const {Component:DefaultComponent} = require('./backend/bootstrap');
 
 
@@ -22,15 +15,21 @@ function SwitchComponent(props, backend="bootstrap") {
     // Swtich component class for componentClass="select" type="number" only
     if (props.componentClass && props.componentClass === "select")
     {
-        const {Component} = require("./backend/" + (props.backend || backend));
+        let {Component} = require("./backend/" + (props.backend || backend));
+        const children = fix(props.children);
 
-        // avoid duplicate props.children
+        // Detect text options
+        if (children.map(item => item.props.value).some(isNaN)) {
+            Component = DefaultComponent;
+        }
+
+        // Avoid duplicate props.children
         const newProps = Object.assign({}, props);
         delete newProps.children;
 
         return <>
             {props.debug ? <p>backend: {props.backend || "bootstrap"}</p> : ""}
-            <Component {...newProps}>{props.children}</Component>
+            <Component {...newProps}>{children}</Component>
             </>;
     }
 
