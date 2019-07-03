@@ -97,12 +97,12 @@ const getValidData = function (type, min, max, selected, previous) {
 module.exports.getValidData = getValidData;
 
 /**
- *
+ * Returns a valid number within constrains
  * @param selected value to be checked
- * @param min
- * @param max
- * @param previous
- * @returns {*}
+ * @param min minimum value allowed for numbers
+ * @param max maximum value allowed for numbers
+ * @param previous last valid entry
+ * @returns {number|float} valid number
  */
 const validateNumber = function (selected, min, max, previous) {
     if (isNaN(selected)) {
@@ -133,9 +133,9 @@ const validateNumber = function (selected, min, max, previous) {
 module.exports.validateNumber = validateNumber;
 
 /**
- *
- * @param input
- * @returns {number}
+ * Returns maximum scroll length of a scrollable DOM
+ * @param {HTMLElement} input scrollable element
+ * @returns {number} maximum scroll length
  */
 const getMaxScrollLength = function (input) {
     if ('scrollTopMax' in input) {
@@ -148,8 +148,8 @@ const getMaxScrollLength = function (input) {
 module.exports.getMaxScrollLength = getMaxScrollLength;
 
 /**
- *
- * @param value
+ * Creates data structure to satisfy event based data fetcher events (e.target.value)
+ * @param value data to be posted
  * @returns {{target: {value: *}}}
  */
 const createDataPlaceholder = function (value) {
