@@ -522,7 +522,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (key == "Djeeta") {
             normalCoeff += 0.01 * totals["Djeeta"]["job"].kouzinBonus;
         }
-        normalCoeff += prof.retsujitsuNoRakuen ? 0.25 : 0;
 
         var normalHaisuiCoeff = 1.0 + 0.01 * totals[key]["normalHaisui"] * totalSummon["zeus"];
         normalHaisuiCoeff += 0.01 * totals[key]["normalOtherHaisui"];
@@ -554,6 +553,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["EXLB"]["WED"]) {
             otherCoeff *= 1.10;
         }
+        otherCoeff *= prof.retsujitsuNoRakuen ? 1.20 : 1;
 
         // Character Emnity
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"];
