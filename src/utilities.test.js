@@ -84,4 +84,44 @@ describe("#Utility Methods", () => {
             expect(save.ui[1].hasOwnProperty("timeField")).toBeFalsy();
         });
     });
+
+    describe("#getValidData", () => {
+
+        describe('#getValidText', () => {
+            test('Invalid String', () => {
+                expect(Utilities.getValidText(undefined, undefined)).toBe("");
+                expect(Utilities.getValidText(undefined, "TEXT")).toBe("TEXT");
+                expect(Utilities.getValidText([], undefined)).toBe("");
+                expect(Utilities.getValidText(undefined, [])).toBe("");
+                expect(Utilities.getValidText(undefined)).toBe("");
+            });
+
+            test('Valid String', () => {
+                expect(Utilities.getValidText("VALID", "NOT VALID")).toBe("VALID");
+                expect(Utilities.getValidText("VALID", "")).toBe("VALID");
+                expect(Utilities.getValidText("VALID", undefined)).toBe("VALID");
+                expect(Utilities.getValidText("VALID")).toBe("VALID");
+            });
+        });
+
+        describe('#getValidNumber', () => {
+            test('Invalid Number', () => {
+                expect(Utilities.getValidNumber("ABC", undefined, undefined, 1)).toBe(1);
+                expect(Utilities.getValidNumber("ABC", undefined, undefined, "ABC")).toBe(0);
+                expect(Utilities.getValidNumber(NaN, undefined, undefined, 1)).toBe(1);
+                expect(Utilities.getValidNumber(Infinity, undefined, undefined, 1)).toBe(1);
+                expect(Utilities.getValidNumber([], undefined, undefined, 1)).toBe(1);
+                expect(Utilities.getValidNumber({}, undefined, undefined, 1)).toBe(1);
+            });
+
+            test('Valid Number', () => {
+                expect(Utilities.getValidNumber(0, -100, 100, 5)).toBe(0);
+                expect(Utilities.getValidNumber(101, -100, 100, 5)).toBe(100);
+                expect(Utilities.getValidNumber(-101, -100, 100, 5)).toBe(-100);
+                expect(Utilities.getValidNumber("ABC", -100, 100, -101)).toBe(-100);
+                expect(Utilities.getValidNumber("ABC", -100, 100, 101)).toBe(100);
+                expect(Utilities.getValidNumber(undefined, -100, 100, 5)).toBe(5);
+            });
+        });
+    });
 });
