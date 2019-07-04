@@ -93,11 +93,7 @@ module.exports.clampNumber = clampNumber;
  */
 const getValidNumber = function (num, min, max, defaultValue = 0) {
     if (!isNumeric(num)) {
-        if (!isNumeric(defaultValue)) {
-            num = 0;
-        } else {
-            return getValidNumber(defaultValue, min, max);
-        }
+        return getValidNumber(defaultValue, min, max);
     } else if (typeof num !== "number") {
         num = parseFloat(num);
     }
@@ -114,11 +110,7 @@ module.exports.getValidNumber = getValidNumber;
  */
 const getValidText = function (val, defaultValue = "") {
     if (val === undefined) {
-        if (defaultValue === undefined) {
-            val = defaultValue;
-        } else {
-            return getValidText(defaultValue);
-        }
+        return getValidText(defaultValue);
     } else if (typeof val !== "string") {
         val = val.toString();
     }
