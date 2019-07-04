@@ -46,18 +46,17 @@ class Typeahead extends React.Component {
 
     /**
      * Returns the value of this instance
-     * @param instance Typeahead
-     * @param val Value of the input dom
      * @returns {number|string|any} value
+     * @param _val
      */
-    onRequestValue(instance, val) {
+    onRequestValue(_val = this.defaultTypeahead.current.state.text) {
         switch (this.props.type) {
             case "number":
-                return getValidNumber(val, instance.props.min, instance.props.max, instance.state.text);
+                return getValidNumber(_val, this.props.min, this.props.max, this.state.text);
             case "text":
-                return getValidText(val, instance.state.text);
+                return getValidText(_val, this.state.text);
             default:
-                return val;
+                return _val;
         }
     }
 
@@ -70,7 +69,7 @@ class Typeahead extends React.Component {
             // Get text from input box and convert it to valid data
             if (this.props.onChange) {
                 // Get text from input box and convert it to valid data
-                let e = createDataPlaceholder(this.onRequestValue(this, this.defaultTypeahead.current.state.text));
+                let e = createDataPlaceholder(this.onRequestValue(this.defaultTypeahead.current.state.text, this, this.defaultTypeahead.current.state.text));
                 this.props.onChange(this.props.stat, e);
             }
             // Call parent onBlur
