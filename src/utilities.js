@@ -72,9 +72,9 @@ module.exports.isNumeric = isNumeric;
  */
 const clampNumber = function (selected, min, max) {
     if (selected < min) {
-        return min;
+        selected = min;
     } else if (selected > max) {
-        return max;
+        selected = max;
     }
     return selected;
 };
@@ -92,7 +92,7 @@ module.exports.clampNumber = clampNumber;
  */
 const getValidNumber = function (num, min, max, defaultValue = 0) {
     if (!isNumeric(num)) {
-        return getValidNumber(defaultValue, min, max);
+        num = getValidNumber(defaultValue, min, max);
     } else if (typeof num !== "number") {
         num = parseFloat(num);
     }
@@ -109,7 +109,7 @@ module.exports.getValidNumber = getValidNumber;
  */
 const getValidText = function (val, defaultValue = "") {
     if (val === undefined) {
-        return getValidText(defaultValue);
+        val = getValidText(defaultValue);
     } else if (typeof val !== "string") {
         val = val.toString();
     }
@@ -124,10 +124,7 @@ module.exports.getValidText = getValidText;
  * @returns {number} maximum scroll length
  */
 const getMaxScrollLength = function (input) {
-    if ('scrollTopMax' in input) {
-        return input.scrollTopMax;
-    }
-    return input.scrollHeight - input.clientHeight;
+    return input.scrollTopMax || input.scrollHeight - input.clientHeight;
 };
 
 module.exports.getMaxScrollLength = getMaxScrollLength;
