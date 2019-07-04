@@ -11,7 +11,7 @@ addons:
   sonarcloud:
     organization: "orkunkocyigit-github"
 before_install:
-  - 'wget -P /tmp "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip"'
+  - "wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip"
   - "unzip sonar-scanner-cli-3.3.0.1492-linux.zip -d /tmp"
   - "nvm install $NODE_VERSION"
   - "npm update -g npm"
