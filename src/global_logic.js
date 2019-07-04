@@ -733,10 +733,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // Save only the coefficient part (100% + delta of delta) for common processing
 
         var ougiDamageByCosmosAT = Math.min(20, totals[key]["cosmosAT"]);
-        var ougiDamageByMystery = Math.min(100, totals[key]["ougiDamage"] * totalSummon["zeus"]);
         var ougiDamageByNormal = Math.min(100, totals[key]["normalOugiDamage"] * totalSummon["zeus"]);
         var ougiDamageByMagna = Math.min(100, totals[key]["magnaOugiDamage"] * totalSummon["magna"]);
-        var ougiDamageSkill = 0.01 * (ougiDamageByCosmosAT + ougiDamageByMagna + ougiDamageByNormal + ougiDamageByMystery);
+        var ougiDamageSkill = 0.01 * (ougiDamageByCosmosAT + ougiDamageByMagna + ougiDamageByNormal);
 
         var ougiDamageExceptSkill = totals[key]["ougiDamageBuff"] + totalSummon["ougiDamage"] + buff['ougiDamage'];
         ougiDamageExceptSkill += 0.01 * totals[key]["LB"]["OugiDamage"];
@@ -1879,7 +1878,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["magnaHP"] += comb[i] * skillAmounts["magnaHP"][amount][slv - 1];
                             totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaGunshin"][amount][slv - 1];
                         } else if (stype == 'normalHiou') {
-                            totals[key]["ougiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
+                            totals[key]["normalOugiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
                         } else if (stype == 'normalHissatsu') {
                             totals[key]["normalOugiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
                             totals[key]["normalOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["normalOugiDamageLimitHissatsu"][amount][slv - 1];
@@ -1915,7 +1914,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'chiretsuSenwaku') {
                             if (index == 3) {
-                                totals[key]["ougiDamage"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                                totals[key]["normalOugiDamage"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             }
                         } else if (stype == 'muhyoTuiga') {
                             if (index == 4) {
@@ -1938,7 +1937,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'ougiDamageLimit') {
                             totals[key]["ougiDamageLimit"] += comb[i] * skillAmounts["ougiDamageLimit"][amount];
                         } else if (stype == 'huanglongHissatsu') {
-                            totals[key]["ougiDamage"] += 20; // for Zeus aura (Hiou)
+                            totals[key]["normalOugiDamage"] += 20; // for Zeus aura (Hiou)
                             totals[key]["ougiDamageLimit"] += 0.2;
                         } else if (stype == 'ougiDamageLimitExceed') {
                             totals[key]["exceedOugiDamageLimit"] += 0.01 * comb[i] * skillAmounts["ougiDamageLimitExceed"][amount][slv - 1];
@@ -2231,7 +2230,6 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
-                ougiDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
                 chainDamage: 0,
@@ -2394,7 +2392,6 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
-                ougiDamage: 0,
                 chainDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
@@ -2571,7 +2568,6 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["normalOtherNite"] = 0;
         totals[key]["normalOtherSante"] = 0;
         totals[key]["normalOtherLesserSante"] = 0;
-        totals[key]["ougiDamage"] = 0;
         totals[key]["normalOugiDamage"] = 0;
         totals[key]["magnaOugiDamage"] = 0;
         totals[key]["chainDamage"] = 0;
