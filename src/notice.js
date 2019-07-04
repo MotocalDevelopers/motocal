@@ -219,12 +219,14 @@ var Notice = CreateClass({
                     <li className="list-group-item list-group-item-info">メイン武器等1本は必ず入れたい武器がある時は最小本数を入力して下さい。</li>
                     <li className="list-group-item list-group-item-info">スキル効果は上部「表示する項目を選択」 → 「キャラ情報・スキル合計値」 → 「スキル合計」で確認できます。(加護適応済みの値)(バフ・サポアビも含む)</li>
                     <li className="list-group-item list-group-item-info">奥義編成の理想を知りたい場合は、ジータタブ「より細かい設定」からチェイン数4選択後、編成一覧上の「優先項目」から「奥義+チェンバダメージ」を選択して下さい。</li>
+                    <li className="list-group-item list-group-item-info">「奥義+チェンバダメージ」にはSubに配置したキャラも含まれるので、2回奥義を再現したい場合は同じキャラを追加して下さい。</li>
+                    <li className="list-group-item list-group-item-info">きちんと背水渾身を反映させたい場合は「パーティ全体へのバフ等」 → 「残りHP割合」を想定するHPに設定して下さい。</li>
                     <li className="list-group-item list-group-item-info">上部「背水渾身グラフを開く」を選択するには、その前に編成右側からグラフ「追加」を選択する必要があります。</li>
 
                 <h3>注記</h3>
                 <ul className="list-group">
                     <li className="list-group-item list-group-item-info"><font color="#6c2c2f">情報求:</font> 武器やキャラのステータスズレ、Rank200辺りからの基礎攻撃力増加量、キャラの基礎連撃率(現在対応済リストは<u><a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a></u>の100行辺りから。デフォルト値はDA7%,TA3%)、各種計算式の検証データ。</li>
-                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">未対応:</font> ゲージ200%キャラ、バフの効果ターン・リキャスト、経過ターンで増減するスキル、多数の英雄武器の効果。</li>
+                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">未対応:</font> バフの効果ターン・リキャスト、経過ターンで増減するスキル、多数の英雄武器の効果、仲間が奥義を使用した時の奥義ゲージ上昇、奥義ゲージ上昇によりゲージ最大値に達したときの溢れ分。</li>
                     <li className="list-group-item list-group-item-info">編成データを読み込むとホワイトアウトしてしまう場合があります。恐らく仕様変更が原因なので、新しく編成を作り直すか対策パッチをお待ち下さい。</li>
                     <li className="list-group-item list-group-item-info">乱数や技巧によるブレがあるため、実際のダメージとは多少異なる可能性があります。</li>
                     <li className="list-group-item list-group-item-info">キャラの基礎連撃率やサポアビ等が追加されても既存の編成データは自動で更新されません。キャラの入れ直しをお願いします。</li>
@@ -232,7 +234,7 @@ var Notice = CreateClass({
                     <li className="list-group-item list-group-item-info">パーティ全体の残HP指定と個別の残HP指定のうち、低い方を適用して背水値を計算します。(背水キャラ運用用)</li>
                     <li className="list-group-item list-group-item-info">別枠バフが複数ある場合、スキル効果表示には乗算後の値が出てきます。</li>
                     <li className="list-group-item list-group-item-info">弱体耐性率は目安です。あまり参考にしないで下さい。</li>
-                    <li className="list-group-item list-group-item-info">"パーティ平均〇〇"にはSubに配置したキャラも含まれます。</li>
+                    <li className="list-group-item list-group-item-info">"パーティ平均〇〇"、"奥義ダメージ"、"奥義+チェンバダメージ"にはSubに配置したキャラも含まれます。</li>
                 </ul>
 
                 <h3>LICENSE</h3>
@@ -518,7 +520,7 @@ var Notice = CreateClass({
                             <td>25.5</td>
                         </tr>
                         <tr>
-                            <td>マグナ攻刃(小)</td>
+                            <td>マグナ攻刃/守護(小)</td>
                             <td>1.0</td>
                             <td>2.0</td>
                             <td>3.0</td>
@@ -541,7 +543,7 @@ var Notice = CreateClass({
                             <td>12.5</td>
                         </tr>
                         <tr>
-                            <td>マグナ攻刃(中)</td>
+                            <td>マグナ攻刃/守護(中)</td>
                             <td>3.0</td>
                             <td>4.0</td>
                             <td>5.0</td>
@@ -564,7 +566,7 @@ var Notice = CreateClass({
                             <td>16.0</td>
                         </tr>
                         <tr>
-                            <td>マグナ攻刃(大)</td>
+                            <td>マグナ攻刃/守護(大)</td>
                             <td>6.0</td>
                             <td>7.0</td>
                             <td>8.0</td>
@@ -587,7 +589,7 @@ var Notice = CreateClass({
                             <td>20.0</td>
                         </tr>
                         <tr>
-                            <td>EX/アンノウン(小)</td>
+                            <td>EX/UNK(小)</td>
                             <td>1.0</td>
                             <td>2.0</td>
                             <td>3.0</td>
@@ -610,7 +612,7 @@ var Notice = CreateClass({
                             <td>15.0</td>
                         </tr>
                         <tr>
-                            <td>EX/アンノウン(中)</td>
+                            <td>EX/UNK(中)</td>
                             <td>3.0</td>
                             <td>4.0</td>
                             <td>5.0</td>
@@ -633,7 +635,7 @@ var Notice = CreateClass({
                             <td>17.0</td>
                         </tr>
                         <tr>
-                            <td>EX/アンノウン(大)</td>
+                            <td>EX/UNK(大)</td>
                             <td>6.0</td>
                             <td>7.0</td>
                             <td>8.0</td>
@@ -656,7 +658,7 @@ var Notice = CreateClass({
                             <td>21.0</td>
                         </tr>
                         <tr>
-                            <td>EX/アンノウン(特大)</td>
+                            <td>EX/UNK(特大)</td>
                             <td>9.0</td>
                             <td>10.0</td>
                             <td>11.0</td>
@@ -911,78 +913,6 @@ var Notice = CreateClass({
                             <td>22.0</td>
                             <td>23.0</td>
                             <td>24.0</td>
-                        </tr>
-                        <tr>
-                            <td>マグナ守護(小)</td>
-                            <td>1.0</td>
-                            <td>2.0</td>
-                            <td>3.0</td>
-                            <td>4.0</td>
-                            <td>5.0</td>
-                            <td>6.0</td>
-                            <td>7.0</td>
-                            <td>8.0</td>
-                            <td>9.0</td>
-                            <td>10.0</td>
-                            <td>10.4</td>
-                            <td>10.8</td>
-                            <td>11.2</td>
-                            <td>11.6</td>
-                            <td>12.0</td>
-                        </tr>
-                        <tr>
-                            <td>マグナ守護(中)</td>
-                            <td>3.0</td>
-                            <td>4.0</td>
-                            <td>5.0</td>
-                            <td>6.0</td>
-                            <td>7.0</td>
-                            <td>8.0</td>
-                            <td>9.0</td>
-                            <td>10.0</td>
-                            <td>11.0</td>
-                            <td>12.0</td>
-                            <td>12.0</td>
-                            <td>12.0</td>
-                            <td>12.0</td>
-                            <td>12.0</td>
-                            <td>12.0</td>
-                        </tr>
-                        <tr>
-                            <td>マグナ守護(大)</td>
-                            <td>6.0</td>
-                            <td>7.0</td>
-                            <td>8.0</td>
-                            <td>9.0</td>
-                            <td>10.0</td>
-                            <td>11.0</td>
-                            <td>12.0</td>
-                            <td>13.0</td>
-                            <td>14.0</td>
-                            <td>15.0</td>
-                            <td>15.0</td>
-                            <td>15.0</td>
-                            <td>15.0</td>
-                            <td>15.0</td>
-                            <td>15.0</td>
-                        </tr>
-                        <tr>
-                            <td>マグナ守護II</td>
-                            <td>6.0</td>
-                            <td>7.0</td>
-                            <td>8.0</td>
-                            <td>9.0</td>
-                            <td>10.0</td>
-                            <td>11.0</td>
-                            <td>12.0</td>
-                            <td>13.0</td>
-                            <td>14.0</td>
-                            <td>15.0</td>
-                            <td>15.6</td>
-                            <td>16.2</td>
-                            <td>16.8</td>
-                            <td>17.4</td>
-                            <td>18.0</td>
                         </tr>
                         <tr>
                             <td>アンノウンVIT(小)</td>
