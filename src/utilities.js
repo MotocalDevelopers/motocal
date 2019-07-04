@@ -75,9 +75,8 @@ const clampNumber = function (selected, min, max) {
         return min;
     } else if (selected > max) {
         return max;
-    } else {
-        return selected;
     }
+    return selected;
 };
 
 module.exports.clampNumber = clampNumber;
@@ -127,9 +126,8 @@ module.exports.getValidText = getValidText;
 const getMaxScrollLength = function (input) {
     if ('scrollTopMax' in input) {
         return input.scrollTopMax;
-    } else {
-        return input.scrollHeight - input.clientHeight;
     }
+    return input.scrollHeight - input.clientHeight;
 };
 
 module.exports.getMaxScrollLength = getMaxScrollLength;
