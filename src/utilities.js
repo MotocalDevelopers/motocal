@@ -1,20 +1,4 @@
 /**
- * Wrapper to parse Typeahead objects.
- * @param {String|number} value Text of typeahead value.
- * @param {Object} props Props data of typeahead value.
- * @param {String|number} def Default value to assign if value is NaN
- * @returns {String|number} valid value according to specs.
- */
-const parseNumberInputField = function (value, props, def = 0) {
-    value = parseFloat(value);
-    let max = parseFloat(props.max);
-    let min = parseFloat(props.min);
-    return validateNumber(value, min, max, def);
-};
-
-module.exports.parseNumberInputField = parseNumberInputField;
-
-/**
  * Finds labels from id for given list.
  * @param selector Selector data to be scan.
  * @param id Id to be search.
@@ -69,68 +53,79 @@ const filterObjectsFromSave = function (save, list) {
 module.exports.filterObjectsFromSave = filterObjectsFromSave;
 
 /**
- *
- * @param {string} type type of validation that is requested
- * @param {float|number} min minimum value a "number" type that can take
- * @param {float|number} max maximum value a "number" type that can take
- * @param selected item value to be checked
- * @param previous default value if item is undefined&NaN
- * @returns {string|*} valid result
+ * Returns if object is number or not
+ * @param {string}n String to be checked
+ * @returns {boolean}
  */
-const getValidData = function (type, min, max, selected, previous) {
-    switch (type) {
-        case "number":
-            return validateNumber(parseFloat(selected), min, max, previous);
-        case "text":
-            if (selected) {
-                return selected.toString();
-            } else if (previous) {
-                return previous.toString();
-            } else {
-                return "";
-            }
-        default:
-            return selected;
-    }
+const isNumeric = function (n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-module.exports.getValidData = getValidData;
+module.exports.isNumeric = isNumeric;
 
 /**
  * Returns a valid number within constrains
  * @param selected value to be checked
  * @param min minimum value allowed for numbers
  * @param max maximum value allowed for numbers
- * @param previous last valid entry
  * @returns {number|float} valid number
  */
-const validateNumber = function (selected, min, max, previous) {
-    if (isNaN(selected)) {
-        if (previous !== undefined) {
-            if (!isNaN(parseFloat(previous))) {
-                return validateNumber(parseFloat(previous), min, max, undefined);
-            } else {
-                return 0;
-            }
-        } else {
-            if (min !== undefined) {
-                return min;
-            } else {
-                return 0;
-            }
-        }
+const clampNumber = function (selected, min, max) {
+    if (selected < min) {
+        return min;
+    } else if (selected > max) {
+        return max;
     } else {
-        if (selected < min) {
-            return min;
-        } else if (selected > max) {
-            return max;
-        } else {
-            return selected;
-        }
+        return selected;
     }
 };
 
-module.exports.validateNumber = validateNumber;
+module.exports.clampNumber = clampNumber;
+
+
+/**
+ * Validator for number fields
+ * @param {*}num value to be checked
+ * @param {number}min minimum value allowed for numbers
+ * @param {number}max maximum value allowed for numbers
+ * @param {number|string}defaultValue default value to be passed
+ * @returns {number} valid number
+ */
+const getValidNumber = function (num, min, max, defaultValue = 0) {
+    if (!isNumeric(num)) {
+        if (!isNumeric(defaultValue)) {
+            num = 0;
+        } else {
+            return getValidNumber(defaultValue, min, max);
+        }
+    } else if (typeof num !== "number") {
+        num = parseFloat(num);
+    }
+    return clampNumber(num, min, max);
+};
+
+module.exports.getValidNumber = getValidNumber;
+
+/**
+ * Returns a valid text
+ * @param val Value to be check
+ * @param defaultValue Default value to be passed
+ * @returns {*} Valid String
+ */
+const getValidText = function (val, defaultValue = "") {
+    if (val === undefined) {
+        if (defaultValue === undefined) {
+            val = defaultValue;
+        } else {
+            return getValidText(defaultValue);
+        }
+    } else if (typeof val !== "string") {
+        val = val.toString();
+    }
+    return val;
+};
+
+module.exports.getValidText = getValidText;
 
 /**
  * Returns maximum scroll length of a scrollable DOM

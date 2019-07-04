@@ -5,7 +5,7 @@ const {Menu, MenuItem} = require('react-bootstrap-typeahead');
 const DefaultTypeahead = require('react-bootstrap-typeahead').Typeahead;
 const {InputGroup} = require('react-bootstrap');
 const PropTypes = require('prop-types').PropTypes;
-const {getValidData, createDataPlaceholder, getMaxScrollLength, getLabelFromId} = require('./utilities');
+const {createDataPlaceholder, getMaxScrollLength, getLabelFromId, getValidNumber, getValidText} = require('./utilities');
 
 class Typeahead extends React.Component {
     constructor(props) {
@@ -45,15 +45,36 @@ class Typeahead extends React.Component {
     }
 
     /**
+     * Returns the value of this instance
+     * @param instance Typeahead
+     * @param val Value of the input dom
+     * @returns {number|string|any} value
+     */
+    onRequestValue(instance, val) {
+        switch (this.props.type) {
+            case "number":
+                return getValidNumber(val, instance.props.min, instance.props.max, instance.state.text);
+            case "text":
+                return getValidText(val, instance.state.text);
+            default:
+                return val;
+        }
+    }
+
+    /**
      * Wrapper for handling onBlur events
      */
     handleOnBlur() {
         // Check if web hook is created
         if (this.defaultTypeahead.current && this.props.onBlur) {
             // Get text from input box and convert it to valid data
-            let value = getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
-            // Call parent onBlur with "key" & "value" pair
-            this.props.onBlur(this.props.stat, value);
+            if (this.props.onChange) {
+                // Get text from input box and convert it to valid data
+                let e = createDataPlaceholder(this.onRequestValue(this, this.defaultTypeahead.current.state.text));
+                this.props.onChange(this.props.stat, e);
+            }
+            // Call parent onBlur
+            this.props.onBlur();
         }
     }
 
@@ -63,10 +84,8 @@ class Typeahead extends React.Component {
     handleOnChange() {
         // Check if web hook is created
         if (this.defaultTypeahead.current) {
-            // Get text from input box and convert it to valid data
-            let value = getValidData(this.props.type, this.props.min, this.props.max, this.defaultTypeahead.current.state.text, this.state.text);
             // Scroll down/up to written item if it exist
-            this.updateActiveItem(this.props.stat, this.props.options, value, this.state.order);
+            this.updateActiveItem(this.props.stat, this.props.options, this.defaultTypeahead.current.state.text, this.state.order);
             // Create dummy data structure for legacy code and call parent
             let e = createDataPlaceholder(this.defaultTypeahead.current.state.text);
             this.props.onChange(this.props.stat, e);

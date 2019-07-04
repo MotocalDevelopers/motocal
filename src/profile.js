@@ -264,11 +264,8 @@ var Profile = CreateClass({
 
         this.setState(newState)
     },
-    handleOnBlur: function (key, value) {
+    handleOnBlur: function (e) {
         // Send change to parent only when focus is off
-        if(key && value && typeof value === "string") {
-            this.state[key] = value;
-        }
         this.props.onChange(this.state);
     },
     handleSelectEvent: function (key, e) {

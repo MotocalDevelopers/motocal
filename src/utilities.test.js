@@ -1,24 +1,6 @@
 const Utilities = require('./utilities');
 
 describe("#Utility Methods", () => {
-    let props = {min: "-100", max: "100"};
-
-    describe("#parseNumberInputField", () => {
-        test('NaN value ', () => {
-            expect(Utilities.parseNumberInputField("abc", props)).toBe(0);
-            expect(Utilities.parseNumberInputField({}, props)).toBe(0);
-            expect(Utilities.parseNumberInputField([], props)).toBe(0);
-        });
-
-        test('Over Max', () => {
-            expect(Utilities.parseNumberInputField("250", props)).toBe(100);
-        });
-
-        test('Under Min', () => {
-            expect(Utilities.parseNumberInputField("-250", props)).toBe(-100);
-        });
-    });
-
     describe("#getLabelFromId", () => {
         test('Empty selector', () => {
             expect(Utilities.getLabelFromId([], "1")).toBe("1");
@@ -102,42 +84,4 @@ describe("#Utility Methods", () => {
             expect(save.ui[1].hasOwnProperty("timeField")).toBeFalsy();
         });
     });
-
-    describe("#getValidData", () => {
-
-        test('Empty String', () => {
-            expect(Utilities.getValidData("text", undefined, undefined, "", "VALID")).toBe("VALID");
-            expect(Utilities.getValidData("text", undefined, undefined, "", "")).toBe("");
-            expect(Utilities.getValidData("text", undefined, undefined, "", undefined)).toBe("");
-            expect(Utilities.getValidData("text", undefined, undefined, undefined, "VALID")).toBe("VALID");
-            expect(Utilities.getValidData("text", undefined, undefined, undefined, "")).toBe("");
-            expect(Utilities.getValidData("text", undefined, undefined, undefined, undefined)).toBe("");
-        });
-
-        test('Valid String', () => {
-            expect(Utilities.getValidData("text", undefined, undefined, "VALID", "NOT VALID")).toBe("VALID");
-            expect(Utilities.getValidData("text", undefined, undefined, "VALID", "")).toBe("VALID");
-            expect(Utilities.getValidData("text", undefined, undefined, "VALID", undefined)).toBe("VALID");
-        });
-
-        test('Invalid Number', () => {
-            expect(Utilities.getValidData("number", undefined, undefined, "ABC", 1)).toBe(1);
-            expect(Utilities.getValidData("number", undefined, undefined, "ABC", "1")).toBe(1);
-            expect(Utilities.getValidData("number", undefined, undefined, "ABC", "ABC")).toBe(0);
-            expect(Utilities.getValidData("number", 5, undefined, "ABC", undefined)).toBe(5);
-            expect(Utilities.getValidData("number", undefined, undefined, "ABC", undefined)).toBe(0);
-        });
-
-
-        test('Valid Number', () => {
-            expect(Utilities.getValidData("number", -100, 100, 0, 5)).toBe(0);
-            expect(Utilities.getValidData("number", -100, 100, 101, 5)).toBe(100);
-            expect(Utilities.getValidData("number", -100, 100, -101, 5)).toBe(-100);
-            expect(Utilities.getValidData("number", -100, 100, undefined, -101)).toBe(-100);
-            expect(Utilities.getValidData("number", -100, 100, undefined, 101)).toBe(100);
-            expect(Utilities.getValidData("number", -100, 100, undefined, 5)).toBe(5);
-        });
-    });
-
-
 });
