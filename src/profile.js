@@ -1,9 +1,10 @@
 var React = require('react');
-var {Button, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
+var {Button, Checkbox, FormControl, InputGroup, FormGroup} = require('react-bootstrap');
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
 var TextWithTooltip = GlobalConst.TextWithTooltip;
 var CreateClass = require('create-react-class');
+var {CriticalBuffList} = require('./components.js');
 
 // const
 var zenith = GlobalConst.zenith;
@@ -219,6 +220,13 @@ var Profile = CreateClass({
             personalUplift: 0,
             personalDamageLimitBuff: 0.0,
             personalOugiDamageLimitBuff: 0.0,
+            ruleMaxSize: true,
+            filterOptionsChanged: false,
+            criticalBuff: [],
+            criticalBuffCount: 0,
+            personalCriticalBuff: [],
+            personalCriticalBuffCount: 0,
+            retsujitsuNoRakuen: false,
         };
     },
     switchBufflist: function (e) {
@@ -231,6 +239,27 @@ var Profile = CreateClass({
         // input type input form uses onBlur
         var newState = this.state;
         newState[key] = e.target.value;
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        } else if (key == "personalCriticalBuffCount") {
+            if (newState.personalCriticalBuff.length > newState.personalCriticalBuffCount) {
+                newState.personalCriticalBuff = newState.personalCriticalBuff.slice(0, newState.personalCriticalBuffCount);
+            }
+            for (let i = 0; i < newState.personalCriticalBuffCount; i++) {
+                if (newState.personalCriticalBuff[i] == undefined) {
+                    newState.personalCriticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+
         this.setState(newState)
     },
     handleOnBlur: function (e) {
@@ -240,13 +269,24 @@ var Profile = CreateClass({
     handleSelectEvent: function (key, e) {
         // A select type input form is good for onChange
         var newState = this.state;
-        newState[key] = e.target.value;
+        if (e.target.type === "checkbox") {
+            newState[key] = e.target.checked;
+        } else {
+            newState[key] = e.target.value;
+        }
+
         if (key == "job") {
             newState.DA = Jobs[e.target.value].DaBonus;
             newState.TA = Jobs[e.target.value].TaBonus
         }
+        if (e.target.type === "checkbox") {
+            newState[key] = e.target.checked;
+            if (key.toLowerCase().includes("rule")) {
+                newState.filterOptionsChanged = true;
+            }
+        }
         this.setState(newState);
-        this.props.onChange(newState)
+        this.props.onChange(newState);
     },
     renderTwitterLink: function () {
         if (process.env.TWITTER_ID) {
@@ -292,7 +332,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("ランク説明", locale)} id={"tooltip-rank-detail"}>
                         <tr>
                             <th className="bg-primary">Rank<span className="input-suggest">*</span></th>
-                            <td><FormControl type="number" min="1" max="225" value={this.state.rank}
+                            <td><FormControl type="number" min="1" max="300" value={this.state.rank}
                                              onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "rank")}/>
                             </td>
                         </tr>
@@ -327,7 +367,7 @@ var Profile = CreateClass({
                     </TextWithTooltip>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("ジータさん性別", locale)}<span className="input-suggest">*</span></th>
+                        <th className="bg-primary">{intl.translate("ジータさん性別", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.sex}
                                          onChange={this.handleSelectEvent.bind(this, "sex")}> {selector[locale].sexes} </FormControl>
                         </td>
@@ -386,6 +426,17 @@ var Profile = CreateClass({
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
+                            <tr key="personalCriticalBuff">
+                                <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
+                                <td>
+                                    <CriticalBuffList locale={locale}
+                                        onBlur={this.handleOnBlur.bind(this)}
+                                        onCountChange={(count) => this.setState({personalCriticalBuffCount: count})}
+                                        label="personalCriticalBuff"
+                                        criticalArray={this.state.personalCriticalBuff}
+                                        initialCount={this.state.personalCriticalBuffCount} />
+                                </td>
+                            </tr>,
                             <tr key="personalDaBuff">
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalDABuff}
@@ -414,13 +465,13 @@ var Profile = CreateClass({
                                 </td>
                             </tr>,
                             <tr key="personalOugiDamageBuff">
-                                <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                                <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageBuff}
                                                              onChange={this.handleSelectEvent.bind(this, "personalOugiDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="personalOugiGageBuff">
-                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇量バフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiGageBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
@@ -434,14 +485,14 @@ var Profile = CreateClass({
                                 </InputGroup></td>
                             </tr>,
                             <tr key="personalDamageLimit">
-                                <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
+                                <th className="bg-primary">{intl.translate("ダメージ上限バフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalDamageLimitBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalDamageLimitBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="personalOugiDamageLimit">
-                                <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
+                                <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageLimitBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiDamageLimitBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
@@ -460,7 +511,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("マスボATK説明", locale)} id={"tooltip-masterbonus-atk-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("マスボATK", locale)}<span className="input-suggest">*</span>
+                                {intl.translate("マスボATK", locale)}
                             </th>
                             <td>
                                 <InputGroup>
@@ -490,7 +541,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("マスボDA説明", locale)} id={"tooltip-masterbonus-da-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("マスボDA", locale)}<span className="input-suggest">*</span>
+                                {intl.translate("マスボDA", locale)}
                             </th>
                             <td>
                                 <InputGroup>
@@ -505,7 +556,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("マスボTA説明", locale)} id={"tooltip-masterbonus-ta-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("マスボTA", locale)}<span className="input-suggest">*</span>
+                                {intl.translate("マスボTA", locale)}
                             </th>
                             <td>
                                 <InputGroup>
@@ -520,7 +571,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("マスボダメ上限説明", locale)} id={"tooltip-masterbonus-damagelimit-detail"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("マスボダメ上限", locale)}<span className="input-suggest">*</span>
+                                {intl.translate("マスボダメ上限", locale)}
                             </th>
                             <td>
                                 <InputGroup>
@@ -540,7 +591,7 @@ var Profile = CreateClass({
                     </tr>
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}<span className="input-suggest">*</span></th>
+                        <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.zenithAttackBonus}
                                          onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl>
                         </td>
@@ -562,7 +613,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("LB DAの説明", locale)} id={"tooltip-da-zenith-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("LB DA", locale)}<font color="#ffff00">*</font></th>
+                            <th className="bg-primary">{intl.translate("LB DA", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithDABonus}
                                              onChange={this.handleSelectEvent.bind(this, "zenithDABonus")}> {this.props.zenithDABonuses[locale]} </FormControl>
                             </td>
@@ -571,7 +622,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("LB TAの説明", locale)} id={"tooltip-ta-zenith-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("LB TA", locale)}<font color="#ffff00">*</font></th>
+                            <th className="bg-primary">{intl.translate("LB TA", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithTABonus}
                                              onChange={this.handleSelectEvent.bind(this, "zenithTABonus")}> {this.props.zenithTABonuses[locale]} </FormControl>
                             </td>
@@ -580,7 +631,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("LB ダメージ上限UPの説明", locale)} id={"tooltip-ta-zenith-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("LB ダメージ上限UP", locale)}<font color="#ffff00">*</font></th>
+                            <th className="bg-primary">{intl.translate("LB ダメージ上限UP", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithDamageLimitBonus}
                                              onChange={this.handleSelectEvent.bind(this, "zenithDamageLimitBonus")}> {this.props.zenithDamageLimitBonuses[locale]} </FormControl>
                             </td>
@@ -589,7 +640,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("LB 奥義の説明", locale)} id={"tooltip-ougidamage-zenith-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("LB 奥義", locale)}<font color="#ffff00">*</font></th>
+                            <th className="bg-primary">{intl.translate("LB 奥義", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithOugiDamageBonus}
                                              onChange={this.handleSelectEvent.bind(this, "zenithOugiDamageBonus")}> {this.props.zenithOugiDamageBonuses[locale]} </FormControl>
                             </td>
@@ -713,6 +764,21 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("クリティカルバフ説明", locale)} id={"tooltip-critical-buff-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
+                            <td>
+                                <CriticalBuffList locale={locale}
+                                    onBlur={this.handleOnBlur.bind(this)}
+                                    onCountChange={(count) => this.setState({criticalBuffCount: count})}
+                                    label="criticalBuff"
+                                    criticalArray={this.state.criticalBuff}
+                                    initialCount={this.state.criticalBuffCount} />
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("HPバフ説明", locale)} id={"tooltip-hpbuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("HPバフ", locale)}</th>
@@ -725,6 +791,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("DAバフ説明", locale)} id={"tooltip-dabuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
@@ -737,6 +804,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("TAバフ説明", locale)} id={"tooltip-tabuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("TAバフ", locale)}</th>
@@ -749,6 +817,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
+
                     <TextWithTooltip tooltip={intl.translate("残HP割合", locale)} id={"tooltip-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("残HP割合", locale)}</th>
@@ -765,7 +834,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
                                      id={"tooltip-ougidamagebuff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                            <th className="bg-primary">{intl.translate("奥義ダメージバフ", locale)}</th>
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiDamageBuff}
@@ -790,13 +859,13 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("supplementalDamageBuff-tooltip", locale)}
+                    <TextWithTooltip tooltip={intl.translate("supplementalDamageBuff-tooltip", locale)} //与ダメージ上昇効果バフ
                                      id={"tooltip-supplementalDamageBuff-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
                             <td>
-                                <FormControl type="number" value={this.state.supplementalDamageBuff}
-                                             onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
+                                <FormControl type="number" min="0" step="1000" max="100000" value={this.state.supplementalDamageBuff}
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "supplementalDamageBuff")}></FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
@@ -804,7 +873,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("奥義ゲージ上昇率アップ説明", locale)}
                                      id={"tooltip-ougigagebuff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                            <th className="bg-primary">{intl.translate("奥義ゲージ上昇量バフ", locale)}</th>
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiGageBuff}
@@ -846,7 +915,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("ダメージ上限アップ説明", locale)}
                                      id={"tooltip-damage-limit-buff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("ダメージ上限アップ", locale)}</th>
+                            <th className="bg-primary">{intl.translate("ダメージ上限バフ", locale)}</th>
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.damageLimitBuff}
@@ -860,7 +929,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("奥義ダメージ上限アップ説明", locale)}
                                      id={"tooltip-ougi-damage-limit-buff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
+                            <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
                             <td>
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiDamageLimitBuff}
@@ -889,7 +958,7 @@ var Profile = CreateClass({
 
                     <TextWithTooltip tooltip={intl.translate("防御デバフ合計説明", locale)} id={"tooltip-defense-debuff-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}</th>
+                            <th className="bg-primary">{intl.translate("防御デバフ合計", locale)}<span className="input-suggest">*</span></th>
                                 <td>
                                     <InputGroup>
                                         <FormControl type="number" min="0" step="5" max="100" value={this.state.defenseDebuff}
@@ -905,9 +974,21 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("敵非有利耐性", locale)}</th>
                             <td><InputGroup><FormControl type="number" min="0" step="5" max="100" value={this.state.enemyResistance}
-                                             onBlur={this.state.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "enemyResistance")}/> 
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "enemyResistance")}/> 
                                             <InputGroup.Addon>%</InputGroup.Addon>
                             </InputGroup></td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)} id={"tooltip-sun-touched-paradise-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("特殊効果", locale)}</th>
+                                <td>
+                                    <Checkbox inline checked={this.state.retsujitsuNoRakuen}
+                                              onChange={this.handleSelectEvent.bind(this, "retsujitsuNoRakuen")}>
+                                        <strong>{intl.translate("烈日の楽園", locale)}</strong>
+                                    </Checkbox>
+                                </td>
                         </tr>
                     </TextWithTooltip>
 
@@ -957,6 +1038,17 @@ var Profile = CreateClass({
                             <td>
                                 <FormControl componentClass="select" value={this.state.chainNumber}
                                              onChange={this.handleSelectEvent.bind(this, "chainNumber")}> {selector.chainNumber} </FormControl>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("弱い編成を隠す", locale)} id={"tooltip-hide-grids"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("弱い編成を隠す", locale)}</th>
+                            <td>
+                                <Checkbox inline checked={this.state.ruleMaxSize}
+                                          onChange={this.handleSelectEvent.bind(this, "ruleMaxSize")}>
+                                </Checkbox>
                             </td>
                         </tr>
                     </TextWithTooltip>

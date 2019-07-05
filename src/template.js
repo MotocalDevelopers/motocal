@@ -118,21 +118,32 @@ var RegisteredChara = CreateClass({
             openSendRequest: false,
         };
     },
+    onDataRequested: function () {
+        return new Promise(resolve => {
+            $.ajax({
+                url: "./charaData.json",
+                dataType: 'json',
+                cache: false,
+                timeout: 10000,
+                success: function (data) {
+                    resolve(data);
+                }.bind(this),
+                error: function (xhr, status, err) {
+                    alert("Error!: キャラデータの取得に失敗しました。\nstatus: " + status + "\nerror message: " + err.toString());
+                    console.log("xhr:", xhr);
+                    console.log("status:", status);
+                    console.log("error: ", err);
+                    throw new Error(err.toString());
+                }.bind(this)
+            });
+        });
+    },
+    onDataObtained: async function (callback) {
+        this.onDataRequested().then(callback)
+    },
     componentDidMount: function () {
-        $.ajax({
-            url: "./charaData.json",
-            dataType: 'json',
-            cache: false,
-            timeout: 10000,
-            success: function (data) {
-                this.setState({charaData: data})
-            }.bind(this),
-            error: function (xhr, status, err) {
-                alert("Error!: キャラデータの取得に失敗しました。\nstatus: " + status + "\nerror message: " + err.toString());
-                console.log("xhr:", xhr);
-                console.log("status:", status);
-                console.log("error: ", err);
-            }.bind(this)
+        this.onDataObtained((charadata) => {
+            this.setState({charaData: charadata})
         });
     },
     clickedTemplate: function (e) {
@@ -281,18 +292,29 @@ var RegisteredArm = CreateClass({
     openConsiderNumberModal: function () {
         this.setState({openConsiderNumberModal: true})
     },
+    onDataRequested: async function () {
+        return new Promise(resolve => {
+            $.ajax({
+                url: "./armData.json",
+                dataType: 'json',
+                cache: false,
+                timeout: 10000,
+                success: function (data) {
+                    resolve(data)
+                }.bind(this),
+                error: function (xhr, status, err) {
+                    alert("Error!: 武器データの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
+                    throw new Error(err.toString());
+                }.bind(this)
+            });
+        });
+    },
+    onDataObtained: async function (callback) {
+        this.onDataRequested().then(callback)
+    },
     componentDidMount: function () {
-        $.ajax({
-            url: "./armData.json",
-            dataType: 'json',
-            cache: false,
-            timeout: 10000,
-            success: function (data) {
-                this.setState({armData: data})
-            }.bind(this),
-            error: function (xhr, status, err) {
-                alert("Error!: 武器データの取得に失敗しました。 status: ", status, ", error message: ", err.toString());
-            }.bind(this)
+        this.onDataObtained((armData) => {
+            this.setState({armData: armData})
         });
     },
     clickedTemplate: function (e) {

@@ -256,6 +256,31 @@ var multiLangData = {
         "ja": "別枠乗算のバフ(もし別枠バフが2つ以上ある場合用)",
         "zh": "独立乘算Buff(独立Buff有2个以上时用)",
     },
+    "クリティカルバフ": {
+        "en": "Critical Buff",
+        "ja": "クリティカルバフ",
+        "zh": "Critical Buff",
+    },
+    "クリティカルバフ説明": {
+        "en": "Critical Buffs.",
+        "ja": "クリティカルバフ",
+        "zh": "Critical Buffs.",
+    },
+    "発動率": {
+        "en": "Hit Rate ",
+        "ja": "発動率 ",
+        "zh": "Hit Rate ",
+    },
+    "倍率": {
+        "en": "Damage Multiplier ",
+        "ja": "倍率 ",
+        "zh": "Damage Multiplier ",
+    },
+    "数": {
+        "en": "Count:",
+        "ja": "数",
+        "zh": "Count:",
+    },
     "HPバフ": {
         "en": "HP Buff",
         "ja": "HPバフ",
@@ -307,10 +332,31 @@ var multiLangData = {
         "zh": "Supplemental Damage Buff",
     },
     "supplementalDamageBuff-tooltip": {
-        "en": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
-        "ja": "与ダメージ上昇効果。ロゼッタ（リミテッド）のアイアン・メイデン(5000)、虚空の晶塊の奥義(10000)など。",
-        "zh": "DMG Boosted status effect. Rosetta (Grand)'s Iron Maiden (5000), Hollowsky Axe's C.A. (10000), etc.",
+        "en": "DMG Boosted status effect. Hollowsky Axe's C.A. (10000), etc.",
+        "ja": "与ダメージ上昇効果。虚空斧奥義(10000)など。",
+        "zh": "DMG Boosted status effect. Hollowsky Axe's C.A. (10000), etc.",
     },
+    "奥義ダメージバフ": {
+        "en": "C.A. DMG Buff",
+        "ja": "奥義ダメージバフ",
+        "zh": "C.A. DMG Buff",
+    },
+    "奥義ゲージ上昇量バフ": {
+        "en": "Charge Bar Speed UP Buff",
+        "ja": "奥義ゲージ上昇量バフ",
+        "zh": "Charge Bar Speed UP Buff",
+    },
+    "ダメージ上限バフ": {
+        "en": "DMG Cap Buff",
+        "ja": "ダメージ上限バフ",
+        "zh": "DMG Cap Buff",
+    },
+    "奥義ダメージ上限バフ": {
+        "en": "C.A. DMG Buff",
+        "ja": "奥義ダメージ上限バフ",
+        "zh": "C.A. DMG Buff",
+    },
+	
     "与ダメージ上昇": {
         "en": "Damage UP ",
         "ja": "与ダメージ上昇",
@@ -343,7 +389,7 @@ var multiLangData = {
     },
     "奥義ゲージ上昇量": {
         "en": "Charge Bar Buff", //a.k.a: ougiGageBuff
-        "ja": "奥義ゲージ\n上昇量",
+        "ja": "奥義ゲージ上昇量",
         "zh": "奥义槽上升量",
     },
     "奥義ゲージ上昇率アップ": {
@@ -353,7 +399,7 @@ var multiLangData = {
     },
     "奥義ゲージ上昇率アップ説明": {
         "en": "Used on the expected turn damage calculation.",
-        "ja": "攻撃回数に応じた奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
+        "ja": "攻撃等の奥義ゲージ上昇量に影響します。予想ターン毎ダメージの算出に使用されます。",
         "zh": "影响奥义槽上升量。在预想DPT计算中有用到。",
     },
     "チェインダメージアップ": {
@@ -382,18 +428,18 @@ var multiLangData = {
         "zh": "奥义伤害上限上升",
     },
     "奥義ダメージ上限アップ説明": {
-        "en": "It is used to calc the Ougi damage.",
+        "en": "It is used to calc the C.A damage.",
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
 	},
     "奥義ゲージ上昇奥義": {
         "en": "Charge Boost C.A.",
-        "ja": "奥義ゲージ上昇奥義",
+        "ja": "奥義時の奥義ゲージ上昇効果",
         "zh": "Charge Boost C.A.",
     },
     "奥義ゲージ上昇奥義説明": {
         "en": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
-        "ja": "奥義ゲージ最大値を効果分マイナスします(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
+        "ja": "奥義ゲージ最大値を効果分マイナスして擬似的に再現します(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
         "zh": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
 	},
     "高揚": {
@@ -436,15 +482,40 @@ var multiLangData = {
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
     },
+    "特殊効果": {
+        "en": "Special Effects",
+        "ja": "特殊効果",
+        "zh": "Special Effects",
+    },
+    "烈日の楽園": {
+        "en": "Sun-Touched Paradise",
+        "ja": "烈日の楽園",
+        "zh": "烈日の楽園",
+    },
+    "烈日の楽園説明": {
+        "en": "All Allies gain 20% unique buff, and can deal critical hits regardless of element. (Alanaan)",
+        "ja": "対象の属性に関係なく味方のクリティカルが発生し、味方の攻撃力上昇 別枠乗算20% (アラナン)",
+        "zh": "All Allies gain 20% unique buff, and can deal critical hits regardless of element. (Alanaan)",
+    },
+    "アクティブ": {
+        "en": ": Active",
+        "ja": ": アクティブ",
+        "zh": ": Active",
+    },
+    "無効": {
+        "en": ": Inactive",
+        "ja": ": 無効",
+        "zh": ": Inactive",
+    },
     "敵非有利耐性": {
         "en": "Enemy Resistance",
         "ja": "敵非有利耐性",
         "zh": "Enemy Resistance",
     },
     "敵非有利耐性説明": {
-        "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
-        "ja": "敵の非有利属性時に生じる耐性を設定します。古戦場HELL(50%)など。",
-        "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(50%) and likes-",
+        "en": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(25%), EX+(50%) and likes-",
+        "ja": "敵の非有利属性時に生じる耐性を設定します。古戦場HELL(20%)、犬EX+(50%)など。",
+        "zh": "Enemy's damage reduction for elements they are not weak to. Unite and Fight's NIGHTMARE(25%), EX+(50%) and likes-",
     },
     "ジータさん基礎DA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
@@ -799,13 +870,13 @@ var multiLangData = {
         "zh": "基础TA率",
     },
     "パーティバフタイトル": {
-        "en": "Buff for Party (Percentage)",
-        "ja": "パーティ全体へのバフ等 (%表記)",
-        "zh": "全队Buff (百分比)",
+        "en": "Buff for Party",
+        "ja": "パーティ全体へのバフ等",
+        "zh": "全队Buff",
     },
     "パーティバフ説明": {
-        "en": "Input buffs for a party.",
-        "ja": "パーティメンバ全体にかかるバフ等の情報を入力してください",
+        "en": "Input buffs for a party.(There is no Duration and it will be reflected permanently.)",
+        "ja": "パーティメンバー全体にかかるバフ等の情報を入力してください。(効果ターンはなく永続的に反映されます)",
         "zh": "输入全队Buff",
     },
     "保存済みリスト名説明": {
@@ -822,6 +893,11 @@ var multiLangData = {
         "en": "Input the number of C.A. Chain. (1~4)",
         "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 → 0倍\n 2 → 1.25倍\n 3 → 1.33…倍\n 4 → 1.5倍",
         "zh": "设定Chain数(Chain Burst的系数会变化)",
+    },
+    "弱い編成を隠す": {
+        "en": "Hide Weaker Grids",
+        "ja": "弱い編成を隠す",
+        "zh": "Hide Weaker Grids"
     },
     "ジータさんのみ": {
         "en": "(Player only)",
@@ -1250,7 +1326,7 @@ var multiLangData = {
     },
     "与ダメージ上昇効果のソース": {
         "en": "Supplemental Damage Source",
-        "ja": "与ダメージ上昇効果のソース",
+        "ja": "与ダメージ上昇効果の種類",
         "zh": "Supplemental Damage Source",
     },
     "合計": {
@@ -1260,7 +1336,7 @@ var multiLangData = {
     },
     "ダメージ": {
         "en": "Damage (incl. Damage UP and Enemy Resistance)",
-        "ja": "ダメージ  (与ダメージ上と敵非有利耐性昇を含むいる)",
+        "ja": "ダメージ  (与ダメージ上昇と敵非有利耐性が反映済み)",
         "zh": "伤害 (incl. Damage UP and Enemy Resistance)",
     },
     "サポアビ": {
@@ -1880,15 +1956,20 @@ var multiLangData = {
         "ja": "全体DA率10%UP(ランスロット)",
         "zh": "全体DA率10%UP(ランスロット)",
     },
-    "全体TA率3%UP(ネツァ)": {
-        "en": "3% boost to TA rate for all allies (Nezahualpilli)",
-        "ja": "全体TA率3%UP(ネツァ)",
-        "zh": "全体TA率3%UP(ネツァ)",
+    "全体TA率5%UP(ネツァ)": {
+        "en": "5% boost to TA rate for all allies (Nezahualpilli)",
+        "ja": "全体TA率5%UP(ネツァ)",
+        "zh": "全体TA率5%UP(ネツァ)",
     },
     "全体風DA率10%UP&TA率5%UP(コッコロ)": {
         "en": "10% boost to DA rate and 5% boost to TA rate for wind allies. (Kokkoro)",
         "ja": "全体風DA率10%UP&TA率5%UP(コッコロ)",
         "zh": "全体風DA率10%UP&TA率5%UP(コッコロ)",
+    },
+    "全体水DA率10%UP&TA率5%UP(水着ディアンサ)": {
+        "en": "10% boost to DA rate and 5% boost to TA rate for water allies. (Diantha (Summer))",
+        "ja": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
+        "zh": "全体水DA率10%UP&TA率5%UP(水着ディアンサ)",
     },
     "格闘キャラDA率10%UP(ガンダゴウザ)": {
         "en": "10% boost to melee-specialty allies' double attack rate. (Ghandagoza)",
@@ -2000,6 +2081,11 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)",
         "zh": "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)",
     },
+    "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)": {
+        "en": "15% boost to max HP, 10% boost to DEF and Charge bar fills up 25% slower. (Lelouch Lamperouge, Suzaku Kururugi, Kallen Kouzuki)",
+        "ja": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
+        "zh": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
+    },
     "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)": {
         "en": "Boost to critical hit rate (10% chance, 30% damage). (Vania, Jeanne D'Ark)",
         "ja": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
@@ -2069,6 +2155,11 @@ var multiLangData = {
         "en": "15% boost to all allies ATK based on how high character HP is (various)",
         "ja": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
         "zh": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+    },
+    "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "10% boost to all allies ATK based on how high character HP is (Lelouch Lamperouge)",
+        "ja": "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP",
     },
     "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP": {
         "en": "Has 15% less HP. %15 boost to all allies' ATK based on how high character HP is (various)",
@@ -2978,22 +3069,22 @@ var multiLangData = {
         "zh": "Omega-勇气",
     },
     "ガフスキー[α]": {
-        "en": "Gauph Key α",
+        "en": "Gauph Key α (Normal Attack Cap 10%)",
         "ja": "ガフスキー[α](通常上限10%UP)",
         "zh": "1技能插件[α]",
     },
     "ガフスキー[β]": {
-        "en": "Gauph Key β",
+        "en": "Gauph Key β (Skill Cap 50%)",
         "ja": "ガフスキー[β](アビ上限50%UP)",
         "zh": "1技能插件[β]",
     },
     "ガフスキー[γ]": {
-        "en": "Gauph Key γ",
+        "en": "Gauph Key γ (C.A. Cap 15%)",
         "ja": "ガフスキー[γ](奥義上限15%UP)",
         "zh": "1技能插件[γ]",
     },
     "ガフスキー[Δ]": {
-        "en": "Gauph Key Δ",
+        "en": "Gauph Key Δ (CB Cap 50%)",
         "ja": "ガフスキー[Δ](CB上限50%UP)",
         "zh": "1技能插件[Δ]",
     },
@@ -3048,22 +3139,22 @@ var multiLangData = {
         "zh": "災禍の誓約",
     },
     "ペンデュラム[α]": {
-        "en": "Pendulum Key α",
+        "en": "Pendulum Key α (Normal Attack Cap 10%)",
         "ja": "ペンデュラム[α](通常上限10%UP)",
         "zh": "ペンデュラム[α](通常上限10%UP)",
     },
     "ペンデュラム[β]": {
-        "en": "Pendulum Key β",
+        "en": "Pendulum Key β (Skill Cap 50%)",
         "ja": "ペンデュラム[β](アビ上限50%UP)",
         "zh": "ペンデュラム[β](アビ上限50%UP)",
     },
     "ペンデュラム[γ]": {
-        "en": "Pendulum Key γ",
+        "en": "Pendulum Key γ (C.A. Cap 15%)",
         "ja": "ペンデュラム[γ](奥義上限15%UP)",
         "zh": "ペンデュラム[γ](奥義上限15%UP)",
     },
     "ペンデュラム[Δ]": {
-        "en": "Pendulum Key Δ",
+        "en": "Pendulum Key Δ (CB Cap 50%)",
         "ja": "ペンデュラム[Δ](CB上限50%UP)",
         "zh": "ペンデュラム[Δ](CB上限50%UP)",
     },
@@ -3870,9 +3961,29 @@ var multiLangData = {
         "zh": "2019/05/28: Added new weapons and characters, and new normal critical calculation, and Over Masterys. and Soldier.",
     },
     "notice-20190606-1": {
-        "en": "06/06/2019: Added new weapons and characters, Character Balance Patch.",
-        "ja": "2019/06/06: 武器とキャラ追加。キャラバランスパッチ。",
-        "zh": "2019/06/06: Added new weapons and characters, Character Balance Patch.",
+        "en": "06/06/2019: Added new weapons and characters, Character Balance Patch, Hollowsky/Dark opus weapon limit (1 per grid). Updated critical(M) Slv15 effect size to 6.5.",
+        "ja": "2019/06/06: 武器とキャラ追加。キャラ調整アプデ対応。虚空/終末武器が1編成に1つしか入らないように制限。技巧中Slv15の効果量を6.5に変更。",
+        "zh": "2019/06/06: Added new weapons and characters, Character Balance Patch, Hollowsky/Dark opus weapon limit (1 per grid). Updated critical(M) Slv15 effect size to 6.5.",
+    },
+    "notice-20190608-1": {
+        "en": "08/06/2019: Added Wedding Rings to Characters, Plus bonus of character, ChiretsuSenwaku skill. Fixed Vania favorite weapon.",
+        "ja": "2019/06/08: 久遠の指輪対応。キャラバランスパッチ。キャラのプラスボーナス対応。スキル「地裂の煽惑・参」追加。ヴァンピィ得意武器修正。",
+        "zh": "2019/06/08: Added Wedding Rings to Characters, Plus bonus of character, ChiretsuSenwaku skill. Fixed Vania favorite weapon.",
+    },
+    "notice-20190615-1": {
+        "en": "15/06/2019: Added Hollowsky weapons skill2, supplemental damage skill/support, Translation for Characters Support Abilities.",
+        "ja": "2019/06/15: 与ダメ上昇対応(虚空武器スキル、サポアビ、バフ欄)。サポアビ英訳対応。暴君70%制限対応。",
+        "zh": "2019/06/15: Added Hollowsky weapons skill2, supplemental damage skill/support, Translation for Characters Support Abilities.",
+    },
+    "notice-20190617-1": {
+        "en": "17/06/2019: Added Support stamina weapon/Character skills, Elemental Resistance, Uplift. Changed Lily support ability by game update.",
+        "ja": "2019/06/17: メイン装備時渾身スキル/渾身サポアビ対応。敵非有利耐性欄追加。高揚バフ欄追加。リリィのサポアビ変更アプデ対応。",
+        "zh": "2019/06/17: Added Support stamina weapon/Character skills, Elemental Resistance, Uplift. Changed Lily support ability by game update.",
+    },
+    "notice-20190618-1": {
+        "en": "06/06/2019: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
+        "ja": "2019/06/06: 武器上限開放対応。DA/TAスキル効果量表示時に上限で赤色表示に。奥義、奥義上限、奥義ゲージ上昇量のキャラLB追加。",
+        "zh": "2019/06/06: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
     },
 };
 
