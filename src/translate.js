@@ -1659,6 +1659,11 @@ var multiLangData = {
         "ja": "LB渾身",
         "zh": "LB渾身",
 	},
+    "奥義固定ダメージ": {
+        "en": "C.A. Fixd DMG",
+        "ja": "奥義固定",
+        "zh": "奥義固定",
+	},
 	
 	
 
