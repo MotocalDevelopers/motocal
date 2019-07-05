@@ -42,8 +42,7 @@
     "storybook": "start-storybook -p 9009 -s ./  --ci",
     "download:arm": "python3 ./scripts/download_image.py arm",
     "download:chara": "python3 ./scripts/download_image.py chara",
-    "download:help": "python3 ./scripts/download_image.py -h",
-    "scan": "jest && sonar-scanner"
+    "download:help": "python3 ./scripts/download_image.py -h"
   },
   "repository": {
     "type": "git",
@@ -61,7 +60,6 @@
     "autoprefixer": "8.6.0",
     "babelify": "8.0.0",
     "browserify": "16.2.3",
-    "concurrently": "^4.1.0",
     "eslint": "^4.19.1",
     "jest": "24.8.0",
     "jest-sonar-reporter": "^2.0.0",

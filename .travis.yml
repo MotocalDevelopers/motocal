@@ -11,12 +11,10 @@ addons:
   sonarcloud:
     organization: "orkunkocyigit-github"
 before_install:
-  - "wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip"
-  - "unzip sonar-scanner-cli-3.3.0.1492-linux.zip -d /tmp"
   - "nvm install $NODE_VERSION"
   - "npm update -g npm"
   - "npm ci"
 script:
   - npm test
-  - /tmp/sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner -Dsonar.login=$SONAR_TOKEN
+  - sonar-scanner
   - npm run production-build
