@@ -382,7 +382,8 @@ var Profile = CreateClass({
                     {this.state.openBufflist ?
                         [
 
-                    <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)} key={"remainHP"}
+                    <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)}
+                                     key={"remainHP"}
                                      id={"tooltip-remain-hp-djeeta-detail"}>
                         <tr>
                             <th className="bg-primary">

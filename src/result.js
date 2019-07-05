@@ -1398,7 +1398,7 @@ var Result = CreateClass({
 
                 for (var key in charaDetail) {
                     if (charaDetail[key].length > 0) {
-                        res.push(<tr key={"chara-result-"+key}>
+                        res.push(<tr key={"chara-result-" + key}>
                             <td colSpan="3">
                                 <span className="text-info">{key}</span>
                             </td>
