@@ -430,7 +430,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                                 <td>
                                     <CriticalBuffList locale={locale}
-                                        onBlur={this.handleOnBlur.bind(this)}
+                                        onBlur={this.handleOnBlur}
                                         onCountChange={(count) => this.setState({personalCriticalBuffCount: count})}
                                         label="personalCriticalBuff"
                                         criticalArray={this.state.personalCriticalBuff}
@@ -770,7 +770,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                             <td>
                                 <CriticalBuffList locale={locale}
-                                    onBlur={this.handleOnBlur.bind(this)}
+                                    onBlur={this.handleOnBlur}
                                     onCountChange={(count) => this.setState({criticalBuffCount: count})}
                                     label="criticalBuff"
                                     criticalArray={this.state.criticalBuff}
