@@ -178,6 +178,22 @@ var CharaList = CreateClass({
             }
         }
     },
+    handleOnCopy: function (id, state) {
+        if (id < this.props.charaNum - 1) {
+            // Place the state to be copied in arrayForCopy,
+            // Make it read by componentWillReceiveProps
+            var newArrayForCopy = this.state.arrayForCopy;
+            newArrayForCopy[id + 1] = JSON.parse(JSON.stringify(state));
+            this.setState({arrayForCopy: newArrayForCopy});
+
+            var newcharalist = this.state.charalist;
+            newcharalist[id + 1] = JSON.parse(JSON.stringify(state));
+            this.setState({charalist: newcharalist});
+
+            // Propagate change to Root
+            this.props.onChange(newcharalist, false);
+        }
+    },
     render: function () {
         var locale = this.props.locale;
         var charas = this.state.charas;
@@ -194,6 +210,7 @@ var CharaList = CreateClass({
         var dataForLoad = this.props.dataForLoad;
         var arrayForCopy = this.state.arrayForCopy;
         var copyCompleted = this.copyCompleted;
+        var hCopy = this.handleOnCopy;
 
         // for view
         var panel_style = {"textAlign": "left"};
@@ -223,6 +240,7 @@ var CharaList = CreateClass({
                                         key={c}
                                         onChange={hChange}
                                         onRemove={handleOnRemove}
+                                        onCopy={hCopy}
                                         onMoveUp={handleMoveUp}
                                         onMoveDown={handleMoveDown}
                                         id={ind}
@@ -438,6 +456,9 @@ var Chara = CreateClass({
     },
     clickRemoveButton: function (e) {
         this.props.onRemove(this.props.id, this.getInitialState())
+    },
+    clickCopyButton: function (e, state) {
+        this.props.onCopy(this.props.id, this.state)
     },
     clickMoveUp: function (e) {
         this.props.onMoveUp(this.props.id)
@@ -911,11 +932,13 @@ var Chara = CreateClass({
                     </tbody>
                 </table>
                 <ButtonGroup style={{"width": "100%"}}>
-                    <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i
+                    <Button bsStyle="default" style={{"width": "25%", "margin": "2px 0 2px 0"}} onClick={this.clickMoveUp}><i
                         className="fa fa-angle-double-up" aria-hidden="true"/>{intl.translate("前へ", locale)}</Button>
-                    <Button bsStyle="danger" style={{"width": "50%", "margin": "2px 0 2px 0"}}
+                    <Button bsStyle="danger" style={{"width": "25%", "margin": "2px 0 2px 0"}}
                             onClick={this.clickRemoveButton}>{intl.translate("削除", locale)}</Button>
-                    <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0 2px 0"}}
+                    <Button bsStyle="info" style={{"width": "25%", "margin": "2px 0px 2px 0px"}}
+                            onClick={this.clickCopyButton}>{intl.translate("下にコピー", locale)}</Button>
+                    <Button bsStyle="default" style={{"width": "25%", "margin": "2px 0 2px 0"}}
                             onClick={this.clickMoveDown}><i className="fa fa-angle-double-down"
                                                             aria-hidden="true"/>{intl.translate("後へ", locale)}
                     </Button>
