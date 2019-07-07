@@ -493,6 +493,24 @@
         margin-left: 5%;
         margin-right: 5%;
     }
+    
+    .heading {
+        margin: 0;
+        font-size: 24px;
+        border-bottom: solid;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+    
+    .sentence {
+        margin: 0;
+        font-size: 14px;
+    }
+    
+    .enhance {
+        background: linear-gradient(transparent 75%, #ffff66 75%);
+        font-weight: bold;
+    }
 
     .hpChart.fade.in.modal .modal-dialog {
         margin-left: 5%;
