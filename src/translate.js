@@ -316,6 +316,16 @@ var multiLangData = {
         "ja": "TA率が上がります。各キャラの基礎TA率に加算されます。四天刃(30%)、エタラブ(35%)など。",
         "zh": "TA率上升。加在每个角色的基础DA率上。",
     },
+    "効果量": {
+        "en": "Amount",
+        "ja": "効果量",
+        "zh": "Amount",
+    },
+    "追加ダメージXA": { // additionalDamageXA
+        "en": "Bonus DMG XA",
+        "ja": "連撃時追加ダメージ",
+        "zh": "追加伤害 XA",
+    },
     "追加ダメージ": {
         "en": "Bonus DMG", //a.k.a: additionalDamage
         "ja": "追加ダメージ",

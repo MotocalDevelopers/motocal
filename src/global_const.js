@@ -2249,13 +2249,13 @@ var supportAbilities = {
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
         "range": "own",
-        "additionalDamageXA": [0.8, 0.3, 0.0]
+        "value": [0.8, 0.3, 0.0]
     },
     "Revion_kishi_sanshimai": {
         "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
         "range": "own",
-        "additionalDamageXA": [0.0, 0.0, 0.15]
+        "value": [0.0, 0.0, 0.15]
     },
     "element_buff_boost_damageUP_own_10": {
         "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
