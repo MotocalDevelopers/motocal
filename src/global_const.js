@@ -2239,12 +2239,6 @@ var supportAbilities = {
         "range": "own",
         "value": 0.30
     },
-    "fumetsu_no_mikiri": {
-        "name": "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))",
-        "type": "fumetsu_no_mikiri",
-        "range": "own",
-        "value": 0.0,
-    },
     "chikara_atsu_no_ha": {
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
@@ -2263,11 +2257,6 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10,
     },
-    "tousou_no_chishio": {
-        "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
-        "type": "tousou_no_chishio",
-        "range": "own",
-    },
     "critical_cap_up_light_3": {
         "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
         "type": "critical_cap_up",
@@ -2280,12 +2269,6 @@ var supportAbilities = {
         "range": range.own,
         "value": 0.10,
     },
-    // "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ >> カードキャプター
-    //     "name": "通常攻撃を行わない。()",
-    //     "type": "no_normal_attack",
-    //     "range": "own",
-    //     "value": true,
-    // },
     "debuff_resistance_up_own_15": {
         "name": "弱体耐性15%UP。(レナ、カルメリーナ)",
         "type": "debuffResistanceBuff",
@@ -2323,6 +2306,23 @@ var supportAbilities = {
         "range": "own",
         "value": 50000
     },
+    // "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ >> カードキャプター
+    //     "name": "通常攻撃を行わない。()",
+    //     "type": "no_normal_attack",
+    //     "range": "own",
+    //     "value": true,
+    // }, // for the following two: https://github.com/MotocalDevelopers/motocal/pull/259#issuecomment-509314539
+    // "fumetsu_no_mikiri": {
+    //     "name": "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))",
+    //     "type": "fumetsu_no_mikiri",
+    //     "range": "own",
+    //     "value": 0.0,
+    // },
+    // "tousou_no_chishio": {
+    //     "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
+    //     "type": "tousou_no_chishio",
+    //     "range": "own",
+    // },
 };
 
 // exports

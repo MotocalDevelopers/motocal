@@ -198,9 +198,9 @@ supportAbilist["ougiCapUP_100"] = {
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
-supportAbilist["fumetsu_no_mikiri"] = {
-    u"不滅の見切り"
-}
+# supportAbilist["fumetsu_no_mikiri"] = {
+#     u"不滅の見切り"
+# }
 supportAbilist["aegisUP_30"] = {
     u"護国の双肩"
 }
@@ -250,9 +250,9 @@ supportAbilist["element_buff_boost_damageUP_own_10"] = {
 #     u"優しい心",
 #     u"カードキャプター"
 # }
-supportAbilist["tousou_no_chishio"] = {
-    u"闘争の血潮"
-}
+# supportAbilist["tousou_no_chishio"] = {
+#     u"闘争の血潮"
+# }
 supportAbilist["debuff_resistance_up_own_15"] = {
     u"ユニバーサルスター",
     u"魔生花の楔"
