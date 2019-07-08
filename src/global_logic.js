@@ -677,6 +677,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var expectedOugiGage = ougiGageBuff;
         expectedOugiGage *= uplift + (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0));
         
+        if (key == "Djeeta") {
+            expectedOugiGage += ougiGageBuff * (taRate * buff["masterBonusOugiGage"] * 3 + (1.0 - taRate) * (daRate * buff["masterBonusOugiGage"] * 2 + (1.0 - daRate) * buff["masterBonusOugiGage"]));
+        }
+            
         var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * ougiGageBuff;
         var ougiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
         var minimumTurn = Math.ceil(ougiGage / ((uplift + 37.0) * ougiGageBuff));
@@ -1380,6 +1384,7 @@ module.exports.getTotalBuff = function (prof) {
         masterDA: 0.0,
         masterTA: 0.0,
         masterDamageLimit: 0.0,
+        masterBonusOugiGage: 0.0,
         normal: 0.0,
         element: 0.0,
         other: 0.0,
@@ -1416,6 +1421,7 @@ module.exports.getTotalBuff = function (prof) {
     if (!isNaN(prof.masterBonusDA)) totalBuff["masterDA"] += 0.01 * parseInt(prof.masterBonusDA);
     if (!isNaN(prof.masterBonusTA)) totalBuff["masterTA"] += 0.01 * parseInt(prof.masterBonusTA);
     if (!isNaN(prof.masterBonusDamageLimit)) totalBuff["masterDamageLimit"] += 0.01 * parseInt(prof.masterBonusDamageLimit);
+    if (!isNaN(prof.masterBonusOugiGage)) totalBuff["masterBonusOugiGage"] += parseInt(prof.masterBonusOugiGage);
     if (!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
     if (!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseFloat(prof.daBuff);
     if (!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseFloat(prof.taBuff);
