@@ -712,7 +712,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["EXLB"]["WED"]) {
             damageLimit += 0.05;
         }
-        var criticalDamageLimit = damageLimit + effectiveCriticalLimit;
         // Mystery damage upper limit UP = whole buff + individual buff + skill + damage upper limit UP minutes
         // The upper limit of skill of mystery damage is 30%
         var ougiDamageLimitByExceed = Math.min(0.30, totals[key]["exceedOugiDamageLimit"]);
@@ -728,23 +727,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["EXLB"]["WED"]) {
             ougiDamageLimit += 0.05;
         }
-        var criticalOugiDamageLimit = ougiDamageLimit + effectiveCriticalLimit;
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
         chainDamageLimit = Math.min(0.50, chainDamageLimit);
         
-
-        // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
-        var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, additionalDamage, damageUP, criticalDamageLimit);
-
-        // Use damage in case of no critical to correct skill expectation
-        var damageWithoutCritical = module.exports.calcDamage(summedAttack, totalSkillCoeff, 1.0, prof.enemyDefense, prof.defenseDebuff, enemyResistance, additionalDamage, damageUP, damageLimit);
-
-        // Expected critical skill ratio
-        var effectiveCriticalRatio = damage / damageWithoutCritical;
-
-        // Comprehensive attack power * Expected skill expectation * Multi-shot expected value
-        var sougou_kaisuu_gikou = parseInt(totalAttack * criticalRatio * expectedAttack);
 
         // Mystery damage = magnification * (1 + mystery damage buff frame) * (1 + mystery damage rise skill frame)
         // Save only the coefficient part (100% + delta of delta) for common processing
@@ -778,11 +764,27 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             chainDamageLimit += buff["zenithChainDamageLimit"];
         }
 
+        var criticalDamageLimit = damageLimit + effectiveCriticalLimit;
+        var criticalOugiDamageLimit = ougiDamageLimit + effectiveCriticalLimit;
+
         var debuffResistanceByHigo = 0.01 * Math.min(30, totals[key]["debuffResistance"] * totalSummon["zeus"]);
         //Other than Higo skill category.
         var debuffResistanceByNormal = 0.01 * totals[key]["cosmosDebuffResistance"]; 
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
         debuffResistance += 100 * totals[key]["debuffResistanceBuff"];
+
+
+        // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
+        var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, additionalDamage, damageUP, criticalDamageLimit);
+
+        // Use damage in case of no critical to correct skill expectation
+        var damageWithoutCritical = module.exports.calcDamage(summedAttack, totalSkillCoeff, 1.0, prof.enemyDefense, prof.defenseDebuff, enemyResistance, additionalDamage, damageUP, damageLimit);
+
+        // Expected critical skill ratio
+        var effectiveCriticalRatio = damage / damageWithoutCritical;
+
+        // Comprehensive attack power * Expected skill expectation * Multi-shot expected value
+        var sougou_kaisuu_gikou = parseInt(totalAttack * criticalRatio * expectedAttack);
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, totals[key]["ougiRatio"], ougiDamageUP, damageUP, criticalOugiDamageLimit, ougiFixedDamage);
         var chainBurstSupplemental = 0;
