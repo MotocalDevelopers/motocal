@@ -2653,6 +2653,11 @@ var multiLangData = {
         "ja": "マグナ乱舞(中)",
         "zh": "方阵乱舞(中)",
     },
+    "マグナ軍神": {
+        "en": "Magna Heroism",
+        "ja": "マグナ軍神",
+        "zh": "方阵军神",
+    },
     "マグナ軍神II": {
         "en": "Magna Heroism II",
         "ja": "マグナ軍神II",
