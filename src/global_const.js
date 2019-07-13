@@ -867,7 +867,7 @@ var skilltypes = {
     "magnaCriticalL": {name: "マグナ技巧(大)", type: "magnaCritical", amount: "L"},
     "magnaSetsunaS": {name: "マグナ刹那(小)", type: "magnaSetsuna", amount: "S"},
     "magnaSetsuna": {name: "マグナ刹那(中)", type: "magnaSetsuna", amount: "M"},
-    "magnaGunshinS": {name: "マグナ軍神II", type: "magnaGunshin", amount: "S"}, //For compatibility
+    "magnaGunshinS": {name: "マグナ軍神", type: "magnaGunshin", amount: "S"}, //unused
     "magnaGunshinM": {name: "マグナ軍神II", type: "magnaGunshin", amount: "M"},
     "magnaHissatsuM": {name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M"},
     "magnaKenbuL": {name: "マグナ拳武(大)", type: "magnaKenbu", amount: "L"},
@@ -1871,7 +1871,7 @@ var skillAmounts = {
     },
     "magnaGunshin": {
         //only DA effect
-        "S": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0],
+        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5],
         "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
     },
     "tuiga": {
