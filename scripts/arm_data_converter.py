@@ -510,13 +510,19 @@ skillnamelist["magnaM"] = {
     u"黒霧方陣・攻刃": "dark"
 }
 
-skillnamelist["magnaHPM"] = {
+skillnamelist["magnaHPS"] = {
     u"機炎方陣・守護": "fire",
     u"海神方陣・守護": "water",
     u"創樹方陣・守護": "earth",
     u"嵐竜方陣・守護": "wind",
     u"騎解方陣・守護": "light",
-    u"黒霧方陣・守護": "dark"
+    u"黒霧方陣・守護": "dark",
+    u"機炎方陣・不可侵": "fire",
+    u"海神方陣・不可侵": "water",
+    u"創樹方陣・不可侵": "earth",
+    u"嵐竜方陣・不可侵": "wind",
+    u"騎解方陣・不可侵": "light",
+    u"黒霧方陣・不可侵": "dark"
 }
 
 skillnamelist["magnaKatsumiM"] = {
@@ -673,16 +679,6 @@ skillnamelist["magnaCriticalM"] = {
     u"嵐竜方陣・意志": "wind",
     u"騎解方陣・意志": "light",
     u"黒霧方陣・意志": "dark"
-}
-
-# Magna hp up (S)
-skillnamelist["magnaHPS"] = {
-    u"機炎方陣・不可侵": "fire",
-    u"海神方陣・不可侵": "water",
-    u"創樹方陣・不可侵": "earth",
-    u"嵐竜方陣・不可侵": "wind",
-    u"騎解方陣・不可侵": "light",
-    u"黒霧方陣・不可侵": "dark"
 }
 
 skillnamelist["magnaHissatsuM"] = {
