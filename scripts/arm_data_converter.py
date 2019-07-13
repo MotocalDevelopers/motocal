@@ -801,6 +801,7 @@ skillnamelist["strengthL"] = {
     u"パワーボム": "earth",
     u"フラッドオブアームズ": "water",
     u"デヴァイサー": "wind",
+    u"シャークアタック！": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {

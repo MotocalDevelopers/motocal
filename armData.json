@@ -11921,6 +11921,24 @@
         "imageURL": "./imgs/1040310200.png",
         "en": "Claidheamh Soluis"
     },
+    "シャークバイト": {
+        "ja": "シャークバイト",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "dark",
+        "skill3": "non",
+        "element3": "dark",
+        "minhp": 25,
+        "minattack": 340,
+        "hp": 156,
+        "attack": 2103,
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040310900.png",
+        "en": "Shark Bite"
+    },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
         "element": "wind",
