@@ -130,7 +130,6 @@ function favCharaContains(favs, chara, keys=FAV_KEYS) {
 }
 
 
-// no favContains, it takes fav1,fav2 different interfaces.
 module.exports.favContains = favContains;
 module.exports.typeContains = _contains;
 module.exports.raceContains = _contains;

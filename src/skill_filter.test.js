@@ -281,7 +281,7 @@ describe('chara check', () => {
         });
 
         // XXX: Production code must not do such "none" checking,
-        // it's useful only for utility script check "non" fields, require "none" matching.
+        // it's useful only for utility script check "none" fields, require "none" matching.
         // but useless for wildcard (it's race case)
     });
 

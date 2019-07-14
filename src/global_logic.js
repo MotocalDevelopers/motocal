@@ -2547,7 +2547,6 @@ module.exports.treatSupportAbility = function (totals, chara) {
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
                             // Draph, Unknown and Primal characters only (Fortified Vigor)
-                            // XXX: NO wildcard check?
                             if (bahaRaceContains(["doraf"], totals[key2]["race"])) {
                                 totals[key2]["normalBuff"] += support.value;
                             }
