@@ -9329,6 +9329,24 @@
         "imageURL": "./imgs/1040016600.png",
         "en": "[4★] Sword on the Cob"
     },
+    "アイン・ソフ": {
+        "ja": "アイン・ソフ",
+        "element": "water",
+        "type": "sword",
+        "skill1": "normalRasetsuM",
+        "skill2": "normalHiouL",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 38,
+        "minattack": 409,
+        "hp": 202,
+        "attack": 2577,
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040018700.png",
+        "en": "Ain Soph"
+    },
     "アゾット": {
         "ja": "アゾット",
         "element": "dark",
@@ -10032,6 +10050,24 @@
         "attacklv100": 2360,
         "imageURL": "./imgs/1040111100.png",
         "en": "[4★] Gandring"
+    },
+    "レター": {
+        "ja": "レター",
+        "element": "light",
+        "type": "dagger",
+        "skill1": "normalM",
+        "skill2": "normalKatsumiM",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 40,
+        "minattack": 399,
+        "hp": 235,
+        "attack": 2412,
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040111200.png",
+        "en": "Sharp Letter"
     },
     "クレティネ": {
         "ja": "クレティネ",
@@ -11884,6 +11920,24 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040310200.png",
         "en": "Claidheamh Soluis"
+    },
+    "シャークバイト": {
+        "ja": "シャークバイト",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "dark",
+        "skill3": "non",
+        "element3": "dark",
+        "minhp": 25,
+        "minattack": 340,
+        "hp": 156,
+        "attack": 2103,
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040310900.png",
+        "en": "Shark Bite"
     },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
