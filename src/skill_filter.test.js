@@ -12,7 +12,7 @@ const {
     favCharaContains,
     typeCharaContains,
 
-    // _contains, // no need, typeContains,raceContains are aliass
+    // _contains, // no need, typeContains,raceContains are alias
     _hasWildCardSupport,
     _withWildCardCheck,
     _lookupBahaRaces,
@@ -69,7 +69,7 @@ describe('internal utility functions', () => {
 
 describe('low layer funcs', () => {
     describe('#typeContains', function() {
-        // it's internally same with hraceContains alias of _contains
+        // it's internally same with raceContains alias of _contains
         // here test different use case for "type"
 
         it('should be attack', () => {
