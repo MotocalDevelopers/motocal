@@ -982,6 +982,17 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
+    "royal_path": {name: "王道を征く者", type: "royal_path", amount: "I"},
+    "royal_pathII": {name: "王道を征く者II", type: "royal_path", amount: "II"},
+    "victory_oath": {name: "必勝の誓い", type: "victory_oath", amount: 2.0},
+    "stab_kill": {name: "一刺一殺", type: "stab_kill", amount: "I"},
+    "stab_killII": {name: "一刺一殺II", type: "stab_kill", amount: "II"},
+    "battle_god": {name: "戦神の打擲", type: "battle_god", amount: "I"},
+    "battle_godII": {name: "戦神の打擲II", type: "battle_god", amount: "II"},
+    "break_everything": {name: "万物を砕く剛技", type: "break_everything", amount: "I"},
+    "break_everythingII": {name: "万物を砕く剛技II", type: "break_everything", amount: "II"},
+    "scarlet_snake": {name: "戮蛇の神刀", type: "scarlet_snake", amount: "I"},
+    "scarlet_snakeII": {name: "戮蛇の神刀II", type: "scarlet_snake", amount: "II"},
 };
 
 var cosmosSkills = {
@@ -2402,7 +2413,77 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2Detail"],
         selectors: ["victorious_calamitous_covenant"],
         defaultKeys: ["0"],
-    }
+    },
+    "エクスカリバー": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "ゲイボルグ": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch_all", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "ダマスカスナイフ": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch_all", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "カドゥケウス": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "ミョルニル": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "フライクーゲル": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "方天画戟": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch_all", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "ヘラクレス": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "ウルリクムミ": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
+    "天羽々斬": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [1, "light"],
+    },
 };
 
 

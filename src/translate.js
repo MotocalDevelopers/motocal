@@ -3188,6 +3188,61 @@ var multiLangData = {
         "ja": "天司の祝福III",
         "zh": "天司的祝福III",
     },
+    "王道を征く者": {
+        "en": "Rightway Pathfinder",
+        "ja": "王道を征く者",
+        "zh": "王道を征く者",
+    },
+    "王道を征く者II": {
+        "en": "Rightway Pathfinder II",
+        "ja": "王道を征く者II",
+        "zh": "王道を征く者II",
+    },
+    "必勝の誓い": {
+        "en": "Victory's Promise",
+        "ja": "必勝の誓い",
+        "zh": "必勝の誓い",
+    },
+    "一刺一殺": {
+        "en": "One Sting, One Kill",
+        "ja": "一刺一殺",
+        "zh": "一刺一殺",
+    },
+    "一刺一殺II": {
+        "en": "One Sting, One Kill II",
+        "ja": "一刺一殺II",
+        "zh": "一刺一殺II",
+    },
+    "戦神の打擲": {
+        "en": "God of War",
+        "ja": "戦神の打擲",
+        "zh": "戦神の打擲",
+    },
+    "戦神の打擲II": {
+        "en": "God of War II",
+        "ja": "戦神の打擲II",
+        "zh": "戦神の打擲II",
+    },
+    "万物を砕く剛技": {
+        "en": "Apocalyptic Power",
+        "ja": "万物を砕く剛技",
+        "zh": "万物を砕く剛技",
+    },
+    "万物を砕く剛技II": {
+        "en": "Apocalyptic Power II",
+        "ja": "万物を砕く剛技II",
+        "zh": "万物を砕く剛技II",
+    },
+    "戮蛇の神刀": {
+        "en": "Slaysnake's Myth",
+        "ja": "戮蛇の神刀",
+        "zh": "戮蛇の神刀",
+    },
+    "戮蛇の神刀II": {
+        "en": "Slaysnake's Myth II",
+        "ja": "戮蛇の神刀II",
+        "zh": "戮蛇の神刀II",
+    },
     "通常上限UP(2.5%)": {
         "en": "Damage Cap UP(2.5%)",
         "ja": "通常上限UP(2.5%)",
