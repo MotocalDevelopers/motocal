@@ -695,7 +695,7 @@ skillnamelist["magnaFukashinS"] = {
     u"創樹方陣・不可侵": "earth",
     u"嵐竜方陣・不可侵": "wind",
     u"騎解方陣・不可侵": "light",
-    u"黒霧方陣・不可侵": "dark",
+    u"黒霧方陣・不可侵": "dark"
 }
 
 skillnamelist["magnaHissatsuM"] = {
