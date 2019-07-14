@@ -13,7 +13,7 @@ const FAV_KEYS = ["fav1", "fav2"];
  * @return {boolean} has wildcard support
  */
 function _hasWildCardSupport(chara, keys=SUPPORT_KEYS) {
-	return keys.some(key => chara[key] === "wildcard");
+    return keys.some(key => chara[key] === "wildcard");
 }
 
 /**
@@ -22,7 +22,7 @@ function _hasWildCardSupport(chara, keys=SUPPORT_KEYS) {
  * @return {function} decorated function with check support for wildcard feature.
  */
 function _withWildCardCheck(func, keys=SUPPORT_KEYS) {
-	return (args, chara) => func(args, chara) || _hasWildCardSupport(chara, keys);
+    return (args, chara) => func(args, chara) || _hasWildCardSupport(chara, keys);
 }
 
 /**
@@ -78,7 +78,7 @@ function bahaRaceCharaContains(skillname, chara, relation=bahamutRelation) {
  * Wrapper function for bahaRaceCharaContains with bahamutFURelation table.
  */
 function bahaFURaceCharaContains(skillname, chara) {
-	return bahaRaceCharaContains(skillname, chara, bahamutFURelation);
+    return bahaRaceCharaContains(skillname, chara, bahamutFURelation);
 }
 
 /**
@@ -116,7 +116,7 @@ function _skip_none_filter(args) {
  *      to avoid "none" === "none" matching.
  */
 function favContains(favs, values) {
-	// console.assert(Array.isArray(values));
+    // console.assert(Array.isArray(values));
     return values.some(val => favs.includes(val));
 }
 
@@ -126,7 +126,7 @@ function favContains(favs, values) {
  * @return {boolean} match chara["fav1"] or chara["fav2"]
  */
 function favCharaContains(favs, chara, keys=FAV_KEYS) {
-	return favContains(favs, _skip_none_filter(keys.map(key => chara[key])));
+    return favContains(favs, _skip_none_filter(keys.map(key => chara[key])));
 }
 
 
