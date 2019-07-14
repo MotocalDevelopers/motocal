@@ -681,18 +681,21 @@ skillnamelist["magnaCriticalM"] = {
 }
 
 skillnamelist["magnaHPS"] = {
-    u"機炎方陣・不可侵": "fire",
-    u"海神方陣・不可侵": "water",
-    u"創樹方陣・不可侵": "earth",
-    u"嵐竜方陣・不可侵": "wind",
-    u"騎解方陣・不可侵": "light",
-    u"黒霧方陣・不可侵": "dark",
     u"機炎方陣・守護\(小\)": "fire",
     u"海神方陣・守護\(小\)": "water",
     u"創樹方陣・守護\(小\)": "earth",
     u"嵐竜方陣・守護\(小\)": "wind",
     u"騎解方陣・守護\(小\)": "light",
     u"黒霧方陣・守護\(小\)": "dark"
+}
+
+skillnamelist["magnaFukashinS"] = {
+    u"機炎方陣・不可侵": "fire",
+    u"海神方陣・不可侵": "water",
+    u"創樹方陣・不可侵": "earth",
+    u"嵐竜方陣・不可侵": "wind",
+    u"騎解方陣・不可侵": "light",
+    u"黒霧方陣・不可侵": "dark",
 }
 
 skillnamelist["magnaHissatsuM"] = {
