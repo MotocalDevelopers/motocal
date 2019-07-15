@@ -1881,7 +1881,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'magnaFukashin') {
                             // - not implement Counter
                             // - HP is 14% at slv15. amount refer normalHP(S)
-                            totals[key]["magna"] += comb[i] * skillAmounts["normalHP"]["S"][slv - 1];
+                            totals[key]["magnaHP"] += comb[i] * skillAmounts["normalHP"]["S"][slv - 1];
                         } else if (stype == 'normalHiou') {
                             totals[key]["ougiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
                         } else if (stype == 'normalHissatsu') {
