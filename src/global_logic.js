@@ -733,7 +733,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (key == "Djeeta") {
             accuracy = accuracy + totals[key]["superAccuracy"];
         }
-
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, additionalDamage, damageUP, damageLimit, accuracy);
 
@@ -929,6 +928,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["magnaTA"] = armTAupMagna;
         coeffs["bahaTA"] = armTAupBaha;
         coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"]) * 100 + armTAupOther;
+
+        coeffs["accuracy"] = accuracy;
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
@@ -3108,13 +3109,8 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newTotalAttack = summedAttack * newTotalSkillCoeff;
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack;
 
-                    var accuracy = 1.0;
-                    if (key == "Djeeta") {
-                        accuracy = accuracy + onedata[key].superAccuracy;
-                    }
-
-                    var newDamage = module.exports.calcDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit, accuracy);
-                    var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit, accuracy);
+                    var newDamage = module.exports.calcDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit, onedata[key].skilldata.accuracy);
+                    var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].skilldata.ougiDamageLimit, onedata[key].ougiFixedDamage);
                     var chainBurstSupplemental = 0;
                     var newDamageWithoutCritical = 0; //just a placeholder. not to be used in any calculation.
                     [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {remainHP: k/100});
@@ -3377,11 +3373,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                         }
                     } else {
                         // Regular attack
-                        var accuracy = 1.0;
-                        if (key == "Djeeta") {
-                            accuracy = accuracy + onedata[key].superAccuracy;
-                        }
-                        var newDamage = module.exports.calcDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit, accuracy);
+                        var newDamage = module.exports.calcDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].skilldata.damageLimit, onedata[key].skilldata.accuracy);
                         if (key == "Djeeta") {
                             ExpectedDamage[t].push(parseInt(newDamage * onedata[key].expectedAttack));
                             AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage / cnt)
