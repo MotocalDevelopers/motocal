@@ -26,7 +26,7 @@ function _withWildCardCheck(func, keys=SUPPORT_KEYS) {
 }
 
 /**
- * base logic for races/types check (but not fab)
+ * base logic for races/types check (but not favs)
  * @param {string|Array<string>} args
  * @param {string} value
  * @return {boolean} value is contained in expected args.
