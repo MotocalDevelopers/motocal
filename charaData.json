@@ -659,6 +659,50 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "サンダルフォン(水着ver)": {
+        "name": "サンダルフォン(水着ver)",
+        "ja": "サンダルフォン(水着ver)",
+        "element": "water",
+        "type": "balance",
+        "race": "seisho",
+        "sex": "male",
+        "fav1": "sword",
+        "fav2": "katana",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "300",
+        "hp": "1500",
+        "minattack": "1500",
+        "attack": "8500",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040224000_01.png",
+        "en": "Sandalphon (Summer)"
+    },
+    "ハールート・マールート(水着ver)": {
+        "name": "ハールート・マールート(水着ver)",
+        "ja": "ハールート・マールート(水着ver)",
+        "element": "light",
+        "type": "balance",
+        "race": "seisho",
+        "sex": "female",
+        "fav1": "dagger",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "300",
+        "hp": "1600",
+        "minattack": "750",
+        "attack": "4000",
+        "baseDA": 1000.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040223000_01.png",
+        "en": "Halluel and Malluel (Summer)"
+    },
     "コルル": {
         "name": "コルル",
         "ja": "コルル",
@@ -1977,7 +2021,7 @@
         "baseTA": 3.0,
         "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040153000_03.png",
-        "en": "Sandalphon"
+        "en": "Sandalphon (Event)"
     },
     "ティアマト": {
         "name": "ティアマト",
@@ -5738,7 +5782,7 @@
         "baseDA": 7.0,
         "baseTA": 3.0,
         "ougiRatio": 3.5,
-        "imageURL": "./charaimgs/3030030000_01.png",
+        "imageURL": "./charaimgs/3030030000_91.png",
         "en": "Jessica (Summer)"
     },
     "ヘルナル(水着ver)": {
@@ -6926,7 +6970,7 @@
         "baseDA": 7.0,
         "baseTA": 3.0,
         "ougiRatio": 3.5,
-        "imageURL": "./charaimgs/3030084000_01.png",
+        "imageURL": "./charaimgs/3030084000_91.png",
         "en": "Tanya (Summer)"
     },
     "オイゲン(水着ver)": {
