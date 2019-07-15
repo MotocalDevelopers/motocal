@@ -868,6 +868,7 @@ var skilltypes = {
     "magnaSetsunaS": {name: "マグナ刹那(小)", type: "magnaSetsuna", amount: "S"},
     "magnaSetsuna": {name: "マグナ刹那(中)", type: "magnaSetsuna", amount: "M"},
     "magnaGunshinS": {name: "マグナ軍神(小)", type: "magnaGunshin", amount: "S"},
+    "magnaGunshinM": {name: "マグナ軍神(中)", type: "magnaGunshin", amount: "M"},
     "magnaHissatsuM": {name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M"},
     "magnaKenbuL": {name: "マグナ拳武(大)", type: "magnaKenbu", amount: "L"},
     "magnaJojutsuL": {name: "マグナ杖術(大)", type: "magnaJojutsu", amount: "L"},
@@ -1870,7 +1871,8 @@ var skillAmounts = {
     },
     "magnaGunshin": {
         //only DA effect
-        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]
+        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5],
+        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
     },
     "tuiga": {
         //Xuanwu Shellfists/玄武拳の霧氷の追牙・肆

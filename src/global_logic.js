@@ -676,7 +676,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiGageBuff = buff["ougiGage"] + totals[key]["ougiGageBuff"] + (0.01 * totals[key]["LB"]["OugiGageBuff"]) - totals[key]["ougiDebuff"];
         var expectedOugiGage = ougiGageBuff;
         expectedOugiGage *= uplift + (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0));
-        
+        expectedOugiGage = expectedOugiGage < 0 ? 0 : Math.max(1.0, expectedOugiGage);
+
         var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * ougiGageBuff;
         var ougiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
         var minimumTurn = Math.ceil(ougiGage / ((uplift + 37.0) * ougiGageBuff));
@@ -1875,7 +1876,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             totals[key]["magnaLesserSante"] += comb[i] * skillAmounts["magnaRanbu"][amount][slv - 1];
                         } else if (stype == 'magnaGunshin') {
-                            totals[key]["magnaHP"] += comb[i] * skillAmounts["magnaHP"][amount][slv - 1];
+                            totals[key]["magnaHP"] += comb[i] * skillAmounts["normalHP"]["S"][slv - 1];
                             totals[key]["magnaNite"] += comb[i] * skillAmounts["magnaGunshin"][amount][slv - 1];
                         } else if (stype == 'normalHiou') {
                             totals[key]["normalOugiDamage"] += comb[i] * skillAmounts["normalHiou"][amount][slv - 1];
