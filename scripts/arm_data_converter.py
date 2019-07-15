@@ -511,8 +511,13 @@ skillnamelist["magnaM"] = {
 }
 
 # Magna hp up (S)
-# Reserve the key entry for skill replace order 守護(小)
 skillnamelist["magnaHPS"] = {
+    u"機炎方陣・守護\(小\)": "fire",
+    u"海神方陣・守護\(小\)": "water",
+    u"創樹方陣・守護\(小\)": "earth",
+    u"嵐竜方陣・守護\(小\)": "wind",
+    u"騎解方陣・守護\(小\)": "light",
+    u"黒霧方陣・守護\(小\)": "dark"
 }
 
 skillnamelist["magnaHPM"] = {
@@ -678,15 +683,6 @@ skillnamelist["magnaCriticalM"] = {
     u"嵐竜方陣・意志": "wind",
     u"騎解方陣・意志": "light",
     u"黒霧方陣・意志": "dark"
-}
-
-skillnamelist["magnaHPS"] = {
-    u"機炎方陣・守護\(小\)": "fire",
-    u"海神方陣・守護\(小\)": "water",
-    u"創樹方陣・守護\(小\)": "earth",
-    u"嵐竜方陣・守護\(小\)": "wind",
-    u"騎解方陣・守護\(小\)": "light",
-    u"黒霧方陣・守護\(小\)": "dark"
 }
 
 skillnamelist["magnaFukashinS"] = {
