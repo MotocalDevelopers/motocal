@@ -40,10 +40,10 @@ var {Button} = require('react-bootstrap');
         const text = buttonText.replace('{step}', step);
 
         return [
-            <ul {...(className ? {className: className} : {})}>
+            <ul key={"changelog-ul"} {...(className ? {className: className} : {})}>
                 {children.slice(start, length)}
             </ul>,
-            <Button variant="link" onClick={this.handleClick}
+            <Button key={"changelog-button"} variant="link" onClick={this.handleClick}
                  {...(length >= children.length ? {disabled: 'true'} : {})}>
                 {text}
             </Button>

@@ -383,6 +383,7 @@ var Profile = CreateClass({
                         [
 
                     <TextWithTooltip tooltip={intl.translate("残HP割合説明(ジータのみ)", locale)}
+                                     key={"remainHP"}
                                      id={"tooltip-remain-hp-djeeta-detail"}>
                         <tr>
                             <th className="bg-primary">
@@ -430,7 +431,7 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                                 <td>
                                     <CriticalBuffList locale={locale}
-                                        onBlur={this.handleOnBlur.bind(this)}
+                                        onBlur={this.handleOnBlur}
                                         onCountChange={(count) => this.setState({personalCriticalBuffCount: count})}
                                         label="personalCriticalBuff"
                                         criticalArray={this.state.personalCriticalBuff}
@@ -655,7 +656,7 @@ var Profile = CreateClass({
 
                     {this.state.openLBlist ?
                         [
-                    <TextWithTooltip tooltip={intl.translate("LB 属性攻撃の説明", locale)} id={"tooltip-critical-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("LB 属性攻撃の説明", locale)} id={"tooltip-critical-zenith-detail"} key={"zenithElementBonus"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("LB 属性攻撃", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithElementBonus}
@@ -664,7 +665,7 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>,
 
-                    <TextWithTooltip tooltip={intl.translate("LB チェンバの説明", locale)} id={"tooltip-chaindamage-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("LB チェンバの説明", locale)} id={"tooltip-chaindamage-zenith-detail"} key={"zenithChainDamageBonus"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("LB チェンバ", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithChainDamageBonus}
@@ -673,7 +674,7 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>,
 
-                    <TextWithTooltip tooltip={intl.translate("LB チェンバ上限の説明", locale)} id={"tooltip-chaindamagelimit-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("LB チェンバ上限の説明", locale)} id={"tooltip-chaindamagelimit-zenith-detail"} key={"zenithChainDamageLimitBonus"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("LB チェンバ上限", locale)}</th>
                             <td><FormControl componentClass="select" value={this.state.zenithChainDamageLimitBonus}
@@ -682,7 +683,7 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>,
 
-                    <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"} key={"zenithBonus1"}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("得意武器攻撃1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})
@@ -693,7 +694,7 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>,
 
-                    <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"} key={"zenithBonus2"}>
                         <tr>
                             <th className="bg-primary">
                                 {intl.translate("得意武器攻撃2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})
@@ -770,7 +771,7 @@ var Profile = CreateClass({
                             <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                             <td>
                                 <CriticalBuffList locale={locale}
-                                    onBlur={this.handleOnBlur.bind(this)}
+                                    onBlur={this.handleOnBlur}
                                     onCountChange={(count) => this.setState({criticalBuffCount: count})}
                                     label="criticalBuff"
                                     criticalArray={this.state.criticalBuff}

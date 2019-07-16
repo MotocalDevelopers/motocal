@@ -665,6 +665,16 @@ skillnamelist["magnaMusouM"] = {
     u"黒霧方陣・無双": "dark"
 }
 
+# Medium hp up + double atk rate up
+skillnamelist["magnaGunshinM"] = {
+    u"機炎方陣・軍神II": "fire",
+    u"海神方陣・軍神II": "water",
+    u"創樹方陣・軍神II": "earth",
+    u"嵐竜方陣・軍神II": "wind",
+    u"騎解方陣・軍神II": "light",
+    u"黒霧方陣・軍神II": "dark"
+}
+
 # Small hp up + double atk rate up
 skillnamelist["magnaGunshinS"] = {
     u"機炎方陣・軍神": "fire",
@@ -810,6 +820,7 @@ skillnamelist["strengthL"] = {
     u"パワーボム": "earth",
     u"フラッドオブアームズ": "water",
     u"デヴァイサー": "wind",
+    u"シャークアタック！": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {
