@@ -1379,7 +1379,7 @@ var Result = CreateClass({
                                     <span key={key + "-" + skillKey}>
                                             <span
                                                 className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
-                                        {(m.data[key][skillKey]).toFixed(1)}&nbsp;
+                                        {parseFloat(m.data[key][skillKey]).toFixed(1)}&nbsp;
                                         </span>
                                 );
                             }
