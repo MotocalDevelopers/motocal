@@ -532,6 +532,11 @@ var multiLangData = {
         "ja": "奥義倍率",
         "zh": "奥义倍率",
     },
+    "奥義追加ダメージ(無属性固定)": {
+        "en": "C.A. Bonus DMG (Plain)",
+        "ja": "奥義追加ダメージ(無属性固定)",
+        "zh": "C.A. Bonus DMG (Plain)",
+    },
     "ジータさん基礎TA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
         "ja": "ジータさんの基礎TA率を設定します。\nジョブを変更すると自動的に切り替わります。",
@@ -1653,6 +1658,11 @@ var multiLangData = {
         "en": "Stamina Perk",
         "ja": "LB渾身",
         "zh": "LB渾身",
+	},
+    "奥義固定ダメージ": {
+        "en": "C.A. Fixd DMG",
+        "ja": "奥義固定",
+        "zh": "奥義固定",
 	},
 	
 	

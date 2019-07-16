@@ -1372,6 +1372,22 @@ var Result = CreateClass({
                         pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "default");
                         pushSkillInfoElement3("uplift", "高揚", "default");
 
+                        var ougiInfo = [];
+                        var pushOugiInfo = (skillKey, label, labelType = "primary") => {
+                            if (m.data[key][skillKey] != 0.0) {
+                                ougiInfo.push(
+                                    <span key={key + "-" + skillKey}>
+                                            <span
+                                                className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                        {(m.data[key][skillKey]).toFixed(1)}&nbsp;
+                                        </span>
+                                );
+                            }
+                        };
+                        pushOugiInfo("ougiRatio", "奥義倍率", "warning");
+                        pushOugiInfo("ougiFixedDamage", "奥義固定ダメージ", "warning");
+                        pushOugiInfo("ougiBonusPlainDamage", "奥義追加ダメージ(無属性固定)", "warning");
+
                         charaDetail[key].push(<div key={key + "-mainSkillInfo"}>{mainSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-criticalInfo"}
@@ -1379,6 +1395,7 @@ var Result = CreateClass({
                         charaDetail[key].push(<div key={key + "-supplementalDamageInfo"}
                                                    style={{"margin": "5px 0px"}}>{supplementalDamageInfo}</div>);
                         charaDetail[key].push(<div key={key + "-otherSkillInfo"}>{otherSkillInfo}</div>);
+                        charaDetail[key].push(<div key={key + "-ougiInfo"}>{ougiInfo}</div>);
                     }
                 }
 
