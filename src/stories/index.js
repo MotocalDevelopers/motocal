@@ -17,6 +17,7 @@ import { Chara } from '../chara';
 import { Arm } from '../armlist';
 import { Result } from '../result';
 import Notice from '../notice';
+import { CriticalBuffList } from '../components';
 
 
 var localeSelector = (groupId) => select('locale', ['ja', 'en', 'zh'], 'ja', groupId);
@@ -35,6 +36,24 @@ storiesOf('How To', module)
     .add('Nite(DA)', () => <NiteHowTo />)
     .add('HP Chart', () => <HPChartHowTo show="true" />)
     .add('Simulator', () => <SimulatorHowTo />);
+
+storiesOf('Components', module)
+    .addDecorator(centered)
+    .addDecorator(withKnobs)
+    .add('CriticalBuffList (maxCount=5)', () =>
+        <CriticalBuffList locale={localeSelector('criticalBuffListA-locale')}
+            onBlur={action('onBlur')}
+            onCountChange={action('onCountChange')}
+            label="criticalBuffA"
+            criticalArray={[{value: 0.5, attackRatio: 0.5}]}
+            maxCount={5} />)
+    .add('CriticalBuffList (truncate=false)', () =>
+        <CriticalBuffList locale={localeSelector('criticalBuffListB-locale')}
+            onBlur={action('onBlur')}
+            onCountChange={action('onCountChange')}
+            label="criticalBuffB"
+            criticalArray={[]}
+            truncate={false} />);
 
 storiesOf('Notice', module)
     .addDecorator(withKnobs)

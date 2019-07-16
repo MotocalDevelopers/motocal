@@ -261,6 +261,31 @@ var multiLangData = {
         "ja": "別枠乗算のバフ(もし別枠バフが2つ以上ある場合用)",
         "zh": "独立乘算Buff(独立Buff有2个以上时用)",
     },
+    "クリティカルバフ": {
+        "en": "Critical Buff",
+        "ja": "クリティカルバフ",
+        "zh": "Critical Buff",
+    },
+    "クリティカルバフ説明": {
+        "en": "Critical Buffs.",
+        "ja": "クリティカルバフ",
+        "zh": "Critical Buffs.",
+    },
+    "発動率": {
+        "en": "Hit Rate ",
+        "ja": "発動率 ",
+        "zh": "Hit Rate ",
+    },
+    "倍率": {
+        "en": "Damage Multiplier ",
+        "ja": "倍率 ",
+        "zh": "Damage Multiplier ",
+    },
+    "数": {
+        "en": "Count:",
+        "ja": "数",
+        "zh": "Count:",
+    },
     "HPバフ": {
         "en": "HP Buff",
         "ja": "HPバフ",
@@ -461,6 +486,31 @@ var multiLangData = {
         "en": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
+    },
+    "特殊効果": {
+        "en": "Special Effects",
+        "ja": "特殊効果",
+        "zh": "Special Effects",
+    },
+    "烈日の楽園": {
+        "en": "Sun-Touched Paradise",
+        "ja": "烈日の楽園",
+        "zh": "烈日の楽園",
+    },
+    "烈日の楽園説明": {
+        "en": "All Allies gain 20% unique buff, and can deal critical hits regardless of element. (Alanaan)",
+        "ja": "対象の属性に関係なく味方のクリティカルが発生し、味方の攻撃力上昇 別枠乗算20% (アラナン)",
+        "zh": "All Allies gain 20% unique buff, and can deal critical hits regardless of element. (Alanaan)",
+    },
+    "アクティブ": {
+        "en": ": Active",
+        "ja": ": アクティブ",
+        "zh": ": Active",
+    },
+    "無効": {
+        "en": ": Inactive",
+        "ja": ": 無効",
+        "zh": ": Inactive",
     },
     "敵非有利耐性": {
         "en": "Enemy Resistance",
@@ -848,6 +898,11 @@ var multiLangData = {
         "en": "Input the number of C.A. Chain. (1~4)",
         "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 → 0倍\n 2 → 1.25倍\n 3 → 1.33…倍\n 4 → 1.5倍",
         "zh": "设定Chain数(Chain Burst的系数会变化)",
+    },
+    "弱い編成を隠す": {
+        "en": "Hide Weaker Grids",
+        "ja": "弱い編成を隠す",
+        "zh": "Hide Weaker Grids"
     },
     "ジータさんのみ": {
         "en": "(Player only)",
@@ -2066,6 +2121,11 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)",
         "zh": "奥義ゲージ上昇量35%DOWN&与ダメージ15%UP&HP20%UP(クビラ)",
     },
+    "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)": {
+        "en": "15% boost to max HP, 10% boost to DEF and Charge bar fills up 25% slower. (Lelouch Lamperouge, Suzaku Kururugi, Kallen Kouzuki)",
+        "ja": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
+        "zh": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
+    },
     "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)": {
         "en": "Boost to critical hit rate (10% chance, 30% damage). (Vania, Jeanne D'Ark)",
         "ja": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
@@ -2135,6 +2195,11 @@ var multiLangData = {
         "en": "15% boost to all allies ATK based on how high character HP is (various)",
         "ja": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
         "zh": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
+    },
+    "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP": {
+        "en": "10% boost to all allies ATK based on how high character HP is (Lelouch Lamperouge)",
+        "ja": "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP",
+        "zh": "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP",
     },
     "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP": {
         "en": "Has 15% less HP. %15 boost to all allies' ATK based on how high character HP is (various)",
@@ -2556,7 +2621,12 @@ var multiLangData = {
     "マグナ破壊(小)": {
         "en": "Magna Devastation (S)",
         "ja": "マグナ破壊(小)",
-        "zh": "方阵破坏(小",
+        "zh": "方阵破坏(小)",
+    },
+    "マグナ不可侵(小)": {
+        "en": "Magna Truce (S)",
+        "ja": "マグナ不可侵(小)",
+        "zh": "方阵不可侵(小)",
     },
     "マグナ三手(小)": {
         "en": "Magna Trium (S)",
@@ -2622,6 +2692,11 @@ var multiLangData = {
         "en": "Magna Heroism (S)",
         "ja": "マグナ軍神(小)",
         "zh": "方阵军神(小)",
+    },
+    "マグナ軍神(中)": {
+        "en": "Magna Heroism (M)",
+        "ja": "マグナ軍神(中)",
+        "zh": "方阵军神(中)",
     },
     "マグナ必殺(中)": {
         "en": "Magna Sentence (M)",

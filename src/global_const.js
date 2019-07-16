@@ -194,6 +194,7 @@ var buffLevelList = [
     -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
 ];
 var ougiGageUpOugiBuffLevelList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,];
+var criticalRateLevelList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
 var ougiRatioList = [0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0];
 var masterATKList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
@@ -206,7 +207,7 @@ var HPList = [
     80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61,
     60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41,
     40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21,
-    20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+    20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 var plusNumList = {
     "+0": 0,
     "+99(max)": 99,
@@ -868,6 +869,7 @@ var skilltypes = {
     "magnaSetsunaS": {name: "マグナ刹那(小)", type: "magnaSetsuna", amount: "S"},
     "magnaSetsuna": {name: "マグナ刹那(中)", type: "magnaSetsuna", amount: "M"},
     "magnaGunshinS": {name: "マグナ軍神(小)", type: "magnaGunshin", amount: "S"},
+    "magnaGunshinM": {name: "マグナ軍神(中)", type: "magnaGunshin", amount: "M"},
     "magnaHissatsuM": {name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M"},
     "magnaKenbuL": {name: "マグナ拳武(大)", type: "magnaKenbu", amount: "L"},
     "magnaJojutsuL": {name: "マグナ杖術(大)", type: "magnaJojutsu", amount: "L"},
@@ -896,6 +898,7 @@ var skilltypes = {
     "magnaHPS": {name: "マグナ守護(小)", type: "magnaHP", amount: "S"},
     "magnaHPM": {name: "マグナ守護(中)", type: "magnaHP", amount: "M"},
     "magnaHPL": {name: "マグナ守護(大)", type: "magnaHP", amount: "L"},
+    "magnaFukashinS": {name: "マグナ不可侵(小)", type: "magnaFukashin", amount: "S"},
     "unknownHPS": {name: "アンノウン・VIT I(小)", type: "unknownHP", amount: "S"},
     "unknownHPM": {name: "アンノウン・VIT I(中)", type: "unknownHP", amount: "M"},
     "unknownHPL": {name: "アンノウン・VIT II(大)", type: "unknownHP", amount: "L"},
@@ -1741,9 +1744,9 @@ var skillAmounts = {
         "LL": [10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 24.0, 24.0, 24.0, 24.0, 24.0],
     },
     "magnaHP": {
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0],
+        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
+        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 14.8, 15.1, 15.4, 15.7, 16.0],
+        "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.4, 18.8, 19.2, 19.6, 20.0],
     },
     "exHP": {
         "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.6, 13.2, 13.8, 14.4, 15.0],
@@ -1789,7 +1792,7 @@ var skillAmounts = {
     "critical": {
         "S": [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0],
         "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5],
-        "L": [4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
+        "L": [4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 10.2, 10.4, 10.6, 10.8, 11.0],
         "ratio": 0.5,
     },
     "normalRanbu": {
@@ -1870,7 +1873,8 @@ var skillAmounts = {
     },
     "magnaGunshin": {
         //only DA effect
-        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]
+        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5],
+        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
     },
     "tuiga": {
         //Xuanwu Shellfists/玄武拳の霧氷の追牙・肆
@@ -2050,6 +2054,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.00
     },
+    "knightmare_frame": {
+        "name": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
+        "type": "knightmare_frame",
+        "range": "own",
+        "value": 0.00
+    },
     "critical_up_own_10_30": {
         "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
         "type": "criticalBuff",
@@ -2138,6 +2148,12 @@ var supportAbilities = {
         "type": "normalSupportKonshin",
         "range": "all",
         "value": "L"
+    },
+    "stamina_all_M": {
+        "name": "ルルーシュの残りHPが多いほど味方全体の攻撃が大きくUP",
+        "type": "normalSupportKonshin",
+        "range": "all",
+        "value": "M"
     },
     "stamina_all_L_hp_down_own_15": {
         "name": "最大HPが15%減少 防御力が低いがイシュミールの残りHPが多いほど味方全体の攻撃が大きくUP",
@@ -2644,6 +2660,9 @@ module.exports.selector.buffLevel = buffLevelList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.ougiGageUpOugiBuffLevel = ougiGageUpOugiBuffLevelList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.criticalRateLevel = criticalRateLevelList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.ougiRatio = ougiRatioList.map(function (opt) {

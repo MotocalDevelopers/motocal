@@ -1,4 +1,10 @@
 {
+    "サンダルフォン(水着ver)": "Sandalphon (Summer)",
+    "ハールート・マールート(水着ver)": "Halluel and Malluel (Summer)",
+    "コルル": "Kolulu",
+    "紅月カレン": "Kallen Kouzuki",
+    "枢木スザク": "Suzaku Kururugi",
+    "ルルーシュ・ランペルージ": "Lelouch Lamperouge",
     "バイヴカハ": "Morrigna",
     "ファスティバ(SSR)": "Ladiva (SSR)",
     "キャル": "Karyl",
@@ -78,7 +84,7 @@
     "ゾーイ(ガチャver)": "Zooey",
     "メドゥーサ(バレンタインver)": "Medusa (Valentine)",
     "ティアマト": "Tiamat",
-    "サンダルフォン": "Sandalphon",
+    "サンダルフォン": "Sandalphon (Event)",
     "ヴィーラ(リミテッドver)": "Vira (Grand)",
     "ランスロット(風属性ver)": "Lancelot (Wind)",
     "リヴァイ": "Levi",
@@ -484,5 +490,6 @@
     "コルワ(SR)": "Korwa (SR)",
     "リチャード": "Richard",
     "アステール(火属性ver)": "Aster",
-    "ノーブルナイツ ブリジール＆コーデリア": "Bridgette and Cordelia"
+    "ノーブルナイツ ブリジール＆コーデリア": "Bridgette and Cordelia",
+    "フィラソピラ(SR)": "Philosophia (SR)"
 }

@@ -4,8 +4,10 @@ describe("#calcSupplementalDamage", () => {
     // generate temporary vals: [0, 0, 0, 0]
     const INITIAL_VALS = (length=4, value=0) => (new Array(length)).fill(value);
 
+    let supplementalDamageArray;
+
     beforeEach(() => {
-        this.supplementalDamageArray = {
+        supplementalDamageArray = {
             "test-buff-a": {
                 damage: 10,
                 damageWithoutCritical: 10,
@@ -25,14 +27,12 @@ describe("#calcSupplementalDamage", () => {
   
     describe("#calcOthersDamage", () => {
         it("test single hit supplemental damage", () => {
-            let {supplementalDamageArray} = this;
             let vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
             expect(vals.length).toBe(4);
             expect(vals).toEqual([30, 30, 300, 500]);
         });
   
         it("test hp based supplemental damage", () => {
-            let {supplementalDamageArray} = this;
             supplementalDamageArray['test-buff-a']['type'] = 'hp_based';
             supplementalDamageArray['test-buff-a']['threshold'] = 0.80;
             
@@ -55,7 +55,6 @@ describe("#calcSupplementalDamage", () => {
         });
       
         it("test unknown type is ignored", () => {
-            let {supplementalDamageArray} = this;
             supplementalDamageArray['test-buff-a']['type'] = undefined;
             supplementalDamageArray['test-buff-b']['type'] = 'othr'; // assume typo case       
             
@@ -78,7 +77,6 @@ describe("#calcSupplementalDamage", () => {
 
     describe("#calcThirdHitDamage", () => {
         it("test third hit supplemental damage", () => {
-            let {supplementalDamageArray} = this;
             supplementalDamageArray['test-buff-a']['type'] = 'third_hit';
  
             // default expectedTurn: 1
@@ -100,7 +98,6 @@ describe("#calcSupplementalDamage", () => {
   
     // xit -> Skip test, `test.skip` for Jest
     xit("test unknown report", () => {
-        let {supplementalDamageArray} = this;
         supplementalDamageArray["test-buff-a"]["type"] = "unknown";
       
         let vals = supplemental._calcDamage(["unknown"], supplementalDamageArray, INITIAL_VALS());
@@ -112,8 +109,11 @@ describe("#calcSupplementalDamage", () => {
 });
 
 describe("#collectSkillInfo", () => {
+
+    let supplementalDamageArray;
+
     beforeEach(() => {
-        this.supplementalDamageArray = {
+        supplementalDamageArray = {
             "D": { // for checking sort headers
                 damage: 10,
                 type: "other", 
@@ -157,7 +157,6 @@ describe("#collectSkillInfo", () => {
     // https://jestjs.io/docs/ja/api#testeachtable-name-fn-timeout
     // (Jasmine in codepen.io did not support the same method)
     it("test damageArray remainHP 100%,50%", () => {
-        let {supplementalDamageArray} = this;
         const toKey = ([key, type, extraValue]) => key;
       
         let supplementalInfo = supplemental.collectSkillInfo(supplementalDamageArray, {remainHP: 1.00});

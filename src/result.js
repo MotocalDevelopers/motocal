@@ -63,8 +63,9 @@ var ResultList = CreateClass({
             // If combinations have not been changed, use old guys
             if (this.state.previousArmlist != null) {
                 var isCombinationChanged = false;
-                if (this.state.previousArmlist.length != arml.length) {
+                if (this.state.previousArmlist.length != arml.length || prof.filterOptionsChanged) {
                     isCombinationChanged = true;
+                    prof.filterOptionsChanged = false;
                 }
                 if (!isCombinationChanged) {
                     for (var i = 0; i < arml.length; i = (i + 1) | 0) {
@@ -84,14 +85,14 @@ var ResultList = CreateClass({
                     }
                 }
                 if (isCombinationChanged) {
-                    var combinations = calcCombinations(arml);
+                    var combinations = calcCombinations(arml, prof.ruleMaxSize);
                     this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
                     this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
                 } else {
                     var combinations = this.state.previousCombinations
                 }
             } else {
-                var combinations = calcCombinations(arml);
+                var combinations = calcCombinations(arml, prof.ruleMaxSize);
                 this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
                 this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
             }
@@ -223,6 +224,8 @@ var ResultList = CreateClass({
             ChartButtonActive: false,
             previousArmlist: null,
             previousCombinations: null,
+            ruleMaxSize: true,
+            filterOptionsChanged: false
         };
     },
     closeHPChart: function () {
@@ -462,7 +465,11 @@ var ResultList = CreateClass({
         var charaInfo = [<span key={0}>{getElementColorLabel(prof.element, locale)}&nbsp;{charaInfoStr}</span>];
         for (var i = 0; i < chara.length; i++) {
             if (chara[i].name != "" && chara[i].isConsideredInAverage) {
-                charaInfoStr = chara[i].name + " HP";
+                var plusBonus　= "";
+                if (chara[i].plusBonus > 0) {
+                    plusBonus = "+" + chara[i].plusBonus;
+                }
+                charaInfoStr = chara[i].name + plusBonus + " HP";
                 if (chara[i].remainHP != undefined) {
                     charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
                 } else {
@@ -485,6 +492,7 @@ var ResultList = CreateClass({
         buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
         buffInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
         buffInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
+        buffInfo.push(intl.translate("烈日の楽園", locale) + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         buffInfo.push(intl.translate("敵非有利耐性", locale) + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance)))));
         var buffInfoStr = buffInfo.join(", ");
 
@@ -1309,7 +1317,7 @@ var Result = CreateClass({
                         const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
                         if (supplementalInfo.total > 0) {
                             supplementalDamageInfo.push(
-                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px", "font-size": "10pt"}} >
+                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px", "fontSize": "10pt"}} >
                                     <thead>
                                         <tr>
                                             <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
@@ -1394,7 +1402,7 @@ var Result = CreateClass({
 
                 for (var key in charaDetail) {
                     if (charaDetail[key].length > 0) {
-                        res.push(<tr>
+                        res.push(<tr key={"chara-result-" + key}>
                             <td colSpan="3">
                                 <span className="text-info">{key}</span>
                             </td>
