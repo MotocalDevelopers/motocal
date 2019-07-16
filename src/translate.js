@@ -2591,7 +2591,12 @@ var multiLangData = {
     "マグナ破壊(小)": {
         "en": "Magna Devastation (S)",
         "ja": "マグナ破壊(小)",
-        "zh": "方阵破坏(小",
+        "zh": "方阵破坏(小)",
+    },
+    "マグナ不可侵(小)": {
+        "en": "Magna Truce (S)",
+        "ja": "マグナ不可侵(小)",
+        "zh": "方阵不可侵(小)",
     },
     "マグナ三手(小)": {
         "en": "Magna Trium (S)",
@@ -2657,6 +2662,11 @@ var multiLangData = {
         "en": "Magna Heroism (S)",
         "ja": "マグナ軍神(小)",
         "zh": "方阵军神(小)",
+    },
+    "マグナ軍神(中)": {
+        "en": "Magna Heroism (M)",
+        "ja": "マグナ軍神(中)",
+        "zh": "方阵军神(中)",
     },
     "マグナ必殺(中)": {
         "en": "Magna Sentence (M)",
