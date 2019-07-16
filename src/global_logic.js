@@ -716,7 +716,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
-        chainDamageLimit = Math.min(0.50, chainDamageLimit);
+        chainDamageLimit = Math.min(LIMIT.chainDamageLimit, chainDamageLimit);
+        
+        chainDamageLimit += buff["zenithChainDamageLimit"];
         
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
@@ -753,13 +755,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiFixedDamage = calcOugiFixedDamage(key);
 
         var chainDamageUP = 0.01 * (totals[key]["chainDamage"] + (totals[key]["normalChainDamage"] * totalSummon["zeus"]));
-        chainDamageUP = Math.min(1.20, chainDamageUP); //check skill limit
+        chainDamageUP = Math.min(LIMIT.chainDamageUP, chainDamageUP);
+
+        chainDamageUP += buff["zenithChainDamage"];
         
         if (key == "Djeeta") {
             damageLimit += buff["masterDamageLimit"] + buff["zenithDamageLimit"];
             ougiDamageLimit += buff["masterDamageLimit"] + buff["zenithDamageLimit"];
-            chainDamageUP += buff["zenithChainDamage"];
-            chainDamageLimit += buff["zenithChainDamageLimit"];
         }
 
         var debuffResistanceByHigo = 0.01 * Math.min(30, totals[key]["debuffResistance"] * totalSummon["zeus"]);

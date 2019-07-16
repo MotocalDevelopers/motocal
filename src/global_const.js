@@ -91,6 +91,8 @@ module.exports.LIMIT = {
     magnaTA: 50,
     bahaTA: 50,
     otherTA: UNLIMIT_VALUE,
+    chainDamageUP: 1.20,
+    chainDamageLimit: 0.50,
 };
 module.exports.hollowskyNames = [
     "虚空の",
