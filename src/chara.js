@@ -4,6 +4,7 @@ var {Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, P
 var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
 var GlobalConst = require('./global_const.js');
+var {CriticalBuffList} = require('./components.js');
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation;
@@ -268,6 +269,7 @@ var Chara = CreateClass({
             support2: "none",
             support3: "none",
             ougiRatio: 4.5,
+            ougiBonusPlainDamage: 0,
             type: "attack",
             favArm: "dagger",
             favArm2: "none",
@@ -313,6 +315,8 @@ var Chara = CreateClass({
             EXLBKonshin: 0,
             EXLBDA: 0,
             EXLBTA: 0,
+            criticalBuffCount: 0,
+            criticalBuff: [],
         };
     },
     componentDidMount: function () {
@@ -387,12 +391,25 @@ var Chara = CreateClass({
         newState["support2"] = newchara.support2;
         newState["support3"] = newchara.support3;
         newState["ougiRatio"] = newchara.ougiRatio;
+        newState["ougiBonusPlainDamage"] = newchara.ougiBonusPlainDamage;
 
         return newState;
     },
     handleEvent: function (key, e) {
         var newState = this.state;
         newState[key] = e.target.value;
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+
         this.setState(newState)
     },
     handleSelectEvent: function (key, e) {
@@ -403,6 +420,7 @@ var Chara = CreateClass({
         } else {
             newState[key] = e.target.value;
         }
+
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false);
     },
@@ -555,6 +573,13 @@ var Chara = CreateClass({
                     </tr>
 
                     <tr>
+                        <th className="bg-primary">{intl.translate("奥義追加ダメージ(無属性固定)", locale)}</th>
+                        <td><FormControl type="number" min="0" step="333333" max="9000000" value={this.state.ougiBonusPlainDamage}
+                                         onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "ougiBonusPlainDamage")}/>
+                        </td>
+                    </tr>
+
+                    <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}1</th>
                         <td><FormControl componentClass="select" value={this.state.support}
                                          onChange={this.handleSelectEvent.bind(this, "support")}>{selector[locale].supportAbilities}</FormControl>
@@ -605,6 +630,17 @@ var Chara = CreateClass({
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.otherBuff2}
                                                  onChange={this.handleSelectEvent.bind(this, "otherBuff2")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
+                            </tr>,
+                            <tr key="criticalBuff">
+                                <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
+                                <td>
+                                    <CriticalBuffList locale={locale}
+                                        onBlur={this.handleOnBlur.bind(this, null)}
+                                        onCountChange={(count) => this.setState({criticalBuffCount: count})}
+                                        label="criticalBuff"
+                                        criticalArray={this.state.criticalBuff}
+                                        initialCount={this.state.criticalBuffCount} />
+                                </td>
                             </tr>,
                             <tr key="daBuff">
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
