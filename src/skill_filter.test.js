@@ -13,8 +13,8 @@ const {
     typeCharaContains,
 
     // _contains, // no need, typeContains,raceContains are alias
-    _hasWildCardSupport,
-    _withWildCardCheck,
+    _hasWildcardSupport,
+    _withWildcardCheck,
     _lookupBahaRaces,
     _skip_none_filter,
 } = require('./skill_filter.js');
@@ -27,27 +27,27 @@ describe('internal utility functions', () => {
     const charaA = {A: "none", B: "none", C: "wildcard"};
     const charaB = {A: "none", B: "none", C: "none", D: "wildcard"};
 
-    describe('#_hasWildCardSupport', () => {
+    describe('#_hasWildcardSupport', () => {
         it('should check wildcard in supports', () => {
-            expect(_hasWildCardSupport(charaA, supportKeys)).toBeTruthy();
-            expect(_hasWildCardSupport(charaB, supportKeys)).toBeFalsy(); // "D" is out of search path.
-            expect(_hasWildCardSupport(charaB, ["D", ...supportKeys])).toBeTruthy(); // add "D" to search path.
+            expect(_hasWildcardSupport(charaA, supportKeys)).toBeTruthy();
+            expect(_hasWildcardSupport(charaB, supportKeys)).toBeFalsy(); // "D" is out of search path.
+            expect(_hasWildcardSupport(charaB, ["D", ...supportKeys])).toBeTruthy(); // add "D" to search path.
         });
     });
 
-    describe('#_withWildCardCheck', () => {
+    describe('#_withWildcardCheck', () => {
         it('should return true when wildcard', () => {
             let isTest = (args, chara) => args === "test";
-            let isTestOrWildCard = _withWildCardCheck(isTest, supportKeys);
+            let isTestOrWildcard = _withWildcardCheck(isTest, supportKeys);
             // the decorater add wildcard check feature to the function,
             // it's like a generate wrapper for this case.
 
             expect(isTest("test", null)).toBeTruthy();
             expect(isTest("none", null)).toBeFalsy();
-            expect(isTestOrWildCard("test", charaA)).toBeTruthy(); // "test" and "wildcard"
-            expect(isTestOrWildCard("none", charaA)).toBeTruthy(); // "none" but "wildcard"
-            expect(isTestOrWildCard("test", charaB)).toBeTruthy(); // non-wildcard, but "test"
-            expect(isTestOrWildCard("none", charaB)).toBeFalsy();
+            expect(isTestOrWildcard("test", charaA)).toBeTruthy(); // "test" and "wildcard"
+            expect(isTestOrWildcard("none", charaA)).toBeTruthy(); // "none" but "wildcard"
+            expect(isTestOrWildcard("test", charaB)).toBeTruthy(); // non-wildcard, but "test"
+            expect(isTestOrWildcard("none", charaB)).toBeFalsy();
         });
     });
 

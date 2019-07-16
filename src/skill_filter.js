@@ -12,7 +12,7 @@ const FAV_KEYS = ["fav1", "fav2"];
  * @param {Object} chara
  * @return {boolean} has wildcard support
  */
-function _hasWildCardSupport(chara, keys=SUPPORT_KEYS) {
+function _hasWildcardSupport(chara, keys=SUPPORT_KEYS) {
     return keys.some(key => chara[key] === "wildcard");
 }
 
@@ -21,8 +21,8 @@ function _hasWildCardSupport(chara, keys=SUPPORT_KEYS) {
  * @param {function} func
  * @return {function} decorated function with check support for wildcard feature.
  */
-function _withWildCardCheck(func, keys=SUPPORT_KEYS) {
-    return (args, chara) => func(args, chara) || _hasWildCardSupport(chara, keys);
+function _withWildcardCheck(func, keys=SUPPORT_KEYS) {
+    return (args, chara) => func(args, chara) || _hasWildcardSupport(chara, keys);
 }
 
 /**
@@ -100,11 +100,11 @@ function typeCharaContains(types, chara) {
 }
 
 /**
- * @param {Array<string>} args
+ * @param {Array<string>} values
  * @return {Array<string>} filtered array omit "none" element.
  */
-function _skip_none_filter(args) {
-    return args.filter(arg => arg !== "none");
+function _skip_none_filter(values) {
+    return values.filter(val => val !== "none");
 }
 
 /**
@@ -137,15 +137,15 @@ module.exports.bahaRaceContains = bahaRaceContains;
 
 // function with naming "Chara" which takes chara object as parameter,
 // can check chara["support"] === "wildcard"
-module.exports.raceCharaContains = _withWildCardCheck(raceCharaContains);
-module.exports.bahaRaceCharaContains = _withWildCardCheck(bahaRaceCharaContains);
-module.exports.bahaFURaceCharaContains = _withWildCardCheck(bahaFURaceCharaContains);
-module.exports.favCharaContains = _withWildCardCheck(favCharaContains);
-module.exports.typeCharaContains = _withWildCardCheck(typeCharaContains);
+module.exports.raceCharaContains = _withWildcardCheck(raceCharaContains);
+module.exports.bahaRaceCharaContains = _withWildcardCheck(bahaRaceCharaContains);
+module.exports.bahaFURaceCharaContains = _withWildcardCheck(bahaFURaceCharaContains);
+module.exports.favCharaContains = _withWildcardCheck(favCharaContains);
+module.exports.typeCharaContains = _withWildcardCheck(typeCharaContains);
 
 // export private for Unit tests
 module.exports._contains = _contains;
-module.exports._hasWildCardSupport = _hasWildCardSupport;
-module.exports._withWildCardCheck = _withWildCardCheck;
+module.exports._hasWildcardSupport = _hasWildcardSupport;
+module.exports._withWildcardCheck = _withWildcardCheck;
 module.exports._lookupBahaRaces = _lookupBahaRaces;
 module.exports._skip_none_filter = _skip_none_filter;
