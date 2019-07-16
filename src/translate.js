@@ -1667,6 +1667,16 @@ var multiLangData = {
         "ja": "",
         "zh": "",
     },
+    "パーティ全体バフ": {
+        "en": "Buff for Party",
+        "ja": "パーティ全体バフ",
+        "zh": "Buff for Party",
+    },
+    "敵": {
+        "en": "Enemy",
+        "ja": "敵",
+        "zh": "敵",
+    },
     "結果を更新": {
         "en": "Update Results",
         "ja": "結果を更新",
