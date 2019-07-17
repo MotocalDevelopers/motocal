@@ -542,6 +542,11 @@ var multiLangData = {
         "ja": "奥義倍率",
         "zh": "奥义倍率",
     },
+    "奥義追加ダメージ(無属性固定)": {
+        "en": "C.A. Bonus DMG (Plain)",
+        "ja": "奥義追加ダメージ(無属性固定)",
+        "zh": "C.A. Bonus DMG (Plain)",
+    },
     "ジータさん基礎TA率説明": {
         "en": "Input base double attack ratio of player.\nIt will be automatically changed when \"Job\" is changed.",
         "ja": "ジータさんの基礎TA率を設定します。\nジョブを変更すると自動的に切り替わります。",
@@ -1658,24 +1663,22 @@ var multiLangData = {
         "en": "Enmity Perk",
         "ja": "LB背水",
         "zh": "LB背水",
-	},
+	  },
     "LB渾身ラベル": {
         "en": "Stamina Perk",
         "ja": "LB渾身",
         "zh": "LB渾身",
-	},
+	  },
     "CriticalDamageLimit (effective)": {
         "en": "CriticalDamageLimit (effective)",
         "ja": "CriticalDamageLimit (effective)",
         "zh": "CriticalDamageLimit (effective)",
     },
-    // "": {
-    //     "en": "",
-    //     "ja": "",
-    //     "zh": "",
-    // },
-	
-
+    "奥義固定ダメージ": {
+        "en": "C.A. Fixd DMG",
+        "ja": "奥義固定",
+        "zh": "奥義固定",
+	  },
     "グラフに加える": {
         "en": "Add to \ngraphs",
         "ja": "グラフに\n加える",
@@ -1685,6 +1688,16 @@ var multiLangData = {
         "en": "",
         "ja": "",
         "zh": "",
+    },
+    "パーティ全体バフ": {
+        "en": "Buff for Party",
+        "ja": "パーティ全体バフ",
+        "zh": "Buff for Party",
+    },
+    "敵": {
+        "en": "Enemy",
+        "ja": "敵",
+        "zh": "敵",
     },
     "結果を更新": {
         "en": "Update Results",
@@ -2750,7 +2763,12 @@ var multiLangData = {
     "マグナ破壊(小)": {
         "en": "Magna Devastation (S)",
         "ja": "マグナ破壊(小)",
-        "zh": "方阵破坏(小",
+        "zh": "方阵破坏(小)",
+    },
+    "マグナ不可侵(小)": {
+        "en": "Magna Truce (S)",
+        "ja": "マグナ不可侵(小)",
+        "zh": "方阵不可侵(小)",
     },
     "マグナ三手(小)": {
         "en": "Magna Trium (S)",
@@ -2816,6 +2834,11 @@ var multiLangData = {
         "en": "Magna Heroism (S)",
         "ja": "マグナ軍神(小)",
         "zh": "方阵军神(小)",
+    },
+    "マグナ軍神(中)": {
+        "en": "Magna Heroism (M)",
+        "ja": "マグナ軍神(中)",
+        "zh": "方阵军神(中)",
     },
     "マグナ必殺(中)": {
         "en": "Magna Sentence (M)",

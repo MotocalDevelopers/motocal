@@ -92,6 +92,8 @@ module.exports.LIMIT = {
     magnaTA: 50,
     bahaTA: 50,
     otherTA: UNLIMIT_VALUE,
+    chainDamageUP: 1.20,
+    chainDamageLimit: 0.50,
 };
 module.exports.hollowskyNames = [
     "虚空の",
@@ -869,6 +871,7 @@ var skilltypes = {
     "magnaSetsunaS": {name: "マグナ刹那(小)", type: "magnaSetsuna", amount: "S"},
     "magnaSetsuna": {name: "マグナ刹那(中)", type: "magnaSetsuna", amount: "M"},
     "magnaGunshinS": {name: "マグナ軍神(小)", type: "magnaGunshin", amount: "S"},
+    "magnaGunshinM": {name: "マグナ軍神(中)", type: "magnaGunshin", amount: "M"},
     "magnaHissatsuM": {name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M"},
     "magnaKenbuL": {name: "マグナ拳武(大)", type: "magnaKenbu", amount: "L"},
     "magnaJojutsuL": {name: "マグナ杖術(大)", type: "magnaJojutsu", amount: "L"},
@@ -897,6 +900,7 @@ var skilltypes = {
     "magnaHPS": {name: "マグナ守護(小)", type: "magnaHP", amount: "S"},
     "magnaHPM": {name: "マグナ守護(中)", type: "magnaHP", amount: "M"},
     "magnaHPL": {name: "マグナ守護(大)", type: "magnaHP", amount: "L"},
+    "magnaFukashinS": {name: "マグナ不可侵(小)", type: "magnaFukashin", amount: "S"},
     "unknownHPS": {name: "アンノウン・VIT I(小)", type: "unknownHP", amount: "S"},
     "unknownHPM": {name: "アンノウン・VIT I(中)", type: "unknownHP", amount: "M"},
     "unknownHPL": {name: "アンノウン・VIT II(大)", type: "unknownHP", amount: "L"},
@@ -1742,7 +1746,7 @@ var skillAmounts = {
         "LL": [10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 24.0, 24.0, 24.0, 24.0, 24.0],
     },
     "magnaHP": {
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.1, 12.2, 12.3, 12.4, 12.5],
+        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 14.8, 15.1, 15.4, 15.7, 16.0],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.4, 18.8, 19.2, 19.6, 20.0],
     },
@@ -1871,7 +1875,8 @@ var skillAmounts = {
     },
     "magnaGunshin": {
         //only DA effect
-        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]
+        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5],
+        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
     },
     "tuiga": {
         //Xuanwu Shellfists/玄武拳の霧氷の追牙・肆
