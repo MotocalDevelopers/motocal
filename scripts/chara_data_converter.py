@@ -38,40 +38,134 @@ sexlist[u"女"] = "female"
 sexlist[u"不詳"] = "other"
 
 supportAbilist = OrderedDict()
-supportAbilist["da_up_all_10"] = {u"双剣乱舞"}
-supportAbilist["ta_up_all_3"] = {u"大いなる翼"}
-supportAbilist["data_up_wind_10_5"] = {u"溢れる母性"}
-supportAbilist["data_up_water_10_5"] = {u"舞い歌う夏の巫女"}
-supportAbilist["da_up_fist_10"] = {u"古今無双流"}
-supportAbilist["hp_down_own_15"] = {u"喪失する自我", u"アストラルチャージ"}
-supportAbilist["hp_up_own_15"] = {u"やばいですね☆"}
-supportAbilist["hp_up_own_20"] = {u"老當益壮",u"本物のヒーロー"}
-supportAbilist["atk_up_own_5"] = {u"愛憎の衝動"}
-supportAbilist["atk_up_all_5"] = {u"クイーン・オブ・カジノ", u"ディペンデンス"}
-supportAbilist["atk_up_all_10"] = {u"羊神宮の主"}
-supportAbilist["atk_up_doraf"] = {u"質実剛健"}
-supportAbilist["atk_up_depends_races"] = {u"氷晶宮の特使"}
-supportAbilist["element_buff_boost_own_30"] = {u"王者の風格"}
-supportAbilist["eternal_wisdom"] = {u"久遠の叡智"}
-supportAbilist["ougi_gage_up_own_10"] = {u"戦賢の書"}
-supportAbilist["ougi_gage_up_own_20"] = {u"剣聖", u"静かな威圧", u"片翼の悪魔"}
-supportAbilist["ougi_gage_up_own_100"] = {u"刀神"}
-supportAbilist["ougi_damage_up_50_cap_10"] = {u"天星剣王2"}
-supportAbilist["ougi_damage_up_50"] = {u"天星剣王"}
-supportAbilist["emnity_all_SL10"] = {u"太陽信仰"}
-supportAbilist["emnity_own_SL20"] = {u"ダーク・ラピュセル", u"黒の鎧", u"砂神グラフォスの慈愛"}
-supportAbilist["envoy_meditation"] = {u"調停の使徒"}
-supportAbilist["ideal_vassals"] = {u"理想の家臣"}
-supportAbilist["dance_of_nataraja"] = {u"破滅の舞踏"}
-supportAbilist["recklessness_incarnate"] = {u"猪突・上宝沁金ノ撃槍"}
-supportAbilist["knightmare_frame"] = {u"人型自在戦闘装甲騎", u"ナイトメアフレーム"}
-supportAbilist["critical_up_own_10_30"] = {u"セルフィッシュ・ロイヤル", u"ラ・ピュセル30"}
-supportAbilist["critical_up_own_20_20"] = {u"ラ・ピュセル20"}
-supportAbilist["critical_up_own_40_50"] = {u"ぶっ殺すわよ！"}
-supportAbilist["critical_up_all_5_30"] = {u"調教してやる"}
-supportAbilist["damageUP_5"] = {u"真っ二つにしてやるんだっ！"}
+supportAbilist["da_up_all_10"] = {
+    u"双剣乱舞"
+}
+supportAbilist["ta_up_all_3"] = {
+    u"大いなる翼"
+}
+supportAbilist["data_up_wind_10_5"] = {
+    u"溢れる母性"
+}
+supportAbilist["data_up_water_10_5"] = {
+    u"舞い歌う夏の巫女"
+}
+supportAbilist["da_up_fist_10"] = {
+    u"古今無双流"
+}
+supportAbilist["hp_down_own_15"] = {
+    u"喪失する自我",
+    u"アストラルチャージ"
+}
+supportAbilist["hp_up_own_10"] = {
+    u"黒の鎧"
+}
+supportAbilist["hp_up_own_15"] = {
+    u"やばいですね☆"
+}
+supportAbilist["hp_up_own_20"] = {
+    u"老當益壮",
+    u"本物のヒーロー"
+}
+supportAbilist["atk_up_own_5"] = {
+    u"愛憎の衝動"
+}
+supportAbilist["atk_up_all_5"] = {
+    u"クイーン・オブ・カジノ",
+    u"ディペンデンス"
+}
+supportAbilist["atk_up_all_10"] = {
+    u"羊神宮の主"
+}
+supportAbilist["atk_up_doraf"] = {
+    u"質実剛健"
+}
+supportAbilist["atk_up_depends_races"] = {
+    u"氷晶宮の特使"
+}
+supportAbilist["element_buff_boost_own_30"] = {
+    u"王者の風格",
+    u"覇者の風格"
+}
+supportAbilist["eternal_wisdom"] = {
+    u"久遠の叡智"
+}
+supportAbilist["ougi_gage_up_own_10"] = {
+    u"戦賢の書"
+}
+supportAbilist["ougi_gage_up_own_20"] = {
+    u"剣聖",
+    u"静かな威圧",
+    u"片翼の悪魔",
+    u"見た目は子供、頭脳は大人"
+}
+supportAbilist["ougi_gage_up_own_100"] = {
+    u"刀神"
+}
+supportAbilist["ougi_gage_down_own_35"] = {
+    u"闘争求む重鎧"
+}
+supportAbilist["ougi_gage_down_own_35_ta_100"] = {
+    u"ケンプファー",
+    u"凶爪"
+}
+supportAbilist["ougi_gage_up_djeeta_20"] = {
+    u"クラリスちゃんの特製チョコ☆"
+}
+supportAbilist["ougi_damage_up_50_cap_10"] = {
+    u"天星剣王2"
+}
+supportAbilist["ougi_damage_up_50"] = {
+    u"天星剣王"
+}
+supportAbilist["emnity_all_SL10"] = {
+    u"太陽信仰"
+}
+supportAbilist["emnity_own_SL20"] = {
+    u"ダーク・ラピュセル",
+    u"絶望の剣",
+    u"砂神グラフォスの慈愛"
+}
+supportAbilist["envoy_meditation"] = {
+    u"調停の使徒"
+}
+supportAbilist["ideal_vassals"] = {
+    u"理想の家臣"
+}
+supportAbilist["dance_of_nataraja"] = {
+    u"破滅の舞踏"
+}
+supportAbilist["recklessness_incarnate"] = {
+    u"猪突・上宝沁金ノ撃槍"
+}
+supportAbilist["knightmare_frame"] = {
+    u"人型自在戦闘装甲騎",
+    u"ナイトメアフレーム"
+}
+supportAbilist["critical_up_own_10_30"] = {
+    u"セルフィッシュ・ロイヤル",
+    u"ラ・ピュセル30"
+}
+supportAbilist["critical_up_own_20_20"] = {
+    u"ラ・ピュセル20"
+}
+supportAbilist["critical_up_own_40_50"] = {
+    u"ぶっ殺すわよ！"
+}
+supportAbilist["critical_up_all_5_30"] = {
+    u"調教してやる"
+}
+supportAbilist["mamoritai_kono_egao"] = {
+    u"護りたい、この笑顔"
+}
+supportAbilist["mamorubeshi_sono_egao"] = {
+    u"護るべし、その笑顔"
+}
 #The effect size of "真っ二つにしてやるんだっ！" has not been verified.
-#supportAbilist["damageUP_10"] =  {u""} 
+supportAbilist["damageUP_5"] = {
+    u"真っ二つにしてやるんだっ！"
+}
+#supportAbilist["damageUP_10"] = {u""}
 supportAbilist["damageUP_20"] = {
     u"炎帝の刃",
     u"冷たい女",
@@ -95,7 +189,7 @@ supportAbilist["ougiCapUP_20"] = {
     u"反撃の狼煙"
 }
 supportAbilist["ougiCapUP_25"] = {
-    u"優しい心",
+    u"生命のリンク",
     u"リレーション・コンバーター"
 }
 supportAbilist["ougiCapUP_100"] = {
@@ -104,21 +198,79 @@ supportAbilist["ougiCapUP_100"] = {
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
-
+# supportAbilist["fumetsu_no_mikiri"] = {
+#     u"不滅の見切り"
+# }
+supportAbilist["aegisUP_30"] = {
+    u"護国の双肩"
+}
+supportAbilist["chikara_atsu_no_ha"] = {
+    u"力圧の刃"
+}
+supportAbilist["element_buff_boost_fire_30"] = {
+    u"崇拝の尊神"
+}
+supportAbilist["element_buff_boost_water_30"] = {
+    u"神虜の麗姫"
+}
+supportAbilist["element_buff_boost_earth_30"] = {
+    u"神域の守護者"
+}
+supportAbilist["element_buff_boost_wind_30"] = {
+    u"踊り狂う暴風"
+}
+# supportAbilist["element_buff_boost_light_30"] = {
+#     u""
+# }
+# supportAbilist["element_buff_boost_dark_30"] = {
+#     u""
+# }
+# supportAbilist["element_buff_boost_all_30"] = {
+#     u""
+# }
+supportAbilist["element_buff_boost_wind_15"] = {
+    u"精霊の啓示"
+}
+supportAbilist["critical_cap_up_light_3"] = {
+    u"スポッター"
+}
+supportAbilist["critical_cap_up_own_10"] = {
+    u"ヘッドショット"
+}
+supportAbilist["shinryu_to_no_kizuna"] = {
+    u"真龍との絆"
+}
+supportAbilist["Revion_kishi_sanshimai"] = {
+    u"レヴィオン騎士三姉妹"
+}
+supportAbilist["element_buff_boost_damageUP_own_10"] = {
+    u"堕天司"
+}
+# supportAbilist["no_normal_attack"] = {
+#     u"優しい心",
+#     u"カードキャプター"
+# }
+# supportAbilist["tousou_no_chishio"] = {
+#     u"闘争の血潮"
+# }
+supportAbilist["debuff_resistance_up_own_15"] = {
+    u"ユニバーサルスター",
+    u"魔生花の楔"
+}
+supportAbilist["debuff_resistance_up_own_80"] = {
+    u"魔道の申し子"
+}
 supportAbilist["stamina_all_L"] = {
     u"夏祭りの思い出",
     u"不退転の戦旗",
     u"絶対だいじょうぶだよ"
 }
-
 supportAbilist["stamina_all_M"] = {
     u"黒の騎士団 総司令"
 }
-
 supportAbilist["stamina_all_L_hp_down_own_15"] = {
     u"真夏の夜の夢"
 }
-
 supportAbilist["supplemental_third_hit_50k"] = {
     u"みんなのあんぜんあんしん"
 }
@@ -298,7 +450,7 @@ patching["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
 patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 
 ### SR
-patching["プレデター"] = {"DA": 1000.0, "TA": 3.0}
+patching["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
 
 # Patching ougi ratio https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968
 patchingOugiRatio = OrderedDict()
