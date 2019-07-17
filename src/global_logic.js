@@ -251,8 +251,7 @@ module.exports.calcDamage = function (summedAttack, totalSkillCoeff, criticalRat
 module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, criticalRatio, enemyDefense, defenseDebuff, enemyResistance, ougiRatio, ougiDamageUP, damageUP, ougiDamageLimit, ougiFixedDamage, ougiBonusPlainDamage) {
     // Damage calculation
     var def = module.exports.calcDefenseDebuff(enemyDefense, defenseDebuff);
-    var ratio = ougiRatio != undefined ? ougiRatio : 4.5;
-    var damage = (1.0 + ougiDamageUP) * ratio * Math.ceil(summedAttack / def) * totalSkillCoeff * criticalRatio;
+    var damage = (1.0 + ougiDamageUP) * ougiRatio * Math.ceil(summedAttack / def) * totalSkillCoeff * criticalRatio;
     damage += ougiFixedDamage * criticalRatio;
     var overedDamage = 0.0;
 
@@ -2264,7 +2263,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: djeetaBuffList["personalTABuff"],
                 DASupport: 0,
                 TASupport: 0,
-                ougiRatio: prof.ougiRatio,
+                ougiRatio: prof.ougiRatio != undefined ? parseInt(prof.ougiRatio) : 4.5,
                 ougiBonusPlainDamage: 0,
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
                 uplift: djeetaBuffList["personalUplift"],
@@ -2426,7 +2425,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: charaBuffList["taBuff"],
                 DASupport: 0,
                 TASupport: 0,
-                ougiRatio: chara[i].ougiRatio,
+                ougiRatio: chara[i].ougiRatio != undefined ? parseInt(chara[i].ougiRatio) : 4.5,
                 ougiBonusPlainDamage: chara[i].ougiBonusPlainDamage != undefined ? parseInt(chara[i].ougiBonusPlainDamage) : 0,
                 ougiGageBuff: charaBuffList["ougiGageBuff"],
                 uplift: charaBuffList["uplift"],
