@@ -512,6 +512,16 @@ var multiLangData = {
         "ja": "対象の属性に関係なく味方のクリティカルが発生し、味方の攻撃力上昇 別枠乗算20% (アラナン)",
         "zh": "All Allies gain 20% unique buff, and can deal critical hits regardless of element. (Alanaan)",
     },
+    "死ト愛ノ世界": {
+        "en": "World of Death and Love",
+        "ja": "死ト愛ノ世界",
+        "zh": "死ト愛ノ世界",
+    },
+    "死ト愛ノ世界説明": {
+        "en": "All Allies gain 20% unique buff, and deal 30% bonus DMG for one-foe attacks. (Nier)",
+        "ja": "All Allies gain 20% unique buff, and deal 30% bonus DMG for one-foe attacks. (ニーア)",
+        "zh": "All Allies gain 20% unique buff, and deal 30% bonus DMG for one-foe attacks. (Nier)",
+    },
     "アクティブ": {
         "en": ": Active",
         "ja": ": アクティブ",
