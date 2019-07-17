@@ -5975,6 +5975,26 @@
         "imageURL": "./imgs/1040211600.png",
         "en": "Galilei's Insight"
     },
+    "[4凸]ガリレオ・サイト": {
+        "ja": "[4凸]ガリレオ・サイト",
+        "element": "water",
+        "type": "spear",
+        "skill1": "normalKonshinL",
+        "skill2": "normalKatsumiM",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 49,
+        "minattack": 411,
+        "hp": 345,
+        "attack": 3044,
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": 286,
+        "attacklv100": 2517,
+        "imageURL": "./imgs/1040211600.png",
+        "en": "[4★] Galilei's Insight"
+    },
     "虚無ノ哭風": {
         "ja": "虚無ノ哭風",
         "element": "wind",
