@@ -2088,7 +2088,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     "attackRatio": 9.00
                                 });
                                 if (amount == "II") {
-                                    // Cap up specific to critical damage is not possible without soiling accuracy of damage calculation
+                                    totals[key]["criticalDamageLimit"] += comb[i] * 0.30
                                 }
                             }
                         } else if (stype == 'battle_god') {
@@ -2099,7 +2099,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 });
                                 totals[key]["superAccuracy"] -= comb[i] * 0.50;
                                 if (amount == "II") {
-                                    // Cap up specific to critical damage is not possible without soiling accuracy of damage calculation
+                                    totals[key]["criticalDamageLimit"] += comb[i] * 0.30
                                 }
                             }
                         } else if (stype == 'break_everything') {
@@ -2400,7 +2400,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 tenshiDamageUP: 0,
                 charaUniqueDamageUP: 0,
                 aegisUP: 0,
-                criticalBuff: prof.personalCriticalBuff != undefined ? prof.personalCriticalBuff : [],
+                criticalBuff: prof.personalCriticalBuff,
                 supplementalDamageBuff: 100 * djeetaBuffList['personalSupplementalDamageBuff'],
                 supplementalThirdHit: [],
                 covenant: null,
