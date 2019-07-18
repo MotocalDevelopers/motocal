@@ -5,7 +5,6 @@ var supplemental = require('./supplemental.js');
 var elementRelation = GlobalConst.elementRelation;
 var bahamutRelation = GlobalConst.bahamutRelation;
 var bahamutFURelation = GlobalConst.bahamutFURelation;
-var supportAbilities = GlobalConst.supportAbilities;
 var zenith = GlobalConst.zenith;
 var zenithDA = GlobalConst.zenithDA;
 var zenithTA = GlobalConst.zenithTA;
@@ -28,6 +27,7 @@ var raceTypes = GlobalConst.raceTypes;
 var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
+const {eachSupport} = require('./support');
 const {range, when} = require('./support_filter');
 
 module.exports.isCosmos = function (arm) {
@@ -1328,39 +1328,6 @@ function* eachSkill(arm) {
         }
 
         yield [skillkey, skillname, element];
-    }
-}
-
-function* eachSupport(chara) {
-    for (let key of ["support", "support2", "support3"]) {
-
-        let supportID = chara[key];
-
-        if (typeof supportID === 'undefined') {
-            continue; // Data maybe broken.
-        }
-
-        if (supportID === 'none') {
-            continue; // Safe for skip
-        }
-
-        let support = supportAbilities[supportID];
-
-        if (typeof support === 'undefined') {
-            console.error("unknown support ability ID:", supportID);
-            continue;
-        }
-
-        // process composite support
-        if (support.type === 'composite') {
-            for (let subSupport of support.value) {
-                // TODO: check undefined and" "none" support
-                yield supportAbilities[subSupport.ID] || subSupport;
-            }
-            continue;
-        }
-
-        yield support;
     }
 }
 
