@@ -269,6 +269,7 @@ var Chara = CreateClass({
             support2: "none",
             support3: "none",
             ougiRatio: 4.5,
+            ougiBonusPlainDamage: 0,
             type: "attack",
             favArm: "dagger",
             favArm2: "none",
@@ -390,6 +391,7 @@ var Chara = CreateClass({
         newState["support2"] = newchara.support2;
         newState["support3"] = newchara.support3;
         newState["ougiRatio"] = newchara.ougiRatio;
+        newState["ougiBonusPlainDamage"] = newchara.ougiBonusPlainDamage;
 
         return newState;
     },
@@ -567,6 +569,13 @@ var Chara = CreateClass({
                         <th className="bg-primary">{intl.translate("奥義倍率", locale)}</th>
                         <td><FormControl type="number" min="0" step="0.5" max="20" value={this.state.ougiRatio}
                                          onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "ougiRatio")}/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th className="bg-primary">{intl.translate("奥義追加ダメージ(無属性固定)", locale)}</th>
+                        <td><FormControl type="number" min="0" step="333333" max="9000000" value={this.state.ougiBonusPlainDamage}
+                                         onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "ougiBonusPlainDamage")}/>
                         </td>
                     </tr>
 
