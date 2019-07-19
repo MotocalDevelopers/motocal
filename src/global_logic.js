@@ -1,6 +1,7 @@
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
 const {LIMIT} = GlobalConst;
+const {DEFAULT} = GlobalConst;
 var supplemental = require('./supplemental.js');
 var elementRelation = GlobalConst.elementRelation;
 var bahamutRelation = GlobalConst.bahamutRelation;
@@ -2263,7 +2264,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: djeetaBuffList["personalTABuff"],
                 DASupport: 0,
                 TASupport: 0,
-                ougiRatio: prof.ougiRatio != undefined ? parseInt(prof.ougiRatio) : 4.5,
+                ougiRatio: prof.ougiRatio != undefined ? parseFloat(prof.ougiRatio) : DEFAULT.ougiRatio,
                 ougiBonusPlainDamage: 0,
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
                 uplift: djeetaBuffList["personalUplift"],
@@ -2425,7 +2426,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: charaBuffList["taBuff"],
                 DASupport: 0,
                 TASupport: 0,
-                ougiRatio: chara[i].ougiRatio != undefined ? parseInt(chara[i].ougiRatio) : 4.5,
+                ougiRatio: chara[i].ougiRatio != undefined ? parseFloat(chara[i].ougiRatio) : DEFAULT.ougiRatio,
                 ougiBonusPlainDamage: chara[i].ougiBonusPlainDamage != undefined ? parseInt(chara[i].ougiBonusPlainDamage) : 0,
                 ougiGageBuff: charaBuffList["ougiGageBuff"],
                 uplift: charaBuffList["uplift"],
