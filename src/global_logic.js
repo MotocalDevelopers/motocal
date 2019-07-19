@@ -2843,20 +2843,19 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     }
                     continue;
                 // case "tousou_no_chishio":
-                //     if (totals[key]['remainHP'] <= 1 && totals[key]['remainHP'] > 0.6) {
-                //         totals[key]["DASupport"] += 0.10;
-                //         totals[key]["damageLimitBuff"] += 0.0;
-                //         totals[key]["ougiDamageLimitBuff"] += 0.0;
-                //     } else if (totals[key]['remainHP'] <= 0.6 && totals[key]['remainHP'] > 0.4) {
+                //     if (totals[key]['remainHP'] <= 0.6 && totals[key]['remainHP'] > 0.4) {
                 //         totals[key]["DASupport"] += 0.20;
+                //         totals[key]["TASupport"] += 0.10;
                 //         totals[key]["damageLimitBuff"] += 0.10;
                 //         totals[key]["ougiDamageLimitBuff"] += 0.0;
                 //     } else if (totals[key]['remainHP'] <= 0.4 && totals[key]['remainHP'] > 0.2) {
                 //         totals[key]["DABuff"] += 0.30;
+                //         totals[key]["TASupport"] += 0.15;
                 //         totals[key]["damageLimitBuff"] += 0.20;
                 //         totals[key]["ougiDamageLimitBuff"] += 0.15;
-                //     } else {
-                //         totals[key]["DASupport"] += 0.40;
+                //     } else if (totals[key]['remainHP'] <= 0.2 && totals[key]['remainHP'] >= 0.0) {
+                //         totals[key]["DASupport"] += 0.50;
+                //         totals[key]["TASupport"] += 0.25;
                 //         totals[key]["damageLimitBuff"] += 0.30;
                 //         totals[key]["ougiDamageLimitBuff"] += 0.20;
                 //     }

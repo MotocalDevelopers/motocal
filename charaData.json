@@ -3488,13 +3488,13 @@
         "support2": "none",
         "support3": "none",
         "minhp": "270",
-        "hp": "1440",
+        "hp": "1710",
         "minattack": "1650",
-        "attack": "8800",
+        "attack": "10450",
         "baseDA": 7.0,
         "baseTA": 3.0,
         "ougiRatio": 4.5,
-        "imageURL": "./charaimgs/3040084000_01.png",
+        "imageURL": "./charaimgs/3040084000_03.png",
         "en": "Ayer"
     },
     "アリーザ(SSR)": {

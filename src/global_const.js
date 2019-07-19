@@ -2567,6 +2567,13 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2Detail"],
         selectors: ["victorious_calamitous_covenant"],
         defaultKeys: ["0"],
+    },
+    "[4凸]オンリー・プリティ・ガール": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
     }
 };
 

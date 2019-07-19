@@ -2294,9 +2294,9 @@ var multiLangData = {
         "zh": "10% boost to Damage when affected by Element ATK Buff. (Olivia)",
     },
     "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)": {
-        "en": "Boost to double attack rate and damage cap based on how low HP is. (Ayer)",
+        "en": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
         "ja": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
-        "zh": "Boost to double attack rate and damage cap based on how low HP is. (Ayer)",
+        "zh": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
     },
     "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))": {
         "en": "3% boost to Light characters' critical hit damage cap. (Silva (Light))",
