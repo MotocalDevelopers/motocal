@@ -519,7 +519,7 @@ var multiLangData = {
     },
     "死ト愛ノ世界説明": {
         "en": "All Allies gain 20% unique buff, and deal 30% bonus DMG for one-foe attacks. (Nier)",
-        "ja": "All Allies gain 20% unique buff, and deal 30% bonus DMG for one-foe attacks. (ニーア)",
+        "ja": "パーティ全体に別枠20%、追撃30%を付与 (ニーア)",
         "zh": "All Allies gain 20% unique buff, and deal 30% bonus DMG for one-foe attacks. (Nier)",
     },
     "アクティブ": {
