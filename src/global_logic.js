@@ -1835,9 +1835,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                     } else if (stype == 'sunbladeKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'rigaiBishojo') {
-                        // TODO: Cagliostro (Summer) Weapon: Placeholder skill value
                         // skill is all allies not restricted to element
-                        totals[key]["criticalDamageLimit"] += comb[i] * 0.10;
+                        totals[key]["criticalDamageLimit"] += comb[i] * 0.05;
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
