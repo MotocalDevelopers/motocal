@@ -678,7 +678,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         expectedOugiGage *= uplift + (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0));
         
         if (key == "Djeeta") {
-            expectedOugiGage += ougiGageBuff * (taRate * buff["masterBonusOugiGage"] * 3 + (1.0 - taRate) * (daRate * buff["masterBonusOugiGage"] * 2 + (1.0 - daRate) * buff["masterBonusOugiGage"]));
+            expectedOugiGage += taRate * buff["masterBonusOugiGage"] * 3 + (1.0 - taRate) * (daRate * buff["masterBonusOugiGage"] * 2 + (1.0 - daRate) * buff["masterBonusOugiGage"]);
         }
             
         var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * ougiGageBuff;
