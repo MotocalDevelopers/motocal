@@ -772,30 +772,21 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
         debuffResistance += 100 * totals[key]["debuffResistanceBuff"];
         
+        // Generate LimitValues
         var DEFAULTnormalDamageLimitValues = [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]];
-        
-        var normalDamageLimitValues = JSON.parse(JSON.stringify(DEFAULTnormalDamageLimitValues));
-        for (let index = 0; index < 4; index++) {
-            normalDamageLimitValues[index][0] = DEFAULTnormalDamageLimitValues[index][0] * (1.0 + criticalDamageLimit);
-        }
-        
-        var normalDamageLimitValuesWithoutCritical = JSON.parse(JSON.stringify(DEFAULTnormalDamageLimitValues));
-        for (let index = 0; index < 4; index++) {
-            normalDamageLimitValuesWithoutCritical[index][0] = DEFAULTnormalDamageLimitValues[index][0] * (1.0 + damageLimit);
-        }
-        
         var DEFAULTougiDamageLimitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]];
         
+        var normalDamageLimitValues = JSON.parse(JSON.stringify(DEFAULTnormalDamageLimitValues));
+        var normalDamageLimitValuesWithoutCritical = JSON.parse(JSON.stringify(DEFAULTnormalDamageLimitValues));
         var ougiDamageLimitValues = JSON.parse(JSON.stringify(DEFAULTougiDamageLimitValues));
-        for (let index = 0; index < 4; index++) {
-            ougiDamageLimitValues[index][0] = DEFAULTougiDamageLimitValues[index][0] * (1.0 + criticalOugiDamageLimit);
-        }
-        
         var ougiDamageLimitValuesWithoutCritical = JSON.parse(JSON.stringify(DEFAULTougiDamageLimitValues));
+        
         for (let index = 0; index < 4; index++) {
+            normalDamageLimitValues[index][0] = DEFAULTnormalDamageLimitValues[index][0] * (1.0 + criticalDamageLimit);
+            normalDamageLimitValuesWithoutCritical[index][0] = DEFAULTnormalDamageLimitValues[index][0] * (1.0 + damageLimit);
+            ougiDamageLimitValues[index][0] = DEFAULTougiDamageLimitValues[index][0] * (1.0 + criticalOugiDamageLimit);
             ougiDamageLimitValuesWithoutCritical[index][0] = DEFAULTougiDamageLimitValues[index][0] * (1.0 + ougiDamageLimit);
         }
-        
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, additionalDamage, damageUP, normalDamageLimitValues);
