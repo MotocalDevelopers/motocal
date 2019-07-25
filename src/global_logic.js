@@ -1,6 +1,9 @@
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
-const {LIMIT} = GlobalConst;
+const {
+    LIMIT,
+    BASE_LIMIT_VALUES,
+} = GlobalConst;
 var supplemental = require('./supplemental.js');
 var elementRelation = GlobalConst.elementRelation;
 var bahamutRelation = GlobalConst.bahamutRelation;
@@ -68,6 +71,19 @@ module.exports.proceedIndex = function (index, ana, i) {
 module.exports.isHollowsky = function (arm) {
     return arm != undefined && arm.name != undefined && GlobalConst.hollowskyNames.some( value => arm.name.includes(value));
 };
+
+/**
+ * Generate limitValues new array instance for damage caps.
+ * @param {number} limitUp
+ * @param {Array<[float,float]>} values
+ * @param {Array<[float,float]>} initial limit values
+ * @private
+ *
+ * initLimitValues(2, [[1000,1.0], [2000,2.0]]) => [[2000,1.0], [4000,2.0]]
+ */
+const _initLimitValues = (limitUp, values) => values.map(([threshold, ratio]) => [threshold*limitUp, ratio]);
+
+module.exports._initLimitValues = _initLimitValues;
 
 /**
  * Add and returns sum of numbers in array
@@ -225,10 +241,8 @@ module.exports.calcDamage = function (summedAttack, totalSkillCoeff, criticalRat
     var damage = Math.ceil(summedAttack / def) * totalSkillCoeff * criticalRatio;
     var overedDamage = 0;
 
-    for (var index = 0; index < 4; index++) {
+    for (const [limitValue, limitRatio] of limitValues) {
         // Damage cap calculation
-        var limitValue = limitValues[index][0];
-        var limitRatio = limitValues[index][1];
 
         // Subtract only by the extent exceeding the attenuation line
         if (damage > limitValue) {
@@ -773,20 +787,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         debuffResistance += 100 * totals[key]["debuffResistanceBuff"];
         
         // Generate LimitValues
-        var DEFAULTnormalDamageLimitValues = [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]];
-        var DEFAULTougiDamageLimitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]];
-        
-        var normalDamageLimitValues = JSON.parse(JSON.stringify(DEFAULTnormalDamageLimitValues));
-        var normalDamageLimitValuesWithoutCritical = JSON.parse(JSON.stringify(DEFAULTnormalDamageLimitValues));
-        var ougiDamageLimitValues = JSON.parse(JSON.stringify(DEFAULTougiDamageLimitValues));
-        var ougiDamageLimitValuesWithoutCritical = JSON.parse(JSON.stringify(DEFAULTougiDamageLimitValues));
-        
-        for (let index = 0; index < 4; index++) {
-            normalDamageLimitValues[index][0] = DEFAULTnormalDamageLimitValues[index][0] * (1.0 + criticalDamageLimit);
-            normalDamageLimitValuesWithoutCritical[index][0] = DEFAULTnormalDamageLimitValues[index][0] * (1.0 + damageLimit);
-            ougiDamageLimitValues[index][0] = DEFAULTougiDamageLimitValues[index][0] * (1.0 + criticalOugiDamageLimit);
-            ougiDamageLimitValuesWithoutCritical[index][0] = DEFAULTougiDamageLimitValues[index][0] * (1.0 + ougiDamageLimit);
-        }
+        const normalDamageLimitValues = _initLimitValues(1.0 + criticalDamageLimit, BASE_LIMIT_VALUES.normalDamage);
+        const normalDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + damageLimit, BASE_LIMIT_VALUES.normalDamage);
+        const ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
+        const ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, additionalDamage, damageUP, normalDamageLimitValues);
