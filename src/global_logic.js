@@ -1,9 +1,9 @@
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
-+ const {
-+     LIMIT,
-+     DEFAULT,
-+} = GlobalConst;
+const {
+    LIMIT,
+    DEFAULT,
+} = GlobalConst;
 var supplemental = require('./supplemental.js');
 var elementRelation = GlobalConst.elementRelation;
 var bahamutRelation = GlobalConst.bahamutRelation;
