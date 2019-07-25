@@ -341,14 +341,18 @@ var Summon = CreateClass({
                     </tr>
 
                     <tr>
-                        <td><InputGroup>
-                            {selfSummon[0].label}<FormControl componentClass="select"
-                                                              value={this.state.selfSummonAmount}
-                                                              onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
-                            {selfSummon[1].label}<FormControl componentClass="select" className={selfSummon[1].input}
-                                                              value={this.state.selfSummonAmount2}
-                                                              onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
-                        </InputGroup></td>
+                        <td><div>
+                            {selfSummon[0].label}<InputGroup><FormControl componentClass="select"
+                                                                          value={this.state.selfSummonAmount}
+                                                                          onChange={this.handleSummonAmountChange.bind(this, "self", 0)}>{selector.summonAmounts}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                            </div>
+                            <div className={selfSummon[1].input}>
+                            {selfSummon[1].label}<InputGroup><FormControl componentClass="select"
+                                                                          value={this.state.selfSummonAmount2}
+                                                                          onChange={this.handleSummonAmountChange.bind(this, "self", 1)}>{selector.summonAmounts}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                         </div></td>
                     </tr>
 
                     <tr>
@@ -367,15 +371,18 @@ var Summon = CreateClass({
                     </tr>
 
                     <tr>
-                        <td><InputGroup>
-                            {friendSummon[0].label}<FormControl componentClass="select"
-                                                                value={this.state.friendSummonAmount}
-                                                                onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
-                            {friendSummon[1].label}<FormControl componentClass="select"
-                                                                className={friendSummon[1].input}
-                                                                value={this.state.friendSummonAmount2}
-                                                                onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
-                        </InputGroup></td>
+                        <td><div>
+                            {friendSummon[0].label}<InputGroup><FormControl componentClass="select"
+                                                                            value={this.state.friendSummonAmount}
+                                                                            onChange={this.handleSummonAmountChange.bind(this, "friend", 0)}>{selector.summonAmounts}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                            </div>
+                            <div className={friendSummon[1].input}>
+                            {friendSummon[1].label}<InputGroup><FormControl componentClass="select"
+                                                                            value={this.state.friendSummonAmount2}
+                                                                            onChange={this.handleSummonAmountChange.bind(this, "friend", 1)}>{selector.summonAmounts}</FormControl>
+                            <InputGroup.Addon>%</InputGroup.Addon></InputGroup>
+                        </div></td>
                     </tr>
 
                     <tr>

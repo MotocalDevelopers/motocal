@@ -3,6 +3,7 @@ var {Tooltip, OverlayTrigger} = require('react-bootstrap');
 var intl = require('./translate.js');
 var PropTypes = require('prop-types');
 var CreateClass = require('create-react-class');
+const {range} = require("./support_filter.js");
 
 module.exports.TextWithTooltip = CreateClass({
     render: function () {
@@ -91,6 +92,8 @@ module.exports.LIMIT = {
     magnaTA: 50,
     bahaTA: 50,
     otherTA: UNLIMIT_VALUE,
+    chainDamageUP: 1.20,
+    chainDamageLimit: 0.50,
 };
 module.exports.hollowskyNames = [
     "虚空の",
@@ -868,6 +871,7 @@ var skilltypes = {
     "magnaSetsunaS": {name: "マグナ刹那(小)", type: "magnaSetsuna", amount: "S"},
     "magnaSetsuna": {name: "マグナ刹那(中)", type: "magnaSetsuna", amount: "M"},
     "magnaGunshinS": {name: "マグナ軍神(小)", type: "magnaGunshin", amount: "S"},
+    "magnaGunshinM": {name: "マグナ軍神(中)", type: "magnaGunshin", amount: "M"},
     "magnaHissatsuM": {name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M"},
     "magnaKenbuL": {name: "マグナ拳武(大)", type: "magnaKenbu", amount: "L"},
     "magnaJojutsuL": {name: "マグナ杖術(大)", type: "magnaJojutsu", amount: "L"},
@@ -896,6 +900,7 @@ var skilltypes = {
     "magnaHPS": {name: "マグナ守護(小)", type: "magnaHP", amount: "S"},
     "magnaHPM": {name: "マグナ守護(中)", type: "magnaHP", amount: "M"},
     "magnaHPL": {name: "マグナ守護(大)", type: "magnaHP", amount: "L"},
+    "magnaFukashinS": {name: "マグナ不可侵(小)", type: "magnaFukashin", amount: "S"},
     "unknownHPS": {name: "アンノウン・VIT I(小)", type: "unknownHP", amount: "S"},
     "unknownHPM": {name: "アンノウン・VIT I(中)", type: "unknownHP", amount: "M"},
     "unknownHPL": {name: "アンノウン・VIT II(大)", type: "unknownHP", amount: "L"},
@@ -1741,7 +1746,7 @@ var skillAmounts = {
         "LL": [10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 24.0, 24.0, 24.0, 24.0, 24.0],
     },
     "magnaHP": {
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.1, 12.2, 12.3, 12.4, 12.5],
+        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 14.8, 15.1, 15.4, 15.7, 16.0],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.4, 18.8, 19.2, 19.6, 20.0],
     },
@@ -1870,7 +1875,8 @@ var skillAmounts = {
     },
     "magnaGunshin": {
         //only DA effect
-        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]
+        "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5],
+        "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
     },
     "tuiga": {
         //Xuanwu Shellfists/玄武拳の霧氷の追牙・肆
@@ -1930,6 +1936,12 @@ var supportAbilities = {
         "range": "own",
         "value": -0.15
     },
+    "hp_up_own_10": {
+        "name": "HP10%UP(黒騎士)",
+        "type": "HPBuff",
+        "range": "own",
+        "value": 0.10
+    },
     "hp_up_own_15": {
         "name": "HP15%UP(ペコリーヌ)",
         "type": "HPBuff",
@@ -1973,9 +1985,9 @@ var supportAbilities = {
         "value": 0.10
     },
     "element_buff_boost_own_30": {
-        "name": "属性バフ付与時に属性攻撃30%UP(パーシヴァル)",
+        "name": "属性バフ付与時に属性攻撃30%UP(パーシヴァル,アグロヴァル)",
         "type": "element_buff_boost",
-        "range": "own",
+        "range": range.own,
         "value": 0.30
     },
     "eternal_wisdom": {
@@ -2001,6 +2013,24 @@ var supportAbilities = {
         "type": "ougiGageBuff",
         "range": "own",
         "value": 1.00
+    },
+    "ougi_gage_down_own_35": {
+        "name": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
+        "type": "ougiGageBuff",
+        "range": "own",
+        "value": -0.35
+    },
+    "ougi_gage_down_own_35_ta_100": { // NOTE: reserve for TASupport
+        "name": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
+        "type": "ougiGageBuff",
+        "range": "own",
+        "value": -0.35
+    },
+    "ougi_gage_up_djeeta_20": {
+        "name": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
+        "type": "ougiGageBuff",
+        "range": "Djeeta",
+        "value": 0.20,
     },
     "ougi_damage_up_50": {
         "name": "全体奥義ダメージ50%UP(シエテ)",
@@ -2058,38 +2088,53 @@ var supportAbilities = {
     },
     "critical_up_own_10_30": {
         "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "own",
-        "value": 0.10,
-        "attackRatio": 0.30
+        "value": {value: 0.10, attackRatio: 0.30}
     },
     "critical_up_own_20_20": {
         "name": "クリティカル確率UP(発動率20%, 倍率20%)(水着ジャンヌ)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "own",
-        "value": 0.20,
-        "attackRatio": 0.20
+        "value": {value: 0.20, attackRatio: 0.20}
     },
     "critical_up_own_40_50": {
         "name": "クリティカル確率UP(発動率40%, 倍率50%)(キャル)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "own",
-        "value": 0.40,
-        "attackRatio": 0.50
+        "value": {value: 0.40, attackRatio: 0.50}
     },
     "critical_up_all_5_30": {
         "name": "全体クリティカル確率UP(発動率5%, 倍率30%)(フェリ)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "all",
-        "value": 0.05,
-        "attackRatio": 0.30
+        "value": {value: 0.05, attackRatio: 0.30}
     },
     "critical_up_all_100_50": {
         "name": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
-        "type": "criticalBuff",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
         "range": "all",
-        "value": 1.00,
-        "attackRatio": 0.50
+        "value": {value: 1.00, attackRatio: 0.50}
+    },
+    "mamoritai_kono_egao": {
+        "name": "自分以外の味方の攻5%UPとクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア)",
+        "type": "composite",
+        "value": [
+            {ID: "mamorubeshi_sono_egao"},
+            {type: "normalBuff", range: "others", value: 0.05}
+        ]
+    },
+    "mamorubeshi_sono_egao": {
+        "name": "自分以外の味方のクリティカル確率UP(発動率20%, 倍率20%)。(ヤイア(クリスマスver))",
+        "type": "normalOtherCriticalBuff",
+        "assign": "push",
+        "range": "others",
+        "value": {value: 0.20, attackRatio: 0.20}
     },
     "damageUP_5": {
         "name": "与ダメージ上昇5%UP(アビー)",
@@ -2139,6 +2184,108 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0
     },
+    "aegisUP_30": {
+        "name": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
+        "type": "aegisUP",
+        "range": "own",
+        "value": 0.3,
+    },
+    "element_buff_boost_fire_30": {
+        "name": "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)",
+        "type": "element_buff_boost",
+        "range": range.element.fire,
+        "value": 0.30
+    },
+    "element_buff_boost_water_30": {
+        "name": "味方全体の強化効果「水属性攻撃UP」の効果30%UP。(エウロペ)",
+        "type": "element_buff_boost",
+        "range": range.element.water,
+        "value": 0.30
+    },
+    "element_buff_boost_earth_30": {
+        "name": "味方全体の強化効果「土属性攻撃UP」の効果30%UP。(ブローディア)",
+        "type": "element_buff_boost",
+        "range": range.element.earth,
+        "value": 0.30
+    },
+    "element_buff_boost_wind_30": {
+        "name": "味方全体の強化効果「風属性攻撃UP」の効果30%UP。(グリームニル)",
+        "type": "element_buff_boost",
+        "range": range.element.wind,
+        "value": 0.30
+    },
+    "element_buff_boost_wind_15": {
+        "name": "味方全体の強化効果「風属性攻撃UP」の効果15%UP。(コッコロ)",
+        "type": "element_buff_boost",
+        "range": range.element.wind,
+        "value": 0.15
+    },
+    "element_buff_boost_light_30": { // UNUSED
+        "name": "味方全体の強化効果「光属性攻撃UP」の効果30%UP。",
+        "type": "element_buff_boost",
+        "range": range.element.light,
+        "value": 0.30
+    },
+    "element_buff_boost_dark_30": { // UNUSED
+        "name": "味方全体の強化効果「闇属性攻撃UP」の効果30%UP。",
+        "type": "element_buff_boost",
+        "range": range.element.dark,
+        "value": 0.30
+    },
+    "element_buff_boost_all_30": { // UNUSED
+        "name": "味方全体の強化効果「属性攻撃UP」の効果30%UP。",
+        "type": "element_buff_boost",
+        "range": range.all,
+        "value": 0.30
+    },
+    "shinryu_to_no_kizuna": {
+        "name": "属性攻撃UPが付与されている時、自分の攻撃UP。(ヘルエス(風属性ver))",
+        "type": "shinryu_to_no_kizuna",
+        "range": "own",
+        "value": 0.30
+    },
+    "chikara_atsu_no_ha": {
+        "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
+        "type": "additionalDamageXA",
+        "range": "own",
+        "value": [0.8, 0.3, 0.0]
+    },
+    "Revion_kishi_sanshimai": {
+        "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
+        "type": "additionalDamageXA",
+        "range": "own",
+        "value": [0.0, 0.0, 0.15]
+    },
+    "element_buff_boost_damageUP_own_10": {
+        "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
+        "type": "element_buff_boost_damageUP_own_10",
+        "range": "own",
+        "value": 0.10,
+    },
+    "critical_cap_up_light_3": {
+        "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
+        "type": "critical_cap_up",
+        "range": range.element.light,
+        "value": 0.03,
+    },
+    "critical_cap_up_own_10": {
+        "name": "クリティカル発動時にダメージ上限10%UP。(オイゲン(リミテッドver))",
+        "type": "critical_cap_up",
+        "range": range.own,
+        "value": 0.10,
+    },
+    "debuff_resistance_up_own_15": {
+        "name": "弱体耐性15%UP。(レナ、カルメリーナ)",
+        "type": "debuffResistanceBuff",
+        "range": "own",
+        "value": 0.15,
+    },
+    "debuff_resistance_up_own_80": {
+        "name": "弱体耐性80%UP。(フュンフ)",
+        "type": "debuffResistanceBuff",
+        "range": "own",
+        "value": 0.80,
+    },
     "stamina_all_L": {
         "name": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
         "type": "normalSupportKonshin",
@@ -2164,6 +2311,23 @@ var supportAbilities = {
         "range": "own",
         "value": 50000
     },
+    // "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ >> カードキャプター
+    //     "name": "通常攻撃を行わない。()",
+    //     "type": "no_normal_attack",
+    //     "range": "own",
+    //     "value": true,
+    // }, // for the following two: https://github.com/MotocalDevelopers/motocal/pull/259#issuecomment-509314539
+    // "fumetsu_no_mikiri": {
+    //     "name": "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))",
+    //     "type": "fumetsu_no_mikiri",
+    //     "range": "own",
+    //     "value": 0.0,
+    // },
+    // "tousou_no_chishio": {
+    //     "name": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
+    //     "type": "tousou_no_chishio",
+    //     "range": "own",
+    // },
 };
 
 // exports
