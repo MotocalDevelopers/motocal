@@ -457,10 +457,11 @@ var ResultList = CreateClass({
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name;
         var charaInfoStr = intl.translate("ジータさん", locale) + "(" + intl.translate(job, locale) + ") HP";
         if (prof.remainHP != undefined) {
-            charaInfoStr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? (prof.remainHP == 0 ? "1" : prof.remainHP + "% ") : (prof.hp == 0 ? "1" : prof.hp + "% ");
+            charaInfoStr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? (prof.remainHP == 0 ? "1" : prof.remainHP) : (prof.hp == 0 ? "1" : prof.hp);
         } else {
-            charaInfoStr += prof.hp == 0 ? "1" : prof.hp + "% ";
+            charaInfoStr += prof.hp == 0 ? "1" : prof.hp;
         }
+        charaInfoStr += chara[i].remainHP == 0 ? " " : "% ";
         charaInfoStr += "(" + intl.translate(getTypeBonusStr(prof.element, prof.enemyElement), locale) + ")";
         var charaInfo = [<span key={0}>{getElementColorLabel(prof.element, locale)}&nbsp;{charaInfoStr}</span>];
         for (var i = 0; i < chara.length; i++) {
@@ -471,10 +472,11 @@ var ResultList = CreateClass({
                 }
                 charaInfoStr = chara[i].name + plusBonus + " HP";
                 if (chara[i].remainHP != undefined) {
-                    charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? (chara[i].remainHP == 0 ? "1" : chara[i].remainHP + "% ") : (prof.hp == 0 ? "1" : prof.hp + "% ");
+                    charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? (chara[i].remainHP == 0 ? "1" : chara[i].remainHP) : (prof.hp == 0 ? "1" : prof.hp);
                 } else {
-                    charaInfoStr += prof.hp == 0 ? "1" : prof.hp + "% ";
+                    charaInfoStr += prof.hp == 0 ? "1" : prof.hp;
                 }
+                charaInfoStr += chara[i].remainHP == 0 ? " " : "% ";
                 charaInfoStr += "(" + intl.translate(getTypeBonusStr(chara[i].element, prof.enemyElement), locale) + ")";
                 charaInfo.push(<span
                     key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
