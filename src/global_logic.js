@@ -2181,9 +2181,9 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
     var djeetaDA = prof.DA != undefined ? parseFloat(prof.DA) : 6.5;
     var djeetaTA = prof.TA != undefined ? parseFloat(prof.TA) : 3.0;
     var job = prof.job != undefined ? Jobs[prof.job] : Jobs["none"];
-    var zenithATK = prof.zenithAttackBonus != undefined ? parseInt(prof.zenithAttackBonus) : 3000;
-    var zenithHP = prof.zenithHPBonus != undefined ? parseInt(prof.zenithHPBonus) : 1000;
-    var zenithPartyHP = prof.zenithPartyHPBonus != undefined ? parseInt(prof.zenithPartyHPBonus) : 0;
+    var zenithATK = !isNaN(GlobalConst.zenithAttack[prof.zenithAttackBonus]) ? parseInt(GlobalConst.zenithAttack[prof.zenithAttackBonus]) : 0;
+    var zenithHP = !isNaN(GlobalConst.zenithHP[prof.zenithHPBonus]) ? parseInt(GlobalConst.zenithHP[prof.zenithHPBonus]) : 0;
+    var zenithPartyHP = !isNaN(GlobalConst.zenithPartyHP[prof.zenithPartyHPBonus]) ? parseInt(GlobalConst.zenithPartyHP[prof.zenithPartyHPBonus]) : 0;
 
     var djeetaBuffList = {
         personalNormalBuff: 0.0,

@@ -8,6 +8,9 @@ var {CriticalBuffList} = require('./components.js');
 
 // const
 var zenith = GlobalConst.zenith;
+var zenithAttack = GlobalConst.zenithAttack;
+var zenithHP = GlobalConst.zenithHP;
+var zenithPartyHP = GlobalConst.zenithPartyHP;
 var zenithDA = GlobalConst.zenithDA;
 var zenithTA = GlobalConst.zenithTA;
 //var zenithCritical = GlobalConst.zenithCritical;
@@ -23,6 +26,39 @@ var selector = GlobalConst.selector;
 
 var Profile = CreateClass({
     getDefaultProps() {
+        var zenithAttackBonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithAttackBonuses.ja = Object.keys(zenithAttack).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithAttackBonuses.en = Object.keys(zenithAttack).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithAttackBonuses.zh = Object.keys(zenithAttack).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
+        var zenithHPBonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithHPBonuses.ja = Object.keys(zenithHP).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithHPBonuses.en = Object.keys(zenithHP).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithHPBonuses.zh = Object.keys(zenithHP).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
+        var zenithPartyHPBonuses = {"ja": {}, "en": {}, "zh": {}};
+        zenithPartyHPBonuses.ja = Object.keys(zenithPartyHP).map(function (opt) {
+            return <option value={opt} key={opt}>{opt}</option>
+        });
+        zenithPartyHPBonuses.en = Object.keys(zenithPartyHP).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "en")}</option>
+        });
+        zenithPartyHPBonuses.zh = Object.keys(zenithPartyHP).map(function (opt) {
+            return <option value={opt} key={opt}>{intl.translate(opt, "zh")}</option>
+        });
+        
         var zenithBonuses = {"ja": {}, "en": {}, "zh": {}};
         zenithBonuses.ja = Object.keys(zenith).map(function (opt) {
             return <option value={opt} key={opt}>{opt}</option>
@@ -134,6 +170,9 @@ var Profile = CreateClass({
         });
 
         return {
+            zenithAttackBonuses: zenithAttackBonuses,
+            zenithHPBonuses: zenithHPBonuses,
+            zenithPartyHPBonuses: zenithPartyHPBonuses,
             zenithBonuses: zenithBonuses,
             zenithDABonuses: zenithDABonuses,
             zenithTABonuses: zenithTABonuses,
@@ -161,14 +200,14 @@ var Profile = CreateClass({
     getInitialState: function () {
         return {
             rank: 1,
-            zenithAttackBonus: 0,
-            zenithHPBonus: 0,
-            zenithPartyHPBonus: 0,
+            zenithAttackBonus: "無し",
+            zenithHPBonus: "無し",
+            zenithPartyHPBonus: "無し",
             zenithBonus1: "無し",
             zenithBonus2: "無し",
             zenithDABonus: "無し",
             zenithTABonus: "無し",
-            //zenithCriticalBonus: 0,
+            //zenithCriticalBonus: "無し",
             zenithOugiDamageBonus: "無し",
             zenithChainDamageBonus: "無し",
             zenithChainDamageLimitBonus: "無し",
@@ -594,21 +633,21 @@ var Profile = CreateClass({
                     <tr>
                         <th className="bg-primary">{intl.translate("LB 攻撃力", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.zenithAttackBonus}
-                                         onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{selector.zenithAttack} </FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "zenithAttackBonus")}>{this.props.zenithAttackBonuses[locale]} </FormControl>
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("LB HP", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.zenithHPBonus}
-                                         onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")}> {selector.zenithHP} </FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "zenithHPBonus")}> {this.props.zenithHPBonuses[locale]} </FormControl>
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("味方全体のHP", locale)}</th>
                         <td><FormControl componentClass="select" value={this.state.zenithPartyHPBonus}
-                                         onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")}> {selector.zenithPartyHP} </FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "zenithPartyHPBonus")}> {this.props.zenithPartyHPBonuses[locale]} </FormControl>
                         </td>
                     </tr>
 

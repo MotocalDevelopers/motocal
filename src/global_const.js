@@ -121,9 +121,30 @@ var zenith = {　//得意武器
     "★12": 0.20
 };
 
-var zenithAttackBonus = [3000, 1500, 500, 0];
-var zenithHPBonus = [1000, 600, 300, 0];
-var zenithPartyHPBonus = [3000, 2600, 2300, 2000, 1600, 1300, 1000, 600, 300, 0];
+var zenithAttackBonus = {
+    "無し": 0,
+    "★1": 500,
+    "★2": 1500,
+    "★3": 3000
+};
+var zenithHPBonus = {
+    "無し": 0,
+    "★1": 300,
+    "★2": 600,
+    "★3": 1000
+};
+var zenithPartyHPBonus = {
+    "無し": 0,
+    "★1": 300,
+    "★2": 600,
+    "★3": 1000,
+    "★4": 1300,
+    "★5": 1600,
+    "★6": 2000,
+    "★7": 2300,
+    "★8": 2600,
+    "★9": 3000
+};
 var zenithDABonus = {
     "無し": 0,
     "★1": 0.01,
@@ -2332,6 +2353,9 @@ var supportAbilities = {
 
 // exports
 module.exports.opusNames = opusNames;
+module.exports.zenithAttack = zenithAttackBonus;
+module.exports.zenithHP = zenithHPBonus;
+module.exports.zenithPartyHP = zenithPartyHPBonus;
 module.exports.zenith = zenith;
 module.exports.zenithDA = zenithDABonus;
 module.exports.zenithTA = zenithTABonus;
@@ -2794,21 +2818,6 @@ module.exports.selector.zh.summonElements = Object.keys(summonElementTypes).map(
 module.exports.selector.summonAmounts = summonAmountList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
-
-module.exports.selector.zenithAttack = zenithAttackBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithHP = zenithHPBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-module.exports.selector.zenithPartyHP = zenithPartyHPBonus.map(function (opt) {
-    return <option value={opt} key={opt}>{opt}</option>;
-});
-
-//module.exports.selector.zenithCriticalBonus = zenithCriticalBonus.map(function (opt) {
-//    return <option value={opt} key={opt}>{opt}</option>;
-//});
-
 
 module.exports.selector.slv = skilllevels.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
