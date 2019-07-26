@@ -34,6 +34,8 @@ const {
     favCharaContains,
     typeCharaContains,
 } = require('./skill_filter.js');
+const {range, when} = require('./support_filter');
+
 
 module.exports.isCosmos = function (arm) {
     return (skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") ||
