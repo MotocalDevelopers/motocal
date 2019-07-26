@@ -472,7 +472,7 @@ var ResultList = CreateClass({
                 }
                 charaInfoStr = chara[i].name + plusBonus + " HP";
                 if (chara[i].remainHP != undefined) {
-                    charaInfoStr += Math.min(parseInt(prof.remainHP), parseInt(chara[i].remainHP)) || "1";
+                    charaInfoStr += Math.min(parseInt(chara[i].remainHP), parseInt(prof.hp)) || "1";
                 } else {
                     charaInfoStr += prof.hp == 0 ? "1" : prof.hp;
                 }
