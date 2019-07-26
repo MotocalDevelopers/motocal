@@ -457,7 +457,7 @@ var ResultList = CreateClass({
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name;
         var charaInfoStr = intl.translate("ジータさん", locale) + "(" + intl.translate(job, locale) + ") HP";
         if (prof.remainHP != undefined) {
-            charaInfoStr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? (prof.remainHP == 0 ? "1" : prof.remainHP) : (prof.hp == 0 ? "1" : prof.hp);
+            charaInfoStr += Math.min(parseInt(prof.remainHP), parseInt(prof.hp)) || "1";
         } else {
             charaInfoStr += prof.hp == 0 ? "1" : prof.hp;
         }
@@ -472,7 +472,7 @@ var ResultList = CreateClass({
                 }
                 charaInfoStr = chara[i].name + plusBonus + " HP";
                 if (chara[i].remainHP != undefined) {
-                    charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? (chara[i].remainHP == 0 ? "1" : chara[i].remainHP) : (prof.hp == 0 ? "1" : prof.hp);
+                    charaInfoStr += Math.min(parseInt(prof.remainHP), parseInt(prof.hp)) || "1";
                 } else {
                     charaInfoStr += prof.hp == 0 ? "1" : prof.hp;
                 }
