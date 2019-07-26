@@ -95,6 +95,9 @@ module.exports.LIMIT = {
     chainDamageUP: 1.20,
     chainDamageLimit: 0.50,
 };
+module.exports.DEFAULT = {
+    ougiRatio: 4.5,
+};
 module.exports.hollowskyNames = [
     "虚空の",
     "Hollowsky"
