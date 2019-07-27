@@ -485,13 +485,34 @@ var ResultList = CreateClass({
 
         // Create buff info line
         var buffInfo = [];
-        buffInfo.push(intl.translate("通常バフ", locale) + addPercent(prof.normalBuff));
-        buffInfo.push(intl.translate("属性バフ", locale) + addPercent(prof.elementBuff));
-        buffInfo.push(intl.translate("その他バフ", locale) + addPercent(prof.otherBuff));
-        buffInfo.push(intl.translate("DAバフ", locale) + addPercent(prof.daBuff));
-        buffInfo.push(intl.translate("TAバフ", locale) + addPercent(prof.taBuff));
-        buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
+        if (prof.normalBuff != 0) buffInfo.push(intl.translate("通常バフ", locale) + addPercent(prof.normalBuff));
+        if (prof.elementBuff != 0) buffInfo.push(intl.translate("属性バフ", locale) + addPercent(prof.elementBuff));
+        if (prof.otherBuff != 0) buffInfo.push(intl.translate("その他バフ", locale) + addPercent(prof.otherBuff));
+        if (prof.otherBuff2 != 0) buffInfo.push(intl.translate("その他バフ2", locale) + addPercent(prof.otherBuff2));
+        if (prof.criticalBuffCount > 0) {
+            var criticalBuffInfo;
+            for (let i = 0; i < prof.criticalBuffCount; i++) {
+                let number = i + 1;
+                criticalBuffInfo += "(" + "#" + number + ":";
+                criticalBuffInfo += prof.criticalBuff[i].value * 100 + "%" + ",";
+                criticalBuffInfo += prof.criticalBuff[i].attackRatio * 100 + "%";
+                criticalBuffInfo += ")"
+            }
+            buffInfo.push(intl.translate("クリティカルバフ(発動率,倍率)", locale) + criticalBuffInfo);
+        }
+        if (prof.daBuff != 0) buffInfo.push(intl.translate("DAバフ", locale) + addPercent(prof.daBuff));
+        if (prof.taBuff != 0) buffInfo.push(intl.translate("TAバフ", locale) + addPercent(prof.taBuff));
+        if (prof.additionalDamageBuff != 0) buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
+        if (prof.damageLimitBuff != 0) buffInfo.push(intl.translate("ダメージ上限バフ", locale) + addPercent(prof.damageLimitBuff));
+        if (prof.ougiDamageBuff != 0) buffInfo.push(intl.translate("奥義ダメージバフ", locale) + addPercent(prof.ougiDamageBuff));
+        if (prof.ougiDamageLimitBuff != 0) buffInfo.push(intl.translate("奥義ダメージ上限バフ", locale) + addPercent(prof.ougiDamageLimitBuff));
+        if (prof.ougiGageBuff != 0) buffInfo.push(intl.translate("奥義ゲージ上昇量バフ", locale) + addPercent(prof.ougiGageBuff));
+        if (prof.supplementalDamageBuff != 0) buffInfo.push(intl.translate("supplementalDamageBuff", locale) + prof.supplementalDamageBuff);
+        if (prof.uplift != 0) buffInfo.push(intl.translate("高揚", locale) + addPercent(prof.uplift));
+        if (prof.hpBuff != 0) buffInfo.push(intl.translate("HPバフ", locale) + addPercent(prof.hpBuff));
         var buffInfoStr = buffInfo.join(", ");
+        if (!buffInfoStr) buffInfoStr = intl.translate("なし", locale);
+        
     
         // Enemy info line
         var enemyInfo = [];

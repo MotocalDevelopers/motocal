@@ -271,6 +271,11 @@ var multiLangData = {
         "ja": "クリティカルバフ",
         "zh": "Critical Buffs.",
     },
+    "クリティカルバフ(発動率,倍率)": {
+        "en": "Critical Buff(Hit Rate, Multiplier)",
+        "ja": "クリティカルバフ(発動率,倍率)",
+        "zh": "Critical Buff(Hit Rate, Multiplier)",
+    },
     "発動率": {
         "en": "Hit Rate ",
         "ja": "発動率 ",
