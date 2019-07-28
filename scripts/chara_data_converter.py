@@ -279,25 +279,25 @@ supportAbilist["supplemental_third_hit_50k"] = {
 patching = OrderedDict()
 
 # Consecutive atk rate from すんどめ侍さん
-# default: DA7%,TA3%
-# Once we assume that the version differences are the same.(The possibility of being different is high.)
+# Default: DA7%,TA3%
+
 ## Eternals
 patching["[最終]ソーン"] = {"DA": 4.0, "TA": 1.0}
-patching["[最終]サラーサ"] = {"DA": 5.0, "TA": 1.0}
+patching["[最終]サラーサ"] = {"DA": 5.0, "TA": 2.0}
 patching["[最終]カトル"] = {"DA": 10.0, "TA": 5.0}
 patching["[最終]フュンフ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]シス"] = {"DA": 1000.0, "TA": 0.0}
 patching["[最終]シエテ"] = {"DA": 10.0, "TA": 5.0}
-patching["[最終]オクトー"] = {"DA": 25.0, "TA": 1.0} ##support skill DA20%
+patching["[最終]オクトー"] = {"DA": 25.0, "TA": 2.0} # Support skill DA20%
 patching["[最終]ニオ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]エッセル"] = {"DA": 10.0, "TA": 5.0}
 patching["ソーン"] = {"DA": 4.0, "TA": 1.0}
-patching["サラーサ"] = {"DA": 5.0, "TA": 1.0}
+patching["サラーサ"] = {"DA": 5.0, "TA": 2.0}
 patching["カトル"] = {"DA": 10.0, "TA": 5.0}
 patching["フュンフ"] = {"DA": 4.0, "TA": 1.0}
 patching["シス"] = {"DA": 1000.0, "TA": 0.0}
 patching["シエテ"] = {"DA": 10.0, "TA": 5.0}
-patching["オクトー"] = {"DA": 5.0, "TA": 1.0}
+patching["オクトー"] = {"DA": 5.0, "TA": 2.0}
 patching["ニオ"] = {"DA": 4.0, "TA": 1.0}
 patching["エッセル"] = {"DA": 10.0, "TA": 5.0}
 
@@ -313,8 +313,11 @@ patching["グレア"] = {"DA": 10.0, "TA": 5.0}
 patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
 patching["アラナン"] = {"DA": 10.0, "TA": 5.0}
 patching["パーシヴァル"] = {"DA": 10.0, "TA": 5.0}
+patching["ニーナ・ドランゴ"] = {"DA": 10.0, "TA": 5.0}
+patching["紅月カレン"] = {"DA": 10.0, "TA": 5.0}
+patching["フラウ"] = {"DA": 10.0, "TA": 5.0}
 
-patching["ユエル"] = {"DA": 12.0, "TA": 3.0} ##support skill DA5%
+patching["ユエル"] = {"DA": 12.0, "TA": 3.0} # Support skill DA5%
 
 patching["アオイドス"] = {"DA": 4.0, "TA": 1.0}
 patching["アニラ"] = {"DA": 4.0, "TA": 1.0}
@@ -328,6 +331,7 @@ patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 1000.0
 patching["ジェミニ・サンライズ"] = {"DA": 10.0, "TA": 5.0}
 patching["テレーズ(バニーver)"] = {"DA": 10.0, "TA": 5.0}
 patching["天道輝"] = {"DA": 10.0, "TA": 5.0}
+patching["神月かりん"] = {"DA": 10.0, "TA": 5.0}
 
 ## 水 - Water
 patching["イングヴェイ"] = {"DA": 10.0, "TA": 5.0}
@@ -336,18 +340,16 @@ patching["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["桜内梨子＆高海千歌＆渡辺 曜"] = {"DA": 10.0, "TA": 5.0}
 patching["ヴァジラ"] = {"DA": 10.0, "TA": 5.0}
 patching["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ソシエ"] = {"DA": 20.0, "TA": 5.0} ##support skill DA10%
+patching["ソシエ"] = {"DA": 20.0, "TA": 5.0} # Support skill DA10%
 patching["イシュミール"] = {"DA": 10.0, "TA": 5.0}
-patching["イシュミール(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["グレア(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 
 patching["リリィ"] = {"DA": 4.0, "TA": 1.0}
 patching["エウロペ"] = {"DA": 4.0, "TA": 1.0}
 patching["ダヌア(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
-patching["シャルロッテ"] = {"DA": 4.0, "TA": 1.0}
 
 ### SR
-patching["アンジェ"] = {"DA": 12.0, "TA": 3.0}  ##support skill DA5%
+patching["アンジェ"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
 
 patching["テレーズ"] = {"DA": 10.0, "TA": 5.0}
 patching["春麗"] = {"DA": 10.0, "TA": 5.0}
@@ -356,11 +358,11 @@ patching["オーウェン"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 土 - Earth
 patching["アレーティア"] = {"DA": 10.0, "TA": 5.0}
-patching["ダーント＆フライハイト"] = {"DA": 10.0, "TA": 5.0}
 patching["ヴィーラ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["キャサリン"] = {"DA": 10.0, "TA": 5.0}
 patching["ネモネ"] = {"DA": 10.0, "TA": 5.0}
 patching["ユーステス(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ダーント＆フライハイト"] = {"DA": 10.0, "TA": 5.0}
 
 patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
 patching["サラ"] = {"DA": 4.0, "TA": 1.0}
@@ -368,8 +370,6 @@ patching["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
 
 patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
-patching["ユーステス(ハロウィンver)"] = {"DA": 13.0, "TA": 5.5}
-patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 6.0, "TA": 5.0}
 
 ### SR
 patching["カルメリーナ(SR)"] = {"DA": 4.0, "TA": 1.0}
@@ -378,11 +378,11 @@ patching["カルメリーナ(SR)"] = {"DA": 4.0, "TA": 1.0}
 patching["ユエル(水着ver)"] = {"DA": 12.0, "TA": 3.0}
 patching["コッコロ"] = {"DA": 12.0, "TA": 3.0}
 
-patching["ユイシス"] = {"DA": 10.0, "TA": 5.0}
 patching["ヘルエス(風属性ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["メリッサベル"] = {"DA": 10.0, "TA": 5.0}
 patching["スカーサハ"] = {"DA": 10.0, "TA": 5.0}
 patching["ジャンヌダルク(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ジークフリート(浴衣ver)"] = {"DA": 10.0, "TA": 5.0}
 
 patching["コルワ"] = {"DA": 4.0, "TA": 1.0}
 patching["コルワ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
@@ -392,7 +392,6 @@ patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
 patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
 
 ### SR
-patching["ユイシス(浴衣ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
 
 patching["フィーナ"] = {"DA": 4.0, "TA": 1.0}
@@ -408,13 +407,13 @@ patching["メリッサベル(バレンタインver)"] = {"DA": 10.0, "TA": 5.0}
 patching["メーテラ(クリスマスver)"] = {"DA": 10.0, "TA": 5.0}
 patching["シルヴァ(光属性ver)"] = {"DA": 10.0, "TA": 5.0}
 patching["ルシオ(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
+patching["ガイゼンボーガ"] = {"DA": 10.0, "TA": 5.0}
 
 patching["バウタオーダ(SSR)"] = {"DA": 4.0, "TA": 1.0}
 patching["イオ(リミテッドver)"] = {"DA": 4.0, "TA": 1.0}
 patching["ソフィア"] = {"DA": 4.0, "TA": 1.0}
 patching["レ・フィーエ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["シャルロッテ(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
-patching["シャルロッテ(光属性ver)"] = {"DA": 4.0, "TA": 1.0}
 
 patching["アルベール"] = {"DA": 1000.0, "TA": 3.0}
 patching["プリキュア"] = {"DA": 1000.0, "TA": 3.0}
@@ -425,7 +424,7 @@ patching["ハールート・マールート(水着ver)"] = {"DA": 1000.0, "TA": 
 patching["ゼタ(SR)"] = {"DA": 10.0, "TA": 5.0}
 patching["フェリ(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
 
-patching["アンジェ(ハロウィンver)"] = {"DA": 12.0, "TA": 3.0}  ##support skill DA5%
+patching["アンジェ(ハロウィンver)"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
 
 patching["フィーナ(クリスマスver)"] = {"DA": 4.0, "TA": 1.0}
 
@@ -452,7 +451,8 @@ patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 ### SR
 patching["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
 
-# Patching ougi ratio https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968
+# Patching ougi ratio 
+# Verification list: https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968
 patchingOugiRatio = OrderedDict()
 
 defaultOugiRatio = {
@@ -461,7 +461,10 @@ defaultOugiRatio = {
     "SSR": 4.5,
 }
 
-## SSR(Lv100) https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/article/show/22824
+## SSR
+### SSR (5★)
+### 5★ Character list: https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/article/show/22824
+#### Please add below.
 patchingOugiRatio["レディ・グレイ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["バザラガ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ナルメア"] = {"ougiRatio": 5.0}
@@ -493,17 +496,18 @@ patchingOugiRatio["桜内梨子＆高海千歌＆渡辺 曜"] = {"ougiRatio": 5.
 patchingOugiRatio["サンダルフォン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァンピィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["リリィ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["アイル"] = {"ougiRatio": 5.0}
 
-### SSR(Guardian Deity(十二神将) Lv100)
+### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["アニラ"] = {"ougiRatio": 5.5}
 
-### SSR(Guardian Deity(十二神将))
+### SSR (Guardian Deity 4★) (十二神将)
 patchingOugiRatio["クビラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["マキラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァジラ"] = {"ougiRatio": 5.0}
 
-### SSR(The Eternals(十天衆) Lv100)
+### SSR (The Eternals 5★) (最終十天衆) 
 patchingOugiRatio["[最終]ウーノ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]ソーン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]サラーサ"] = {"ougiRatio": 5.0}
@@ -515,7 +519,7 @@ patchingOugiRatio["[最終]オクトー"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]ニオ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]エッセル"] = {"ougiRatio": 5.0}
 
-### SSR(Other)
+### SSR (Other)
 patchingOugiRatio["アギエルバ"] = {"ougiRatio": 4.7}
 patchingOugiRatio["イオ(水着ver)"] = {"ougiRatio": 4.7}
 patchingOugiRatio["レ・フィーエ(水着ver)"] = {"ougiRatio": 4.7}
@@ -527,7 +531,7 @@ patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 
-### SSR(Not Ougi)
+### SSR (Not to ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
 patchingOugiRatio["コルワ(水着ver)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["コッコロ"] = {"ougiRatio": 0.0}
@@ -535,7 +539,7 @@ patchingOugiRatio["ディアンサ(水着ver)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["木之本桜"] = {"ougiRatio": 0.0}
 
 ## SR
-### SR(Lv90)
+### SR (5★)
 patchingOugiRatio["ルシウス"] = {"ougiRatio": 4.0}
 patchingOugiRatio["リタ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["ダヌア"] = {"ougiRatio": 4.0}
@@ -566,14 +570,14 @@ patchingOugiRatio["ティナ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["城ヶ崎莉嘉"] = {"ougiRatio": 4.0}
 patchingOugiRatio["シャオ"] = {"ougiRatio": 4.0}
 
-### SR(Other)
+### SR (Other)
 patchingOugiRatio["カタリナ(水着ver)"] = {"ougiRatio": 3.7}
 patchingOugiRatio["ヘルナル(水着ver)"] = {"ougiRatio": 3.7}
 patchingOugiRatio["アンジェ(ハロウィンver)"] = {"ougiRatio": 3.7}
 patchingOugiRatio["アレク"] = {"ougiRatio": 4.2}
 patchingOugiRatio["ルリア"] = {"ougiRatio": 6.0}
 
-### SR(Not Ougi)
+### SR (Not to ougi)
 patchingOugiRatio["ヤイア"] = {"ougiRatio": 0.0}
 patchingOugiRatio["ローアイン"] = {"ougiRatio": 0.0}
 patchingOugiRatio["ディアンサ"] = {"ougiRatio": 0.0}

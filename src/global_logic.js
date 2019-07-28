@@ -1,6 +1,9 @@
 var intl = require('./translate.js');
 var GlobalConst = require('./global_const.js');
-const {LIMIT} = GlobalConst;
+const {
+    LIMIT,
+    DEFAULT,
+} = GlobalConst;
 var supplemental = require('./supplemental.js');
 var elementRelation = GlobalConst.elementRelation;
 var bahamutRelation = GlobalConst.bahamutRelation;
@@ -252,8 +255,7 @@ module.exports.calcDamage = function (summedAttack, totalSkillCoeff, criticalRat
 module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, criticalRatio, enemyDefense, defenseDebuff, enemyResistance, ougiRatio, ougiDamageUP, damageUP, ougiDamageLimit, ougiFixedDamage, ougiBonusPlainDamage) {
     // Damage calculation
     var def = module.exports.calcDefenseDebuff(enemyDefense, defenseDebuff);
-    var ratio = ougiRatio != undefined ? ougiRatio : 4.5;
-    var damage = (1.0 + ougiDamageUP) * ratio * Math.ceil(summedAttack / def) * totalSkillCoeff * criticalRatio;
+    var damage = (1.0 + ougiDamageUP) * ougiRatio * Math.ceil(summedAttack / def) * totalSkillCoeff * criticalRatio;
     damage += ougiFixedDamage * criticalRatio;
     var overedDamage = 0.0;
 
@@ -557,6 +559,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             otherCoeff *= 1.10;
         }
         otherCoeff *= prof.retsujitsuNoRakuen ? 1.20 : 1;
+        otherCoeff *= prof.shiToAiNoSekai ? 1.20 : 1;
 
         // Character Emnity
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"];
@@ -698,6 +701,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var additionalDamage = 0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"];
         additionalDamage += totals[key]["additionalDamageBuff"];
         additionalDamage += buff["additionalDamage"];
+        additionalDamage += prof.shiToAiNoSekai ? 0.30 : 0;
         if (totals[key]["additionalDamageXA"]) {
             //additionalDamage based on attacks per turn (sturm support ability-like)
             let [saDamage, daDamage, taDamage] = totals[key]["additionalDamageXA"];
@@ -1473,7 +1477,7 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["other"] += 0.01 * parseInt(prof.otherBuff);
     totalBuff["zenith1"] += zenith[prof.zenithBonus1];
     totalBuff["zenith2"] += zenith[prof.zenithBonus2];
-    totalBuff["zenithDA"] += zenithDA[prof.zenithTABonus] != undefined ? zenithDA[prof.zenithDABonus] : 0;
+    totalBuff["zenithDA"] += zenithDA[prof.zenithDABonus] != undefined ? zenithDA[prof.zenithDABonus] : 0;
     totalBuff["zenithTA"] += zenithTA[prof.zenithTABonus] != undefined ? zenithTA[prof.zenithTABonus] : 0;
     //totalBuff["zenithCritical"] += zenithCritical[prof.zenithCriticalBonus] != undefined ? zenithCritical[prof.zenithCriticalBonus] : 0;
     totalBuff["zenithOugiDamage"] += zenithOugiDamage[prof.zenithOugiDamageBonus] != undefined ? zenithOugiDamage[prof.zenithOugiDamageBonus] : 0;
@@ -1834,6 +1838,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'sunbladeKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
+                    } else if (stype == 'rigaiBishojo') {
+                        // skill is all allies not restricted to element
+                        totals[key]["criticalDamageLimit"] += comb[i] * 0.05;
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
@@ -2303,7 +2310,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: djeetaBuffList["personalTABuff"],
                 DASupport: 0,
                 TASupport: 0,
-                ougiRatio: prof.ougiRatio,
+                ougiRatio: !isNaN(prof.ougiRatio) ? parseFloat(prof.ougiRatio) : DEFAULT.ougiRatio,
                 ougiBonusPlainDamage: 0,
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
                 uplift: djeetaBuffList["personalUplift"],
@@ -2470,7 +2477,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TABuff: charaBuffList["taBuff"],
                 DASupport: 0,
                 TASupport: 0,
-                ougiRatio: chara[i].ougiRatio,
+                ougiRatio: !isNaN(chara[i].ougiRatio) ? parseFloat(chara[i].ougiRatio) : DEFAULT.ougiRatio,
                 ougiBonusPlainDamage: chara[i].ougiBonusPlainDamage != undefined ? parseInt(chara[i].ougiBonusPlainDamage) : 0,
                 ougiGageBuff: charaBuffList["ougiGageBuff"],
                 uplift: charaBuffList["uplift"],
@@ -2840,20 +2847,19 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     }
                     continue;
                 // case "tousou_no_chishio":
-                //     if (totals[key]['remainHP'] <= 1 && totals[key]['remainHP'] > 0.6) {
-                //         totals[key]["DASupport"] += 0.10;
-                //         totals[key]["damageLimitBuff"] += 0.0;
-                //         totals[key]["ougiDamageLimitBuff"] += 0.0;
-                //     } else if (totals[key]['remainHP'] <= 0.6 && totals[key]['remainHP'] > 0.4) {
+                //     if (totals[key]['remainHP'] <= 0.6 && totals[key]['remainHP'] > 0.4) {
                 //         totals[key]["DASupport"] += 0.20;
+                //         totals[key]["TASupport"] += 0.10;
                 //         totals[key]["damageLimitBuff"] += 0.10;
                 //         totals[key]["ougiDamageLimitBuff"] += 0.0;
                 //     } else if (totals[key]['remainHP'] <= 0.4 && totals[key]['remainHP'] > 0.2) {
                 //         totals[key]["DABuff"] += 0.30;
+                //         totals[key]["TASupport"] += 0.15;
                 //         totals[key]["damageLimitBuff"] += 0.20;
                 //         totals[key]["ougiDamageLimitBuff"] += 0.15;
-                //     } else {
-                //         totals[key]["DASupport"] += 0.40;
+                //     } else if (totals[key]['remainHP'] <= 0.2 && totals[key]['remainHP'] >= 0.0) {
+                //         totals[key]["DASupport"] += 0.50;
+                //         totals[key]["TASupport"] += 0.25;
                 //         totals[key]["damageLimitBuff"] += 0.30;
                 //         totals[key]["ougiDamageLimitBuff"] += 0.20;
                 //     }
