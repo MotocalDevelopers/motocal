@@ -38,7 +38,6 @@ class CriticalBuffList extends React.Component {
      * @param {Object} e  ... Event object
      */
     handleOnBlur(key, e){
-        console.log(this, key, e)
         if (this.props.onBlur) {
             this.props.onBlur(e);
         }
