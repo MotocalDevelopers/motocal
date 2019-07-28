@@ -95,6 +95,9 @@ module.exports.LIMIT = {
     chainDamageUP: 1.20,
     chainDamageLimit: 0.50,
 };
+module.exports.DEFAULT = {
+    ougiRatio: 4.5,
+};
 module.exports.hollowskyNames = [
     "虚空の",
     "Hollowsky"
@@ -916,6 +919,7 @@ var skilltypes = {
     "maihimeEnbu": {name: "舞姫の演武", type: "maihimeEnbu", amount: "M"},
     "hengenKengi": {name: "変幻自在の剣技", type: "maihimeEnbu", amount: "M"},
     "kochoKenbu": {name: "胡蝶の剣舞", type: "normal", amount: "L"},
+    "rigaiBishojo": {name: "理外の美少女", type: "rigaiBishojo", amount: "L"},
     "cosmos-sword": {name: "コスモス剣", type: "cosmosArm", amount: "L", cosmosArm: "sword"},
     "cosmos-dagger": {name: "コスモス短剣", type: "cosmosArm", amount: "L", cosmosArm: "dagger"},
     "cosmos-spear": {name: "コスモス槍", type: "cosmosArm", amount: "L", cosmosArm: "spear"},
@@ -2566,6 +2570,13 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2Detail"],
         selectors: ["victorious_calamitous_covenant"],
         defaultKeys: ["0"],
+    },
+    "[4凸]オンリー・プリティ・ガール": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
     }
 };
 
