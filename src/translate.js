@@ -371,7 +371,7 @@ var multiLangData = {
         "ja": "奥義ダメージ上限バフ",
         "zh": "C.A. DMG Buff",
     },
-	
+
     "与ダメージ上昇": {
         "en": "Damage UP ",
         "ja": "与ダメージ上昇",
@@ -446,7 +446,7 @@ var multiLangData = {
         "en": "It is used to calc the C.A damage.",
         "ja": "奥義ダメージの算出に使用されます。",
         "zh": "奥义伤害的计算中有用到。",
-	},
+    },
     "奥義ゲージ上昇奥義": {
         "en": "Charge Boost C.A.",
         "ja": "奥義時の奥義ゲージ上昇効果",
@@ -456,7 +456,7 @@ var multiLangData = {
         "en": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
         "ja": "奥義ゲージ最大値を効果分マイナスして擬似的に再現します(奥義ゲージ上昇率バフも加味)。無銘金重(10%)など",
         "zh": "Decrease the maximum Charge Bar value by the effect size. Unsigned Kaneshige(10%) etc.",
-	},
+    },
     "高揚": {
         "en": "Uplift",
         "ja": "高揚",
@@ -598,7 +598,7 @@ var multiLangData = {
         "en": "Classes bonuses and Specialty weapons bonuses are automatically inclueded in calculation. Select \"none\" if you want no bonuses and Specialty weapons.",
         "ja": "ジョブごとのボーナス等は自動で反映されます。得意武器補正などを反映したくない場合\"なし\"を選択して下さい。",
         "zh": "不同职业的Bonus会自动反映。不想让得意武器补正之类反映出的话请选择\"无\"。",
-	},
+    },
     "攻撃ボーナス": {
         "en": "ATK Bonus",
         "ja": "攻撃ボーナス",
@@ -619,7 +619,7 @@ var multiLangData = {
         "ja": "守護ボーナス",
         "zh": "守护Bonus",
     },
-	
+
     "ジータさんリミットボーナス": {
         "en": "Player's Extended Mastery",
         "ja": "ジータさんリミットボーナス",
@@ -644,22 +644,22 @@ var multiLangData = {
         "en": "ATK ",
         "ja": "攻撃力",
         "zh": "攻击力",
-	},
+    },
     "LB HP": {
         "en": "HP",
         "ja": "HP",
         "zh": "HP",
-	},
+    },
     "得意武器攻撃1": {
         "en": "Specialty WPN I\n",
         "ja": "得意武器攻撃I",
         "zh": "武器LB 1",
-	},
+    },
     "得意武器攻撃2": {
         "en": "Specialty WPN II\n",
         "ja": "得意武器攻撃II",
         "zh": "武器LB 2",
-	},
+    },
     "得意武器攻撃の説明": {
         "en": "Specialty WPN Ⅱ (Over ★4) is calculated as 6%, 8%, 10% on the assumption that Ⅰ is all mastered.",
         "ja": "得意武器IIのLB（★4以上）は、Iをすべてマスター済みという前提で各6%, 8%, 10%として計算します。",
@@ -669,140 +669,140 @@ var multiLangData = {
         "en": "DA",
         "ja": "DA",
         "zh": "DA",
-	},
+    },
     "LB DAの説明": {
         "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
         "ja": "II以降はIを★3まで取得していること前提です。",
         "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
-	},
+    },
     "LB TA": {
         "en": "TA",
         "ja": "TA",
         "zh": "TA",
-	},
+    },
     "LB TAの説明": {
         "en": "TA",
         "ja": "TA",
         "zh": "TA",
-	},
+    },
     "LB ダメージ上限UP": {
         "en": "DMG Cap",
         "ja": "ダメージ上限UP",
         "zh": "DMG Cap",
-	},
+    },
     "LB ダメージ上限UPの説明": {
         "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
         "ja": "II以降はIを★3まで取得していること前提です。",
         "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
-	},
+    },
     "LB 奥義": {
         "en": "C.A. DMG",
         "ja": "奥義ダメージ",
         "zh": "C.A. DMG",
-	},
+    },
     "LB 奥義の説明": {
         "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
         "ja": "II以降はIを★3まで取得していること前提です。",
         "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
-	},
+    },
     "LB 属性攻撃": {
         "en": "Element ATK",
         "ja": "属性攻撃",
         "zh": "Element ATK",
-	},
+    },
     "LB 属性攻撃の説明": {
         "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
         "ja": "II以降はIを★3まで取得していること前提です。",
         "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
-	},
+    },
     "LB チェンバ": {
         "en": "Chain Burst DMG",
         "ja": "チェンバ",
         "zh": "Chain Burst DMG",
-	},
+    },
     "LB チェンバの説明": {
         "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
         "ja": "II以降はIを★3まで取得していること前提です。",
         "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
-	},
+    },
     "LB チェンバ上限": {
         "en": "Chain Burst DMG Cap",
         "ja": "チェンバ上限",
         "zh": "Chain Burst DMG Cap",
-	},
+    },
     "LB チェンバ上限の説明": {
         "en": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
         "ja": "II以降はIを★3まで取得していること前提です。",
         "zh": "It is assumed that Ⅰ has been acquired to ★3 since Ⅱ.",
-	},
+    },
     "LB クリティカル": {
         "en": "Critical",
         "ja": "クリティカル",
         "zh": "Critical",
-	},
+    },
     "小": {
         "en": "Small",
         "ja": "小",
         "zh": "小",
-	},
+    },
     "中": {
         "en": "Medium",
         "ja": "中",
         "zh": "中",
-	},
+    },
     "大": {
         "en": "Big",
         "ja": "大",
         "zh": "大",
-	},
+    },
     "LB クリティカルの説明": {
         "en": "",
         "ja": "発生率と倍率共にの%",
         "zh": "",
-	},
+    },
     "その他ジータさんLB": {
         "en": "Other Perk",
         "ja": "他LB",
         "zh": "Other Perk",
-	},
-	
+    },
+
     "指輪": {
         "en": "Over Mastery",
         "ja": "EXLB",
         "zh": "Over Mastery",
-	},
+    },
     "奥義ダメージ上限": {
         "en": "C.A. DMG Cap",
         "ja": "奥義ダメージ上限",
         "zh": "奧義上限",
-	},
+    },
     "クリティカル確率": {
         "en": "Critical Hit",
         "ja": "クリティカル確率",
         "zh": "暴擊率",
-	},
+    },
     "背水": {
         "en": "Enmity",
         "ja": "背水",
         "zh": "背水",
-	},
+    },
     "渾身": {
         "en": "Stamina",
         "ja": "渾身",
         "zh": "渾身",
-	},
+    },
     "DA": {
         "en": "DA",
         "ja": "DA",
         "zh": "DA",
-	},
+    },
     "TA": {
         "en": "TA",
         "ja": "TA",
         "zh": "TA",
-	},
-	
-	
+    },
+
+
     "ジータさんマスターボーナス": {
         "en": "Player's Master Bonuses",
         "ja": "ジータさんマスターボーナス",
@@ -863,7 +863,7 @@ var multiLangData = {
         "ja": "ジョブマスターボーナスの\"ダメージ上限+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DMG Cap+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
-	
+
     "ジータさん属性": {
         "en": "Player's Element",
         "ja": "ジータさん\n属性",
@@ -878,7 +878,7 @@ var multiLangData = {
         "en": "Element Correlation is automatically judged.",
         "ja": "有利/非有利/不利は、敵の属性に従って自動で判定されます。",
         "zh": "有利/非有利/不利会随着敌人的属性自动判定出。",
-	},
+    },
     "基礎DA率": {
         "en": "Base DA",
         "ja": "基礎DA率",
@@ -1663,12 +1663,12 @@ var multiLangData = {
         "en": "Enmity Perk",
         "ja": "LB背水",
         "zh": "LB背水",
-	  },
+    },
     "LB渾身ラベル": {
         "en": "Stamina Perk",
         "ja": "LB渾身",
         "zh": "LB渾身",
-	  },
+    },
     "CriticalDamageLimit (effective)": {
         "en": "CriticalDamageLimit (effective)",
         "ja": "CriticalDamageLimit (effective)",
@@ -1678,7 +1678,7 @@ var multiLangData = {
         "en": "C.A. Fixd DMG",
         "ja": "奥義固定",
         "zh": "奥義固定",
-	  },
+    },
     "グラフに加える": {
         "en": "Add to \ngraphs",
         "ja": "グラフに\n加える",
@@ -2294,9 +2294,9 @@ var multiLangData = {
         "zh": "10% boost to Damage when affected by Element ATK Buff. (Olivia)",
     },
     "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)": {
-        "en": "Boost to double attack rate and damage cap based on how low HP is. (Ayer)",
+        "en": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
         "ja": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
-        "zh": "Boost to double attack rate and damage cap based on how low HP is. (Ayer)",
+        "zh": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
     },
     "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))": {
         "en": "3% boost to Light characters' critical hit damage cap. (Silva (Light))",
@@ -2328,11 +2328,6 @@ var multiLangData = {
         "ja": "通常攻撃を行わない",
         "zh": "Doesn't attack",
     },
-    // "": {
-    //     "en": "",
-    //     "ja": "",
-    //     "zh": "",
-    // },
     "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP": {
         "en": "15% boost to all allies ATK based on how high character HP is (various)",
         "ja": "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP",
@@ -2404,11 +2399,6 @@ var multiLangData = {
         "ja": "予想ターン毎ダメージのパーティ平均値",
         "zh": "预测DPT(全队平均值)",
     },
-//    "予想ダメージ経時的な": {
-//        "en": "Party-Averaged Exp. Over Time",
-//        "ja": "予想ダメージ経時的な",
-//        "zh": "预测DPS(全队平均值)",
-//    },
     "予想ダメージ(ジータさんのみ)": {
         "en": "Exp. Damage (Player only)",
         "ja": "予想ダメージ(ジータさんのみ)",
@@ -3010,6 +3000,11 @@ var multiLangData = {
         "ja": "変幻自在の剣技",
         "zh": "変幻自在の剣技",
     },
+    "理外の美少女": {
+        "en": "Transcendent Cuteness",
+        "ja": "理外の美少女",
+        "zh": "理外の美少女",
+    },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
         "ja": "通常技巧(小)",
@@ -3476,7 +3471,7 @@ var multiLangData = {
         "en": "Damage Cap UP(7.0%)",
         "ja": "邪道: 通常上限UP(7.0%)",
         "zh": "邪道: 通常上限UP(7.0%)",
-	},
+    },
     "敵防御10.0": {
         "en": "10.0 (General)",
         "ja": "10.0 (一般的な敵)",
@@ -3501,7 +3496,7 @@ var multiLangData = {
         "en": "13.0 (Omega II(4 Elements))",
         "ja": "13.0 (マグナⅡ4属性)",
         "zh": "13.0 (Omega II(4 Elements))",
-	},
+    },
     "敵防御14.0": {
         "en": "14.0 (Freyr)",
         "ja": "14.0 (フレイ)",
@@ -3516,7 +3511,7 @@ var multiLangData = {
         "en": "20.0 (Proto Baha HL/Lucilius H)",
         "ja": "20.0 (プロトバハムートHL/ルシファーH)",
         "zh": "20.0 (Proto Baha HL/Lucilius H)",
-	},
+    },
     // chart sort key
     "ジータさん残りHP": {
         "en": "Player Remain HP",
