@@ -490,7 +490,7 @@ var ResultList = CreateClass({
         if (prof.otherBuff != 0) buffInfo.push(intl.translate("その他バフ", locale) + addPercent(prof.otherBuff));
         if (prof.otherBuff2 != 0) buffInfo.push(intl.translate("その他バフ2", locale) + addPercent(prof.otherBuff2));
         if (prof.criticalBuffCount > 0) {
-            var criticalBuffInfo;
+            let criticalBuffInfo = "";
             for (let i = 0; i < prof.criticalBuffCount; i++) {
                 let number = i + 1;
                 criticalBuffInfo += "(" + "#" + number + ":";
