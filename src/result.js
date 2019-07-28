@@ -522,9 +522,9 @@ var ResultList = CreateClass({
         // Enemy info line
         var enemyInfo = [];
         enemyInfo.push(intl.translate("敵防御固有値", locale) + ": " + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
-        enemyInfo.push(intl.translate("防御デバフ合計", locale) + ": " + addPercent(prof.defenseDebuff));
+        enemyInfo.push(intl.translate("防御デバフ合計", locale) + ": " + addPercent(prof.defenseDebuff || "0"));
         enemyInfo.push(intl.translate("烈日の楽園", locale) + ": " + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
-        enemyInfo.push(intl.translate("敵非有利耐性", locale) + ": " + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance)))));
+        enemyInfo.push(intl.translate("敵非有利耐性", locale) + ": " + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance || "0")))));
         var enemyInfoStr = enemyInfo.join(", ");
 
         if (_ua.Mobile || _ua.Tablet) {
