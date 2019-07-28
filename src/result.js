@@ -489,7 +489,7 @@ var ResultList = CreateClass({
         if (parseFloat(prof.normalBuff)) buffInfo.push(intl.translate("通常バフ", locale) + addPercent(prof.normalBuff));
         if (parseFloat(prof.elementBuff)) buffInfo.push(intl.translate("属性バフ", locale) + addPercent(prof.elementBuff));
         if (parseFloat(prof.otherBuff)) buffInfo.push(intl.translate("その他バフ", locale) + addPercent(prof.otherBuff));
-        if (parseFloat(prof.otherBuff2)) buffInfo.push(intl.translate("その他バフ", locale) + "(2)" + addPercent(prof.otherBuff2));
+        if (parseFloat(prof.otherBuff2)) buffInfo.push(intl.translate("その他バフ2", locale) + " " + addPercent(prof.otherBuff2));
         if (parseFloat(prof.criticalBuffCount)) {
             let criticalBuffInfo = "";
             for (let i = 0; i < prof.criticalBuffCount; i++) {
