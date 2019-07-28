@@ -482,6 +482,7 @@ var ResultList = CreateClass({
         }
     
         var addPercent = (value) => intl.translate("percent", locale).replace("{}", value === undefined ? "0" : value);
+        var addBlank = (value) => intl.translate("percent", locale).replace("{}%", value === undefined ? "0" : value);
 
         // Create buff info line
         var buffInfo = [];
@@ -493,8 +494,8 @@ var ResultList = CreateClass({
             let criticalBuffInfo = "";
             for (let i = 0; i < prof.criticalBuffCount; i++) {
                 let number = i + 1;
-                criticalBuffInfo += "(" + "#" + number + ":";
-                criticalBuffInfo += prof.criticalBuff[i].value * 100 + "%" + ",";
+                criticalBuffInfo += "(#" + number + ":";
+                criticalBuffInfo += prof.criticalBuff[i].value * 100 + "%,";
                 criticalBuffInfo += prof.criticalBuff[i].attackRatio * 100 + "%";
                 criticalBuffInfo += ")"
             }
@@ -507,7 +508,7 @@ var ResultList = CreateClass({
         if (prof.ougiDamageBuff != 0 && !isNaN(prof.ougiDamageBuff)) buffInfo.push(intl.translate("奥義ダメージバフ", locale) + addPercent(prof.ougiDamageBuff));
         if (prof.ougiDamageLimitBuff != 0 && !isNaN(prof.ougiDamageLimitBuff)) buffInfo.push(intl.translate("奥義ダメージ上限バフ", locale) + addPercent(prof.ougiDamageLimitBuff));
         if (prof.ougiGageBuff != 0 && !isNaN(prof.ougiGageBuff)) buffInfo.push(intl.translate("奥義ゲージ上昇量バフ", locale) + addPercent(prof.ougiGageBuff));
-        if (prof.supplementalDamageBuff != 0 && !isNaN(prof.supplementalDamageBuff)) buffInfo.push(intl.translate("supplementalDamageBuff", locale) + prof.supplementalDamageBuff);
+        if (prof.supplementalDamageBuff != 0 && !isNaN(prof.supplementalDamageBuff)) buffInfo.push(intl.translate("supplementalDamageBuff", locale) + addBlank(prof.supplementalDamageBuff));
         if (prof.uplift != 0 && !isNaN(prof.uplift)) buffInfo.push(intl.translate("高揚", locale) + addPercent(prof.uplift));
         if (prof.hpBuff != 0 && !isNaN(prof.hpBuff)) buffInfo.push(intl.translate("HPバフ", locale) + addPercent(prof.hpBuff));
         var buffInfoStr = buffInfo.join(", ");
