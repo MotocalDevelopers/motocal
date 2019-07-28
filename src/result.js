@@ -481,8 +481,8 @@ var ResultList = CreateClass({
             }
         }
     
-        var addPercent = (value) => intl.translate("percent", locale).replace("{}", value === undefined ? "0" : value);
-        var addBlank = (value) => intl.translate("percent", locale).replace("{}%", value === undefined ? "0" : value);
+        var addPercent = (value) => intl.translate("percent", locale).replace("{}", isNaN(value) ? "0" : value);
+        var addBlank = (value) => intl.translate("percent", locale).replace("{}%", isNaN(value) ? "0" : value);
 
         // Create buff info line
         var buffInfo = [];
