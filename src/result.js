@@ -465,11 +465,7 @@ var ResultList = CreateClass({
         var charaInfo = [<span key={0}>{getElementColorLabel(prof.element, locale)}&nbsp;{charaInfoStr}</span>];
         for (var i = 0; i < chara.length; i++) {
             if (chara[i].name != "" && chara[i].isConsideredInAverage) {
-                var plusBonus　= "";
-                if (chara[i].plusBonus > 0) {
-                    plusBonus = "+" + chara[i].plusBonus;
-                }
-                charaInfoStr = chara[i].name + plusBonus + " HP";
+                charaInfoStr = chara[i].name + (chara[i].plusBonus > 0 ? "+" + chara[i].plusBonus : "") + " HP";
                 if (chara[i].remainHP != undefined) {
                     charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
                 } else {
