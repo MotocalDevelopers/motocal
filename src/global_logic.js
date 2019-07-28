@@ -559,6 +559,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             otherCoeff *= 1.10;
         }
         otherCoeff *= prof.retsujitsuNoRakuen ? 1.20 : 1;
+        otherCoeff *= prof.shiToAiNoSekai ? 1.20 : 1;
 
         // Character Emnity
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"];
@@ -700,6 +701,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var additionalDamage = 0.01 * totals[key]["additionalDamage"] * totalSummon["zeus"];
         additionalDamage += totals[key]["additionalDamageBuff"];
         additionalDamage += buff["additionalDamage"];
+        additionalDamage += prof.shiToAiNoSekai ? 0.30 : 0;
         if (totals[key]["additionalDamageXA"]) {
             //additionalDamage based on attacks per turn (sturm support ability-like)
             let [saDamage, daDamage, taDamage] = totals[key]["additionalDamageXA"];
