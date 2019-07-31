@@ -726,9 +726,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (totals[key]["EXLB"]["WED"]) {
             damageLimit += 0.05;
         }
-        if (key == "Djeeta") {
-            damageLimit += totals[key]["superDamageLimit"];
-        }
 
         // Mystery damage upper limit UP = whole buff + individual buff + skill + damage upper limit UP minutes
         // The upper limit of skill of mystery damage is 30%
@@ -744,9 +741,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += 0.01 * totals[key]["EXLB"]["OugiDamageLimit"];
         if (totals[key]["EXLB"]["WED"]) {
             ougiDamageLimit += 0.05;
-        }
-        if (key == "Djeeta") {
-            ougiDamageLimit += totals[key]["superOugiDamageLimit"];
         }
 
         // Chain Burst
@@ -2087,14 +2081,14 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key][stype] += 0.15;
                         } else if (stype == 'royal_path') {
                             if (key == 'Djeeta') {
-                                totals[key]["superOugiDamage"] += comb[i] * totals[key]["remainHP"] * 2;
+                                totals[key]["superOugiDamage"] += totals[key]["remainHP"] * 2;
                                 if (amount == "II") {
-                                    totals[key]["superOugiDamageLimit"] += comb[i] * 0.30;
+                                    totals[key]["exceedOugiDamageLimit"] += 0.30;
                                 }
                             }
                         } else if (stype == 'victory_oath') {
                             if (key == 'Djeeta') {
-                                totals[key]["superSensei"] += comb[i] * amount;
+                                totals[key]["superSensei"] += amount;
                             }
                         } else if (stype == 'stab_kill') {
                             if (key == 'Djeeta') {
@@ -2103,7 +2097,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     "attackRatio": 9.00
                                 });
                                 if (amount == "II") {
-                                    totals[key]["criticalDamageLimit"] += comb[i] * 0.30
+                                    totals[key]["criticalDamageLimit"] += 0.30
                                 }
                             }
                         } else if (stype == 'battle_god') {
@@ -2114,22 +2108,22 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 });
                                 totals[key]["superAccuracy"] = true;
                                 if (amount == "II") {
-                                    totals[key]["criticalDamageLimit"] += comb[i] * 0.30
+                                    totals[key]["criticalDamageLimit"] += 0.30
                                 }
                             }
                         } else if (stype == 'break_everything') {
                             if (key == 'Djeeta') {
                                 totals[key]["superTA"] += 1000.0;
                                 if (amount == "II") {
-                                    totals[key]["superAdditionalDamage"] += comb[i] * 0.30;
+                                    totals[key]["superAdditionalDamage"] += 0.30;
                                 }
                             }
                         } else if (stype == 'scarlet_snake') {
                             if (key == 'Djeeta') {
-                                totals[key]["superATK"] += comb[i] * 0.50;
+                                totals[key]["superATK"] += 0.50;
                                 if (amount == "II") {
-                                    totals[key]["superDamageLimit"] += comb[i] * 0.10;
-                                    totals[key]["superOugiDamageLimit"] += comb[i] * 0.10;
+                                    totals[key]["normalDamageLimit"] += 0.10;
+                                    totals[key]["exceedOugiDamageLimit"] += 0.10;
                                 }
                             }
                         } else {
@@ -2369,12 +2363,10 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalDamageLimit: 0,
                 criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
-                superDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
                 exceedOugiDamageLimit: 0,
                 omegaOugiDamageLimit: 0,
-                superOugiDamageLimit: 0,
                 chainDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
@@ -2545,13 +2537,11 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalDamageLimit: 0,
                 criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
-                superDamageLimit: 0,
                 chainDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
                 normalOugiDamageLimit: 0,
                 exceedOugiDamageLimit: 0,
                 omegaOugiDamageLimit: 0,
-                superOugiDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
                 additionalDamageXA: null,
@@ -2732,13 +2722,11 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["superOugiDamage"] = 0;
         totals[key]["chainDamage"] = 0;
         totals[key]["normalDamageLimit"] = 0;
-        totals[key]["superDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
         totals[key]["normalChainDamage"] = 0;
         totals[key]["chainDamageLimit"] = 0;
         totals[key]["magnaOugiDamageLimit"] = 0;
         totals[key]["normalOugiDamageLimit"] = 0;
-        totals[key]["superOugiDamageLimit"] = 0;
         totals[key]["exceedOugiDamageLimit"] = 0;
         totals[key]["omegaOugiDamageLimit"] = 0;
         totals[key]["normalChainDamageLimit"] = 0;
