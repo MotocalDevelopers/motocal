@@ -271,10 +271,10 @@ var multiLangData = {
         "ja": "クリティカルバフ",
         "zh": "Critical Buffs.",
     },
-    "クリティカルバフ(発動率,倍率)": {
-        "en": "Critical Buff(Hit Rate, Multiplier)",
-        "ja": "クリティカルバフ(発動率,倍率)",
-        "zh": "Critical Buff(Hit Rate, Multiplier)",
+    "クリティカルバフ(発動率/倍率)": {
+        "en": "Critical Buff(Hit Rate/Multiplier)",
+        "ja": "クリティカルバフ(発動率/倍率)",
+        "zh": "Critical Buff(Hit Rate/Multiplier)",
     },
     "発動率": {
         "en": "Hit Rate ",
@@ -518,14 +518,14 @@ var multiLangData = {
         "zh": "All Allies gain 20% unique buff, and can deal critical hits regardless of element. (Alanaan)",
     },
     "アクティブ": {
-        "en": ": Active",
-        "ja": ": アクティブ",
-        "zh": ": Active",
+        "en": "Active",
+        "ja": "アクティブ",
+        "zh": "Active",
     },
     "無効": {
-        "en": ": Inactive",
-        "ja": ": 無効",
-        "zh": ": Inactive",
+        "en": "Inactive",
+        "ja": "無効",
+        "zh": "Inactive",
     },
     "敵非有利耐性": {
         "en": "Enemy Resistance",
@@ -3766,11 +3766,6 @@ var multiLangData = {
         "en": "Show next {step} logs",
         "ja": "次の{step}件を表示",
         "zh": "Show next {step} logs",
-    },
-    "percent": {
-        "en": " {}%",
-        "ja": "{}%",
-        "zh": " {}%",
     },
     "notice-20170114-1": {
         "en": "2017/01/14: English Support (partly).",

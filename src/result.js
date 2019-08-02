@@ -481,47 +481,50 @@ var ResultList = CreateClass({
             }
         }
     
-        var addPercent = (value) => intl.translate("percent", locale).replace("{}", isNaN(value) ? "0" : value);
-        var addBlank = (value) => intl.translate("percent", locale).replace("{}%", isNaN(value) ? "0" : value);
+        var addPercent = (value) => value + "%";
+        var addBlank = (value) => value;
 
         // Create buff info line
         var buffInfo = [];
-        if (parseFloat(prof.normalBuff)) buffInfo.push(intl.translate("通常バフ", locale) + addPercent(prof.normalBuff));
-        if (parseFloat(prof.elementBuff)) buffInfo.push(intl.translate("属性バフ", locale) + addPercent(prof.elementBuff));
-        if (parseFloat(prof.otherBuff)) buffInfo.push(intl.translate("その他バフ", locale) + addPercent(prof.otherBuff));
-        if (parseFloat(prof.otherBuff2)) buffInfo.push(intl.translate("その他バフ2", locale) + " " + addPercent(prof.otherBuff2));
-        if (parseFloat(prof.criticalBuffCount)) {
-            let criticalBuffInfo = "";
-            for (let i = 0; i < prof.criticalBuffCount; i++) {
-                let number = i + 1;
-                criticalBuffInfo += "(#" + number + ":";
-                criticalBuffInfo += prof.criticalBuff[i].value * 100 + "%,";
-                criticalBuffInfo += prof.criticalBuff[i].attackRatio * 100 + "%";
-                criticalBuffInfo += ")"
+        var pushBuffInfo = (label, value, _format=addBlank) => {
+            if (value) {
+                buffInfo.push(intl.translate(label, locale) + ": " + _format(value));
             }
-            buffInfo.push(intl.translate("クリティカルバフ(発動率,倍率)", locale) + criticalBuffInfo);
+        };
+        pushBuffInfo("通常バフ", parseInt(prof.normalBuff), addPercent);
+        pushBuffInfo("属性バフ", parseInt(prof.elementBuff), addPercent);
+        pushBuffInfo("その他バフ", parseInt(prof.otherBuff), addPercent);
+        pushBuffInfo("その他バフ2", parseInt(prof.otherBuff2), addPercent);
+        var criticalBuffInfo = [];
+        (prof.criticalBuff || []).slice(0, prof.criticalBuffCount || 0).forEach(({value,attackRatio}, idx) => {
+            if (value && attackRatio) {
+                criticalBuffInfo.push(`#${idx+1}: ${value*100}%/${attackRatio*100}%`);
+            }
+        });
+        if (criticalBuffInfo.length !== 0) {
+            buffInfo.push(intl.translate("クリティカルバフ(発動率/倍率)", locale) +
+                "(" + criticalBuffInfo.join(", ") + ")");
         }
-        if (parseFloat(prof.daBuff)) buffInfo.push(intl.translate("DAバフ", locale) + addPercent(prof.daBuff));
-        if (parseFloat(prof.taBuff)) buffInfo.push(intl.translate("TAバフ", locale) + addPercent(prof.taBuff));
-        if (parseFloat(prof.additionalDamageBuff)) buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
-        if (parseFloat(prof.damageLimitBuff)) buffInfo.push(intl.translate("ダメージ上限バフ", locale) + addPercent(prof.damageLimitBuff));
-        if (parseFloat(prof.ougiDamageBuff)) buffInfo.push(intl.translate("奥義ダメージバフ", locale) + addPercent(prof.ougiDamageBuff));
-        if (parseFloat(prof.ougiDamageLimitBuff)) buffInfo.push(intl.translate("奥義ダメージ上限バフ", locale) + addPercent(prof.ougiDamageLimitBuff));
-        if (parseFloat(prof.ougiGageBuff)) buffInfo.push(intl.translate("奥義ゲージ上昇量バフ", locale) + addPercent(prof.ougiGageBuff));
-        if (parseFloat(prof.supplementalDamageBuff)) buffInfo.push(intl.translate("supplementalDamageBuff", locale) + addBlank(prof.supplementalDamageBuff));
-        if (parseFloat(prof.uplift)) buffInfo.push(intl.translate("高揚", locale) + addPercent(prof.uplift));
-        if (parseFloat(prof.hpBuff)) buffInfo.push(intl.translate("HPバフ", locale) + addPercent(prof.hpBuff));
-        if (parseFloat(prof.ougiGageUpOugiBuff)) buffInfo.push(intl.translate("奥義ゲージ上昇奥義", locale) + addPercent(prof.ougiGageUpOugiBuff));
-        var buffInfoStr = buffInfo.join(", ");
-        if (!buffInfoStr) buffInfoStr = intl.translate("なし", locale);
+        pushBuffInfo("DAバフ", parseInt(prof.daBuff), addPercent);
+        pushBuffInfo("TAバフ", parseInt(prof.taBuff), addPercent);
+        pushBuffInfo("通常追加ダメージバフバフ", parseInt(prof.additionalDamageBuff), addPercent);
+        pushBuffInfo("ダメージ上限バフ", parseInt(prof.damageLimitBuff), addPercent);
+        pushBuffInfo("奥義ダメージバフ", parseInt(prof.ougiDamageBuff), addPercent);
+        pushBuffInfo("奥義ダメージ上限バフ", parseInt(prof.ougiDamageLimitBuff), addPercent);
+        pushBuffInfo("奥義ゲージ上昇量バフ", parseInt(prof.ougiGageBuff), addPercent);
+        pushBuffInfo("supplementalDamageBuff", parseInt(prof.supplementalDamageBuff));
+        pushBuffInfo("高揚", parseInt(prof.uplift), addPercent);
+        pushBuffInfo("HPバフ", parseInt(prof.hpBuff), addPercent);
+        pushBuffInfo("奥義ゲージ上昇奥義", parseInt(prof.ougiGageUpOugiBuff), addPercent);
+        var buffInfoStr = (buffInfo.length === 0) ? intl.translate("なし", locale) : buffInfo.join(", ");
         
     
         // Enemy info line
         var enemyInfo = [];
-        enemyInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
-        enemyInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
-        enemyInfo.push(intl.translate("烈日の楽園", locale) + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
-        enemyInfo.push(intl.translate("敵非有利耐性", locale) + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance)))));
+        enemyInfo.push(intl.translate("敵防御固有値", locale) + ": " + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
+        enemyInfo.push(intl.translate("防御デバフ合計", locale) + ": " + addPercent(prof.defenseDebuff || "0"));
+        enemyInfo.push(intl.translate("烈日の楽園", locale) + ": " + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
+        enemyInfo.push(intl.translate("敵非有利耐性", locale) + ": " + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance || "0")))));
         var enemyInfoStr = enemyInfo.join(", ");
 
         if (_ua.Mobile || _ua.Tablet) {
