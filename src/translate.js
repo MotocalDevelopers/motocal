@@ -3386,9 +3386,9 @@ var multiLangData = {
         "zh": "王道を征く者II",
     },
     "必勝の誓い": {
-        "en": "Victory's Promise",
-        "ja": "必勝の誓い",
-        "zh": "必勝の誓い",
+        "en": "Victory's Promise (Maximum time)",
+        "ja": "必勝の誓い(最大時)",
+        "zh": "必勝の誓い(最大時)",
     },
     "一刺一殺": {
         "en": "One Sting, One Kill",

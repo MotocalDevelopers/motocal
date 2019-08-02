@@ -2079,28 +2079,28 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key][stype] += 0.15;
                         } else if (stype == 'opusmagnaElement') {
                             totals[key][stype] += 0.15;
-                        } else if (stype == 'royal_path') {
+                        } else if (stype == 'rightway_pathfinder') {
                             if (key == 'Djeeta') {
                                 totals[key]["superOugiDamage"] += totals[key]["remainHP"] * 2;
                                 if (amount == "II") {
                                     totals[key]["exceedOugiDamageLimit"] += 0.30;
                                 }
                             }
-                        } else if (stype == 'victory_oath') {
+                        } else if (stype == 'victorys_promise') {
                             if (key == 'Djeeta') {
                                 totals[key]["superSensei"] += amount;
                             }
-                        } else if (stype == 'stab_kill') {
+                        } else if (stype == 'one_sting_one_kill') {
                             if (key == 'Djeeta') {
                                 totals[key]["normalOtherCritical"].push({
                                     "value": 0.05,
                                     "attackRatio": 9.00
                                 });
                                 if (amount == "II") {
-                                    totals[key]["criticalDamageLimit"] += 0.30
+                                    totals[key]["criticalDamageLimit"] += 0.30;
                                 }
                             }
-                        } else if (stype == 'battle_god') {
+                        } else if (stype == 'god_of_war') {
                             if (key == 'Djeeta') {
                                 totals[key]["normalOtherCritical"].push({
                                     "value": 1.0,
@@ -2108,17 +2108,17 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 });
                                 totals[key]["superAccuracy"] = true;
                                 if (amount == "II") {
-                                    totals[key]["criticalDamageLimit"] += 0.30
+                                    totals[key]["criticalDamageLimit"] += 0.30;
                                 }
                             }
-                        } else if (stype == 'break_everything') {
+                        } else if (stype == 'apocalyptic_power') {
                             if (key == 'Djeeta') {
                                 totals[key]["superTA"] += 1000.0;
                                 if (amount == "II") {
                                     totals[key]["superAdditionalDamage"] += 0.30;
                                 }
                             }
-                        } else if (stype == 'scarlet_snake') {
+                        } else if (stype == 'slaysnakes_myth') {
                             if (key == 'Djeeta') {
                                 totals[key]["superATK"] += 0.50;
                                 if (amount == "II") {
