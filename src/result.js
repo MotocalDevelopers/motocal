@@ -465,11 +465,7 @@ var ResultList = CreateClass({
         var charaInfo = [<span key={0}>{getElementColorLabel(prof.element, locale)}&nbsp;{charaInfoStr}</span>];
         for (var i = 0; i < chara.length; i++) {
             if (chara[i].name != "" && chara[i].isConsideredInAverage) {
-                var plusBonus　= "";
-                if (chara[i].plusBonus > 0) {
-                    plusBonus = "+" + chara[i].plusBonus;
-                }
-                charaInfoStr = chara[i].name + plusBonus + " HP";
+                charaInfoStr = chara[i].name + (chara[i].plusBonus > 0 ? "+" + chara[i].plusBonus : "") + " HP";
                 if (chara[i].remainHP != undefined) {
                     charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
                 } else {
@@ -516,6 +512,8 @@ var ResultList = CreateClass({
         pushBuffInfo("高揚", parseInt(prof.uplift), addPercent);
         pushBuffInfo("HPバフ", parseInt(prof.hpBuff), addPercent);
         pushBuffInfo("奥義ゲージ上昇奥義", parseInt(prof.ougiGageUpOugiBuff), addPercent);
+        pushBuffInfo("烈日の楽園", (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)), addPercent);
+        pushBuffInfo("死ト愛ノ世界", (prof.shiToAiNoSekai ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)), addPercent);
         var buffInfoStr = (buffInfo.length === 0) ? intl.translate("なし", locale) : buffInfo.join(", ");
         
     
@@ -523,8 +521,8 @@ var ResultList = CreateClass({
         var enemyInfo = [];
         enemyInfo.push(intl.translate("敵防御固有値", locale) + ": " + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
         enemyInfo.push(intl.translate("防御デバフ合計", locale) + ": " + addPercent(prof.defenseDebuff || "0"));
-        enemyInfo.push(intl.translate("烈日の楽園", locale) + ": " + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         enemyInfo.push(intl.translate("敵非有利耐性", locale) + ": " + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance || "0")))));
+
         var enemyInfoStr = enemyInfo.join(", ");
 
         if (_ua.Mobile || _ua.Tablet) {
