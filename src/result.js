@@ -496,8 +496,7 @@ var ResultList = CreateClass({
         var criticalBuffInfo = [];
         (prof.criticalBuff || []).slice(0, prof.criticalBuffCount || 0).forEach(({value,attackRatio}, idx) => {
             if (value && attackRatio) {
-                let attackRatioStr = 1 + attackRatio;
-                criticalBuffInfo.push(`#${idx+1} ${value*100}%/x${attackRatioStr.toFixed(2)}`);
+                criticalBuffInfo.push(`#${idx+1} ${value*100}%/x${(1+attackRatio).toFixed(2)}`);
             }
         });
         if (criticalBuffInfo.length !== 0) {
