@@ -502,10 +502,10 @@ var multiLangData = {
         "ja": "防御デバフの合計をパーセントで設定。通常の下限が50%。喪失枠を付与すると60%になります。",
         "zh": "Set sums of defense debuff values.The normal lower limit is 50%. Forfeit category is 60%.",
     },
-    "特殊効果": {
-        "en": "Special Effects",
-        "ja": "特殊効果",
-        "zh": "Special Effects",
+    "フィールド効果": {
+        "en": "Field Effects",
+        "ja": "フィールド効果",
+        "zh": "Field Effects",
     },
     "烈日の楽園": {
         "en": "Sun-Touched Paradise",

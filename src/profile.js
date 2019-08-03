@@ -984,7 +984,7 @@ var Profile = CreateClass({
 
 
                     <tr>
-                        <th className="bg-primary">{intl.translate("特殊効果", locale)}</th>
+                        <th className="bg-primary">{intl.translate("フィールド効果", locale)}</th>
                         <td>
                         <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)} id={"tooltip-sun-touched-paradise-detail"}>
                             <tr>

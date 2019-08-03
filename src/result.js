@@ -512,8 +512,6 @@ var ResultList = CreateClass({
         pushBuffInfo("高揚", parseInt(prof.uplift), addPercent);
         pushBuffInfo("HPバフ", parseInt(prof.hpBuff), addPercent);
         pushBuffInfo("奥義ゲージ上昇奥義", parseInt(prof.ougiGageUpOugiBuff), addPercent);
-        pushBuffInfo("烈日の楽園", (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)), addPercent);
-        pushBuffInfo("死ト愛ノ世界", (prof.shiToAiNoSekai ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)), addPercent);
         var buffInfoStr = (buffInfo.length === 0) ? intl.translate("なし", locale) : buffInfo.join(", ");
         
     
@@ -522,8 +520,13 @@ var ResultList = CreateClass({
         enemyInfo.push(intl.translate("敵防御固有値", locale) + ": " + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
         enemyInfo.push(intl.translate("防御デバフ合計", locale) + ": " + addPercent(prof.defenseDebuff || "0"));
         enemyInfo.push(intl.translate("敵非有利耐性", locale) + ": " + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance || "0")))));
-
         var enemyInfoStr = enemyInfo.join(", ");
+
+        var fieldInfo = [];
+        if (prof.retsujitsuNoRakuen) fieldInfo.push(intl.translate("烈日の楽園", locale));
+        if (prof.shiToAiNoSekai) fieldInfo.push(intl.translate("死ト愛ノ世界", locale));
+        var fieldInfoStr = (fieldInfo.length === 0) ? intl.translate("なし", locale) : fieldInfo.join(", ");
+        
 
         if (_ua.Mobile || _ua.Tablet) {
             var changeSortKey = <FormControl componentClass="select" style={{"width": "100%", padding: "0"}}
@@ -683,6 +686,7 @@ var ResultList = CreateClass({
                                 {charaInfo}
                                     <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                     <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
+                                    <div>{intl.translate("フィールド効果", locale)}: {fieldInfoStr}</div>
                                 </div>
                                 <table className="table table-bordered">
                                     <thead className="result">
@@ -717,6 +721,7 @@ var ResultList = CreateClass({
                                 {charaInfo}
                                 <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
+                                <div>{intl.translate("フィールド効果", locale)}: {fieldInfoStr}</div>
                             </div>
                             <ButtonGroup block vertical>
                                 <Button bsStyle="info"
@@ -885,6 +890,7 @@ var ResultList = CreateClass({
                                     {charaInfo}
                                     <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
+                                <div>{intl.translate("フィールド効果", locale)}: {fieldInfoStr}</div>
                                 </div>
                                 <div style={{"textAlign": "right", "float": "right"}}>
                                     <span>{intl.translate("優先項目", locale)}: {changeSortKey}</span>
@@ -924,6 +930,7 @@ var ResultList = CreateClass({
                                 {charaInfo}
                                 <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
+                                <div>{intl.translate("フィールド効果", locale)}: {fieldInfoStr}</div>
                             </div>
                             <div style={{"float": "right"}}>
                                 <Button bsStyle="info"
@@ -961,6 +968,7 @@ var ResultList = CreateClass({
                                 {charaInfo}
                                 <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
+                                <div>{intl.translate("フィールド効果", locale)}: {fieldInfoStr}</div>
                             </div>
                             <div style={{"float": "right"}}>
                                 <Button bsStyle="primary"
