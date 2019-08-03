@@ -479,22 +479,25 @@ var ResultList = CreateClass({
     
         var addPercent = (value) => value + "%";
         var addBlank = (value) => value;
+        // For avoid a "別枠バフ2XX%"
+        var addPercentAndSpace = (value) => (locale == "en" ? "" : " ")+ value + "%";
 
         // Create buff info line
         var buffInfo = [];
         var pushBuffInfo = (label, value, _format=addBlank) => {
             if (value) {
-                buffInfo.push(intl.translate(label, locale) + ": " + _format(value));
+                buffInfo.push(intl.translate(label, locale) + (locale == "en" ? " " : "") + _format(value));
             }
         };
         pushBuffInfo("通常バフ", parseInt(prof.normalBuff), addPercent);
         pushBuffInfo("属性バフ", parseInt(prof.elementBuff), addPercent);
         pushBuffInfo("その他バフ", parseInt(prof.otherBuff), addPercent);
-        pushBuffInfo("その他バフ2", parseInt(prof.otherBuff2), addPercent);
+        pushBuffInfo("その他バフ2", parseInt(prof.otherBuff2), addPercentAndSpace);
         var criticalBuffInfo = [];
         (prof.criticalBuff || []).slice(0, prof.criticalBuffCount || 0).forEach(({value,attackRatio}, idx) => {
             if (value && attackRatio) {
-                criticalBuffInfo.push(`#${idx+1}: ${value*100}%/${attackRatio*100}%`);
+                let attackRatioStr = 1 + attackRatio;
+                criticalBuffInfo.push(`#${idx+1} ${value*100}%/x${attackRatioStr.toFixed(2)}`);
             }
         });
         if (criticalBuffInfo.length !== 0) {
@@ -517,9 +520,9 @@ var ResultList = CreateClass({
     
         // Enemy info line
         var enemyInfo = [];
-        enemyInfo.push(intl.translate("敵防御固有値", locale) + ": " + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
-        enemyInfo.push(intl.translate("防御デバフ合計", locale) + ": " + addPercent(prof.defenseDebuff || "0"));
-        enemyInfo.push(intl.translate("敵非有利耐性", locale) + ": " + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance || "0")))));
+        enemyInfo.push(intl.translate("敵防御固有値", locale) + (locale == "en" ? " " : "") + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
+        enemyInfo.push(intl.translate("防御デバフ合計", locale) + (locale == "en" ? " " : "") + addPercent(prof.defenseDebuff || "0"));
+        enemyInfo.push(intl.translate("敵非有利耐性", locale) + (locale == "en" ? " " : "") + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance || "0")))));
         var enemyInfoStr = enemyInfo.join(", ");
 
         var fieldInfo = [];
