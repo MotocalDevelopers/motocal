@@ -924,6 +924,16 @@ var multiLangData = {
         "ja": "チェイン数を指定してください（チェインバーストボーナスの係数が変化します）\n チェイン数1 → 0倍\n 2 → 1.25倍\n 3 → 1.33…倍\n 4 → 1.5倍",
         "zh": "设定Chain数(Chain Burst的系数会变化)",
     },
+    "チェイン確率": {
+        "en": "Chain probability",
+        "ja": "チェイン確率",
+        "zh": "Chain確率",
+    },
+    "チェイン確率説明": {
+        "en": "Enter how often Chain Burst. It is multiplied by Chain Burst damage.",
+        "ja": "チェインが何ターンごとに発生するか入力して下さい。チェンバダメージに乗算されます。",
+        "zh": "设定Chain確率",
+    },
     "弱い編成を隠す": {
         "en": "Hide Weaker Grids",
         "ja": "弱い編成を隠す",

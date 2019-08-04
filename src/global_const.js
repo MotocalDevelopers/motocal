@@ -689,6 +689,19 @@ var skillLevelList20Limit = skillLevelListFactory(20);
 
 var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300];
 var chainNumberList = [1, 2, 3, 4];
+var chainNumberProbabilityList = {
+    "1/10": 10,
+    "1/9": 9,
+    "1/8": 8,
+    "1/7": 7,
+    "1/6": 6,
+    "1/5": 5,
+    "1/4": 4,
+    "1/3": 3,
+    "1/2": 2,
+    "1": 1
+};
+
 
 // Chara limitBonus
 var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2300, 2500, 2600, 2800, 3000];
@@ -2859,6 +2872,9 @@ module.exports.selector.masterDamageLimit = masterDamageLimitList.map(function (
 });
 module.exports.selector.chainNumber = chainNumberList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.chainNumberProbability = Object.keys(chainNumberProbabilityList).map(function (opt) {
+    return <option value={chainNumberProbabilityList[opt]} key={opt}>{opt}</option>
 });
 
 module.exports.selector.ja.ktypes = Object.keys(keyTypes).map(function (opt) {

@@ -290,7 +290,7 @@ function calcOugiFixedDamage(key) {
 }
 module.exports.calcOugiFixedDamage = calcOugiFixedDamage;
 
-module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, enemyResistance, chainDamageUP, chainDamageLimitUP) {
+module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, enemyResistance, chainDamageUP, chainDamageLimitUP, chainNumberProbability) {
     if (chainNumber <= 1) return 0.0;
 
     var chainCoeff = 0.0;
@@ -330,6 +330,7 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, en
     // The final damage becomes the correction amount + the minimum attenuation line
     damage = damage + overedDamage;
     damage *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
+    damage /= chainNumberProbability;
     
     return damage;
 };
@@ -878,7 +879,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(supplementalDamageArray, [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental], {remainHP: totals[key]["remainHP"]});
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
-        var chainBurst = chainBurstSupplemental + module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), enemyResistance, chainDamageUP, chainDamageLimit);
+        var chainBurst = chainBurstSupplemental + module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), enemyResistance, chainDamageUP, chainDamageLimit, buff["chainNumberProbability"]);
 
         var expectedCycleDamagePerTurn;
         if (expectedTurn === Infinity) {
@@ -1448,6 +1449,7 @@ module.exports.getTotalBuff = function (prof) {
         damageLimit: 0.0,
         ougiDamageLimit: 0.0,
         chainNumber: 1,
+        chainNumberProbability: 1,
         criticalBuff: [],
         uplift: 0,
         supplementalDamageBuff: 0,
@@ -1470,6 +1472,7 @@ module.exports.getTotalBuff = function (prof) {
     if (!isNaN(prof.ougiGageBuff)) totalBuff["ougiGage"] += 0.01 * parseInt(prof.ougiGageBuff);
     if (!isNaN(prof.ougiDamageBuff)) totalBuff["ougiDamage"] += 0.01 * parseInt(prof.ougiDamageBuff);
     if (!isNaN(prof.chainNumber)) totalBuff["chainNumber"] = parseInt(prof.chainNumber);
+    if (!isNaN(prof.chainNumberProbability)) totalBuff["chainNumberProbability"] = parseInt(prof.chainNumberProbability);
     if (!isNaN(prof.damageLimitBuff)) totalBuff["damageLimit"] = 0.01 * parseFloat(prof.damageLimitBuff);
     if (!isNaN(prof.ougiDamageLimitBuff)) totalBuff["ougiDamageLimit"] = 0.01 * parseFloat(prof.ougiDamageLimitBuff);
     totalBuff["normal"] += 0.01 * parseInt(prof.normalBuff);
@@ -3119,7 +3122,8 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {remainHP: k/100});
 
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
-                    var newChainBurst = chainBurstSupplemental + module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.enemyResistance, onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
+                    var chainNumberProbability = !isNaN(prof.chainNumberProbability) ? parseInt(prof.chainNumberProbability) : 1;
+                    var newChainBurst = chainBurstSupplemental + module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.enemyResistance, onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit, chainNumberProbability) / chainNumber;
 
                     var newExpectedCycleDamagePerTurn = (onedata[key].expectedTurn === Infinity)
                     ? onedata[key].expectedAttack * newDamage
