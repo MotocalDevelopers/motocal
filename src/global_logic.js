@@ -1976,12 +1976,12 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'normalSeisyou') {
                             // Only applies to primal characters
-                            if (raceCharaContains("seisho", totals[key])) {
+                            if (key == "Djeeta" || raceCharaContains("seisho", totals[key])) {
                                 totals[key]["normal"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             }
                         } else if (stype == 'magnaSeisyou') {
                             // Only applies to primal characters
-                            if (raceCharaContains("seisho", totals[key])) {
+                            if (key == "Djeeta" || raceCharaContains("seisho", totals[key])) {
                                 totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             }
                         } else if (stype == 'opusnormalElement') {
