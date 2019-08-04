@@ -1749,6 +1749,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (amount == 'victorious') {
                             if (favCharaContains('wand/music', totals[key])) {
+                                totals[key]["covenant"] = amount;
                                 totals['Djeeta']['buffCount'] = arm[skillkey + "Detail"];
                             }
                         } else if (amount == 'contentious') {
