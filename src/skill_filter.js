@@ -43,7 +43,7 @@ function _contains(args, value) {
 
 /**
  * Wrapper for baha weapon race checking
- * race check contains always "unknown" and "seisyo" 
+ * race check contains always "unknown" and "seisho" 
  *
  * @param {Array<string>} races
  * @param {string} value
@@ -53,7 +53,7 @@ function _contains(args, value) {
  */
 function bahaRaceContains(races, value) {
     // console.assert(Array.isArray(races));
-    return _contains(["unknown", "seisyo", ...races], value);
+    return _contains(["unknown", "seisho", ...races], value);
 }
 
 /**

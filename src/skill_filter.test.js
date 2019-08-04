@@ -134,10 +134,10 @@ describe('low layer funcs', () => {
 
     describe('#bahaRaceContains', () => {
         it('should check human/erune (baha)', () => {
-            // baha: contains unknown,seisyo implicitly
+            // baha: contains unknown,seisho implicitly
             const races = ["human", "erune"]; // baha dagger
             expect(bahaRaceContains(races, "unknown")).toBeTruthy();
-            expect(bahaRaceContains(races, "seisyo")).toBeTruthy();
+            expect(bahaRaceContains(races, "seisho")).toBeTruthy();
             expect(bahaRaceContains(races, "human")).toBeTruthy();
             expect(bahaRaceContains(races, "erune")).toBeTruthy();
             expect(bahaRaceContains(races, "human/erune")).toBeTruthy();
