@@ -465,11 +465,7 @@ var ResultList = CreateClass({
         var charaInfo = [<span key={0}>{getElementColorLabel(prof.element, locale)}&nbsp;{charaInfoStr}</span>];
         for (var i = 0; i < chara.length; i++) {
             if (chara[i].name != "" && chara[i].isConsideredInAverage) {
-                var plusBonus　= "";
-                if (chara[i].plusBonus > 0) {
-                    plusBonus = "+" + chara[i].plusBonus;
-                }
-                charaInfoStr = chara[i].name + plusBonus + " HP";
+                charaInfoStr = chara[i].name + (chara[i].plusBonus > 0 ? "+" + chara[i].plusBonus : "") + " HP";
                 if (chara[i].remainHP != undefined) {
                     charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
                 } else {
@@ -491,13 +487,14 @@ var ResultList = CreateClass({
         buffInfo.push(intl.translate("DAバフ", locale) + addPercent(prof.daBuff));
         buffInfo.push(intl.translate("TAバフ", locale) + addPercent(prof.taBuff));
         buffInfo.push(intl.translate("追加ダメージバフ", locale) + addPercent(prof.additionalDamageBuff));
+        buffInfo.push(intl.translate("烈日の楽園", locale) + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
+        buffInfo.push(intl.translate("死ト愛ノ世界", locale) + (prof.shiToAiNoSekai ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         var buffInfoStr = buffInfo.join(", ");
     
         // Enemy info line
         var enemyInfo = [];
         enemyInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
         enemyInfo.push(intl.translate("防御デバフ合計", locale) + addPercent(prof.defenseDebuff));
-        enemyInfo.push(intl.translate("烈日の楽園", locale) + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         enemyInfo.push(intl.translate("敵非有利耐性", locale) + addPercent(Math.max(0, Math.min(100, parseInt(prof.enemyResistance)))));
         var enemyInfoStr = enemyInfo.join(", ");
 
