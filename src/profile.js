@@ -207,7 +207,7 @@ var Profile = CreateClass({
             ougiRatio: 4.5,
             minimumHP: 0.0,
             chainNumber: 1,
-            chainNumberProbability: 1,
+            chainProbability: 1,
             personalNormalBuff: 0.0,
             personalElementBuff: 0.0,
             personalOtherBuff: 0.0,
@@ -1063,8 +1063,8 @@ var Profile = CreateClass({
                         <tr>
                             <th className="bg-primary">{intl.translate("チェイン確率", locale)}</th>
                             <td>
-                                <FormControl componentClass="select" value={this.state.chainNumberProbability}
-                                             onChange={this.handleSelectEvent.bind(this, "chainNumberProbability")}> {selector.chainNumberProbability} </FormControl>
+                                <FormControl componentClass="select" value={this.state.chainProbability}
+                                             onChange={this.handleSelectEvent.bind(this, "chainProbability")}> {selector.chainProbability} </FormControl>
                             </td>
                         </tr>
                     </TextWithTooltip>
