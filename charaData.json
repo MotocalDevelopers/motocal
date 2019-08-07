@@ -659,6 +659,28 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "アンスリア(浴衣ver)": {
+        "name": "アンスリア(浴衣ver)",
+        "ja": "アンスリア(浴衣ver)",
+        "element": "dark",
+        "type": "balance",
+        "race": "erune",
+        "sex": "female",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "310",
+        "hp": "1480",
+        "minattack": "1150",
+        "attack": "7000",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040228000_01.png",
+        "en": "Anthuria (Summer)"
+    },
     "ジェシカ(浴衣ver)": {
         "name": "ジェシカ(浴衣ver)",
         "ja": "ジェシカ(浴衣ver)",
@@ -10954,5 +10976,27 @@
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030272000_01.png",
         "en": "Lancelot and Vane (Summer)"
+    },
+    "カシウス(浴衣ver)": {
+        "name": "カシウス(浴衣ver)",
+        "ja": "カシウス(浴衣ver)",
+        "element": "fire",
+        "type": "balance",
+        "race": "unknown",
+        "sex": "male",
+        "fav1": "fist",
+        "fav2": "spear",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "190",
+        "hp": "1150",
+        "minattack": "1550",
+        "attack": "6850",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 3.5,
+        "imageURL": "./charaimgs/3030273000_01.png",
+        "en": "Cassius (Summer)"
     }
 }
