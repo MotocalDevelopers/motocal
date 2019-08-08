@@ -976,6 +976,21 @@ skillnamelist["chainForce"] = {
     u"チェインフォース": "dark",
 }
 
+# New epic weapons
+skillnamelist["epic-grandEpic"] = {
+    u"エピックブランド・ゲイン": "all",
+}
+skillnamelist["epic-staffResonance"] = {
+    u"レゾナンス・スタッフ": "all",
+}
+skillnamelist["epic-heroicTale"] = {
+    u"ヒロイック・テイル": "all",
+}
+skillnamelist["epic-absoluteEquality"] = {
+    u"ソール・イコーリティ": "all",
+}
+
+
 # Character specific weapon
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}

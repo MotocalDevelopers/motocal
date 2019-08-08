@@ -94,6 +94,7 @@ module.exports.LIMIT = {
     otherTA: UNLIMIT_VALUE,
     chainDamageUP: 1.20,
     chainDamageLimit: 0.50,
+    grandEpic: 0.80,
 };
 module.exports.DEFAULT = {
     ougiRatio: 4.5,
@@ -985,6 +986,10 @@ var skilltypes = {
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
+    "epic-grandEpic": {name: "エピックブランド・ゲイン", type: "epic", amount: "count-epic"},
+    "epic-staffResonance": {name: "レゾナンス・スタッフ", type: "epic", amount: "count-wand"},
+    "epic-heroicTale": {name: "ヒロイック・テイル", type: "epic", amount: "all-unique-type"},
+    "epic-absoluteEquality": {name: "ソール・イコーリティ", type: "epic", amount: "all-unique"},
     "extendedDjeetaNormalDATA5": {name: "[ジータのみ] 通常枠DATA 5%", type: "extendedDjeetaNormalDATA", amount: 5.0},
     "extendedDjeetaNormalDATA10": {name: "[ジータのみ] 通常枠DATA 10%", type: "extendedDjeetaNormalDATA", amount: 10.0},
     "extendedDjeetaNormalDATA15": {name: "[ジータのみ] 通常枠DATA 15%", type: "extendedDjeetaNormalDATA", amount: 15.0},

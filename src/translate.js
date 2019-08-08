@@ -3375,6 +3375,26 @@ var multiLangData = {
         "ja": "天司の祝福III",
         "zh": "天司的祝福III",
     },
+    "エピックブランド・ゲイン": {
+        "en": "Grand Epic",
+        "ja": "エピックブランド・ゲイン",
+        "zh": "Grand Epic",
+    },
+    "レゾナンス・スタッフ": {
+        "en": "Staff Resonance",
+        "ja": "レゾナンス・スタッフ",
+        "zh": "Staff Resonance",
+    },
+    "ヒロイック・テイル": {
+        "en": "Heroic Tale",
+        "ja": "ヒロイック・テイル",
+        "zh": "Heroic Tale",
+    },
+    "ソール・イコーリティ": {
+        "en": "Absolute Equality",
+        "ja": "ソール・イコーリティ",
+        "zh": "Absolute Equality",
+    },
     "通常上限UP(2.5%)": {
         "en": "Damage Cap UP(2.5%)",
         "ja": "通常上限UP(2.5%)",

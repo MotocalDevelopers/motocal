@@ -32,6 +32,7 @@ var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
 const {range, when} = require('./support_filter');
+// const {countEpicWeapon, countWandType, isAllUniqueArm, isAllUniqueArmType} = require('./epic');
 
 module.exports.isCosmos = function (arm) {
     return (skilltypes[arm.skill1] != undefined && skilltypes[arm.skill1].type == "cosmosArm") ||
@@ -1833,6 +1834,16 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     totals[key]["covenant"] = amount;
                                     buff["enemyDebuffCount"] = arm[skillkey + "Detail"];
                             }
+                        }
+                    } else if (style == 'epic') {
+                        if (amount == 'count-epic') {
+                            // TODO: countEpicWeapon
+                        } else if (amount == 'count-wand') {
+                            // TODO: countWandType
+                        } else if (amount == 'all-unique-type') {
+                            // TODO: countUniqueArmType
+                        } else if (amount == 'all-unique') {
+                            // TODO: isAllUniqueArm
                         }
                     } else if (stype == 'cherubimKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
