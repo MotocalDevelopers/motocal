@@ -1066,20 +1066,22 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                     newdict["ja"] = name
                 elif index == 3:
                     # element
-                    if value.find("火") > 0:
+                    if value.find("火") >= 0:
                         newdict["element"] = "fire"
-                    elif value.find("水") > 0:
+                    elif value.find("水") >= 0:
                         newdict["element"] = "water"
-                    elif value.find("土") > 0:
+                    elif value.find("土") >= 0:
                         newdict["element"] = "earth"
-                    elif value.find("風") > 0:
+                    elif value.find("風") >= 0:
                         newdict["element"] = "wind"
-                    elif value.find("光") > 0:
+                    elif value.find("光") >= 0:
                         newdict["element"] = "light"
-                    elif value.find("全属性") > 0:
+                    elif value.find("闇") >= 0:
+                        newdict["element"] = "dark"
+                    elif value.find("全属性") >= 0:
                         newdict["element"] = "all"
                     else:
-                        newdict["element"] = "dark"
+                        newdict["element"] = "none"
                 elif index == 4:
                     # type
                     newdict["type"] = type_replace(value)
