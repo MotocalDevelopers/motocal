@@ -469,9 +469,9 @@
 |&attachref(img/1040009400.png,15%);|イイルクーン|&color(#339966){風};|剣|10|[[ワザリングハイツ>武器奥義#wazaring]]|[[乱気の技巧>スキル一覧#rannkinogikou]]|[[竜巻の羅刹>スキル一覧#tatumakinorasetu]]|36|425|216|2520|[[ユイシス (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040009500.png,15%);|カースドブレイド|&color(#800080){闇};|剣|10|[[ダークティアーズ>武器奥義#darktears]]|[[ダークドレイン>スキル一覧#darkdrain]]|[[カースドテンタクル>スキル一覧#cursedtentacle]]|22|355|166|2050|神立、笠雲の合間に閃きて|イベント||
 |&attachref(img/1040009700.png,15%);|ローズクリスタルソード|&color(#3366ff){水};|剣|60|[[ドミネイションブレード>奥義一覧#dominationblade]]|[[蒼薔薇の棘>スキル一覧#aobaranotoge]]|[[蒼薔薇の花弁>スキル一覧#aobaranokaben]]|34|365|204|2320|ショップ|ローズシリーズ||
-|&attachref(img/1040010000.png,15%);|麒麟剣|&color(#800080){闇};|剣|80|[[黒召刃>奥義一覧#kokusyoujindown]]|[[靂天の暗雲>スキル一覧#rekitennoanun]]|[[靂天の黒鱗>スキル一覧#rekitennokokurin]]|30|420|207|2480|ショップ|トレジャー交換||
-|&attachref(img/1040010000.png,15%);|[4凸]麒麟剣|&color(#800080){闇};|剣|80|[[黒召刃++>奥義一覧#kokusyoujindown]]|[[靂天の暗雲>スキル一覧#rekitennoanun]]|[[靂天の黒鱗>スキル一覧#rekitennokokurin]]|30|420|241|2895|ショップ|トレジャー交換|○|207|2480|
-|&attachref(img/1040010000.png,15%);|[5凸]麒麟剣|&color(#800080){闇};|剣|80|[[黒召刃++>奥義一覧#kokusyoujindown]]|[[靂天の暗雲>スキル一覧#rekitennoanun]]|[[靂天の黒鱗>スキル一覧#rekitennokokurin]]|30|420|420|3310|ショップ|トレジャー交換|◎|207|2480|241|2895|
+|&attachref(img/1040010000.png,15%);|麒麟剣|&color(#800080){闇};|剣|80|[[黒召刃>奥義一覧#kokusyoujindown]]|[[靂天の暗雲>スキル一覧#rekitennoanun]]|[[靂天の黒鱗>スキル一覧#rekitennokokurin]]|30|420|207|2480|ショップ|四象武器||
+|&attachref(img/1040010000.png,15%);|[4凸]麒麟剣|&color(#800080){闇};|剣|80|[[黒召刃++>奥義一覧#kokusyoujindown]]|[[靂天の暗雲>スキル一覧#rekitennoanun]]|[[靂天の黒鱗>スキル一覧#rekitennokokurin]]|30|420|241|2895|ショップ|四象武器|○|207|2480|
+|&attachref(img/1040010000.png,15%);|[5凸]麒麟剣|&color(#800080){闇};|剣|80|[[黒召刃++>奥義一覧#kokusyoujindown]]|[[靂天の暗雲>スキル一覧#rekitennoanun]]|[[靂天の黒鱗>スキル一覧#rekitennokokurin]]|30|420|420|3310|ショップ|四象武器|◎|207|2480|241|2895|
 |&attachref(img/1040011000.png,15%);|フェアネスマーク|&color(#ff9900){光};|剣|10|[[光臨剣>武器奥義#kourinken]]|[[天光の攻刃>スキル一覧#tennkounokoujin]]|[[先制の白壁>スキル一覧#senseinohakuheki]]|43|395|246|2390|[[バウタオーダ (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040011100.png,15%);|プロトタイプ|&color(#800080){闇};|剣|10|[[レギンレイヴ>武器奥義#reginrave]]|[[奈落の攻刃>スキル一覧#narakunokoujin]]|[[空と星を繋ぐ者>スキル一覧#sorahosi]]|32|445|210|2550|アニメBlu-ray&DVD Vol.4特典|付録特典||
 |&attachref(img/1040012500.png,15%);|パーマフロスト・ソード|&color(#3366ff){水};|剣|10|[[氷の剣>武器奥義#kourinoken]]|[[霧氷の攻刃>スキル一覧#muhyounokoujin]]|[[水の秘奥>スキル一覧#mizunohioku]]|33|435|205|2575|[[イシュミール(水着ver) (SSR)>イシュミール (SSR)水着バージョン]]加入|レジェンドガチャ||
@@ -568,9 +568,9 @@
 |&attachref(img/1040207100.png,15%);|ゲイダーグ|&color(#993300){土};|槍|10|[[オディナスラスト>武器奥義#odina]]|[[地裂の攻刃>スキル一覧#tiretunokoujin]]|[[先制の岩壁>スキル一覧#senseinogannpeki]]|40|395|250|2335|[[ラスティナ (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040206900.png,15%);|ネプテゥヌスの三叉鉾|&color(#3366ff){水};|槍|40|[[トライデントストリーム>奥義一覧#tridentstream]]|[[練磨の心得>スキル一覧#renmanokokoroe]]||40|315|230|2005|四象降臨|四象武器||
 |&attachref(img/1040207200.png,15%);|ローズクリスタルランス|&color(#993300){土};|槍|60|[[ドミネイションスラスト>奥義一覧#dominationthrust]]|[[橙薔薇の棘>スキル一覧#daidaibaranotoge]]|[[橙薔薇の花弁>スキル一覧#daidaibaranokaben]]|45|350|250|2080|ショップ|ローズシリーズ||
-|&attachref(img/1040207900.png,15%);|黄龍槍|&color(#ff9900){光};|槍|80|[[白召刃>奥義一覧#hakusyoujinougiup]]|[[天光の攻刃>スキル一覧#tennkounokoujin]]|[[震天の境界へと至りし者>スキル一覧#sintennokyoukai]]|41|365|252|2250|ショップ|トレジャー交換||
-|&attachref(img/1040207900.png,15%);|[4凸]黄龍槍|&color(#ff9900){光};|槍|80|[[白召刃++>奥義一覧#hakusyoujinougiup]]|[[天光の攻刃II>スキル一覧#tennkounokoujin2]]|[[震天の境界へと至りし者>スキル一覧#sintennokyoukai]]|41|365|294|2630|ショップ|トレジャー交換|○|252|2250|
-|&attachref(img/1040207900.png,15%);|[5凸]黄龍槍|&color(#ff9900){光};|槍|80|[[白召刃++>奥義一覧#hakusyoujinougiup]]|[[天光の攻刃II>スキル一覧#tennkounokoujin2]]|[[震天の境界へと至りし者>スキル一覧#sintennokyoukai]]|41|365|336|3010|ショップ|トレジャー交換|◎|252|2250|294|2630|
+|&attachref(img/1040207900.png,15%);|黄龍槍|&color(#ff9900){光};|槍|80|[[白召刃>奥義一覧#hakusyoujinougiup]]|[[天光の攻刃>スキル一覧#tennkounokoujin]]|[[震天の境界へと至りし者>スキル一覧#sintennokyoukai]]|41|365|252|2250|ショップ|四象武器||
+|&attachref(img/1040207900.png,15%);|[4凸]黄龍槍|&color(#ff9900){光};|槍|80|[[白召刃++>奥義一覧#hakusyoujinougiup]]|[[天光の攻刃II>スキル一覧#tennkounokoujin2]]|[[震天の境界へと至りし者>スキル一覧#sintennokyoukai]]|41|365|294|2630|ショップ|四象武器|○|252|2250|
+|&attachref(img/1040207900.png,15%);|[5凸]黄龍槍|&color(#ff9900){光};|槍|80|[[白召刃++>奥義一覧#hakusyoujinougiup]]|[[天光の攻刃II>スキル一覧#tennkounokoujin2]]|[[震天の境界へと至りし者>スキル一覧#sintennokyoukai]]|41|365|336|3010|ショップ|四象武器|◎|252|2250|294|2630|
 |&attachref(img/1040207500.png,15%);|サンスポットスピア|&color(#800080){闇};|槍|10|[[レッド・ブラック・ゾーン>武器奥義#redblackzone]]|[[奈落の攻刃>スキル一覧#narakunokoujin]]|[[先制の闇刃>スキル一覧#senseinoyamiba]]|39|403|254|2316|[[ゼタ(闇属性ver) (SSR)>ゼタ (SSR)闇属性バージョン#dark]]加入|レジェンドガチャ||
 |&attachref(img/1040208000.png,15%);|ランス・オブ・ニグレド|&color(#ff9900){光};|槍|10|[[アルケミックスラスト>武器奥義#alchemicslast]]|[[腐蝕の禁術>スキル一覧#fushokunokinjyutu]]|[[大いなる業>スキル一覧#ooinarugou]]|32|300|206|1850|アストレイ・アルケミスト|イベント||
 |&attachref(img/1040209600.png,15%);|ダイモーンスパイン|&color(#3366ff){水};|槍|10|[[マナブーストショット>武器奥義#manaboostshot]]|[[渦潮の無双>スキル一覧#uzushionomusou]]|[[水の守護>スキル一覧#mizunosyugo]]|49|355|283|2175|[[アン (SSR)]]加入|レジェンドガチャ||
@@ -776,9 +776,9 @@
 |&attachref(img/1040606100.png,15%);|天華簪|&color(#ff0000){火};|格闘|10|[[紫陽花>武器奥義#azisai]]|[[紅蓮の攻刃>スキル一覧#gurennokoujin]]|[[火の二手>スキル一覧#hinonite]]|41|390|253|2325|[[ソシエ (火属性ver) (SSR)>ソシエ (SSR)#fire]]加入|レジェンドガチャ||
 |&attachref(img/1040606200.png,15%);|スヴァルガントレット|&color(#ff0000){火};|格闘|10|[[紅蓮掌>武器奥義#gurensyou]]|[[半獣の咆哮>スキル一覧#hanjyuunohoukou]]|[[炎の背骨>スキル一覧#honoonohaikotu]]|31|310|197|1900|氷晶宮でミックスパイを|イベント||
 |&attachref(img/1040606700.png,15%);|メタルハンド|&color(#3366ff){水};|格闘|10|[[ミサイル>武器奥義#missile]]|[[霧氷の暴君>スキル一覧#muhyounoboukun]]|[[水の技巧>スキル一覧#mizunogikou]]|42|390|250|2350|[[キャタピラとヴィーラ (SSR)]]加入|レジェンドガチャ||
-|&attachref(img/1040607100.png,15%);|黄龍拳|&color(#ff9900){光};|格闘|80|[[白召刃>奥義一覧#hakusyoujindown]]|[[震天の雷鳴>スキル一覧#sintennoraimei]]|[[震天の黄鱗>スキル一覧#sintennokirin]]|40|370|242|2300|ショップ|トレジャー交換||
-|&attachref(img/1040607100.png,15%);|[4凸]黄龍拳|&color(#ff9900){光};|格闘|80|[[白召刃++>奥義一覧#hakusyoujindown]]|[[震天の雷鳴>スキル一覧#sintennoraimei]]|[[震天の黄鱗>スキル一覧#sintennokirin]]|40|370|281|2690|ショップ|トレジャー交換|○|242|2300|
-|&attachref(img/1040607100.png,15%);|[5凸]黄龍拳|&color(#ff9900){光};|格闘|80|[[白召刃++>奥義一覧#hakusyoujindown]]|[[震天の雷鳴>スキル一覧#sintennoraimei]]|[[震天の黄鱗>スキル一覧#sintennokirin]]|40|370|320|3080|ショップ|トレジャー交換|◎|242|2300|281|2690|
+|&attachref(img/1040607100.png,15%);|黄龍拳|&color(#ff9900){光};|格闘|80|[[白召刃>奥義一覧#hakusyoujindown]]|[[震天の雷鳴>スキル一覧#sintennoraimei]]|[[震天の黄鱗>スキル一覧#sintennokirin]]|40|370|242|2300|ショップ|四象武器||
+|&attachref(img/1040607100.png,15%);|[4凸]黄龍拳|&color(#ff9900){光};|格闘|80|[[白召刃++>奥義一覧#hakusyoujindown]]|[[震天の雷鳴>スキル一覧#sintennoraimei]]|[[震天の黄鱗>スキル一覧#sintennokirin]]|40|370|281|2690|ショップ|四象武器|○|242|2300|
+|&attachref(img/1040607100.png,15%);|[5凸]黄龍拳|&color(#ff9900){光};|格闘|80|[[白召刃++>奥義一覧#hakusyoujindown]]|[[震天の雷鳴>スキル一覧#sintennoraimei]]|[[震天の黄鱗>スキル一覧#sintennokirin]]|40|370|320|3080|ショップ|四象武器|◎|242|2300|281|2690|
 |&attachref(img/1040607200.png,15%);|ディアドリッククロー|&color(#339966){風};|格闘|10|[[風裂く刃>武器奥義#kazesakuyaiba]]|[[乱気の背水>スキル一覧#rannkinohaisui]]|[[風の技巧>スキル一覧#kazenogikou]]|41|391|250|2340|[[スカーサハ (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040607200.png,15%);|[4凸]ディアドリッククロー|&color(#339966){風};|格闘|10|[[風裂く刃>武器奥義#kazesakuyaiba]]|[[乱気の背水>スキル一覧#rannkinohaisui]]|[[竜巻の技巧>スキル一覧#tatsumakinogikou]]|41|391|300|2830|[[スカーサハ (SSR)]]加入|レジェンドガチャ|○|250|2340|
 |&attachref(img/1040607300.png,15%);|桃色の団扇|&color(#339966){風};|格闘|10|[[○▲※■％×>武器奥義#marusankaku]]|[[アンノウン・ATK II>スキル一覧#unkown_atk2]]||29|310|197|1900|シンデレラファンタジー ～PINYA HAZARD～|イベント&br;(コラボ武器)||
@@ -820,9 +820,9 @@
 |&attachref(img/1040705500.png,15%);|マシン・ボウ|&color(#993300){土};|弓|10|[[メタルスラスト>奥義一覧#metalslast]]|[[オーバードロー>スキル一覧#overdraw]]|[[ポイント・オブ・エイム>スキル一覧#pointofeim]]|30|320|186|2000|プラチナ・スカイ|イベント||
 |&attachref(img/1040705600.png,15%);|白銀の弓|&color(#339966){風};|弓|10|[[白銀の矢>武器奥義#hakuginnoya]]|[[森林の祝福>スキル一覧#morinosyukuhuku]]|[[森の民の知恵>スキル一覧#morinotaminotie]]|27|338|180|2027|Shadowverse Duelist of Eternity|イベント&br;(コラボ武器)||
 |&attachref(img/1040705600.png,15%);|[4凸]白銀の弓|&color(#339966){風};|弓|10|[[白銀の矢++>武器奥義#hakuginnoya]]|[[森林の祝福>スキル一覧#morinosyukuhuku]]|[[森の民の知恵>スキル一覧#morinotaminotie]]|27|338|211|2365|Shadowverse Duelist of Eternity|イベント&br;(コラボ武器)|○|180|2027|
-|&attachref(img/1040706000.png,15%);|麒麟弓|&color(#800080){闇};|弓|80|[[黒召刃>奥義一覧#kokusyoujincri]]|[[奈落の暴君II>スキル一覧#narakunoboukun2]]|[[靂天の極致>スキル一覧#rekitennokyokuti]]|32|415|220|2465|ショップ|トレジャー交換||
-|&attachref(img/1040706000.png,15%);|[4凸]麒麟弓|&color(#800080){闇};|弓|80|[[黒召刃++>奥義一覧#kokusyoujincri]]|[[奈落の暴君II>スキル一覧#narakunoboukun2]]|[[靂天の極致>スキル一覧#rekitennokyokuti]]|32|415|258|2875|ショップ|トレジャー交換|○|220|2465|
-|&attachref(img/1040706000.png,15%);|[5凸]麒麟弓|&color(#800080){闇};|弓|80|[[黒召刃++>奥義一覧#kokusyoujincri]]|[[奈落の暴君II>スキル一覧#narakunoboukun2]]|[[靂天の極致>スキル一覧#rekitennokyokuti]]|32|415|296|3285|ショップ|トレジャー交換|◎|220|2465|258|2875|
+|&attachref(img/1040706000.png,15%);|麒麟弓|&color(#800080){闇};|弓|80|[[黒召刃>奥義一覧#kokusyoujincri]]|[[奈落の暴君II>スキル一覧#narakunoboukun2]]|[[靂天の極致>スキル一覧#rekitennokyokuti]]|32|415|220|2465|ショップ|四象武器||
+|&attachref(img/1040706000.png,15%);|[4凸]麒麟弓|&color(#800080){闇};|弓|80|[[黒召刃++>奥義一覧#kokusyoujincri]]|[[奈落の暴君II>スキル一覧#narakunoboukun2]]|[[靂天の極致>スキル一覧#rekitennokyokuti]]|32|415|258|2875|ショップ|四象武器|○|220|2465|
+|&attachref(img/1040706000.png,15%);|[5凸]麒麟弓|&color(#800080){闇};|弓|80|[[黒召刃++>奥義一覧#kokusyoujincri]]|[[奈落の暴君II>スキル一覧#narakunoboukun2]]|[[靂天の極致>スキル一覧#rekitennokyokuti]]|32|415|296|3285|ショップ|四象武器|◎|220|2465|258|2875|
 |&attachref(img/1040706100.png,15%);|ローズクリスタルボウ|&color(#ff0000){火};|弓|60|[[ドミネイションシュート>武器奥義#dominationshoot]]|[[紅薔薇の髄>スキル一覧#akabaranozui]]|[[紅薔薇の蕾>スキル一覧#akabaranotsubomi]]|33|370|215|2250|ショップ|ローズシリーズ||
 |&attachref(img/1040708100.png,15%);|シャローム・ボウ|&color(#800080){闇};|弓|10|[[安寧の風>武器奥義#anneinokaze]]|[[紫水の至恩>スキル一覧#shisuinoshion]]|[[紫水の光輝>スキル一覧#shisuinokouki]]|25|345|180|2030|パープル・スケール|イベント||
 |&attachref(img/1040708200.png,15%);|ガーンディーヴァ|&color(#993300){土};|弓|20|[[英雄の雷>武器奥義#eiyuunoikazuti]]|[[大地の無双>スキル一覧#daichinomusou]]|[[土の秘奥>スキル一覧#tutinohioku]]|37|441|228|2623|[[イルザ (SSR)]]加入|レジェンドガチャ||
@@ -851,9 +851,9 @@
 |&attachref(img/1040805100.png,15%);|[4凸]朱雀翼弦|&color(#ff0000){火};|楽器|1|[[四象天神之一矢・南朱++>武器奥義#nansyu]]|[[紅蓮の呪印・弐>スキル一覧#gurennojyuin2]]|[[紅蓮の攻刃>スキル一覧#gurennokoujin]]|51|290|220|2020|四象降臨|四象武器|○|186|1740|
 |&attachref(img/1040805300.png,15%);|西風の竪琴|&color(#339966){風};|楽器|10|[[疾風のマーチ>武器奥義#sippuunomarch]]|[[西風のクレシェンド>スキル一覧#nishikazenocrescendo]]|[[西風のラプソディ>スキル一覧#nishikazenorhapsody]]|52|300|190|1800|氷炎牆に鬩ぐ|イベント||
 |&attachref(img/1040805600.png,15%);|ドミニオンハープ|&color(#ff9900){光};|楽器|10|[[ドミニオンサウンド>武器奥義#dominionsound]]|[[聖なる守護>スキル一覧#seinarusyugo]]|[[天の福音>スキル一覧#tennofukuin]]|53|278|188|1727|どうして空は蒼いのか|イベント||
-|&attachref(img/1040805900.png,15%);|麒麟弦|&color(#800080){闇};|楽器|80|[[黒召刃>奥義一覧#kokusyoujinclear]]|[[奈落の攻刃>スキル一覧#narakunoboukun2]]|[[靂天の境界へと至りし者>スキル一覧#rekitennokyokuti]]|63|370|232|2185|ショップ|トレジャー交換||
-|&attachref(img/1040805900.png,15%);|[4凸]麒麟弦|&color(#800080){闇};|楽器|80|[[黒召刃++>奥義一覧#kokusyoujinclear]]|[[奈落の攻刃II>スキル一覧#narakunokoujin2]]|[[靂天の境界へと至りし者>スキル一覧#rekitennokyoukai]]|63|370|266|2550|ショップ|トレジャー交換|○|232|2185|
-|&attachref(img/1040805900.png,15%);|[5凸]麒麟弦|&color(#800080){闇};|楽器|80|[[黒召刃++>奥義一覧#kokusyoujinclear]]|[[奈落の攻刃II>スキル一覧#narakunokoujin2]]|[[靂天の境界へと至りし者>スキル一覧#rekitennokyoukai]]|63|370|300|2915|ショップ|トレジャー交換|◎|232|2185|266|2550|
+|&attachref(img/1040805900.png,15%);|麒麟弦|&color(#800080){闇};|楽器|80|[[黒召刃>奥義一覧#kokusyoujinclear]]|[[奈落の攻刃>スキル一覧#narakunoboukun2]]|[[靂天の境界へと至りし者>スキル一覧#rekitennokyokuti]]|63|370|232|2185|ショップ|四象武器||
+|&attachref(img/1040805900.png,15%);|[4凸]麒麟弦|&color(#800080){闇};|楽器|80|[[黒召刃++>奥義一覧#kokusyoujinclear]]|[[奈落の攻刃II>スキル一覧#narakunokoujin2]]|[[靂天の境界へと至りし者>スキル一覧#rekitennokyoukai]]|63|370|266|2550|ショップ|四象武器|○|232|2185|
+|&attachref(img/1040805900.png,15%);|[5凸]麒麟弦|&color(#800080){闇};|楽器|80|[[黒召刃++>奥義一覧#kokusyoujinclear]]|[[奈落の攻刃II>スキル一覧#narakunokoujin2]]|[[靂天の境界へと至りし者>スキル一覧#rekitennokyoukai]]|63|370|300|2915|ショップ|四象武器|◎|232|2185|266|2550|
 |&attachref(img/1040806000.png,15%);|フュージョンメビウス|&color(#ff9900){光};|楽器|10|[[フュージョンリアクション>武器奥義#fusionreaction]]|[[天光の攻刃>スキル一覧#tennkounokoujin]]|[[光の秘奥>スキル一覧#hikarinohioku]]|69|375|240|2225|[[クラリス (SSR)光属性バージョン]]加入|レジェンドガチャ||
 |&attachref(img/1040806100.png,15%);|ベッラ・アエテルヌス|&color(#993300){土};|楽器|10|[[枝葉の揺らめき>武器奥義#shiyounoyurameki]]|[[地裂の攻刃>スキル一覧#tiretunokoujin]]|[[大地の治癒>スキル一覧#daichinotiyu]]|75|355|260|2130|[[ユグドラシル (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040806300.png,15%);|ローズクリスタルハープ|&color(#3366ff){水};|楽器|60|[[ドミネイションサウンド>武器奥義#dominationsound]]|[[蒼薔薇の髄>スキル一覧#aobaranozui]]|[[蒼薔薇の蕾>スキル一覧#aobaranotsubomi]]|40|360|240|2120|ショップ|ローズシリーズ||
@@ -886,9 +886,9 @@
 |&attachref(img/1040905900.png,15%);|スノー・フレーク|&color(#3366ff){水};|刀|10|[[雪覇剛刃>武器奥義#setsuhagoujin]]|[[聖夜の瑞雪>スキル一覧#seiyanozuisetsu]]||26|340|151|2150|ホーリーナイトスペシャルマッチ -雪降る聖夜の激闘-|イベント||
 |&attachref(img/1040906100.png,15%);|チチウシ|&color(#ff9900){光};|刀|10|[[アンヌムツベ>武器奥義#annumutsube]]|[[大自然の摂理>スキル一覧#daishizennosetsuri]]|[[大自然の加護>スキル一覧#daishizennokago]]|26|340|153|2130|グランブルースピリッツ|イベント||
 |&attachref(img/1040906000.png,15%);|河豚毒|&color(#339966){風};|刀|10|[[旋風裂斬>武器奥義#senpuuretsuzan]]|[[我流の太刀筋>スキル一覧#garyuunotatisuji]]|[[我流の極地>スキル一覧#garyuunokyokuti]]|23|356|148|2155|グランブルースピリッツ|イベント||
-|&attachref(img/1040906800.png,15%);|黄龍刀|&color(#ff9900){光};|刀|80|[[白召刃>奥義一覧#hakusyoujinmukou]]|[[天光の暴君II>スキル一覧#tenkounoboukun2]]|[[震天の祈り>スキル一覧#sintennoinori]]|31|425|184|2610|ショップ|トレジャー交換||
-|&attachref(img/1040906800.png,15%);|[4凸]黄龍刀|&color(#ff9900){光};|刀|80|[[白召刃++>奥義一覧#hakusyoujinmukou]]|[[天光の暴君II>スキル一覧#tenkounoboukun2]]|[[震天の祈り>スキル一覧#sintennoinori]]|31|425|215|3050|ショップ|トレジャー交換|○|184|2610|
-|&attachref(img/1040906800.png,15%);|[5凸]黄龍刀|&color(#ff9900){光};|刀|80|[[白召刃++>奥義一覧#hakusyoujinmukou]]|[[天光の暴君II>スキル一覧#tenkounoboukun2]]|[[震天の祈り>スキル一覧#sintennoinori]]|31|425|246|3490|ショップ|トレジャー交換|◎|184|2610|215|3050|
+|&attachref(img/1040906800.png,15%);|黄龍刀|&color(#ff9900){光};|刀|80|[[白召刃>奥義一覧#hakusyoujinmukou]]|[[天光の暴君II>スキル一覧#tenkounoboukun2]]|[[震天の祈り>スキル一覧#sintennoinori]]|31|425|184|2610|ショップ|四象武器||
+|&attachref(img/1040906800.png,15%);|[4凸]黄龍刀|&color(#ff9900){光};|刀|80|[[白召刃++>奥義一覧#hakusyoujinmukou]]|[[天光の暴君II>スキル一覧#tenkounoboukun2]]|[[震天の祈り>スキル一覧#sintennoinori]]|31|425|215|3050|ショップ|四象武器|○|184|2610|
+|&attachref(img/1040906800.png,15%);|[5凸]黄龍刀|&color(#ff9900){光};|刀|80|[[白召刃++>奥義一覧#hakusyoujinmukou]]|[[天光の暴君II>スキル一覧#tenkounoboukun2]]|[[震天の祈り>スキル一覧#sintennoinori]]|31|425|246|3490|ショップ|四象武器|◎|184|2610|215|3050|
 |&attachref(img/1040908100.png,15%);|シネンシス|&color(#339966){風};|刀|10|[[風鎌>武器奥義#kazekama]]|[[乱気の攻刃>スキル一覧#rannkinokoujin]]|[[不死身の竜血>スキル一覧#fujiminoryuuketsu]]|29|460|180|2715|[[ジークフリート(浴衣ver) (SSR)>ジークフリート (SSR)浴衣バージョン]]加入|レジェンドガチャ||
 |&attachref(img/1040908200.png,15%);|三日月宗近|&color(#ff9900){光};|刀|10|[[月明之太刀>武器奥義#tukiakari]]|[[天下五剣>スキル一覧#tenkagoken]]||25|345|151|2142|活撃 刀剣乱舞 ～蒼天のえにし～|イベント&br;(コラボ武器)||
 |&attachref(img/1040908200.png,15%);|[4凸]三日月宗近|&color(#ff9900){光};|刀|10|[[月明之太刀++>武器奥義#tukiakari]]|[[天下五剣>スキル一覧#tenkagoken]]|[[三条宗近の作>スキル一覧#sanjyoumunetika]]|25|345|176|2501|活撃 刀剣乱舞 ～蒼天のえにし～|イベント&br;(コラボ武器)|○|151|2142|
