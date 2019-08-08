@@ -1841,7 +1841,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (amount == 'count-wand') {
                             // TODO: countWandType
                         } else if (amount == 'all-unique-type') {
-                            // TODO: countUniqueArmType
+                            // TODO: isAllUniqueArmType
                         } else if (amount == 'all-unique') {
                             // TODO: isAllUniqueArm
                         }
