@@ -24,7 +24,7 @@ const genCountWeaponFunc = (func) => (arml, comb) => sumBy(armListWithCount(arml
 
 
 // #326 discussion for how to detect epic weapon
-const isEpicWeapon = (arm) => arm.series === "epic";
+const isEpicWeapon = (arm) => arm.series && arm.series === "epic";
 
 
 const isWandType = (arm) => arm.armType === "wand";
@@ -50,7 +50,7 @@ const countWandType = genCountWeaponFunc(isWandType);
  * @param {Array<number>} comb combinations
  * @return {boolean} is all unique arm
  */
-const isAllUniqueArm = (comb) => comb.filter(x => x > 0).every(1);
+const isAllUniqueArm = (arml, comb) => comb.filter(x => x > 0).every(x => x == 1);
 
 /**
  * @param {Array<Arm>} arml arm list
@@ -63,14 +63,15 @@ const countUniqueArmType = (arml, comb) => (new Set(armListWithCount(arml, comb)
  * @param {Array<number>} comb combinations
  * @return {number} count unique arm
  */
-const countUniqueComb = (comb) => comb.filter(x => x == 1).length;
+const countUniqueComb = (arml, comb) => comb.filter(x => x == 1).length;
 
 /**
  * @param {Array<Arm>} arml arm list
  * @param {Array<number>} comb combinations
  * @return {boolean} is all unique arm type
  */
-const isAllUniqueArmType = (arml, comb) => countUniqueArmType(arml, comb) === countUniqueComb(comb);
+const isAllUniqueArmType = (arml, comb) => countUniqueArmType(arml, comb) === countUniqueComb(arml, comb);
+
 
 // FIXME: it is not enough completed implementation, yet.
 // - if arml contained blank data

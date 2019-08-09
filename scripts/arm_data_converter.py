@@ -1022,6 +1022,10 @@ armtypelist[u"弓"] = "bow"
 armtypelist[u"楽器"] = "music"
 armtypelist[u"刀"] = "katana"
 
+SERIES = {
+    u"エピックウェポン": "epic",
+}
+
 ########################################################################################################################
 filename = inspect.getframeinfo(inspect.currentframe()).filename
 path = os.path.dirname(os.path.abspath(filename))
@@ -1149,8 +1153,11 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                 elif index == 13:
                     pass
                 elif index == 14:
-                    # category
-                    pass
+                    if value in SERIES:
+                        newdict["series"] = SERIES[value]
+                    else: # "series": undefined
+                        pass
+                    # if we need default value then: SERIES.get(value, "none")
                 elif index == 15:
                     if PROCESS_TYPE_SSR:
                         if jougen_5_pattern.search(value):

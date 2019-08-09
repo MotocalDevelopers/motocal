@@ -62,7 +62,7 @@ describe('New Epic Weapons skills', () => {
         it('checks all unique armType', () => {
             const {arml, comb} = allUniqueTypes;
             expect(countUniqueArmType(arml, comb)).toBe(10);
-            expect(countUniqueComb(comb)).toBe(10);
+            expect(countUniqueComb(arml, comb)).toBe(10);
             expect(isAllUniqueArmType(arml, comb)).toBeTruthy();
         });
     });
