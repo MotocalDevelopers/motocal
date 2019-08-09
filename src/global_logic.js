@@ -2101,8 +2101,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
         }
         if (numResonanceStaff > 0) {
             // TODO: LIMIT (require verification)
-            chara["normalOtherLesserSante"] = numResonanceStaff * countWand * 0.1;
-            chara["normalOtherNite"] = numResonanceStaff * countWand * 0.2;
+            chara["normalOtherLesserSante"] = Math.min(0.50, numResonanceStaff * countWand * 0.1);
+            chara["normalOtherNite"] = Math.min(0.50, numResonanceStaff * countWand * 0.2);
         }
         if (isAllUniqueArm) {
             chara["ex"] += 20.0;
