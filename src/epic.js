@@ -57,13 +57,16 @@ const isAllUniqueArm = (arml, comb) => comb.filter(x => x > 0).every(x => x == 1
  * @param {Array<number>} comb combinations
  * @return {number} is all unique arm type
  */
-const countUniqueArmType = (arml, comb) => (new Set(armListWithCount(arml, comb).filter(arm => arm.count > 0).map(arm => arm.armType))).size;
+const countUniqueArmType = (arml, comb) => (new Set(
+    armListWithCount(arml, comb)
+        .filter(arm => arm.name && arm.count > 0)
+        .map(arm => arm.armType))).size;
 
 /**
  * @param {Array<number>} comb combinations
  * @return {number} count unique arm
  */
-const countUniqueComb = (arml, comb) => comb.filter(x => x == 1).length;
+const countUniqueComb = (arml, comb) => armListWithCount(arml, comb).filter(arm => arm.name && arm.count == 1).length;
 
 /**
  * @param {Array<Arm>} arml arm list

@@ -12,8 +12,8 @@ const {
 
 
 // Dummy arm data for tests
-const Arm = (armType) => ({armType});
-const EpicArm = (armType) => ({series:"epic", armType});
+const Arm = (armType) => ({name:armType, armType});
+const EpicArm = (armType) => ({series:"epic", name:armType, armType});
 
 
 describe('New Epic Weapons skills', () => {
@@ -65,7 +65,14 @@ describe('New Epic Weapons skills', () => {
             expect(countUniqueComb(arml, comb)).toBe(10);
             expect(isAllUniqueArmType(arml, comb)).toBeTruthy();
         });
+
+        it('should ignore blank slots', () => {
+            // initial setting has blank slots
+            const arml = [Arm("sword"), Arm("dagger"), Arm("axe"), Arm(), Arm(), Arm()];
+            const comb = [1, 1, 1, 1, 1, 1];
+            expect(countUniqueArmType(arml, comb)).toBe(3);
+            expect(countUniqueComb(arml, comb)).toBe(3);
+            expect(isAllUniqueArmType(arml, comb)).toBeTruthy();
+        });
     });
 });
-
-// TODO: add more unit tests, exception cases.
