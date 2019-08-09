@@ -584,6 +584,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         // for DA and TA
         var normalNite = totals[key]["normalNite"] * totalSummon["zeus"];
+        normalNite += totals[key]["normalOtherNite"];
         var magnaNite = totals[key]["magnaNite"] * totalSummon["magna"];
         var normalSante = totals[key]["normalSante"] * totalSummon["zeus"] + totals[key]["normalOtherSante"];
         var magnaSante = totals[key]["magnaSante"] * totalSummon["magna"];
@@ -1858,7 +1859,6 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (amount === 'all-unique') {
                             isAllUniqueArm = epic.isAllUniqueArm(arml, comb);
                         }
-                        console.log(amount, isAllUniqueArmType, isAllUniqueArm)
                     } else if (stype == 'cherubimKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'sunbladeKonshin') {
@@ -2101,8 +2101,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
         }
         if (numResonanceStaff > 0) {
             // TODO: LIMIT (require verification)
-            chara["normalOtherLesserSante"] = Math.min(0.50, numResonanceStaff * countWand * 0.1);
-            chara["normalOtherNite"] = Math.min(0.50, numResonanceStaff * countWand * 0.2);
+            chara["normalOtherLesserSante"] = Math.min(50.0, numResonanceStaff * countWand * 1.0);
+            chara["normalOtherNite"] = Math.min(50.0, numResonanceStaff * countWand * 2.0);
         }
         if (isAllUniqueArm) {
             chara["ex"] += 20.0;
