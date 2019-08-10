@@ -1,19 +1,21 @@
 
 const {
+    _strip_arm_name,
     isEpicWeapon,
     isWandType,
     countEpicWeapon,
     countWandType,
-    isAllUniqueArm,
+    countUniqueArm,
     countUniqueArmType,
     countUniqueComb,
+    isAllUniqueArm,
     isAllUniqueArmType,
 } = require('./epic');
 
 
 // Dummy arm data for tests
-const Arm = (armType) => ({name:armType, armType});
-const EpicArm = (armType) => ({series:"epic", name:armType, armType});
+const Arm = (armType, name="") => ({name:name||armType, armType});
+const EpicArm = (armType, name="") => Object.assign(Arm(armType, name), {series:"epic"})
 
 
 describe('New Epic Weapons skills', () => {
@@ -25,6 +27,18 @@ describe('New Epic Weapons skills', () => {
         arml: ALL_ARM_TYPES.map(EpicArm),
         comb: ALL_ARM_TYPES.map(() => 1),
     };
+
+    describe('#_strip_arm_name', () => {
+        it('checks ignore plus and whitespaces', () => {
+            expect(_strip_arm_name("AAA+99")).toBe("AAA");
+            expect(_strip_arm_name("AAA +99")).toBe("AAA");
+            expect(_strip_arm_name("AAA + 99")).toBe("AAA");
+            expect(_strip_arm_name("AAA + 99 ")).toBe("AAA");
+        });
+        // TODO: ignore lv/slv
+        // TODO: ignore uncap? (require verification)
+        // TODO: ignore element change name (require verification)
+    });
     
     describe('#isEpicWeapon', () => {
         it('checks the series is "epic"', () => {
@@ -73,6 +87,13 @@ describe('New Epic Weapons skills', () => {
             expect(countUniqueArmType(arml, comb)).toBe(3);
             expect(countUniqueComb(arml, comb)).toBe(3);
             expect(isAllUniqueArmType(arml, comb)).toBeTruthy();
+        });
+
+        it('should detect same weapon in different entry', () => {
+            const arml = [Arm("sword"), Arm("axe", name="AAA"), Arm("axe", name="AAA+99")];
+            const comb = [1, 1, 1];
+            expect(countUniqueArm(arml, comb)).toBe(2);
+            expect(countUniqueComb(arml, comb)).toBe(3);
         });
     });
 });

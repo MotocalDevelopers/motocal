@@ -9,6 +9,7 @@ const sumBy = (arr, key) =>
     arr.reduce((total, item) => total + item[key], 0);
 
 
+const _strip_arm_name = (name) => name.replace(/\s*\+\s*\w+\s*/, '');
 
 /**
  * @param {Array<Arm>} arml arm list
@@ -46,11 +47,16 @@ const countEpicWeapon = genCountWeaponFunc(isEpicWeapon);
  */
 const countWandType = genCountWeaponFunc(isWandType);
 
+
 /**
+ * @param {Array<Arm>} arml arm list
  * @param {Array<number>} comb combinations
- * @return {boolean} is all unique arm
+ * @return {number} is all unique arm name
  */
-const isAllUniqueArm = (arml, comb) => comb.filter(x => x > 0).every(x => x == 1);
+const countUniqueArm = (arml, comb) => (new Set(
+    armListWithCount(arml, comb)
+        .filter(arm => arm.name && arm.count === 1)
+        .map(arm => _strip_arm_name(arm.name)))).size;
 
 /**
  * @param {Array<Arm>} arml arm list
@@ -59,14 +65,23 @@ const isAllUniqueArm = (arml, comb) => comb.filter(x => x > 0).every(x => x == 1
  */
 const countUniqueArmType = (arml, comb) => (new Set(
     armListWithCount(arml, comb)
-        .filter(arm => arm.name && arm.count > 0)
+        .filter(arm => arm.name && arm.count === 1)
         .map(arm => arm.armType))).size;
 
 /**
  * @param {Array<number>} comb combinations
  * @return {number} count unique arm
  */
-const countUniqueComb = (arml, comb) => armListWithCount(arml, comb).filter(arm => arm.name && arm.count == 1).length;
+const countUniqueComb = (arml, comb) => armListWithCount(arml, comb).filter(arm => arm.name && arm.count === 1).length;
+
+
+/**
+ * @param {Array<Arm>} arml arm list
+ * @param {Array<number>} comb combinations
+ * @return {boolean} is all unique arm
+ */
+const isAllUniqueArm = (arml, comb) => countUniqueArm(arml, comb) === countUniqueComb(arml, comb);
+
 
 /**
  * @param {Array<Arm>} arml arm list
@@ -86,14 +101,14 @@ const isAllUniqueArmType = (arml, comb) => countUniqueArmType(arml, comb) === co
 
 
 module.exports = {
-    // private
+    _strip_arm_name: _strip_arm_name,
     isEpicWeapon: isEpicWeapon,
     isWandType: isWandType,
-    // public
     countEpicWeapon: countEpicWeapon,
     countWandType: countWandType,
-    isAllUniqueArm: isAllUniqueArm,
+    countUniqueArm: countUniqueArm,
     countUniqueArmType: countUniqueArmType,
     countUniqueComb: countUniqueComb,
+    isAllUniqueArm: isAllUniqueArm,
     isAllUniqueArmType: isAllUniqueArmType,
 };
