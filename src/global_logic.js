@@ -1528,6 +1528,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
 
     // New Epic 2nd skill is party shared setting, affected to EX fields
     var numGrandEpic = 0; // number of Grand Epic skills
+    var numResonanceStaff = 0; // number of Resonance Staff skills
     var countEpic = 0;
     var countWand = 0;
     var isAllUniqueArm = false;
@@ -1851,6 +1852,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             numGrandEpic += comb[i];
                             countEpic = countEpic ? countEpic : epic.countEpicWeapon(arml, comb);
                         } else if (amount === 'count-wand') {
+                            numResonanceStaff += comb[i];
                             countWand = countWand ? countWand : epic.countWandType(arml, comb);
                         } else if (amount === 'all-unique-type') {
                             isAllUniqueArmType = epic.isAllUniqueArmType(arml, comb);
@@ -2098,8 +2100,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
             chara["ex"] += Math.min(LIMIT.grandEpic, numGrandEpic * countEpic * 4.0);
         }
         if (numResonanceStaff > 0) {
-            // resonanceStaff does not stack
-            chara["normalOtherSante"] = Math.min(50.0, countWand * 1.0);
+            chara["normalOtherSante"] = Math.min(50.0, numResonanceStaff * countWand * 1.0);
         }
         if (isAllUniqueArm) {
             chara["ex"] += 20.0;
