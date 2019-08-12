@@ -269,10 +269,8 @@ module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, critica
     damage += ougiFixedDamage * criticalRatio;
     var overedDamage = 0.0;
 
-    for (var index = 0; index < 4; index++) {
+    for (const [limitValue, limitRatio] of limitValues) {
         // Damage cap calculation
-        var limitValue = limitValues[index][0];
-        var limitRatio = limitValues[index][1];
 
         // Subtract only by the extent exceeding the attenuation line
         if (damage > limitValue) {
