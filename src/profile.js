@@ -227,6 +227,7 @@ var Profile = CreateClass({
             personalCriticalBuff: [],
             personalCriticalBuffCount: 0,
             retsujitsuNoRakuen: false,
+            shiToAiNoSekai: false,
         };
     },
     switchBufflist: function (e) {
@@ -981,17 +982,31 @@ var Profile = CreateClass({
                         </tr>
                     </TextWithTooltip>
 
-                    <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)} id={"tooltip-sun-touched-paradise-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("特殊効果", locale)}</th>
-                                <td>
-                                    <Checkbox inline checked={this.state.retsujitsuNoRakuen}
-                                              onChange={this.handleSelectEvent.bind(this, "retsujitsuNoRakuen")}>
-                                        <strong>{intl.translate("烈日の楽園", locale)}</strong>
+
+                    <tr>
+                        <th className="bg-primary">{intl.translate("特殊効果", locale)}</th>
+                        <td>
+                        <TextWithTooltip tooltip={intl.translate("烈日の楽園説明", locale)} id={"tooltip-sun-touched-paradise-detail"}>
+                            <tr>
+
+                                <Checkbox inline checked={this.state.retsujitsuNoRakuen}
+                                          onChange={this.handleSelectEvent.bind(this, "retsujitsuNoRakuen")}>
+                                    <strong>{intl.translate("烈日の楽園", locale)}</strong>
+                                </Checkbox>
+                            </tr>
+                        </TextWithTooltip>
+                        <TextWithTooltip tooltip={intl.translate("死ト愛ノ世界説明", locale)} id={"tooltip-world-of-death-and-love-detail"}>
+                            <tr>
+                                    <Checkbox inline checked={this.state.shiToAiNoSekai}
+                                              onChange={this.handleSelectEvent.bind(this, "shiToAiNoSekai")}>
+                                        <strong>{intl.translate("死ト愛ノ世界", locale)}</strong>
                                     </Checkbox>
-                                </td>
-                        </tr>
-                    </TextWithTooltip>
+
+                            </tr>
+                        </TextWithTooltip>
+                        </td>
+                    </tr>
+
 
                     <TextWithTooltip tooltip={intl.translate("ジータさん基礎DA率説明", locale)}
                                      id={"tooltip-player-baseda-detail"}>

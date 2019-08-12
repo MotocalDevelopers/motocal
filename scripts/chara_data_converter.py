@@ -373,6 +373,7 @@ patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
 
 ### SR
 patching["カルメリーナ(SR)"] = {"DA": 4.0, "TA": 1.0}
+patching["白竜の双騎士 ランスロット＆ヴェイン(SR)"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 風 - Wind
 patching["ユエル(水着ver)"] = {"DA": 12.0, "TA": 3.0}
@@ -496,6 +497,7 @@ patchingOugiRatio["桜内梨子＆高海千歌＆渡辺 曜"] = {"ougiRatio": 5.
 patchingOugiRatio["サンダルフォン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァンピィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["リリィ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["アイル"] = {"ougiRatio": 5.0}
 
 ### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
