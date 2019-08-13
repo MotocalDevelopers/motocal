@@ -2320,6 +2320,57 @@ var supportAbilities = {
         "range": "own",
         "value": 50000
     },
+    "saikou_ni_kure": {
+        "name": "saikou_ni_kure",
+        "type": "saikou_ni_kure",
+        "range": "own",
+        "staged": true,
+        "stages": ["0", "1", "2", "3", "4", "5"],
+        "stagesValues": {
+            "0": {
+                "otherBuff": 0,
+                "damageLimitBuff": 0,
+                "DATASupport": [0, 0],
+                "ougiDamageBuff": 0,
+                "ougiDamageLimitBuff": 0,
+            },
+            "1": {
+                "otherBuff": 0.20,
+                "damageLimitBuff": 0.03,
+                "DATASupport": [0.20, 0.4],
+                "ougiDamageBuff": 0.10,
+                "ougiDamageLimitBuff": 0.05,
+            },
+            "2": {
+                "otherBuff": 0.40,
+                "damageLimitBuff": 0.06,
+                "DATASupport": [0.40, 0.8],
+                "ougiDamageBuff": 0.20,
+                "ougiDamageLimitBuff": 0.10,
+            },
+            "3": {
+                "otherBuff": 0.60,
+                "damageLimitBuff": 0.09,
+                "DATASupport": [0.60, 0.12],
+                "ougiDamageBuff": 0.30,
+                "ougiDamageLimitBuff": 0.15,
+            },
+            "4": {
+                "otherBuff": 0.80,
+                "damageLimitBuff": 0.12,
+                "DATASupport": [0.80, 0.16],
+                "ougiDamageBuff": 0.40,
+                "ougiDamageLimitBuff": 0.20,
+            },
+            "5": {
+                "otherBuff": 1,
+                "damageLimitBuff": 0.15,
+                "DATASupport": [1, 0.20],
+                "ougiDamageBuff": 0.50,
+                "ougiDamageLimitBuff": 0.25,
+            },
+        }
+    }
     // "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ >> カードキャプター
     //     "name": "通常攻撃を行わない。()",
     //     "type": "no_normal_attack",
@@ -3015,4 +3066,16 @@ module.exports.selector.en.supportAbilities = Object.keys(supportAbilities).map(
 });
 module.exports.selector.zh.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "zh")}</option>;
+});
+
+//support abilities stages:
+
+module.exports.selector.ja["saikou_ni_kure"] = Object.keys(supportAbilities["saikou_ni_kure"]["stages"]).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("saikou_ni_kure" + opt, "ja")}</option>;
+});
+module.exports.selector.en["saikou_ni_kure"] = Object.keys(supportAbilities["saikou_ni_kure"]["stages"]).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("saikou_ni_kure" + opt, "en")}</option>;
+});
+module.exports.selector.zh["saikou_ni_kure"] = Object.keys(supportAbilities["saikou_ni_kure"]["stages"]).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("saikou_ni_kure" + opt, "zh")}</option>;
 });

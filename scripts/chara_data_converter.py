@@ -274,7 +274,9 @@ supportAbilist["stamina_all_L_hp_down_own_15"] = {
 supportAbilist["supplemental_third_hit_50k"] = {
     u"みんなのあんぜんあんしん"
 }
-
+supportAbilist["saikou_ni_kure"] = {
+    "サイコーにクレ&#12316;ジ&#12316;！"
+}
 # Patching DA TA
 patching = OrderedDict()
 
