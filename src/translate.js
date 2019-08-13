@@ -4213,9 +4213,9 @@ var multiLangData = {
         "zh": "2019/07/16: Added Chara's Bonus Plain C.A. Damage field, Various Support Abilities. Updated Chara's base DA/TA. Added new weapons and characters.",
     },
     "notice-20190805-1": {
-        "en": "05/08/2019: Added Epic Weapons ★4, World of Death and Love (Nier). Fix graf/chart whiteout. Changed Baha/Cosmos skills notation. Added new weapons and characters.",
-        "ja": "2019/08/05: エピックウェポン4凸対応。フィールド効果「死ト愛ノ世界(ニーア)」追加。背水グラフのホワイトアウト修正。バハコスモススキルの表記変更。武器とキャラ追加。",
-        "zh": "2019/08/05: Added Epic Weapons ★4, World of Death and Love (Nier). Fix graf/chart whiteout. Changed Baha/Cosmos skills notation. Added new weapons and characters.",
+        "en": "05/08/2019: Added old Epic Weapons ★4, World of Death and Love (Nier). Fix graf/chart whiteout. Changed Baha/Cosmos skills notation. Added new weapons and characters.",
+        "ja": "2019/08/05: 旧エピックウェポン4凸対応。フィールド効果「死ト愛ノ世界(ニーア)」追加。背水グラフのホワイトアウト修正。バハコスモススキルの表記変更。武器とキャラ追加。",
+        "zh": "2019/08/05: Added old Epic Weapons ★4, World of Death and Love (Nier). Fix graf/chart whiteout. Changed Baha/Cosmos skills notation. Added new weapons and characters.",
     },
 };
 
