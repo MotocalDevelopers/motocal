@@ -21,6 +21,11 @@ var Notice = CreateClass({
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
                     <ChangeLog className="list-group" length={10} step={20} buttonText={intl.translate("次の{step}件を表示", locale)}>
 
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190805-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190716-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190710-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190628-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190624-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190618-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190617-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190615-1", locale)}</li>
