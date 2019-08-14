@@ -193,6 +193,7 @@ var ResultList = CreateClass({
             switchCharaTotalExpected: 0,
             switchCharaCycleDamage: 0,
             switchCharaPureDamage: 0,
+            switchCharaLimitValues: 0,
             switchCharaOugiDamage: 0,
             switchCharaOugiGage: 0,
             switchAverageAttack: 1,
@@ -598,6 +599,9 @@ var ResultList = CreateClass({
                                 <td onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
                                     className={(this.state.switchCharaPureDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ
                                 </td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
+                                    className={(this.state.switchCharaLimitValues == 1) ? "display-checked" : "display-unchecked"}> キャラ実質ダメージ上限
+                                </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                     className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ダメージ
                                 </td>
@@ -798,6 +802,8 @@ var ResultList = CreateClass({
                                       active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
                                       active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
+                                      active={(this.state.switchCharaLimitValues == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("実質ダメージ上限", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                       active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
@@ -1166,6 +1172,8 @@ var Result = CreateClass({
                     ++colSize;
                 }
 
+
+
                 if (sw.switchCharaOugiDamage) {
                     for (key in m.data) {
                         charaDetail[key].push(
@@ -1216,6 +1224,28 @@ var Result = CreateClass({
                     var val = Math.round(m.data.Djeeta.averageCyclePerTurn);
                     tablebody.push(val.toString() + " (" + (4 * val).toString() + ")");
                     ++colSize;
+                }
+
+                if (sw.switchCharaLimitValues) {
+                    for (var key in m.data) {
+                        function createLimitValues(LimitValues){
+                            return LimitValues[3][0] + (LimitValues[2][0] - LimitValues[3][0]) * LimitValues[3][1] +
+                            (LimitValues[1][0] - LimitValues[2][0]) * LimitValues[2][1] +
+                            (LimitValues[0][0] - LimitValues[1][0]) * LimitValues[1][1];
+                        }
+                        let normalDamageRealLimit = createLimitValues(m.data[key].normalDamageLimitValues);
+                        let ougiDamageRealLimit = createLimitValues(m.data[key].ougiDamageLimitValues);
+                        charaDetail[key].push(
+                                <div key={key + "-LimitValues"}>
+                                    <span key={key + "-LimitValues"}>
+                                        <span className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
+                                            {Math.round(normalDamageRealLimit).toLocaleString()}&nbsp;
+                                        <span className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
+                                            {Math.round(ougiDamageRealLimit).toLocaleString()}&nbsp;
+                                    </span>
+                                </div>
+                        );
+                    };
                 }
 
                 if (sw.switchSkillTotal) {
