@@ -1228,13 +1228,13 @@ var Result = CreateClass({
 
                 if (sw.switchCharaLimitValues) {
                     for (var key in m.data) {
-                        function createLimitValues(LimitValues){
+                        function createRealLimitValues(LimitValues){
                             return LimitValues[3][0] + (LimitValues[2][0] - LimitValues[3][0]) * LimitValues[3][1] +
                             (LimitValues[1][0] - LimitValues[2][0]) * LimitValues[2][1] +
                             (LimitValues[0][0] - LimitValues[1][0]) * LimitValues[1][1];
                         }
-                        let normalDamageRealLimit = createLimitValues(m.data[key].normalDamageLimitValues);
-                        let ougiDamageRealLimit = createLimitValues(m.data[key].ougiDamageLimitValues);
+                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues);
+                        let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues);
                         charaDetail[key].push(
                                 <div key={key + "-LimitValues"}>
                                     <span key={key + "-LimitValues"}>
