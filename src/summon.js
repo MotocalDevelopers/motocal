@@ -438,9 +438,9 @@ var Summon = CreateClass({
                         </InputGroup></td>
                     </tr>
 
-                    <TextWithTooltip tooltip={intl.translate("奥義ダメージUP加護説明", locale)} id={"tooltip-ougi-damage-aura-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("奥義ダメージ加護説明", locale)} id={"tooltip-ougi-damage-aura-detail"}>
                     <tr>
-                        <th className="bg-primary">{intl.translate("奥義ダメージUP加護", locale)}</th>
+                        <th className="bg-primary">{intl.translate("奥義ダメージ加護", locale)}</th>
                         <td><InputGroup>
                             <FormControl type="number" min="0" value={this.state.ougiDamage} onBlur={this.handleOnBlur}
                                          onChange={this.handleEvent.bind(this, "ougiDamage")}/><InputGroup.Addon>%</InputGroup.Addon>

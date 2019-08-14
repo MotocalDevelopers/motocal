@@ -1804,12 +1804,12 @@ var multiLangData = {
         "ja": "ダメージ上限に加算されます。天司石(5~10%)など",
         "zh": "Increases the damage cap. Primarch summons(5~10%) etc.",
     },
-    "奥義ダメージUP加護": {
+    "奥義ダメージ加護": {
         "en": "C.A. DMG Aura",
-        "ja": "奥義ダメージUP加護",
+        "ja": "奥義ダメージ加護",
         "zh": "C.A. DMG Aura",
     },
-    "奥義ダメージUP加護説明": {
+    "奥義ダメージ加護説明": {
         "en": "Increases the C.A. damage. Huanglong(30%)etc.",
         "ja": "奥義ダメージUPに加算されます。黄龍(30%)など",
         "zh": "Increases the C.A. damage. Huanglong(30%)etc.",
