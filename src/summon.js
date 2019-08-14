@@ -1,6 +1,6 @@
 var React = require('react');
 var intl = require('./translate.js');
-var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Label, Button, ButtonGroup} = require('react-bootstrap');
+var {FormControl, InputGroup, FormGroup, Col, Row, Grid, Label, Button, ButtonGroup, Checkbox} = require('react-bootstrap');
 var {ColP} = require('./gridp.js');
 var GlobalConst = require('./global_const.js');
 var CreateClass = require('create-react-class');
@@ -209,7 +209,8 @@ var Summon = CreateClass({
             criticalRatio: 0.0,
             ougiDamage : 0.0,
             tenshiDamageUP : 0.0,
-            damageLimit : 0.0
+            damageLimit : 0.0,
+            shivaBuff: false
         };
     },
     componentDidMount: function () {
@@ -269,9 +270,15 @@ var Summon = CreateClass({
     },
     handleSelectEvent: function (key, e) {
         var newState = this.state;
-        newState[key] = e.target.value;
+
+        if (e.target.type === "checkbox") {
+            newState[key] = e.target.checked;
+        } else {
+            newState[key] = e.target.value;
+        }
+        
         this.setState(newState);
-        this.props.onChange(this.props.id, newState)
+        this.props.onChange(this.props.id, newState, false);
     },
     handleOnBlur: function (e) {
         this.props.onChange(this.props.id, this.state)
@@ -452,6 +459,15 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "ougiDamage")}/><InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup></td>
                     </tr>
+
+                    <TextWithTooltip tooltip={intl.translate("シヴァバフ説明", locale)} id={"tooltip-shiva-buff-detail"}>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("シヴァバフ", locale)}</th>
+                        <td><Checkbox inline checked={this.state.shivaBuff}
+                                      onChange={this.handleSelectEvent.bind(this, "shivaBuff")}>
+                            </Checkbox></td>
+                    </tr>
+                    </TextWithTooltip>
                     </tbody>
                 </table>
 

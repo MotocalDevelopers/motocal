@@ -1799,6 +1799,16 @@ var multiLangData = {
         "ja": "奥義ダメージ",
         "zh": "奥義ダメージ",
     },
+    "シヴァバフ": {
+        "en": "Shiva Buff",
+        "ja": "シヴァバフ",
+        "zh": "Shiva Buff",
+    },
+    "シヴァバフ説明": {
+        "en": "All Allies gain 100% other buff, and DMG cap +500000.",
+        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を500000加算します。",
+        "zh": "All Allies gain 100% other buff, and DMG cap +500000.",
+    },
     "内容を消去": {
         "en": "Delete",
         "ja": "内容を消去",

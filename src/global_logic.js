@@ -567,6 +567,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         otherCoeff *= prof.retsujitsuNoRakuen ? 1.20 : 1;
         otherCoeff *= prof.shiToAiNoSekai ? 1.20 : 1;
 
+        otherCoeff *= totalSummon["shivaBuff"] ? 2.0 : 1;
+
         // Character Emnity
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"];
 
@@ -787,10 +789,18 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         debuffResistance += 100 * totals[key]["debuffResistanceBuff"];
         
         // Generate LimitValues
-        const normalDamageLimitValues = _initLimitValues(1.0 + criticalDamageLimit, BASE_LIMIT_VALUES.normalDamage);
-        const normalDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + damageLimit, BASE_LIMIT_VALUES.normalDamage);
-        const ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
-        const ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
+        let normalDamageLimitValues = _initLimitValues(1.0 + criticalDamageLimit, BASE_LIMIT_VALUES.normalDamage);
+        let normalDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + damageLimit, BASE_LIMIT_VALUES.normalDamage);
+        let ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
+        let ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
+        
+        const _addShivaLimitUp = (values) => values.map(([threshold, ratio]) => [threshold+500000, ratio]);
+        if (totalSummon["shivaBuff"]) {
+            normalDamageLimitValues = _addShivaLimitUp(normalDamageLimitValues);
+            normalDamageLimitValuesWithoutCritical = _addShivaLimitUp(normalDamageLimitValuesWithoutCritical);
+            ougiDamageLimitValues = _addShivaLimitUp(ougiDamageLimitValues);
+            ougiDamageLimitValuesWithoutCritical = _addShivaLimitUp(ougiDamageLimitValuesWithoutCritical);
+        }
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
         var damage = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, additionalDamage, damageUP, normalDamageLimitValues);
@@ -2546,7 +2556,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ta: 0,
                 ougiDamage: 0,
                 tenshiDamageUP: 0,
-                damageLimit: 0
+                damageLimit: 0,
+                shivaBuff: false
             };
 
             if (summonElementTypes[selfElement]["type"].indexOf(totals[key]["element"]) >= 0 || selfElement == "all") {
@@ -2583,6 +2594,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = 0.01 * parseInt(summon[s].ougiDamage);
             if (!isNaN(summon[s].tenshiDamageUP)) totalSummon["tenshiDamageUP"] = parseInt(summon[s].tenshiDamageUP);
             if (!isNaN(summon[s].damageLimit)) totalSummon["damageLimit"] = parseInt(summon[s].damageLimit);
+            if (!isNaN(summon[s].shivaBuff)) totalSummon["shivaBuff"] = summon[s].shivaBuff;
 
             totals[key]["totalSummon"][s] = totalSummon
         }
