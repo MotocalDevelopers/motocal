@@ -392,6 +392,7 @@ var Summon = CreateClass({
                         </div></td>
                     </tr>
 
+                    <TextWithTooltip tooltip={intl.translate("合計攻撃力説明", locale)} id={"tooltip-total-attack-detail"}>
                     <tr>
                         <th className="bg-primary">{intl.translate("合計攻撃力", locale)}</th>
                         <td>
@@ -399,7 +400,9 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "attack")}/>
                         </td>
                     </tr>
+                    </TextWithTooltip>
 
+                    <TextWithTooltip tooltip={intl.translate("合計HP説明", locale)} id={"tooltip-total-hp-detail"}>
                     <tr>
                         <th className="bg-primary">{intl.translate("合計HP", locale)}</th>
                         <td>
@@ -407,6 +410,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "hp")}/>
                         </td>
                     </tr>
+                    </TextWithTooltip>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("HP加護", locale)}</th>
@@ -416,6 +420,7 @@ var Summon = CreateClass({
                         </InputGroup></td>
                     </tr>
 
+                    <TextWithTooltip tooltip={intl.translate("DA加護説明", locale)} id={"tooltip-da-aura-detail"}>
                     <tr>
                         <th className="bg-primary">{intl.translate("DA加護", locale)}</th>
                         <td><InputGroup>
@@ -423,6 +428,7 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "DA")}/><InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup></td>
                     </tr>
+                    </TextWithTooltip>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("TA加護", locale)}</th>
@@ -452,13 +458,15 @@ var Summon = CreateClass({
                     </tr>
                     </TextWithTooltip>
 
+                    <TextWithTooltip tooltip={intl.translate("奥義ダメージUP加護説明", locale)} id={"tooltip-ougi-damage-aura-detail"}>
                     <tr>
-                        <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                        <th className="bg-primary">{intl.translate("奥義ダメージUP加護", locale)}</th>
                         <td><InputGroup>
                             <FormControl type="number" min="0" value={this.state.ougiDamage} onBlur={this.handleOnBlur}
                                          onChange={this.handleEvent.bind(this, "ougiDamage")}/><InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup></td>
                     </tr>
+                    </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("シヴァバフ説明", locale)} id={"tooltip-shiva-buff-detail"}>
                     <tr>
