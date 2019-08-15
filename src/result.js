@@ -1228,13 +1228,24 @@ var Result = CreateClass({
 
                 if (sw.switchCharaLimitValues) {
                     for (var key in m.data) {
-                        function createRealLimitValues(LimitValues){
-                            return LimitValues[3][0] + (LimitValues[2][0] - LimitValues[3][0]) * LimitValues[3][1] +
+                        function createRealLimitValues(LimitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio){
+                            // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
+                            let  _LimitValues = LimitValues[3][0] + (LimitValues[2][0] - LimitValues[3][0]) * LimitValues[3][1] +
                             (LimitValues[1][0] - LimitValues[2][0]) * LimitValues[2][1] +
                             (LimitValues[0][0] - LimitValues[1][0]) * LimitValues[1][1];
+                            
+                            // In the case of ougi.
+                            _LimitValues += ougiFixedDamage * criticalRatio * Math.max(1.0, 1.0 + damageUP);
+                            
+                            _LimitValues *= Math.max(1.0, 1.0 + damageUP);
+                            _LimitValues *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
+                            
+                            return _LimitValues;
                         }
-                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues);
-                        let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues);
+                        
+                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, 0, 0);
+                        let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio);
+                        
                         charaDetail[key].push(
                                 <div key={key + "-LimitValues"}>
                                     <span key={key + "-LimitValues"}>
