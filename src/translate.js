@@ -2065,8 +2065,8 @@ var multiLangData = {
     },
     "ドラフと種族不明の攻撃UP(ナルメア)": {
         "en": "10% boost to ATK for all Draph, Primal, and Unknown allies. (Narmaya)",
-        "ja": "ドラフと種族不明の攻撃UP(ナルメア)", //to seishou
-        "zh": "ドラフと種族不明の攻撃UP(ナルメア)",
+        "ja": "ドラフと星晶獣と種族不明の攻撃UP(ナルメア)",
+        "zh": "ドラフと星晶獣と種族不明の攻撃UP(ナルメア)",
     },
     "バトルメンバーの種族数に応じて攻撃力UP(リリィ)": {
         "en": "Boost to ATK based on number of main allies' races. (Lily)",
