@@ -36,6 +36,7 @@ const {
     bahaFURaceCharaContains,
     favCharaContains,
     typeCharaContains,
+    raceCharaContains,
 } = require('./skill_filter.js');
 const {range, when} = require('./support_filter');
 
