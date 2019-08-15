@@ -1230,15 +1230,14 @@ var Result = CreateClass({
                     for (var key in m.data) {
                         function createRealLimitValues(LimitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio){
                             // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
-                            let _damageUP = Math.max(1.0, 1.0 + damageUP);
-                            let _LimitValues = LimitValues[3][0] * _damageUP + 
-                            (LimitValues[2][0] - LimitValues[3][0]) * _damageUP * LimitValues[3][1] +
-                            (LimitValues[1][0] - LimitValues[2][0]) * _damageUP * LimitValues[2][1] +
-                            (LimitValues[0][0] - LimitValues[1][0]) * _damageUP * LimitValues[1][1];
+                            let  _LimitValues = LimitValues[3][0] + (LimitValues[2][0] - LimitValues[3][0]) * LimitValues[3][1] +
+                            (LimitValues[1][0] - LimitValues[2][0]) * LimitValues[2][1] +
+                            (LimitValues[0][0] - LimitValues[1][0]) * LimitValues[1][1];
                             
                             // In the case of ougi.
                             _LimitValues += ougiFixedDamage * criticalRatio;
                             
+                            _LimitValues *= Math.max(1.0, 1.0 + damageUP);
                             _LimitValues *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
                             
                             return _LimitValues;
