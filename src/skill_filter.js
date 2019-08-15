@@ -9,6 +9,25 @@ const FAV_KEYS = ["fav1", "fav2"];
 
 
 /**
+ * @param {string} key for totals[key]
+ * @return {boolean} key is Djeeta
+ */
+function _isDjeeta(key) {
+    return key === "Djeeta";
+}
+
+/**
+ * Decorator to add helper function
+ * @param {Function} func to check chara function
+ * @return {Function} function.withDjeeta
+ */
+function _withDjeeta(func) {
+    func.orDjeeta = (args, totals, key) => _isDjeeta(key) || func(args, totals[key]);
+    return func;
+}
+
+
+/**
  * @param {Object} chara
  * @return {boolean} has wildcard support
  */
@@ -137,7 +156,7 @@ module.exports.bahaRaceContains = bahaRaceContains;
 
 // function with naming "Chara" which takes chara object as parameter,
 // can check chara["support"] === "wildcard"
-module.exports.raceCharaContains = _withWildcardCheck(raceCharaContains);
+module.exports.raceCharaContains = _withDjeeta(_withWildcardCheck(raceCharaContains));
 module.exports.bahaRaceCharaContains = _withWildcardCheck(bahaRaceCharaContains);
 module.exports.bahaFURaceCharaContains = _withWildcardCheck(bahaFURaceCharaContains);
 module.exports.favCharaContains = _withWildcardCheck(favCharaContains);
@@ -149,3 +168,5 @@ module.exports._hasWildcardSupport = _hasWildcardSupport;
 module.exports._withWildcardCheck = _withWildcardCheck;
 module.exports._lookupBahaRaces = _lookupBahaRaces;
 module.exports._skip_none_filter = _skip_none_filter;
+module.exports._isDjeeta = _isDjeeta;
+module.exports._withDjeeta = _withDjeeta;

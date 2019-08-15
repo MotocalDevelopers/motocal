@@ -17,6 +17,8 @@ const {
     _withWildcardCheck,
     _lookupBahaRaces,
     _skip_none_filter,
+    _isDjeeta,
+    _withDjeeta,
 } = require('./skill_filter.js');
 
 describe('internal utility functions', () => {
@@ -63,6 +65,21 @@ describe('internal utility functions', () => {
 
     describe('#_skip_none_filter', () => {
         expect(_skip_none_filter(["none", "A", "B", "non"])).toEqual(["A", "B", "non"]);
+    });
+
+    describe('#_isDjeeta', () => {
+        expect(_isDjeeta('Djeeta')).toBeTruthy(); // only exact match
+        expect(_isDjeeta('Gran')).toBeFalsy();
+        expect(_isDjeeta('djeeta')).toBeFalsy();
+        expect(_isDjeeta('Djeeta ')).toBeFalsy();
+        expect(_isDjeeta(' Djeeta')).toBeFalsy();
+    });
+
+    describe('#_withDjeeta', () => {
+        const checkFlag = _withDjeeta((flag, chara) => flag);
+        expect(checkFlag.orDjeeta(false, {}, "Djeeta")).toBeTruthy(); // is Djeeta
+        expect(checkFlag.orDjeeta(false, {}, "Gran")).toBeFalsy();
+        expect(checkFlag.orDjeeta(true, {}, "Gran")).toBeTruthy();
     });
 });
 
