@@ -796,8 +796,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         
         const _addShivaLimitUp = (values) => values.map(([threshold, ratio]) => [threshold+500000, ratio]);
         if (totalSummon["shivaBuff"]) {
-            normalDamageLimitValues = _addShivaLimitUp(normalDamageLimitValues);
-            normalDamageLimitValuesWithoutCritical = _addShivaLimitUp(normalDamageLimitValuesWithoutCritical);
+            normalDamageLimitValues = _initLimitValues(1.0 + criticalDamageLimit, BASE_LIMIT_VALUES.shivaNormalDamage);
+            normalDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + damageLimit, BASE_LIMIT_VALUES.shivaNormalDamage);
             ougiDamageLimitValues = _addShivaLimitUp(ougiDamageLimitValues);
             ougiDamageLimitValuesWithoutCritical = _addShivaLimitUp(ougiDamageLimitValuesWithoutCritical);
         }
