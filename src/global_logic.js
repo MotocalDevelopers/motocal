@@ -1468,7 +1468,8 @@ module.exports.getTotalBuff = function (prof) {
         uplift: 0,
         supplementalDamageBuff: 0,
         //enemyBuffCount: 0,
-        enemyDebuffCount: 0
+        enemyDebuffCount: 0,
+        retsujitsuNoRakuen: false,
     };
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -1504,7 +1505,9 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["criticalBuff"] = prof.criticalBuff != undefined ? prof.criticalBuff : [];
     totalBuff["supplementalDamageBuff"] += parseInt(prof.supplementalDamageBuff);
 
-    return totalBuff
+    totalBuff["retsujitsuNoRakuen"] = prof.retsujitsuNoRakuen;
+
+    return totalBuff;
 };
 
 function maskInvalidSkillLevel(slv, stype, amount) {
@@ -2888,6 +2891,13 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                 //         });
                 //     }
                 //     continue;
+                case "benedikutosu_soure":
+                    if (buff["retsujitsuNoRakuen"]) {
+                        var [ougiDamageBuff, ougiDamageLimitBuff] = support.value;
+                        totals[key]["ougiDamageBuff"] += ougiDamageBuff;
+                        totals[key]["ougiDamageLimitBuff"] += ougiDamageLimitBuff;
+                    }
+                    continue;
                 default:
                     break;
             }
@@ -2912,6 +2922,8 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                 case "add":
                     chara[support.type] += support.value;
                     break;
+                case "multiply":
+                    chara[support.type] = ((1.0 + chara[support.type]) * (1.0 + support.value)) - 1.0;
                 }
             }
         }

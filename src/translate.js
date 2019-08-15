@@ -2358,6 +2358,16 @@ var multiLangData = {
         "ja": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
         "zh": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
     },
+    "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)": {
+        "en": "50% boost to C.A. damage and 20% boost to C.A. damage cap when Sun-Touched Paradise is active. (Alanaan)",
+        "ja": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+        "zh": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+    },
+    "攻撃30%UP/別枠乗算 (ウーフとレニー)": {
+        "en": "30% boost to ATK (Unique modifier). (Wulf and Renie)",
+        "ja": "攻撃30%UP/別枠乗算 (ウーフとレニー)",
+        "zh": "攻撃30%UP/別枠乗算 (ウーフとレニー)",
+    },
     // sort keys
     "攻撃力(二手技巧無し,ジータさんのみ)": {
         "en": "Pure ATK, Player only",
