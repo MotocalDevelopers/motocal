@@ -1593,26 +1593,36 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                     slv = maskInvalidSkillLevel(slv, stype, amount);
 
                     // Baha, cosmos and omega weapons have no attribute relation
-                    if (stype == 'bahaAT' && !isBahaAtIncluded && bahaRaceCharaContains(skillname, totals[key])) {
-                        // Baha dagger etc.
-                        totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
-                        isBahaAtIncluded = true;
-                    } else if (stype == 'bahaATHP' && !isBahaAthpIncluded && bahaRaceCharaContains(skillname, totals[key])) {
-                        // Baha sword etc.
-                        totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
-                        totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
-                        isBahaAthpIncluded = true;
-                    } else if (stype == 'bahaHP' && !isBahaHpIncluded && bahaRaceCharaContains(skillname, totals[key])) {
-                        // Baha Fist etc
-                        totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
-                        isBahaHpIncluded = true;
-                    } else if (stype == 'bahaFUATHP' && bahaFURaceCharaContains(skillname, totals[key])) {
-                        totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaFUATHP"]["AT"][slv - 1];
-                        totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUATHP"]["HP"][slv - 1];
-                    } else if (stype == 'bahaFUHP' && bahaFURaceCharaContains(skillname, totals[key])) {
-                        totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUHP"]["HP"][slv - 1];
-                        totals[key]["bahaDA"] += comb[i] * skillAmounts["bahaFUHP"]["DA"][slv - 1];
-                        totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
+                    if (stype == 'bahaAT') {
+                        if (!isBahaAtIncluded && bahaRaceCharaContains(skillname, totals[key])) {
+                            // Baha dagger etc.
+                            totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
+                            isBahaAtIncluded = true;
+                        }
+                    } else if (stype == 'bahaATHP') {
+                        if (!isBahaAthpIncluded && bahaRaceCharaContains(skillname, totals[key])) {
+                            // Baha sword etc.
+                            totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaAT"][amount][slv - 1];
+                            totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
+                            isBahaAthpIncluded = true;
+                        }
+                    } else if (stype == 'bahaHP') {
+                        if (!isBahaHpIncluded && bahaRaceCharaContains(skillname, totals[key])) {
+                            // Baha Fist etc
+                            totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaHP"][amount][slv - 1];
+                            isBahaHpIncluded = true;
+                        }
+                    } else if (stype == 'bahaFUATHP') {
+                        if (bahaFURaceCharaContains(skillname, totals[key])) {
+                            totals[key]["bahaAT"] += comb[i] * skillAmounts["bahaFUATHP"]["AT"][slv - 1];
+                            totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUATHP"]["HP"][slv - 1];
+                        }
+                    } else if (stype == 'bahaFUHP') {
+                        if (bahaFURaceCharaContains(skillname, totals[key])) {
+                            totals[key]["bahaHP"] += comb[i] * skillAmounts["bahaFUHP"]["HP"][slv - 1];
+                            totals[key]["bahaDA"] += comb[i] * skillAmounts["bahaFUHP"]["DA"][slv - 1];
+                            totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
+                        }
                     } else if (stype == 'cosmos') {
                         // Cosmos weapons
                         if (skillname == 'cosmosAT' && typeCharaContains("attack", totals[key])) {
