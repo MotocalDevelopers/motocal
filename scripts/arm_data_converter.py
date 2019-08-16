@@ -953,6 +953,11 @@ skillnamelist["tenshiShukufuku"] = {
     u"堕落のすゝめ": "dark"
 }
 
+#huanglong katana
+skillnamelist["shinTenNoInori"] = {
+    u"震天の祈り": "light",
+}
+
 # Damage cap up
 skillnamelist["normalDamageLimit7"] = {
     u"賢者の加護": "earth",

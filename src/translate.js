@@ -3420,6 +3420,11 @@ var multiLangData = {
         "ja": "チェインフォース",
         "zh": "チェインフォース",
     },
+    "味方の属性攻撃力10%UP(累積/最大5回)": {
+        "en": "10% Element ATK Up (Stackable/up to 5 times)",
+        "ja": "味方の属性攻撃力10%UP(累積/最大5回)",
+        "zh": "味方の属性攻撃力10%UP(累積/最大5回)",
+    },
     // Extended skills
     "通常渾身(大)(神石加護無効)": {
         "en": "Normal Stamina (L) (No Summon Aura)",
@@ -3736,6 +3741,11 @@ var multiLangData = {
         "en": "Number of Buffs (on Djeeta)",
         "ja": "バフの数（ジータ）",
         "za": "バフの数（ジータ）",
+    },
+    "累積の数": {
+        "en": "Number of Stacks",
+        "ja": "累積の数",
+        "za": "累積の数",
     },
     "広告": {
         "en": "Ad.",
