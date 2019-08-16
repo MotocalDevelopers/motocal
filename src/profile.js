@@ -228,6 +228,7 @@ var Profile = CreateClass({
             personalCriticalBuffCount: 0,
             retsujitsuNoRakuen: false,
             shiToAiNoSekai: false,
+            turn: 1,
         };
     },
     switchBufflist: function (e) {
@@ -948,6 +949,15 @@ var Profile = CreateClass({
                             <p>{intl.translate("Advanced 説明", locale)}</p>
                         </td>
                     </tr>
+
+                    <TextWithTooltip tooltip={intl.translate("ターン説明", locale)} id={"tooltip-turn-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("ターン", locale)}</th>
+                            <td><FormControl type="number" min="0" step ="1" max="999" value={this.state.turn}
+                                             onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "turn")}/>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("敵防御固有値説明", locale)} id={"tooltip-enemy-defense-detail"}>
                         <tr>

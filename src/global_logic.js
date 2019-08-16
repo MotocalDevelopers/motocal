@@ -549,8 +549,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += buff["element"];
         elementCoeff += totals[key]["elementBuff"];
         elementCoeff += totals[key]["elementBuffBoostBuff"];
-        elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
-        elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
+        elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"] * (Math.min(10, Math.max(0, buff["turn"])));
+        elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"] * (Math.min(10, Math.max(0, buff["turn"])));
         elementCoeff += 0.01 * totals[key]["LB"].Element;
         
         if (key == "Djeeta") {
@@ -1468,7 +1468,8 @@ module.exports.getTotalBuff = function (prof) {
         uplift: 0,
         supplementalDamageBuff: 0,
         //enemyBuffCount: 0,
-        enemyDebuffCount: 0
+        enemyDebuffCount: 0,
+        turn: 0,
     };
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -1503,6 +1504,8 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["zenithDamageLimit"] += zenithDamageLimit[prof.zenithDamageLimitBonus] != undefined ? zenithDamageLimit[prof.zenithDamageLimitBonus] : 0;
     totalBuff["criticalBuff"] = prof.criticalBuff != undefined ? prof.criticalBuff : [];
     totalBuff["supplementalDamageBuff"] += parseInt(prof.supplementalDamageBuff);
+
+    totalBuff["turn"] = parseInt(prof.turn);
 
     return totalBuff
 };
@@ -2069,9 +2072,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             }
                         } else if (stype == 'opusnormalElement') {
-                            totals[key][stype] += 0.15;
+                            totals[key][stype] += skillAmounts[stype][amount][slv -1];
                         } else if (stype == 'opusmagnaElement') {
-                            totals[key][stype] += 0.15;
+                            totals[key][stype] += skillAmounts[stype][amount][slv -1];
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }

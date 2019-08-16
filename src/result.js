@@ -479,6 +479,8 @@ var ResultList = CreateClass({
     
         var addPercent = (value) => intl.translate("percent", locale).replace("{}", value === undefined ? "0" : value);
 
+        var turnStr = intl.translate("ターン", locale) + ": " + prof.turn;
+
         // Create buff info line
         var buffInfo = [];
         buffInfo.push(intl.translate("通常バフ", locale) + addPercent(prof.normalBuff));
@@ -654,7 +656,7 @@ var ResultList = CreateClass({
                                 <hr style={{"margin": "10px 0px"}}/>
                                 <div className="charainfo">
                                 {charaInfo}
-                                    <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
+                                    <div>{turnStr + " | "}{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                     <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                                 </div>
                                 <table className="table table-bordered">
@@ -688,7 +690,7 @@ var ResultList = CreateClass({
                             <Modal.Title>{intl.translate("背水渾身グラフ", locale)}</Modal.Title>
                             <div className="charainfo" style={{"float": "left"}}>
                                 {charaInfo}
-                                <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
+                                <div>{turnStr + " | "}{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                             </div>
                             <ButtonGroup block vertical>
@@ -856,7 +858,7 @@ var ResultList = CreateClass({
                                 <hr style={{"margin": "10px 0px 5px 0px"}}/>
                                 <div className="charainfo" style={{"float": "left"}}>
                                     {charaInfo}
-                                    <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
+                                    <div>{turnStr + " | "}{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                                 </div>
                                 <div style={{"textAlign": "right", "float": "right"}}>
@@ -895,7 +897,7 @@ var ResultList = CreateClass({
                             <Modal.Title>{intl.translate("背水渾身グラフ", locale)}</Modal.Title>
                             <div className="charainfo" style={{"float": "left"}}>
                                 {charaInfo}
-                                <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
+                                <div>{turnStr + " | "}{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                 <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                             </div>
                             <div style={{"float": "right"}}>

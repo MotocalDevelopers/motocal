@@ -477,6 +477,16 @@ var multiLangData = {
         "ja": "もっともっと詳しく計算したい方向けの項目です。",
         "zh": "适合想要进行更加详细的计算的人。",
     },
+    "ターン": {
+        "en": "Turn",
+        "ja": "ターン",
+        "zh": "ターン",
+    },
+    "ターン説明": {
+        "en": "Turn Number (affects various weapon skill/support ability/etc)",
+        "ja": "ターン",
+        "zh": "ターン",
+    },
     "敵防御固有値": {
         "en": "Enemy Innate DEF",
         "ja": "敵防御固有値",
