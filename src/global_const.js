@@ -1287,7 +1287,7 @@ module.exports.Jobs = {
         "favArm2": "fist",
         "type": "attack",
         "atBonus": 2000.0,
-        "kouzinBonus": 0.0,
+        "kouzinBonus": 5.0,
         "hpBonus": 300.0,
         "shugoBonus": 0.0,
         "DaBonus": 70.0,
