@@ -80,6 +80,11 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+module.exports.BASE_LIMIT_VALUES = {
+    normalDamage: [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]],
+    ougiDamage: [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]],
+};
+
 const UNLIMIT_VALUE = 99999;
 module.exports.LIMIT = {
     normalDA: 50,
