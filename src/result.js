@@ -1228,9 +1228,6 @@ var Result = CreateClass({
 
                 if (sw.switchCharaLimitValues) {
                     for (var key in m.data) {
-                        let damage = 0, damageWithoutCritical = 0, ougiDamage = 0, chainBurstSupplemental = 0;
-                        [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
-
                         function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage){
                             // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
                             let  _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
@@ -1242,14 +1239,17 @@ var Result = CreateClass({
                             
                             _limitValues *= Math.max(1.0, 1.0 + damageUP);
                             _limitValues *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
-                            
                             _limitValues += supplementalDamage;
                             
                             return _limitValues;
                         }
                         
-                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, 0, 0, damage);
-                        let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamage);
+                        // Generate supplemental Damage.
+                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
+                        [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
+                        
+                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
+                        let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
                         
                         charaDetail[key].push(
                                 <div key={key + "-LimitValues"}>
