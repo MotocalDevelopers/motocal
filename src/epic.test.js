@@ -24,7 +24,7 @@ describe('New Epic Weapons skills', () => {
     // console.assert(ALL_ARM_TYPES.length === 10);
     
     const allUniqueTypes = {
-        arml: ALL_ARM_TYPES.map(EpicArm),
+        arml: ALL_ARM_TYPES.map(armType => EpicArm(armType, name=armType)),
         comb: ALL_ARM_TYPES.map(() => 1),
     };
 
@@ -72,11 +72,21 @@ describe('New Epic Weapons skills', () => {
         });
     });
     
-    describe('#countUniqueArmType', () => {
-        it('checks all unique armType', () => {
+    describe('#countUniqueArm', () => {
+        it('check unique arm', () => {
+            const arml = [Arm("sword"), Arm("dagger"), Arm("axe"), Arm(), Arm()];
+            const comb = [1, 1, 1, 1, 0];
+            expect(countUniqueArm(arml, comb)).toBe(3);
+            expect(isAllUniqueArm(arml, comb)).toBeTruthy();
+        });
+    });
+
+    describe('#isAllUniqueArmType', () => {
+        it('checks all unique armType and the length 10', () => {
             const {arml, comb} = allUniqueTypes;
             expect(countUniqueArmType(arml, comb)).toBe(10);
             expect(countUniqueComb(arml, comb)).toBe(10);
+            expect(isAllUniqueArm(arml, comb)).toBeTruthy();
             expect(isAllUniqueArmType(arml, comb)).toBeTruthy();
         });
 
@@ -86,7 +96,8 @@ describe('New Epic Weapons skills', () => {
             const comb = [1, 1, 1, 1, 1, 1];
             expect(countUniqueArmType(arml, comb)).toBe(3);
             expect(countUniqueComb(arml, comb)).toBe(3);
-            expect(isAllUniqueArmType(arml, comb)).toBeTruthy();
+            expect(isAllUniqueArm(arml, comb)).toBeTruthy();
+            expect(isAllUniqueArmType(arml, comb)).toBeFalsy();
         });
 
         it('should detect same weapon in different entry', () => {
@@ -94,6 +105,8 @@ describe('New Epic Weapons skills', () => {
             const comb = [1, 1, 1];
             expect(countUniqueArm(arml, comb)).toBe(2);
             expect(countUniqueComb(arml, comb)).toBe(3);
+            expect(isAllUniqueArm(arml, comb)).toBeFalsy();
+            expect(isAllUniqueArmType(arml, comb)).toBeFalsy();
         });
     });
 });

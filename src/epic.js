@@ -16,12 +16,14 @@ const _strip_arm_name = (name) => name.replace(/\s*\+\s*\w+\s*/, '');
  * @param {Array<number>} comb combinations
  * @return {Array<Arm>} arm list with "count"
  */
-const armListWithCount = (arml, comb) => zip(arml, comb).map(([arm, count]) => Object.assign({}, arm, {count}));
+const armListWithCount = (arml, comb) =>
+    zip(arml, comb).map(([arm, count]) => Object.assign({}, arm, {count}));
 
 /**
  * TODO: how to document Types for "higher-order function"
  */
-const genCountWeaponFunc = (func) => (arml, comb) => sumBy(armListWithCount(arml, comb).filter(func), "count");
+const genCountWeaponFunc = (func) => (arml, comb) =>
+    sumBy(armListWithCount(arml, comb).filter(func), "count");
 
 
 // #326 discussion for how to detect epic weapon
@@ -72,7 +74,8 @@ const countUniqueArmType = (arml, comb) => (new Set(
  * @param {Array<number>} comb combinations
  * @return {number} count unique arm
  */
-const countUniqueComb = (arml, comb) => armListWithCount(arml, comb).filter(arm => arm.name && arm.count === 1).length;
+const countUniqueComb = (arml, comb) =>
+    armListWithCount(arml, comb).filter(arm => arm.name && arm.count === 1).length;
 
 
 /**
@@ -80,7 +83,8 @@ const countUniqueComb = (arml, comb) => armListWithCount(arml, comb).filter(arm 
  * @param {Array<number>} comb combinations
  * @return {boolean} is all unique arm
  */
-const isAllUniqueArm = (arml, comb) => countUniqueArm(arml, comb) === countUniqueComb(arml, comb);
+const isAllUniqueArm = (arml, comb) =>
+    countUniqueArm(arml, comb) === countUniqueComb(arml, comb);
 
 
 /**
@@ -88,7 +92,8 @@ const isAllUniqueArm = (arml, comb) => countUniqueArm(arml, comb) === countUniqu
  * @param {Array<number>} comb combinations
  * @return {boolean} is all unique arm type
  */
-const isAllUniqueArmType = (arml, comb) => countUniqueArmType(arml, comb) === countUniqueComb(arml, comb);
+const isAllUniqueArmType = (arml, comb) =>
+    countUniqueArmType(arml, comb) === 10 && countUniqueComb(arml, comb) === 10;
 
 
 // FIXME: it is not enough completed implementation, yet.
