@@ -1042,19 +1042,20 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
 
     for row in mycsv:
         newdict = OrderedDict()
-
         row_length = len(row)
         if row_length <= 1:
             continue
         else:
             # Row Lengths Overview
+            #  8: 2nd + 3rd skills
             # 17: 3*
             # 19: 4*
-            # 20: 4* + 3rd Skill
+            # 20: 4*
             # 21: 5*
-            # 22: 5* + 3rd Skill
+            # 22: 5*
             has_3rd_skill: bool = row_length == 20 or row_length == 22
-            for index, value in enumerate(row):
+            row_iter = iter(row)
+            for index, value in enumerate(row_iter):
                 if index == 1:
                     m = key_pattern.search(value)
                     if m:
@@ -1091,120 +1092,82 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
 
                     newdict["skill1"] = skill
                 elif index == 8:
-                    skill = "non"
+                    # skill2
+                    skill2 = "non"
                     element2 = "none"
                     m = skill_pattern.search(value)
                     if m:
-                        skill, element2 = skill_replace(m.group(1))
+                        skill2, element2 = skill_replace(m.group(1))
 
                     if element2 == "none" or element2 == "unknown":
                         element2 = newdict["element"]
 
-                    newdict["skill2"] = skill
+                    newdict["skill2"] = skill2
                     newdict["element2"] = element2
-                elif has_3rd_skill:
-                    if index == 9:
-                        skill = "non"
-                        element3 = "none"
+
+                    # skill3
+                    skill3 = "non"
+                    element3 = "none"
+
+                    if has_3rd_skill:
+                        # Read the next value without increment enumerate counter
+                        value = next(row_iter)
+
                         m = skill_pattern.search(value)
                         if m:
-                            skill, element3 = skill_replace(m.group(1))
+                            skill3, element3 = skill_replace(m.group(1))
 
-                        if element3 == "none" or element3 == "unknown":
-                            element3 = newdict["element"]
+                    if element3 == "none" or element3 == "unknown":
+                        element3 = newdict["element"]
 
-                        newdict["skill3"] = skill
-                        newdict["element3"] = element3
-                    elif index == 10:
-                        newdict["minhp"] = int(value)
-                    elif index == 11:
-                        newdict["minattack"] = int(value)
-                    elif index == 12:
-                        newdict["hp"] = int(value)
-                    elif index == 13:
-                        newdict["attack"] = int(value)
-                    elif index == 16:
-                        if PROCESS_TYPE_SSR:
-                            if jougen_5_pattern.search(value):
-                                newdict["slvmax"] = 20
-                                newdict["maxlv"] = 200
-                            elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
-                                newdict["slvmax"] = 15
-                                newdict["maxlv"] = 150
-                            else:
-                                newdict["slvmax"] = 10
-                                newdict["maxlv"] = 100
-                        else:
-                            if jougen_4_pattern.search(value):
-                                newdict["slvmax"] = 15
-                                newdict["maxlv"] = 120
-                            else:
-                                newdict["slvmax"] = 10
-                                newdict["maxlv"] = 75
-                    elif index == 17 and newdict["slvmax"] >= 15:
-                        if PROCESS_TYPE_SSR:
-                            newdict["hplv100"] = int(value)
-                        else:
-                            newdict["hplv75"] = int(value)
-                    elif index == 18 and newdict["slvmax"] >= 15:
-                        if PROCESS_TYPE_SSR:
-                            newdict["attacklv100"] = int(value)
-                        else:
-                            newdict["attacklv75"] = int(value)
-                    elif index == 19 and newdict["slvmax"] >= 20:
-                        newdict["hplv150"] = int(value)
-                    elif index == 20 and newdict["slvmax"] >= 20:
-                        newdict["attacklv150"] = int(value)
-                else:
-                    if index == 9:
-                        skill = "non"
-                        element3 = "none"
+                    newdict["skill3"] = skill3
+                    newdict["element3"] = element3
 
-                        if element3 == "none" or element3 == "unknown":
-                            element3 = newdict["element"]
-
-                        newdict["skill3"] = skill
-                        newdict["element3"] = element3
-
-                        newdict["minhp"] = int(value)
-                    elif index == 10:
-                        newdict["minattack"] = int(value)
-                    elif index == 11:
-                        newdict["hp"] = int(value)
-                    elif index == 12:
-                        newdict["attack"] = int(value)
-                    elif index == 15:
-                        if PROCESS_TYPE_SSR:
-                            if jougen_5_pattern.search(value):
-                                newdict["slvmax"] = 20
-                                newdict["maxlv"] = 200
-                            elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
-                                newdict["slvmax"] = 15
-                                newdict["maxlv"] = 150
-                            else:
-                                newdict["slvmax"] = 10
-                                newdict["maxlv"] = 100
+                if index == 9:
+                    newdict["minhp"] = int(value)
+                elif index == 10:
+                    newdict["minattack"] = int(value)
+                elif index == 11:
+                    newdict["hp"] = int(value)
+                elif index == 12:
+                    newdict["attack"] = int(value)
+                elif index == 13:
+                    pass
+                elif index == 14:
+                    # category
+                    pass
+                elif index == 15:
+                    if PROCESS_TYPE_SSR:
+                        if jougen_5_pattern.search(value):
+                            newdict["slvmax"] = 20
+                            newdict["maxlv"] = 200
+                        elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
+                            newdict["slvmax"] = 15
+                            newdict["maxlv"] = 150
                         else:
-                            if jougen_4_pattern.search(value):
-                                newdict["slvmax"] = 15
-                                newdict["maxlv"] = 120
-                            else:
-                                newdict["slvmax"] = 10
-                                newdict["maxlv"] = 75
-                    elif index == 16 and newdict["slvmax"] >= 15:
-                        if PROCESS_TYPE_SSR:
-                            newdict["hplv100"] = int(value)
+                            newdict["slvmax"] = 10
+                            newdict["maxlv"] = 100
+                    else:
+                        if jougen_4_pattern.search(value):
+                            newdict["slvmax"] = 15
+                            newdict["maxlv"] = 120
                         else:
-                            newdict["hplv75"] = int(value)
-                    elif index == 17 and newdict["slvmax"] >= 15:
-                        if PROCESS_TYPE_SSR:
-                            newdict["attacklv100"] = int(value)
-                        else:
-                            newdict["attacklv75"] = int(value)
-                    elif index == 18 and newdict["slvmax"] >= 20:
-                        newdict["hplv150"] = int(value)
-                    elif index == 19 and newdict["slvmax"] >= 20:
-                        newdict["attacklv150"] = int(value)
+                            newdict["slvmax"] = 10
+                            newdict["maxlv"] = 75
+                elif index == 16 and newdict["slvmax"] >= 15:
+                    if PROCESS_TYPE_SSR:
+                        newdict["hplv100"] = int(value)
+                    else:
+                        newdict["hplv75"] = int(value)
+                elif index == 17 and newdict["slvmax"] >= 15:
+                    if PROCESS_TYPE_SSR:
+                        newdict["attacklv100"] = int(value)
+                    else:
+                        newdict["attacklv75"] = int(value)
+                elif index == 18 and newdict["slvmax"] >= 20:
+                    newdict["hplv150"] = int(value)
+                elif index == 19 and newdict["slvmax"] >= 20:
+                    newdict["attacklv150"] = int(value)
 
             newdict["imageURL"] = "./imgs/" + key
 
