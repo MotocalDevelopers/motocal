@@ -1129,6 +1129,8 @@ var raceTypes = {
     "havin": "ハーヴィン",
     "seisho": "星晶獣",
     "unknown": "種族不明",
+    "human/erune": "人間/エルーン",
+    "havin/human": "ハーヴィン/人間",
 };
 
 var sexTypes = {
