@@ -15,12 +15,17 @@ var Notice = CreateClass({
                 <h2>{intl.translate("入力例:", locale)}<a href={`${location.origin}${location.pathname}thumbnail.php`}
                             target="_blank"> 元カレ計算機データビューア </a></h2>
                 <h2>{intl.translate("不具合報告・ご要望:", locale)} <a href="https://goo.gl/forms/z1Z8ThAOJxZLAUxc2" target="_blank">Google フォーム</a></h2>
-                <h2>{intl.translate("開発者募集:", locale)} <a href="https://github.com/MotocalDevelopers/motocal" target="_blank">MotocalDevelopers/motocal</a></h2>
+                <h2>{intl.translate("開発者募集:", locale)} <a href="https://github.com/MotocalDevelopers/motocal" target="_blank">GitHub/motocal</a></h2>
                 <h3>{intl.translate("更新履歴", locale)}</h3>
                 <Panel bsStyle="default" collapsible="true"
                        header={<span><Glyphicon glyph="chevron-right"/>&nbsp;Update Logs</span>}>
                     <ChangeLog className="list-group" length={10} step={20} buttonText={intl.translate("次の{step}件を表示", locale)}>
 
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190805-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190716-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190710-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190628-1", locale)}</li>
+                        <li className="list-group-item list-group-item-info">{intl.translate("notice-20190624-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190618-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190617-1", locale)}</li>
                         <li className="list-group-item list-group-item-info">{intl.translate("notice-20190615-1", locale)}</li>
@@ -222,11 +227,12 @@ var Notice = CreateClass({
                     <li className="list-group-item list-group-item-info">「奥義+チェンバダメージ」にはSubに配置したキャラも含まれるので、2回奥義を再現したい場合は同じキャラを追加して下さい。</li>
                     <li className="list-group-item list-group-item-info">きちんと背水渾身を反映させたい場合は「パーティ全体へのバフ等」 → 「残りHP割合」を想定するHPに設定して下さい。</li>
                     <li className="list-group-item list-group-item-info">上部「背水渾身グラフを開く」を選択するには、その前に編成右側からグラフ「追加」を選択する必要があります。</li>
+                    <li className="list-group-item list-group-item-info">残りHP割合0%でHPが1になります。(水ゾ考慮時)</li>
 
                 <h3>注記</h3>
                 <ul className="list-group">
-                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">情報求:</font> 武器やキャラのステータスズレ、Rank200辺りからの基礎攻撃力増加量、キャラの基礎連撃率(現在対応済リストは<u><a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a></u>の100行辺りから。デフォルト値はDA7%,TA3%)、各種計算式の検証データ。</li>
-                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">未対応:</font> バフの効果ターン・リキャスト、経過ターンで増減するスキル、多数の英雄武器の効果、仲間が奥義を使用した時の奥義ゲージ上昇、奥義ゲージ上昇によりゲージ最大値に達したときの溢れ分。</li>
+                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">情報求:</font> 武器やキャラのステータスズレ。Rank200辺りからの基礎攻撃力増加量。キャラの基礎連撃率(現在対応済リストは<u><a href="https://github.com/MotocalDevelopers/motocal/blob/master/scripts/chara_data_converter.py" target="_blank">こちら</a></u>の100行辺りから。デフォルト値はDA7%,TA3%)。各種計算式の検証データ。</li>
+                    <li className="list-group-item list-group-item-info"><font color="#6c2c2f">未対応:</font> バフの効果ターン・リキャスト。経過ターンで増減するスキル。多数の英雄武器の効果。奥義を使用した時の他キャラ10%奥義ゲージ上昇効果。奥義ゲージ上昇時ゲージ最大値に達したときの溢れ分。武器の適正Rank。</li>
                     <li className="list-group-item list-group-item-info">編成データを読み込むとホワイトアウトしてしまう場合があります。恐らく仕様変更が原因なので、新しく編成を作り直すか対策パッチをお待ち下さい。</li>
                     <li className="list-group-item list-group-item-info">乱数や技巧によるブレがあるため、実際のダメージとは多少異なる可能性があります。</li>
                     <li className="list-group-item list-group-item-info">キャラの基礎連撃率やサポアビ等が追加されても既存の編成データは自動で更新されません。キャラの入れ直しをお願いします。</li>
