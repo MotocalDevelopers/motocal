@@ -1959,17 +1959,27 @@ var multiLangData = {
     "エルーン": {
         "en": "Erune",
         "ja": "エルーン",
-        "zh": "Erune",
+        "zh": "エルーン",
     },
     "ドラフ": {
         "en": "Draph", //a.k.a: Doraf
         "ja": "ドラフ",
-        "zh": "Draph",
+        "zh": "ドラフ",
     },
     "ハーヴィン": {
         "en": "Harvin", //a.k.a: Havin
         "ja": "ハーヴィン",
-        "zh": "Harvin",
+        "zh": "ハーヴィン",
+    },
+    "ハーヴィン/人間": {
+        "en": "Harvin/Human",
+        "ja": "ハーヴィン/人間",
+        "zh": "ハーヴィン/人間",
+    },
+    "人間/エルーン": {
+        "en": "Human/Erune",
+        "ja": "人間/エルーン",
+        "zh": "人間/エルーン",
     },
     "星晶獣": {
         "en": "Primal",
@@ -2065,8 +2075,8 @@ var multiLangData = {
     },
     "ドラフと種族不明の攻撃UP(ナルメア)": {
         "en": "10% boost to ATK for all Draph, Primal, and Unknown allies. (Narmaya)",
-        "ja": "ドラフと種族不明の攻撃UP(ナルメア)", //to seishou
-        "zh": "ドラフと種族不明の攻撃UP(ナルメア)",
+        "ja": "ドラフと星晶獣と種族不明の攻撃UP(ナルメア)",
+        "zh": "ドラフと星晶獣と種族不明の攻撃UP(ナルメア)",
     },
     "バトルメンバーの種族数に応じて攻撃力UP(リリィ)": {
         "en": "Boost to ATK based on number of main allies' races. (Lily)",
