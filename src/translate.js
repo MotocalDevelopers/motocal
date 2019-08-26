@@ -1689,6 +1689,21 @@ var multiLangData = {
         "ja": "奥義固定",
         "zh": "奥義固定",
     },
+    "実質ダメージ上限": {
+        "en": "Real DMG Cap",
+        "ja": "実質ダメージ上限",
+        "zh": "Real DMG cap",
+    },
+    "実質通常上限": {
+        "en": "Real One-foe Cap",
+        "ja": "実質通常上限",
+        "zh": "Real One-foe Cap",
+    },
+    "実質奥義上限": {
+        "en": "Real C.A. Cap",
+        "ja": "実質奥義上限",
+        "zh": "Real C.A. Cap",
+    },
     "グラフに加える": {
         "en": "Add to \ngraphs",
         "ja": "グラフに\n加える",
@@ -1959,17 +1974,27 @@ var multiLangData = {
     "エルーン": {
         "en": "Erune",
         "ja": "エルーン",
-        "zh": "Erune",
+        "zh": "エルーン",
     },
     "ドラフ": {
         "en": "Draph", //a.k.a: Doraf
         "ja": "ドラフ",
-        "zh": "Draph",
+        "zh": "ドラフ",
     },
     "ハーヴィン": {
         "en": "Harvin", //a.k.a: Havin
         "ja": "ハーヴィン",
-        "zh": "Harvin",
+        "zh": "ハーヴィン",
+    },
+    "ハーヴィン/人間": {
+        "en": "Harvin/Human",
+        "ja": "ハーヴィン/人間",
+        "zh": "ハーヴィン/人間",
+    },
+    "人間/エルーン": {
+        "en": "Human/Erune",
+        "ja": "人間/エルーン",
+        "zh": "人間/エルーン",
     },
     "星晶獣": {
         "en": "Primal",
@@ -2065,8 +2090,8 @@ var multiLangData = {
     },
     "ドラフと種族不明の攻撃UP(ナルメア)": {
         "en": "10% boost to ATK for all Draph, Primal, and Unknown allies. (Narmaya)",
-        "ja": "ドラフと種族不明の攻撃UP(ナルメア)", //to seishou
-        "zh": "ドラフと種族不明の攻撃UP(ナルメア)",
+        "ja": "ドラフと星晶獣と種族不明の攻撃UP(ナルメア)",
+        "zh": "ドラフと星晶獣と種族不明の攻撃UP(ナルメア)",
     },
     "バトルメンバーの種族数に応じて攻撃力UP(リリィ)": {
         "en": "Boost to ATK based on number of main allies' races. (Lily)",
@@ -2357,6 +2382,16 @@ var multiLangData = {
         "en": "50,000 Supplemental DMG to the third hit of triple attacks. (Hallessena)",
         "ja": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
         "zh": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
+    },
+    "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)": {
+        "en": "50% boost to C.A. damage and 20% boost to C.A. damage cap when Sun-Touched Paradise is active. (Alanaan)",
+        "ja": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+        "zh": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+    },
+    "攻撃30%UP/別枠乗算 (ウーフとレニー)": {
+        "en": "30% boost to ATK (Unique modifier). (Wulf and Renie)",
+        "ja": "攻撃30%UP/別枠乗算 (ウーフとレニー)",
+        "zh": "攻撃30%UP/別枠乗算 (ウーフとレニー)",
     },
     // sort keys
     "攻撃力(二手技巧無し,ジータさんのみ)": {
@@ -4198,9 +4233,34 @@ var multiLangData = {
         "zh": "2019/06/17: Added Support stamina weapon/Character skills, Elemental Resistance, Uplift. Changed Lily support ability by game update.",
     },
     "notice-20190618-1": {
-        "en": "06/06/2019: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
-        "ja": "2019/06/06: 武器上限開放対応。DA/TAスキル効果量表示時に上限で赤色表示に。奥義、奥義上限、奥義ゲージ上昇量のキャラLB追加。",
-        "zh": "2019/06/06: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
+        "en": "18/06/2019: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
+        "ja": "2019/06/18: 武器上限開放対応。DA/TAスキル効果量表示時に上限で赤色表示に。奥義、奥義上限、奥義ゲージ上昇量のキャラLB追加。",
+        "zh": "2019/06/18: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
+    },
+    "notice-20190624-1": {
+        "en": "24/06/2019: Added HP 0% option. Displayed party total of C.A. damege. Updated support abilitys by june update.",
+        "ja": "2019/06/24: 残りHP割合0%時HP1になるように設定。表示項目「奥義」のときパーティ全体の合計数値を表示するように変更。6月アプデに合わせてサポアビを更新。",
+        "zh": "2019/06/24: Added HP 0% option. Displayed party total of C.A. damege. Updated support abilitys by june update.",
+    },
+    "notice-20190628-1": {
+        "en": "28/06/2019: Added Critical Buff, Sun-Touched Paraside, Ability To Filter Combinations, Asynchronous Template Loading, new weapons and characters.",
+        "ja": "2019/06/28: クリティカルバフ欄追加。フィールド効果「烈日の楽園(アラナン)」追加。最適編成生成ロジック最適化。武器とキャラ追加。",
+        "zh": "2019/06/28: Added Critical Buff, Sun-Touched Paraside, Ability To Filter Combinations, Asynchronous Template Loading, new weapons and characters.",
+    },
+    "notice-20190710-1": {
+        "en": "10/07/2019: Updated Critical(L) skill slv20 to 11%. Fixed C.A. skill category, Yggdrasil stuff and Nibelung Klinge Aegis skill amounts. Added new weapons and characters.",
+        "ja": "2019/07/10: 技巧大Slv20の効果を11%に更新。秘奥と必殺の奥義枠を同じに。スキル一覧削除。ユグ杖ゴブロ刀の守護効果量修正。武器とキャラ追加。",
+        "zh": "2019/07/10: Updated critical(L) skill slv20 to 11%. Fixed C.A. skill category, Yggdrasil stuff and Nibelung Klinge Aegis skill amounts. Added new weapons and characters.",
+    },
+    "notice-20190716-1": {
+        "en": "16/07/2019: Added Chara's Bonus Plain C.A. Damage field, Various Support Abilities. Updated Chara's base DA/TA. Added new weapons and characters.",
+        "ja": "2019/07/16: キャラの奥義追加固定ダメージ欄追加。キャラサポアビ大量追加。キャラ基礎連撃率更新。武器とキャラ追加。",
+        "zh": "2019/07/16: Added Chara's Bonus Plain C.A. Damage field, Various Support Abilities. Updated Chara's base DA/TA. Added new weapons and characters.",
+    },
+    "notice-20190805-1": {
+        "en": "05/08/2019: Added old Epic Weapons ★4, World of Death and Love (Nier). Fix graf/chart whiteout. Changed Baha/Cosmos skills notation. Added new weapons and characters.",
+        "ja": "2019/08/05: 旧エピックウェポン4凸対応。フィールド効果「死ト愛ノ世界(ニーア)」追加。背水グラフのホワイトアウト修正。バハコスモススキルの表記変更。武器とキャラ追加。",
+        "zh": "2019/08/05: Added old Epic Weapons ★4, World of Death and Love (Nier). Fix graf/chart whiteout. Changed Baha/Cosmos skills notation. Added new weapons and characters.",
     },
 };
 
