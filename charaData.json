@@ -5314,13 +5314,13 @@
         "support2": "none",
         "support3": "none",
         "minhp": "220",
-        "hp": "1320",
+        "hp": "1540",
         "minattack": "900",
-        "attack": "5400",
+        "attack": "6300",
         "baseDA": 7.0,
         "baseTA": 3.0,
         "ougiRatio": 3.5,
-        "imageURL": "./charaimgs/3030005000_01.png",
+        "imageURL": "./charaimgs/3030005000_03.png",
         "en": "Katalina"
     },
     "イオ": {
