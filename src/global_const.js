@@ -80,6 +80,11 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+module.exports.BASE_LIMIT_VALUES = {
+    normalDamage: [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]],
+    ougiDamage: [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]],
+};
+
 const UNLIMIT_VALUE = 99999;
 module.exports.LIMIT = {
     normalDA: 50,
@@ -94,6 +99,9 @@ module.exports.LIMIT = {
     otherTA: UNLIMIT_VALUE,
     chainDamageUP: 1.20,
     chainDamageLimit: 0.50,
+};
+module.exports.DEFAULT = {
+    ougiRatio: 4.5,
 };
 module.exports.hollowskyNames = [
     "虚空の",
@@ -916,6 +924,7 @@ var skilltypes = {
     "maihimeEnbu": {name: "舞姫の演武", type: "maihimeEnbu", amount: "M"},
     "hengenKengi": {name: "変幻自在の剣技", type: "maihimeEnbu", amount: "M"},
     "kochoKenbu": {name: "胡蝶の剣舞", type: "normal", amount: "L"},
+    "rigaiBishojo": {name: "理外の美少女", type: "rigaiBishojo", amount: "L"},
     "cosmos-sword": {name: "コスモス剣", type: "cosmosArm", amount: "L", cosmosArm: "sword"},
     "cosmos-dagger": {name: "コスモス短剣", type: "cosmosArm", amount: "L", cosmosArm: "dagger"},
     "cosmos-spear": {name: "コスモス槍", type: "cosmosArm", amount: "L", cosmosArm: "spear"},
@@ -1115,6 +1124,8 @@ var raceTypes = {
     "havin": "ハーヴィン",
     "seisho": "星晶獣",
     "unknown": "種族不明",
+    "human/erune": "人間/エルーン",
+    "havin/human": "ハーヴィン/人間",
 };
 
 var sexTypes = {
@@ -2566,6 +2577,13 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2Detail"],
         selectors: ["victorious_calamitous_covenant"],
         defaultKeys: ["0"],
+    },
+    "[4凸]オンリー・プリティ・ガール": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
     }
 };
 
