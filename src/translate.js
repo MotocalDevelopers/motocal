@@ -1689,6 +1689,21 @@ var multiLangData = {
         "ja": "奥義固定",
         "zh": "奥義固定",
     },
+    "実質ダメージ上限": {
+        "en": "Real DMG Cap",
+        "ja": "実質ダメージ上限",
+        "zh": "Real DMG cap",
+    },
+    "実質通常上限": {
+        "en": "Real One-foe Cap",
+        "ja": "実質通常上限",
+        "zh": "Real One-foe Cap",
+    },
+    "実質奥義上限": {
+        "en": "Real C.A. Cap",
+        "ja": "実質奥義上限",
+        "zh": "Real C.A. Cap",
+    },
     "グラフに加える": {
         "en": "Add to \ngraphs",
         "ja": "グラフに\n加える",
