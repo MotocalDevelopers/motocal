@@ -2339,6 +2339,19 @@ var supportAbilities = {
     //     "type": "tousou_no_chishio",
     //     "range": "own",
     // },
+    "benedikutosu_soure": {
+        "name": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+        "type": "benedikutosu_soure",
+        "range": "own",
+        "value": [0.50, 0.20]
+    },
+    "otherbuff_own_30": {
+        "name": "攻撃30%UP/別枠乗算 (ウーフとレニー)",
+        "type": "otherBuff",
+        "range": range.own,
+        "assign": "multiply",
+        "value": 0.30,
+    },
 };
 
 // exports
