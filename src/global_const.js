@@ -2615,7 +2615,7 @@ module.exports.additionalSelectList = {
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
-    "": {
+    "黄龍刀": {
         selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
         notationText: "",
         selectKeys: ["skill2Detail"],

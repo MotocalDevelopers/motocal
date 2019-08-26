@@ -1160,11 +1160,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             if index == 13:
                 pass
             if index == 14:
-                if value in SERIES:
-                    newdict["series"] = SERIES[value]
-                else: # "series": undefined
-                    pass
-                # if we need default value then: SERIES.get(value, "none")
+                newdict["series"] = SERIES.get(value, "none")
             if index == 15:
                 if PROCESS_TYPE_SSR:
                     if jougen_5_pattern.search(value):
