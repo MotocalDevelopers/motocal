@@ -1745,12 +1745,12 @@ var multiLangData = {
         "zh": "所有属性一起更改",
     },
     "自分の石": {
-        "en": "Player Summon",
+        "en": "Player Summon Aura",
         "ja": "自石の加護",
         "zh": "自己的召唤石",
     },
     "フレの石": {
-        "en": "Friend Summon",
+        "en": "Friend Summon Aura",
         "ja": "フレ石の加護",
         "zh": "好友的召唤石",
     },
@@ -1759,28 +1759,38 @@ var multiLangData = {
         "ja": "合計攻撃力",
         "zh": "合计攻击力",
     },
+    "合計攻撃力説明": {
+        "en": "Input Summon Total ATK. (GBF Party screen > Summon tab > \"Total ATK\")",
+        "ja": "召喚石の攻撃力の合計を入力して下さい。(ゲーム内編成ページ>召喚石タブ>「総合攻撃力」)",
+        "zh": "合计攻击力",
+    },
     "合計HP": {
         "en": "Total HP",
         "ja": "合計HP",
         "zh": "合计HP",
     },
+    "合計HP説明": {
+        "en": "Input Summon Total HP. (GBF Party screen > Summon tab > \"Total HP\")",
+        "ja": "召喚石のHPの合計を入力して下さい。(ゲーム内編成ページ>召喚石タブ>「総合HP」)",
+        "zh": "合计HP",
+    },
     "HP加護": {
-        "en": "Health UP",
+        "en": "Health UP Aura",
         "ja": "HP加護",
         "zh": "HP加护",
     },
     "DA加護": {
-        "en": "Double Attack",
+        "en": "DA Aura",
         "ja": "DA加護",
         "zh": "DA加护",
     },
-    "DA加護の説明": {
+    "DA加護説明": {
         "en": "Halluel and Malluel(5~10%)etc.",
-        "ja": "ハーマー(5~10%)など",
+        "ja": "ハールート・マールート(5~10%)など",
         "zh": "Halluel and Malluel(5~10%)etc.",
     },
     "TA加護": {
-        "en": "Triple Attack",
+        "en": "TA Aura",
         "ja": "TA加護",
         "zh": "TA加护",
     },
@@ -1790,9 +1800,9 @@ var multiLangData = {
         "zh": "奥义伤害上升",
     },
     "与ダメージ加護": {
-        "en": "Boost Damage", //a.k.a: tenshiDamageUP
+        "en": "Boost DMG Aura", //a.k.a: tenshiDamageUP
         "ja": "与ダメ加護",
-        "zh": "Boost Damage",
+        "zh": "Boost DMG Aura",
     },
     "与ダメージ加護説明": {
         "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
@@ -1800,19 +1810,39 @@ var multiLangData = {
         "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
     "ダメージ上限加護": {
-        "en": "Damage Cap", //a.k.a: damageLimit
+        "en": "DMG Cap Aura", //a.k.a: damageLimit
         "ja": "ダメージ上限加護",
-        "zh": "Damage Cap",
+        "zh": "DMG Cap Aura",
     },
     "ダメージ上限加護説明": {
         "en": "Increases the damage cap. Primarch summons(5~10%) etc.",
         "ja": "ダメージ上限に加算されます。天司石(5~10%)など",
         "zh": "Increases the damage cap. Primarch summons(5~10%) etc.",
     },
+    "奥義ダメージ加護": {
+        "en": "C.A. DMG Aura",
+        "ja": "奥義ダメージ加護",
+        "zh": "C.A. DMG Aura",
+    },
+    "奥義ダメージ加護説明": {
+        "en": "Increases the C.A. damage. Huanglong(30%)etc.",
+        "ja": "奥義ダメージUPに加算されます。黄龍(30%)など",
+        "zh": "Increases the C.A. damage. Huanglong(30%)etc.",
+    },
     "奥義ダメージ": {
         "en": "C.A. Damage", //a.k.a: ougiDamage
         "ja": "奥義ダメージ",
         "zh": "奥義ダメージ",
+    },
+    "シヴァバフ": {
+        "en": "Shiva Buff",
+        "ja": "シヴァバフ",
+        "zh": "Shiva Buff",
+    },
+    "シヴァバフ説明": {
+        "en": "All Allies gain 100% other buff, and DMG cap +500000.",
+        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を500000加算します。",
+        "zh": "All Allies gain 100% other buff, and DMG cap +500000.",
     },
     "内容を消去": {
         "en": "Delete",
