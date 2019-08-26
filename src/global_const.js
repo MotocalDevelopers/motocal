@@ -996,6 +996,7 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
+    "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0}
 };
 
 var cosmosSkills = {
@@ -1009,12 +1010,14 @@ var cosmosSkills = {
 // additional selection when template is selected
 module.exports.skillDetails = {
     'victorious-covenant': 'victorious_calamitous_covenant',
-    'calamitous-covenant': 'victorious_calamitous_covenant'
+    'calamitous-covenant': 'victorious_calamitous_covenant',
+    'shinTenNoInori': 'shinTenNoInori'
 };
 
 var skillDetailsDescription = {
     'victorious-covenant': 'ジータバフの数',
-    'calamitous-covenant': '敵の弱体効果'  
+    'calamitous-covenant': '敵の弱体効果',
+    'shinTenNoInori': '累積の数',
 };
 
 var victorious_calamitous_covenant = {
@@ -1029,6 +1032,14 @@ var victorious_calamitous_covenant = {
     "8": 8,
     "9": 9,
     "10": 10
+};
+var shinTenNoInori = {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
 };
 
 var sishoSeiryu = {
@@ -2597,6 +2608,13 @@ module.exports.additionalSelectList = {
         selectKeys: ["main_weapon_switch"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
+    },
+    "": {
+        selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
+        notationText: "",
+        selectKeys: ["skill2Detail"],
+        selectors: ["shinTenNoInori"],
+        defaultKeys: ["0"],
     }
 };
 
@@ -2738,6 +2756,16 @@ module.exports.selector.en.victorious_calamitous_covenant = Object.keys(victorio
     return <option value={key} key={key}>{key}</option>;
 });
 module.exports.selector.zh.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+
+module.exports.selector.ja.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.en.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.zh.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
     return <option value={key} key={key}>{key}</option>;
 });
 
