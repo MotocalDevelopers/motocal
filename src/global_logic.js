@@ -2020,7 +2020,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'opusmagnaElement') {
                             totals[key][stype] += 0.15;
                         } else if (stype == 'shinTenNoInori') {
-                            totals[key][stype] = [amount, arm[skillkey + "Detail"]];
+                            totals[key][stype] = [amount, Math.max(totals[key][stype][1], arm[skillkey + "Detail"])];
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
