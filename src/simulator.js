@@ -236,7 +236,7 @@ var Simulator = CreateClass({
 
         var totalBuff = getTotalBuff(prof);
         var totals = getInitialTotals(prof, chara, summon);
-        treatSupportAbility(totals, chara);
+        treatSupportAbility(totals, chara, totalBuff);
 
         var sortkey = "averageExpectedDamage";
 
