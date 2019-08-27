@@ -276,7 +276,12 @@ supportAbilist["stamina_all_L_hp_down_own_15"] = {
 supportAbilist["supplemental_third_hit_50k"] = {
     u"みんなのあんぜんあんしん"
 }
-
+supportAbilist["benedikutosu_soure"] = {
+    u"太陽の逆位置" #placeholder for ougi effect not the support ability effect
+}
+supportAbilist["otherbuff_own_30"] = {
+    u"アインザーム"
+}
 # Patching DA TA
 patching = OrderedDict()
 
