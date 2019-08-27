@@ -1689,6 +1689,21 @@ var multiLangData = {
         "ja": "奥義固定",
         "zh": "奥義固定",
     },
+    "実質ダメージ上限": {
+        "en": "Real DMG Cap",
+        "ja": "実質ダメージ上限",
+        "zh": "Real DMG cap",
+    },
+    "実質通常上限": {
+        "en": "Real One-foe Cap",
+        "ja": "実質通常上限",
+        "zh": "Real One-foe Cap",
+    },
+    "実質奥義上限": {
+        "en": "Real C.A. Cap",
+        "ja": "実質奥義上限",
+        "zh": "Real C.A. Cap",
+    },
     "グラフに加える": {
         "en": "Add to \ngraphs",
         "ja": "グラフに\n加える",
@@ -1730,12 +1745,12 @@ var multiLangData = {
         "zh": "所有属性一起更改",
     },
     "自分の石": {
-        "en": "Player Summon",
+        "en": "Player Summon Aura",
         "ja": "自石の加護",
         "zh": "自己的召唤石",
     },
     "フレの石": {
-        "en": "Friend Summon",
+        "en": "Friend Summon Aura",
         "ja": "フレ石の加護",
         "zh": "好友的召唤石",
     },
@@ -1744,28 +1759,38 @@ var multiLangData = {
         "ja": "合計攻撃力",
         "zh": "合计攻击力",
     },
+    "合計攻撃力説明": {
+        "en": "Input Summon Total ATK. (GBF Party screen > Summon tab > \"Total ATK\")",
+        "ja": "召喚石の攻撃力の合計を入力して下さい。(ゲーム内編成ページ>召喚石タブ>「総合攻撃力」)",
+        "zh": "合计攻击力",
+    },
     "合計HP": {
         "en": "Total HP",
         "ja": "合計HP",
         "zh": "合计HP",
     },
+    "合計HP説明": {
+        "en": "Input Summon Total HP. (GBF Party screen > Summon tab > \"Total HP\")",
+        "ja": "召喚石のHPの合計を入力して下さい。(ゲーム内編成ページ>召喚石タブ>「総合HP」)",
+        "zh": "合计HP",
+    },
     "HP加護": {
-        "en": "Health UP",
+        "en": "Health UP Aura",
         "ja": "HP加護",
         "zh": "HP加护",
     },
     "DA加護": {
-        "en": "Double Attack",
+        "en": "DA Aura",
         "ja": "DA加護",
         "zh": "DA加护",
     },
-    "DA加護の説明": {
+    "DA加護説明": {
         "en": "Halluel and Malluel(5~10%)etc.",
-        "ja": "ハーマー(5~10%)など",
+        "ja": "ハールート・マールート(5~10%)など",
         "zh": "Halluel and Malluel(5~10%)etc.",
     },
     "TA加護": {
-        "en": "Triple Attack",
+        "en": "TA Aura",
         "ja": "TA加護",
         "zh": "TA加护",
     },
@@ -1775,9 +1800,9 @@ var multiLangData = {
         "zh": "奥义伤害上升",
     },
     "与ダメージ加護": {
-        "en": "Boost Damage", //a.k.a: tenshiDamageUP
+        "en": "Boost DMG Aura", //a.k.a: tenshiDamageUP
         "ja": "与ダメ加護",
-        "zh": "Boost Damage",
+        "zh": "Boost DMG Aura",
     },
     "与ダメージ加護説明": {
         "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
@@ -1785,19 +1810,39 @@ var multiLangData = {
         "zh": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
     },
     "ダメージ上限加護": {
-        "en": "Damage Cap", //a.k.a: damageLimit
+        "en": "DMG Cap Aura", //a.k.a: damageLimit
         "ja": "ダメージ上限加護",
-        "zh": "Damage Cap",
+        "zh": "DMG Cap Aura",
     },
     "ダメージ上限加護説明": {
         "en": "Increases the damage cap. Primarch summons(5~10%) etc.",
         "ja": "ダメージ上限に加算されます。天司石(5~10%)など",
         "zh": "Increases the damage cap. Primarch summons(5~10%) etc.",
     },
+    "奥義ダメージ加護": {
+        "en": "C.A. DMG Aura",
+        "ja": "奥義ダメージ加護",
+        "zh": "C.A. DMG Aura",
+    },
+    "奥義ダメージ加護説明": {
+        "en": "Increases the C.A. damage. Huanglong(30%)etc.",
+        "ja": "奥義ダメージUPに加算されます。黄龍(30%)など",
+        "zh": "Increases the C.A. damage. Huanglong(30%)etc.",
+    },
     "奥義ダメージ": {
         "en": "C.A. Damage", //a.k.a: ougiDamage
         "ja": "奥義ダメージ",
         "zh": "奥義ダメージ",
+    },
+    "シヴァバフ": {
+        "en": "Shiva Buff",
+        "ja": "シヴァバフ",
+        "zh": "Shiva Buff",
+    },
+    "シヴァバフ説明": {
+        "en": "All Allies gain 100% other buff, and DMG cap +500000.",
+        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を500000加算します。",
+        "zh": "All Allies gain 100% other buff, and DMG cap +500000.",
     },
     "内容を消去": {
         "en": "Delete",
@@ -1959,17 +2004,27 @@ var multiLangData = {
     "エルーン": {
         "en": "Erune",
         "ja": "エルーン",
-        "zh": "Erune",
+        "zh": "エルーン",
     },
     "ドラフ": {
         "en": "Draph", //a.k.a: Doraf
         "ja": "ドラフ",
-        "zh": "Draph",
+        "zh": "ドラフ",
     },
     "ハーヴィン": {
         "en": "Harvin", //a.k.a: Havin
         "ja": "ハーヴィン",
-        "zh": "Harvin",
+        "zh": "ハーヴィン",
+    },
+    "ハーヴィン/人間": {
+        "en": "Harvin/Human",
+        "ja": "ハーヴィン/人間",
+        "zh": "ハーヴィン/人間",
+    },
+    "人間/エルーン": {
+        "en": "Human/Erune",
+        "ja": "人間/エルーン",
+        "zh": "人間/エルーン",
     },
     "星晶獣": {
         "en": "Primal",
@@ -2065,8 +2120,8 @@ var multiLangData = {
     },
     "ドラフと種族不明の攻撃UP(ナルメア)": {
         "en": "10% boost to ATK for all Draph, Primal, and Unknown allies. (Narmaya)",
-        "ja": "ドラフと種族不明の攻撃UP(ナルメア)", //to seishou
-        "zh": "ドラフと種族不明の攻撃UP(ナルメア)",
+        "ja": "ドラフと星晶獣と種族不明の攻撃UP(ナルメア)",
+        "zh": "ドラフと星晶獣と種族不明の攻撃UP(ナルメア)",
     },
     "バトルメンバーの種族数に応じて攻撃力UP(リリィ)": {
         "en": "Boost to ATK based on number of main allies' races. (Lily)",
@@ -2357,6 +2412,16 @@ var multiLangData = {
         "en": "50,000 Supplemental DMG to the third hit of triple attacks. (Hallessena)",
         "ja": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
         "zh": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
+    },
+    "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)": {
+        "en": "50% boost to C.A. damage and 20% boost to C.A. damage cap when Sun-Touched Paradise is active. (Alanaan)",
+        "ja": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+        "zh": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+    },
+    "攻撃30%UP/別枠乗算 (ウーフとレニー)": {
+        "en": "30% boost to ATK (Unique modifier). (Wulf and Renie)",
+        "ja": "攻撃30%UP/別枠乗算 (ウーフとレニー)",
+        "zh": "攻撃30%UP/別枠乗算 (ウーフとレニー)",
     },
     // sort keys
     "攻撃力(二手技巧無し,ジータさんのみ)": {
@@ -3420,6 +3485,11 @@ var multiLangData = {
         "ja": "チェインフォース",
         "zh": "チェインフォース",
     },
+    "味方の属性攻撃力10%UP(累積/最大5回)": {
+        "en": "10% Element ATK Up (Stackable/up to 5 times)",
+        "ja": "味方の属性攻撃力10%UP(累積/最大5回)",
+        "zh": "味方の属性攻撃力10%UP(累積/最大5回)",
+    },
     // Extended skills
     "通常渾身(大)(神石加護無効)": {
         "en": "Normal Stamina (L) (No Summon Aura)",
@@ -3736,6 +3806,11 @@ var multiLangData = {
         "en": "Number of Buffs (on Djeeta)",
         "ja": "バフの数（ジータ）",
         "za": "バフの数（ジータ）",
+    },
+    "累積の数": {
+        "en": "Number of Stacks",
+        "ja": "累積の数",
+        "za": "累積の数",
     },
     "広告": {
         "en": "Ad.",
@@ -4188,9 +4263,34 @@ var multiLangData = {
         "zh": "2019/06/17: Added Support stamina weapon/Character skills, Elemental Resistance, Uplift. Changed Lily support ability by game update.",
     },
     "notice-20190618-1": {
-        "en": "06/06/2019: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
-        "ja": "2019/06/06: 武器上限開放対応。DA/TAスキル効果量表示時に上限で赤色表示に。奥義、奥義上限、奥義ゲージ上昇量のキャラLB追加。",
-        "zh": "2019/06/06: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
+        "en": "18/06/2019: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
+        "ja": "2019/06/18: 武器上限開放対応。DA/TAスキル効果量表示時に上限で赤色表示に。奥義、奥義上限、奥義ゲージ上昇量のキャラLB追加。",
+        "zh": "2019/06/18: Added Recent uncaps, Color for upper limit when you display DA/TA skill amount, Character LB of ougiDamage, ougiDamageLimit, ougiGageBuff",
+    },
+    "notice-20190624-1": {
+        "en": "24/06/2019: Added HP 0% option. Displayed party total of C.A. damege. Updated support abilitys by june update.",
+        "ja": "2019/06/24: 残りHP割合0%時HP1になるように設定。表示項目「奥義」のときパーティ全体の合計数値を表示するように変更。6月アプデに合わせてサポアビを更新。",
+        "zh": "2019/06/24: Added HP 0% option. Displayed party total of C.A. damege. Updated support abilitys by june update.",
+    },
+    "notice-20190628-1": {
+        "en": "28/06/2019: Added Critical Buff, Sun-Touched Paraside, Ability To Filter Combinations, Asynchronous Template Loading, new weapons and characters.",
+        "ja": "2019/06/28: クリティカルバフ欄追加。フィールド効果「烈日の楽園(アラナン)」追加。最適編成生成ロジック最適化。武器とキャラ追加。",
+        "zh": "2019/06/28: Added Critical Buff, Sun-Touched Paraside, Ability To Filter Combinations, Asynchronous Template Loading, new weapons and characters.",
+    },
+    "notice-20190710-1": {
+        "en": "10/07/2019: Updated Critical(L) skill slv20 to 11%. Fixed C.A. skill category, Yggdrasil stuff and Nibelung Klinge Aegis skill amounts. Added new weapons and characters.",
+        "ja": "2019/07/10: 技巧大Slv20の効果を11%に更新。秘奥と必殺の奥義枠を同じに。スキル一覧削除。ユグ杖ゴブロ刀の守護効果量修正。武器とキャラ追加。",
+        "zh": "2019/07/10: Updated critical(L) skill slv20 to 11%. Fixed C.A. skill category, Yggdrasil stuff and Nibelung Klinge Aegis skill amounts. Added new weapons and characters.",
+    },
+    "notice-20190716-1": {
+        "en": "16/07/2019: Added Chara's Bonus Plain C.A. Damage field, Various Support Abilities. Updated Chara's base DA/TA. Added new weapons and characters.",
+        "ja": "2019/07/16: キャラの奥義追加固定ダメージ欄追加。キャラサポアビ大量追加。キャラ基礎連撃率更新。武器とキャラ追加。",
+        "zh": "2019/07/16: Added Chara's Bonus Plain C.A. Damage field, Various Support Abilities. Updated Chara's base DA/TA. Added new weapons and characters.",
+    },
+    "notice-20190805-1": {
+        "en": "05/08/2019: Added old Epic Weapons ★4, World of Death and Love (Nier). Fix graf/chart whiteout. Changed Baha/Cosmos skills notation. Added new weapons and characters.",
+        "ja": "2019/08/05: 旧エピックウェポン4凸対応。フィールド効果「死ト愛ノ世界(ニーア)」追加。背水グラフのホワイトアウト修正。バハコスモススキルの表記変更。武器とキャラ追加。",
+        "zh": "2019/08/05: Added old Epic Weapons ★4, World of Death and Love (Nier). Fix graf/chart whiteout. Changed Baha/Cosmos skills notation. Added new weapons and characters.",
     },
 };
 
