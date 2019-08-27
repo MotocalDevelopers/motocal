@@ -1084,11 +1084,11 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                 m = key_pattern.search(value)
                 if m:
                     key = m.group(1)
-            if index == 2:
+            elif index == 2:
                 name = value.replace("&br;", "")
                 name = name.replace("[]", "")
                 newdict["ja"] = name
-            if index == 3:
+            elif index == 3:
                 # element
                 if value.find("火") >= 0:
                     newdict["element"] = "fire"
@@ -1106,10 +1106,10 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                     newdict["element"] = "all"
                 else:
                     newdict["element"] = "none"
-            if index == 4:
+            elif index == 4:
                 # type
                 newdict["type"] = type_replace(value)
-            if index == 7:
+            elif index == 7:
                 skill = "non"
                 element1 = "none"
                 m = skill_pattern.search(value)
@@ -1117,7 +1117,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                     skill, element1 = skill_replace(m.group(1))
 
                 newdict["skill1"] = skill
-            if index == 8:
+            elif index == 8:
                 # skill2
                 skill2 = "non"
                 element2 = "none"
@@ -1149,19 +1149,19 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                 newdict["skill3"] = skill3
                 newdict["element3"] = element3
 
-            if index == 9:
+            elif index == 9:
                 newdict["minhp"] = int(value)
-            if index == 10:
+            elif index == 10:
                 newdict["minattack"] = int(value)
-            if index == 11:
+            elif index == 11:
                 newdict["hp"] = int(value)
-            if index == 12:
+            elif index == 12:
                 newdict["attack"] = int(value)
-            if index == 13:
+            elif index == 13:
                 pass
-            if index == 14:
+            elif index == 14:
                 newdict["series"] = SERIES.get(value, "none")
-            if index == 15:
+            elif index == 15:
                 if PROCESS_TYPE_SSR:
                     if jougen_5_pattern.search(value):
                         newdict["slvmax"] = 20
@@ -1179,19 +1179,19 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                     else:
                         newdict["slvmax"] = 10
                         newdict["maxlv"] = 75
-            if index == 16 and newdict["slvmax"] >= 15:
+            elif index == 16 and newdict["slvmax"] >= 15:
                 if PROCESS_TYPE_SSR:
                     newdict["hplv100"] = int(value)
                 else:
                     newdict["hplv75"] = int(value)
-            if index == 17 and newdict["slvmax"] >= 15:
+            elif index == 17 and newdict["slvmax"] >= 15:
                 if PROCESS_TYPE_SSR:
                     newdict["attacklv100"] = int(value)
                 else:
                     newdict["attacklv75"] = int(value)
-            if index == 18 and newdict["slvmax"] >= 20:
+            elif index == 18 and newdict["slvmax"] >= 20:
                 newdict["hplv150"] = int(value)
-            if index == 19 and newdict["slvmax"] >= 20:
+            elif index == 19 and newdict["slvmax"] >= 20:
                 newdict["attacklv150"] = int(value)
 
         newdict["imageURL"] = "./imgs/" + key
