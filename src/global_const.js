@@ -80,6 +80,12 @@ module.exports._ua = (function (u) {
     }
 })(window.navigator.userAgent.toLowerCase());
 
+module.exports.BASE_LIMIT_VALUES = {
+    normalDamage: [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]],
+    shivaNormalDamage: [[1500000, 0.01], [1300000, 0.05], [1200000, 0.30], [1000000, 0.60]],
+    ougiDamage: [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]],
+};
+
 const UNLIMIT_VALUE = 99999;
 module.exports.LIMIT = {
     normalDA: 50,
@@ -94,6 +100,9 @@ module.exports.LIMIT = {
     otherTA: UNLIMIT_VALUE,
     chainDamageUP: 1.20,
     chainDamageLimit: 0.50,
+};
+module.exports.DEFAULT = {
+    ougiRatio: 4.5,
 };
 module.exports.hollowskyNames = [
     "虚空の",
@@ -916,6 +925,7 @@ var skilltypes = {
     "maihimeEnbu": {name: "舞姫の演武", type: "maihimeEnbu", amount: "M"},
     "hengenKengi": {name: "変幻自在の剣技", type: "maihimeEnbu", amount: "M"},
     "kochoKenbu": {name: "胡蝶の剣舞", type: "normal", amount: "L"},
+    "rigaiBishojo": {name: "理外の美少女", type: "rigaiBishojo", amount: "L"},
     "cosmos-sword": {name: "コスモス剣", type: "cosmosArm", amount: "L", cosmosArm: "sword"},
     "cosmos-dagger": {name: "コスモス短剣", type: "cosmosArm", amount: "L", cosmosArm: "dagger"},
     "cosmos-spear": {name: "コスモス槍", type: "cosmosArm", amount: "L", cosmosArm: "spear"},
@@ -987,6 +997,7 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
+    "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0}
 };
 
 var cosmosSkills = {
@@ -1000,12 +1011,14 @@ var cosmosSkills = {
 // additional selection when template is selected
 module.exports.skillDetails = {
     'victorious-covenant': 'victorious_calamitous_covenant',
-    'calamitous-covenant': 'victorious_calamitous_covenant'
+    'calamitous-covenant': 'victorious_calamitous_covenant',
+    'shinTenNoInori': 'shinTenNoInori'
 };
 
 var skillDetailsDescription = {
     'victorious-covenant': 'ジータバフの数',
-    'calamitous-covenant': '敵の弱体効果'  
+    'calamitous-covenant': '敵の弱体効果',
+    'shinTenNoInori': '累積の数',
 };
 
 var victorious_calamitous_covenant = {
@@ -1020,6 +1033,14 @@ var victorious_calamitous_covenant = {
     "8": 8,
     "9": 9,
     "10": 10
+};
+var shinTenNoInori = {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
 };
 
 var sishoSeiryu = {
@@ -1115,6 +1136,8 @@ var raceTypes = {
     "havin": "ハーヴィン",
     "seisho": "星晶獣",
     "unknown": "種族不明",
+    "human/erune": "人間/エルーン",
+    "havin/human": "ハーヴィン/人間",
 };
 
 var sexTypes = {
@@ -1278,7 +1301,7 @@ module.exports.Jobs = {
         "favArm2": "fist",
         "type": "attack",
         "atBonus": 2000.0,
-        "kouzinBonus": 0.0,
+        "kouzinBonus": 5.0,
         "hpBonus": 300.0,
         "shugoBonus": 0.0,
         "DaBonus": 70.0,
@@ -2328,6 +2351,19 @@ var supportAbilities = {
     //     "type": "tousou_no_chishio",
     //     "range": "own",
     // },
+    "benedikutosu_soure": {
+        "name": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+        "type": "benedikutosu_soure",
+        "range": "own",
+        "value": [0.50, 0.20]
+    },
+    "otherbuff_own_30": {
+        "name": "攻撃30%UP/別枠乗算 (ウーフとレニー)",
+        "type": "otherBuff",
+        "range": range.own,
+        "assign": "multiply",
+        "value": 0.30,
+    },
 };
 
 // exports
@@ -2566,6 +2602,20 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2Detail"],
         selectors: ["victorious_calamitous_covenant"],
         defaultKeys: ["0"],
+    },
+    "[4凸]オンリー・プリティ・ガール": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
+    },
+    "": {
+        selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
+        notationText: "",
+        selectKeys: ["skill2Detail"],
+        selectors: ["shinTenNoInori"],
+        defaultKeys: ["0"],
     }
 };
 
@@ -2707,6 +2757,16 @@ module.exports.selector.en.victorious_calamitous_covenant = Object.keys(victorio
     return <option value={key} key={key}>{key}</option>;
 });
 module.exports.selector.zh.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+
+module.exports.selector.ja.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.en.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.zh.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
     return <option value={key} key={key}>{key}</option>;
 });
 
