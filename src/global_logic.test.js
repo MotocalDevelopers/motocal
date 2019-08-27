@@ -5,7 +5,8 @@ const {
     isDarkOpus,
     calcOugiFixedDamage,
     sum,
-    filterCombinations
+    filterCombinations,
+    _initLimitValues,
 } = require('./global_logic.js');
 
 describe('#getTypeBonus', () => {
@@ -189,5 +190,36 @@ describe('#filterCombinations', () => {
     test('Filtering lower size combinations', () => {
         expect(filterCombinations(testArray1, 2, true)).toStrictEqual(result1);
         expect(filterCombinations(testArray2, 7, true)).toStrictEqual(result2);
+    });
+});
+
+describe('#_initLimitValues', () => {
+    // using "let" here for tests
+    let testLimitValues = [];
+
+    beforeAll(() => {
+        testLimitValues = [[3000, 0.1], [2000, 0.5], [1000, 0.8]];
+    });
+
+    test('generate new limit values', () => {
+        expect(_initLimitValues(2, testLimitValues)).toStrictEqual([[6000, 0.1], [4000, 0.5], [2000, 0.8]]);
+        expect(_initLimitValues(1, testLimitValues)).toStrictEqual(testLimitValues); // Ok, nothing changed
+        expect(_initLimitValues(1, testLimitValues)).not.toBe(testLimitValues); // No, not same instance
+    });
+
+    test('does not have side effect to the source array', () => {
+        const copyValues = testLimitValues.slice(); // note: not deep copy
+        const deepCopyValues = testLimitValues.map(value => value.slice());
+        const limitValues = _initLimitValues(1.0, testLimitValues);
+
+        testLimitValues[0][0] = null; // for side effect test
+
+        expect(limitValues).not.toStrictEqual(testLimitValues);
+        expect(limitValues).toStrictEqual([[3000, 0.1], [2000, 0.5], [1000, 0.8]]);
+
+        // copyValues has side effect.
+        expect(copyValues).toStrictEqual(testLimitValues);
+        // deepCopyValues has no side effect.
+        expect(deepCopyValues).not.toStrictEqual(testLimitValues);
     });
 });
