@@ -1030,13 +1030,15 @@ var cosmosSkills = {
 module.exports.skillDetails = {
     'victorious-covenant': 'victorious_calamitous_covenant',
     'calamitous-covenant': 'victorious_calamitous_covenant',
-    'shinTenNoInori': 'shinTenNoInori'
+    'shinTenNoInori': 'shinTenNoInori',
+    'slaysnakes_myth': 'slaysnakes_myth',
 };
 
 var skillDetailsDescription = {
     'victorious-covenant': 'ジータバフの数',
     'calamitous-covenant': '敵の弱体効果',
     'shinTenNoInori': '累積の数',
+    'slaysnakes_myth': '累積の数',
 };
 
 var victorious_calamitous_covenant = {
@@ -1053,6 +1055,14 @@ var victorious_calamitous_covenant = {
     "10": 10
 };
 var shinTenNoInori = {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+};
+var slaysnakes_myth = {
     "0": 0,
     "1": 1,
     "2": 2,
@@ -2699,11 +2709,11 @@ module.exports.additionalSelectList = {
         defaultKeys: [0, "light"],
     },
     "天羽々斬": {
-        selectKeysNotation: "",
+        selectKeysNotation: skillDetailsDescription["slaysnakes_myth"],
         notationText: "",
-        selectKeys: ["main_weapon_switch", "elements"],
-        selectors: ["mainWeapon", "elements"],
-        defaultKeys: [0, "light"],
+        selectKeys: ["main_weapon_switch", "elements", "skill2Detail"],
+        selectors: ["mainWeapon", "elements", "slaysnakes_myth"],
+        defaultKeys: [0, "light", "0"],
     },
 };
 
@@ -2855,6 +2865,16 @@ module.exports.selector.en.shinTenNoInori = Object.keys(shinTenNoInori).map(func
     return <option value={key} key={key}>{key}</option>;
 });
 module.exports.selector.zh.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+
+module.exports.selector.ja.slaysnakes_myth = Object.keys(slaysnakes_myth).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.en.slaysnakes_myth = Object.keys(slaysnakes_myth).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.zh.slaysnakes_myth = Object.keys(slaysnakes_myth).map(function (key) {
     return <option value={key} key={key}>{key}</option>;
 });
 
