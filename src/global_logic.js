@@ -836,15 +836,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         // Accuracy calculation
         var accuracy = 1.0;
-        var accuracyWithoutCritical = 1.0;
-        if (key == "Djeeta") {
-            if (totals[key]["superAccuracy"]) {
-                accuracy *= 0.5;
-                accuracyWithoutCritical = 0.0;
-            }
-        }
+        accuracy -= totals[key]["accuracyDebuff"];
         damage *= accuracy;
-        damageWithoutCritical *= accuracyWithoutCritical;
+        damageWithoutCritical *= accuracy;
 
         var chainBurstSupplemental = 0;
         //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
@@ -994,8 +988,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["bahaTA"] = armTAupBaha;
         coeffs["otherTA"] = (buff["ta"] + totals[key]["TABuff"] + totalSummon["ta"]) * 100 + armTAupOther;
 
-        coeffs["accuracy"] = accuracy;
-        coeffs["accuracyWithoutCritical"] = accuracyWithoutCritical;
+        coeffs["accuracyDebuff"] = 1.0 + totals[key]["accuracyDebuff"];
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
@@ -2082,7 +2075,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     "value": 1.0,
                                     "attackRatio": 5.00
                                 });
-                                totals[key]["superAccuracy"] = true;
+                                totals[key]["accuracyDebuff"] += 0.50;
                                 if (amount == "II") {
                                     totals[key]["criticalDamageLimit"] += 0.30;
                                 }
@@ -2390,7 +2383,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 covenant: null,
                 buffCount: 0,
                 //debuffCount: 0,
-                superAccuracy: false,
+                accuracyDebuff: 0,
             }
     };
 
@@ -2564,7 +2557,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 covenant: null,
                 //buffCount: 0,
                 //debuffCount: 0,
-                superAccuracy: false,
+                accuracyDebuff: 0,
             };
         }
     }
@@ -2720,7 +2713,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
         totals[key]['covenant'] = null;
-        totals[key]['superAccuracy'] = false;
+        totals[key]['accuracyDebuff'] = 0;
     }
 };
 
@@ -3188,7 +3181,9 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack;
 
                     var newDamage = module.exports.calcDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].normalDamageLimitValues)
-                    newDamage *= onedata[key].skilldata.accuracy;
+                    var accuracy = 1.0;
+                    accuracy -= (onedata[key].skilldata.accuracyDebuff - 1.0);
+                    newDamage *= accuracy;
                     var newOugiDamage = module.exports.calcOugiDamage(summedAttack, newTotalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].ougiFixedDamage, onedata[key].ougiBonusPlainDamage, onedata[key].ougiDamageLimitValues)
 
                     var chainBurstSupplemental = 0;
@@ -3454,7 +3449,9 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                         // Regular attack
 
                         var newDamage = module.exports.calcDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].normalDamageLimitValues);
-                        newDamage *= onedata[key].skilldata.accuracy;
+                        var accuracy = 1.0;
+                        accuracy -= (onedata[key].skilldata.accuracyDebuff - 1.0);
+                        newDamage *= accuracy;
                         if (key == "Djeeta") {
                             ExpectedDamage[t].push(parseInt(newDamage * onedata[key].expectedAttack));
                             AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage / cnt)

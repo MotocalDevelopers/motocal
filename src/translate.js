@@ -1565,7 +1565,7 @@ var multiLangData = {
         "zh": "HP增加",
     },
     "通常攻刃": {
-        "en": "Normal Might",
+        "en": "Normal",
         "ja": "通常攻刃",
         "zh": "通常攻刃",
     },
@@ -1618,6 +1618,11 @@ var multiLangData = {
         "en": "ATK Debuff (Special)",
         "ja": "攻撃力減少(特殊)",
         "zh": "攻击力減少(特殊)",
+    },
+    "正確さ減少(特殊)": {
+        "en": "Accuracy Debuff (Special)",
+        "ja": "正確さ減少(特殊)",
+        "zh": "正確さ減少(特殊)",
     },
     "DA上昇(通常)": {
         "en": "DA Up (Normal)",
