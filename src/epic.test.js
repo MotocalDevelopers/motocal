@@ -7,7 +7,7 @@ const {
     countWandType,
     countUniqueArm,
     countUniqueArmType,
-    countUniqueComb,
+    countComb,
     isAllUniqueArm,
     isAllUniqueArmType,
 } = require('./epic');
@@ -81,11 +81,29 @@ describe('New Epic Weapons skills', () => {
         });
     });
 
+    describe('#countComb', () => {
+        it('checks ignore count 0', () => {
+            const arml = ["A", "B", "C", "D", "E"].map(type => Arm(type));
+            const comb = [1, 0, 1, 2, 0];
+            expect(countComb(arml, comb)).toBe(3);
+        });
+    });
+
+    describe('#isAllUniqueArm', () => {
+        it('should false if two or more weapons', () => {
+            const arml = ["A", "B", "C", "D", "E"].map(type => Arm(type));
+            const comb = [0, 1, 1, 1, 2];
+            expect(countComb(arml, comb)).toBe(4); // count > 0
+            expect(countUniqueArm(arml, comb)).toBe(3); // count === 1
+            expect(isAllUniqueArm(arml, comb)).toBeFalsy();
+        });
+    });
+
     describe('#isAllUniqueArmType', () => {
         it('checks all unique armType and the length 10', () => {
             const {arml, comb} = allUniqueTypes;
             expect(countUniqueArmType(arml, comb)).toBe(10);
-            expect(countUniqueComb(arml, comb)).toBe(10);
+            expect(countComb(arml, comb)).toBe(10);
             expect(isAllUniqueArm(arml, comb)).toBeTruthy();
             expect(isAllUniqueArmType(arml, comb)).toBeTruthy();
         });
@@ -95,7 +113,7 @@ describe('New Epic Weapons skills', () => {
             const arml = [Arm("sword"), Arm("dagger"), Arm("axe"), Arm(), Arm(), Arm()];
             const comb = [1, 1, 1, 1, 1, 1];
             expect(countUniqueArmType(arml, comb)).toBe(3);
-            expect(countUniqueComb(arml, comb)).toBe(3);
+            expect(countComb(arml, comb)).toBe(3);
             expect(isAllUniqueArm(arml, comb)).toBeTruthy();
             expect(isAllUniqueArmType(arml, comb)).toBeFalsy();
         });
@@ -104,7 +122,7 @@ describe('New Epic Weapons skills', () => {
             const arml = [Arm("sword"), Arm("axe", name="AAA"), Arm("axe", name="AAA+99")];
             const comb = [1, 1, 1];
             expect(countUniqueArm(arml, comb)).toBe(2);
-            expect(countUniqueComb(arml, comb)).toBe(3);
+            expect(countComb(arml, comb)).toBe(3);
             expect(isAllUniqueArm(arml, comb)).toBeFalsy();
             expect(isAllUniqueArmType(arml, comb)).toBeFalsy();
         });

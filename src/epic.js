@@ -74,8 +74,9 @@ const countUniqueArmType = (arml, comb) => (new Set(
  * @param {Array<number>} comb combinations
  * @return {number} count unique arm
  */
-const countUniqueComb = (arml, comb) =>
-    armListWithCount(arml, comb).filter(arm => arm.name && arm.count === 1).length;
+const countComb = (arml, comb) =>
+    armListWithCount(arml, comb)
+        .filter(arm => arm.name && arm.count > 0).length;
 
 
 /**
@@ -84,7 +85,7 @@ const countUniqueComb = (arml, comb) =>
  * @return {boolean} is all unique arm
  */
 const isAllUniqueArm = (arml, comb) =>
-    countUniqueArm(arml, comb) === countUniqueComb(arml, comb);
+    countUniqueArm(arml, comb) === countComb(arml, comb);
 
 
 /**
@@ -93,7 +94,7 @@ const isAllUniqueArm = (arml, comb) =>
  * @return {boolean} is all unique arm type
  */
 const isAllUniqueArmType = (arml, comb) =>
-    countUniqueArmType(arml, comb) === 10 && countUniqueComb(arml, comb) === 10;
+    countUniqueArmType(arml, comb) === 10 && countComb(arml, comb) === 10;
 
 
 // FIXME: it is not enough completed implementation, yet.
@@ -113,7 +114,7 @@ module.exports = {
     countWandType: countWandType,
     countUniqueArm: countUniqueArm,
     countUniqueArmType: countUniqueArmType,
-    countUniqueComb: countUniqueComb,
+    countComb: countComb,
     isAllUniqueArm: isAllUniqueArm,
     isAllUniqueArmType: isAllUniqueArmType,
 };
