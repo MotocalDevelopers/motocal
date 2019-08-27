@@ -25,9 +25,11 @@ charatypelist[u"バランス"] = "balance"
 charatypelist[u"特殊"] = "pecu"
 
 racelist = OrderedDict()
+racelist[u"ヒューマン/エルーン"] = "human/erune"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
 racelist[u"エルーン"] = "erune"
+racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
@@ -276,6 +278,12 @@ supportAbilist["supplemental_third_hit_50k"] = {
 }
 supportAbilist["saikou_ni_kure"] = {
     "サイコーにクレ&#12316;ジ&#12316;！"
+}
+supportAbilist["benedikutosu_soure"] = {
+    u"太陽の逆位置" #placeholder for ougi effect not the support ability effect
+}
+supportAbilist["otherbuff_own_30"] = {
+    u"アインザーム"
 }
 # Patching DA TA
 patching = OrderedDict()

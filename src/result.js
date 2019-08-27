@@ -194,6 +194,7 @@ var ResultList = CreateClass({
             switchCharaCycleDamage: 0,
             switchCharaPureDamage: 0,
             switchCharaOugiDamage: 0,
+            switchCharaLimitValues: 0,
             switchCharaOugiGage: 0,
             switchAverageAttack: 1,
             switchAverageCriticalAttack: 0,
@@ -457,21 +458,23 @@ var ResultList = CreateClass({
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name;
         var charaInfoStr = intl.translate("ジータさん", locale) + "(" + intl.translate(job, locale) + ") HP";
         if (prof.remainHP != undefined) {
-            charaInfoStr += (parseInt(prof.remainHP) < parseInt(prof.hp)) ? prof.remainHP : prof.hp
+            charaInfoStr += Math.min(parseInt(prof.remainHP), parseInt(prof.hp)) || "1";
         } else {
-            charaInfoStr += prof.hp
+            charaInfoStr += prof.hp == 0 ? "1" : prof.hp;
         }
-        charaInfoStr += "% (" + intl.translate(getTypeBonusStr(prof.element, prof.enemyElement), locale) + ")";
+        charaInfoStr += prof.remainHP == 0 || prof.hp == 0 ? " " : "% ";
+        charaInfoStr += "(" + intl.translate(getTypeBonusStr(prof.element, prof.enemyElement), locale) + ")";
         var charaInfo = [<span key={0}>{getElementColorLabel(prof.element, locale)}&nbsp;{charaInfoStr}</span>];
         for (var i = 0; i < chara.length; i++) {
             if (chara[i].name != "" && chara[i].isConsideredInAverage) {
                 charaInfoStr = chara[i].name + (chara[i].plusBonus > 0 ? "+" + chara[i].plusBonus : "") + " HP";
                 if (chara[i].remainHP != undefined) {
-                    charaInfoStr += (parseInt(chara[i].remainHP) < parseInt(prof.hp)) ? chara[i].remainHP : prof.hp
+                    charaInfoStr += Math.min(parseInt(chara[i].remainHP), parseInt(prof.hp)) || "1";
                 } else {
-                    charaInfoStr += prof.hp
+                    charaInfoStr += prof.hp == 0 ? "1" : prof.hp;
                 }
-                charaInfoStr += "% (" + intl.translate(getTypeBonusStr(chara[i].element, prof.enemyElement), locale) + ")";
+                charaInfoStr += prof.remainHP == 0 || chara[i].remainHP == 0 ? " " : "% ";
+                charaInfoStr += "(" + intl.translate(getTypeBonusStr(chara[i].element, prof.enemyElement), locale) + ")";
                 charaInfo.push(<span
                     key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
@@ -600,6 +603,9 @@ var ResultList = CreateClass({
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                     className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ダメージ
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
+                                    className={(this.state.switchCharaLimitValues == 1) ? "display-checked" : "display-unchecked"}> キャラ実質ダメージ上限
                                 </td>
                             </tr>
                             <tr>
@@ -800,6 +806,8 @@ var ResultList = CreateClass({
                                       active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                       active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
+                                      active={(this.state.switchCharaLimitValues == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("実質ダメージ上限", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
                                       active={(this.state.switchCharaOugiGage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")}
@@ -1166,6 +1174,8 @@ var Result = CreateClass({
                     ++colSize;
                 }
 
+
+
                 if (sw.switchCharaOugiDamage) {
                     for (key in m.data) {
                         charaDetail[key].push(
@@ -1216,6 +1226,44 @@ var Result = CreateClass({
                     var val = Math.round(m.data.Djeeta.averageCyclePerTurn);
                     tablebody.push(val.toString() + " (" + (4 * val).toString() + ")");
                     ++colSize;
+                }
+
+                if (sw.switchCharaLimitValues) {
+                    for (var key in m.data) {
+                        function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage){
+                            // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
+                            let  _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
+                            (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
+                            (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
+                            
+                            // In the case of ougi.
+                            _limitValues += ougiFixedDamage * criticalRatio;
+                            
+                            _limitValues *= Math.max(1.0, 1.0 + damageUP);
+                            _limitValues *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
+                            _limitValues += supplementalDamage;
+                            
+                            return _limitValues;
+                        }
+                        
+                        // Generate supplemental Damage.
+                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
+                        [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
+                        
+                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
+                        let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
+                        
+                        charaDetail[key].push(
+                                <div key={key + "-LimitValues"}>
+                                    <span key={key + "-LimitValues"}>
+                                        <span className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
+                                            {Math.round(normalDamageRealLimit).toLocaleString()}&nbsp;
+                                        <span className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
+                                            {Math.round(ougiDamageRealLimit).toLocaleString()}&nbsp;
+                                    </span>
+                                </div>
+                        );
+                    };
                 }
 
                 if (sw.switchSkillTotal) {
