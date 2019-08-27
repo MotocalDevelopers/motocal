@@ -100,7 +100,7 @@ module.exports.LIMIT = {
     otherTA: UNLIMIT_VALUE,
     chainDamageUP: 1.20,
     chainDamageLimit: 0.50,
-    grandEpic: 0.80,
+    grandEpic: 80.0,
 };
 module.exports.DEFAULT = {
     ougiRatio: 4.5,
@@ -1166,6 +1166,11 @@ var elementTypes = {
     "water": "水",
     "light": "光",
     "dark": "闇",
+};
+
+var series = {
+    "epic": "エピックウェポン",
+    "none": "無",
 };
 
 var enemyElementTypes = {
@@ -2645,6 +2650,16 @@ module.exports.selector.en.sexes = Object.keys(sexTypes).map(function (opt) {
 });
 module.exports.selector.zh.sexes = Object.keys(sexTypes).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(sexTypes[opt], "zh")}</option>;
+});
+
+module.exports.selector.ja.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{series[opt]}</option>;
+});
+module.exports.selector.en.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(series[opt], "en")}</option>;
+});
+module.exports.selector.zh.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(series[opt], "zh")}</option>;
 });
 
 module.exports.selector.ja.elements = Object.keys(elementTypes).map(function (opt) {
