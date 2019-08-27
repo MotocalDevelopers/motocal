@@ -2052,7 +2052,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (key == 'Djeeta') {
                                 totals[key]["superOugiDamage"] += totals[key]["remainHP"] * 2;
                                 if (amount == "II") {
-                                    totals[key]["exceedOugiDamageLimit"] += 0.30;
+                                    totals[key]["exceedOugiDamageLimit"] += 0.25;
                                 }
                             }
                         } else if (stype == 'victorys_promise') {
