@@ -2384,7 +2384,7 @@ var supportAbilities = {
                 "ougiDamageLimitBuff": 0.25,
             },
         }
-    }
+    },
     // "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ >> カードキャプター
     //     "name": "通常攻撃を行わない。()",
     //     "type": "no_normal_attack",
