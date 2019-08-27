@@ -955,6 +955,11 @@ skillnamelist["tenshiShukufuku"] = {
     u"堕落のすゝめ": "dark"
 }
 
+#huanglong katana
+skillnamelist["shinTenNoInori"] = {
+    u"震天の祈り": "light",
+}
+
 # Damage cap up
 skillnamelist["normalDamageLimit7"] = {
     u"賢者の加護": "earth",
@@ -1047,145 +1052,147 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
         row_length = len(row)
         if row_length <= 1:
             continue
+
+        # Row Lengths Overview
+        #  8: 2nd + 3rd skills
+        # 17: 3*
+        # 19: 4*
+        # 20: 4*
+        # 21: 5*
+        # 22: 5*
+        has_3rd_skill: bool = row_length == 20 or row_length == 22
+        row_iter = iter(row)
+        for index, value in enumerate(row_iter):
+            if index == 1:
+                m = key_pattern.search(value)
+                if m:
+                    key = m.group(1)
+            elif index == 2:
+                name = value.replace("&br;", "")
+                name = name.replace("[]", "")
+                newdict["ja"] = name
+            elif index == 3:
+                # element
+                if value.find("火") >= 0:
+                    newdict["element"] = "fire"
+                elif value.find("水") >= 0:
+                    newdict["element"] = "water"
+                elif value.find("土") >= 0:
+                    newdict["element"] = "earth"
+                elif value.find("風") >= 0:
+                    newdict["element"] = "wind"
+                elif value.find("光") >= 0:
+                    newdict["element"] = "light"
+                elif value.find("闇") >= 0:
+                    newdict["element"] = "dark"
+                elif value.find("全属性") >= 0:
+                    newdict["element"] = "all"
+                else:
+                    newdict["element"] = "none"
+            elif index == 4:
+                # type
+                newdict["type"] = type_replace(value)
+            elif index == 7:
+                skill = "non"
+                element1 = "none"
+                m = skill_pattern.search(value)
+                if m:
+                    skill, element1 = skill_replace(m.group(1))
+
+                newdict["skill1"] = skill
+            elif index == 8:
+                # skill2
+                skill2 = "non"
+                element2 = "none"
+                m = skill_pattern.search(value)
+                if m:
+                    skill2, element2 = skill_replace(m.group(1))
+
+                if element2 == "none" or element2 == "unknown":
+                    element2 = newdict["element"]
+
+                newdict["skill2"] = skill2
+                newdict["element2"] = element2
+
+                # skill3
+                skill3 = "non"
+                element3 = "none"
+
+                if has_3rd_skill:
+                    # Read the next value without increment enumerate counter
+                    value = next(row_iter)
+
+                    m = skill_pattern.search(value)
+                    if m:
+                        skill3, element3 = skill_replace(m.group(1))
+
+                if element3 == "none" or element3 == "unknown":
+                    element3 = newdict["element"]
+
+                newdict["skill3"] = skill3
+                newdict["element3"] = element3
+
+            if index == 9:
+                newdict["minhp"] = int(value)
+            elif index == 10:
+                newdict["minattack"] = int(value)
+            elif index == 11:
+                newdict["hp"] = int(value)
+            elif index == 12:
+                newdict["attack"] = int(value)
+            elif index == 13:
+                pass
+            elif index == 14:
+                # category
+                pass
+            elif index == 15:
+                if PROCESS_TYPE_SSR:
+                    if jougen_5_pattern.search(value):
+                        newdict["slvmax"] = 20
+                        newdict["maxlv"] = 200
+                    elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
+                        newdict["slvmax"] = 15
+                        newdict["maxlv"] = 150
+                    else:
+                        newdict["slvmax"] = 10
+                        newdict["maxlv"] = 100
+                else:
+                    if jougen_4_pattern.search(value):
+                        newdict["slvmax"] = 15
+                        newdict["maxlv"] = 120
+                    else:
+                        newdict["slvmax"] = 10
+                        newdict["maxlv"] = 75
+            elif index == 16 and newdict["slvmax"] >= 15:
+                if PROCESS_TYPE_SSR:
+                    newdict["hplv100"] = int(value)
+                else:
+                    newdict["hplv75"] = int(value)
+            elif index == 17 and newdict["slvmax"] >= 15:
+                if PROCESS_TYPE_SSR:
+                    newdict["attacklv100"] = int(value)
+                else:
+                    newdict["attacklv75"] = int(value)
+            elif index == 18 and newdict["slvmax"] >= 20:
+                newdict["hplv150"] = int(value)
+            elif index == 19 and newdict["slvmax"] >= 20:
+                newdict["attacklv150"] = int(value)
+
+        newdict["imageURL"] = "./imgs/" + key
+
+        if name in translation:
+            newdict["en"] = translation[name]
         else:
-            # Row Lengths Overview
-            #  8: 2nd + 3rd skills
-            # 17: 3*
-            # 19: 4*
-            # 20: 4*
-            # 21: 5*
-            # 22: 5*
-            has_3rd_skill: bool = row_length == 20 or row_length == 22
-            row_iter = iter(row)
-            for index, value in enumerate(row_iter):
-                if index == 1:
-                    m = key_pattern.search(value)
-                    if m:
-                        key = m.group(1)
-                elif index == 2:
-                    name = value.replace("&br;", "")
-                    name = name.replace("[]", "")
-                    newdict["ja"] = name
-                elif index == 3:
-                    # element
-                    if value.find("火") > 0:
-                        newdict["element"] = "fire"
-                    elif value.find("水") > 0:
-                        newdict["element"] = "water"
-                    elif value.find("土") > 0:
-                        newdict["element"] = "earth"
-                    elif value.find("風") > 0:
-                        newdict["element"] = "wind"
-                    elif value.find("光") > 0:
-                        newdict["element"] = "light"
-                    elif value.find("全属性") > 0:
-                        newdict["element"] = "all"
-                    else:
-                        newdict["element"] = "dark"
-                elif index == 4:
-                    # type
-                    newdict["type"] = type_replace(value)
-                elif index == 7:
-                    skill = "non"
-                    element1 = "none"
-                    m = skill_pattern.search(value)
-                    if m:
-                        skill, element1 = skill_replace(m.group(1))
+            print(name)
+            newdict["en"] = name
 
-                    newdict["skill1"] = skill
-                elif index == 8:
-                    # skill2
-                    skill2 = "non"
-                    element2 = "none"
-                    m = skill_pattern.search(value)
-                    if m:
-                        skill2, element2 = skill_replace(m.group(1))
-
-                    if element2 == "none" or element2 == "unknown":
-                        element2 = newdict["element"]
-
-                    newdict["skill2"] = skill2
-                    newdict["element2"] = element2
-
-                    # skill3
-                    skill3 = "non"
-                    element3 = "none"
-
-                    if has_3rd_skill:
-                        # Read the next value without increment enumerate counter
-                        value = next(row_iter)
-
-                        m = skill_pattern.search(value)
-                        if m:
-                            skill3, element3 = skill_replace(m.group(1))
-
-                    if element3 == "none" or element3 == "unknown":
-                        element3 = newdict["element"]
-
-                    newdict["skill3"] = skill3
-                    newdict["element3"] = element3
-
-                if index == 9:
-                    newdict["minhp"] = int(value)
-                elif index == 10:
-                    newdict["minattack"] = int(value)
-                elif index == 11:
-                    newdict["hp"] = int(value)
-                elif index == 12:
-                    newdict["attack"] = int(value)
-                elif index == 13:
-                    pass
-                elif index == 14:
-                    # category
-                    pass
-                elif index == 15:
-                    if PROCESS_TYPE_SSR:
-                        if jougen_5_pattern.search(value):
-                            newdict["slvmax"] = 20
-                            newdict["maxlv"] = 200
-                        elif jougen_4_pattern.search(value) or baha_pattern.search(newdict["skill1"]):
-                            newdict["slvmax"] = 15
-                            newdict["maxlv"] = 150
-                        else:
-                            newdict["slvmax"] = 10
-                            newdict["maxlv"] = 100
-                    else:
-                        if jougen_4_pattern.search(value):
-                            newdict["slvmax"] = 15
-                            newdict["maxlv"] = 120
-                        else:
-                            newdict["slvmax"] = 10
-                            newdict["maxlv"] = 75
-                elif index == 16 and newdict["slvmax"] >= 15:
-                    if PROCESS_TYPE_SSR:
-                        newdict["hplv100"] = int(value)
-                    else:
-                        newdict["hplv75"] = int(value)
-                elif index == 17 and newdict["slvmax"] >= 15:
-                    if PROCESS_TYPE_SSR:
-                        newdict["attacklv100"] = int(value)
-                    else:
-                        newdict["attacklv75"] = int(value)
-                elif index == 18 and newdict["slvmax"] >= 20:
-                    newdict["hplv150"] = int(value)
-                elif index == 19 and newdict["slvmax"] >= 20:
-                    newdict["attacklv150"] = int(value)
-
-            newdict["imageURL"] = "./imgs/" + key
-
-            if name in translation:
-                newdict["en"] = translation[name]
-            else:
-                print(name)
-                newdict["en"] = name
-
-            json_data[name] = newdict
-            # Wiki
-            image_wiki_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
-            # Game - Might get you banned...
-            image_game_url_list.append("http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/" + key + "\n")
-            image_wiki_url_list = list(OrderedDict.fromkeys(image_wiki_url_list))
-            image_game_url_list = list(OrderedDict.fromkeys(image_game_url_list))
+        json_data[name] = newdict
+        # Wiki
+        image_wiki_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+        # Game - Might get you banned...
+        image_game_url_list.append("http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/" + key + "\n")
+        image_wiki_url_list = list(OrderedDict.fromkeys(image_wiki_url_list))
+        image_game_url_list = list(OrderedDict.fromkeys(image_game_url_list))
 
     return json_data, image_wiki_url_list, image_game_url_list
 
