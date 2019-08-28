@@ -575,7 +575,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
         if (key == "Djeeta") {
             otherCoeff *= 1.0 + (0.01 * totals[key]["slaysnakes_myth"][0] * totals[key]["slaysnakes_myth"][1]); //[0]: amount. [1]: stacks number
-            otherCoeff *= 1.0 + totals[key]["superSensei"];
+            otherCoeff *= 1.0 + (0.01 * totals[key]["victorys_promise"] * 20); // TODO: replace 20 with "(Math.min(20, Math.max(0, buff["turn"])))" when turn bufff is ready
         }
         otherCoeff *= prof.retsujitsuNoRakuen ? 1.20 : 1;
         otherCoeff *= prof.shiToAiNoSekai ? 1.20 : 1;
@@ -2057,7 +2057,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'victorys_promise') {
                             if (key == 'Djeeta') {
-                                totals[key]["superSensei"] += amount;
+                                totals[key][stype] = amount;
                             }
                         } else if (stype == 'one_sting_one_kill') {
                             if (key == 'Djeeta') {
@@ -2292,7 +2292,6 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 exHaisui: 0,
                 sensei: 0,
                 akashaSensei: 0,
-                superSensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,
                 bahaDA: 0,
@@ -2325,6 +2324,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 opusmagnaElement: 0,
                 shinTenNoInori: [0, 0],
                 slaysnakes_myth: [0, 0],
+                victorys_promise: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
                 superOugiDamage: 0,
@@ -2467,7 +2467,6 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 exHaisui: 0,
                 sensei: 0,
                 akashaSensei: 0,
-                superSensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,
                 bahaDA: 0,
@@ -2500,6 +2499,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 opusmagnaElement: 0,
                 shinTenNoInori: [0, 0],
                 slaysnakes_myth: [0, 0],
+                victorys_promise: 0,
                 chainDamage: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
@@ -2658,7 +2658,6 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["exHaisui"] = 0;
         totals[key]["sensei"] = 0;
         totals[key]["akashaSensei"] = 0;
-        totals[key]["superSensei"] = 0;
         totals[key]["bahaAT"] = 0;
         totals[key]["bahaHP"] = 0;
         totals[key]["bahaDA"] = 0;
@@ -2688,6 +2687,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["opusmagnaElement"] = 0;
         totals[key]["shinTenNoInori"] = [0, 0];
         totals[key]["slaysnakes_myth"] = [0, 0];
+        totals[key]["victorys_promise"] = 0;
         totals[key]["normalOtherNite"] = 0;
         totals[key]["normalOtherSante"] = 0;
         totals[key]["normalOtherLesserSante"] = 0;

@@ -1007,7 +1007,7 @@ var skilltypes = {
     "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
     "rightway_pathfinder": {name: "王道を征く者", type: "rightway_pathfinder", amount: "I"},
     "rightway_pathfinderII": {name: "王道を征く者II", type: "rightway_pathfinder", amount: "II"},
-    "victorys_promise": {name: "必勝の誓い", type: "victorys_promise", amount: 2.0},
+    "victorys_promise": {name: "必勝の誓い", type: "victorys_promise", amount: 10.0},
     "one_sting_one_kill": {name: "一刺一殺", type: "one_sting_one_kill", amount: "I"},
     "one_sting_one_killII": {name: "一刺一殺II", type: "one_sting_one_kill", amount: "II"},
     "god_of_war": {name: "戦神の打擲", type: "god_of_war", amount: "I"},
