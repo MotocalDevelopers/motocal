@@ -410,7 +410,7 @@ skillnamelist["normalHiouL"] = {
 skillnamelist["normalHissatsuM"] = {
     u"業火の必殺": "fire",
     u"渦潮の必殺": "water",
-    u"地裂の必殺": "earth",
+    u"大地の必殺": "earth",
     u"竜巻の必殺": "wind",
     u"雷電の必殺": "light",
     u"憎悪の必殺": "dark"
@@ -822,6 +822,8 @@ skillnamelist["strengthL"] = {
     u"デヴァイサー": "wind",
     u"シャークアタック！": "dark",
     u"産地直送の攻刃": "water",
+    u"スクールアイドル": "wind",
+    u"ワン・ライト": "light",
 }
 
 skillnamelist["exATKandHPM"] = {

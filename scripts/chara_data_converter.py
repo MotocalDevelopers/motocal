@@ -120,6 +120,9 @@ supportAbilist["ougi_damage_up_50_cap_10"] = {
 supportAbilist["ougi_damage_up_50"] = {
     u"天星剣王"
 }
+supportAbilist["ougi_damage_up_10"] = {
+    u"音ノ木坂学院2年生"
+}
 supportAbilist["emnity_all_SL10"] = {
     u"太陽信仰"
 }
@@ -577,6 +580,7 @@ patchingOugiRatio["ノイシュ(火属性ver)"] = {"ougiRatio": 4.0}
 patchingOugiRatio["ティナ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["城ヶ崎莉嘉"] = {"ougiRatio": 4.0}
 patchingOugiRatio["シャオ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["カタリナ"] = {"ougiRatio": 4.0}
 
 ### SR (Other)
 patchingOugiRatio["カタリナ(水着ver)"] = {"ougiRatio": 3.7}
