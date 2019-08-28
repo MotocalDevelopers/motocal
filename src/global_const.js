@@ -2184,22 +2184,34 @@ var supportAbilities = {
         "value": 0.20
     },
     "damageUP_OugiCapUP_20": {
-        "name": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
-        "type": "charaDamageUP_OugiCap",
+        "name": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
+        "type": "charaDamageUP_specialOugiLimit",
         "range": "own",
         "value": 0.20
     },
     "ougiCapUP_20": {
-        "name": "奥義ダメージ上限20%UP(最終十天衆)",
-        "type": "ougiDamageLimitBuff",
+        "name": "奥義ダメージ上限UP(最終十天衆)",
+        "type": "specialOugiLimit_uncappingEternal",
         "range": "own",
-        "value": 0.20
+        "value": 0.0
     },
     "ougiCapUP_25": {
-        "name": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
-        "type": "ougiDamageLimitBuff",
+        "name": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
+        "type": "specialOugiLimit_lyria",
         "range": "own",
-        "value": 0.25
+        "value": 0.0
+    },
+    "specialOugiLimit_dorothyAndClaudia": {
+        "name": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
+        "type": "specialOugiLimit_dorothyAndClaudia",
+        "range": "own",
+        "value": 0.0
+    },
+    "specialOugiLimit_mirin": {
+        "name": "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)",
+        "type": "specialOugiLimit_mirin",
+        "range": "own",
+        "value": 0.0
     },
     "ougiCapUP_100": {
         "name": "奥義ダメージ上限100%UP(シャリオス17世)",
