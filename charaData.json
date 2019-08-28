@@ -659,6 +659,28 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "ブローディア(水着ver)": {
+        "name": "ブローディア(水着ver)",
+        "ja": "ブローディア(水着ver)",
+        "element": "earth",
+        "type": "pecu",
+        "race": "seisho",
+        "sex": "female",
+        "fav1": "sword",
+        "fav2": "katana",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "230",
+        "hp": "1240",
+        "minattack": "1690",
+        "attack": "9000",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040232000_01.png",
+        "en": "Alexiel (Summer)"
+    },
     "絢瀬絵里＆矢澤にこ＆東條 希": {
         "name": "絢瀬絵里＆矢澤にこ＆東條 希",
         "ja": "絢瀬絵里＆矢澤にこ＆東條 希",
@@ -11064,5 +11086,27 @@
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030273000_01.png",
         "en": "Cassius (Summer)"
+    },
+    "レオナ(浴衣ver)": {
+        "name": "レオナ(浴衣ver)",
+        "ja": "レオナ(浴衣ver)",
+        "element": "water",
+        "type": "attack",
+        "race": "human",
+        "sex": "female",
+        "fav1": "spear",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "140",
+        "hp": "960",
+        "minattack": "1770",
+        "attack": "7700",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 3.5,
+        "imageURL": "./charaimgs/3030274000_01.png",
+        "en": "Leona (Summer)"
     }
 }
