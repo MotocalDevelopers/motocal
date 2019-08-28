@@ -1300,7 +1300,7 @@ var Result = CreateClass({
                         pushSkillInfoElement1("hpRatio", "HP増加", "success");
                         pushSkillInfoElement1("other", "その他バフ", "primary");
                         pushSkillInfoElement1("ATKDebuff", "攻撃力減少(特殊)", "danger");
-                        pushSkillInfoElement1("accuracyDebuff", "正確さ減少(特殊)", "dark");
+                        pushSkillInfoElement1("accuracyDebuff", "攻撃命中率減少(特殊)", "dark");
 
                         var multipleAttackSkillInfo = [];
                         // For batting skill
