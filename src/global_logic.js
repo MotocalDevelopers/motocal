@@ -559,7 +559,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += totals[key]["elementBuffBoostBuff"];
         elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
         elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
-        elementCoeff += 0.01 * totals[key]["shinTenNoInori"][0] * totals[key]["shinTenNoInori"][1]; //[0]: amount. [1]: stacks number
+        elementCoeff += 0.01 * totals[key]["shinTenNoInori"];
         elementCoeff += 0.01 * totals[key]["LB"].Element;
 
         if (key == "Djeeta") {
@@ -574,8 +574,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             otherCoeff *= 1.10;
         }
         if (key == "Djeeta") {
-            otherCoeff *= 1.0 + (0.01 * totals[key]["slaysnakes_myth"][0] * totals[key]["slaysnakes_myth"][1]); //[0]: amount. [1]: stacks number
-            otherCoeff *= 1.0 + (0.01 * totals[key]["victorys_promise"] * 20); // TODO: replace 20 with "(Math.min(20, Math.max(0, buff["turn"])))" when turn bufff is ready
+            otherCoeff *= 1.0 + (0.01 * totals[key]["slaysnakes_myth"]);
+            otherCoeff *= 1.0 + (0.01 * totals[key]["victorys_promise"]);
         }
         otherCoeff *= prof.retsujitsuNoRakuen ? 1.20 : 1;
         otherCoeff *= prof.shiToAiNoSekai ? 1.20 : 1;
@@ -2047,7 +2047,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'opusmagnaElement') {
                             totals[key][stype] += 0.15;
                         } else if (stype == 'shinTenNoInori') {
-                            totals[key][stype] = [amount, Math.max(totals[key][stype][1], arm[skillkey + "Detail"])];
+                            totals[key][stype] = Math.max(totals[key][stype], amount * arm[skillkey + "Detail"]);
                         } else if (stype == 'rightway_pathfinder') {
                             if (key == 'Djeeta') {
                                 totals[key]["superOugiDamage"] += totals[key]["remainHP"] * 2;
@@ -2057,7 +2057,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'victorys_promise') {
                             if (key == 'Djeeta') {
-                                totals[key][stype] = amount;
+                                totals[key][stype] = Math.max(totals[key][stype], amount * 20); // TODO: replace 20 when #342 is merged
                             }
                         } else if (stype == 'one_sting_one_kill') {
                             if (key == 'Djeeta') {
@@ -2089,7 +2089,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'slaysnakes_myth') {
                             if (key == 'Djeeta') {
-                                totals[key][stype] = [10.0, Math.max(totals[key][stype][1], arm[skillkey + "Detail"])];
+                                totals[key][stype] = Math.max(totals[key][stype], 10.0 * arm[skillkey + "Detail"]);
                                 if (amount == "II") {
                                     totals[key]["normalDamageLimit"] += 0.10;
                                     totals[key]["exceedOugiDamageLimit"] += 0.10;
@@ -2322,8 +2322,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
-                shinTenNoInori: [0, 0],
-                slaysnakes_myth: [0, 0],
+                shinTenNoInori: 0,
+                slaysnakes_myth: 0,
                 victorys_promise: 0,
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
@@ -2497,8 +2497,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
-                shinTenNoInori: [0, 0],
-                slaysnakes_myth: [0, 0],
+                shinTenNoInori: 0,
+                slaysnakes_myth: 0,
                 victorys_promise: 0,
                 chainDamage: 0,
                 normalOugiDamage: 0,
@@ -2685,8 +2685,8 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["akashaHP"] = 0;
         totals[key]["opusnormalElement"] = 0;
         totals[key]["opusmagnaElement"] = 0;
-        totals[key]["shinTenNoInori"] = [0, 0];
-        totals[key]["slaysnakes_myth"] = [0, 0];
+        totals[key]["shinTenNoInori"] = 0;
+        totals[key]["slaysnakes_myth"] = 0;
         totals[key]["victorys_promise"] = 0;
         totals[key]["normalOtherNite"] = 0;
         totals[key]["normalOtherSante"] = 0;
