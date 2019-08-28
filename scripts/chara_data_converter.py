@@ -120,6 +120,9 @@ supportAbilist["ougi_damage_up_50_cap_10"] = {
 supportAbilist["ougi_damage_up_50"] = {
     u"天星剣王"
 }
+supportAbilist["ougi_damage_up_10"] = {
+    u"音ノ木坂学院2年生"
+}
 supportAbilist["emnity_all_SL10"] = {
     u"太陽信仰"
 }
