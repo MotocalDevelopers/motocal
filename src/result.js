@@ -1066,7 +1066,7 @@ var Result = CreateClass({
 
                 if (sw.switchExpectedAttack) {
                     var expectedAttack = Math.round(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
-                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack + ")");
+                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack.toLocaleString() + ")");
                     ++colSize;
                 }
 
@@ -1103,12 +1103,12 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageAttack) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageAttack));
+                    tablebody.push(Math.round(m.data.Djeeta.averageAttack).toLocaleString());
                     ++colSize;
                 }
 
                 if (sw.switchAverageCriticalAttack) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageCriticalAttack));
+                    tablebody.push(Math.round(m.data.Djeeta.averageCriticalAttack).toLocaleString());
                     ++colSize;
                 }
 
@@ -1129,12 +1129,12 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageTotalExpected) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageTotalExpected));
+                    tablebody.push(Math.round(m.data.Djeeta.averageTotalExpected).toLocaleString());
                     ++colSize;
                 }
 
                 if (sw.switchPureDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.pureDamage));
+                    tablebody.push(Math.round(m.data.Djeeta.pureDamage).toLocaleString());
                     ++colSize;
                 }
 
@@ -1150,17 +1150,17 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchDamageWithCritical) {
-                    tablebody.push(Math.round(m.data.Djeeta.damageWithCritical));
+                    tablebody.push(Math.round(m.data.Djeeta.damageWithCritical).toLocaleString());
                     ++colSize;
                 }
 
                 if (sw.switchDamageWithMultiple) {
-                    tablebody.push(Math.round(m.data.Djeeta.damageWithMultiple));
+                    tablebody.push(Math.round(m.data.Djeeta.damageWithMultiple).toLocaleString());
                     ++colSize;
                 }
 
                 if (sw.switchDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.damage));
+                    tablebody.push(Math.round(m.data.Djeeta.damage).toLocaleString());
                     ++colSize;
                 }
 
@@ -1170,7 +1170,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchOugiDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamage));
+                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamage).toLocaleString());
                     ++colSize;
                 }
 
@@ -1181,7 +1181,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-ougi-damage"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("奥義ダメージ", locale)}</span> {m.data[key].ougiDamage.toFixed(0)}&nbsp;
+                                        className="label label-primary">{intl.translate("奥義ダメージ", locale)}</span> {Math.round(m.data[key].ougiDamage).toLocaleString()}&nbsp;
                                 </span>
                         );
                     }
@@ -1199,15 +1199,15 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchChainBurst) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageChainBurst));
+                    tablebody.push(Math.round(m.data.Djeeta.averageChainBurst).toLocaleString());
                     ++colSize;
                 }
                 if (sw.switchTotalOugiDamageWithChain) {
-                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamageWithChain));
+                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamageWithChain).toLocaleString());
                     ++colSize;
                 }
                 if (sw.switchCycleDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.expectedCycleDamagePerTurn));
+                    tablebody.push(Math.round(m.data.Djeeta.expectedCycleDamagePerTurn).toLocaleString());
                     ++colSize;
                 }
 
@@ -1216,7 +1216,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-cycle-damage"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("予想ターン毎ダメージ", locale)}</span> {m.data[key].expectedCycleDamagePerTurn.toFixed(0)}&nbsp;
+                                        className="label label-primary">{intl.translate("予想ターン毎ダメージ", locale)}</span> {Math.round(m.data[key].expectedCycleDamagePerTurn).toLocaleString()}&nbsp;
                                 </span>
                         );
                     }
@@ -1224,7 +1224,7 @@ var Result = CreateClass({
 
                 if (sw.switchAverageCycleDamage) {
                     var val = Math.round(m.data.Djeeta.averageCyclePerTurn);
-                    tablebody.push(val.toString() + " (" + (4 * val).toString() + ")");
+                    tablebody.push(val.toLocaleString().toString() + " (" + (4 * val).toLocaleString().toString() + ")");
                     ++colSize;
                 }
 
