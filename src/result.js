@@ -1292,7 +1292,7 @@ var Result = CreateClass({
                         pushSkillInfoElement1("magna", "マグナ", "primary");
                         pushSkillInfoElement1("magnaHaisui", "マグナ背水", "dark");
                         pushSkillInfoElement1("magnaKonshin", "マグナ渾身", "light");
-                        pushSkillInfoElement1("ex", "EX", "non");
+                        pushSkillInfoElement1("ex", "EX", "warning");
                         pushSkillInfoElement1("exHaisui", "EX背水", "dark");
                         pushSkillInfoElement1("charaHaisui", "キャラ背水", "dark");
                         pushSkillInfoElement1("LBHaisui", "LB背水ラベル", "dark");
