@@ -690,7 +690,7 @@
         "sex": "female",
         "fav1": "bow",
         "fav2": "wand",
-        "support": "none",
+        "support": "ougi_damage_up_10",
         "support2": "none",
         "support3": "none",
         "minhp": "300",
