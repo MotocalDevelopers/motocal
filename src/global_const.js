@@ -2083,6 +2083,12 @@ var supportAbilities = {
         "range": "Djeeta",
         "value": 0.20,
     },
+    "ougi_damage_up_10": {
+        "name": "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)",
+        "type": "ougiDamageBuff",
+        "range": "all",
+        "value": 0.10
+    },
     "ougi_damage_up_50": {
         "name": "全体奥義ダメージ50%UP(シエテ)",
         "type": "ougiDamageBuff",

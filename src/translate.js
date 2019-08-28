@@ -2178,6 +2178,11 @@ var multiLangData = {
         "ja": "全体奥義ダメージ50%UP(シエテ)",
         "zh": "全体奥義ダメージ50%UP(シエテ)",
     },
+    "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)": {
+        "en": "10% boost to C.A. DMG for all allies. (μ's Second-Years)",
+        "ja": "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)",
+        "zh": "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)",
+    },
     "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)": {
         "en": "50% boost to C.A. DMG and 10% boost to C.A. DMG cap for all allies. (5★ Seofon)",
         "ja": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
