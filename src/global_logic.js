@@ -40,6 +40,7 @@ const {
     raceCharaContains,
 } = require('./skill_filter.js');
 const {range, when} = require('./support_filter');
+const epic = require('./epic');
 
 
 module.exports.isCosmos = function (arm) {
@@ -600,6 +601,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         // for DA and TA
         var normalNite = totals[key]["normalNite"] * totalSummon["zeus"];
+        normalNite += totals[key]["normalOtherNite"];
         var magnaNite = totals[key]["magnaNite"] * totalSummon["magna"];
         var normalSante = totals[key]["normalSante"] * totalSummon["zeus"] + totals[key]["normalOtherSante"];
         var magnaSante = totals[key]["magnaSante"] * totalSummon["magna"];
@@ -1562,6 +1564,14 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
         "spear": false,
     };
 
+    // New Epic 2nd skill is party shared setting, affected to EX fields
+    var numGrandEpic = 0; // number of Grand Epic skills
+    var numResonanceStaff = 0; // number of Resonance Staff skills
+    var countEpic = 0;
+    var countWand = 0;
+    var isAllUniqueArm = false;
+    var isAllUniqueArmType = false;
+
     var index = 0;
     for (var key in totals) {
         index = index + 1 | 0;
@@ -1807,6 +1817,21 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 buff["enemyDebuffCount"] = arm[skillkey + "Detail"];
                             }
                         }
+                    } else if (stype === 'epic' && key === 'Djeeta') {
+                        // This implementation assume 'Djeeta'
+                        // To collect skill information only once per grid.
+                        // skill are affect to all allies
+                        if (amount === 'count-epic') {
+                            numGrandEpic += comb[i];
+                            countEpic = countEpic ? countEpic : epic.countEpicWeapon(arml, comb);
+                        } else if (amount === 'count-wand') {
+                            numResonanceStaff += comb[i];
+                            countWand = countWand ? countWand : epic.countWandType(arml, comb);
+                        } else if (amount === 'all-unique-type') {
+                            isAllUniqueArmType = epic.isAllUniqueArmType(arml, comb);
+                        } else if (amount === 'all-unique') {
+                            isAllUniqueArm = epic.isAllUniqueArm(arml, comb);
+                        }
                     } else if (stype == 'cherubimKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'sunbladeKonshin') {
@@ -2043,6 +2068,27 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
         if (totals[key]["bahaAT"] > 50) totals[key]["bahaAT"] = 50;
         if (totals[key]["bahaHP"] > 50) totals[key]["bahaHP"] = 50;
     }
+
+    // new epic 2nd skills
+    Object.values(totals).forEach(chara => {
+        if (numGrandEpic > 0) {
+            chara["ex"] += Math.min(LIMIT.grandEpic, numGrandEpic * countEpic * 4.0);
+        }
+        if (numResonanceStaff > 0) {
+            chara["normalOtherSante"] += Math.min(10, countWand) * 1.0;
+        }
+        if (isAllUniqueArm) {
+            chara["ex"] += 20.0;
+            chara["normalDamageLimit"] += 0.10;
+            chara["ougiDamageLimit"] += 0.10;
+        }
+        if (isAllUniqueArmType) {
+            // TODO: remove copy-pasted codes, if confirmed same and stack.
+            chara["ex"] += 20.0;
+            chara["normalDamageLimit"] += 0.10;
+            chara["ougiDamageLimit"] += 0.10;
+        }
+    });
 };
 
 module.exports.calcBaseATK = function (rank) {

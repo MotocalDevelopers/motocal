@@ -100,6 +100,7 @@ module.exports.LIMIT = {
     otherTA: UNLIMIT_VALUE,
     chainDamageUP: 1.20,
     chainDamageLimit: 0.50,
+    grandEpic: 80.0,
 };
 module.exports.DEFAULT = {
     ougiRatio: 4.5,
@@ -991,6 +992,10 @@ var skilltypes = {
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
+    "epic-grandEpic": {name: "エピックブランド・ゲイン", type: "epic", amount: "count-epic"},
+    "epic-staffResonance": {name: "レゾナンス・スタッフ", type: "epic", amount: "count-wand"},
+    "epic-heroicTale": {name: "ヒロイック・テイル", type: "epic", amount: "all-unique-type"},
+    "epic-absoluteEquality": {name: "ソール・イコーリティ", type: "epic", amount: "all-unique"},
     "extendedDjeetaNormalDATA5": {name: "[ジータのみ] 通常枠DATA 5%", type: "extendedDjeetaNormalDATA", amount: 5.0},
     "extendedDjeetaNormalDATA10": {name: "[ジータのみ] 通常枠DATA 10%", type: "extendedDjeetaNormalDATA", amount: 10.0},
     "extendedDjeetaNormalDATA15": {name: "[ジータのみ] 通常枠DATA 15%", type: "extendedDjeetaNormalDATA", amount: 15.0},
@@ -1161,6 +1166,11 @@ var elementTypes = {
     "water": "水",
     "light": "光",
     "dark": "闇",
+};
+
+var series = {
+    "epic": "エピックウェポン",
+    "none": "無",
 };
 
 var enemyElementTypes = {
@@ -2621,7 +2631,7 @@ module.exports.additionalSelectList = {
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
-    "": {
+    "黄龍刀": {
         selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
         notationText: "",
         selectKeys: ["skill2Detail"],
@@ -2651,6 +2661,16 @@ module.exports.selector.en.sexes = Object.keys(sexTypes).map(function (opt) {
 });
 module.exports.selector.zh.sexes = Object.keys(sexTypes).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(sexTypes[opt], "zh")}</option>;
+});
+
+module.exports.selector.ja.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{series[opt]}</option>;
+});
+module.exports.selector.en.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(series[opt], "en")}</option>;
+});
+module.exports.selector.zh.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(series[opt], "zh")}</option>;
 });
 
 module.exports.selector.ja.elements = Object.keys(elementTypes).map(function (opt) {

@@ -112,7 +112,7 @@ var multiLangData = {
         "zh": "无职业",
     },
     "無し": {
-        "en": "none",
+        "en": "None",
         "ja": "無し",
         "zh": "无",
     },
@@ -207,12 +207,12 @@ var multiLangData = {
         "zh": "全属性",
     },
     "無": {
-        "en": "Non",
+        "en": "None",
         "ja": "無",
         "zh": "无",
     },
     "無（技巧あり）": {
-        "en": "Non (but Crit.)",
+        "en": "None (with Crit.)",
         "ja": "無（技巧あり）",
         "zh": "无 (有技巧)",
     },
@@ -1430,7 +1430,7 @@ var multiLangData = {
         "zh": "有利",
     },
     "非有利": {
-        "en": "Non-advantage",
+        "en": "Unfavorable",
         "ja": "非有利",
         "zh": "非有利",
     },
@@ -1965,6 +1965,11 @@ var multiLangData = {
         "ja": "武器名",
         "zh": "武器名",
     },
+    "カテゴリー": {
+        "en": "Category",
+        "ja": "カテゴリー",
+        "zh": "カテゴリー",
+    },
     "スキル": {
         "en": "Skill",
         "ja": "スキル",
@@ -2052,6 +2057,13 @@ var multiLangData = {
         "ja": "不詳",
         "zh": "不詳",
     },
+    // Series
+    "エピックウェポン": {
+        "en": "Epic Weapon",
+        "ja": "エピックウェポン",
+        "zh": "エピックウェポン",
+    },
+
     //support abilities
     "なし": {
         "en": "None",
@@ -3445,6 +3457,26 @@ var multiLangData = {
         "ja": "天司の祝福III",
         "zh": "天司的祝福III",
     },
+    "エピックブランド・ゲイン": {
+        "en": "Grand Epic",
+        "ja": "エピックブランド・ゲイン",
+        "zh": "Grand Epic",
+    },
+    "レゾナンス・スタッフ": {
+        "en": "Staff Resonance",
+        "ja": "レゾナンス・スタッフ",
+        "zh": "Staff Resonance",
+    },
+    "ヒロイック・テイル": {
+        "en": "Heroic Tale",
+        "ja": "ヒロイック・テイル",
+        "zh": "Heroic Tale",
+    },
+    "ソール・イコーリティ": {
+        "en": "Absolute Equality",
+        "ja": "ソール・イコーリティ",
+        "zh": "Absolute Equality",
+    },
     "通常上限UP(2.5%)": {
         "en": "Damage Cap UP(2.5%)",
         "ja": "通常上限UP(2.5%)",
@@ -4098,7 +4130,7 @@ var multiLangData = {
         "zh": "2017/06/17: 修正了Rank175以上的基础HP/HP公式。",
     },
     "notice-20170704-1": {
-        "en": "04/07/2017: Added new weapons. Implemented 'Non' element type. Implemented critical ratio array displaying.",
+        "en": "04/07/2017: Added new weapons. Implemented 'None' element type. Implemented critical ratio array displaying.",
         "ja": "2017/07/04: 武器追加. 無属性と無属性（技巧あり）を実装. 技巧倍率毎の発生確率表示を実装.",
         "zh": "2017/07/04: 增加新武器。 实装了无属性和无属性(考虑技巧)的计算。实装了显示每个技巧倍率的发生概率。",
     },
