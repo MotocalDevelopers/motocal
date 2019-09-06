@@ -100,6 +100,7 @@ module.exports.LIMIT = {
     otherTA: UNLIMIT_VALUE,
     chainDamageUP: 1.20,
     chainDamageLimit: 0.50,
+    grandEpic: 80.0,
 };
 module.exports.DEFAULT = {
     ougiRatio: 4.5,
@@ -944,8 +945,8 @@ var skilltypes = {
     "bahaAT-axe": {name: "バハ攻-斧", type: "bahaAT", amount: "L"},
     "bahaAT-spear": {name: "バハ攻-槍", type: "bahaAT", amount: "L"},
     "bahaAT-gun": {name: "バハ攻-銃", type: "bahaAT", amount: "L"},
-    "bahaATHP-sword": {name: "バハ攻HP-剣", type: "bahaATHP", amount: "M"},
-    "bahaATHP-wand": {name: "バハ攻HP-杖", type: "bahaATHP", amount: "M"},
+    "bahaATHP-sword": {name: "バハ攻HP-剣", type: "bahaATHP", amount: "L"},
+    "bahaATHP-wand": {name: "バハ攻HP-杖", type: "bahaATHP", amount: "L"},
     "bahaHP-fist": {name: "バハHP-格闘", type: "bahaHP", amount: "L"},
     "bahaHP-katana": {name: "バハHP-刀", type: "bahaHP", amount: "L"},
     "bahaHP-bow": {name: "バハHP-弓", type: "bahaHP", amount: "L"},
@@ -991,6 +992,10 @@ var skilltypes = {
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
+    "epic-grandEpic": {name: "エピックブランド・ゲイン", type: "epic", amount: "count-epic"},
+    "epic-staffResonance": {name: "レゾナンス・スタッフ", type: "epic", amount: "count-wand"},
+    "epic-heroicTale": {name: "ヒロイック・テイル", type: "epic", amount: "all-unique-type"},
+    "epic-absoluteEquality": {name: "ソール・イコーリティ", type: "epic", amount: "all-unique"},
     "extendedDjeetaNormalDATA5": {name: "[ジータのみ] 通常枠DATA 5%", type: "extendedDjeetaNormalDATA", amount: 5.0},
     "extendedDjeetaNormalDATA10": {name: "[ジータのみ] 通常枠DATA 10%", type: "extendedDjeetaNormalDATA", amount: 10.0},
     "extendedDjeetaNormalDATA15": {name: "[ジータのみ] 通常枠DATA 15%", type: "extendedDjeetaNormalDATA", amount: 15.0},
@@ -1161,6 +1166,11 @@ var elementTypes = {
     "water": "水",
     "light": "光",
     "dark": "闇",
+};
+
+var series = {
+    "epic": "エピックウェポン",
+    "none": "無",
 };
 
 var enemyElementTypes = {
@@ -1779,25 +1789,30 @@ var skillAmounts = {
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
     },
     "bahaAT": {
-        // Daggers etc.
-        "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 30.4, 30.8, 31.2, 31.6, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0],
-        "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0],
+        // Dagger, Axe, Spear, Gun.
+        "AT": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0],
+    },
+    "bahaATHP": {
+        // Sword, Wand.
+        "AT": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
+        "HP": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0],
     },
     "bahaHP": {
-        // Sword etc.
-        "M": [10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0],
-        "L": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0],
+        // Fist, Katana, Bow, Music.
+        "HP": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0],
     },
+    
+    // Bahamut Coda(フツルフ)
     "bahaFUATHP": {
-        // Dagger, sword etc.
+        // Dagger, Axe, Spear, Gun, Sword, Wand.
         "HP": [15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0],
         "AT": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0],
     },
     "bahaFUHP": {
-        // Fist etc
-        "HP": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.4, 30.8, 31.2, 31.6, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0],
+        // Fist, Katana, Bow, Music.
+        "HP": [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 32.0, 34.0, 36.0, 38.0, 40.0, 40.0, 40.0, 40.0, 40.0, 40.0],
         "DA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 5.6, 6.2, 6.8, 7.4, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
-        "TA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0],
+        "TA": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 5.6, 6.2, 6.8, 7.4, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
     },
     "omega": {
         "rawATK": [2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0, 16.0, 18.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0],
@@ -1842,34 +1857,34 @@ var skillAmounts = {
     "sensei": {
         "M": [5.0, 6.0, 7.0, 8.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0],
     },
-    // Royal Wing Barrier
+    // Royal Wing Barrier(鷲王の結界)
     "washiouKekkai": {
         "M": [6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.0, 13.0, 13.0, 13.0, 13.0],
     },
-    // normal Mystery + Sentence(通常秘奥/必殺(奥義ダメージ))
+    // normal Mystery + Sentence(通常秘奥/通常必殺(奥義ダメージ部分))
     "normalHiou": {
         "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 7.5, 7.5, 7.5, 7.5, 7.5],
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 9.5, 9.5, 9.5, 9.5, 9.5],
         "L": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5]
     },
-    // normal Sentence limit up (必殺(奥義上限))
+    // normal Sentence limit up (通常必殺(奥義上限部分))
     "normalOugiDamageLimitHissatsu": {
         "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0],
         "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8]
     },
-    // normal Glory chain up
+    // normal Glory(英傑) chain up 
     "normalEiketsu": {
         "L": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 14.5, 14.5, 14.5, 14.5, 14.5]
     },
-    // normal Glory limit up
+    // normal Glory(英傑) limit up
     "normalEiketsuDamageLimit": {
         "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8]
     },
-    // magna Sentence
+    // magna Sentence(方陣秘奥/方陣必殺(奥義ダメージ部分))
     "magnaHiou": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 9.5, 9.5, 9.5, 9.5, 9.5]
     },
-    // magna Sentence limit up
+    // magna Sentence limit up(方陣必殺(奥義上限部分))
     "magnaOugiDamageLimitHissatsu": {
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 9.5, 9.5, 9.5, 9.5, 9.5]
     },
@@ -2628,7 +2643,7 @@ module.exports.additionalSelectList = {
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
-    "": {
+    "黄龍刀": {
         selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
         notationText: "",
         selectKeys: ["skill2Detail"],
@@ -2658,6 +2673,16 @@ module.exports.selector.en.sexes = Object.keys(sexTypes).map(function (opt) {
 });
 module.exports.selector.zh.sexes = Object.keys(sexTypes).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(sexTypes[opt], "zh")}</option>;
+});
+
+module.exports.selector.ja.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{series[opt]}</option>;
+});
+module.exports.selector.en.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(series[opt], "en")}</option>;
+});
+module.exports.selector.zh.series = Object.keys(series).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(series[opt], "zh")}</option>;
 });
 
 module.exports.selector.ja.elements = Object.keys(elementTypes).map(function (opt) {
