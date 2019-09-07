@@ -3516,6 +3516,7 @@ var multiLangData = {
         "en": "Slaysnake's Myth II",
         "ja": "戮蛇の神刀II",
         "zh": "戮蛇の神刀II",
+    },
     "エピックブランド・ゲイン": {
         "en": "Grand Epic",
         "ja": "エピックブランド・ゲイン",
