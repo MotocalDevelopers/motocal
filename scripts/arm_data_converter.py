@@ -983,6 +983,21 @@ skillnamelist["chainForce"] = {
     u"チェインフォース": "dark",
 }
 
+# New epic weapons
+skillnamelist["epic-grandEpic"] = {
+    u"エピックブランド・ゲイン": "all",
+}
+skillnamelist["epic-staffResonance"] = {
+    u"レゾナンス・スタッフ": "all",
+}
+skillnamelist["epic-heroicTale"] = {
+    u"ヒロイック・テイル": "all",
+}
+skillnamelist["epic-absoluteEquality"] = {
+    u"ソール・イコーリティ": "all",
+}
+
+
 # Character specific weapon
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
@@ -1027,6 +1042,10 @@ armtypelist[u"格闘"] = "fist"
 armtypelist[u"弓"] = "bow"
 armtypelist[u"楽器"] = "music"
 armtypelist[u"刀"] = "katana"
+
+SERIES = {
+    u"エピックウェポン": "epic",
+}
 
 ########################################################################################################################
 filename = inspect.getframeinfo(inspect.currentframe()).filename
@@ -1146,7 +1165,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                 newdict["skill3"] = skill3
                 newdict["element3"] = element3
 
-            if index == 9:
+            elif index == 9:
                 newdict["minhp"] = int(value)
             elif index == 10:
                 newdict["minattack"] = int(value)
@@ -1157,8 +1176,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             elif index == 13:
                 pass
             elif index == 14:
-                # category
-                pass
+                newdict["series"] = SERIES.get(value, "none")
             elif index == 15:
                 if PROCESS_TYPE_SSR:
                     if jougen_5_pattern.search(value):
