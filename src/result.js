@@ -990,6 +990,9 @@ var Result = CreateClass({
         var prof = this.props.prof;
         var onClick = this.onClick;
         var locale = this.props.locale;
+        function formatCommaSeparatedNumber(num) {
+            return String(Math.round(num)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+        }
 
         return (
             <tbody className="result">
@@ -1066,7 +1069,7 @@ var Result = CreateClass({
 
                 if (sw.switchExpectedAttack) {
                     var expectedAttack = Math.round(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
-                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack.toLocaleString() + ")");
+                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + formatCommaSeparatedNumber(expectedAttack) + ")");
                     ++colSize;
                 }
 
@@ -1103,12 +1106,12 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageAttack) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageAttack).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.averageAttack));
                     ++colSize;
                 }
 
                 if (sw.switchAverageCriticalAttack) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageCriticalAttack).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.averageCriticalAttack));
                     ++colSize;
                 }
 
@@ -1129,12 +1132,12 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageTotalExpected) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageTotalExpected).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.averageTotalExpected));
                     ++colSize;
                 }
 
                 if (sw.switchPureDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.pureDamage).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.pureDamage));
                     ++colSize;
                 }
 
@@ -1150,17 +1153,17 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchDamageWithCritical) {
-                    tablebody.push(Math.round(m.data.Djeeta.damageWithCritical).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damageWithCritical));
                     ++colSize;
                 }
 
                 if (sw.switchDamageWithMultiple) {
-                    tablebody.push(Math.round(m.data.Djeeta.damageWithMultiple).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damageWithMultiple));
                     ++colSize;
                 }
 
                 if (sw.switchDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.damage).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damage));
                     ++colSize;
                 }
 
@@ -1170,7 +1173,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchOugiDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamage).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalOugiDamage));
                     ++colSize;
                 }
 
@@ -1181,7 +1184,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-ougi-damage"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("奥義ダメージ", locale)}</span> {Math.round(m.data[key].ougiDamage).toLocaleString()}&nbsp;
+                                        className="label label-primary">{intl.translate("奥義ダメージ", locale)}</span> {formatCommaSeparatedNumber(m.data[key].ougiDamage)}&nbsp;
                                 </span>
                         );
                     }
@@ -1199,15 +1202,15 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchChainBurst) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageChainBurst).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.averageChainBurst));
                     ++colSize;
                 }
                 if (sw.switchTotalOugiDamageWithChain) {
-                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamageWithChain).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalOugiDamageWithChain));
                     ++colSize;
                 }
                 if (sw.switchCycleDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.expectedCycleDamagePerTurn).toLocaleString());
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.expectedCycleDamagePerTurn));
                     ++colSize;
                 }
 
@@ -1216,15 +1219,15 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-cycle-damage"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("予想ターン毎ダメージ", locale)}</span> {Math.round(m.data[key].expectedCycleDamagePerTurn).toLocaleString()}&nbsp;
+                                        className="label label-primary">{intl.translate("予想ターン毎ダメージ", locale)}</span> {formatCommaSeparatedNumber(m.data[key].expectedCycleDamagePerTurn)}&nbsp;
                                 </span>
                         );
                     }
                 }
 
                 if (sw.switchAverageCycleDamage) {
-                    var val = Math.round(m.data.Djeeta.averageCyclePerTurn);
-                    tablebody.push(val.toLocaleString().toString() + " (" + (4 * val).toLocaleString().toString() + ")");
+                    var num = Math.round(m.data.Djeeta.averageCyclePerTurn);
+                    tablebody.push(formatCommaSeparatedNumber(num) + " (" + formatCommaSeparatedNumber(4 * num) + ")");
                     ++colSize;
                 }
 
@@ -1257,9 +1260,9 @@ var Result = CreateClass({
                                 <div key={key + "-LimitValues"}>
                                     <span key={key + "-LimitValues"}>
                                         <span className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
-                                            {Math.round(normalDamageRealLimit).toLocaleString()}&nbsp;
+                                            {formatCommaSeparatedNumber(normalDamageRealLimit)}&nbsp;
                                         <span className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
-                                            {Math.round(ougiDamageRealLimit).toLocaleString()}&nbsp;
+                                            {formatCommaSeparatedNumber(ougiDamageRealLimit)}&nbsp;
                                     </span>
                                 </div>
                         );
