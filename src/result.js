@@ -1007,7 +1007,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchTotalAttack) {
-                    tablebody.push(m.data.Djeeta.totalAttack);
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalAttack));
                     ++colSize;
                 }
                 if (sw.switchATKandHP) {
@@ -1021,7 +1021,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-attack"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("攻撃力", locale)}</span> {m.data[key].totalAttack}&nbsp;
+                                        className="label label-primary">{intl.translate("攻撃力", locale)}</span> {formatCommaSeparatedNumber(m.data[key].totalAttack)}&nbsp;
                                 </span>
                         );
                     }
@@ -1074,7 +1074,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchCriticalAttack) {
-                    tablebody.push(m.data.Djeeta.criticalAttack);
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.criticalAttack));
                     ++colSize;
                 }
 
@@ -1116,7 +1116,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchTotalExpected) {
-                    tablebody.push(m.data.Djeeta.totalExpected);
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalExpected));
                     ++colSize;
                 }
 
@@ -1125,7 +1125,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-PCF"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("総回技", locale)}</span>{m.data[key].totalExpected}&nbsp;
+                                        className="label label-primary">{intl.translate("総回技", locale)}</span>{formatCommaSeparatedNumber(m.data[key].totalExpected)}&nbsp;
                                 </span>
                         );
                     }
@@ -1146,7 +1146,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-pure-damage"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</span> {m.data[key].pureDamage.toFixed(0)}&nbsp;
+                                        className="label label-primary">{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</span> {formatCommaSeparatedNumber(m.data[key].pureDamage)}&nbsp;
                                 </span>
                         );
                     }
