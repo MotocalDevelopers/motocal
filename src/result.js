@@ -1068,8 +1068,8 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchExpectedAttack) {
-                    var expectedAttack = Math.round(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
-                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + formatCommaSeparatedNumber(expectedAttack) + ")");
+                    let attack = Math.round(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
+                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + formatCommaSeparatedNumber(attack) + ")");
                     ++colSize;
                 }
 
@@ -1226,8 +1226,8 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageCycleDamage) {
-                    var num = Math.round(m.data.Djeeta.averageCyclePerTurn);
-                    tablebody.push(formatCommaSeparatedNumber(num) + " (" + formatCommaSeparatedNumber(4 * num) + ")");
+                    let averageCyclePerTurn = Math.round(m.data.Djeeta.averageCyclePerTurn);
+                    tablebody.push(formatCommaSeparatedNumber(averageCyclePerTurn) + " (" + formatCommaSeparatedNumber(4 * averageCyclePerTurn) + ")");
                     ++colSize;
                 }
 
