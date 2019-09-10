@@ -1169,7 +1169,31 @@ var elementTypes = {
 };
 
 var series = {
+    "vintage": "ヴィンテージシリーズ",
     "epic": "エピックウェポン",
+    "vyrmament": "オイラは",
+    "oldenPrimal": "オールド・プライマルシリーズ",
+    "ultima": "オメガウェポン",
+    "cosmos": "コスモスシリーズ",
+    "superlative": "スペリオルシリーズ",
+    "sephira": "セフィリアン・オールドウェポン",
+    "seraphic": "セラフィックウェポン",
+    "bahamut": "バハムートウェポン",
+    "primal": "プライマルシリーズ",
+    "omega": "マグナシリーズ",
+    "grand": "リミテッドシリーズ",
+    "regalia": "レガリアシリーズ",
+    "roseCrystal": "ローズシリーズ",
+    "rested": "依代",
+    "classChampion": "英雄武器",
+    "rusted": "朽ち果てた武器",
+    "beast": "四象武器",
+    "revanant": "天星器",
+    "replicas": "複製品",
+    "xeno": "六道武器",
+    "upgraders": "強化素材",
+    "darkOpus": "終末の神器",
+    "hollowsky": "虚ろなる神器",
     "none": "無",
 };
 
