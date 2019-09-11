@@ -1068,8 +1068,9 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchExpectedAttack) {
-                    let attack = Math.round(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
-                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + formatCommaSeparatedNumber(attack) + ")");
+                    let {expectedAttack, totalAttack} = m.data.Djeeta;
+                    let attack = expectedAttack * totalAttack;
+                    tablebody.push(expectedAttack.toFixed(4) + "\n(" + formatCommaSeparatedNumber(attack) + ")");
                     ++colSize;
                 }
 
