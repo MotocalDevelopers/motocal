@@ -1009,8 +1009,10 @@ var Result = CreateClass({
                     ++colSize;
                 }
                 if (sw.switchATKandHP) {
-                    var senryoku = Math.round(m.data.Djeeta.displayAttack) + Math.round(m.data.Djeeta.displayHP);
-                    tablebody.push(senryoku + "\n(" + Math.round(m.data.Djeeta.displayAttack) + ' + ' + Math.round(m.data.Djeeta.displayHP) + ')');
+                    // senryoku = 戦力 = PWR
+                    let {displayAttack, displayHP} = m.data.Djeeta;
+                    let senryoku = displayAttack + displayHP;
+                    tablebody.push(formatCommaSeparatedNumber(senryoku) + "\n(" + formatCommaSeparatedNumber(displayAttack) + ' + ' + formatCommaSeparatedNumber(displayHP) + ')');
                     ++colSize;
                 }
 
@@ -1088,17 +1090,19 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchHP) {
-                    tablebody.push(m.data.Djeeta.totalHP + "\n(" + Math.round(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")");
+                    let {totalHP, remainHP} = m.data.Djeeta;
+                    tablebody.push(formatCommaSeparatedNumber(totalHP) + "\n(" + formatCommaSeparatedNumber(Math.round(totalHP * remainHP)) + ")");
                     ++colSize;
                 }
 
                 if (sw.switchCharaHP) {
+                    let {totalHP, remainHP} = m.data[key]; 
                     for (key in m.data) {
                         charaDetail[key].push(
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
                                         className="label label-success">{intl.translate("残HP", locale)} / HP</span>&nbsp;
-                                {Math.round(m.data[key].totalHP * m.data[key].remainHP)}&nbsp;/&nbsp;{m.data[key].totalHP}&nbsp;
+                                {formatCommaSeparatedNumber(Math.round(totalHP * remainHP))}&nbsp;/&nbsp;{formatCommaSeparatedNumber(totalHP)}&nbsp;
                                 </span>
                         );
                     }
