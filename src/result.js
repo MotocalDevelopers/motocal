@@ -990,9 +990,7 @@ var Result = CreateClass({
         var prof = this.props.prof;
         var onClick = this.onClick;
         var locale = this.props.locale;
-        function formatCommaSeparatedNumber(num) {
-            return String(Math.round(num)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-        }
+        const formatCommaSeparatedNumber = num => String(Math.round(num)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
 
         return (
             <tbody className="result">
