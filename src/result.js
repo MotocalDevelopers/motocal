@@ -1091,7 +1091,7 @@ var Result = CreateClass({
 
                 if (sw.switchHP) {
                     let {totalHP, remainHP} = m.data.Djeeta;
-                    tablebody.push(formatCommaSeparatedNumber(totalHP) + "\n(" + formatCommaSeparatedNumber(Math.round(totalHP * remainHP)) + ")");
+                    tablebody.push(formatCommaSeparatedNumber(totalHP) + "\n(" + formatCommaSeparatedNumber(totalHP * remainHP) + ")");
                     ++colSize;
                 }
 
@@ -1102,7 +1102,7 @@ var Result = CreateClass({
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
                                         className="label label-success">{intl.translate("残HP", locale)} / HP</span>&nbsp;
-                                {formatCommaSeparatedNumber(Math.round(totalHP * remainHP))}&nbsp;/&nbsp;{formatCommaSeparatedNumber(totalHP)}&nbsp;
+                                {formatCommaSeparatedNumber(totalHP * remainHP)}&nbsp;/&nbsp;{formatCommaSeparatedNumber(totalHP)}&nbsp;
                                 </span>
                         );
                     }
@@ -1229,7 +1229,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchAverageCycleDamage) {
-                    let averageCyclePerTurn = Math.round(m.data.Djeeta.averageCyclePerTurn);
+                    let averageCyclePerTurn = m.data.Djeeta.averageCyclePerTurn;
                     tablebody.push(formatCommaSeparatedNumber(averageCyclePerTurn) + " (" + formatCommaSeparatedNumber(4 * averageCyclePerTurn) + ")");
                     ++colSize;
                 }
