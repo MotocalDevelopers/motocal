@@ -479,12 +479,12 @@ var multiLangData = {
     },
     "ターン": {
         "en": "Turn",
-        "ja": "ターン",
-        "zh": "ターン",
+        "ja": "想定ターン",
+        "zh": "想定ターン",
     },
     "ターン説明": {
         "en": "Turn Number (affects various weapon skill/support ability/etc)",
-        "ja": "ターン",
+        "ja": "何ターン目を想定するか入力して下さい。(隆盛等の一部スキルやサポアビ等に影響)",
         "zh": "ターン",
     },
     "敵防御固有値": {
