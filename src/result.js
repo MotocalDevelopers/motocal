@@ -208,6 +208,7 @@ var ResultList = CreateClass({
             switchOugiDamage: 0,
             switchCycleDamage: 0,
             switchAverageCycleDamage: 1,
+            switchNewCalcTotalDamage: 0,
             switchDebuffResistance: 0,
             switchChainBurst: 0,
             switchTotalOugiDamageWithChain: 0,
@@ -454,6 +455,9 @@ var ResultList = CreateClass({
         if (switcher.switchAverageCycleDamage) {
             tableheader.push(intl.translate("パーティ平均予想ターン毎ダメージ", locale) + " (" + intl.translate("四人合計値", locale) + ")")
         }
+        if (switcher.switchNewCalcTotalDamage) {
+            tableheader.push(intl.translate("100Tシミュ時の合計ダメージ÷100", locale))
+        }
 
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name;
         var charaInfoStr = intl.translate("ジータさん", locale) + "(" + intl.translate(job, locale) + ") HP";
@@ -561,6 +565,9 @@ var ResultList = CreateClass({
                             <tr>
                                 <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")}
                                     className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージの平均値
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchNewCalcTotalDamage")}
+                                    className={(this.state.switchNewCalcTotalDamage == 1) ? "display-checked" : "display-unchecked"}> 100Tシミュ時の合計ダメージ÷100
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchDamage")}
                                     className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> 単攻撃ダメージ
@@ -773,6 +780,8 @@ var ResultList = CreateClass({
                                       active={(this.state.switchCycleDamage == 1) ? true : false}> {intl.translate("予想ターン毎ダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")}
                                       active={(this.state.switchAverageCycleDamage == 1) ? true : false}> {intl.translate("パーティ平均予想ターン毎ダメージ", locale)} </MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchNewCalcTotalDamage")}
+                                      active={(this.state.switchNewCalcTotalDamage == 1) ? true : false}> {intl.translate("100Tシミュ時の合計ダメージ÷100", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchPureDamage")}
                                       active={(this.state.switchPureDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDamageWithCritical")}
@@ -1231,6 +1240,11 @@ var Result = CreateClass({
                 if (sw.switchAverageCycleDamage) {
                     let averageCyclePerTurn = m.data.Djeeta.averageCyclePerTurn;
                     tablebody.push(formatCommaSeparatedNumber(averageCyclePerTurn) + " (" + formatCommaSeparatedNumber(4 * averageCyclePerTurn) + ")");
+                    ++colSize;
+                }
+
+                if (sw.switchNewCalcTotalDamage) {
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.newCalcTotalDamage))
                     ++colSize;
                 }
 

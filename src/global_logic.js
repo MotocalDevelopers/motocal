@@ -41,6 +41,7 @@ const {
 } = require('./skill_filter.js');
 const {range, when} = require('./support_filter');
 const epic = require('./epic');
+const newcalc = require('./newcalc.js');
 
 
 module.exports.isCosmos = function (arm) {
@@ -711,8 +712,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         expectedOugiGage *= uplift + (taRate * 37.0 + (1.0 - taRate) * (daRate * 22.0 + (1.0 - daRate) * 10.0));
         expectedOugiGage = expectedOugiGage < 0 ? 0 : Math.max(1.0, expectedOugiGage);
 
-        var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * ougiGageBuff;
-        var ougiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
+        var ougiGageUpOugiBuff = buff["ougiGageUpOugi"];
+        var ougiGage = 100 - Math.min(99, ougiGageUpOugiBuff * ougiGageBuff);
         var minimumTurn = Math.ceil(ougiGage / ((uplift + 37.0) * ougiGageBuff));
         var expectedTurn = Math.max(minimumTurn, ougiGage / expectedOugiGage);
 
@@ -827,7 +828,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiFixedDamage, totals[key]["ougiBonusPlainDamage"], ougiDamageLimitValues);
 
-        var chainBurstSupplemental = 0;
+        var damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
         //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
         var supplementalDamageArray = {};
 
@@ -909,8 +910,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             };
         }
 
-        [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(supplementalDamageArray, [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental], {remainHP: totals[key]["remainHP"]});
+        [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: totals[key]["remainHP"]});
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
+        
+        damage += damageSupplemental;
+        damageWithoutCritical += damageWithoutCriticalSupplemental;
+        ougiDamage += ougiDamageSupplemental;
+        
         var chainBurst = chainBurstSupplemental + module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), enemyResistance, chainDamageUP, chainDamageLimit);
 
         var expectedCycleDamagePerTurn;
@@ -997,6 +1003,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             totalExpected: sougou_kaisuu_gikou,
             skilldata: coeffs,
             expectedOugiGage: expectedOugiGage,
+            ougiGageBuff: ougiGageBuff,
+            ougiGageUpOugiBuff: ougiGageUpOugiBuff,
+            uplift: uplift,
             // Tips and tricks
             damage: damage * expectedAttack,
             // Net damage
@@ -1018,6 +1027,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             ougiDamageLimitValues: ougiDamageLimitValues,
             normalDamageLimitValuesWithoutCritical: normalDamageLimitValuesWithoutCritical,
             ougiDamageLimitValuesWithoutCritical: ougiDamageLimitValuesWithoutCritical,
+            enemyElement: prof.enemyElement,
+            // For newCalcTotalDamage
+            chainBurstSupplemental: chainBurstSupplemental,
         };
     }
 
@@ -1048,6 +1060,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     res["Djeeta"]["averageChainBurst"] = averageChainBurst / cnt;
     res["Djeeta"]["totalOugiDamage"] = totalOugiDamage;
     res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
+    res["Djeeta"]["newCalcTotalDamage"] = newcalc.newCalcTotalDamage(totals, res, 100);
 
     for (var key in totals) {
         res[key]["totalOugiDamage"] = totalOugiDamage;
@@ -2490,6 +2503,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 additionalDamageXA: null,
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
+                job: "",
                 normalBuff: charaBuffList["normalBuff"],
                 elementBuff: charaBuffList["elementBuff"],
                 elementBuffBoostBuff: 0,

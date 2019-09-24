@@ -1339,6 +1339,11 @@ var multiLangData = {
         "ja": "ターン毎ダメージの\nパーティ平均",
         "zh": "期望DPT/人",
     },
+    "100Tシミュ時の合計ダメージ÷100": {
+        "en": "Total DMG in Simulate 100T ÷ 100",
+        "ja": "100Tシミュ時の合計ダメージ÷100",
+        "zh": "Total DMG in Simulate 100T ÷ 100",
+    },
     "技巧倍率": {
         "en": "Critical Ratio",
         "ja": "技巧倍率",
