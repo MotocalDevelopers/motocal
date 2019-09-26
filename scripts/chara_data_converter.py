@@ -35,6 +35,7 @@ racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
 
 sexlist = OrderedDict()
+sexlist[u"男&br;女"] = "male/female"
 sexlist[u"男"] = "male"
 sexlist[u"女"] = "female"
 sexlist[u"不詳"] = "other"

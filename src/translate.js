@@ -2057,6 +2057,11 @@ var multiLangData = {
         "ja": "不詳",
         "zh": "不詳",
     },
+    "男/女": {
+        "en": "Male/Female",
+        "ja": "男/女",
+        "zh": "男/女",
+    },
     // Series
     "エピックウェポン": {
         "en": "Epic Weapon",
