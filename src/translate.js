@@ -2440,6 +2440,11 @@ var multiLangData = {
         "ja": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "zh": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
     },
+    "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)": {
+        "en": "Boost to C.A. damage based on how high HP is. (Stan and Aliza)",
+        "ja": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "zh": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+    },
     "攻撃30%UP/別枠乗算 (ウーフとレニー)": {
         "en": "30% boost to ATK (Unique modifier). (Wulf and Renie)",
         "ja": "攻撃30%UP/別枠乗算 (ウーフとレニー)",

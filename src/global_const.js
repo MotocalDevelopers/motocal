@@ -2378,6 +2378,11 @@ var supportAbilities = {
     //     "type": "tousou_no_chishio",
     //     "range": "own",
     // },
+    "ken_ashi_no_koo": {
+        "name": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "type": "ken_ashi_no_koo",
+        "range": "own",
+    },
     "benedikutosu_soure": {
         "name": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "type": "benedikutosu_soure",

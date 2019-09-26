@@ -2896,6 +2896,15 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                 //         });
                 //     }
                 //     continue;
+                case "ken_ashi_no_koo":
+                    if (totals[key]['remainHP'] == 1.0) {
+                        totals[key]["ougiDamageBuff"] += 0.30;
+                    } else if (totals[key]['remainHP'] < 1.0 && totals[key]['remainHP'] >= 0.75) {
+                        totals[key]["ougiDamageBuff"] += 0.15;
+                    } else if (totals[key]['remainHP'] < 0.75 && totals[key]['remainHP'] >= 0.5) {
+                        totals[key]["ougiDamageBuff"] += 0.10;
+                    }
+                    continue;
                 case "benedikutosu_soure":
                     if (buff["retsujitsuNoRakuen"]) {
                         var [ougiDamageBuff, ougiDamageLimitBuff] = support.value;
