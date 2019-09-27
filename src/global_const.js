@@ -1461,6 +1461,18 @@ module.exports.Jobs = {
         "DaBonus": 9.0,
         "TaBonus": 6.0
     },
+    "torment": {
+        "name": "トーメンター",
+        "favArm1": "dagger",
+        "favArm2": "dagger",
+        "type": "pecu",
+        "atBonus": 3000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 10.0,
+        "TaBonus": 5.0
+    },
     "alche": {
         "name": "アルケミスト",
         "favArm1": "dagger",
