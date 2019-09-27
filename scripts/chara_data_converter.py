@@ -37,7 +37,7 @@ racelist[u"不明"] = "unknown"
 sexlist = OrderedDict()
 sexlist[u"男"] = "male"
 sexlist[u"女"] = "female"
-sexlist[u"不詳"] = "other"
+sexlist[u"不明"] = "other"
 
 supportAbilist = OrderedDict()
 supportAbilist["da_up_all_10"] = {
@@ -103,6 +103,9 @@ supportAbilist["ougi_gage_up_own_20"] = {
 }
 supportAbilist["ougi_gage_up_own_100"] = {
     u"刀神"
+}
+supportAbilist["ougi_gage_down_own_25"] = {
+    u"砂神グラフォスの鉄槌"
 }
 supportAbilist["ougi_gage_down_own_35"] = {
     u"闘争求む重鎧"

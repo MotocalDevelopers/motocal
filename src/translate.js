@@ -2052,10 +2052,10 @@ var multiLangData = {
         "ja": "女",
         "zh": "女",
     },
-    "不詳": {
+    "不明": {
         "en": "Other",
-        "ja": "不詳",
-        "zh": "不詳",
+        "ja": "不明",
+        "zh": "不明",
     },
     // Series
     "エピックウェポン": {
@@ -2164,6 +2164,11 @@ var multiLangData = {
         "en": "Charge bar fills up 100% faster. (Eahta)",
         "ja": "奥義ゲージ上昇量100%UP(オクトー)",
         "zh": "奥義ゲージ上昇量100%UP(オクトー)",
+    },
+    "奥義ゲージ上昇量25%DOWN。(サラ(光属性ver))": {
+        "en": "Charge bar fills up 25% slower. (Sara (Light))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(サラ(光属性ver))",
+        "zh": "Charge bar fills up 25% slower. (Sara (Light))",
     },
     "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)": {
         "en": "Charge bar fills up 35% slower. (Geisenborger)",
