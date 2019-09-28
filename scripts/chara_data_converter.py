@@ -259,7 +259,7 @@ supportAbilist["element_buff_boost_damageUP_own_10"] = {
 # supportAbilist["tousou_no_chishio"] = {
 #     u"闘争の血潮"
 # }
-supportAbilist["ken_ashi_no_koo"] = {
+supportAbilist["kenkyaku_no_koou"] = {
     u"剣脚の呼応"
 }
 supportAbilist["debuff_resistance_up_own_15"] = {

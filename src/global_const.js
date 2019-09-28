@@ -2378,9 +2378,9 @@ var supportAbilities = {
     //     "type": "tousou_no_chishio",
     //     "range": "own",
     // },
-    "ken_ashi_no_koo": {
+    "kenkyaku_no_koou": {
         "name": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
-        "type": "ken_ashi_no_koo",
+        "type": "kenkyaku_no_koou",
         "range": "own",
     },
     "benedikutosu_soure": {
