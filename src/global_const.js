@@ -1466,7 +1466,7 @@ module.exports.Jobs = {
         "favArm1": "dagger",
         "favArm2": "dagger",
         "type": "pecu",
-        "atBonus": 3000.0,
+        "atBonus": 2000.0,
         "kouzinBonus": 0.0,
         "hpBonus": 0.0,
         "shugoBonus": 0.0,
