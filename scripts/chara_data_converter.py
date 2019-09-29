@@ -28,6 +28,7 @@ racelist = OrderedDict()
 racelist[u"ヒューマン/エルーン"] = "human/erune"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
+racelist[u"エルーン/ドラフ"] = "erune/doraf"
 racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"

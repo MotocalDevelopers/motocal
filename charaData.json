@@ -686,7 +686,7 @@
         "ja": "勇者と姫君 スタン＆アリーザ",
         "element": "wind",
         "type": "attack",
-        "race": "erune",
+        "race": "erune/doraf",
         "sex": "male/female",
         "fav1": "sword",
         "fav2": "fist",
