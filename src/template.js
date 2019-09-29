@@ -487,12 +487,14 @@ var RegisteredArm = CreateClass({
                 }}/>
             </div>;
 
+        const result = Object.entries(armData).filter(filterFunc);
+
         if (_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="armTemplate">
                     {armTemplateHeader}
                     <div className="armTemplateContent">
-                        {Object.entries(armData).filter(filterFunc).slice(0, limit).map(mapFunc)}
+                        {result.slice(0, limit).map(mapFunc)}
                     </div>
 
                     <Modal className="presetsConsiderNumber" show={this.state.openConsiderNumberModal}
@@ -580,7 +582,7 @@ var RegisteredArm = CreateClass({
                 <div className="armTemplate">
                     {armTemplateHeader}
                     <div className="armTemplateContent">
-                        {Object.entries(armData).filter(filterFunc).slice(0, limit).map(mapFunc)}
+                        {result.slice(0, limit).map(mapFunc)}
                     </div>
 
                     {locale == "en" ?
@@ -594,8 +596,8 @@ var RegisteredArm = CreateClass({
                     }
 
                     <p className="text-danger">
-                        最新{limit}件を表示しています。
-                        それより古い場合は武器検索/属性フィルターをご利用下さい。
+                        最新{Math.min(limit, result.length)}/{result.length}件を表示しています。
+                        それより古い場合は武器検索フィルターをご利用下さい。
                     </p>
 
                     <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>
