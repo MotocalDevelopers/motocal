@@ -472,13 +472,16 @@ var RegisteredArm = CreateClass({
 
         const filterFunc = _generateArmFilterFunc(this.state, this.props.locale);
 
+        const showSkills = (_ua.Mobile || _ua.Tablet) ? (val) => "" : (val) => <>
+                {intl.translate(skilltypes[val.skill1].name, locale)}<br/>
+                {intl.translate(skilltypes[val.skill2].name, locale)}<br/>
+                {intl.translate(skilltypes[val.skill3].name, locale)}
+            </>;
+
         const mapFunc = ([key, val]) =>
             <div className="onearm" key={key}>
                 <p>
-                    {val[locale]}<br/>
-                    {intl.translate(skilltypes[val.skill1].name, locale)}<br/>
-                    {intl.translate(skilltypes[val.skill2].name, locale)}<br/>
-                    {intl.translate(skilltypes[val.skill3].name, locale)}
+                    {val[locale]}<br/>{showSkills(val)}
                 </p>
                 <Image rounded style={{"width": "100%"}} onClick={clickedTemplate}
                        id={key} src={val.imageURL} alt={key} onError={(e) => {
