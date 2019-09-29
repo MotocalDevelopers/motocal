@@ -163,7 +163,6 @@ var RegisteredChara = CreateClass({
         this.setState({openSendRequest: false});
     },
     render: function () {
-        let displayed_count = 0;
         const locale = this.props.locale;
         const {
             clickedTemplate,
