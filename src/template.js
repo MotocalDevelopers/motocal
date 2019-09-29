@@ -108,6 +108,33 @@ var SendRequest = CreateClass({
     },
 });
 
+/**
+ * @param {object} state
+ * @param {string} locale
+ * @return {function}
+ */
+function _generateCharaFilterFunc(state, locale="en") {
+    const {
+        filterElement,
+        filterText,
+        filterRace,
+        filterType,
+        filterFav,
+        filterSex,
+    } = state;
+
+    return ([key, val]) => (
+        (filterElement == "all" || val.element == filterElement) &&
+        (filterText == "" || val[locale].toLowerCase().indexOf(filterText.toLowerCase()) != -1) &&
+        (filterRace === "all" || val.race.includes(filterRace)) &&
+        (filterType === "all" || val.type === filterType) &&
+        (filterFav === "all" || [val.fav1, val.fav2].includes(filterFav)) &&
+        (filterSex === "all" || val.sex.includes(filterSex)));
+}
+
+module.exports._generateCharaFilterFunc = _generateCharaFilterFunc;
+
+
 var RegisteredChara = CreateClass({
     getInitialState: function () {
         return {
@@ -192,13 +219,7 @@ var RegisteredChara = CreateClass({
                          onChange={this.handleEvent.bind(this, "filterFav")}>{selector[locale].filterFavs}</FormControl>
             </>;
 
-        const filterFunc = ([key,val]) => (
-            (filterElement == "all" || (val.element == filterElement)) &&
-            (filterText == "" || val[locale].toLowerCase().indexOf(filterText.toLowerCase()) != -1) &&
-            (filterRace === "all" || val.race.includes(filterRace)) &&
-            (filterType === "all" || val.type === filterType) &&
-            (filterFav === "all" || [val.fav1, val.fav2].includes(filterFav)) &&
-            (filterSex === "all" || val.sex.includes(filterSex)));
+        const filterFunc = _generateCharaFilterFunc(this.state, locale);
 
         const mapFunc = ([key,val]) =>
             <div className="onechara" key={key}>
