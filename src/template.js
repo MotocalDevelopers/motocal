@@ -260,6 +260,28 @@ var RegisteredChara = CreateClass({
     },
 });
 
+/**
+ * @param {object} state
+ * @param {string} locale
+ * @return {function}
+ */
+function _generateArmFilterFunc(state, locale="en") {
+    const {
+        filterText,
+        filterElement,
+        filterArmType,
+        filterSeries,
+    } = state;
+
+    return ([key, val], idx) => (
+        (filterElement === "all" || [val.element, val.element2, val.element3].includes(filterElement) || val.element === "all") &&
+        (filterText === "" || val[locale].toLowerCase().indexOf(filterText.toLowerCase()) != -1) &&
+        (filterArmType === "all" || val.type === filterArmType) &&
+        (filterSeries === "all" || val.series === filterSeries));
+}
+
+module.exports._generateArmFilterFunc = _generateArmFilterFunc;
+
 var RegisteredArm = CreateClass({
     getInitialState: function () {
         return {
@@ -448,12 +470,7 @@ var RegisteredArm = CreateClass({
                          onChange={this.handleEvent.bind(this, "filterArmType")}>{selector[locale].filterArmTypes}</FormControl>
             </>;
 
-        const filterFunc = ([key, val], idx) => (
-            (filterElement === "all" || [val.element, val.element2, val.element3].includes(filterElement) || val.element === "all") &&
-            (filterText === "" || val[locale].toLowerCase().indexOf(filterText.toLowerCase()) != -1) &&
-            (filterArmType === "all" || val.type === filterArmType) &&
-            (filterSeries === "all" || val.series === filterSeries) &&
-            idx < limit); // displayed count
+        const filterFunc = _generateArmFilterFunc(this.state, this.props.locale);
 
         const mapFunc = ([key, val]) =>
             <div className="onearm" key={key}>
