@@ -6725,7 +6725,7 @@
         "element": "fire",
         "type": "bow",
         "skill1": "normalHissatsuL",
-        "skill2": "normalHPL",
+        "skill2": "normalCriticalL",
         "element2": "fire",
         "skill3": "non",
         "element3": "fire",
