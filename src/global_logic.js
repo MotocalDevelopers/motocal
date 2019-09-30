@@ -221,8 +221,11 @@ module.exports.getTypeBonus = function (self_elem, enemy_elem) {
         }
     };
 
-module.exports.makeSummonHeaderString = function (summon, locale) {
+module.exports.makeSummonHeaderString = function (summon, locale, idx=0) {
     var summonHeader = "";
+    if (idx > 0) {
+        summonHeader += "No." + idx + " ";
+    }
     if (summon.selfSummonType == "odin") {
         summonHeader += intl.translate("属性攻", locale) + summon.selfSummonAmount + intl.translate("キャラ攻", locale) + summon.selfSummonAmount2
     } else {
@@ -2990,7 +2993,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
     for (var s = 0; s < res.length; s++) {
         var oneresult = res[s];
-        var summonHeader = module.exports.makeSummonHeaderString(summon[s], locale);
+        var summonHeader = module.exports.makeSummonHeaderString(summon[s], locale, s+1);
         var TotalAttack = [["残りHP(%)"]];
         var TotalHP = [["残りHP(%)"]];
         var CriticalAttack = [["残りHP(%)"]];
