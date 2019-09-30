@@ -1218,6 +1218,9 @@ var filterElementTypes = {
     "dark": "闇",
 };
 
+const filterSeries = Object.assign({"all": "全シリーズ"}, series);
+const filterArmTypes = Object.assign({"all": "全武器種"}, armTypes);
+
 // strong and weak elements for each element
 module.exports.elementRelation = {
     "fire": {"weak": "water", "strong": "wind"},
@@ -2722,14 +2725,36 @@ module.exports.selector.zh.enemyElements = Object.keys(enemyElementTypes).map(fu
     return <option value={opt} key={opt}>{intl.translate(enemyElementTypes[opt], "zh")}</option>;
 });
 
-module.exports.selector.ja.filterelements = Object.keys(filterElementTypes).map(function (opt) {
+module.exports.selector.ja.filterElements = Object.keys(filterElementTypes).map(function (opt) {
     return <option value={opt} key={opt}>{filterElementTypes[opt]}</option>;
 });
-module.exports.selector.en.filterelements = Object.keys(filterElementTypes).map(function (opt) {
+module.exports.selector.en.filterElements = Object.keys(filterElementTypes).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "en")}</option>;
 });
-module.exports.selector.zh.filterelements = Object.keys(filterElementTypes).map(function (opt) {
+module.exports.selector.zh.filterElements = Object.keys(filterElementTypes).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "zh")}</option>;
+});
+
+// FIXME: after #361
+module.exports.selector.ja.filterSeries = Object.keys(filterSeries).map(function (opt) {
+    return <option value={opt} key={opt}>{filterSeries[opt]}</option>;
+});
+module.exports.selector.en.filterSeries = Object.keys(filterSeries).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(filterSeries[opt], "en")}</option>;
+});
+module.exports.selector.zh.filterSeries = Object.keys(filterSeries).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(filterSeries[opt], "zh")}</option>;
+});
+
+// FIXME: after #361
+module.exports.selector.ja.filterArmTypes = Object.keys(filterArmTypes).map(function (opt) {
+    return <option value={opt} key={opt}>{filterArmTypes[opt]}</option>;
+});
+module.exports.selector.en.filterArmTypes = Object.keys(filterArmTypes).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(filterArmTypes[opt], "en")}</option>;
+});
+module.exports.selector.zh.filterArmTypes = Object.keys(filterArmTypes).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(filterArmTypes[opt], "zh")}</option>;
 });
 
 module.exports.selector.ja.summons = Object.keys(summonTypes).map(function (opt) {

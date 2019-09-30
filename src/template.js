@@ -260,11 +260,35 @@ var RegisteredChara = CreateClass({
     },
 });
 
+/**
+ * @param {object} state
+ * @param {string} locale
+ * @return {function}
+ */
+function _generateArmFilterFunc(state, locale="en") {
+    const {
+        filterText,
+        filterElement,
+        filterArmType,
+        filterSeries,
+    } = state;
+
+    return ([key, val], idx) => (
+        (filterElement === "all" || [val.element, val.element2, val.element3].includes(filterElement) || val.element === "all") &&
+        (filterText === "" || val[locale].toLowerCase().indexOf(filterText.toLowerCase()) != -1) &&
+        (filterArmType === "all" || val.type === filterArmType) &&
+        (filterSeries === "all" || val.series === filterSeries));
+}
+
+module.exports._generateArmFilterFunc = _generateArmFilterFunc;
+
 var RegisteredArm = CreateClass({
     getInitialState: function () {
         return {
             filterText: "",
             filterElement: "all",
+            filterSeries: "all",
+            filterArmType: "all",
             armData: {},
             limit: (_ua.Mobile) ? 99 : 300,
             tempArm: {},
@@ -417,54 +441,63 @@ var RegisteredArm = CreateClass({
 
         this.props.onClick(arm, e.target.value);
         this.setState({openConsiderNumberModal: false});
-        this.setState({plusNum: 0})
+        this.setState({plusNum: 0});
     },
     handleEvent: function (key, e) {
-        var newState = this.state;
-        newState[key] = e.target.value;
-        this.setState(newState)
+        this.setState({[key]: e.target.value});
     },
     render: function () {
-        var locale = this.props.locale;
-        var clickedTemplate = this.clickedTemplate;
-        var filterText = this.state.filterText;
-        var filterElement = this.state.filterElement;
-        var armData = this.state.armData;
-        var limit = this.state.limit;
-        var displayed_count = 0;
+        const locale = this.props.locale;
+        const clickedTemplate = this.clickedTemplate;
+        const {
+            filterText,
+            filterElement,
+            filterArmType,
+            filterSeries,
+            armData,
+            limit,
+        } = this.state;
+
+        const armTemplateHeader = <>
+            <span>検索:</span>
+            <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={filterText}
+                         onChange={this.handleEvent.bind(this, "filterText")}/>
+            <FormControl componentClass="select" value={filterElement}
+                         onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterElements}</FormControl>
+            <FormControl componentClass="select" value={filterSeries}
+                         onChange={this.handleEvent.bind(this, "filterSeries")}>{selector[locale].filterSeries}</FormControl>
+            <FormControl componentClass="select" value={filterArmType}
+                         onChange={this.handleEvent.bind(this, "filterArmType")}>{selector[locale].filterArmTypes}</FormControl>
+            </>;
+
+        const filterFunc = _generateArmFilterFunc(this.state, this.props.locale);
+
+        const showSkills = (_ua.Mobile || _ua.Tablet) ? (val) => "" : (val) => <>
+                {intl.translate(skilltypes[val.skill1].name, locale)}<br/>
+                {intl.translate(skilltypes[val.skill2].name, locale)}<br/>
+                {intl.translate(skilltypes[val.skill3].name, locale)}
+            </>;
+
+        const mapFunc = ([key, val]) =>
+            <div className="onearm" key={key}>
+                <p>
+                    {val[locale]}<br/>{showSkills(val)}
+                </p>
+                <Image rounded style={{"width": "100%"}} onClick={clickedTemplate}
+                       id={key} src={val.imageURL} alt={key} onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "./otherImages/imgError.png"
+                }}/>
+            </div>;
+
+        const result = Object.entries(armData).filter(filterFunc);
 
         if (_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="armTemplate">
-                    <span>検索:</span>
-                    <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText}
-                                 onChange={this.handleEvent.bind(this, "filterText")}/>
-                    <FormControl componentClass="select" value={this.state.filterElement}
-                                 onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
+                    {armTemplateHeader}
                     <div className="armTemplateContent">
-                        {Object.keys(armData).map(function (key, ind) {
-                            var armName = armData[key][locale];
-                            if (filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element3 == filterElement || armData[key].element == "all")) {
-                                if (filterText == "" || armName.toLowerCase().indexOf(filterText.toLowerCase()) != -1) {
-                                    if (filterElement != "all" || displayed_count < limit) {
-                                        displayed_count++;
-                                        return (
-                                            <div className="onearm" key={key}>
-                                                <p>{armName}</p><br/>
-                                                <Image rounded onClick={clickedTemplate} id={key}
-                                                       src={armData[key].imageURL} alt={key} onError={(e) => {
-                                                    e.target.onerror = null;
-                                                    e.target.src = "./otherImages/imgError.png"
-                                                }}/>
-                                            </div>
-                                        );
-                                    } else {
-                                        return "";
-                                    }
-                                }
-                            }
-                            return "";
-                        })}
+                        {result.slice(0, limit).map(mapFunc)}
                     </div>
 
                     <Modal className="presetsConsiderNumber" show={this.state.openConsiderNumberModal}
@@ -550,38 +583,9 @@ var RegisteredArm = CreateClass({
         } else {
             return (
                 <div className="armTemplate">
-                    <span>検索:</span>
-                    <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText}
-                                 onChange={this.handleEvent.bind(this, "filterText")}/>
-                    <FormControl componentClass="select" value={this.state.filterElement}
-                                 onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
+                    {armTemplateHeader}
                     <div className="armTemplateContent">
-                        {Object.keys(armData).map(function (key, ind) {
-                            var armName = armData[key][locale];
-                            if (filterElement == "all" || (armData[key].element == filterElement || armData[key].element2 == filterElement || armData[key].element3 == filterElement || armData[key].element == "all")) {
-                                if (filterText == "" || armName.toLowerCase().indexOf(filterText.toLowerCase()) != -1) {
-                                    if (filterElement != "all" || displayed_count < limit) {
-                                        displayed_count++;
-                                        return (
-                                            <div className="onearm" key={key}>
-                                                <p>
-                                                    {armName}<br/>
-                                                    {intl.translate(skilltypes[armData[key].skill1].name, locale)}<br/>
-                                                    {intl.translate(skilltypes[armData[key].skill2].name, locale)}<br/>
-                                                    {intl.translate(skilltypes[armData[key].skill3].name, locale)}
-                                                </p>
-                                                <Image rounded style={{"width": "100%"}} onClick={clickedTemplate}
-                                                       id={key} src={armData[key].imageURL} alt={key} onError={(e) => {
-                                                    e.target.onerror = null;
-                                                    e.target.src = "./otherImages/imgError.png"
-                                                }}/>
-                                            </div>
-                                        );
-                                    }
-                                }
-                            }
-                            return "";
-                        })}
+                        {result.slice(0, limit).map(mapFunc)}
                     </div>
 
                     {locale == "en" ?
@@ -595,8 +599,8 @@ var RegisteredArm = CreateClass({
                     }
 
                     <p className="text-danger">
-                        最新{limit}件を表示しています。
-                        それより古い場合は武器検索/属性フィルターをご利用下さい。
+                        最新{Math.min(limit, result.length)}/{result.length}件を表示しています。
+                        それより古い場合は武器検索フィルターをご利用下さい。
                     </p>
 
                     <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>

@@ -201,6 +201,21 @@ var multiLangData = {
         "ja": "土/光",
         "zh": "土/光",
     },
+    "全シリーズ": {
+        "en": "All series",
+        "ja": "全シリーズ",
+        "zh": "All series",
+    },
+    "全武器種": {
+        "en": "All arm types",
+        "ja": "全武器種",
+        "zh": "All arm types",
+    },
+    "全属性": {
+        "en": "All",
+        "ja": "全属性",
+        "zh": "全属性",
+    },
     "全属性": {
         "en": "All",
         "ja": "全属性",
