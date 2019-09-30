@@ -224,6 +224,8 @@ module.exports.getTypeBonus = function (self_elem, enemy_elem) {
 module.exports.makeSummonHeaderString = function (summon, locale, idx=0) {
     var summonHeader = "";
     if (idx > 0) {
+        // Don't remove "idx"
+        // summonHeader must be unique as dictionary key
         summonHeader += "No." + idx + " ";
     }
     if (summon.selfSummonType == "odin") {
