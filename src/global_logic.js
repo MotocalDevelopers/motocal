@@ -840,21 +840,21 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             Math.max(
                 totals[key]["supplementalDamageBuff"],
                 buff["supplementalDamageBuff"]
-            ) * (1.0 + damageUP) * (1.0 - enemyResistance)
+            ) * (1.0 - enemyResistance)
         );
 
         if (supplementalDamageBuff > 0) {
             supplementalDamageArray["バフ"] = {
                 damage: supplementalDamageBuff,
                 damageWithoutCritical: supplementalDamageBuff,
-                ougiDamage: supplementalDamageBuff,
+                ougiDamage: supplementalDamageBuff * (1.0 + damageUP),
                 chainBurst: supplementalDamageBuff,
                 type: "other",
             };
         }
         if (totals[key]["supplementalThirdHit"].length > 0) {
             for (let key2 in totals[key]["supplementalThirdHit"]) {
-                let value = Math.ceil(taRate * totals[key]["supplementalThirdHit"][key2].value * (1.0 + damageUP) * (1.0 - enemyResistance));
+                let value = Math.ceil(taRate * totals[key]["supplementalThirdHit"][key2].value * (1.0 - enemyResistance));
                 supplementalDamageArray[totals[key]["supplementalThirdHit"][key2].source] = {
                     damage: value,
                     type: "third_hit",
@@ -863,11 +863,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             }
         }
         if (totals[key]['covenant'] === "impervious") {
-            let value = Math.ceil(30000 * (1.0 + damageUP) * (1.0 - enemyResistance)); 
+            let value = Math.ceil(30000 * (1.0 - enemyResistance)); 
             supplementalDamageArray["不壊の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
-                ougiDamage: value,
+                ougiDamage: value * (1.0 + damageUP),
                 chainBurst: value,
                 threshold: 0.80,
                 type: "hp_based",
@@ -875,39 +875,39 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             };
         } else if (totals[key]['covenant'] === 'victorious' && totals['Djeeta']['buffCount'] > 0) {
             let djeetaBuffCount = Math.min(10, totals['Djeeta']['buffCount']);
-            let value = Math.ceil(djeetaBuffCount * 3000 * (1.0 + damageUP) * (1.0 - enemyResistance));
+            let value = Math.ceil(djeetaBuffCount * 3000 * (1.0 - enemyResistance));
             supplementalDamageArray["凱歌の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
-                ougiDamage: value,
+                ougiDamage: value * (1.0 + damageUP),
                 chainBurst: value,
                 type: "djeeta_buff_based",
                 extraValue: djeetaBuffCount,
             };
         } else if (totals[key]['covenant'] === 'contentious' && taRate > 0) {
-            let value = Math.ceil(taRate * 100000 * (1.0 + damageUP) * (1.0 - enemyResistance));
+            let value = Math.ceil(taRate * 100000 * (1.0 - enemyResistance));
             supplementalDamageArray["修羅の誓約"] = {
                 damage: value,
                 type: "third_hit",
                 //extraValue: taRate,
             };
         } else if (totals[key]['covenant'] === 'deleterious' && Object.keys(criticalArray).length > 0) {
-            let value = Math.ceil(critRate * 30000 * (1.0 + damageUP) * (1.0 - enemyResistance));
+            let value = Math.ceil(critRate * 30000 * (1.0 - enemyResistance));
             supplementalDamageArray["致命の誓約"] = {
                 damage: value,
                 damageWithoutCritical: 0,
-                ougiDamage: value,
+                ougiDamage: value * (1.0 + damageUP),
                 chainBurst: 0,
                 type: "on_critical",
                 extraValue: (100 * critRate).toFixed(2),
             };
         } else if (totals[key]['covenant'] === 'calamitous') {
             let enemyDebuffCount = Math.min(10, buff['enemyDebuffCount']);
-            let value = Math.ceil(enemyDebuffCount * 3000 * (1.0 + damageUP) * (1.0 - enemyResistance));
+            let value = Math.ceil(enemyDebuffCount * 3000 * (1.0 - enemyResistance));
             supplementalDamageArray["災禍の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
-                ougiDamage: value,
+                ougiDamage: value * (1.0 + damageUP),
                 chainBurst: value,
                 type: "boss_debuff_based",
                 extraValue: enemyDebuffCount,
