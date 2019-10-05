@@ -375,12 +375,12 @@
     /* armPresets */
     .armTemplate {
         width: 100%;
-        height: 80%;
+        height: 90%;
     }
 
     .armTemplateContent {
         width: calc(100% - 3px);
-        height: 90%;
+        height: 85%;
         overflow: scroll;
         text-align: center;
     }
