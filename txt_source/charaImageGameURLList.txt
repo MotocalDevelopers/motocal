@@ -501,3 +501,6 @@ http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030271000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030272000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030273000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030274000_01.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040237000_01.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040238000_01.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3030275000_01.png
