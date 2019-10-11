@@ -667,7 +667,7 @@
         "race": "human",
         "sex": "female",
         "fav1": "sword",
-        "fav2": "none",
+        "fav2": "katana",
         "support": "none",
         "support2": "none",
         "support3": "none",
@@ -689,7 +689,7 @@
         "race": "human",
         "sex": "male",
         "fav1": "sword",
-        "fav2": "none",
+        "fav2": "katana",
         "support": "none",
         "support2": "none",
         "support3": "none",
@@ -4242,7 +4242,7 @@
         "baseDA": 10.0,
         "baseTA": 5.0,
         "ougiRatio": 5.0,
-        "imageURL": "./charaimgs/3040060000_01.png",
+        "imageURL": "./charaimgs/3040059000_03_full.png",
         "en": "Rackam (Grand)"
     },
     "アンリエット": {
@@ -4352,7 +4352,7 @@
         "baseDA": 7.0,
         "baseTA": 3.0,
         "ougiRatio": 5.0,
-        "imageURL": "./charaimgs/3040055000_91.png",
+        "imageURL": "./charaimgs/3040054000_03_full.png",
         "en": "Katalina (Grand)"
     },
     "ヴィーラ(水着ver)": {

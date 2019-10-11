@@ -665,8 +665,8 @@ def get_value(value_str):
 
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
-    key_pattern = re.compile("(\d+_\d+\.png)")
-    br_pattern = re.compile("(\w+)&br;(\w+)")
+    key_pattern = re.compile("([^/]+\.png)")
+    br_pattern = re.compile("(\w+)(?:&br;|\/)(\w+)")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
     support_pattern3 = re.compile("([\W\w]+)&br;([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \((S?S?R)\)")
@@ -681,6 +681,9 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             m = key_pattern.search(row[1])
             if m:
                 key = m.group(1)
+            else:
+                print("error: imageURL")
+                key = ""
 
             m = name_pattern.search(row[2])
             if m:
