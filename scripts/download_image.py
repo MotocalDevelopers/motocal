@@ -188,6 +188,19 @@ def transform_wiki_url(file_name: str) -> str:
     return url.format(file_name.encode('utf-8').hex().upper())
 
 
+def transform_game_url(url: str) -> str:
+    """
+    Transforms uncapped chara url to game url
+    :param: url
+    :return: url
+    >>> transform_game_url('03_full.png')
+    '03.png'
+    >>> transform_game_url('03full.png')
+    '03.png'
+    """
+    return re.sub(r"_?full.png", ".png", url)
+
+
 def scan_file_for_download_list(urls: list, site: str, output: str,
                                 force: bool):
     """
@@ -205,6 +218,8 @@ def scan_file_for_download_list(urls: list, site: str, output: str,
         if force or not os.path.exists(path):
             if site == 'wiki':
                 url = transform_wiki_url(name)
+            elif site == 'game':
+                url = transform_game_url(url)
             yield url, path
 
 
