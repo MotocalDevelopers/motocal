@@ -13172,6 +13172,25 @@
         "imageURL": "./imgs/1040311000.png",
         "en": "God Incoming"
     },
+    "手斧": {
+        "ja": "手斧",
+        "element": "fire",
+        "type": "axe",
+        "skill1": "normalL",
+        "skill2": "normalCriticalM",
+        "element2": "fire",
+        "skill3": "non",
+        "element3": "fire",
+        "minhp": 30,
+        "minattack": 449,
+        "hp": 150,
+        "attack": 2840,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040311200.png",
+        "en": "Hand Axe"
+    },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
         "element": "wind",
@@ -16415,6 +16434,25 @@
         "attacklv100": 1887,
         "imageURL": "./imgs/1040611900.png",
         "en": "[4★] Rin's Maracas"
+    },
+    "ゴールドドラゴン": {
+        "ja": "ゴールドドラゴン",
+        "element": "wind",
+        "type": "fist",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "wind",
+        "skill3": "non",
+        "element3": "wind",
+        "minhp": 40,
+        "minattack": 396,
+        "hp": 218,
+        "attack": 2500,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040612100.png",
+        "en": "Golden Dragon"
     },
     "エーテリアルボウ": {
         "ja": "エーテリアルボウ",

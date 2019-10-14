@@ -2031,6 +2031,11 @@ var multiLangData = {
         "ja": "人間/エルーン",
         "zh": "人間/エルーン",
     },
+    "エルーン/ドラフ": {
+        "en": "Erune/Draph",
+        "ja": "エルーン/ドラフ",
+        "zh": "エルーン/ドラフ",
+    },
     "星晶獣": {
         "en": "Primal",
         "ja": "星晶獣",
@@ -2056,6 +2061,11 @@ var multiLangData = {
         "en": "Other",
         "ja": "不詳",
         "zh": "不詳",
+    },
+    "男/女": {
+        "en": "Male/Female",
+        "ja": "男/女",
+        "zh": "男/女",
     },
     // Series
     "エピックウェポン": {
@@ -2434,6 +2444,11 @@ var multiLangData = {
         "en": "50% boost to C.A. damage and 20% boost to C.A. damage cap when Sun-Touched Paradise is active. (Alanaan)",
         "ja": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "zh": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+    },
+    "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)": {
+        "en": "Boost to C.A. damage based on how high HP is. (Stan and Aliza)",
+        "ja": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "zh": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
     },
     "攻撃30%UP/別枠乗算 (ウーフとレニー)": {
         "en": "30% boost to ATK (Unique modifier). (Wulf and Renie)",

@@ -28,6 +28,7 @@ racelist = OrderedDict()
 racelist[u"ヒューマン/エルーン"] = "human/erune"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
+racelist[u"エルーン/ドラフ"] = "erune/doraf"
 racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
@@ -35,6 +36,7 @@ racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
 
 sexlist = OrderedDict()
+sexlist[u"男&br;女"] = "male/female"
 sexlist[u"男"] = "male"
 sexlist[u"女"] = "female"
 sexlist[u"不詳"] = "other"
@@ -258,6 +260,9 @@ supportAbilist["element_buff_boost_damageUP_own_10"] = {
 # supportAbilist["tousou_no_chishio"] = {
 #     u"闘争の血潮"
 # }
+supportAbilist["kenkyaku_no_koou"] = {
+    u"剣脚の呼応"
+}
 supportAbilist["debuff_resistance_up_own_15"] = {
     u"ユニバーサルスター",
     u"魔生花の楔"
@@ -401,6 +406,8 @@ patching["フィーナ(SSR)"] = {"DA": 4.0, "TA": 1.0}
 patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
 
 patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
+
+patching["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
 
 ### SR
 patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
