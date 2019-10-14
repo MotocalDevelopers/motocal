@@ -824,6 +824,7 @@ skillnamelist["strengthL"] = {
     u"産地直送の攻刃": "water",
     u"スクールアイドル": "wind",
     u"ワン・ライト": "light",
+    u"殺戮の女神": "wind",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -962,6 +963,7 @@ skillnamelist["shinTenNoInori"] = {
 
 # Damage cap up
 skillnamelist["normalDamageLimit7"] = {
+    u"炎熱の刀身": "fire",
     u"賢者の加護": "earth",
 }
 skillnamelist["normalDamageLimit10"] = {
