@@ -10263,6 +10263,25 @@
         "imageURL": "./imgs/1040018700.png",
         "en": "Ain Soph"
     },
+    "ケペシュ": {
+        "ja": "ケペシュ",
+        "element": "wind",
+        "type": "sword",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "wind",
+        "skill3": "non",
+        "element3": "wind",
+        "minhp": 27,
+        "minattack": 329,
+        "hp": 168,
+        "attack": 2042,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040019000.png",
+        "en": "Khopesh"
+    },
     "アゾット": {
         "ja": "アゾット",
         "element": "dark",
