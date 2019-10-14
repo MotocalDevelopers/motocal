@@ -1142,13 +1142,15 @@ var raceTypes = {
     "seisho": "星晶獣",
     "unknown": "種族不明",
     "human/erune": "人間/エルーン",
+    "erune/doraf": "エルーン/ドラフ",
     "havin/human": "ハーヴィン/人間",
 };
 
 var sexTypes = {
     "female": "女",
     "male": "男",
-    "other": "不明"
+    "other": "不詳",
+    "male/female": "男/女",
 };
 
 var jobTypes = {
@@ -2383,6 +2385,11 @@ var supportAbilities = {
     //     "type": "tousou_no_chishio",
     //     "range": "own",
     // },
+    "kenkyaku_no_koou": {
+        "name": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "type": "kenkyaku_no_koou",
+        "range": "own",
+    },
     "benedikutosu_soure": {
         "name": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "type": "benedikutosu_soure",
