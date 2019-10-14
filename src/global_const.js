@@ -1142,13 +1142,15 @@ var raceTypes = {
     "seisho": "星晶獣",
     "unknown": "種族不明",
     "human/erune": "人間/エルーン",
+    "erune/doraf": "エルーン/ドラフ",
     "havin/human": "ハーヴィン/人間",
 };
 
 var sexTypes = {
     "female": "女",
     "male": "男",
-    "other": "不詳"
+    "other": "不詳",
+    "male/female": "男/女",
 };
 
 var jobTypes = {
@@ -1460,6 +1462,18 @@ module.exports.Jobs = {
         "shugoBonus": 0.0,
         "DaBonus": 9.0,
         "TaBonus": 6.0
+    },
+    "torment": {
+        "name": "トーメンター",
+        "favArm1": "dagger",
+        "favArm2": "dagger",
+        "type": "pecu",
+        "atBonus": 2000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 10.0,
+        "TaBonus": 5.0
     },
     "alche": {
         "name": "アルケミスト",
@@ -2057,6 +2071,12 @@ var supportAbilities = {
         "range": "own",
         "value": 1.00
     },
+    "ougi_gage_down_own_25": {
+        "name": "奥義ゲージ上昇量25%DOWN。(サラ(光属性ver))",
+        "type": "ougiGageBuff",
+        "range": "own",
+        "value": -0.25
+    },
     "ougi_gage_down_own_35": {
         "name": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
         "type": "ougiGageBuff",
@@ -2377,6 +2397,11 @@ var supportAbilities = {
     //     "type": "tousou_no_chishio",
     //     "range": "own",
     // },
+    "kenkyaku_no_koou": {
+        "name": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "type": "kenkyaku_no_koou",
+        "range": "own",
+    },
     "benedikutosu_soure": {
         "name": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "type": "benedikutosu_soure",
