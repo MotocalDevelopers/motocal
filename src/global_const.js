@@ -2059,6 +2059,12 @@ var supportAbilities = {
         "range": "own",
         "value": 1.00
     },
+    "ougi_gage_down_own_25": {
+        "name": "奥義ゲージ上昇量25%DOWN。(サラ(光属性ver))",
+        "type": "ougiGageBuff",
+        "range": "own",
+        "value": -0.25
+    },
     "ougi_gage_down_own_35": {
         "name": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
         "type": "ougiGageBuff",

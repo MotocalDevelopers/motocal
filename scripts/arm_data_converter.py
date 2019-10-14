@@ -963,6 +963,7 @@ skillnamelist["shinTenNoInori"] = {
 
 # Damage cap up
 skillnamelist["normalDamageLimit7"] = {
+    u"炎熱の刀身": "fire",
     u"賢者の加護": "earth",
 }
 skillnamelist["normalDamageLimit10"] = {
