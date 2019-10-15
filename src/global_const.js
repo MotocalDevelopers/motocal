@@ -786,6 +786,7 @@ var supportedChartSortkeys = {
     "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
+    "newCalcTotalDamage": "100Tシミュ時の合計ダメージ÷100",
 //    "averageCyclePerTime": "予想ダメージ経時的な",
     "totalHP": "ジータさん残りHP",
 };
