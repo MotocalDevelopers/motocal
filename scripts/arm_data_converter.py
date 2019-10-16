@@ -826,6 +826,7 @@ skillnamelist["strengthL"] = {
     u"ワン・ライト": "light",
     u"破竜の攻刃": "earth",
     u"殺戮の女神": "wind",
+    u"シャドウオブアームズ": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -1019,6 +1020,7 @@ skillnamelist["normalL"][u"狙撃の極意"] = "water"
 
 # Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
+skillnamelist["bonusFor3rdAttack"] = {u"パープル・ブロウ": "dark"}
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"

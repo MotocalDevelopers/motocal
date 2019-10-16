@@ -1002,6 +1002,7 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
+    "bonus2For3rdAttack": {name: "TA時、3回目の攻撃に2割追撃", type: "additionalDamageXA", amount: [0.0, 0.0, 0.2]},
     "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0}
 };
 
