@@ -805,9 +805,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         let ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
         let ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
         
-        if (totals[key]["specialOugiLimit"]) {
-            ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, totals[key]["specialOugiLimit"]);
-            ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, totals[key]["specialOugiLimit"]);
+        if (totals[key]["ougiLimitValues"]) {
+            ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, totals[key]["ougiLimitValues"]);
+            ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, totals[key]["ougiLimitValues"]);
         }
         
         const _addShivaLimitUp = (values) => values.map(([threshold, ratio]) => [threshold+500000, ratio]);
@@ -2347,7 +2347,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TAOther: 0,
                 damageLimitBuff: djeetaBuffList["personalDamageLimitBuff"],
                 ougiDamageLimitBuff: djeetaBuffList["personalOugiDamageLimitBuff"],
-                specialOugiLimit: 0,
+                ougiLimitValues: 0,
                 normalOtherCriticalBuff: [],
                 support: "none",
                 support2: "none",
@@ -2516,7 +2516,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TAOther: 0,
                 damageLimitBuff: charaBuffList["damageLimitBuff"],
                 ougiDamageLimitBuff: charaBuffList["ougiDamageLimitBuff"],
-                specialOugiLimit: 0,
+                ougiLimitValues: 0,
                 normalOtherCriticalBuff: [],
                 support: chara[i].support,
                 support2: chara[i].support2,
@@ -2827,24 +2827,22 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["HPBuff"] += 0.15;
                     totals[key]["ougiGageBuff"] -= 0.25;
                     continue;
-                case "charaDamageUP_specialOugiLimit":
-                    totals[key]["charaDamageUP"] += support.value;
-                    totals[key]["specialOugiLimit"] = [[3000000, 0.01], [2200000, 0.05], [2000000, 0.30], [1800000, 0.60]];
+                case "charaDamageUP_ougiLimitValues": {
+                    let {charaDamageUP, ougiLimitValues} = support.value;
+                    totals[key]["charaDamageUP"] += charaDamageUP;
+                    totals[key]["ougiLimitValues"] = ougiLimitValues;
                     continue;
-                case "specialOugiLimit_uncappingEternal":
-                    totals[key]["specialOugiLimit"] = [[3000000, 0.01], [2200000, 0.05], [2000000, 0.30], [1800000, 0.60]];
+                    }
+                case "ougiLimitValues": {
+                    totals[key]["ougiLimitValues"] = support.value;
                     continue;
-                case "specialOugiLimit_lyria":
-                    totals[key]["specialOugiLimit"] = [[2800000, 0.01], [2200000, 0.10], [2000000, 0.70], [1500000, 0.90]];
+                    }
+                case "ougiLimitValues_ougiRatio": {
+                    let {ougiLimitValues, ougiRatio} = support.value;
+                    totals[key]["ougiLimitValues"] = ougiLimitValues;
+                    totals[key]["ougiRatio"] = ougiRatio;
                     continue;
-                case "specialOugiLimit_dorothyAndClaudia":
-                    totals[key]["specialOugiLimit"] = [[4000000, 0.01], [3000000, 0.10], [2800000, 0.40], [2400000, 0.80]];
-                    totals[key]["ougiRatio"] = 12.5;
-                    continue;
-                case "specialOugiLimit_mirin":
-                    totals[key]["specialOugiLimit"] = [[5000000, 0.01], [3600000, 0.05], [3400000, 0.30], [3000000, 0.60]];
-                    totals[key]["ougiRatio"] = 7.0;
-                    continue;
+                    }
                 case "ougiDamageBuff_capBuff":
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
