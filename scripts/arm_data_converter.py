@@ -1020,7 +1020,7 @@ skillnamelist["normalL"][u"狙撃の極意"] = "water"
 
 # Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
-skillnamelist["bonusFor3rdAttack"] = {u"パープル・ブロウ": "dark"}
+skillnamelist["bonus20For3rdAttack"] = {u"パープル・ブロウ": "dark"}
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
