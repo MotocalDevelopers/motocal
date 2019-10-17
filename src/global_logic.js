@@ -2827,22 +2827,10 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["HPBuff"] += 0.15;
                     totals[key]["ougiGageBuff"] -= 0.25;
                     continue;
-                case "charaDamageUP_ougiLimitValues": {
-                    let {charaDamageUP, ougiLimitValues} = support.value;
-                    totals[key]["charaDamageUP"] += charaDamageUP;
-                    totals[key]["ougiLimitValues"] = ougiLimitValues;
+                case "charaDamageUP_OugiCap":
+                    totals[key]["charaDamageUP"] += support.value;
+                    totals[key]["ougiDamageLimitBuff"] += support.value;
                     continue;
-                    }
-                case "ougiLimitValues": {
-                    totals[key]["ougiLimitValues"] = support.value;
-                    continue;
-                    }
-                case "ougiLimitValues_ougiRatio": {
-                    let {ougiLimitValues, ougiRatio} = support.value;
-                    totals[key]["ougiLimitValues"] = ougiLimitValues;
-                    totals[key]["ougiRatio"] = ougiRatio;
-                    continue;
-                    }
                 case "ougiDamageBuff_capBuff":
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
@@ -2945,6 +2933,9 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     break;
                 case "add":
                     chara[support.type] += support.value;
+                    break;
+                case "set":
+                    chara[support.type] = support.value;
                     break;
                 case "multiply":
                     chara[support.type] = ((1.0 + chara[support.type]) * (1.0 + support.value)) - 1.0;
