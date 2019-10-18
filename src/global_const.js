@@ -2200,33 +2200,47 @@ var supportAbilities = {
     },
     "damageUP_OugiCapUP_20": {
         "name": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
-        "type": "charaDamageUP_ougiLimitValues",
+        "type": "composite",
         "range": "own",
-        "value": {charaDamageUP: 0.20, ougiLimitValues: [[3000000, 0.01], [2200000, 0.05], [2000000, 0.30], [1800000, 0.60]]}
+        "value": [
+            {type: "charaDamageUP", range: "own", assign: "add", value: 0.20},
+            {type: "ougiLimitValues", range: "own", assign: "set",
+             value: [[3000000, 0.01], [2200000, 0.05], [2000000, 0.30], [1800000, 0.60]]}
+        ]
     },
     "ougiCapUP_20": {
         "name": "奥義ダメージ上限UP(最終十天衆)",
         "type": "ougiLimitValues",
         "range": "own",
+        "assign": "set",
         "value": [[3000000, 0.01], [2200000, 0.05], [2000000, 0.30], [1800000, 0.60]]
     },
     "ougiCapUP_25": {
         "name": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
         "type": "ougiLimitValues",
         "range": "own",
+        "assign": "set",
         "value": [[2800000, 0.01], [2200000, 0.10], [2000000, 0.70], [1500000, 0.90]]
     },
     "ougiLimitValues_dorothyAndClaudia": {
         "name": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
-        "type": "ougiLimitValues_ougiRatio",
+        "type": "composite",
         "range": "own",
-        "value": {ougiLimitValues: [[4000000, 0.01], [3000000, 0.10], [2800000, 0.40], [2400000, 0.80]], ougiRatio: 12.5}
+        "value": [
+            {type: "ougiRatio", range: "own", assign: "max", value: 12.5},
+            {type: "ougiLimitValues", range: "own", assign: "set",
+             value: [[4000000, 0.01], [3000000, 0.10], [2800000, 0.40], [2400000, 0.80]]}
+        ]
     },
     "ougiLimitValues_mirin": {
         "name": "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)",
-        "type": "ougiLimitValues_ougiRatio",
+        "type": "composite",
         "range": "own",
-        "value": {ougiLimitValues: [[5000000, 0.01], [3600000, 0.05], [3400000, 0.30], [3000000, 0.60]], ougiRatio: 7.0}
+        "value": [
+            {type: "ougiRatio", range: "own", assign: "max", value: 7.0},
+            {type: "ougiLimitValues", range: "own", assign: "set",
+             value: [[5000000, 0.01], [3600000, 0.05], [3400000, 0.30], [3000000, 0.60]]}
+        ]
     },
     "ougiCapUP_100": {
         "name": "奥義ダメージ上限100%UP(シャリオス17世)",
