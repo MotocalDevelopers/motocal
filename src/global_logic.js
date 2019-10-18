@@ -2828,6 +2828,7 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["ougiGageBuff"] -= 0.25;
                     continue;
                 case "charaDamageUP_OugiCap":
+                    // obsolete
                     totals[key]["charaDamageUP"] += support.value;
                     totals[key]["ougiDamageLimitBuff"] += support.value;
                     continue;
