@@ -1037,6 +1037,7 @@ module.exports.skillDetails = {
     'calamitous-covenant': 'victorious_calamitous_covenant',
     'shinTenNoInori': 'shinTenNoInori',
     'slaysnakes_myth': 'slaysnakes_myth',
+    'slaysnakes_mythII': 'slaysnakes_myth',
 };
 
 var skillDetailsDescription = {
