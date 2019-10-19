@@ -3588,11 +3588,6 @@ var multiLangData = {
         "ja": "[ジータのみ] 通常枠DATA 30%",
         "zh": "[只限主角] 通常DATA 30%",
     },
-    "TA時、3回目の攻撃に2割追撃": {
-        "en": "20% Bonus DMG to 3rd hits of TA",
-        "ja": "TA時、3回目の攻撃に2割追撃",
-        "zh": "20% Bonus DMG to 3rd hits of TA",
-    },
     // For templates
     "王道: 竜巻の技巧": {
         "en": "Normal Verity (M)",

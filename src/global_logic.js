@@ -2020,10 +2020,6 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (key == 'Djeeta') {
                                 totals[key]["normalOtherSante"] += amount;
                             }
-                        } else if (stype == 'additionalDamageXA') {
-                            // NOTE: conflict with support ability?
-                            // this code will override
-                            totals[key]["additionalDamageXA"] = amount;
                         } else if (stype == 'normalSoka') {
                             // Normal Soka is effective for up to one effect and the one with the larger effective amount has priority
                             if (skillAmounts[stype][amount][slv - 1] > totals[key]["normalSoka"]) {
