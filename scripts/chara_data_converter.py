@@ -28,6 +28,7 @@ racelist = OrderedDict()
 racelist[u"ヒューマン/エルーン"] = "human/erune"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
+racelist[u"エルーン/ドラフ"] = "erune/doraf"
 racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
@@ -35,9 +36,10 @@ racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
 
 sexlist = OrderedDict()
+sexlist[u"男&br;女"] = "male/female"
 sexlist[u"男"] = "male"
 sexlist[u"女"] = "female"
-sexlist[u"不詳"] = "other"
+sexlist[u"不明"] = "other"
 
 supportAbilist = OrderedDict()
 supportAbilist["da_up_all_10"] = {
@@ -103,6 +105,9 @@ supportAbilist["ougi_gage_up_own_20"] = {
 }
 supportAbilist["ougi_gage_up_own_100"] = {
     u"刀神"
+}
+supportAbilist["ougi_gage_down_own_25"] = {
+    u"砂神グラフォスの鉄槌"
 }
 supportAbilist["ougi_gage_down_own_35"] = {
     u"闘争求む重鎧"
@@ -258,6 +263,9 @@ supportAbilist["element_buff_boost_damageUP_own_10"] = {
 # supportAbilist["tousou_no_chishio"] = {
 #     u"闘争の血潮"
 # }
+supportAbilist["kenkyaku_no_koou"] = {
+    u"剣脚の呼応"
+}
 supportAbilist["debuff_resistance_up_own_15"] = {
     u"ユニバーサルスター",
     u"魔生花の楔"
@@ -402,6 +410,8 @@ patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
 
 patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
 
+patching["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
+
 ### SR
 patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
 
@@ -508,6 +518,8 @@ patchingOugiRatio["サンダルフォン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァンピィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["リリィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["アイル"] = {"ougiRatio": 5.0}
+patchingOugiRatio["カタリナ(リミテッドver)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ラカム(リミテッドver)"] = {"ougiRatio": 5.0}
 
 ### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
@@ -581,6 +593,7 @@ patchingOugiRatio["ティナ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["城ヶ崎莉嘉"] = {"ougiRatio": 4.0}
 patchingOugiRatio["シャオ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["カタリナ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ミリン"] = {"ougiRatio": 4.0}
 
 ### SR (Other)
 patchingOugiRatio["カタリナ(水着ver)"] = {"ougiRatio": 3.7}
@@ -664,7 +677,7 @@ def get_value(value_str):
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
     key_pattern = re.compile("(\d+_\d+\.png)")
-    br_pattern = re.compile("(\w+)&br;(\w+)")
+    br_pattern = re.compile("(\w+)(?:&br;|\/)(\w+)")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
     support_pattern3 = re.compile("([\W\w]+)&br;([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \((S?S?R)\)")
