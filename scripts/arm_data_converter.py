@@ -826,6 +826,7 @@ skillnamelist["strengthL"] = {
     u"ワン・ライト": "light",
     u"破竜の攻刃": "earth",
     u"殺戮の女神": "wind",
+    u"シャドウオブアームズ": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {
