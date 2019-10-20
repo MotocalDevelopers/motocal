@@ -231,12 +231,15 @@ var RegisteredChara = CreateClass({
                 }}/>
             </div>;
 
+        const result = Object.entries(charaData).filter(filterFunc);
+        const total = result.length;
+
         if (_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="charaTemplate">
                     {charaTemplateHeader}
                     <div className="charaTemplateContent">
-                        {Object.entries(charaData).filter(filterFunc).map(mapFunc)}
+                        {result.slice(0, limit).map(mapFunc)}
                     </div>
                 </div>
             )
@@ -245,7 +248,7 @@ var RegisteredChara = CreateClass({
                 <div className="charaTemplate">
                     {charaTemplateHeader}
                     <div className="charaTemplateContent">
-                        {Object.entries(charaData).filter(filterFunc).map(mapFunc)}
+                        {result.slice(0, limit).map(mapFunc)}
                     </div>
 
                     {locale == "en" ?
@@ -257,6 +260,12 @@ var RegisteredChara = CreateClass({
                         :
                         null
                     }
+
+                    <p className="text-danger">
+                        最新{limit}/{total}件を表示しています。
+                        それより古い場合は武器検索/属性フィルターをご利用下さい。
+                    </p>
+
                     <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>
 
                     <Modal show={this.state.openSendRequest} onHide={this.closeSendRequest}>
