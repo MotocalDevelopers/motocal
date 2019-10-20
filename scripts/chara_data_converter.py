@@ -518,6 +518,8 @@ patchingOugiRatio["サンダルフォン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァンピィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["リリィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["アイル"] = {"ougiRatio": 5.0}
+patchingOugiRatio["カタリナ(リミテッドver)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ラカム(リミテッドver)"] = {"ougiRatio": 5.0}
 
 ### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
@@ -675,7 +677,7 @@ def get_value(value_str):
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
     key_pattern = re.compile("(\d+_\d+\.png)")
-    br_pattern = re.compile("(\w+)&br;(\w+)")
+    br_pattern = re.compile("(\w+)(?:&br;|\/)(\w+)")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
     support_pattern3 = re.compile("([\W\w]+)&br;([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \((S?S?R)\)")
