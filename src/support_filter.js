@@ -55,6 +55,7 @@ Object.assign(range_sex, {
     male: range_sex("male"),
     female: range_sex("female"),
     other: range_sex("other"),
+    male_female: range_sex("male/female"),
 });
 
 
