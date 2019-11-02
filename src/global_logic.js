@@ -943,12 +943,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             // Ougi Lockout
             expectedCycleLockoutTime += 1.0 + 0.35;
             // Chainburst lockout
-            if (buff["chainNumber"] == 2) {
-                expectedCycleLockoutTime += 5.0 / buff["chainNumber"];
-            } else if (buff["chainNumber"] == 3) {
-                expectedCycleLockoutTime += 7.0 / buff["chainNumber"];
-            } else if (buff["chainNumber"] >= 4) {
-                expectedCycleLockoutTime += 9.0 / buff["chainNumber"] == 4 ? buff["chainNumber"] : 4;
+            let chainNumber = Math.min(4, buff["chainNumber"]);
+            if (chainNumber >= 2) {
+                expectedCycleLockoutTime += (chainNumber * 2 + 1.0) / chainNumber;
             }
             expectedLockoutTimePerTurn = expectedCycleLockoutTime / (expectedTurn + 1.0);
         }
@@ -3223,12 +3220,9 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                         // Ougi Lockout
                         newExpectedCycleLockoutTime += 1.0 + 0.35;
                         // Chainburst lockout
-                        if (chainNumber == 2) {
-                            newExpectedCycleLockoutTime += 5.0 / chainNumber;
-                        } else if (chainNumber == 3) {
-                            newExpectedCycleLockoutTime += 7.0 / chainNumber;
-                        } else if (chainNumber >= 4) {
-                            newExpectedCycleLockoutTime += 9.0 / chainNumber == 4 ? chainNumber : 4;
+                        let chainNumber = Math.min(4, chainNumber);
+                        if (chainNumber >= 2) {
+                            newExpectedCycleLockoutTime += (chainNumber * 2 + 1.0) / chainNumber;
                         }
                         newExpectedLockoutTimePerTurn = newExpectedCycleLockoutTime / (onedata[key].expectedTurn + 1.0);
                     }
