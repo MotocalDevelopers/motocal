@@ -1096,8 +1096,8 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchCharaHP) {
-                    let {totalHP, remainHP} = m.data[key]; 
                     for (key in m.data) {
+                        let {totalHP, remainHP} = m.data[key]; 
                         charaDetail[key].push(
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
