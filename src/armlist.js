@@ -150,12 +150,22 @@ var ArmList = CreateClass({
         delete state["arrayForCopy"][id];
         this.setState(state);
     },
-    handleOnChange: function (key, state, isSubtle) {
+    handleOnChange: function (key, state, isSubtle, mainWeaponChanged = false) {
         var newalist = this.state.alist;
+        if (mainWeaponChanged) {
+            this.handleMainWeaponChange(key, newalist);
+        }
         newalist[key] = state;
         this.setState({alist: newalist});
         this.setState({addArm: null});
         this.props.onChange(newalist, isSubtle);
+    },
+    handleMainWeaponChange: function(key, newalist) {
+        for (let i = 0; i < newalist.length; i++) {
+            if (i !== key) {
+                newalist[i].mhWeapon = false;
+            }
+        }
     },
     handleEvent: function (key, e) {
         var newState = this.state;
@@ -464,7 +474,7 @@ var Arm = CreateClass({
     handleCheckboxChangeEvent: function (key, e) {
         let newState = this.state;
         newState[key] = e.target.checked;
-        this.props.onChange(this.props.id, newState, false)
+        this.props.onChange(this.props.id, newState, false, e.target.checked)
     },
     handleOnBlur: function (key, e) {
         // Send change to parent only when focus is off
