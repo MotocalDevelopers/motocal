@@ -1152,7 +1152,7 @@ var raceTypes = {
 var sexTypes = {
     "female": "女",
     "male": "男",
-    "other": "不詳",
+    "other": "不明",
     "male/female": "男/女",
 };
 

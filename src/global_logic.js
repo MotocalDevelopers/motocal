@@ -3220,9 +3220,9 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                         // Ougi Lockout
                         newExpectedCycleLockoutTime += 1.0 + 0.35;
                         // Chainburst lockout
-                        let chainNumber = Math.min(4, chainNumber);
-                        if (chainNumber >= 2) {
-                            newExpectedCycleLockoutTime += (chainNumber * 2 + 1.0) / chainNumber;
+                        let newChainNumber = Math.min(4, chainNumber);
+                        if (newChainNumber >= 2) {
+                            newExpectedCycleLockoutTime += (newChainNumber * 2 + 1.0) / newChainNumber;
                         }
                         newExpectedLockoutTimePerTurn = newExpectedCycleLockoutTime / (onedata[key].expectedTurn + 1.0);
                     }
