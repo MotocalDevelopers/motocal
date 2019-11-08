@@ -699,7 +699,7 @@ var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 85, 90, 9
 var chainNumberList = [1, 2, 3, 4];
 
 // Chara limitBonus
-var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2300, 2500, 2600, 2800, 3000];
+var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2100, 2300, 2400, 2500, 2600, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3800, 4000];
 var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
 var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -1143,13 +1143,15 @@ var raceTypes = {
     "seisho": "星晶獣",
     "unknown": "種族不明",
     "human/erune": "人間/エルーン",
+    "erune/doraf": "エルーン/ドラフ",
     "havin/human": "ハーヴィン/人間",
 };
 
 var sexTypes = {
     "female": "女",
     "male": "男",
-    "other": "不詳"
+    "other": "不詳",
+    "male/female": "男/女",
 };
 
 var jobTypes = {
@@ -1461,6 +1463,18 @@ module.exports.Jobs = {
         "shugoBonus": 0.0,
         "DaBonus": 9.0,
         "TaBonus": 6.0
+    },
+    "torment": {
+        "name": "トーメンター",
+        "favArm1": "dagger",
+        "favArm2": "dagger",
+        "type": "pecu",
+        "atBonus": 2000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 10.0,
+        "TaBonus": 5.0
     },
     "alche": {
         "name": "アルケミスト",
@@ -1927,6 +1941,11 @@ var skillAmounts = {
     },
     "normalHigo": {
         "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
+    },
+    "darkOpusElementATK": {
+        //per turn increase, maximum 10 turns
+        //"L": [0.0055, 0.0060, 0.0065, 0.0070, 0.0075, 0.0080, 0.0085, 0.0090, 0.0095, 0.0100, 0.0105, 0.0110, 0.0115, 0.0120, 0.0125, 0.0130, 0.0135, 0.0140, 0.0145, 0.0150],
+        "L": [0.055, 0.060, 0.065, 0.070, 0.075, 0.080, 0.085, 0.090, 0.095, 0.100, 0.105, 0.110, 0.115, 0.120, 0.125, 0.130, 0.135, 0.140, 0.145, 0.150],
     }
 };
 
@@ -2052,6 +2071,12 @@ var supportAbilities = {
         "type": "ougiGageBuff",
         "range": "own",
         "value": 1.00
+    },
+    "ougi_gage_down_own_25": {
+        "name": "奥義ゲージ上昇量25%DOWN。(サラ(光属性ver))",
+        "type": "ougiGageBuff",
+        "range": "own",
+        "value": -0.25
     },
     "ougi_gage_down_own_35": {
         "name": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
@@ -2373,6 +2398,11 @@ var supportAbilities = {
     //     "type": "tousou_no_chishio",
     //     "range": "own",
     // },
+    "kenkyaku_no_koou": {
+        "name": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "type": "kenkyaku_no_koou",
+        "range": "own",
+    },
     "benedikutosu_soure": {
         "name": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "type": "benedikutosu_soure",
