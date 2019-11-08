@@ -230,7 +230,7 @@ var ArmList = CreateClass({
         var dataForLoad = this.props.dataForLoad;
         var arrayForCopy = this.state.arrayForCopy;
         var copyCompleted = this.copyCompleted;
-        let favArms = this.state.favs;
+        let favs = this.state.favs;
 
         // For view
         var panel_style = {"textAlign": "left"};
@@ -274,7 +274,7 @@ var ArmList = CreateClass({
                                         dataForLoad={dataForLoad}
                                         arrayForCopy={arrayForCopy[ind]}
                                         copyCompleted={copyCompleted}
-                                        favarms={favArms}/>
+                                        mhEligible={favs.includes(alist[arm].armType)}/>
                                 </Panel.Body>
                             </Panel>
                         );
@@ -319,6 +319,9 @@ var Arm = CreateClass({
         };
     },
     componentWillReceiveProps: function (nextProps) {
+        if (this.props.mhEligible !== nextProps.mhEligible) {
+            this.setState({mhWeapon: this.state.mhWeapon && nextProps.mhEligible});
+        }
         // only fired on Data Load
         if (nextProps.dataName != this.props.dataName) {
             if ((nextProps.dataForLoad != undefined) && this.props.id in nextProps.dataForLoad) {
@@ -531,7 +534,6 @@ var Arm = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
-        let mainViable = this.props.favarms.includes(this.state.armType);
 
         return (
             <div className="chara-content">
@@ -579,7 +581,7 @@ var Arm = CreateClass({
                         <th className="bg-primary">{intl.translate("メインウェポン", locale)}</th>
                         <td>
                             <Checkbox inline checked={this.state.mhWeapon}
-                                      onChange={this.handleCheckboxChangeEvent.bind(this, "mhWeapon")} disabled={!mainViable}>
+                                      onChange={this.handleCheckboxChangeEvent.bind(this, "mhWeapon")} disabled={!this.props.mhEligible}>
                             </Checkbox>
                         </td>
                     </tr>
