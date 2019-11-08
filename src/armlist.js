@@ -10,6 +10,7 @@ var intl = require('./translate.js');
 // inject GlobalConst...
 var selector = GlobalConst.selector;
 var _ua = GlobalConst._ua;
+let _jobs = GlobalConst.Jobs;
 
 // ArmList has a number of Arm objects.
 var ArmList = CreateClass({
@@ -35,6 +36,7 @@ var ArmList = CreateClass({
             considerNum: 1,
             openPresets: false,
             arrayForCopy: {},
+            favs: []
         };
     },
     closePresets: function () {
@@ -58,6 +60,14 @@ var ArmList = CreateClass({
         this.setState({arms: arms})
     },
     componentWillReceiveProps: function (nextProps) {
+        // Set up favorite weapons from jobs
+        let favs = [];
+        if (nextProps.job in _jobs) {
+            let job = _jobs[nextProps.job];
+            favs.push(job.favArm1);
+            favs.push(job.favArm2);
+        }
+        this.setState({favs: favs});
         if (nextProps.dataName != this.props.dataName && (Array.isArray(nextProps.dataForLoad))) {
             this.setState({alist: nextProps.dataForLoad});
             this.updateArmNum(nextProps.armNum);
@@ -220,6 +230,7 @@ var ArmList = CreateClass({
         var dataForLoad = this.props.dataForLoad;
         var arrayForCopy = this.state.arrayForCopy;
         var copyCompleted = this.copyCompleted;
+        let favArms = this.state.favs;
 
         // For view
         var panel_style = {"textAlign": "left"};
@@ -262,7 +273,8 @@ var ArmList = CreateClass({
                                         openPresets={openPresets}
                                         dataForLoad={dataForLoad}
                                         arrayForCopy={arrayForCopy[ind]}
-                                        copyCompleted={copyCompleted}/>
+                                        copyCompleted={copyCompleted}
+                                        favarms={favArms}/>
                                 </Panel.Body>
                             </Panel>
                         );
@@ -507,6 +519,7 @@ var Arm = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
+        let mainViable = this.props.favarms.includes(this.state.armType);
 
         return (
             <div className="chara-content">
@@ -554,7 +567,7 @@ var Arm = CreateClass({
                         <th className="bg-primary">{intl.translate("メインウェポン", locale)}</th>
                         <td>
                             <Checkbox inline checked={this.state.mhWeapon}
-                                      onChange={this.handleCheckboxChangeEvent.bind(this, "mhWeapon")}>
+                                      onChange={this.handleCheckboxChangeEvent.bind(this, "mhWeapon")} disabled={!mainViable}>
                             </Checkbox>
                         </td>
                     </tr>
