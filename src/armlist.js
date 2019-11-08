@@ -1,6 +1,6 @@
 var React = require('react');
 
-var {Label, Button, ButtonGroup, FormControl, Modal, Panel, PanelGroup, Glyphicon} = require('react-bootstrap');
+var {Label, Button, ButtonGroup, FormControl, Modal, Panel, PanelGroup, Glyphicon, Checkbox} = require('react-bootstrap');
 var CreateClass = require('create-react-class');
 var GlobalConst = require('./global_const.js');
 var {RegisteredArm} = require('./template.js');
@@ -293,6 +293,7 @@ var Arm = CreateClass({
             skill2Detail: 0,
             skill3Detail: 0,
             series: "none",
+            mhWeapon: false
         };
     },
     componentWillReceiveProps: function (nextProps) {
@@ -460,6 +461,11 @@ var Arm = CreateClass({
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false)
     },
+    handleCheckboxChangeEvent: function (key, e) {
+        let newState = this.state;
+        newState[key] = e.target.checked;
+        this.props.onChange(this.props.id, newState, false)
+    },
     handleOnBlur: function (key, e) {
         // Send change to parent only when focus is off
         if (key == "name") {
@@ -535,6 +541,14 @@ var Arm = CreateClass({
                         </td>
                     </tr>
                     <tr>
+                        <th className="bg-primary">{intl.translate("メインウェポン", locale)}</th>
+                        <td>
+                            <Checkbox inline checked={this.state.mhWeapon}
+                                      onChange={this.handleCheckboxChangeEvent.bind(this, "mhWeapon")}>
+                            </Checkbox>
+                        </td>
+                    </tr>
+                    <tr>
                         <th className="bg-primary">{intl.translate("スキル", locale)}1</th>
                         <td>
                             <FormControl componentClass="select" value={this.state.element}
@@ -576,7 +590,7 @@ var Arm = CreateClass({
                             {GlobalConst.skillDetails[this.state.skill3] != undefined ?
                                  <div>
                                     <label>{intl.translate(GlobalConst.skillDetailsDescription[this.state.skill3], locale)}</label>
-                                    <FormControl componentClass="select" value={this.state.skil3Detail}
+                                    <FormControl componentClass="select" value={this.state.skill3Detail}
                                                  onChange={this.handleSelectEvent.bind(this, "skill3Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill3]]} </FormControl>
                                  </div>
                             : null}
