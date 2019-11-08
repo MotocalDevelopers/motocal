@@ -465,10 +465,16 @@ var Arm = CreateClass({
             if (parseInt(e.target.value) > parseInt(this.state.considerNumberMax)) {
                 newState["considerNumberMax"] = parseInt(e.target.value)
             }
+            if (this.state.mhWeapon && parseInt(e.target.value) === 0) {
+                newState.mhWeapon = false;
+            }
             newState[key] = parseInt(e.target.value)
         } else if (key == "considerNumberMax") {
             if (parseInt(e.target.value) < parseInt(this.state.considerNumberMin)) {
                 newState["considerNumberMin"] = parseInt(e.target.value)
+            }
+            if (this.state.mhWeapon && parseInt(e.target.value) === 0) {
+                newState.mhWeapon = false;
             }
             newState[key] = parseInt(e.target.value)
         } else {
