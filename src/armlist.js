@@ -486,6 +486,12 @@ var Arm = CreateClass({
     handleCheckboxChangeEvent: function (key, e) {
         let newState = this.state;
         newState[key] = e.target.checked;
+        if (key === "mhWeapon" && e.target.checked) {
+            newState.considerNumberMin = 1;
+            if (newState.considerNumberMax < newState.considerNumberMin) {
+                newState.considerNumberMax = newState.considerNumberMin;
+            }
+        }
         this.props.onChange(this.props.id, newState, false, e.target.checked)
     },
     handleOnBlur: function (key, e) {
