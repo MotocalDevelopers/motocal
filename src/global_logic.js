@@ -744,6 +744,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var damageLimit = buff["damageLimit"];
         damageLimit += totals[key]["damageLimitBuff"];
         damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"]);
+        damageLimit += Math.min(0.10, totals[key]["omegaNormalDamageLimit"]);
         damageLimit += 0.01 * totalSummon["damageLimit"];
         if (totals[key]["EXLB"]["WED"]) {
             damageLimit += 0.05;
@@ -1731,7 +1732,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
 
                         if (!isOmegaIncluded[gauphKeyType]) {
                             if (gauphKeyType === "alpha") {
-                                totals[key]["normalDamageLimit"] += 0.1
+                                totals[key]["omegaNormalDamageLimit"] += 0.1
                             } else if (gauphKeyType === "gamma") {
                                 totals[key]["omegaOugiDamageLimit"] += 0.15
                             } else if (gauphKeyType === "delta") {
@@ -1745,7 +1746,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
 
                         if (!isOmegaIncluded[opusKeyType]) {
                             if (opusKeyType === "alpha") {
-                                totals[key]["normalDamageLimit"] += 0.1
+                                totals[key]["omegaNormalDamageLimit"] += 0.1
                             } else if (opusKeyType === "gamma") {
                                 totals[key]["omegaOugiDamageLimit"] += 0.15
                             } else if (opusKeyType === "delta") {
@@ -2322,6 +2323,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 chainDamage: 0,
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
+                omegaNormalDamageLimit: 0,
                 criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
@@ -2491,6 +2493,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 magnaOugiDamage: 0,
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
+                omegaNormalDamageLimit: 0,
                 criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 chainDamageLimit: 0,
@@ -2675,6 +2678,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["magnaOugiDamage"] = 0;
         totals[key]["chainDamage"] = 0;
         totals[key]["normalDamageLimit"] = 0;
+        totals[key]["omegaNormalDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
         totals[key]["normalChainDamage"] = 0;
         totals[key]["chainDamageLimit"] = 0;
