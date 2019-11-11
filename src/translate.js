@@ -829,7 +829,7 @@ var multiLangData = {
         "zh": "攻击力",
     },
     "マスボATK説明": {
-        "en": "The value of Job Master bonus \"ATK+○○%\"",
+        "en": "The value of Job Master bonus \"ATK+**%\"",
         "ja": "ジョブマスターボーナスの\"攻撃力+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"攻击力+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -839,7 +839,7 @@ var multiLangData = {
         "zh": "HP",
     },
     "マスボHP説明": {
-        "en": "The value of Job Master bonus \"HP+○○%\"",
+        "en": "The value of Job Master bonus \"HP+**%\"",
         "ja": "ジョブマスターボーナスの\"HP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"HP+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -849,7 +849,7 @@ var multiLangData = {
         "zh": "DA",
     },
     "マスボDA説明": {
-        "en": "The value of Job Master bonus \"DA+○○%\"",
+        "en": "The value of Job Master bonus \"DA+**%\"",
         "ja": "ジョブマスターボーナスの\"DA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DA+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -859,7 +859,7 @@ var multiLangData = {
         "zh": "TA",
     },
     "マスボTA説明": {
-        "en": "The value of Job Master bonus \"TA+○○%\"",
+        "en": "The value of Job Master bonus \"TA+**%\"",
         "ja": "ジョブマスターボーナスの\"TA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"TA+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -869,11 +869,30 @@ var multiLangData = {
         "zh": "DMG Cap",
     },
     "マスボダメ上限説明": {
-        "en": "The value of Job Master bonus \"DMG Cap+○○%\"",
+        "en": "The value of Job Master bonus \"DMG Cap+**%\"",
         "ja": "ジョブマスターボーナスの\"ダメージ上限+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DMG Cap+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
-
+    "マスボ奥義ゲージ": {
+        "en": "One-foe Attack Bonus Charge Gain",
+        "ja": "通常攻撃時の奥義ゲージUP",
+        "zh": "One-foe Attack Bonus Charge Gain",
+    },
+    "マスボ奥義ゲージ説明": {
+        "en": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
+        "ja": "ジョブマスターボーナスの\"通常攻撃時の奥義ゲージ上昇+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
+    },
+    /*"マスボメイン武器攻撃力": {
+        "en": "main weapon's ATK",
+        "ja": "メイン武器攻撃力",
+        "zh": "主武器攻撃力",
+    },
+    "マスボメイン武器攻撃力UP説明": {
+        "en": "The value of Job Master bonus \"Boost to main weapon's ATK when main weapon is a ***+**%\"",
+        "ja": "。ジョブマスターボーナスの\"メイン武器が○○の時、メイン武器の攻撃力UP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "The value of Job Master bonus \"Boost to main weapon's ATK when main weapon is a ***+**%\"",
+    }, */
     "ジータさん属性": {
         "en": "Player's Element",
         "ja": "ジータさん\n属性",
@@ -1093,6 +1112,11 @@ var multiLangData = {
         "en": "Nekomancer",
         "ja": "黒猫道士",
         "zh": "黑猫道士",
+    },
+    "トーメンター": {
+        "en": "Tormentor",
+        "ja": "トーメンター",
+        "zh": "トーメンター",
     },
     "アルケミスト": {
         "en": "Alchemist",
@@ -1716,8 +1740,8 @@ var multiLangData = {
     },
     "本": {
         "en": "",
-        "ja": "",
-        "zh": "",
+        "ja": "本",
+        "zh": "把",
     },
     "パーティ全体バフ": {
         "en": "Buff for Party",
@@ -1995,6 +2019,11 @@ var multiLangData = {
         "ja": "最大本数",
         "zh": "最多数量",
     },
+    "最小": {
+        "en": "Min",
+        "ja": "最小",
+        "zh": "最少",
+    },
     "何本追加": {
         "en": "How many?",
         "ja": "何本追加しますか？",
@@ -2036,6 +2065,11 @@ var multiLangData = {
         "ja": "人間/エルーン",
         "zh": "人間/エルーン",
     },
+    "エルーン/ドラフ": {
+        "en": "Erune/Draph",
+        "ja": "エルーン/ドラフ",
+        "zh": "エルーン/ドラフ",
+    },
     "星晶獣": {
         "en": "Primal",
         "ja": "星晶獣",
@@ -2057,10 +2091,15 @@ var multiLangData = {
         "ja": "女",
         "zh": "女",
     },
-    "不詳": {
+    "不明": {
         "en": "Other",
-        "ja": "不詳",
-        "zh": "不詳",
+        "ja": "不明",
+        "zh": "不明",
+    },
+    "男/女": {
+        "en": "Male/Female",
+        "ja": "男/女",
+        "zh": "男/女",
     },
     // Series
     "エピックウェポン": {
@@ -2169,6 +2208,11 @@ var multiLangData = {
         "en": "Charge bar fills up 100% faster. (Eahta)",
         "ja": "奥義ゲージ上昇量100%UP(オクトー)",
         "zh": "奥義ゲージ上昇量100%UP(オクトー)",
+    },
+    "奥義ゲージ上昇量25%DOWN。(サラ(光属性ver))": {
+        "en": "Charge bar fills up 25% slower. (Sara (Light))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(サラ(光属性ver))",
+        "zh": "Charge bar fills up 25% slower. (Sara (Light))",
     },
     "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)": {
         "en": "Charge bar fills up 35% slower. (Geisenborger)",
@@ -2439,6 +2483,11 @@ var multiLangData = {
         "en": "50% boost to C.A. damage and 20% boost to C.A. damage cap when Sun-Touched Paradise is active. (Alanaan)",
         "ja": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "zh": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+    },
+    "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)": {
+        "en": "Boost to C.A. damage based on how high HP is. (Stan and Aliza)",
+        "ja": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "zh": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
     },
     "攻撃30%UP/別枠乗算 (ウーフとレニー)": {
         "en": "30% boost to ATK (Unique modifier). (Wulf and Renie)",

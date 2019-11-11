@@ -230,7 +230,8 @@ var ArmList = CreateClass({
                                 <Panel.Heading>
                                     <Panel.Title toggle>
                                         {(ind + 1)}: {(alist[ind] != null) ? alist[ind].name : ""}
-                                        &nbsp; {(alist[ind] != null && alist[ind].name != "") ? alist[ind].considerNumberMax + "本" : ""}
+                                        &nbsp; {(alist[ind] != null && alist[ind].name != "") ? alist[ind].considerNumberMax + intl.translate("本", locale) : ""}
+                                        {(alist[ind] != null && alist[ind].name != "" && alist[ind].considerNumberMin) ? "(" + intl.translate("最小", locale) + alist[ind].considerNumberMin + intl.translate("本", locale) + ")" : "" }
                                     </Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body collapsible>
