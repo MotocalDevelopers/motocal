@@ -2065,7 +2065,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'shinTenNoInori') {
                             totals[key][stype] = [amount, Math.max(totals[key][stype][1], arm[skillkey + "Detail"])];
                         } else if (stype == 'echoThirdHit') {
-                            totals[key][stype] = 0.2;
+                            totals[key][stype] = Math.max(0.20, amount);
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
