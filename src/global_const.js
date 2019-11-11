@@ -983,6 +983,7 @@ var skilltypes = {
     "contentious-covenant": {name: "修羅の誓約", type: "covenant", amount:"contentious"},
     "deleterious-covenant": {name: "致命の誓約", type: "covenant", amount:"deleterious"},
     "calamitous-covenant": {name: "災禍の誓約", type: "covenant", amount:"calamitous"},
+    "zwei-echo": {name: "パープル・ブロウ", type: "echoThirdHit", amount: 0.20},
     "opus-alpha": {name: "ペンデュラム[α]", type: "opusKey", amount: "L"},
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},

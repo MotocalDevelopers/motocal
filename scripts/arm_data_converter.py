@@ -836,7 +836,7 @@ skillnamelist["exATKandHPM"] = {
     u"紅薔薇の髄": "fire",
 }
 
-skillnamelist["echoOnTA"] = {
+skillnamelist["zwei-echo"] = {
     u"パープル・ブロウ": "dark",
 }
 
