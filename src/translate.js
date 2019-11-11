@@ -874,9 +874,9 @@ var multiLangData = {
         "zh": "职业满级Bonus中\"DMG Cap+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
     "マスボ奥義ゲージ": {
-        "en": "Normal Attack Charge Bar",
+        "en": "One-foe Attack Bonus Charge Gain",
         "ja": "通常攻撃時の奥義ゲージUP",
-        "zh": "Normal Attack Charge Bar",
+        "zh": "One-foe Attack Bonus Charge Gain",
     },
     "マスボ奥義ゲージ説明": {
         "en": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
