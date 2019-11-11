@@ -179,6 +179,7 @@ var Profile = CreateClass({
             masterBonusDA: 0,
             masterBonusTA: 0,
             masterBonusDamageLimit: 0,
+            masterBonusOugiGage: 0,
             normalBuff: 0,
             elementBuff: 0,
             otherBuff: 0,
@@ -579,6 +580,21 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.masterBonusDamageLimit}
                                                  onChange={this.handleSelectEvent.bind(this, "masterBonusDamageLimit")}>{selector.masterDamageLimit}</FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("マスボ奥義ゲージ説明", locale)} id={"tooltip-masterbonus-ougigage-detail"}>
+                        <tr>
+                            <th className="bg-primary">
+                                {intl.translate("マスボ奥義ゲージ", locale)}
+                            </th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.masterBonusOugiGage}
+                                                 onChange={this.handleSelectEvent.bind(this, "masterBonusOugiGage")}>{selector.masterOugiGage}</FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>

@@ -712,8 +712,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         //while exact uplift effect does not stack. special effects that could lead to uplift like Linkage (SS Grea) does stack with normal uplift.
         var uplift = 100 * (buff["uplift"] + totals[key]["uplift"]);
         var ougiGageBuff = buff["ougiGage"] + totals[key]["ougiGageBuff"] + (0.01 * totals[key]["LB"]["OugiGageBuff"]) - totals[key]["ougiDebuff"];
+
         var expectedOugiGage = Math.ceil(uplift * ougiGageBuff);
         expectedOugiGage += (taRate * Math.ceil(37.0 * ougiGageBuff) + (1.0 - taRate) * (daRate * Math.ceil(22.0 * ougiGageBuff) + (1.0 - daRate) * Math.ceil(10.0 * ougiGageBuff)));
+        // Speed up charge bar during one-foe attacks
+        if (key == "Djeeta") {
+            let ougiGageDuringAttack = buff["masterBonusOugiGage"];
+            expectedOugiGage += taRate * ougiGageDuringAttack * 3 + (1.0 - taRate) * (daRate * ougiGageDuringAttack * 2 + (1.0 - daRate) * ougiGageDuringAttack);
+        }
         expectedOugiGage = expectedOugiGage < 0 ? 0 : Math.max(1.0, expectedOugiGage);
 
         var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * ougiGageBuff;
@@ -1467,6 +1473,7 @@ module.exports.getTotalBuff = function (prof) {
         masterDA: 0.0,
         masterTA: 0.0,
         masterDamageLimit: 0.0,
+        masterBonusOugiGage: 0.0,
         normal: 0.0,
         element: 0.0,
         other: 0.0,
@@ -1504,6 +1511,7 @@ module.exports.getTotalBuff = function (prof) {
     if (!isNaN(prof.masterBonusDA)) totalBuff["masterDA"] += 0.01 * parseInt(prof.masterBonusDA);
     if (!isNaN(prof.masterBonusTA)) totalBuff["masterTA"] += 0.01 * parseInt(prof.masterBonusTA);
     if (!isNaN(prof.masterBonusDamageLimit)) totalBuff["masterDamageLimit"] += 0.01 * parseInt(prof.masterBonusDamageLimit);
+    if (!isNaN(prof.masterBonusOugiGage)) totalBuff["masterBonusOugiGage"] += parseInt(prof.masterBonusOugiGage);
     if (!isNaN(prof.hpBuff)) totalBuff["hp"] += 0.01 * parseInt(prof.hpBuff);
     if (!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseFloat(prof.daBuff);
     if (!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseFloat(prof.taBuff);
