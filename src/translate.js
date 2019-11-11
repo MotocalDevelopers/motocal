@@ -1735,8 +1735,8 @@ var multiLangData = {
     },
     "本": {
         "en": "",
-        "ja": "",
-        "zh": "",
+        "ja": "本",
+        "zh": "把",
     },
     "パーティ全体バフ": {
         "en": "Buff for Party",
