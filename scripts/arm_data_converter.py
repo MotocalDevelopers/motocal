@@ -836,6 +836,10 @@ skillnamelist["exATKandHPM"] = {
     u"紅薔薇の髄": "fire",
 }
 
+skillnamelist["echoOnTA"] = {
+    u"パープル・ブロウ": "dark",
+}
+
 skillnamelist["strengthLL"] = {
     u"灼滅の覇道": "fire",
     u"裁考の覇道": "earth",

@@ -15466,7 +15466,7 @@
         "element": "dark",
         "type": "fist",
         "skill1": "strengthL",
-        "skill2": "non",
+        "skill2": "echoOnTA",
         "element2": "dark",
         "skill3": "non",
         "element3": "dark",
