@@ -1735,8 +1735,8 @@ var multiLangData = {
     },
     "本": {
         "en": "",
-        "ja": "",
-        "zh": "",
+        "ja": "本",
+        "zh": "把",
     },
     "パーティ全体バフ": {
         "en": "Buff for Party",
@@ -2013,6 +2013,11 @@ var multiLangData = {
         "en": "Maximum",
         "ja": "最大本数",
         "zh": "最多数量",
+    },
+    "最小": {
+        "en": "Min",
+        "ja": "最小",
+        "zh": "最少",
     },
     "何本追加": {
         "en": "How many?",
