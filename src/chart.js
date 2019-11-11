@@ -25,7 +25,7 @@ var HPChart = CreateClass({
         var chara = props.chara;
         var totalBuff = getTotalBuff(prof);
         var totals = getInitialTotals(prof, chara, summon);
-        treatSupportAbility(totals, chara);
+        treatSupportAbility(totals, chara, totalBuff);
 
         var res = [];
         for (var i = 0; i < summon.length; i++) {

@@ -229,6 +229,7 @@
       vertical-align: middle;
       font-size: 11pt;
       text-align: center;
+      font-family: arial, sans-serif;
     }
 
     tbody.result>tr>td:first-child {
