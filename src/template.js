@@ -126,10 +126,10 @@ function _generateCharaFilterFunc(state, locale="en") {
     return ([key, val]) => (
         (filterElement == "all" || val.element == filterElement) &&
         (filterText == "" || val[locale].toLowerCase().indexOf(filterText.toLowerCase()) != -1) &&
-        (filterRace === "all" || val.race.includes(filterRace)) &&
+        (filterRace === "all" || val.race === filterRace || val.race.includes(filterRace)) &&
         (filterType === "all" || val.type === filterType) &&
         (filterFav === "all" || [val.fav1, val.fav2].includes(filterFav)) &&
-        (filterSex === "all" || val.sex.includes(filterSex)));
+        (filterSex === "all" || val.sex === filterSex || val.sex.match(new RegExp("\\b" + filterSex + "\\b"))));
 }
 
 module.exports._generateCharaFilterFunc = _generateCharaFilterFunc;

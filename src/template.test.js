@@ -24,51 +24,40 @@ describe("_generateCharaFilterFunc", () => {
         "D": Chara("D", "dark", "male/female", "attack", "erune", "gun", "sword"),
     };
 
-    it("filter by name", () => {
-        const state = Object.assign({}, defaultState, {filterText: "A"});
+    const search = (userSelect) => {
+        const state = Object.assign({}, defaultState, userSelect);
         const func = _generateCharaFilterFunc(state);
-        const result = Array.from(Object.entries(charaData).filter(func));
+        return Array.from(Object.entries(charaData).filter(func));
+    };
 
+    test("filter by name", () => {
+        const result = search({filterText: "A"});
         expect(result.length).toBe(1);
     });
 
-    it("filter by fire element", () => {
-        const state = Object.assign({}, defaultState, {filterElement: "fire"});
-        const func = _generateCharaFilterFunc(state);
-        const result = Array.from(Object.entries(charaData).filter(func));
-
+    test("filter by fire element", () => {
+        const result = search({filterElement: "fire"});
         expect(result.length).toBe(3);
     });
 
-    it("filter by sex", () => {
-        const state = Object.assign({}, defaultState, {filterSex: "female"});
-        const func = _generateCharaFilterFunc(state);
-        const result = Array.from(Object.entries(charaData).filter(func));
-
-        expect(result.length).toBe(2);
+    test("filter by sex", () => {
+        expect(search({filterSex: "male"}).length).toBe(3);
+        expect(search({filterSex: "female"}).length).toBe(2);
+        expect(search({filterSex: "male/female"}).length).toBe(1);
     });
 
-    it("filter by type", () => {
-        const state = Object.assign({}, defaultState, {filterType: "balance"});
-        const func = _generateCharaFilterFunc(state);
-        const result = Array.from(Object.entries(charaData).filter(func));
-
+    test("filter by type", () => {
+        const result = search({filterType: "balance"});
         expect(result.length).toBe(3);
     });
 
-    it("filter by race", () => {
-        const state = Object.assign({}, defaultState, {filterRace: "human"});
-        const func = _generateCharaFilterFunc(state);
-        const result = Array.from(Object.entries(charaData).filter(func));
-
+    test("filter by race", () => {
+        const result = search({filterRace: "human"});
         expect(result.length).toBe(3);
     });
 
-    it("filter by favorite weapon", () => {
-        const state = Object.assign({}, defaultState, {filterFav: "sword"});
-        const func = _generateCharaFilterFunc(state);
-        const result = Array.from(Object.entries(charaData).filter(func));
-
+    test("filter by favorite weapon", () => {
+        const result = search({filterFav: "sword"});
         expect(result.length).toBe(2);
     });
 });
