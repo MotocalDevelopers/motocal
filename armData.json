@@ -19058,6 +19058,25 @@
         "imageURL": "./imgs/1040904300.png",
         "en": "[4★] Ameno Habakiri"
     },
+    "タミン・サリ": {
+        "ja": "タミン・サリ",
+        "element": "light",
+        "type": "dagger",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 38,
+        "minattack": 410,
+        "hp": 259,
+        "attack": 2415,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040112200.png",
+        "en": "Taming Sari"
+    },
     "ピンクグリモワール": {
         "ja": "ピンクグリモワール",
         "element": "water",
