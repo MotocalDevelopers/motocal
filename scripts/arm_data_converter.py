@@ -967,6 +967,7 @@ skillnamelist["shinTenNoInori"] = {
 skillnamelist["normalDamageLimit7"] = {
     u"炎熱の刀身": "fire",
     u"賢者の加護": "earth",
+    u"英雄の体躯": "light"
 }
 skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
