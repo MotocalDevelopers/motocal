@@ -1030,6 +1030,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             ougiDamageLimitValues: ougiDamageLimitValues,
             normalDamageLimitValuesWithoutCritical: normalDamageLimitValuesWithoutCritical,
             ougiDamageLimitValuesWithoutCritical: ougiDamageLimitValuesWithoutCritical,
+            chainBurstSupplemental: chainBurstSupplemental,
         };
     }
 
@@ -1037,7 +1038,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     var crit_average = 0.0;
     var totalExpected_average = 0.0;
     var averageCyclePerTurn = 0.0;
-    var averageChainBurst = 0.0;
     var totalOugiDamage = 0.0;
 
     var cnt = 0.0;
@@ -1047,7 +1047,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             crit_average += res[key].criticalAttack;
             totalExpected_average += res[key].totalExpected;
             averageCyclePerTurn += res[key].expectedCycleDamagePerTurn;
-            averageChainBurst += res[key].chainBurst;
             totalOugiDamage += res[key].ougiDamage;
             cnt += 1.0
         }
@@ -1057,13 +1056,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     res["Djeeta"]["averageCriticalAttack"] = crit_average / cnt;
     res["Djeeta"]["averageTotalExpected"] = totalExpected_average / cnt;
     res["Djeeta"]["averageCyclePerTurn"] = averageCyclePerTurn / cnt;
-    res["Djeeta"]["averageChainBurst"] = averageChainBurst / cnt;
+    res["Djeeta"]["averageChainBurst"] = res["Djeeta"]["chainBurstSupplemental"] + module.exports.calcChainBurst(totalOugiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals["Djeeta"].element, prof.enemyElement), res["Djeeta"]["skilldata"]["enemyResistance"], res["Djeeta"]["skilldata"]["chainDamageUP"], res["Djeeta"]["skilldata"]["chainDamageLimit"]);
     res["Djeeta"]["totalOugiDamage"] = totalOugiDamage;
-    res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
+    res["Djeeta"]["totalOugiDamageWithChain"] = (buff["chainNumber"] > 1) ? (totalOugiDamage + res["Djeeta"]["averageChainBurst"]) : totalOugiDamage;
 
-    for (var key in totals) {
+    for (key in totals) {
         res[key]["totalOugiDamage"] = totalOugiDamage;
-        res[key]["ougiDamageWithChainDamage"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
+        res[key]["ougiDamageWithChainDamage"] = res["Djeeta"]["totalOugiDamageWithChain"];
     }
 
     return res;
