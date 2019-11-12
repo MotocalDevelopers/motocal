@@ -19117,6 +19117,27 @@
         "imageURL": "./imgs/1040416100.png",
         "en": "Nereus Staff"
     },
+    "[4凸]ネーレウスの杖": {
+        "ja": "[4凸]ネーレウスの杖",
+        "element": "water",
+        "type": "wand",
+        "skill1": "normalL",
+        "skill2": "opus-normalElement",
+        "element2": "water",
+        "skill3": "kaijinnoyogen",
+        "element3": "water",
+        "minhp": 48,
+        "minattack": 360,
+        "hp": 338,
+        "attack": 2648,
+        "series": "none",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": 280,
+        "attacklv100": 2190,
+        "imageURL": "./imgs/1040416100.png",
+        "en": "[4★] Nereus Staff"
+    },
     "ピンクグリモワール": {
         "ja": "ピンクグリモワール",
         "element": "water",

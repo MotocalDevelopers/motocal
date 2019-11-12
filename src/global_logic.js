@@ -1853,6 +1853,14 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                     } else if (stype == 'rigaiBishojo') {
                         // skill is all allies not restricted to element
                         totals[key]["criticalDamageLimit"] += comb[i] * 0.05;
+                    } else if (stype == 'wand-count') {
+                        let numOfWand = 0;
+                        for (let i = 0; i < arml.length; i++) {
+                            if (comb[i] > 0) {
+                                numOfWand += arml[i].armType === "wand" ? comb[i] : 0;
+                            }
+                        }
+                        totals[key]["normalHP"] += amount * numOfWand;
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
