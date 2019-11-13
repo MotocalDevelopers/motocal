@@ -506,7 +506,7 @@ var ResultList = CreateClass({
         }
         pushBuffInfo("DAバフ", parseInt(prof.daBuff), addPercent);
         pushBuffInfo("TAバフ", parseInt(prof.taBuff), addPercent);
-        pushBuffInfo("通常追加ダメージバフバフ", parseInt(prof.additionalDamageBuff), addPercent);
+        pushBuffInfo("追加ダメージバフ", parseInt(prof.additionalDamageBuff), addPercent);
         pushBuffInfo("ダメージ上限バフ", parseInt(prof.damageLimitBuff), addPercent);
         pushBuffInfo("奥義ダメージバフ", parseInt(prof.ougiDamageBuff), addPercent);
         pushBuffInfo("奥義ダメージ上限バフ", parseInt(prof.ougiDamageLimitBuff), addPercent);
