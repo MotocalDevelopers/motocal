@@ -1846,6 +1846,12 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (amount === 'all-unique') {
                             isAllUniqueArm = epic.isAllUniqueArm(arml, comb);
                         }
+                    } else if (stype.indexOf('wandCount') > -1) {
+                        countWand = countWand ? countWand : epic.countWandType(arml, comb);
+                         if (stype === 'wandCountHP') {
+                            totals[key]["normalHP"] += amount * countWand;
+                        }
+                         // Any other skill depend on wand count here
                     } else if (stype == 'cherubimKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'sunbladeKonshin') {
@@ -1853,14 +1859,6 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                     } else if (stype == 'rigaiBishojo') {
                         // skill is all allies not restricted to element
                         totals[key]["criticalDamageLimit"] += comb[i] * 0.05;
-                    } else if (stype == 'wand-count') {
-                        let numOfWand = 0;
-                        for (let i = 0; i < arml.length; i++) {
-                            if (comb[i] > 0) {
-                                numOfWand += arml[i].armType === "wand" ? comb[i] : 0;
-                            }
-                        }
-                        totals[key]["normalHP"] += amount * numOfWand;
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
