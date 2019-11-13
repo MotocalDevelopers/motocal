@@ -2219,6 +2219,11 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
         "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
     },
+    "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))": {
+        "en": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "zh": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+    },
     "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))": {
         "en": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",
         "ja": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
@@ -3145,6 +3150,11 @@ var multiLangData = {
         "en": "Transcendent Cuteness",
         "ja": "理外の美少女",
         "zh": "理外の美少女",
+    },
+    "斧キャラの攻撃力とTA上昇(小)": {
+        "en": "Axe chara ATK and TA up (small)",
+        "ja": "斧キャラの攻撃力とTA上昇(小)",
+        "zh": "斧キャラの攻撃力とTA上昇(小)",
     },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
