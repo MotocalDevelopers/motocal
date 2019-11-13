@@ -1096,8 +1096,8 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchCharaHP) {
-                    let {totalHP, remainHP} = m.data[key]; 
                     for (key in m.data) {
+                        let {totalHP, remainHP} = m.data[key]; 
                         charaDetail[key].push(
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
@@ -1496,11 +1496,11 @@ var Result = CreateClass({
                                 ++colSize;
                                 if (parseInt(am) > 0) {
                                     return (<td key={ind}><span
-                                        className="text-info"><strong>{am} {intl.translate("本", locale)}</strong></span>
+                                        className="text-info"><strong>{am} </strong></span>
                                     </td>);
                                 } else {
                                     return (<td key={ind}><span
-                                        className="text-muted">{am} {intl.translate("本", locale)}</span></td>);
+                                        className="text-muted">{am} </span></td>);
                                 }
                             }
                         })}
@@ -1579,7 +1579,7 @@ var StoredListEditor = CreateClass({
                                             }} name={ind} value={names[ind]} onChange={handleNameChange}/></td>
                                         </TextWithTooltip>
                                         {v.map(function (num, ind2) {
-                                            return (<td key={ind2}>{num}{intl.translate("本", locale)}</td>)
+                                            return (<td key={ind2}>{num}</td>)
                                         })}
                                         <td><Button id={ind} onClick={removeOneStoredList}
                                                     bsStyle="primary">{intl.translate("削除", locale)}</Button></td>
