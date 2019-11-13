@@ -9,8 +9,9 @@ script:
 deploy:
   - provider: pages
     skip_cleanup: true
-    repo: MotocalDevelopers/motocal-prod
+    repo: $GITHUB_PAGES_REPO
     github_token: $GITHUB_PROD_TOKEN
     local_dir: dist
     on:
       branch: master
+      condition: $GITHUB_PAGES_REPO != '' && $GITHUB_PROD_TOKEN != ''
