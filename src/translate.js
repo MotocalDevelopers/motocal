@@ -829,7 +829,7 @@ var multiLangData = {
         "zh": "攻击力",
     },
     "マスボATK説明": {
-        "en": "The value of Job Master bonus \"ATK+○○%\"",
+        "en": "The value of Job Master bonus \"ATK+**%\"",
         "ja": "ジョブマスターボーナスの\"攻撃力+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"攻击力+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -839,7 +839,7 @@ var multiLangData = {
         "zh": "HP",
     },
     "マスボHP説明": {
-        "en": "The value of Job Master bonus \"HP+○○%\"",
+        "en": "The value of Job Master bonus \"HP+**%\"",
         "ja": "ジョブマスターボーナスの\"HP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"HP+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -849,7 +849,7 @@ var multiLangData = {
         "zh": "DA",
     },
     "マスボDA説明": {
-        "en": "The value of Job Master bonus \"DA+○○%\"",
+        "en": "The value of Job Master bonus \"DA+**%\"",
         "ja": "ジョブマスターボーナスの\"DA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DA+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -859,7 +859,7 @@ var multiLangData = {
         "zh": "TA",
     },
     "マスボTA説明": {
-        "en": "The value of Job Master bonus \"TA+○○%\"",
+        "en": "The value of Job Master bonus \"TA+**%\"",
         "ja": "ジョブマスターボーナスの\"TA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"TA+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -869,11 +869,30 @@ var multiLangData = {
         "zh": "DMG Cap",
     },
     "マスボダメ上限説明": {
-        "en": "The value of Job Master bonus \"DMG Cap+○○%\"",
+        "en": "The value of Job Master bonus \"DMG Cap+**%\"",
         "ja": "ジョブマスターボーナスの\"ダメージ上限+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DMG Cap+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
-
+    "マスボ奥義ゲージ": {
+        "en": "One-foe Attack Bonus Charge Gain",
+        "ja": "通常攻撃時の奥義ゲージUP",
+        "zh": "One-foe Attack Bonus Charge Gain",
+    },
+    "マスボ奥義ゲージ説明": {
+        "en": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
+        "ja": "ジョブマスターボーナスの\"通常攻撃時の奥義ゲージ上昇+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
+    },
+    /*"マスボメイン武器攻撃力": {
+        "en": "main weapon's ATK",
+        "ja": "メイン武器攻撃力",
+        "zh": "主武器攻撃力",
+    },
+    "マスボメイン武器攻撃力UP説明": {
+        "en": "The value of Job Master bonus \"Boost to main weapon's ATK when main weapon is a ***+**%\"",
+        "ja": "。ジョブマスターボーナスの\"メイン武器が○○の時、メイン武器の攻撃力UP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "The value of Job Master bonus \"Boost to main weapon's ATK when main weapon is a ***+**%\"",
+    }, */
     "ジータさん属性": {
         "en": "Player's Element",
         "ja": "ジータさん\n属性",
@@ -1731,8 +1750,8 @@ var multiLangData = {
     },
     "本": {
         "en": "",
-        "ja": "",
-        "zh": "",
+        "ja": "本",
+        "zh": "把",
     },
     "パーティ全体バフ": {
         "en": "Buff for Party",
@@ -2009,6 +2028,11 @@ var multiLangData = {
         "en": "Maximum",
         "ja": "最大本数",
         "zh": "最多数量",
+    },
+    "最小": {
+        "en": "Min",
+        "ja": "最小",
+        "zh": "最少",
     },
     "何本追加": {
         "en": "How many?",
