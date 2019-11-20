@@ -214,6 +214,7 @@ var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var masterDAList = [0, 1, 2, 3, 4];
 var masterTAList = [0, 1, 2];
 var masterDamageLimitList = [0, 1];
+var masterOugiGageList = [0, 1];
 var HPList = [
     100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81,
     80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61,
@@ -2103,16 +2104,18 @@ var supportAbilities = {
         "value": 0.10
     },
     "ougi_damage_up_50": {
-        "name": "全体奥義ダメージ50%UP(シエテ)",
+        "name": "風属性奥義ダメージ50%UP(シエテ)",
         "type": "ougiDamageBuff",
-        "range": "all",
+        "range": range.element.wind,
         "value": 0.50
     },
     "ougi_damage_up_50_cap_10": {
-        "name": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
-        "type": "ougiDamageBuff_capBuff",
-        "range": "all",
-        "value": 0.50
+        "name": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "type": "composite",
+        "value": [
+            {type: "ougiDamageBuff", range: range.element.wind, assign: "add", value: 0.50},
+            {type: "ougiDamageLimitBuff", range: range.element.wind, assign: "add", value: 0.10}
+        ]
     },
     "emnity_all_SL10": {
         "name": "全体背水効果(ザルハメリナ)",
@@ -2966,6 +2969,9 @@ module.exports.selector.masterTA = masterTAList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.masterDamageLimit = masterDamageLimitList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.masterOugiGage = masterOugiGageList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.chainNumber = chainNumberList.map(function (opt) {

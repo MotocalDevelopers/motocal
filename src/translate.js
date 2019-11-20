@@ -829,7 +829,7 @@ var multiLangData = {
         "zh": "攻击力",
     },
     "マスボATK説明": {
-        "en": "The value of Job Master bonus \"ATK+○○%\"",
+        "en": "The value of Job Master bonus \"ATK+**%\"",
         "ja": "ジョブマスターボーナスの\"攻撃力+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"攻击力+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -839,7 +839,7 @@ var multiLangData = {
         "zh": "HP",
     },
     "マスボHP説明": {
-        "en": "The value of Job Master bonus \"HP+○○%\"",
+        "en": "The value of Job Master bonus \"HP+**%\"",
         "ja": "ジョブマスターボーナスの\"HP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"HP+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -849,7 +849,7 @@ var multiLangData = {
         "zh": "DA",
     },
     "マスボDA説明": {
-        "en": "The value of Job Master bonus \"DA+○○%\"",
+        "en": "The value of Job Master bonus \"DA+**%\"",
         "ja": "ジョブマスターボーナスの\"DA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DA+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -859,7 +859,7 @@ var multiLangData = {
         "zh": "TA",
     },
     "マスボTA説明": {
-        "en": "The value of Job Master bonus \"TA+○○%\"",
+        "en": "The value of Job Master bonus \"TA+**%\"",
         "ja": "ジョブマスターボーナスの\"TA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"TA+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -869,11 +869,30 @@ var multiLangData = {
         "zh": "DMG Cap",
     },
     "マスボダメ上限説明": {
-        "en": "The value of Job Master bonus \"DMG Cap+○○%\"",
+        "en": "The value of Job Master bonus \"DMG Cap+**%\"",
         "ja": "ジョブマスターボーナスの\"ダメージ上限+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DMG Cap+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
-
+    "マスボ奥義ゲージ": {
+        "en": "One-foe Attack Bonus Charge Gain",
+        "ja": "通常攻撃時の奥義ゲージUP",
+        "zh": "One-foe Attack Bonus Charge Gain",
+    },
+    "マスボ奥義ゲージ説明": {
+        "en": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
+        "ja": "ジョブマスターボーナスの\"通常攻撃時の奥義ゲージ上昇+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
+    },
+    /*"マスボメイン武器攻撃力": {
+        "en": "main weapon's ATK",
+        "ja": "メイン武器攻撃力",
+        "zh": "主武器攻撃力",
+    },
+    "マスボメイン武器攻撃力UP説明": {
+        "en": "The value of Job Master bonus \"Boost to main weapon's ATK when main weapon is a ***+**%\"",
+        "ja": "。ジョブマスターボーナスの\"メイン武器が○○の時、メイン武器の攻撃力UP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "The value of Job Master bonus \"Boost to main weapon's ATK when main weapon is a ***+**%\"",
+    }, */
     "ジータさん属性": {
         "en": "Player's Element",
         "ja": "ジータさん\n属性",
@@ -1716,8 +1735,8 @@ var multiLangData = {
     },
     "本": {
         "en": "",
-        "ja": "",
-        "zh": "",
+        "ja": "本",
+        "zh": "把",
     },
     "パーティ全体バフ": {
         "en": "Buff for Party",
@@ -1995,6 +2014,11 @@ var multiLangData = {
         "ja": "最大本数",
         "zh": "最多数量",
     },
+    "最小": {
+        "en": "Min",
+        "ja": "最小",
+        "zh": "最少",
+    },
     "何本追加": {
         "en": "How many?",
         "ja": "何本追加しますか？",
@@ -2200,20 +2224,20 @@ var multiLangData = {
         "ja": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
         "zh": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",
     },
-    "全体奥義ダメージ50%UP(シエテ)": {
-        "en": "50% boost to C.A. DMG for all allies. (Seofon)",
-        "ja": "全体奥義ダメージ50%UP(シエテ)",
-        "zh": "全体奥義ダメージ50%UP(シエテ)",
+    "風属性奥義ダメージ50%UP(シエテ)": {
+        "en": "50% boost to C.A. DMG for wind allies. (Seofon)",
+        "ja": "風属性奥義ダメージ50%UP(シエテ)",
+        "zh": "風属性奥義ダメージ50%UP(シエテ)",
     },
     "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)": {
         "en": "10% boost to C.A. DMG for all allies. (μ's Second-Years)",
         "ja": "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)",
         "zh": "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)",
     },
-    "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)": {
-        "en": "50% boost to C.A. DMG and 10% boost to C.A. DMG cap for all allies. (5★ Seofon)",
-        "ja": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
-        "zh": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+    "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)": {
+        "en": "50% boost to C.A. DMG and 10% boost to C.A. DMG cap for wind allies. (5★ Seofon)",
+        "ja": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "zh": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
     },
     "全体背水効果(ザルハメリナ)": {
         "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina)",
