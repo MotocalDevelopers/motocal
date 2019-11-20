@@ -236,6 +236,16 @@ var multiLangData = {
         "ja": "属性バフ",
         "zh": "属性Buff",
     },
+    "セラフィックバフ": {
+        "en": "Seraphic Buff",
+        "ja": "セラフィックバフ",
+        "zh": "セラフィックバフ",
+    },
+    "セラフィックバフ説明": {
+        "en": "DMG for one-foe attacks and counterattacks is amplified",
+        "ja": "自分の通常攻撃の与ダメージUP",
+        "zh": "自分の通常攻撃の与ダメージUP",
+    },
     "属性バフ説明": {
         "en": "Element Buff. Ultima Weapon(30%) etc.",
         "ja": "属性枠のバフ。オメガ武器(30%)など",
