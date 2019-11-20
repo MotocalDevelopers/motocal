@@ -5411,6 +5411,28 @@
         "imageURL": "./charaimgs/3040000000_03.png",
         "en": "Gawain"
     },
+    "ジャンヌダルク(リミテッドver)": {
+        "name": "ジャンヌダルク(リミテッドver)",
+        "ja": "ジャンヌダルク(リミテッドver)",
+        "element": "light",
+        "type": "balance",
+        "race": "human",
+        "sex": "female",
+        "fav1": "sword",
+        "fav2": "spear",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "290",
+        "hp": "1580",
+        "minattack": "1650",
+        "attack": "8400",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040245000_01.png",
+        "en": "Jeanne d'Arc (Grand)"
+    },
     "ノイシュ": {
         "name": "ノイシュ",
         "ja": "ノイシュ",
