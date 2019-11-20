@@ -252,6 +252,10 @@ skillnamelist["normalKatsumiM"] = {
     u"憎悪の克己": "dark"
 }
 
+skillnamelist["opus-normalElement"] = {
+    u"雷電の進境": "light"
+}
+
 skillnamelist["normalRasetsuM"] = {
     u"業火の羅刹": "fire",
     u"渦潮の羅刹": "water",
