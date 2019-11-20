@@ -5433,6 +5433,28 @@
         "imageURL": "./charaimgs/3040245000_01.png",
         "en": "Jeanne d'Arc (Grand)"
     },
+    "シトリ": {
+        "name": "シトリ",
+        "ja": "シトリ",
+        "element": "light",
+        "type": "balance",
+        "race": "human",
+        "sex": "female",
+        "fav1": "bow",
+        "fav2": "katana",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "300",
+        "hp": "1650",
+        "minattack": "1500",
+        "attack": "7750",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040244000_01.png",
+        "en": "Shitori"
+    },
     "ノイシュ": {
         "name": "ノイシュ",
         "ja": "ノイシュ",
