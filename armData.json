@@ -25415,5 +25415,24 @@
         "maxlv": 75,
         "imageURL": "./imgs/1039900000.png",
         "en": "Fury Stone"
+    },
+    "キューブ・スタッフ": {
+        "ja": "キューブ・スタッフ",
+        "element": "wind",
+        "type": "wand",
+        "skill1": "non",
+        "skill2": "normalM",
+        "element2": "wind",
+        "skill3": "non",
+        "element3": "wind",
+        "minhp": 31,
+        "minattack": 257,
+        "hp": 194,
+        "attack": 1506,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 75,
+        "imageURL": "./imgs/1030406100.png",
+        "en": "Cube Staff"
     }
 }
