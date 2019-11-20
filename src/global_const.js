@@ -2292,7 +2292,7 @@ var supportAbilities = {
         "range": range.element.wind,
         "value": 0.15
     },
-    "element_buff_boost_light_30": { // UNUSED
+    "element_buff_boost_light_30": {
         "name": "味方全体の強化効果「光属性攻撃UP」の効果30%UP。",
         "type": "element_buff_boost",
         "range": range.element.light,
@@ -2418,6 +2418,12 @@ var supportAbilities = {
         "assign": "multiply",
         "value": 0.30,
     },
+    "additional_damage_on_ta_light_10": {
+        "name": "光属性キャラがトリプルアタック時に光属性追撃効果",
+        "type": "additionalDamageXA",
+        "range": range.element.light,
+        "value": [0.0, 0.0, 0.1]
+    }
 };
 
 // exports

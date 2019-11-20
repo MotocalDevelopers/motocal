@@ -229,9 +229,9 @@ supportAbilist["element_buff_boost_earth_30"] = {
 supportAbilist["element_buff_boost_wind_30"] = {
     u"踊り狂う暴風"
 }
-# supportAbilist["element_buff_boost_light_30"] = {
-#     u""
-# }
+supportAbilist["element_buff_boost_light_30"] = {
+    u"聖布の乙女"
+}
 # supportAbilist["element_buff_boost_dark_30"] = {
 #     u""
 # }
@@ -292,6 +292,9 @@ supportAbilist["benedikutosu_soure"] = {
 }
 supportAbilist["otherbuff_own_30"] = {
     u"アインザーム"
+}
+supportAbilist["additional_damage_on_ta_light_10"] = {
+    u"ドレス・ラ・ピュセル"
 }
 # Patching DA TA
 patching = OrderedDict()
