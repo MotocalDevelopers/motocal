@@ -3516,6 +3516,11 @@ var multiLangData = {
         "ja": "エピックブランド・ゲイン",
         "zh": "Grand Epic",
     },
+    "装備している「杖」の数が多いほど最大HP上昇": {
+        "en": "Boost HP by Number of Staffs",
+        "ja": "装備している「杖」の数が多いほど最大HP上昇",
+        "zh": "装備している「杖」の数が多いほど最大HP上昇",
+    },
     "レゾナンス・スタッフ": {
         "en": "Staff Resonance",
         "ja": "レゾナンス・スタッフ",

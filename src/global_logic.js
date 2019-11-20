@@ -1849,6 +1849,12 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (amount === 'all-unique') {
                             isAllUniqueArm = epic.isAllUniqueArm(arml, comb);
                         }
+                    } else if (stype.indexOf('wandCount') > -1) {
+                        countWand = countWand ? countWand : epic.countWandType(arml, comb);
+                         if (stype === 'wandCountHP') {
+                            totals[key]["normalHP"] += amount * countWand;
+                        }
+                         // Any other skill depend on wand count here
                     } else if (stype == 'cherubimKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'sunbladeKonshin') {
