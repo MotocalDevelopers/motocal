@@ -11306,5 +11306,27 @@
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030275000_01.png",
         "en": "La Coiffe"
+    },
+    "クルーニ": {
+        "name": "クルーニ",
+        "ja": "クルーニ",
+        "element": "wind",
+        "type": "pecu",
+        "race": "erune",
+        "sex": "male",
+        "fav1": "wand",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "180",
+        "hp": "750",
+        "minattack": "1250",
+        "attack": "6500",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 3.5,
+        "imageURL": "./charaimgs/3030278000_01.png",
+        "en": "Krugne (SR)"
     }
 }
