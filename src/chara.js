@@ -284,6 +284,7 @@ var Chara = CreateClass({
             elementBuff: 0,
             otherBuff: 0,
             otherBuff2: 0,
+            seraphicBuff: 0,
             additionalDamageBuff: 0,
             supplementalDamageBuff: 0,
             daBuff: 0,
@@ -629,6 +630,12 @@ var Chara = CreateClass({
                                 <th className="bg-primary">{intl.translate("その他バフ2", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.otherBuff2}
                                                  onChange={this.handleSelectEvent.bind(this, "otherBuff2")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="seraphicBuff">
+                                <th className="bg-primary">{intl.translate("セラフィックバフ", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.seraphicBuff}
+                                                             onChange={this.handleSelectEvent.bind(this, "seraphicBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="criticalBuff">
