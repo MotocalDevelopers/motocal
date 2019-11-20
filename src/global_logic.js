@@ -103,7 +103,7 @@ module.exports._initLimitValues = _initLimitValues;
  */
 module.exports.sum = (arr, total = 0) => {
     for (const num of arr) {
-        total += parseInt(num);
+        total += parseFloat(num);
     }
     return total;
 };
@@ -732,7 +732,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         additionalDamage += totals[key]["additionalDamageBuff"];
         additionalDamage += buff["additionalDamage"];
         additionalDamage += prof.shiToAiNoSekai ? 0.30 : 0;
-        if (totals[key]["additionalDamageXA"]) {
+        if (this.sum(totals[key]["additionalDamageXA"]) > 0) {
             //additionalDamage based on attacks per turn (sturm support ability-like)
             let [saDamage, daDamage, taDamage] = totals[key]["additionalDamageXA"];
             additionalDamage += taRate * taDamage; // additionalDamage On Triple Attack
@@ -960,7 +960,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["hpRatio"] = hpCoeff;
         coeffs["ougiGageBuff"] = ougiGageBuff - 1.0;
         coeffs["additionalDamage"] = additionalDamage;
-        coeffs["additionalDamageXA"] = totals[key]["additionalDamageXA"];
+        coeffs["additionalDamageXA"] = this.sum(totals[key]["additionalDamageXA"]) > 0 ? totals[key]["additionalDamageXA"] : null;
         coeffs["ougiDamageUP"] = ougiDamageUP;
         coeffs["chainDamageUP"] = chainDamageUP;
         coeffs["damageUP"] = damageUP;
@@ -2333,7 +2333,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 chainDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
-                additionalDamageXA: null,
+                additionalDamageXA: [0, 0, 0],
                 ougiDebuff: 0,
                 isConsideredInAverage: true,
                 job: job,
@@ -2503,7 +2503,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 omegaOugiDamageLimit: 0,
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
-                additionalDamageXA: null,
+                additionalDamageXA: [0, 0, 0],
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
                 normalBuff: charaBuffList["normalBuff"],
@@ -2842,9 +2842,11 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["ougiDamageLimitBuff"] += support.value;
                     continue;
                 case "additionalDamageXA":
-                    // No chances to stack.
+                    // Implemented Stacking. Can someone verify?
                     for (let [name, chara] of support.range(totals, key)) {
-                        chara["additionalDamageXA"] = support.value;
+                        for (let i = 0; i < support.value.length; i++) {
+                            chara["additionalDamageXA"][i] += support.value[i];
+                        }
                     }
                     continue;
                 case "element_buff_boost_damageUP_own_10":
