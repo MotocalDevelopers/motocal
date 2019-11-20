@@ -669,10 +669,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate));
 
         var damageUP = totals[key]["charaUniqueDamageUP"];
+        let damageUPWithoutOugi = damageUP;
         if (totals[key]["typeBonus"] == 1.5) {
             // Supplemental damage rise support ability does not overlap with Tenshi skill (the strongest effect overwrites the lesser)
             damageUP += Math.max(totals[key]["tenshiDamageUP"], totals[key]["charaDamageUP"]);
             damageUP += 0.01 * totalSummon["tenshiDamageUP"];
+            damageUPWithoutOugi = damageUP;
+            damageUP += totals[key]["seraphicBuff"] + buff["seraphic"];
         }
 
         var criticalArray = {};
@@ -837,7 +840,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // Comprehensive attack power * Expected skill expectation * Multi-shot expected value
         var sougou_kaisuu_gikou = parseInt(totalAttack * criticalRatio * expectedAttack);
 
-        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, totals[key]["ougiRatio"], ougiDamageUP, damageUP, ougiFixedDamage, totals[key]["ougiBonusPlainDamage"], ougiDamageLimitValues);
+        var ougiDamage = module.exports.calcOugiDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, totals[key]["ougiRatio"], ougiDamageUP, damageUPWithoutOugi, ougiFixedDamage, totals[key]["ougiBonusPlainDamage"], ougiDamageLimitValues);
 
         var chainBurstSupplemental = 0;
         //Supplemental Damage is a "static" damage that is added after damage cap/defense/etc is calculated.
@@ -854,7 +857,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             supplementalDamageArray["バフ"] = {
                 damage: supplementalDamageBuff,
                 damageWithoutCritical: supplementalDamageBuff,
-                ougiDamage: supplementalDamageBuff * (1.0 + damageUP),
+                ougiDamage: supplementalDamageBuff * (1.0 + damageUPWithoutOugi),
                 chainBurst: supplementalDamageBuff,
                 type: "other",
             };
@@ -874,7 +877,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             supplementalDamageArray["不壊の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
-                ougiDamage: value * (1.0 + damageUP),
+                ougiDamage: value * (1.0 + damageUPWithoutOugi),
                 chainBurst: value,
                 threshold: 0.80,
                 type: "hp_based",
@@ -886,7 +889,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             supplementalDamageArray["凱歌の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
-                ougiDamage: value * (1.0 + damageUP),
+                ougiDamage: value * (1.0 + damageUPWithoutOugi),
                 chainBurst: value,
                 type: "djeeta_buff_based",
                 extraValue: djeetaBuffCount,
@@ -903,7 +906,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             supplementalDamageArray["致命の誓約"] = {
                 damage: value,
                 damageWithoutCritical: 0,
-                ougiDamage: value * (1.0 + damageUP),
+                ougiDamage: value * (1.0 + damageUPWithoutOugi),
                 chainBurst: 0,
                 type: "on_critical",
                 extraValue: (100 * critRate).toFixed(2),
@@ -914,7 +917,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             supplementalDamageArray["災禍の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
-                ougiDamage: value * (1.0 + damageUP),
+                ougiDamage: value * (1.0 + damageUPWithoutOugi),
                 chainBurst: value,
                 type: "boss_debuff_based",
                 extraValue: enemyDebuffCount,
@@ -1478,6 +1481,7 @@ module.exports.getTotalBuff = function (prof) {
         element: 0.0,
         other: 0.0,
         other2: 0.0,
+        seraphic: 0.0,
         zenith1: 0.0,
         zenith2: 0.0,
         zenithDA: 0.0,
@@ -1516,6 +1520,7 @@ module.exports.getTotalBuff = function (prof) {
     if (!isNaN(prof.daBuff)) totalBuff["da"] += 0.01 * parseFloat(prof.daBuff);
     if (!isNaN(prof.taBuff)) totalBuff["ta"] += 0.01 * parseFloat(prof.taBuff);
     if (!isNaN(prof.otherBuff2)) totalBuff["other2"] += 0.01 * parseInt(prof.otherBuff2);
+    if (!isNaN(prof.seraphicBuff)) totalBuff["seraphic"] += 0.01 * parseInt(prof.seraphicBuff);
     if (!isNaN(prof.additionalDamageBuff)) totalBuff["additionalDamage"] += 0.01 * parseInt(prof.additionalDamageBuff);
     if (!isNaN(prof.ougiGageUpOugiBuff)) totalBuff["ougiGageUpOugi"] += parseInt(prof.ougiGageUpOugiBuff);
     if (!isNaN(prof.uplift)) totalBuff["uplift"] += 0.01 * parseInt(prof.uplift);
@@ -2232,6 +2237,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
         personalElementBuff: 0.0,
         personalOtherBuff: 0.0,
         personalOtherBuff2: 0.0,
+        personalSeraphicBuff: 0.0,
         personalHPBuff: 0.0,
         personalDABuff: 0.0,
         personalTABuff: 0.0,
@@ -2342,6 +2348,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 elementBuffBoostBuff: 0,
                 otherBuff: djeetaBuffList["personalOtherBuff"],
                 otherBuff2: djeetaBuffList["personalOtherBuff2"],
+                seraphicBuff: djeetaBuffList["personalSeraphicBuff"],
                 HPBuff: djeetaBuffList["personalHPBuff"],
                 DABuff: djeetaBuffList["personalDABuff"],
                 TABuff: djeetaBuffList["personalTABuff"],
@@ -2400,6 +2407,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 elementBuff: 0.0,
                 otherBuff: 0.0,
                 otherBuff2: 0.0,
+                seraphicBuff: 0.0,
                 hpBuff: 0.0,
                 daBuff: 0.0,
                 taBuff: 0.0,
@@ -2511,6 +2519,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 elementBuffBoostBuff: 0,
                 otherBuff: charaBuffList["otherBuff"],
                 otherBuff2: charaBuffList["otherBuff2"],
+                seraphicBuff: charaBuffList["seraphicBuff"],
                 HPBuff: charaBuffList["hpBuff"],
                 DABuff: charaBuffList["daBuff"],
                 TABuff: charaBuffList["taBuff"],
