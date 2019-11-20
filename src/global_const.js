@@ -2106,16 +2106,18 @@ var supportAbilities = {
         "value": 0.10
     },
     "ougi_damage_up_50": {
-        "name": "全体奥義ダメージ50%UP(シエテ)",
+        "name": "風属性奥義ダメージ50%UP(シエテ)",
         "type": "ougiDamageBuff",
-        "range": "all",
+        "range": range.element.wind,
         "value": 0.50
     },
     "ougi_damage_up_50_cap_10": {
-        "name": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
-        "type": "ougiDamageBuff_capBuff",
-        "range": "all",
-        "value": 0.50
+        "name": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "type": "composite",
+        "value": [
+            {type: "ougiDamageBuff", range: range.element.wind, assign: "add", value: 0.50},
+            {type: "ougiDamageLimitBuff", range: range.element.wind, assign: "add", value: 0.10}
+        ]
     },
     "emnity_all_SL10": {
         "name": "全体背水効果(ザルハメリナ)",

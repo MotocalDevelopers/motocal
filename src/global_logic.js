@@ -2866,18 +2866,6 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["charaDamageUP"] += support.value;
                     totals[key]["ougiDamageLimitBuff"] += support.value;
                     continue;
-                case "ougiDamageBuff_capBuff":
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            totals[key2]["ougiDamageBuff"] += support.value;
-                            totals[key2]["ougiDamageLimitBuff"] += 0.10;
-                        }
-                    } else {
-                        // Calculate yourself only if you do not put it in the average
-                        totals[key]["ougiDamageBuff"] += support.value;
-                        totals[key]["ougiDamageLimitBuff"] += 0.10;
-                    }
-                    continue;
                 case "additionalDamageXA":
                     // currently, range: own only, and no chances to stack.
                     totals[key]["additionalDamageXA"] = support.value;
