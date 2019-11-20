@@ -984,6 +984,7 @@ var skilltypes = {
     "contentious-covenant": {name: "修羅の誓約", type: "covenant", amount:"contentious"},
     "deleterious-covenant": {name: "致命の誓約", type: "covenant", amount:"deleterious"},
     "calamitous-covenant": {name: "災禍の誓約", type: "covenant", amount:"calamitous"},
+    "zwei-echo": {name: "パープル・ブロウ", type: "echoThirdHit", amount: 0.20},
     "opus-alpha": {name: "ペンデュラム[α]", type: "opusKey", amount: "L"},
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
@@ -1003,7 +1004,8 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
-    "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0}
+    "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
+    "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0}
 };
 
 var cosmosSkills = {
@@ -2103,16 +2105,18 @@ var supportAbilities = {
         "value": 0.10
     },
     "ougi_damage_up_50": {
-        "name": "全体奥義ダメージ50%UP(シエテ)",
+        "name": "風属性奥義ダメージ50%UP(シエテ)",
         "type": "ougiDamageBuff",
-        "range": "all",
+        "range": range.element.wind,
         "value": 0.50
     },
     "ougi_damage_up_50_cap_10": {
-        "name": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
-        "type": "ougiDamageBuff_capBuff",
-        "range": "all",
-        "value": 0.50
+        "name": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "type": "composite",
+        "value": [
+            {type: "ougiDamageBuff", range: range.element.wind, assign: "add", value: 0.50},
+            {type: "ougiDamageLimitBuff", range: range.element.wind, assign: "add", value: 0.10}
+        ]
     },
     "emnity_all_SL10": {
         "name": "全体背水効果(ザルハメリナ)",
