@@ -563,8 +563,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += buff["element"];
         elementCoeff += totals[key]["elementBuff"];
         elementCoeff += totals[key]["elementBuffBoostBuff"];
-        elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
-        elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
+        elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"] * (Math.min(10, Math.max(0, buff["turn"])));
+        elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"] * (Math.min(10, Math.max(0, buff["turn"])));
         elementCoeff += 0.01 * totals[key]["shinTenNoInori"][0] * totals[key]["shinTenNoInori"][1]; //[0]: amount. [1]: stacks number
         elementCoeff += 0.01 * totals[key]["LB"].Element;
 
@@ -1503,6 +1503,7 @@ module.exports.getTotalBuff = function (prof) {
         supplementalDamageBuff: 0,
         //enemyBuffCount: 0,
         enemyDebuffCount: 0,
+        turn: 0,
         retsujitsuNoRakuen: false,
     };
 
@@ -1540,6 +1541,7 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["criticalBuff"] = prof.criticalBuff != undefined ? prof.criticalBuff : [];
     totalBuff["supplementalDamageBuff"] += parseInt(prof.supplementalDamageBuff);
 
+    totalBuff["turn"] = parseInt(prof.turn);
     totalBuff["retsujitsuNoRakuen"] = prof.retsujitsuNoRakuen;
 
     return totalBuff;

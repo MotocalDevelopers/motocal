@@ -477,6 +477,16 @@ var multiLangData = {
         "ja": "もっともっと詳しく計算したい方向けの項目です。",
         "zh": "适合想要进行更加详细的计算的人。",
     },
+    "ターン": {
+        "en": "Turn",
+        "ja": "想定ターン",
+        "zh": "想定ターン",
+    },
+    "ターン説明": {
+        "en": "Turn Number (affects various weapon skill/support ability/etc)",
+        "ja": "何ターン目を想定するか入力して下さい。(隆盛等の一部スキルやサポアビ等に影響)",
+        "zh": "ターン",
+    },
     "敵防御固有値": {
         "en": "Enemy Innate DEF",
         "ja": "敵防御固有値",
