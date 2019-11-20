@@ -3471,6 +3471,11 @@ var multiLangData = {
         "ja": "災禍の誓約",
         "zh": "災禍の誓約",
     },
+    "パープル・ブロウ": {
+        "en": "Bonus Damage on 3rd Attack (%20)",
+        "ja": "3回目の攻撃に闇属性追撃効果 (20%)",
+        "zh": "3回目の攻撃に闇属性追撃効果 (20%)",
+    },
     "ペンデュラム[α]": {
         "en": "Pendulum Key α (Normal Attack Cap 10%)",
         "ja": "ペンデュラム[α](通常上限10%UP)",
