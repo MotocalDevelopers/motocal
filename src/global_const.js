@@ -2319,13 +2319,13 @@ var supportAbilities = {
     "chikara_atsu_no_ha": {
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
-        "range": "own",
+        "range": range.own,
         "value": [0.8, 0.3, 0.0]
     },
     "Revion_kishi_sanshimai": {
         "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
-        "range": "own",
+        "range": range.own,
         "value": [0.0, 0.0, 0.15]
     },
     "element_buff_boost_damageUP_own_10": {

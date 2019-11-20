@@ -2842,8 +2842,10 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["ougiDamageLimitBuff"] += support.value;
                     continue;
                 case "additionalDamageXA":
-                    // currently, range: own only, and no chances to stack.
-                    totals[key]["additionalDamageXA"] = support.value;
+                    // No chances to stack.
+                    for (let [name, chara] of support.range(totals, key)) {
+                        chara["additionalDamageXA"] = support.value;
+                    }
                     continue;
                 case "element_buff_boost_damageUP_own_10":
                     if (when.element_buff(totals[key], buff)) {
