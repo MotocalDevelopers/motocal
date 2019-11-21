@@ -191,6 +191,7 @@ var RegisteredChara = CreateClass({
     },
     render: function () {
         const locale = this.props.locale;
+        const clickedTemplate = this.clickedTemplate;
         const {
             filterText,
             filterElement,
@@ -223,7 +224,7 @@ var RegisteredChara = CreateClass({
         const mapFunc = ([key,val]) =>
             <div className="onechara" key={key}>
                 <p>{val[locale]}</p><br/>
-                <Image rounded onClick={this.clickedTemplate} id={key}
+                <Image rounded onClick={clickedTemplate} id={key}
                        src={val.imageURL} alt={key} onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = "./otherImages/imgError.png"
