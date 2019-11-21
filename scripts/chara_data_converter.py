@@ -26,6 +26,7 @@ charatypelist[u"特殊"] = "pecu"
 
 racelist = OrderedDict()
 racelist[u"ヒューマン/エルーン"] = "human/erune"
+racelist[u"ヒューマン/ドラフ"] = "human/doraf"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
 racelist[u"エルーン/ドラフ"] = "erune/doraf"
