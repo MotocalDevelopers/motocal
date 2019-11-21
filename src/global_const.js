@@ -221,6 +221,7 @@ var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var masterDAList = [0, 1, 2, 3, 4];
 var masterTAList = [0, 1, 2];
 var masterDamageLimitList = [0, 1];
+var masterOugiGageList = [0, 1];
 var HPList = [
     100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81,
     80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61,
@@ -908,6 +909,7 @@ var skilltypes = {
     "huanglongHissatsu": {name: "黄龍槍 (メイン装備時)", type: "huanglongHissatsu", amount: "non"},
     "cherubimKonshin": {name: "ケルヴィム (メイン装備時)", type: "cherubimKonshin", amount: "non"},
     "sunbladeKonshin": {name: "真・道天浄土 (メイン装備時)", type: "sunbladeKonshin", amount: "non"},
+    "diaboliHaisui": {name: "デモン・アドヴォケイト (メイン装備時)", type: "diaboliHaisui", amount: "non"},
     "ougiDamageLimitExceedM": {name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M"},
     "chainForce": {name: "チェインフォース", type: "chainForce", amount: "M"},
     "normalHPS": {name: "通常守護(小)", type: "normalHP", amount: "S"},
@@ -990,12 +992,14 @@ var skilltypes = {
     "contentious-covenant": {name: "修羅の誓約", type: "covenant", amount:"contentious"},
     "deleterious-covenant": {name: "致命の誓約", type: "covenant", amount:"deleterious"},
     "calamitous-covenant": {name: "災禍の誓約", type: "covenant", amount:"calamitous"},
+    "zwei-echo": {name: "パープル・ブロウ", type: "echoThirdHit", amount: 0.20},
     "opus-alpha": {name: "ペンデュラム[α]", type: "opusKey", amount: "L"},
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
     "opus-normalElement": {name: "通常進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
     "opus-magnaElement": {name: "マグナ進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
+    "normalElementM": {name: "通常進境(中)(最大時)", type: "normalElement", amount: "M"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
@@ -1009,7 +1013,10 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
+    "one_night_party": {name: "斧キャラの攻撃力とTA上昇(小)", type: "one_night_party", amount: "S"},
+    "downfall_of_ignorance": {name: "弓キャラの攻撃力とHP上昇(中)", type: "downfall_of_ignorance", amount: "M"},
     "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
+    "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0},
     "rightway_pathfinder": {name: "王道を征く者", type: "rightway_pathfinder", amount: "I"},
     "rightway_pathfinderII": {name: "王道を征く者II", type: "rightway_pathfinder", amount: "II"},
     "victorys_promise": {name: "必勝の誓い", type: "victorys_promise", amount: 10.0},
@@ -1171,6 +1178,7 @@ var raceTypes = {
     "seisho": "星晶獣",
     "unknown": "種族不明",
     "human/erune": "人間/エルーン",
+    "human/doraf": "人間/ドラフ",
     "erune/doraf": "エルーン/ドラフ",
     "havin/human": "ハーヴィン/人間",
 };
@@ -1970,9 +1978,9 @@ var skillAmounts = {
     "normalHigo": {
         "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
     },
-    "darkOpusElementATK": {
+    "elementATK": {
         //per turn increase, maximum 10 turns
-        //"L": [0.0055, 0.0060, 0.0065, 0.0070, 0.0075, 0.0080, 0.0085, 0.0090, 0.0095, 0.0100, 0.0105, 0.0110, 0.0115, 0.0120, 0.0125, 0.0130, 0.0135, 0.0140, 0.0145, 0.0150],
+        "M": [0.043, 0.046, 0.049, 0.052, 0.055, 0.058, 0.061, 0.064, 0.067, 0.070, 0.072, 0.074, 0.076, 0.078, 0.080, 0.080, 0.080, 0.080, 0.080, 0.080],
         "L": [0.055, 0.060, 0.065, 0.070, 0.075, 0.080, 0.085, 0.090, 0.095, 0.100, 0.105, 0.110, 0.115, 0.120, 0.125, 0.130, 0.135, 0.140, 0.145, 0.150],
     }
 };
@@ -2118,6 +2126,18 @@ var supportAbilities = {
         "range": "own",
         "value": -0.35
     },
+    "party_all_night": {
+        "name": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "type": "composite",
+        "value": [
+            {ID: "ougi_gage_down_own_35_ta_100"},
+            {
+                "type": "none", // Skip until #335 implemented
+                "range": "own",
+                "value": {ATK: 0.10, DEF: -0.06} // MAX: 10..50%/ATK, -6..-30%/DEF
+            }
+        ]
+    },
     "ougi_gage_up_djeeta_20": {
         "name": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
         "type": "ougiGageBuff",
@@ -2131,16 +2151,18 @@ var supportAbilities = {
         "value": 0.10
     },
     "ougi_damage_up_50": {
-        "name": "全体奥義ダメージ50%UP(シエテ)",
+        "name": "風属性奥義ダメージ50%UP(シエテ)",
         "type": "ougiDamageBuff",
-        "range": "all",
+        "range": range.element.wind,
         "value": 0.50
     },
     "ougi_damage_up_50_cap_10": {
-        "name": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
-        "type": "ougiDamageBuff_capBuff",
-        "range": "all",
-        "value": 0.50
+        "name": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "type": "composite",
+        "value": [
+            {type: "ougiDamageBuff", range: range.element.wind, assign: "add", value: 0.50},
+            {type: "ougiDamageLimitBuff", range: range.element.wind, assign: "add", value: 0.10}
+        ]
     },
     "emnity_all_SL10": {
         "name": "全体背水効果(ザルハメリナ)",
@@ -2318,7 +2340,7 @@ var supportAbilities = {
         "range": range.element.wind,
         "value": 0.15
     },
-    "element_buff_boost_light_30": { // UNUSED
+    "element_buff_boost_light_30": {
         "name": "味方全体の強化効果「光属性攻撃UP」の効果30%UP。",
         "type": "element_buff_boost",
         "range": range.element.light,
@@ -2345,13 +2367,13 @@ var supportAbilities = {
     "chikara_atsu_no_ha": {
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
-        "range": "own",
+        "range": range.own,
         "value": [0.8, 0.3, 0.0]
     },
     "Revion_kishi_sanshimai": {
         "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
-        "range": "own",
+        "range": range.own,
         "value": [0.0, 0.0, 0.15]
     },
     "element_buff_boost_damageUP_own_10": {
@@ -2444,6 +2466,12 @@ var supportAbilities = {
         "assign": "multiply",
         "value": 0.30,
     },
+    "additional_damage_on_ta_light_10": {
+        "name": "光属性キャラがトリプルアタック時に光属性追撃効果",
+        "type": "additionalDamageXA",
+        "range": range.element.light,
+        "value": [0.0, 0.0, 0.1]
+    }
 };
 
 // exports
@@ -2669,6 +2697,12 @@ module.exports.additionalSelectList = {
         selectors: ["mainWeapon"],
         defaultKeys: [0]
     },
+    "デモン・アドヴォケイト": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
+    },
     "[4凸]虚空の裂剣": {
         selectKeysNotation: skillDetailsDescription['calamitous-covenant'],
         notationText: "",
@@ -2689,6 +2723,12 @@ module.exports.additionalSelectList = {
         selectKeys: ["main_weapon_switch"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
+    },
+    "[4凸]アヤの弓": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
     },
     "黄龍刀": {
         selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
@@ -3074,6 +3114,9 @@ module.exports.selector.masterTA = masterTAList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.masterDamageLimit = masterDamageLimitList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.masterOugiGage = masterOugiGageList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.chainNumber = chainNumberList.map(function (opt) {
