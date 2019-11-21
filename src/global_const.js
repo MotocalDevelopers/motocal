@@ -1149,6 +1149,7 @@ var raceTypes = {
     "seisho": "星晶獣",
     "unknown": "種族不明",
     "human/erune": "人間/エルーン",
+    "human/doraf": "人間/ドラフ",
     "erune/doraf": "エルーン/ドラフ",
     "havin/human": "ハーヴィン/人間",
 };
