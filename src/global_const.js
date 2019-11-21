@@ -902,6 +902,7 @@ var skilltypes = {
     "huanglongHissatsu": {name: "黄龍槍 (メイン装備時)", type: "huanglongHissatsu", amount: "non"},
     "cherubimKonshin": {name: "ケルヴィム (メイン装備時)", type: "cherubimKonshin", amount: "non"},
     "sunbladeKonshin": {name: "真・道天浄土 (メイン装備時)", type: "sunbladeKonshin", amount: "non"},
+    "diaboliHaisui": {name: "デモン・アドヴォケイト (メイン装備時)", type: "diaboliHaisui", amount: "non"},
     "ougiDamageLimitExceedM": {name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M"},
     "chainForce": {name: "チェインフォース", type: "chainForce", amount: "M"},
     "normalHPS": {name: "通常守護(小)", type: "normalHP", amount: "S"},
@@ -991,6 +992,7 @@ var skilltypes = {
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
     "opus-normalElement": {name: "通常進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
     "opus-magnaElement": {name: "マグナ進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
+    "normalElementM": {name: "通常進境(中)(最大時)", type: "normalElement", amount: "M"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
@@ -1004,7 +1006,8 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
-    "one_night_party": {name: "斧キャラの攻撃力とTA上昇(小)", type: "one_night_party", amount: "S"}, // XXX: amount is test data
+    "one_night_party": {name: "斧キャラの攻撃力とTA上昇(小)", type: "one_night_party", amount: "S"},
+    "downfall_of_ignorance": {name: "弓キャラの攻撃力とHP上昇(中)", type: "downfall_of_ignorance", amount: "M"},
     "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
     "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0}
 };
@@ -1146,6 +1149,7 @@ var raceTypes = {
     "seisho": "星晶獣",
     "unknown": "種族不明",
     "human/erune": "人間/エルーン",
+    "human/doraf": "人間/ドラフ",
     "erune/doraf": "エルーン/ドラフ",
     "havin/human": "ハーヴィン/人間",
 };
@@ -1945,9 +1949,9 @@ var skillAmounts = {
     "normalHigo": {
         "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
     },
-    "darkOpusElementATK": {
+    "elementATK": {
         //per turn increase, maximum 10 turns
-        //"L": [0.0055, 0.0060, 0.0065, 0.0070, 0.0075, 0.0080, 0.0085, 0.0090, 0.0095, 0.0100, 0.0105, 0.0110, 0.0115, 0.0120, 0.0125, 0.0130, 0.0135, 0.0140, 0.0145, 0.0150],
+        "M": [0.043, 0.046, 0.049, 0.052, 0.055, 0.058, 0.061, 0.064, 0.067, 0.070, 0.072, 0.074, 0.076, 0.078, 0.080, 0.080, 0.080, 0.080, 0.080, 0.080],
         "L": [0.055, 0.060, 0.065, 0.070, 0.075, 0.080, 0.085, 0.090, 0.095, 0.100, 0.105, 0.110, 0.115, 0.120, 0.125, 0.130, 0.135, 0.140, 0.145, 0.150],
     }
 };
@@ -2307,7 +2311,7 @@ var supportAbilities = {
         "range": range.element.wind,
         "value": 0.15
     },
-    "element_buff_boost_light_30": { // UNUSED
+    "element_buff_boost_light_30": {
         "name": "味方全体の強化効果「光属性攻撃UP」の効果30%UP。",
         "type": "element_buff_boost",
         "range": range.element.light,
@@ -2334,13 +2338,13 @@ var supportAbilities = {
     "chikara_atsu_no_ha": {
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
-        "range": "own",
+        "range": range.own,
         "value": [0.8, 0.3, 0.0]
     },
     "Revion_kishi_sanshimai": {
         "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
-        "range": "own",
+        "range": range.own,
         "value": [0.0, 0.0, 0.15]
     },
     "element_buff_boost_damageUP_own_10": {
@@ -2433,6 +2437,12 @@ var supportAbilities = {
         "assign": "multiply",
         "value": 0.30,
     },
+    "additional_damage_on_ta_light_10": {
+        "name": "光属性キャラがトリプルアタック時に光属性追撃効果",
+        "type": "additionalDamageXA",
+        "range": range.element.light,
+        "value": [0.0, 0.0, 0.1]
+    }
 };
 
 // exports
@@ -2658,6 +2668,12 @@ module.exports.additionalSelectList = {
         selectors: ["mainWeapon"],
         defaultKeys: [0]
     },
+    "デモン・アドヴォケイト": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
+    },
     "[4凸]虚空の裂剣": {
         selectKeysNotation: skillDetailsDescription['calamitous-covenant'],
         notationText: "",
@@ -2678,6 +2694,12 @@ module.exports.additionalSelectList = {
         selectKeys: ["main_weapon_switch"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
+    },
+    "[4凸]アヤの弓": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
     },
     "黄龍刀": {
         selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
