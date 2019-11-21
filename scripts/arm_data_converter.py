@@ -161,6 +161,10 @@ skillnamelist["sunbladeKonshin"] = {
     u"道天の眩耀": "light"
 }
 
+skillnamelist["diaboliHaisui"] = {
+    u"普天の呼び声": "dark"
+}
+
 # normalM
 skillnamelist["normalM"] = {
     u"業火の攻刃": "fire",
@@ -252,8 +256,9 @@ skillnamelist["normalKatsumiM"] = {
     u"憎悪の克己": "dark"
 }
 
-skillnamelist["opus-normalElement"] = {
-    u"渦潮の進境": "water"
+skillnamelist["normalElementM"] = {
+    u"渦潮の進境": "water",
+    u"雷電の進境": "light"
 }
 
 skillnamelist["kaijinnoyogen"] = {
@@ -1035,6 +1040,8 @@ skillnamelist["normalL"][u"狙撃の極意"] = "water"
 # Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
 skillnamelist["one_night_party"] = {u"ワンナイ・パーリー": "none"}
+skillnamelist["downfall_of_ignorance"] = {u"無明衰滅": "none"}
+
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"

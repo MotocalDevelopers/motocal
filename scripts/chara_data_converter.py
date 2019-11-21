@@ -26,6 +26,7 @@ charatypelist[u"特殊"] = "pecu"
 
 racelist = OrderedDict()
 racelist[u"ヒューマン/エルーン"] = "human/erune"
+racelist[u"ヒューマン/ドラフ"] = "human/doraf"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
 racelist[u"エルーン/ドラフ"] = "erune/doraf"
@@ -229,9 +230,9 @@ supportAbilist["element_buff_boost_earth_30"] = {
 supportAbilist["element_buff_boost_wind_30"] = {
     u"踊り狂う暴風"
 }
-# supportAbilist["element_buff_boost_light_30"] = {
-#     u""
-# }
+supportAbilist["element_buff_boost_light_30"] = {
+    u"聖布の乙女"
+}
 # supportAbilist["element_buff_boost_dark_30"] = {
 #     u""
 # }
@@ -294,9 +295,11 @@ supportAbilist["otherbuff_own_30"] = {
     u"アインザーム"
 }
 supportAbilist["party_all_night"] = {
-    u"Party All Night"
+    u"朝までハッピィ～！"
 }
-
+supportAbilist["additional_damage_on_ta_light_10"] = {
+    u"ドレス・ラ・ピュセル"
+}
 # Patching DA TA
 patching = OrderedDict()
 
