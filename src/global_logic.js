@@ -739,6 +739,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             additionalDamage += (1.0 - taRate) * daRate * daDamage; // additionalDamage On Double Attack
             additionalDamage += (1.0 - taRate) * (1.0 - daRate) * saDamage; // additionalDamage On Single Attack
         }
+        if (totals[key]['echoThirdHit'] > 0 && taRate > 0) {
+            additionalDamage += totals[key]['echoThirdHit'] * taRate / 3
+        }
 
         // Damage limit UP = Overall buff + Personal buff + skill
         var damageLimit = buff["damageLimit"];
@@ -1846,6 +1849,12 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (amount === 'all-unique') {
                             isAllUniqueArm = epic.isAllUniqueArm(arml, comb);
                         }
+                    } else if (stype.indexOf('wandCount') > -1) {
+                        countWand = countWand ? countWand : epic.countWandType(arml, comb);
+                         if (stype === 'wandCountHP') {
+                            totals[key]["normalHP"] += amount * countWand;
+                        }
+                         // Any other skill depend on wand count here
                     } else if (stype == 'cherubimKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'sunbladeKonshin') {
@@ -1853,6 +1862,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                     } else if (stype == 'rigaiBishojo') {
                         // skill is all allies not restricted to element
                         totals[key]["criticalDamageLimit"] += comb[i] * 0.05;
+                    } else if (stype == 'one_night_party') {
+                        if (favCharaContains(['axe'], totals[key])) {
+                            totals[key]["normalOther"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            totals[key]["TAOther"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
+                        }
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
@@ -2070,6 +2084,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key][stype] += skillAmounts["darkOpusElementATK"][amount][slv - 1];
                         } else if (stype == 'shinTenNoInori') {
                             totals[key][stype] = [amount, Math.max(totals[key][stype][1], arm[skillkey + "Detail"])];
+                        } else if (stype == 'echoThirdHit') {
+                            totals[key][stype] = Math.min(0.20, amount);
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -2373,7 +2389,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuff: 100 * djeetaBuffList['personalSupplementalDamageBuff'],
                 supplementalThirdHit: [],
                 covenant: null,
-                buffCount: 0
+                buffCount: 0,
+                echoThirdHit: 0,
                 //debuffCount: 0,
             }
     };
@@ -2541,7 +2558,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 criticalBuff: chara[i].criticalBuff,
                 supplementalDamageBuff: 100 * charaBuffList['supplementalDamageBuff'],
                 supplementalThirdHit: [],
-                covenant: null
+                covenant: null,
+                echoThirdHit: 0
                 //buffCount: 0,
                 //debuffCount: 0,
             };
