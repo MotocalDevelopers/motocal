@@ -2879,12 +2879,14 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["ougiDamageLimitBuff"] += support.value;
                     continue;
                 case "additionalDamageXA":
+                    // currently, range: own only, and no chances to stack.
+                    totals[key]["additionalDamageXA"] = support.value;
                     // Implemented Stacking. Can someone verify?
-                    for (let [name, chara] of support.range(totals, key)) {
-                        for (let i = 0; i < support.value.length; i++) {
-                            chara["additionalDamageXA"][i] += support.value[i];
-                        }
-                    }
+                    // for (let [name, chara] of support.range(totals, key)) {
+                    //     for (let i = 0; i < support.value.length; i++) {
+                    //         chara["additionalDamageXA"][i] += support.value[i];
+                    //     }
+                    // }
                     continue;
                 case "element_buff_boost_damageUP_own_10":
                     if (when.element_buff(totals[key], buff)) {
