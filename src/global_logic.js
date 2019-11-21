@@ -57,7 +57,7 @@ function isHaisuiType(stype) {
     return (stype === "normalHaisui" || stype === "magnaHaisui" ||
         stype === "normalKonshin" || stype === "magnaKonshin" ||
         stype === "normalOtherKonshin" || stype === "exHaisui" ||
-        stype === "normalSupportKonshin");
+        stype === "normalSupportKonshin" || stype === "normalSupportHaisui");
 }
 
 module.exports.isValidResult = function (res, minHP) {
@@ -565,6 +565,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += totals[key]["elementBuffBoostBuff"];
         elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
         elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
+        elementCoeff += Math.min(totals[key]["normalElement"] * totalSummon["zeus"], 0.75);
         elementCoeff += 0.01 * totals[key]["shinTenNoInori"][0] * totals[key]["shinTenNoInori"][1]; //[0]: amount. [1]: stacks number
         elementCoeff += 0.01 * totals[key]["LB"].Element;
 
@@ -585,7 +586,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         otherCoeff *= totalSummon["shivaBuff"] ? 2.0 : 1;
 
         // Character Emnity
-        var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"];
+        var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"] + 0.01 * totals[key]["normalSupportHaisuiWeapon"];
 
         //chara LB Emnity
         var LBHaisuiCoeff = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", totals[key]["EXLB"]["Haisui"], totals[key]["remainHP"]);
@@ -1161,7 +1162,7 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
     var remainHP = haisuiRemainHP;
     var baseRate = 0.0;
 
-    if (haisuiType == 'normalHaisui' || haisuiType == 'magnaHaisui' || haisuiType == 'exHaisui' || haisuiType == "charaHaisui") {
+    if (haisuiType == 'normalHaisui' || haisuiType == 'magnaHaisui' || haisuiType == 'exHaisui' || haisuiType == "charaHaisui" || haisuiType === "normalSupportHaisui") {
         // Refer to Mr. Hibino's site for implementation of emnity magnification
         // baseRate: Value at HP 50%
         if (haisuiAmount == "S") {
@@ -1859,6 +1860,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'sunbladeKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
+                    } else if (stype == 'diaboliHaisui') {
+                        totals[key]["normalSupportHaisuiWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportHaisui", "L", 27.5, totals["Djeeta"]["remainHP"]), totals[key]["normalSupportHaisuiWeapon"]);
                     } else if (stype == 'rigaiBishojo') {
                         // skill is all allies not restricted to element
                         totals[key]["criticalDamageLimit"] += comb[i] * 0.05;
@@ -1866,6 +1869,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         if (favCharaContains(['axe'], totals[key])) {
                             totals[key]["normalOther"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             totals[key]["TAOther"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
+                        }
+                    } else if (stype == 'downfall_of_ignorance') {
+                        if (favCharaContains(['bow'], totals[key])) {
+                            totals[key]["normalOther"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            totals[key]["exHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
                         }
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
@@ -2079,9 +2087,14 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 totals[key]["magna"] += comb[i] * skillAmounts["magna"][amount][slv - 1];
                             }
                         } else if (stype == 'opusnormalElement') {
-                            totals[key][stype] += skillAmounts["darkOpusElementATK"][amount][slv - 1];
+                            var turns2max = 0.15 / skillAmounts["elementATK"][amount][slv - 1];
+                            totals[key][stype] += turns2max * skillAmounts["elementATK"][amount][slv - 1];
                         } else if (stype == 'opusmagnaElement') {
-                            totals[key][stype] += skillAmounts["darkOpusElementATK"][amount][slv - 1];
+                            var turns2max = 0.15 / skillAmounts["elementATK"][amount][slv - 1];
+                            totals[key][stype] += turns2max * skillAmounts["elementATK"][amount][slv - 1];
+                        } else if (stype == 'normalElement') {
+                            var turns2max = 0.10 / skillAmounts["elementATK"][amount][slv - 1];
+                            totals[key][stype] += comb[i] * turns2max * skillAmounts["elementATK"][amount][slv - 1];
                         } else if (stype == 'shinTenNoInori') {
                             totals[key][stype] = [amount, Math.max(totals[key][stype][1], arm[skillkey + "Detail"])];
                         } else if (stype == 'echoThirdHit') {
@@ -2298,6 +2311,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherKonshin: 0,
                 normalSupportKonshin: 0,
                 normalSupportKonshinWeapon: 0,
+                normalSupportHaisuiWeapon: 0,
                 ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
@@ -2333,6 +2347,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
+                normalElement: 0,
                 shinTenNoInori: [0, 0],
                 normalOugiDamage: 0,
                 magnaOugiDamage: 0,
@@ -2469,6 +2484,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalOtherKonshin: 0,
                 normalSupportKonshin: 0,
                 normalSupportKonshinWeapon: 0,
+                normalSupportHaisuiWeapon: 0,
                 ATKDebuff: 0,
                 unknown: 0,
                 ex: 0,
@@ -2504,6 +2520,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
+                normalElement: 0,
                 shinTenNoInori: [0, 0],
                 chainDamage: 0,
                 normalOugiDamage: 0,
@@ -2656,6 +2673,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["normalKonshin"] = 0;
         totals[key]["normalOtherKonshin"] = 0;
         totals[key]["normalSupportKonshinWeapon"] = 0;
+        totals[key]["normalSupportHaisuiWeapon"] = 0;
         totals[key]["ATKDebuff"] = 0;
         totals[key]["unknown"] = 0;
         totals[key]["ex"] = 0;
@@ -2688,6 +2706,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["akashaHP"] = 0;
         totals[key]["opusnormalElement"] = 0;
         totals[key]["opusmagnaElement"] = 0;
+        totals[key]["normalElement"] = 0;
         totals[key]["shinTenNoInori"] = [0, 0];
         totals[key]["normalOtherNite"] = 0;
         totals[key]["normalOtherSante"] = 0;

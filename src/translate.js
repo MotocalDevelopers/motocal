@@ -1623,6 +1623,11 @@ var multiLangData = {
         "ja": "マグナ進境(大)(最大時)",
         "zh": "方阵属性攻击力(大)",
     },
+    "通常進境(中)(最大時)": {
+        "en": "Normal Element ATK M",
+        "ja": "通常進境(中)(最大時)",
+        "zh": "通常属性攻击力(中)",
+    },
     "アンノウン": {
         "en": "Unknown",
         "ja": "アンノウン",
@@ -3152,9 +3157,14 @@ var multiLangData = {
         "zh": "理外の美少女",
     },
     "斧キャラの攻撃力とTA上昇(小)": {
-        "en": "Axe chara ATK and TA up (small)",
+        "en": "Axe chara ATK and TA up (S)",
         "ja": "斧キャラの攻撃力とTA上昇(小)",
         "zh": "斧キャラの攻撃力とTA上昇(小)",
+    },
+    "弓キャラの攻撃力とHP上昇(中)": {
+        "en": "Bow chara ATK and HP up (M)",
+        "ja": "弓キャラの攻撃力とHP上昇(中)",
+        "zh": "弓キャラの攻撃力とHP上昇(中)",
     },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
@@ -3580,6 +3590,11 @@ var multiLangData = {
         "en": "True Purity Sunblade (main)",
         "ja": "真・道天浄土 (メイン装備時)",
         "zh": "真・道天浄土 (メイン装備時)",
+    },
+    "デモン・アドヴォケイト (メイン装備時)": {
+        "en": "Advocatus Diaboli (main)",
+        "ja": "デモン・アドヴォケイト (メイン装備時)",
+        "zh": "デモン・アドヴォケイト (メイン装備時)",
     },
     "奥義上限UP(イクシード)": {
         "en": "C.A. Cap UP (Exceed)",  //a.k.a:ougiDamageLimitByExceed
