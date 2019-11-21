@@ -2101,10 +2101,10 @@ var multiLangData = {
         "ja": "女",
         "zh": "女",
     },
-    "不明": {
+    "不詳": {
         "en": "Other",
-        "ja": "不明",
-        "zh": "不明",
+        "ja": "不詳",
+        "zh": "不詳",
     },
     "男/女": {
         "en": "Male/Female",
@@ -2233,6 +2233,11 @@ var multiLangData = {
         "en": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
         "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
         "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
+    },
+    "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))": {
+        "en": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "zh": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
     },
     "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))": {
         "en": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",
@@ -3171,6 +3176,11 @@ var multiLangData = {
         "ja": "理外の美少女",
         "zh": "理外の美少女",
     },
+    "斧キャラの攻撃力とTA上昇(小)": {
+        "en": "Axe chara ATK and TA up (small)",
+        "ja": "斧キャラの攻撃力とTA上昇(小)",
+        "zh": "斧キャラの攻撃力とTA上昇(小)",
+    },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
         "ja": "通常技巧(小)",
@@ -3496,6 +3506,11 @@ var multiLangData = {
         "ja": "災禍の誓約",
         "zh": "災禍の誓約",
     },
+    "パープル・ブロウ": {
+        "en": "Bonus Damage on 3rd Attack (%20)",
+        "ja": "3回目の攻撃に闇属性追撃効果 (20%)",
+        "zh": "3回目の攻撃に闇属性追撃効果 (20%)",
+    },
     "ペンデュラム[α]": {
         "en": "Pendulum Key α (Normal Attack Cap 10%)",
         "ja": "ペンデュラム[α](通常上限10%UP)",
@@ -3535,6 +3550,11 @@ var multiLangData = {
         "en": "Grand Epic",
         "ja": "エピックブランド・ゲイン",
         "zh": "Grand Epic",
+    },
+    "装備している「杖」の数が多いほど最大HP上昇": {
+        "en": "Boost HP by Number of Staffs",
+        "ja": "装備している「杖」の数が多いほど最大HP上昇",
+        "zh": "装備している「杖」の数が多いほど最大HP上昇",
     },
     "レゾナンス・スタッフ": {
         "en": "Staff Resonance",

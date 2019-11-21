@@ -987,6 +987,7 @@ var skilltypes = {
     "contentious-covenant": {name: "修羅の誓約", type: "covenant", amount:"contentious"},
     "deleterious-covenant": {name: "致命の誓約", type: "covenant", amount:"deleterious"},
     "calamitous-covenant": {name: "災禍の誓約", type: "covenant", amount:"calamitous"},
+    "zwei-echo": {name: "パープル・ブロウ", type: "echoThirdHit", amount: 0.20},
     "opus-alpha": {name: "ペンデュラム[α]", type: "opusKey", amount: "L"},
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
@@ -1006,7 +1007,9 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
-    "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0}
+    "one_night_party": {name: "斧キャラの攻撃力とTA上昇(小)", type: "one_night_party", amount: "S"}, // XXX: amount is test data
+    "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
+    "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0}
 };
 
 var cosmosSkills = {
@@ -2092,6 +2095,18 @@ var supportAbilities = {
         "type": "ougiGageBuff",
         "range": "own",
         "value": -0.35
+    },
+    "party_all_night": {
+        "name": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "type": "composite",
+        "value": [
+            {ID: "ougi_gage_down_own_35_ta_100"},
+            {
+                "type": "none", // Skip until #335 implemented
+                "range": "own",
+                "value": {ATK: 0.10, DEF: -0.06} // MAX: 10..50%/ATK, -6..-30%/DEF
+            }
+        ]
     },
     "ougi_gage_up_djeeta_20": {
         "name": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",

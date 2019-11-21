@@ -28,6 +28,8 @@ http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040166000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040167000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040168000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040169000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040239000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040240000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040238000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040237000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040236000_01.png
@@ -244,6 +246,8 @@ http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040003000_03.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040002000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040001000_03.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040000000_03.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040241000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040242000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030000000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030001000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030002000_01.png
@@ -508,3 +512,5 @@ http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030272000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030273000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030274000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030275000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030276000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030277000_01.png
