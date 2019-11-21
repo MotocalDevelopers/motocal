@@ -1862,6 +1862,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                     } else if (stype == 'rigaiBishojo') {
                         // skill is all allies not restricted to element
                         totals[key]["criticalDamageLimit"] += comb[i] * 0.05;
+                    } else if (stype == 'one_night_party') {
+                        if (favCharaContains(['axe'], totals[key])) {
+                            totals[key]["normalOther"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            totals[key]["TAOther"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
+                        }
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
