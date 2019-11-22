@@ -721,7 +721,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             let ougiGageDuringAttack = buff["masterBonusOugiGage"];
             expectedOugiGage += taRate * ougiGageDuringAttack * 3 + (1.0 - taRate) * (daRate * ougiGageDuringAttack * 2 + (1.0 - daRate) * ougiGageDuringAttack);
         }
-        expectedOugiGage = expectedOugiGage < 0 ? 0 : Math.max(1.0, expectedOugiGage);
+        expectedOugiGage = expectedOugiGage < 0 || totals[key]["noNormalAttack"] ? 0 : Math.max(1.0, expectedOugiGage);
 
         var ougiGageUpOugiBuff = buff["ougiGageUpOugi"] * ougiGageBuff;
         var ougiGage = 100 - Math.min(99, ougiGageUpOugiBuff);
