@@ -161,6 +161,10 @@ skillnamelist["sunbladeKonshin"] = {
     u"道天の眩耀": "light"
 }
 
+skillnamelist["diaboliHaisui"] = {
+    u"普天の呼び声": "dark"
+}
+
 # normalM
 skillnamelist["normalM"] = {
     u"業火の攻刃": "fire",
@@ -250,6 +254,15 @@ skillnamelist["normalKatsumiM"] = {
     u"竜巻の克己": "wind",
     u"雷電の克己": "light",
     u"憎悪の克己": "dark"
+}
+
+skillnamelist["normalElementM"] = {
+    u"渦潮の進境": "water",
+    u"雷電の進境": "light"
+}
+
+skillnamelist["kaijinnoyogen"] = {
+    u"海神の予言": "water"
 }
 
 skillnamelist["normalRasetsuM"] = {
@@ -827,6 +840,7 @@ skillnamelist["strengthL"] = {
     u"破竜の攻刃": "earth",
     u"殺戮の女神": "wind",
     u"シャドウオブアームズ": "dark",
+    u"残る霞火、あへなし": "light",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -834,6 +848,10 @@ skillnamelist["exATKandHPM"] = {
     u"翠薔薇の髄": "wind",
     u"橙薔薇の髄": "earth",
     u"紅薔薇の髄": "fire",
+}
+
+skillnamelist["zwei-echo"] = {
+    u"パープル・ブロウ": "dark",
 }
 
 skillnamelist["strengthLL"] = {
@@ -967,6 +985,7 @@ skillnamelist["shinTenNoInori"] = {
 skillnamelist["normalDamageLimit7"] = {
     u"炎熱の刀身": "fire",
     u"賢者の加護": "earth",
+    u"英雄の体躯": "light"
 }
 skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
@@ -1020,6 +1039,9 @@ skillnamelist["normalL"][u"狙撃の極意"] = "water"
 
 # Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
+skillnamelist["one_night_party"] = {u"ワンナイ・パーリー": "none"}
+skillnamelist["downfall_of_ignorance"] = {u"無明衰滅": "none"}
+
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
