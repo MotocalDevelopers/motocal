@@ -257,10 +257,10 @@ supportAbilist["Revion_kishi_sanshimai"] = {
 supportAbilist["element_buff_boost_damageUP_own_10"] = {
     u"堕天司"
 }
-# supportAbilist["no_normal_attack"] = {
-#     u"優しい心",
-#     u"カードキャプター"
-# }
+supportAbilist["no_normal_attack"] = {
+    u"優しい心",
+    u"カードキャプター"
+}
 # supportAbilist["tousou_no_chishio"] = {
 #     u"闘争の血潮"
 # }

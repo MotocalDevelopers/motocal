@@ -2464,10 +2464,10 @@ var multiLangData = {
         "ja": "HP10%UP",
         "zh": "10% boost to max HP",
     },
-    "通常攻撃を行わない": {
-        "en": "Doesn't attack",
-        "ja": "通常攻撃を行わない",
-        "zh": "Doesn't attack",
+    "通常攻撃を行わない。(ルリア,木之本桜)": {
+        "en": "Doesn't attack (Lyria, Sakura Kinomoto)",
+        "ja": "通常攻撃を行わない。(ルリア,木之本桜)",
+        "zh": "Doesn't attack (Lyria, Sakura Kinomoto)",
     },
     "通常攻撃を行わないが木之本桜の残りHPが多いほど味方全体の攻撃が大きくUP": {
         "en": "15% boost to all allies ATK based on how high character HP is (various)",

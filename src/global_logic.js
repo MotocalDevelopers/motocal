@@ -926,6 +926,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
 
         [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(supplementalDamageArray, [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental], {remainHP: totals[key]["remainHP"]});
+        
+        if (totals[key]["noNormalAttack"]) {
+            damage = 0;
+            damageWithoutCritical = 0;
+            effectiveCriticalRatio = 0;
+        }
+            
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
         var chainBurst = chainBurstSupplemental + module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), enemyResistance, chainDamageUP, chainDamageLimit);
 
@@ -1034,6 +1041,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             ougiDamageLimitValues: ougiDamageLimitValues,
             normalDamageLimitValuesWithoutCritical: normalDamageLimitValuesWithoutCritical,
             ougiDamageLimitValuesWithoutCritical: ougiDamageLimitValuesWithoutCritical,
+            noNormalAttack: totals[key]["noNormalAttack"],
         };
     }
 
@@ -2407,6 +2415,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 buffCount: 0,
                 echoThirdHit: 0,
                 //debuffCount: 0,
+                noNormalAttack: false
             }
     };
 
@@ -2576,9 +2585,10 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuff: 100 * charaBuffList['supplementalDamageBuff'],
                 supplementalThirdHit: [],
                 covenant: null,
-                echoThirdHit: 0
+                echoThirdHit: 0,
                 //buffCount: 0,
                 //debuffCount: 0,
+                noNormalAttack: false
             };
         }
     }
@@ -2899,6 +2909,7 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     }
                     continue;
                 case "no_normal_attack":
+                    totals[key]["noNormalAttack"] = support.value;
                     continue;
                 case "normalSupportKonshin_hpDebuff":
                     totals[key]["HPdebuff"] += support.hpDebuff;
@@ -3208,6 +3219,11 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newDamageWithoutCritical = 0; //just a placeholder. not to be used in any calculation.
                     [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {remainHP: k/100});
 
+                    if (onedata[key].noNormalAttack) {
+                        newDamage = 0;
+                        newDamageWithoutCritical = 0;
+                    }
+
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
                     var newChainBurst = chainBurstSupplemental + module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.enemyResistance, onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
 
@@ -3466,6 +3482,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                     } else {
                         // Regular attack
                         var newDamage = module.exports.calcDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP, onedata[key].normalDamageLimitValues);
+                        if (onedata[key].noNormalAttack) newDamage = 0;
                         if (key == "Djeeta") {
                             ExpectedDamage[t].push(parseInt(newDamage * onedata[key].expectedAttack));
                             AverageExpectedDamage[t][j + 1] += parseInt(onedata[key].expectedAttack * newDamage / cnt)

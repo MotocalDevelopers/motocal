@@ -2402,12 +2402,12 @@ var supportAbilities = {
         "range": "own",
         "value": 50000
     },
-    // "no_normal_attack": { //lyria, 優しい心; sakura kinomoto, 絶対だいじょうぶだよ >> カードキャプター
-    //     "name": "通常攻撃を行わない。()",
-    //     "type": "no_normal_attack",
-    //     "range": "own",
-    //     "value": true,
-    // }, // for the following two: https://github.com/MotocalDevelopers/motocal/pull/259#issuecomment-509314539
+    "no_normal_attack": {
+         "name": "通常攻撃を行わない。(ルリア,木之本桜)",
+         "type": "no_normal_attack",
+         "range": "own",
+         "value": true
+    },
     // "fumetsu_no_mikiri": {
     //     "name": "自分の残りHPが少ないほどクリティカル確率UP。(ベアトリクス(水着ver))",
     //     "type": "fumetsu_no_mikiri",
