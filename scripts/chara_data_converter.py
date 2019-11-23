@@ -242,6 +242,9 @@ supportAbilist["element_buff_boost_light_30"] = {
 supportAbilist["element_buff_boost_wind_15"] = {
     u"精霊の啓示"
 }
+supportAbilist["critical_cap_up_water_3"] = {
+    u"正射必中"
+}
 supportAbilist["critical_cap_up_light_3"] = {
     u"スポッター"
 }

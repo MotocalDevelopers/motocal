@@ -2439,6 +2439,11 @@ var multiLangData = {
         "ja": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
         "zh": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
     },
+    "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)": {
+        "en": "3% boost to Water characters' critical hit damage cap. (Silva)",
+        "ja": "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)",
+        "zh": "3% boost to Water characters' critical hit damage cap. (Silva)",
+    },
     "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))": {
         "en": "3% boost to Light characters' critical hit damage cap. (Silva (Light))",
         "ja": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
