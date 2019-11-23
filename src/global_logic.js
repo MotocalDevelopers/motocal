@@ -927,12 +927,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(supplementalDamageArray, [damage, damageWithoutCritical, ougiDamage, chainBurstSupplemental], {remainHP: totals[key]["remainHP"]});
         
-        if (totals[key]["noNormalAttack"]) {
-            damage = 0;
-            damageWithoutCritical = 0;
-            effectiveCriticalRatio = 0;
-        }
-            
         // Chain burst damage is calculated based on the assumption that "there is only one who has the same damage as that character has chain number people"
         var chainBurst = chainBurstSupplemental + module.exports.calcChainBurst(buff["chainNumber"] * ougiDamage, buff["chainNumber"], module.exports.getTypeBonus(totals[key].element, prof.enemyElement), enemyResistance, chainDamageUP, chainDamageLimit);
 
@@ -950,6 +944,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             [damage, expectedCycleDamage] = supplemental.calcThirdHitDamage(supplementalDamageArray, [damage, expectedCycleDamage], {expectedTurn: expectedTurn});
 
             expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
+        }
+        
+        if (totals[key]["noNormalAttack"]) {
+            damage = 0;
+            damageWithoutCritical = 0;
+            effectiveCriticalRatio = 0;
+            expectedCycleDamagePerTurn = 0;
         }
         
         // Display array
@@ -3219,11 +3220,6 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newDamageWithoutCritical = 0; //just a placeholder. not to be used in any calculation.
                     [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental] = supplemental.calcOthersDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newDamageWithoutCritical, newOugiDamage, chainBurstSupplemental], {remainHP: k/100});
 
-                    if (onedata[key].noNormalAttack) {
-                        newDamage = 0;
-                        newDamageWithoutCritical = 0;
-                    }
-
                     var chainNumber = !isNaN(prof.chainNumber) ? parseInt(prof.chainNumber) : 1;
                     var newChainBurst = chainBurstSupplemental + module.exports.calcChainBurst(chainNumber * newOugiDamage, chainNumber, module.exports.getTypeBonus(onedata[key].element, prof.enemyElement), onedata[key].skilldata.enemyResistance, onedata[key].skilldata.chainDamageUP, onedata[key].skilldata.chainDamageLimit) / chainNumber;
 
@@ -3235,6 +3231,12 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     [newDamage, newExpectedCycleDamagePerTurn] = supplemental.calcThirdHitDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newExpectedCycleDamagePerTurn], {expectedTurn: onedata[key].expectedTurn});
                     
                     newExpectedCycleDamagePerTurn /= (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn + 1);
+                    
+                    if (onedata[key].noNormalAttack) {
+                        newDamage = 0;
+                        newDamageWithoutCritical = 0;
+                        newExpectedCycleDamagePerTurn = 0;
+                    }
                     
                     var hp;
                     if (displayRealHP) {
