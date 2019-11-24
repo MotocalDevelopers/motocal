@@ -26,6 +26,7 @@ charatypelist[u"特殊"] = "pecu"
 
 racelist = OrderedDict()
 racelist[u"ヒューマン/エルーン"] = "human/erune"
+racelist[u"ヒューマン/ドラフ"] = "human/doraf"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
 racelist[u"エルーン/ドラフ"] = "erune/doraf"
@@ -229,9 +230,9 @@ supportAbilist["element_buff_boost_earth_30"] = {
 supportAbilist["element_buff_boost_wind_30"] = {
     u"踊り狂う暴風"
 }
-# supportAbilist["element_buff_boost_light_30"] = {
-#     u""
-# }
+supportAbilist["element_buff_boost_light_30"] = {
+    u"聖布の乙女"
+}
 # supportAbilist["element_buff_boost_dark_30"] = {
 #     u""
 # }
@@ -292,6 +293,12 @@ supportAbilist["benedikutosu_soure"] = {
 }
 supportAbilist["otherbuff_own_30"] = {
     u"アインザーム"
+}
+supportAbilist["party_all_night"] = {
+    u"朝までハッピィ～！"
+}
+supportAbilist["additional_damage_on_ta_light_10"] = {
+    u"ドレス・ラ・ピュセル"
 }
 # Patching DA TA
 patching = OrderedDict()
@@ -386,6 +393,7 @@ patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
 patching["サラ"] = {"DA": 4.0, "TA": 1.0}
 patching["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
+patching["真紅と冥闇 ゼタ＆バザラガ(ハロウィンver)"] = {"DA": 1000.0, "TA": 3.0}
 
 patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
 
@@ -440,6 +448,7 @@ patching["アルベール"] = {"DA": 1000.0, "TA": 3.0}
 patching["プリキュア"] = {"DA": 1000.0, "TA": 3.0}
 patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 1000.0, "TA": 3.0}
 patching["ハールート・マールート(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
+patching["ハレゼナ(ハロウィンver)"] = {"DA": 1000.0, "TA": 1000.0}
 
 ### SR
 patching["ゼタ(SR)"] = {"DA": 10.0, "TA": 5.0}
