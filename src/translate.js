@@ -1218,6 +1218,11 @@ var multiLangData = {
         "ja": "ヴァルキュリア",
         "zh": "Valkyrie",
     },
+    "通常攻撃時奥義ゲージ上昇": {
+        "en": "Speed up charge bar during one-foe attacks",
+        "ja": "通常攻撃時奥義ゲージ上昇",
+        "zh": "通常攻撃時奥義ゲージ上昇",
+    },
     "攻撃": {
         "en": "Attack",
         "ja": "攻撃",

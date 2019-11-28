@@ -1433,7 +1433,12 @@ module.exports.Jobs = {
         "hpBonus": 1000.0,
         "shugoBonus": 0.0,
         "DaBonus": 4.0,
-        "TaBonus": 1.0
+        "TaBonus": 1.0,
+        "support": {
+            "name": "通常攻撃時奥義ゲージ上昇",
+            "type": "ougiGageDuringAttack",
+            "value": 1.0
+        }
     },
     "glory": {
         "name": "ザ・グローリー",

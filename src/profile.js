@@ -301,6 +301,8 @@ var Profile = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
+        var job = Jobs[this.state.job];
+        var StrJobSupportValue = (job.support && typeof job.support.value === "number" && job.support.value)) ? ("+" + job.support.value) : "";
 
         return (
             <div className="profile">
@@ -364,6 +366,9 @@ var Profile = CreateClass({
                             </th>
                             <td><FormControl componentClass="select" value={this.state.job}
                                              onChange={this.handleSelectEvent.bind(this, "job")}> {this.props.alljobs[locale]} </FormControl>
+                            {job.support ? [<span style={{display: "block"}}
+                                  className="label label-primary">{intl.translate(job.support.name, locale) + StrJobSupportValue}</span>]
+                            : null}
                             </td>
                         </tr>
                     </TextWithTooltip>

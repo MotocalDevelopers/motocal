@@ -718,7 +718,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         expectedOugiGage += (taRate * Math.ceil(37.0 * ougiGageBuff) + (1.0 - taRate) * (daRate * Math.ceil(22.0 * ougiGageBuff) + (1.0 - daRate) * Math.ceil(10.0 * ougiGageBuff)));
         // Speed up charge bar during one-foe attacks
         if (key == "Djeeta") {
-            let ougiGageDuringAttack = buff["masterBonusOugiGage"];
+            let ougiGageDuringAttack = buff["masterBonusOugiGage"] + totals["Djeeta"]["ougiGageDuringAttack"];
             expectedOugiGage += taRate * ougiGageDuringAttack * 3 + (1.0 - taRate) * (daRate * ougiGageDuringAttack * 2 + (1.0 - daRate) * ougiGageDuringAttack);
         }
         expectedOugiGage = expectedOugiGage < 0 ? 0 : Math.max(1.0, expectedOugiGage);
@@ -2294,6 +2294,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 race: "unknown",
                 sex: sex,
                 type: job.type,
+                ougiGageDuringAttack: (job["support"] && job["support"].type === "ougiGageDuringAttack" && job["support"].value) ? parseFloat(job["support"].value) : 0,
                 element: element,
                 LB: getCharaLB({}),
                 EXLB: getCharaEXLB({}),
