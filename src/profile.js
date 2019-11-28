@@ -302,7 +302,7 @@ var Profile = CreateClass({
     render: function () {
         var locale = this.props.locale;
         var job = Jobs[this.state.job];
-        var StrJobSupportValue = (job.support && typeof job.support.value === "number" && job.support.value)) ? ("+" + job.support.value) : "";
+        var StrJobSupportValue = (job.support && typeof job.support.value === "number" && job.support.value) ? ("+" + job.support.value) : "";
 
         return (
             <div className="profile">
