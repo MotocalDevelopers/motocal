@@ -791,7 +791,7 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
-                    <TextWithTooltip tooltip={intl.translate("セラフィックバフ説明", locale)} id={"tooltip-damageuponlynormal-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("与ダメージUPバフ(通常攻撃のみ)説明", locale)} id={"tooltip-damageuponlynormal-detail"}>
                         <tr>
                             <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
                             <td>
