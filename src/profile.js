@@ -184,7 +184,7 @@ var Profile = CreateClass({
             elementBuff: 0,
             otherBuff: 0,
             otherBuff2: 0,
-            seraphicBuff: 0,
+            damageUPOnlyNormalBuff: 0,
             additionalDamageBuff: 0,
             supplementalDamageBuff: 0,
             damageLimitBuff: 0.0,
@@ -213,7 +213,7 @@ var Profile = CreateClass({
             personalElementBuff: 0.0,
             personalOtherBuff: 0.0,
             personalOtherBuff2: 0.0,
-            personalSeraphicBuff: 0.0,
+            personalDamageUPOnlyNormalBuff: 0.0,
             personalAdditionalDamageBuff: 0.0,
             personalSupplementalDamageBuff: 0,
             personalDABuff: 0.0,
@@ -431,10 +431,10 @@ var Profile = CreateClass({
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
-                            <tr key="personalSeraphicBuff">
-                                <th className="bg-primary">{intl.translate("セラフィックバフ", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalSeraphicBuff}
-                                                             onChange={this.handleSelectEvent.bind(this, "personalSeraphicBuff")}>{selector.buffLevel}</FormControl>
+                            <tr key="personalDamageUPOnlyNormalBuff">
+                                <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalDamageUPOnlyNormalBuff}
+                                                             onChange={this.handleSelectEvent.bind(this, "personalDamageUPOnlyNormalBuff")}>{selector.buffLevel}</FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
@@ -791,13 +791,13 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
-                    <TextWithTooltip tooltip={intl.translate("セラフィックバフ説明", locale)} id={"tooltip-seraphicbuff-detail"}>
+                    <TextWithTooltip tooltip={intl.translate("セラフィックバフ説明", locale)} id={"tooltip-damageuponlynormal-detail"}>
                         <tr>
-                            <th className="bg-primary">{intl.translate("セラフィックバフ", locale)}</th>
+                            <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
                             <td>
                                 <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.seraphicBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "seraphicBuff")}> {selector.buffLevel} </FormControl>
+                                    <FormControl componentClass="select" value={this.state.damageUPOnlyNormalBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "damageUPOnlyNormalBuff")}> {selector.buffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>
