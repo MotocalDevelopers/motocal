@@ -236,10 +236,10 @@ var multiLangData = {
         "ja": "属性バフ",
         "zh": "属性Buff",
     },
-    "セラフィックバフ": {
-        "en": "Seraphic Buff",
-        "ja": "セラフィックバフ",
-        "zh": "セラフィックバフ",
+    "与ダメージUPバフ(通常攻撃のみ)": {
+        "en": "Boost DMG Buff (only one-foe attacks)",
+        "ja": "与ダメージUPバフ(通常攻撃のみ)",
+        "zh": "与ダメージUPバフ(通常攻撃のみ)",
     },
     "セラフィックバフ説明": {
         "en": "DMG for one-foe attacks and counterattacks is amplified",
