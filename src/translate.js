@@ -241,10 +241,10 @@ var multiLangData = {
         "ja": "与ダメージUPバフ(通常攻撃のみ)",
         "zh": "与ダメージUPバフ(通常攻撃のみ)",
     },
-    "セラフィックバフ説明": {
+    "与ダメージUPバフ(通常攻撃のみ)説明": {
         "en": "DMG for one-foe attacks and counterattacks is amplified",
-        "ja": "自分の通常攻撃の与ダメージUP",
-        "zh": "自分の通常攻撃の与ダメージUP",
+        "ja": "通常攻撃の最終的なダメージが上昇します。",
+        "zh": "通常攻撃の最終的なダメージが上昇します。",
     },
     "属性バフ説明": {
         "en": "Element Buff. Ultima Weapon(30%) etc.",
