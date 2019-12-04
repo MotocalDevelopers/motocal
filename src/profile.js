@@ -431,13 +431,6 @@ var Profile = CreateClass({
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
-                            <tr key="personalDamageUPOnlyNormalBuff">
-                                <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
-                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalDamageUPOnlyNormalBuff}
-                                                             onChange={this.handleSelectEvent.bind(this, "personalDamageUPOnlyNormalBuff")}>{selector.buffLevel}</FormControl>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup></td>
-                            </tr>,
                             <tr key="personalCriticalBuff">
                                 <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
                                 <td>
@@ -507,6 +500,13 @@ var Profile = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ダメージ上限バフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.personalOugiDamageLimitBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "personalOugiDamageLimitBuff")}>{selector.buffLevel}</FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="personalDamageUPOnlyNormalBuff">
+                                <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.personalDamageUPOnlyNormalBuff}
+                                onChange={this.handleSelectEvent.bind(this, "personalDamageUPOnlyNormalBuff")}>{selector.buffLevel}</FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>
@@ -791,18 +791,6 @@ var Profile = CreateClass({
                             </td>
                         </tr>
                     </TextWithTooltip>
-                    <TextWithTooltip tooltip={intl.translate("与ダメージUPバフ(通常攻撃のみ)説明", locale)} id={"tooltip-damageuponlynormal-detail"}>
-                        <tr>
-                            <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
-                            <td>
-                                <InputGroup>
-                                    <FormControl componentClass="select" value={this.state.damageUPOnlyNormalBuff}
-                                                 onChange={this.handleSelectEvent.bind(this, "damageUPOnlyNormalBuff")}> {selector.buffLevel} </FormControl>
-                                    <InputGroup.Addon>%</InputGroup.Addon>
-                                </InputGroup>
-                            </td>
-                        </tr>
-                    </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("クリティカルバフ説明", locale)} id={"tooltip-critical-buff-detail"}>
                         <tr>
@@ -973,6 +961,19 @@ var Profile = CreateClass({
                                 <InputGroup>
                                     <FormControl componentClass="select" value={this.state.ougiDamageLimitBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiDamageLimitBuff")}> {selector.buffLevel} </FormControl>
+                                    <InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup>
+                            </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("与ダメージUPバフ(通常攻撃のみ)説明", locale)} id={"tooltip-damageuponlynormal-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
+                            <td>
+                                <InputGroup>
+                                    <FormControl componentClass="select" value={this.state.damageUPOnlyNormalBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "damageUPOnlyNormalBuff")}> {selector.buffLevel} </FormControl>
                                     <InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup>
                             </td>

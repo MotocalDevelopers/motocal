@@ -242,7 +242,7 @@ var multiLangData = {
         "zh": "与ダメージUPバフ(通常攻撃のみ)",
     },
     "与ダメージUPバフ(通常攻撃のみ)説明": {
-        "en": "DMG for one-foe attacks and counterattacks is amplified. Kumbhira 2ability etc.",
+        "en": "DMG and DMG CAP for one-foe attacks are amplified. EX, Kumbhira, Seox 2nd Skill",
         "ja": "通常攻撃の最終的なダメージが上昇します。クビラ2アビなど",
         "zh": "通常攻撃の最終的なダメージが上昇します。クビラ2アビなど",
     },
