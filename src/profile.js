@@ -301,8 +301,8 @@ var Profile = CreateClass({
     },
     render: function () {
         var locale = this.props.locale;
-        var job = Jobs[this.state.job];
-        var StrJobSupportValue = (job.support && typeof job.support.value === "number" && job.support.value) ? ("+" + job.support.value) : "";
+        let job = Jobs[this.state.job];
+        let StrJobSupportValue = (job.support && typeof job.support.value === "number" && job.support.value) ? ("+" + job.support.value) : "";
 
         return (
             <div className="profile">
@@ -348,21 +348,21 @@ var Profile = CreateClass({
                                 <span style={{display: "block"}}
                                       className="label label-default">{intl.translate("得意", locale)}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-default">[{intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}]</span>
+                                      className="label label-default">[{intl.translate(armTypes[job.favArm1], locale)}, {intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)}]</span>
                                 <span style={{display: "block"}}
-                                      className="label label-info">{intl.translate(jobTypes[Jobs[this.state.job].type], locale)}{intl.translate("タイプ", locale)}</span>
+                                      className="label label-info">{intl.translate(jobTypes[job.type], locale)}{intl.translate("タイプ", locale)}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-danger">{intl.translate("攻撃ボーナス", locale)} {Jobs[this.state.job].atBonus}</span>
+                                      className="label label-danger">{intl.translate("攻撃ボーナス", locale)} {job.atBonus}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-success">{intl.translate("HPボーナス", locale)} {Jobs[this.state.job].hpBonus}</span>
+                                      className="label label-success">{intl.translate("HPボーナス", locale)} {job.hpBonus}</span>
                                 <span style={{display: "block"}}
-                                      className="label label-danger">{intl.translate("攻刃ボーナス", locale)} {Jobs[this.state.job].kouzinBonus}%</span>
+                                      className="label label-danger">{intl.translate("攻刃ボーナス", locale)} {job.kouzinBonus}%</span>
                                 <span style={{display: "block"}}
-                                      className="label label-success">{intl.translate("守護ボーナス", locale)} {Jobs[this.state.job].shugoBonus}%</span>
+                                      className="label label-success">{intl.translate("守護ボーナス", locale)} {job.shugoBonus}%</span>
                                 <span style={{display: "block"}}
-                                      className="label label-warning">{intl.translate("基礎DA率", locale)} {Jobs[this.state.job].DaBonus}%</span>
+                                      className="label label-warning">{intl.translate("基礎DA率", locale)} {job.DaBonus}%</span>
                                 <span style={{display: "block"}}
-                                      className="label label-warning">{intl.translate("基礎TA率", locale)} {Jobs[this.state.job].TaBonus}%</span>
+                                      className="label label-warning">{intl.translate("基礎TA率", locale)} {job.TaBonus}%</span>
                             </th>
                             <td><FormControl componentClass="select" value={this.state.job}
                                              onChange={this.handleSelectEvent.bind(this, "job")}> {this.props.alljobs[locale]} </FormControl>
@@ -708,7 +708,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"} key={"zenithBonus1"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("得意武器攻撃1", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm1], locale)})
+                                {intl.translate("得意武器攻撃1", locale)}({intl.translate(armTypes[job.favArm1], locale)})
                             </th>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus1}
                                              onChange={this.handleSelectEvent.bind(this, "zenithBonus1")}> {this.props.zenithBonuses[locale]} </FormControl>
@@ -719,7 +719,7 @@ var Profile = CreateClass({
                     <TextWithTooltip tooltip={intl.translate("得意武器攻撃の説明", locale)} id={"tooltip-weapon-zenith-detail"} key={"zenithBonus2"}>
                         <tr>
                             <th className="bg-primary">
-                                {intl.translate("得意武器攻撃2", locale)}({intl.translate(armTypes[Jobs[this.state.job].favArm2], locale)})
+                                {intl.translate("得意武器攻撃2", locale)}({intl.translate(armTypes[job.favArm2], locale)})
                             </th>
                             <td><FormControl componentClass="select" value={this.state.zenithBonus2}
                                              onChange={this.handleSelectEvent.bind(this, "zenithBonus2")}> {this.props.zenithBonuses[locale]} </FormControl>
