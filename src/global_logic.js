@@ -455,7 +455,7 @@ module.exports.calcCriticalDeviation = function (criticalRatioArray) {
     let variance = 0.0;
 
     for (var attackRatio in criticalRatioArray) {
-        letiance += criticalRatioArray[attackRatio] * Math.pow((attackRatio - expectedValue), 2)
+        variance += criticalRatioArray[attackRatio] * Math.pow((attackRatio - expectedValue), 2)
     }
 
     return Math.sqrt(variance);
