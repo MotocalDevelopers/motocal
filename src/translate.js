@@ -382,10 +382,15 @@ var multiLangData = {
         "zh": "C.A. DMG Buff",
     },
 
-    "与ダメージ上昇": {
-        "en": "Damage UP ",
-        "ja": "与ダメージ上昇",
+    "与ダメージUP": {
+        "en": "Boost DMG",
+        "ja": "与ダメージUP",
         "zh": "造成伤害上升",
+    },
+    "与ダメージUP(通常攻撃のみ)": {
+        "en": "Boost DMG (only one-foe attacks)",
+        "ja": "与ダメージUP(通常攻撃のみ)",
+        "zh": "造成伤害上升(通常攻撃)",
     },
     "個別バフ": {
         "en": "Indiv Buff", //a.k.a: Personal buff
