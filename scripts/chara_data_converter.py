@@ -532,6 +532,7 @@ patchingOugiRatio["リリィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["アイル"] = {"ougiRatio": 5.0}
 patchingOugiRatio["カタリナ(リミテッドver)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ラカム(リミテッドver)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["黒騎士(リミテッドver)"] = {"ougiRatio": 5.0}
 
 ### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
