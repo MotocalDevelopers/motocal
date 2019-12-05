@@ -1638,6 +1638,11 @@ var multiLangData = {
         "ja": "マグナ進境(大)(最大時)",
         "zh": "方阵属性攻击力(大)",
     },
+    "通常進境(中)(最大時)": {
+        "en": "Normal Element ATK M",
+        "ja": "通常進境(中)(最大時)",
+        "zh": "通常属性攻击力(中)",
+    },
     "アンノウン": {
         "en": "Unknown",
         "ja": "アンノウン",
@@ -2075,6 +2080,11 @@ var multiLangData = {
         "ja": "人間/エルーン",
         "zh": "人間/エルーン",
     },
+    "人間/ドラフ": {
+        "en": "Human/Draph",
+        "ja": "人間/ドラフ",
+        "zh": "人間/ドラフ",
+    },
     "エルーン/ドラフ": {
         "en": "Erune/Draph",
         "ja": "エルーン/ドラフ",
@@ -2101,10 +2111,10 @@ var multiLangData = {
         "ja": "女",
         "zh": "女",
     },
-    "不明": {
+    "不詳": {
         "en": "Other",
-        "ja": "不明",
-        "zh": "不明",
+        "ja": "不詳",
+        "zh": "不詳",
     },
     "男/女": {
         "en": "Male/Female",
@@ -2233,6 +2243,11 @@ var multiLangData = {
         "en": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
         "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
         "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
+    },
+    "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))": {
+        "en": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "zh": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
     },
     "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))": {
         "en": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",
@@ -2438,6 +2453,11 @@ var multiLangData = {
         "en": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
         "ja": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
         "zh": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
+    },
+    "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)": {
+        "en": "3% boost to Water characters' critical hit damage cap. (Silva)",
+        "ja": "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)",
+        "zh": "3% boost to Water characters' critical hit damage cap. (Silva)",
     },
     "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))": {
         "en": "3% boost to Light characters' critical hit damage cap. (Silva (Light))",
@@ -3161,6 +3181,16 @@ var multiLangData = {
         "ja": "理外の美少女",
         "zh": "理外の美少女",
     },
+    "斧キャラの攻撃力とTA上昇(小)": {
+        "en": "Axe chara ATK and TA up (S)",
+        "ja": "斧キャラの攻撃力とTA上昇(小)",
+        "zh": "斧キャラの攻撃力とTA上昇(小)",
+    },
+    "弓キャラの攻撃力とHP上昇(中)": {
+        "en": "Bow chara ATK and HP up (M)",
+        "ja": "弓キャラの攻撃力とHP上昇(中)",
+        "zh": "弓キャラの攻撃力とHP上昇(中)",
+    },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
         "ja": "通常技巧(小)",
@@ -3486,6 +3516,11 @@ var multiLangData = {
         "ja": "災禍の誓約",
         "zh": "災禍の誓約",
     },
+    "パープル・ブロウ": {
+        "en": "Bonus Damage on 3rd Attack (%20)",
+        "ja": "3回目の攻撃に闇属性追撃効果 (20%)",
+        "zh": "3回目の攻撃に闇属性追撃効果 (20%)",
+    },
     "ペンデュラム[α]": {
         "en": "Pendulum Key α (Normal Attack Cap 10%)",
         "ja": "ペンデュラム[α](通常上限10%UP)",
@@ -3525,6 +3560,11 @@ var multiLangData = {
         "en": "Grand Epic",
         "ja": "エピックブランド・ゲイン",
         "zh": "Grand Epic",
+    },
+    "装備している「杖」の数が多いほど最大HP上昇": {
+        "en": "Boost HP by Number of Staffs",
+        "ja": "装備している「杖」の数が多いほど最大HP上昇",
+        "zh": "装備している「杖」の数が多いほど最大HP上昇",
     },
     "レゾナンス・スタッフ": {
         "en": "Staff Resonance",
@@ -3575,6 +3615,11 @@ var multiLangData = {
         "en": "True Purity Sunblade (main)",
         "ja": "真・道天浄土 (メイン装備時)",
         "zh": "真・道天浄土 (メイン装備時)",
+    },
+    "デモン・アドヴォケイト (メイン装備時)": {
+        "en": "Advocatus Diaboli (main)",
+        "ja": "デモン・アドヴォケイト (メイン装備時)",
+        "zh": "デモン・アドヴォケイト (メイン装備時)",
     },
     "奥義上限UP(イクシード)": {
         "en": "C.A. Cap UP (Exceed)",  //a.k.a:ougiDamageLimitByExceed
@@ -3810,6 +3855,11 @@ var multiLangData = {
         "en": "Open Buff Templates",
         "ja": "バフテンプレートを開く",
         "zh": "打开Buff列表",
+    },
+    "光属性キャラがトリプルアタック時に光属性追撃効果": {
+        "en": "Bonus Dmg On Triple Attacks.",
+        "ja": "光属性キャラがトリプルアタック時に光属性追撃効果",
+        "zh": "光属性キャラがトリプルアタック時に光属性追撃効果",
     },
     "バフテンプレート説明": {
         "en": "Drag and drop these buttons into a turn.",
