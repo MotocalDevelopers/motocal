@@ -284,6 +284,7 @@ var Chara = CreateClass({
             elementBuff: 0,
             otherBuff: 0,
             otherBuff2: 0,
+            damageUPOnlyNormalDamageBuff: 0,
             additionalDamageBuff: 0,
             supplementalDamageBuff: 0,
             daBuff: 0,
@@ -694,6 +695,12 @@ var Chara = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.ougiDamageLimitBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiDamageLimitBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="damageUPOnlyNormalDamageBuff">
+                                <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.damageUPOnlyNormalDamageBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "damageUPOnlyNormalDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>
                         ]
