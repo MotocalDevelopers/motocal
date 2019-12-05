@@ -439,7 +439,7 @@ module.exports.calcCriticalRatio = function (criticalRatioArray) {
     var criticalRatio = 0.0;
 
     if (Object.keys(criticalRatioArray).length > 0) {
-        for (var attackRatio in criticalRatioArray) {
+        for (const attackRatio in criticalRatioArray) {
             criticalRatio += attackRatio * criticalRatioArray[attackRatio]
         }
     } else {
@@ -453,7 +453,7 @@ module.exports.calcCriticalDeviation = function (criticalRatioArray) {
     var expectedValue = module.exports.calcCriticalRatio(criticalRatioArray);
     var variance = 0.0;
 
-    for (var attackRatio in criticalRatioArray) {
+    for (const attackRatio in criticalRatioArray) {
         variance += criticalRatioArray[attackRatio] * Math.pow((attackRatio - expectedValue), 2)
     }
 
@@ -463,7 +463,7 @@ module.exports.calcCriticalDeviation = function (criticalRatioArray) {
 module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     var res = {};
 
-    for (var key in totals) {
+    for (const key in totals) {
         var totalSummon = totals[key]["totalSummon"][summonind];
 
         // hp magnification
@@ -1070,7 +1070,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
     res["Djeeta"]["totalOugiDamage"] = totalOugiDamage;
     res["Djeeta"]["totalOugiDamageWithChain"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
 
-    for (var key in totals) {
+    for (const key in totals) {
         res[key]["totalOugiDamage"] = totalOugiDamage;
         res[key]["ougiDamageWithChainDamage"] = totalOugiDamage + res["Djeeta"]["averageChainBurst"];
     }
@@ -1117,7 +1117,7 @@ module.exports.checkNumberOfRaces = function (chara) {
     // Since there is a Djeeta, the unknown field is always true
     // The initial value of ind can also start from 1
     var ind = 1;
-    for (var key in chara) {
+    for (const key in chara) {
         if (chara[key].name != "" && chara[key].isConsideredInAverage) {
             // only front line
             if (ind < 4) {
@@ -1128,7 +1128,7 @@ module.exports.checkNumberOfRaces = function (chara) {
     }
 
     var races = 0;
-    for (var key in includedRaces) {
+    for (const key in includedRaces) {
         if (includedRaces[key]) races++;
     }
     return races
@@ -1146,7 +1146,7 @@ module.exports.checkNumberOfElements = function (totals) {
     };
 
     var ind = 0;
-    for (var key in totals) {
+    for (const key in totals) {
         if (totals[key].name != "" && totals[key].isConsideredInAverage) {
             // only front line
             if (ind < 4) {
@@ -1157,7 +1157,7 @@ module.exports.checkNumberOfElements = function (totals) {
     }
 
     var elements = 0;
-    for (var key in includedElements) {
+    for (const key in includedElements) {
         if (includedElements[key]) elements++;
     }
     return elements
@@ -1598,7 +1598,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
     var isAllUniqueArmType = false;
 
     var index = 0;
-    for (var key in totals) {
+    for (const key in totals) {
         index = index + 1 | 0;
         var isBahaAtIncluded = false;
         var isBahaAthpIncluded = false;
@@ -2281,7 +2281,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
         personalSupplementalDamageBuff: 0,
     };
 
-    for (var djeetabuffkey in djeetaBuffList) {
+    for (const djeetabuffkey in djeetaBuffList) {
         if (prof[djeetabuffkey] != undefined) {
             djeetaBuffList[djeetabuffkey] = 0.01 * parseFloat(prof[djeetabuffkey])
         }
@@ -2454,7 +2454,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuff: 0
             };
 
-            for (var charabuffkey in charaBuffList) {
+            for (const charabuffkey in charaBuffList) {
                 if (chara[i][charabuffkey] != undefined) {
                     charaBuffList[charabuffkey] = 0.01 * parseFloat(chara[i][charabuffkey])
                 }
@@ -2595,7 +2595,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
     }
 
     var races = module.exports.checkNumberOfRaces(chara);
-    for (var key in totals) {
+    for (const key in totals) {
         totals[key]["totalSummon"] = [];
         for (let s = 0; s < summon.length; s++) {
             var selfElement = summon[s].selfElement != undefined ? summon[s].selfElement : "fire";
@@ -2659,7 +2659,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
         }
     }
 
-    for (var key in totals) {
+    for (const key in totals) {
         totals[key]["typeBonus"] = module.exports.getTypeBonus(totals[key]["element"], prof.enemyElement)
     }
 
@@ -2668,7 +2668,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
 
 module.exports.initializeTotals = function (totals) {
     // Initialize values that change according to weapon organization
-    for (var key in totals) {
+    for (const key in totals) {
         totals[key]["armAttack"] = 0;
         totals[key]["armHP"] = 0;
         totals[key]["HPdebuff"] = 0;
@@ -2759,13 +2759,13 @@ module.exports.calcOneCombination = function (comb, summon, prof, arml, totals, 
 
 // Overwrite the content of totals with what reflects charap's support
 module.exports.treatSupportAbility = function (totals, chara, buff) {
-    for (var key in totals) {
+    for (const key in totals) {
         for (let support of eachSupport(totals[key])) {
             // Processing of special supporter abilities
             switch (support.type) {
                 case "normalBuff_doraf":
                     if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
+                        for (const key2 in totals) {
                             // Draph, Unknown and Primal characters only (Fortified Vigor)
                             if (bahaRaceContains(["doraf"], totals[key2]["race"])) {
                                 totals[key2]["normalBuff"] += support.value;
@@ -2801,7 +2801,7 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     continue;
                 case "daBuff_fist":
                     if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
+                        for (const key2 in totals) {
                             if (favContains("fist", [totals[key2]["fav1"], totals[key2]["fav2"]])) {
                                 totals[key2]["DASupport"] += support.value;
                             }
@@ -2834,7 +2834,7 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     // Refer to HP of Zahlhamelina
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
                     if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
+                        for (const key2 in totals) {
                             totals[key2]["charaHaisui"] += charaHaisuiValue
                         }
                     } else {
@@ -3098,7 +3098,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 AllAverageCycleDamagePerTurn[0].push("[" + summonHeader + "] " + title)
             }
 
-            for (var key in onedata) {
+            for (const key in onedata) {
                 var totalSummon = onedata[key].totalSummon;
                 var normalHaisuiOrig = onedata[key].skilldata.normalHaisui;
                 var magnaHaisuiOrig = onedata[key].skilldata.magnaHaisui;
@@ -3375,8 +3375,8 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     }
 
     // Extract graph maximum value minimum value
-    for (var key in minMaxArr) {
-        for (var summonkey in data) {
+    for (const key in minMaxArr) {
+        for (const summonkey in data) {
             for (let k = 0; k <= 100; k++) {
                 for (let j = 1; j <= res[0].length; j++) {
                     // Save maximum graph minimum value
@@ -3458,7 +3458,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                 AverageTotalAttack[t].push(onedata["Djeeta"].averageAttack);
                 AverageTotalExpected[t].push(onedata["Djeeta"].averageTotalExpected);
 
-                for (var key in onedata) {
+                for (const key in onedata) {
                     if (turnBuff.buffs["全体バフ"][t - 1].turnType == "ougi" || turnBuff.buffs[key][t - 1].turnType == "ougi") {
                         // Basically, setting of mystery takes precedence
                         var newOugiDamage = module.exports.calcOugiDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, prof.ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].ougiFixedDamage, onedata[key].ougiBonusPlainDamage, onedata[key].ougiDamageLimitValues);
@@ -3537,8 +3537,8 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
     }
 
     // Extract graph maximum value minimum value
-    for (var key in minMaxArr) {
-        for (var summonkey in data) {
+    for (const key in minMaxArr) {
+        for (const summonkey in data) {
             for (let k = 1; k <= turnBuff.maxTurn; k++) {
                 for (let j = 1; j <= res[0][0].length; j++) {
                     // グラフ最大値最小値を保存
