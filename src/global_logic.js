@@ -1,35 +1,35 @@
-var intl = require('./translate.js');
-var GlobalConst = require('./global_const.js');
+const intl = require('./translate.js');
+const GlobalConst = require('./global_const.js');
 const {
     LIMIT,
     BASE_LIMIT_VALUES,
     DEFAULT,
 } = GlobalConst;
-var supplemental = require('./supplemental.js');
-var elementRelation = GlobalConst.elementRelation;
-var supportAbilities = GlobalConst.supportAbilities;
-var zenith = GlobalConst.zenith;
-var zenithDA = GlobalConst.zenithDA;
-var zenithTA = GlobalConst.zenithTA;
-//var zenithCritical = GlobalConst.zenithCritical;
-var zenithOugiDamage = GlobalConst.zenithOugiDamage;
-var zenithChainDamage = GlobalConst.zenithChainDamage;
-var zenithChainDamageLimit = GlobalConst.zenithChainDamageLimit;
-var zenithElement = GlobalConst.zenithElement;
-var zenithDamageLimit = GlobalConst.zenithDamageLimit;
-var Jobs = GlobalConst.Jobs;
-var armTypes = GlobalConst.armTypes;
-var jobTypes = GlobalConst.jobTypes;
-var keyTypes = GlobalConst.keyTypes;
-var skilltypes = GlobalConst.skilltypes;
-var skillAmounts = GlobalConst.skillAmounts;
-var elementTypes = GlobalConst.elementTypes;
-var summonTypes = GlobalConst.summonTypes;
-var summonElementTypes = GlobalConst.summonElementTypes;
-var raceTypes = GlobalConst.raceTypes;
-var sexTypes = GlobalConst.sexTypes;
-var filterElementTypes = GlobalConst.filterElementTypes;
-var enemyDefenseType = GlobalConst.enemyDefenseType;
+const supplemental = require('./supplemental.js');
+const elementRelation = GlobalConst.elementRelation;
+const supportAbilities = GlobalConst.supportAbilities;
+const zenith = GlobalConst.zenith;
+const zenithDA = GlobalConst.zenithDA;
+const zenithTA = GlobalConst.zenithTA;
+//const zenithCritical = GlobalConst.zenithCritical;
+const zenithOugiDamage = GlobalConst.zenithOugiDamage;
+const zenithChainDamage = GlobalConst.zenithChainDamage;
+const zenithChainDamageLimit = GlobalConst.zenithChainDamageLimit;
+const zenithElement = GlobalConst.zenithElement;
+const zenithDamageLimit = GlobalConst.zenithDamageLimit;
+const Jobs = GlobalConst.Jobs;
+const armTypes = GlobalConst.armTypes;
+const jobTypes = GlobalConst.jobTypes;
+const keyTypes = GlobalConst.keyTypes;
+const skilltypes = GlobalConst.skilltypes;
+const skillAmounts = GlobalConst.skillAmounts;
+const elementTypes = GlobalConst.elementTypes;
+const summonTypes = GlobalConst.summonTypes;
+const summonElementTypes = GlobalConst.summonElementTypes;
+const raceTypes = GlobalConst.raceTypes;
+const sexTypes = GlobalConst.sexTypes;
+const filterElementTypes = GlobalConst.filterElementTypes;
+const enemyDefenseType = GlobalConst.enemyDefenseType;
 const {
     favContains,
     bahaRaceContains,
