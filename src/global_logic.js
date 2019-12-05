@@ -126,12 +126,12 @@ module.exports.calcCombinations = function (arml, ruleMaxSize) {
     // Calculate the array of [Minimum consideration number, ..., Maximum consideration number] for all weapons
     var armNumArray = [];
     var totalItr = 1;
-    for (var i = 0; i < arml.length; i++) {
+    for (let i = 0; i < arml.length; i++) {
         var temp = [];
         var numMin = arml[i].considerNumberMin != undefined ? parseInt(arml[i].considerNumberMin) : 0;
         var numMax = arml[i].considerNumberMax != undefined ? parseInt(arml[i].considerNumberMax) : 1;
         var itr = numMax - numMin + 1;
-        for (var j = 0; j < itr; j++) {
+        for (let j = 0; j < itr; j++) {
             temp[j] = j + numMin;
         }
         totalItr *= itr;
@@ -139,7 +139,7 @@ module.exports.calcCombinations = function (arml, ruleMaxSize) {
     }
     var combinations = [];
     var index = [];
-    for (var i = 0; i < armNumArray.length; i++) {
+    for (let i = 0; i < armNumArray.length; i++) {
         index[i] = 0;
     }
 
@@ -147,21 +147,21 @@ module.exports.calcCombinations = function (arml, ruleMaxSize) {
     var isCosmosArray = [];
     var isDarkOpusArray = [];
     var isHollowskyArray = []; //isAkasha
-    for (var i = 0; i < arml.length; i++) {
+    for (let i = 0; i < arml.length; i++) {
         isCosmosArray[i] = module.exports.isCosmos(arml[i]);
         isDarkOpusArray[i] = module.exports.isDarkOpus(arml[i]);
         isHollowskyArray[i] = module.exports.isHollowsky(arml[i]);
 
     }
     let maxSize = 0;
-    for (var i = 0; i < totalItr; i = (i + 1) | 0) {
+    for (let i = 0; i < totalItr; i = (i + 1) | 0) {
         var temp = [];
         var num = 0;
         var isCosmosIncluded = false;
         var isDarkOpusIncluded = false;
         var isHollowskyIncluded = false;
         var isValidCombination = true;
-        for (var j = 0; j < armNumArray.length; j = (j + 1) | 0) {
+        for (let j = 0; j < armNumArray.length; j = (j + 1) | 0) {
             if (!isCosmosArray[j] && !isDarkOpusArray[j] && !isHollowskyArray[j]) {
                 temp.push(armNumArray[j][index[j]]);
                 num += parseInt(armNumArray[j][index[j]])
@@ -335,7 +335,7 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, en
         var limitValues = [[2500000, 0.01], [1800000, 0.05], [1700000, 0.30], [1500000, 0.60]]
     }
 
-    for (var index = 0; index < 4; index++) {
+    for (let index = 0; index < 4; index++) {
         // Damage cap calculation
         var limitValue = limitValues[index][0] * (1.0 + chainDamageLimit);
         var limitRatio = limitValues[index][1];
@@ -384,7 +384,7 @@ module.exports.calcCriticalArray = function (_normalCritical, _magnaCritical, no
 
     // Normal other critical skill array is passed in the form of [probability 1, probability 2, probability 3, ...]
     // Critical for LB and Support abilities
-    for (var j = 0; j < normalOtherCritical.length; j++) {
+    for (let j = 0; j < normalOtherCritical.length; j++) {
         probability.push(normalOtherCritical[j]["value"]);
         damageRatio.push(normalOtherCritical[j]["attackRatio"]);
     }
@@ -399,15 +399,15 @@ module.exports.calcCriticalArray = function (_normalCritical, _magnaCritical, no
 
     if (probability.length > 0) {
         var bitmask = [];
-        for (var i = 0; i < probability.length; i++) {
+        for (let i = 0; i < probability.length; i++) {
             bitmask.push(1 << i);
         }
 
-        for (var i = 0; i < Math.pow(2, probability.length); i++) {
+        for (let i = 0; i < Math.pow(2, probability.length); i++) {
             var eachProb = 1.0;
             var attackRatio = 1.0;
 
-            for (var j = 0; j < probability.length; j++) {
+            for (let j = 0; j < probability.length; j++) {
                 if ((bitmask[j] & i) > 0) {
                     // The jth critical skill invoked
                     eachProb *= probability[j];
@@ -1429,7 +1429,7 @@ function* eachSupport(chara) {
 module.exports.recalcCharaHaisui = function (chara, remainHP) {
     var charaHaisuiValue = 1.0;
 
-    for (var ch = 0; ch < chara.length; ch++) {
+    for (let ch = 0; ch < chara.length; ch++) {
         if (chara[ch].name != "" && chara[ch].isConsideredInAverage) {
             for (let support of eachSupport(chara[ch])) {
                 // Treatment of emnity supplements only
@@ -1565,7 +1565,7 @@ function maskInvalidSkillLevel(slv, stype, amount) {
 module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
     // Check whether there is a cosmos weapon
     var cosmosType = '';
-    for (var i = 0; i < arml.length; i++) {
+    for (let i = 0; i < arml.length; i++) {
         if (comb[i] > 0) {
             var arm = arml[i];
             if (module.exports.isCosmos(arm)) {
@@ -1618,7 +1618,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
             "delta": false,
         };
 
-        for (var i = 0; i < arml.length; i++) {
+        for (let i = 0; i < arml.length; i++) {
             if (comb[i] != 0) {
                 var arm = arml[i];
                 var armSup = 1.0;
@@ -2419,7 +2419,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             }
     };
 
-    for (var i = 0; i < chara.length; i++) {
+    for (let i = 0; i < chara.length; i++) {
         if (chara[i].name != "") {
             var charaelement = chara[i].element != undefined ? chara[i].element : "fire";
             var charaDA = chara[i].DA != undefined ? chara[i].DA : 6.5;
@@ -2597,7 +2597,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
     var races = module.exports.checkNumberOfRaces(chara);
     for (var key in totals) {
         totals[key]["totalSummon"] = [];
-        for (var s = 0; s < summon.length; s++) {
+        for (let s = 0; s < summon.length; s++) {
             var selfElement = summon[s].selfElement != undefined ? summon[s].selfElement : "fire";
             var friendElement = summon[s].friendElement != undefined ? summon[s].friendElement : "fire";
 
@@ -2749,7 +2749,7 @@ module.exports.initializeTotals = function (totals) {
 module.exports.calcOneCombination = function (comb, summon, prof, arml, totals, buff) {
     module.exports.addSkilldataToTotals(totals, comb, arml, buff);
     var result = [];
-    for (var i = 0; i < summon.length; i++) {
+    for (let i = 0; i < summon.length; i++) {
         // Make an array of associative arrays containing results such as attacks
         result.push(module.exports.calcBasedOneSummon(i, prof, buff, totals));
     }
@@ -3019,7 +3019,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     };
     var cnt = 1;
     var considerAverageArray = {};
-    for (var ch = 0; ch < chara.length; ch++) {
+    for (let ch = 0; ch < chara.length; ch++) {
         var charaConsidered = chara[ch].isConsideredInAverage != undefined ? chara[ch].isConsideredInAverage : true;
         if (charaConsidered && chara[ch].name != "") {
             cnt++;
@@ -3056,7 +3056,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
     var allAlreadyUsedHP = {};
 
-    for (var s = 0; s < res.length; s++) {
+    for (let s = 0; s < res.length; s++) {
         var oneresult = res[s];
         var summonHeader = module.exports.makeSummonHeaderString(summon[s], locale, s+1);
         var TotalAttack = [["残りHP(%)"]];
@@ -3071,7 +3071,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
         var alreadyUsedHP = {};
 
-        for (var j = 0; j < oneresult.length; j++) {
+        for (let j = 0; j < oneresult.length; j++) {
             var onedata = oneresult[j].data;
             var title = storedNames[j];
 
@@ -3122,7 +3122,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                 var haisuiBuff = [];
                 // Character emnity should be calculated for each character
-                for (var k = 0; k <= 100; k++) {
+                for (let k = 0; k <= 100; k++) {
                     haisuiBuff.push({
                         normalHaisui: 1.0,
                         magnaHaisui: 1.0,
@@ -3141,7 +3141,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 var omegaKonshinIncluded = false;
 
                 // Weapon data calculation
-                for (var i = 0; i < arml.length; i++) {
+                for (let i = 0; i < arml.length; i++) {
                     var arm = arml[i];
 
                     if (storedCombinations[j][i] === 0) continue;
@@ -3155,7 +3155,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
 
                         if (skillname === "omega-gekijou") {
                             if (!omegaHaisuiIncluded && favCharaContains(arm.armType, onedata[key])) {
-                                for (var l = 0; l < haisuiBuff.length; l++) {
+                                for (let l = 0; l < haisuiBuff.length; l++) {
                                     var remainHP = 0.01 * (l + 1);
                                     haisuiBuff[l]["normalHaisui"] += 0.01 * module.exports.calcHaisuiValue("normalHaisui", amount, slv, remainHP)
                                 }
@@ -3163,41 +3163,41 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                             }
                         } else if (skillname === "omega-kyousou") {
                             if (!omegaKonshinIncluded && favCharaContains(arm.armType, onedata[key])) {
-                                for (var l = 0; l < haisuiBuff.length; l++) {
+                                for (let l = 0; l < haisuiBuff.length; l++) {
                                     var remainHP = 0.01 * (l + 1);
                                     haisuiBuff[l]["normalKonshin"] += 0.01 * module.exports.calcHaisuiValue("omegaKonshin", amount, slv, remainHP)
                                 }
                                 omegaKonshinIncluded = true;
                             }
                         } else if (stype == 'cherubimKonshin') {
-                            for (var l = 0; l < haisuiBuff.length; l++) {
+                            for (let l = 0; l < haisuiBuff.length; l++) {
                                 let normalSupportKonshinValue = 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "M", "1", 0.01 * (l + 1));
                                 haisuiBuff[l]["normalSupportKonshin"] = Math.max(haisuiBuff[l]["normalSupportKonshin"], normalSupportKonshinValue);
                             }
                         } else if (stype == 'sunbladeKonshin') {
-                            for (var l = 0; l < haisuiBuff.length; l++) {
+                            for (let l = 0; l < haisuiBuff.length; l++) {
                                 let normalSupportKonshinValue = 0.01 * module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", 0.01 * (l + 1));
                                 haisuiBuff[l]["normalSupportKonshin"] = Math.max(haisuiBuff[l]["normalSupportKonshin"], normalSupportKonshinValue);
                             }
                         } else if (onedata[key].element == element) {
                             if (isHaisuiType(stype)) {
                                 if (stype === "normalHaisui" || stype === "normalKonshin") {
-                                    for (var l = 0; l < haisuiBuff.length; l++) {
+                                    for (let l = 0; l < haisuiBuff.length; l++) {
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.zeus
                                     }
                                 } else if (stype === "normalOtherKonshin") {
-                                    for (var l = 0; l < haisuiBuff.length; l++) {
+                                    for (let l = 0; l < haisuiBuff.length; l++) {
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l]["normalKonshin"] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP)
                                     }
                                 } else if (stype === "magnaHaisui" || stype === "magnaKonshin") {
-                                    for (var l = 0; l < haisuiBuff.length; l++) {
+                                    for (let l = 0; l < haisuiBuff.length; l++) {
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP) * totalSummon.magna
                                     }
                                 } else {
-                                    for (var l = 0; l < haisuiBuff.length; l++) {
+                                    for (let l = 0; l < haisuiBuff.length; l++) {
                                         var remainHP = 0.01 * (l + 1);
                                         haisuiBuff[l][stype] += storedCombinations[j][i] * 0.01 * module.exports.calcHaisuiValue(stype, amount, slv, remainHP)
                                     }
@@ -3206,7 +3206,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                         }
                     }
                 }
-                for (var k = 0; k <= 100; k++) {
+                for (let k = 0; k <= 100; k++) {
                     var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * (haisuiBuff[k].normalKonshin + haisuiBuff[k].normalSupportKonshin) * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui * haisuiBuff[k].lbHaisui * haisuiBuff[k].lbKonshin;
                     var summedAttack = onedata[key].displayAttack;
                     var newTotalAttack = summedAttack * newTotalSkillCoeff;
@@ -3256,7 +3256,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                             AverageCriticalAttack.push([hp]);
                             index = alreadyUsedHP[hp] - 1;
 
-                            for (var subj = 0; subj < oneresult.length; subj++) {
+                            for (let subj = 0; subj < oneresult.length; subj++) {
                                 // In order to make a scatter diagram, we will create a result field first
                                 TotalAttack[index].push(null);
                                 CycleDamagePerTurn[index].push(null);
@@ -3286,7 +3286,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                                     allindex = allAlreadyUsedHP[hp] - 1;
 
                                     // To put it together, prepare it by res.length * oneres.length
-                                    for (var subj = 0; subj < res.length * oneresult.length; subj++) {
+                                    for (let subj = 0; subj < res.length * oneresult.length; subj++) {
                                         AllTotalAttack[allindex].push(null);
                                         AllCycleDamagePerTurn[allindex].push(null);
                                         AllCriticalAttack[allindex].push(null);
@@ -3321,7 +3321,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
             }
 
             if (res.length > 1) {
-                for (var k = 0; k <= 100; k++) {
+                for (let k = 0; k <= 100; k++) {
                     var hp;
                     if (displayRealHP) {
                         // Actual HP
@@ -3377,8 +3377,8 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     // Extract graph maximum value minimum value
     for (var key in minMaxArr) {
         for (var summonkey in data) {
-            for (var k = 0; k <= 100; k++) {
-                for (var j = 1; j <= res[0].length; j++) {
+            for (let k = 0; k <= 100; k++) {
+                for (let j = 1; j <= res[0].length; j++) {
                     // Save maximum graph minimum value
                     if (data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j];
                     if (data[summonkey][key][k][j] < minMaxArr[key]["min"] || minMaxArr[key]["min"] == 0) minMaxArr[key]["min"] = data[summonkey][key][k][j]
@@ -3402,7 +3402,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
     };
     var cnt = 1;
     var considerAverageArray = {};
-    for (var ch = 0; ch < chara.length; ch++) {
+    for (let ch = 0; ch < chara.length; ch++) {
         var charaConsidered = chara[ch].isConsideredInAverage != undefined ? chara[ch].isConsideredInAverage : true;
         if (charaConsidered && chara[ch].name != "") {
             cnt++;
@@ -3419,7 +3419,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
         var AllAverageExpectedDamage = [["ターン"]];
         var AllSummedAverageExpectedDamage = [["ターン"]];
 
-        for (var m = 1; m <= turnBuff.maxTurn; m++) {
+        for (let m = 1; m <= turnBuff.maxTurn; m++) {
             AllAverageTotalAttack.push([m]);
             AllAverageTotalExpected.push([m]);
             AllExpectedDamage.push([m]);
@@ -3428,7 +3428,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
         }
     }
 
-    for (var s = 0; s < res.length; s++) {
+    for (let s = 0; s < res.length; s++) {
         var oneresult = res[s];
         var summonHeader = module.exports.makeSummonHeaderString(summon[s], locale);
         var AverageTotalAttack = [["ターン"]];
@@ -3437,22 +3437,22 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
         var AverageExpectedDamage = [["ターン"]];
         var SummedAverageExpectedDamage = [["ターン"]];
 
-        for (var m = 1; m <= turnBuff.maxTurn; m++) {
+        for (let m = 1; m <= turnBuff.maxTurn; m++) {
             AverageTotalAttack.push([m]);
             AverageTotalExpected.push([m]);
             ExpectedDamage.push([m]);
             AverageExpectedDamage.push([m]);
             SummedAverageExpectedDamage.push([m]);
 
-            for (var j = 0; j < oneresult[0].length; j++) {
+            for (let j = 0; j < oneresult[0].length; j++) {
                 AverageExpectedDamage[m].push(0);
                 SummedAverageExpectedDamage[m].push(0)
             }
         }
 
-        for (var t = 1; t <= turnBuff.maxTurn; t++) {
+        for (let t = 1; t <= turnBuff.maxTurn; t++) {
             var turndata = oneresult[t - 1];
-            for (var j = 0; j < turndata.length; j++) {
+            for (let j = 0; j < turndata.length; j++) {
                 var onedata = turndata[j].data;
 
                 AverageTotalAttack[t].push(onedata["Djeeta"].averageAttack);
@@ -3539,8 +3539,8 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
     // Extract graph maximum value minimum value
     for (var key in minMaxArr) {
         for (var summonkey in data) {
-            for (var k = 1; k <= turnBuff.maxTurn; k++) {
-                for (var j = 1; j <= res[0][0].length; j++) {
+            for (let k = 1; k <= turnBuff.maxTurn; k++) {
+                for (let j = 1; j <= res[0][0].length; j++) {
                     // グラフ最大値最小値を保存
                     if (data[summonkey][key][k][j] > minMaxArr[key]["max"]) minMaxArr[key]["max"] = data[summonkey][key][k][j];
                     if (data[summonkey][key][k][j] < minMaxArr[key]["min"] || minMaxArr[key]["min"] == 0) minMaxArr[key]["min"] = data[summonkey][key][k][j]
