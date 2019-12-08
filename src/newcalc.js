@@ -43,7 +43,7 @@ function newCalcTotalDamage(totals, res, turn) {
     }
     
     
-    for (const i = 0; i < turn; i++) {
+    for (let i = 0; i < turn; i++) {
         // Processing at start of turn.
         countOugiPerTurn = 0;
         totalOugiPerTurn = 0;
