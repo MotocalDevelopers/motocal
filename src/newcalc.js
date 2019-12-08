@@ -8,7 +8,7 @@ function newCalcTotalDamage(totals, res, turn) {
     // Gain gauge bonus for other character when ougi. 
     // Cannot be given to characters that have already performed ougi, including yourself.
     const getOugiGageBonus = (times = 1) => {
-        for (let key in res) {
+        for (const key in res) {
             if (totals[key]["isConsideredInAverage"]) {
                 let ougiGageUp = Math.ceil(10 * res[key].ougiGageBuff);
                 if (res[key].attackMode != "ougi") res[key].ougiGage = Math.min(res[key].ougiGageLimit, Math.max(0, res[key].ougiGage + (ougiGageUp * times)));
@@ -18,7 +18,7 @@ function newCalcTotalDamage(totals, res, turn) {
     
     // Gain gauge bonus for all character when ougi effect of Unsigned Kaneshige(無銘金重) etc. 
     const getOugiGageUpOugiBuff = (times = 1) => {
-        for (let key in res) {
+        for (const key in res) {
             if (totals[key]["isConsideredInAverage"]) {
                 let ougiGageUp = Math.ceil(res[key].ougiGageUpOugiBuff * res[key].ougiGageBuff);
                 res[key].ougiGage = Math.min(res[key].ougiGageLimit, Math.max(0, res[key].ougiGage + (ougiGageUp * times)));
@@ -26,7 +26,7 @@ function newCalcTotalDamage(totals, res, turn) {
         }
     };
     
-    for (let key in res) {
+    for (const key in res) {
         if (totals[key]["isConsideredInAverage"]) {
             // Temporary implementation
             res[key].ougiGageLimit = (totals[key]["job"]["name"] == "剣豪" ||totals[key]["job"]["name"] == "侍" || key == "ヴァジラ" || key == "サーヴァンツ ドロシー＆クラウディア" 
@@ -43,13 +43,13 @@ function newCalcTotalDamage(totals, res, turn) {
     }
     
     
-    for (let i = 0; i < turn; i++) {
+    for (const i = 0; i < turn; i++) {
         // Processing at start of turn.
         countOugiPerTurn = 0;
         totalOugiPerTurn = 0;
         
         // Processing for each character.
-        for (let key in res) {
+        for (const key in res) {
             if (totals[key]["isConsideredInAverage"]) {
                 // Ougi attack (200%)
                 if (res[key].ougiGage >= 200) {
@@ -83,7 +83,7 @@ function newCalcTotalDamage(totals, res, turn) {
         // Chain burst
         if (countOugiPerTurn > 1) totalDamage += res["Djeeta"].chainBurstSupplemental + calcChainBurst(totalOugiPerTurn, countOugiPerTurn, getTypeBonus(totals["Djeeta"].element, res["Djeeta"].enemyElement), res["Djeeta"].skilldata.enemyResistance, res["Djeeta"].skilldata.chainDamageUP, res["Djeeta"].skilldata.chainDamageLimit);
         
-        for (let key in res) {
+        for (const key in res) {
             if (totals[key]["isConsideredInAverage"]) {
                 res[key].attackMode = "";
                 // Give uplift(高揚) effect.
