@@ -21,6 +21,9 @@ const skilltypes = GlobalConst.skilltypes;
 const skillAmounts = GlobalConst.skillAmounts;
 const summonTypes = GlobalConst.summonTypes;
 const summonElementTypes = GlobalConst.summonElementTypes;
+const opusNames = GlobalConst.opusNames;
+const hollowskyNames = GlobalConst.hollowskyNames;
+const limitBonusCriticalList = GlobalConst.limitBonusCriticalList;
 const {
     favContains,
     bahaRaceContains,
@@ -32,9 +35,6 @@ const {
 } = require('./skill_filter.js');
 const {range, when} = require('./support_filter');
 const epic = require('./epic');
-const opusNames = GlobalConst.opusNames;
-const hollowskyNames = GlobalConst.hollowskyNames;
-const limitBonusCriticalList = GlobalConst.limitBonusCriticalList;
 
 
 module.exports.isCosmos = function (arm) {
