@@ -11,25 +11,16 @@ const supportAbilities = GlobalConst.supportAbilities;
 const zenith = GlobalConst.zenith;
 const zenithDA = GlobalConst.zenithDA;
 const zenithTA = GlobalConst.zenithTA;
-//const zenithCritical = GlobalConst.zenithCritical;
 const zenithOugiDamage = GlobalConst.zenithOugiDamage;
 const zenithChainDamage = GlobalConst.zenithChainDamage;
 const zenithChainDamageLimit = GlobalConst.zenithChainDamageLimit;
 const zenithElement = GlobalConst.zenithElement;
 const zenithDamageLimit = GlobalConst.zenithDamageLimit;
 const Jobs = GlobalConst.Jobs;
-const armTypes = GlobalConst.armTypes;
-const jobTypes = GlobalConst.jobTypes;
-const keyTypes = GlobalConst.keyTypes;
 const skilltypes = GlobalConst.skilltypes;
 const skillAmounts = GlobalConst.skillAmounts;
-const elementTypes = GlobalConst.elementTypes;
 const summonTypes = GlobalConst.summonTypes;
 const summonElementTypes = GlobalConst.summonElementTypes;
-const raceTypes = GlobalConst.raceTypes;
-const sexTypes = GlobalConst.sexTypes;
-const filterElementTypes = GlobalConst.filterElementTypes;
-const enemyDefenseType = GlobalConst.enemyDefenseType;
 const {
     favContains,
     bahaRaceContains,
