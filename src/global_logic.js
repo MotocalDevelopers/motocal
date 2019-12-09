@@ -41,6 +41,9 @@ const {
 } = require('./skill_filter.js');
 const {range, when} = require('./support_filter');
 const epic = require('./epic');
+const opusNames = GlobalConst.opusNames;
+const hollowskyNames = GlobalConst.hollowskyNames;
+const limitBonusCriticalList = GlobalConst.limitBonusCriticalList;
 
 
 module.exports.isCosmos = function (arm) {
@@ -50,7 +53,7 @@ module.exports.isCosmos = function (arm) {
 };
 
 module.exports.isDarkOpus = function (arm) {
-    return arm != undefined && arm.name != undefined && GlobalConst.opusNames.some(value => arm.name.includes(value));
+    return arm != undefined && arm.name != undefined && opusNames.some(value => arm.name.includes(value));
 };
 
 function isHaisuiType(stype) {
@@ -79,7 +82,7 @@ module.exports.proceedIndex = function (index, ana, i) {
 };
 
 module.exports.isHollowsky = function (arm) {
-    return arm != undefined && arm.name != undefined && GlobalConst.hollowskyNames.some( value => arm.name.includes(value));
+    return arm != undefined && arm.name != undefined && hollowskyNames.some( value => arm.name.includes(value));
 };
 
 /**
@@ -2200,8 +2203,8 @@ function getLBCriticalArray(charaLB) {
         if (charaLB[crit_key] !== "none") {
             var chara_lb_crit_type = charaLB[crit_key];
             criticalArray.push({
-                "value": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].value,
-                "attackRatio": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].attackRatio
+                "value": limitBonusCriticalList[chara_lb_crit_type].value,
+                "attackRatio": limitBonusCriticalList[chara_lb_crit_type].attackRatio
             });
         }
     });
