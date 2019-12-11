@@ -1,29 +1,28 @@
 const intl = require('./translate.js');
-const GlobalConst = require('./global_const.js');
 const {
     LIMIT,
     BASE_LIMIT_VALUES,
     DEFAULT,
-} = GlobalConst;
+    elementRelation,
+    supportAbilities,
+    zenith,
+    zenithDA,
+    zenithTA,
+    zenithOugiDamage,
+    zenithChainDamage,
+    zenithChainDamageLimit,
+    zenithElement,
+    zenithDamageLimit,
+    Jobs,
+    skilltypes,
+    skillAmounts,
+    summonTypes,
+    summonElementTypes,
+    opusNames,
+    hollowskyNames,
+    limitBonusCriticalList,
+} = require('./global_const.js');
 const supplemental = require('./supplemental.js');
-const elementRelation = GlobalConst.elementRelation;
-const supportAbilities = GlobalConst.supportAbilities;
-const zenith = GlobalConst.zenith;
-const zenithDA = GlobalConst.zenithDA;
-const zenithTA = GlobalConst.zenithTA;
-const zenithOugiDamage = GlobalConst.zenithOugiDamage;
-const zenithChainDamage = GlobalConst.zenithChainDamage;
-const zenithChainDamageLimit = GlobalConst.zenithChainDamageLimit;
-const zenithElement = GlobalConst.zenithElement;
-const zenithDamageLimit = GlobalConst.zenithDamageLimit;
-const Jobs = GlobalConst.Jobs;
-const skilltypes = GlobalConst.skilltypes;
-const skillAmounts = GlobalConst.skillAmounts;
-const summonTypes = GlobalConst.summonTypes;
-const summonElementTypes = GlobalConst.summonElementTypes;
-const opusNames = GlobalConst.opusNames;
-const hollowskyNames = GlobalConst.hollowskyNames;
-const limitBonusCriticalList = GlobalConst.limitBonusCriticalList;
 const {
     favContains,
     bahaRaceContains,
