@@ -64,6 +64,7 @@
     "jest": "24.8.0",
     "prop-types": "^15.6.1",
     "watchify": "^3.11.1",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "worker-loader": "^2.0.0"
   }
 }

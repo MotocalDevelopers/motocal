@@ -68,7 +68,11 @@ module.exports.getElementColorLabel = (function (element, locale) {
 });
 
 
-module.exports._ua = (function (u) {
+module.exports._ua = (function () {
+    if (!self.window) {
+      return null;
+    }
+    var u = self.window.navigator.userAgent.toLowerCase();
     return {
         Tablet: (u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1)
             || u.indexOf("ipad") != -1 || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
@@ -78,7 +82,7 @@ module.exports._ua = (function (u) {
             || u.indexOf("ipod") != -1 || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
             || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1) || u.indexOf("blackberry") != -1
     }
-})(window.navigator.userAgent.toLowerCase());
+})();
 
 module.exports.BASE_LIMIT_VALUES = {
     normalDamage: [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]],
@@ -152,48 +156,48 @@ var zenithTABonus = {
 
 //var zenithCriticalBonus = [0, 1, 3, 5, 6, 8, 10];
 var zenithOugiDamageBonus = {
-    "無し": 0, 
-    "★1": 0.01, 
-    "★2": 0.03, 
-    "★3": 0.05, 
-    "★4": 0.06, 
-    "★5": 0.08, 
-    "★6": 0.10, 
-    "★7": 0.11, 
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
+    "★3": 0.05,
+    "★4": 0.06,
+    "★5": 0.08,
+    "★6": 0.10,
+    "★7": 0.11,
     "★8": 0.13,
     "★9": 0.15
 };
 var zenithChainDamageBonus = {
-    "無し": 0, 
-    "★1": 0.01, 
-    "★2": 0.03, 
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
     "★3": 0.05,
-    "★4": 0.06, 
-    "★5": 0.08, 
+    "★4": 0.06,
+    "★5": 0.08,
     "★6": 0.10
 };
 var zenithChainDamageLimitBonus = {
-    "無し": 0, 
-    "★1":  0.01, 
-    "★2": 0.03, 
+    "無し": 0,
+    "★1":  0.01,
+    "★2": 0.03,
     "★3": 0.05
 };
 var zenithElementBonus = {
-    "無し": 0, 
-    "★1": 0.01, 
-    "★2": 0.03, 
-    "★3": 0.05, 
-    "★4": 0.06, 
-    "★5": 0.08, 
+    "無し": 0,
+    "★1": 0.01,
+    "★2": 0.03,
+    "★3": 0.05,
+    "★4": 0.06,
+    "★5": 0.08,
     "★6": 0.10
 };
 var zenithDamageLimitBonus = {
-    "無し": 0, 
-    "★1": 0.03, 
-    "★2": 0.06, 
-    "★3": 0.10, 
-    "★4": 0.11, 
-    "★5": 0.13, 
+    "無し": 0,
+    "★1": 0.03,
+    "★2": 0.06,
+    "★3": 0.10,
+    "★4": 0.11,
+    "★5": 0.13,
     "★6": 0.15
 };
 
@@ -1823,7 +1827,7 @@ var skillAmounts = {
         // Fist, Katana, Bow, Music.
         "HP": [20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0],
     },
-    
+
     // Bahamut Coda(フツルフ)
     "bahaFUATHP": {
         // Dagger, Axe, Spear, Gun, Sword, Wand.
@@ -1894,7 +1898,7 @@ var skillAmounts = {
         "M": [0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.9, 3.2, 3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0],
         "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8]
     },
-    // normal Glory(英傑) chain up 
+    // normal Glory(英傑) chain up
     "normalEiketsu": {
         "L": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 14.5, 14.5, 14.5, 14.5, 14.5]
     },
