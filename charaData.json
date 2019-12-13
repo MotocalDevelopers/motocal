@@ -3955,7 +3955,7 @@
         "attack": "11850",
         "baseDA": 10.0,
         "baseTA": 5.0,
-        "ougiRatio": 4.5,
+        "ougiRatio": 5.0,
         "imageURL": "./charaimgs/3040082000_03.png",
         "en": "Black Knight (Grand)"
     },
@@ -4673,7 +4673,7 @@
         "fav1": "gun",
         "fav2": "none",
         "support": "ougi_gage_up_own_20",
-        "support2": "none",
+        "support2": "critical_cap_up_water_3",
         "support3": "none",
         "minhp": "252",
         "hp": "1602",
