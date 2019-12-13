@@ -2382,6 +2382,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.10,
     },
+    "critical_cap_up_water_3": {
+        "name": "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)",
+        "type": "critical_cap_up",
+        "range": range.element.water,
+        "value": 0.03,
+    },
     "critical_cap_up_light_3": {
         "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
         "type": "critical_cap_up",

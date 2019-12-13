@@ -1256,7 +1256,7 @@ var Result = CreateClass({
                         let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
                         [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
                         
-                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
+                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUPOnlyNormalDamage, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
                         let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
                         
                         charaDetail[key].push(
@@ -1439,7 +1439,8 @@ var Result = CreateClass({
                             }
                         };
                         pushSkillInfoElement3("additionalDamage", "追加ダメージ", "primary");
-                        pushSkillInfoElement3("damageUP", "与ダメージ上昇", "danger");
+                        pushSkillInfoElement3("damageUP", "与ダメージUP", "danger");
+                        pushSkillInfoElement3("damageUPOnlyNormalDamage", "与ダメージUP(通常攻撃のみ)", "danger");
                         pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "danger");
                         pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "warning");
                         pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "warning");
