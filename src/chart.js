@@ -180,7 +180,7 @@ var HPChart = CreateClass({
                 var chartalt ="Motocal Graph: " + label;
                 data = data + "  {{NVD3Series\n    |label="+label+"\n    |color="+color+"\n    |area="+area+"\n    |chartDataX="+chartDataX+"\n    |chartDataY="+chartDataY+"\n    |alt="+chartalt+"\n  }}\n";
             }
-            nvd3Chart = "{{NVD3Chart\n|xAxis="+xAxis+"\n|yAxis="+yAxis+"\n|yFormat=,.04s\n|width="+width+"\n|height="+height+"\n|alt="+alt+"\n|data=\n"+data+"}}\n";
+            nvd3Chart = "{{NVD3Chart\n|xAxis="+xAxis+"\n|yAxis="+yAxis+"\n|yAxisWidth=100\n|yFormat=,.04s\n|width="+width+"\n|height="+height+"\n|alt="+alt+"\n|data=\n"+data+"}}\n";
             return nvd3Chart;
         }
     },
