@@ -160,8 +160,8 @@ var HPChart = CreateClass({
             return csvData;
         }
     },
-    /* Formatted for CSV */
-    makeWikiData: function (locale) {
+    /* Formatted for NVD3 */
+    makeNvd3Data: function (locale) {
         var d = this.state.chartData[intl.translate("まとめて比較", locale)];
         if (d == null) {
             // When there is no "compare all together", when the set of summons is one type
@@ -664,8 +664,8 @@ var HPChart = CreateClass({
     makeCsvClipboardText: function (csvdata) {
         return csvdata.map(v => v.join("\t")).join("\n");
     },
-    makeNvd3ClipboardText: function (wikiData) {
-        return wikiData;
+    makeNvd3ClipboardText: function (nvd3Data) {
+        return nvd3Data;
     },
     render: function () {
         var locale = this.props.locale;
@@ -673,9 +673,9 @@ var HPChart = CreateClass({
         var data = this.state.chartData;
         var options = this.makeChartOption(sortKey);
         var csvData = this.makeCsvData(locale);
-        var wikiData = this.makeWikiData(locale);
+        var nvd3Data = this.makeNvd3Data(locale);
         var csvClipBoardData = this.makeCsvClipboardText(csvData);
-        var wikiClipBoardData = this.makeNvd3ClipboardText(wikiData);
+        var nvd3ClipBoardData = this.makeNvd3ClipboardText(nvd3Data);
 
         if (_ua.Mobile) {
             return (
@@ -716,10 +716,10 @@ var HPChart = CreateClass({
                         <button className={"btn btn-default"}><CopyToClipboard text={csvClipBoardData}><span
                             className={"glyphicon glyphicon-copy"} aria-hidden={"true"}></span></CopyToClipboard>
                         </button>
-                        <span>WIKI</span>
-                        <CSVLink className={"btn btn-default"} data={wikiData} filename={"motocal_charts_wiki.txt"}><span
+                        <span>NVD3</span>
+                        <CSVLink className={"btn btn-default"} data={nvd3Data} filename={"motocal_charts_nvd3.txt"}><span
                             className={"glyphicon glyphicon-download-alt"} aria-hidden={"true"}></span></CSVLink>
-                        <button className={"btn btn-default"}><CopyToClipboard text={wikiClipBoardData}><span
+                        <button className={"btn btn-default"}><CopyToClipboard text={nvd3ClipBoardData}><span
                             className={"glyphicon glyphicon-copy"} aria-hidden={"true"}></span></CopyToClipboard>
                         </button>
                     </div>
