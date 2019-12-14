@@ -1075,6 +1075,14 @@ var sishoGenbu = {
     "normalNiteS": {name: "王道: 水の二手"},
     "normalDamageLimit7": {name: "邪道: 通常上限UP(7.0%)"},
 };
+var sishoSufix = {
+    "non": {name: ""},
+    "normalCriticalM": {name: "・王"},
+    "normalHPS": {name: "・王"},
+    "normalCriticalM": {name: "・王"},
+    "normalNiteS": {name: "・王"},
+    "normalDamageLimit7": {name: "・邪"},
+};
 
 var omegaWeaponSkill1 = {
     "omega-raw": {name: "オメガ-未強化"},
@@ -2481,6 +2489,12 @@ module.exports.enemyDefenseType = enemyDefenseType;
 module.exports.supportAbilities = supportAbilities;
 module.exports.limitBonusCriticalList = limitBonusCriticalList;
 module.exports.skillDetailsDescription = skillDetailsDescription;
+module.exports.opusNormalWeaponSkill2 = opusNormalWeaponSkill2;
+module.exports.opusMagnaWeaponSkill2 = opusMagnaWeaponSkill2;
+module.exports.opusWeaponSkill1 = opusWeaponSkill1;
+module.exports.sishoSufix = sishoSufix;
+
+
 
 module.exports.additionalSelectList = {
     "・属性変更": {
@@ -2528,28 +2542,28 @@ module.exports.additionalSelectList = {
     "青竜牙矛": {
         selectKeysNotation: "",
         notationText: "",
-        selectKeys: ["skill2"],
+        selectKeys: ["sishoskill2"],
         selectors: ["sishoSeiryu"],
         defaultKeys: ["non"],
     },
     "朱雀光剣": {
         selectKeysNotation: "",
         notationText: "",
-        selectKeys: ["skill2"],
+        selectKeys: ["sishoskill2"],
         selectors: ["sishoSuzaku"],
         defaultKeys: ["non"],
     },
     "白虎咆拳": {
         selectKeysNotation: "",
         notationText: "",
-        selectKeys: ["skill2"],
+        selectKeys: ["sishoskill2"],
         selectors: ["sishoByakko"],
         defaultKeys: ["non"],
     },
     "玄武甲槌": {
         selectKeysNotation: "",
         notationText: "",
-        selectKeys: ["skill2"],
+        selectKeys: ["sishoskill2"],
         selectors: ["sishoGenbu"],
         defaultKeys: ["non"],
     },

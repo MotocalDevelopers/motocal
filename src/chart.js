@@ -11,21 +11,44 @@ var selector = GlobalConst.selector;
 var supportedChartSortkeys = GlobalConst.supportedChartSortkeys;
 var supportedSimulationChartSortkeys = GlobalConst.supportedSimulationChartSortkeys;
 var keyTypes = GlobalConst.keyTypes;
+var raceTypes = GlobalConst.raceTypes;
+var opusWeaponSkill1 = GlobalConst.opusWeaponSkill1;
+var opusNormalWeaponSkill2 = GlobalConst.opusNormalWeaponSkill2;
+var opusMagnaWeaponSkill2 = GlobalConst.opusMagnaWeaponSkill2;
 var _ua = GlobalConst._ua;
 var {generateHaisuiData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js');
-var colors = ['#000000','#000080','#00008B','#0000CD','#0000FF','#006400','#008000','#008080','#008B8B','#00BFFF','#00CED1',
-    '#00FA9A','#00FF00','#00FF7F','#00FFFF','#00FFFF','#191970','#1E90FF','#20B2AA','#228B22','#2E8B57','#2F4F4F','#2F4F4F',
-    '#32CD32','#3CB371','#40E0D0','#4169E1','#4682B4','#483D8B','#48D1CC','#4B0082','#556B2F','#5F9EA0','#6495ED','#663399',
-    '#66CDAA','#696969','#696969','#6A5ACD','#6B8E23','#708090','#708090','#778899','#778899','#7B68EE','#7CFC00','#7FFF00',
-    '#7FFFD4','#800000','#800080','#808000','#808080','#808080','#87CEEB','#87CEFA','#8A2BE2','#8B0000','#8B008B','#8B4513',
-    '#8FBC8F','#90EE90','#9370DB','#9400D3','#98FB98','#9932CC','#9ACD32','#A0522D','#A52A2A','#A9A9A9','#A9A9A9','#ADD8E6',
-    '#ADFF2F','#AFEEEE','#B0C4DE','#B0E0E6','#B22222','#B8860B','#BA55D3','#BC8F8F','#BDB76B','#C0C0C0','#C71585','#CD5C5C',
-    '#CD853F','#D2691E','#D2B48C','#D3D3D3','#D3D3D3','#D8BFD8','#DA70D6','#DAA520','#DB7093','#DC143C','#DCDCDC','#DDA0DD',
-    '#DEB887','#E0FFFF','#E6E6FA','#E9967A','#EE82EE','#EEE8AA','#F08080','#F0E68C','#F0F8FF','#F0FFF0','#F0FFFF','#F4A460',
-    '#F5DEB3','#F5F5DC','#F5F5F5','#F5FFFA','#F8F8FF','#FA8072','#FAEBD7','#FAF0E6','#FAFAD2','#FDF5E6','#FF0000','#FF00FF',
-    '#FF00FF','#FF1493','#FF4500','#FF6347','#FF69B4','#FF7F50','#FF8C00','#FFA07A','#FFA500','#FFB6C1','#FFC0CB','#FFD700',
-    '#FFDAB9','#FFDEAD','#FFE4B5','#FFE4C4','#FFE4E1','#FFEBCD','#FFEFD5','#FFF0F5','#FFF5EE','#FFF8DC','#FFFACD','#FFFAF0',
-    '#FFFAFA','#FFFF00','#FFFFE0','#FFFFF0'];
+var colors = ['#000000','#000080','#00008B','#0000CD',
+    '#0000FF','#006400','#008000','#008080',
+    '#008B8B','#00BFFF','#00CED1','#00FA9A',
+    '#00FF00','#00FF7F','#00FFFF','#00FFFF',
+    '#191970','#1E90FF','#20B2AA','#228B22',
+    '#2E8B57','#2F4F4F','#2F4F4F','#32CD32',
+    '#3CB371','#40E0D0','#4169E1','#4682B4',
+    '#483D8B','#48D1CC','#4B0082','#556B2F',
+    '#5F9EA0','#6495ED','#663399','#66CDAA',
+    '#696969','#696969','#6A5ACD','#6B8E23',
+    '#708090','#708090','#778899','#778899',
+    '#7B68EE','#7CFC00','#7FFF00','#7FFFD4',
+    '#800000','#800080','#808000','#808080',
+    '#808080','#87CEEB','#87CEFA','#8A2BE2',
+    '#8B0000','#8B008B','#8B4513','#8FBC8F',
+    '#90EE90','#9370DB','#9400D3','#98FB98',
+    '#9932CC','#9ACD32','#A0522D','#A52A2A',
+    '#A9A9A9','#A9A9A9','#ADD8E6','#ADFF2F',
+    '#AFEEEE','#B0C4DE','#B0E0E6','#B22222',
+    '#B8860B','#BA55D3','#BC8F8F','#BDB76B',
+    '#C0C0C0','#C71585','#CD5C5C','#CD853F',
+    '#D2691E','#D2B48C','#D3D3D3','#D3D3D3',
+    '#D8BFD8','#DA70D6','#DAA520','#DB7093',
+    '#DC143C','#DCDCDC','#DDA0DD','#DEB887',
+    '#E9967A','#EE82EE','#EEE8AA','#F08080',
+    '#F0E68C','#F4A460','#F5DEB3','#FA8072',
+    '#FF0000','#FF00FF','#FF00FF','#FF1493',
+    '#FF4500','#FF6347','#FF69B4','#FF7F50',
+    '#FF8C00','#FFA07A','#FFA500','#FFB6C1',
+    '#FFC0CB','#FFD700','#FFDAB9','#FFDEAD',
+    '#FFE4B5','#FFE4C4','#FFE4E1','#FFEBCD',
+    '#FFEFD5','#FFFACD','#FFFF00'];
 
 var HPChart = CreateClass({
     makeChartData: function (props) {
@@ -150,6 +173,190 @@ var HPChart = CreateClass({
             }
         }
 
+        var basesheet = "{|class=\"wikitable mw-collapsible mw-collapsed\"\n" +
+            "|-\n" +
+            "!colspan=\"2\"| Base Info\n";
+        var b = this.props.prof;
+        if (b != null) {
+            basesheet +=
+                "|-\n" +
+                "! Rank\n" +
+                "|" + b.rank + "\n";
+            basesheet +=
+                "|-\n" +
+                "! Job\n" +
+                "|" + intl.translate(GlobalConst.Jobs[b.job].name, locale) + "\n";
+            basesheet +=
+                "|-\n" +
+                "! Proficiency\n" +
+                "|" + intl.translate(GlobalConst.armTypes[GlobalConst.Jobs[b.job].favArm1], locale) + " / " +intl.translate(GlobalConst.armTypes[GlobalConst.Jobs[b.job].favArm2], locale) + "\n";
+            basesheet +=
+                "|-\n" +
+                "! Type\n" +
+                "|" + intl.translate(GlobalConst.jobTypes[GlobalConst.Jobs[b.job].type], locale) + "\n";
+            basesheet +=
+                "|-\n" +
+                "! Element\n" +
+                "|" + this.getElementName(b.element, locale) +
+                "\n";
+            basesheet +=
+                "|-\n" +
+                "! Enemy Defense\n" +
+                "|" + (parseFloat(b.enemyDefense) * (1.0 - (parseFloat(b.defenseDebuff)/100.0))) + " (" + b.enemyDefense + " - " + b.defenseDebuff + "%)\n";
+            basesheet +=
+                "|-\n" +
+                "! Enemy Element\n" +
+                "|" + this.getElementName(b.enemyElement, locale) + "\n";
+            basesheet +=
+                "|}\n";
+        }
+        basesheet += "\n";
+
+        var p = this.props.chara;
+        var charasheet = "{|class=\"wikitable mw-collapsible mw-collapsed\"\n" +
+            "|-\n" +
+            "!colspan=\""+(p.length+1)+"\"| Character Info\n";
+        if (p != null) {
+            charasheet += "|-\n";
+            charasheet += "! Name\n";
+            for (var i = 0; i < p.length; i++) {
+                if (i > 0) {
+                    charasheet += "|"
+                }
+                charasheet += "|" + "{{Itm|" + p[i].name.replace(/\[5凸]/g, "").replace(/\[5★]/g, "").trim() + "}}";
+            }
+            charasheet += "\n";
+            charasheet += "|-\n";
+            charasheet += "! Element\n";
+            for (var i = 0; i < p.length; i++) {
+                if (i > 0) {
+                    charasheet += "|"
+                }
+                charasheet += "|" + this.getElementName(p[i].element, locale);
+            }
+            charasheet += "\n";
+            charasheet += "|-\n";
+            charasheet += "! Proficiency\n";
+            for (var i = 0; i < p.length; i++) {
+                if (i > 0) {
+                    charasheet += "|"
+                }
+                charasheet += "|" + intl.translate(GlobalConst.armTypes[p[i].favArm], locale) + " / " +intl.translate(GlobalConst.armTypes[p[i].favArm2], locale);
+            }
+            charasheet += "\n";
+            charasheet += "|-\n";
+            charasheet += "! Type\n";
+            for (var i = 0; i < p.length; i++) {
+                if (i > 0) {
+                    charasheet += "|"
+                }
+                charasheet += "|" + intl.translate(GlobalConst.jobTypes[p[i].type], locale);
+            }
+            charasheet += "\n";
+            charasheet += "|-\n";
+            charasheet += "! Race\n";
+            for (var i = 0; i < p.length; i++) {
+                if (i > 0) {
+                    charasheet += "|"
+                }
+                charasheet += "|" + intl.translate(GlobalConst.raceTypes[p[i].race], locale);
+            }
+            charasheet += "\n";
+            charasheet += "|-\n";
+            charasheet += "! Attack\n";
+            for (var i = 0; i < p.length; i++) {
+                if (i > 0) {
+                    charasheet += "|"
+                }
+                charasheet += "|" + p[i].attack;
+            }
+            charasheet += "\n";
+            charasheet += "|-\n";
+            charasheet += "! HP\n";
+            for (var i = 0; i < p.length; i++) {
+                if (i > 0) {
+                    charasheet += "|"
+                }
+                charasheet += "|" + p[i].hp;
+            }
+            charasheet += "\n";
+            charasheet += "|-\n";
+            charasheet += "! Pluses\n";
+            for (var i = 0; i < p.length; i++) {
+                if (i > 0) {
+                    charasheet += "|"
+                }
+                charasheet += "|" + p[i].plusBonus;
+            }
+            charasheet += "\n";
+            charasheet +=
+                "|}\n";
+        }
+        charasheet += "\n";
+
+        var loadoutSheet = "{|class=\"wikitable mw-collapsible mw-collapsed\"\n" +
+            "|-\n" +
+            "! Label\n" +
+            "! colspan=\"2\" | Summons\n" +
+            "! colspan=\"3\" | Weapons\n";
+        var s = this.props.summon;
+        var sl = this.props.storedList;
+        if (s != null && sl != null) {
+            for (var i = 0; i < s.length; i++) {
+                for (var j = 0; j < sl.names.length; j++) {
+                    var rowspan = 0;
+                    for (var k = 0; k < sl.armlist[j].length; k++) {
+                        if (sl.combinations[j][k] != 0) {
+                            rowspan++;
+                        }
+                    }
+                    loadoutSheet += "|-\n";
+                    loadoutSheet += "| rowspan=\""+rowspan+"\"| " + sl.names[j].replace(/\r?\n/g, "") + "\n";
+                    loadoutSheet += "| rowspan=\""+rowspan+"\"| " + this.getCommonSummonName(s[i].selfElement, s[i].selfSummonType, s[i].selfSummonAmount, locale) + "<br><br>" + this.getCommonSummonName(s[i].friendElement, s[i].friendSummonType, s[i].friendSummonAmount, locale) +"\n";
+                    loadoutSheet += "| rowspan=\""+rowspan+"\"| ";
+                    if ( s[i].attack != 0) {
+                        loadoutSheet += intl.translate("合計攻撃力", locale) + ": " + s[i].attack + "<br>";
+                    }
+                    if ( s[i].hp != 0) {
+                        loadoutSheet += intl.translate("合計HP", locale) + ": " + s[i].hp + "<br>";
+                    }
+                    if ( s[i].hpBonus != 0) {
+                        loadoutSheet += intl.translate("HP加護", locale) + ": " + s[i].hpBonus + "%<br>";
+                    }
+                    if ( s[i].damageLimit != 0) {
+                        loadoutSheet += intl.translate("ダメージ上限加護", locale) + ": " + s[i].damageLimit + "%<br>";
+                    }
+                    if ( s[i].tenshiDamageUP != 0) {
+                        loadoutSheet += intl.translate("与ダメージ加護", locale) + ": " + s[i].tenshiDamageUP + "%<br>";
+                    }
+                    if ( s[i].ougiDamage != 0) {
+                        loadoutSheet += intl.translate("奥義ダメージ加護", locale) + ": " + s[i].ougiDamage + "%<br>";
+                    }
+                    if ( s[i].TA != 0) {
+                        loadoutSheet += intl.translate("TA加護", locale) + ": " + s[i].TA + "%<br>";
+                    }
+                    if ( s[i].DA != 0) {
+                        loadoutSheet += intl.translate("DA加護", locale) + ": " + s[i].DA + "%<br>";
+                    }
+                    loadoutSheet += "\n";
+                    for (var k = 0; k < sl.armlist[j].length; k++) {
+                        if (sl.combinations[j][k] != 0) {
+                            var arm = sl.armlist[j][k];
+                            loadoutSheet += "| " + sl.combinations[j][k] + " ";
+                            loadoutSheet += "|| {{Itm|" + arm.name.replace(/\[4凸]/g, "").replace(/\[5凸]/g, "").replace(/\[4★]/g, "").replace(/\[5★]/g, "").trim() + "}}  ";
+                            loadoutSheet += "|| " + (arm.slv > 10 ? (arm.slv > 15 ? "5{{star}}" : "4{{star}}") : "0-3{{star}}");
+                            loadoutSheet += (arm.skill2.startsWith("opus") ? ", " + intl.translate(opusWeaponSkill1[arm.skill2].name, locale) + ", " + (arm.skill3.includes("normal") ? intl.translate(opusNormalWeaponSkill2[arm.skill3].name, locale): intl.translate(opusMagnaWeaponSkill2[arm.skill3].name, locale)) : "");
+                            loadoutSheet += "\n";
+                            loadoutSheet += "|- \n";
+                        }
+                    }
+                }
+            }
+            loadoutSheet +=
+                "|}\n";
+        }
+        loadoutSheet = loadoutSheet + "\n";
+
         // where d can not be null but conservatively returns
         if (d != null) {
             var graphData = d[this.state.sortKey];
@@ -162,7 +369,6 @@ var HPChart = CreateClass({
             var alt="Motocal Graph: " + yAxis + "," + xAxis;
 
             var data = "";
-            var nvd3Chart = "";
             for (var j = 1; j < graphData[0].length; j++) {
                 // Remove unnecessary line feed letters which break CSV format.
                 var label = graphData[0][j].replace(/\r?\n/g, "");
@@ -178,11 +384,281 @@ var HPChart = CreateClass({
                 var chartDataX = chartDataXArray.toString();
                 var chartDataY = chartDataYArray.toString();
                 var chartalt ="Motocal Graph: " + label;
-                data = data + "  {{NVD3Series\n    |label="+label+"\n    |color="+color+"\n    |area="+area+"\n    |chartDataX="+chartDataX+"\n    |chartDataY="+chartDataY+"\n    |alt="+chartalt+"\n  }}\n";
+                data += "  {{NVD3Series\n    |label="+label+"\n    |color="+color+"\n    |area="+area+"\n    |chartDataX="+chartDataX+"\n    |chartDataY="+chartDataY+"\n    |alt="+chartalt+"\n  }}\n";
             }
-            nvd3Chart = "{{NVD3Chart\n|xAxis="+xAxis+"\n|yAxis="+yAxis+"\n|yAxisWidth=100\n|yFormat=,.04s\n|width="+width+"\n|height="+height+"\n|alt="+alt+"\n|data=\n"+data+"}}\n";
-            return nvd3Chart;
+            var nvd3Chart = "{{NVD3Chart\n|xAxis="+xAxis+"\n|yAxis="+yAxis+"\n|yAxisWidth=100\n|yFormat=,.04s\n|width="+width+"\n|height="+height+"\n|alt="+alt+"\n|data=\n"+data+"}}\n";
+            return basesheet + charasheet + loadoutSheet + nvd3Chart;
         }
+    },
+    getCommonSummonName: function (element, type, amount, locale) {
+        if (element == "fire") {
+            if (type == "magna") {
+                if (amount == "50") {
+                    return "0{{star}} {{Itm|Colossus Omega}}"
+                } else if (amount == "100") {
+                    return "3{{star}} {{Itm|Colossus Omega}}"
+                } else if (amount == "120") {
+                    return "4{{star}} {{Itm|Colossus Omega}}"
+                }
+            }
+            if (type == "element") {
+                if (amount == "100") {
+                    return "0{{star}} {{Itm|Michael}}"
+                } else if (amount == "120") {
+                    return "0{{star}} {{Itm|Shiva (Summon)}}"
+                } else if (amount == "140") {
+                    return "3{{star}} {{Itm|Shiva (Summon)}}"
+                }
+            }
+            if (type == "zeus") {
+                if (amount == "70") {
+                    return "0{{star}} {{Itm|Demi Agni}}"
+                } else if (amount == "80") {
+                    return "0{{star}} {{Itm|Agni}}"
+                } else if (amount == "110") {
+                    return "3{{star}} {{Itm|Demi Agni}}"
+                } else if (amount == "120") {
+                    return "3{{star}} {{Itm|Agni}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Demi Agni}}"
+                } else if (amount == "140") {
+                    return "4{{star}} {{Itm|Agni}}"
+                }
+            }
+            if (type == "chara") {
+                if (amount == "100") {
+                    return "3{{star}} {{Itm|The Devil (SSR)}}"
+                } else if (amount == "110") {
+                    return "4{{star}} {{Itm|The Devil (SSR)}}"
+                } else if (amount == "130") {
+                    return "5{{star}} {{Itm|The Devil (SSR)}}"
+                }
+            }
+        } else if (element == "water") {
+            if (type == "magna") {
+                if (amount == "50") {
+                    return "0{{star}} {{Itm|Leviathan Omega}}"
+                } else if (amount == "100") {
+                    return "3{{star}} {{Itm|Leviathan Omega}}"
+                } else if (amount == "120") {
+                    return "4{{star}} {{Itm|Leviathan Omega}}"
+                }
+            }
+            if (type == "element") {
+                if (amount == "100") {
+                    return "0{{star}} {{Itm|Gabriel}}"
+                } else if (amount == "120") {
+                    return "0{{star}} {{Itm|Europa (Summon)}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Bonito}}"
+                } else if (amount == "140") {
+                    return "3{{star}} {{Itm|Europa (Summon)}}"
+                }
+            }
+            if (type == "zeus") {
+                if (amount == "70") {
+                    return "0{{star}} {{Itm|Demi Varuna}}"
+                } else if (amount == "80") {
+                    return "0{{star}} {{Itm|Varuna}}"
+                } else if (amount == "110") {
+                    return "3{{star}} {{Itm|Demi Varuna}}"
+                } else if (amount == "120") {
+                    return "3{{star}} {{Itm|Varuna}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Demi Varuna}}"
+                } else if (amount == "140") {
+                    return "4{{star}} {{Itm|Varuna}}"
+                }
+            }
+            if (type == "chara") {
+                if (amount == "100") {
+                    return "3{{star}} {{Itm|Justice (SSR)}}"
+                } else if (amount == "110") {
+                    return "4{{star}} {{Itm|Justice (SSR)}}"
+                } else if (amount == "130") {
+                    return "5{{star}} {{Itm|Justice (SSR)}}"
+                }
+            }
+        } else if (element == "earth") {
+            if (type == "magna") {
+                if (amount == "50") {
+                    return "0{{star}} {{Itm|Yggdrasil Omega}}"
+                } else if (amount == "100") {
+                    return "3{{star}} {{Itm|Yggdrasil Omega}}"
+                } else if (amount == "120") {
+                    return "4{{star}} {{Itm|Yggdrasil Omega}}"
+                }
+            }
+            if (type == "element") {
+                if (amount == "100") {
+                    return "0{{star}} {{Itm|Uriel}}"
+                } else if (amount == "120") {
+                    return "0{{star}} {{Itm|Godsworn Alexiel (Summon)}}"
+                } else if (amount == "140") {
+                    return "3{{star}} {{Itm|Godsworn Alexiel (Summon)}}"
+                }
+            }
+            if (type == "zeus") {
+                if (amount == "70") {
+                    return "0{{star}} {{Itm|Demi Titan}}"
+                } else if (amount == "80") {
+                    return "0{{star}} {{Itm|Titan}}"
+                } else if (amount == "110") {
+                    return "3{{star}} {{Itm|Demi Titan}}"
+                } else if (amount == "120") {
+                    return "3{{star}} {{Itm|Titan}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Demi Titan}}"
+                } else if (amount == "140") {
+                    return "4{{star}} {{Itm|Titan}}"
+                }
+            }
+            if (type == "chara") {
+                if (amount == "100") {
+                    return "3{{star}} {{Itm|The Hanged Man (SSR)}}"
+                } else if (amount == "110") {
+                    return "4{{star}} {{Itm|The Hanged Man (SSR)}}"
+                } else if (amount == "130") {
+                    return "5{{star}} {{Itm|The Hanged Man (SSR)}}"
+                }
+            }
+        } else if (element == "wind") {
+            if (type == "magna") {
+                if (amount == "50") {
+                    return "0{{star}} {{Itm|Tiamat Omega}}"
+                } else if (amount == "100") {
+                    return "3{{star}} {{Itm|Tiamat Omega}}"
+                } else if (amount == "120") {
+                    return "4{{star}} {{Itm|Tiamat Omega}}"
+                }
+            }
+            if (type == "element") {
+                if (amount == "100") {
+                    return "0{{star}} {{Itm|Raphael}}"
+                } else if (amount == "120") {
+                    return "0{{star}} {{Itm|Grimnir (Summon)}}"
+                } else if (amount == "140") {
+                    return "3{{star}} {{Itm|Grimnir (Summon)}}"
+                }
+            }
+            if (type == "zeus") {
+                if (amount == "70") {
+                    return "0{{star}} {{Itm|Demi Zephyrus}}"
+                } else if (amount == "80") {
+                    return "0{{star}} {{Itm|Zephyrus}}"
+                } else if (amount == "110") {
+                    return "3{{star}} {{Itm|Demi Zephyrus}}"
+                } else if (amount == "120") {
+                    return "3{{star}} {{Itm|Zephyrus}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Demi Zephyrus}}"
+                } else if (amount == "140") {
+                    return "4{{star}} {{Itm|Zephyrus}}"
+                }
+            }
+            if (type == "chara") {
+                if (amount == "100") {
+                    return "3{{star}} {{Itm|Judgement (SSR)}}"
+                } else if (amount == "110") {
+                    return "4{{star}} {{Itm|Judgement (SSR)}}"
+                } else if (amount == "130") {
+                    return "5{{star}} {{Itm|Judgement (SSR)}}"
+                }
+            }
+        } else if (element == "light") {
+            if (type == "magna") {
+                if (amount == "50") {
+                    return "0{{star}} {{Itm|Luminiera Omega}}"
+                } else if (amount == "100") {
+                    return "3{{star}} {{Itm|Luminiera Omega}}"
+                } else if (amount == "120") {
+                    return "4{{star}} {{Itm|Luminiera Omega}}"
+                }
+            }
+            if (type == "element") {
+                if (amount == "100") {
+                    return "0{{star}} {{Itm|Lucifer}}"
+                } else if (amount == "120") {
+                    return "3{{star}} {{Itm|Lucifer}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Lucifer}}"
+                } else if (amount == "150") {
+                    return "5{{star}} {{Itm|Lucifer}}"
+                }
+            }
+            if (type == "zeus") {
+                if (amount == "70") {
+                    return "0{{star}} {{Itm|Demi Zeus}}"
+                } else if (amount == "80") {
+                    return "0{{star}} {{Itm|Zeus}}"
+                } else if (amount == "110") {
+                    return "3{{star}} {{Itm|Demi Zeus}}"
+                } else if (amount == "120") {
+                    return "3{{star}} {{Itm|Zeus}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Demi Zeus}}"
+                } else if (amount == "140") {
+                    return "4{{star}} {{Itm|Zeus}}"
+                }
+            }
+        } else if (element == "dark") {
+            if (type == "magna") {
+                if (amount == "50") {
+                    return "0{{star}} {{Itm|Celeste Omega}}"
+                } else if (amount == "100") {
+                    return "3{{star}} {{Itm|Celeste Omega}}"
+                } else if (amount == "120") {
+                    return "4{{star}} {{Itm|Celeste Omega}}"
+                }
+            }
+            if (type == "element") {
+                if (amount == "100") {
+                    return "0{{star}} {{Itm|Bahamut}}"
+                } else if (amount == "120") {
+                    return "3{{star}} {{Itm|Bahamut}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Bahamut}}"
+                } else if (amount == "150") {
+                    return "5{{star}} {{Itm|Bahamut}}"
+                }
+            }
+            if (type == "zeus") {
+                if (amount == "70") {
+                    return "0{{star}} {{Itm|Demi Hades}}"
+                } else if (amount == "80") {
+                    return "0{{star}} {{Itm|Hades}}"
+                } else if (amount == "110") {
+                    return "3{{star}} {{Itm|Demi Hades}}"
+                } else if (amount == "120") {
+                    return "3{{star}} {{Itm|Hades}}"
+                } else if (amount == "130") {
+                    return "4{{star}} {{Itm|Demi Hades}}"
+                } else if (amount == "140") {
+                    return "4{{star}} {{Itm|Hades}}"
+                }
+            }
+        }
+        return intl.translate(GlobalConst.summonElementTypes[element].name, locale) + " " + intl.translate(GlobalConst.summonTypes[type], locale) + " " + amount;
+    },
+    getElementName: function (element, locale) {
+        if (element == "fire") {
+            return intl.translate("火", locale);
+        } else if (element == "water") {
+            return intl.translate("水", locale);
+        } else if (element == "earth") {
+            return intl.translate("土", locale);
+        } else if (element == "wind") {
+            return intl.translate("風", locale);
+        } else if (element == "light") {
+            return intl.translate("光", locale);
+        } else if (element == "dark") {
+            return intl.translate("闇", locale);
+        } else if (element == "non") {
+            return intl.translate("無", locale);
+        } else if (element == "non-but-critical") {
+            return intl.translate("無（技巧あり）", locale);
+        }
+        return intl.translate("火", locale);
     },
     /* Generate TSV for clipboard from CSV for download */
     makeCsvClipboardText: function (csvdata) {
