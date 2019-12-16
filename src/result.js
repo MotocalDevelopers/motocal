@@ -1256,7 +1256,7 @@ var Result = CreateClass({
                         let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
                         [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
                         
-                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
+                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUPOnlyNormalDamage, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
                         let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
                         
                         charaDetail[key].push(
@@ -1439,7 +1439,8 @@ var Result = CreateClass({
                         };
                         pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "default");
                         pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
-                        pushSkillInfoElement3("damageUP", "与ダメージ上昇", "default");
+                        pushSkillInfoElement3("damageUP", "与ダメージUP", "default");
+                        pushSkillInfoElement3("damageUPOnlyNormalDamage", "与ダメージUP(通常攻撃のみ)", "default");
                         pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
                         pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "default");
                         pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");

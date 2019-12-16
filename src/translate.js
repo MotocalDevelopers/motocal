@@ -256,6 +256,16 @@ var multiLangData = {
         "ja": "属性バフ",
         "zh": "属性Buff",
     },
+    "与ダメージUPバフ(通常攻撃のみ)": {
+        "en": "Boost DMG Buff (only one-foe attacks)",
+        "ja": "与ダメージUPバフ(通常攻撃のみ)",
+        "zh": "与ダメージUPバフ(通常攻撃のみ)",
+    },
+    "与ダメージUPバフ(通常攻撃のみ)説明": {
+        "en": "DMG and DMG CAP for one-foe attacks are amplified. EX, Kumbhira, Seox 2nd Skill",
+        "ja": "通常攻撃の最終的なダメージが上昇します。クビラ2アビなど",
+        "zh": "通常攻撃の最終的なダメージが上昇します。クビラ2アビなど",
+    },
     "属性バフ説明": {
         "en": "Element Buff. Ultima Weapon(30%) etc.",
         "ja": "属性枠のバフ。オメガ武器(30%)など",
@@ -392,10 +402,15 @@ var multiLangData = {
         "zh": "C.A. DMG Buff",
     },
 
-    "与ダメージ上昇": {
-        "en": "Damage UP ",
-        "ja": "与ダメージ上昇",
+    "与ダメージUP": {
+        "en": "Boost DMG",
+        "ja": "与ダメージUP",
         "zh": "造成伤害上升",
+    },
+    "与ダメージUP(通常攻撃のみ)": {
+        "en": "Boost DMG (only one-foe attacks)",
+        "ja": "与ダメージUP(通常攻撃のみ)",
+        "zh": "造成伤害上升(通常攻撃)",
     },
     "個別バフ": {
         "en": "Indiv Buff", //a.k.a: Personal buff
@@ -2459,6 +2474,11 @@ var multiLangData = {
         "ja": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
         "zh": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
     },
+    "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)": {
+        "en": "3% boost to Water characters' critical hit damage cap. (Silva)",
+        "ja": "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)",
+        "zh": "3% boost to Water characters' critical hit damage cap. (Silva)",
+    },
     "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))": {
         "en": "3% boost to Light characters' critical hit damage cap. (Silva (Light))",
         "ja": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
@@ -2871,10 +2891,10 @@ var multiLangData = {
         "ja": "通常恩寵(中)",
         "zh": "通常恩寵(中)",
     },
-    "通常本質(中)": {
+    "通常星晶(中)": {
         "en": "Normal Essence (M)",
-        "ja": "通常本質(中)",
-        "zh": "通常本質(中)",
+        "ja": "通常星晶(中)",
+        "zh": "通常星晶(中)",
     },
     "通常庇護(小)": {
         "en": "Normal Refuge (S)",
@@ -3021,10 +3041,10 @@ var multiLangData = {
         "ja": "マグナ杖術(大)",
         "zh": "方阵杖術(大)",
     },
-    "マグナ本質(中)": {
+    "マグナ星晶(中)": {
         "en": "Magna Essence (M)",
         "ja": "マグナ星晶(中)",
-        "zh": "方阵本質(中)",
+        "zh": "方阵星晶(中)",
     },
     "アンノウンATK・I": {
         "en": "Unknown ATK I",

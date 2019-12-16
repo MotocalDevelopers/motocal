@@ -242,6 +242,9 @@ supportAbilist["element_buff_boost_light_30"] = {
 supportAbilist["element_buff_boost_wind_15"] = {
     u"精霊の啓示"
 }
+supportAbilist["critical_cap_up_water_3"] = {
+    u"正射必中"
+}
 supportAbilist["critical_cap_up_light_3"] = {
     u"スポッター"
 }
@@ -529,6 +532,7 @@ patchingOugiRatio["リリィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["アイル"] = {"ougiRatio": 5.0}
 patchingOugiRatio["カタリナ(リミテッドver)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ラカム(リミテッドver)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["黒騎士(リミテッドver)"] = {"ougiRatio": 5.0}
 
 ### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
