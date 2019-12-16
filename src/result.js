@@ -179,6 +179,7 @@ var ResultList = CreateClass({
         this.setState({openHPChart: true})
     },
     addHaisuiData: function (id, summonid) {
+        var locale = this.props.locale;
         var newStored = this.state.storedList;
         var newCombinations = this.state.result.result[summonid][id].armNumbers;
         newStored["combinations"].push(JSON.parse(JSON.stringify(newCombinations)));
@@ -187,8 +188,8 @@ var ResultList = CreateClass({
         var title = "";
         for (var i = 0; i < this.props.armlist.length; i++) {
             if (newCombinations[i] > 0) {
-                var name = (this.props.armlist[i].name == "") ? "武器" + i.toString() + "" : this.props.armlist[i].name;
-                title += name + newCombinations[i] + "本\n"
+                var name = (this.props.armlist[i].name == "") ? intl.translate("武器", locale) + i.toString() + " " : this.props.armlist[i].name;
+                title += name + newCombinations[i] + intl.translate("本", locale) + "\n"
             }
         }
         newStored["names"].push(title);
@@ -1458,7 +1459,7 @@ var StoredListEditor = CreateClass({
                             <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>編成名(Optional)</th>
+                                <th>{intl.translate("編成名", locale)}(Optional)</th>
                                 {(armlist.length != 0) ? (armlist[0].map(function (arm, ind) {
                                     if (arm.name != "") {
                                         return (<th key={ind}>{arm.name}</th>);

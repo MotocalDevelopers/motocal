@@ -427,12 +427,12 @@
     /* charaPresets */
     .charaTemplate {
         width: 100%;
-        height: 80%;
+        height: 90%;
     }
 
     .charaTemplateContent {
         width: calc(100% - 3px);
-        height: 90%;
+        height: 75%;
         overflow: scroll;
     }
 
