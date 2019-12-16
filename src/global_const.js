@@ -2275,6 +2275,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.0
     },
+    "hanged_man_reversed": {
+        "name": "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)",
+        "type": "hanged_man_reversed",
+        "range": "all",
+        "value": 0.10
+    },
     "aegisUP_30": {
         "name": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
         "type": "aegisUP",

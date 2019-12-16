@@ -209,6 +209,9 @@ supportAbilist["ougiCapUP_100"] = {
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
+supportAbilist["hanged_man_reversed"] = {
+    u"刑死者の逆位置"
+}
 # supportAbilist["fumetsu_no_mikiri"] = {
 #     u"不滅の見切り"
 # }

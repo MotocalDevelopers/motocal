@@ -11,7 +11,7 @@ var selector = GlobalConst.selector;
 var supportedChartSortkeys = GlobalConst.supportedChartSortkeys;
 var supportedSimulationChartSortkeys = GlobalConst.supportedSimulationChartSortkeys;
 var _ua = GlobalConst._ua;
-var {generateHaisuiData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js');
+var {generateHaisuiData, getTotalBuff, getInitialTotals, calcOneCombination, initializeTotals} = require('./global_logic.js');
 
 var HPChart = CreateClass({
     makeChartData: function (props) {
@@ -25,7 +25,6 @@ var HPChart = CreateClass({
         var chara = props.chara;
         var totalBuff = getTotalBuff(prof);
         var totals = getInitialTotals(prof, chara, summon);
-        treatSupportAbility(totals, chara, totalBuff);
 
         var res = [];
         for (var i = 0; i < summon.length; i++) {
@@ -33,7 +32,7 @@ var HPChart = CreateClass({
         }
 
         for (var i = 0; i < storedCombinations.length; i++) {
-            var oneres = calcOneCombination(storedCombinations[i], summon, prof, armlist, totals, totalBuff);
+            var oneres = calcOneCombination(storedCombinations[i], summon, prof, chara, armlist, totals, totalBuff);
             for (var j = 0; j < summon.length; j++) {
                 res[j].push({data: oneres[j], armNumbers: storedCombinations[i]});
             }

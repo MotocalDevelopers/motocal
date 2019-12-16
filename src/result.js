@@ -35,7 +35,7 @@ var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
     isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces, proceedIndex,
-    calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
+    calcCombinations, calcDamage, calcOugiDamage,
     calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
     initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
     getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
@@ -105,7 +105,6 @@ var ResultList = CreateClass({
             }
 
             var totals = getInitialTotals(prof, chara, summon);
-            treatSupportAbility(totals, chara, totalBuff);
             var itr = combinations.length;
             var totalItr = itr * summon.length * Object.keys(totals).length;
 
@@ -113,7 +112,7 @@ var ResultList = CreateClass({
             var minHP = (prof.minimumHP == undefined) ? undefined : parseInt(prof.minimumHP);
 
             for (var i = 0; i < itr; i = (i + 1) | 0) {
-                var oneres = calcOneCombination(combinations[i], summon, prof, arml, totals, totalBuff);
+                var oneres = calcOneCombination(combinations[i], summon, prof, chara, arml, totals, totalBuff);
                 for (var j = 0; j < summon.length; j++) {
                     // For each result preprocessing
                     if (isValidResult(oneres[j], minHP)) {

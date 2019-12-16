@@ -2374,6 +2374,11 @@ var multiLangData = {
         "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
         "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
     },
+    "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)": {
+        "en": "When Sub Ally: When all equipped weapons are different, 20% boost to Earth allies' ATK, 50% boost to DEF, and 10% boost to damage cap. (Caim)",
+        "ja": "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)",
+        "zh": "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)",
+    },
     "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)": {
         "en": "Increase Aegis-type and Majesty-type weapon skills' 'Boost to max HP' effect by 30%. (Lancelot and Vane)",
         "ja": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
