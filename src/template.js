@@ -5,6 +5,7 @@ var GlobalConst = require('./global_const.js');
 var _ua = GlobalConst._ua;
 var selector = GlobalConst.selector;
 var elementTypes = GlobalConst.elementTypes;
+var sishoSufix = GlobalConst.sishoSufix;
 var skilltypes = GlobalConst.skilltypes;
 var intl = require('./translate.js');
 var {githubAPItoken} = require('./secret_consts.js');
@@ -108,11 +109,42 @@ var SendRequest = CreateClass({
     },
 });
 
+/**
+ * @param {object} state
+ * @param {string} locale
+ * @return {function}
+ */
+function _generateCharaFilterFunc(state, locale="en") {
+    const {
+        filterElement,
+        filterText,
+        filterRace,
+        filterType,
+        filterFav,
+        filterSex,
+    } = state;
+
+    return ([key, val]) => (
+        (filterElement == "all" || val.element == filterElement) &&
+        (filterText == "" || val[locale].toLowerCase().indexOf(filterText.toLowerCase()) != -1) &&
+        (filterRace === "all" || val.race === filterRace || val.race.includes(filterRace)) &&
+        (filterType === "all" || val.type === filterType) &&
+        (filterFav === "all" || [val.fav1, val.fav2].includes(filterFav)) &&
+        (filterSex === "all" || val.sex === filterSex || val.sex.match(new RegExp("\\b" + filterSex + "\\b"))));
+}
+
+module.exports._generateCharaFilterFunc = _generateCharaFilterFunc;
+
+
 var RegisteredChara = CreateClass({
     getInitialState: function () {
         return {
             filterText: "",
             filterElement: "all",
+            filterSex: "all",
+            filterType: "all",
+            filterRace: "all",
+            filterFav: "all",
             charaData: {},
             limit: 99,
             openSendRequest: false,
@@ -139,99 +171,85 @@ var RegisteredChara = CreateClass({
         });
     },
     onDataObtained: async function (callback) {
-        this.onDataRequested().then(callback)
+        this.onDataRequested().then(callback);
     },
     componentDidMount: function () {
         this.onDataObtained((charadata) => {
-            this.setState({charaData: charadata})
+            this.setState({charaData: charadata});
         });
     },
     clickedTemplate: function (e) {
         this.props.onClick(this.state.charaData[e.target.getAttribute("id")]);
     },
     handleEvent: function (key, e) {
-        var newState = this.state;
-        newState[key] = e.target.value;
-        this.setState(newState)
+        this.setState({[key]: e.target.value});
     },
     openSendRequest: function (e) {
-        this.setState({openSendRequest: true})
+        this.setState({openSendRequest: true});
     },
     closeSendRequest: function (e) {
-        this.setState({openSendRequest: false})
+        this.setState({openSendRequest: false});
     },
     render: function () {
-        var clickedTemplate = this.clickedTemplate;
-        var filterText = this.state.filterText;
-        var filterElement = this.state.filterElement;
-        var charaData = this.state.charaData;
-        var limit = this.state.limit;
-        var displayed_count = 0;
-        var locale = this.props.locale;
+        const locale = this.props.locale;
+        const clickedTemplate = this.clickedTemplate;
+        const {
+            filterText,
+            filterElement,
+            filterSex,
+            filterType,
+            filterRace,
+            filterFav,
+            charaData,
+            limit,
+        } = this.state;
+
+        const charaTemplateHeader = <>
+            <span>検索:</span>
+            <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText}
+                         onChange={this.handleEvent.bind(this, "filterText")}/>
+            <FormControl componentClass="select" value={this.state.filterElement}
+                         onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterElements}</FormControl>
+            <FormControl componentClass="select" value={this.state.filterSex}
+                         onChange={this.handleEvent.bind(this, "filterSex")}>{selector[locale].filterSexes}</FormControl>
+            <FormControl componentClass="select" value={this.state.filterType}
+                         onChange={this.handleEvent.bind(this, "filterType")}>{selector[locale].filterTypes}</FormControl>
+            <FormControl componentClass="select" value={this.state.filterRace}
+                         onChange={this.handleEvent.bind(this, "filterRace")}>{selector[locale].filterRaces}</FormControl>
+            <FormControl componentClass="select" value={this.state.filterFav}
+                         onChange={this.handleEvent.bind(this, "filterFav")}>{selector[locale].filterFavs}</FormControl>
+            </>;
+
+        const filterFunc = _generateCharaFilterFunc(this.state, locale);
+
+        const mapFunc = ([key,val]) =>
+            <div className="onechara" key={key}>
+                <p>{val[locale]}</p><br/>
+                <Image rounded onClick={clickedTemplate} id={key}
+                       src={val.imageURL} alt={key} onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "./otherImages/imgError.png"
+                }}/>
+            </div>;
+
+        const result = Object.entries(charaData).filter(filterFunc);
+        const total = result.length;
 
         if (_ua.Mobile || _ua.Tablet) {
             return (
                 <div className="charaTemplate">
-                    <span>検索:</span>
-                    <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText}
-                                 onChange={this.handleEvent.bind(this, "filterText")}/>
-                    <FormControl componentClass="select" value={this.state.filterElement}
-                                 onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
+                    {charaTemplateHeader}
                     <div className="charaTemplateContent">
-                        {Object.keys(charaData).map(function (key, ind) {
-                            var charaName = charaData[key][locale];
-                            if (filterElement == "all" || (charaData[key].element == filterElement)) {
-                                if (filterText == "" || charaName.toLowerCase().indexOf(filterText.toLowerCase()) != -1) {
-                                    if (displayed_count < limit) {
-                                        displayed_count++;
-                                        return (
-                                            <div className="onechara" key={key}>
-                                                <p>{charaName}</p><br/>
-                                                <Image rounded onClick={clickedTemplate} id={key}
-                                                       src={charaData[key].imageURL} alt={key} onError={(e) => {
-                                                    e.target.onerror = null;
-                                                    e.target.src = "./otherImages/imgError.png"
-                                                }}/>
-                                            </div>
-                                        );
-                                    } else {
-                                        return "";
-                                    }
-                                }
-                            }
-                            return "";
-                        })}
+                        {result.slice(0, limit).map(mapFunc)}
                     </div>
                 </div>
             )
         } else {
             return (
                 <div className="charaTemplate">
-                    <span>検索:</span>
-                    <FormControl type="text" placeholder={intl.translate("キャラ名", locale)} value={this.state.filterText}
-                                 onChange={this.handleEvent.bind(this, "filterText")}/>
-                    <FormControl componentClass="select" value={this.state.filterElement}
-                                 onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
+                    {charaTemplateHeader}
                     <div className="charaTemplateContent">
-                        {Object.keys(charaData).map(function (key, ind) {
-                            var charaName = charaData[key][locale];
-                            if (filterElement == "all" || (charaData[key].element == filterElement)) {
-                                if (filterText == "" || charaName.toLowerCase().indexOf(filterText.toLowerCase()) != -1) {
-                                    return (
-                                        <div className="onechara" key={key}>
-                                            <p>{charaName}</p><br/>
-                                            <Image rounded onClick={clickedTemplate} id={key}
-                                                   src={charaData[key].imageURL} alt={key} onError={(e) => {
-                                                e.target.onerror = null;
-                                                e.target.src = "./otherImages/imgError.png"
-                                            }}/>
-                                        </div>
-                                    );
-                                }
-                            }
-                            return "";
-                        })}
-
+                        {result.slice(0, limit).map(mapFunc)}
                     </div>
 
                     {locale == "en" ?
@@ -243,6 +261,12 @@ var RegisteredChara = CreateClass({
                         :
                         null
                     }
+
+                    <p className="text-danger">
+                        最新{limit}/{total}件を表示しています。
+                        それより古い場合は武器検索/属性フィルターをご利用下さい。
+                    </p>
+
                     <Button onClick={this.openSendRequest} bsStyle="danger">{intl.translate("追加要望を送る", locale)}</Button>
 
                     <Modal show={this.state.openSendRequest} onHide={this.closeSendRequest}>
@@ -387,10 +411,13 @@ var RegisteredArm = CreateClass({
                 arm["skill1"] = this.state.skill1
             } else if (additionalKeys === "skill2") {
                 arm["skill2"] = this.state.skill2
+            } else if (additionalKeys === "sishoskill2") {
+                arm["name"] += intl.translate(sishoSufix[this.state.sishoskill2].name, this.props.locale);
+                arm["skill2"] = this.state.sishoskill2;
             } else if (additionalKeys === "skill3") {
                 arm["skill3"] = this.state.skill3
             } else if (additionalKeys === "elements") {
-                arm["name"] += "[" + elementTypes[this.state.elements] + "]";
+                arm["name"] += "[" + intl.translate(elementTypes[this.state.elements], this.props.locale) + "]";
                 arm["element"] = this.state.elements;
                 arm["element2"] = this.state.elements;
                 arm["element3"] = this.state.elements;
@@ -440,7 +467,7 @@ var RegisteredArm = CreateClass({
                     <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText}
                                  onChange={this.handleEvent.bind(this, "filterText")}/>
                     <FormControl componentClass="select" value={this.state.filterElement}
-                                 onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
+                                 onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterElements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function (key, ind) {
                             var armName = armData[key][locale];
@@ -554,7 +581,7 @@ var RegisteredArm = CreateClass({
                     <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.filterText}
                                  onChange={this.handleEvent.bind(this, "filterText")}/>
                     <FormControl componentClass="select" value={this.state.filterElement}
-                                 onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterelements}</FormControl>
+                                 onChange={this.handleEvent.bind(this, "filterElement")}>{selector[locale].filterElements}</FormControl>
                     <div className="armTemplateContent">
                         {Object.keys(armData).map(function (key, ind) {
                             var armName = armData[key][locale];
