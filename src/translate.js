@@ -56,6 +56,11 @@ var multiLangData = {
         "ja": "武器",
         "zh": "武器",
     },
+    "編成名": {
+        "en": "Set Name",
+        "ja": "編成名",
+        "zh": "編成名",
+    },
     "保存": {
         "en": "Save",
         "ja": "保存",
@@ -1774,7 +1779,7 @@ var multiLangData = {
         "zh": "加入图表",
     },
     "本": {
-        "en": "",
+        "en": "x",
         "ja": "本",
         "zh": "把",
     },
@@ -3560,6 +3565,21 @@ var multiLangData = {
         "en": "Pendulum Key Δ (CB Cap 50%)",
         "ja": "ペンデュラム[Δ](CB上限50%UP)",
         "zh": "ペンデュラム[Δ](CB上限50%UP)",
+    },
+    "・覇": {
+        "en": " Pontus",
+        "ja": "・覇",
+        "zh": "・覇",
+    },
+    "・王": {
+        "en": " Regus",
+        "ja": "・王",
+        "zh": "・王",
+    },
+    "・邪": {
+        "en": " Malus",
+        "ja": "・邪",
+        "zh": "・邪",
     },
     "天司の祝福": {
         "en": "Angel's Blessing",

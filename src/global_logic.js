@@ -3023,15 +3023,15 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     }
 
     if (res.length > 1) {
-        var AllTotalAttack = [["残りHP(%)"]];
-        var AllCycleDamagePerTurn = [["残りHP(%)"]];
-        var AllCriticalAttack = [["残りHP(%)"]];
-        var AllTotalExpected = [["残りHP(%)"]];
-        var AllAverageTotalAttack = [["残りHP(%)"]];
-        var AllAverageTotalExpected = [["残りHP(%)"]];
-        var AllAverageCycleDamagePerTurn = [["残りHP(%)"]];
-        var AllAverageCriticalAttack = [["残りHP(%)"]];
-        var AllTotalHP = [["残りHP(%)"]]
+        var AllTotalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllCycleDamagePerTurn = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllCriticalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllTotalExpected = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllAverageTotalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllAverageTotalExpected = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllAverageCycleDamagePerTurn = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllAverageCriticalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllTotalHP = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]]
     }
 
     // Because the character formation is unchanged every weapon organization, it can be calculated earlier
@@ -3052,15 +3052,15 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     for (var s = 0; s < res.length; s++) {
         var oneresult = res[s];
         var summonHeader = module.exports.makeSummonHeaderString(summon[s], locale, s+1);
-        var TotalAttack = [["残りHP(%)"]];
-        var TotalHP = [["残りHP(%)"]];
-        var CriticalAttack = [["残りHP(%)"]];
-        var TotalExpected = [["残りHP(%)"]];
-        var CycleDamagePerTurn = [["残りHP(%)"]];
-        var AverageTotalExpected = [["残りHP(%)"]];
-        var AverageTotalAttack = [["残りHP(%)"]];
-        var AverageCriticalAttack = [["残りHP(%)"]];
-        var AverageCycleDamagePerTurn = [["残りHP(%)"]];
+        var TotalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var TotalHP = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var CriticalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var TotalExpected = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var CycleDamagePerTurn = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AverageTotalExpected = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AverageTotalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AverageCriticalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AverageCycleDamagePerTurn = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
 
         var alreadyUsedHP = {};
 

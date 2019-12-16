@@ -5,6 +5,7 @@ var GlobalConst = require('./global_const.js');
 var _ua = GlobalConst._ua;
 var selector = GlobalConst.selector;
 var elementTypes = GlobalConst.elementTypes;
+var sishoSufix = GlobalConst.sishoSufix;
 var skilltypes = GlobalConst.skilltypes;
 var intl = require('./translate.js');
 var {githubAPItoken} = require('./secret_consts.js');
@@ -410,10 +411,13 @@ var RegisteredArm = CreateClass({
                 arm["skill1"] = this.state.skill1
             } else if (additionalKeys === "skill2") {
                 arm["skill2"] = this.state.skill2
+            } else if (additionalKeys === "sishoskill2") {
+                arm["name"] += intl.translate(sishoSufix[this.state.sishoskill2].name, this.props.locale);
+                arm["skill2"] = this.state.sishoskill2;
             } else if (additionalKeys === "skill3") {
                 arm["skill3"] = this.state.skill3
             } else if (additionalKeys === "elements") {
-                arm["name"] += "[" + elementTypes[this.state.elements] + "]";
+                arm["name"] += "[" + intl.translate(elementTypes[this.state.elements], this.props.locale) + "]";
                 arm["element"] = this.state.elements;
                 arm["element2"] = this.state.elements;
                 arm["element3"] = this.state.elements;
