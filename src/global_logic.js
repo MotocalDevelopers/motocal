@@ -1,35 +1,28 @@
-var intl = require('./translate.js');
-var GlobalConst = require('./global_const.js');
+const intl = require('./translate.js');
 const {
     LIMIT,
     BASE_LIMIT_VALUES,
     DEFAULT,
-} = GlobalConst;
-var supplemental = require('./supplemental.js');
-var elementRelation = GlobalConst.elementRelation;
-var supportAbilities = GlobalConst.supportAbilities;
-var zenith = GlobalConst.zenith;
-var zenithDA = GlobalConst.zenithDA;
-var zenithTA = GlobalConst.zenithTA;
-//var zenithCritical = GlobalConst.zenithCritical;
-var zenithOugiDamage = GlobalConst.zenithOugiDamage;
-var zenithChainDamage = GlobalConst.zenithChainDamage;
-var zenithChainDamageLimit = GlobalConst.zenithChainDamageLimit;
-var zenithElement = GlobalConst.zenithElement;
-var zenithDamageLimit = GlobalConst.zenithDamageLimit;
-var Jobs = GlobalConst.Jobs;
-var armTypes = GlobalConst.armTypes;
-var jobTypes = GlobalConst.jobTypes;
-var keyTypes = GlobalConst.keyTypes;
-var skilltypes = GlobalConst.skilltypes;
-var skillAmounts = GlobalConst.skillAmounts;
-var elementTypes = GlobalConst.elementTypes;
-var summonTypes = GlobalConst.summonTypes;
-var summonElementTypes = GlobalConst.summonElementTypes;
-var raceTypes = GlobalConst.raceTypes;
-var sexTypes = GlobalConst.sexTypes;
-var filterElementTypes = GlobalConst.filterElementTypes;
-var enemyDefenseType = GlobalConst.enemyDefenseType;
+    elementRelation,
+    supportAbilities,
+    zenith,
+    zenithDA,
+    zenithTA,
+    zenithOugiDamage,
+    zenithChainDamage,
+    zenithChainDamageLimit,
+    zenithElement,
+    zenithDamageLimit,
+    Jobs,
+    skilltypes,
+    skillAmounts,
+    summonTypes,
+    summonElementTypes,
+    opusNames,
+    hollowskyNames,
+    limitBonusCriticalList,
+} = require('./global_const.js');
+const supplemental = require('./supplemental.js');
 const {
     favContains,
     bahaRaceContains,
@@ -50,7 +43,7 @@ module.exports.isCosmos = function (arm) {
 };
 
 module.exports.isDarkOpus = function (arm) {
-    return arm != undefined && arm.name != undefined && GlobalConst.opusNames.some(value => arm.name.includes(value));
+    return arm != undefined && arm.name != undefined && opusNames.some(value => arm.name.includes(value));
 };
 
 function isHaisuiType(stype) {
@@ -79,7 +72,7 @@ module.exports.proceedIndex = function (index, ana, i) {
 };
 
 module.exports.isHollowsky = function (arm) {
-    return arm != undefined && arm.name != undefined && GlobalConst.hollowskyNames.some( value => arm.name.includes(value));
+    return arm != undefined && arm.name != undefined && hollowskyNames.some( value => arm.name.includes(value));
 };
 
 /**
@@ -2264,8 +2257,8 @@ function getLBCriticalArray(charaLB) {
         if (charaLB[crit_key] !== "none") {
             var chara_lb_crit_type = charaLB[crit_key];
             criticalArray.push({
-                "value": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].value,
-                "attackRatio": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].attackRatio
+                "value": limitBonusCriticalList[chara_lb_crit_type].value,
+                "attackRatio": limitBonusCriticalList[chara_lb_crit_type].attackRatio
             });
         }
     });
@@ -3112,15 +3105,15 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     }
 
     if (res.length > 1) {
-        var AllTotalAttack = [["残りHP(%)"]];
-        var AllCycleDamagePerTurn = [["残りHP(%)"]];
-        var AllCriticalAttack = [["残りHP(%)"]];
-        var AllTotalExpected = [["残りHP(%)"]];
-        var AllAverageTotalAttack = [["残りHP(%)"]];
-        var AllAverageTotalExpected = [["残りHP(%)"]];
-        var AllAverageCycleDamagePerTurn = [["残りHP(%)"]];
-        var AllAverageCriticalAttack = [["残りHP(%)"]];
-        var AllTotalHP = [["残りHP(%)"]]
+        var AllTotalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllCycleDamagePerTurn = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllCriticalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllTotalExpected = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllAverageTotalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllAverageTotalExpected = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllAverageCycleDamagePerTurn = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllAverageCriticalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AllTotalHP = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]]
     }
 
     // Because the character formation is unchanged every weapon organization, it can be calculated earlier
@@ -3141,15 +3134,15 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
     for (var s = 0; s < res.length; s++) {
         var oneresult = res[s];
         var summonHeader = module.exports.makeSummonHeaderString(summon[s], locale, s+1);
-        var TotalAttack = [["残りHP(%)"]];
-        var TotalHP = [["残りHP(%)"]];
-        var CriticalAttack = [["残りHP(%)"]];
-        var TotalExpected = [["残りHP(%)"]];
-        var CycleDamagePerTurn = [["残りHP(%)"]];
-        var AverageTotalExpected = [["残りHP(%)"]];
-        var AverageTotalAttack = [["残りHP(%)"]];
-        var AverageCriticalAttack = [["残りHP(%)"]];
-        var AverageCycleDamagePerTurn = [["残りHP(%)"]];
+        var TotalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var TotalHP = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var CriticalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var TotalExpected = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var CycleDamagePerTurn = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AverageTotalExpected = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AverageTotalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AverageCriticalAttack = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
+        var AverageCycleDamagePerTurn = [[(displayRealHP ? intl.translate("残りHP", locale) : intl.translate("残HP割合", locale))]];
 
         var alreadyUsedHP = {};
 
