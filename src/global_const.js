@@ -1157,7 +1157,7 @@ var raceTypes = {
 var sexTypes = {
     "female": "女",
     "male": "男",
-    "other": "不詳",
+    "other": "不明",
     "male/female": "男/女",
 };
 
@@ -1203,6 +1203,12 @@ var filterElementTypes = {
     "light": "光",
     "dark": "闇",
 };
+
+const filterRaces = Object.assign({"all": "全種族"}, raceTypes);
+const filterSexes = Object.assign({"all": "全性別"}, sexTypes);
+const filterFavs = Object.assign({"all": "全得意武器"}, armTypes);
+const filterTypes = Object.assign({"all": "全タイプ"}, jobTypes);
+
 
 // strong and weak elements for each element
 module.exports.elementRelation = {
@@ -2769,15 +2775,23 @@ module.exports.selector.zh.enemyElements = Object.keys(enemyElementTypes).map(fu
     return <option value={opt} key={opt}>{intl.translate(enemyElementTypes[opt], "zh")}</option>;
 });
 
-module.exports.selector.ja.filterelements = Object.keys(filterElementTypes).map(function (opt) {
-    return <option value={opt} key={opt}>{filterElementTypes[opt]}</option>;
-});
-module.exports.selector.en.filterelements = Object.keys(filterElementTypes).map(function (opt) {
-    return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "en")}</option>;
-});
-module.exports.selector.zh.filterelements = Object.keys(filterElementTypes).map(function (opt) {
-    return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "zh")}</option>;
-});
+function _generateFilterOptions(locale, types) {
+    return Object.keys(types).map((opt) =>
+        <option value={opt} key={opt}>{intl.translate(types[opt], locale)}</option>);
+}
+
+function _setupFilterOptions(selector, key, types, locales=["ja", "en", "zh"]) {
+    for (const locale of locales) {
+        selector[locale][key] = _generateFilterOptions(locale, types);
+    }
+}
+
+_setupFilterOptions(module.exports.selector, "filterSexes", filterSexes);
+_setupFilterOptions(module.exports.selector, "filterRaces", filterRaces);
+_setupFilterOptions(module.exports.selector, "filterFavs", filterFavs);
+_setupFilterOptions(module.exports.selector, "filterTypes", filterTypes);
+_setupFilterOptions(module.exports.selector, "filterElements", filterElementTypes);
+
 
 module.exports.selector.ja.summons = Object.keys(summonTypes).map(function (opt) {
     return <option value={opt} key={opt}>{summonTypes[opt]}</option>;

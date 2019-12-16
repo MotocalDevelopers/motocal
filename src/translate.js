@@ -201,6 +201,26 @@ var multiLangData = {
         "ja": "土/光",
         "zh": "土/光",
     },
+    "全性別": {
+        "en": "All sexes",
+        "ja": "全性別",
+        "zh": "All sexes",
+    },
+    "全タイプ": {
+        "en": "All types",
+        "ja": "全タイプ",
+        "zh": "All types",
+    },
+    "全種族": {
+        "en": "All races",
+        "ja": "全種族",
+        "zh": "All races",
+    },
+    "全得意武器": {
+        "en": "All arm type",
+        "ja": "全得意武器",
+        "zh": "All arm type",
+    },
     "全属性": {
         "en": "All",
         "ja": "全属性",
