@@ -2796,17 +2796,17 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                 case "hanged_man_reversed":
                     if (index > 4) {
                         if (epic.isAllUniqueArm(arml, comb)) {
-                            if (totals[key].isConsideredInAverage) {
+                            if (totals[key].isConsideredInAverage && totals[key2]["element"] === support.range) {
                                 for (var key2 in totals) {
-                                    totals[key]["caimOther"] += support.value;
-                                    totals[key]["normalDamageLimit"] += support.value;
-                                    totals[key]["ougiDamageLimit"] += support.value;
+                                    totals[key2]["caimOther"] += 0.20;
+                                    totals[key2]["normalDamageLimit"] += 0.10;
+                                    totals[key2]["ougiDamageLimit"] += 0.10;
                                 }
                             } else {
                                 // Calculate yourself only if you do not put it in the average
-                                totals[key]["caimOther"] += support.value;
-                                totals[key]["normalDamageLimit"] += support.value;
-                                totals[key]["ougiDamageLimit"] += support.value;
+                                totals[key]["caimOther"] += 0.20;
+                                totals[key]["normalDamageLimit"] += 0.10;
+                                totals[key]["ougiDamageLimit"] += 0.10;
                             }
                         }
                     }
