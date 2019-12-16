@@ -56,6 +56,11 @@ var multiLangData = {
         "ja": "武器",
         "zh": "武器",
     },
+    "編成名": {
+        "en": "Set Name",
+        "ja": "編成名",
+        "zh": "編成名",
+    },
     "保存": {
         "en": "Save",
         "ja": "保存",
@@ -200,6 +205,26 @@ var multiLangData = {
         "en": "Earth/Light",
         "ja": "土/光",
         "zh": "土/光",
+    },
+    "全性別": {
+        "en": "All sexes",
+        "ja": "全性別",
+        "zh": "All sexes",
+    },
+    "全タイプ": {
+        "en": "All types",
+        "ja": "全タイプ",
+        "zh": "All types",
+    },
+    "全種族": {
+        "en": "All races",
+        "ja": "全種族",
+        "zh": "All races",
+    },
+    "全得意武器": {
+        "en": "All arm type",
+        "ja": "全得意武器",
+        "zh": "All arm type",
     },
     "全属性": {
         "en": "All",
@@ -1754,7 +1779,7 @@ var multiLangData = {
         "zh": "加入图表",
     },
     "本": {
-        "en": "",
+        "en": "x",
         "ja": "本",
         "zh": "把",
     },
@@ -2876,10 +2901,10 @@ var multiLangData = {
         "ja": "通常恩寵(中)",
         "zh": "通常恩寵(中)",
     },
-    "通常本質(中)": {
+    "通常星晶(中)": {
         "en": "Normal Essence (M)",
-        "ja": "通常本質(中)",
-        "zh": "通常本質(中)",
+        "ja": "通常星晶(中)",
+        "zh": "通常星晶(中)",
     },
     "通常庇護(小)": {
         "en": "Normal Refuge (S)",
@@ -3026,10 +3051,10 @@ var multiLangData = {
         "ja": "マグナ杖術(大)",
         "zh": "方阵杖術(大)",
     },
-    "マグナ本質(中)": {
+    "マグナ星晶(中)": {
         "en": "Magna Essence (M)",
         "ja": "マグナ星晶(中)",
-        "zh": "方阵本質(中)",
+        "zh": "方阵星晶(中)",
     },
     "アンノウンATK・I": {
         "en": "Unknown ATK I",
@@ -3545,6 +3570,21 @@ var multiLangData = {
         "en": "Pendulum Key Δ (CB Cap 50%)",
         "ja": "ペンデュラム[Δ](CB上限50%UP)",
         "zh": "ペンデュラム[Δ](CB上限50%UP)",
+    },
+    "・覇": {
+        "en": " Pontus",
+        "ja": "・覇",
+        "zh": "・覇",
+    },
+    "・王": {
+        "en": " Regus",
+        "ja": "・王",
+        "zh": "・王",
+    },
+    "・邪": {
+        "en": " Malus",
+        "ja": "・邪",
+        "zh": "・邪",
     },
     "天司の祝福": {
         "en": "Angel's Blessing",
