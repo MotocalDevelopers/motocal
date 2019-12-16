@@ -1,35 +1,28 @@
-var intl = require('./translate.js');
-var GlobalConst = require('./global_const.js');
+const intl = require('./translate.js');
 const {
     LIMIT,
     BASE_LIMIT_VALUES,
     DEFAULT,
-} = GlobalConst;
-var supplemental = require('./supplemental.js');
-var elementRelation = GlobalConst.elementRelation;
-var supportAbilities = GlobalConst.supportAbilities;
-var zenith = GlobalConst.zenith;
-var zenithDA = GlobalConst.zenithDA;
-var zenithTA = GlobalConst.zenithTA;
-//var zenithCritical = GlobalConst.zenithCritical;
-var zenithOugiDamage = GlobalConst.zenithOugiDamage;
-var zenithChainDamage = GlobalConst.zenithChainDamage;
-var zenithChainDamageLimit = GlobalConst.zenithChainDamageLimit;
-var zenithElement = GlobalConst.zenithElement;
-var zenithDamageLimit = GlobalConst.zenithDamageLimit;
-var Jobs = GlobalConst.Jobs;
-var armTypes = GlobalConst.armTypes;
-var jobTypes = GlobalConst.jobTypes;
-var keyTypes = GlobalConst.keyTypes;
-var skilltypes = GlobalConst.skilltypes;
-var skillAmounts = GlobalConst.skillAmounts;
-var elementTypes = GlobalConst.elementTypes;
-var summonTypes = GlobalConst.summonTypes;
-var summonElementTypes = GlobalConst.summonElementTypes;
-var raceTypes = GlobalConst.raceTypes;
-var sexTypes = GlobalConst.sexTypes;
-var filterElementTypes = GlobalConst.filterElementTypes;
-var enemyDefenseType = GlobalConst.enemyDefenseType;
+    elementRelation,
+    supportAbilities,
+    zenith,
+    zenithDA,
+    zenithTA,
+    zenithOugiDamage,
+    zenithChainDamage,
+    zenithChainDamageLimit,
+    zenithElement,
+    zenithDamageLimit,
+    Jobs,
+    skilltypes,
+    skillAmounts,
+    summonTypes,
+    summonElementTypes,
+    opusNames,
+    hollowskyNames,
+    limitBonusCriticalList,
+} = require('./global_const.js');
+const supplemental = require('./supplemental.js');
 const {
     favContains,
     bahaRaceContains,
@@ -50,7 +43,7 @@ module.exports.isCosmos = function (arm) {
 };
 
 module.exports.isDarkOpus = function (arm) {
-    return arm != undefined && arm.name != undefined && GlobalConst.opusNames.some(value => arm.name.includes(value));
+    return arm != undefined && arm.name != undefined && opusNames.some(value => arm.name.includes(value));
 };
 
 function isHaisuiType(stype) {
@@ -79,7 +72,7 @@ module.exports.proceedIndex = function (index, ana, i) {
 };
 
 module.exports.isHollowsky = function (arm) {
-    return arm != undefined && arm.name != undefined && GlobalConst.hollowskyNames.some( value => arm.name.includes(value));
+    return arm != undefined && arm.name != undefined && hollowskyNames.some( value => arm.name.includes(value));
 };
 
 /**
@@ -2200,8 +2193,8 @@ function getLBCriticalArray(charaLB) {
         if (charaLB[crit_key] !== "none") {
             var chara_lb_crit_type = charaLB[crit_key];
             criticalArray.push({
-                "value": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].value,
-                "attackRatio": GlobalConst.limitBonusCriticalList[chara_lb_crit_type].attackRatio
+                "value": limitBonusCriticalList[chara_lb_crit_type].value,
+                "attackRatio": limitBonusCriticalList[chara_lb_crit_type].attackRatio
             });
         }
     });
