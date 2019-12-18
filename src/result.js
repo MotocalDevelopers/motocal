@@ -41,6 +41,50 @@ var {
     getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
 } = require('./global_logic.js');
 
+const switchList = {
+    "攻撃力・HP・連撃率": { // ATK/HP/etcs
+        switchTotalAttack: "攻撃力(二手技巧無し)",
+        switchATKandHP: "戦力",
+        switchHP: "HP",
+        switchDATA: "連撃率",
+        switchExpectedAttack: "期待攻撃回数",
+        switchCriticalRatio: "技巧期待値",
+        switchCriticalAttack: "技巧期待攻撃力",
+        switchTotalExpected: "総合*回数*技巧"
+    },
+    "パーティ平均攻撃力": { // Party-Averaged ATK
+        switchAverageAttack: "パーティ平均攻撃力",
+        switchAverageCriticalAttack: "技巧平均攻撃力",
+        switchAverageTotalExpected: "総回技の平均"
+    },
+    "予測ダメージ": { // Expected Damages
+        switchCycleDamage: "予想ターン毎ダメージ", 
+        switchAverageCycleDamage: "パーティ平均予想ターン毎ダメージ", 
+        switchPureDamage: "単攻撃ダメージ(技巧連撃無)",
+        switchDamageWithCritical: "単攻撃ダメージ(技巧有)",
+        switchDamageWithMultiple: "単攻撃ダメージ(連撃有)",
+        switchDamage: "単攻撃ダメージ(技巧連撃有)",
+        switchOugiDamage: "奥義ダメージ", 
+        switchChainBurst: "チェインバースト", 
+        switchTotalOugiDamageWithChain: "奥義+チェンバダメージ", 
+        switchOugiGage: "ターン毎の奥義ゲージ上昇量"
+    },
+    "キャラ情報・スキル合計値": { // Chara Data, Skill Amount
+        switchCharaAttack: "攻撃力",
+        switchCharaHP: "HP",
+        switchCharaDA: "連撃率",
+        switchCharaTotalExpected: "総回技",
+        switchCharaCycleDamage: "予想ターン毎ダメージ",
+        switchCharaPureDamage: "単攻撃ダメージ(技巧連撃無)",
+        switchCharaOugiDamage: "奥義ダメージ",
+        switchCharaLimitValues: "実質ダメージ上限",
+        switchCharaOugiGage: "ターン毎の奥義ゲージ上昇量",
+        switchSkillTotal: "スキル合計",
+        switchDebuffResistance: "弱体耐性率"
+    }
+}
+const switchArray = Object.values(switchList).map(value => Object.keys(value)).flat();
+
 var ResultList = CreateClass({
     calculateResult: function (newprops) {
         var prof = newprops.profile;
@@ -177,57 +221,30 @@ var ResultList = CreateClass({
         }
     },
     getInitialState: function () {
-        return {
-            switchTotalAttack: 1,
-            switchATKandHP: 0,
-            switchHP: 1,
-            switchCharaHP: 0,
-            switchDATA: 0,
-            switchExpectedAttack: 0,
-            switchSkillTotal: 0,
-            switchCharaExpectedAttack: 0,
-            switchCriticalRatio: 0,
-            switchCriticalAttack: 0,
-            switchCharaAttack: 0,
-            switchCharaDA: 0,
-            switchCharaTotalExpected: 0,
-            switchCharaCycleDamage: 0,
-            switchCharaPureDamage: 0,
-            switchCharaOugiDamage: 0,
-            switchCharaLimitValues: 0,
-            switchCharaOugiGage: 0,
-            switchAverageAttack: 1,
-            switchAverageCriticalAttack: 0,
-            switchTotalExpected: 0,
-            switchAverageTotalExpected: 0,
-            switchDamage: 0,
-            switchPureDamage: 0,
-            switchDamageWithCritical: 0,
-            switchDamageWithMultiple: 0,
-            switchOugiGage: 0,
-            switchOugiDamage: 0,
-            switchCycleDamage: 0,
-            switchAverageCycleDamage: 1,
-            switchDebuffResistance: 0,
-            switchChainBurst: 0,
-            switchTotalOugiDamageWithChain: 0,
-            disableAutoResultUpdate: 0,
-            result: {summon: this.props.summon, result: []},
-            chartSortKey: "totalAttack",
-            chartData: {},
-            storedList: {"combinations": [], "armlist": [], "names": []},
-            openHPChart: false,
-            displayRealHP: false,
-            openSimulator: false,
-            openDisplayElementTable: false,
-            openHPChartTutorial: false,
-            openShowStoredList: false,
-            ChartButtonActive: false,
-            previousArmlist: null,
-            previousCombinations: null,
-            ruleMaxSize: true,
-            filterOptionsChanged: false
-        };
+        res = {};
+        for (const item of switchArray) {
+            if (item === "switchTotalAttack" || item === "switchHP" || item === "switchAverageAttack" || item === "switchAverageCycleDamage") {
+                res[item] = 1;
+            } else {
+                res[item] = 0;
+            }
+        }
+        res.result = {summon: this.props.summon, result: []};
+        res.chartSortKey = "totalAttack";
+        res.chartData = {};
+        res.storedList = {"combinations": [], "armlist": [], "names": []};
+        res.openHPChart = false;
+        res.displayRealHP = false;
+        res.openSimulator = false;
+        res.openDisplayElementTable = false;
+        res.openHPChartTutorial = false;
+        res.openShowStoredList = false;
+        res.ChartButtonActive = false;
+        res.previousArmlist = null;
+        res.previousCombinations = null;
+        res.ruleMaxSize = true;
+        res.filterOptionsChanged = false;
+        return res;
     },
     closeHPChart: function () {
         this.setState({openHPChart: false})
@@ -506,6 +523,47 @@ var ResultList = CreateClass({
             var changeSortKey = <FormControl componentClass="select" style={{"width": "100%", padding: "0"}}
                                              value={this.props.sortKey}
                                              onChange={this.props.onChangeSortkey}> {selector[locale].ktypes} </FormControl>;
+                             
+            const GenerateMobileResultList = (category) => {
+                const widthNumber = 3;
+                let count = 0;
+                let res = [];
+                let temp = [];
+                const remainder = widthNumber - Object.keys(switchList[category]).length % widthNumber;
+
+                for (const item in switchList[category]) {
+                    count += 1;
+                    temp.push(
+                            <td onClick={this.handleEvent.bind(this, item)}
+                                className={(this.state[item] == 1) ? "display-checked" : "display-unchecked"}> {intl.translate(switchList[category][item], locale)}
+                            </td>
+                    )
+                    if (count % widthNumber === 0) {          
+                        res.push(
+                            <tr>
+                                {temp}
+                            </tr>
+                        )
+                        temp = [];
+                    } else if (count === Object.keys(switchList[category]).length) {
+                        for (let i = 0; i < remainder; i++) { 
+                            temp.push(
+                                <td></td>
+                            )
+                        }
+                        res.push(
+                            <tr>
+                                {temp}
+                            </tr>
+                        )
+                        temp = [];
+                        count = 0;
+                    }
+                }
+
+                return res;
+            };
+        
             return (
                 <div className="resultList">
                     <Button block onClick={this.openDisplayTable}>
@@ -515,112 +573,10 @@ var ResultList = CreateClass({
                         <table style={{"width": "100%", textAlign: "center", marginBottom: "2px"}}
                                className="table table-bordered">
                             <tbody>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchTotalAttack")}
-                                    className={(this.state.switchTotalAttack == 1) ? "display-checked" : "display-unchecked"}> 攻撃力(二手技巧無し)
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchATKandHP")}
-                                    className={(this.state.switchATKandHP == 1) ? "display-checked" : "display-unchecked"}>戦力
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchHP")}
-                                    className={(this.state.switchHP == 1) ? "display-checked" : "display-unchecked"}> HP
-                                </td>
-                            </tr>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchDATA")}
-                                    className={(this.state.switchDATA == 1) ? "display-checked" : "display-unchecked"}> 連続攻撃率
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchExpectedAttack")}
-                                    className={(this.state.switchExpectedAttack == 1) ? "display-checked" : "display-unchecked"}> 期待攻撃回数
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchCriticalRatio")}
-                                    className={(this.state.switchCriticalRatio == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値
-                                </td>
-                            </tr>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchCriticalAttack")}
-                                    className={(this.state.switchCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧期待値*攻撃力
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchAverageAttack")}
-                                    className={(this.state.switchAverageAttack == 1) ? "display-checked" : "display-unchecked"}> パーティ平均攻撃力(二手技巧無し)
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")}
-                                    className={(this.state.switchAverageCriticalAttack == 1) ? "display-checked" : "display-unchecked"}> 技巧平均攻撃力
-                                </td>
-                            </tr>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchTotalExpected")}
-                                    className={(this.state.switchTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総合*期待回数*技巧期待値
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")}
-                                    className={(this.state.switchAverageTotalExpected == 1) ? "display-checked" : "display-unchecked"}> 総回技のパーティ平均値
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchCycleDamage")}
-                                    className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージ
-                                </td>
-                            </tr>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")}
-                                    className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージの平均値
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchDamage")}
-                                    className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> 単攻撃ダメージ
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchOugiGage")}
-                                    className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> 奥義ゲージ上昇期待値
-                                </td>
-                            </tr>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchOugiDamage")}
-                                    className={(this.state.switchOugiDamage == 1) ? "display-checked" : "display-unchecked"}> 奥義ダメージ
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchChainBurst")}
-                                    className={(this.state.switchChainBurst == 1) ? "display-checked" : "display-unchecked"}> チェインバースト
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchTotalOugiDamageWithChain")}
-                                    className={(this.state.switchTotalOugiDamageWithChain == 1) ? "display-checked" : "display-unchecked"}> 奥義+チェンバダメージ
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaAttack")}
-                                    className={(this.state.switchCharaAttack == 1) ? "display-checked" : "display-unchecked"}> キャラ攻撃力
-                                </td>
-                            </tr>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaHP")}
-                                    className={(this.state.switchCharaHP == 1) ? "display-checked" : "display-unchecked"}> キャラHP
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaDA")}
-                                    className={(this.state.switchCharaDA == 1) ? "display-checked" : "display-unchecked"}> キャラ連続攻撃率
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")}
-                                    className={(this.state.switchCharaTotalExpected == 1) ? "display-checked" : "display-unchecked"}> キャラ総回技値
-                                </td>
-                            </tr>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaCycleDamage")}
-                                    className={(this.state.switchCharaCycleDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ予想ターン毎ダメージ
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
-                                    className={(this.state.switchCharaPureDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
-                                    className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ダメージ
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
-                                    className={(this.state.switchCharaLimitValues == 1) ? "display-checked" : "display-unchecked"}> キャラ実質ダメージ上限
-                                </td>
-                            </tr>
-                            <tr>
-                                <td onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
-                                    className={(this.state.switchCharaOugiGage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ゲージ上昇量
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchSkillTotal")}
-                                    className={(this.state.switchSkillTotal == 1) ? "display-checked" : "display-unchecked"}> スキル合計値
-                                </td>
-                                <td onClick={this.handleEvent.bind(this, "switchDebuffResistance")}
-                                    className={(this.state.switchDebuffResistance == 1) ? "display-checked" : "display-unchecked"}> 弱体耐性率
-                                </td>
-                                <td></td>
-                            </tr>
+                                   {GenerateMobileResultList("攻撃力・HP・連撃率")}
+                                   {GenerateMobileResultList("パーティ平均攻撃力")}
+                                   {GenerateMobileResultList("予測ダメージ")}
+                                   {GenerateMobileResultList("キャラ情報・スキル合計値")}
                             </tbody>
                         </table>
                     </Collapse>
@@ -737,84 +693,36 @@ var ResultList = CreateClass({
             var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}}
                                              value={this.props.sortKey}
                                              onChange={this.props.onChangeSortkey}> {selector[locale].ktypes} </FormControl>;
+            const generateMenuItem = (category, isChara=false) => {
+                let res = [];
+                const strChara = isChara ? intl.translate("キャラ(result)", locale) : "";
+                for (const item in switchList[category]) {
+                    res.push(
+                        <MenuItem onClick={this.handleEvent.bind(this, item)}
+                            active={(this.state[item] == 1) ? true : false}>{strChara + intl.translate(switchList[category][item], locale)}</MenuItem>
+                    );
+                }
+                return res;
+            }
+            
             return (
                 <div className="resultList">
                     <ControlLabel>{intl.translate("表示項目切替", locale)}</ControlLabel>
                     <ButtonToolbar>
                         <DropdownButton title={intl.translate("攻撃力・HP・連撃率", locale)} id="atk-hp-etcs">
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchTotalAttack")}
-                                      active={(this.state.switchTotalAttack == 1) ? true : false}>{intl.translate("攻撃力(二手技巧無し)", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchATKandHP")}
-                                      active={(this.state.switchATKandHP == 1) ? true : false}>{intl.translate("戦力", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchHP")}
-                                      active={(this.state.switchHP == 1) ? true : false}>HP</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchDATA")}
-                                      active={(this.state.switchDATA == 1) ? true : false}>{intl.translate("連撃率", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchExpectedAttack")}
-                                      active={(this.state.switchExpectedAttack == 1) ? true : false}>{intl.translate("期待攻撃回数", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCriticalRatio")}
-                                      active={(this.state.switchCriticalRatio == 1) ? true : false}>{intl.translate("技巧期待値", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCriticalAttack")}
-                                      active={(this.state.switchCriticalAttack == 1) ? true : false}>{intl.translate("技巧期待攻撃力", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchTotalExpected")}
-                                      active={(this.state.switchTotalExpected == 1) ? true : false}>{intl.translate("総合*回数*技巧", locale)}</MenuItem>
+                            {generateMenuItem("攻撃力・HP・連撃率", false)}
                         </DropdownButton>
 
                         <DropdownButton title={intl.translate("パーティ平均攻撃力", locale)} id="party-averafed-atk">
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchAverageAttack")}
-                                      active={(this.state.switchAverageAttack == 1) ? true : false}>{intl.translate("パーティ平均攻撃力", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")}
-                                      active={(this.state.switchAverageCriticalAttack == 1) ? true : false}>{intl.translate("技巧平均攻撃力", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")}
-                                      active={(this.state.switchAverageTotalExpected == 1) ? true : false}>{intl.translate("総回技の平均", locale)}</MenuItem>
+                            {generateMenuItem("パーティ平均攻撃力", false)}
                         </DropdownButton>
 
                         <DropdownButton title={intl.translate("予測ダメージ", locale)} id="expected-damage">
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCycleDamage")}
-                                      active={(this.state.switchCycleDamage == 1) ? true : false}> {intl.translate("予想ターン毎ダメージ", locale)} </MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")}
-                                      active={(this.state.switchAverageCycleDamage == 1) ? true : false}> {intl.translate("パーティ平均予想ターン毎ダメージ", locale)} </MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchPureDamage")}
-                                      active={(this.state.switchPureDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchDamageWithCritical")}
-                                      active={(this.state.switchDamageWithCritical == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧有)", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchDamageWithMultiple")}
-                                      active={(this.state.switchDamageWithMultiple == 1) ? true : false}> {intl.translate("単攻撃ダメージ(連撃有)", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchDamage")}
-                                      active={(this.state.switchDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃有)", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchOugiDamage")}
-                                      active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchChainBurst")}
-                                      active={(this.state.switchChainBurst == 1) ? true : false}> {intl.translate("チェインバースト", locale)} </MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchTotalOugiDamageWithChain")}
-                                      active={(this.state.switchTotalOugiDamageWithChain == 1) ? true : false}> {intl.translate("奥義+チェンバダメージ", locale)} </MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchOugiGage")}
-                                      active={(this.state.switchOugiGage == 1) ? true : false}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </MenuItem>
+                            {generateMenuItem("予測ダメージ", false)}
                         </DropdownButton>
 
                         <DropdownButton title={intl.translate("キャラ情報・スキル合計値", locale)} id="chara-and-skill-info">
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaAttack")}
-                                      active={(this.state.switchCharaAttack == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("攻撃力", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaHP")}
-                                      active={(this.state.switchCharaHP == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}HP</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaDA")}
-                                      active={(this.state.switchCharaDA == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("連撃率", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")}
-                                      active={(this.state.switchCharaTotalExpected == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("総回技", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaCycleDamage")}
-                                      active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
-                                      active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
-                                      active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
-                                      active={(this.state.switchCharaLimitValues == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("実質ダメージ上限", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
-                                      active={(this.state.switchCharaOugiGage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")}
-                                      active={(this.state.switchSkillTotal == 1) ? true : false}>{intl.translate("スキル合計", locale)}</MenuItem>
-                            <MenuItem onClick={this.handleEvent.bind(this, "switchDebuffResistance")}
-                                      active={(this.state.switchDebuffResistance == 1) ? true : false}>{intl.translate("弱体耐性率", locale)}</MenuItem>
+                            {generateMenuItem("キャラ情報・スキル合計値", true)}
                         </DropdownButton>
                         <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate}
                                            switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")}
