@@ -333,12 +333,12 @@ var multiLangData = {
     },
     "追加ダメージXA": { // additionalDamageXA
         "en": "Bonus DMG XA",
-        "ja": "連撃時追加ダメージ",
+        "ja": "連撃時追撃ダメージ",
         "zh": "追加伤害 XA",
     },
     "追加ダメージ": {
         "en": "Bonus DMG", //a.k.a: additionalDamage
-        "ja": "追加ダメージ",
+        "ja": "追撃ダメージ",
         "zh": "追加伤害",
     },
     "追加ダメージバフ": {
@@ -350,6 +350,11 @@ var multiLangData = {
         "en": "Bonus Damage will be added to \"Expected Turn Damage\". Chaser of Warlock(20%), Parazonium(15%) etc.",
         "ja": "通常攻撃に割合分の追加ダメージを上乗せします。予想ターン毎ダメージの算出に使用されます。ウォーロックのチェイサー(20%)、パラゾ(15%)など。",
         "zh": "视作追加伤害，额外加在伤害上。用在预想DPT的计算中。",
+    },
+    "単攻撃ダメージ(追撃無)": {
+        "en": "Single Attack Damage(No Bonus)",
+        "ja": "単攻撃ダメージ(追撃無)",
+        "zh": "単攻撃ダメージ(追撃無)",
     },
     "supplementalDamageBuff": {
         "en": "Supplemental Damage Buff",

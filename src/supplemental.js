@@ -15,6 +15,7 @@ function calcSupplementalDamage(
                 }
                 vals[0] += supplemental.damage;
                 vals[1] += supplemental.damage * expectedTurn;
+                vals[2] += supplemental.additionalDamage;
                 break;
             case "hp_based":
                 if (!("threshold" in supplemental)) {
@@ -31,6 +32,7 @@ function calcSupplementalDamage(
                 vals[1] += supplemental.damageWithoutCritical;
                 vals[2] += supplemental.ougiDamage;
                 vals[3] += supplemental.chainBurst;
+                vals[4] += supplemental.additionalDamage;
                 break;
         }
     }

@@ -193,6 +193,8 @@ var ResultList = CreateClass({
             switchCharaTotalExpected: 0,
             switchCharaCycleDamage: 0,
             switchCharaPureDamage: 0,
+            switchCharaDamageWithoutAdditional: 0,
+            switchCharaAdditionalDamage: 0,
             switchCharaOugiDamage: 0,
             switchCharaLimitValues: 0,
             switchCharaOugiGage: 0,
@@ -204,6 +206,7 @@ var ResultList = CreateClass({
             switchPureDamage: 0,
             switchDamageWithCritical: 0,
             switchDamageWithMultiple: 0,
+            switchAdditionalDamage: 0,
             switchOugiGage: 0,
             switchOugiDamage: 0,
             switchCycleDamage: 0,
@@ -436,6 +439,9 @@ var ResultList = CreateClass({
         if (switcher.switchDamage) {
             tableheader.push(intl.translate("単攻撃ダメージ(技巧連撃有)", locale))
         }
+        if (switcher.switchAdditionalDamage) {
+            tableheader.push(intl.translate("追加ダメージ", locale))
+        }
         if (switcher.switchOugiGage) {
             tableheader.push(intl.translate("ターン毎の奥義ゲージ上昇量", locale))
         }
@@ -600,6 +606,12 @@ var ResultList = CreateClass({
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
                                     className={(this.state.switchCharaPureDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaDamageWithoutAdditional")}
+                                    className={(this.state.switchCharaDamageWithoutAdditional == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ(追撃無)
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaAdditionalDamage")}
+                                    className={(this.state.switchCharaAdditionalDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ追撃ダメージ
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                     className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ダメージ
@@ -781,6 +793,8 @@ var ResultList = CreateClass({
                                       active={(this.state.switchDamageWithMultiple == 1) ? true : false}> {intl.translate("単攻撃ダメージ(連撃有)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDamage")}
                                       active={(this.state.switchDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃有)", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchAdditionalDamage")}
+                                      active={(this.state.switchAdditionalDamage == 1) ? true : false}> {intl.translate("追加ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchOugiDamage")}
                                       active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchChainBurst")}
@@ -804,6 +818,10 @@ var ResultList = CreateClass({
                                       active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
                                       active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaDamageWithoutAdditional")}
+                                      active={(this.state.switchCharaDamageWithoutAdditional == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(追撃無)", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaAdditionalDamage")}
+                                      active={(this.state.switchCharaAdditionalDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("追加ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                       active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
@@ -1154,6 +1172,28 @@ var Result = CreateClass({
                         );
                     }
                 }
+                
+                if (sw.switchCharaDamageWithoutAdditional) {
+                    for (key in m.data) {
+                        charaDetail[key].push(
+                            <span key={key + "-damage-without-additional"} className="result-chara-detail">
+                                    <span
+                                        className="label label-primary">{intl.translate("単攻撃ダメージ(追撃無)", locale)}</span> {formatCommaSeparatedNumber(m.data[key].damageWithoutAdditional)}&nbsp;
+                                </span>
+                        );
+                    }
+                }
+                
+                if (sw.switchCharaAdditionalDamage) {
+                    for (key in m.data) {
+                        charaDetail[key].push(
+                            <span key={key + "-additional-damage"} className="result-chara-detail">
+                                    <span
+                                        className="label label-primary">{intl.translate("追加ダメージ", locale)}</span> {formatCommaSeparatedNumber(m.data[key].additionalDamage)}&nbsp;
+                                </span>
+                        );
+                    }
+                }
 
                 if (sw.switchDamageWithCritical) {
                     tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damageWithCritical));
@@ -1167,6 +1207,11 @@ var Result = CreateClass({
 
                 if (sw.switchDamage) {
                     tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damage));
+                    ++colSize;
+                }
+
+                if (sw.switchAdditionalDamage) {
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.additionalDamage));
                     ++colSize;
                 }
 
@@ -1235,26 +1280,28 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchCharaLimitValues) {
-                    for (var key in m.data) {
-                        function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage){
-                            // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
-                            let  _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
-                            (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
-                            (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
-                            
-                            // In the case of ougi.
-                            _limitValues += ougiFixedDamage * criticalRatio;
-                            
-                            _limitValues *= Math.max(1.0, 1.0 + damageUP);
-                            _limitValues *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
-                            _limitValues += supplementalDamage;
-                            
-                            return _limitValues;
-                        }
+                    function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage){
+                        // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
+                        let  _limitValues = limitValues[3][0] + 
+                        (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
+                        (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
+                        (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
                         
+                        // In the case of ougi.
+                        _limitValues += ougiFixedDamage * criticalRatio;
+                        
+                        _limitValues *= Math.max(1.0, 1.0 + damageUP);
+                        _limitValues *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
+                        _limitValues += supplementalDamage;
+                            
+                        return _limitValues;
+                    }
+                    
+                    for (var key in m.data) {
                         // Generate supplemental Damage.
-                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
-                        [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
+                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0, additionalDamageSupplemental = 0;
+                        [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental, additionalDamageSupplemental]
+                        = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental, additionalDamageSupplemental], {remainHP: m.data[key].remainHP});
                         
                         let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUPOnlyNormalDamage, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
                         let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
@@ -1438,7 +1485,7 @@ var Result = CreateClass({
                             }
                         };
                         pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "default");
-                        pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
+                        pushSkillInfoElement3("additionalRatio", "追加ダメージ", "default");
                         pushSkillInfoElement3("damageUP", "与ダメージUP", "default");
                         pushSkillInfoElement3("damageUPOnlyNormalDamage", "与ダメージUP(通常攻撃のみ)", "default");
                         pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
