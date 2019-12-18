@@ -193,6 +193,8 @@ var ResultList = CreateClass({
             switchCharaTotalExpected: 0,
             switchCharaCycleDamage: 0,
             switchCharaPureDamage: 0,
+            switchCharaDamageWithoutAdditional: 0,
+            switchCharaAdditionalDamage: 0,
             switchCharaOugiDamage: 0,
             switchCharaLimitValues: 0,
             switchCharaOugiGage: 0,
@@ -204,6 +206,7 @@ var ResultList = CreateClass({
             switchPureDamage: 0,
             switchDamageWithCritical: 0,
             switchDamageWithMultiple: 0,
+            switchAdditionalDamage: 0,
             switchOugiGage: 0,
             switchOugiDamage: 0,
             switchCycleDamage: 0,
@@ -436,6 +439,9 @@ var ResultList = CreateClass({
         if (switcher.switchDamage) {
             tableheader.push(intl.translate("単攻撃ダメージ(技巧連撃有)", locale))
         }
+        if (switcher.switchAdditionalDamage) {
+            tableheader.push(intl.translate("追加ダメージ", locale))
+        }
         if (switcher.switchOugiGage) {
             tableheader.push(intl.translate("ターン毎の奥義ゲージ上昇量", locale))
         }
@@ -600,6 +606,12 @@ var ResultList = CreateClass({
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
                                     className={(this.state.switchCharaPureDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaDamageWithoutAdditional")}
+                                    className={(this.state.switchCharaDamageWithoutAdditional == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ(追撃無)
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaAdditionalDamage")}
+                                    className={(this.state.switchCharaAdditionalDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ追撃ダメージ
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                     className={(this.state.switchCharaOugiDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ダメージ
@@ -781,6 +793,8 @@ var ResultList = CreateClass({
                                       active={(this.state.switchDamageWithMultiple == 1) ? true : false}> {intl.translate("単攻撃ダメージ(連撃有)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDamage")}
                                       active={(this.state.switchDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃有)", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchAdditionalDamage")}
+                                      active={(this.state.switchAdditionalDamage == 1) ? true : false}> {intl.translate("追加ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchOugiDamage")}
                                       active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchChainBurst")}
@@ -804,6 +818,10 @@ var ResultList = CreateClass({
                                       active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
                                       active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaDamageWithoutAdditional")}
+                                      active={(this.state.switchCharaDamageWithoutAdditional == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(追撃無)", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaAdditionalDamage")}
+                                      active={(this.state.switchCharaAdditionalDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("追加ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
                                       active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
@@ -1154,6 +1172,28 @@ var Result = CreateClass({
                         );
                     }
                 }
+                
+                if (sw.switchCharaDamageWithoutAdditional) {
+                    for (key in m.data) {
+                        charaDetail[key].push(
+                            <span key={key + "-damage-without-additional"} className="result-chara-detail">
+                                    <span
+                                        className="label label-primary">{intl.translate("単攻撃ダメージ(追撃無)", locale)}</span> {formatCommaSeparatedNumber(m.data[key].damageWithoutAdditional)}&nbsp;
+                                </span>
+                        );
+                    }
+                }
+                
+                if (sw.switchCharaAdditionalDamage) {
+                    for (key in m.data) {
+                        charaDetail[key].push(
+                            <span key={key + "-additional-damage"} className="result-chara-detail">
+                                    <span
+                                        className="label label-primary">{intl.translate("追加ダメージ", locale)}</span> {formatCommaSeparatedNumber(m.data[key].additionalDamage)}&nbsp;
+                                </span>
+                        );
+                    }
+                }
 
                 if (sw.switchDamageWithCritical) {
                     tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damageWithCritical));
@@ -1167,6 +1207,11 @@ var Result = CreateClass({
 
                 if (sw.switchDamage) {
                     tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damage));
+                    ++colSize;
+                }
+
+                if (sw.switchAdditionalDamage) {
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.additionalDamage));
                     ++colSize;
                 }
 
