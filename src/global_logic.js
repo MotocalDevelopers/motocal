@@ -833,9 +833,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
 
         // "damage" is a single attack damage without additional damage (with attenuation and skill correction)
-        var damage = damageWithoutAdditional = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, damageUP + damageUPOnlyNormalDamage, normalDamageLimitValues);
+        const damageWithoutAdditional = module.exports.calcDamage(summedAttack, totalSkillCoeff, criticalRatio, prof.enemyDefense, prof.defenseDebuff, enemyResistance, damageUP + damageUPOnlyNormalDamage, normalDamageLimitValues);
         const additionalDamage = damage * Math.max(0, additionalRatio);
-        damage += additionalDamage;
+        var damage = damageWithoutAdditional + additionalDamage;
         
 
         // Use damage in case of no critical to correct skill expectation
