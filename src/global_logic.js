@@ -748,6 +748,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         damageLimit += totals[key]["damageLimitBuff"];
         damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"]);
         damageLimit += Math.min(0.10, totals[key]["omegaNormalDamageLimit"]);
+        damageLimit += totals[key]["caimDamageLimit"];
         damageLimit += 0.01 * totalSummon["damageLimit"];
         if (totals[key]["EXLB"]["WED"]) {
             damageLimit += 0.05;
@@ -761,6 +762,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         ougiDamageLimit += Math.min(0.20, totals[key]["ougiDamageLimit"]);
         ougiDamageLimit += Math.min(0.15, totals[key]["omegaOugiDamageLimit"]);
         ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
+        ougiDamageLimit += totals[key]["caimDamageLimit"];
         ougiDamageLimit += 0.01 * totalSummon["damageLimit"];
         ougiDamageLimit += 0.01 * totals[key]["LB"]["OugiDamageLimit"];
         ougiDamageLimit += 0.01 * totals[key]["EXLB"]["OugiDamageLimit"];
@@ -2335,6 +2337,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
                 omegaNormalDamageLimit: 0,
+                caimDamageLimit: 0,
                 criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 magnaOugiDamageLimit: 0,
@@ -2511,6 +2514,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
                 omegaNormalDamageLimit: 0,
+                caimDamageLimit: 0,
                 criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
                 chainDamageLimit: 0,
@@ -2701,6 +2705,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["chainDamage"] = 0;
         totals[key]["normalDamageLimit"] = 0;
         totals[key]["omegaNormalDamageLimit"] = 0;
+        totals[key]["caimDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
         totals[key]["normalChainDamage"] = 0;
         totals[key]["chainDamageLimit"] = 0;
@@ -2800,15 +2805,13 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                                 for (var key2 in totals) {
                                     if (totals[key2]["element"] === support.range) {
                                         totals[key2]["caimOther"] += 0.20;
-                                        totals[key2]["normalDamageLimit"] += 0.10;
-                                        totals[key2]["ougiDamageLimit"] += 0.10;
+                                        totals[key2]["caimDamageLimit"] += 0.10;
                                     }
                                 }
                             } else {
                                 // Calculate yourself only if you do not put it in the average
                                 totals[key]["caimOther"] += 0.20;
-                                totals[key]["normalDamageLimit"] += 0.10;
-                                totals[key]["ougiDamageLimit"] += 0.10;
+                                totals[key]["caimDamageLimit"] += 0.10;
                             }
                         }
                     }
