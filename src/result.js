@@ -524,18 +524,19 @@ var ResultList = CreateClass({
                                              value={this.props.sortKey}
                                              onChange={this.props.onChangeSortkey}> {selector[locale].ktypes} </FormControl>;
                              
-            const GenerateMobileResultList = (category) => {
+            const GenerateMobileResultList = (category, isChara) => {
                 const widthNumber = 3;
                 let count = 0;
                 let res = [];
                 let temp = [];
                 const remainder = widthNumber - Object.keys(switchList[category]).length % widthNumber;
+                const strChara = isChara ? intl.translate("キャラ(result)", locale) : "";
 
                 for (const item in switchList[category]) {
                     count += 1;
                     temp.push(
                             <td onClick={this.handleEvent.bind(this, item)}
-                                className={(this.state[item] == 1) ? "display-checked" : "display-unchecked"}> {intl.translate(switchList[category][item], locale)}
+                                className={(this.state[item] == 1) ? "display-checked" : "display-unchecked"}> {strChara + intl.translate(switchList[category][item], locale)}
                             </td>
                     )
                     if (count % widthNumber === 0) {          
@@ -573,10 +574,10 @@ var ResultList = CreateClass({
                         <table style={{"width": "100%", textAlign: "center", marginBottom: "2px"}}
                                className="table table-bordered">
                             <tbody>
-                                   {GenerateMobileResultList("攻撃力・HP・連撃率")}
-                                   {GenerateMobileResultList("パーティ平均攻撃力")}
-                                   {GenerateMobileResultList("予測ダメージ")}
-                                   {GenerateMobileResultList("キャラ情報・スキル合計値")}
+                                   {GenerateMobileResultList("攻撃力・HP・連撃率", false)}
+                                   {GenerateMobileResultList("パーティ平均攻撃力", false)}
+                                   {GenerateMobileResultList("予測ダメージ", false)}
+                                   {GenerateMobileResultList("キャラ情報・スキル合計値", true)}
                             </tbody>
                         </table>
                     </Collapse>
