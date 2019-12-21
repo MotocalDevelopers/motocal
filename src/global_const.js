@@ -1008,6 +1008,7 @@ var skilltypes = {
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
     "one_night_party": {name: "斧キャラの攻撃力とTA上昇(小)", type: "one_night_party", amount: "S"},
     "downfall_of_ignorance": {name: "弓キャラの攻撃力とHP上昇(中)", type: "downfall_of_ignorance", amount: "M"},
+    "succession_of_knighthood": {name: "剣キャラの攻撃力とTA上昇(小)", type: "succession_of_knighthood", amount: "S"},
     "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
     "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0}
 };
@@ -1496,6 +1497,18 @@ module.exports.Jobs = {
         "shugoBonus": 0.0,
         "DaBonus": 10.0,
         "TaBonus": 5.0
+    },
+    "force": {
+        "name": "ライジングフォース",
+        "favArm1": "music",
+        "favArm2": "music",
+        "type": "pecu",
+        "atBonus": 2000.0,
+        "kouzinBonus": 10.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 7.0,
+        "TaBonus": 3.0
     },
     "alche": {
         "name": "アルケミスト",
@@ -2355,7 +2368,7 @@ var supportAbilities = {
         "range": range.own,
         "value": [0.8, 0.3, 0.0]
     },
-    "Revion_kishi_sanshimai": {
+    "revion_kishi_sanshimai": {
         "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
         "range": range.own,
@@ -2449,6 +2462,15 @@ var supportAbilities = {
         "type": "benedikutosu_soure",
         "range": "own",
         "value": [0.50, 0.20]
+    },
+    "more_than_mere_speed": {
+        "name": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
+        "type": "composite",
+        "value": [
+            {type: "charaUniqueDamageUP", range: range.own, assign: "add", value: 0.50},
+            {type: "ougiDamageBuff", range: range.own, assign: "add", value: 1.10},
+            {type: "ougiDamageLimitBuff", range: range.own, assign: "add", value: 0.30}
+        ]
     },
     "otherbuff_own_30": {
         "name": "攻撃30%UP/別枠乗算 (ウーフとレニー)",

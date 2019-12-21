@@ -1875,6 +1875,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["normalOther"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
                             totals[key]["exHP"] += comb[i] * skillAmounts["normalHP"][amount][slv - 1];
                         }
+                    } else if (stype == 'succession_of_knighthood') {
+                        if (favCharaContains(['sword'], totals[key])) {
+                            totals[key]["normalOther"] += comb[i] * skillAmounts["normal"][amount][slv - 1];
+                            totals[key]["TAOther"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
+                        }
                     } else if (totals[key]["element"] == element) {
                         // Calculate if attribute matches
                         if (isHaisuiType(stype)) {
@@ -2735,6 +2740,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["debuffResistance"] = 0;
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
+        totals[key]["damageUPOnlyNormalBuff"] = 0;
         totals[key]['covenant'] = null;
     }
 };

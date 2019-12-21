@@ -34,7 +34,7 @@ racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"星晶獣"] = "seisho"
-racelist[u"不明"] = "unknown"
+racelist[u"その他"] = "unknown"
 
 sexlist = OrderedDict()
 sexlist[u"男&br;女"] = "male/female"
@@ -215,8 +215,11 @@ supportAbilist["wildcard"] = {
 supportAbilist["aegisUP_30"] = {
     u"護国の双肩"
 }
-supportAbilist["chikara_atsu_no_ha"] = {
-    u"力圧の刃"
+#supportAbilist["chikara_atsu_no_ha"] = {
+#    u"力圧の刃"
+#}
+supportAbilist["more_than_mere_speed"] = {
+    u"ビヨンド・ザ・スピード"
 }
 supportAbilist["element_buff_boost_fire_30"] = {
     u"崇拝の尊神"
@@ -254,7 +257,7 @@ supportAbilist["critical_cap_up_own_10"] = {
 supportAbilist["shinryu_to_no_kizuna"] = {
     u"真龍との絆"
 }
-supportAbilist["Revion_kishi_sanshimai"] = {
+supportAbilist["revion_kishi_sanshimai"] = {
     u"レヴィオン騎士三姉妹"
 }
 supportAbilist["element_buff_boost_damageUP_own_10"] = {

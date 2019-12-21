@@ -1158,6 +1158,11 @@ var multiLangData = {
         "ja": "トーメンター",
         "zh": "トーメンター",
     },
+    "ライジングフォース": {
+        "en": "Rising Force",
+        "ja": "ライジングフォース",
+        "zh": "ライジングフォース",
+    },
     "アルケミスト": {
         "en": "Alchemist",
         "ja": "アルケミスト",
@@ -2404,6 +2409,12 @@ var multiLangData = {
         "ja": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
         "zh": "Increase Aegis-type and Majesty-type weapon skills' 'Boost to max HP' effect by 30%. (Lancelot and Vane)",
     },
+
+    "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))": {
+        "en": "Amplify Meteon's one-foe attack damage by 50%. 110% boost to C.A. damage, 30% boost to C.A. damage cap, and 30% boost to dodge rate.Upon one-foe attack: Gain Charge Bar +10%. 500% Bonus Wind damage to all foes.(Meteon (Holiday))",
+        "ja": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
+        "zh": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
+    },
     "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)": {
         "en": "Fire Allies gain an additional 30% boost to Element ATK when affected by Element ATK Buff. (Shiva)",
         "ja": "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)",
@@ -3210,6 +3221,11 @@ var multiLangData = {
         "en": "Axe chara ATK and TA up (S)",
         "ja": "斧キャラの攻撃力とTA上昇(小)",
         "zh": "斧キャラの攻撃力とTA上昇(小)",
+    },
+    "剣キャラの攻撃力とTA上昇(小)": {
+        "en": "Sword chara ATK and TA up (S)",
+        "ja": "剣キャラの攻撃力とTA上昇(小)",
+        "zh": "剣キャラの攻撃力とTA上昇(小)",
     },
     "弓キャラの攻撃力とHP上昇(中)": {
         "en": "Bow chara ATK and HP up (M)",

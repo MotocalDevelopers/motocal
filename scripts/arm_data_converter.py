@@ -841,6 +841,8 @@ skillnamelist["strengthL"] = {
     u"殺戮の女神": "wind",
     u"シャドウオブアームズ": "dark",
     u"残る霞火、あへなし": "light",
+    u"暴風の残滓": "wind",
+    u"ガチャピンの攻刃": "wind",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -1041,6 +1043,7 @@ skillnamelist["normalL"][u"狙撃の極意"] = "water"
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
 skillnamelist["one_night_party"] = {u"ワンナイ・パーリー": "none"}
 skillnamelist["downfall_of_ignorance"] = {u"無明衰滅": "none"}
+skillnamelist["succession_of_knighthood"] = {u"騎士の血脈": "none"}
 
 
 armtypelist = OrderedDict()
