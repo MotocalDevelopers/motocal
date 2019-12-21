@@ -83,7 +83,6 @@ const switchList = {
         switchDebuffResistance: "弱体耐性率"
     }
 }
-const switchArray = Object.values(switchList).map(value => Object.keys(value)).flat();
 
 var ResultList = CreateClass({
     calculateResult: function (newprops) {
@@ -222,11 +221,13 @@ var ResultList = CreateClass({
     },
     getInitialState: function () {
         res = {};
-        for (const item of switchArray) {
-            if (item === "switchTotalAttack" || item === "switchHP" || item === "switchAverageAttack" || item === "switchAverageCycleDamage") {
-                res[item] = 1;
-            } else {
-                res[item] = 0;
+        for (const category in switchList) {
+            for (const item in switchList[category]) {
+                if (item === "switchTotalAttack" || item === "switchHP" || item === "switchAverageAttack" || item === "switchAverageCycleDamage") {
+                    res[item] = 1;
+                } else {
+                    res[item] = 0;
+                }
             }
         }
         res.result = {summon: this.props.summon, result: []};
