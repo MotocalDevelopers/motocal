@@ -1681,6 +1681,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["bahaDA"] += comb[i] * skillAmounts["bahaFUHP"]["DA"][slv - 1];
                             totals[key]["bahaTA"] += comb[i] * skillAmounts["bahaFUHP"]["TA"][slv - 1];
                         }
+                    } else if (stype == 'cosmosArm') {
+                        // Cosmos Weapons skip
                     } else if (stype == 'cosmos') {
                         // Cosmos weapons
                         if (skillname == 'cosmosAT' && typeCharaContains("attack", totals[key])) {
