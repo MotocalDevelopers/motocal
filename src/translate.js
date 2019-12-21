@@ -3870,9 +3870,9 @@ var multiLangData = {
         "zh": "11.0 (GW Nightmare/Ul Baha HL/Proto Baha N)",
     },
     "敵防御12.0": {
-        "en": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
-        "ja": "12.0 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL)",
-        "zh": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+        "en": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL/Grand Order HL)",
+        "ja": "12.0 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL/ジ・オーダー・グランデHL)",
+        "zh": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL/Grand Order HL)",
     },
     "敵防御13.0": {
         "en": "13.0 (Omega II(4 Elements))",
