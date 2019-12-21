@@ -1008,7 +1008,7 @@ skillnamelist["chainForce"] = {
 
 # New epic weapons
 skillnamelist["epic-grandEpic"] = {
-    u"エピックブランド・ゲイン": "dark",
+    u"エピックブランド・ゲイン": "none",
 }
 skillnamelist["epic-staffResonance"] = {
     u"レゾナンス・スタッフ": "water",
