@@ -929,16 +929,36 @@ var skilltypes = {
     "hengenKengi": {name: "変幻自在の剣技", type: "maihimeEnbu", amount: "M"},
     "kochoKenbu": {name: "胡蝶の剣舞", type: "normal", amount: "L"},
     "rigaiBishojo": {name: "理外の美少女", type: "rigaiBishojo", amount: "L"},
-    "cosmos-sword": {name: "コスモス剣", type: "cosmosArm", amount: "L", cosmosArm: "sword"},
-    "cosmos-dagger": {name: "コスモス短剣", type: "cosmosArm", amount: "L", cosmosArm: "dagger"},
-    "cosmos-spear": {name: "コスモス槍", type: "cosmosArm", amount: "L", cosmosArm: "spear"},
-    "cosmos-axe": {name: "コスモス斧", type: "cosmosArm", amount: "L", cosmosArm: "axe"},
-    "cosmos-wand": {name: "コスモス杖", type: "cosmosArm", amount: "L", cosmosArm: "wand"},
-    "cosmos-gun": {name: "コスモス銃", type: "cosmosArm", amount: "L", cosmosArm: "gun"},
-    "cosmos-fist": {name: "コスモス拳", type: "cosmosArm", amount: "L", cosmosArm: "fist"},
-    "cosmos-bow": {name: "コスモス弓", type: "cosmosArm", amount: "L", cosmosArm: "bow"},
-    "cosmos-katana": {name: "コスモス刀", type: "cosmosArm", amount: "L", cosmosArm: "katana"},
-    "cosmos-music": {name: "コスモス楽器", type: "cosmosArm", amount: "L", cosmosArm: "music"},
+    "cosmos-sword": {name: "コスモス剣", type: "cosmosArm", amount: 0.3, cosmosArm: "sword"},
+    "cosmos-swordII": {name: "コスモス剣II", type: "cosmosArm", amount: 0.5, cosmosArm: "sword"},
+    "cosmos-sword-limit": {name: "秩序の蒼剣", type: "cosmosLimit", amount: "sword"},
+    "cosmos-dagger": {name: "コスモス短剣", type: "cosmosArm", amount: 0.3, cosmosArm: "dagger"},
+    "cosmos-daggerII": {name: "コスモス短剣II", type: "cosmosArm", amount: 0.5, cosmosArm: "dagger"},
+    "cosmos-dagger-limit": {name: "秩序の蒼刃", type: "cosmosLimit", amount: "dagger"},
+    "cosmos-spear": {name: "コスモス槍", type: "cosmosArm", amount: 0.3, cosmosArm: "spear"},
+    "cosmos-spearII": {name: "コスモス槍II", type: "cosmosArm", amount: 0.5, cosmosArm: "spear"},
+    "cosmos-spear-limit": {name: "秩序の蒼槍", type: "cosmosLimit", amount: "spear"},
+    "cosmos-axe": {name: "コスモス斧", type: "cosmosArm", amount: 0.3, cosmosArm: "axe"},
+    "cosmos-axeII": {name: "コスモス斧II", type: "cosmosArm", amount: 0.5, cosmosArm: "axe"},
+    "cosmos-axe-limit": {name: "秩序の蒼鎌", type: "cosmosLimit", amount: "axe"},
+    "cosmos-wand": {name: "コスモス杖", type: "cosmosArm", amount: 0.3, cosmosArm: "wand"},
+    "cosmos-wandII": {name: "コスモス杖II", type: "cosmosArm", amount: 0.5, cosmosArm: "wand"},
+    "cosmos-wand-limit": {name: "秩序の蒼杖", type: "cosmosLimit", amount: "wand"},
+    "cosmos-gun": {name: "コスモス銃", type: "cosmosArm", amount: 0.3, cosmosArm: "gun"},
+    "cosmos-gunII": {name: "コスモス銃II", type: "cosmosArm", amount: 0.5, cosmosArm: "gun"},
+    "cosmos-gun-limit": {name: "秩序の蒼銃", type: "cosmosLimit", amount: "gun"},
+    "cosmos-fist": {name: "コスモス拳", type: "cosmosArm", amount: 0.3, cosmosArm: "fist"},
+    "cosmos-fistII": {name: "コスモス拳II", type: "cosmosArmII", amount: 0.5, cosmosArm: "fist"},
+    "cosmos-fist-limit": {name: "秩序の蒼拳", type: "cosmosLimit", amount: "fist"},
+    "cosmos-bow": {name: "コスモス弓", type: "cosmosArm", amount: 0.3, cosmosArm: "bow"},
+    "cosmos-bowII": {name: "コスモス弓II", type: "cosmosArmII", amount: 0.5, cosmosArm: "bow"},
+    "cosmos-bow-limit": {name: "秩序の蒼弓", type: "cosmosLimit", amount: "bow"},
+    "cosmos-music": {name: "コスモス楽器", type: "cosmosArm", amount: 0.3, cosmosArm: "music"},
+    "cosmos-musicII": {name: "コスモス楽器II", type: "cosmosArm", amount: 0.5, cosmosArm: "music"},
+    "cosmos-music-limit": {name: "秩序の蒼琴", type: "cosmosLimit", amount: "music"},
+    "cosmos-katana": {name: "コスモス刀", type: "cosmosArm", amount: 0.3, cosmosArm: "katana"},
+    "cosmos-katanaII": {name: "コスモス刀II", type: "cosmosArm", amount: 0.5, cosmosArm: "katana"},
+    "cosmos-katana-limit": {name: "秩序の蒼刀", type: "cosmosLimit", amount: "katana"},
     "cosmosAT": {name: "コスモスAT", type: "cosmos", amount: "L"},
     "cosmosDF": {name: "コスモスDF", type: "cosmos", amount: "L"},
     "cosmosBL": {name: "コスモスBL", type: "cosmos", amount: "L"},
@@ -1011,14 +1031,6 @@ var skilltypes = {
     "succession_of_knighthood": {name: "剣キャラの攻撃力とTA上昇(小)", type: "succession_of_knighthood", amount: "S"},
     "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
     "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0}
-};
-
-var cosmosSkills = {
-    "cosmosAT": {name: "コスモスAT", type: "cosmos", amount: "L"},
-    "cosmosDF": {name: "コスモスDF", type: "cosmos", amount: "L"},
-    "cosmosBL": {name: "コスモスBL", type: "cosmos", amount: "L"},
-    "cosmosPC": {name: "コスモスPC", type: "cosmos", amount: "L"},
-    "non": {name: "無し", type: "non", amount: "non"},
 };
 
 // additional selection when template is selected
@@ -1166,7 +1178,7 @@ var raceTypes = {
 var sexTypes = {
     "female": "女",
     "male": "男",
-    "other": "不明",
+    "other": "不詳",
     "male/female": "男/女",
 };
 
@@ -2539,13 +2551,6 @@ module.exports.additionalSelectList = {
         selectors: ["elements"],
         defaultKeys: ["light"],
     },
-    "コスモス": {
-        selectKeysNotation: "",
-        notationText: "",
-        selectKeys: ["skill2"],
-        selectors: ["cosmosSkills"],
-        defaultKeys: ["cosmosAT"],
-    },
     "絶覇": {
         selectKeysNotation: "",
         notationText: "",
@@ -2847,16 +2852,6 @@ module.exports.selector.en.skills = Object.keys(skilltypes).map(function (key) {
 });
 module.exports.selector.zh.skills = Object.keys(skilltypes).map(function (key) {
     return <option value={key} key={key}>{intl.translate(skilltypes[key].name, "zh")}</option>;
-});
-
-module.exports.selector.ja.cosmosSkills = Object.keys(cosmosSkills).map(function (key) {
-    return <option value={key} key={key}>{cosmosSkills[key].name}</option>;
-});
-module.exports.selector.en.cosmosSkills = Object.keys(cosmosSkills).map(function (key) {
-    return <option value={key} key={key}>{intl.translate(cosmosSkills[key].name, "en")}</option>;
-});
-module.exports.selector.zh.cosmosSkills = Object.keys(cosmosSkills).map(function (key) {
-    return <option value={key} key={key}>{intl.translate(cosmosSkills[key].name, "zh")}</option>;
 });
 
 module.exports.selector.ja.mainWeapon = [<option value={0} key={"no"}>{intl.translate("メイン装備no", "ja")}</option>,

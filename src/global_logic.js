@@ -136,12 +136,9 @@ module.exports.calcCombinations = function (arml, ruleMaxSize) {
         index[i] = 0;
     }
 
-    // isCosmos advance judgment
-    var isCosmosArray = [];
     var isDarkOpusArray = [];
     var isHollowskyArray = []; //isAkasha
     for (var i = 0; i < arml.length; i++) {
-        isCosmosArray[i] = module.exports.isCosmos(arml[i]);
         isDarkOpusArray[i] = module.exports.isDarkOpus(arml[i]);
         isHollowskyArray[i] = module.exports.isHollowsky(arml[i]);
 
@@ -150,22 +147,16 @@ module.exports.calcCombinations = function (arml, ruleMaxSize) {
     for (var i = 0; i < totalItr; i = (i + 1) | 0) {
         var temp = [];
         var num = 0;
-        var isCosmosIncluded = false;
         var isDarkOpusIncluded = false;
         var isHollowskyIncluded = false;
         var isValidCombination = true;
         for (var j = 0; j < armNumArray.length; j = (j + 1) | 0) {
-            if (!isCosmosArray[j] && !isDarkOpusArray[j] && !isHollowskyArray[j]) {
+            if (!isDarkOpusArray[j] && !isHollowskyArray[j]) {
                 temp.push(armNumArray[j][index[j]]);
                 num += parseInt(armNumArray[j][index[j]])
             } else {
-                // cosmos weapons
                 if (armNumArray[j][index[j]] == 0) {
                     temp.push(armNumArray[j][index[j]]);
-                } else if (armNumArray[j][index[j]] > 0 && isCosmosArray[j] && !isCosmosIncluded) {
-                    temp.push(armNumArray[j][index[j]]);
-                    num += parseInt(armNumArray[j][index[j]]);
-                    isCosmosIncluded = true;
                 } else if (armNumArray[j][index[j]] > 0 && armNumArray[j][index[j]] <= 1 && isHollowskyArray[j] && !isHollowskyIncluded) {
                     temp.push(armNumArray[j][index[j]]);
                     num += parseInt(armNumArray[j][index[j]]);
@@ -744,7 +735,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // Damage limit UP = Overall buff + Personal buff + skill
         var damageLimit = buff["damageLimit"];
         damageLimit += totals[key]["damageLimitBuff"];
-        damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"]);
+        damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"] + totals[key]["cosmosNormalDamageLimit"]);
         damageLimit += Math.min(0.10, totals[key]["omegaNormalDamageLimit"]);
         damageLimit += 0.01 * totalSummon["damageLimit"];
         if (totals[key]["EXLB"]["WED"]) {
@@ -756,7 +747,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiDamageLimitByNormal = Math.min(0.30, totals[key]["normalOugiDamageLimit"] * totalSummon["zeus"]);
         var ougiDamageLimitByMagna = Math.min(0.30, totals[key]["magnaOugiDamageLimit"] * totalSummon["magna"]);
         var ougiDamageLimit = Math.min(0.60, (ougiDamageLimitByMagna + ougiDamageLimitByNormal + ougiDamageLimitByExceed));
-        ougiDamageLimit += Math.min(0.20, totals[key]["ougiDamageLimit"]);
+        ougiDamageLimit += Math.min(0.20, totals[key]["ougiDamageLimit"] + totals[key]["cosmosNormalDamageLimit"]);
         ougiDamageLimit += Math.min(0.15, totals[key]["omegaOugiDamageLimit"]);
         ougiDamageLimit += buff["ougiDamageLimit"] + totals[key]["ougiDamageLimitBuff"];
         ougiDamageLimit += 0.01 * totalSummon["damageLimit"];
@@ -1556,18 +1547,29 @@ function maskInvalidSkillLevel(slv, stype, amount) {
 }
 
 module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
+    var cosmosAmounts = {
+        "sword": 0,
+        "dagger": 0,
+        "spear": 0,
+        "axe": 0,
+        "wand": 0,
+        "gun": 0,
+        "fist": 0,
+        "bow": 0,
+        "music": 0,
+        "katana": 0,
+    };
     // Check whether there is a cosmos weapon
-    var cosmosType = '';
     for (var i = 0; i < arml.length; i++) {
         if (comb[i] > 0) {
             var arm = arml[i];
             if (module.exports.isCosmos(arm)) {
                 if (skilltypes[arm.skill1].type == "cosmosArm") {
-                    cosmosType = skilltypes[arm.skill1].cosmosArm;
+                    cosmosAmounts[skilltypes[arm.skill1].cosmosArm] = Math.max(cosmosAmounts[skilltypes[arm.skill1].cosmosArm], skilltypes[arm.skill1].amount);
                 } else if (skilltypes[arm.skill2].type == "cosmosArm") {
-                    cosmosType = skilltypes[arm.skill2].cosmosArm;
+                    cosmosAmounts[skilltypes[arm.skill2].cosmosArm] = Math.max(cosmosAmounts[skilltypes[arm.skill2].cosmosArm], skilltypes[arm.skill2].amount);
                 } else {
-                    cosmosType = skilltypes[arm.skill3].cosmosArm;
+                    cosmosAmounts[skilltypes[arm.skill3].cosmosArm] = Math.max(cosmosAmounts[skilltypes[arm.skill3].cosmosArm], skilltypes[arm.skill3].amount);
                 }
             }
         }
@@ -1616,9 +1618,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                 var arm = arml[i];
                 var armSup = 1.0;
                 var hpSup = 1.0;
-                if (arm.armType == cosmosType) {
-                    armSup += 0.3;
-                    hpSup += 0.3
+                if (cosmosAmounts[arm.armType] > 0) {
+                    armSup += cosmosAmounts[arm.armType];
+                    hpSup += cosmosAmounts[arm.armType];
                 }
                 if (key == "Djeeta") {
                     // for Djeeta
@@ -1692,8 +1694,31 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (skillname == 'cosmosPC' && typeCharaContains("pecu", totals[key])) {
                             totals[key]["cosmosDebuffResistance"] = comb[i] * 20.0;
                         }
-                    } else if (stype == 'cosmosArm') {
-                        // Skip Cosmos Weapons Skill
+                    } else if (stype == 'cosmosLimit') {
+                        // Cosmos Weapons Damage Limit Skill
+                        if (amount == 'sword') {
+                            totals[key]["normalDamageLimit"] += comb[i] * 0.01 * Math.min(10, epic.countSwordType(arml, comb));
+                            totals[key]["ougiDamageLimit"] += comb[i] * 0.01 * Math.min(10, epic.countSwordType(arml, comb));
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countSwordType(arml, comb)));
+                        } else if (amount == 'dagger') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countDaggerType(arml, comb)));
+                        } else if (amount == 'spear') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countSpearType(arml, comb)));
+                        } else if (amount == 'axe') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countAxeType(arml, comb)));
+                        } else if (amount == 'wand') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countWandType(arml, comb)));
+                        } else if (amount == 'gun') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countGunType(arml, comb)));
+                        } else if (amount == 'fist') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countFistType(arml, comb)));
+                        } else if (amount == 'bow') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countBowType(arml, comb)));
+                        } else if (amount == 'music') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countMusicType(arml, comb)));
+                        } else if (amount == 'katana') {
+                            totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countKatanaType(arml, comb)));
+                        }
                     } else if (stype == 'chainForce') {
                         // Chainforce weapons, chain DMG and Limit Up
                         totals[key]["chainDamage"] += comb[i] * skillAmounts["chainDamage"][amount][slv - 1];
@@ -2360,6 +2385,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 chainDamage: 0,
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
+                cosmosNormalDamageLimit: 0,
                 omegaNormalDamageLimit: 0,
                 criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
@@ -2535,6 +2561,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 magnaOugiDamage: 0,
                 normalChainDamage: 0,
                 normalDamageLimit: 0,
+                cosmosNormalDamageLimit: 0,
                 omegaNormalDamageLimit: 0,
                 criticalDamageLimit: 0,
                 ougiDamageLimit: 0,
@@ -2724,6 +2751,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["magnaOugiDamage"] = 0;
         totals[key]["chainDamage"] = 0;
         totals[key]["normalDamageLimit"] = 0;
+        totals[key]["cosmosNormalDamageLimit"] = 0;
         totals[key]["omegaNormalDamageLimit"] = 0;
         totals[key]["ougiDamageLimit"] = 0;
         totals[key]["normalChainDamage"] = 0;

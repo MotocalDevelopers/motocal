@@ -30,7 +30,16 @@ const genCountWeaponFunc = (func) => (arml, comb) =>
 const isEpicWeapon = (arm) => arm.series && arm.series === "epic";
 
 
+const isSwordType = (arm) => arm.armType === "sword";
+const isDaggerType = (arm) => arm.armType === "dagger";
+const isSpearType = (arm) => arm.armType === "spear";
+const isAxeType = (arm) => arm.armType === "axe";
 const isWandType = (arm) => arm.armType === "wand";
+const isGunType = (arm) => arm.armType === "gun";
+const isFistType = (arm) => arm.armType === "fist";
+const isBowType = (arm) => arm.armType === "bow";
+const isMusicType = (arm) => arm.armType === "music";
+const isKatanaType = (arm) => arm.armType === "katana";
 
 
 // public
@@ -47,7 +56,16 @@ const countEpicWeapon = genCountWeaponFunc(isEpicWeapon);
  * @param {Array<number>} comb combinations
  * @return {number} count of wand type weapon
  */
+const countSwordType = genCountWeaponFunc(isSwordType);
+const countDaggerType = genCountWeaponFunc(isDaggerType);
+const countSpearType = genCountWeaponFunc(isSpearType);
+const countAxeType = genCountWeaponFunc(isAxeType);
 const countWandType = genCountWeaponFunc(isWandType);
+const countGunType = genCountWeaponFunc(isGunType);
+const countFistType = genCountWeaponFunc(isFistType);
+const countBowType = genCountWeaponFunc(isBowType);
+const countMusicType = genCountWeaponFunc(isMusicType);
+const countKatanaType = genCountWeaponFunc(isKatanaType);
 
 
 /**
@@ -111,7 +129,16 @@ module.exports = {
     isEpicWeapon: isEpicWeapon,
     isWandType: isWandType,
     countEpicWeapon: countEpicWeapon,
+    countSwordType: countSwordType,
+    countDaggerType: countDaggerType,
+    countSpearType: countSpearType,
+    countAxeType: countAxeType,
     countWandType: countWandType,
+    countGunType: countGunType,
+    countFistType: countFistType,
+    countBowType: countBowType,
+    countMusicType: countMusicType,
+    countKatanaType: countKatanaType,
     countUniqueArm: countUniqueArm,
     countUniqueArmType: countUniqueArmType,
     countComb: countComb,
