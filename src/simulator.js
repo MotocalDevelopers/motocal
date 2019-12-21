@@ -221,7 +221,7 @@ var select_hplist = {
     }),
 };
 
-var {generateSimulationData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js');
+var {generateSimulationData, getTotalBuff, getInitialTotals, calcOneCombination, initializeTotals} = require('./global_logic.js');
 
 var Simulator = CreateClass({
     makeTurnBuff: function () {
@@ -236,7 +236,6 @@ var Simulator = CreateClass({
 
         var totalBuff = getTotalBuff(prof);
         var totals = getInitialTotals(prof, chara, summon);
-        treatSupportAbility(totals, chara, totalBuff);
 
         var sortkey = "averageExpectedDamage";
 
@@ -279,7 +278,7 @@ var Simulator = CreateClass({
             }
 
             for (var i = 0; i < storedCombinations.length; i++) {
-                var oneres = calcOneCombination(storedCombinations[i], summon, prof, armlist, totals, totalBuff);
+                var oneres = calcOneCombination(storedCombinations[i], summon, prof, chara, armlist, totals, totalBuff);
                 for (var j = 0; j < summon.length; j++) {
                     res[j][k].push({data: oneres[j], armNumbers: storedCombinations[i]});
                 }

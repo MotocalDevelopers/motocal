@@ -1026,16 +1026,16 @@ skillnamelist["chainForce"] = {
 
 # New epic weapons
 skillnamelist["epic-grandEpic"] = {
-    u"エピックブランド・ゲイン": "all",
+    u"エピックブランド・ゲイン": "none",
 }
 skillnamelist["epic-staffResonance"] = {
-    u"レゾナンス・スタッフ": "all",
+    u"レゾナンス・スタッフ": "water",
 }
 skillnamelist["epic-heroicTale"] = {
-    u"ヒロイック・テイル": "all",
+    u"ヒロイック・テイル": "earth",
 }
 skillnamelist["epic-absoluteEquality"] = {
-    u"ソール・イコーリティ": "all",
+    u"ソール・イコーリティ": "dark",
 }
 
 
