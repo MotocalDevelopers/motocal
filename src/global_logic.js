@@ -561,11 +561,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         otherCoeff *= 1.0 + buff["other2"];
         otherCoeff *= 1.0 + totals[key]["otherBuff"];
         otherCoeff *= 1.0 + totals[key]["otherBuff2"];
-        var otherChara = 1.0 + totals[key]["caimOther"];
+        // Category of "Shield of Eternal Splendor". (総べ称号枠)
+        var otherEternal = 1.0 + totals[key]["caimOther"];
         if (totals[key]["EXLB"]["WED"]) {
-            otherChara += 0.10;
+            otherEternal += 0.10;
         }
-        otherCoeff *= otherChara;
+        otherCoeff *= otherEternal;
         otherCoeff *= prof.retsujitsuNoRakuen ? 1.20 : 1;
         otherCoeff *= prof.shiToAiNoSekai ? 1.20 : 1;
 
