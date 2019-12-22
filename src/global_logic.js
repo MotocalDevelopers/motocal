@@ -1697,8 +1697,6 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                     } else if (stype == 'cosmosLimit') {
                         // Cosmos Weapons Damage Limit Skill
                         if (amount == 'sword') {
-                            totals[key]["normalDamageLimit"] += comb[i] * 0.01 * Math.min(10, epic.countSwordType(arml, comb));
-                            totals[key]["ougiDamageLimit"] += comb[i] * 0.01 * Math.min(10, epic.countSwordType(arml, comb));
                             totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countSwordType(arml, comb)));
                         } else if (amount == 'dagger') {
                             totals[key]["cosmosNormalDamageLimit"] = Math.max(totals[key]["cosmosNormalDamageLimit"], 0.01 * Math.min(10, epic.countDaggerType(arml, comb)));
