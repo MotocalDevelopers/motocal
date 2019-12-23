@@ -224,6 +224,9 @@ supportAbilist["aegisUP_30"] = {
 supportAbilist["more_than_mere_speed"] = {
     u"ビヨンド・ザ・スピード"
 }
+supportAbilist["no_multi_attack"] = {
+    u"ナイトロ・リミッター"
+}
 supportAbilist["element_buff_boost_fire_30"] = {
     u"崇拝の尊神"
 }
@@ -428,6 +431,7 @@ patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
 patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
 
 patching["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
+patching["ミュオン(クリスマスver)"] = {"DA": 0, "TA": 1000.0}
 
 ### SR
 patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
@@ -572,6 +576,7 @@ patchingOugiRatio["サラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
+patchingOugiRatio["ミュオン(クリスマスver)"] = {"ougiRatio": 12.5}
 
 ### SSR (Not to ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}

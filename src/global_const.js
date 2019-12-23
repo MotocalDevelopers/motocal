@@ -2486,8 +2486,16 @@ var supportAbilities = {
         "type": "composite",
         "value": [
             {type: "charaUniqueDamageUP", range: range.own, assign: "add", value: 0.50},
-            {type: "ougiDamageBuff", range: range.own, assign: "add", value: 1.10},
-            {type: "ougiDamageLimitBuff", range: range.own, assign: "add", value: 0.30}
+            {type: "ougiDamageLimitBuff", range: range.own, assign: "add", value: 0.30},
+            {type: "gainOugiGage", range: range.own, assign: "add", value: 10.00}
+        ]
+    },
+    "no_multi_attack": {
+        "name": "連続攻撃が発生しない(ミュオン(クリスマスver))",
+        "type": "composite",
+        "value": [
+            {type: "DASupport", range: range.own, assign: "add", value: -100.00},
+            {type: "TASupport", range: range.own, assign: "add", value: -100.00}
         ]
     },
     "otherbuff_own_30": {

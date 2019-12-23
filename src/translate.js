@@ -2420,6 +2420,11 @@ var multiLangData = {
         "ja": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
         "zh": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
     },
+    "連続攻撃が発生しない(ミュオン(クリスマスver))": {
+        "en": "Doesn't deal multiattacks.(Meteon (Holiday))",
+        "ja": "連続攻撃が発生しない(ミュオン(クリスマスver))",
+        "zh": "連続攻撃が発生しない(ミュオン(クリスマスver))",
+    },
     "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)": {
         "en": "Fire Allies gain an additional 30% boost to Element ATK when affected by Element ATK Buff. (Shiva)",
         "ja": "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)",

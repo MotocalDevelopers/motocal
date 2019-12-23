@@ -704,9 +704,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         //while exact uplift effect does not stack. special effects that could lead to uplift like Linkage (SS Grea) does stack with normal uplift.
         var uplift = 100 * (buff["uplift"] + totals[key]["uplift"]);
         var ougiGageBuff = buff["ougiGage"] + totals[key]["ougiGageBuff"] + (0.01 * totals[key]["LB"]["OugiGageBuff"]) - totals[key]["ougiDebuff"];
-
+        const gainOugiGage = totals[key]["gainOugiGage"];
+        
         var expectedOugiGage = Math.ceil(uplift * ougiGageBuff);
         expectedOugiGage += (taRate * Math.ceil(37.0 * ougiGageBuff) + (1.0 - taRate) * (daRate * Math.ceil(22.0 * ougiGageBuff) + (1.0 - daRate) * Math.ceil(10.0 * ougiGageBuff)));
+        expectedOugiGage += Math.ceil(gainOugiGage * ougiGageBuff);
         // Speed up charge bar during one-foe attacks
         if (key == "Djeeta") {
             let ougiGageDuringAttack = buff["masterBonusOugiGage"];
@@ -2397,6 +2399,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiRatio: !isNaN(prof.ougiRatio) ? parseFloat(prof.ougiRatio) : DEFAULT.ougiRatio,
                 ougiBonusPlainDamage: 0,
                 ougiGageBuff: djeetaBuffList["personalOugiGageBuff"],
+                gainOugiGage: 0,
                 uplift: djeetaBuffList["personalUplift"],
                 ougiDamageBuff: djeetaBuffList["personalOugiDamageBuff"],
                 additionalDamageBuff: djeetaBuffList["personalAdditionalDamageBuff"],
@@ -2574,6 +2577,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiRatio: !isNaN(chara[i].ougiRatio) ? parseFloat(chara[i].ougiRatio) : DEFAULT.ougiRatio,
                 ougiBonusPlainDamage: chara[i].ougiBonusPlainDamage != undefined ? parseInt(chara[i].ougiBonusPlainDamage) : 0,
                 ougiGageBuff: charaBuffList["ougiGageBuff"],
+                gainOugiGage: 0,
                 uplift: charaBuffList["uplift"],
                 ougiDamageBuff: charaBuffList["ougiDamageBuff"],
                 additionalDamageBuff: charaBuffList["additionalDamageBuff"],
