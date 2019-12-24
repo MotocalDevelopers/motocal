@@ -2759,6 +2759,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["additionalDamage"] = 0;
         totals[key]["ougiGageBuff"] = 0;
         totals[key]["ougiDebuff"] = 0;
+        totals[key]["gainOugiGage"] = 0;
         totals[key]["DAOther"] = 0;
         totals[key]["TAOther"] = 0;
         totals[key]["DASupport"] = 0;
