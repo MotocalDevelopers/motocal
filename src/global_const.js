@@ -214,6 +214,7 @@ var masterHPList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var masterDAList = [0, 1, 2, 3, 4];
 var masterTAList = [0, 1, 2];
 var masterDamageLimitList = [0, 1];
+var masterOugiGageList = [0, 1];
 var HPList = [
     100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81,
     80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61,
@@ -698,7 +699,7 @@ var summonAmountList = [0, 10, 20, 25, 30, 40, 50, 60, 66, 70, 75, 80, 85, 90, 9
 var chainNumberList = [1, 2, 3, 4];
 
 // Chara limitBonus
-var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2300, 2500, 2600, 2800, 3000];
+var limitBonusAttackList = [0, 500, 800, 1000, 1300, 1500, 1600, 1800, 2000, 2100, 2300, 2400, 2500, 2600, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3800, 4000];
 var limitBonusHPList = [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000];
 var limitBonusDAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 var limitBonusTAList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -852,7 +853,7 @@ var skilltypes = {
     "normalHissatsuL": {name: "通常必殺(大)", type: "normalHissatsu", amount: "L"},
     "normalEiketsuL": {name: "通常英傑(大)", type: "normalEiketsu", amount: "L"},
     "normalOntyouM": {name: "通常恩寵(中)", type: "normalOntyou", amount: "M"},
-    "normalSeisyouM": {name: "通常本質(中)", type: "normalSeisyou", amount: "M"},
+    "normalSeisyouM": {name: "通常星晶(中)", type: "normalSeisyou", amount: "M"},
     "normalHigoS": {name: "通常庇護(小)", type: "normalHigo", amount: "S"},
     "magnaM": {name: "マグナ攻刃", type: "magna", amount: "M"},
     "magnaL": {name: "マグナ攻刃II", type: "magna", amount: "L"},
@@ -885,7 +886,7 @@ var skilltypes = {
     "magnaHissatsuM": {name: "マグナ必殺(中)", type: "magnaHissatsu", amount: "M"},
     "magnaKenbuL": {name: "マグナ拳武(大)", type: "magnaKenbu", amount: "L"},
     "magnaJojutsuL": {name: "マグナ杖術(大)", type: "magnaJojutsu", amount: "L"},
-    "magnaSeisyouM": {name: "マグナ本質(中)", type: "magnaSeisyou", amount: "M"},
+    "magnaSeisyouM": {name: "マグナ星晶(中)", type: "magnaSeisyou", amount: "M"},
     "unknownM": {name: "アンノウンATK・I", type: "unknown", amount: "M"},
     "unknownL": {name: "アンノウンATK・II", type: "unknown", amount: "L"},
     "strengthHaisuiM": {name: "EX背水(中)", type: "exHaisui", amount: "M"},
@@ -901,6 +902,7 @@ var skilltypes = {
     "huanglongHissatsu": {name: "黄龍槍 (メイン装備時)", type: "huanglongHissatsu", amount: "non"},
     "cherubimKonshin": {name: "ケルヴィム (メイン装備時)", type: "cherubimKonshin", amount: "non"},
     "sunbladeKonshin": {name: "真・道天浄土 (メイン装備時)", type: "sunbladeKonshin", amount: "non"},
+    "diaboliHaisui": {name: "デモン・アドヴォケイト (メイン装備時)", type: "diaboliHaisui", amount: "non"},
     "ougiDamageLimitExceedM": {name: "奥義上限UP(イクシード)", type: "ougiDamageLimitExceed", amount: "M"},
     "chainForce": {name: "チェインフォース", type: "chainForce", amount: "M"},
     "normalHPS": {name: "通常守護(小)", type: "normalHP", amount: "S"},
@@ -983,12 +985,14 @@ var skilltypes = {
     "contentious-covenant": {name: "修羅の誓約", type: "covenant", amount:"contentious"},
     "deleterious-covenant": {name: "致命の誓約", type: "covenant", amount:"deleterious"},
     "calamitous-covenant": {name: "災禍の誓約", type: "covenant", amount:"calamitous"},
+    "zwei-echo": {name: "パープル・ブロウ", type: "echoThirdHit", amount: 0.20},
     "opus-alpha": {name: "ペンデュラム[α]", type: "opusKey", amount: "L"},
     //"opus-beta": {name: "ペンデュラム[β]", type: "opusKey", amount: "L"},
     "opus-gamma": {name: "ペンデュラム[γ]", type: "opusKey", amount: "L"},
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
     "opus-normalElement": {name: "通常進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
     "opus-magnaElement": {name: "マグナ進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
+    "normalElementM": {name: "通常進境(中)(最大時)", type: "normalElement", amount: "M"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
@@ -1002,7 +1006,10 @@ var skilltypes = {
     "extendedDjeetaNormalDATA20": {name: "[ジータのみ] 通常枠DATA 20%", type: "extendedDjeetaNormalDATA", amount: 20.0},
     "extendedDjeetaNormalDATA25": {name: "[ジータのみ] 通常枠DATA 25%", type: "extendedDjeetaNormalDATA", amount: 25.0},
     "extendedDjeetaNormalDATA30": {name: "[ジータのみ] 通常枠DATA 30%", type: "extendedDjeetaNormalDATA", amount: 30.0},
-    "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0}
+    "one_night_party": {name: "斧キャラの攻撃力とTA上昇(小)", type: "one_night_party", amount: "S"},
+    "downfall_of_ignorance": {name: "弓キャラの攻撃力とHP上昇(中)", type: "downfall_of_ignorance", amount: "M"},
+    "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
+    "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0}
 };
 
 var cosmosSkills = {
@@ -1067,6 +1074,14 @@ var sishoGenbu = {
     "non": {name: "無し", type: "non", amount: "non"},
     "normalNiteS": {name: "王道: 水の二手"},
     "normalDamageLimit7": {name: "邪道: 通常上限UP(7.0%)"},
+};
+var sishoSufix = {
+    "non": {name: ""},
+    "normalCriticalM": {name: "・王"},
+    "normalHPS": {name: "・王"},
+    "normalCriticalM": {name: "・王"},
+    "normalNiteS": {name: "・王"},
+    "normalDamageLimit7": {name: "・邪"},
 };
 
 var omegaWeaponSkill1 = {
@@ -1142,13 +1157,16 @@ var raceTypes = {
     "seisho": "星晶獣",
     "unknown": "種族不明",
     "human/erune": "人間/エルーン",
+    "human/doraf": "人間/ドラフ",
+    "erune/doraf": "エルーン/ドラフ",
     "havin/human": "ハーヴィン/人間",
 };
 
 var sexTypes = {
     "female": "女",
     "male": "男",
-    "other": "不詳"
+    "other": "不明",
+    "male/female": "男/女",
 };
 
 var jobTypes = {
@@ -1193,6 +1211,12 @@ var filterElementTypes = {
     "light": "光",
     "dark": "闇",
 };
+
+const filterRaces = Object.assign({"all": "全種族"}, raceTypes);
+const filterSexes = Object.assign({"all": "全性別"}, sexTypes);
+const filterFavs = Object.assign({"all": "全得意武器"}, armTypes);
+const filterTypes = Object.assign({"all": "全タイプ"}, jobTypes);
+
 
 // strong and weak elements for each element
 module.exports.elementRelation = {
@@ -1460,6 +1484,18 @@ module.exports.Jobs = {
         "shugoBonus": 0.0,
         "DaBonus": 9.0,
         "TaBonus": 6.0
+    },
+    "torment": {
+        "name": "トーメンター",
+        "favArm1": "dagger",
+        "favArm2": "dagger",
+        "type": "pecu",
+        "atBonus": 2000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 10.0,
+        "TaBonus": 5.0
     },
     "alche": {
         "name": "アルケミスト",
@@ -1926,6 +1962,11 @@ var skillAmounts = {
     },
     "normalHigo": {
         "S": [0.5, 0.8, 1.1, 1.4, 1.7, 2.0, 2.3, 2.6, 2.7, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
+    },
+    "elementATK": {
+        //per turn increase, maximum 10 turns
+        "M": [0.043, 0.046, 0.049, 0.052, 0.055, 0.058, 0.061, 0.064, 0.067, 0.070, 0.072, 0.074, 0.076, 0.078, 0.080, 0.080, 0.080, 0.080, 0.080, 0.080],
+        "L": [0.055, 0.060, 0.065, 0.070, 0.075, 0.080, 0.085, 0.090, 0.095, 0.100, 0.105, 0.110, 0.115, 0.120, 0.125, 0.130, 0.135, 0.140, 0.145, 0.150],
     }
 };
 
@@ -2052,6 +2093,12 @@ var supportAbilities = {
         "range": "own",
         "value": 1.00
     },
+    "ougi_gage_down_own_25": {
+        "name": "奥義ゲージ上昇量25%DOWN。(サラ(光属性ver))",
+        "type": "ougiGageBuff",
+        "range": "own",
+        "value": -0.25
+    },
     "ougi_gage_down_own_35": {
         "name": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
         "type": "ougiGageBuff",
@@ -2063,6 +2110,18 @@ var supportAbilities = {
         "type": "ougiGageBuff",
         "range": "own",
         "value": -0.35
+    },
+    "party_all_night": {
+        "name": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "type": "composite",
+        "value": [
+            {ID: "ougi_gage_down_own_35_ta_100"},
+            {
+                "type": "none", // Skip until #335 implemented
+                "range": "own",
+                "value": {ATK: 0.10, DEF: -0.06} // MAX: 10..50%/ATK, -6..-30%/DEF
+            }
+        ]
     },
     "ougi_gage_up_djeeta_20": {
         "name": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
@@ -2077,16 +2136,18 @@ var supportAbilities = {
         "value": 0.10
     },
     "ougi_damage_up_50": {
-        "name": "全体奥義ダメージ50%UP(シエテ)",
+        "name": "風属性奥義ダメージ50%UP(シエテ)",
         "type": "ougiDamageBuff",
-        "range": "all",
+        "range": range.element.wind,
         "value": 0.50
     },
     "ougi_damage_up_50_cap_10": {
-        "name": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
-        "type": "ougiDamageBuff_capBuff",
-        "range": "all",
-        "value": 0.50
+        "name": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "type": "composite",
+        "value": [
+            {type: "ougiDamageBuff", range: range.element.wind, assign: "add", value: 0.50},
+            {type: "ougiDamageLimitBuff", range: range.element.wind, assign: "add", value: 0.10}
+        ]
     },
     "emnity_all_SL10": {
         "name": "全体背水効果(ザルハメリナ)",
@@ -2290,7 +2351,7 @@ var supportAbilities = {
         "range": range.element.wind,
         "value": 0.15
     },
-    "element_buff_boost_light_30": { // UNUSED
+    "element_buff_boost_light_30": {
         "name": "味方全体の強化効果「光属性攻撃UP」の効果30%UP。",
         "type": "element_buff_boost",
         "range": range.element.light,
@@ -2317,13 +2378,13 @@ var supportAbilities = {
     "chikara_atsu_no_ha": {
         "name": "1回攻撃と2回攻撃時に火属性追加ダメージ発生(1回:80%、 2回:30%)。(スツルム)",
         "type": "additionalDamageXA",
-        "range": "own",
+        "range": range.own,
         "value": [0.8, 0.3, 0.0]
     },
     "Revion_kishi_sanshimai": {
         "name": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "type": "additionalDamageXA",
-        "range": "own",
+        "range": range.own,
         "value": [0.0, 0.0, 0.15]
     },
     "element_buff_boost_damageUP_own_10": {
@@ -2331,6 +2392,12 @@ var supportAbilities = {
         "type": "element_buff_boost_damageUP_own_10",
         "range": "own",
         "value": 0.10,
+    },
+    "critical_cap_up_water_3": {
+        "name": "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)",
+        "type": "critical_cap_up",
+        "range": range.element.water,
+        "value": 0.03,
     },
     "critical_cap_up_light_3": {
         "name": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
@@ -2398,6 +2465,11 @@ var supportAbilities = {
     //     "type": "tousou_no_chishio",
     //     "range": "own",
     // },
+    "kenkyaku_no_koou": {
+        "name": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "type": "kenkyaku_no_koou",
+        "range": "own",
+    },
     "benedikutosu_soure": {
         "name": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "type": "benedikutosu_soure",
@@ -2411,6 +2483,12 @@ var supportAbilities = {
         "assign": "multiply",
         "value": 0.30,
     },
+    "additional_damage_on_ta_light_10": {
+        "name": "光属性キャラがトリプルアタック時に光属性追撃効果",
+        "type": "additionalDamageXA",
+        "range": range.element.light,
+        "value": [0.0, 0.0, 0.1]
+    }
 };
 
 // exports
@@ -2443,6 +2521,12 @@ module.exports.enemyDefenseType = enemyDefenseType;
 module.exports.supportAbilities = supportAbilities;
 module.exports.limitBonusCriticalList = limitBonusCriticalList;
 module.exports.skillDetailsDescription = skillDetailsDescription;
+module.exports.opusNormalWeaponSkill2 = opusNormalWeaponSkill2;
+module.exports.opusMagnaWeaponSkill2 = opusMagnaWeaponSkill2;
+module.exports.opusWeaponSkill1 = opusWeaponSkill1;
+module.exports.sishoSufix = sishoSufix;
+
+
 
 module.exports.additionalSelectList = {
     "・属性変更": {
@@ -2490,28 +2574,28 @@ module.exports.additionalSelectList = {
     "青竜牙矛": {
         selectKeysNotation: "",
         notationText: "",
-        selectKeys: ["skill2"],
+        selectKeys: ["sishoskill2"],
         selectors: ["sishoSeiryu"],
         defaultKeys: ["non"],
     },
     "朱雀光剣": {
         selectKeysNotation: "",
         notationText: "",
-        selectKeys: ["skill2"],
+        selectKeys: ["sishoskill2"],
         selectors: ["sishoSuzaku"],
         defaultKeys: ["non"],
     },
     "白虎咆拳": {
         selectKeysNotation: "",
         notationText: "",
-        selectKeys: ["skill2"],
+        selectKeys: ["sishoskill2"],
         selectors: ["sishoByakko"],
         defaultKeys: ["non"],
     },
     "玄武甲槌": {
         selectKeysNotation: "",
         notationText: "",
-        selectKeys: ["skill2"],
+        selectKeys: ["sishoskill2"],
         selectors: ["sishoGenbu"],
         defaultKeys: ["non"],
     },
@@ -2636,6 +2720,12 @@ module.exports.additionalSelectList = {
         selectors: ["mainWeapon"],
         defaultKeys: [0]
     },
+    "デモン・アドヴォケイト": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
+    },
     "[4凸]虚空の裂剣": {
         selectKeysNotation: skillDetailsDescription['calamitous-covenant'],
         notationText: "",
@@ -2656,6 +2746,12 @@ module.exports.additionalSelectList = {
         selectKeys: ["main_weapon_switch"],
         selectors: ["mainWeapon"],
         defaultKeys: [0],
+    },
+    "[4凸]アヤの弓": {
+        notationText: "",
+        selectKeys: ["main_weapon_switch"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0]
     },
     "黄龍刀": {
         selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
@@ -2719,15 +2815,23 @@ module.exports.selector.zh.enemyElements = Object.keys(enemyElementTypes).map(fu
     return <option value={opt} key={opt}>{intl.translate(enemyElementTypes[opt], "zh")}</option>;
 });
 
-module.exports.selector.ja.filterelements = Object.keys(filterElementTypes).map(function (opt) {
-    return <option value={opt} key={opt}>{filterElementTypes[opt]}</option>;
-});
-module.exports.selector.en.filterelements = Object.keys(filterElementTypes).map(function (opt) {
-    return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "en")}</option>;
-});
-module.exports.selector.zh.filterelements = Object.keys(filterElementTypes).map(function (opt) {
-    return <option value={opt} key={opt}>{intl.translate(filterElementTypes[opt], "zh")}</option>;
-});
+function _generateFilterOptions(locale, types) {
+    return Object.keys(types).map((opt) =>
+        <option value={opt} key={opt}>{intl.translate(types[opt], locale)}</option>);
+}
+
+function _setupFilterOptions(selector, key, types, locales=["ja", "en", "zh"]) {
+    for (const locale of locales) {
+        selector[locale][key] = _generateFilterOptions(locale, types);
+    }
+}
+
+_setupFilterOptions(module.exports.selector, "filterSexes", filterSexes);
+_setupFilterOptions(module.exports.selector, "filterRaces", filterRaces);
+_setupFilterOptions(module.exports.selector, "filterFavs", filterFavs);
+_setupFilterOptions(module.exports.selector, "filterTypes", filterTypes);
+_setupFilterOptions(module.exports.selector, "filterElements", filterElementTypes);
+
 
 module.exports.selector.ja.summons = Object.keys(summonTypes).map(function (opt) {
     return <option value={opt} key={opt}>{summonTypes[opt]}</option>;
@@ -2961,6 +3065,9 @@ module.exports.selector.masterTA = masterTAList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.masterDamageLimit = masterDamageLimitList.map(function (opt) {
+    return <option value={opt} key={opt}>{opt}</option>;
+});
+module.exports.selector.masterOugiGage = masterOugiGageList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
 module.exports.selector.chainNumber = chainNumberList.map(function (opt) {

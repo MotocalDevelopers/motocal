@@ -26,8 +26,10 @@ charatypelist[u"特殊"] = "pecu"
 
 racelist = OrderedDict()
 racelist[u"ヒューマン/エルーン"] = "human/erune"
+racelist[u"ヒューマン/ドラフ"] = "human/doraf"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
+racelist[u"エルーン/ドラフ"] = "erune/doraf"
 racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
@@ -35,9 +37,10 @@ racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
 
 sexlist = OrderedDict()
+sexlist[u"男&br;女"] = "male/female"
 sexlist[u"男"] = "male"
 sexlist[u"女"] = "female"
-sexlist[u"不詳"] = "other"
+sexlist[u"不明"] = "other"
 
 supportAbilist = OrderedDict()
 supportAbilist["da_up_all_10"] = {
@@ -103,6 +106,9 @@ supportAbilist["ougi_gage_up_own_20"] = {
 }
 supportAbilist["ougi_gage_up_own_100"] = {
     u"刀神"
+}
+supportAbilist["ougi_gage_down_own_25"] = {
+    u"砂神グラフォスの鉄槌"
 }
 supportAbilist["ougi_gage_down_own_35"] = {
     u"闘争求む重鎧"
@@ -224,9 +230,9 @@ supportAbilist["element_buff_boost_earth_30"] = {
 supportAbilist["element_buff_boost_wind_30"] = {
     u"踊り狂う暴風"
 }
-# supportAbilist["element_buff_boost_light_30"] = {
-#     u""
-# }
+supportAbilist["element_buff_boost_light_30"] = {
+    u"聖布の乙女"
+}
 # supportAbilist["element_buff_boost_dark_30"] = {
 #     u""
 # }
@@ -235,6 +241,9 @@ supportAbilist["element_buff_boost_wind_30"] = {
 # }
 supportAbilist["element_buff_boost_wind_15"] = {
     u"精霊の啓示"
+}
+supportAbilist["critical_cap_up_water_3"] = {
+    u"正射必中"
 }
 supportAbilist["critical_cap_up_light_3"] = {
     u"スポッター"
@@ -258,6 +267,9 @@ supportAbilist["element_buff_boost_damageUP_own_10"] = {
 # supportAbilist["tousou_no_chishio"] = {
 #     u"闘争の血潮"
 # }
+supportAbilist["kenkyaku_no_koou"] = {
+    u"剣脚の呼応"
+}
 supportAbilist["debuff_resistance_up_own_15"] = {
     u"ユニバーサルスター",
     u"魔生花の楔"
@@ -284,6 +296,12 @@ supportAbilist["benedikutosu_soure"] = {
 }
 supportAbilist["otherbuff_own_30"] = {
     u"アインザーム"
+}
+supportAbilist["party_all_night"] = {
+    u"朝までハッピィ～！"
+}
+supportAbilist["additional_damage_on_ta_light_10"] = {
+    u"ドレス・ラ・ピュセル"
 }
 # Patching DA TA
 patching = OrderedDict()
@@ -378,6 +396,7 @@ patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
 patching["サラ"] = {"DA": 4.0, "TA": 1.0}
 patching["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
 patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
+patching["真紅と冥闇 ゼタ＆バザラガ(ハロウィンver)"] = {"DA": 1000.0, "TA": 3.0}
 
 patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
 
@@ -401,6 +420,8 @@ patching["フィーナ(SSR)"] = {"DA": 4.0, "TA": 1.0}
 patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
 
 patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
+
+patching["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
 
 ### SR
 patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
@@ -430,6 +451,7 @@ patching["アルベール"] = {"DA": 1000.0, "TA": 3.0}
 patching["プリキュア"] = {"DA": 1000.0, "TA": 3.0}
 patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 1000.0, "TA": 3.0}
 patching["ハールート・マールート(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
+patching["ハレゼナ(ハロウィンver)"] = {"DA": 1000.0, "TA": 1000.0}
 
 ### SR
 patching["ゼタ(SR)"] = {"DA": 10.0, "TA": 5.0}
@@ -508,6 +530,9 @@ patchingOugiRatio["サンダルフォン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァンピィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["リリィ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["アイル"] = {"ougiRatio": 5.0}
+patchingOugiRatio["カタリナ(リミテッドver)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ラカム(リミテッドver)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["黒騎士(リミテッドver)"] = {"ougiRatio": 5.0}
 
 ### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
@@ -581,6 +606,7 @@ patchingOugiRatio["ティナ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["城ヶ崎莉嘉"] = {"ougiRatio": 4.0}
 patchingOugiRatio["シャオ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["カタリナ"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ミリン"] = {"ougiRatio": 4.0}
 
 ### SR (Other)
 patchingOugiRatio["カタリナ(水着ver)"] = {"ougiRatio": 3.7}
@@ -664,7 +690,7 @@ def get_value(value_str):
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
     key_pattern = re.compile("(\d+_\d+\.png)")
-    br_pattern = re.compile("(\w+)&br;(\w+)")
+    br_pattern = re.compile("(\w+)(?:&br;|\/)(\w+)")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
     support_pattern3 = re.compile("([\W\w]+)&br;([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \((S?S?R)\)")
