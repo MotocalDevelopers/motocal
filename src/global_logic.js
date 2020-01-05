@@ -2743,6 +2743,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
         totals[key]['covenant'] = null;
+        totals[key]["ougiLimitValues"] = 0;
     }
 };
 
