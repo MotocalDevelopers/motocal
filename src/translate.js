@@ -1859,9 +1859,9 @@ var multiLangData = {
         "zh": "DA加护",
     },
     "DA加護説明": {
-        "en": "Halluel and Malluel(5~10%)etc.",
+        "en": "Halluel and Malluel(5~10%) etc.",
         "ja": "ハールート・マールート(5~10%)など",
-        "zh": "Halluel and Malluel(5~10%)etc.",
+        "zh": "Halluel and Malluel(5~10%) etc.",
     },
     "TA加護": {
         "en": "TA Aura",
@@ -1914,9 +1914,9 @@ var multiLangData = {
         "zh": "Shiva Buff",
     },
     "シヴァバフ説明": {
-        "en": "All Allies gain 100% other buff, and DMG cap +500000.",
-        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を500000加算します。",
-        "zh": "All Allies gain 100% other buff, and DMG cap +500000.",
+        "en": "All Allies gain 100% other buff, and raise DMG cap.",
+        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を増加します。",
+        "zh": "All Allies gain 100% other buff, and raise DMG cap.",
     },
     "内容を消去": {
         "en": "Delete",
@@ -2379,20 +2379,30 @@ var multiLangData = {
         "ja": "与ダメージ上昇20%UP(色々)",
         "zh": "与ダメージ上昇20%UP(色々)",
     },
-    "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)": {
+    "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)": {
         "en": "20% Boost to Damage and C.A. DMG Cap. (5★ Eternals)",
-        "ja": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
-        "zh": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
+        "ja": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
+        "zh": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
     },
-    "奥義ダメージ上限20%UP(最終十天衆)": {
-        "en": "20% Boost to C.A. DMG Cap. (5★ Eternals)",
-        "ja": "奥義ダメージ上限20%UP(最終十天衆)",
-        "zh": "奥義ダメージ上限20%UP(最終十天衆)",
+    "奥義ダメージ上限UP(最終十天衆)": {
+        "en": "Boost to C.A. DMG Cap. (5★ Eternals)",
+        "ja": "奥義ダメージ上限UP(最終十天衆)",
+        "zh": "奥義ダメージ上限UP(最終十天衆)",
     },
-    "奥義ダメージ上限25%UP(ルリア,SSRロボミ)": {
-        "en": "25% Boost to C.A. DMG Cap. (Robomi (SSR), Lyria)",
-        "ja": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
-        "zh": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
+    "奥義ダメージ上限UP(ルリア,SSRロボミ)": {
+        "en": "Boost to C.A. DMG Cap. (Robomi (SSR), Lyria)",
+        "ja": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
+        "zh": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
+    },
+    "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)": {
+        "en": "Boost to C.A. DMG Cap, Change C.A. Multiplier to 12.5. (Dorothy and Claudia 200% C.A.)",
+        "ja": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
+        "zh": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
+    },
+    "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)": {
+        "en": "Boost to C.A. DMG Cap, Change C.A. Multiplier to 7.0. (Mirin 200% C.A.)",
+        "ja": "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)",
+        "zh": "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)",
     },
     "奥義ダメージ上限100%UP(シャリオス17世)": {
         "en": "100% Boost to C.A. DMG Cap. (Charioce XVII)",
