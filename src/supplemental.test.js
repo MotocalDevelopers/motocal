@@ -1,8 +1,8 @@
 const supplemental = require('./supplemental.js');
 //{calcOthersDamage, calcThirdHitDamage, calcSupplementalDamage}
 describe("#calcSupplementalDamage", () => {
-    // generate temporary vals: [0, 0, 0, 0]
-    const INITIAL_VALS = (length=4, value=0) => (new Array(length)).fill(value);
+    // generate temporary vals: [0, 0, 0, 0, 0]
+    const INITIAL_VALS = (length=5, value=0) => (new Array(length)).fill(value);
 
     let supplementalDamageArray;
 
@@ -13,6 +13,7 @@ describe("#calcSupplementalDamage", () => {
                 damageWithoutCritical: 10,
                 ougiDamage: 100,
                 chainBurst: 200,
+                additionalDamage: 100,
                 type: "other",
             },
             "test-buff-b": {
@@ -20,6 +21,7 @@ describe("#calcSupplementalDamage", () => {
                 damageWithoutCritical: 20,
                 ougiDamage: 200,
                 chainBurst: 300,
+                additionalDamage: 200,
                 type: "other",
             },
         };
@@ -28,8 +30,8 @@ describe("#calcSupplementalDamage", () => {
     describe("#calcOthersDamage", () => {
         it("test single hit supplemental damage", () => {
             let vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
-            expect(vals.length).toBe(4);
-            expect(vals).toEqual([30, 30, 300, 500]);
+            expect(vals.length).toBe(5);
+            expect(vals).toEqual([30, 30, 300, 500, 300]);
         });
   
         it("test hp based supplemental damage", () => {
@@ -37,7 +39,7 @@ describe("#calcSupplementalDamage", () => {
             supplementalDamageArray['test-buff-a']['threshold'] = 0.80;
             
             let vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
-            expect(vals).toEqual([30, 30, 300, 500]);
+            expect(vals).toEqual([30, 30, 300, 500, 300]);
         
             // border check
             //
@@ -46,12 +48,12 @@ describe("#calcSupplementalDamage", () => {
             //
             // Why not (remainHP < 0.80) ... Spec explains it's 80%+
             vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.80});
-            expect(vals).toEqual([30, 30, 300, 500]);
+            expect(vals).toEqual([30, 30, 300, 500, 300]);
             vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.79});
-            expect(vals).toEqual([20, 20, 200, 300]);
+            expect(vals).toEqual([20, 20, 200, 300, 200]);
         
             vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS(), {remainHP:0.00});
-            expect(vals).toEqual([20, 20, 200, 300]);
+            expect(vals).toEqual([20, 20, 200, 300, 200]);
         });
       
         it("test unknown type is ignored", () => {
@@ -71,7 +73,7 @@ describe("#calcSupplementalDamage", () => {
             // E2E tests can check the typo.
           
             let vals = supplemental.calcOthersDamage(supplementalDamageArray, INITIAL_VALS());
-            expect(vals).toEqual([0, 0, 0, 0]);
+            expect(vals).toEqual([0, 0, 0, 0, 0]);
         });
     });
 
@@ -80,19 +82,19 @@ describe("#calcSupplementalDamage", () => {
             supplementalDamageArray['test-buff-a']['type'] = 'third_hit';
  
             // default expectedTurn: 1
-            let vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2));
-            expect(vals).toEqual([10, 10]);
+            let vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(3));
+            expect(vals).toEqual([10, 10, 100]);
 
             // safe to pass Infinity
-            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:Infinity});
-            expect(vals).toEqual([10, 10]);
+            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(3), {expectedTurn:Infinity});
+            expect(vals).toEqual([10, 10, 100]);
 
             // but not -Infinity (currently, not happen in actual global_logic.js)
-            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:-Infinity});
-            expect(vals).toEqual([10, -Infinity]);
+            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(3), {expectedTurn:-Infinity});
+            expect(vals).toEqual([10, -Infinity, 100]);
           
-            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(2), {expectedTurn:3});
-            expect(vals).toEqual([10, 30]);
+            vals = supplemental.calcThirdHitDamage(supplementalDamageArray, INITIAL_VALS(3), {expectedTurn:3});
+            expect(vals).toEqual([10, 30, 100]);
         });
     });
   
@@ -101,7 +103,7 @@ describe("#calcSupplementalDamage", () => {
         supplementalDamageArray["test-buff-a"]["type"] = "unknown";
       
         let vals = supplemental._calcDamage(["unknown"], supplementalDamageArray, INITIAL_VALS());
-        expect(vals).toEqual([0, 0, 0, 0]);
+        expect(vals).toEqual([0, 0, 0, 0, 0]);
       
         // Console will show switch/default case, unknown supplemental damage type.
         // no much chances to typo those types.
