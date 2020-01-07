@@ -818,6 +818,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         let ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
         let ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
         
+        if (totals[key]["ougiLimitValues"]) {
+            ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, totals[key]["ougiLimitValues"]);
+            ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, totals[key]["ougiLimitValues"]);
+        }
+        
         const _addShivaLimitUp = (values) => values.map(([threshold, ratio]) => [threshold+500000, ratio]);
         if (totalSummon["shivaBuff"]) {
             normalDamageLimitValues = _initLimitValues(1.0 + criticalDamageLimit, BASE_LIMIT_VALUES.shivaNormalDamage);
@@ -2390,6 +2395,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TAOther: 0,
                 damageLimitBuff: djeetaBuffList["personalDamageLimitBuff"],
                 ougiDamageLimitBuff: djeetaBuffList["personalOugiDamageLimitBuff"],
+                ougiLimitValues: 0,
                 normalOtherCriticalBuff: [],
                 support: "none",
                 support2: "none",
@@ -2564,6 +2570,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 TAOther: 0,
                 damageLimitBuff: charaBuffList["damageLimitBuff"],
                 ougiDamageLimitBuff: charaBuffList["ougiDamageLimitBuff"],
+                ougiLimitValues: 0,
                 normalOtherCriticalBuff: [],
                 support: chara[i].support,
                 support2: chara[i].support2,
@@ -2736,6 +2743,7 @@ module.exports.initializeTotals = function (totals) {
         totals[key]["cosmosDebuffResistance"] = 0;
         totals[key]["tenshiDamageUP"] = 0;
         totals[key]['covenant'] = null;
+        totals[key]["ougiLimitValues"] = 0;
     }
 };
 
@@ -2879,6 +2887,7 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     totals[key]["ougiGageBuff"] -= 0.25;
                     continue;
                 case "charaDamageUP_OugiCap":
+                    // obsolete
                     totals[key]["charaDamageUP"] += support.value;
                     totals[key]["ougiDamageLimitBuff"] += support.value;
                     continue;
@@ -2987,6 +2996,9 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     break;
                 case "add":
                     chara[support.type] += support.value;
+                    break;
+                case "set":
+                    chara[support.type] = support.value;
                     break;
                 case "multiply":
                     chara[support.type] = ((1.0 + chara[support.type]) * (1.0 + support.value)) - 1.0;
