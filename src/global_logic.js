@@ -2832,14 +2832,10 @@ module.exports.treatSupportAbility = function (totals, chara, buff) {
                     }
                     continue;
                 case "emnity_all_SL10":
-                    // Refer to HP of Zahlhamelina
+                    // Refer to HP of Zahlhamelina/Yuisis (Fire)
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
-                    if (totals[key].isConsideredInAverage) {
-                        for (var key2 in totals) {
-                            totals[key2]["charaHaisui"] += charaHaisuiValue
-                        }
-                    } else {
-                        totals[key]["charaHaisui"] += charaHaisuiValue
+                    for (let [name, chara] of range[support.range](totals, key)) {
+                        chara["charaHaisui"] = Math.max(chara["charaHaisui"], charaHaisuiValue);
                     }
                     continue;
                 case "emnity_own_SL20":

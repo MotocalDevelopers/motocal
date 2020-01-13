@@ -43,6 +43,9 @@ sexlist[u"女"] = "female"
 sexlist[u"不明"] = "other"
 
 supportAbilist = OrderedDict()
+supportAbilist["none"] = {
+    u"剣聖を継ぐ者", # NOTE: Avoid mis-matches with "剣聖"   
+}
 supportAbilist["da_up_all_10"] = {
     u"双剣乱舞"
 }
@@ -130,7 +133,8 @@ supportAbilist["ougi_damage_up_10"] = {
     u"音ノ木坂学院2年生"
 }
 supportAbilist["emnity_all_SL10"] = {
-    u"太陽信仰"
+    u"太陽信仰",
+    u"七回忌の砌"
 }
 supportAbilist["emnity_own_SL20"] = {
     u"ダーク・ラピュセル",

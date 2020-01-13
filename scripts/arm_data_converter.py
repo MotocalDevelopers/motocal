@@ -60,6 +60,15 @@ skillnamelist["normalHPL"] = {
     u"奈落の守護": "dark"
 }
 
+skillnamelist["normalCriticalLL"] = {
+    u"紅蓮の技巧II": "fire",
+    u"霧氷の技巧II": "water",
+    u"地裂の技巧II": "earth",
+    u"乱気の技巧II": "wind",
+    u"天光の技巧II": "light",
+    u"奈落の技巧II": "dark"
+}
+
 skillnamelist["normalCriticalL"] = {
     u"紅蓮の技巧": "fire",
     u"霧氷の技巧": "water",
@@ -68,6 +77,7 @@ skillnamelist["normalCriticalL"] = {
     u"天光の技巧": "light",
     u"奈落の技巧": "dark"
 }
+
 
 skillnamelist["normalHaisuiL"] = {
     u"紅蓮の背水": "fire",
@@ -384,6 +394,24 @@ skillnamelist["normalSetsunaS"] = {
     u"闇の刹那": "dark"
 }
 
+skillnamelist["normalSetsunaLL"] = {
+    u"紅蓮の刹那II": "fire",
+    u"霧氷の刹那II": "water",
+    u"地裂の刹那II": "earth",
+    u"竜巻の刹那II": "wind",
+    u"天光の刹那II": "light",
+    u"奈落の刹那II": "dark"
+}
+
+skillnamelist["normalSetsunaL"] = {
+    u"紅蓮の刹那": "fire",
+    u"霧氷の刹那": "water",
+    u"地裂の刹那": "earth",
+    u"竜巻の刹那": "wind",
+    u"天光の刹那": "light",
+    u"奈落の刹那": "dark"
+}
+
 skillnamelist["normalRanbuS"] = {
     u"火の乱舞": "fire",
     u"水の乱舞": "water",
@@ -448,6 +476,15 @@ skillnamelist["normalEiketsuL"] = {
 }
 
 # Grace
+skillnamelist["normalOntyouS"] = {
+    u"火の恩寵": "fire",
+    u"水の恩寵": "water",
+    u"土の恩寵": "earth",
+    u"風の恩寵": "wind",
+    u"光の恩寵": "light",
+    u"闇の恩寵": "dark"
+}
+
 skillnamelist["normalOntyouM"] = {
     u"業火の恩寵": "fire",
     u"渦潮の恩寵": "water",

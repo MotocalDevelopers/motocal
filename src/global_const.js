@@ -844,14 +844,18 @@ var skilltypes = {
     "normalCriticalS": {name: "通常技巧(小)", type: "normalCritical", amount: "S"},
     "normalCriticalM": {name: "通常技巧(中)", type: "normalCritical", amount: "M"},
     "normalCriticalL": {name: "通常技巧(大)", type: "normalCritical", amount: "L"},
+    "normalCriticalLL": {name: "通常技巧II", type: "normalCritical", amount: "LL"},
     "normalSetsunaS": {name: "通常刹那(小)", type: "normalSetsuna", amount: "S"},
     "normalSetsuna": {name: "通常刹那(中)", type: "normalSetsuna", amount: "M"},
+    "normalSetsunaL": {name: "通常刹那(大)", type: "normalSetsuna", amount: "L"},
+    "normalSetsunaLL": {name: "通常刹那II", type: "normalSetsuna", amount: "LL"},
     "normalHiouS": {name: "通常秘奥(小)", type: "normalHiou", amount: "S"},
     "normalHiouM": {name: "通常秘奥(中)", type: "normalHiou", amount: "M"},
     "normalHiouL": {name: "通常秘奥(大)", type: "normalHiou", amount: "L"},
     "normalHissatsuM": {name: "通常必殺(中)", type: "normalHissatsu", amount: "M"},
     "normalHissatsuL": {name: "通常必殺(大)", type: "normalHissatsu", amount: "L"},
     "normalEiketsuL": {name: "通常英傑(大)", type: "normalEiketsu", amount: "L"},
+    "normalOntyouS": {name: "通常恩寵(小)", type: "normalOntyou", amount: "S"},
     "normalOntyouM": {name: "通常恩寵(中)", type: "normalOntyou", amount: "M"},
     "normalSeisyouM": {name: "通常星晶(中)", type: "normalSeisyou", amount: "M"},
     "normalHigoS": {name: "通常庇護(小)", type: "normalHigo", amount: "S"},
@@ -1165,7 +1169,7 @@ var raceTypes = {
 var sexTypes = {
     "female": "女",
     "male": "男",
-    "other": "不明",
+    "other": "不詳",
     "male/female": "男/女",
 };
 
@@ -1869,6 +1873,8 @@ var skillAmounts = {
         "S": [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0],
         "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5],
         "L": [4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 10.2, 10.4, 10.6, 10.8, 11.0],
+        // FIXME: normal critical II
+        "LL": [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
         "ratio": 0.5,
     },
     "normalRanbu": {
@@ -1957,7 +1963,8 @@ var skillAmounts = {
         "L": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
     },
     // Debuff Resistance Grace (Unconfirmed Placeholder)
-    "normalOntyou": {
+    "normalOntyou": { // FIXME: normalOntyouS debuffResistance
+        "S": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0]
     },
     "normalHigo": {
