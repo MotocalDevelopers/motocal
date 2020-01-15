@@ -16,7 +16,7 @@ var opusWeaponSkill1 = GlobalConst.opusWeaponSkill1;
 var opusNormalWeaponSkill2 = GlobalConst.opusNormalWeaponSkill2;
 var opusMagnaWeaponSkill2 = GlobalConst.opusMagnaWeaponSkill2;
 var _ua = GlobalConst._ua;
-var {generateHaisuiData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js');
+var {generateHaisuiData, getTotalBuff, getInitialTotals, calcOneCombination} = require('./global_logic.js');
 var colors = ['#000000','#000080','#00008B','#0000CD',
     '#0000FF','#006400','#008000','#008080',
     '#008B8B','#00BFFF','#00CED1','#00FA9A',
@@ -60,9 +60,6 @@ var HPChart = CreateClass({
         var armlist = props.armlist;
         var summon = props.summon;
         var chara = props.chara;
-        var totalBuff = getTotalBuff(prof);
-        var totals = getInitialTotals(prof, chara, summon);
-        treatSupportAbility(totals, chara, totalBuff);
 
         var res = [];
         for (var i = 0; i < summon.length; i++) {
@@ -70,11 +67,12 @@ var HPChart = CreateClass({
         }
 
         for (var i = 0; i < storedCombinations.length; i++) {
-            var oneres = calcOneCombination(storedCombinations[i], summon, prof, armlist, totals, totalBuff);
+            var totalBuff = getTotalBuff(prof);
+            var totals = getInitialTotals(prof, chara, summon);
+            var oneres = calcOneCombination(storedCombinations[i], summon, prof, chara, armlist, totals, totalBuff);
             for (var j = 0; j < summon.length; j++) {
                 res[j].push({data: oneres[j], armNumbers: storedCombinations[i]});
             }
-            initializeTotals(totals)
         }
         // State in which recalculated data is stored in res
         // res[summonind][rank]
@@ -86,6 +84,7 @@ var HPChart = CreateClass({
     },
     getInitialState: function () {
         var sortKey = this.props.sortKey;
+      
         if (!(sortKey in supportedChartSortkeys)) sortKey = "averageCyclePerTurn";
 
         return {
@@ -311,9 +310,9 @@ var HPChart = CreateClass({
                         }
                     }
                     loadoutSheet += "|-\n";
-                    loadoutSheet += "| rowspan=\""+rowspan+"\"| " + sl.names[j].replace(/\r?\n/g, "") + "\n";
-                    loadoutSheet += "| rowspan=\""+rowspan+"\"| " + this.getCommonSummonName(s[i].selfElement, s[i].selfSummonType, s[i].selfSummonAmount, locale) + "<br><br>" + this.getCommonSummonName(s[i].friendElement, s[i].friendSummonType, s[i].friendSummonAmount, locale) +"\n";
-                    loadoutSheet += "| rowspan=\""+rowspan+"\"| ";
+                    loadoutSheet += "| rowspan=\""+rowspan+"\" style=\"border-width: thick thin thin thin\"| " + sl.names[j].replace(/\r?\n/g, "") + "\n";
+                    loadoutSheet += "| rowspan=\""+rowspan+"\" style=\"border-width: thick thin thin thin\"| " + this.getCommonSummonName(s[i].selfElement, s[i].selfSummonType, s[i].selfSummonAmount, locale) + "<br><br>" + this.getCommonSummonName(s[i].friendElement, s[i].friendSummonType, s[i].friendSummonAmount, locale) +"\n";
+                    loadoutSheet += "| rowspan=\""+rowspan+"\" style=\"border-width: thick thin thin thin\"| ";
                     if ( s[i].attack != 0) {
                         loadoutSheet += intl.translate("合計攻撃力", locale) + ": " + s[i].attack + "<br>";
                     }
@@ -339,12 +338,20 @@ var HPChart = CreateClass({
                         loadoutSheet += intl.translate("DA加護", locale) + ": " + s[i].DA + "%<br>";
                     }
                     loadoutSheet += "\n";
+                    var first = true;
                     for (var k = 0; k < sl.armlist[j].length; k++) {
                         if (sl.combinations[j][k] != 0) {
                             var arm = sl.armlist[j][k];
-                            loadoutSheet += "| " + sl.combinations[j][k] + " ";
-                            loadoutSheet += "|| {{Itm|" + arm.name.replace(/\[4凸]/g, "").replace(/\[5凸]/g, "").replace(/\[4★]/g, "").replace(/\[5★]/g, "").trim() + "}}  ";
-                            loadoutSheet += "|| " + (arm.slv > 10 ? (arm.slv > 15 ? "5{{star}}" : "4{{star}}") : "0-3{{star}}");
+                            if (first) {
+                                loadoutSheet += "| style=\"border-width: thick thin thin thin\"|" + sl.combinations[j][k] + " ";
+                                loadoutSheet += "|| style=\"border-width: thick thin thin thin\"|{{Itm|" + arm.name.replace(/\[4凸]/g, "").replace(/\[5凸]/g, "").replace(/\[4★]/g, "").replace(/\[5★]/g, "").trim() + "}}  ";
+                                loadoutSheet += "|| style=\"border-width: thick thin thin thin\"|" + (arm.slv > 10 ? (arm.slv > 15 ? "5{{star}}" : "4{{star}}") : "0-3{{star}}");
+                                first = false;
+                            } else {
+                                loadoutSheet += "| " + sl.combinations[j][k] + " ";
+                                loadoutSheet += "|| {{Itm|" + arm.name.replace(/\[4凸]/g, "").replace(/\[5凸]/g, "").replace(/\[4★]/g, "").replace(/\[5★]/g, "").trim() + "}}  ";
+                                loadoutSheet += "|| " + (arm.slv > 10 ? (arm.slv > 15 ? "5{{star}}" : "4{{star}}") : "0-3{{star}}");
+                            }
                             loadoutSheet += (arm.skill2.startsWith("opus") ? ", " + intl.translate(opusWeaponSkill1[arm.skill2].name, locale) + ", " + (arm.skill3.includes("normal") ? intl.translate(opusNormalWeaponSkill2[arm.skill3].name, locale): intl.translate(opusMagnaWeaponSkill2[arm.skill3].name, locale)) : "");
                             loadoutSheet += "\n";
                             loadoutSheet += "|- \n";
