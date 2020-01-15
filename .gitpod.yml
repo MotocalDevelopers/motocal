@@ -3,5 +3,5 @@ tasks:
     command: npm start
 
 ports:
-  - port: 3000
-    onOpen: open-preview
+  - port: 8000
+    onOpen: notify
