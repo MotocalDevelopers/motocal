@@ -34,6 +34,7 @@ racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"星晶獣"] = "seisho"
+racelist[u"不明"] = "unknown"
 racelist[u"その他"] = "unknown"
 
 sexlist = OrderedDict()
