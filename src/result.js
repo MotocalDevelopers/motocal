@@ -41,48 +41,67 @@ var {
     getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
 } = require('./global_logic.js');
 
-const switchList = {
-    "攻撃力・HP・連撃率": { // ATK/HP/etcs
-        switchTotalAttack: "攻撃力(二手技巧無し)",
-        switchATKandHP: "戦力",
-        switchHP: "HP",
-        switchDATA: "連撃率",
-        switchExpectedAttack: "期待攻撃回数",
-        switchCriticalRatio: "技巧期待値",
-        switchCriticalAttack: "技巧期待攻撃力",
-        switchTotalExpected: "総合*回数*技巧"
-    },
-    "パーティ平均攻撃力": { // Party-Averaged ATK
-        switchAverageAttack: "パーティ平均攻撃力",
-        switchAverageCriticalAttack: "技巧平均攻撃力",
-        switchAverageTotalExpected: "総回技の平均"
-    },
-    "予測ダメージ": { // Expected Damages
-        switchCycleDamage: "予想ターン毎ダメージ", 
-        switchAverageCycleDamage: "パーティ平均予想ターン毎ダメージ", 
-        switchPureDamage: "単攻撃ダメージ(技巧連撃無)",
-        switchDamageWithCritical: "単攻撃ダメージ(技巧有)",
-        switchDamageWithMultiple: "単攻撃ダメージ(連撃有)",
-        switchDamage: "単攻撃ダメージ(技巧連撃有)",
-        switchOugiDamage: "奥義ダメージ", 
-        switchChainBurst: "チェインバースト", 
-        switchTotalOugiDamageWithChain: "奥義+チェンバダメージ", 
-        switchOugiGage: "ターン毎の奥義ゲージ上昇量"
-    },
-    "キャラ情報・スキル合計値": { // Chara Data, Skill Amount
-        switchCharaAttack: "攻撃力",
-        switchCharaHP: "HP",
-        switchCharaDA: "連撃率",
-        switchCharaTotalExpected: "総回技",
-        switchCharaCycleDamage: "予想ターン毎ダメージ",
-        switchCharaPureDamage: "単攻撃ダメージ(技巧連撃無)",
-        switchCharaOugiDamage: "奥義ダメージ",
-        switchCharaLimitValues: "実質ダメージ上限",
-        switchCharaOugiGage: "ターン毎の奥義ゲージ上昇量",
-        switchSkillTotal: "スキル合計",
-        switchDebuffResistance: "弱体耐性率"
-    }
-}
+const switchList = [{
+    label: "攻撃力・HP・連撃率",
+    items: [ // ATK/HP/etcs
+        {name: "switchTotalAttack", label: "攻撃力(二手技巧無し)", selected: true},
+        {name: "switchATKandHP", label: "戦力"},
+        {name: "switchHP", label: "HP", selected: true},
+        {name: "switchDATA", label: "連撃率"},
+        {name: "switchExpectedAttack", label: "期待攻撃回数"},
+        {name: "switchCriticalRatio", label: "技巧期待値"},
+        {name: "switchCriticalAttack", label: "技巧期待攻撃力"},
+        {name: "switchTotalExpected", label: "総合*回数*技巧"},
+    ]}, {
+    label: "パーティ平均攻撃力",
+    items: [ // Party-Averaged ATK
+        {name: "switchAverageAttack", label: "パーティ平均攻撃力", selected: true},
+        {name: "switchAverageCriticalAttack", label: "技巧平均攻撃力"},
+        {name: "switchAverageTotalExpected", label: "総回技の平均"},
+    ]}, {
+    label: "予測ダメージ",
+    items: [ // Expected Damages
+        {name: "switchCycleDamage", label: "予想ターン毎ダメージ"},
+        {name: "switchAverageCycleDamage", label: "パーティ平均予想ターン毎ダメージ", selected: true},
+        {name: "switchPureDamage", label: "単攻撃ダメージ(技巧連撃無)"},
+        {name: "switchDamageWithCritical", label: "単攻撃ダメージ(技巧有)"},
+        {name: "switchDamageWithMultiple", label: "単攻撃ダメージ(連撃有)"},
+        {name: "switchDamage", label: "単攻撃ダメージ(技巧連撃有)"},
+        {name: "switchOugiDamage", label: "奥義ダメージ"},
+        {name: "switchChainBurst", label: "チェインバースト"},
+        {name: "switchTotalOugiDamageWithChain", label: "奥義+チェンバダメージ"},
+        {name: "switchOugiGage", label: "ターン毎の奥義ゲージ上昇量"},
+    ]}, {
+    label: "キャラ情報・スキル合計値",
+    items: [ // Chara Data, Skill Amount
+        {name: "switchCharaAttack", label: "攻撃力"},
+        {name: "switchCharaHP", label: "HP"},
+        {name: "switchCharaDA", label: "連撃率"},
+        {name: "switchCharaTotalExpected", label: "総回技"},
+        {name: "switchCharaCycleDamage", label: "予想ターン毎ダメージ"},
+        {name: "switchCharaPureDamage", label: "単攻撃ダメージ(技巧連撃無)"},
+        {name: "switchCharaOugiDamage", label: "奥義ダメージ"},
+        {name: "switchCharaLimitValues", label: "実質ダメージ上限"},
+        {name: "switchCharaOugiGage", label: "ターン毎の奥義ゲージ上昇量"},
+        {name: "switchSkillTotal", label: "スキル合計"},
+        {name: "switchDebuffResistance", label: "弱体耐性率"},
+    ]},
+];
+
+/**
+ * chunk([1,2,3,4,5,6,7], 3) => [[1,2,3], [4,5,6], [7]]
+ *
+ * porting lodash chunk compatible code (MIT license)
+ * https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_chunk
+ * see also: https://www.richsnapp.com/blog/2019/06-09-reduce-spread-anti-pattern
+ */
+const chunk = (input, size) => {
+  return input.reduce((arr, item, idx) => {
+    return idx % size === 0
+      ? [...arr, [item]]
+      : [...arr.slice(0, -1), [...arr.slice(-1)[0], item]];
+  }, []);
+};
 
 var ResultList = CreateClass({
     calculateResult: function (newprops) {
@@ -219,33 +238,29 @@ var ResultList = CreateClass({
             return {summon: summon, result: []}
         }
     },
+    getInitialSwitchState: function (_switchList=switchList) {
+        return Object.assign(..._switchList.map(({items}) =>
+            Object.fromEntries(items.map(({name, selected}) => [name, selected||false]))));
+    },
     getInitialState: function () {
-        res = {};
-        for (const category in switchList) {
-            for (const item in switchList[category]) {
-                if (item === "switchTotalAttack" || item === "switchHP" || item === "switchAverageAttack" || item === "switchAverageCycleDamage") {
-                    res[item] = 1;
-                } else {
-                    res[item] = 0;
-                }
-            }
-        }
-        res.result = {summon: this.props.summon, result: []};
-        res.chartSortKey = "totalAttack";
-        res.chartData = {};
-        res.storedList = {"combinations": [], "armlist": [], "names": []};
-        res.openHPChart = false;
-        res.displayRealHP = false;
-        res.openSimulator = false;
-        res.openDisplayElementTable = false;
-        res.openHPChartTutorial = false;
-        res.openShowStoredList = false;
-        res.ChartButtonActive = false;
-        res.previousArmlist = null;
-        res.previousCombinations = null;
-        res.ruleMaxSize = true;
-        res.filterOptionsChanged = false;
-        return res;
+        return Object.assign({
+            disableAutoResultUpdate: false,
+            result: {summon: this.props.summon, result: []},
+            chartSortKey: "totalAttack",
+            chartData: {},
+            storedList: {"combinations": [], "armlist": [], "names": []},
+            openHPChart: false,
+            displayRealHP: false,
+            openSimulator: false,
+            openDisplayElementTable: false,
+            openHPChartTutorial: false,
+            openShowStoredList: false,
+            ChartButtonActive: false,
+            previousArmlist: null,
+            previousCombinations: null,
+            ruleMaxSize: true,
+            filterOptionsChanged: false
+        }, this.getInitialSwitchState(switchList));
     },
     closeHPChart: function () {
         this.setState({openHPChart: false})
@@ -287,13 +302,13 @@ var ResultList = CreateClass({
     },
     handleEvent: function (key, e) {
         var newState = this.state;
-        newState[key] = (newState[key] == 0) ? 1 : 0;
+        newState[key] = !newState[key];
 
         // UPDATE after automatic update ON
-        if (key == "disableAutoResultUpdate" && newState[key] == 0) {
-            newState["result"] = this.calculateResult(this.props)
+        if (key == "disableAutoResultUpdate" && !newState[key]) {
+            newState["result"] = this.calculateResult(this.props);
         }
-        this.setState(newState)
+        this.setState(newState);
     },
     openHPChart: function (e) {
         var sortkey = "averageCyclePerTurn";
@@ -525,45 +540,18 @@ var ResultList = CreateClass({
                                              value={this.props.sortKey}
                                              onChange={this.props.onChangeSortkey}> {selector[locale].ktypes} </FormControl>;
                              
-            const GenerateMobileResultList = (category, isChara) => {
-                const widthNumber = 3;
-                let count = 0;
-                let res = [];
-                let temp = [];
-                const remainder = widthNumber - Object.keys(switchList[category]).length % widthNumber;
-                const strChara = isChara ? intl.translate("キャラ(result)", locale) : "";
-
-                for (const item in switchList[category]) {
-                    count += 1;
-                    temp.push(
-                            <td onClick={this.handleEvent.bind(this, item)}
-                                className={(this.state[item] == 1) ? "display-checked" : "display-unchecked"}> {strChara + intl.translate(switchList[category][item], locale)}
-                            </td>
-                    )
-                    if (count % widthNumber === 0) {          
-                        res.push(
-                            <tr>
-                                {temp}
-                            </tr>
-                        )
-                        temp = [];
-                    } else if (count === Object.keys(switchList[category]).length) {
-                        for (let i = 0; i < remainder; i++) { 
-                            temp.push(
-                                <td></td>
-                            )
-                        }
-                        res.push(
-                            <tr>
-                                {temp}
-                            </tr>
-                        )
-                        temp = [];
-                        count = 0;
-                    }
-                }
-
-                return res;
+            const ResuleMenuGroup = ({label, children, size=3}) => {
+                return <>
+                    <tr key={label}><th colSpan={size}>{intl.translate(label, locale)}</th></tr>
+                    {chunk(children, size).map((items, ind) =>
+                        <tr key={label + '-' + ind}>{items.map(({name, label}) =>
+                            <td key={name}
+                                onClick={this.handleEvent.bind(this, name)}
+                                className={this.state[name] ? "display-checked" : "display-unchecked"}>
+                            {intl.translate(label, locale)}
+                            </td>)}
+                        </tr>)}
+                </>;
             };
         
             return (
@@ -575,10 +563,9 @@ var ResultList = CreateClass({
                         <table style={{"width": "100%", textAlign: "center", marginBottom: "2px"}}
                                className="table table-bordered">
                             <tbody>
-                                   {GenerateMobileResultList("攻撃力・HP・連撃率", false)}
-                                   {GenerateMobileResultList("パーティ平均攻撃力", false)}
-                                   {GenerateMobileResultList("予測ダメージ", false)}
-                                   {GenerateMobileResultList("キャラ情報・スキル合計値", true)}
+                                {switchList.map(({label, items}) =>
+                                    <ResuleMenuGroup key={label} label={label}>{items}</ResuleMenuGroup>
+                                )}
                             </tbody>
                         </table>
                     </Collapse>
@@ -695,37 +682,22 @@ var ResultList = CreateClass({
             var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}}
                                              value={this.props.sortKey}
                                              onChange={this.props.onChangeSortkey}> {selector[locale].ktypes} </FormControl>;
-            const generateMenuItem = (category, isChara=false) => {
-                let res = [];
-                const strChara = isChara ? intl.translate("キャラ(result)", locale) : "";
-                for (const item in switchList[category]) {
-                    res.push(
-                        <MenuItem onClick={this.handleEvent.bind(this, item)}
-                            active={(this.state[item] == 1) ? true : false}>{strChara + intl.translate(switchList[category][item], locale)}</MenuItem>
-                    );
-                }
-                return res;
-            }
+            const ResultMenuItem = ({name, label}) => (
+                <MenuItem
+                    onClick={this.handleEvent.bind(this, name)}
+                    active={this.state[name]}>
+                    {intl.translate(label, locale)}
+                </MenuItem>);
             
             return (
                 <div className="resultList">
                     <ControlLabel>{intl.translate("表示項目切替", locale)}</ControlLabel>
                     <ButtonToolbar>
-                        <DropdownButton title={intl.translate("攻撃力・HP・連撃率", locale)} id="atk-hp-etcs">
-                            {generateMenuItem("攻撃力・HP・連撃率", false)}
-                        </DropdownButton>
-
-                        <DropdownButton title={intl.translate("パーティ平均攻撃力", locale)} id="party-averafed-atk">
-                            {generateMenuItem("パーティ平均攻撃力", false)}
-                        </DropdownButton>
-
-                        <DropdownButton title={intl.translate("予測ダメージ", locale)} id="expected-damage">
-                            {generateMenuItem("予測ダメージ", false)}
-                        </DropdownButton>
-
-                        <DropdownButton title={intl.translate("キャラ情報・スキル合計値", locale)} id="chara-and-skill-info">
-                            {generateMenuItem("キャラ情報・スキル合計値", true)}
-                        </DropdownButton>
+                        {switchList.map(({label, items}, ind) =>
+                            <DropdownButton title={intl.translate(label, locale)} id={"dropdown-"+ind} key={ind}>
+                                {items.map(({name, label}) => <ResultMenuItem key={name} name={name} label={label} />)}
+                            </DropdownButton>
+                        )}
                         <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate}
                                            switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")}
                                            forceResultUpdate={this.forceResultUpdate} locale={locale}/>
