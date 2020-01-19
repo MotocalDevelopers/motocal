@@ -239,8 +239,13 @@ var ResultList = CreateClass({
         }
     },
     getInitialSwitchState: function (_switchList=switchList) {
-        return Object.assign(..._switchList.map(({items}) =>
-            Object.fromEntries(items.map(({name, selected}) => [name, selected||false]))));
+        const res = {};
+        for (const {items} of _switchList) {
+            for (const {name, selected} of items) {
+                res[name] = selected || false;
+            }
+        }
+        return res;
     },
     getInitialState: function () {
         return Object.assign({
