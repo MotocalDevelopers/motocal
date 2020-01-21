@@ -135,7 +135,8 @@ supportAbilist["emnity_all_SL10"] = {
 supportAbilist["emnity_own_SL20"] = {
     u"ダーク・ラピュセル",
     u"絶望の剣",
-    u"砂神グラフォスの慈愛"
+    u"砂神グラフォスの慈愛",
+    u"ノートラーガ"
 }
 supportAbilist["envoy_meditation"] = {
     u"調停の使徒"

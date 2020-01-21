@@ -2304,10 +2304,10 @@ var multiLangData = {
         "ja": "全体背水効果(ザルハメリナ)",
         "zh": "全体背水効果(ザルハメリナ)",
     },
-    "背水効果(闇ジャンヌダルク, 黒騎士)": {
-        "en": "Boost to ATK based on how low HP is. (Jeanne D'Ark (Dark), Black Knight)",
-        "ja": "背水効果(闇ジャンヌダルク, 黒騎士)",
-        "zh": "背水効果(闇ジャンヌダルク, 黒騎士)",
+    "背水効果(闇ジャンヌダルク, 黒騎士, 土サラ, 光ダヌア)": {
+        "en": "Boost to ATK based on how low HP is. (Jeanne D'Ark (Dark), Black Knight, Sara (Earth), Danua (Light))",
+        "ja": "背水効果(闇ジャンヌダルク, 黒騎士, 土サラ, 光ダヌア)",
+        "zh": "背水効果(闇ジャンヌダルク, 黒騎士, 土サラ, 光ダヌア)",
     },
     "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)": {
         "en": "Boost to stats based on number of different elements among allies. (Zooey (Promo), Zooey (Grand))",

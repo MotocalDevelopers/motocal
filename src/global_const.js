@@ -2181,7 +2181,7 @@ var supportAbilities = {
         "value": 0.00
     },
     "emnity_own_SL20": {
-        "name": "背水効果(闇ジャンヌダルク, 黒騎士)",
+        "name": "背水効果(闇ジャンヌダルク, 黒騎士, 土サラ, 光ダヌア)",
         "type": "emnity_own_SL20",
         "range": "own",
         "value": 0.00
