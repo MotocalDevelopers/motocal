@@ -687,6 +687,8 @@ var ResultList = CreateClass({
             var changeSortKey = <FormControl componentClass="select" style={{"width": "350px"}}
                                              value={this.props.sortKey}
                                              onChange={this.props.onChangeSortkey}> {selector[locale].ktypes} </FormControl>;
+            // This component has a side-effect,
+            // changes drop-down list behavior by wrap MenuItem
             const ResultMenuItem = ({name, label}) => (
                 <MenuItem
                     onClick={this.handleEvent.bind(this, name)}
