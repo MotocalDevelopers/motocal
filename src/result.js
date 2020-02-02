@@ -33,38 +33,30 @@ var enemyDefenseType = GlobalConst.enemyDefenseType;
 var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
-var {
-    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces,
-    calcCombinations, calcOneCombination,
-    getTesukatoripokaAmount, getTotalBuff,
-    getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
-} = require('./global_logic.js');
+var {checkNumberOfRaces, getTesukatoripokaAmount, getTypeBonus, getTypeBonusStr, calcCriticalDeviation} = require('./global_logic.js');
 const ResultWorker = require('worker-loader!./calculate_result_worker.js');
 
 var ResultList = CreateClass({
-    calculateResult: function ({ profile, armlist, summon, chara, sortKey }) {
-      const { previousArmlist, previousCombinations } = this.state;
-      this.setState({
-        calculatingResult: true
-      });
-      const worker = new ResultWorker();
-      worker.onmessage = ({ data: { result, previousArmlist, previousCombinations} }) => {
+    calculateResult: function ({profile, armlist, summon, chara, sortKey}) {
+        let worker;
+        const {previousArmlist, previousCombinations} = this.state;
         this.setState({
-          result,
-          previousArmlist: previousArmlist || this.state.previousArmlist,
-          previousCombinations: previousCombinations || this.state.previousCombinations,
-          calculatingResult: false
+            calculatingResult: true
         });
-      }
-      worker.postMessage({
-        profile,
-        armlist,
-        summon,
-        chara,
-        sortKey,
-        previousArmlist,
-        previousCombinations
-      });
+        if (typeof (worker) == "undefined") {
+            worker = new ResultWorker();
+        }
+        worker.onmessage = ({data: {result, previousArmlist, previousCombinations}}) => {
+            this.setState({
+                result,
+                previousArmlist: previousArmlist || this.state.previousArmlist,
+                previousCombinations: previousCombinations || this.state.previousCombinations,
+                calculatingResult: false
+            });
+            worker.terminate();
+            worker = undefined;
+        };
+        worker.postMessage({profile, armlist, summon, chara, sortKey, previousArmlist, previousCombinations});
     },
     getInitialState: function () {
         return {
@@ -550,7 +542,7 @@ var ResultList = CreateClass({
                                 <ElementColorLabel element={s.friendElement}>{friendSummonHeader}</ElementColorLabel>
                                 <hr style={{"margin": "10px 0px"}}/>
                                 <div className="charainfo">
-                                {charaInfo}
+                                    {charaInfo}
                                     <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                     <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                                 </div>
@@ -756,7 +748,7 @@ var ResultList = CreateClass({
                                 <div className="charainfo" style={{"float": "left"}}>
                                     {charaInfo}
                                     <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
-                                <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
+                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                                 </div>
                                 <div style={{"textAlign": "right", "float": "right"}}>
                                     <span>{intl.translate("優先項目", locale)}: {changeSortKey}</span>
@@ -784,7 +776,7 @@ var ResultList = CreateClass({
                                             switcher={switcher} arm={arm} prof={prof}
                                             onAddToHaisuiData={onAddToHaisuiData} locale={locale}
                                             calculating={this.state.calculatingResult}
-                                            />
+                                    />
                                 </table>
                             </div>
                         );
@@ -886,13 +878,15 @@ var Result = CreateClass({
         const formatCommaSeparatedNumber = num => String(Math.round(num)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
 
         if (this.props.calculating) {
-          return (
-            <tbody className="result">
-              <tr><td colSpan="999">
-                <ProgressBar active now={100} />
-              </td></tr>
-            </tbody>
-          );
+            return (
+                <tbody className="result">
+                <tr>
+                    <td colSpan="999">
+                        <ProgressBar active now={100}/>
+                    </td>
+                </tr>
+                </tbody>
+            );
         }
 
         return (
@@ -1084,7 +1078,6 @@ var Result = CreateClass({
                 }
 
 
-
                 if (sw.switchCharaOugiDamage) {
                     for (key in m.data) {
                         charaDetail[key].push(
@@ -1139,11 +1132,11 @@ var Result = CreateClass({
 
                 if (sw.switchCharaLimitValues) {
                     for (var key in m.data) {
-                        function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage){
+                        function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage) {
                             // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
-                            let  _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
-                            (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
-                            (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
+                            let _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
+                                (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
+                                (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
 
                             // In the case of ougi.
                             _limitValues += ougiFixedDamage * criticalRatio;
@@ -1156,23 +1149,27 @@ var Result = CreateClass({
                         }
 
                         // Generate supplemental Damage.
-                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
+                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0,
+                            chainBurstSupplemental = 0;
                         [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
-                        
+
                         let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUPOnlyNormalDamage, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
                         let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
 
                         charaDetail[key].push(
-                                <div key={key + "-LimitValues"}>
+                            <div key={key + "-LimitValues"}>
                                     <span key={key + "-LimitValues"}>
-                                        <span className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
-                                            {formatCommaSeparatedNumber(normalDamageRealLimit)}&nbsp;
-                                        <span className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
-                                            {formatCommaSeparatedNumber(ougiDamageRealLimit)}&nbsp;
+                                        <span
+                                            className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
+                                        {formatCommaSeparatedNumber(normalDamageRealLimit)}&nbsp;
+                                        <span
+                                            className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
+                                        {formatCommaSeparatedNumber(ougiDamageRealLimit)}&nbsp;
                                     </span>
-                                </div>
+                            </div>
                         );
-                    };
+                    }
+                    ;
                 }
 
                 if (sw.switchSkillTotal) {
@@ -1219,7 +1216,8 @@ var Result = CreateClass({
                             if (value != 0.0) {
                                 multipleAttackSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
-                                        <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                        <span
+                                            className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
                                         <span className={isOver ? "is-over" : ""}>{value.toFixed(1)}%</span>&nbsp;
                                     </span>
                                 );
@@ -1290,7 +1288,7 @@ var Result = CreateClass({
                                     <tbody>
                                     <tr>
                                         <td>{intl.translate("効果量", locale)}</td>
-                                        {additionalDamageXA.map(value => <td>{Math.round(value*100)}%</td>)}
+                                        {additionalDamageXA.map(value => <td>{Math.round(value * 100)}%</td>)}
                                     </tr>
                                     </tbody>
                                 </table>
@@ -1301,26 +1299,27 @@ var Result = CreateClass({
                         const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
                         if (supplementalInfo.total > 0) {
                             supplementalDamageInfo.push(
-                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px", "fontSize": "10pt"}} >
+                                <table key={key + "-supplementalDamageTable"} className="table table-bordered"
+                                       style={{"marginBottom": "0px", "fontSize": "10pt"}}>
                                     <thead>
-                                        <tr>
-                                            <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
-                                            {supplementalInfo.headers.map(([key, type, val]) =>
-                                                <th key={key} className="bg-success">
-                                                    {intl.translate(key, locale) +
-                                                     (intl.translate("supplemental_"+type, locale)||"").replace("{value}", (val||"").toString())}
-                                                </th>)}
-                                            <th className="bg-success">{intl.translate("合計", locale)}</th>
-                                        </tr>
+                                    <tr>
+                                        <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
+                                        {supplementalInfo.headers.map(([key, type, val]) =>
+                                            <th key={key} className="bg-success">
+                                                {intl.translate(key, locale) +
+                                                (intl.translate("supplemental_" + type, locale) || "").replace("{value}", (val || "").toString())}
+                                            </th>)}
+                                        <th className="bg-success">{intl.translate("合計", locale)}</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>{intl.translate("ダメージ", locale)}</td>
-                                            {supplementalInfo.values.map(([key, damage]) => <td key={key}>{damage}</td>)}
-                                            <td>
-                                                {supplementalInfo.total}&nbsp;
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{intl.translate("ダメージ", locale)}</td>
+                                        {supplementalInfo.values.map(([key, damage]) => <td key={key}>{damage}</td>)}
+                                        <td>
+                                            {supplementalInfo.total}&nbsp;
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             );
