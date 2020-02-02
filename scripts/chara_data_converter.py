@@ -34,7 +34,7 @@ racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"星晶獣"] = "seisho"
-racelist[u"不明"] = "unknown"
+racelist[u"その他"] = "unknown"
 
 sexlist = OrderedDict()
 sexlist[u"男&br;女"] = "male/female"
@@ -209,14 +209,23 @@ supportAbilist["ougiCapUP_100"] = {
 supportAbilist["wildcard"] = {
     u"ワイルドカード"
 }
+supportAbilist["hanged_man_reversed"] = {
+    u"刑死者の逆位置"
+}
 # supportAbilist["fumetsu_no_mikiri"] = {
 #     u"不滅の見切り"
 # }
 supportAbilist["aegisUP_30"] = {
     u"護国の双肩"
 }
-supportAbilist["chikara_atsu_no_ha"] = {
-    u"力圧の刃"
+#supportAbilist["chikara_atsu_no_ha"] = {
+#    u"力圧の刃"
+#}
+supportAbilist["more_than_mere_speed"] = {
+    u"ビヨンド・ザ・スピード"
+}
+supportAbilist["no_multi_attack"] = {
+    u"ナイトロ・リミッター"
 }
 supportAbilist["element_buff_boost_fire_30"] = {
     u"崇拝の尊神"
@@ -254,7 +263,7 @@ supportAbilist["critical_cap_up_own_10"] = {
 supportAbilist["shinryu_to_no_kizuna"] = {
     u"真龍との絆"
 }
-supportAbilist["Revion_kishi_sanshimai"] = {
+supportAbilist["revion_kishi_sanshimai"] = {
     u"レヴィオン騎士三姉妹"
 }
 supportAbilist["element_buff_boost_damageUP_own_10"] = {
@@ -422,6 +431,7 @@ patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
 patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
 
 patching["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
+patching["ミュオン(クリスマスver)"] = {"DA": 0, "TA": 1000.0}
 
 ### SR
 patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
@@ -566,6 +576,7 @@ patchingOugiRatio["サラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
+patchingOugiRatio["ミュオン(クリスマスver)"] = {"ougiRatio": 12.5}
 
 ### SSR (Not to ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
