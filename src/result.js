@@ -34,10 +34,9 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces, proceedIndex,
-    calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
-    calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
-    initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
+    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces,
+    calcCombinations, calcOneCombination,
+    getTesukatoripokaAmount, getTotalBuff,
     getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
 } = require('./global_logic.js');
 const ResultWorker = require('worker-loader!./calculate_result_worker.js');

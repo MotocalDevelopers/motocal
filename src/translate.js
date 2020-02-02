@@ -1158,6 +1158,11 @@ var multiLangData = {
         "ja": "トーメンター",
         "zh": "トーメンター",
     },
+    "ライジングフォース": {
+        "en": "Rising Force",
+        "ja": "ライジングフォース",
+        "zh": "ライジングフォース",
+    },
     "アルケミスト": {
         "en": "Alchemist",
         "ja": "アルケミスト",
@@ -1824,7 +1829,7 @@ var multiLangData = {
         "zh": "好友的召唤石",
     },
     "合計攻撃力": {
-        "en": "Total ATK",
+        "en": "Summons Total ATK",
         "ja": "合計攻撃力",
         "zh": "合计攻击力",
     },
@@ -1834,7 +1839,7 @@ var multiLangData = {
         "zh": "合计攻击力",
     },
     "合計HP": {
-        "en": "Total HP",
+        "en": "Summons Total HP",
         "ja": "合計HP",
         "zh": "合计HP",
     },
@@ -1854,9 +1859,9 @@ var multiLangData = {
         "zh": "DA加护",
     },
     "DA加護説明": {
-        "en": "Halluel and Malluel(5~10%)etc.",
+        "en": "Halluel and Malluel(5~10%) etc.",
         "ja": "ハールート・マールート(5~10%)など",
-        "zh": "Halluel and Malluel(5~10%)etc.",
+        "zh": "Halluel and Malluel(5~10%) etc.",
     },
     "TA加護": {
         "en": "TA Aura",
@@ -1909,9 +1914,9 @@ var multiLangData = {
         "zh": "Shiva Buff",
     },
     "シヴァバフ説明": {
-        "en": "All Allies gain 100% other buff, and DMG cap +500000.",
-        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を500000加算します。",
-        "zh": "All Allies gain 100% other buff, and DMG cap +500000.",
+        "en": "All Allies gain 100% other buff, and raise DMG cap.",
+        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を増加します。",
+        "zh": "All Allies gain 100% other buff, and raise DMG cap.",
     },
     "内容を消去": {
         "en": "Delete",
@@ -2374,20 +2379,30 @@ var multiLangData = {
         "ja": "与ダメージ上昇20%UP(色々)",
         "zh": "与ダメージ上昇20%UP(色々)",
     },
-    "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)": {
+    "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)": {
         "en": "20% Boost to Damage and C.A. DMG Cap. (5★ Eternals)",
-        "ja": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
-        "zh": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
+        "ja": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
+        "zh": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
     },
-    "奥義ダメージ上限20%UP(最終十天衆)": {
-        "en": "20% Boost to C.A. DMG Cap. (5★ Eternals)",
-        "ja": "奥義ダメージ上限20%UP(最終十天衆)",
-        "zh": "奥義ダメージ上限20%UP(最終十天衆)",
+    "奥義ダメージ上限UP(最終十天衆)": {
+        "en": "Boost to C.A. DMG Cap. (5★ Eternals)",
+        "ja": "奥義ダメージ上限UP(最終十天衆)",
+        "zh": "奥義ダメージ上限UP(最終十天衆)",
     },
-    "奥義ダメージ上限25%UP(ルリア,SSRロボミ)": {
-        "en": "25% Boost to C.A. DMG Cap. (Robomi (SSR), Lyria)",
-        "ja": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
-        "zh": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
+    "奥義ダメージ上限UP(ルリア,SSRロボミ)": {
+        "en": "Boost to C.A. DMG Cap. (Robomi (SSR), Lyria)",
+        "ja": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
+        "zh": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
+    },
+    "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)": {
+        "en": "Boost to C.A. DMG Cap, Change C.A. Multiplier to 12.5. (Dorothy and Claudia 200% C.A.)",
+        "ja": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
+        "zh": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
+    },
+    "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)": {
+        "en": "Boost to C.A. DMG Cap, Change C.A. Multiplier to 7.0. (Mirin 200% C.A.)",
+        "ja": "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)",
+        "zh": "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)",
     },
     "奥義ダメージ上限100%UP(シャリオス17世)": {
         "en": "100% Boost to C.A. DMG Cap. (Charioce XVII)",
@@ -2399,10 +2414,26 @@ var multiLangData = {
         "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
         "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
     },
+    "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)": {
+        "en": "When Sub Ally: When all equipped weapons are different, 20% boost to Earth allies' ATK, 50% boost to DEF, and 10% boost to damage cap. (Caim)",
+        "ja": "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)",
+        "zh": "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)",
+    },
     "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)": {
         "en": "Increase Aegis-type and Majesty-type weapon skills' 'Boost to max HP' effect by 30%. (Lancelot and Vane)",
         "ja": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
         "zh": "Increase Aegis-type and Majesty-type weapon skills' 'Boost to max HP' effect by 30%. (Lancelot and Vane)",
+    },
+
+    "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))": {
+        "en": "Amplify Meteon's one-foe attack damage by 50%. 110% boost to C.A. damage, 30% boost to C.A. damage cap, and 30% boost to dodge rate.Upon one-foe attack: Gain Charge Bar +10%. 500% Bonus Wind damage to all foes.(Meteon (Holiday))",
+        "ja": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
+        "zh": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
+    },
+    "連続攻撃が発生しない(ミュオン(クリスマスver))": {
+        "en": "Doesn't deal multiattacks.(Meteon (Holiday))",
+        "ja": "連続攻撃が発生しない(ミュオン(クリスマスver))",
+        "zh": "連続攻撃が発生しない(ミュオン(クリスマスver))",
     },
     "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)": {
         "en": "Fire Allies gain an additional 30% boost to Element ATK when affected by Element ATK Buff. (Shiva)",
@@ -3211,6 +3242,11 @@ var multiLangData = {
         "ja": "斧キャラの攻撃力とTA上昇(小)",
         "zh": "斧キャラの攻撃力とTA上昇(小)",
     },
+    "剣キャラの攻撃力とTA上昇(小)": {
+        "en": "Sword chara ATK and TA up (S)",
+        "ja": "剣キャラの攻撃力とTA上昇(小)",
+        "zh": "剣キャラの攻撃力とTA上昇(小)",
+    },
     "弓キャラの攻撃力とHP上昇(中)": {
         "en": "Bow chara ATK and HP up (M)",
         "ja": "弓キャラの攻撃力とHP上昇(中)",
@@ -3267,74 +3303,174 @@ var multiLangData = {
         "zh": "マグナ刹那(中)",
     },
     "コスモス剣": {
-        "en": "Cosmos Sword",
+        "en": "Cosmic Sword",
         "ja": "コスモス-剣",
         "zh": "Cosmos剑",
     },
+    "コスモス剣II": {
+        "en": "Cosmic Sword II",
+        "ja": "コスモス-剣II",
+        "zh": "Cosmos剑II",
+    },
+    "秩序の蒼剣": {
+        "en": "Azure Sword's Discipline",
+        "ja": "秩序の蒼剣",
+        "zh": "秩序の蒼剣",
+    },
     "コスモス短剣": {
-        "en": "Cosmos Dagger",
+        "en": "Cosmic Dagger",
         "ja": "コスモス-短剣",
         "zh": "Cosmos短剑",
     },
+    "コスモス短剣II": {
+        "en": "Cosmic Dagger II",
+        "ja": "コスモス-短剣II",
+        "zh": "Cosmos短剑II",
+    },
+    "秩序の蒼刃": {
+        "en": "Azure Dagger's Discipline",
+        "ja": "秩序の蒼刃",
+        "zh": "秩序の蒼刃",
+    },
     "コスモス槍": {
-        "en": "Cosmos Spear",
+        "en": "Cosmic Spear",
         "ja": "コスモス-槍",
         "zh": "Cosmos枪",
     },
+    "コスモス槍II": {
+        "en": "Cosmic Spear II",
+        "ja": "コスモス-槍II",
+        "zh": "Cosmos枪II",
+    },
+    "秩序の蒼槍": {
+        "en": "Azure Lance's Discipline",
+        "ja": "秩序の蒼槍",
+        "zh": "秩序の蒼槍",
+    },
     "コスモス斧": {
-        "en": "Cosmos Axe",
+        "en": "Cosmic Scythe",
         "ja": "コスモス-斧",
         "zh": "Cosmos斧",
     },
+    "コスモス斧II": {
+        "en": "Cosmic Scythe II",
+        "ja": "コスモス-斧II",
+        "zh": "Cosmos斧II",
+    },
+    "秩序の蒼鎌": {
+        "en": "Azure Scythe's Discipline",
+        "ja": "秩序の蒼鎌",
+        "zh": "秩序の蒼鎌",
+    },
     "コスモス杖": {
-        "en": "Cosmos Staff",
+        "en": "Cosmic Staff",
         "ja": "コスモス-杖",
         "zh": "Cosmos杖",
     },
+    "コスモス杖II": {
+        "en": "Cosmic Staff II",
+        "ja": "コスモス-杖II",
+        "zh": "Cosmos杖II",
+    },
+    "秩序の蒼杖": {
+        "en": "Azure Rod's Discipline",
+        "ja": "秩序の蒼杖",
+        "zh": "秩序の蒼杖",
+    },
     "コスモス銃": {
-        "en": "Cosmos Gun",
+        "en": "Cosmic Rifle",
         "ja": "コスモス-銃",
         "zh": "Cosmos铳",
     },
+    "コスモス銃II": {
+        "en": "Cosmic Rifle II",
+        "ja": "コスモス-銃II",
+        "zh": "Cosmos铳II",
+    },
+    "秩序の蒼銃": {
+        "en": "Azure Rifle's Discipline",
+        "ja": "秩序の蒼銃",
+        "zh": "秩序の蒼銃",
+    },
     "コスモス拳": {
-        "en": "Cosmos Fist",
+        "en": "Cosmic Fist",
         "ja": "コスモス-拳",
         "zh": "Cosmos拳",
     },
+    "コスモス拳II": {
+        "en": "Cosmic Fist II",
+        "ja": "コスモス-拳II",
+        "zh": "Cosmos拳II",
+    },
+    "秩序の蒼拳": {
+        "en": "Azure Gauntlet's Discipline",
+        "ja": "秩序の蒼拳",
+        "zh": "秩序の蒼拳",
+    },
     "コスモス弓": {
-        "en": "Cosmos Bow",
+        "en": "Cosmic Bow",
         "ja": "コスモス-弓",
         "zh": "Cosmos弓",
     },
-    "コスモス刀": {
-        "en": "Cosmos Katana",
-        "ja": "コスモス-刀",
-        "zh": "Cosmos刀",
+    "コスモス弓II": {
+        "en": "Cosmic Bow II",
+        "ja": "コスモス-弓II",
+        "zh": "Cosmos弓II",
+    },
+    "秩序の蒼弓": {
+        "en": "Azure Bow's Discipline",
+        "ja": "秩序の蒼弓",
+        "zh": "秩序の蒼弓",
     },
     "コスモス楽器": {
-        "en": "Cosmos Harp",
+        "en": "Cosmic Harp",
         "ja": "コスモス-楽器",
         "zh": "Cosmos乐器",
     },
+    "コスモス楽器II": {
+        "en": "Cosmic Harp II",
+        "ja": "コスモス-楽器II",
+        "zh": "Cosmos乐器II",
+    },
+    "秩序の蒼琴": {
+        "en": "Azure Harp's Discipline",
+        "ja": "秩序の蒼琴",
+        "zh": "秩序の蒼琴",
+    },
+    "コスモス刀": {
+        "en": "Cosmic Blade",
+        "ja": "コスモス-刀",
+        "zh": "Cosmos刀",
+    },
+    "コスモス刀II": {
+        "en": "Cosmic Blade II",
+        "ja": "コスモス-刀II",
+        "zh": "Cosmos刀II",
+    },
+    "秩序の蒼刀": {
+        "en": "Azure Blade's Discipline",
+        "ja": "秩序の蒼刀",
+        "zh": "秩序の蒼刀",
+    },
     "コスモスAT": {
-        "en": "Cosmos ATK",
-        "ja": "コスモス-AT",
-        "zh": "Cosmos AT",
+        "en": "Cosmic ATK (Deprecated)",
+        "ja": "コスモス-AT(非推奨)",
+        "zh": "Cosmos AT(不推荐使用)",
     },
     "コスモスDF": {
-        "en": "Cosmos DF",
-        "ja": "コスモス-DF",
-        "zh": "Cosmos DF",
+        "en": "Cosmos DF (Deprecated)",
+        "ja": "コスモス-DF(非推奨)",
+        "zh": "Cosmos DF(不推荐使用)",
     },
     "コスモスBL": {
-        "en": "Cosmos BL",
-        "ja": "コスモス-BL",
-        "zh": "Cosmos BL",
+        "en": "Cosmos BL (Deprecated)",
+        "ja": "コスモス-BL(非推奨)",
+        "zh": "Cosmos BL(不推荐使用)",
     },
     "コスモスPC": {
-        "en": "Cosmos PC",
-        "ja": "コスモス-PC",
-        "zh": "Cosmos PC",
+        "en": "Cosmos PC (Deprecated)",
+        "ja": "コスモス-PC(非推奨)",
+        "zh": "Cosmos PC(不推荐使用)",
     },
     "バハ攻-短剣": {
         "en": "Bahamut Dagger",
@@ -3754,9 +3890,9 @@ var multiLangData = {
         "zh": "11.0 (GW Nightmare/Ul Baha HL/Proto Baha N)",
     },
     "敵防御12.0": {
-        "en": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
-        "ja": "12.0 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL)",
-        "zh": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+        "en": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL/Grand Order HL)",
+        "ja": "12.0 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL/ジ・オーダー・グランデHL)",
+        "zh": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL/Grand Order HL)",
     },
     "敵防御13.0": {
         "en": "13.0 (Omega II(4 Elements))",
