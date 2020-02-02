@@ -34,10 +34,9 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces, proceedIndex,
-    calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
-    calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
-    initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
+    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces,
+    calcCombinations, calcOneCombination,
+    getTesukatoripokaAmount, getTotalBuff,
     getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
 } = require('./global_logic.js');
 
@@ -49,8 +48,6 @@ var ResultList = CreateClass({
         var chara = newprops.chara;
 
         if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
-            var totalBuff = getTotalBuff(prof);
-
             // Since the parameter added later may be NaN, additional processing
             // If sortKey is not a NaN, use that, NaN if it's general attack power
             var sortkey = "averageCyclePerTurn";
@@ -104,16 +101,17 @@ var ResultList = CreateClass({
                 minSortKey[i] = -1
             }
 
-            var totals = getInitialTotals(prof, chara, summon);
-            treatSupportAbility(totals, chara, totalBuff);
+
             var itr = combinations.length;
-            var totalItr = itr * summon.length * Object.keys(totals).length;
+            var totalItr = itr * summon.length * Object.keys(getInitialTotals(prof, chara, summon)).length;
 
             // If necessary values for preprocessing are prepared here
             var minHP = (prof.minimumHP == undefined) ? undefined : parseInt(prof.minimumHP);
 
             for (var i = 0; i < itr; i = (i + 1) | 0) {
-                var oneres = calcOneCombination(combinations[i], summon, prof, arml, totals, totalBuff);
+                var totals = getInitialTotals(prof, chara, summon);
+                var totalBuff = getTotalBuff(prof);
+                var oneres = calcOneCombination(combinations[i], summon, prof, chara, arml, totals, totalBuff);
                 for (var j = 0; j < summon.length; j++) {
                     // For each result preprocessing
                     if (isValidResult(oneres[j], minHP)) {
@@ -149,7 +147,6 @@ var ResultList = CreateClass({
                         }
                     }
                 }
-                initializeTotals(totals)
             }
             // At this point, summonres should be an array of "array of associative arrays of result data corresponding to each summon"
             for (var i = 0; i < summon.length; i++) {
