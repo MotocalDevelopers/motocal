@@ -2286,6 +2286,12 @@ var supportAbilities = {
         "range": "own",
         "value": 0.20
     },
+    "damageUP_20_": {
+        "name": "与ダメージ上昇20%UP(色々)",
+        "type": "charaDamageUP",
+        "range": "all",
+        "value": 0.20
+    },
     "damageUP_OugiCapUP_20": {
         "name": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
         "type": "composite",
