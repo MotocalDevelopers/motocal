@@ -10,7 +10,7 @@ var TextWithTooltip = GlobalConst.TextWithTooltip;
 var selector = GlobalConst.selector;
 var turnList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var turnTypeList = {"normal": "通常攻撃", "ougi": "奥義", "ougiNoDamage": "奥義(ダメージ無し)"};
-var HPList = [100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+var HPList = [100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 var buffAmountList = [
     0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150,
     -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
@@ -221,7 +221,7 @@ var select_hplist = {
     }),
 };
 
-var {generateSimulationData, getTotalBuff, getInitialTotals, treatSupportAbility, calcOneCombination, initializeTotals} = require('./global_logic.js');
+var {generateSimulationData, getTotalBuff, getInitialTotals, calcOneCombination} = require('./global_logic.js');
 
 var Simulator = CreateClass({
     makeTurnBuff: function () {
@@ -233,10 +233,6 @@ var Simulator = CreateClass({
         var armlist = this.props.armlist;
         var summon = this.props.summon;
         var chara = this.props.chara;
-
-        var totalBuff = getTotalBuff(prof);
-        var totals = getInitialTotals(prof, chara, summon);
-        treatSupportAbility(totals, chara);
 
         var sortkey = "averageExpectedDamage";
 
@@ -254,36 +250,37 @@ var Simulator = CreateClass({
 
         var buffs = this.state.buffs;
 
-        for (var k = 0; k < maxTurn; k++) {
-            // Buff, HP etc for each turn
-            totalBuff["normal"] = 0.01 * buffs["全体バフ"][k].normal;
-            totalBuff["element"] = 0.01 * buffs["全体バフ"][k].element;
-            totalBuff["other"] = 0.01 * buffs["全体バフ"][k].other;
-            totalBuff["da"] = 0.01 * buffs["全体バフ"][k].DA;
-            totalBuff["ta"] = 0.01 * buffs["全体バフ"][k].TA;
-            totalBuff["ougiGage"] = 0.01 * buffs["全体バフ"][k].ougiGage;
-            totalBuff["ougiDamage"] = 0.01 * buffs["全体バフ"][k].ougiDamage;
-            totalBuff["additionalDamage"] = 0.01 * buffs["全体バフ"][k].additionalDamage;
+        for (var i = 0; i < storedCombinations.length; i++) {
+            for (var k = 0; k < maxTurn; k++) {
+                var totalBuff = getTotalBuff(prof);
+                var totals = getInitialTotals(prof, chara, summon);
+                // Buff, HP etc for each turn
+                totalBuff["normal"] = 0.01 * buffs["全体バフ"][k].normal;
+                totalBuff["element"] = 0.01 * buffs["全体バフ"][k].element;
+                totalBuff["other"] = 0.01 * buffs["全体バフ"][k].other;
+                totalBuff["da"] = 0.01 * buffs["全体バフ"][k].DA;
+                totalBuff["ta"] = 0.01 * buffs["全体バフ"][k].TA;
+                totalBuff["ougiGage"] = 0.01 * buffs["全体バフ"][k].ougiGage;
+                totalBuff["ougiDamage"] = 0.01 * buffs["全体バフ"][k].ougiDamage;
+                totalBuff["additionalDamage"] = 0.01 * buffs["全体バフ"][k].additionalDamage;
 
-            // Set individual buff and remaining HP
-            for (var key in totals) {
-                totals[key].remainHP = (buffs["全体バフ"][k].remainHP > buffs[key][k].remainHP) ? 0.01 * buffs[key][k].remainHP : 0.01 * buffs["全体バフ"][k].remainHP;
-                totals[key].normalBuff = 0.01 * buffs[key][k].normal;
-                totals[key].elementBuff = 0.01 * buffs[key][k].element;
-                totals[key].otherBuff = 0.01 * buffs[key][k].other;
-                totals[key].DABuff = 0.01 * buffs[key][k].DA;
-                totals[key].TABuff = 0.01 * buffs[key][k].TA;
-                totals[key].ougiGageBuff = 0.01 * buffs[key][k].ougiGage;
-                totals[key].ougiDamageBuff = 0.01 * buffs[key][k].ougiDamage;
-                totals[key].additionalDamageBuff = 0.01 * buffs[key][k].additionalDamage
-            }
+                // Set individual buff and remaining HP
+                for (var key in totals) {
+                    totals[key].remainHP = (buffs["全体バフ"][k].remainHP > buffs[key][k].remainHP) ? 0.01 * buffs[key][k].remainHP : 0.01 * buffs["全体バフ"][k].remainHP;
+                    totals[key].normalBuff = 0.01 * buffs[key][k].normal;
+                    totals[key].elementBuff = 0.01 * buffs[key][k].element;
+                    totals[key].otherBuff = 0.01 * buffs[key][k].other;
+                    totals[key].DABuff = 0.01 * buffs[key][k].DA;
+                    totals[key].TABuff = 0.01 * buffs[key][k].TA;
+                    totals[key].ougiGageBuff = 0.01 * buffs[key][k].ougiGage;
+                    totals[key].ougiDamageBuff = 0.01 * buffs[key][k].ougiDamage;
+                    totals[key].additionalDamageBuff = 0.01 * buffs[key][k].additionalDamage
+                }
 
-            for (var i = 0; i < storedCombinations.length; i++) {
-                var oneres = calcOneCombination(storedCombinations[i], summon, prof, armlist, totals, totalBuff);
+                var oneres = calcOneCombination(storedCombinations[i], summon, prof, chara, armlist, totals, totalBuff);
                 for (var j = 0; j < summon.length; j++) {
                     res[j][k].push({data: oneres[j], armNumbers: storedCombinations[i]});
                 }
-                initializeTotals(totals)
             }
         }
         return generateSimulationData(res, this.state, armlist, summon, prof, totalBuff, chara, storedCombinations, storedNames, this.props.locale);

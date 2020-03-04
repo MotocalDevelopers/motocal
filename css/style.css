@@ -171,6 +171,10 @@
     .input-suggest {
         color: #ffff00;
     }
+    
+    .charaList table tbody tr th {
+        white-space: pre-line;
+    }
 
     .summonList {
         width: 100%;
@@ -225,6 +229,7 @@
       vertical-align: middle;
       font-size: 11pt;
       text-align: center;
+      font-family: arial, sans-serif;
     }
 
     tbody.result>tr>td:first-child {
@@ -369,7 +374,7 @@
 
     .charaTemplateContent {
         width: 100%;
-        height: 90%;
+        height: 75%;
         overflow: scroll;
     }
 
@@ -531,5 +536,10 @@
         background-color: #FFFFFF;
         color: black;
         border: 1px solid #000000;
+    }
+
+    /* skill info */
+    span.is-over {
+        color: red;
     }
 }

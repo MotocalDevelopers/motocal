@@ -4,12 +4,12 @@ var {Label, Checkbox, FormControl, InputGroup, FormGroup, Button, ButtonGroup, P
 var CreateClass = require('create-react-class');
 var {RegisteredChara} = require('./template.js');
 var GlobalConst = require('./global_const.js');
+var {CriticalBuffList} = require('./components.js');
 
 // inject GlobalConst...
 var elementRelation = GlobalConst.elementRelation;
 var bahamutRelation = GlobalConst.bahamutRelation;
 var bahamutFURelation = GlobalConst.bahamutFURelation;
-var supportAbilities = GlobalConst.supportAbilities;
 var selector = GlobalConst.selector;
 var zenith = GlobalConst.zenith;
 var Jobs = GlobalConst.Jobs;
@@ -269,6 +269,7 @@ var Chara = CreateClass({
             support2: "none",
             support3: "none",
             ougiRatio: 4.5,
+            ougiBonusPlainDamage: 0,
             type: "attack",
             favArm: "dagger",
             favArm2: "none",
@@ -283,10 +284,13 @@ var Chara = CreateClass({
             elementBuff: 0,
             otherBuff: 0,
             otherBuff2: 0,
+            damageUPOnlyNormalDamageBuff: 0,
             additionalDamageBuff: 0,
+            supplementalDamageBuff: 0,
             daBuff: 0,
             taBuff: 0,
             ougiGageBuff: 0,
+            uplift: 0,
             ougiDamageBuff: 0,
             damageLimitBuff: 0,
             ougiDamageLimitBuff: 0,
@@ -295,6 +299,9 @@ var Chara = CreateClass({
             LBDA: 0,
             LBTA: 0,
             LBElement: 0,
+            LBOugiDamage: 0,
+            LBOugiDamageLimit: 0,
+            LBOugiGageBuff: 0,
             LBCritical1: "none",
             LBCritical2: "none",
             LBCritical3: "none",
@@ -309,6 +316,8 @@ var Chara = CreateClass({
             EXLBKonshin: 0,
             EXLBDA: 0,
             EXLBTA: 0,
+            criticalBuffCount: 0,
+            criticalBuff: [],
         };
     },
     componentDidMount: function () {
@@ -383,12 +392,25 @@ var Chara = CreateClass({
         newState["support2"] = newchara.support2;
         newState["support3"] = newchara.support3;
         newState["ougiRatio"] = newchara.ougiRatio;
+        newState["ougiBonusPlainDamage"] = newchara.ougiBonusPlainDamage;
 
         return newState;
     },
     handleEvent: function (key, e) {
         var newState = this.state;
         newState[key] = e.target.value;
+
+        if (key == "criticalBuffCount") {
+            if (newState.criticalBuff.length > newState.criticalBuffCount) {
+                newState.criticalBuff = newState.criticalBuff.slice(0, newState.criticalBuffCount);
+            }
+            for (let i = 0; i < newState.criticalBuffCount; i++) {
+                if (newState.criticalBuff[i] == undefined) {
+                    newState.criticalBuff[i] = {"value": 0.0, "attackRatio": 0.0};
+                }
+            }
+        }
+
         this.setState(newState)
     },
     handleSelectEvent: function (key, e) {
@@ -399,6 +421,7 @@ var Chara = CreateClass({
         } else {
             newState[key] = e.target.value;
         }
+
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false);
     },
@@ -551,23 +574,30 @@ var Chara = CreateClass({
                     </tr>
 
                     <tr>
+                        <th className="bg-primary">{intl.translate("奥義追加ダメージ(無属性固定)", locale)}</th>
+                        <td><FormControl type="number" min="0" step="333333" max="9000000" value={this.state.ougiBonusPlainDamage}
+                                         onBlur={this.handleOnBlur} onChange={this.handleEvent.bind(this, "ougiBonusPlainDamage")}/>
+                        </td>
+                    </tr>
+
+                    <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}1</th>
                         <td><FormControl componentClass="select" value={this.state.support}
-                                         onChange={this.handleSelectEvent.bind(this, "support")}>{selector.supportAbilities}</FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "support")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}2</th>
                         <td><FormControl componentClass="select" value={this.state.support2}
-                                         onChange={this.handleSelectEvent.bind(this, "support2")}>{selector.supportAbilities}</FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "support2")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
 
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}3</th>
                         <td><FormControl componentClass="select" value={this.state.support3}
-                                         onChange={this.handleSelectEvent.bind(this, "support3")}>{selector.supportAbilities}</FormControl>
+                                         onChange={this.handleSelectEvent.bind(this, "support3")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
 
@@ -602,6 +632,17 @@ var Chara = CreateClass({
                                                  onChange={this.handleSelectEvent.bind(this, "otherBuff2")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
+                            <tr key="criticalBuff">
+                                <th className="bg-primary">{intl.translate("クリティカルバフ", locale)}</th>
+                                <td>
+                                    <CriticalBuffList locale={locale}
+                                        onBlur={this.handleOnBlur.bind(this, null)}
+                                        onCountChange={(count) => this.setState({criticalBuffCount: count})}
+                                        label="criticalBuff"
+                                        criticalArray={this.state.criticalBuff}
+                                        initialCount={this.state.criticalBuffCount} />
+                                </td>
+                            </tr>,
                             <tr key="daBuff">
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.daBuff}
@@ -620,10 +661,22 @@ var Chara = CreateClass({
                                                  onChange={this.handleSelectEvent.bind(this, "additionalDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
+                            <tr key="supplementalDamageBuff">
+                                <th className="bg-primary">{intl.translate("supplementalDamageBuff", locale)}</th>
+                                <td><FormControl type="number" value={this.state.supplementalDamageBuff}
+                                                 onBlur={this.handleOnBlur} onChange={this.handleSelectEvent.bind(this, "supplementalDamageBuff")}></FormControl>
+                                </td>
+                            </tr>,
                             <tr key="ougiGageBuff">
                                 <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.ougiGageBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiGageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="uplift">
+                                <th className="bg-primary">{intl.translate("高揚", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.uplift}
+                                                 onChange={this.handleSelectEvent.bind(this, "uplift")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>,
                             <tr key="ougiDamageBuff">
@@ -642,6 +695,12 @@ var Chara = CreateClass({
                                 <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
                                 <td><InputGroup><FormControl componentClass="select" value={this.state.ougiDamageLimitBuff}
                                                  onChange={this.handleSelectEvent.bind(this, "ougiDamageLimitBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
+                                </InputGroup></td>
+                            </tr>,
+                            <tr key="damageUPOnlyNormalDamageBuff">
+                                <th className="bg-primary">{intl.translate("与ダメージUPバフ(通常攻撃のみ)", locale)}</th>
+                                <td><InputGroup><FormControl componentClass="select" value={this.state.damageUPOnlyNormalDamageBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "damageUPOnlyNormalDamageBuff")}>{selector.buffLevel}</FormControl><InputGroup.Addon>%</InputGroup.Addon>
                                 </InputGroup></td>
                             </tr>
                         ]
@@ -696,6 +755,33 @@ var Chara = CreateClass({
                                     <FormControl componentClass="select" value={this.state.LBElement}
                                                  onChange={this.handleSelectEvent.bind(this, "LBElement")}>
                                         {selector.limitBonusElementList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiDamage">
+                                <th className="bg-primary">{intl.translate("奥義ダメージUP", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiDamage}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiDamage")}>
+                                        {selector.limitBonusOugiDamageList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiDamageLimit">
+                                <th className="bg-primary">{intl.translate("奥義ダメージ上限アップ", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiDamageLimit}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiDamageLimit")}>
+                                        {selector.limitBonusOugiDamageLimitList}
+                                    </FormControl>
+                                <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBOugiGageBuff">
+                                <th className="bg-primary">{intl.translate("奥義ゲージ上昇率アップ", locale)}</th>
+                                <td><InputGroup>
+                                    <FormControl componentClass="select" value={this.state.LBOugiGageBuff}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBOugiGageBuff")}>
+                                        {selector.limitBonusOugiGageBuffList}
                                     </FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
                             </tr>,

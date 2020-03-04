@@ -1,4 +1,13 @@
-var {getTypeBonus, calcDefenseDebuff, calcLBHaisuiValue, isDarkOpus} = require('./global_logic.js');
+const {
+    getTypeBonus,
+    calcDefenseDebuff,
+    calcLBHaisuiValue,
+    isDarkOpus,
+    calcOugiFixedDamage,
+    sum,
+    filterCombinations,
+    _initLimitValues,
+} = require('./global_logic.js');
 
 describe('#getTypeBonus', () => {
     test('when self element and enemy element is not set, type bonus is 1', () => {
@@ -74,20 +83,20 @@ describe('#calcLBHaisui', () => {
         [10, 0.04],
     ];
 
-    test.each(exlbHaisuiMaxTable, 'Haisui max value', (amount, expected) => {
+    test.each(exlbHaisuiMaxTable)('Haisui slv%d max is %d', (amount, expected) => {
         expect(haisui(amount, 0.0)).toBeCloseTo(expected);
     });
 
-    test.each(exlbHaisuiMinTable, 'Haisui min value (until HP 75.1%)', (amount) => {
+    test.each(exlbHaisuiMinTable)('Haisui slv%d min is 0.01 (until HP 75.1%)', (amount) => {
         expect(haisui(amount, 1.0)).toBeCloseTo(0.01);
         expect(haisui(amount, 0.751)).toBeCloseTo(0.01);
     });
 
-    test.each(exlbKonshinMaxTable, 'konshin max value', (amount, expected) => {
+    test.each(exlbKonshinMaxTable)('konshin slv%d max is %d', (amount, expected) => {
         expect(konshin(amount, 1.0)).toBeCloseTo(expected);
     });
 
-    test.each(exlbKonshinMinTable, 'konshin min value', (amount, expected) => {
+    test.each(exlbKonshinMinTable)('konshin slv%d min is %d', (amount, expected) => {
         expect(konshin(amount, 0.0)).toBeCloseTo(expected);
     });
 
@@ -106,6 +115,7 @@ describe('#calcLBHaisui', () => {
         // TODO: what illegal remainHP should return?
     });
 });
+
 
 describe('#isDarkOpus', () => {
     test('Checking Dark Opus arm', () => {
@@ -136,4 +146,80 @@ describe('#isDarkOpus', () => {
         expect(isDarkOpus({"name": "Staff of epudiation"})).toBeFalsy();
     });
 
+});
+
+describe('#calcOugiFixedDamage', () => {
+    test('ougi fixed damage for Djeeta is 3000', () => {
+        expect(calcOugiFixedDamage("Djeeta")).toBe(3000);
+    });
+
+    test('ougi fixed damage for others is 2000', () => {
+        expect(calcOugiFixedDamage("test")).toBe(2000);
+    });
+
+    test('ougi fixed damage for empty key is 2000', () => {
+        expect(calcOugiFixedDamage("")).toBe(2000);
+    });
+});
+
+describe('#sum', () => {
+    let testArray1 = [1, 2, 3, 4];
+    let testArray2 = [-1, 0, 1, 0];
+    let testArray3 = ['a', 'b', 'c', 'd'];
+
+    test('Checking valid array totals', () => {
+        expect(sum(testArray1)).toBe(10);
+        expect(sum(testArray2)).toBe(0);
+    });
+
+    test('Checking invalid array totals', () => {
+        expect(sum(testArray3)).toBeNaN();
+    });
+});
+
+describe('#filterCombinations', () => {
+    let testArray1 = [[0, 0, 0, 1]];
+    let testArray2 = [[1, 1, 2, 3], [2, 1, 2, 2], [0, 3, 0, 3], [], [0, 0, 0, 0], [6, 0, 0, 1]];
+    let result1 = [];
+    let result2 = [[1, 1, 2, 3], [2, 1, 2, 2], [6, 0, 0, 1]];
+
+    test('RuleMaxSize disabled', () => {
+        expect(filterCombinations(testArray1, 2, false)).toStrictEqual(testArray1);
+    });
+
+    test('Filtering lower size combinations', () => {
+        expect(filterCombinations(testArray1, 2, true)).toStrictEqual(result1);
+        expect(filterCombinations(testArray2, 7, true)).toStrictEqual(result2);
+    });
+});
+
+describe('#_initLimitValues', () => {
+    // using "let" here for tests
+    let testLimitValues = [];
+
+    beforeAll(() => {
+        testLimitValues = [[3000, 0.1], [2000, 0.5], [1000, 0.8]];
+    });
+
+    test('generate new limit values', () => {
+        expect(_initLimitValues(2, testLimitValues)).toStrictEqual([[6000, 0.1], [4000, 0.5], [2000, 0.8]]);
+        expect(_initLimitValues(1, testLimitValues)).toStrictEqual(testLimitValues); // Ok, nothing changed
+        expect(_initLimitValues(1, testLimitValues)).not.toBe(testLimitValues); // No, not same instance
+    });
+
+    test('does not have side effect to the source array', () => {
+        const copyValues = testLimitValues.slice(); // note: not deep copy
+        const deepCopyValues = testLimitValues.map(value => value.slice());
+        const limitValues = _initLimitValues(1.0, testLimitValues);
+
+        testLimitValues[0][0] = null; // for side effect test
+
+        expect(limitValues).not.toStrictEqual(testLimitValues);
+        expect(limitValues).toStrictEqual([[3000, 0.1], [2000, 0.5], [1000, 0.8]]);
+
+        // copyValues has side effect.
+        expect(copyValues).toStrictEqual(testLimitValues);
+        // deepCopyValues has no side effect.
+        expect(deepCopyValues).not.toStrictEqual(testLimitValues);
+    });
 });
