@@ -161,6 +161,10 @@ skillnamelist["sunbladeKonshin"] = {
     u"道天の眩耀": "light"
 }
 
+skillnamelist["diaboliHaisui"] = {
+    u"普天の呼び声": "dark"
+}
+
 # normalM
 skillnamelist["normalM"] = {
     u"業火の攻刃": "fire",
@@ -250,6 +254,15 @@ skillnamelist["normalKatsumiM"] = {
     u"竜巻の克己": "wind",
     u"雷電の克己": "light",
     u"憎悪の克己": "dark"
+}
+
+skillnamelist["normalElementM"] = {
+    u"渦潮の進境": "water",
+    u"雷電の進境": "light"
+}
+
+skillnamelist["kaijinnoyogen"] = {
+    u"海神の予言": "water"
 }
 
 skillnamelist["normalRasetsuM"] = {
@@ -410,7 +423,7 @@ skillnamelist["normalHiouL"] = {
 skillnamelist["normalHissatsuM"] = {
     u"業火の必殺": "fire",
     u"渦潮の必殺": "water",
-    u"地裂の必殺": "earth",
+    u"大地の必殺": "earth",
     u"竜巻の必殺": "wind",
     u"雷電の必殺": "light",
     u"憎悪の必殺": "dark"
@@ -822,6 +835,14 @@ skillnamelist["strengthL"] = {
     u"デヴァイサー": "wind",
     u"シャークアタック！": "dark",
     u"産地直送の攻刃": "water",
+    u"スクールアイドル": "wind",
+    u"ワン・ライト": "light",
+    u"破竜の攻刃": "earth",
+    u"殺戮の女神": "wind",
+    u"シャドウオブアームズ": "dark",
+    u"残る霞火、あへなし": "light",
+    u"暴風の残滓": "wind",
+    u"ガチャピンの攻刃": "wind",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -829,6 +850,10 @@ skillnamelist["exATKandHPM"] = {
     u"翠薔薇の髄": "wind",
     u"橙薔薇の髄": "earth",
     u"紅薔薇の髄": "fire",
+}
+
+skillnamelist["zwei-echo"] = {
+    u"パープル・ブロウ": "dark",
 }
 
 skillnamelist["strengthLL"] = {
@@ -910,10 +935,16 @@ skillnamelist["deleterious-covenant"] = {u"致命の誓約": "light"}
 skillnamelist["calamitous-covenant"] = {u"災禍の誓約": "dark"}
 
 # Cosmos
-skillnamelist["cosmosAT"] = {u"アタック・スタンス": "light"}
-skillnamelist["cosmosBL"] = {u"バランス・スタンス": "light"}
-skillnamelist["cosmosDF"] = {u"ディフェンド・スタンス": "light"}
-skillnamelist["cosmosPC"] = {u"ペキューリア・スタンス": "light"}
+skillnamelist["cosmos-swordII"] = {u"ソード・オブ・コスモスII": "light"}
+skillnamelist["cosmos-daggerII"] = {u"ダガー・オブ・コスモスII": "light"}
+skillnamelist["cosmos-spearII"] = {u"ランス・オブ・コスモスII": "light"}
+skillnamelist["cosmos-axeII"] = {u"サイス・オブ・コスモスII": "light"}
+skillnamelist["cosmos-wandII"] = {u"ロッド・オブ・コスモスII": "light"}
+skillnamelist["cosmos-gunII"] = {u"ガン・オブ・コスモスII": "light"}
+skillnamelist["cosmos-fistII"] = {u"ガントレット・オブ・コスモスII": "light"}
+skillnamelist["cosmos-bowII"] = {u"アロー・オブ・コスモスII": "light"}
+skillnamelist["cosmos-musicII"] = {u"ハープ・オブ・コスモスII": "light"}
+skillnamelist["cosmos-katanaII"] = {u"ブレイド・オブ・コスモスII": "light"}
 skillnamelist["cosmos-sword"] = {u"ソード・オブ・コスモス": "light"}
 skillnamelist["cosmos-dagger"] = {u"ダガー・オブ・コスモス": "light"}
 skillnamelist["cosmos-spear"] = {u"ランス・オブ・コスモス": "light"}
@@ -922,8 +953,18 @@ skillnamelist["cosmos-wand"] = {u"ロッド・オブ・コスモス": "light"}
 skillnamelist["cosmos-gun"] = {u"ガン・オブ・コスモス": "light"}
 skillnamelist["cosmos-fist"] = {u"ガントレット・オブ・コスモス": "light"}
 skillnamelist["cosmos-bow"] = {u"アロー・オブ・コスモス": "light"}
-skillnamelist["cosmos-katana"] = {u"ブレイド": "light"}
 skillnamelist["cosmos-music"] = {u"ハープ・オブ・コスモス": "light"}
+skillnamelist["cosmos-katana"] = {u"ブレイド・オブ・コスモス": "light"}
+skillnamelist["cosmos-sword-limit"] = {u"秩序の蒼剣": "light"}
+skillnamelist["cosmos-dagger-limit"] = {u"秩序の蒼刃": "light"}
+skillnamelist["cosmos-spear-limit"] = {u"秩序の蒼槍": "light"}
+skillnamelist["cosmos-axe-limit"] = {u"秩序の蒼鎌": "light"}
+skillnamelist["cosmos-wand-limit"] = {u"秩序の蒼杖": "light"}
+skillnamelist["cosmos-gun-limit"] = {u"秩序の蒼銃": "light"}
+skillnamelist["cosmos-fist-limit"] = {u"秩序の蒼拳": "light"}
+skillnamelist["cosmos-bow-limit"] = {u"秩序の蒼弓": "light"}
+skillnamelist["cosmos-music-limit"] = {u"秩序の蒼琴": "light"}
+skillnamelist["cosmos-katana-limit"] = {u"秩序の蒼刀": "light"}
 
 # Tenshi
 skillnamelist["tenshiShukufukuIII"] = {
@@ -960,7 +1001,9 @@ skillnamelist["shinTenNoInori"] = {
 
 # Damage cap up
 skillnamelist["normalDamageLimit7"] = {
+    u"炎熱の刀身": "fire",
     u"賢者の加護": "earth",
+    u"英雄の体躯": "light"
 }
 skillnamelist["normalDamageLimit10"] = {
     u"靂天の極致": "dark",
@@ -981,6 +1024,21 @@ skillnamelist["chainForce"] = {
     u"チェインフォース": "dark",
 }
 
+# New epic weapons
+skillnamelist["epic-grandEpic"] = {
+    u"エピックブランド・ゲイン": "none",
+}
+skillnamelist["epic-staffResonance"] = {
+    u"レゾナンス・スタッフ": "water",
+}
+skillnamelist["epic-heroicTale"] = {
+    u"ヒロイック・テイル": "earth",
+}
+skillnamelist["epic-absoluteEquality"] = {
+    u"ソール・イコーリティ": "dark",
+}
+
+
 # Character specific weapon
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
 skillnamelist["washiouKekkai"] = {u"鷲王の結界": "fire"}
@@ -999,6 +1057,10 @@ skillnamelist["normalL"][u"狙撃の極意"] = "water"
 
 # Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
+skillnamelist["one_night_party"] = {u"ワンナイ・パーリー": "none"}
+skillnamelist["downfall_of_ignorance"] = {u"無明衰滅": "none"}
+skillnamelist["succession_of_knighthood"] = {u"騎士の血脈": "none"}
+
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
@@ -1011,6 +1073,10 @@ armtypelist[u"格闘"] = "fist"
 armtypelist[u"弓"] = "bow"
 armtypelist[u"楽器"] = "music"
 armtypelist[u"刀"] = "katana"
+
+SERIES = {
+    u"エピックウェポン": "epic",
+}
 
 ########################################################################################################################
 filename = inspect.getframeinfo(inspect.currentframe()).filename
@@ -1130,7 +1196,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                 newdict["skill3"] = skill3
                 newdict["element3"] = element3
 
-            if index == 9:
+            elif index == 9:
                 newdict["minhp"] = int(value)
             elif index == 10:
                 newdict["minattack"] = int(value)
@@ -1141,8 +1207,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             elif index == 13:
                 pass
             elif index == 14:
-                # category
-                pass
+                newdict["series"] = SERIES.get(value, "none")
             elif index == 15:
                 if PROCESS_TYPE_SSR:
                     if jougen_5_pattern.search(value):

@@ -56,6 +56,11 @@ var multiLangData = {
         "ja": "武器",
         "zh": "武器",
     },
+    "編成名": {
+        "en": "Set Name",
+        "ja": "編成名",
+        "zh": "編成名",
+    },
     "保存": {
         "en": "Save",
         "ja": "保存",
@@ -112,7 +117,7 @@ var multiLangData = {
         "zh": "无职业",
     },
     "無し": {
-        "en": "none",
+        "en": "None",
         "ja": "無し",
         "zh": "无",
     },
@@ -201,18 +206,38 @@ var multiLangData = {
         "ja": "土/光",
         "zh": "土/光",
     },
+    "全性別": {
+        "en": "All sexes",
+        "ja": "全性別",
+        "zh": "All sexes",
+    },
+    "全タイプ": {
+        "en": "All types",
+        "ja": "全タイプ",
+        "zh": "All types",
+    },
+    "全種族": {
+        "en": "All races",
+        "ja": "全種族",
+        "zh": "All races",
+    },
+    "全得意武器": {
+        "en": "All arm type",
+        "ja": "全得意武器",
+        "zh": "All arm type",
+    },
     "全属性": {
         "en": "All",
         "ja": "全属性",
         "zh": "全属性",
     },
     "無": {
-        "en": "Non",
+        "en": "None",
         "ja": "無",
         "zh": "无",
     },
     "無（技巧あり）": {
-        "en": "Non (but Crit.)",
+        "en": "None (with Crit.)",
         "ja": "無（技巧あり）",
         "zh": "无 (有技巧)",
     },
@@ -235,6 +260,16 @@ var multiLangData = {
         "en": "Element Buff",
         "ja": "属性バフ",
         "zh": "属性Buff",
+    },
+    "与ダメージUPバフ(通常攻撃のみ)": {
+        "en": "Boost DMG Buff (only one-foe attacks)",
+        "ja": "与ダメージUPバフ(通常攻撃のみ)",
+        "zh": "与ダメージUPバフ(通常攻撃のみ)",
+    },
+    "与ダメージUPバフ(通常攻撃のみ)説明": {
+        "en": "DMG and DMG CAP for one-foe attacks are amplified. EX, Kumbhira, Seox 2nd Skill",
+        "ja": "通常攻撃の最終的なダメージが上昇します。クビラ2アビなど",
+        "zh": "通常攻撃の最終的なダメージが上昇します。クビラ2アビなど",
     },
     "属性バフ説明": {
         "en": "Element Buff. Ultima Weapon(30%) etc.",
@@ -372,10 +407,15 @@ var multiLangData = {
         "zh": "C.A. DMG Buff",
     },
 
-    "与ダメージ上昇": {
-        "en": "Damage UP ",
-        "ja": "与ダメージ上昇",
+    "与ダメージUP": {
+        "en": "Boost DMG",
+        "ja": "与ダメージUP",
         "zh": "造成伤害上升",
+    },
+    "与ダメージUP(通常攻撃のみ)": {
+        "en": "Boost DMG (only one-foe attacks)",
+        "ja": "与ダメージUP(通常攻撃のみ)",
+        "zh": "造成伤害上升(通常攻撃)",
     },
     "個別バフ": {
         "en": "Indiv Buff", //a.k.a: Personal buff
@@ -829,7 +869,7 @@ var multiLangData = {
         "zh": "攻击力",
     },
     "マスボATK説明": {
-        "en": "The value of Job Master bonus \"ATK+○○%\"",
+        "en": "The value of Job Master bonus \"ATK+**%\"",
         "ja": "ジョブマスターボーナスの\"攻撃力+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"攻击力+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -839,7 +879,7 @@ var multiLangData = {
         "zh": "HP",
     },
     "マスボHP説明": {
-        "en": "The value of Job Master bonus \"HP+○○%\"",
+        "en": "The value of Job Master bonus \"HP+**%\"",
         "ja": "ジョブマスターボーナスの\"HP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"HP+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -849,7 +889,7 @@ var multiLangData = {
         "zh": "DA",
     },
     "マスボDA説明": {
-        "en": "The value of Job Master bonus \"DA+○○%\"",
+        "en": "The value of Job Master bonus \"DA+**%\"",
         "ja": "ジョブマスターボーナスの\"DA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DA+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -859,7 +899,7 @@ var multiLangData = {
         "zh": "TA",
     },
     "マスボTA説明": {
-        "en": "The value of Job Master bonus \"TA+○○%\"",
+        "en": "The value of Job Master bonus \"TA+**%\"",
         "ja": "ジョブマスターボーナスの\"TA+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"TA+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
@@ -869,11 +909,30 @@ var multiLangData = {
         "zh": "DMG Cap",
     },
     "マスボダメ上限説明": {
-        "en": "The value of Job Master bonus \"DMG Cap+○○%\"",
+        "en": "The value of Job Master bonus \"DMG Cap+**%\"",
         "ja": "ジョブマスターボーナスの\"ダメージ上限+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
         "zh": "职业满级Bonus中\"DMG Cap+○○％\"中的值\n(和各职业的Bonus是独立的)",
     },
-
+    "マスボ奥義ゲージ": {
+        "en": "One-foe Attack Bonus Charge Gain",
+        "ja": "通常攻撃時の奥義ゲージUP",
+        "zh": "One-foe Attack Bonus Charge Gain",
+    },
+    "マスボ奥義ゲージ説明": {
+        "en": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
+        "ja": "ジョブマスターボーナスの\"通常攻撃時の奥義ゲージ上昇+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "The value of Job Master bonus \"Speed up charge bar during one-foe attacks.+**%\"",
+    },
+    /*"マスボメイン武器攻撃力": {
+        "en": "main weapon's ATK",
+        "ja": "メイン武器攻撃力",
+        "zh": "主武器攻撃力",
+    },
+    "マスボメイン武器攻撃力UP説明": {
+        "en": "The value of Job Master bonus \"Boost to main weapon's ATK when main weapon is a ***+**%\"",
+        "ja": "。ジョブマスターボーナスの\"メイン武器が○○の時、メイン武器の攻撃力UP+○○％\"の値です\n(各ジョブごとのボーナスとは別です)",
+        "zh": "The value of Job Master bonus \"Boost to main weapon's ATK when main weapon is a ***+**%\"",
+    }, */
     "ジータさん属性": {
         "en": "Player's Element",
         "ja": "ジータさん\n属性",
@@ -1093,6 +1152,16 @@ var multiLangData = {
         "en": "Nekomancer",
         "ja": "黒猫道士",
         "zh": "黑猫道士",
+    },
+    "トーメンター": {
+        "en": "Tormentor",
+        "ja": "トーメンター",
+        "zh": "トーメンター",
+    },
+    "ライジングフォース": {
+        "en": "Rising Force",
+        "ja": "ライジングフォース",
+        "zh": "ライジングフォース",
     },
     "アルケミスト": {
         "en": "Alchemist",
@@ -1430,7 +1499,7 @@ var multiLangData = {
         "zh": "有利",
     },
     "非有利": {
-        "en": "Non-advantage",
+        "en": "Unfavorable",
         "ja": "非有利",
         "zh": "非有利",
     },
@@ -1599,6 +1668,11 @@ var multiLangData = {
         "ja": "マグナ進境(大)(最大時)",
         "zh": "方阵属性攻击力(大)",
     },
+    "通常進境(中)(最大時)": {
+        "en": "Normal Element ATK M",
+        "ja": "通常進境(中)(最大時)",
+        "zh": "通常属性攻击力(中)",
+    },
     "アンノウン": {
         "en": "Unknown",
         "ja": "アンノウン",
@@ -1710,9 +1784,9 @@ var multiLangData = {
         "zh": "加入图表",
     },
     "本": {
-        "en": "",
-        "ja": "",
-        "zh": "",
+        "en": "x",
+        "ja": "本",
+        "zh": "把",
     },
     "パーティ全体バフ": {
         "en": "Buff for Party",
@@ -1755,7 +1829,7 @@ var multiLangData = {
         "zh": "好友的召唤石",
     },
     "合計攻撃力": {
-        "en": "Total ATK",
+        "en": "Summons Total ATK",
         "ja": "合計攻撃力",
         "zh": "合计攻击力",
     },
@@ -1765,7 +1839,7 @@ var multiLangData = {
         "zh": "合计攻击力",
     },
     "合計HP": {
-        "en": "Total HP",
+        "en": "Summons Total HP",
         "ja": "合計HP",
         "zh": "合计HP",
     },
@@ -1785,9 +1859,9 @@ var multiLangData = {
         "zh": "DA加护",
     },
     "DA加護説明": {
-        "en": "Halluel and Malluel(5~10%)etc.",
+        "en": "Halluel and Malluel(5~10%) etc.",
         "ja": "ハールート・マールート(5~10%)など",
-        "zh": "Halluel and Malluel(5~10%)etc.",
+        "zh": "Halluel and Malluel(5~10%) etc.",
     },
     "TA加護": {
         "en": "TA Aura",
@@ -1840,9 +1914,9 @@ var multiLangData = {
         "zh": "Shiva Buff",
     },
     "シヴァバフ説明": {
-        "en": "All Allies gain 100% other buff, and DMG cap +500000.",
-        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を500000加算します。",
-        "zh": "All Allies gain 100% other buff, and DMG cap +500000.",
+        "en": "All Allies gain 100% other buff, and raise DMG cap.",
+        "ja": "パーティ全体に別枠100%を付与し、ダメージ上限を増加します。",
+        "zh": "All Allies gain 100% other buff, and raise DMG cap.",
     },
     "内容を消去": {
         "en": "Delete",
@@ -1965,6 +2039,11 @@ var multiLangData = {
         "ja": "武器名",
         "zh": "武器名",
     },
+    "カテゴリー": {
+        "en": "Category",
+        "ja": "カテゴリー",
+        "zh": "カテゴリー",
+    },
     "スキル": {
         "en": "Skill",
         "ja": "スキル",
@@ -1984,6 +2063,11 @@ var multiLangData = {
         "en": "Maximum",
         "ja": "最大本数",
         "zh": "最多数量",
+    },
+    "最小": {
+        "en": "Min",
+        "ja": "最小",
+        "zh": "最少",
     },
     "何本追加": {
         "en": "How many?",
@@ -2026,6 +2110,16 @@ var multiLangData = {
         "ja": "人間/エルーン",
         "zh": "人間/エルーン",
     },
+    "人間/ドラフ": {
+        "en": "Human/Draph",
+        "ja": "人間/ドラフ",
+        "zh": "人間/ドラフ",
+    },
+    "エルーン/ドラフ": {
+        "en": "Erune/Draph",
+        "ja": "エルーン/ドラフ",
+        "zh": "エルーン/ドラフ",
+    },
     "星晶獣": {
         "en": "Primal",
         "ja": "星晶獣",
@@ -2052,6 +2146,18 @@ var multiLangData = {
         "ja": "不詳",
         "zh": "不詳",
     },
+    "男/女": {
+        "en": "Male/Female",
+        "ja": "男/女",
+        "zh": "男/女",
+    },
+    // Series
+    "エピックウェポン": {
+        "en": "Epic Weapon",
+        "ja": "エピックウェポン",
+        "zh": "エピックウェポン",
+    },
+
     //support abilities
     "なし": {
         "en": "None",
@@ -2153,6 +2259,11 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量100%UP(オクトー)",
         "zh": "奥義ゲージ上昇量100%UP(オクトー)",
     },
+    "奥義ゲージ上昇量25%DOWN。(サラ(光属性ver))": {
+        "en": "Charge bar fills up 25% slower. (Sara (Light))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(サラ(光属性ver))",
+        "zh": "Charge bar fills up 25% slower. (Sara (Light))",
+    },
     "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)": {
         "en": "Charge bar fills up 35% slower. (Geisenborger)",
         "ja": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
@@ -2163,20 +2274,30 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
         "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
     },
+    "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))": {
+        "en": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "zh": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+    },
     "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))": {
         "en": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",
         "ja": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
         "zh": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",
     },
-    "全体奥義ダメージ50%UP(シエテ)": {
-        "en": "50% boost to C.A. DMG for all allies. (Seofon)",
-        "ja": "全体奥義ダメージ50%UP(シエテ)",
-        "zh": "全体奥義ダメージ50%UP(シエテ)",
+    "風属性奥義ダメージ50%UP(シエテ)": {
+        "en": "50% boost to C.A. DMG for wind allies. (Seofon)",
+        "ja": "風属性奥義ダメージ50%UP(シエテ)",
+        "zh": "風属性奥義ダメージ50%UP(シエテ)",
     },
-    "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)": {
-        "en": "50% boost to C.A. DMG and 10% boost to C.A. DMG cap for all allies. (5★ Seofon)",
-        "ja": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
-        "zh": "全体奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+    "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)": {
+        "en": "10% boost to C.A. DMG for all allies. (μ's Second-Years)",
+        "ja": "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)",
+        "zh": "全体奥義ダメージ10%UP(園田海未＆高坂穂乃果＆南ことり)",
+    },
+    "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)": {
+        "en": "50% boost to C.A. DMG and 10% boost to C.A. DMG cap for wind allies. (5★ Seofon)",
+        "ja": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
+        "zh": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
     },
     "全体背水効果(ザルハメリナ)": {
         "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina)",
@@ -2258,20 +2379,30 @@ var multiLangData = {
         "ja": "与ダメージ上昇20%UP(色々)",
         "zh": "与ダメージ上昇20%UP(色々)",
     },
-    "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)": {
+    "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)": {
         "en": "20% Boost to Damage and C.A. DMG Cap. (5★ Eternals)",
-        "ja": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
-        "zh": "与ダメージ上昇20%UP&奥義ダメージ上限20%UP(最終十天衆)",
+        "ja": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
+        "zh": "与ダメージ上昇20%UP&奥義ダメージ上限UP(最終十天衆)",
     },
-    "奥義ダメージ上限20%UP(最終十天衆)": {
-        "en": "20% Boost to C.A. DMG Cap. (5★ Eternals)",
-        "ja": "奥義ダメージ上限20%UP(最終十天衆)",
-        "zh": "奥義ダメージ上限20%UP(最終十天衆)",
+    "奥義ダメージ上限UP(最終十天衆)": {
+        "en": "Boost to C.A. DMG Cap. (5★ Eternals)",
+        "ja": "奥義ダメージ上限UP(最終十天衆)",
+        "zh": "奥義ダメージ上限UP(最終十天衆)",
     },
-    "奥義ダメージ上限25%UP(ルリア,SSRロボミ)": {
-        "en": "25% Boost to C.A. DMG Cap. (Robomi (SSR), Lyria)",
-        "ja": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
-        "zh": "奥義ダメージ上限25%UP(ルリア,SSRロボミ)",
+    "奥義ダメージ上限UP(ルリア,SSRロボミ)": {
+        "en": "Boost to C.A. DMG Cap. (Robomi (SSR), Lyria)",
+        "ja": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
+        "zh": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
+    },
+    "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)": {
+        "en": "Boost to C.A. DMG Cap, Change C.A. Multiplier to 12.5. (Dorothy and Claudia 200% C.A.)",
+        "ja": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
+        "zh": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
+    },
+    "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)": {
+        "en": "Boost to C.A. DMG Cap, Change C.A. Multiplier to 7.0. (Mirin 200% C.A.)",
+        "ja": "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)",
+        "zh": "奥義ダメージ上限UP&奥義倍率7.0(ミリン200%奥義時)",
     },
     "奥義ダメージ上限100%UP(シャリオス17世)": {
         "en": "100% Boost to C.A. DMG Cap. (Charioce XVII)",
@@ -2283,10 +2414,26 @@ var multiLangData = {
         "ja": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
         "zh": "武器スキルの得意武器/タイプ/種族の発動条件を全て満たす(カイム)",
     },
+    "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)": {
+        "en": "When Sub Ally: When all equipped weapons are different, 20% boost to Earth allies' ATK, 50% boost to DEF, and 10% boost to damage cap. (Caim)",
+        "ja": "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)",
+        "zh": "サブメンバー時効果:装備している武器が全て異なる時、土属性キャラの攻撃UP/防御UP/ダメージ上限UP(カイム)",
+    },
     "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)": {
         "en": "Increase Aegis-type and Majesty-type weapon skills' 'Boost to max HP' effect by 30%. (Lancelot and Vane)",
         "ja": "スキル「守護」と「神威」の効果による自分のHP上昇量UP。(白竜の双騎士 ランスロット＆ヴェイン)",
         "zh": "Increase Aegis-type and Majesty-type weapon skills' 'Boost to max HP' effect by 30%. (Lancelot and Vane)",
+    },
+
+    "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))": {
+        "en": "Amplify Meteon's one-foe attack damage by 50%. 110% boost to C.A. damage, 30% boost to C.A. damage cap, and 30% boost to dodge rate.Upon one-foe attack: Gain Charge Bar +10%. 500% Bonus Wind damage to all foes.(Meteon (Holiday))",
+        "ja": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
+        "zh": "通常攻撃の与ダメージ大幅UP/奥義性能UP/回避率UP/通常攻撃後に敵全体に風属性ダメージを与え自分の奥義ゲージUP(10%)(ミュオン(クリスマスver))",
+    },
+    "連続攻撃が発生しない(ミュオン(クリスマスver))": {
+        "en": "Doesn't deal multiattacks.(Meteon (Holiday))",
+        "ja": "連続攻撃が発生しない(ミュオン(クリスマスver))",
+        "zh": "連続攻撃が発生しない(ミュオン(クリスマスver))",
     },
     "味方全体の強化効果「火属性攻撃UP」の効果30%UP。(シヴァ)": {
         "en": "Fire Allies gain an additional 30% boost to Element ATK when affected by Element ATK Buff. (Shiva)",
@@ -2363,6 +2510,11 @@ var multiLangData = {
         "ja": "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)",
         "zh": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
     },
+    "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)": {
+        "en": "3% boost to Water characters' critical hit damage cap. (Silva)",
+        "ja": "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)",
+        "zh": "3% boost to Water characters' critical hit damage cap. (Silva)",
+    },
     "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))": {
         "en": "3% boost to Light characters' critical hit damage cap. (Silva (Light))",
         "ja": "光属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ(光属性ver))",
@@ -2417,6 +2569,11 @@ var multiLangData = {
         "en": "50% boost to C.A. damage and 20% boost to C.A. damage cap when Sun-Touched Paradise is active. (Alanaan)",
         "ja": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
         "zh": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",
+    },
+    "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)": {
+        "en": "Boost to C.A. damage based on how high HP is. (Stan and Aliza)",
+        "ja": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
+        "zh": "自分のHPが多いほど奥義ダメージUP(勇者と姫君 スタン＆アリーザ)",
     },
     "攻撃30%UP/別枠乗算 (ウーフとレニー)": {
         "en": "30% boost to ATK (Unique modifier). (Wulf and Renie)",
@@ -2770,10 +2927,10 @@ var multiLangData = {
         "ja": "通常恩寵(中)",
         "zh": "通常恩寵(中)",
     },
-    "通常本質(中)": {
+    "通常星晶(中)": {
         "en": "Normal Essence (M)",
-        "ja": "通常本質(中)",
-        "zh": "通常本質(中)",
+        "ja": "通常星晶(中)",
+        "zh": "通常星晶(中)",
     },
     "通常庇護(小)": {
         "en": "Normal Refuge (S)",
@@ -2920,10 +3077,10 @@ var multiLangData = {
         "ja": "マグナ杖術(大)",
         "zh": "方阵杖術(大)",
     },
-    "マグナ本質(中)": {
+    "マグナ星晶(中)": {
         "en": "Magna Essence (M)",
         "ja": "マグナ星晶(中)",
-        "zh": "方阵本質(中)",
+        "zh": "方阵星晶(中)",
     },
     "アンノウンATK・I": {
         "en": "Unknown ATK I",
@@ -3080,6 +3237,21 @@ var multiLangData = {
         "ja": "理外の美少女",
         "zh": "理外の美少女",
     },
+    "斧キャラの攻撃力とTA上昇(小)": {
+        "en": "Axe chara ATK and TA up (S)",
+        "ja": "斧キャラの攻撃力とTA上昇(小)",
+        "zh": "斧キャラの攻撃力とTA上昇(小)",
+    },
+    "剣キャラの攻撃力とTA上昇(小)": {
+        "en": "Sword chara ATK and TA up (S)",
+        "ja": "剣キャラの攻撃力とTA上昇(小)",
+        "zh": "剣キャラの攻撃力とTA上昇(小)",
+    },
+    "弓キャラの攻撃力とHP上昇(中)": {
+        "en": "Bow chara ATK and HP up (M)",
+        "ja": "弓キャラの攻撃力とHP上昇(中)",
+        "zh": "弓キャラの攻撃力とHP上昇(中)",
+    },
     "通常技巧(小)": {
         "en": "Normal Verity (S)",
         "ja": "通常技巧(小)",
@@ -3131,74 +3303,174 @@ var multiLangData = {
         "zh": "マグナ刹那(中)",
     },
     "コスモス剣": {
-        "en": "Cosmos Sword",
+        "en": "Cosmic Sword",
         "ja": "コスモス-剣",
         "zh": "Cosmos剑",
     },
+    "コスモス剣II": {
+        "en": "Cosmic Sword II",
+        "ja": "コスモス-剣II",
+        "zh": "Cosmos剑II",
+    },
+    "秩序の蒼剣": {
+        "en": "Azure Sword's Discipline",
+        "ja": "秩序の蒼剣",
+        "zh": "秩序の蒼剣",
+    },
     "コスモス短剣": {
-        "en": "Cosmos Dagger",
+        "en": "Cosmic Dagger",
         "ja": "コスモス-短剣",
         "zh": "Cosmos短剑",
     },
+    "コスモス短剣II": {
+        "en": "Cosmic Dagger II",
+        "ja": "コスモス-短剣II",
+        "zh": "Cosmos短剑II",
+    },
+    "秩序の蒼刃": {
+        "en": "Azure Dagger's Discipline",
+        "ja": "秩序の蒼刃",
+        "zh": "秩序の蒼刃",
+    },
     "コスモス槍": {
-        "en": "Cosmos Spear",
+        "en": "Cosmic Spear",
         "ja": "コスモス-槍",
         "zh": "Cosmos枪",
     },
+    "コスモス槍II": {
+        "en": "Cosmic Spear II",
+        "ja": "コスモス-槍II",
+        "zh": "Cosmos枪II",
+    },
+    "秩序の蒼槍": {
+        "en": "Azure Lance's Discipline",
+        "ja": "秩序の蒼槍",
+        "zh": "秩序の蒼槍",
+    },
     "コスモス斧": {
-        "en": "Cosmos Axe",
+        "en": "Cosmic Scythe",
         "ja": "コスモス-斧",
         "zh": "Cosmos斧",
     },
+    "コスモス斧II": {
+        "en": "Cosmic Scythe II",
+        "ja": "コスモス-斧II",
+        "zh": "Cosmos斧II",
+    },
+    "秩序の蒼鎌": {
+        "en": "Azure Scythe's Discipline",
+        "ja": "秩序の蒼鎌",
+        "zh": "秩序の蒼鎌",
+    },
     "コスモス杖": {
-        "en": "Cosmos Staff",
+        "en": "Cosmic Staff",
         "ja": "コスモス-杖",
         "zh": "Cosmos杖",
     },
+    "コスモス杖II": {
+        "en": "Cosmic Staff II",
+        "ja": "コスモス-杖II",
+        "zh": "Cosmos杖II",
+    },
+    "秩序の蒼杖": {
+        "en": "Azure Rod's Discipline",
+        "ja": "秩序の蒼杖",
+        "zh": "秩序の蒼杖",
+    },
     "コスモス銃": {
-        "en": "Cosmos Gun",
+        "en": "Cosmic Rifle",
         "ja": "コスモス-銃",
         "zh": "Cosmos铳",
     },
+    "コスモス銃II": {
+        "en": "Cosmic Rifle II",
+        "ja": "コスモス-銃II",
+        "zh": "Cosmos铳II",
+    },
+    "秩序の蒼銃": {
+        "en": "Azure Rifle's Discipline",
+        "ja": "秩序の蒼銃",
+        "zh": "秩序の蒼銃",
+    },
     "コスモス拳": {
-        "en": "Cosmos Fist",
+        "en": "Cosmic Fist",
         "ja": "コスモス-拳",
         "zh": "Cosmos拳",
     },
+    "コスモス拳II": {
+        "en": "Cosmic Fist II",
+        "ja": "コスモス-拳II",
+        "zh": "Cosmos拳II",
+    },
+    "秩序の蒼拳": {
+        "en": "Azure Gauntlet's Discipline",
+        "ja": "秩序の蒼拳",
+        "zh": "秩序の蒼拳",
+    },
     "コスモス弓": {
-        "en": "Cosmos Bow",
+        "en": "Cosmic Bow",
         "ja": "コスモス-弓",
         "zh": "Cosmos弓",
     },
-    "コスモス刀": {
-        "en": "Cosmos Katana",
-        "ja": "コスモス-刀",
-        "zh": "Cosmos刀",
+    "コスモス弓II": {
+        "en": "Cosmic Bow II",
+        "ja": "コスモス-弓II",
+        "zh": "Cosmos弓II",
+    },
+    "秩序の蒼弓": {
+        "en": "Azure Bow's Discipline",
+        "ja": "秩序の蒼弓",
+        "zh": "秩序の蒼弓",
     },
     "コスモス楽器": {
-        "en": "Cosmos Harp",
+        "en": "Cosmic Harp",
         "ja": "コスモス-楽器",
         "zh": "Cosmos乐器",
     },
+    "コスモス楽器II": {
+        "en": "Cosmic Harp II",
+        "ja": "コスモス-楽器II",
+        "zh": "Cosmos乐器II",
+    },
+    "秩序の蒼琴": {
+        "en": "Azure Harp's Discipline",
+        "ja": "秩序の蒼琴",
+        "zh": "秩序の蒼琴",
+    },
+    "コスモス刀": {
+        "en": "Cosmic Blade",
+        "ja": "コスモス-刀",
+        "zh": "Cosmos刀",
+    },
+    "コスモス刀II": {
+        "en": "Cosmic Blade II",
+        "ja": "コスモス-刀II",
+        "zh": "Cosmos刀II",
+    },
+    "秩序の蒼刀": {
+        "en": "Azure Blade's Discipline",
+        "ja": "秩序の蒼刀",
+        "zh": "秩序の蒼刀",
+    },
     "コスモスAT": {
-        "en": "Cosmos ATK",
-        "ja": "コスモス-AT",
-        "zh": "Cosmos AT",
+        "en": "Cosmic ATK (Deprecated)",
+        "ja": "コスモス-AT(非推奨)",
+        "zh": "Cosmos AT(不推荐使用)",
     },
     "コスモスDF": {
-        "en": "Cosmos DF",
-        "ja": "コスモス-DF",
-        "zh": "Cosmos DF",
+        "en": "Cosmos DF (Deprecated)",
+        "ja": "コスモス-DF(非推奨)",
+        "zh": "Cosmos DF(不推荐使用)",
     },
     "コスモスBL": {
-        "en": "Cosmos BL",
-        "ja": "コスモス-BL",
-        "zh": "Cosmos BL",
+        "en": "Cosmos BL (Deprecated)",
+        "ja": "コスモス-BL(非推奨)",
+        "zh": "Cosmos BL(不推荐使用)",
     },
     "コスモスPC": {
-        "en": "Cosmos PC",
-        "ja": "コスモス-PC",
-        "zh": "Cosmos PC",
+        "en": "Cosmos PC (Deprecated)",
+        "ja": "コスモス-PC(非推奨)",
+        "zh": "Cosmos PC(不推荐使用)",
     },
     "バハ攻-短剣": {
         "en": "Bahamut Dagger",
@@ -3405,6 +3677,11 @@ var multiLangData = {
         "ja": "災禍の誓約",
         "zh": "災禍の誓約",
     },
+    "パープル・ブロウ": {
+        "en": "Bonus Damage on 3rd Attack (%20)",
+        "ja": "3回目の攻撃に闇属性追撃効果 (20%)",
+        "zh": "3回目の攻撃に闇属性追撃効果 (20%)",
+    },
     "ペンデュラム[α]": {
         "en": "Pendulum Key α (Normal Attack Cap 10%)",
         "ja": "ペンデュラム[α](通常上限10%UP)",
@@ -3425,6 +3702,21 @@ var multiLangData = {
         "ja": "ペンデュラム[Δ](CB上限50%UP)",
         "zh": "ペンデュラム[Δ](CB上限50%UP)",
     },
+    "・覇": {
+        "en": " Pontus",
+        "ja": "・覇",
+        "zh": "・覇",
+    },
+    "・王": {
+        "en": " Regus",
+        "ja": "・王",
+        "zh": "・王",
+    },
+    "・邪": {
+        "en": " Malus",
+        "ja": "・邪",
+        "zh": "・邪",
+    },
     "天司の祝福": {
         "en": "Angel's Blessing",
         "ja": "天司の祝福",
@@ -3439,6 +3731,31 @@ var multiLangData = {
         "en": "Angel's Blessing III",
         "ja": "天司の祝福III",
         "zh": "天司的祝福III",
+    },
+    "エピックブランド・ゲイン": {
+        "en": "Grand Epic",
+        "ja": "エピックブランド・ゲイン",
+        "zh": "Grand Epic",
+    },
+    "装備している「杖」の数が多いほど最大HP上昇": {
+        "en": "Boost HP by Number of Staffs",
+        "ja": "装備している「杖」の数が多いほど最大HP上昇",
+        "zh": "装備している「杖」の数が多いほど最大HP上昇",
+    },
+    "レゾナンス・スタッフ": {
+        "en": "Staff Resonance",
+        "ja": "レゾナンス・スタッフ",
+        "zh": "Staff Resonance",
+    },
+    "ヒロイック・テイル": {
+        "en": "Heroic Tale",
+        "ja": "ヒロイック・テイル",
+        "zh": "Heroic Tale",
+    },
+    "ソール・イコーリティ": {
+        "en": "Absolute Equality",
+        "ja": "ソール・イコーリティ",
+        "zh": "Absolute Equality",
     },
     "通常上限UP(2.5%)": {
         "en": "Damage Cap UP(2.5%)",
@@ -3474,6 +3791,11 @@ var multiLangData = {
         "en": "True Purity Sunblade (main)",
         "ja": "真・道天浄土 (メイン装備時)",
         "zh": "真・道天浄土 (メイン装備時)",
+    },
+    "デモン・アドヴォケイト (メイン装備時)": {
+        "en": "Advocatus Diaboli (main)",
+        "ja": "デモン・アドヴォケイト (メイン装備時)",
+        "zh": "デモン・アドヴォケイト (メイン装備時)",
     },
     "奥義上限UP(イクシード)": {
         "en": "C.A. Cap UP (Exceed)",  //a.k.a:ougiDamageLimitByExceed
@@ -3568,9 +3890,9 @@ var multiLangData = {
         "zh": "11.0 (GW Nightmare/Ul Baha HL/Proto Baha N)",
     },
     "敵防御12.0": {
-        "en": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
-        "ja": "12.0 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL)",
-        "zh": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL)",
+        "en": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL/Grand Order HL)",
+        "ja": "12.0 (マグナⅡ光闇/マグナHL/黄龍・黒麒麟HL/ジ・オーダー・グランデHL)",
+        "zh": "12.0 (Omega II(Light&Dark)/Omega HL/Huanglong&Qilin HL/Grand Order HL)",
     },
     "敵防御13.0": {
         "en": "13.0 (Omega II(4 Elements))",
@@ -3709,6 +4031,11 @@ var multiLangData = {
         "en": "Open Buff Templates",
         "ja": "バフテンプレートを開く",
         "zh": "打开Buff列表",
+    },
+    "光属性キャラがトリプルアタック時に光属性追撃効果": {
+        "en": "Bonus Dmg On Triple Attacks.",
+        "ja": "光属性キャラがトリプルアタック時に光属性追撃効果",
+        "zh": "光属性キャラがトリプルアタック時に光属性追撃効果",
     },
     "バフテンプレート説明": {
         "en": "Drag and drop these buttons into a turn.",
@@ -4093,7 +4420,7 @@ var multiLangData = {
         "zh": "2017/06/17: 修正了Rank175以上的基础HP/HP公式。",
     },
     "notice-20170704-1": {
-        "en": "04/07/2017: Added new weapons. Implemented 'Non' element type. Implemented critical ratio array displaying.",
+        "en": "04/07/2017: Added new weapons. Implemented 'None' element type. Implemented critical ratio array displaying.",
         "ja": "2017/07/04: 武器追加. 無属性と無属性（技巧あり）を実装. 技巧倍率毎の発生確率表示を実装.",
         "zh": "2017/07/04: 增加新武器。 实装了无属性和无属性(考虑技巧)的计算。实装了显示每个技巧倍率的发生概率。",
     },

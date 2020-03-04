@@ -229,8 +229,9 @@ var ArmList = CreateClass({
                             <Panel key={arm} bsStyle="default" style={panel_style} eventKey={arm}>
                                 <Panel.Heading>
                                     <Panel.Title toggle>
-                                        {(ind + 1)}: {(alist[ind] != null) ? alist[ind].name : ""}
-                                        &nbsp; {(alist[ind] != null && alist[ind].name != "") ? alist[ind].considerNumberMax + "本" : ""}
+                                        {(ind + 1)}: {(alist[ind] != null) ? alist[ind].name : ""}&nbsp;
+                                        {(alist[ind] != null && alist[ind].name != "") ? alist[ind].considerNumberMax + intl.translate("本", locale) : ""}
+                                        {(alist[ind] != null && alist[ind].name != "" && alist[ind].considerNumberMin) ? "(" + intl.translate("最小", locale) + alist[ind].considerNumberMin + intl.translate("本", locale) + ")" : "" }
                                     </Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body collapsible>
@@ -292,6 +293,7 @@ var Arm = CreateClass({
             skill1Detail: 0,
             skill2Detail: 0,
             skill3Detail: 0,
+            series: "none",
         };
     },
     componentWillReceiveProps: function (nextProps) {
@@ -352,6 +354,7 @@ var Arm = CreateClass({
     },
     treatAddArmFromTemplate: function (state, newarm, considerNum) {
         state["name"] = newarm.name;
+        state["series"] = newarm.series;
 
         var attackCalcFunc = (lv, minlv, atk, minatk, plus, levelWidth) => {
             return Math.floor((lv - minlv) * (parseInt(atk) - parseInt(minatk)) / levelWidth + parseInt(minatk) + 5 * parseInt(plus))
@@ -500,6 +503,13 @@ var Arm = CreateClass({
                             <FormControl type="text" placeholder={intl.translate("武器名", locale)} value={this.state.name}
                                          onBlur={this.handleOnBlur.bind(this, "name")} onFocus={this.openPresets}
                                          onChange={this.handleEvent.bind(this, "name")}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th className="bg-primary">{intl.translate("カテゴリー", locale)}</th>
+                        <td>
+                            <FormControl componentClass="select" value={this.state.series}
+                                         onChange={this.handleSelectEvent.bind(this, "series")}> {selector[locale].series} </FormControl>
                         </td>
                     </tr>
                     <tr>

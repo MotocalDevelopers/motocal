@@ -34,10 +34,9 @@ var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
 var {
-    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces, proceedIndex,
-    calcCombinations, calcDamage, calcOugiDamage, treatSupportAbility,
-    calcHaisuiValue, calcBasedOneSummon, addSkilldataToTotals, calcOneCombination,
-    initializeTotals, getTesukatoripokaAmount, recalcCharaHaisui, getTotalBuff,
+    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces,
+    calcCombinations, calcOneCombination,
+    getTesukatoripokaAmount, getTotalBuff,
     getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
 } = require('./global_logic.js');
 
@@ -49,8 +48,6 @@ var ResultList = CreateClass({
         var chara = newprops.chara;
 
         if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
-            var totalBuff = getTotalBuff(prof);
-
             // Since the parameter added later may be NaN, additional processing
             // If sortKey is not a NaN, use that, NaN if it's general attack power
             var sortkey = "averageCyclePerTurn";
@@ -104,16 +101,17 @@ var ResultList = CreateClass({
                 minSortKey[i] = -1
             }
 
-            var totals = getInitialTotals(prof, chara, summon);
-            treatSupportAbility(totals, chara, totalBuff);
+
             var itr = combinations.length;
-            var totalItr = itr * summon.length * Object.keys(totals).length;
+            var totalItr = itr * summon.length * Object.keys(getInitialTotals(prof, chara, summon)).length;
 
             // If necessary values for preprocessing are prepared here
             var minHP = (prof.minimumHP == undefined) ? undefined : parseInt(prof.minimumHP);
 
             for (var i = 0; i < itr; i = (i + 1) | 0) {
-                var oneres = calcOneCombination(combinations[i], summon, prof, arml, totals, totalBuff);
+                var totals = getInitialTotals(prof, chara, summon);
+                var totalBuff = getTotalBuff(prof);
+                var oneres = calcOneCombination(combinations[i], summon, prof, chara, arml, totals, totalBuff);
                 for (var j = 0; j < summon.length; j++) {
                     // For each result preprocessing
                     if (isValidResult(oneres[j], minHP)) {
@@ -149,7 +147,6 @@ var ResultList = CreateClass({
                         }
                     }
                 }
-                initializeTotals(totals)
             }
             // At this point, summonres should be an array of "array of associative arrays of result data corresponding to each summon"
             for (var i = 0; i < summon.length; i++) {
@@ -288,6 +285,7 @@ var ResultList = CreateClass({
         this.setState({openHPChart: true})
     },
     addHaisuiData: function (id, summonid) {
+        var locale = this.props.locale;
         var newStored = this.state.storedList;
         var newCombinations = this.state.result.result[summonid][id].armNumbers;
         newStored["combinations"].push(JSON.parse(JSON.stringify(newCombinations)));
@@ -296,8 +294,8 @@ var ResultList = CreateClass({
         var title = "";
         for (var i = 0; i < this.props.armlist.length; i++) {
             if (newCombinations[i] > 0) {
-                var name = (this.props.armlist[i].name == "") ? "武器" + i.toString() + "" : this.props.armlist[i].name;
-                title += name + newCombinations[i] + "本\n"
+                var name = (this.props.armlist[i].name == "") ? intl.translate("武器", locale) + i.toString() + " " : this.props.armlist[i].name;
+                title += name + newCombinations[i] + intl.translate("本", locale) + "\n"
             }
         }
         newStored["names"].push(title);
@@ -990,6 +988,7 @@ var Result = CreateClass({
         var prof = this.props.prof;
         var onClick = this.onClick;
         var locale = this.props.locale;
+        const formatCommaSeparatedNumber = num => String(Math.round(num)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
 
         return (
             <tbody className="result">
@@ -1004,12 +1003,14 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchTotalAttack) {
-                    tablebody.push(m.data.Djeeta.totalAttack);
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalAttack));
                     ++colSize;
                 }
                 if (sw.switchATKandHP) {
-                    var senryoku = Math.round(m.data.Djeeta.displayAttack) + Math.round(m.data.Djeeta.displayHP);
-                    tablebody.push(senryoku + "\n(" + Math.round(m.data.Djeeta.displayAttack) + ' + ' + Math.round(m.data.Djeeta.displayHP) + ')');
+                    // senryoku = 戦力 = PWR
+                    let {displayAttack, displayHP} = m.data.Djeeta;
+                    let senryoku = displayAttack + displayHP;
+                    tablebody.push(formatCommaSeparatedNumber(senryoku) + "\n(" + formatCommaSeparatedNumber(displayAttack) + ' + ' + formatCommaSeparatedNumber(displayHP) + ')');
                     ++colSize;
                 }
 
@@ -1018,7 +1019,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-attack"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("攻撃力", locale)}</span> {m.data[key].totalAttack}&nbsp;
+                                        className="label label-primary">{intl.translate("攻撃力", locale)}</span> {formatCommaSeparatedNumber(m.data[key].totalAttack)}&nbsp;
                                 </span>
                         );
                     }
@@ -1065,13 +1066,14 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchExpectedAttack) {
-                    var expectedAttack = Math.round(m.data.Djeeta.expectedAttack * m.data.Djeeta.totalAttack);
-                    tablebody.push(m.data.Djeeta.expectedAttack.toFixed(4) + "\n(" + expectedAttack + ")");
+                    let {expectedAttack, totalAttack} = m.data.Djeeta;
+                    let attack = expectedAttack * totalAttack;
+                    tablebody.push(expectedAttack.toFixed(4) + "\n(" + formatCommaSeparatedNumber(attack) + ")");
                     ++colSize;
                 }
 
                 if (sw.switchCriticalAttack) {
-                    tablebody.push(m.data.Djeeta.criticalAttack);
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.criticalAttack));
                     ++colSize;
                 }
 
@@ -1086,34 +1088,36 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchHP) {
-                    tablebody.push(m.data.Djeeta.totalHP + "\n(" + Math.round(m.data.Djeeta.totalHP * m.data.Djeeta.remainHP) + ")");
+                    let {totalHP, remainHP} = m.data.Djeeta;
+                    tablebody.push(formatCommaSeparatedNumber(totalHP) + "\n(" + formatCommaSeparatedNumber(totalHP * remainHP) + ")");
                     ++colSize;
                 }
 
                 if (sw.switchCharaHP) {
                     for (key in m.data) {
+                        let {totalHP, remainHP} = m.data[key]; 
                         charaDetail[key].push(
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
                                         className="label label-success">{intl.translate("残HP", locale)} / HP</span>&nbsp;
-                                {Math.round(m.data[key].totalHP * m.data[key].remainHP)}&nbsp;/&nbsp;{m.data[key].totalHP}&nbsp;
+                                {formatCommaSeparatedNumber(totalHP * remainHP)}&nbsp;/&nbsp;{formatCommaSeparatedNumber(totalHP)}&nbsp;
                                 </span>
                         );
                     }
                 }
 
                 if (sw.switchAverageAttack) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageAttack));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.averageAttack));
                     ++colSize;
                 }
 
                 if (sw.switchAverageCriticalAttack) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageCriticalAttack));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.averageCriticalAttack));
                     ++colSize;
                 }
 
                 if (sw.switchTotalExpected) {
-                    tablebody.push(m.data.Djeeta.totalExpected);
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalExpected));
                     ++colSize;
                 }
 
@@ -1122,19 +1126,19 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-PCF"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("総回技", locale)}</span>{m.data[key].totalExpected}&nbsp;
+                                        className="label label-primary">{intl.translate("総回技", locale)}</span>{formatCommaSeparatedNumber(m.data[key].totalExpected)}&nbsp;
                                 </span>
                         );
                     }
                 }
 
                 if (sw.switchAverageTotalExpected) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageTotalExpected));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.averageTotalExpected));
                     ++colSize;
                 }
 
                 if (sw.switchPureDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.pureDamage));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.pureDamage));
                     ++colSize;
                 }
 
@@ -1143,24 +1147,24 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-pure-damage"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</span> {m.data[key].pureDamage.toFixed(0)}&nbsp;
+                                        className="label label-primary">{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</span> {formatCommaSeparatedNumber(m.data[key].pureDamage)}&nbsp;
                                 </span>
                         );
                     }
                 }
 
                 if (sw.switchDamageWithCritical) {
-                    tablebody.push(Math.round(m.data.Djeeta.damageWithCritical));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damageWithCritical));
                     ++colSize;
                 }
 
                 if (sw.switchDamageWithMultiple) {
-                    tablebody.push(Math.round(m.data.Djeeta.damageWithMultiple));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damageWithMultiple));
                     ++colSize;
                 }
 
                 if (sw.switchDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.damage));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.damage));
                     ++colSize;
                 }
 
@@ -1170,7 +1174,7 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchOugiDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamage));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalOugiDamage));
                     ++colSize;
                 }
 
@@ -1181,7 +1185,7 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-ougi-damage"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("奥義ダメージ", locale)}</span> {m.data[key].ougiDamage.toFixed(0)}&nbsp;
+                                        className="label label-primary">{intl.translate("奥義ダメージ", locale)}</span> {formatCommaSeparatedNumber(m.data[key].ougiDamage)}&nbsp;
                                 </span>
                         );
                     }
@@ -1199,15 +1203,15 @@ var Result = CreateClass({
                 }
 
                 if (sw.switchChainBurst) {
-                    tablebody.push(Math.round(m.data.Djeeta.averageChainBurst));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.averageChainBurst));
                     ++colSize;
                 }
                 if (sw.switchTotalOugiDamageWithChain) {
-                    tablebody.push(Math.round(m.data.Djeeta.totalOugiDamageWithChain));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalOugiDamageWithChain));
                     ++colSize;
                 }
                 if (sw.switchCycleDamage) {
-                    tablebody.push(Math.round(m.data.Djeeta.expectedCycleDamagePerTurn));
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.expectedCycleDamagePerTurn));
                     ++colSize;
                 }
 
@@ -1216,15 +1220,15 @@ var Result = CreateClass({
                         charaDetail[key].push(
                             <span key={key + "-cycle-damage"} className="result-chara-detail">
                                     <span
-                                        className="label label-primary">{intl.translate("予想ターン毎ダメージ", locale)}</span> {m.data[key].expectedCycleDamagePerTurn.toFixed(0)}&nbsp;
+                                        className="label label-primary">{intl.translate("予想ターン毎ダメージ", locale)}</span> {formatCommaSeparatedNumber(m.data[key].expectedCycleDamagePerTurn)}&nbsp;
                                 </span>
                         );
                     }
                 }
 
                 if (sw.switchAverageCycleDamage) {
-                    var val = Math.round(m.data.Djeeta.averageCyclePerTurn);
-                    tablebody.push(val.toString() + " (" + (4 * val).toString() + ")");
+                    let averageCyclePerTurn = m.data.Djeeta.averageCyclePerTurn;
+                    tablebody.push(formatCommaSeparatedNumber(averageCyclePerTurn) + " (" + formatCommaSeparatedNumber(4 * averageCyclePerTurn) + ")");
                     ++colSize;
                 }
 
@@ -1250,16 +1254,16 @@ var Result = CreateClass({
                         let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
                         [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
                         
-                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
+                        let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUPOnlyNormalDamage, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
                         let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
                         
                         charaDetail[key].push(
                                 <div key={key + "-LimitValues"}>
                                     <span key={key + "-LimitValues"}>
                                         <span className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
-                                            {Math.round(normalDamageRealLimit).toLocaleString()}&nbsp;
+                                            {formatCommaSeparatedNumber(normalDamageRealLimit)}&nbsp;
                                         <span className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
-                                            {Math.round(ougiDamageRealLimit).toLocaleString()}&nbsp;
+                                            {formatCommaSeparatedNumber(ougiDamageRealLimit)}&nbsp;
                                     </span>
                                 </div>
                         );
@@ -1433,7 +1437,8 @@ var Result = CreateClass({
                         };
                         pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "default");
                         pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
-                        pushSkillInfoElement3("damageUP", "与ダメージ上昇", "default");
+                        pushSkillInfoElement3("damageUP", "与ダメージUP", "default");
+                        pushSkillInfoElement3("damageUPOnlyNormalDamage", "与ダメージUP(通常攻撃のみ)", "default");
                         pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
                         pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "default");
                         pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");
@@ -1490,11 +1495,11 @@ var Result = CreateClass({
                                 ++colSize;
                                 if (parseInt(am) > 0) {
                                     return (<td key={ind}><span
-                                        className="text-info"><strong>{am} {intl.translate("本", locale)}</strong></span>
+                                        className="text-info"><strong>{am} </strong></span>
                                     </td>);
                                 } else {
                                     return (<td key={ind}><span
-                                        className="text-muted">{am} {intl.translate("本", locale)}</span></td>);
+                                        className="text-muted">{am} </span></td>);
                                 }
                             }
                         })}
@@ -1548,7 +1553,7 @@ var StoredListEditor = CreateClass({
                             <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>編成名(Optional)</th>
+                                <th>{intl.translate("編成名", locale)}(Optional)</th>
                                 {(armlist.length != 0) ? (armlist[0].map(function (arm, ind) {
                                     if (arm.name != "") {
                                         return (<th key={ind}>{arm.name}</th>);
@@ -1573,7 +1578,7 @@ var StoredListEditor = CreateClass({
                                             }} name={ind} value={names[ind]} onChange={handleNameChange}/></td>
                                         </TextWithTooltip>
                                         {v.map(function (num, ind2) {
-                                            return (<td key={ind2}>{num}{intl.translate("本", locale)}</td>)
+                                            return (<td key={ind2}>{num}</td>)
                                         })}
                                         <td><Button id={ind} onClick={removeOneStoredList}
                                                     bsStyle="primary">{intl.translate("削除", locale)}</Button></td>
