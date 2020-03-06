@@ -15778,6 +15778,25 @@
         "imageURL": "./imgs/1040508800.png",
         "en": "[4★] Ruler of Fate"
     },
+    "タケミナカタ": {
+        "ja": "タケミナカタ",
+        "element": "light",
+        "type": "gun",
+        "skill1": "normalMusouM",
+        "skill2": "non",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 30,
+        "minattack": 449,
+        "hp": 177,
+        "attack": 2701,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040512100.png",
+        "en": "Takeminakata"
+    },
     "ティアマトボルト・オリジン": {
         "ja": "ティアマトボルト・オリジン",
         "element": "wind",
@@ -15893,6 +15912,25 @@
         "maxlv": 100,
         "imageURL": "./imgs/1040509500.png",
         "en": "God of a Thousand Demons"
+    },
+    "プラズマジグソー": {
+        "ja": "プラズマジグソー",
+        "element": "dark",
+        "type": "gun",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "dark",
+        "skill3": "non",
+        "element3": "dark",
+        "minhp": 21,
+        "minattack": 358,
+        "hp": 148,
+        "attack": 2141,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040512000.png",
+        "en": "Plasma Ripper"
     },
     "[4凸]万魔の銃": {
         "ja": "[4凸]万魔の銃",
@@ -18700,6 +18738,25 @@
         "attacklv100": 2660,
         "imageURL": "./imgs/1040900100.png",
         "en": "[4★] Venustas"
+    },
+    "真武虎薙": {
+        "ja": "真武虎薙",
+        "element": "wind",
+        "type": "axe",
+        "skill1": "normalS",
+        "skill2": "normalSanteM",
+        "element2": "wind",
+        "skill3": "non",
+        "element3": "wind",
+        "minhp": 31,
+        "minattack": 444,
+        "hp": 191,
+        "attack": 2631,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040311700.png",
+        "en": "True Tiger's Bane"
     },
     "八命切": {
         "ja": "八命切",

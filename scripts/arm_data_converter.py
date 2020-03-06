@@ -843,6 +843,7 @@ skillnamelist["strengthL"] = {
     u"残る霞火、あへなし": "light",
     u"暴風の残滓": "wind",
     u"ガチャピンの攻刃": "wind",
+    u"資材切断の攻刃": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {
