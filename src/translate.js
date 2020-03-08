@@ -3117,6 +3117,11 @@ var multiLangData = {
         "ja": "EX攻刃(特大)",
         "zh": "EX攻刃(特大)",
     },
+    "通常攻刃III": {
+        "en": "Normal Might (LLL)",
+        "ja": "通常攻刃III",
+        "zh": "通常攻刃III",
+    },
     "EX攻刃+守護(中)": {
         "en": "EX Might and Aegis (M)",
         "ja": "EX攻刃+守護(中)",

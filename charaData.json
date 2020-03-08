@@ -659,6 +659,28 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "シス(イベントver)": {
+        "name": "シス(イベントver)",
+        "ja": "シス(イベントver)",
+        "element": "dark",
+        "type": "attack",
+        "race": "erune",
+        "sex": "male",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "202",
+        "hp": "1080",
+        "minattack": "1512",
+        "attack": "8100",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040262000_01.png",
+        "en": "Seox (Event)"
+    },
     "セルエル(クリスマスver)": {
         "name": "セルエル(クリスマスver)",
         "ja": "セルエル(クリスマスver)",

@@ -865,6 +865,15 @@ skillnamelist["strengthLL"] = {
     u"妃光の覇道": "light"
 }
 
+skillnamelist["strengthLLL"] = {
+    u"紅炎の支配者": "fire",
+    u"氷霜の支配者": "water",
+    u"花樹の支配者": "earth",
+    u"嵐翠の支配者": "wind",
+    u"白輝の支配者": "light",
+    u"禍滅の支配者": "dark"
+}
+
 skillnamelist["normalSoka"] = {
     u"竜巻の楚歌": "wind",
 }
