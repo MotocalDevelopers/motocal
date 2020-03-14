@@ -2264,6 +2264,16 @@ var supportAbilities = {
         "range": range.own,
         "value": [0.20, 0.20, 0.20]
     },
+    "arvess_pact": {
+        "name": "クリティカル発動時にダメージ上限UP/トリプルアタック発動時に火属性追撃効果(ゼタ)",
+        "type": "composite",
+        "range": "own",
+        "value": [
+            {type: "critical_cap_up", range: range.own, assign: "add", value: 0.10},
+            {type: "additionalDamageXA", range: range.own, assign: "add",
+                value: [0.0, 0.0, 0.20]}
+        ]
+    },
     "critical_up_own_10_30": {
         "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
         "type": "normalOtherCriticalBuff",
