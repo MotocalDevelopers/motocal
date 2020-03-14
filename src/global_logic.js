@@ -568,6 +568,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         }
         otherCoeff *= otherEternal;
         if (key == "Djeeta") {
+            // Verified by weapon users, not by wiki
             otherCoeff *= 1.0 + (0.01 * totals[key]["slaysnakes_myth"]);
             otherCoeff *= 1.0 + (0.01 * totals[key]["victorys_promise"]);
         }
@@ -2193,6 +2194,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == 'slaysnakes_myth') {
                             if (key == 'Djeeta') {
+                                // Verified by weapon users, not by wiki
                                 totals[key][stype] = Math.max(totals[key][stype], 10.0 * arm[skillkey + "Detail"]);
                                 if (amount == "II") {
                                     totals[key]["normalDamageLimit"] += 0.10;
