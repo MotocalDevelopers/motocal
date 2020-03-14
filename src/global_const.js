@@ -203,7 +203,14 @@ var considerNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var buffLevelList = [
     0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
     100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195,
-    200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 300,
+    200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295,
+    300, 305, 310, 315, 320, 325, 330, 335, 340, 345, 350, 355, 360, 365, 370, 375, 380, 385, 390, 395,
+    400, 405, 410, 415, 420, 425, 430, 435, 440, 445, 450, 455, 460, 465, 470, 475, 480, 485, 490, 495,
+    500, 505, 510, 515, 520, 525, 530, 535, 540, 545, 550, 555, 560, 565, 570, 575, 580, 585, 590, 595,
+    600, 605, 610, 615, 620, 625, 630, 635, 640, 645, 650, 655, 660, 665, 670, 675, 680, 685, 690, 695,
+    700, 705, 710, 715, 720, 725, 730, 735, 740, 745, 750, 755, 760, 765, 770, 775, 780, 785, 790, 795,
+    800, 805, 810, 815, 820, 825, 830, 835, 840, 845, 850, 855, 860, 865, 870, 875, 880, 885, 890, 895,
+    900, 905, 910, 915, 920, 925, 930, 935, 940, 945, 950, 955, 960, 965, 970, 975, 980, 985, 990, 995, 1000,
     -5, -10, -15, -20, -25, -30, -35, -40, -45, -50, -55, -60, -65, -70, -75, -80, -85, -90, -95, -100
 ];
 var ougiGageUpOugiBuffLevelList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,];
@@ -1030,20 +1037,34 @@ var skilltypes = {
     "downfall_of_ignorance": {name: "弓キャラの攻撃力とHP上昇(中)", type: "downfall_of_ignorance", amount: "M"},
     "succession_of_knighthood": {name: "剣キャラの攻撃力とTA上昇(小)", type: "succession_of_knighthood", amount: "S"},
     "shinTenNoInori": {name: "味方の属性攻撃力10%UP(累積/最大5回)", type: "shinTenNoInori", amount: 10.0},
-    "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0}
+    "kaijinnoyogen": {name: "装備している「杖」の数が多いほど最大HP上昇", type: "wandCountHP", amount: 2.0},
+    "rightway_pathfinder": {name: "王道を征く者", type: "rightway_pathfinder", amount: "I"},
+    "rightway_pathfinderII": {name: "王道を征く者II", type: "rightway_pathfinder", amount: "II"},
+    "victorys_promise": {name: "必勝の誓い", type: "victorys_promise", amount: 10.0},
+    "one_sting_one_kill": {name: "一刺一殺", type: "one_sting_one_kill", amount: "I"},
+    "one_sting_one_killII": {name: "一刺一殺II", type: "one_sting_one_kill", amount: "II"},
+    "god_of_war": {name: "戦神の打擲", type: "god_of_war", amount: "I"},
+    "god_of_warII": {name: "戦神の打擲II", type: "god_of_war", amount: "II"},
+    "apocalyptic_power": {name: "万物を砕く剛技", type: "apocalyptic_power", amount: "I"},
+    "apocalyptic_powerII": {name: "万物を砕く剛技II", type: "apocalyptic_power", amount: "II"},
+    "slaysnakes_myth": {name: "戮蛇の神刀", type: "slaysnakes_myth", amount: "I"},
+    "slaysnakes_mythII": {name: "戮蛇の神刀II", type: "slaysnakes_myth", amount: "II"},
 };
 
 // additional selection when template is selected
 module.exports.skillDetails = {
     'victorious-covenant': 'victorious_calamitous_covenant',
     'calamitous-covenant': 'victorious_calamitous_covenant',
-    'shinTenNoInori': 'shinTenNoInori'
+    'shinTenNoInori': 'shinTenNoInori',
+    'slaysnakes_myth': 'slaysnakes_myth',
+    'slaysnakes_mythII': 'slaysnakes_myth',
 };
 
 var skillDetailsDescription = {
     'victorious-covenant': 'ジータバフの数',
     'calamitous-covenant': '敵の弱体効果',
     'shinTenNoInori': '累積の数',
+    'slaysnakes_myth': '累積の数',
 };
 
 var victorious_calamitous_covenant = {
@@ -1060,6 +1081,14 @@ var victorious_calamitous_covenant = {
     "10": 10
 };
 var shinTenNoInori = {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+};
+var slaysnakes_myth = {
     "0": 0,
     "1": 1,
     "2": 2,
@@ -2800,7 +2829,77 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2Detail"],
         selectors: ["shinTenNoInori"],
         defaultKeys: ["0"],
-    }
+    },
+    "エクスカリバー": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "ゲイボルグ": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch_all", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "ダマスカスナイフ": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch_all", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "カドゥケウス": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "ミョルニル": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "フライクーゲル": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "方天画戟": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch_all", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "ヘラクレス": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "ウルリクムミ": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements"],
+        selectors: ["mainWeapon", "elements"],
+        defaultKeys: [0, "light"],
+    },
+    "天羽々斬": {
+        selectKeysNotation: skillDetailsDescription["slaysnakes_myth"],
+        notationText: "",
+        selectKeys: ["main_weapon_switch", "elements", "skill2Detail"],
+        selectors: ["mainWeapon", "elements", "slaysnakes_myth"],
+        defaultKeys: [0, "light", "0"],
+    },
 };
 
 
@@ -2959,6 +3058,16 @@ module.exports.selector.en.shinTenNoInori = Object.keys(shinTenNoInori).map(func
     return <option value={key} key={key}>{key}</option>;
 });
 module.exports.selector.zh.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+
+module.exports.selector.ja.slaysnakes_myth = Object.keys(slaysnakes_myth).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.en.slaysnakes_myth = Object.keys(slaysnakes_myth).map(function (key) {
+    return <option value={key} key={key}>{key}</option>;
+});
+module.exports.selector.zh.slaysnakes_myth = Object.keys(slaysnakes_myth).map(function (key) {
     return <option value={key} key={key}>{key}</option>;
 });
 
