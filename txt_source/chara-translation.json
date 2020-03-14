@@ -1,4 +1,11 @@
 {
+    "ビカラ": "Vikala",
+    "ユイシス(火属性ver)": "Yuisis (Fire)",
+    "ルシウス(SSR)": "Lucius (SSR)",
+    "ノア(リミテッドver)": "Noa (Grand)",
+    "ヘレル・ベン・シャレム(リミテッドver)": "Helel ben Shalem",
+    "ダヌア(光属性ver)": "Danua (SSR)",
+    "ジン(SSR)": "Jin",
     "セルエル(クリスマスver)": "Seruel (Holiday)",
     "ナルメア(クリスマスver)": "Narmaya (Holiday)",
     "ガチャピン": "Gachapin",
@@ -279,7 +286,7 @@
     "ヴィーラ": "Vira (SR)",
     "ソリッズ": "Soriz",
     "サラ": "Sara (Event)",
-    "ジン": "Jin",
+    "ジン": "Jin (Event)",
     "エルモート": "Elmott",
     "キハール": "Keehar",
     "エルタ": "Elta",
@@ -343,7 +350,7 @@
     "エルモート(水着ver)": "Elmott (Summer)",
     "ターニャ(水着ver)": "Tanya (Summer)",
     "オイゲン(水着ver)": "Eugen (Summer)",
-    "ジン(克己浪人)": "Jin (Event)",
+    "ジン(克己浪人)": "Jin (Ronin)",
     "リーシャ(水着ver)": "Lecia (Summer)",
     "城ヶ崎莉嘉": "Rika Jougasaki",
     "三村かな子": "Kanako Mimura",
@@ -525,5 +532,8 @@
     "コワフュール": "La Coiffe",
     "ザザ(ハロウィンver)": "Zaja (Halloween)",
     "ヨウ": "You",
-    "クルーニ": "Krugne (SR)"
+    "クルーニ": "Krugne (SR)",
+    "クビラ(SR)": "Kumbhira (Event)",
+    "ジョイ": "Joy"
 }
+
