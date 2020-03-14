@@ -34,6 +34,7 @@ racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"星晶獣"] = "seisho"
+racelist[u"不明"] = "unknown"
 racelist[u"その他"] = "unknown"
 
 sexlist = OrderedDict()
@@ -43,6 +44,9 @@ sexlist[u"女"] = "female"
 sexlist[u"不明"] = "other"
 
 supportAbilist = OrderedDict()
+supportAbilist["none"] = {
+    u"剣聖を継ぐ者", # NOTE: Avoid mis-matches with "剣聖"
+}
 supportAbilist["da_up_all_10"] = {
     u"双剣乱舞"
 }
@@ -108,7 +112,8 @@ supportAbilist["ougi_gage_up_own_100"] = {
     u"刀神"
 }
 supportAbilist["ougi_gage_down_own_25"] = {
-    u"砂神グラフォスの鉄槌"
+    u"砂神グラフォスの鉄槌",
+    u"亥之一番"
 }
 supportAbilist["ougi_gage_down_own_35"] = {
     u"闘争求む重鎧"
@@ -130,12 +135,16 @@ supportAbilist["ougi_damage_up_10"] = {
     u"音ノ木坂学院2年生"
 }
 supportAbilist["emnity_all_SL10"] = {
-    u"太陽信仰"
+    u"太陽信仰",
+    u"七回忌の砌"
 }
 supportAbilist["emnity_own_SL20"] = {
     u"ダーク・ラピュセル",
+    u"砂神グラフォスの慈愛",
+}
+supportAbilist["emnity_own_SL20_steps"] = {
     u"絶望の剣",
-    u"砂神グラフォスの慈愛"
+    u"ノートラーガ"
 }
 supportAbilist["envoy_meditation"] = {
     u"調停の使徒"
@@ -152,6 +161,12 @@ supportAbilist["recklessness_incarnate"] = {
 supportAbilist["knightmare_frame"] = {
     u"人型自在戦闘装甲騎",
     u"ナイトメアフレーム"
+}
+supportAbilist["sumizome_sakura"] = {
+    u"墓前の墨染桜"
+}
+supportAbilist["arvess_pact"] = {
+    u"アルベスの契約者"
 }
 supportAbilist["critical_up_own_10_30"] = {
     u"セルフィッシュ・ロイヤル",
@@ -494,7 +509,7 @@ patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 ### SR
 patching["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
 
-# Patching ougi ratio 
+# Patching ougi ratio
 # Verification list: https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968
 patchingOugiRatio = OrderedDict()
 
@@ -553,7 +568,7 @@ patchingOugiRatio["クビラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["マキラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァジラ"] = {"ougiRatio": 5.0}
 
-### SSR (The Eternals 5★) (最終十天衆) 
+### SSR (The Eternals 5★) (最終十天衆)
 patchingOugiRatio["[最終]ウーノ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]ソーン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]サラーサ"] = {"ougiRatio": 5.0}
@@ -782,12 +797,12 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             else:
                 newdict["baseDA"] = 7.0
                 newdict["baseTA"] = 3.0
-				
+
             if newdict["name"] in patchingOugiRatio:
                 newdict["ougiRatio"] = patchingOugiRatio[newdict["name"]]["ougiRatio"]
             else:
                 newdict["ougiRatio"] = defaultOugiRatio[rare]
-			
+
 
             newdict["imageURL"] = "./charaimgs/" + key
 
