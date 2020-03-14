@@ -659,6 +659,50 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "ダヌア(光属性ver)": {
+        "name": "ダヌア(光属性ver)",
+        "ja": "ダヌア(光属性ver)",
+        "element": "light",
+        "type": "pecu",
+        "race": "doraf",
+        "sex": "female",
+        "fav1": "dagger",
+        "fav2": "axe",
+        "support": "none",
+        "support2": "emnity_own_SL20_steps",
+        "support3": "none",
+        "minhp": "260",
+        "hp": "1380",
+        "minattack": "1840",
+        "attack": "9820",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040256000_01.png",
+        "en": "Danua (SSR)"
+    },
+    "ジン(SSR)": {
+        "name": "ジン(SSR)",
+        "ja": "ジン(SSR)",
+        "element": "earth",
+        "type": "attack",
+        "race": "human",
+        "sex": "male",
+        "fav1": "katana",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "220",
+        "hp": "1180",
+        "minattack": "1900",
+        "attack": "10100",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040257000_01.png",
+        "en": "Jin"
+    },
     "セルエル(クリスマスver)": {
         "name": "セルエル(クリスマスver)",
         "ja": "セルエル(クリスマスver)",
@@ -4078,7 +4122,7 @@
         "sex": "female",
         "fav1": "sword",
         "fav2": "gun",
-        "support": "emnity_own_SL20",
+        "support": "emnity_own_SL20_steps",
         "support2": "hp_up_own_10",
         "support3": "none",
         "minhp": "280",
@@ -6179,7 +6223,7 @@
         "baseTA": 3.0,
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030022000_01.png",
-        "en": "Jin"
+        "en": "Jin (Event)"
     },
     "エルモート": {
         "name": "エルモート",
@@ -7587,7 +7631,7 @@
         "baseTA": 3.0,
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030086000_01.png",
-        "en": "Jin (Event)"
+        "en": "Jin (Ronin)"
     },
     "リーシャ(水着ver)": {
         "name": "リーシャ(水着ver)",
