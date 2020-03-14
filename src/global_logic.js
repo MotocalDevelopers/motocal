@@ -284,7 +284,7 @@ module.exports.calcOugiDamage = function (summedAttack, totalSkillCoeff, critica
     damage *= Math.max(1.0, 1.0 + damageUP);
     damage *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
     damage += ougiBonusPlainDamage;
-    
+
     return damage;
 
 };
@@ -334,7 +334,7 @@ module.exports.calcChainBurst = function (ougiDamage, chainNumber, typeBonus, en
     // The final damage becomes the correction amount + the minimum attenuation line
     damage = damage + overedDamage;
     damage *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
-    
+
     return damage;
 };
 
@@ -497,7 +497,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             summedAttack += totals[key]["LB"].ATK;
             summedAttack += totals[key]["EXLB"].ATK;
             summedAttack += totals[key]["plusBonus"] * 3;
-            
+
             // HP
             displayHP += totals[key]["LB"].HP;
             displayHP += totals[key]["EXLB"].HP;
@@ -657,7 +657,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         // Fit 0% < TA < 100%
         totalTA = Math.min(1.0, Math.max(0.0, totalTA));
-        
+
         var taRate = Math.min(1.0, Math.floor(totalTA * 100) / 100); // Truncated values are used to calculate multi attack.
         var daRate = Math.min(1.0, Math.floor(totalDA * 100) / 100);
         var expectedAttack = 3.0 * taRate + (1.0 - taRate) * (2.0 * daRate + (1.0 - daRate));
@@ -775,9 +775,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         // Chain Burst
         var chainDamageLimit = 0.01 * (totals[key]["chainDamageLimit"] + (totals[key]["normalChainDamageLimit"] * totalSummon["zeus"]));
         chainDamageLimit = Math.min(LIMIT.chainDamageLimit, chainDamageLimit);
-        
+
         chainDamageLimit += buff["zenithChainDamageLimit"];
-        
+
 
         // Mystery damage = magnification * (1 + mystery damage buff frame) * (1 + mystery damage rise skill frame)
         // Save only the coefficient part (100% + delta of delta) for common processing
@@ -795,9 +795,9 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             ougiDamageExceptSkill += buff["zenithOugiDamage"];
             ougiDamageExceptSkill += totals[key]["superOugiDamage"];
         }
-        
+
         var ougiDamageUP = (1.0 + ougiDamageSkill) * (1.0 + ougiDamageExceptSkill) - 1.0;
-        
+
         // NOT plain additional damage such as Yodarha (SRR)
         var ougiFixedDamage = calcOugiFixedDamage(key);
 
@@ -805,7 +805,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         chainDamageUP = Math.min(LIMIT.chainDamageUP, chainDamageUP);
 
         chainDamageUP += buff["zenithChainDamage"];
-        
+
         if (key == "Djeeta") {
             damageLimit += buff["masterDamageLimit"] + buff["zenithDamageLimit"];
             ougiDamageLimit += buff["masterDamageLimit"] + buff["zenithDamageLimit"];
@@ -816,16 +816,16 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         var debuffResistanceByHigo = 0.01 * Math.min(30, totals[key]["debuffResistance"] * totalSummon["zeus"]);
         //Other than Higo skill category.
-        var debuffResistanceByNormal = 0.01 * totals[key]["cosmosDebuffResistance"]; 
+        var debuffResistanceByNormal = 0.01 * totals[key]["cosmosDebuffResistance"];
         var debuffResistance = 100 * (1.0 + debuffResistanceByHigo) * (1.0 + debuffResistanceByNormal) - 100;
         debuffResistance += 100 * totals[key]["debuffResistanceBuff"];
-        
+
         // Generate LimitValues
         let normalDamageLimitValues = _initLimitValues(1.0 + criticalDamageLimit, BASE_LIMIT_VALUES.normalDamage);
         let normalDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + damageLimit, BASE_LIMIT_VALUES.normalDamage);
         let ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
         let ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, BASE_LIMIT_VALUES.ougiDamage);
-        
+
         if (totals[key]["ougiLimitValues"]) {
             ougiDamageLimitValues = _initLimitValues(1.0 + criticalOugiDamageLimit, totals[key]["ougiLimitValues"]);
             ougiDamageLimitValuesWithoutCritical = _initLimitValues(1.0 + ougiDamageLimit, totals[key]["ougiLimitValues"]);
@@ -890,7 +890,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             }
         }
         if (totals[key]['covenant'] === "impervious") {
-            let value = Math.ceil(30000 * (1.0 - enemyResistance)); 
+            let value = Math.ceil(30000 * (1.0 - enemyResistance));
             supplementalDamageArray["不壊の誓約"] = {
                 damage: value,
                 damageWithoutCritical: value,
@@ -960,7 +960,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
             expectedCycleDamagePerTurn = expectedCycleDamage / (expectedTurn + 1.0);
         }
-        
+
         // Display array
         var coeffs = {};
         coeffs["normal"] = normalCoeff;
@@ -1455,6 +1455,16 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
                     case "emnity_own_SL20":
                         // Refer to Dark Jeanne's HP
                         charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 27.5, remainHP);
+                        continue;
+                    case "emnity_own_SL20_steps":
+                        // Refer to Black Knight's HP
+                        if (remainHP < 0.75 && remainHP >= 0.50) {
+                            charaHaisuiValue += 0.15;
+                        } else if (remainHP < 0.50 && remainHP >= 0.25) {
+                            charaHaisuiValue += 0.30;
+                        } else if (remainHP < 0.25) {
+                            charaHaisuiValue += 0.45;
+                        }
                         continue;
                     default:
                         break;
@@ -2884,6 +2894,15 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                 case "emnity_own_SL20":
                     totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "L", 27.5, totals[key]["remainHP"]);
                     continue;
+                case "emnity_own_SL20_steps":
+                    if (totals[key]["remainHP"] < 0.75 && totals[key]["remainHP"] >= 0.50) {
+                        totals[key]["charaHaisui"] += 15;
+                    } else if (totals[key]["remainHP"] < 0.50 && totals[key]["remainHP"] >= 0.25) {
+                        totals[key]["charaHaisui"] += 30;
+                    } else if (totals[key]["remainHP"] < 0.25) {
+                        totals[key]["charaHaisui"] += 45;
+                    }
+                    continue;
                 case "envoy_meditation":
                     var elements = Math.min(4, module.exports.checkNumberOfElements(totals));
                     // number of elements * attack 15% DA 10% TA 3%
@@ -3272,12 +3291,12 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     var newExpectedCycleDamagePerTurn = (onedata[key].expectedTurn === Infinity)
                     ? onedata[key].expectedAttack * newDamage
                     : newChainBurst + newOugiDamage + onedata[key].expectedTurn * onedata[key].expectedAttack * newDamage;
-                    
+
 
                     [newDamage, newExpectedCycleDamagePerTurn] = supplemental.calcThirdHitDamage(onedata[key].skilldata.supplementalDamageArray, [newDamage, newExpectedCycleDamagePerTurn], {expectedTurn: onedata[key].expectedTurn});
-                    
+
                     newExpectedCycleDamagePerTurn /= (onedata[key].expectedTurn === Infinity ? 1 : onedata[key].expectedTurn + 1);
-                    
+
                     var hp;
                     if (displayRealHP) {
                         // Actual HP

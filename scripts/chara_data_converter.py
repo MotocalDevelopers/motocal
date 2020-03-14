@@ -134,8 +134,10 @@ supportAbilist["emnity_all_SL10"] = {
 }
 supportAbilist["emnity_own_SL20"] = {
     u"ダーク・ラピュセル",
-    u"絶望の剣",
     u"砂神グラフォスの慈愛",
+}
+supportAbilist["emnity_own_SL20_steps"] = {
+    u"絶望の剣",
     u"ノートラーガ"
 }
 supportAbilist["envoy_meditation"] = {
@@ -495,7 +497,7 @@ patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 ### SR
 patching["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
 
-# Patching ougi ratio 
+# Patching ougi ratio
 # Verification list: https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968
 patchingOugiRatio = OrderedDict()
 
@@ -554,7 +556,7 @@ patchingOugiRatio["クビラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["マキラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァジラ"] = {"ougiRatio": 5.0}
 
-### SSR (The Eternals 5★) (最終十天衆) 
+### SSR (The Eternals 5★) (最終十天衆)
 patchingOugiRatio["[最終]ウーノ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]ソーン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]サラーサ"] = {"ougiRatio": 5.0}
@@ -783,12 +785,12 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             else:
                 newdict["baseDA"] = 7.0
                 newdict["baseTA"] = 3.0
-				
+
             if newdict["name"] in patchingOugiRatio:
                 newdict["ougiRatio"] = patchingOugiRatio[newdict["name"]]["ougiRatio"]
             else:
                 newdict["ougiRatio"] = defaultOugiRatio[rare]
-			
+
 
             newdict["imageURL"] = "./charaimgs/" + key
 
