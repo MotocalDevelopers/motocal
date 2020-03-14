@@ -882,6 +882,7 @@ skillnamelist["strengthL"] = {
     u"ガチャピンの攻刃": "wind",
     u"あふれだす旨味の攻刃": "earth",
     u"グラウンドオブアームズ": "earth",
+    u"資材切断の攻刃": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {

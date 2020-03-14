@@ -165,6 +165,9 @@ supportAbilist["knightmare_frame"] = {
 supportAbilist["sumizome_sakura"] = {
     u"墓前の墨染桜"
 }
+supportAbilist["arvess_pact"] = {
+    u"アルベスの契約者"
+}
 supportAbilist["critical_up_own_10_30"] = {
     u"セルフィッシュ・ロイヤル",
     u"ラ・ピュセル30"

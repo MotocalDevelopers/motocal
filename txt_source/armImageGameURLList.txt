@@ -524,11 +524,13 @@ http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040506300.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040506700.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040508700.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040508800.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040512100.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040509000.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040509100.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040509200.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040509300.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040509500.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040512000.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040509400.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040509600.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040510300.png
@@ -627,6 +629,7 @@ http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040809300.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040809900.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040810000.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040900100.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040311700.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040900500.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040902100.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040902200.png

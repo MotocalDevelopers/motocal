@@ -28,6 +28,8 @@ http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040166000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040167000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040168000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040169000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040259000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040258000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040257000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040256000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040255000_01.png
@@ -166,7 +168,7 @@ http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040111000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040110000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040109000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040108000_01.png
-http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040107000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040107000_03.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040106000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040105000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040104000_01.png
@@ -234,7 +236,7 @@ http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040042000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040041000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040040000_03.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040029000_03.png
-http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040028000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040028000_03.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040027000_03.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040026000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040025000_03.png
