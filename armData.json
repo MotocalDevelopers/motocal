@@ -6582,6 +6582,46 @@
         "imageURL": "./imgs/1040110600.png",
         "en": "[4★] Mirror-Blade Shard"
     },
+    "アーク": {
+        "ja": "アーク",
+        "element": "light",
+        "type": "dagger",
+        "skill1": "normalSetsunaL",
+        "skill2": "non",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 44,
+        "minattack": 439,
+        "hp": 263,
+        "attack": 2632,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040112500.png",
+        "en": "Ivory Ark"
+    },
+    "[4凸]アーク": {
+        "ja": "[4凸]アーク",
+        "element": "light",
+        "type": "dagger",
+        "skill1": "normalSetsunaLL",
+        "skill2": "normalOntyouS",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 44,
+        "minattack": 439,
+        "hp": 318,
+        "attack": 3180,
+        "series": "none",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": 263,
+        "attacklv100": 2632,
+        "imageURL": "./imgs/1040112500.png",
+        "en": "[4★] Ivory Ark"
+    },
     "天干地支刀・未之飾": {
         "ja": "天干地支刀・未之飾",
         "element": "dark",
@@ -6820,6 +6860,46 @@
         "imageURL": "./imgs/1040310400.png",
         "en": "Porculius"
     },
+    "バブ・エル・マンデブ": {
+        "ja": "バブ・エル・マンデブ",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "normalCriticalL",
+        "skill2": "normalKamui",
+        "element2": "dark",
+        "skill3": "non",
+        "element3": "dark",
+        "minhp": 31,
+        "minattack": 503,
+        "hp": 207,
+        "attack": 2915,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040311600.png",
+        "en": "Bab-el-Mandeb"
+    },
+    "[4凸]バブ・エル・マンデブ": {
+        "ja": "[4凸]バブ・エル・マンデブ",
+        "element": "dark",
+        "type": "axe",
+        "skill1": "normalCriticalLL",
+        "skill2": "normalKamuiM",
+        "element2": "dark",
+        "skill3": "non",
+        "element3": "dark",
+        "minhp": 31,
+        "minattack": 503,
+        "hp": 251,
+        "attack": 3518,
+        "series": "none",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": 207,
+        "attacklv100": 2915,
+        "imageURL": "./imgs/1040311600.png",
+        "en": "[4★] Bab-el-Mandeb"
+    },
     "ガンバンテイン": {
         "ja": "ガンバンテイン",
         "element": "light",
@@ -6979,6 +7059,25 @@
         "attacklv100": 2965,
         "imageURL": "./imgs/1040504300.png",
         "en": "[4★] AK-4A"
+    },
+    "天干地支筒・子之飾": {
+        "ja": "天干地支筒・子之飾",
+        "element": "dark",
+        "type": "gun",
+        "skill1": "normalKonshinM",
+        "skill2": "normalNiteM",
+        "element2": "dark",
+        "skill3": "non",
+        "element3": "dark",
+        "minhp": 26,
+        "minattack": 469,
+        "hp": 175,
+        "attack": 2711,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040511900.png",
+        "en": "Rodentius"
     },
     "リボン": {
         "ja": "リボン",
@@ -8722,7 +8821,7 @@
         "element3": "wind",
         "minhp": 33,
         "minattack": 380,
-        "hp": 380,
+        "hp": 247,
         "attack": 2716,
         "series": "none",
         "slvmax": 15,
@@ -10898,6 +10997,25 @@
         "imageURL": "./imgs/1040019400.png",
         "en": "[4★] Brand of Binding Oath"
     },
+    "タラヴァガニ": {
+        "ja": "タラヴァガニ",
+        "element": "earth",
+        "type": "sword",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "earth",
+        "skill3": "non",
+        "element3": "earth",
+        "minhp": 29,
+        "minattack": 319,
+        "hp": 144,
+        "attack": 2160,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040019600.png",
+        "en": "Red King Crab"
+    },
     "アゾット": {
         "ja": "アゾット",
         "element": "dark",
@@ -11757,6 +11875,65 @@
         "attacklv100": 1921,
         "imageURL": "./imgs/1040111500.png",
         "en": "[4★] Love Live Light"
+    },
+    "ドス": {
+        "ja": "ドス",
+        "element": "fire",
+        "type": "dagger",
+        "skill1": "normalHaisuiL",
+        "skill2": "normalCriticalS",
+        "element2": "fire",
+        "skill3": "non",
+        "element3": "fire",
+        "minhp": 38,
+        "minattack": 409,
+        "hp": 230,
+        "attack": 2440,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040112600.png",
+        "en": "Gangsta Knife"
+    },
+    "降魔の包丁": {
+        "ja": "降魔の包丁",
+        "element": "light",
+        "type": "dagger",
+        "skill1": "normalHaisuiL",
+        "skill2": "normalCriticalS",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 26,
+        "minattack": 469,
+        "hp": 201,
+        "attack": 2582,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040112700.png",
+        "en": "Spectral Cleaver"
+    },
+    "[4凸]降魔の包丁": {
+        "ja": "[4凸]降魔の包丁",
+        "element": "light",
+        "type": "dagger",
+        "skill1": "normalHaisuiL",
+        "skill2": "normalCriticalM",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 26,
+        "minattack": 469,
+        "hp": 201,
+        "attack": 2582,
+        "series": "none",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": 240,
+        "attacklv100": 3110,
+        "imageURL": "./imgs/1040112700.png",
+        "en": "[4★] Spectral Cleaver"
     },
     "ヒュプノスクリス": {
         "ja": "ヒュプノスクリス",
@@ -15324,6 +15501,46 @@
         "attacklv100": 2428,
         "imageURL": "./imgs/1040416300.png",
         "en": "[4★] Kaladanda"
+    },
+    "ゴライコウ": {
+        "ja": "ゴライコウ",
+        "element": "earth",
+        "type": "wand",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "earth",
+        "skill3": "non",
+        "element3": "earth",
+        "minhp": 43,
+        "minattack": 315,
+        "hp": 266,
+        "attack": 1960,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040416500.png",
+        "en": "Dawn Rising"
+    },
+    "[4凸]ゴライコウ": {
+        "ja": "[4凸]ゴライコウ",
+        "element": "earth",
+        "type": "wand",
+        "skill1": "strengthL",
+        "skill2": "shinTenNoInori",
+        "element2": "earth",
+        "skill3": "non",
+        "element3": "earth",
+        "minhp": 43,
+        "minattack": 315,
+        "hp": 309,
+        "attack": 2275,
+        "series": "none",
+        "slvmax": 15,
+        "maxlv": 150,
+        "hplv100": 266,
+        "attacklv100": 1960,
+        "imageURL": "./imgs/1040416500.png",
+        "en": "[4★] Dawn Rising"
     },
     "裁きの鳴雷": {
         "ja": "裁きの鳴雷",
@@ -19540,12 +19757,50 @@
         "imageURL": "./imgs/1040911700.png",
         "en": "Blade of Purification"
     },
-    "エクスカリバー・属性変更": {
-        "ja": "エクスカリバー・属性変更",
+    "極・白刃": {
+        "ja": "極・白刃",
+        "element": "dark",
+        "type": "katana",
+        "skill1": "normalHiouL",
+        "skill2": "non",
+        "element2": "dark",
+        "skill3": "non",
+        "element3": "dark",
+        "minhp": 28,
+        "minattack": 465,
+        "hp": 180,
+        "attack": 2700,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040911900.png",
+        "en": "Alabaster Zenith"
+    },
+    "相州正宗": {
+        "ja": "相州正宗",
+        "element": "earth",
+        "type": "katana",
+        "skill1": "normalSetsuna",
+        "skill2": "non",
+        "element2": "earth",
+        "skill3": "non",
+        "element3": "earth",
+        "minhp": 31,
+        "minattack": 450,
+        "hp": 180,
+        "attack": 2707,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040912000.png",
+        "en": "Soshu Masamune"
+    },
+    "エクスカリバー": {
+        "ja": "エクスカリバー",
         "element": "all",
         "type": "sword",
         "skill1": "non",
-        "skill2": "non",
+        "skill2": "rightway_pathfinder",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19559,12 +19814,12 @@
         "imageURL": "./imgs/1040007500.png",
         "en": "Excalibur"
     },
-    "[4凸]エクスカリバー・属性変更": {
-        "ja": "[4凸]エクスカリバー・属性変更",
+    "[4凸]エクスカリバー": {
+        "ja": "[4凸]エクスカリバー",
         "element": "all",
         "type": "sword",
         "skill1": "non",
-        "skill2": "non",
+        "skill2": "rightway_pathfinderII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19580,8 +19835,8 @@
         "imageURL": "./imgs/1040007500.png",
         "en": "[4★] Excalibur"
     },
-    "ダマスカスナイフ・属性変更": {
-        "ja": "ダマスカスナイフ・属性変更",
+    "ダマスカスナイフ": {
+        "ja": "ダマスカスナイフ",
         "element": "all",
         "type": "dagger",
         "skill1": "non",
@@ -19599,8 +19854,8 @@
         "imageURL": "./imgs/1040106600.png",
         "en": "Damascus Knife"
     },
-    "[4凸]ダマスカスナイフ・属性変更": {
-        "ja": "[4凸]ダマスカスナイフ・属性変更",
+    "[4凸]ダマスカスナイフ": {
+        "ja": "[4凸]ダマスカスナイフ",
         "element": "all",
         "type": "dagger",
         "skill1": "non",
@@ -19620,12 +19875,12 @@
         "imageURL": "./imgs/1040106600.png",
         "en": "[4★] Damascus Knife"
     },
-    "ゲイボルグ・属性変更": {
-        "ja": "ゲイボルグ・属性変更",
+    "ゲイボルグ": {
+        "ja": "ゲイボルグ",
         "element": "all",
         "type": "spear",
-        "skill1": "non",
-        "skill2": "non",
+        "skill1": "victorys_promise",
+        "skill2": "one_sting_one_kill",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19639,12 +19894,12 @@
         "imageURL": "./imgs/1040205500.png",
         "en": "Gae Bulg"
     },
-    "[4凸]ゲイボルグ・属性変更": {
-        "ja": "[4凸]ゲイボルグ・属性変更",
+    "[4凸]ゲイボルグ": {
+        "ja": "[4凸]ゲイボルグ",
         "element": "all",
         "type": "spear",
-        "skill1": "non",
-        "skill2": "non",
+        "skill1": "victorys_promise",
+        "skill2": "one_sting_one_killII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19660,12 +19915,12 @@
         "imageURL": "./imgs/1040205500.png",
         "en": "[4★] Gae Bulg"
     },
-    "ミョルニル・属性変更": {
-        "ja": "ミョルニル・属性変更",
+    "ミョルニル": {
+        "ja": "ミョルニル",
         "element": "all",
         "type": "axe",
         "skill1": "normalL",
-        "skill2": "non",
+        "skill2": "god_of_war",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19679,12 +19934,12 @@
         "imageURL": "./imgs/1040304400.png",
         "en": "Mjolnir"
     },
-    "[4凸]ミョルニル・属性変更": {
-        "ja": "[4凸]ミョルニル・属性変更",
+    "[4凸]ミョルニル": {
+        "ja": "[4凸]ミョルニル",
         "element": "all",
         "type": "axe",
         "skill1": "normalL",
-        "skill2": "non",
+        "skill2": "god_of_warII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19700,8 +19955,8 @@
         "imageURL": "./imgs/1040304400.png",
         "en": "[4★] Mjolnir"
     },
-    "カドゥケウス・属性変更": {
-        "ja": "カドゥケウス・属性変更",
+    "カドゥケウス": {
+        "ja": "カドゥケウス",
         "element": "all",
         "type": "wand",
         "skill1": "normalKamui",
@@ -19719,8 +19974,8 @@
         "imageURL": "./imgs/1040406900.png",
         "en": "Caduceus"
     },
-    "[4凸]カドゥケウス・属性変更": {
-        "ja": "[4凸]カドゥケウス・属性変更",
+    "[4凸]カドゥケウス": {
+        "ja": "[4凸]カドゥケウス",
         "element": "all",
         "type": "wand",
         "skill1": "normalKamui",
@@ -19740,8 +19995,8 @@
         "imageURL": "./imgs/1040406900.png",
         "en": "[4★] Caduceus"
     },
-    "フライクーゲル・属性変更": {
-        "ja": "フライクーゲル・属性変更",
+    "フライクーゲル": {
+        "ja": "フライクーゲル",
         "element": "all",
         "type": "gun",
         "skill1": "normalBoukunL",
@@ -19759,8 +20014,8 @@
         "imageURL": "./imgs/1040504400.png",
         "en": "Freikugel"
     },
-    "[4凸]フライクーゲル・属性変更": {
-        "ja": "[4凸]フライクーゲル・属性変更",
+    "[4凸]フライクーゲル": {
+        "ja": "[4凸]フライクーゲル",
         "element": "all",
         "type": "gun",
         "skill1": "normalBoukunL",
@@ -19780,12 +20035,12 @@
         "imageURL": "./imgs/1040504400.png",
         "en": "[4★] Freikugel"
     },
-    "方天画戟・属性変更": {
-        "ja": "方天画戟・属性変更",
+    "方天画戟": {
+        "ja": "方天画戟",
         "element": "all",
         "type": "fist",
         "skill1": "non",
-        "skill2": "non",
+        "skill2": "apocalyptic_power",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19799,12 +20054,12 @@
         "imageURL": "./imgs/1040604500.png",
         "en": "Sky Piercer"
     },
-    "[4凸]方天画戟・属性変更": {
-        "ja": "[4凸]方天画戟・属性変更",
+    "[4凸]方天画戟": {
+        "ja": "[4凸]方天画戟",
         "element": "all",
         "type": "fist",
         "skill1": "non",
-        "skill2": "non",
+        "skill2": "apocalyptic_powerII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19820,8 +20075,8 @@
         "imageURL": "./imgs/1040604500.png",
         "en": "[4★] Sky Piercer"
     },
-    "ヘラクレス・属性変更": {
-        "ja": "ヘラクレス・属性変更",
+    "ヘラクレス": {
+        "ja": "ヘラクレス",
         "element": "all",
         "type": "bow",
         "skill1": "normalKatsumiM",
@@ -19839,8 +20094,8 @@
         "imageURL": "./imgs/1040703600.png",
         "en": "Hercules"
     },
-    "[4凸]ヘラクレス・属性変更": {
-        "ja": "[4凸]ヘラクレス・属性変更",
+    "[4凸]ヘラクレス": {
+        "ja": "[4凸]ヘラクレス",
         "element": "all",
         "type": "bow",
         "skill1": "normalKatsumiM",
@@ -19860,8 +20115,8 @@
         "imageURL": "./imgs/1040703600.png",
         "en": "[4★] Hercules"
     },
-    "ウルリクムミ・属性変更": {
-        "ja": "ウルリクムミ・属性変更",
+    "ウルリクムミ": {
+        "ja": "ウルリクムミ",
         "element": "all",
         "type": "music",
         "skill1": "normalKatsumokuS",
@@ -19879,8 +20134,8 @@
         "imageURL": "./imgs/1040803700.png",
         "en": "Ullikummi"
     },
-    "[4凸]ウルリクムミ・属性変更": {
-        "ja": "[4凸]ウルリクムミ・属性変更",
+    "[4凸]ウルリクムミ": {
+        "ja": "[4凸]ウルリクムミ",
         "element": "all",
         "type": "music",
         "skill1": "normalKatsumokuS",
@@ -19900,12 +20155,12 @@
         "imageURL": "./imgs/1040803700.png",
         "en": "[4★] Ullikummi"
     },
-    "天羽々斬・属性変更": {
-        "ja": "天羽々斬・属性変更",
+    "天羽々斬": {
+        "ja": "天羽々斬",
         "element": "all",
         "type": "katana",
         "skill1": "normalSetsuna",
-        "skill2": "non",
+        "skill2": "slaysnakes_myth",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19919,12 +20174,12 @@
         "imageURL": "./imgs/1040904300.png",
         "en": "Ameno Habakiri"
     },
-    "[4凸]天羽々斬・属性変更": {
-        "ja": "[4凸]天羽々斬・属性変更",
+    "[4凸]天羽々斬": {
+        "ja": "[4凸]天羽々斬",
         "element": "all",
         "type": "katana",
         "skill1": "normalSetsuna",
-        "skill2": "non",
+        "skill2": "slaysnakes_mythII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
