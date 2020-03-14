@@ -2210,13 +2210,13 @@ var supportAbilities = {
         "value": 0.00
     },
     "emnity_own_SL20": {
-        "name": "背水効果(闇ジャンヌダルク, 黒騎士, 土サラ, 光ダヌア)",
+        "name": "背水効果(ジャンヌダルク(闇), サラ(SSR))",
         "type": "emnity_own_SL20",
         "range": "own",
         "value": 0.00
     },
     "emnity_own_SL20_steps": {
-        "name": "背水効果(闇ジャンヌダルク, 黒騎士, 土サラ, 光ダヌア)",
+        "name": "背水効果(黒騎士(リミテッドver), ダヌア(光属性ver))",
         "type": "emnity_own_SL20_steps",
         "range": "own",
         "value": 0.00
