@@ -2135,7 +2135,6 @@ var multiLangData = {
         "ja": "種族不明",
         "zh": "种族不明",
     },
-
     "男": {
         "en": "Male",
         "ja": "男",
@@ -2304,10 +2303,10 @@ var multiLangData = {
         "ja": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
         "zh": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
     },
-    "全体背水効果(ザルハメリナ)": {
-        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina)",
-        "ja": "全体背水効果(ザルハメリナ)",
-        "zh": "全体背水効果(ザルハメリナ)",
+    "全体背水効果(ザルハメリナ, 火ユイシス)": {
+        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina, Fire Yuisis)",
+        "ja": "全体背水効果(ザルハメリナ, 火ユイシス)",
+        "zh": "全体背水効果(ザルハメリナ, 火ユイシス)",
     },
     "背水効果(ジャンヌダルク(闇), サラ(SSR))": {
         "en": "Boost to ATK based on how low HP is. (Jeanne D'Ark (Dark), Sara (Earth))",
@@ -2343,6 +2342,11 @@ var multiLangData = {
         "en": "15% boost to max HP, 10% boost to DEF and Charge bar fills up 25% slower. (Lelouch Lamperouge, Suzaku Kururugi, Kallen Kouzuki)",
         "ja": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
         "zh": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
+    },
+    "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))": {
+        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus Fire DMG effect. Additional effects to skills and charge attacks. (Yuisis (Fire))",
+        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
     },
     "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)": {
         "en": "Boost to critical hit rate (10% chance, 30% damage). (Vania, Jeanne D'Ark)",
@@ -2932,6 +2936,11 @@ var multiLangData = {
         "ja": "通常英傑(大)",
         "zh": "通常英傑(大)",
     },
+    "通常恩寵(小)": {
+        "en": "Normal Grace (S)",
+        "ja": "通常恩寵(小)",
+        "zh": "通常恩寵(小)",
+    },
     "通常恩寵(中)": {
         "en": "Normal Grace (M)",
         "ja": "通常恩寵(中)",
@@ -3277,6 +3286,11 @@ var multiLangData = {
         "ja": "通常技巧(大)",
         "zh": "通常技巧(大)",
     },
+    "通常技巧II": {
+        "en": "Normal Verity II",
+        "ja": "通常技巧II",
+        "zh": "通常技巧II",
+    },
     "マグナ技巧(小)": {
         "en": "Magna Verity (S)",
         "ja": "マグナ技巧(小)",
@@ -3301,6 +3315,16 @@ var multiLangData = {
         "en": "Normal Celere (M)",
         "ja": "通常刹那(中)",
         "zh": "通常刹那(中)",
+    },
+    "通常刹那(大)": {
+        "en": "Normal Celere (L)",
+        "ja": "通常刹那(大)",
+        "zh": "通常刹那(大)",
+    },
+    "通常刹那II": {
+        "en": "Normal Celere II",
+        "ja": "通常刹那II",
+        "zh": "通常刹那II",
     },
     "マグナ刹那(小)": {
         "en": "Magna Celere (S)",

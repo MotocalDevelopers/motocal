@@ -34,6 +34,7 @@ racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"星晶獣"] = "seisho"
+racelist[u"不明"] = "unknown"
 racelist[u"その他"] = "unknown"
 
 sexlist = OrderedDict()
@@ -43,6 +44,9 @@ sexlist[u"女"] = "female"
 sexlist[u"不明"] = "other"
 
 supportAbilist = OrderedDict()
+supportAbilist["none"] = {
+    u"剣聖を継ぐ者", # NOTE: Avoid mis-matches with "剣聖"
+}
 supportAbilist["da_up_all_10"] = {
     u"双剣乱舞"
 }
@@ -108,7 +112,8 @@ supportAbilist["ougi_gage_up_own_100"] = {
     u"刀神"
 }
 supportAbilist["ougi_gage_down_own_25"] = {
-    u"砂神グラフォスの鉄槌"
+    u"砂神グラフォスの鉄槌",
+    u"亥之一番"
 }
 supportAbilist["ougi_gage_down_own_35"] = {
     u"闘争求む重鎧"
@@ -130,7 +135,8 @@ supportAbilist["ougi_damage_up_10"] = {
     u"音ノ木坂学院2年生"
 }
 supportAbilist["emnity_all_SL10"] = {
-    u"太陽信仰"
+    u"太陽信仰",
+    u"七回忌の砌"
 }
 supportAbilist["emnity_own_SL20"] = {
     u"ダーク・ラピュセル",
@@ -155,6 +161,9 @@ supportAbilist["recklessness_incarnate"] = {
 supportAbilist["knightmare_frame"] = {
     u"人型自在戦闘装甲騎",
     u"ナイトメアフレーム"
+}
+supportAbilist["sumizome_sakura"] = {
+    u"墓前の墨染桜"
 }
 supportAbilist["critical_up_own_10_30"] = {
     u"セルフィッシュ・ロイヤル",
