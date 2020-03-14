@@ -1368,20 +1368,21 @@ var Result = CreateClass({
                         };
 
                         pushSkillInfoElement1("normal", "通常攻刃", "danger");
-                        pushSkillInfoElement1("normalHaisui", "通常背水", "light");
-                        pushSkillInfoElement1("normalKonshin", "通常渾身", "success");
-                        pushSkillInfoElement1("element", "属性", "primary");
+                        pushSkillInfoElement1("normalHaisui", "通常背水", "dark");
+                        pushSkillInfoElement1("normalKonshin", "通常渾身", "light");
+                        pushSkillInfoElement1("element", "属性", "default");
                         pushSkillInfoElement1("magna", "マグナ", "primary");
-                        pushSkillInfoElement1("magnaHaisui", "マグナ背水", "light");
-                        pushSkillInfoElement1("magnaKonshin", "マグナ渾身", "success");
-                        pushSkillInfoElement1("ex", "EX", "primary");
-                        pushSkillInfoElement1("exHaisui", "EX背水", "light");
-                        pushSkillInfoElement1("charaHaisui", "キャラ背水", "light");
-                        pushSkillInfoElement1("LBHaisui", "LB背水ラベル", "light");
+                        pushSkillInfoElement1("magnaHaisui", "マグナ背水", "dark");
+                        pushSkillInfoElement1("magnaKonshin", "マグナ渾身", "light");
+                        pushSkillInfoElement1("ex", "EX", "warning");
+                        pushSkillInfoElement1("exHaisui", "EX背水", "dark");
+                        pushSkillInfoElement1("charaHaisui", "キャラ背水", "dark");
+                        pushSkillInfoElement1("LBHaisui", "LB背水ラベル", "dark");
                         pushSkillInfoElement1("LBKonshin", "LB渾身ラベル", "light");
                         pushSkillInfoElement1("hpRatio", "HP増加", "success");
                         pushSkillInfoElement1("other", "その他バフ", "primary");
-                        pushSkillInfoElement1("ATKDebuff", "攻撃力減少(特殊)", "primary");
+                        pushSkillInfoElement1("ATKDebuff", "攻撃力減少(特殊)", "danger");
+                        pushSkillInfoElement1("accuracyDebuff", "攻撃命中率減少(特殊)", "dark");
 
                         var multipleAttackSkillInfo = [];
                         // For batting skill
@@ -1400,15 +1401,15 @@ var Result = CreateClass({
                         };
 
                         pushSkillInfoElement2("normalDA", "DA上昇(通常)", "danger");
-                        pushSkillInfoElement2("magnaDA", "DA上昇(マグナ)", "danger");
-                        pushSkillInfoElement2("exDA", "DA上昇(EX)", "danger");
-                        pushSkillInfoElement2("bahaDA", "DA上昇(バハ)", "danger");
-                        pushSkillInfoElement2("cosmosDA", "DA上昇(コスモス)", "danger");
-                        pushSkillInfoElement2("otherDA", "DA上昇(その他)", "danger");
+                        pushSkillInfoElement2("magnaDA", "DA上昇(マグナ)", "primary");
+                        pushSkillInfoElement2("exDA", "DA上昇(EX)", "default");
+                        pushSkillInfoElement2("bahaDA", "DA上昇(バハ)", "dark");
+                        pushSkillInfoElement2("cosmosDA", "DA上昇(コスモス)", "light");
+                        pushSkillInfoElement2("otherDA", "DA上昇(その他)", "default");
                         pushSkillInfoElement2("normalTA", "TA上昇(通常)", "danger");
-                        pushSkillInfoElement2("magnaTA", "TA上昇(マグナ)", "danger");
-                        pushSkillInfoElement2("bahaTA", "TA上昇(バハ)", "danger");
-                        pushSkillInfoElement2("otherTA", "TA上昇(その他)", "danger");
+                        pushSkillInfoElement2("magnaTA", "TA上昇(マグナ)", "primary");
+                        pushSkillInfoElement2("bahaTA", "TA上昇(バハ)", "dark");
+                        pushSkillInfoElement2("otherTA", "TA上昇(その他)", "default");
 
                         var criticalInfo = [];
                         if (Object.keys(skilldata.criticalArray).length > 0) {
@@ -1513,15 +1514,15 @@ var Result = CreateClass({
                                 );
                             }
                         };
-                        pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "default");
-                        pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
-                        pushSkillInfoElement3("damageUP", "与ダメージUP", "default");
-                        pushSkillInfoElement3("damageUPOnlyNormalDamage", "与ダメージUP(通常攻撃のみ)", "default");
-                        pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
-                        pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "default");
-                        pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");
-                        pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "default");
-                        pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "default");
+                        pushSkillInfoElement3("additionalDamage", "追加ダメージ", "primary");
+                        pushSkillInfoElement3("damageUP", "与ダメージUP", "danger");
+                        pushSkillInfoElement3("damageUPOnlyNormalDamage", "与ダメージUP(通常攻撃のみ)", "danger");
+                        pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "danger");
+                        pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "warning");
+                        pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "warning");
+                        pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "succes");
+                        pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "succes");
+                        pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "warning");
                         if (skilldata["criticalDamageLimit"] != 0) {
                             otherSkillInfo.push(
                                 <span key={key + "-" + "normalCriticalDamageLimit"}>
@@ -1547,7 +1548,7 @@ var Result = CreateClass({
                         };
                         pushOugiInfo("ougiRatio", "奥義倍率", "warning");
                         pushOugiInfo("ougiFixedDamage", "奥義固定ダメージ", "warning");
-                        pushOugiInfo("ougiBonusPlainDamage", "奥義追加ダメージ(無属性固定)", "warning");
+                        pushOugiInfo("ougiBonusPlainDamage", "奥義追加ダメージ(無属性固定)", "default");
 
                         charaDetail[key].push(<div key={key + "-mainSkillInfo"}>{mainSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
