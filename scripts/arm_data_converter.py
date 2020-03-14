@@ -1055,6 +1055,20 @@ skillnamelist["normalL"][u"英雄たる証明"] = "wind"
 skillnamelist["normalL"][u"禁忌の悲恋"] = "dark"
 skillnamelist["normalL"][u"狙撃の極意"] = "water"
 
+# Superlative skills
+# Attribute as a temporary all
+skillnamelist["rightway_pathfinderII"] = {u"王道を征く者II": "all"}
+skillnamelist["rightway_pathfinder"] = {u"王道を征く者": "all"}
+skillnamelist["victorys_promise"] = {u"必勝の誓い": "all"}
+skillnamelist["one_sting_one_killII"] = {u"一刺一殺II": "all"}
+skillnamelist["one_sting_one_kill"] = {u"一刺一殺": "all"}
+skillnamelist["god_of_warII"] = {u"戦神の打擲II": "all"}
+skillnamelist["god_of_war"] = {u"戦神の打擲": "all"}
+skillnamelist["apocalyptic_powerII"] = {u"万物を砕く剛技II": "all"}
+skillnamelist["apocalyptic_power"] = {u"万物を砕く剛技": "all"}
+skillnamelist["slaysnakes_mythII"] = {u"戮蛇の神刀II": "all"}
+skillnamelist["slaysnakes_myth"] = {u"戮蛇の神刀": "all"}
+
 # Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
 skillnamelist["one_night_party"] = {u"ワンナイ・パーリー": "none"}
