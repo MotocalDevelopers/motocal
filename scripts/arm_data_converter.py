@@ -60,6 +60,15 @@ skillnamelist["normalHPL"] = {
     u"奈落の守護": "dark"
 }
 
+skillnamelist["normalCriticalLL"] = {
+    u"紅蓮の技巧II": "fire",
+    u"霧氷の技巧II": "water",
+    u"地裂の技巧II": "earth",
+    u"乱気の技巧II": "wind",
+    u"天光の技巧II": "light",
+    u"奈落の技巧II": "dark"
+}
+
 skillnamelist["normalCriticalL"] = {
     u"紅蓮の技巧": "fire",
     u"霧氷の技巧": "water",
@@ -68,6 +77,7 @@ skillnamelist["normalCriticalL"] = {
     u"天光の技巧": "light",
     u"奈落の技巧": "dark"
 }
+
 
 skillnamelist["normalHaisuiL"] = {
     u"紅蓮の背水": "fire",
@@ -257,8 +267,12 @@ skillnamelist["normalKatsumiM"] = {
 }
 
 skillnamelist["normalElementM"] = {
+    u"業火の進境": "fire",
     u"渦潮の進境": "water",
-    u"雷電の進境": "light"
+    u"大地の進境": "earth",
+    u"竜巻の進境": "wind",
+    u"雷電の進境": "light",
+    u"奈落の進境": "dark"
 }
 
 skillnamelist["kaijinnoyogen"] = {
@@ -384,6 +398,24 @@ skillnamelist["normalSetsunaS"] = {
     u"闇の刹那": "dark"
 }
 
+skillnamelist["normalSetsunaLL"] = {
+    u"紅蓮の刹那II": "fire",
+    u"霧氷の刹那II": "water",
+    u"地裂の刹那II": "earth",
+    u"竜巻の刹那II": "wind",
+    u"天光の刹那II": "light",
+    u"奈落の刹那II": "dark"
+}
+
+skillnamelist["normalSetsunaL"] = {
+    u"紅蓮の刹那": "fire",
+    u"霧氷の刹那": "water",
+    u"地裂の刹那": "earth",
+    u"竜巻の刹那": "wind",
+    u"天光の刹那": "light",
+    u"奈落の刹那": "dark"
+}
+
 skillnamelist["normalRanbuS"] = {
     u"火の乱舞": "fire",
     u"水の乱舞": "water",
@@ -448,6 +480,15 @@ skillnamelist["normalEiketsuL"] = {
 }
 
 # Grace
+skillnamelist["normalOntyouS"] = {
+    u"火の恩寵": "fire",
+    u"水の恩寵": "water",
+    u"土の恩寵": "earth",
+    u"風の恩寵": "wind",
+    u"光の恩寵": "light",
+    u"闇の恩寵": "dark"
+}
+
 skillnamelist["normalOntyouM"] = {
     u"業火の恩寵": "fire",
     u"渦潮の恩寵": "water",
@@ -843,6 +884,10 @@ skillnamelist["strengthL"] = {
     u"残る霞火、あへなし": "light",
     u"暴風の残滓": "wind",
     u"ガチャピンの攻刃": "wind",
+    u"あふれだす旨味の攻刃": "earth",
+    u"グラウンドオブアームズ": "earth",
+    u"資材切断の攻刃": "dark",
+    u"六波羅蜜の攻刃": "dark",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -1003,9 +1048,10 @@ skillnamelist["tenshiShukufuku"] = {
     u"堕落のすゝめ": "dark"
 }
 
-#huanglong katana
+# Huanglong katana, Dawn Rising
 skillnamelist["shinTenNoInori"] = {
     u"震天の祈り": "light",
+    u"サンライト・ブースト": "earth",
 }
 
 # Damage cap up
@@ -1063,6 +1109,20 @@ skillnamelist["normalL"][u"未完の錬金術"] = "fire"
 skillnamelist["normalL"][u"英雄たる証明"] = "wind"
 skillnamelist["normalL"][u"禁忌の悲恋"] = "dark"
 skillnamelist["normalL"][u"狙撃の極意"] = "water"
+
+# Superlative skills
+# Attribute as a temporary all
+skillnamelist["rightway_pathfinderII"] = {u"王道を征く者II": "all"}
+skillnamelist["rightway_pathfinder"] = {u"王道を征く者": "all"}
+skillnamelist["victorys_promise"] = {u"必勝の誓い": "all"}
+skillnamelist["one_sting_one_killII"] = {u"一刺一殺II": "all"}
+skillnamelist["one_sting_one_kill"] = {u"一刺一殺": "all"}
+skillnamelist["god_of_warII"] = {u"戦神の打擲II": "all"}
+skillnamelist["god_of_war"] = {u"戦神の打擲": "all"}
+skillnamelist["apocalyptic_powerII"] = {u"万物を砕く剛技II": "all"}
+skillnamelist["apocalyptic_power"] = {u"万物を砕く剛技": "all"}
+skillnamelist["slaysnakes_mythII"] = {u"戮蛇の神刀II": "all"}
+skillnamelist["slaysnakes_myth"] = {u"戮蛇の神刀": "all"}
 
 # Other weapons that require adjustment
 skillnamelist["extendedDjeetaNormalDATA30"] = {u"立体機動戦術": "wind"}
@@ -1255,7 +1315,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
         if name in translation:
             newdict["en"] = translation[name]
         else:
-            print(name)
+            print("missing translate", name)
             newdict["en"] = name
 
         json_data[name] = newdict
