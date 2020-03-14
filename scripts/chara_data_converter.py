@@ -120,7 +120,8 @@ supportAbilist["ougi_gage_down_own_35"] = {
 }
 supportAbilist["ougi_gage_down_own_35_ta_100"] = {
     u"ケンプファー",
-    u"凶爪"
+    u"凶爪",
+    u"バレンタインとか興味無いかな～",
 }
 supportAbilist["ougi_gage_up_djeeta_20"] = {
     u"クラリスちゃんの特製チョコ☆"
@@ -447,6 +448,7 @@ patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
 
 patching["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
 patching["ミュオン(クリスマスver)"] = {"DA": 0, "TA": 1000.0}
+patching["グリームニル(バレンタインver)"] = {"DA": 1000.0, "TA": 1000.0}
 
 ### SR
 patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
@@ -558,15 +560,18 @@ patchingOugiRatio["アイル"] = {"ougiRatio": 5.0}
 patchingOugiRatio["カタリナ(リミテッドver)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ラカム(リミテッドver)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["黒騎士(リミテッドver)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ゼタ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ティアマト"] = {"ougiRatio": 5.0}
 
 ### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["アニラ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["マキラ"] = {"ougiRatio": 5.5}
 
 ### SSR (Guardian Deity 4★) (十二神将)
 patchingOugiRatio["クビラ"] = {"ougiRatio": 5.0}
-patchingOugiRatio["マキラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァジラ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ビカラ"] = {"ougiRatio": 5.0}
 
 ### SSR (The Eternals 5★) (最終十天衆)
 patchingOugiRatio["[最終]ウーノ"] = {"ougiRatio": 5.0}
@@ -592,6 +597,7 @@ patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 patchingOugiRatio["ミュオン(クリスマスver)"] = {"ougiRatio": 12.5}
+patchingOugiRatio["飛竜と吸血姫 ヴァンピィ＆ベス"] = {"ougiRatio": 12.5}
 
 ### SSR (Not to ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
@@ -599,6 +605,8 @@ patchingOugiRatio["コルワ(水着ver)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["コッコロ"] = {"ougiRatio": 0.0}
 patchingOugiRatio["ディアンサ(水着ver)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["木之本桜"] = {"ougiRatio": 0.0}
+patchingOugiRatio["グリームニル(バレンタインver)"] = {"ougiRatio": 0.0}
+patchingOugiRatio["レイ(リミテッドver)"] = {"ougiRatio": 0.0}
 
 ## SR
 ### SR (5★)
