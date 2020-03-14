@@ -1168,8 +1168,7 @@ var Result = CreateClass({
                                     </span>
                             </div>
                         );
-                    }
-                    ;
+                    };
                 }
 
                 if (sw.switchSkillTotal) {
