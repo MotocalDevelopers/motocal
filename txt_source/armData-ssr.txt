@@ -433,7 +433,7 @@
 |&attachref(img/1040705100.png,15%);|シグルズの弓|&color(#3366ff){水};|弓|60|[[イェルムリク>奥義一覧#yellmurik]]|[[先制の氷刃>スキル一覧#senseinohyoujin]]|[[渦潮の攻刃>スキル一覧#uzushionokoujin]]|36|365|214|2311|ショップ|武勲の輝き交換||
 |&attachref(img/1040705100.png,15%);|[4凸]シグルズの弓|&color(#3366ff){水};|弓|60|[[イェルムリク>奥義一覧#yellmurik]]|[[先制の氷刃>スキル一覧#senseinohyoujin]]|[[霧氷の攻刃>スキル一覧#muhyounokoujin]]|36|365|250|2701|ショップ|武勲の輝き交換|○|214|2311|
 |&attachref(img/1040705200.png,15%);|インドラリム|&color(#339966){風};|弓|60|[[インドラの矢>奥義一覧#indranoya]]|[[竜巻の刹那>スキル一覧#tatsumakinosetuna]]|[[乱気の堅守>スキル一覧#rannkinokensyu]]|33|380|211|2326|ショップ|武勲の輝き交換||
-|&attachref(img/1040705200.png,15%);|[4凸]インドラリム|&color(#339966){風};|弓|60|[[インドラの矢>奥義一覧#indranoya]]|[[竜巻の刹那>スキル一覧#tatsumakinosetuna]]|[[乱気の堅守>スキル一覧#rannkinokensyu]]|33|380|380|2716|ショップ|武勲の輝き交換|○|211|2326|
+|&attachref(img/1040705200.png,15%);|[4凸]インドラリム|&color(#339966){風};|弓|60|[[インドラの矢>奥義一覧#indranoya]]|[[竜巻の刹那>スキル一覧#tatsumakinosetuna]]|[[乱気の堅守>スキル一覧#rannkinokensyu]]|33|380|247|2716|ショップ|武勲の輝き交換|○|211|2326|
 |&attachref(img/1040805200.png,15%);|スレイプニルシュー|&color(#ff9900){光};|楽器|60|[[シェングヴィーデ>奥義一覧#shengvide]]|[[光の背水>スキル一覧#hikarinohaisui]]|[[天光の堅守>スキル一覧#tennkounokensyu]]|63|332|224|2054|ショップ|武勲の輝き交換||
 |&attachref(img/1040805200.png,15%);|[4凸]スレイプニルシュー|&color(#ff9900){光};|楽器|60|[[シェングヴィーデ>奥義一覧#shengvide]]|[[雷電の背水>スキル一覧#raidennnohaisui]]|[[天光の堅守>スキル一覧#tennkounokensyu]]|63|332|256|2399|ショップ|武勲の輝き交換|○|224|2054|
 |&attachref(img/1040011200.png,15%);|聖域の守護剣|&color(#3366ff){水};|剣|60|[[レゾナンス・メロディ>武器奥義#resonancemelody]]|[[霧氷の攻刃II>スキル一覧#muhyounokoujin2]]|[[チェインフォース>スキル一覧#chainforce]]|34|367|202|2332|カー・オン討伐戦|エピックウェポン||
