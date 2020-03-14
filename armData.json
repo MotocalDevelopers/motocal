@@ -19483,12 +19483,12 @@
         "imageURL": "./imgs/1040911700.png",
         "en": "Blade of Purification"
     },
-    "エクスカリバー・属性変更": {
-        "ja": "エクスカリバー・属性変更",
+    "エクスカリバー": {
+        "ja": "エクスカリバー",
         "element": "all",
         "type": "sword",
         "skill1": "non",
-        "skill2": "non",
+        "skill2": "rightway_pathfinder",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19502,12 +19502,12 @@
         "imageURL": "./imgs/1040007500.png",
         "en": "Excalibur"
     },
-    "[4凸]エクスカリバー・属性変更": {
-        "ja": "[4凸]エクスカリバー・属性変更",
+    "[4凸]エクスカリバー": {
+        "ja": "[4凸]エクスカリバー",
         "element": "all",
         "type": "sword",
         "skill1": "non",
-        "skill2": "non",
+        "skill2": "rightway_pathfinderII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19523,8 +19523,8 @@
         "imageURL": "./imgs/1040007500.png",
         "en": "[4★] Excalibur"
     },
-    "ダマスカスナイフ・属性変更": {
-        "ja": "ダマスカスナイフ・属性変更",
+    "ダマスカスナイフ": {
+        "ja": "ダマスカスナイフ",
         "element": "all",
         "type": "dagger",
         "skill1": "non",
@@ -19542,8 +19542,8 @@
         "imageURL": "./imgs/1040106600.png",
         "en": "Damascus Knife"
     },
-    "[4凸]ダマスカスナイフ・属性変更": {
-        "ja": "[4凸]ダマスカスナイフ・属性変更",
+    "[4凸]ダマスカスナイフ": {
+        "ja": "[4凸]ダマスカスナイフ",
         "element": "all",
         "type": "dagger",
         "skill1": "non",
@@ -19563,12 +19563,12 @@
         "imageURL": "./imgs/1040106600.png",
         "en": "[4★] Damascus Knife"
     },
-    "ゲイボルグ・属性変更": {
-        "ja": "ゲイボルグ・属性変更",
+    "ゲイボルグ": {
+        "ja": "ゲイボルグ",
         "element": "all",
         "type": "spear",
-        "skill1": "non",
-        "skill2": "non",
+        "skill1": "victorys_promise",
+        "skill2": "one_sting_one_kill",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19582,12 +19582,12 @@
         "imageURL": "./imgs/1040205500.png",
         "en": "Gae Bulg"
     },
-    "[4凸]ゲイボルグ・属性変更": {
-        "ja": "[4凸]ゲイボルグ・属性変更",
+    "[4凸]ゲイボルグ": {
+        "ja": "[4凸]ゲイボルグ",
         "element": "all",
         "type": "spear",
-        "skill1": "non",
-        "skill2": "non",
+        "skill1": "victorys_promise",
+        "skill2": "one_sting_one_killII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19603,12 +19603,12 @@
         "imageURL": "./imgs/1040205500.png",
         "en": "[4★] Gae Bulg"
     },
-    "ミョルニル・属性変更": {
-        "ja": "ミョルニル・属性変更",
+    "ミョルニル": {
+        "ja": "ミョルニル",
         "element": "all",
         "type": "axe",
         "skill1": "normalL",
-        "skill2": "non",
+        "skill2": "god_of_war",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19622,12 +19622,12 @@
         "imageURL": "./imgs/1040304400.png",
         "en": "Mjolnir"
     },
-    "[4凸]ミョルニル・属性変更": {
-        "ja": "[4凸]ミョルニル・属性変更",
+    "[4凸]ミョルニル": {
+        "ja": "[4凸]ミョルニル",
         "element": "all",
         "type": "axe",
         "skill1": "normalL",
-        "skill2": "non",
+        "skill2": "god_of_warII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19643,8 +19643,8 @@
         "imageURL": "./imgs/1040304400.png",
         "en": "[4★] Mjolnir"
     },
-    "カドゥケウス・属性変更": {
-        "ja": "カドゥケウス・属性変更",
+    "カドゥケウス": {
+        "ja": "カドゥケウス",
         "element": "all",
         "type": "wand",
         "skill1": "normalKamui",
@@ -19662,8 +19662,8 @@
         "imageURL": "./imgs/1040406900.png",
         "en": "Caduceus"
     },
-    "[4凸]カドゥケウス・属性変更": {
-        "ja": "[4凸]カドゥケウス・属性変更",
+    "[4凸]カドゥケウス": {
+        "ja": "[4凸]カドゥケウス",
         "element": "all",
         "type": "wand",
         "skill1": "normalKamui",
@@ -19683,8 +19683,8 @@
         "imageURL": "./imgs/1040406900.png",
         "en": "[4★] Caduceus"
     },
-    "フライクーゲル・属性変更": {
-        "ja": "フライクーゲル・属性変更",
+    "フライクーゲル": {
+        "ja": "フライクーゲル",
         "element": "all",
         "type": "gun",
         "skill1": "normalBoukunL",
@@ -19702,8 +19702,8 @@
         "imageURL": "./imgs/1040504400.png",
         "en": "Freikugel"
     },
-    "[4凸]フライクーゲル・属性変更": {
-        "ja": "[4凸]フライクーゲル・属性変更",
+    "[4凸]フライクーゲル": {
+        "ja": "[4凸]フライクーゲル",
         "element": "all",
         "type": "gun",
         "skill1": "normalBoukunL",
@@ -19723,12 +19723,12 @@
         "imageURL": "./imgs/1040504400.png",
         "en": "[4★] Freikugel"
     },
-    "方天画戟・属性変更": {
-        "ja": "方天画戟・属性変更",
+    "方天画戟": {
+        "ja": "方天画戟",
         "element": "all",
         "type": "fist",
         "skill1": "non",
-        "skill2": "non",
+        "skill2": "apocalyptic_power",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19742,12 +19742,12 @@
         "imageURL": "./imgs/1040604500.png",
         "en": "Sky Piercer"
     },
-    "[4凸]方天画戟・属性変更": {
-        "ja": "[4凸]方天画戟・属性変更",
+    "[4凸]方天画戟": {
+        "ja": "[4凸]方天画戟",
         "element": "all",
         "type": "fist",
         "skill1": "non",
-        "skill2": "non",
+        "skill2": "apocalyptic_powerII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19763,8 +19763,8 @@
         "imageURL": "./imgs/1040604500.png",
         "en": "[4★] Sky Piercer"
     },
-    "ヘラクレス・属性変更": {
-        "ja": "ヘラクレス・属性変更",
+    "ヘラクレス": {
+        "ja": "ヘラクレス",
         "element": "all",
         "type": "bow",
         "skill1": "normalKatsumiM",
@@ -19782,8 +19782,8 @@
         "imageURL": "./imgs/1040703600.png",
         "en": "Hercules"
     },
-    "[4凸]ヘラクレス・属性変更": {
-        "ja": "[4凸]ヘラクレス・属性変更",
+    "[4凸]ヘラクレス": {
+        "ja": "[4凸]ヘラクレス",
         "element": "all",
         "type": "bow",
         "skill1": "normalKatsumiM",
@@ -19803,8 +19803,8 @@
         "imageURL": "./imgs/1040703600.png",
         "en": "[4★] Hercules"
     },
-    "ウルリクムミ・属性変更": {
-        "ja": "ウルリクムミ・属性変更",
+    "ウルリクムミ": {
+        "ja": "ウルリクムミ",
         "element": "all",
         "type": "music",
         "skill1": "normalKatsumokuS",
@@ -19822,8 +19822,8 @@
         "imageURL": "./imgs/1040803700.png",
         "en": "Ullikummi"
     },
-    "[4凸]ウルリクムミ・属性変更": {
-        "ja": "[4凸]ウルリクムミ・属性変更",
+    "[4凸]ウルリクムミ": {
+        "ja": "[4凸]ウルリクムミ",
         "element": "all",
         "type": "music",
         "skill1": "normalKatsumokuS",
@@ -19843,12 +19843,12 @@
         "imageURL": "./imgs/1040803700.png",
         "en": "[4★] Ullikummi"
     },
-    "天羽々斬・属性変更": {
-        "ja": "天羽々斬・属性変更",
+    "天羽々斬": {
+        "ja": "天羽々斬",
         "element": "all",
         "type": "katana",
         "skill1": "normalSetsuna",
-        "skill2": "non",
+        "skill2": "slaysnakes_myth",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
@@ -19862,12 +19862,12 @@
         "imageURL": "./imgs/1040904300.png",
         "en": "Ameno Habakiri"
     },
-    "[4凸]天羽々斬・属性変更": {
-        "ja": "[4凸]天羽々斬・属性変更",
+    "[4凸]天羽々斬": {
+        "ja": "[4凸]天羽々斬",
         "element": "all",
         "type": "katana",
         "skill1": "normalSetsuna",
-        "skill2": "non",
+        "skill2": "slaysnakes_mythII",
         "element2": "all",
         "skill3": "non",
         "element3": "all",
