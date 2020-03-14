@@ -45,7 +45,7 @@ sexlist[u"不明"] = "other"
 
 supportAbilist = OrderedDict()
 supportAbilist["none"] = {
-    u"剣聖を継ぐ者", # NOTE: Avoid mis-matches with "剣聖"   
+    u"剣聖を継ぐ者", # NOTE: Avoid mis-matches with "剣聖"
 }
 supportAbilist["da_up_all_10"] = {
     u"双剣乱舞"
@@ -112,7 +112,8 @@ supportAbilist["ougi_gage_up_own_100"] = {
     u"刀神"
 }
 supportAbilist["ougi_gage_down_own_25"] = {
-    u"砂神グラフォスの鉄槌"
+    u"砂神グラフォスの鉄槌",
+    u"亥之一番"
 }
 supportAbilist["ougi_gage_down_own_35"] = {
     u"闘争求む重鎧"
@@ -160,6 +161,9 @@ supportAbilist["recklessness_incarnate"] = {
 supportAbilist["knightmare_frame"] = {
     u"人型自在戦闘装甲騎",
     u"ナイトメアフレーム"
+}
+supportAbilist["sumizome_sakura"] = {
+    u"墓前の墨染桜"
 }
 supportAbilist["critical_up_own_10_30"] = {
     u"セルフィッシュ・ロイヤル",

@@ -1927,8 +1927,8 @@ var skillAmounts = {
         "S": [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0],
         "M": [3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.3, 5.6, 5.9, 6.2, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5],
         "L": [4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 10.2, 10.4, 10.6, 10.8, 11.0],
-        // FIXME: normal critical II
-        "LL": [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+        // FIXME: Applied fitting pattern, needs update when numbers are available
+        "LL": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
         "ratio": 0.5,
     },
     "normalRanbu": {
@@ -2257,6 +2257,12 @@ var supportAbilities = {
         "type": "knightmare_frame",
         "range": "own",
         "value": 0.00
+    },
+    "sumizome_sakura": {
+        "name": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+        "type": "sumizome_sakura",
+        "range": range.own,
+        "value": [0.20, 0.20, 0.20]
     },
     "critical_up_own_10_30": {
         "name": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",
@@ -2837,6 +2843,13 @@ module.exports.additionalSelectList = {
         defaultKeys: [0]
     },
     "黄龍刀": {
+        selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
+        notationText: "",
+        selectKeys: ["skill2Detail"],
+        selectors: ["shinTenNoInori"],
+        defaultKeys: ["0"],
+    },
+    "[4凸]ゴライコウ": {
         selectKeysNotation: skillDetailsDescription["shinTenNoInori"],
         notationText: "",
         selectKeys: ["skill2Detail"],

@@ -2940,6 +2940,13 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     totals[key]["HPBuff"] += 0.15;
                     totals[key]["ougiGageBuff"] -= 0.25;
                     continue;
+                case "sumizome_sakura":
+                    if (totals[key]['remainHP'] < 0.25) {
+                        totals[key]["DASupport"] += 10.00;
+                        totals[key]["TASupport"] += 10.00;
+                        totals[key]["additionalDamageXA"] = support.value;
+                    }
+                    continue;
                 case "charaDamageUP_OugiCap":
                     // obsolete
                     totals[key]["charaDamageUP"] += support.value;

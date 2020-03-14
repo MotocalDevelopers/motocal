@@ -880,6 +880,8 @@ skillnamelist["strengthL"] = {
     u"残る霞火、あへなし": "light",
     u"暴風の残滓": "wind",
     u"ガチャピンの攻刃": "wind",
+    u"あふれだす旨味の攻刃": "earth",
+    u"グラウンドオブアームズ": "earth",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -1031,9 +1033,10 @@ skillnamelist["tenshiShukufuku"] = {
     u"堕落のすゝめ": "dark"
 }
 
-#huanglong katana
+# Huanglong katana, Dawn Rising
 skillnamelist["shinTenNoInori"] = {
     u"震天の祈り": "light",
+    u"サンライト・ブースト": "earth",
 }
 
 # Damage cap up

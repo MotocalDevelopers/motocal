@@ -2343,6 +2343,11 @@ var multiLangData = {
         "ja": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
         "zh": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
     },
+    "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))": {
+        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus Fire DMG effect. Additional effects to skills and charge attacks. (Yuisis (Fire))",
+        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+    },
     "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)": {
         "en": "Boost to critical hit rate (10% chance, 30% damage). (Vania, Jeanne D'Ark)",
         "ja": "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)",

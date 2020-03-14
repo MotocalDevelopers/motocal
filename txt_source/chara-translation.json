@@ -3,7 +3,7 @@
     "ユイシス(火属性ver)": "Yuisis (Fire)",
     "ルシウス(SSR)": "Lucius (SSR)",
     "ノア(リミテッドver)": "Noa (Grand)",
-    "ヘレル・ベン・シャレム(リミテッドver)": "Helel ben Shalem (Grand)",
+    "ヘレル・ベン・シャレム(リミテッドver)": "Helel ben Shalem",
     "ダヌア(光属性ver)": "Danua (SSR)",
     "ジン(SSR)": "Jin",
     "セルエル(クリスマスver)": "Seruel (Holiday)",
@@ -532,6 +532,8 @@
     "コワフュール": "La Coiffe",
     "ザザ(ハロウィンver)": "Zaja (Halloween)",
     "ヨウ": "You",
-    "クルーニ": "Krugne (SR)"
+    "クルーニ": "Krugne (SR)",
+    "クビラ(SR)": "Kumbhira (Event)",
+    "ジョイ": "Joy"
 }
 
