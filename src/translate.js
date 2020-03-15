@@ -1123,6 +1123,16 @@ var multiLangData = {
         "ja": "クリュサオル(二刀)",
         "zh": "Chrysaor(Dual)",
     },
+    "ランバージャック": {
+        "en": "Lumberjack",
+        "ja": "ランバージャック",
+        "zh": "ランバージャック",
+    },
+    "キャバルリー": {
+        "en": "Cavalier",
+        "ja": "キャバルリー",
+        "zh": "キャバルリー",
+    },
     "ザ・グローリー": {
         "en": "Glorybringer",
         "ja": "ザ・グローリー",
@@ -1673,6 +1683,11 @@ var multiLangData = {
         "ja": "通常進境(中)(最大時)",
         "zh": "通常属性攻击力(中)",
     },
+    "竜進境(最大時)": {
+        "en": "Dragon Element ATK",
+        "ja": "竜進境(最大時)",
+        "zh": "竜進境(最大時)",
+    },
     "アンノウン": {
         "en": "Unknown",
         "ja": "アンノウン",
@@ -2135,7 +2150,6 @@ var multiLangData = {
         "ja": "種族不明",
         "zh": "种族不明",
     },
-
     "男": {
         "en": "Male",
         "ja": "男",
@@ -2304,15 +2318,20 @@ var multiLangData = {
         "ja": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
         "zh": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
     },
-    "全体背水効果(ザルハメリナ)": {
-        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina)",
-        "ja": "全体背水効果(ザルハメリナ)",
-        "zh": "全体背水効果(ザルハメリナ)",
+    "全体背水効果(ザルハメリナ, 火ユイシス)": {
+        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina, Fire Yuisis)",
+        "ja": "全体背水効果(ザルハメリナ, 火ユイシス)",
+        "zh": "全体背水効果(ザルハメリナ, 火ユイシス)",
     },
-    "背水効果(闇ジャンヌダルク, 黒騎士)": {
-        "en": "Boost to ATK based on how low HP is. (Jeanne D'Ark (Dark), Black Knight)",
-        "ja": "背水効果(闇ジャンヌダルク, 黒騎士)",
-        "zh": "背水効果(闇ジャンヌダルク, 黒騎士)",
+    "背水効果(ジャンヌダルク(闇), サラ(SSR))": {
+        "en": "Boost to ATK based on how low HP is. (Jeanne D'Ark (Dark), Sara (Earth))",
+        "ja": "背水効果(ジャンヌダルク(闇), サラ(SSR))",
+        "zh": "背水効果(ジャンヌダルク(闇), サラ(SSR))",
+    },
+    "背水効果(黒騎士(リミテッドver), ダヌア(光属性ver))": {
+        "en": "Boost to ATK based on how low HP is. (Black Knight, Danua (Light))",
+        "ja": "背水効果(黒騎士(リミテッドver), ダヌア(光属性ver))",
+        "zh": "背水効果(黒騎士(リミテッドver), ダヌア(光属性ver))",
     },
     "バトルメンバーの属性の数に応じて自分のステータスUP(水着ゾーイ)": {
         "en": "Boost to stats based on number of different elements among allies. (Zooey (Promo), Zooey (Grand))",
@@ -2338,6 +2357,16 @@ var multiLangData = {
         "en": "15% boost to max HP, 10% boost to DEF and Charge bar fills up 25% slower. (Lelouch Lamperouge, Suzaku Kururugi, Kallen Kouzuki)",
         "ja": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
         "zh": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
+    },
+    "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))": {
+        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus Fire DMG effect. Additional effects to skills and charge attacks. (Yuisis (Fire))",
+        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+    },
+    "クリティカル発動時にダメージ上限UP/トリプルアタック発動時に火属性追撃効果(ゼタ)": {
+        "en": "10% boost to damage cap on critical hits/20% Bonus Fire DMG effect to triple attacks (Zeta)",
+        "ja": "クリティカル発動時にダメージ上限UP/トリプルアタック発動時に火属性追撃効果(ゼタ)",
+        "zh": "クリティカル発動時にダメージ上限UP/トリプルアタック発動時に火属性追撃効果(ゼタ)",
     },
     "クリティカル確率UP(発動率10%, 倍率30%)(ヴァンピィ, ジャンヌダルク)": {
         "en": "Boost to critical hit rate (10% chance, 30% damage). (Vania, Jeanne D'Ark)",
@@ -2927,6 +2956,11 @@ var multiLangData = {
         "ja": "通常英傑(大)",
         "zh": "通常英傑(大)",
     },
+    "通常恩寵(小)": {
+        "en": "Normal Grace (S)",
+        "ja": "通常恩寵(小)",
+        "zh": "通常恩寵(小)",
+    },
     "通常恩寵(中)": {
         "en": "Normal Grace (M)",
         "ja": "通常恩寵(中)",
@@ -3122,6 +3156,16 @@ var multiLangData = {
         "ja": "EX攻刃(特大)",
         "zh": "EX攻刃(特大)",
     },
+    "EX攻刃(極大)": {
+        "en": "EX Might (LLL)",
+        "ja": "EX攻刃(極大)",
+        "zh": "EX攻刃(極大)",
+    },
+    "通常攻刃III": {
+        "en": "Normal Might (LLL)",
+        "ja": "通常攻刃III",
+        "zh": "通常攻刃III",
+    },
     "EX攻刃+守護(中)": {
         "en": "EX Might and Aegis (M)",
         "ja": "EX攻刃+守護(中)",
@@ -3272,6 +3316,11 @@ var multiLangData = {
         "ja": "通常技巧(大)",
         "zh": "通常技巧(大)",
     },
+    "通常技巧II": {
+        "en": "Normal Verity II",
+        "ja": "通常技巧II",
+        "zh": "通常技巧II",
+    },
     "マグナ技巧(小)": {
         "en": "Magna Verity (S)",
         "ja": "マグナ技巧(小)",
@@ -3296,6 +3345,16 @@ var multiLangData = {
         "en": "Normal Celere (M)",
         "ja": "通常刹那(中)",
         "zh": "通常刹那(中)",
+    },
+    "通常刹那(大)": {
+        "en": "Normal Celere (L)",
+        "ja": "通常刹那(大)",
+        "zh": "通常刹那(大)",
+    },
+    "通常刹那II": {
+        "en": "Normal Celere II",
+        "ja": "通常刹那II",
+        "zh": "通常刹那II",
     },
     "マグナ刹那(小)": {
         "en": "Magna Celere (S)",
