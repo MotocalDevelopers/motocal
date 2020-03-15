@@ -113,7 +113,9 @@ var opusNames = [
     "of Repudiation",
     "絶対否定の",
     "of Renunciation",
-    "永遠拒絶の"
+    "永遠拒絶の",
+    "Draconic",
+    "ドラゴニック",
 ];
 var zenith = {　//得意武器
     "無し": 0,
@@ -905,6 +907,7 @@ var skilltypes = {
     "strengthM": {name: "EX攻刃(中)", type: "ex", amount: "M"},
     "strengthL": {name: "EX攻刃(大)", type: "ex", amount: "L"},
     "strengthLL": {name: "EX攻刃(特大)", type: "ex", amount: "LL"},
+    "strengthLLL": {name: "EX攻刃(極大)", type: "ex", amount: "LLL"},
     "exATKandHPM": {name: "EX攻刃+守護(中)", type: "exATKandHP", amount: "M"},
     "normalDamageLimit2_5": {name: "通常上限UP(2.5%)", type: "normalDamageLimit", amount: "S"},
     "normalDamageLimit7": {name: "通常上限UP(7.0%)", type: "normalDamageLimit", amount: "M"},
@@ -1023,6 +1026,7 @@ var skilltypes = {
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
     "opus-normalElement": {name: "通常進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
     "opus-magnaElement": {name: "マグナ進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
+    "dracoElement": {name: "竜進境(最大時)", type: "dracoElement", amount: 0.001},
     "normalElementM": {name: "通常進境(中)(最大時)", type: "normalElement", amount: "M"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
@@ -1168,6 +1172,12 @@ var opusMagnaWeaponSkill2 = {
     "magnaHaisuiL": {name: "マグナ背水(大)"},
     "magnaSanteM": {name: "マグナ三手(中)"},
     "opus-magnaElement": {name: "マグナ進境(大)(最大時)"},
+};
+
+var dracoWeaponSkill2 = {
+    "non": {name: "無し"},
+    "normalKamuiL": {name: "通常神威(大)"},
+    "magnaKamuiL": {name: "マグナ神威(大)"},
 };
 
 var armTypes = {
@@ -1457,6 +1467,30 @@ module.exports.Jobs = {
         "hpBonus": 600.0,
         "shugoBonus": 0.0,
         "DaBonus": 57.0,
+        "TaBonus": 3.0
+    },
+    "lumberjack": {
+        "name": "ランバージャック",
+        "favArm1": "axe",
+        "favArm2": "music",
+        "type": "balance",
+        "atBonus": 0.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 4.0,
+        "TaBonus": 1.0
+    },
+    "cavalier": {
+        "name": "キャバルリー",
+        "favArm1": "spear",
+        "favArm2": "gun",
+        "type": "defense",
+        "atBonus": 1800.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 7.0,
         "TaBonus": 3.0
     },
     "rune": {
@@ -1865,6 +1899,7 @@ var skillAmounts = {
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
         "LL": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0],
+        "LLL": [12.0, 13.44, 14.89, 16.33, 17.78, 19.22, 20.66, 22.11, 23.56, 25.0, 26.6, 28.2, 29.8, 31.4, 33.0, 33.0, 33.0, 33.0, 33.0, 33.0],
     },
     "normalHP": {
         "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.4, 12.8, 13.2, 13.6, 14.0, 14.0, 14.0, 14.0, 14.0, 14.0],
@@ -2631,6 +2666,7 @@ module.exports.opusNormalWeaponSkill2 = opusNormalWeaponSkill2;
 module.exports.opusMagnaWeaponSkill2 = opusMagnaWeaponSkill2;
 module.exports.opusWeaponSkill1 = opusWeaponSkill1;
 module.exports.sishoSufix = sishoSufix;
+module.exports.dracoWeaponSkill2 = dracoWeaponSkill2;
 
 
 
@@ -2806,6 +2842,48 @@ module.exports.additionalSelectList = {
         selectKeys: ["skill2", "skill3"],
         selectors: ["opusWeaponSkill1", "opusMagnaWeaponSkill2"],
         defaultKeys: ["non", "non"],
+    },
+    "ドラゴニックハープ": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["skill3"],
+        selectors: ["dracoWeaponSkill2"],
+        defaultKeys: ["non"],
+    },
+    "ドラゴニックバスター": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["skill3"],
+        selectors: ["dracoWeaponSkill2"],
+        defaultKeys: ["non"],
+    },
+    "ドラゴニックボウ": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["skill3"],
+        selectors: ["dracoWeaponSkill2"],
+        defaultKeys: ["non"],
+    },
+    "ドラゴニックロッド": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["skill3"],
+        selectors: ["dracoWeaponSkill2"],
+        defaultKeys: ["non"],
+    },
+    "ドラゴニックブレイド": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["skill3"],
+        selectors: ["dracoWeaponSkill2"],
+        defaultKeys: ["non"],
+    },
+    "ドラゴニックファイア": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["skill3"],
+        selectors: ["dracoWeaponSkill2"],
+        defaultKeys: ["non"],
     },
     "ランス・オブ・ケルヴィム": {
         notationText: "",
@@ -3156,6 +3234,16 @@ module.exports.selector.en.opusMagnaWeaponSkill2 = Object.keys(opusMagnaWeaponSk
 });
 module.exports.selector.zh.opusMagnaWeaponSkill2 = Object.keys(opusMagnaWeaponSkill2).map(function (key) {
     return <option value={key} key={key}>{intl.translate(opusMagnaWeaponSkill2[key].name, "zh")}</option>;
+});
+
+module.exports.selector.ja.dracoWeaponSkill2 = Object.keys(dracoWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(dracoWeaponSkill2[key].name, "ja")}</option>;
+});
+module.exports.selector.en.dracoWeaponSkill2 = Object.keys(dracoWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(dracoWeaponSkill2[key].name, "en")}</option>;
+});
+module.exports.selector.zh.dracoWeaponSkill2 = Object.keys(dracoWeaponSkill2).map(function (key) {
+    return <option value={key} key={key}>{intl.translate(dracoWeaponSkill2[key].name, "zh")}</option>;
 });
 
 module.exports.selector.ja.types = Object.keys(jobTypes).map(function (opt) {

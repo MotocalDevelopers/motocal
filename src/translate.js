@@ -1123,6 +1123,16 @@ var multiLangData = {
         "ja": "クリュサオル(二刀)",
         "zh": "Chrysaor(Dual)",
     },
+    "ランバージャック": {
+        "en": "Lumberjack",
+        "ja": "ランバージャック",
+        "zh": "ランバージャック",
+    },
+    "キャバルリー": {
+        "en": "Cavalier",
+        "ja": "キャバルリー",
+        "zh": "キャバルリー",
+    },
     "ザ・グローリー": {
         "en": "Glorybringer",
         "ja": "ザ・グローリー",
@@ -1672,6 +1682,11 @@ var multiLangData = {
         "en": "Normal Element ATK M",
         "ja": "通常進境(中)(最大時)",
         "zh": "通常属性攻击力(中)",
+    },
+    "竜進境(最大時)": {
+        "en": "Dragon Element ATK",
+        "ja": "竜進境(最大時)",
+        "zh": "竜進境(最大時)",
     },
     "アンノウン": {
         "en": "Unknown",
@@ -3140,6 +3155,16 @@ var multiLangData = {
         "en": "EX Might (LL)",
         "ja": "EX攻刃(特大)",
         "zh": "EX攻刃(特大)",
+    },
+    "EX攻刃(極大)": {
+        "en": "EX Might (LLL)",
+        "ja": "EX攻刃(極大)",
+        "zh": "EX攻刃(極大)",
+    },
+    "通常攻刃III": {
+        "en": "Normal Might (LLL)",
+        "ja": "通常攻刃III",
+        "zh": "通常攻刃III",
     },
     "EX攻刃+守護(中)": {
         "en": "EX Might and Aegis (M)",

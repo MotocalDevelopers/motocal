@@ -275,6 +275,15 @@ skillnamelist["normalElementM"] = {
     u"奈落の進境": "dark"
 }
 
+skillnamelist["dracoElement"] = {
+    u"ウィルナスの炎威": "fire",
+    u"ワムデュスの水禍": "water",
+    u"ガレヲンの巌迫": "earth",
+    u"イーウィヤの劫風": "wind",
+    u"ル・オーの威光": "light",
+    u"フェディエルの呪蝕": "dark"
+}
+
 skillnamelist["kaijinnoyogen"] = {
     u"海神の予言": "water"
 }
@@ -908,6 +917,15 @@ skillnamelist["strengthLL"] = {
     u"氷逆の覇道": "water",
     u"幻魔の覇道": "dark",
     u"妃光の覇道": "light"
+}
+
+skillnamelist["strengthLLL"] = {
+    u"紅炎の支配者": "fire",
+    u"氷霜の支配者": "water",
+    u"花樹の支配者": "earth",
+    u"嵐翠の支配者": "wind",
+    u"白輝の支配者": "light",
+    u"禍滅の支配者": "dark"
 }
 
 skillnamelist["normalSoka"] = {
