@@ -275,6 +275,15 @@ skillnamelist["normalElementM"] = {
     u"奈落の進境": "dark"
 }
 
+skillnamelist["dracoElement"] = {
+    u"ウィルナスの炎威": "fire",
+    u"ワムデュスの水禍": "water",
+    u"ガレヲンの巌迫": "earth",
+    u"イーウィヤの劫風": "wind",
+    u"ル・オーの威光": "light",
+    u"フェディエルの呪蝕": "dark"
+}
+
 skillnamelist["kaijinnoyogen"] = {
     u"海神の予言": "water"
 }
