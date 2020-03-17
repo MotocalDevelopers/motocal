@@ -1028,6 +1028,7 @@ var skilltypes = {
     "opus-magnaElement": {name: "マグナ進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
     "dracoElement": {name: "竜進境(最大時)", type: "dracoElement", amount: 0.001},
     "normalElementM": {name: "通常進境(中)(最大時)", type: "normalElement", amount: "M"},
+    "normalElementL": {name: "通常進境(大)(最大時)", type: "normalElement", amount: "L"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
