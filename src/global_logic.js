@@ -549,7 +549,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += totals[key]["elementBuffBoostBuff"];
         elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
         elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
-        elementCoeff += totals[key]["dracoElement"];
+        elementCoeff += totals[key]["dracoElement"] * totalSummon["zeus"];
         elementCoeff += Math.min(totals[key]["normalElement"] * totalSummon["zeus"], 0.75);
         elementCoeff += 0.01 * totals[key]["shinTenNoInori"];
         elementCoeff += 0.01 * totals[key]["LB"].Element;
@@ -2158,7 +2158,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             var turns2max = 0.15 / skillAmounts["elementATK"][amount][slv - 1];
                             totals[key][stype] += turns2max * skillAmounts["elementATK"][amount][slv - 1];
                         } else if (stype == 'dracoElement') {
-                            var turns2max = 0.25 / (amount * slv);
+                            var turns2max = 0.15 / (amount * slv);
                             totals[key][stype] += turns2max * (amount * slv);
                         } else if (stype == 'normalElement') {
                             var turns2max = 0.10 / skillAmounts["elementATK"][amount][slv - 1];
