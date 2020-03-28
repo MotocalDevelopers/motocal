@@ -2161,7 +2161,12 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             var turns2max = 0.25 / (amount * slv);
                             totals[key][stype] += turns2max * (amount * slv);
                         } else if (stype == 'normalElement') {
-                            var turns2max = 0.10 / skillAmounts["elementATK"][amount][slv - 1];
+                            var turns2max;
+                            if (amount == 'M') {
+                                turns2max = 0.10 / skillAmounts["elementATK"][amount][slv - 1];
+                            } else if (amount == 'L') {
+                                turns2max = 0.15 / skillAmounts["elementATK"][amount][slv - 1];
+                            }
                             totals[key][stype] += comb[i] * turns2max * skillAmounts["elementATK"][amount][slv - 1];
                         } else if (stype == 'shinTenNoInori') {
                             totals[key][stype] = Math.max(totals[key][stype], amount * arm[skillkey + "Detail"]);
