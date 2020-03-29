@@ -284,7 +284,7 @@ skillnamelist["normalElementL"] = {
     u"奈落の進境": "dark"
 }
 
-skillnamelist["dracoElement"] = {
+skillnamelist["dracoATK"] = {
     u"ウィルナスの炎威": "fire",
     u"ワムデュスの水禍": "water",
     u"ガレヲンの巌迫": "earth",

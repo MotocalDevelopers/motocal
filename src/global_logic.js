@@ -517,6 +517,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         exCoeff += 0.01 * totals[key]["ex"];
         exCoeff += 0.01 * totals[key]["akashaATK"];
         exCoeff += 0.01 * totals[key]["akashaSensei"];
+        exCoeff += totals[key]["dracoATK"]
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"];
         var normalCoeff = 1.0 + (0.01 * totals[key]["normal"] + 0.01 * totals[key]["normalSoka"]) * totalSummon["zeus"];
         normalCoeff += 0.01 * totals[key]["normalOther"];
@@ -549,7 +550,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += totals[key]["elementBuffBoostBuff"];
         elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
         elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
-        elementCoeff += totals[key]["dracoElement"];
         elementCoeff += Math.min(totals[key]["normalElement"] * totalSummon["zeus"], 0.75);
         elementCoeff += 0.01 * totals[key]["shinTenNoInori"];
         elementCoeff += 0.01 * totals[key]["LB"].Element;
@@ -2157,7 +2157,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'opusmagnaElement') {
                             var turns2max = 0.15 / skillAmounts["elementATK"][amount][slv - 1];
                             totals[key][stype] += turns2max * skillAmounts["elementATK"][amount][slv - 1];
-                        } else if (stype == 'dracoElement') {
+                        } else if (stype == 'dracoATK') {
                             var turns2max = 0.25 / (amount * slv);
                             totals[key][stype] += turns2max * (amount * slv);
                         } else if (stype == 'normalElement') {
@@ -2453,7 +2453,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
-                dracoElement: 0,
+                dracoATK: 0,
                 normalElement: 0,
                 shinTenNoInori: 0,
                 slaysnakes_myth: 0,
@@ -2640,7 +2640,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
-                dracoElement: 0,
+                dracoATK: 0,
                 normalElement: 0,
                 shinTenNoInori: 0,
                 slaysnakes_myth: 0,
