@@ -1689,7 +1689,7 @@ var multiLangData = {
         "zh": "通常属性攻击力(大)",
     },
     "竜進境(最大時)": {
-        "en": "Dragon Element ATK",
+        "en": "Dragon ATK",
         "ja": "竜進境(最大時)",
         "zh": "竜進境(最大時)",
     },
