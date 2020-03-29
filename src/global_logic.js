@@ -548,11 +548,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += buff["element"];
         elementCoeff += totals[key]["elementBuff"];
         elementCoeff += totals[key]["elementBuffBoostBuff"];
-        elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
-        elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
-        elementCoeff += Math.min(totals[key]["normalElement"] * totalSummon["zeus"], 0.75);
         elementCoeff += 0.01 * totals[key]["shinTenNoInori"];
         elementCoeff += 0.01 * totals[key]["LB"].Element;
+
+        // 進境
+        let normalElement = totals[key]["opusnormalElement"] * totalSummon["zeus"];
+        normalElement += totals[key]["opusmagnaElement"] * totalSummon["magna"];
+        normalElement += totals[key]["normalElement"] * totalSummon["zeus"];
+        elementCoeff += Math.min(normalElement, 0.75);
 
         if (key == "Djeeta") {
             elementCoeff += buff["zenithElement"];
