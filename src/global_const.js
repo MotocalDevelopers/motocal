@@ -1029,7 +1029,7 @@ var skilltypes = {
     "opus-delta": {name: "ペンデュラム[Δ]", type: "opusKey", amount: "L"},
     "opus-normalElement": {name: "通常進境(大)(最大時)", type: "opusnormalElement", amount: "L"},
     "opus-magnaElement": {name: "マグナ進境(大)(最大時)", type: "opusmagnaElement", amount: "L"},
-    "dracoElement": {name: "竜進境(最大時)", type: "dracoElement", amount: 0.001},
+    "dracoATK": {name: "竜進境(最大時)", type: "dracoATK", amount: 0.001},
     "normalElementM": {name: "通常進境(中)(最大時)", type: "normalElement", amount: "M"},
     "normalElementL": {name: "通常進境(大)(最大時)", type: "normalElement", amount: "L"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
