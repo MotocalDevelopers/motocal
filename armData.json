@@ -11747,6 +11747,25 @@
         "imageURL": "./imgs/1040019600.png",
         "en": "Red King Crab"
     },
+    "プロエリウム": {
+        "ja": "プロエリウム",
+        "element": "water",
+        "type": "sword",
+        "skill1": "normalL",
+        "skill2": "non",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 30,
+        "minattack": 449,
+        "hp": 199,
+        "attack": 2592,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040019800.png",
+        "en": "Proelium"
+    },
     "アゾット": {
         "ja": "アゾット",
         "element": "dark",
@@ -16374,6 +16393,25 @@
         "imageURL": "./imgs/1040416800.png",
         "en": "Tropical Fairy"
     },
+    "レッドスフィア": {
+        "ja": "レッドスフィア",
+        "element": "fire",
+        "type": "wand",
+        "skill1": "normalSetsuna",
+        "skill2": "normalHiouS",
+        "element2": "fire",
+        "skill3": "non",
+        "element3": "fire",
+        "minhp": 56,
+        "minattack": 319,
+        "hp": 307,
+        "attack": 2053,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040416900.png",
+        "en": "Red Sphere"
+    },
     "裁きの鳴雷": {
         "ja": "裁きの鳴雷",
         "element": "earth",
@@ -19144,6 +19182,25 @@
         "attacklv100": 2600,
         "imageURL": "./imgs/1040709400.png",
         "en": "[4★] Iridescent Bow"
+    },
+    "ソルジャーボウ": {
+        "ja": "ソルジャーボウ",
+        "element": "earth",
+        "type": "bow",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "earth",
+        "skill3": "non",
+        "element3": "earth",
+        "minhp": 31,
+        "minattack": 318,
+        "hp": 180,
+        "attack": 2027,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040709700.png",
+        "en": "Soldier Bow"
     },
     "オーシャンハープ": {
         "ja": "オーシャンハープ",

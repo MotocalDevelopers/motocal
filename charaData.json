@@ -659,6 +659,50 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "ドランク(火属性ver)": {
+        "name": "ドランク(火属性ver)",
+        "ja": "ドランク(火属性ver)",
+        "element": "fire",
+        "type": "pecu",
+        "race": "erune",
+        "sex": "male",
+        "fav1": "wand",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "220",
+        "hp": "1200",
+        "minattack": "1490",
+        "attack": "7720",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040269000_01.png",
+        "en": "Drang"
+    },
+    "スツルム(水属性ver)": {
+        "name": "スツルム(水属性ver)",
+        "ja": "スツルム(水属性ver)",
+        "element": "water",
+        "type": "attack",
+        "race": "doraf",
+        "sex": "female",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "260",
+        "hp": "1350",
+        "minattack": "1890",
+        "attack": "10080",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040268000_01.png",
+        "en": "Sturm"
+    },
     "ムゲン": {
         "name": "ムゲン",
         "ja": "ムゲン",
@@ -3693,7 +3737,7 @@
         "baseTA": 3.0,
         "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040119000_01.png",
-        "en": "Drang"
+        "en": "Drang (Grand)"
     },
     "カタリナ(闇属性ver)": {
         "name": "カタリナ(闇属性ver)",
@@ -3781,7 +3825,7 @@
         "baseTA": 5.0,
         "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040115000_01.png",
-        "en": "Sturm"
+        "en": "Sturm (Grand)"
     },
     "レ・フィーエ(土属性ver)": {
         "name": "レ・フィーエ(土属性ver)",
