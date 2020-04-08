@@ -907,6 +907,7 @@ skillnamelist["strengthL"] = {
     u"資材切断の攻刃": "dark",
     u"六波羅蜜の攻刃": "dark",
     u"プロフェッショナルツール": "earth",
+    u"フラッドオブアームズ": "water",
 }
 
 skillnamelist["exATKandHPM"] = {
