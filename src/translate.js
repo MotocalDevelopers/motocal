@@ -2218,6 +2218,11 @@ var multiLangData = {
         "ja": "格闘キャラDA率10%UP(ガンダゴウザ)",
         "zh": "格闘キャラDA率10%UP(ガンダゴウザ)",
     },
+    "格闘キャラDA率10%UP&TA率5%UP&与ダメージ3%UP(通常攻撃のみ)(ラインハルザ(リミテッドver))": {
+        "en": "10% boost to double attack rate, 5% boost to triple attack rate, and amplify normal attack damage by 3% for melee-specialty allies. (Reinhardtzar (Grand))",
+        "ja": "格闘キャラDA率10%UP&TA率5%UP&与ダメージ3%UP(通常攻撃のみ)(ラインハルザ(リミテッドver))",
+        "zh": "格闘キャラDA率10%UP&TA率5%UP&与ダメージ3%UP(通常攻撃のみ)(ラインハルザ(リミテッドver))",
+    },
     "HP15%DOWN(水着イシュ, マルキ, ロザミア)": {
         "en": "15% reduced max HP. (Izmir (Summer), Marquiares, Rosamia)",
         "ja": "HP15%DOWN(水着イシュ, マルキ, ロザミア)",
@@ -2307,6 +2312,11 @@ var multiLangData = {
         "en": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
         "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
         "zh": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+    },
+    "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)": {
+        "en": "Charge bar fills up 50% slower and 25% Boost to Damage. (Shura)",
+        "ja": "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)",
+        "zh": "Charge bar fills up 50% slower and 25% Boost to Damage. (Shura)",
     },
     "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))": {
         "en": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",

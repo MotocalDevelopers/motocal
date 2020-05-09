@@ -2107,6 +2107,12 @@ var supportAbilities = {
         "range": "all",
         "value": 0.10
     },
+    "da_up_ta_up_damageUPOnlyNormal_fist_10_5_3": {
+        "name": "格闘キャラDA率10%UP&TA率5%UP&与ダメージ3%UP(通常攻撃のみ)(ラインハルザ(リミテッドver))",
+        "type": "da_up_ta_up_damageUPOnlyNormal_fist",
+        "range": "all",
+        "value": 0.0
+    },
     "hp_down_own_15": {
         "name": "HP15%DOWN(水着イシュ, マルキ, ロザミア)",
         "type": "HPBuff",
@@ -2219,6 +2225,15 @@ var supportAbilities = {
                 "range": "own",
                 "value": {ATK: 0.10, DEF: -0.06} // MAX: 10..50%/ATK, -6..-30%/DEF
             }
+        ]
+    },
+    "ougi_gage_down_own_50_damageUP_25": {
+        "name": "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)",
+        "type": "composite",
+        "range": "own",
+        "value": [
+            {type: "charaDamageUP", range: "own", assign: "add", value: 0.25},
+            {type: "ougiGageBuff", range: "own", assign: "add", value: -0.50}
         ]
     },
     "ougi_gage_up_djeeta_20": {

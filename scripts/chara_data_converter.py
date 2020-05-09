@@ -328,6 +328,12 @@ supportAbilist["party_all_night"] = {
 supportAbilist["additional_damage_on_ta_light_10"] = {
     u"ドレス・ラ・ピュセル"
 }
+supportAbilist["ougi_gage_down_own_50_damageUP_25"] = {
+    u"征道の書"
+}
+supportAbilist["da_up_ta_up_damageUPOnlyNormal_fist_10_5_3"] = {
+    u"己の意志"
+}
 # Patching DA TA
 patching = OrderedDict()
 
@@ -600,6 +606,7 @@ patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 patchingOugiRatio["ミュオン(クリスマスver)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["飛竜と吸血姫 ヴァンピィ＆ベス"] = {"ougiRatio": 12.5}
+patchingOugiRatio["シュラ"] = {"ougiRatio": 12.5}
 
 ### SSR (Not to ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}

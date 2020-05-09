@@ -3048,6 +3048,22 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                         totals[key]["ougiDamageLimitBuff"] += ougiDamageLimitBuff;
                     }
                     continue;
+                case "da_up_ta_up_damageUPOnlyNormal_fist":
+                    if (totals[key].isConsideredInAverage) {
+                        for (var key2 in totals) {
+                            if (favContains("fist", [totals[key2]["fav1"], totals[key2]["fav2"]])) {
+                                totals[key2]["DASupport"] += 0.10;
+                                totals[key2]["TASupport"] += 0.05;
+                                totals[key2]["damageUPOnlyNormalBuff"] += 0.03;
+                            }
+                        }
+                    } else {
+                        // Calculate yourself only if you do not put it in the average
+                        totals[key2]["DASupport"] += 0.10;
+                        totals[key2]["TASupport"] += 0.05;
+                        totals[key2]["damageUPOnlyNormalBuff"] += 0.03;
+                    }
+                    continue;
                 default:
                     break;
             }
