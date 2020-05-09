@@ -1245,6 +1245,7 @@ var elementTypes = {
 
 var series = {
     "epic": "エピックウェポン",
+    "grand": "リミテッドシリーズ",
     "none": "無",
 };
 

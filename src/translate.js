@@ -2181,6 +2181,11 @@ var multiLangData = {
         "ja": "エピックウェポン",
         "zh": "エピックウェポン",
     },
+    "リミテッドシリーズ": {
+        "en": "Grand Weapon",
+        "ja": "リミテッドシリーズ",
+        "zh": "リミテッドシリーズ",
+    },
 
     //support abilities
     "なし": {
