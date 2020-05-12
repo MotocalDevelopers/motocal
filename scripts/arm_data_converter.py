@@ -919,6 +919,7 @@ skillnamelist["exATKandHPM"] = {
 }
 
 skillnamelist["zwei-echo"] = {
+    u"レッド・ブロウ": "fire",
     u"パープル・ブロウ": "dark",
 }
 

@@ -2179,7 +2179,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (key == 'Djeeta') {
                                 totals[key]["superOugiDamage"] += totals[key]["remainHP"] * 2;
                                 if (amount == "II") {
-                                    totals[key]["exceedOugiDamageLimit"] += 0.25;
+                                    totals[key]["exceedOugiDamageLimit"] += 0.30;
                                 }
                             }
                         } else if (stype == 'victorys_promise') {
@@ -2202,7 +2202,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     "value": 1.0,
                                     "attackRatio": 5.00
                                 });
-                                totals[key]["accuracyDebuff"] += 0.50;
+                                totals[key]["accuracyDebuff"] += 0.20;
                                 if (amount == "II") {
                                     totals[key]["criticalDamageLimit"] += 0.30;
                                 }
