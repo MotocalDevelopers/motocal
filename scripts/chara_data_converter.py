@@ -213,7 +213,8 @@ supportAbilist["damageUP_OugiCapUP_20"] = {
 supportAbilist["ougiCapUP_20"] = {
     u"孤高の狙撃手",
     u"天性の才能",
-    u"反撃の狼煙"
+    u"反撃の狼煙",
+    u"ぎゃうー……",
 }
 supportAbilist["ougiCapUP_25"] = {
     u"生命のリンク",
