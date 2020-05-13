@@ -2448,6 +2448,11 @@ var multiLangData = {
         "ja": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
         "zh": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
     },
+    "奥義ダメージ上限UP(シュラ)": {
+        "en": "Boost to C.A. DMG Cap. (Shura)",
+        "ja": "奥義ダメージ上限UP(シュラ)",
+        "zh": "奥義ダメージ上限UP(シュラ)",
+    },
     "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)": {
         "en": "Boost to C.A. DMG Cap, Change C.A. Multiplier to 12.5. (Dorothy and Claudia 200% C.A.)",
         "ja": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",

@@ -214,11 +214,11 @@ supportAbilist["ougiCapUP_20"] = {
     u"孤高の狙撃手",
     u"天性の才能",
     u"反撃の狼煙",
-    u"ぎゃうー……",
 }
 supportAbilist["ougiCapUP_25"] = {
     u"生命のリンク",
-    u"リレーション・コンバーター"
+    u"リレーション・コンバーター",
+    u"ぎゃうー……",
 }
 supportAbilist["ougiCapUP_100"] = {
     u"神魔を恐れぬ王"

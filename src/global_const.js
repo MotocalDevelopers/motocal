@@ -2232,6 +2232,7 @@ var supportAbilities = {
         "type": "composite",
         "range": "own",
         "value": [
+            {ID: "ougiCapUP_40"},
             {type: "charaDamageUP", range: "own", assign: "add", value: 0.25},
             {type: "ougiGageBuff", range: "own", assign: "add", value: -0.50}
         ]
@@ -2417,6 +2418,13 @@ var supportAbilities = {
         "range": "own",
         "assign": "set",
         "value": [[2800000, 0.01], [2200000, 0.10], [2000000, 0.70], [1500000, 0.90]]
+    },
+    "ougiCapUP_40": {
+        "name": "奥義ダメージ上限UP(シュラ)",
+        "type": "ougiLimitValues",
+        "range": "own",
+        "assign": "set",
+        "value": [[3000000, 0.01], [2400000, 0.10], [2200000, 0.70], [1700000, 0.90]]
     },
     "ougiLimitValues_dorothyAndClaudia": {
         "name": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
