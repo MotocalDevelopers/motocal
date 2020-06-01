@@ -517,6 +517,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         exCoeff += 0.01 * totals[key]["ex"];
         exCoeff += 0.01 * totals[key]["akashaATK"];
         exCoeff += 0.01 * totals[key]["akashaSensei"];
+        exCoeff += 0.01 * totals[key]["exSensei"];
         exCoeff += totals[key]["dracoATK"]
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"];
         var normalCoeff = 1.0 + (0.01 * totals[key]["normal"] + 0.01 * totals[key]["normalSoka"]) * totalSummon["zeus"];
@@ -2134,6 +2135,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (skillAmounts[stype][amount][slv - 1] > totals[key]["sensei"]) {
                                 totals[key]["sensei"] = skillAmounts[stype][amount][slv - 1];
                             }
+                        } else if (stype == 'exSensei') {
+                            // Preemptive is effective up to 1, whichever is greater
+                            if (skillAmounts[stype][amount][slv - 1] > totals[key]["exSensei"]) {
+                                totals[key]["exSensei"] = skillAmounts[stype][amount][slv - 1];
+                            }
                         } else if (stype == 'magnaKenbu') {
                             // Only applies to fist prof characters
                             if (favCharaContains(['fist'], totals[key])) {
@@ -2425,6 +2431,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 exHaisui: 0,
                 caimOther: 0,
                 sensei: 0,
+                exSensei: 0,
                 akashaSensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,
@@ -2612,6 +2619,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 exHaisui: 0,
                 caimOther: 0,
                 sensei: 0,
+                exSensei: 0,
                 akashaSensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,

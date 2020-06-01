@@ -3006,6 +3006,11 @@ var multiLangData = {
         "ja": "先制(永続)",
         "zh": "先制",
     },
+    "EX先制": {
+        "en": "EX Preemptive",
+        "ja": "EX先制(永続)",
+        "zh": "EX先制",
+    },
     "マグナ攻刃": {
         "en": "Magna Might I",
         "ja": "マグナ攻刃",
