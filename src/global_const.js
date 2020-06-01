@@ -2264,7 +2264,7 @@ var supportAbilities = {
         ]
     },
     "emnity_all_SL10": {
-        "name": "全体背水効果(ザルハメリナ, 火ユイシス)",
+        "name": "全体背水効果(ザルハメリナ,ユイシス(火属性ver), プレデター(SSR))",
         "type": "emnity_all_SL10",
         "range": "all",
         "value": 0.00

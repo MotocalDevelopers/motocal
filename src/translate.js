@@ -2303,10 +2303,10 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
         "zh": "Charge bar fills up 35% slower. (Geisenborger)",
     },
-    "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))": {
-        "en": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
-        "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
-        "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
+    "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR),渋谷凛＆島村卯月＆本田未央)": {
+        "en": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR),New Generations)",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR),渋谷凛＆島村卯月＆本田未央)",
+        "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR),New Generations)",
     },
     "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))": {
         "en": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
@@ -2338,10 +2338,10 @@ var multiLangData = {
         "ja": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
         "zh": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
     },
-    "全体背水効果(ザルハメリナ, 火ユイシス)": {
-        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina, Fire Yuisis)",
-        "ja": "全体背水効果(ザルハメリナ, 火ユイシス)",
-        "zh": "全体背水効果(ザルハメリナ, 火ユイシス)",
+    "全体背水効果(ザルハメリナ,ユイシス(火属性ver), プレデター(SSR))": {
+        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina, Yuisis (Fire), Predator (SSR))",
+        "ja": "全体背水効果(ザルハメリナ, ユイシス(火属性ver), プレデター(SSR))",
+        "zh": "全体背水効果(ザルハメリナ, ユイシス(火属性ver), プレデター (SSR))",
     },
     "背水効果(ジャンヌダルク(闇), サラ(SSR))": {
         "en": "Boost to ATK based on how low HP is. (Jeanne D'Ark (Dark), Sara (Earth))",
