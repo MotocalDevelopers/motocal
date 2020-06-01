@@ -2195,8 +2195,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'one_sting_one_kill') {
                             if (key == 'Djeeta') {
                                 totals[key]["normalOtherCritical"].push({
-                                    "value": 0.05,
-                                    "attackRatio": 9.00
+                                    "value": 1.0,
+                                    "attackRatio": 2.0
                                 });
                                 if (amount == "II") {
                                     totals[key]["criticalDamageLimit"] += 0.30;
