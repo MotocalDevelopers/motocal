@@ -2559,10 +2559,15 @@ var multiLangData = {
         "ja": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "zh": "15% Bonus damage for triple attack. (Levin Sisters)",
     },
-    "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)": {
-        "en": "10% boost to Damage when affected by Element ATK Buff. (Olivia)",
-        "ja": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
-        "zh": "10% boost to Damage when affected by Element ATK Buff. (Olivia)",
+    "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。": {
+        "en": "10% boost to Damage when affected by Element ATK Buff.",
+        "ja": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。",
+        "zh": "10% boost to Damage when affected by Element ATK Buff.",
+    },
+    "属性攻撃力UPが付与されている時、与ダメージ上昇30%UP(通常攻撃のみ)。(オリヴィエ)": {
+        "en": "30% boost to one-foe damage when affected by Element ATK Buff. (Olivia)",
+        "ja": "属性攻撃力UPが付与されている時、与ダメージ上昇30%UP(通常攻撃のみ)。(オリヴィエ)",
+        "zh": "30% boost to one-foe damage when affected by Element ATK Buff. (Olivia)",
     },
     "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)": {
         "en": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",

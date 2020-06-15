@@ -2542,10 +2542,16 @@ var supportAbilities = {
         "value": [0.0, 0.0, 0.15]
     },
     "element_buff_boost_damageUP_own_10": {
-        "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
-        "type": "element_buff_boost_damageUP_own_10",
+        "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。",
+        "type": "element_buff_boost_damageUP_own",
         "range": "own",
         "value": 0.10,
+    },
+    "element_buff_boost_damageUP_normal_own_30": {
+        "name": "属性攻撃力UPが付与されている時、与ダメージ上昇30%UP(通常攻撃のみ)。(オリヴィエ)",
+        "type": "element_buff_boost_damageUP_normal_own",
+        "range": "own",
+        "value": 0.30,
     },
     "critical_cap_up_water_3": {
         "name": "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)",

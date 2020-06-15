@@ -2984,9 +2984,14 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     //     }
                     // }
                     continue;
-                case "element_buff_boost_damageUP_own_10":
+                case "element_buff_boost_damageUP_own":
                     if (when.element_buff(totals[key], buff)) {
                         totals[key]["charaDamageUP"] += support.value;
+                    }
+                    continue;
+                case "element_buff_boost_damageUP_normal_own":
+                    if (when.element_buff(totals[key], buff)) {
+                        totals[key]["damageUPOnlyNormalBuff"] += support.value;
                     }
                     continue;
                 case "critical_cap_up":

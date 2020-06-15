@@ -93,8 +93,8 @@ supportAbilist["atk_up_depends_races"] = {
     u"氷晶宮の特使"
 }
 supportAbilist["element_buff_boost_own_30"] = {
-    u"王者の風格",
-    u"覇者の風格"
+    u"王者の風格(old)",
+    u"覇者の風格(old)"
 }
 supportAbilist["eternal_wisdom"] = {
     u"久遠の叡智"
@@ -147,7 +147,8 @@ supportAbilist["emnity_own_SL20"] = {
 }
 supportAbilist["emnity_own_SL20_steps"] = {
     u"絶望の剣",
-    u"ノートラーガ"
+    u"ノートラーガ",
+    u"無為の封縛",
 }
 supportAbilist["envoy_meditation"] = {
     u"調停の使徒"
@@ -286,6 +287,9 @@ supportAbilist["revion_kishi_sanshimai"] = {
     u"レヴィオン騎士三姉妹"
 }
 supportAbilist["element_buff_boost_damageUP_own_10"] = {
+#    u"堕天司"
+}
+supportAbilist["element_buff_boost_damageUP_normal_own_30"] = {
     u"堕天司"
 }
 # supportAbilist["no_normal_attack"] = {
