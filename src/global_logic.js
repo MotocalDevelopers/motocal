@@ -2056,8 +2056,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["HPdebuff"] += comb[i] * 0.07;
                             totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];
                         } else if (stype == 'exATKandHP') {
-                            totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];
-                            totals[key]["exHP"] += comb[i] * skillAmounts["exHP"][amount][slv - 1];
+                            totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount.split("-")[0]][slv - 1];
+                            totals[key]["exHP"] += comb[i] * skillAmounts["exHP"][amount.split("-")[1]][slv - 1];
                         } else if (stype == 'rankiShikku') {
                             if (index == 1) {
                                 totals[key]["normalLesserSante"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];

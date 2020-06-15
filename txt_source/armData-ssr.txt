@@ -195,6 +195,7 @@
 |&attachref(img/1040213300.png,15%);|デモン・アドヴォケイト|&color(#800080){闇};|槍|50|[[デモニック・ソーン>武器奥義#demonicsoan]]|[[幻魔の覇道>スキル一覧#genmanohadou]]|[[普天の呼び声>スキル一覧#futenno]]|32|365|264|2464|ゼノ・ディアボロス撃滅戦|イベント|○|225|2114|
 |&attachref(img/1040306200.png,15%);|六道・灼滅天の刃鎌|&color(#ff0000){火};|斧|50|[[魂魄灰滅>武器奥義#konpakuhaimetsu]]|[[灼滅の覇道>スキル一覧#syakumetsunohadou]]||25|400|199|2795|ゼノ・イフリート撃滅戦|イベント|○|170|2392|
 |&attachref(img/1040306300.png,15%);|真・灼滅天の刃鎌|&color(#ff0000){火};|斧|50|[[真・魂魄灰滅>武器奥義#shinkonpakuhaimetsu]]|[[灼滅の覇道>スキル一覧#syakumetsunohadou]]|[[灼滅の赤爪>スキル一覧#syakumetsunoakazume]]|25|400|199|2795|ゼノ・イフリート撃滅戦|イベント|○|170|2392|
+|&attachref(img/1040306300.png,15%);|[5凸]真・灼滅天の刃鎌|&color(#ff0000){火};|斧|50|[[真・魂魄灰滅>武器奥義#shinkonpakuhaimetsu]]|[[真・灼滅の覇道>スキル一覧#syakumetsunohadou]]|[[灼滅の赤爪>スキル一覧#syakumetsunoakazume]]|25|400|228|3198|ゼノ・イフリート撃滅戦|イベント|◎|170|2392|199|2795|
 |&attachref(img/1040413000.png,11%);|六道・氷逆天の戦棍|&color(#3366ff){水};|杖|50|[[嘆きの川>武器奥義#nagekinokawa]]|[[氷逆の覇道>スキル一覧#hyougyakunohadou]]||43|310|260|1940|ゼノ・コキュートス撃滅戦|イベント||
 |&attachref(img/1040413100.png,11%);|真・氷逆天の戦棍|&color(#3366ff){水};|杖|50|[[苦悩の川>武器奥義#kunounokawa]]|[[氷逆の覇道>スキル一覧#hyougyakunohadou]]|[[氷逆天の凍翼>スキル一覧#hyougyakutennotouyoku]]|43|310|303|2270|ゼノ・コキュートス撃滅戦|イベント|○|260|1940|
 |&attachref(img/1040511500.png,15%);|ソル・フラマ|&color(#ff9900){光};|銃|50|[[コロナレイ>武器奥義#coronalay]]|[[妃光の覇道>スキル一覧#hikounohadou]]||26|393|162|2431|ゼノ・コロゥ撃滅戦|イベント||

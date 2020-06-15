@@ -941,6 +941,10 @@ skillnamelist["strengthLLL"] = {
     u"禍滅の支配者": "dark"
 }
 
+skillnamelist["strengthLLandHPS"] = {
+    u"真・灼滅の覇道": "fire",
+}
+
 skillnamelist["normalSoka"] = {
     u"竜巻の楚歌": "wind",
 }
