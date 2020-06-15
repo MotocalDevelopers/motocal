@@ -10018,7 +10018,7 @@
         "sex": "male",
         "fav1": "sword",
         "fav2": "none",
-        "support": "none",
+        "support": "element_buff_boost_own_30",
         "support2": "none",
         "support3": "none",
         "minhp": "160",
