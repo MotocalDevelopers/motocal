@@ -210,6 +210,7 @@ var Summon = CreateClass({
             ougiDamage : 0.0,
             tenshiDamageUP : 0.0,
             damageLimit : 0.0,
+            supplementalDamage: 0,
             shivaBuff: false
         };
     },
@@ -276,7 +277,7 @@ var Summon = CreateClass({
         } else {
             newState[key] = e.target.value;
         }
-        
+
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false);
     },
@@ -466,6 +467,16 @@ var Summon = CreateClass({
                                          onChange={this.handleEvent.bind(this, "damageLimit")}/><InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup></td>
                     </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("supplementalDamage-tooltip", locale)} id={"tooltip-supplementalDamage-detail"}>
+                        <tr>
+                            <th className="bg-primary">{intl.translate("summonSupplementalDamage", locale)}</th>
+                            <td>
+                                <FormControl type="number" min="0" value={this.state.supplementalDamage} onBlur={this.handleOnBlur}
+                                             onChange={this.handleEvent.bind(this, "supplementalDamage")}/>
+                            </td>
+                        </tr>
                     </TextWithTooltip>
 
                     <TextWithTooltip tooltip={intl.translate("シヴァバフ説明", locale)} id={"tooltip-shiva-buff-detail"}>
