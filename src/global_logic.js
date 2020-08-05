@@ -883,6 +883,17 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 type: "other",
             };
         }
+        console.log(totalSummon["supplementalDamage"])
+        if (totalSummon["supplementalDamage"] > 0) {
+            let value = totalSummon["supplementalDamage"];
+            supplementalDamageArray["召喚石"] = {
+                damage: value,
+                damageWithoutCritical: value,
+                ougiDamage: value * (1.0 + damageUP),
+                chainBurst: value,
+                type: "other",
+            };
+        }
         if (totals[key]["supplementalThirdHit"].length > 0) {
             for (let key2 in totals[key]["supplementalThirdHit"]) {
                 let value = Math.ceil(taRate * totals[key]["supplementalThirdHit"][key2].value * (1.0 - enemyResistance));
@@ -2739,6 +2750,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiDamage: 0,
                 tenshiDamageUP: 0,
                 damageLimit: 0,
+                supplementalDamage: 0,
                 shivaBuff: false
             };
 
@@ -2776,6 +2788,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = 0.01 * parseInt(summon[s].ougiDamage);
             if (!isNaN(summon[s].tenshiDamageUP)) totalSummon["tenshiDamageUP"] = parseInt(summon[s].tenshiDamageUP);
             if (!isNaN(summon[s].damageLimit)) totalSummon["damageLimit"] = parseInt(summon[s].damageLimit);
+            if (!isNaN(summon[s].supplementalDamage)) totalSummon["supplementalDamage"] = parseInt(summon[s].supplementalDamage);
             if (!isNaN(summon[s].shivaBuff)) totalSummon["shivaBuff"] = summon[s].shivaBuff;
 
             totals[key]["totalSummon"][s] = totalSummon
