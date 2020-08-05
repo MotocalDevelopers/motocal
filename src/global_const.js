@@ -1842,6 +1842,18 @@ module.exports.Jobs = {
         "DaBonus": 22.0,
         "TaBonus": 3.0
     },
+    "monk": {
+        "name": "モンク",
+        "favArm1": "wand",
+        "favArm2": "fist",
+        "type": "attack",
+        "atBonus": 3000.0,
+        "kouzinBonus": 0.0,
+        "hpBonus": 0.0,
+        "shugoBonus": 0.0,
+        "DaBonus": 4.0,
+        "TaBonus": 1.0,
+    },
     "none": {
         "name": "なし",
         "favArm1": "none",
