@@ -16,33 +16,21 @@ var {ColP} = require('./gridp.js');
 var intl = require('./translate.js');
 var _ua = GlobalConst._ua;
 
-// Function for obtaining query
-var urlid = getVarInQuery("id");
+// import dependencies used in "preset" feature.
+const {zip, dict_get} = require('./utils');
+const {get_url_parameter} = require('./url_param');
+const {represent_load_command, promise_download, apply_patch_processor, make_state} = require('./preset');
 
-function getVarInQuery(key) {
-    var vars = {}, max = 0, hash = "", array = "";
-    var url = window.location.search;
-
-    hash = url.slice(1).split('&');
-    max = hash.length;
-    for (var i = 0; i < max; i++) {
-        array = hash[i].split('=');
-        vars[array[0]] = array[1];
-    }
-
-    var result = "";
-    if (key in vars) {
-        result = vars[key];
-    }
-
-    return result;
-}
 
 // Root class contains [Profile, ArmList, Results].
 var Root = CreateClass({
     getInitialState: function () {
         var initial_width = 25;
         var initial_height = 100;
+
+        // NOTE: bind this for async (used in "preset" feature)
+        // it's safe to remove when componentDidMount is not async function.
+        this.componentDidMount = this.componentDidMount(this)
 
         return {
             armNum: 6,
@@ -88,48 +76,40 @@ var Root = CreateClass({
     closeSimulatorHowTo: function (e) {
         this.setState({openSimulatorHowTo: false})
     },
-    getDatacharById: function (id) {
-        $.ajax({
-            url: "getdata.php",
-            type: 'POST',
-            dataType: 'text',
-            cache: false,
-            timeout: 10000,
-            data: {id: id},
-            success: function (data, datatype) {
-                var initState = JSON.parse(Base64.decode(data));
-                var oldState = this.state;
-                initState["noResultUpdate"] = false;
-                initState["oldWidth"] = oldState.oldWidth;
-                initState["activeKey"] = "inputTab";
-                initState["rootleftHeight"] = oldState.rootleftHeight;
-                initState["rootleftWidth"] = oldState.rootleftWidth;
-                initState["rootrightHeight"] = oldState.rootrightHeight;
-                initState["rootrightWidth"] = oldState.rootrightWidth;
-                initState["locale"] = intl.getLocale();
-                initState["dataName"] = "serverData";
+    componentDidMount: async function () {
+        /**
+         * URL parameter handling, now implement preset loading feature.
+         *
+         * 1. get_url_parameter       url_param.js
+         * 2. represent_load_command  preset_param.js
+         * 3. promise_download        preset_download.js
+         * 4. apply_patch_processor   preset_patch.js
+         * 5. make_state              preset_state.js
+         *
+         * @see PR #201 for details. (@kei-gbf)
+         */
+        if (location.search.length < 1)
+            return;
 
-                if (initState["dataForLoad"] == undefined) {
-                    initState["dataForLoad"] = {}
-                }
+        const param = get_url_parameter(location.search.slice(1));
 
-                initState["dataForLoad"]["profile"] = initState.profile;
-                initState["dataForLoad"]["summon"] = initState.summon;
-                initState["dataForLoad"]["chara"] = initState.chara;
-                initState["dataForLoad"]["armlist"] = initState.armlist;
-
-                this.setState(initState);
-            }.bind(this),
-            error: function (xhr, status, err) {
-                alert("Error!: IDが不正です. status: ", status, ", error message: ", err.toString());
-            }.bind(this)
-        });
-    },
-    componentDidMount: function () {
-        if (urlid != '') {
-            this.getDatacharById(urlid);
+        let infos = [], tasks = [];
+        for (const [command, category, directory, request, data] of represent_load_command(param)) {
+            infos.push([command, category]);
+            tasks.push(promise_download(request, directory, data));
         }
-        this.setState({noResultUpdate: false});
+        const results = await Promise.all(tasks);
+
+        // XXX: Is this safe to remove?
+        // this.setState({noResultUpdate: false});
+
+        let root = {profile, summon, chara, armlist} = this.state;
+        for (const [[command, category], data] of zip(infos, results)) {
+            root = apply_patch_processor(root, command, category, data);
+        }
+
+        const dataName = dict_get(param, "name", "serverData");
+        this.setState(make_state(root, this.state, intl.getLocale(), dataName));
     },
     componentDidUpdate: function () {
         window.dispatchEvent(new Event('resize'))
