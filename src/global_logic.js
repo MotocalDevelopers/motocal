@@ -517,6 +517,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         exCoeff += 0.01 * totals[key]["ex"];
         exCoeff += 0.01 * totals[key]["akashaATK"];
         exCoeff += 0.01 * totals[key]["akashaSensei"];
+        exCoeff += totals[key]["dracoATK"]
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"];
         var normalCoeff = 1.0 + (0.01 * totals[key]["normal"] + 0.01 * totals[key]["normalSoka"]) * totalSummon["zeus"];
         normalCoeff += 0.01 * totals[key]["normalOther"];
@@ -547,12 +548,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         elementCoeff += buff["element"];
         elementCoeff += totals[key]["elementBuff"];
         elementCoeff += totals[key]["elementBuffBoostBuff"];
-        elementCoeff += totals[key]["opusnormalElement"] * totalSummon["zeus"];
-        elementCoeff += totals[key]["opusmagnaElement"] * totalSummon["magna"];
-        elementCoeff += totals[key]["dracoElement"];
-        elementCoeff += Math.min(totals[key]["normalElement"] * totalSummon["zeus"], 0.75);
         elementCoeff += 0.01 * totals[key]["shinTenNoInori"];
         elementCoeff += 0.01 * totals[key]["LB"].Element;
+
+        // 進境
+        let normalElement = totals[key]["opusnormalElement"] * totalSummon["zeus"];
+        normalElement += totals[key]["opusmagnaElement"] * totalSummon["magna"];
+        normalElement += totals[key]["normalElement"] * totalSummon["zeus"];
+        elementCoeff += Math.min(normalElement, 0.75);
 
         if (key == "Djeeta") {
             elementCoeff += buff["zenithElement"];
@@ -877,6 +880,17 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical: supplementalDamageBuff,
                 ougiDamage: supplementalDamageBuff * (1.0 + damageUP),
                 chainBurst: supplementalDamageBuff,
+                type: "other",
+            };
+        }
+        console.log(totalSummon["supplementalDamage"])
+        if (totalSummon["supplementalDamage"] > 0) {
+            let value = totalSummon["supplementalDamage"];
+            supplementalDamageArray["召喚石"] = {
+                damage: value,
+                damageWithoutCritical: value,
+                ougiDamage: value * (1.0 + damageUP),
+                chainBurst: value,
                 type: "other",
             };
         }
@@ -2157,11 +2171,16 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'opusmagnaElement') {
                             var turns2max = 0.15 / skillAmounts["elementATK"][amount][slv - 1];
                             totals[key][stype] += turns2max * skillAmounts["elementATK"][amount][slv - 1];
-                        } else if (stype == 'dracoElement') {
+                        } else if (stype == 'dracoATK') {
                             var turns2max = 0.25 / (amount * slv);
                             totals[key][stype] += turns2max * (amount * slv);
                         } else if (stype == 'normalElement') {
-                            var turns2max = 0.10 / skillAmounts["elementATK"][amount][slv - 1];
+                            var turns2max;
+                            if (amount == 'M') {
+                                turns2max = 0.10 / skillAmounts["elementATK"][amount][slv - 1];
+                            } else if (amount == 'L') {
+                                turns2max = 0.15 / skillAmounts["elementATK"][amount][slv - 1];
+                            }
                             totals[key][stype] += comb[i] * turns2max * skillAmounts["elementATK"][amount][slv - 1];
                         } else if (stype == 'shinTenNoInori') {
                             totals[key][stype] = Math.max(totals[key][stype], amount * arm[skillkey + "Detail"]);
@@ -2448,7 +2467,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
-                dracoElement: 0,
+                dracoATK: 0,
                 normalElement: 0,
                 shinTenNoInori: 0,
                 slaysnakes_myth: 0,
@@ -2635,7 +2654,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 akashaHP: 0,
                 opusnormalElement: 0,
                 opusmagnaElement: 0,
-                dracoElement: 0,
+                dracoATK: 0,
                 normalElement: 0,
                 shinTenNoInori: 0,
                 slaysnakes_myth: 0,
@@ -2731,6 +2750,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiDamage: 0,
                 tenshiDamageUP: 0,
                 damageLimit: 0,
+                supplementalDamage: 0,
                 shivaBuff: false
             };
 
@@ -2768,6 +2788,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = 0.01 * parseInt(summon[s].ougiDamage);
             if (!isNaN(summon[s].tenshiDamageUP)) totalSummon["tenshiDamageUP"] = parseInt(summon[s].tenshiDamageUP);
             if (!isNaN(summon[s].damageLimit)) totalSummon["damageLimit"] = parseInt(summon[s].damageLimit);
+            if (!isNaN(summon[s].supplementalDamage)) totalSummon["supplementalDamage"] = parseInt(summon[s].supplementalDamage);
             if (!isNaN(summon[s].shivaBuff)) totalSummon["shivaBuff"] = summon[s].shivaBuff;
 
             totals[key]["totalSummon"][s] = totalSummon

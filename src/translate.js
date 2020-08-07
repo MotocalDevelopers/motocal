@@ -1158,6 +1158,11 @@ var multiLangData = {
         "ja": "ソルジャー",
         "zh": "ソルジャー",
     },
+    "モンク": {
+        "en": "Monk",
+        "ja": "モンク",
+        "zh": "モンク"
+    },
     "黒猫道士": {
         "en": "Nekomancer",
         "ja": "黒猫道士",
@@ -1683,8 +1688,13 @@ var multiLangData = {
         "ja": "通常進境(中)(最大時)",
         "zh": "通常属性攻击力(中)",
     },
+    "通常進境(大)(最大時)": {
+        "en": "Normal Element ATK L",
+        "ja": "通常進境(大)(最大時)",
+        "zh": "通常属性攻击力(大)",
+    },
     "竜進境(最大時)": {
-        "en": "Dragon Element ATK",
+        "en": "Dragon ATK",
         "ja": "竜進境(最大時)",
         "zh": "竜進境(最大時)",
     },
@@ -1897,6 +1907,16 @@ var multiLangData = {
         "en": "Boost DMG Aura", //a.k.a: tenshiDamageUP
         "ja": "与ダメ加護",
         "zh": "Boost DMG Aura",
+    },
+    "summonSupplementalDamage": {
+        "en": "Supplemental Damage",
+        "ja": "与ダメージ上昇",
+        "zh": "Supplemental Damage",
+    },
+    "supplementalDamage-tooltip": {
+        "en": "DMG Boosted effect. (Belial)",
+        "ja": "与ダメージ上昇効果。 (ベリアル)",
+        "zh": "DMG Boosted effect. (Belial)",
     },
     "与ダメージ加護説明": {
         "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",

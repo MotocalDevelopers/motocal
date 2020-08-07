@@ -272,10 +272,19 @@ skillnamelist["normalElementM"] = {
     u"大地の進境": "earth",
     u"竜巻の進境": "wind",
     u"雷電の進境": "light",
+    u"憎悪の進境": "dark"
+}
+
+skillnamelist["normalElementL"] = {
+    u"紅蓮の進境": "fire",
+    u"霧氷の進境": "water",
+    u"地裂の進境": "earth",
+    u"乱気の進境": "wind",
+    u"天光の進境": "light",
     u"奈落の進境": "dark"
 }
 
-skillnamelist["dracoElement"] = {
+skillnamelist["dracoATK"] = {
     u"ウィルナスの炎威": "fire",
     u"ワムデュスの水禍": "water",
     u"ガレヲンの巌迫": "earth",
