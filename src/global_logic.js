@@ -1033,7 +1033,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
-            displayAttack: Math.ceil(displayAttack),
+            displayAttack: Math.round(displayAttack),
             totalSkillCoeff: totalSkillCoeff,
             totalHP: Math.round(totalHP),
             displayHP: Math.round(displayHP),
