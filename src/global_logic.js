@@ -478,11 +478,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (key == "Djeeta") {
             // for Djeeta
             // ATK
-            var summedAttack = totals[key]["baseAttack"];
-            summedAttack += totals[key]["armAttack"];
-            summedAttack += totalSummon["attack"];
-            summedAttack += totals["Djeeta"]["job"].atBonus;
-            summedAttack *= 1.0 + buff["master"];
+            var displayAttack = totals[key]["baseAttack"];
+            displayAttack += totals[key]["armAttack"];
+            displayAttack += totalSummon["attack"];
+            displayAttack += totals["Djeeta"]["job"].atBonus;
+            displayAttack *= 1.0 + buff["master"];
             // HP
             displayHP += totals["Djeeta"]["job"].hpBonus;
             displayHP *= 1.0 + buff["masterHP"];
@@ -491,12 +491,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         } else {
             // for character
             // ATK
-            var summedAttack = totals[key]["baseAttack"];
-            summedAttack += totals[key]["armAttack"];
-            summedAttack += totalSummon["attack"];
-            summedAttack += totals[key]["LB"].ATK;
-            summedAttack += totals[key]["EXLB"].ATK;
-            summedAttack += totals[key]["plusBonus"] * 3;
+            var displayAttack = totals[key]["baseAttack"];
+            displayAttack += totals[key]["armAttack"];
+            displayAttack += totalSummon["attack"];
+            displayAttack += totals[key]["LB"].ATK;
+            displayAttack += totals[key]["EXLB"].ATK;
+            displayAttack += totals[key]["plusBonus"] * 3;
 
             // HP
             displayHP += totals[key]["LB"].HP;
@@ -505,6 +505,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             var totalHP = displayHP * hpCoeff;
         }
 
+        let summedAttack = Math.ceil(displayAttack / 10);
+        // TODO: Add Airship Effect and Crew Skill here.
+        //summedAttack = Math.ceil(summedAttack * (1.0 + Airship Effect));
+        //summedAttack = Math.ceil(summedAttack * (1.0 + Crew Skill));
+        summedAttack *= 10;
+        
         if (totals[key]["remainHP"] == 0) {
             totals[key]["remainHP"] = 1.0 / parseFloat(totalHP);
         }
@@ -1027,7 +1033,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
-            displayAttack: Math.ceil(summedAttack),
+            displayAttack: Math.ceil(displayAttack),
             totalSkillCoeff: totalSkillCoeff,
             totalHP: Math.round(totalHP),
             displayHP: Math.round(displayHP),
@@ -1673,6 +1679,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                 }
                 if (key == "Djeeta") {
                     // for Djeeta
+                    // TODO: Add "Boost to main weapon's ATK when main weapon is a XXX +X%" of Master Bonuses here.
+                    //   e.g. if (arm.isMain && buff["masterMainWPN"]) armSup += buff["masterMainWPN"];
                     if (arm.armType == totals[key]["fav1"] && arm.armType == totals[key]["fav2"]) {
                         armSup += (0.2 + buff["zenith1"] + buff["zenith2"]);
                         hpSup += 0.2
