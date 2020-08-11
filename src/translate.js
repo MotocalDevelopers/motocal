@@ -1463,6 +1463,11 @@ var multiLangData = {
         "ja": "サポアビ",
         "zh": "Support Ability",
     },
+    "覚醒Lv": {
+        "en": "Awakening Lv",
+        "ja": "覚醒Lv",
+        "zh": "Awakening Lv",
+    },
     "supplemental_other": { //left empty intentionally
         "en": "",
         "ja": "",
