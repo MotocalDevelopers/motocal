@@ -1158,6 +1158,11 @@ var multiLangData = {
         "ja": "ソルジャー",
         "zh": "ソルジャー",
     },
+    "モンク": {
+        "en": "Monk",
+        "ja": "モンク",
+        "zh": "モンク"
+    },
     "黒猫道士": {
         "en": "Nekomancer",
         "ja": "黒猫道士",
@@ -1457,6 +1462,11 @@ var multiLangData = {
         "en": "Support Ability",
         "ja": "サポアビ",
         "zh": "Support Ability",
+    },
+    "覚醒Lv": {
+        "en": "Awakening Lv",
+        "ja": "覚醒Lv",
+        "zh": "Awakening Lv",
     },
     "supplemental_other": { //left empty intentionally
         "en": "",
@@ -1902,6 +1912,16 @@ var multiLangData = {
         "en": "Boost DMG Aura", //a.k.a: tenshiDamageUP
         "ja": "与ダメ加護",
         "zh": "Boost DMG Aura",
+    },
+    "summonSupplementalDamage": {
+        "en": "Supplemental Damage",
+        "ja": "与ダメージ上昇",
+        "zh": "Supplemental Damage",
+    },
+    "supplementalDamage-tooltip": {
+        "en": "DMG Boosted effect. (Belial)",
+        "ja": "与ダメージ上昇効果。 (ベリアル)",
+        "zh": "DMG Boosted effect. (Belial)",
     },
     "与ダメージ加護説明": {
         "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",

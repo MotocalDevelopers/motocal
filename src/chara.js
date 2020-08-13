@@ -318,6 +318,7 @@ var Chara = CreateClass({
             EXLBTA: 0,
             criticalBuffCount: 0,
             criticalBuff: [],
+            awakeningLv: 1,
         };
     },
     componentDidMount: function () {
@@ -599,6 +600,14 @@ var Chara = CreateClass({
                         <td><FormControl componentClass="select" value={this.state.support3}
                                          onChange={this.handleSelectEvent.bind(this, "support3")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
+                    </tr>
+
+                    <tr>
+                        <th className="bg-primary">{intl.translate("覚醒Lv", locale)}</th>
+                        <td><FormControl componentClass="select" value={this.state.awakeningLv}
+                                         onChange={this.handleSelectEvent.bind(this, "awakeningLv")}>
+                            { [1,2,3,4,5,6,7].map(lv => <option value={lv} key={lv}>Lv{lv}</option>) }
+                        </FormControl></td>
                     </tr>
 
                     <tr>

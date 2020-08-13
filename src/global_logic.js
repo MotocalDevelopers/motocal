@@ -34,6 +34,7 @@ const {
 } = require('./skill_filter.js');
 const {range, when} = require('./support_filter');
 const epic = require('./epic');
+const awakening = require('./awakening');
 
 
 module.exports.isCosmos = function (arm) {
@@ -478,11 +479,11 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         if (key == "Djeeta") {
             // for Djeeta
             // ATK
-            var summedAttack = totals[key]["baseAttack"];
-            summedAttack += totals[key]["armAttack"];
-            summedAttack += totalSummon["attack"];
-            summedAttack += totals["Djeeta"]["job"].atBonus;
-            summedAttack *= 1.0 + buff["master"];
+            var displayAttack = totals[key]["baseAttack"];
+            displayAttack += totals[key]["armAttack"];
+            displayAttack += totalSummon["attack"];
+            displayAttack += totals["Djeeta"]["job"].atBonus;
+            displayAttack *= 1.0 + buff["master"];
             // HP
             displayHP += totals["Djeeta"]["job"].hpBonus;
             displayHP *= 1.0 + buff["masterHP"];
@@ -491,20 +492,28 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         } else {
             // for character
             // ATK
-            var summedAttack = totals[key]["baseAttack"];
-            summedAttack += totals[key]["armAttack"];
-            summedAttack += totalSummon["attack"];
-            summedAttack += totals[key]["LB"].ATK;
-            summedAttack += totals[key]["EXLB"].ATK;
-            summedAttack += totals[key]["plusBonus"] * 3;
+            var displayAttack = totals[key]["baseAttack"];
+            displayAttack += totals[key]["armAttack"];
+            displayAttack += totalSummon["attack"];
+            displayAttack += totals[key]["LB"].ATK;
+            displayAttack += totals[key]["EXLB"].ATK;
+            displayAttack += awakening.attack(totals[key]["awakeningLv"]);
+            displayAttack += totals[key]["plusBonus"] * 3;
 
             // HP
             displayHP += totals[key]["LB"].HP;
             displayHP += totals[key]["EXLB"].HP;
+            displayHP += awakening.HP(totals[key]["awakeningLv"]);
             displayHP += totals[key]["plusBonus"];
             var totalHP = displayHP * hpCoeff;
         }
 
+        let summedAttack = Math.ceil(displayAttack / 10);
+        // TODO: Add Airship Effect and Crew Skill here.
+        //summedAttack = Math.ceil(summedAttack * (1.0 + Airship Effect));
+        //summedAttack = Math.ceil(summedAttack * (1.0 + Crew Skill));
+        summedAttack *= 10;
+        
         if (totals[key]["remainHP"] == 0) {
             totals[key]["remainHP"] = 1.0 / parseFloat(totalHP);
         }
@@ -624,6 +633,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var totalDA = 0.01 * totals[key]["baseDA"];
         totalDA += 0.01 * totals[key]["LB"]["DA"];
         totalDA += 0.01 * totals[key]["EXLB"]["DA"];
+        totalDA += awakening.DA(totals[key]["awakeningLv"]);
         totalDA += buff["da"];
         totalDA += totals[key]["DASupport"];
         totalDA += totals[key]["DABuff"];
@@ -649,6 +659,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
         totalTA += 0.01 * totals[key]["EXLB"]["TA"];
+        totalTA += awakening.TA(totals[key]["awakeningLv"]);
         totalTA += buff["ta"];
         totalTA += totals[key]["TASupport"];
         totalTA += totals[key]["TABuff"];
@@ -795,6 +806,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiDamageExceptSkill = totals[key]["ougiDamageBuff"] + totalSummon["ougiDamage"] + buff['ougiDamage'];
         ougiDamageExceptSkill += 0.01 * totals[key]["LB"]["OugiDamage"];
         ougiDamageExceptSkill += 0.01 * totals[key]["EXLB"]["OugiDamage"];
+        ougiDamageExceptSkill += awakening.ougi(totals[key]["awakeningLv"]);
 
         if (key == "Djeeta") {
             ougiDamageExceptSkill += buff["zenithOugiDamage"];
@@ -881,6 +893,17 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 damageWithoutCritical: supplementalDamageBuff,
                 ougiDamage: supplementalDamageBuff * (1.0 + damageUP),
                 chainBurst: supplementalDamageBuff,
+                type: "other",
+            };
+        }
+        console.log(totalSummon["supplementalDamage"])
+        if (totalSummon["supplementalDamage"] > 0) {
+            let value = totalSummon["supplementalDamage"];
+            supplementalDamageArray["召喚石"] = {
+                damage: value,
+                damageWithoutCritical: value,
+                ougiDamage: value * (1.0 + damageUP),
+                chainBurst: value,
                 type: "other",
             };
         }
@@ -1017,7 +1040,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
 
         res[key] = {
             totalAttack: Math.ceil(totalAttack),
-            displayAttack: Math.ceil(summedAttack),
+            displayAttack: Math.round(displayAttack),
+            summedAttack: summedAttack,
             totalSkillCoeff: totalSkillCoeff,
             totalHP: Math.round(totalHP),
             displayHP: Math.round(displayHP),
@@ -1663,6 +1687,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                 }
                 if (key == "Djeeta") {
                     // for Djeeta
+                    // TODO: Add "Boost to main weapon's ATK when main weapon is a XXX +X%" of Master Bonuses here.
+                    //   e.g. if (arm.isMain && buff["masterMainWPN"]) armSup += buff["masterMainWPN"];
                     if (arm.armType == totals[key]["fav1"] && arm.armType == totals[key]["fav2"]) {
                         armSup += (0.2 + buff["zenith1"] + buff["zenith2"]);
                         hpSup += 0.2
@@ -2598,6 +2624,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 element: charaelement,
                 LB: charaLB,
                 EXLB: charaEXLB,
+                awakeningLv: parseInt(chara[i].awakeningLv) || 1,
                 HPdebuff: 0.00,
                 magna: 0,
                 magnaSoka: 0,
@@ -2747,6 +2774,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 ougiDamage: 0,
                 tenshiDamageUP: 0,
                 damageLimit: 0,
+                supplementalDamage: 0,
                 shivaBuff: false
             };
 
@@ -2784,6 +2812,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             if (!isNaN(summon[s].ougiDamage)) totalSummon["ougiDamage"] = 0.01 * parseInt(summon[s].ougiDamage);
             if (!isNaN(summon[s].tenshiDamageUP)) totalSummon["tenshiDamageUP"] = parseInt(summon[s].tenshiDamageUP);
             if (!isNaN(summon[s].damageLimit)) totalSummon["damageLimit"] = parseInt(summon[s].damageLimit);
+            if (!isNaN(summon[s].supplementalDamage)) totalSummon["supplementalDamage"] = parseInt(summon[s].supplementalDamage);
             if (!isNaN(summon[s].shivaBuff)) totalSummon["shivaBuff"] = summon[s].shivaBuff;
 
             totals[key]["totalSummon"][s] = totalSummon
@@ -3317,7 +3346,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                 }
                 for (var k = 0; k <= 100; k++) {
                     var newTotalSkillCoeff = totalSkillWithoutHaisui * haisuiBuff[k].normalHaisui * haisuiBuff[k].magnaHaisui * (haisuiBuff[k].normalKonshin + haisuiBuff[k].normalSupportKonshin) * haisuiBuff[k].magnaKonshin * haisuiBuff[k].charaHaisui * haisuiBuff[k].exHaisui * haisuiBuff[k].lbHaisui * haisuiBuff[k].lbKonshin;
-                    var summedAttack = onedata[key].displayAttack;
+                    var summedAttack = onedata[key].summedAttack;
                     var newTotalAttack = summedAttack * newTotalSkillCoeff;
                     var newTotalExpected = newTotalAttack * onedata[key].criticalRatio * onedata[key].expectedAttack;
 
@@ -3573,7 +3602,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                 for (var key in onedata) {
                     if (turnBuff.buffs["全体バフ"][t - 1].turnType == "ougi" || turnBuff.buffs[key][t - 1].turnType == "ougi") {
                         // Basically, setting of mystery takes precedence
-                        var newOugiDamage = module.exports.calcOugiDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, prof.ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].ougiFixedDamage, onedata[key].ougiBonusPlainDamage, onedata[key].ougiDamageLimitValues);
+                        var newOugiDamage = module.exports.calcOugiDamage(onedata[key].summedAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, prof.ougiRatio, onedata[key].skilldata.ougiDamageUP, onedata[key].skilldata.damageUP, onedata[key].ougiFixedDamage, onedata[key].ougiBonusPlainDamage, onedata[key].ougiDamageLimitValues);
                         if (key == "Djeeta") {
                             ExpectedDamage[t].push(parseInt(newOugiDamage));
                             AverageExpectedDamage[t][j + 1] += parseInt(newOugiDamage / cnt)
@@ -3588,7 +3617,7 @@ module.exports.generateSimulationData = function (res, turnBuff, arml, summon, p
                         }
                     } else {
                         // Regular attack
-                        var newDamage = module.exports.calcDamage(onedata[key].displayAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP + onedata[key].skilldata.damageUPOnlyNormalDamage, onedata[key].normalDamageLimitValues);
+                        var newDamage = module.exports.calcDamage(onedata[key].summedAttack, onedata[key].totalSkillCoeff, onedata[key].criticalRatio, prof.enemyDefense, prof.defenseDebuff, onedata[key].skilldata.enemyResistance, onedata[key].skilldata.additionalDamage, onedata[key].skilldata.damageUP + onedata[key].skilldata.damageUPOnlyNormalDamage, onedata[key].normalDamageLimitValues);
                         var accuracy = 1.0;
                         accuracy -= (onedata[key].skilldata.accuracyDebuff - 1.0);
                         newDamage *= accuracy;
