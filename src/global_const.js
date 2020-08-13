@@ -908,7 +908,8 @@ var skilltypes = {
     "strengthL": {name: "EX攻刃(大)", type: "ex", amount: "L"},
     "strengthLL": {name: "EX攻刃(特大)", type: "ex", amount: "LL"},
     "strengthLLL": {name: "EX攻刃(極大)", type: "ex", amount: "LLL"},
-    "exATKandHPM": {name: "EX攻刃+守護(中)", type: "exATKandHP", amount: "M"},
+    "strengthLLandHPS": {name: "EX攻刃(特大)+守護(小)", type: "exATKandHP", amount: "LL-S"},
+    "exATKandHPM": {name: "EX攻刃+守護(中)", type: "exATKandHP", amount: "M-M"},
     "normalDamageLimit2_5": {name: "通常上限UP(2.5%)", type: "normalDamageLimit", amount: "S"},
     "normalDamageLimit7": {name: "通常上限UP(7.0%)", type: "normalDamageLimit", amount: "M"},
     "normalDamageLimit10": {name: "通常上限UP(10%)", type: "normalDamageLimit", amount: "L"},
@@ -998,6 +999,7 @@ var skilltypes = {
     "bahaFUHP-bow": {name: "バハフツHP-弓", type: "bahaFUHP", amount: "L"},
     "bahaFUHP-music": {name: "バハフツHP-楽器", type: "bahaFUHP", amount: "L"},
     "sensei": {name: "先制", type: "sensei", amount: "M"},
+    "exSensei": {name: "EX先制", type: "exSensei", amount: "M"},
     "omega-raw": {name: "オメガ-未強化", type: "omega", amount: "raw"},
     "omega-senni": {name: "オメガ-戦意", type: "omega", amount: "senni"},
     "omega-tousou": {name: "オメガ-闘争", type: "omega", amount: "tousou"},
@@ -1245,6 +1247,7 @@ var elementTypes = {
 
 var series = {
     "epic": "エピックウェポン",
+    "grand": "リミテッドシリーズ",
     "none": "無",
 };
 
@@ -1911,8 +1914,8 @@ var skillAmounts = {
         "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.6, 13.2, 13.8, 14.4, 15.0],
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
-        "LL": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0],
-        "LLL": [12.0, 13.44, 14.89, 16.33, 17.78, 19.22, 20.66, 22.11, 23.56, 25.0, 26.6, 28.2, 29.8, 31.4, 33.0, 33.0, 33.0, 33.0, 33.0, 33.0],
+        "LL": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 23.5, 24.0, 24.5, 25.0, 25.5],
+        "LLL": [12.0, 13.44, 14.89, 16.33, 17.78, 19.22, 20.66, 22.11, 23.56, 25.0, 26.6, 28.2, 29.8, 31.4, 33.0, 33.8, 34.6, 35.4, 36.2, 37.0],
     },
     "normalHP": {
         "S": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.4, 12.8, 13.2, 13.6, 14.0, 14.0, 14.0, 14.0, 14.0, 14.0],
@@ -1926,7 +1929,7 @@ var skillAmounts = {
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.4, 18.8, 19.2, 19.6, 20.0],
     },
     "exHP": {
-        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.6, 13.2, 13.8, 14.4, 15.0],
+        "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
         "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
     },
@@ -2000,6 +2003,9 @@ var skillAmounts = {
     // Pre-emptive skills
     "sensei": {
         "M": [5.0, 6.0, 7.0, 8.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0],
+    },
+    "exSensei": {
+        "M": [1.0, 1.45, 1.9, 2.35, 2.8, 3.25, 3.7, 4.1, 4.55, 5.0, 5.6, 6.2, 6.8, 7.4, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0],
     },
     // Royal Wing Barrier(鷲王の結界)
     "washiouKekkai": {
@@ -2118,6 +2124,12 @@ var supportAbilities = {
         "range": "all",
         "value": 0.10
     },
+    "da_up_ta_up_damageUPOnlyNormal_fist_10_5_3": {
+        "name": "格闘キャラDA率10%UP&TA率5%UP&与ダメージ3%UP(通常攻撃のみ)(ラインハルザ(リミテッドver))",
+        "type": "da_up_ta_up_damageUPOnlyNormal_fist",
+        "range": "all",
+        "value": 0.0
+    },
     "hp_down_own_15": {
         "name": "HP15%DOWN(水着イシュ, マルキ, ロザミア)",
         "type": "HPBuff",
@@ -2232,6 +2244,16 @@ var supportAbilities = {
             }
         ]
     },
+    "ougi_gage_down_own_50_damageUP_25": {
+        "name": "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)",
+        "type": "composite",
+        "range": "own",
+        "value": [
+            {ID: "ougiCapUP_40"},
+            {type: "charaDamageUP", range: "own", assign: "add", value: 0.25},
+            {type: "ougiGageBuff", range: "own", assign: "add", value: -0.50}
+        ]
+    },
     "ougi_gage_up_djeeta_20": {
         "name": "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))",
         "type": "ougiGageBuff",
@@ -2259,7 +2281,7 @@ var supportAbilities = {
         ]
     },
     "emnity_all_SL10": {
-        "name": "全体背水効果(ザルハメリナ, 火ユイシス)",
+        "name": "全体背水効果(ザルハメリナ,ユイシス(火属性ver), プレデター(SSR))",
         "type": "emnity_all_SL10",
         "range": "all",
         "value": 0.00
@@ -2414,6 +2436,13 @@ var supportAbilities = {
         "assign": "set",
         "value": [[2800000, 0.01], [2200000, 0.10], [2000000, 0.70], [1500000, 0.90]]
     },
+    "ougiCapUP_40": {
+        "name": "奥義ダメージ上限UP(シュラ)",
+        "type": "ougiLimitValues",
+        "range": "own",
+        "assign": "set",
+        "value": [[3000000, 0.01], [2400000, 0.10], [2200000, 0.70], [1700000, 0.90]]
+    },
     "ougiLimitValues_dorothyAndClaudia": {
         "name": "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)",
         "type": "composite",
@@ -2525,10 +2554,16 @@ var supportAbilities = {
         "value": [0.0, 0.0, 0.15]
     },
     "element_buff_boost_damageUP_own_10": {
-        "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
-        "type": "element_buff_boost_damageUP_own_10",
+        "name": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。",
+        "type": "element_buff_boost_damageUP_own",
         "range": "own",
         "value": 0.10,
+    },
+    "element_buff_boost_damageUP_normal_own_30": {
+        "name": "属性攻撃力UPが付与されている時、与ダメージ上昇30%UP(通常攻撃のみ)。(オリヴィエ)",
+        "type": "element_buff_boost_damageUP_normal_own",
+        "range": "own",
+        "value": 0.30,
     },
     "critical_cap_up_water_3": {
         "name": "水属性キャラがクリティカル発動時にダメージ上限3%UP。(シルヴァ)",

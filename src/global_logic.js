@@ -526,6 +526,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         exCoeff += 0.01 * totals[key]["ex"];
         exCoeff += 0.01 * totals[key]["akashaATK"];
         exCoeff += 0.01 * totals[key]["akashaSensei"];
+        exCoeff += 0.01 * totals[key]["exSensei"];
         exCoeff += totals[key]["dracoATK"]
         var exHaisuiCoeff = 1.0 + 0.01 * totals[key]["exHaisui"];
         var normalCoeff = 1.0 + (0.01 * totals[key]["normal"] + 0.01 * totals[key]["normalSoka"]) * totalSummon["zeus"];
@@ -2081,8 +2082,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["HPdebuff"] += comb[i] * 0.07;
                             totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];
                         } else if (stype == 'exATKandHP') {
-                            totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount][slv - 1];
-                            totals[key]["exHP"] += comb[i] * skillAmounts["exHP"][amount][slv - 1];
+                            totals[key]["ex"] += comb[i] * skillAmounts["ex"][amount.split("-")[0]][slv - 1];
+                            totals[key]["exHP"] += comb[i] * skillAmounts["exHP"][amount.split("-")[1]][slv - 1];
                         } else if (stype == 'rankiShikku') {
                             if (index == 1) {
                                 totals[key]["normalLesserSante"] += comb[i] * skillAmounts["multiAttack"][amount][slv - 1];
@@ -2160,6 +2161,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (skillAmounts[stype][amount][slv - 1] > totals[key]["sensei"]) {
                                 totals[key]["sensei"] = skillAmounts[stype][amount][slv - 1];
                             }
+                        } else if (stype == 'exSensei') {
+                            // Preemptive is effective up to 1, whichever is greater
+                            if (skillAmounts[stype][amount][slv - 1] > totals[key]["exSensei"]) {
+                                totals[key]["exSensei"] = skillAmounts[stype][amount][slv - 1];
+                            }
                         } else if (stype == 'magnaKenbu') {
                             // Only applies to fist prof characters
                             if (favCharaContains(['fist'], totals[key])) {
@@ -2205,7 +2211,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             if (key == 'Djeeta') {
                                 totals[key]["superOugiDamage"] += totals[key]["remainHP"] * 2;
                                 if (amount == "II") {
-                                    totals[key]["exceedOugiDamageLimit"] += 0.25;
+                                    totals[key]["exceedOugiDamageLimit"] += 0.30;
                                 }
                             }
                         } else if (stype == 'victorys_promise') {
@@ -2215,8 +2221,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'one_sting_one_kill') {
                             if (key == 'Djeeta') {
                                 totals[key]["normalOtherCritical"].push({
-                                    "value": 0.05,
-                                    "attackRatio": 9.00
+                                    "value": 1.0,
+                                    "attackRatio": 2.0
                                 });
                                 if (amount == "II") {
                                     totals[key]["criticalDamageLimit"] += 0.30;
@@ -2228,7 +2234,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     "value": 1.0,
                                     "attackRatio": 5.00
                                 });
-                                totals[key]["accuracyDebuff"] += 0.50;
+                                totals[key]["accuracyDebuff"] += 0.20;
                                 if (amount == "II") {
                                     totals[key]["criticalDamageLimit"] += 0.30;
                                 }
@@ -2451,6 +2457,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 exHaisui: 0,
                 caimOther: 0,
                 sensei: 0,
+                exSensei: 0,
                 akashaSensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,
@@ -2639,6 +2646,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 exHaisui: 0,
                 caimOther: 0,
                 sensei: 0,
+                exSensei: 0,
                 akashaSensei: 0,
                 bahaAT: 0,
                 bahaHP: 0,
@@ -2924,7 +2932,7 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     }
                     continue;
                 case "emnity_all_SL10":
-                    // Refer to HP of Zahlhamelina/Yuisis (Fire)
+                    // Refer to HP of Zahlhamelina, Yuisis (Fire), Predator
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
                     for (let [name, chara] of range[support.range](totals, key)) {
                         chara["charaHaisui"] = Math.max(chara["charaHaisui"], charaHaisuiValue);
@@ -3005,9 +3013,14 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     //     }
                     // }
                     continue;
-                case "element_buff_boost_damageUP_own_10":
+                case "element_buff_boost_damageUP_own":
                     if (when.element_buff(totals[key], buff)) {
                         totals[key]["charaDamageUP"] += support.value;
+                    }
+                    continue;
+                case "element_buff_boost_damageUP_normal_own":
+                    if (when.element_buff(totals[key], buff)) {
+                        totals[key]["damageUPOnlyNormalBuff"] += support.value;
                     }
                     continue;
                 case "critical_cap_up":
@@ -3075,6 +3088,22 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                         var [ougiDamageBuff, ougiDamageLimitBuff] = support.value;
                         totals[key]["ougiDamageBuff"] += ougiDamageBuff;
                         totals[key]["ougiDamageLimitBuff"] += ougiDamageLimitBuff;
+                    }
+                    continue;
+                case "da_up_ta_up_damageUPOnlyNormal_fist":
+                    if (totals[key].isConsideredInAverage) {
+                        for (var key2 in totals) {
+                            if (favContains("fist", [totals[key2]["fav1"], totals[key2]["fav2"]])) {
+                                totals[key2]["DASupport"] += 0.10;
+                                totals[key2]["TASupport"] += 0.05;
+                                totals[key2]["damageUPOnlyNormalBuff"] += 0.03;
+                            }
+                        }
+                    } else {
+                        // Calculate yourself only if you do not put it in the average
+                        totals[key2]["DASupport"] += 0.10;
+                        totals[key2]["TASupport"] += 0.05;
+                        totals[key2]["damageUPOnlyNormalBuff"] += 0.03;
                     }
                     continue;
                 default:
