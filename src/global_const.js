@@ -783,8 +783,9 @@ var keyTypes = {
     "totalExpected": "総合攻撃*期待回数*技巧期待値(ジータさんのみ)",
     "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
+    "expectedCycleDamagePerSecond": "予想秒毎ダメージ(ジータさんのみ)",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
-//    "averageCyclePerTime": "予想ダメージ経時的な",
+    "averageCyclePerSecond": "予想秒毎ダメージのパーティ平均値",
 };
 var supportedChartSortkeys = {
     "totalAttack": "攻撃力(二手技巧無し,ジータさんのみ)",
@@ -794,8 +795,9 @@ var supportedChartSortkeys = {
     "totalExpected": "総合攻撃*期待回数*技巧期待値(ジータさんのみ)",
     "averageTotalExpected": "総回技のパーティ平均値",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
+    "expectedCycleDamagePerSecond": "予想秒毎ダメージ(ジータさんのみ)",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
-//    "averageCyclePerTime": "予想ダメージ経時的な",
+    "averageCyclePerSecond": "予想秒毎ダメージのパーティ平均値",
     "totalHP": "ジータさん残りHP",
 };
 var supportedTurnChartSortkeys = {
@@ -804,8 +806,9 @@ var supportedTurnChartSortkeys = {
     "criticalAttack": "技巧期待値(ジータさんのみ)",
     "averageCriticalAttack": "技巧期待平均攻撃力",
     "expectedCycleDamagePerTurn": "予想ターン毎ダメージ(ジータさんのみ)",
+    "expectedCycleDamagePerSecond": "予想秒毎ダメージ(ジータさんのみ)",
     "averageCyclePerTurn": "予想ターン毎ダメージのパーティ平均値",
-//    "averageCyclePerTime": "予想ダメージ経時的な",
+    "averageCyclePerSecond": "予想秒毎ダメージのパーティ平均値",
 };
 var supportedSimulationChartSortkeys = {
     "averageAttack": "パーティ平均攻撃力(二手技巧無し)",

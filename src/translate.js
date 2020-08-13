@@ -1353,11 +1353,6 @@ var multiLangData = {
         "ja": "キャラ",
         "zh": "角色",
     },
-    "パーティ平均攻撃力": {
-        "en": "Party-Averaged Pure ATK",
-        "ja": "パーティ平均攻撃力(二手技巧無し)",
-        "zh": "全队平均攻击力(不考虑连击技巧)",
-    },
     "技巧平均攻撃力": {
         "en": "Party-Averaged ATK with Critical",
         "ja": "技巧平均攻撃力",
@@ -1418,10 +1413,20 @@ var multiLangData = {
         "ja": "予想ターンダメージ",
         "zh": "期望DPT",
     },
+    "予想秒毎ダメージ": {
+        "en": "Exp. Damage per Second", //a.k.a: expectedCycleDamagePerSecond
+        "ja": "予想秒ダメージ",
+        "zh": "期望DPS",
+    },
     "パーティ平均予想ターン毎ダメージ": {
-        "en": "Party-Averaged Exp. Turn Damage",
+        "en": "Party-Averaged Exp. Damage per Turn",
         "ja": "ターン毎ダメージの\nパーティ平均",
         "zh": "期望DPT/人",
+    },
+    "パーティ平均予想秒毎ダメージ": {
+        "en": "Party-Averaged Exp. Damage per Second",
+        "ja": "秒毎ダメージの\nパーティ平均",
+        "zh": "期望DPS/人",
     },
     "技巧倍率": {
         "en": "Critical Ratio",
@@ -1512,6 +1517,16 @@ var multiLangData = {
         "en": "Debuff Resistance",
         "ja": "弱体耐性率",
         "zh": "弱体耐性率",
+    },
+    "ターン毎の奥義ゲージ上昇量": {
+        "en": "Charge Bar Rise per Turn",
+        "ja": "ターン毎の\n奥義ゲージ上昇量",
+        "zh": "每回合奥义槽上升量",
+    },
+    "予想ターン毎の硬直": {
+        "en": "Exp. Lockout per Turn",
+        "ja": "予想ターン毎の硬直",
+        "zh": "予想ターン毎の硬直",
     },
     "有利": {
         "en": "Advantage",
@@ -2710,8 +2725,18 @@ var multiLangData = {
         "ja": "予想ターンダメージ(ジータさんのみ)",
         "zh": "预测DPT(只考虑主角)",
     },
+    "予想秒毎ダメージ(ジータさんのみ)": {
+        "en": "Exp. Damage per Second (Player only)",
+        "ja": "予想秒ダメージ(ジータさんのみ)",
+        "zh": "预测DPS(只考虑主角)",
+    },
     "予想ターン毎ダメージのパーティ平均値": {
-        "en": "Party-Averaged Exp. Turn Damage",
+        "en": "Party-Averaged Exp. Damage per Turn",
+        "ja": "予想ターン毎ダメージのパーティ平均値",
+        "zh": "预测DPT(全队平均值)",
+    },
+    "予想秒毎ダメージのパーティ平均値": {
+        "en": "Party-Averaged Exp. Damage per Second",
         "ja": "予想ターン毎ダメージのパーティ平均値",
         "zh": "预测DPT(全队平均值)",
     },
@@ -2726,7 +2751,7 @@ var multiLangData = {
         "zh": "预测伤害(全队平均值",
     },
     "予想ダメージ平均の積分値": {
-        "en": "Integration of Party-Averaged Exp. Turn Damage",
+        "en": "Integration of Party-Averaged Exp. Damage per Turn",
         "ja": "予想ダメージ平均の積分値",
         "zh": "预测伤害平均积分值",
     },
