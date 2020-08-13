@@ -1,5 +1,7 @@
 # motocal
-This is a repository for the development of former curry calculator (gbf attack power calculator).\
+This is a repository for the development of motocal calculator (Granblue Fantasy ATK Calculator).
+* 📝README: [Japanese](README-ja.md)
+* 📒Wiki: [GitHub](https://github.com/MotocalDevelopers/motocal/wiki)
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy/?template=https://github.com/MotocalDevelopers/motocal)
 [<img alt="Edit on CodeSandbox" src="https://codesandbox.io/static/img/play-codesandbox.svg" height="32" />](https://kei-gbf.github.io/codesandbox-button/redirect.html)

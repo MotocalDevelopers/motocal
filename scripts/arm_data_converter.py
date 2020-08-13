@@ -906,6 +906,9 @@ skillnamelist["strengthL"] = {
     u"グラウンドオブアームズ": "earth",
     u"資材切断の攻刃": "dark",
     u"六波羅蜜の攻刃": "dark",
+    u"プロフェッショナルツール": "earth",
+    u"猛将の攻刃": "fire",
+    u"エレクトリックな攻刃": "wind",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -916,6 +919,7 @@ skillnamelist["exATKandHPM"] = {
 }
 
 skillnamelist["zwei-echo"] = {
+    u"レッド・ブロウ": "fire",
     u"パープル・ブロウ": "dark",
 }
 
@@ -937,6 +941,10 @@ skillnamelist["strengthLLL"] = {
     u"禍滅の支配者": "dark"
 }
 
+skillnamelist["strengthLLandHPS"] = {
+    u"真・灼滅の覇道": "fire",
+}
+
 skillnamelist["normalSoka"] = {
     u"竜巻の楚歌": "wind",
 }
@@ -949,6 +957,10 @@ skillnamelist["sensei"] = {
     u"先制の炎刃": "fire",
     u"先制の氷刃": "water",
     u"先制の闇刃": "dark",
+}
+
+skillnamelist["exSensei"] = {
+    u"封印されし未確認の力": "dark",
 }
 
 skillnamelist["strengthHaisuiM"] = {u"マジックチャージ": "light"}
@@ -1086,6 +1098,7 @@ skillnamelist["huanglongHissatsu"] = {
 }
 
 skillnamelist["ougiDamageLimitExceedM"] = {
+    u"イクシード・ファイア": "fire",
     u"イクシード・ウォータ": "water",
     u"イクシード・アース": "earth",
     u"イクシード・ウィンド": "wind",
@@ -1163,6 +1176,7 @@ armtypelist[u"刀"] = "katana"
 
 SERIES = {
     u"エピックウェポン": "epic",
+    u"リミテッドシリーズ": "grand",
 }
 
 ########################################################################################################################

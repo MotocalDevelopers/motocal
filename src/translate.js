@@ -1158,6 +1158,11 @@ var multiLangData = {
         "ja": "ソルジャー",
         "zh": "ソルジャー",
     },
+    "モンク": {
+        "en": "Monk",
+        "ja": "モンク",
+        "zh": "モンク"
+    },
     "黒猫道士": {
         "en": "Nekomancer",
         "ja": "黒猫道士",
@@ -1462,6 +1467,11 @@ var multiLangData = {
         "en": "Support Ability",
         "ja": "サポアビ",
         "zh": "Support Ability",
+    },
+    "覚醒Lv": {
+        "en": "Awakening Lv",
+        "ja": "覚醒Lv",
+        "zh": "Awakening Lv",
     },
     "supplemental_other": { //left empty intentionally
         "en": "",
@@ -1918,6 +1928,16 @@ var multiLangData = {
         "ja": "与ダメ加護",
         "zh": "Boost DMG Aura",
     },
+    "summonSupplementalDamage": {
+        "en": "Supplemental Damage",
+        "ja": "与ダメージ上昇",
+        "zh": "Supplemental Damage",
+    },
+    "supplementalDamage-tooltip": {
+        "en": "DMG Boosted effect. (Belial)",
+        "ja": "与ダメージ上昇効果。 (ベリアル)",
+        "zh": "DMG Boosted effect. (Belial)",
+    },
     "与ダメージ加護説明": {
         "en": "Boosts final damage. Arcarum summons(SR3~5%, SSR7~10%) etc.",
         "ja": "最終的な与ダメージが上昇します。アーカルム石(SR3~5%, SSR7~10%)など",
@@ -2196,6 +2216,11 @@ var multiLangData = {
         "ja": "エピックウェポン",
         "zh": "エピックウェポン",
     },
+    "リミテッドシリーズ": {
+        "en": "Grand Weapon",
+        "ja": "リミテッドシリーズ",
+        "zh": "リミテッドシリーズ",
+    },
 
     //support abilities
     "なし": {
@@ -2227,6 +2252,11 @@ var multiLangData = {
         "en": "10% boost to melee-specialty allies' double attack rate. (Ghandagoza)",
         "ja": "格闘キャラDA率10%UP(ガンダゴウザ)",
         "zh": "格闘キャラDA率10%UP(ガンダゴウザ)",
+    },
+    "格闘キャラDA率10%UP&TA率5%UP&与ダメージ3%UP(通常攻撃のみ)(ラインハルザ(リミテッドver))": {
+        "en": "10% boost to double attack rate, 5% boost to triple attack rate, and amplify normal attack damage by 3% for melee-specialty allies. (Reinhardtzar (Grand))",
+        "ja": "格闘キャラDA率10%UP&TA率5%UP&与ダメージ3%UP(通常攻撃のみ)(ラインハルザ(リミテッドver))",
+        "zh": "格闘キャラDA率10%UP&TA率5%UP&与ダメージ3%UP(通常攻撃のみ)(ラインハルザ(リミテッドver))",
     },
     "HP15%DOWN(水着イシュ, マルキ, ロザミア)": {
         "en": "15% reduced max HP. (Izmir (Summer), Marquiares, Rosamia)",
@@ -2308,15 +2338,20 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量35%DOWN。(ガイゼンボーガ)",
         "zh": "Charge bar fills up 35% slower. (Geisenborger)",
     },
-    "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))": {
-        "en": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
-        "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))",
-        "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR))",
+    "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR),渋谷凛＆島村卯月＆本田未央)": {
+        "en": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR),New Generations)",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR),渋谷凛＆島村卯月＆本田未央)",
+        "zh": "Charge bar fills up 35% slower. (Wulf and Renie,Predator(SR),New Generations)",
     },
     "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))": {
         "en": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
         "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
         "zh": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+    },
+    "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)": {
+        "en": "Charge bar fills up 50% slower and 25% Boost to Damage. (Shura)",
+        "ja": "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)",
+        "zh": "Charge bar fills up 50% slower and 25% Boost to Damage. (Shura)",
     },
     "主人公の奥義ゲージ上昇量20%UP。(クラリス(バレンタインver))": {
         "en": "MC's charge bar fills up 20% faster. (Clarisse (Valentine))",
@@ -2338,10 +2373,10 @@ var multiLangData = {
         "ja": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
         "zh": "風属性奥義ダメージ50%UP&奥義上限10%UP(最終シエテ)",
     },
-    "全体背水効果(ザルハメリナ, 火ユイシス)": {
-        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina, Fire Yuisis)",
-        "ja": "全体背水効果(ザルハメリナ, 火ユイシス)",
-        "zh": "全体背水効果(ザルハメリナ, 火ユイシス)",
+    "全体背水効果(ザルハメリナ,ユイシス(火属性ver), プレデター(SSR))": {
+        "en": "Increases ATK for all allies based on how low (me)'s HP is. (Zahlhamelina, Yuisis (Fire), Predator (SSR))",
+        "ja": "全体背水効果(ザルハメリナ, ユイシス(火属性ver), プレデター(SSR))",
+        "zh": "全体背水効果(ザルハメリナ, ユイシス(火属性ver), プレデター (SSR))",
     },
     "背水効果(ジャンヌダルク(闇), サラ(SSR))": {
         "en": "Boost to ATK based on how low HP is. (Jeanne D'Ark (Dark), Sara (Earth))",
@@ -2447,6 +2482,11 @@ var multiLangData = {
         "en": "Boost to C.A. DMG Cap. (Robomi (SSR), Lyria)",
         "ja": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
         "zh": "奥義ダメージ上限UP(ルリア,SSRロボミ)",
+    },
+    "奥義ダメージ上限UP(シュラ)": {
+        "en": "Boost to C.A. DMG Cap. (Shura)",
+        "ja": "奥義ダメージ上限UP(シュラ)",
+        "zh": "奥義ダメージ上限UP(シュラ)",
     },
     "奥義ダメージ上限UP&奥義倍率12.5(サーヴァンツ200%奥義時)": {
         "en": "Boost to C.A. DMG Cap, Change C.A. Multiplier to 12.5. (Dorothy and Claudia 200% C.A.)",
@@ -2554,10 +2594,15 @@ var multiLangData = {
         "ja": "3回攻撃時に追加ダメージ発生(15%)。(レヴィオン姉妹 マイム＆ミイム＆メイム)",
         "zh": "15% Bonus damage for triple attack. (Levin Sisters)",
     },
-    "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)": {
-        "en": "10% boost to Damage when affected by Element ATK Buff. (Olivia)",
-        "ja": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。(オリヴィエ)",
-        "zh": "10% boost to Damage when affected by Element ATK Buff. (Olivia)",
+    "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。": {
+        "en": "10% boost to Damage when affected by Element ATK Buff.",
+        "ja": "属性攻撃力UPが付与されている時、与ダメージ上昇10%UP。",
+        "zh": "10% boost to Damage when affected by Element ATK Buff.",
+    },
+    "属性攻撃力UPが付与されている時、与ダメージ上昇30%UP(通常攻撃のみ)。(オリヴィエ)": {
+        "en": "30% boost to one-foe damage when affected by Element ATK Buff. (Olivia)",
+        "ja": "属性攻撃力UPが付与されている時、与ダメージ上昇30%UP(通常攻撃のみ)。(オリヴィエ)",
+        "zh": "30% boost to one-foe damage when affected by Element ATK Buff. (Olivia)",
     },
     "自分の残りHPが少ないほどダブルアタック確率UP/ダメージ上限UP。(アイル)": {
         "en": "Boost to multi attack rate and damage cap based on how low HP is. (Ayer)",
@@ -3011,6 +3056,11 @@ var multiLangData = {
         "ja": "先制(永続)",
         "zh": "先制",
     },
+    "EX先制": {
+        "en": "EX Preemptive",
+        "ja": "EX先制(永続)",
+        "zh": "EX先制",
+    },
     "マグナ攻刃": {
         "en": "Magna Might I",
         "ja": "マグナ攻刃",
@@ -3190,6 +3240,11 @@ var multiLangData = {
         "en": "EX Might (LLL)",
         "ja": "EX攻刃(極大)",
         "zh": "EX攻刃(極大)",
+    },
+    "EX攻刃(特大)+守護(小)": {
+        "en": "EX Might (LL) and Aegis (S)",
+        "ja": "EX攻刃(特大)+守護(小)",
+        "zh": "EX攻刃(特大)+守護(小)",
     },
     "通常攻刃III": {
         "en": "Normal Might (LLL)",

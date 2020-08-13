@@ -93,8 +93,8 @@ supportAbilist["atk_up_depends_races"] = {
     u"氷晶宮の特使"
 }
 supportAbilist["element_buff_boost_own_30"] = {
-    u"王者の風格",
-    u"覇者の風格"
+    u"王者の風格SR",
+#    u"覇者の風格"
 }
 supportAbilist["eternal_wisdom"] = {
     u"久遠の叡智"
@@ -122,6 +122,7 @@ supportAbilist["ougi_gage_down_own_35_ta_100"] = {
     u"ケンプファー",
     u"凶爪",
     u"バレンタインとか興味無いかな～",
+    u"ワンダフルマジック",
 }
 supportAbilist["ougi_gage_up_djeeta_20"] = {
     u"クラリスちゃんの特製チョコ☆"
@@ -137,7 +138,8 @@ supportAbilist["ougi_damage_up_10"] = {
 }
 supportAbilist["emnity_all_SL10"] = {
     u"太陽信仰",
-    u"七回忌の砌"
+    u"七回忌の砌",
+    u"影歩む黒涙",
 }
 supportAbilist["emnity_own_SL20"] = {
     u"ダーク・ラピュセル",
@@ -145,7 +147,8 @@ supportAbilist["emnity_own_SL20"] = {
 }
 supportAbilist["emnity_own_SL20_steps"] = {
     u"絶望の剣",
-    u"ノートラーガ"
+    u"ノートラーガ",
+    u"無為の封縛",
 }
 supportAbilist["envoy_meditation"] = {
     u"調停の使徒"
@@ -213,11 +216,12 @@ supportAbilist["damageUP_OugiCapUP_20"] = {
 supportAbilist["ougiCapUP_20"] = {
     u"孤高の狙撃手",
     u"天性の才能",
-    u"反撃の狼煙"
+    u"反撃の狼煙",
 }
 supportAbilist["ougiCapUP_25"] = {
     u"生命のリンク",
-    u"リレーション・コンバーター"
+    u"リレーション・コンバーター",
+    u"ぎゃうー……",
 }
 supportAbilist["ougiCapUP_100"] = {
     u"神魔を恐れぬ王"
@@ -283,6 +287,9 @@ supportAbilist["revion_kishi_sanshimai"] = {
     u"レヴィオン騎士三姉妹"
 }
 supportAbilist["element_buff_boost_damageUP_own_10"] = {
+#    u"堕天司"
+}
+supportAbilist["element_buff_boost_damageUP_normal_own_30"] = {
     u"堕天司"
 }
 # supportAbilist["no_normal_attack"] = {
@@ -327,6 +334,12 @@ supportAbilist["party_all_night"] = {
 }
 supportAbilist["additional_damage_on_ta_light_10"] = {
     u"ドレス・ラ・ピュセル"
+}
+supportAbilist["ougi_gage_down_own_50_damageUP_25"] = {
+    u"征道の書"
+}
+supportAbilist["da_up_ta_up_damageUPOnlyNormal_fist_10_5_3"] = {
+    u"己の意志"
 }
 # Patching DA TA
 patching = OrderedDict()
@@ -479,6 +492,7 @@ patching["プリキュア"] = {"DA": 1000.0, "TA": 3.0}
 patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 1000.0, "TA": 3.0}
 patching["ハールート・マールート(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
 patching["ハレゼナ(ハロウィンver)"] = {"DA": 1000.0, "TA": 1000.0}
+patching["渋谷凛＆島村卯月＆本田未央"] = {"DA": 1000.0, "TA": 1000.0}
 
 ### SR
 patching["ゼタ(SR)"] = {"DA": 10.0, "TA": 5.0}
@@ -507,6 +521,7 @@ patching["ベアトリクス"] = {"DA": 4.0, "TA": 1.0}
 patching["ウーフとレニー"] = {"DA": 1000.0, "TA": 1000.0}
 patching["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
 patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
+patching["プレデター(SSR)"] = {"DA": 1000.0, "TA": 1000.0}
 
 ### SR
 patching["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
@@ -562,6 +577,9 @@ patchingOugiRatio["ラカム(リミテッドver)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["黒騎士(リミテッドver)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ゼタ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ティアマト"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ヴェイン(SSR)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["イオ(リミテッドver)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["アオイドス"] = {"ougiRatio": 5.0}
 
 ### SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
@@ -598,6 +616,7 @@ patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 patchingOugiRatio["ミュオン(クリスマスver)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["飛竜と吸血姫 ヴァンピィ＆ベス"] = {"ougiRatio": 12.5}
+patchingOugiRatio["シュラ"] = {"ougiRatio": 12.5}
 
 ### SSR (Not to ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
@@ -641,6 +660,7 @@ patchingOugiRatio["城ヶ崎莉嘉"] = {"ougiRatio": 4.0}
 patchingOugiRatio["シャオ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["カタリナ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["ミリン"] = {"ougiRatio": 4.0}
+patchingOugiRatio["ウェルダー(イベントver)"] = {"ougiRatio": 4.0}
 
 ### SR (Other)
 patchingOugiRatio["カタリナ(水着ver)"] = {"ougiRatio": 3.7}
