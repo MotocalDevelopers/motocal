@@ -68,7 +68,11 @@ module.exports.getElementColorLabel = (function (element, locale) {
 });
 
 
-module.exports._ua = (function (u) {
+module.exports._ua = (function () {
+    if (!self.window) {
+      return null;
+    }
+    var u = self.window.navigator.userAgent.toLowerCase();
     return {
         Tablet: (u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1)
             || u.indexOf("ipad") != -1 || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
@@ -78,7 +82,7 @@ module.exports._ua = (function (u) {
             || u.indexOf("ipod") != -1 || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
             || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1) || u.indexOf("blackberry") != -1
     }
-})(window.navigator.userAgent.toLowerCase());
+})();
 
 module.exports.BASE_LIMIT_VALUES = {
     normalDamage: [[600000, 0.01], [500000, 0.05], [400000, 0.60], [300000, 0.80]],

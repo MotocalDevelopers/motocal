@@ -1,5 +1,5 @@
 var React = require('react');
-var {Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover, ProgressBar} = require('react-bootstrap');
 var CreateClass = require('create-react-class');
 var Simulator = require('./simulator.js');
 var {HPChart} = require('./chart.js');
@@ -33,145 +33,30 @@ var enemyDefenseType = GlobalConst.enemyDefenseType;
 var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
-var {
-    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces,
-    calcCombinations, calcOneCombination,
-    getTesukatoripokaAmount, getTotalBuff,
-    getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
-} = require('./global_logic.js');
+var {checkNumberOfRaces, getTesukatoripokaAmount, getTypeBonus, getTypeBonusStr, calcCriticalDeviation} = require('./global_logic.js');
+const ResultWorker = require('worker-loader!./calculate_result_worker.js');
 
 var ResultList = CreateClass({
-    calculateResult: function (newprops) {
-        var prof = newprops.profile;
-        var arml = newprops.armlist;
-        var summon = newprops.summon;
-        var chara = newprops.chara;
-
-        if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
-            // Since the parameter added later may be NaN, additional processing
-            // If sortKey is not a NaN, use that, NaN if it's general attack power
-            var sortkey = "averageCyclePerTurn";
-            var sortkeyname = "予想ターン毎ダメージのパーティ平均値";
-            if (newprops.sortKey == newprops.sortKey) {
-                sortkey = newprops.sortKey;
-                sortkeyname = keyTypes[sortkey]
-            }
-
-            // If combinations have not been changed, use old guys
-            if (this.state.previousArmlist != null) {
-                var isCombinationChanged = false;
-                if (this.state.previousArmlist.length != arml.length || prof.filterOptionsChanged) {
-                    isCombinationChanged = true;
-                    prof.filterOptionsChanged = false;
-                }
-                if (!isCombinationChanged) {
-                    for (var i = 0; i < arml.length; i = (i + 1) | 0) {
-                        if (arml[i].considerNumberMax != this.state.previousArmlist[i].considerNumberMax || arml[i].considerNumberMin != this.state.previousArmlist[i].considerNumberMin) {
-                            isCombinationChanged = true;
-                        }
-                        // Combination changes depending on whether it became a cosmos weapon, or it was not a cosmos weapon
-                        if (isCosmos(arml[i]) != isCosmos(this.state.previousArmlist[i])) {
-                            isCombinationChanged = true;
-                        }
-                        if (isHollowsky(arml[i]) != isHollowsky(this.state.previousArmlist[i])) {
-                            isCombinationChanged = true;
-                        }
-                        if (isDarkOpus(arml[i]) != isDarkOpus(this.state.previousArmlist[i])) {
-                            isCombinationChanged = true;
-                        }
-                    }
-                }
-                if (isCombinationChanged) {
-                    var combinations = calcCombinations(arml, prof.ruleMaxSize);
-                    this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
-                    this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
-                } else {
-                    var combinations = this.state.previousCombinations
-                }
-            } else {
-                var combinations = calcCombinations(arml, prof.ruleMaxSize);
-                this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
-                this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
-            }
-
-            var res = [];
-            var minSortKey = [];
-            for (var i = 0; i < summon.length; i++) {
-                res[i] = [];
-                minSortKey[i] = -1
-            }
-
-
-            var itr = combinations.length;
-            var totalItr = itr * summon.length * Object.keys(getInitialTotals(prof, chara, summon)).length;
-
-            // If necessary values for preprocessing are prepared here
-            var minHP = (prof.minimumHP == undefined) ? undefined : parseInt(prof.minimumHP);
-
-            for (var i = 0; i < itr; i = (i + 1) | 0) {
-                var totals = getInitialTotals(prof, chara, summon);
-                var totalBuff = getTotalBuff(prof);
-                var oneres = calcOneCombination(combinations[i], summon, prof, chara, arml, totals, totalBuff);
-                for (var j = 0; j < summon.length; j++) {
-                    // For each result preprocessing
-                    if (isValidResult(oneres[j], minHP)) {
-                        if (res[j].length < 10) {
-                            // First update minSortkey
-                            if (minSortKey[j] < 0 || minSortKey[j] > oneres[j].Djeeta[sortkey]) {
-                                minSortKey[j] = oneres[j].Djeeta[sortkey]
-                            }
-                            res[j].push({data: oneres[j], armNumbers: combinations[i]});
-                        } else {
-                            // Only those larger than minSortkey push
-                            if (oneres[j].Djeeta[sortkey] >= minSortKey[j]) {
-                                // Add to eleventh
-                                res[j].push({data: oneres[j], armNumbers: combinations[i]});
-
-                                // Erase what matches minSortkey [j] up to the 10th
-                                var spliceid = -1;
-                                for (var k = 0; k < 10; k = (k + 1) | 0) {
-                                    if (res[j][k].data.Djeeta[sortkey] == minSortKey[j]) {
-                                        spliceid = k
-                                    }
-                                }
-                                res[j].splice(spliceid, 1);
-                                minSortKey[j] = -1;
-
-                                // Since it became an array of ten, once again calculate the minimum value
-                                for (var k = 0; k < 10; k = (k + 1) | 0) {
-                                    if (minSortKey[j] < 0 || minSortKey[j] > res[j][k].data.Djeeta[sortkey]) {
-                                        minSortKey[j] = res[j][k].data.Djeeta[sortkey]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            // At this point, summonres should be an array of "array of associative arrays of result data corresponding to each summon"
-            for (var i = 0; i < summon.length; i++) {
-                if (sortkey == "ATKandHP") {
-                    res[i].sort(function (a, b) {
-                        if ((a.data.Djeeta.displayAttack + a.data.Djeeta.displayHP) < (b.data.Djeeta.displayAttack + b.data.Djeeta.displayHP)) return 1;
-                        if ((a.data.Djeeta.displayAttack + a.data.Djeeta.displayHP) > (b.data.Djeeta.displayAttack + b.data.Djeeta.displayHP)) return -1;
-                        return 0;
-                    });
-                } else {
-                    res[i].sort(function (a, b) {
-                        if (a["data"]["Djeeta"][sortkey] < b["data"]["Djeeta"][sortkey]) return 1;
-                        if (a["data"]["Djeeta"][sortkey] > b["data"]["Djeeta"][sortkey]) return -1;
-                        return 0;
-                    });
-                }
-                while (res[i].length > 10) {
-                    res[i].pop();
-                }
-            }
-
-            return {summon: summon, result: res, sortkeyname: sortkeyname, totalItr: totalItr}
-        } else {
-            return {summon: summon, result: []}
+    calculateResult: function ({profile, armlist, summon, chara, sortKey}) {
+        let worker;
+        const {previousArmlist, previousCombinations} = this.state;
+        this.setState({
+            calculatingResult: true
+        });
+        if (typeof (worker) == "undefined") {
+            worker = new ResultWorker();
         }
+        worker.onmessage = ({data: {result, previousArmlist, previousCombinations}}) => {
+            this.setState({
+                result,
+                previousArmlist: previousArmlist || this.state.previousArmlist,
+                previousCombinations: previousCombinations || this.state.previousCombinations,
+                calculatingResult: false
+            });
+            worker.terminate();
+            worker = undefined;
+        };
+        worker.postMessage({profile, armlist, summon, chara, sortKey, previousArmlist, previousCombinations});
     },
     getInitialState: function () {
         return {
@@ -228,7 +113,8 @@ var ResultList = CreateClass({
             previousArmlist: null,
             previousCombinations: null,
             ruleMaxSize: true,
-            filterOptionsChanged: false
+            filterOptionsChanged: false,
+            calculatingResult: false
         };
     },
     closeHPChart: function () {
@@ -245,8 +131,7 @@ var ResultList = CreateClass({
     },
     componentWillReceiveProps: function (nextProps) {
         if (this.state.disableAutoResultUpdate != 1 && (nextProps.noResultUpdate == undefined || !nextProps.noResultUpdate)) {
-            var allresult = this.calculateResult(nextProps);
-            this.setState({result: allresult});
+            this.calculateResult(nextProps);
         }
 
         // Whether armlist has not been changed check => If changed, erase until now
@@ -273,11 +158,11 @@ var ResultList = CreateClass({
         var newState = this.state;
         newState[key] = (newState[key] == 0) ? 1 : 0;
 
+        this.setState(newState)
         // UPDATE after automatic update ON
         if (key == "disableAutoResultUpdate" && newState[key] == 0) {
-            newState["result"] = this.calculateResult(this.props)
+            this.calculateResult(this.props);
         }
-        this.setState(newState)
     },
     openHPChart: function (e) {
         var sortkey = "averageCyclePerTurn";
@@ -363,7 +248,7 @@ var ResultList = CreateClass({
         this.setState({storedList: newStoredList})
     },
     forceResultUpdate: function () {
-        this.setState({result: this.calculateResult(this.props)})
+        this.calculateResult(this.props);
     },
     openDisplayTable: function () {
         this.setState({openDisplayElementTable: !this.state.openDisplayElementTable})
@@ -491,7 +376,7 @@ var ResultList = CreateClass({
                     key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
         }
-    
+
         var addPercent = (value) => intl.translate("percent", locale).replace("{}", value === undefined ? "0" : value);
 
         // Create buff info line
@@ -505,7 +390,7 @@ var ResultList = CreateClass({
         buffInfo.push(intl.translate("烈日の楽園", locale) + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         buffInfo.push(intl.translate("死ト愛ノ世界", locale) + (prof.shiToAiNoSekai ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         var buffInfoStr = buffInfo.join(", ");
-    
+
         // Enemy info line
         var enemyInfo = [];
         enemyInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
@@ -686,7 +571,7 @@ var ResultList = CreateClass({
                                 <ElementColorLabel element={s.friendElement}>{friendSummonHeader}</ElementColorLabel>
                                 <hr style={{"margin": "10px 0px"}}/>
                                 <div className="charainfo">
-                                {charaInfo}
+                                    {charaInfo}
                                     <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                     <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                                 </div>
@@ -873,7 +758,7 @@ var ResultList = CreateClass({
                         <AdsenseAdvertisement locale={locale} type="pc-2"/>
                     </div>
 
-                    {summon.map(function (s, summonindex) {
+                    {summon.map((s, summonindex) => {
                         var selfSummonHeader = "";
                         if (s.selfSummonType == "odin") {
                             selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + intl.translate("属性攻", locale) + s.selfSummonAmount + intl.translate("キャラ攻", locale) + s.selfSummonAmount2
@@ -902,7 +787,7 @@ var ResultList = CreateClass({
                                 <div className="charainfo" style={{"float": "left"}}>
                                     {charaInfo}
                                     <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
-                                <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
+                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                                 </div>
                                 <div style={{"textAlign": "right", "float": "right"}}>
                                     <span>{intl.translate("優先項目", locale)}: {changeSortKey}</span>
@@ -928,7 +813,9 @@ var ResultList = CreateClass({
                                     </thead>
                                     <Result key={summonindex} summonid={summonindex} data={result[summonindex]}
                                             switcher={switcher} arm={arm} prof={prof}
-                                            onAddToHaisuiData={onAddToHaisuiData} locale={locale}/>
+                                            onAddToHaisuiData={onAddToHaisuiData} locale={locale}
+                                            calculating={this.state.calculatingResult}
+                                    />
                                 </table>
                             </div>
                         );
@@ -1028,6 +915,18 @@ var Result = CreateClass({
         var onClick = this.onClick;
         var locale = this.props.locale;
         const formatCommaSeparatedNumber = num => String(Math.round(num)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+
+        if (this.props.calculating) {
+            return (
+                <tbody className="result">
+                <tr>
+                    <td colSpan="999">
+                        <ProgressBar active now={100}/>
+                    </td>
+                </tr>
+                </tbody>
+            );
+        }
 
         return (
             <tbody className="result">
@@ -1134,7 +1033,7 @@ var Result = CreateClass({
 
                 if (sw.switchCharaHP) {
                     for (key in m.data) {
-                        let {totalHP, remainHP} = m.data[key]; 
+                        let {totalHP, remainHP} = m.data[key];
                         charaDetail[key].push(
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
@@ -1221,7 +1120,6 @@ var Result = CreateClass({
                     tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.totalOugiDamage));
                     ++colSize;
                 }
-
 
 
                 if (sw.switchCharaOugiDamage) {
@@ -1312,38 +1210,41 @@ var Result = CreateClass({
 
                 if (sw.switchCharaLimitValues) {
                     for (var key in m.data) {
-                        function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage){
+                        function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage) {
                             // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
-                            let  _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
-                            (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
-                            (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
-                            
+                            let _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
+                                (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
+                                (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
+
                             // In the case of ougi.
                             _limitValues += ougiFixedDamage * criticalRatio;
-                            
+
                             _limitValues *= Math.max(1.0, 1.0 + damageUP);
                             _limitValues *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
                             _limitValues += supplementalDamage;
-                            
+
                             return _limitValues;
                         }
-                        
+
                         // Generate supplemental Damage.
-                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
+                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0,
+                            chainBurstSupplemental = 0;
                         [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
-                        
+
                         let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUPOnlyNormalDamage, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
                         let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
-                        
+
                         charaDetail[key].push(
-                                <div key={key + "-LimitValues"}>
+                            <div key={key + "-LimitValues"}>
                                     <span key={key + "-LimitValues"}>
-                                        <span className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
-                                            {formatCommaSeparatedNumber(normalDamageRealLimit)}&nbsp;
-                                        <span className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
-                                            {formatCommaSeparatedNumber(ougiDamageRealLimit)}&nbsp;
+                                        <span
+                                            className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
+                                        {formatCommaSeparatedNumber(normalDamageRealLimit)}&nbsp;
+                                        <span
+                                            className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
+                                        {formatCommaSeparatedNumber(ougiDamageRealLimit)}&nbsp;
                                     </span>
-                                </div>
+                            </div>
                         );
                     };
                 }
@@ -1393,7 +1294,8 @@ var Result = CreateClass({
                             if (value != 0.0) {
                                 multipleAttackSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
-                                        <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                        <span
+                                            className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
                                         <span className={isOver ? "is-over" : ""}>{value.toFixed(1)}%</span>&nbsp;
                                     </span>
                                 );
@@ -1464,7 +1366,7 @@ var Result = CreateClass({
                                     <tbody>
                                     <tr>
                                         <td>{intl.translate("効果量", locale)}</td>
-                                        {additionalDamageXA.map(value => <td>{Math.round(value*100)}%</td>)}
+                                        {additionalDamageXA.map(value => <td>{Math.round(value * 100)}%</td>)}
                                     </tr>
                                     </tbody>
                                 </table>
@@ -1475,26 +1377,27 @@ var Result = CreateClass({
                         const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
                         if (supplementalInfo.total > 0) {
                             supplementalDamageInfo.push(
-                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px", "fontSize": "10pt"}} >
+                                <table key={key + "-supplementalDamageTable"} className="table table-bordered"
+                                       style={{"marginBottom": "0px", "fontSize": "10pt"}}>
                                     <thead>
-                                        <tr>
-                                            <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
-                                            {supplementalInfo.headers.map(([key, type, val]) =>
-                                                <th key={key} className="bg-success">
-                                                    {intl.translate(key, locale) + 
-                                                     (intl.translate("supplemental_"+type, locale)||"").replace("{value}", (val||"").toString())}
-                                                </th>)}
-                                            <th className="bg-success">{intl.translate("合計", locale)}</th>
-                                        </tr>
+                                    <tr>
+                                        <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
+                                        {supplementalInfo.headers.map(([key, type, val]) =>
+                                            <th key={key} className="bg-success">
+                                                {intl.translate(key, locale) +
+                                                (intl.translate("supplemental_" + type, locale) || "").replace("{value}", (val || "").toString())}
+                                            </th>)}
+                                        <th className="bg-success">{intl.translate("合計", locale)}</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>{intl.translate("ダメージ", locale)}</td>
-                                            {supplementalInfo.values.map(([key, damage]) => <td key={key}>{damage}</td>)}
-                                            <td>
-                                                {supplementalInfo.total}&nbsp;
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{intl.translate("ダメージ", locale)}</td>
+                                        {supplementalInfo.values.map(([key, damage]) => <td key={key}>{damage}</td>)}
+                                        <td>
+                                            {supplementalInfo.total}&nbsp;
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             );
