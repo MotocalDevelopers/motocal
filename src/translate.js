@@ -664,6 +664,11 @@ var multiLangData = {
         "ja": "攻刃ボーナス",
         "zh": "攻刃Bonus",
     },
+    "古代の闘術": {
+        "en":"Primal Pugilism",
+        "ja":"古代の闘術",
+        "zh":"古代の闘術"
+    },
     "守護ボーナス": {
         "en": "Aegis Bonus",
         "ja": "守護ボーナス",
@@ -2347,6 +2352,11 @@ var multiLangData = {
         "en": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
         "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
         "zh": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
+    },
+    "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))": {
+        "en": "Charge bar fills up 35% slower. (Predator(SR))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "zh": "Charge bar fills up 35% slower. (Predator(SR))",
     },
     "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)": {
         "en": "Charge bar fills up 50% slower and 25% Boost to Damage. (Shura)",

@@ -1078,6 +1078,10 @@ skillnamelist["tenshiShukufuku"] = {
     u"堕落のすゝめ": "dark"
 }
 
+skillnamelist["normalAtkFistPugilism"] = {
+    u"古代の闘術": "earth"
+}
+
 # Huanglong katana, Dawn Rising
 skillnamelist["shinTenNoInori"] = {
     u"震天の祈り": "light",

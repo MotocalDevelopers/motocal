@@ -1067,6 +1067,7 @@ var skilltypes = {
     "apocalyptic_powerII": {name: "万物を砕く剛技II", type: "apocalyptic_power", amount: "II"},
     "slaysnakes_myth": {name: "戮蛇の神刀", type: "slaysnakes_myth", amount: "I"},
     "slaysnakes_mythII": {name: "戮蛇の神刀II", type: "slaysnakes_myth", amount: "II"},
+    "normalAtkFistPugilism": {name: "古代の闘術", type: "normalAtkCount", amount: "fist"},
 };
 
 // additional selection when template is selected

@@ -536,6 +536,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         normalCoeff += totalSummon["chara"];
         normalCoeff += buff["normal"];
         normalCoeff += totals[key]["normalBuff"];
+        normalCoeff += 0.01 * Math.min(18.0, totals[key]["normalAtkCountBonus"])
         // Add pre-emptive to normal attack 先制を通常攻刃へ加算
         normalCoeff += 0.01 * totals[key]["sensei"];
         if (key == "Djeeta") {
@@ -1786,6 +1787,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (skillname == 'cosmosPC' && typeCharaContains("pecu", totals[key])) {
                             totals[key]["cosmosDebuffResistance"] = comb[i] * 20.0;
                         }
+                    } else if (stype == 'normalAtkCount') {
+                        debugger;
+                        if (amount == 'fist') {
+                            totals[key]["normalAtkCountBonus"] = Math.max(1.8 * Math.min(10, epic.countFistType(arml, comb)), totals[key]["normalAtkCountBonus"])
+                        }
                     } else if (stype == 'cosmosLimit') {
                         // Cosmos Weapons Damage Limit Skill
                         if (amount == 'sword') {
@@ -2585,6 +2591,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 echoThirdHit: 0,
                 //debuffCount: 0,
                 accuracyDebuff: 0,
+                normalAtkCountBonus: 0
             }
     };
 
@@ -2773,6 +2780,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 //buffCount: 0,
                 //debuffCount: 0,
                 accuracyDebuff: 0,
+                normalAtkCountBonus: 0
             };
         }
     }
