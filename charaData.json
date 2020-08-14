@@ -12275,6 +12275,28 @@
         "imageURL": "./charaimgs/3030280000_01.png",
         "en": "Joy"
     },
+    "メグ": {
+        "name": "メグ",
+        "ja": "メグ",
+        "element": "dark",
+        "type": "attack",
+        "race": "human",
+        "sex": "female",
+        "fav1": "dagger",
+        "fav2": "fist",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "200",
+        "hp": "990",
+        "minattack": "1500",
+        "attack": "7550",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 3.5,
+        "imageURL": "./charaimgs/3030290000_01.png",
+        "en": "Meg (Event)"
+    },
     "アルベール(水着ver)": {
         "name": "アルベール(水着ver)",
         "ja": "アルベール(水着ver)",
