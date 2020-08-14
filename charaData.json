@@ -12362,5 +12362,27 @@
         "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040289000_01.png",
         "en": "Rosamia (Yukata)"
+    },
+    "タイアー(浴衣ver)": {
+        "name": "タイアー(浴衣ver)",
+        "ja": "タイアー(浴衣ver)",
+        "element": "light",
+        "type": "balance",
+        "race": "human",
+        "sex": "male",
+        "fav1": "sword",
+        "fav2": "gun",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "250",
+        "hp": "1250",
+        "minattack": "1250",
+        "attack": "6250",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 3.5,
+        "imageURL": "./charaimgs/3030300000_01.png",
+        "en": "Tyre (Yukata)"
     }
 }
