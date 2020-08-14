@@ -23326,6 +23326,25 @@
         "imageURL": "./imgs/1030005600.png",
         "en": "Standard Albion Blade"
     },
+    "狂恋団扇": {
+        "ja": "狂恋団扇",
+        "element": "light",
+        "type": "sword",
+        "skill1": "normalOntyouM",
+        "skill2": "non",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 25,
+        "minattack": 290,
+        "hp": 148,
+        "attack": 1740,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 75,
+        "imageURL": "./imgs/1030009300.png",
+        "en": "Impassioned Rose"
+    },
     "ファイアウィップ": {
         "ja": "ファイアウィップ",
         "element": "fire",
