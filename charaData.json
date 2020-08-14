@@ -12274,5 +12274,27 @@
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030280000_01.png",
         "en": "Joy"
+    },
+    "アルベール(水着ver)": {
+        "name": "アルベール(水着ver)",
+        "ja": "アルベール(水着ver)",
+        "element": "wind",
+        "type": "attack",
+        "race": "human",
+        "sex": "male",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "supplemental_third_hit_50k",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "210",
+        "hp": "1210",
+        "minattack": "1950",
+        "attack": "9950",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040290000_01.png",
+        "en": "Albert (Summer)"
     }
 }
