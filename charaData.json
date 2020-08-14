@@ -12296,5 +12296,27 @@
         "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040290000_01.png",
         "en": "Albert (Summer)"
+    },
+    "フェリ(水着ver)": {
+        "name": "フェリ(水着ver)",
+        "ja": "フェリ(水着ver)",
+        "element": "fire",
+        "type": "pecu",
+        "race": "erune",
+        "sex": "female",
+        "fav1": "dagger",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "180",
+        "hp": "920",
+        "minattack": "1240",
+        "attack": "6200",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 3.5,
+        "imageURL": "./charaimgs/3030310000_01.png",
+        "en": "Ferry (Summer)"
     }
 }
