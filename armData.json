@@ -15461,6 +15461,25 @@
         "imageURL": "./imgs/1040313100.png",
         "en": "Eighth Point of the Flock"
     },
+    "与力十手": {
+        "ja": "与力十手",
+        "element": "light",
+        "type": "sword",
+        "skill1": "normalSetsuna",
+        "skill2": "ougiDamageLimitExceedM",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 35,
+        "minattack": 420,
+        "hp": 215,
+        "attack": 2515,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040020400.png",
+        "en": "Official's Jitte"
+    },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
         "element": "wind",
