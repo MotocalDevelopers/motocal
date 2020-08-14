@@ -12318,5 +12318,27 @@
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030310000_01.png",
         "en": "Ferry (Summer)"
+    },
+    "アニラ(水着ver)": {
+        "name": "アニラ(水着ver)",
+        "ja": "アニラ(水着ver)",
+        "element": "wind",
+        "type": "pecu",
+        "race": "doraf",
+        "sex": "female",
+        "fav1": "spear",
+        "fav2": "fist",
+        "support": "additional_damage_on_ta_wind_10",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "260",
+        "hp": "1400",
+        "minattack": "1740",
+        "attack": "8990",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040288000_01.png",
+        "en": "Anila (Summer)"
     }
 }

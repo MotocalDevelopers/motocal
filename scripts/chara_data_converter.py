@@ -336,6 +336,9 @@ supportAbilist["party_all_night"] = {
 supportAbilist["additional_damage_on_ta_light_10"] = {
     u"ドレス・ラ・ピュセル"
 }
+supportAbilist["additional_damage_on_ta_wind_10"] = {
+    u"真夏の我は一味違うぞ？"
+}
 supportAbilist["ougi_gage_down_own_50_damageUP_25"] = {
     u"征道の書"
 }

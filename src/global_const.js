@@ -2685,6 +2685,12 @@ var supportAbilities = {
         "type": "additionalDamageXA",
         "range": range.element.light,
         "value": [0.0, 0.0, 0.1]
+    },
+    "additional_damage_on_ta_wind_10": {
+        "name": "光属性キャラがトリプルアタック時に光属性追撃効果",
+        "type": "additionalDamageXA",
+        "range": range.element.wind,
+        "value": [0.0, 0.0, 0.1]
     }
 };
 
