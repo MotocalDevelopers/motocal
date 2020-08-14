@@ -15442,6 +15442,25 @@
         "imageURL": "./imgs/1040312600.png",
         "en": "Teiwaz"
     },
+    "第八綿羊行刃": {
+        "ja": "第八綿羊行刃",
+        "element": "wind",
+        "type": "axe",
+        "skill1": "normalRanbuS",
+        "skill2": "non",
+        "element2": "wind",
+        "skill3": "non",
+        "element3": "wind",
+        "minhp": 32,
+        "minattack": 440,
+        "hp": 191,
+        "attack": 2630,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040313100.png",
+        "en": "Eighth Point of the Flock"
+    },
     "ケーリュケイオン": {
         "ja": "ケーリュケイオン",
         "element": "wind",

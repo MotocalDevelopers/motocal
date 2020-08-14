@@ -440,7 +440,8 @@ skillnamelist["normalRanbuS"] = {
     u"土の乱舞": "earth",
     u"風の乱舞": "wind",
     u"光の乱舞": "light",
-    u"闇の乱舞": "dark"
+    u"闇の乱舞": "dark",
+    u"竜巻の乱舞": "wind"
 }
 
 skillnamelist["normalHiouS"] = {
