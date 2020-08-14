@@ -194,7 +194,7 @@ var Summon = CreateClass({
     getInitialState: function () {
         return {
             selfSummonType: "magna",
-            selfSummonAmount: 100,
+            selfSummonAmount: 140,
             selfSummonAmount2: 0,
             selfElement: "fire",
             friendSummonType: "element",
