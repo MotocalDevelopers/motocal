@@ -12340,5 +12340,27 @@
         "ougiRatio": 4.5,
         "imageURL": "./charaimgs/3040288000_01.png",
         "en": "Anila (Summer)"
+    },
+    "ロザミア(浴衣ver)": {
+        "name": "ロザミア(浴衣ver)",
+        "ja": "ロザミア(浴衣ver)",
+        "element": "light",
+        "type": "balance",
+        "race": "human",
+        "sex": "female",
+        "fav1": "sword",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "295",
+        "hp": "1595",
+        "minattack": "1525",
+        "attack": "8025",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040289000_01.png",
+        "en": "Rosamia (Yukata)"
     }
 }
