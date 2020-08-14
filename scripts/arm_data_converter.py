@@ -88,6 +88,14 @@ skillnamelist["normalHaisuiL"] = {
     u"奈落の背水": "dark"
 }
 
+skillnamelist["normalHaisuiLL"] = {
+    u"炎威の背水": "fire"
+}
+
+skillnamelist["supplementalEmnity"] = {
+    u"朱の誓約": "fire"
+}
+
 skillnamelist["normalBoukunLLL"] = {
     u"紅蓮の暴君II": "fire",
     u"霧氷の暴君II": "water",

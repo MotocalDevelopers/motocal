@@ -1257,7 +1257,7 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
             } else {
                 baseRate = 30 + 2.5 * ((haisuiSLv - 15) / 5.0)
             }
-        } else {
+        } else if (haisuiAmount == "L") {
             // 大
             if (haisuiSLv < 10) {
                 baseRate = -0.5 + haisuiSLv * 3.0;
@@ -1265,6 +1265,13 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
                 baseRate = 30 + 7.5 * ((haisuiSLv - 10) / 5.0)
             } else {
                 baseRate = 37.5 + 3.0 * ((haisuiSLv - 15) / 5.0)
+            }
+        } else {
+            // LL
+            if (haisuiSLv < 10) {
+                baseRate = -0.5 + haisuiSLv * 4.5;
+            } else {
+                baseRate = 45 + 11.25 * ((haisuiSLv - 10) / 5.0)
             }
         }
         return (baseRate / 3.0) * (2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0)
@@ -1788,7 +1795,6 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]["cosmosDebuffResistance"] = comb[i] * 20.0;
                         }
                     } else if (stype == 'normalAtkCount') {
-                        debugger;
                         if (amount == 'fist') {
                             totals[key]["normalAtkCountBonus"] = Math.max(1.8 * Math.min(10, epic.countFistType(arml, comb)), totals[key]["normalAtkCountBonus"])
                         }
@@ -2286,6 +2292,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     totals[key]["exceedOugiDamageLimit"] += 0.10;
                                 }
                             }
+                        } else if (stype == 'supplementalEmnity') {
+                            debugger;
+                            totals[key]['supplementalDamageBuff'] += 50000 * ((1.0 - totals[key]["remainHP"]) / 1.0) + 10000
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }

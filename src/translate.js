@@ -2911,6 +2911,16 @@ var multiLangData = {
         "ja": "通常背水(大)",
         "zh": "通常背水(大)",
     },
+    "通常背水(特大)": {
+        "en": "Normal Emnity (LL)",
+        "ja": "通常背水(特大)",
+        "zh": "通常背水(特大)"
+    },
+    "朱の誓約": {
+        "en": "Vermillion Covenant",
+        "ja": "朱の誓約",
+        "zh": "朱の誓約"
+    },
     "通常渾身(小)": {
         "en": "Normal Stamina (S)",
         "ja": "通常渾身(小)",

@@ -836,6 +836,7 @@ var skilltypes = {
     "normalHaisuiS": {name: "通常背水(小)", type: "normalHaisui", amount: "S"},
     "normalHaisuiM": {name: "通常背水(中)", type: "normalHaisui", amount: "M"},
     "normalHaisuiL": {name: "通常背水(大)", type: "normalHaisui", amount: "L"},
+    "normalHaisuiLL": {name: "通常背水(特大)", type: "normalHaisui", amount: "LL"},
     "normalKonshinS": {name: "通常渾身(小)", type: "normalKonshin", amount: "S"},
     "normalKonshinM": {name: "通常渾身(中)", type: "normalKonshin", amount: "M"},
     "normalKonshinL": {name: "通常渾身(大)", type: "normalKonshin", amount: "L"},
@@ -1068,6 +1069,7 @@ var skilltypes = {
     "slaysnakes_myth": {name: "戮蛇の神刀", type: "slaysnakes_myth", amount: "I"},
     "slaysnakes_mythII": {name: "戮蛇の神刀II", type: "slaysnakes_myth", amount: "II"},
     "normalAtkFistPugilism": {name: "古代の闘術", type: "normalAtkCount", amount: "fist"},
+    "supplementalEmnity": {name: "朱の誓約", type: "supplementalEmnity", amount: "L"}
 };
 
 // additional selection when template is selected
