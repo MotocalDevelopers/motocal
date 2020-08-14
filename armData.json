@@ -23248,6 +23248,25 @@
         "imageURL": "./imgs/1030005600.png",
         "en": "Standard Albion Blade"
     },
+    "ファイアウィップ": {
+        "ja": "ファイアウィップ",
+        "element": "fire",
+        "type": "sword",
+        "skill1": "normalKamui",
+        "skill2": "non",
+        "element2": "fire",
+        "skill3": "non",
+        "element3": "fire",
+        "minhp": 24,
+        "minattack": 294,
+        "hp": 150,
+        "attack": 1732,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 75,
+        "imageURL": "./imgs/1030009400.png",
+        "en": "Flame Lit Curl"
+    },
     "アークエンジェルソード": {
         "ja": "アークエンジェルソード",
         "element": "light",
