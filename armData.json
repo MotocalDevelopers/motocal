@@ -27240,6 +27240,25 @@
         "imageURL": "./imgs/1030604900.png",
         "en": "Water Balloons"
     },
+    "フジトゥヴォナックル": {
+        "ja": "フジトゥヴォナックル",
+        "element": "light",
+        "type": "fist",
+        "skill1": "strengthM",
+        "skill2": "non",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 22,
+        "minattack": 200,
+        "hp": 137,
+        "attack": 1270,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 75,
+        "imageURL": "./imgs/1030608600.png",
+        "en": "Barnacle Knuckle"
+    },
     "アークエンジェルナックル": {
         "ja": "アークエンジェルナックル",
         "element": "light",

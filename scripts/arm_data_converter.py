@@ -827,7 +827,8 @@ skillnamelist["strengthM"] = {
     u"龍馬の愛刀": "wind",
     u"土方の愛刀": "fire",
     u"クールな攻刃": "water",
-    u"錬金の攻刃": "light"
+    u"錬金の攻刃": "light",
+    u"荒磯の攻刃": "light"
 }
 skillnamelist["strengthL"] = {
     u"ストレングス": "unknown",
