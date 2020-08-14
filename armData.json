@@ -16998,6 +16998,25 @@
         "imageURL": "./imgs/1040417000.png",
         "en": "[4★] Piña Bestiary"
     },
+    "アウギュステ記念晶杖": {
+        "ja": "アウギュステ記念晶杖",
+        "element": "light",
+        "type": "wand",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "light",
+        "skill3": "non",
+        "element3": "light",
+        "minhp": 38,
+        "minattack": 275,
+        "hp": 231,
+        "attack": 1725,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040417800.png",
+        "en": "Auguste Commemorative Staff"
+    },
     "裁きの鳴雷": {
         "ja": "裁きの鳴雷",
         "element": "earth",
