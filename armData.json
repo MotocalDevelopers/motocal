@@ -22100,6 +22100,25 @@
         "imageURL": "./imgs/1040904300.png",
         "en": "[5★] Ameno Habakiri"
     },
+    "ライトニング・サヴァイヴ": {
+        "ja": "ライトニング・サヴァイヴ",
+        "element": "wind",
+        "type": "katana",
+        "skill1": "normalSanteL",
+        "skill2": "normalCriticalS",
+        "element2": "wind",
+        "skill3": "non",
+        "element3": "wind",
+        "minhp": 26,
+        "minattack": 475,
+        "hp": 162,
+        "attack": 2799,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040912500.png",
+        "en": "Surviving Lightning"
+    },
     "ピンクグリモワール": {
         "ja": "ピンクグリモワール",
         "element": "water",
