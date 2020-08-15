@@ -848,6 +848,7 @@ var skilltypes = {
     "normalSanteS": {name: "通常三手(小)", type: "normalSante", amount: "S"},
     "normalSanteM": {name: "通常三手(中)", type: "normalSante", amount: "M"},
     "normalSanteL": {name: "通常三手(大)", type: "normalSante", amount: "L"},
+    "normalSanteLL": {name: "通常三手(特大)", type: "normalSante", amount: "LLL"},
     "normalKatsumiS": {name: "通常克己(小)", type: "normalKatsumi", amount: "S"},
     "normalKatsumiM": {name: "通常克己(中)", type: "normalKatsumi", amount: "M"},
     "normalKamui": {name: "通常神威(小)", type: "normalKamui", amount: "S"},
@@ -1074,7 +1075,8 @@ var skilltypes = {
     "normalAtkFistPugilism": {name: "古代の闘術", type: "normalAtkCount", amount: "fist"},
     "supplementalEmnity": {name: "朱の誓約", type: "supplementalEmnity", amount: {min:10000, coeff:50000}},
     "supplementalCritical": {name: "碧の誓約", type: "supplementalCritical", amount: 50000},
-    "supplementalOugi": {name: "金の誓約", type: "supplementalOugi", amount: 400000}
+    "supplementalOugi": {name: "金の誓約", type: "supplementalOugi", amount: 400000},
+    "supplementalMulti": {name: "白の誓約", type: "supplementalMulti", amount: [30000, 60000, 100000]},
 };
 
 // additional selection when template is selected
@@ -1989,6 +1991,7 @@ var skillAmounts = {
         "L": [1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0, 7.3, 7.6, 7.9, 8.2, 8.5],
         // used by Mirror-Blade Shard(刃鏡片)
         "LL": [1.6, 2.2, 2.8, 3.4, 4.0, 4.6, 5.2, 5.8, 6.4, 7.0, 7.4, 7.8, 8.2, 8.6, 9.0, 9.3, 9.6, 9.9, 10.2, 10.5],
+        "LLL": [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 11.6, 12.4, 12.9, 13.5, 14.0, 14.0, 14.0, 14.0, 14.0, 14.0],
     },
     "critical": {
         "S": [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0],

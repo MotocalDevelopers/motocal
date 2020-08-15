@@ -135,6 +135,10 @@ skillnamelist["normalNiteL"] = {
     u"奈落の二手": "dark"
 }
 
+skillnamelist["normalSanteLL"] = {
+    u"威光の三手": "light",
+}
+
 skillnamelist["normalSanteL"] = {
     u"紅蓮の三手": "fire",
     u"霧氷の三手": "water",
@@ -1194,6 +1198,10 @@ skillnamelist["succession_of_knighthood"] = {u"騎士の血脈": "none"}
 
 skillnamelist["supplementalCritical"] = {
     u'碧の誓約': "water"
+}
+
+skillnamelist["supplementalMulti"] = {
+    u'白の誓約': "light"
 }
 
 armtypelist = OrderedDict()

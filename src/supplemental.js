@@ -62,7 +62,8 @@ module.exports.calcOthersDamage = calcSupplementalDamage.bind(null, [
     "djeeta_buff_based"
 ]);
 module.exports.calcThirdHitDamage = calcSupplementalDamage.bind(null, [
-    "third_hit"
+    "third_hit",
+    "multi_hit"
 ]);
 
 module.exports.collectSkillInfo = collectSkillInfo;

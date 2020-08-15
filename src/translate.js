@@ -1513,6 +1513,11 @@ var multiLangData = {
         "ja": " (3回目の攻撃に)",
         "zh": " (Applies to third hit)",
     },
+    "supplemental_multi_hit": {
+        "en": " (Applies to multi hit)",
+        "ja": " (MA回目の攻撃に)",
+        "zh": " (Applies to multi hit)",
+    },
     "supplemental_on_critical": {
         "en": " (Applies to critical hit, {value}%)",
         "ja": " (クリティカル攻撃に、 {value}%)",
@@ -2996,6 +3001,11 @@ var multiLangData = {
         "ja": "通常三手(大)",
         "zh": "通常三手(大)",
     },
+    "通常三手(特大)": {
+        "en": "Normal Trium (LL)",
+        "ja": "通常三手(特大)",
+        "zh": "通常三手(特大)",
+    },
     "通常克己(小)": {
         "en": "Normal Restraint (S)",
         "ja": "通常克己(小)",
@@ -3465,6 +3475,11 @@ var multiLangData = {
         "en": "Azure Covenant",
         "ja": "碧の誓約",
         "zh": "碧の誓約",
+    },
+    "白の誓約": {
+        "en": "White Covenant",
+        "ja": "白の誓約",
+        "zh": "白の誓約",
     },
     "マグナ技巧(小)": {
         "en": "Magna Verity (S)",

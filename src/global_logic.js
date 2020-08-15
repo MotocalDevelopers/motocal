@@ -981,7 +981,21 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                     type: "on_ougi",
                 }
             }
-        }  
+        }
+
+        if (totals[key]["supplementalDamageBuffOnMulti"].length > 0) {
+            for (let i = 0; i < totals[key]["supplementalDamageBuffOnMulti"].length ; i++) {
+                let current = totals[key]["supplementalDamageBuffOnMulti"][i];
+                if (totals[key]["supplementalDamageBuffOnMulti"].slice(i + 1).filter(obj => obj.source == current.source && current.limit[0] <= obj.limit[0]).length > 0) {
+                    continue;
+                }
+                let value = Math.ceil(daRate * current.limit[0] * (1.0 - enemyResistance)) + Math.ceil(taRate * current.limit[1] * (1.0 - enemyResistance));
+                supplementalDamageArray[current.source] = {
+                    damage: value,
+                    type: "multi_hit",
+                };
+            }
+        }
 
         if (totals[key]['covenant'] === "impervious") {
             let value = Math.ceil(30000 * (1.0 - enemyResistance));
@@ -2361,6 +2375,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]['supplementalDamageBuffOnCritical'].push({source: skilltypes[skillname].name, limit: amount});
                         } else if (stype == 'supplementalOugi') {
                             totals[key]['supplementalDamageBuffOnOugi'].push({source: skilltypes[skillname].name, limit: amount})
+                        } else if (stype == 'supplementalMulti') {
+                            totals[key]['supplementalDamageBuffOnMulti'].push({source: skilltypes[skillname].name, limit: amount})
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -2670,6 +2686,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuffOnCritical: [],
                 supplementalDamageBuffOnOugi: [],
                 supplementalDamageBuffOnEmnity: [],
+                supplementalDamageBuffOnMulti: []
             }
     };
 
@@ -2862,7 +2879,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 keenBuff: chara[i].keenBuffEnabled || prof.keenBuffEnabled,
                 supplementalDamageBuffOnCritical: [],
                 supplementalDamageBuffOnOugi: [],
-                supplementalDamageBuffOnEmnity: []
+                supplementalDamageBuffOnEmnity: [],
+                supplementalDamageBuffOnMulti: []
             };
         }
     }
