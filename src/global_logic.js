@@ -887,9 +887,14 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 buff["supplementalDamageBuff"]
             ) * (1.0 - enemyResistance)
         );
-
+        debugger
         if (totals[key]["supplementalDamageBuffOnCritical"] > 0) {
             supplementalDamageBuff += Math.ceil(totals[key]["supplementalDamageBuffOnCritical"] * critRate);
+        }
+
+        
+        if (totals[key]["skillSupplementalDamageBuffOnCritical"] > 0 || buff["skillSupplementalDamageBuffOnCritical"] > 0) {
+            supplementalDamageBuff += Math.ceil(Math.max(totals[key]["skillSupplementalDamageBuffOnCritical"], buff["skillSupplementalDamageBuffOnCritical"]) * critRate);
         }
 
         if (supplementalDamageBuff > 0) {
@@ -1604,6 +1609,7 @@ module.exports.getTotalBuff = function (prof) {
         //enemyBuffCount: 0,
         enemyDebuffCount: 0,
         retsujitsuNoRakuen: false,
+        skillSupplementalDamageBuffOnCritical: 0.0
     };
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -1640,9 +1646,8 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["zenithDamageLimit"] += zenithDamageLimit[prof.zenithDamageLimitBonus] != undefined ? zenithDamageLimit[prof.zenithDamageLimitBonus] : 0;
     totalBuff["criticalBuff"] = prof.criticalBuff != undefined ? prof.criticalBuff : [];
     totalBuff["supplementalDamageBuff"] += parseInt(prof.supplementalDamageBuff);
-
+    if (prof.keenBuffEnabled) totalBuff["skillSupplementalDamageBuffOnCritical"] = 50000;
     totalBuff["retsujitsuNoRakuen"] = prof.retsujitsuNoRakuen;
-
     return totalBuff;
 };
 
@@ -2299,7 +2304,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'supplementalEmnity') {
                             totals[key]['supplementalDamageBuff'] += 50000 * ((1.0 - totals[key]["remainHP"]) / 1.0) + 10000
                         } else if (stype == 'supplementalCritical') {
-                            totals[key]['supplementalDamageBuffOnCritical'] += 50000
+                            totals[key]['supplementalDamageBuffOnCritical'] = 50000
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -2462,7 +2467,6 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
             djeetaBuffList[djeetabuffkey] = 0.01 * parseFloat(prof[djeetabuffkey])
         }
     }
-
     var totals = {
         "Djeeta":
             {
@@ -2606,6 +2610,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 //debuffCount: 0,
                 accuracyDebuff: 0,
                 normalAtkCountBonus: 0,
+                skillSupplementalDamageBuffOnCritical: prof['personalKeenBuffEnabled'] ? 50000 : 0,
                 supplementalDamageBuffOnCritical: 0
             }
     };
@@ -2796,6 +2801,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 //debuffCount: 0,
                 accuracyDebuff: 0,
                 normalAtkCountBonus: 0,
+                skillSupplementalDamageBuffOnCritical: chara[i].keenBuffEnabled ? 50000 : 0,
                 supplementalDamageBuffOnCritical: 0
             };
         }

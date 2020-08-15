@@ -1413,6 +1413,16 @@ var multiLangData = {
         "ja": "チェインバースト",
         "zh": "Chain Burst",
     },
+    "鋭いバフ": {
+        "en": "Keen Buff",
+        "ja": "鋭いバフ",
+        "zh": "Keen Buff"
+    },
+    "鋭いバフ説明": {
+        "en": "Keen Buff (V. Grimnir etc.)",
+        "ja": "鋭いバフ (グリームニル)",
+        "zh": "Keen Buff (V. Grimnir etc.)"
+    },
     "予想ターン毎ダメージ": {
         "en": "Exp. Damage per Turn", //a.k.a: expectedCycleDamagePerTurn
         "ja": "予想ターンダメージ",
