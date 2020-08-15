@@ -60,6 +60,10 @@ skillnamelist["normalHPL"] = {
     u"奈落の守護": "dark"
 }
 
+skillnamelist["normalCriticalLLL"] = {
+    u"水禍の技巧": "water"
+}
+
 skillnamelist["normalCriticalLL"] = {
     u"紅蓮の技巧II": "fire",
     u"霧氷の技巧II": "water",
@@ -1176,6 +1180,9 @@ skillnamelist["one_night_party"] = {u"ワンナイ・パーリー": "none"}
 skillnamelist["downfall_of_ignorance"] = {u"無明衰滅": "none"}
 skillnamelist["succession_of_knighthood"] = {u"騎士の血脈": "none"}
 
+skillnamelist["supplementalCritical"] = {
+    u'碧の誓約': "water"
+}
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"

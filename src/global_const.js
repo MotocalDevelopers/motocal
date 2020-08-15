@@ -862,6 +862,7 @@ var skilltypes = {
     "normalCriticalM": {name: "通常技巧(中)", type: "normalCritical", amount: "M"},
     "normalCriticalL": {name: "通常技巧(大)", type: "normalCritical", amount: "L"},
     "normalCriticalLL": {name: "通常技巧II", type: "normalCritical", amount: "LL"},
+    "normalCriticalLLL": {name: "水禍の技巧", type: "normalCritical", amount: "LLL"},
     "normalSetsunaS": {name: "通常刹那(小)", type: "normalSetsuna", amount: "S"},
     "normalSetsuna": {name: "通常刹那(中)", type: "normalSetsuna", amount: "M"},
     "normalSetsunaL": {name: "通常刹那(大)", type: "normalSetsuna", amount: "L"},
@@ -1069,7 +1070,8 @@ var skilltypes = {
     "slaysnakes_myth": {name: "戮蛇の神刀", type: "slaysnakes_myth", amount: "I"},
     "slaysnakes_mythII": {name: "戮蛇の神刀II", type: "slaysnakes_myth", amount: "II"},
     "normalAtkFistPugilism": {name: "古代の闘術", type: "normalAtkCount", amount: "fist"},
-    "supplementalEmnity": {name: "朱の誓約", type: "supplementalEmnity", amount: "L"}
+    "supplementalEmnity": {name: "朱の誓約", type: "supplementalEmnity", amount: "L"},
+    "supplementalCritical": {name: "碧の誓約", type: "supplementalCritical", amount: "L"}
 };
 
 // additional selection when template is selected
@@ -1990,6 +1992,7 @@ var skillAmounts = {
         "L": [4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 10.2, 10.4, 10.6, 10.8, 11.0],
         // FIXME: Applied fitting pattern, needs update when numbers are available
         "LL": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
+        "LLL": [8.0, 9.4, 10.4, 11.6, 12.8, 14.0, 15.0, 16.0, 16.8, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],
         "ratio": 0.5,
     },
     "normalRanbu": {

@@ -888,6 +888,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             ) * (1.0 - enemyResistance)
         );
 
+        if (totals[key]["supplementalDamageBuffOnCritical"] > 0) {
+            supplementalDamageBuff += Math.ceil(totals[key]["supplementalDamageBuffOnCritical"] * critRate);
+        }
+
         if (supplementalDamageBuff > 0) {
             supplementalDamageArray["バフ"] = {
                 damage: supplementalDamageBuff,
@@ -2293,8 +2297,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                             }
                         } else if (stype == 'supplementalEmnity') {
-                            debugger;
                             totals[key]['supplementalDamageBuff'] += 50000 * ((1.0 - totals[key]["remainHP"]) / 1.0) + 10000
+                        } else if (stype == 'supplementalCritical') {
+                            totals[key]['supplementalDamageBuffOnCritical'] += 50000
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -2600,7 +2605,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 echoThirdHit: 0,
                 //debuffCount: 0,
                 accuracyDebuff: 0,
-                normalAtkCountBonus: 0
+                normalAtkCountBonus: 0,
+                supplementalDamageBuffOnCritical: 0
             }
     };
 
@@ -2789,7 +2795,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 //buffCount: 0,
                 //debuffCount: 0,
                 accuracyDebuff: 0,
-                normalAtkCountBonus: 0
+                normalAtkCountBonus: 0,
+                supplementalDamageBuffOnCritical: 0
             };
         }
     }

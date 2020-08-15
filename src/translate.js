@@ -3426,6 +3426,16 @@ var multiLangData = {
         "ja": "通常技巧II",
         "zh": "通常技巧II",
     },
+    "水禍の技巧": {
+        "en": "Massive Verity",
+        "ja": "水禍の技巧",
+        "zh": "水禍の技巧",
+    },
+    "碧の誓約": {
+        "en": "Azure Covenant",
+        "ja": "碧の誓約",
+        "zh": "碧の誓約",
+    },
     "マグナ技巧(小)": {
         "en": "Magna Verity (S)",
         "ja": "マグナ技巧(小)",
