@@ -830,6 +830,7 @@ var skilltypes = {
     "normalL": {name: "通常攻刃(大)", type: "normal", amount: "L"},
     "normalLL": {name: "通常攻刃II", type: "normal", amount: "LL"},
     "normalLLM": {name: "通常攻刃III", type: "normal", amount: "LLM"},
+    "normalLLLL": {name: "劫風の攻刃", type: "normal", amount: "LLLL"},
     "normalBoukunL": {name: "通常暴君", type: "normalBoukun", amount: "L"},
     "normalBoukunLLL": {name: "通常暴君II", type: "normalBoukun", amount: "LLL"},
     "normalSoka": {name: "通常楚歌", type: "normalSoka", amount: "M"},
@@ -1918,6 +1919,7 @@ var skillAmounts = {
         "LLM": [8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 22.5, 23.0, 23.5, 24.0, 24.5],
         //Tyranny II(暴君II)
         "LLL": [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 23.5, 24.0, 24.5, 25.0, 25.5],
+        "LLLL": [16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.75, 28.5, 30.25, 32.0, 33.0, 33.0, 33.0, 33.0, 33.0, 33.0]
     },
     "magna": {
         "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.1, 12.2, 12.3, 12.4, 12.5],

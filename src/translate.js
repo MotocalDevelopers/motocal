@@ -1723,6 +1723,11 @@ var multiLangData = {
         "ja": "マグナ渾身",
         "zh": "方针浑身",
     },
+    "劫風の攻刃": {
+        "en": "Normal Might (Massive)",
+        "ja": "劫風の攻刃",
+        "zh": "劫風の攻刃",
+    },
     "通常進境(大)(最大時)": {
         "en": "Normal Element ATK L",
         "ja": "通常進境(大)(最大時)",

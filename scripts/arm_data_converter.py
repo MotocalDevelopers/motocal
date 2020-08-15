@@ -8,6 +8,10 @@ from collections import OrderedDict
 skillnamelist = OrderedDict()
 
 # normal L and LL
+skillnamelist["normalLLLL"] = {
+    u"劫風の攻刃": "wind",
+}
+
 skillnamelist["normalLLM"] = {
     u"紅蓮の攻刃III": "fire",
     u"霧氷の攻刃III": "water",
