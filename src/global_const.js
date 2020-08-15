@@ -841,6 +841,7 @@ var skilltypes = {
     "normalKonshinS": {name: "通常渾身(小)", type: "normalKonshin", amount: "S"},
     "normalKonshinM": {name: "通常渾身(中)", type: "normalKonshin", amount: "M"},
     "normalKonshinL": {name: "通常渾身(大)", type: "normalKonshin", amount: "L"},
+    "normalKonshinLL": {name: "通常渾身(特大)", type: "normalKonshin", amount: "LL"},
     "normalOtherKonshinL": {name: "通常渾身(大)(神石加護無効)", type: "normalOtherKonshin", amount: "L"},
     "normalNiteS": {name: "通常二手(小)", type: "normalNite", amount: "S"},
     "normalNiteM": {name: "通常二手(中)", type: "normalNite", amount: "M"},
@@ -1077,6 +1078,7 @@ var skilltypes = {
     "supplementalCritical": {name: "碧の誓約", type: "supplementalCritical", amount: 50000},
     "supplementalOugi": {name: "金の誓約", type: "supplementalOugi", amount: 400000},
     "supplementalMulti": {name: "白の誓約", type: "supplementalMulti", amount: [30000, 60000, 100000]},
+    "supplementalStaminaOugi": {name: "黒の誓約", type: "supplementalStaminaOugi", amount: {min:100000, coeff:500000}},
 };
 
 // additional selection when template is selected

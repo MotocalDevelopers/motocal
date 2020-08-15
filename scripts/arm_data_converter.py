@@ -158,6 +158,10 @@ skillnamelist["normalSanteM"] = {
 }
 
 # Although stamina can be handled normally at present, if ~ star skill is to be treated as a separate frame, it is necessary to make it different skill
+skillnamelist["normalKonshinLL"] = {
+    u"呪蝕の渾身": "dark"
+}
+
 skillnamelist["normalKonshinL"] = {
     u"紅蓮の渾身": "fire",
     u"霧氷の渾身": "water",
@@ -1202,6 +1206,10 @@ skillnamelist["supplementalCritical"] = {
 
 skillnamelist["supplementalMulti"] = {
     u'白の誓約': "light"
+}
+
+skillnamelist["supplementalStaminaOugi"] = {
+    u'黒の誓約': "dark"
 }
 
 armtypelist = OrderedDict()

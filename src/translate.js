@@ -2956,6 +2956,11 @@ var multiLangData = {
         "ja": "朱の誓約",
         "zh": "朱の誓約"
     },
+    "黒の誓約": {
+        "en": "Black Covenant",
+        "ja": "黒の誓約",
+        "zh": "黒の誓約"
+    },
     "通常渾身(小)": {
         "en": "Normal Stamina (S)",
         "ja": "通常渾身(小)",
@@ -2970,6 +2975,11 @@ var multiLangData = {
         "en": "Normal Stamina (L)",
         "ja": "通常渾身(大)",
         "zh": "通常渾身(大)",
+    },
+    "通常渾身(特大)": {
+        "en": "Normal Stamina (LL)",
+        "ja": "通常渾身(特大)",
+        "zh": "通常渾身(特大)",
     },
     "通常二手(小)": {
         "en": "Normal Dual Edge (S)",

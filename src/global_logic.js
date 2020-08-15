@@ -1368,13 +1368,21 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
                 } else {
                     return Math.pow(100.0 * remainHP / (65.0 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
                 }
-            } else {
+            } else if (haisuiAmount === "L") {
                 // Normal Stamina (L)
                 // ref: http://binarysblog.blog.fc2.com/blog-entry-1.html
                 if (haisuiSLv < 15) {
                     return Math.pow(100.0 * remainHP / (56.4 - haisuiSLv), 2.9) + 2.1;
                 } else {
                     return Math.pow(100.0 * remainHP / (56.4 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
+                }
+            } else {
+                // Normal Stamina (LL)
+                if (haisuiSLv < 15) {
+                    // No Data
+                    return 0
+                } else {
+                    return (-0.339 + 1.85 * remainHP + -2.46 * (remainHP**2) + 1.95 * (remainHP**3)) * 22.4
                 }
             }
         }
@@ -2377,6 +2385,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]['supplementalDamageBuffOnOugi'].push({source: skilltypes[skillname].name, limit: amount})
                         } else if (stype == 'supplementalMulti') {
                             totals[key]['supplementalDamageBuffOnMulti'].push({source: skilltypes[skillname].name, limit: amount})
+                        } else if (stype == 'supplementalStaminaOugi') {
+                            let newAmount = Math.ceil(amount.coeff * (totals[key]["remainHP"]) + amount.min)
+                            totals[key]['supplementalDamageBuffOnOugi'].push({source: skilltypes[skillname].name, limit: newAmount})
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
