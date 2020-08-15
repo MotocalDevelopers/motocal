@@ -100,6 +100,10 @@ skillnamelist["supplementalEmnity"] = {
     u"朱の誓約": "fire"
 }
 
+skillnamelist["supplementalOugi"] = {
+    u"金の誓約": "earth"
+}
+
 skillnamelist["normalBoukunLLL"] = {
     u"紅蓮の暴君II": "fire",
     u"霧氷の暴君II": "water",
@@ -499,6 +503,10 @@ skillnamelist["normalHissatsuL"] = {
     u"乱気の必殺": "wind",
     u"天光の必殺": "light",
     u"奈落の必殺": "dark"
+}
+
+skillnamelist["normalHiouLL"] = {
+    u"巌迫の秘奥": "earth"
 }
 
 skillnamelist["normalEiketsuL"] = {

@@ -887,15 +887,6 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 buff["supplementalDamageBuff"]
             ) * (1.0 - enemyResistance)
         );
-        debugger
-        if (totals[key]["supplementalDamageBuffOnCritical"] > 0) {
-            supplementalDamageBuff += Math.ceil(totals[key]["supplementalDamageBuffOnCritical"] * critRate);
-        }
-
-        
-        if (totals[key]["skillSupplementalDamageBuffOnCritical"] > 0 || buff["skillSupplementalDamageBuffOnCritical"] > 0) {
-            supplementalDamageBuff += Math.ceil(Math.max(totals[key]["skillSupplementalDamageBuffOnCritical"], buff["skillSupplementalDamageBuffOnCritical"]) * critRate);
-        }
 
         if (supplementalDamageBuff > 0) {
             supplementalDamageArray["バフ"] = {
@@ -927,6 +918,71 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 };
             }
         }
+
+        if(totals[key]["keenBuff"]) {
+            let value = Math.ceil(critRate * 50000 * (1.0 - enemyResistance));
+            supplementalDamageArray["鋭いバフ"] = {
+                damage: value,
+                damageWithoutCritical: 0,
+                ougiDamage: value * (1.0 + damageUP),
+                chainBurst: 0,
+                type: "on_critical",
+                extraValue: (100 * critRate).toFixed(2),
+            }
+        }
+
+        if (totals[key]["supplementalDamageBuffOnCritical"].length > 0) {
+            for (let i = 0; i < totals[key]["supplementalDamageBuffOnCritical"].length ; i++) {
+                let current = totals[key]["supplementalDamageBuffOnCritical"][i];
+                if (totals[key]["supplementalDamageBuffOnCritical"].slice(i + 1).filter(obj => obj.source == current.source && current.limit <= obj.limit).length > 0) {
+                    continue;
+                }
+                let value = Math.ceil(critRate * current.limit * (1.0 - enemyResistance));
+                supplementalDamageArray[current.source] = {
+                    damage: value,
+                    damageWithoutCritical: 0,
+                    ougiDamage: value * (1.0 + damageUP),
+                    chainBurst: 0,
+                    type: "on_critical",
+                    extraValue: (100 * critRate).toFixed(2),
+                }
+            }
+        }
+        
+        if(totals[key]["supplementalDamageBuffOnEmnity"].length > 0) {
+            for (let i = 0; i < totals[key]["supplementalDamageBuffOnEmnity"].length ; i++) {
+                let current = totals[key]["supplementalDamageBuffOnEmnity"][i];
+                if (totals[key]["supplementalDamageBuffOnEmnity"].slice(i + 1).filter(obj => obj.source == current.source && current.coeff <= obj.coeff).length > 0) {
+                    continue;
+                }
+                let value = Math.ceil((current.coeff * (1 - totals[key]["remainHP"]) + current.min) * (1.0 - enemyResistance))
+                supplementalDamageArray[current.source] = {
+                    damage: value,
+                    damageWithoutCritical: value,
+                    ougiDamage: value * (1.0 + damageUP),
+                    chainBurst: value,
+                    type: "other",
+                }
+            }
+        }
+
+        if (totals[key]["supplementalDamageBuffOnOugi"].length > 0) {
+            for (let i = 0; i < totals[key]["supplementalDamageBuffOnOugi"].length ; i++) {
+                let current = totals[key]["supplementalDamageBuffOnOugi"][i];
+                if (totals[key]["supplementalDamageBuffOnOugi"].slice(i + 1).filter(obj => obj.source == current.source && current.limit <= obj.limit).length > 0) {
+                    continue;
+                }
+                let value = Math.ceil(current.limit * (1.0 - enemyResistance));
+                supplementalDamageArray[current.source] = {
+                    damage: 0,
+                    damageWithoutCritical: 0,
+                    ougiDamage: value * (1.0 + damageUP),
+                    chainBurst: 0,
+                    type: "on_ougi",
+                }
+            }
+        }  
+
         if (totals[key]['covenant'] === "impervious") {
             let value = Math.ceil(30000 * (1.0 - enemyResistance));
             supplementalDamageArray["不壊の誓約"] = {
@@ -1609,7 +1665,6 @@ module.exports.getTotalBuff = function (prof) {
         //enemyBuffCount: 0,
         enemyDebuffCount: 0,
         retsujitsuNoRakuen: false,
-        skillSupplementalDamageBuffOnCritical: 0.0
     };
 
     if (!isNaN(prof.masterBonus)) totalBuff["master"] += 0.01 * parseInt(prof.masterBonus);
@@ -1646,7 +1701,6 @@ module.exports.getTotalBuff = function (prof) {
     totalBuff["zenithDamageLimit"] += zenithDamageLimit[prof.zenithDamageLimitBonus] != undefined ? zenithDamageLimit[prof.zenithDamageLimitBonus] : 0;
     totalBuff["criticalBuff"] = prof.criticalBuff != undefined ? prof.criticalBuff : [];
     totalBuff["supplementalDamageBuff"] += parseInt(prof.supplementalDamageBuff);
-    if (prof.keenBuffEnabled) totalBuff["skillSupplementalDamageBuffOnCritical"] = 50000;
     totalBuff["retsujitsuNoRakuen"] = prof.retsujitsuNoRakuen;
     return totalBuff;
 };
@@ -2302,9 +2356,11 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                 }
                             }
                         } else if (stype == 'supplementalEmnity') {
-                            totals[key]['supplementalDamageBuff'] += 50000 * ((1.0 - totals[key]["remainHP"]) / 1.0) + 10000
+                            totals[key]['supplementalDamageBuffOnEmnity'].push({source: skilltypes[skillname].name, min: amount.min, coeff:amount.coeff});
                         } else if (stype == 'supplementalCritical') {
-                            totals[key]['supplementalDamageBuffOnCritical'] = 50000
+                            totals[key]['supplementalDamageBuffOnCritical'].push({source: skilltypes[skillname].name, limit: amount});
+                        } else if (stype == 'supplementalOugi') {
+                            totals[key]['supplementalDamageBuffOnOugi'].push({source: skilltypes[skillname].name, limit: amount})
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -2610,8 +2666,10 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 //debuffCount: 0,
                 accuracyDebuff: 0,
                 normalAtkCountBonus: 0,
-                skillSupplementalDamageBuffOnCritical: prof['personalKeenBuffEnabled'] ? 50000 : 0,
-                supplementalDamageBuffOnCritical: 0
+                keenBuff: prof.personalKeenBuffEnabled || prof.keenBuffEnabled,
+                supplementalDamageBuffOnCritical: [],
+                supplementalDamageBuffOnOugi: [],
+                supplementalDamageBuffOnEmnity: [],
             }
     };
 
@@ -2801,8 +2859,10 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 //debuffCount: 0,
                 accuracyDebuff: 0,
                 normalAtkCountBonus: 0,
-                skillSupplementalDamageBuffOnCritical: chara[i].keenBuffEnabled ? 50000 : 0,
-                supplementalDamageBuffOnCritical: 0
+                keenBuff: chara[i].keenBuffEnabled || prof.keenBuffEnabled,
+                supplementalDamageBuffOnCritical: [],
+                supplementalDamageBuffOnOugi: [],
+                supplementalDamageBuffOnEmnity: []
             };
         }
     }

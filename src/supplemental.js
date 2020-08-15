@@ -26,7 +26,7 @@ function calcSupplementalDamage(
                 }
             /* FALLTHROUGH */
             default:
-                // case "boss_debuff_based", "djeeta_buff_based", "on_critical"
+                // case "boss_debuff_based", "djeeta_buff_based", "on_critical", "on_ougi"
                 vals[0] += supplemental.damage;
                 vals[1] += supplemental.damageWithoutCritical;
                 vals[2] += supplemental.ougiDamage;
@@ -40,14 +40,14 @@ function calcSupplementalDamage(
 function collectSkillInfo(damageArray, {remainHP = 1.0}={}) {
     const isAvailable = ([key, val]) =>
         !((val.type == "hp_based") && (remainHP < val.threshold)) &&
-        !(val.damage == 0);
+        !(val.type != "on_ougi" && val.damage == 0);
     const xs = Object.entries(damageArray)
         .filter(isAvailable)
         .sort();
     return {
         headers: xs.map(([key, val]) => [key, val.type, val.extraValue]),
-        values: xs.map(([key, val]) => [key, val.damage]),
-        total: xs.reduce((total, [key,val]) => total + val.damage, 0),
+        values: xs.map(([key, val]) => [key, val.type != "on_ougi" ? val.damage : val.ougiDamage]),
+        total: xs.reduce((total, [key,val]) => total + (val.type != "on_ougi" ? val.damage : val.ougiDamage), 0),
     };
 }
 
@@ -57,6 +57,7 @@ module.exports.calcOthersDamage = calcSupplementalDamage.bind(null, [
     "other",
     "hp_based",
     "on_critical",
+    "on_ougi",
     "boss_debuff_based",
     "djeeta_buff_based"
 ]);

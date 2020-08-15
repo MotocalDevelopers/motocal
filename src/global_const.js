@@ -870,6 +870,7 @@ var skilltypes = {
     "normalHiouS": {name: "通常秘奥(小)", type: "normalHiou", amount: "S"},
     "normalHiouM": {name: "通常秘奥(中)", type: "normalHiou", amount: "M"},
     "normalHiouL": {name: "通常秘奥(大)", type: "normalHiou", amount: "L"},
+    "normalHiouLL": {name: "巌迫の秘奥", type: "normalHiou", amount: "LL"},
     "normalHissatsuM": {name: "通常必殺(中)", type: "normalHissatsu", amount: "M"},
     "normalHissatsuL": {name: "通常必殺(大)", type: "normalHissatsu", amount: "L"},
     "normalEiketsuL": {name: "通常英傑(大)", type: "normalEiketsu", amount: "L"},
@@ -1070,8 +1071,9 @@ var skilltypes = {
     "slaysnakes_myth": {name: "戮蛇の神刀", type: "slaysnakes_myth", amount: "I"},
     "slaysnakes_mythII": {name: "戮蛇の神刀II", type: "slaysnakes_myth", amount: "II"},
     "normalAtkFistPugilism": {name: "古代の闘術", type: "normalAtkCount", amount: "fist"},
-    "supplementalEmnity": {name: "朱の誓約", type: "supplementalEmnity", amount: "L"},
-    "supplementalCritical": {name: "碧の誓約", type: "supplementalCritical", amount: "L"}
+    "supplementalEmnity": {name: "朱の誓約", type: "supplementalEmnity", amount: {min:10000, coeff:50000}},
+    "supplementalCritical": {name: "碧の誓約", type: "supplementalCritical", amount: 50000},
+    "supplementalOugi": {name: "金の誓約", type: "supplementalOugi", amount: 400000}
 };
 
 // additional selection when template is selected
@@ -1992,7 +1994,7 @@ var skillAmounts = {
         "L": [4.4, 4.8, 5.2, 5.6, 6.0, 6.4, 6.8, 7.2, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 10.2, 10.4, 10.6, 10.8, 11.0],
         // FIXME: Applied fitting pattern, needs update when numbers are available
         "LL": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
-        "LLL": [8.0, 9.4, 10.4, 11.6, 12.8, 14.0, 15.0, 16.0, 16.8, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0],
+        "LLL": [8.0, 9.4, 10.4, 11.6, 12.8, 14.0, 15.0, 16.0, 16.8, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0],
         "ratio": 0.5,
     },
     "normalRanbu": {
@@ -2028,7 +2030,8 @@ var skillAmounts = {
     "normalHiou": {
         "S": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 7.5, 7.5, 7.5, 7.5, 7.5],
         "M": [2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 9.5, 9.5, 9.5, 9.5, 9.5],
-        "L": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5]
+        "L": [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5],
+        "LL": [11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0],
     },
     // normal Sentence limit up (通常必殺(奥義上限部分))
     "normalOugiDamageLimitHissatsu": {

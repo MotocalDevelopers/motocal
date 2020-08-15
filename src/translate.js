@@ -1423,6 +1423,16 @@ var multiLangData = {
         "ja": "鋭いバフ (グリームニル)",
         "zh": "Keen Buff (V. Grimnir etc.)"
     },
+    "巌迫の秘奥": {
+        "en": "Normal Mystery (LL)",
+        "zh": "巌迫の秘奥",
+        "ja": "巌迫の秘奥"
+    },
+    "金の誓約": {
+        "en": "Gold Covenant",
+        "zh": "金の誓約",
+        "ja": "金の誓約"
+    },
     "予想ターン毎ダメージ": {
         "en": "Exp. Damage per Turn", //a.k.a: expectedCycleDamagePerTurn
         "ja": "予想ターンダメージ",
@@ -1517,6 +1527,11 @@ var multiLangData = {
         "en": " (Djeeta Buff: {value})",
         "ja": " (ジータのバフ: {value})",
         "zh": " (Djeeta Buff: {value})",
+    },
+    "supplemental_on_ougi": {
+        "en": " (Applies on Ougi)",
+        "ja": " (扇に適用)",
+        "zh": " (Applies on Ougi)",
     },
     "四人合計値": {
         "en": "x4",
