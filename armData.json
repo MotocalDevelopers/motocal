@@ -8874,6 +8874,25 @@
         "imageURL": "./imgs/1040500000.png",
         "en": "[4★] Gastraphetes"
     },
+    "サマージェネシス": {
+        "ja": "サマージェネシス",
+        "element": "dark",
+        "type": "fist",
+        "skill1": "normalKonshinM",
+        "skill2": "normalSetsunaS",
+        "element2": "dark",
+        "skill3": "non",
+        "element3": "dark",
+        "minhp": 46,
+        "minattack": 366,
+        "hp": 281,
+        "attack": 2184,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040613700.png",
+        "en": "Summer Genesis"
+    },
     "ウィルナス・フィンガー": {
         "ja": "ウィルナス・フィンガー",
         "element": "fire",
