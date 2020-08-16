@@ -628,7 +628,7 @@ patchingOugiRatio["ソフィア"] = {"ougiRatio": 4.7}
 patchingOugiRatio["シャルロッテ(ハロウィンver)"] = {"ougiRatio": 4.7}
 patchingOugiRatio["ロゼッタ(クリスマスver)"] = {"ougiRatio": 4.7}
 patchingOugiRatio["サラ"] = {"ougiRatio": 5.0}
-patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 6.0}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 patchingOugiRatio["ミュオン(クリスマスver)"] = {"ougiRatio": 12.5}
@@ -761,7 +761,7 @@ def get_value(value_str):
 
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
-    key_pattern = re.compile("(\d+_\d+\.png)")
+    key_pattern = re.compile("(\w+\.png)")
     br_pattern = re.compile("(\w+)(?:&br;|\/)(\w+)")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
     support_pattern3 = re.compile("([\W\w]+)&br;([\W\w]+)&br;([\W\w]+)")
