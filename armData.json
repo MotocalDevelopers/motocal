@@ -21275,6 +21275,25 @@
         "imageURL": "./imgs/1040214800.png",
         "en": "Flying A"
     },
+    "暇無し": {
+        "ja": "暇無し",
+        "element": "water",
+        "type": "spear",
+        "skill1": "normalHaisuiL",
+        "skill2": "non",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 42,
+        "minattack": 388,
+        "hp": 257,
+        "attack": 2301,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040214900.png",
+        "en": "Much Ado"
+    },
     "丙子椒林剣": {
         "ja": "丙子椒林剣",
         "element": "earth",
