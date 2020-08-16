@@ -357,6 +357,9 @@ supportAbilist["ougi_gage_down_own_50_damageUP_25"] = {
 supportAbilist["da_up_ta_up_damageUPOnlyNormal_fist_10_5_3"] = {
     u"己の意志"
 }
+supportAbilist["element_buff_boost_other_own_30"] = {
+    u"真龍の友愛"
+}
 # Patching DA TA
 patching = OrderedDict()
 

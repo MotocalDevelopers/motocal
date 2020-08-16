@@ -12363,6 +12363,28 @@
         "imageURL": "./charaimgs/3030310000_01.png",
         "en": "Ferry (Summer)"
     },
+    "ノイシュ(風属性ver)": {
+        "name": "ノイシュ(風属性ver)",
+        "ja": "ノイシュ(風属性ver)",
+        "element": "wind",
+        "type": "pecu",
+        "race": "human",
+        "sex": "male",
+        "fav1": "bow",
+        "fav2": "dagger",
+        "support": "none",
+        "support2": "element_buff_boost_other_own_30",
+        "support3": "none",
+        "minhp": "220",
+        "hp": "1260",
+        "minattack": "1750",
+        "attack": "8900",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040281000_01.png",
+        "en": "Naoise (Wind)"
+    },
     "ペンギー(SSR)": {
         "name": "ペンギー(SSR)",
         "ja": "ペンギー(SSR)",

@@ -576,6 +576,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         otherCoeff *= 1.0 + buff["other2"];
         otherCoeff *= 1.0 + totals[key]["otherBuff"];
         otherCoeff *= 1.0 + totals[key]["otherBuff2"];
+        otherCoeff *= 1.0 + totals[key]["otherBuffBoostBuff"];
         // Category of "Shield of Eternal Splendor". (総べ称号枠)
         var otherEternal = 1.0 + totals[key]["caimOther"];
         if (totals[key]["EXLB"]["WED"]) {
@@ -2654,6 +2655,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 elementBuffBoostBuff: 0,
                 otherBuff: djeetaBuffList["personalOtherBuff"],
                 otherBuff2: djeetaBuffList["personalOtherBuff2"],
+                otherBuffBoostBuff: 0,
                 damageUPOnlyNormalBuff: djeetaBuffList["personalDamageUPOnlyNormalBuff"],
                 HPBuff: djeetaBuffList["personalHPBuff"],
                 DABuff: djeetaBuffList["personalDABuff"],
@@ -2848,6 +2850,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 elementBuffBoostBuff: 0,
                 otherBuff: charaBuffList["otherBuff"],
                 otherBuff2: charaBuffList["otherBuff2"],
+                otherBuffBoostBuff: 0,
                 damageUPOnlyNormalBuff: charaBuffList["damageUPOnlyNormalDamageBuff"],
                 HPBuff: charaBuffList["hpBuff"],
                 DABuff: charaBuffList["daBuff"],
@@ -3061,10 +3064,17 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                         }
                     }
                     continue;
-                case "element_buff_boost":
+                case "element_buff_other_boost":
                     for (let [name, chara] of support.range(totals, key)) {
                         if (when.element_buff(chara, buff)) {
                             chara["elementBuffBoostBuff"] = Math.max(support.value, chara["elementBuffBoostBuff"]);
+                        }
+                    }
+                    continue;
+                case "element_buff_boost_other_own":
+                    for (let [name, chara] of support.range(totals, key)) {
+                        if (when.element_buff(chara, buff)) {
+                            chara["otherBuffBoostBuff"] = Math.max(support.value, chara["otherBuffBoostBuff"]);
                         }
                     }
                     continue;

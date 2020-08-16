@@ -2679,6 +2679,11 @@ var multiLangData = {
         "ja": "自分が瀕死状態の場合、攻防UP/連続攻撃確率UP/奥義性能UP",
         "zh": "When below 25% HP: Boost to ATK, DEF, multiattack rate, and C.A. specs.",
     },
+    "風属性攻撃力UPが付与されている時攻撃UP/防御UP": {
+        "en": "30% boost to ATK and 50% boost to DEF when is affected by Wind ATK Up",
+        "ja": "風属性攻撃力UPが付与されている時攻撃UP/防御UP",
+        "zh": "30% boost to ATK and 50% boost to DEF when is affected by Wind ATK Up",
+    },
     "弱体耐性15%UP。(レナ、カルメリーナ)": {
         "en": "15% boost to debuff resistance. (Lennah, Carmelina)",
         "ja": "弱体耐性15%UP。(レナ、カルメリーナ)",
