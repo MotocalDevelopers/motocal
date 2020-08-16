@@ -312,7 +312,8 @@ supportAbilist["debuff_resistance_up_own_80"] = {
 supportAbilist["stamina_all_L"] = {
     u"夏祭りの思い出",
     u"不退転の戦旗",
-    u"絶対だいじょうぶだよ"
+    u"絶対だいじょうぶだよ",
+    u"マップタツパワー"
 }
 supportAbilist["stamina_all_M"] = {
     u"黒の騎士団 総司令"
