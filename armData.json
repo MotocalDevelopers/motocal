@@ -8874,6 +8874,29 @@
         "imageURL": "./imgs/1040500000.png",
         "en": "[4★] Gastraphetes"
     },
+    "修武の籠手・属性変更": {
+        "ja": "修武の籠手・属性変更",
+        "element": "all",
+        "type": "fist",
+        "skill1": "non",
+        "skill2": "non",
+        "element2": "all",
+        "skill3": "non",
+        "element3": "all",
+        "minhp": 40,
+        "minattack": 352,
+        "hp": 345,
+        "attack": 2961,
+        "series": "none",
+        "slvmax": 20,
+        "maxlv": 200,
+        "hplv100": 257,
+        "attacklv100": 2215,
+        "hplv150": 298,
+        "attacklv150": 2510,
+        "imageURL": "./imgs/1040613100_note.png",
+        "en": "Ringed Armguards [Element Changed]"
+    },
     "サマージェネシス": {
         "ja": "サマージェネシス",
         "element": "dark",
@@ -17257,15 +17280,15 @@
         "imageURL": "./imgs/1040417000.png",
         "en": "[4★] Piña Bestiary"
     },
-    "[5凸]金砕棒": {
-        "ja": "[5凸]金砕棒",
-        "element": "none",
+    "金砕棒・属性変更": {
+        "ja": "金砕棒・属性変更",
+        "element": "all",
         "type": "fist",
         "skill1": "non",
         "skill2": "non",
-        "element2": "none",
+        "element2": "all",
         "skill3": "non",
-        "element3": "none",
+        "element3": "all",
         "minhp": 42,
         "minattack": 345,
         "hp": 348,
@@ -17278,7 +17301,7 @@
         "hplv150": 310,
         "attacklv150": 2585,
         "imageURL": "./imgs/1040417200_note.png",
-        "en": "[5★] Kanabo"
+        "en": "Kanabo [Element Changed]"
     },
     "アウギュステ記念晶杖": {
         "ja": "アウギュステ記念晶杖",
