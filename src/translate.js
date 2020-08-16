@@ -2459,9 +2459,9 @@ var multiLangData = {
         "zh": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
     },
     "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))": {
-        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus Fire DMG effect. Additional effects to skills and charge attacks. (Yuisis (Fire))",
-        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
-        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus DMG effect.",
+        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義",
+        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義",
     },
     "クリティカル発動時にダメージ上限UP/トリプルアタック発動時に火属性追撃効果(ゼタ)": {
         "en": "10% boost to damage cap on critical hits/20% Bonus Fire DMG effect to triple attacks (Zeta)",

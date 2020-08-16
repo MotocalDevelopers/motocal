@@ -12341,6 +12341,28 @@
         "imageURL": "./charaimgs/3030310000_01.png",
         "en": "Ferry (Summer)"
     },
+    "コルル(水着ver)": {
+        "name": "コルル(水着ver)",
+        "ja": "コルル(水着ver)",
+        "element": "water",
+        "type": "pecu",
+        "race": "human",
+        "sex": "female",
+        "fav1": "spear",
+        "fav2": "none",
+        "support": "sumizome_sakura",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "250",
+        "hp": "1160",
+        "minattack": "1600",
+        "attack": "10050",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040283000_01.png",
+        "en": "Kolulu (Summer)"
+    },
     "アビー(SSR)": {
         "name": "アビー(SSR)",
         "ja": "アビー(SSR)",

@@ -167,7 +167,8 @@ supportAbilist["knightmare_frame"] = {
     u"ナイトメアフレーム"
 }
 supportAbilist["sumizome_sakura"] = {
-    u"墓前の墨染桜"
+    u"墓前の墨染桜",
+    u"浜辺の鋼鉄少女"
 }
 supportAbilist["arvess_pact"] = {
     u"アルベスの契約者"
@@ -299,6 +300,9 @@ supportAbilist["element_buff_boost_damageUP_normal_own_30"] = {
 # supportAbilist["tousou_no_chishio"] = {
 #     u"闘争の血潮"
 # }
+supportAbilist["kenkyaku_no_koou"] = {
+    u"剣脚の呼応"
+}
 supportAbilist["kenkyaku_no_koou"] = {
     u"剣脚の呼応"
 }
