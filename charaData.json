@@ -5908,13 +5908,13 @@
         "support2": "none",
         "support3": "none",
         "minhp": "310",
-        "hp": "1650",
+        "hp": "1960",
         "minattack": "1460",
-        "attack": "7777",
+        "attack": "9237",
         "baseDA": 7.0,
         "baseTA": 3.0,
-        "ougiRatio": 4.5,
-        "imageURL": "./charaimgs/3040018000_01.png",
+        "ougiRatio": 5.0,
+        "imageURL": "./charaimgs/3040020000_01.png",
         "en": "Christina"
     },
     "アギエルバ": {
