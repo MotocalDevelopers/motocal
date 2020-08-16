@@ -661,6 +661,7 @@ http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040708800.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040709300.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040709400.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040709700.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040709900.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040800200.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040800300.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/weapon/b/1040801100.png
