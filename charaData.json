@@ -12341,6 +12341,28 @@
         "imageURL": "./charaimgs/3030310000_01.png",
         "en": "Ferry (Summer)"
     },
+    "ルシオ(水着ver)": {
+        "name": "ルシオ(水着ver)",
+        "ja": "ルシオ(水着ver)",
+        "element": "water",
+        "type": "balance",
+        "race": "unknown",
+        "sex": "male",
+        "fav1": "katana",
+        "fav2": "sword",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "250",
+        "hp": "1700",
+        "minattack": "1480",
+        "attack": "7800",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040286000_01.png",
+        "en": "Lucio (Summer)"
+    },
     "アニラ(水着ver)": {
         "name": "アニラ(水着ver)",
         "ja": "アニラ(水着ver)",
