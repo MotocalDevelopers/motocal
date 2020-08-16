@@ -12385,6 +12385,28 @@
         "imageURL": "./charaimgs/3040284000_01.png",
         "en": "Abby (SSR)"
     },
+    "レオナ(リミテッドver)": {
+        "name": "レオナ(リミテッドver)",
+        "ja": "レオナ(リミテッドver)",
+        "element": "earth",
+        "type": "attack",
+        "race": "human",
+        "sex": "female",
+        "fav1": "spear",
+        "fav2": "none",
+        "support": "none",
+        "support2": "critical_cap_up_earth_3",
+        "support3": "none",
+        "minhp": "180",
+        "hp": "990",
+        "minattack": "2100",
+        "attack": "11050",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040285000_01.png",
+        "en": "Leona (Grand)"
+    },
     "ルシオ(水着ver)": {
         "name": "ルシオ(水着ver)",
         "ja": "ルシオ(水着ver)",

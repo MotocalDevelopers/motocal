@@ -278,6 +278,10 @@ supportAbilist["critical_cap_up_water_3"] = {
 supportAbilist["critical_cap_up_light_3"] = {
     u"スポッター"
 }
+supportAbilist["critical_cap_up_earth_3"] = {
+    u"遥かな夜空に思いを馳せて"
+}
+
 supportAbilist["critical_cap_up_own_10"] = {
     u"ヘッドショット"
 }

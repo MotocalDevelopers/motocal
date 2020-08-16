@@ -2669,6 +2669,11 @@ var multiLangData = {
         "ja": "クリティカル発動時にダメージ上限10%UP。(オイゲン(リミテッドver))",
         "zh": "10% boost to critical hit damage cap. (Eugen (Grand))",
     },
+    "土属性キャラがクリティカル発動時にダメージ上限3%UP": {
+        "en": "3% boost to critical hit damage cap.",
+        "ja": "土属性キャラがクリティカル発動時にダメージ上限3",
+        "zh": "3% boost to critical hit damage cap.",
+    },
     "弱体耐性15%UP。(レナ、カルメリーナ)": {
         "en": "15% boost to debuff resistance. (Lennah, Carmelina)",
         "ja": "弱体耐性15%UP。(レナ、カルメリーナ)",

@@ -2600,6 +2600,12 @@ var supportAbilities = {
         "range": range.element.light,
         "value": 0.03,
     },
+    "critical_cap_up_earth_3": {
+        "name": "土属性キャラがクリティカル発動時にダメージ上限3%UP",
+        "type": "critical_cap_up",
+        "range": range.element.earth,
+        "value": 0.03,
+    },
     "critical_cap_up_own_10": {
         "name": "クリティカル発動時にダメージ上限10%UP。(オイゲン(リミテッドver))",
         "type": "critical_cap_up",
