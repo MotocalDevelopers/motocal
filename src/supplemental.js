@@ -10,6 +10,7 @@ function calcSupplementalDamage(
 
         switch (supplemental.type) {
             case "third_hit":
+            case "multi_hit":
                 if (expectedTurn === Infinity) {
                     expectedTurn = 1;
                 }
