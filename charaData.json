@@ -12363,6 +12363,28 @@
         "imageURL": "./charaimgs/3030310000_01.png",
         "en": "Ferry (Summer)"
     },
+    "ペンギー(SSR)": {
+        "name": "ペンギー(SSR)",
+        "ja": "ペンギー(SSR)",
+        "element": "earth",
+        "type": "attack",
+        "race": "human",
+        "sex": "female",
+        "fav1": "fist",
+        "fav2": "gun",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "240",
+        "hp": "1280",
+        "minattack": "1650",
+        "attack": "8800",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040282000_01.png",
+        "en": "Pengy (SSR)"
+    },
     "コルル(水着ver)": {
         "name": "コルル(水着ver)",
         "ja": "コルル(水着ver)",
