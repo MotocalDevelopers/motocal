@@ -1261,7 +1261,7 @@ def type_replace(armtype):
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list, PROCESS_TYPE_SSR=True):
     key_pattern = re.compile("\d+")
-    key_pattern = re.compile("(\d+.*\.png)")
+    key_pattern = re.compile("(\w+\.png)")
     skill_pattern = re.compile("\[\[([\W\w]+)\>")
     jougen_4_pattern = re.compile(u"○")
     jougen_5_pattern = re.compile(u"◎")

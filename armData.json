@@ -8897,6 +8897,25 @@
         "imageURL": "./imgs/1040500000.png",
         "en": "[4★] Gastraphetes"
     },
+    "硬式ナッコォ": {
+        "ja": "硬式ナッコォ",
+        "element": "earth",
+        "type": "fist",
+        "skill1": "normalHiouL",
+        "skill2": "non",
+        "element2": "earth",
+        "skill3": "non",
+        "element3": "earth",
+        "minhp": 42,
+        "minattack": 386,
+        "hp": 200,
+        "attack": 2590,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040613000.png",
+        "en": "Hard Knuckle"
+    },
     "修武の籠手・属性変更": {
         "ja": "修武の籠手・属性変更",
         "element": "all",
