@@ -13344,6 +13344,25 @@
         "imageURL": "./imgs/1040112700.png",
         "en": "[4★] Spectral Cleaver"
     },
+    "ライトオープナー": {
+        "ja": "ライトオープナー",
+        "element": "water",
+        "type": "dagger",
+        "skill1": "strengthL",
+        "skill2": "non",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 31,
+        "minattack": 309,
+        "hp": 192,
+        "attack": 1921,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040112900.png",
+        "en": "Simple Opener"
+    },
     "橄欖の護剣": {
         "ja": "橄欖の護剣",
         "element": "earth",
