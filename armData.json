@@ -15747,6 +15747,25 @@
         "imageURL": "./imgs/1040312600.png",
         "en": "Teiwaz"
     },
+    "アックスガール・アックス": {
+        "ja": "アックスガール・アックス",
+        "element": "fire",
+        "type": "axe",
+        "skill1": "normalSetsuna",
+        "skill2": "normalHiouS",
+        "element2": "fire",
+        "skill3": "non",
+        "element3": "fire",
+        "minhp": 27,
+        "minattack": 464,
+        "hp": 186,
+        "attack": 2656,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040312800.png",
+        "en": "Tiny Logger's Axe"
+    },
     "ル・オー・ホーン": {
         "ja": "ル・オー・ホーン",
         "element": "light",
