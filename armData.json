@@ -24012,6 +24012,25 @@
         "imageURL": "./imgs/1030005600.png",
         "en": "Standard Albion Blade"
     },
+    "カキ・シェル": {
+        "ja": "カキ・シェル",
+        "element": "water",
+        "type": "sword",
+        "skill1": "strengthM",
+        "skill2": "non",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 16,
+        "minattack": 231,
+        "hp": 109,
+        "attack": 1408,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 75,
+        "imageURL": "./imgs/1030009200.png",
+        "en": "Oyster Shell"
+    },
     "狂恋団扇": {
         "ja": "狂恋団扇",
         "element": "light",
