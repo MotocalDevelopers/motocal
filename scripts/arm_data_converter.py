@@ -978,6 +978,7 @@ skillnamelist["strengthLLL"] = {
 
 skillnamelist["strengthLLandHPS"] = {
     u"真・灼滅の覇道": "fire",
+    u"真・裁考の覇道": "earth"
 }
 
 skillnamelist["normalSoka"] = {
