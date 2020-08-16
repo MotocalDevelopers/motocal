@@ -659,6 +659,8 @@
 |&attachref(img/1040112600.png,15%);|[4凸]ドス|&color(#ff0000){火};|短剣|10|[[御命頂戴>武器奥義#oinotityoudai]]|[[紅蓮の背水>スキル一覧#gurennohaisui]]|[[火の技巧>スキル一覧#hinogikou]]|業火の堅守|38|409|280|2950|[[ユイシス(火属性ver) (SSR)]]加入|レジェンドガチャ|○|230|2440|
 |&attachref(img/1040112700.png,15%);|降魔の包丁|&color(#ff9900){光};|短剣|10|[[惨劇の暗翳>武器奥義#sangekinoanei]]|[[天光の背水>スキル一覧#tenkounohaisui]]|[[光の技巧>スキル一覧#hikarinogikou]]|26|469|201|2582|[[ダヌア(光属性ver) (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040112700.png,15%);|[4凸]降魔の包丁|&color(#ff9900){光};|短剣|10|[[惨劇の暗翳>武器奥義#sangekinoanei]]|[[天光の背水>スキル一覧#tenkounohaisui]]|[[雷電の技巧>スキル一覧#raidennnogikou]]|26|469|201|2582|[[ダヌア(光属性ver) (SSR)]]加入|レジェンドガチャ|○|240|3110|
+|&attachref(img/1040113000.png,15%);|橄欖の護剣|&color(#993300){土};|短剣|10|[[ペリドット・スタブ>武器奥義#peridotstab]]|[[創樹方陣・攻刃II>スキル一覧#soujyuhoujinkoujin2]]||32|304|193|1916|四象降臨|四象武器||
+|&attachref(img/1040113000.png,15%);|[4凸]橄欖の護剣|&color(#993300){土};|短剣|10|[[ペリドット・スタブ>武器奥義#peridotstab]]|[[創樹方陣・攻刃II>スキル一覧#soujyuhoujinkoujin2]]|[[創樹方陣・進境II>スキル一覧#soujyuhoujinshinkyou2]]|32|304|233|2319|四象降臨|四象武器|○|193|1916|
 |&attachref(img/1040200000.png,15%);|クレティネ|&color(#ff9900){光};|槍|10|[[パルーヴェス・ジャベリン>武器奥義#purvusjavelin]]|[[雷電の技巧>スキル一覧#raidennnogikou]]|[[雷電の見切>スキル一覧#raidennnomikiri]]|43|385|259|2305|[[ゼタ(サマーver) (SSR)]]|レジェンドガチャ||
 |&attachref(img/1040200200.png,15%);|ピラム|&color(#ff0000){火};|槍|1|[[インパルスドライヴ>武器奥義#inpulse]]|[[紅蓮の攻刃>スキル一覧#gurennokoujin]]||40|380|249|2240|[[ネツァワルピリ (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040200200.png,15%);|[4凸]ピラム|&color(#ff0000){火};|槍|1|[[インパルスドライヴ++>武器奥義#inpulseend]]|[[紅蓮の攻刃>スキル一覧#gurennokoujin]]|[[鷲王の結界>スキル一覧#washiounokekkai]]|40|380|291|2610|[[ネツァワルピリ (SSR)]]加入|レジェンドガチャ|○|249|2240|
