@@ -2674,6 +2674,11 @@ var multiLangData = {
         "ja": "土属性キャラがクリティカル発動時にダメージ上限3",
         "zh": "3% boost to critical hit damage cap.",
     },
+    "自分が瀕死状態の場合、攻防UP/連続攻撃確率UP/奥義性能UP": {
+        "en": "When below 25% HP: Boost to ATK, DEF, multiattack rate, and C.A. specs.",
+        "ja": "自分が瀕死状態の場合、攻防UP/連続攻撃確率UP/奥義性能UP",
+        "zh": "When below 25% HP: Boost to ATK, DEF, multiattack rate, and C.A. specs.",
+    },
     "弱体耐性15%UP。(レナ、カルメリーナ)": {
         "en": "15% boost to debuff resistance. (Lennah, Carmelina)",
         "ja": "弱体耐性15%UP。(レナ、カルメリーナ)",

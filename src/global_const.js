@@ -2712,7 +2712,13 @@ var supportAbilities = {
         "type": "additionalDamageXA",
         "range": range.element.wind,
         "value": [0.0, 0.0, 0.1]
-    }
+    },
+    "unwavering_conviction": {
+        "name": "自分が瀕死状態の場合、攻防UP/連続攻撃確率UP/奥義性能UP",
+        "type": "unwavering_conviction",
+        "range": "own",
+        "value": 0.0
+    },
 };
 
 // exports

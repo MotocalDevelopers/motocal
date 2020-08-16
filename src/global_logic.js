@@ -3250,6 +3250,15 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                         totals[key2]["damageUPOnlyNormalBuff"] += 0.03;
                     }
                     continue;
+                case "unwavering_conviction":
+                    if (totals[key]['remainHP'] < 0.25) {
+                        totals[key]["otherBuff"] += 0.50;
+                        totals[key]["DASupport"] += 1.00;
+                        totals[key]["TASupport"] += 0.30;
+                        totals[key]["ougiDamageBuff"] += 0.50;
+                        totals[key]["ougiDamageLimitBuff"] += 0.30;
+                    }
+                    continue;
                 default:
                     break;
             }
