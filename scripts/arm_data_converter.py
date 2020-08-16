@@ -303,7 +303,8 @@ skillnamelist["normalElementM"] = {
     u"憎悪の進境": "dark",
     u"機炎方陣・進境II": "fire",
     u"海神方陣・進境II": "water",
-    u"創樹方陣・進境II": "wind"
+    u"創樹方陣・進境II": "earth",
+    u"嵐竜方陣・進境II": "wind",
 }
 
 skillnamelist["normalElementL"] = {
