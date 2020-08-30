@@ -2458,10 +2458,10 @@ var multiLangData = {
         "ja": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
         "zh": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
     },
-    "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))": {
-        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus DMG effect.",
-        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義",
-        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義",
+    "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver), コルル(水着ver))": {
+        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus DMG effect. (Yuisis(Fire), Kolulu(Summer))",
+        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義(ユイシス(火属性ver), コルル(水着ver))",
+        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義(ユイシス(火属性ver), コルル(水着ver))",
     },
     "クリティカル発動時にダメージ上限UP/トリプルアタック発動時に火属性追撃効果(ゼタ)": {
         "en": "10% boost to damage cap on critical hits/20% Bonus Fire DMG effect to triple attacks (Zeta)",
@@ -2499,7 +2499,7 @@ var multiLangData = {
         "zh": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
     },
     "与ダメージ上昇5%UP(アビー)": {
-        "en": "5% Boost to Damage. (Abby)",
+        "en": "5% Boost to Damage. (Abby(Promo))",
         "ja": "与ダメージ上昇5%UP(アビー)",
         "zh": "与ダメージ上昇5%UP(アビー)",
     },
@@ -2678,6 +2678,21 @@ var multiLangData = {
         "en": "When below 25% HP: Boost to ATK, DEF, multiattack rate, and C.A. specs.",
         "ja": "自分が瀕死状態の場合、攻防UP/連続攻撃確率UP/奥義性能UP",
         "zh": "When below 25% HP: Boost to ATK, DEF, multiattack rate, and C.A. specs.",
+    },
+    "防御力が低いが奥義性能UP/潜伏効果/高揚効果": {
+        "en": "50% hit to DEF, 50% boost to C.A. damage, 30% boost to C.A. damage cap, less likely to be attacked, and 10% Uplift effect.",
+        "ja": "防御力が低いが奥義性能UP/潜伏効果/高揚効果",
+        "zh": "防御力が低いが奥義性能UP/潜伏効果/高揚効果",
+    },
+    "パーティの水着・浴衣バージョンのキャラの数に応じて攻撃性能UP": {
+        "en": "Boost to attack specs based on number of summer/yukata version allies in the party other than MC.",
+        "ja": "パーティの水着・浴衣バージョンのキャラの数に応じて攻撃性能UP",
+        "zh": "パーティの水着・浴衣バージョンのキャラの数に応じて攻撃性能UP",
+    },
+    "バトルメンバーにヴィーラがいる場合、自分が必ずトリプルアタック": {
+        "en": "If Vira is a main ally: Guaranteed triple attacks.",
+        "ja": "バトルメンバーにヴィーラがいる場合、自分が必ずトリプルアタックP",
+        "zh": "バトルメンバーにヴィーラがいる場合、自分が必ずトリプルアタック",
     },
     "風属性攻撃力UPが付与されている時攻撃UP/防御UP": {
         "en": "30% boost to ATK and 50% boost to DEF when is affected by Wind ATK Up",

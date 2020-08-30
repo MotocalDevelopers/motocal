@@ -281,10 +281,15 @@ supportAbilist["critical_cap_up_light_3"] = {
 supportAbilist["critical_cap_up_earth_3"] = {
     u"遥かな夜空に思いを馳せて"
 }
-supportAbilist["critical_cap_up_earth_3"] = {
-    u"遥かな夜空に思いを馳せて"
+supportAbilist["crazy_auguste"] = {
+    u"頭アウギュステ"
 }
-
+supportAbilist["lillie_liebe"] = {
+    u"リーリエ・リーベ"
+}
+supportAbilist["sandy_sniper"] = {
+    u"砂浜のスナイパー"
+}
 supportAbilist["unwavering_conviction"] = {
     u"揺るぎない信念"
 }
@@ -459,7 +464,7 @@ patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
 
 # SR
 patching["カルメリーナ(SR)"] = {"DA": 4.0, "TA": 1.0}
-patching["白竜の双騎士 ランスロット＆ヴェイン(SR)"] = {"DA": 1000.0, "TA": 3.0}
+patching["白竜の双騎士 ランスロット＆ヴェイン(SR)(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 風 - Wind
 patching["ユエル(水着ver)"] = {"DA": 12.0, "TA": 3.0}
@@ -637,6 +642,8 @@ patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 patchingOugiRatio["ミュオン(クリスマスver)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["飛竜と吸血姫 ヴァンピィ＆ベス"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シュラ"] = {"ougiRatio": 12.5}
+patchingOugiRatio["アーミラ(水着ver)"] = {"ougiRatio": 12.5}
+patchingOugiRatio["ミムルメモル(水着ver)"] = {"ougiRatio": 12.5}
 
 # SSR (Not to ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
@@ -891,7 +898,50 @@ if __name__ == '__main__':
     f = open(os.path.join(
         path, "../txt_source/charaImageWikiURLList.txt"), "w", encoding="utf-8")
     for x in image_wiki_url_list:
-        f.write(x)
+        # TODO: create chain of url replacements for every wrong jp wiki url on update
+        r = x
+        r = re.sub('3040183000_03.png', '3040183000_03_full.png', r)
+        r = re.sub('3040153000_03.png', '3040153000_03_full.png', r)
+        r = re.sub('3040152000_03.png', '3040152000_03_full.png', r)
+        r = re.sub('3040122000_03.png', '3040122000_03_full.png', r)
+        r = re.sub('3040107000_03.png', '3040107000_03_full.png', r)
+        r = re.sub('3040082000_03.png', '3040082000_03_full.png', r)
+        r = re.sub('3040076000_03.png', '3040076000_03_full.png', r)
+        r = re.sub('3040071000_03.png', '3040071000_03_full.png', r)
+        r = re.sub('3040065000_03.png', '3040065000_03_full.png', r)
+        r = re.sub('3040063000_03.png', '3040063000_03_full.png', r)
+        r = re.sub('3040059000_03.png', '3040059000_03_full.png', r)
+        r = re.sub('3040057000_03.png', '3040057000_03_full.png', r)
+        r = re.sub('3040054000_03.png', '3040054000_03_full.png', r)
+        r = re.sub('3040052000_03.png', '3040052000_03_full.png', r)
+        r = re.sub('3040049000_03.png', '3040049000_03_full.png', r)
+        r = re.sub('3040045000_03.png', '3040045000_03_full.png', r)
+        r = re.sub('3040029000_03.png', '3040029000_03_full.png', r)
+        r = re.sub('3040028000_03.png', '3040028000_03_full.png', r)
+        r = re.sub('3040021000_03.png', '3040021000_03_full.png', r)
+        r = re.sub('3040019000_03.png', '3040019000_03_full.png', r)
+        r = re.sub('3040018000_03.png', '3040018000_03_full.png', r)
+        r = re.sub('3040012000_03.png', '3040012000_03_full.png', r)
+        r = re.sub('3040008000_03.png', '3040008000_03_full.png', r)
+        r = re.sub('3040007000_03.png', '3040007000_03_full.png', r)
+        r = re.sub('3040004000_03.png', '3040004000_03full.png', r)
+        r = re.sub('3040001000_03.png', '3040001000_03_full.png', r)
+        r = re.sub('3030005000_03.png', '3030005000_03_full.png', r)
+        r = re.sub('3030007000_03.png', '3030007000_03_full.png', r)
+        r = re.sub('3030008000_03.png', '3030008000_03_full.png', r)
+        r = re.sub('3030051000_03.png', '3030051000_03_full.png', r)
+        r = re.sub('3030054000_03.png', '3030054000_03_full.png', r)
+        r = re.sub('3030061000_03.png', '3030061000_03_full.png', r)
+        r = re.sub('3030065000_03.png', '3030065000_03_full.png', r)
+        r = re.sub('3030071000_03.png', '3030071000_03_full.png', r)
+        r = re.sub('3030088000_03.png', '3030088000_03_full.png', r)
+        r = re.sub('3030092000_03.png', '3030092000_03_full.png', r)
+        r = re.sub('3030111000_03.png', '3030111000_03_full.png', r)
+        r = re.sub('3030124000_03.png', '3030124000_03_full.png', r)
+        r = re.sub('3030172000_03.png', '3030172000_03_full.png', r)
+        r = re.sub('3030197000_03.png', '3030197000_03_full.png', r)
+        r = re.sub('3030224000_03.png', '3030224000_03_full.png', r)
+        f.write(r)
     f.close()
 
     f = open(os.path.join(

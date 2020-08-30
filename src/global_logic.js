@@ -24,6 +24,7 @@ const {
 } = require('./global_const.js');
 const supplemental = require('./supplemental.js');
 const {
+    _contains,
     favContains,
     bahaRaceContains,
     bahaRaceCharaContains,
@@ -513,7 +514,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         //summedAttack = Math.ceil(summedAttack * (1.0 + Airship Effect));
         //summedAttack = Math.ceil(summedAttack * (1.0 + Crew Skill));
         summedAttack *= 10;
-        
+
         if (totals[key]["remainHP"] == 0) {
             totals[key]["remainHP"] = 1.0 / parseFloat(totalHP);
         }
@@ -949,7 +950,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
                 }
             }
         }
-        
+
         if(totals[key]["supplementalDamageBuffOnEmnity"].length > 0) {
             for (let i = 0; i < totals[key]["supplementalDamageBuffOnEmnity"].length ; i++) {
                 let current = totals[key]["supplementalDamageBuffOnEmnity"][i];
@@ -3267,6 +3268,38 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                         totals[key]["TASupport"] += 0.30;
                         totals[key]["ougiDamageBuff"] += 0.50;
                         totals[key]["ougiDamageLimitBuff"] += 0.30;
+                    }
+                    continue;
+                case "sandy_sniper":
+                    totals[key]["ougiDamageBuff"] += 0.50;
+                    totals[key]["ougiDamageLimitBuff"] += 0.30;
+                    totals[key]["ougiGageBuff"] += 0.10;
+                    continue;
+                case "crazy_auguste":
+                    let n = 0
+                    for (var key2 in totals) {
+                        if (_contains(["(水着ver)", "(Summer)", "(浴衣ver)", "(Yukata)", "ゾーイ(リミテッドver)", "Zooey (Grand)"] , key2)) {
+                            n += 1;
+                        }
+                    }
+                    n = Math.min(n, 4);
+                    totals[key]["otherBuff"] += n * 0.15;
+                    totals[key]["DASupport"] += n * 0.20;
+                    totals[key]["TASupport"] += n * 0.05;
+                    continue;
+                case "lillie_liebe":
+                    if (index < 4) {
+                        let index2 = 0;
+                        for (var key2 in totals) {
+                            index2 = index2 + 1 | 0;
+                            if (index2 < 5) {
+                                if (_contains(["ヴィーラ", "Vira"] , key2)) {
+                                    totals[key]["DASupport"] += 10.00;
+                                    totals[key]["TASupport"] += 10.00;
+                                    break;
+                                }
+                            }
+                        }
                     }
                     continue;
                 default:

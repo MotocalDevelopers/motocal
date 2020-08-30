@@ -2352,7 +2352,7 @@ var supportAbilities = {
         "value": 0.00
     },
     "sumizome_sakura": {
-        "name": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+        "name": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver), コルル(水着ver))",
         "type": "sumizome_sakura",
         "range": range.own,
         "value": [0.20, 0.20, 0.20]
@@ -2722,6 +2722,24 @@ var supportAbilities = {
     "unwavering_conviction": {
         "name": "自分が瀕死状態の場合、攻防UP/連続攻撃確率UP/奥義性能UP",
         "type": "unwavering_conviction",
+        "range": "own",
+        "value": 0.0
+    },
+    "sandy_sniper": {
+        "name": "防御力が低いが奥義性能UP/潜伏効果/高揚効果",
+        "type": "sandy_sniper",
+        "range": "own",
+        "value": 0.0
+    },
+    "crazy_auguste": {
+        "name": "パーティの水着・浴衣バージョンのキャラの数に応じて攻撃性能UP",
+        "type": "crazy_auguste",
+        "range": "own",
+        "value": 0.0
+    },
+    "lillie_liebe": {
+        "name": "バトルメンバーにヴィーラがいる場合、自分が必ずトリプルアタック",
+        "type": "lillie_liebe",
         "range": "own",
         "value": 0.0
     },
