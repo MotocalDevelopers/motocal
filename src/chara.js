@@ -318,6 +318,7 @@ var Chara = CreateClass({
             EXLBTA: 0,
             criticalBuffCount: 0,
             criticalBuff: [],
+            keenBuffEnabled: false,
             awakeningLv: 1,
         };
     },
@@ -651,6 +652,14 @@ var Chara = CreateClass({
                                         criticalArray={this.state.criticalBuff}
                                         initialCount={this.state.criticalBuffCount} />
                                 </td>
+                            </tr>,
+                            <tr key="keenBuffEnabled">
+                            <th className="bg-primary">{intl.translate("鋭いバフ", locale)}</th>
+                            <td>
+                                <Checkbox inline checked={this.state.keenBuffEnabled}
+                                          onChange={this.handleSelectEvent.bind(this, "keenBuffEnabled")}>
+                                </Checkbox>
+                            </td>
                             </tr>,
                             <tr key="daBuff">
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>

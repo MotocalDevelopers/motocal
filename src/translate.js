@@ -664,6 +664,11 @@ var multiLangData = {
         "ja": "攻刃ボーナス",
         "zh": "攻刃Bonus",
     },
+    "古代の闘術": {
+        "en":"Primal Pugilism",
+        "ja":"古代の闘術",
+        "zh":"古代の闘術"
+    },
     "守護ボーナス": {
         "en": "Aegis Bonus",
         "ja": "守護ボーナス",
@@ -1408,6 +1413,26 @@ var multiLangData = {
         "ja": "チェインバースト",
         "zh": "Chain Burst",
     },
+    "鋭いバフ": {
+        "en": "Keen Buff",
+        "ja": "鋭いバフ",
+        "zh": "Keen Buff"
+    },
+    "鋭いバフ説明": {
+        "en": "Keen Buff (V. Grimnir etc.)",
+        "ja": "鋭いバフ (グリームニル)",
+        "zh": "Keen Buff (V. Grimnir etc.)"
+    },
+    "巌迫の秘奥": {
+        "en": "Normal Mystery (Massive)",
+        "zh": "巌迫の秘奥",
+        "ja": "巌迫の秘奥"
+    },
+    "金の誓約": {
+        "en": "Gold Covenant",
+        "zh": "金の誓約",
+        "ja": "金の誓約"
+    },
     "予想ターン毎ダメージ": {
         "en": "Exp. Damage per Turn", //a.k.a: expectedCycleDamagePerTurn
         "ja": "予想ターンダメージ",
@@ -1488,6 +1513,11 @@ var multiLangData = {
         "ja": " (3回目の攻撃に)",
         "zh": " (Applies to third hit)",
     },
+    "supplemental_multi_hit": {
+        "en": " (Applies to multi hit)",
+        "ja": " (MA回目の攻撃に)",
+        "zh": " (Applies to multi hit)",
+    },
     "supplemental_on_critical": {
         "en": " (Applies to critical hit, {value}%)",
         "ja": " (クリティカル攻撃に、 {value}%)",
@@ -1502,6 +1532,11 @@ var multiLangData = {
         "en": " (Djeeta Buff: {value})",
         "ja": " (ジータのバフ: {value})",
         "zh": " (Djeeta Buff: {value})",
+    },
+    "supplemental_on_ougi": {
+        "en": " (Applies on Ougi)",
+        "ja": " (扇に適用)",
+        "zh": " (Applies on Ougi)",
     },
     "四人合計値": {
         "en": "x4",
@@ -1693,6 +1728,11 @@ var multiLangData = {
         "ja": "マグナ渾身",
         "zh": "方针浑身",
     },
+    "劫風の攻刃": {
+        "en": "Normal Might (Massive)",
+        "ja": "劫風の攻刃",
+        "zh": "劫風の攻刃",
+    },
     "通常進境(大)(最大時)": {
         "en": "Normal Element ATK L",
         "ja": "通常進境(大)(最大時)",
@@ -1707,6 +1747,11 @@ var multiLangData = {
         "en": "Normal Element ATK M",
         "ja": "通常進境(中)(最大時)",
         "zh": "通常属性攻击力(中)",
+    },
+    "マグナ進境(中)(最大時)": {
+        "en": "Magna Element ATK M",
+        "ja": "マグナ進境(中)(最大時)",
+        "zh": "方阵属性攻击力(中)",
     },
     "通常進境(大)(最大時)": {
         "en": "Normal Element ATK L",
@@ -2273,10 +2318,15 @@ var multiLangData = {
         "ja": "HP15%UP(ペコリーヌ)",
         "zh": "HP15%UP(ペコリーヌ)",
     },
-    "HP20%UP(ソリッズ, ファスティバ(SSR))": {
-        "en": "20% boost to max HP. (Soriz, Ladiva(SSR))",
-        "ja": "HP20%UP(ソリッズ, ファスティバ(SSR))",
-        "zh": "HP20%UP(ソリッズ, ファスティバ(SSR))",
+    "HP20%UP(ファスティバ(SSR))": {
+        "en": "20% boost to max HP. (Ladiva(SSR))",
+        "ja": "HP20%UP(ファスティバ(SSR))",
+        "zh": "HP20%UP(ファスティバ(SSR))",
+    },
+    "HP30%UP(ソリッズ)": {
+        "en": "30% boost to max HP. (Soriz)",
+        "ja": "HP30%UP(ソリッズ)",
+        "zh": "HP30%UP(ソリッズ)",
     },
     "攻撃5%UP(レディグレイ)": {
         "en": "5% boost to ATK. (Lady Grey)",
@@ -2348,6 +2398,11 @@ var multiLangData = {
         "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
         "zh": "Charge bar fills up 35% slower. (Hallessena (Helloween))",
     },
+    "奥義ゲージ上昇量35%DOWN。(ウーフとレニー,プレデター(SR))": {
+        "en": "Charge bar fills up 35% slower. (Predator(SR))",
+        "ja": "奥義ゲージ上昇量35%DOWN。(ハレゼナ(ハロウィーン))",
+        "zh": "Charge bar fills up 35% slower. (Predator(SR))",
+    },
     "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)": {
         "en": "Charge bar fills up 50% slower and 25% Boost to Damage. (Shura)",
         "ja": "奥義ゲージ上昇量50%DOWN。&与ダメージ上昇25%UP(シュラ)",
@@ -2413,10 +2468,10 @@ var multiLangData = {
         "ja": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
         "zh": "HP15%UP&DEF10%UP&奥義ゲージ上昇量25%DOWN(ルルーシュ・ランペルージ, 枢木スザク, 紅月カレン)",
     },
-    "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))": {
-        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus Fire DMG effect. Additional effects to skills and charge attacks. (Yuisis (Fire))",
-        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
-        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver))",
+    "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義・アビリティに追加効果付与(ユイシス(火属性ver), コルル(水着ver))": {
+        "en": "When below 25% HP: Guaranteed triple attacks. 20% Bonus DMG effect. (Yuisis(Fire), Kolulu(Summer))",
+        "ja": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義(ユイシス(火属性ver), コルル(水着ver))",
+        "zh": "自分が瀕死状態の場合、必ずトリプルアタック/火属性追撃効果/奥義(ユイシス(火属性ver), コルル(水着ver))",
     },
     "クリティカル発動時にダメージ上限UP/トリプルアタック発動時に火属性追撃効果(ゼタ)": {
         "en": "10% boost to damage cap on critical hits/20% Bonus Fire DMG effect to triple attacks (Zeta)",
@@ -2454,7 +2509,7 @@ var multiLangData = {
         "zh": "全体クリティカル確率UP(発動率100%, 倍率50%)(最終ソーン奥義)",
     },
     "与ダメージ上昇5%UP(アビー)": {
-        "en": "5% Boost to Damage. (Abby)",
+        "en": "5% Boost to Damage. (Abby(Promo))",
         "ja": "与ダメージ上昇5%UP(アビー)",
         "zh": "与ダメージ上昇5%UP(アビー)",
     },
@@ -2623,6 +2678,36 @@ var multiLangData = {
         "en": "10% boost to critical hit damage cap. (Eugen (Grand))",
         "ja": "クリティカル発動時にダメージ上限10%UP。(オイゲン(リミテッドver))",
         "zh": "10% boost to critical hit damage cap. (Eugen (Grand))",
+    },
+    "土属性キャラがクリティカル発動時にダメージ上限3%UP": {
+        "en": "3% boost to critical hit damage cap.",
+        "ja": "土属性キャラがクリティカル発動時にダメージ上限3",
+        "zh": "3% boost to critical hit damage cap.",
+    },
+    "自分が瀕死状態の場合、攻防UP/連続攻撃確率UP/奥義性能UP": {
+        "en": "When below 25% HP: Boost to ATK, DEF, multiattack rate, and C.A. specs.",
+        "ja": "自分が瀕死状態の場合、攻防UP/連続攻撃確率UP/奥義性能UP",
+        "zh": "When below 25% HP: Boost to ATK, DEF, multiattack rate, and C.A. specs.",
+    },
+    "防御力が低いが奥義性能UP/潜伏効果/高揚効果": {
+        "en": "50% hit to DEF, 50% boost to C.A. damage, 30% boost to C.A. damage cap, less likely to be attacked, and 10% Uplift effect.",
+        "ja": "防御力が低いが奥義性能UP/潜伏効果/高揚効果",
+        "zh": "防御力が低いが奥義性能UP/潜伏効果/高揚効果",
+    },
+    "パーティの水着・浴衣バージョンのキャラの数に応じて攻撃性能UP": {
+        "en": "Boost to attack specs based on number of summer/yukata version allies in the party other than MC.",
+        "ja": "パーティの水着・浴衣バージョンのキャラの数に応じて攻撃性能UP",
+        "zh": "パーティの水着・浴衣バージョンのキャラの数に応じて攻撃性能UP",
+    },
+    "バトルメンバーにヴィーラがいる場合、自分が必ずトリプルアタック": {
+        "en": "If Vira is a main ally: Guaranteed triple attacks.",
+        "ja": "バトルメンバーにヴィーラがいる場合、自分が必ずトリプルアタックP",
+        "zh": "バトルメンバーにヴィーラがいる場合、自分が必ずトリプルアタック",
+    },
+    "風属性攻撃力UPが付与されている時攻撃UP/防御UP": {
+        "en": "30% boost to ATK and 50% boost to DEF when is affected by Wind ATK Up",
+        "ja": "風属性攻撃力UPが付与されている時攻撃UP/防御UP",
+        "zh": "30% boost to ATK and 50% boost to DEF when is affected by Wind ATK Up",
     },
     "弱体耐性15%UP。(レナ、カルメリーナ)": {
         "en": "15% boost to debuff resistance. (Lennah, Carmelina)",
@@ -2901,6 +2986,21 @@ var multiLangData = {
         "ja": "通常背水(大)",
         "zh": "通常背水(大)",
     },
+    "通常背水(特大)": {
+        "en": "Normal Emnity (LL)",
+        "ja": "通常背水(特大)",
+        "zh": "通常背水(特大)"
+    },
+    "朱の誓約": {
+        "en": "Vermillion Covenant",
+        "ja": "朱の誓約",
+        "zh": "朱の誓約"
+    },
+    "黒の誓約": {
+        "en": "Black Covenant",
+        "ja": "黒の誓約",
+        "zh": "黒の誓約"
+    },
     "通常渾身(小)": {
         "en": "Normal Stamina (S)",
         "ja": "通常渾身(小)",
@@ -2915,6 +3015,11 @@ var multiLangData = {
         "en": "Normal Stamina (L)",
         "ja": "通常渾身(大)",
         "zh": "通常渾身(大)",
+    },
+    "通常渾身(特大)": {
+        "en": "Normal Stamina (LL)",
+        "ja": "通常渾身(特大)",
+        "zh": "通常渾身(特大)",
     },
     "通常二手(小)": {
         "en": "Normal Dual Edge (S)",
@@ -2945,6 +3050,11 @@ var multiLangData = {
         "en": "Normal Trium (L)",
         "ja": "通常三手(大)",
         "zh": "通常三手(大)",
+    },
+    "通常三手(特大)": {
+        "en": "Normal Trium (LL)",
+        "ja": "通常三手(特大)",
+        "zh": "通常三手(特大)",
     },
     "通常克己(小)": {
         "en": "Normal Restraint (S)",
@@ -3000,6 +3110,11 @@ var multiLangData = {
         "en": "Normal Fandango (S)",
         "ja": "通常乱舞(小)",
         "zh": "通常乱舞(小)",
+    },
+    "通常乱舞(中)": {
+        "en": "Normal Fandango (M)",
+        "ja": "通常乱舞(中)",
+        "zh": "通常乱舞(中)",
     },
     "通常秘奥(小)": {
         "en": "Normal Mystery (S)",
@@ -3405,6 +3520,21 @@ var multiLangData = {
         "en": "Normal Verity II",
         "ja": "通常技巧II",
         "zh": "通常技巧II",
+    },
+    "水禍の技巧": {
+        "en": "Massive Verity",
+        "ja": "水禍の技巧",
+        "zh": "水禍の技巧",
+    },
+    "碧の誓約": {
+        "en": "Azure Covenant",
+        "ja": "碧の誓約",
+        "zh": "碧の誓約",
+    },
+    "白の誓約": {
+        "en": "White Covenant",
+        "ja": "白の誓約",
+        "zh": "白の誓約",
     },
     "マグナ技巧(小)": {
         "en": "Magna Verity (S)",

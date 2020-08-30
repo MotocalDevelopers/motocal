@@ -8,6 +8,10 @@ from collections import OrderedDict
 skillnamelist = OrderedDict()
 
 # normal L and LL
+skillnamelist["normalLLLL"] = {
+    u"劫風の攻刃": "wind",
+}
+
 skillnamelist["normalLLM"] = {
     u"紅蓮の攻刃III": "fire",
     u"霧氷の攻刃III": "water",
@@ -60,6 +64,10 @@ skillnamelist["normalHPL"] = {
     u"奈落の守護": "dark"
 }
 
+skillnamelist["normalCriticalLLL"] = {
+    u"水禍の技巧": "water"
+}
+
 skillnamelist["normalCriticalLL"] = {
     u"紅蓮の技巧II": "fire",
     u"霧氷の技巧II": "water",
@@ -86,6 +94,18 @@ skillnamelist["normalHaisuiL"] = {
     u"乱気の背水": "wind",
     u"天光の背水": "light",
     u"奈落の背水": "dark"
+}
+
+skillnamelist["normalHaisuiLL"] = {
+    u"炎威の背水": "fire"
+}
+
+skillnamelist["supplementalEmnity"] = {
+    u"朱の誓約": "fire"
+}
+
+skillnamelist["supplementalOugi"] = {
+    u"金の誓約": "earth"
 }
 
 skillnamelist["normalBoukunLLL"] = {
@@ -115,6 +135,10 @@ skillnamelist["normalNiteL"] = {
     u"奈落の二手": "dark"
 }
 
+skillnamelist["normalSanteLL"] = {
+    u"威光の三手": "light",
+}
+
 skillnamelist["normalSanteL"] = {
     u"紅蓮の三手": "fire",
     u"霧氷の三手": "water",
@@ -134,6 +158,10 @@ skillnamelist["normalSanteM"] = {
 }
 
 # Although stamina can be handled normally at present, if ~ star skill is to be treated as a separate frame, it is necessary to make it different skill
+skillnamelist["normalKonshinLL"] = {
+    u"呪蝕の渾身": "dark"
+}
+
 skillnamelist["normalKonshinL"] = {
     u"紅蓮の渾身": "fire",
     u"霧氷の渾身": "water",
@@ -272,7 +300,14 @@ skillnamelist["normalElementM"] = {
     u"大地の進境": "earth",
     u"竜巻の進境": "wind",
     u"雷電の進境": "light",
-    u"憎悪の進境": "dark"
+    u"憎悪の進境": "dark",
+}
+
+skillnamelist["magnaElementM"] = {
+    u"機炎方陣・進境II": "fire",
+    u"海神方陣・進境II": "water",
+    u"創樹方陣・進境II": "earth",
+    u"嵐竜方陣・進境II": "wind",
 }
 
 skillnamelist["normalElementL"] = {
@@ -443,6 +478,15 @@ skillnamelist["normalRanbuS"] = {
     u"闇の乱舞": "dark"
 }
 
+skillnamelist["normalRanbuM"] = {
+    u"業火の乱舞": "fire",
+    u"渦潮の乱舞": "water",
+    u"大地の乱舞": "earth",
+    u"竜巻の乱舞": "wind",
+    u"雷電の乱舞": "light",
+    u"憎悪の乱舞": "dark"
+}
+
 skillnamelist["normalHiouS"] = {
     u"火の秘奥": "fire",
     u"水の秘奥": "water",
@@ -486,6 +530,10 @@ skillnamelist["normalHissatsuL"] = {
     u"乱気の必殺": "wind",
     u"天光の必殺": "light",
     u"奈落の必殺": "dark"
+}
+
+skillnamelist["normalHiouLL"] = {
+    u"巌迫の秘奥": "earth"
 }
 
 skillnamelist["normalEiketsuL"] = {
@@ -826,7 +874,9 @@ skillnamelist["strengthM"] = {
     u"龍馬の愛刀": "wind",
     u"土方の愛刀": "fire",
     u"クールな攻刃": "water",
-    u"錬金の攻刃": "light"
+    u"錬金の攻刃": "light",
+    u"荒磯の攻刃": "light",
+    u"二枚貝の守護": "water"
 }
 skillnamelist["strengthL"] = {
     u"ストレングス": "unknown",
@@ -909,6 +959,9 @@ skillnamelist["strengthL"] = {
     u"プロフェッショナルツール": "earth",
     u"猛将の攻刃": "fire",
     u"エレクトリックな攻刃": "wind",
+    u"リゾートの攻刃": "light",
+    u"開封の攻刃": "water",
+    u"英霊の攻刃": "fire",
 }
 
 skillnamelist["exATKandHPM"] = {
@@ -943,6 +996,7 @@ skillnamelist["strengthLLL"] = {
 
 skillnamelist["strengthLLandHPS"] = {
     u"真・灼滅の覇道": "fire",
+    u"真・裁考の覇道": "earth"
 }
 
 skillnamelist["normalSoka"] = {
@@ -1078,6 +1132,10 @@ skillnamelist["tenshiShukufuku"] = {
     u"堕落のすゝめ": "dark"
 }
 
+skillnamelist["normalAtkFistPugilism"] = {
+    u"古代の闘術": "earth"
+}
+
 # Huanglong katana, Dawn Rising
 skillnamelist["shinTenNoInori"] = {
     u"震天の祈り": "light",
@@ -1161,6 +1219,17 @@ skillnamelist["one_night_party"] = {u"ワンナイ・パーリー": "none"}
 skillnamelist["downfall_of_ignorance"] = {u"無明衰滅": "none"}
 skillnamelist["succession_of_knighthood"] = {u"騎士の血脈": "none"}
 
+skillnamelist["supplementalCritical"] = {
+    u'碧の誓約': "water"
+}
+
+skillnamelist["supplementalMulti"] = {
+    u'白の誓約': "light"
+}
+
+skillnamelist["supplementalStaminaOugi"] = {
+    u'黒の誓約': "dark"
+}
 
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
@@ -1204,7 +1273,7 @@ def type_replace(armtype):
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list, PROCESS_TYPE_SSR=True):
     key_pattern = re.compile("\d+")
-    key_pattern = re.compile("(\d+.*\.png)")
+    key_pattern = re.compile("(\w+\.png)")
     skill_pattern = re.compile("\[\[([\W\w]+)\>")
     jougen_4_pattern = re.compile(u"○")
     jougen_5_pattern = re.compile(u"◎")

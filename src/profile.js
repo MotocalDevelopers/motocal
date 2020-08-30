@@ -227,8 +227,10 @@ var Profile = CreateClass({
             filterOptionsChanged: false,
             criticalBuff: [],
             criticalBuffCount: 0,
+            keenBuffEnabled: false,
             personalCriticalBuff: [],
             personalCriticalBuffCount: 0,
+            personalKeenBuffEnabled: false,
             retsujitsuNoRakuen: false,
             shiToAiNoSekai: false,
         };
@@ -441,6 +443,14 @@ var Profile = CreateClass({
                                         criticalArray={this.state.personalCriticalBuff}
                                         initialCount={this.state.personalCriticalBuffCount} />
                                 </td>
+                            </tr>,
+                            <tr key="personalKeenBuffEnabled">
+                            <th className="bg-primary">{intl.translate("鋭いバフ", locale)}</th>
+                            <td>
+                                <Checkbox inline checked={this.state.personalKeenBuffEnabled}
+                                          onChange={this.handleSelectEvent.bind(this, "personalKeenBuffEnabled")}>
+                                </Checkbox>
+                            </td>
                             </tr>,
                             <tr key="personalDaBuff">
                                 <th className="bg-primary">{intl.translate("DAバフ", locale)}</th>
@@ -803,6 +813,17 @@ var Profile = CreateClass({
                                     criticalArray={this.state.criticalBuff}
                                     initialCount={this.state.criticalBuffCount} />
                             </td>
+                        </tr>
+                    </TextWithTooltip>
+
+                    <TextWithTooltip tooltip={intl.translate("鋭いバフ説明", locale)} id={"tooltip-keen-buff-detail"}>
+                        <tr key="keenBuffEnabled">
+                                <th className="bg-primary">{intl.translate("鋭いバフ", locale)}</th>
+                                <td>
+                                    <Checkbox inline checked={this.state.keenBuffEnabled}
+                                            onChange={this.handleSelectEvent.bind(this, "keenBuffEnabled")}>
+                                    </Checkbox>
+                                </td>
                         </tr>
                     </TextWithTooltip>
 

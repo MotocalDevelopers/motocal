@@ -45,7 +45,7 @@ sexlist[u"不明"] = "other"
 
 supportAbilist = OrderedDict()
 supportAbilist["none"] = {
-    u"剣聖を継ぐ者", # NOTE: Avoid mis-matches with "剣聖"
+    u"剣聖を継ぐ者",  # NOTE: Avoid mis-matches with "剣聖"
 }
 supportAbilist["da_up_all_10"] = {
     u"双剣乱舞"
@@ -73,8 +73,10 @@ supportAbilist["hp_up_own_15"] = {
     u"やばいですね☆"
 }
 supportAbilist["hp_up_own_20"] = {
-    u"老當益壮",
     u"本物のヒーロー"
+}
+supportAbilist["hp_up_own_30"] = {
+    u"老當益壮"
 }
 supportAbilist["atk_up_own_5"] = {
     u"愛憎の衝動"
@@ -94,7 +96,7 @@ supportAbilist["atk_up_depends_races"] = {
 }
 supportAbilist["element_buff_boost_own_30"] = {
     u"王者の風格SR",
-#    u"覇者の風格"
+    #    u"覇者の風格"
 }
 supportAbilist["eternal_wisdom"] = {
     u"久遠の叡智"
@@ -167,7 +169,8 @@ supportAbilist["knightmare_frame"] = {
     u"ナイトメアフレーム"
 }
 supportAbilist["sumizome_sakura"] = {
-    u"墓前の墨染桜"
+    u"墓前の墨染桜",
+    u"浜辺の鋼鉄少女"
 }
 supportAbilist["arvess_pact"] = {
     u"アルベスの契約者"
@@ -191,7 +194,7 @@ supportAbilist["mamoritai_kono_egao"] = {
 supportAbilist["mamorubeshi_sono_egao"] = {
     u"護るべし、その笑顔"
 }
-#The effect size of "真っ二つにしてやるんだっ！" has not been verified.
+# The effect size of "真っ二つにしてやるんだっ！" has not been verified.
 supportAbilist["damageUP_5"] = {
     u"真っ二つにしてやるんだっ！"
 }
@@ -238,9 +241,9 @@ supportAbilist["hanged_man_reversed"] = {
 supportAbilist["aegisUP_30"] = {
     u"護国の双肩"
 }
-#supportAbilist["chikara_atsu_no_ha"] = {
+# supportAbilist["chikara_atsu_no_ha"] = {
 #    u"力圧の刃"
-#}
+# }
 supportAbilist["more_than_mere_speed"] = {
     u"ビヨンド・ザ・スピード"
 }
@@ -277,8 +280,20 @@ supportAbilist["critical_cap_up_water_3"] = {
 supportAbilist["critical_cap_up_light_3"] = {
     u"スポッター"
 }
-supportAbilist["critical_cap_up_own_10"] = {
-    u"ヘッドショット"
+supportAbilist["critical_cap_up_earth_3"] = {
+    u"遥かな夜空に思いを馳せて"
+}
+supportAbilist["crazy_auguste"] = {
+    u"頭アウギュステ"
+}
+supportAbilist["lillie_liebe"] = {
+    u"リーリエ・リーベ"
+}
+supportAbilist["sandy_sniper"] = {
+    u"砂浜のスナイパー"
+}
+supportAbilist["unwavering_conviction"] = {
+    u"揺るぎない信念"
 }
 supportAbilist["shinryu_to_no_kizuna"] = {
     u"真龍との絆"
@@ -287,7 +302,7 @@ supportAbilist["revion_kishi_sanshimai"] = {
     u"レヴィオン騎士三姉妹"
 }
 supportAbilist["element_buff_boost_damageUP_own_10"] = {
-#    u"堕天司"
+    #    u"堕天司"
 }
 supportAbilist["element_buff_boost_damageUP_normal_own_30"] = {
     u"堕天司"
@@ -302,6 +317,9 @@ supportAbilist["element_buff_boost_damageUP_normal_own_30"] = {
 supportAbilist["kenkyaku_no_koou"] = {
     u"剣脚の呼応"
 }
+supportAbilist["kenkyaku_no_koou"] = {
+    u"剣脚の呼応"
+}
 supportAbilist["debuff_resistance_up_own_15"] = {
     u"ユニバーサルスター",
     u"魔生花の楔"
@@ -312,7 +330,8 @@ supportAbilist["debuff_resistance_up_own_80"] = {
 supportAbilist["stamina_all_L"] = {
     u"夏祭りの思い出",
     u"不退転の戦旗",
-    u"絶対だいじょうぶだよ"
+    u"絶対だいじょうぶだよ",
+    u"マップタツパワー"
 }
 supportAbilist["stamina_all_M"] = {
     u"黒の騎士団 総司令"
@@ -321,10 +340,11 @@ supportAbilist["stamina_all_L_hp_down_own_15"] = {
     u"真夏の夜の夢"
 }
 supportAbilist["supplemental_third_hit_50k"] = {
-    u"みんなのあんぜんあんしん"
+    u"みんなのあんぜんあんしん",
+    u'炎天の雷迅卿'
 }
 supportAbilist["benedikutosu_soure"] = {
-    u"太陽の逆位置" #placeholder for ougi effect not the support ability effect
+    u"太陽の逆位置"  # placeholder for ougi effect not the support ability effect
 }
 supportAbilist["otherbuff_own_30"] = {
     u"アインザーム"
@@ -335,11 +355,17 @@ supportAbilist["party_all_night"] = {
 supportAbilist["additional_damage_on_ta_light_10"] = {
     u"ドレス・ラ・ピュセル"
 }
+supportAbilist["additional_damage_on_ta_wind_10"] = {
+    u"真夏の我は一味違うぞ？"
+}
 supportAbilist["ougi_gage_down_own_50_damageUP_25"] = {
     u"征道の書"
 }
 supportAbilist["da_up_ta_up_damageUPOnlyNormal_fist_10_5_3"] = {
     u"己の意志"
+}
+supportAbilist["element_buff_boost_other_own_30"] = {
+    u"真龍の友愛"
 }
 # Patching DA TA
 patching = OrderedDict()
@@ -347,14 +373,14 @@ patching = OrderedDict()
 # Consecutive atk rate from すんどめ侍さん
 # Default: DA7%,TA3%
 
-## Eternals
+# Eternals
 patching["[最終]ソーン"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]サラーサ"] = {"DA": 5.0, "TA": 2.0}
 patching["[最終]カトル"] = {"DA": 10.0, "TA": 5.0}
 patching["[最終]フュンフ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]シス"] = {"DA": 1000.0, "TA": 0.0}
 patching["[最終]シエテ"] = {"DA": 10.0, "TA": 5.0}
-patching["[最終]オクトー"] = {"DA": 25.0, "TA": 2.0} # Support skill DA20%
+patching["[最終]オクトー"] = {"DA": 25.0, "TA": 2.0}  # Support skill DA20%
 patching["[最終]ニオ"] = {"DA": 4.0, "TA": 1.0}
 patching["[最終]エッセル"] = {"DA": 10.0, "TA": 5.0}
 patching["ソーン"] = {"DA": 4.0, "TA": 1.0}
@@ -383,7 +409,7 @@ patching["ニーナ・ドランゴ"] = {"DA": 10.0, "TA": 5.0}
 patching["紅月カレン"] = {"DA": 10.0, "TA": 5.0}
 patching["フラウ"] = {"DA": 10.0, "TA": 5.0}
 
-patching["ユエル"] = {"DA": 12.0, "TA": 3.0} # Support skill DA5%
+patching["ユエル"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
 
 patching["アオイドス"] = {"DA": 4.0, "TA": 1.0}
 patching["アニラ"] = {"DA": 4.0, "TA": 1.0}
@@ -393,7 +419,7 @@ patching["イオ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 
 patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 1000.0, "TA": 3.0}
 
-### SR
+# SR
 patching["ジェミニ・サンライズ"] = {"DA": 10.0, "TA": 5.0}
 patching["テレーズ(バニーver)"] = {"DA": 10.0, "TA": 5.0}
 patching["天道輝"] = {"DA": 10.0, "TA": 5.0}
@@ -406,7 +432,7 @@ patching["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
 patching["桜内梨子＆高海千歌＆渡辺 曜"] = {"DA": 10.0, "TA": 5.0}
 patching["ヴァジラ"] = {"DA": 10.0, "TA": 5.0}
 patching["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ソシエ"] = {"DA": 20.0, "TA": 5.0} # Support skill DA10%
+patching["ソシエ"] = {"DA": 20.0, "TA": 5.0}  # Support skill DA10%
 patching["イシュミール"] = {"DA": 10.0, "TA": 5.0}
 patching["グレア(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 
@@ -414,7 +440,7 @@ patching["リリィ"] = {"DA": 4.0, "TA": 1.0}
 patching["エウロペ"] = {"DA": 4.0, "TA": 1.0}
 patching["ダヌア(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
 
-### SR
+# SR
 patching["アンジェ"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
 
 patching["テレーズ"] = {"DA": 10.0, "TA": 5.0}
@@ -438,9 +464,9 @@ patching["真紅と冥闇 ゼタ＆バザラガ(ハロウィンver)"] = {"DA": 1
 
 patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
 
-### SR
+# SR
 patching["カルメリーナ(SR)"] = {"DA": 4.0, "TA": 1.0}
-patching["白竜の双騎士 ランスロット＆ヴェイン(SR)"] = {"DA": 1000.0, "TA": 3.0}
+patching["白竜の双騎士 ランスロット＆ヴェイン(SR)(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 風 - Wind
 patching["ユエル(水着ver)"] = {"DA": 12.0, "TA": 3.0}
@@ -463,7 +489,7 @@ patching["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
 patching["ミュオン(クリスマスver)"] = {"DA": 0, "TA": 1000.0}
 patching["グリームニル(バレンタインver)"] = {"DA": 1000.0, "TA": 1000.0}
 
-### SR
+# SR
 patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
 
 patching["フィーナ"] = {"DA": 4.0, "TA": 1.0}
@@ -494,7 +520,7 @@ patching["ハールート・マールート(水着ver)"] = {"DA": 1000.0, "TA": 
 patching["ハレゼナ(ハロウィンver)"] = {"DA": 1000.0, "TA": 1000.0}
 patching["渋谷凛＆島村卯月＆本田未央"] = {"DA": 1000.0, "TA": 1000.0}
 
-### SR
+# SR
 patching["ゼタ(SR)"] = {"DA": 10.0, "TA": 5.0}
 patching["フェリ(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
 
@@ -523,7 +549,7 @@ patching["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
 patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
 patching["プレデター(SSR)"] = {"DA": 1000.0, "TA": 1000.0}
 
-### SR
+# SR
 patching["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
 
 # Patching ougi ratio
@@ -536,10 +562,10 @@ defaultOugiRatio = {
     "SSR": 4.5,
 }
 
-## SSR
-### SSR (5★)
-### 5★ Character list: https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/article/show/22824
-#### Please add below.
+# SSR
+# SSR (5★)
+# 5★ Character list: https://xn--bck3aza1a2if6kra4ee0hf.gamewith.jp/article/show/22824
+# Please add below.
 patchingOugiRatio["レディ・グレイ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["バザラガ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ナルメア"] = {"ougiRatio": 5.0}
@@ -580,18 +606,21 @@ patchingOugiRatio["ティアマト"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴェイン(SSR)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["イオ(リミテッドver)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["アオイドス"] = {"ougiRatio": 5.0}
+patchingOugiRatio["クリスティーナ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ソリッズ(SSR)"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ロミオ"] = {"ougiRatio": 5.0}
 
-### SSR (Guardian Deity 5★) (最終十二神将)
+# SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["アニラ"] = {"ougiRatio": 5.5}
 patchingOugiRatio["マキラ"] = {"ougiRatio": 5.5}
 
-### SSR (Guardian Deity 4★) (十二神将)
+# SSR (Guardian Deity 4★) (十二神将)
 patchingOugiRatio["クビラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァジラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ビカラ"] = {"ougiRatio": 5.0}
 
-### SSR (The Eternals 5★) (最終十天衆)
+# SSR (The Eternals 5★) (最終十天衆)
 patchingOugiRatio["[最終]ウーノ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]ソーン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]サラーサ"] = {"ougiRatio": 5.0}
@@ -611,14 +640,16 @@ patchingOugiRatio["ソフィア"] = {"ougiRatio": 4.7}
 patchingOugiRatio["シャルロッテ(ハロウィンver)"] = {"ougiRatio": 4.7}
 patchingOugiRatio["ロゼッタ(クリスマスver)"] = {"ougiRatio": 4.7}
 patchingOugiRatio["サラ"] = {"ougiRatio": 5.0}
-patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["レ・フィーエ"] = {"ougiRatio": 6.0}
 patchingOugiRatio["ロボミ(SSR)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シャリオス17世"] = {"ougiRatio": 12.5}
 patchingOugiRatio["ミュオン(クリスマスver)"] = {"ougiRatio": 12.5}
 patchingOugiRatio["飛竜と吸血姫 ヴァンピィ＆ベス"] = {"ougiRatio": 12.5}
 patchingOugiRatio["シュラ"] = {"ougiRatio": 12.5}
+patchingOugiRatio["アーミラ(水着ver)"] = {"ougiRatio": 12.5}
+patchingOugiRatio["ミムルメモル(水着ver)"] = {"ougiRatio": 12.5}
 
-### SSR (Not to ougi)
+# SSR (Not to ougi)
 patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
 patchingOugiRatio["コルワ(水着ver)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["コッコロ"] = {"ougiRatio": 0.0}
@@ -627,8 +658,8 @@ patchingOugiRatio["木之本桜"] = {"ougiRatio": 0.0}
 patchingOugiRatio["グリームニル(バレンタインver)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["レイ(リミテッドver)"] = {"ougiRatio": 0.0}
 
-## SR
-### SR (5★)
+# SR
+# SR (5★)
 patchingOugiRatio["ルシウス"] = {"ougiRatio": 4.0}
 patchingOugiRatio["リタ"] = {"ougiRatio": 4.0}
 patchingOugiRatio["ダヌア"] = {"ougiRatio": 4.0}
@@ -669,7 +700,7 @@ patchingOugiRatio["アンジェ(ハロウィンver)"] = {"ougiRatio": 3.7}
 patchingOugiRatio["アレク"] = {"ougiRatio": 4.2}
 patchingOugiRatio["ルリア"] = {"ougiRatio": 6.0}
 
-### SR (Not to ougi)
+# SR (Not to ougi)
 patchingOugiRatio["ヤイア"] = {"ougiRatio": 0.0}
 patchingOugiRatio["ローアイン"] = {"ougiRatio": 0.0}
 patchingOugiRatio["ディアンサ"] = {"ougiRatio": 0.0}
@@ -686,7 +717,8 @@ filename = inspect.getframeinfo(inspect.currentframe()).filename
 path = os.path.dirname(os.path.abspath(filename))
 
 # json translation
-translation = json.load(open(os.path.join(path, "../txt_source/chara-translation.json"), "r", encoding="utf-8"))
+translation = json.load(open(os.path.join(
+    path, "../txt_source/chara-translation.json"), "r", encoding="utf-8"))
 
 
 def arm_replace(armtype):
@@ -743,13 +775,14 @@ def get_value(value_str):
 
 
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
-    key_pattern = re.compile("(\d+_\d+\.png)")
+    key_pattern = re.compile("(\w+\.png)")
     br_pattern = re.compile("(\w+)(?:&br;|\/)(\w+)")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
     support_pattern3 = re.compile("([\W\w]+)&br;([\W\w]+)&br;([\W\w]+)")
     name_pattern = re.compile("\[\[([\W\w]+?) \((S?S?R)\)")
 
-    mycsv = csv.reader(open(csv_file_name, 'r', encoding="utf-8"), delimiter="|")
+    mycsv = csv.reader(
+        open(csv_file_name, 'r', encoding="utf-8"), delimiter="|")
     for row in mycsv:
         newdict = OrderedDict()
 
@@ -831,7 +864,6 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             else:
                 newdict["ougiRatio"] = defaultOugiRatio[rare]
 
-
             newdict["imageURL"] = "./charaimgs/" + key
 
             if name in translation:
@@ -842,11 +874,15 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
 
             json_data[name] = newdict
             # Wiki
-            image_wiki_url_list.append("http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
+            image_wiki_url_list.append(
+                "http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
             # Game - Might get you banned...
-            image_game_url_list.append("http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/" + key + "\n")
-            image_wiki_url_list = list(OrderedDict.fromkeys(image_wiki_url_list))
-            image_game_url_list = list(OrderedDict.fromkeys(image_game_url_list))
+            image_game_url_list.append(
+                "http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/" + key + "\n")
+            image_wiki_url_list = list(
+                OrderedDict.fromkeys(image_wiki_url_list))
+            image_game_url_list = list(
+                OrderedDict.fromkeys(image_game_url_list))
 
     return json_data, image_wiki_url_list, image_game_url_list
 
@@ -863,12 +899,59 @@ if __name__ == '__main__':
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
 
-    f = open(os.path.join(path, "../txt_source/charaImageWikiURLList.txt"), "w", encoding="utf-8")
+    f = open(os.path.join(
+        path, "../txt_source/charaImageWikiURLList.txt"), "w", encoding="utf-8")
     for x in image_wiki_url_list:
-        f.write(x)
+        # TODO: create chain of url replacements for every wrong jp wiki url on update
+        r = x
+        r = re.sub('3040183000_03.png', '3040183000_03_full.png', r)
+        r = re.sub('3040153000_03.png', '3040153000_03_full.png', r)
+        r = re.sub('3040152000_03.png', '3040152000_03_full.png', r)
+        r = re.sub('3040122000_03.png', '3040122000_03_full.png', r)
+        r = re.sub('3040107000_03.png', '3040107000_03_full.png', r)
+        r = re.sub('3040082000_03.png', '3040082000_03_full.png', r)
+        r = re.sub('3040076000_03.png', '3040076000_03_full.png', r)
+        r = re.sub('3040071000_03.png', '3040071000_03_full.png', r)
+        r = re.sub('3040065000_03.png', '3040065000_03_full.png', r)
+        r = re.sub('3040063000_03.png', '3040063000_03_full.png', r)
+        r = re.sub('3040059000_03.png', '3040059000_03_full.png', r)
+        r = re.sub('3040057000_03.png', '3040057000_03_full.png', r)
+        r = re.sub('3040054000_03.png', '3040054000_03_full.png', r)
+        r = re.sub('3040052000_03.png', '3040052000_03_full.png', r)
+        r = re.sub('3040049000_03.png', '3040049000_03_full.png', r)
+        r = re.sub('3040045000_03.png', '3040045000_03_full.png', r)
+        r = re.sub('3040029000_03.png', '3040029000_03_full.png', r)
+        r = re.sub('3040028000_03.png', '3040028000_03_full.png', r)
+        r = re.sub('3040021000_03.png', '3040021000_03_full.png', r)
+        r = re.sub('3040019000_03.png', '3040019000_03_full.png', r)
+        r = re.sub('3040018000_03.png', '3040018000_03_full.png', r)
+        r = re.sub('3040012000_03.png', '3040012000_03_full.png', r)
+        r = re.sub('3040008000_03.png', '3040008000_03_full.png', r)
+        r = re.sub('3040007000_03.png', '3040007000_03_full.png', r)
+        r = re.sub('3040004000_03.png', '3040004000_03full.png', r)
+        r = re.sub('3040001000_03.png', '3040001000_03_full.png', r)
+        r = re.sub('3030005000_03.png', '3030005000_03_full.png', r)
+        r = re.sub('3030007000_03.png', '3030007000_03_full.png', r)
+        r = re.sub('3030008000_03.png', '3030008000_03_full.png', r)
+        r = re.sub('3030051000_03.png', '3030051000_03_full.png', r)
+        r = re.sub('3030054000_03.png', '3030054000_03_full.png', r)
+        r = re.sub('3030061000_03.png', '3030061000_03_full.png', r)
+        r = re.sub('3030065000_03.png', '3030065000_03_full.png', r)
+        r = re.sub('3030071000_03.png', '3030071000_03_full.png', r)
+        r = re.sub('3030088000_03.png', '3030088000_03_full.png', r)
+        r = re.sub('3030092000_03.png', '3030092000_03_full.png', r)
+        r = re.sub('3030111000_03.png', '3030111000_03_full.png', r)
+        r = re.sub('3030124000_03.png', '3030124000_03_full.png', r)
+        r = re.sub('3030172000_03.png', '3030172000_03_full.png', r)
+        r = re.sub('3030197000_03.png', '3030197000_03_full.png', r)
+        r = re.sub('3030224000_03.png', '3030224000_03_full.png', r)
+        r = re.sub('3040170000_03.png', '3040170000_03_full.png', r)
+        r = re.sub('3040098000_03.png', '3040098000_03_full.png', r)
+        f.write(r)
     f.close()
 
-    f = open(os.path.join(path, "../txt_source/charaImageGameURLList.txt"), "w", encoding="utf-8")
+    f = open(os.path.join(
+        path, "../txt_source/charaImageGameURLList.txt"), "w", encoding="utf-8")
     for x in image_game_url_list:
         f.write(x)
     f.close()
