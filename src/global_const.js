@@ -2540,7 +2540,7 @@ var supportAbilities = {
     },
     "element_buff_boost_wind_30": {
         "name": "味方全体の強化効果「風属性攻撃UP」の効果30%UP。(グリームニル)",
-        "type": "element_buff_other_boost",
+        "type": "element_buff_boost",
         "range": range.element.wind,
         "value": 0.30
     },

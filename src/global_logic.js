@@ -3077,7 +3077,7 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                         }
                     }
                     continue;
-                case "element_buff_other_boost":
+                case "element_buff_boost":
                     for (let [name, chara] of support.range(totals, key)) {
                         if (when.element_buff(chara, buff)) {
                             chara["elementBuffBoostBuff"] = Math.max(support.value, chara["elementBuffBoostBuff"]);
