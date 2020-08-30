@@ -301,6 +301,9 @@ skillnamelist["normalElementM"] = {
     u"竜巻の進境": "wind",
     u"雷電の進境": "light",
     u"憎悪の進境": "dark",
+}
+
+skillnamelist["magnaElementM"] = {
     u"機炎方陣・進境II": "fire",
     u"海神方陣・進境II": "water",
     u"創樹方陣・進境II": "earth",
@@ -472,8 +475,16 @@ skillnamelist["normalRanbuS"] = {
     u"土の乱舞": "earth",
     u"風の乱舞": "wind",
     u"光の乱舞": "light",
-    u"闇の乱舞": "dark",
-    u"竜巻の乱舞": "wind"
+    u"闇の乱舞": "dark"
+}
+
+skillnamelist["normalRanbuM"] = {
+    u"業火の乱舞": "fire",
+    u"渦潮の乱舞": "water",
+    u"大地の乱舞": "earth",
+    u"竜巻の乱舞": "wind",
+    u"雷電の乱舞": "light",
+    u"憎悪の乱舞": "dark"
 }
 
 skillnamelist["normalHiouS"] = {
@@ -949,7 +960,8 @@ skillnamelist["strengthL"] = {
     u"猛将の攻刃": "fire",
     u"エレクトリックな攻刃": "wind",
     u"リゾートの攻刃": "light",
-    u"開封の攻刃": "water"
+    u"開封の攻刃": "water",
+    u"英霊の攻刃": "fire",
 }
 
 skillnamelist["exATKandHPM"] = {

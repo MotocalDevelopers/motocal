@@ -1424,7 +1424,7 @@ var multiLangData = {
         "zh": "Keen Buff (V. Grimnir etc.)"
     },
     "巌迫の秘奥": {
-        "en": "Normal Mystery (LL)",
+        "en": "Normal Mystery (Massive)",
         "zh": "巌迫の秘奥",
         "ja": "巌迫の秘奥"
     },
@@ -1747,6 +1747,11 @@ var multiLangData = {
         "en": "Normal Element ATK M",
         "ja": "通常進境(中)(最大時)",
         "zh": "通常属性攻击力(中)",
+    },
+    "マグナ進境(中)(最大時)": {
+        "en": "Magna Element ATK M",
+        "ja": "マグナ進境(中)(最大時)",
+        "zh": "方阵属性攻击力(中)",
     },
     "通常進境(大)(最大時)": {
         "en": "Normal Element ATK L",
@@ -2313,10 +2318,15 @@ var multiLangData = {
         "ja": "HP15%UP(ペコリーヌ)",
         "zh": "HP15%UP(ペコリーヌ)",
     },
-    "HP20%UP(ソリッズ, ファスティバ(SSR))": {
-        "en": "20% boost to max HP. (Soriz, Ladiva(SSR))",
-        "ja": "HP20%UP(ソリッズ, ファスティバ(SSR))",
-        "zh": "HP20%UP(ソリッズ, ファスティバ(SSR))",
+    "HP20%UP(ファスティバ(SSR))": {
+        "en": "20% boost to max HP. (Ladiva(SSR))",
+        "ja": "HP20%UP(ファスティバ(SSR))",
+        "zh": "HP20%UP(ファスティバ(SSR))",
+    },
+    "HP30%UP(ソリッズ)": {
+        "en": "30% boost to max HP. (Soriz)",
+        "ja": "HP30%UP(ソリッズ)",
+        "zh": "HP30%UP(ソリッズ)",
     },
     "攻撃5%UP(レディグレイ)": {
         "en": "5% boost to ATK. (Lady Grey)",
@@ -3100,6 +3110,11 @@ var multiLangData = {
         "en": "Normal Fandango (S)",
         "ja": "通常乱舞(小)",
         "zh": "通常乱舞(小)",
+    },
+    "通常乱舞(中)": {
+        "en": "Normal Fandango (M)",
+        "ja": "通常乱舞(中)",
+        "zh": "通常乱舞(中)",
     },
     "通常秘奥(小)": {
         "en": "Normal Mystery (S)",

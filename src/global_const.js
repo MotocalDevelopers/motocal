@@ -830,18 +830,18 @@ var skilltypes = {
     "normalL": {name: "通常攻刃(大)", type: "normal", amount: "L"},
     "normalLL": {name: "通常攻刃II", type: "normal", amount: "LL"},
     "normalLLM": {name: "通常攻刃III", type: "normal", amount: "LLM"},
-    "normalLLLL": {name: "劫風の攻刃", type: "normal", amount: "LLLL"},
+    "normalLLLL": {name: "劫風の攻刃", type: "normalOther", amount: "LLLL"},
     "normalBoukunL": {name: "通常暴君", type: "normalBoukun", amount: "L"},
     "normalBoukunLLL": {name: "通常暴君II", type: "normalBoukun", amount: "LLL"},
     "normalSoka": {name: "通常楚歌", type: "normalSoka", amount: "M"},
     "normalHaisuiS": {name: "通常背水(小)", type: "normalHaisui", amount: "S"},
     "normalHaisuiM": {name: "通常背水(中)", type: "normalHaisui", amount: "M"},
     "normalHaisuiL": {name: "通常背水(大)", type: "normalHaisui", amount: "L"},
-    "normalHaisuiLL": {name: "通常背水(特大)", type: "normalHaisui", amount: "LL"},
+    "normalHaisuiLL": {name: "通常背水(特大)", type: "normalOtherHaisui", amount: "LL"},
     "normalKonshinS": {name: "通常渾身(小)", type: "normalKonshin", amount: "S"},
     "normalKonshinM": {name: "通常渾身(中)", type: "normalKonshin", amount: "M"},
     "normalKonshinL": {name: "通常渾身(大)", type: "normalKonshin", amount: "L"},
-    "normalKonshinLL": {name: "通常渾身(特大)", type: "normalKonshin", amount: "LL"},
+    "normalKonshinLL": {name: "通常渾身(特大)", type: "normalOtherKonshin", amount: "LL"},
     "normalOtherKonshinL": {name: "通常渾身(大)(神石加護無効)", type: "normalOtherKonshin", amount: "L"},
     "normalNiteS": {name: "通常二手(小)", type: "normalNite", amount: "S"},
     "normalNiteM": {name: "通常二手(中)", type: "normalNite", amount: "M"},
@@ -849,7 +849,7 @@ var skilltypes = {
     "normalSanteS": {name: "通常三手(小)", type: "normalSante", amount: "S"},
     "normalSanteM": {name: "通常三手(中)", type: "normalSante", amount: "M"},
     "normalSanteL": {name: "通常三手(大)", type: "normalSante", amount: "L"},
-    "normalSanteLL": {name: "通常三手(特大)", type: "normalSante", amount: "LLL"},
+    "normalSanteLL": {name: "通常三手(特大)", type: "normalOtherSante", amount: "LLL"},
     "normalKatsumiS": {name: "通常克己(小)", type: "normalKatsumi", amount: "S"},
     "normalKatsumiM": {name: "通常克己(中)", type: "normalKatsumi", amount: "M"},
     "normalKamui": {name: "通常神威(小)", type: "normalKamui", amount: "S"},
@@ -861,11 +861,12 @@ var skilltypes = {
     "normalMusouLL": {name: "通常無双II", type: "normalMusou", amount: "LL"},
     "normalJinkaiS": {name: "通常刃界(小)", type: "normalJinkai", amount: "S"},
     "normalRanbuS": {name: "通常乱舞(小)", type: "normalRanbu", amount: "S"},
+    "normalRanbuM": {name: "通常乱舞(中)", type: "normalRanbu", amount: "M"},
     "normalCriticalS": {name: "通常技巧(小)", type: "normalCritical", amount: "S"},
     "normalCriticalM": {name: "通常技巧(中)", type: "normalCritical", amount: "M"},
     "normalCriticalL": {name: "通常技巧(大)", type: "normalCritical", amount: "L"},
     "normalCriticalLL": {name: "通常技巧II", type: "normalCritical", amount: "LL"},
-    "normalCriticalLLL": {name: "水禍の技巧", type: "normalCritical", amount: "LLL"},
+    "normalCriticalLLL": {name: "水禍の技巧", type: "normalCritical2", amount: "LLL"},
     "normalSetsunaS": {name: "通常刹那(小)", type: "normalSetsuna", amount: "S"},
     "normalSetsuna": {name: "通常刹那(中)", type: "normalSetsuna", amount: "M"},
     "normalSetsunaL": {name: "通常刹那(大)", type: "normalSetsuna", amount: "L"},
@@ -873,7 +874,7 @@ var skilltypes = {
     "normalHiouS": {name: "通常秘奥(小)", type: "normalHiou", amount: "S"},
     "normalHiouM": {name: "通常秘奥(中)", type: "normalHiou", amount: "M"},
     "normalHiouL": {name: "通常秘奥(大)", type: "normalHiou", amount: "L"},
-    "normalHiouLL": {name: "巌迫の秘奥", type: "normalHiou", amount: "LL"},
+    "normalHiouLL": {name: "巌迫の秘奥", type: "normalOtherHiou", amount: "LL"},
     "normalHissatsuM": {name: "通常必殺(中)", type: "normalHissatsu", amount: "M"},
     "normalHissatsuL": {name: "通常必殺(大)", type: "normalHissatsu", amount: "L"},
     "normalEiketsuL": {name: "通常英傑(大)", type: "normalEiketsu", amount: "L"},
@@ -1044,6 +1045,7 @@ var skilltypes = {
     "dracoATK": {name: "竜進境(最大時)", type: "dracoATK", amount: 0.001},
     "normalElementM": {name: "通常進境(中)(最大時)", type: "normalElement", amount: "M"},
     "normalElementL": {name: "通常進境(大)(最大時)", type: "normalElement", amount: "L"},
+    "magnaElementM": {name: "マグナ進境(中)(最大時)", type: "magnaElement", amount: "M"},
     "tenshiShukufuku": {name: "天司の祝福", type: "tenshiShukufuku", amount: "M"},
     "tenshiShukufukuII": {name: "天司の祝福II", type: "tenshiShukufuku", amount: "L"},
     "tenshiShukufukuIII": {name: "天司の祝福III", type: "tenshiShukufuku", amount: "LL"},
@@ -2006,7 +2008,9 @@ var skillAmounts = {
     },
     "normalRanbu": {
         //only TA effect
-        "S": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
+        "S": [0.18, 0.31, 0.44, 0.57, 0.7, 0.83, 0.96, 1.09, 1.22, 1.35, 1.48, 1.61, 1.74, 1.87, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+        // FIXME: Values taken from normal multiattack small, real values currently unknown
+        "M": [0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.46, 2.72, 2.98, 3.24, 3.5, 3.66, 3.82, 3.98, 4.14, 4.3],
     },
     "magnaRanbu": {
         //only TA effect
@@ -2172,10 +2176,16 @@ var supportAbilities = {
         "value": 0.15
     },
     "hp_up_own_20": {
-        "name": "HP20%UP(ソリッズ, ファスティバ(SSR))",
+        "name": "HP20%UP(ファスティバ(SSR))",
         "type": "HPBuff",
         "range": "own",
         "value": 0.20
+    },
+    "hp_up_own_30": {
+        "name": "HP30%UP(ソリッズ)",
+        "type": "HPBuff",
+        "range": "own",
+        "value": 0.30
     },
     "atk_up_own_5": {
         "name": "攻撃5%UP(レディグレイ)",
