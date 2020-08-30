@@ -7259,7 +7259,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040703400.png",
-        "en": "Ancient Artemis"
+        "en": "Ancient Bow of Artemis"
     },
     "[4凸]オールド・アルテミス": {
         "ja": "[4凸]オールド・アルテミス",
@@ -7280,7 +7280,7 @@
         "hplv100": 212,
         "attacklv100": 2321,
         "imageURL": "./imgs/1040703400.png",
-        "en": "[4★] Ancient Artemis"
+        "en": "[4★] Ancient Bow of Artemis"
     },
     "オールド・ペルセウス": {
         "ja": "オールド・ペルセウス",
@@ -9594,7 +9594,7 @@
         "slvmax": 10,
         "maxlv": 100,
         "imageURL": "./imgs/1040703500.png",
-        "en": "Artemis"
+        "en": "Bow of Artemis"
     },
     "[4凸]アルテミス": {
         "ja": "[4凸]アルテミス",
@@ -9615,7 +9615,7 @@
         "hplv100": 212,
         "attacklv100": 2321,
         "imageURL": "./imgs/1040703500.png",
-        "en": "[4★] Artemis"
+        "en": "[4★] Bow of Artemis"
     },
     "ペルセウス": {
         "ja": "ペルセウス",

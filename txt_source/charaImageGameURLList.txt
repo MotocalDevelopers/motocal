@@ -210,7 +210,7 @@ http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040102000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040101000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040100000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040099000_01.png
-http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040098000_01.png
+http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040098000_03.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040096000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040095000_01.png
 http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/3040094000_01.png

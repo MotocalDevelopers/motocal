@@ -605,6 +605,7 @@ patchingOugiRatio["ヴェイン(SSR)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["イオ(リミテッドver)"] = {"ougiRatio": 5.0}
 patchingOugiRatio["アオイドス"] = {"ougiRatio": 5.0}
 patchingOugiRatio["クリスティーナ"] = {"ougiRatio": 5.0}
+patchingOugiRatio["ロミオ"] = {"ougiRatio": 5.0}
 
 # SSR (Guardian Deity 5★) (最終十二神将)
 patchingOugiRatio["アンチラ"] = {"ougiRatio": 5.5}
@@ -941,6 +942,7 @@ if __name__ == '__main__':
         r = re.sub('3030172000_03.png', '3030172000_03_full.png', r)
         r = re.sub('3030197000_03.png', '3030197000_03_full.png', r)
         r = re.sub('3030224000_03.png', '3030224000_03_full.png', r)
+        r = re.sub('3040098000_03.png', '3040098000_03_full.png', r)
         f.write(r)
     f.close()
 
