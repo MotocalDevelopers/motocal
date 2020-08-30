@@ -433,6 +433,16 @@ var RegisteredArm = CreateClass({
                     arm["skill2"] = "non";
                     arm["skill3"] = "non";
                 }
+            } else if (additionalKeys === "main_weapon_switch1") {
+                // The skill that turns off the effect at the time of main equipment is placed second and third
+                if (!this.state.main_weapon_switch) {
+                    arm["skill1"] = "non";
+                }
+            } else if (additionalKeys === "main_weapon_switch2") {
+                // The skill that turns off the effect at the time of main equipment is placed second and third
+                if (!this.state.main_weapon_switch) {
+                    arm["skill2"] = "non";
+                }
             } else if (additionalKeys === "main_weapon_switch_all") {
                 // The skill that turns off the effect at the time of main equipment is placed first, second and third
                 if (!this.state.main_weapon_switch_all) {
