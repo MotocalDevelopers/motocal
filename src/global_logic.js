@@ -777,7 +777,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var damageLimit = buff["damageLimit"];
         damageLimit += totals[key]["damageLimitBuff"];
         damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"] + totals[key]["cosmosNormalDamageLimit"]);
-        damageLimit += Math.min(0.10, totals[key]["omegaNormalDamageLimit"]);
+        damageLimit += Math.min(0.10, Math.max(totals[key]["omegaNormalDamageLimit"], totals[key]["astralClaw"] * (1 - ((1.0 - taRate) * (1.0 - daRate)))));
         damageLimit += totals[key]["caimDamageLimit"];
         damageLimit += 0.01 * totalSummon["damageLimit"];
         if (totals[key]["EXLB"]["WED"]) {
@@ -2416,6 +2416,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             }
                         } else if (stype == "astralecho") {
                             astralEcho = Math.min(0.1, arm.skill2Detail * amount);
+                        } else if (stype == "astralclaw") {
+                            totals[key]["astralClaw"] = amount;
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -2425,8 +2427,12 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
         }
 
         // Astral Echo Bonus applies if there is no alpha key
-        if(!isOmegaIncluded["alpha"] && astralEcho > 0) {
-            totals[key]['omegaNormalDamageLimit'] += astralEcho;
+        if(!isOmegaIncluded["alpha"]) {
+            if(astralEcho > 0) {
+                totals[key]['omegaNormalDamageLimit'] += astralEcho;
+            }
+        } else {
+            totals[key]['astralClaw'] = 0;
         }
 
         // new epic 2nd skills
@@ -2735,7 +2741,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuffOnCritical: [],
                 supplementalDamageBuffOnOugi: [],
                 supplementalDamageBuffOnEmnity: [],
-                supplementalDamageBuffOnMulti: []
+                supplementalDamageBuffOnMulti: [],
+                astralClaw: false
             }
     };
 
@@ -2934,7 +2941,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuffOnCritical: [],
                 supplementalDamageBuffOnOugi: [],
                 supplementalDamageBuffOnEmnity: [],
-                supplementalDamageBuffOnMulti: []
+                supplementalDamageBuffOnMulti: [],
+                astralClaw: false
             };
         }
     }

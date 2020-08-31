@@ -1192,6 +1192,9 @@ skillnamelist["astralthrust"] = {
 skillnamelist["astralecho"] = {
     u"アストラル・エコー": "wind"
 }
+skillnamelist["astralclaw"] = {
+    u"アストラル・クロー": "dark"
+}
 
 # Character specific weapon
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}

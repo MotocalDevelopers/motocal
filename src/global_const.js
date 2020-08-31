@@ -1083,7 +1083,8 @@ var skilltypes = {
     "supplementalStaminaOugi": {name: "黒の誓約", type: "supplementalStaminaOugi", amount: {min:100000, coeff:500000}},
     "astralblow": {name:"アストラル・ブロー", type: "astralblow", amount: [0, 0, 0.10]},
     "astralthrust": {name:"アストラル・スラスト", type: "astralthrust", amount: 0.10},
-    "astralecho": {name:"アストラル・エコー", type: "astralecho", amount: 0.01}
+    "astralecho": {name:"アストラル・エコー", type: "astralecho", amount: 0.01},
+    "astralclaw": {name:"アストラル・クロー", type: "astralclaw", amount: 0.1},
 };
 
 // additional selection when template is selected
@@ -3184,6 +3185,13 @@ module.exports.additionalSelectList = {
         selectors: ["victorious_calamitous_covenant"],
         defaultKeys: [0],
     },
+    "[4凸]黒銀の滅爪": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch2"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
+    }
 };
 
 
