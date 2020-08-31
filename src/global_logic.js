@@ -1804,6 +1804,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
             "delta": false,
         };
 
+        // Holder for astral echo
+        let astralEcho = 0;
+
         for (var i = 0; i < arml.length; i++) {
             if (comb[i] != 0) {
                 var arm = arml[i];
@@ -2411,12 +2414,19 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                                     isOmegaIncluded["alpha"] = true;
                                 }
                             }
+                        } else if (stype == "astralecho") {
+                            astralEcho = Math.min(0.1, arm.skill2Detail * amount);
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
                     }
                 }
             }
+        }
+
+        // Astral Echo Bonus applies if there is no alpha key
+        if(!isOmegaIncluded["alpha"] && astralEcho > 0) {
+            totals[key]['omegaNormalDamageLimit'] += astralEcho;
         }
 
         // new epic 2nd skills

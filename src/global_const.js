@@ -1082,7 +1082,8 @@ var skilltypes = {
     "supplementalMulti": {name: "白の誓約", type: "supplementalMulti", amount: [30000, 60000, 100000]},
     "supplementalStaminaOugi": {name: "黒の誓約", type: "supplementalStaminaOugi", amount: {min:100000, coeff:500000}},
     "astralblow": {name:"アストラル・ブロー", type: "astralblow", amount: [0, 0, 0.10]},
-    "astralthrust": {name:"アストラル・スラスト", type: "astralthrust", amount: 0.10}
+    "astralthrust": {name:"アストラル・スラスト", type: "astralthrust", amount: 0.10},
+    "astralecho": {name:"アストラル・エコー", type: "astralecho", amount: 0.01}
 };
 
 // additional selection when template is selected
@@ -1092,7 +1093,8 @@ module.exports.skillDetails = {
     'shinTenNoInori': 'shinTenNoInori',
     'slaysnakes_myth': 'slaysnakes_myth',
     'slaysnakes_mythII': 'slaysnakes_myth',
-    'astralthrust': 'astralthrust'
+    'astralthrust': 'astralthrust',
+    'astralecho': 'victorious_calamitous_covenant'
 };
 
 var skillDetailsDescription = {
@@ -1100,7 +1102,8 @@ var skillDetailsDescription = {
     'calamitous-covenant': '敵の弱体効果',
     'shinTenNoInori': '累積の数',
     'slaysnakes_myth': '累積の数',
-    'astralthrust': 'デバフ数（> 5）'
+    'astralthrust': 'デバフ数（> 5）',
+    'astralecho': 'ジータバフの数'
 };
 
 var victorious_calamitous_covenant = {
@@ -3158,14 +3161,28 @@ module.exports.additionalSelectList = {
         notationText: "",
         selectKeys: ["main_weapon_switch2", "skill2Detail"],
         selectors: ["mainWeapon", "astralthrust"],
-        defaultKeys: [0, "0"],
+        defaultKeys: [0, 0],
     },
     "[5凸]フェイトレス": {
         selectKeysNotation: skillDetailsDescription['astralthrust'],
         notationText: "",
         selectKeys: ["skill2Detail"],
         selectors: ["astralthrust"],
-        defaultKeys: ["0"],
+        defaultKeys: [0],
+    },
+    "[4凸]イノセント・ラヴ": {
+        selectKeysNotation: skillDetailsDescription['victorious-covenant'],
+        notationText: "",
+        selectKeys: ["main_weapon_switch2", "skill2Detail"],
+        selectors: ["mainWeapon", "victorious_calamitous_covenant"],
+        defaultKeys: [0, 0],
+    },
+    "[5凸]イノセント・ラヴ": {
+        selectKeysNotation: skillDetailsDescription['victorious-covenant'],
+        notationText: "",
+        selectKeys: ["skill2Detail"],
+        selectors: ["victorious_calamitous_covenant"],
+        defaultKeys: [0],
     },
 };
 

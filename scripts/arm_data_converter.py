@@ -1186,9 +1186,11 @@ skillnamelist["epic-absoluteEquality"] = {
 skillnamelist["astralblow"] = {
     u"アストラル・ブロー": "fire"
 }
-
 skillnamelist["astralthrust"] = {
     u"アストラル・スラスト": "water"
+}
+skillnamelist["astralecho"] = {
+    u"アストラル・エコー": "wind"
 }
 
 # Character specific weapon
