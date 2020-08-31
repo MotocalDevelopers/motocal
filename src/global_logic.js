@@ -2404,6 +2404,13 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                             totals[key]['supplementalDamageBuffOnOugi'].push({source: skilltypes[skillname].name, limit: newAmount})
                         } else if (stype == "astralblow") {
                             totals[key]['additionalDamageXAAstral'] = amount;
+                        } else if (stype == "astralthrust") {
+                            if (arm.skill2Detail) {
+                                if(!isOmegaIncluded["alpha"]) {
+                                    totals[key]['omegaNormalDamageLimit'] += amount;
+                                    isOmegaIncluded["alpha"] = true;
+                                }
+                            }
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }

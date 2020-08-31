@@ -1081,7 +1081,8 @@ var skilltypes = {
     "supplementalOugi": {name: "金の誓約", type: "supplementalOugi", amount: 400000},
     "supplementalMulti": {name: "白の誓約", type: "supplementalMulti", amount: [30000, 60000, 100000]},
     "supplementalStaminaOugi": {name: "黒の誓約", type: "supplementalStaminaOugi", amount: {min:100000, coeff:500000}},
-    "astralblow": {name:"アストラル・ブロー", type: "astralblow", amount: [0, 0, 0.10]}
+    "astralblow": {name:"アストラル・ブロー", type: "astralblow", amount: [0, 0, 0.10]},
+    "astralthrust": {name:"アストラル・スラスト", type: "astralthrust", amount: 0.10}
 };
 
 // additional selection when template is selected
@@ -1091,6 +1092,7 @@ module.exports.skillDetails = {
     'shinTenNoInori': 'shinTenNoInori',
     'slaysnakes_myth': 'slaysnakes_myth',
     'slaysnakes_mythII': 'slaysnakes_myth',
+    'astralthrust': 'astralthrust'
 };
 
 var skillDetailsDescription = {
@@ -1098,6 +1100,7 @@ var skillDetailsDescription = {
     'calamitous-covenant': '敵の弱体効果',
     'shinTenNoInori': '累積の数',
     'slaysnakes_myth': '累積の数',
+    'astralthrust': 'デバフ数（> 5）'
 };
 
 var victorious_calamitous_covenant = {
@@ -1129,6 +1132,10 @@ var slaysnakes_myth = {
     "4": 4,
     "5": 5,
 };
+var astralthrust = {
+    "False": 0,
+    "True": 1
+}
 
 var sishoSeiryu = {
     "non": {name: "無し", type: "non", amount: "non"},
@@ -3146,6 +3153,20 @@ module.exports.additionalSelectList = {
         selectors: ["mainWeapon"],
         defaultKeys: [0],
     },
+    "[4凸]フェイトレス": {
+        selectKeysNotation: skillDetailsDescription['astralthrust'],
+        notationText: "",
+        selectKeys: ["main_weapon_switch2", "skill2Detail"],
+        selectors: ["mainWeapon", "astralthrust"],
+        defaultKeys: [0, "0"],
+    },
+    "[5凸]フェイトレス": {
+        selectKeysNotation: skillDetailsDescription['astralthrust'],
+        notationText: "",
+        selectKeys: ["skill2Detail"],
+        selectors: ["astralthrust"],
+        defaultKeys: ["0"],
+    },
 };
 
 
@@ -3295,6 +3316,16 @@ module.exports.selector.en.victorious_calamitous_covenant = Object.keys(victorio
 });
 module.exports.selector.zh.victorious_calamitous_covenant = Object.keys(victorious_calamitous_covenant).map(function (key) {
     return <option value={key} key={key}>{key}</option>;
+});
+
+module.exports.selector.ja.astralthrust = Object.keys(astralthrust).map(function (key, value) {
+    return <option value={value} key={value}>{key}</option>;
+});
+module.exports.selector.en.astralthrust = Object.keys(astralthrust).map(function (key, value) {
+    return <option value={value} key={value}>{key}</option>;
+});
+module.exports.selector.zh.astralthrust = Object.keys(astralthrust).map(function (key, value) {
+    return <option value={value} key={value}>{key}</option>;
 });
 
 module.exports.selector.ja.shinTenNoInori = Object.keys(shinTenNoInori).map(function (key) {
