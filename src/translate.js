@@ -3956,6 +3956,12 @@ var multiLangData = {
         "ja": "災禍の誓約",
         "zh": "災禍の誓約",
     },
+    // Astral Weapons
+    "アストラル・ブロー": {
+        "en": "Astral Blow",
+        "ja": "アストラル・ブロー",
+        "zh": "アストラル・ブロー",
+    },
     "パープル・ブロウ": {
         "en": "Bonus Damage on 3rd Attack (%20)",
         "ja": "3回目の攻撃に闇属性追撃効果 (20%)",

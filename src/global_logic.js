@@ -763,6 +763,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             additionalDamage += (1.0 - taRate) * daRate * daDamage; // additionalDamage On Double Attack
             additionalDamage += (1.0 - taRate) * (1.0 - daRate) * saDamage; // additionalDamage On Single Attack
         }
+        if (this.sum(totals[key]["additionalDamageXAAstral"]) > 0) {
+            let [saDamage, daDamage, taDamage] = totals[key]["additionalDamageXAAstral"];
+            additionalDamage += taRate * taDamage; // additionalDamage On Triple Attack
+            additionalDamage += (1.0 - taRate) * daRate * daDamage; // additionalDamage On Double Attack
+            additionalDamage += (1.0 - taRate) * (1.0 - daRate) * saDamage; // additionalDamage On Single Attack
+        }
         if (totals[key]['echoThirdHit'] > 0 && taRate > 0) {
             additionalDamage += totals[key]['echoThirdHit'] * taRate / 3
         }
@@ -1109,7 +1115,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["hpRatio"] = hpCoeff;
         coeffs["ougiGageBuff"] = ougiGageBuff - 1.0;
         coeffs["additionalDamage"] = additionalDamage;
-        coeffs["additionalDamageXA"] = this.sum(totals[key]["additionalDamageXA"]) > 0 ? totals[key]["additionalDamageXA"] : null;
+        coeffs["additionalDamageXA"] = (this.sum(totals[key]["additionalDamageXA"]) + this.sum(totals[key]["additionalDamageXAAstral"])) > 0 ? totals[key]["additionalDamageXA"].map((a, b) => (a + totals[key]["additionalDamageXAAstral"][b])) : null;
         coeffs["ougiDamageUP"] = ougiDamageUP;
         coeffs["chainDamageUP"] = chainDamageUP;
         coeffs["damageUP"] = damageUP;
@@ -2396,6 +2402,8 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'supplementalStaminaOugi') {
                             let newAmount = Math.ceil(amount.coeff * (totals[key]["remainHP"]) + amount.min)
                             totals[key]['supplementalDamageBuffOnOugi'].push({source: skilltypes[skillname].name, limit: newAmount})
+                        } else if (stype == "astralblow") {
+                            totals[key]['additionalDamageXAAstral'] = amount;
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
@@ -2656,6 +2664,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
                 additionalDamageXA: [0, 0, 0],
+                additionalDamageXAAstral: [0, 0, 0],
                 superAdditionalDamage: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: true,
@@ -2855,6 +2864,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
                 additionalDamageXA: [0, 0, 0],
+                additionalDamageXAAstral: [0, 0, 0],
                 superAdditionalDamage: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,

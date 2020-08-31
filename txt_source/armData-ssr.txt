@@ -1,4 +1,4 @@
-|&attachref(img/1040311800.png,15%);|ソル・レムナント|&color(#ff0000){火};|斧|60|[[プロミネンスピラー>武器奥義#prominencepillar]]|[[紅炎の支配者>スキル一覧#kouennoshihaisya]]|[[アストラル・ブロー>スキル一覧#astralblow]]|27|405|176|2453|グラブルVSのDLC特典|アストラルウェポン||
+|&attachref(img/1040311800.png,15%);|ソル・レムナント|&color(#ff0000){火};|斧|60|[[プロミネンスピラー>武器奥義#prominencepillar]]|[[紅炎の支配者>スキル一覧#kouennoshihaisya]]||27|405|176|2453|グラブルVSのDLC特典|アストラルウェポン||
 |&attachref(img/1040311800.png,15%);|[4凸]ソル・レムナント|&color(#ff0000){火};|斧|60|[[プロミネンスピラー>武器奥義#prominencepillar]]|[[紅炎の支配者>スキル一覧#kouennoshihaisya]]|[[アストラル・ブロー>スキル一覧#astralblow]]|27|405|206|2863|グラブルVSのDLC特典|アストラルウェポン|○|176|2453|
 |&attachref(img/1040311800.png,15%);|[5凸]ソル・レムナント|&color(#ff0000){火};|斧|60|[[プロミネンスピラー>武器奥義#prominencepillar]]|[[紅炎の支配者>スキル一覧#kouennoshihaisya]]|[[アストラル・ブロー>スキル一覧#astralblow]]|27|405|236|3272|グラブルVSのDLC特典|アストラルウェポン|◎|176|2453|206|2863|
 |&attachref(img/1040019700.png,15%);|フェイトレス|&color(#3366ff){水};|剣|60|[[アイシクルスティング>武器奥義#iciclesting]]|[[氷霜の支配者>スキル一覧#hyousounoshihaisya]]|[[アストラル・スラスト>スキル一覧#astralslast]]|34|367|202|2322|グラブルVSのDLC特典|アストラルウェポン||

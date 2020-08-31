@@ -1081,6 +1081,7 @@ var skilltypes = {
     "supplementalOugi": {name: "金の誓約", type: "supplementalOugi", amount: 400000},
     "supplementalMulti": {name: "白の誓約", type: "supplementalMulti", amount: [30000, 60000, 100000]},
     "supplementalStaminaOugi": {name: "黒の誓約", type: "supplementalStaminaOugi", amount: {min:100000, coeff:500000}},
+    "astralblow": {name:"アストラル・ブロー", type: "astralblow", amount: [0, 0, 0.10]}
 };
 
 // additional selection when template is selected
@@ -3136,6 +3137,14 @@ module.exports.additionalSelectList = {
         selectKeys: ["main_weapon_switch2", "elements", "skill2Detail"],
         selectors: ["mainWeapon", "elements", "slaysnakes_myth"],
         defaultKeys: [0, "light", "0"],
+    },
+    // Astral Weapons
+    "[4凸]ソル・レムナント": {
+        selectKeysNotation: "",
+        notationText: "",
+        selectKeys: ["main_weapon_switch2"],
+        selectors: ["mainWeapon"],
+        defaultKeys: [0],
     },
 };
 
