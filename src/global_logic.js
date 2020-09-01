@@ -763,6 +763,12 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             additionalDamage += (1.0 - taRate) * daRate * daDamage; // additionalDamage On Double Attack
             additionalDamage += (1.0 - taRate) * (1.0 - daRate) * saDamage; // additionalDamage On Single Attack
         }
+        if (this.sum(totals[key]["additionalDamageXAAstral"]) > 0) {
+            let [saDamage, daDamage, taDamage] = totals[key]["additionalDamageXAAstral"];
+            additionalDamage += taRate * taDamage; // additionalDamage On Triple Attack
+            additionalDamage += (1.0 - taRate) * daRate * daDamage; // additionalDamage On Double Attack
+            additionalDamage += (1.0 - taRate) * (1.0 - daRate) * saDamage; // additionalDamage On Single Attack
+        }
         if (totals[key]['echoThirdHit'] > 0 && taRate > 0) {
             additionalDamage += totals[key]['echoThirdHit'] * taRate / 3
         }
@@ -771,7 +777,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var damageLimit = buff["damageLimit"];
         damageLimit += totals[key]["damageLimitBuff"];
         damageLimit += Math.min(0.20, totals[key]["normalDamageLimit"] + totals[key]["cosmosNormalDamageLimit"]);
-        damageLimit += Math.min(0.10, totals[key]["omegaNormalDamageLimit"]);
+        damageLimit += Math.min(0.10, Math.max(totals[key]["omegaNormalDamageLimit"], totals[key]["astralClaw"] * (1 - ((1.0 - taRate) * (1.0 - daRate)))));
         damageLimit += totals[key]["caimDamageLimit"];
         damageLimit += 0.01 * totalSummon["damageLimit"];
         if (totals[key]["EXLB"]["WED"]) {
@@ -1109,7 +1115,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         coeffs["hpRatio"] = hpCoeff;
         coeffs["ougiGageBuff"] = ougiGageBuff - 1.0;
         coeffs["additionalDamage"] = additionalDamage;
-        coeffs["additionalDamageXA"] = this.sum(totals[key]["additionalDamageXA"]) > 0 ? totals[key]["additionalDamageXA"] : null;
+        coeffs["additionalDamageXA"] = (this.sum(totals[key]["additionalDamageXA"]) + this.sum(totals[key]["additionalDamageXAAstral"])) > 0 ? totals[key]["additionalDamageXA"].map((a, b) => (a + totals[key]["additionalDamageXAAstral"][b])) : null;
         coeffs["ougiDamageUP"] = ougiDamageUP;
         coeffs["chainDamageUP"] = chainDamageUP;
         coeffs["damageUP"] = damageUP;
@@ -1798,6 +1804,9 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
             "delta": false,
         };
 
+        // Holder for astral echo
+        let astralEcho = 0;
+
         for (var i = 0; i < arml.length; i++) {
             if (comb[i] != 0) {
                 var arm = arml[i];
@@ -2396,12 +2405,34 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == 'supplementalStaminaOugi') {
                             let newAmount = Math.ceil(amount.coeff * (totals[key]["remainHP"]) + amount.min)
                             totals[key]['supplementalDamageBuffOnOugi'].push({source: skilltypes[skillname].name, limit: newAmount})
+                        } else if (stype == "astralblow") {
+                            totals[key]['additionalDamageXAAstral'] = amount;
+                        } else if (stype == "astralthrust") {
+                            if (arm.skill2Detail == 1) {
+                                if(!isOmegaIncluded["alpha"]) {
+                                    totals[key]['omegaNormalDamageLimit'] += amount;
+                                    isOmegaIncluded["alpha"] = true;
+                                }
+                            }
+                        } else if (stype == "astralecho") {
+                            astralEcho = Math.min(0.1, arm.skill2Detail * amount);
+                        } else if (stype == "astralclaw") {
+                            totals[key]["astralClaw"] = amount;
                         } else {
                             totals[key][stype] += comb[i] * skillAmounts[stype][amount][slv - 1];
                         }
                     }
                 }
             }
+        }
+
+        // Astral Echo Bonus applies if there is no alpha key
+        if(!isOmegaIncluded["alpha"]) {
+            if(astralEcho > 0) {
+                totals[key]['omegaNormalDamageLimit'] += astralEcho;
+            }
+        } else {
+            totals[key]['astralClaw'] = 0;
         }
 
         // new epic 2nd skills
@@ -2656,6 +2687,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
                 additionalDamageXA: [0, 0, 0],
+                additionalDamageXAAstral: [0, 0, 0],
                 superAdditionalDamage: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: true,
@@ -2709,7 +2741,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuffOnCritical: [],
                 supplementalDamageBuffOnOugi: [],
                 supplementalDamageBuffOnEmnity: [],
-                supplementalDamageBuffOnMulti: []
+                supplementalDamageBuffOnMulti: [],
+                astralClaw: false
             }
     };
 
@@ -2855,6 +2888,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 normalChainDamageLimit: 0,
                 additionalDamage: 0,
                 additionalDamageXA: [0, 0, 0],
+                additionalDamageXAAstral: [0, 0, 0],
                 superAdditionalDamage: 0,
                 ougiDebuff: 0,
                 isConsideredInAverage: charaConsidered,
@@ -2907,7 +2941,8 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 supplementalDamageBuffOnCritical: [],
                 supplementalDamageBuffOnOugi: [],
                 supplementalDamageBuffOnEmnity: [],
-                supplementalDamageBuffOnMulti: []
+                supplementalDamageBuffOnMulti: [],
+                astralClaw: false
             };
         }
     }

@@ -1182,6 +1182,19 @@ skillnamelist["epic-absoluteEquality"] = {
     u"ソール・イコーリティ": "dark",
 }
 
+# Astral Weapons
+skillnamelist["astralblow"] = {
+    u"アストラル・ブロー": "fire"
+}
+skillnamelist["astralthrust"] = {
+    u"アストラル・スラスト": "water"
+}
+skillnamelist["astralecho"] = {
+    u"アストラル・エコー": "wind"
+}
+skillnamelist["astralclaw"] = {
+    u"アストラル・クロー": "dark"
+}
 
 # Character specific weapon
 skillnamelist["tsuranukiKiba"] = {u"貫きの牙": "fire"}
