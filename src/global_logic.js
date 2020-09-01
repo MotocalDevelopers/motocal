@@ -2408,7 +2408,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                         } else if (stype == "astralblow") {
                             totals[key]['additionalDamageXAAstral'] = amount;
                         } else if (stype == "astralthrust") {
-                            if (arm.skill2Detail) {
+                            if (arm.skill2Detail == 1) {
                                 if(!isOmegaIncluded["alpha"]) {
                                     totals[key]['omegaNormalDamageLimit'] += amount;
                                     isOmegaIncluded["alpha"] = true;
