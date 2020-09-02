@@ -21450,6 +21450,25 @@
         "imageURL": "./imgs/1040812900.png",
         "en": "My Little Mim"
     },
+    "オフィーリア": {
+        "ja": "オフィーリア",
+        "element": "water",
+        "type": "music",
+        "skill1": "normalKamui",
+        "skill2": "normalHPM",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 55,
+        "minattack": 314,
+        "hp": 325,
+        "attack": 1953,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 100,
+        "imageURL": "./imgs/1040813000.png",
+        "en": "Ophelia"
+    },
     "丙子椒林剣": {
         "ja": "丙子椒林剣",
         "element": "earth",
