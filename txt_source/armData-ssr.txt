@@ -743,6 +743,8 @@
 |&attachref(img/1040213900.png,15%);|グレートスピア|&color(#993300){土};|槍|10|[[マーセナリースティング>武器奥義#mercenarysting]]|[[地裂の攻刃>スキル一覧#tiretunokoujin]]|[[大地の治癒>スキル一覧#daichinotiyu]]|47|363|262|2276|[[ヘリヤ(SSR) (SSR)]]加入|レジェンドガチャ||
 |&attachref(img/1040214600.png,15%);|戦舞の矛|&color(#ff0000){火};|槍|10|[[無双戦舞>武器奥義#musousenbu]]|[[猛将の攻刃>スキル一覧#mousyounokoujin]]|[[万夫不当>スキル一覧#banpuhutou]]|35|290|210|1840|窮寇迫ること勿れ|イベント||
 |&attachref(img/1040214800.png,15%);|フライングA|&color(#339966){風};|槍|10|[[ディストーションスタブ>武器奥義#distortionstab]]|[[エレクトリックな攻刃>スキル一覧#electoric]]|[[チョーキング>スキル一覧#choking]]|28|322|202|1869|The End of THE DOSS|イベント||
+|&attachref(img/1040813100.png,15%);|ゼカリヤ|&color(#990099){闇};|楽器|120|[[プロフェシー・サウンズ>武器奥義#profesi]]|[[黒霧方陣・渾身II>スキル一覧#kurogirihoujinkonshin2]]|[[黒霧方陣・守護>スキル一覧#kurogirihoujinsyugo]]|46|325|298|1995|アバターHL討伐戦|レガリアシリーズ||
+|&attachref(img/1040813100.png,15%);|[4凸]ゼカリヤ|&color(#990099){闇};|楽器|120|[[プロフェシー・サウンズ>武器奥義#profesi]]|[[黒霧方陣・渾身II>スキル一覧#kurogirihoujinkonshin2]]|[[黒霧方陣・守護>スキル一覧#kurogirihoujinsyugo]]|46|325|350|2330|アバターHL討伐戦|レガリアシリーズ|○|298|1995|
 |&attachref(img/1040214900.png,15%);|暇無し|&color(#3366ff){水};|槍|10|[[サニーランブル>武器奥義#sunnyrumble]]|[[霧氷の背水>スキル一覧#muhyounohaisui]]|[[コバルト・アーツ>スキル一覧#cobaltarts]]|42|388|257|2301|加入|イベント|レジェンドガチャ|
 |&attachref(img/1040215000.png,15%);|剱嶽|&color(#993300){土};|槍|50|[[一服剱>奥義一覧#ippukujin]]|[[グラウンドオブアームズ>スキル一覧#groundofarms]]|[[アンバー・アーツ>スキル一覧#amberarts]]|39|330|234|2070|ブレイブグラウンド|イベント||
 |&attachref(img/1040215000.png,15%);|[4凸]剱嶽|&color(#993300){土};|槍|50|[[一服剱>奥義一覧#ippukujin]]|[[グラウンドオブアームズ>スキル一覧#groundofarms]]|[[アンバー・アーツ>スキル一覧#amberarts]]|39|330|280|2510|ブレイブグラウンド|イベント|○|234|2070|
