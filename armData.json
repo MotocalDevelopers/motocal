@@ -28101,6 +28101,25 @@
         "imageURL": "./imgs/1030608600.png",
         "en": "Barnacle Knuckle"
     },
+    "ライフセーブグローブ": {
+        "ja": "ライフセーブグローブ",
+        "element": "water",
+        "type": "fist",
+        "skill1": "normalKatsumiS",
+        "skill2": "non",
+        "element2": "water",
+        "skill3": "non",
+        "element3": "water",
+        "minhp": 28,
+        "minattack": 275,
+        "hp": 158,
+        "attack": 1691,
+        "series": "none",
+        "slvmax": 10,
+        "maxlv": 75,
+        "imageURL": "./imgs/1030608700.png",
+        "en": "Lifeguard Glove"
+    },
     "アークエンジェルナックル": {
         "ja": "アークエンジェルナックル",
         "element": "light",
