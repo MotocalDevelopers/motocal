@@ -28,6 +28,7 @@ http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040166000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040167000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040168000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040169000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040293000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040292000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040291000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3040290000_01.png
@@ -570,3 +571,4 @@ http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030280000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030290000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030300000_01.png
 http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030310000_01.png
+http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=3030320000_01.png
