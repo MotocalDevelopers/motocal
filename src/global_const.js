@@ -922,7 +922,7 @@ var skilltypes = {
     "strengthL": {name: "EX攻刃(大)", type: "ex", amount: "L"},
     "strengthLL": {name: "EX攻刃(特大)", type: "ex", amount: "LL"},
     "strengthLLL": {name: "EX攻刃(極大)", type: "ex", amount: "LLL"},
-    "strengthLLandHPS": {name: "EX攻刃(特大)+守護(小)", type: "exATKandHP", amount: "LL-S"},
+    "strengthLLandHPS": {name: "EX攻刃(特大)+守護(小)", type: "exATKandHP", amount: "LL-M"},
     "exATKandHPM": {name: "EX攻刃+守護(中)", type: "exATKandHP", amount: "M-M"},
     "normalDamageLimit2_5": {name: "通常上限UP(2.5%)", type: "normalDamageLimit", amount: "S"},
     "normalDamageLimit7": {name: "通常上限UP(7.0%)", type: "normalDamageLimit", amount: "M"},
@@ -1964,7 +1964,7 @@ var skillAmounts = {
     },
     "exHP": {
         "S": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.4, 10.8, 11.2, 11.6, 12.0, 12.2, 12.4, 12.6, 12.8, 13.0],
-        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 16.0, 16.5, 17.0],
+        "M": [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 14.8, 15.1, 15.4, 15.7, 16.0],
         "L": [6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 15.6, 16.2, 16.8, 17.4, 18.0, 18.6, 19.2, 19.8, 20.4, 21.0],
     },
     "bahaAT": {
