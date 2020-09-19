@@ -3397,6 +3397,7 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
         "averageAttack": {"max": 0, "min": 0},
         "averageTotalExpected": {"max": 0, "min": 0},
         "averageCyclePerTurn": {"max": 0, "min": 0},
+        "averageCyclePerSecond": {"max": 0, "min": 0},
         "averageCriticalAttack": {"max": 0, "min": 0},
     };
     var cnt = 1;
