@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react'); //
 var ReactDOM = require('react-dom');
 var CreateClass = require('create-react-class');
 var AdsenseAdvertisement = CreateClass({
