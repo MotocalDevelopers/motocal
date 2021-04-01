@@ -4274,6 +4274,11 @@ var multiLangData = {
         "ja": "20.0 (プロトバハムートHL/ルシファーH)",
         "zh": "20.0 (Proto Baha HL/Lucilius H)",
     },
+    "敵防御25.0": {
+        "en": "25.0 (Unite Battle 150HELL)",
+        "ja": "25.0 (古戦場150HELL)",
+        "zh": "25.0 (Unite Battle 150HELL)",
+    },
     // chart sort key
     "ジータさん残りHP": {
         "en": "Player Remain HP",
