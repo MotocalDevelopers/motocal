@@ -1328,15 +1328,7 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
     if (haisuiType == 'normalHaisui' || haisuiType == 'magnaHaisui' || haisuiType == 'exHaisui' || haisuiType == "charaHaisui" || haisuiType === "normalSupportHaisui") {
         // Refer to https://gbf-wiki.com/index.php?%A5%B9%A5%AD%A5%EB%B8%FA%B2%CC#rdaa76d9
         // haisuiValues: Value at HP 50%
-        const haisuiValues = {
-            "S": [0.50, 1.10, 1.70, 2.30, 2.90, 3.50, 4.10, 4.70, 5.30, 6.00, 6.20, 6.40, 6.60, 6.80, 7.00, 7.10, 7.20, 7.30, 7.40, 7.50],
-            "M": [1.00, 1.75, 2.50, 3.25, 4.00, 4.75, 5.50, 6.25, 7.00, 8.00, 8.40, 8.80, 9.20, 9.60, 10.00, 10.20, 10.40, 10.60, 10.80, 11.00],
-            "L": [3.00, 4.00, 5.00, 5.50, 6.00, 6.50, 7.00, 8.00, 9.00, 10.00, 10.50, 11.00, 11.50, 12.00, 12.50, 12.70, 12.90, 13.10, 13.30, 13.50],
-            "LL": [18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75],
-            "zahlhamelina": [10.0],
-            "darkJeanne": [15.0]
-        }
-        return (2 * Math.pow(remainHP, 2) - 5 * remainHP + 3 ) * haisuiValues[haisuiAmount][haisuiSLv - 1];
+        return (2 * Math.pow(remainHP, 2) - 5 * remainHP + 3 ) * skillAmounts["haisui"][haisuiAmount][haisuiSLv - 1];
     }
     // Stamina 渾身
     if (haisuiType === "normalKonshin" || haisuiType === "normalOtherKonshin") {
