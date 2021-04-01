@@ -1323,48 +1323,14 @@ module.exports.checkNumberOfElements = function (totals) {
 
 module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, haisuiRemainHP) {
     var remainHP = haisuiRemainHP;
-    var baseRate = 0.0;
 
+    // Enmity 背水
     if (haisuiType == 'normalHaisui' || haisuiType == 'magnaHaisui' || haisuiType == 'exHaisui' || haisuiType == "charaHaisui" || haisuiType === "normalSupportHaisui") {
-        // Refer to Mr. Hibino's site for implementation of emnity magnification
-        // baseRate: Value at HP 50%
-        if (haisuiAmount == "S") {
-            // 小
-            if (haisuiSLv < 10) {
-                baseRate = -0.3 + haisuiSLv * 1.8;
-            } else if (haisuiSLv <= 15) {
-                baseRate = 18.0 + 3.0 * ((haisuiSLv - 10) / 5.0)
-            } else {
-                baseRate = 21.0 + 1.5 * ((haisuiSLv - 15) / 5.0)
-            }
-        } else if (haisuiAmount == "M") {
-            // 中
-            if (haisuiSLv < 10) {
-                baseRate = -0.4 + haisuiSLv * 2.4;
-            } else if (haisuiSLv <= 15) {
-                baseRate = 24 + 6.0 * ((haisuiSLv - 10) / 5.0)
-            } else {
-                baseRate = 30 + 2.5 * ((haisuiSLv - 15) / 5.0)
-            }
-        } else if (haisuiAmount == "L") {
-            // 大
-            if (haisuiSLv < 10) {
-                baseRate = -0.5 + haisuiSLv * 3.0;
-            } else if (haisuiSLv <= 15) {
-                baseRate = 30 + 7.5 * ((haisuiSLv - 10) / 5.0)
-            } else {
-                baseRate = 37.5 + 3.0 * ((haisuiSLv - 15) / 5.0)
-            }
-        } else {
-            // LL
-            if (haisuiSLv < 10) {
-                baseRate = -0.5 + haisuiSLv * 4.5;
-            } else {
-                baseRate = 45 + 11.25 * ((haisuiSLv - 10) / 5.0)
-            }
-        }
-        return (baseRate / 3.0) * (2.0 * remainHP * remainHP - 5.0 * remainHP + 3.0)
+        // Refer to https://gbf-wiki.com/index.php?%A5%B9%A5%AD%A5%EB%B8%FA%B2%CC#rdaa76d9
+        // haisuiValues: Value at HP 50%
+        return (2 * Math.pow(remainHP, 2) - 5 * remainHP + 3 ) * skillAmounts["haisui"][haisuiAmount][haisuiSLv - 1];
     }
+    // Stamina 渾身
     if (haisuiType === "normalKonshin" || haisuiType === "normalOtherKonshin") {
         if (remainHP >= 0.25) {
             if (haisuiAmount === "S") {
@@ -1609,11 +1575,11 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
                 switch (support.type) {
                     case "emnity_all_SL10":
                         // Refer to Zahlhamelina's HP
-                        charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 10, remainHP);
+                        charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "zahlhamelina", 1, remainHP);
                         continue;
                     case "emnity_own_SL20":
                         // Refer to Dark Jeanne's HP
-                        charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "L", 27.5, remainHP);
+                        charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "darkJeanne", 1, remainHP);
                         continue;
                     case "emnity_own_SL20_steps":
                         // Refer to Black Knight's HP
@@ -2086,7 +2052,7 @@ module.exports.addSkilldataToTotals = function (totals, comb, arml, buff) {
                     } else if (stype == 'sunbladeKonshin') {
                         totals[key]["normalSupportKonshinWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportKonshin", "L", "1", totals["Djeeta"]["remainHP"]), totals[key]["normalSupportKonshinWeapon"]);
                     } else if (stype == 'diaboliHaisui') {
-                        totals[key]["normalSupportHaisuiWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportHaisui", "L", 27.5, totals["Djeeta"]["remainHP"]), totals[key]["normalSupportHaisuiWeapon"]);
+                        totals[key]["normalSupportHaisuiWeapon"] = Math.max(module.exports.calcHaisuiValue("normalSupportHaisui", "darkJeanne", 1, totals["Djeeta"]["remainHP"]), totals[key]["normalSupportHaisuiWeapon"]);
                     } else if (stype == 'rigaiBishojo') {
                         // skill is all allies not restricted to element
                         totals[key]["criticalDamageLimit"] += comb[i] * 0.05;
@@ -3135,13 +3101,13 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     continue;
                 case "emnity_all_SL10":
                     // Refer to HP of Zahlhamelina, Yuisis (Fire), Predator
-                    var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "L", 10, totals[key]["remainHP"]);
+                    var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "zahlhamelina", 1, totals[key]["remainHP"]);
                     for (let [name, chara] of range[support.range](totals, key)) {
                         chara["charaHaisui"] = Math.max(chara["charaHaisui"], charaHaisuiValue);
                     }
                     continue;
                 case "emnity_own_SL20":
-                    totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "L", 27.5, totals[key]["remainHP"]);
+                    totals[key]["charaHaisui"] += module.exports.calcHaisuiValue("charaHaisui", "darkJeanne", 1, totals[key]["remainHP"]);
                     continue;
                 case "emnity_own_SL20_steps":
                     if (totals[key]["remainHP"] < 0.75 && totals[key]["remainHP"] >= 0.50) {

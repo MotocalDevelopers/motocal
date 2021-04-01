@@ -416,7 +416,7 @@ var Summon = CreateClass({
                     <tr>
                         <th className="bg-primary">{intl.translate("HP加護", locale)}</th>
                         <td><InputGroup>
-                            <FormControl type="number" min="0" value={this.state.hpBonus} onBlur={this.handleOnBlur}
+                            <FormControl type="number" min="-100" value={this.state.hpBonus} onBlur={this.handleOnBlur}
                                          onChange={this.handleEvent.bind(this, "hpBonus")}/><InputGroup.Addon>%</InputGroup.Addon>
                         </InputGroup></td>
                     </tr>
