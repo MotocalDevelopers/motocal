@@ -659,6 +659,28 @@
         "imageURL": "./charaimgs/3040169000_01.png",
         "en": "Nier"
     },
+    "ジュリエット(水属性ver)": {
+        "name": "ジュリエット(水属性ver)",
+        "ja": "ジュリエット(水属性ver)",
+        "element": "water",
+        "type": "balance",
+        "race": "human",
+        "sex": "female",
+        "fav1": "spear",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "290",
+        "hp": "1440",
+        "minattack": "1550",
+        "attack": "8800",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 4.5,
+        "imageURL": "./charaimgs/3040293000_01.png",
+        "en": "Juliet (Water)"
+    },
     "ミムルメモル(水着ver)": {
         "name": "ミムルメモル(水着ver)",
         "ja": "ミムルメモル(水着ver)",
@@ -12626,5 +12648,27 @@
         "ougiRatio": 3.5,
         "imageURL": "./charaimgs/3030310000_01.png",
         "en": "Ferry (Summer)"
+    },
+    "ジョエル": {
+        "name": "ジョエル",
+        "ja": "ジョエル",
+        "element": "water",
+        "type": "heal",
+        "race": "human",
+        "sex": "male",
+        "fav1": "fist",
+        "fav2": "none",
+        "support": "none",
+        "support2": "none",
+        "support3": "none",
+        "minhp": "280",
+        "hp": "1395",
+        "minattack": "975",
+        "attack": "4900",
+        "baseDA": 7.0,
+        "baseTA": 3.0,
+        "ougiRatio": 3.5,
+        "imageURL": "./charaimgs/3030320000_01.png",
+        "en": "Joel (SR)"
     }
 }

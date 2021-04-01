@@ -603,6 +603,15 @@ skillnamelist["magnaHPL"] = {
 }
 
 skillnamelist["magnaHaisuiL"] = {
+    u"機炎方陣・背水III": "fire",
+    u"海神方陣・背水III": "water",
+    u"創樹方陣・背水III": "earth",
+    u"嵐竜方陣・背水III": "wind",
+    u"騎解方陣・背水III": "light",
+    u"黒霧方陣・背水III": "dark"
+}
+
+skillnamelist["magnaHaisuiM"] = {
     u"機炎方陣・背水II": "fire",
     u"海神方陣・背水II": "water",
     u"創樹方陣・背水II": "earth",
@@ -692,6 +701,15 @@ skillnamelist["magnaHaisuiS"] = {
     u"嵐竜方陣・背水": "wind",
     u"騎解方陣・背水": "light",
     u"黒霧方陣・背水": "dark"
+}
+
+skillnamelist["magnaKonshinL"] = {
+    u"機炎方陣・渾身II": "fire",
+    u"海神方陣・渾身II": "water",
+    u"創樹方陣・渾身II": "earth",
+    u"嵐竜方陣・渾身II": "wind",
+    u"騎解方陣・渾身II": "light",
+    u"黒霧方陣・渾身II": "dark"
 }
 
 skillnamelist["magnaKonshinM"] = {
