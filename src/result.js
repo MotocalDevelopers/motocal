@@ -1423,8 +1423,8 @@ var Result = CreateClass({
                         pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "danger");
                         pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "warning");
                         pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "warning");
-                        pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "succes");
-                        pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "succes");
+                        pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "success");
+                        pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "success");
                         pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "warning");
                         if (skilldata["criticalDamageLimit"] != 0) {
                             otherSkillInfo.push(
