@@ -842,6 +842,7 @@ var skilltypes = {
     "normalKonshinS": {name: "通常渾身(小)", type: "normalKonshin", amount: "S"},
     "normalKonshinM": {name: "通常渾身(中)", type: "normalKonshin", amount: "M"},
     "normalKonshinL": {name: "通常渾身(大)", type: "normalKonshin", amount: "L"},
+    "normalKonshinLL": {name: "通常渾身II(大)", type: "normalKonshin", amount: "LL"},
     "normalKonshinLLL": {name: "通常渾身(特大)", type: "normalOtherKonshin", amount: "LLL"},
     "normalOtherKonshinL": {name: "通常渾身(大)(神石加護無効)", type: "normalOtherKonshin", amount: "L"},
     "normalNiteS": {name: "通常二手(小)", type: "normalNite", amount: "S"},
