@@ -1019,8 +1019,8 @@ var skilltypes = {
     "omega-senni": {name: "オメガ-戦意", type: "omega", amount: "senni"},
     "omega-tousou": {name: "オメガ-闘争", type: "omega", amount: "tousou"},
     "omega-seimei": {name: "オメガ-生命", type: "omega", amount: "seimei"},
-    "omega-kyousou": {name: "オメガ-強壮", type: "omega", amount: "M"},
-    "omega-gekijou": {name: "オメガ-激情", type: "omega", amount: "M"},
+    "omega-kyousou": {name: "オメガ-強壮", type: "omega", amount: "LL"},
+    "omega-gekijou": {name: "オメガ-激情", type: "omega", amount: "L"},
     "omega-yuuki": {name: "オメガ-勇気", type: "omega", amount: "yuuki"},
     "gauphKey-alpha": {name: "ガフスキー[α]", type: "gauphKey", amount: "L"},
     // "gauphKey-beta": {name: "ガフスキー[β]", type: "gauphKey", amount: "L"},
@@ -2123,15 +2123,30 @@ var skillAmounts = {
         "M": [0.043, 0.046, 0.049, 0.052, 0.055, 0.058, 0.061, 0.064, 0.067, 0.070, 0.072, 0.074, 0.076, 0.078, 0.080, 0.080, 0.080, 0.080, 0.080, 0.080],
         "L": [0.055, 0.060, 0.065, 0.070, 0.075, 0.080, 0.085, 0.090, 0.095, 0.100, 0.105, 0.110, 0.115, 0.120, 0.125, 0.130, 0.135, 0.140, 0.145, 0.150],
     },
-    "haisui" : {
+    "haisui": {
         // Refer to https://gbf-wiki.com/index.php?%A5%B9%A5%AD%A5%EB%B8%FA%B2%CC#rdaa76d9
-        // haisuiValues: Value at HP 50%
+        // This value is atk at HP 50%
         "S": [0.50, 1.10, 1.70, 2.30, 2.90, 3.50, 4.10, 4.70, 5.30, 6.00, 6.20, 6.40, 6.60, 6.80, 7.00, 7.10, 7.20, 7.30, 7.40, 7.50],
         "M": [1.00, 1.75, 2.50, 3.25, 4.00, 4.75, 5.50, 6.25, 7.00, 8.00, 8.40, 8.80, 9.20, 9.60, 10.00, 10.20, 10.40, 10.60, 10.80, 11.00],
         "L": [3.00, 4.00, 5.00, 5.50, 6.00, 6.50, 7.00, 8.00, 9.00, 10.00, 10.50, 11.00, 11.50, 12.00, 12.50, 12.70, 12.90, 13.10, 13.30, 13.50],
         "LL": [18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75, 18.75],
         "zahlhamelina": [10.0],
         "darkJeanne": [15.0]
+    },
+    "normalKonshin": {
+        // Refer to https://twitter.com/Hecate_mk2/status/1369797411971862534
+        // this is used for konshinModifier
+        "S": 85.0,
+        "M": 65.0,
+        "L": 56.4,
+        // Galilei's Insight, omega (ガリレオ・サイト、オメガ)
+        "LL": 53.7,
+        // Fediel's Spine (フェディエル・スパイン)
+        "LLL": 48.4
+    },
+    "magnaKonshin": {
+        "M": 60.4,
+        "L": 56.4
     }
 };
 

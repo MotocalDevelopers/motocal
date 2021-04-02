@@ -1327,40 +1327,76 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
     // Enmity 背水
     if (haisuiType == 'normalHaisui' || haisuiType == 'magnaHaisui' || haisuiType == 'exHaisui' || haisuiType == "charaHaisui" || haisuiType === "normalSupportHaisui") {
         // Refer to https://gbf-wiki.com/index.php?%A5%B9%A5%AD%A5%EB%B8%FA%B2%CC#rdaa76d9
-        // haisuiValues: Value at HP 50%
         return (2 * Math.pow(remainHP, 2) - 5 * remainHP + 3 ) * skillAmounts["haisui"][haisuiAmount][haisuiSLv - 1];
     }
     // Stamina 渾身
-    if (haisuiType === "normalKonshin" || haisuiType === "normalOtherKonshin") {
+    if (haisuiType === "normalKonshin" || haisuiType === "normalOtherKonshin" || haisuiType === "omegaKonshin") {
+        const konshinModifier = skillAmounts["normalKonshin"][haisuiAmount];
+        let SLvModifier;
         if (remainHP >= 0.25) {
             if (haisuiAmount === "S") {
                 // Normal Stamina (S)
-                // TODO: No Data
-                return 0.0
+                if (haisuiSLv < 11) {
+                    SLvModifier = haisuiSLv;
+                } else {
+                    SLvModifier = 11 + 2 * (haisuiSLv - 10);
+                }
             } else if (haisuiAmount === "M") {
                 // Normal Stamina (M)
                 if (haisuiSLv < 15) {
-                    return Math.pow(100.0 * remainHP / (65.0 - haisuiSLv), 2.9) + 2.1;
+                    SLvModifier = haisuiSLv;
                 } else {
-                    return Math.pow(100.0 * remainHP / (65.0 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
+                    SLvModifier = 15 + 0.4 * (haisuiSLv - 15);
                 }
             } else if (haisuiAmount === "L") {
                 // Normal Stamina (L)
-                // ref: http://binarysblog.blog.fc2.com/blog-entry-1.html
                 if (haisuiSLv < 15) {
-                    return Math.pow(100.0 * remainHP / (56.4 - haisuiSLv), 2.9) + 2.1;
+                    SLvModifier = haisuiSLv;
                 } else {
-                    return Math.pow(100.0 * remainHP / (56.4 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
+                    SLvModifier = 15 + 0.4 * (haisuiSLv - 15);
                 }
-            } else {
+            } else if (haisuiAmount === "LL") {
                 // Normal Stamina (LL)
                 if (haisuiSLv < 15) {
-                    // No Data
-                    return Math.pow(100.0 * remainHP / (50.4 - haisuiSLv), 2.9) + 2.1;
+                    SLvModifier = haisuiSLv;
                 } else {
-                    return Math.pow(100.0 * remainHP / (50.4 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
+                    SLvModifier = 15 + 0.4 * (haisuiSLv - 15);
+                }        
+            } else if (haisuiAmount === "LLL") {
+                // Normal Stamina (LLL)
+                if (haisuiSLv < 10) {
+                    SLvModifier = haisuiSLv;
+                } else {
+                    SLvModifier = 10 + 0.6 * (haisuiSLv - 10);
                 }
             }
+        // ref: http://binarysblog.blog.fc2.com/blog-entry-1.html
+        return Math.pow(100.0 * remainHP / (konshinModifier - SLvModifier), 2.9) + 2.1;
+        }
+    } else if (haisuiType === "magnaKonshin") {
+        const konshinModifier = skillAmounts["magnaKonshin"][haisuiAmount];
+        let SLvModifier;
+        if (remainHP >= 0.25) {
+            if (haisuiAmount === "S") {
+
+            } else if (haisuiAmount === "M") {
+                // Magna Stamina (M)
+                if (haisuiSLv < 15) {
+                    SLvModifier = haisuiSLv;
+                } else {
+                    SLvModifier = 15 + 0.4 * (haisuiSLv - 15);
+                }
+            } else {
+                // Magna Stamina (L)
+                // ref: https://twitter.com/Hecate_mk2/status/1117394776414777344
+                if (haisuiSLv < 15) {
+                    SLvModifier = haisuiSLv;
+                } else {
+                    SLvModifier = 15 + 0.4 * (haisuiSLv - 15);
+                }
+            }
+        // ref: http://binarysblog.blog.fc2.com/blog-entry-1.html
+        return Math.pow(100.0 * remainHP / (konshinModifier - SLvModifier), 2.9) + 2.1;
         }
     } else if (haisuiType === "normalSupportKonshin") {
         if (remainHP >= 0.50) {
@@ -1371,31 +1407,6 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
             } else {
                 return 24.3323 * Math.pow(remainHP, 3) - 15.6128 * Math.pow(remainHP, 2) + 7.84802 * remainHP - 1.5524;
             }
-        }
-    } else if (haisuiType === "magnaKonshin") {
-        if (remainHP >= 0.25) {
-            if (haisuiAmount === "S") {
-
-            } else if (haisuiAmount === "M") {
-                // Magna Stamina (M)
-                if (haisuiSLv < 15) {
-                    return Math.pow(100.0 * remainHP / (60.4 - haisuiSLv), 2.9) + 2.1;
-                } else {
-                    return Math.pow(100.0 * remainHP / (60.4 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
-                }
-            } else {
-                // Magna Stamina (L)
-                // ref: https://twitter.com/Hecate_mk2/status/1117394776414777344
-                if (haisuiSLv < 15) {
-                    return Math.pow(100.0 * remainHP / (56.4 - haisuiSLv), 2.9) + 2.1;
-                } else {
-                    return Math.pow(100.0 * remainHP / (56.4 - (15 + (0.4 * (haisuiSLv - 15)))), 2.9) + 2.1;
-                }
-            }
-        }
-    } else if (haisuiType === "omegaKonshin") {
-        if (remainHP >= 0.25) {
-            return Math.pow(100.0 * remainHP / (53.7 - haisuiSLv), 2.9) + 2.1;
         }
     } else {
         console.error("Unknown Haisui Type Passed: " + haisuiType);
