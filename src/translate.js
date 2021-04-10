@@ -1168,6 +1168,16 @@ var multiLangData = {
         "ja": "モンク",
         "zh": "モンク"
     },
+    "ロビンフッド": {
+        "en": "Robin Hood",
+        "ja": "ロビンフッド",
+        "zh": "ロビンフッド"
+    },
+    "レリックバスター": {
+        "en": "Relic Buster",
+        "ja": "レリックバスター",
+        "zh": "レリックバスター"
+    },
     "黒猫道士": {
         "en": "Nekomancer",
         "ja": "黒猫道士",
@@ -1182,6 +1192,11 @@ var multiLangData = {
         "en": "Rising Force",
         "ja": "ライジングフォース",
         "zh": "ライジングフォース",
+    },
+    "マスカレード": {
+        "en": "Masquerade",
+        "ja": "マスカレード",
+        "zh": "マスカレード",
     },
     "アルケミスト": {
         "en": "Alchemist",
