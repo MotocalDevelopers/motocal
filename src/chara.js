@@ -25,6 +25,7 @@ var raceTypes = GlobalConst.raceTypes;
 var sexTypes = GlobalConst.sexTypes;
 var filterElementTypes = GlobalConst.filterElementTypes;
 var enemyDefenseType = GlobalConst.enemyDefenseType;
+var supportAbilities = GlobalConst.supportAbilities;
 var _ua = GlobalConst._ua;
 
 var CharaList = CreateClass({
@@ -268,6 +269,9 @@ var Chara = CreateClass({
             support: "none",
             support2: "none",
             support3: "none",
+            supportStage: 0,
+            support2Stage: 0,
+            support3Stage: 0,
             ougiRatio: 4.5,
             ougiBonusPlainDamage: 0,
             type: "attack",
@@ -588,6 +592,15 @@ var Chara = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "support")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
+                    {supportAbilities[this.state.support].staged || false ?
+                        <tr>
+                            <th className="bg-primary">{intl.translate("サポアビ", locale)}1 {intl.translate("STAGE")}</th>
+                            <td><FormControl componentClass="select" value={this.state.supportStage}
+                                             onChange={this.handleSelectEvent.bind(this, "supportStage")}>{selector[locale][this.state.support]}</FormControl>
+                            </td>
+                        </tr>
+                     : null
+                    }
 
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}2</th>
@@ -595,6 +608,15 @@ var Chara = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "support2")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
+                    {supportAbilities[this.state.support2].staged || false ?
+                        <tr>
+                            <th className="bg-primary">{intl.translate("サポアビ", locale)}2 {intl.translate("STAGE")}</th>
+                            <td><FormControl componentClass="select" value={this.state.support2Stage}
+                                             onChange={this.handleSelectEvent.bind(this, "support2Stage")}>{selector[locale][this.state.support2]}</FormControl>
+                            </td>
+                        </tr>
+                     : null
+                    }
 
                     <tr>
                         <th className="bg-primary">{intl.translate("サポアビ", locale)}3</th>
@@ -602,6 +624,15 @@ var Chara = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "support3")}>{selector[locale].supportAbilities}</FormControl>
                         </td>
                     </tr>
+                    {supportAbilities[this.state.support].staged || false ?
+                        <tr>
+                            <th className="bg-primary">{intl.translate("サポアビ", locale)}3 {intl.translate("STAGE")}</th>
+                            <td><FormControl componentClass="select" value={this.state.support3Stage}
+                                             onChange={this.handleSelectEvent.bind(this, "support3Stage")}>{selector[locale][this.state.support3]}</FormControl>
+                            </td>
+                        </tr>
+                     : null
+                    }
 
                     <tr>
                         <th className="bg-primary">{intl.translate("覚醒Lv", locale)}</th>

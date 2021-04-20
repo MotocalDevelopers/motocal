@@ -2749,6 +2749,42 @@ var multiLangData = {
         "ja": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
         "zh": "トリプルアタック発動時に3回目の攻撃の5万与ダメージ上昇(ハレゼナ)",
     },
+    //staged support abi
+    "saikou_ni_kure": {
+        "en": "saikou_ni_kure",
+        "ja": "saikou_ni_kure",
+        "zh": "saikou_ni_kure",
+    },
+    "saikou_ni_kure0": {
+        "en": "0",
+        "ja": "0",
+        "zh": "0",
+    },
+    "saikou_ni_kure1": {
+        "en": "1",
+        "ja": "1",
+        "zh": "1",
+    },
+    "saikou_ni_kure2": {
+        "en": "2",
+        "ja": "2",
+        "zh": "2",
+    },
+    "saikou_ni_kure3": {
+        "en": "3",
+        "ja": "3",
+        "zh": "3",
+    },
+    "saikou_ni_kure4": {
+        "en": "4",
+        "ja": "4",
+        "zh": "4",
+    },
+    "saikou_ni_kure5": {
+        "en": "5",
+        "ja": "5",
+        "zh": "5",
+    },
     "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)": {
         "en": "50% boost to C.A. damage and 20% boost to C.A. damage cap when Sun-Touched Paradise is active. (Alanaan)",
         "ja": "「烈日の楽園」発生時に奥義ダメージ50%UPと奥義上限20%UP (アラナン)",

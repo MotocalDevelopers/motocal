@@ -1572,6 +1572,11 @@ function* eachSupport(chara) {
             continue;
         }
 
+        if (support.staged || false) {
+            // TODO: more elegant solution
+            support["id"] = key;
+        }
+
         yield support;
     }
 }
@@ -2697,6 +2702,9 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 support: "none",
                 support2: "none",
                 support3: "none",
+                supportStage: 0,
+                support2Stage: 0,
+                support3Stage: 0,
                 charaHaisui: 0,
                 debuffResistance: 0,
                 debuffResistanceBuff: 0,
@@ -2897,6 +2905,9 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 support: chara[i].support,
                 support2: chara[i].support2,
                 support3: chara[i].support3,
+                supportStage: chara[i].supportStage,
+                support2Stage: chara[i].support2Stage,
+                support3Stage: chara[i].support3Stage,
                 charaHaisui: 0,
                 debuffResistance: 0,
                 debuffResistanceBuff: 0,
@@ -3016,6 +3027,7 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
     for (var key in totals) {
         index = index + 1 | 0;
         for (let support of eachSupport(totals[key])) {
+            console.info(support);
             // Processing of special supporter abilities
             switch (support.type) {
                 case "normalBuff_doraf":
@@ -3225,6 +3237,18 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                 case "supplemental_third_hit":
                     if (support.range == "own") {
                         totals[key]["supplementalThirdHit"].push({"source": "サポアビ", value: support.value});
+                    }
+                    continue;
+                case "saikou_ni_kure":
+                    console.log(support);
+                    console.log(totals[key][support.id + "Stage"]);
+                    for (let key2 in support.stagesValues[totals[key][support.id + "Stage"]]) {
+                        console.log(key2);
+                        if (key2 == "otherBuff") {
+                            totals[key][key2] = ((1.0 + totals[key][key2]) * (1.0 + support.stagesValues[totals[key][support.id + "Stage"]][key2])) - 1.0;
+                        } else {
+                            totals[key][key2] += support.stagesValues[totals[key][support.id + "Stage"]][key2];
+                        }
                     }
                     continue;
                 // case "tousou_no_chishio":

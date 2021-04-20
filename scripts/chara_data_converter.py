@@ -343,6 +343,9 @@ supportAbilist["supplemental_third_hit_50k"] = {
     u"みんなのあんぜんあんしん",
     u'炎天の雷迅卿'
 }
+supportAbilist["saikou_ni_kure"] = {
+    "サイコーにクレ&#12316;ジ&#12316;！"
+}
 supportAbilist["benedikutosu_soure"] = {
     u"太陽の逆位置"  # placeholder for ougi effect not the support ability effect
 }
