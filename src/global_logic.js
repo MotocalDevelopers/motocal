@@ -1504,8 +1504,8 @@ module.exports.calcLBHaisuiValue = function (haisuiType, haisuiAmount, haisuiRem
 
     if (haisuiType == 'EXLBKonshin' || haisuiType == 'LBKonshin') {
         switch (haisuiAmount) {
-            case 1: value = Math.min(0.03, 0.03 * remainHP + 0.01); break;
-            case 2: value = Math.min(0.04, 0.03 * remainHP + 0.01); break;
+            case 1: value = Math.min(0.03, 0.02 * remainHP + 0.01); break;
+            case 2: value = Math.min(0.04, 0.04 * remainHP + 0.02); break;
             case 3: value = Math.min(0.05, 0.04 * remainHP + 0.02); break;
             case 4: value = Math.min(0.06, 0.04 * remainHP + 0.02); break;
             case 5: value = Math.min(0.07, 0.06 * remainHP + 0.03); break;
