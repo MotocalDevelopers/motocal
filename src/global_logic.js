@@ -21,6 +21,8 @@ const {
     opusNames,
     hollowskyNames,
     limitBonusCriticalList,
+    limitBonusKonshinList,
+    limitBonusHaisuiList,
 } = require('./global_const.js');
 const supplemental = require('./supplemental.js');
 const {
@@ -552,7 +554,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         normalKonshinCoeff += 0.01 * totals[key]["normalOtherKonshin"];
         normalKonshinCoeff += 0.01 * Math.max(totals[key]["normalSupportKonshin"], totals[key]["normalSupportKonshinWeapon"]);
 
-        var LBKonshinCoeff = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", totals[key]["EXLB"]["Konshin"], totals[key]["remainHP"]);
+        var LBKonshinCoeff = 1.0;
+        LBKonshinCoeff += module.exports.calcLBKonshinValue(totals[key]["EXLB"]["Konshin"], totals[key]["remainHP"]);
+        LBKonshinCoeff += module.exports.calcLBKonshinValue(totals[key]["LB"]["Konshin1"], totals[key]["remainHP"]);
+        LBKonshinCoeff += module.exports.calcLBKonshinValue(totals[key]["LB"]["Konshin2"], totals[key]["remainHP"]);
 
         // Also calculate the attribute (elapsed turn) with the maximum value 属性(経過ターン)も最大値で計算する
         var elementCoeff = totals[key]["typeBonus"];
@@ -600,7 +605,10 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var charaHaisuiCoeff = 1.0 + 0.01 * totals[key]["charaHaisui"] + 0.01 * totals[key]["normalSupportHaisuiWeapon"];
 
         //chara LB Emnity
-        var LBHaisuiCoeff = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", totals[key]["EXLB"]["Haisui"], totals[key]["remainHP"]);
+        var LBHaisuiCoeff = 1.0;
+        LBHaisuiCoeff += module.exports.calcLBHaisuiValue(totals[key]["EXLB"]["Haisui"], totals[key]["remainHP"]);
+        LBHaisuiCoeff += module.exports.calcLBHaisuiValue(totals[key]["LB"]["Haisui1"], totals[key]["remainHP"]);
+        LBHaisuiCoeff += module.exports.calcLBHaisuiValue(totals[key]["LB"]["Haisui2"], totals[key]["remainHP"]);
 
         var totalSkillCoeff = normalCoeff * normalHaisuiCoeff * normalKonshinCoeff;
         totalSkillCoeff *= magnaCoeff * magnaHaisuiCoeff * magnaKonshinCoeff;
@@ -1188,6 +1196,8 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             expectedTurn: expectedTurn,
             expectedCycleDamagePerTurn: expectedCycleDamagePerTurn,
             expectedCycleDamagePerSecond: expectedCycleDamagePerSecond,
+            lbHaisui: [totals[key]["LB"]["Haisui1"], totals[key]["LB"]["Haisui2"]].filter(x => x > 0.0),
+            lbKonshin: [totals[key]["LB"]["Konshin1"], totals[key]["LB"]["Konshin2"]].filter(x => x > 0.0),
             exlbHaisui: totals[key]["EXLB"]["Haisui"],
             exlbKonshin: totals[key]["EXLB"]["Konshin"],
             normalDamageLimitValues: normalDamageLimitValues,
@@ -1414,109 +1424,135 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
     return 0.0;
 };
 
-module.exports.calcLBHaisuiValue = function (haisuiType, haisuiAmount, haisuiRemainHP) {
-    var remainHP = haisuiRemainHP;
+module.exports.calcLBHaisuiValue = function (amount, remainHP) {
     var value = 0.0;
-
-    if (haisuiType == 'EXLBHaisui' || haisuiType == 'LBHaisui') {
-        if (haisuiAmount == "1") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.0104 * remainHP + 0.0278;
-            } else {
-                value = -0.0548 * remainHP + 0.05;
-            }
-        } else if (haisuiAmount == "2") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.0132 * remainHP + 0.0299;
-            } else {
-                value = -0.0734 * remainHP + 0.06;
-            }
-        } else if (haisuiAmount == "3") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.0148 * remainHP + 0.0411;
-            } else {
-                value = -0.0826 * remainHP + 0.075;
-            }
-        } else if (haisuiAmount == "4") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.02 * remainHP + 0.045;
-            } else {
-                value = -0.11 * remainHP + 0.09;
-            }
-        } else if (haisuiAmount == "5") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.016 * remainHP + 0.052;
-            } else {
-                value = -0.112 * remainHP + 0.1;
-            }
-        } else if (haisuiAmount == "6") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.02 * remainHP + 0.055;
-            } else {
-                value = -0.13 * remainHP + 0.11;
-            }
-        } else if (haisuiAmount == "7") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.0268 * remainHP + 0.0601;
-            } else {
-                value = -0.1466 * remainHP + 0.12;
-            }
-        } else if (haisuiAmount == "8") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.024 * remainHP + 0.068;
-            } else {
-                value = -0.138 * remainHP + 0.125;
-            }
-        } else if (haisuiAmount == "9") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.0292 * remainHP + 0.0719;
-            } else {
-                value = -0.1604 * remainHP + 0.1375;
-            }
-        } else if (haisuiAmount == "10") {
-            if (remainHP > 0.75 && remainHP <= 1) {
-                value = 0.01;
-            } else if  (remainHP > 0.5 && remainHP <= 0.75) {
-                value = -0.0332 * remainHP + 0.0749;
-            } else {
-                value = -0.1834 * remainHP + 0.15;
-            }
+    switch (Number(amount) || 0) {
+    case 0:  // none
+        value = 0.0;
+        break;
+    case 0.5:  // LB背水小相当
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.0068 * remainHP + 0.0151;
+        } else {
+            value = -0.0366 * remainHP + 0.03;
         }
-    }
-
-    if (haisuiType == 'EXLBKonshin' || haisuiType == 'LBKonshin') {
-        switch (haisuiAmount) {
-            case 1: value = Math.min(0.03, 0.03 * remainHP + 0.01); break;
-            case 2: value = Math.min(0.04, 0.03 * remainHP + 0.01); break;
-            case 3: value = Math.min(0.05, 0.04 * remainHP + 0.02); break;
-            case 4: value = Math.min(0.06, 0.04 * remainHP + 0.02); break;
-            case 5: value = Math.min(0.07, 0.06 * remainHP + 0.03); break;
-            case 6: value = Math.min(0.08, 0.06 * remainHP + 0.03); break;
-            case 7: value = Math.min(0.09, 0.06 * remainHP + 0.03); break;
-            case 8: value = Math.min(0.10, 0.08 * remainHP + 0.04); break;
-            case 9: value = Math.min(0.11, 0.08 * remainHP + 0.04); break;
-            case 10: value = Math.min(0.12, 0.08 * remainHP + 0.04); break;
+        break;
+    case 1:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.0104 * remainHP + 0.0278;
+        } else {
+            value = -0.0548 * remainHP + 0.05;
         }
+        break;
+    case 2:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.0132 * remainHP + 0.0299;
+        } else {
+            value = -0.0734 * remainHP + 0.06;
+        }
+        break;
+    case  3:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.0148 * remainHP + 0.0411;
+        } else {
+            value = -0.0826 * remainHP + 0.075;
+        }
+        break;
+    case 4:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.02 * remainHP + 0.045;
+        } else {
+            value = -0.11 * remainHP + 0.09;
+        }
+        break;
+    case  5:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.016 * remainHP + 0.052;
+        } else {
+            value = -0.112 * remainHP + 0.1;
+        }
+        break;
+    case 6:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.02 * remainHP + 0.055;
+        } else {
+            value = -0.13 * remainHP + 0.11;
+        }
+        break;
+    case 7:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.0268 * remainHP + 0.0601;
+        } else {
+            value = -0.1466 * remainHP + 0.12;
+        }
+        break;
+    case 8:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.024 * remainHP + 0.068;
+        } else {
+            value = -0.138 * remainHP + 0.125;
+        }
+        break;
+    case 9:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.0292 * remainHP + 0.0719;
+        } else {
+            value = -0.1604 * remainHP + 0.1375;
+        }
+        break;
+    case 10:
+        if (remainHP > 0.75 && remainHP <= 1) {
+            value = 0.01;
+        } else if  (remainHP > 0.5 && remainHP <= 0.75) {
+            value = -0.0332 * remainHP + 0.0749;
+        } else {
+            value = -0.1834 * remainHP + 0.15;
+        }break;
+    default:
+        throw new Error("Invalid LB Haisui amount: " + haisuiAmount);
     }
+    return value;
+};
 
+module.exports.calcLBKonshinValue = function (amount, remainHP) {
+    var value = 0.0;
+    switch (Number(amount)||0) {
+        case 0  : value = 0.0;                                      break;  // none
+        case 0.5: value = Math.min(0.03 , 0.02 * remainHP + 0.01 ); break;  // LB渾身小相当
+        case 1  : value = Math.min(0.03 , 0.03 * remainHP + 0.01 ); break;
+        case 2  : value = Math.min(0.04 , 0.03 * remainHP + 0.01 ); break;
+        case 2.5: value = Math.min(0.045, 0.03 * remainHP + 0.015); break;  // LB渾身中相当
+        case 3  : value = Math.min(0.05 , 0.04 * remainHP + 0.02 ); break;
+        case 4  : value = Math.min(0.06 , 0.04 * remainHP + 0.02 ); break;
+        case 5  : value = Math.min(0.07 , 0.06 * remainHP + 0.03 ); break;
+        case 6  : value = Math.min(0.08 , 0.06 * remainHP + 0.03 ); break;
+        case 7  : value = Math.min(0.09 , 0.06 * remainHP + 0.03 ); break;
+        case 8  : value = Math.min(0.10 , 0.08 * remainHP + 0.04 ); break;
+        case 9  : value = Math.min(0.11 , 0.08 * remainHP + 0.04 ); break;
+        case 10 : value = Math.min(0.12 , 0.08 * remainHP + 0.04 ); break;
+        default :
+            throw new Error("Invalid LB Konshin amount: " + typeof amount);
+    }
     return value;
 };
 
@@ -2455,13 +2491,21 @@ function getCharaLB(chara) {
         "Critical2": "none",
         "Critical3": "none",
         "Critical4": "none",
+        "Konshin1": "none",
+        "Konshin2": "none",
+        "Haisui1": "none",
+        "Haisui2": "none",
     };
 
     Object.keys(LB).map((key) => {
         var exactKey = "LB" + key;
         if (exactKey in chara) {
-            if (key == "Critical1" || key == "Critical2" || key == "Critical3" || key == "Critical4") {
+            if (key == "Critical1" || key == "Critical2" || key == "Critical3" || key == "Critical4" ) {
                 LB[key] = chara[exactKey];
+            } else if (key == "Konshin1" || key == "Konshin2") {
+                LB[key] = limitBonusKonshinList[chara[exactKey]].value;
+            } else if (key == "Haisui1" || key == "Haisui2") {
+                LB[key] = limitBonusHaisuiList[chara[exactKey]].value;
             } else {
                 LB[key] = parseFloat(chara[exactKey]);
             }
@@ -3482,10 +3526,16 @@ module.exports.generateHaisuiData = function (res, arml, summon, prof, chara, st
                     lbKonshinBuff = [];
                 for (let k = 0; k <= 100; k++) {
                     let hp = 0.01 * k;
-                    let exlbHaisuiValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBHaisui", onedata[key].exlbHaisui, hp);
-                    let exlbKonshinValue = 1.0 + module.exports.calcLBHaisuiValue("EXLBKonshin", onedata[key].exlbKonshin, hp);
-                    lbHaisuiBuff.push(exlbHaisuiValue);
-                    lbKonshinBuff.push(exlbKonshinValue);
+                    let lbHaisuiValue = 1.0 + module.exports.calcLBHaisuiValue(onedata[key].exlbHaisui, hp);
+                    onedata[key].lbHaisui.forEach(x => {
+                        lbHaisuiValue += module.exports.calcLBHaisuiValue(x, hp);
+                    })
+                     let lbKonshinValue = 1.0 + module.exports.calcLBKonshinValue(onedata[key].exlbKonshin, hp);
+                     onedata[key].lbKonshin.forEach(x => {
+                        lbKonshinValue += module.exports.calcLBKonshinValue(x, hp);
+                    })
+                    lbHaisuiBuff.push(lbHaisuiValue);
+                    lbKonshinBuff.push(lbKonshinValue);
                 }
 
                 var haisuiBuff = [];

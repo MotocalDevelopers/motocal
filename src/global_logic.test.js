@@ -46,6 +46,7 @@ describe('#calcLBHaisui', () => {
     const konshin = calcLBHaisuiValue.bind(null, 'EXLBKonshin');
 
     const exlbHaisuiMaxTable = [
+        [0.5, 0.03],  // LB背水小
         [1, 0.05],
         [2, 0.06],
         [3, 0.075],
@@ -57,10 +58,12 @@ describe('#calcLBHaisui', () => {
         [9, 0.1375],
         [10, 0.15],
     ];
-    const exlbHaisuiMinTable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const exlbHaisuiMinTable = [0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const exlbKonshinMaxTable = [
+        [0.5, 0.03],  // LB渾身小
         [1, 0.03],
         [2, 0.04],
+        [2.5, 0.045],  // LB渾身中
         [3, 0.05],
         [4, 0.06],
         [5, 0.07],
@@ -71,8 +74,10 @@ describe('#calcLBHaisui', () => {
         [10, 0.12],
     ];
     const exlbKonshinMinTable = [
+        [0.5, 0.01],  // LB渾身小
         [1, 0.01],
         [2, 0.01],
+        [2.5, 0.015],  // LB渾身中
         [3, 0.02],
         [4, 0.02],
         [5, 0.03],
