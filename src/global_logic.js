@@ -1529,7 +1529,7 @@ module.exports.calcLBHaisuiValue = function (amount, remainHP) {
             value = -0.1834 * remainHP + 0.15;
         }break;
     default:
-        throw new Error("Invalid LB Haisui amount: " + haisuiAmount);
+        throw new Error("Invalid LB Haisui amount: " + amount);
     }
     return value;
 };
@@ -1551,7 +1551,7 @@ module.exports.calcLBKonshinValue = function (amount, remainHP) {
         case 9  : value = Math.min(0.11 , 0.08 * remainHP + 0.04 ); break;
         case 10 : value = Math.min(0.12 , 0.08 * remainHP + 0.04 ); break;
         default :
-            throw new Error("Invalid LB Konshin amount: " + typeof amount);
+            throw new Error("Invalid LB Konshin amount: " + amount);
     }
     return value;
 };
