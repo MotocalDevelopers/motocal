@@ -610,7 +610,7 @@ var Chara = CreateClass({
                                          onChange={this.handleSelectEvent.bind(this, "awakeningType")}>{selector[locale].awakeningTypes}</FormControl>
                             <FormControl componentClass="select" value={this.state.awakeningLv}
                                          onChange={this.handleSelectEvent.bind(this, "awakeningLv")}>
-                            { [1,2,3,4,5,6,7].map(lv => <option value={lv} key={lv}>Lv{lv}</option>) }
+                            { [1,2,3,4,5,6,7,8].map(lv => <option value={lv} key={lv}>Lv{lv}</option>) }
                         </FormControl></td>
                     </tr>
 
