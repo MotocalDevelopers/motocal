@@ -319,6 +319,7 @@ var Chara = CreateClass({
             criticalBuffCount: 0,
             criticalBuff: [],
             keenBuffEnabled: false,
+            awakeningType: GlobalConst.awakeningTypes[0],
             awakeningLv: 1,
         };
     },
@@ -605,7 +606,9 @@ var Chara = CreateClass({
 
                     <tr>
                         <th className="bg-primary">{intl.translate("覚醒Lv", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.awakeningLv}
+                        <td><FormControl componentClass="select" value={this.state.awakeningType}
+                                         onChange={this.handleSelectEvent.bind(this, "awakeningType")}>{selector[locale].awakeningTypes}</FormControl>
+                            <FormControl componentClass="select" value={this.state.awakeningLv}
                                          onChange={this.handleSelectEvent.bind(this, "awakeningLv")}>
                             { [1,2,3,4,5,6,7].map(lv => <option value={lv} key={lv}>Lv{lv}</option>) }
                         </FormControl></td>

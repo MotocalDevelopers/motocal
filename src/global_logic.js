@@ -499,13 +499,13 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
             displayAttack += totalSummon["attack"];
             displayAttack += totals[key]["LB"].ATK;
             displayAttack += totals[key]["EXLB"].ATK;
-            displayAttack += awakening.attack(totals[key]["awakeningLv"]);
+            displayAttack += awakening.attack(totals[key].awakeningType, totals[key].awakeningLv);
             displayAttack += totals[key]["plusBonus"] * 3;
 
             // HP
             displayHP += totals[key]["LB"].HP;
             displayHP += totals[key]["EXLB"].HP;
-            displayHP += awakening.HP(totals[key]["awakeningLv"]);
+            displayHP += awakening.HP(totals[key].awakeningType, totals[key].awakeningLv);
             displayHP += totals[key]["plusBonus"];
             var totalHP = displayHP * hpCoeff;
         }
@@ -638,7 +638,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var totalDA = 0.01 * totals[key]["baseDA"];
         totalDA += 0.01 * totals[key]["LB"]["DA"];
         totalDA += 0.01 * totals[key]["EXLB"]["DA"];
-        totalDA += awakening.DA(totals[key]["awakeningLv"]);
+        totalDA += awakening.DA(totals[key].awakeningType, totals[key].awakeningLv);;
         totalDA += buff["da"];
         totalDA += totals[key]["DASupport"];
         totalDA += totals[key]["DABuff"];
@@ -664,7 +664,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var totalTA = 0.01 * totals[key]["baseTA"];
         totalTA += 0.01 * totals[key]["LB"]["TA"];
         totalTA += 0.01 * totals[key]["EXLB"]["TA"];
-        totalTA += awakening.TA(totals[key]["awakeningLv"]);
+        totalTA += awakening.TA(totals[key].awakeningType, totals[key].awakeningLv);;
         totalTA += buff["ta"];
         totalTA += totals[key]["TASupport"];
         totalTA += totals[key]["TABuff"];
@@ -817,7 +817,7 @@ module.exports.calcBasedOneSummon = function (summonind, prof, buff, totals) {
         var ougiDamageExceptSkill = totals[key]["ougiDamageBuff"] + totalSummon["ougiDamage"] + buff['ougiDamage'];
         ougiDamageExceptSkill += 0.01 * totals[key]["LB"]["OugiDamage"];
         ougiDamageExceptSkill += 0.01 * totals[key]["EXLB"]["OugiDamage"];
-        ougiDamageExceptSkill += awakening.ougi(totals[key]["awakeningLv"]);
+        ougiDamageExceptSkill += awakening.ougi(totals[key].awakeningType, totals[key].awakeningLv);
 
         if (key == "Djeeta") {
             ougiDamageExceptSkill += buff["zenithOugiDamage"];
@@ -2784,6 +2784,7 @@ module.exports.getInitialTotals = function (prof, chara, summon) {
                 element: charaelement,
                 LB: charaLB,
                 EXLB: charaEXLB,
+                awakeningType: chara[i].awakeningType,
                 awakeningLv: parseInt(chara[i].awakeningLv) || 1,
                 HPdebuff: 0.00,
                 magna: 0,
