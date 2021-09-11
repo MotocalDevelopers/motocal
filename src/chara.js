@@ -852,15 +852,6 @@ var Chara = CreateClass({
                                     </FormControl>
                                 </td>
                             </tr>,
-                            <tr key="LBCritical1">
-                                <th className="bg-primary">{intl.translate("クリティカル", locale)}1</th>
-                                <td>
-                                    <FormControl componentClass="select" value={this.state.LBCritical1}
-                                                 onChange={this.handleSelectEvent.bind(this, "LBCritical1")}>
-                                        {selector[locale].limitBonusCriticalList}
-                                    </FormControl>
-                                </td>
-                            </tr>,
                             <tr key="LBCritical2">
                                 <th className="bg-primary">{intl.translate("クリティカル", locale)}2</th>
                                 <td>
