@@ -2,6 +2,7 @@ const {
     getTypeBonus,
     calcDefenseDebuff,
     calcLBHaisuiValue,
+    calcLBKonshinValue,
     isDarkOpus,
     calcOugiFixedDamage,
     sum,
@@ -42,8 +43,8 @@ describe('#calcDefenseDebuff', () => {
 
 
 describe('#calcLBHaisui', () => {
-    const haisui = calcLBHaisuiValue.bind(null, 'EXLBHaisui');
-    const konshin = calcLBHaisuiValue.bind(null, 'EXLBKonshin');
+    const haisui = calcLBHaisuiValue;
+    const konshin = calcLBKonshinValue;
 
     const exlbHaisuiMaxTable = [
         [0.5, 0.03],  // LB背水小
@@ -105,15 +106,11 @@ describe('#calcLBHaisui', () => {
         expect(konshin(amount, 0.0)).toBeCloseTo(expected);
     });
 
-    test('ignore unknown type arguments', () => {
-        expect(calcLBHaisuiValue('unknown-type', 10, 0.0)).toBeCloseTo(0.0);
-    });
-
-    test('illegal amount numbers return 0.0', () => {
+    test('illegal amount numbers throw errors', () => {
         expect(haisui(0, 0.0)).toBeCloseTo(0.0);
-        expect(haisui(11, 0.0)).toBeCloseTo(0.0);
+        expect(() => haisui(11, 0.0)).toThrow(/Invalid/);
         expect(konshin(0, 0.0)).toBeCloseTo(0.0);
-        expect(konshin(11, 0.0)).toBeCloseTo(0.0);
+        expect(() => konshin(11, 0.0)).toThrow(/Invalid/);
     });
 
     test.skip('illegal remainHP return ?', () => {
