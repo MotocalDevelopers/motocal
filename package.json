@@ -31,7 +31,7 @@
     "node": ">= 8.11"
   },
   "scripts": {
-    "start": "webpack-dev-server --watch --inline",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --watch --inline",
     "test": "jest",
     "build": "webpack --display-error-details",
     "lint": "eslint webpack.config.js src/*",
