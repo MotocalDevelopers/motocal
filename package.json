@@ -38,7 +38,7 @@
     "lint:fix": "eslint webpack.config.js src/* --fix",
     "production-build": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack",
     "watch-dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --progress --watch",
-    "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch",
+    "production-watch-dev": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --progress --watch",
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 9009 -s ./  --ci",
     "download:arm": "python3 ./scripts/download_image.py arm",
     "download:chara": "python3 ./scripts/download_image.py chara",
