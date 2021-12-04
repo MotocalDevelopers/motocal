@@ -2830,6 +2830,8 @@ var supportAbilities = {
     },
 };
 
+var awakeningTypes = ["balanced", "attack", "defense", "multiattack"];
+
 // exports
 module.exports.opusNames = opusNames;
 module.exports.zenith = zenith;
@@ -2858,6 +2860,7 @@ module.exports.supportedChartSortkeys = supportedChartSortkeys;
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys;
 module.exports.enemyDefenseType = enemyDefenseType;
 module.exports.supportAbilities = supportAbilities;
+module.exports.awakeningTypes = awakeningTypes;
 module.exports.limitBonusCriticalList = limitBonusCriticalList;
 module.exports.skillDetailsDescription = skillDetailsDescription;
 module.exports.opusNormalWeaponSkill2 = opusNormalWeaponSkill2;
@@ -3738,4 +3741,14 @@ module.exports.selector.en.supportAbilities = Object.keys(supportAbilities).map(
 });
 module.exports.selector.zh.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "zh")}</option>;
+});
+
+module.exports.selector.ja.awakeningTypes = awakeningTypes.map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("覚醒タイプ"+opt, "ja")}</option>;
+});
+module.exports.selector.en.awakeningTypes = awakeningTypes.map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("覚醒タイプ"+opt, "en")}</option>;
+});
+module.exports.selector.zh.awakeningTypes = awakeningTypes.map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("覚醒タイプ"+opt, "zh")}</option>;
 });

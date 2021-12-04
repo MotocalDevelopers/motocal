@@ -1513,6 +1513,31 @@ var multiLangData = {
         "ja": "覚醒Lv",
         "zh": "Awakening Lv",
     },
+    "覚醒タイプ": {
+        "en": "Awakening Type",
+        "ja": "覚醒タイプ",
+        "zh": "Awakening Type",
+    },
+    "覚醒タイプbalanced": {
+        "en": "Balanced",
+        "ja": "バランス",
+        "zh": "balanced",
+    },
+    "覚醒タイプattack": {
+        "en": "Attack",
+        "ja": "攻撃",
+        "zh": "Attack",
+    },
+    "覚醒タイプdefense": {
+        "en": "Defense",
+        "ja": "防御",
+        "zh": "Defense",
+    },
+    "覚醒タイプmultiattack": {
+        "en": "Multiattack",
+        "ja": "連続攻撃",
+        "zh": "Multiattack",
+    },
     "supplemental_other": { //left empty intentionally
         "en": "",
         "ja": "",
