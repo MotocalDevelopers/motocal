@@ -12,8 +12,7 @@ jobs:
           - ubuntu-18.04
         node-version:
           - 14.x
-        python-version:
-          - [ '2.x', '3.x', 'pypy-2.7', 'pypy-3.6', 'pypy-3.7' ]
+        python-version: [ '2.x', '3.x', 'pypy-2.7', 'pypy-3.6', 'pypy-3.7' ]
     steps:
       - name: 'Set up Node.js ${{ matrix.node-version }}'
         uses: actions/setup-node@v1
