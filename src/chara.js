@@ -306,6 +306,10 @@ var Chara = CreateClass({
             LBCritical2: "none",
             LBCritical3: "none",
             LBCritical4: "none",
+            LBKonshin1: "none",
+            LBKonshin2: "none",
+            LBHaisui1: "none",
+            LBHaisui2: "none",
             EXLBWED: false,
             EXLBATK: 0,
             EXLBHP: 0,
@@ -319,6 +323,7 @@ var Chara = CreateClass({
             criticalBuffCount: 0,
             criticalBuff: [],
             keenBuffEnabled: false,
+            awakeningType: GlobalConst.awakeningTypes[0],
             awakeningLv: 1,
         };
     },
@@ -605,9 +610,11 @@ var Chara = CreateClass({
 
                     <tr>
                         <th className="bg-primary">{intl.translate("覚醒Lv", locale)}</th>
-                        <td><FormControl componentClass="select" value={this.state.awakeningLv}
+                        <td><FormControl componentClass="select" value={this.state.awakeningType}
+                                         onChange={this.handleSelectEvent.bind(this, "awakeningType")}>{selector[locale].awakeningTypes}</FormControl>
+                            <FormControl componentClass="select" value={this.state.awakeningLv}
                                          onChange={this.handleSelectEvent.bind(this, "awakeningLv")}>
-                            { [1,2,3,4,5,6,7].map(lv => <option value={lv} key={lv}>Lv{lv}</option>) }
+                            { [1,2,3,4,5,6,7,8].map(lv => <option value={lv} key={lv}>Lv{lv}</option>) }
                         </FormControl></td>
                     </tr>
 
@@ -802,6 +809,42 @@ var Chara = CreateClass({
                                         {selector.limitBonusOugiGageBuffList}
                                     </FormControl>
                                 <InputGroup.Addon>%</InputGroup.Addon></InputGroup></td>
+                            </tr>,
+                            <tr key="LBKonshin1">
+                                <th className="bg-primary">{intl.translate("渾身", locale)}1</th>
+                                <td>
+                                    <FormControl componentClass="select" value={this.state.LBKonshin1}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBKonshin1")}>
+                                        {selector[locale].limitBonusKonshinList}
+                                    </FormControl>
+                                </td>
+                            </tr>,
+                            <tr key="LBKonshin2">
+                                <th className="bg-primary">{intl.translate("渾身", locale)}2</th>
+                                <td>
+                                    <FormControl componentClass="select" value={this.state.LBKonshin2}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBKonshin2")}>
+                                        {selector[locale].limitBonusKonshinList}
+                                    </FormControl>
+                                </td>
+                            </tr>,
+                            <tr key="LBHaisui1">
+                                <th className="bg-primary">{intl.translate("背水", locale)}1</th>
+                                <td>
+                                    <FormControl componentClass="select" value={this.state.LBHaisui1}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBHaisui1")}>
+                                        {selector[locale].limitBonusHaisuiList}
+                                    </FormControl>
+                                </td>
+                            </tr>,
+                            <tr key="LBHaisui2">
+                                <th className="bg-primary">{intl.translate("背水", locale)}2</th>
+                                <td>
+                                    <FormControl componentClass="select" value={this.state.LBHaisui2}
+                                                 onChange={this.handleSelectEvent.bind(this, "LBHaisui2")}>
+                                        {selector[locale].limitBonusHaisuiList}
+                                    </FormControl>
+                                </td>
                             </tr>,
                             <tr key="LBCritical1">
                                 <th className="bg-primary">{intl.translate("クリティカル", locale)}1</th>

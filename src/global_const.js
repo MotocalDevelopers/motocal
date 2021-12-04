@@ -739,16 +739,45 @@ var limitBonusCriticalList = {
         "attackRatio": 0.25,
     },
 };
+var limitBonusKonshinList = {
+    "none": {
+        "name": "無し",
+        "value": 0.0,
+    },
+    "small": {
+        "name": "小",
+        "value": 0.5,
+    },
+    "medium": {
+        "name": "中",
+        "value": 2.5,
+    },
+    "large": {
+        "name": "大",
+        "value": 4,
+    },
+};
+var limitBonusHaisuiList = {
+    "none": {
+        "name": "無し",
+        "value": 0.0,
+    },
+    "small": {
+        "name": "小",
+        "value": 0.5,
+    },
+    "medium": {
+        "name": "中",
+        "value": 2,
+    },
+    "large": {
+        "name": "大",
+        "value": 4,
+    },
+};
 var limitBonusOugiDamageList = [0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80];
 var limitBonusOugiDamageLimitList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
 var limitBonusOugiGageBuffList = [0, 5, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40];
-
-/*var limitBonusHaisuiList = {
-    "none": "無し",
-    "small": "小",
-    "medium": "中",
-    "large": "大",
-    };*/
 
 // Chara EX limitBonus
 var EXlimitBonusAttackList = [0, 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000];
@@ -2830,6 +2859,8 @@ var supportAbilities = {
     },
 };
 
+var awakeningTypes = ["balanced", "attack", "defense", "multiattack"];
+
 // exports
 module.exports.opusNames = opusNames;
 module.exports.zenith = zenith;
@@ -2858,7 +2889,10 @@ module.exports.supportedChartSortkeys = supportedChartSortkeys;
 module.exports.supportedSimulationChartSortkeys = supportedSimulationChartSortkeys;
 module.exports.enemyDefenseType = enemyDefenseType;
 module.exports.supportAbilities = supportAbilities;
+module.exports.awakeningTypes = awakeningTypes;
 module.exports.limitBonusCriticalList = limitBonusCriticalList;
+module.exports.limitBonusKonshinList = limitBonusKonshinList;
+module.exports.limitBonusHaisuiList = limitBonusHaisuiList;
 module.exports.skillDetailsDescription = skillDetailsDescription;
 module.exports.opusNormalWeaponSkill2 = opusNormalWeaponSkill2;
 module.exports.opusMagnaWeaponSkill2 = opusMagnaWeaponSkill2;
@@ -3657,6 +3691,24 @@ module.exports.selector.en.limitBonusCriticalList = Object.keys(limitBonusCritic
 module.exports.selector.zh.limitBonusCriticalList = Object.keys(limitBonusCriticalList).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "zh")}</option>;
 });
+module.exports.selector.ja.limitBonusKonshinList = Object.keys(limitBonusKonshinList).map(function (opt) {
+    return <option value={opt} key={opt}>{limitBonusCriticalList[opt].name}</option>;
+});
+module.exports.selector.en.limitBonusKonshinList = Object.keys(limitBonusKonshinList).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "en")}</option>;
+});
+module.exports.selector.zh.limitBonusKonshinList = Object.keys(limitBonusKonshinList).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "zh")}</option>;
+});
+module.exports.selector.ja.limitBonusHaisuiList = Object.keys(limitBonusHaisuiList).map(function (opt) {
+    return <option value={opt} key={opt}>{limitBonusCriticalList[opt].name}</option>;
+});
+module.exports.selector.en.limitBonusHaisuiList = Object.keys(limitBonusHaisuiList).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "en")}</option>;
+});
+module.exports.selector.zh.limitBonusHaisuiList = Object.keys(limitBonusHaisuiList).map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate(limitBonusCriticalList[opt].name, "zh")}</option>;
+});
 module.exports.selector.limitBonusOugiDamageList = limitBonusOugiDamageList.map(function (opt) {
     return <option value={opt} key={opt}>{opt}</option>;
 });
@@ -3738,4 +3790,14 @@ module.exports.selector.en.supportAbilities = Object.keys(supportAbilities).map(
 });
 module.exports.selector.zh.supportAbilities = Object.keys(supportAbilities).map(function (opt) {
     return <option value={opt} key={opt}>{intl.translate(supportAbilities[opt].name, "zh")}</option>;
+});
+
+module.exports.selector.ja.awakeningTypes = awakeningTypes.map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("覚醒タイプ"+opt, "ja")}</option>;
+});
+module.exports.selector.en.awakeningTypes = awakeningTypes.map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("覚醒タイプ"+opt, "en")}</option>;
+});
+module.exports.selector.zh.awakeningTypes = awakeningTypes.map(function (opt) {
+    return <option value={opt} key={opt}>{intl.translate("覚醒タイプ"+opt, "zh")}</option>;
 });
