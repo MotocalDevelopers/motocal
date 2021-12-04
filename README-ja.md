@@ -1,8 +1,11 @@
 # 元カレ計算機
 元カレ計算機（グラブル攻撃力計算機）の開発用リポジトリです。
+* 📝README: [English](README.md) / **日本語**
+* 📒Wiki: [GitHub](https://github.com/MotocalDevelopers/motocal/wiki)
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy/?template=https://github.com/MotocalDevelopers/motocal)
 [<img alt="Edit on CodeSandbox" src="https://codesandbox.io/static/img/play-codesandbox.svg" height="32" />](https://kei-gbf.github.io/codesandbox-button/redirect.html)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/MotocalDevelopers/motocal)
 
 ## 開発準備
 

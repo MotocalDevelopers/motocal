@@ -202,6 +202,8 @@ def scan_file_for_download_list(urls: list, site: str, output: str,
     for url in urls:
         name = re.findall(r'\d[^ /].*', url)[0]
         path = os.path.abspath(os.path.join(output, name))
+        path = re.sub('_03full.png', '_03.png', path)
+        path = re.sub('_03_full.png', '_03.png', path)
         if force or not os.path.exists(path):
             if site == 'wiki':
                 url = transform_wiki_url(name)

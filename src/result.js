@@ -1,5 +1,5 @@
 var React = require('react');
-var {Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover} = require('react-bootstrap');
+var {Thumbnail, ControlLabel, Button, ButtonGroup, ButtonToolbar, Collapse, DropdownButton, MenuItem, FormControl, Checkbox, Modal, Image, Popover, ProgressBar} = require('react-bootstrap');
 var CreateClass = require('create-react-class');
 var Simulator = require('./simulator.js');
 var {HPChart} = require('./chart.js');
@@ -33,145 +33,30 @@ var enemyDefenseType = GlobalConst.enemyDefenseType;
 var _ua = GlobalConst._ua;
 var getElementColorLabel = GlobalConst.getElementColorLabel;
 
-var {
-    isCosmos, isDarkOpus, isHollowsky, isValidResult, checkNumberOfRaces,
-    calcCombinations, calcOneCombination,
-    getTesukatoripokaAmount, getTotalBuff,
-    getInitialTotals, getTypeBonus, getTypeBonusStr, calcCriticalDeviation
-} = require('./global_logic.js');
+var {checkNumberOfRaces, getTesukatoripokaAmount, getTypeBonus, getTypeBonusStr, calcCriticalDeviation} = require('./global_logic.js');
+const ResultWorker = require('worker-loader!./calculate_result_worker.js');
 
 var ResultList = CreateClass({
-    calculateResult: function (newprops) {
-        var prof = newprops.profile;
-        var arml = newprops.armlist;
-        var summon = newprops.summon;
-        var chara = newprops.chara;
-
-        if (prof != undefined && arml != undefined && summon != undefined && chara != undefined) {
-            // Since the parameter added later may be NaN, additional processing
-            // If sortKey is not a NaN, use that, NaN if it's general attack power
-            var sortkey = "averageCyclePerTurn";
-            var sortkeyname = "予想ターン毎ダメージのパーティ平均値";
-            if (newprops.sortKey == newprops.sortKey) {
-                sortkey = newprops.sortKey;
-                sortkeyname = keyTypes[sortkey]
-            }
-
-            // If combinations have not been changed, use old guys
-            if (this.state.previousArmlist != null) {
-                var isCombinationChanged = false;
-                if (this.state.previousArmlist.length != arml.length || prof.filterOptionsChanged) {
-                    isCombinationChanged = true;
-                    prof.filterOptionsChanged = false;
-                }
-                if (!isCombinationChanged) {
-                    for (var i = 0; i < arml.length; i = (i + 1) | 0) {
-                        if (arml[i].considerNumberMax != this.state.previousArmlist[i].considerNumberMax || arml[i].considerNumberMin != this.state.previousArmlist[i].considerNumberMin) {
-                            isCombinationChanged = true;
-                        }
-                        // Combination changes depending on whether it became a cosmos weapon, or it was not a cosmos weapon
-                        if (isCosmos(arml[i]) != isCosmos(this.state.previousArmlist[i])) {
-                            isCombinationChanged = true;
-                        }
-                        if (isHollowsky(arml[i]) != isHollowsky(this.state.previousArmlist[i])) {
-                            isCombinationChanged = true;
-                        }
-                        if (isDarkOpus(arml[i]) != isDarkOpus(this.state.previousArmlist[i])) {
-                            isCombinationChanged = true;
-                        }
-                    }
-                }
-                if (isCombinationChanged) {
-                    var combinations = calcCombinations(arml, prof.ruleMaxSize);
-                    this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
-                    this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
-                } else {
-                    var combinations = this.state.previousCombinations
-                }
-            } else {
-                var combinations = calcCombinations(arml, prof.ruleMaxSize);
-                this.setState({previousArmlist: JSON.parse(JSON.stringify(arml))});
-                this.setState({previousCombinations: JSON.parse(JSON.stringify(combinations))})
-            }
-
-            var res = [];
-            var minSortKey = [];
-            for (var i = 0; i < summon.length; i++) {
-                res[i] = [];
-                minSortKey[i] = -1
-            }
-
-
-            var itr = combinations.length;
-            var totalItr = itr * summon.length * Object.keys(getInitialTotals(prof, chara, summon)).length;
-
-            // If necessary values for preprocessing are prepared here
-            var minHP = (prof.minimumHP == undefined) ? undefined : parseInt(prof.minimumHP);
-
-            for (var i = 0; i < itr; i = (i + 1) | 0) {
-                var totals = getInitialTotals(prof, chara, summon);
-                var totalBuff = getTotalBuff(prof);
-                var oneres = calcOneCombination(combinations[i], summon, prof, chara, arml, totals, totalBuff);
-                for (var j = 0; j < summon.length; j++) {
-                    // For each result preprocessing
-                    if (isValidResult(oneres[j], minHP)) {
-                        if (res[j].length < 10) {
-                            // First update minSortkey
-                            if (minSortKey[j] < 0 || minSortKey[j] > oneres[j].Djeeta[sortkey]) {
-                                minSortKey[j] = oneres[j].Djeeta[sortkey]
-                            }
-                            res[j].push({data: oneres[j], armNumbers: combinations[i]});
-                        } else {
-                            // Only those larger than minSortkey push
-                            if (oneres[j].Djeeta[sortkey] >= minSortKey[j]) {
-                                // Add to eleventh
-                                res[j].push({data: oneres[j], armNumbers: combinations[i]});
-
-                                // Erase what matches minSortkey [j] up to the 10th
-                                var spliceid = -1;
-                                for (var k = 0; k < 10; k = (k + 1) | 0) {
-                                    if (res[j][k].data.Djeeta[sortkey] == minSortKey[j]) {
-                                        spliceid = k
-                                    }
-                                }
-                                res[j].splice(spliceid, 1);
-                                minSortKey[j] = -1;
-
-                                // Since it became an array of ten, once again calculate the minimum value
-                                for (var k = 0; k < 10; k = (k + 1) | 0) {
-                                    if (minSortKey[j] < 0 || minSortKey[j] > res[j][k].data.Djeeta[sortkey]) {
-                                        minSortKey[j] = res[j][k].data.Djeeta[sortkey]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            // At this point, summonres should be an array of "array of associative arrays of result data corresponding to each summon"
-            for (var i = 0; i < summon.length; i++) {
-                if (sortkey == "ATKandHP") {
-                    res[i].sort(function (a, b) {
-                        if ((a.data.Djeeta.displayAttack + a.data.Djeeta.displayHP) < (b.data.Djeeta.displayAttack + b.data.Djeeta.displayHP)) return 1;
-                        if ((a.data.Djeeta.displayAttack + a.data.Djeeta.displayHP) > (b.data.Djeeta.displayAttack + b.data.Djeeta.displayHP)) return -1;
-                        return 0;
-                    });
-                } else {
-                    res[i].sort(function (a, b) {
-                        if (a["data"]["Djeeta"][sortkey] < b["data"]["Djeeta"][sortkey]) return 1;
-                        if (a["data"]["Djeeta"][sortkey] > b["data"]["Djeeta"][sortkey]) return -1;
-                        return 0;
-                    });
-                }
-                while (res[i].length > 10) {
-                    res[i].pop();
-                }
-            }
-
-            return {summon: summon, result: res, sortkeyname: sortkeyname, totalItr: totalItr}
-        } else {
-            return {summon: summon, result: []}
+    calculateResult: function ({profile, armlist, summon, chara, sortKey}) {
+        let worker;
+        const {previousArmlist, previousCombinations} = this.state;
+        this.setState({
+            calculatingResult: true
+        });
+        if (typeof (worker) == "undefined") {
+            worker = new ResultWorker();
         }
+        worker.onmessage = ({data: {result, previousArmlist, previousCombinations}}) => {
+            this.setState({
+                result,
+                previousArmlist: previousArmlist || this.state.previousArmlist,
+                previousCombinations: previousCombinations || this.state.previousCombinations,
+                calculatingResult: false
+            });
+            worker.terminate();
+            worker = undefined;
+        };
+        worker.postMessage({profile, armlist, summon, chara, sortKey, previousArmlist, previousCombinations});
     },
     getInitialState: function () {
         return {
@@ -189,10 +74,12 @@ var ResultList = CreateClass({
             switchCharaDA: 0,
             switchCharaTotalExpected: 0,
             switchCharaCycleDamage: 0,
+            switchCharaTimeDamage: 0,
             switchCharaPureDamage: 0,
             switchCharaOugiDamage: 0,
             switchCharaLimitValues: 0,
             switchCharaOugiGage: 0,
+            switchCharaLockout: 0,
             switchAverageAttack: 1,
             switchAverageCriticalAttack: 0,
             switchTotalExpected: 0,
@@ -202,9 +89,12 @@ var ResultList = CreateClass({
             switchDamageWithCritical: 0,
             switchDamageWithMultiple: 0,
             switchOugiGage: 0,
+            switchLockout: 0,
             switchOugiDamage: 0,
             switchCycleDamage: 0,
+            switchTimeDamage: 0,
             switchAverageCycleDamage: 1,
+            switchAverageTimeDamage: 0,
             switchDebuffResistance: 0,
             switchChainBurst: 0,
             switchTotalOugiDamageWithChain: 0,
@@ -223,7 +113,8 @@ var ResultList = CreateClass({
             previousArmlist: null,
             previousCombinations: null,
             ruleMaxSize: true,
-            filterOptionsChanged: false
+            filterOptionsChanged: false,
+            calculatingResult: false
         };
     },
     closeHPChart: function () {
@@ -240,8 +131,7 @@ var ResultList = CreateClass({
     },
     componentWillReceiveProps: function (nextProps) {
         if (this.state.disableAutoResultUpdate != 1 && (nextProps.noResultUpdate == undefined || !nextProps.noResultUpdate)) {
-            var allresult = this.calculateResult(nextProps);
-            this.setState({result: allresult});
+            this.calculateResult(nextProps);
         }
 
         // Whether armlist has not been changed check => If changed, erase until now
@@ -268,11 +158,11 @@ var ResultList = CreateClass({
         var newState = this.state;
         newState[key] = (newState[key] == 0) ? 1 : 0;
 
+        this.setState(newState)
         // UPDATE after automatic update ON
         if (key == "disableAutoResultUpdate" && newState[key] == 0) {
-            newState["result"] = this.calculateResult(this.props)
+            this.calculateResult(this.props);
         }
-        this.setState(newState)
     },
     openHPChart: function (e) {
         var sortkey = "averageCyclePerTurn";
@@ -358,7 +248,7 @@ var ResultList = CreateClass({
         this.setState({storedList: newStoredList})
     },
     forceResultUpdate: function () {
-        this.setState({result: this.calculateResult(this.props)})
+        this.calculateResult(this.props);
     },
     openDisplayTable: function () {
         this.setState({openDisplayElementTable: !this.state.openDisplayElementTable})
@@ -434,6 +324,9 @@ var ResultList = CreateClass({
         if (switcher.switchDamage) {
             tableheader.push(intl.translate("単攻撃ダメージ(技巧連撃有)", locale))
         }
+        if (switcher.switchLockout) {
+            tableheader.push(intl.translate("予想ターン毎の硬直", locale))
+        }
         if (switcher.switchOugiGage) {
             tableheader.push(intl.translate("ターン毎の奥義ゲージ上昇量", locale))
         }
@@ -449,8 +342,14 @@ var ResultList = CreateClass({
         if (switcher.switchCycleDamage) {
             tableheader.push(intl.translate("予想ターン毎ダメージ", locale))
         }
+        if (switcher.switchTimeDamage) {
+            tableheader.push(intl.translate("予想秒毎ダメージ", locale))
+        }
         if (switcher.switchAverageCycleDamage) {
             tableheader.push(intl.translate("パーティ平均予想ターン毎ダメージ", locale) + " (" + intl.translate("四人合計値", locale) + ")")
+        }
+        if (switcher.switchAverageTimeDamage) {
+            tableheader.push(intl.translate("パーティ平均予想秒毎ダメージ", locale) + " (" + intl.translate("四人合計値", locale) + ")")
         }
 
         var job = (prof.job == undefined) ? Jobs["none"].name : Jobs[prof.job].name;
@@ -477,7 +376,7 @@ var ResultList = CreateClass({
                     key={i + 1}>&nbsp;/&nbsp;{getElementColorLabel(chara[i].element, locale)}&nbsp;{charaInfoStr}</span>);
             }
         }
-    
+
         var addPercent = (value) => intl.translate("percent", locale).replace("{}", value === undefined ? "0" : value);
 
         // Create buff info line
@@ -491,7 +390,7 @@ var ResultList = CreateClass({
         buffInfo.push(intl.translate("烈日の楽園", locale) + (prof.retsujitsuNoRakuen ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         buffInfo.push(intl.translate("死ト愛ノ世界", locale) + (prof.shiToAiNoSekai ? intl.translate("アクティブ", locale) : intl.translate("無効", locale)));
         var buffInfoStr = buffInfo.join(", ");
-    
+
         // Enemy info line
         var enemyInfo = [];
         enemyInfo.push(intl.translate("敵防御固有値", locale) + (prof.enemyDefense === undefined ? "0" : prof.enemyDefense));
@@ -555,13 +454,22 @@ var ResultList = CreateClass({
                                 <td onClick={this.handleEvent.bind(this, "switchCycleDamage")}
                                     className={(this.state.switchCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージ
                                 </td>
+                                <td onClick={this.handleEvent.bind(this, "switchTimeDamage")}
+                                    className={(this.state.switchTimeDamage == 1) ? "display-checked" : "display-unchecked"}> 予想秒毎ダメージ
+                                </td>
                             </tr>
                             <tr>
                                 <td onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")}
                                     className={(this.state.switchAverageCycleDamage == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎ダメージの平均値
                                 </td>
+                                <td onClick={this.handleEvent.bind(this, "switchAverageTimeDamage")}
+                                    className={(this.state.switchAverageTimeDamage == 1) ? "display-checked" : "display-unchecked"}> 予想秒毎ダメージの平均値
+                                </td>
                                 <td onClick={this.handleEvent.bind(this, "switchDamage")}
                                     className={(this.state.switchDamage == 1) ? "display-checked" : "display-unchecked"}> 単攻撃ダメージ
+                                </td>
+                                <td onClick={this.handleEvent.bind(this, "switchLockout")}
+                                    className={(this.state.switchLockout == 1) ? "display-checked" : "display-unchecked"}> 予想ターン毎の硬直
                                 </td>
                                 <td onClick={this.handleEvent.bind(this, "switchOugiGage")}
                                     className={(this.state.switchOugiGage == 1) ? "display-checked" : "display-unchecked"}> 奥義ゲージ上昇期待値
@@ -596,6 +504,9 @@ var ResultList = CreateClass({
                                 <td onClick={this.handleEvent.bind(this, "switchCharaCycleDamage")}
                                     className={(this.state.switchCharaCycleDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ予想ターン毎ダメージ
                                 </td>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaTimeDamage")}
+                                    className={(this.state.switchCharaTimeDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ予想秒毎ダメージ
+                                </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
                                     className={(this.state.switchCharaPureDamage == 1) ? "display-checked" : "display-unchecked"}> キャラ単攻撃ダメージ
                                 </td>
@@ -607,6 +518,9 @@ var ResultList = CreateClass({
                                 </td>
                             </tr>
                             <tr>
+                                <td onClick={this.handleEvent.bind(this, "switchCharaLockout")}
+                                    className={(this.state.switchCharaLockout == 1) ? "display-checked" : "display-unchecked"}> キャラ予想ターン毎の硬直
+                                </td>
                                 <td onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
                                     className={(this.state.switchCharaOugiGage == 1) ? "display-checked" : "display-unchecked"}> キャラ奥義ゲージ上昇量
                                 </td>
@@ -657,7 +571,7 @@ var ResultList = CreateClass({
                                 <ElementColorLabel element={s.friendElement}>{friendSummonHeader}</ElementColorLabel>
                                 <hr style={{"margin": "10px 0px"}}/>
                                 <div className="charainfo">
-                                {charaInfo}
+                                    {charaInfo}
                                     <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
                                     <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                                 </div>
@@ -740,78 +654,88 @@ var ResultList = CreateClass({
                     <ButtonToolbar>
                         <DropdownButton title={intl.translate("攻撃力・HP・連撃率", locale)} id="atk-hp-etcs">
                             <MenuItem onClick={this.handleEvent.bind(this, "switchTotalAttack")}
-                                      active={(this.state.switchTotalAttack == 1) ? true : false}>{intl.translate("攻撃力(二手技巧無し)", locale)}</MenuItem>
+                                      active={(this.state.switchTotalAttack == 1)}>{intl.translate("攻撃力(二手技巧無し)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchATKandHP")}
-                                      active={(this.state.switchATKandHP == 1) ? true : false}>{intl.translate("戦力", locale)}</MenuItem>
+                                      active={(this.state.switchATKandHP == 1)}>{intl.translate("戦力", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchHP")}
-                                      active={(this.state.switchHP == 1) ? true : false}>HP</MenuItem>
+                                      active={(this.state.switchHP == 1)}>HP</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDATA")}
-                                      active={(this.state.switchDATA == 1) ? true : false}>{intl.translate("連撃率", locale)}</MenuItem>
+                                      active={(this.state.switchDATA == 1)}>{intl.translate("連撃率", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchExpectedAttack")}
-                                      active={(this.state.switchExpectedAttack == 1) ? true : false}>{intl.translate("期待攻撃回数", locale)}</MenuItem>
+                                      active={(this.state.switchExpectedAttack == 1)}>{intl.translate("期待攻撃回数", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCriticalRatio")}
-                                      active={(this.state.switchCriticalRatio == 1) ? true : false}>{intl.translate("技巧期待値", locale)}</MenuItem>
+                                      active={(this.state.switchCriticalRatio == 1)}>{intl.translate("技巧期待値", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCriticalAttack")}
-                                      active={(this.state.switchCriticalAttack == 1) ? true : false}>{intl.translate("技巧期待攻撃力", locale)}</MenuItem>
+                                      active={(this.state.switchCriticalAttack == 1)}>{intl.translate("技巧期待攻撃力", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchTotalExpected")}
-                                      active={(this.state.switchTotalExpected == 1) ? true : false}>{intl.translate("総合*回数*技巧", locale)}</MenuItem>
+                                      active={(this.state.switchTotalExpected == 1)}>{intl.translate("総合*回数*技巧", locale)}</MenuItem>
                         </DropdownButton>
 
                         <DropdownButton title={intl.translate("パーティ平均攻撃力", locale)} id="party-averafed-atk">
                             <MenuItem onClick={this.handleEvent.bind(this, "switchAverageAttack")}
-                                      active={(this.state.switchAverageAttack == 1) ? true : false}>{intl.translate("パーティ平均攻撃力", locale)}</MenuItem>
+                                      active={(this.state.switchAverageAttack == 1)}>{intl.translate("パーティ平均攻撃力", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchAverageCriticalAttack")}
-                                      active={(this.state.switchAverageCriticalAttack == 1) ? true : false}>{intl.translate("技巧平均攻撃力", locale)}</MenuItem>
+                                      active={(this.state.switchAverageCriticalAttack == 1)}>{intl.translate("技巧平均攻撃力", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchAverageTotalExpected")}
-                                      active={(this.state.switchAverageTotalExpected == 1) ? true : false}>{intl.translate("総回技の平均", locale)}</MenuItem>
+                                      active={(this.state.switchAverageTotalExpected == 1)}>{intl.translate("総回技の平均", locale)}</MenuItem>
                         </DropdownButton>
 
                         <DropdownButton title={intl.translate("予測ダメージ", locale)} id="expected-damage">
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCycleDamage")}
-                                      active={(this.state.switchCycleDamage == 1) ? true : false}> {intl.translate("予想ターン毎ダメージ", locale)} </MenuItem>
+                                      active={(this.state.switchCycleDamage == 1)}> {intl.translate("予想ターン毎ダメージ", locale)} </MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchTimeDamage")}
+                                      active={(this.state.switchTimeDamage == 1)}> {intl.translate("予想秒毎ダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchAverageCycleDamage")}
-                                      active={(this.state.switchAverageCycleDamage == 1) ? true : false}> {intl.translate("パーティ平均予想ターン毎ダメージ", locale)} </MenuItem>
+                                      active={(this.state.switchAverageCycleDamage == 1)}> {intl.translate("パーティ平均予想ターン毎ダメージ", locale)} </MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchAverageTimeDamage")}
+                                      active={(this.state.switchAverageTimeDamage == 1)}> {intl.translate("パーティ平均予想秒毎ダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchPureDamage")}
-                                      active={(this.state.switchPureDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
+                                      active={(this.state.switchPureDamage == 1)}> {intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDamageWithCritical")}
-                                      active={(this.state.switchDamageWithCritical == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧有)", locale)}</MenuItem>
+                                      active={(this.state.switchDamageWithCritical == 1)}> {intl.translate("単攻撃ダメージ(技巧有)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDamageWithMultiple")}
-                                      active={(this.state.switchDamageWithMultiple == 1) ? true : false}> {intl.translate("単攻撃ダメージ(連撃有)", locale)}</MenuItem>
+                                      active={(this.state.switchDamageWithMultiple == 1)}> {intl.translate("単攻撃ダメージ(連撃有)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDamage")}
-                                      active={(this.state.switchDamage == 1) ? true : false}> {intl.translate("単攻撃ダメージ(技巧連撃有)", locale)}</MenuItem>
+                                      active={(this.state.switchDamage == 1)}> {intl.translate("単攻撃ダメージ(技巧連撃有)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchOugiDamage")}
-                                      active={(this.state.switchOugiDamage == 1) ? true : false}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
+                                      active={(this.state.switchOugiDamage == 1)}> {intl.translate("奥義ダメージ", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchChainBurst")}
-                                      active={(this.state.switchChainBurst == 1) ? true : false}> {intl.translate("チェインバースト", locale)} </MenuItem>
+                                      active={(this.state.switchChainBurst == 1)}> {intl.translate("チェインバースト", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchTotalOugiDamageWithChain")}
-                                      active={(this.state.switchTotalOugiDamageWithChain == 1) ? true : false}> {intl.translate("奥義+チェンバダメージ", locale)} </MenuItem>
+                                      active={(this.state.switchTotalOugiDamageWithChain == 1)}> {intl.translate("奥義+チェンバダメージ", locale)} </MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchLockout")}
+                                      active={(this.state.switchLockout == 1)}> {intl.translate("予想ターン毎の硬直", locale)} </MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchOugiGage")}
-                                      active={(this.state.switchOugiGage == 1) ? true : false}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </MenuItem>
+                                      active={(this.state.switchOugiGage == 1)}> {intl.translate("ターン毎の奥義ゲージ上昇量", locale)} </MenuItem>
                         </DropdownButton>
 
                         <DropdownButton title={intl.translate("キャラ情報・スキル合計値", locale)} id="chara-and-skill-info">
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaAttack")}
-                                      active={(this.state.switchCharaAttack == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("攻撃力", locale)}</MenuItem>
+                                      active={(this.state.switchCharaAttack == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("攻撃力", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaHP")}
-                                      active={(this.state.switchCharaHP == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}HP</MenuItem>
+                                      active={(this.state.switchCharaHP == 1)}>{intl.translate("キャラ(result)", locale)}HP</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaDA")}
-                                      active={(this.state.switchCharaDA == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("連撃率", locale)}</MenuItem>
+                                      active={(this.state.switchCharaDA == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("連撃率", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaTotalExpected")}
-                                      active={(this.state.switchCharaTotalExpected == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("総回技", locale)}</MenuItem>
+                                      active={(this.state.switchCharaTotalExpected == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("総回技", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaCycleDamage")}
-                                      active={(this.state.switchCharaCycleDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
+                                      active={(this.state.switchCharaCycleDamage == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想ターン毎ダメージ", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaTimeDamage")}
+                                      active={(this.state.switchCharaTimeDamage == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想秒毎ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaPureDamage")}
-                                      active={(this.state.switchCharaPureDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
+                                      active={(this.state.switchCharaPureDamage == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("単攻撃ダメージ(技巧連撃無)", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiDamage")}
-                                      active={(this.state.switchCharaOugiDamage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
+                                      active={(this.state.switchCharaOugiDamage == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("奥義ダメージ", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaLimitValues")}
-                                      active={(this.state.switchCharaLimitValues == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("実質ダメージ上限", locale)}</MenuItem>
+                                      active={(this.state.switchCharaLimitValues == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("実質ダメージ上限", locale)}</MenuItem>
+                            <MenuItem onClick={this.handleEvent.bind(this, "switchCharaLockout")}
+                                      active={(this.state.switchCharaLockout == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("予想ターン毎の硬直", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchCharaOugiGage")}
-                                      active={(this.state.switchCharaOugiGage == 1) ? true : false}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
+                                      active={(this.state.switchCharaOugiGage == 1)}>{intl.translate("キャラ(result)", locale)}{intl.translate("ターン毎の奥義ゲージ上昇量", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchSkillTotal")}
-                                      active={(this.state.switchSkillTotal == 1) ? true : false}>{intl.translate("スキル合計", locale)}</MenuItem>
+                                      active={(this.state.switchSkillTotal == 1)}>{intl.translate("スキル合計", locale)}</MenuItem>
                             <MenuItem onClick={this.handleEvent.bind(this, "switchDebuffResistance")}
-                                      active={(this.state.switchDebuffResistance == 1) ? true : false}>{intl.translate("弱体耐性率", locale)}</MenuItem>
+                                      active={(this.state.switchDebuffResistance == 1)}>{intl.translate("弱体耐性率", locale)}</MenuItem>
                         </DropdownButton>
                         <ControlAutoUpdate autoupdate={this.state.disableAutoResultUpdate}
                                            switchAutoUpdate={this.handleEvent.bind(this, "disableAutoResultUpdate")}
@@ -834,7 +758,7 @@ var ResultList = CreateClass({
                         <AdsenseAdvertisement locale={locale} type="pc-2"/>
                     </div>
 
-                    {summon.map(function (s, summonindex) {
+                    {summon.map((s, summonindex) => {
                         var selfSummonHeader = "";
                         if (s.selfSummonType == "odin") {
                             selfSummonHeader = intl.translate(summonElementTypes[s.selfElement].name, locale) + intl.translate("属性攻", locale) + s.selfSummonAmount + intl.translate("キャラ攻", locale) + s.selfSummonAmount2
@@ -863,7 +787,7 @@ var ResultList = CreateClass({
                                 <div className="charainfo" style={{"float": "left"}}>
                                     {charaInfo}
                                     <div>{intl.translate("パーティ全体バフ", locale)}: {buffInfoStr}</div>
-                                <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
+                                    <div>{getElementColorLabel(prof.enemyElement, locale)} {intl.translate("敵", locale)} ({enemyInfoStr})</div>
                                 </div>
                                 <div style={{"textAlign": "right", "float": "right"}}>
                                     <span>{intl.translate("優先項目", locale)}: {changeSortKey}</span>
@@ -889,7 +813,9 @@ var ResultList = CreateClass({
                                     </thead>
                                     <Result key={summonindex} summonid={summonindex} data={result[summonindex]}
                                             switcher={switcher} arm={arm} prof={prof}
-                                            onAddToHaisuiData={onAddToHaisuiData} locale={locale}/>
+                                            onAddToHaisuiData={onAddToHaisuiData} locale={locale}
+                                            calculating={this.state.calculatingResult}
+                                    />
                                 </table>
                             </div>
                         );
@@ -989,6 +915,18 @@ var Result = CreateClass({
         var onClick = this.onClick;
         var locale = this.props.locale;
         const formatCommaSeparatedNumber = num => String(Math.round(num)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+
+        if (this.props.calculating) {
+            return (
+                <tbody className="result">
+                <tr>
+                    <td colSpan="999">
+                        <ProgressBar active now={100}/>
+                    </td>
+                </tr>
+                </tbody>
+            );
+        }
 
         return (
             <tbody className="result">
@@ -1095,7 +1033,7 @@ var Result = CreateClass({
 
                 if (sw.switchCharaHP) {
                     for (key in m.data) {
-                        let {totalHP, remainHP} = m.data[key]; 
+                        let {totalHP, remainHP} = m.data[key];
                         charaDetail[key].push(
                             <span key={key + "-HP"} className="result-chara-detail">
                                     <span
@@ -1168,6 +1106,11 @@ var Result = CreateClass({
                     ++colSize;
                 }
 
+                if (sw.switchLockout) {
+                    tablebody.push(m.data.Djeeta.expectedLockoutTimePerTurn.toFixed(2) + "s");
+                    ++colSize;
+                }
+
                 if (sw.switchOugiGage) {
                     tablebody.push(m.data.Djeeta.expectedOugiGage.toFixed(2) + "%\n(" + m.data.Djeeta.expectedTurn.toFixed(2) + "T)");
                     ++colSize;
@@ -1179,13 +1122,23 @@ var Result = CreateClass({
                 }
 
 
-
                 if (sw.switchCharaOugiDamage) {
                     for (key in m.data) {
                         charaDetail[key].push(
                             <span key={key + "-ougi-damage"} className="result-chara-detail">
                                     <span
                                         className="label label-primary">{intl.translate("奥義ダメージ", locale)}</span> {formatCommaSeparatedNumber(m.data[key].ougiDamage)}&nbsp;
+                                </span>
+                        );
+                    }
+                }
+
+                if (sw.switchCharaLockout) {
+                    for (key in m.data) {
+                        charaDetail[key].push(
+                            <span key={key + "-ougi-gage"} className="result-chara-detail">
+                                    <span
+                                        className="label label-primary">{intl.translate("予想ターン毎の硬直", locale)}</span> {m.data[key].expectedLockoutTimePerTurn.toFixed(2) + "s"}&nbsp;
                                 </span>
                         );
                     }
@@ -1215,6 +1168,11 @@ var Result = CreateClass({
                     ++colSize;
                 }
 
+                if (sw.switchTimeDamage) {
+                    tablebody.push(formatCommaSeparatedNumber(m.data.Djeeta.expectedCycleDamagePerSecond));
+                    ++colSize;
+                }
+
                 if (sw.switchCharaCycleDamage) {
                     for (key in m.data) {
                         charaDetail[key].push(
@@ -1226,46 +1184,67 @@ var Result = CreateClass({
                     }
                 }
 
+                if (sw.switchCharaTimeDamage) {
+                    for (key in m.data) {
+                        charaDetail[key].push(
+                            <span key={key + "-time-damage"} className="result-chara-detail">
+                                    <span
+                                        className="label label-primary">{intl.translate("予想秒毎ダメージ", locale)}</span> {formatCommaSeparatedNumber(m.data[key].expectedCycleDamagePerSecond)}&nbsp;
+                                </span>
+                        );
+                    }
+                }
+
                 if (sw.switchAverageCycleDamage) {
                     let averageCyclePerTurn = m.data.Djeeta.averageCyclePerTurn;
                     tablebody.push(formatCommaSeparatedNumber(averageCyclePerTurn) + " (" + formatCommaSeparatedNumber(4 * averageCyclePerTurn) + ")");
                     ++colSize;
                 }
 
+                if (sw.switchAverageTimeDamage) {
+                    let averageCyclePerSecond = m.data.Djeeta.averageCyclePerSecond;
+                    tablebody.push(formatCommaSeparatedNumber(averageCyclePerSecond) + " (" + formatCommaSeparatedNumber(4 * averageCyclePerSecond) + ")");
+                    ++colSize;
+                }
+
+
                 if (sw.switchCharaLimitValues) {
                     for (var key in m.data) {
-                        function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage){
+                        function createRealLimitValues(limitValues, damageUP, enemyResistance, ougiFixedDamage, criticalRatio, supplementalDamage) {
                             // e.g. one-foe: 300K+{(400K-300K)×0.8}+{(500K-400K)×0.6}+{(600K-500K)×0.05}
-                            let  _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
-                            (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
-                            (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
-                            
+                            let _limitValues = limitValues[3][0] + (limitValues[2][0] - limitValues[3][0]) * limitValues[3][1] +
+                                (limitValues[1][0] - limitValues[2][0]) * limitValues[2][1] +
+                                (limitValues[0][0] - limitValues[1][0]) * limitValues[1][1];
+
                             // In the case of ougi.
                             _limitValues += ougiFixedDamage * criticalRatio;
-                            
+
                             _limitValues *= Math.max(1.0, 1.0 + damageUP);
                             _limitValues *= Math.max(0.0, Math.min(1.0, 1.0 - enemyResistance));
                             _limitValues += supplementalDamage;
-                            
+
                             return _limitValues;
                         }
-                        
+
                         // Generate supplemental Damage.
-                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0, chainBurstSupplemental = 0;
+                        let damageSupplemental = 0, damageWithoutCriticalSupplemental = 0, ougiDamageSupplemental = 0,
+                            chainBurstSupplemental = 0;
                         [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental] = supplemental.calcOthersDamage(m.data[key].skilldata.supplementalDamageArray, [damageSupplemental, damageWithoutCriticalSupplemental, ougiDamageSupplemental, chainBurstSupplemental], {remainHP: m.data[key].remainHP});
-                        
+
                         let normalDamageRealLimit = createRealLimitValues(m.data[key].normalDamageLimitValues, m.data[key].skilldata.damageUPOnlyNormalDamage, m.data[key].skilldata.enemyResistance, 0, 0, damageSupplemental);
                         let ougiDamageRealLimit = createRealLimitValues(m.data[key].ougiDamageLimitValues, m.data[key].skilldata.damageUP, m.data[key].skilldata.enemyResistance, m.data[key].ougiFixedDamage, m.data[key].criticalRatio, ougiDamageSupplemental);
-                        
+
                         charaDetail[key].push(
-                                <div key={key + "-LimitValues"}>
+                            <div key={key + "-LimitValues"}>
                                     <span key={key + "-LimitValues"}>
-                                        <span className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
-                                            {formatCommaSeparatedNumber(normalDamageRealLimit)}&nbsp;
-                                        <span className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
-                                            {formatCommaSeparatedNumber(ougiDamageRealLimit)}&nbsp;
+                                        <span
+                                            className={"label label-default"}>{intl.translate("実質通常上限", locale)}</span>&nbsp;
+                                        {formatCommaSeparatedNumber(normalDamageRealLimit)}&nbsp;
+                                        <span
+                                            className={"label label-default"}>{intl.translate("実質奥義上限", locale)}</span>&nbsp;
+                                        {formatCommaSeparatedNumber(ougiDamageRealLimit)}&nbsp;
                                     </span>
-                                </div>
+                            </div>
                         );
                     };
                 }
@@ -1290,20 +1269,21 @@ var Result = CreateClass({
                         };
 
                         pushSkillInfoElement1("normal", "通常攻刃", "danger");
-                        pushSkillInfoElement1("normalHaisui", "通常背水", "light");
-                        pushSkillInfoElement1("normalKonshin", "通常渾身", "success");
-                        pushSkillInfoElement1("element", "属性", "primary");
+                        pushSkillInfoElement1("normalHaisui", "通常背水", "dark");
+                        pushSkillInfoElement1("normalKonshin", "通常渾身", "light");
+                        pushSkillInfoElement1("element", "属性", "default");
                         pushSkillInfoElement1("magna", "マグナ", "primary");
-                        pushSkillInfoElement1("magnaHaisui", "マグナ背水", "light");
-                        pushSkillInfoElement1("magnaKonshin", "マグナ渾身", "success");
-                        pushSkillInfoElement1("ex", "EX", "primary");
-                        pushSkillInfoElement1("exHaisui", "EX背水", "light");
-                        pushSkillInfoElement1("charaHaisui", "キャラ背水", "light");
-                        pushSkillInfoElement1("LBHaisui", "LB背水ラベル", "light");
+                        pushSkillInfoElement1("magnaHaisui", "マグナ背水", "dark");
+                        pushSkillInfoElement1("magnaKonshin", "マグナ渾身", "light");
+                        pushSkillInfoElement1("ex", "EX", "warning");
+                        pushSkillInfoElement1("exHaisui", "EX背水", "dark");
+                        pushSkillInfoElement1("charaHaisui", "キャラ背水", "dark");
+                        pushSkillInfoElement1("LBHaisui", "LB背水ラベル", "dark");
                         pushSkillInfoElement1("LBKonshin", "LB渾身ラベル", "light");
                         pushSkillInfoElement1("hpRatio", "HP増加", "success");
                         pushSkillInfoElement1("other", "その他バフ", "primary");
-                        pushSkillInfoElement1("ATKDebuff", "攻撃力減少(特殊)", "primary");
+                        pushSkillInfoElement1("ATKDebuff", "攻撃力減少(特殊)", "danger");
+                        pushSkillInfoElement1("accuracyDebuff", "攻撃命中率減少(特殊)", "dark");
 
                         var multipleAttackSkillInfo = [];
                         // For batting skill
@@ -1314,7 +1294,8 @@ var Result = CreateClass({
                             if (value != 0.0) {
                                 multipleAttackSkillInfo.push(
                                     <span key={key + "-" + skillKey}>
-                                        <span className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
+                                        <span
+                                            className={"label label-" + labelType}>{intl.translate(label, locale)}</span>&nbsp;
                                         <span className={isOver ? "is-over" : ""}>{value.toFixed(1)}%</span>&nbsp;
                                     </span>
                                 );
@@ -1322,15 +1303,15 @@ var Result = CreateClass({
                         };
 
                         pushSkillInfoElement2("normalDA", "DA上昇(通常)", "danger");
-                        pushSkillInfoElement2("magnaDA", "DA上昇(マグナ)", "danger");
-                        pushSkillInfoElement2("exDA", "DA上昇(EX)", "danger");
-                        pushSkillInfoElement2("bahaDA", "DA上昇(バハ)", "danger");
-                        pushSkillInfoElement2("cosmosDA", "DA上昇(コスモス)", "danger");
-                        pushSkillInfoElement2("otherDA", "DA上昇(その他)", "danger");
+                        pushSkillInfoElement2("magnaDA", "DA上昇(マグナ)", "primary");
+                        pushSkillInfoElement2("exDA", "DA上昇(EX)", "default");
+                        pushSkillInfoElement2("bahaDA", "DA上昇(バハ)", "dark");
+                        pushSkillInfoElement2("cosmosDA", "DA上昇(コスモス)", "light");
+                        pushSkillInfoElement2("otherDA", "DA上昇(その他)", "default");
                         pushSkillInfoElement2("normalTA", "TA上昇(通常)", "danger");
-                        pushSkillInfoElement2("magnaTA", "TA上昇(マグナ)", "danger");
-                        pushSkillInfoElement2("bahaTA", "TA上昇(バハ)", "danger");
-                        pushSkillInfoElement2("otherTA", "TA上昇(その他)", "danger");
+                        pushSkillInfoElement2("magnaTA", "TA上昇(マグナ)", "primary");
+                        pushSkillInfoElement2("bahaTA", "TA上昇(バハ)", "dark");
+                        pushSkillInfoElement2("otherTA", "TA上昇(その他)", "default");
 
                         var criticalInfo = [];
                         if (Object.keys(skilldata.criticalArray).length > 0) {
@@ -1385,7 +1366,7 @@ var Result = CreateClass({
                                     <tbody>
                                     <tr>
                                         <td>{intl.translate("効果量", locale)}</td>
-                                        {additionalDamageXA.map(value => <td>{Math.round(value*100)}%</td>)}
+                                        {additionalDamageXA.map(value => <td>{Math.round(value * 100)}%</td>)}
                                     </tr>
                                     </tbody>
                                 </table>
@@ -1396,26 +1377,27 @@ var Result = CreateClass({
                         const supplementalInfo = supplemental.collectSkillInfo(skilldata.supplementalDamageArray, {remainHP: m.data[key].remainHP});
                         if (supplementalInfo.total > 0) {
                             supplementalDamageInfo.push(
-                                <table key={key + "-supplementalDamageTable"} className="table table-bordered" style={{"marginBottom": "0px", "fontSize": "10pt"}} >
+                                <table key={key + "-supplementalDamageTable"} className="table table-bordered"
+                                       style={{"marginBottom": "0px", "fontSize": "10pt"}}>
                                     <thead>
-                                        <tr>
-                                            <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
-                                            {supplementalInfo.headers.map(([key, type, val]) =>
-                                                <th key={key} className="bg-success">
-                                                    {intl.translate(key, locale) + 
-                                                     (intl.translate("supplemental_"+type, locale)||"").replace("{value}", (val||"").toString())}
-                                                </th>)}
-                                            <th className="bg-success">{intl.translate("合計", locale)}</th>
-                                        </tr>
+                                    <tr>
+                                        <th className="bg-success">{intl.translate("与ダメージ上昇効果のソース", locale)}</th>
+                                        {supplementalInfo.headers.map(([key, type, val]) =>
+                                            <th key={key} className="bg-success">
+                                                {intl.translate(key, locale) +
+                                                (intl.translate("supplemental_" + type, locale) || "").replace("{value}", (val || "").toString())}
+                                            </th>)}
+                                        <th className="bg-success">{intl.translate("合計", locale)}</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>{intl.translate("ダメージ", locale)}</td>
-                                            {supplementalInfo.values.map(([key, damage]) => <td key={key}>{damage}</td>)}
-                                            <td>
-                                                {supplementalInfo.total}&nbsp;
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{intl.translate("ダメージ", locale)}</td>
+                                        {supplementalInfo.values.map(([key, damage]) => <td key={key}>{damage}</td>)}
+                                        <td>
+                                            {supplementalInfo.total}&nbsp;
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             );
@@ -1435,15 +1417,15 @@ var Result = CreateClass({
                                 );
                             }
                         };
-                        pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "default");
-                        pushSkillInfoElement3("additionalDamage", "追加ダメージ", "default");
-                        pushSkillInfoElement3("damageUP", "与ダメージUP", "default");
-                        pushSkillInfoElement3("damageUPOnlyNormalDamage", "与ダメージUP(通常攻撃のみ)", "default");
-                        pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "default");
-                        pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "default");
-                        pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "default");
-                        pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "default");
-                        pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "default");
+                        pushSkillInfoElement3("additionalDamage", "追加ダメージ", "primary");
+                        pushSkillInfoElement3("damageUP", "与ダメージUP", "danger");
+                        pushSkillInfoElement3("damageUPOnlyNormalDamage", "与ダメージUP(通常攻撃のみ)", "danger");
+                        pushSkillInfoElement3("damageLimit", "ダメージ上限アップ", "danger");
+                        pushSkillInfoElement3("ougiDamageUP", "奥義ダメージアップ", "warning");
+                        pushSkillInfoElement3("ougiDamageLimit", "奥義ダメージ上限アップ", "warning");
+                        pushSkillInfoElement3("chainDamageUP", "チェインダメージアップ", "success");
+                        pushSkillInfoElement3("chainDamageLimit", "チェインダメージ上限アップ", "success");
+                        pushSkillInfoElement3("ougiGageBuff", "奥義ゲージ上昇量", "warning");
                         if (skilldata["criticalDamageLimit"] != 0) {
                             otherSkillInfo.push(
                                 <span key={key + "-" + "normalCriticalDamageLimit"}>
@@ -1469,7 +1451,7 @@ var Result = CreateClass({
                         };
                         pushOugiInfo("ougiRatio", "奥義倍率", "warning");
                         pushOugiInfo("ougiFixedDamage", "奥義固定ダメージ", "warning");
-                        pushOugiInfo("ougiBonusPlainDamage", "奥義追加ダメージ(無属性固定)", "warning");
+                        pushOugiInfo("ougiBonusPlainDamage", "奥義追加ダメージ(無属性固定)", "default");
 
                         charaDetail[key].push(<div key={key + "-mainSkillInfo"}>{mainSkillInfo}</div>);
                         charaDetail[key].push(<div key={key + "-multipleAttackInfo"}>{multipleAttackSkillInfo}</div>);
