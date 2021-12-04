@@ -40,9 +40,9 @@
     "watch-dev": "webpack --progress --watch",
     "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch",
     "storybook": "start-storybook -p 9009 -s ./  --ci",
-    "download:arm": "python3 ./scripts/download_image.py arm",
-    "download:chara": "python3 ./scripts/download_image.py chara",
-    "download:help": "python3 ./scripts/download_image.py -h"
+    "download:arm": "python ./scripts/download_image.py arm",
+    "download:chara": "python ./scripts/download_image.py chara",
+    "download:help": "python ./scripts/download_image.py -h"
   },
   "repository": {
     "type": "git",
