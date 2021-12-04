@@ -1570,39 +1570,6 @@ function* eachSkill(arm) {
     }
 }
 
-function* eachSupport(chara) {
-    for (let key of ["support", "support2", "support3"]) {
-
-        let supportID = chara[key];
-
-        if (typeof supportID === 'undefined') {
-            continue; // Data maybe broken.
-        }
-
-        if (supportID === 'none') {
-            continue; // Safe for skip
-        }
-
-        let support = supportAbilities[supportID];
-
-        if (typeof support === 'undefined') {
-            console.error("unknown support ability ID:", supportID);
-            continue;
-        }
-
-        // process composite support
-        if (support.type === 'composite') {
-            for (let subSupport of support.value) {
-                // TODO: check undefined and" "none" support
-                yield supportAbilities[subSupport.ID] || subSupport;
-            }
-            continue;
-        }
-
-        yield support;
-    }
-}
-
 module.exports.recalcCharaHaisui = function (chara, remainHP) {
     var charaHaisuiValue = 1.0;
 
