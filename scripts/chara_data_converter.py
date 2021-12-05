@@ -654,6 +654,7 @@ patchingOugiRatio["コルワ"] = {"ougiRatio": 0.0}
 patchingOugiRatio["コルワ(水着ver)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["コッコロ"] = {"ougiRatio": 0.0}
 patchingOugiRatio["ディアンサ(水着ver)"] = {"ougiRatio": 0.0}
+patchingOugiRatio["ディアンサ(SSR)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["木之本桜"] = {"ougiRatio": 0.0}
 patchingOugiRatio["グリームニル(バレンタインver)"] = {"ougiRatio": 0.0}
 patchingOugiRatio["レイ(リミテッドver)"] = {"ougiRatio": 0.0}
