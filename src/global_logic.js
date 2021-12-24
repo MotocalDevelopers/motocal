@@ -38,6 +38,7 @@ const {
 const {range, when} = require('./support_filter');
 const epic = require('./epic');
 const awakening = require('./awakening');
+const support = require('./support')
 
 
 module.exports.isCosmos = function (arm) {
@@ -1362,7 +1363,7 @@ module.exports.calcHaisuiValue = function (haisuiType, haisuiAmount, haisuiSLv, 
                     SLvModifier = haisuiSLv;
                 } else {
                     SLvModifier = 15 + 0.4 * (haisuiSLv - 15);
-                }        
+                }
             } else if (haisuiAmount === "LLL") {
                 // Normal Stamina (LLL)
                 if (haisuiSLv < 10) {
@@ -1575,9 +1576,9 @@ module.exports.recalcCharaHaisui = function (chara, remainHP) {
 
     for (var ch = 0; ch < chara.length; ch++) {
         if (chara[ch].name != "" && chara[ch].isConsideredInAverage) {
-            for (let support of eachSupport(chara[ch])) {
+            for (let s of support.eachSupport(chara[ch])) {
                 // Treatment of emnity supplements only
-                switch (support.type) {
+                switch (s.type) {
                     case "emnity_all_SL10":
                         // Refer to Zahlhamelina's HP
                         charaHaisuiValue += 0.01 * module.exports.calcHaisuiValue("charaHaisui", "zahlhamelina", 1, remainHP);
@@ -3018,20 +3019,20 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
     var index = 0;
     for (var key in totals) {
         index = index + 1 | 0;
-        for (let support of eachSupport(totals[key])) {
+        for (let s of support.eachSupport(totals[key])) {
             // Processing of special supporter abilities
-            switch (support.type) {
+            switch (s.type) {
                 case "normalBuff_doraf":
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
                             // Draph, Unknown and Primal characters only (Fortified Vigor)
                             if (bahaRaceContains(["doraf"], totals[key2]["race"])) {
-                                totals[key2]["normalBuff"] += support.value;
+                                totals[key2]["normalBuff"] += s.value;
                             }
                         }
                     } else {
                         // Calculate yourself only if you do not put it in the average
-                        totals[key]["normalBuff"] += support.value;
+                        totals[key]["normalBuff"] += s.value;
                     }
                     continue;
                 case "normalBuff_depends_races":
@@ -3041,12 +3042,12 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                 case "normalBuff_depends_member":
                     continue;
                 case "DATASupport":
-                    let [daRate, taRate] = support.value;
+                    let [daRate, taRate] = s.value;
                     if (totals[key].isConsideredInAverage) {
                         for (let key2 in totals) {
-                            if (totals[key2]["element"] === support.range
-                              || support.range === "all"
-                              || (support.range === "own" && key === key2)) {
+                            if (totals[key2]["element"] === s.range
+                              || s.range === "all"
+                              || (s.range === "own" && key === key2)) {
                                 totals[key2]["DASupport"] += daRate;
                                 totals[key2]["TASupport"] += taRate;
                             }
@@ -3061,17 +3062,17 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     if (totals[key].isConsideredInAverage) {
                         for (var key2 in totals) {
                             if (favContains("fist", [totals[key2]["fav1"], totals[key2]["fav2"]])) {
-                                totals[key2]["DASupport"] += support.value;
+                                totals[key2]["DASupport"] += s.value;
                             }
                         }
                     } else {
                         // Calculate yourself only if you do not put it in the average
-                        totals[key]["DASupport"] += support.value;
+                        totals[key]["DASupport"] += s.value;
                     }
                     continue;
                 case "shinryu_to_no_kizuna":
                     if (when.element_buff(chara, buff)) {
-                        totals[key]["normalBuff"] += support.value;
+                        totals[key]["normalBuff"] += s.value;
                     }
                     continue;
                 case "hanged_man_reversed":
@@ -3079,7 +3080,7 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                         if (epic.isAllUniqueArm(arml, comb)) {
                             if (totals[key].isConsideredInAverage) {
                                 for (var key2 in totals) {
-                                    if (totals[key2]["element"] === support.range) {
+                                    if (totals[key2]["element"] === s.range) {
                                         totals[key2]["caimOther"] += 0.20;
                                         totals[key2]["caimDamageLimit"] += 0.10;
                                     }
@@ -3093,16 +3094,16 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     }
                     continue;
                 case "element_buff_boost":
-                    for (let [name, chara] of support.range(totals, key)) {
+                    for (let [name, chara] of s.range(totals, key)) {
                         if (when.element_buff(chara, buff)) {
-                            chara["elementBuffBoostBuff"] = Math.max(support.value, chara["elementBuffBoostBuff"]);
+                            chara["elementBuffBoostBuff"] = Math.max(s.value, chara["elementBuffBoostBuff"]);
                         }
                     }
                     continue;
                 case "element_buff_boost_other_own":
-                    for (let [name, chara] of support.range(totals, key)) {
+                    for (let [name, chara] of s.range(totals, key)) {
                         if (when.element_buff(chara, buff)) {
-                            chara["otherBuffBoostBuff"] = Math.max(support.value, chara["otherBuffBoostBuff"]);
+                            chara["otherBuffBoostBuff"] = Math.max(s.value, chara["otherBuffBoostBuff"]);
                         }
                     }
                     continue;
@@ -3116,7 +3117,7 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                 case "emnity_all_SL10":
                     // Refer to HP of Zahlhamelina, Yuisis (Fire), Predator
                     var charaHaisuiValue = module.exports.calcHaisuiValue("charaHaisui", "zahlhamelina", 1, totals[key]["remainHP"]);
-                    for (let [name, chara] of range[support.range](totals, key)) {
+                    for (let [name, chara] of range[s.range](totals, key)) {
                         chara["charaHaisui"] = Math.max(chara["charaHaisui"], charaHaisuiValue);
                     }
                     continue;
@@ -3177,17 +3178,17 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     if (totals[key]['remainHP'] < 0.25) {
                         totals[key]["DASupport"] += 10.00;
                         totals[key]["TASupport"] += 10.00;
-                        totals[key]["additionalDamageXA"] = support.value;
+                        totals[key]["additionalDamageXA"] = s.value;
                     }
                     continue;
                 case "charaDamageUP_OugiCap":
                     // obsolete
-                    totals[key]["charaDamageUP"] += support.value;
-                    totals[key]["ougiDamageLimitBuff"] += support.value;
+                    totals[key]["charaDamageUP"] += s.value;
+                    totals[key]["ougiDamageLimitBuff"] += s.value;
                     continue;
                 case "additionalDamageXA":
                     // currently, range: own only, and no chances to stack.
-                    totals[key]["additionalDamageXA"] = support.value;
+                    totals[key]["additionalDamageXA"] = s.value;
                     // Implemented Stacking. Can someone verify?
                     // for (let [name, chara] of support.range(totals, key)) {
                     //     for (let i = 0; i < support.value.length; i++) {
@@ -3197,26 +3198,26 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     continue;
                 case "element_buff_boost_damageUP_own":
                     if (when.element_buff(totals[key], buff)) {
-                        totals[key]["charaDamageUP"] += support.value;
+                        totals[key]["charaDamageUP"] += s.value;
                     }
                     continue;
                 case "element_buff_boost_damageUP_normal_own":
                     if (when.element_buff(totals[key], buff)) {
-                        totals[key]["damageUPOnlyNormalBuff"] += support.value;
+                        totals[key]["damageUPOnlyNormalBuff"] += s.value;
                     }
                     continue;
                 case "critical_cap_up":
-                    for (let [name, chara] of support.range(totals, key)) {
-                        chara["criticalDamageLimit"] += support.value;
+                    for (let [name, chara] of s.range(totals, key)) {
+                        chara["criticalDamageLimit"] += s.value;
                     }
                     continue;
                 case "no_normal_attack":
                     continue;
                 case "normalSupportKonshin_hpDebuff":
-                    totals[key]["HPdebuff"] += support.hpDebuff;
+                    totals[key]["HPdebuff"] += s.hpDebuff;
                     // falls through
                 case "normalSupportKonshin":
-                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", support.value, 1, totals[key]["remainHP"]);
+                    let supportKonshinValue = module.exports.calcHaisuiValue("normalSupportKonshin", s.value, 1, totals[key]["remainHP"]);
                     if (totals[key].isConsideredInAverage) {
                         for (let key2 in totals) {
                             totals[key2]["normalSupportKonshin"] = Math.max(totals[key2]["normalSupportKonshin"], supportKonshinValue);
@@ -3226,8 +3227,8 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     }
                     continue;
                 case "supplemental_third_hit":
-                    if (support.range == "own") {
-                        totals[key]["supplementalThirdHit"].push({"source": "サポアビ", value: support.value});
+                    if (s.range == "own") {
+                        totals[key]["supplementalThirdHit"].push({"source": "サポアビ", value: s.value});
                     }
                     continue;
                 // case "tousou_no_chishio":
@@ -3267,7 +3268,7 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
                     continue;
                 case "benedikutosu_soure":
                     if (buff["retsujitsuNoRakuen"]) {
-                        var [ougiDamageBuff, ougiDamageLimitBuff] = support.value;
+                        var [ougiDamageBuff, ougiDamageLimitBuff] = s.value;
                         totals[key]["ougiDamageBuff"] += ougiDamageBuff;
                         totals[key]["ougiDamageLimitBuff"] += ougiDamageLimitBuff;
                     }
@@ -3338,26 +3339,26 @@ module.exports.treatSupportAbility = function (totals, chara, comb, arml, buff) 
             // FIXME: restrict filtering range function lookup
             //   currently support "all", "own", "others", "Djeeta"
             //   not work well with, range: "element" etc .. use range function
-            let range_filter = range[support.range] || support.range;
+            let range_filter = range[s.range] || s.range;
 
             for (let [name, chara] of range_filter(totals, key)) {
-                if (support.when && !support.when(chara, buff))
+                if (s.when && !s.when(chara, buff))
                     continue;
-                switch (support.assign || "add") {
+                switch (s.assign || "add") {
                 case "push":
-                    chara[support.type].push(support.value);
+                    chara[s.type].push(s.value);
                     break;
                 case "max":
-                    chara[support.type] = Math.max(support.value, chara[support.type]);
+                    chara[s.type] = Math.max(s.value, chara[s.type]);
                     break;
                 case "add":
-                    chara[support.type] += support.value;
+                    chara[s.type] += s.value;
                     break;
                 case "set":
-                    chara[support.type] = support.value;
+                    chara[s.type] = s.value;
                     break;
                 case "multiply":
-                    chara[support.type] = ((1.0 + chara[support.type]) * (1.0 + support.value)) - 1.0;
+                    chara[s.type] = ((1.0 + chara[s.type]) * (1.0 + s.value)) - 1.0;
                 }
             }
         }
