@@ -31,15 +31,15 @@
     "node": ">= 8.11"
   },
   "scripts": {
-    "start": "webpack-dev-server --watch --inline",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --watch --inline",
     "test": "jest",
-    "build": "webpack --display-error-details",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --display-error-details",
     "lint": "eslint webpack.config.js src/*",
     "lint:fix": "eslint webpack.config.js src/* --fix",
-    "production-build": "cross-env NODE_ENV=production webpack",
-    "watch-dev": "webpack --progress --watch",
-    "production-watch-dev": "cross-env NODE_ENV=production webpack --progress --watch",
-    "storybook": "start-storybook -p 9009 -s ./  --ci",
+    "production-build": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack",
+    "watch-dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --progress --watch",
+    "production-watch-dev": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --progress --watch",
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 9009 -s ./  --ci",
     "download:arm": "python ./scripts/download_image.py arm",
     "download:chara": "python ./scripts/download_image.py chara",
     "download:help": "python ./scripts/download_image.py -h"
