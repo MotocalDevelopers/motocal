@@ -1,6 +1,6 @@
 var React = require('react');
 
-var {Label, Button, ButtonGroup, FormControl, Modal, Panel, PanelGroup, Glyphicon} = require('react-bootstrap');
+var {Label, Button, ButtonGroup, FormControl, Modal, Panel, PanelGroup, Glyphicon, Checkbox} = require('react-bootstrap');
 var CreateClass = require('create-react-class');
 var GlobalConst = require('./global_const.js');
 var {RegisteredArm} = require('./template.js');
@@ -10,6 +10,7 @@ var intl = require('./translate.js');
 // inject GlobalConst...
 var selector = GlobalConst.selector;
 var _ua = GlobalConst._ua;
+let _jobs = GlobalConst.Jobs;
 
 // ArmList has a number of Arm objects.
 var ArmList = CreateClass({
@@ -35,6 +36,7 @@ var ArmList = CreateClass({
             considerNum: 1,
             openPresets: false,
             arrayForCopy: {},
+            favs: []
         };
     },
     closePresets: function () {
@@ -58,6 +60,14 @@ var ArmList = CreateClass({
         this.setState({arms: arms})
     },
     componentWillReceiveProps: function (nextProps) {
+        // Set up favorite weapons from jobs
+        let favs = [];
+        if (nextProps.job in _jobs) {
+            let job = _jobs[nextProps.job];
+            favs.push(job.favArm1);
+            favs.push(job.favArm2);
+        }
+        this.setState({favs: favs});
         if (nextProps.dataName != this.props.dataName && (Array.isArray(nextProps.dataForLoad))) {
             this.setState({alist: nextProps.dataForLoad});
             this.updateArmNum(nextProps.armNum);
@@ -150,12 +160,22 @@ var ArmList = CreateClass({
         delete state["arrayForCopy"][id];
         this.setState(state);
     },
-    handleOnChange: function (key, state, isSubtle) {
+    handleOnChange: function (key, state, isSubtle, mainWeaponChanged = false) {
         var newalist = this.state.alist;
+        if (mainWeaponChanged) {
+            this.handleMainWeaponChange(key, newalist);
+        }
         newalist[key] = state;
         this.setState({alist: newalist});
         this.setState({addArm: null});
         this.props.onChange(newalist, isSubtle);
+    },
+    handleMainWeaponChange: function(key, newalist) {
+        for (let i = 0; i < newalist.length; i++) {
+            if (i !== key) {
+                newalist[i].mhWeapon = false;
+            }
+        }
     },
     handleEvent: function (key, e) {
         var newState = this.state;
@@ -210,6 +230,7 @@ var ArmList = CreateClass({
         var dataForLoad = this.props.dataForLoad;
         var arrayForCopy = this.state.arrayForCopy;
         var copyCompleted = this.copyCompleted;
+        let favs = this.state.favs;
 
         // For view
         var panel_style = {"textAlign": "left"};
@@ -253,7 +274,8 @@ var ArmList = CreateClass({
                                         openPresets={openPresets}
                                         dataForLoad={dataForLoad}
                                         arrayForCopy={arrayForCopy[ind]}
-                                        copyCompleted={copyCompleted}/>
+                                        copyCompleted={copyCompleted}
+                                        mhEligible={favs.includes(alist[arm].armType)}/>
                                 </Panel.Body>
                             </Panel>
                         );
@@ -294,9 +316,13 @@ var Arm = CreateClass({
             skill2Detail: 0,
             skill3Detail: 0,
             series: "none",
+            mhWeapon: false
         };
     },
     componentWillReceiveProps: function (nextProps) {
+        if (this.props.mhEligible !== nextProps.mhEligible) {
+            this.setState({mhWeapon: this.state.mhWeapon && nextProps.mhEligible});
+        }
         // only fired on Data Load
         if (nextProps.dataName != this.props.dataName) {
             if ((nextProps.dataForLoad != undefined) && this.props.id in nextProps.dataForLoad) {
@@ -443,10 +469,16 @@ var Arm = CreateClass({
             if (parseInt(e.target.value) > parseInt(this.state.considerNumberMax)) {
                 newState["considerNumberMax"] = parseInt(e.target.value)
             }
+            if (this.state.mhWeapon && parseInt(e.target.value) === 0) {
+                newState.mhWeapon = false;
+            }
             newState[key] = parseInt(e.target.value)
         } else if (key == "considerNumberMax") {
             if (parseInt(e.target.value) < parseInt(this.state.considerNumberMin)) {
                 newState["considerNumberMin"] = parseInt(e.target.value)
+            }
+            if (this.state.mhWeapon && parseInt(e.target.value) === 0) {
+                newState.mhWeapon = false;
             }
             newState[key] = parseInt(e.target.value)
         } else {
@@ -460,6 +492,17 @@ var Arm = CreateClass({
 
         this.setState(newState);
         this.props.onChange(this.props.id, newState, false)
+    },
+    handleCheckboxChangeEvent: function (key, e) {
+        let newState = this.state;
+        newState[key] = e.target.checked;
+        if (key === "mhWeapon" && e.target.checked) {
+            newState.considerNumberMin = 1;
+            if (newState.considerNumberMax < newState.considerNumberMin) {
+                newState.considerNumberMax = newState.considerNumberMin;
+            }
+        }
+        this.props.onChange(this.props.id, newState, false, e.target.checked)
     },
     handleOnBlur: function (key, e) {
         // Send change to parent only when focus is off
@@ -536,6 +579,14 @@ var Arm = CreateClass({
                         </td>
                     </tr>
                     <tr>
+                        <th className="bg-primary">{intl.translate("メインウェポン", locale)}</th>
+                        <td>
+                            <Checkbox inline checked={this.state.mhWeapon}
+                                      onChange={this.handleCheckboxChangeEvent.bind(this, "mhWeapon")} disabled={!this.props.mhEligible}>
+                            </Checkbox>
+                        </td>
+                    </tr>
+                    <tr>
                         <th className="bg-primary">{intl.translate("スキル", locale)}1</th>
                         <td>
                             <FormControl componentClass="select" value={this.state.element}
@@ -577,7 +628,7 @@ var Arm = CreateClass({
                             {GlobalConst.skillDetails[this.state.skill3] != undefined ?
                                  <div>
                                     <label>{intl.translate(GlobalConst.skillDetailsDescription[this.state.skill3], locale)}</label>
-                                    <FormControl componentClass="select" value={this.state.skil3Detail}
+                                    <FormControl componentClass="select" value={this.state.skill3Detail}
                                                  onChange={this.handleSelectEvent.bind(this, "skill3Detail")}> {selector[locale][GlobalConst.skillDetails[this.state.skill3]]} </FormControl>
                                  </div>
                             : null}

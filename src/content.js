@@ -317,7 +317,7 @@ var Root = CreateClass({
                         <div className="Tab hidden" id="armTab">
                             <ArmList dataName={this.state.dataName} armNum={this.state.armNum}
                                      onChange={this.onChangeArmData} pleaseAddArmNum={this.addArmNum} locale={locale}
-                                     dataForLoad={this.state.dataForLoad.armlist}/>
+                                     dataForLoad={this.state.dataForLoad.armlist} job={this.state.profile.job}/>
                             <ButtonGroup className="addRemoveButtonGroup">
                                 <Button className="addRemoveButton" bsStyle="primary"
                                         onClick={this.addArmNum}>{intl.translate("追加", locale)}(現在{this.state.armNum}本)</Button>
@@ -439,7 +439,7 @@ var Root = CreateClass({
                                 <ArmList dataName={this.state.dataName} armNum={this.state.armNum}
                                          onChange={this.onChangeArmData} pleaseAddCharaNum={this.addCharaNum}
                                          pleaseAddArmNum={this.addArmNum} locale={locale}
-                                         dataForLoad={this.state.dataForLoad.armlist}/>
+                                         dataForLoad={this.state.dataForLoad.armlist} job={this.state.profile.job}/>
                                 <ButtonGroup className="addRemoveButtonGroup">
                                     <Button className="addRemoveButton" bsStyle="primary"
                                             onClick={this.addArmNum}>{intl.translate("追加", locale)}</Button>
