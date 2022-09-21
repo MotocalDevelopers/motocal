@@ -5,6 +5,15 @@ import os
 import re
 from collections import OrderedDict
 
+# wiki内の表記から読み取るための辞書
+elementlist = OrderedDict()
+elementlist[u"火"] = "fire"
+elementlist[u"水"] = "water"
+elementlist[u"土"] = "earth"
+elementlist[u"風"] = "wind"
+elementlist[u"光"] = "light"
+elementlist[u"闇"] = "dark"
+
 armtypelist = OrderedDict()
 armtypelist[u"剣"] = "sword"
 armtypelist[u"銃"] = "gun"
@@ -26,19 +35,26 @@ charatypelist[u"特殊"] = "pecu"
 
 racelist = OrderedDict()
 racelist[u"ヒューマン/エルーン"] = "human/erune"
+racelist[u"ヒューマン&br;エルーン"] = "human/erune"
 racelist[u"ヒューマン/ドラフ"] = "human/doraf"
+racelist[u"ヒューマン&br;ドラフ"] = "human/doraf"
 racelist[u"ヒューマン"] = "human"
 racelist[u"ドラフ"] = "doraf"
 racelist[u"エルーン/ドラフ"] = "erune/doraf"
+racelist[u"エルーン&br;ドラフ"] = "erune/doraf"
 racelist[u"エルーン"] = "erune"
 racelist[u"ハーヴィン/ヒューマン"] = "havin/human"
+racelist[u"ハーヴィン&br;ヒューマン"] = "havin/human"
 racelist[u"ハーヴィン"] = "havin"
 racelist[u"星晶獣"] = "seisho"
 racelist[u"不明"] = "unknown"
 racelist[u"その他"] = "unknown"
 
 sexlist = OrderedDict()
+sexlist[u"男/女"] = "male/female"
+sexlist[u"女/男"] = "male/female"
 sexlist[u"男&br;女"] = "male/female"
+sexlist[u"女&br;男"] = "male/female"
 sexlist[u"男"] = "male"
 sexlist[u"女"] = "female"
 sexlist[u"不明"] = "other"
@@ -368,189 +384,198 @@ supportAbilist["element_buff_boost_other_own_30"] = {
     u"真龍の友愛"
 }
 # Patching DA TA
-patching = OrderedDict()
+patchingDaTa = OrderedDict()
 
 # Consecutive atk rate from すんどめ侍さん
 # Default: DA7%,TA3%
 
 # Eternals
-patching["[最終]ソーン"] = {"DA": 4.0, "TA": 1.0}
-patching["[最終]サラーサ"] = {"DA": 5.0, "TA": 2.0}
-patching["[最終]カトル"] = {"DA": 10.0, "TA": 5.0}
-patching["[最終]フュンフ"] = {"DA": 4.0, "TA": 1.0}
-patching["[最終]シス"] = {"DA": 1000.0, "TA": 0.0}
-patching["[最終]シエテ"] = {"DA": 10.0, "TA": 5.0}
-patching["[最終]オクトー"] = {"DA": 25.0, "TA": 2.0}  # Support skill DA20%
-patching["[最終]ニオ"] = {"DA": 4.0, "TA": 1.0}
-patching["[最終]エッセル"] = {"DA": 10.0, "TA": 5.0}
-patching["ソーン"] = {"DA": 4.0, "TA": 1.0}
-patching["サラーサ"] = {"DA": 5.0, "TA": 2.0}
-patching["カトル"] = {"DA": 10.0, "TA": 5.0}
-patching["フュンフ"] = {"DA": 4.0, "TA": 1.0}
-patching["シス"] = {"DA": 1000.0, "TA": 0.0}
-patching["シエテ"] = {"DA": 10.0, "TA": 5.0}
-patching["オクトー"] = {"DA": 5.0, "TA": 2.0}
-patching["ニオ"] = {"DA": 4.0, "TA": 1.0}
-patching["エッセル"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["[未開放]ソーン"] = \
+patchingDaTa["[最終]ソーン"] = \
+patchingDaTa["ソーン"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["[未開放]サラーサ"] = \
+patchingDaTa["[最終]サラーサ"] = \
+patchingDaTa["サラーサ"] = {"DA": 5.0, "TA": 2.0}
+patchingDaTa["[未開放]カトル"] = \
+patchingDaTa["[最終]カトル"] = \
+patchingDaTa["カトル"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["[未開放]フュンフ"] = \
+patchingDaTa["[最終]フュンフ"] = \
+patchingDaTa["フュンフ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["[未開放]シス"] = \
+patchingDaTa["[最終]シス"] = \
+patchingDaTa["シス"] = {"DA": 1000.0, "TA": 0.0}
+patchingDaTa["[未開放]シエテ"] = \
+patchingDaTa["[最終]シエテ"] = \
+patchingDaTa["シエテ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["[未開放]オクトー"] = \
+patchingDaTa["[最終]オクトー"] = \
+patchingDaTa["オクトー"] = {"DA": 25.0, "TA": 2.0}  # Support skill DA20%
+patchingDaTa["[未開放]ニオ"] = \
+patchingDaTa["[最終]ニオ"] = \
+patchingDaTa["ニオ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["[未開放]エッセル"] = \
+patchingDaTa["[最終]エッセル"] = \
+patchingDaTa["エッセル"] = {"DA": 10.0, "TA": 5.0}
 
 ## 火 - Fire
-patching["ゼタ"] = {"DA": 10.0, "TA": 5.0}
-patching["ラカム(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
-patching["テレーズ(SSR)"] = {"DA": 10.0, "TA": 5.0}
-patching["メーテラ(火属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ヘルエス"] = {"DA": 10.0, "TA": 5.0}
-patching["ガンダゴウザ"] = {"DA": 10.0, "TA": 5.0}
-patching["アリーザ(SSR)"] = {"DA": 10.0, "TA": 5.0}
-patching["グレア"] = {"DA": 10.0, "TA": 5.0}
-patching["スツルム"] = {"DA": 10.0, "TA": 5.0}
-patching["アラナン"] = {"DA": 10.0, "TA": 5.0}
-patching["パーシヴァル"] = {"DA": 10.0, "TA": 5.0}
-patching["ニーナ・ドランゴ"] = {"DA": 10.0, "TA": 5.0}
-patching["紅月カレン"] = {"DA": 10.0, "TA": 5.0}
-patching["フラウ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ゼタ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ラカム(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["テレーズ(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["メーテラ(火属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ヘルエス"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ガンダゴウザ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["アリーザ(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["グレア"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["スツルム"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["アラナン"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["パーシヴァル"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ニーナ・ドランゴ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["紅月カレン"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["フラウ"] = {"DA": 10.0, "TA": 5.0}
 
-patching["ユエル"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
+patchingDaTa["ユエル"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
 
-patching["アオイドス"] = {"DA": 4.0, "TA": 1.0}
-patching["アニラ"] = {"DA": 4.0, "TA": 1.0}
-patching["アギエルバ"] = {"DA": 4.0, "TA": 1.0}
-patching["ザルハメリナ"] = {"DA": 4.0, "TA": 1.0}
-patching["イオ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["アオイドス"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["アニラ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["アギエルバ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["ザルハメリナ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["イオ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
 
-patching["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["白竜の双騎士 ランスロット＆ヴェイン"] = {"DA": 1000.0, "TA": 3.0}
 
 # SR
-patching["ジェミニ・サンライズ"] = {"DA": 10.0, "TA": 5.0}
-patching["テレーズ(バニーver)"] = {"DA": 10.0, "TA": 5.0}
-patching["天道輝"] = {"DA": 10.0, "TA": 5.0}
-patching["神月かりん"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ジェミニ・サンライズ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["テレーズ(バニーver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["天道輝"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["神月かりん"] = {"DA": 10.0, "TA": 5.0}
 
 ## 水 - Water
-patching["イングヴェイ"] = {"DA": 10.0, "TA": 5.0}
-patching["シルヴァ"] = {"DA": 10.0, "TA": 5.0}
-patching["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
-patching["桜内梨子＆高海千歌＆渡辺 曜"] = {"DA": 10.0, "TA": 5.0}
-patching["ヴァジラ"] = {"DA": 10.0, "TA": 5.0}
-patching["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ソシエ"] = {"DA": 20.0, "TA": 5.0}  # Support skill DA10%
-patching["イシュミール"] = {"DA": 10.0, "TA": 5.0}
-patching["グレア(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["イングヴェイ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["シルヴァ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ランスロット(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["桜内梨子＆高海千歌＆渡辺 曜"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ヴァジラ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ユエル(水属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ソシエ"] = {"DA": 20.0, "TA": 5.0}  # Support skill DA10%
+patchingDaTa["イシュミール"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["グレア(水着ver)"] = {"DA": 10.0, "TA": 5.0}
 
-patching["リリィ"] = {"DA": 4.0, "TA": 1.0}
-patching["エウロペ"] = {"DA": 4.0, "TA": 1.0}
-patching["ダヌア(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["リリィ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["エウロペ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["ダヌア(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
 
 # SR
-patching["アンジェ"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
+patchingDaTa["アンジェ"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
 
-patching["テレーズ"] = {"DA": 10.0, "TA": 5.0}
-patching["春麗"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["テレーズ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["春麗"] = {"DA": 10.0, "TA": 5.0}
 
-patching["オーウェン"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["オーウェン"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 土 - Earth
-patching["アレーティア"] = {"DA": 10.0, "TA": 5.0}
-patching["ヴィーラ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["キャサリン"] = {"DA": 10.0, "TA": 5.0}
-patching["ネモネ"] = {"DA": 10.0, "TA": 5.0}
-patching["ユーステス(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ダーント＆フライハイト"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["アレーティア"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ヴィーラ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["キャサリン"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ネモネ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ユーステス(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ダーント＆フライハイト"] = {"DA": 10.0, "TA": 5.0}
 
-patching["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
-patching["サラ"] = {"DA": 4.0, "TA": 1.0}
-patching["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
-patching["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
-patching["真紅と冥闇 ゼタ＆バザラガ(ハロウィンver)"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["カリオストロ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["サラ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["レ・フィーエ(土属性ver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["津島善子＆国木田花丸＆黒澤ルビィ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["真紅と冥闇 ゼタ＆バザラガ(ハロウィンver)"] = {"DA": 1000.0, "TA": 3.0}
 
-patching["メルゥ"] = {"DA": 12.0, "TA": 3.0}
+patchingDaTa["メルゥ"] = {"DA": 12.0, "TA": 3.0}
 
 # SR
-patching["カルメリーナ(SR)"] = {"DA": 4.0, "TA": 1.0}
-patching["白竜の双騎士 ランスロット＆ヴェイン(SR)(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["カルメリーナ(SR)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["白竜の双騎士 ランスロット＆ヴェイン(SR)(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 風 - Wind
-patching["ユエル(水着ver)"] = {"DA": 12.0, "TA": 3.0}
-patching["コッコロ"] = {"DA": 12.0, "TA": 3.0}
+patchingDaTa["ユエル(水着ver)"] = {"DA": 12.0, "TA": 3.0}
+patchingDaTa["コッコロ"] = {"DA": 12.0, "TA": 3.0}
 
-patching["ヘルエス(風属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["メリッサベル"] = {"DA": 10.0, "TA": 5.0}
-patching["スカーサハ"] = {"DA": 10.0, "TA": 5.0}
-patching["ジャンヌダルク(水着ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ジークフリート(浴衣ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ヘルエス(風属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["メリッサベル"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["スカーサハ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ジャンヌダルク(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ジークフリート(浴衣ver)"] = {"DA": 10.0, "TA": 5.0}
 
-patching["コルワ"] = {"DA": 4.0, "TA": 1.0}
-patching["コルワ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
-patching["フィーナ(SSR)"] = {"DA": 4.0, "TA": 1.0}
-patching["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["コルワ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["コルワ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["フィーナ(SSR)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["カルメリーナ"] = {"DA": 4.0, "TA": 1.0}
 
-patching["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
+patchingDaTa["リヴァイ"] = {"DA": 0.0, "TA": 100.0}
 
-patching["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
-patching["ミュオン(クリスマスver)"] = {"DA": 0, "TA": 1000.0}
-patching["グリームニル(バレンタインver)"] = {"DA": 1000.0, "TA": 1000.0}
+patchingDaTa["勇者と姫君 スタン＆アリーザ"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["ミュオン(クリスマスver)"] = {"DA": 0, "TA": 1000.0}
+patchingDaTa["グリームニル(バレンタインver)"] = {"DA": 1000.0, "TA": 1000.0}
 
 # SR
-patching["リュウ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["リュウ"] = {"DA": 10.0, "TA": 5.0}
 
-patching["フィーナ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["フィーナ"] = {"DA": 4.0, "TA": 1.0}
 
 ## 光 - Light
-patching["アーミラ(SSR)"] = {"DA": 10.0, "TA": 5.0}
-patching["ゼタ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ヘルエス(水着ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ジャンヌダルク"] = {"DA": 10.0, "TA": 5.0}
-patching["セルエル"] = {"DA": 10.0, "TA": 5.0}
-patching["ロザミア(SSR)"] = {"DA": 10.0, "TA": 5.0}
-patching["メリッサベル(バレンタインver)"] = {"DA": 10.0, "TA": 5.0}
-patching["メーテラ(クリスマスver)"] = {"DA": 10.0, "TA": 5.0}
-patching["シルヴァ(光属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ルシオ(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ガイゼンボーガ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["アーミラ(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ゼタ(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ヘルエス(水着ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ジャンヌダルク"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["セルエル"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ロザミア(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["メリッサベル(バレンタインver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["メーテラ(クリスマスver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["シルヴァ(光属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ルシオ(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ガイゼンボーガ"] = {"DA": 10.0, "TA": 5.0}
 
-patching["バウタオーダ(SSR)"] = {"DA": 4.0, "TA": 1.0}
-patching["イオ(リミテッドver)"] = {"DA": 4.0, "TA": 1.0}
-patching["ソフィア"] = {"DA": 4.0, "TA": 1.0}
-patching["レ・フィーエ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
-patching["シャルロッテ(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["バウタオーダ(SSR)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["イオ(リミテッドver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["ソフィア"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["レ・フィーエ(水着ver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["シャルロッテ(ハロウィンver)"] = {"DA": 4.0, "TA": 1.0}
 
-patching["アルベール"] = {"DA": 1000.0, "TA": 3.0}
-patching["プリキュア"] = {"DA": 1000.0, "TA": 3.0}
-patching["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 1000.0, "TA": 3.0}
-patching["ハールート・マールート(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
-patching["ハレゼナ(ハロウィンver)"] = {"DA": 1000.0, "TA": 1000.0}
-patching["渋谷凛＆島村卯月＆本田未央"] = {"DA": 1000.0, "TA": 1000.0}
+patchingDaTa["アルベール"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["プリキュア"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["レヴィオン姉妹 マイム＆ミイム＆メイム"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["ハールート・マールート(水着ver)"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["ハレゼナ(ハロウィンver)"] = {"DA": 1000.0, "TA": 1000.0}
+patchingDaTa["渋谷凛＆島村卯月＆本田未央"] = {"DA": 1000.0, "TA": 1000.0}
 
 # SR
-patching["ゼタ(SR)"] = {"DA": 10.0, "TA": 5.0}
-patching["フェリ(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ゼタ(SR)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["フェリ(ハロウィンver)"] = {"DA": 10.0, "TA": 5.0}
 
-patching["アンジェ(ハロウィンver)"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
+patchingDaTa["アンジェ(ハロウィンver)"] = {"DA": 12.0, "TA": 3.0}  # Support skill DA5%
 
-patching["フィーナ(クリスマスver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["フィーナ(クリスマスver)"] = {"DA": 4.0, "TA": 1.0}
 
-patching["アルベール(SR)"] = {"DA": 1000.0, "TA": 3.0}
+patchingDaTa["アルベール(SR)"] = {"DA": 1000.0, "TA": 3.0}
 
 ## 闇 - Dark
-patching["フォルテ"] = {"DA": 10.0, "TA": 5.0}
-patching["ゼタ(闇属性ver)"] = {"DA": 10.0, "TA": 5.0}
-patching["ヴィーラ(SSR)"] = {"DA": 10.0, "TA": 5.0}
-patching["黒騎士(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
-patching["レディ・グレイ"] = {"DA": 10.0, "TA": 5.0}
-patching["ジャンヌダルク(闇)"] = {"DA": 10.0, "TA": 5.0}
-patching["アザゼル"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["フォルテ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ゼタ(闇属性ver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ヴィーラ(SSR)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["黒騎士(リミテッドver)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["レディ・グレイ"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["ジャンヌダルク(闇)"] = {"DA": 10.0, "TA": 5.0}
+patchingDaTa["アザゼル"] = {"DA": 10.0, "TA": 5.0}
 
-patching["バザラガ"] = {"DA": 4.0, "TA": 1.0}
-patching["ダヌア(水着ver)"] = {"DA": 4.0, "TA": 1.0}
-patching["カリオストロ(闇属性ver)"] = {"DA": 4.0, "TA": 1.0}
-patching["ベアトリクス"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["バザラガ"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["ダヌア(水着ver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["カリオストロ(闇属性ver)"] = {"DA": 4.0, "TA": 1.0}
+patchingDaTa["ベアトリクス"] = {"DA": 4.0, "TA": 1.0}
 
-patching["ウーフとレニー"] = {"DA": 1000.0, "TA": 1000.0}
-patching["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
-patching["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
-patching["プレデター(SSR)"] = {"DA": 1000.0, "TA": 1000.0}
+patchingDaTa["ウーフとレニー"] = {"DA": 1000.0, "TA": 1000.0}
+patchingDaTa["ケルベロス"] = {"DA": 0.0, "TA": 55.0}
+patchingDaTa["ユーステス(闇属性ver)"] = {"DA": 13.0, "TA": 5.5}
+patchingDaTa["プレデター(SSR)"] = {"DA": 1000.0, "TA": 1000.0}
 
 # SR
-patching["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
+patchingDaTa["プレデター"] = {"DA": 1000.0, "TA": 1000.0}
 
 # Patching ougi ratio
 # Verification list: https://docs.google.com/spreadsheets/d/1kea2IL6wLNbw4RNUcrrxMTpoIdlXU13pYOzBXjgoBbs/edit#gid=199555968
@@ -620,7 +645,7 @@ patchingOugiRatio["クビラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ヴァジラ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["ビカラ"] = {"ougiRatio": 5.0}
 
-# SSR (The Eternals 5★) (最終十天衆)
+# SSR (The Eternals 5★, 6★) (最終・超越十天衆)
 patchingOugiRatio["[最終]ウーノ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]ソーン"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]サラーサ"] = {"ougiRatio": 5.0}
@@ -631,6 +656,18 @@ patchingOugiRatio["[最終]シエテ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]オクトー"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]ニオ"] = {"ougiRatio": 5.0}
 patchingOugiRatio["[最終]エッセル"] = {"ougiRatio": 5.0}
+
+patchingOugiRatio["[超越]ウーノ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]ソーン"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]サラーサ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]カトル"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]フュンフ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]シス"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]シエテ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]オクトー"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]ニオ"] = {"ougiRatio": 5.5}
+patchingOugiRatio["[超越]エッセル"] = {"ougiRatio": 5.5}
+
 
 ### SSR (Other)
 patchingOugiRatio["アギエルバ"] = {"ougiRatio": 4.7}
@@ -721,170 +758,134 @@ path = os.path.dirname(os.path.abspath(filename))
 translation = json.load(open(os.path.join(
     path, "../txt_source/chara-translation.json"), "r", encoding="utf-8"))
 
-
-def arm_replace(armtype):
-    for armtypename, inner_armtype in armtypelist.items():
-        if re.match(armtypename, armtype):
-            return inner_armtype
-    return "no_favorite_arm_error"
-
-
-def type_replace(charatype):
-    for charatypename, inner_charatype in charatypelist.items():
-        if re.match(charatypename, charatype):
-            return inner_charatype
-    return "error"
-
-
-def race_replace(racetype):
-    for racetypename, inner_racetype in racelist.items():
-        if re.match(racetypename, racetype):
-            return inner_racetype
-    return "error"
-
-
-def sex_replace(sextype):
-    for sextypename, inner_sextype in sexlist.items():
-        if re.match(sextypename, sextype):
-            return inner_sextype
-    return "error"
-
-
-def support_replace(support_str):
-    support_pattern = re.compile("\[\[([\W\w]+?)>")
-
-    m = support_pattern.search(support_str)
-    if m:
-        support = m.group(1)
-        for support_typename, support_name in supportAbilist.items():
-            for name in support_name:
-                if re.match(name, support):
-                    return support_typename
-    return "none"
-
-
-def get_value(value_str):
-    value_pattern = re.compile("(\d+)")
-    matched = value_pattern.search(value_str)
-
-    if matched:
-        return matched.group(1)
-    else:
-        print("input: " + value_str)
-        print("matched: error")
-        return "error"
-
-
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
-    key_pattern = re.compile("(\w+\.png)")
-    br_pattern = re.compile("(\w+)(?:&br;|\/)(\w+)")
+    name_pattern = re.compile("\[\[([\W\w]+?) \(S?S?R\)")
+    rare_pattern = re.compile("\[\[[\W\w]+? \((S?S?R)\)")
+    image_pattern = re.compile("(\w+\.jpg)")
+    element_pattern = re.compile("{(.+?)\}")
+    br_pattern = re.compile("&br;|\/")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
     support_pattern3 = re.compile("([\W\w]+)&br;([\W\w]+)&br;([\W\w]+)")
-    name_pattern = re.compile("\[\[([\W\w]+?) \((S?S?R)\)")
+    number_pattern = re.compile("(\d+)")
+    
+    # wiki上の表記→内部用名に置き換える
+    def replace_notation(wikistr, dict):
+        nonlocal name
+        wikistr = wikistr.strip()
+        
+        for notation, innervalue in dict.items():
+            if wikistr == notation:
+                return innervalue
+        print(f"{name} Replace Error: str={wikistr}, dict={dict}")
+        return ""
+        
+    def parse_from_patten(wikistr, pattern):
+        nonlocal name
+        wikistr = wikistr.strip()
+        parsed = pattern.search(wikistr)
+
+        if parsed: 
+            return parsed.group(1)
+        else:
+            print(rf"{name} Parse Error: input={wikistr}, pattern={pattern}")
+            return ""
+            
+    # サポートアビリティだけkeyとvalueが反対なので関数を分ける、入力していないサポアビが大半なのでエラーは表示しない
+    def support_replace(support_str):
+        support_pattern = re.compile("\[\[([\W\w]+?)(?:\(|>)")
+        m = support_pattern.search(support_str)
+        if m:
+            support = m.group(1)
+            for innervalue, notations in supportAbilist.items():
+                for notation in notations:
+                    if notation == support:
+                        return innervalue
+        return "none"
 
     mycsv = csv.reader(
         open(csv_file_name, 'r', encoding="utf-8"), delimiter="|")
     for row in mycsv:
-        newdict = OrderedDict()
-
+        parsed_dict = OrderedDict()
+        
         if len(row) <= 1:
             continue
         else:
-            m = key_pattern.search(row[1])
-            if m:
-                key = m.group(1)
-
-            m = name_pattern.search(row[2])
-            if m:
-                name = m.group(1)
-                rare = m.group(2)    # <- "SSR", "SR", "R"
+            # エラー表示のため
+            name = "???"
+            name = parsed_dict["name"] = parsed_dict["ja"] = parse_from_patten(row[2], name_pattern)
+            rare = parsed_dict["rare"] = parse_from_patten(row[2], rare_pattern)
+            imageurl = parse_from_patten(row[1], image_pattern)
+            parsed_dict["element"] = replace_notation(parse_from_patten(row[3], element_pattern), elementlist)
+            parsed_dict["type"] = replace_notation(row[4], charatypelist)
+            parsed_dict["race"] = replace_notation(row[5], racelist)
+            parsed_dict["sex"] = replace_notation(row[6], sexlist)
+            
+            # favorite weapon
+            if br_pattern.findall(row[7]):
+                favs = br_pattern.split(row[7])
+                parsed_dict["fav1"] = replace_notation(favs[0], armtypelist) or "none"
+                parsed_dict["fav2"] = replace_notation(favs[1], armtypelist) or "none"
             else:
-                print("error")
-                name = "error"
+                parsed_dict["fav1"] = replace_notation(row[7], armtypelist) or "none"
+                parsed_dict["fav2"] = "none"
 
-            newdict["name"] = name
-            newdict["ja"] = name
-
-            # element
-            if row[3].find("火") > 0:
-                newdict["element"] = "fire"
-            elif row[3].find("水") > 0:
-                newdict["element"] = "water"
-            elif row[3].find("土") > 0:
-                newdict["element"] = "earth"
-            elif row[3].find("風") > 0:
-                newdict["element"] = "wind"
-            elif row[3].find("光") > 0:
-                newdict["element"] = "light"
+            # support
+            if len(br_pattern.findall(row[10])) >= 2:
+                supports = br_pattern.split(row[10])
+                parsed_dict["support"] = support_replace(supports[0])
+                parsed_dict["support2"] = support_replace(supports[1])
+                parsed_dict["support3"] = support_replace(supports[2])
+            elif len(br_pattern.findall(row[10])) == 1:
+                supports = br_pattern.split(row[10])
+                parsed_dict["support"] = support_replace(supports[0])
+                parsed_dict["support2"] = support_replace(supports[1])
+                parsed_dict["support3"] = "none"
             else:
-                newdict["element"] = "dark"
+                parsed_dict["support"] = support_replace(row[10])
+                parsed_dict["support2"] = "none"
+                parsed_dict["support3"] = "none"
 
-            # type
-            newdict["type"] = type_replace(row[4])
-            newdict["race"] = race_replace(row[5])
-            newdict["sex"] = sex_replace(row[6])
+            parsed_dict["minhp"] = parse_from_patten(row[11], number_pattern)
+            parsed_dict["hp"] = parse_from_patten(row[13], number_pattern)
 
-            m = br_pattern.search(row[7])
-            if m:
-                newdict["fav1"] = arm_replace(m.group(1))
-                newdict["fav2"] = arm_replace(m.group(2))
+            parsed_dict["minattack"] = parse_from_patten(row[12], number_pattern)
+            parsed_dict["attack"] = parse_from_patten(row[14], number_pattern)
+
+            # patching
+            if parsed_dict["name"] in patchingDaTa:
+                parsed_dict["baseDA"] = patchingDaTa[parsed_dict["name"]]["DA"]
+                parsed_dict["baseTA"] = patchingDaTa[parsed_dict["name"]]["TA"]
             else:
-                newdict["fav1"] = arm_replace(row[7])
-                newdict["fav2"] = "none"
+                parsed_dict["baseDA"] = 7.0
+                parsed_dict["baseTA"] = 3.0
 
-            m3 = support_pattern3.search(row[10])
-            m2 = support_pattern2.search(row[10])
-            if m3:
-                newdict["support"] = support_replace(m3.group(1))
-                newdict["support2"] = support_replace(m3.group(2))
-                newdict["support3"] = support_replace(m3.group(3))
-            elif m2:
-                newdict["support"] = support_replace(m2.group(1))
-                newdict["support2"] = support_replace(m2.group(2))
-                newdict["support3"] = "none"
+            if parsed_dict["name"] in patchingOugiRatio:
+                parsed_dict["ougiRatio"] = patchingOugiRatio[parsed_dict["name"]]["ougiRatio"]
             else:
-                newdict["support"] = support_replace(row[10])
-                newdict["support2"] = "none"
-                newdict["support3"] = "none"
+                parsed_dict["ougiRatio"] = defaultOugiRatio[rare]
 
-            newdict["minhp"] = get_value(row[11])
-            newdict["hp"] = get_value(row[13])
+            parsed_dict["imageURL"] = "./charaimgs/" + imageurl
 
-            newdict["minattack"] = get_value(row[12])
-            newdict["attack"] = get_value(row[14])
-
-            if newdict["name"] in patching:
-                newdict["baseDA"] = patching[newdict["name"]]["DA"]
-                newdict["baseTA"] = patching[newdict["name"]]["TA"]
-            else:
-                newdict["baseDA"] = 7.0
-                newdict["baseTA"] = 3.0
-
-            if newdict["name"] in patchingOugiRatio:
-                newdict["ougiRatio"] = patchingOugiRatio[newdict["name"]]["ougiRatio"]
-            else:
-                newdict["ougiRatio"] = defaultOugiRatio[rare]
-
-            newdict["imageURL"] = "./charaimgs/" + key
-
+            # Input chara-translation.json
             if name in translation:
-                newdict["en"] = translation[name]
+                parsed_dict["en"] = translation[name]
             else:
-                print(name)
-                newdict["en"] = name
+                print(f"{name} English name is not input.")
+                parsed_dict["en"] = name
 
-            json_data[name] = newdict
-            # Wiki
+            json_data[name] = parsed_dict
+            
+            # For "download_image.py"
+            # Wiki image
             image_wiki_url_list.append(
-                "http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + key + "\n")
-            # Game - Might get you banned...
+                "http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + imageurl + "\n")
+            # Game image - Might get you banned...
             image_game_url_list.append(
-                "http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/" + key + "\n")
+                "http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/" + imageurl + "\n")
             image_wiki_url_list = list(
                 OrderedDict.fromkeys(image_wiki_url_list))
             image_game_url_list = list(
                 OrderedDict.fromkeys(image_game_url_list))
-
     return json_data, image_wiki_url_list, image_game_url_list
 
 
