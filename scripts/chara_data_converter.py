@@ -761,7 +761,7 @@ translation = json.load(open(os.path.join(
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
     name_pattern = re.compile("\[\[([\W\w]+?) \(S?S?R\)")
     rare_pattern = re.compile("\[\[[\W\w]+? \((S?S?R)\)")
-    image_pattern = re.compile("(\w+\.jpg)")
+    image_pattern = re.compile("(\w+\.(?:jpg|png))")
     element_pattern = re.compile("{(.+?)\}")
     br_pattern = re.compile("&br;|\/")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
@@ -815,10 +815,10 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             name = parsed_dict["name"] = parsed_dict["ja"] = parse_from_patten(row[2], name_pattern)
             rare = parsed_dict["rare"] = parse_from_patten(row[2], rare_pattern)
             imageurl = parse_from_patten(row[1], image_pattern)
-            parsed_dict["element"] = replace_notation(parse_from_patten(row[3], element_pattern), elementlist)
-            parsed_dict["type"] = replace_notation(row[4], charatypelist)
-            parsed_dict["race"] = replace_notation(row[5], racelist)
-            parsed_dict["sex"] = replace_notation(row[6], sexlist)
+            parsed_dict["element"] = replace_notation(parse_from_patten(row[3], element_pattern), elementlist) or "fire"
+            parsed_dict["type"] = replace_notation(row[4], charatypelist) or "pecu"
+            parsed_dict["race"] = replace_notation(row[5], racelist) or "unknown"
+            parsed_dict["sex"] = replace_notation(row[6], sexlist) or "other"
             
             # favorite weapon
             if br_pattern.findall(row[7]):
@@ -872,7 +872,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             else:
                 print(f"{name} English name is not input.")
                 parsed_dict["en"] = name
-
+            
             json_data[name] = parsed_dict
             
             # For "download_image.py"
@@ -888,15 +888,18 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
                 OrderedDict.fromkeys(image_game_url_list))
     return json_data, image_wiki_url_list, image_game_url_list
 
-
 if __name__ == '__main__':
     json_data = OrderedDict()
     image_wiki_url_list = []
     image_game_url_list = []
 
-    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(
-        os.path.join(path, "../txt_source/charaData.txt"), json_data, image_wiki_url_list, image_game_url_list)
-
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path,
+        "../txt_source/charaData-ssr.txt"), json_data, image_wiki_url_list, image_game_url_list)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path,
+        "../txt_source/charaDataAddition.txt"), json_data, image_wiki_url_list, image_game_url_list)
+    json_data, image_wiki_url_list, image_game_url_list = processCSVdata(os.path.join(path,
+        "../txt_source/charaData-sr.txt"), json_data, image_wiki_url_list, image_game_url_list)
+    
     f = open(os.path.join(path, "../charaData.json"), "w", encoding="utf-8")
     json.dump(json_data, f, ensure_ascii=False, indent=4)
     f.close()
