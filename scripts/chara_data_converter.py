@@ -761,7 +761,7 @@ translation = json.load(open(os.path.join(
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
     name_pattern = re.compile("\[\[([\W\w]+?) \(S?S?R\)")
     rare_pattern = re.compile("\[\[[\W\w]+? \((S?S?R)\)")
-    image_pattern = re.compile("(\w+\.(?:jpg|png))")
+    image_pattern = re.compile("(\w+)(?:\.jpg|\.png)")
     element_pattern = re.compile("{(.+?)\}")
     br_pattern = re.compile("&br;|\/")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
@@ -814,7 +814,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             name = "???"
             name = parsed_dict["name"] = parsed_dict["ja"] = parse_from_patten(row[2], name_pattern)
             rare = parsed_dict["rare"] = parse_from_patten(row[2], rare_pattern)
-            imageurl = parse_from_patten(row[1], image_pattern)
+            imagekey = parse_from_patten(row[1], image_pattern)
             parsed_dict["element"] = replace_notation(parse_from_patten(row[3], element_pattern), elementlist) or "fire"
             parsed_dict["type"] = replace_notation(row[4], charatypelist) or "pecu"
             parsed_dict["race"] = replace_notation(row[5], racelist) or "unknown"
@@ -864,7 +864,7 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             else:
                 parsed_dict["ougiRatio"] = defaultOugiRatio[rare]
 
-            parsed_dict["imageURL"] = "./charaimgs/" + imageurl
+            parsed_dict["imageURL"] = "./charaimgs/" + imagekey + ".png"
 
             # Input chara-translation.json
             if name in translation:
@@ -878,10 +878,10 @@ def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url
             # For "download_image.py"
             # Wiki image
             image_wiki_url_list.append(
-                "http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + imageurl + "\n")
+                "http://gbf-wiki.com/index.php?plugin=attach&refer=img&openfile=" + imagekey + ".png\n")
             # Game image - Might get you banned...
             image_game_url_list.append(
-                "http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/" + imageurl + "\n")
+                "http://gbf.game-a.mbga.jp/assets/img/sp/assets/npc/b/" + imagekey + ".png\n")
             image_wiki_url_list = list(
                 OrderedDict.fromkeys(image_wiki_url_list))
             image_game_url_list = list(
