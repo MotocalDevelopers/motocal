@@ -761,7 +761,7 @@ translation = json.load(open(os.path.join(
 def processCSVdata(csv_file_name, json_data, image_wiki_url_list, image_game_url_list):
     name_pattern = re.compile("\[\[([\W\w]+?) \(S?S?R\)")
     rare_pattern = re.compile("\[\[[\W\w]+? \((S?S?R)\)")
-    image_pattern = re.compile("(\w+)(?:\.jpg|\.png)")
+    image_pattern = re.compile("(\d+_\d{2}).*(?:\.jpg|\.png)")
     element_pattern = re.compile("{(.+?)\}")
     br_pattern = re.compile("&br;|\/")
     support_pattern2 = re.compile("([\W\w]+)&br;([\W\w]+)")
